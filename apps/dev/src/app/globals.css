@@ -1,0 +1,24 @@
+@import url('https://altinncdn.no/fonts/inter/inter.css');
+
+:root {
+  --color-background-darkest: #121212;
+  --color-background-darker: #1f1f1f;
+  --color-background-dark: #2c2c2c;
+  --color-text: #d1d1d1;
+  --color-text-subtle: #9c9c9c;
+  --card-padding: 24px;
+}
+
+body {
+  background-color: var(--color-background-darkest);
+  max-width: 1000px;
+  margin: 0 auto !important;
+  padding: 0 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 500px) {
+  :root {
+    --card-padding: 16px;
+  }
+}

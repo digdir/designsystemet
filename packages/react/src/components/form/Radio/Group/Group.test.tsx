@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -9,7 +8,7 @@ import { RadioGroup } from './Group';
 describe('RadioGroup', () => {
   test('has generated name for Radio children', () => {
     render(
-      <RadioGroup>
+      <RadioGroup legend='Radio group legend'>
         <Radio value='test'>test</Radio>
       </RadioGroup>,
     );
@@ -19,7 +18,10 @@ describe('RadioGroup', () => {
   });
   test('has passed name to Radio children', (): void => {
     render(
-      <RadioGroup name='my name'>
+      <RadioGroup
+        legend='Radio group legend'
+        name='my name'
+      >
         <Radio value='test'>test</Radio>
       </RadioGroup>,
     );
@@ -29,7 +31,10 @@ describe('RadioGroup', () => {
   });
   test('has passed required to Radio children', (): void => {
     render(
-      <RadioGroup required>
+      <RadioGroup
+        legend='Radio group legend'
+        required
+      >
         <Radio value='test'>test</Radio>
       </RadioGroup>,
     );
@@ -39,7 +44,10 @@ describe('RadioGroup', () => {
   });
   test('has correct Radio defaultChecked & checked when defaultValue is used', () => {
     render(
-      <RadioGroup defaultValue='test2'>
+      <RadioGroup
+        legend='Radio group legend'
+        defaultValue='test2'
+      >
         <Radio value='test1'>test1</Radio>
         <Radio value='test2'>test2</Radio>
         <Radio value='test3'>test3</Radio>
@@ -55,7 +63,10 @@ describe('RadioGroup', () => {
     let onChangeValue = '';
 
     render(
-      <RadioGroup onChange={(value) => (onChangeValue = value)}>
+      <RadioGroup
+        legend='Radio group legend'
+        onChange={(value) => (onChangeValue = value)}
+      >
         <Radio value='test1'>test1</Radio>
         <Radio value='test2'>test2</Radio>
         <Radio value='test3'>test3</Radio>

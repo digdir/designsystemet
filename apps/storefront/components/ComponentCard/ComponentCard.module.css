@@ -1,0 +1,33 @@
+.card {
+  display: block;
+  text-align: center;
+  background-color: white;
+  padding: var(--fds-spacing-10);
+  border-radius: var(--fds-border_radius-medium);
+  box-shadow: var(--fds-shadow-xsmall);
+  text-decoration: none;
+  transition: 0.2s all;
+}
+
+.card:hover {
+  box-shadow: var(--fds-shadow-medium);
+  transform: translateY(-4px);
+}
+
+.title {
+  margin-top: var(--fds-spacing-3);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+.card:focus-visible {
+  --fds-focus-border-width: 3px;
+
+  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+  outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+  outline-offset: var(--fds-focus-border-width);
+}
+
+.image {
+  width: 100%;
+}

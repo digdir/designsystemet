@@ -2,9 +2,19 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   //  "exclude": ["src/components/*.test.tsx", "src/components/*.stories.tsx"],
   "compilerOptions": {
-    "target": "es2020",
-    "module": "es2020",
-    "lib": ["dom", "esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "@doc-components*": [
+        "apps/storybook/docs-components",
+        "apps/storybook/docs-components/*"
+      ],
+      "@assets/*": ["apps/storybook/assets/*"]
+    },
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    // This allows our files to use window. Should be removed when RSC is added
+    "lib": ["dom", "esnext", "DOM.Iterable"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
@@ -13,10 +23,8 @@
     // match output dir to input dir. e.g. dist/index instead of dist/src/index
     // stricter type-checking for stronger correctness. Recommended by TS
     "strict": true,
-    // use Node's module resolution algorithm, instead of the legacy TS one
-    "moduleResolution": "node",
     // transpile JSX to React.createElement
-    "jsx": "react",
+    "jsx": "react-jsx",
     // interop between ESM and CJS modules. Recommended by TS
     "esModuleInterop": true,
     // significant perf increase by skipping checking .d.ts files, particularly those in node_modules. Recommended by TS
@@ -25,13 +33,20 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
 
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+
+    "moduleDetection": "force",
+    "composite": true,
+    "declarationMap": true,
+
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+
+    // globals for vitest
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "ts-node": {
-    "transpileOnly": true,
-    "files": true,
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["apps/theme"]
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Heading, Paragraph, Link } from '../';
@@ -7,27 +6,33 @@ import { Alert } from '.';
 
 type Story = StoryFn<typeof Alert>;
 
-export default {
-  title: 'Felles/Alert',
+const meta: Meta = {
+  title: 'Komponenter/Alert',
   component: Alert,
   parameters: {
     layout: 'padded',
   },
-} as Meta;
+};
+
+export default meta;
 
 export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
   severity: 'info',
   elevated: false,
+  size: 'md',
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
-export const VariantInfo: Story = () => (
-  <Alert severity='info'>
+export const VariantInfo: Story = (args) => (
+  <Alert
+    {...args}
+    severity='info'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Har du husket å bestille passtime?
@@ -39,11 +44,14 @@ export const VariantInfo: Story = () => (
   </Alert>
 );
 
-export const VariantSuccess: Story = () => (
-  <Alert severity='success'>
+export const VariantSuccess: Story = (args) => (
+  <Alert
+    {...args}
+    severity='success'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Gratulerer! Du kan nå starte selskapet ditt
@@ -55,11 +63,14 @@ export const VariantSuccess: Story = () => (
   </Alert>
 );
 
-export const VariantWarning: Story = () => (
-  <Alert severity='warning'>
+export const VariantWarning: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Vi har tekniske problemer
@@ -71,11 +82,14 @@ export const VariantWarning: Story = () => (
   </Alert>
 );
 
-export const VariantDanger: Story = () => (
-  <Alert severity='danger'>
+export const VariantDanger: Story = (args) => (
+  <Alert
+    {...args}
+    severity='danger'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Det har skjedd en feil
@@ -88,11 +102,11 @@ export const VariantDanger: Story = () => (
   </Alert>
 );
 
-export const MedHeading: Story = () => (
-  <Alert>
+export const MedHeading: Story = (args) => (
+  <Alert {...args}>
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Har du husket å bestille passtime?
@@ -104,17 +118,23 @@ export const MedHeading: Story = () => (
   </Alert>
 );
 
-export const MedKunHeading: Story = () => (
-  <Alert severity='warning'>
+export const MedKunHeading: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Paragraph> Du har 7 dager igjen på å fullføre søknaden.</Paragraph>
   </Alert>
 );
 
-export const MedLenke: Story = () => (
-  <Alert severity='warning'>
+export const MedLenke: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Søknadsfristen går ut om 3 dager
@@ -126,8 +146,9 @@ export const MedLenke: Story = () => (
   </Alert>
 );
 
-export const MedShadow: Story = () => (
+export const MedShadow: Story = (args) => (
   <Alert
+    {...args}
     elevated
     severity='success'
   >
@@ -135,11 +156,14 @@ export const MedShadow: Story = () => (
   </Alert>
 );
 
-export const UtenAria: Story = () => (
-  <Alert severity='warning'>
+export const UtenAria: Story = (args) => (
+  <Alert
+    {...args}
+    severity='warning'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Nedetid
@@ -151,11 +175,14 @@ export const UtenAria: Story = () => (
   </Alert>
 );
 
-export const MedAria: Story = () => (
-  <Alert severity='danger'>
+export const MedAria: Story = (args) => (
+  <Alert
+    {...args}
+    severity='danger'
+  >
     <Heading
       level={2}
-      size='xsmall'
+      size='xs'
       spacing
       role='alert'
     >

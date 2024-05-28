@@ -1,57 +1,300 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Do, Dont, Stack } from '@doc-components';
+
 import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
 
 # Button
 
-<Information text='altinn' />
-
-Button lar brukeren utføre en handling.
-
-## Bruk
-
-```tsx
-import { Button } from '@digdir/design-system-react';
-
-<Button>Trykk på meg!</Button>;
-```
-
-## Props
+Knapper lar brukerne utføre handlinger. Vi har variantene `primary`, `secondary` og `tertiary` som kommer i ulike fargevarianter og størrelser.
 
 <Primary />
 <Controls />
 
-<Information text='token' />
+## Slik bruker du button
 
-## Varianter
+```tsx
+import { Button } from '@digdir/designsystemet-react';
 
-### Knapp med tekst
+<Button>Trykk på meg!</Button>;
+```
 
-<Canvas of={ButtonStories.Variants} />
+## Varianter av button
 
-### Knapp med ikon
+Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvor viktig handlingen er.
 
-<Canvas of={ButtonStories.withIcon} />
+<br />
+
+### Primary button
+
+Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side.
+
+<Canvas of={ButtonStories.Primary} />
+
+### Secondary button
+
+Vi bruker denne knappen til handlinger som ikke er hovedhandlinger. Den står gjerne sammen med en hovedknapp, så hvis hovedknappen er Lagre, kan sekundærknappen være Avbryt.
+
+<Canvas of={ButtonStories.Secondary} />
+
+### Tertiary button
+
+Denne knappen bruker vi til nedtonede handlinger. Hvis vi vil bruke den alene, må den ha med et ikon, hvis ikke er det vanskelig å se at det er en knapp.
+
+<Canvas of={ButtonStories.Tertiary} />
+
+<br />
+
+## Fargevarianter
+
+### Hovedfarger
+
+Knappene kommer i to hovedfarger `first` og `second`. Hvis du har overstyrt fargepaletten vil fargene `first`og `second` være det du selv har satt.
+
+- `first`-fargen stikker seg mer ut enn `second` og brukes gjerne når handlingen skal ha oppmerksomhet.
+
+<Canvas of={ButtonStories.First} />
+
+- `second`-fargen er mer nøytral og kan brukes når det er flere knapper på en side som ikke skal ta så mye oppmerksomhet.
+
+<Canvas of={ButtonStories.Second} />
+
+### Danger
+
+`Danger`-fargen bruker vi til handlinger som brukeren ikke kan angre, for eksempel Slett.
+
+<Canvas of={ButtonStories.Danger} />
+
+### Success
+
+**Denne fargen er deprecated, dvs den kommer til å bli fjernet så vi anbefaler å ikke bruke den**
+`Success`-fargen bruker vi bare når brukeren fullfører en prosess.
+
+<Canvas of={ButtonStories.Success} />
+
+### Kombinere ulike fargevarianter
+
+En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal tydeliggjøre en handling brukeren ikke kan angre, for eksempel Forkast. Vi skal ikke kombinere andre fargevarianter.
+
+<Canvas of={ButtonStories.KombinereFarger} />
+
+<br />
+
+## Eksempler
+
+### Knapp som lenke
+
+Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det er bedre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten.
+Du kan lese mer om komposisjon [her](https://www.designsystemet.no/grunnleggende/for-utviklere/komposisjon).
+
+<Canvas of={ButtonStories.KnappSomLenke} />
+
+### Knapp med kun ikon
+
+Knapper med kun ikon bruker vi bare for godt kjente ikoner som Lukk og Slett. Når knappen bare har ikon, må vi ha med en tilgjengelig tekst som forklarer hva knappen gjør. Dette kan legges i `title`, `aria-label` eller i en `Tooltip` som i eksempelet under.
+
+<Canvas of={ButtonStories.BareIkon} />
 
 ### Knapp med tekst og ikon
 
-<Canvas of={ButtonStories.withIconAndText} />
+Når vi bruker ikon sammen med tekst, skal ikonet ha `aria-hidden` slik at teksten ikke blir lest opp av skjermleser to ganger.
+
+<Canvas of={ButtonStories.TekstOgIkon} />
+
+Vi plasserer ikonet til venstre eller høyre for teksten, avhengig av hva knappen kommuniserer og hvor den står i grensesnittet.
+
+Som regel er det **venstre** som er den beste plasseringen, men det finnes unntak:
+
+- Er det en knapp som sier “Start” med en høyrepekende pil, er det naturlig at pilen plasseres til høyre for teksten.
+- Er knappen fast plassert på høyre side av grensesnittet er det best at ikonet også er høyrestilt for teksten.
+
+<br />
+
+### Størrelse på ikon
+
+Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å bruke disse størrelsene for [Aksel](https://aksel.nav.no/ikoner) sine ikoner:
+
+| Størrelse på knapp | Aksels ikon `fontSize` |
+| :----------------- | :--------------------- |
+| sm                 | 1rem                   |
+| md                 | 1.5rem                 |
+| lg                 | 2rem                   |
+
+<Canvas of={ButtonStories.Ikoner} />
+
+For knapper med kun ikon anbefaler vi å bruke større ikon:
+
+| Størrelse på knapp | Aksels ikon `fontSize` |
+| :----------------- | :--------------------- |
+| sm                 | 1.5rem                 |
+| md                 | 2rem                   |
+| lg                 | 2.5rem                 |
+
+<Canvas of={ButtonStories.Kunikoner} />
+
+<br />
 
 ### Full bredde
 
-<Canvas of={ButtonStories.fullWidth} />
+Noen ganger ser det best ut når knappen fyller hele bredden. For eksempel i bunnen av en liste.
 
-### Bruk av Spinner til å lage en knapp som laster
+<Canvas of={ButtonStories.FullBredde} />
 
-Dersom du ønsker å vise brukeren at knappen laster noe, kan du gjøre det ved å kombinere den med en spinner.
+### Last inn
 
-**OBS**: I dette eksempelet er det brukt `aria-disabled` til å deaktivere knappene.
-Dette er den anbefalte metoden for å vise at en knapp er deaktivert, da det gjør at den fremdeles kan fokuseres på, f.eks. ved navigasjon med tastatur.
-Slik vil bl.a. skjermlesere bli informert om at knappen eksisterer (men ikke er aktiv), noe som ofte ikke er tilfellet ved bruk av kun `disabled`.
+Når vi skal vise brukeren at knappen laster noe, kan vi kombinere knappen med en `spinner`.
 
-Det er imidlertid viktig å vite at denne egenskapen ikke automatisk stopper knappen fra å utløse sin `onCLick`-metode.
-Det er opp til deg som programmerer å passe på at ikke callback-funksjonen din kjører når knappen ikke skal være aktiv.
+<Canvas of={ButtonStories.Lasting} />
 
-<Canvas of={ButtonStories.withSpinner} />
+I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
+
+Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
+
+Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
+
+<br />
+
+## Retningslinjer for button
+
+Knapper skal brukes til å utføre handlinger.
+
+Passer til å
+
+- starte en prosess
+- navigere i en flyt, for eksempel med Forrige og Neste
+- sende inn et skjema
+
+<br />
+Passer ikke til å
+
+- navigere til andre sider eller ut av tjenesten, bruk heller [`link`](/docs/komponenter-link--docs)
+
+<br />
+
+### Plassering av knapper
+
+Når vi legger flere knapper ved siden av hverandre, skal primærknappen stå først. Unntaket er Forrige og Neste, da skal sekundærknappen Forrige stå først.
+
+<br />
+
+### Ikke bruk deaktiverte knapper
+
+Deaktiverte knapper bør unngås fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva knappen sier eller hvorfor den ikke er klikkbar. Bruk heller en aktiv knapp som validerer. [^1]
+
+<br />
+### En knapp skal utføre kun én handling
+
+Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
+
+<Stack direction="row" style={{
+  justifyContent: 'unset',
+  alignItems: 'unset'
+}}>
+  <Do
+    description='En knapp skal kun gjøre én handling'
+    image='/img/component-guidelines/button/button-ex2-do.png'
+  />
+
+  <Dont
+    description='Unngå flere handlinger på samme knapp'
+    image='/img/component-guidelines/button/button-ex2-dont.png'
+  />
+</Stack>
+<br />
+
+### Èn hovedhandling per side
+
+Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
+
+<Stack direction="row" style={{
+  justifyContent: 'unset',
+  alignItems: 'unset'
+}}>
+  <Do
+    description='Det skal kun være én primærknapp per side'
+    image='/img/component-guidelines/button/button-ex3-do.png'
+  />
+
+  <Dont
+    description='Vi skal ikke ha flere primærknapper på samme side'
+    image='/img/component-guidelines/button/button-ex3-dont.png'
+  />
+</Stack>
+<br />
+
+### Bruk samme farge på knappene i en gruppe
+
+Vi skal holde oss til samme fargevariant for en gruppe knapper.
+
+<Stack direction="row" style={{
+  justifyContent: 'unset',
+  alignItems: 'unset'
+}}>
+  <Do
+    description='Knappene i en gruppe skal ha samme farge'
+    image='/img/component-guidelines/button/button-ex4-do.png'
+  />
+
+  <Dont
+    description='Ulike farger i en gruppe kan være forvirrende'
+    image='/img/component-guidelines/button/button-ex4-dont.png'
+  />
+</Stack>
+<br />
+
+### Ett ikon per knapp
+
+Vi skal holde oss til ett ikon per knapp.
+
+<Stack direction="row" style={{
+  justifyContent: 'left',
+  alignItems: 'left'
+}}>
+  <Do
+    description='Bruk kun ett ikon'
+    image='/img/component-guidelines/button/button-ex1-do.png'
+  />
+
+  <Dont
+    description='Ikke bruk flere ikoner på samme knapp'
+    image='/img/component-guidelines/button/button-ex1-dont.png'
+  />
+</Stack>
+<br />
+
+<br />
+
+## Tekst i komponenten
+
+Knappeteksten skal være kort, helst ikke mer enn to, maks. tre ord. Tenk på at knappen tydelig skal beskrive hva som skjer når brukeren klikker på den.
+
+### Unngå å blande skrivemåter
+
+Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikke bruk bare store bokstaver (all caps), det er vanskeligere å lese.
+
+<Stack direction="row" style={{
+  justifyContent: 'left',
+  alignItems: 'left'
+}}>
+  <Do
+    description='Bruk stor forbokstav og små bokstaver på resten av ordene'
+    image='/img/component-guidelines/button/button-ex5-do.png'
+  />
+
+  <Dont
+    description='Ikke bland skrivemåter'
+    image='/img/component-guidelines/button/button-ex5-dont.png'
+  />
+</Stack>
+<br />
+<br />
+<br />
+<br />
+
+[^1]: [Deaktiverte tilstander](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) - Aksel.
+
+<br />
+<br />
+<br />
+<br />

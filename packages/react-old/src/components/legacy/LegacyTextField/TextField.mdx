@@ -1,0 +1,75 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+
+import { Information } from '@doc-components';
+
+import * as TextFieldStories from './TextField.stories';
+
+<Meta of={TextFieldStories} />
+
+# LegacyTextField
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Textfield](/?path=/docs/komponenter-textfield--docs) komponent.**'
+/>
+
+`TextField` er en tekstboks som tar imot korte, rene tekster uten linjeskift. For lengre tekster, bruk `TextArea`.
+
+## Bruk
+
+```tsx
+import { LegacyTextField } from '@digdir/design-system-react';
+
+<LegacyTextField {...props} />;
+```
+
+## Props
+
+<Primary />
+<Controls />
+
+## Eksempler
+
+### Standard
+
+<Canvas>
+  <Story of={TextFieldStories.Standard} />
+</Canvas>
+
+### Tallformat
+
+Egenskapen `formatting` kan brukes til å gi tekstfeltet spesielle formater, som prefiks og tusenskilletegn.
+
+<Canvas>
+  <Story of={TextFieldStories.Tallformat} />
+</Canvas>
+
+### Med feil
+
+<Canvas>
+  <Story of={TextFieldStories.MedFeil} />
+</Canvas>
+
+### Skrivebeskyttet
+
+<Canvas>
+  <Story of={TextFieldStories.Skrivebeskyttet} />
+</Canvas>
+
+### Bekreftelsesvisning
+
+<Canvas>
+  <Story of={TextFieldStories.Bekreftelsesvisning} />
+</Canvas>
+
+### Deaktivert
+
+<Canvas>
+  <Story of={TextFieldStories.Deaktivert} />
+</Canvas>
+
+### Viser antall tegn igjen å skrive
+
+<Canvas>
+  <Story of={TextFieldStories.AntallTegnIgjenASkrive} />
+</Canvas>

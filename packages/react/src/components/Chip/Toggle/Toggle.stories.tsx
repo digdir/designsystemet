@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ToggleChip } from './';
+import { ToggleChip } from './Toggle';
 
 const meta: Meta<typeof ToggleChip> = {
-  title: 'Felles/Chip/Toggle',
+  title: 'Komponenter/Chip/Toggle',
   component: ToggleChip,
 };
 
@@ -14,8 +14,9 @@ type Story = StoryObj<typeof ToggleChip>;
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'small',
+    size: 'md',
     selected: false,
     checkmark: false,
+    disabled: false,
   },
 };

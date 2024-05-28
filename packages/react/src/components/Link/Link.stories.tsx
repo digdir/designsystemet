@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
@@ -9,7 +8,7 @@ import { Link } from '.';
 type Story = StoryObj<typeof Link>;
 
 export default {
-  title: 'Felles/Link',
+  title: 'Komponenter/Link',
   component: Link,
   parameters: {
     status: {
@@ -69,7 +68,7 @@ export const InText: StoryFn<typeof Link> = () => (
 export const LongLink: StoryFn<typeof Link> = () => (
   <Paragraph>
     <Link href='https://designsystem.no/'>
-      Dette er en linke som brekker over flere linjer
+      Dette er en lenke som brekker over flere linjer
     </Link>
   </Paragraph>
 );

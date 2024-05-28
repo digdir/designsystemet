@@ -1,0 +1,171 @@
+@layer fds.radio {
+  .fds-radio {
+    --fds-radio-size: 1.75rem;
+    --fds-radio-focus-border-width: 3px;
+    --fds-radio-background: var(--fds-semantic-background-default);
+    --fds-radio-border-color: var(--fds-semantic-border-input-default);
+    --fds-radio-border__hover: 0 0 0 var(--fds-spacing-2) var(--fds-semantic-surface-info-subtle-hover);
+
+    display: grid;
+  }
+
+  .fds-radio:has(.fds-radio__label) {
+    grid-template-columns: var(--fds-radio-size) auto;
+    gap: var(--fds-spacing-2);
+  }
+
+  /* Radio */
+  .fds-radio__input {
+    position: relative;
+    width: var(--fds-radio-size);
+    height: var(--fds-radio-size);
+    z-index: 1;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0;
+    align-self: center;
+    box-shadow: inset 0 0 0 2px var(--fds-radio-border-color);
+    background: var(--fds-radio-background);
+    border-radius: 50%;
+  }
+
+  .fds-radio__input::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 2.75rem;
+    height: 2.75rem;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+    border-radius: var(--fds-border_radius-medium);
+  }
+
+  .fds-radio__label {
+    min-height: var(--fds-sizing-10);
+    min-width: min-content;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-1);
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .fds-radio__description {
+    margin-top: calc(var(--fds-spacing-3) * -1);
+    color: var(--fds-semantic-text-neutral-subtle);
+    grid-column: 2;
+  }
+
+  .fds-radio--disabled > .fds-radio__input,
+  .fds-radio--disabled > .fds-radio__label,
+  .fds-radio--disabled > .fds-radio__input::before {
+    cursor: not-allowed;
+  }
+
+  .fds-radio--disabled > .fds-radio__label,
+  .fds-radio--disabled > .fds-radio__input,
+  .fds-radio--disabled > .fds-radio__description {
+    opacity: var(--fds-opacity-disabled);
+  }
+
+  .fds-radio--readonly > .fds-radio__input,
+  .fds-radio--readonly > .fds-radio__label,
+  .fds-radio--readonly > .fds-radio__input::before {
+    cursor: default;
+  }
+
+  .fds-radio__input:focus-visible {
+    outline-offset: 0;
+    outline: var(--fds-radio-focus-border-width) solid var(--fds-semantic-border-focus-outline);
+    box-shadow:
+      inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
+      inset 0 0 0 6px var(--fds-radio-background);
+  }
+
+  .fds-radio__input:checked {
+    --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+    background: var(--fds-radio-border-color);
+  }
+
+  .fds-radio--readonly > .fds-radio__input {
+    --fds-radio-border-color: var(--fds-semantic-border-neutral-subtle);
+    --fds-radio-background: var(--fds-semantic-surface-neutral-subtle);
+  }
+
+  .fds-radio__input:checked:not(:focus-visible) {
+    box-shadow:
+      inset 0 0 0 2px var(--fds-radio-border-color),
+      inset 0 0 0 6px var(--fds-radio-background);
+  }
+
+  .fds-radio--readonly > .fds-radio__input:checked {
+    background: var(--fds-semantic-border-neutral-default);
+  }
+
+  .fds-radio--error > .fds-radio__input:not(:disabled, :focus-visible) {
+    --fds-radio-border-color: var(--fds-semantic-border-danger-default);
+  }
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering
+    "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
+  @media (hover: hover) and (pointer: fine) {
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__label:hover,
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover + .fds-radio__label {
+      color: var(--fds-semantic-text-action-hover);
+    }
+
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:not(:checked) {
+      --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 2px var(--fds-radio-border-color);
+    }
+
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:checked {
+      --fds-radio-border-color: var(--fds-semantic-border-input-hover);
+
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 2px var(--fds-radio-border-color),
+        inset 0 0 0 6px var(--fds-radio-background);
+    }
+
+    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:checked:focus-visible {
+      box-shadow:
+        var(--fds-radio-border__hover),
+        inset 0 0 0 var(--fds-radio-focus-border-width) var(--fds-semantic-border-focus-boxshadow),
+        inset 0 0 0 6px var(--fds-radio-background);
+    }
+  }
+
+  /** Sizing */
+
+  .fds-radio--sm {
+    --fds-radio-size: var(--fds-sizing-5);
+
+    min-height: var(--fds-sizing-10);
+  }
+
+  .fds-radio--md {
+    --fds-radio-size: var(--fds-sizing-6);
+
+    min-height: var(--fds-sizing-11);
+  }
+
+  .fds-radio--lg {
+    --fds-radio-size: var(--fds-sizing-7);
+
+    min-height: var(--fds-sizing-12);
+  }
+
+  .fds-radio-group--horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: var(--fds-spacing-6);
+  }
+}

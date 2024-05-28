@@ -1,27 +1,34 @@
-import type { ReactNode } from 'react';
-import React, { forwardRef, type ButtonHTMLAttributes } from 'react';
-import cn from 'classnames';
+import { forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import cl from 'clsx/lite';
+import { Slot } from '@radix-ui/react-slot';
 
-import { SvgIcon } from '../SvgIcon';
-import utilityClasses from '../../utils/utility.module.css';
+import { getSize } from '../../utilities/getSize';
 
-import classes from './Button.module.css';
+type OldButtonSizes = 'small' | 'medium' | 'large';
 
 export type ButtonProps = {
   /** Specify which variant to use */
-  variant?: 'filled' | 'outline' | 'quiet';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use */
-  color?: 'first' | 'second' | 'success' | 'danger' | 'inverted';
-  /** Size */
-  size?: 'small' | 'medium' | 'large';
+  color?: 'first' | 'second' | 'success' | 'danger';
+  /**
+   * Size
+   * @default `md`
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
-  /** Enabled dashed border for `outline` variant */
-  dashedBorder?: boolean;
-  /** Icon to be rendered in the button. This should be a React component that renders an SVG object. */
-  icon?: ReactNode;
-  /** Icon position inside Button */
-  iconPlacement?: 'right' | 'left';
+  /** Toggle icon only styling, pass icon as children
+   * @default false
+   */
+  icon?: boolean;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -32,49 +39,39 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       color = 'first',
-      variant = 'filled',
-      size = 'medium',
+      variant = 'primary',
       fullWidth = false,
-      dashedBorder = false,
-      iconPlacement = 'left',
-      icon,
+      icon = false,
       type = 'button',
       className,
-      ...restHTMLProps
+      asChild,
+      ...rest
     },
     ref,
-  ) => (
-    <button
-      {...restHTMLProps}
-      ref={ref}
-      className={cn(
-        classes.button,
-        utilityClasses.focusable,
-        classes[size],
-        classes[variant],
-        classes[color],
-        { [classes.fullWidth]: fullWidth },
-        { [classes.dashedBorder]: dashedBorder },
-        { [classes.onlyIcon]: !children && icon },
-        className,
-      )}
-      type={type}
-    >
-      {icon && iconPlacement === 'left' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-      {children}
-      {icon && iconPlacement === 'right' && (
-        <SvgIcon
-          svgIconComponent={icon}
-          className={classes.icon}
-        />
-      )}
-    </button>
-  ),
+  ) => {
+    const size = getSize(rest.size || 'md');
+    const Component = asChild ? Slot : 'button';
+
+    return (
+      <Component
+        ref={ref}
+        type={type}
+        className={cl(
+          'fds-btn',
+          `fds-focus`,
+          `fds-btn--${size}`,
+          `fds-btn--${variant}`,
+          `fds-btn--${color}`,
+          fullWidth && 'fds-btn--full-width',
+          icon && 'fds-btn--icon-only',
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </Component>
+    );
+  },
 );
 
 Button.displayName = 'Button';

@@ -1,35 +1,71 @@
-import type { HTMLProps } from 'react';
-import React from 'react';
-import cn from 'classnames';
+import * as React from 'react';
+import cl from 'clsx/lite';
 
-import classes from './Table.module.css';
-import type { ChangeHandler, TableContextType } from './utils';
-import { TableContext } from './utils';
+import { Paragraph } from '../Typography';
+import { getSize } from '../../utilities/getSize';
 
-export interface TableProps<T = unknown>
-  extends Omit<HTMLProps<HTMLTableElement>, 'onChange'> {
-  children?: React.ReactNode;
-  selectRows?: boolean;
-  onChange?: ChangeHandler<T>;
-  selectedValue?: T;
-}
+type OldTableSizes = 'small' | 'medium' | 'large';
 
-export function Table<T>({
-  children,
-  selectRows = false,
-  onChange,
-  selectedValue,
-  className,
-  ...tableProps
-}: TableProps<T>) {
-  const context: TableContextType<T> = { selectRows, onChange, selectedValue };
+export type TableProps = {
+  /**
+   * The size of the table
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldTableSizes;
+  /**
+   * If true, the table will have zebra striping
+   * @default false
+   */
+  zebra?: boolean;
+  /**
+   * If true, the table will have a sticky header
+   * @default false
+   */
+  stickyHeader?: boolean;
+  /**
+   * If true, the table will have a rounded border
+   * @default false
+   */
+  border?: boolean;
+} & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
-  return (
-    <table
-      {...tableProps}
-      className={cn(classes.table, className)}
-    >
-      <TableContext.Provider value={context}>{children}</TableContext.Provider>
-    </table>
-  );
-}
+export const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  (
+    {
+      zebra = false,
+      stickyHeader = false,
+      border = false,
+      className,
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
+    const size = getSize(rest.size || 'md') as TableProps['size'];
+
+    return (
+      <Paragraph
+        asChild
+        size={size}
+      >
+        <table
+          ref={ref}
+          className={cl(
+            'fds-table',
+            `fds-table--${size}`,
+            zebra && 'fds-table--zebra',
+            stickyHeader && 'fds-table--sticky-header',
+            border && 'fds-table--border',
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </table>
+      </Paragraph>
+    );
+  },
+);
+
+Table.displayName = 'Table';

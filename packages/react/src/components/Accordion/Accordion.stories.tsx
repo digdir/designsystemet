@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button, Link } from '../';
@@ -6,7 +6,7 @@ import { Button, Link } from '../';
 import { Accordion } from '.';
 
 export default {
-  title: 'Felles/Accordion',
+  title: 'Komponenter/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',

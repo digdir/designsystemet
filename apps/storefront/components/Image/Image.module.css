@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  max-width: var(--media-max-width);
+  margin: var(--fds-spacing-7) 0;
+  border-radius: var(--fds-border_radius-medium);
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-4);
+}
+
+.container .img {
+  box-shadow: none;
+  margin: 0;
+}
+
+.boxShadow .img {
+  box-shadow: var(--fds-shadow-medium);
+}
+
+.container .caption {
+  color: var(--fds-semantic-text-neutral-subtle);
+  font: var(--fds-typography-paragraph-small);
+}

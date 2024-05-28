@@ -1,0 +1,90 @@
+.banner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--fds-spacing-14);
+  padding-top: var(--fds-spacing-4);
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: white;
+  gap: var(--fds-spacing-4);
+}
+
+.ingress {
+  text-align: center;
+  max-width: 780px;
+  text-wrap: balance;
+  font: var(--fds-typography-ingress-small);
+}
+
+.icon {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  transform: rotate(45deg);
+  background-color: var(--fds-brand-alt2-600);
+  border-radius: 3px;
+  margin-top: var(--fds-spacing-2);
+  margin-bottom: var(--fds-spacing-2);
+}
+
+.icon > svg {
+  transform: rotate(-45deg);
+  fill: white;
+  color: white;
+}
+
+.red {
+  background-color: var(--fds-brand-alt1-600);
+}
+
+.yellow {
+  background-color: var(--fds-brand-alt2-600);
+}
+
+.blue {
+  background-color: var(--fds-brand-alt3-600);
+}
+
+.logo {
+  position: absolute;
+  left: 5%;
+  height: 200%;
+  bottom: -100%;
+  fill: transparent;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: var(--grid-padding);
+    align-items: flex-start;
+  }
+
+  .icon {
+    margin-left: var(--fds-spacing-2);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .ingress {
+    text-align: left;
+  }
+}
+
+.logo.svg-red path {
+  fill: var(--fds-brand-alt1-600);
+}
+
+.logo.svg-yellow path {
+  fill: var(--fds-brand-alt2-600);
+}
+
+.logo.svg-blue path {
+  fill: var(--fds-brand-alt3-600);
+}

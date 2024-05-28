@@ -1,7 +1,6 @@
-import React from 'react';
-
-import utilityClasses from '../../utils/utility.module.css';
 import { ErrorMessage } from '../Typography';
+
+import type { TextfieldProps } from './Textfield';
 
 export type CharacterLimitProps = Omit<
   CharacterCounterProps,
@@ -20,7 +19,7 @@ type CharacterCounterProps = {
   /** The ID of the element that describes the maximum character limit for accessibility purposes. */
   id: string;
   /** Text size */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: TextfieldProps['size'];
 };
 
 const defaultLabel: CharacterCounterProps['label'] = (count) =>
@@ -44,19 +43,22 @@ export const CharacterCounter = ({
   return (
     <>
       <span
-        className={utilityClasses.visuallyHidden}
+        className={`fds-sr-only`}
         id={id}
       >
         {srLabel}
       </span>
       <ErrorMessage
-        as='span'
+        asChild
         size={size}
-        aria-live={hasExceededLimit ? 'polite' : 'off'}
         error={hasExceededLimit}
       >
-        {label(currentCount)}
+        <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
+          {label(currentCount)}
+        </span>
       </ErrorMessage>
     </>
   );
 };
+
+CharacterCounter.displayName = 'CharacterCounter';

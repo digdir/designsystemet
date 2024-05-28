@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Ingress } from './';
 
 const meta: Meta<typeof Ingress> = {
-  title: 'felles/Typography/Ingress',
+  title: 'Komponenter/Typography/Ingress',
   component: Ingress,
 };
 
@@ -16,6 +16,6 @@ export const Preview: Story = {
     children:
       'Her kan du registrere nye virksomheter, som for eksempel enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap, samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan bruke denne tjenesten.',
     spacing: false,
-    size: 'medium',
+    size: 'md',
   },
 };

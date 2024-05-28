@@ -1,5 +1,10 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useState } from 'react';
+import { createContext, forwardRef, useState } from 'react';
+import cl from 'clsx/lite';
+
+import { getSize } from '../../utilities/getSize';
+
+type OldTabSize = 'small' | 'medium' | 'large';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -8,8 +13,12 @@ export type TabsProps = {
   defaultValue?: string;
   /** Callback with selected `TabItem` `value` */
   onChange?: (value: string) => void;
-  /** Changes items size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes items size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldTabSize;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 /** `Tabs` component.
@@ -31,16 +40,14 @@ export type TabsContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size?: 'small' | 'medium' | 'large';
 };
 
 export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  (
-    { children, value, defaultValue, onChange, size = 'medium', ...rest },
-    ref,
-  ) => {
+  ({ children, value, defaultValue, className, onChange, ...rest }, ref) => {
+    const size = getSize(rest.size || 'md');
+
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined
@@ -60,12 +67,12 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           value,
           defaultValue,
           onChange: onValueChange,
-          size,
         }}
       >
         <div
-          {...rest}
+          className={cl(`fds-tabs--${size}`, className)}
           ref={ref}
+          {...rest}
         >
           {children}
         </div>
@@ -73,3 +80,5 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     );
   },
 );
+
+Tabs.displayName = 'Tabs';

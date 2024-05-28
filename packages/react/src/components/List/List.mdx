@@ -1,25 +1,57 @@
-import { Meta, Primary, Controls } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
+
+import { ListHeading } from './ListHeading';
 import * as ListStories from './List.stories';
 
 <Meta of={ListStories} />
 
 # List
 
-<Information text='altinn' />
-## Props
+Liste brukes for å vise en liste med elementer. Listen kan inneholde både tekst, linker og ikoner.
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du `List`
+
+Lista kan være både ordnet og uordnet, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+
+`List.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
 
 ```tsx
-import { List, ListItem } from '@digdir/design-system-react';
+import { List } from '@digdir/designsystemet-react';
 
-<List>
-  <ListItem>List Item 1</ListItem>
-  <ListItem>List Item 2</ListItem>
-  <ListItem>List Item 3</ListItem>
-</List>;
+<List.Root>
+  <List.Heading>Heading</List.Heading>
+  <List.Ordered>
+    <List.Item>Item</List.Item>
+  </List.Ordered>
+</List.Root>;
 ```
+
+## Eksempler på bruk av `List`
+
+### Uten heading
+
+Dersom du bruker `List.Heading` så legger vi automatisk på `aria-labelledby` på `List.Heading` og `List.Ordered/Unordered`
+for å gi skjermlesere beskjed om at `List.Heading` er en heading for `List`.
+
+Dersom du ikke legger til en heading kommer vi ikke til å legge til `aria-labelledby`.
+
+<Canvas of={ListStories.WithoutHeading} />
+
+### Avansert
+
+Du kan nøste lister så mye du vil, og stylingen vil tilpasse seg automatisk. Dette er browserens default styling.
+
+<Canvas of={ListStories.Advanced} />
+
+### List of links
+
+`List` kan bli brukt til å lage en liste med linker, og i eksempelet under har vi skrudd av list-stylingen på `List.Unordered`.
+
+<Canvas of={ListStories.LinkList} />
+
+## `List.Heading`
+
+<ArgTypes of={ListHeading} />

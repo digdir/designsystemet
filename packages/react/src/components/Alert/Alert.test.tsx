@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { Heading } from '../';
@@ -31,7 +30,7 @@ describe('Alert', () => {
       <Alert severity='info'>
         <Heading
           level={1}
-          size='xsmall'
+          size='xs'
         >
           Alert me!
         </Heading>
@@ -50,7 +49,7 @@ describe('Alert', () => {
       >
         <Heading
           level={1}
-          size='xsmall'
+          size='xs'
         >
           Alert me!
         </Heading>

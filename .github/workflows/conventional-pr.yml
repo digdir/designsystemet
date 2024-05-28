@@ -12,7 +12,7 @@ jobs:
   lint-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # check for the most recent release: https://github.com/CondeNast/conventional-pull-request-action/releases
       - uses: CondeNast/conventional-pull-request-action@v0.2.0
         env:

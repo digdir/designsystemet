@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -56,7 +55,7 @@ describe('AccordionHeader Rendering', () => {
   });
 
   test('should have onHeaderClick callback', async () => {
-    const onHeaderClickMock = jest.fn();
+    const onHeaderClickMock = vi.fn();
     render(<TestComponent onHeaderClick={onHeaderClickMock} />);
 
     const accordionHeaderButton = screen.getByRole('button');

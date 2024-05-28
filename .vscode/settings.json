@@ -5,15 +5,28 @@
   "editor.formatOnSave": true,
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cssvar.files": [
-    "node_modules/@altinn/figma-design-tokens/dist/tokens.css",
-    "packages/tokens/brand/digdir/tokens.css"
-  ],
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cssvar.files": ["packages/theme/brand/digdir/tokens.css"],
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "jest.jestCommandLine": "yarn test",
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
-  }
+  },
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "mdx"
+  ],
+  "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
+  "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
+  "cSpell.language": "en,nb",
+  "cSpell.ignorePaths": ["**/node_modules/**", "**/package.json", "yarn.lock"],
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext"]
 }

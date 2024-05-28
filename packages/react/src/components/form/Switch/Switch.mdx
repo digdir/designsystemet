@@ -1,21 +1,20 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../../docs-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
 import * as SwitchStories from './Switch.stories';
 
 <Meta of={SwitchStories} />
 
 # Switch
 
+Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg.
+
 <Primary />
 <Controls />
 
-## Bruk
-
-<Information text='token' />
+## Slik bruker du `Switch`
 
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Switch, Fieldset } from '@digdir/design-system-react';
+import { Switch, Fieldset } from '@digdir/designsystemet-react';
 
 <Fieldset legend='Profil instillinger'>
   <Switch>Mørk modus</Switch>
@@ -24,44 +23,61 @@ import { Switch, Fieldset } from '@digdir/design-system-react';
 
 ## Gruppering
 
-Bruker [Fieldset](/docs/felles-fieldset--docs) til gruppering.
+Bruker [Fieldset](/docs/komponenter-fieldset--docs) til gruppering.
 
-<Canvas of={SwitchStories.fullWidth} />
+<Canvas of={SwitchStories.FullWidth} />
 
 ### Høyrejustert
 
-Bruk `position="right"` til å plassere `Switch` på høyre side av label dersom
-du har behov for det.
+Bruk `position="right"` til å plassere `Switch` på høyre side av ledeteksten hvis
+du trenger det.
 
-<Canvas of={SwitchStories.fullWidthRight} />
+<Canvas of={SwitchStories.FullWidthRight} />
 
-## Retningslinjer
+## Retningslinjer for `Switch`
 
-Vi bruker switch når brukeren skal kunne slå noe av eller på. Switch er den digitale varianten av av/på-brytere, for eksempel en lysbryter. Et eksempel fra telefon er Flymodus av/på.
+`Switch` skal være et valg mellom to alternativer. Vi bruker `Switch` til innstillinger, ikke i skjema.
 
-Switch skal være et valg mellom to alternativer som utelukker hverandre, og komponenten skal alltid ha et standardvalg.
+<br />
+Passer til å
 
-Du skal bare bruke switch når resultatet av valget umiddelbart blir synlig for brukeren. Det betyr at brukeren ikke må bekrefte eller lagre for å se resultatet av å ha trykket på bryteren.
+- aktivere eller deaktivere funksjoner/tilstander med en gang
+- slå varsler av
+  og på
+- endre visning av innhold mellom to kategorier, for eksempel se
+  statistikk per måned eller år
 
-Ikke bruk Switch
+  <br />
+Passer ikke til
 
-- til filtrering av innhold. Bruk heller Chips
-- hvis det er flere alternativer enn to
-- hvis brukeren må velge «lagre» for å kunne se endringen. Bruk heller en Checkbox eller to Radio button.
+- å gi flere alternativer enn to
+- å bruke i stedet for avmerkingsboks (checkbox) eller alternativknapper (radio buttons) i et skjema
+- situasjoner der brukerne må lagre informasjon før en endring får effekt
 
-### Tekst i komponenten
+<br />
+Bruk heller
 
-Teksten til en switch må være kort og presis. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Bruk nøkkelord i teksten, og unngå å formulere label som et spørsmål.
+- avmerkingsbokser (checkboxes) hvis du skal tilby brukerne flere valg, der de skal velge ett eller flere alternativer
+- alternativknapper (radio buttons) hvis brukerne skal få flere valg, men bare skal velge ett
+- chip til å filtrere innhold
 
-### Eksempel:
+<br />
+## Tekst i komponenten
+
+Teksten til en switch må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Unngå tekst med flere ord og mellomrom.
+
+### Eksempel
 
 - ⚠️ Ikke: Skru på flymodus (Av/på)
 - 👍 Riktig: Flymodus (Av/på)
+  <br />
 
 ### Plassering av tekst
 
-Som regel er det høyre som er den beste plasseringen for tekst, unntaket er når switch er fast plassert på høyre side i grensesnittet er det best at teksten er på venstre side. Slik at alle knappene blir justert etter samme vertikale linje.
+Som regel er det høyre som er den beste plasseringen for tekst, unntaket er når `Switch` er fast plassert på høyre side i grensesnittet er det best at teksten er på venstre side. Slik at alle knappene blir justert etter samme vertikale linje.
 
-Semantisk struktur
+<br />
+## Tilgjengelighet
 
-Universell utforming spesielt for denne komponenten
+Sørg for at komponenten oppfører seg konsekvent gjennom en hel tjeneste.
+Hvis du har en gruppe med flere vippebrytere, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem også, ikke formulerer dem forskjellig.

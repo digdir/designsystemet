@@ -1,0 +1,21 @@
+import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
+
+import * as SpinnerStories from './Spinner.stories';
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+<Primary />
+<Controls />
+
+Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 6 sekunder.
+Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
+
+## Størrelser
+
+<Canvas of={SpinnerStories.Sizes} />
+
+## Varianter
+
+<Canvas of={SpinnerStories.Variants} />

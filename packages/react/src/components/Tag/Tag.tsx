@@ -1,53 +1,58 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
-import cn from 'classnames';
+import { forwardRef } from 'react';
+import cl from 'clsx/lite';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
+import { getSize } from '../../utilities/getSize';
 
-import classes from './Tag.module.css';
-
-type BrandColor = 'first' | 'second' | 'third';
-type VariantColor = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
-type Size = Exclude<ParagraphProps['size'], 'large'>;
+type Size = Exclude<ParagraphProps['size'], 'xsmall' | 'xs'>;
 
 export type TagProps = {
-  /** Color of the tag */
-  color?: BrandColor | VariantColor;
-  /** Size of the tag */
+  /** Color of the tag
+   * @default neutral
+   */
+  color?:
+    | 'neutral'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'info'
+    | 'first'
+    | 'second'
+    | 'third';
+  /**
+   * Size of the tag
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
   size?: Size;
-  /** Variant of the tag */
-  variant?: 'filled' | 'outlined';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  (
-    {
-      children,
-      color = 'neutral',
-      size = 'medium',
-      variant = 'filled',
-      className,
-      ...restHTMLProps
-    },
-    ref,
-  ) => {
+  ({ children, color = 'neutral', className, ...rest }, ref) => {
+    const size = getSize(rest.size || 'md') as Size;
+
     return (
       <Paragraph
-        as='span'
+        asChild
         size={size}
-        {...restHTMLProps}
-        className={cn(
-          classes.tag,
-          classes[color],
-          classes[size],
-          classes[variant],
-          className,
-        )}
-        ref={ref}
       >
-        {children}
+        <span
+          className={cl(
+            'fds-tag',
+            `fds-tag--${color}`,
+            `fds-tag--${size}`,
+            className,
+          )}
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </span>
       </Paragraph>
     );
   },
 );
+
+Tag.displayName = 'Tag';

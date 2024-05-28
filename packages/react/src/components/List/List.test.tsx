@@ -1,39 +1,96 @@
-import React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './List';
-import { List } from './List';
-import { ListItem } from './ListItem';
+import type { ListProps } from './ListRoot';
+
+import { List } from '.';
 
 const render = (props: Partial<ListProps> = {}) => {
   const allProps: ListProps = {
     children: (
-      <>
-        <ListItem>Test</ListItem>
-      </>
+      <List.Unordered>
+        <List.Item>Test</List.Item>
+      </List.Unordered>
     ),
     ...props,
   };
-  return renderRtl(<List {...allProps} />);
+  return renderRtl(<List.Root {...allProps} />);
 };
 
-const borderStyles: ListProps['borderStyle'][] = [undefined, 'solid'];
-
 describe('List', () => {
-  it.each(borderStyles)(
-    'Renders a list with solid border when "borderStyle" is %s',
-    (borderStyle) => {
-      render({ borderStyle });
-      const list = screen.getByRole('list');
-      expect(list).toHaveClass('solid');
-      expect(list).not.toHaveClass('dashed');
-    },
-  );
+  it('Renders the list', () => {
+    render();
 
-  it('Renders a list with dashed border when "borderStyle" is dashed', () => {
-    render({ borderStyle: 'dashed' });
-    const list = screen.getByRole('list');
-    expect(list).toHaveClass('dashed');
-    expect(list).not.toHaveClass('solid');
+    expect(screen.getByRole('list')).toBeInTheDocument();
+  });
+
+  it('Renders an unordered list', () => {
+    render();
+    const list = document.querySelector('ul');
+    expect(list).toBeInTheDocument();
+  });
+
+  it('Renders an ordered list', () => {
+    render({
+      children: (
+        <List.Ordered>
+          <List.Item>Test</List.Item>
+        </List.Ordered>
+      ),
+    });
+    const list = document.querySelector('ol');
+    expect(list).toBeInTheDocument();
+  });
+
+  it('Renders the children', () => {
+    render();
+    expect(screen.getByText('Test')).toBeInTheDocument();
+  });
+
+  it('should have the passed size', () => {
+    render({ size: 'lg' });
+    expect(screen.getByRole('list')).toHaveClass('fds-list--lg');
+  });
+
+  it('should have the passed heading', () => {
+    render({
+      children: <List.Heading>Heading</List.Heading>,
+    });
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+  });
+
+  it('should have aria-labelledby when heading is passed', () => {
+    render({
+      children: (
+        <>
+          <List.Heading>Heading</List.Heading>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
+    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
+  });
+  it('should have aria-labelledby when heading is with passed id', () => {
+    render({
+      children: (
+        <>
+          <List.Heading id='passedId'>Heading</List.Heading>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
+    expect(screen.getByRole('list')).toHaveAttribute(
+      'aria-labelledby',
+      'passedId',
+    );
+  });
+  it('should not have aria-labelledby when heading is missing', () => {
+    render({
+      children: (
+        <>
+          <List.Ordered></List.Ordered>
+        </>
+      ),
+    });
+    expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
   });
 });

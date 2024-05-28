@@ -1,17 +1,17 @@
 import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useId, useState } from 'react';
-import cn from 'classnames';
+import { createContext, forwardRef, useId, useState } from 'react';
+import cl from 'clsx/lite';
 
-import { RovingTabindexRoot } from '../../utility-components/RovingTabIndex';
-
-import classes from './ToggleGroup.module.css';
+import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
+import { getSize } from '../../utilities/getSize';
+import type { ButtonProps } from '../Button';
 
 export type ToggleGroupContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
   name?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonProps['size'];
 };
 
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
@@ -25,8 +25,12 @@ export type ToggleGroupProps = {
   onChange?: (value: string) => void;
   /** Form element name */
   name?: string;
-  /** Changes items size and paddings */
-  size?: 'small' | 'medium' | 'large';
+  /**
+   * Changes items size and paddings
+   * @default md
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: ToggleGroupContextProps['size'];
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /** `ToggleGroup` component.
@@ -41,9 +45,11 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
-    { children, value, defaultValue, onChange, size = 'medium', name, ...rest },
+    { children, value, defaultValue, onChange, name, className, ...rest },
     ref,
   ) => {
+    const size = getSize(rest.size || 'md') as ToggleGroupContextProps['size'];
+
     const nameId = useId();
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
@@ -61,9 +67,9 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        {...rest}
-        className={cn(classes.toggleGroupContainer, rest.className)}
+        className={cl('fds-togglegroup', className)}
         ref={ref}
+        {...rest}
       >
         <ToggleGroupContext.Provider
           value={{
@@ -74,16 +80,28 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             size,
           }}
         >
+          {name && (
+            <input
+              className='fds-togglegroup__input'
+              name={name}
+              value={value}
+            />
+          )}
           <RovingTabindexRoot
-            as='div'
+            asChild
             valueId={value}
-            className={classes.groupContent}
-            role='radiogroup'
           >
-            {children}
+            <div
+              className='fds-togglegroup__content'
+              role='radiogroup'
+            >
+              {children}
+            </div>
           </RovingTabindexRoot>
         </ToggleGroupContext.Provider>
       </div>
     );
   },
 );
+
+ToggleGroup.displayName = 'ToggleGroup';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -79,5 +78,22 @@ describe('HelpText', () => {
       await user.keyboard('[Escape]');
     });
     expect(screen.queryByText('Help')).not.toBeInTheDocument();
+  });
+
+  it('should have `aria-expanded` set to `false` when closed', () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
+
+    expect(helpTextTrigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('should have `aria-expanded` set to `true` when open', async () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
+
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(helpTextTrigger).toHaveAttribute('aria-expanded', 'true');
   });
 });

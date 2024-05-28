@@ -1,8 +1,6 @@
-import cn from 'classnames';
-import type { HTMLAttributes } from 'react';
-import React, { createContext, forwardRef, useState, useId } from 'react';
-
-import classes from '../Accordion.module.css';
+import cl from 'clsx/lite';
+import type { ReactNode, HTMLAttributes } from 'react';
+import { createContext, forwardRef, useState, useId } from 'react';
 
 export type AccordionItemProps = {
   /**
@@ -14,7 +12,7 @@ export type AccordionItemProps = {
   /**  Defaults the accordion to open if not controlled */
   defaultOpen?: boolean;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
-  children: React.ReactNode;
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type AccordionItemContextProps = {
@@ -33,9 +31,11 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     return (
       <div
-        className={cn(classes.item, className, {
-          [classes.open]: open ?? internalOpen,
-        })}
+        className={cl(
+          'fds-accordion__item',
+          (open ?? internalOpen) && 'fds-accordion__item--open',
+          className,
+        )}
         ref={ref}
         {...rest}
       >
@@ -56,3 +56,5 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     );
   },
 );
+
+AccordionItem.displayName = 'AccordionItem';

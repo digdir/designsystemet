@@ -1,35 +1,42 @@
 {
-  "name": "@digdir/design-system-react",
-  "version": "0.29.0",
+  "name": "@digdir/designsystemet-react",
+  "version": "0.62.0",
+  "description": "React components for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": "https://github.com/digdir/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
+  "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
-  "license": "MIT",
-  "author": "Digdir Designsystem Team",
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && yarn run copy-files && rollup -c --bundleConfigAsCjs",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build",
-    "copy-files": "copyfiles -u 1 ./src/**/*.css ./tsc-build/"
+    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "react": ">=18.3.1",
+    "react-dom": ">=18.3.1"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/design-system-tokens": "^0.8.0",
-    "@floating-ui/react": "0.25.2",
-    "@navikt/aksel-icons": "^3.2.4",
-    "react-number-format": "5.2.2"
+    "@floating-ui/react": "0.26.12",
+    "@navikt/aksel-icons": "^5.12.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-virtual": "^3.2.0"
   },
   "devDependencies": {
-    "copyfiles": "^2.4.1"
+    "copyfiles": "^2.4.1",
+    "esno": "^4.7.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.12.1",
+    "typescript": "^5.4.2"
   }
 }

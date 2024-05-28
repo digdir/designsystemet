@@ -1,0 +1,34 @@
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as TableStories from './Table.stories';
+
+import { TableHeaderCell } from './';
+
+<Meta of={TableStories} />
+
+# Table
+
+<Primary />
+<Controls />
+
+# Sortering
+
+`TableHeaderCell` har ein `sortable` prop som kan brukast for å visa at rada er sortberbar.
+Du sender inn `sort` prop til `TableHeaderCell` for å indikere at rada er sortert på den.
+Bruk `onSortClick` prop for å handtere klikk på sorterbare rader.
+
+<Canvas of={TableStories.Sortable} />
+
+# Sticky header
+
+<Canvas of={TableStories.StickyHeader} />
+
+# Med form elementer
+
+Du kan legge inn form elementer i ein tabell, men du må håndtere logikken sjølv.
+
+<Canvas of={TableStories.WithFormElements} />
+
+## `TableHeaderCell` Props
+
+<ArgTypes of={TableHeaderCell} />

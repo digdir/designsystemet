@@ -1,54 +1,52 @@
 import type { LabelHTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import { forwardRef } from 'react';
+import cl from 'clsx/lite';
+import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
+import { getSize } from '../../../utilities/getSize';
 
-import classes from './Label.module.css';
-
+type OldLabelSizes = 'xsmall' | 'small' | 'medium' | 'large';
 type FontWeights = 'regular' | 'medium' | 'semibold';
 
 export type LabelProps = {
-  /** Changes text sizing */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /**
+   * Changes text sizing
+   *
+   * @default md
+   * @note `xsmall`, `small`, `medium`, `large` is deprecated
+   */
+  size?: 'xs' | 'sm' | 'md' | 'lg' | OldLabelSizes;
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset */
   weight?: FontWeights;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
-const fontWeightsClasses: Record<FontWeights, string> = {
-  regular: classes.regularWeight,
-  medium: classes.mediumWeight,
-  semibold: classes.semiboldWeight,
-};
-
 /** Use `Label` for labels. */
-export const Label: OverridableComponent<LabelProps, HTMLLabelElement> =
-  forwardRef(
-    (
-      {
-        className,
-        size = 'medium',
-        spacing,
-        as: Component = 'label',
-        weight = 'medium',
-        ...rest
-      },
-      ref,
-    ) => {
-      return (
-        <Component
-          {...rest}
-          ref={ref}
-          className={cl(
-            classes.label,
-            classes[size],
-            spacing && classes.spacing,
-            weight && [fontWeightsClasses[weight]],
-            className,
-          )}
-        />
-      );
-    },
-  );
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  ({ className, spacing, weight = 'medium', asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'label';
+    const size = getSize(rest.size || 'md');
+
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          'fds-label',
+          `fds-label--${size}`,
+          spacing && 'fds-label--spacing',
+          weight && `fds-label--${weight}-weight`,
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);
+
+Label.displayName = 'Label';

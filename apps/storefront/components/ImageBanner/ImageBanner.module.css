@@ -1,0 +1,154 @@
+.section {
+  position: relative;
+  margin: 110px 0;
+}
+
+.blue {
+  background-color: var(--fds-brand-alt3-300);
+}
+
+.red {
+  background-color: var(--fds-brand-alt1-300);
+}
+
+.yellow {
+  background-color: var(--fds-brand-alt2-300);
+}
+
+.grey {
+  background-color: var(--fds-semantic-background-subtle);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.imgContainer {
+  flex-basis: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smallImage {
+  flex-basis: 400px;
+}
+
+.textContainer {
+  flex-basis: 400px;
+  flex-grow: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font: var(--fds-typography-heading-large);
+  margin-bottom: var(--fds-spacing-4);
+}
+
+.tag {
+  margin-bottom: 8px;
+}
+
+.desc {
+  font: var(--fds-typography-paragraph-medium);
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.7em;
+  font-size: 20px;
+}
+
+.img {
+  width: 100%;
+  display: block;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+}
+
+.region {
+  color: inherit;
+}
+
+.button {
+  height: 48px;
+  padding: 0 var(--fds-spacing-4);
+  border: 1px solid #c0c0c0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.1s all;
+  color: var(--fds-semantic-text-neutral-default) !important;
+  text-decoration: none;
+}
+
+.buttons {
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fds-spacing-5);
+  margin-top: var(--fds-spacing-5);
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+  }
+}
+
+.button:hover {
+  background-color: #dbedff;
+}
+
+.button svg {
+  margin-right: var(--fds-spacing-2);
+  color: #1e2b3c;
+}
+
+.button img {
+  height: 20px;
+  margin-right: var(--fds-spacing-2);
+  border-radius: 50%;
+}
+
+.link {
+  text-underline-offset: 6px;
+  color: var(--fds-semantic-text-neutral-default);
+  display: flex;
+  align-items: center;
+  margin-top: var(--fds-spacing-5);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.link svg {
+  margin-right: var(--fds-spacing-2);
+  color: var(--fds-semantic-text-neutral-default);
+}
+
+.fallbackImg {
+  display: none;
+}
+
+@media (prefers-reduced-motion) {
+  .fallbackImg {
+    display: block;
+    width: 100%;
+  }
+
+  .video {
+    display: none;
+  }
+}

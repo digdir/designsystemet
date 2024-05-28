@@ -1,5 +1,8 @@
-import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../../docs-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Do, Dont, Stack } from '@doc-components';
+
+import * as TableStories from '../../Table/Table.stories';
+
 import * as CheckboxStories from './Checkbox.stories';
 import * as CheckboxGroupStories from './Group/Group.stories';
 
@@ -7,18 +10,20 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-`Checkbox` er en knapp som skal brukes i kombinasjon med andre Checkboxknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Checkbox.Group` hvis man har behov for Checkboxknapper.
+Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
+
+Vær oppmerksom på:
+
+- Ikke bruk `Checkbox` når det er flere enn 7 alternativer.
+- Vis listen vertikalt, da er det lettere for brukeren å lese alternativene kjapt.
 
 <Primary />
 <Controls />
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun en gang i appen din.
-import { Checkbox } from '@digdir/design-system-react';
+import { Checkbox } from '@digdir/designsystemet-react';
 
 <Checkbox.Group legend='What would your D&D party like to eat?'>
   <Checkbox value='elfsalad'>Wood Elf forest salad</Checkbox>
@@ -28,37 +33,135 @@ import { Checkbox } from '@digdir/design-system-react';
 </Checkbox.Group>;
 ```
 
-### Enkel
+## Eksempler
 
-`Checkbox` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
+<br />
 
-<Canvas of={CheckboxStories.Single} />
+### Kun ett valg
 
-## `Checkbox.Group`
+Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
 
-Bruk `Checkbox.Group` for gruppering av Checkboxknapper.
+<Canvas of={CheckboxGroupStories.OneOption} />
+
+### Ubestemt
+
+Bruk `indeterminate` til å signalisere at en eller flere sjekkbokser er markert i gruppen.
+
+<Canvas of={TableStories.WithFormElements} />
+
+### Checkbox.Group
+
+Bruk `Checkbox.Group` for gruppering av flere valg.
 
 <Canvas of={CheckboxGroupStories.Preview} />
 <Controls of={CheckboxGroupStories.Preview} />
 
-### Feilmelding
+#### Feilmelding
 
 Bruk `error` på `Checkbox.Group` for å vise feilmelding.
 
-Her må `Checkbox.Group` brukes da den aktivere korrekt stil og sørger for at innholdet har riktige attributter mtp. tilgjengelighet.
+Her må du bruke `Checkbox.Group` for å gjøre innholdet tilgjengelig og aktivere riktig stil.
 
 <Canvas of={CheckboxGroupStories.Error} />
 
-### Kontrollert
+#### Kontrollert
 
 Bruk `value` på `Checkbox.Group` for å kontrollere verdiene selv.
 
 <Canvas of={CheckboxGroupStories.Controlled} />
 
-### Readonly
+#### Readonly
+
+Ikke bruk `readOnly` med mindre det er absolutt umulig å gjøre noe annet.
 
 <Canvas of={CheckboxGroupStories.ReadOnly} />
 
-### Disabled
+#### Disabled
+
+Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 <Canvas of={CheckboxGroupStories.Disabled} />
+
+<br />
+
+## Retningslinjer for checkbox
+
+- Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller `Combobox` (kommer snart).
+
+- Ikke bruk `Checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
+  <br />
+
+### Plasering
+
+`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
+
+<Stack
+  direction='row'
+  style={{
+    justifyContent: 'unset',
+    alignItems: 'unset',
+  }}
+>
+  <Do
+    description='Plasser checkboxes vertikalt, slik at listen blir lettere å lese. '
+    image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
+  />
+  <Dont
+    description='Du bør unngå å plassere checkboxes i flere kolonner.'
+    image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
+  />
+</Stack>
+
+<br />
+
+Det finnes noen unntak:
+
+- I tabeller, for eksempel i et spørreskjema.
+- For å velge rader i tabeller.
+
+I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+
+<br />
+
+## Tekst i checkbox
+
+Plasser både (`legend`) og eventuell hjelpetekst (`description`) brukeren trenger for å forstå oppgaven, før listen med avmerkingsbokser kommer. I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer.
+
+- Ledeteksten (`label`) til hver boks må beskrive alternativet.
+- Ledeteksten skal stå til høyre for boksen. Hvis det er nødvendig, kan du ha en ekstra beskrivelse under ledeteksten.
+- Ledeteksten skal alltid ha stor forbokstav.
+
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når ledeteksten
+er en setning, kan du skrive den i du-form og svaralternativene i jeg-form.
+
+### Lag logisk sammenheng mellom forklaringen og svaralternativene
+
+Brukeren skal kunne lese hvert svaralternativ som en logisk respons på forklaringen over boksene.
+
+Eksempel på riktig logisk sammenheng:
+
+<Canvas of={CheckboxGroupStories.ContentEx1} />
+
+### Gi svaralternativene samme språklige form
+
+Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge deler.
+
+**Enten:**
+
+<Canvas of={CheckboxGroupStories.ContentEx2} />
+
+**Eller:**
+
+<Canvas of={CheckboxGroupStories.ContentEx3} />
+
+<br />
+
+## Tilgjengelighet
+
+Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke `Tab` på tastaturet. Det skal være mulig å merke og fjerne avmerking ved å trykke `Space`.
+
+### Bruk label
+
+`Checkbox` skal alltid ha en label. Bruker du ledetekst fra en annen plass, husk da å bruke `aria-label` eller `aria-labelledby` (Se kode under).
+
+<Canvas of={CheckboxStories.Single} />

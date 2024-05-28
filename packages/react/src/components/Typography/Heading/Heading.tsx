@@ -1,42 +1,56 @@
 import type { ElementType, HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
-import cl from 'classnames';
+import { forwardRef } from 'react';
+import cl from 'clsx/lite';
+import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../../types/OverridableComponent';
+import { getSize } from '../../../utilities/getSize';
 
-import classes from './Heading.module.css';
+type OldHeadingSizes =
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | '2xlarge';
 
 export type HeadingProps = {
   /** Heading level. This will translate into any h1-6 level unless `as` is defined */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  /** Changes text sizing */
-  size: 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  /** Changes text sizing
+   * @default 'xl'
+   *
+   * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `3xlarge` is deprecated
+   */
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | OldHeadingSizes;
   /** Adds margin-bottom */
   spacing?: boolean;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
 
 /** Use `Heading` to render h1-6 elements with heading text styles.  */
-export const Heading: OverridableComponent<HeadingProps, HTMLHeadingElement> =
-  forwardRef(
-    (
-      { level = 1, size = 'xlarge', spacing = false, className, as, ...rest },
-      ref,
-    ) => {
-      const Component = as ?? (`h${level ?? 1}` as ElementType);
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+  ({ level = 1, spacing = false, className, asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : (`h${level ?? 1}` as ElementType);
+    const size = getSize(rest.size || 'xl');
 
-      return (
-        <Component
-          {...rest}
-          ref={ref}
-          className={cl(
-            classes.heading,
-            classes[size],
-            {
-              [classes.spacing]: spacing,
-            },
-            className,
-          )}
-        />
-      );
-    },
-  );
+    return (
+      <Component
+        ref={ref}
+        className={cl(
+          'fds-heading',
+          `fds-heading--${size}`,
+          spacing && 'fds-heading--spacing',
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);
+
+Heading.displayName = 'Heading';

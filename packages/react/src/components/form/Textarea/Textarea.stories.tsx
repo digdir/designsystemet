@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
@@ -8,7 +8,7 @@ import { Textarea } from '.';
 type Story = StoryObj<typeof Textarea>;
 
 export default {
-  title: 'Felles/Textarea',
+  title: 'Komponenter/Textarea',
   component: Textarea,
 } as Meta;
 
@@ -17,9 +17,10 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    size: 'medium',
+    size: 'md',
     description: '',
     error: '',
+    hideLabel: false,
     cols: 40,
   },
 };

@@ -1,0 +1,16 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as HelpTextStories from './HelpText.stories.tsx';
+
+<Meta of={HelpTextStories} />
+
+# HelpText
+
+<Primary />
+<Controls />
+
+## Portal
+
+Aktiver `portal` dersom innholdet blir klippet av andre elementer for at `Popover` skal vises øverst.
+
+<Canvas of={HelpTextStories.Portal} />

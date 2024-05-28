@@ -1,0 +1,81 @@
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
+
+import { Information } from '@doc-components';
+
+import { exampleRows } from './ExampleData';
+import classes from './Table.stories.module.css';
+
+import { LegacyResponsiveTable } from './';
+
+<Meta
+  title='Avviklet/LegacyResponsiveTable'
+  component={LegacyResponsiveTable}
+/>
+
+export const Template = () => (
+  <LegacyResponsiveTable
+    config={{
+      rows: exampleRows,
+      headers: {
+        caseNum: 'Søknadsnr.',
+        product: 'Produkt',
+        status: 'Status',
+        image: 'Bilde',
+      },
+      showColumnsMobile: ['product', 'caseNum', 'status'],
+      columnSort: {
+        onSortChange: ({ column, next, previous }) =>
+          console.log(
+            'Change sort of column ' +
+              column +
+              ' to ' +
+              next +
+              ' from ' +
+              previous,
+          ),
+        sortable: ['caseNum', 'product'],
+        currentlySortedColumn: 'caseNum',
+        currentDirection: 'notActive',
+      },
+      renderCell: {
+        image: (imageObj) => (
+          <img
+            className={classes.img}
+            src={imageObj.src}
+            alt={imageObj.alt}
+          />
+        ),
+      },
+      rowSelection: {
+        onSelectionChange: (row) => console.log('Select row:', row),
+        selectedValue: {
+          caseNum: 20220408,
+          product: 'Bil',
+          status: 'Registert',
+          image: {
+            src: 'https://search.patentstyret.no/onlinedb_files_ds/Pictures/2022/5/11/310547.jpg',
+            alt: 'Bil',
+          },
+        },
+      },
+      footer: 'Lorem ipsum dolor sit amet.',
+    }}
+  />
+);
+
+# LegacyResponsiveTable
+
+<Information
+  text='deprecated'
+  description='**Responsive table vil ikke bli erstattet av en ny komponent.**'
+/>
+
+## Eksempel
+
+<Canvas>
+  <Story name='Eksempel'>{Template.bind({})}</Story>
+</Canvas>
+
+## Egenskaper
+
+<ArgTypes story='Eksempel' />

@@ -1,0 +1,113 @@
+.tokens {
+  margin-top: 32px;
+}
+
+.toggleGroup {
+  width: 52%;
+  margin-bottom: 32px;
+  margin-top: -4px;
+}
+
+.toggleGroup > span {
+  height: 58px;
+  border-radius: 4px;
+}
+
+.toggleGroup > button {
+  margin: 5px;
+  height: 44px;
+  border-radius: 4px;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.group {
+  margin-bottom: 4rem;
+}
+
+.section2 {
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-column-gap: 16px;
+  grid-row-gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--fds-spacing-3);
+}
+
+.cards2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tokens h3 {
+  font-size: 24px;
+  display: inline-flex;
+  padding-bottom: 5px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  align-items: flex-start;
+  align-items: center;
+  display: flex;
+  gap: var(--fds-spacing-3);
+}
+
+.preview {
+  border-radius: 50%;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: 15px;
+  color: #636363;
+}
+
+.copy {
+  height: 50px;
+  padding: 11px 7px 11px 15px;
+  border-radius: 4px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 100px;
+}
+
+.package {
+  display: flex;
+  align-items: center;
+  gap: var(--fds-spacing-2);
+  font-weight: 600;
+}
+
+.npmShield {
+  margin: auto;
+}
+
+@media (max-width: 576px) {
+  .copy {
+    width: 100%;
+  }
+}

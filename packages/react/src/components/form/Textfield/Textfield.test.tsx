@@ -1,5 +1,4 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { TextfieldProps } from './Textfield';
@@ -82,7 +81,7 @@ describe('Textfield', () => {
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
-    const onBlur = jest.fn();
+    const onBlur = vi.fn();
     render({ onBlur });
     const element = screen.getByRole('textbox');
     await user.click(element);
@@ -92,7 +91,7 @@ describe('Textfield', () => {
   });
 
   it('Triggers onChange event for each keystroke', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const data = 'test';
     render({ onChange });
     const element = screen.getByRole('textbox');
@@ -138,7 +137,7 @@ const render = (props: Partial<TextfieldProps> = {}) =>
   renderRtl(
     <Textfield
       {...{
-        onChange: jest.fn(),
+        onChange: vi.fn(),
         ...props,
       }}
     />,

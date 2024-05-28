@@ -3,7 +3,8 @@ import { useContext } from 'react';
 
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
-import { FieldsetContext } from '../Fieldset';
+import { FieldsetContext } from '../Fieldset/FieldsetContext';
+import { getSize } from '../../../utilities/getSize';
 
 import type { TextareaProps } from './Textarea';
 
@@ -20,10 +21,13 @@ export const useTextarea: UseTextarea = (props) => {
   const fieldset = useContext(FieldsetContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'textarea');
 
+  const size =
+    fieldset?.size ?? (getSize(props.size ?? 'md') as FormField['size']);
+
   return {
     ...rest,
     readOnly,
-    size: fieldset?.size ?? props.size,
+    size,
     textareaProps: {
       ...inputProps,
       readOnly,

@@ -1,15 +1,9 @@
-import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
-import cn from 'classnames';
-
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
-import classes from './Link.module.css';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
+import cl from 'clsx/lite';
+import { Slot } from '@radix-ui/react-slot';
 
 export type LinkProps = {
-  /** The component to render the link as. */
-  as?: ElementType;
-
   /** The content to display inside the link. */
   children: ReactNode;
 
@@ -21,20 +15,27 @@ export type LinkProps = {
 
   /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
   href?: string;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const Link: OverridableComponent<LinkProps, HTMLAnchorElement> =
-  forwardRef(
-    (
-      { as: Component = 'a', children, className, inverted = false, ...rest },
-      ref,
-    ) => (
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ asChild, children, className, inverted = false, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'a';
+
+    return (
       <Component
-        {...rest}
-        className={cn(classes.link, inverted && classes.inverted, className)}
+        className={cl('fds-link', inverted && 'fds-link--inverted', className)}
         ref={ref}
+        {...rest}
       >
         {children}
       </Component>
-    ),
-  );
+    );
+  },
+);
+
+Link.displayName = 'Link';

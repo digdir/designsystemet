@@ -1,0 +1,72 @@
+@layer fds.alert {
+  .fds-alert {
+    --fds-alert-border-color: var(--fds-semantic-border-info-default);
+    --fds-alert-border-radius: var(--fds-border_radius-medium);
+    --fds-alert-color: var(--fds-semantic-text-neutral-default);
+    --fds-alert-icon-color: var(--fds-alert-border-color);
+    --fds-alert-icon-size: var(--fds-sizing-7);
+    --fds-alert-background: var(--fds-semantic-surface-info-subtle);
+    --fds-alert-padding: var(--fds-spacing-6);
+
+    border: 1px solid var(--fds-alert-border-color);
+    border-radius: var(--fds-alert-border-radius);
+    background: var(--fds-alert-background);
+    color: var(--fds-alert-color);
+    padding: var(--fds-alert-padding);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min-content auto;
+    gap: var(--fds-spacing-2);
+    font: var(--fds-typography-paragraph-medium);
+  }
+
+  .fds-alert__icon {
+    height: var(--fds-alert-icon-size);
+    width: var(--fds-alert-icon-size);
+    color: var(--fds-alert-icon-color);
+  }
+
+  .fds-alert__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fds-alert--info {
+    --fds-alert-border-color: var(--fds-semantic-border-info-default);
+    --fds-alert-background: var(--fds-semantic-surface-info-subtle);
+  }
+
+  .fds-alert--warning {
+    --fds-alert-border-color: var(--fds-semantic-border-warning-default);
+    --fds-alert-background: var(--fds-semantic-surface-warning-subtle);
+  }
+
+  .fds-alert--success {
+    --fds-alert-border-color: var(--fds-semantic-border-success-default);
+    --fds-alert-background: var(--fds-semantic-surface-success-subtle);
+  }
+
+  .fds-alert--danger {
+    --fds-alert-border-color: var(--fds-semantic-border-danger-default);
+    --fds-alert-background: var(--fds-semantic-surface-danger-subtle);
+  }
+
+  .fds-alert--sm {
+    --fds-alert-padding: var(--fds-spacing-5);
+    --fds-alert-icon-size: var(--fds-sizing-6);
+  }
+
+  .fds-alert--md {
+    --fds-alert-padding: var(--fds-spacing-6);
+    --fds-alert-icon-size: var(--fds-sizing-7);
+  }
+
+  .fds-alert--lg {
+    --fds-alert-padding: var(--fds-spacing-7);
+    --fds-alert-icon-size: var(--fds-sizing-8);
+  }
+
+  .fds-alert--elevated {
+    box-shadow: var(--fds-shadow-small);
+  }
+}

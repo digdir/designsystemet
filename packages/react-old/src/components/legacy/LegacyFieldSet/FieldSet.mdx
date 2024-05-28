@@ -1,0 +1,52 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import { Information } from '@doc-components';
+
+import * as FieldSetStories from './FieldSet.stories';
+
+<Meta of={FieldSetStories} />
+
+# LegacyFieldSet
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av ny [Fieldset](/?path=/docs/komponenter-fieldset--docs) komponent.**'
+/>
+
+`LegacyFieldSet` brukes til å gruppere innhold i et skjema.
+
+## Egenskaper
+
+Det er mulig å legge til en tittel (`legend`) og en beskrivelse (`description`).
+Man kan legge til en hjelpetekst som vises ved aktivering av hjelpetekst-knappen
+ved å bruke `helpText`-attributten. Man kan også vise en feilmelding relatert til
+gruppen ved å bruke `error`-attributten. Setter man `disabled` til `true`, vil alle
+feltene i gruppen bli deaktivert.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import React from 'react';
+import '@altinn/figma-design-tokens/dist/tokens.css'; // Importeres kun én gang i din applikasjon
+import { LegacyFieldSet, TextField } from '@digdir/design-system-react';
+
+export const Component = () => (
+  <LegacyFieldSet
+    legend='Personlig informasjon'
+    description='Oppgi navn og fødselsdato.'
+  >
+    <TextField label='Navn' />
+    <TextField
+      type='date'
+      label='Fødselsdato'
+    />
+  </LegacyFieldSet>
+);
+```
+
+## Eksempel
+
+<Canvas of={FieldSetStories.Eksempel} />

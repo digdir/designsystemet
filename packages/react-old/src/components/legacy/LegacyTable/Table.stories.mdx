@@ -1,0 +1,76 @@
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
+
+import { Information } from '@doc-components';
+
+import { exampleRows } from './ExampleData';
+import classes from './Table.stories.module.css';
+
+import {
+  LegacyTable,
+  LegacyTableBody,
+  LegacyTableCell,
+  LegacyTableFooter,
+  LegacyTableHeader,
+  LegacyTableRow,
+} from './';
+
+<Meta
+  title='Avviklet/LegacyTable'
+  component={LegacyTable}
+/>
+
+export const Template = (args) => (
+  <LegacyTable {...args}>
+    <LegacyTableHeader>
+      <LegacyTableRow>
+        <LegacyTableCell>Søknadsnr.</LegacyTableCell>
+        <LegacyTableCell>Produkt</LegacyTableCell>
+        <LegacyTableCell>Status</LegacyTableCell>
+        <LegacyTableCell>Bilde</LegacyTableCell>
+      </LegacyTableRow>
+    </LegacyTableHeader>
+    <LegacyTableBody>
+      {exampleRows.map((row) => (
+        <LegacyTableRow
+          key={row.caseNum}
+          rowData={{ caseNum: row.caseNum }}
+        >
+          <LegacyTableCell>{row.caseNum}</LegacyTableCell>
+          <LegacyTableCell>{row.product}</LegacyTableCell>
+          <LegacyTableCell>{row.status}</LegacyTableCell>
+          <LegacyTableCell>
+            <img
+              src={row.image.src}
+              alt={row.image.alt}
+              className={classes.img}
+            />
+          </LegacyTableCell>
+        </LegacyTableRow>
+      ))}
+    </LegacyTableBody>
+    <LegacyTableFooter>
+      <LegacyTableRow>
+        <LegacyTableCell colSpan={5}>
+          Lorem ipsum dolor sit amet.
+        </LegacyTableCell>
+      </LegacyTableRow>
+    </LegacyTableFooter>
+  </LegacyTable>
+);
+
+# LegacyTable
+
+<Information
+  text='deprecated'
+  description='**Denne komponenten er erstattet av [Table](/?path=/docs/komponenter-table--docs) komponent.**'
+/>
+
+## Eksempel
+
+<Canvas>
+  <Story name='Eksempel'>{Template.bind({})}</Story>
+</Canvas>
+
+## Egenskaper
+
+<ArgTypes story='Eksempel' />

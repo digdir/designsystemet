@@ -1,16 +1,15 @@
 import type { HTMLAttributes } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import {
   InformationSquareFillIcon,
   CheckmarkCircleFillIcon,
   XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import cn from 'classnames';
+import cl from 'clsx/lite';
 
 import { Paragraph } from '..';
-
-import classes from './Alert.module.css';
+import { getSize } from '../../utilities/getSize';
 
 const icons: Record<
   Severity,
@@ -30,6 +29,8 @@ const icons: Record<
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
+type OldAlertSizes = 'small' | 'medium' | 'large';
+
 export type AlertProps = {
   /** Sets color & icon according to severity */
   severity?: Severity;
@@ -40,36 +41,52 @@ export type AlertProps = {
    * Use this to inform screenreaders of severity.
    *  Defaults to Norwegian. */
   iconTitle?: string;
+  /**
+   * Sets the size of the alert.
+   * Does not affect font size.
+   *
+   * @default md
+   *
+   * @note `small`, `medium`, `large` is deprecated
+   */
+  size?: 'sm' | 'md' | 'lg' | OldAlertSizes;
 } & HTMLAttributes<HTMLDivElement>;
-
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  ({ severity = 'info', elevated, iconTitle, children, ...rest }, ref) => {
+  (
+    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    ref,
+  ) => {
+    const size = getSize(rest.size || 'md') as AlertProps['size'];
     const { Icon, title } = icons[severity];
 
     return (
       <div
-        {...rest}
         ref={ref}
-        className={cn(
-          classes.alert,
-          classes[severity],
-          elevated && classes.elevated,
-          rest.className,
+        className={cl(
+          'fds-alert',
+          `fds-alert--${size}`,
+          `fds-alert--${severity}`,
+          elevated && `fds-alert--elevated`,
+          className,
         )}
+        {...rest}
       >
         <>
           <Icon
             title={iconTitle || title}
-            className={classes.icon}
+            className='fds-alert__icon'
           />
           <Paragraph
-            as='span'
-            className={classes.content}
+            asChild
+            size={size}
+            className='fds-alert__content'
           >
-            {children}
+            <span>{children}</span>
           </Paragraph>
         </>
       </div>
     );
   },
 );
+
+Alert.displayName = 'Alert';

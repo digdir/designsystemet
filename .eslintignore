@@ -1,7 +1,9 @@
 node_modules
 **/*.d.ts*
 dist/
-coverage/
-storybook-static/
-packages/tokens/brand/**/*
+packages/theme/brand/**/*
+packages/react-old/**/*
 tsc-build/
+.storybook
+
+apps/theme/**

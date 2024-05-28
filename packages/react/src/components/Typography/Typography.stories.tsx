@@ -1,10 +1,9 @@
-import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Paragraph, Heading, Ingress } from './';
 
 const meta: Meta = {
-  title: 'felles/Typography',
+  title: 'Komponenter/Typography',
 };
 
 export default meta;
@@ -13,7 +12,7 @@ export const EksempelTekst: StoryFn = () => (
   <>
     <Heading
       level={1}
-      size='xlarge'
+      size='xl'
       spacing
     >
       Samordnet registermelding (H1)
@@ -28,7 +27,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={2}
-      size='large'
+      size='lg'
       spacing
     >
       Når skal du bruke skjemaet? (H2)
@@ -44,14 +43,14 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={3}
-      size='medium'
+      size='md'
       spacing
     >
       Signering (H3)
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
@@ -61,7 +60,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={4}
-      size='small'
+      size='sm'
       spacing
     >
       Krav om rolle for signering (H4)
@@ -77,14 +76,14 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={5}
-      size='xsmall'
+      size='xs'
       spacing
     >
       Personvern (H5)
     </Heading>
 
     <Paragraph
-      short
+      variant='short'
       spacing
     >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi

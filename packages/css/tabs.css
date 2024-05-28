@@ -1,0 +1,103 @@
+@layer fds.tabs {
+  .fds-tabs__tab {
+    --fds-tabs__tab-bottom-border-color: transparent;
+
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: var(--fds-spacing-1);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--fds-semantic-text-neutral-subtle);
+    position: relative;
+  }
+
+  .fds-tabs__content {
+    padding: var(--fds-spacing-5);
+  }
+
+  .fds-tabs--sm .fds-tabs__tab,
+  .fds-tabs--sm .fds-tabs__content {
+    font: var(--fds-typography-paragraph-short-small);
+  }
+
+  .fds-tabs--md .fds-tabs__tab,
+  .fds-tabs--md .fds-tabs__content {
+    font: var(--fds-typography-paragraph-short-medium);
+  }
+
+  .fds-tabs--lg .fds-tabs__tab,
+  .fds-tabs--lg .fds-tabs__content {
+    font: var(--fds-typography-paragraph-short-large);
+  }
+
+  .fds-tabs--sm .fds-tabs__tab {
+    padding: var(--fds-spacing-2) var(--fds-spacing-4);
+  }
+
+  .fds-tabs--md .fds-tabs__tab {
+    padding: var(--fds-spacing-3) var(--fds-spacing-5);
+  }
+
+  .fds-tabs--lg .fds-tabs__tab {
+    padding: var(--fds-spacing-4) var(--fds-spacing-6);
+  }
+
+  .fds-tabs--sm .fds-tabs__content {
+    padding: var(--fds-spacing-4);
+  }
+
+  .fds-tabs--md .fds-tabs__content {
+    padding: var(--fds-spacing-5);
+  }
+
+  .fds-tabs--lg .fds-tabs__content {
+    padding: var(--fds-spacing-6);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .fds-tabs__tab:hover:not([aria-selected='true']) {
+      --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-neutral-subtle);
+
+      color: var(--fds-semantic-text-neutral-default);
+    }
+  }
+
+  .fds-tabs__tab[aria-selected='true'] {
+    --fds-tabs__tab-bottom-border-color: var(--fds-semantic-border-action-default);
+
+    color: var(--fds-semantic-text-action-default);
+  }
+
+  .fds-tabs__tab:focus-visible {
+    --fds-tabs__tab-bottom-border-color: var(--fds-semantic-text-neutral-default);
+
+    background: var(--fds-semantic-border-focus-outline);
+    color: var(--fds-semantic-text-neutral-default);
+    outline: none;
+  }
+
+  .fds-tabs__tab::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    border-radius: var(--fds-border_radius-full);
+    background-color: var(--fds-tabs__tab-bottom-border-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .fds-tabs__tablist {
+    display: flex;
+    flex-direction: row;
+    border-bottom: var(--fds-border_width-default) solid var(--fds-semantic-border-neutral-subtle);
+  }
+}

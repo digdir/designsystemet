@@ -1,5 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Information } from '../../../../../docs-components';
+
 import * as LinkStories from './Link.stories';
 
 <Meta of={LinkStories} />
@@ -13,11 +13,8 @@ import * as LinkStories from './Link.stories';
 
 ## Bruk
 
-<Information text='token' />
-
 ```tsx
-import '@digdir/design-system-tokens/brand/altinn/tokens.css'; // Importeres kun én gang i din applikasjon
-import { Link } from '@digdir/design-system-react';
+import { Link } from '@digdir/designsystemet-react';
 
 <Link href='https://designsystemet.no/'>Gå til designsystemet</Link>;
 ```
@@ -37,3 +34,9 @@ En lenke brukes ofte som en del av en tekst. Teksten som omfattes av lenken bør
 ### Flere linjer
 
 <Canvas of={LinkStories.LongLink} />
+
+## Kjente mangler
+
+I Safari vil ikke understreken på lenken bli tykkere når man har musepekeren over den. For å lese mer om dette, følg lenken under:
+
+- https://bugs.webkit.org/show_bug.cgi?id=230083

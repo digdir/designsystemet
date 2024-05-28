@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip } from './index';
+import { Chip } from '.';
 
 type Story = StoryObj<typeof Chip.Toggle>;
 
 export default {
-  title: 'Felles/Chip',
+  title: 'Komponenter/Chip',
   component: Chip.Toggle,
 } as Meta;
 
 export const Preview: Story = {
   args: {
     children: 'Nynorsk',
-    size: 'small',
+    size: 'md',
     selected: false,
     checkmark: false,
   },

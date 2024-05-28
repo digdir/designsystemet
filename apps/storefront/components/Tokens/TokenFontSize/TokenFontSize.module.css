@@ -1,0 +1,10 @@
+.font {
+  min-height: 81px;
+  width: 120px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cfeaff;
+  font-family: 'Inter', sans-serif;
+}
