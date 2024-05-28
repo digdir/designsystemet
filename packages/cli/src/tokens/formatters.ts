@@ -62,8 +62,7 @@ export const scopedReferenceVariables: Format = {
     return fileHeader({ file }).then(
       (fileHeaderText) => `
 ${fileHeaderText}
-${selector} {
-${referenceTokens.length > 0 ? referenceTokens.join('\n') : ''}
+${selector} {${referenceTokens.length > 0 ? referenceTokens.join('\n') : ''}
 ${tokens.join('\n')}
 }
       `,

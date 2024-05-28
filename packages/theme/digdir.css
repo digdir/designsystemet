@@ -1,2 +1,2 @@
-@import url('./brand/digdir/dark.css') (prefers-color-scheme: dark);
-@import url('./brand/digdir/light.css') (prefers-color-scheme: light);
+@import url('./brand/digdir/light.css');
+@import url('./brand/digdir/dark.css');

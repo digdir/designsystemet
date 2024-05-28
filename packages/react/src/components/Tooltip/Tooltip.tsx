@@ -144,6 +144,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               ref={refs.setFloating}
               style={{ ...floatingStyles, ...animationStyles, ...style }}
               role='tooltip'
+              data-ds-theme='dark'
               {...getFloatingProps({
                 className: cl(
                   'fds-tooltip',

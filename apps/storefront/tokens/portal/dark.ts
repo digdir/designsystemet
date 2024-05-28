@@ -4,15 +4,15 @@
 
 export const  color = [
   {
-    value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#031d30",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#031d30"
     },
-    name: "--fds-global-blue-1",
+    name: "--ds-global-blue-1",
     attributes: {},
     path: [
       "global",
@@ -21,15 +21,15 @@ export const  color = [
     ]
   },
   {
-    value: "#edf5fa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#032540",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#edf5fa",
-      type: "color"
+      type: "color",
+      value: "#032540"
     },
-    name: "--fds-global-blue-2",
+    name: "--ds-global-blue-2",
     attributes: {},
     path: [
       "global",
@@ -38,185 +38,185 @@ export const  color = [
     ]
   },
   {
-    value: "#d3e5f4",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#d3e5f4",
-      type: "color"
-    },
-    name: "--fds-global-blue-3",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "3"
-    ]
-  },
-  {
-    value: "#b7d5ed",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#b7d5ed",
-      type: "color"
-    },
-    name: "--fds-global-blue-4",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "4"
-    ]
-  },
-  {
-    value: "#9bc5e5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#9bc5e5",
-      type: "color"
-    },
-    name: "--fds-global-blue-5",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "5"
-    ]
-  },
-  {
-    value: "#aacee9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#aacee9",
-      type: "color"
-    },
-    name: "--fds-global-blue-6",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "6"
-    ]
-  },
-  {
-    value: "#4291ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#4291ce",
-      type: "color"
-    },
-    name: "--fds-global-blue-7",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "7"
-    ]
-  },
-  {
-    value: "#075490",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#075490",
-      type: "color"
-    },
-    name: "--fds-global-blue-8",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "8"
-    ]
-  },
-  {
-    value: "#0c72c1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#0c72c1",
-      type: "color"
-    },
-    name: "--fds-global-blue-9",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "9"
-    ]
-  },
-  {
-    value: "#085c9c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#085c9c",
-      type: "color"
-    },
-    name: "--fds-global-blue-10",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "10"
-    ]
-  },
-  {
-    value: "#064678",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#064678",
-      type: "color"
-    },
-    name: "--fds-global-blue-11",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "11"
-    ]
-  },
-  {
-    value: "#075089",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#075089",
-      type: "color"
-    },
-    name: "--fds-global-blue-12",
-    attributes: {},
-    path: [
-      "global",
-      "blue",
-      "12"
-    ]
-  },
-  {
     value: "#043256",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#043256",
-      type: "color"
+      type: "color",
+      value: "#043256"
     },
-    name: "--fds-global-blue-13",
+    name: "--ds-global-blue-3",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#053c65",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#053c65"
+    },
+    name: "--ds-global-blue-4",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#064474",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#064474"
+    },
+    name: "--ds-global-blue-5",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#075490",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#075490"
+    },
+    name: "--ds-global-blue-6",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0a6dba",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#0a6dba"
+    },
+    name: "--ds-global-blue-7",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3389cb",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#3389cb"
+    },
+    name: "--ds-global-blue-8",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0c72c1",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#0c72c1"
+    },
+    name: "--ds-global-blue-9",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#085c9c",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#085c9c"
+    },
+    name: "--ds-global-blue-10",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#064678",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#064678"
+    },
+    name: "--ds-global-blue-11",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#78b1dc",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#78b1dc"
+    },
+    name: "--ds-global-blue-12",
+    attributes: {},
+    path: [
+      "global",
+      "blue",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#aed0ea",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#aed0ea"
+    },
+    name: "--ds-global-blue-13",
     attributes: {},
     path: [
       "global",
@@ -225,15 +225,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f6fafd",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#f6fafd",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f6fafd",
-      type: "color"
+      type: "color",
+      value: "#f6fafd"
     },
-    name: "--fds-global-blue-contrast-1",
+    name: "--ds-global-blue-contrast-1",
     attributes: {},
     path: [
       "global",
@@ -242,15 +242,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f3f8fc",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#f3f8fc",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f3f8fc",
-      type: "color"
+      type: "color",
+      value: "#f3f8fc"
     },
-    name: "--fds-global-blue-contrast-2",
+    name: "--ds-global-blue-contrast-2",
     attributes: {},
     path: [
       "global",
@@ -259,15 +259,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fcfefc",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#022106",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fcfefc",
-      type: "color"
+      type: "color",
+      value: "#022106"
     },
-    name: "--fds-global-green-1",
+    name: "--ds-global-green-1",
     attributes: {},
     path: [
       "global",
@@ -276,15 +276,15 @@ export const  color = [
     ]
   },
   {
-    value: "#ebf7ec",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#022b07",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#ebf7ec",
-      type: "color"
+      type: "color",
+      value: "#022b07"
     },
-    name: "--fds-global-green-2",
+    name: "--ds-global-green-2",
     attributes: {},
     path: [
       "global",
@@ -293,15 +293,15 @@ export const  color = [
     ]
   },
   {
-    value: "#ccead0",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#03380a",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#ccead0",
-      type: "color"
+      type: "color",
+      value: "#03380a"
     },
-    name: "--fds-global-green-3",
+    name: "--ds-global-green-3",
     attributes: {},
     path: [
       "global",
@@ -310,15 +310,15 @@ export const  color = [
     ]
   },
   {
-    value: "#acddb2",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#03430b",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#acddb2",
-      type: "color"
+      type: "color",
+      value: "#03430b"
     },
-    name: "--fds-global-green-4",
+    name: "--ds-global-green-4",
     attributes: {},
     path: [
       "global",
@@ -327,15 +327,15 @@ export const  color = [
     ]
   },
   {
-    value: "#8cd095",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#044e0d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#8cd095",
-      type: "color"
+      type: "color",
+      value: "#044e0d"
     },
-    name: "--fds-global-green-5",
+    name: "--ds-global-green-5",
     attributes: {},
     path: [
       "global",
@@ -344,15 +344,15 @@ export const  color = [
     ]
   },
   {
-    value: "#9dd7a4",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#045f10",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#9dd7a4",
-      type: "color"
+      type: "color",
+      value: "#045f10"
     },
-    name: "--fds-global-green-6",
+    name: "--ds-global-green-6",
     attributes: {},
     path: [
       "global",
@@ -361,15 +361,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1aa12c",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#067b15",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#1aa12c",
-      type: "color"
+      type: "color",
+      value: "#067b15"
     },
-    name: "--fds-global-green-7",
+    name: "--ds-global-green-7",
     attributes: {},
     path: [
       "global",
@@ -378,15 +378,15 @@ export const  color = [
     ]
   },
   {
-    value: "#045f10",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#08991a",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#045f10",
-      type: "color"
+      type: "color",
+      value: "#08991a"
     },
-    name: "--fds-global-green-8",
+    name: "--ds-global-green-8",
     attributes: {},
     path: [
       "global",
@@ -395,15 +395,15 @@ export const  color = [
     ]
   },
   {
-    value: "#08991a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#08991a",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#08991a",
-      type: "color"
+      type: "color",
+      value: "#08991a"
     },
-    name: "--fds-global-green-9",
+    name: "--ds-global-green-9",
     attributes: {},
     path: [
       "global",
@@ -412,15 +412,15 @@ export const  color = [
     ]
   },
   {
-    value: "#067f16",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#067f16",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#067f16",
-      type: "color"
+      type: "color",
+      value: "#067f16"
     },
-    name: "--fds-global-green-10",
+    name: "--ds-global-green-10",
     attributes: {},
     path: [
       "global",
@@ -429,15 +429,15 @@ export const  color = [
     ]
   },
   {
-    value: "#056511",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#056511",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#056511",
-      type: "color"
+      type: "color",
+      value: "#056511"
     },
-    name: "--fds-global-green-11",
+    name: "--ds-global-green-11",
     attributes: {},
     path: [
       "global",
@@ -446,15 +446,15 @@ export const  color = [
     ]
   },
   {
-    value: "#045a0f",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#61be6d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#045a0f",
-      type: "color"
+      type: "color",
+      value: "#61be6d"
     },
-    name: "--fds-global-green-12",
+    name: "--ds-global-green-12",
     attributes: {},
     path: [
       "global",
@@ -463,15 +463,15 @@ export const  color = [
     ]
   },
   {
-    value: "#03380a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#a3d9aa",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#03380a",
-      type: "color"
+      type: "color",
+      value: "#a3d9aa"
     },
-    name: "--fds-global-green-13",
+    name: "--ds-global-green-13",
     attributes: {},
     path: [
       "global",
@@ -480,15 +480,15 @@ export const  color = [
     ]
   },
   {
-    value: "#022c08",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#022c08",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#022c08",
-      type: "color"
+      type: "color",
+      value: "#022c08"
     },
-    name: "--fds-global-green-contrast-1",
+    name: "--ds-global-green-contrast-1",
     attributes: {},
     path: [
       "global",
@@ -497,15 +497,15 @@ export const  color = [
     ]
   },
   {
-    value: "#011403",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#011403",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#011403",
-      type: "color"
+      type: "color",
+      value: "#011403"
     },
-    name: "--fds-global-green-contrast-2",
+    name: "--ds-global-green-contrast-2",
     attributes: {},
     path: [
       "global",
@@ -514,15 +514,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefd",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#2d1508",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fffefd",
-      type: "color"
+      type: "color",
+      value: "#2d1508"
     },
-    name: "--fds-global-orange-1",
+    name: "--ds-global-orange-1",
     attributes: {},
     path: [
       "global",
@@ -531,15 +531,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fbf1ec",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#3a1b0a",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fbf1ec",
-      type: "color"
+      type: "color",
+      value: "#3a1b0a"
     },
-    name: "--fds-global-orange-2",
+    name: "--ds-global-orange-2",
     attributes: {},
     path: [
       "global",
@@ -548,15 +548,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f6ddd0",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#4f240d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f6ddd0",
-      type: "color"
+      type: "color",
+      value: "#4f240d"
     },
-    name: "--fds-global-orange-3",
+    name: "--ds-global-orange-3",
     attributes: {},
     path: [
       "global",
@@ -565,15 +565,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f0cab4",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#5d2b0f",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f0cab4",
-      type: "color"
+      type: "color",
+      value: "#5d2b0f"
     },
-    name: "--fds-global-orange-4",
+    name: "--ds-global-orange-4",
     attributes: {},
     path: [
       "global",
@@ -582,15 +582,15 @@ export const  color = [
     ]
   },
   {
-    value: "#ebb597",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#6b3212",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#ebb597",
-      type: "color"
+      type: "color",
+      value: "#6b3212"
     },
-    name: "--fds-global-orange-5",
+    name: "--ds-global-orange-5",
     attributes: {},
     path: [
       "global",
@@ -599,49 +599,49 @@ export const  color = [
     ]
   },
   {
-    value: "#eec0a7",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#eec0a7",
-      type: "color"
-    },
-    name: "--fds-global-orange-6",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "6"
-    ]
-  },
-  {
-    value: "#d76e34",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#d76e34",
-      type: "color"
-    },
-    name: "--fds-global-orange-7",
-    attributes: {},
-    path: [
-      "global",
-      "orange",
-      "7"
-    ]
-  },
-  {
     value: "#853e16",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#853e16",
-      type: "color"
+      type: "color",
+      value: "#853e16"
     },
-    name: "--fds-global-orange-8",
+    name: "--ds-global-orange-6",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#ac4f1c",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#ac4f1c"
+    },
+    name: "--ds-global-orange-7",
+    attributes: {},
+    path: [
+      "global",
+      "orange",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#d46223",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#d46223"
+    },
+    name: "--ds-global-orange-8",
     attributes: {},
     path: [
       "global",
@@ -650,15 +650,15 @@ export const  color = [
     ]
   },
   {
-    value: "#d46223",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#d46223",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#d46223",
-      type: "color"
+      type: "color",
+      value: "#d46223"
     },
-    name: "--fds-global-orange-9",
+    name: "--ds-global-orange-9",
     attributes: {},
     path: [
       "global",
@@ -667,15 +667,15 @@ export const  color = [
     ]
   },
   {
-    value: "#b0511d",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#b0511d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#b0511d",
-      type: "color"
+      type: "color",
+      value: "#b0511d"
     },
-    name: "--fds-global-orange-10",
+    name: "--ds-global-orange-10",
     attributes: {},
     path: [
       "global",
@@ -684,15 +684,15 @@ export const  color = [
     ]
   },
   {
-    value: "#8e4117",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#8e4117",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#8e4117",
-      type: "color"
+      type: "color",
+      value: "#8e4117"
     },
-    name: "--fds-global-orange-11",
+    name: "--ds-global-orange-11",
     attributes: {},
     path: [
       "global",
@@ -701,15 +701,15 @@ export const  color = [
     ]
   },
   {
-    value: "#7f3a15",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#e39a72",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#7f3a15",
-      type: "color"
+      type: "color",
+      value: "#e39a72"
     },
-    name: "--fds-global-orange-12",
+    name: "--ds-global-orange-12",
     attributes: {},
     path: [
       "global",
@@ -718,15 +718,15 @@ export const  color = [
     ]
   },
   {
-    value: "#4f240d",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#efc3ab",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#4f240d",
-      type: "color"
+      type: "color",
+      value: "#efc3ab"
     },
-    name: "--fds-global-orange-13",
+    name: "--ds-global-orange-13",
     attributes: {},
     path: [
       "global",
@@ -735,15 +735,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#3e1c0a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#3e1c0a",
-      type: "color"
+      type: "color",
+      value: "#3e1c0a"
     },
-    name: "--fds-global-orange-contrast-1",
+    name: "--ds-global-orange-contrast-1",
     attributes: {},
     path: [
       "global",
@@ -752,15 +752,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#1c0d05",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#1c0d05",
-      type: "color"
+      type: "color",
+      value: "#1c0d05"
     },
-    name: "--fds-global-orange-contrast-2",
+    name: "--ds-global-orange-contrast-2",
     attributes: {},
     path: [
       "global",
@@ -769,15 +769,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#251238",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#251238"
     },
-    name: "--fds-global-purple-1",
+    name: "--ds-global-purple-1",
     attributes: {},
     path: [
       "global",
@@ -786,15 +786,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f5f2f9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#301748",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f5f2f9",
-      type: "color"
+      type: "color",
+      value: "#301748"
     },
-    name: "--fds-global-purple-2",
+    name: "--ds-global-purple-2",
     attributes: {},
     path: [
       "global",
@@ -803,185 +803,185 @@ export const  color = [
     ]
   },
   {
-    value: "#e7dfef",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#e7dfef",
-      type: "color"
-    },
-    name: "--fds-global-purple-3",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "3"
-    ]
-  },
-  {
-    value: "#d9cce6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#d9cce6",
-      type: "color"
-    },
-    name: "--fds-global-purple-4",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "4"
-    ]
-  },
-  {
-    value: "#ccbadd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#ccbadd",
-      type: "color"
-    },
-    name: "--fds-global-purple-5",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "5"
-    ]
-  },
-  {
-    value: "#d2c3e1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#d2c3e1",
-      type: "color"
-    },
-    name: "--fds-global-purple-6",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "6"
-    ]
-  },
-  {
-    value: "#9e7dbf",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#9e7dbf",
-      type: "color"
-    },
-    name: "--fds-global-purple-7",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "7"
-    ]
-  },
-  {
-    value: "#6b399d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#6b399d",
-      type: "color"
-    },
-    name: "--fds-global-purple-8",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "8"
-    ]
-  },
-  {
-    value: "#663399",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#663399",
-      type: "color"
-    },
-    name: "--fds-global-purple-9",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "9"
-    ]
-  },
-  {
-    value: "#4d2673",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#4d2673",
-      type: "color"
-    },
-    name: "--fds-global-purple-10",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "10"
-    ]
-  },
-  {
-    value: "#32194c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#32194c",
-      type: "color"
-    },
-    name: "--fds-global-purple-11",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "11"
-    ]
-  },
-  {
-    value: "#663399",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#663399",
-      type: "color"
-    },
-    name: "--fds-global-purple-12",
-    attributes: {},
-    path: [
-      "global",
-      "purple",
-      "12"
-    ]
-  },
-  {
     value: "#402060",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#402060",
-      type: "color"
+      type: "color",
+      value: "#402060"
     },
-    name: "--fds-global-purple-13",
+    name: "--ds-global-purple-3",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#4d2673",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#4d2673"
+    },
+    name: "--ds-global-purple-4",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#572b83",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#572b83"
+    },
+    name: "--ds-global-purple-5",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#6b399d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#6b399d"
+    },
+    name: "--ds-global-purple-6",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8257ac",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#8257ac"
+    },
+    name: "--ds-global-purple-7",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9875ba",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#9875ba"
+    },
+    name: "--ds-global-purple-8",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#663399",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#663399"
+    },
+    name: "--ds-global-purple-9",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#4d2673",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#4d2673"
+    },
+    name: "--ds-global-purple-10",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#32194c",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#32194c"
+    },
+    name: "--ds-global-purple-11",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b9a1d0",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#b9a1d0"
+    },
+    name: "--ds-global-purple-12",
+    attributes: {},
+    path: [
+      "global",
+      "purple",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#d5c7e3",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#d5c7e3"
+    },
+    name: "--ds-global-purple-13",
     attributes: {},
     path: [
       "global",
@@ -990,15 +990,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#f9f7fb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f9f7fb",
-      type: "color"
+      type: "color",
+      value: "#f9f7fb"
     },
-    name: "--fds-global-purple-contrast-1",
+    name: "--ds-global-purple-contrast-1",
     attributes: {},
     path: [
       "global",
@@ -1007,15 +1007,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#d7cae5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#d7cae5",
-      type: "color"
+      type: "color",
+      value: "#d7cae5"
     },
-    name: "--fds-global-purple-contrast-2",
+    name: "--ds-global-purple-contrast-2",
     attributes: {},
     path: [
       "global",
@@ -1024,15 +1024,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fffdfd",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#3b0708",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fffdfd",
-      type: "color"
+      type: "color",
+      value: "#3b0708"
     },
-    name: "--fds-global-red-1",
+    name: "--ds-global-red-1",
     attributes: {},
     path: [
       "global",
@@ -1041,15 +1041,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fdf0f0",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#4b0909",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fdf0f0",
-      type: "color"
+      type: "color",
+      value: "#4b0909"
     },
-    name: "--fds-global-red-2",
+    name: "--ds-global-red-2",
     attributes: {},
     path: [
       "global",
@@ -1058,15 +1058,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fbdada",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#630c0d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fbdada",
-      type: "color"
+      type: "color",
+      value: "#630c0d"
     },
-    name: "--fds-global-red-3",
+    name: "--ds-global-red-3",
     attributes: {},
     path: [
       "global",
@@ -1075,15 +1075,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f8c5c5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#740e0f",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f8c5c5",
-      type: "color"
+      type: "color",
+      value: "#740e0f"
     },
-    name: "--fds-global-red-4",
+    name: "--ds-global-red-4",
     attributes: {},
     path: [
       "global",
@@ -1092,15 +1092,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f6aeae",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#851011",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f6aeae",
-      type: "color"
+      type: "color",
+      value: "#851011"
     },
-    name: "--fds-global-red-5",
+    name: "--ds-global-red-5",
     attributes: {},
     path: [
       "global",
@@ -1109,15 +1109,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f7baba",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#a41415",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#f7baba",
-      type: "color"
+      type: "color",
+      value: "#a41415"
     },
-    name: "--fds-global-red-6",
+    name: "--ds-global-red-6",
     attributes: {},
     path: [
       "global",
@@ -1126,15 +1126,15 @@ export const  color = [
     ]
   },
   {
-    value: "#ec5a5b",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#d21a1b",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#ec5a5b",
-      type: "color"
+      type: "color",
+      value: "#d21a1b"
     },
-    name: "--fds-global-red-7",
+    name: "--ds-global-red-7",
     attributes: {},
     path: [
       "global",
@@ -1143,15 +1143,15 @@ export const  color = [
     ]
   },
   {
-    value: "#a41415",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#ea4a4a",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#a41415",
-      type: "color"
+      type: "color",
+      value: "#ea4a4a"
     },
-    name: "--fds-global-red-8",
+    name: "--ds-global-red-8",
     attributes: {},
     path: [
       "global",
@@ -1160,15 +1160,15 @@ export const  color = [
     ]
   },
   {
-    value: "#e51c1d",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#e51c1d",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#e51c1d",
-      type: "color"
+      type: "color",
+      value: "#e51c1d"
     },
-    name: "--fds-global-red-9",
+    name: "--ds-global-red-9",
     attributes: {},
     path: [
       "global",
@@ -1177,15 +1177,15 @@ export const  color = [
     ]
   },
   {
-    value: "#bb1718",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#bb1718",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#bb1718",
-      type: "color"
+      type: "color",
+      value: "#bb1718"
     },
-    name: "--fds-global-red-10",
+    name: "--ds-global-red-10",
     attributes: {},
     path: [
       "global",
@@ -1194,15 +1194,15 @@ export const  color = [
     ]
   },
   {
-    value: "#921213",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#921213",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#921213",
-      type: "color"
+      type: "color",
+      value: "#921213"
     },
-    name: "--fds-global-red-11",
+    name: "--ds-global-red-11",
     attributes: {},
     path: [
       "global",
@@ -1211,15 +1211,15 @@ export const  color = [
     ]
   },
   {
-    value: "#9b1314",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#f28f8f",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#9b1314",
-      type: "color"
+      type: "color",
+      value: "#f28f8f"
     },
-    name: "--fds-global-red-12",
+    name: "--ds-global-red-12",
     attributes: {},
     path: [
       "global",
@@ -1228,15 +1228,15 @@ export const  color = [
     ]
   },
   {
-    value: "#630c0d",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#f7bdbd",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#630c0d",
-      type: "color"
+      type: "color",
+      value: "#f7bdbd"
     },
-    name: "--fds-global-red-13",
+    name: "--ds-global-red-13",
     attributes: {},
     path: [
       "global",
@@ -1245,15 +1245,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fef6f6",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#fef6f6",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fef6f6",
-      type: "color"
+      type: "color",
+      value: "#fef6f6"
     },
-    name: "--fds-global-red-contrast-1",
+    name: "--ds-global-red-contrast-1",
     attributes: {},
     path: [
       "global",
@@ -1262,15 +1262,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fef9f9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#fef9f9",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fef9f9",
-      type: "color"
+      type: "color",
+      value: "#fef9f9"
     },
-    name: "--fds-global-red-contrast-2",
+    name: "--ds-global-red-contrast-2",
     attributes: {},
     path: [
       "global",
@@ -1279,15 +1279,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#221b06",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fffefc",
-      type: "color"
+      type: "color",
+      value: "#221b06"
     },
-    name: "--fds-global-yellow-1",
+    name: "--ds-global-yellow-1",
     attributes: {},
     path: [
       "global",
@@ -1296,15 +1296,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fbf2d3",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#2b2307",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#fbf2d3",
-      type: "color"
+      type: "color",
+      value: "#2b2307"
     },
-    name: "--fds-global-yellow-2",
+    name: "--ds-global-yellow-2",
     attributes: {},
     path: [
       "global",
@@ -1313,2395 +1313,2395 @@ export const  color = [
     ]
   },
   {
-    value: "#f5e19b",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#f5e19b",
-      type: "color"
-    },
-    name: "--fds-global-yellow-3",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "3"
-    ]
-  },
-  {
-    value: "#efcf5d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#efcf5d",
-      type: "color"
-    },
-    name: "--fds-global-yellow-4",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "4"
-    ]
-  },
-  {
-    value: "#e6bc27",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#e6bc27",
-      type: "color"
-    },
-    name: "--fds-global-yellow-5",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "5"
-    ]
-  },
-  {
-    value: "#ecc53b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#ecc53b",
-      type: "color"
-    },
-    name: "--fds-global-yellow-6",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "6"
-    ]
-  },
-  {
-    value: "#a7881c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#a7881c",
-      type: "color"
-    },
-    name: "--fds-global-yellow-7",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "7"
-    ]
-  },
-  {
-    value: "#635011",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#635011",
-      type: "color"
-    },
-    name: "--fds-global-yellow-8",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "8"
-    ]
-  },
-  {
-    value: "#eabf28",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#eabf28",
-      type: "color"
-    },
-    name: "--fds-global-yellow-9",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "9"
-    ]
-  },
-  {
-    value: "#cca723",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#cca723",
-      type: "color"
-    },
-    name: "--fds-global-yellow-10",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "10"
-    ]
-  },
-  {
-    value: "#b1901e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#b1901e",
-      type: "color"
-    },
-    name: "--fds-global-yellow-11",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "11"
-    ]
-  },
-  {
-    value: "#5d4c10",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
-    isSource: false,
-    original: {
-      value: "#5d4c10",
-      type: "color"
-    },
-    name: "--fds-global-yellow-12",
-    attributes: {},
-    path: [
-      "global",
-      "yellow",
-      "12"
-    ]
-  },
-  {
     value: "#3a300a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#3a300a",
-      type: "color"
+      type: "color",
+      value: "#3a300a"
     },
-    name: "--fds-global-yellow-13",
+    name: "--ds-global-yellow-3",
     attributes: {},
     path: [
       "global",
       "yellow",
-      "13"
+      "3"
     ]
   },
   {
-    value: "#2e2508",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#45380c",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#2e2508",
-      type: "color"
+      type: "color",
+      value: "#45380c"
     },
-    name: "--fds-global-yellow-contrast-1",
+    name: "--ds-global-yellow-4",
     attributes: {},
     path: [
       "global",
       "yellow",
-      "contrast-1"
+      "4"
     ]
   },
   {
-    value: "#52430e",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/global.json",
+    value: "#4f410e",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
     isSource: false,
     original: {
-      value: "#52430e",
-      type: "color"
+      type: "color",
+      value: "#4f410e"
     },
-    name: "--fds-global-yellow-contrast-2",
+    name: "--ds-global-yellow-5",
     attributes: {},
     path: [
       "global",
       "yellow",
-      "contrast-2"
+      "5"
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.1}",
-      type: "color"
-    },
-    name: "--fds-color-accent-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "background-default"
-    ]
-  },
-  {
-    value: "#eef4fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.2}",
-      type: "color"
-    },
-    name: "--fds-color-accent-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#d4e5f3",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.3}",
-      type: "color"
-    },
-    name: "--fds-color-accent-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#bad5ec",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.4}",
-      type: "color"
-    },
-    name: "--fds-color-accent-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#a1c5e5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.5}",
-      type: "color"
-    },
-    name: "--fds-color-accent-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.6}",
-      type: "color"
-    },
-    name: "--fds-color-accent-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.7}",
-      type: "color"
-    },
-    name: "--fds-color-accent-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "border-default"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.8}",
-      type: "color"
-    },
-    name: "--fds-color-accent-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.9}",
-      type: "color"
-    },
-    name: "--fds-color-accent-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-default"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.10}",
-      type: "color"
-    },
-    name: "--fds-color-accent-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.11}",
-      type: "color"
-    },
-    name: "--fds-color-accent-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-active"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.12}",
-      type: "color"
-    },
-    name: "--fds-color-accent-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.13}",
-      type: "color"
-    },
-    name: "--fds-color-accent-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-accent-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.accent.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-accent-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.1}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "background-default"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.2}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#e1e3e5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.3}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#ced1d4",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.4}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#bdc1c6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.5}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.6}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.7}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "border-default"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.8}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.9}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-default"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.10}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.11}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-active"
-    ]
-  },
-  {
-    value: "#444e5d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.12}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.13}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.neutral.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-neutral-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.1}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.2}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#fcdadb",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.3}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#fbc4c5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.4}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#f9adaf",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.5}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.6}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.7}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "border-default"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.8}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.9}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-default"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.10}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.11}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-active"
-    ]
-  },
-  {
-    value: "#843336",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.12}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.13}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "text-default"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand1.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-brand1-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.1}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.2}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#f5dfac",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.3}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#f0ce7e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.4}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#eaba4a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.5}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.6}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.7}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "border-default"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.8}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.9}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-default"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.10}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.11}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-active"
-    ]
-  },
-  {
-    value: "#634a0e",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.12}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.13}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "text-default"
-    ]
-  },
-  {
-    value: "#302407",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#45340a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand2.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-brand2-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.1}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "background-default"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.2}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#c8e6fd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.3}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#a9d7fb",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.4}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#84c7fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.5}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.6}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.7}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "border-default"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.8}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.9}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-default"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.10}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.11}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-active"
-    ]
-  },
-  {
-    value: "#105082",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.12}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.13}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "text-default"
-    ]
-  },
-  {
-    value: "#082740",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#061f33",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{color.brand3.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-brand3-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fcfefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.1}",
-      type: "color"
-    },
-    name: "--fds-color-success-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "background-default"
-    ]
-  },
-  {
-    value: "#ebf7ec",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.2}",
-      type: "color"
-    },
-    name: "--fds-color-success-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#ccead0",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.3}",
-      type: "color"
-    },
-    name: "--fds-color-success-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#acddb2",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.4}",
-      type: "color"
-    },
-    name: "--fds-color-success-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#8cd095",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.5}",
-      type: "color"
-    },
-    name: "--fds-color-success-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#9dd7a4",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.6}",
-      type: "color"
-    },
-    name: "--fds-color-success-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#1aa12c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.7}",
-      type: "color"
-    },
-    name: "--fds-color-success-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "border-default"
-    ]
-  },
-  {
-    value: "#045f10",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.8}",
-      type: "color"
-    },
-    name: "--fds-color-success-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#08991a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.9}",
-      type: "color"
-    },
-    name: "--fds-color-success-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-default"
-    ]
-  },
-  {
-    value: "#067f16",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.10}",
-      type: "color"
-    },
-    name: "--fds-color-success-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#056511",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.11}",
-      type: "color"
-    },
-    name: "--fds-color-success-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-active"
-    ]
-  },
-  {
-    value: "#045a0f",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.12}",
-      type: "color"
-    },
-    name: "--fds-color-success-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#03380a",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.13}",
-      type: "color"
-    },
-    name: "--fds-color-success-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "text-default"
-    ]
-  },
-  {
-    value: "#022c08",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-success-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#011403",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.green.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-success-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffdfd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.1}",
-      type: "color"
-    },
-    name: "--fds-color-danger-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fdf0f0",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.2}",
-      type: "color"
-    },
-    name: "--fds-color-danger-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#fbdada",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.3}",
-      type: "color"
-    },
-    name: "--fds-color-danger-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#f8c5c5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.4}",
-      type: "color"
-    },
-    name: "--fds-color-danger-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#f6aeae",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.5}",
-      type: "color"
-    },
-    name: "--fds-color-danger-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#f7baba",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.6}",
-      type: "color"
-    },
-    name: "--fds-color-danger-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#ec5a5b",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.7}",
-      type: "color"
-    },
-    name: "--fds-color-danger-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "border-default"
-    ]
-  },
-  {
-    value: "#a41415",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.8}",
-      type: "color"
-    },
-    name: "--fds-color-danger-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#e51c1d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.9}",
-      type: "color"
-    },
-    name: "--fds-color-danger-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-default"
-    ]
-  },
-  {
-    value: "#bb1718",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.10}",
-      type: "color"
-    },
-    name: "--fds-color-danger-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#921213",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.11}",
-      type: "color"
-    },
-    name: "--fds-color-danger-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-active"
-    ]
-  },
-  {
-    value: "#9b1314",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.12}",
-      type: "color"
-    },
-    name: "--fds-color-danger-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#630c0d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.13}",
-      type: "color"
-    },
-    name: "--fds-color-danger-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "text-default"
-    ]
-  },
-  {
-    value: "#fef6f6",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-danger-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#fef9f9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.red.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-danger-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.1}",
-      type: "color"
-    },
-    name: "--fds-color-info-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "background-default"
-    ]
-  },
-  {
-    value: "#edf5fa",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.2}",
-      type: "color"
-    },
-    name: "--fds-color-info-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#d3e5f4",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.3}",
-      type: "color"
-    },
-    name: "--fds-color-info-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#b7d5ed",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.4}",
-      type: "color"
-    },
-    name: "--fds-color-info-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#9bc5e5",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.5}",
-      type: "color"
-    },
-    name: "--fds-color-info-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#aacee9",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.6}",
-      type: "color"
-    },
-    name: "--fds-color-info-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#4291ce",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.7}",
-      type: "color"
-    },
-    name: "--fds-color-info-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "border-default"
-    ]
-  },
-  {
-    value: "#075490",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.8}",
-      type: "color"
-    },
-    name: "--fds-color-info-border-strong",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "border-strong"
-    ]
-  },
-  {
-    value: "#0c72c1",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.9}",
-      type: "color"
-    },
-    name: "--fds-color-info-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-default"
-    ]
-  },
-  {
-    value: "#085c9c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.10}",
-      type: "color"
-    },
-    name: "--fds-color-info-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-hover"
-    ]
-  },
-  {
-    value: "#064678",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.11}",
-      type: "color"
-    },
-    name: "--fds-color-info-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-active"
-    ]
-  },
-  {
-    value: "#075089",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.12}",
-      type: "color"
-    },
-    name: "--fds-color-info-text-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "text-subtle"
-    ]
-  },
-  {
-    value: "#043256",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.13}",
-      type: "color"
-    },
-    name: "--fds-color-info-text-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "text-default"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.contrast-1}",
-      type: "color"
-    },
-    name: "--fds-color-info-contrast-first",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "contrast-first"
-    ]
-  },
-  {
-    value: "#f3f8fc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.blue.contrast-2}",
-      type: "color"
-    },
-    name: "--fds-color-info-contrast-second",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "contrast-second"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.1}",
-      type: "color"
-    },
-    name: "--fds-color-warning-background-default",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "background-default"
-    ]
-  },
-  {
-    value: "#fbf2d3",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.2}",
-      type: "color"
-    },
-    name: "--fds-color-warning-background-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "background-subtle"
-    ]
-  },
-  {
-    value: "#f5e19b",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.3}",
-      type: "color"
-    },
-    name: "--fds-color-warning-surface-default",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "surface-default"
-    ]
-  },
-  {
-    value: "#efcf5d",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.4}",
-      type: "color"
-    },
-    name: "--fds-color-warning-surface-hover",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "surface-hover"
-    ]
-  },
-  {
-    value: "#e6bc27",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.5}",
-      type: "color"
-    },
-    name: "--fds-color-warning-surface-active",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "surface-active"
-    ]
-  },
-  {
-    value: "#ecc53b",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.6}",
-      type: "color"
-    },
-    name: "--fds-color-warning-border-subtle",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "border-subtle"
-    ]
-  },
-  {
-    value: "#a7881c",
-    type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      value: "{global.yellow.7}",
-      type: "color"
-    },
-    name: "--fds-color-warning-border-default",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "border-default"
-    ]
-  },
-  {
     value: "#635011",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#635011"
+    },
+    name: "--ds-global-yellow-6",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "6"
+    ]
+  },
+  {
     type: "color",
+    value: "#806816",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#806816"
+    },
+    name: "--ds-global-yellow-7",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9d801b",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#9d801b"
+    },
+    name: "--ds-global-yellow-8",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#eabf28",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#eabf28"
+    },
+    name: "--ds-global-yellow-9",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cca723",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#cca723"
+    },
+    name: "--ds-global-yellow-10",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b1901e",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#b1901e"
+    },
+    name: "--ds-global-yellow-11",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cca723",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#cca723"
+    },
+    name: "--ds-global-yellow-12",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#edc94b",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#edc94b"
+    },
+    name: "--ds-global-yellow-13",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e2508",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#2e2508"
+    },
+    name: "--ds-global-yellow-contrast-1",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#52430e",
+    filePath: "../../design-tokens/primitives/colors/dark/global.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "#52430e"
+    },
+    name: "--ds-global-yellow-contrast-2",
+    attributes: {},
+    path: [
+      "global",
+      "yellow",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#001c36",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.yellow.8}",
-      type: "color"
+      type: "color",
+      value: "{color.accent.1}"
     },
-    name: "--fds-color-warning-border-strong",
+    name: "--ds-color-accent-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#002445",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.2}"
+    },
+    name: "--ds-color-accent-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00315c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.3}"
+    },
+    name: "--ds-color-accent-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.4}"
+    },
+    name: "--ds-color-accent-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00427e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.5}"
+    },
+    name: "--ds-color-accent-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00529d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.6}"
+    },
+    name: "--ds-color-accent-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0f6bbe",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.7}"
+    },
+    name: "--ds-color-accent-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d88ca",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.8}"
+    },
+    name: "--ds-color-accent-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0163ba",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.9}"
+    },
+    name: "--ds-color-accent-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#004d93",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.10}"
+    },
+    name: "--ds-color-accent-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.11}"
+    },
+    name: "--ds-color-accent-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7eb0dc",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.12}"
+    },
+    name: "--ds-color-accent-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.13}"
+    },
+    name: "--ds-color-accent-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f6fafd",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.contrast-1}"
+    },
+    name: "--ds-color-accent-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#ddeaf6",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.contrast-2}"
+    },
+    name: "--ds-color-accent-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#131c27",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.1}"
+    },
+    name: "--ds-color-neutral-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#192433",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.2}"
+    },
+    name: "--ds-color-neutral-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#243142",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.3}"
+    },
+    name: "--ds-color-neutral-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e3a4a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.4}"
+    },
+    name: "--ds-color-neutral-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#374352",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.5}"
+    },
+    name: "--ds-color-neutral-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.6}"
+    },
+    name: "--ds-color-neutral-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#626b77",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.7}"
+    },
+    name: "--ds-color-neutral-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7d848e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.8}"
+    },
+    name: "--ds-color-neutral-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e2b3c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.9}"
+    },
+    name: "--ds-color-neutral-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#333e4e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.10}"
+    },
+    name: "--ds-color-neutral-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.11}"
+    },
+    name: "--ds-color-neutral-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a6abb2",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.12}"
+    },
+    name: "--ds-color-neutral-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c9ccd0",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.13}"
+    },
+    name: "--ds-color-neutral-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f9f9fa",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.contrast-1}"
+    },
+    name: "--ds-color-neutral-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9ea3ab",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.neutral.contrast-2}"
+    },
+    name: "--ds-color-neutral-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.1}"
+    },
+    name: "--ds-color-brand1-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3c1819",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.2}"
+    },
+    name: "--ds-color-brand1-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#522021",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.3}"
+    },
+    name: "--ds-color-brand1-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#602627",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.4}"
+    },
+    name: "--ds-color-brand1-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#702c2e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.5}"
+    },
+    name: "--ds-color-brand1-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8b3639",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.6}"
+    },
+    name: "--ds-color-brand1-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b34649",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.7}"
+    },
+    name: "--ds-color-brand1-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#dd565a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.8}"
+    },
+    name: "--ds-color-brand1-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f35f63",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.9}"
+    },
+    name: "--ds-color-brand1-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cc5053",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.10}"
+    },
+    name: "--ds-color-brand1-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a84144",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.11}"
+    },
+    name: "--ds-color-brand1-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f78d8f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.12}"
+    },
+    name: "--ds-color-brand1-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fabcbd",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.13}"
+    },
+    name: "--ds-color-brand1-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#41191b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.contrast-1}"
+    },
+    name: "--ds-color-brand1-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand1.contrast-2}"
+    },
+    name: "--ds-color-brand1-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#231a05",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.1}"
+    },
+    name: "--ds-color-brand2-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2d2206",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.2}"
+    },
+    name: "--ds-color-brand2-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d2e09",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.3}"
+    },
+    name: "--ds-color-brand2-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#48360a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.4}"
+    },
+    name: "--ds-color-brand2-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#543e0c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.5}"
+    },
+    name: "--ds-color-brand2-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#684e0f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.6}"
+    },
+    name: "--ds-color-brand2-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#876413",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.7}"
+    },
+    name: "--ds-color-brand2-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.8}"
+    },
+    name: "--ds-color-brand2-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#e4a920",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.9}"
+    },
+    name: "--ds-color-brand2-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c6931c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.10}"
+    },
+    name: "--ds-color-brand2-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.11}"
+    },
+    name: "--ds-color-brand2-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#daa21f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.12}"
+    },
+    name: "--ds-color-brand2-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#eec76c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.13}"
+    },
+    name: "--ds-color-brand2-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#302407",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.contrast-1}"
+    },
+    name: "--ds-color-brand2-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#45340a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand2.contrast-2}"
+    },
+    name: "--ds-color-brand2-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061d30",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.1}"
+    },
+    name: "--ds-color-brand3-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#07253c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.2}"
+    },
+    name: "--ds-color-brand3-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0a3251",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.3}"
+    },
+    name: "--ds-color-brand3-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0c3b60",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.4}"
+    },
+    name: "--ds-color-brand3-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0e446e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.5}"
+    },
+    name: "--ds-color-brand3-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#11558a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.6}"
+    },
+    name: "--ds-color-brand3-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#166eb2",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.7}"
+    },
+    name: "--ds-color-brand3-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1b88db",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.8}"
+    },
+    name: "--ds-color-brand3-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e98f5",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.9}"
+    },
+    name: "--ds-color-brand3-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1980ce",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.10}"
+    },
+    name: "--ds-color-brand3-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1569a9",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.11}"
+    },
+    name: "--ds-color-brand3-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#57b2f8",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.12}"
+    },
+    name: "--ds-color-brand3-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9cd2fb",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.13}"
+    },
+    name: "--ds-color-brand3-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#082740",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.contrast-1}"
+    },
+    name: "--ds-color-brand3-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061f33",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.brand3.contrast-2}"
+    },
+    name: "--ds-color-brand3-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#022106",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.1}"
+    },
+    name: "--ds-color-success-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#022b07",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.2}"
+    },
+    name: "--ds-color-success-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#03380a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.3}"
+    },
+    name: "--ds-color-success-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#03430b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.4}"
+    },
+    name: "--ds-color-success-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#044e0d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.5}"
+    },
+    name: "--ds-color-success-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#045f10",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.6}"
+    },
+    name: "--ds-color-success-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#067b15",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.7}"
+    },
+    name: "--ds-color-success-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#08991a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.8}"
+    },
+    name: "--ds-color-success-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#08991a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.9}"
+    },
+    name: "--ds-color-success-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#067f16",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.10}"
+    },
+    name: "--ds-color-success-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#056511",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.11}"
+    },
+    name: "--ds-color-success-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#61be6d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.12}"
+    },
+    name: "--ds-color-success-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a3d9aa",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.13}"
+    },
+    name: "--ds-color-success-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#022c08",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.contrast-1}"
+    },
+    name: "--ds-color-success-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#011403",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.green.contrast-2}"
+    },
+    name: "--ds-color-success-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3b0708",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.1}"
+    },
+    name: "--ds-color-danger-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#4b0909",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.2}"
+    },
+    name: "--ds-color-danger-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#630c0d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.3}"
+    },
+    name: "--ds-color-danger-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#740e0f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.4}"
+    },
+    name: "--ds-color-danger-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#851011",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.5}"
+    },
+    name: "--ds-color-danger-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a41415",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.6}"
+    },
+    name: "--ds-color-danger-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#d21a1b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.7}"
+    },
+    name: "--ds-color-danger-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#ea4a4a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.8}"
+    },
+    name: "--ds-color-danger-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#e51c1d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.9}"
+    },
+    name: "--ds-color-danger-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#bb1718",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.10}"
+    },
+    name: "--ds-color-danger-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#921213",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.11}"
+    },
+    name: "--ds-color-danger-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f28f8f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.12}"
+    },
+    name: "--ds-color-danger-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f7bdbd",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.13}"
+    },
+    name: "--ds-color-danger-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fef6f6",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.contrast-1}"
+    },
+    name: "--ds-color-danger-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fef9f9",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.red.contrast-2}"
+    },
+    name: "--ds-color-danger-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#031d30",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.1}"
+    },
+    name: "--ds-color-info-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#032540",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.2}"
+    },
+    name: "--ds-color-info-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#043256",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.3}"
+    },
+    name: "--ds-color-info-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#053c65",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.4}"
+    },
+    name: "--ds-color-info-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#064474",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.5}"
+    },
+    name: "--ds-color-info-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#075490",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.6}"
+    },
+    name: "--ds-color-info-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0a6dba",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.7}"
+    },
+    name: "--ds-color-info-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3389cb",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.8}"
+    },
+    name: "--ds-color-info-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "border-strong"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0c72c1",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.9}"
+    },
+    name: "--ds-color-info-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#085c9c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.10}"
+    },
+    name: "--ds-color-info-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#064678",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.11}"
+    },
+    name: "--ds-color-info-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#78b1dc",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.12}"
+    },
+    name: "--ds-color-info-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "text-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#aed0ea",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.13}"
+    },
+    name: "--ds-color-info-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "text-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f6fafd",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.contrast-1}"
+    },
+    name: "--ds-color-info-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "contrast-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f3f8fc",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.blue.contrast-2}"
+    },
+    name: "--ds-color-info-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "contrast-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#221b06",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.1}"
+    },
+    name: "--ds-color-warning-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "background-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2b2307",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.2}"
+    },
+    name: "--ds-color-warning-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "background-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3a300a",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.3}"
+    },
+    name: "--ds-color-warning-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "surface-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#45380c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.4}"
+    },
+    name: "--ds-color-warning-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "surface-hover"
+    ]
+  },
+  {
+    type: "color",
+    value: "#4f410e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.5}"
+    },
+    name: "--ds-color-warning-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "surface-active"
+    ]
+  },
+  {
+    type: "color",
+    value: "#635011",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.6}"
+    },
+    name: "--ds-color-warning-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "border-subtle"
+    ]
+  },
+  {
+    type: "color",
+    value: "#806816",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.7}"
+    },
+    name: "--ds-color-warning-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "border-default"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9d801b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{global.yellow.8}"
+    },
+    name: "--ds-color-warning-border-strong",
     attributes: {},
     path: [
       "color",
@@ -3710,15 +3710,15 @@ export const  color = [
     ]
   },
   {
-    value: "#d46223",
     type: "color",
+    value: "#d46223",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.orange.9}",
-      type: "color"
+      type: "color",
+      value: "{global.orange.9}"
     },
-    name: "--fds-color-warning-base-default",
+    name: "--ds-color-warning-base-default",
     attributes: {},
     path: [
       "color",
@@ -3727,15 +3727,15 @@ export const  color = [
     ]
   },
   {
-    value: "#b0511d",
     type: "color",
+    value: "#b0511d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.orange.10}",
-      type: "color"
+      type: "color",
+      value: "{global.orange.10}"
     },
-    name: "--fds-color-warning-base-hover",
+    name: "--ds-color-warning-base-hover",
     attributes: {},
     path: [
       "color",
@@ -3744,15 +3744,15 @@ export const  color = [
     ]
   },
   {
-    value: "#8e4117",
     type: "color",
+    value: "#8e4117",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.orange.11}",
-      type: "color"
+      type: "color",
+      value: "{global.orange.11}"
     },
-    name: "--fds-color-warning-base-active",
+    name: "--ds-color-warning-base-active",
     attributes: {},
     path: [
       "color",
@@ -3761,15 +3761,15 @@ export const  color = [
     ]
   },
   {
-    value: "#7f3a15",
     type: "color",
+    value: "#e39a72",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.orange.12}",
-      type: "color"
+      type: "color",
+      value: "{global.orange.12}"
     },
-    name: "--fds-color-warning-text-subtle",
+    name: "--ds-color-warning-text-subtle",
     attributes: {},
     path: [
       "color",
@@ -3778,15 +3778,15 @@ export const  color = [
     ]
   },
   {
-    value: "#4f240d",
     type: "color",
+    value: "#efc3ab",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.orange.13}",
-      type: "color"
+      type: "color",
+      value: "{global.orange.13}"
     },
-    name: "--fds-color-warning-text-default",
+    name: "--ds-color-warning-text-default",
     attributes: {},
     path: [
       "color",
@@ -3795,2650 +3795,100 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#2e2508",
-    type: "color",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.yellow.contrast-1}",
-      type: "color"
+      type: "color",
+      value: "{global.yellow.contrast-1}"
     },
-    name: "--fds-color-warning-contrast-first",
+    name: "--ds-color-warning-contrast-default",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
+    type: "color",
     value: "#52430e",
-    type: "color",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
-      value: "{global.yellow.contrast-2}",
-      type: "color"
+      type: "color",
+      value: "{global.yellow.contrast-2}"
     },
-    name: "--fds-color-warning-contrast-second",
+    name: "--ds-color-warning-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
+    value: "#001c36",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#001c36"
     },
-    name: "--fds-theme2-accent-1",
+    name: "--ds-theme4-accent-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "1"
     ]
   },
   {
-    value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
+    value: "#002445",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#eef4fa",
-      type: "color"
+      type: "color",
+      value: "#002445"
     },
-    name: "--fds-theme2-accent-2",
+    name: "--ds-theme4-accent-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "2"
     ]
   },
   {
-    value: "#d4e5f3",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#d4e5f3",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-3",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "3"
-    ]
-  },
-  {
-    value: "#bad5ec",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#bad5ec",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-4",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#a1c5e5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#a1c5e5",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-5",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-6",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-7",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-8",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-9",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-10",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "10"
-    ]
-  },
-  {
-    value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#00396d",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-11",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-12",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "12"
-    ]
-  },
-  {
     value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#00315c"
     },
-    name: "--fds-theme2-accent-13",
+    name: "--ds-theme4-accent-3",
     attributes: {},
     path: [
-      "theme2",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-contrast-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-theme2-accent-contrast-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "2"
-    ]
-  },
-  {
-    value: "#e1e3e5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#e1e3e5",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-3",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#ced1d4",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#ced1d4",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-4",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#bdc1c6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#bdc1c6",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-5",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-6",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-7",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-8",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-9",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-10",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-11",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#444e5d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#444e5d",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-12",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "12"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#243142",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-13",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "13"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f9f9fa",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-contrast-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#9ea3ab",
-      type: "color"
-    },
-    name: "--fds-theme2-neutral-contrast-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "neutral",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fcdadb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fcdadb",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-3",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbc4c5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fbc4c5",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-4",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#f9adaf",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f9adaf",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-5",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-6",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-7",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-8",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-9",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-10",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-11",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#843336",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#843336",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-12",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-13",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#41191b",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#2f1213",
-      type: "color"
-    },
-    name: "--fds-theme2-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f5dfac",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f5dfac",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-3",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f0ce7e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#f0ce7e",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-4",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#eaba4a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#eaba4a",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-5",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-6",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-7",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-8",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-9",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-10",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-11",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#634a0e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#634a0e",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-12",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-13",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#302407",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#302407",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#45340a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#45340a",
-      type: "color"
-    },
-    name: "--fds-theme2-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#c8e6fd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#c8e6fd",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-3",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#a9d7fb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#a9d7fb",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-4",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#84c7fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#84c7fa",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-5",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-6",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-7",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-8",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-9",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-10",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-11",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105082",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#105082",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-12",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-13",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#082740",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#082740",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#061f33",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme2.json",
-    isSource: true,
-    original: {
-      value: "#061f33",
-      type: "color"
-    },
-    name: "--fds-theme2-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "theme2",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fefeff",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "1"
-    ]
-  },
-  {
-    value: "#eef4fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#eef4fa",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "2"
-    ]
-  },
-  {
-    value: "#d4e5f3",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#d4e5f3",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-3",
-    attributes: {},
-    path: [
-      "theme3",
+      "theme4",
       "accent",
       "3"
     ]
   },
   {
-    value: "#bad5ec",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#bad5ec",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-4",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "4"
-    ]
-  },
-  {
-    value: "#a1c5e5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#a1c5e5",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-5",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "5"
-    ]
-  },
-  {
-    value: "#aecde9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-6",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-7",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "7"
-    ]
-  },
-  {
-    value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#00529d",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-8",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "8"
-    ]
-  },
-  {
-    value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#0163ba",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-9",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "9"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-10",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "10"
-    ]
-  },
-  {
     value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#00396d",
-      type: "color"
+      type: "color",
+      value: "#00396d"
     },
-    name: "--fds-theme3-accent-11",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "11"
-    ]
-  },
-  {
-    value: "#004d93",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#004d93",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-12",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "12"
-    ]
-  },
-  {
-    value: "#00315c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#00315c",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-13",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "13"
-    ]
-  },
-  {
-    value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f6fafd",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-contrast-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#ddeaf6",
-      type: "color"
-    },
-    name: "--fds-theme3-accent-contrast-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "accent",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefefe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fefefe",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "1"
-    ]
-  },
-  {
-    value: "#f3f4f5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f3f4f5",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "2"
-    ]
-  },
-  {
-    value: "#e1e3e5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#e1e3e5",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-3",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#ced1d4",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#ced1d4",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-4",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#bdc1c6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#bdc1c6",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-5",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-6",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-7",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-8",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-9",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-10",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-11",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#444e5d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#444e5d",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-12",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "12"
-    ]
-  },
-  {
-    value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#243142",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-13",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "13"
-    ]
-  },
-  {
-    value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f9f9fa",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-contrast-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#9ea3ab",
-      type: "color"
-    },
-    name: "--fds-theme3-neutral-contrast-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "neutral",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fcdadb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fcdadb",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-3",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbc4c5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fbc4c5",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-4",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#f9adaf",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f9adaf",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-5",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-6",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-7",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-8",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-9",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-10",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-11",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#843336",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#843336",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-12",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-13",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#41191b",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#2f1213",
-      type: "color"
-    },
-    name: "--fds-theme3-brand1-contrast-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand1",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fffefc",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fffefc",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "1"
-    ]
-  },
-  {
-    value: "#fbf3e0",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fbf3e0",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "2"
-    ]
-  },
-  {
-    value: "#f5dfac",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f5dfac",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-3",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f0ce7e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#f0ce7e",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-4",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#eaba4a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#eaba4a",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-5",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-6",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-7",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-8",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-9",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-10",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-11",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#634a0e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#634a0e",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-12",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "12"
-    ]
-  },
-  {
-    value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#3d2e09",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-13",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "13"
-    ]
-  },
-  {
-    value: "#302407",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#302407",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-contrast-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#45340a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#45340a",
-      type: "color"
-    },
-    name: "--fds-theme3-brand2-contrast-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand2",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fdfeff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#fdfeff",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "1"
-    ]
-  },
-  {
-    value: "#eaf6fe",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#eaf6fe",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "2"
-    ]
-  },
-  {
-    value: "#c8e6fd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#c8e6fd",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-3",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "3"
-    ]
-  },
-  {
-    value: "#a9d7fb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#a9d7fb",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-4",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "4"
-    ]
-  },
-  {
-    value: "#84c7fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#84c7fa",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-5",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "5"
-    ]
-  },
-  {
-    value: "#96cffa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#96cffa",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-6",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "6"
-    ]
-  },
-  {
-    value: "#1c90e8",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#1c90e8",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-7",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "7"
-    ]
-  },
-  {
-    value: "#11558a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#11558a",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-8",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "8"
-    ]
-  },
-  {
-    value: "#1e98f5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#1e98f5",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-9",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "9"
-    ]
-  },
-  {
-    value: "#1980ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#1980ce",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-10",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "10"
-    ]
-  },
-  {
-    value: "#1569a9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#1569a9",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-11",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "11"
-    ]
-  },
-  {
-    value: "#105082",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#105082",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-12",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "12"
-    ]
-  },
-  {
-    value: "#0a3251",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#0a3251",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-13",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "13"
-    ]
-  },
-  {
-    value: "#082740",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#082740",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-contrast-1",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "contrast-1"
-    ]
-  },
-  {
-    value: "#061f33",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme3.json",
-    isSource: true,
-    original: {
-      value: "#061f33",
-      type: "color"
-    },
-    name: "--fds-theme3-brand3-contrast-2",
-    attributes: {},
-    path: [
-      "theme3",
-      "brand3",
-      "contrast-2"
-    ]
-  },
-  {
-    value: "#fefeff",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fefeff",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-1",
-    attributes: {},
-    path: [
-      "theme4",
-      "accent",
-      "1"
-    ]
-  },
-  {
-    value: "#eef4fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#eef4fa",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-2",
-    attributes: {},
-    path: [
-      "theme4",
-      "accent",
-      "2"
-    ]
-  },
-  {
-    value: "#d4e5f3",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#d4e5f3",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-3",
-    attributes: {},
-    path: [
-      "theme4",
-      "accent",
-      "3"
-    ]
-  },
-  {
-    value: "#bad5ec",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#bad5ec",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-4",
+    name: "--ds-theme4-accent-4",
     attributes: {},
     path: [
       "theme4",
@@ -6447,15 +3897,15 @@ export const  color = [
     ]
   },
   {
-    value: "#a1c5e5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#00427e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a1c5e5",
-      type: "color"
+      type: "color",
+      value: "#00427e"
     },
-    name: "--fds-theme4-accent-5",
+    name: "--ds-theme4-accent-5",
     attributes: {},
     path: [
       "theme4",
@@ -6464,49 +3914,49 @@ export const  color = [
     ]
   },
   {
-    value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-6",
-    attributes: {},
-    path: [
-      "theme4",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-theme4-accent-7",
-    attributes: {},
-    path: [
-      "theme4",
-      "accent",
-      "7"
-    ]
-  },
-  {
     value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#00529d",
-      type: "color"
+      type: "color",
+      value: "#00529d"
     },
-    name: "--fds-theme4-accent-8",
+    name: "--ds-theme4-accent-6",
+    attributes: {},
+    path: [
+      "theme4",
+      "accent",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0f6bbe",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0f6bbe"
+    },
+    name: "--ds-theme4-accent-7",
+    attributes: {},
+    path: [
+      "theme4",
+      "accent",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d88ca",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d88ca"
+    },
+    name: "--ds-theme4-accent-8",
     attributes: {},
     path: [
       "theme4",
@@ -6515,15 +3965,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#0163ba",
-      type: "color"
+      type: "color",
+      value: "#0163ba"
     },
-    name: "--fds-theme4-accent-9",
+    name: "--ds-theme4-accent-9",
     attributes: {},
     path: [
       "theme4",
@@ -6532,15 +3982,15 @@ export const  color = [
     ]
   },
   {
-    value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#004d93",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#004d93",
-      type: "color"
+      type: "color",
+      value: "#004d93"
     },
-    name: "--fds-theme4-accent-10",
+    name: "--ds-theme4-accent-10",
     attributes: {},
     path: [
       "theme4",
@@ -6549,15 +3999,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#00396d",
-      type: "color"
+      type: "color",
+      value: "#00396d"
     },
-    name: "--fds-theme4-accent-11",
+    name: "--ds-theme4-accent-11",
     attributes: {},
     path: [
       "theme4",
@@ -6566,15 +4016,15 @@ export const  color = [
     ]
   },
   {
-    value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#7eb0dc",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#004d93",
-      type: "color"
+      type: "color",
+      value: "#7eb0dc"
     },
-    name: "--fds-theme4-accent-12",
+    name: "--ds-theme4-accent-12",
     attributes: {},
     path: [
       "theme4",
@@ -6583,15 +4033,15 @@ export const  color = [
     ]
   },
   {
-    value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#b0cfea"
     },
-    name: "--fds-theme4-accent-13",
+    name: "--ds-theme4-accent-13",
     attributes: {},
     path: [
       "theme4",
@@ -6600,15 +4050,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f6fafd",
-      type: "color"
+      type: "color",
+      value: "#f6fafd"
     },
-    name: "--fds-theme4-accent-contrast-1",
+    name: "--ds-theme4-accent-contrast-1",
     attributes: {},
     path: [
       "theme4",
@@ -6617,15 +4067,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#ddeaf6",
-      type: "color"
+      type: "color",
+      value: "#ddeaf6"
     },
-    name: "--fds-theme4-accent-contrast-2",
+    name: "--ds-theme4-accent-contrast-2",
     attributes: {},
     path: [
       "theme4",
@@ -6634,15 +4084,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#131c27",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#131c27"
     },
-    name: "--fds-theme4-neutral-1",
+    name: "--ds-theme4-neutral-1",
     attributes: {},
     path: [
       "theme4",
@@ -6651,15 +4101,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#192433",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f3f4f5",
-      type: "color"
+      type: "color",
+      value: "#192433"
     },
-    name: "--fds-theme4-neutral-2",
+    name: "--ds-theme4-neutral-2",
     attributes: {},
     path: [
       "theme4",
@@ -6668,185 +4118,185 @@ export const  color = [
     ]
   },
   {
-    value: "#e1e3e5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#e1e3e5",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-3",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#ced1d4",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#ced1d4",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-4",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#bdc1c6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#bdc1c6",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-5",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-6",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-7",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-8",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-9",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-10",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-11",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#444e5d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#444e5d",
-      type: "color"
-    },
-    name: "--fds-theme4-neutral-12",
-    attributes: {},
-    path: [
-      "theme4",
-      "neutral",
-      "12"
-    ]
-  },
-  {
     value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#243142",
-      type: "color"
+      type: "color",
+      value: "#243142"
     },
-    name: "--fds-theme4-neutral-13",
+    name: "--ds-theme4-neutral-3",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e3a4a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2e3a4a"
+    },
+    name: "--ds-theme4-neutral-4",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#374352",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#374352"
+    },
+    name: "--ds-theme4-neutral-5",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme4-neutral-6",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#626b77",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#626b77"
+    },
+    name: "--ds-theme4-neutral-7",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7d848e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7d848e"
+    },
+    name: "--ds-theme4-neutral-8",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e2b3c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e2b3c"
+    },
+    name: "--ds-theme4-neutral-9",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#333e4e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#333e4e"
+    },
+    name: "--ds-theme4-neutral-10",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme4-neutral-11",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a6abb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a6abb2"
+    },
+    name: "--ds-theme4-neutral-12",
+    attributes: {},
+    path: [
+      "theme4",
+      "neutral",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c9ccd0",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c9ccd0"
+    },
+    name: "--ds-theme4-neutral-13",
     attributes: {},
     path: [
       "theme4",
@@ -6855,15 +4305,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f9f9fa",
-      type: "color"
+      type: "color",
+      value: "#f9f9fa"
     },
-    name: "--fds-theme4-neutral-contrast-1",
+    name: "--ds-theme4-neutral-contrast-1",
     attributes: {},
     path: [
       "theme4",
@@ -6872,15 +4322,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#9ea3ab",
-      type: "color"
+      type: "color",
+      value: "#9ea3ab"
     },
-    name: "--fds-theme4-neutral-contrast-2",
+    name: "--ds-theme4-neutral-contrast-2",
     attributes: {},
     path: [
       "theme4",
@@ -6889,253 +4339,253 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-1",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-2",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fcdadb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fcdadb",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-3",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbc4c5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fbc4c5",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-4",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#f9adaf",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#f9adaf",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-5",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-6",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-7",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-8",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-9",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-10",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-11",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#843336",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#843336",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-12",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-13",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#41191b",
-      type: "color"
-    },
-    name: "--fds-theme4-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
     value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#2f1213",
-      type: "color"
+      type: "color",
+      value: "#2f1213"
     },
-    name: "--fds-theme4-brand1-contrast-2",
+    name: "--ds-theme4-brand1-1",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3c1819",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3c1819"
+    },
+    name: "--ds-theme4-brand1-2",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#522021",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#522021"
+    },
+    name: "--ds-theme4-brand1-3",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#602627",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#602627"
+    },
+    name: "--ds-theme4-brand1-4",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#702c2e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#702c2e"
+    },
+    name: "--ds-theme4-brand1-5",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8b3639",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#8b3639"
+    },
+    name: "--ds-theme4-brand1-6",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b34649",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b34649"
+    },
+    name: "--ds-theme4-brand1-7",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#dd565a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#dd565a"
+    },
+    name: "--ds-theme4-brand1-8",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f35f63",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f35f63"
+    },
+    name: "--ds-theme4-brand1-9",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cc5053",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#cc5053"
+    },
+    name: "--ds-theme4-brand1-10",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a84144",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a84144"
+    },
+    name: "--ds-theme4-brand1-11",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f78d8f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f78d8f"
+    },
+    name: "--ds-theme4-brand1-12",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fabcbd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#fabcbd"
+    },
+    name: "--ds-theme4-brand1-13",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#41191b",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#41191b"
+    },
+    name: "--ds-theme4-brand1-contrast-1",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand1",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme4-brand1-contrast-2",
     attributes: {},
     path: [
       "theme4",
@@ -7144,15 +4594,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#231a05",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fffefc",
-      type: "color"
+      type: "color",
+      value: "#231a05"
     },
-    name: "--fds-theme4-brand2-1",
+    name: "--ds-theme4-brand2-1",
     attributes: {},
     path: [
       "theme4",
@@ -7161,15 +4611,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#2d2206",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fbf3e0",
-      type: "color"
+      type: "color",
+      value: "#2d2206"
     },
-    name: "--fds-theme4-brand2-2",
+    name: "--ds-theme4-brand2-2",
     attributes: {},
     path: [
       "theme4",
@@ -7178,185 +4628,185 @@ export const  color = [
     ]
   },
   {
-    value: "#f5dfac",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#f5dfac",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-3",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "3"
-    ]
-  },
-  {
-    value: "#f0ce7e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#f0ce7e",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-4",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "4"
-    ]
-  },
-  {
-    value: "#eaba4a",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#eaba4a",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-5",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "5"
-    ]
-  },
-  {
-    value: "#edc464",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#edc464",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-6",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "6"
-    ]
-  },
-  {
-    value: "#b28419",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#b28419",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-7",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "7"
-    ]
-  },
-  {
-    value: "#684e0f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#684e0f",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-8",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "8"
-    ]
-  },
-  {
-    value: "#e4a920",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#e4a920",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-9",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "9"
-    ]
-  },
-  {
-    value: "#c6931c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#c6931c",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-10",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "10"
-    ]
-  },
-  {
-    value: "#a87c17",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#a87c17",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-11",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "11"
-    ]
-  },
-  {
-    value: "#634a0e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
-    isSource: true,
-    original: {
-      value: "#634a0e",
-      type: "color"
-    },
-    name: "--fds-theme4-brand2-12",
-    attributes: {},
-    path: [
-      "theme4",
-      "brand2",
-      "12"
-    ]
-  },
-  {
     value: "#3d2e09",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#3d2e09",
-      type: "color"
+      type: "color",
+      value: "#3d2e09"
     },
-    name: "--fds-theme4-brand2-13",
+    name: "--ds-theme4-brand2-3",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#48360a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#48360a"
+    },
+    name: "--ds-theme4-brand2-4",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#543e0c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#543e0c"
+    },
+    name: "--ds-theme4-brand2-5",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#684e0f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#684e0f"
+    },
+    name: "--ds-theme4-brand2-6",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#876413",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#876413"
+    },
+    name: "--ds-theme4-brand2-7",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme4-brand2-8",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#e4a920",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#e4a920"
+    },
+    name: "--ds-theme4-brand2-9",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c6931c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c6931c"
+    },
+    name: "--ds-theme4-brand2-10",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme4-brand2-11",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#daa21f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#daa21f"
+    },
+    name: "--ds-theme4-brand2-12",
+    attributes: {},
+    path: [
+      "theme4",
+      "brand2",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#eec76c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#eec76c"
+    },
+    name: "--ds-theme4-brand2-13",
     attributes: {},
     path: [
       "theme4",
@@ -7365,15 +4815,15 @@ export const  color = [
     ]
   },
   {
-    value: "#302407",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#302407",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#302407",
-      type: "color"
+      type: "color",
+      value: "#302407"
     },
-    name: "--fds-theme4-brand2-contrast-1",
+    name: "--ds-theme4-brand2-contrast-1",
     attributes: {},
     path: [
       "theme4",
@@ -7382,15 +4832,15 @@ export const  color = [
     ]
   },
   {
-    value: "#45340a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#45340a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#45340a",
-      type: "color"
+      type: "color",
+      value: "#45340a"
     },
-    name: "--fds-theme4-brand2-contrast-2",
+    name: "--ds-theme4-brand2-contrast-2",
     attributes: {},
     path: [
       "theme4",
@@ -7399,15 +4849,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#061d30",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fdfeff",
-      type: "color"
+      type: "color",
+      value: "#061d30"
     },
-    name: "--fds-theme4-brand3-1",
+    name: "--ds-theme4-brand3-1",
     attributes: {},
     path: [
       "theme4",
@@ -7416,15 +4866,15 @@ export const  color = [
     ]
   },
   {
-    value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#07253c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#eaf6fe",
-      type: "color"
+      type: "color",
+      value: "#07253c"
     },
-    name: "--fds-theme4-brand3-2",
+    name: "--ds-theme4-brand3-2",
     attributes: {},
     path: [
       "theme4",
@@ -7433,15 +4883,15 @@ export const  color = [
     ]
   },
   {
-    value: "#c8e6fd",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#0a3251",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#c8e6fd",
-      type: "color"
+      type: "color",
+      value: "#0a3251"
     },
-    name: "--fds-theme4-brand3-3",
+    name: "--ds-theme4-brand3-3",
     attributes: {},
     path: [
       "theme4",
@@ -7450,15 +4900,15 @@ export const  color = [
     ]
   },
   {
-    value: "#a9d7fb",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#0c3b60",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a9d7fb",
-      type: "color"
+      type: "color",
+      value: "#0c3b60"
     },
-    name: "--fds-theme4-brand3-4",
+    name: "--ds-theme4-brand3-4",
     attributes: {},
     path: [
       "theme4",
@@ -7467,15 +4917,15 @@ export const  color = [
     ]
   },
   {
-    value: "#84c7fa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#0e446e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#84c7fa",
-      type: "color"
+      type: "color",
+      value: "#0e446e"
     },
-    name: "--fds-theme4-brand3-5",
+    name: "--ds-theme4-brand3-5",
     attributes: {},
     path: [
       "theme4",
@@ -7484,15 +4934,15 @@ export const  color = [
     ]
   },
   {
-    value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#11558a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#96cffa",
-      type: "color"
+      type: "color",
+      value: "#11558a"
     },
-    name: "--fds-theme4-brand3-6",
+    name: "--ds-theme4-brand3-6",
     attributes: {},
     path: [
       "theme4",
@@ -7501,15 +4951,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#166eb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#1c90e8",
-      type: "color"
+      type: "color",
+      value: "#166eb2"
     },
-    name: "--fds-theme4-brand3-7",
+    name: "--ds-theme4-brand3-7",
     attributes: {},
     path: [
       "theme4",
@@ -7518,15 +4968,15 @@ export const  color = [
     ]
   },
   {
-    value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#1b88db",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#11558a",
-      type: "color"
+      type: "color",
+      value: "#1b88db"
     },
-    name: "--fds-theme4-brand3-8",
+    name: "--ds-theme4-brand3-8",
     attributes: {},
     path: [
       "theme4",
@@ -7535,15 +4985,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#1e98f5",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#1e98f5",
-      type: "color"
+      type: "color",
+      value: "#1e98f5"
     },
-    name: "--fds-theme4-brand3-9",
+    name: "--ds-theme4-brand3-9",
     attributes: {},
     path: [
       "theme4",
@@ -7552,15 +5002,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#1980ce",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#1980ce",
-      type: "color"
+      type: "color",
+      value: "#1980ce"
     },
-    name: "--fds-theme4-brand3-10",
+    name: "--ds-theme4-brand3-10",
     attributes: {},
     path: [
       "theme4",
@@ -7569,15 +5019,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#1569a9",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#1569a9",
-      type: "color"
+      type: "color",
+      value: "#1569a9"
     },
-    name: "--fds-theme4-brand3-11",
+    name: "--ds-theme4-brand3-11",
     attributes: {},
     path: [
       "theme4",
@@ -7586,15 +5036,15 @@ export const  color = [
     ]
   },
   {
-    value: "#105082",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#57b2f8",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#105082",
-      type: "color"
+      type: "color",
+      value: "#57b2f8"
     },
-    name: "--fds-theme4-brand3-12",
+    name: "--ds-theme4-brand3-12",
     attributes: {},
     path: [
       "theme4",
@@ -7603,15 +5053,15 @@ export const  color = [
     ]
   },
   {
-    value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#9cd2fb",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#0a3251",
-      type: "color"
+      type: "color",
+      value: "#9cd2fb"
     },
-    name: "--fds-theme4-brand3-13",
+    name: "--ds-theme4-brand3-13",
     attributes: {},
     path: [
       "theme4",
@@ -7620,15 +5070,15 @@ export const  color = [
     ]
   },
   {
-    value: "#082740",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#082740",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#082740",
-      type: "color"
+      type: "color",
+      value: "#082740"
     },
-    name: "--fds-theme4-brand3-contrast-1",
+    name: "--ds-theme4-brand3-contrast-1",
     attributes: {},
     path: [
       "theme4",
@@ -7637,15 +5087,15 @@ export const  color = [
     ]
   },
   {
-    value: "#061f33",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme4.json",
+    value: "#061f33",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#061f33",
-      type: "color"
+      type: "color",
+      value: "#061f33"
     },
-    name: "--fds-theme4-brand3-contrast-2",
+    name: "--ds-theme4-brand3-contrast-2",
     attributes: {},
     path: [
       "theme4",
@@ -7654,253 +5104,2803 @@ export const  color = [
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#001c36",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#001c36"
     },
-    name: "--fds-theme-accent-1",
+    name: "--ds-theme3-accent-1",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "1"
     ]
   },
   {
-    value: "#eef4fa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#002445",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#eef4fa",
-      type: "color"
+      type: "color",
+      value: "#002445"
     },
-    name: "--fds-theme-accent-2",
+    name: "--ds-theme3-accent-2",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "2"
     ]
   },
   {
-    value: "#d4e5f3",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#00315c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#d4e5f3",
-      type: "color"
+      type: "color",
+      value: "#00315c"
     },
-    name: "--fds-theme-accent-3",
+    name: "--ds-theme3-accent-3",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "3"
     ]
   },
   {
-    value: "#bad5ec",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#00396d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#bad5ec",
-      type: "color"
+      type: "color",
+      value: "#00396d"
     },
-    name: "--fds-theme-accent-4",
+    name: "--ds-theme3-accent-4",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "4"
     ]
   },
   {
-    value: "#a1c5e5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#00427e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#a1c5e5",
-      type: "color"
+      type: "color",
+      value: "#00427e"
     },
-    name: "--fds-theme-accent-5",
+    name: "--ds-theme3-accent-5",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "5"
     ]
   },
   {
-    value: "#aecde9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#aecde9",
-      type: "color"
-    },
-    name: "--fds-theme-accent-6",
-    attributes: {},
-    path: [
-      "theme",
-      "accent",
-      "6"
-    ]
-  },
-  {
-    value: "#4b90ce",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#4b90ce",
-      type: "color"
-    },
-    name: "--fds-theme-accent-7",
-    attributes: {},
-    path: [
-      "theme",
-      "accent",
-      "7"
-    ]
-  },
-  {
     value: "#00529d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#00529d",
-      type: "color"
+      type: "color",
+      value: "#00529d"
     },
-    name: "--fds-theme-accent-8",
+    name: "--ds-theme3-accent-6",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
+      "accent",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0f6bbe",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0f6bbe"
+    },
+    name: "--ds-theme3-accent-7",
+    attributes: {},
+    path: [
+      "theme3",
+      "accent",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d88ca",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d88ca"
+    },
+    name: "--ds-theme3-accent-8",
+    attributes: {},
+    path: [
+      "theme3",
       "accent",
       "8"
     ]
   },
   {
+    type: "color",
     value: "#0163ba",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#0163ba",
-      type: "color"
+      type: "color",
+      value: "#0163ba"
     },
-    name: "--fds-theme-accent-9",
+    name: "--ds-theme3-accent-9",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "9"
     ]
   },
   {
-    value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#004d93",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#004d93",
-      type: "color"
+      type: "color",
+      value: "#004d93"
     },
-    name: "--fds-theme-accent-10",
+    name: "--ds-theme3-accent-10",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "10"
     ]
   },
   {
+    type: "color",
     value: "#00396d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#00396d",
-      type: "color"
+      type: "color",
+      value: "#00396d"
     },
-    name: "--fds-theme-accent-11",
+    name: "--ds-theme3-accent-11",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "11"
     ]
   },
   {
-    value: "#004d93",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#7eb0dc",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#004d93",
-      type: "color"
+      type: "color",
+      value: "#7eb0dc"
     },
-    name: "--fds-theme-accent-12",
+    name: "--ds-theme3-accent-12",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "12"
     ]
   },
   {
-    value: "#00315c",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#b0cfea"
     },
-    name: "--fds-theme-accent-13",
+    name: "--ds-theme3-accent-13",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "13"
     ]
   },
   {
+    type: "color",
     value: "#f6fafd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#f6fafd",
-      type: "color"
+      type: "color",
+      value: "#f6fafd"
     },
-    name: "--fds-theme-accent-contrast-1",
+    name: "--ds-theme3-accent-contrast-1",
     attributes: {},
     path: [
-      "theme",
+      "theme3",
       "accent",
       "contrast-1"
     ]
   },
   {
+    type: "color",
     value: "#ddeaf6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#ddeaf6",
-      type: "color"
+      type: "color",
+      value: "#ddeaf6"
     },
-    name: "--fds-theme-accent-contrast-2",
+    name: "--ds-theme3-accent-contrast-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "accent",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#131c27",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#131c27"
+    },
+    name: "--ds-theme3-neutral-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#192433",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#192433"
+    },
+    name: "--ds-theme3-neutral-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#243142",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#243142"
+    },
+    name: "--ds-theme3-neutral-3",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e3a4a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2e3a4a"
+    },
+    name: "--ds-theme3-neutral-4",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#374352",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#374352"
+    },
+    name: "--ds-theme3-neutral-5",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme3-neutral-6",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#626b77",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#626b77"
+    },
+    name: "--ds-theme3-neutral-7",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7d848e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7d848e"
+    },
+    name: "--ds-theme3-neutral-8",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e2b3c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e2b3c"
+    },
+    name: "--ds-theme3-neutral-9",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#333e4e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#333e4e"
+    },
+    name: "--ds-theme3-neutral-10",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme3-neutral-11",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a6abb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a6abb2"
+    },
+    name: "--ds-theme3-neutral-12",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c9ccd0",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c9ccd0"
+    },
+    name: "--ds-theme3-neutral-13",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f9f9fa",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f9f9fa"
+    },
+    name: "--ds-theme3-neutral-contrast-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9ea3ab",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#9ea3ab"
+    },
+    name: "--ds-theme3-neutral-contrast-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "neutral",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme3-brand1-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3c1819",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3c1819"
+    },
+    name: "--ds-theme3-brand1-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#522021",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#522021"
+    },
+    name: "--ds-theme3-brand1-3",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#602627",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#602627"
+    },
+    name: "--ds-theme3-brand1-4",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#702c2e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#702c2e"
+    },
+    name: "--ds-theme3-brand1-5",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8b3639",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#8b3639"
+    },
+    name: "--ds-theme3-brand1-6",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b34649",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b34649"
+    },
+    name: "--ds-theme3-brand1-7",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#dd565a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#dd565a"
+    },
+    name: "--ds-theme3-brand1-8",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f35f63",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f35f63"
+    },
+    name: "--ds-theme3-brand1-9",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cc5053",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#cc5053"
+    },
+    name: "--ds-theme3-brand1-10",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a84144",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a84144"
+    },
+    name: "--ds-theme3-brand1-11",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f78d8f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f78d8f"
+    },
+    name: "--ds-theme3-brand1-12",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fabcbd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#fabcbd"
+    },
+    name: "--ds-theme3-brand1-13",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#41191b",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#41191b"
+    },
+    name: "--ds-theme3-brand1-contrast-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme3-brand1-contrast-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand1",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#231a05",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#231a05"
+    },
+    name: "--ds-theme3-brand2-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2d2206",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2d2206"
+    },
+    name: "--ds-theme3-brand2-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d2e09",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d2e09"
+    },
+    name: "--ds-theme3-brand2-3",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#48360a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#48360a"
+    },
+    name: "--ds-theme3-brand2-4",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#543e0c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#543e0c"
+    },
+    name: "--ds-theme3-brand2-5",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#684e0f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#684e0f"
+    },
+    name: "--ds-theme3-brand2-6",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#876413",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#876413"
+    },
+    name: "--ds-theme3-brand2-7",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme3-brand2-8",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#e4a920",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#e4a920"
+    },
+    name: "--ds-theme3-brand2-9",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c6931c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c6931c"
+    },
+    name: "--ds-theme3-brand2-10",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme3-brand2-11",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#daa21f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#daa21f"
+    },
+    name: "--ds-theme3-brand2-12",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#eec76c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#eec76c"
+    },
+    name: "--ds-theme3-brand2-13",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#302407",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#302407"
+    },
+    name: "--ds-theme3-brand2-contrast-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#45340a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#45340a"
+    },
+    name: "--ds-theme3-brand2-contrast-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand2",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061d30",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#061d30"
+    },
+    name: "--ds-theme3-brand3-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#07253c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#07253c"
+    },
+    name: "--ds-theme3-brand3-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0a3251",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0a3251"
+    },
+    name: "--ds-theme3-brand3-3",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0c3b60",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0c3b60"
+    },
+    name: "--ds-theme3-brand3-4",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0e446e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0e446e"
+    },
+    name: "--ds-theme3-brand3-5",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#11558a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#11558a"
+    },
+    name: "--ds-theme3-brand3-6",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#166eb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#166eb2"
+    },
+    name: "--ds-theme3-brand3-7",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1b88db",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1b88db"
+    },
+    name: "--ds-theme3-brand3-8",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e98f5",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e98f5"
+    },
+    name: "--ds-theme3-brand3-9",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1980ce",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1980ce"
+    },
+    name: "--ds-theme3-brand3-10",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1569a9",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1569a9"
+    },
+    name: "--ds-theme3-brand3-11",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#57b2f8",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#57b2f8"
+    },
+    name: "--ds-theme3-brand3-12",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9cd2fb",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#9cd2fb"
+    },
+    name: "--ds-theme3-brand3-13",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#082740",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#082740"
+    },
+    name: "--ds-theme3-brand3-contrast-1",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061f33",
+    filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#061f33"
+    },
+    name: "--ds-theme3-brand3-contrast-2",
+    attributes: {},
+    path: [
+      "theme3",
+      "brand3",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#001c36",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#001c36"
+    },
+    name: "--ds-theme2-accent-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#002445",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#002445"
+    },
+    name: "--ds-theme2-accent-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00315c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00315c"
+    },
+    name: "--ds-theme2-accent-3",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00396d"
+    },
+    name: "--ds-theme2-accent-4",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00427e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00427e"
+    },
+    name: "--ds-theme2-accent-5",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00529d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00529d"
+    },
+    name: "--ds-theme2-accent-6",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0f6bbe",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0f6bbe"
+    },
+    name: "--ds-theme2-accent-7",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d88ca",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d88ca"
+    },
+    name: "--ds-theme2-accent-8",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0163ba",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0163ba"
+    },
+    name: "--ds-theme2-accent-9",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#004d93",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#004d93"
+    },
+    name: "--ds-theme2-accent-10",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00396d"
+    },
+    name: "--ds-theme2-accent-11",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7eb0dc",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7eb0dc"
+    },
+    name: "--ds-theme2-accent-12",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b0cfea"
+    },
+    name: "--ds-theme2-accent-13",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f6fafd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f6fafd"
+    },
+    name: "--ds-theme2-accent-contrast-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#ddeaf6",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#ddeaf6"
+    },
+    name: "--ds-theme2-accent-contrast-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "accent",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#131c27",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#131c27"
+    },
+    name: "--ds-theme2-neutral-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#192433",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#192433"
+    },
+    name: "--ds-theme2-neutral-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#243142",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#243142"
+    },
+    name: "--ds-theme2-neutral-3",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e3a4a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2e3a4a"
+    },
+    name: "--ds-theme2-neutral-4",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#374352",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#374352"
+    },
+    name: "--ds-theme2-neutral-5",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme2-neutral-6",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#626b77",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#626b77"
+    },
+    name: "--ds-theme2-neutral-7",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7d848e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7d848e"
+    },
+    name: "--ds-theme2-neutral-8",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e2b3c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e2b3c"
+    },
+    name: "--ds-theme2-neutral-9",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#333e4e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#333e4e"
+    },
+    name: "--ds-theme2-neutral-10",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme2-neutral-11",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a6abb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a6abb2"
+    },
+    name: "--ds-theme2-neutral-12",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c9ccd0",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c9ccd0"
+    },
+    name: "--ds-theme2-neutral-13",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f9f9fa",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f9f9fa"
+    },
+    name: "--ds-theme2-neutral-contrast-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9ea3ab",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#9ea3ab"
+    },
+    name: "--ds-theme2-neutral-contrast-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "neutral",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme2-brand1-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3c1819",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3c1819"
+    },
+    name: "--ds-theme2-brand1-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#522021",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#522021"
+    },
+    name: "--ds-theme2-brand1-3",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#602627",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#602627"
+    },
+    name: "--ds-theme2-brand1-4",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#702c2e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#702c2e"
+    },
+    name: "--ds-theme2-brand1-5",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8b3639",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#8b3639"
+    },
+    name: "--ds-theme2-brand1-6",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b34649",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b34649"
+    },
+    name: "--ds-theme2-brand1-7",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#dd565a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#dd565a"
+    },
+    name: "--ds-theme2-brand1-8",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f35f63",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f35f63"
+    },
+    name: "--ds-theme2-brand1-9",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cc5053",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#cc5053"
+    },
+    name: "--ds-theme2-brand1-10",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a84144",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a84144"
+    },
+    name: "--ds-theme2-brand1-11",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f78d8f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f78d8f"
+    },
+    name: "--ds-theme2-brand1-12",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fabcbd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#fabcbd"
+    },
+    name: "--ds-theme2-brand1-13",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#41191b",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#41191b"
+    },
+    name: "--ds-theme2-brand1-contrast-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme2-brand1-contrast-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand1",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#231a05",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#231a05"
+    },
+    name: "--ds-theme2-brand2-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2d2206",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2d2206"
+    },
+    name: "--ds-theme2-brand2-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d2e09",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d2e09"
+    },
+    name: "--ds-theme2-brand2-3",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#48360a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#48360a"
+    },
+    name: "--ds-theme2-brand2-4",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#543e0c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#543e0c"
+    },
+    name: "--ds-theme2-brand2-5",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#684e0f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#684e0f"
+    },
+    name: "--ds-theme2-brand2-6",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#876413",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#876413"
+    },
+    name: "--ds-theme2-brand2-7",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme2-brand2-8",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#e4a920",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#e4a920"
+    },
+    name: "--ds-theme2-brand2-9",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c6931c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c6931c"
+    },
+    name: "--ds-theme2-brand2-10",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a87c17"
+    },
+    name: "--ds-theme2-brand2-11",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#daa21f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#daa21f"
+    },
+    name: "--ds-theme2-brand2-12",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#eec76c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#eec76c"
+    },
+    name: "--ds-theme2-brand2-13",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#302407",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#302407"
+    },
+    name: "--ds-theme2-brand2-contrast-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#45340a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#45340a"
+    },
+    name: "--ds-theme2-brand2-contrast-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand2",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061d30",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#061d30"
+    },
+    name: "--ds-theme2-brand3-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#07253c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#07253c"
+    },
+    name: "--ds-theme2-brand3-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0a3251",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0a3251"
+    },
+    name: "--ds-theme2-brand3-3",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0c3b60",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0c3b60"
+    },
+    name: "--ds-theme2-brand3-4",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0e446e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0e446e"
+    },
+    name: "--ds-theme2-brand3-5",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#11558a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#11558a"
+    },
+    name: "--ds-theme2-brand3-6",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#166eb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#166eb2"
+    },
+    name: "--ds-theme2-brand3-7",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1b88db",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1b88db"
+    },
+    name: "--ds-theme2-brand3-8",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e98f5",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e98f5"
+    },
+    name: "--ds-theme2-brand3-9",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1980ce",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1980ce"
+    },
+    name: "--ds-theme2-brand3-10",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1569a9",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1569a9"
+    },
+    name: "--ds-theme2-brand3-11",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#57b2f8",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#57b2f8"
+    },
+    name: "--ds-theme2-brand3-12",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#9cd2fb",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#9cd2fb"
+    },
+    name: "--ds-theme2-brand3-13",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#082740",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#082740"
+    },
+    name: "--ds-theme2-brand3-contrast-1",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#061f33",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#061f33"
+    },
+    name: "--ds-theme2-brand3-contrast-2",
+    attributes: {},
+    path: [
+      "theme2",
+      "brand3",
+      "contrast-2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#001c36",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#001c36"
+    },
+    name: "--ds-theme-accent-1",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#002445",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#002445"
+    },
+    name: "--ds-theme-accent-2",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00315c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00315c"
+    },
+    name: "--ds-theme-accent-3",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00396d"
+    },
+    name: "--ds-theme-accent-4",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00427e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00427e"
+    },
+    name: "--ds-theme-accent-5",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00529d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00529d"
+    },
+    name: "--ds-theme-accent-6",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0f6bbe",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0f6bbe"
+    },
+    name: "--ds-theme-accent-7",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3d88ca",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3d88ca"
+    },
+    name: "--ds-theme-accent-8",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#0163ba",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#0163ba"
+    },
+    name: "--ds-theme-accent-9",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#004d93",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#004d93"
+    },
+    name: "--ds-theme-accent-10",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#00396d",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#00396d"
+    },
+    name: "--ds-theme-accent-11",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7eb0dc",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7eb0dc"
+    },
+    name: "--ds-theme-accent-12",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b0cfea"
+    },
+    name: "--ds-theme-accent-13",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f6fafd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f6fafd"
+    },
+    name: "--ds-theme-accent-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "accent",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#ddeaf6",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#ddeaf6"
+    },
+    name: "--ds-theme-accent-contrast-2",
     attributes: {},
     path: [
       "theme",
@@ -7909,15 +7909,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#131c27",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#131c27"
     },
-    name: "--fds-theme-neutral-1",
+    name: "--ds-theme-neutral-1",
     attributes: {},
     path: [
       "theme",
@@ -7926,15 +7926,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f3f4f5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#192433",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#f3f4f5",
-      type: "color"
+      type: "color",
+      value: "#192433"
     },
-    name: "--fds-theme-neutral-2",
+    name: "--ds-theme-neutral-2",
     attributes: {},
     path: [
       "theme",
@@ -7943,185 +7943,185 @@ export const  color = [
     ]
   },
   {
-    value: "#e1e3e5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#e1e3e5",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-3",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "3"
-    ]
-  },
-  {
-    value: "#ced1d4",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#ced1d4",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-4",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "4"
-    ]
-  },
-  {
-    value: "#bdc1c6",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#bdc1c6",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-5",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "5"
-    ]
-  },
-  {
-    value: "#c6c9cd",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#c6c9cd",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-6",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "6"
-    ]
-  },
-  {
-    value: "#858c96",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#858c96",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-7",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "7"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-8",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "8"
-    ]
-  },
-  {
-    value: "#1e2b3c",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#1e2b3c",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-9",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "9"
-    ]
-  },
-  {
-    value: "#333e4e",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#333e4e",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-10",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "10"
-    ]
-  },
-  {
-    value: "#495361",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#495361",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-11",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "11"
-    ]
-  },
-  {
-    value: "#444e5d",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#444e5d",
-      type: "color"
-    },
-    name: "--fds-theme-neutral-12",
-    attributes: {},
-    path: [
-      "theme",
-      "neutral",
-      "12"
-    ]
-  },
-  {
     value: "#243142",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#243142",
-      type: "color"
+      type: "color",
+      value: "#243142"
     },
-    name: "--fds-theme-neutral-13",
+    name: "--ds-theme-neutral-3",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2e3a4a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2e3a4a"
+    },
+    name: "--ds-theme-neutral-4",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#374352",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#374352"
+    },
+    name: "--ds-theme-neutral-5",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme-neutral-6",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#626b77",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#626b77"
+    },
+    name: "--ds-theme-neutral-7",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#7d848e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#7d848e"
+    },
+    name: "--ds-theme-neutral-8",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#1e2b3c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#1e2b3c"
+    },
+    name: "--ds-theme-neutral-9",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#333e4e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#333e4e"
+    },
+    name: "--ds-theme-neutral-10",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#495361",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#495361"
+    },
+    name: "--ds-theme-neutral-11",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a6abb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a6abb2"
+    },
+    name: "--ds-theme-neutral-12",
+    attributes: {},
+    path: [
+      "theme",
+      "neutral",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#c9ccd0",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#c9ccd0"
+    },
+    name: "--ds-theme-neutral-13",
     attributes: {},
     path: [
       "theme",
@@ -8130,15 +8130,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#f9f9fa",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#f9f9fa",
-      type: "color"
+      type: "color",
+      value: "#f9f9fa"
     },
-    name: "--fds-theme-neutral-contrast-1",
+    name: "--ds-theme-neutral-contrast-1",
     attributes: {},
     path: [
       "theme",
@@ -8147,15 +8147,15 @@ export const  color = [
     ]
   },
   {
+    type: "color",
     value: "#9ea3ab",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#9ea3ab",
-      type: "color"
+      type: "color",
+      value: "#9ea3ab"
     },
-    name: "--fds-theme-neutral-contrast-2",
+    name: "--ds-theme-neutral-contrast-2",
     attributes: {},
     path: [
       "theme",
@@ -8164,253 +8164,253 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#fffefe",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-1",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "1"
-    ]
-  },
-  {
-    value: "#fef0f1",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#fef0f1",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-2",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "2"
-    ]
-  },
-  {
-    value: "#fcdadb",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#fcdadb",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-3",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "3"
-    ]
-  },
-  {
-    value: "#fbc4c5",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#fbc4c5",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-4",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "4"
-    ]
-  },
-  {
-    value: "#f9adaf",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#f9adaf",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-5",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "5"
-    ]
-  },
-  {
-    value: "#fab8b9",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#fab8b9",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-6",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "6"
-    ]
-  },
-  {
-    value: "#eb5b5f",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#eb5b5f",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-7",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "7"
-    ]
-  },
-  {
-    value: "#8b3639",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#8b3639",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-8",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "8"
-    ]
-  },
-  {
-    value: "#f35f63",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#f35f63",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-9",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "9"
-    ]
-  },
-  {
-    value: "#cc5053",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#cc5053",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-10",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "10"
-    ]
-  },
-  {
-    value: "#a84144",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#a84144",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-11",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "11"
-    ]
-  },
-  {
-    value: "#843336",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#843336",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-12",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "12"
-    ]
-  },
-  {
-    value: "#522021",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#522021",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-13",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "13"
-    ]
-  },
-  {
-    value: "#41191b",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
-    isSource: true,
-    original: {
-      value: "#41191b",
-      type: "color"
-    },
-    name: "--fds-theme-brand1-contrast-1",
-    attributes: {},
-    path: [
-      "theme",
-      "brand1",
-      "contrast-1"
-    ]
-  },
-  {
     value: "#2f1213",
-    type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#2f1213",
-      type: "color"
+      type: "color",
+      value: "#2f1213"
     },
-    name: "--fds-theme-brand1-contrast-2",
+    name: "--ds-theme-brand1-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#3c1819",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#3c1819"
+    },
+    name: "--ds-theme-brand1-2",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "2"
+    ]
+  },
+  {
+    type: "color",
+    value: "#522021",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#522021"
+    },
+    name: "--ds-theme-brand1-3",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "3"
+    ]
+  },
+  {
+    type: "color",
+    value: "#602627",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#602627"
+    },
+    name: "--ds-theme-brand1-4",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "4"
+    ]
+  },
+  {
+    type: "color",
+    value: "#702c2e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#702c2e"
+    },
+    name: "--ds-theme-brand1-5",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "5"
+    ]
+  },
+  {
+    type: "color",
+    value: "#8b3639",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#8b3639"
+    },
+    name: "--ds-theme-brand1-6",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "6"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b34649",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#b34649"
+    },
+    name: "--ds-theme-brand1-7",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "7"
+    ]
+  },
+  {
+    type: "color",
+    value: "#dd565a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#dd565a"
+    },
+    name: "--ds-theme-brand1-8",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "8"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f35f63",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f35f63"
+    },
+    name: "--ds-theme-brand1-9",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "9"
+    ]
+  },
+  {
+    type: "color",
+    value: "#cc5053",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#cc5053"
+    },
+    name: "--ds-theme-brand1-10",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "10"
+    ]
+  },
+  {
+    type: "color",
+    value: "#a84144",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#a84144"
+    },
+    name: "--ds-theme-brand1-11",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "11"
+    ]
+  },
+  {
+    type: "color",
+    value: "#f78d8f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#f78d8f"
+    },
+    name: "--ds-theme-brand1-12",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "12"
+    ]
+  },
+  {
+    type: "color",
+    value: "#fabcbd",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#fabcbd"
+    },
+    name: "--ds-theme-brand1-13",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "13"
+    ]
+  },
+  {
+    type: "color",
+    value: "#41191b",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#41191b"
+    },
+    name: "--ds-theme-brand1-contrast-1",
+    attributes: {},
+    path: [
+      "theme",
+      "brand1",
+      "contrast-1"
+    ]
+  },
+  {
+    type: "color",
+    value: "#2f1213",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
+    isSource: true,
+    original: {
+      type: "color",
+      value: "#2f1213"
+    },
+    name: "--ds-theme-brand1-contrast-2",
     attributes: {},
     path: [
       "theme",
@@ -8419,15 +8419,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fffefc",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#231a05",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#fffefc",
-      type: "color"
+      type: "color",
+      value: "#231a05"
     },
-    name: "--fds-theme-brand2-1",
+    name: "--ds-theme-brand2-1",
     attributes: {},
     path: [
       "theme",
@@ -8436,15 +8436,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fbf3e0",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#2d2206",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#fbf3e0",
-      type: "color"
+      type: "color",
+      value: "#2d2206"
     },
-    name: "--fds-theme-brand2-2",
+    name: "--ds-theme-brand2-2",
     attributes: {},
     path: [
       "theme",
@@ -8453,15 +8453,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f5dfac",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#3d2e09",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#f5dfac",
-      type: "color"
+      type: "color",
+      value: "#3d2e09"
     },
-    name: "--fds-theme-brand2-3",
+    name: "--ds-theme-brand2-3",
     attributes: {},
     path: [
       "theme",
@@ -8470,15 +8470,15 @@ export const  color = [
     ]
   },
   {
-    value: "#f0ce7e",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#48360a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#f0ce7e",
-      type: "color"
+      type: "color",
+      value: "#48360a"
     },
-    name: "--fds-theme-brand2-4",
+    name: "--ds-theme-brand2-4",
     attributes: {},
     path: [
       "theme",
@@ -8487,15 +8487,15 @@ export const  color = [
     ]
   },
   {
-    value: "#eaba4a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#543e0c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#eaba4a",
-      type: "color"
+      type: "color",
+      value: "#543e0c"
     },
-    name: "--fds-theme-brand2-5",
+    name: "--ds-theme-brand2-5",
     attributes: {},
     path: [
       "theme",
@@ -8504,15 +8504,15 @@ export const  color = [
     ]
   },
   {
-    value: "#edc464",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#684e0f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#edc464",
-      type: "color"
+      type: "color",
+      value: "#684e0f"
     },
-    name: "--fds-theme-brand2-6",
+    name: "--ds-theme-brand2-6",
     attributes: {},
     path: [
       "theme",
@@ -8521,15 +8521,15 @@ export const  color = [
     ]
   },
   {
-    value: "#b28419",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#876413",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#b28419",
-      type: "color"
+      type: "color",
+      value: "#876413"
     },
-    name: "--fds-theme-brand2-7",
+    name: "--ds-theme-brand2-7",
     attributes: {},
     path: [
       "theme",
@@ -8538,15 +8538,15 @@ export const  color = [
     ]
   },
   {
-    value: "#684e0f",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#684e0f",
-      type: "color"
+      type: "color",
+      value: "#a87c17"
     },
-    name: "--fds-theme-brand2-8",
+    name: "--ds-theme-brand2-8",
     attributes: {},
     path: [
       "theme",
@@ -8555,15 +8555,15 @@ export const  color = [
     ]
   },
   {
-    value: "#e4a920",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#e4a920",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#e4a920",
-      type: "color"
+      type: "color",
+      value: "#e4a920"
     },
-    name: "--fds-theme-brand2-9",
+    name: "--ds-theme-brand2-9",
     attributes: {},
     path: [
       "theme",
@@ -8572,15 +8572,15 @@ export const  color = [
     ]
   },
   {
-    value: "#c6931c",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#c6931c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#c6931c",
-      type: "color"
+      type: "color",
+      value: "#c6931c"
     },
-    name: "--fds-theme-brand2-10",
+    name: "--ds-theme-brand2-10",
     attributes: {},
     path: [
       "theme",
@@ -8589,15 +8589,15 @@ export const  color = [
     ]
   },
   {
-    value: "#a87c17",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#a87c17",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#a87c17",
-      type: "color"
+      type: "color",
+      value: "#a87c17"
     },
-    name: "--fds-theme-brand2-11",
+    name: "--ds-theme-brand2-11",
     attributes: {},
     path: [
       "theme",
@@ -8606,15 +8606,15 @@ export const  color = [
     ]
   },
   {
-    value: "#634a0e",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#daa21f",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#634a0e",
-      type: "color"
+      type: "color",
+      value: "#daa21f"
     },
-    name: "--fds-theme-brand2-12",
+    name: "--ds-theme-brand2-12",
     attributes: {},
     path: [
       "theme",
@@ -8623,15 +8623,15 @@ export const  color = [
     ]
   },
   {
-    value: "#3d2e09",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#eec76c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#3d2e09",
-      type: "color"
+      type: "color",
+      value: "#eec76c"
     },
-    name: "--fds-theme-brand2-13",
+    name: "--ds-theme-brand2-13",
     attributes: {},
     path: [
       "theme",
@@ -8640,15 +8640,15 @@ export const  color = [
     ]
   },
   {
-    value: "#302407",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#302407",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#302407",
-      type: "color"
+      type: "color",
+      value: "#302407"
     },
-    name: "--fds-theme-brand2-contrast-1",
+    name: "--ds-theme-brand2-contrast-1",
     attributes: {},
     path: [
       "theme",
@@ -8657,15 +8657,15 @@ export const  color = [
     ]
   },
   {
-    value: "#45340a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#45340a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#45340a",
-      type: "color"
+      type: "color",
+      value: "#45340a"
     },
-    name: "--fds-theme-brand2-contrast-2",
+    name: "--ds-theme-brand2-contrast-2",
     attributes: {},
     path: [
       "theme",
@@ -8674,15 +8674,15 @@ export const  color = [
     ]
   },
   {
-    value: "#fdfeff",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#061d30",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#fdfeff",
-      type: "color"
+      type: "color",
+      value: "#061d30"
     },
-    name: "--fds-theme-brand3-1",
+    name: "--ds-theme-brand3-1",
     attributes: {},
     path: [
       "theme",
@@ -8691,15 +8691,15 @@ export const  color = [
     ]
   },
   {
-    value: "#eaf6fe",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#07253c",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#eaf6fe",
-      type: "color"
+      type: "color",
+      value: "#07253c"
     },
-    name: "--fds-theme-brand3-2",
+    name: "--ds-theme-brand3-2",
     attributes: {},
     path: [
       "theme",
@@ -8708,15 +8708,15 @@ export const  color = [
     ]
   },
   {
-    value: "#c8e6fd",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#0a3251",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#c8e6fd",
-      type: "color"
+      type: "color",
+      value: "#0a3251"
     },
-    name: "--fds-theme-brand3-3",
+    name: "--ds-theme-brand3-3",
     attributes: {},
     path: [
       "theme",
@@ -8725,15 +8725,15 @@ export const  color = [
     ]
   },
   {
-    value: "#a9d7fb",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#0c3b60",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#a9d7fb",
-      type: "color"
+      type: "color",
+      value: "#0c3b60"
     },
-    name: "--fds-theme-brand3-4",
+    name: "--ds-theme-brand3-4",
     attributes: {},
     path: [
       "theme",
@@ -8742,15 +8742,15 @@ export const  color = [
     ]
   },
   {
-    value: "#84c7fa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#0e446e",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#84c7fa",
-      type: "color"
+      type: "color",
+      value: "#0e446e"
     },
-    name: "--fds-theme-brand3-5",
+    name: "--ds-theme-brand3-5",
     attributes: {},
     path: [
       "theme",
@@ -8759,15 +8759,15 @@ export const  color = [
     ]
   },
   {
-    value: "#96cffa",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#11558a",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#96cffa",
-      type: "color"
+      type: "color",
+      value: "#11558a"
     },
-    name: "--fds-theme-brand3-6",
+    name: "--ds-theme-brand3-6",
     attributes: {},
     path: [
       "theme",
@@ -8776,15 +8776,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1c90e8",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#166eb2",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#1c90e8",
-      type: "color"
+      type: "color",
+      value: "#166eb2"
     },
-    name: "--fds-theme-brand3-7",
+    name: "--ds-theme-brand3-7",
     attributes: {},
     path: [
       "theme",
@@ -8793,15 +8793,15 @@ export const  color = [
     ]
   },
   {
-    value: "#11558a",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#1b88db",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#11558a",
-      type: "color"
+      type: "color",
+      value: "#1b88db"
     },
-    name: "--fds-theme-brand3-8",
+    name: "--ds-theme-brand3-8",
     attributes: {},
     path: [
       "theme",
@@ -8810,15 +8810,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1e98f5",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#1e98f5",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#1e98f5",
-      type: "color"
+      type: "color",
+      value: "#1e98f5"
     },
-    name: "--fds-theme-brand3-9",
+    name: "--ds-theme-brand3-9",
     attributes: {},
     path: [
       "theme",
@@ -8827,15 +8827,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1980ce",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#1980ce",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#1980ce",
-      type: "color"
+      type: "color",
+      value: "#1980ce"
     },
-    name: "--fds-theme-brand3-10",
+    name: "--ds-theme-brand3-10",
     attributes: {},
     path: [
       "theme",
@@ -8844,15 +8844,15 @@ export const  color = [
     ]
   },
   {
-    value: "#1569a9",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#1569a9",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#1569a9",
-      type: "color"
+      type: "color",
+      value: "#1569a9"
     },
-    name: "--fds-theme-brand3-11",
+    name: "--ds-theme-brand3-11",
     attributes: {},
     path: [
       "theme",
@@ -8861,15 +8861,15 @@ export const  color = [
     ]
   },
   {
-    value: "#105082",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#57b2f8",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#105082",
-      type: "color"
+      type: "color",
+      value: "#57b2f8"
     },
-    name: "--fds-theme-brand3-12",
+    name: "--ds-theme-brand3-12",
     attributes: {},
     path: [
       "theme",
@@ -8878,15 +8878,15 @@ export const  color = [
     ]
   },
   {
-    value: "#0a3251",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#9cd2fb",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#0a3251",
-      type: "color"
+      type: "color",
+      value: "#9cd2fb"
     },
-    name: "--fds-theme-brand3-13",
+    name: "--ds-theme-brand3-13",
     attributes: {},
     path: [
       "theme",
@@ -8895,15 +8895,15 @@ export const  color = [
     ]
   },
   {
-    value: "#082740",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#082740",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#082740",
-      type: "color"
+      type: "color",
+      value: "#082740"
     },
-    name: "--fds-theme-brand3-contrast-1",
+    name: "--ds-theme-brand3-contrast-1",
     attributes: {},
     path: [
       "theme",
@@ -8912,15 +8912,15 @@ export const  color = [
     ]
   },
   {
-    value: "#061f33",
     type: "color",
-    filePath: "../../design-tokens/primitives/colors/light/theme.json",
+    value: "#061f33",
+    filePath: "../../design-tokens/primitives/colors/dark/theme.json",
     isSource: true,
     original: {
-      value: "#061f33",
-      type: "color"
+      type: "color",
+      value: "#061f33"
     },
-    name: "--fds-theme-brand3-contrast-2",
+    name: "--ds-theme-brand3-contrast-2",
     attributes: {},
     path: [
       "theme",
@@ -8932,720 +8932,720 @@ export const  color = [
 
 export const  typography = [
   {
-    value: "500 3.75rem/1.3 'Inter'",
     type: "typography",
+    value: "500 3.75rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f7}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-heading-2xlarge",
+    name: "--ds-typography-heading-2xl",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "2xlarge"
+      "2xl"
     ]
   },
   {
-    value: "500 3rem/1.3 'Inter'",
     type: "typography",
+    value: "500 3rem/1.3 'Inter'",
     description: "H1",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f6}"
       },
-      type: "typography",
       description: "H1"
     },
-    name: "--fds-typography-heading-xlarge",
+    name: "--ds-typography-heading-xl",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xlarge"
+      "xl"
     ]
   },
   {
-    value: "500 2.25rem/1.3 'Inter'",
     type: "typography",
+    value: "500 2.25rem/1.3 'Inter'",
     description: "H2",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f5}"
       },
-      type: "typography",
       description: "H2"
     },
-    name: "--fds-typography-heading-large",
+    name: "--ds-typography-heading-lg",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "large"
+      "lg"
     ]
   },
   {
-    value: "500 1.875rem/1.3 'Inter'",
     type: "typography",
+    value: "500 1.875rem/1.3 'Inter'",
     description: "H3",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f4}"
       },
-      type: "typography",
       description: "H3"
     },
-    name: "--fds-typography-heading-medium",
+    name: "--ds-typography-heading-md",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "medium"
+      "md"
     ]
   },
   {
-    value: "500 1.5rem/1.3 'Inter'",
     type: "typography",
+    value: "500 1.5rem/1.3 'Inter'",
     description: "H4",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f3}"
       },
-      type: "typography",
       description: "H4"
     },
-    name: "--fds-typography-heading-small",
+    name: "--ds-typography-heading-sm",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "500 1.3125rem/1.3 'Inter'",
     type: "typography",
+    value: "500 1.3125rem/1.3 'Inter'",
     description: "H5",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
       },
-      type: "typography",
       description: "H5"
     },
-    name: "--fds-typography-heading-xsmall",
+    name: "--ds-typography-heading-xs",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xsmall"
+      "xs"
     ]
   },
   {
-    value: "500 1.125rem/1.3 'Inter'",
     type: "typography",
+    value: "500 1.125rem/1.3 'Inter'",
     description: "H6",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
       },
-      type: "typography",
       description: "H6"
     },
-    name: "--fds-typography-heading-xxsmall",
+    name: "--ds-typography-heading-2xs",
     attributes: {},
     path: [
       "typography",
       "heading",
-      "xxsmall"
+      "2xs"
     ]
   },
   {
-    value: "400 1.875rem/1.7 'Inter'",
     type: "typography",
+    value: "400 1.875rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f4}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-ingress-large",
+    name: "--ds-typography-ingress-lg",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "large"
+      "lg"
     ]
   },
   {
-    value: "400 1.5rem/1.7 'Inter'",
     type: "typography",
+    value: "400 1.5rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f3}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-ingress-medium",
+    name: "--ds-typography-ingress-md",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "medium"
+      "md"
     ]
   },
   {
+    type: "typography",
     value: "400 1.3125rem/1.7 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-ingress-small",
+    name: "--ds-typography-ingress-sm",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "400 1.125rem/1.7 'Inter'",
     type: "typography",
+    value: "400 1.125rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-ingress-xsmall",
+    name: "--ds-typography-ingress-xs",
     attributes: {},
     path: [
       "typography",
       "ingress",
-      "xsmall"
+      "xs"
     ]
   },
   {
+    type: "typography",
     value: "400 1.3125rem/1.5 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-large",
+    name: "--ds-typography-paragraph-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "large"
+      "lg"
     ]
   },
   {
+    type: "typography",
     value: "400 1.125rem/1.5 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-medium",
+    name: "--ds-typography-paragraph-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "medium"
+      "md"
     ]
   },
   {
-    value: "400 1rem/1.5 'Inter'",
     type: "typography",
+    value: "400 1rem/1.5 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f0}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-small",
+    name: "--ds-typography-paragraph-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "400 0.875rem/1.5 'Inter'",
     type: "typography",
+    value: "400 0.875rem/1.5 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f-1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-xsmall",
+    name: "--ds-typography-paragraph-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
-      "xsmall"
+      "xs"
     ]
   },
   {
-    value: "400 1.3125rem/1.3 'Inter'",
     type: "typography",
+    value: "400 1.3125rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-short-large",
+    name: "--ds-typography-paragraph-short-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "large"
+      "lg"
     ]
   },
   {
+    type: "typography",
     value: "400 1.125rem/1.3 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-short-medium",
+    name: "--ds-typography-paragraph-short-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "medium"
+      "md"
     ]
   },
   {
+    type: "typography",
     value: "400 1rem/1.3 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-short-small",
+    name: "--ds-typography-paragraph-short-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "400 0.875rem/1.3 'Inter'",
     type: "typography",
+    value: "400 0.875rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-short-xsmall",
+    name: "--ds-typography-paragraph-short-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "short",
-      "xsmall"
+      "xs"
     ]
   },
   {
-    value: "400 1.125rem/1.7 'Inter'",
     type: "typography",
+    value: "400 1.125rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-long-large",
+    name: "--ds-typography-paragraph-long-lg",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "large"
+      "lg"
     ]
   },
   {
-    value: "400 1rem/1.7 'Inter'",
     type: "typography",
+    value: "400 1rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f0}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-long-medium",
+    name: "--ds-typography-paragraph-long-md",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "medium"
+      "md"
     ]
   },
   {
-    value: "400 0.875rem/1.7 'Inter'",
     type: "typography",
+    value: "400 0.875rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-long-small",
+    name: "--ds-typography-paragraph-long-sm",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "400 0.8125rem/1.7 'Inter'",
     type: "typography",
+    value: "400 0.8125rem/1.7 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-paragraph-long-xsmall",
+    name: "--ds-typography-paragraph-long-xs",
     attributes: {},
     path: [
       "typography",
       "paragraph",
       "long",
-      "xsmall"
+      "xs"
     ]
   },
   {
+    type: "typography",
     value: "500 1.3125rem/1.3 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-label-large",
+    name: "--ds-typography-label-lg",
     attributes: {},
     path: [
       "typography",
       "label",
-      "large"
+      "lg"
     ]
   },
   {
+    type: "typography",
     value: "500 1.125rem/1.3 'Inter'",
-    type: "typography",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-label-medium",
+    name: "--ds-typography-label-md",
     attributes: {},
     path: [
       "typography",
       "label",
-      "medium"
+      "md"
     ]
   },
   {
-    value: "500 1rem/1.3 'Inter'",
     type: "typography",
+    value: "500 1rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-label-small",
+    name: "--ds-typography-label-sm",
     attributes: {},
     path: [
       "typography",
       "label",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "500 0.875rem/1.3 'Inter'",
     type: "typography",
+    value: "500 0.875rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-label-xsmall",
+    name: "--ds-typography-label-xs",
     attributes: {},
     path: [
       "typography",
       "label",
-      "xsmall"
+      "xs"
     ]
   },
   {
-    value: "400 1.3125rem/1.3 'Inter'",
     type: "typography",
+    value: "400 1.3125rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-error_message-large",
+    name: "--ds-typography-error_message-lg",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "large"
+      "lg"
     ]
   },
   {
-    value: "400 1.125rem/1.3 'Inter'",
     type: "typography",
+    value: "400 1.125rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-error_message-medium",
+    name: "--ds-typography-error_message-md",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "medium"
+      "md"
     ]
   },
   {
-    value: "400 1rem/1.3 'Inter'",
     type: "typography",
+    value: "400 1rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-error_message-small",
+    name: "--ds-typography-error_message-sm",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "small"
+      "sm"
     ]
   },
   {
-    value: "400 0.875rem/1.3 'Inter'",
     type: "typography",
+    value: "400 0.875rem/1.3 'Inter'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
+      type: "typography",
       value: {
         fontFamily: "{font-family.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
-      },
-      type: "typography"
+      }
     },
-    name: "--fds-typography-error_message-xsmall",
+    name: "--ds-typography-error_message-xs",
     attributes: {},
     path: [
       "typography",
       "error_message",
-      "xsmall"
+      "xs"
     ]
   }
 ] 
 
 export const  opacity = [
   {
-    value: "30%",
     type: "opacity",
+    value: "30%",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "30%",
-      type: "opacity"
+      type: "opacity",
+      value: "30%"
     },
-    name: "--fds-opacity-30",
+    name: "--ds-opacity-30",
     attributes: {},
     path: [
       "opacity",
@@ -9653,15 +9653,15 @@ export const  opacity = [
     ]
   },
   {
-    value: "30%",
     type: "opacity",
+    value: "30%",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{opacity.30}",
-      type: "opacity"
+      type: "opacity",
+      value: "{opacity.30}"
     },
-    name: "--fds-opacity-disabled",
+    name: "--ds-opacity-disabled",
     attributes: {},
     path: [
       "opacity",
@@ -9672,15 +9672,15 @@ export const  opacity = [
 
 export const  borderRadius = [
   {
-    value: "2px",
     type: "borderRadius",
+    value: "2px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "2",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "2"
     },
-    name: "--fds-border-radius-2",
+    name: "--ds-border-radius-2",
     attributes: {},
     path: [
       "border-radius",
@@ -9688,15 +9688,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "4px",
     type: "borderRadius",
+    value: "4px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "4",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "4"
     },
-    name: "--fds-border-radius-4",
+    name: "--ds-border-radius-4",
     attributes: {},
     path: [
       "border-radius",
@@ -9704,15 +9704,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "8px",
     type: "borderRadius",
+    value: "8px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "8",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "8"
     },
-    name: "--fds-border-radius-8",
+    name: "--ds-border-radius-8",
     attributes: {},
     path: [
       "border-radius",
@@ -9720,15 +9720,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "12px",
     type: "borderRadius",
+    value: "12px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "12",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "12"
     },
-    name: "--fds-border-radius-12",
+    name: "--ds-border-radius-12",
     attributes: {},
     path: [
       "border-radius",
@@ -9736,15 +9736,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "16px",
     type: "borderRadius",
+    value: "16px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "16",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "16"
     },
-    name: "--fds-border-radius-16",
+    name: "--ds-border-radius-16",
     attributes: {},
     path: [
       "border-radius",
@@ -9752,15 +9752,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "24px",
     type: "borderRadius",
+    value: "24px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "24",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "24"
     },
-    name: "--fds-border-radius-24",
+    name: "--ds-border-radius-24",
     attributes: {},
     path: [
       "border-radius",
@@ -9768,15 +9768,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "32px",
     type: "borderRadius",
+    value: "32px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "32",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "32"
     },
-    name: "--fds-border-radius-32",
+    name: "--ds-border-radius-32",
     attributes: {},
     path: [
       "border-radius",
@@ -9784,15 +9784,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "9999px",
     type: "borderRadius",
+    value: "9999px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "9999",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "9999"
     },
-    name: "--fds-border-radius-9999",
+    name: "--ds-border-radius-9999",
     attributes: {},
     path: [
       "border-radius",
@@ -9800,15 +9800,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "2px",
     type: "borderRadius",
+    value: "2px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.2}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.2}"
     },
-    name: "--fds-border-radius-sm",
+    name: "--ds-border-radius-sm",
     attributes: {},
     path: [
       "border-radius",
@@ -9816,15 +9816,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "4px",
     type: "borderRadius",
+    value: "4px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.4}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.4}"
     },
-    name: "--fds-border-radius-md",
+    name: "--ds-border-radius-md",
     attributes: {},
     path: [
       "border-radius",
@@ -9832,15 +9832,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "8px",
     type: "borderRadius",
+    value: "8px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.8}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.8}"
     },
-    name: "--fds-border-radius-lg",
+    name: "--ds-border-radius-lg",
     attributes: {},
     path: [
       "border-radius",
@@ -9848,15 +9848,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "12px",
     type: "borderRadius",
+    value: "12px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.12}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.12}"
     },
-    name: "--fds-border-radius-xl",
+    name: "--ds-border-radius-xl",
     attributes: {},
     path: [
       "border-radius",
@@ -9864,15 +9864,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "16px",
     type: "borderRadius",
+    value: "16px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.16}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.16}"
     },
-    name: "--fds-border-radius-2xl",
+    name: "--ds-border-radius-2xl",
     attributes: {},
     path: [
       "border-radius",
@@ -9880,15 +9880,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "24px",
     type: "borderRadius",
+    value: "24px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.24}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.24}"
     },
-    name: "--fds-border-radius-3xl",
+    name: "--ds-border-radius-3xl",
     attributes: {},
     path: [
       "border-radius",
@@ -9896,15 +9896,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "32px",
     type: "borderRadius",
+    value: "32px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.32}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.32}"
     },
-    name: "--fds-border-radius-4xl",
+    name: "--ds-border-radius-4xl",
     attributes: {},
     path: [
       "border-radius",
@@ -9912,15 +9912,15 @@ export const  borderRadius = [
     ]
   },
   {
-    value: "9999px",
     type: "borderRadius",
+    value: "9999px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-radius.9999}",
-      type: "borderRadius"
+      type: "borderRadius",
+      value: "{border-radius.9999}"
     },
-    name: "--fds-border-radius-full",
+    name: "--ds-border-radius-full",
     attributes: {},
     path: [
       "border-radius",
@@ -9931,15 +9931,15 @@ export const  borderRadius = [
 
 export const  spacing = [
   {
-    value: "0",
     type: "spacing",
+    value: "0",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*0",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*0"
     },
-    name: "--fds-spacing-0",
+    name: "--ds-spacing-0",
     attributes: {},
     path: [
       "spacing",
@@ -9947,15 +9947,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "0.25rem",
     type: "spacing",
+    value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*1",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*1"
     },
-    name: "--fds-spacing-1",
+    name: "--ds-spacing-1",
     attributes: {},
     path: [
       "spacing",
@@ -9963,15 +9963,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "0.5rem",
     type: "spacing",
+    value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*2",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*2"
     },
-    name: "--fds-spacing-2",
+    name: "--ds-spacing-2",
     attributes: {},
     path: [
       "spacing",
@@ -9979,15 +9979,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "0.75rem",
     type: "spacing",
+    value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*3",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*3"
     },
-    name: "--fds-spacing-3",
+    name: "--ds-spacing-3",
     attributes: {},
     path: [
       "spacing",
@@ -9995,15 +9995,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "1rem",
     type: "spacing",
+    value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*4",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*4"
     },
-    name: "--fds-spacing-4",
+    name: "--ds-spacing-4",
     attributes: {},
     path: [
       "spacing",
@@ -10011,15 +10011,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "1.25rem",
     type: "spacing",
+    value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*5",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*5"
     },
-    name: "--fds-spacing-5",
+    name: "--ds-spacing-5",
     attributes: {},
     path: [
       "spacing",
@@ -10027,15 +10027,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "1.5rem",
     type: "spacing",
+    value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*6",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*6"
     },
-    name: "--fds-spacing-6",
+    name: "--ds-spacing-6",
     attributes: {},
     path: [
       "spacing",
@@ -10043,15 +10043,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "1.75rem",
     type: "spacing",
+    value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*7",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*7"
     },
-    name: "--fds-spacing-7",
+    name: "--ds-spacing-7",
     attributes: {},
     path: [
       "spacing",
@@ -10059,15 +10059,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "2rem",
     type: "spacing",
+    value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*8",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*8"
     },
-    name: "--fds-spacing-8",
+    name: "--ds-spacing-8",
     attributes: {},
     path: [
       "spacing",
@@ -10075,15 +10075,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "2.25rem",
     type: "spacing",
+    value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*9",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*9"
     },
-    name: "--fds-spacing-9",
+    name: "--ds-spacing-9",
     attributes: {},
     path: [
       "spacing",
@@ -10091,15 +10091,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "2.5rem",
     type: "spacing",
+    value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*10",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*10"
     },
-    name: "--fds-spacing-10",
+    name: "--ds-spacing-10",
     attributes: {},
     path: [
       "spacing",
@@ -10107,15 +10107,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "2.75rem",
     type: "spacing",
+    value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*11",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*11"
     },
-    name: "--fds-spacing-11",
+    name: "--ds-spacing-11",
     attributes: {},
     path: [
       "spacing",
@@ -10123,15 +10123,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "3rem",
     type: "spacing",
+    value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*12",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*12"
     },
-    name: "--fds-spacing-12",
+    name: "--ds-spacing-12",
     attributes: {},
     path: [
       "spacing",
@@ -10139,15 +10139,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "3.25rem",
     type: "spacing",
+    value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*13",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*13"
     },
-    name: "--fds-spacing-13",
+    name: "--ds-spacing-13",
     attributes: {},
     path: [
       "spacing",
@@ -10155,15 +10155,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "3.5rem",
     type: "spacing",
+    value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*14",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*14"
     },
-    name: "--fds-spacing-14",
+    name: "--ds-spacing-14",
     attributes: {},
     path: [
       "spacing",
@@ -10171,15 +10171,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "3.75rem",
     type: "spacing",
+    value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*15",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*15"
     },
-    name: "--fds-spacing-15",
+    name: "--ds-spacing-15",
     attributes: {},
     path: [
       "spacing",
@@ -10187,15 +10187,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "4.5rem",
     type: "spacing",
+    value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*18",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*18"
     },
-    name: "--fds-spacing-18",
+    name: "--ds-spacing-18",
     attributes: {},
     path: [
       "spacing",
@@ -10203,15 +10203,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "5.5rem",
     type: "spacing",
+    value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*22",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*22"
     },
-    name: "--fds-spacing-22",
+    name: "--ds-spacing-22",
     attributes: {},
     path: [
       "spacing",
@@ -10219,15 +10219,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "6.5rem",
     type: "spacing",
+    value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*26",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*26"
     },
-    name: "--fds-spacing-26",
+    name: "--ds-spacing-26",
     attributes: {},
     path: [
       "spacing",
@@ -10235,15 +10235,15 @@ export const  spacing = [
     ]
   },
   {
-    value: "7.5rem",
     type: "spacing",
+    value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*30",
-      type: "spacing"
+      type: "spacing",
+      value: "{sizing.base}*30"
     },
-    name: "--fds-spacing-30",
+    name: "--ds-spacing-30",
     attributes: {},
     path: [
       "spacing",
@@ -10254,15 +10254,15 @@ export const  spacing = [
 
 export const  sizing = [
   {
-    value: "0",
     type: "sizing",
+    value: "0",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*0",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*0"
     },
-    name: "--fds-sizing-0",
+    name: "--ds-sizing-0",
     attributes: {},
     path: [
       "sizing",
@@ -10270,15 +10270,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "0.25rem",
     type: "sizing",
+    value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*1",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*1"
     },
-    name: "--fds-sizing-1",
+    name: "--ds-sizing-1",
     attributes: {},
     path: [
       "sizing",
@@ -10286,15 +10286,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "0.5rem",
     type: "sizing",
+    value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*2",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*2"
     },
-    name: "--fds-sizing-2",
+    name: "--ds-sizing-2",
     attributes: {},
     path: [
       "sizing",
@@ -10302,15 +10302,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "0.75rem",
     type: "sizing",
+    value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*3",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*3"
     },
-    name: "--fds-sizing-3",
+    name: "--ds-sizing-3",
     attributes: {},
     path: [
       "sizing",
@@ -10318,15 +10318,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "1rem",
     type: "sizing",
+    value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*4",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*4"
     },
-    name: "--fds-sizing-4",
+    name: "--ds-sizing-4",
     attributes: {},
     path: [
       "sizing",
@@ -10334,15 +10334,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "1.25rem",
     type: "sizing",
+    value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*5",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*5"
     },
-    name: "--fds-sizing-5",
+    name: "--ds-sizing-5",
     attributes: {},
     path: [
       "sizing",
@@ -10350,15 +10350,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "1.5rem",
     type: "sizing",
+    value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*6",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*6"
     },
-    name: "--fds-sizing-6",
+    name: "--ds-sizing-6",
     attributes: {},
     path: [
       "sizing",
@@ -10366,15 +10366,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "1.75rem",
     type: "sizing",
+    value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*7",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*7"
     },
-    name: "--fds-sizing-7",
+    name: "--ds-sizing-7",
     attributes: {},
     path: [
       "sizing",
@@ -10382,15 +10382,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "2rem",
     type: "sizing",
+    value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*8",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*8"
     },
-    name: "--fds-sizing-8",
+    name: "--ds-sizing-8",
     attributes: {},
     path: [
       "sizing",
@@ -10398,15 +10398,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "2.25rem",
     type: "sizing",
+    value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*9",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*9"
     },
-    name: "--fds-sizing-9",
+    name: "--ds-sizing-9",
     attributes: {},
     path: [
       "sizing",
@@ -10414,15 +10414,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "2.5rem",
     type: "sizing",
+    value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*10",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*10"
     },
-    name: "--fds-sizing-10",
+    name: "--ds-sizing-10",
     attributes: {},
     path: [
       "sizing",
@@ -10430,15 +10430,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "2.75rem",
     type: "sizing",
+    value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*11",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*11"
     },
-    name: "--fds-sizing-11",
+    name: "--ds-sizing-11",
     attributes: {},
     path: [
       "sizing",
@@ -10446,15 +10446,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "3rem",
     type: "sizing",
+    value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*12",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*12"
     },
-    name: "--fds-sizing-12",
+    name: "--ds-sizing-12",
     attributes: {},
     path: [
       "sizing",
@@ -10462,15 +10462,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "3.25rem",
     type: "sizing",
+    value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*13",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*13"
     },
-    name: "--fds-sizing-13",
+    name: "--ds-sizing-13",
     attributes: {},
     path: [
       "sizing",
@@ -10478,15 +10478,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "3.5rem",
     type: "sizing",
+    value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*14",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*14"
     },
-    name: "--fds-sizing-14",
+    name: "--ds-sizing-14",
     attributes: {},
     path: [
       "sizing",
@@ -10494,15 +10494,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "3.75rem",
     type: "sizing",
+    value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*15",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*15"
     },
-    name: "--fds-sizing-15",
+    name: "--ds-sizing-15",
     attributes: {},
     path: [
       "sizing",
@@ -10510,15 +10510,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "4.5rem",
     type: "sizing",
+    value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*18",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*18"
     },
-    name: "--fds-sizing-18",
+    name: "--ds-sizing-18",
     attributes: {},
     path: [
       "sizing",
@@ -10526,15 +10526,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "5.5rem",
     type: "sizing",
+    value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*22",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*22"
     },
-    name: "--fds-sizing-22",
+    name: "--ds-sizing-22",
     attributes: {},
     path: [
       "sizing",
@@ -10542,15 +10542,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "6.5rem",
     type: "sizing",
+    value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*26",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*26"
     },
-    name: "--fds-sizing-26",
+    name: "--ds-sizing-26",
     attributes: {},
     path: [
       "sizing",
@@ -10558,15 +10558,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "7.5rem",
     type: "sizing",
+    value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{sizing.base}*30",
-      type: "sizing"
+      type: "sizing",
+      value: "{sizing.base}*30"
     },
-    name: "--fds-sizing-30",
+    name: "--ds-sizing-30",
     attributes: {},
     path: [
       "sizing",
@@ -10574,15 +10574,15 @@ export const  sizing = [
     ]
   },
   {
-    value: "4px",
     type: "sizing",
+    value: "4px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "4",
-      type: "sizing"
+      type: "sizing",
+      value: "4"
     },
-    name: "--fds-sizing-base",
+    name: "--ds-sizing-base",
     attributes: {},
     path: [
       "sizing",
@@ -10593,15 +10593,15 @@ export const  sizing = [
 
 export const  borderWidth = [
   {
-    value: "1px",
     type: "borderWidth",
+    value: "1px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "1px",
-      type: "borderWidth"
+      type: "borderWidth",
+      value: "1px"
     },
-    name: "--fds-border-width-1",
+    name: "--ds-border-width-1",
     attributes: {},
     path: [
       "border-width",
@@ -10609,15 +10609,15 @@ export const  borderWidth = [
     ]
   },
   {
-    value: "2px",
     type: "borderWidth",
+    value: "2px",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
-      value: "2px",
-      type: "borderWidth"
+      type: "borderWidth",
+      value: "2px"
     },
-    name: "--fds-border-width-2",
+    name: "--ds-border-width-2",
     attributes: {},
     path: [
       "border-width",
@@ -10625,15 +10625,15 @@ export const  borderWidth = [
     ]
   },
   {
-    value: "1px",
     type: "borderWidth",
+    value: "1px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-width.1}",
-      type: "borderWidth"
+      type: "borderWidth",
+      value: "{border-width.1}"
     },
-    name: "--fds-border-width-default",
+    name: "--ds-border-width-default",
     attributes: {},
     path: [
       "border-width",
@@ -10641,15 +10641,15 @@ export const  borderWidth = [
     ]
   },
   {
-    value: "2px",
     type: "borderWidth",
+    value: "2px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-width.2}",
-      type: "borderWidth"
+      type: "borderWidth",
+      value: "{border-width.2}"
     },
-    name: "--fds-border-width-active",
+    name: "--ds-border-width-active",
     attributes: {},
     path: [
       "border-width",
@@ -10657,15 +10657,15 @@ export const  borderWidth = [
     ]
   },
   {
-    value: "2px",
     type: "borderWidth",
+    value: "2px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{border-width.2}",
-      type: "borderWidth"
+      type: "borderWidth",
+      value: "{border-width.2}"
     },
-    name: "--fds-border-width-tab_focus",
+    name: "--ds-border-width-tab_focus",
     attributes: {},
     path: [
       "border-width",
@@ -10676,11 +10676,12 @@ export const  borderWidth = [
 
 export const  boxShadow = [
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
+      type: "boxShadow",
       value: [
         {
           color: "rgba(0,0,0,0.16)",
@@ -10698,10 +10699,9 @@ export const  boxShadow = [
           color: "rgba(0,0,0,0.12)",
           type: "dropShadow"
         }
-      ],
-      type: "boxShadow"
+      ]
     },
-    name: "--fds-shadow-100",
+    name: "--ds-shadow-100",
     attributes: {},
     path: [
       "shadow",
@@ -10709,11 +10709,12 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
+      type: "boxShadow",
       value: [
         {
           color: "rgba(0,0,0,0.15)",
@@ -10739,10 +10740,9 @@ export const  boxShadow = [
           color: "rgba(0,0,0,0.1)",
           type: "dropShadow"
         }
-      ],
-      type: "boxShadow"
+      ]
     },
-    name: "--fds-shadow-200",
+    name: "--ds-shadow-200",
     attributes: {},
     path: [
       "shadow",
@@ -10750,11 +10750,12 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
+      type: "boxShadow",
       value: [
         {
           color: "rgba(0,0,0,0.14)",
@@ -10780,10 +10781,9 @@ export const  boxShadow = [
           color: "rgba(0,0,0,0.12)",
           type: "dropShadow"
         }
-      ],
-      type: "boxShadow"
+      ]
     },
-    name: "--fds-shadow-300",
+    name: "--ds-shadow-300",
     attributes: {},
     path: [
       "shadow",
@@ -10791,11 +10791,12 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
+      type: "boxShadow",
       value: [
         {
           color: "rgba(0,0,0,0.13)",
@@ -10821,10 +10822,9 @@ export const  boxShadow = [
           color: "rgba(0,0,0,0.14)",
           type: "dropShadow"
         }
-      ],
-      type: "boxShadow"
+      ]
     },
-    name: "--fds-shadow-400",
+    name: "--ds-shadow-400",
     attributes: {},
     path: [
       "shadow",
@@ -10832,11 +10832,12 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
+      type: "boxShadow",
       value: [
         {
           color: "rgba(0,0,0,0.12)",
@@ -10862,10 +10863,9 @@ export const  boxShadow = [
           color: "rgba(0,0,0,0.16)",
           type: "dropShadow"
         }
-      ],
-      type: "boxShadow"
+      ]
     },
-    name: "--fds-shadow-500",
+    name: "--ds-shadow-500",
     attributes: {},
     path: [
       "shadow",
@@ -10873,15 +10873,15 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{shadow.100}",
-      type: "boxShadow"
+      type: "boxShadow",
+      value: "{shadow.100}"
     },
-    name: "--fds-shadow-xs",
+    name: "--ds-shadow-xs",
     attributes: {},
     path: [
       "shadow",
@@ -10889,15 +10889,15 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{shadow.200}",
-      type: "boxShadow"
+      type: "boxShadow",
+      value: "{shadow.200}"
     },
-    name: "--fds-shadow-sm",
+    name: "--ds-shadow-sm",
     attributes: {},
     path: [
       "shadow",
@@ -10905,15 +10905,15 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{shadow.300}",
-      type: "boxShadow"
+      type: "boxShadow",
+      value: "{shadow.300}"
     },
-    name: "--fds-shadow-md",
+    name: "--ds-shadow-md",
     attributes: {},
     path: [
       "shadow",
@@ -10921,15 +10921,15 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{shadow.400}",
-      type: "boxShadow"
+      type: "boxShadow",
+      value: "{shadow.400}"
     },
-    name: "--fds-shadow-lg",
+    name: "--ds-shadow-lg",
     attributes: {},
     path: [
       "shadow",
@@ -10937,15 +10937,15 @@ export const  boxShadow = [
     ]
   },
   {
-    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     type: "boxShadow",
+    value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{shadow.500}",
-      type: "boxShadow"
+      type: "boxShadow",
+      value: "{shadow.500}"
     },
-    name: "--fds-shadow-xl",
+    name: "--ds-shadow-xl",
     attributes: {},
     path: [
       "shadow",
@@ -10956,15 +10956,15 @@ export const  boxShadow = [
 
 export const  fontFamilies = [
   {
-    value: "Inter",
     type: "fontFamilies",
+    value: "Inter",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "Inter",
-      type: "fontFamilies"
+      type: "fontFamilies",
+      value: "Inter"
     },
-    name: "--fds-font-family-main",
+    name: "--ds-font-family-main",
     attributes: {},
     path: [
       "font-family",
@@ -10975,15 +10975,15 @@ export const  fontFamilies = [
 
 export const  lineHeights = [
   {
-    value: 1.3,
     type: "lineHeights",
+    value: 1.3,
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "130%",
-      type: "lineHeights"
+      type: "lineHeights",
+      value: "130%"
     },
-    name: "--fds-line-height-300",
+    name: "--ds-line-height-300",
     attributes: {},
     path: [
       "line-height",
@@ -10991,15 +10991,15 @@ export const  lineHeights = [
     ]
   },
   {
-    value: 1.5,
     type: "lineHeights",
+    value: 1.5,
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "150%",
-      type: "lineHeights"
+      type: "lineHeights",
+      value: "150%"
     },
-    name: "--fds-line-height-500",
+    name: "--ds-line-height-500",
     attributes: {},
     path: [
       "line-height",
@@ -11007,15 +11007,15 @@ export const  lineHeights = [
     ]
   },
   {
-    value: 1.6,
     type: "lineHeights",
+    value: 1.6,
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "160%",
-      type: "lineHeights"
+      type: "lineHeights",
+      value: "160%"
     },
-    name: "--fds-line-height-600",
+    name: "--ds-line-height-600",
     attributes: {},
     path: [
       "line-height",
@@ -11023,15 +11023,15 @@ export const  lineHeights = [
     ]
   },
   {
-    value: 1.7,
     type: "lineHeights",
+    value: 1.7,
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "170%",
-      type: "lineHeights"
+      type: "lineHeights",
+      value: "170%"
     },
-    name: "--fds-line-height-700",
+    name: "--ds-line-height-700",
     attributes: {},
     path: [
       "line-height",
@@ -11042,15 +11042,15 @@ export const  lineHeights = [
 
 export const  fontWeights = [
   {
-    value: "500",
     type: "fontWeights",
+    value: "500",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "500",
-      type: "fontWeights"
+      type: "fontWeights",
+      value: "500"
     },
-    name: "--fds-font-weight-medium",
+    name: "--ds-font-weight-medium",
     attributes: {},
     path: [
       "font-weight",
@@ -11058,15 +11058,15 @@ export const  fontWeights = [
     ]
   },
   {
-    value: "600",
     type: "fontWeights",
+    value: "600",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "600",
-      type: "fontWeights"
+      type: "fontWeights",
+      value: "600"
     },
-    name: "--fds-font-weight-semibold",
+    name: "--ds-font-weight-semibold",
     attributes: {},
     path: [
       "font-weight",
@@ -11074,15 +11074,15 @@ export const  fontWeights = [
     ]
   },
   {
-    value: "400",
     type: "fontWeights",
+    value: "400",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "400",
-      type: "fontWeights"
+      type: "fontWeights",
+      value: "400"
     },
-    name: "--fds-font-weight-regular",
+    name: "--ds-font-weight-regular",
     attributes: {},
     path: [
       "font-weight",
@@ -11093,15 +11093,15 @@ export const  fontWeights = [
 
 export const  fontSizes = [
   {
-    value: "12px",
     type: "fontSizes",
+    value: "12px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "12",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "12"
     },
-    name: "--fds-font-size-f-3",
+    name: "--ds-font-size-f-3",
     attributes: {},
     path: [
       "font-size",
@@ -11109,15 +11109,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "13px",
     type: "fontSizes",
+    value: "13px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "13",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "13"
     },
-    name: "--fds-font-size-f-2",
+    name: "--ds-font-size-f-2",
     attributes: {},
     path: [
       "font-size",
@@ -11125,15 +11125,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "14px",
     type: "fontSizes",
+    value: "14px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "14",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "14"
     },
-    name: "--fds-font-size-f-1",
+    name: "--ds-font-size-f-1",
     attributes: {},
     path: [
       "font-size",
@@ -11141,15 +11141,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "16px",
     type: "fontSizes",
+    value: "16px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "16",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "16"
     },
-    name: "--fds-font-size-f0",
+    name: "--ds-font-size-f0",
     attributes: {},
     path: [
       "font-size",
@@ -11157,15 +11157,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "18px",
     type: "fontSizes",
+    value: "18px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "18",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "18"
     },
-    name: "--fds-font-size-f1",
+    name: "--ds-font-size-f1",
     attributes: {},
     path: [
       "font-size",
@@ -11173,15 +11173,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "21px",
     type: "fontSizes",
+    value: "21px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "21",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "21"
     },
-    name: "--fds-font-size-f2",
+    name: "--ds-font-size-f2",
     attributes: {},
     path: [
       "font-size",
@@ -11189,15 +11189,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "24px",
     type: "fontSizes",
+    value: "24px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "24",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "24"
     },
-    name: "--fds-font-size-f3",
+    name: "--ds-font-size-f3",
     attributes: {},
     path: [
       "font-size",
@@ -11205,15 +11205,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "30px",
     type: "fontSizes",
+    value: "30px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "30",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "30"
     },
-    name: "--fds-font-size-f4",
+    name: "--ds-font-size-f4",
     attributes: {},
     path: [
       "font-size",
@@ -11221,15 +11221,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "36px",
     type: "fontSizes",
+    value: "36px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "36",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "36"
     },
-    name: "--fds-font-size-f5",
+    name: "--ds-font-size-f5",
     attributes: {},
     path: [
       "font-size",
@@ -11237,15 +11237,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "48px",
     type: "fontSizes",
+    value: "48px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "48",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "48"
     },
-    name: "--fds-font-size-f6",
+    name: "--ds-font-size-f6",
     attributes: {},
     path: [
       "font-size",
@@ -11253,15 +11253,15 @@ export const  fontSizes = [
     ]
   },
   {
-    value: "60px",
     type: "fontSizes",
+    value: "60px",
     filePath: "../../design-tokens/primitives/typography/default.json",
     isSource: true,
     original: {
-      value: "60",
-      type: "fontSizes"
+      type: "fontSizes",
+      value: "60"
     },
-    name: "--fds-font-size-f7",
+    name: "--ds-font-size-f7",
     attributes: {},
     path: [
       "font-size",

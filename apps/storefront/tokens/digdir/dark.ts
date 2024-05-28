@@ -1763,12 +1763,12 @@ export const  color = [
       type: "color",
       value: "{color.accent.contrast-1}"
     },
-    name: "--ds-color-accent-contrast-first",
+    name: "--ds-color-accent-contrast-default",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -1780,12 +1780,12 @@ export const  color = [
       type: "color",
       value: "{color.accent.contrast-2}"
     },
-    name: "--ds-color-accent-contrast-second",
+    name: "--ds-color-accent-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -2018,12 +2018,12 @@ export const  color = [
       type: "color",
       value: "{color.neutral.contrast-1}"
     },
-    name: "--ds-color-neutral-contrast-first",
+    name: "--ds-color-neutral-contrast-default",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -2035,12 +2035,12 @@ export const  color = [
       type: "color",
       value: "{color.neutral.contrast-2}"
     },
-    name: "--ds-color-neutral-contrast-second",
+    name: "--ds-color-neutral-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -2273,12 +2273,12 @@ export const  color = [
       type: "color",
       value: "{color.brand1.contrast-1}"
     },
-    name: "--ds-color-brand1-contrast-first",
+    name: "--ds-color-brand1-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -2290,12 +2290,12 @@ export const  color = [
       type: "color",
       value: "{color.brand1.contrast-2}"
     },
-    name: "--ds-color-brand1-contrast-second",
+    name: "--ds-color-brand1-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -2528,12 +2528,12 @@ export const  color = [
       type: "color",
       value: "{color.brand2.contrast-1}"
     },
-    name: "--ds-color-brand2-contrast-first",
+    name: "--ds-color-brand2-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -2545,12 +2545,12 @@ export const  color = [
       type: "color",
       value: "{color.brand2.contrast-2}"
     },
-    name: "--ds-color-brand2-contrast-second",
+    name: "--ds-color-brand2-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -2783,12 +2783,12 @@ export const  color = [
       type: "color",
       value: "{color.brand3.contrast-1}"
     },
-    name: "--ds-color-brand3-contrast-first",
+    name: "--ds-color-brand3-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -2800,12 +2800,12 @@ export const  color = [
       type: "color",
       value: "{color.brand3.contrast-2}"
     },
-    name: "--ds-color-brand3-contrast-second",
+    name: "--ds-color-brand3-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -3038,12 +3038,12 @@ export const  color = [
       type: "color",
       value: "{global.green.contrast-1}"
     },
-    name: "--ds-color-success-contrast-first",
+    name: "--ds-color-success-contrast-default",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -3055,12 +3055,12 @@ export const  color = [
       type: "color",
       value: "{global.green.contrast-2}"
     },
-    name: "--ds-color-success-contrast-second",
+    name: "--ds-color-success-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -3293,12 +3293,12 @@ export const  color = [
       type: "color",
       value: "{global.red.contrast-1}"
     },
-    name: "--ds-color-danger-contrast-first",
+    name: "--ds-color-danger-contrast-default",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -3310,12 +3310,12 @@ export const  color = [
       type: "color",
       value: "{global.red.contrast-2}"
     },
-    name: "--ds-color-danger-contrast-second",
+    name: "--ds-color-danger-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -3548,12 +3548,12 @@ export const  color = [
       type: "color",
       value: "{global.blue.contrast-1}"
     },
-    name: "--ds-color-info-contrast-first",
+    name: "--ds-color-info-contrast-default",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -3565,12 +3565,12 @@ export const  color = [
       type: "color",
       value: "{global.blue.contrast-2}"
     },
-    name: "--ds-color-info-contrast-second",
+    name: "--ds-color-info-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
@@ -3803,12 +3803,12 @@ export const  color = [
       type: "color",
       value: "{global.yellow.contrast-1}"
     },
-    name: "--ds-color-warning-contrast-first",
+    name: "--ds-color-warning-contrast-default",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-first"
+      "contrast-default"
     ]
   },
   {
@@ -3820,27 +3820,27 @@ export const  color = [
       type: "color",
       value: "{global.yellow.contrast-2}"
     },
-    name: "--ds-color-warning-contrast-second",
+    name: "--ds-color-warning-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-second"
+      "contrast-subtle"
     ]
   },
   {
     type: "color",
     value: "#001c36",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#001c36"
     },
-    name: "--ds-theme2-accent-1",
+    name: "--ds-theme4-accent-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "1"
     ]
@@ -3848,16 +3848,16 @@ export const  color = [
   {
     type: "color",
     value: "#002445",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#002445"
     },
-    name: "--ds-theme2-accent-2",
+    name: "--ds-theme4-accent-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "2"
     ]
@@ -3865,16 +3865,16 @@ export const  color = [
   {
     type: "color",
     value: "#00315c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00315c"
     },
-    name: "--ds-theme2-accent-3",
+    name: "--ds-theme4-accent-3",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "3"
     ]
@@ -3882,16 +3882,16 @@ export const  color = [
   {
     type: "color",
     value: "#00396d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00396d"
     },
-    name: "--ds-theme2-accent-4",
+    name: "--ds-theme4-accent-4",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "4"
     ]
@@ -3899,16 +3899,16 @@ export const  color = [
   {
     type: "color",
     value: "#00427e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00427e"
     },
-    name: "--ds-theme2-accent-5",
+    name: "--ds-theme4-accent-5",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "5"
     ]
@@ -3916,16 +3916,16 @@ export const  color = [
   {
     type: "color",
     value: "#00529d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00529d"
     },
-    name: "--ds-theme2-accent-6",
+    name: "--ds-theme4-accent-6",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "6"
     ]
@@ -3933,16 +3933,16 @@ export const  color = [
   {
     type: "color",
     value: "#0f6bbe",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0f6bbe"
     },
-    name: "--ds-theme2-accent-7",
+    name: "--ds-theme4-accent-7",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "7"
     ]
@@ -3950,16 +3950,16 @@ export const  color = [
   {
     type: "color",
     value: "#3d88ca",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3d88ca"
     },
-    name: "--ds-theme2-accent-8",
+    name: "--ds-theme4-accent-8",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "8"
     ]
@@ -3967,16 +3967,16 @@ export const  color = [
   {
     type: "color",
     value: "#0163ba",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0163ba"
     },
-    name: "--ds-theme2-accent-9",
+    name: "--ds-theme4-accent-9",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "9"
     ]
@@ -3984,16 +3984,16 @@ export const  color = [
   {
     type: "color",
     value: "#004d93",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#004d93"
     },
-    name: "--ds-theme2-accent-10",
+    name: "--ds-theme4-accent-10",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "10"
     ]
@@ -4001,16 +4001,16 @@ export const  color = [
   {
     type: "color",
     value: "#00396d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00396d"
     },
-    name: "--ds-theme2-accent-11",
+    name: "--ds-theme4-accent-11",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "11"
     ]
@@ -4018,16 +4018,16 @@ export const  color = [
   {
     type: "color",
     value: "#7eb0dc",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#7eb0dc"
     },
-    name: "--ds-theme2-accent-12",
+    name: "--ds-theme4-accent-12",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "12"
     ]
@@ -4035,16 +4035,16 @@ export const  color = [
   {
     type: "color",
     value: "#b0cfea",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#b0cfea"
     },
-    name: "--ds-theme2-accent-13",
+    name: "--ds-theme4-accent-13",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "13"
     ]
@@ -4052,16 +4052,16 @@ export const  color = [
   {
     type: "color",
     value: "#f6fafd",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f6fafd"
     },
-    name: "--ds-theme2-accent-contrast-1",
+    name: "--ds-theme4-accent-contrast-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "contrast-1"
     ]
@@ -4069,16 +4069,16 @@ export const  color = [
   {
     type: "color",
     value: "#ddeaf6",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#ddeaf6"
     },
-    name: "--ds-theme2-accent-contrast-2",
+    name: "--ds-theme4-accent-contrast-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "accent",
       "contrast-2"
     ]
@@ -4086,16 +4086,16 @@ export const  color = [
   {
     type: "color",
     value: "#131c27",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#131c27"
     },
-    name: "--ds-theme2-neutral-1",
+    name: "--ds-theme4-neutral-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "1"
     ]
@@ -4103,16 +4103,16 @@ export const  color = [
   {
     type: "color",
     value: "#192433",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#192433"
     },
-    name: "--ds-theme2-neutral-2",
+    name: "--ds-theme4-neutral-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "2"
     ]
@@ -4120,16 +4120,16 @@ export const  color = [
   {
     type: "color",
     value: "#243142",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#243142"
     },
-    name: "--ds-theme2-neutral-3",
+    name: "--ds-theme4-neutral-3",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "3"
     ]
@@ -4137,16 +4137,16 @@ export const  color = [
   {
     type: "color",
     value: "#2e3a4a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2e3a4a"
     },
-    name: "--ds-theme2-neutral-4",
+    name: "--ds-theme4-neutral-4",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "4"
     ]
@@ -4154,16 +4154,16 @@ export const  color = [
   {
     type: "color",
     value: "#374352",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#374352"
     },
-    name: "--ds-theme2-neutral-5",
+    name: "--ds-theme4-neutral-5",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "5"
     ]
@@ -4171,16 +4171,16 @@ export const  color = [
   {
     type: "color",
     value: "#495361",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#495361"
     },
-    name: "--ds-theme2-neutral-6",
+    name: "--ds-theme4-neutral-6",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "6"
     ]
@@ -4188,16 +4188,16 @@ export const  color = [
   {
     type: "color",
     value: "#626b77",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#626b77"
     },
-    name: "--ds-theme2-neutral-7",
+    name: "--ds-theme4-neutral-7",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "7"
     ]
@@ -4205,16 +4205,16 @@ export const  color = [
   {
     type: "color",
     value: "#7d848e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#7d848e"
     },
-    name: "--ds-theme2-neutral-8",
+    name: "--ds-theme4-neutral-8",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "8"
     ]
@@ -4222,16 +4222,16 @@ export const  color = [
   {
     type: "color",
     value: "#1e2b3c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1e2b3c"
     },
-    name: "--ds-theme2-neutral-9",
+    name: "--ds-theme4-neutral-9",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "9"
     ]
@@ -4239,16 +4239,16 @@ export const  color = [
   {
     type: "color",
     value: "#333e4e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#333e4e"
     },
-    name: "--ds-theme2-neutral-10",
+    name: "--ds-theme4-neutral-10",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "10"
     ]
@@ -4256,16 +4256,16 @@ export const  color = [
   {
     type: "color",
     value: "#495361",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#495361"
     },
-    name: "--ds-theme2-neutral-11",
+    name: "--ds-theme4-neutral-11",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "11"
     ]
@@ -4273,16 +4273,16 @@ export const  color = [
   {
     type: "color",
     value: "#a6abb2",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a6abb2"
     },
-    name: "--ds-theme2-neutral-12",
+    name: "--ds-theme4-neutral-12",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "12"
     ]
@@ -4290,16 +4290,16 @@ export const  color = [
   {
     type: "color",
     value: "#c9ccd0",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#c9ccd0"
     },
-    name: "--ds-theme2-neutral-13",
+    name: "--ds-theme4-neutral-13",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "13"
     ]
@@ -4307,16 +4307,16 @@ export const  color = [
   {
     type: "color",
     value: "#f9f9fa",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f9f9fa"
     },
-    name: "--ds-theme2-neutral-contrast-1",
+    name: "--ds-theme4-neutral-contrast-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "contrast-1"
     ]
@@ -4324,16 +4324,16 @@ export const  color = [
   {
     type: "color",
     value: "#9ea3ab",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#9ea3ab"
     },
-    name: "--ds-theme2-neutral-contrast-2",
+    name: "--ds-theme4-neutral-contrast-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "neutral",
       "contrast-2"
     ]
@@ -4341,16 +4341,16 @@ export const  color = [
   {
     type: "color",
     value: "#2f1213",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2f1213"
     },
-    name: "--ds-theme2-brand1-1",
+    name: "--ds-theme4-brand1-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "1"
     ]
@@ -4358,16 +4358,16 @@ export const  color = [
   {
     type: "color",
     value: "#3c1819",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3c1819"
     },
-    name: "--ds-theme2-brand1-2",
+    name: "--ds-theme4-brand1-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "2"
     ]
@@ -4375,16 +4375,16 @@ export const  color = [
   {
     type: "color",
     value: "#522021",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#522021"
     },
-    name: "--ds-theme2-brand1-3",
+    name: "--ds-theme4-brand1-3",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "3"
     ]
@@ -4392,16 +4392,16 @@ export const  color = [
   {
     type: "color",
     value: "#602627",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#602627"
     },
-    name: "--ds-theme2-brand1-4",
+    name: "--ds-theme4-brand1-4",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "4"
     ]
@@ -4409,16 +4409,16 @@ export const  color = [
   {
     type: "color",
     value: "#702c2e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#702c2e"
     },
-    name: "--ds-theme2-brand1-5",
+    name: "--ds-theme4-brand1-5",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "5"
     ]
@@ -4426,16 +4426,16 @@ export const  color = [
   {
     type: "color",
     value: "#8b3639",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#8b3639"
     },
-    name: "--ds-theme2-brand1-6",
+    name: "--ds-theme4-brand1-6",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "6"
     ]
@@ -4443,16 +4443,16 @@ export const  color = [
   {
     type: "color",
     value: "#b34649",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#b34649"
     },
-    name: "--ds-theme2-brand1-7",
+    name: "--ds-theme4-brand1-7",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "7"
     ]
@@ -4460,16 +4460,16 @@ export const  color = [
   {
     type: "color",
     value: "#dd565a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#dd565a"
     },
-    name: "--ds-theme2-brand1-8",
+    name: "--ds-theme4-brand1-8",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "8"
     ]
@@ -4477,16 +4477,16 @@ export const  color = [
   {
     type: "color",
     value: "#f35f63",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f35f63"
     },
-    name: "--ds-theme2-brand1-9",
+    name: "--ds-theme4-brand1-9",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "9"
     ]
@@ -4494,16 +4494,16 @@ export const  color = [
   {
     type: "color",
     value: "#cc5053",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#cc5053"
     },
-    name: "--ds-theme2-brand1-10",
+    name: "--ds-theme4-brand1-10",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "10"
     ]
@@ -4511,16 +4511,16 @@ export const  color = [
   {
     type: "color",
     value: "#a84144",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a84144"
     },
-    name: "--ds-theme2-brand1-11",
+    name: "--ds-theme4-brand1-11",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "11"
     ]
@@ -4528,16 +4528,16 @@ export const  color = [
   {
     type: "color",
     value: "#f78d8f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f78d8f"
     },
-    name: "--ds-theme2-brand1-12",
+    name: "--ds-theme4-brand1-12",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "12"
     ]
@@ -4545,16 +4545,16 @@ export const  color = [
   {
     type: "color",
     value: "#fabcbd",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#fabcbd"
     },
-    name: "--ds-theme2-brand1-13",
+    name: "--ds-theme4-brand1-13",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "13"
     ]
@@ -4562,16 +4562,16 @@ export const  color = [
   {
     type: "color",
     value: "#41191b",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#41191b"
     },
-    name: "--ds-theme2-brand1-contrast-1",
+    name: "--ds-theme4-brand1-contrast-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "contrast-1"
     ]
@@ -4579,16 +4579,16 @@ export const  color = [
   {
     type: "color",
     value: "#2f1213",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2f1213"
     },
-    name: "--ds-theme2-brand1-contrast-2",
+    name: "--ds-theme4-brand1-contrast-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand1",
       "contrast-2"
     ]
@@ -4596,16 +4596,16 @@ export const  color = [
   {
     type: "color",
     value: "#231a05",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#231a05"
     },
-    name: "--ds-theme2-brand2-1",
+    name: "--ds-theme4-brand2-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "1"
     ]
@@ -4613,16 +4613,16 @@ export const  color = [
   {
     type: "color",
     value: "#2d2206",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2d2206"
     },
-    name: "--ds-theme2-brand2-2",
+    name: "--ds-theme4-brand2-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "2"
     ]
@@ -4630,16 +4630,16 @@ export const  color = [
   {
     type: "color",
     value: "#3d2e09",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3d2e09"
     },
-    name: "--ds-theme2-brand2-3",
+    name: "--ds-theme4-brand2-3",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "3"
     ]
@@ -4647,16 +4647,16 @@ export const  color = [
   {
     type: "color",
     value: "#48360a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#48360a"
     },
-    name: "--ds-theme2-brand2-4",
+    name: "--ds-theme4-brand2-4",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "4"
     ]
@@ -4664,16 +4664,16 @@ export const  color = [
   {
     type: "color",
     value: "#543e0c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#543e0c"
     },
-    name: "--ds-theme2-brand2-5",
+    name: "--ds-theme4-brand2-5",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "5"
     ]
@@ -4681,16 +4681,16 @@ export const  color = [
   {
     type: "color",
     value: "#684e0f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#684e0f"
     },
-    name: "--ds-theme2-brand2-6",
+    name: "--ds-theme4-brand2-6",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "6"
     ]
@@ -4698,16 +4698,16 @@ export const  color = [
   {
     type: "color",
     value: "#876413",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#876413"
     },
-    name: "--ds-theme2-brand2-7",
+    name: "--ds-theme4-brand2-7",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "7"
     ]
@@ -4715,16 +4715,16 @@ export const  color = [
   {
     type: "color",
     value: "#a87c17",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a87c17"
     },
-    name: "--ds-theme2-brand2-8",
+    name: "--ds-theme4-brand2-8",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "8"
     ]
@@ -4732,16 +4732,16 @@ export const  color = [
   {
     type: "color",
     value: "#e4a920",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#e4a920"
     },
-    name: "--ds-theme2-brand2-9",
+    name: "--ds-theme4-brand2-9",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "9"
     ]
@@ -4749,16 +4749,16 @@ export const  color = [
   {
     type: "color",
     value: "#c6931c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#c6931c"
     },
-    name: "--ds-theme2-brand2-10",
+    name: "--ds-theme4-brand2-10",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "10"
     ]
@@ -4766,16 +4766,16 @@ export const  color = [
   {
     type: "color",
     value: "#a87c17",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a87c17"
     },
-    name: "--ds-theme2-brand2-11",
+    name: "--ds-theme4-brand2-11",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "11"
     ]
@@ -4783,16 +4783,16 @@ export const  color = [
   {
     type: "color",
     value: "#daa21f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#daa21f"
     },
-    name: "--ds-theme2-brand2-12",
+    name: "--ds-theme4-brand2-12",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "12"
     ]
@@ -4800,16 +4800,16 @@ export const  color = [
   {
     type: "color",
     value: "#eec76c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#eec76c"
     },
-    name: "--ds-theme2-brand2-13",
+    name: "--ds-theme4-brand2-13",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "13"
     ]
@@ -4817,16 +4817,16 @@ export const  color = [
   {
     type: "color",
     value: "#302407",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#302407"
     },
-    name: "--ds-theme2-brand2-contrast-1",
+    name: "--ds-theme4-brand2-contrast-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "contrast-1"
     ]
@@ -4834,16 +4834,16 @@ export const  color = [
   {
     type: "color",
     value: "#45340a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#45340a"
     },
-    name: "--ds-theme2-brand2-contrast-2",
+    name: "--ds-theme4-brand2-contrast-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand2",
       "contrast-2"
     ]
@@ -4851,16 +4851,16 @@ export const  color = [
   {
     type: "color",
     value: "#061d30",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#061d30"
     },
-    name: "--ds-theme2-brand3-1",
+    name: "--ds-theme4-brand3-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "1"
     ]
@@ -4868,16 +4868,16 @@ export const  color = [
   {
     type: "color",
     value: "#07253c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#07253c"
     },
-    name: "--ds-theme2-brand3-2",
+    name: "--ds-theme4-brand3-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "2"
     ]
@@ -4885,16 +4885,16 @@ export const  color = [
   {
     type: "color",
     value: "#0a3251",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0a3251"
     },
-    name: "--ds-theme2-brand3-3",
+    name: "--ds-theme4-brand3-3",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "3"
     ]
@@ -4902,16 +4902,16 @@ export const  color = [
   {
     type: "color",
     value: "#0c3b60",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0c3b60"
     },
-    name: "--ds-theme2-brand3-4",
+    name: "--ds-theme4-brand3-4",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "4"
     ]
@@ -4919,16 +4919,16 @@ export const  color = [
   {
     type: "color",
     value: "#0e446e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0e446e"
     },
-    name: "--ds-theme2-brand3-5",
+    name: "--ds-theme4-brand3-5",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "5"
     ]
@@ -4936,16 +4936,16 @@ export const  color = [
   {
     type: "color",
     value: "#11558a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#11558a"
     },
-    name: "--ds-theme2-brand3-6",
+    name: "--ds-theme4-brand3-6",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "6"
     ]
@@ -4953,16 +4953,16 @@ export const  color = [
   {
     type: "color",
     value: "#166eb2",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#166eb2"
     },
-    name: "--ds-theme2-brand3-7",
+    name: "--ds-theme4-brand3-7",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "7"
     ]
@@ -4970,16 +4970,16 @@ export const  color = [
   {
     type: "color",
     value: "#1b88db",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1b88db"
     },
-    name: "--ds-theme2-brand3-8",
+    name: "--ds-theme4-brand3-8",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "8"
     ]
@@ -4987,16 +4987,16 @@ export const  color = [
   {
     type: "color",
     value: "#1e98f5",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1e98f5"
     },
-    name: "--ds-theme2-brand3-9",
+    name: "--ds-theme4-brand3-9",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "9"
     ]
@@ -5004,16 +5004,16 @@ export const  color = [
   {
     type: "color",
     value: "#1980ce",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1980ce"
     },
-    name: "--ds-theme2-brand3-10",
+    name: "--ds-theme4-brand3-10",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "10"
     ]
@@ -5021,16 +5021,16 @@ export const  color = [
   {
     type: "color",
     value: "#1569a9",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1569a9"
     },
-    name: "--ds-theme2-brand3-11",
+    name: "--ds-theme4-brand3-11",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "11"
     ]
@@ -5038,16 +5038,16 @@ export const  color = [
   {
     type: "color",
     value: "#57b2f8",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#57b2f8"
     },
-    name: "--ds-theme2-brand3-12",
+    name: "--ds-theme4-brand3-12",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "12"
     ]
@@ -5055,16 +5055,16 @@ export const  color = [
   {
     type: "color",
     value: "#9cd2fb",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#9cd2fb"
     },
-    name: "--ds-theme2-brand3-13",
+    name: "--ds-theme4-brand3-13",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "13"
     ]
@@ -5072,16 +5072,16 @@ export const  color = [
   {
     type: "color",
     value: "#082740",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#082740"
     },
-    name: "--ds-theme2-brand3-contrast-1",
+    name: "--ds-theme4-brand3-contrast-1",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "contrast-1"
     ]
@@ -5089,16 +5089,16 @@ export const  color = [
   {
     type: "color",
     value: "#061f33",
-    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
       type: "color",
       value: "#061f33"
     },
-    name: "--ds-theme2-brand3-contrast-2",
+    name: "--ds-theme4-brand3-contrast-2",
     attributes: {},
     path: [
-      "theme2",
+      "theme4",
       "brand3",
       "contrast-2"
     ]
@@ -6381,16 +6381,16 @@ export const  color = [
   {
     type: "color",
     value: "#001c36",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#001c36"
     },
-    name: "--ds-theme4-accent-1",
+    name: "--ds-theme2-accent-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "1"
     ]
@@ -6398,16 +6398,16 @@ export const  color = [
   {
     type: "color",
     value: "#002445",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#002445"
     },
-    name: "--ds-theme4-accent-2",
+    name: "--ds-theme2-accent-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "2"
     ]
@@ -6415,16 +6415,16 @@ export const  color = [
   {
     type: "color",
     value: "#00315c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00315c"
     },
-    name: "--ds-theme4-accent-3",
+    name: "--ds-theme2-accent-3",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "3"
     ]
@@ -6432,16 +6432,16 @@ export const  color = [
   {
     type: "color",
     value: "#00396d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00396d"
     },
-    name: "--ds-theme4-accent-4",
+    name: "--ds-theme2-accent-4",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "4"
     ]
@@ -6449,16 +6449,16 @@ export const  color = [
   {
     type: "color",
     value: "#00427e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00427e"
     },
-    name: "--ds-theme4-accent-5",
+    name: "--ds-theme2-accent-5",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "5"
     ]
@@ -6466,16 +6466,16 @@ export const  color = [
   {
     type: "color",
     value: "#00529d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00529d"
     },
-    name: "--ds-theme4-accent-6",
+    name: "--ds-theme2-accent-6",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "6"
     ]
@@ -6483,16 +6483,16 @@ export const  color = [
   {
     type: "color",
     value: "#0f6bbe",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0f6bbe"
     },
-    name: "--ds-theme4-accent-7",
+    name: "--ds-theme2-accent-7",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "7"
     ]
@@ -6500,16 +6500,16 @@ export const  color = [
   {
     type: "color",
     value: "#3d88ca",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3d88ca"
     },
-    name: "--ds-theme4-accent-8",
+    name: "--ds-theme2-accent-8",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "8"
     ]
@@ -6517,16 +6517,16 @@ export const  color = [
   {
     type: "color",
     value: "#0163ba",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0163ba"
     },
-    name: "--ds-theme4-accent-9",
+    name: "--ds-theme2-accent-9",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "9"
     ]
@@ -6534,16 +6534,16 @@ export const  color = [
   {
     type: "color",
     value: "#004d93",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#004d93"
     },
-    name: "--ds-theme4-accent-10",
+    name: "--ds-theme2-accent-10",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "10"
     ]
@@ -6551,16 +6551,16 @@ export const  color = [
   {
     type: "color",
     value: "#00396d",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#00396d"
     },
-    name: "--ds-theme4-accent-11",
+    name: "--ds-theme2-accent-11",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "11"
     ]
@@ -6568,16 +6568,16 @@ export const  color = [
   {
     type: "color",
     value: "#7eb0dc",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#7eb0dc"
     },
-    name: "--ds-theme4-accent-12",
+    name: "--ds-theme2-accent-12",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "12"
     ]
@@ -6585,16 +6585,16 @@ export const  color = [
   {
     type: "color",
     value: "#b0cfea",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#b0cfea"
     },
-    name: "--ds-theme4-accent-13",
+    name: "--ds-theme2-accent-13",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "13"
     ]
@@ -6602,16 +6602,16 @@ export const  color = [
   {
     type: "color",
     value: "#f6fafd",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f6fafd"
     },
-    name: "--ds-theme4-accent-contrast-1",
+    name: "--ds-theme2-accent-contrast-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "contrast-1"
     ]
@@ -6619,16 +6619,16 @@ export const  color = [
   {
     type: "color",
     value: "#ddeaf6",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#ddeaf6"
     },
-    name: "--ds-theme4-accent-contrast-2",
+    name: "--ds-theme2-accent-contrast-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "accent",
       "contrast-2"
     ]
@@ -6636,16 +6636,16 @@ export const  color = [
   {
     type: "color",
     value: "#131c27",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#131c27"
     },
-    name: "--ds-theme4-neutral-1",
+    name: "--ds-theme2-neutral-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "1"
     ]
@@ -6653,16 +6653,16 @@ export const  color = [
   {
     type: "color",
     value: "#192433",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#192433"
     },
-    name: "--ds-theme4-neutral-2",
+    name: "--ds-theme2-neutral-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "2"
     ]
@@ -6670,16 +6670,16 @@ export const  color = [
   {
     type: "color",
     value: "#243142",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#243142"
     },
-    name: "--ds-theme4-neutral-3",
+    name: "--ds-theme2-neutral-3",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "3"
     ]
@@ -6687,16 +6687,16 @@ export const  color = [
   {
     type: "color",
     value: "#2e3a4a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2e3a4a"
     },
-    name: "--ds-theme4-neutral-4",
+    name: "--ds-theme2-neutral-4",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "4"
     ]
@@ -6704,16 +6704,16 @@ export const  color = [
   {
     type: "color",
     value: "#374352",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#374352"
     },
-    name: "--ds-theme4-neutral-5",
+    name: "--ds-theme2-neutral-5",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "5"
     ]
@@ -6721,16 +6721,16 @@ export const  color = [
   {
     type: "color",
     value: "#495361",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#495361"
     },
-    name: "--ds-theme4-neutral-6",
+    name: "--ds-theme2-neutral-6",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "6"
     ]
@@ -6738,16 +6738,16 @@ export const  color = [
   {
     type: "color",
     value: "#626b77",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#626b77"
     },
-    name: "--ds-theme4-neutral-7",
+    name: "--ds-theme2-neutral-7",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "7"
     ]
@@ -6755,16 +6755,16 @@ export const  color = [
   {
     type: "color",
     value: "#7d848e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#7d848e"
     },
-    name: "--ds-theme4-neutral-8",
+    name: "--ds-theme2-neutral-8",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "8"
     ]
@@ -6772,16 +6772,16 @@ export const  color = [
   {
     type: "color",
     value: "#1e2b3c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1e2b3c"
     },
-    name: "--ds-theme4-neutral-9",
+    name: "--ds-theme2-neutral-9",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "9"
     ]
@@ -6789,16 +6789,16 @@ export const  color = [
   {
     type: "color",
     value: "#333e4e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#333e4e"
     },
-    name: "--ds-theme4-neutral-10",
+    name: "--ds-theme2-neutral-10",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "10"
     ]
@@ -6806,16 +6806,16 @@ export const  color = [
   {
     type: "color",
     value: "#495361",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#495361"
     },
-    name: "--ds-theme4-neutral-11",
+    name: "--ds-theme2-neutral-11",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "11"
     ]
@@ -6823,16 +6823,16 @@ export const  color = [
   {
     type: "color",
     value: "#a6abb2",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a6abb2"
     },
-    name: "--ds-theme4-neutral-12",
+    name: "--ds-theme2-neutral-12",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "12"
     ]
@@ -6840,16 +6840,16 @@ export const  color = [
   {
     type: "color",
     value: "#c9ccd0",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#c9ccd0"
     },
-    name: "--ds-theme4-neutral-13",
+    name: "--ds-theme2-neutral-13",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "13"
     ]
@@ -6857,16 +6857,16 @@ export const  color = [
   {
     type: "color",
     value: "#f9f9fa",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f9f9fa"
     },
-    name: "--ds-theme4-neutral-contrast-1",
+    name: "--ds-theme2-neutral-contrast-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "contrast-1"
     ]
@@ -6874,16 +6874,16 @@ export const  color = [
   {
     type: "color",
     value: "#9ea3ab",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#9ea3ab"
     },
-    name: "--ds-theme4-neutral-contrast-2",
+    name: "--ds-theme2-neutral-contrast-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "neutral",
       "contrast-2"
     ]
@@ -6891,16 +6891,16 @@ export const  color = [
   {
     type: "color",
     value: "#2f1213",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2f1213"
     },
-    name: "--ds-theme4-brand1-1",
+    name: "--ds-theme2-brand1-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "1"
     ]
@@ -6908,16 +6908,16 @@ export const  color = [
   {
     type: "color",
     value: "#3c1819",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3c1819"
     },
-    name: "--ds-theme4-brand1-2",
+    name: "--ds-theme2-brand1-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "2"
     ]
@@ -6925,16 +6925,16 @@ export const  color = [
   {
     type: "color",
     value: "#522021",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#522021"
     },
-    name: "--ds-theme4-brand1-3",
+    name: "--ds-theme2-brand1-3",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "3"
     ]
@@ -6942,16 +6942,16 @@ export const  color = [
   {
     type: "color",
     value: "#602627",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#602627"
     },
-    name: "--ds-theme4-brand1-4",
+    name: "--ds-theme2-brand1-4",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "4"
     ]
@@ -6959,16 +6959,16 @@ export const  color = [
   {
     type: "color",
     value: "#702c2e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#702c2e"
     },
-    name: "--ds-theme4-brand1-5",
+    name: "--ds-theme2-brand1-5",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "5"
     ]
@@ -6976,16 +6976,16 @@ export const  color = [
   {
     type: "color",
     value: "#8b3639",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#8b3639"
     },
-    name: "--ds-theme4-brand1-6",
+    name: "--ds-theme2-brand1-6",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "6"
     ]
@@ -6993,16 +6993,16 @@ export const  color = [
   {
     type: "color",
     value: "#b34649",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#b34649"
     },
-    name: "--ds-theme4-brand1-7",
+    name: "--ds-theme2-brand1-7",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "7"
     ]
@@ -7010,16 +7010,16 @@ export const  color = [
   {
     type: "color",
     value: "#dd565a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#dd565a"
     },
-    name: "--ds-theme4-brand1-8",
+    name: "--ds-theme2-brand1-8",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "8"
     ]
@@ -7027,16 +7027,16 @@ export const  color = [
   {
     type: "color",
     value: "#f35f63",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f35f63"
     },
-    name: "--ds-theme4-brand1-9",
+    name: "--ds-theme2-brand1-9",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "9"
     ]
@@ -7044,16 +7044,16 @@ export const  color = [
   {
     type: "color",
     value: "#cc5053",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#cc5053"
     },
-    name: "--ds-theme4-brand1-10",
+    name: "--ds-theme2-brand1-10",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "10"
     ]
@@ -7061,16 +7061,16 @@ export const  color = [
   {
     type: "color",
     value: "#a84144",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a84144"
     },
-    name: "--ds-theme4-brand1-11",
+    name: "--ds-theme2-brand1-11",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "11"
     ]
@@ -7078,16 +7078,16 @@ export const  color = [
   {
     type: "color",
     value: "#f78d8f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#f78d8f"
     },
-    name: "--ds-theme4-brand1-12",
+    name: "--ds-theme2-brand1-12",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "12"
     ]
@@ -7095,16 +7095,16 @@ export const  color = [
   {
     type: "color",
     value: "#fabcbd",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#fabcbd"
     },
-    name: "--ds-theme4-brand1-13",
+    name: "--ds-theme2-brand1-13",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "13"
     ]
@@ -7112,16 +7112,16 @@ export const  color = [
   {
     type: "color",
     value: "#41191b",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#41191b"
     },
-    name: "--ds-theme4-brand1-contrast-1",
+    name: "--ds-theme2-brand1-contrast-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "contrast-1"
     ]
@@ -7129,16 +7129,16 @@ export const  color = [
   {
     type: "color",
     value: "#2f1213",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2f1213"
     },
-    name: "--ds-theme4-brand1-contrast-2",
+    name: "--ds-theme2-brand1-contrast-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand1",
       "contrast-2"
     ]
@@ -7146,16 +7146,16 @@ export const  color = [
   {
     type: "color",
     value: "#231a05",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#231a05"
     },
-    name: "--ds-theme4-brand2-1",
+    name: "--ds-theme2-brand2-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "1"
     ]
@@ -7163,16 +7163,16 @@ export const  color = [
   {
     type: "color",
     value: "#2d2206",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#2d2206"
     },
-    name: "--ds-theme4-brand2-2",
+    name: "--ds-theme2-brand2-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "2"
     ]
@@ -7180,16 +7180,16 @@ export const  color = [
   {
     type: "color",
     value: "#3d2e09",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#3d2e09"
     },
-    name: "--ds-theme4-brand2-3",
+    name: "--ds-theme2-brand2-3",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "3"
     ]
@@ -7197,16 +7197,16 @@ export const  color = [
   {
     type: "color",
     value: "#48360a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#48360a"
     },
-    name: "--ds-theme4-brand2-4",
+    name: "--ds-theme2-brand2-4",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "4"
     ]
@@ -7214,16 +7214,16 @@ export const  color = [
   {
     type: "color",
     value: "#543e0c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#543e0c"
     },
-    name: "--ds-theme4-brand2-5",
+    name: "--ds-theme2-brand2-5",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "5"
     ]
@@ -7231,16 +7231,16 @@ export const  color = [
   {
     type: "color",
     value: "#684e0f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#684e0f"
     },
-    name: "--ds-theme4-brand2-6",
+    name: "--ds-theme2-brand2-6",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "6"
     ]
@@ -7248,16 +7248,16 @@ export const  color = [
   {
     type: "color",
     value: "#876413",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#876413"
     },
-    name: "--ds-theme4-brand2-7",
+    name: "--ds-theme2-brand2-7",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "7"
     ]
@@ -7265,16 +7265,16 @@ export const  color = [
   {
     type: "color",
     value: "#a87c17",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a87c17"
     },
-    name: "--ds-theme4-brand2-8",
+    name: "--ds-theme2-brand2-8",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "8"
     ]
@@ -7282,16 +7282,16 @@ export const  color = [
   {
     type: "color",
     value: "#e4a920",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#e4a920"
     },
-    name: "--ds-theme4-brand2-9",
+    name: "--ds-theme2-brand2-9",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "9"
     ]
@@ -7299,16 +7299,16 @@ export const  color = [
   {
     type: "color",
     value: "#c6931c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#c6931c"
     },
-    name: "--ds-theme4-brand2-10",
+    name: "--ds-theme2-brand2-10",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "10"
     ]
@@ -7316,16 +7316,16 @@ export const  color = [
   {
     type: "color",
     value: "#a87c17",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#a87c17"
     },
-    name: "--ds-theme4-brand2-11",
+    name: "--ds-theme2-brand2-11",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "11"
     ]
@@ -7333,16 +7333,16 @@ export const  color = [
   {
     type: "color",
     value: "#daa21f",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#daa21f"
     },
-    name: "--ds-theme4-brand2-12",
+    name: "--ds-theme2-brand2-12",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "12"
     ]
@@ -7350,16 +7350,16 @@ export const  color = [
   {
     type: "color",
     value: "#eec76c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#eec76c"
     },
-    name: "--ds-theme4-brand2-13",
+    name: "--ds-theme2-brand2-13",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "13"
     ]
@@ -7367,16 +7367,16 @@ export const  color = [
   {
     type: "color",
     value: "#302407",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#302407"
     },
-    name: "--ds-theme4-brand2-contrast-1",
+    name: "--ds-theme2-brand2-contrast-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "contrast-1"
     ]
@@ -7384,16 +7384,16 @@ export const  color = [
   {
     type: "color",
     value: "#45340a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#45340a"
     },
-    name: "--ds-theme4-brand2-contrast-2",
+    name: "--ds-theme2-brand2-contrast-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand2",
       "contrast-2"
     ]
@@ -7401,16 +7401,16 @@ export const  color = [
   {
     type: "color",
     value: "#061d30",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#061d30"
     },
-    name: "--ds-theme4-brand3-1",
+    name: "--ds-theme2-brand3-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "1"
     ]
@@ -7418,16 +7418,16 @@ export const  color = [
   {
     type: "color",
     value: "#07253c",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#07253c"
     },
-    name: "--ds-theme4-brand3-2",
+    name: "--ds-theme2-brand3-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "2"
     ]
@@ -7435,16 +7435,16 @@ export const  color = [
   {
     type: "color",
     value: "#0a3251",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0a3251"
     },
-    name: "--ds-theme4-brand3-3",
+    name: "--ds-theme2-brand3-3",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "3"
     ]
@@ -7452,16 +7452,16 @@ export const  color = [
   {
     type: "color",
     value: "#0c3b60",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0c3b60"
     },
-    name: "--ds-theme4-brand3-4",
+    name: "--ds-theme2-brand3-4",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "4"
     ]
@@ -7469,16 +7469,16 @@ export const  color = [
   {
     type: "color",
     value: "#0e446e",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#0e446e"
     },
-    name: "--ds-theme4-brand3-5",
+    name: "--ds-theme2-brand3-5",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "5"
     ]
@@ -7486,16 +7486,16 @@ export const  color = [
   {
     type: "color",
     value: "#11558a",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#11558a"
     },
-    name: "--ds-theme4-brand3-6",
+    name: "--ds-theme2-brand3-6",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "6"
     ]
@@ -7503,16 +7503,16 @@ export const  color = [
   {
     type: "color",
     value: "#166eb2",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#166eb2"
     },
-    name: "--ds-theme4-brand3-7",
+    name: "--ds-theme2-brand3-7",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "7"
     ]
@@ -7520,16 +7520,16 @@ export const  color = [
   {
     type: "color",
     value: "#1b88db",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1b88db"
     },
-    name: "--ds-theme4-brand3-8",
+    name: "--ds-theme2-brand3-8",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "8"
     ]
@@ -7537,16 +7537,16 @@ export const  color = [
   {
     type: "color",
     value: "#1e98f5",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1e98f5"
     },
-    name: "--ds-theme4-brand3-9",
+    name: "--ds-theme2-brand3-9",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "9"
     ]
@@ -7554,16 +7554,16 @@ export const  color = [
   {
     type: "color",
     value: "#1980ce",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1980ce"
     },
-    name: "--ds-theme4-brand3-10",
+    name: "--ds-theme2-brand3-10",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "10"
     ]
@@ -7571,16 +7571,16 @@ export const  color = [
   {
     type: "color",
     value: "#1569a9",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#1569a9"
     },
-    name: "--ds-theme4-brand3-11",
+    name: "--ds-theme2-brand3-11",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "11"
     ]
@@ -7588,16 +7588,16 @@ export const  color = [
   {
     type: "color",
     value: "#57b2f8",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#57b2f8"
     },
-    name: "--ds-theme4-brand3-12",
+    name: "--ds-theme2-brand3-12",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "12"
     ]
@@ -7605,16 +7605,16 @@ export const  color = [
   {
     type: "color",
     value: "#9cd2fb",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#9cd2fb"
     },
-    name: "--ds-theme4-brand3-13",
+    name: "--ds-theme2-brand3-13",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "13"
     ]
@@ -7622,16 +7622,16 @@ export const  color = [
   {
     type: "color",
     value: "#082740",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#082740"
     },
-    name: "--ds-theme4-brand3-contrast-1",
+    name: "--ds-theme2-brand3-contrast-1",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "contrast-1"
     ]
@@ -7639,16 +7639,16 @@ export const  color = [
   {
     type: "color",
     value: "#061f33",
-    filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
+    filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
       type: "color",
       value: "#061f33"
     },
-    name: "--ds-theme4-brand3-contrast-2",
+    name: "--ds-theme2-brand3-contrast-2",
     attributes: {},
     path: [
-      "theme4",
+      "theme2",
       "brand3",
       "contrast-2"
     ]
