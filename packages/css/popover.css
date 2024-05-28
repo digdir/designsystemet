@@ -26,13 +26,13 @@
   .fds-popover--default {
     --dsc-popover-background: var(--ds-color-neutral-background-default);
 
-    border-color: var(--ds-color-neutral-border-strong);
+    border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-popover--info {
     --dsc-popover-background: var(--ds-color-info-surface-default);
 
-    border-color: var(--ds-color-info-border-strong);
+    border-color: var(--ds-color-info-border-default);
   }
 
   .fds-popover--warning {
