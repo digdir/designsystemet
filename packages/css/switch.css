@@ -40,8 +40,9 @@
 
   .fds-switch__description {
     padding-left: calc(var(--dsc-switch-width) + var(--ds-spacing-2));
-    margin-top: calc(var(--ds-spacing-2) * -1);
+    margin-top: var(--ds-spacing-1);
     color: var(--ds-color-neutral-text-subtle);
+    width: fit-content;
   }
 
   .fds-switch__readonly__icon {
