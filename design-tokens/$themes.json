@@ -5,6 +5,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "primitives/colors/light/global": "enabled",
+      "primitives/colors/light/theme4": "enabled",
+      "primitives/colors/light/theme3": "enabled",
       "primitives/colors/light/theme2": "enabled",
       "primitives/colors/light/theme": "enabled"
     },
@@ -260,6 +262,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "primitives/colors/dark/global": "enabled",
+      "primitives/colors/dark/theme4": "enabled",
+      "primitives/colors/dark/theme3": "enabled",
       "primitives/colors/dark/theme2": "enabled",
       "primitives/colors/dark/theme": "enabled"
     },
