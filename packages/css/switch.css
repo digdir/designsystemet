@@ -161,7 +161,7 @@
   }
 
   .fds-switch__input:not([readonly]):checked + .fds-switch__label .fds-switch__track {
-    background-color: var(--ds-color-success-base-default);
+    background-color: var(--ds-color-accent-base-default);
   }
 
   .fds-switch__thumb {
@@ -175,7 +175,7 @@
   }
 
   .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
-    --dsc-switch-check_color: var(--ds-color-success-base-default);
+    --dsc-switch-check_color: var(--ds-color-accent-base-default);
 
     transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 1.2));
   }
@@ -214,7 +214,7 @@
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-      --dsc-switch-check_color: var(--ds-color-success-base-hover);
+      --dsc-switch-check_color: var(--ds-color-accent-base-hover);
 
       transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height))));
     }
@@ -224,7 +224,7 @@
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track {
-      background-color: var(--ds-color-success-base-hover);
+      background-color: var(--ds-color-accent-base-hover);
     }
   }
 }
