@@ -160,6 +160,7 @@ export const TokenModal = ({
       <Modal.Trigger
         onClick={() => {
           generateThemeJson('light');
+          generateCSSVars('light');
           return modalRef.current?.showModal();
         }}
       >

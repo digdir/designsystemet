@@ -138,6 +138,7 @@ export const generateColorScale = (
 
   // Creates a flat array of the 13 colors in the theme
   const themeArray = theme.contrastColorValues;
+  themeArray[8] = color;
 
   // Add contrast colors to the end of the array
   themeArray.push(calculateContrastOneColor(themeArray[8]));
