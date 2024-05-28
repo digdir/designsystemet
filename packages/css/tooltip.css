@@ -10,16 +10,7 @@
     font-family: inherit;
   }
 
-  .fds-tooltip--inverted {
-    background: var(--ds-color-neutral-background-subtle);
-    color: var(--ds-color-neutral-text-default);
-  }
-
   .fds-tooltip__arrow {
     fill: var(--dsc-tooltip-background);
-  }
-
-  .fds-tooltip--inverted .fds-tooltip__arrow {
-    fill: var(--ds-color-neutral-background-subtle);
   }
 }

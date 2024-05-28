@@ -46,7 +46,10 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
+  /**
+   * Inverts the color of the tooltip. Use this on dark backgrounds.
+   * @deprecated Use the `data-ds-theme` attribute instead.
+   */
   inverted?: boolean;
   /**
    * Portals the floating element outside of the app root and into the body.
@@ -144,13 +147,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               ref={refs.setFloating}
               style={{ ...floatingStyles, ...animationStyles, ...style }}
               role='tooltip'
-              data-ds-theme='dark'
+              data-ds-theme={inverted ? 'light' : 'dark'}
               {...getFloatingProps({
-                className: cl(
-                  'fds-tooltip',
-                  inverted && 'fds-tooltip--inverted',
-                  className,
-                ),
+                className: cl('fds-tooltip', className),
                 ref: mergedRef,
                 ...rest,
               })}
