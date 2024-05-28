@@ -157,7 +157,8 @@
 
   .fds-switch__input:focus-visible + .fds-switch__label .fds-switch__track {
     outline: var(--dsc-switch-focus-border-width) solid var(--ds-color-neutral-text-default);
-    box-shadow: inset 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-color-neutral-background-default);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-color-neutral-background-default);
   }
 
   .fds-switch__input:not([readonly]):checked + .fds-switch__label .fds-switch__track {
