@@ -75,14 +75,6 @@
     color: var(--ds-color-accent-base-default);
   }
 
-  .fds-tabs__tab:focus-visible {
-    --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-text-default);
-
-    background: var(--ds-color-neutral-text-default);
-    color: var(--ds-color-neutral-text-default);
-    outline: none;
-  }
-
   .fds-tabs__tab::after {
     content: '';
     display: block;
