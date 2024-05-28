@@ -35,13 +35,13 @@
 .btn {
   justify-content: start;
   gap: 16px;
-  font-weight: 300 !important;
   color: var(--fds-semantic-text-neutral-subtle);
-  transition: 0.15s all;
+  transition: 0.1s all;
 }
 
 .btn:hover {
   background-color: var(--accent3);
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .btnActive {

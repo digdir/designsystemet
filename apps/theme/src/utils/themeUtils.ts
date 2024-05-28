@@ -36,13 +36,13 @@ export const generateColorScale = (
     ratios: [1],
   });
 
-  if (mode === 'dark') {
-    color = getBaseColorForDarkmode(color);
-  }
+  // if (mode === 'dark') {
+  //   color = getBaseColorForDarkmode(color);
+  // }
 
-  if (mode === 'contrast') {
-    color = getBaseColorForDarkmode(color);
-  }
+  // if (mode === 'contrast') {
+  //   color = getBaseColorForDarkmode(color);
+  // }
 
   const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -8 : 8;

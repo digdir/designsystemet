@@ -347,7 +347,7 @@ export const Components = () => {
           size='xsmall'
           className={classes.cardTitle}
         >
-          Ofte stillte spørmsål
+          Ofte stillte spørsmål
         </Heading>
         <Accordion
           color='third'
