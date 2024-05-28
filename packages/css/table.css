@@ -1,12 +1,13 @@
 @layer fds.table {
   .fds-table {
+    --dsc-table-padding: 0;
+    --dsc-table-border-radius: var(--ds-border-radius-md);
+
     position: relative;
     border-collapse: separate;
     border-spacing: 0;
     text-align: left;
-
-    --dsc-table-padding: 0;
-    --dsc-table-border-radius: var(--ds-border-radius-md);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-table--sticky-header {
@@ -70,6 +71,7 @@
     align-items: center;
     padding: var(--dsc-table-padding);
     background-color: transparent;
+    color: var(--ds-color-neutral-text-default);
     z-index: 2;
   }
 
@@ -101,7 +103,7 @@
 
   .fds-table--border {
     border-radius: var(--dsc-table-border-radius);
-    border: 1px solid var(--ds-color-neutral-border-strong);
+    border: 1px solid var(--ds-color-neutral-border-default);
   }
 
   .fds-table--border .fds-table__head .fds-table__header__cell:first-of-type {
