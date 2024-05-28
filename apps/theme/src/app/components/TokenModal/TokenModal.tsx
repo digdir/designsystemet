@@ -124,7 +124,15 @@ export const TokenModal = ({
       },
     };
 
-    let CSS = ':root {';
+    let CSS = '';
+
+    if (theme === 'light') {
+      CSS = ':root, [data-ds-theme="light"] {';
+    } else if (theme === 'dark') {
+      CSS = '[data-ds-theme"dark"] {';
+    } else {
+      CSS = '[data-ds-theme"contrast"] {';
+    }
 
     for (const key in obj.theme) {
       for (const color in obj.theme[key as ColorType]) {
