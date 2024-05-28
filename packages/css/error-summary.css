@@ -12,4 +12,8 @@
   .fds-error-summary li:last-of-type {
     margin-bottom: 0;
   }
+
+  .fds-error-summary__heading {
+    color: var(--ds-color-danger-text-default);
+  }
 }

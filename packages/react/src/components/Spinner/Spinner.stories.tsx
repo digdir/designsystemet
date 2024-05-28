@@ -45,17 +45,6 @@ export const Variants: Story = () => (
       variant='interaction'
       size='xl'
     />
-    <div
-      style={{
-        background: 'var(--ds-semantic-surface-neutral-inverted)',
-      }}
-    >
-      <Spinner
-        title='Henter kaffi'
-        variant='inverted'
-        size='xl'
-      />
-    </div>
   </>
 );
 
