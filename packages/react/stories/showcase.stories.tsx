@@ -32,40 +32,6 @@ export const Showcase: StoryFn = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
   return (
     <div className={classes.components}>
-      <div className={cl(classes.help)}>
-        <Heading
-          size='xsmall'
-          className={classes.helpHeading}
-        >
-          Hva kan vi hjelpe deg med?
-        </Heading>
-        <div className={classes.helpCards}>
-          <Card color='first'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Sikkerhet og drift</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-          <Card color='second'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Skole og utdanning</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-          <Card color='third'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Mat og helse</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
-          </Card>
-        </div>
-      </div>
       <div className={cl(classes.checkbox)}>
         <Checkbox.Group
           error=''
@@ -85,7 +51,7 @@ export const Showcase: StoryFn = () => {
           <Checkbox value='sms'>10 poser med Smash</Checkbox>
         </Checkbox.Group>
       </div>
-      <div>
+      <div className={classes.login}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
           size='xsmall'
@@ -205,21 +171,41 @@ export const Showcase: StoryFn = () => {
           totalPages={6}
         />
       </div>
-      <div>
-        <Radio.Group
-          error=''
-          legend='Hvilken iskremsmak er best?'
-          size='small'
-          value={radioValue}
-          onChange={(e) => setRadioValue(e)}
+      <div className={cl(classes.help)}>
+        <Heading
+          size='xsmall'
+          className={classes.helpHeading}
         >
-          <Radio value='vanilje'>Vanilje</Radio>
-          <Radio value='jordbær'>Jordbær</Radio>
-          <Radio value='sjokolade'>Sjokolade</Radio>
-          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
-        </Radio.Group>
+          Hva kan vi hjelpe deg med?
+        </Heading>
+        <div className={classes.helpCards}>
+          <Card color='first'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Sikkerhet og drift</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+          <Card color='second'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Skole og utdanning</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+          <Card color='third'>
+            <Card.Header className={classes.helpHeader}>
+              <Heading size='xxsmall'>Mat og helse</Heading>
+            </Card.Header>
+            <Card.Content className={cl(classes.helpContent)}>
+              Most provide as with carried business are much better more the.
+            </Card.Content>
+          </Card>
+        </div>
       </div>
-      <div>
+      <div className={classes.tags}>
         <Heading size='xsmall'>Emner</Heading>
         <div className={classes.tagList}>
           <Tag
@@ -252,48 +238,18 @@ export const Showcase: StoryFn = () => {
           >
             Utenriks
           </Tag>
-          <Tag
-            color='info'
-            size='small'
-          >
+          {/* <Tag color="info" size="small">
             Helse og velvære
           </Tag>
-          <Tag
-            color='danger'
-            size='small'
-          >
+          <Tag color="danger" size="small">
             PC Gaming
           </Tag>
-          <Tag
-            color='warning'
-            size='small'
-          >
+          <Tag color="warning" size="small">
             Trening og livsstil
-          </Tag>
+          </Tag> */}
         </div>
       </div>
-      <div className={cl(classes.tabs)}>
-        <Tabs
-          defaultValue='value1'
-          size='small'
-        >
-          <Tabs.List>
-            <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
-            <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
-            <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
-          </Tabs.List>
-        </Tabs>
-        <Paragraph size='small'>
-          For å kunne bli registrert i{' '}
-          <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
-          frivillig virksomhet. Det er bare foreninger,{' '}
-          <Link href='#'>stiftelser</Link> og som kan registreres. Virksomheten
-          kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
-          styre. Virksomheten må være registrert i{' '}
-          <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
-        </Paragraph>
-      </div>
-      <div>
+      <div className={classes.switches}>
         <Heading
           size='xsmall'
           className={cl(classes.footerHeading, classes.switchHeading)}
@@ -317,6 +273,42 @@ export const Showcase: StoryFn = () => {
           <Switch size='small'>Mobilvisning</Switch>
         </div>
       </div>
+      <div className={classes.radios}>
+        <Radio.Group
+          error=''
+          legend='Hvilken iskremsmak er best?'
+          size='small'
+          value={radioValue}
+          onChange={(e) => setRadioValue(e)}
+        >
+          <Radio value='vanilje'>Vanilje</Radio>
+          <Radio value='jordbær'>Jordbær</Radio>
+          <Radio value='sjokolade'>Sjokolade</Radio>
+          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
+        </Radio.Group>
+      </div>
+      <div className={cl(classes.tabs)}>
+        <Tabs
+          defaultValue='value1'
+          size='small'
+        >
+          <Tabs.List>
+            <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
+            <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
+            <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
+          </Tabs.List>
+        </Tabs>
+        <Paragraph size='small'>
+          For å kunne bli registrert i{' '}
+          <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
+          frivillig virksomhet. Det er bare foreninger,{' '}
+          <Link href='#'>stiftelser</Link> og som kan registreres. Virksomheten
+          kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
+          styre. Virksomheten må være registrert i{' '}
+          <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
+        </Paragraph>
+      </div>
+
       <div className={cl(classes.faq)}>
         <Heading
           size='xsmall'
