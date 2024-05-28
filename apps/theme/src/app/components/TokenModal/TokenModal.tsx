@@ -139,8 +139,8 @@ export const TokenModal = ({
         CSS += `--ds-color-${key}-${color}: ${obj.theme[key as ColorType][color].value};`;
       }
     }
-
-    setCss(CSS.concat('}'));
+    CSS += '}';
+    return CSS;
   };
 
   const onButtonClick = () => {
@@ -152,7 +152,10 @@ export const TokenModal = ({
 
   useEffect(() => {
     generateThemeJson('light');
-    generateCSSVars('light');
+    const lightCSS = generateCSSVars('light');
+    const darkCSS = generateCSSVars('dark');
+    const contrastCSS = generateCSSVars('contrast');
+    setCss(lightCSS + darkCSS + contrastCSS);
   }, []);
 
   return (
@@ -160,7 +163,10 @@ export const TokenModal = ({
       <Modal.Trigger
         onClick={() => {
           generateThemeJson('light');
-          generateCSSVars('light');
+          const lightCSS = generateCSSVars('light');
+          const darkCSS = generateCSSVars('dark');
+          const contrastCSS = generateCSSVars('contrast');
+          setCss(lightCSS + darkCSS + contrastCSS);
           return modalRef.current?.showModal();
         }}
       >
@@ -266,33 +272,7 @@ export const TokenModal = ({
               >
                 CSS variabler
               </Heading>
-              <div className={classes.tabs}>
-                <Tabs
-                  defaultValue='value1'
-                  size='small'
-                >
-                  <Tabs.List>
-                    <Tabs.Tab
-                      onClick={() => generateCSSVars('light')}
-                      value='value1'
-                    >
-                      Light
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => generateCSSVars('dark')}
-                      value='value2'
-                    >
-                      Dark
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => generateCSSVars('contrast')}
-                      value='value3'
-                    >
-                      Contrast
-                    </Tabs.Tab>
-                  </Tabs.List>
-                </Tabs>
-              </div>
+
               <div className={classes.snippet}>
                 <CodeSnippet language='css'>{css}</CodeSnippet>
               </div>
