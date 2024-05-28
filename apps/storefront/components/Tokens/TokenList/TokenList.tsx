@@ -225,7 +225,7 @@ const TokenList = ({
               <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
                 Tilsynet
               </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('brreg')}>
+              <DropdownMenu.Item onClick={() => setBrand('portal')}>
                 Brreg
               </DropdownMenu.Item>
             </DropdownMenu.Content>
