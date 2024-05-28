@@ -4,7 +4,7 @@
     --dsc-radio-focus-border-width: 3px;
     --dsc-radio-background: var(--ds-color-neutral-background-default);
     --dsc-radio-border-color: var(--ds-color-neutral-border-default);
-    --dsc-radio-border__hover: 0 0 0 var(--ds-spacing-2) var([delete]);
+    --dsc-radio-border__hover: 0 0 0 var(--ds-spacing-2) var(--ds-color-accent-border-subtle);
 
     display: grid;
   }
@@ -115,7 +115,7 @@
   @media (hover: hover) and (pointer: fine) {
     .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__label:hover,
     .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover + .fds-radio__label {
-      color: var(--ds-color-accent-base-hover);
+      color: var(--ds-color-accent-text-subtle);
     }
 
     .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:not(:checked) {
