@@ -174,8 +174,8 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='https://source.unsplash.com/random/100/100'
-                  alt=''
+                  src='/img/avatars/female1.png'
+                  alt='Bilde av dame'
                 />
                 Lise Nordmann
               </Table.Cell>
@@ -186,8 +186,8 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='https://source.unsplash.com/random/100/100'
-                  alt=''
+                  src='/img/avatars/male2.png'
+                  alt='Bilde av mann'
                 />
                 Ola Nordmann
               </Table.Cell>
