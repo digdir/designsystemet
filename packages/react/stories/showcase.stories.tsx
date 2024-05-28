@@ -363,34 +363,6 @@ export const Showcase: StoryFn = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div className={cl(classes.footerOne)}>
-        <Heading
-          size='xsmall'
-          className={cl(classes.footerHeading)}
-        >
-          Om nettstedet
-        </Heading>
-        <div className={cl(classes.footerList)}>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-        </div>
-      </div>
-      <div className={cl(classes.footerTwo)}>
-        <Heading
-          size='xsmall'
-          className={cl(classes.footerHeading)}
-        >
-          Nyttige lenker
-        </Heading>
-        <div className={cl(classes.footerList)}>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-          <Link href='#'>Peronvernærklæring</Link>
-        </div>
-      </div>
     </div>
   );
 };
