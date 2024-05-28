@@ -4,8 +4,10 @@
     --dsc-checkbox-focus-border-width: 3px;
     --dsc-checkbox-background: var(--ds-color-neutral-background-default);
     --dsc-checkbox-border-color: var(--ds-color-neutral-border-default);
-    --dsc-checkbox-border__hover: 0 0 0 var(--ds-spacing-2) var(--ds-color-accent-surface-hover);
+    --dsc-checkbox-border__hover--size: calc(var(--ds-spacing-3) / 2);
+    --dsc-checkbox-border__hover: 0 0 0 var(--dsc-checkbox-border__hover--size) var(--ds-color-accent-surface-hover);
     --dsc-checkbox-check_color: transparent;
+    --dsc-checkbox-focus-color: var(--ds-color-neutral-text-default);
 
     display: grid;
   }
@@ -80,8 +82,10 @@
 
   .fds-checkbox__input:focus-visible {
     outline-offset: 3px;
-    outline: var(--dsc-checkbox-focus-border-width) solid var(--ds-color-neutral-text-default);
-    box-shadow: 0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-color-neutral-background-default);
+    outline: var(--dsc-checkbox-focus-border-width) solid var(--dsc-checkbox-focus-color);
+    box-shadow:
+      0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-color-neutral-background-default),
+      inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
   .fds-checkbox__input::after {
@@ -158,12 +162,6 @@
       box-shadow:
         var(--dsc-checkbox-border__hover),
         inset 0 0 0 2px var(--dsc-checkbox-border-color);
-    }
-
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:checked:focus-visible {
-      box-shadow:
-        var(--dsc-checkbox-border__hover),
-        0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-color-neutral-background-default);
     }
   }
 
