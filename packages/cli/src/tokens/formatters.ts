@@ -12,6 +12,9 @@ export const scopedReferenceVariables: Format = {
   format: async function ({ dictionary, file, options }) {
     const { allTokens, unfilteredTokens } = dictionary;
     const { usesDtcg, outputReferences } = options;
+    const mode = file.destination.endsWith('dark.css') ? 'dark' : 'light';
+
+    const selector = mode === 'dark' ? '[data-ds-theme="dark"]' : ':root, [data-ds-theme="light"]';
     const includeReferences = options.includeReferences as IncludeReferences;
     let referencedTokens: TransformedToken[] = [];
 
@@ -59,7 +62,7 @@ export const scopedReferenceVariables: Format = {
     return fileHeader({ file }).then(
       (fileHeaderText) => `
 ${fileHeaderText}
-:root {
+${selector} {
 ${referenceTokens.length > 0 ? referenceTokens.join('\n') : ''}
 ${tokens.join('\n')}
 }
