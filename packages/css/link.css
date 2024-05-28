@@ -27,10 +27,4 @@
     outline: none;
     text-decoration: none;
   }
-
-  .fds-link--inverted:not(:focus-visible, :active),
-  .fds-link--inverted:not(:focus-visible, :active):hover,
-  .fds-link--inverted:not(:focus-visible, :active):visited {
-    color: white;
-  }
 }

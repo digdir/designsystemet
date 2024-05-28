@@ -10,7 +10,10 @@ export type LinkProps = {
   /** Custom class name for the link. This will be appended to the design system class names. */
   className?: string;
 
-  /** Inverts the color of the link. Use this on dark backgrounds. */
+  /**
+   * Inverts the color of the link. Use this on dark backgrounds.
+   * @deprecated Use `data-ds-theme="dark"` instead.
+   */
   inverted?: boolean;
 
   /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
@@ -28,8 +31,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
     return (
       <Component
-        className={cl('fds-link', inverted && 'fds-link--inverted', className)}
+        className={cl('fds-link', className)}
         ref={ref}
+        data-ds-theme={inverted ? 'dark' : undefined}
         {...rest}
       >
         {children}
