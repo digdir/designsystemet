@@ -31,7 +31,7 @@
   }
 
   .fds-tag--neutral {
-    --dsc-tag-background: var(--ds-color-neutral-background-subtle);
+    --dsc-tag-background: var(--ds-color-neutral-surface-default);
     --dsc-tag-color: var(--ds-color-neutral-text-default);
   }
 
@@ -52,21 +52,21 @@
 
   .fds-tag--danger {
     --dsc-tag-background: var(--ds-color-danger-surface-default);
-    --dsc-tag-color: var(--ds-color-danger-text-default);
+    --dsc-tag-color: var(--ds-color-neutral-text-default);
   }
 
   .fds-tag--brand1 {
     --dsc-tag-background: var(--ds-color-brand1-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-brand1-text-default);
   }
 
   .fds-tag--brand2 {
     --dsc-tag-background: var(--ds-color-brand2-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-brand2-text-default);
   }
 
   .fds-tag--brand3 {
     --dsc-tag-background: var(--ds-color-brand3-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-brand3-text-default);
   }
 }
