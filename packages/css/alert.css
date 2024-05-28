@@ -33,21 +33,25 @@
 
   .fds-alert--info {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
+    --dsc-alert-icon-color: var(--ds-color-info-base-default);
     --dsc-alert-background: var(--ds-color-info-surface-default);
   }
 
   .fds-alert--warning {
     --dsc-alert-border-color: var(--ds-color-warning-border-default);
+    --dsc-alert-icon-color: var(--ds-color-warning-base-default);
     --dsc-alert-background: var(--ds-color-warning-surface-default);
   }
 
   .fds-alert--success {
     --dsc-alert-border-color: var(--ds-color-success-border-default);
+    --dsc-alert-icon-color: var(--ds-color-success-base-default);
     --dsc-alert-background: var(--ds-color-success-surface-default);
   }
 
   .fds-alert--danger {
     --dsc-alert-border-color: var(--ds-color-danger-border-default);
+    --dsc-alert-icon-color: var(--ds-color-danger-base-default);
     --dsc-alert-background: var(--ds-color-danger-surface-default);
   }
 
