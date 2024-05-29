@@ -125,19 +125,19 @@
 
     .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-accent-text-hover);
-      border-color: var(--ds-color-accent-base-hover);
+      border-color: var(--ds-color-accent-border-strong);
       background-color: var(--ds-color-accent-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-neutral-text-hover);
-      border-color: var(--ds-color-neutral-base-hover);
+      border-color: var(--ds-color-neutral-border-strong);
       background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-success-text-default);
-      border-color: var([delete]);
+      border-color: var(--ds-color-success-border-strong);
       background-color: var(--ds-color-success-surface-default);
     }
 
@@ -187,43 +187,43 @@
   /* Secondary button colors */
   .fds-btn--secondary:where(.fds-btn--accent) {
     color: var(--ds-color-accent-text-subtle);
-    border-color: var(--ds-color-accent-base-default);
-    background-color: var(--ds-color-accent-background-default);
+    border-color: var(--ds-color-accent-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--neutral) {
     color: var(--ds-color-neutral-text-subtle);
-    border-color: var(--ds-color-neutral-base-default);
-    background-color: var(--ds-color-neutral-background-default);
+    border-color: var(--ds-color-neutral-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--success) {
     color: var(--ds-color-success-text-subtle);
-    border-color: var(--ds-color-success-border-default);
-    background-color: var(--ds-color-success-background-default);
+    border-color: var(--ds-color-success-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--danger) {
     color: var(--ds-color-danger-text-subtle);
-    border-color: var(--ds-color-danger-border-default);
-    background-color: var(--ds-color-danger-background-default);
+    border-color: var(--ds-color-danger-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-accent-text-active);
-    border-color: var(--ds-color-accent-base-active);
+    border-color: var(--ds-color-accent-border-strong);
     background-color: var(--ds-color-accent-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-neutral-text-active);
-    border-color: var(--ds-color-neutral-base-active);
+    border-color: var(--ds-color-neutral-border-strong);
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-success-text-default);
-    border-color: var([delete]);
+    border-color: var(--ds-color-success-border-strong);
     background-color: var(--ds-color-success-surface-hover);
   }
 
