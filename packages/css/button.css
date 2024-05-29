@@ -124,19 +124,19 @@
     }
 
     .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-accent-base-hover);
+      color: var(--ds-color-accent-text-hover);
       border-color: var(--ds-color-accent-base-hover);
       background-color: var(--ds-color-accent-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-neutral-base-hover);
+      color: var(--ds-color-neutral-text-hover);
       border-color: var(--ds-color-neutral-base-hover);
       background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-success-base-default);
+      color: var(--ds-color-success-text-default);
       border-color: var([delete]);
       background-color: var(--ds-color-success-surface-default);
     }
@@ -148,7 +148,7 @@
     }
 
     .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-accent-base-hover);
+      color: var(--ds-color-accent-text-default);
       background-color: var(--ds-color-accent-surface-default);
     }
 
@@ -186,19 +186,19 @@
 
   /* Secondary button colors */
   .fds-btn--secondary:where(.fds-btn--accent) {
-    color: var(--ds-color-accent-base-default);
+    color: var(--ds-color-accent-text-subtle);
     border-color: var(--ds-color-accent-base-default);
     background-color: var(--ds-color-accent-background-default);
   }
 
   .fds-btn--secondary:where(.fds-btn--neutral) {
-    color: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-text-subtle);
     border-color: var(--ds-color-neutral-base-default);
     background-color: var(--ds-color-neutral-background-default);
   }
 
   .fds-btn--secondary:where(.fds-btn--success) {
-    color: var(--ds-color-success-base-default);
+    color: var(--ds-color-success-text-subtle);
     border-color: var(--ds-color-success-border-default);
     background-color: var(--ds-color-success-background-default);
   }
@@ -210,19 +210,19 @@
   }
 
   .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-accent-base-active);
+    color: var(--ds-color-accent-text-active);
     border-color: var(--ds-color-accent-base-active);
     background-color: var(--ds-color-accent-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-neutral-base-active);
+    color: var(--ds-color-neutral-text-active);
     border-color: var(--ds-color-neutral-base-active);
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-success-base-default);
+    color: var(--ds-color-success-text-default);
     border-color: var([delete]);
     background-color: var(--ds-color-success-surface-hover);
   }
@@ -235,15 +235,15 @@
 
   /* Tertiary button colors */
   .fds-btn--tertiary:where(.fds-btn--accent) {
-    color: var(--ds-color-accent-base-default);
+    color: var(--ds-color-accent-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--neutral) {
-    color: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--success) {
-    color: var(--ds-color-success-base-default);
+    color: var(--ds-color-success-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--danger) {
@@ -256,12 +256,12 @@
   }
 
   .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-neutral-base-active);
+    color: var(--ds-color-neutral-text-active);
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-success-base-default);
+    color: var(--ds-color-success-text-default);
     background-color: var(--ds-color-success-surface-hover);
   }
 
