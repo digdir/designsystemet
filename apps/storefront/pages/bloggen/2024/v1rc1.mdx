@@ -23,11 +23,13 @@ Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal temati
 
 Her er en kort oppsummering av hva som er nytt:
 
-- Nytt fargesystem og token-struktur
-- Lettere å tilpasse designet til din virksomhet
-- Bedre støtte for darkmode og contrastmode
-- En rekke forbedringer og feilrettinger
-- fyll på meir?
+- Fargesystem og token-struktur
+- Lett å tilpasse til din virksomhet
+- Støtte for darkmode og contrastmode
+- Komponenter i React
+  - Tilgjengelige skjemakomponenter
+  - Komponenter for typografi
+  - Generelle komponenter for nettsider
 
 ### Nytt fargesystem og token-struktur
 
@@ -58,9 +60,23 @@ Et annet forvirrende element med det forrige fargesystemet var `action`-fargen, 
 
 ### Hva må du gjøre for å ta i bruk den nye arkitekturen?
 
-Skriv om migreringsscript til nye tokens? Attack feet behind the couch destroy couch flop over give attitude hide when guests come over hopped up on goofballs hunt anything that moves sweet beast under the bed claw drapes leave dead animals as gifts.
+For å lett komme i gang som utvikler med Release Candidate av Designsystemet kan du kjøre denne kommandoen:
 
-Chase mice chase imaginary bugs why must they do that shake treat stand in front of the computer screen chew ipad power cord need to chase tail lick butt all of a sudden go crazy.
+```bash
+npm i @digdir/designsystemet-react@next
+npm i @digdir/designsystemet-theme@next
+npm i @digdir/designsystemet-css@next
+```
+
+Denne installerer alle tre pakken, og inneholder tokens, css og react komponenter.
+
+#### Migrere fra beta-versjon
+
+Dersom du hat tidligere brukt beta-versjonen av Designsystemet, så har vi laget et migreringsscript som prøver å fikse alle endringer vi har gjort på variabelnavn og klassenavn.
+_Merk at du må dobbelsjekke koden din etter scriptet har kjørt_
+
+1. Installer `@next` versjonen av alle tre pakkene
+2. Kjør `npx @digdir/designsystemet migrate beta-to-v1`
 
 ## Bli med å teste V1 Release Candidate!
 
