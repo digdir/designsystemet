@@ -33,18 +33,21 @@
     --dsc-popover-background: var(--ds-color-info-surface-default);
 
     border-color: var(--ds-color-info-border-default);
+    color: var(--ds-color-info-text-default);
   }
 
   .fds-popover--warning {
     --dsc-popover-background: var(--ds-color-warning-surface-default);
 
     border-color: var(--ds-color-warning-border-default);
+    color: var(--ds-color-warning-text-default);
   }
 
   .fds-popover--danger {
     --dsc-popover-background: var(--ds-color-danger-surface-default);
 
     border-color: var(--ds-color-danger-border-default);
+    color: var(--ds-color-danger-text-default);
   }
 
   .fds-popover__arrow {

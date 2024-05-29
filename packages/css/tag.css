@@ -37,7 +37,7 @@
 
   .fds-tag--info {
     --dsc-tag-background: var(--ds-color-info-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-info-text-default);
   }
 
   .fds-tag--success {
@@ -47,12 +47,12 @@
 
   .fds-tag--warning {
     --dsc-tag-background: var(--ds-color-warning-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-warning-text-default);
   }
 
   .fds-tag--danger {
     --dsc-tag-background: var(--ds-color-danger-surface-default);
-    --dsc-tag-color: var(--ds-color-neutral-text-default);
+    --dsc-tag-color: var(--ds-color-danger-text-default);
   }
 
   .fds-tag--brand1 {

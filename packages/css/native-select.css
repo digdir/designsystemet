@@ -10,6 +10,7 @@
     border-radius: var(--ds-border-radius-md);
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMWVtJyBoZWlnaHQ9JzFlbScgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZvY3VzYWJsZT0nZmFsc2UnIHJvbGU9J2ltZyc+PHBhdGggZmlsbC1ydWxlPSdldmVub2RkJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnIGQ9J001Ljk3IDkuNDdhLjc1Ljc1IDAgMCAxIDEuMDYgMEwxMiAxNC40NGw0Ljk3LTQuOTdhLjc1Ljc1IDAgMSAxIDEuMDYgMS4wNmwtNS41IDUuNWEuNzUuNzUgMCAwIDEtMS4wNiAwbC01LjUtNS41YS43NS43NSAwIDAgMSAwLTEuMDZaJyBmaWxsPSdjdXJyZW50Q29sb3InPjwvcGF0aD48L3N2Zz4=');
     background-color: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
     background-repeat: no-repeat;
     background-position: right var(--ds-spacing-2) center;
     background-size: 1.5em 1.5em;

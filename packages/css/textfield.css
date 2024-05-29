@@ -24,6 +24,8 @@
     appearance: none;
     padding: 0 var(--ds-spacing-3);
     border: solid 1px var(--ds-color-neutral-border-default);
+    background: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
     border-radius: var(--ds-border-radius-md);
   }
 
