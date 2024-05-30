@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -16,7 +16,7 @@
   "scripts": {
     "designsystemet": "esno ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "prepublish": "yarn clean && tsc",
+    "build": "yarn clean && tsc",
     "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
