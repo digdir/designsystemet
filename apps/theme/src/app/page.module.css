@@ -8,11 +8,6 @@
   font-size: 18px;
 }
 
-.preview {
-  --back: var(--grey2);
-  --fore: var(--grey1);
-}
-
 .preview.dark,
 .preview.contrast {
   --back: var(--grey1);
@@ -197,6 +192,9 @@
 }
 
 .preview {
+  --back: var(--grey2);
+  --fore: var(--grey1);
+
   border: 1px solid #ebebeb;
   width: 100%;
   border-radius: 12px;
