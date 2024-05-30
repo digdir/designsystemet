@@ -3,18 +3,22 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import { getSize } from '../../utilities/getSize';
+import { getColor, getSize } from '../../utilities';
 
 type OldButtonSizes = 'small' | 'medium' | 'large';
+type OldColors = 'first' | 'second' | 'success';
 
 export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which color palette to use */
-  color?: 'first' | 'second' | 'success' | 'danger';
+  /** Specify which color palette to use
+   * @default accent
+   * @note `first`, `second`, `success` is deprecated
+   */
+  color?: 'accent' | 'neutral' | 'danger' | OldColors;
   /**
    * Size
-   * @default `md`
+   * @default md
    * @note `small`, `medium`, `large` is deprecated
    */
   size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
@@ -38,7 +42,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      color = 'first',
       variant = 'primary',
       fullWidth = false,
       icon = false,
@@ -50,6 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const size = getSize(rest.size || 'md');
+    const color = getColor(rest.color || 'accent', 'action');
     const Component = asChild ? Slot : 'button';
 
     return (

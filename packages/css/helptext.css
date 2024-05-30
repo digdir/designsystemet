@@ -21,9 +21,9 @@
   }
 
   .fds-helptext__icon {
-    color: var(--fds-semantic-text-action-default);
-    width: var(--fds-sizing-7);
-    height: var(--fds-sizing-7);
+    color: var(--ds-color-accent-base-default);
+    width: var(--ds-sizing-7);
+    height: var(--ds-sizing-7);
   }
 
   .fds-helptext__button:where(:hover, :focus, [data-state^='open']) > .fds-helptext__icon {
@@ -35,24 +35,25 @@
   }
 
   .fds-helptext__content {
-    font: var(--fds-typography-paragraph-medium);
+    font: var(--ds-typography-paragraph-md);
+    color: var(--ds-color-neutral-text-default);
     font-family: inherit;
     width: fit-content;
     max-width: 700px;
   }
 
   .fds-helptext--sm .fds-helptext__icon {
-    width: var(--fds-sizing-6);
-    height: var(--fds-sizing-6);
+    width: var(--ds-sizing-6);
+    height: var(--ds-sizing-6);
   }
 
   .fds-helptext--md .fds-helptext__icon {
-    width: var(--fds-sizing-7);
-    height: var(--fds-sizing-7);
+    width: var(--ds-sizing-7);
+    height: var(--ds-sizing-7);
   }
 
   .fds-helptext--lg .fds-helptext__icon {
-    width: var(--fds-sizing-8);
-    height: var(--fds-sizing-8);
+    width: var(--ds-sizing-8);
+    height: var(--ds-sizing-8);
   }
 }

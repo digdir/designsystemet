@@ -6,6 +6,7 @@
   width: 52%;
   margin-bottom: 32px;
   margin-top: -4px;
+  display: flex;
 }
 
 .toggleGroup > span {

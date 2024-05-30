@@ -1,12 +1,13 @@
 @layer fds.table {
   .fds-table {
+    --dsc-table-padding: 0;
+    --dsc-table-border-radius: var(--ds-border-radius-md);
+
     position: relative;
     border-collapse: separate;
     border-spacing: 0;
     text-align: left;
-
-    --table-padding: 0;
-    --border-radius: var(--fds-border_radius-medium);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-table--sticky-header {
@@ -18,15 +19,15 @@
   }
 
   .fds-table--sm {
-    --table-padding: var(--fds-spacing-1) var(--fds-spacing-3);
+    --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
   }
 
   .fds-table--md {
-    --table-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    --dsc-table-padding: var(--ds-spacing-2) var(--ds-spacing-3);
   }
 
   .fds-table--lg {
-    --table-padding: var(--fds-spacing-3) var(--fds-spacing-3);
+    --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
   }
 
   .fds-table__head {
@@ -36,16 +37,16 @@
     font-family: inherit;
     border-spacing: 0;
     font-weight: 500;
-    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+    border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
   }
 
   .fds-table__header__cell {
-    padding: var(--table-padding);
+    padding: var(--dsc-table-padding);
     font: inherit;
     font-family: inherit;
-    background-color: var(--fds-semantic-surface-neutral-default);
+    background-color: var(--ds-color-neutral-background-default);
     border-spacing: 0;
-    border-bottom: 2px solid var(--fds-semantic-border-divider-default);
+    border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
   }
 
   .fds-table--sticky-header .fds-table__head .fds-table__header__cell {
@@ -66,19 +67,22 @@
     font-family: inherit;
     display: flex;
     cursor: pointer;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     align-items: center;
-    padding: var(--table-padding);
+    padding: var(--dsc-table-padding);
     background-color: transparent;
+    color: var(--ds-color-neutral-text-default);
     z-index: 2;
   }
 
   .fds-table__header__cell--sorted button {
-    background-color: var(--fds-semantic-surface-neutral-subtle);
+    background-color: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-table__header__cell--sortable button:focus {
+  .fds-table__header__cell--sortable button:focus-visible {
     z-index: 3;
+    outline-offset: -3px;
+    box-shadow: unset;
   }
 
   .fds-table__header__cell--sortable button svg {
@@ -86,9 +90,9 @@
   }
 
   .fds-table__cell {
-    padding: var(--table-padding);
-    border-bottom: 1px solid var(--fds-semantic-border-divider-default);
-    background-color: var(--fds-semantic-surface-neutral-default);
+    padding: var(--dsc-table-padding);
+    border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+    background-color: var(--ds-color-neutral-background-default);
   }
 
   .fds-table--zebra .fds-table__row {
@@ -96,41 +100,41 @@
   }
 
   .fds-table--zebra tr:nth-child(even):not(:hover) .fds-table__cell {
-    background-color: var(--fds-semantic-background-subtle);
+    background-color: var(--ds-color-neutral-background-subtle);
   }
 
   .fds-table--border {
-    border-radius: var(--border-radius);
-    border: 1px solid var(--fds-semantic-border-neutral-default);
+    border-radius: var(--dsc-table-border-radius);
+    border: 1px solid var(--ds-color-neutral-border-default);
   }
 
   .fds-table--border .fds-table__head .fds-table__header__cell:first-of-type {
-    border-top-left-radius: var(--border-radius);
+    border-top-left-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
   .fds-table--border .fds-table__head .fds-table__header__cell:last-of-type {
-    border-top-right-radius: var(--border-radius);
+    border-top-right-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
   .fds-table--border .fds-table__row:last-of-type .fds-table__cell:first-of-type {
-    border-bottom-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
   .fds-table--border .fds-table__row:last-of-type .fds-table__cell:last-of-type {
-    border-bottom-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
   @media (hover: hover) and (pointer: fine) {
     .fds-table__row:hover .fds-table__cell {
-      background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+      background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-table__header__cell--sortable button:hover {
-      background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+      background-color: var(--ds-color-neutral-surface-default);
     }
   }
 }

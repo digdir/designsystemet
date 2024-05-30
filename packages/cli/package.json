@@ -1,37 +1,54 @@
 {
-  "name": "@digdir/designsystemet-cli",
-  "version": "0.0.1",
+  "name": "@digdir/designsystemet",
+  "version": "0.1.0-alpha.2",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
-  "repository": "https://github.com/digdir/designsystemet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
-  "private": true,
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "esno ./src/build.ts",
-    "build": "yarn clean && yarn start -t ../../design-tokens -b Digdir Tilsynet Altinn Brreg",
-    "prepublish": "tsc",
-    "clean": "yarn workspace @digdir/designsystemet-theme clean"
+    "designsystemet": "esno ./bin/designsystemet.ts",
+    "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
+    "prepublish": "yarn clean && tsc",
+    "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
+    "clean": "rimraf dist",
+    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
+    "css-classes": "yarn designsystemet css-names",
+    "jscodeshift": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ./src/test/**/* --extensions=tsx --parser=tsx",
+    "jscodeshift-react": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ../../packages/react/src/components/Button/**/* --extensions=tsx --parser=tsx"
   },
   "files": [
     "./dist/**"
   ],
-  "bin": {
-    "designsystemet": "./dist/build/build.js"
-  },
-  "devDependencies": {
-    "@tokens-studio/sd-transforms": "^0.9.3",
+  "bin": "dist/build/bin/designsystemet.js",
+  "dependencies": {
+    "@commander-js/extra-typings": "^12.0.1",
+    "@tokens-studio/sd-transforms": "^0.16.0",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.12.7",
     "@types/ramda": "^0.29.9",
-    "@types/yargs": "^17.0.32",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
     "esno": "^4.7.0",
+    "fast-glob": "^3.3.2",
+    "jscodeshift": "^0.15.2",
+    "object-hash": "^3.0.0",
+    "postcss": "^8.4.38",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^3.8.0",
-    "typescript": "^5.4.5",
-    "yargs": "^17.7.2"
+    "style-dictionary": "^4.0.0-prerelease.27",
+    "tsup": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/jscodeshift": "^0.11.11",
+    "@types/object-hash": "^3",
+    "typescript": "^5.4.5"
   }
 }

@@ -1,15 +1,19 @@
 @layer fds.errorsummary {
   .fds-error-summary {
-    padding: var(--fds-spacing-6) var(--fds-spacing-8);
-    border-radius: var(--fds-border_radius-large);
-    background-color: var(--fds-semantic-surface-danger-subtle);
+    padding: var(--ds-spacing-6) var(--ds-spacing-8);
+    border-radius: var(--ds-border-radius-lg);
+    background-color: var(--ds-color-danger-surface-default);
   }
 
   .fds-error-summary a {
-    color: var(--fds-semantic-text-neutral-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-error-summary li:last-of-type {
     margin-bottom: 0;
+  }
+
+  .fds-error-summary__heading {
+    color: var(--ds-color-danger-text-default);
   }
 }

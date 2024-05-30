@@ -22,7 +22,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
     >
       <button
         {...useTabRest}
-        className={cl('fds-tabs__tab', className)}
+        className={cl('fds-tabs__tab', 'fds-focus', className)}
         ref={ref}
       >
         {children}

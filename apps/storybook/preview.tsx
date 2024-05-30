@@ -1,4 +1,5 @@
-import '../../packages/theme/brand/digdir/tokens.css';
+import '../legacy-tokens.css';
+import '../../packages/theme/digdir.css';
 import '../../packages/css/index.css';
 
 import type { Preview } from '@storybook/react';

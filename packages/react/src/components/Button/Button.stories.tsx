@@ -42,7 +42,7 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    color: 'first',
+    color: 'accent',
     size: 'md',
     icon: false,
     fullWidth: false,
@@ -53,7 +53,7 @@ export const Primary: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      color='first'
+      color='accent'
     >
       Lagre
     </Button>
@@ -66,7 +66,7 @@ export const Secondary: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='secondary'
-      color='first'
+      color='accent'
     >
       Avbryt
     </Button>
@@ -79,7 +79,7 @@ export const Tertiary: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='tertiary'
-      color='first'
+      color='accent'
     >
       <PencilWritingIcon
         aria-hidden
@@ -96,19 +96,19 @@ export const First: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      color='first'
+      color='accent'
     >
       Gå videre
     </Button>
     <Button
       variant='secondary'
-      color='first'
+      color='accent'
     >
       Fortsett senere
     </Button>
     <Button
       variant='tertiary'
-      color='first'
+      color='accent'
     >
       Avbryt
     </Button>
@@ -121,7 +121,7 @@ export const Second: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='secondary'
-      color='second'
+      color='neutral'
     >
       <PrinterSmallIcon
         aria-hidden
@@ -131,7 +131,7 @@ export const Second: StoryFn<typeof Button> = () => (
     </Button>
     <Button
       variant='secondary'
-      color='second'
+      color='neutral'
     >
       <PencilWritingIcon
         aria-hidden
@@ -141,7 +141,7 @@ export const Second: StoryFn<typeof Button> = () => (
     </Button>
     <Button
       variant='secondary'
-      color='second'
+      color='neutral'
     >
       <ArrowForwardIcon
         aria-hidden
@@ -199,13 +199,13 @@ export const KombinereFarger: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      color='second'
+      color='neutral'
     >
       Publiser
     </Button>
     <Button
       variant='secondary'
-      color='second'
+      color='neutral'
     >
       Lagre kladd
     </Button>
@@ -238,7 +238,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Legg til ny'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -248,7 +248,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Varslinger'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -258,7 +258,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Instillinger'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -285,7 +285,7 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
   <>
     <Button
       variant='primary'
-      color='second'
+      color='neutral'
     >
       Start utfylling
       <ArrowRightIcon
@@ -295,7 +295,7 @@ export const TekstOgIkon: StoryFn<typeof Button> = () => (
     </Button>
     <Button
       variant='secondary'
-      color='second'
+      color='neutral'
     >
       <ArrowUndoIcon
         aria-hidden
@@ -358,7 +358,7 @@ export const FullBredde: Story = {
       </>
     ),
     fullWidth: true,
-    color: 'second',
+    color: 'neutral',
     variant: 'secondary',
   },
   parameters: {

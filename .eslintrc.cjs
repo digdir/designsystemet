@@ -55,6 +55,12 @@ module.exports = {
         'mdx/code-blocks': false,
       },
     },
+    {
+      files: ['apps/storefront/**'],
+      rules: {
+        '@next/next/no-img-element': 'off',
+      },
+    },
   ],
   rules: {
     'arrow-body-style': 'off',
@@ -67,6 +73,7 @@ module.exports = {
     'import/namespace': ['error', { allowComputed: true }],
     'import/no-named-as-default': 'off',
     '@next/next/no-html-link-for-pages': ['error', 'apps/storefront/pages/'],
+    '@next/next/no-img-element': 'off',
     'jsx-a11y/no-autofocus': 'off',
     'import/order': [
       'warn',

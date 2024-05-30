@@ -23,6 +23,7 @@ export const ErrorSummaryHeading = ({
     <List.Heading
       {...rest}
       id={headingId}
+      className='fds-error-summary__heading'
     />
   );
 };

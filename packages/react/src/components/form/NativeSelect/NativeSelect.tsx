@@ -113,22 +113,24 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               </div>
             </Paragraph>
           )}
-          <select
-            disabled={disabled || readOnly}
-            ref={ref}
-            size={htmlSize}
-            className={cl(
-              'fds-native-select',
-              `fds-native-select--${size}`,
-              `fds-focus`,
-              props.multiple && 'fds-native-select--multiple',
-              className,
-            )}
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...omit(['readOnly', 'disabled'], selectProps)}
-          >
-            {children}
-          </select>
+          <div className='fds-native-select__wrapper'>
+            <select
+              disabled={disabled || readOnly}
+              ref={ref}
+              size={htmlSize}
+              className={cl(
+                'fds-native-select',
+                `fds-native-select--${size}`,
+                `fds-focus`,
+                props.multiple && 'fds-native-select--multiple',
+                className,
+              )}
+              {...omit(['size', 'error', 'errorId'], rest)}
+              {...omit(['readOnly', 'disabled'], selectProps)}
+            >
+              {children}
+            </select>
+          </div>
 
           {error && (
             <div

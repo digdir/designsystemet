@@ -25,23 +25,15 @@
   }
 
   .fds-spinner--default .fds-spinner__circle {
-    stroke: var(--fds-semantic-border-neutral-default);
+    stroke: var(--ds-color-neutral-border-default);
   }
 
   .fds-spinner--interaction .fds-spinner__circle {
-    stroke: var(--fds-semantic-border-action-first-default);
-  }
-
-  .fds-spinner--inverted .fds-spinner__circle {
-    stroke: var(--fds-semantic-surface-neutral-default);
+    stroke: var(--ds-color-accent-base-default);
   }
 
   .fds-spinner__background {
-    stroke: var(--fds-semantic-border-neutral-subtle);
-  }
-
-  .fds-spinner__background--inverted {
-    stroke: var(--fds-semantic-surface-neutral-dark);
+    stroke: var(--ds-color-neutral-surface-default);
   }
 
   @keyframes fds-spinner-rotate-animation {

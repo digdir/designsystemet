@@ -1,14 +1,14 @@
 @layer fds.btn {
   .fds-btn {
-    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
+    --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
     display: flex;
     align-items: center;
-    border: var(--fds-border_width-default) solid transparent;
-    background-color: var(--fds-semantic-surface-action-first-default);
-    color: var(--fds-semantic-text-action-first-on_action);
+    border: var(--ds-border-width-default) solid transparent;
+    background-color: var(--ds-color-accent-base-default);
+    color: var(--ds-color-accent-contrast-default);
     min-width: 2.5em;
-    padding: var(--fds-btn-padding);
+    padding: var(--dsc-btn-padding);
     box-sizing: border-box;
     cursor: pointer;
     font-family: inherit;
@@ -16,8 +16,8 @@
     text-align: center;
     text-decoration: none;
     position: relative;
-    border-radius: var(--fds-border_radius-interactive);
-    min-height: var(--fds-sizing-10);
+    border-radius: var(--ds-border-radius-md);
+    min-height: var(--ds-sizing-10);
   }
 
   .fds-btn svg {
@@ -27,16 +27,16 @@
   .fds-btn:disabled,
   .fds-btn[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--fds-opacity-disabled);
+    opacity: var(--ds-opacity-disabled);
   }
 
   .fds-btn--sm {
-    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-3);
+    --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-3);
 
-    gap: var(--fds-sizing-1);
-    font: var(--fds-typography-paragraph-short-small);
+    gap: var(--ds-sizing-1);
+    font: var(--ds-typography-paragraph-short-sm);
     font-family: inherit;
-    min-height: var(--fds-sizing-10);
+    min-height: var(--ds-sizing-10);
   }
 
   .fds-btn--sm::before {
@@ -58,21 +58,21 @@
   }
 
   .fds-btn--md {
-    --fds-btn-padding: var(--fds-spacing-2) var(--fds-spacing-4);
+    --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
-    gap: var(--fds-sizing-2);
-    font: var(--fds-typography-paragraph-short-medium);
+    gap: var(--ds-sizing-2);
+    font: var(--ds-typography-paragraph-short-md);
     font-family: inherit;
-    min-height: var(--fds-sizing-12);
+    min-height: var(--ds-sizing-12);
   }
 
   .fds-btn--lg {
-    --fds-btn-padding: var(--fds-spacing-3) var(--fds-spacing-5);
+    --dsc-btn-padding: var(--ds-spacing-3) var(--ds-spacing-5);
 
-    gap: var(--fds-sizing-2);
-    font: var(--fds-typography-paragraph-short-large);
+    gap: var(--ds-sizing-2);
+    font: var(--ds-typography-paragraph-short-lg);
     font-family: inherit;
-    min-height: var(--fds-sizing-14);
+    min-height: var(--ds-sizing-14);
   }
 
   .fds-btn--full-width {
@@ -85,188 +85,188 @@
   }
 
   .fds-btn--icon-only {
-    --fds-btn-padding: 0;
+    --dsc-btn-padding: 0;
   }
 
   /* Primary button colors */
-  .fds-btn--primary:where(.fds-btn--first) {
-    background-color: var(--fds-semantic-surface-action-first-default);
+  .fds-btn--primary:where(.fds-btn--accent) {
+    background-color: var(--ds-color-accent-base-default);
   }
 
-  .fds-btn--primary:where(.fds-btn--second) {
-    background-color: var(--fds-semantic-surface-action-second-default);
+  .fds-btn--primary:where(.fds-btn--neutral) {
+    background-color: var(--ds-color-neutral-base-default);
   }
 
   .fds-btn--primary:where(.fds-btn--success) {
-    background-color: var(--fds-semantic-surface-success-default);
+    background-color: var(--ds-color-success-base-default);
   }
 
   .fds-btn--primary:where(.fds-btn--danger) {
-    background-color: var(--fds-semantic-surface-danger-default);
+    background-color: var(--ds-color-danger-base-default);
   }
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--fds-semantic-surface-action-first-hover);
+    .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--ds-color-accent-base-hover);
     }
 
-    .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--fds-semantic-surface-action-second-hover);
+    .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--ds-color-neutral-base-hover);
     }
 
     .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--fds-semantic-surface-success-hover);
+      background-color: var(--ds-color-success-base-hover);
     }
 
     .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--fds-semantic-surface-danger-hover);
+      background-color: var(--ds-color-danger-base-hover);
     }
 
-    .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-action-first-hover);
-      border-color: var(--fds-semantic-border-action-first-hover);
-      background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+    .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+      color: var(--ds-color-accent-text-hover);
+      border-color: var(--ds-color-accent-border-strong);
+      background-color: var(--ds-color-accent-surface-default);
     }
 
-    .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-action-second-hover);
-      border-color: var(--fds-semantic-border-action-second-hover);
-      background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
+    .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+      color: var(--ds-color-neutral-text-hover);
+      border-color: var(--ds-color-neutral-border-strong);
+      background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-success-hover);
-      border-color: var(--fds-semantic-border-success-hover);
-      background-color: var(--fds-semantic-surface-success-no_fill-hover);
+      color: var(--ds-color-success-text-default);
+      border-color: var(--ds-color-success-border-strong);
+      background-color: var(--ds-color-success-surface-default);
     }
 
     .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-danger-hover);
-      border-color: var(--fds-semantic-border-danger-hover);
-      background-color: var(--fds-semantic-surface-danger-no_fill-hover);
+      color: var(--ds-color-danger-text-default);
+      border-color: var(--ds-color-danger-border-strong);
+      background-color: var(--ds-color-danger-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-action-first-hover);
-      background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
+    .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+      color: var(--ds-color-accent-text-default);
+      background-color: var(--ds-color-accent-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-action-second-hover);
-      background-color: var(--fds-semantic-surface-action-second-no_fill-hover);
+    .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+      color: var(--ds-color-neutral-base-hover);
+      background-color: var(--ds-color-neutral-surface-default);
     }
 
     .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-success-hover);
-      background-color: var(--fds-semantic-surface-success-no_fill-hover);
+      color: var(--ds-color-success-base-default);
+      background-color: var(--ds-color-success-surface-default);
     }
 
     .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      color: var(--fds-semantic-text-danger-hover);
-      background-color: var(--fds-semantic-surface-danger-no_fill-hover);
+      color: var(--ds-color-danger-text-default);
+      background-color: var(--ds-color-danger-surface-default);
     }
   }
 
-  .fds-btn--primary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--fds-semantic-surface-action-first-active);
+  .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--ds-color-accent-base-active);
   }
 
-  .fds-btn--primary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--fds-semantic-surface-action-second-active);
+  .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+    background-color: var(--ds-color-neutral-base-active);
   }
 
   .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--fds-semantic-surface-success-active);
+    background-color: var(--ds-color-success-base-active);
   }
 
   .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--fds-semantic-surface-danger-active);
+    background-color: var(--ds-color-danger-base-active);
   }
 
   /* Secondary button colors */
-  .fds-btn--secondary:where(.fds-btn--first) {
-    color: var(--fds-semantic-text-action-first-default);
-    border-color: var(--fds-semantic-border-action-first-default);
-    background-color: var(--fds-semantic-surface-action-first-no_fill);
+  .fds-btn--secondary:where(.fds-btn--accent) {
+    color: var(--ds-color-accent-text-subtle);
+    border-color: var(--ds-color-accent-border-strong);
+    background-color: transparent;
   }
 
-  .fds-btn--secondary:where(.fds-btn--second) {
-    color: var(--fds-semantic-text-action-second-default);
-    border-color: var(--fds-semantic-border-action-second-default);
-    background-color: var(--fds-semantic-surface-action-second-no_fill);
+  .fds-btn--secondary:where(.fds-btn--neutral) {
+    color: var(--ds-color-neutral-text-subtle);
+    border-color: var(--ds-color-neutral-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--success) {
-    color: var(--fds-semantic-text-success-default);
-    border-color: var(--fds-semantic-border-success-default);
-    background-color: var(--fds-semantic-surface-success-no_fill);
+    color: var(--ds-color-success-text-subtle);
+    border-color: var(--ds-color-success-border-strong);
+    background-color: transparent;
   }
 
   .fds-btn--secondary:where(.fds-btn--danger) {
-    color: var(--fds-semantic-text-danger-default);
-    border-color: var(--fds-semantic-border-danger-default);
-    background-color: var(--fds-semantic-surface-danger-no_fill);
+    color: var(--ds-color-danger-text-subtle);
+    border-color: var(--ds-color-danger-border-strong);
+    background-color: transparent;
   }
 
-  .fds-btn--secondary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-action-first-active);
-    border-color: var(--fds-semantic-border-action-first-active);
-    background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+  .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+    color: var(--ds-color-accent-text-active);
+    border-color: var(--ds-color-accent-border-strong);
+    background-color: var(--ds-color-accent-surface-hover);
   }
 
-  .fds-btn--secondary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-action-second-active);
-    border-color: var(--fds-semantic-border-action-second-active);
-    background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+  .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+    color: var(--ds-color-neutral-text-active);
+    border-color: var(--ds-color-neutral-border-strong);
+    background-color: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-success-active);
-    border-color: var(--fds-semantic-border-success-active);
-    background-color: var(--fds-semantic-surface-success-no_fill-active);
+    color: var(--ds-color-success-text-default);
+    border-color: var(--ds-color-success-border-strong);
+    background-color: var(--ds-color-success-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-danger-active);
-    border-color: var(--fds-semantic-border-danger-active);
-    background-color: var(--fds-semantic-surface-danger-no_fill-active);
+    color: var(--ds-color-danger-text-default);
+    border-color: var(--ds-color-danger-border-strong);
+    background-color: var(--ds-color-danger-surface-hover);
   }
 
   /* Tertiary button colors */
-  .fds-btn--tertiary:where(.fds-btn--first) {
-    color: var(--fds-semantic-text-action-first-default);
+  .fds-btn--tertiary:where(.fds-btn--accent) {
+    color: var(--ds-color-accent-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--second) {
-    color: var(--fds-semantic-text-action-second-default);
+  .fds-btn--tertiary:where(.fds-btn--neutral) {
+    color: var(--ds-color-neutral-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--success) {
-    color: var(--fds-semantic-text-success-default);
+    color: var(--ds-color-success-text-subtle);
   }
 
   .fds-btn--tertiary:where(.fds-btn--danger) {
-    color: var(--fds-semantic-text-danger-default);
+    color: var(--ds-color-danger-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--first):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-action-first-active);
-    background-color: var(--fds-semantic-surface-action-first-no_fill-active);
+  .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+    color: var(--ds-color-accent-base-active);
+    background-color: var(--ds-color-accent-surface-hover);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--second):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-action-second-active);
-    background-color: var(--fds-semantic-surface-action-second-no_fill-active);
+  .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+    color: var(--ds-color-neutral-text-active);
+    background-color: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-success-active);
-    background-color: var(--fds-semantic-surface-success-no_fill-active);
+    color: var(--ds-color-success-text-default);
+    background-color: var(--ds-color-success-surface-hover);
   }
 
   .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    color: var(--fds-semantic-text-danger-active);
-    background-color: var(--fds-semantic-surface-danger-no_fill-active);
+    color: var(--ds-color-danger-text-default);
+    background-color: var(--ds-color-danger-surface-hover);
   }
 }

@@ -1,36 +1,36 @@
 @layer fds.link {
   .fds-link {
-    color: var(--fds-semantic-text-action-default);
+    position: relative;
+    color: var(--ds-color-accent-text-subtle);
     cursor: pointer;
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem);
-    text-underline-offset: max(4px, 0.25rem);
+    text-underline-offset: max(5px, 0.25rem);
     display: inline-flex;
     align-items: center;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
   }
 
   .fds-link:visited {
-    color: var(--fds-semantic-text-visited-default);
+    color: var(--ds-global-purple-12);
     text-decoration: none;
   }
 
   .fds-link:hover {
-    color: var(--fds-semantic-text-action-hover);
+    color: var(--ds-color-accent-text-default);
     text-decoration-thickness: max(2px, 0.125rem, 0.12em);
   }
 
   .fds-link:focus-visible {
-    background: var(--fds-semantic-border-focus-outline);
-    box-shadow: 0 max(3px, 0.1875rem, 0.18em) var(--fds-semantic-border-focus-boxshadow);
-    color: var(--fds-semantic-text-action-active);
+    color: var(--ds-color-accent-background-default);
+    background: var(--ds-color-neutral-text-default);
     outline: none;
-    text-decoration: none;
   }
 
-  .fds-link--inverted:not(:focus-visible, :active),
-  .fds-link--inverted:not(:focus-visible, :active):hover,
-  .fds-link--inverted:not(:focus-visible, :active):visited {
-    color: white;
+  .fds-link:active {
+    color: var(--ds-color-accent-text-default);
+    background: var(--ds-color-accent-surface-default);
+    border-radius: var(--ds-border-radius-md);
+    outline: none;
   }
 }

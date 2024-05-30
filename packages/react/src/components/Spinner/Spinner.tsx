@@ -33,7 +33,11 @@ export type SpinnerProps = {
    * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` is deprecated
    */
   size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldSpinnerSizes;
-  /** Spinner appearance  */
+  /**
+   * Spinner appearance
+   * @default default
+   * @note `inverted` is deprecated
+   */
   variant?: 'default' | 'interaction' | 'inverted';
 } & React.ComponentPropsWithoutRef<'svg'>;
 
@@ -63,7 +67,14 @@ export const Spinner = ({
 
   return (
     <svg
-      className={cl('fds-spinner', `fds-spinner--${variant}`, className)}
+      className={cl(
+        'fds-spinner',
+        variant !== 'inverted'
+          ? `fds-spinner--${variant}`
+          : 'fds-spinner--default',
+        className,
+      )}
+      data-ds-color-mode={variant === 'inverted' ? 'dark' : undefined}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}

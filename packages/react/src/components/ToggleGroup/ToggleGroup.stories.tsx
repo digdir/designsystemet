@@ -20,9 +20,9 @@ export default {
 export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
   return (
     <ToggleGroup {...args}>
-      <ToggleGroup.Item>Peanut</ToggleGroup.Item>
-      <ToggleGroup.Item>Walnut</ToggleGroup.Item>
-      <ToggleGroup.Item>Pistachio 🤤</ToggleGroup.Item>
+      <ToggleGroup.Item value='Peanut'>Peanut</ToggleGroup.Item>
+      <ToggleGroup.Item value='Walnut'>Walnut</ToggleGroup.Item>
+      <ToggleGroup.Item value='Pistachio'>Pistachio 🤤</ToggleGroup.Item>
     </ToggleGroup>
   );
 };
