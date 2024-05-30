@@ -1,7 +1,7 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading } from '@/packages/react';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
 

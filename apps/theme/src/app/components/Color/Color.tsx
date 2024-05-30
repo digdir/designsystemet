@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import { SunIcon } from '@navikt/aksel-icons';
-import { Tooltip } from '@digdir/designsystemet-react';
+import { Tooltip } from '@/packages/react';
 import { useState } from 'react';
 
 import classes from './Color.module.css';

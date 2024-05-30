@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@adobe/leonardo-contrast-colors": "^1.0.0",
-    "@digdir/designsystemet-css": "0.9.0",
-    "@digdir/designsystemet-react": "0.62.0",
-    "@digdir/designsystemet-theme": "0.15.3",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",

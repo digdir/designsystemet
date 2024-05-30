@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { Button, Heading, Ingress } from '@digdir/designsystemet-react';
+import { Button, Heading, Ingress } from '@/packages/react';
 import { MagnifyingGlassIcon, MenuHamburgerIcon } from '@navikt/aksel-icons';
 
 import classes from './Landing.module.css';

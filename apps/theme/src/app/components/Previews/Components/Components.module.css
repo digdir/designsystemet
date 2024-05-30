@@ -49,11 +49,6 @@
   margin-top: 24px;
 }
 
-.userField input {
-  background-color: var(--grey1);
-  color: var(--grey13);
-}
-
 .userBtn {
   margin-top: 32px;
 }
@@ -75,10 +70,6 @@
   width: 100%;
   margin-bottom: 24px;
   margin-top: 16px;
-}
-
-.table button {
-  color: var(--grey13);
 }
 
 .table thead button {
@@ -107,7 +98,6 @@
 
 .tableSelect {
   width: 160px;
-  color: var(--fds-semantic-text-neutral-default);
 }
 
 .tableHeader {
@@ -119,11 +109,6 @@
 
 .tableSearch {
   width: 260px;
-}
-
-.tableSearch input {
-  background-color: var(--grey1);
-  color: var(--grey13);
 }
 
 .tableBtn {
@@ -138,42 +123,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-}
-
-.helpFirst {
-  border-color: var(--fds-semantic-border-first);
-}
-
-.helpFirstTitle {
-  color: var(--brandOne12);
-}
-
-.helpFirstDesc {
-  color: var(--brandOne12);
-}
-
-.helpSecond {
-  border-color: var(--fds-semantic-border-second);
-}
-
-.helpSecondTitle {
-  color: var(--brandTwo12);
-}
-
-.helpSecondDesc {
-  color: var(--brandTwo12);
-}
-
-.helpThird {
-  border-color: var(--fds-semantic-border-third);
-}
-
-.helpThirdTitle {
-  color: var(--brandThree12);
-}
-
-.helpThirdDesc {
-  color: var(--brandThree12);
 }
 
 .helpHeader {

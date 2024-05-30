@@ -1973,13 +1973,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-css@npm:0.9.0":
-  version: 0.9.0
-  resolution: "@digdir/designsystemet-css@npm:0.9.0"
-  checksum: 10/01442285c2d862a76b0693dc07b1856ad4a153ec038d86ea080eec02feb8df47c3ae5f69e7d6812a17a1b7b32d6fe1fc362a900aaf039e25fd7ab6a4a612c19a
-  languageName: node
-  linkType: hard
-
 "@digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
@@ -2005,21 +1998,6 @@ __metadata:
     react: ">=18.3.1"
     react-dom: ">=18.3.1"
   checksum: 10/749170906415879d0f54968395583e74df9f17b553e80b8cc0cc4a750d4aae827be77f859b243c1d75d23e7ccb6eb46565c19ab9fd6a5a225e01a73644bc2a7c
-  languageName: node
-  linkType: hard
-
-"@digdir/designsystemet-react@npm:0.62.0":
-  version: 0.62.0
-  resolution: "@digdir/designsystemet-react@npm:0.62.0"
-  dependencies:
-    "@floating-ui/react": "npm:0.26.12"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.2.0"
-  peerDependencies:
-    react: ">=18.3.1"
-    react-dom: ">=18.3.1"
-  checksum: 10/c1f488c482a5358c9b6d4fd9a15390bbe923cba824cd6dddb47cbbf55e7be07fd4e2e4358767498995d95209352890a1a662a2cc748e37ed005a07ae9e35303f
   languageName: node
   linkType: hard
 
@@ -21851,9 +21829,6 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
-    "@digdir/designsystemet-css": "npm:0.9.0"
-    "@digdir/designsystemet-react": "npm:0.62.0"
-    "@digdir/designsystemet-theme": "npm:0.15.3"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
     "@mui/material": "npm:^5.15.15"

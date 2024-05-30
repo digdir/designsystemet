@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import cl from 'clsx/lite';
+import { useState } from 'react';
 import {
   Checkbox,
   Switch,
@@ -18,8 +19,7 @@ import {
   Tabs,
   Accordion,
   Link,
-} from '@digdir/designsystemet-react';
-import { useState } from 'react';
+} from '@/packages/react';
 
 import classes from './Components.module.css';
 
@@ -105,7 +105,6 @@ export const Components = () => {
             <NativeSelect
               label=''
               size='sm'
-              className={classes.tableSelect}
             >
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
@@ -255,7 +254,7 @@ export const Components = () => {
           legend='Hvilken iskremsmak er best?'
           size='small'
           value={radioValue}
-          onChange={(e) => setRadioValue(e)}
+          onChange={(e: string) => setRadioValue(e)}
         >
           <Radio value='vanilje'>Vanilje</Radio>
           <Radio value='jordbær'>Jordbær</Radio>

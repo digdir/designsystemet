@@ -8,7 +8,7 @@ import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import * as prettierEstree from 'prettier/plugins/estree';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Tooltip } from '@digdir/designsystemet-react';
+import { Tooltip } from '@/packages/react';
 
 import classes from './CodeSnippet.module.css';
 

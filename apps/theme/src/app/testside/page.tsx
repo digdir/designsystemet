@@ -2,7 +2,7 @@
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading } from '@/packages/react';
 
 import { generateColorTheme } from '../../utils/themeUtils';
 import { Header } from '../components/Header/Header';

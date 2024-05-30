@@ -1,5 +1,5 @@
 'use client';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading } from '@/packages/react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';

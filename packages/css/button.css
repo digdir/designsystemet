@@ -210,13 +210,13 @@
   }
 
   .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-accent-text-active);
+    color: var(--ds-color-accent-text-default);
     border-color: var(--ds-color-accent-border-strong);
     background-color: var(--ds-color-accent-surface-hover);
   }
 
   .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-neutral-text-active);
+    color: var(--ds-color-neutral-text-default);
     border-color: var(--ds-color-neutral-border-strong);
     background-color: var(--ds-color-neutral-surface-hover);
   }

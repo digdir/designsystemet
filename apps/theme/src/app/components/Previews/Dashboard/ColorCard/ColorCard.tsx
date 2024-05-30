@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@/packages/react';
 import cl from 'clsx/lite';
 
 import classes from './ColorCard.module.css';

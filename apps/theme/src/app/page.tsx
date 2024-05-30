@@ -3,11 +3,11 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import type { SetStateAction } from 'react';
+import type { ChangeEvent, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
-import { NativeSelect } from '@digdir/designsystemet-react';
+import { NativeSelect } from '@/packages/react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { mapTokens } from '../utils/tokenMapping';
@@ -315,7 +315,7 @@ export default function Home() {
                   size='medium'
                   className={classes.contrastSelect}
                   value={contrastMode}
-                  onChange={(e) => {
+                  onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                     setContrastMode(e.target.value as 'aa' | 'aaa');
                   }}
                 >
