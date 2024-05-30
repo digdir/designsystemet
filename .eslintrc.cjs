@@ -56,6 +56,7 @@ module.exports = {
       },
     },
     {
+      files: ['apps/storefront/**'],
       rules: {
         '@next/next/no-img-element': 'off',
       },
