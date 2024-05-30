@@ -13,13 +13,13 @@
   width: 150px;
   padding-left: 12px;
   transition: 0.04s all;
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid #c0c0c0;
   background-color: transparent;
 }
 
 .container:hover {
-  border: 1px solid rgb(61, 61, 61);
-  outline: 1px solid rgb(61, 61, 61);
+  border: 1px solid #3d3d3d;
+  outline: 1px solid #3d3d3d;
 }
 
 .color {
@@ -27,12 +27,12 @@
   width: 24px;
   background-color: #1e98f5;
   border-radius: 50%;
-  border: 1px solid rgb(206, 206, 206);
+  border: 1px solid #c2c2c2;
 }
 
 .input {
   width: 100px;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 10px;
   display: flex;
   align-items: center;
@@ -45,7 +45,11 @@
 
 .label {
   margin-bottom: 12px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .popup {
@@ -66,4 +70,45 @@
 .disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.status {
+  border: 1px solid #6d6d6d;
+  color: #212442;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.status svg {
+  font-size: 2.4rem;
+}
+
+.status:hover {
+  border-color: black;
+  color: black;
+}
+
+.statusYellow {
+  background-color: #ffe8b6;
+  color: black;
+  border: 1px solid #6d6d6d;
+}
+
+.statusOrange svg {
+  font-size: 1.4rem;
+}
+
+.statusOrange {
+  background-color: #ffe8b6;
+  color: black;
+  border: 1px solid #6d6d6d;
+}
+
+.statusDanger svg {
+  font-size: 1.4rem;
 }

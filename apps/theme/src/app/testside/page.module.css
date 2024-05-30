@@ -1,11 +1,5 @@
 .page {
-  margin-top: 32px;
-}
-
-.container {
-  max-width: 1600px;
-  width: 100%;
-  margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .row {
@@ -14,7 +8,7 @@
 }
 
 .column {
-  background-color: #ff0000;
+  background-color: white;
   width: 33.33%;
   display: flex;
   flex-wrap: wrap;
@@ -22,19 +16,31 @@
   align-items: center;
   flex-basis: auto;
   padding: 20px;
-  border: 1px solid rgb(221, 221, 221);
+  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 .pageTitle {
   font-weight: 500;
+  margin-bottom: 24px;
+  margin-top: 24px;
 }
 
 .title {
-  font-size: 18px;
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 500;
+  color: inherit;
+}
+
+.sectionTitle {
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.sectionDesc {
+  margin-bottom: 32px;
+  margin-top: -12px;
 }
 
 .box {
@@ -76,30 +82,38 @@
   font-size: 16px;
 }
 
-.dot {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
+.whiteText {
+  color: white;
 }
 
-.green {
+.dotMeaning {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.dotMeaningItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dotMeadingTitle {
+  font-weight: 500;
+}
+
+.dotMeaningDot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
   background-color: green;
 }
 
-.orange {
-  background-color: rgb(255, 153, 0);
+.dotMeaningDotOrange {
+  background-color: #ffa200;
 }
 
-.red {
+.dotMeaningDotRed {
   background-color: red;
-}
-
-.contrast {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.whiteText {
-  color: white;
 }

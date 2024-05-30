@@ -1,19 +1,13 @@
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
-import cn from "classnames";
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import cl from 'clsx/lite';
 
-import { Color } from "../Color/Color";
+import { Color } from '../Color/Color';
 
-import classes from "./Group.module.css";
-
-type ColorType = {
-  color: CssColor;
-  contrast: string;
-  lightness: string;
-};
+import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorType[];
+  colors: CssColor[];
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
@@ -29,7 +23,7 @@ export const Group = ({
   return (
     <div className={classes.group}>
       {header && (
-        <div className={cn(classes.header, { [classes.featured]: featured })}>
+        <div className={cl(classes.header, featured && classes.featured)}>
           {header}
         </div>
       )}
@@ -40,17 +34,15 @@ export const Group = ({
           ))}
         </div>
       )}
-      <div
-        className={cn(classes.colors, { [classes.colorsFeatured]: featured })}
-      >
+      <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
         {colors.map(function (item, index) {
           return (
             <Color
               key={index}
-              color={item.color}
-              contrast={item.contrast}
-              lightness={item.lightness}
-              hex={item.color}
+              color={item}
+              contrast={'dd'}
+              lightness={'dd'}
+              hex={item}
               showColorMeta={showColorMeta}
             />
           );

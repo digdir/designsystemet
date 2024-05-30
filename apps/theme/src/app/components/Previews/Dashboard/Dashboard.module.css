@@ -1,5 +1,5 @@
 .dashboard {
-  background-color: var(--grey2);
+  background-color: var(--back);
   width: 100%;
   position: relative;
   min-height: 815px;
@@ -8,7 +8,7 @@
 }
 
 .sidebar {
-  background-color: var(--background);
+  background-color: var(--fore);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -35,13 +35,13 @@
 .btn {
   justify-content: start;
   gap: 16px;
-  font-weight: 300 !important;
   color: var(--fds-semantic-text-neutral-subtle);
-  transition: 0.15s all;
+  transition: 0.1s all;
 }
 
 .btn:hover {
   background-color: var(--accent3);
+  color: var(--fds-semantic-text-neutral-default);
 }
 
 .btnActive {
@@ -85,7 +85,7 @@
 }
 
 .card {
-  background-color: var(--background);
+  background-color: var(--fore);
   padding: 24px;
   border-radius: 8px;
 }
@@ -106,8 +106,8 @@
   row-gap: 24px;
   column-gap: 24px;
   grid-template-areas:
-    "colorcards colorcards colorcards colorcards colorcards colorcards colorcards colorcards users users users users"
-    "graph graph graph graph graph2 graph2 graph2 graph2 graph3 graph3 graph3 graph3";
+    'colorcards colorcards colorcards colorcards colorcards colorcards colorcards colorcards users users users users'
+    'graph graph graph graph graph2 graph2 graph2 graph2 graph3 graph3 graph3 graph3';
 }
 
 .users {
@@ -129,18 +129,20 @@
 
 .userName {
   font-size: 16px;
+  color: var(--grey13);
 }
 
 .user img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1px 1px #333;
 }
 
 .userTextContainer {
   display: flex;
   gap: 4px;
+  flex-direction: column;
 }
 
 .userRole {
@@ -157,15 +159,6 @@
 
 .userRoleThree {
   color: var(--brandThree12);
-}
-
-.userName {
-  color: var(--grey13);
-}
-
-.userTextContainer {
-  display: flex;
-  flex-direction: column;
 }
 
 .graph {

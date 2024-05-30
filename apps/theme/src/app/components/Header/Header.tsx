@@ -1,7 +1,10 @@
-import { Container } from 'react-bootstrap';
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import classes from './Header.module.css';
 import { usePathname } from 'next/navigation';
+
+import { Container } from '../Container/Container';
+
+import classes from './Header.module.css';
 
 export const Header = () => {
   const currentPath = usePathname();
@@ -25,10 +28,10 @@ export const Header = () => {
             Fargevelger
           </Link>
           <Link
-            className={currentPath === '/scale-list' ? classes.active : ''}
-            href='/scale-list'
+            className={currentPath === '/testside' ? classes.active : ''}
+            href='/testside'
           >
-            Liste over fargeskalaer
+            Testside
           </Link>
           <Link
             className={currentPath === '/om-verktoyet' ? classes.active : ''}

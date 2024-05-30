@@ -22,7 +22,7 @@
 }
 
 .red {
-  color: rgb(212, 0, 0);
+  color: #d40000;
 }
 
 .contrast {
@@ -37,7 +37,7 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 16px;
-  border: 1px solid rgb(206, 206, 206);
+  border: 1px solid #cecece;
   border-radius: 4px;
   font-size: 16px;
   position: relative;
@@ -52,11 +52,9 @@
 }
 
 .selectedColor {
-  /* border: 1px solid rgb(218, 218, 218); */
   height: 150px;
   width: 170px;
   margin-top: 2px;
-  /* padding: 20px; */
   margin-right: 48px;
   border-radius: 4px;
   font-size: 16px;

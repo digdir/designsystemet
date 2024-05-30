@@ -1,9 +1,9 @@
-import cn from "classnames";
-import { SunIcon } from "@navikt/aksel-icons";
-import { Tooltip } from "@digdir/designsystemet-react";
-import { useState } from "react";
+import cl from 'clsx/lite';
+import { SunIcon } from '@navikt/aksel-icons';
+import { Tooltip } from '@digdir/designsystemet-react';
+import { useState } from 'react';
 
-import classes from "./Color.module.css";
+import classes from './Color.module.css';
 
 type ColorProps = {
   color: string;
@@ -23,23 +23,26 @@ const Color = ({
   hex,
   showColorMeta = true,
 }: ColorProps) => {
-  const [tooltipText, setTooltipText] = useState("Kopier hexverdi " + hex);
+  const [tooltipText, setTooltipText] = useState('Kopier hexverdi ' + hex);
   return (
     <div>
-      <Tooltip content={tooltipText} placement="top">
+      <Tooltip
+        content={tooltipText}
+        placement='top'
+      >
         <button
           onClick={() => {
-            void navigator.clipboard.writeText(hex ?? "");
-            setTooltipText("Kopiert!");
+            void navigator.clipboard.writeText(hex ?? '');
+            setTooltipText('Kopiert!');
           }}
           onMouseLeave={() => {
-            setTooltipText("Kopier hexverdi");
+            setTooltipText('Kopier hexverdi');
           }}
           onMouseEnter={() => {
-            setTooltipText(hex ?? "");
+            setTooltipText(hex ?? '');
           }}
           style={{ backgroundColor: color }}
-          className={cn(classes.box, { [classes.featured]: featured })}
+          className={cl(classes.box, featured && classes.featured)}
         ></button>
       </Tooltip>
 
@@ -51,7 +54,10 @@ const Color = ({
             {contrast}
           </div>
           <div className={classes.lightness}>
-            <SunIcon title="a11y-title" fontSize="1.3rem" />
+            <SunIcon
+              title='a11y-title'
+              fontSize='1.3rem'
+            />
             {lightness}
           </div>
         </>

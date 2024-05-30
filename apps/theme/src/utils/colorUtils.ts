@@ -1,12 +1,17 @@
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
-import { Hsluv } from "hsluv";
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { Hsluv } from 'hsluv';
 
 export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let r = parseInt(result[1], 16);
-  let g = parseInt(result[2], 16);
-  let b = parseInt(result[3], 16);
-  let cssString = "";
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  let cssString = '';
+  if (result) {
+    r = parseInt(result[1], 16);
+    g = parseInt(result[2], 16);
+    b = parseInt(result[3], 16);
+  }
   (r /= 255), (g /= 255), (b /= 255);
   const max = Math.max(r, g, b),
     min = Math.min(r, g, b);
@@ -29,15 +34,14 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
         h = (r - g) / d + 4;
         break;
     }
-    h /= 6;
   }
 
-  h = Math.round(h * 360);
+  h = Math.round(h ? h * 360 : 0);
   s = Math.round(s * 100);
   l = Math.round(l * 100);
 
-  cssString = h + "," + s + "%," + l + "%";
-  cssString = !valuesOnly ? "hsl(" + cssString + ")" : cssString;
+  cssString = h + ',' + s + '%,' + l + '%';
+  cssString = !valuesOnly ? 'hsl(' + cssString + ')' : cssString;
 
   return cssString;
 };
@@ -48,24 +52,24 @@ export const hexToHSL = (H: string) => {
     g = 0,
     b = 0;
   if (H.length == 4) {
-    r = "0x" + H[1] + H[1];
-    g = "0x" + H[2] + H[2];
-    b = "0x" + H[3] + H[3];
+    r = parseInt('0x' + H[1] + H[1]);
+    g = parseInt('0x' + H[2] + H[2]);
+    b = parseInt('0x' + H[3] + H[3]);
   } else if (H.length == 7) {
-    r = "0x" + H[1] + H[2];
-    g = "0x" + H[3] + H[4];
-    b = "0x" + H[5] + H[6];
+    r = parseInt('0x' + H[1] + H[2]);
+    g = parseInt('0x' + H[3] + H[4]);
+    b = parseInt('0x' + H[5] + H[6]);
   }
   // Then to HSL
   r /= 255;
   g /= 255;
   b /= 255;
-  let cmin = Math.min(r, g, b),
-    cmax = Math.max(r, g, b),
-    delta = cmax - cmin,
-    h = 0,
+  let h = 0,
     s = 0,
     l = 0;
+  const cmin = Math.min(r, g, b),
+    cmax = Math.max(r, g, b),
+    delta = cmax - cmin;
 
   if (delta == 0) h = 0;
   else if (cmax == r) h = ((g - b) / delta) % 6;
@@ -85,19 +89,19 @@ export const hexToHSL = (H: string) => {
 };
 
 export const hslArrToCss = (arr: number[]) => {
-  return "hsl(" + arr[0] + "," + arr[1] + "%," + arr[2] + "%)";
+  return 'hsl(' + arr[0] + ',' + arr[1] + '%,' + arr[2] + '%)';
 };
 
 export const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
 
-  let c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = 0,
+  let r = 0,
     g = 0,
     b = 0;
+  const c = (1 - Math.abs(2 * l - 1)) * s,
+    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+    m = l - c / 2;
 
   if (0 <= h && h < 60) {
     r = c;
@@ -125,23 +129,26 @@ export const HSLToHex = (h: number, s: number, l: number) => {
     b = x;
   }
   // Having obtained RGB, convert channels to hex
-  r = Math.round((r + m) * 255).toString(16);
-  g = Math.round((g + m) * 255).toString(16);
-  b = Math.round((b + m) * 255).toString(16);
+  r = parseInt(Math.round((r + m) * 255).toString(16), 16);
+  g = parseInt(Math.round((g + m) * 255).toString(16), 16);
+  b = parseInt(Math.round((b + m) * 255).toString(16), 16);
 
   // Prepend 0s, if necessary
-  if (r.length == 1) r = "0" + r;
-  if (g.length == 1) g = "0" + g;
-  if (b.length == 1) b = "0" + b;
+  if (r.toString().length == 1) r = parseInt('0' + r.toString(), 10);
+  if (g.toString().length == 1) g = parseInt('0' + g.toString(), 10);
+  if (b.toString().length == 1) b = parseInt('0' + b.toString(), 10);
 
-  return "#" + r + g + b;
+  return '#' + r + g + b;
 };
 
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-    return r + r + g + g + b + b;
-  });
+  hex = hex.replace(
+    shorthandRegex,
+    function (m, r: string, g: string, b: string) {
+      return r + r + g + g + b + b;
+    },
+  );
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
@@ -161,16 +168,27 @@ export const luminanceFromRgb = (r: string, g: string, b: string) => {
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
 
+export const Testing = () => {
+  return '222';
+};
+
 export const luminanceFromHex = (hex: CssColor) => {
   const rgb = hexToRgb(hex);
   if (rgb) {
-    return luminanceFromRgb(rgb.r.toString(), rgb.g.toString(), rgb.b.toString());
+    const r = rgb.r.toString();
+    const g = rgb.g.toString();
+    const b = rgb.b.toString();
+    return luminanceFromRgb(r, g, b);
   }
-  return null;
+  return 2;
 };
 
 export const getRatioFromLum = (lum1: number, lum2: number) => {
-  return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+  if (lum1 !== null && lum2 !== null) {
+    return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+  } else {
+    return -1;
+  }
 };
 
 export const getLightnessFromHex = (hex: string) => {
@@ -182,17 +200,20 @@ export const getLightnessFromHex = (hex: string) => {
 
 export const getContrastFromHex = (
   mainColor: CssColor,
-  backgroundColor: CssColor
+  backgroundColor: CssColor,
 ) => {
   const lum1 = luminanceFromHex(mainColor);
   const lum2 = luminanceFromHex(backgroundColor);
-  return getRatioFromLum(lum1, lum2);
+  if (lum1 !== null && lum2 !== null) {
+    return getRatioFromLum(lum1, lum2);
+  }
+  return -1;
 };
 
 export const getContrastFromLightness = (
   lightness: number,
   mainColor: CssColor,
-  backgroundColor: CssColor
+  backgroundColor: CssColor,
 ) => {
   const conv = new Hsluv();
   conv.hex = mainColor;
@@ -200,9 +221,9 @@ export const getContrastFromLightness = (
   conv.hsluv_l = lightness;
   conv.hsluvToHex();
   const lightMainColor = conv.hex;
-  const lum1 = luminanceFromHex(lightMainColor);
+  const lum1 = luminanceFromHex(lightMainColor as CssColor);
   const lum2 = luminanceFromHex(backgroundColor);
-  const ratio = getRatioFromLum(lum1, lum2);
+  const ratio = getRatioFromLum(lum1 ?? 0, lum2 ?? 0);
 
   return ratio;
 };
@@ -220,4 +241,26 @@ export const lightenDarkThemeColor = (color: CssColor) => {
   conv.hsluv_l = conv.hsluv_l + 10;
   conv.hsluvToHex();
   return conv.hex as CssColor;
+};
+
+export const areColorsContrasting = (
+  color1: CssColor,
+  color2: CssColor,
+  type: 'text' | 'decorative' = 'text',
+) => {
+  const contrast = getContrastFromHex(color1, color2);
+  if (contrast !== null) {
+    if (type === 'text') {
+      return contrast >= 4.5;
+    } else {
+      return contrast >= 3;
+    }
+  }
+  return false;
+};
+
+export const isHexColor = (hex: string) => {
+  return (
+    typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+  );
 };

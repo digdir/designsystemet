@@ -1,165 +1,336 @@
+/* eslint-disable @typescript-eslint/unbound-method */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
+import type { SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import cl from 'clsx/lite';
+import { NativeSelect } from '@digdir/designsystemet-react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
-import { useEffect, useState } from "react";
-import type { CssColor } from "@adobe/leonardo-contrast-colors";
-import { Container } from "react-bootstrap";
-import { ChevronDownIcon } from "@navikt/aksel-icons";
-import cn from "classnames";
-import { DropdownMenu } from "@digdir/designsystemet-react";
+import { mapTokens } from '../utils/tokenMapping';
+import type { ColorType } from '../utils/themeUtils';
+import { canTextBeUsedOnColors, generateColorTheme } from '../utils/themeUtils';
+import { areColorsContrasting, isHexColor } from '../utils/colorUtils';
 
-import { mapTokens } from "@/utils/tokenMapping";
-import { generateColorScale, setContrastOneColor } from "@/utils/themeUtils";
-import type { modeType } from "@/types";
-
-import { Landing } from "./components/Previews/Landing/Landing";
-import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
-import { Components } from "./components/Previews/Components/Components";
-import { ColorPicker } from "./components/ColorPicker/ColorPicker";
-import { Scale } from "./components/Scale/Scale";
-import { Header } from "./components/Header/Header";
-import classes from "./page.module.css";
+import { Container } from './components/Container/Container';
+import { Landing } from './components/Previews/Landing/Landing';
+import { Dashboard } from './components/Previews/Dashboard/Dashboard';
+import { Components } from './components/Previews/Components/Components';
+import { ColorPicker } from './components/ColorPicker/ColorPicker';
+import { Scale } from './components/Scale/Scale';
+import { Header } from './components/Header/Header';
+import classes from './page.module.css';
+import { TokenModal } from './components/TokenModal/TokenModal';
 
 type previewModeType =
-  | "dashboard"
-  | "landing"
-  | "forms"
-  | "auth"
-  | "components";
+  | 'dashboard'
+  | 'landing'
+  | 'forms'
+  | 'auth'
+  | 'components';
+
+type themeType = {
+  light: CssColor[];
+  dark: CssColor[];
+  contrast: CssColor[];
+};
+
+type colorErrorType = 'none' | 'decorative' | 'interaction';
 
 export default function Home() {
-  const [accentColor, setAccentColor] = useState<CssColor>("#0062BA");
-  const [greyColor, setGreyColor] = useState<CssColor>("#1E2B3C");
-  const [brandOneColor, setBrandOneColor] = useState<CssColor>("#F45F63");
-  const [brandTwoColor, setBrandTwoColor] = useState<CssColor>("#E5AA20");
-  const [brandThreeColor, setBrandThreeColor] = useState<CssColor>("#1E98F5");
-  const [themeMode, setThemeMode] = useState<modeType>("light");
-  const [previewMode, setPreviewMode] = useState<previewModeType>("components");
+  const defaultAccentColor = '#0062BA';
+  const [accentColor, setAccentColor] = useState<CssColor>(defaultAccentColor);
+  const [accentError, setAccentError] = useState<colorErrorType>('none');
+  const [accentTheme, setAccentTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+
+  const defaultNeutralColor = '#1E2B3C';
+  const [neutralColor, setNeutralColor] =
+    useState<CssColor>(defaultNeutralColor);
+  const [neutralError, setNeutralError] = useState<colorErrorType>('none');
+  const [neutralTheme, setNeutralTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+
+  const defaultBrandOneColor = '#F45F63';
+  const [brandOneColor, setBrandOneColor] =
+    useState<CssColor>(defaultBrandOneColor);
+  const [brandOneError, setBrandOneError] = useState<colorErrorType>('none');
+  const [brandOneTheme, setBrandOneTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+
+  const defaultBrandTwoColor = '#E5AA20';
+  const [brandTwoColor, setBrandTwoColor] =
+    useState<CssColor>(defaultBrandTwoColor);
+  const [brandTwoError, setBrandTwoError] = useState<colorErrorType>('none');
+  const [brandTwoTheme, setBrandTwoTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+
+  const defaultBrandThreeColor = '#1E98F5';
+  const [brandThreeColor, setBrandThreeColor] = useState<CssColor>(
+    defaultBrandThreeColor,
+  );
+  const [brandThreeError, setBrandThreeError] =
+    useState<colorErrorType>('none');
+  const [brandThreeTheme, setBrandThreeTheme] = useState<themeType>({
+    light: [],
+    dark: [],
+    contrast: [],
+  });
+  const [themeMode, setThemeMode] = useState<'light' | 'dark' | 'contrast'>(
+    'light',
+  );
+  const [previewMode, setPreviewMode] = useState<previewModeType>('components');
+  const [contrastMode, setContrastMode] = useState<'aa' | 'aaa'>('aa');
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+  const params = new URLSearchParams(searchParams);
 
   useEffect(() => {
-    setContrastOneColor("#000000", "first", true);
     mapTokens();
-  }, []);
+    updateColor(
+      'accent',
+      accentColor,
+      contrastMode,
+      setAccentColor,
+      setAccentTheme,
+      setAccentError,
+      true,
+    );
+    updateColor(
+      'neutral',
+      neutralColor,
+      contrastMode,
+      setNeutralColor,
+      setNeutralTheme,
+      setNeutralError,
+      true,
+    );
+    updateColor(
+      'brand1',
+      brandOneColor,
+      contrastMode,
+      setBrandOneColor,
+      setBrandOneTheme,
+      setBrandOneError,
+      true,
+    );
+    updateColor(
+      'brand2',
+      brandTwoColor,
+      contrastMode,
+      setBrandTwoColor,
+      setBrandTwoTheme,
+      setBrandTwoError,
+      true,
+    );
+    updateColor(
+      'brand3',
+      brandThreeColor,
+      contrastMode,
+      setBrandThreeColor,
+      setBrandThreeTheme,
+      setBrandThreeError,
+      true,
+    );
+  }, [contrastMode]);
 
   // Sticky Menu Area
   useEffect(() => {
-    window.addEventListener("scroll", isSticky);
+    window.addEventListener('scroll', isSticky);
     return () => {
-      window.removeEventListener("scroll", isSticky);
+      window.removeEventListener('scroll', isSticky);
     };
   });
 
-  const copyToClipboard = (color: CssColor, type: string) => {
-    const colorsFlat = generateColorScale(color, themeMode, "flat");
-
-    const obj = {};
-
-    for (let i = 0; i < colorsFlat.length; i++) {
-      if (i === 0) {
-        obj[type] = {};
-      }
-      obj[type][i + 1] = { value: colorsFlat[i], type: "color" };
+  const isSticky = () => {
+    const header = document.querySelector('.pickers');
+    const scrollTop = window.scrollY;
+    if (header) {
+      scrollTop >= 250
+        ? header.classList.add('is-sticky')
+        : header.classList.remove('is-sticky');
     }
-
-    const json = JSON.stringify(obj, null, "\t");
-    navigator.clipboard.writeText(json);
   };
 
-  const isSticky = (e) => {
-    const header = document.querySelector(".pickers");
-    const scrollTop = window.scrollY;
-    scrollTop >= 250
-      ? header.classList.add("is-sticky")
-      : header.classList.remove("is-sticky");
+  const updateColor = (
+    colorType: ColorType,
+    color: CssColor,
+    contrastMode: 'aa' | 'aaa',
+    colorSetter: React.Dispatch<React.SetStateAction<CssColor>>,
+    colorThemeSetter: React.Dispatch<React.SetStateAction<themeType>>,
+    colorErrorSetter: React.Dispatch<React.SetStateAction<colorErrorType>>,
+    initial = false,
+  ) => {
+    if (initial) {
+      const queryColor = params.get(colorType);
+      if (queryColor && isHexColor(queryColor.substring(1))) {
+        color = queryColor as CssColor;
+      }
+    }
+    const scale = generateColorTheme(color as CssColor, contrastMode);
+    colorSetter(color as SetStateAction<CssColor>);
+    colorThemeSetter(scale);
+    colorErrorSetter(getColorError(scale.light));
+    colorQuerySetter(colorType, color);
+  };
+
+  const colorQuerySetter = (colorType: ColorType, color: CssColor) => {
+    const defaultColor = {
+      accent: defaultAccentColor,
+      neutral: defaultNeutralColor,
+      brand1: defaultBrandOneColor,
+      brand2: defaultBrandTwoColor,
+      brand3: defaultBrandThreeColor,
+    };
+
+    if (color !== defaultColor[colorType]) {
+      params.set(colorType, color);
+      replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+  };
+
+  const getColorError = (scale: CssColor[]) => {
+    const contrast = areColorsContrasting(
+      scale[8] as CssColor,
+      '#ffffff',
+      'decorative',
+    );
+    const textCanBeUsed = canTextBeUsedOnColors(scale[8], scale[10]);
+
+    if (!contrast && textCanBeUsed) {
+      return 'decorative';
+    } else if (contrast && !textCanBeUsed) {
+      return 'interaction';
+    }
+
+    return 'none';
   };
 
   return (
     <div>
       <Header />
+
       <main className={classes.main}>
         <Container>
           <div>
             <h1 className={classes.title}>Sett opp fargetema</h1>
           </div>
           <div className={classes.pickersContainer}>
-            <div className={cn(classes.pickers, "pickers")}>
+            <div className={cl(classes.pickers, 'pickers')}>
               <ColorPicker
-                label="Accent"
-                defaultColor="#0062BA"
-                onColorChanged={(e: any) => {
-                  setAccentColor(e);
+                colorError={accentError}
+                label='Accent'
+                defaultColor={accentColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'accent',
+                    color,
+                    contrastMode,
+                    setAccentColor,
+                    setAccentTheme,
+                    setAccentError,
+                  );
                 }}
               />
               <ColorPicker
-                label="Neutral"
-                defaultColor="#1E2B3C"
-                onColorChanged={(e: any) => {
-                  setGreyColor(e);
+                colorError={neutralError}
+                label='Neutral'
+                defaultColor={neutralColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'neutral',
+                    color,
+                    contrastMode,
+                    setNeutralColor,
+                    setNeutralTheme,
+                    setNeutralError,
+                  );
                 }}
               />
               <ColorPicker
-                label="Brand 1"
-                defaultColor="#F45F63"
-                onColorChanged={(e: any) => {
-                  setBrandOneColor(e);
+                colorError={brandOneError}
+                label='Brand 1'
+                defaultColor={brandOneColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand1',
+                    color,
+                    contrastMode,
+                    setBrandOneColor,
+                    setBrandOneTheme,
+                    setBrandOneError,
+                  );
                 }}
               />
               <ColorPicker
-                label="Brand 2"
-                defaultColor="#E5AA20"
-                onColorChanged={(e: any) => {
-                  setBrandTwoColor(e);
+                colorError={brandTwoError}
+                label='Brand 2'
+                defaultColor={brandTwoColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand2',
+                    color,
+                    contrastMode,
+                    setBrandTwoColor,
+                    setBrandTwoTheme,
+                    setBrandTwoError,
+                  );
                 }}
               />
               <ColorPicker
-                label="Brand 3"
-                defaultColor="#1E98F5"
-                onColorChanged={(e: any) => {
-                  setBrandThreeColor(e);
+                colorError={brandThreeError}
+                label='Brand 3'
+                defaultColor={brandThreeColor}
+                onColorChanged={(color) => {
+                  updateColor(
+                    'brand3',
+                    color,
+                    contrastMode,
+                    setBrandThreeColor,
+                    setBrandThreeTheme,
+                    setBrandThreeError,
+                  );
                 }}
               />
+
               <div className={classes.dropdown}>
-                <DropdownMenu placement="bottom-end" size="small">
-                  <DropdownMenu.Trigger
-                    size="medium"
-                    className={classes.dropdownBtn}
-                  >
-                    Kopier
-                    <ChevronDownIcon title="a11y-title" fontSize="1.5rem" />
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Group heading="JSON format">
-                      <DropdownMenu.Item
-                        onClick={() => copyToClipboard(accentColor, "accent")}
-                      >
-                        Accent
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyToClipboard(greyColor, "neutral")}
-                      >
-                        Neutral
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyToClipboard(brandOneColor, "brand1")}
-                      >
-                        Brand 1
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() => copyToClipboard(brandTwoColor, "brand2")}
-                      >
-                        Brand 2
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onClick={() =>
-                          copyToClipboard(brandThreeColor, "brand3")
-                        }
-                      >
-                        Brand 3
-                      </DropdownMenu.Item>
-                    </DropdownMenu.Group>
-                  </DropdownMenu.Content>
-                </DropdownMenu>
+                <NativeSelect
+                  label='Kontrastnivå'
+                  size='medium'
+                  className={classes.contrastSelect}
+                  value={contrastMode}
+                  onChange={(e) => {
+                    setContrastMode(e.target.value as 'aa' | 'aaa');
+                  }}
+                >
+                  <option value='aa'>AA</option>
+                  <option value='aaa'>AAA (WIP)</option>
+                </NativeSelect>
+              </div>
+              <div className={classes.dropdown}>
+                <TokenModal
+                  accentColor={accentColor}
+                  neutralColor={neutralColor}
+                  brand1Color={brandOneColor}
+                  brand2Color={brandTwoColor}
+                  brand3Color={brandThreeColor}
+                />
               </div>
             </div>
           </div>
@@ -167,139 +338,155 @@ export default function Home() {
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Accent</div>
               <Scale
-                color={accentColor}
+                colorScale={accentTheme[themeMode]}
                 showHeader
                 showColorMeta={false}
                 themeMode={themeMode}
-                type="accent"
+                type='accent'
               />
             </div>
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Neutral</div>
               <Scale
-                color={greyColor}
+                colorScale={neutralTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
-                type="grey"
+                type='grey'
               />
             </div>
 
-            <div className={cn(classes.row, classes.brandRow)}>
+            <div className={cl(classes.row, classes.brandRow)}>
               <div className={classes.scaleLabel}>Brand 1</div>
               <Scale
-                color={brandOneColor}
+                colorScale={brandOneTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
-                type="brandOne"
+                type='brandOne'
               />
             </div>
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Brand 2</div>
               <Scale
-                color={brandTwoColor}
+                colorScale={brandTwoTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
-                type="brandTwo"
+                type='brandTwo'
               />
             </div>
 
             <div className={classes.row}>
               <div className={classes.scaleLabel}>Brand 3</div>
               <Scale
-                color={brandThreeColor}
+                colorScale={brandThreeTheme[themeMode]}
                 showColorMeta={false}
                 themeMode={themeMode}
-                type="brandThree"
+                type='brandThree'
               />
             </div>
           </div>
 
           <div className={classes.toolbar}>
             <div className={classes.menu}>
-              <div
-                className={cn(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === "components",
-                })}
-                onClick={() => setPreviewMode("components")}
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'components' && classes.menuItemActive,
+                )}
+                onClick={() => setPreviewMode('components')}
               >
                 Komponenter
-              </div>
-              <div
-                className={cn(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === "dashboard",
-                })}
-                onClick={() => setPreviewMode("dashboard")}
+              </button>
+              <button
+                className={cl(
+                  classes.menuItem,
+                  previewMode === 'dashboard' && classes.menuItemActive,
+                )}
+                onClick={() => setPreviewMode('dashboard')}
               >
                 Dashboard
-              </div>
-              <div
-                className={cn(
+              </button>
+              <button
+                className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === "landing",
-                  },
-                  classes.menuItemDisabled
+                  previewMode === 'landing' && classes.menuItemActive,
+                  classes.menuItemDisabled,
                 )}
               >
                 Landingsside
-              </div>
-              <div
-                className={cn(
+              </button>
+              <button
+                className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === "forms",
-                  },
-                  classes.menuItemDisabled
+                  previewMode === 'forms' && classes.menuItemActive,
+                  classes.menuItemDisabled,
                 )}
               >
                 Skjemaer
-              </div>
-              <div
-                className={cn(
+              </button>
+              <button
+                className={cl(
                   classes.menuItem,
-                  {
-                    [classes.menuItemActive]: previewMode === "auth",
-                  },
-                  classes.menuItemDisabled
+                  previewMode === 'auth' && classes.menuItemActive,
+                  classes.menuItemDisabled,
                 )}
               >
                 Autentisering
-              </div>
+              </button>
             </div>
             <div className={classes.toggles}>
               <button
-                className={cn(classes.toggle, {
-                  [classes.active]: themeMode === "light",
-                })}
-                onClick={() => setThemeMode("light")}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'light' && classes.active,
+                )}
+                onClick={() => setThemeMode('light')}
               >
-                <img src="img/light-dot.svg" alt="" /> Lys
+                <img
+                  src='img/light-dot.svg'
+                  alt=''
+                />
+                Lys
               </button>
               <button
-                className={cn(classes.toggle, {
-                  [classes.active]: themeMode === "dark",
-                })}
-                onClick={() => setThemeMode("dark")}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'dark' && classes.active,
+                )}
+                onClick={() => setThemeMode('dark')}
               >
-                <img src="img/dark-dot.svg" alt="" /> Mørk
+                <img
+                  src='img/dark-dot.svg'
+                  alt=''
+                />
+                Mørk
               </button>
               <button
-                className={cn(classes.toggle, {
-                  [classes.active]: themeMode === "contrast",
-                })}
-                onClick={() => setThemeMode("contrast")}
+                className={cl(
+                  classes.toggle,
+                  themeMode === 'contrast' && classes.active,
+                )}
+                onClick={() => setThemeMode('contrast')}
               >
-                <img src="img/contrast-dot.svg" alt="" /> Kontrast
+                <img
+                  src='img/contrast-dot.svg'
+                  alt=''
+                />
+                Kontrast
               </button>
             </div>
           </div>
 
-          <div className={cn(classes.preview, classes[themeMode])} id="preview">
-            {previewMode === "components" && <Components />}
-            {previewMode === "dashboard" && <Dashboard />}
-            {previewMode === "landing" && <Landing />}
+          <div
+            className={cl(
+              classes.preview,
+              classes[themeMode as keyof typeof classes],
+            )}
+            id='preview'
+          >
+            {previewMode === 'components' && <Components />}
+            {previewMode === 'dashboard' && <Dashboard />}
+            {previewMode === 'landing' && <Landing />}
           </div>
-          {/* <PreviewBox /> */}
         </Container>
       </main>
     </div>

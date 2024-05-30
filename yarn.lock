@@ -1973,12 +1973,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-css@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "@digdir/designsystemet-css@npm:0.5.0"
-  dependencies:
-    "@digdir/designsystemet-react": "npm:^0.58.0"
-  checksum: 10/87c5aba0da2443d6b6a26be56bf367a356f1e3ace54dc95f4ad1c0c54ecfc1a29cc4280021c9f6078467d0cc21673034ccbf57cfc139c46b22f70459d44c0587
+"@digdir/designsystemet-css@npm:0.9.0":
+  version: 0.9.0
+  resolution: "@digdir/designsystemet-css@npm:0.9.0"
+  checksum: 10/01442285c2d862a76b0693dc07b1856ad4a153ec038d86ea080eec02feb8df47c3ae5f69e7d6812a17a1b7b32d6fe1fc362a900aaf039e25fd7ab6a4a612c19a
   languageName: node
   linkType: hard
 
@@ -2010,18 +2008,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/designsystemet-react@npm:^0.58.0":
-  version: 0.58.0
-  resolution: "@digdir/designsystemet-react@npm:0.58.0"
+"@digdir/designsystemet-react@npm:0.62.0":
+  version: 0.62.0
+  resolution: "@digdir/designsystemet-react@npm:0.62.0"
   dependencies:
-    "@floating-ui/react": "npm:0.26.4"
+    "@floating-ui/react": "npm:0.26.12"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@tanstack/react-virtual": "npm:^3.2.0"
   peerDependencies:
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 10/7a2d40e80f7558acf5f8c0ac7263056971bd5aa9bddc4a82e5535d6fc0be85d8896c7bdcc6165aaaa038f5c0946e0570a59137ec7344a37d807b6574dada5d51
+    react: ">=18.3.1"
+    react-dom: ">=18.3.1"
+  checksum: 10/c1f488c482a5358c9b6d4fd9a15390bbe923cba824cd6dddb47cbbf55e7be07fd4e2e4358767498995d95209352890a1a662a2cc748e37ed005a07ae9e35303f
   languageName: node
   linkType: hard
 
@@ -2044,7 +2042,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-theme@npm:0.15.3, @digdir/designsystemet-theme@npm:^0.15.2":
+"@digdir/designsystemet-theme@npm:0.15.3":
   version: 0.15.3
   resolution: "@digdir/designsystemet-theme@npm:0.15.3"
   checksum: 10/0c9760ffbc42ed736ebcd1ee9069b2a8dd9312de08263d8beee74438933df736280c07fba2568d05f202ea88687b3309c40bf55be3d7d8e57f54cf84cc33af96
@@ -8498,7 +8496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.3.2, classnames@npm:^2.5.1":
+"classnames@npm:^2.3.2":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10/58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
@@ -21853,9 +21851,9 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
-    "@digdir/designsystemet-css": "npm:^0.5.0"
-    "@digdir/designsystemet-react": "npm:^0.58.0"
-    "@digdir/designsystemet-theme": "npm:^0.15.2"
+    "@digdir/designsystemet-css": "npm:0.9.0"
+    "@digdir/designsystemet-react": "npm:0.62.0"
+    "@digdir/designsystemet-theme": "npm:0.15.3"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
     "@mui/material": "npm:^5.15.15"
@@ -21864,8 +21862,8 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-color": "npm:^3.0.12"
     "@types/react-dom": "npm:^18"
+    "@types/react-syntax-highlighter": "npm:^15.5.11"
     bootstrap: "npm:^5.3.3"
-    classnames: "npm:^2.5.1"
     hsluv: "npm:^1.0.1"
     next: "npm:14.1.3"
     react: "npm:^18"
@@ -21873,6 +21871,7 @@ __metadata:
     react-click-outside: "npm:^3.0.1"
     react-color: "npm:^2.19.3"
     react-dom: "npm:^18"
+    react-syntax-highlighter: "npm:^15.5.0"
     recharts: "npm:^2.12.6"
   languageName: unknown
   linkType: soft

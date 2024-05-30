@@ -1,21 +1,16 @@
+@import url('https://altinncdn.no/fonts/inter/inter.css');
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   color: #1e2b3c;
 }
 
-.fds-switch-input-9a6b03bc:checked
-  + .fds-switch-label-9a6b03bc
-  .fds-switch-track-9a6b03bc
-  .fds-switch-thumb-9a6b03bc {
+.fds-switch-input-9a6b03bc:checked + .fds-switch-label-9a6b03bc .fds-switch-track-9a6b03bc .fds-switch-thumb-9a6b03bc {
   background-image: none;
-}
-
-:root {
-  --background: white;
 }
 
 .is-sticky {
@@ -24,13 +19,125 @@ body {
   left: 0;
   width: 100%;
   z-index: 999;
-  box-shadow: 0 2px 20px 0 rgb(0 0 0 / 25%);
-  background-color: #ffffff !important;
+  box-shadow: 0 2px 20px 0 #c5c5c5;
+  background-color: #fff !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .is-sticky .ColorPicker_label__kYLHj {
-  display: none;
+  display: #b4b4b4;
+}
+
+code {
+  background-color: #e0edff;
+  padding: 3px 6px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+ul {
+  margin-top: -10px;
+  padding-left: 22px;
+}
+
+ul li {
+  line-height: 2.2em;
+}
+
+.interactionSurface0:hover {
+  background-color: var(--interaction0Hover) !important;
+}
+
+.interactionSurface1:hover {
+  background-color: var(--interaction1Hover) !important;
+}
+
+.interactionSurface2:hover {
+  background-color: var(--interaction2Hover) !important;
+}
+
+.interactionSurface3:hover {
+  background-color: var(--interaction3Hover) !important;
+}
+
+.interactionSurface4:hover {
+  background-color: var(--interaction4Hover) !important;
+}
+
+.interactionSurface5:hover {
+  background-color: var(--interaction5Hover) !important;
+}
+
+.interactionSurface6:hover {
+  background-color: var(--interaction6Hover) !important;
+}
+
+.interactionSurface7:hover {
+  background-color: var(--interaction7Hover) !important;
+}
+
+.interactionSurface8:hover {
+  background-color: var(--interaction8Hover) !important;
+}
+
+.interactionSurface9:hover {
+  background-color: var(--interaction9Hover) !important;
+}
+
+.interactionSurface10:hover {
+  background-color: var(--interaction10Hover) !important;
+}
+
+.interactionSurface11:hover {
+  background-color: var(--interaction11Hover) !important;
+}
+
+.interactionSurface0:active {
+  background-color: var(--interaction0Active) !important;
+}
+
+.interactionSurface1:active {
+  background-color: var(--interaction1Active) !important;
+}
+
+.interactionSurface2:active {
+  background-color: var(--interaction2Active) !important;
+}
+
+.interactionSurface3:active {
+  background-color: var(--interaction3Active) !important;
+}
+
+.interactionSurface4:active {
+  background-color: var(--interaction4Active) !important;
+}
+
+.interactionSurface5:active {
+  background-color: var(--interaction5Active) !important;
+}
+
+.interactionSurface6:active {
+  background-color: var(--interaction6Active) !important;
+}
+
+.interactionSurface7:active {
+  background-color: var(--interaction7Active) !important;
+}
+
+.interactionSurface8:active {
+  background-color: var(--interaction8Active) !important;
+}
+
+.interactionSurface9:active {
+  background-color: var(--interaction9Active) !important;
+}
+
+.interactionSurface10:active {
+  background-color: var(--interaction10Active) !important;
+}
+
+.interactionSurface11:active {
+  background-color: var(--interaction11Active) !important;
 }
