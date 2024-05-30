@@ -47,20 +47,6 @@ module.exports = {
       files: ['apps/storefront/**/*', 'apps/dev/**/*', 'apps/theme/**/*'],
       extends: ['plugin:@next/next/recommended'],
     },
-    {
-      // MDX files
-      files: ['**/*.md?(x)'],
-      extends: ['plugin:mdx/recommended'],
-      settings: {
-        'mdx/code-blocks': false,
-      },
-    },
-    {
-      files: ['apps/storefront/**'],
-      rules: {
-        '@next/next/no-img-element': 'off',
-      },
-    },
   ],
   rules: {
     'arrow-body-style': 'off',
