@@ -192,7 +192,7 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
   );
 };
 
-const Box2 = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
+const Box2 = ({ scales, type, columnTitle }: BoxProps) => {
   const setToken = (token: string, color: string, id: string) => {
     const previewElement = document.getElementById(id);
     if (previewElement) {

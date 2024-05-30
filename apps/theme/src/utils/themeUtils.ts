@@ -1,6 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
-import { Hsluv } from 'hsluv';
 
 import type { modeType } from '../types';
 
