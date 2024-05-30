@@ -12,7 +12,7 @@ export type LinkProps = {
 
   /**
    * Inverts the color of the link. Use this on dark backgrounds.
-   * @deprecated Use `data-ds-theme="dark"` instead.
+   * @deprecated Use `data-ds-color-mode="dark"` instead.
    */
   inverted?: boolean;
 
@@ -33,7 +33,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <Component
         className={cl('fds-link', className)}
         ref={ref}
-        data-ds-theme={inverted ? 'dark' : undefined}
+        data-ds-color-mode={inverted ? 'dark' : undefined}
         {...rest}
       >
         {children}

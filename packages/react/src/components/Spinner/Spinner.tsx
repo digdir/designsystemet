@@ -74,7 +74,7 @@ export const Spinner = ({
           : 'fds-spinner--default',
         className,
       )}
-      data-ds-theme={variant === 'inverted' ? 'dark' : undefined}
+      data-ds-color-mode={variant === 'inverted' ? 'dark' : undefined}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}

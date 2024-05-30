@@ -14,7 +14,7 @@ export const scopedReferenceVariables: Format = {
     const { usesDtcg, outputReferences } = options;
     const mode = file.destination.endsWith('dark.css') ? 'dark' : 'light';
 
-    const selector = mode === 'dark' ? '[data-ds-theme="dark"]' : ':root, [data-ds-theme="light"]';
+    const selector = mode === 'dark' ? '[data-ds-color-mode="dark"]' : ':root, [data-ds-color-mode="light"]';
     const includeReferences = options.includeReferences as IncludeReferences;
     let referencedTokens: TransformedToken[] = [];
 

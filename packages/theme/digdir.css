@@ -1,7 +1,7 @@
 @import url('./brand/digdir/light.css');
 @import url('./brand/digdir/dark.css');
 
-[data-ds-theme='contrast'] {
+[data-ds-color-mode='contrast'] {
   --ds-color-accent-1: #000409;
   --ds-color-accent-2: #001427;
   --ds-color-accent-3: #002445;
