@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.62.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.61.0...@digdir/designsystemet-react@0.62.0) (2024-05-24)
+
+### Bug Fixes
+
+- **Tabs:** `className` being overridden ([#2064](https://github.com/digdir/designsystemet/issues/2064)) ([10fb504](https://github.com/digdir/designsystemet/commit/10fb50477fee3846016b81c23db803eb93992329))
+- **Tabs:** active tab has wrong hover style ([#2061](https://github.com/digdir/designsystemet/issues/2061)) ([104e16d](https://github.com/digdir/designsystemet/commit/104e16d1208ecdcfc5bcb2ff081a4e170f6f3a1c))
+- **Textfield:** character counter inital value ([#2056](https://github.com/digdir/designsystemet/issues/2056)) ([7b5df7f](https://github.com/digdir/designsystemet/commit/7b5df7f8033d372d3b7d0fa874e0b797a627ab60))
+- **Tooltip:** rendered in a portal by default ([#2060](https://github.com/digdir/designsystemet/issues/2060)) ([95960f7](https://github.com/digdir/designsystemet/commit/95960f78743e4f05cf13c6a4ca02f6a9e9307bb5))
+
+### Features
+
+- **Alert:** add shorthand sizes ([#1995](https://github.com/digdir/designsystemet/issues/1995)) ([868d214](https://github.com/digdir/designsystemet/commit/868d2143bd59435a9bec7c61a2d7b7a675b4aa0b))
+- **Box:** add shorthand sizes ([#2048](https://github.com/digdir/designsystemet/issues/2048)) ([05901c0](https://github.com/digdir/designsystemet/commit/05901c0d4bf8a91e9d30948eaab09b784c95f1a2))
+- **Checkbox:** add shorthand sizes ([#2030](https://github.com/digdir/designsystemet/issues/2030)) ([e2ca09d](https://github.com/digdir/designsystemet/commit/e2ca09d8def52418065f7f71d099ded5e6a9e987))
+- **Chips:** add shorthand sizes ([#2007](https://github.com/digdir/designsystemet/issues/2007)) ([318d1ee](https://github.com/digdir/designsystemet/commit/318d1eef8b9fe29318594de23d7298b7b6b760e8))
+- **Combobox:** add shorthand sizes ([#2029](https://github.com/digdir/designsystemet/issues/2029)) ([f1ef9fe](https://github.com/digdir/designsystemet/commit/f1ef9feb4c317fe9dccb092267480b4ebf4e996b))
+- **DropdownMenu:** add shorthand sizes ([#2021](https://github.com/digdir/designsystemet/issues/2021)) ([cf17310](https://github.com/digdir/designsystemet/commit/cf17310aec5c010e6b7e5d78b1fddd1b451c3cb6))
+- **ErrorMessage:** add shorthand sizes ([#2019](https://github.com/digdir/designsystemet/issues/2019)) ([c511c59](https://github.com/digdir/designsystemet/commit/c511c59fc1065060f7982e43d778b793854de6f6))
+- **Heading:** add shorthand sizes ([#1997](https://github.com/digdir/designsystemet/issues/1997)) ([265a3c7](https://github.com/digdir/designsystemet/commit/265a3c74345af473f7692552f95b8ae14f5158b2))
+- **HelpText:** add shorthand sizes ([#2014](https://github.com/digdir/designsystemet/issues/2014)) ([ad97311](https://github.com/digdir/designsystemet/commit/ad9731117607af9c7b40ab91c88add938f6df4da))
+- **Ingress:** add shorthand sizes ([#2020](https://github.com/digdir/designsystemet/issues/2020)) ([62caef5](https://github.com/digdir/designsystemet/commit/62caef5fae14f3447b5ca8b41fb82bbc8440ee03))
+- **Label:** add shorthand sizes ([#1999](https://github.com/digdir/designsystemet/issues/1999)) ([919c43c](https://github.com/digdir/designsystemet/commit/919c43cabd4cd13fa1368448d72a8264bdf1a685))
+- **List:** add shorthand sizes ([#2009](https://github.com/digdir/designsystemet/issues/2009)) ([7f694e0](https://github.com/digdir/designsystemet/commit/7f694e0167e0a99e0208fda58477ca34e9926678))
+- **NativeSelect:** add shorthand sizes ([#2033](https://github.com/digdir/designsystemet/issues/2033)) ([1d494d1](https://github.com/digdir/designsystemet/commit/1d494d121e9494634805537f1d6a9d58ba2ce8a2))
+- **Pagination:** add shorthand sizes ([#2034](https://github.com/digdir/designsystemet/issues/2034)) ([1c549b7](https://github.com/digdir/designsystemet/commit/1c549b70b12cd59f57b47e9d30d769425012441e))
+- **Paragraph:** add shorthand sizes ([#1996](https://github.com/digdir/designsystemet/issues/1996)) ([72a7824](https://github.com/digdir/designsystemet/commit/72a782426c26cdc79a0367eba739427660206a3c))
+- **Popover:** add shorthand sizes ([#2006](https://github.com/digdir/designsystemet/issues/2006)) ([6637c52](https://github.com/digdir/designsystemet/commit/6637c529e53615fd129686b540f720f9ee2fa8e4))
+- **Radio:** add shorthand sizes ([#2036](https://github.com/digdir/designsystemet/issues/2036)) ([20278fa](https://github.com/digdir/designsystemet/commit/20278fa5727e6ea1c3e2867835f1a31b23f86bc9))
+- **Search:** add shorthand sizes ([#2028](https://github.com/digdir/designsystemet/issues/2028)) ([d8fc81d](https://github.com/digdir/designsystemet/commit/d8fc81d16a1e07d50466c08e819711edacf09706))
+- **Spinner:** add shorthand sizes ([#2000](https://github.com/digdir/designsystemet/issues/2000)) ([b18eb98](https://github.com/digdir/designsystemet/commit/b18eb989fc693cb59a4bea8c9c63ac3083168954))
+- **Switch:** add shorthand sizes ([#2027](https://github.com/digdir/designsystemet/issues/2027)) ([bd5160b](https://github.com/digdir/designsystemet/commit/bd5160b5de4371fee869551a833850cae832b418))
+- **Table:** add shorthand sizes ([#2016](https://github.com/digdir/designsystemet/issues/2016)) ([50cbb8e](https://github.com/digdir/designsystemet/commit/50cbb8efebe9127d4cf2e171369e7ff5e8e3327e))
+- **Tabs:** add shorthand sizes ([#2012](https://github.com/digdir/designsystemet/issues/2012)) ([806125d](https://github.com/digdir/designsystemet/commit/806125d27380de3ca3aec2c997de5db57637f1cc))
+- **Tag:** add shorthand sizes ([#2017](https://github.com/digdir/designsystemet/issues/2017)) ([405f55d](https://github.com/digdir/designsystemet/commit/405f55dbaa6b92af3ac6c0e7aaa0a5caa94ae532))
+- **Textarea:** add shorthand sizes ([#2031](https://github.com/digdir/designsystemet/issues/2031)) ([5932d5e](https://github.com/digdir/designsystemet/commit/5932d5e6ea883852d7edec6802de7d2bb5a1869a))
+- **Textfield:** add shorthand sizes ([#2018](https://github.com/digdir/designsystemet/issues/2018)) ([9c52938](https://github.com/digdir/designsystemet/commit/9c52938b63cf661ee5d54044a7ed33174c2f5261))
+- **ToggleGroup:** add shorthand sizes ([#2011](https://github.com/digdir/designsystemet/issues/2011)) ([44f9abd](https://github.com/digdir/designsystemet/commit/44f9abd5297f8cc83b752fc95705c050f2aa8499))
+
 # [0.61.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.60.0...@digdir/designsystemet-react@0.61.0) (2024-05-16)
 
 ### Bug Fixes

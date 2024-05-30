@@ -10,13 +10,6 @@
     margin-bottom: var(--fdsc-bottom-spacing);
   }
 
-  .fds-heading--3xl {
-    --fdsc-bottom-spacing: var(--fds-spacing-8);
-
-    font: var(--fds-typography-heading-3xlarge);
-    font-family: inherit;
-  }
-
   .fds-heading--2xl {
     --fdsc-bottom-spacing: var(--fds-spacing-7);
 
