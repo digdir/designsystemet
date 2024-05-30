@@ -201,7 +201,6 @@ const TokenList = ({
     <div className={classes.tokens}>
       <div className={classes.package}>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
             alt='Latest release on npm'
