@@ -17,7 +17,7 @@ export default ({ children }) => (
   />
 );
 
-Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå nærmer vi oss målstreken og har publisert en release candidate av V1! 🎉
+Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå nærmer vi oss målstreken og har publisert en release candidate av V1!
 
 ## Hva er nytt?
 
@@ -35,7 +35,7 @@ Her er en kort oppsummering av hva som er nytt:
 
 Flere intervjuer og [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) avdekket at det første fargesystemet ikke løste alle behov. Fargene hadde heller ikke alltid forventet oppførsel, og strukuren var noe tungtvindt å forholde seg til.
 
-Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Å definere en solid Token-arkitektur med flerdimensjonale temaer krever overraskende mye tankearbeid - inkludert søvnløse netter og tegninger i dusjen. 🤓 Ikke bare skal tokens fungere som bro mellom design og kode, det skal støtte multibranding og ulike modes (darkmode og contrastmode), og det skal ivareta kontrastkrav mellom farge-tokens tiltenkt tekst og bakgrunner.
+Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Å definere en solid Token-arkitektur med flerdimensjonale temaer krever overraskende mye tankearbeid - inkludert søvnløse netter og tegninger i dusjen. Ikke bare skal tokens fungere som bro mellom design og kode, det skal støtte multibranding og ulike modes (darkmode og contrastmode), og det skal ivareta kontrastkrav mellom farge-tokens tiltenkt tekst og bakgrunner.
 
 Vi har latt oss inspirere av [USWDS sine "magic numbers](https://designsystem.digital.gov/design-tokens/color/overview/)" for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
 
@@ -54,12 +54,12 @@ I forbindelse med det nye fargesystemet har vi utviklet et verktøy der du kan t
   href='https://theme.designsystemet.no/'
   target='_blank'
 >
-  👉🏻 theme.designsystemet.no 👈🏻
+  theme.designsystemet.no
 </Link>
 
 Selv om vi nå har lagt opp til et fargesystem som støtter darkmode og contrastmode, gjenstår det fremdeles litt utforsking før vi er sikre på at genereringen av farger fungerer optimalt.
 
-#### Action 🪦
+#### Action
 
 Et annet forvirrende element med det forrige fargesystemet var `action`-fargen, som kun endret fargen på `Button`-komponenten. `Action` er nå byttet ut med `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
 
@@ -101,7 +101,7 @@ Veiledninger på hvordan dette skal tas i bruk kommer!
   href='https://github.com/designsystemet/design-tokens'
   target='_blank'
 >
-  👉🏻 github.com/designsystemet/design-tokens 👈🏻
+  github.com/designsystemet/design-tokens
 </Link>
 
 #### Migrere fra beta-versjon
@@ -116,9 +116,9 @@ _Merk at du må dobbelsjekke koden din etter scriptet har kjørt_
 npx @digdir/designsystemet migrate beta-to-v1
 ```
 
-## Takk for samarbeidet så langt! 🤝
+## Takk for samarbeidet så langt!
 
-I tillegg til teamet som jobber daglig med Designsystemet har vi også en veldig viktig gjeng med bidragsytere som bidrar med både kode, innsikt, design og innspill. Tusen takk! 💚
+I tillegg til teamet som jobber daglig med Designsystemet har vi også en veldig viktig gjeng med bidragsytere som bidrar med både kode, innsikt, design og innspill. Tusen takk!
 
 <ResponsiveIframe
   src='https://player.vimeo.com/video/951934375?h=40f4d8cea4'
