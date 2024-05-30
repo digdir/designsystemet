@@ -1,5 +1,6 @@
 import { BlogArticleLayout } from '@layouts';
-import { ResponsiveIframe } from '@components';
+import { ResponsiveIframe, CodeSnippet } from '@components';
+import { Link } from '@digdir/designsystemet-react';
 import { Contributors } from '@blog';
 
 export default ({ children }) => (
@@ -26,6 +27,7 @@ Her er en kort oppsummering av hva som er nytt:
 - Fargesystem og token-struktur
 - Lett å tilpasse til din virksomhet
 - Støtte for darkmode og contrastmode
+- Design-tokens templat på Github
 - Komponenter i React
   - Tilgjengelige skjemakomponenter
   - Komponenter for typografi
@@ -50,7 +52,12 @@ I forbindelse med det nye fargesystemet har vi utviklet et verktøy der du kan t
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-👉🏻 [theme.designsystemet.no](https://theme.designsystemet.no/) 👈🏻
+<Link
+  href='https://theme.designsystemet.no/'
+  target='_blank'
+>
+  👉🏻 theme.designsystemet.no 👈🏻
+</Link>
 
 Selv om vi nå har lagt opp til et fargesystem som støtter darkmode og contrastmode, gjenstår det fremdeles litt utforsking før vi er sikre på at genereringen av farger fungerer optimalt.
 
@@ -60,7 +67,7 @@ Et annet forvirrende element med det forrige fargesystemet var `action`-fargen, 
 
 ### Hva må du gjøre for å ta i bruk den nye arkitekturen?
 
-For å lett komme i gang som utvikler med Release Candidate av Designsystemet kan du kjøre denne kommandoen:
+For å lett komme i gang som utvikler med Release Candidate av Designsystemet kan installerer følgende med ditt pakkesystem:
 
 ```bash
 npm i @digdir/designsystemet-react@next
@@ -68,15 +75,40 @@ npm i @digdir/designsystemet-theme@next
 npm i @digdir/designsystemet-css@next
 ```
 
-Denne installerer alle tre pakken, og inneholder tokens, css og react komponenter.
+Denne installerer alle tre pakken, og inneholder tokens, CSS og React komponenter.
+
+#### Fargemodus
+
+Ønsker du å teste `dark`, `light` eller `contrast` modus kan du legge på data-atributtet `data-ds-color-mode="MODE"`.
+Denne kan legges hvor som helst, og endrer alle barn til modusen du har valgt.
+
+<CodeSnippet language='ts'>
+  {`<Accordion data-ds-color-mode='dark'>...</Accordion>`}
+</CodeSnippet>
+
+#### Design-tokens templat
+
+Du kan sjekke ut templatet vi har laget for Designsystemet design-tokens som du han ta i utgangspunkt for kobling mellom Figma og kode ved hjelp av Token Studio.MDXLayout
+Veiledninger på hvordan dette skal tas i bruk kommer!
+
+<Link
+  href='https://github.com/designsystemet/design-tokens'
+  target='_blank'
+>
+  👉🏻 github.com/designsystemet/design-tokens 👈🏻
+</Link>
 
 #### Migrere fra beta-versjon
 
-Dersom du hat tidligere brukt beta-versjonen av Designsystemet, så har vi laget et migreringsscript som prøver å fikse alle endringer vi har gjort på variabelnavn og klassenavn.
+Dersom du har tidligere brukt beta-versjonen av Designsystemet, så har vi laget et migreringsscript for CSS som prøver å fikse alle endringer vi har gjort på variabelnavn.
+
+Migreringsscriptet kjører automatisk på alle `.css` filer (inkl. undermapper) der du kjører den. Du kan selv bestemme hvilke filer den kjøres på ved å bruke parmeteret [--glob](<https://en.wikipedia.org/wiki/Glob_(programming)>), f.eks `--glob "./**/*.css"`
+
 _Merk at du må dobbelsjekke koden din etter scriptet har kjørt_
 
-1. Installer `@next` versjonen av alle tre pakkene
-2. Kjør `npx @digdir/designsystemet migrate beta-to-v1`
+```sh
+npx @digdir/designsystemet migrate beta-to-v1
+```
 
 ## Bli med å teste V1 Release Candidate!
 
