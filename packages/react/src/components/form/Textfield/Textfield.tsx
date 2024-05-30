@@ -92,7 +92,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       readOnly,
     } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
+    const [inputValue, setInputValue] = useState(props.value || props.defaultValue);
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 
