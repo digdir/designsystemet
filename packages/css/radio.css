@@ -3,7 +3,7 @@
     --dsc-radio-size: var(--ds-spacing-5);
     --dsc-radio-focus-border-width: 3px;
     --dsc-radio-background: var(--ds-color-neutral-background-default);
-    --dsc-radio-border-color: var(--ds-color-neutral-border-default);
+    --dsc-radio-border-color: var(--ds-color-neutral-border-strong);
     --dsc-radio-border__hover--size: calc(var(--ds-spacing-3) / 2);
     --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-accent-border-subtle);
     --dsc-radio-focus-color: var(--ds-color-neutral-text-default);

@@ -3,7 +3,7 @@
     --dsc-checkbox-size: 1.75rem;
     --dsc-checkbox-focus-border-width: 3px;
     --dsc-checkbox-background: var(--ds-color-neutral-background-default);
-    --dsc-checkbox-border-color: var(--ds-color-neutral-border-default);
+    --dsc-checkbox-border-color: var(--ds-color-neutral-border-strong);
     --dsc-checkbox-border__hover--size: calc(var(--ds-spacing-3) / 2);
     --dsc-checkbox-border__hover: 0 0 0 var(--dsc-checkbox-border__hover--size) var(--ds-color-accent-surface-hover);
     --dsc-checkbox-check_color: transparent;
