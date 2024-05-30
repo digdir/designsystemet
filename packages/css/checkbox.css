@@ -145,7 +145,7 @@
   @media (hover: hover) and (pointer: fine) {
     .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__label:hover,
     .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover + .fds-checkbox__label {
-      color: var(--ds-color-accent-base-hover);
+      color: var(--ds-color-accent-text-subtle);
     }
 
     .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:not(:checked) {

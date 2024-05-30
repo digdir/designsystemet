@@ -14,6 +14,12 @@
 
   .fds-accordion__expand-icon {
     border-radius: var(--ds-border-radius-md);
+    fill: var(--ds-color-neutral-text-default);
+    color: var(--ds-color-neutral-text-default);
+  }
+
+  .fds-accordion__expand-icon path {
+    fill: var(--ds-color-neutral-text-default);
   }
 
   .fds-accordion__content {

@@ -35,18 +35,7 @@
 .btn {
   justify-content: start;
   gap: 16px;
-  color: var(--fds-semantic-text-neutral-subtle);
   transition: 0.1s all;
-}
-
-.btn:hover {
-  background-color: var(--accent3);
-  color: var(--fds-semantic-text-neutral-default);
-}
-
-.btnActive {
-  background-color: var(--accent3);
-  color: var(--fds-semantic-text-neutral-default);
 }
 
 .logo {
@@ -56,7 +45,7 @@
   gap: 10px;
   font-weight: 500;
   font-size: 18px;
-  color: var(--fds-semantic-text-neutral-default);
+  color: var(--ds-color-neutral-text-default);
 }
 
 .logo svg {
@@ -65,19 +54,15 @@
 }
 
 .logo svg path:first-child {
-  fill: var(--fds-semantic-border-input-hover);
+  fill: var(--ds-color-neutral-border-hover);
 }
 
 .logo svg path:last-child {
-  fill: var(--fds-semantic-border-neutral-subtle);
+  fill: var(--ds-color-neutral-border-default);
 }
 
 .cardTitle {
   margin-bottom: 6px;
-}
-
-.cardDesc {
-  color: var(--grey13);
 }
 
 .colorCardsContainer {
@@ -149,16 +134,16 @@
   font-size: 15px;
   min-height: 8px;
   display: block;
-  color: var(--brandOne12);
+  color: var(--ds-color-brand2-text-subtle);
   font-weight: 500;
 }
 
 .userRoleTwo {
-  color: var(--brandTwo12);
+  color: var(--ds-color-brand2-text-subtle);
 }
 
 .userRoleThree {
-  color: var(--brandThree12);
+  color: var(--ds-color-brand3-text-subtle);
 }
 
 .graph {

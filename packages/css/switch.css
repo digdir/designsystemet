@@ -212,7 +212,7 @@
     }
 
     .fds-switch__input:not([readonly], :disabled):hover + .fds-switch__label {
-      color: var(--ds-color-accent-border-strong);
+      color: var(--ds-color-accent-text-subtle);
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
