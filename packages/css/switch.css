@@ -4,6 +4,7 @@
     --dsc-switch-height: 1.75rem;
     --dsc-switch-focus-border-width: 3px;
     --dsc-switch-check_color: transparent;
+    --dsc-switch-thumb-background-color: var(--ds-color-neutral-background-default);
 
     position: relative;
   }
@@ -172,12 +173,13 @@
     height: var(--dsc-switch-height);
     width: var(--dsc-switch-height);
     border-radius: var(--ds-border-radius-full);
-    background-color: var(--ds-color-neutral-background-default);
+    background-color: var(--dsc-switch-thumb-background-color);
     transition: transform var(--dsc-switch--transition) ease;
   }
 
   .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
     --dsc-switch-check_color: var(--ds-color-accent-base-default);
+    --dsc-switch-thumb-background-color: var(--ds-color-accent-contrast-default);
 
     transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 1.2));
   }
