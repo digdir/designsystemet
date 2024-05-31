@@ -196,6 +196,10 @@
     box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-neutral-background-default) !important;
   }
 
+  .fds-combobox__input__wrapper:focus-within:hover {
+    border-color: var(--ds-color-neutral-border-default);
+  }
+
   .fds-combobox__empty {
     padding: var(--ds-spacing-2) var(--ds-spacing-3);
   }

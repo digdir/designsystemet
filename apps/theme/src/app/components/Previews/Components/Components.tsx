@@ -39,19 +39,19 @@ export const Components = () => {
           <Checkbox value='telefon'>To liter Farris</Checkbox>
           <Checkbox
             value='sms'
-            checked
+            defaultChecked
           >
             Blomkål
           </Checkbox>
           <Checkbox
             value='sms'
-            checked
+            defaultChecked
           >
             Pizza
           </Checkbox>
           <Checkbox
             value='sms'
-            checked
+            defaultChecked
           >
             Tre liter lettmelk
           </Checkbox>
@@ -344,7 +344,7 @@ export const Components = () => {
           <Switch size='small'>Desktopvisning</Switch>
           <Switch
             size='small'
-            checked
+            defaultChecked
           >
             Tabletvisning
           </Switch>
