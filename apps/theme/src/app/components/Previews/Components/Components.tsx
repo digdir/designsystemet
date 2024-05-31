@@ -345,10 +345,16 @@ export const Components = () => {
           <Switch
             size='small'
             defaultChecked
+            readOnly
           >
             Tabletvisning
           </Switch>
-          <Switch size='small'>Mobilvisning</Switch>
+          <Switch
+            size='small'
+            disabled
+          >
+            Mobilvisning
+          </Switch>
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>

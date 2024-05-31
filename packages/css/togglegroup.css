@@ -4,6 +4,7 @@
     border: var(--ds-color-neutral-border-default) solid var(--ds-border-width-default);
     border-radius: var(--ds-border-radius-lg);
     width: fit-content;
+    height: fit-content;
   }
 
   .fds-togglegroup__content {
