@@ -390,13 +390,13 @@ export const Components = () => {
       <div className={cl(classes.card, classes.test)}>
         <Heading
           size='xsmall'
-          className={cl(classes.footerHeading, classes.switchHeading)}
+          spacing
         >
           Innstillinger
         </Heading>
         <Paragraph
           size='small'
-          className={classes.switchParagraph}
+          spacing
         >
           Her kan du justere på innstillingene dine
         </Paragraph>

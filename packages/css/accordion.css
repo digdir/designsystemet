@@ -46,9 +46,9 @@
     padding: var(--ds-spacing-4);
   }
 
-  .fds-accordion--border .fds-accordion__button {
-    border-radius: var(--dsc-accordion-border-radius);
-  }
+  /* .fds-accordion--border .fds-accordion__button {
+    border-radius: 0;
+  } */
 
   .fds-accordion__item:focus-within {
     position: relative;
@@ -108,6 +108,16 @@
   .fds-accordion--brand2 .fds-accordion__item:not(:first-child) .fds-accordion__button,
   .fds-accordion--brand3 .fds-accordion__item:not(:first-child) .fds-accordion__button {
     border-top: 1px solid var(--ds-color-neutral-background-default);
+  }
+
+  .fds-accordion--border .fds-accordion__item:first-of-type .fds-accordion__button:first-of-type {
+    border-top-left-radius: var(--dsc-accordion-border-radius);
+    border-top-right-radius: var(--dsc-accordion-border-radius);
+  }
+
+  .fds-accordion--border .fds-accordion__item:last-of-type .fds-accordion__button:last-of-type {
+    border-bottom-left-radius: var(--dsc-accordion-border-radius);
+    border-bottom-right-radius: var(--dsc-accordion-border-radius);
   }
 
   @media (hover: hover) and (pointer: fine) {
