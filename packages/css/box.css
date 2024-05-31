@@ -20,7 +20,7 @@
   }
 
   .fds-box--default-border-color {
-    border: 1px solid var(--ds-color-neutral-border-strong);
+    border: 1px solid var(--ds-color-neutral-border-default);
   }
 
   .fds-box--subtle-border-color {
@@ -28,7 +28,7 @@
   }
 
   .fds-box--strong-border-color {
-    border: 1px solid var(--ds-color-neutral-base-default);
+    border: 1px solid var(--ds-color-neutral-base-strong);
   }
 
   .fds-box--sm-border-radius {

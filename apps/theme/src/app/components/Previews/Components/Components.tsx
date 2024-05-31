@@ -19,6 +19,8 @@ import {
   Tabs,
   Accordion,
   Link,
+  ToggleGroup,
+  Combobox,
 } from '@/packages/react';
 
 import classes from './Components.module.css';
@@ -320,6 +322,66 @@ export const Components = () => {
           </Tag>
         </div>
       </div>
+      <div className={cl(classes.card, classes.switches)}>
+        <Heading
+          size='xsmall'
+          spacing
+        >
+          Innstillinger
+        </Heading>
+        <Paragraph
+          size='small'
+          spacing
+        >
+          Her kan du justere på innstillingene dine
+        </Paragraph>
+        <div className={classes.switchGroup}>
+          <Switch size='small'>Desktopvisning</Switch>
+          <Switch
+            size='small'
+            checked
+          >
+            Tabletvisning
+          </Switch>
+          <Switch size='small'>Mobilvisning</Switch>
+        </div>
+      </div>
+      <div className={cl(classes.card, classes.combobox)}>
+        <Heading
+          size='xsmall'
+          spacing
+        >
+          Hvor er du fra?
+        </Heading>
+        <Paragraph
+          size='small'
+          spacing
+        >
+          Her kan du justere på innstillingene dine
+        </Paragraph>
+        <ToggleGroup defaultValue='norway'>
+          <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
+          <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
+          <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
+        </ToggleGroup>
+        <Combobox
+          description='Velg et sted'
+          label='Hvor går reisen?'
+          size='md'
+          portal={false}
+          multiple
+        >
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
+          <Combobox.Option value='oslo'>Oslo</Combobox.Option>
+          <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
+          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
+          <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
+          <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
+          <Combobox.Option value='bergen'>Bergen</Combobox.Option>
+          <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
+        </Combobox>
+      </div>
       <div className={cl(classes.card, classes.tabs)}>
         <Tabs
           defaultValue='value1'
@@ -386,30 +448,6 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
-      </div>
-      <div className={cl(classes.card, classes.test)}>
-        <Heading
-          size='xsmall'
-          spacing
-        >
-          Innstillinger
-        </Heading>
-        <Paragraph
-          size='small'
-          spacing
-        >
-          Her kan du justere på innstillingene dine
-        </Paragraph>
-        <div className={classes.switchGroup}>
-          <Switch size='small'>Desktopvisning</Switch>
-          <Switch
-            size='small'
-            checked
-          >
-            Tabletvisning
-          </Switch>
-          <Switch size='small'>Mobilvisning</Switch>
-        </div>
       </div>
     </div>
   );

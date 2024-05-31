@@ -37,6 +37,7 @@
     appearance: none;
     border: none;
     background-color: transparent;
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-combobox--sm .fds-combobox__input__wrapper {
@@ -147,7 +148,7 @@
   }
 
   .fds-combobox__clear-button:not(:disabled):hover {
-    background-color: var([delete]);
+    background-color: var(--ds-color-neutral-surface-default);
   }
 
   .fds-combobox__disabled {

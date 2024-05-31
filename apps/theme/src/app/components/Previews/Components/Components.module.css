@@ -3,14 +3,8 @@
   border-radius: 12px;
   width: 100%;
   padding: 24px;
-  display: flex;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    'checkbox checkbox checkbox user user user table table table table table table'
-    'help help help help help help radio radio radio tag tag tag'
-    'tabs tabs tabs tabs test test test faq faq faq faq faq'
-    'footerOne footerOne footerOne footerOne footerTwo footerTwo footerTwo footerTwo footerThree footerThree footerThree footerThree';
+  grid-template-columns: repeat(8, 1fr);
   column-gap: 24px;
   row-gap: 24px;
 }
@@ -26,12 +20,47 @@
 }
 
 .checkbox {
-  grid-area: checkbox;
+  grid-column: span 2;
   padding-bottom: 16px;
 }
 
 .user {
-  grid-area: user;
+  grid-column: span 2;
+}
+
+.tableContainer {
+  grid-column: span 4;
+}
+
+.help {
+  grid-column: span 4;
+}
+
+.radio {
+  grid-column: span 2;
+}
+
+.tag {
+  grid-column: span 2;
+}
+
+.switches {
+  grid-column: span 3;
+}
+
+.combobox {
+  grid-column: span 5;
+}
+
+.tabs {
+  grid-column: span 4;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.faq {
+  grid-column: span 4;
 }
 
 .userLink {
@@ -60,10 +89,6 @@
 
 .tabs button {
   min-height: 40px;
-}
-
-.tableContainer {
-  grid-area: table;
 }
 
 .table {
@@ -115,11 +140,8 @@
   margin-left: 20px;
 }
 
-.help {
-  grid-area: help;
-}
-
 .helpCards {
+  grid-column: 1 / 6;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -143,35 +165,12 @@
   font-size: 16px;
 }
 
-.test {
-  grid-area: test;
-}
-
-.radio {
-  grid-area: radio;
-}
-
-.tag {
-  grid-area: tag;
-}
-
 .tagList {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
-}
-
-.tabs {
-  grid-area: tabs;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-}
-
-.faq {
-  grid-area: faq;
 }
 
 .switchGroup {
