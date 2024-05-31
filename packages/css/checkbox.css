@@ -159,9 +159,7 @@
     }
 
     .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:checked {
-      box-shadow:
-        var(--dsc-checkbox-border__hover),
-        inset 0 0 0 2px var(--dsc-checkbox-border-color);
+      box-shadow: var(--dsc-checkbox-border__hover);
     }
   }
 
