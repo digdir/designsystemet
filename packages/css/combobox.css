@@ -5,6 +5,11 @@
     gap: var(--ds-spacing-2);
   }
 
+  .fds-combobox [data-floating-ui-portal] {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
   .fds-combobox__options-wrapper {
     padding: var(--ds-spacing-2);
     background: var(--ds-color-neutral-background-default);
@@ -106,6 +111,8 @@
   }
 
   .fds-combobox__label {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;

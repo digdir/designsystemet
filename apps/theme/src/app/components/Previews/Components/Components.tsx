@@ -131,6 +131,7 @@ export const Components = () => {
         </div>
         <Table
           size='small'
+          border
           className={classes.table}
         >
           <Table.Head>
@@ -357,30 +358,32 @@ export const Components = () => {
           size='small'
           spacing
         >
-          Her kan du justere på innstillingene dine
+          Svar under så finner vi flyreise
         </Paragraph>
-        <ToggleGroup defaultValue='norway'>
-          <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
-          <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
-          <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-        </ToggleGroup>
-        <Combobox
-          description='Velg et sted'
-          label='Hvor går reisen?'
-          size='md'
-          portal={false}
-          multiple
-        >
-          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-          <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
-          <Combobox.Option value='oslo'>Oslo</Combobox.Option>
-          <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
-          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-          <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
-          <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
-          <Combobox.Option value='bergen'>Bergen</Combobox.Option>
-          <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
-        </Combobox>
+        <div className={classes.toggleCombo}>
+          <ToggleGroup defaultValue='norway'>
+            <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
+            <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
+            <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
+          </ToggleGroup>
+          <Combobox
+            description='Velg et sted'
+            label='Hvor går reisen?'
+            size='md'
+            portal={false}
+            multiple
+          >
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
+            <Combobox.Option value='oslo'>Oslo</Combobox.Option>
+            <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
+            <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
+            <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
+            <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
+            <Combobox.Option value='bergen'>Bergen</Combobox.Option>
+            <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
+          </Combobox>
+        </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
         <Tabs

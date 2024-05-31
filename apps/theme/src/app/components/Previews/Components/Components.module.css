@@ -178,3 +178,9 @@
   gap: 26px;
   flex-direction: column;
 }
+
+.toggleCombo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
