@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import '@/packages/theme';
-import '@/packages/css';
+import '@/packages/css/index.css';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',

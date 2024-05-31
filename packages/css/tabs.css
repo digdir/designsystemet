@@ -72,7 +72,7 @@
   .fds-tabs__tab[aria-selected='true'] {
     --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
 
-    color: var(--ds-color-accent-base-default);
+    color: var(--ds-color-accent-text-subtle);
   }
 
   .fds-tabs__tab::after {
