@@ -75,6 +75,10 @@
     color: var(--ds-color-accent-text-subtle);
   }
 
+  .fds-tabs__tab:focus {
+    z-index: 2;
+  }
+
   .fds-tabs__tab::after {
     content: '';
     display: block;
@@ -91,5 +95,6 @@
     display: flex;
     flex-direction: row;
     border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+    position: relative;
   }
 }
