@@ -115,7 +115,7 @@
     border-top-right-radius: var(--dsc-accordion-border-radius);
   }
 
-  .fds-accordion--border .fds-accordion__item:last-of-type .fds-accordion__button:last-of-type {
+  .fds-accordion--border .fds-accordion__item:last-of-type:not(.fds-accordion__item--open) .fds-accordion__button:first-of-type {
     border-bottom-left-radius: var(--dsc-accordion-border-radius);
     border-bottom-right-radius: var(--dsc-accordion-border-radius);
   }
