@@ -181,6 +181,12 @@ export const generateColorTheme = (
 //   return conv.hex as CssColor;
 // };
 
+/**
+ *
+ * This function calculates a color that can be used as a strong contrast color to a base color.
+ *
+ * @param baseColor The base color
+ */
 const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
   const contrastBlack = getContrastFromHex(baseColor, '#000000');
@@ -190,6 +196,12 @@ const calculateContrastOneColor = (baseColor: CssColor) => {
   return color;
 };
 
+/**
+ *
+ * This function calculates a color that can be used as a subtle contrast color to a base color.
+ *
+ * @param color The base color
+ */
 export const calculateContrastTwoColor = (color: CssColor) => {
   const contrastWhite = getContrastFromHex(color, '#ffffff');
   const contrastBlack = getContrastFromHex(color, '#000000');
@@ -235,6 +247,13 @@ export const canTextBeUsedOnColors = (
   return false;
 };
 
+/**
+ *
+ * This function creates a color with a specific lightness value.
+ *
+ * @param color The base color
+ * @param lightness The lightness value from 0 to 100
+ */
 const createColorWithLightness = (color: CssColor, lightness: number) => {
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',

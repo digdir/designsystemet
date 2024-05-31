@@ -78,15 +78,14 @@ export const ColorPicker = ({
                 <div>
                   Base Default fargen har mindre enn 3:1 kontrast mot
                   bakgrunnsfargene og bør brukes varmsomt på viktige interaktive
-                  komponenter og flater. Les mer om dette{' '}
-                  <Link href='#'>her</Link>.
+                  komponenter og flater. Mer dokumentasjon kommer senere.
                 </div>
               )}
               {colorError == 'interaction' && (
                 <div>
                   Base Default fargen har ikke god nok kontrast mot hvit eller
                   svart tekst på tvers av Base fargene. Unngå bruk av enkelte
-                  komponenter. Les mer om dette <Link href='#'>her</Link>
+                  komponenter. Mer dokumentasjon kommer senere.
                 </div>
               )}
             </div>
