@@ -223,8 +223,8 @@
       transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height))));
     }
 
-    .input:not(:checked, :disabled, [readonly]):hover + .label .track {
-      background-color: var([delete]);
+    .fds-switch__input:not(:checked, :disabled, [readonly]):hover + .fds-switch__label .fds-switch__track {
+      background-color: var(--ds-color-neutral-border-strong);
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track {
