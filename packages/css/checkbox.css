@@ -102,16 +102,18 @@
 
   .fds-checkbox__input:checked {
     --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
+    --dsc-checkbox-background: var(--ds-color-accent-base-default);
     --dsc-checkbox-check_color: white;
 
-    background: var(--dsc-checkbox-border-color);
+    background: var(--dsc-checkbox-background);
   }
 
   .fds-checkbox__input:indeterminate {
     --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
+    --dsc-checkbox-background: var(--ds-color-accent-border-strong);
     --dsc-checkbox-check_color: white;
 
-    background-color: var(--dsc-checkbox-border-color);
+    background-color: var(--dsc-checkbox-background);
     background-repeat: no-repeat;
   }
 
@@ -143,12 +145,12 @@
   /* Only use hover for non-touch devices to prevent sticky-hovering
     "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
   @media (hover: hover) and (pointer: fine) {
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__label:hover,
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover + .fds-checkbox__label {
+    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__label:hover,
+    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__input:hover + .fds-checkbox__label {
       color: var(--ds-color-accent-text-subtle);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:not(:checked) {
+    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__input:not(:checked):hover {
       --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
 
       box-shadow:
@@ -157,8 +159,6 @@
     }
 
     .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:checked {
-      --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
-
       box-shadow:
         var(--dsc-checkbox-border__hover),
         inset 0 0 0 2px var(--dsc-checkbox-border-color);
