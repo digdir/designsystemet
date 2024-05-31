@@ -70,21 +70,21 @@
 
   .fds-accordion--brand1,
   .fds-accordion--brand1 .fds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand1-base-default);
+    --dsc-accordion-border-color: var(--ds-color-brand1-border-subtle);
 
     background: var(--ds-color-brand1-surface-default);
   }
 
   .fds-accordion--brand2,
   .fds-accordion--brand2 .fds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand2-base-default);
+    --dsc-accordion-border-color: var(--ds-color-brand2-border-subtle);
 
     background: var(--ds-color-brand2-surface-default);
   }
 
   .fds-accordion--brand3,
   .fds-accordion--brand3 .fds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand3-base-default);
+    --dsc-accordion-border-color: var(--ds-color-brand3-border-subtle);
 
     background: var(--ds-color-brand3-surface-default);
   }
