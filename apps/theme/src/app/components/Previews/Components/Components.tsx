@@ -234,20 +234,24 @@ export const Components = () => {
           <Card
             color='third'
             className={classes.helpThird}
+            isLink
+            asChild
           >
-            <Card.Header className={classes.helpHeader}>
-              <Heading
-                className={classes.helpThirdTitle}
-                size='xxsmall'
+            <a href='#preview'>
+              <Card.Header className={classes.helpHeader}>
+                <Heading
+                  className={classes.helpThirdTitle}
+                  size='xxsmall'
+                >
+                  Mat og helse
+                </Heading>
+              </Card.Header>
+              <Card.Content
+                className={cl(classes.helpContent, classes.helpThirdDesc)}
               >
-                Mat og helse
-              </Heading>
-            </Card.Header>
-            <Card.Content
-              className={cl(classes.helpContent, classes.helpThirdDesc)}
-            >
-              Most provide as with carried business are much better more the.
-            </Card.Content>
+                Lenke til artikkel om mat og helse, der du kan lese mer om alt.
+              </Card.Content>
+            </a>
           </Card>
         </div>
       </div>

@@ -1,4 +1,28 @@
 @layer fds.card {
+  .fds-card {
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: var(--ds-color-neutral-text-default);
+    border-radius: var(--ds-border-radius-md);
+    border: 1px solid var(--dsc-card-border-color);
+  }
+
+  .fds-card a,
+  .fds-card a:visited {
+    color: var(--ds-color-neutral-text-default);
+  }
+
+  .fds-card > hr {
+    width: 100%;
+    margin: var(--ds-spacing-3) 0;
+  }
+
   .fds-card__media {
     width: auto;
   }
@@ -8,6 +32,33 @@
     flex-direction: column;
     width: 100%;
     border: 0;
+  }
+
+  .fds-card > *:not(.fds-card__media, hr) {
+    padding-left: var(--ds-spacing-6);
+    padding-right: var(--ds-spacing-6);
+  }
+
+  .fds-card > *:not(.fds-card__media):first-child {
+    padding-top: var(--ds-spacing-6);
+  }
+
+  .fds-card > *:not(.fds-card__media):last-child {
+    padding-bottom: var(--ds-spacing-6);
+  }
+
+  .fds-card__media:first-child {
+    padding-bottom: var(--ds-spacing-4);
+  }
+
+  .fds-card__media:last-child {
+    padding-top: var(--ds-spacing-6);
+  }
+
+  .fds-card--link {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
+
+    text-decoration: none;
   }
 
   .fds-card__footer,
@@ -36,52 +87,6 @@
     padding: var(--ds-spacing-2) 0;
   }
 
-  .fds-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    color: var(--ds-color-neutral-text-default);
-    border-radius: var(--ds-border-radius-md);
-  }
-
-  .fds-card a,
-  .fds-card a:visited {
-    color: var(--ds-color-neutral-text-default);
-  }
-
-  .fds-card > hr {
-    width: 100%;
-    margin: var(--ds-spacing-3) 0;
-  }
-
-  .fds-card > *:not(.fds-card__media, hr) {
-    padding-left: var(--ds-spacing-6);
-    padding-right: var(--ds-spacing-6);
-  }
-
-  .fds-card > *:not(.fds-card__media):first-child {
-    padding-top: var(--ds-spacing-6);
-  }
-
-  .fds-card > *:not(.fds-card__media):last-child {
-    padding-bottom: var(--ds-spacing-6);
-  }
-
-  .fds-card__media:first-child {
-    padding-bottom: var(--ds-spacing-4);
-  }
-
-  .fds-card__media:last-child {
-    padding-top: var(--ds-spacing-6);
-  }
-
-  .fds-card--link {
-    text-decoration: none;
-  }
-
   .fds-card--link h1,
   .fds-card--link h2,
   .fds-card--link h3,
@@ -94,13 +99,23 @@
   }
 
   .fds-card--neutral {
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
     background-color: var(--ds-color-neutral-background-default);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+
+  .fds-card--neutral.fds-card--link:hover {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-card--subtle {
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
     background-color: var(--ds-color-neutral-background-subtle);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+
+  .fds-card--subtle.fds-card--link:hover {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-card--neutral.fds-card--link:hover,
@@ -109,8 +124,13 @@
   }
 
   .fds-card--brand1 {
+    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
+
     background-color: var(--ds-color-brand1-surface-default);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+
+  .fds-card--brand1.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand1-border-default);
   }
 
   .fds-card--brand1.fds-card--link:hover {
@@ -122,8 +142,13 @@
   }
 
   .fds-card--brand2 {
+    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
+
     background-color: var(--ds-color-brand2-surface-default);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+
+  .fds-card--brand2.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand2-border-default);
   }
 
   .fds-card--brand2.fds-card--link:hover {
@@ -135,8 +160,13 @@
   }
 
   .fds-card--brand3 {
+    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
+
     background-color: var(--ds-color-brand3-surface-default);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+
+  .fds-card--brand3.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand3-border-default);
   }
 
   .fds-card--brand3.fds-card--link:hover {
