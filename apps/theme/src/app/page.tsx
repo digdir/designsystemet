@@ -482,6 +482,7 @@ export default function Home() {
               classes[themeMode as keyof typeof classes],
             )}
             id='preview'
+            data-ds-color-mode={themeMode}
           >
             {previewMode === 'components' && <Components />}
             {previewMode === 'dashboard' && <Dashboard />}
