@@ -1,4 +1,4 @@
-@layer fds.pagination {
+@layer ds.pagination {
   .fds-pagination {
     --dsc-pagination-listitem-margin: var(--ds-spacing-4);
     --dsc-pagination-ellipsis-width: var(--ds-sizing-12);

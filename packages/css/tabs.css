@@ -1,4 +1,4 @@
-@layer fds.tabs {
+@layer ds.tabs {
   .fds-tabs__tab {
     --dsc-tabs__tab-bottom-border-color: transparent;
 

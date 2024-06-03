@@ -1,4 +1,4 @@
-@layer fds.typography.paragraph {
+@layer ds.typography.paragraph {
   .fds-paragraph {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 

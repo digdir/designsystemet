@@ -1,4 +1,4 @@
-@layer fds.togglegroup {
+@layer ds.togglegroup {
   .fds-togglegroup {
     background-color: var(--ds-color-neutral-background-default);
     border: var(--ds-color-neutral-border-default) solid var(--ds-border-width-default);

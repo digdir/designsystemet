@@ -1,4 +1,4 @@
-@layer fds.errorsummary {
+@layer ds.errorsummary {
   .fds-error-summary {
     padding: var(--ds-spacing-6) var(--ds-spacing-8);
     border-radius: var(--ds-border-radius-lg);

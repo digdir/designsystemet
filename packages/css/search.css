@@ -1,4 +1,4 @@
-@layer fds.search {
+@layer ds.search {
   .fds-search {
     display: inline-grid;
     width: 100%;
@@ -79,7 +79,6 @@
   .fds-search__input[type='search']:focus-visible {
     z-index: 1;
   }
-
 
   .fds-search:has(.fds-search__input:disabled) {
     opacity: var(--ds-opacity-disabled);

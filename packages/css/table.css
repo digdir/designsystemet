@@ -1,4 +1,4 @@
-@layer fds.table {
+@layer ds.table {
   .fds-table {
     --dsc-table-padding: 0;
     --dsc-table-border-radius: var(--ds-border-radius-md);

@@ -1,4 +1,4 @@
-@layer fds.switch {
+@layer ds.switch {
   .fds-switch {
     --dsc-switch--transition: 200ms;
     --dsc-switch-height: 1.75rem;

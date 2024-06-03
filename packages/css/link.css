@@ -1,4 +1,4 @@
-@layer fds.link {
+@layer ds.link {
   .fds-link {
     position: relative;
     color: var(--ds-color-accent-text-subtle);

@@ -1,6 +1,6 @@
 @import url('https://altinncdn.no/fonts/inter/inter.css');
 
-@layer normalize, fds;
+@layer normalize, ds;
 
 :root {
   --color-beta: #d6d4ff;

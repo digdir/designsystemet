@@ -1,4 +1,4 @@
-@layer fds.typography.error-message {
+@layer ds.typography.error-message {
   .fds-error-message {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 

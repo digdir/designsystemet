@@ -1,4 +1,4 @@
-@layer fds.alert {
+@layer ds.alert {
   .fds-alert {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
     --dsc-alert-border-radius: var(--ds-border-radius-md);

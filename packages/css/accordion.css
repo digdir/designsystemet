@@ -1,4 +1,4 @@
-@layer fds.accordion {
+@layer ds.accordion {
   .fds-accordion {
     --dsc-accordion-border-radius: var(--ds-border-radius-md);
     --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);

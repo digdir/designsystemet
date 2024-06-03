@@ -1,4 +1,4 @@
-@layer fds.typography.ingress {
+@layer ds.typography.ingress {
   .fds-ingress {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 

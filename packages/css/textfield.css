@@ -1,4 +1,4 @@
-@layer fds.textfield {
+@layer ds.textfield {
   .fds-textfield {
     display: grid;
     gap: var(--ds-spacing-2);
@@ -102,7 +102,6 @@
     color: var(--ds-color-neutral-text-subtle);
     margin-top: calc(var(--ds-spacing-2) * -1);
   }
-
 
   .fds-textfield:has(.fds-textfield__input:disabled) {
     opacity: var(--ds-opacity-disabled);

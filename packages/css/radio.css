@@ -1,4 +1,4 @@
-@layer fds.radio {
+@layer ds.radio {
   .fds-radio {
     --dsc-radio-size: var(--ds-spacing-5);
     --dsc-radio-focus-border-width: 3px;

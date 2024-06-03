@@ -1,4 +1,4 @@
-@layer fds.checkbox {
+@layer ds.checkbox {
   .fds-checkbox {
     --dsc-checkbox-size: 1.75rem;
     --dsc-checkbox-focus-border-width: 3px;

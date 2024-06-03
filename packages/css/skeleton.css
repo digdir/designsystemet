@@ -1,4 +1,4 @@
-@layer fds.skeleton {
+@layer ds.skeleton {
   .fds-skeleton {
     --dsc-skeleton-animation-duration: 0.8s;
 

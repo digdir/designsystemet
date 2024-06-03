@@ -1,4 +1,4 @@
-@layer fds.spinner {
+@layer ds.spinner {
   .fds-spinner {
     animation: fds-spinner-rotate-animation linear infinite;
     animation-duration: 2s;

@@ -1,4 +1,4 @@
-@layer fds.typography.label {
+@layer ds.typography.label {
   .fds-label {
     --dsc-bottom-spacing: var(--ds-spacing-1);
 

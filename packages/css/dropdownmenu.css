@@ -1,4 +1,4 @@
-@layer fds.dropdownmenu {
+@layer ds.dropdownmenu {
   .fds-dropdownmenu {
     position: relative;
     padding: var(--ds-spacing-2);

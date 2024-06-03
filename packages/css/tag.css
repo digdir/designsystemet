@@ -1,4 +1,4 @@
-@layer fds.tag {
+@layer ds.tag {
   .fds-tag {
     --dsc-tag-background: var(--ds-color-neutral-background-subtle);
     --dsc-tag-color: var(--ds-color-neutral-text-default);

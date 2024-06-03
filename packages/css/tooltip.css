@@ -1,4 +1,4 @@
-@layer fds.tooltip {
+@layer ds.tooltip {
   .fds-tooltip {
     --dsc-tooltip-background: var(--ds-color-neutral-background-default);
 
