@@ -146,8 +146,6 @@ export default function useCombobox({
     [initialValue, options],
   );
 
-  console.log({ preSelectedOptions });
-
   const [selectedOptions, setSelectedOptions] = useState<{
     [key: string]: Option;
   }>(preSelectedOptions);
@@ -159,23 +157,17 @@ export default function useCombobox({
       (option, index) => {
         /* If we have a selected value in single mode and the input matches an option, return all children */
         if (!multiple && Object.keys(selectedOptions).length === 1) {
-          filteredOptions.push(
-            INTERNAL_OPT_PREFIX + String(options[option].value),
-          );
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
 
         if (multiple && selectedOptions[option]) {
-          filteredOptions.push(
-            INTERNAL_OPT_PREFIX + String(options[option].value),
-          );
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
-        console.log(options[option]);
+
         if (filter(inputValue, options[option])) {
-          filteredOptions.push(
-            INTERNAL_OPT_PREFIX + String(options[option].value),
-          );
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
       },
