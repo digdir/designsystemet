@@ -21,6 +21,7 @@ import {
   Link,
   ToggleGroup,
   Combobox,
+  Tooltip,
 } from '@/packages/react';
 
 import classes from './Components.module.css';
@@ -81,12 +82,17 @@ export const Components = () => {
           placeholder='ola@norge.no'
           className={classes.userField}
         />
-        <Link
-          href='#'
-          className={classes.userLink}
+        <Tooltip
+          content='Trykk her for å få hjelp'
+          portal={false}
         >
-          Glemt passord?
-        </Link>
+          <Link
+            href='#'
+            className={classes.userLink}
+          >
+            Glemt passord?
+          </Link>
+        </Tooltip>
         <Button
           fullWidth
           size='small'

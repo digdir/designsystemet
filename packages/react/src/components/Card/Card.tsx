@@ -25,11 +25,6 @@ export type CardProps = {
   isLink?: boolean;
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: ReactNode;
-
-  /**
-   * @deprecated Use `asChild` and `isLink={true}` instead
-   */
-  href?: never;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
