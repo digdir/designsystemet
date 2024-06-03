@@ -152,13 +152,13 @@
 
   .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label,
   .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__description {
-     opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-opacity-disabled);
   }
 
   .fds-switch__input:focus-visible + .fds-switch__label .fds-switch__track {
-    outline: var(--dsc-switch-focus-border-width) solid var(--ds-color-neutral-text-default);
-    outline-offset: 3px;
-    box-shadow: 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-color-neutral-background-default);
+    outline: var(--dsc-switch-focus-border-width) solid var(--ds-focus-outer);
+    outline-offset: var(--dsc-switch-focus-border-width);
+    box-shadow: 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-focus-inner);
   }
 
   .fds-switch__input:not([readonly]):checked + .fds-switch__label .fds-switch__track {

@@ -6,7 +6,6 @@
     --dsc-radio-border-color: var(--ds-color-neutral-border-strong);
     --dsc-radio-border__hover--size: calc(var(--ds-spacing-3) / 2);
     --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-accent-surface-hover);
-    --dsc-radio-focus-color: var(--ds-color-neutral-text-default);
 
     display: grid;
   }
@@ -80,10 +79,10 @@
 
   .fds-radio__input:focus-visible {
     outline-offset: var(--ds-spacing-1);
-    outline: var(--dsc-radio-focus-border-width) solid var(--dsc-radio-focus-color);
+    outline: var(--dsc-radio-focus-border-width) solid var(--ds-focus-outer);
     box-shadow:
       inset 0 0 0 2px var(--dsc-radio-border-color),
-      inset 0 0 0 var(--dsc-radio-focus-border-width) var(--ds-color-neutral-background-default),
+      inset 0 0 0 var(--dsc-radio-focus-border-width) var(--ds-focus-inner),
       inset 0 0 0 6px var(--dsc-radio-background);
   }
 

@@ -19,9 +19,9 @@
   .fds-focus:focus-visible {
     --dsc-focus-border-width: 3px;
 
-    outline: var(--dsc-focus-border-width) solid var(--ds-color-neutral-text-default);
+    outline: var(--dsc-focus-border-width) solid var(--ds-focus-outer);
     outline-offset: var(--dsc-focus-border-width);
-    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-neutral-background-default);
+    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-focus-inner);
   }
 
   @layer animate-height {

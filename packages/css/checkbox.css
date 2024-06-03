@@ -7,7 +7,6 @@
     --dsc-checkbox-border__hover--size: calc(var(--ds-spacing-3) / 2);
     --dsc-checkbox-border__hover: 0 0 0 var(--dsc-checkbox-border__hover--size) var(--ds-color-accent-surface-hover);
     --dsc-checkbox-check_color: transparent;
-    --dsc-checkbox-focus-color: var(--ds-color-neutral-text-default);
 
     display: grid;
   }
@@ -76,9 +75,9 @@
 
   .fds-checkbox__input:focus-visible {
     outline-offset: 3px;
-    outline: var(--dsc-checkbox-focus-border-width) solid var(--dsc-checkbox-focus-color);
+    outline: var(--dsc-checkbox-focus-border-width) solid var(--ds-focus-outer);
     box-shadow:
-      0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-color-neutral-background-default),
+      0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-focus-inner),
       inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
