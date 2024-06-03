@@ -558,15 +558,5 @@
         "value": "{global.yellow.contrast-2}"
       }
     }
-  },
-  "focus": {
-    "outer": {
-      "value": "{color.neutral.text-default}",
-      "type": "color"
-    },
-    "inner": {
-      "value": "{color.neutral.background-default}",
-      "type": "color"
-    }
   }
 }

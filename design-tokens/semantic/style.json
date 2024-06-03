@@ -300,8 +300,8 @@
       }
     }
   },
-  "opacity": {
-    "disabled": {
+  "disabled": {
+    "opacity": {
       "type": "opacity",
       "value": "{opacity.30}"
     }
@@ -538,6 +538,16 @@
     "xl": {
       "type": "boxShadow",
       "value": "{shadow.500}"
+    }
+  },
+  "focus": {
+    "outer": {
+      "value": "{color.neutral.text-default}",
+      "type": "color"
+    },
+    "inner": {
+      "value": "{color.neutral.background-default}",
+      "type": "color"
     }
   }
 }
