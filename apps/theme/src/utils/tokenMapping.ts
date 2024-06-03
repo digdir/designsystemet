@@ -83,6 +83,9 @@ export const mapTokens = () => {
   setToken('--ds-color-brand3-text-default', 'var(--brandThree13)');
   setToken('--ds-color-brand3-contrast-default', 'var(--brandThree14)');
   setToken('--ds-color-brand3-contrast-sublte', 'var(--brandThree15)');
+
+  setToken('--ds-focus-outer', 'var(--grey13)');
+  setToken('--ds-focus-inner', 'var(--grey1)');
 };
 
 const setToken = (token: string, color: string) => {
