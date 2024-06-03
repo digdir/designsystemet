@@ -130,7 +130,11 @@ export default function useCombobox({
 
   const preSelectedOptions = useMemo(
     () =>
-      (initialValue || []).reduce<{
+      (
+        initialValue?.map((key) => {
+          return INTERNAL_OPT_PREFIX + key;
+        }) || []
+      ).reduce<{
         [key: string]: Option;
       }>((acc, value) => {
         const option = options[value];
@@ -141,6 +145,8 @@ export default function useCombobox({
       }, {}),
     [initialValue, options],
   );
+
+  console.log({ preSelectedOptions });
 
   const [selectedOptions, setSelectedOptions] = useState<{
     [key: string]: Option;
@@ -165,6 +171,7 @@ export default function useCombobox({
           );
           return optionsChildren[index];
         }
+        console.log(options[option]);
         if (filter(inputValue, options[option])) {
           filteredOptions.push(
             INTERNAL_OPT_PREFIX + String(options[option].value),

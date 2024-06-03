@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import type { UseComboboxProps } from './useCombobox';
-import useCombobox, { INTERNAL_OPT_PREFIX } from './useCombobox';
+import useCombobox from './useCombobox';
 
 import { Combobox } from '.';
 
@@ -78,7 +78,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: true,
-      initialValue: [INTERNAL_OPT_PREFIX + 'oslo'],
+      initialValue: ['oslo'],
     });
 
     expect(Object.keys(result.current.options).length).toBe(3);
@@ -90,7 +90,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: '3',
       multiple: true,
-      initialValue: [INTERNAL_OPT_PREFIX + 'oslo'],
+      initialValue: ['oslo'],
     });
 
     expect(Object.keys(result.current.options).length).toBe(3);
@@ -113,7 +113,7 @@ describe('useCombobox', () => {
     const { result } = renderUseCombobox({
       inputValue: 'l',
       multiple: true,
-      initialValue: [INTERNAL_OPT_PREFIX + 'oslo'],
+      initialValue: ['oslo'],
     });
 
     expect(Object.keys(result.current.options).length).toBe(3);

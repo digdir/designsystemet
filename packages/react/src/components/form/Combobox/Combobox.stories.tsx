@@ -676,7 +676,7 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
 
 export const WithNumberValues: StoryFn<typeof Combobox> = () => {
   return (
-    <Combobox>
+    <Combobox initialValue={['2000']}>
       <Combobox.Option
         id={'3000'}
         key={'3000'}
