@@ -50,11 +50,11 @@
     gap: var(--fds-spacing-2);
   }
 
-  .fds-native-select--disabled {
+  .fds-native-select--container:has(.fds-native-select:disabled) {
     opacity: var(--fds-opacity-disabled);
   }
 
-  .fds-native-select--disabled .fds-native-select {
+  .fds-native-select:disabled {
     cursor: not-allowed;
   }
 
@@ -63,7 +63,7 @@
     border-color: var(--fds-semantic-border-neutral-default);
   }
 
-  .fds-native-select--error > .fds-native-select:not(:focus-visible) {
+  .fds-native-select--error>.fds-native-select:not(:focus-visible) {
     border-color: var(--fds-semantic-border-danger-default);
     box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
   }

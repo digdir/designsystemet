@@ -4,7 +4,7 @@
     gap: var(--fds-spacing-2);
   }
 
-  .fds-textarea__readonly__icon {
+  .fds-textarea__readonly-icon {
     height: 1.2em;
     width: 1.2em;
   }
@@ -53,15 +53,15 @@
     padding: var(--fds-spacing-4);
   }
 
-  .fds-textarea--disabled {
+  .fds-textarea:has(.fds-textarea__input:disabled) {
     opacity: var(--fds-opacity-disabled);
   }
 
-  .fds-textarea--disabled .fds-textarea__input {
+  .fds-textarea__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textarea--readonly .fds-textarea__input {
+  .fds-textarea__input:read-only {
     background: var(--fds-semantic-surface-neutral-subtle);
     border-color: var(--fds-semantic-border-neutral-default);
   }

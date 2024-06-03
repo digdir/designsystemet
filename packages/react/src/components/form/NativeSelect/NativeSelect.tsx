@@ -73,7 +73,6 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         <div
           className={cl(
             'fds-native-select--container',
-            disabled && 'fds-native-select--disabled',
             readOnly && 'fds-native-select--readonly',
             error && 'fds-native-select--error',
           )}
