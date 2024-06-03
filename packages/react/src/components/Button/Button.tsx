@@ -5,16 +5,13 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { getColor } from '../../utilities';
 
-type OldColors = 'first' | 'second' | 'success';
-
 export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use
    * @default accent
-   * @note `first`, `second`, `success` is deprecated
    */
-  color?: 'accent' | 'neutral' | 'danger' | OldColors;
+  color?: 'accent' | 'neutral' | 'danger';
   /**
    * Size
    * @default md

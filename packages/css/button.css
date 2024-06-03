@@ -97,10 +97,6 @@
     background-color: var(--ds-color-neutral-base-default);
   }
 
-  .fds-btn--primary:where(.fds-btn--success) {
-    background-color: var(--ds-color-success-base-default);
-  }
-
   .fds-btn--primary:where(.fds-btn--danger) {
     background-color: var(--ds-color-danger-base-default);
   }
@@ -113,10 +109,6 @@
 
     .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--ds-color-neutral-base-hover);
-    }
-
-    .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--ds-color-success-base-hover);
     }
 
     .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
@@ -135,12 +127,6 @@
       background-color: var(--ds-color-neutral-surface-default);
     }
 
-    .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-success-text-default);
-      border-color: var(--ds-color-success-border-strong);
-      background-color: var(--ds-color-success-surface-default);
-    }
-
     .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-danger-text-default);
       border-color: var(--ds-color-danger-border-strong);
@@ -157,11 +143,6 @@
       background-color: var(--ds-color-neutral-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-success-base-default);
-      background-color: var(--ds-color-success-surface-default);
-    }
-
     .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-danger-text-default);
       background-color: var(--ds-color-danger-surface-default);
@@ -174,10 +155,6 @@
 
   .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     background-color: var(--ds-color-neutral-base-active);
-  }
-
-  .fds-btn--primary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--ds-color-success-base-active);
   }
 
   .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
@@ -194,12 +171,6 @@
   .fds-btn--secondary:where(.fds-btn--neutral) {
     color: var(--ds-color-neutral-text-subtle);
     border-color: var(--ds-color-neutral-border-strong);
-    background-color: transparent;
-  }
-
-  .fds-btn--secondary:where(.fds-btn--success) {
-    color: var(--ds-color-success-text-subtle);
-    border-color: var(--ds-color-success-border-strong);
     background-color: transparent;
   }
 
@@ -221,12 +192,6 @@
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
-  .fds-btn--secondary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-success-text-default);
-    border-color: var(--ds-color-success-border-strong);
-    background-color: var(--ds-color-success-surface-hover);
-  }
-
   .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-danger-text-default);
     border-color: var(--ds-color-danger-border-strong);
@@ -242,10 +207,6 @@
     color: var(--ds-color-neutral-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--success) {
-    color: var(--ds-color-success-text-subtle);
-  }
-
   .fds-btn--tertiary:where(.fds-btn--danger) {
     color: var(--ds-color-danger-text-subtle);
   }
@@ -258,11 +219,6 @@
   .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-neutral-text-default);
     background-color: var(--ds-color-neutral-surface-hover);
-  }
-
-  .fds-btn--tertiary:where(.fds-btn--success):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-success-text-default);
-    background-color: var(--ds-color-success-surface-hover);
   }
 
   .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
