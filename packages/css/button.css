@@ -116,7 +116,7 @@
     }
 
     .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-accent-text-hover);
+      color: var(--ds-color-accent-text-default);
       border-color: var(--ds-color-accent-border-strong);
       background-color: var(--ds-color-accent-surface-default);
     }
@@ -139,7 +139,7 @@
     }
 
     .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-neutral-base-hover);
+      color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-surface-default);
     }
 
