@@ -3574,6 +3574,38 @@ export const  color = [
     ]
   },
   {
+    value: "#243142",
+    type: "color",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      value: "{color.neutral.text-default}",
+      type: "color"
+    },
+    name: "--ds-focus-outer",
+    attributes: {},
+    path: [
+      "focus",
+      "outer"
+    ]
+  },
+  {
+    value: "#fefefe",
+    type: "color",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      value: "{color.neutral.background-default}",
+      type: "color"
+    },
+    name: "--ds-focus-inner",
+    attributes: {},
+    path: [
+      "focus",
+      "inner"
+    ]
+  },
+  {
     value: "#fefefe",
     type: "color",
     filePath: "../../design-tokens/primitives/colors/light/theme4.json",
