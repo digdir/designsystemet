@@ -341,6 +341,12 @@ export const Components = () => {
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
+          <Switch
+            size='small'
+            defaultChecked
+          >
+            TV-visning
+          </Switch>
           <Switch size='small'>Desktopvisning</Switch>
           <Switch
             size='small'
