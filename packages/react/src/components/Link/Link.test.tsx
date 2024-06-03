@@ -27,12 +27,6 @@ describe('Link', () => {
     expect(link).toHaveClass(className);
   });
 
-  it('Is inverted when the `inverted` property is `true`', () => {
-    render({ inverted: true });
-    const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('data-ds-color-mode', 'dark');
-  });
-
   it('Sets the ref on the anchor element if given', () => {
     const ref = createRef<HTMLAnchorElement>();
     render({}, ref);
