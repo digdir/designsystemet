@@ -36,7 +36,7 @@ export const Showcase: StoryFn = () => {
         <Checkbox.Group
           error=''
           legend='Handleliste'
-          size='small'
+          size='sm'
         >
           <Checkbox value='epost'>En kilo poteter</Checkbox>
           <Checkbox value='telefon'>To liter Farris</Checkbox>
@@ -54,14 +54,14 @@ export const Showcase: StoryFn = () => {
       <div className={classes.login}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
-          size='xsmall'
+          size='xs'
         >
           Opprett ny bruker
         </Heading>
 
         <Textfield
           label='Navn'
-          size='small'
+          size='sm'
           placeholder='Ola Normann'
           className={classes.userField}
         />
@@ -73,7 +73,7 @@ export const Showcase: StoryFn = () => {
         </Link>
         <Button
           fullWidth
-          size='small'
+          size='sm'
           className={classes.userBtn}
         >
           Opprett ny bruker
@@ -82,7 +82,7 @@ export const Showcase: StoryFn = () => {
       <div className={cl(classes.tableContainer)}>
         <Heading
           className={classes.cardTitle}
-          size='xxsmall'
+          size='2xs'
         >
           Alle brukere
         </Heading>
@@ -90,7 +90,7 @@ export const Showcase: StoryFn = () => {
           <div className={classes.tableAction}>
             <NativeSelect
               label=''
-              size='small'
+              size='sm'
               className={classes.tableSelect}
             >
               <option value='blank'>Velg handling</option>
@@ -100,7 +100,7 @@ export const Showcase: StoryFn = () => {
             </NativeSelect>
             <Button
               className={classes.tableBtn}
-              size='small'
+              size='sm'
             >
               Utfør
             </Button>
@@ -109,13 +109,13 @@ export const Showcase: StoryFn = () => {
             error=''
             label='Label'
             placeholder='Søk etter bruker...'
-            size='small'
+            size='sm'
             variant='simple'
             className={classes.tableSearch}
           />
         </div>
         <Table
-          size='small'
+          size='sm'
           className={classes.table}
         >
           <Table.Head>
@@ -167,13 +167,13 @@ export const Showcase: StoryFn = () => {
           nextLabel='Neste'
           onChange={function Ya() {}}
           previousLabel='Forrige'
-          size='small'
+          size='sm'
           totalPages={6}
         />
       </div>
       <div className={cl(classes.help)}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.helpHeading}
         >
           Hva kan vi hjelpe deg med?
@@ -181,7 +181,7 @@ export const Showcase: StoryFn = () => {
         <div className={classes.helpCards}>
           <Card color='first'>
             <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Sikkerhet og drift</Heading>
+              <Heading size='2xs'>Sikkerhet og drift</Heading>
             </Card.Header>
             <Card.Content className={cl(classes.helpContent)}>
               Most provide as with carried business are much better more the.
@@ -189,7 +189,7 @@ export const Showcase: StoryFn = () => {
           </Card>
           <Card color='second'>
             <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Skole og utdanning</Heading>
+              <Heading size='2xs'>Skole og utdanning</Heading>
             </Card.Header>
             <Card.Content className={cl(classes.helpContent)}>
               Most provide as with carried business are much better more the.
@@ -197,7 +197,7 @@ export const Showcase: StoryFn = () => {
           </Card>
           <Card color='third'>
             <Card.Header className={classes.helpHeader}>
-              <Heading size='xxsmall'>Mat og helse</Heading>
+              <Heading size='2xs'>Mat og helse</Heading>
             </Card.Header>
             <Card.Content className={cl(classes.helpContent)}>
               Most provide as with carried business are much better more the.
@@ -206,35 +206,35 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={classes.tags}>
-        <Heading size='xsmall'>Emner</Heading>
+        <Heading size='xs'>Emner</Heading>
         <div className={classes.tagList}>
           <Tag
             color='first'
-            size='small'
+            size='sm'
           >
             Data og IKT
           </Tag>
           <Tag
             color='second'
-            size='small'
+            size='sm'
           >
             Mat og ernæring
           </Tag>
           <Tag
             color='third'
-            size='small'
+            size='sm'
           >
             Sport og Idrett
           </Tag>
           <Tag
             color='neutral'
-            size='small'
+            size='sm'
           >
             Politikk og samfunn
           </Tag>
           <Tag
             color='success'
-            size='small'
+            size='sm'
           >
             Utenriks
           </Tag>
@@ -251,33 +251,33 @@ export const Showcase: StoryFn = () => {
       </div>
       <div className={classes.switches}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={cl(classes.footerHeading, classes.switchHeading)}
         >
           Innstillinger
         </Heading>
         <Paragraph
-          size='small'
+          size='sm'
           className={classes.switchParagraph}
         >
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
-          <Switch size='small'>Desktopvisning</Switch>
+          <Switch size='sm'>Desktopvisning</Switch>
           <Switch
-            size='small'
+            size='sm'
             checked
           >
             Tabletvisning
           </Switch>
-          <Switch size='small'>Mobilvisning</Switch>
+          <Switch size='sm'>Mobilvisning</Switch>
         </div>
       </div>
       <div className={classes.radios}>
         <Radio.Group
           error=''
           legend='Hvilken iskremsmak er best?'
-          size='small'
+          size='sm'
           value={radioValue}
           onChange={(e) => setRadioValue(e)}
         >
@@ -290,7 +290,7 @@ export const Showcase: StoryFn = () => {
       <div className={cl(classes.tabs)}>
         <Tabs
           defaultValue='value1'
-          size='small'
+          size='sm'
         >
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
@@ -298,7 +298,7 @@ export const Showcase: StoryFn = () => {
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-        <Paragraph size='small'>
+        <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
           frivillig virksomhet. Det er bare foreninger,{' '}
@@ -311,7 +311,7 @@ export const Showcase: StoryFn = () => {
 
       <div className={cl(classes.faq)}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.cardTitle}
         >
           Ofte stillte spørmsål
