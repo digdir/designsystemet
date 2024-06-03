@@ -43,7 +43,7 @@ export const Dashboard = () => {
         </div>
         <div className={classes.menu}>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={cl(classes.btn, classes.btnActive)}
@@ -55,7 +55,7 @@ export const Dashboard = () => {
             Dashboard
           </Button>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={classes.btn}
@@ -67,7 +67,7 @@ export const Dashboard = () => {
             Sider
           </Button>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={classes.btn}
@@ -79,7 +79,7 @@ export const Dashboard = () => {
             Artikler
           </Button>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={classes.btn}
@@ -91,7 +91,7 @@ export const Dashboard = () => {
             Brukere
           </Button>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={classes.btn}
@@ -103,7 +103,7 @@ export const Dashboard = () => {
             Tilganger
           </Button>
           <Button
-            color='second'
+            color='neutral'
             size='sm'
             variant='tertiary'
             className={classes.btn}

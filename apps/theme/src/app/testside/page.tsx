@@ -46,7 +46,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
           style={{ backgroundColor: colors[0] }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Background default
@@ -62,7 +62,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
           style={{ backgroundColor: colors[1] }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Background subtle
@@ -78,7 +78,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
           style={{ backgroundColor: colors[2] }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface default
@@ -94,7 +94,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
           style={{ backgroundColor: colors[3] }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface hover
@@ -110,7 +110,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
           style={{ backgroundColor: colors[4] }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface active
