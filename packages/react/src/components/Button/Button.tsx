@@ -3,9 +3,8 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import { getColor, getSize } from '../../utilities';
+import { getColor } from '../../utilities';
 
-type OldButtonSizes = 'small' | 'medium' | 'large';
 type OldColors = 'first' | 'second' | 'success';
 
 export type ButtonProps = {
@@ -19,9 +18,8 @@ export type ButtonProps = {
   /**
    * Size
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** If `Button` should fill full width of its container */
   fullWidth?: boolean;
   /** Toggle icon only styling, pass icon as children
@@ -46,13 +44,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       icon = false,
       type = 'button',
-      className,
+      size = 'md',
       asChild,
+      className,
       ...rest
     },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md');
     const color = getColor(rest.color || 'accent', 'action');
     const Component = asChild ? Slot : 'button';
 

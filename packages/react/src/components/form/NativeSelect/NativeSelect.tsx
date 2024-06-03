@@ -8,8 +8,6 @@ import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import { useNativeSelect } from './useNativeSelect';
 
-type OldNativeSelectSizes = 'small' | 'medium' | 'large';
-
 export type NativeSelectProps = {
   /**
    * Label that appears over the select box. */
@@ -28,9 +26,8 @@ export type NativeSelectProps = {
   /**
    * Defines the size of the select.
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    **/
-  size?: 'sm' | 'md' | 'lg' | OldNativeSelectSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Error message for form field */
   error?: ReactNode;
   /** Defines if the select is readOnly

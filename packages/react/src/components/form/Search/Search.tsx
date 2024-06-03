@@ -11,8 +11,6 @@ import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
 
-type OldSearchSizes = 'small' | 'medium' | 'large';
-
 export type SearchProps = {
   /** Label */
   label?: ReactNode;
@@ -23,9 +21,8 @@ export type SearchProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldSearchSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Variant
    * @default 'simple'
    */
