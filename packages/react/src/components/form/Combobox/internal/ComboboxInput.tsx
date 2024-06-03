@@ -9,6 +9,7 @@ import { Box } from '../../../Box';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import type { ComboboxProps } from '../Combobox';
+import { INTERNAL_OPT_PREFIX } from '../useCombobox';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -68,9 +69,9 @@ export const ComboboxInput = ({
     setActiveIndex(0);
 
     // check if input value is the same as a label, if so, select it
-    const option = options[value.toLowerCase()];
+    const option = options[INTERNAL_OPT_PREFIX + value.toLowerCase()];
     if (!option) return;
-    if (selectedOptions[option.value]) return;
+    if (selectedOptions[INTERNAL_OPT_PREFIX + option.value]) return;
 
     handleSelectOption({ option: option });
   };

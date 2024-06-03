@@ -7,6 +7,8 @@ import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
 import ComboboxCustom from './Custom';
 
+export const INTERNAL_OPT_PREFIX = 'internal-option-';
+
 export type UseComboboxProps = {
   children: ReactNode;
   inputValue: string;
@@ -115,8 +117,8 @@ export default function useCombobox({
         label = childrenLabel;
       }
 
-      allOptions[props.value] = {
-        value: props.value,
+      allOptions[INTERNAL_OPT_PREFIX + String(props.value)] = {
+        value: String(props.value),
         label,
         displayValue: props.displayValue,
         description: props.description,
@@ -151,16 +153,22 @@ export default function useCombobox({
       (option, index) => {
         /* If we have a selected value in single mode and the input matches an option, return all children */
         if (!multiple && Object.keys(selectedOptions).length === 1) {
-          filteredOptions.push(options[option].value);
+          filteredOptions.push(
+            INTERNAL_OPT_PREFIX + String(options[option].value),
+          );
           return optionsChildren[index];
         }
 
         if (multiple && selectedOptions[option]) {
-          filteredOptions.push(options[option].value);
+          filteredOptions.push(
+            INTERNAL_OPT_PREFIX + String(options[option].value),
+          );
           return optionsChildren[index];
         }
         if (filter(inputValue, options[option])) {
-          filteredOptions.push(options[option].value);
+          filteredOptions.push(
+            INTERNAL_OPT_PREFIX + String(options[option].value),
+          );
           return optionsChildren[index];
         }
       },

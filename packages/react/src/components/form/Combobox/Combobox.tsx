@@ -14,7 +14,7 @@ import { Spinner } from '../../Spinner';
 import { getSize } from '../../../utilities/getSize';
 
 import type { Option } from './useCombobox';
-import useCombobox from './useCombobox';
+import useCombobox, { INTERNAL_OPT_PREFIX } from './useCombobox';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
@@ -209,7 +209,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     // if value is set, set input value to the label of the value
     useEffect(() => {
       if (value && value.length > 0 && !multiple) {
-        const option = options[value[0]];
+        const option = options[INTERNAL_OPT_PREFIX + value[0]];
         setInputValue(option?.label || '');
       }
     }, [multiple, value, options]);
@@ -217,7 +217,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     useEffect(() => {
       if (value && Object.keys(options).length >= 0) {
         const updatedSelectedOptions = value.map((option) => {
-          const value = options[option];
+          const value = options[INTERNAL_OPT_PREFIX + option];
           return value;
         });
 
@@ -225,7 +225,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           updatedSelectedOptions.reduce<{
             [key: string]: Option;
           }>((acc, value) => {
-            acc[value.value] = value;
+            acc[INTERNAL_OPT_PREFIX + value.value] = value;
             return acc;
           }, {}),
         );
@@ -250,19 +250,23 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
       if (remove) {
         const newSelectedOptions = { ...selectedOptions };
-        delete newSelectedOptions[option.value];
+        delete newSelectedOptions[INTERNAL_OPT_PREFIX + option.value];
         setSelectedOptions(newSelectedOptions);
-        onValueChange?.(Object.keys(newSelectedOptions));
+        onValueChange?.(
+          Object.keys(newSelectedOptions).map((key) =>
+            key.slice(INTERNAL_OPT_PREFIX.length),
+          ),
+        );
         return;
       }
 
       const newSelectedOptions = { ...selectedOptions };
 
       if (multiple) {
-        if (newSelectedOptions[option.value]) {
-          delete newSelectedOptions[option.value];
+        if (newSelectedOptions[INTERNAL_OPT_PREFIX + option.value]) {
+          delete newSelectedOptions[INTERNAL_OPT_PREFIX + option.value];
         } else {
-          newSelectedOptions[option.value] = option;
+          newSelectedOptions[INTERNAL_OPT_PREFIX + option.value] = option;
         }
         setInputValue('');
         inputRef.current?.focus();
@@ -271,7 +275,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         Object.keys(newSelectedOptions).forEach((key) => {
           delete newSelectedOptions[key];
         });
-        newSelectedOptions[option.value] = option;
+        newSelectedOptions[INTERNAL_OPT_PREFIX + option.value] = option;
         setInputValue(option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
@@ -283,7 +287,11 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
 
       setSelectedOptions(newSelectedOptions);
-      onValueChange?.(Object.keys(newSelectedOptions));
+      onValueChange?.(
+        Object.keys(newSelectedOptions).map((key) =>
+          key.slice(INTERNAL_OPT_PREFIX.length),
+        ),
+      );
 
       !multiple && setOpen(false);
       refs.domReference.current?.focus();
@@ -342,7 +350,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           onOptionClick: (value: string) => {
             if (readOnly) return;
             if (disabled) return;
-            const option = options[value];
+            const option = options[INTERNAL_OPT_PREFIX + value];
             debouncedHandleSelectOption({ option: option });
           },
           handleSelectOption: debouncedHandleSelectOption,
