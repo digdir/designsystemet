@@ -95,7 +95,7 @@
   .fds-card--link h6 {
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-    text-underline-offset: max(4px, 0.25rem, 0.22em);
+    text-underline-offset: max(6px, 0.25rem, 0.22em);
   }
 
   .fds-card--neutral {
