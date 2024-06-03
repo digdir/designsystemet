@@ -13,6 +13,7 @@
   .fds-combobox__options-wrapper {
     padding: var(--ds-spacing-2);
     background: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
     overflow-y: auto;
     z-index: 1600;
   }
