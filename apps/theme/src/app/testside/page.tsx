@@ -35,7 +35,7 @@ const Row = (title: string, colors: CssColor[], whiteText: boolean = false) => {
   return (
     <div className={cl(whiteText && classes.whiteText)}>
       <Heading
-        size='xsmall'
+        size='xs'
         className={classes.mainTitle}
       >
         {title}
@@ -152,7 +152,7 @@ export default function Dev() {
       <Header />
       <Container>
         <Heading
-          size='large'
+          size='lg'
           className={classes.pageTitle}
         >
           Fargekontrast og visuell vurdering
@@ -179,7 +179,7 @@ export default function Dev() {
         </div>
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background Default og Subtle
         </Heading>
@@ -191,7 +191,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background Subtle mot Surface Default
         </Heading>
@@ -207,7 +207,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Surface og Base interaksjon
         </Heading>
@@ -232,7 +232,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Kontrastfarger mot Base
         </Heading>
@@ -328,7 +328,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background og Surface mot Border og Tekst
         </Heading>

@@ -38,7 +38,7 @@ type BaseColumnProps = {
 const BaseColumn = ({ colorTheme, title }: BaseColumnProps) => {
   return (
     <div className={classes.column}>
-      <Heading size='small'>{title}</Heading>
+      <Heading size='sm'>{title}</Heading>
       <div className={classes.boxes}>
         <BaseBox
           title='Light'
@@ -67,7 +67,7 @@ const BaseBox = ({ colorScale, title }: BaseBoxProps) => {
     <div className={classes.box}>
       <Heading
         className={classes.boxTitle}
-        size='xsmall'
+        size='xs'
       >
         {title}
       </Heading>

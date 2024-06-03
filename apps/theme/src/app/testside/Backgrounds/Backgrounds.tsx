@@ -25,7 +25,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xsmall'
+          size='xs'
           style={{ color: theme1.light[12] }}
         >
           Light
@@ -55,7 +55,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xsmall'
+          size='xs'
           style={{ color: theme1.dark[12] }}
         >
           Dark
@@ -85,7 +85,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xsmall'
+          size='xs'
           style={{ color: theme1.contrast[12] }}
         >
           Contrast

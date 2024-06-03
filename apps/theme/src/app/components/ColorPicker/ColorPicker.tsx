@@ -46,7 +46,7 @@ export const ColorPicker = ({
         <Popover
           onOpenChange={function Ya() {}}
           placement='top'
-          size='small'
+          size='sm'
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
           <Popover.Trigger asChild>

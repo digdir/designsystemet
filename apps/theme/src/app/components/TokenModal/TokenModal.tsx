@@ -206,14 +206,14 @@ export const TokenModal = ({
             <div className={classes.column}>
               <Heading
                 className={classes.title}
-                size='xsmall'
+                size='xs'
               >
                 Json til Figma
               </Heading>
               <div className={classes.tabs}>
                 <Tabs
                   defaultValue='value1'
-                  size='small'
+                  size='sm'
                 >
                   <Tabs.List>
                     <Tabs.Tab
@@ -262,7 +262,7 @@ export const TokenModal = ({
             <div className={classes.column}>
               <Heading
                 className={classes.title}
-                size='xsmall'
+                size='xs'
               >
                 CSS variabler
               </Heading>
