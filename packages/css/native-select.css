@@ -67,11 +67,11 @@
     gap: var(--ds-spacing-2);
   }
 
-  .fds-native-select--disabled {
+  .fds-native-select--container:has(.fds-native-select:disabled) {
     opacity: var(--ds-opacity-disabled);
   }
 
-  .fds-native-select--disabled .fds-native-select {
+  .fds-native-select:disabled {
     cursor: not-allowed;
   }
 

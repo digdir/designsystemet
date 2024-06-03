@@ -53,6 +53,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         >
           <input
             className={`fds-switch__input`}
+            disabled={inputProps.disabled}
             ref={ref}
             {...omit(['size', 'error'], rest)}
             {...inputProps}

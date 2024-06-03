@@ -4,7 +4,7 @@
     gap: var(--ds-spacing-2);
   }
 
-  .fds-textarea__readonly__icon {
+  .fds-textarea__readonly-icon {
     height: 1.2em;
     width: 1.2em;
   }
@@ -53,15 +53,15 @@
     padding: var(--ds-spacing-4);
   }
 
-  .fds-textarea--disabled {
+  .fds-textarea:has(.fds-textarea__input:disabled) {
     opacity: var(--ds-opacity-disabled);
   }
 
-  .fds-textarea--disabled .fds-textarea__input {
+  .fds-textarea__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textarea--readonly .fds-textarea__input {
+  .fds-textarea__input:read-only {
     background: var(--ds-color-neutral-background-subtle);
     border-color: var(--ds-color-neutral-border-strong);
   }

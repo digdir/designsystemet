@@ -88,18 +88,6 @@
     cursor: default;
   }
 
-  .fds-switch--disabled > .fds-switch__input,
-  .fds-switch--disabled > .fds-switch__label,
-  .fds-switch--disabled > .fds-switch__track {
-    cursor: not-allowed;
-  }
-
-  .fds-switch--disabled > .fds-switch__label,
-  .fds-switch--disabled > .fds-switch__track,
-  .fds-switch--disabled > .fds-switch__description {
-    opacity: var(--ds-opacity-disabled);
-  }
-
   .fds-switch--readonly > .fds-switch__description {
     margin-left: var(--ds-spacing-1);
   }
@@ -155,6 +143,16 @@
 
   .fds-switch__label:has(.fds-switch__track:only-child) .fds-switch__track {
     margin-right: 0;
+  }
+
+  .fds-switch__input:disabled,
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label {
+    cursor: not-allowed;
+  }
+
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label,
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__description {
+     opacity: var(--ds-opacity-disabled);
   }
 
   .fds-switch__input:focus-visible + .fds-switch__label .fds-switch__track {

@@ -62,22 +62,16 @@
     grid-column: 2;
   }
 
-  .fds-checkbox--disabled > .fds-checkbox__input,
-  .fds-checkbox--disabled > .fds-checkbox__label,
-  .fds-checkbox--disabled > .fds-checkbox__input::before {
-    cursor: not-allowed;
-  }
-
-  .fds-checkbox--disabled > .fds-checkbox__label,
-  .fds-checkbox--disabled > .fds-checkbox__input,
-  .fds-checkbox--disabled > .fds-checkbox__description {
-    opacity: var(--ds-opacity-disabled);
-  }
-
   .fds-checkbox--readonly > .fds-checkbox__label,
   .fds-checkbox--readonly > .fds-checkbox__input,
   .fds-checkbox--readonly > .fds-checkbox__input::before {
     cursor: default;
+  }
+
+  .fds-checkbox__input:disabled,
+  .fds-checkbox__input:disabled ~ .fds-checkbox__label,
+  .fds-checkbox__input:disabled::before {
+    cursor: not-allowed;
   }
 
   .fds-checkbox__input:focus-visible {
@@ -122,6 +116,12 @@
     --dsc-checkbox-background: var(--ds-color-neutral-background-subtle);
   }
 
+  .fds-checkbox__input:disabled,
+  .fds-checkbox__input:disabled ~ .fds-checkbox__label,
+  .fds-checkbox__input:disabled ~ .fds-checkbox__description {
+    opacity: var(--ds-opacity-disabled);
+  }
+
   .fds-checkbox__input:checked:not(:focus-visible) {
     box-shadow: inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
@@ -145,12 +145,12 @@
   /* Only use hover for non-touch devices to prevent sticky-hovering
     "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
   @media (hover: hover) and (pointer: fine) {
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__label:hover,
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__input:hover + .fds-checkbox__label {
+    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:not(:disabled) ~ .fds-checkbox__label:hover,
+    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:not(:disabled) ~ .fds-checkbox__label {
       color: var(--ds-color-accent-text-subtle);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) .fds-checkbox__input:not(:checked):hover {
+    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:not(:checked, :disabled) {
       --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
 
       box-shadow:
@@ -158,7 +158,7 @@
         inset 0 0 0 2px var(--dsc-checkbox-border-color);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly, .fds-checkbox--disabled) > .fds-checkbox__input:hover:checked {
+    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:checked:focus-visible:not(:disabled) {
       box-shadow: var(--dsc-checkbox-border__hover);
     }
   }

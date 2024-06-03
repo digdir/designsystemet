@@ -59,9 +59,9 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             'fds-fieldset',
             !hideLegend && 'fds-fieldset--spacing',
             readOnly && 'fds-fieldset--readonly',
-            props?.disabled && 'fds-fieldset--disabled',
             className,
           )}
+          disabled={props?.disabled}
           ref={ref}
           {...rest}
         >

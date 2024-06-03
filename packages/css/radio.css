@@ -61,22 +61,21 @@
     grid-column: 2;
   }
 
-  .fds-radio--disabled > .fds-radio__input,
-  .fds-radio--disabled > .fds-radio__label,
-  .fds-radio--disabled > .fds-radio__input::before {
-    cursor: not-allowed;
-  }
-
-  .fds-radio--disabled > .fds-radio__label,
-  .fds-radio--disabled > .fds-radio__input,
-  .fds-radio--disabled > .fds-radio__description {
-    opacity: var(--ds-opacity-disabled);
-  }
-
   .fds-radio--readonly > .fds-radio__input,
   .fds-radio--readonly > .fds-radio__label,
   .fds-radio--readonly > .fds-radio__input::before {
     cursor: default;
+  }
+
+  .fds-radio:has(.fds-radio__input:disabled) > .fds-radio__description {
+    opacity: var(--ds-opacity-disabled);
+  }
+
+  .fds-radio__input:disabled,
+  .fds-radio__input:disabled::before,
+  .fds-radio:has(.fds-radio__input:disabled) > .fds-radio__label {
+    cursor: not-allowed;
+    opacity: var(--fds-opacity-disabled);
   }
 
   .fds-radio__input:focus-visible {
@@ -116,12 +115,12 @@
   /* Only use hover for non-touch devices to prevent sticky-hovering
     "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
   @media (hover: hover) and (pointer: fine) {
-    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__label:hover,
-    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover + .fds-radio__label {
+    .fds-radio:not(.fds-radio--readonly) > .fds-radio__label:hover:not(:disabled),
+    .fds-radio:not(.fds-radio--readonly) > .fds-radio__input:hover:not(:disabled) + .fds-radio__label {
       color: var(--ds-color-accent-text-subtle);
     }
 
-    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:not(:checked) {
+    .fds-radio:not(.fds-radio--readonly) > .fds-radio__input:hover:not(:checked, :disabled) {
       --dsc-radio-border-color: var(--ds-color-accent-border-strong);
 
       box-shadow:
@@ -129,7 +128,7 @@
         inset 0 0 0 2px var(--dsc-radio-border-color);
     }
 
-    .fds-radio:not(.fds-radio--readonly, .fds-radio--disabled) > .fds-radio__input:hover:checked {
+    .fds-radio:not(.fds-radio--readonly) > .fds-radio__input:hover:checked:not(:disabled) {
       box-shadow:
         var(--dsc-radio-border__hover),
         inset 0 0 0 2px var(--dsc-radio-border-color),
