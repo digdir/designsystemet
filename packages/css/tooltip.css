@@ -1,10 +1,10 @@
 @layer ds.tooltip {
   .fds-tooltip {
-    --dsc-tooltip-background: var(--ds-color-neutral-background-default);
+    --dsc-tooltip-background: var(--ds-color-neutral-text-default);
 
     background: var(--dsc-tooltip-background);
     padding: var(--ds-spacing-1) var(--ds-spacing-2);
-    color: var(--ds-color-neutral-text-default);
+    color: var(--ds-color-neutral-background-default);
     border-radius: var(--ds-border-radius-md);
     font: var(--ds-typography-paragraph-xs);
     font-family: inherit;
