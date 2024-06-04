@@ -54,26 +54,26 @@ export const BlogCard = ({
               <Tag
                 className={classes.tag}
                 color={tagColor}
-                size='small'
+                size='sm'
               >
                 {tagText}
               </Tag>
             )}
             <Heading
               level={level}
-              size={featured ? 'large' : 'small'}
+              size={featured ? 'lg' : 'sm'}
             >
               {title}
             </Heading>
           </Card.Header>
           <Card.Content>
-            <Paragraph size={featured ? 'large' : 'small'}>{desc}</Paragraph>
+            <Paragraph size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
           </Card.Content>
           {author ||
             (date && (
               <Card.Footer className={classes.footer}>
                 <Paragraph
-                  size={featured ? 'medium' : 'xsmall'}
+                  size={featured ? 'md' : 'xs'}
                   className={classes.meta}
                 >
                   <span>{date}</span>

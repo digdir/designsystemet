@@ -19,12 +19,12 @@ export const Contributors = ({ authors }: ContributorsProps) => {
 
       <Heading
         level={3}
-        size='xxsmall'
+        size='2xs'
       >
         Bidragsytere
       </Heading>
       <Paragraph
-        size='small'
+        size='sm'
         className={classes.meta}
       >
         {authors &&

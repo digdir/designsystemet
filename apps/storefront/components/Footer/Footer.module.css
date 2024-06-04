@@ -1,6 +1,5 @@
 .footer {
   background-color: var(--fds-semantic-surface-neutral-inverted);
-  color: var(--color-text-on_inverted-subtle);
   font-weight: 300;
   letter-spacing: 0.3px;
 }
@@ -12,7 +11,6 @@
 }
 
 .title {
-  font: var(--fds-typography-heading-xsmall);
   margin-bottom: var(--fds-spacing-4);
 }
 
@@ -51,7 +49,6 @@
 .bottom {
   background-color: var(--color-surface-neutral-inverted-darker);
   padding: var(--fds-spacing-7) 0;
-  color: var(--color-text-on_inverted-subtle);
   font: var(--fds-typography-paragraph-short-small);
 }
 
