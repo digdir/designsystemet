@@ -138,24 +138,18 @@ Plasser feilmeldinger som tilhører et bestemt felt på siden så nært feilen s
 Vi viser feilmeldinger i rød tekst og med trekant-symbolet.
 
 <Image
-  src='/img/errormessage-1.png'
-  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
+  src='/img/valideringsvisning.png'
+  alt='2 skjemafelter, det første er i en vanlig tilstand og det andre er i en tilstand som viser feil på informasjonen som er fylt ut. Ved feltet som feiler blir de visuelle elementene som skiller det fra et vanlig felt fremhevet: Det er tykkere kant rundt feltet, det er farget rødt og det er en rød tekst med et tilhørende fareikon som beskriver feilen på feltet.'
   boxShadow={false}
 />
 
-Vi ønsker å utheve felter som har valideringsfeil. For å få dette til bruker vi en kombinasjon av virkemidler.
+Vi ønsker å fremheve felter som har valideringsfeil. For å få dette til bruker vi en kombinasjon av virkemidler.
 
 **“Fysiske” endringer**
-Øk tykkelse på rammen rundt feltet. Dette vil utheve uavhengig av fargevalg.
+Legg selve feilmeldingsteksten nært feltet det gjelder. Vi bruker en rød varseltrekant med utropstegn som vises før teksten. Vi anbefaler å ha med et symbol fordi det kan være fint med en visuell indikator i tillegg til tekst. For de komponentene hvor det er mulig kan man også endre tykkelsen på selve komponenten som vist i eksempelet over.
 
 **Fargevalg**
-Felter med feilmeldinger farges røde. Dette er et godt etablert . Husk at feltet må ha 3:1 kontrast til bakgrunnsfargen. Les mer hos Tilsynet Om du også bruker rød tekst til feilmeldingen må den minst være 4.5:1.
-
-### Kontraster og symbolbruk
-
-Vi bruker en rød varseltrekant med utropstegn i, i tillegg til selve feilmeldingsteksten i rødt. Vi anbefaler å ha med et symbol fordi det kan være fint med en visuell indikator i tillegg til tekst.
-
-Annet?
+Feltet og selve feilmeldingen farges rødt. Dette er et godt etablert mønster som hjelper med å skille feltet fra andre felter. Husk at feltet må ha 3:1 kontrast til bakgrunnsfargen. Les mer hos Tilsynet Om du også bruker rød tekst til feilmeldingen må den minst være 4.5:1.
 
 ## Validering og kryssvalidering
 
@@ -175,7 +169,12 @@ Så hva gjør vi når felter som grunnet slik kryssvalidering, har feil ikke st�
 
 Det er flere WCAG-kriterier som er relevante når vi jobber med feilmeldinger. Vi har tatt hensyn til disse i arbeidet med mønsteret. Om du er interessert i å lese mer om disse, kan du lese tolkningene av WCAG-kravene hos Tilsynet for universell utforming av IKT.
 
-Lenkeliste med krav...
+**Relevante WCAG-krav:**
+
+- [3.3.1 Identifikasjon av feil](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116)
+- [3.3.3 Forslag ved feil](https://www.uutilsynet.no/wcag-standarden/333-forslag-ved-feil-niva-aa/118)
+- [1.4.3 Kontrast (minimum)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva-aa/95)
+- [1.4.11 kontrast for ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva-aa/145)
 
 ## HTML og Aria
 
