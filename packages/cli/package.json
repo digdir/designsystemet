@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -26,6 +26,7 @@
   ],
   "bin": "dist/build/bin/designsystemet.js",
   "dependencies": {
+    "@commander-js/extra-typings": "^12.0.1",
     "@tokens-studio/sd-transforms": "^0.16.0",
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
@@ -39,7 +40,6 @@
     "tsup": "^8.0.2"
   },
   "devDependencies": {
-    "@commander-js/extra-typings": "^12.0.1",
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.11.11",
