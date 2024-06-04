@@ -228,7 +228,7 @@ export default function Home() {
       <main className={classes.main}>
         <Container>
           <Heading
-            size='medium'
+            size='md'
             className={classes.title}
           >
             Sett opp fargetema

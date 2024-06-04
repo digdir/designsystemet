@@ -59,13 +59,13 @@ export const Landing = () => {
           <div className={classes.bannerLeft}>
             <div className={classes.bannerSub}>Here is a sub heading</div>
             <Heading
-              size='medium'
+              size='md'
               className={classes.bannerTitle}
             >
               A need explain have out been making it
             </Heading>
             <Ingress
-              size='small'
+              size='sm'
               className={classes.bannerIngress}
             >
               Multitude a hung structure return her belt of fixed had because a

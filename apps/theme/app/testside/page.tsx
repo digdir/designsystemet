@@ -39,7 +39,7 @@ const Row = (
   return (
     <div className={cl(whiteText && classes.whiteText)}>
       <Heading
-        size='xsmall'
+        size='xs'
         className={classes.mainTitle}
       >
         {title}
@@ -50,7 +50,7 @@ const Row = (
           style={{ backgroundColor: colors[0].hexColor }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Background default
@@ -66,7 +66,7 @@ const Row = (
           style={{ backgroundColor: colors[1].hexColor }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Background subtle
@@ -82,7 +82,7 @@ const Row = (
           style={{ backgroundColor: colors[2].hexColor }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface default
@@ -98,7 +98,7 @@ const Row = (
           style={{ backgroundColor: colors[3].hexColor }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface hover
@@ -114,7 +114,7 @@ const Row = (
           style={{ backgroundColor: colors[4].hexColor }}
         >
           <Heading
-            size='xxsmall'
+            size='2xs'
             className={classes.title}
           >
             Surface active
@@ -156,7 +156,7 @@ export default function Dev() {
       <Header />
       <Container>
         <Heading
-          size='large'
+          size='lg'
           className={classes.pageTitle}
         >
           Fargekontrast og visuell vurdering
@@ -183,7 +183,7 @@ export default function Dev() {
         </div>
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background Default og Subtle
         </Heading>
@@ -195,7 +195,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background Subtle mot Surface Default
         </Heading>
@@ -211,7 +211,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Surface og Base interaksjon
         </Heading>
@@ -236,7 +236,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Kontrastfarger mot Base
         </Heading>
@@ -332,7 +332,7 @@ export default function Dev() {
         />
         <Heading
           className={classes.sectionTitle}
-          size='medium'
+          size='md'
         >
           Background og Surface mot Border og Tekst
         </Heading>

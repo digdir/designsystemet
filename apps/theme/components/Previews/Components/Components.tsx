@@ -33,7 +33,7 @@ export const Components = () => {
         <Checkbox.Group
           error=''
           legend='Handleliste'
-          size='small'
+          size='sm'
         >
           <Checkbox value='epost'>En kilo poteter</Checkbox>
           <Checkbox value='telefon'>To liter Farris</Checkbox>
@@ -70,14 +70,14 @@ export const Components = () => {
 
         <Textfield
           label='Navn'
-          size='small'
+          size='sm'
           placeholder='Ola Normann'
           className={classes.userField}
         />
         <Textfield
           type='email'
           label='E-post'
-          size='small'
+          size='sm'
           placeholder='ola@norge.no'
           className={classes.userField}
         />
@@ -89,7 +89,7 @@ export const Components = () => {
         </Link>
         <Button
           fullWidth
-          size='small'
+          size='sm'
           className={classes.userBtn}
         >
           Opprett ny bruker
@@ -124,13 +124,13 @@ export const Components = () => {
             error=''
             label='Label'
             placeholder='Søk etter bruker...'
-            size='small'
+            size='sm'
             variant='simple'
             className={classes.tableSearch}
           />
         </div>
         <Table
-          size='small'
+          size='sm'
           border
           className={classes.table}
         >
@@ -183,25 +183,25 @@ export const Components = () => {
           nextLabel='Neste'
           onChange={function Ya() {}}
           previousLabel='Forrige'
-          size='small'
+          size='sm'
           totalPages={6}
         />
       </div>
       <div className={cl(classes.card, classes.help)}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.helpHeading}
         >
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
           <Card
-            color='first'
+            color='brand1'
             className={classes.helpFirst}
           >
             <Card.Header className={classes.helpHeader}>
               <Heading
-                size='xxsmall'
+                size='2xs'
                 className={classes.helpFirstTitle}
               >
                 Sikkerhet og drift
@@ -214,12 +214,12 @@ export const Components = () => {
             </Card.Content>
           </Card>
           <Card
-            color='second'
+            color='brand2'
             className={classes.helpSecond}
           >
             <Card.Header className={classes.helpHeader}>
               <Heading
-                size='xxsmall'
+                size='2xs'
                 className={classes.helpSecondTitle}
               >
                 Skole og utdanning
@@ -232,7 +232,7 @@ export const Components = () => {
             </Card.Content>
           </Card>
           <Card
-            color='third'
+            color='brand3'
             className={classes.helpThird}
             isLink
             asChild
@@ -241,7 +241,7 @@ export const Components = () => {
               <Card.Header className={classes.helpHeader}>
                 <Heading
                   className={classes.helpThirdTitle}
-                  size='xxsmall'
+                  size='2xs'
                 >
                   Mat og helse
                 </Heading>
@@ -259,7 +259,7 @@ export const Components = () => {
         <Radio.Group
           error=''
           legend='Hvilken iskremsmak er best?'
-          size='small'
+          size='sm'
           value={radioValue}
           onChange={(e: string) => setRadioValue(e)}
         >
@@ -271,57 +271,57 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.tag)}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.tagHeading}
         >
           Emner
         </Heading>
         <div className={classes.tagList}>
           <Tag
-            color='first'
-            size='small'
+            color='brand1'
+            size='sm'
           >
             Data og IKT
           </Tag>
           <Tag
-            color='second'
-            size='small'
+            color='brand2'
+            size='sm'
           >
             Mat og ernæring
           </Tag>
           <Tag
-            color='third'
-            size='small'
+            color='brand3'
+            size='sm'
           >
             Sport og Idrett
           </Tag>
           <Tag
             color='neutral'
-            size='small'
+            size='sm'
           >
             Politikk og samfunn
           </Tag>
           <Tag
             color='success'
-            size='small'
+            size='sm'
           >
             Utenriks
           </Tag>
           <Tag
             color='info'
-            size='small'
+            size='sm'
           >
             Helse og velvære
           </Tag>
           <Tag
             color='danger'
-            size='small'
+            size='sm'
           >
             PC Gaming
           </Tag>
           <Tag
             color='warning'
-            size='small'
+            size='sm'
           >
             Trening og livsstil
           </Tag>
@@ -329,28 +329,28 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.switches)}>
         <Heading
-          size='xsmall'
+          size='xs'
           spacing
         >
           Innstillinger
         </Heading>
         <Paragraph
-          size='small'
+          size='sm'
           spacing
         >
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
-          <Switch size='small'>Desktopvisning</Switch>
+          <Switch size='sm'>Desktopvisning</Switch>
           <Switch
-            size='small'
+            size='sm'
             defaultChecked
             readOnly
           >
             Tabletvisning
           </Switch>
           <Switch
-            size='small'
+            size='sm'
             disabled
           >
             Mobilvisning
@@ -359,13 +359,13 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.combobox)}>
         <Heading
-          size='xsmall'
+          size='xs'
           spacing
         >
           Hvor er du fra?
         </Heading>
         <Paragraph
-          size='small'
+          size='sm'
           spacing
         >
           Svar under så finner vi flyreise
@@ -398,7 +398,7 @@ export const Components = () => {
       <div className={cl(classes.card, classes.tabs)}>
         <Tabs
           defaultValue='value1'
-          size='small'
+          size='sm'
         >
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
@@ -406,7 +406,7 @@ export const Components = () => {
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-        <Paragraph size='small'>
+        <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
           frivillig virksomhet. Det er bare foreninger,{' '}
@@ -418,13 +418,13 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.faq)}>
         <Heading
-          size='xsmall'
+          size='xs'
           className={classes.cardTitle}
         >
           Ofte stillte spørsmål
         </Heading>
         <Accordion
-          color='third'
+          color='brand3'
           border
           className={classes.accordion}
         >

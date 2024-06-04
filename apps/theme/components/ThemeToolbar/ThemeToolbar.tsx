@@ -87,7 +87,7 @@ export const ThemeToolbar = ({
         <div className={classes.dropdown}>
           <NativeSelect
             label='Kontrastnivå'
-            size='medium'
+            size='md'
             className={classes.contrastSelect}
             value={contrastMode}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
