@@ -1,5 +1,6 @@
 @import url('./brand/digdir/light.css');
 @import url('./brand/digdir/dark.css');
+@import url('./brand/digdir/typography.css');
 
 [data-ds-color-mode='contrast'] {
   --ds-color-accent-1: #000409;
