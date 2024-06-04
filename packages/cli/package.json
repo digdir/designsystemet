@@ -19,10 +19,7 @@
     "build": "yarn clean && tsc",
     "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
     "clean": "rimraf dist",
-    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "css-classes": "yarn designsystemet css-names",
-    "jscodeshift": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ./src/test/**/* --extensions=tsx --parser=tsx",
-    "jscodeshift-react": "jscodeshift -t ./src/codemods/jsx/classname-prefix.ts ../../packages/react/src/components/Button/**/* --extensions=tsx --parser=tsx"
+    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "files": [
     "./dist/**"
