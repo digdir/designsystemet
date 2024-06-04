@@ -24,7 +24,9 @@ export default function JsxTest({ className }: { className?: string }) {
                 : 'fds-yes',
             className,
           )}
-        ></button>
+        >
+          button
+        </button>
       </div>
       <div className={`fds-${DEFAULT}`}></div>
     </div>
