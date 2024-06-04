@@ -64,6 +64,14 @@ export default function Home() {
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
+  /* get theme from query on initial load */
+  useEffect(() => {
+    const theme = params.get('theme') as ThemeMode;
+    if (theme) {
+      setThemeMode(theme);
+    }
+  }, []);
+
   useEffect(() => {
     mapTokens();
 
@@ -189,6 +197,11 @@ export default function Home() {
     }
   };
 
+  const themeQuerySetter = (themeMode: ThemeMode) => {
+    params.set('theme', themeMode);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   /**
    * Get the color error for a color
    *
@@ -254,6 +267,7 @@ export default function Home() {
             themeMode={themeMode}
             onThemeModeChange={(themeMode: ThemeMode) => {
               setThemeMode(themeMode);
+              themeQuerySetter(themeMode);
             }}
           />
         </Container>
