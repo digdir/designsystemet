@@ -75,11 +75,11 @@
 }
 
 .linkIcon.figma path {
-  stroke: var(--fds-colors-grey-800);
+  stroke: var(--ds-color-neutral-8);
 }
 
 .linkIcon.github path {
-  fill: var(--fds-colors-grey-800);
+  fill: var(--ds-color-neutral-8);
 }
 
 .linkIcon.figma:hover path {

@@ -38,15 +38,15 @@
 }
 
 .red {
-  background-color: var(--fds-brand-alt1-300);
+  background-color: var(--ds-color-brand1-3);
 }
 
 .blue {
-  background-color: var(--fds-brand-alt3-300);
+  background-color: var(--ds-color-brand3-3);
 }
 
 .yellow {
-  background-color: var(--fds-brand-alt2-300);
+  background-color: var(--ds-color-brand2-3);
 }
 
 .grey {

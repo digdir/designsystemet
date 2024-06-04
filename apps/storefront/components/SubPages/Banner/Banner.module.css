@@ -26,7 +26,7 @@
   display: grid;
   place-items: center;
   transform: rotate(45deg);
-  background-color: var(--fds-brand-alt2-600);
+  background-color: var(--ds-color-brand2-6);
   border-radius: 3px;
   margin-top: var(--ds-spacing-2);
   margin-bottom: var(--ds-spacing-2);
@@ -39,15 +39,15 @@
 }
 
 .red {
-  background-color: var(--fds-brand-alt1-600);
+  background-color: var(--ds-color-brand1-6);
 }
 
 .yellow {
-  background-color: var(--fds-brand-alt2-600);
+  background-color: var(--ds-color-brand2-6);
 }
 
 .blue {
-  background-color: var(--fds-brand-alt3-600);
+  background-color: var(--ds-color-brand3-6);
 }
 
 .logo {
@@ -78,13 +78,13 @@
 }
 
 .logo.svg-red path {
-  fill: var(--fds-brand-alt1-600);
+  fill: var(--ds-color-brand1-6);
 }
 
 .logo.svg-yellow path {
-  fill: var(--fds-brand-alt2-600);
+  fill: var(--ds-color-brand2-6);
 }
 
 .logo.svg-blue path {
-  fill: var(--fds-brand-alt3-600);
+  fill: var(--ds-color-brand3-6);
 }

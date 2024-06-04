@@ -48,6 +48,6 @@
   height: 7px;
   transform: rotate(45deg);
   border-radius: 1px;
-  background-color: var(--fds-brand-alt1-600);
+  background-color: var(--ds-color-brand1-6);
   margin: auto;
 }

@@ -58,14 +58,14 @@
 .one {
   top: 0;
   left: 0;
-  border-color: var(--fds-brand-alt1-600);
+  border-color: var(--ds-color-brand1-6);
   animation: one 1.5s forwards ease-out;
 }
 
 .two {
   top: 0;
   right: 0;
-  border-color: var(--fds-brand-alt3-600);
+  border-color: var(--ds-color-brand3-6);
   animation: two 1.5s forwards ease-out;
 }
 
@@ -79,7 +79,7 @@
 .four {
   left: 0;
   bottom: 0;
-  border-color: var(--fds-brand-alt2-600);
+  border-color: var(--ds-color-brand2-6);
   animation: four 1.5s forwards ease-out;
 }
 

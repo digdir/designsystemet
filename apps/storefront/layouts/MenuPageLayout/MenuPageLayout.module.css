@@ -59,15 +59,15 @@
 }
 
 .iconContainer.red {
-  border-color: var(--fds-brand-alt1-400);
+  border-color: var(--ds-color-brand1-4);
 }
 
 .iconContainer.blue {
-  border-color: var(--fds-brand-alt3-400);
+  border-color: var(--ds-color-brand3-4);
 }
 
 .iconContainer.yellow {
-  border-color: var(--fds-brand-alt2-400);
+  border-color: var(--ds-color-brand2-4);
 }
 
 .iconContainer svg {
@@ -80,15 +80,15 @@
 }
 
 .iconContainer.red svg {
-  color: var(--fds-brand-alt1-600);
+  color: var(--ds-color-brand1-6);
 }
 
 .iconContainer.blue svg {
-  color: var(--fds-brand-alt3-600);
+  color: var(--ds-color-brand3-6);
 }
 
 .iconContainer.yellow svg {
-  color: var(--fds-brand-alt2-600);
+  color: var(--ds-color-brand2-6);
 }
 
 .content {
