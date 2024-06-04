@@ -18,7 +18,7 @@ export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Brukerutløste feilmeldinger i selvbetjeningsløsninger',
+      title: 'Brukerutløste feilmeldinger',
       date: '4. juni 2024',
     }}
   />
@@ -40,28 +40,28 @@ Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/mons
   </Card.Content>
 </Card>
 
-## Vi skiller mellom systemvarsler, myke valideringer og feilmeldinger
+## Vi skiller mellom systemgenererte meldinger, brukerutløste infomeldinger og feilmeldinger
 
-### Systemvarsler
+### Systemgenererte meldinger
 
-Systemvarsler, eller "systemgenererte meldinger", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
+Systemgenererte meldinger, eller "systemvarsler", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
 
-### Myke valideringer
+### Brukerutløste infomeldinger
 
-Myke valideringer, eller "brukerutløste infomeldinger", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
+Brukerutløste infomeldinger, eller "myke valideringer", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
 
 <Accordion
   color='neutral'
 >
   <Accordion.Item>
-    <Accordion.Header level={3}>Mer om myke valideringer</Accordion.Header>
+    <Accordion.Header level={3}>Mer om brukerutløste infomeldinger</Accordion.Header>
     <Accordion.Content
     style={{
     paddingTop: '0px',
     paddingBottom: '0px',
     maxWidth: '780px'
   }}>
-      Myke valideringer, eller "brukerutløste infomeldinger", er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen. De gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
+      Brukerutløste infomeldinger, eller "myke valideringer", er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen. De gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
 
 Eksempler:
 
@@ -73,7 +73,7 @@ Eksempler:
   </Accordion.Item>
 </Accordion>
 
-### Feilmeldinger
+### Brukerutløste feilmeldinger
 
 Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
 
