@@ -27,11 +27,11 @@ export const typographyClasses: Format = {
         const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
 
         const className = `
-.${token.name} {
-  font-size: ${fontSize};
-  line-height: ${typography?.lineHeight};
-  font-weight: ${typography?.fontWeight};
-}`;
+  .${token.name} {
+    font-size: ${fontSize};
+    line-height: ${typography?.lineHeight};
+    font-weight: ${typography?.fontWeight};
+  }`;
 
         return className;
       }
