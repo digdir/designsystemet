@@ -1,4 +1,3 @@
-export { Banner } from './Banner';
 export { ClipboardBtn } from './ClipboardBtn';
 export { CodeSnippet } from './CodeSnippet';
 export { Container } from './Container';
@@ -18,7 +17,6 @@ export type { NavigationCardProps } from './NavigationCard';
 export { ResponsiveIframe } from './ResponsiveIframe';
 export { Section } from './Section';
 export { SidebarMenu } from './SidebarMenu';
-export { Tag } from './Tag';
 export { TeaserCard } from './TeaserCard';
 export { TokenList } from './Tokens';
 export { Image } from './Image';
