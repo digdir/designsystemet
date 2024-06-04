@@ -10,14 +10,14 @@
   /* Spacing for page and grid */
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
-  --grid-gap: var(--fds-spacing-8);
-  --page-spacing-top: var(--fds-spacing-14);
-  --page-spacing-bottom: var(--fds-spacing-14);
+  --grid-gap: var(--ds-spacing-8);
+  --page-spacing-top: var(--ds-spacing-14);
+  --page-spacing-bottom: var(--ds-spacing-14);
   --media-max-width: 800px;
 }
 
 body {
-  color: var(--fds-semantic-text-neutral-default);
+  color: var(--ds-color-neutral-text-default);
   line-height: 1.5;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
@@ -55,7 +55,7 @@ h6 {
 
 /* Utility classes */
 .greyBackground {
-  background: var(--fds-semantic-background-subtle);
+  background: var(--ds-color-neutral-background-subtle);
 }
 
 @layer normalize {

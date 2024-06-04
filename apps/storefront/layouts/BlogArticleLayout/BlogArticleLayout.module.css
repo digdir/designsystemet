@@ -7,7 +7,7 @@
 }
 
 .page {
-  margin-top: var(--fds-spacing-18);
+  margin-top: var(--ds-spacing-18);
   margin-bottom: var(--page-spacing-bottom);
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: var(--fds-spacing-5);
+  gap: var(--ds-spacing-5);
   text-align: center;
   margin: 0 auto;
 }
@@ -28,9 +28,9 @@
 .meta {
   display: flex;
   justify-content: center;
-  margin-top: var(--fds-spacing-1);
-  gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle);
+  margin-top: var(--ds-spacing-1);
+  gap: var(--ds-spacing-3);
+  color: var(--ds-color-neutral-text-subtle);
 }
 
 .metaSquare {
@@ -45,7 +45,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: var(--fds-spacing-18);
+  gap: var(--ds-spacing-18);
 }
 
 .content {
@@ -57,17 +57,17 @@
 
 .content p {
   max-width: var(--text-max-width);
-  margin: var(--fds-spacing-6) 0;
-  margin-top: var(--fds-spacing-5);
+  margin: var(--ds-spacing-6) 0;
+  margin-top: var(--ds-spacing-5);
   line-height: 170%;
 }
 
 .content img {
   display: block;
   width: 860px;
-  margin: var(--fds-spacing-12) 0;
+  margin: var(--ds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2) !important;
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .content h1,
@@ -76,23 +76,23 @@
 .content h4,
 .content h5,
 .content h6 {
-  margin-top: var(--fds-spacing-12);
-  margin-bottom: var(--fds-spacing-5);
+  margin-top: var(--ds-spacing-12);
+  margin-bottom: var(--ds-spacing-5);
 }
 
 .content:last-child {
-  margin-bottom: var(--fds-spacing-12);
+  margin-bottom: var(--ds-spacing-12);
 }
 
 .wantToWrite {
-  margin-top: var(--fds-spacing-12);
-  border-radius: var(--fds-border_radius-xxlarge);
+  margin-top: var(--ds-spacing-12);
+  border-radius: var(--ds-border-radius-2xl);
   background: var(--fds-brand-alt1-200);
-  padding: var(--fds-spacing-8);
+  padding: var(--ds-spacing-8);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: var(--fds-spacing-4);
+  gap: var(--ds-spacing-4);
 }
 
 .wantToWrite p a {
@@ -106,7 +106,7 @@
 }
 
 .wantToWrite p a:hover {
-  color: var(--fds-semantic-text-action-hover);
+  color: var(--ds-color-accent-base-hover);
 }
 
 .figure {

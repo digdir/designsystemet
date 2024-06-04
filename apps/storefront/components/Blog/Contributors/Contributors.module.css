@@ -6,12 +6,12 @@
   justify-content: center;
   align-items: center;
   max-width: 640px;
-  gap: var(--fds-spacing-4);
+  gap: var(--ds-spacing-4);
   margin: 0 auto;
-  margin-top: var(--fds-spacing-18);
-  padding: var(--fds-spacing-10);
-  border-radius: var(--fds-border_radius-xxlarge);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  margin-top: var(--ds-spacing-18);
+  padding: var(--ds-spacing-10);
+  border-radius: var(--ds-border-radius-2xl);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .container p,
@@ -46,8 +46,8 @@
   flex-wrap: wrap;
   text-wrap: nowrap;
   justify-content: center;
-  gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle);
+  gap: var(--ds-spacing-3);
+  color: var(--ds-color-neutral-text-subtle);
 }
 
 .metaSquare {

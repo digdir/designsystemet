@@ -2,7 +2,7 @@
   padding: 3px 6px;
   margin-left: 4px;
   border-radius: 3px;
-  font: var(--fds-typography-paragraph-small);
+  font: var(--ds-typography-paragraph-sm);
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -13,6 +13,6 @@
 
 .large {
   padding: 4px 11px;
-  font: var(--fds-typography-paragraph-large);
+  font: var(--ds-typography-paragraph-lg);
   font-weight: 500;
 }
