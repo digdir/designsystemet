@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-6);
+  gap: var(--ds-spacing-6);
   min-height: 460px;
-  padding-top: var(--fds-spacing-5);
-  padding-bottom: var(--fds-spacing-12);
+  padding-top: var(--ds-spacing-5);
+  padding-bottom: var(--ds-spacing-12);
 }
 
 .left {
-  flex-basis: calc(53% - (var(--fds-spacing-6) / 2));
+  flex-basis: calc(53% - (var(--ds-spacing-6) / 2));
   flex-grow: 1;
 }
 
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-basis: calc(47% - (var(--fds-spacing-6) / 2));
+  flex-basis: calc(47% - (var(--ds-spacing-6) / 2));
   flex-grow: 1;
   height: 275px;
 }
@@ -26,18 +26,18 @@
 .title {
   display: flex;
   align-items: center;
-  margin-bottom: var(--fds-spacing-3);
-  font: var(--fds-typography-heading-large);
+  margin-bottom: var(--ds-spacing-3);
+  font: var(--ds-typography-heading-lg);
 }
 
 .title > span {
-  margin-left: var(--fds-spacing-4);
+  margin-left: var(--ds-spacing-4);
 }
 
 .desc {
-  padding-right: var(--fds-spacing-7);
+  padding-right: var(--ds-spacing-7);
   margin-bottom: 0;
-  font: var(--fds-typography-ingress-small);
+  font: var(--ds-typography-ingress-sm);
 }
 
 .shapes {
@@ -72,7 +72,7 @@
 .three {
   right: 0;
   bottom: 0;
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--ds-color-neutral-border-strong);
   animation: three 1.5s forwards ease-out;
 }
 

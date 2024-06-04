@@ -4,10 +4,8 @@ import cl from 'clsx/lite';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
-import { getColor } from '../../utilities';
 
 type Size = Exclude<ParagraphProps['size'], 'xs'>;
-type OldColors = 'first' | 'second' | 'third';
 
 export type TagProps = {
   /** Color of the tag
@@ -21,8 +19,7 @@ export type TagProps = {
     | 'info'
     | 'brand1'
     | 'brand2'
-    | 'brand3'
-    | OldColors;
+    | 'brand3';
   /**
    * Size of the tag
    * @default md
@@ -31,9 +28,7 @@ export type TagProps = {
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  ({ size = 'md', children, className, ...rest }, ref) => {
-    const color = getColor(rest.color || 'neutral');
-
+  ({ size = 'md', color = 'neutral', children, className, ...rest }, ref) => {
     return (
       <Paragraph
         asChild

@@ -67,7 +67,7 @@
   }
 
   .fds-radio:has(.fds-radio__input:disabled) > .fds-radio__description {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-radio__input:disabled,

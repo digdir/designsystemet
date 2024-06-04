@@ -54,7 +54,7 @@
   }
 
   .fds-textarea:has(.fds-textarea__input:disabled) {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-textarea__input:disabled {

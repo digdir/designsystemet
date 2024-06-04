@@ -24,11 +24,11 @@
     }
   }
 
-  .fds-spinner--default .fds-spinner__circle {
+  .fds-spinner--neutral .fds-spinner__circle {
     stroke: var(--ds-color-neutral-border-default);
   }
 
-  .fds-spinner--interaction .fds-spinner__circle {
+  .fds-spinner--accent .fds-spinner__circle {
     stroke: var(--ds-color-accent-base-default);
   }
 

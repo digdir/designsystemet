@@ -1,10 +1,10 @@
 .card {
   background-color: white;
-  padding: var(--fds-spacing-8);
+  padding: var(--ds-spacing-8);
   display: block;
   color: inherit;
   text-decoration: none;
-  box-shadow: var(--fds-shadow-small);
+  box-shadow: var(--ds-shadow-sm);
   border-radius: 8px;
   transition: 0.2s all;
   position: relative;
@@ -14,7 +14,7 @@
 
 .card:hover {
   color: inherit;
-  box-shadow: var(--fds-shadow-medium);
+  box-shadow: var(--ds-shadow-md);
   transform: translateY(-4px);
   cursor: pointer;
 }
@@ -22,11 +22,11 @@
 .iconContainer {
   height: 54px;
   width: 54px;
-  border-radius: var(--fds-border_radius-small);
+  border-radius: var(--ds-border-radius-sm);
   transform: rotate(45deg);
   margin: 0 auto;
-  margin-bottom: calc(var(--fds-spacing-3) + 11px);
-  margin-top: var(--fds-spacing-3);
+  margin-bottom: calc(var(--ds-spacing-3) + 11px);
+  margin-top: var(--ds-spacing-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,14 +50,14 @@
 }
 
 .grey {
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
   box-shadow: none;
 }
 
 .title {
-  font: var(--fds-typography-heading-xsmall);
-  margin-top: var(--fds-spacing-4);
-  margin-bottom: var(--fds-spacing-4);
+  font: var(--ds-typography-heading-xs);
+  margin-top: var(--ds-spacing-4);
+  margin-bottom: var(--ds-spacing-4);
   text-align: center;
   text-decoration: underline;
   text-underline-offset: 7px;
@@ -65,7 +65,7 @@
 }
 
 .desc {
-  font: var(--fds-typography-paragraph-small);
+  font: var(--ds-typography-paragraph-sm);
   text-align: center;
   line-height: 1.7em;
 }

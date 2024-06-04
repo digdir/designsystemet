@@ -509,11 +509,7 @@
       "type": "borderWidth",
       "value": "{border-width.1}"
     },
-    "active": {
-      "type": "borderWidth",
-      "value": "{border-width.2}"
-    },
-    "tab_focus": {
+    "highlight": {
       "type": "borderWidth",
       "value": "{border-width.2}"
     }

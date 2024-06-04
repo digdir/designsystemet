@@ -2,13 +2,11 @@ import type { ReactNode, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
-import { getColor } from '../../utilities';
-
-type OldColors = 'first' | 'second' | 'third';
-
 export type AccordionProps = {
-  /** Accordion background color */
-  color?: 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'subtle' | OldColors;
+  /** Accordion background color
+   * @default neutral
+   */
+  color?: 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'subtle';
   /** Show border */
   border?: boolean;
   /** Instances of `Accordion.Item` */
@@ -16,9 +14,7 @@ export type AccordionProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ border = false, className, ...rest }, ref) => {
-    const color = getColor(rest.color || 'neutral');
-
+  ({ border = false, color = 'neutral', className, ...rest }, ref) => {
     return (
       <div
         className={cl(

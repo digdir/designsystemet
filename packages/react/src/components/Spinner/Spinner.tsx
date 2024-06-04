@@ -25,15 +25,15 @@ export type SpinnerProps = {
   size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * Spinner appearance
-   * @default default
+   * @default neutral
    */
-  variant?: 'default' | 'interaction';
+  color?: 'neutral' | 'accent';
 } & React.ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({
   title,
-  variant = 'default',
+  color = 'neutral',
   size = 'md',
   className,
   style,
@@ -49,7 +49,7 @@ export const Spinner = ({
 
   return (
     <svg
-      className={cl('fds-spinner', `fds-spinner--${variant}`, className)}
+      className={cl('fds-spinner', `fds-spinner--${color}`, className)}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}

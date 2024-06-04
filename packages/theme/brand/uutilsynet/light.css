@@ -336,7 +336,7 @@
   --ds-typography-error_message-md: 400 1.125rem/1.3 'Inter';
   --ds-typography-error_message-sm: 400 1rem/1.3 'Inter';
   --ds-typography-error_message-xs: 400 0.875rem/1.3 'Inter';
-  --ds-opacity-disabled: 30%;
+  --ds-disabled-opacity: 30%;
   --ds-border-radius-sm: 2px;
   --ds-border-radius-md: 4px;
   --ds-border-radius-lg: 8px;
@@ -386,8 +386,7 @@
   --ds-sizing-26: 6.5rem;
   --ds-sizing-30: 7.5rem;
   --ds-border-width-default: 1px;
-  --ds-border-width-active: 2px;
-  --ds-border-width-tab_focus: 2px;
+  --ds-border-width-highlight: 2px;
   --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
   --ds-shadow-sm: 0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1);
   --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);

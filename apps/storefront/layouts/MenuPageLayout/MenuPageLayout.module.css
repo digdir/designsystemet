@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-10);
-  margin-top: var(--fds-spacing-8);
+  gap: var(--ds-spacing-10);
+  margin-top: var(--ds-spacing-8);
   margin-bottom: var(--page-spacing-bottom);
 }
 
@@ -24,11 +24,11 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: var(--fds-spacing-6);
-  padding: var(--fds-spacing-10);
+  margin-bottom: var(--ds-spacing-6);
+  padding: var(--ds-spacing-10);
   width: 100%;
-  border-radius: var(--fds-border_radius-xlarge);
-  background-color: var(--fds-semantic-background-subtle);
+  border-radius: var(--ds-border-radius-xl);
+  background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .headerText {
@@ -41,7 +41,7 @@
 }
 
 .date {
-  margin-top: var(--fds-spacing-3);
+  margin-top: var(--ds-spacing-3);
 }
 
 .iconContainer {
@@ -53,7 +53,7 @@
   justify-content: center;
   height: 190px;
   width: 190px;
-  border-radius: var(--fds-border_radius-large);
+  border-radius: var(--ds-border-radius-lg);
   border: 7px solid #8f9296;
   transform: rotate(45deg);
 }
@@ -71,7 +71,7 @@
 }
 
 .iconContainer svg {
-  color: var(--fds-semantic-border-neutral-strong);
+  color: var(--ds-color-neutral-base-default);
   position: relative;
   z-index: 54;
   opacity: 0.7;
@@ -92,11 +92,11 @@
 }
 
 .content {
-  padding: var(--fds-spacing-4) var(--fds-spacing-10) 0 var(--fds-spacing-10);
+  padding: var(--ds-spacing-4) var(--ds-spacing-10) 0 var(--ds-spacing-10);
 }
 
 .githubLink {
-  margin-top: var(--fds-spacing-6);
+  margin-top: var(--ds-spacing-6);
 }
 
 @media (max-width: 1200px) {

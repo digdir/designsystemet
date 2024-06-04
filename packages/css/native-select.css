@@ -68,7 +68,7 @@
   }
 
   .fds-native-select--container:has(.fds-native-select:disabled) {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-native-select:disabled {

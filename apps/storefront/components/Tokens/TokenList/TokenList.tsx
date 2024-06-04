@@ -86,7 +86,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
     return (
       <div key={group}>
         <Heading
-          size='xsmall'
+          size='xs'
           level={4}
           className={classes.title}
         >
@@ -139,7 +139,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       <div className={classes.textContainer}>
         <Heading
           level={5}
-          size='xxsmall'
+          size='2xs'
           className={classes.name}
         >
           {capitalizeString(title)}
@@ -213,7 +213,7 @@ const TokenList = ({
             className={classes.npmShield}
           />
         </Link>
-        <Paragraph size='small'>@digdir/designsystemet-theme</Paragraph>
+        <Paragraph size='sm'>@digdir/designsystemet-theme</Paragraph>
       </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>

@@ -160,7 +160,7 @@
   }
 
   .fds-combobox__disabled {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-combobox__disabled * {

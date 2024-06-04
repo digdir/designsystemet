@@ -29,7 +29,7 @@
   .fds-chip--button:disabled,
   .fds-chip--button[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-chip--button .fds-chip__label {

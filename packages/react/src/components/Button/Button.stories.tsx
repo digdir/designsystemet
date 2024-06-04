@@ -302,7 +302,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       aria-disabled
     >
       <Spinner
-        variant='interaction'
+        color='accent'
         title='loading'
         size='sm'
       />
@@ -313,7 +313,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       aria-disabled
     >
       <Spinner
-        variant='interaction'
+        color='accent'
         title='loading'
         size='sm'
       />
@@ -324,7 +324,7 @@ export const Lasting: StoryFn<typeof Button> = () => (
       aria-disabled
     >
       <Spinner
-        variant='interaction'
+        color='accent'
         title='loading'
         size='sm'
       />

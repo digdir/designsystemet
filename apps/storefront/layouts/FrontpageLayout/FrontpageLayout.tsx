@@ -75,7 +75,7 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           <Container className={classes.container}>
             <div className={classes.text}>
               <div className={classes.betaTag}>Beta</div>
-              <Heading size='large'>
+              <Heading size='lg'>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
             </div>

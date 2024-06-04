@@ -6,18 +6,19 @@ export const sizeRem: Transform = {
   name: 'fds/size/toRem',
   type: 'value',
   transitive: true,
-  filter: (token) =>
-    ['sizing', 'spacing'].includes(token.type as string) &&
-    !token.name.includes('base'),
-  transform: (token, config) => {
-    const baseFont = (config.basePxFontSize as unknown as number) || 16;
-    const value = parseInt(token.value as string);
+  filter: (token) => ['sizing', 'spacing'].includes(token.type as string) && !token.name.includes('base'),
+  transform: (token, config, options) => {
+    const { usesDtcg } = options;
 
-    if (value === 0) {
+    const value = (usesDtcg ? token.$value : token.value) as string;
+    const baseFont = (config.basePxFontSize as unknown as number) || 16;
+    const size = parseInt(value);
+
+    if (size === 0) {
       return '0';
     }
 
-    return `${value / baseFont}rem`;
+    return `${size / baseFont}rem`;
   },
 };
 

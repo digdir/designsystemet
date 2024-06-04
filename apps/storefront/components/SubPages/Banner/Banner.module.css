@@ -4,20 +4,20 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: var(--fds-spacing-14);
-  padding-top: var(--fds-spacing-4);
+  padding: var(--ds-spacing-14);
+  padding-top: var(--ds-spacing-4);
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: white;
-  gap: var(--fds-spacing-4);
+  gap: var(--ds-spacing-4);
 }
 
 .ingress {
   text-align: center;
   max-width: 780px;
   text-wrap: balance;
-  font: var(--fds-typography-ingress-small);
+  font: var(--ds-typography-ingress-sm);
 }
 
 .icon {
@@ -28,8 +28,8 @@
   transform: rotate(45deg);
   background-color: var(--fds-brand-alt2-600);
   border-radius: 3px;
-  margin-top: var(--fds-spacing-2);
-  margin-bottom: var(--fds-spacing-2);
+  margin-top: var(--ds-spacing-2);
+  margin-bottom: var(--ds-spacing-2);
 }
 
 .icon > svg {
@@ -65,7 +65,7 @@
   }
 
   .icon {
-    margin-left: var(--fds-spacing-2);
+    margin-left: var(--ds-spacing-2);
   }
 
   .logo {

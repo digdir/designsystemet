@@ -28,7 +28,7 @@ program
   .description('run a Designsystemet migration')
   .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
-  .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.css')
+  .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.(tsx|css)')
   .action((migrationKey, opts) => {
     const { glob, list } = opts;
 
