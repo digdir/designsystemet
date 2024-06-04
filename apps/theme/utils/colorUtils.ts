@@ -1,6 +1,13 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
+/**
+ * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
+ *
+ * @param hex A hex color string
+ * @param valuesOnly If true, only the values are returned
+ * @returns A CSS HSL string
+ */
 export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   let r = 0;
@@ -46,6 +53,12 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   return cssString;
 };
 
+/**
+ * Converts a HEX string '#xxxxxx' into an array of HSL values '[h,s,l]'
+ *
+ * @param H A Hex color string
+ * @returns HSL values in an array
+ */
 export const hexToHSL = (H: string) => {
   // Convert hex to RGB first
   let r = 0,
@@ -88,10 +101,24 @@ export const hexToHSL = (H: string) => {
   return [h, s, l];
 };
 
-export const hslArrToCss = (arr: number[]) => {
-  return 'hsl(' + arr[0] + ',' + arr[1] + '%,' + arr[2] + '%)';
+/**
+ * Converts a HSL number array '[h,s,l]' into HSL CSS string 'hsl(x,x,x)'
+ *
+ * @param HSL A HSL number array '[h,s,l]'
+ * @returns A hex color string
+ */
+export const hslArrToCss = (HSL: number[]) => {
+  return 'hsl(' + HSL[0] + ',' + HSL[1] + '%,' + HSL[2] + '%)';
 };
 
+/**
+ * Converts a HSL CSS string 'hsl(x,x,x)' into an array of HSL values '[h,s,l]'
+ *
+ * @param h The HSL hue
+ * @param s The HSL saturation
+ * @param l The HSL lightness
+ * @returns HEX color string
+ */
 export const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
@@ -141,6 +168,12 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   return '#' + r + g + b;
 };
 
+/**
+ * Converts a HEX color '#xxxxxx' into an array of RGB values '[R, G, B]'
+ *
+ * @param hex A hex color string
+ * @returns RGB values in an array
+ */
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(
@@ -160,6 +193,14 @@ export const hexToRgb = (hex: string) => {
     : null;
 };
 
+/**
+ * Get the luminance of an RGB color
+ *
+ * @param r RGB red value
+ * @param G RGB green value
+ * @param b RGB blue value
+ * @returns
+ */
 export const luminanceFromRgb = (r: string, g: string, b: string) => {
   const a = [Number(r), Number(g), Number(b)].map(function (v) {
     v /= 255;
@@ -168,10 +209,12 @@ export const luminanceFromRgb = (r: string, g: string, b: string) => {
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
 
-export const Testing = () => {
-  return '222';
-};
-
+/**
+ * Get the luminance of a HEX color
+ *
+ * @param hex A hex color string
+ * @returns
+ */
 export const luminanceFromHex = (hex: CssColor) => {
   const rgb = hexToRgb(hex);
   if (rgb) {
@@ -183,6 +226,13 @@ export const luminanceFromHex = (hex: CssColor) => {
   return 2;
 };
 
+/**
+ * Get the contrast ratio between two luminance values
+ *
+ * @param lum1 The first luminance value
+ * @param lum2 The second luminance value
+ * @returns
+ */
 export const getRatioFromLum = (lum1: number, lum2: number) => {
   if (lum1 !== null && lum2 !== null) {
     return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
@@ -191,6 +241,12 @@ export const getRatioFromLum = (lum1: number, lum2: number) => {
   }
 };
 
+/**
+ * Get the lightness of a HEX color
+ *
+ * @param hex A hex color string
+ * @returns
+ */
 export const getLightnessFromHex = (hex: string) => {
   const conv = new Hsluv();
   conv.hex = hex;
@@ -198,18 +254,30 @@ export const getLightnessFromHex = (hex: string) => {
   return Number(conv.hsluv_l.toFixed(0));
 };
 
-export const getContrastFromHex = (
-  mainColor: CssColor,
-  backgroundColor: CssColor,
-) => {
-  const lum1 = luminanceFromHex(mainColor);
-  const lum2 = luminanceFromHex(backgroundColor);
+/**
+ * Get the contrast ratio between two HEX colors
+ *
+ * @param {CssColor} color1 The first color
+ * @param {CssColor} color2 The second color
+ * @returns
+ */
+export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
+  const lum1 = luminanceFromHex(color1);
+  const lum2 = luminanceFromHex(color2);
   if (lum1 !== null && lum2 !== null) {
     return getRatioFromLum(lum1, lum2);
   }
   return -1;
 };
 
+/**
+ * Get the contrast ratio between two colors at a specific lightness
+ *
+ * @param lightness The lightness value
+ * @param mainColor The main color
+ * @param backgroundColor The background color
+ * @returns The contrast ratio
+ */
 export const getContrastFromLightness = (
   lightness: number,
   mainColor: CssColor,
@@ -243,6 +311,13 @@ export const lightenDarkThemeColor = (color: CssColor) => {
   return conv.hex as CssColor;
 };
 
+/**
+ * Check if two colors have enough contrast to be used together
+ *
+ * @param {CssColor} color1 The first color
+ * @param {CssColor} color2 The second color
+ * @returns {boolean} If the colors have enough contrast
+ */
 export const areColorsContrasting = (
   color1: CssColor,
   color2: CssColor,
@@ -259,6 +334,12 @@ export const areColorsContrasting = (
   return false;
 };
 
+/**
+ * Check if aa string value is a HEX color
+ *
+ * @param {string} hex The string to check
+ * @returns {boolean} If the string is a HEX color
+ */
 export const isHexColor = (hex: string) => {
   return (
     typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
