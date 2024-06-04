@@ -1,4 +1,12 @@
+import {
+  Card,
+  Heading,
+  Paragraph,
+  Accordion,
+} from '@digdir/designsystemet-react';
+
 import { Meta, Image } from '@components';
+import { Contributors } from '@blog';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
@@ -16,48 +24,86 @@ export default ({ children }) => (
   />
 );
 
-Feil som hindrer brukeren i å komme videre kan skyldes både systemfeil (link til egen artikkel) og brukerutløste feil. Denne artikkelen tar for seg brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
+Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen tar for seg brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
 
-## Vi skiller mellom feilmeldinger, myke valideringer og systemvarsler
+<Card
+  color='third'
+>
+  <Card.Content
+  style={{
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  }}
+  >
+    *Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
 
-Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og klart og presist formulert.
+  </Card.Content>
+</Card>
 
-Myke valideringer bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
+## Vi skiller mellom systemvarsler, myke valideringer og feilmeldinger
 
-[Accordion - Mer om myke valideringer ]
-Myke valideringer er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen, men som bare gir brukeren informasjon. Slike meldinger kan for eksempel presenteres i en [`alert`](/docs/komponenter-alert--docs) av typen "info" eller "success".
+### Systemvarsler
 
-Systemvarsel bruker vi når vi vil fortelle brukerne om noe viktig de må få med seg.
+Systemvarsler, eller "systemgenererte meldinger", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
 
-## Feilmeldinger
+### Myke valideringer
+
+Myke valideringer, eller "brukerutløste infomeldinger", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
+
+<Accordion
+  color='neutral'
+>
+  <Accordion.Item>
+    <Accordion.Header level={3}>Mer om myke valideringer</Accordion.Header>
+    <Accordion.Content
+    style={{
+    paddingTop: '0px',
+    paddingBottom: '0px',
+    maxWidth: '780px'
+  }}>
+      Myke valideringer, eller "brukerutløste infomeldinger", er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen. De gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
+
+Eksempler:
+
+- Du starter en bedrift og skal registrere navnet. Du får beskjeden “Bedriftsnavnet er allerede i bruk av noen andre. Du kan bruke det men det er ikke sikkert du vil finne ledig webdomene, og du kan risikere at ditt foretak vil bli forvekslet med et annet. ”
+- Du gjør et valg i skjemaet som fører til lengre behandlingstid for søknaden. Du får en infomelding om at "Ventetiden vil være 2-3 måneder lengre med alternativet du har valgt."
+
+</Accordion.Content>
+
+  </Accordion.Item>
+</Accordion>
+
+### Feilmeldinger
+
+Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
 
 Feilmeldinger kan være knyttet til et enkelt felt eller til flere felt. Vi har også oppsummering av flere feilmeldinger som vises dersom brukeren forsøker å gå videre uten å ha fylt ut alt.
 
-### Feilmeldinger på enkeltfelter
+#### Feilmeldinger på enkeltfelter
 
 Alle skjemakomponenter skal kunne ha en feilmelding som kan plasseres nært feltet som feiler.
 
 <Image
-  src='/img/errormessage-1.png'
+  src='/img/errormessage-co-1.png'
   alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
   boxShadow={false}
 />
 
-### Feilmelding basert på inndata som gjelder flere felter
+#### Feilmelding basert på inndata som gjelder flere felter
 
 I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
 <Image
-  src='/img/errormessage-1.png'
+  src='/img/errormessage-co-2.png'
   alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
   boxShadow={false}
 />
 
-### Oppsummering av flere feilmeldinger
+#### Oppsummering av flere feilmeldinger
 
 En oppsummering kan gjelde for én eller flere feil.
 
-Generelt anbefaler vi at hvis brukerne prøver å gå videre uten å ha fylt ut alt, eller de har gjort feil, oppsummerer like over "Gå videre"/"Send inn"-knappen. Vi vil vise oppsummeringen i nærheten av Neste-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre.
+Generelt anbefaler vi at hvis brukerne prøver å gå videre uten å ha fylt ut alt, eller de har gjort feil, oppsummerer like over "Neste"/"Send inn"-knappen. Vi vil vise oppsummeringen i nærheten av "Neste"-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre.
 
 I noen tilfeller kan det være bedre å vise oppsummeringen i toppen:
 
@@ -65,7 +111,7 @@ I noen tilfeller kan det være bedre å vise oppsummeringen i toppen:
 - Når brukeren har vært ute av et skjema og går inn igjen.
 - Når løsningen ikke stopper deg fra å gå videre til neste side selv om du har feil på en side.
 
-Det er løsningen eller tjenesten du lager, som bestemmer om du bør plassere oppsummeringen øverst på siden eller lenger nede, før knappen som tar brukerne videre. Det viktigste er at brukeren lett ser oppsummeringen.
+Det er altså løsningen eller tjenesten du lager, som bestemmer om du bør plassere oppsummeringen øverst på siden eller lenger nede, før knappen som tar brukerne videre. Det viktigste er at brukeren lett ser oppsummeringen.
 
 **Pass på at**
 
@@ -77,7 +123,7 @@ Det er løsningen eller tjenesten du lager, som bestemmer om du bør plassere op
 - teksten i en oppsummerende feilmelding skal ha med nøkkelord fra ledetekstene til feltene som har feil
 
 <Image
-  src='/img/errormessage-1.png'
+  src='/img/errormessage-co-3.png'
   alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
   boxShadow={false}
 />
@@ -126,13 +172,6 @@ Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å g
 
 Vi bruker ikke deaktivert "Gå videre"/"Send inn"-knapp til å validere skjema. Noen brukere forstår ikke hvorfor knappen er deaktivert og kan bli forvirret. Brukere med nedsatt syn kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Hvis brukeren prøver å velge knappen mens det er feil i skjemaet, kan vi heller vise en oppsummerende feilmelding over "Gå videre"/"Send inn"-knappen.
 
-## Hvor skal vi vise feilmeldinger?
-
-- Vi viser feilmeldingen under feltet med feil
-- Når det er flere feil, oppsummerer vi dem nederst på siden.
-
-Plasser feilmeldinger som tilhører et bestemt felt på siden så nært feilen som mulig.
-
 ## Utseendet på feilmeldinger
 
 Når et skjemafelt feiler er det viktig å fremheve feltet slik at det er lett for våre brukere å se hvor de har gjenstående oppgaver.
@@ -145,11 +184,28 @@ Når et skjemafelt feiler er det viktig å fremheve feltet slik at det er lett f
 
 Vi ønsker å fremheve felter som har valideringsfeil. For å få dette til bruker vi en kombinasjon av virkemidler.
 
-**Visuelle endringer**
+**Visuelle endringer** <br />
 Legg selve feilmeldingsteksten nært feltet det gjelder. Vi bruker en rød varseltrekant med utropstegn som vises før teksten. Vi anbefaler å ha med et symbol fordi det kan være fint med en visuell indikator i tillegg til tekst. For de komponentene hvor det er mulig kan man også endre tykkelsen på selve komponenten som vist i eksempelet over.
 
-**Fargevalg**
+**Fargevalg** <br />
 Feltet og selve feilmeldingen farges rødt. Dette er et godt etablert mønster som hjelper med å skille feltet fra andre felter. Husk at feltet må ha 3:1 kontrast til bakgrunnsfargen. Om du også bruker rød tekst til feilmeldingen må den minst være 4.5:1. [Tilsynet for universell utforming av ikt's artikkel om kontraster](https://www.uutilsynet.no/veiledning/kontrast/48)
+
+**Plassering av feilmelding** <br />
+Vi viser feilmeldingen under feltet med feil. Det kan være uheldig å plassere ny informasjon tidligere i flyten, og alle vil kanskje ikke få det med seg. Derfor bør feilmeldingen komme rett etterpå. Dette er også det vanligste mønsteret.
+
+<Card
+  color='first'
+>
+  <Card.Content
+  style={{
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  }}
+  >
+    NB: Vi ønsker mer innsikt rundt plasseringen, og har en [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
+
+  </Card.Content>
+</Card>
 
 ## Validering og kryssvalidering
 
@@ -203,3 +259,26 @@ For feilmeldinger som dukker opp dynamisk må vi bruke aria-live for at meldinge
 - [Suksesskriterium 3.3.3 Forslag ved feil](https://www.w3.org/Translations/WCAG21-no/#error-suggestion)
 - [Skjemavalidering, Aksel](https://aksel.nav.no/god-praksis/artikler/skjemavalidering)
 - [Fejlmeddelelser, Fælles designsystem](https://designsystem.dk/komponenter/fejlmeddelelser/)
+
+<br />
+<br />
+<br />
+---
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund',
+    'Astrid Eline Øksnes',
+    'Bernard Tommerbakke',
+    'Kari Breidal',
+    'Lasse Febakke Straum',
+    'Marianne Røsvik',
+    'Marianne Nordberg',
+    'Camilla Orten',
+    'Gørild Døhl',
+  ]}
+/>
+<br />
+<br />
+<br />
+---
