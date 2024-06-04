@@ -35,6 +35,7 @@ module.exports = {
           './tsconfig.json',
           './packages/*/tsconfig.json',
           './tsconfig.node.json',
+          './apps/*/tsconfig.json'
         ],
       },
       rules: {

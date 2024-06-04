@@ -45,7 +45,7 @@
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 0px;
+  gap: 0;
 }
 
 .headerMiddle {

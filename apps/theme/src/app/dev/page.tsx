@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import cn from "classnames";
 
-import { getContrastFromHex } from "@/utils/ColorUtils";
-import { generateColorScale } from "@/utils/themeUtils";
+import { getContrastFromHex } from "../../utils/ColorUtils";
+import { generateColorScale } from "../../utils/themeUtils";
 
 import classes from "./page.module.css";
 
@@ -41,11 +41,12 @@ const BaseRow = (color: CssColor) => {
     "light",
     "flat"
   ) as CssColor[];
-  const darkColors: CssColor[] = generateColorScale(
+  // Unused currently
+  /* const darkColors: CssColor[] = generateColorScale(
     color,
     "dark",
     "flat"
-  ) as CssColor[];
+  ) as CssColor[]; */
   return (
     <>
       <h2 className={classes.mainTitle}>Base color</h2>
@@ -190,12 +191,12 @@ export default function Dev() {
     "#000000",
   ]);
   useEffect(() => {
-    const lightScale = generateColorScale("#0062BA", "light", "flat");
-    const darkScale = generateColorScale("#0062BA", "dark", "flat");
-    const contrastScale = generateColorScale("#0062BA", "contrast", "flat");
-    setLightColors(lightScale as CssColor[]);
-    setDarkColors(darkScale as CssColor[]);
-    setContrastColors(contrastScale as CssColor[]);
+    const lightScale = generateColorScale("#0062BA", "light", "flat") as CssColor[];
+    const darkScale = generateColorScale("#0062BA", "dark", "flat") as CssColor[];
+    const contrastScale = generateColorScale("#0062BA", "contrast", "flat") as CssColor[];
+    setLightColors(lightScale);
+    setDarkColors(darkScale);
+    setContrastColors(contrastScale);
   }, []);
   return (
     <div className={classes.page}>

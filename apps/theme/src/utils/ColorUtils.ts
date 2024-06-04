@@ -2,7 +2,7 @@ import type { CssColor } from "@adobe/leonardo-contrast-colors";
 import { Hsluv } from "hsluv";
 
 export const hexToCssHsl = (hex: string, valuesOnly = false) => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) as Array<string>;
   let r = parseInt(result[1], 16);
   let g = parseInt(result[2], 16);
   let b = parseInt(result[3], 16);
@@ -10,7 +10,7 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   (r /= 255), (g /= 255), (b /= 255);
   const max = Math.max(r, g, b),
     min = Math.min(r, g, b);
-  let h,
+  let h = 0,
     s,
     l = (max + min) / 2;
   if (max == min) {
@@ -44,26 +44,26 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
 
 export const hexToHSL = (H: string) => {
   // Convert hex to RGB first
-  let r = 0,
-    g = 0,
-    b = 0;
+  let r: string | number = 0,
+    g: string | number = 0,
+    b: string | number = 0;
   if (H.length == 4) {
-    r = "0x" + H[1] + H[1];
-    g = "0x" + H[2] + H[2];
-    b = "0x" + H[3] + H[3];
+    r = "0x" + H[1] + H[1] as unknown as number;
+    g = "0x" + H[2] + H[2] as unknown as number;
+    b = "0x" + H[3] + H[3] as unknown as number;
   } else if (H.length == 7) {
-    r = "0x" + H[1] + H[2];
-    g = "0x" + H[3] + H[4];
-    b = "0x" + H[5] + H[6];
+    r = "0x" + H[1] + H[2] as unknown as number;
+    g = "0x" + H[3] + H[4] as unknown as number;
+    b = "0x" + H[5] + H[6] as unknown as number;
   }
   // Then to HSL
   r /= 255;
   g /= 255;
   b /= 255;
-  let cmin = Math.min(r, g, b),
+  const cmin = Math.min(r, g, b),
     cmax = Math.max(r, g, b),
-    delta = cmax - cmin,
-    h = 0,
+    delta = cmax - cmin;
+  let h = 0,
     s = 0,
     l = 0;
 
@@ -92,12 +92,12 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
 
-  let c = (1 - Math.abs(2 * l - 1)) * s,
+  const c = (1 - Math.abs(2 * l - 1)) * s,
     x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = 0,
-    g = 0,
-    b = 0;
+    m = l - c / 2;
+  let r: number | string = 0,
+    g: number | string = 0,
+    b: number | string = 0;
 
   if (0 <= h && h < 60) {
     r = c;
@@ -139,17 +139,17 @@ export const HSLToHex = (h: number, s: number, l: number) => {
 
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+  hex = hex.replace(shorthandRegex, function (m: string, r: string, g: string, b: string) {
     return r + r + g + g + b + b;
   });
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+    }
     : null;
 };
 
@@ -161,7 +161,7 @@ export const luminanceFromRgb = (r: string, g: string, b: string) => {
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
 
-export const luminanceFromHex = (hex: CssColor) => {
+export function luminanceFromHex(hex: CssColor) {
   const rgb = hexToRgb(hex);
   if (rgb) {
     return luminanceFromRgb(rgb.r.toString(), rgb.g.toString(), rgb.b.toString());
@@ -184,8 +184,8 @@ export const getContrastFromHex = (
   mainColor: CssColor,
   backgroundColor: CssColor
 ) => {
-  const lum1 = luminanceFromHex(mainColor);
-  const lum2 = luminanceFromHex(backgroundColor);
+  const lum1 = luminanceFromHex(mainColor) as number;
+  const lum2 = luminanceFromHex(backgroundColor) as number;
   return getRatioFromLum(lum1, lum2);
 };
 
@@ -199,9 +199,9 @@ export const getContrastFromLightness = (
   conv.hexToHsluv();
   conv.hsluv_l = lightness;
   conv.hsluvToHex();
-  const lightMainColor = conv.hex;
-  const lum1 = luminanceFromHex(lightMainColor);
-  const lum2 = luminanceFromHex(backgroundColor);
+  const lightMainColor = conv.hex as CssColor;
+  const lum1 = luminanceFromHex(lightMainColor) as number;
+  const lum2 = luminanceFromHex(backgroundColor) as number;
   const ratio = getRatioFromLum(lum1, lum2);
 
   return ratio;

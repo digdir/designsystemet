@@ -4,14 +4,13 @@
   width: 100%;
   padding: 24px;
   display: flex;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "checkbox checkbox checkbox user user user table table table table table table"
-    "help help help help help help radio radio radio tag tag tag"
-    "tabs tabs tabs tabs test test test faq faq faq faq faq"
-    "footerOne footerOne footerOne footerOne footerTwo footerTwo footerTwo footerTwo footerThree footerThree footerThree footerThree";
+    'checkbox checkbox checkbox user user user table table table table table table'
+    'help help help help help help radio radio radio tag tag tag'
+    'tabs tabs tabs tabs test test test faq faq faq faq faq'
+    'footerOne footerOne footerOne footerOne footerTwo footerTwo footerTwo footerTwo footerThree footerThree footerThree footerThree';
   column-gap: 24px;
   row-gap: 24px;
 }
@@ -64,6 +63,17 @@
   margin-top: -7px;
 }
 
+.tabs {
+  grid-area: tabs;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.tabs button {
+  min-height: 40px;
+}
+
 .tableContainer {
   grid-area: table;
 }
@@ -94,7 +104,7 @@
   height: 36px;
   width: 36px;
   border-radius: 50%;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 4px rgb(0 0 0 / 0.25);
 }
 
 .tableAction {
@@ -139,9 +149,11 @@
 .helpFirst {
   border-color: var(--fds-semantic-border-first);
 }
+
 .helpFirstTitle {
   color: var(--brandOne12);
 }
+
 .helpFirstDesc {
   color: var(--brandOne12);
 }
@@ -149,18 +161,23 @@
 .helpSecond {
   border-color: var(--fds-semantic-border-second);
 }
+
 .helpSecondTitle {
   color: var(--brandTwo12);
 }
+
 .helpSecondDesc {
   color: var(--brandTwo12);
 }
+
 .helpThird {
   border-color: var(--fds-semantic-border-third);
 }
+
 .helpThirdTitle {
   color: var(--brandThree12);
 }
+
 .helpThirdDesc {
   color: var(--brandThree12);
 }
@@ -201,17 +218,6 @@
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
-}
-
-.tabs {
-  grid-area: tabs;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-}
-
-.tabs button {
-  min-height: 40px;
 }
 
 .faq {

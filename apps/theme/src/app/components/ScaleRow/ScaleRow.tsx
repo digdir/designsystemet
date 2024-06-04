@@ -5,9 +5,8 @@ import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { ChromePicker } from "react-color";
 import { useClickOutside } from "@react-awesome/use-click-outside";
 
-import type { modeType } from "@/types";
-import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
-
+import type { modeType } from "../../../types";
+import { getRatioFromLum, luminanceFromHex } from "../../../utils/ColorUtils";
 import { Scale } from "../Scale/Scale";
 
 import classes from "./ScaleRow.module.css";
@@ -20,7 +19,7 @@ type ScaleRowProps = {
 };
 
 export const ScaleRow = ({
-  color,
+  color = "#00000",
   showHeader,
   name,
   themeMode,
@@ -31,8 +30,8 @@ export const ScaleRow = ({
   const ref = useRef(null);
 
   useEffect(() => {
-    const lum1 = luminanceFromHex(color);
-    const lum2 = luminanceFromHex("#ffffff");
+    const lum1 = luminanceFromHex(color) as number;
+    const lum2 = luminanceFromHex("#ffffff") as number;
     const ratio = getRatioFromLum(lum1, lum2);
     setContrast(ratio);
     setActiveColor(color);
@@ -67,13 +66,14 @@ export const ScaleRow = ({
           >
             <ChromePicker
               onChange={(e) => {
-                const lum1 = luminanceFromHex(e.hex);
-                const lum2 = luminanceFromHex("#ffffff");
+                const lum1 = luminanceFromHex(e.hex as CssColor) as number;
+                const lum2 = luminanceFromHex("#ffffff") as number;
                 const ratio = getRatioFromLum(lum1, lum2);
                 setContrast(ratio);
-                setActiveColor(e.hex);
+                setActiveColor(e.hex as CssColor);
               }}
               color={activeColor}
+              /* @ts-expect-error Chromepicker has a width, but its not included in its types */
               width={250}
             />
           </div>

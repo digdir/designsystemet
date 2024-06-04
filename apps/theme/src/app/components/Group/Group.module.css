@@ -1,7 +1,7 @@
 .colors {
   display: flex;
   gap: 8px;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .colorsFeatured {
@@ -9,7 +9,7 @@
 }
 
 .header {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
   margin-bottom: 16px;
   padding-bottom: 16px;
   text-align: center;

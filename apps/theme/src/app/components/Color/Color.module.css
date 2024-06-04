@@ -6,13 +6,13 @@
   justify-content: center;
   color: black;
   font-weight: 400;
-  border: 1px solid rgb(228, 228, 228);
+  border: 1px solid rgb(228 228 228);
   border-radius: 4px;
 }
 
 .box:hover {
   cursor: pointer;
-  border-color: #ffffff;
+  border-color: #fff;
   outline: 2px solid #535353;
   outline-offset: 1px;
 }
@@ -30,7 +30,7 @@
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  border: 1px solid rgb(160, 160, 160);
+  border: 1px solid rgb(160 160 160);
 }
 
 .contrast {

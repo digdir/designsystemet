@@ -1,4 +1,5 @@
 **/dist/**/*.css
 packages/theme/brand/**/*.css
 packages/css/dist/**/*.css
-apps/theme/**
+
+apps/theme/src/css/bootstrap-grid.css

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
-import { generateColorScale } from '@/utils/themeUtils';
-import type { modeType, ColorsType } from '@/types';
-
+import type { modeType, ColorsType } from '../../../types';
+import { generateColorScale } from '../../../utils/themeUtils';
 import { Group } from '../Group/Group';
 
 import classes from './Scale.module.css';

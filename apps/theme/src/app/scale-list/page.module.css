@@ -6,6 +6,7 @@
   margin: 10px 25px;
   font-size: 18px;
 }
+
 .colors {
   display: flex;
 }
@@ -15,7 +16,7 @@
 }
 
 .swatchContainer {
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid rgb(192 192 192);
   height: 260px;
   width: 495px;
   padding: 20px;

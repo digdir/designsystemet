@@ -13,13 +13,13 @@
   width: 150px;
   padding-left: 12px;
   transition: 0.04s all;
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid rgb(192 192 192);
   background-color: transparent;
 }
 
 .container:hover {
-  border: 1px solid rgb(61, 61, 61);
-  outline: 1px solid rgb(61, 61, 61);
+  border: 1px solid rgb(61 61 61);
+  outline: 1px solid rgb(61 61 61);
 }
 
 .color {
@@ -27,7 +27,7 @@
   width: 24px;
   background-color: #1e98f5;
   border-radius: 50%;
-  border: 1px solid rgb(206, 206, 206);
+  border: 1px solid rgb(206 206 206);
 }
 
 .input {

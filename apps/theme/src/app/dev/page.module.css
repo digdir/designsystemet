@@ -14,7 +14,7 @@
 }
 
 .column {
-  background-color: #ff0000;
+  background-color: #f00;
   width: 33.33%;
   display: flex;
   flex-wrap: wrap;
@@ -22,7 +22,7 @@
   align-items: center;
   flex-basis: auto;
   padding: 20px;
-  border: 1px solid rgb(221, 221, 221);
+  border: 1px solid rgb(221 221 221);
   border-radius: 8px;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .orange {
-  background-color: rgb(255, 153, 0);
+  background-color: rgb(255 153 0);
 }
 
 .red {

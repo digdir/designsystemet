@@ -9,9 +9,9 @@ import { ChevronDownIcon } from "@navikt/aksel-icons";
 import cn from "classnames";
 import { DropdownMenu } from "@digdir/designsystemet-react";
 
-import { mapTokens } from "@/utils/tokenMapping";
-import { generateColorScale, setContrastOneColor } from "@/utils/themeUtils";
-import type { modeType } from "@/types";
+import { mapTokens } from "../utils/tokenMapping";
+import { generateColorScale, setContrastOneColor } from "../utils/themeUtils";
+import type { modeType } from "../types";
 
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
@@ -51,9 +51,9 @@ export default function Home() {
   });
 
   const copyToClipboard = (color: CssColor, type: string) => {
-    const colorsFlat = generateColorScale(color, themeMode, "flat");
+    const colorsFlat = generateColorScale(color, themeMode, "flat") as CssColor[];
 
-    const obj = {};
+    const obj: { [key: string]: { [key: number]: object } } = {};
 
     for (let i = 0; i < colorsFlat.length; i++) {
       if (i === 0) {
@@ -63,11 +63,11 @@ export default function Home() {
     }
 
     const json = JSON.stringify(obj, null, "\t");
-    navigator.clipboard.writeText(json);
+    void navigator.clipboard.writeText(json);
   };
 
-  const isSticky = (e) => {
-    const header = document.querySelector(".pickers");
+  const isSticky = () => {
+    const header = document.querySelector(".pickers") as Element;
     const scrollTop = window.scrollY;
     scrollTop >= 250
       ? header.classList.add("is-sticky")
@@ -87,36 +87,36 @@ export default function Home() {
               <ColorPicker
                 label="Accent"
                 defaultColor="#0062BA"
-                onColorChanged={(e: any) => {
-                  setAccentColor(e);
+                onColorChanged={(e) => {
+                  setAccentColor(e as CssColor);
                 }}
               />
               <ColorPicker
                 label="Neutral"
                 defaultColor="#1E2B3C"
-                onColorChanged={(e: any) => {
-                  setGreyColor(e);
+                onColorChanged={(e) => {
+                  setGreyColor(e as CssColor);
                 }}
               />
               <ColorPicker
                 label="Brand 1"
                 defaultColor="#F45F63"
-                onColorChanged={(e: any) => {
-                  setBrandOneColor(e);
+                onColorChanged={(e) => {
+                  setBrandOneColor(e as CssColor);
                 }}
               />
               <ColorPicker
                 label="Brand 2"
                 defaultColor="#E5AA20"
-                onColorChanged={(e: any) => {
-                  setBrandTwoColor(e);
+                onColorChanged={(e) => {
+                  setBrandTwoColor(e as CssColor);
                 }}
               />
               <ColorPicker
                 label="Brand 3"
                 defaultColor="#1E98F5"
-                onColorChanged={(e: any) => {
-                  setBrandThreeColor(e);
+                onColorChanged={(e) => {
+                  setBrandThreeColor(e as CssColor);
                 }}
               />
               <div className={classes.dropdown}>
@@ -220,7 +220,14 @@ export default function Home() {
                 className={cn(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === "components",
                 })}
+                role="button"
+                tabIndex={0}
                 onClick={() => setPreviewMode("components")}
+                onKeyDown={function (event) {
+                  if (event.key == " ") {
+                    setPreviewMode("components")
+                  }
+                }}
               >
                 Komponenter
               </div>
@@ -228,7 +235,14 @@ export default function Home() {
                 className={cn(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === "dashboard",
                 })}
+                role="button"
+                tabIndex={0}
                 onClick={() => setPreviewMode("dashboard")}
+                onKeyDown={function (event) {
+                  if (event.key == " ") {
+                    setPreviewMode("dashboard");
+                  }
+                }}
               >
                 Dashboard
               </div>
@@ -302,6 +316,6 @@ export default function Home() {
           {/* <PreviewBox /> */}
         </Container>
       </main>
-    </div>
+    </div >
   );
 }

@@ -24,11 +24,11 @@ body {
   left: 0;
   width: 100%;
   z-index: 999;
-  box-shadow: 0 2px 20px 0 rgb(0 0 0 / 25%);
-  background-color: #ffffff !important;
+  box-shadow: 0 2px 20px 0 rgb(0 0 0 / 0.25);
+  background-color: #fff !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .is-sticky .ColorPicker_label__kYLHj {
