@@ -14,7 +14,7 @@
     "access": "public"
   },
   "scripts": {
-    "designsystemet": "esno ./bin/designsystemet.ts",
+    "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "yarn clean && tsc",
     "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
@@ -26,14 +26,9 @@
   ],
   "bin": "dist/build/bin/designsystemet.js",
   "dependencies": {
-    "@commander-js/extra-typings": "^12.0.1",
     "@tokens-studio/sd-transforms": "^0.16.0",
-    "@types/glob": "^8.1.0",
-    "@types/node": "^20.12.7",
-    "@types/ramda": "^0.29.9",
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
-    "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "jscodeshift": "^0.15.2",
     "object-hash": "^3.0.0",
@@ -44,8 +39,15 @@
     "tsup": "^8.0.2"
   },
   "devDependencies": {
+    "@commander-js/extra-typings": "^12.0.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.11.11",
+    "@types/node": "^20.12.7",
     "@types/object-hash": "^3",
+    "@types/ramda": "^0.29.9",
+    "fs-extra": "^11.2.0",
+    "tsx": "^4.11.2",
     "typescript": "^5.4.5"
   }
 }
