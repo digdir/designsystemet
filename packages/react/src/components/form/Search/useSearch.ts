@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 import { FieldsetContext } from '../Fieldset/FieldsetContext';
-import { getSize } from '../../../utilities/getSize';
 
 import type { SearchProps } from './Search';
 
@@ -19,10 +18,12 @@ type UseSearch = (props: SearchProps) => Omit<FormField, 'inputProps'> & {
 /** Handles props for `Search` in context with `Fieldset` */
 export const useSearch: UseSearch = (props) => {
   const fieldset = useContext(FieldsetContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'search');
-
-  const size =
-    fieldset?.size ?? (getSize(props.size || 'md') as FormField['size']);
+  const {
+    inputProps,
+    readOnly,
+    size = fieldset?.size ?? 'md',
+    ...rest
+  } = useFormField(props, 'search');
 
   return {
     ...rest,
