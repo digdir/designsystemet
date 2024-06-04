@@ -22,8 +22,8 @@
   }
 
   .fds-link:focus-visible {
-    color: var(--ds-color-accent-background-default);
-    background: var(--ds-color-neutral-text-default);
+    color: var(--ds-color-accent-text-default);
+    background: var(--ds-color-neutral-surface-default);
     outline: none;
   }
 

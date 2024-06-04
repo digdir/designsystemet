@@ -27,7 +27,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <Component
         className={cl('fds-link', className)}
         ref={ref}
-        data-ds-color-mode='dark'
         {...rest}
       >
         {children}
