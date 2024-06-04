@@ -25,7 +25,8 @@
     "react-color": "^2.19.3",
     "react-dom": "^18",
     "react-syntax-highlighter": "^15.5.0",
-    "recharts": "^2.12.6"
+    "recharts": "^2.12.6",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "^18",
