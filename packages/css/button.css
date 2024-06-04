@@ -27,7 +27,7 @@
   .fds-btn:disabled,
   .fds-btn[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-btn--sm {

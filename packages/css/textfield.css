@@ -104,7 +104,7 @@
   }
 
   .fds-textfield:has(.fds-textfield__input:disabled) {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-textfield--error .fds-textfield__input:not(:focus-visible) {

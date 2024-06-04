@@ -229,9 +229,8 @@ export default (glob?: string) =>
         '--fds-base_spacing': '[delete]',
         '--fds-base_sizing': '[delete]',
         '--fds-border_width-default': '--ds-border-width-default',
-        '--fds-border_width-active': '--ds-border-width-active',
-        '--fds-focus-border-width': '--ds-focus-border-width', // suggestion
-        '--fds-border_width-tab_focus': '--ds-border-width-tab_focus', // Skulle denne fjernes?
+        '--fds-border_width-active': '--ds-border-width-highlight',
+        '--fds-border_width-tab_focus': '--ds-border-width-highlight',
         '--fds-shadow-xsmall': '--ds-shadow-xs',
         '--fds-shadow-small': '--ds-shadow-sm',
         '--fds-shadow-medium': '--ds-shadow-md',
@@ -277,7 +276,7 @@ export default (glob?: string) =>
         '--fds-sizing-22': '--ds-sizing-22',
         '--fds-sizing-26': '--ds-sizing-26',
         '--fds-sizing-30': '--ds-sizing-30',
-        '--fds-opacity-disabled': '--ds-opacity-disabled',
+        '--fds-opacity-disabled': '--ds-disabled-opacity',
       }),
     ],
   });

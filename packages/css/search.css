@@ -81,7 +81,7 @@
   }
 
   .fds-search:has(.fds-search__input:disabled) {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-search__search-button {

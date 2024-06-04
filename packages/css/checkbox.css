@@ -118,7 +118,7 @@
   .fds-checkbox__input:disabled,
   .fds-checkbox__input:disabled ~ .fds-checkbox__label,
   .fds-checkbox__input:disabled ~ .fds-checkbox__description {
-    opacity: var(--ds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-checkbox__input:checked:not(:focus-visible) {

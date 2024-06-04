@@ -3576,7 +3576,7 @@ export const  color = [
   {
     value: "#243142",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       value: "{color.neutral.text-default}",
@@ -3592,7 +3592,7 @@ export const  color = [
   {
     value: "#fefefe",
     type: "color",
-    filePath: "../../design-tokens/semantic/color.json",
+    filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       value: "{color.neutral.background-default}",
@@ -9422,11 +9422,11 @@ export const  opacity = [
       type: "opacity",
       value: "{opacity.30}"
     },
-    name: "--ds-opacity-disabled",
+    name: "--ds-disabled-opacity",
     attributes: {},
     path: [
-      "opacity",
-      "disabled"
+      "disabled",
+      "opacity"
     ]
   }
 ] 
@@ -10234,27 +10234,11 @@ export const  borderWidth = [
       type: "borderWidth",
       value: "{border-width.2}"
     },
-    name: "--ds-border-width-active",
+    name: "--ds-border-width-highlight",
     attributes: {},
     path: [
       "border-width",
-      "active"
-    ]
-  },
-  {
-    type: "borderWidth",
-    value: "2px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "borderWidth",
-      value: "{border-width.2}"
-    },
-    name: "--ds-border-width-tab_focus",
-    attributes: {},
-    path: [
-      "border-width",
-      "tab_focus"
+      "highlight"
     ]
   }
 ] 
