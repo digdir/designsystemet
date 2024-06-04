@@ -45,9 +45,9 @@ StyleDictionary.registerTransformGroup({
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
-type GetConfig = (options: { fileName: string; buildPath: string }) => Config;
+type GetConfig = (options: { fileName: string; buildPath: string; mode?: string }) => Config;
 
-const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown' }) => {
+const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown', mode = 'light' }) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -63,6 +63,7 @@ const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown' }
           },
         ],
         options: {
+          mode,
           fileHeader,
           includeReferences: (token: TransformedToken) => {
             if (
@@ -164,6 +165,7 @@ const getConfigs = (getConfig: GetConfig, outPath: string, tokensDir: string, th
       const config_ = getConfig({
         fileName: fileName,
         buildPath: `${outPath}/${folderName}/`,
+        mode: fileName,
       });
 
       const config = {
