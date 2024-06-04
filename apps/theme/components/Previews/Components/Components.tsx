@@ -341,6 +341,12 @@ export const Components = () => {
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
+          <Switch
+            size='sm'
+            defaultChecked
+          >
+            TV-visning
+          </Switch>
           <Switch size='sm'>Desktopvisning</Switch>
           <Switch
             size='sm'
@@ -371,7 +377,10 @@ export const Components = () => {
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup defaultValue='norway'>
+          <ToggleGroup
+            defaultValue='norway'
+            size='sm'
+          >
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
@@ -379,7 +388,7 @@ export const Components = () => {
           <Combobox
             description='Velg et sted'
             label='Hvor går reisen?'
-            size='md'
+            size='sm'
             portal={false}
             multiple
           >
