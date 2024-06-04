@@ -1051,8 +1051,6 @@
       "sizing.26": "42a8170ee551cacaf2e833e6576f271ddbf7b0ab",
       "sizing.30": "49baf0928082114475f780cb1496f14ed43d29c6",
       "border-width.default": "ac5b6181d17de3d25249c91674dce4fef8711216",
-      "border-width.active": "dd40bb1cb729138762c0bfa29d26adb58b726354",
-      "border-width.tab_focus": "cb1561b878780ee2a87d90a529d90ab8b4456c88",
       "color.accent.background-default": "66c251d95021cbe5b4637c3a5ae207332f5837cc",
       "color.accent.background-subtle": "a2f1ed081e377e79c001ad43116e6f0c8499a38b",
       "color.accent.surface-default": "7c238950d0ffd3e2981889d9ae76d73091daf3a4",
@@ -1187,7 +1185,8 @@
       "color.warning.text-subtle": "7d85d91b3fbc7cb0749d7e928b305c74e62e69f0",
       "color.warning.text-default": "11f3f1d983db49b036aacb16dc5d3ca5e0143da0",
       "color.warning.contrast-default": "3d38f3079fb9fd155567ec24c7fde25f68c40f42",
-      "color.warning.contrast-subtle": "efb708d66f25610b35df2fe9bd9088e80e31a0a3"
+      "color.warning.contrast-subtle": "efb708d66f25610b35df2fe9bd9088e80e31a0a3",
+      "border-width.highlight": "dd40bb1cb729138762c0bfa29d26adb58b726354"
     },
     "group": "Semantic"
   },
