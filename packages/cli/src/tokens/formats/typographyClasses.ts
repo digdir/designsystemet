@@ -16,8 +16,9 @@ type Typgraphy = {
  */
 export const typographyClasses: Format = {
   name: 'typographyClasses',
-  format: async function ({ dictionary, file, options }) {
-    const { usesDtcg, basePxFontSize } = options;
+  format: async function ({ dictionary, file, options, platform }) {
+    const { usesDtcg } = options;
+    const { basePxFontSize } = platform;
 
     const classNames = R.map((token) => {
       if (!Array.isArray(token)) {

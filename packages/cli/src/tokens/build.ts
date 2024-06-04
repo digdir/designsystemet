@@ -11,6 +11,7 @@ import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { groupedTokens } from './formats/groupedTokens.js';
 import { scopedReferenceVariables } from './formats/scopedReferenceVariables.js';
 import { typographyClasses } from './formats/typographyClasses.js';
+import { makeEntryFile } from './actions.js';
 
 void registerTransforms(StyleDictionary);
 
@@ -27,6 +28,8 @@ StyleDictionary.registerTransform(typographyShorthand);
 StyleDictionary.registerFormat(groupedTokens);
 StyleDictionary.registerFormat(scopedReferenceVariables);
 StyleDictionary.registerFormat(typographyClasses);
+
+StyleDictionary.registerAction(makeEntryFile);
 
 StyleDictionary.registerTransformGroup({
   name: 'fds/css',
@@ -45,17 +48,35 @@ StyleDictionary.registerTransformGroup({
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
-type GetConfig = (options: { fileName: string; buildPath: string; mode?: string }) => Config;
+type GetConfig = (options: {
+  fileName: string;
+  buildPath: string;
+  mode?: string;
+  outPath?: string;
+  folderName?: string;
+}) => Config;
 
-const getCSSConfig: GetConfig = ({ fileName = 'unknown', buildPath = 'unknown', mode = 'light' }) => {
+const getCSSConfig: GetConfig = ({
+  fileName = 'unknown',
+  buildPath = 'unknown',
+  mode = 'light',
+  outPath,
+  folderName,
+}) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
-        prefix,
+        // custom
+        outPath,
+        fileName,
+        folderName,
         basePxFontSize,
+        //
+        prefix,
+        buildPath: buildPath ?? `${outPath}/${folderName}/`,
         transformGroup: 'fds/css',
-        buildPath,
+        actions: [makeEntryFile.name],
         files: [
           {
             destination: `${fileName}.css`,
@@ -122,15 +143,13 @@ const getTypographyConfig: GetConfig = ({ buildPath = 'unknown' }) => {
       css: {
         prefix,
         buildPath,
+        basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px'],
         files: [
           {
             destination: 'typography.css',
             format: typographyClasses.name,
             filter: (token) => token.type === 'typography',
-            options: {
-              basePxFontSize,
-            },
           },
         ],
         options: {
@@ -164,6 +183,8 @@ const getConfigs = (getConfig: GetConfig, outPath: string, tokensDir: string, th
 
       const config_ = getConfig({
         fileName: fileName,
+        outPath,
+        folderName,
         buildPath: `${outPath}/${folderName}/`,
         mode: fileName,
       });
@@ -200,21 +221,6 @@ export async function run(options: Options): Promise<void> {
     R.pickBy((val: string[], key) => R.startsWith('light', R.toLower(key)), themes),
   );
 
-  if (tokenConfigs.length > 0) {
-    console.log('🍱 Building CSS variables from tokens');
-    console.log('➡️  Tokens path: ', tokensDir);
-    await Promise.all(
-      tokenConfigs.map(async ([name, config]) => {
-        console.log(`👷 Processing ${name as string}`);
-
-        const tokensPackageSD = await sd.extend(config);
-
-        return tokensPackageSD.buildAllPlatforms();
-      }),
-    );
-    console.log('🏁 Finished building CSS variables!');
-  }
-
   if (typographyConfigs.length > 0) {
     console.log('🍱 Bulding typography classes');
     console.log('➡️  Tokens path: ', tokensDir);
@@ -229,6 +235,21 @@ export async function run(options: Options): Promise<void> {
       }),
     );
     console.log('🏁 Finished building Typography classes!');
+  }
+
+  if (tokenConfigs.length > 0) {
+    console.log('🍱 Building CSS variables from tokens');
+    console.log('➡️  Tokens path: ', tokensDir);
+    await Promise.all(
+      tokenConfigs.map(async ([name, config]) => {
+        console.log(`👷 Processing ${name as string}`);
+
+        const tokensPackageSD = await sd.extend(config);
+
+        return tokensPackageSD.buildAllPlatforms();
+      }),
+    );
+    console.log('🏁 Finished building CSS variables!');
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
