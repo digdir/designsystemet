@@ -19,14 +19,15 @@ export const typographyClasses: Format = {
   format: async function ({ dictionary, file, options }) {
     const { usesDtcg, basePxFontSize } = options;
 
-    const tokens_ = R.map((token) => {
+    const classNames = R.map((token) => {
       if (!Array.isArray(token)) {
         const typography = (usesDtcg ? token.$value : token.value) as Typgraphy;
 
         const baseFontPx = (basePxFontSize as unknown as number) || 16;
         const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
 
-        const className = `.${token?.name} {
+        const className = `
+.${token.name} {
   font-size: ${fontSize};
   line-height: ${typography?.lineHeight};
   font-weight: ${typography?.fontWeight};
@@ -36,8 +37,11 @@ export const typographyClasses: Format = {
       }
     }, dictionary.allTokens);
 
-    const content = tokens_.join('\n\n');
-
-    return fileHeader({ file }).then((fileHeaderText) => `${fileHeaderText + content}\n`);
+    return fileHeader({ file }).then(
+      (fileHeaderText) => `${fileHeaderText}
+@layer ds.typography {
+${classNames.join('\n')}
+}\n`,
+    );
   },
 };
