@@ -8,7 +8,8 @@ import type { Config, TransformedToken } from 'style-dictionary/types';
 import * as R from 'ramda';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { groupedTokens, scopedReferenceVariables } from './formatters.js';
+import { groupedTokens } from './formats/groupedTokens.js';
+import { scopedReferenceVariables } from './formats/scopedReferenceVariables.js';
 
 void registerTransforms(StyleDictionary);
 
@@ -92,7 +93,7 @@ const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): C
           {
             destination: `${fileName}.ts`,
             format: groupedTokens.name,
-            filter: (token) => {
+            filter: (token: TransformedToken) => {
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
                 R.includes('semantic', token.filePath)
@@ -124,26 +125,27 @@ type Options = {
 const sd = new StyleDictionary();
 
 export async function run(options: Options): Promise<void> {
-  const tokensPath = options.tokens;
-  const storefrontTokensOutPath = path.resolve('../../apps/storefront/tokens');
-  const packageTokensOutPath = path.resolve(options.out);
+  const tokensDir = options.tokens;
+  const storefrontOutDir = path.resolve('../../apps/storefront/tokens');
+  const tokensOutDir = path.resolve(options.out);
 
-  const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensPath}/$themes.json`), 'utf-8')) as ThemeObject[];
+  const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
   const themes = permutateThemes($themes, {
     separator,
   }) as Record<string, string[]>;
 
+  console.log(themes);
+
   const getConfigs = (configCallback: GetConfig, outPath: string) =>
     Object.entries(themes)
       .map(([name, tokensets]) => {
-        const updatedSets = tokensets.map((x) => `${tokensPath}/${x}.json`);
+        const setsWithPaths = tokensets.map((x) => `${tokensDir}/${x}.json`);
 
         const [fileName, folderName] = processThemeName(name);
 
         const paritionPrimitives = /(?!.*global\.json).*primitives.*/;
-        // const paritionPrimitives = /.*primitives.*/;
-        const [source, include] = R.partition(R.test(paritionPrimitives), updatedSets);
+        const [source, include] = R.partition(R.test(paritionPrimitives), setsWithPaths);
 
         const config_ = configCallback({
           fileName: fileName,
@@ -152,7 +154,7 @@ export async function run(options: Options): Promise<void> {
 
         const config = {
           ...config_,
-          source: source,
+          source,
           include,
         };
 
@@ -162,12 +164,12 @@ export async function run(options: Options): Promise<void> {
       })
       .sort();
 
-  const tokenConfigs = getConfigs(getCSSConfig, packageTokensOutPath);
-  const storefrontConfigs = getConfigs(getStorefrontConfig, storefrontTokensOutPath);
+  const tokenConfigs = getConfigs(getCSSConfig, tokensOutDir);
+  const storefrontConfigs = getConfigs(getStorefrontConfig, storefrontOutDir);
 
   if (tokenConfigs.length > 0) {
     console.log('🍱 Staring token builder');
-    console.log('➡️  Tokens path: ', tokensPath);
+    console.log('➡️  Tokens path: ', tokensDir);
 
     console.log('\n🏗️  Start building CSS tokens');
     await Promise.all(
