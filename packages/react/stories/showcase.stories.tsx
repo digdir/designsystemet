@@ -179,7 +179,7 @@ export const Showcase: StoryFn = () => {
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
-          <Card color='first'>
+          <Card color='brand1'>
             <Card.Header className={classes.helpHeader}>
               <Heading size='2xs'>Sikkerhet og drift</Heading>
             </Card.Header>
@@ -187,7 +187,7 @@ export const Showcase: StoryFn = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card color='second'>
+          <Card color='brand2'>
             <Card.Header className={classes.helpHeader}>
               <Heading size='2xs'>Skole og utdanning</Heading>
             </Card.Header>
@@ -195,7 +195,7 @@ export const Showcase: StoryFn = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card color='third'>
+          <Card color='brand3'>
             <Card.Header className={classes.helpHeader}>
               <Heading size='2xs'>Mat og helse</Heading>
             </Card.Header>
@@ -209,19 +209,19 @@ export const Showcase: StoryFn = () => {
         <Heading size='xs'>Emner</Heading>
         <div className={classes.tagList}>
           <Tag
-            color='first'
+            color='brand1'
             size='sm'
           >
             Data og IKT
           </Tag>
           <Tag
-            color='second'
+            color='brand2'
             size='sm'
           >
             Mat og ernæring
           </Tag>
           <Tag
-            color='third'
+            color='brand3'
             size='sm'
           >
             Sport og Idrett
@@ -317,7 +317,7 @@ export const Showcase: StoryFn = () => {
           Ofte stillte spørmsål
         </Heading>
         <Accordion
-          color='third'
+          color='brand3'
           border
           className={classes.accordion}
         >
