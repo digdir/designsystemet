@@ -14,7 +14,7 @@ type BlogCardProps = {
   href: string;
   featured?: boolean;
   tagText?: string;
-  tagColor?: 'first' | 'second' | 'third';
+  tagColor?: 'brand1' | 'brand2' | 'brand3';
   level?: 2 | 3;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>;
 
