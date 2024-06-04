@@ -3,16 +3,12 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import { getColor } from '../../utilities';
-
-type OldColors = 'first' | 'second' | 'third';
-
 export type CardProps = {
   /**
    * Changes background & border color
    * @default neutral
    */
-  color?: 'neutral' | 'subtle' | 'brand1' | 'brand2' | 'brand3' | OldColors;
+  color?: 'neutral' | 'subtle' | 'brand1' | 'brand2' | 'brand3';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -28,10 +24,11 @@ export type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ isLink = false, asChild = false, className, ...rest }, ref) => {
+  (
+    { isLink = false, asChild = false, color = 'neutral', className, ...rest },
+    ref,
+  ) => {
     const Component = asChild ? Slot : 'div';
-    const color = getColor(rest.color || 'neutral');
-
     return (
       <Component
         ref={ref}
