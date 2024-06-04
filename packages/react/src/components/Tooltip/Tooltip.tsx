@@ -20,6 +20,8 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
+import type { PortalProps } from '../../types/Portal';
+
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
@@ -46,13 +48,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-  /**
-   * Portals the floating element outside of the app root and into the body.
-   * @see https://floating-ui.com/docs/floatingportal
-   * @default true
-   */
-  portal?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> &
+  PortalProps;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -63,7 +60,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
-      portal = true,
+      portal = false,
       className,
       style,
       ...rest
