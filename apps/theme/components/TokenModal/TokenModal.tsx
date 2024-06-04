@@ -188,7 +188,7 @@ export const TokenModal = ({
             <Button
               className={classes.shareBtn}
               variant='tertiary'
-              color='brand2'
+              color='neutral'
               size='sm'
               onClick={() => onButtonClick()}
               onMouseEnter={() => setToolTipText('Kopier nettadresse')}
