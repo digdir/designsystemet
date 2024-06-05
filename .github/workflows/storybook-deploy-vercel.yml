@@ -45,7 +45,7 @@ jobs:
         run: vercel pull --yes --environment=${{steps.defaultenvironment.outputs.value  == 'next' && 'preview' || 'production'}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build ${{steps.defaultenvironment.outputs.value == 'production' && '--prod'}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - id: deploy
         name: Deploy Project Artifacts to Vercel
