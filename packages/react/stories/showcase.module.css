@@ -1,16 +1,19 @@
 .components {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--ds-spacing-8);
   max-width: 1440px;
   margin: 0 auto;
+  background-color: var(--ds-color-neutral-background-default);
+  border-radius: var(--ds-border-radius-md);
+  padding: 1rem;
 }
 
-.components > * {
-  border: 1px solid var(--ds-color-accent-base-default);
+.card {
+  background-color: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
-  padding: 16px;
+  padding: 24px;
 }
 
 .cardTitle {
@@ -18,49 +21,53 @@
 }
 
 .checkbox {
+  grid-column: span 2;
   padding-bottom: 16px;
-  grid-column: 1;
 }
 
-.login {
-  grid-column: 2;
+.user {
+  grid-column: span 2;
 }
 
 .tableContainer {
-  grid-column: 3 / 6;
+  grid-column: span 4;
 }
 
 .help {
-  grid-column: 1 / 3;
+  grid-column: span 4;
 }
 
-.tags {
-  grid-column: 3;
+.radio {
+  grid-column: span 2;
 }
 
-.radios {
-  grid-column: 5;
+.tag {
+  grid-column: span 2;
 }
 
 .switches {
-  grid-column: 4;
+  grid-column: span 2;
+}
+
+.combobox {
+  grid-column: span 2;
 }
 
 .tabs {
+  grid-column: span 4;
   display: flex;
   gap: 16px;
   flex-direction: column;
-  grid-column: 1 / 3;
 }
 
 .faq {
-  grid-column: 4 / 6;
+  grid-column: span 4;
 }
 
 .userLink {
-  text-align: right;
-  margin-top: var(--ds-spacing-5);
+  margin-top: 20px;
   margin-left: auto;
+  font-size: 16px;
 }
 
 .userTitle {
@@ -78,6 +85,10 @@
 .userPar {
   margin-bottom: -4px;
   margin-top: -7px;
+}
+
+.tabs button {
+  min-height: 40px;
 }
 
 .table {
@@ -102,6 +113,7 @@
   height: 36px;
   width: 36px;
   border-radius: 50%;
+  box-shadow: 0 0 4px #353535;
 }
 
 .tableAction {
@@ -129,6 +141,7 @@
 }
 
 .helpCards {
+  grid-column: 1 / 6;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -160,77 +173,14 @@
   margin-top: 16px;
 }
 
-.accordion > div button {
-  border-top: 1px solid var(--brandThree6);
-  border-radius: 0;
-}
-
-.accordion > div:first-child button {
-  border: none;
-  border-radius: 4px 4px 0 0;
-}
-
-.footerOne {
-  background-color: var(--brandOne9);
-  background-color: white;
-}
-
-.footerOne h1 {
-  color: var(--brandOne14);
-}
-
-.footerOne a {
-  color: var(--brandOne15);
-}
-
-.footerTwo {
-  background-color: var(--brandTwo9);
-}
-
-.footerTwo h1 {
-  color: var(--brandTwo14);
-}
-
-.footerTwo a {
-  color: var(--brandTwo15);
-}
-
-.footerThree {
-  background-color: var(--brandThree9);
-}
-
-.footerThree h1 {
-  color: var(--brandThree14);
-}
-
-.footerThree a {
-  color: var(--brandThree15);
-}
-
-.footerHeading {
-  margin-bottom: 14px;
-}
-
-.footerList {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .switchGroup {
   display: flex;
   gap: 26px;
   flex-direction: column;
 }
 
-.switchHeading {
-  margin-bottom: 12px;
-}
-
-.switchParagraph {
-  margin-bottom: 20px;
-}
-
-.panel {
-  background-color: white;
+.toggleCombo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
 }

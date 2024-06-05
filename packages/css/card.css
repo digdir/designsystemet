@@ -74,6 +74,7 @@
     font: var(--ds-typography-paragraph-md);
     font-family: inherit;
     padding: var(--ds-spacing-2) 0;
+    color: inherit;
   }
 
   .fds-card__content {
@@ -88,6 +89,7 @@
     font: var(--ds-typography-heading-md);
     font-family: inherit;
     padding: var(--ds-spacing-2) 0;
+    color: inherit;
   }
 
   .fds-card--link h1,
@@ -99,6 +101,7 @@
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
     text-underline-offset: max(6px, 0.25rem, 0.22em);
+    color: inherit;
   }
 
   .fds-card--neutral {
