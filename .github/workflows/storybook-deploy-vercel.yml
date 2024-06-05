@@ -12,6 +12,13 @@ on:
         options:
           - production
           - next
+  push:
+    branches:
+      - next
+    paths:
+      - 'packages/**'
+      - 'apps/storybook/**'
+      - 'assets/**'
 jobs:
   deploy:
     name: Build & deploy to Vercel
