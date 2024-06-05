@@ -160,13 +160,12 @@ Eksempler på forklarende feilmeldinger:
 
 Vi kan presentere feilmeldinger for brukerne når brukerne forlater feltet eller når de velger "Gå videre" eller "Send inn". Vi unngår å vise feilmeldinger mens brukeren fyller ut feltet.
 
-Når brukerne forlater et felt, viser vi feilmeldinger kun når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
+Når brukerne forlater et felt, viser vi feilmeldinger når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
 
-Hvis det er felter som må fylles ut, eller det er feil i flere felter, er det best å vise feilmeldingen når brukeren selv er klar for å gå videre. Det er spesielt viktig når når brukere benytter tastaturet til å navigere i løsningen. Da virker det forstyrrende hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
+Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å gå til neste side eller sende inn skjemaet. Det samme gjelder om det er en feilmelding som baserer seg på input fra flere felter. Siden vi ikke vet når brukeren er ferdig med å fylle ut feltene, venter vi til brukeren selv er klar til å gå videre.
+Det er spesielt viktig når når brukere benytter tastaturet til å navigere i løsningen. Da virker det forstyrrende hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
 
-Vi koder feilmeldinger som skal vises når brukeren forlater feltet på en slik måte at vi vet om brukeren har skrevet noe i feltet før vi viser feilmeldingen. Det tryggeste er å vise feilmeldingen når brukeren selv er klar til å gå videre.
-
-Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å gå til neste side eller sende inn skjemaet. Da må vi vise tydelig at det er et felt som ikke er fylt ut. Her kan du lese mer om hvordan du markerer obligatoriske og valgfrie skjemafelt.
+[Artikkel om markerering av obligatoriske og valgfrie skjemafelt.](/monstre/obligatoriske-og-valgfrie-felt).
 
 ### Ikke deaktiver submit-knappen
 
