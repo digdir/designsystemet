@@ -102,12 +102,13 @@
   }
 
   .fds-checkbox__input:indeterminate {
-    --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
-    --dsc-checkbox-background: var(--ds-color-accent-border-strong);
+    --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
+    --dsc-checkbox-background: var(--ds-color-accent-base-default);
     --dsc-checkbox-check_color: white;
+  }
 
-    background-color: var(--dsc-checkbox-background);
-    background-repeat: no-repeat;
+  .fds-checkbox__input:indeterminate::after {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.25 11.25C4.25 10.4216 4.92157 9.75 5.75 9.75H16.75C17.5784 9.75 18.25 10.4216 18.25 11.25C18.25 12.0784 17.5784 12.75 16.75 12.75H5.75C4.92157 12.75 4.25 12.0784 4.25 11.25Z' fill='white' /%3E%3C/svg%3E%0A");
   }
 
   .fds-checkbox--readonly > .fds-checkbox__input {
@@ -155,6 +156,12 @@
       box-shadow:
         var(--dsc-checkbox-border__hover),
         inset 0 0 0 2px var(--dsc-checkbox-border-color);
+    }
+
+    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:indeterminate:hover {
+      --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
+
+      box-shadow: var(--dsc-checkbox-border__hover);
     }
 
     .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:checked:focus-visible:not(:disabled) {
