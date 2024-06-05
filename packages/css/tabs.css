@@ -20,6 +20,7 @@
 
   .fds-tabs__content {
     padding: var(--ds-spacing-5);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-tabs--sm .fds-tabs__tab,

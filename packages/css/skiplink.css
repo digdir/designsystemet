@@ -24,8 +24,8 @@
     align-items: center;
     border: var(--ds-border-width-default) solid transparent;
     background-color: transparent;
-    color: var(--ds-color-accent-base-hover);
-    border-color: var(--ds-color-accent-base-hover);
+    color: var(--ds-color-accent-text-subtle);
+    border-color: var(--ds-color-accent-border-strong);
     width: fit-content;
     padding: var(--dsc-skiplink-padding);
     box-sizing: border-box;
