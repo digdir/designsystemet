@@ -26,9 +26,10 @@ export const typographyClasses: Format = {
 
         const baseFontPx = (basePxFontSize as unknown as number) || 16;
         const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
+        const selector = R.replace('-typography', '', token.name);
 
         const className = `
-  .${token.name} {
+  .${selector} {
     font-size: ${fontSize};
     line-height: ${typography?.lineHeight};
     font-weight: ${typography?.fontWeight};
@@ -39,8 +40,7 @@ export const typographyClasses: Format = {
     }, dictionary.allTokens);
 
     return fileHeader({ file }).then(
-      (fileHeaderText) => `${fileHeaderText}
-@layer ds.typography {
+      (fileHeaderText) => `${fileHeaderText}@layer ds.typography {
 ${classNames.join('\n')}
 }\n`,
     );
