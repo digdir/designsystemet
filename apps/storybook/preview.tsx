@@ -168,8 +168,8 @@ const preview: Preview = {
 export const decorators = [
   withThemeByDataAttribute({
     themes: {
-      light: 'light',
-      dark: 'dark',
+      Light: 'light',
+      Dark: 'dark',
     },
     defaultTheme: 'light',
     attributeName: 'data-ds-color-mode',
