@@ -7,10 +7,10 @@ export default create({
   // Colors
   base: 'light',
   colorSecondary: '#0062BA',
-  barTextColor: 'var(--ds-color-neutral-text-default)',
+  barTextColor: '#243142',
   textColor: '#1e2b3c', // TODO does not work with css vars atm. bug?
-  inputTextColor: 'var(--ds-color-neutral-text-default)',
-  appBg: 'var(--ds-color-neutral-background-default)',
+  inputTextColor: '#243142',
+  appBg: '#fefefe',
   appPreviewBg: 'var(--ds-color-neutral-background-default)',
-  appContentBg: 'var(--ds-color-neutral-background-default)',
+  appContentBg: '#fefefe',
 });
