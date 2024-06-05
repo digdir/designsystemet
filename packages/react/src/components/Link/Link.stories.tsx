@@ -22,6 +22,7 @@ export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: 'https://designsystemet.no/',
+    color: 'accent',
   },
 };
 
@@ -55,3 +56,11 @@ LongLink.decorators = [
     </div>
   ),
 ];
+
+export const Neutral: Story = {
+  args: {
+    children: 'Gå til designsystemet',
+    href: 'https://designsystemet.no/',
+    color: 'neutral',
+  },
+};

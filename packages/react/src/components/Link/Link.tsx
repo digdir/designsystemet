@@ -10,6 +10,12 @@ export type LinkProps = {
   /** Custom class name for the link. This will be appended to the design system class names. */
   className?: string;
 
+  /**
+   * The color of the link.
+   * @default 'accent'
+   */
+  color?: 'accent' | 'neutral';
+
   /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
   href?: string;
   /**
@@ -20,12 +26,12 @@ export type LinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ asChild, children, className, ...rest }, ref) => {
+  ({ color = 'accent', asChild, children, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
 
     return (
       <Component
-        className={cl('fds-link', className)}
+        className={cl('fds-link', `fds-link__${color}`, className)}
         ref={ref}
         {...rest}
       >
