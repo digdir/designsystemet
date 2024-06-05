@@ -2,10 +2,9 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
 
 import { Container } from '../Container/Container';
-import { Link } from '../Link/Link';
 
 import classes from './Footer.module.css';
 
@@ -28,7 +27,12 @@ const rightLinks = [
   {
     text: 'designsystem@digdir.no',
     url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon aria-hidden='true' />,
+    prefix: (
+      <EnvelopeClosedIcon
+        aria-hidden='true'
+        fontSize='1.5em'
+      />
+    ),
   },
   {
     text: 'Bli invitert til slack',
@@ -85,9 +89,10 @@ const LinkList = (links: LinkListItemProps[]) => {
       {links.map((item, index) => (
         <li key={index}>
           <Link
-            prefix={item.prefix}
             href={item.url}
+            color='neutral'
           >
+            {item.prefix}
             {item.text}
           </Link>
         </li>
