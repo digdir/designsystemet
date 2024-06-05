@@ -16,6 +16,7 @@
     "theme": "yarn workspace theme dev",
     "devsite": "yarn workspace dev dev",
     "figma-plugin": "yarn workspace figma-plugin dev",
+    "figma-plugin:build": "yarn workspace figma-plugin build",
     "build": "lerna run build",
     "build:theme": "yarn workspace theme build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
