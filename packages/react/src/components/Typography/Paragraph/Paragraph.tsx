@@ -3,19 +3,14 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import { getSize } from '../../../utilities/getSize';
-
-type OldParagraphSizes = 'xsmall' | 'small' | 'medium' | 'large';
-
 export type ParagraphProps = {
   /**
    * Changes text sizing
    *
    * @default `md`
    *
-   * @note `xsmall`, `small`, `medium`, `large` is deprecated
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | OldParagraphSizes;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Adds margin-bottom */
   spacing?: boolean;
   /** Adjusts styling for paragraph length */
@@ -29,9 +24,8 @@ export type ParagraphProps = {
 
 /** Use `Paragraph` to display text with paragraph text styles. */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ className, spacing, asChild, variant, ...rest }, ref) => {
+  ({ className, spacing, size = 'md', asChild, variant, ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
-    const size = getSize(rest.size || 'md');
 
     return (
       <Component

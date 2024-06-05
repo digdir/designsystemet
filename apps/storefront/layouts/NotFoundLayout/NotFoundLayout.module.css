@@ -1,6 +1,6 @@
 .content {
   height: 100%;
-  padding: var(--fds-spacing-14) 0;
+  padding: var(--ds-spacing-14) 0;
 }
 
 .container {
@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-14);
+  gap: var(--ds-spacing-14);
   margin: 0 auto;
 }
 
@@ -26,10 +26,10 @@
 }
 
 .title {
-  font: var(--fds-typography-heading-large);
-  margin-bottom: var(--fds-spacing-4);
+  font: var(--ds-typography-heading-lg);
+  margin-bottom: var(--ds-spacing-4);
 }
 
 .desc {
-  font: var(--fds-typography-paragraph-medium);
+  font: var(--ds-typography-paragraph-md);
 }

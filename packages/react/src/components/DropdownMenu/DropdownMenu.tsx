@@ -3,9 +3,6 @@ import type * as React from 'react';
 import type { Placement } from '@floating-ui/react';
 
 import type { PortalProps } from '../../types/Portal';
-import { getSize } from '../../utilities/getSize';
-
-type OldDropdownMenuSizes = 'small' | 'medium' | 'large';
 
 export type DropdownMenuProps = {
   /** Whether the dropdown is open or not.
@@ -21,9 +18,8 @@ export type DropdownMenuProps = {
   /**
    * The size of the dropdown
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    **/
-  size?: 'sm' | 'md' | 'lg' | OldDropdownMenuSizes;
+  size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
 } & PortalProps;
 
@@ -32,12 +28,9 @@ export const DropdownMenu = ({
   onClose,
   placement = 'bottom-end',
   portal,
+  size = 'md',
   children,
-  ...rest
 }: DropdownMenuProps) => {
-  const size = getSize(rest.size || 'md') as NonNullable<
-    DropdownMenuProps['size']
-  >;
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 

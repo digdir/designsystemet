@@ -1,9 +1,9 @@
 .page {
-  padding-bottom: var(--fds-spacing-18);
+  padding-bottom: var(--ds-spacing-18);
 }
 
 .grid {
-  padding-top: var(--fds-spacing-12);
+  padding-top: var(--ds-spacing-12);
   display: grid;
   grid-row-gap: 32px;
   grid-column-gap: 32px;

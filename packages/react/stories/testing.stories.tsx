@@ -25,7 +25,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
         }}
@@ -53,7 +53,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           alignItems: 'flex-start',
           flexDirection: direction,

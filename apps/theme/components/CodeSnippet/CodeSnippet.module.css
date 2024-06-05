@@ -1,0 +1,40 @@
+.codeSnippet {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.copyContainer {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: calc(100% - 1px);
+  width: calc(100% - 1px);
+  float: left;
+  margin-right: -100%;
+  pointer-events: none;
+}
+
+.icon {
+  pointer-events: auto;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b434d;
+  color: white;
+  border-radius: var(--fds-border_radius-medium);
+  border: none;
+  transition: 0.15s all;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: #575e68;
+}

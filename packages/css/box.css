@@ -1,73 +1,73 @@
-@layer fds.box {
+@layer ds.box {
   .fds-box--xs-shadow {
-    box-shadow: var(--fds-shadow-xsmall);
+    box-shadow: var(--ds-shadow-xs);
   }
 
   .fds-box--sm-shadow {
-    box-shadow: var(--fds-shadow-small);
+    box-shadow: var(--ds-shadow-sm);
   }
 
   .fds-box--md-shadow {
-    box-shadow: var(--fds-shadow-medium);
+    box-shadow: var(--ds-shadow-md);
   }
 
   .fds-box--lg-shadow {
-    box-shadow: var(--fds-shadow-large);
+    box-shadow: var(--ds-shadow-lg);
   }
 
   .fds-box--xl-shadow {
-    box-shadow: var(--fds-shadow-xlarge);
+    box-shadow: var(--ds-shadow-xl);
   }
 
   .fds-box--default-border-color {
-    border: 1px solid var(--fds-semantic-border-neutral-default);
+    border: 1px solid var(--ds-color-neutral-border-default);
   }
 
   .fds-box--subtle-border-color {
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+    border: 1px solid var(--ds-color-neutral-border-subtle);
   }
 
   .fds-box--strong-border-color {
-    border: 1px solid var(--fds-semantic-border-neutral-strong);
+    border: 1px solid var(--ds-color-neutral-base-strong);
   }
 
   .fds-box--sm-border-radius {
-    border-radius: var(--fds-border_radius-small);
+    border-radius: var(--ds-border-radius-sm);
   }
 
   .fds-box--md-border-radius {
-    border-radius: var(--fds-border_radius-medium);
+    border-radius: var(--ds-border-radius-md);
   }
 
   .fds-box--lg-border-radius {
-    border-radius: var(--fds-border_radius-large);
+    border-radius: var(--ds-border-radius-lg);
   }
 
   .fds-box--xl-border-radius {
-    border-radius: var(--fds-border_radius-xlarge);
+    border-radius: var(--ds-border-radius-xl);
   }
 
   .fds-box--2xl-border-radius {
-    border-radius: var(--fds-border_radius-xxlarge);
+    border-radius: var(--ds-border-radius-2xl);
   }
 
   .fds-box--3xl-border-radius {
-    border-radius: var(--fds-border_radius-xxxlarge);
+    border-radius: var(--ds-border-radius-3xl);
   }
 
   .fds-box--4xl-border-radius {
-    border-radius: var(--fds-border_radius-xxxxlarge);
+    border-radius: var(--ds-border-radius-4xl);
   }
 
   .fds-box--full-border-radius {
-    border-radius: var(--fds-border_radius-full);
+    border-radius: var(--ds-border-radius-full);
   }
 
   .fds-box--default-background {
-    background-color: var(--fds-semantic-background-default);
+    background-color: var(--ds-color-neutral-background-default);
   }
 
   .fds-box--subtle-background {
-    background-color: var(--fds-semantic-background-subtle);
+    background-color: var(--ds-color-neutral-background-subtle);
   }
 }

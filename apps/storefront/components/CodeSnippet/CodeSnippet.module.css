@@ -13,14 +13,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--fds-semantic-text-neutral-default);
+  background-color: var(--ds-color-neutral-text-default);
   color: white;
-  border-radius: var(--fds-border_radius-medium);
+  border-radius: var(--ds-border-radius-md);
   border: none;
   transition: 0.15s all;
   cursor: pointer;
 }
 
 .icon:hover {
-  background-color: var(--fds-semantic-text-neutral-subtle);
+  background-color: var(--ds-color-neutral-text-subtle);
 }

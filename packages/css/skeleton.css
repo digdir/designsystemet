@@ -1,12 +1,12 @@
-@layer fds.skeleton {
+@layer ds.skeleton {
   .fds-skeleton {
-    --fds-skeleton-animation-duration: 0.8s;
+    --dsc-skeleton-animation-duration: 0.8s;
 
     height: 1.3em;
     pointer-events: none;
     user-select: none;
-    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-    animation: fds-skeleton-opacity-fade var(--fds-skeleton-animation-duration) linear infinite alternate;
+    background-color: var(--ds-color-neutral-surface-default);
+    animation: fds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   }
 
   .fds-skeleton--circle {
@@ -43,7 +43,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .fds-skeleton {
-      --fds-skeleton-animation-duration: 1.6s;
+      --dsc-skeleton-animation-duration: 1.6s;
     }
   }
 

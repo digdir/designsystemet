@@ -1,0 +1,49 @@
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.header img {
+  height: 34px;
+}
+
+.links a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin-left: 32px;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 10px;
+  font-size: 18px;
+  letter-spacing: 0.1px;
+}
+
+.links a:hover {
+  border-color: #d4d4d4;
+}
+
+.container {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.active {
+  border-color: inherit !important;
+  font-weight: 500;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.tag {
+  background-color: #f2d6ff;
+  border-radius: 4px;
+  padding: 7px 10px;
+  font-size: 18px;
+  font-weight: 500;
+}

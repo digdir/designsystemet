@@ -2,10 +2,6 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
 import cl from 'clsx/lite';
 
-import { getSize } from '../../utilities/getSize';
-
-type OldTabSize = 'small' | 'medium' | 'large';
-
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
   value?: string;
@@ -16,9 +12,8 @@ export type TabsProps = {
   /**
    * Changes items size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldTabSize;
+  size?: 'sm' | 'md' | 'lg';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 /** `Tabs` component.
@@ -45,9 +40,18 @@ export type TabsContextProps = {
 export const TabsContext = createContext<TabsContextProps>({});
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  ({ children, value, defaultValue, className, onChange, ...rest }, ref) => {
-    const size = getSize(rest.size || 'md');
-
+  (
+    {
+      size = 'md',
+      children,
+      value,
+      defaultValue,
+      className,
+      onChange,
+      ...rest
+    },
+    ref,
+  ) => {
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined

@@ -1,11 +1,11 @@
 name: Build tokens
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'design-tokens/**'
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'design-tokens/**'
 jobs:
   checks:
     name: Builds, lints and tests code

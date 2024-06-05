@@ -42,7 +42,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', gap: 'var(--fds-spacing-2)' }}>
+    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
       <Popover
         open={open}
         placement='top'
@@ -99,7 +99,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
             color='danger'
             onClick={() => setOpen(false)}
             style={{
-              marginTop: 'var(--fds-spacing-2)',
+              marginTop: 'var(--ds-spacing-2)',
             }}
           >
             Slett

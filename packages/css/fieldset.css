@@ -1,4 +1,4 @@
-@layer fds.fieldset {
+@layer ds.fieldset {
   .fds-fieldset {
     margin: 0;
     padding: 0;
@@ -9,11 +9,11 @@
   .fds-fieldset--spacing {
     display: flex;
     flex-direction: column;
-    gap: var(--fds-spacing-2);
+    gap: var(--ds-spacing-2);
   }
 
   .fds-fieldset__description {
-    color: var(--fds-semantic-text-neutral-subtle);
+    color: var(--ds-color-neutral-text-subtle);
     font-weight: 400;
   }
 
@@ -32,7 +32,7 @@
 
   .fds-fieldset:disabled .fds-fieldset__legend,
   .fds-fieldset:disabled .fds-fieldset__description {
-    color: var(--fds-semantic-border-neutral-subtle);
+    color: var(--ds-color-neutral-border-subtle);
   }
 
   .fds-fieldset__error-message {

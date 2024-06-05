@@ -2,30 +2,30 @@
   display: block;
   text-align: center;
   background-color: white;
-  padding: var(--fds-spacing-10);
-  border-radius: var(--fds-border_radius-medium);
-  box-shadow: var(--fds-shadow-xsmall);
+  padding: var(--ds-spacing-10);
+  border-radius: var(--ds-border-radius-md);
+  box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
   transition: 0.2s all;
 }
 
 .card:hover {
-  box-shadow: var(--fds-shadow-medium);
+  box-shadow: var(--ds-shadow-md);
   transform: translateY(-4px);
 }
 
 .title {
-  margin-top: var(--fds-spacing-3);
+  margin-top: var(--ds-spacing-3);
   text-decoration: underline;
   text-underline-offset: 7px;
 }
 
 .card:focus-visible {
-  --fds-focus-border-width: 3px;
+  --dsc-focus-border-width: 3px;
 
-  box-shadow: 0 0 0 var(--fds-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
-  outline: var(--fds-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-  outline-offset: var(--fds-focus-border-width);
+  box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-neutral-background-default);
+  outline: var(--dsc-focus-border-width) solid var(--ds-color-neutral-text-default);
+  outline-offset: var(--dsc-focus-border-width);
 }
 
 .image {

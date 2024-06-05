@@ -12,15 +12,15 @@
 }
 
 .content > p {
-  font: var(--fds-typography-paragraph-medium);
-  margin-bottom: var(--fds-spacing-5);
+  font: var(--ds-typography-paragraph-md);
+  margin-bottom: var(--ds-spacing-5);
 }
 
 /* A <p> tag that comes directly after <h1> will be treated as an ingress */
 .content h1 + p {
-  font: var(--fds-typography-ingress-medium);
+  font: var(--ds-typography-ingress-md);
   margin-top: 0;
-  margin-bottom: var(--fds-spacing-8);
+  margin-bottom: var(--ds-spacing-8);
 }
 
 /* Heading styling with anchor link */
@@ -36,26 +36,26 @@
 .content > h2,
 .content > h3,
 .content > h4 {
-  margin-top: var(--fds-spacing-10);
-  margin-bottom: var(--fds-spacing-3);
+  margin-top: var(--ds-spacing-10);
+  margin-bottom: var(--ds-spacing-3);
 }
 
 .content > h1 {
   margin-top: 0;
-  margin-bottom: var(--fds-spacing-4);
-  font: var(--fds-typography-heading-xlarge);
+  margin-bottom: var(--ds-spacing-4);
+  font: var(--ds-typography-heading-xl);
 }
 
 .content > h2 {
-  font: var(--fds-typography-heading-medium);
+  font: var(--ds-typography-heading-md);
 }
 
 .content > h3 {
-  font: var(--fds-typography-heading-small);
+  font: var(--ds-typography-heading-sm);
 }
 
 .content > h4 {
-  font: var(--fds-typography-heading-xsmall);
+  font: var(--ds-typography-heading-xs);
 }
 
 /* Anchor link styling */
@@ -83,7 +83,7 @@
 .content > p a,
 .content > ul > li a,
 .content > ol > li a {
-  color: var(--fds-semantic-text-action-default);
+  color: var(--ds-color-accent-base-default);
   text-underline-offset: 4px;
 }
 
@@ -97,26 +97,26 @@
 
 .content img {
   width: 100%;
-  margin: var(--fds-spacing-5) 0;
-  border-radius: var(--fds-border_radius-medium);
-  box-shadow: var(--fds-shadow-medium);
+  margin: var(--ds-spacing-5) 0;
+  border-radius: var(--ds-border-radius-md);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .content strong {
   display: inline-block;
-  margin-top: var(--fds-spacing-1);
+  margin-top: var(--ds-spacing-1);
   font-weight: 500;
 }
 
 .content > ul > li,
 .content > ol > li {
-  font: var(--fds-typography-paragraph-medium);
+  font: var(--ds-typography-paragraph-md);
   line-height: 1.9em;
 }
 
 .content > ul > li > ol,
 .content > ol > li > ul {
-  margin-top: var(--fds-spacing-1);
+  margin-top: var(--ds-spacing-1);
 }
 
 .content > p > a:hover,
@@ -126,33 +126,33 @@
 }
 
 .content pre {
-  background-color: var(--fds-semantic-background-subtle);
-  padding: var(--fds-spacing-5);
-  margin: var(--fds-spacing-7) 0;
-  border-radius: var(--fds-border_radius-medium);
+  background-color: var(--ds-color-neutral-background-subtle);
+  padding: var(--ds-spacing-5);
+  margin: var(--ds-spacing-7) 0;
+  border-radius: var(--ds-border-radius-md);
 }
 
 .content > iframe {
-  box-shadow: var(--fds-shadow-medium);
-  margin: var(--fds-spacing-5);
-  border-radius: var(--fds-border_radius-medium);
+  box-shadow: var(--ds-shadow-md);
+  margin: var(--ds-spacing-5);
+  border-radius: var(--ds-border-radius-md);
 }
 
 .content > table {
   width: 100%;
-  margin: var(--fds-spacing-7) 0;
+  margin: var(--ds-spacing-7) 0;
   border-collapse: collapse;
 }
 
 .content > table td,
 .content > table th {
-  padding: var(--fds-spacing-4);
-  border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  padding: var(--ds-spacing-4);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .content > table th {
   text-align: left;
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
   font-weight: 600;
 }
 
@@ -163,8 +163,8 @@
   margin: 1px;
   font-size: 0.9em;
   white-space: break-spaces;
-  background-color: var(--fds-semantic-surface-neutral-subtle-hover);
-  border-radius: var(--fds-border_radius-medium);
+  background-color: var(--ds-color-neutral-surface-default);
+  border-radius: var(--ds-border-radius-md);
 }
 
 .content > *:first-child {

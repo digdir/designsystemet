@@ -4,19 +4,19 @@
 }
 
 .blue {
-  background-color: var(--fds-brand-alt3-300);
+  background-color: var(--ds-color-brand3-3);
 }
 
 .red {
-  background-color: var(--fds-brand-alt1-300);
+  background-color: var(--ds-color-brand1-3);
 }
 
 .yellow {
-  background-color: var(--fds-brand-alt2-300);
+  background-color: var(--ds-color-brand2-3);
 }
 
 .grey {
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .container {
@@ -46,8 +46,8 @@
 }
 
 .title {
-  font: var(--fds-typography-heading-large);
-  margin-bottom: var(--fds-spacing-4);
+  font: var(--ds-typography-heading-lg);
+  margin-bottom: var(--ds-spacing-4);
 }
 
 .tag {
@@ -55,7 +55,7 @@
 }
 
 .desc {
-  font: var(--fds-typography-paragraph-medium);
+  font: var(--ds-typography-paragraph-md);
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.7em;
@@ -78,7 +78,7 @@
 
 .button {
   height: 48px;
-  padding: 0 var(--fds-spacing-4);
+  padding: 0 var(--ds-spacing-4);
   border: 1px solid #c0c0c0;
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: 0.1s all;
-  color: var(--fds-semantic-text-neutral-default) !important;
+  color: var(--ds-color-neutral-text-default) !important;
   text-decoration: none;
 }
 
@@ -94,8 +94,8 @@
   color: inherit;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-5);
-  margin-top: var(--fds-spacing-5);
+  gap: var(--ds-spacing-5);
+  margin-top: var(--ds-spacing-5);
 }
 
 @media (max-width: 480px) {
@@ -109,22 +109,22 @@
 }
 
 .button svg {
-  margin-right: var(--fds-spacing-2);
+  margin-right: var(--ds-spacing-2);
   color: #1e2b3c;
 }
 
 .button img {
   height: 20px;
-  margin-right: var(--fds-spacing-2);
+  margin-right: var(--ds-spacing-2);
   border-radius: 50%;
 }
 
 .link {
   text-underline-offset: 6px;
-  color: var(--fds-semantic-text-neutral-default);
+  color: var(--ds-color-neutral-text-default);
   display: flex;
   align-items: center;
-  margin-top: var(--fds-spacing-5);
+  margin-top: var(--ds-spacing-5);
   font-size: 18px;
   font-weight: 500;
 }
@@ -134,8 +134,8 @@
 }
 
 .link svg {
-  margin-right: var(--fds-spacing-2);
-  color: var(--fds-semantic-text-neutral-default);
+  margin-right: var(--ds-spacing-2);
+  color: var(--ds-color-neutral-text-default);
 }
 
 .fallbackImg {

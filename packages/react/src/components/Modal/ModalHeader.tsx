@@ -60,7 +60,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
           <Button
             name='close'
             variant='tertiary'
-            color='second'
+            color='neutral'
             size='md'
             onClick={context?.closeModal}
             autoFocus

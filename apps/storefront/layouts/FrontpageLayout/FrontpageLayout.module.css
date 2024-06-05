@@ -7,7 +7,7 @@
 
 .content::before {
   content: '';
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
   position: absolute;
   z-index: -1;
   height: 200vh;

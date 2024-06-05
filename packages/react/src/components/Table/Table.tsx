@@ -2,17 +2,13 @@ import * as React from 'react';
 import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
-import { getSize } from '../../utilities/getSize';
-
-type OldTableSizes = 'small' | 'medium' | 'large';
 
 export type TableProps = {
   /**
    * The size of the table
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldTableSizes;
+  size?: 'sm' | 'md' | 'lg';
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -36,14 +32,13 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       zebra = false,
       stickyHeader = false,
       border = false,
+      size = 'md',
       className,
       children,
       ...rest
     },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md') as TableProps['size'];
-
     return (
       <Paragraph
         asChild

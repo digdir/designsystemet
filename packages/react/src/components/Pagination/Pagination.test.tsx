@@ -195,10 +195,9 @@ describe('Pagination.Root', () => {
 
   it('should render correctly with custom props', () => {
     renderWithRoot({
-      size: 'large',
+      size: 'lg',
       compact: true,
     });
-
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 

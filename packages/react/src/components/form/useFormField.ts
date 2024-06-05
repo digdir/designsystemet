@@ -2,11 +2,7 @@ import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import cl from 'clsx/lite';
 
-import { getSize } from '../../utilities/getSize';
-
 import { FieldsetContext } from './Fieldset/FieldsetContext';
-
-type OldFormFielSize = 'small' | 'medium' | 'large';
 
 export type FormFieldProps = {
   /** Error message for form field */
@@ -26,9 +22,8 @@ export type FormFieldProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldFormFielSize;
+  size?: 'sm' | 'md' | 'lg';
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
@@ -57,16 +52,13 @@ export const useFormField = (
   const id = props.id ?? `${prefix}-${randomId}`;
   const errorId = props.errorId ?? `${prefix}-error-${randomId}`;
   const descriptionId = `${prefix}-description-${randomId}`;
+  const size = props.size ?? fieldset?.size ?? 'md';
 
   const disabled = fieldset?.disabled || props?.disabled;
   const readOnly =
     ((fieldset?.readOnly || props?.readOnly) && !disabled) || undefined;
 
   const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
-
-  const size = getSize(props.size || fieldset?.size || 'md') as NonNullable<
-    FormFieldProps['size']
-  >;
 
   return {
     readOnly,
@@ -81,9 +73,11 @@ export const useFormField = (
       'aria-describedby':
         cl(
           props['aria-describedby'],
-          (!!props?.description && typeof props?.description === 'string') && descriptionId,
-          (hasError && !fieldset?.error) && errorId,
-          (hasError && !!fieldset?.error) && fieldset?.errorId,
+          !!props?.description &&
+            typeof props?.description === 'string' &&
+            descriptionId,
+          hasError && !fieldset?.error && errorId,
+          hasError && !!fieldset?.error && fieldset?.errorId,
         ) || undefined,
     },
   };

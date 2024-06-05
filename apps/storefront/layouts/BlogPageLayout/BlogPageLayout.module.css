@@ -2,16 +2,16 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-8);
-  margin-top: var(--fds-spacing-18);
+  gap: var(--ds-spacing-8);
+  margin-top: var(--ds-spacing-18);
   margin-bottom: var(--page-spacing-bottom);
 }
 
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--fds-spacing-18);
-  column-gap: var(--fds-spacing-12);
+  gap: var(--ds-spacing-18);
+  column-gap: var(--ds-spacing-12);
 }
 
 .main [data-featured='true'] {

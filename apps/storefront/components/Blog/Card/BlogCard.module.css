@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    padding: var(--fds-spacing-8) var(--fds-spacing-10);
+    padding: var(--ds-spacing-8) var(--ds-spacing-10);
   }
 
   .card[data-featured='true'] .heading {
@@ -38,8 +38,8 @@
 
 .meta {
   display: flex;
-  gap: var(--fds-spacing-3);
-  color: var(--fds-semantic-text-neutral-subtle);
+  gap: var(--ds-spacing-3);
+  color: var(--ds-color-neutral-text-subtle);
   font-size: 14px !important;
 }
 
@@ -48,6 +48,6 @@
   height: 7px;
   transform: rotate(45deg);
   border-radius: 1px;
-  background-color: var(--fds-brand-alt1-600);
+  background-color: var(--ds-color-brand1-6);
   margin: auto;
 }

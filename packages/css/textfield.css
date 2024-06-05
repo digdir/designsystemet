@@ -1,15 +1,15 @@
-@layer fds.textfield {
+@layer ds.textfield {
   .fds-textfield {
     display: grid;
-    gap: var(--fds-spacing-2);
+    gap: var(--ds-spacing-2);
   }
 
   .fds-textfield__adornment {
-    color: var(--fds-semantic-border-neutral-default);
-    background: var(--fds-semantic-surface-neutral-subtle);
-    padding: 9px var(--fds-spacing-4);
-    border-radius: var(--fds-border_radius-medium);
-    border: solid 1px var(--fds-semantic-border-neutral-default);
+    color: var(--ds-color-neutral-border-strong);
+    background: var(--ds-color-neutral-background-subtle);
+    padding: 9px var(--ds-spacing-4);
+    border-radius: var(--ds-border-radius-md);
+    border: solid 1px var(--ds-color-neutral-border-strong);
     box-sizing: border-box;
     display: inline-block;
   }
@@ -22,9 +22,11 @@
     flex: 0 1 auto;
     width: 100%;
     appearance: none;
-    padding: 0 var(--fds-spacing-3);
-    border: solid 1px var(--fds-semantic-border-input-default);
-    border-radius: var(--fds-border_radius-medium);
+    padding: 0 var(--ds-spacing-3);
+    border: solid 1px var(--ds-color-neutral-border-default);
+    background: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
+    border-radius: var(--ds-border-radius-md);
   }
 
   .fds-textfield__input:disabled {
@@ -32,88 +34,88 @@
   }
 
   .fds-textfield--readonly .fds-textfield__input {
-    background: var(--fds-semantic-surface-neutral-subtle);
-    border-color: var(--fds-semantic-border-neutral-default);
+    background: var(--ds-color-neutral-background-subtle);
+    border-color: var(--ds-color-neutral-border-strong);
   }
 
   .fds-textfield__field {
     display: flex;
     align-items: stretch;
-    border-radius: var(--fds-border_radius-medium);
+    border-radius: var(--ds-border-radius-md);
   }
 
   .fds-textfield__field > *:first-child {
-    border-top-left-radius: var(--fds-border_radius-medium);
-    border-bottom-left-radius: var(--fds-border_radius-medium);
+    border-top-left-radius: var(--ds-border-radius-md);
+    border-bottom-left-radius: var(--ds-border-radius-md);
   }
 
   .fds-textfield__field > *:last-child {
-    border-top-right-radius: var(--fds-border_radius-medium);
-    border-bottom-right-radius: var(--fds-border_radius-medium);
+    border-top-right-radius: var(--ds-border-radius-md);
+    border-bottom-right-radius: var(--ds-border-radius-md);
   }
 
   .fds-textfield--sm .fds-textfield__adornment {
-    padding: var(--fds-sizing-2) var(--fds-spacing-3);
+    padding: var(--ds-sizing-2) var(--ds-spacing-3);
   }
 
   .fds-textfield--md .fds-textfield__adornment {
-    padding: 0.65rem var(--fds-spacing-4);
+    padding: 0.65rem var(--ds-spacing-4);
   }
 
   .fds-textfield--lg .fds-textfield__adornment {
-    padding: 0.85rem var(--fds-spacing-5);
+    padding: 0.85rem var(--ds-spacing-5);
   }
 
   .fds-textfield--sm .fds-textfield__field {
-    height: var(--fds-sizing-10);
+    height: var(--ds-sizing-10);
   }
 
   .fds-textfield--md .fds-textfield__field {
-    height: var(--fds-sizing-12);
+    height: var(--ds-sizing-12);
   }
 
   .fds-textfield--lg .fds-textfield__field {
-    height: var(--fds-sizing-14);
+    height: var(--ds-sizing-14);
   }
 
   .fds-textfield--sm .fds-textfield__input {
-    padding: 0 var(--fds-spacing-2);
+    padding: 0 var(--ds-spacing-2);
   }
 
   .fds-textfield--md .fds-textfield__input {
-    padding: 0 var(--fds-spacing-3);
+    padding: 0 var(--ds-spacing-3);
   }
 
   .fds-textfield--lg .fds-textfield__input {
-    padding: 0 var(--fds-spacing-4);
+    padding: 0 var(--ds-spacing-4);
   }
 
   .fds-textfield__label {
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     align-items: center;
   }
 
   .fds-textfield__description {
-    color: var(--fds-semantic-text-neutral-subtle);
-    margin-top: calc(var(--fds-spacing-2) * -1);
+    color: var(--ds-color-neutral-text-subtle);
+    margin-top: calc(var(--ds-spacing-2) * -1);
   }
 
   .fds-textfield:has(.fds-textfield__input:disabled) {
-    opacity: var(--fds-opacity-disabled);
+    opacity: var(--ds-disabled-opacity);
   }
 
   .fds-textfield--error .fds-textfield__input:not(:focus-visible) {
-    border-color: var(--fds-semantic-border-danger-default);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+    border-color: var(--ds-color-danger-border-default);
+    box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .fds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-      border-color: var(--fds-semantic-border-input-hover);
-      box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+      border-color: var(--ds-color-accent-border-strong);
+      box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
     }
   }
 

@@ -48,7 +48,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
             </div>
             <Heading
               level={1}
-              size='large'
+              size='lg'
               className={classes.title}
             >
               {data.title}

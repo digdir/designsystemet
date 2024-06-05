@@ -3,8 +3,10 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
 export type AccordionProps = {
-  /** Accordion background color */
-  color?: 'first' | 'second' | 'third' | 'neutral' | 'subtle';
+  /** Accordion background color
+   * @default neutral
+   */
+  color?: 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'subtle';
   /** Show border */
   border?: boolean;
   /** Instances of `Accordion.Item` */
@@ -12,18 +14,20 @@ export type AccordionProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ border = false, color = 'neutral', className, ...rest }, ref) => (
-    <div
-      className={cl(
-        'fds-accordion',
-        border && 'fds-accordion--border',
-        color && `fds-accordion--${color}`,
-        className,
-      )}
-      ref={ref}
-      {...rest}
-    />
-  ),
+  ({ border = false, color = 'neutral', className, ...rest }, ref) => {
+    return (
+      <div
+        className={cl(
+          'fds-accordion',
+          border && 'fds-accordion--border',
+          color && `fds-accordion--${color}`,
+          className,
+        )}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
 );
 
 Accordion.displayName = 'Accordion';

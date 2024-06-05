@@ -1,17 +1,18 @@
-@layer fds.togglegroup {
+@layer ds.togglegroup {
   .fds-togglegroup {
-    background-color: var(--fds-semantic-background-default);
-    border: var(--fds-semantic-border-neutral-default) solid var(--fds-border_width-default);
-    border-radius: var(--fds-border_radius-large);
+    background-color: var(--ds-color-neutral-background-default);
+    border: var(--ds-color-neutral-border-default) solid var(--ds-border-width-default);
+    border-radius: var(--ds-border-radius-lg);
     width: fit-content;
+    height: fit-content;
   }
 
   .fds-togglegroup__content {
     display: inline-grid;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    padding: var(--fds-spacing-1);
+    padding: var(--ds-spacing-1);
   }
 
   .fds-togglegroup__input {

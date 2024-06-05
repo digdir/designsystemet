@@ -59,7 +59,7 @@ const BlogArticleLayout = ({
             <Heading level={1}>{heading}</Heading>
             <Ingress className={classes.ingress}>{ingress}</Ingress>
             <Paragraph
-              size='small'
+              size='sm'
               className={classes.meta}
             >
               <span>{date}</span>
@@ -81,11 +81,11 @@ const BlogArticleLayout = ({
             <div className={classes.wantToWrite}>
               <Heading
                 level={3}
-                size='xsmall'
+                size='xs'
               >
                 Ønsker du å skrive for bloggen?
               </Heading>
-              <Paragraph size='small'>
+              <Paragraph size='sm'>
                 Ta kontakt med oss på{' '}
                 <Link
                   href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'

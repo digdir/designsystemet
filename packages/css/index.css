@@ -1,21 +1,21 @@
 @charset "UTF-8";
 
-@layer fds.typography, fds.utils, fds.box, fds.btn;
+@layer ds.typography, ds.utils, ds.box, ds.btn;
 
 /** Import order defines ordinal specificity for layers */
+@import url('./label.css');
+@import url('./heading.css');
+@import url('./paragraph.css');
+@import url('./ingress.css');
 @import url('./button.css');
 @import url('./utils.css');
 @import url('./box.css');
 @import url('./alert.css');
-@import url('./ingress.css');
 @import url('./skiplink.css');
 @import url('./accordion.css');
 @import url('./switch.css');
 @import url('./checkbox.css');
 @import url('./error-message.css');
-@import url('./label.css');
-@import url('./heading.css');
-@import url('./paragraph.css');
 @import url('./radio.css');
 @import url('./search.css');
 @import url('./native-select.css');

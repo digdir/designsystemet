@@ -14,7 +14,7 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
         <div className={styles.icon}>{icon}</div>
         <Heading
           level={2}
-          size='small'
+          size='sm'
           spacing={false}
           style={{
             margin: 0,

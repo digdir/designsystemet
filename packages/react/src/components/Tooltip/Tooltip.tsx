@@ -20,6 +20,8 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
+import type { PortalProps } from '../../types/Portal';
+
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
@@ -46,15 +48,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
-  inverted?: boolean;
-  /**
-   * Portals the floating element outside of the app root and into the body.
-   * @see https://floating-ui.com/docs/floatingportal
-   * @default true
-   */
-  portal?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> &
+  PortalProps;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -65,8 +60,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
-      portal = true,
-      inverted,
+      portal = false,
       className,
       style,
       ...rest
@@ -145,11 +139,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               style={{ ...floatingStyles, ...animationStyles, ...style }}
               role='tooltip'
               {...getFloatingProps({
-                className: cl(
-                  'fds-tooltip',
-                  inverted && 'fds-tooltip--inverted',
-                  className,
-                ),
+                className: cl('fds-tooltip', className),
                 ref: mergedRef,
                 ...rest,
               })}

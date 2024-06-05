@@ -20,7 +20,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         className={classes.image}
       />
       <Heading
-        size='xsmall'
+        size='xs'
         className={classes.title}
         level={2}
       >

@@ -28,8 +28,8 @@ const ClipboardBtn = ({ title, value, text = '' }: ClipboardBtnProps) => {
           onClick={() => onBtnClick(value)}
           title={title}
           variant='tertiary'
-          color='second'
-          size='small'
+          color='neutral'
+          size='sm'
         >
           <ClipboardIcon fontSize={'1.4rem'} />
           {text && <span className={classes.text}>{text}</span>}
