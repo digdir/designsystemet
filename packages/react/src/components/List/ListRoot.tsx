@@ -2,15 +2,11 @@ import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { useState, forwardRef, createContext } from 'react';
 
-import { getSize } from '../../utilities/getSize';
-
 export type ListContextType = {
   size: 'sm' | 'md' | 'lg';
   headingId?: string;
   setHeadingId: (id: string) => void;
 };
-
-export type OldListSizes = 'small' | 'medium' | 'large';
 
 export const ListContext = createContext<ListContextType>({
   size: 'md',
@@ -23,9 +19,8 @@ export type ListProps = {
    * Changes text sizing
    * @default md
    *
-   * @note `small`, `medium` and `large` are deprecated
    */
-  size?: ListContextType['size'] | OldListSizes;
+  size?: ListContextType['size'];
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -34,10 +29,9 @@ export type ListProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ListRoot = forwardRef<HTMLDivElement, ListProps>(
-  ({ asChild, ...rest }, ref) => {
+  ({ size = 'md', asChild, ...rest }, ref) => {
     const [headingId, setHeadingId] = useState<string>();
     const Component = asChild ? Slot : 'div';
-    const size = getSize(rest.size || 'md') as ListContextType['size'];
 
     return (
       <ListContext.Provider value={{ size, headingId, setHeadingId }}>

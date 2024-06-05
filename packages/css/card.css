@@ -1,4 +1,28 @@
-@layer fds.card {
+@layer ds.card {
+  .fds-card {
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: var(--ds-color-neutral-text-default);
+    border-radius: var(--ds-border-radius-md);
+    border: 1px solid var(--dsc-card-border-color);
+  }
+
+  .fds-card a,
+  .fds-card a:visited {
+    color: var(--ds-color-neutral-text-default);
+  }
+
+  .fds-card > hr {
+    width: 100%;
+    margin: var(--ds-spacing-3) 0;
+  }
+
   .fds-card__media {
     width: auto;
   }
@@ -10,16 +34,43 @@
     border: 0;
   }
 
+  .fds-card > *:not(.fds-card__media, hr) {
+    padding-left: var(--ds-spacing-6);
+    padding-right: var(--ds-spacing-6);
+  }
+
+  .fds-card > *:not(.fds-card__media):first-child {
+    padding-top: var(--ds-spacing-6);
+  }
+
+  .fds-card > *:not(.fds-card__media):last-child {
+    padding-bottom: var(--ds-spacing-6);
+  }
+
+  .fds-card__media:first-child {
+    padding-bottom: var(--ds-spacing-4);
+  }
+
+  .fds-card__media:last-child {
+    padding-top: var(--ds-spacing-6);
+  }
+
+  .fds-card--link {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
+
+    text-decoration: none;
+  }
+
   .fds-card__footer,
   .fds-card__content {
     display: flex;
     justify-content: flex-start;
-    gap: var(--fds-spacing-4);
+    gap: var(--ds-spacing-4);
     flex-wrap: wrap;
     word-wrap: break-word;
-    font: var(--fds-typography-paragraph-medium);
+    font: var(--ds-typography-paragraph-md);
     font-family: inherit;
-    padding: var(--fds-spacing-2) 0;
+    padding: var(--ds-spacing-2) 0;
   }
 
   .fds-card__content {
@@ -31,55 +82,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     word-wrap: break-word;
-    font: var(--fds-typography-heading-medium);
+    font: var(--ds-typography-heading-md);
     font-family: inherit;
-    padding: var(--fds-spacing-2) 0;
-  }
-
-  .fds-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    color: var(--fds-semantic-text-neutral-default);
-    border-radius: var(--fds-border_radius-medium);
-  }
-
-  .fds-card a,
-  .fds-card a:visited {
-    color: var(--fds-semantic-text-neutral-default);
-  }
-
-  .fds-card > hr {
-    width: 100%;
-    margin: var(--fds-spacing-3) 0;
-  }
-
-  .fds-card > *:not(.fds-card__media, hr) {
-    padding-left: var(--fds-spacing-6);
-    padding-right: var(--fds-spacing-6);
-  }
-
-  .fds-card > *:not(.fds-card__media):first-child {
-    padding-top: var(--fds-spacing-6);
-  }
-
-  .fds-card > *:not(.fds-card__media):last-child {
-    padding-bottom: var(--fds-spacing-6);
-  }
-
-  .fds-card__media:first-child {
-    padding-bottom: var(--fds-spacing-4);
-  }
-
-  .fds-card__media:last-child {
-    padding-top: var(--fds-spacing-6);
-  }
-
-  .fds-card--link {
-    text-decoration: none;
+    padding: var(--ds-spacing-2) 0;
   }
 
   .fds-card--link h1,
@@ -90,68 +95,85 @@
   .fds-card--link h6 {
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-    text-underline-offset: max(4px, 0.25rem, 0.22em);
+    text-underline-offset: max(6px, 0.25rem, 0.22em);
   }
 
   .fds-card--neutral {
-    background-color: var(--fds-semantic-surface-neutral-default);
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
+    background-color: var(--ds-color-neutral-background-default);
+  }
+
+  .fds-card--neutral.fds-card--link:hover {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-card--subtle {
-    background-color: var(--fds-semantic-surface-neutral-subtle);
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+
+    background-color: var(--ds-color-neutral-background-subtle);
+  }
+
+  .fds-card--subtle.fds-card--link:hover {
+    --dsc-card-border-color: var(--ds-color-neutral-border-default);
   }
 
   .fds-card--neutral.fds-card--link:hover,
   .fds-card--subtle.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-neutral-subtle-hover);
+    background-color: var(--ds-color-neutral-surface-default);
   }
 
-  /*
-  --fds surface-neutral-subtle-active does not exist? Old style
-  .fds-card--neutral.fds-card--link:active,
-  .fds-card--subtle.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-neutral-subtle-active);
-  }
-  */
+  .fds-card--brand1 {
+    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
 
-  .fds-card--first {
-    background-color: var(--fds-semantic-surface-first-light);
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+    background-color: var(--ds-color-brand1-surface-default);
   }
 
-  .fds-card--first.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-first-light-hover);
+  .fds-card--brand1.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand1-border-default);
   }
 
-  .fds-card--first.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-first-light-active);
+  .fds-card--brand1.fds-card--link:hover {
+    background-color: var(--ds-color-brand1-surface-hover);
   }
 
-  .fds-card--second {
-    background-color: var(--fds-semantic-surface-second-light);
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  .fds-card--brand1.fds-card--link:active {
+    background-color: var(--ds-color-brand1-surface-active);
   }
 
-  .fds-card--second.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-second-light-hover);
+  .fds-card--brand2 {
+    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
+
+    background-color: var(--ds-color-brand2-surface-default);
   }
 
-  .fds-card--second.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-second-light-active);
+  .fds-card--brand2.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand2-border-default);
   }
 
-  .fds-card--third {
-    background-color: var(--fds-semantic-surface-third-light);
-    border: 1px solid var(--fds-semantic-border-neutral-subtle);
+  .fds-card--brand2.fds-card--link:hover {
+    background-color: var(--ds-color-brand2-surface-hover);
   }
 
-  .fds-card--third.fds-card--link:hover {
-    background-color: var(--fds-semantic-surface-third-light-hover);
+  .fds-card--brand2.fds-card--link:active {
+    background-color: var(--ds-color-brand2-surface-active);
   }
 
-  .fds-card--third.fds-card--link:active {
-    background-color: var(--fds-semantic-surface-third-light-active);
+  .fds-card--brand3 {
+    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
+
+    background-color: var(--ds-color-brand3-surface-default);
+  }
+
+  .fds-card--brand3.fds-card--link {
+    --dsc-card-border-color: var(--ds-color-brand3-border-default);
+  }
+
+  .fds-card--brand3.fds-card--link:hover {
+    background-color: var(--ds-color-brand3-surface-hover);
+  }
+
+  .fds-card--brand3.fds-card--link:active {
+    background-color: var(--ds-color-brand3-surface-active);
   }
 }

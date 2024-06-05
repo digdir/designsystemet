@@ -27,7 +27,7 @@ const Section = ({
           {title && (
             <Heading
               level={2}
-              size='medium'
+              size='md'
             >
               {title}
             </Heading>

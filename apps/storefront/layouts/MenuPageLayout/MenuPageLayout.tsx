@@ -53,7 +53,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
             <div className={classes.header}>
               <div className={classes.headerText}>
                 <Heading
-                  size='large'
+                  size='lg'
                   className={classes.title}
                 >
                   {data.title}

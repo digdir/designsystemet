@@ -1,61 +1,61 @@
-@layer fds.typography.heading {
+@layer ds.typography.heading {
   .fds-heading {
-    --fdsc-bottom-spacing: var(--fds-spacing-6);
+    --dsc-bottom-spacing: var(--ds-spacing-6);
 
     margin: 0;
-    color: var(--fds-semantic-text-neutral-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-heading--spacing {
-    margin-bottom: var(--fdsc-bottom-spacing);
+    margin-bottom: var(--dsc-bottom-spacing);
   }
 
   .fds-heading--2xl {
-    --fdsc-bottom-spacing: var(--fds-spacing-7);
+    --dsc-bottom-spacing: var(--ds-spacing-7);
 
-    font: var(--fds-typography-heading-2xlarge);
+    font: var(--ds-typography-heading-2xl);
     font-family: inherit;
   }
 
   .fds-heading--xl {
-    --fdsc-bottom-spacing: var(--fds-spacing-6);
+    --dsc-bottom-spacing: var(--ds-spacing-6);
 
-    font: var(--fds-typography-heading-xlarge);
+    font: var(--ds-typography-heading-xl);
     font-family: inherit;
   }
 
   .fds-heading--lg {
-    --fdsc-bottom-spacing: var(--fds-spacing-5);
+    --dsc-bottom-spacing: var(--ds-spacing-5);
 
-    font: var(--fds-typography-heading-large);
+    font: var(--ds-typography-heading-lg);
     font-family: inherit;
   }
 
   .fds-heading--md {
-    --fdsc-bottom-spacing: var(--fds-spacing-4);
+    --dsc-bottom-spacing: var(--ds-spacing-4);
 
-    font: var(--fds-typography-heading-medium);
+    font: var(--ds-typography-heading-md);
     font-family: inherit;
   }
 
   .fds-heading--sm {
-    --fdsc-bottom-spacing: var(--fds-spacing-3);
+    --dsc-bottom-spacing: var(--ds-spacing-3);
 
-    font: var(--fds-typography-heading-small);
+    font: var(--ds-typography-heading-sm);
     font-family: inherit;
   }
 
   .fds-heading--xs {
-    --fdsc-bottom-spacing: var(--fds-spacing-2);
+    --dsc-bottom-spacing: var(--ds-spacing-2);
 
-    font: var(--fds-typography-heading-xsmall);
+    font: var(--ds-typography-heading-xs);
     font-family: inherit;
   }
 
   .fds-heading--2xs {
-    --fdsc-bottom-spacing: var(--fds-spacing-1);
+    --dsc-bottom-spacing: var(--ds-spacing-1);
 
-    font: var(--fds-typography-heading-xxsmall);
+    font: var(--ds-typography-heading-2xs);
     font-family: inherit;
   }
 }

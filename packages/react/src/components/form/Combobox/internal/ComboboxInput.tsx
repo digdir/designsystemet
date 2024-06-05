@@ -106,7 +106,7 @@ export const ComboboxInput = ({
   return (
     <Box
       {...props}
-      aria-disabled={disabled}
+      aria-disabled={disabled ? 'true' : undefined}
       className={cl(
         'fds-textfield__input',
         'fds-combobox__input__wrapper',

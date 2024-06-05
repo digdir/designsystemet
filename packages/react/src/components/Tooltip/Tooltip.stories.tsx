@@ -14,20 +14,6 @@ const decorators = [
     </div>
   ),
 ];
-const invertedDecorator = [
-  (Story: StoryFn) => (
-    <div
-      style={{
-        background: '#1E2B3C',
-        padding: '3rem',
-        justifyContent: 'center',
-        display: 'flex',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 export default {
   title: 'Komponenter/Tooltip',
@@ -85,18 +71,5 @@ export const Portal: Story = {
     children: defaultChildren,
     placement: 'top',
     portal: true,
-  },
-};
-
-export const Inverted: Story = {
-  args: {
-    content: 'Tooltip text',
-    placement: 'bottom',
-    children: defaultChildren,
-    inverted: true,
-  },
-  decorators: invertedDecorator,
-  parameters: {
-    layout: 'fullscreen',
   },
 };

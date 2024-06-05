@@ -1,4 +1,4 @@
 **/dist/**/*.css
-packages/theme/brand/**/*.css
+packages/theme/**/*.css
 packages/css/dist/**/*.css
-apps/theme/**
+apps/legacy-tokens.css

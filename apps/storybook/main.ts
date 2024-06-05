@@ -31,6 +31,7 @@ const config: StorybookConfig = {
     },
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
+    '@storybook/addon-themes',
   ],
   staticDirs: ['./assets'],
   framework: {
@@ -51,6 +52,7 @@ const config: StorybookConfig = {
     });
   },
 };
+
 export default config;
 
 function getAbsolutePath(value: string): StorybookConfig['framework'] {

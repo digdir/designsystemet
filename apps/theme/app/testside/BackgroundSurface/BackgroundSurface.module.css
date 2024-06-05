@@ -1,0 +1,35 @@
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.column {
+  width: 33%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.boxes {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.box {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 24px;
+  border-radius: 4px;
+}
+
+.surface {
+  width: calc(25% - 20px);
+  height: 48px;
+  border-radius: 2px;
+}
+
+.boxTitle {
+  margin-bottom: 12px;
+}

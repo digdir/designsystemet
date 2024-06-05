@@ -11,8 +11,6 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 
-type OldTextfieldSizes = 'small' | 'medium' | 'large';
-
 export type TextfieldProps = {
   /** Label */
   label?: ReactNode;
@@ -21,28 +19,27 @@ export type TextfieldProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldTextfieldSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
   suffix?: string;
   /** Supported `input` types */
   type?:
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -92,7 +89,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       readOnly,
     } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.value || props.defaultValue);
+    const [inputValue, setInputValue] = useState(
+      props.value || props.defaultValue,
+    );
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 

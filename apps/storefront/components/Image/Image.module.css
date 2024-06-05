@@ -1,10 +1,10 @@
 .container {
   display: flex;
   max-width: var(--media-max-width);
-  margin: var(--fds-spacing-7) 0;
-  border-radius: var(--fds-border_radius-medium);
+  margin: var(--ds-spacing-7) 0;
+  border-radius: var(--ds-border-radius-md);
   flex-wrap: wrap;
-  gap: var(--fds-spacing-4);
+  gap: var(--ds-spacing-4);
 }
 
 .container .img {
@@ -13,10 +13,10 @@
 }
 
 .boxShadow .img {
-  box-shadow: var(--fds-shadow-medium);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .container .caption {
-  color: var(--fds-semantic-text-neutral-subtle);
-  font: var(--fds-typography-paragraph-small);
+  color: var(--ds-color-neutral-text-subtle);
+  font: var(--ds-typography-paragraph-sm);
 }

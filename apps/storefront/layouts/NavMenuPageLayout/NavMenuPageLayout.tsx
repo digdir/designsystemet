@@ -36,7 +36,7 @@ const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
           id='main'
           className={classes.right}
         >
-          <div className={classes.content}>
+          <div>
             <MdxContent>{content}</MdxContent>
           </div>
         </main>
