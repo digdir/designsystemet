@@ -162,6 +162,9 @@ const preview: Preview = {
     viewport: {
       viewports,
     },
+    backgrounds: {
+      disable: true,
+    },
   },
 };
 
