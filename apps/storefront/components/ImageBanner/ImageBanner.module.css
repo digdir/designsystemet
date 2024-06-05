@@ -76,20 +76,6 @@
   color: inherit;
 }
 
-.button {
-  height: 48px;
-  padding: 0 var(--ds-spacing-4);
-  border: 1px solid #c0c0c0;
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.1s all;
-  color: var(--ds-color-neutral-text-default) !important;
-  text-decoration: none;
-}
-
 .buttons {
   color: inherit;
   display: flex;
@@ -102,21 +88,6 @@
   .button {
     width: 100%;
   }
-}
-
-.button:hover {
-  background-color: #dbedff;
-}
-
-.button svg {
-  margin-right: var(--ds-spacing-2);
-  color: #1e2b3c;
-}
-
-.button img {
-  height: 20px;
-  margin-right: var(--ds-spacing-2);
-  border-radius: 50%;
 }
 
 .link {

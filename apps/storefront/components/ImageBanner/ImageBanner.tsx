@@ -2,7 +2,7 @@
 import type React from 'react';
 import { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
-import { Link } from '@digdir/designsystemet-react';
+import { Link, Button } from '@digdir/designsystemet-react';
 import NextLink from 'next/link';
 
 import { Container } from '../Container/Container';
@@ -123,14 +123,19 @@ const ImageBanner = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
+                <Button
                   key={index}
+                  asChild
+                  variant='secondary'
                 >
-                  {item.prefix}
-                  {item.text}
-                </a>
+                  <a
+                    href={item.href}
+                    className={classes.button}
+                  >
+                    {item.prefix}
+                    {item.text}
+                  </a>
+                </Button>
               ))}
             </div>
           )}
