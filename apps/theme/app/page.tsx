@@ -5,7 +5,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { Heading } from '@/packages/react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';

@@ -1,4 +1,4 @@
-import { Heading } from '@/packages/react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import type { ThemeType } from '../../../utils/themeUtils';
 

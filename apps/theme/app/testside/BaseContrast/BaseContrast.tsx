@@ -1,5 +1,5 @@
 'use client';
-import { Heading } from '@/packages/react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
 import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';

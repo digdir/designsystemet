@@ -1,4 +1,4 @@
-import { Modal } from '@/packages/react';
+import { Modal } from '@digdir/designsystemet-react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 import { CopyBtn } from '../CopyBtn/CopyBtn';

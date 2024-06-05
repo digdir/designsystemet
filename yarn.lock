@@ -21375,6 +21375,9 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
+    "@digdir/designsystemet-css": "workspace:^"
+    "@digdir/designsystemet-react": "workspace:^"
+    "@digdir/designsystemet-theme": "workspace:^"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
     "@mui/material": "npm:^5.15.15"

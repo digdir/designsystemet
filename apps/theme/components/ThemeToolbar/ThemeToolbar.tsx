@@ -1,6 +1,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
-import { NativeSelect } from '@/packages/react';
+import { NativeSelect } from '@digdir/designsystemet-react';
 import type { ChangeEvent } from 'react';
 
 import { ColorPicker } from '../ColorPicker/ColorPicker';

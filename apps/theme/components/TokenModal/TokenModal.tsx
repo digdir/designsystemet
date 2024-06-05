@@ -2,7 +2,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import { Button, Heading, Modal, Tabs, Tooltip } from '@/packages/react';
+import {
+  Button,
+  Heading,
+  Modal,
+  Tabs,
+  Tooltip,
+} from '@digdir/designsystemet-react';
 import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';

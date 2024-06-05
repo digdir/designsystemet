@@ -1,5 +1,5 @@
 'use client';
-import { Heading } from '@/packages/react';
+import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading } from '@/packages/react';
+import { Heading } from '@digdir/designsystemet-react';
 
 import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';
 

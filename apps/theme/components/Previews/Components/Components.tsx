@@ -22,7 +22,7 @@ import {
   ToggleGroup,
   Combobox,
   Tooltip,
-} from '@/packages/react';
+} from '@digdir/designsystemet-react';
 
 import classes from './Components.module.css';
 
@@ -423,12 +423,30 @@ export const Components = () => {
         </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
-          <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
-          frivillig virksomhet. Det er bare foreninger,{' '}
-          <Link href='#'>stiftelser</Link> og som kan registreres. Virksomheten
-          kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
-          styre. Virksomheten må være registrert i{' '}
-          <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
+          <Link
+            href='#'
+            color='neutral'
+          >
+            Frivillighetsregisteret
+          </Link>
+          , må organisasjonen drive frivillig virksomhet. Det er bare
+          foreninger,{' '}
+          <Link
+            href='#'
+            color='neutral'
+          >
+            stiftelser
+          </Link>{' '}
+          og som kan registreres. Virksomheten kan ikke dele ut midler til
+          fysiske personer. Virksomheten må ha et styre. Virksomheten må være
+          registrert i{' '}
+          <Link
+            href='#'
+            color='neutral'
+          >
+            Enhetsregisteret
+          </Link>{' '}
+          før den kan bli registrert.
         </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>

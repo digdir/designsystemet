@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
-import { Tooltip } from '@/packages/react';
+import { Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './Copybtn.module.css';
 

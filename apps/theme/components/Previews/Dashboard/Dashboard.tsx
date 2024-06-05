@@ -11,7 +11,7 @@ import {
   TeddyBearIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { Button, Heading, Paragraph } from '@/packages/react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import classes from './Dashboard.module.css';
 import { ColorCard } from './ColorCard/ColorCard';

@@ -4,7 +4,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
-import { Popover } from '@/packages/react';
+import { Popover } from '@digdir/designsystemet-react';
 
 import classes from './ColorPicker.module.css';
 
