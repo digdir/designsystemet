@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "plugins/*"
   ],
   "scripts": {
     "test": "vitest",
@@ -14,6 +15,7 @@
     "storefront": "yarn workspace storefront dev",
     "theme": "yarn workspace theme dev",
     "devsite": "yarn workspace dev dev",
+    "figma-plugin": "yarn workspace figma-plugin dev",
     "build": "lerna run build",
     "build:theme": "yarn workspace theme build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
