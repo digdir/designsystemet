@@ -4,7 +4,7 @@
 }
 
 .header {
-  background-color: var(--ds-color-brand3-3);
+  background-color: var(--ds-color-brand3-surface-default);
   padding-top: var(--ds-spacing-7);
 }
 
@@ -12,6 +12,12 @@
   max-width: 780px;
   margin: 0 auto;
   padding-bottom: var(--ds-spacing-18);
+}
+
+.headerContent h1,
+.headerContent h2,
+.headerContent p {
+  color: var(--ds-color-brand3-text-default);
 }
 
 .title {

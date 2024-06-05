@@ -120,22 +120,16 @@
 }
 
 .link {
-  text-underline-offset: 6px;
-  color: var(--ds-color-neutral-text-default);
   display: flex;
   align-items: center;
   margin-top: var(--ds-spacing-5);
   font-size: 18px;
   font-weight: 500;
-}
-
-.link:hover {
-  text-decoration-thickness: 2px;
+  width: fit-content;
 }
 
 .link svg {
   margin-right: var(--ds-spacing-2);
-  color: var(--ds-color-neutral-text-default);
 }
 
 .fallbackImg {

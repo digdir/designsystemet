@@ -38,7 +38,7 @@
   height: 7px;
   transform: rotate(45deg);
   border-radius: 1px;
-  background-color: var(--ds-color-brand1-6);
+  background-color: var(--ds-color-brand1-7);
   margin: auto 0;
 }
 
@@ -87,7 +87,8 @@
 .wantToWrite {
   margin-top: var(--ds-spacing-12);
   border-radius: var(--ds-border-radius-2xl);
-  background: var(--ds-color-brand1-2);
+  background: var(--ds-color-brand1-surface-default);
+  color: var(--ds-color-brand1-text-default);
   padding: var(--ds-spacing-8);
   display: flex;
   flex-wrap: wrap;

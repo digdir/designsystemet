@@ -29,6 +29,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
             <Link
               asChild
               className={classes.backBtn}
+              color='neutral'
             >
               <NextLink
                 href={'/' + data.backUrl}
