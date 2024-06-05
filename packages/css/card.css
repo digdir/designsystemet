@@ -89,6 +89,14 @@
     font: var(--ds-typography-heading-md);
     font-family: inherit;
     padding: var(--ds-spacing-2) 0;
+  }
+
+  .fds-card__header h1,
+  .fds-card__header h2,
+  .fds-card__header h3,
+  .fds-card__header h4,
+  .fds-card__header h5,
+  .fds-card__header h6 {
     color: inherit;
   }
 
@@ -101,7 +109,6 @@
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
     text-underline-offset: max(6px, 0.25rem, 0.22em);
-    color: inherit;
   }
 
   .fds-card--neutral {
