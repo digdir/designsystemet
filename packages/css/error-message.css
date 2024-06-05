@@ -6,7 +6,7 @@
   }
 
   .fds-error-message--error {
-    color: var(--ds-color-danger-text-default);
+    color: var(--ds-color-danger-text-subtle);
   }
 
   .fds-error-message--spacing {

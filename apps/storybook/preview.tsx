@@ -171,7 +171,7 @@ export const decorators = [
       Light: 'light',
       Dark: 'dark',
     },
-    defaultTheme: 'light',
+    defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
   }),
 ];

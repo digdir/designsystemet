@@ -73,7 +73,6 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
       >
         <Checkbox value='kroatia'>Kroatia</Checkbox>
         <Checkbox value='slovakia'>Slovakia</Checkbox>
-        <Checkbox value='slovakia'>Slovakia</Checkbox>
         <Checkbox value='hobsyssel'>Hobsyssel</Checkbox>
         <Paragraph>eller</Paragraph>
         <Checkbox value='ingen'>
