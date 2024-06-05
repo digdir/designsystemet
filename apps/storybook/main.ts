@@ -3,9 +3,6 @@ import { dirname, join, resolve } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  docs: {
-    autodocs: true,
-  },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
@@ -33,13 +30,14 @@ const config: StorybookConfig = {
       },
     },
     getAbsolutePath('@storybook/addon-mdx-gfm'),
-    '@chromatic-com/storybook',
+    getAbsolutePath('@chromatic-com/storybook'),
+    '@storybook/addon-themes',
   ],
-  core: {
-    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
-  },
   staticDirs: ['./assets'],
-  framework: getAbsolutePath('@storybook/react-vite'),
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
+  },
   async viteFinal(config) {
     // Merge custom configuration into the default config
     const { mergeConfig } = await import('vite');
@@ -54,6 +52,7 @@ const config: StorybookConfig = {
     });
   },
 };
+
 export default config;
 
 function getAbsolutePath(value: string): StorybookConfig['framework'] {

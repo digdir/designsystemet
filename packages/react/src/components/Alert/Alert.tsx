@@ -9,7 +9,6 @@ import {
 import cl from 'clsx/lite';
 
 import { Paragraph } from '..';
-import { getSize } from '../../utilities/getSize';
 
 const icons: Record<
   Severity,
@@ -29,8 +28,6 @@ const icons: Record<
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
-type OldAlertSizes = 'small' | 'medium' | 'large';
-
 export type AlertProps = {
   /** Sets color & icon according to severity */
   severity?: Severity;
@@ -46,17 +43,22 @@ export type AlertProps = {
    * Does not affect font size.
    *
    * @default md
-   *
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldAlertSizes;
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLDivElement>;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    {
+      severity = 'info',
+      elevated,
+      iconTitle,
+      children,
+      size = 'md',
+      className,
+      ...rest
+    },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md') as AlertProps['size'];
     const { Icon, title } = icons[severity];
 
     return (

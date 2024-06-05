@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Farger',
-      date: '25. mars 2023',
+      date: '30. mai 2024',
       showMenu: true,
       icon: <PaletteIcon />,
       color: 'red',
@@ -23,13 +23,12 @@ export default ({ children }) => (
 
 ## Et fleksibelt fargesystem
 
-Fargesystemet består av globale farger som refererer til hva fargen er (eks. Red-500) og et semantisk nivå som beskriver hva fargen skal brukes til (eks. Text.Danger). Les mer om [fargesystemet og hvilke prinsipper det er bygget på](/grunnleggende/for-designere/grunnleggende/for-designere/fargesystem).
+Fargesystemet består av globale farger som refererer til hva fargen er (eks. red-1) og et semantisk nivå som beskriver hva fargen skal brukes til (eks. Text.Danger).
 
 ### Navnestruktur
 
 Et semantisk fargenavn er bygget opp av 3 ledd: <br/>
-_UI-element - Situasjon - Variant/Tilstand_ <br/>
-Første ledd refererer til elementet som fargelegges: background, Surface
+_farge - stryke - vekt_ <br/>
 
 - Background: Som regel bakgrunnen på hele siden (HTML body).
 - Surface: Bakgrunnsfargen til en ting. Eks. et panel, en knapp, en seksjon, etc.
@@ -41,4 +40,5 @@ Første ledd refererer til elementet som fargelegges: background, Surface
 <TokenList
   type='color'
   showThemePicker={true}
+  showModeSwitcher={false}
 />

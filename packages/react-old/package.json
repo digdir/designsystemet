@@ -1,6 +1,6 @@
 {
   "name": "@digdir/design-system-react",
-  "version": "0.53.11",
+  "version": "0.53.12",
   "description": "Legacy React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
@@ -10,6 +10,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
+  "private": true,
   "files": [
     "dist/**"
   ],
@@ -28,7 +29,7 @@
   },
   "dependencies": {
     "@altinn/figma-design-tokens": "^6.0.1",
-    "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-react": "0.62.0",
     "@floating-ui/react": "0.26.4",
     "@navikt/aksel-icons": "^5.12.2",
     "react-number-format": "5.3.1"

@@ -3,9 +3,9 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_THEME }}
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
     paths:
       - 'apps/theme/**'
 jobs:

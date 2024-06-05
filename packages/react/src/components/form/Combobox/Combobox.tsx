@@ -11,7 +11,6 @@ import type { PortalProps } from '../../../types/Portal';
 import useDebounce from '../../../utilities/useDebounce';
 import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
-import { getSize } from '../../../utilities/getSize';
 
 import type { Option } from './useCombobox';
 import useCombobox from './useCombobox';
@@ -142,6 +141,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       virtual = false,
       children,
       style,
+      size = 'md',
       loading,
       loadingLabel = 'Laster...',
       filter,
@@ -151,10 +151,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     },
     forwareddRef,
   ) => {
-    const size = getSize(rest.size || 'md') as NonNullable<
-      FormFieldProps['size']
-    >;
-
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);

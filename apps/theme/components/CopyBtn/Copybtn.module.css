@@ -1,0 +1,20 @@
+.btn {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--ds-color-neutral-surface-default);
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--ds-color-neutral-surface-hover);
+}
+
+.btn svg {
+  font-size: 21px;
+  position: absolute;
+}

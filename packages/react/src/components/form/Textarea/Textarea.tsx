@@ -77,8 +77,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cl(
             'fds-textarea',
             `fds-textarea--${size}`,
-            textareaProps.disabled && 'fds-textarea--disabled',
-            readOnly && `fds-textarea--readonly`,
             hasError && `fds-textarea--error`,
             className,
           )}
@@ -93,7 +91,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className='fds-textarea__readonly__icon'
+                  className='fds-textarea__readonly-icon'
                 />
               )}
               <span>{label}</span>
@@ -119,6 +117,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             className={cl('fds-textarea__input', `fds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
+            disabled={textareaProps.disabled}
+            readOnly={readOnly}
             {...omit(['size', 'error', 'errorId'], rest)}
             {...textareaProps}
             onChange={(e) => {

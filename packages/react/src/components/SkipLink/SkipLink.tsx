@@ -21,7 +21,7 @@ export const SkipLink = ({
       className={cl(`fds-sr-only`, 'fds-skiplink', className)}
       {...rest}
     >
-      {children}
+      <p className='fds-skiplink__content'>{children}</p>
     </a>
   );
 };

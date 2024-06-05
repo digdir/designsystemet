@@ -1,40 +1,40 @@
-@layer fds.typography.ingress {
+@layer ds.typography.ingress {
   .fds-ingress {
-    --fdsc-bottom-spacing: var(--fds-spacing-5);
+    --dsc-bottom-spacing: var(--ds-spacing-5);
 
     margin: 0;
-    color: var(--fds-semantic-text-neutral-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-ingress--spacing {
-    margin-bottom: var(--fdsc-bottom-spacing);
+    margin-bottom: var(--dsc-bottom-spacing);
   }
 
   .fds-ingress--md {
-    --fdsc-bottom-spacing: var(--fds-spacing-5);
+    --dsc-bottom-spacing: var(--ds-spacing-5);
 
-    font: var(--fds-typography-ingress-medium);
+    font: var(--ds-typography-ingress-md);
     font-family: inherit;
   }
 
   .fds-ingress--lg {
-    --fdsc-bottom-spacing: var(--fds-spacing-6);
+    --dsc-bottom-spacing: var(--ds-spacing-6);
 
-    font: var(--fds-typography-ingress-large);
+    font: var(--ds-typography-ingress-lg);
     font-family: inherit;
   }
 
   .fds-ingress--sm {
-    --fdsc-bottom-spacing: var(--fds-spacing-7);
+    --dsc-bottom-spacing: var(--ds-spacing-7);
 
-    font: var(--fds-typography-ingress-small);
+    font: var(--ds-typography-ingress-sm);
     font-family: inherit;
   }
 
   .fds-ingress--xs {
-    --fdsc-bottom-spacing: var(--fds-spacing-8);
+    --dsc-bottom-spacing: var(--ds-spacing-8);
 
-    font: var(--fds-typography-ingress-xsmall);
+    font: var(--ds-typography-ingress-xs);
     font-family: inherit;
   }
 }

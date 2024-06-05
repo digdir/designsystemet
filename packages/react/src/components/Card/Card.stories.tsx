@@ -49,13 +49,13 @@ export const LinkCard: Story = (args) => (
   <div
     style={{
       display: 'grid',
-      gap: 'var(--fds-spacing-4)',
+      gap: 'var(--ds-spacing-4)',
       gridTemplateColumns: 'repeat(2, 400px)',
     }}
   >
     <Card
       {...args}
-      color='first'
+      color='brand1'
       isLink
       asChild
     >
@@ -121,7 +121,7 @@ export const Variants: StoryFn<typeof Card> = () => {
     <div
       style={{
         display: 'grid',
-        gap: 'var(--fds-spacing-4)',
+        gap: 'var(--ds-spacing-4)',
         gridTemplateColumns: 'repeat(2, 400px)',
       }}
     >
@@ -167,7 +167,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='first'>
+      <Card color='brand1'>
         <Card.Media>
           <img
             src={cat3}
@@ -188,7 +188,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='second'>
+      <Card color='brand2'>
         <Card.Media>
           <img
             src={cat4}
@@ -209,7 +209,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='third'>
+      <Card color='brand3'>
         <Card.Media>
           <img
             src={cat5}
@@ -238,7 +238,7 @@ export const Media: Story = () => (
   <div
     style={{
       display: 'grid',
-      gap: 'var(--fds-spacing-4)',
+      gap: 'var(--ds-spacing-4)',
       gridTemplateColumns: 'repeat(2, 300px)',
     }}
   >

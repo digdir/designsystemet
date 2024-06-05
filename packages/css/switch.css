@@ -1,24 +1,26 @@
-@layer fds.switch {
+@layer ds.switch {
   .fds-switch {
-    --fds-switch--transition: 200ms;
-    --fds-switch-height: 1.75rem;
-    --fds-switch-focus-border-width: 3px;
+    --dsc-switch--transition: 200ms;
+    --dsc-switch-height: 1.75rem;
+    --dsc-switch-focus-border-width: 3px;
+    --dsc-switch-check_color: transparent;
+    --dsc-switch-thumb-background-color: var(--ds-color-neutral-background-default);
 
     position: relative;
   }
 
   @media (prefers-reduced-motion) {
     .switch {
-      --fds-switch--transition: 0;
+      --dsc-switch--transition: 0;
     }
   }
 
   .fds-switch__label {
-    min-height: var(--fds-sizing-10);
+    min-height: var(--ds-sizing-10);
     min-width: min-content;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     align-items: center;
     cursor: pointer;
   }
@@ -27,20 +29,21 @@
     position: relative;
     display: inline-block;
     pointer-events: none;
-    width: var(--fds-switch-width);
-    height: var(--fds-switch-height);
+    width: var(--dsc-switch-width);
+    height: var(--dsc-switch-height);
     margin: auto;
     overflow: visible;
-    border-radius: var(--fds-border_radius-full);
-    background-color: var(--fds-semantic-surface-neutral-dark);
-    transition: background-color var(--fds-switch--transition) ease;
-    margin-right: var(--fds-spacing-1);
+    border-radius: var(--ds-border-radius-full);
+    background-color: var(--ds-color-neutral-border-default);
+    transition: background-color var(--dsc-switch--transition) ease;
+    margin-right: var(--ds-spacing-1);
   }
 
   .fds-switch__description {
-    padding-left: calc(var(--fds-switch-width) + var(--fds-spacing-2));
-    margin-top: calc(var(--fds-spacing-2) * -1);
-    color: var(--fds-semantic-text-neutral-subtle);
+    padding-left: calc(var(--dsc-switch-width) + var(--ds-spacing-2));
+    margin-top: var(--ds-spacing-1);
+    color: var(--ds-color-neutral-text-subtle);
+    width: fit-content;
   }
 
   .fds-switch__readonly__icon {
@@ -85,40 +88,28 @@
     cursor: default;
   }
 
-  .fds-switch--disabled > .fds-switch__input,
-  .fds-switch--disabled > .fds-switch__label,
-  .fds-switch--disabled > .fds-switch__track {
-    cursor: not-allowed;
-  }
-
-  .fds-switch--disabled > .fds-switch__label,
-  .fds-switch--disabled > .fds-switch__track,
-  .fds-switch--disabled > .fds-switch__description {
-    opacity: var(--fds-opacity-disabled);
-  }
-
   .fds-switch--readonly > .fds-switch__description {
-    margin-left: var(--fds-spacing-1);
+    margin-left: var(--ds-spacing-1);
   }
 
   .fds-switch--sm,
   .fds-switch--sm .fds-switch__label {
-    min-height: var(--fds-sizing-6);
+    min-height: var(--ds-sizing-6);
   }
 
   .fds-switch--md,
   .fds-switch--md .fds-switch__label {
-    min-height: var(--fds-sizing-7);
+    min-height: var(--ds-sizing-7);
   }
 
   .fds-switch--lg,
   .fds-switch--lg .fds-switch__label {
-    min-height: var(--fds-sizing-8);
+    min-height: var(--ds-sizing-8);
   }
 
   .fds-switch--sm {
-    --fds-switch-height: var(--fds-sizing-6);
-    --fds-switch-width: var(--fds-sizing-11);
+    --dsc-switch-height: var(--ds-sizing-6);
+    --dsc-switch-width: var(--ds-sizing-11);
   }
 
   .fds-switch--sm .fds-switch__input {
@@ -127,8 +118,8 @@
   }
 
   .fds-switch--md {
-    --fds-switch-height: var(--fds-sizing-7);
-    --fds-switch-width: var(--fds-sizing-13);
+    --dsc-switch-height: var(--ds-sizing-7);
+    --dsc-switch-width: var(--ds-sizing-13);
   }
 
   .fds-switch--md .fds-switch__input {
@@ -137,8 +128,8 @@
   }
 
   .fds-switch--lg {
-    --fds-switch-height: var(--fds-sizing-8);
-    --fds-switch-width: var(--fds-sizing-15);
+    --dsc-switch-height: var(--ds-sizing-8);
+    --dsc-switch-width: var(--ds-sizing-15);
   }
 
   .fds-switch--lg .fds-switch__input {
@@ -154,63 +145,88 @@
     margin-right: 0;
   }
 
+  .fds-switch__input:disabled,
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label {
+    cursor: not-allowed;
+  }
+
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label,
+  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__description {
+    opacity: var(--ds-disabled-opacity);
+  }
+
   .fds-switch__input:focus-visible + .fds-switch__label .fds-switch__track {
-    outline: var(--fds-switch-focus-border-width) solid var(--fds-semantic-border-focus-outline);
-    box-shadow: inset 0 0 0 var(--fds-switch-focus-border-width) var(--fds-semantic-border-focus-boxshadow);
+    outline: var(--dsc-switch-focus-border-width) solid var(--ds-focus-outer);
+    outline-offset: var(--dsc-switch-focus-border-width);
+    box-shadow: 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-focus-inner);
   }
 
   .fds-switch__input:not([readonly]):checked + .fds-switch__label .fds-switch__track {
-    background-color: var(--fds-semantic-surface-success-default);
+    background-color: var(--ds-color-accent-base-default);
   }
 
   .fds-switch__thumb {
     scale: 0.8;
     position: absolute;
-    height: var(--fds-switch-height);
-    width: var(--fds-switch-height);
-    border-radius: var(--fds-border_radius-full);
-    background-color: var(--fds-semantic-background-default);
-    transition: transform var(--fds-switch--transition) ease;
+    height: var(--dsc-switch-height);
+    width: var(--dsc-switch-height);
+    border-radius: var(--ds-border-radius-full);
+    background-color: var(--dsc-switch-thumb-background-color);
+    transition: transform var(--dsc-switch--transition) ease;
   }
 
   .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
-    transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height)) * 1.2));
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='-3 -3 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.1339 2.86612C10.622 3.35427 10.622 4.14573 10.1339 4.63388L5.88388 8.88388C5.39573 9.37204 4.60427 9.37204 4.11612 8.88388L1.86612 6.63388C1.37796 6.14573 1.37796 5.35427 1.86612 4.86612C2.35427 4.37796 3.14573 4.37796 3.63388 4.86612L5 6.23223L8.36612 2.86612C8.85427 2.37796 9.64573 2.37796 10.1339 2.86612Z' fill='%23118849' /%3E%3C/svg%3E");
+    --dsc-switch-check_color: var(--ds-color-accent-base-default);
+    --dsc-switch-thumb-background-color: var(--ds-color-accent-contrast-default);
+
+    transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 1.2));
+  }
+
+  .fds-switch__thumb::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dsc-switch-check_color);
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='-3 -3 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.1339 2.86612C10.622 3.35427 10.622 4.14573 10.1339 4.63388L5.88388 8.88388C5.39573 9.37204 4.60427 9.37204 4.11612 8.88388L1.86612 6.63388C1.37796 6.14573 1.37796 5.35427 1.86612 4.86612C2.35427 4.37796 3.14573 4.37796 3.63388 4.86612L5 6.23223L8.36612 2.86612C8.85427 2.37796 9.64573 2.37796 10.1339 2.86612Z' fill='%23118849' /%3E%3C/svg%3E");
+    transition: background-color var(--dsc-switch--transition) ease;
   }
 
   .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track {
-    box-shadow: inset 0 0 0 2px var(--fds-semantic-border-neutral-subtle);
-    background-color: var(--fds-semantic-background-subtle);
+    box-shadow: inset 0 0 0 2px var(--ds-color-neutral-border-subtle);
+    background-color: var(--ds-color-neutral-background-subtle);
   }
 
   .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-    background-color: var(--fds-semantic-border-neutral-default);
-  }
+    --dsc-switch-check_color: var(--ds-color-neutral-background-subtle);
 
-  .fds-switch--readonly .fds-switch__input[readonly]:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='-3 -3 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.1339 2.86612C10.622 3.35427 10.622 4.14573 10.1339 4.63388L5.88388 8.88388C5.39573 9.37204 4.60427 9.37204 4.11612 8.88388L1.86612 6.63388C1.37796 6.14573 1.37796 5.35427 1.86612 4.86612C2.35427 4.37796 3.14573 4.37796 3.63388 4.86612L5 6.23223L8.36612 2.86612C8.85427 2.37796 9.64573 2.37796 10.1339 2.86612Z' fill='%23f4f5f6' /%3E%3C/svg%3E");
+    background-color: var(--ds-color-neutral-border-strong);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .fds-switch__input:not([readonly], :disabled):hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-      transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height)) * 0.2));
+      transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 0.2));
     }
 
     .fds-switch__input:not([readonly], :disabled):hover + .fds-switch__label {
-      color: var(--fds-semantic-border-input-hover);
+      color: var(--ds-color-accent-text-subtle);
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
-      transform: translateX(calc((var(--fds-switch-width) - var(--fds-switch-height))));
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='-3 -3 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.1339 2.86612C10.622 3.35427 10.622 4.14573 10.1339 4.63388L5.88388 8.88388C5.39573 9.37204 4.60427 9.37204 4.11612 8.88388L1.86612 6.63388C1.37796 6.14573 1.37796 5.35427 1.86612 4.86612C2.35427 4.37796 3.14573 4.37796 3.63388 4.86612L5 6.23223L8.36612 2.86612C8.85427 2.37796 9.64573 2.37796 10.1339 2.86612Z' fill='%230c6536' /%3E%3C/svg%3E");
+      --dsc-switch-check_color: var(--ds-color-accent-base-hover);
+
+      transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height))));
     }
 
     .fds-switch__input:not(:checked, :disabled, [readonly]):hover + .fds-switch__label .fds-switch__track {
-      background-color: var(--fds-semantic-surface-neutral-dark-hover);
+      background-color: var(--ds-color-neutral-border-strong);
     }
 
     .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track {
-      background-color: var(--fds-semantic-surface-success-hover);
+      background-color: var(--ds-color-accent-base-hover);
     }
   }
 }

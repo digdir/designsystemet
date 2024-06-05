@@ -22,32 +22,8 @@ export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: 'https://designsystemet.no/',
+    color: 'accent',
   },
-};
-
-export const Invertert: Story = {
-  args: {
-    children: 'Gå til designsystemet',
-    inverted: true,
-    href: 'https://designsystemet.no/',
-  },
-  parameters: {
-    layout: 'fullscreen',
-  },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          background: '#333333',
-          padding: '32px',
-          justifyContent: 'center',
-          display: 'flex',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const InText: StoryFn<typeof Link> = () => (
@@ -80,3 +56,11 @@ LongLink.decorators = [
     </div>
   ),
 ];
+
+export const Neutral: Story = {
+  args: {
+    children: 'Gå til designsystemet',
+    href: 'https://designsystemet.no/',
+    color: 'neutral',
+  },
+};

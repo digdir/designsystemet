@@ -1,0 +1,41 @@
+.colors {
+  display: flex;
+  gap: 8px;
+  border-radius: 0;
+}
+
+.header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.featured {
+  border-bottom-width: 2px;
+  border-color: #0062ba;
+  color: #0062ba;
+  font-weight: 500;
+}
+
+.names {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 17px;
+  gap: 8px;
+}
+
+.names div {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 1632px) {
+  .names div {
+    font-size: 15px;
+  }
+}

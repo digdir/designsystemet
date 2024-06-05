@@ -7,8 +7,11 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": false
   },
   "rootDir": "./src",
-  "include": ["./src/", "./declarations.d.ts"]
+  "include": ["./src/", "./bin/", "./declarations.d.ts"]
 }

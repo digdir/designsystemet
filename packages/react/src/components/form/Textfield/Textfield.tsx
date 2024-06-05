@@ -11,8 +11,6 @@ import { CharacterCounter } from '../CharacterCounter';
 
 import { useTextfield } from './useTextfield';
 
-type OldTextfieldSizes = 'small' | 'medium' | 'large';
-
 export type TextfieldProps = {
   /** Label */
   label?: ReactNode;
@@ -21,9 +19,8 @@ export type TextfieldProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldTextfieldSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
@@ -92,7 +89,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       readOnly,
     } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.defaultValue);
+    const [inputValue, setInputValue] = useState(
+      props.value || props.defaultValue,
+    );
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 
@@ -112,7 +111,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           className={cl(
             `fds-textfield`,
             `fds-textfield--${size}`,
-            inputProps.disabled && `fds-textfield--disabled`,
             readOnly && `fds-textfield--readonly`,
             hasError && `fds-textfield--error`,
             className,
@@ -177,6 +175,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               )}
               ref={ref}
               type={type}
+              disabled={inputProps.disabled}
               aria-describedby={describedBy}
               size={htmlSize}
               {...omit(['size', 'error', 'errorId'], rest)}

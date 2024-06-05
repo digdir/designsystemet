@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import { Container } from '../Container/Container';
 import { Link } from '../Link/Link';
@@ -97,13 +98,20 @@ const LinkList = (links: LinkListItemProps[]) => {
 
 const Footer = () => {
   return (
-    <footer className={classes.footer}>
+    <footer
+      className={classes.footer}
+      data-ds-color-mode='dark'
+    >
       <div className={classes.top}>
         <Container className={classes.container}>
           <div>
-            <h2 className={classes.title}>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
               Lages på tvers av offentlige etater:
-            </h2>
+            </Heading>
             <div className={classes.logos}>
               <Image
                 alt='Digdir logo'
@@ -126,17 +134,31 @@ const Footer = () => {
             </NextLink>
           </div>
           <div>
-            <h2 className={classes.title}>Om nettstedet</h2>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
+              Om nettstedet
+            </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
-            <h2 className={classes.title}>Kom i kontakt med oss</h2>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
+              Kom i kontakt med oss
+            </Heading>
             {LinkList(rightLinks)}
           </div>
         </Container>
       </div>
       <div className={classes.bottom}>
-        <Container>© {getCurrentYear()} Designsystemet</Container>
+        <Container>
+          <Paragraph>© {getCurrentYear()} Designsystemet</Paragraph>
+        </Container>
       </div>
     </footer>
   );

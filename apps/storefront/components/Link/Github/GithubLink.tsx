@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { Link } from '@digdir/designsystemet-react';
 import { useRouter } from 'next/router';
 
-export const GithubLink = ({ ...rest }: HTMLAttributes<HTMLAnchorElement>) => {
+export const GithubLink = ({
+  ...rest
+}: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
   const { asPath } = useRouter();
   const href = `https://github.com/digdir/designsystemet/tree/main/apps/storefront/pages${asPath}.mdx`;
 

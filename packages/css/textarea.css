@@ -1,10 +1,10 @@
-@layer fds.textarea {
+@layer ds.textarea {
   .fds-textarea {
     display: grid;
-    gap: var(--fds-spacing-2);
+    gap: var(--ds-spacing-2);
   }
 
-  .fds-textarea__readonly__icon {
+  .fds-textarea__readonly-icon {
     height: 1.2em;
     width: 1.2em;
   }
@@ -17,13 +17,13 @@
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     align-items: center;
   }
 
   .fds-textarea__description {
-    color: var(--fds-semantic-text-neutral-subtle);
-    margin-top: calc(var(--fds-spacing-2) * -1);
+    color: var(--ds-color-neutral-text-subtle);
+    margin-top: calc(var(--ds-spacing-2) * -1);
   }
 
   .fds-textarea__input {
@@ -35,46 +35,48 @@
     min-height: 2.5em;
     width: 100%;
     appearance: none;
-    padding: var(--fds-spacing-3);
-    border: solid 1px var(--fds-semantic-border-input-default);
-    border-radius: var(--fds-border_radius-medium);
+    padding: var(--ds-spacing-3);
+    border: solid 1px var(--ds-color-neutral-border-default);
+    border-radius: var(--ds-border-radius-md);
     resize: vertical;
+    background: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .fds-textarea--sm .fds-textarea__input {
-    padding: var(--fds-spacing-2);
+    padding: var(--ds-spacing-2);
   }
 
   .fds-textarea--md .fds-textarea__input {
-    padding: var(--fds-spacing-3);
+    padding: var(--ds-spacing-3);
   }
 
   .fds-textarea--lg .fds-textarea__input {
-    padding: var(--fds-spacing-4);
+    padding: var(--ds-spacing-4);
   }
 
-  .fds-textarea--disabled {
-    opacity: var(--fds-opacity-disabled);
+  .fds-textarea:has(.fds-textarea__input:disabled) {
+    opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-textarea--disabled .fds-textarea__input {
+  .fds-textarea__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textarea--readonly .fds-textarea__input {
-    background: var(--fds-semantic-surface-neutral-subtle);
-    border-color: var(--fds-semantic-border-neutral-default);
+  .fds-textarea__input:read-only {
+    background: var(--ds-color-neutral-background-subtle);
+    border-color: var(--ds-color-neutral-border-strong);
   }
 
   .fds-textarea--error > .fds-textarea__input:not(:focus-visible) {
-    border-color: var(--fds-semantic-border-danger-default);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+    border-color: var(--ds-color-danger-border-default);
+    box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .fds-textarea__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-      border-color: var(--fds-semantic-border-input-hover);
-      box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+      border-color: var(--ds-color-accent-border-strong);
+      box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
     }
   }
 }

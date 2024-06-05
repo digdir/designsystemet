@@ -50,7 +50,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           className={cl(
             'fds-checkbox',
             `fds-checkbox--${size}`,
-            inputProps.disabled && `fds-checkbox--disabled`,
             hasError && `fds-checkbox--error`,
             readOnly && `fds-checkbox--readonly`,
             className,
@@ -63,6 +62,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {...omit(['size', 'error', 'indeterminate'], rest)}
             {...inputProps}
             type='checkbox'
+            disabled={inputProps.disabled}
             aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
           />
           {children && (

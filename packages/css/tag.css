@@ -1,13 +1,13 @@
-@layer fds.tag {
+@layer ds.tag {
   .fds-tag {
-    --fds-tag-background: var(--fds-semantic-surface-neutral-subtle);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+    --dsc-tag-background: var(--ds-color-neutral-background-subtle);
+    --dsc-tag-color: var(--ds-color-neutral-text-default);
 
-    color: var(--fds-tag-color);
-    padding: 0 var(--fds-spacing-2);
-    min-height: var(--fds-sizing-8);
-    background-color: var(--fds-tag-background);
-    border-radius: var(--fds-border_radius-small);
+    color: var(--dsc-tag-color);
+    padding: 0 var(--ds-spacing-2);
+    min-height: var(--ds-sizing-8);
+    background-color: var(--dsc-tag-background);
+    border-radius: var(--ds-border-radius-sm);
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -16,57 +16,57 @@
   }
 
   .fds-tag--sm {
-    padding: 0 var(--fds-spacing-2);
-    min-height: var(--fds-sizing-7);
+    padding: 0 var(--ds-spacing-2);
+    min-height: var(--ds-sizing-7);
   }
 
   .fds-tag--md {
-    padding: 0 var(--fds-spacing-2);
-    min-height: var(--fds-sizing-8);
+    padding: 0 var(--ds-spacing-2);
+    min-height: var(--ds-sizing-8);
   }
 
   .fds-tag--lg {
-    padding: 0 var(--fds-spacing-3);
-    min-height: var(--fds-sizing-9);
+    padding: 0 var(--ds-spacing-3);
+    min-height: var(--ds-sizing-9);
   }
 
   .fds-tag--neutral {
-    --fds-tag-background: var(--fds-semantic-surface-neutral-subtle);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+    --dsc-tag-background: var(--ds-color-neutral-surface-default);
+    --dsc-tag-color: var(--ds-color-neutral-text-default);
   }
 
   .fds-tag--info {
-    --fds-tag-background: var(--fds-semantic-surface-info-subtle);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+    --dsc-tag-background: var(--ds-color-info-surface-default);
+    --dsc-tag-color: var(--ds-color-info-text-default);
   }
 
   .fds-tag--success {
-    --fds-tag-background: var(--fds-semantic-surface-success-subtle);
-    --fds-tag-color: var(--fds-semantic-text-success-on_success_subtle);
+    --dsc-tag-background: var(--ds-color-success-surface-default);
+    --dsc-tag-color: var(--ds-color-success-text-default);
   }
 
   .fds-tag--warning {
-    --fds-tag-background: var(--fds-semantic-surface-warning-default);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+    --dsc-tag-background: var(--ds-color-warning-surface-default);
+    --dsc-tag-color: var(--ds-color-warning-text-default);
   }
 
   .fds-tag--danger {
-    --fds-tag-background: var(--fds-semantic-surface-danger-subtle);
-    --fds-tag-color: var(--fds-semantic-text-danger-on_danger_subtle);
+    --dsc-tag-background: var(--ds-color-danger-surface-default);
+    --dsc-tag-color: var(--ds-color-danger-text-default);
   }
 
-  .fds-tag--first {
-    --fds-tag-background: var(--fds-semantic-surface-first-light);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+  .fds-tag--brand1 {
+    --dsc-tag-background: var(--ds-color-brand1-surface-default);
+    --dsc-tag-color: var(--ds-color-brand1-text-default);
   }
 
-  .fds-tag--second {
-    --fds-tag-background: var(--fds-semantic-surface-second-light);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+  .fds-tag--brand2 {
+    --dsc-tag-background: var(--ds-color-brand2-surface-default);
+    --dsc-tag-color: var(--ds-color-brand2-text-default);
   }
 
-  .fds-tag--third {
-    --fds-tag-background: var(--fds-semantic-surface-third-light);
-    --fds-tag-color: var(--fds-semantic-text-neutral-default);
+  .fds-tag--brand3 {
+    --dsc-tag-background: var(--ds-color-brand3-surface-default);
+    --dsc-tag-color: var(--ds-color-brand3-text-default);
   }
 }
