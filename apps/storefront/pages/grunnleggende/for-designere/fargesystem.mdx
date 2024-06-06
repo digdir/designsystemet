@@ -1,3 +1,5 @@
+import { Table } from '@digdir/designsystemet-react';
+
 import { PaletteIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
@@ -32,7 +34,11 @@ En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarg
 '
 />
 
-Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmode, contrastmode, etc.), og samtidig ivareta kontrastkrav. Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmode, contrastmode, etc.), og samtidig ivareta kontrastkrav. Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjon skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system.
+
+## Designsystemets temagenerator
+
+For å generere en skala som fungerer kan du bruke [Designsystemets temagenerator](theme.designsystemet.no) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens accent-farge og øvrige profil-farger.
 
 <Image
   src='/img/fargesystem.png'
@@ -41,7 +47,15 @@ Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmo
   caption='Fargesystemet bruker brand-fargen til å genere flere fargervarianter, slik at vi kan sikre god kontrast mellom tekst og bakgrunnsfarger.'
 />
 
-For å generere en skala som fungerer kan du bruke [Designsystemets fargeskala-generator](https://thuneer.github.io/designsystemet-colors/) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens accent-farge og øvrige profil-farger.
+Temageneratoren er basert på et fargesystem sørger for at både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+Eksempler:
+
+- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
+- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
+- Dette vil gjelde uansett hva du har valgt som base-farge.
+
+`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
 
 La oss se på et eksempel der vi bytter ut fargene:
 
@@ -53,5 +67,7 @@ La oss se på et eksempel der vi bytter ut fargene:
   allowFullScreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
+
+## Bruk fargene du har generert
 
 Når du har generert skalaene, kan du [bruke de nye fargekodene i Designsystemet](/grunnleggende/for-designere/eget-tema), slik at alle komponenter følger din profil.

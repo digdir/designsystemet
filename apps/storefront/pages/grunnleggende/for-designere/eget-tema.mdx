@@ -22,8 +22,8 @@ export default ({ children }) => (
 
 Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger? Det er flere måter å gjøre det på. Det første du må ta stilling til er om du vil bruke komponentene _med_ eller _uten_ kobling mellom Figma og kode.
 
-**Alternativ 1:** _Uten_ kobling mellom Figma og kode \
-**Alternativ 2:** _Med_ kobling mellom Figma og kode
+**Alternativ 1:** _Med_ kobling mellom Figma og kode \
+**Alternativ 2:** _Uten_ kobling mellom Figma og kode
 
 Hvilket alternativ du går for avhenger av dine behov og rammer.
 
@@ -33,34 +33,24 @@ Ulempen er at det krever en del mer første gang du skal sette det opp, ettersom
 
 Vi guider deg gjennom begge alternativene her.
 
-## Alternativ 1: Uten kobling
+## Alternativ 1: Med kobling
 
-Ved å _ikke_ ha en kobling kan du sette opp Figma-bibiloteket med dine farger uten at du må bruke Github. _Uten direkte kobling til tokens_, må du manuelt passe på at variablene som lages i Figma er de samme som brukes i kode.
+En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra json-filen og holder dem i sync via pluginen "Tokens studio". Du må ha en [Github-bruker](https://github.com) selv eller en Github-venn som kan hjelpe deg.
 
-### Slik går du frem:
-
-1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
-2. Filen har nå sannsyligvis lagt seg i dine "drafts" nå, så du må flytte den til et fornuftig sted i din organisasjon.
-3. Gå til [theme.designsystemet.no](theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
-4. Åpne "local variables" i Figma og bytt ut `accent`, `neutral`, `brand1`, `brand2`, `brand3` med dine egne farger. Det er litt tungvindt nå siden du må manuelt klippe og lime hex-koder. Vi jobber med en [plugin til Figma](https://github.com/digdir/designsystemet/tree/next/plugins/figma-sync) som gjør at du bare kan kopiere inn hele sulamitten. 🎉
-5. Nå skal du se alle komponentene med dine egne profilfarger. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
+I videoen under kan du se hele prosessen for å få satt opp designsystemet med eget tema.
 
 <ResponsiveIframe
-  src='/img/variabler-alt1.mp4'
-  title='Skjermopptak som viser hvordan du kopierer filen fra Community, flytter den til en mappe, og endrer fargevariablene til de du har generert med temavelgeren.'
+  src='/img/variabler-alt2.mp4'
+  title='Skjermopptak som viser hvordan du setter opp koblingen mellom Figma og Github og legger inn dine egne profilfarger. Tekslig beskrivelse av det som skjer i videoen ligger under.'
   frameBorder='0'
   allow='autoplay; fullscreen; picture-in-picture'
   allowFullScreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-## Alternativ 2: Med kobling
-
-En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra json-filen og holder dem i sync via pluginen "Tokens studio". Du må ha en [Github-bruker](https://github.com) selv eller en Github-kollega som kan hjelpe deg.
-
 ### Slik går du frem for å få det til:
 
-1. Er du designer kan det være lurt å snakke med en utvikler, slik at dere har en felles forståelse av hvordan tokens kobler sammen Figma og kode. For å kunne legge til egne tokens i dagens oppsett må du lage en kopi av dette repoet: [designsystemet-themes](https://github.com/designsystemet/design-tokens). Velg "Use this template" og "Create a new repository".
+1. Er du designer kan det være lurt å snakke med en utvikler, slik at dere har en felles forståelse av hvordan tokens kobler sammen Figma og kode. For å kunne legge til egne tokens i dagens oppsett må du lage en kopi av dette repoet: [design-tokens](https://github.com/designsystemet/design-tokens). Velg "Use this template" og "Create a new repository".
 
 2. Gå til [theme.designsystemet.no](theme.designsystemet.no). Legg inn dine farger og velg `Kopier` > `Light theme`. [Les mer om fargesystemet her](/grunnleggende/for-designere/fargesystem).
 
@@ -80,7 +70,6 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
      - Huk av "repo" i avkrysningsboksene.
      - Trykk "Generate token"
      - Du får nå en "Personal Access Token" (PAT).
-     - (Jepp, litt tungvindt dette! 🥵)
      - Kopier PAT-en (du kan bare se den én gang)
 
    - **I Figma Tokens**, under `Sync > GitHub`, fyll inn:
@@ -91,17 +80,27 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
      - File Path: `design-tokens`
      - Trykk "Save"
 
-6. Kom du deg helt hit!? Gratulerer, det verste er nå over! 🎉
+6. Du vil nå se alle tokens-verdiene du genererte i temavelgeren. Du kan velge `Styles & variables` og `Create variables` for å få fargene dine tilgjengelige som variabler i Figma.
 
-7. Du vil nå se alle tokens-verdiene du genererte i temavelgeren. Du kan velge `Styles & variables` og `Create variables` for å få fargene dine tilgjengelige som variabler i Figma.
+7. Ferdig! 🎉 PS. Dersom du skal gjøre endringer på tokens i pluginen kan du pushe endringene til Github-repoet ditt ved å trykke på "Last-opp"-ikonet (Push) nederst. Men...du må ha Pro-versjonen av Tokens Studio for å kunne gjøre dette, så det kan være like greit at endringer kun gjøres i koden, og at du henter ned eventuelle endringer til Figma ved å velge "Last-ned"-ikonet (Pull) nederst.
 
-8. Ferdig! 🎉 PS. Dersom du skal gjøre endringer på tokens i pluginen kan du pushe endringene til Github-repoet ditt ved å trykke på "Last-opp"-ikonet (Push) nederst. Men...du må ha Pro-versjonen av Tokens Studio for å kunne gjøre dette, så det kan være like greit at endringer kun gjøres i koden, og at du henter ned eventuelle endringer til Figma ved å velge "Last-ned"-ikonet (Pull) nederst.
+## Alternativ 2: Uten kobling
+
+Ved å _ikke_ ha en kobling kan du sette opp Figma-bibiloteket med dine farger uten at du må bruke Github. _Uten direkte kobling til tokens_, må du manuelt passe på at variablene som lages i Figma er de samme som brukes i kode.
 
 <ResponsiveIframe
-  src='/img/variabler-alt2.mp4'
-  title='Skjermopptak som viser hvordan du setter opp koblingen mellom Figma og Github og legger inn dine egne profilfarger.'
+  src='/img/variabler-alt1.mp4'
+  title='Skjermopptak som viser hvordan du kopierer filen fra Community, flytter den til en mappe, og endrer fargevariablene til de du har generert med temavelgeren.'
   frameBorder='0'
   allow='autoplay; fullscreen; picture-in-picture'
   allowFullScreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
+
+### Slik går du frem:
+
+1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
+2. Filen har nå sannsyligvis lagt seg i dine "drafts" nå, så du må flytte den til et fornuftig sted i din organisasjon.
+3. Gå til [theme.designsystemet.no](theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
+4. Åpne "local variables" i Figma og bytt til settet `Mode`. **IKKE endre noe i `theme` og `semantic`-settet.** Du skal kun redigere HEX-kodene i `mode`-settet. I `mode` - bytt ut `accent`, `neutral`, `brand1`, `brand2`, `brand3` med dine egne farger. Du kan bytte under både light og dark om ønskelig. Det er litt tungvindt nå siden du må manuelt klippe og lime hex-koder. Vi jobber med en [plugin til Figma](https://github.com/digdir/designsystemet/tree/next/plugins/figma-sync) som gjør at du bare kan kopiere inn hele sulamitten. 🎉
+5. Nå skal du se alle komponentene med dine egne profilfarger. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
