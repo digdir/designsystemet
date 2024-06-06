@@ -1,8 +1,6 @@
-
 /**
  * These files are generated from design tokens defind using Token Studio
  */
-
 
 :root, [data-ds-color-mode="light"] {
   --ds-global-blue-1: #fefeff;
@@ -395,4 +393,3 @@
   --ds-focus-outer: #243142;
   --ds-focus-inner: #fefefe;
 }
-      
