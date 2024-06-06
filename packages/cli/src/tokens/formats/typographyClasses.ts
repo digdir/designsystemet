@@ -14,8 +14,8 @@ type Typgraphy = {
 /**
  * Creates CSS classes from typography tokens
  */
-export const typographyClasses: Format = {
-  name: 'typographyClasses',
+export const typographyFormat: Format = {
+  name: 'ds/typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { usesDtcg } = options;
     const { basePxFontSize } = platform;
