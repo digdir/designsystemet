@@ -335,8 +335,8 @@
   }
 
   .fds-combobox__option--active .fds-combobox__option__icon-wrapper__icon {
-    stroke: var(--ds-color-accent-base-hover);
-    color: var(--ds-color-accent-base-hover);
+    stroke: var(--ds-color-accent-text-default);
+    color: var(--ds-color-accent-text-default);
   }
 
   .fds-combobox__option__icon-wrapper.fds-combobox__option__icon-wrapper--selected .fds-combobox__option__icon-wrapper__icon {

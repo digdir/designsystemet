@@ -1,7 +1,10 @@
 {
   "tokenSetOrder": [
     "primitives/globals",
-    "primitives/typography/default",
+    "primitives/typography/font/default",
+    "primitives/typography/font/secondary",
+    "primitives/typography/size/default",
+    "primitives/typography/size/compact",
     "primitives/colors/dark/global",
     "primitives/colors/dark/theme",
     "primitives/colors/dark/theme2",

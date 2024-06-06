@@ -1,10 +1,4 @@
 {
-  "font-family": {
-    "main": {
-      "type": "fontFamilies",
-      "value": "Inter"
-    }
-  },
   "line-height": {
     "300": {
       "type": "lineHeights",
@@ -21,20 +15,6 @@
     "700": {
       "type": "lineHeights",
       "value": "170%"
-    }
-  },
-  "font-weight": {
-    "medium": {
-      "type": "fontWeights",
-      "value": "500"
-    },
-    "semibold": {
-      "type": "fontWeights",
-      "value": "600"
-    },
-    "regular": {
-      "type": "fontWeights",
-      "value": "400"
     }
   },
   "font-size": {

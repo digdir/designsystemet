@@ -1,4 +1,4 @@
-name: Deploy Storybook PR Preview
+name: Deploy Storybook PR
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

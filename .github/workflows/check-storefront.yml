@@ -1,15 +1,10 @@
-# Runs conventional commit check on PR
-name: Checks storefront
+name: Checks Storefront
 on:
   workflow_dispatch:
   pull_request:
-    branches:
-      - main
     paths:
       - 'apps/storefront/**'
   push:
-    branches:
-      - main
     paths:
       - 'apps/storefront/**'
 jobs:
