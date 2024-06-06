@@ -14,8 +14,8 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 /**
  * Format for displaying tokens in storefront
  */
-export const groupedTokens: Format = {
-  name: 'groupedTokens',
+export const storefrontFormat: Format = {
+  name: 'ds/storefront',
   format: async function ({ dictionary, file }) {
     const format = createPropertyFormatter({
       dictionary,

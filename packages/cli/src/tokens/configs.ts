@@ -5,9 +5,9 @@ import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { groupedTokens } from './formats/groupedTokens.js';
-import { scopedReferenceVariables } from './formats/scopedReferenceVariables.js';
-import { typographyClasses } from './formats/typographyClasses.js';
+import { storefrontFormat } from './formats/groupedTokens.js';
+import { colormodeFormat } from './formats/scopedReferenceVariables.js';
+import { typographyFormat } from './formats/typographyClasses.js';
 import { makeEntryFile } from './actions.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);
@@ -22,9 +22,9 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
 
-StyleDictionary.registerFormat(groupedTokens);
-StyleDictionary.registerFormat(scopedReferenceVariables);
-StyleDictionary.registerFormat(typographyClasses);
+StyleDictionary.registerFormat(storefrontFormat);
+StyleDictionary.registerFormat(colormodeFormat);
+StyleDictionary.registerFormat(typographyFormat);
 
 StyleDictionary.registerAction(makeEntryFile);
 
@@ -80,7 +80,7 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
         files: [
           {
             destination: `color-modes/${mode}.css`,
-            format: scopedReferenceVariables.name,
+            format: colormodeFormat.name,
           },
         ],
         options: {
@@ -113,7 +113,7 @@ export const previewConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) =
         files: [
           {
             destination: `${mode}.ts`,
-            format: groupedTokens.name,
+            format: storefrontFormat.name,
             filter: (token: TransformedToken) => {
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
@@ -148,7 +148,7 @@ export const typographyConfig: GetConfig = ({ outPath, theme, typography }) => {
         files: [
           {
             destination: `typography/${typography}.css`,
-            format: typographyClasses.name,
+            format: typographyFormat.name,
             filter: (token) => token.type === 'typography',
           },
         ],
