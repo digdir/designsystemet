@@ -14,6 +14,19 @@ import {
 
 export default {
   title: 'Testing',
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          background: 'var(--ds-color-neutral-background-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const MediumRow: StoryFn<{

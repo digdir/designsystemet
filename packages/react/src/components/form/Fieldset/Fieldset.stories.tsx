@@ -22,11 +22,11 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  description:
-    'Gi en kort beskrivelse i begge feltene',
+  description: 'Gi en kort beskrivelse i begge feltene',
   disabled: false,
   error: '',
   legend: 'Skriv inn dine svar',
   readOnly: false,
   hideLegend: false,
+  size: 'md',
 };

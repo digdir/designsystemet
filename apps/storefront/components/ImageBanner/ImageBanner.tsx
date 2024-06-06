@@ -2,6 +2,8 @@
 import type React from 'react';
 import { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
+import { Link, Button } from '@digdir/designsystemet-react';
+import NextLink from 'next/link';
 
 import { Container } from '../Container/Container';
 
@@ -107,25 +109,33 @@ const ImageBanner = ({
           {description && <p className={classes.desc}>{description}</p>}
           {content && content}
           {link && (
-            <a
-              href={link.href}
+            <Link
               className={classes.link}
+              color='neutral'
+              asChild
             >
-              {link.prefix} {link.text}
-            </a>
+              <NextLink href={link.href}>
+                {link.prefix} {link.text}
+              </NextLink>
+            </Link>
           )}
 
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
+                <Button
                   key={index}
+                  asChild
+                  variant='secondary'
                 >
-                  {item.prefix}
-                  {item.text}
-                </a>
+                  <a
+                    href={item.href}
+                    className={classes.button}
+                  >
+                    {item.prefix}
+                    {item.text}
+                  </a>
+                </Button>
               ))}
             </div>
           )}
