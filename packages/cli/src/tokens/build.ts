@@ -5,7 +5,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import * as R from 'ramda';
 
-import { getConfigs, tokensConfig, previewConfig, typographyConfig, permutateThemes } from './configs.js';
+import { getConfigs, cssVariablesConfig, jsTokensConfig, cssTypographyConfig, permutateThemes } from './configs.js';
 
 type Options = {
   /** Design tokens path  */
@@ -27,12 +27,19 @@ export async function run(options: Options): Promise<void> {
 
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
-  const themes = permutateThemes($themes);
+  const relevantThemes = $themes.filter((theme) => {
+    const group = R.toLower(R.defaultTo('')(theme.group));
+    if (group === 'typography' && theme.name !== 'default') return false;
+    if (group === 'fontsize' && theme.name !== 'default') return false;
 
-  const tokenConfigs = getConfigs(tokensConfig, tokensOutDir, tokensDir, themes);
-  const storefrontConfigs = getConfigs(previewConfig, storefrontOutDir, tokensDir, themes);
+    return true;
+  });
+  const themes = permutateThemes(relevantThemes);
+
+  const variablesConfigs = getConfigs(cssVariablesConfig, tokensOutDir, tokensDir, themes);
+  const storefrontConfigs = getConfigs(jsTokensConfig, storefrontOutDir, tokensDir, themes);
   const typographyConfigs = getConfigs(
-    typographyConfig,
+    cssTypographyConfig,
     tokensOutDir,
     tokensDir,
     R.pickBy((_, key) => R.startsWith('light', R.toLower(key)), themes),
@@ -54,11 +61,11 @@ export async function run(options: Options): Promise<void> {
     console.log('🏁 Finished building Typography classes!');
   }
 
-  if (tokenConfigs.length > 0) {
+  if (variablesConfigs.length > 0) {
     console.log('🍱 Building CSS variables from tokens');
     console.log('➡️  Tokens path: ', tokensDir);
     await Promise.all(
-      tokenConfigs.map(async ([name, config]) => {
+      variablesConfigs.map(async ([name, config]) => {
         console.log(`👷 Processing ${name as string}`);
 
         const tokensPackageSD = await sd.extend(config);
