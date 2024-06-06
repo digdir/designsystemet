@@ -42,6 +42,7 @@ export const TokenModal = ({
     ':root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
   );
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
+  const [showGlobals, setShowGlobals] = useState(false);
 
   const generateJsonForColor = (colorArray: ColorInfoType[]) => {
     const obj: { [key: string]: { value: string; type: string } } = {};
@@ -209,6 +210,11 @@ export const TokenModal = ({
         </Modal.Header>
         <Modal.Content className={classes.modalContent}>
           <div className={classes.content}>
+            <button
+              tabIndex={-1}
+              className={classes.hiddenGlobalBtn}
+              onClick={() => setShowGlobals(!showGlobals)}
+            ></button>
             <div className={classes.column}>
               <Heading
                 className={classes.title}
@@ -226,38 +232,36 @@ export const TokenModal = ({
                       onClick={() => generateThemeJson('light')}
                       value='value1'
                     >
-                      Light
+                      Lightmode
                     </Tabs.Tab>
                     <Tabs.Tab
                       onClick={() => generateThemeJson('dark')}
                       value='value2'
                     >
-                      Dark
+                      Darkmode
                     </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => generateThemeJson('contrast')}
-                      value='value3'
-                    >
-                      Contrast
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => genereateGlobalsJson('light')}
-                      value='value4'
-                    >
-                      G: Light
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => genereateGlobalsJson('dark')}
-                      value='value5'
-                    >
-                      G: Dark
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => genereateGlobalsJson('contrast')}
-                      value='value6'
-                    >
-                      G: Contrast
-                    </Tabs.Tab>
+                    {showGlobals && (
+                      <>
+                        <Tabs.Tab
+                          onClick={() => genereateGlobalsJson('light')}
+                          value='value4'
+                        >
+                          G: Light
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                          onClick={() => genereateGlobalsJson('dark')}
+                          value='value5'
+                        >
+                          G: Dark
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                          onClick={() => genereateGlobalsJson('contrast')}
+                          value='value6'
+                        >
+                          G: Contrast
+                        </Tabs.Tab>
+                      </>
+                    )}
                   </Tabs.List>
                 </Tabs>
               </div>

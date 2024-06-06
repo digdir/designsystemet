@@ -60,3 +60,13 @@
   right: 22px;
   top: 22px;
 }
+
+.hiddenGlobalBtn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 48px;
+  width: 48px;
+  background-color: transparent;
+  border: transparent;
+}
