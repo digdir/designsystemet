@@ -1349,9 +1349,7 @@
     "selectedTokenSets": {
       "semantic/style": "enabled",
       "semantic/color": "enabled",
-      "primitives/globals": "source",
-      "primitives/typography/font/default": "source",
-      "primitives/typography/size/default": "source"
+      "primitives/globals": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
