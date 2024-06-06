@@ -35,6 +35,7 @@ StyleDictionary.registerTransformGroup({
   name: 'fds/css',
   transforms: [
     `ts/resolveMath`,
+    'ts/typography/fontWeight',
     nameKebab.name,
     sizeRem.name,
     typographyShorthand.name,
@@ -64,6 +65,7 @@ const getCSSConfig: GetConfig = ({
   folderName,
 }) => {
   return {
+    log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -135,7 +137,7 @@ const getStorefrontConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): C
   };
 };
 
-const getTypographyConfig: GetConfig = ({ buildPath = 'unknown' }) => {
+const getTypographyConfig: GetConfig = ({ buildPath = 'unknown', fileName }) => {
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -144,10 +146,10 @@ const getTypographyConfig: GetConfig = ({ buildPath = 'unknown' }) => {
         prefix,
         buildPath,
         basePxFontSize,
-        transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px'],
+        transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px', 'ts/typography/fontWeight'],
         files: [
           {
-            destination: 'typography.css',
+            destination: `typography.css`,
             format: typographyClasses.name,
             filter: (token) => token.type === 'typography',
           },
@@ -197,7 +199,7 @@ const getConfigs = (getConfig: GetConfig, outPath: string, tokensDir: string, th
 
       // console.log(config);
 
-      return [`${folderName}: ${fileName}`, config];
+      return [name, config];
     })
     .sort();
 
@@ -218,7 +220,7 @@ export async function run(options: Options): Promise<void> {
     getTypographyConfig,
     tokensOutDir,
     tokensDir,
-    R.pickBy((val: string[], key) => R.startsWith('light', R.toLower(key)), themes),
+    R.pickBy((_, key) => R.startsWith('light', R.toLower(key)), themes),
   );
 
   if (typographyConfigs.length > 0) {
