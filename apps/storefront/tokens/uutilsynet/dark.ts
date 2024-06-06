@@ -3574,13 +3574,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dddfe1",
     type: "color",
+    value: "#dddfe1",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{color.neutral.text-default}",
-      type: "color"
+      type: "color",
+      value: "{color.neutral.text-default}"
     },
     name: "--ds-focus-outer",
     attributes: {},
@@ -3590,13 +3590,13 @@ export const  color = [
     ]
   },
   {
-    value: "#131c27",
     type: "color",
+    value: "#131c27",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      value: "{color.neutral.background-default}",
-      type: "color"
+      type: "color",
+      value: "{color.neutral.background-default}"
     },
     name: "--ds-focus-inner",
     attributes: {},
@@ -3606,13 +3606,13 @@ export const  color = [
     ]
   },
   {
-    value: "#32110f",
     type: "color",
+    value: "#32110f",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#32110f",
-      type: "color"
+      type: "color",
+      value: "#32110f"
     },
     name: "--ds-theme4-accent-1",
     attributes: {},
@@ -3623,13 +3623,13 @@ export const  color = [
     ]
   },
   {
-    value: "#401613",
     type: "color",
+    value: "#401613",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#401613",
-      type: "color"
+      type: "color",
+      value: "#401613"
     },
     name: "--ds-theme4-accent-2",
     attributes: {},
@@ -3640,13 +3640,13 @@ export const  color = [
     ]
   },
   {
-    value: "#561e19",
     type: "color",
+    value: "#561e19",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#561e19",
-      type: "color"
+      type: "color",
+      value: "#561e19"
     },
     name: "--ds-theme4-accent-3",
     attributes: {},
@@ -3657,13 +3657,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-accent-4",
     attributes: {},
@@ -3674,13 +3674,13 @@ export const  color = [
     ]
   },
   {
-    value: "#852e27",
     type: "color",
+    value: "#852e27",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#852e27",
-      type: "color"
+      type: "color",
+      value: "#852e27"
     },
     name: "--ds-theme4-accent-5",
     attributes: {},
@@ -3691,13 +3691,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8e352d",
     type: "color",
+    value: "#8e352d",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8e352d",
-      type: "color"
+      type: "color",
+      value: "#8e352d"
     },
     name: "--ds-theme4-accent-6",
     attributes: {},
@@ -3708,13 +3708,13 @@ export const  color = [
     ]
   },
   {
-    value: "#a35b55",
     type: "color",
+    value: "#a35b55",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a35b55",
-      type: "color"
+      type: "color",
+      value: "#a35b55"
     },
     name: "--ds-theme4-accent-7",
     attributes: {},
@@ -3725,13 +3725,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d6b6b3",
     type: "color",
+    value: "#d6b6b3",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#d6b6b3",
-      type: "color"
+      type: "color",
+      value: "#d6b6b3"
     },
     name: "--ds-theme4-accent-8",
     attributes: {},
@@ -3742,13 +3742,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8c322a",
     type: "color",
+    value: "#8c322a",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8c322a",
-      type: "color"
+      type: "color",
+      value: "#8c322a"
     },
     name: "--ds-theme4-accent-9",
     attributes: {},
@@ -3759,13 +3759,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-accent-10",
     attributes: {},
@@ -3776,13 +3776,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4e1b17",
     type: "color",
+    value: "#4e1b17",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#4e1b17",
-      type: "color"
+      type: "color",
+      value: "#4e1b17"
     },
     name: "--ds-theme4-accent-11",
     attributes: {},
@@ -3793,13 +3793,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c2928e",
     type: "color",
+    value: "#c2928e",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#c2928e",
-      type: "color"
+      type: "color",
+      value: "#c2928e"
     },
     name: "--ds-theme4-accent-12",
     attributes: {},
@@ -3810,13 +3810,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ebdcdb",
     type: "color",
+    value: "#ebdcdb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#ebdcdb",
-      type: "color"
+      type: "color",
+      value: "#ebdcdb"
     },
     name: "--ds-theme4-accent-13",
     attributes: {},
@@ -3827,13 +3827,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme4-accent-contrast-1",
     attributes: {},
@@ -3844,13 +3844,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f4ebeb",
     type: "color",
+    value: "#f4ebeb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f4ebeb",
-      type: "color"
+      type: "color",
+      value: "#f4ebeb"
     },
     name: "--ds-theme4-accent-contrast-2",
     attributes: {},
@@ -3861,13 +3861,13 @@ export const  color = [
     ]
   },
   {
-    value: "#131c27",
     type: "color",
+    value: "#131c27",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#131c27",
-      type: "color"
+      type: "color",
+      value: "#131c27"
     },
     name: "--ds-theme4-neutral-1",
     attributes: {},
@@ -3878,13 +3878,13 @@ export const  color = [
     ]
   },
   {
-    value: "#192433",
     type: "color",
+    value: "#192433",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#192433",
-      type: "color"
+      type: "color",
+      value: "#192433"
     },
     name: "--ds-theme4-neutral-2",
     attributes: {},
@@ -3895,13 +3895,13 @@ export const  color = [
     ]
   },
   {
-    value: "#243142",
     type: "color",
+    value: "#243142",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#243142",
-      type: "color"
+      type: "color",
+      value: "#243142"
     },
     name: "--ds-theme4-neutral-3",
     attributes: {},
@@ -3912,13 +3912,13 @@ export const  color = [
     ]
   },
   {
-    value: "#333e4e",
     type: "color",
+    value: "#333e4e",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#333e4e",
-      type: "color"
+      type: "color",
+      value: "#333e4e"
     },
     name: "--ds-theme4-neutral-4",
     attributes: {},
@@ -3929,13 +3929,13 @@ export const  color = [
     ]
   },
   {
-    value: "#424d5b",
     type: "color",
+    value: "#424d5b",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#424d5b",
-      type: "color"
+      type: "color",
+      value: "#424d5b"
     },
     name: "--ds-theme4-neutral-5",
     attributes: {},
@@ -3946,13 +3946,13 @@ export const  color = [
     ]
   },
   {
-    value: "#495361",
     type: "color",
+    value: "#495361",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#495361",
-      type: "color"
+      type: "color",
+      value: "#495361"
     },
     name: "--ds-theme4-neutral-6",
     attributes: {},
@@ -3963,13 +3963,13 @@ export const  color = [
     ]
   },
   {
-    value: "#67707c",
     type: "color",
+    value: "#67707c",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#67707c",
-      type: "color"
+      type: "color",
+      value: "#67707c"
     },
     name: "--ds-theme4-neutral-7",
     attributes: {},
@@ -3980,13 +3980,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme4-neutral-8",
     attributes: {},
@@ -3997,13 +3997,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e2b3c",
     type: "color",
+    value: "#1e2b3c",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#1e2b3c",
-      type: "color"
+      type: "color",
+      value: "#1e2b3c"
     },
     name: "--ds-theme4-neutral-9",
     attributes: {},
@@ -4014,13 +4014,13 @@ export const  color = [
     ]
   },
   {
-    value: "#303c4b",
     type: "color",
+    value: "#303c4b",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#303c4b",
-      type: "color"
+      type: "color",
+      value: "#303c4b"
     },
     name: "--ds-theme4-neutral-10",
     attributes: {},
@@ -4031,13 +4031,13 @@ export const  color = [
     ]
   },
   {
-    value: "#444e5d",
     type: "color",
+    value: "#444e5d",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#444e5d",
-      type: "color"
+      type: "color",
+      value: "#444e5d"
     },
     name: "--ds-theme4-neutral-11",
     attributes: {},
@@ -4048,13 +4048,13 @@ export const  color = [
     ]
   },
   {
-    value: "#989ea5",
     type: "color",
+    value: "#989ea5",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#989ea5",
-      type: "color"
+      type: "color",
+      value: "#989ea5"
     },
     name: "--ds-theme4-neutral-12",
     attributes: {},
@@ -4065,13 +4065,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dddfe1",
     type: "color",
+    value: "#dddfe1",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#dddfe1",
-      type: "color"
+      type: "color",
+      value: "#dddfe1"
     },
     name: "--ds-theme4-neutral-13",
     attributes: {},
@@ -4082,13 +4082,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme4-neutral-contrast-1",
     attributes: {},
@@ -4099,13 +4099,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme4-neutral-contrast-2",
     attributes: {},
@@ -4116,13 +4116,13 @@ export const  color = [
     ]
   },
   {
-    value: "#32110f",
     type: "color",
+    value: "#32110f",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#32110f",
-      type: "color"
+      type: "color",
+      value: "#32110f"
     },
     name: "--ds-theme4-brand1-1",
     attributes: {},
@@ -4133,13 +4133,13 @@ export const  color = [
     ]
   },
   {
-    value: "#401613",
     type: "color",
+    value: "#401613",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#401613",
-      type: "color"
+      type: "color",
+      value: "#401613"
     },
     name: "--ds-theme4-brand1-2",
     attributes: {},
@@ -4150,13 +4150,13 @@ export const  color = [
     ]
   },
   {
-    value: "#561e19",
     type: "color",
+    value: "#561e19",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#561e19",
-      type: "color"
+      type: "color",
+      value: "#561e19"
     },
     name: "--ds-theme4-brand1-3",
     attributes: {},
@@ -4167,13 +4167,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand1-4",
     attributes: {},
@@ -4184,13 +4184,13 @@ export const  color = [
     ]
   },
   {
-    value: "#852e27",
     type: "color",
+    value: "#852e27",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#852e27",
-      type: "color"
+      type: "color",
+      value: "#852e27"
     },
     name: "--ds-theme4-brand1-5",
     attributes: {},
@@ -4201,13 +4201,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8e352d",
     type: "color",
+    value: "#8e352d",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8e352d",
-      type: "color"
+      type: "color",
+      value: "#8e352d"
     },
     name: "--ds-theme4-brand1-6",
     attributes: {},
@@ -4218,13 +4218,13 @@ export const  color = [
     ]
   },
   {
-    value: "#a35b55",
     type: "color",
+    value: "#a35b55",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a35b55",
-      type: "color"
+      type: "color",
+      value: "#a35b55"
     },
     name: "--ds-theme4-brand1-7",
     attributes: {},
@@ -4235,13 +4235,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d6b6b3",
     type: "color",
+    value: "#d6b6b3",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#d6b6b3",
-      type: "color"
+      type: "color",
+      value: "#d6b6b3"
     },
     name: "--ds-theme4-brand1-8",
     attributes: {},
@@ -4252,13 +4252,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8c322a",
     type: "color",
+    value: "#8c322a",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8c322a",
-      type: "color"
+      type: "color",
+      value: "#8c322a"
     },
     name: "--ds-theme4-brand1-9",
     attributes: {},
@@ -4269,13 +4269,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand1-10",
     attributes: {},
@@ -4286,13 +4286,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4e1b17",
     type: "color",
+    value: "#4e1b17",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#4e1b17",
-      type: "color"
+      type: "color",
+      value: "#4e1b17"
     },
     name: "--ds-theme4-brand1-11",
     attributes: {},
@@ -4303,13 +4303,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c2928e",
     type: "color",
+    value: "#c2928e",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#c2928e",
-      type: "color"
+      type: "color",
+      value: "#c2928e"
     },
     name: "--ds-theme4-brand1-12",
     attributes: {},
@@ -4320,13 +4320,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ebdcdb",
     type: "color",
+    value: "#ebdcdb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#ebdcdb",
-      type: "color"
+      type: "color",
+      value: "#ebdcdb"
     },
     name: "--ds-theme4-brand1-13",
     attributes: {},
@@ -4337,13 +4337,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme4-brand1-contrast-1",
     attributes: {},
@@ -4354,13 +4354,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f4ebeb",
     type: "color",
+    value: "#f4ebeb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f4ebeb",
-      type: "color"
+      type: "color",
+      value: "#f4ebeb"
     },
     name: "--ds-theme4-brand1-contrast-2",
     attributes: {},
@@ -4371,13 +4371,13 @@ export const  color = [
     ]
   },
   {
-    value: "#32110f",
     type: "color",
+    value: "#32110f",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#32110f",
-      type: "color"
+      type: "color",
+      value: "#32110f"
     },
     name: "--ds-theme4-brand2-1",
     attributes: {},
@@ -4388,13 +4388,13 @@ export const  color = [
     ]
   },
   {
-    value: "#401613",
     type: "color",
+    value: "#401613",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#401613",
-      type: "color"
+      type: "color",
+      value: "#401613"
     },
     name: "--ds-theme4-brand2-2",
     attributes: {},
@@ -4405,13 +4405,13 @@ export const  color = [
     ]
   },
   {
-    value: "#561e19",
     type: "color",
+    value: "#561e19",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#561e19",
-      type: "color"
+      type: "color",
+      value: "#561e19"
     },
     name: "--ds-theme4-brand2-3",
     attributes: {},
@@ -4422,13 +4422,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand2-4",
     attributes: {},
@@ -4439,13 +4439,13 @@ export const  color = [
     ]
   },
   {
-    value: "#852e27",
     type: "color",
+    value: "#852e27",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#852e27",
-      type: "color"
+      type: "color",
+      value: "#852e27"
     },
     name: "--ds-theme4-brand2-5",
     attributes: {},
@@ -4456,13 +4456,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8e352d",
     type: "color",
+    value: "#8e352d",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8e352d",
-      type: "color"
+      type: "color",
+      value: "#8e352d"
     },
     name: "--ds-theme4-brand2-6",
     attributes: {},
@@ -4473,13 +4473,13 @@ export const  color = [
     ]
   },
   {
-    value: "#a35b55",
     type: "color",
+    value: "#a35b55",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a35b55",
-      type: "color"
+      type: "color",
+      value: "#a35b55"
     },
     name: "--ds-theme4-brand2-7",
     attributes: {},
@@ -4490,13 +4490,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d6b6b3",
     type: "color",
+    value: "#d6b6b3",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#d6b6b3",
-      type: "color"
+      type: "color",
+      value: "#d6b6b3"
     },
     name: "--ds-theme4-brand2-8",
     attributes: {},
@@ -4507,13 +4507,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8c322a",
     type: "color",
+    value: "#8c322a",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8c322a",
-      type: "color"
+      type: "color",
+      value: "#8c322a"
     },
     name: "--ds-theme4-brand2-9",
     attributes: {},
@@ -4524,13 +4524,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand2-10",
     attributes: {},
@@ -4541,13 +4541,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4e1b17",
     type: "color",
+    value: "#4e1b17",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#4e1b17",
-      type: "color"
+      type: "color",
+      value: "#4e1b17"
     },
     name: "--ds-theme4-brand2-11",
     attributes: {},
@@ -4558,13 +4558,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c2928e",
     type: "color",
+    value: "#c2928e",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#c2928e",
-      type: "color"
+      type: "color",
+      value: "#c2928e"
     },
     name: "--ds-theme4-brand2-12",
     attributes: {},
@@ -4575,13 +4575,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ebdcdb",
     type: "color",
+    value: "#ebdcdb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#ebdcdb",
-      type: "color"
+      type: "color",
+      value: "#ebdcdb"
     },
     name: "--ds-theme4-brand2-13",
     attributes: {},
@@ -4592,13 +4592,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme4-brand2-contrast-1",
     attributes: {},
@@ -4609,13 +4609,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f4ebeb",
     type: "color",
+    value: "#f4ebeb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f4ebeb",
-      type: "color"
+      type: "color",
+      value: "#f4ebeb"
     },
     name: "--ds-theme4-brand2-contrast-2",
     attributes: {},
@@ -4626,13 +4626,13 @@ export const  color = [
     ]
   },
   {
-    value: "#32110f",
     type: "color",
+    value: "#32110f",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#32110f",
-      type: "color"
+      type: "color",
+      value: "#32110f"
     },
     name: "--ds-theme4-brand3-1",
     attributes: {},
@@ -4643,13 +4643,13 @@ export const  color = [
     ]
   },
   {
-    value: "#401613",
     type: "color",
+    value: "#401613",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#401613",
-      type: "color"
+      type: "color",
+      value: "#401613"
     },
     name: "--ds-theme4-brand3-2",
     attributes: {},
@@ -4660,13 +4660,13 @@ export const  color = [
     ]
   },
   {
-    value: "#561e19",
     type: "color",
+    value: "#561e19",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#561e19",
-      type: "color"
+      type: "color",
+      value: "#561e19"
     },
     name: "--ds-theme4-brand3-3",
     attributes: {},
@@ -4677,13 +4677,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand3-4",
     attributes: {},
@@ -4694,13 +4694,13 @@ export const  color = [
     ]
   },
   {
-    value: "#852e27",
     type: "color",
+    value: "#852e27",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#852e27",
-      type: "color"
+      type: "color",
+      value: "#852e27"
     },
     name: "--ds-theme4-brand3-5",
     attributes: {},
@@ -4711,13 +4711,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8e352d",
     type: "color",
+    value: "#8e352d",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8e352d",
-      type: "color"
+      type: "color",
+      value: "#8e352d"
     },
     name: "--ds-theme4-brand3-6",
     attributes: {},
@@ -4728,13 +4728,13 @@ export const  color = [
     ]
   },
   {
-    value: "#a35b55",
     type: "color",
+    value: "#a35b55",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#a35b55",
-      type: "color"
+      type: "color",
+      value: "#a35b55"
     },
     name: "--ds-theme4-brand3-7",
     attributes: {},
@@ -4745,13 +4745,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d6b6b3",
     type: "color",
+    value: "#d6b6b3",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#d6b6b3",
-      type: "color"
+      type: "color",
+      value: "#d6b6b3"
     },
     name: "--ds-theme4-brand3-8",
     attributes: {},
@@ -4762,13 +4762,13 @@ export const  color = [
     ]
   },
   {
-    value: "#8c322a",
     type: "color",
+    value: "#8c322a",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#8c322a",
-      type: "color"
+      type: "color",
+      value: "#8c322a"
     },
     name: "--ds-theme4-brand3-9",
     attributes: {},
@@ -4779,13 +4779,13 @@ export const  color = [
     ]
   },
   {
-    value: "#6c2620",
     type: "color",
+    value: "#6c2620",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#6c2620",
-      type: "color"
+      type: "color",
+      value: "#6c2620"
     },
     name: "--ds-theme4-brand3-10",
     attributes: {},
@@ -4796,13 +4796,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4e1b17",
     type: "color",
+    value: "#4e1b17",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#4e1b17",
-      type: "color"
+      type: "color",
+      value: "#4e1b17"
     },
     name: "--ds-theme4-brand3-11",
     attributes: {},
@@ -4813,13 +4813,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c2928e",
     type: "color",
+    value: "#c2928e",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#c2928e",
-      type: "color"
+      type: "color",
+      value: "#c2928e"
     },
     name: "--ds-theme4-brand3-12",
     attributes: {},
@@ -4830,13 +4830,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ebdcdb",
     type: "color",
+    value: "#ebdcdb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#ebdcdb",
-      type: "color"
+      type: "color",
+      value: "#ebdcdb"
     },
     name: "--ds-theme4-brand3-13",
     attributes: {},
@@ -4847,13 +4847,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme4-brand3-contrast-1",
     attributes: {},
@@ -4864,13 +4864,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f4ebeb",
     type: "color",
+    value: "#f4ebeb",
     filePath: "../../design-tokens/primitives/colors/dark/theme4.json",
     isSource: true,
     original: {
-      value: "#f4ebeb",
-      type: "color"
+      type: "color",
+      value: "#f4ebeb"
     },
     name: "--ds-theme4-brand3-contrast-2",
     attributes: {},
@@ -4881,13 +4881,13 @@ export const  color = [
     ]
   },
   {
-    value: "#001c36",
     type: "color",
+    value: "#001c36",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#001c36",
-      type: "color"
+      type: "color",
+      value: "#001c36"
     },
     name: "--ds-theme3-accent-1",
     attributes: {},
@@ -4898,13 +4898,13 @@ export const  color = [
     ]
   },
   {
-    value: "#002445",
     type: "color",
+    value: "#002445",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#002445",
-      type: "color"
+      type: "color",
+      value: "#002445"
     },
     name: "--ds-theme3-accent-2",
     attributes: {},
@@ -4915,13 +4915,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00315c",
     type: "color",
+    value: "#00315c",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#00315c"
     },
     name: "--ds-theme3-accent-3",
     attributes: {},
@@ -4932,13 +4932,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme3-accent-4",
     attributes: {},
@@ -4949,13 +4949,13 @@ export const  color = [
     ]
   },
   {
-    value: "#004b8f",
     type: "color",
+    value: "#004b8f",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#004b8f",
-      type: "color"
+      type: "color",
+      value: "#004b8f"
     },
     name: "--ds-theme3-accent-5",
     attributes: {},
@@ -4966,13 +4966,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00529d",
     type: "color",
+    value: "#00529d",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#00529d",
-      type: "color"
+      type: "color",
+      value: "#00529d"
     },
     name: "--ds-theme3-accent-6",
     attributes: {},
@@ -4983,13 +4983,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1972c1",
     type: "color",
+    value: "#1972c1",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#1972c1",
-      type: "color"
+      type: "color",
+      value: "#1972c1"
     },
     name: "--ds-theme3-accent-7",
     attributes: {},
@@ -5000,13 +5000,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9cc2e4",
     type: "color",
+    value: "#9cc2e4",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#9cc2e4",
-      type: "color"
+      type: "color",
+      value: "#9cc2e4"
     },
     name: "--ds-theme3-accent-8",
     attributes: {},
@@ -5017,13 +5017,13 @@ export const  color = [
     ]
   },
   {
-    value: "#0163ba",
     type: "color",
+    value: "#0163ba",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#0163ba",
-      type: "color"
+      type: "color",
+      value: "#0163ba"
     },
     name: "--ds-theme3-accent-9",
     attributes: {},
@@ -5034,13 +5034,13 @@ export const  color = [
     ]
   },
   {
-    value: "#005099",
     type: "color",
+    value: "#005099",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#005099",
-      type: "color"
+      type: "color",
+      value: "#005099"
     },
     name: "--ds-theme3-accent-10",
     attributes: {},
@@ -5051,13 +5051,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme3-accent-11",
     attributes: {},
@@ -5068,13 +5068,13 @@ export const  color = [
     ]
   },
   {
-    value: "#69a2d6",
     type: "color",
+    value: "#69a2d6",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#69a2d6",
-      type: "color"
+      type: "color",
+      value: "#69a2d6"
     },
     name: "--ds-theme3-accent-12",
     attributes: {},
@@ -5085,13 +5085,13 @@ export const  color = [
     ]
   },
   {
-    value: "#cee1f2",
     type: "color",
+    value: "#cee1f2",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#cee1f2",
-      type: "color"
+      type: "color",
+      value: "#cee1f2"
     },
     name: "--ds-theme3-accent-13",
     attributes: {},
@@ -5102,13 +5102,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
+    value: "#fefeff",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#fefeff"
     },
     name: "--ds-theme3-accent-contrast-1",
     attributes: {},
@@ -5119,13 +5119,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dbe9f5",
     type: "color",
+    value: "#dbe9f5",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#dbe9f5",
-      type: "color"
+      type: "color",
+      value: "#dbe9f5"
     },
     name: "--ds-theme3-accent-contrast-2",
     attributes: {},
@@ -5136,13 +5136,13 @@ export const  color = [
     ]
   },
   {
-    value: "#131c27",
     type: "color",
+    value: "#131c27",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#131c27",
-      type: "color"
+      type: "color",
+      value: "#131c27"
     },
     name: "--ds-theme3-neutral-1",
     attributes: {},
@@ -5153,13 +5153,13 @@ export const  color = [
     ]
   },
   {
-    value: "#192433",
     type: "color",
+    value: "#192433",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#192433",
-      type: "color"
+      type: "color",
+      value: "#192433"
     },
     name: "--ds-theme3-neutral-2",
     attributes: {},
@@ -5170,13 +5170,13 @@ export const  color = [
     ]
   },
   {
-    value: "#243142",
     type: "color",
+    value: "#243142",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#243142",
-      type: "color"
+      type: "color",
+      value: "#243142"
     },
     name: "--ds-theme3-neutral-3",
     attributes: {},
@@ -5187,13 +5187,13 @@ export const  color = [
     ]
   },
   {
-    value: "#333e4e",
     type: "color",
+    value: "#333e4e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#333e4e",
-      type: "color"
+      type: "color",
+      value: "#333e4e"
     },
     name: "--ds-theme3-neutral-4",
     attributes: {},
@@ -5204,13 +5204,13 @@ export const  color = [
     ]
   },
   {
-    value: "#424d5b",
     type: "color",
+    value: "#424d5b",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#424d5b",
-      type: "color"
+      type: "color",
+      value: "#424d5b"
     },
     name: "--ds-theme3-neutral-5",
     attributes: {},
@@ -5221,13 +5221,13 @@ export const  color = [
     ]
   },
   {
-    value: "#495361",
     type: "color",
+    value: "#495361",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#495361",
-      type: "color"
+      type: "color",
+      value: "#495361"
     },
     name: "--ds-theme3-neutral-6",
     attributes: {},
@@ -5238,13 +5238,13 @@ export const  color = [
     ]
   },
   {
-    value: "#67707c",
     type: "color",
+    value: "#67707c",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#67707c",
-      type: "color"
+      type: "color",
+      value: "#67707c"
     },
     name: "--ds-theme3-neutral-7",
     attributes: {},
@@ -5255,13 +5255,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme3-neutral-8",
     attributes: {},
@@ -5272,13 +5272,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e2b3c",
     type: "color",
+    value: "#1e2b3c",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#1e2b3c",
-      type: "color"
+      type: "color",
+      value: "#1e2b3c"
     },
     name: "--ds-theme3-neutral-9",
     attributes: {},
@@ -5289,13 +5289,13 @@ export const  color = [
     ]
   },
   {
-    value: "#303c4b",
     type: "color",
+    value: "#303c4b",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#303c4b",
-      type: "color"
+      type: "color",
+      value: "#303c4b"
     },
     name: "--ds-theme3-neutral-10",
     attributes: {},
@@ -5306,13 +5306,13 @@ export const  color = [
     ]
   },
   {
-    value: "#444e5d",
     type: "color",
+    value: "#444e5d",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#444e5d",
-      type: "color"
+      type: "color",
+      value: "#444e5d"
     },
     name: "--ds-theme3-neutral-11",
     attributes: {},
@@ -5323,13 +5323,13 @@ export const  color = [
     ]
   },
   {
-    value: "#989ea5",
     type: "color",
+    value: "#989ea5",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#989ea5",
-      type: "color"
+      type: "color",
+      value: "#989ea5"
     },
     name: "--ds-theme3-neutral-12",
     attributes: {},
@@ -5340,13 +5340,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dddfe1",
     type: "color",
+    value: "#dddfe1",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#dddfe1",
-      type: "color"
+      type: "color",
+      value: "#dddfe1"
     },
     name: "--ds-theme3-neutral-13",
     attributes: {},
@@ -5357,13 +5357,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme3-neutral-contrast-1",
     attributes: {},
@@ -5374,13 +5374,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme3-neutral-contrast-2",
     attributes: {},
@@ -5391,13 +5391,13 @@ export const  color = [
     ]
   },
   {
-    value: "#171835",
     type: "color",
+    value: "#171835",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#171835",
-      type: "color"
+      type: "color",
+      value: "#171835"
     },
     name: "--ds-theme3-brand1-1",
     attributes: {},
@@ -5408,13 +5408,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e1f44",
     type: "color",
+    value: "#1e1f44",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#1e1f44",
-      type: "color"
+      type: "color",
+      value: "#1e1f44"
     },
     name: "--ds-theme3-brand1-2",
     attributes: {},
@@ -5425,13 +5425,13 @@ export const  color = [
     ]
   },
   {
-    value: "#292b5e",
     type: "color",
+    value: "#292b5e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#292b5e",
-      type: "color"
+      type: "color",
+      value: "#292b5e"
     },
     name: "--ds-theme3-brand1-3",
     attributes: {},
@@ -5442,13 +5442,13 @@ export const  color = [
     ]
   },
   {
-    value: "#343676",
     type: "color",
+    value: "#343676",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#343676",
-      type: "color"
+      type: "color",
+      value: "#343676"
     },
     name: "--ds-theme3-brand1-4",
     attributes: {},
@@ -5459,13 +5459,13 @@ export const  color = [
     ]
   },
   {
-    value: "#3f4390",
     type: "color",
+    value: "#3f4390",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#3f4390",
-      type: "color"
+      type: "color",
+      value: "#3f4390"
     },
     name: "--ds-theme3-brand1-5",
     attributes: {},
@@ -5476,13 +5476,13 @@ export const  color = [
     ]
   },
   {
-    value: "#45499e",
     type: "color",
+    value: "#45499e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#45499e",
-      type: "color"
+      type: "color",
+      value: "#45499e"
     },
     name: "--ds-theme3-brand1-6",
     attributes: {},
@@ -5493,13 +5493,13 @@ export const  color = [
     ]
   },
   {
-    value: "#5e63d3",
     type: "color",
+    value: "#5e63d3",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#5e63d3",
-      type: "color"
+      type: "color",
+      value: "#5e63d3"
     },
     name: "--ds-theme3-brand1-7",
     attributes: {},
@@ -5510,13 +5510,13 @@ export const  color = [
     ]
   },
   {
-    value: "#b8baeb",
     type: "color",
+    value: "#b8baeb",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#b8baeb",
-      type: "color"
+      type: "color",
+      value: "#b8baeb"
     },
     name: "--ds-theme3-brand1-8",
     attributes: {},
@@ -5527,13 +5527,13 @@ export const  color = [
     ]
   },
   {
-    value: "#5b60d1",
     type: "color",
+    value: "#5b60d1",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#5b60d1",
-      type: "color"
+      type: "color",
+      value: "#5b60d1"
     },
     name: "--ds-theme3-brand1-9",
     attributes: {},
@@ -5544,13 +5544,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4b4fab",
     type: "color",
+    value: "#4b4fab",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#4b4fab",
-      type: "color"
+      type: "color",
+      value: "#4b4fab"
     },
     name: "--ds-theme3-brand1-10",
     attributes: {},
@@ -5561,13 +5561,13 @@ export const  color = [
     ]
   },
   {
-    value: "#3b3f87",
     type: "color",
+    value: "#3b3f87",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#3b3f87",
-      type: "color"
+      type: "color",
+      value: "#3b3f87"
     },
     name: "--ds-theme3-brand1-11",
     attributes: {},
@@ -5578,13 +5578,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9497e1",
     type: "color",
+    value: "#9497e1",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#9497e1",
-      type: "color"
+      type: "color",
+      value: "#9497e1"
     },
     name: "--ds-theme3-brand1-12",
     attributes: {},
@@ -5595,13 +5595,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dddef5",
     type: "color",
+    value: "#dddef5",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#dddef5",
-      type: "color"
+      type: "color",
+      value: "#dddef5"
     },
     name: "--ds-theme3-brand1-13",
     attributes: {},
@@ -5612,13 +5612,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
+    value: "#fefeff",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#fefeff"
     },
     name: "--ds-theme3-brand1-contrast-1",
     attributes: {},
@@ -5629,13 +5629,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f3f4fc",
     type: "color",
+    value: "#f3f4fc",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#f3f4fc",
-      type: "color"
+      type: "color",
+      value: "#f3f4fc"
     },
     name: "--ds-theme3-brand1-contrast-2",
     attributes: {},
@@ -5646,13 +5646,13 @@ export const  color = [
     ]
   },
   {
-    value: "#25190f",
     type: "color",
+    value: "#25190f",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#25190f",
-      type: "color"
+      type: "color",
+      value: "#25190f"
     },
     name: "--ds-theme3-brand2-1",
     attributes: {},
@@ -5663,13 +5663,13 @@ export const  color = [
     ]
   },
   {
-    value: "#312014",
     type: "color",
+    value: "#312014",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#312014",
-      type: "color"
+      type: "color",
+      value: "#312014"
     },
     name: "--ds-theme3-brand2-2",
     attributes: {},
@@ -5680,13 +5680,13 @@ export const  color = [
     ]
   },
   {
-    value: "#412b1b",
     type: "color",
+    value: "#412b1b",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#412b1b",
-      type: "color"
+      type: "color",
+      value: "#412b1b"
     },
     name: "--ds-theme3-brand2-3",
     attributes: {},
@@ -5697,13 +5697,13 @@ export const  color = [
     ]
   },
   {
-    value: "#543723",
     type: "color",
+    value: "#543723",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#543723",
-      type: "color"
+      type: "color",
+      value: "#543723"
     },
     name: "--ds-theme3-brand2-4",
     attributes: {},
@@ -5714,13 +5714,13 @@ export const  color = [
     ]
   },
   {
-    value: "#66442a",
     type: "color",
+    value: "#66442a",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#66442a",
-      type: "color"
+      type: "color",
+      value: "#66442a"
     },
     name: "--ds-theme3-brand2-5",
     attributes: {},
@@ -5731,13 +5731,13 @@ export const  color = [
     ]
   },
   {
-    value: "#704a2e",
     type: "color",
+    value: "#704a2e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#704a2e",
-      type: "color"
+      type: "color",
+      value: "#704a2e"
     },
     name: "--ds-theme3-brand2-6",
     attributes: {},
@@ -5748,13 +5748,13 @@ export const  color = [
     ]
   },
   {
-    value: "#98643e",
     type: "color",
+    value: "#98643e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#98643e",
-      type: "color"
+      type: "color",
+      value: "#98643e"
     },
     name: "--ds-theme3-brand2-7",
     attributes: {},
@@ -5765,13 +5765,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ffab6e",
     type: "color",
+    value: "#ffab6e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#ffab6e",
-      type: "color"
+      type: "color",
+      value: "#ffab6e"
     },
     name: "--ds-theme3-brand2-8",
     attributes: {},
@@ -5782,13 +5782,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fea769",
     type: "color",
+    value: "#fea769",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#fea769",
-      type: "color"
+      type: "color",
+      value: "#fea769"
     },
     name: "--ds-theme3-brand2-9",
     attributes: {},
@@ -5799,13 +5799,13 @@ export const  color = [
     ]
   },
   {
-    value: "#e1945d",
     type: "color",
+    value: "#e1945d",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#e1945d",
-      type: "color"
+      type: "color",
+      value: "#e1945d"
     },
     name: "--ds-theme3-brand2-10",
     attributes: {},
@@ -5816,13 +5816,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c38150",
     type: "color",
+    value: "#c38150",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#c38150",
-      type: "color"
+      type: "color",
+      value: "#c38150"
     },
     name: "--ds-theme3-brand2-11",
     attributes: {},
@@ -5833,13 +5833,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d58d58",
     type: "color",
+    value: "#d58d58",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#d58d58",
-      type: "color"
+      type: "color",
+      value: "#d58d58"
     },
     name: "--ds-theme3-brand2-12",
     attributes: {},
@@ -5850,13 +5850,13 @@ export const  color = [
     ]
   },
   {
-    value: "#ffd9bd",
     type: "color",
+    value: "#ffd9bd",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#ffd9bd",
-      type: "color"
+      type: "color",
+      value: "#ffd9bd"
     },
     name: "--ds-theme3-brand2-13",
     attributes: {},
@@ -5867,13 +5867,13 @@ export const  color = [
     ]
   },
   {
-    value: "#000000",
     type: "color",
+    value: "#000000",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#000000",
-      type: "color"
+      type: "color",
+      value: "#000000"
     },
     name: "--ds-theme3-brand2-contrast-1",
     attributes: {},
@@ -5884,13 +5884,13 @@ export const  color = [
     ]
   },
   {
-    value: "#362316",
     type: "color",
+    value: "#362316",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#362316",
-      type: "color"
+      type: "color",
+      value: "#362316"
     },
     name: "--ds-theme3-brand2-contrast-2",
     attributes: {},
@@ -5901,13 +5901,13 @@ export const  color = [
     ]
   },
   {
-    value: "#111e1b",
     type: "color",
+    value: "#111e1b",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#111e1b",
-      type: "color"
+      type: "color",
+      value: "#111e1b"
     },
     name: "--ds-theme3-brand3-1",
     attributes: {},
@@ -5918,13 +5918,13 @@ export const  color = [
     ]
   },
   {
-    value: "#162723",
     type: "color",
+    value: "#162723",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#162723",
-      type: "color"
+      type: "color",
+      value: "#162723"
     },
     name: "--ds-theme3-brand3-2",
     attributes: {},
@@ -5935,13 +5935,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e342e",
     type: "color",
+    value: "#1e342e",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#1e342e",
-      type: "color"
+      type: "color",
+      value: "#1e342e"
     },
     name: "--ds-theme3-brand3-3",
     attributes: {},
@@ -5952,13 +5952,13 @@ export const  color = [
     ]
   },
   {
-    value: "#26433c",
     type: "color",
+    value: "#26433c",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#26433c",
-      type: "color"
+      type: "color",
+      value: "#26433c"
     },
     name: "--ds-theme3-brand3-4",
     attributes: {},
@@ -5969,13 +5969,13 @@ export const  color = [
     ]
   },
   {
-    value: "#2e5248",
     type: "color",
+    value: "#2e5248",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#2e5248",
-      type: "color"
+      type: "color",
+      value: "#2e5248"
     },
     name: "--ds-theme3-brand3-5",
     attributes: {},
@@ -5986,13 +5986,13 @@ export const  color = [
     ]
   },
   {
-    value: "#33594f",
     type: "color",
+    value: "#33594f",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#33594f",
-      type: "color"
+      type: "color",
+      value: "#33594f"
     },
     name: "--ds-theme3-brand3-6",
     attributes: {},
@@ -6003,13 +6003,13 @@ export const  color = [
     ]
   },
   {
-    value: "#44786a",
     type: "color",
+    value: "#44786a",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#44786a",
-      type: "color"
+      type: "color",
+      value: "#44786a"
     },
     name: "--ds-theme3-brand3-7",
     attributes: {},
@@ -6020,13 +6020,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9cc6bb",
     type: "color",
+    value: "#9cc6bb",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#9cc6bb",
-      type: "color"
+      type: "color",
+      value: "#9cc6bb"
     },
     name: "--ds-theme3-brand3-8",
     attributes: {},
@@ -6037,13 +6037,13 @@ export const  color = [
     ]
   },
   {
-    value: "#5da290",
     type: "color",
+    value: "#5da290",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#5da290",
-      type: "color"
+      type: "color",
+      value: "#5da290"
     },
     name: "--ds-theme3-brand3-9",
     attributes: {},
@@ -6054,13 +6054,13 @@ export const  color = [
     ]
   },
   {
-    value: "#4f8c7b",
     type: "color",
+    value: "#4f8c7b",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#4f8c7b",
-      type: "color"
+      type: "color",
+      value: "#4f8c7b"
     },
     name: "--ds-theme3-brand3-10",
     attributes: {},
@@ -6071,13 +6071,13 @@ export const  color = [
     ]
   },
   {
-    value: "#437669",
     type: "color",
+    value: "#437669",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#437669",
-      type: "color"
+      type: "color",
+      value: "#437669"
     },
     name: "--ds-theme3-brand3-11",
     attributes: {},
@@ -6088,13 +6088,13 @@ export const  color = [
     ]
   },
   {
-    value: "#69a998",
     type: "color",
+    value: "#69a998",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#69a998",
-      type: "color"
+      type: "color",
+      value: "#69a998"
     },
     name: "--ds-theme3-brand3-12",
     attributes: {},
@@ -6105,13 +6105,13 @@ export const  color = [
     ]
   },
   {
-    value: "#cee3dd",
     type: "color",
+    value: "#cee3dd",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#cee3dd",
-      type: "color"
+      type: "color",
+      value: "#cee3dd"
     },
     name: "--ds-theme3-brand3-13",
     attributes: {},
@@ -6122,13 +6122,13 @@ export const  color = [
     ]
   },
   {
-    value: "#000000",
     type: "color",
+    value: "#000000",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#000000",
-      type: "color"
+      type: "color",
+      value: "#000000"
     },
     name: "--ds-theme3-brand3-contrast-1",
     attributes: {},
@@ -6139,13 +6139,13 @@ export const  color = [
     ]
   },
   {
-    value: "#050808",
     type: "color",
+    value: "#050808",
     filePath: "../../design-tokens/primitives/colors/dark/theme3.json",
     isSource: true,
     original: {
-      value: "#050808",
-      type: "color"
+      type: "color",
+      value: "#050808"
     },
     name: "--ds-theme3-brand3-contrast-2",
     attributes: {},
@@ -6156,13 +6156,13 @@ export const  color = [
     ]
   },
   {
-    value: "#001c36",
     type: "color",
+    value: "#001c36",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#001c36",
-      type: "color"
+      type: "color",
+      value: "#001c36"
     },
     name: "--ds-theme2-accent-1",
     attributes: {},
@@ -6173,13 +6173,13 @@ export const  color = [
     ]
   },
   {
-    value: "#002445",
     type: "color",
+    value: "#002445",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#002445",
-      type: "color"
+      type: "color",
+      value: "#002445"
     },
     name: "--ds-theme2-accent-2",
     attributes: {},
@@ -6190,13 +6190,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00315c",
     type: "color",
+    value: "#00315c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#00315c"
     },
     name: "--ds-theme2-accent-3",
     attributes: {},
@@ -6207,13 +6207,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme2-accent-4",
     attributes: {},
@@ -6224,13 +6224,13 @@ export const  color = [
     ]
   },
   {
-    value: "#004b8f",
     type: "color",
+    value: "#004b8f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#004b8f",
-      type: "color"
+      type: "color",
+      value: "#004b8f"
     },
     name: "--ds-theme2-accent-5",
     attributes: {},
@@ -6241,13 +6241,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00529d",
     type: "color",
+    value: "#00529d",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#00529d",
-      type: "color"
+      type: "color",
+      value: "#00529d"
     },
     name: "--ds-theme2-accent-6",
     attributes: {},
@@ -6258,13 +6258,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1972c1",
     type: "color",
+    value: "#1972c1",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#1972c1",
-      type: "color"
+      type: "color",
+      value: "#1972c1"
     },
     name: "--ds-theme2-accent-7",
     attributes: {},
@@ -6275,13 +6275,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9cc2e4",
     type: "color",
+    value: "#9cc2e4",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#9cc2e4",
-      type: "color"
+      type: "color",
+      value: "#9cc2e4"
     },
     name: "--ds-theme2-accent-8",
     attributes: {},
@@ -6292,13 +6292,13 @@ export const  color = [
     ]
   },
   {
-    value: "#0163ba",
     type: "color",
+    value: "#0163ba",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#0163ba",
-      type: "color"
+      type: "color",
+      value: "#0163ba"
     },
     name: "--ds-theme2-accent-9",
     attributes: {},
@@ -6309,13 +6309,13 @@ export const  color = [
     ]
   },
   {
-    value: "#005099",
     type: "color",
+    value: "#005099",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#005099",
-      type: "color"
+      type: "color",
+      value: "#005099"
     },
     name: "--ds-theme2-accent-10",
     attributes: {},
@@ -6326,13 +6326,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme2-accent-11",
     attributes: {},
@@ -6343,13 +6343,13 @@ export const  color = [
     ]
   },
   {
-    value: "#69a2d6",
     type: "color",
+    value: "#69a2d6",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#69a2d6",
-      type: "color"
+      type: "color",
+      value: "#69a2d6"
     },
     name: "--ds-theme2-accent-12",
     attributes: {},
@@ -6360,13 +6360,13 @@ export const  color = [
     ]
   },
   {
-    value: "#cee1f2",
     type: "color",
+    value: "#cee1f2",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#cee1f2",
-      type: "color"
+      type: "color",
+      value: "#cee1f2"
     },
     name: "--ds-theme2-accent-13",
     attributes: {},
@@ -6377,13 +6377,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
+    value: "#fefeff",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#fefeff"
     },
     name: "--ds-theme2-accent-contrast-1",
     attributes: {},
@@ -6394,13 +6394,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dbe9f5",
     type: "color",
+    value: "#dbe9f5",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#dbe9f5",
-      type: "color"
+      type: "color",
+      value: "#dbe9f5"
     },
     name: "--ds-theme2-accent-contrast-2",
     attributes: {},
@@ -6411,13 +6411,13 @@ export const  color = [
     ]
   },
   {
-    value: "#131c27",
     type: "color",
+    value: "#131c27",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#131c27",
-      type: "color"
+      type: "color",
+      value: "#131c27"
     },
     name: "--ds-theme2-neutral-1",
     attributes: {},
@@ -6428,13 +6428,13 @@ export const  color = [
     ]
   },
   {
-    value: "#192433",
     type: "color",
+    value: "#192433",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#192433",
-      type: "color"
+      type: "color",
+      value: "#192433"
     },
     name: "--ds-theme2-neutral-2",
     attributes: {},
@@ -6445,13 +6445,13 @@ export const  color = [
     ]
   },
   {
-    value: "#243142",
     type: "color",
+    value: "#243142",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#243142",
-      type: "color"
+      type: "color",
+      value: "#243142"
     },
     name: "--ds-theme2-neutral-3",
     attributes: {},
@@ -6462,13 +6462,13 @@ export const  color = [
     ]
   },
   {
-    value: "#333e4e",
     type: "color",
+    value: "#333e4e",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#333e4e",
-      type: "color"
+      type: "color",
+      value: "#333e4e"
     },
     name: "--ds-theme2-neutral-4",
     attributes: {},
@@ -6479,13 +6479,13 @@ export const  color = [
     ]
   },
   {
-    value: "#424d5b",
     type: "color",
+    value: "#424d5b",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#424d5b",
-      type: "color"
+      type: "color",
+      value: "#424d5b"
     },
     name: "--ds-theme2-neutral-5",
     attributes: {},
@@ -6496,13 +6496,13 @@ export const  color = [
     ]
   },
   {
-    value: "#495361",
     type: "color",
+    value: "#495361",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#495361",
-      type: "color"
+      type: "color",
+      value: "#495361"
     },
     name: "--ds-theme2-neutral-6",
     attributes: {},
@@ -6513,13 +6513,13 @@ export const  color = [
     ]
   },
   {
-    value: "#67707c",
     type: "color",
+    value: "#67707c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#67707c",
-      type: "color"
+      type: "color",
+      value: "#67707c"
     },
     name: "--ds-theme2-neutral-7",
     attributes: {},
@@ -6530,13 +6530,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme2-neutral-8",
     attributes: {},
@@ -6547,13 +6547,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e2b3c",
     type: "color",
+    value: "#1e2b3c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#1e2b3c",
-      type: "color"
+      type: "color",
+      value: "#1e2b3c"
     },
     name: "--ds-theme2-neutral-9",
     attributes: {},
@@ -6564,13 +6564,13 @@ export const  color = [
     ]
   },
   {
-    value: "#303c4b",
     type: "color",
+    value: "#303c4b",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#303c4b",
-      type: "color"
+      type: "color",
+      value: "#303c4b"
     },
     name: "--ds-theme2-neutral-10",
     attributes: {},
@@ -6581,13 +6581,13 @@ export const  color = [
     ]
   },
   {
-    value: "#444e5d",
     type: "color",
+    value: "#444e5d",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#444e5d",
-      type: "color"
+      type: "color",
+      value: "#444e5d"
     },
     name: "--ds-theme2-neutral-11",
     attributes: {},
@@ -6598,13 +6598,13 @@ export const  color = [
     ]
   },
   {
-    value: "#989ea5",
     type: "color",
+    value: "#989ea5",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#989ea5",
-      type: "color"
+      type: "color",
+      value: "#989ea5"
     },
     name: "--ds-theme2-neutral-12",
     attributes: {},
@@ -6615,13 +6615,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dddfe1",
     type: "color",
+    value: "#dddfe1",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#dddfe1",
-      type: "color"
+      type: "color",
+      value: "#dddfe1"
     },
     name: "--ds-theme2-neutral-13",
     attributes: {},
@@ -6632,13 +6632,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme2-neutral-contrast-1",
     attributes: {},
@@ -6649,13 +6649,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bbbfc4",
     type: "color",
+    value: "#bbbfc4",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#bbbfc4",
-      type: "color"
+      type: "color",
+      value: "#bbbfc4"
     },
     name: "--ds-theme2-neutral-contrast-2",
     attributes: {},
@@ -6666,13 +6666,13 @@ export const  color = [
     ]
   },
   {
-    value: "#001c36",
     type: "color",
+    value: "#001c36",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#001c36",
-      type: "color"
+      type: "color",
+      value: "#001c36"
     },
     name: "--ds-theme2-brand1-1",
     attributes: {},
@@ -6683,13 +6683,13 @@ export const  color = [
     ]
   },
   {
-    value: "#002445",
     type: "color",
+    value: "#002445",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#002445",
-      type: "color"
+      type: "color",
+      value: "#002445"
     },
     name: "--ds-theme2-brand1-2",
     attributes: {},
@@ -6700,13 +6700,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00315c",
     type: "color",
+    value: "#00315c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#00315c",
-      type: "color"
+      type: "color",
+      value: "#00315c"
     },
     name: "--ds-theme2-brand1-3",
     attributes: {},
@@ -6717,13 +6717,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme2-brand1-4",
     attributes: {},
@@ -6734,13 +6734,13 @@ export const  color = [
     ]
   },
   {
-    value: "#004b8f",
     type: "color",
+    value: "#004b8f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#004b8f",
-      type: "color"
+      type: "color",
+      value: "#004b8f"
     },
     name: "--ds-theme2-brand1-5",
     attributes: {},
@@ -6751,13 +6751,13 @@ export const  color = [
     ]
   },
   {
-    value: "#00529d",
     type: "color",
+    value: "#00529d",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#00529d",
-      type: "color"
+      type: "color",
+      value: "#00529d"
     },
     name: "--ds-theme2-brand1-6",
     attributes: {},
@@ -6768,13 +6768,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1972c1",
     type: "color",
+    value: "#1972c1",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#1972c1",
-      type: "color"
+      type: "color",
+      value: "#1972c1"
     },
     name: "--ds-theme2-brand1-7",
     attributes: {},
@@ -6785,13 +6785,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9cc2e4",
     type: "color",
+    value: "#9cc2e4",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#9cc2e4",
-      type: "color"
+      type: "color",
+      value: "#9cc2e4"
     },
     name: "--ds-theme2-brand1-8",
     attributes: {},
@@ -6802,13 +6802,13 @@ export const  color = [
     ]
   },
   {
-    value: "#0163ba",
     type: "color",
+    value: "#0163ba",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#0163ba",
-      type: "color"
+      type: "color",
+      value: "#0163ba"
     },
     name: "--ds-theme2-brand1-9",
     attributes: {},
@@ -6819,13 +6819,13 @@ export const  color = [
     ]
   },
   {
-    value: "#005099",
     type: "color",
+    value: "#005099",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#005099",
-      type: "color"
+      type: "color",
+      value: "#005099"
     },
     name: "--ds-theme2-brand1-10",
     attributes: {},
@@ -6836,13 +6836,13 @@ export const  color = [
     ]
   },
   {
-    value: "#003d75",
     type: "color",
+    value: "#003d75",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#003d75",
-      type: "color"
+      type: "color",
+      value: "#003d75"
     },
     name: "--ds-theme2-brand1-11",
     attributes: {},
@@ -6853,13 +6853,13 @@ export const  color = [
     ]
   },
   {
-    value: "#69a2d6",
     type: "color",
+    value: "#69a2d6",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#69a2d6",
-      type: "color"
+      type: "color",
+      value: "#69a2d6"
     },
     name: "--ds-theme2-brand1-12",
     attributes: {},
@@ -6870,13 +6870,13 @@ export const  color = [
     ]
   },
   {
-    value: "#cee1f2",
     type: "color",
+    value: "#cee1f2",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#cee1f2",
-      type: "color"
+      type: "color",
+      value: "#cee1f2"
     },
     name: "--ds-theme2-brand1-13",
     attributes: {},
@@ -6887,13 +6887,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefeff",
     type: "color",
+    value: "#fefeff",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#fefeff",
-      type: "color"
+      type: "color",
+      value: "#fefeff"
     },
     name: "--ds-theme2-brand1-contrast-1",
     attributes: {},
@@ -6904,13 +6904,13 @@ export const  color = [
     ]
   },
   {
-    value: "#dbe9f5",
     type: "color",
+    value: "#dbe9f5",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#dbe9f5",
-      type: "color"
+      type: "color",
+      value: "#dbe9f5"
     },
     name: "--ds-theme2-brand1-contrast-2",
     attributes: {},
@@ -6921,13 +6921,13 @@ export const  color = [
     ]
   },
   {
-    value: "#1e182f",
     type: "color",
+    value: "#1e182f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#1e182f",
-      type: "color"
+      type: "color",
+      value: "#1e182f"
     },
     name: "--ds-theme2-brand2-1",
     attributes: {},
@@ -6938,13 +6938,13 @@ export const  color = [
     ]
   },
   {
-    value: "#271f3c",
     type: "color",
+    value: "#271f3c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#271f3c",
-      type: "color"
+      type: "color",
+      value: "#271f3c"
     },
     name: "--ds-theme2-brand2-2",
     attributes: {},
@@ -6955,13 +6955,13 @@ export const  color = [
     ]
   },
   {
-    value: "#352952",
     type: "color",
+    value: "#352952",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#352952",
-      type: "color"
+      type: "color",
+      value: "#352952"
     },
     name: "--ds-theme2-brand2-3",
     attributes: {},
@@ -6972,13 +6972,13 @@ export const  color = [
     ]
   },
   {
-    value: "#433665",
     type: "color",
+    value: "#433665",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#433665",
-      type: "color"
+      type: "color",
+      value: "#433665"
     },
     name: "--ds-theme2-brand2-4",
     attributes: {},
@@ -6989,13 +6989,13 @@ export const  color = [
     ]
   },
   {
-    value: "#514570",
     type: "color",
+    value: "#514570",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#514570",
-      type: "color"
+      type: "color",
+      value: "#514570"
     },
     name: "--ds-theme2-brand2-5",
     attributes: {},
@@ -7006,13 +7006,13 @@ export const  color = [
     ]
   },
   {
-    value: "#584b75",
     type: "color",
+    value: "#584b75",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#584b75",
-      type: "color"
+      type: "color",
+      value: "#584b75"
     },
     name: "--ds-theme2-brand2-6",
     attributes: {},
@@ -7023,13 +7023,13 @@ export const  color = [
     ]
   },
   {
-    value: "#746a8d",
     type: "color",
+    value: "#746a8d",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#746a8d",
-      type: "color"
+      type: "color",
+      value: "#746a8d"
     },
     name: "--ds-theme2-brand2-7",
     attributes: {},
@@ -7040,13 +7040,13 @@ export const  color = [
     ]
   },
   {
-    value: "#c0bccb",
     type: "color",
+    value: "#c0bccb",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#c0bccb",
-      type: "color"
+      type: "color",
+      value: "#c0bccb"
     },
     name: "--ds-theme2-brand2-8",
     attributes: {},
@@ -7057,13 +7057,13 @@ export const  color = [
     ]
   },
   {
-    value: "#3f3161",
     type: "color",
+    value: "#3f3161",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#3f3161",
-      type: "color"
+      type: "color",
+      value: "#3f3161"
     },
     name: "--ds-theme2-brand2-9",
     attributes: {},
@@ -7074,13 +7074,13 @@ export const  color = [
     ]
   },
   {
-    value: "#514570",
     type: "color",
+    value: "#514570",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#514570",
-      type: "color"
+      type: "color",
+      value: "#514570"
     },
     name: "--ds-theme2-brand2-10",
     attributes: {},
@@ -7091,13 +7091,13 @@ export const  color = [
     ]
   },
   {
-    value: "#64587f",
     type: "color",
+    value: "#64587f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#64587f",
-      type: "color"
+      type: "color",
+      value: "#64587f"
     },
     name: "--ds-theme2-brand2-11",
     attributes: {},
@@ -7108,13 +7108,13 @@ export const  color = [
     ]
   },
   {
-    value: "#a19ab1",
     type: "color",
+    value: "#a19ab1",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#a19ab1",
-      type: "color"
+      type: "color",
+      value: "#a19ab1"
     },
     name: "--ds-theme2-brand2-12",
     attributes: {},
@@ -7125,13 +7125,13 @@ export const  color = [
     ]
   },
   {
-    value: "#e0dee6",
     type: "color",
+    value: "#e0dee6",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#e0dee6",
-      type: "color"
+      type: "color",
+      value: "#e0dee6"
     },
     name: "--ds-theme2-brand2-13",
     attributes: {},
@@ -7142,13 +7142,13 @@ export const  color = [
     ]
   },
   {
-    value: "#fefefe",
     type: "color",
+    value: "#fefefe",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#fefefe",
-      type: "color"
+      type: "color",
+      value: "#fefefe"
     },
     name: "--ds-theme2-brand2-contrast-1",
     attributes: {},
@@ -7159,13 +7159,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d3d0db",
     type: "color",
+    value: "#d3d0db",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#d3d0db",
-      type: "color"
+      type: "color",
+      value: "#d3d0db"
     },
     name: "--ds-theme2-brand2-contrast-2",
     attributes: {},
@@ -7176,13 +7176,13 @@ export const  color = [
     ]
   },
   {
-    value: "#370b12",
     type: "color",
+    value: "#370b12",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#370b12",
-      type: "color"
+      type: "color",
+      value: "#370b12"
     },
     name: "--ds-theme2-brand3-1",
     attributes: {},
@@ -7193,13 +7193,13 @@ export const  color = [
     ]
   },
   {
-    value: "#470e17",
     type: "color",
+    value: "#470e17",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#470e17",
-      type: "color"
+      type: "color",
+      value: "#470e17"
     },
     name: "--ds-theme2-brand3-2",
     attributes: {},
@@ -7210,13 +7210,13 @@ export const  color = [
     ]
   },
   {
-    value: "#5f131f",
     type: "color",
+    value: "#5f131f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#5f131f",
-      type: "color"
+      type: "color",
+      value: "#5f131f"
     },
     name: "--ds-theme2-brand3-3",
     attributes: {},
@@ -7227,13 +7227,13 @@ export const  color = [
     ]
   },
   {
-    value: "#771927",
     type: "color",
+    value: "#771927",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#771927",
-      type: "color"
+      type: "color",
+      value: "#771927"
     },
     name: "--ds-theme2-brand3-4",
     attributes: {},
@@ -7244,13 +7244,13 @@ export const  color = [
     ]
   },
   {
-    value: "#901d2f",
     type: "color",
+    value: "#901d2f",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#901d2f",
-      type: "color"
+      type: "color",
+      value: "#901d2f"
     },
     name: "--ds-theme2-brand3-5",
     attributes: {},
@@ -7261,13 +7261,13 @@ export const  color = [
     ]
   },
   {
-    value: "#9e2033",
     type: "color",
+    value: "#9e2033",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#9e2033",
-      type: "color"
+      type: "color",
+      value: "#9e2033"
     },
     name: "--ds-theme2-brand3-6",
     attributes: {},
@@ -7278,13 +7278,13 @@ export const  color = [
     ]
   },
   {
-    value: "#d32b45",
     type: "color",
+    value: "#d32b45",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#d32b45",
-      type: "color"
+      type: "color",
+      value: "#d32b45"
     },
     name: "--ds-theme2-brand3-7",
     attributes: {},
@@ -7295,13 +7295,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f3abb6",
     type: "color",
+    value: "#f3abb6",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#f3abb6",
-      type: "color"
+      type: "color",
+      value: "#f3abb6"
     },
     name: "--ds-theme2-brand3-8",
     attributes: {},
@@ -7312,13 +7312,13 @@ export const  color = [
     ]
   },
   {
-    value: "#e02f4a",
     type: "color",
+    value: "#e02f4a",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#e02f4a",
-      type: "color"
+      type: "color",
+      value: "#e02f4a"
     },
     name: "--ds-theme2-brand3-9",
     attributes: {},
@@ -7329,13 +7329,13 @@ export const  color = [
     ]
   },
   {
-    value: "#bc273d",
     type: "color",
+    value: "#bc273d",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#bc273d",
-      type: "color"
+      type: "color",
+      value: "#bc273d"
     },
     name: "--ds-theme2-brand3-10",
     attributes: {},
@@ -7346,13 +7346,13 @@ export const  color = [
     ]
   },
   {
-    value: "#992032",
     type: "color",
+    value: "#992032",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#992032",
-      type: "color"
+      type: "color",
+      value: "#992032"
     },
     name: "--ds-theme2-brand3-11",
     attributes: {},
@@ -7363,13 +7363,13 @@ export const  color = [
     ]
   },
   {
-    value: "#eb7b8c",
     type: "color",
+    value: "#eb7b8c",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#eb7b8c",
-      type: "color"
+      type: "color",
+      value: "#eb7b8c"
     },
     name: "--ds-theme2-brand3-12",
     attributes: {},
@@ -7380,13 +7380,13 @@ export const  color = [
     ]
   },
   {
-    value: "#f9d7dc",
     type: "color",
+    value: "#f9d7dc",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#f9d7dc",
-      type: "color"
+      type: "color",
+      value: "#f9d7dc"
     },
     name: "--ds-theme2-brand3-13",
     attributes: {},
@@ -7397,13 +7397,13 @@ export const  color = [
     ]
   },
   {
-    value: "#000000",
     type: "color",
+    value: "#000000",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#000000",
-      type: "color"
+      type: "color",
+      value: "#000000"
     },
     name: "--ds-theme2-brand3-contrast-1",
     attributes: {},
@@ -7414,13 +7414,13 @@ export const  color = [
     ]
   },
   {
-    value: "#000000",
     type: "color",
+    value: "#000000",
     filePath: "../../design-tokens/primitives/colors/dark/theme2.json",
     isSource: true,
     original: {
-      value: "#000000",
-      type: "color"
+      type: "color",
+      value: "#000000"
     },
     name: "--ds-theme2-brand3-contrast-2",
     attributes: {},
