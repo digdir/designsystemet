@@ -3,14 +3,10 @@ name: Checks packages
 on:
   workflow_dispatch:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/**'
       - '*.*js'
   push:
-    branches:
-      - main
     paths:
       - 'packages/**'
 jobs:
