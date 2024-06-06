@@ -1,5 +1,4 @@
 import '../globals.css';
-import '../../legacy-tokens.css'; // TODO temp fix because of silly symlinks for theme package
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
