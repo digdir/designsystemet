@@ -8,9 +8,10 @@ type IncludeReferences = (token: TransformedToken) => boolean;
  */
 export const scopedReferenceVariables: Format = {
   name: 'css/variables-scoped-references',
-  format: async function ({ dictionary, file, options }) {
+  format: async function ({ dictionary, file, options, platform }) {
     const { allTokens, unfilteredTokens } = dictionary;
-    const { usesDtcg, outputReferences, mode } = options;
+    const { usesDtcg, outputReferences } = options;
+    const { mode } = platform;
 
     const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
     const includeReferences = options.includeReferences as IncludeReferences;
