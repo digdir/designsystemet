@@ -1,0 +1,22 @@
+{
+  "font-family": {
+    "main": {
+      "type": "fontFamilies",
+      "value": "arial"
+    }
+  },
+  "font-weight": {
+    "medium": {
+      "type": "fontWeights",
+      "value": "Regular"
+    },
+    "semibold": {
+      "type": "fontWeights",
+      "value": "Bold"
+    },
+    "regular": {
+      "type": "fontWeights",
+      "value": "Regular"
+    }
+  }
+}
