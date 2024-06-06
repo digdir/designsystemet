@@ -8,6 +8,7 @@ on:
     inputs:
       environment:
         type: choice
+        default: next
         description: Deploy to environment
         options:
           - production
