@@ -5,7 +5,7 @@ import { Meta, Image } from '@components';
 
 <Meta
   title='Bruk designsystemet med eget tema'
-  description='Hvordan du kan bruke Designsystemet med egne farger og profil-preferanser.'
+  description='Lær hvordan du kan bruke designsystemet med dine egne profilfarger.'
 />
 
 export default ({ children }) => (
@@ -20,7 +20,7 @@ export default ({ children }) => (
   />
 );
 
-Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne farger og profil-preferanser? Det er flere måter å gjøre det på. Det første du må ta stilling til er om du vil bruke komponentene _med_ eller _uten_ kobling mellom Figma og kode.
+Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger? Det er flere måter å gjøre det på. Det første du må ta stilling til er om du vil bruke komponentene _med_ eller _uten_ kobling mellom Figma og kode.
 
 **Alternativ 1:** _Uten_ kobling mellom Figma og kode \
 **Alternativ 2:** _Med_ kobling mellom Figma og kode
@@ -29,21 +29,23 @@ Hvilket alternativ du går for avhenger av dine behov og rammer.
 
 Fordelen med å ha en kobling, gjennom tokens, er at de sørger for at designere og utviklere arbeider etter de samme reglene, og at ting ser likt ut i Figma og i de faktiske løsningene. En annen fordel er at du vil kunne generere et tema som vil fungere ut av boksen med designsystemet sine komponentbibliotek i kode.
 
-Ulempen er at det krever en del mer første gang du skal sette det opp, og du er avhengig av pluginen [Tokens Studio](https://tokens.studio/). Du må vurdere om det er verdt det for din organisasjon. _Uten direkte kobling til tokens_, må du manuelt passe på at variablene som lages i Figma er de samme som brukes i kode.
+Ulempen er at det krever en del mer første gang du skal sette det opp, ettersom du er avhengig av pluginen [Tokens Studio](https://tokens.studio/) og en Github-PAT. Vi håper vi kan gjøre dette enklere med en egen plugin etter hvert. I mellomtiden må du vurdere om det er verdt det for din organisasjon.
 
 Vi guider deg gjennom begge alternativene her.
 
 ## Alternativ 1: Uten kobling
 
-Å _ikke_ ha en kobling er den raskeste veien til å få opp Figma-filen med egne farger.
+Ved å _ikke_ ha en kobling kan du sette opp Figma-bibiloteket med dine farger uten at du må bruke Github. _Uten direkte kobling til tokens_, må du manuelt passe på at variablene som lages i Figma er de samme som brukes i kode.
 
-### Slik går du frem for å få det til:
+### Slik går du frem:
 
 1. Hent Designsystemet fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
 2. Filen har nå sannsyligvis lagt seg i dine "drafts" nå, så du må flytte den til et fornuftig sted i din organisasjon.
-3. Åpne "local variables" i Figma og bytt ut `accent`, `neutral`, `brand1`, `brand2`, `brand3` med dine egne farger. Har du ikke farger for hele skalaen, kan du [få hjelp med å sette det opp fargeskalaene her](/grunnleggende/for-designere/fargesystem).
-4. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
-5. Det var alt! Nå skal komponentene ha dine farger! 🎉 Og så var det å holde filen oppdatert da... Figma har foreløpig [ikke støtte for å hente ned endringer fra en Community-fil](https://forum.figma.com/t/need-a-way-to-get-latest-updates-or-subscribe-to-changes-from-a-published-community-file/32571). Vi håper dette vil komme, i mellomtiden kan du [vurdere disse alternativene](/grunnleggende/for-designere/hent-oppdateringer).
+3. Gå til theme.designsystemet.no og generer fargeskalaen ut i fra dine profilfarger.
+4. Åpne "local variables" i Figma og bytt ut `accent`, `neutral`, `brand1`, `brand2`, `brand3` med dine egne farger. Det er litt tungvindt nå siden du må manuelt klippe og lime hex-koder. Vi jobber med en [plugin til Figma](https://github.com/digdir/designsystemet/tree/next/plugins/figma-sync) som gjør at du bare kan kopiere inn hele sulamitten. 🎉
+5. Nå skal du se alle komponentene med dine egne profilfarger.
+6. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
+7. Det var alt! Og så var det å holde filen oppdatert da... Figma har foreløpig [ikke støtte for å hente ned endringer fra en Community-fil](https://forum.figma.com/t/need-a-way-to-get-latest-updates-or-subscribe-to-changes-from-a-published-community-file/32571). Vi håper dette vil komme, i mellomtiden kan du [vurdere disse alternativene](/grunnleggende/for-designere/hent-oppdateringer).
 
 <Image
   src='/img/local-variables.png'
