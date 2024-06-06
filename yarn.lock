@@ -2067,7 +2067,7 @@ __metadata:
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
     "@commander-js/extra-typings": "npm:^12.0.1"
-    "@tokens-studio/sd-transforms": "npm:^0.16.0"
+    "@tokens-studio/sd-transforms": "npm:^0.16.1"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/glob": "npm:^8.1.0"
     "@types/jscodeshift": "npm:^0.11.11"
@@ -2083,7 +2083,7 @@ __metadata:
     postcss: "npm:^8.4.38"
     ramda: "npm:^0.29.1"
     rimraf: "npm:^5.0.5"
-    style-dictionary: "npm:^4.0.0-prerelease.27"
+    style-dictionary: "npm:^4.0.0-prerelease.34"
     tsup: "npm:^8.0.2"
     tsx: "npm:^4.11.2"
     typescript: "npm:^5.4.5"
@@ -5707,9 +5707,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:^0.16.0":
-  version: 0.16.0
-  resolution: "@tokens-studio/sd-transforms@npm:0.16.0"
+"@tokens-studio/sd-transforms@npm:^0.16.1":
+  version: 0.16.1
+  resolution: "@tokens-studio/sd-transforms@npm:0.16.1"
   dependencies:
     "@tokens-studio/types": "npm:^0.4.0"
     color2k: "npm:^2.0.1"
@@ -5720,7 +5720,7 @@ __metadata:
     postcss-calc-ast-parser: "npm:^0.1.4"
   peerDependencies:
     style-dictionary: ^4.0.0-prerelease.27
-  checksum: 10/bfa796b8444268808af39cf355c142c53eceab1753d07b59c080e835f719022c4b020f0a0ef39143ec539c35e48b0ed412408b5705d34e24921b991c6597c28d
+  checksum: 10/f386a81e4bf6ae4f94dd13ae8a706a1a761a656ffac43f00842e2896cd439d388b1a53fe2edf75c3f8d7382384bbbd6468b668b3eb8b28779179f9a9dc3cbffb
   languageName: node
   linkType: hard
 
@@ -7096,6 +7096,13 @@ __metadata:
     js-yaml: "npm:^3.10.0"
     tslib: "npm:^2.4.0"
   checksum: 10/3b7d55ebd1b90fe2adf05bfaab53031fb9ddb6315f8dfca1b5ba0393c08fc4a7f22c94603eec06dfe0a67e4121e5227b0ae57a70c73d353614650e2b54b6049d
+  languageName: node
+  linkType: hard
+
+"@zip.js/zip.js@npm:^2.7.44":
+  version: 2.7.45
+  resolution: "@zip.js/zip.js@npm:2.7.45"
+  checksum: 10/9c1fecb6d1acb9c0295ff38542cda9c04e982cc3a5a0bb21096fa2458b3b06ee853da8807698ed23fa637ef5e9d20ff64dd469015fdc14402fb737c32866b998
   languageName: node
   linkType: hard
 
@@ -21430,13 +21437,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-dictionary@npm:^4.0.0-prerelease.27":
-  version: 4.0.0-prerelease.27
-  resolution: "style-dictionary@npm:4.0.0-prerelease.27"
+"style-dictionary@npm:^4.0.0-prerelease.34":
+  version: 4.0.0-prerelease.34
+  resolution: "style-dictionary@npm:4.0.0-prerelease.34"
   dependencies:
     "@bundled-es-modules/deepmerge": "npm:^4.3.1"
     "@bundled-es-modules/glob": "npm:^10.3.13"
     "@bundled-es-modules/memfs": "npm:^4.8.1"
+    "@zip.js/zip.js": "npm:^2.7.44"
     chalk: "npm:^5.3.0"
     change-case: "npm:^5.3.0"
     commander: "npm:^8.3.0"
@@ -21447,7 +21455,7 @@ __metadata:
     tinycolor2: "npm:^1.6.0"
   bin:
     style-dictionary: bin/style-dictionary.js
-  checksum: 10/d675e382a72e404a090feb5940fe13925e93fdfcb8656f706ff5127eb52fb52113a02d256400015597044bfabb05614aa0080c4c1e38fefafced1ad21ae2c93e
+  checksum: 10/f0f65b666e09be97c6b25a2839df0c45ffde892afca8269926daf4bd1afdd5a4f2019c5d35896d71c02db0d47661cdb8bbc3ce312d1ea12e3106f1740d7c4978
   languageName: node
   linkType: hard
 

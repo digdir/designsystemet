@@ -1,13 +1,13 @@
-name: Deploy Storybook
+name: Deploy Storefront
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
-
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
 on:
   workflow_dispatch:
     inputs:
       environment:
         type: choice
+        default: next
         description: Deploy to environment
         options:
           - production
@@ -16,14 +16,10 @@ on:
     branches:
       - next
     paths:
-      - 'packages/**'
-      - 'apps/storybook/**'
-      - 'assets/**'
+      - 'apps/storefront/**'
 jobs:
-  deploy:
-    name: Build & deploy to Vercel
+  Deploy-Production:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -59,5 +55,5 @@ jobs:
         run: echo "url=$(vercel deploy --prebuilt ${{(steps.defaultenvironment.outputs.value == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} next.storybook.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} next.designsystemet.no
         if: steps.defaultenvironment.outputs.value == 'next'

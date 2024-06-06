@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type React from 'react';
+import type { ButtonProps } from '@digdir/designsystemet-react';
 import { useEffect, useState, createElement } from 'react';
 import cn from 'clsx';
 import { Link, Button } from '@digdir/designsystemet-react';
@@ -33,6 +34,8 @@ type ImageSectionButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
+  variant?: ButtonProps['variant'];
+  color?: ButtonProps['color'];
 };
 
 const ImageBanner = ({
@@ -126,7 +129,8 @@ const ImageBanner = ({
                 <Button
                   key={index}
                   asChild
-                  variant='secondary'
+                  variant={item.variant ?? 'secondary'}
+                  color={item.color}
                 >
                   <a
                     href={item.href}

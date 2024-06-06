@@ -47,8 +47,10 @@ Passer til å
 - endre visning av innhold mellom to kategorier, for eksempel se
   statistikk per måned eller år
 
+  {' '}
+
   <br />
-Passer ikke til
+  Passer ikke til
 
 - å gi flere alternativer enn to
 - å bruke i stedet for avmerkingsboks (checkbox) eller alternativknapper (radio buttons) i et skjema
@@ -81,3 +83,10 @@ Som regel er det høyre som er den beste plasseringen for tekst, unntaket er nå
 
 Sørg for at komponenten oppfører seg konsekvent gjennom en hel tjeneste.
 Hvis du har en gruppe med flere vippebrytere, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem også, ikke formulerer dem forskjellig.
+
+Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter. Dette gjør at skjermlesere kan gi brukeren informasjon om at dette er en vippebryter og at den kan skrus av og på.
+Det er ikke lagt på `aria-checked` siden dette er ikke nødvendig når bryteren er en input med `type="checkbox"`. <sup>1</sup>
+
+### Referanser
+
+[1. Switch rolle](https://www.w3.org/WAI/ARIA/apg/patterns/switch/#:~:text=If%20the%20switch%20element%20is%20an%20HTML%20input%5Btype%3D%22checkbox%22%5D%2C%20it%20uses%20the%20HTML%20checked%20attribute%20instead%20of%20the%20aria%2Dchecked%20property.)

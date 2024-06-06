@@ -1,0 +1,64 @@
+name: Deploy Storybook
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        default: next
+        description: Deploy to environment
+        options:
+          - production
+          - next
+  push:
+    branches:
+      - next
+    paths:
+      - 'packages/**'
+      - 'apps/storybook/**'
+      - 'assets/**'
+jobs:
+  deploy:
+    name: Build & deploy to Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use node 20 and yarn cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Install Vercel CLI
+        run: yarn add vercel@latest
+
+      - name: Set default environment value if push event is triggered
+        id: defaultenvironment
+        run: |
+          ENVIRONMENT=${{ github.event.inputs.environment }}
+          echo "value=${ENVIRONMENT:-"next"}" >> "$GITHUB_OUTPUT"
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{(steps.defaultenvironment.outputs.value == 'next' && 'preview') || 'production'}} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build ${{(steps.defaultenvironment.outputs.value == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - id: deploy
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt ${{(steps.defaultenvironment.outputs.value == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+      - name: Set Vercel alias
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} next.storybook.designsystemet.no
+        if: steps.defaultenvironment.outputs.value == 'next'
