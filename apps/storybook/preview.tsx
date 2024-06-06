@@ -1,4 +1,3 @@
-import '../legacy-tokens.css';
 import '../../packages/css/index.css';
 import '../../packages/theme/brand/digdir.css';
 
