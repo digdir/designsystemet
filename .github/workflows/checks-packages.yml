@@ -1,5 +1,4 @@
-# Runs conventional commit check on PR
-name: Checks packages
+name: Checks Packages
 on:
   workflow_dispatch:
   pull_request:
