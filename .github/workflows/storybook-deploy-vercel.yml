@@ -1,4 +1,4 @@
-name: Deploy Storybook Production
+name: Deploy Storybook
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
@@ -8,7 +8,7 @@ on:
     inputs:
       environment:
         type: choice
-        description: Set the environment to deploy to
+        description: Deploy to environment
         options:
           - production
           - next
