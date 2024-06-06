@@ -2,6 +2,7 @@
   "tokenSetOrder": [
     "primitives/globals",
     "primitives/typography/default",
+    "primitives/typography/secondary",
     "primitives/colors/dark/global",
     "primitives/colors/dark/theme",
     "primitives/colors/dark/theme2",

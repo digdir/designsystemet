@@ -8,7 +8,8 @@
       "primitives/colors/light/theme4": "enabled",
       "primitives/colors/light/theme3": "enabled",
       "primitives/colors/light/theme2": "enabled",
-      "primitives/colors/light/theme": "enabled"
+      "primitives/colors/light/theme": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
@@ -415,7 +416,8 @@
       "primitives/colors/dark/theme4": "enabled",
       "primitives/colors/dark/theme3": "enabled",
       "primitives/colors/dark/theme2": "enabled",
-      "primitives/colors/dark/theme": "enabled"
+      "primitives/colors/dark/theme": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:1",
@@ -818,7 +820,8 @@
     "name": "digdir",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme": "enabled"
+      "themes/theme": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "34811:2",
@@ -906,7 +909,8 @@
     "name": "altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme2": "enabled"
+      "themes/theme2": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "34811:3",
@@ -997,7 +1001,8 @@
       "semantic/style": "enabled",
       "semantic/color": "enabled",
       "primitives/globals": "source",
-      "primitives/typography/default": "source"
+      "primitives/typography/default": "source",
+      "primitives/typography/secondary": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1195,7 +1200,8 @@
     "name": "uutilsynet",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme3": "enabled"
+      "themes/theme3": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "group": "Theme",
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
@@ -1283,7 +1289,8 @@
     "name": "portal",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme4": "enabled"
+      "themes/theme4": "enabled",
+      "primitives/typography/secondary": "disabled"
     },
     "group": "Theme",
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
