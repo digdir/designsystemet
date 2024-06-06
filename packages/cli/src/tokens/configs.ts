@@ -5,9 +5,9 @@ import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { storefrontFormat } from './formats/groupedTokens.js';
-import { colormodeFormat } from './formats/scopedReferenceVariables.js';
-import { typographyFormat } from './formats/typographyClasses.js';
+import { storefrontFormat } from './formats/storefront.js';
+import { colormodeFormat } from './formats/colormode.js';
+import { typographyFormat } from './formats/typography.js';
 import { makeEntryFile } from './actions.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);
