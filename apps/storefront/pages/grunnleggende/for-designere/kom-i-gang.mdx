@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Kom i gang med designsystemet i Figma',
-      date: '1. mars 2024',
+      date: '22. mai 2024',
       icon: <PaletteIcon />,
       color: 'blue',
     }}
@@ -24,14 +24,14 @@ I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i de
 
 ## Kom i gang med komponenter
 
-Jobber du i Digdir trenger du ikke laste ned noe, da filene ligger i organisasjonen allerede. Tilhører du en annen organisasjon kan du hente filene fra Figma Community:
+Dersom bibliotekene ikke ligger i Figma-organisasjonen din allerede, kan du hente filene fra Figma Community:
 
 - [Designsystemet - Core UI Kit](https://www.figma.com/@designsystemet)
 - [Aksel ikonbibliotek](https://www.figma.com/community/file/1214869602572392330)
 
 Etter at du har åpnet dem må du
 
-- Plassere filene der du vil ha dem i din egen Figma-organisasjon
+- Plassere filene der du vil ha dem i din Figma-organisasjon
 - Publisere filene
 - Aktivere de to fellesbibliotekene i filene du jobber i
 
@@ -40,6 +40,10 @@ Etter at du har åpnet dem må du
   alt='Skjermbilde av Figma. Stegene for å aktivere bibliotekene.'
   boxShadow={true}
 />
+
+Skal du bruke designsystemet med egne farger og branding? Se guiden for å [sette opp designsystemet med eget tema](/grunnleggende/for-designere/eget-tema).
+
+### Ta i bruk komponentene
 
 For å aktivere bibliotekene:
 
@@ -65,13 +69,9 @@ Alle komponenter kommer med ulike varianter og egenskaper. I Button-komponenten 
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-### Kom i gang med stiler og variabler
+## Bruk designsystemet med egne profilfarger
 
-Stiler og variabler skal være tilgjengelige i høyremargen når du for eksempel trenger å velge en farge, skygge eller font.
-
-#### Bruk egen fargepalett på komponentene
-
-Alle tokens er i sync med [Figma variabler](https://docs.tokens.studio/variables/creating-variables) og styles. For å få dine egne brand-farger kan du aktivere ditt brand i høyremargen. Du kan også aktivere det kun på en bestemt frame:
+Komponentene støtter ulike brand og modes. For å sette opp egne profiler se guiden "[Designsystemet med eget tema](/grunnleggende/for-designere/eget-tema)"
 
 <ResponsiveIframe
   src='/img/brand-variables.mp4'
@@ -82,31 +82,76 @@ Alle tokens er i sync med [Figma variabler](https://docs.tokens.studio/variables
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-### Typografi på små og store skjermer
+## Kom i gang med stiler og variabler
 
-For all tekst bør du bruke de ferdige utformede typografi-komponentene som er tilgjengelig i Figma og kode. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og font-weight. Typografi-komponenter kan justere seg etter størrelsen på rammen du jobber i. Det vil si at skal du designe for mobil kan du aktivere "viewport 320" i Tokens Studio. Du trenger ikke tenke på noe mer. Størrelse og avstand på overskrifter og brødtekst er nå blitt mindre. 🙌
+Stiler og variabler skal være tilgjengelige i høyremargen når du for eksempel trenger å velge en farge, størrelse, avstand eller skygge.
 
-Les mer om [typografi](/grunnleggende/designelementer/typografi).
+### Sizing-variabler
+
+Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** eller **_"Group"_** i Figma. Der kan du definere bredde (W) og høyde (H).
+
+<Image
+  src='/img/sizing.png'
+  alt='Skjermbildet viser hvor du kan bruke Sizing-variabler i Figma'
+  boxShadow={false}
+/>
+
+### Spacing-variabler
+
+Avstander er det du setter under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
+
+<Image
+  src='/img/spacing.png'
+  alt='Skjermbildet viser hvor du kan bruke Spacing-variabler i Figma'
+  boxShadow={false}
+/>
+
+### Fargevariabler
+
+Fargevariabler er navngitt etter hva de er tiltenkt å brukes til: `background`, `surface`, `border` og `text`.
+
+- Er du ute etter en `border`-farge kan det være effektiv å søke på "border" for å se alle tilgjengelige farger.
+- Er du ute etter en `fill`-farge på et element kan det være effektiv å søke på "surface" for å se alle tilgjengelige farger.
+- Er du ute etter en farge for tekst eller ikon kan det være effektiv å søke på "text" for å se alle tilgjengelige farger.
 
 <ResponsiveIframe
-  src='/img/fluid-text-size.mp4'
-  title='Skjermopptak av Figma som viser hvordan størrelse og avstand på tekst blir mindre i en mindre viewport'
+  src='/img/color-variables.mp4'
+  title='Skjermopptak av Figma som viser hvordan man kan sette fargevariabler på "fill" og "border".'
   frameBorder='0'
   allow='autoplay; fullscreen; picture-in-picture'
   allowFullScreen
   aspectRatio='16-9'
 ></ResponsiveIframe>
 
-Typografi er foreløpig ikke støttet som variabler i Figma, inntil videre må du derfor ha installert pluginen [Tokens Studio for Figma](https://docs.tokens.studio/) for å kunne aktivere riktig viewport. Du trenger en Github-bruker for dette.
+Les mer om [farge-tokens](/grunnleggende/designelementer/farger) og hva de brukes til.
 
-1. [Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens-plugin
-1. Generer et nytt "Personal Access Token" (PAT) i [GitHub Developer Settings](https://github.com/settings/tokens) med omfanget "repo"
-1. Kopier PAT-en (du kan bare se den én gang)
-1. I Figma Tokens-plugin-modulen, under `Sync > GitHub`, legg til ny legitimasjon:
-   - Navn: `Felles Tokens`
-   - Personal Access Token: `*** din PAT ***` (som du fikk fra Github)
-   - Repository: `digdir/designsystemet`
-   - Standard gren: "hoved".
-   - Filbane: `design-tokens`
+### Typografi-stiler
 
-![Skjermbilde av Tokens Studio og innstillingene](/img/connect-tokens-studio-to-git.png)
+For all tekst bør du bruke de ferdige utformede typografi-komponentene som er tilgjengelig i Figma og kode. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og vekting.
+
+Du kan også bruke typografi-stilene, men da vil du ikke få mulighet til å slå på avstand under:
+
+<ResponsiveIframe
+  src='/img/typografi-styles.mp4'
+  title='Skjermopptak av Figma som viser hvordan du kan sette en stil på teksten'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+Når du bruker Typografi-komponentene, har du mulighet til å aktivere avstand under teksten:
+
+<ResponsiveIframe
+  src='/img/typografi-komponenter.mp4'
+  title='Skjermopptak av Figma som viser hvordan du kan legge inn typografi-komponenter'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+Les mer om [typografi](/grunnleggende/designelementer/typografi).
+
+<br />
+<br />

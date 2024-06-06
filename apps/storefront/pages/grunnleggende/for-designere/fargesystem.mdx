@@ -1,0 +1,73 @@
+import { Table } from '@digdir/designsystemet-react';
+
+import { PaletteIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { Meta, Image, ResponsiveIframe } from '@components';
+
+<Meta
+  title='Sett opp ditt eget fargesystem'
+  description='Her får du hjelp til å sette opp et fargesystem'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Sett opp ditt eget fargesystem',
+      date: '22. mai 2024',
+      icon: <PaletteIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Med et gjennomtenkt fargesystem kan vi sikre at tekst alltid har god nok kontrast mot våre bakgrunnsfarger og at det finnes nok ulike farger for alle tilstander.
+
+En profilveileder inneholder ofte kun et sett med primærfarger og sekundærfarger i et par forskjellige fargetoner. Å lage et digitalt produkt kun med disse fargene alene er vanskelig. For å kunne sikre riktig kontrast og korrekte farger for ulike tilstander, er vi avhengig av å definere flere variasjoner av profilfargene. Bare button komponenten består av 6 ulike blåfarger:
+
+<Image
+  src='/img/button-colors.png'
+  alt='Skjermbildet viser button komponenten og alle de ulike farge-kodene den består av'
+  boxShadow={false}
+  caption='Som du ser i eksemplet trenger vi 6 ulike fargevariasjoner bare for Button-komponenten.
+'
+/>
+
+Fargesystemet er strukturert for å støtte multibranding og ulike modes (darkmode, contrastmode, etc.), og samtidig ivareta kontrastkrav. Vi har latt oss inspirere av [USWDS sine "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjon skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system.
+
+## Designsystemets temagenerator
+
+For å generere en skala som fungerer kan du bruke [Designsystemets temagenerator](theme.designsystemet.no) Det eneste du trenger å gjøre er å lime inn hex-koden til merkevarens accent-farge og øvrige profil-farger.
+
+<Image
+  src='/img/fargesystem.png'
+  alt='Skjermbildet viser et utsnitt fra fargegeneratoren med 5 fargepaletter.'
+  boxShadow={false}
+  caption='Fargesystemet bruker brand-fargen til å genere flere fargervarianter, slik at vi kan sikre god kontrast mellom tekst og bakgrunnsfarger.'
+/>
+
+Temageneratoren er basert på et fargesystem sørger for at både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+Eksempler:
+
+- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
+- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
+- Dette vil gjelde uansett hva du har valgt som base-farge.
+
+`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
+
+La oss se på et eksempel der vi bytter ut fargene:
+
+<ResponsiveIframe
+  src='/img/theme-generator.mp4'
+  title='Skjermopptak fra prototypen. Filmen viser at brukeren endrer en farge og at komponentene påvirkes umiddelbart.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+## Bruk fargene du har generert
+
+Når du har generert skalaene, kan du [bruke de nye fargekodene i Designsystemet](/grunnleggende/for-designere/eget-tema), slik at alle komponenter følger din profil.

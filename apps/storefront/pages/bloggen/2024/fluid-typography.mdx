@@ -1,5 +1,5 @@
 import { BlogArticleLayout } from '@layouts';
-import { Image } from '@components';
+import { ResponsiveIframe, Image } from '@components';
 import { Contributors } from '@blog';
 
 export default ({ children }) => (
@@ -60,6 +60,19 @@ Størrelsene som ble brukt i den dynamiske skalaen ble generert ved hjelp av [Fl
 | f4     | 23.00px / 1.44rem     | 32.00px / 2.00rem     |
 | f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
 | f6     | 29.00px / 1.81rem     | 44.00px / 2.75rem     |
+
+<br />
+
+For å kunne se riktige tekststørrelser i Figma var vi avhengige av å ha installert pluginen [Tokens Studio for Figma](https://docs.tokens.studio/) og bruke denne til å aktivere riktig viewport. Videoen under viser hvordan pluginen ble brukt for å få riktige tekststørrelser for ulike viewports.
+
+<ResponsiveIframe
+  src='/img/fluid-text-size.mp4'
+  title='Skjermopptak av Figma som viser hvordan størrelse og avstand på tekst blir mindre i en mindre viewport'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
 
 <Contributors
   authors={[

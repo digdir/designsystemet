@@ -69,6 +69,18 @@ export const SiteConfig = {
               url: 'grunnleggende/for-designere/kom-i-gang',
             },
             {
+              name: 'Eget tema',
+              url: 'grunnleggende/for-designere/eget-tema',
+            },
+            {
+              name: 'Fargesystem',
+              url: 'grunnleggende/for-designere/fargesystem',
+            },
+            {
+              name: 'Hent oppdateringer',
+              url: 'grunnleggende/for-designere/hent-oppdateringer',
+            },
+            {
               name: 'Bidra med design',
               url: 'grunnleggende/for-designere/bidra-i-figma',
             },
