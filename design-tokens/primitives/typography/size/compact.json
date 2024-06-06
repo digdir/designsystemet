@@ -1,10 +1,4 @@
 {
-  "font-family": {
-    "main": {
-      "type": "fontFamilies",
-      "value": "Inter"
-    }
-  },
   "line-height": {
     "300": {
       "type": "lineHeights",
@@ -21,20 +15,6 @@
     "700": {
       "type": "lineHeights",
       "value": "170%"
-    }
-  },
-  "font-weight": {
-    "medium": {
-      "type": "fontWeights",
-      "value": "500"
-    },
-    "semibold": {
-      "type": "fontWeights",
-      "value": "600"
-    },
-    "regular": {
-      "type": "fontWeights",
-      "value": "400"
     }
   },
   "font-size": {
@@ -60,27 +40,27 @@
     },
     "f2": {
       "type": "fontSizes",
-      "value": "21"
+      "value": "20"
     },
     "f3": {
       "type": "fontSizes",
-      "value": "24"
+      "value": "22"
     },
     "f4": {
       "type": "fontSizes",
-      "value": "30"
+      "value": "26"
     },
     "f5": {
       "type": "fontSizes",
-      "value": "36"
+      "value": "32"
     },
     "f6": {
       "type": "fontSizes",
-      "value": "48"
+      "value": "40"
     },
     "f7": {
       "type": "fontSizes",
-      "value": "60"
+      "value": "48"
     }
   }
 }

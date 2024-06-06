@@ -9,7 +9,10 @@
       "primitives/colors/light/theme3": "enabled",
       "primitives/colors/light/theme2": "enabled",
       "primitives/colors/light/theme": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
@@ -417,7 +420,10 @@
       "primitives/colors/dark/theme3": "enabled",
       "primitives/colors/dark/theme2": "enabled",
       "primitives/colors/dark/theme": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:1",
@@ -821,7 +827,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "themes/theme": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "34811:2",
@@ -910,7 +919,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "themes/theme2": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "34811:3",
@@ -1001,8 +1013,10 @@
       "semantic/style": "enabled",
       "semantic/color": "enabled",
       "primitives/globals": "source",
-      "primitives/typography/default": "source",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "source",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1201,7 +1215,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "themes/theme3": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "group": "Theme",
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
@@ -1290,7 +1307,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "themes/theme4": "enabled",
-      "primitives/typography/secondary": "disabled"
+      "primitives/typography/font/default": "disabled",
+      "primitives/typography/font/secondary": "disabled",
+      "primitives/typography/size/compact": "disabled",
+      "primitives/typography/size/default": "disabled"
     },
     "group": "Theme",
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
@@ -1372,5 +1392,87 @@
       "color.brand3.contrast-1": "76606a7189862192028a3a701f043013d99a0a0f",
       "color.brand3.contrast-2": "058ef37f9cf4263711648bfc34738b75b32dfd8b"
     }
+  },
+  {
+    "id": "8b2c8cc86611a34b135cb22948666779361fd729",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/typography/size/default": "enabled"
+    },
+    "group": "fontsize",
+    "$figmaCollectionId": "VariableCollectionId:37102:63",
+    "$figmaModeId": "37102:0",
+    "$figmaVariableReferences": {
+      "font-size.f-3": "484aec92acdd74eeea2e37f5f400c3f34bbaf3b6",
+      "font-size.f-2": "2eb8c55c95cadeb86aa4e39a1d0822a7b062f88e",
+      "font-size.f-1": "29dec2298b78baa16511821d402d53c8287d0dac",
+      "font-size.f0": "2d7d40ff35b435e89d03fde5cb48aab0b50b181a",
+      "font-size.f1": "6b3d889bd17b0075dd4a2d91db497ea8bfc5b7e0",
+      "font-size.f2": "8c85811fc876863876d0778bd3ae32d1e383173d",
+      "font-size.f3": "184e37411a124d855a4387962c95ff5656a82ab8",
+      "font-size.f4": "61a4f19019e91b1492dde748f6b1d06dc5215cc6",
+      "font-size.f5": "c6019cedbd78d980a13b69e9e4f1eb6dbae2c480",
+      "font-size.f6": "0d0dc2a92ef720f187bdc058af1e08620f7247de",
+      "font-size.f7": "169328bc2422f5bd0d75f4688a88ce9cf9e1e3ae"
+    }
+  },
+  {
+    "id": "fb11567729c298ca37c9da4e3a27716a23480824",
+    "name": "compact",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/typography/size/compact": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:37102:63",
+    "$figmaModeId": "37102:2",
+    "$figmaVariableReferences": {
+      "font-size.f-3": "484aec92acdd74eeea2e37f5f400c3f34bbaf3b6",
+      "font-size.f-2": "2eb8c55c95cadeb86aa4e39a1d0822a7b062f88e",
+      "font-size.f-1": "29dec2298b78baa16511821d402d53c8287d0dac",
+      "font-size.f0": "2d7d40ff35b435e89d03fde5cb48aab0b50b181a",
+      "font-size.f1": "6b3d889bd17b0075dd4a2d91db497ea8bfc5b7e0",
+      "font-size.f2": "8c85811fc876863876d0778bd3ae32d1e383173d",
+      "font-size.f3": "184e37411a124d855a4387962c95ff5656a82ab8",
+      "font-size.f4": "61a4f19019e91b1492dde748f6b1d06dc5215cc6",
+      "font-size.f5": "c6019cedbd78d980a13b69e9e4f1eb6dbae2c480",
+      "font-size.f6": "0d0dc2a92ef720f187bdc058af1e08620f7247de",
+      "font-size.f7": "169328bc2422f5bd0d75f4688a88ce9cf9e1e3ae"
+    },
+    "group": "fontsize"
+  },
+  {
+    "id": "34261a377238ea1c2d04b3208f55530ad51e9317",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/typography/font/default": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:37102:75",
+    "$figmaModeId": "37102:1",
+    "$figmaVariableReferences": {
+      "font-family.main": "5a08439163a86c06612c94fafc132b51536d5605",
+      "font-weight.medium": "ae5112b0e38b985f1932339f264e9f5ae74cc762",
+      "font-weight.semibold": "684524412719c3b8622783bcb293cc87c10aca3e",
+      "font-weight.regular": "820bd11c102fa4c02bbb947cf43657911e5aab65"
+    },
+    "group": "typography"
+  },
+  {
+    "id": "80cff07556164d406194a3f642fb2aee5a142aa3",
+    "name": "secondary",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/typography/font/secondary": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:37102:75",
+    "$figmaModeId": "37102:3",
+    "$figmaVariableReferences": {
+      "font-family.main": "5a08439163a86c06612c94fafc132b51536d5605",
+      "font-weight.medium": "ae5112b0e38b985f1932339f264e9f5ae74cc762",
+      "font-weight.semibold": "684524412719c3b8622783bcb293cc87c10aca3e",
+      "font-weight.regular": "820bd11c102fa4c02bbb947cf43657911e5aab65"
+    },
+    "group": "typography"
   }
 ]
