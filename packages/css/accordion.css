@@ -2,6 +2,7 @@
   .fds-accordion {
     --dsc-accordion-border-radius: var(--ds-border-radius-md);
     --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
+    --dsc-accordion-border-divider-color: var(--ds-color-neutral-border-subtle);
 
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     box-sizing: border-box;
@@ -71,6 +72,7 @@
   .fds-accordion--brand1,
   .fds-accordion--brand1 .fds-accordion__button {
     --dsc-accordion-border-color: var(--ds-color-brand1-border-subtle);
+    --dsc-accordion-border-divider-color: var(--ds-color-brand1-border-subtle);
 
     background: var(--ds-color-brand1-surface-default);
   }
@@ -78,6 +80,7 @@
   .fds-accordion--brand2,
   .fds-accordion--brand2 .fds-accordion__button {
     --dsc-accordion-border-color: var(--ds-color-brand2-border-subtle);
+    --dsc-accordion-border-divider-color: var(--ds-color-brand2-border-subtle);
 
     background: var(--ds-color-brand2-surface-default);
   }
@@ -85,6 +88,7 @@
   .fds-accordion--brand3,
   .fds-accordion--brand3 .fds-accordion__button {
     --dsc-accordion-border-color: var(--ds-color-brand3-border-subtle);
+    --dsc-accordion-border-divider-color: var(--ds-color-brand3-border-subtle);
 
     background: var(--ds-color-brand3-surface-default);
   }
@@ -107,7 +111,7 @@
   .fds-accordion--brand1 .fds-accordion__item:not(:first-child) .fds-accordion__button,
   .fds-accordion--brand2 .fds-accordion__item:not(:first-child) .fds-accordion__button,
   .fds-accordion--brand3 .fds-accordion__item:not(:first-child) .fds-accordion__button {
-    border-top: 1px solid var(--ds-color-neutral-background-default);
+    border-top: 1px solid var(--dsc-accordion-border-divider-color);
   }
 
   .fds-accordion--border .fds-accordion__item:first-of-type .fds-accordion__button:first-of-type {
