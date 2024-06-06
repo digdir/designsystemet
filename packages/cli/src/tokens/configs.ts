@@ -71,8 +71,7 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
         // custom
         outPath,
         mode,
-        fileName: mode,
-        folderName: theme,
+        theme,
         basePxFontSize,
         selector,
         //
@@ -176,7 +175,7 @@ export const getConfigs = (
 
       const [mode, theme, semantic, fontSize, typography] = processThemeName(name);
 
-      console.log({ mode, theme, semantic, fontSize, typography });
+      // console.log({ mode, theme, semantic, fontSize, typography });
 
       const paritionPrimitives = /(?!.*global\.json).*primitives.*/;
       const [source, include] = R.partition(R.test(paritionPrimitives), setsWithPaths);

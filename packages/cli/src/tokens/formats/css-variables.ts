@@ -1,9 +1,6 @@
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter } from 'style-dictionary/utils';
 
-/**
- *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
- */
 export const cssVariables: Format = {
   name: 'ds/css-variables',
   format: async function ({ dictionary, file, options, platform }) {
@@ -19,12 +16,8 @@ export const cssVariables: Format = {
       format: 'css',
     });
 
-    const tokens = allTokens.map(format);
+    const formattedVariables = allTokens.map(format);
 
-    return `
-${header}
-${selector} {
-${tokens.join('\n')}
-}\n`;
+    return header + `${selector} {\n${formattedVariables.join('\n')}\n}\n`;
   },
 };
