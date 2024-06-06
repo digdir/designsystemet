@@ -12,11 +12,11 @@ type Typgraphy = {
 /**
  * Creates CSS classes from typography tokens
  */
-export const cssClasses: Format = {
-  name: 'ds/css-classes',
+export const cssClassesTypography: Format = {
+  name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { usesDtcg } = options;
-    const { basePxFontSize } = platform;
+    const { basePxFontSize, selector } = platform;
 
     const header = await fileHeader({ file });
 
@@ -26,9 +26,10 @@ export const cssClasses: Format = {
 
         const baseFontPx = (basePxFontSize as unknown as number) || 16;
         const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
-        const selector = R.replace('-typography', '', token.name);
+        const classSelector = R.replace('-typography', '', token.name);
 
-        const className = `.${selector} {
+        const className = `
+  .${classSelector} {
     font-size: ${fontSize};
     line-height: ${typography?.lineHeight};
     font-weight: ${typography?.fontWeight};
@@ -38,6 +39,9 @@ export const cssClasses: Format = {
       }
     }, dictionary.allTokens);
 
-    return header + `@layer ds.typography {\n${classNames.join('\n')}\n}\n`;
+    const classes = classNames.join('\n');
+    const content = selector ? `${selector} {\n${classes}\n}` : classes;
+
+    return header + `@layer ds.typography {\n${content}\n}\n`;
   },
 };

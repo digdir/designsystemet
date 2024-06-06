@@ -7,7 +7,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
-import { cssClasses } from './formats/css-classes.js';
+import { cssClassesTypography } from './formats/css-classes.js';
 import { makeEntryFile } from './actions.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);
@@ -24,7 +24,7 @@ StyleDictionary.registerTransform(typographyShorthand);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(cssVariables);
-StyleDictionary.registerFormat(cssClasses);
+StyleDictionary.registerFormat(cssClassesTypography);
 
 StyleDictionary.registerAction(makeEntryFile);
 
@@ -60,7 +60,7 @@ type GetConfig = (options: {
   outPath?: string;
 }) => Config;
 
-export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
+export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
 
   return {
@@ -104,7 +104,7 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
   };
 };
 
-export const previewConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
+export const jsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -137,7 +137,9 @@ export const previewConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) =
   };
 };
 
-export const typographyConfig: GetConfig = ({ outPath, theme, typography }) => {
+export const cssTypographyConfig: GetConfig = ({ outPath, theme, typography }) => {
+  // const selector = `${typography === 'default' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -145,13 +147,14 @@ export const typographyConfig: GetConfig = ({ outPath, theme, typography }) => {
       css: {
         prefix,
         typography,
+        // selector,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px', 'ts/typography/fontWeight'],
         files: [
           {
-            destination: `typography/${typography}.css`,
-            format: cssClasses.name,
+            destination: `typography.css`,
+            format: cssClassesTypography.name,
             filter: (token) => token.type === 'typography',
           },
         ],
