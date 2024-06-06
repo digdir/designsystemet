@@ -97,7 +97,7 @@
 
   .fds-accordion--neutral .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button,
   .fds-accordion--subtle .fds-accordion__item:where(.fds-accordion__item--open) .fds-accordion__button {
-    background-color: var(--ds-color-accent-surface-default);
+    background-color: var(--ds-color-accent-background-subtle);
   }
 
   .fds-accordion--border .fds-accordion__item:first-child .fds-accordion__button {

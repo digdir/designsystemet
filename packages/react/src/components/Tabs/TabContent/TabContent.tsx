@@ -3,6 +3,7 @@ import { forwardRef, useContext } from 'react';
 import cl from 'clsx/lite';
 
 import { TabsContext } from '../Tabs';
+import { Paragraph } from '../../Typography';
 
 export type TabContentProps = {
   /** When this value is selected as the current state, render this `TabContent` component*/
@@ -17,13 +18,15 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
     return (
       <>
         {active && (
-          <div
-            className={cl('fds-tabs__content', className)}
-            ref={ref}
-            {...rest}
-          >
-            {children}
-          </div>
+          <Paragraph asChild>
+            <div
+              className={cl('fds-tabs__content', className)}
+              ref={ref}
+              {...rest}
+            >
+              {children}
+            </div>
+          </Paragraph>
         )}
       </>
     );

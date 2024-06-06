@@ -130,11 +130,13 @@
   }
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1700px) {
   .cluster {
     display: none;
   }
+}
 
+@media (max-width: 1199.98px) {
   .header {
     height: auto;
   }

@@ -20,6 +20,9 @@ import {
   Paragraph,
   Accordion,
   Switch,
+  Combobox,
+  ToggleGroup,
+  Tooltip,
 } from '../src';
 
 import classes from './showcase.module.css';
@@ -32,7 +35,7 @@ export const Showcase: StoryFn = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
   return (
     <div className={classes.components}>
-      <div className={cl(classes.checkbox)}>
+      <div className={cl(classes.card, classes.checkbox)}>
         <Checkbox.Group
           error=''
           legend='Handleliste'
@@ -42,16 +45,28 @@ export const Showcase: StoryFn = () => {
           <Checkbox value='telefon'>To liter Farris</Checkbox>
           <Checkbox
             value='sms'
-            checked
+            defaultChecked
           >
             Blomkål
+          </Checkbox>
+          <Checkbox
+            value='sms'
+            defaultChecked
+          >
+            Pizza
+          </Checkbox>
+          <Checkbox
+            value='sms'
+            defaultChecked
+          >
+            Tre liter lettmelk
           </Checkbox>
           <Divider />
           <Checkbox value='sms'>2kg smågodt</Checkbox>
           <Checkbox value='sms'>10 poser med Smash</Checkbox>
         </Checkbox.Group>
       </div>
-      <div className={classes.login}>
+      <div className={cl(classes.card, classes.user)}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
           size='xs'
@@ -65,12 +80,24 @@ export const Showcase: StoryFn = () => {
           placeholder='Ola Normann'
           className={classes.userField}
         />
-        <Link
-          href='#'
-          className={classes.userLink}
+        <Textfield
+          type='email'
+          label='E-post'
+          size='sm'
+          placeholder='ola@norge.no'
+          className={classes.userField}
+        />
+        <Tooltip
+          content='Trykk for å få hjelp'
+          portal={false}
         >
-          Glemt passord?
-        </Link>
+          <Link
+            href='#'
+            className={classes.userLink}
+          >
+            Glemt passord?
+          </Link>
+        </Tooltip>
         <Button
           fullWidth
           size='sm'
@@ -79,7 +106,7 @@ export const Showcase: StoryFn = () => {
           Opprett ny bruker
         </Button>
       </div>
-      <div className={cl(classes.tableContainer)}>
+      <div className={cl(classes.card, classes.tableContainer)}>
         <Heading
           className={classes.cardTitle}
           size='2xs'
@@ -91,7 +118,6 @@ export const Showcase: StoryFn = () => {
             <NativeSelect
               label=''
               size='sm'
-              className={classes.tableSelect}
             >
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
@@ -116,6 +142,7 @@ export const Showcase: StoryFn = () => {
         </div>
         <Table
           size='sm'
+          border
           className={classes.table}
         >
           <Table.Head>
@@ -140,8 +167,8 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='/img/avatars/female1.png'
-                  alt='Bilde av dame'
+                  src='img/avatars/female1.png'
+                  alt=''
                 />
                 Lise Nordmann
               </Table.Cell>
@@ -152,8 +179,8 @@ export const Showcase: StoryFn = () => {
               <Table.Cell className={classes.tableCell}>
                 <img
                   className={classes.tableImg}
-                  src='/img/avatars/male2.png'
-                  alt='Bilde av mann'
+                  src='img/avatars/male2.png'
+                  alt=''
                 />
                 Ola Nordmann
               </Table.Cell>
@@ -171,7 +198,7 @@ export const Showcase: StoryFn = () => {
           totalPages={6}
         />
       </div>
-      <div className={cl(classes.help)}>
+      <div className={cl(classes.card, classes.help)}>
         <Heading
           size='xs'
           className={classes.helpHeading}
@@ -195,17 +222,37 @@ export const Showcase: StoryFn = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card color='brand3'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs'>Mat og helse</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
-              Most provide as with carried business are much better more the.
-            </Card.Content>
+          <Card
+            color='brand3'
+            isLink
+            asChild
+          >
+            <a href='#preview'>
+              <Card.Header className={classes.helpHeader}>
+                <Heading size='2xs'>Mat og helse</Heading>
+              </Card.Header>
+              <Card.Content className={cl(classes.helpContent)}>
+                Lenke til artikkel om mat og helse, der du kan lese mer om alt.
+              </Card.Content>
+            </a>
           </Card>
         </div>
       </div>
-      <div className={classes.tags}>
+      <div className={cl(classes.card, classes.radio)}>
+        <Radio.Group
+          error=''
+          legend='Hvilken iskremsmak er best?'
+          size='sm'
+          value={radioValue}
+          onChange={(e: string) => setRadioValue(e)}
+        >
+          <Radio value='vanilje'>Vanilje</Radio>
+          <Radio value='jordbær'>Jordbær</Radio>
+          <Radio value='sjokolade'>Sjokolade</Radio>
+          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
+        </Radio.Group>
+      </div>
+      <div className={cl(classes.card, classes.tag)}>
         <Heading size='xs'>Emner</Heading>
         <div className={classes.tagList}>
           <Tag
@@ -238,56 +285,104 @@ export const Showcase: StoryFn = () => {
           >
             Utenriks
           </Tag>
-          {/* <Tag color="info" size="small">
+          <Tag
+            color='info'
+            size='sm'
+          >
             Helse og velvære
           </Tag>
-          <Tag color="danger" size="small">
+          <Tag
+            color='danger'
+            size='sm'
+          >
             PC Gaming
           </Tag>
-          <Tag color="warning" size="small">
+          <Tag
+            color='warning'
+            size='sm'
+          >
             Trening og livsstil
-          </Tag> */}
+          </Tag>
         </div>
       </div>
-      <div className={classes.switches}>
+      <div className={cl(classes.card, classes.switches)}>
         <Heading
           size='xs'
-          className={cl(classes.footerHeading, classes.switchHeading)}
+          spacing
         >
           Innstillinger
         </Heading>
         <Paragraph
           size='sm'
-          className={classes.switchParagraph}
+          spacing
         >
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
+          <Switch
+            size='sm'
+            defaultChecked
+          >
+            TV-visning
+          </Switch>
           <Switch size='sm'>Desktopvisning</Switch>
           <Switch
             size='sm'
-            checked
+            defaultChecked
+            readOnly
           >
             Tabletvisning
           </Switch>
-          <Switch size='sm'>Mobilvisning</Switch>
+          <Switch
+            size='sm'
+            disabled
+          >
+            Mobilvisning
+          </Switch>
         </div>
       </div>
-      <div className={classes.radios}>
-        <Radio.Group
-          error=''
-          legend='Hvilken iskremsmak er best?'
-          size='sm'
-          value={radioValue}
-          onChange={(e) => setRadioValue(e)}
+      <div className={cl(classes.card, classes.combobox)}>
+        <Heading
+          size='xs'
+          spacing
         >
-          <Radio value='vanilje'>Vanilje</Radio>
-          <Radio value='jordbær'>Jordbær</Radio>
-          <Radio value='sjokolade'>Sjokolade</Radio>
-          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
-        </Radio.Group>
+          Hvor er du fra?
+        </Heading>
+        <Paragraph
+          size='sm'
+          spacing
+        >
+          Svar under så finner vi flyreise
+        </Paragraph>
+        <div className={classes.toggleCombo}>
+          <ToggleGroup
+            defaultValue='norway'
+            size='sm'
+          >
+            <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
+            <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
+            <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
+          </ToggleGroup>
+          <Combobox
+            description='Velg et sted'
+            label='Hvor går reisen?'
+            size='sm'
+            portal={false}
+            multiple
+          >
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
+            <Combobox.Option value='oslo'>Oslo</Combobox.Option>
+            <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
+            <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
+            <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
+            <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
+            <Combobox.Option value='bergen'>Bergen</Combobox.Option>
+            <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
+          </Combobox>
+        </div>
       </div>
-      <div className={cl(classes.tabs)}>
+      <div className={cl(classes.card, classes.tabs)}>
         <Tabs
           defaultValue='value1'
           size='sm'
@@ -300,26 +395,42 @@ export const Showcase: StoryFn = () => {
         </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
-          <Link href='#'>Frivillighetsregisteret</Link>, må organisasjonen drive
-          frivillig virksomhet. Det er bare foreninger,{' '}
-          <Link href='#'>stiftelser</Link> og som kan registreres. Virksomheten
-          kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
-          styre. Virksomheten må være registrert i{' '}
-          <Link href='#'>Enhetsregisteret</Link> før den kan bli registrert.
+          <Link
+            href='#'
+            color='neutral'
+          >
+            Frivillighetsregisteret
+          </Link>
+          , må organisasjonen drive frivillig virksomhet. Det er bare
+          foreninger,{' '}
+          <Link
+            href='#'
+            color='neutral'
+          >
+            stiftelser
+          </Link>{' '}
+          og som kan registreres. Virksomheten kan ikke dele ut midler til
+          fysiske personer. Virksomheten må ha et styre. Virksomheten må være
+          registrert i{' '}
+          <Link
+            href='#'
+            color='neutral'
+          >
+            Enhetsregisteret
+          </Link>{' '}
+          før den kan bli registrert.
         </Paragraph>
       </div>
-
-      <div className={cl(classes.faq)}>
+      <div className={cl(classes.card, classes.faq)}>
         <Heading
           size='xs'
           className={classes.cardTitle}
         >
-          Ofte stillte spørmsål
+          Ofte stillte spørsmål
         </Heading>
         <Accordion
           color='brand3'
           border
-          className={classes.accordion}
         >
           <Accordion.Item>
             <Accordion.Header level={3}>

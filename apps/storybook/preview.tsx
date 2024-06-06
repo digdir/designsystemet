@@ -162,16 +162,19 @@ const preview: Preview = {
     viewport: {
       viewports,
     },
+    backgrounds: {
+      disable: true,
+    },
   },
 };
 
 export const decorators = [
   withThemeByDataAttribute({
     themes: {
-      light: 'light',
-      dark: 'dark',
+      Light: 'light',
+      Dark: 'dark',
     },
-    defaultTheme: 'light',
+    defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
   }),
 ];

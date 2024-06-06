@@ -76,20 +76,6 @@
   color: inherit;
 }
 
-.button {
-  height: 48px;
-  padding: 0 var(--ds-spacing-4);
-  border: 1px solid #c0c0c0;
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.1s all;
-  color: var(--ds-color-neutral-text-default) !important;
-  text-decoration: none;
-}
-
 .buttons {
   color: inherit;
   display: flex;
@@ -104,38 +90,17 @@
   }
 }
 
-.button:hover {
-  background-color: #dbedff;
-}
-
-.button svg {
-  margin-right: var(--ds-spacing-2);
-  color: #1e2b3c;
-}
-
-.button img {
-  height: 20px;
-  margin-right: var(--ds-spacing-2);
-  border-radius: 50%;
-}
-
 .link {
-  text-underline-offset: 6px;
-  color: var(--ds-color-neutral-text-default);
   display: flex;
   align-items: center;
   margin-top: var(--ds-spacing-5);
   font-size: 18px;
   font-weight: 500;
-}
-
-.link:hover {
-  text-decoration-thickness: 2px;
+  width: fit-content;
 }
 
 .link svg {
   margin-right: var(--ds-spacing-2);
-  color: var(--ds-color-neutral-text-default);
 }
 
 .fallbackImg {

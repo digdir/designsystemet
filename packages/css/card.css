@@ -1,6 +1,8 @@
 @layer ds.card {
   .fds-card {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+    --dsc-card-backround: var(--ds-color-neutral-surface-default);
+    --dsc-card-color: var(--ds-color-neutral-text-default);
 
     display: flex;
     flex-direction: column;
@@ -8,9 +10,10 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    color: var(--ds-color-neutral-text-default);
+    color: var(--dsc-card-color);
     border-radius: var(--ds-border-radius-md);
     border: 1px solid var(--dsc-card-border-color);
+    background: var(--dsc-card-backround);
   }
 
   .fds-card a,
@@ -71,6 +74,7 @@
     font: var(--ds-typography-paragraph-md);
     font-family: inherit;
     padding: var(--ds-spacing-2) 0;
+    color: inherit;
   }
 
   .fds-card__content {
@@ -87,6 +91,15 @@
     padding: var(--ds-spacing-2) 0;
   }
 
+  .fds-card__header h1,
+  .fds-card__header h2,
+  .fds-card__header h3,
+  .fds-card__header h4,
+  .fds-card__header h5,
+  .fds-card__header h6 {
+    color: inherit;
+  }
+
   .fds-card--link h1,
   .fds-card--link h2,
   .fds-card--link h3,
@@ -100,33 +113,36 @@
 
   .fds-card--neutral {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-
-    background-color: var(--ds-color-neutral-background-default);
+    --dsc-card-backround: var(--ds-color-neutral-background-default);
   }
 
   .fds-card--neutral.fds-card--link:hover {
-    --dsc-card-border-color: var(--ds-color-neutral-border-default);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+    --dsc-card-backround: var(--ds-color-neutral-background-subtle);
+  }
+
+  .fds-card--neutral.fds-card--link:active {
+    --dsc-card-backround: var(--ds-color-neutral-surface-default);
   }
 
   .fds-card--subtle {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-
-    background-color: var(--ds-color-neutral-background-subtle);
+    --dsc-card-backround: var(--ds-color-neutral-background-subtle);
   }
 
   .fds-card--subtle.fds-card--link:hover {
     --dsc-card-border-color: var(--ds-color-neutral-border-default);
+    --dsc-card-backround: var(--ds-color-neutral-surface-default);
   }
 
-  .fds-card--neutral.fds-card--link:hover,
-  .fds-card--subtle.fds-card--link:hover {
-    background-color: var(--ds-color-neutral-surface-default);
+  .fds-card--subtle.fds-card--link:active {
+    --dsc-card-backround: var(--ds-color-neutral-surface-hover);
   }
 
   .fds-card--brand1 {
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
-
-    background-color: var(--ds-color-brand1-surface-default);
+    --dsc-card-backround: var(--ds-color-brand1-surface-default);
+    --dsc-card-color: var(--ds-color-brand1-text-default);
   }
 
   .fds-card--brand1.fds-card--link {
@@ -134,17 +150,17 @@
   }
 
   .fds-card--brand1.fds-card--link:hover {
-    background-color: var(--ds-color-brand1-surface-hover);
+    --dsc-card-backround: var(--ds-color-brand1-surface-hover);
   }
 
   .fds-card--brand1.fds-card--link:active {
-    background-color: var(--ds-color-brand1-surface-active);
+    --dsc-card-backround: var(--ds-color-brand1-surface-active);
   }
 
   .fds-card--brand2 {
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
-
-    background-color: var(--ds-color-brand2-surface-default);
+    --dsc-card-backround: var(--ds-color-brand2-surface-default);
+    --dsc-card-color: var(--ds-color-brand2-text-default);
   }
 
   .fds-card--brand2.fds-card--link {
@@ -152,17 +168,17 @@
   }
 
   .fds-card--brand2.fds-card--link:hover {
-    background-color: var(--ds-color-brand2-surface-hover);
+    --dsc-card-backround: var(--ds-color-brand2-surface-hover);
   }
 
   .fds-card--brand2.fds-card--link:active {
-    background-color: var(--ds-color-brand2-surface-active);
+    --dsc-card-backround: var(--ds-color-brand2-surface-active);
   }
 
   .fds-card--brand3 {
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
-
-    background-color: var(--ds-color-brand3-surface-default);
+    --dsc-card-backround: var(--ds-color-brand3-surface-default);
+    --dsc-card-color: var(--ds-color-brand3-text-default);
   }
 
   .fds-card--brand3.fds-card--link {
@@ -170,10 +186,10 @@
   }
 
   .fds-card--brand3.fds-card--link:hover {
-    background-color: var(--ds-color-brand3-surface-hover);
+    --dsc-card-backround: var(--ds-color-brand3-surface-hover);
   }
 
   .fds-card--brand3.fds-card--link:active {
-    background-color: var(--ds-color-brand3-surface-active);
+    --dsc-card-backround: var(--ds-color-brand3-surface-active);
   }
 }
