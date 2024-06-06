@@ -16,6 +16,8 @@ type Options = {
   preview: boolean;
 };
 
+// type FormattedCSSPlatform = { css: { output: string; destination: string }[] };
+
 const sd = new StyleDictionary();
 
 export async function run(options: Options): Promise<void> {

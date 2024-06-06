@@ -9,8 +9,6 @@ type Typgraphy = {
   fontFamily: string;
 };
 
-// const isTransformedToken = (token: TransformedTokens): token is TransformedToken => token;
-
 /**
  * Creates CSS classes from typography tokens
  */
@@ -20,6 +18,8 @@ export const cssClasses: Format = {
     const { usesDtcg } = options;
     const { basePxFontSize } = platform;
 
+    const header = await fileHeader({ file });
+
     const classNames = R.map((token) => {
       if (!Array.isArray(token)) {
         const typography = (usesDtcg ? token.$value : token.value) as Typgraphy;
@@ -28,8 +28,7 @@ export const cssClasses: Format = {
         const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
         const selector = R.replace('-typography', '', token.name);
 
-        const className = `
-  .${selector} {
+        const className = `.${selector} {
     font-size: ${fontSize};
     line-height: ${typography?.lineHeight};
     font-weight: ${typography?.fontWeight};
@@ -39,10 +38,6 @@ export const cssClasses: Format = {
       }
     }, dictionary.allTokens);
 
-    return fileHeader({ file }).then(
-      (fileHeaderText) => `${fileHeaderText}@layer ds.typography {
-${classNames.join('\n')}
-}\n`,
-    );
+    return header + `@layer ds.typography {\n${classNames.join('\n')}\n}\n`;
   },
 };

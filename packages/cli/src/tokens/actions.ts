@@ -6,14 +6,19 @@ import * as R from 'ramda';
 
 export const makeEntryFile: Action = {
   name: 'make_entryfile',
-  do: async function (dictionary, config) {
-    console.log(chalk.green('Creating entry file'));
-    const { outPath, folderName } = config;
-    const files = await glob(`**/*`, { cwd: config.buildPath });
+  do: async function (dictionary, platform) {
+    const { outPath, theme } = platform;
+
+    const writePath = `${outPath}/${theme}.css`;
+
+    console.log(chalk.green(`Creating entry file: ${writePath}`));
+
+    const files = await glob(`**/*`, { cwd: platform.buildPath });
     const content = R.reverse(R.sortBy(R.includes('light'), files))
-      .map((file) => `@import url('./${folderName}/${file}');`)
+      .map((file) => `@import url('./${theme}/${file}');`)
       .join('\n');
-    await fs.writeFile(`${outPath}/${folderName}.css`, content);
+
+    await fs.writeFile(writePath, content);
   },
   undo: async function noOp() {},
 };
