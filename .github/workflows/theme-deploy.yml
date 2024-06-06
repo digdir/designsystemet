@@ -1,11 +1,24 @@
-name: Deploy Theme Production
+name: Deploy Theme
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_THEME }}
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        default: next
+        description: Deploy to environment
+        options:
+          - production
+          - next
   pull_request:
     types: [opened, synchronize]
+    paths:
+      - 'apps/theme/**'
+  push:
+    branches:
+      - next
     paths:
       - 'apps/theme/**'
 jobs:
@@ -29,11 +42,22 @@ jobs:
       - name: Install Vercel CLI
         run: yarn add vercel@latest
 
+      - name: Set default environment value if push event is triggered
+        id: defaultenvironment
+        run: |
+          ENVIRONMENT=${{ github.event.inputs.environment }}
+          echo "value=${ENVIRONMENT:-"next"}" >> "$GITHUB_OUTPUT"
+
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=${{(steps.defaultenvironment.outputs.value == 'next' && 'preview') || 'production'}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build ${{(steps.defaultenvironment.outputs.value == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - id: deploy
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt ${{(steps.defaultenvironment.outputs.value == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+      - name: Set Vercel alias
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} next.theme.designsystemet.no
+        if: steps.defaultenvironment.outputs.value == 'next'
