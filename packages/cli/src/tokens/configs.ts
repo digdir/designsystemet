@@ -61,6 +61,8 @@ type GetConfig = (options: {
 }) => Config;
 
 export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
+  const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
+
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -72,6 +74,7 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
         fileName: mode,
         folderName: theme,
         basePxFontSize,
+        selector,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -79,13 +82,14 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
         actions: [makeEntryFile.name],
         files: [
           {
-            destination: `color-modes/${mode}.css`,
+            destination: `${mode}.css`,
             format: cssVariables.name,
+            filter: (token) => !token.isSource,
           },
         ],
         options: {
           fileHeader,
-          includeReferences: (token: TransformedToken) => {
+          outputReferences: (token: TransformedToken) => {
             if (
               R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
               R.includes('semantic/color', token.filePath)
