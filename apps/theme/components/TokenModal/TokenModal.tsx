@@ -184,7 +184,7 @@ export const TokenModal = ({
         <Modal.Header className={classes.modalHeader}>
           <img
             src='img/emblem.svg'
-            alt='ff'
+            alt=''
             className={classes.emblem}
           />
           <span className={classes.headerText}>Kopier fargetema</span>
@@ -232,13 +232,13 @@ export const TokenModal = ({
                       onClick={() => generateThemeJson('light')}
                       value='value1'
                     >
-                      Lightmode
+                      Light Mode
                     </Tabs.Tab>
                     <Tabs.Tab
                       onClick={() => generateThemeJson('dark')}
                       value='value2'
                     >
-                      Darkmode
+                      Dark Mode
                     </Tabs.Tab>
                     {showGlobals && (
                       <>
