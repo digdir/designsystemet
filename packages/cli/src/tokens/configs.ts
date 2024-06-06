@@ -52,20 +52,15 @@ export const permutateThemes = ($themes: ThemeObject[]) =>
   }) as Record<string, string[]>;
 
 type GetConfig = (options: {
-  fileName: string;
-  buildPath: string;
   mode?: string;
+  theme?: string;
+  semantic?: string;
+  fontSize?: string;
+  typography?: string;
   outPath?: string;
-  folderName?: string;
 }) => Config;
 
-export const tokensConfig: GetConfig = ({
-  fileName = 'unknown',
-  buildPath = 'unknown',
-  mode = 'light',
-  outPath,
-  folderName,
-}) => {
+export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
@@ -73,22 +68,22 @@ export const tokensConfig: GetConfig = ({
       css: {
         // custom
         outPath,
-        fileName,
-        folderName,
+        mode,
+        fileName: mode,
+        folderName: theme,
         basePxFontSize,
         //
         prefix,
-        buildPath: buildPath ?? `${outPath}/${folderName}/`,
+        buildPath: `${outPath}/${theme}/`,
         transformGroup: 'fds/css',
         actions: [makeEntryFile.name],
         files: [
           {
-            destination: `${fileName}.css`,
+            destination: `color-modes/${mode}.css`,
             format: scopedReferenceVariables.name,
           },
         ],
         options: {
-          mode,
           fileHeader,
           includeReferences: (token: TransformedToken) => {
             if (
@@ -106,7 +101,7 @@ export const tokensConfig: GetConfig = ({
   };
 };
 
-export const previewConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): Config => {
+export const previewConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -114,10 +109,10 @@ export const previewConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): 
         prefix,
         basePxFontSize,
         transformGroup: 'fds/css',
-        buildPath,
+        buildPath: `${outPath}/${theme}/`,
         files: [
           {
-            destination: `${fileName}.ts`,
+            destination: `${mode}.ts`,
             format: groupedTokens.name,
             filter: (token: TransformedToken) => {
               if (
@@ -139,19 +134,20 @@ export const previewConfig = ({ fileName = 'unknown', buildPath = 'unknown' }): 
   };
 };
 
-export const typographyConfig: GetConfig = ({ buildPath = 'unknown', fileName }) => {
+export const typographyConfig: GetConfig = ({ outPath, theme, typography }) => {
   return {
     log: { verbosity: 'verbose' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
         prefix,
-        buildPath,
+        typography,
+        buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px', 'ts/typography/fontWeight'],
         files: [
           {
-            destination: `typography.css`,
+            destination: `typography/${typography}.css`,
             format: typographyClasses.name,
             filter: (token) => token.type === 'typography',
           },
@@ -182,11 +178,12 @@ export const getConfigs = (
       const [source, include] = R.partition(R.test(paritionPrimitives), setsWithPaths);
 
       const config_ = getConfig({
-        fileName: mode,
         outPath,
-        folderName: theme,
-        buildPath: `${outPath}/${theme}/`,
+        theme,
         mode,
+        semantic,
+        fontSize,
+        typography,
       });
 
       const config = {
