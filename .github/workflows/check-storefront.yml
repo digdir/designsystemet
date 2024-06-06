@@ -3,13 +3,9 @@ name: Checks storefront
 on:
   workflow_dispatch:
   pull_request:
-    branches:
-      - main
     paths:
       - 'apps/storefront/**'
   push:
-    branches:
-      - main
     paths:
       - 'apps/storefront/**'
 jobs:
