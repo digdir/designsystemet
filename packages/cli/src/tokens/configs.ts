@@ -5,9 +5,9 @@ import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { storefrontFormat } from './formats/js-tokens.js';
-import { colormodeFormat } from './formats/css-variables.js';
-import { typographyFormat } from './formats/css-classes.js';
+import { jsTokens } from './formats/js-tokens.js';
+import { cssVariables } from './formats/css-variables.js';
+import { cssClasses } from './formats/css-classes.js';
 import { makeEntryFile } from './actions.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);
@@ -22,9 +22,9 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
 
-StyleDictionary.registerFormat(storefrontFormat);
-StyleDictionary.registerFormat(colormodeFormat);
-StyleDictionary.registerFormat(typographyFormat);
+StyleDictionary.registerFormat(jsTokens);
+StyleDictionary.registerFormat(cssVariables);
+StyleDictionary.registerFormat(cssClasses);
 
 StyleDictionary.registerAction(makeEntryFile);
 
@@ -80,7 +80,7 @@ export const tokensConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
         files: [
           {
             destination: `color-modes/${mode}.css`,
-            format: colormodeFormat.name,
+            format: cssVariables.name,
           },
         ],
         options: {
@@ -113,7 +113,7 @@ export const previewConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) =
         files: [
           {
             destination: `${mode}.ts`,
-            format: storefrontFormat.name,
+            format: jsTokens.name,
             filter: (token: TransformedToken) => {
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
@@ -148,7 +148,7 @@ export const typographyConfig: GetConfig = ({ outPath, theme, typography }) => {
         files: [
           {
             destination: `typography/${typography}.css`,
-            format: typographyFormat.name,
+            format: cssClasses.name,
             filter: (token) => token.type === 'typography',
           },
         ],
