@@ -538,12 +538,12 @@
   },
   "focus": {
     "outer": {
-      "value": "{color.neutral.text-default}",
-      "type": "color"
+      "type": "color",
+      "value": "{color.neutral.text-default}"
     },
     "inner": {
-      "value": "{color.neutral.background-default}",
-      "type": "color"
+      "type": "color",
+      "value": "{color.neutral.background-default}"
     }
   }
 }
