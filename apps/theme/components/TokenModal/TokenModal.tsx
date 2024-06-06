@@ -243,22 +243,28 @@ export const TokenModal = ({
                     {showGlobals && (
                       <>
                         <Tabs.Tab
+                          onClick={() => generateThemeJson('contrast')}
+                          value='value3'
+                        >
+                          Contrast Mode
+                        </Tabs.Tab>
+                        <Tabs.Tab
                           onClick={() => genereateGlobalsJson('light')}
                           value='value4'
                         >
-                          G: Light
+                          G:Light
                         </Tabs.Tab>
                         <Tabs.Tab
                           onClick={() => genereateGlobalsJson('dark')}
                           value='value5'
                         >
-                          G: Dark
+                          G:Dark
                         </Tabs.Tab>
                         <Tabs.Tab
                           onClick={() => genereateGlobalsJson('contrast')}
                           value='value6'
                         >
-                          G: Contrast
+                          G:Contrast
                         </Tabs.Tab>
                       </>
                     )}
