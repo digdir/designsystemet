@@ -6,8 +6,8 @@ type IncludeReferences = (token: TransformedToken) => boolean;
 /**
  *  CSS variables format with option to include source references for matched token through `options.referencesFilter`
  */
-export const colormodeFormat: Format = {
-  name: 'ds/colormode',
+export const cssVariables: Format = {
+  name: 'ds/css-variables',
   format: async function ({ dictionary, file, options, platform }) {
     const { allTokens, unfilteredTokens } = dictionary;
     const { usesDtcg, outputReferences } = options;
