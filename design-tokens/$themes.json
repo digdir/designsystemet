@@ -818,11 +818,7 @@
     "name": "digdir",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme": "source",
-      "primitives/colors/light/theme": "source",
-      "primitives/colors/dark/theme": "source",
-      "primitives/colors/dark/global": "source",
-      "primitives/colors/light/global": "source"
+      "themes/theme": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "35240:0",
@@ -1263,11 +1259,7 @@
     "name": "altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme2": "enabled",
-      "primitives/colors/dark/theme2": "source",
-      "primitives/colors/light/theme2": "source",
-      "primitives/colors/dark/global": "source",
-      "primitives/colors/light/global": "source"
+      "themes/theme2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "35240:1",
@@ -1711,7 +1703,8 @@
       "semantic/style": "enabled",
       "semantic/color": "enabled",
       "primitives/globals": "source",
-      "primitives/typography/font/default": "source"
+      "primitives/typography/font/default": "source",
+      "primitives/typography/size/default": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1911,11 +1904,7 @@
     "name": "uutilsynet",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme3": "enabled",
-      "primitives/colors/light/theme3": "source",
-      "primitives/colors/dark/theme3": "source",
-      "primitives/colors/dark/global": "source",
-      "primitives/colors/light/global": "source"
+      "themes/theme3": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "35240:2",
@@ -2695,11 +2684,7 @@
       "shadow.xl": "S:12d1833dd64569353680aa00c9d340d6f770698f,"
     },
     "selectedTokenSets": {
-      "themes/theme4": "enabled",
-      "primitives/colors/light/theme4": "source",
-      "primitives/colors/dark/theme4": "source",
-      "primitives/colors/dark/global": "source",
-      "primitives/colors/light/global": "source"
+      "themes/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5713",
     "$figmaModeId": "35240:3",
