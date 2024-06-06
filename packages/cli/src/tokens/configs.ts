@@ -64,7 +64,7 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
 
   return {
-    log: { verbosity: 'verbose' },
+    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -104,11 +104,12 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
   };
 };
 
-export const jsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
+export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
+    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
-      storefront: {
+      ts: {
         prefix,
         basePxFontSize,
         transformGroup: 'fds/css',
@@ -141,7 +142,7 @@ export const cssTypographyConfig: GetConfig = ({ outPath, theme, typography }) =
   // const selector = `${typography === 'default' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
 
   return {
-    log: { verbosity: 'verbose' },
+    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -178,8 +179,6 @@ export const getConfigs = (
 
       const [mode, theme, semantic, fontSize, typography] = processThemeName(name);
 
-      // console.log({ mode, theme, semantic, fontSize, typography });
-
       const paritionPrimitives = /(?!.*global\.json).*primitives.*/;
       const [source, include] = R.partition(R.test(paritionPrimitives), setsWithPaths);
 
@@ -198,8 +197,6 @@ export const getConfigs = (
         include,
       };
 
-      // console.log(config);
-
-      return [name, config];
+      return [`${theme}-${mode}`, config];
     })
     .sort();
