@@ -29,7 +29,7 @@ StyleDictionary.registerFormat(cssClassesTypography);
 StyleDictionary.registerAction(makeEntryFile);
 
 StyleDictionary.registerTransformGroup({
-  name: 'fds/css',
+  name: 'ds/css',
   transforms: [
     `ts/resolveMath`,
     'ts/typography/fontWeight',
@@ -77,7 +77,7 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
-        transformGroup: 'fds/css',
+        transformGroup: 'ds/css',
         actions: [makeEntryFile.name],
         files: [
           {
@@ -112,7 +112,7 @@ export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) 
       ts: {
         prefix,
         basePxFontSize,
-        transformGroup: 'fds/css',
+        transformGroup: 'ds/css',
         buildPath: `${outPath}/${theme}/`,
         files: [
           {
