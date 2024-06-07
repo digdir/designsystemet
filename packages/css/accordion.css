@@ -1,7 +1,7 @@
 @layer ds.accordion {
   .ds-accordion {
     --dsc-accordion-border-radius: var(--ds-border-radius-md);
-    --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);*
+    --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-accordion-border-divider-color: var(--ds-color-neutral-border-subtle);
 
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
