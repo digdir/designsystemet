@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.63.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.62.0...@digdir/designsystemet-react@0.63.0) (2024-06-07)
+
+### Bug Fixes
+
+- **Combobox:** make value as string of integer work ([#2095](https://github.com/digdir/designsystemet/issues/2095)) ([0a687f2](https://github.com/digdir/designsystemet/commit/0a687f2a8ef42d1b4ee051644bf3f8baaa7afcab)), closes [#2081](https://github.com/digdir/designsystemet/issues/2081) [#2106](https://github.com/digdir/designsystemet/issues/2106)
+- **Heading:** :coffin: Remove non-working `3xlarge`/`3xl` size ([#2074](https://github.com/digdir/designsystemet/issues/2074)) ([dad4c8e](https://github.com/digdir/designsystemet/commit/dad4c8e3fa96e7e3232960b9224b03afbf9b2f1c))
+
+### Features
+
+- **css:** use native selectors ([#2050](https://github.com/digdir/designsystemet/issues/2050)) ([f1747b0](https://github.com/digdir/designsystemet/commit/f1747b033dd61d42734fd1ede758dc8b86516c45))
+
 # [0.62.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.61.0...@digdir/designsystemet-react@0.62.0) (2024-05-24)
 
 ### Bug Fixes
