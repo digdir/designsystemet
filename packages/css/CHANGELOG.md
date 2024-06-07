@@ -3,16 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.10.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.9.0...@digdir/designsystemet-css@0.10.0) (2024-06-07)
-
-### Bug Fixes
-
-- **Heading:** :coffin: Remove non-working `3xlarge`/`3xl` size ([#2074](https://github.com/digdir/designsystemet/issues/2074)) ([dad4c8e](https://github.com/digdir/designsystemet/commit/dad4c8e3fa96e7e3232960b9224b03afbf9b2f1c))
-
-### Features
-
-- **css:** use native selectors ([#2050](https://github.com/digdir/designsystemet/issues/2050)) ([f1747b0](https://github.com/digdir/designsystemet/commit/f1747b033dd61d42734fd1ede758dc8b86516c45))
-
 # [0.9.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-css@0.8.0...@digdir/designsystemet-css@0.9.0) (2024-05-24)
 
 ### Bug Fixes
