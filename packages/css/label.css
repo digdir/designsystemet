@@ -1,5 +1,5 @@
 @layer ds.typography.label {
-  .fds-label {
+  .ds-label {
     --dsc-bottom-spacing: var(--ds-spacing-1);
 
     display: inline-block;
@@ -8,39 +8,39 @@
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-label--spacing {
+  .ds-label--spacing {
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .fds-label--lg {
+  .ds-label--lg {
     font: var(--ds-typography-label-lg);
     font-family: inherit;
   }
 
-  .fds-label--md {
+  .ds-label--md {
     font: var(--ds-typography-label-md);
     font-family: inherit;
   }
 
-  .fds-label--sm {
+  .ds-label--sm {
     font: var(--ds-typography-label-sm);
     font-family: inherit;
   }
 
-  .fds-label--xs {
+  .ds-label--xs {
     font: var(--ds-typography-label-xs);
     font-family: inherit;
   }
 
-  .fds-label--regular-weight {
+  .ds-label--regular-weight {
     font-weight: 400;
   }
 
-  .fds-label--medium-weight {
+  .ds-label--medium-weight {
     font-weight: 500;
   }
 
-  .fds-label--semibold-weight {
+  .ds-label--semibold-weight {
     font-weight: 600;
   }
 }

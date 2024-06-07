@@ -20,7 +20,7 @@ export const PaginationEllipsis = forwardRef<
   return (
     <Paragraph
       ref={ref}
-      className={cl('fds-pagination__ellipsis', className)}
+      className={cl('ds-pagination__ellipsis', className)}
       size={size}
       {...rest}
     >

@@ -77,7 +77,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       <Component
         ref={combinedRef}
         tabIndex={-1}
-        className={cl('fds-combobox__custom', className)}
+        className={cl('ds-combobox__custom', className)}
         id={id || randomId}
         role='option'
         aria-selected={activeIndex === index}

@@ -22,8 +22,8 @@ export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
       <ul
         ref={ref}
         className={cl(
-          `fds-chip--group-container`,
-          `fds-chip--${size}`,
+          `ds-chip--group-container`,
+          `ds-chip--${size}`,
           className,
         )}
         {...rest}

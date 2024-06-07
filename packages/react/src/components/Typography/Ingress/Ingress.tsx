@@ -26,9 +26,9 @@ export const Ingress = forwardRef<HTMLParagraphElement, IngressProps>(
       <Component
         ref={ref}
         className={cl(
-          `fds-ingress`,
-          `fds-ingress--${size}`,
-          spacing && 'fds-ingress--spacing',
+          `ds-ingress`,
+          `ds-ingress--${size}`,
+          spacing && 'ds-ingress--spacing',
           className,
         )}
         {...rest}

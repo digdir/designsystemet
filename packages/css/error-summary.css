@@ -1,19 +1,19 @@
 @layer ds.errorsummary {
-  .fds-error-summary {
+  .ds-error-summary {
     padding: var(--ds-spacing-6) var(--ds-spacing-8);
     border-radius: var(--ds-border-radius-lg);
     background-color: var(--ds-color-danger-surface-default);
   }
 
-  .fds-error-summary a {
+  .ds-error-summary a {
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-error-summary li:last-of-type {
+  .ds-error-summary li:last-of-type {
     margin-bottom: 0;
   }
 
-  .fds-error-summary__heading {
+  .ds-error-summary__heading {
     color: var(--ds-color-danger-text-default);
   }
 }

@@ -10,7 +10,7 @@ export const TableHead = React.forwardRef<
   return (
     <thead
       ref={ref}
-      className={cl('fds-table__head', className)}
+      className={cl('ds-table__head', className)}
       {...rest}
     >
       {children}

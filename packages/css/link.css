@@ -1,5 +1,5 @@
 @layer ds.link {
-  .fds-link {
+  .ds-link {
     --dsc-link-color: var(--ds-color-accent-text-subtle);
     --dsc-link-color-hover: var(--ds-color-accent-text-default);
     --dsc-link-color-active: var(--ds-color-accent-text-default);
@@ -19,7 +19,7 @@
     gap: var(--ds-spacing-1);
   }
 
-  .fds-link__accent {
+  .ds-link__accent {
     --dsc-link-color: var(--ds-color-accent-text-subtle);
     --dsc-link-color-hover: var(--ds-color-accent-text-default);
     --dsc-link-color-active: var(--ds-color-accent-text-default);
@@ -29,7 +29,7 @@
     --dsc-link-color-focus-background: var(--ds-focus-outer);
   }
 
-  .fds-link__neutral {
+  .ds-link__neutral {
     --dsc-link-color: var(--ds-color-neutral-text-default);
     --dsc-link-color-hover: var(--ds-color-neutral-text-subtle);
     --dsc-link-color-active: var(--ds-color-neutral-text-subtle);
@@ -39,23 +39,23 @@
     --dsc-link-color-focus-background: var(--ds-focus-outer);
   }
 
-  .fds-link:visited {
+  .ds-link:visited {
     color: var(--dsc-link-color-visited);
     text-decoration: none;
   }
 
-  .fds-link:hover {
+  .ds-link:hover {
     color: var(--dsc-link-color-hover);
     text-decoration-thickness: max(2px, 0.125rem, 0.12em);
   }
 
-  .fds-link:focus-visible {
+  .ds-link:focus-visible {
     color: var(--dsc-link-color-focus);
     background: var(--dsc-link-color-focus-background);
     outline: none;
   }
 
-  .fds-link:active {
+  .ds-link:active {
     color: var(--dsc-link-color-active);
     background: var(--dsc-link-color-active-background);
     border-radius: var(--ds-border-radius-md);

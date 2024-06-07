@@ -72,7 +72,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
 
     return (
       <div
-        className={cl('fds-togglegroup', className)}
+        className={cl('ds-togglegroup', className)}
         ref={ref}
         {...rest}
       >
@@ -87,7 +87,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
         >
           {name && (
             <input
-              className='fds-togglegroup__input'
+              className='ds-togglegroup__input'
               name={name}
               value={value}
             />
@@ -97,7 +97,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
             valueId={value}
           >
             <div
-              className='fds-togglegroup__content'
+              className='ds-togglegroup__content'
               role='radiogroup'
             >
               {children}

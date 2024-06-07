@@ -36,8 +36,8 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-modal__header',
-          !closeButton && 'fds-modal__header--no-button',
+          'ds-modal__header',
+          !closeButton && 'ds-modal__header--no-button',
           className,
         )}
         {...rest}
@@ -65,7 +65,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             onClick={context?.closeModal}
             autoFocus
             icon={true}
-            className='fds-modal__header__button'
+            className='ds-modal__header__button'
           >
             <XMarkIcon
               title='close modal'

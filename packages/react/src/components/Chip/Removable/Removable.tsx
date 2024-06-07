@@ -23,10 +23,10 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         type='button'
         ref={ref}
         className={cl(
-          `fds-focus`,
-          `fds-chip--button`,
-          `fds-chip--removable`,
-          `fds-chip--${group?.size || size}`,
+          `ds-focus`,
+          `ds-chip--button`,
+          `ds-chip--removable`,
+          `ds-chip--${group?.size || size}`,
           className,
         )}
         {...rest}
@@ -36,13 +36,13 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
           size={group?.size || size}
           variant='short'
         >
-          <span className={`fds-chip__label`}>
+          <span className={`ds-chip__label`}>
             <span>{children}</span>
             <span
-              className={`fds-chip__x-mark`}
+              className={`ds-chip__x-mark`}
               aria-hidden
             >
-              <XMarkIcon className={`fds-chip__icon`} />
+              <XMarkIcon className={`ds-chip__icon`} />
             </span>
           </span>
         </Paragraph>

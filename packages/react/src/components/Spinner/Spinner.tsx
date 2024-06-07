@@ -40,16 +40,16 @@ export const Spinner = ({
   ...rest
 }: SpinnerProps): JSX.Element => {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
-    'fds-spinner-rotate-animation',
+    'ds-spinner-rotate-animation',
   );
 
   const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
-    'fds-spinner-stroke-animation',
+    'ds-spinner-stroke-animation',
   );
 
   return (
     <svg
-      className={cl('fds-spinner', `fds-spinner--${color}`, className)}
+      className={cl('ds-spinner', `ds-spinner--${color}`, className)}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}
@@ -57,7 +57,7 @@ export const Spinner = ({
     >
       <title>{title}</title>
       <circle
-        className={cl('fds-spinner__background')}
+        className={cl('ds-spinner__background')}
         cx='25'
         cy='25'
         r='20'
@@ -65,7 +65,7 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={cl(`fds-spinner__circle`)}
+        className={cl(`ds-spinner__circle`)}
         cx='25'
         cy='25'
         r='20'

@@ -69,9 +69,9 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       >
         <div
           className={cl(
-            'fds-native-select--container',
-            readOnly && 'fds-native-select--readonly',
-            error && 'fds-native-select--error',
+            'ds-native-select--container',
+            readOnly && 'ds-native-select--readonly',
+            error && 'ds-native-select--error',
           )}
         >
           {label && (
@@ -80,14 +80,14 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               size={size}
               htmlFor={selectProps.id}
               className={cl(
-                'fds-native-select__label',
-                hideLabel && 'fds-sr-only',
+                'ds-native-select__label',
+                hideLabel && 'ds-sr-only',
               )}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={'fds-native-select__readonly__icon'}
+                  className={'ds-native-select__readonly__icon'}
                 />
               )}
               {label}
@@ -101,24 +101,24 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  `fds-native-select__description`,
-                  hideLabel && `fds-sr-only`,
+                  `ds-native-select__description`,
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
-          <div className='fds-native-select__wrapper'>
+          <div className='ds-native-select__wrapper'>
             <select
               disabled={disabled || readOnly}
               ref={ref}
               size={htmlSize}
               className={cl(
-                'fds-native-select',
-                `fds-native-select--${size}`,
-                `fds-focus`,
-                props.multiple && 'fds-native-select--multiple',
+                'ds-native-select',
+                `ds-native-select--${size}`,
+                `ds-focus`,
+                props.multiple && 'ds-native-select--multiple',
                 className,
               )}
               {...omit(['size', 'error', 'errorId'], rest)}
@@ -131,7 +131,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {error && (
             <div
               id={errorId}
-              className={'fds-native-select__error-message'}
+              className={'ds-native-select__error-message'}
               aria-live='polite'
               aria-relevant='additions removals'
             >

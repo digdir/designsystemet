@@ -75,7 +75,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              className={cl(!showPreviousPage && 'fds-pagination--hidden')}
+              className={cl(!showPreviousPage && 'ds-pagination--hidden')}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
@@ -112,7 +112,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               onClick={() => {
                 onChange(currentPage + 1);
               }}
-              className={cl(!showNextPage && 'fds-pagination--hidden')}
+              className={cl(!showNextPage && 'ds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
               <ChevronRightIcon

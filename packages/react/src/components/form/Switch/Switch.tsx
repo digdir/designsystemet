@@ -44,15 +44,15 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       >
         <div
           className={cl(
-            `fds-switch`,
-            `fds-switch--${size}`,
-            inputProps.disabled && `fds-switch--disabled`,
-            readOnly && `fds-switch--readonly`,
+            `ds-switch`,
+            `ds-switch--${size}`,
+            inputProps.disabled && `ds-switch--disabled`,
+            readOnly && `ds-switch--readonly`,
             className,
           )}
         >
           <input
-            className={`fds-switch__input`}
+            className={`ds-switch__input`}
             disabled={inputProps.disabled}
             ref={ref}
             {...omit(['size', 'error'], rest)}
@@ -61,20 +61,20 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
           <Label
             className={cl(
-              `fds-switch__label`,
-              position === 'right' && `fds-switch__label--right`,
+              `ds-switch__label`,
+              position === 'right' && `ds-switch__label--right`,
             )}
             htmlFor={inputProps.id}
             size={size}
             weight='regular'
           >
-            <span className={`fds-switch__track`}>
-              <span className={`fds-switch__thumb`} />
+            <span className={`ds-switch__track`}>
+              <span className={`ds-switch__thumb`} />
             </span>
             {readOnly && (
               <PadlockLockedFillIcon
                 aria-hidden
-                className={`fds-switch__readonly__icon`}
+                className={`ds-switch__readonly__icon`}
               />
             )}
             {children && <span>{children}</span>}
@@ -86,7 +86,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             >
               <div
                 id={descriptionId}
-                className={`fds-switch__description`}
+                className={`ds-switch__description`}
               >
                 {description}
               </div>

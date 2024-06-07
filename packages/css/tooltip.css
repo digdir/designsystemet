@@ -1,5 +1,5 @@
 @layer ds.tooltip {
-  .fds-tooltip {
+  .ds-tooltip {
     --dsc-tooltip-background: var(--ds-color-neutral-text-default);
 
     background: var(--dsc-tooltip-background);
@@ -10,7 +10,7 @@
     font-family: inherit;
   }
 
-  .fds-tooltip__arrow {
+  .ds-tooltip__arrow {
     fill: var(--dsc-tooltip-background);
   }
 }

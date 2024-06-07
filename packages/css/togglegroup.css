@@ -1,5 +1,5 @@
 @layer ds.togglegroup {
-  .fds-togglegroup {
+  .ds-togglegroup {
     background-color: var(--ds-color-neutral-background-default);
     border: var(--ds-color-neutral-border-default) solid var(--ds-border-width-default);
     border-radius: var(--ds-border-radius-lg);
@@ -7,7 +7,7 @@
     height: fit-content;
   }
 
-  .fds-togglegroup__content {
+  .ds-togglegroup__content {
     display: inline-grid;
     gap: var(--ds-spacing-1);
     grid-auto-columns: 1fr;
@@ -15,11 +15,11 @@
     padding: var(--ds-spacing-1);
   }
 
-  .fds-togglegroup__input {
+  .ds-togglegroup__input {
     display: none;
   }
 
-  .fds-togglegroup__item:focus-visible {
+  .ds-togglegroup__item:focus-visible {
     z-index: 1;
   }
 }

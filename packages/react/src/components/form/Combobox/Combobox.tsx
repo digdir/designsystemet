@@ -349,9 +349,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       >
         <Box
           className={cl(
-            'fds-combobox',
-            `fds-combobox--${size}`,
-            disabled && 'fds-combobox__disabled',
+            'ds-combobox',
+            `ds-combobox--${size}`,
+            disabled && 'ds-combobox__disabled',
             className,
           )}
           style={style}
@@ -389,7 +389,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             formFieldProps={formFieldProps}
           />
         </Box>
-
         {/* This is the floating list with options */}
         {open && (
           <FloatingPortal root={portal ? null : portalRef}>
@@ -413,8 +412,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                   },
                 })}
                 className={cl(
-                  'fds-combobox__options-wrapper',
-                  `fds-combobox--${size}`,
+                  'ds-combobox__options-wrapper',
+                  `ds-combobox--${size}`,
                 )}
               >
                 {virtual && (
@@ -446,7 +445,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                 )}
 
                 {loading ? (
-                  <ComboboxCustom className={'fds-combobox__loading'}>
+                  <ComboboxCustom className={'ds-combobox__loading'}>
                     <Spinner
                       title='Laster'
                       size='sm'

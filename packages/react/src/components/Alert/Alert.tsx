@@ -65,10 +65,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       <div
         ref={ref}
         className={cl(
-          'fds-alert',
-          `fds-alert--${size}`,
-          `fds-alert--${severity}`,
-          elevated && `fds-alert--elevated`,
+          'ds-alert',
+          `ds-alert--${size}`,
+          `ds-alert--${severity}`,
+          elevated && `ds-alert--elevated`,
           className,
         )}
         {...rest}
@@ -76,12 +76,12 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         <>
           <Icon
             title={iconTitle || title}
-            className='fds-alert__icon'
+            className='ds-alert__icon'
           />
           <Paragraph
             asChild
             size={size}
-            className='fds-alert__content'
+            className='ds-alert__content'
           >
             <span>{children}</span>
           </Paragraph>

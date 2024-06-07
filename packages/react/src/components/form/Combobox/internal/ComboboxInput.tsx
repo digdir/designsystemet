@@ -108,13 +108,13 @@ export const ComboboxInput = ({
       {...props}
       aria-disabled={disabled ? 'true' : undefined}
       className={cl(
-        'fds-textfield__input',
-        'fds-combobox__input__wrapper',
-        readOnly && 'fds-combobox--readonly',
-        error && 'fds-combobox--error',
+        'ds-textfield__input',
+        'ds-combobox__input__wrapper',
+        readOnly && 'ds-combobox--readonly',
+        error && 'ds-combobox--error',
       )}
     >
-      <div className={'fds-combobox__chip-and-input'}>
+      <div className={'ds-combobox__chip-and-input'}>
         {/* If the input is in multiple mode, we need to display chips */}
         {multiple && !hideChips && <ComboboxChips />}
         <input
@@ -130,7 +130,7 @@ export const ComboboxInput = ({
           value={inputValue}
           {...omit(['style', 'className'], rest)}
           {...formFieldProps.inputProps}
-          className='fds-combobox__input'
+          className='ds-combobox__input'
           onChange={(e) => {
             onChange(e);
             !open && setOpen(true);
@@ -141,7 +141,7 @@ export const ComboboxInput = ({
       {/* Clear button if we are in multiple mode and have at least one active value */}
       {showClearButton && <ComboboxClearButton />}
       {/* Arrow for combobox. Click is handled by the wrapper */}
-      <div className={'fds-combobox__arrow'}>
+      <div className={'ds-combobox__arrow'}>
         {open ? (
           <ChevronUpIcon
             title='arrow up'

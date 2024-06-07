@@ -5,7 +5,9 @@ export default (glob?: string) =>
   runCssCodemod({
     globPattern: glob,
     plugins: [
-      cssClassRename({}),
+      cssClassRename({
+        '.fds-': '.ds-',
+      }),
       // New component token prefixes
       cssVarRename({
         '--fds-accordion': '--dsc-accordion',

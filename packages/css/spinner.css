@@ -1,10 +1,10 @@
 @layer ds.spinner {
-  .fds-spinner {
+  .ds-spinner {
     animation: fds-spinner-rotate-animation linear infinite;
     animation-duration: 2s;
   }
 
-  .fds-spinner__circle {
+  .ds-spinner__circle {
     stroke-dasharray: 1px, 200px;
     transform-origin: center;
     animation: fds-spinner-stroke-animation ease-in-out infinite;
@@ -15,24 +15,24 @@
     but don't remove it since it is not decorative.
    */
   @media (prefers-reduced-motion: reduce) {
-    .fds-spinner {
+    .ds-spinner {
       animation-duration: 6s;
     }
 
-    .fds-spinner__circle {
+    .ds-spinner__circle {
       animation-duration: 6s;
     }
   }
 
-  .fds-spinner--neutral .fds-spinner__circle {
+  .ds-spinner--neutral .ds-spinner__circle {
     stroke: var(--ds-color-neutral-border-default);
   }
 
-  .fds-spinner--accent .fds-spinner__circle {
+  .ds-spinner--accent .ds-spinner__circle {
     stroke: var(--ds-color-accent-base-default);
   }
 
-  .fds-spinner__background {
+  .ds-spinner__background {
     stroke: var(--ds-color-neutral-surface-default);
   }
 

@@ -32,9 +32,9 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-heading',
-          `fds-heading--${size}`,
-          spacing && 'fds-heading--spacing',
+          'ds-heading',
+          `ds-heading--${size}`,
+          spacing && 'ds-heading--spacing',
           className,
         )}
         {...rest}

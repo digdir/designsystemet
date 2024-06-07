@@ -1,19 +1,19 @@
 @layer ds.textarea {
-  .fds-textarea {
+  .ds-textarea {
     display: grid;
     gap: var(--ds-spacing-2);
   }
 
-  .fds-textarea__readonly-icon {
+  .ds-textarea__readonly-icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .fds-textarea__error-message:empty {
+  .ds-textarea__error-message:empty {
     display: none;
   }
 
-  .fds-textarea__label {
+  .ds-textarea__label {
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
@@ -21,12 +21,12 @@
     align-items: center;
   }
 
-  .fds-textarea__description {
+  .ds-textarea__description {
     color: var(--ds-color-neutral-text-subtle);
     margin-top: calc(var(--ds-spacing-2) * -1);
   }
 
-  .fds-textarea__input {
+  .ds-textarea__input {
     font: inherit;
     font-family: inherit;
     position: relative;
@@ -43,38 +43,38 @@
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-textarea--sm .fds-textarea__input {
+  .ds-textarea--sm .ds-textarea__input {
     padding: var(--ds-spacing-2);
   }
 
-  .fds-textarea--md .fds-textarea__input {
+  .ds-textarea--md .ds-textarea__input {
     padding: var(--ds-spacing-3);
   }
 
-  .fds-textarea--lg .fds-textarea__input {
+  .ds-textarea--lg .ds-textarea__input {
     padding: var(--ds-spacing-4);
   }
 
-  .fds-textarea:has(.fds-textarea__input:disabled) {
+  .ds-textarea:has(.ds-textarea__input:disabled) {
     opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-textarea__input:disabled {
+  .ds-textarea__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textarea__input:read-only {
+  .ds-textarea__input:read-only {
     background: var(--ds-color-neutral-background-subtle);
     border-color: var(--ds-color-neutral-border-strong);
   }
 
-  .fds-textarea--error > .fds-textarea__input:not(:focus-visible) {
+  .ds-textarea--error > .ds-textarea__input:not(:focus-visible) {
     border-color: var(--ds-color-danger-border-default);
     box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-textarea__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+    .ds-textarea__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
       border-color: var(--ds-color-accent-border-strong);
       box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
     }

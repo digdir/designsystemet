@@ -17,7 +17,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
 
     return (
       <Component
-        className={cl(`fds-card__header`, className)}
+        className={cl(`ds-card__header`, className)}
         ref={ref}
         {...rest}
       />

@@ -27,7 +27,7 @@ export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
         asChild
       >
         <Component
-          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
+          className={cl(`ds-list`, `ds-list--${size}`, rest.className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}
@@ -59,7 +59,7 @@ export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
         asChild
       >
         <Component
-          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
+          className={cl(`ds-list`, `ds-list--${size}`, rest.className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}

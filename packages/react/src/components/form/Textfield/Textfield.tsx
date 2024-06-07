@@ -109,10 +109,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         <div
           style={style}
           className={cl(
-            `fds-textfield`,
-            `fds-textfield--${size}`,
-            readOnly && `fds-textfield--readonly`,
-            hasError && `fds-textfield--error`,
+            `ds-textfield`,
+            `ds-textfield--${size}`,
+            readOnly && `ds-textfield--readonly`,
+            hasError && `ds-textfield--error`,
             className,
           )}
         >
@@ -121,12 +121,12 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(`fds-textfield__label`, hideLabel && `fds-sr-only`)}
+              className={cl(`ds-textfield__label`, hideLabel && `ds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className='fds-textfield__readonly__icon'
+                  className='ds-textfield__readonly__icon'
                 />
               )}
               <span>{label}</span>
@@ -140,15 +140,15 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  `fds-textfield__description`,
-                  hideLabel && `fds-sr-only`,
+                  `ds-textfield__description`,
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
-          <div className='fds-textfield__field'>
+          <div className='ds-textfield__field'>
             {prefix && (
               <Paragraph
                 asChild
@@ -157,8 +157,8 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               >
                 <div
                   className={cl(
-                    `fds-textfield__adornment`,
-                    `fds-textfield__prefix`,
+                    `ds-textfield__adornment`,
+                    `ds-textfield__prefix`,
                   )}
                   aria-hidden='true'
                 >
@@ -168,10 +168,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             )}
             <input
               className={cl(
-                `fds-textfield__input`,
-                `fds-focus`,
-                prefix && `fds-textfield__input--with-prefix`,
-                suffix && `fds-textfield__input--with-suffix`,
+                `ds-textfield__input`,
+                `ds-focus`,
+                prefix && `ds-textfield__input--with-prefix`,
+                suffix && `ds-textfield__input--with-suffix`,
               )}
               ref={ref}
               type={type}
@@ -193,8 +193,8 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               >
                 <div
                   className={cl(
-                    `fds-textfield__adornment`,
-                    `fds-textfield__suffix`,
+                    `ds-textfield__adornment`,
+                    `ds-textfield__suffix`,
                   )}
                   aria-hidden='true'
                 >
@@ -212,7 +212,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             />
           )}
           <div
-            className='fds-textfield__error-message'
+            className='ds-textfield__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

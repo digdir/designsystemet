@@ -43,10 +43,10 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         type='button'
         aria-pressed={selected}
         className={cl(
-          `fds-focus`,
-          `fds-chip--button`,
-          `fds-chip--${group?.size || size}`,
-          shouldDisplayCheckmark && `fds-chip--spacing`,
+          `ds-focus`,
+          `ds-chip--button`,
+          `ds-chip--${group?.size || size}`,
+          shouldDisplayCheckmark && `ds-chip--spacing`,
           className,
         )}
         {...rest}
@@ -56,10 +56,10 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
           size={group?.size || size}
           variant='short'
         >
-          <span className={`fds-chip__label`}>
+          <span className={`ds-chip__label`}>
             {shouldDisplayCheckmark && (
               <CheckmarkIcon
-                className={`fds-chip__checkmark-icon`}
+                className={`ds-chip__checkmark-icon`}
                 aria-hidden
               />
             )}

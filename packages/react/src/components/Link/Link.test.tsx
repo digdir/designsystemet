@@ -23,7 +23,7 @@ describe('Link', () => {
     const className = 'foo';
     render({ className });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('fds-link');
+    expect(link).toHaveClass('ds-link');
     expect(link).toHaveClass(className);
   });
 

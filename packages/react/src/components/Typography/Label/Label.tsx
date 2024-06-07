@@ -35,10 +35,10 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-label',
-          `fds-label--${size}`,
-          spacing && 'fds-label--spacing',
-          weight && `fds-label--${weight}-weight`,
+          'ds-label',
+          `ds-label--${size}`,
+          spacing && 'ds-label--spacing',
+          weight && `ds-label--${weight}-weight`,
           className,
         )}
         {...rest}

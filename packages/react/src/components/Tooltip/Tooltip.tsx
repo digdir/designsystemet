@@ -139,7 +139,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               style={{ ...floatingStyles, ...animationStyles, ...style }}
               role='tooltip'
               {...getFloatingProps({
-                className: cl('fds-tooltip', className),
+                className: cl('ds-tooltip', className),
                 ref: mergedRef,
                 ...rest,
               })}
@@ -148,7 +148,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               <FloatingArrow
                 ref={arrowRef}
                 context={context}
-                className='fds-tooltip__arrow'
+                className='ds-tooltip__arrow'
                 height={ARROW_HEIGHT}
               />
             </div>

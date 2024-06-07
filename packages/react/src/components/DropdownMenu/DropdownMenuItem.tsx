@@ -26,7 +26,7 @@ export const DropdownMenuItem = forwardRef<
         variant='tertiary'
         size={size}
         fullWidth
-        className='fds-dropdownmenu__item'
+        className='ds-dropdownmenu__item'
         role='menuitem'
         {...rest}
       >

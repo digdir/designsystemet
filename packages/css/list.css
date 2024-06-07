@@ -1,18 +1,18 @@
 @layer ds.list {
-  .fds-list--sm {
+  .ds-list--sm {
     padding-left: var(--ds-spacing-4);
   }
 
-  .fds-list--md,
-  .fds-list--lg {
+  .ds-list--md,
+  .ds-list--lg {
     padding-left: var(--ds-spacing-6);
   }
 
-  .fds-list__item {
+  .ds-list__item {
     margin-bottom: var(--ds-spacing-2);
   }
 
-  .fds-list__item > .fds-list {
+  .ds-list__item > .ds-list {
     margin-top: var(--ds-spacing-2);
   }
 }

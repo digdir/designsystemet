@@ -51,10 +51,10 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
       <Component
         ref={ref}
         className={cl(
-          shadow && `fds-box--${shadow}-shadow`,
-          borderColor && `fds-box--${borderColor}-border-color`,
-          borderRadius && `fds-box--${borderRadius}-border-radius`,
-          `fds-box--${background}-background`,
+          shadow && `ds-box--${shadow}-shadow`,
+          borderColor && `ds-box--${borderColor}-border-color`,
+          borderRadius && `ds-box--${borderRadius}-border-radius`,
+          `ds-box--${background}-background`,
           className,
         )}
         {...rest}

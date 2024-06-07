@@ -61,7 +61,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     };
 
     const mergedRefs = useMergeRefs([modalRef, ref, modalDialogRef]);
-    useScrollLock(modalDialogRef, 'fds-modal--lock-scroll');
+    useScrollLock(modalDialogRef, 'ds-modal--lock-scroll');
 
     useEffect(() => {
       setOpen(open);
@@ -115,7 +115,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     return (
       <Component
         ref={mergedRefs}
-        className={cl('fds-modal', className)}
+        className={cl('ds-modal', className)}
         onCancel={onCancel}
         {...rest}
       >

@@ -1,5 +1,5 @@
 @layer ds.table {
-  .fds-table {
+  .ds-table {
     --dsc-table-padding: 0;
     --dsc-table-border-radius: var(--ds-border-radius-md);
 
@@ -10,27 +10,27 @@
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-table--sticky-header {
+  .ds-table--sticky-header {
     overflow: auto;
   }
 
-  .fds-table--border .fds-table__row:last-of-type td {
+  .ds-table--border .ds-table__row:last-of-type td {
     border-bottom: 0;
   }
 
-  .fds-table--sm {
+  .ds-table--sm {
     --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
   }
 
-  .fds-table--md {
+  .ds-table--md {
     --dsc-table-padding: var(--ds-spacing-2) var(--ds-spacing-3);
   }
 
-  .fds-table--lg {
+  .ds-table--lg {
     --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
   }
 
-  .fds-table__head {
+  .ds-table__head {
     z-index: 0;
     box-sizing: border-box;
     font: inherit;
@@ -40,7 +40,7 @@
     border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-table__header__cell {
+  .ds-table__header__cell {
     padding: var(--dsc-table-padding);
     font: inherit;
     font-family: inherit;
@@ -49,17 +49,17 @@
     border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-table--sticky-header .fds-table__head .fds-table__header__cell {
+  .ds-table--sticky-header .ds-table__head .ds-table__header__cell {
     position: sticky;
     top: 0;
     z-index: 1;
   }
 
-  .fds-table__header__cell--sortable {
+  .ds-table__header__cell--sortable {
     padding: 0;
   }
 
-  .fds-table__header__cell--sortable button {
+  .ds-table__header__cell--sortable button {
     position: relative;
     width: 100%;
     border: none;
@@ -75,65 +75,65 @@
     z-index: 2;
   }
 
-  .fds-table__header__cell--sorted button {
+  .ds-table__header__cell--sorted button {
     background-color: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-table__header__cell--sortable button:focus-visible {
+  .ds-table__header__cell--sortable button:focus-visible {
     z-index: 3;
     outline-offset: -3px;
     box-shadow: unset;
   }
 
-  .fds-table__header__cell--sortable button svg {
+  .ds-table__header__cell--sortable button svg {
     font-size: 1.2em;
   }
 
-  .fds-table__cell {
+  .ds-table__cell {
     padding: var(--dsc-table-padding);
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     background-color: var(--ds-color-neutral-background-default);
   }
 
-  .fds-table--zebra .fds-table__row {
+  .ds-table--zebra .ds-table__row {
     border-bottom: 0;
   }
 
-  .fds-table--zebra tr:nth-child(even):not(:hover) .fds-table__cell {
+  .ds-table--zebra tr:nth-child(even):not(:hover) .ds-table__cell {
     background-color: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-table--border {
+  .ds-table--border {
     border-radius: var(--dsc-table-border-radius);
     border: 1px solid var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-table--border .fds-table__head .fds-table__header__cell:first-of-type {
+  .ds-table--border .ds-table__head .ds-table__header__cell:first-of-type {
     border-top-left-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
-  .fds-table--border .fds-table__head .fds-table__header__cell:last-of-type {
+  .ds-table--border .ds-table__head .ds-table__header__cell:last-of-type {
     border-top-right-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
-  .fds-table--border .fds-table__row:last-of-type .fds-table__cell:first-of-type {
+  .ds-table--border .ds-table__row:last-of-type .ds-table__cell:first-of-type {
     border-bottom-left-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
-  .fds-table--border .fds-table__row:last-of-type .fds-table__cell:last-of-type {
+  .ds-table--border .ds-table__row:last-of-type .ds-table__cell:last-of-type {
     border-bottom-right-radius: var(--dsc-table-border-radius);
     overflow: hidden;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-table__row:hover .fds-table__cell {
+    .ds-table__row:hover .ds-table__cell {
       background-color: var(--ds-color-neutral-surface-default);
     }
 
-    .fds-table__header__cell--sortable button:hover {
+    .ds-table__header__cell--sortable button:hover {
       background-color: var(--ds-color-neutral-surface-default);
     }
   }

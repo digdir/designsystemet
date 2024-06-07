@@ -31,10 +31,10 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-paragraph',
-          `fds-paragraph--${size}`,
-          spacing && 'fds-paragraph--spacing',
-          variant && `fds-paragraph--${variant}`,
+          'ds-paragraph',
+          `ds-paragraph--${size}`,
+          spacing && 'ds-paragraph--spacing',
+          variant && `ds-paragraph--${variant}`,
           className,
         )}
         {...rest}
