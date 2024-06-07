@@ -4,6 +4,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { ComboboxContext } from '../ComboboxContext';
 import useDebounce from '../../../../utilities/useDebounce';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
+import { prefix } from '../useCombobox';
 
 type UseComboboxOptionProps = {
   id?: string;
@@ -34,7 +35,7 @@ export default function useComboboxOption({
   } = context;
 
   const index = useMemo(
-    () => filteredOptions.indexOf(value) + customIds.length,
+    () => filteredOptions.indexOf(prefix(String(value))) + customIds.length,
     [customIds.length, filteredOptions, value],
   );
 
@@ -49,7 +50,7 @@ export default function useComboboxOption({
     throw new Error('Internal error: ComboboxOption did not find index');
   }
 
-  const selected = selectedOptions[value];
+  const selected = selectedOptions[prefix(value)];
   const active = activeIndex === index;
 
   useEffect(() => {
