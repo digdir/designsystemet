@@ -1,4 +1,4 @@
-@layer ds.fds-popover {
+@layer ds.popover {
   .ds-popover {
     --dsc-popover-border: 1px solid;
     --dsc-popover-background: var(--ds-color-neutral-background-default);

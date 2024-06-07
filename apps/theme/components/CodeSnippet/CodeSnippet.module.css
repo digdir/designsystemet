@@ -29,7 +29,7 @@
   justify-content: center;
   background-color: #3b434d;
   color: white;
-  border-radius: var(--fds-border_radius-medium);
+  border-radius: var(--ds-border-radius-md);
   border: none;
   transition: 0.15s all;
   cursor: pointer;

@@ -1,13 +1,13 @@
 @layer ds.spinner {
   .ds-spinner {
-    animation: fds-spinner-rotate-animation linear infinite;
+    animation: ds-spinner-rotate-animation linear infinite;
     animation-duration: 2s;
   }
 
   .ds-spinner__circle {
     stroke-dasharray: 1px, 200px;
     transform-origin: center;
-    animation: fds-spinner-stroke-animation ease-in-out infinite;
+    animation: ds-spinner-stroke-animation ease-in-out infinite;
     animation-duration: 2s;
   }
 
@@ -36,7 +36,7 @@
     stroke: var(--ds-color-neutral-surface-default);
   }
 
-  @keyframes fds-spinner-rotate-animation {
+  @keyframes ds-spinner-rotate-animation {
     0% {
       transform: rotate(0deg);
     }
@@ -46,7 +46,7 @@
     }
   }
 
-  @keyframes fds-spinner-stroke-animation {
+  @keyframes ds-spinner-stroke-animation {
     0% {
       stroke-dasharray: 1px, 200px;
       stroke-dashoffset: 0;
