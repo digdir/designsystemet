@@ -15,6 +15,7 @@ import { BaseContrast } from './BaseContrast/BaseContrast';
 import { BackgroundSurface } from './BackgroundSurface/BackgroundSurface';
 import { Interaction } from './Interaction/Interaction';
 import { Backgrounds } from './Backgrounds/Backgrounds';
+import { BaseContrastOverview } from './BaseContrastOverview/BaseContrastOverview';
 
 const Box = (name: string, color1: CssColor, color2: CssColor) => {
   return (
@@ -363,6 +364,13 @@ export default function Dev() {
         {Row('Light', theme1.light)}
         {Row('Dark', theme1.dark, true)}
         {Row('Contrast', theme1.contrast, true)}
+        <Heading
+          className={classes.sectionTitle}
+          size='md'
+        >
+          Overgangen fra svart til hvit kontrastfarge på ulike Base farger
+        </Heading>
+        <BaseContrastOverview />
       </Container>
     </div>
   );

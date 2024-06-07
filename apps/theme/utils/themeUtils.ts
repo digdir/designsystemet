@@ -296,7 +296,7 @@ export const generateColorTheme = ({
  *
  * @param baseColor The base color
  */
-const calculateContrastOneColor = (baseColor: CssColor) => {
+export const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
   const contrastBlack = getContrastFromHex(baseColor, '#000000');
   const lightness = contrastWhite >= contrastBlack ? 100 : 0;
