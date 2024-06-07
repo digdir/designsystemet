@@ -64,7 +64,7 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div>{children}</div>
+          <div className='fds-checkbox__group'>{children}</div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );
