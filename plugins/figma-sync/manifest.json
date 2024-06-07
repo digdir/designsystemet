@@ -1,14 +1,10 @@
 {
   "name": "Designsystemet",
-  "id": "1379903897140152021",
+  "id": "1222852692367737510",
   "api": "1.0.0",
-  "main": "dist/code.js",
-  "ui": "dist/ui.html",
+  "main": "dist/plugin.js",
+  "ui": "dist/index.html",
   "capabilities": [],
   "enableProposedApi": false,
-  "documentAccess": "dynamic-page",
-  "editorType": ["figma"],
-  "networkAccess": {
-    "allowedDomains": ["none"]
-  }
+  "editorType": ["figma"]
 }
