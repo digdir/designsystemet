@@ -3,7 +3,7 @@ import type { Transform } from 'style-dictionary/types';
 import { noCase } from './noCase.js';
 
 export const sizeRem: Transform = {
-  name: 'fds/size/toRem',
+  name: 'ds/size/toRem',
   type: 'value',
   transitive: true,
   filter: (token) => ['sizing', 'spacing'].includes(token.type as string) && !token.name.includes('base'),
