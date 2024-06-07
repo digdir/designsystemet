@@ -155,7 +155,7 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  /*   .fds-switch__input:focus-visible + .fds-switch__label .fds-switch__track {
+  /*   .ds-switch__input:focus-visible + .ds-switch__label .ds-switch__track {
     outline: var(--dsc-switch-focus-border-width) solid var(--ds-focus-outer);
     outline-offset: var(--dsc-switch-focus-border-width);
     box-shadow: 0 0 0 var(--dsc-switch-focus-border-width) var(--ds-focus-inner);
