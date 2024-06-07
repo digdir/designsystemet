@@ -130,9 +130,9 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
               <div
                 ref={floatingEl}
                 className={cl(
-                  'fds-popover',
-                  `fds-popover--${variant}`,
-                  `fds-popover--${size}`,
+                  'ds-popover',
+                  `ds-popover--${variant}`,
+                  `ds-popover--${size}`,
                   className,
                 )}
                 data-placement={flPlacement}
@@ -149,8 +149,8 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
                 <div
                   ref={arrowRef}
                   className={cl(
-                    'fds-popover__arrow',
-                    `fds-popover__arrow--${arrowPlacement}`,
+                    'ds-popover__arrow',
+                    `ds-popover__arrow--${arrowPlacement}`,
                   )}
                   style={{
                     height: ARROW_HEIGHT,

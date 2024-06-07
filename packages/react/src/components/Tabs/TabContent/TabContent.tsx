@@ -20,7 +20,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
         {active && (
           <Paragraph asChild>
             <div
-              className={cl('fds-tabs__content', className)}
+              className={cl('ds-tabs__content', className)}
               ref={ref}
               {...rest}
             >

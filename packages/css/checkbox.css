@@ -1,5 +1,5 @@
 @layer ds.checkbox {
-  .fds-checkbox {
+  .ds-checkbox {
     --dsc-checkbox-size: 1.75rem;
     --dsc-checkbox-focus-border-width: 3px;
     --dsc-checkbox-background: var(--ds-color-neutral-background-default);
@@ -11,13 +11,13 @@
     display: grid;
   }
 
-  .fds-checkbox:has(.fds-checkbox__label) {
+  .ds-checkbox:has(.ds-checkbox__label) {
     grid-template-columns: var(--dsc-checkbox-size) auto;
     gap: var(--ds-spacing-2);
   }
 
   /* Checkbox */
-  .fds-checkbox__input {
+  .ds-checkbox__input {
     position: relative;
     width: var(--dsc-checkbox-size);
     height: var(--dsc-checkbox-size);
@@ -32,7 +32,7 @@
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-checkbox__input::before {
+  .ds-checkbox__input::before {
     position: absolute;
     content: '';
     display: block;
@@ -45,7 +45,7 @@
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-checkbox__label {
+  .ds-checkbox__label {
     min-height: var(--ds-sizing-10);
     min-width: min-content;
     display: inline-flex;
@@ -55,25 +55,25 @@
     cursor: pointer;
   }
 
-  .fds-checkbox__description {
+  .ds-checkbox__description {
     margin-top: calc(var(--ds-spacing-3) * -1);
     color: var(--ds-color-neutral-text-subtle);
     grid-column: 2;
   }
 
-  .fds-checkbox--readonly > .fds-checkbox__label,
-  .fds-checkbox--readonly > .fds-checkbox__input,
-  .fds-checkbox--readonly > .fds-checkbox__input::before {
+  .ds-checkbox--readonly > .ds-checkbox__label,
+  .ds-checkbox--readonly > .ds-checkbox__input,
+  .ds-checkbox--readonly > .ds-checkbox__input::before {
     cursor: default;
   }
 
-  .fds-checkbox__input:disabled,
-  .fds-checkbox__input:disabled ~ .fds-checkbox__label,
-  .fds-checkbox__input:disabled::before {
+  .ds-checkbox__input:disabled,
+  .ds-checkbox__input:disabled ~ .ds-checkbox__label,
+  .ds-checkbox__input:disabled::before {
     cursor: not-allowed;
   }
 
-  .fds-checkbox__input:focus-visible {
+  .ds-checkbox__input:focus-visible {
     outline-offset: 3px;
     outline: var(--dsc-checkbox-focus-border-width) solid var(--ds-focus-outer);
     box-shadow:
@@ -81,7 +81,7 @@
       inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
-  .fds-checkbox__input::after {
+  .ds-checkbox__input::after {
     content: '';
     width: 100%;
     height: 100%;
@@ -93,7 +93,7 @@
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.5509 6.32414C18.9414 6.71467 18.9414 7.34783 18.5509 7.73836L10.5821 15.7071C10.1916 16.0976 9.55842 16.0976 9.16789 15.7071L4.94914 11.4884C4.55862 11.0978 4.55862 10.4647 4.94914 10.0741C5.33967 9.68362 5.97283 9.68362 6.36336 10.0741L9.875 13.5858L17.1366 6.32414C17.5272 5.93362 18.1603 5.93362 18.5509 6.32414Z' fill='white'/%3E%3C/svg%3E%0A");
   }
 
-  .fds-checkbox__input:checked {
+  .ds-checkbox__input:checked {
     --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
     --dsc-checkbox-background: var(--ds-color-accent-base-default);
     --dsc-checkbox-check_color: white;
@@ -101,56 +101,56 @@
     background: var(--dsc-checkbox-background);
   }
 
-  .fds-checkbox__input:indeterminate {
+  .ds-checkbox__input:indeterminate {
     --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
     --dsc-checkbox-background: var(--ds-color-accent-base-default);
     --dsc-checkbox-check_color: white;
   }
 
-  .fds-checkbox__input:indeterminate::after {
+  .ds-checkbox__input:indeterminate::after {
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.25 11.25C4.25 10.4216 4.92157 9.75 5.75 9.75H16.75C17.5784 9.75 18.25 10.4216 18.25 11.25C18.25 12.0784 17.5784 12.75 16.75 12.75H5.75C4.92157 12.75 4.25 12.0784 4.25 11.25Z' fill='white' /%3E%3C/svg%3E%0A");
   }
 
-  .fds-checkbox--readonly > .fds-checkbox__input {
+  .ds-checkbox--readonly > .ds-checkbox__input {
     --dsc-checkbox-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-checkbox-background: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-checkbox__input:disabled,
-  .fds-checkbox__input:disabled ~ .fds-checkbox__label,
-  .fds-checkbox__input:disabled ~ .fds-checkbox__description {
+  .ds-checkbox__input:disabled,
+  .ds-checkbox__input:disabled ~ .ds-checkbox__label,
+  .ds-checkbox__input:disabled ~ .ds-checkbox__description {
     opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-checkbox__input:checked:not(:focus-visible) {
+  .ds-checkbox__input:checked:not(:focus-visible) {
     box-shadow: inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
-  .fds-checkbox--readonly > .fds-checkbox__input:checked {
+  .ds-checkbox--readonly > .ds-checkbox__input:checked {
     --dsc-checkbox-check_color: var(--ds-color-neutral-text-subtle);
 
     background: var(--dsc-checkbox-background);
   }
 
-  .fds-checkbox--readonly > .fds-checkbox__input:indeterminate {
+  .ds-checkbox--readonly > .ds-checkbox__input:indeterminate {
     --dsc-checkbox-check_color: var(--ds-color-neutral-text-subtle);
 
     background: var(--dsc-checkbox-background);
   }
 
-  .fds-checkbox--error > .fds-checkbox__input:not(:disabled, :focus-visible) {
+  .ds-checkbox--error > .ds-checkbox__input:not(:disabled, :focus-visible) {
     --dsc-checkbox-border-color: var(--ds-color-danger-border-default);
   }
 
   /* Only use hover for non-touch devices to prevent sticky-hovering
     "input:not(:read-only)" does not work so using ".container:not(.readonly) >" instead */
   @media (hover: hover) and (pointer: fine) {
-    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:not(:disabled) ~ .fds-checkbox__label:hover,
-    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:not(:disabled) ~ .fds-checkbox__label {
+    .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:not(:disabled) ~ .ds-checkbox__label:hover,
+    .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:not(:disabled) ~ .ds-checkbox__label {
       color: var(--ds-color-accent-text-subtle);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:not(:checked, :disabled) {
+    .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:not(:checked, :disabled) {
       --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
 
       box-shadow:
@@ -158,32 +158,32 @@
         inset 0 0 0 2px var(--dsc-checkbox-border-color);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:indeterminate:hover {
+    .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:indeterminate:hover {
       --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
 
       box-shadow: var(--dsc-checkbox-border__hover);
     }
 
-    .fds-checkbox:not(.fds-checkbox--readonly) .fds-checkbox__input:hover:checked:focus-visible:not(:disabled) {
+    .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:checked:focus-visible:not(:disabled) {
       box-shadow: var(--dsc-checkbox-border__hover);
     }
   }
 
   /** Sizing */
 
-  .fds-checkbox--sm {
+  .ds-checkbox--sm {
     --dsc-checkbox-size: var(--ds-sizing-5);
 
     min-height: var(--ds-sizing-10);
   }
 
-  .fds-checkbox--md {
+  .ds-checkbox--md {
     --dsc-checkbox-size: var(--ds-sizing-6);
 
     min-height: var(--ds-sizing-11);
   }
 
-  .fds-checkbox--lg {
+  .ds-checkbox--lg {
     --dsc-checkbox-size: var(--ds-sizing-7);
 
     min-height: var(--ds-sizing-12);

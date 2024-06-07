@@ -1,5 +1,5 @@
 @layer ds.helptext {
-  .fds-helptext__button {
+  .ds-helptext__button {
     background-color: transparent;
     border-radius: 50px;
     padding: 0 !important;
@@ -11,30 +11,30 @@
   }
 
   @media print {
-    .fds-helptext__button {
+    .ds-helptext__button {
       display: none;
     }
   }
 
-  .fds-helptext__icon--filled {
+  .ds-helptext__icon--filled {
     display: none;
   }
 
-  .fds-helptext__icon {
+  .ds-helptext__icon {
     color: var(--ds-color-accent-base-default);
     width: var(--ds-sizing-7);
     height: var(--ds-sizing-7);
   }
 
-  .fds-helptext__button:where(:hover, :focus, [data-state^='open']) > .fds-helptext__icon {
+  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon {
     display: none;
   }
 
-  .fds-helptext__button:where(:hover, :focus, [data-state^='open']) > .fds-helptext__icon--filled {
+  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon--filled {
     display: inline-block;
   }
 
-  .fds-helptext__content {
+  .ds-helptext__content {
     font: var(--ds-typography-paragraph-md);
     color: var(--ds-color-neutral-text-default);
     font-family: inherit;
@@ -42,17 +42,17 @@
     max-width: 700px;
   }
 
-  .fds-helptext--sm .fds-helptext__icon {
+  .ds-helptext--sm .ds-helptext__icon {
     width: var(--ds-sizing-6);
     height: var(--ds-sizing-6);
   }
 
-  .fds-helptext--md .fds-helptext__icon {
+  .ds-helptext--md .ds-helptext__icon {
     width: var(--ds-sizing-7);
     height: var(--ds-sizing-7);
   }
 
-  .fds-helptext--lg .fds-helptext__icon {
+  .ds-helptext--lg .ds-helptext__icon {
     width: var(--ds-sizing-8);
     height: var(--ds-sizing-8);
   }

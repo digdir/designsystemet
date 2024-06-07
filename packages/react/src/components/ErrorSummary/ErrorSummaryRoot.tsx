@@ -37,7 +37,7 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Slot
-          className={'fds-error-summary'}
+          className={'ds-error-summary'}
           ref={ref}
           role={role}
           aria-live={ariaLive}

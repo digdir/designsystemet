@@ -1,10 +1,10 @@
 @layer ds.textfield {
-  .fds-textfield {
+  .ds-textfield {
     display: grid;
     gap: var(--ds-spacing-2);
   }
 
-  .fds-textfield__adornment {
+  .ds-textfield__adornment {
     color: var(--ds-color-neutral-border-strong);
     background: var(--ds-color-neutral-background-subtle);
     padding: 9px var(--ds-spacing-4);
@@ -14,7 +14,7 @@
     display: inline-block;
   }
 
-  .fds-textfield__input {
+  .ds-textfield__input {
     font: inherit;
     font-family: inherit;
     position: relative;
@@ -29,68 +29,68 @@
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__input:disabled {
+  .ds-textfield__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textfield--readonly .fds-textfield__input {
+  .ds-textfield--readonly .ds-textfield__input {
     background: var(--ds-color-neutral-background-subtle);
     border-color: var(--ds-color-neutral-border-strong);
   }
 
-  .fds-textfield__field {
+  .ds-textfield__field {
     display: flex;
     align-items: stretch;
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__field > *:first-child {
+  .ds-textfield__field > *:first-child {
     border-top-left-radius: var(--ds-border-radius-md);
     border-bottom-left-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__field > *:last-child {
+  .ds-textfield__field > *:last-child {
     border-top-right-radius: var(--ds-border-radius-md);
     border-bottom-right-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield--sm .fds-textfield__adornment {
+  .ds-textfield--sm .ds-textfield__adornment {
     padding: var(--ds-sizing-2) var(--ds-spacing-3);
   }
 
-  .fds-textfield--md .fds-textfield__adornment {
+  .ds-textfield--md .ds-textfield__adornment {
     padding: 0.65rem var(--ds-spacing-4);
   }
 
-  .fds-textfield--lg .fds-textfield__adornment {
+  .ds-textfield--lg .ds-textfield__adornment {
     padding: 0.85rem var(--ds-spacing-5);
   }
 
-  .fds-textfield--sm .fds-textfield__field {
+  .ds-textfield--sm .ds-textfield__field {
     height: var(--ds-sizing-10);
   }
 
-  .fds-textfield--md .fds-textfield__field {
+  .ds-textfield--md .ds-textfield__field {
     height: var(--ds-sizing-12);
   }
 
-  .fds-textfield--lg .fds-textfield__field {
+  .ds-textfield--lg .ds-textfield__field {
     height: var(--ds-sizing-14);
   }
 
-  .fds-textfield--sm .fds-textfield__input {
+  .ds-textfield--sm .ds-textfield__input {
     padding: 0 var(--ds-spacing-2);
   }
 
-  .fds-textfield--md .fds-textfield__input {
+  .ds-textfield--md .ds-textfield__input {
     padding: 0 var(--ds-spacing-3);
   }
 
-  .fds-textfield--lg .fds-textfield__input {
+  .ds-textfield--lg .ds-textfield__input {
     padding: 0 var(--ds-spacing-4);
   }
 
-  .fds-textfield__label {
+  .ds-textfield__label {
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
@@ -98,55 +98,55 @@
     align-items: center;
   }
 
-  .fds-textfield__description {
+  .ds-textfield__description {
     color: var(--ds-color-neutral-text-subtle);
     margin-top: calc(var(--ds-spacing-2) * -1);
   }
 
-  .fds-textfield:has(.fds-textfield__input:disabled) {
+  .ds-textfield:has(.ds-textfield__input:disabled) {
     opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-textfield--error .fds-textfield__input:not(:focus-visible) {
+  .ds-textfield--error .ds-textfield__input:not(:focus-visible) {
     border-color: var(--ds-color-danger-border-default);
     box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+    .ds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
       border-color: var(--ds-color-accent-border-strong);
       box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
     }
   }
 
-  .fds-textfield__input--with-prefix {
+  .ds-textfield__input--with-prefix {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .fds-textfield__input--with-suffix {
+  .ds-textfield__input--with-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .fds-textfield__prefix {
+  .ds-textfield__prefix {
     border-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .fds-textfield__suffix {
+  .ds-textfield__suffix {
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .fds-textfield__readonly__icon {
+  .ds-textfield__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .fds-textfield__error-message:empty {
+  .ds-textfield__error-message:empty {
     display: none;
   }
 }

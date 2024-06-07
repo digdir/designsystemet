@@ -23,7 +23,7 @@ export const PaginationContent = forwardRef<
   return (
     <Component
       ref={ref}
-      className={cl('fds-pagination', `fds-pagination--${size}`, className)}
+      className={cl('ds-pagination', `ds-pagination--${size}`, className)}
       {...rest}
     />
   );

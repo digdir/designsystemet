@@ -1,5 +1,5 @@
 @layer ds.switch {
-  .fds-switch {
+  .ds-switch {
     --dsc-switch--transition: 200ms;
     --dsc-switch-height: 1.75rem;
     --dsc-switch-focus-border-width: 3px;
@@ -15,7 +15,7 @@
     }
   }
 
-  .fds-switch__label {
+  .ds-switch__label {
     min-height: var(--ds-sizing-10);
     min-width: min-content;
     display: grid;
@@ -25,7 +25,7 @@
     cursor: pointer;
   }
 
-  .fds-switch__track {
+  .ds-switch__track {
     position: relative;
     display: inline-block;
     pointer-events: none;
@@ -39,33 +39,33 @@
     margin-right: var(--ds-spacing-1);
   }
 
-  .fds-switch__description {
+  .ds-switch__description {
     padding-left: calc(var(--dsc-switch-width) + var(--ds-spacing-2));
     margin-top: var(--ds-spacing-1);
     color: var(--ds-color-neutral-text-subtle);
     width: fit-content;
   }
 
-  .fds-switch__readonly__icon {
+  .ds-switch__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .fds-switch__label--right {
+  .ds-switch__label--right {
     grid-template-columns: 1fr auto;
     grid-auto-flow: dense;
   }
 
-  .fds-switch__label--right .fds-switch__track {
+  .ds-switch__label--right .ds-switch__track {
     order: 1;
     margin-right: 0;
   }
 
-  .fds-switch__label--right + .fds-switch__description {
+  .ds-switch__label--right + .ds-switch__description {
     padding-left: 0;
   }
 
-  .fds-switch__input {
+  .ds-switch__input {
     position: absolute;
     width: 2.75rem;
     height: 2.75rem;
@@ -75,83 +75,83 @@
     margin: 0;
   }
 
-  .fds-switch--readonly > .fds-switch__label {
+  .ds-switch--readonly > .ds-switch__label {
     grid-template-columns: auto min-content 1fr;
   }
 
-  .fds-switch--readonly > .fds-switch__label:where(.fds-switch__label--right) {
+  .ds-switch--readonly > .ds-switch__label:where(.ds-switch__label--right) {
     grid-template-columns: min-content 1fr auto;
   }
 
-  .fds-switch--readonly > .fds-switch__input,
-  .fds-switch--readonly > .fds-switch__label {
+  .ds-switch--readonly > .ds-switch__input,
+  .ds-switch--readonly > .ds-switch__label {
     cursor: default;
   }
 
-  .fds-switch--readonly > .fds-switch__description {
+  .ds-switch--readonly > .ds-switch__description {
     margin-left: var(--ds-spacing-1);
   }
 
-  .fds-switch--sm,
-  .fds-switch--sm .fds-switch__label {
+  .ds-switch--sm,
+  .ds-switch--sm .ds-switch__label {
     min-height: var(--ds-sizing-6);
   }
 
-  .fds-switch--md,
-  .fds-switch--md .fds-switch__label {
+  .ds-switch--md,
+  .ds-switch--md .ds-switch__label {
     min-height: var(--ds-sizing-7);
   }
 
-  .fds-switch--lg,
-  .fds-switch--lg .fds-switch__label {
+  .ds-switch--lg,
+  .ds-switch--lg .ds-switch__label {
     min-height: var(--ds-sizing-8);
   }
 
-  .fds-switch--sm {
+  .ds-switch--sm {
     --dsc-switch-height: var(--ds-sizing-6);
     --dsc-switch-width: var(--ds-sizing-11);
   }
 
-  .fds-switch--sm .fds-switch__input {
+  .ds-switch--sm .ds-switch__input {
     left: -0.25rem;
     top: -0.25rem;
   }
 
-  .fds-switch--md {
+  .ds-switch--md {
     --dsc-switch-height: var(--ds-sizing-7);
     --dsc-switch-width: var(--ds-sizing-13);
   }
 
-  .fds-switch--md .fds-switch__input {
+  .ds-switch--md .ds-switch__input {
     left: 0;
     top: 0;
   }
 
-  .fds-switch--lg {
+  .ds-switch--lg {
     --dsc-switch-height: var(--ds-sizing-8);
     --dsc-switch-width: var(--ds-sizing-15);
   }
 
-  .fds-switch--lg .fds-switch__input {
+  .ds-switch--lg .ds-switch__input {
     left: 0;
     top: 0.25rem;
   }
 
-  .fds-switch__label:has(.fds-switch__track:only-child) {
+  .ds-switch__label:has(.ds-switch__track:only-child) {
     grid-template-columns: auto;
   }
 
-  .fds-switch__label:has(.fds-switch__track:only-child) .fds-switch__track {
+  .ds-switch__label:has(.ds-switch__track:only-child) .ds-switch__track {
     margin-right: 0;
   }
 
-  .fds-switch__input:disabled,
-  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label {
+  .ds-switch__input:disabled,
+  .ds-switch:has(.ds-switch__input:disabled) > .ds-switch__label {
     cursor: not-allowed;
   }
 
-  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__label,
-  .fds-switch:has(.fds-switch__input:disabled) > .fds-switch__description {
+  .ds-switch:has(.ds-switch__input:disabled) > .ds-switch__label,
+  .ds-switch:has(.ds-switch__input:disabled) > .ds-switch__description {
     opacity: var(--ds-disabled-opacity);
   }
 
@@ -164,7 +164,7 @@
   /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-  .fds-switch:has(.fds-switch__input:focus-visible) {
+  .ds-switch:has(.ds-switch__input:focus-visible) {
     --dsc-focus-border-width: 3px;
 
     outline: var(--dsc-focus-border-width) solid var(--ds-focus-outer);
@@ -173,11 +173,11 @@
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-switch__input:not([readonly]):checked + .fds-switch__label .fds-switch__track {
+  .ds-switch__input:not([readonly]):checked + .ds-switch__label .ds-switch__track {
     background-color: var(--ds-color-accent-base-default);
   }
 
-  .fds-switch__thumb {
+  .ds-switch__thumb {
     scale: 0.8;
     position: absolute;
     height: var(--dsc-switch-height);
@@ -187,14 +187,14 @@
     transition: transform var(--dsc-switch--transition) ease;
   }
 
-  .fds-switch__input:checked + .fds-switch__label .fds-switch__track .fds-switch__thumb {
+  .ds-switch__input:checked + .ds-switch__label .ds-switch__track .ds-switch__thumb {
     --dsc-switch-check_color: var(--ds-color-accent-base-default);
     --dsc-switch-thumb-background-color: var(--ds-color-accent-contrast-default);
 
     transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 1.2));
   }
 
-  .fds-switch__thumb::after {
+  .ds-switch__thumb::after {
     content: '';
     width: 100%;
     height: 100%;
@@ -207,37 +207,37 @@
     transition: background-color var(--dsc-switch--transition) ease;
   }
 
-  .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track {
+  .ds-switch--readonly .ds-switch__input[readonly] + .ds-switch__label .ds-switch__track {
     box-shadow: inset 0 0 0 2px var(--ds-color-neutral-border-subtle);
     background-color: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-switch--readonly .fds-switch__input[readonly] + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
+  .ds-switch--readonly .ds-switch__input[readonly] + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
     --dsc-switch-check_color: var(--ds-color-neutral-background-subtle);
 
     background-color: var(--ds-color-neutral-border-strong);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-switch__input:not([readonly], :disabled):hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
+    .ds-switch__input:not([readonly], :disabled):hover + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
       transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 0.2));
     }
 
-    .fds-switch__input:not([readonly], :disabled):hover + .fds-switch__label {
+    .ds-switch__input:not([readonly], :disabled):hover + .ds-switch__label {
       color: var(--ds-color-accent-text-subtle);
     }
 
-    .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track > .fds-switch__thumb {
+    .ds-switch__input:not(:disabled, [readonly]):checked:hover + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
       --dsc-switch-check_color: var(--ds-color-accent-base-hover);
 
       transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height))));
     }
 
-    .fds-switch__input:not(:checked, :disabled, [readonly]):hover + .fds-switch__label .fds-switch__track {
+    .ds-switch__input:not(:checked, :disabled, [readonly]):hover + .ds-switch__label .ds-switch__track {
       background-color: var(--ds-color-neutral-border-strong);
     }
 
-    .fds-switch__input:not(:disabled, [readonly]):checked:hover + .fds-switch__label .fds-switch__track {
+    .ds-switch__input:not(:disabled, [readonly]):checked:hover + .ds-switch__label .ds-switch__track {
       background-color: var(--ds-color-accent-base-hover);
     }
   }

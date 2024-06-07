@@ -32,10 +32,10 @@ export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-error-message',
-          `fds-error-message--${size}`,
-          spacing && 'fds-error-message--spacing',
-          error && 'fds-error-message--error',
+          'ds-error-message',
+          `ds-error-message--${size}`,
+          spacing && 'ds-error-message--spacing',
+          error && 'ds-error-message--error',
           className,
         )}
         {...rest}

@@ -1,5 +1,5 @@
 @layer ds.fds-popover {
-  .fds-popover {
+  .ds-popover {
     --dsc-popover-border: 1px solid;
     --dsc-popover-background: var(--ds-color-neutral-background-default);
 
@@ -11,70 +11,70 @@
     max-width: 300px;
   }
 
-  .fds-popover--sm {
+  .ds-popover--sm {
     padding: var(--ds-spacing-2) var(--ds-spacing-3);
   }
 
-  .fds-popover--md {
+  .ds-popover--md {
     padding: var(--ds-spacing-3) var(--ds-spacing-4);
   }
 
-  .fds-popover--lg {
+  .ds-popover--lg {
     padding: var(--ds-spacing-3) var(--ds-spacing-5);
   }
 
-  .fds-popover--default {
+  .ds-popover--default {
     --dsc-popover-background: var(--ds-color-neutral-background-default);
 
     border-color: var(--ds-color-neutral-border-default);
   }
 
-  .fds-popover--info {
+  .ds-popover--info {
     --dsc-popover-background: var(--ds-color-info-surface-default);
 
     border-color: var(--ds-color-info-border-default);
     color: var(--ds-color-info-text-default);
   }
 
-  .fds-popover--warning {
+  .ds-popover--warning {
     --dsc-popover-background: var(--ds-color-warning-surface-default);
 
     border-color: var(--ds-color-warning-border-default);
     color: var(--ds-color-warning-text-default);
   }
 
-  .fds-popover--danger {
+  .ds-popover--danger {
     --dsc-popover-background: var(--ds-color-danger-surface-default);
 
     border-color: var(--ds-color-danger-border-default);
     color: var(--ds-color-danger-text-default);
   }
 
-  .fds-popover__arrow {
+  .ds-popover__arrow {
     position: absolute;
     background: var(--dsc-popover-background);
     transform: rotate(45deg);
   }
 
-  .fds-popover__arrow.fds-popover__arrow--top {
+  .ds-popover__arrow.ds-popover__arrow--top {
     border-top: var(--dsc-popover-border);
     border-left: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--bottom {
+  .ds-popover__arrow.ds-popover__arrow--bottom {
     border-bottom: var(--dsc-popover-border);
     border-right: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--right {
+  .ds-popover__arrow.ds-popover__arrow--right {
     border-top: var(--dsc-popover-border);
     border-right: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--left {
+  .ds-popover__arrow.ds-popover__arrow--left {
     border-bottom: var(--dsc-popover-border);
     border-left: var(--dsc-popover-border);
     border-color: inherit;

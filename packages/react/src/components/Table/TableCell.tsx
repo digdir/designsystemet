@@ -8,7 +8,7 @@ export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
     return (
       <td
         ref={ref}
-        className={cl('fds-table__cell', className)}
+        className={cl('ds-table__cell', className)}
         {...rest}
       >
         {children}

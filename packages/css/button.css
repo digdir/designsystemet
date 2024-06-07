@@ -1,5 +1,5 @@
 @layer ds.btn {
-  .fds-btn {
+  .ds-btn {
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
     display: flex;
@@ -20,17 +20,17 @@
     min-height: var(--ds-sizing-10);
   }
 
-  .fds-btn svg {
+  .ds-btn svg {
     overflow: visible;
   }
 
-  .fds-btn:disabled,
-  .fds-btn[aria-disabled='true'] {
+  .ds-btn:disabled,
+  .ds-btn[aria-disabled='true'] {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-btn--sm {
+  .ds-btn--sm {
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-3);
 
     gap: var(--ds-sizing-1);
@@ -39,7 +39,7 @@
     min-height: var(--ds-sizing-10);
   }
 
-  .fds-btn--sm::before {
+  .ds-btn--sm::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
     content: '';
   }
 
-  .fds-btn--sm::after {
+  .ds-btn--sm::after {
     position: absolute;
     top: -5px;
     left: 0;
@@ -57,7 +57,7 @@
     content: '';
   }
 
-  .fds-btn--md {
+  .ds-btn--md {
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
     gap: var(--ds-sizing-2);
@@ -66,7 +66,7 @@
     min-height: var(--ds-sizing-12);
   }
 
-  .fds-btn--lg {
+  .ds-btn--lg {
     --dsc-btn-padding: var(--ds-spacing-3) var(--ds-spacing-5);
 
     gap: var(--ds-sizing-2);
@@ -75,153 +75,153 @@
     min-height: var(--ds-sizing-14);
   }
 
-  .fds-btn--full-width {
+  .ds-btn--full-width {
     width: 100%;
   }
 
-  .fds-btn--secondary,
-  .fds-btn--tertiary {
+  .ds-btn--secondary,
+  .ds-btn--tertiary {
     background-color: transparent;
   }
 
-  .fds-btn--icon-only {
+  .ds-btn--icon-only {
     --dsc-btn-padding: 0;
   }
 
   /* Primary button colors */
-  .fds-btn--primary:where(.fds-btn--accent) {
+  .ds-btn--primary:where(.ds-btn--accent) {
     background-color: var(--ds-color-accent-base-default);
   }
 
-  .fds-btn--primary:where(.fds-btn--neutral) {
+  .ds-btn--primary:where(.ds-btn--neutral) {
     background-color: var(--ds-color-neutral-base-default);
   }
 
-  .fds-btn--primary:where(.fds-btn--danger) {
+  .ds-btn--primary:where(.ds-btn--danger) {
     background-color: var(--ds-color-danger-base-default);
   }
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--primary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--ds-color-accent-base-hover);
     }
 
-    .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--primary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--ds-color-neutral-base-hover);
     }
 
-    .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--primary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
       background-color: var(--ds-color-danger-base-hover);
     }
 
-    .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--secondary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-accent-text-default);
       border-color: var(--ds-color-accent-border-strong);
       background-color: var(--ds-color-accent-surface-default);
     }
 
-    .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--secondary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-neutral-text-default);
       border-color: var(--ds-color-neutral-border-strong);
       background-color: var(--ds-color-neutral-surface-default);
     }
 
-    .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--secondary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-danger-text-default);
       border-color: var(--ds-color-danger-border-strong);
       background-color: var(--ds-color-danger-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--tertiary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-accent-text-default);
       background-color: var(--ds-color-accent-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--tertiary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-surface-default);
     }
 
-    .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):hover {
+    .ds-btn--tertiary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
       color: var(--ds-color-danger-text-default);
       background-color: var(--ds-color-danger-surface-default);
     }
   }
 
-  .fds-btn--primary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--primary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
     background-color: var(--ds-color-accent-base-active);
   }
 
-  .fds-btn--primary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--primary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     background-color: var(--ds-color-neutral-base-active);
   }
 
-  .fds-btn--primary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--primary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
     background-color: var(--ds-color-danger-base-active);
   }
 
   /* Secondary button colors */
-  .fds-btn--secondary:where(.fds-btn--accent) {
+  .ds-btn--secondary:where(.ds-btn--accent) {
     color: var(--ds-color-accent-text-subtle);
     border-color: var(--ds-color-accent-border-strong);
     background-color: transparent;
   }
 
-  .fds-btn--secondary:where(.fds-btn--neutral) {
+  .ds-btn--secondary:where(.ds-btn--neutral) {
     color: var(--ds-color-neutral-text-subtle);
     border-color: var(--ds-color-neutral-border-strong);
     background-color: transparent;
   }
 
-  .fds-btn--secondary:where(.fds-btn--danger) {
+  .ds-btn--secondary:where(.ds-btn--danger) {
     color: var(--ds-color-danger-text-subtle);
     border-color: var(--ds-color-danger-border-strong);
     background-color: transparent;
   }
 
-  .fds-btn--secondary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--secondary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-accent-text-default);
     border-color: var(--ds-color-accent-border-strong);
     background-color: var(--ds-color-accent-surface-hover);
   }
 
-  .fds-btn--secondary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--secondary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-neutral-text-default);
     border-color: var(--ds-color-neutral-border-strong);
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
-  .fds-btn--secondary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--secondary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-danger-text-default);
     border-color: var(--ds-color-danger-border-strong);
     background-color: var(--ds-color-danger-surface-hover);
   }
 
   /* Tertiary button colors */
-  .fds-btn--tertiary:where(.fds-btn--accent) {
+  .ds-btn--tertiary:where(.ds-btn--accent) {
     color: var(--ds-color-accent-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--neutral) {
+  .ds-btn--tertiary:where(.ds-btn--neutral) {
     color: var(--ds-color-neutral-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--danger) {
+  .ds-btn--tertiary:where(.ds-btn--danger) {
     color: var(--ds-color-danger-text-subtle);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--accent):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--tertiary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-accent-text-default);
     background-color: var(--ds-color-accent-surface-hover);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--neutral):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--tertiary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-neutral-text-default);
     background-color: var(--ds-color-neutral-surface-hover);
   }
 
-  .fds-btn--tertiary:where(.fds-btn--danger):not([aria-disabled='true'], :disabled):active {
+  .ds-btn--tertiary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
     color: var(--ds-color-danger-text-default);
     background-color: var(--ds-color-danger-surface-hover);
   }

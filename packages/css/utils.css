@@ -2,7 +2,7 @@
   /**
  * Visually hide an element, but leave it available for screen readers
  */
-  .fds-sr-only {
+  .ds-sr-only {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -16,7 +16,7 @@
   /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-  .fds-focus:focus-visible {
+  .ds-focus:focus-visible {
     --dsc-focus-border-width: 3px;
 
     outline: var(--dsc-focus-border-width) solid var(--ds-focus-outer);
@@ -25,16 +25,16 @@
   }
 
   @layer animate-height {
-    .fds-animate-height--openingOrClosing,
-    .fds-animate-height--closed {
+    .ds-animate-height--openingOrClosing,
+    .ds-animate-height--closed {
       overflow: hidden;
     }
 
-    .fds-animate-height--open .fds-animate-height__content {
+    .ds-animate-height--open .ds-animate-height__content {
       height: auto;
     }
 
-    .fds-animate-height--closed .fds-animate-height__content {
+    .ds-animate-height--closed .ds-animate-height__content {
       height: 0;
       display: none;
     }

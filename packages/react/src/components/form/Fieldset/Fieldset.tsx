@@ -56,9 +56,9 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         <fieldset
           {...fieldsetProps}
           className={cl(
-            'fds-fieldset',
-            !hideLegend && 'fds-fieldset--spacing',
-            readOnly && 'fds-fieldset--readonly',
+            'ds-fieldset',
+            !hideLegend && 'ds-fieldset--spacing',
+            readOnly && 'ds-fieldset--readonly',
             className,
           )}
           disabled={props?.disabled}
@@ -69,16 +69,16 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             asChild
             size={size}
           >
-            <legend className={'fds-fieldset__legend'}>
+            <legend className={'ds-fieldset__legend'}>
               <span
                 className={cl(
-                  'fds-fieldset__legend__content',
-                  hideLegend && `fds-sr-only`,
+                  'ds-fieldset__legend__content',
+                  hideLegend && `ds-sr-only`,
                 )}
               >
                 {readOnly && (
                   <PadlockLockedFillIcon
-                    className={'fds-fieldset__readonly__icon'}
+                    className={'ds-fieldset__readonly__icon'}
                     aria-hidden
                   />
                 )}
@@ -95,8 +95,8 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  'fds-fieldset__description',
-                  hideLegend && `fds-sr-only`,
+                  'ds-fieldset__description',
+                  hideLegend && `ds-sr-only`,
                 )}
               >
                 {description}
@@ -108,7 +108,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
-            className={'fds-fieldset__error-message'}
+            className={'ds-fieldset__error-message'}
           >
             {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
           </div>

@@ -54,9 +54,9 @@ const HelpText = ({
         >
           <button
             className={cl(
-              `fds-helptext--${size}`,
-              'fds-helptext__button',
-              `fds-focus`,
+              `ds-helptext--${size}`,
+              'ds-helptext__button',
+              `ds-focus`,
               className,
             )}
             aria-expanded={open}
@@ -66,20 +66,20 @@ const HelpText = ({
             <HelpTextIcon
               filled
               className={cl(
-                `fds-helptext__icon`,
-                `fds-helptext__icon--filled`,
+                `ds-helptext__icon`,
+                `ds-helptext__icon--filled`,
                 className,
               )}
               openState={open}
             />
             <HelpTextIcon
-              className={cl(`fds-helptext__icon`, className)}
+              className={cl(`ds-helptext__icon`, className)}
               openState={open}
             />
-            <span className={`fds-sr-only`}>{title}</span>
+            <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content className='fds-helptext__content'>
+        <Popover.Content className='ds-helptext__content'>
           {children}
         </Popover.Content>
       </Popover>

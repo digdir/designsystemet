@@ -54,13 +54,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         className={cl(
-          'fds-btn',
-          `fds-focus`,
-          `fds-btn--${size}`,
-          `fds-btn--${variant}`,
-          `fds-btn--${color}`,
-          fullWidth && 'fds-btn--full-width',
-          icon && 'fds-btn--icon-only',
+          'ds-btn',
+          `ds-focus`,
+          `ds-btn--${size}`,
+          `ds-btn--${variant}`,
+          `ds-btn--${color}`,
+          fullWidth && 'ds-btn--full-width',
+          icon && 'ds-btn--icon-only',
           className,
         )}
         {...rest}

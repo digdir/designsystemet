@@ -19,7 +19,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
       filteredOptions.length === 0 && (
         <div
           ref={ref}
-          className={cl('fds-combobox__empty', className)}
+          className={cl('ds-combobox__empty', className)}
           {...rest}
         >
           {children}

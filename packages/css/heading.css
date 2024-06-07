@@ -1,58 +1,58 @@
 @layer ds.typography.heading {
-  .fds-heading {
+  .ds-heading {
     --dsc-bottom-spacing: var(--ds-spacing-6);
 
     margin: 0;
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-heading--spacing {
+  .ds-heading--spacing {
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .fds-heading--2xl {
+  .ds-heading--2xl {
     --dsc-bottom-spacing: var(--ds-spacing-7);
 
     font: var(--ds-typography-heading-2xl);
     font-family: inherit;
   }
 
-  .fds-heading--xl {
+  .ds-heading--xl {
     --dsc-bottom-spacing: var(--ds-spacing-6);
 
     font: var(--ds-typography-heading-xl);
     font-family: inherit;
   }
 
-  .fds-heading--lg {
+  .ds-heading--lg {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     font: var(--ds-typography-heading-lg);
     font-family: inherit;
   }
 
-  .fds-heading--md {
+  .ds-heading--md {
     --dsc-bottom-spacing: var(--ds-spacing-4);
 
     font: var(--ds-typography-heading-md);
     font-family: inherit;
   }
 
-  .fds-heading--sm {
+  .ds-heading--sm {
     --dsc-bottom-spacing: var(--ds-spacing-3);
 
     font: var(--ds-typography-heading-sm);
     font-family: inherit;
   }
 
-  .fds-heading--xs {
+  .ds-heading--xs {
     --dsc-bottom-spacing: var(--ds-spacing-2);
 
     font: var(--ds-typography-heading-xs);
     font-family: inherit;
   }
 
-  .fds-heading--2xs {
+  .ds-heading--2xs {
     --dsc-bottom-spacing: var(--ds-spacing-1);
 
     font: var(--ds-typography-heading-2xs);

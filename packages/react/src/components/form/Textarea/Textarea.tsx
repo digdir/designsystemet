@@ -75,9 +75,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <div
           style={style}
           className={cl(
-            'fds-textarea',
-            `fds-textarea--${size}`,
-            hasError && `fds-textarea--error`,
+            'ds-textarea',
+            `ds-textarea--${size}`,
+            hasError && `ds-textarea--error`,
             className,
           )}
         >
@@ -86,12 +86,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl('fds-textarea__label', hideLabel && `fds-sr-only`)}
+              className={cl('ds-textarea__label', hideLabel && `ds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className='fds-textarea__readonly-icon'
+                  className='ds-textarea__readonly-icon'
                 />
               )}
               <span>{label}</span>
@@ -105,8 +105,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  'fds-textarea__description',
-                  hideLabel && `fds-sr-only`,
+                  'ds-textarea__description',
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
@@ -114,7 +114,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Paragraph>
           )}
           <textarea
-            className={cl('fds-textarea__input', `fds-focus`)}
+            className={cl('ds-textarea__input', `ds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
             disabled={textareaProps.disabled}
@@ -135,7 +135,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             />
           )}
           <div
-            className='fds-textarea__error-message'
+            className='ds-textarea__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

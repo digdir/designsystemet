@@ -17,7 +17,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
 
     return (
       <Component
-        className={cl(`fds-card__footer`, className)}
+        className={cl(`ds-card__footer`, className)}
         ref={ref}
         {...rest}
       />

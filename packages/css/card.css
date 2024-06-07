@@ -1,5 +1,5 @@
 @layer ds.card {
-  .fds-card {
+  .ds-card {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-surface-default);
     --dsc-card-color: var(--ds-color-neutral-text-default);
@@ -16,56 +16,56 @@
     background: var(--dsc-card-backround);
   }
 
-  .fds-card a,
-  .fds-card a:visited {
+  .ds-card a,
+  .ds-card a:visited {
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-card > hr {
+  .ds-card > hr {
     width: 100%;
     margin: var(--ds-spacing-3) 0;
   }
 
-  .fds-card__media {
+  .ds-card__media {
     width: auto;
   }
 
-  .fds-card__media > * {
+  .ds-card__media > * {
     display: flex;
     flex-direction: column;
     width: 100%;
     border: 0;
   }
 
-  .fds-card > *:not(.fds-card__media, hr) {
+  .ds-card > *:not(.ds-card__media, hr) {
     padding-left: var(--ds-spacing-6);
     padding-right: var(--ds-spacing-6);
   }
 
-  .fds-card > *:not(.fds-card__media):first-child {
+  .ds-card > *:not(.ds-card__media):first-child {
     padding-top: var(--ds-spacing-6);
   }
 
-  .fds-card > *:not(.fds-card__media):last-child {
+  .ds-card > *:not(.ds-card__media):last-child {
     padding-bottom: var(--ds-spacing-6);
   }
 
-  .fds-card__media:first-child {
+  .ds-card__media:first-child {
     padding-bottom: var(--ds-spacing-4);
   }
 
-  .fds-card__media:last-child {
+  .ds-card__media:last-child {
     padding-top: var(--ds-spacing-6);
   }
 
-  .fds-card--link {
+  .ds-card--link {
     --dsc-card-border-color: var(--ds-color-neutral-border-default);
 
     text-decoration: none;
   }
 
-  .fds-card__footer,
-  .fds-card__content {
+  .ds-card__footer,
+  .ds-card__content {
     display: flex;
     justify-content: flex-start;
     gap: var(--ds-spacing-4);
@@ -77,11 +77,11 @@
     color: inherit;
   }
 
-  .fds-card__content {
+  .ds-card__content {
     flex-direction: column;
   }
 
-  .fds-card__header {
+  .ds-card__header {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -91,105 +91,105 @@
     padding: var(--ds-spacing-2) 0;
   }
 
-  .fds-card__header h1,
-  .fds-card__header h2,
-  .fds-card__header h3,
-  .fds-card__header h4,
-  .fds-card__header h5,
-  .fds-card__header h6 {
+  .ds-card__header h1,
+  .ds-card__header h2,
+  .ds-card__header h3,
+  .ds-card__header h4,
+  .ds-card__header h5,
+  .ds-card__header h6 {
     color: inherit;
   }
 
-  .fds-card--link h1,
-  .fds-card--link h2,
-  .fds-card--link h3,
-  .fds-card--link h4,
-  .fds-card--link h5,
-  .fds-card--link h6 {
+  .ds-card--link h1,
+  .ds-card--link h2,
+  .ds-card--link h3,
+  .ds-card--link h4,
+  .ds-card--link h5,
+  .ds-card--link h6 {
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
     text-underline-offset: max(6px, 0.25rem, 0.22em);
   }
 
-  .fds-card--neutral {
+  .ds-card--neutral {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-background-default);
   }
 
-  .fds-card--neutral.fds-card--link:hover {
+  .ds-card--neutral.ds-card--link:hover {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-card--neutral.fds-card--link:active {
+  .ds-card--neutral.ds-card--link:active {
     --dsc-card-backround: var(--ds-color-neutral-surface-default);
   }
 
-  .fds-card--subtle {
+  .ds-card--subtle {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-background-subtle);
   }
 
-  .fds-card--subtle.fds-card--link:hover {
+  .ds-card--subtle.ds-card--link:hover {
     --dsc-card-border-color: var(--ds-color-neutral-border-default);
     --dsc-card-backround: var(--ds-color-neutral-surface-default);
   }
 
-  .fds-card--subtle.fds-card--link:active {
+  .ds-card--subtle.ds-card--link:active {
     --dsc-card-backround: var(--ds-color-neutral-surface-hover);
   }
 
-  .fds-card--brand1 {
+  .ds-card--brand1 {
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
     --dsc-card-backround: var(--ds-color-brand1-surface-default);
     --dsc-card-color: var(--ds-color-brand1-text-default);
   }
 
-  .fds-card--brand1.fds-card--link {
+  .ds-card--brand1.ds-card--link {
     --dsc-card-border-color: var(--ds-color-brand1-border-default);
   }
 
-  .fds-card--brand1.fds-card--link:hover {
+  .ds-card--brand1.ds-card--link:hover {
     --dsc-card-backround: var(--ds-color-brand1-surface-hover);
   }
 
-  .fds-card--brand1.fds-card--link:active {
+  .ds-card--brand1.ds-card--link:active {
     --dsc-card-backround: var(--ds-color-brand1-surface-active);
   }
 
-  .fds-card--brand2 {
+  .ds-card--brand2 {
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
     --dsc-card-backround: var(--ds-color-brand2-surface-default);
     --dsc-card-color: var(--ds-color-brand2-text-default);
   }
 
-  .fds-card--brand2.fds-card--link {
+  .ds-card--brand2.ds-card--link {
     --dsc-card-border-color: var(--ds-color-brand2-border-default);
   }
 
-  .fds-card--brand2.fds-card--link:hover {
+  .ds-card--brand2.ds-card--link:hover {
     --dsc-card-backround: var(--ds-color-brand2-surface-hover);
   }
 
-  .fds-card--brand2.fds-card--link:active {
+  .ds-card--brand2.ds-card--link:active {
     --dsc-card-backround: var(--ds-color-brand2-surface-active);
   }
 
-  .fds-card--brand3 {
+  .ds-card--brand3 {
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-card-backround: var(--ds-color-brand3-surface-default);
     --dsc-card-color: var(--ds-color-brand3-text-default);
   }
 
-  .fds-card--brand3.fds-card--link {
+  .ds-card--brand3.ds-card--link {
     --dsc-card-border-color: var(--ds-color-brand3-border-default);
   }
 
-  .fds-card--brand3.fds-card--link:hover {
+  .ds-card--brand3.ds-card--link:hover {
     --dsc-card-backround: var(--ds-color-brand3-surface-hover);
   }
 
-  .fds-card--brand3.fds-card--link:active {
+  .ds-card--brand3.ds-card--link:active {
     --dsc-card-backround: var(--ds-color-brand3-surface-active);
   }
 }

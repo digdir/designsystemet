@@ -1,37 +1,37 @@
 @layer ds.typography.ingress {
-  .fds-ingress {
+  .ds-ingress {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     margin: 0;
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-ingress--spacing {
+  .ds-ingress--spacing {
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .fds-ingress--md {
+  .ds-ingress--md {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     font: var(--ds-typography-ingress-md);
     font-family: inherit;
   }
 
-  .fds-ingress--lg {
+  .ds-ingress--lg {
     --dsc-bottom-spacing: var(--ds-spacing-6);
 
     font: var(--ds-typography-ingress-lg);
     font-family: inherit;
   }
 
-  .fds-ingress--sm {
+  .ds-ingress--sm {
     --dsc-bottom-spacing: var(--ds-spacing-7);
 
     font: var(--ds-typography-ingress-sm);
     font-family: inherit;
   }
 
-  .fds-ingress--xs {
+  .ds-ingress--xs {
     --dsc-bottom-spacing: var(--ds-spacing-8);
 
     font: var(--ds-typography-ingress-xs);

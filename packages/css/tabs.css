@@ -1,5 +1,5 @@
 @layer ds.tabs {
-  .fds-tabs__tab {
+  .ds-tabs__tab {
     --dsc-tabs__tab-bottom-border-color: transparent;
 
     display: flex;
@@ -18,69 +18,69 @@
     position: relative;
   }
 
-  .fds-tabs__content {
+  .ds-tabs__content {
     padding: var(--ds-spacing-5);
     color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-tabs--sm .fds-tabs__tab,
-  .fds-tabs--sm .fds-tabs__content {
+  .ds-tabs--sm .ds-tabs__tab,
+  .ds-tabs--sm .ds-tabs__content {
     font: var(--ds-typography-paragraph-short-sm);
   }
 
-  .fds-tabs--md .fds-tabs__tab,
-  .fds-tabs--md .fds-tabs__content {
+  .ds-tabs--md .ds-tabs__tab,
+  .ds-tabs--md .ds-tabs__content {
     font: var(--ds-typography-paragraph-short-md);
   }
 
-  .fds-tabs--lg .fds-tabs__tab,
-  .fds-tabs--lg .fds-tabs__content {
+  .ds-tabs--lg .ds-tabs__tab,
+  .ds-tabs--lg .ds-tabs__content {
     font: var(--ds-typography-paragraph-short-lg);
   }
 
-  .fds-tabs--sm .fds-tabs__tab {
+  .ds-tabs--sm .ds-tabs__tab {
     padding: var(--ds-spacing-2) var(--ds-spacing-4);
   }
 
-  .fds-tabs--md .fds-tabs__tab {
+  .ds-tabs--md .ds-tabs__tab {
     padding: var(--ds-spacing-3) var(--ds-spacing-5);
   }
 
-  .fds-tabs--lg .fds-tabs__tab {
+  .ds-tabs--lg .ds-tabs__tab {
     padding: var(--ds-spacing-4) var(--ds-spacing-6);
   }
 
-  .fds-tabs--sm .fds-tabs__content {
+  .ds-tabs--sm .ds-tabs__content {
     padding: var(--ds-spacing-4);
   }
 
-  .fds-tabs--md .fds-tabs__content {
+  .ds-tabs--md .ds-tabs__content {
     padding: var(--ds-spacing-5);
   }
 
-  .fds-tabs--lg .fds-tabs__content {
+  .ds-tabs--lg .ds-tabs__content {
     padding: var(--ds-spacing-6);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-tabs__tab:hover:not([aria-selected='true']) {
+    .ds-tabs__tab:hover:not([aria-selected='true']) {
       --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
 
       color: var(--ds-color-neutral-text-default);
     }
   }
 
-  .fds-tabs__tab[aria-selected='true'] {
+  .ds-tabs__tab[aria-selected='true'] {
     --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
 
     color: var(--ds-color-accent-text-subtle);
   }
 
-  .fds-tabs__tab:focus {
+  .ds-tabs__tab:focus {
     z-index: 2;
   }
 
-  .fds-tabs__tab::after {
+  .ds-tabs__tab::after {
     content: '';
     display: block;
     height: 3px;
@@ -92,7 +92,7 @@
     left: 0;
   }
 
-  .fds-tabs__tablist {
+  .ds-tabs__tablist {
     display: flex;
     flex-direction: row;
     border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);

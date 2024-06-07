@@ -1,40 +1,40 @@
 @layer ds.typography.error-message {
-  .fds-error-message {
+  .ds-error-message {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     margin: 0;
   }
 
-  .fds-error-message--error {
+  .ds-error-message--error {
     color: var(--ds-color-danger-text-subtle);
   }
 
-  .fds-error-message--spacing {
+  .ds-error-message--spacing {
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .fds-error-message--lg {
+  .ds-error-message--lg {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     font: var(--ds-typography-error_message-lg);
     font-family: inherit;
   }
 
-  .fds-error-message--md {
+  .ds-error-message--md {
     --dsc-bottom-spacing: var(--ds-spacing-5);
 
     font: var(--ds-typography-error_message-md);
     font-family: inherit;
   }
 
-  .fds-error-message--sm {
+  .ds-error-message--sm {
     --dsc-bottom-spacing: var(--ds-spacing-4);
 
     font: var(--ds-typography-error_message-sm);
     font-family: inherit;
   }
 
-  .fds-error-message--xs {
+  .ds-error-message--xs {
     --dsc-bottom-spacing: var(--ds-spacing-3);
 
     font: var(--ds-typography-error_message-xs);

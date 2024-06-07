@@ -48,9 +48,9 @@ export const TableHeaderCell = React.forwardRef<
     return (
       <th
         className={cl(
-          'fds-table__header__cell',
-          sortable && 'fds-table__header__cell--sortable',
-          sort && `fds-table__header__cell--sorted`,
+          'ds-table__header__cell',
+          sortable && 'ds-table__header__cell--sortable',
+          sort && `ds-table__header__cell--sorted`,
           className,
         )}
         aria-sort={sort}
@@ -59,14 +59,13 @@ export const TableHeaderCell = React.forwardRef<
       >
         {sortable && (
           <button
-            className={`fds-focus`}
+            className={`ds-focus`}
             onClick={onSortClick}
           >
             {children}
             {sortIcon}
           </button>
         )}
-
         {!sortable && children}
       </th>
     );

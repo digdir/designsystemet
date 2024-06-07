@@ -110,9 +110,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         <div
           style={style}
           className={cl(
-            'fds-search',
-            inputProps.disabled && 'fds-search--disabled',
-            `fds-search--${size}`,
+            'ds-search',
+            inputProps.disabled && 'ds-search--disabled',
+            `ds-search--${size}`,
             className,
           )}
         >
@@ -121,17 +121,17 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl('fds-search__label', hideLabel && 'fds-sr-only')}
+              className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
             >
               <span>{label}</span>
             </Label>
           )}
 
-          <div className={'fds-search__field'}>
-            <div className={cl('fds-search__field', `fds-search--${size}`)}>
+          <div className={'ds-search__field'}>
+            <div className={cl('ds-search__field', `ds-search--${size}`)}>
               {isSimple && (
                 <MagnifyingGlassIcon
-                  className={'fds-search__icon'}
+                  className={'ds-search__icon'}
                   aria-hidden
                 ></MagnifyingGlassIcon>
               )}
@@ -141,11 +141,11 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 value={value ?? internalValue}
                 disabled={disabled}
                 className={cl(
-                  'fds-search__input',
-                  `fds-focus`,
+                  'ds-search__input',
+                  `ds-focus`,
                   isSimple
-                    ? 'fds-search__input--simple'
-                    : 'fds-search__input--with-search-button',
+                    ? 'ds-search__input--simple'
+                    : 'ds-search__input--with-search-button',
                 )}
                 {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
                 {...inputProps}
@@ -153,19 +153,19 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               />
               {showClearButton && (
                 <button
-                  className={cl('fds-search__clear-button', `fds-focus`)}
+                  className={cl('ds-search__clear-button', `ds-focus`)}
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
                 >
-                  <span className={`fds-sr-only`}>{clearButtonLabel}</span>
+                  <span className={`ds-sr-only`}>{clearButtonLabel}</span>
                   <XMarkIcon aria-hidden />
                 </button>
               )}
             </div>
             {!isSimple && (
               <Button
-                className={'fds-search__search-button'}
+                className={'ds-search__search-button'}
                 size={size}
                 variant={variant}
                 type='submit'
@@ -178,7 +178,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </div>
 
           <div
-            className={'fds-search__error-message'}
+            className={'ds-search__error-message'}
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

@@ -1,5 +1,5 @@
 @layer ds.alert {
-  .fds-alert {
+  .ds-alert {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
     --dsc-alert-border-radius: var(--ds-border-radius-md);
     --dsc-alert-color: var(--ds-color-neutral-text-default);
@@ -20,57 +20,57 @@
     font: var(--ds-typography-paragraph-md);
   }
 
-  .fds-alert__icon {
+  .ds-alert__icon {
     height: var(--dsc-alert-icon-size);
     width: var(--dsc-alert-icon-size);
     color: var(--dsc-alert-icon-color);
   }
 
-  .fds-alert__content {
+  .ds-alert__content {
     display: flex;
     flex-direction: column;
   }
 
-  .fds-alert--info {
+  .ds-alert--info {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
     --dsc-alert-icon-color: var(--ds-color-info-base-default);
     --dsc-alert-background: var(--ds-color-info-surface-default);
   }
 
-  .fds-alert--warning {
+  .ds-alert--warning {
     --dsc-alert-border-color: var(--ds-color-warning-border-default);
     --dsc-alert-icon-color: var(--ds-color-warning-base-default);
     --dsc-alert-background: var(--ds-color-warning-surface-default);
   }
 
-  .fds-alert--success {
+  .ds-alert--success {
     --dsc-alert-border-color: var(--ds-color-success-border-default);
     --dsc-alert-icon-color: var(--ds-color-success-base-default);
     --dsc-alert-background: var(--ds-color-success-surface-default);
   }
 
-  .fds-alert--danger {
+  .ds-alert--danger {
     --dsc-alert-border-color: var(--ds-color-danger-border-default);
     --dsc-alert-icon-color: var(--ds-color-danger-base-default);
     --dsc-alert-background: var(--ds-color-danger-surface-default);
   }
 
-  .fds-alert--sm {
+  .ds-alert--sm {
     --dsc-alert-padding: var(--ds-spacing-5);
     --dsc-alert-icon-size: var(--ds-sizing-6);
   }
 
-  .fds-alert--md {
+  .ds-alert--md {
     --dsc-alert-padding: var(--ds-spacing-6);
     --dsc-alert-icon-size: var(--ds-sizing-7);
   }
 
-  .fds-alert--lg {
+  .ds-alert--lg {
     --dsc-alert-padding: var(--ds-spacing-7);
     --dsc-alert-icon-size: var(--ds-sizing-8);
   }
 
-  .fds-alert--elevated {
+  .ds-alert--elevated {
     box-shadow: var(--ds-shadow-sm);
   }
 }

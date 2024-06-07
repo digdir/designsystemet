@@ -17,7 +17,7 @@ export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
 
     return (
       <Component
-        className={cl(`fds-card__media`, className)}
+        className={cl(`ds-card__media`, className)}
         ref={ref}
         {...rest}
       />

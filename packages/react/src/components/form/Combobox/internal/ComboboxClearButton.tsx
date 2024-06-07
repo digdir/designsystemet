@@ -16,7 +16,7 @@ export const ComboboxClearButton = () => {
   return (
     <button
       disabled={disabled}
-      className={cl('fds-combobox__clear-button', `fds-focus`)}
+      className={cl('ds-combobox__clear-button', `ds-focus`)}
       onClick={() => {
         if (readOnly) return;
         if (disabled) return;

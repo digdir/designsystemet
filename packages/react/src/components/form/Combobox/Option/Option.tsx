@@ -59,9 +59,9 @@ export const ComboboxOption = memo(
             rest.onClick?.(e);
           }}
           className={cl(
-            'fds-combobox__option',
-            active && 'fds-combobox__option--active',
-            multiple && 'fds-combobox__option--multiple',
+            'ds-combobox__option',
+            active && 'ds-combobox__option--active',
+            multiple && 'ds-combobox__option--multiple',
             className,
           )}
           {...omit(['displayValue'], rest)}
@@ -79,7 +79,7 @@ export const ComboboxOption = memo(
             </span>
           </Label>
           <Label
-            className={'fds-combobox__option__label'}
+            className={'ds-combobox__option__label'}
             size={size}
             id={labelId}
           >

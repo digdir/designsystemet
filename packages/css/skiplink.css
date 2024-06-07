@@ -1,5 +1,5 @@
 @layer ds.skiplink {
-  .fds-skiplink:focus {
+  .ds-skiplink:focus {
     display: block;
     outline: 0;
     position: static;
@@ -16,7 +16,7 @@
     background: var(--ds-color-neutral-backround-default);
   }
 
-  .fds-skiplink__content {
+  .ds-skiplink__content {
     --dsc-skiplink-padding: var(--ds-spacing-2) var(--ds-spacing-4);
     --dsc-skiplink-border-width: 3px;
 

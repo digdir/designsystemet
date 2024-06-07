@@ -20,16 +20,16 @@ export const Circle = ({
   ...rest
 }: CircleProps) => {
   const ref = useSynchronizedAnimation<HTMLDivElement>(
-    'fds-skeleton-opacity-fade',
+    'ds-skeleton-opacity-fade',
   );
 
   return (
     <div
       ref={ref}
       className={cl(
-        'fds-skeleton',
-        'fds-skeleton--circle',
-        Boolean(children) && 'fds-skeleton--has-children',
+        'ds-skeleton',
+        'ds-skeleton--circle',
+        Boolean(children) && 'ds-skeleton--has-children',
         className,
       )}
       style={{ width, height, ...style }}

@@ -43,7 +43,7 @@ export const CharacterCounter = ({
   return (
     <>
       <span
-        className={`fds-sr-only`}
+        className={`ds-sr-only`}
         id={id}
       >
         {srLabel}

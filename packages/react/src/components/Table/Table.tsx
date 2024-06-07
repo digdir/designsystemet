@@ -47,11 +47,11 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
         <table
           ref={ref}
           className={cl(
-            'fds-table',
-            `fds-table--${size}`,
-            zebra && 'fds-table--zebra',
-            stickyHeader && 'fds-table--sticky-header',
-            border && 'fds-table--border',
+            'ds-table',
+            `ds-table--${size}`,
+            zebra && 'ds-table--zebra',
+            stickyHeader && 'ds-table--sticky-header',
+            border && 'ds-table--border',
             className,
           )}
           {...rest}

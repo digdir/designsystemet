@@ -1,73 +1,73 @@
 @layer ds.box {
-  .fds-box--xs-shadow {
+  .ds-box--xs-shadow {
     box-shadow: var(--ds-shadow-xs);
   }
 
-  .fds-box--sm-shadow {
+  .ds-box--sm-shadow {
     box-shadow: var(--ds-shadow-sm);
   }
 
-  .fds-box--md-shadow {
+  .ds-box--md-shadow {
     box-shadow: var(--ds-shadow-md);
   }
 
-  .fds-box--lg-shadow {
+  .ds-box--lg-shadow {
     box-shadow: var(--ds-shadow-lg);
   }
 
-  .fds-box--xl-shadow {
+  .ds-box--xl-shadow {
     box-shadow: var(--ds-shadow-xl);
   }
 
-  .fds-box--default-border-color {
+  .ds-box--default-border-color {
     border: 1px solid var(--ds-color-neutral-border-default);
   }
 
-  .fds-box--subtle-border-color {
+  .ds-box--subtle-border-color {
     border: 1px solid var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-box--strong-border-color {
+  .ds-box--strong-border-color {
     border: 1px solid var(--ds-color-neutral-base-strong);
   }
 
-  .fds-box--sm-border-radius {
+  .ds-box--sm-border-radius {
     border-radius: var(--ds-border-radius-sm);
   }
 
-  .fds-box--md-border-radius {
+  .ds-box--md-border-radius {
     border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-box--lg-border-radius {
+  .ds-box--lg-border-radius {
     border-radius: var(--ds-border-radius-lg);
   }
 
-  .fds-box--xl-border-radius {
+  .ds-box--xl-border-radius {
     border-radius: var(--ds-border-radius-xl);
   }
 
-  .fds-box--2xl-border-radius {
+  .ds-box--2xl-border-radius {
     border-radius: var(--ds-border-radius-2xl);
   }
 
-  .fds-box--3xl-border-radius {
+  .ds-box--3xl-border-radius {
     border-radius: var(--ds-border-radius-3xl);
   }
 
-  .fds-box--4xl-border-radius {
+  .ds-box--4xl-border-radius {
     border-radius: var(--ds-border-radius-4xl);
   }
 
-  .fds-box--full-border-radius {
+  .ds-box--full-border-radius {
     border-radius: var(--ds-border-radius-full);
   }
 
-  .fds-box--default-background {
+  .ds-box--default-background {
     background-color: var(--ds-color-neutral-background-default);
   }
 
-  .fds-box--subtle-background {
+  .ds-box--subtle-background {
     background-color: var(--ds-color-neutral-background-subtle);
   }
 }

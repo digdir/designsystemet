@@ -15,7 +15,7 @@ export const ComboboxError = ({
 }: ComboboxErrorProps) => {
   return (
     <div
-      className={'fds-combobox__error-message'}
+      className={'ds-combobox__error-message'}
       id={formFieldProps.errorId}
       aria-live='polite'
       aria-relevant='additions removals'

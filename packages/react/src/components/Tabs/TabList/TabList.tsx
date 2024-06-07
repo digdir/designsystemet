@@ -11,7 +11,7 @@ export const TabList = forwardRef<
   return (
     <RovingTabindexRoot
       role='tablist'
-      className={cl('fds-tabs__tablist', className)}
+      className={cl('ds-tabs__tablist', className)}
       ref={ref}
       {...rest}
     >

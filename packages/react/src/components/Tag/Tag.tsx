@@ -36,9 +36,9 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       >
         <span
           className={cl(
-            'fds-tag',
-            `fds-tag--${color}`,
-            `fds-tag--${size}`,
+            'ds-tag',
+            `ds-tag--${color}`,
+            `ds-tag--${size}`,
             className,
           )}
           ref={ref}

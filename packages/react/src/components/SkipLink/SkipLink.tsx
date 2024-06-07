@@ -18,10 +18,10 @@ export const SkipLink = ({
   return (
     <a
       href={href}
-      className={cl(`fds-sr-only`, 'fds-skiplink', className)}
+      className={cl(`ds-sr-only`, 'ds-skiplink', className)}
       {...rest}
     >
-      <p className='fds-skiplink__content'>{children}</p>
+      <p className='ds-skiplink__content'>{children}</p>
     </a>
   );
 };
