@@ -198,7 +198,7 @@
     /* min-height: var(--ds-sizing-12); */
   }
 
-  .fds-checkbox__group {
+  .ds-checkbox__group {
     display: flex;
     flex-direction: column;
     gap: var(--ds-spacing-5);
