@@ -2203,7 +2203,7 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react-old"
   dependencies:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
-    "@digdir/designsystemet-react": "npm:0.62.0"
+    "@digdir/designsystemet-theme": "npm:0.15.3"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@types/fs-extra": "npm:^11.0.4"
@@ -2235,21 +2235,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-react@npm:0.62.0":
-  version: 0.62.0
-  resolution: "@digdir/designsystemet-react@npm:0.62.0"
-  dependencies:
-    "@floating-ui/react": "npm:0.26.12"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    "@radix-ui/react-slot": "npm:^1.0.2"
-    "@tanstack/react-virtual": "npm:^3.2.0"
-  peerDependencies:
-    react: ">=18.3.1"
-    react-dom: ">=18.3.1"
-  checksum: 10/c1f488c482a5358c9b6d4fd9a15390bbe923cba824cd6dddb47cbbf55e7be07fd4e2e4358767498995d95209352890a1a662a2cc748e37ed005a07ae9e35303f
-  languageName: node
-  linkType: hard
-
 "@digdir/designsystemet-react@workspace:^, @digdir/designsystemet-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
@@ -2268,6 +2253,13 @@ __metadata:
     react-dom: ">=18.3.1"
   languageName: unknown
   linkType: soft
+
+"@digdir/designsystemet-theme@npm:0.15.3":
+  version: 0.15.3
+  resolution: "@digdir/designsystemet-theme@npm:0.15.3"
+  checksum: 10/0c9760ffbc42ed736ebcd1ee9069b2a8dd9312de08263d8beee74438933df736280c07fba2568d05f202ea88687b3309c40bf55be3d7d8e57f54cf84cc33af96
+  languageName: node
+  linkType: hard
 
 "@digdir/designsystemet-theme@workspace:^, @digdir/designsystemet-theme@workspace:packages/theme":
   version: 0.0.0-use.local
