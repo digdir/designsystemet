@@ -6,7 +6,7 @@
     pointer-events: none;
     user-select: none;
     background-color: var(--ds-color-neutral-surface-default);
-    animation: fds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
+    animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   }
 
   .ds-skeleton--circle {
@@ -47,7 +47,7 @@
     }
   }
 
-  @keyframes fds-skeleton-opacity-fade {
+  @keyframes ds-skeleton-opacity-fade {
     0% {
       opacity: 1;
     }

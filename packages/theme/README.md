@@ -42,6 +42,6 @@ import '@digdir/designsystemet-theme/brand/altinn/tokens.css';
 
 ```css
 div {
-  padding: var(--fds-spacing-1);
+  padding: var(--ds-spacing-1);
 }
 ```

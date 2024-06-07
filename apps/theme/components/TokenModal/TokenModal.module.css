@@ -9,7 +9,7 @@
   background-color: white;
   padding: 24px;
   border-radius: 8px;
-  box-shadow: var(--fds-shadow-small);
+  box-shadow: var(--ds-shadow-sm);
   border: 1px solid #f3f3f3;
 }
 
