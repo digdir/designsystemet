@@ -1,6 +1,6 @@
 import type { Option } from '../useCombobox';
 import type { ComboboxProps } from '../Combobox';
-import { INTERNAL_OPT_PREFIX } from '../useCombobox';
+import { removePrefix } from '../useCombobox';
 
 type ComboboxNativeProps = {
   selectedOptions: {
@@ -15,9 +15,7 @@ export const ComboboxNative = ({
   multiple,
   name,
 }: ComboboxNativeProps) => {
-  const VALUE = Object.keys(selectedOptions).map((key) =>
-    key.slice(INTERNAL_OPT_PREFIX.length),
-  );
+  const VALUE = Object.keys(selectedOptions).map((key) => removePrefix(key));
 
   return (
     <select

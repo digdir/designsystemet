@@ -7,8 +7,6 @@ import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
 import ComboboxCustom from './Custom';
 
-export const INTERNAL_OPT_PREFIX = 'internal-option-';
-
 export type UseComboboxProps = {
   children: ReactNode;
   inputValue: string;
@@ -43,6 +41,21 @@ export function isInteractiveComboboxCustom(
 ): child is ReactElement<ComboboxCustomProps> {
   return isComboboxCustom(child) && child.props.interactive === true;
 }
+
+const INTERNAL_OPTION_PREFIX = 'internal-option-';
+
+/**
+ * We use this function to prefix the value of the options so we can make sure numbers as strings are not parsed as numbers in objects
+ * @param value
+ * @returns
+ */
+export const prefix = (value?: string): string => {
+  return INTERNAL_OPTION_PREFIX + value;
+};
+
+export const removePrefix = (value: string): string => {
+  return value.slice(INTERNAL_OPTION_PREFIX.length);
+};
 
 export default function useCombobox({
   children,
@@ -117,7 +130,7 @@ export default function useCombobox({
         label = childrenLabel;
       }
 
-      allOptions[INTERNAL_OPT_PREFIX + String(props.value)] = {
+      allOptions[prefix(String(props.value))] = {
         value: String(props.value),
         label,
         displayValue: props.displayValue,
@@ -132,7 +145,7 @@ export default function useCombobox({
     () =>
       (
         initialValue?.map((key) => {
-          return INTERNAL_OPT_PREFIX + key;
+          return prefix(key);
         }) || []
       ).reduce<{
         [key: string]: Option;
