@@ -8,5 +8,6 @@
     "publish": {
       "ignoreChanges": ["**/stories/*", "**/build/*", "**/playground/*"]
     }
-  }
+  },
+  "ignore": "@digdir/design-system-react"
 }
