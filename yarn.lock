@@ -1896,6 +1896,7 @@ __metadata:
   resolution: "@digdir/design-system-react@workspace:packages/react-old"
   dependencies:
     "@altinn/figma-design-tokens": "npm:^6.0.1"
+    "@digdir/designsystemet-theme": "npm:0.15.3"
     "@floating-ui/react": "npm:0.26.4"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@types/fs-extra": "npm:^11.0.4"
