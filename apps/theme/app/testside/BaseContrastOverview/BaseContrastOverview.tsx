@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
-import { getContrastFromLightness } from '../../../utils/colorUtils';
+import {
+  getContrastFromLightness,
+  getContrastFromHex,
+} from '../../../utils/colorUtils';
 import { calculateContrastOneColor } from '../../../utils/themeUtils';
 
 import classes from './BaseContrastOverview.module.css';
@@ -83,17 +86,29 @@ export const BaseContrastOverview = () => {
 
   const Box = ({ color }: BoxProps) => {
     return (
-      <div
-        className={classes.box}
-        style={{
-          backgroundColor: color,
-          color: calculateContrastOneColor(color),
-        }}
-      >
-        <CheckmarkIcon
-          title='a11y-title'
-          fontSize='3.5rem'
-        />
+      <div>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: color,
+            color: calculateContrastOneColor(color),
+          }}
+        >
+          <CheckmarkIcon
+            title='a11y-title'
+            fontSize='3.5rem'
+          />
+        </div>
+        <div className={classes.contrastBox}>
+          <div className={cl(classes.contrastCircle)}></div>
+          <div>{getContrastFromHex(color, '#ffffff').toFixed(1)}</div>
+        </div>
+        <div className={classes.contrastBox}>
+          <div
+            className={cl(classes.contrastCircle, classes.contrastCircleBlack)}
+          ></div>
+          <div>{getContrastFromHex(color, '#000000').toFixed(1)}</div>
+        </div>
       </div>
     );
   };
