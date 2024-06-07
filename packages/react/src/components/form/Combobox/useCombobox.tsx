@@ -42,21 +42,6 @@ export function isInteractiveComboboxCustom(
   return isComboboxCustom(child) && child.props.interactive === true;
 }
 
-const INTERNAL_OPTION_PREFIX = 'internal-option-';
-
-/**
- * We use this function to prefix the value of the options so we can make sure numbers as strings are not parsed as numbers in objects
- * @param value
- * @returns
- */
-export const prefix = (value?: string): string => {
-  return INTERNAL_OPTION_PREFIX + value;
-};
-
-export const removePrefix = (value: string): string => {
-  return value.slice(INTERNAL_OPTION_PREFIX.length);
-};
-
 export default function useCombobox({
   children,
   inputValue,
@@ -130,8 +115,8 @@ export default function useCombobox({
         label = childrenLabel;
       }
 
-      allOptions[prefix(String(props.value))] = {
-        value: String(props.value),
+      allOptions[props.value] = {
+        value: props.value,
         label,
         displayValue: props.displayValue,
         description: props.description,
@@ -143,11 +128,7 @@ export default function useCombobox({
 
   const preSelectedOptions = useMemo(
     () =>
-      (
-        initialValue?.map((key) => {
-          return prefix(key);
-        }) || []
-      ).reduce<{
+      (initialValue || []).reduce<{
         [key: string]: Option;
       }>((acc, value) => {
         const option = options[value];
@@ -170,17 +151,16 @@ export default function useCombobox({
       (option, index) => {
         /* If we have a selected value in single mode and the input matches an option, return all children */
         if (!multiple && Object.keys(selectedOptions).length === 1) {
-          filteredOptions.push(option);
+          filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
 
         if (multiple && selectedOptions[option]) {
-          filteredOptions.push(option);
+          filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
-
         if (filter(inputValue, options[option])) {
-          filteredOptions.push(option);
+          filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
       },

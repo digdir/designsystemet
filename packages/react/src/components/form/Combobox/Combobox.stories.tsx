@@ -580,24 +580,3 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
     </>
   );
 };
-
-export const WithNumberValues: StoryFn<typeof Combobox> = () => {
-  return (
-    <Combobox initialValue={['2000']}>
-      <Combobox.Option
-        id={'3000'}
-        key={'3000'}
-        value={'3000'}
-      >
-        some value
-      </Combobox.Option>
-      <Combobox.Option
-        id={'2000'}
-        key={'2000'}
-        value={'2000'}
-      >
-        some other value
-      </Combobox.Option>
-    </Combobox>
-  );
-};
