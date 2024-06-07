@@ -46,10 +46,13 @@ export async function run(options: Options): Promise<void> {
   const typographyConfigs = getConfigs(cssTypographyConfig, tokensOutDir, tokensDir, typographyThemes);
 
   if (typographyConfigs.length > 0) {
-    console.log('\n🍱 Building typography classes');
+    console.log('\n🍱 Building Typography classes');
 
     await Promise.all(
-      typographyConfigs.map(async ([, config]) => {
+      typographyConfigs.map(async ({ name, config }) => {
+        const typographyTheme = name.split('-')[0];
+        console.log(`👷 Processing: ${typographyTheme}`);
+
         const typographyClasses = await sd.extend(config);
 
         return typographyClasses.buildAllPlatforms();
@@ -62,8 +65,8 @@ export async function run(options: Options): Promise<void> {
     console.log('\n🍱 Building CSS variables from tokens');
     console.log('➡️  Tokens path: ', tokensDir);
     await Promise.all(
-      themeVariableConfigs.map(async ([name, config]) => {
-        console.log(`👷 Processing: ${name as string}`);
+      themeVariableConfigs.map(async ({ name, config }) => {
+        console.log(`👷 Processing: ${name}`);
 
         const themeVariablesSD = await sd.extend(config);
 
@@ -74,16 +77,16 @@ export async function run(options: Options): Promise<void> {
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
-    console.log('\n🏗️  Building storefront tokens');
+    console.log('\n🏗️  Building Storefront tokens');
     await Promise.all(
-      storefrontConfigs.map(async ([name, config]) => {
-        console.log(`👷 Processing: ${name as string}`);
+      storefrontConfigs.map(async ({ name, config }) => {
+        console.log(`👷 Processing: ${name}`);
 
         const storefrontSD = await sd.extend(config);
 
         return storefrontSD.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building storefront tokens');
+    console.log('🏁 Finished building Storefront tokens');
   }
 }

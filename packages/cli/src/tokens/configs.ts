@@ -167,12 +167,14 @@ export const cssTypographyConfig: GetConfig = ({ outPath, theme, typography }) =
   };
 };
 
-export const getConfigs = (
+type getConfigs = (
   getConfig: GetConfig,
   outPath: string,
   tokensDir: string,
   themes: Record<string, string[]>,
-) =>
+) => { name: string; config: Config }[];
+
+export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
   Object.entries(themes)
     .map(([name, tokensets]) => {
       const setsWithPaths = tokensets.map((x) => `${tokensDir}/${x}.json`);
@@ -197,6 +199,6 @@ export const getConfigs = (
         include,
       };
 
-      return [`${theme}-${mode}`, config];
+      return { name: `${theme}-${mode}`, config };
     })
     .sort();
