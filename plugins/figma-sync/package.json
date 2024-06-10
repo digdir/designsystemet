@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "run-s watch",
-    "watch": "run-p watch:ui watch:plugin",
+    "watch": "run-p 'watch:*'",
     "watch:ui": "npm run build:ui -- --watch --mode=development",
     "watch:plugin": "npm run build:plugin -- --watch --mode=development",
     "build": "npm run build:plugin && npm run build:ui",
@@ -18,7 +18,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "npm-run-all": "^4.1.5",
+    "npm-run-all2": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1"

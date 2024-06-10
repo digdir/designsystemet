@@ -37,6 +37,11 @@ body {
   padding: 0 16px;
 }
 
+.button {
+  position: absolute;
+  bottom: 65px;
+}
+
 .link {
   height: 52px;
   display: flex;
