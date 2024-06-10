@@ -6,7 +6,6 @@ import {
   Textarea,
   Button,
   Link,
-  Spinner,
 } from '@digdir/designsystemet-react';
 import React, { useState } from 'react';
 
@@ -58,7 +57,7 @@ function PageOne() {
     }
 
     if (!isJsonValid(jsonText) || !isJsonCorrect(jsonText)) {
-      setErrorText('Ugyldig JSON, prøv å kopier og lim inn på nytt.');
+      setErrorText('Ugyldig JSON, prøv og kopier og lim inn på nytt.');
       setJsonText('');
       return;
     }
@@ -92,15 +91,22 @@ function PageOne() {
           size='sm'
           className='paragraph'
         >
-          Oppdater fargene i Core UI Kit via designsystemet sin temagenerator.
-          Gå inn på{' '}
+          Oppdater{' '}
+          <Link
+            target='_blank'
+            href='https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit'
+          >
+            Designsystemet - Core UI Kit
+          </Link>{' '}
+          community filen med ditt eget fargetema. Gå til{' '}
           <Link
             target='_blank'
             href='https://theme.designsystemet.no/'
           >
             theme.designsystemet.no
           </Link>{' '}
-          og lag temaet ditt, velg mode og lim inn JSON i feltet under.
+          og lag temaet ditt, velg light- eller dark mode og lim inn JSON koden
+          i feltet under.
         </Paragraph>
 
         <ToggleGroup
