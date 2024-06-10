@@ -22,6 +22,8 @@ import {
   ToggleGroup,
   Combobox,
   Tooltip,
+  Chip,
+  Textarea,
 } from '@digdir/designsystemet-react';
 
 import classes from './Components.module.css';
@@ -369,7 +371,7 @@ export const Components = () => {
           </Switch>
         </div>
       </div>
-      <div className={cl(classes.card, classes.combobox)}>
+      <div className={cl(classes.card, classes.toggleGroup)}>
         <Heading
           size='xs'
           spacing
@@ -391,24 +393,58 @@ export const Components = () => {
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup>
-          <Combobox
-            description='Velg et sted'
-            label='Hvor går reisen?'
-            size='sm'
-            portal={false}
-            multiple
-          >
-            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-            <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
-            <Combobox.Option value='oslo'>Oslo</Combobox.Option>
-            <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
-            <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-            <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
-            <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
-            <Combobox.Option value='bergen'>Bergen</Combobox.Option>
-            <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
-          </Combobox>
         </div>
+        <Heading
+          size='xs'
+          spacing
+          className={classes.chipsHeading}
+        >
+          Filtrer på språk
+        </Heading>
+        <div className={classes.chips}>
+          <Chip.Toggle
+            selected
+            checkmark={false}
+            size='sm'
+          >
+            Bokmål
+          </Chip.Toggle>
+          <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
+          <Chip.Toggle size='sm'>Engelsk</Chip.Toggle>
+        </div>
+      </div>
+      <div className={cl(classes.card, classes.comboBox)}>
+        <Heading
+          size='xs'
+          spacing
+          className={classes.comboHeading}
+        >
+          Hvor skal du reise?
+        </Heading>
+        <Combobox
+          label='Destinasjon'
+          size='sm'
+          portal={false}
+          multiple
+        >
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
+          <Combobox.Option value='oslo'>Oslo</Combobox.Option>
+          <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
+          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
+          <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
+          <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
+          <Combobox.Option value='bergen'>Bergen</Combobox.Option>
+          <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
+        </Combobox>
+        <Textarea
+          cols={40}
+          description=''
+          error=''
+          label='Ekstra informasjon'
+          size='sm'
+          className={classes.textarea}
+        />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
         <Tabs
