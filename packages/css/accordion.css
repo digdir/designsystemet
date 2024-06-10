@@ -3,9 +3,15 @@
     --dsc-accordion-border-radius: var(--ds-border-radius-md);
     --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-accordion-border-divider-color: var(--ds-color-neutral-border-subtle);
+    --dsc-accordion-background: var(--ds-color-neutral-background-default);
+    --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
+    --dsc-accordion-button-background-open: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-icon-background-hover: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-icon-background-active: var(--ds-color-neutral-surface-default);
 
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     box-sizing: border-box;
+    background-color: var(--dsc-accordion-background);
   }
 
   .ds-accordion--border {
@@ -45,11 +51,12 @@
     border: none;
     border-top: 1px solid var(--ds-color-neutral-border-subtle);
     padding: var(--ds-spacing-4);
+    background-color: var(--dsc-accordion-button-background);
   }
 
-  /* .ds-accordion--border .ds-accordion__button {
-    border-radius: 0;
-  } */
+  .ds-accordion__item--open .ds-accordion__button {
+    background-color: var(--dsc-accordion-button-background-open);
+  }
 
   .ds-accordion__item:focus-within {
     position: relative;
@@ -59,49 +66,43 @@
     transform: rotateZ(180deg);
   }
 
-  .ds-accordion--neutral,
-  .ds-accordion--neutral .ds-accordion__button {
-    background-color: var(--ds-color-neutral-background-default);
+  .ds-accordion--neutral {
+    --dsc-accordion-background: var(--ds-color-neutral-background-default);
+    --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
+    --dsc-accordion-button-background-open: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-icon-background-hover: var(--ds-color-neutral-surface-default);
   }
 
-  .ds-accordion--subtle,
-  .ds-accordion--subtle .ds-accordion__button {
-    background-color: var(--ds-color-neutral-background-subtle);
+  .ds-accordion--subtle {
+    --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-button-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-button-background-open: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-icon-background-hover: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-icon-background-active: var(--ds-color-neutral-surface-active);
   }
 
-  .ds-accordion--brand1,
-  .ds-accordion--brand1 .ds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand1-border-subtle);
-    --dsc-accordion-border-divider-color: var(--ds-color-brand1-border-subtle);
-
-    background: var(--ds-color-brand1-surface-default);
+  .ds-accordion--brand1 {
+    --dsc-accordion-background: var(--ds-color-brand1-background-subtle);
+    --dsc-accordion-button-background: var(--ds-color-brand1-surface-default);
+    --dsc-accordion-button-background-open: var(--ds-color-brand1-surface-hover);
+    --dsc-accordion-icon-background-hover: var(--ds-color-brand1-surface-active);
+    --dsc-accordion-icon-background-active: var(--ds-color-brand1-surface-active);
   }
 
-  .ds-accordion--brand2,
-  .ds-accordion--brand2 .ds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand2-border-subtle);
-    --dsc-accordion-border-divider-color: var(--ds-color-brand2-border-subtle);
-
-    background: var(--ds-color-brand2-surface-default);
+  .ds-accordion--brand2 {
+    --dsc-accordion-background: var(--ds-color-brand2-background-subtle);
+    --dsc-accordion-button-background: var(--ds-color-brand2-surface-default);
+    --dsc-accordion-button-background-open: var(--ds-color-brand2-surface-hover);
+    --dsc-accordion-icon-background-hover: var(--ds-color-brand2-surface-active);
+    --dsc-accordion-icon-background-active: var(--ds-color-brand2-surface-active);
   }
 
-  .ds-accordion--brand3,
-  .ds-accordion--brand3 .ds-accordion__button {
-    --dsc-accordion-border-color: var(--ds-color-brand3-border-subtle);
-    --dsc-accordion-border-divider-color: var(--ds-color-brand3-border-subtle);
-
-    background: var(--ds-color-brand3-surface-default);
-  }
-
-  .ds-accordion--brand1 .ds-accordion__item:where(.ds-accordion__item--open) .ds-accordion__button,
-  .ds-accordion--brand2 .ds-accordion__item:where(.ds-accordion__item--open) .ds-accordion__button,
-  .ds-accordion--brand3 .ds-accordion__item:where(.ds-accordion__item--open) .ds-accordion__button {
-    background-color: rgba(0 0 0 / 0.03);
-  }
-
-  .ds-accordion--neutral .ds-accordion__item:where(.ds-accordion__item--open) .ds-accordion__button,
-  .ds-accordion--subtle .ds-accordion__item:where(.ds-accordion__item--open) .ds-accordion__button {
-    background-color: var(--ds-color-accent-background-subtle);
+  .ds-accordion--brand3 {
+    --dsc-accordion-background: var(--ds-color-brand3-background-subtle);
+    --dsc-accordion-button-background: var(--ds-color-brand3-surface-default);
+    --dsc-accordion-button-background-open: var(--ds-color-brand3-surface-hover);
+    --dsc-accordion-icon-background-hover: var(--ds-color-brand3-surface-active);
+    --dsc-accordion-icon-background-active: var(--ds-color-brand3-surface-active);
   }
 
   .ds-accordion--border .ds-accordion__item:first-child .ds-accordion__button {
@@ -126,24 +127,11 @@
 
   @media (hover: hover) and (pointer: fine) {
     .ds-accordion__button:hover .ds-accordion__expand-icon {
-      background-color: rgba(0 0 0 / 0.1);
+      background-color: var(--dsc-accordion-icon-background-hover);
     }
 
-    .ds-accordion--neutral .ds-accordion__button:hover,
-    .ds-accordion--subtle .ds-accordion__button:hover {
-      background-color: var(--ds-color-neutral-surface-default);
-    }
-
-    .ds-accordion--brand1 .ds-accordion__button:hover {
-      background-color: var(--ds-color-brand1-surface-hover);
-    }
-
-    .ds-accordion--brand2 .ds-accordion__button:hover {
-      background-color: var(--ds-color-brand2-surface-hover);
-    }
-
-    .ds-accordion--brand3 .ds-accordion__button:hover {
-      background-color: var(--ds-color-brand3-surface-hover);
+    .ds-accordion__item--open .ds-accordion__button:hover .ds-accordion__expand-icon {
+      background-color: var(--dsc-accordion-icon-background-active);
     }
   }
 }
