@@ -46,6 +46,19 @@ StyleDictionary.registerTransformGroup({
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
+const isNumeric = (string: string) => /^[+-]?\d+(\.\d+)?$/.test(string);
+
+const outputColorReferences = (token: TransformedToken) => {
+  if (
+    R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
+    R.includes('semantic/color', token.filePath)
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
 export const permutateThemes = ($themes: ThemeObject[]) =>
   tokenStudio.permutateThemes($themes, {
     separator,
@@ -88,16 +101,7 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
         ],
         options: {
           fileHeader,
-          outputReferences: (token: TransformedToken) => {
-            if (
-              R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
-              R.includes('semantic/color', token.filePath)
-            ) {
-              return true;
-            }
-
-            return false;
-          },
+          outputReferences: outputColorReferences,
         },
       },
     },
@@ -118,7 +122,12 @@ export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) 
           {
             destination: `${mode}.ts`,
             format: jsTokens.name,
+            outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
+              if (R.test(/primitives\/colors|\/themes/, token.filePath)) {
+                return false;
+              }
+
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
                 R.includes('semantic', token.filePath)
