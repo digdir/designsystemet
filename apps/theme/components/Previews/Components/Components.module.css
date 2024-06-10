@@ -4,7 +4,7 @@
   width: 100%;
   padding: 24px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
   row-gap: 24px;
 }
@@ -20,47 +20,51 @@
 }
 
 .checkbox {
-  grid-column: span 2;
+  grid-column: span 3;
   padding-bottom: 16px;
 }
 
 .user {
-  grid-column: span 2;
-}
-
-.tableContainer {
-  grid-column: span 4;
-}
-
-.help {
-  grid-column: span 4;
-}
-
-.radio {
-  grid-column: span 2;
-}
-
-.tag {
-  grid-column: span 2;
-}
-
-.switches {
   grid-column: span 3;
 }
 
-.combobox {
-  grid-column: span 5;
+.tableContainer {
+  grid-column: span 6;
+}
+
+.help {
+  grid-column: span 6;
+}
+
+.radio {
+  grid-column: span 3;
+}
+
+.tag {
+  grid-column: span 3;
+}
+
+.switches {
+  grid-column: span 4;
+}
+
+.toggleGroup {
+  grid-column: span 4;
+}
+
+.comboBox {
+  grid-column: span 4;
 }
 
 .tabs {
-  grid-column: span 4;
+  grid-column: span 5;
   display: flex;
   gap: 16px;
   flex-direction: column;
 }
 
 .faq {
-  grid-column: span 4;
+  grid-column: span 7;
 }
 
 .userLink {
@@ -182,4 +186,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-2);
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chipsHeading {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.textarea {
+  margin-top: 20px;
+}
+
+.comboHeading {
+  margin-bottom: 16px;
 }
