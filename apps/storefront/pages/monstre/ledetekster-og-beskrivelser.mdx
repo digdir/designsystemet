@@ -1,0 +1,47 @@
+import { MenuPageLayout } from '@layouts';
+import { Meta } from '@components';
+
+<Meta
+  title='Ledetekster og forklaringer i skjema'
+  description='Slik forteller du brukeren at noe har gått galt eller mangler.'
+/>
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Ledetekster og forklaringer i skjema',
+      date: '28. november 2023',
+    }}
+  />
+);
+
+Når vi designer et skjema, bør vi starte med å dele det opp over flere sider. Hver side bør handle om kun en ting, for eksempel:
+
+- En ting du vil fortelle brukeren.
+- En avgjørelse brukeren må ta.
+- Ett spørsmål brukeren må svare på.
+
+Når vi spør om kun en ting om gangen, kan vi sette spørsmålet som overskriften på siden. Sideoverskriften vi da sannsynligvis være det samme som `label` eller `legend` for inndatafeltet.
+
+Eksempel:
+På en side som bare ber brukeren om postnummeret deres, blir spørsmålet "Hva er postnummeret ditt?" både overskriften på siden og den mest logiske ledeteksten `label` for tekstfeltet.
+For å unngå visuell gjentakelse, bruker vi enten skjult `label` eller `legend`. For brukere som benytter skjermleser, blir det likevel dobbel opplesning. Det kan vi fikse med å sette innholdet til enten `label` eller `legend` som sideoverskrift (unntatt hvis du har flere enn ett spørsmål per side).
+
+## Ledetekst som overskrift på siden
+
+Hvis vi vil ha teksten i en ledetekst som overskrift på siden, må du legge `label` inn i `h1`.
+Deretter må vi klassifisere `label` så det ser ut som en overskrift.
+
+## Forklaring som overskrift på siden
+
+Hvis vi ønsker teksten i en forklaring som overskrift på siden, må vi sette `legend` utenfor `h1`.
+Som med ledetekster, må du også klassifisere `legend` slik at den ser ut som en overskrift.
+
+## Ulike måter å style ledetekster å forklaringer på
+
+I stedet for å style en ledetekst som overskrift på siden, kan vi også velge å endre stilen til ledetekster og forklaringer, for eksempel slik at de blir større eller fetere enn standardteksten.
+
+## Kilder og relevant informasjon:<br/>
+
+- [Gov UK Making labels and legends headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/)
