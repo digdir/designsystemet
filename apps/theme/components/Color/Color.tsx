@@ -29,7 +29,11 @@ const Color = ({
     <div>
       <button
         onClick={() => {
-          setSelectedColor(color);
+          setSelectedColor({
+            hexColor: color.hexColor,
+            colorNumber: color.colorNumber,
+            name: color.name,
+          });
         }}
         style={{ backgroundColor: color.hexColor }}
         className={cl(classes.box, featured && classes.featured)}
