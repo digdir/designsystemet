@@ -1,6 +1,8 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
+import chroma from 'chroma-js';
 
+import type { modeType } from '../types';
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
  *
@@ -242,7 +244,21 @@ export const getRatioFromLum = (lum1: number, lum2: number) => {
 };
 
 /**
- * Get the lightness of a HEX color
+ * Get the HSL lightness from a HEX color
+ *
+ * @param hex A hex color string
+ * @returns
+ */
+export const getHslLightessFromHex = (hex: CssColor) => {
+  return chroma(hex).hsl()[2];
+};
+
+export const getHslSaturationFromHex = (hex: CssColor) => {
+  return chroma(hex).hsl()[1];
+};
+
+/**
+ * Get the HSLuv lightness from a HEX color
  *
  * @param hex A hex color string
  * @returns
@@ -296,19 +312,63 @@ export const getContrastFromLightness = (
   return ratio;
 };
 
-export const lightenDarkThemeColor = (color: CssColor) => {
+export const lightenDarkColor = (color: CssColor, mode: modeType) => {
   const lightness = getLightnessFromHex(color);
-
-  if (lightness > 45) {
-    return color;
-  }
 
   const conv = new Hsluv();
   conv.hex = color;
   conv.hexToHsluv();
-  conv.hsluv_l = conv.hsluv_l + 10;
+  conv.hsluv_l =
+    lightness < 45 ? getLightnessForDarkMode(color, mode) : conv.hsluv_l;
+  conv.hsluv_s = getSaturationForDarkMode(color, conv.hsluv_s);
   conv.hsluvToHex();
   return conv.hex as CssColor;
+};
+
+/**
+ *
+ * @param color The hex color
+ * @param uvSat The HSLuv saturation value
+ * @returns
+ */
+const getSaturationForDarkMode = (color: CssColor, hslUvSat: number) => {
+  const hslLightness = getHslLightessFromHex(color) * 100;
+  if (hslLightness > 35 && hslLightness < 65) {
+    if (hslUvSat >= 90) {
+      return hslUvSat - 10;
+    }
+  }
+  return hslUvSat;
+};
+
+const getLightnessForDarkMode = (color: CssColor, mode: modeType) => {
+  const lightness: number = getLightnessFromHex(color);
+  if (mode === 'dark') {
+    if (lightness >= 23) {
+      return mapRange(lightness, 23, 44, 38, 45);
+    } else {
+      return mapRange(lightness, 0, 23, 28, 38);
+    }
+  } else {
+    if (lightness >= 23) {
+      return mapRange(lightness, 23, 44, 28, 35);
+    } else {
+      return mapRange(lightness, 0, 23, 18, 28);
+    }
+  }
+};
+
+/**
+ * Maps the numbers from [start1 - end1] to the range [start2 - end2], maintaining the proportionality between the numbers in the ranges using lineaer interpolation.
+ */
+const mapRange = (
+  value: number,
+  start1: number,
+  end1: number,
+  start2: number,
+  end2: number,
+) => {
+  return start2 + ((value - start1) * (end2 - start2)) / (end1 - start1);
 };
 
 /**

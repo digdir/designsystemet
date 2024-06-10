@@ -8,6 +8,7 @@ import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
+  lightenDarkColor,
 } from './colorUtils';
 
 export type ColorType = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
@@ -73,13 +74,9 @@ const generateThemeColor = (
     ratios: [1],
   });
 
-  // if (mode === 'dark') {
-  //   color = getBaseColorForDarkmode(color);
-  // }
-
-  // if (mode === 'contrast') {
-  //   color = getBaseColorForDarkmode(color);
-  // }
+  if (mode === 'dark' || mode === 'contrast') {
+    color = lightenDarkColor(color, mode);
+  }
 
   const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -8 : 8;
@@ -213,7 +210,9 @@ export const generateScaleForColor = (
     name: getColorNameFromNumber(15),
   });
 
-  outputArray[8].hexColor = color;
+  if (mode === 'light') {
+    outputArray[8].hexColor = color;
+  }
 
   return outputArray;
 };
@@ -300,9 +299,9 @@ export const calculateContrastOneColor = (baseColor: CssColor) => {
   const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
   const contrastBlack = getContrastFromHex(baseColor, '#000000');
   const lightness = contrastWhite >= contrastBlack ? 100 : 0;
-  const color = createColorWithLightness(baseColor, lightness);
+  // const color = createColorWithLightness(baseColor, lightness);
 
-  return color;
+  return lightness === 0 ? '#000000' : '#ffffff';
 };
 
 /**

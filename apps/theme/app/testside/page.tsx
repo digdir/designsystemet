@@ -16,6 +16,7 @@ import { BackgroundSurface } from './BackgroundSurface/BackgroundSurface';
 import { Interaction } from './Interaction/Interaction';
 import { Backgrounds } from './Backgrounds/Backgrounds';
 import { BaseContrastOverview } from './BaseContrastOverview/BaseContrastOverview';
+import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 
 const Box = (name: string, color1: CssColor, color2: CssColor) => {
   return (
@@ -371,6 +372,14 @@ export default function Dev() {
           Overgangen fra svart til hvit kontrastfarge på ulike Base farger
         </Heading>
         <BaseContrastOverview />
+        <Heading
+          className={classes.sectionTitle}
+          size='md'
+        >
+          Viser blå base farger i et spekter av lightness verdier og om
+          kontrastfargen er hvit eller svart per mode
+        </Heading>
+        <FullBaseTest />
       </Container>
     </div>
   );
