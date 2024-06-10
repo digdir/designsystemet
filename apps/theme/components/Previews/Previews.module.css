@@ -69,8 +69,8 @@
 }
 
 .preview {
-  --back: var(--grey2);
-  --fore: var(--grey1);
+  --background: var(--grey2);
+  --foreground: var(--grey1);
 
   border: 1px solid #ebebeb;
   width: 100%;
@@ -78,4 +78,10 @@
   display: flex;
   gap: 32px;
   box-shadow: 0 0 20px 2px #ebebeb;
+}
+
+.preview[data-ds-color-mode='dark'],
+.preview[data-ds-color-mode='contrast'] {
+  --background: var(--grey1);
+  --foreground: var(--grey2);
 }

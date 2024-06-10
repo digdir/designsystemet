@@ -1,5 +1,5 @@
 .components {
-  background-color: var(--back);
+  background-color: var(--background);
   border-radius: 12px;
   width: 100%;
   padding: 24px;
@@ -10,7 +10,7 @@
 }
 
 .card {
-  background-color: var(--fore);
+  background-color: var(--foreground);
   border-radius: 8px;
   padding: 24px;
 }

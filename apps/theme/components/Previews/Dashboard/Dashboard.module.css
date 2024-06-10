@@ -1,5 +1,5 @@
 .dashboard {
-  background-color: var(--back);
+  background-color: var(--background);
   width: 100%;
   position: relative;
   min-height: 815px;
@@ -8,7 +8,7 @@
 }
 
 .sidebar {
-  background-color: var(--fore);
+  background-color: var(--foreground);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -70,7 +70,7 @@
 }
 
 .card {
-  background-color: var(--fore);
+  background-color: var(--foreground);
   padding: 24px;
   border-radius: 8px;
 }
