@@ -8,26 +8,19 @@ import {
   Link,
   Spinner,
 } from '@digdir/designsystemet-react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+import { Toast } from '@ui/components/Toast/Toast';
+
+import type { JsonInput } from '../../../common/types';
 
 function PageOne() {
   const [jsonText, setJsonText] = useState('');
   const [mode, setMode] = useState('light');
   const [errorText, setErrorText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [buttonText, setButtonText] = useState('Oppdater variabler');
-  useEffect(() => {
-    window.onmessage = (event: {
-      data: { pluginMessage: { type: string; message: string } };
-    }) => {
-      const { type, message } = event.data.pluginMessage;
-      if (type === 'create-rectangles') {
-        console.log(`Figma Says: ${message}`);
-      }
-    };
-  }, []);
 
-  const isValidJson = (str: string) => {
+  const isJsonValid = (str: string) => {
     try {
       JSON.parse(str);
     } catch (e) {
@@ -36,33 +29,54 @@ function PageOne() {
     return true;
   };
 
+  const isJsonCorrect = (str: string) => {
+    try {
+      const obj = JSON.parse(str) as JsonInput;
+      if (
+        obj.theme.accent &&
+        obj.theme.neutral &&
+        obj.theme.brand1 &&
+        obj.theme.brand2 &&
+        obj.theme.brand3
+      ) {
+        return true;
+      }
+    } catch (e) {
+      return false;
+    }
+    return false;
+  };
+
   const onSubmit = () => {
     if (isLoading) {
       return;
     }
+
     if (jsonText === '') {
       setErrorText('Dette feltet er påkrevd.');
       return;
     }
 
-    if (!isValidJson(jsonText)) {
+    if (!isJsonValid(jsonText) || !isJsonCorrect(jsonText)) {
       setErrorText('Ugyldig JSON, prøv å kopier og lim inn på nytt.');
       setJsonText('');
       return;
     }
 
-    parent.postMessage(
-      { pluginMessage: { type: 'update-variables', text: jsonText, mode } },
-      '*',
-    );
-
-    setButtonText('Oppdaterer...');
     setIsLoading(true);
+    setErrorText('');
+    setJsonText('');
+
+    setTimeout(() => {
+      parent.postMessage(
+        { pluginMessage: { type: 'update-variables', text: jsonText, mode } },
+        '*',
+      );
+    }, 400);
 
     setTimeout(() => {
       setIsLoading(false);
-      setButtonText('Oppdater variabler');
-    }, 6000);
+    }, 7900);
   };
   return (
     <div className='content'>
@@ -115,16 +129,11 @@ function PageOne() {
         <Button
           onClick={() => onSubmit()}
           size='sm'
+          className='button'
         >
-          {isLoading && (
-            <Spinner
-              color='accent'
-              title='loading'
-              size='xs'
-            />
-          )}
-          {buttonText}
+          Oppdater variabler
         </Button>
+        {isLoading && <Toast />}
       </div>
     </div>
   );

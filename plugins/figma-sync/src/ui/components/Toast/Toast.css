@@ -1,0 +1,24 @@
+.toast {
+  position: fixed;
+  z-index: 5;
+  bottom: -20px;
+  border-radius: 4px;
+  left: 16px;
+  right: 16px;
+  background-color: var(--ds-color-accent-surface-default);
+  box-shadow: var(--ds-shadow-xs);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  transition: 0.4s all ease-out;
+}
+
+.toastActive {
+  bottom: 65px;
+}
+
+.toastClose {
+  bottom: -20px;
+}

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-figma.showUI(__html__, { width: 600, height: 570 });
+
+figma.showUI(__html__, { width: 600, height: 575 });
 
 function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -20,12 +21,14 @@ function UpdateColor(
   modeId: string,
   variable: Variable,
 ) {
-  const number = variable.name.split('/')[2];
+  const suffix = variable.name.split('/')[2];
   if (variable.name.startsWith(`theme/${type}`)) {
     for (const [key, value] of Object.entries(obj)) {
-      if (key === number) {
+      if (key === suffix) {
         const rgb = hexToRgb(value['value'] as string);
-        variable.setValueForMode(modeId, rgb || { r: 0.2, g: 0.4, b: 0.6 });
+        if (rgb) {
+          variable.setValueForMode(modeId, rgb);
+        }
       }
     }
   }
@@ -39,50 +42,32 @@ function getModeIndex(mode: string) {
   }
 }
 
-type OBJ = {
-  theme: {
-    accent: object;
-    neutral: object;
-    brand1: object;
-    brand2: object;
-    brand3: object;
-  };
-};
-
 figma.ui.onmessage = (msg: { type: string; text: string; mode: string }) => {
-  // One way of distinguishing between different types of messages sent from
-  // your HTML page is to use an object with a "type" property like this.
   if (msg.type === 'update-variables') {
-    const nodes: SceneNode[] = [];
-    const obj: OBJ = JSON.parse(msg.text);
-    const accent = obj['theme']['accent'];
-    const neutral = obj['theme']['neutral'];
-    const brand1 = obj['theme']['brand1'];
-    const brand2 = obj['theme']['brand2'];
-    const brand3 = obj['theme']['brand3'];
+    const obj = JSON.parse(msg.text);
+    const accent = obj['theme']['accent'] as object;
+    const neutral = obj['theme']['neutral'] as object;
+    const brand1 = obj['theme']['brand1'] as object;
+    const brand2 = obj['theme']['brand2'] as object;
+    const brand3 = obj['theme']['brand3'] as object;
 
-    figma.variables
-      .getVariableCollectionByIdAsync('VariableCollectionId:34811:5472')
-      .then((collection) => {
-        if (collection) {
+    figma.variables.getLocalVariableCollectionsAsync().then((collections) => {
+      for (const collection of collections) {
+        if (collection.name === 'Mode') {
           figma.variables.getLocalVariablesAsync('COLOR').then((variables) => {
             const modeId: string =
               collection.modes[getModeIndex(msg.mode)].modeId;
 
-            for (let i = 0; i < variables.length; i++) {
-              UpdateColor('accent', accent, modeId, variables[i]);
-              UpdateColor('neutral', neutral, modeId, variables[i]);
-              UpdateColor('brand1', brand1, modeId, variables[i]);
-              UpdateColor('brand2', brand2, modeId, variables[i]);
-              UpdateColor('brand3', brand3, modeId, variables[i]);
+            for (const variable of variables) {
+              UpdateColor('accent', accent, modeId, variable);
+              UpdateColor('neutral', neutral, modeId, variable);
+              UpdateColor('brand1', brand1, modeId, variable);
+              UpdateColor('brand2', brand2, modeId, variable);
+              UpdateColor('brand3', brand3, modeId, variable);
             }
           });
-        } else {
-          console.error('Variable collection is null.');
         }
-      });
-
-    figma.currentPage.selection = nodes;
-    figma.viewport.scrollAndZoomIntoView(nodes);
+      }
+    });
   }
 };
