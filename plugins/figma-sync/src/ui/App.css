@@ -11,7 +11,7 @@ body {
 }
 
 .content {
-  padding: 8px 12px 8px 8px;
+  padding: 6px;
 }
 
 .heading {
@@ -20,6 +20,7 @@ body {
 
 .paragraph {
   margin-bottom: 20px;
+  max-width: 85%;
 }
 
 .modes {

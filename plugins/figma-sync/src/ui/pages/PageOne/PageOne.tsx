@@ -6,12 +6,16 @@ import {
   Textarea,
   Button,
   Link,
+  Spinner,
 } from '@digdir/designsystemet-react';
 import React, { useEffect, useState } from 'react';
 
 function PageOne() {
-  const [text, setText] = useState('');
+  const [jsonText, setJsonText] = useState('');
   const [mode, setMode] = useState('light');
+  const [errorText, setErrorText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState('Oppdater variabler');
   useEffect(() => {
     window.onmessage = (event: {
       data: { pluginMessage: { type: string; message: string } };
@@ -23,12 +27,42 @@ function PageOne() {
     };
   }, []);
 
-  const onCreate = () => {
+  const isValidJson = (str: string) => {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  };
+
+  const onSubmit = () => {
+    if (isLoading) {
+      return;
+    }
+    if (jsonText === '') {
+      setErrorText('Dette feltet er påkrevd.');
+      return;
+    }
+
+    if (!isValidJson(jsonText)) {
+      setErrorText('Ugyldig JSON, prøv å kopier og lim inn på nytt.');
+      setJsonText('');
+      return;
+    }
+
     parent.postMessage(
-      { pluginMessage: { type: 'update-variables', text, mode } },
+      { pluginMessage: { type: 'update-variables', text: jsonText, mode } },
       '*',
     );
-    setText('');
+
+    setButtonText('Oppdaterer...');
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setButtonText('Oppdater variabler');
+    }, 6000);
   };
   return (
     <div className='content'>
@@ -44,15 +78,15 @@ function PageOne() {
           size='sm'
           className='paragraph'
         >
-          Oppdatere Figma variabler i Core UI Kit via designsystemet sin
-          temavelger. Gå inn på{' '}
+          Oppdater fargene i Core UI Kit via designsystemet sin temagenerator.
+          Gå inn på{' '}
           <Link
             target='_blank'
             href='https://theme.designsystemet.no/'
           >
             theme.designsystemet.no
           </Link>{' '}
-          og lag temaet ditt, så lim inn JSON i feltet under.
+          og lag temaet ditt, velg mode og lim inn JSON i feltet under.
         </Paragraph>
 
         <ToggleGroup
@@ -62,27 +96,34 @@ function PageOne() {
           size='sm'
           onChange={(e) => setMode(e)}
         >
-          <ToggleGroup.Item value='light'>Light</ToggleGroup.Item>
-          <ToggleGroup.Item value='dark'>Dark</ToggleGroup.Item>
-          <ToggleGroup.Item value='contrast'>Contrast</ToggleGroup.Item>
+          <ToggleGroup.Item value='light'>Light Mode</ToggleGroup.Item>
+          <ToggleGroup.Item value='dark'>Dark Mode</ToggleGroup.Item>
+          {/* <ToggleGroup.Item value='contrast'>Contrast</ToggleGroup.Item> */}
         </ToggleGroup>
         <Textarea
           className='textarea'
           cols={40}
           rows={7}
-          placeholder='Lim inn JSON her...'
+          placeholder='Lim inn JSON her'
           description=''
-          error=''
+          error={errorText}
           label='JSON'
           size='sm'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={jsonText}
+          onChange={(e) => setJsonText(e.target.value)}
         />
         <Button
-          onClick={() => onCreate()}
+          onClick={() => onSubmit()}
           size='sm'
         >
-          Oppdater variabler
+          {isLoading && (
+            <Spinner
+              color='accent'
+              title='loading'
+              size='xs'
+            />
+          )}
+          {buttonText}
         </Button>
       </div>
     </div>
