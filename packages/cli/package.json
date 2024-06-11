@@ -30,17 +30,17 @@
     "@commander-js/extra-typings": "^12.0.1",
     "@tokens-studio/sd-transforms": "^0.16.1",
     "chalk": "^5.3.0",
+    "chroma-js": "^2.4.2",
     "commander": "^12.0.0",
     "fast-glob": "^3.3.2",
+    "hsluv": "^1.0.1",
     "jscodeshift": "^0.15.2",
     "object-hash": "^3.0.0",
     "postcss": "^8.4.38",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
     "style-dictionary": "^4.0.0-prerelease.34",
-    "tsup": "^8.0.2",
-    "chroma-js": "^2.4.2",
-    "hsluv": "^1.0.1"
+    "tsup": "^8.0.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
