@@ -22,6 +22,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
     >
       <button
         {...useTabRest}
+        type='button'
         className={cl('ds-tabs__tab', 'ds-focus', className)}
         ref={ref}
       >
