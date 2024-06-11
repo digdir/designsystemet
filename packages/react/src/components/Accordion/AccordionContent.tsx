@@ -2,9 +2,10 @@ import cl from 'clsx/lite';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { AnimateHeight } from '../../../utilities/AnimateHeight';
-import { Paragraph } from '../../..';
-import { AccordionItemContext } from '../AccordionItem';
+import { AnimateHeight } from '../../utilities/AnimateHeight';
+import { Paragraph } from '..';
+
+import { AccordionItemContext } from './AccordionItem';
 
 export type AccordionContentProps = {
   /** Content inside `Accordion.Content`*/

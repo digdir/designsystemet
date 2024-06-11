@@ -3,8 +3,9 @@ import cl from 'clsx/lite';
 import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Paragraph, Heading } from '../..';
-import { AccordionItemContext } from '../AccordionItem';
+import { Paragraph, Heading } from '..';
+
+import { AccordionItemContext } from './AccordionItem';
 
 export type AccordionHeaderProps = {
   /** Heading level. Use this to make sure the heading is correct according to you page heading levels */
