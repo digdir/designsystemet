@@ -2,14 +2,14 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
 import type { ChangeEvent } from 'react';
-
-import { ColorPicker } from '../ColorPicker/ColorPicker';
-import { TokenModal } from '../TokenModal/TokenModal';
 import type {
   ColorError,
   ColorType,
   ContrastMode,
-} from '../../utils/themeUtils';
+} from '@digdir/designsystemet/color';
+
+import { ColorPicker } from '../ColorPicker/ColorPicker';
+import { TokenModal } from '../TokenModal/TokenModal';
 import { useThemeStore } from '../../store';
 
 import classes from './ThemeToolbar.module.css';

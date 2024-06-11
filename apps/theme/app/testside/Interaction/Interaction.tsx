@@ -2,24 +2,23 @@
 import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
-
-import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './Interaction.module.css';
 
 type InteractionProps = {
-  theme1: ThemeType;
-  theme2: ThemeType;
-  theme3: ThemeType;
-  theme4: ThemeType;
-  theme5: ThemeType;
-  theme6: ThemeType;
-  theme7: ThemeType;
-  theme8: ThemeType;
-  theme9: ThemeType;
-  theme10: ThemeType;
-  theme11: ThemeType;
-  theme12: ThemeType;
+  theme1: ThemeInfo;
+  theme2: ThemeInfo;
+  theme3: ThemeInfo;
+  theme4: ThemeInfo;
+  theme5: ThemeInfo;
+  theme6: ThemeInfo;
+  theme7: ThemeInfo;
+  theme8: ThemeInfo;
+  theme9: ThemeInfo;
+  theme10: ThemeInfo;
+  theme11: ThemeInfo;
+  theme12: ThemeInfo;
 };
 
 export const Interaction = ({
@@ -97,7 +96,7 @@ export const Interaction = ({
 
 type ColumnProps = {
   title: string;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
 };
 
 const Column = ({ title, scales }: ColumnProps) => {
@@ -139,7 +138,7 @@ const Column = ({ title, scales }: ColumnProps) => {
 
 type BoxProps = {
   colorIndex: number;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
   type: 'base' | 'surface';
   columnTitle: string;
 };

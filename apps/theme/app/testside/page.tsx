@@ -3,9 +3,9 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
+import type { ColorInfo } from '@digdir/designsystemet/color';
+import { generateThemeForColor } from '@digdir/designsystemet/color';
 
-import type { ColorInfoType } from '../../utils/themeUtils';
-import { generateThemeForColor } from '../../utils/themeUtils';
 import { Settings } from '../../settings';
 import { Header, Container } from '../../components';
 
@@ -35,7 +35,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
 
 const Row = (
   title: string,
-  colors: ColorInfoType[],
+  colors: ColorInfo[],
   whiteText: boolean = false,
 ) => {
   return (
