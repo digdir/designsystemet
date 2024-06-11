@@ -46,8 +46,6 @@ StyleDictionary.registerTransformGroup({
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
-const isNumeric = (string: string) => /^[+-]?\d+(\.\d+)?$/.test(string);
-
 const outputColorReferences = (token: TransformedToken) => {
   if (
     R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
@@ -165,7 +163,16 @@ export const cssTypographyConfig: GetConfig = ({ outPath, theme, typography }) =
           {
             destination: `typography.css`,
             format: cssClassesTypography.name,
-            filter: (token) => token.type === 'typography',
+            filter: (token) => ['typography', 'fontWeights'].includes(token.type as string),
+            outputColorReferences: (token: TransformedToken) => {
+              const type = token.$type ?? token.type;
+
+              if (type === 'fontWeights') {
+                return true;
+              }
+
+              return false;
+            },
           },
         ],
         options: {
