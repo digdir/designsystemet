@@ -8,7 +8,10 @@ import { Paragraph, Heading } from '..';
 import { AccordionItemContext } from './AccordionItem';
 
 export type AccordionHeaderProps = {
-  /** Heading level. Use this to make sure the heading is correct according to you page heading levels */
+  /**
+   * Heading level. Use this to make sure the heading is correct according to you page heading levels
+   * @default 1
+   */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Handle when clicked on header */
   onHeaderClick?: MouseEventHandler<HTMLButtonElement> | undefined;

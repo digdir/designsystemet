@@ -12,9 +12,7 @@ const TestComponent = ({
   return (
     <Accordion>
       <Accordion.Item {...rest}>
-        <Accordion.Header level={3}>
-          Accordion Header Title Text
-        </Accordion.Header>
+        <Accordion.Header>Accordion Header Title Text</Accordion.Header>
         <Accordion.Content>
           The fantastic accordion content text
         </Accordion.Content>
@@ -31,10 +29,10 @@ describe('Accordion', () => {
     expect(
       screen.getByRole('heading', {
         name: 'Accordion Header Title Text',
-        level: 3,
       }),
     ).toBeInTheDocument();
     expect(screen.getByText('The fantastic accordion content text'));
+    expect(screen.getByText('Accordion Header Title Text'));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 
@@ -42,6 +40,31 @@ describe('Accordion', () => {
     render(<TestComponent open />);
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('Should be able to set defaultOpen on uncontrolled', () => {
+    render(<TestComponent defaultOpen />);
+
+    const accordionExpandButton = screen.getByRole('button');
+    expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('should be able to render AccordionItem as controlled', () => {
+    render(<TestComponent open />);
+
+    const accordionExpandButton = screen.getByRole('button');
+    expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('should render heading as level 1 by default', () => {
+    render(<TestComponent />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Accordion Header Title Text',
+        level: 1,
+      }),
+    );
   });
 });
 
