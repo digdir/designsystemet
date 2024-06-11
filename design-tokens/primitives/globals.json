@@ -151,35 +151,39 @@
   "border-radius": {
     "2": {
       "type": "borderRadius",
-      "value": "2"
+      "value": "{border-radius.base}*0.5"
     },
     "4": {
       "type": "borderRadius",
-      "value": "4"
+      "value": "{border-radius.base} *1"
     },
     "8": {
       "type": "borderRadius",
-      "value": "8"
+      "value": "{border-radius.base} *2"
     },
     "12": {
       "type": "borderRadius",
-      "value": "12"
+      "value": "{border-radius.base} *3"
     },
     "16": {
       "type": "borderRadius",
-      "value": "16"
+      "value": "{border-radius.base} *4"
     },
     "24": {
       "type": "borderRadius",
-      "value": "24"
+      "value": "{border-radius.base} *6"
     },
     "32": {
       "type": "borderRadius",
-      "value": "32"
+      "value": "{border-radius.base} *8"
     },
     "9999": {
       "type": "borderRadius",
       "value": "9999"
+    },
+    "base": {
+      "type": "borderRadius",
+      "value": "4"
     }
   },
   "opacity": {
