@@ -56,8 +56,8 @@ export const useThemeStore = create(
       color: Settings.brand3BaseColor,
     },
     selectedColor: {
-      hexColor: '#ffffff',
-      colorNumber: 1,
+      hex: '#ffffff',
+      number: 1,
       name: 'Default',
     },
     setSelectedColor: (color) => set({ selectedColor: color }),

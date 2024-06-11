@@ -44,7 +44,7 @@ export const Group = ({
               colorNumber={5}
               contrast={'dd'}
               lightness={'dd'}
-              hex={item.hexColor}
+              hex={item.hex}
               showColorMeta={showColorMeta}
             />
           );

@@ -210,14 +210,11 @@ export default function Home() {
    */
   const getColorError = (scale: ColorInfoType[]) => {
     const contrast = areColorsContrasting(
-      scale[8].hexColor as CssColor,
+      scale[8].hex as CssColor,
       '#ffffff',
       'decorative',
     );
-    const textCanBeUsed = canTextBeUsedOnColors(
-      scale[8].hexColor,
-      scale[10].hexColor,
-    );
+    const textCanBeUsed = canTextBeUsedOnColors(scale[8].hex, scale[10].hex);
 
     if (!contrast && textCanBeUsed) {
       return 'decorative';
@@ -234,7 +231,7 @@ export default function Home() {
 
       <ColorModal
         name={selectedColor.name}
-        color={selectedColor.hexColor}
+        color={selectedColor.hex}
         colorModalRef={colorModalRef}
       />
 

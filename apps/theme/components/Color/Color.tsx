@@ -30,12 +30,12 @@ const Color = ({
       <button
         onClick={() => {
           setSelectedColor({
-            hexColor: color.hexColor,
-            colorNumber: color.colorNumber,
+            hex: color.hex,
+            number: color.number,
             name: color.name,
           });
         }}
-        style={{ backgroundColor: color.hexColor }}
+        style={{ backgroundColor: color.hex }}
         className={cl(classes.box, featured && classes.featured)}
       ></button>
 

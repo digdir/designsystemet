@@ -20,7 +20,7 @@ const setTokens = (lightColors: ColorInfoType[], type: string) => {
     for (let i = 0; i < lightColors.length; i++) {
       previewElement.style.setProperty(
         '--' + type + (i + 1),
-        lightColors[i].hexColor,
+        lightColors[i].hex,
       );
     }
   }
@@ -31,8 +31,8 @@ const generateDefaultColors = () => {
 
   for (let i = 0; i < 14; i++) {
     arr.push({
-      hexColor: '#ffffff',
-      colorNumber: 1,
+      hex: '#ffffff',
+      number: 1,
       name: 'Default',
     });
   }
