@@ -3,6 +3,7 @@
   max-width: 100%;
   overflow-x: auto;
   width: 100%;
+  border-radius: var(--ds-border-radius-md);
 }
 
 .copyContainer {
@@ -17,23 +18,9 @@
 }
 
 .icon {
-  pointer-events: auto;
   position: absolute;
   top: 24px;
   right: 24px;
   height: 40px;
   width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #3b434d;
-  color: white;
-  border-radius: var(--ds-border-radius-md);
-  border: none;
-  transition: 0.15s all;
-  cursor: pointer;
-}
-
-.icon:hover {
-  background-color: #575e68;
 }
