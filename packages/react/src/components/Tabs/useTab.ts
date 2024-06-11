@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 import { useContext, useId } from 'react';
 
-import { TabsContext } from '../Tabs';
+import { TabsContext } from './Tabs';
 
-import type { TabProps } from './Tab';
+import type { TabProps } from '.';
 
 type UseTab = (
   props: TabProps,
