@@ -439,7 +439,9 @@ export const Components = () => {
         </Combobox>
         <Textarea
           cols={40}
+          rows={3}
           description=''
+          placeholder='Skriv her...'
           error=''
           label='Ekstra informasjon'
           size='sm'
