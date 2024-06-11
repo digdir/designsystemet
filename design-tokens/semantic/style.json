@@ -309,117 +309,117 @@
   "border-radius": {
     "sm": {
       "type": "borderRadius",
-      "value": "{border-radius.2}"
+      "value": "{border-radius.base}*0.5"
     },
     "md": {
       "type": "borderRadius",
-      "value": "{border-radius.4}"
+      "value": "{border-radius.base}*1"
     },
     "lg": {
       "type": "borderRadius",
-      "value": "{border-radius.8}"
+      "value": "{border-radius.base}*2"
     },
     "xl": {
       "type": "borderRadius",
-      "value": "{border-radius.12}"
+      "value": "{border-radius.base}*3"
     },
     "2xl": {
       "type": "borderRadius",
-      "value": "{border-radius.16}"
+      "value": "{border-radius.base}*4"
     },
     "3xl": {
       "type": "borderRadius",
-      "value": "{border-radius.24}"
+      "value": "{border-radius.base}*6"
     },
     "4xl": {
       "type": "borderRadius",
-      "value": "{border-radius.32}"
+      "value": "{border-radius.base}*8"
     },
     "full": {
       "type": "borderRadius",
-      "value": "{border-radius.9999}"
+      "value": "9999"
     }
   },
   "spacing": {
     "0": {
       "type": "spacing",
-      "value": "{sizing.base}*0"
+      "value": "{spacing.base}*0"
     },
     "1": {
       "type": "spacing",
-      "value": "{sizing.base}*1"
+      "value": "{spacing.base}*1"
     },
     "2": {
       "type": "spacing",
-      "value": "{sizing.base}*2"
+      "value": "{spacing.base}*2"
     },
     "3": {
       "type": "spacing",
-      "value": "{sizing.base}*3"
+      "value": "{spacing.base}*3"
     },
     "4": {
       "type": "spacing",
-      "value": "{sizing.base}*4"
+      "value": "{spacing.base}*4"
     },
     "5": {
       "type": "spacing",
-      "value": "{sizing.base}*5"
+      "value": "{spacing.base}*5"
     },
     "6": {
       "type": "spacing",
-      "value": "{sizing.base}*6"
+      "value": "{spacing.base}*6"
     },
     "7": {
       "type": "spacing",
-      "value": "{sizing.base}*7"
+      "value": "{spacing.base}*7"
     },
     "8": {
       "type": "spacing",
-      "value": "{sizing.base}*8"
+      "value": "{spacing.base}*8"
     },
     "9": {
       "type": "spacing",
-      "value": "{sizing.base}*9"
+      "value": "{spacing.base}*9"
     },
     "10": {
       "type": "spacing",
-      "value": "{sizing.base}*10"
+      "value": "{spacing.base}*10"
     },
     "11": {
       "type": "spacing",
-      "value": "{sizing.base}*11"
+      "value": "{spacing.base}*11"
     },
     "12": {
       "type": "spacing",
-      "value": "{sizing.base}*12"
+      "value": "{spacing.base}*12"
     },
     "13": {
       "type": "spacing",
-      "value": "{sizing.base}*13"
+      "value": "{spacing.base}*13"
     },
     "14": {
       "type": "spacing",
-      "value": "{sizing.base}*14"
+      "value": "{spacing.base}*14"
     },
     "15": {
       "type": "spacing",
-      "value": "{sizing.base}*15"
+      "value": "{spacing.base}*15"
     },
     "18": {
       "type": "spacing",
-      "value": "{sizing.base}*18"
+      "value": "{spacing.base}*18"
     },
     "22": {
       "type": "spacing",
-      "value": "{sizing.base}*22"
+      "value": "{spacing.base}*22"
     },
     "26": {
       "type": "spacing",
-      "value": "{sizing.base}*26"
+      "value": "{spacing.base}*26"
     },
     "30": {
       "type": "spacing",
-      "value": "{sizing.base}*30"
+      "value": "{spacing.base}*30"
     }
   },
   "sizing": {
