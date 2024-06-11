@@ -25,8 +25,6 @@
     --dsc-link-color-active: var(--ds-color-accent-text-default);
     --dsc-link-color-active-background: var(--ds-color-accent-surface-default);
     --dsc-link-color-visited: var(--ds-global-purple-12);
-    --dsc-link-color-focus: var(--ds-focus-inner);
-    --dsc-link-color-focus-background: var(--ds-focus-outer);
   }
 
   .ds-link--neutral {
@@ -35,8 +33,6 @@
     --dsc-link-color-active: var(--ds-color-neutral-text-subtle);
     --dsc-link-color-active-background: var(--ds-color-neutral-surface-default);
     --dsc-link-color-visited: var(--ds-global-purple-12);
-    --dsc-link-color-focus: var(--ds-focus-inner);
-    --dsc-link-color-focus-background: var(--ds-focus-outer);
   }
 
   .ds-link:visited {
