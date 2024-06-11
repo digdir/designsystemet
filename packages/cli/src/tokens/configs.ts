@@ -1,5 +1,6 @@
 import * as tokenStudio from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
+import { outputReferencesFilter } from 'style-dictionary/utils';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
@@ -7,7 +8,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
-import { cssClassesTypography } from './formats/css-classes.js';
+import { cssClassesTypography } from './formats/css-classes';
 import { makeEntryFile } from './actions.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);
@@ -28,21 +29,18 @@ StyleDictionary.registerFormat(cssClassesTypography);
 
 StyleDictionary.registerAction(makeEntryFile);
 
-StyleDictionary.registerTransformGroup({
-  name: 'ds/css',
-  transforms: [
-    `ts/resolveMath`,
-    'ts/typography/fontWeight',
-    nameKebab.name,
-    sizeRem.name,
-    typographyShorthand.name,
-    'ts/color/modifiers',
-    'ts/color/css/hexrgba',
-    'ts/size/lineheight',
-    'ts/size/px',
-    'ts/shadow/css/shorthand',
-  ],
-});
+const dsTransformers = [
+  nameKebab.name,
+  `ts/resolveMath`,
+  'ts/size/px',
+  sizeRem.name,
+  'ts/typography/fontWeight',
+  typographyShorthand.name,
+  'ts/color/modifiers',
+  'ts/color/css/hexrgba',
+  'ts/size/lineheight',
+  'ts/shadow/css/shorthand',
+];
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 
@@ -74,6 +72,8 @@ type GetConfig = (options: {
 export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
 
+  const baseTypes = ['spacing', 'sizing', 'borderRadius'];
+
   return {
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
@@ -85,21 +85,35 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
         theme,
         basePxFontSize,
         selector,
+        baseTypes,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
-        transformGroup: 'ds/css',
+        transforms: dsTransformers,
         actions: [makeEntryFile.name],
         files: [
           {
             destination: `${mode}.css`,
             format: cssVariables.name,
-            filter: (token) => !token.isSource,
+            filter: (token, options) => {
+              const { usesDtcg } = options;
+              const type = (usesDtcg ? token.$type : token.type) || '';
+
+              return !token.isSource || baseTypes.includes(type);
+            },
           },
         ],
         options: {
           fileHeader,
-          outputReferences: outputColorReferences,
+          outputReferences: (token, options) => {
+            const { usesDtcg } = options;
+            const type = (usesDtcg ? token.$type : token.type) || '';
+
+            const isBaseType = baseTypes.includes(type);
+            const isInterestedColor = outputColorReferences(token);
+
+            return (isInterestedColor || isBaseType) && outputReferencesFilter(token, options);
+          },
         },
       },
     },
@@ -114,7 +128,7 @@ export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) 
       ts: {
         prefix,
         basePxFontSize,
-        transformGroup: 'ds/css',
+        transforms: dsTransformers,
         buildPath: `${outPath}/${theme}/`,
         files: [
           {
