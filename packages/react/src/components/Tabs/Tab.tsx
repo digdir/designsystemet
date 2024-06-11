@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
-import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
+import { RovingTabindexItem } from '../../utilities/RovingTabIndex';
 
 import { useTabItem } from './useTab';
 

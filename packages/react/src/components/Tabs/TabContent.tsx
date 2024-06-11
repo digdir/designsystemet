@@ -2,8 +2,9 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import cl from 'clsx/lite';
 
-import { TabsContext } from '../Tabs';
-import { Paragraph } from '../../Typography';
+import { Paragraph } from '../Typography';
+
+import { TabsContext } from './Tabs';
 
 export type TabContentProps = {
   /** When this value is selected as the current state, render this `TabContent` component*/
