@@ -2,14 +2,13 @@
   .ds-accordion {
     --dsc-accordion-border-radius: var(--ds-border-radius-md);
     --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-accordion-border-divider-color: var(--ds-color-neutral-border-subtle);
     --dsc-accordion-background: var(--ds-color-neutral-background-default);
     --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
     --dsc-accordion-button-background-open: var(--ds-color-neutral-background-subtle);
     --dsc-accordion-icon-background-hover: var(--ds-color-neutral-surface-default);
     --dsc-accordion-icon-background-active: var(--ds-color-neutral-surface-default);
 
-    border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+    border-bottom: 1px solid var(--dsc-accordion-border-color);
     box-sizing: border-box;
     background-color: var(--dsc-accordion-background);
   }
@@ -21,12 +20,7 @@
 
   .ds-accordion__expand-icon {
     border-radius: var(--ds-border-radius-md);
-    fill: var(--ds-color-neutral-text-default);
     color: var(--ds-color-neutral-text-default);
-  }
-
-  .ds-accordion__expand-icon path {
-    fill: var(--ds-color-neutral-text-default);
   }
 
   .ds-accordion__content {
@@ -37,24 +31,31 @@
 
   .ds-accordion__header {
     margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--ds-spacing-2);
+    text-align: left;
+    border: none;
+    border-top: 1px solid var(--dsc-accordion-border-color);
+    background-color: var(--dsc-accordion-button-background);
   }
 
   .ds-accordion__button {
+    cursor: pointer;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: var(--ds-spacing-2);
     margin: 0;
-    text-align: left;
-    cursor: pointer;
-    border: none;
-    border-top: 1px solid var(--ds-color-neutral-border-subtle);
     padding: var(--ds-spacing-4);
-    background-color: var(--dsc-accordion-button-background);
+    background-color: transparent;
+    border: none;
   }
 
-  .ds-accordion__item--open .ds-accordion__button {
+  .ds-accordion__item--open .ds-accordion__header {
     background-color: var(--dsc-accordion-button-background-open);
   }
 
@@ -66,6 +67,34 @@
     transform: rotateZ(180deg);
   }
 
+  .ds-accordion__item:not(:first-child) .ds-accordion__header {
+    border-top: 1px solid var(--dsc-accordion-border-color);
+  }
+
+  .ds-accordion--border .ds-accordion__item:first-child .ds-accordion__header {
+    border-top: 0;
+  }
+
+  .ds-accordion--border .ds-accordion__item:first-of-type .ds-accordion__header:first-of-type {
+    border-top-left-radius: var(--dsc-accordion-border-radius);
+    border-top-right-radius: var(--dsc-accordion-border-radius);
+  }
+
+  .ds-accordion--border .ds-accordion__item:last-of-type:not(.ds-accordion__item--open) .ds-accordion__header:first-of-type {
+    border-bottom-left-radius: var(--dsc-accordion-border-radius);
+    border-bottom-right-radius: var(--dsc-accordion-border-radius);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ds-accordion__header:hover .ds-accordion__expand-icon {
+      background-color: var(--dsc-accordion-icon-background-hover);
+    }
+
+    .ds-accordion__item--open .ds-accordion__header:hover .ds-accordion__expand-icon {
+      background-color: var(--dsc-accordion-icon-background-active);
+    }
+  }
+
   .ds-accordion--neutral {
     --dsc-accordion-background: var(--ds-color-neutral-background-default);
     --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
@@ -75,6 +104,7 @@
 
   .ds-accordion--subtle {
     --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-border-color: var(--ds-color-neutral-border-default);
     --dsc-accordion-button-background: var(--ds-color-neutral-background-subtle);
     --dsc-accordion-button-background-open: var(--ds-color-neutral-surface-default);
     --dsc-accordion-icon-background-hover: var(--ds-color-neutral-surface-default);
@@ -83,6 +113,7 @@
 
   .ds-accordion--brand1 {
     --dsc-accordion-background: var(--ds-color-brand1-background-subtle);
+    --dsc-accordion-border-color: var(--ds-color-brand1-border-subtle);
     --dsc-accordion-button-background: var(--ds-color-brand1-surface-default);
     --dsc-accordion-button-background-open: var(--ds-color-brand1-surface-hover);
     --dsc-accordion-icon-background-hover: var(--ds-color-brand1-surface-active);
@@ -91,6 +122,7 @@
 
   .ds-accordion--brand2 {
     --dsc-accordion-background: var(--ds-color-brand2-background-subtle);
+    --dsc-accordion-border-color: var(--ds-color-brand2-border-subtle);
     --dsc-accordion-button-background: var(--ds-color-brand2-surface-default);
     --dsc-accordion-button-background-open: var(--ds-color-brand2-surface-hover);
     --dsc-accordion-icon-background-hover: var(--ds-color-brand2-surface-active);
@@ -99,39 +131,10 @@
 
   .ds-accordion--brand3 {
     --dsc-accordion-background: var(--ds-color-brand3-background-subtle);
+    --dsc-accordion-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-accordion-button-background: var(--ds-color-brand3-surface-default);
     --dsc-accordion-button-background-open: var(--ds-color-brand3-surface-hover);
     --dsc-accordion-icon-background-hover: var(--ds-color-brand3-surface-active);
     --dsc-accordion-icon-background-active: var(--ds-color-brand3-surface-active);
-  }
-
-  .ds-accordion--border .ds-accordion__item:first-child .ds-accordion__button {
-    border-top: 0;
-  }
-
-  .ds-accordion--brand1 .ds-accordion__item:not(:first-child) .ds-accordion__button,
-  .ds-accordion--brand2 .ds-accordion__item:not(:first-child) .ds-accordion__button,
-  .ds-accordion--brand3 .ds-accordion__item:not(:first-child) .ds-accordion__button {
-    border-top: 1px solid var(--dsc-accordion-border-divider-color);
-  }
-
-  .ds-accordion--border .ds-accordion__item:first-of-type .ds-accordion__button:first-of-type {
-    border-top-left-radius: var(--dsc-accordion-border-radius);
-    border-top-right-radius: var(--dsc-accordion-border-radius);
-  }
-
-  .ds-accordion--border .ds-accordion__item:last-of-type:not(.ds-accordion__item--open) .ds-accordion__button:first-of-type {
-    border-bottom-left-radius: var(--dsc-accordion-border-radius);
-    border-bottom-right-radius: var(--dsc-accordion-border-radius);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .ds-accordion__button:hover .ds-accordion__expand-icon {
-      background-color: var(--dsc-accordion-icon-background-hover);
-    }
-
-    .ds-accordion__item--open .ds-accordion__button:hover .ds-accordion__expand-icon {
-      background-color: var(--dsc-accordion-icon-background-active);
-    }
   }
 }
