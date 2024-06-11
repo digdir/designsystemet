@@ -10,6 +10,9 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "./color": "./src/colors/index.ts"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -2269,7 +2269,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet@workspace:packages/cli":
+"@digdir/designsystemet@workspace:^, @digdir/designsystemet@workspace:packages/cli":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
@@ -22046,6 +22046,7 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
+    "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
