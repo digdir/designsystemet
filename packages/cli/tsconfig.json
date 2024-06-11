@@ -8,10 +8,10 @@
     "emitDeclarationOnly": false,
     "noEmit": false,
     "esModuleInterop": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "sourceMap": false
   },
   "rootDir": "./src",
-  "include": ["./src/", "./bin/", "./declarations.d.ts"]
+  "include": ["./src", "./bin/", "./declarations.d.ts"]
 }
