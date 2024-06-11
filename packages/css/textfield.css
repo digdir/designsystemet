@@ -5,11 +5,11 @@
   }
 
   .ds-textfield__adornment {
-    color: var(--ds-color-neutral-border-strong);
+    color: var(--ds-color-neutral-text-subtle);
     background: var(--ds-color-neutral-background-subtle);
     padding: 9px var(--ds-spacing-4);
     border-radius: var(--ds-border-radius-md);
-    border: solid 1px var(--ds-color-neutral-border-strong);
+    border: solid 1px var(--ds-color-neutral-border-default);
     box-sizing: border-box;
     display: inline-block;
   }
