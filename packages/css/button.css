@@ -1,12 +1,27 @@
 @layer ds.btn {
   .ds-btn {
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+    --dsc-btn-primary-background: var(--ds-color-accent-base-default);
+    --dsc-btn-primary-hover-background: var(--ds-color-accent-base-hover);
+    --dsc-btn-primary-active-background: var(--ds-color-accent-base-active);
+    --dsc-btn-primary-hover-color: var(--ds-color-accent-contrast-default);
+    --dsc-btn-secondary-color: var(--ds-color-accent-text-default);
+    --dsc-btn-secondary-hover-color: var(--ds-color-accent-text-default);
+    --dsc-btn-secondary-active-color: var(--ds-color-accent-text-default);
+    --dsc-btn-secondary-border-color: var(--ds-color-accent-border-strong);
+    --dsc-btn-secondary-hover-background: var(--ds-color-accent-surface-hover);
+    --dsc-btn-secondary-active-background: var(--ds-color-accent-surface-hover);
+    --dsc-btn-tertiary-color: var(--ds-color-accent-text-default);
+    --dsc-btn-tertiary-hover-color: var(--ds-color-accent-text-default);
+    --dsc-btn-tertiary-active-color: var(--ds-color-accent-text-default);
+    --dsc-btn-tertiary-hover-background: var(--ds-color-accent-surface-hover);
+    --dsc-btn-tertiary-active-background: var(--ds-color-accent-surface-hover);
 
     display: flex;
     align-items: center;
     border: var(--ds-border-width-default) solid transparent;
-    background-color: var(--ds-color-accent-base-default);
-    color: var(--ds-color-accent-contrast-default);
+    background-color: var(--dsc-btn-primary-background);
+    color: var(--dsc-btn-primary-color);
     min-width: 2.5em;
     padding: var(--dsc-btn-padding);
     box-sizing: border-box;
@@ -88,141 +103,107 @@
     --dsc-btn-padding: 0;
   }
 
-  /* Primary button colors */
-  .ds-btn--primary:where(.ds-btn--accent) {
-    background-color: var(--ds-color-accent-base-default);
-  }
-
-  .ds-btn--primary:where(.ds-btn--neutral) {
-    background-color: var(--ds-color-neutral-base-default);
-  }
-
-  .ds-btn--primary:where(.ds-btn--danger) {
-    background-color: var(--ds-color-danger-base-default);
-  }
-
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    .ds-btn--primary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--ds-color-accent-base-hover);
+    .ds-btn--primary:not([aria-disabled='true'], :disabled):hover {
+      background-color: var(--dsc-btn-primary-hover-background);
     }
 
-    .ds-btn--primary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--ds-color-neutral-base-hover);
+    .ds-btn--secondary:not([aria-disabled='true'], :disabled):hover {
+      color: var(--dsc-btn-secondary-hover-color);
+      border-color: var(--dsc-btn-secondary-border-color);
+      background-color: var(--dsc-btn-secondary-hover-background);
     }
 
-    .ds-btn--primary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      background-color: var(--ds-color-danger-base-hover);
-    }
-
-    .ds-btn--secondary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-accent-text-default);
-      border-color: var(--ds-color-accent-border-strong);
-      background-color: var(--ds-color-accent-surface-default);
-    }
-
-    .ds-btn--secondary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-neutral-text-default);
-      border-color: var(--ds-color-neutral-border-strong);
-      background-color: var(--ds-color-neutral-surface-default);
-    }
-
-    .ds-btn--secondary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-danger-text-default);
-      border-color: var(--ds-color-danger-border-strong);
-      background-color: var(--ds-color-danger-surface-default);
-    }
-
-    .ds-btn--tertiary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-accent-text-default);
-      background-color: var(--ds-color-accent-surface-default);
-    }
-
-    .ds-btn--tertiary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-neutral-text-default);
-      background-color: var(--ds-color-neutral-surface-default);
-    }
-
-    .ds-btn--tertiary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):hover {
-      color: var(--ds-color-danger-text-default);
-      background-color: var(--ds-color-danger-surface-default);
+    .ds-btn--tertiary:not([aria-disabled='true'], :disabled):hover {
+      color: var(--dsc-btn-tertiary-hover-color);
+      background-color: var(--dsc-btn-tertiary-hover-background);
     }
   }
 
-  .ds-btn--primary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--ds-color-accent-base-active);
+  /* Primary button colors */
+  .ds-btn--primary {
+    background-color: var(--dsc-btn-primary-background);
   }
 
-  .ds-btn--primary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--ds-color-neutral-base-active);
-  }
-
-  .ds-btn--primary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    background-color: var(--ds-color-danger-base-active);
+  .ds-btn--primary:not([aria-disabled='true'], :disabled):active {
+    background-color: var(--dsc-btn-primary-active-background);
   }
 
   /* Secondary button colors */
-  .ds-btn--secondary:where(.ds-btn--accent) {
-    color: var(--ds-color-accent-text-subtle);
-    border-color: var(--ds-color-accent-border-strong);
+  .ds-btn--secondary {
+    color: var(--dsc-btn-secondary-color);
+    border-color: var(--dsc-btn-secondary-border-color);
     background-color: transparent;
   }
 
-  .ds-btn--secondary:where(.ds-btn--neutral) {
-    color: var(--ds-color-neutral-text-subtle);
-    border-color: var(--ds-color-neutral-border-strong);
-    background-color: transparent;
-  }
-
-  .ds-btn--secondary:where(.ds-btn--danger) {
-    color: var(--ds-color-danger-text-subtle);
-    border-color: var(--ds-color-danger-border-strong);
-    background-color: transparent;
-  }
-
-  .ds-btn--secondary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-accent-text-default);
-    border-color: var(--ds-color-accent-border-strong);
-    background-color: var(--ds-color-accent-surface-hover);
-  }
-
-  .ds-btn--secondary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-neutral-text-default);
-    border-color: var(--ds-color-neutral-border-strong);
-    background-color: var(--ds-color-neutral-surface-hover);
-  }
-
-  .ds-btn--secondary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-danger-text-default);
-    border-color: var(--ds-color-danger-border-strong);
-    background-color: var(--ds-color-danger-surface-hover);
+  .ds-btn--secondary:not([aria-disabled='true'], :disabled):active {
+    color: var(--dsc-btn-secondary-active-color);
+    border-color: var(--dsc-btn-secondary-border-color);
+    background-color: var(--dsc-btn-secondary-active-background);
   }
 
   /* Tertiary button colors */
-  .ds-btn--tertiary:where(.ds-btn--accent) {
-    color: var(--ds-color-accent-text-subtle);
+  .ds-btn--tertiary {
+    color: var(--dsc-btn-tertiary-color);
   }
 
-  .ds-btn--tertiary:where(.ds-btn--neutral) {
-    color: var(--ds-color-neutral-text-subtle);
+  .ds-btn--tertiary:not([aria-disabled='true'], :disabled):active {
+    color: var(--dsc-btn-tertiary-active-color);
+    background-color: var(--dsc-btn-tertiary-active-background);
   }
 
-  .ds-btn--tertiary:where(.ds-btn--danger) {
-    color: var(--ds-color-danger-text-subtle);
+  .ds-btn--accent {
+    --dsc-btn-primary-background: var(--ds-color-accent-base-default);
+    --dsc-btn-primary-color: var(--ds-color-accent-contrast-default);
+    --dsc-btn-primary-hover-background: var(--ds-color-accent-base-hover);
+    --dsc-btn-primary-active-background: var(--ds-color-accent-base-active);
+    --dsc-btn-secondary-color: var(--ds-color-accent-text-subtle);
+    --dsc-btn-secondary-hover-color: var(--ds-color-accent-text-default);
+    --dsc-btn-secondary-active-color: var(--ds-color-accent-text-default);
+    --dsc-btn-secondary-border-color: var(--ds-color-accent-border-strong);
+    --dsc-btn-secondary-hover-background: var(--ds-color-accent-surface-default);
+    --dsc-btn-secondary-active-background: var(--ds-color-accent-surface-hover);
+    --dsc-btn-tertiary-color: var(--ds-color-accent-text-subtle);
+    --dsc-btn-tertiary-hover-color: var(--ds-color-accent-text-default);
+    --dsc-btn-tertiary-active-color: var(--ds-color-accent-text-default);
+    --dsc-btn-tertiary-hover-background: var(--ds-color-accent-surface-default);
+    --dsc-btn-tertiary-active-background: var(--ds-color-accent-surface-hover);
   }
 
-  .ds-btn--tertiary:where(.ds-btn--accent):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-accent-text-default);
-    background-color: var(--ds-color-accent-surface-hover);
+  .ds-btn--neutral {
+    --dsc-btn-primary-background: var(--ds-color-neutral-base-default);
+    --dsc-btn-primary-color: var(--ds-color-neutral-contrast-default);
+    --dsc-btn-primary-hover-background: var(--ds-color-neutral-base-hover);
+    --dsc-btn-primary-active-background: var(--ds-color-neutral-base-active);
+    --dsc-btn-secondary-color: var(--ds-color-neutral-text-subtle);
+    --dsc-btn-secondary-hover-color: var(--ds-color-neutral-text-default);
+    --dsc-btn-secondary-active-color: var(--ds-color-neutral-text-default);
+    --dsc-btn-secondary-border-color: var(--ds-color-neutral-border-strong);
+    --dsc-btn-secondary-hover-background: var(--ds-color-neutral-surface-default);
+    --dsc-btn-secondary-active-background: var(--ds-color-neutral-surface-hover);
+    --dsc-btn-tertiary-color: var(--ds-color-neutral-text-subtle);
+    --dsc-btn-tertiary-hover-color: var(--ds-color-neutral-text-default);
+    --dsc-btn-tertiary-active-color: var(--ds-color-neutral-text-default);
+    --dsc-btn-tertiary-hover-background: var(--ds-color-neutral-surface-default);
+    --dsc-btn-tertiary-active-background: var(--ds-color-neutral-surface-hover);
   }
 
-  .ds-btn--tertiary:where(.ds-btn--neutral):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-neutral-text-default);
-    background-color: var(--ds-color-neutral-surface-hover);
-  }
-
-  .ds-btn--tertiary:where(.ds-btn--danger):not([aria-disabled='true'], :disabled):active {
-    color: var(--ds-color-danger-text-default);
-    background-color: var(--ds-color-danger-surface-hover);
+  .ds-btn--danger {
+    --dsc-btn-primary-background: var(--ds-color-danger-base-default);
+    --dsc-btn-primary-color: var(--ds-color-danger-contrast-default);
+    --dsc-btn-primary-hover-background: var(--ds-color-danger-base-hover);
+    --dsc-btn-primary-active-background: var(--ds-color-danger-base-active);
+    --dsc-btn-secondary-color: var(--ds-color-danger-text-subtle);
+    --dsc-btn-secondary-hover-color: var(--ds-color-danger-text-default);
+    --dsc-btn-secondary-active-color: var(--ds-color-danger-text-default);
+    --dsc-btn-secondary-border-color: var(--ds-color-danger-border-strong);
+    --dsc-btn-secondary-hover-background: var(--ds-color-danger-surface-default);
+    --dsc-btn-secondary-active-background: var(--ds-color-danger-surface-hover);
+    --dsc-btn-tertiary-color: var(--ds-color-danger-text-subtle);
+    --dsc-btn-tertiary-hover-color: var(--ds-color-danger-text-default);
+    --dsc-btn-tertiary-active-color: var(--ds-color-danger-text-default);
+    --dsc-btn-tertiary-hover-background: var(--ds-color-danger-surface-default);
+    --dsc-btn-tertiary-active-background: var(--ds-color-danger-surface-hover);
   }
 }
