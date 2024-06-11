@@ -19,7 +19,7 @@
     gap: var(--ds-spacing-1);
   }
 
-  .ds-link__accent {
+  .ds-link--accent {
     --dsc-link-color: var(--ds-color-accent-text-subtle);
     --dsc-link-color-hover: var(--ds-color-accent-text-default);
     --dsc-link-color-active: var(--ds-color-accent-text-default);
@@ -29,7 +29,7 @@
     --dsc-link-color-focus-background: var(--ds-focus-outer);
   }
 
-  .ds-link__neutral {
+  .ds-link--neutral {
     --dsc-link-color: var(--ds-color-neutral-text-default);
     --dsc-link-color-hover: var(--ds-color-neutral-text-subtle);
     --dsc-link-color-active: var(--ds-color-neutral-text-subtle);
