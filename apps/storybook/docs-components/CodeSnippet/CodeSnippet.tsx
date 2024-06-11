@@ -8,7 +8,7 @@ import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import * as prettierEstree from 'prettier/plugins/estree';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Tooltip } from '@digdir/designsystemet-react';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
@@ -62,18 +62,24 @@ const CodeSnippet = ({
   };
 
   return (
-    <div className={classes.codeSnippet}>
+    <div
+      className={classes.codeSnippet}
+      data-ds-color-mode='dark'
+    >
       {snippet && (
         <>
           <Tooltip content={toolTipText}>
-            <button
+            <Button
               onMouseEnter={() => setToolTipText('Kopier')}
               onClick={() => onButtonClick()}
               className={classes.icon}
               title='Kopier'
+              icon
+              color='neutral'
+              size='sm'
             >
-              <FilesIcon fontSize={20} />
-            </button>
+              <FilesIcon fontSize='1.5rem' />
+            </Button>
           </Tooltip>
           <SyntaxHighlighter
             style={nightOwl}
