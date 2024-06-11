@@ -41,8 +41,9 @@ type ThemeGenType = {
 };
 
 export type ColorInfoType = {
-  hexColor: CssColor;
-  colorNumber: ColorNumberType;
+  hex: CssColor;
+
+  number: ColorNumberType;
   name: string;
 };
 
@@ -194,24 +195,27 @@ export const generateScaleForColor = (
   const outputArray: ColorInfoType[] = [];
   for (let i = 0; i < theme.contrastColorValues.length; i++) {
     outputArray.push({
-      hexColor: theme.contrastColorValues[i],
-      colorNumber: (i + 1) as ColorNumberType,
+      hex: theme.contrastColorValues[i],
+
+      number: (i + 1) as ColorNumberType,
       name: getColorNameFromNumber((i + 1) as ColorNumberType),
     });
   }
   outputArray.push({
-    hexColor: calculateContrastOneColor(theme.contrastColorValues[8]),
-    colorNumber: 14,
+    hex: calculateContrastOneColor(theme.contrastColorValues[8]),
+
+    number: 14,
     name: getColorNameFromNumber(14),
   });
   outputArray.push({
-    hexColor: calculateContrastTwoColor(theme.contrastColorValues[8]),
-    colorNumber: 15,
+    hex: calculateContrastTwoColor(theme.contrastColorValues[8]),
+
+    number: 15,
     name: getColorNameFromNumber(15),
   });
 
   if (mode === 'light') {
-    outputArray[8].hexColor = color;
+    outputArray[8].hex = color;
   }
 
   return outputArray;
@@ -270,6 +274,13 @@ export const generateGlobalColors = ({
   };
 };
 
+/**
+ * This function generates a complete theme for a set of colors.
+ *
+ * @param colors Which colors to generate the theme for
+ * @param contrastMode The contrast mode to use
+ * @returns
+ */
 export const generateColorTheme = ({
   colors,
   contrastMode = 'aa',

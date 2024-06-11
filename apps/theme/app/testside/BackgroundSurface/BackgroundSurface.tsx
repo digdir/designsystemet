@@ -119,39 +119,39 @@ const Box = ({ colorScale, backgroundIndex, scales }: BoxProps) => {
   return (
     <div
       className={classes.box}
-      style={{ backgroundColor: colorScale[backgroundIndex].hexColor }}
+      style={{ backgroundColor: colorScale[backgroundIndex].hex }}
     >
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[0][2].hexColor }}
+        style={{ backgroundColor: scales[0][2].hex }}
       ></div>
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[1][2].hexColor }}
+        style={{ backgroundColor: scales[1][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[2][2].hexColor }}
+        style={{ backgroundColor: scales[2][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[3][2].hexColor }}
+        style={{ backgroundColor: scales[3][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[4][2].hexColor }}
+        style={{ backgroundColor: scales[4][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[5][2].hexColor }}
+        style={{ backgroundColor: scales[5][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[6][2].hexColor }}
+        style={{ backgroundColor: scales[6][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[7][2].hexColor }}
+        style={{ backgroundColor: scales[7][2].hex }}
       />
     </div>
   );
