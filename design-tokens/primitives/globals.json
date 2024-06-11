@@ -155,27 +155,27 @@
     },
     "4": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *1"
+      "value": "{border-radius.base}*1"
     },
     "8": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *2"
+      "value": "{border-radius.base}*2"
     },
     "12": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *3"
+      "value": "{border-radius.base}*3"
     },
     "16": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *4"
+      "value": "{border-radius.base}*4"
     },
     "24": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *6"
+      "value": "{border-radius.base}*6"
     },
     "32": {
       "type": "borderRadius",
-      "value": "{border-radius.base} *8"
+      "value": "{border-radius.base}*8"
     },
     "9999": {
       "type": "borderRadius",
