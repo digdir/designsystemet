@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { Accordion } from '..';
+import { Accordion } from '.';
 
 describe('AccordionContent Rendering', () => {
   test('should render ReactNode children', () => {

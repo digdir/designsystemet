@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import { Accordion } from '..';
-
-import type { AccordionItemProps } from './AccordionItem';
+import { Accordion } from '.';
+import type { AccordionItemProps } from '.';
 
 const TestComponent = ({
   ...rest
