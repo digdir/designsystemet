@@ -3,12 +3,11 @@ import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { useEffect, useState } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-
 import {
   getContrastFromLightness,
   getContrastFromHex,
-} from '../../../utils/colorUtils';
-import { calculateContrastOneColor } from '../../../utils/themeUtils';
+  calculateContrastOneColor,
+} from '@digdir/designsystemet/color';
 
 import classes from './BaseContrastOverview.module.css';
 export const BaseContrastOverview = () => {

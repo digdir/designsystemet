@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import cl from 'clsx/lite';
-
-import type { ThemeMode } from '../../utils/themeUtils';
+import type { Mode } from '@digdir/designsystemet/color';
 
 import { Dashboard } from './Dashboard/Dashboard';
 import { Landing } from './Landing/Landing';
@@ -17,8 +16,8 @@ type previewModeType =
   | 'components';
 
 type PreviewsProps = {
-  themeMode: ThemeMode;
-  onThemeModeChange: (themeMode: ThemeMode) => void;
+  themeMode: Mode;
+  onThemeModeChange: (themeMode: Mode) => void;
 };
 
 export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {

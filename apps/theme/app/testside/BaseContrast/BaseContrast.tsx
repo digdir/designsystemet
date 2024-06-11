@@ -1,14 +1,14 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
-import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';
 
 import classes from './BaseContrast.module.css';
 
 type BaseTheme = {
   title: string;
-  theme: ThemeType;
+  theme: ThemeInfo;
 };
 
 type BaseContrastProps = {
@@ -30,7 +30,7 @@ export const BaseContrast = ({ themes }: BaseContrastProps) => {
 };
 
 type BaseColumnProps = {
-  colorTheme: ThemeType;
+  colorTheme: ThemeInfo;
   title: string;
 };
 
@@ -57,7 +57,7 @@ const BaseColumn = ({ colorTheme, title }: BaseColumnProps) => {
 };
 
 type BaseBoxProps = {
-  colorScale: ColorInfoType[];
+  colorScale: ColorInfo[];
   title: string;
 };
 

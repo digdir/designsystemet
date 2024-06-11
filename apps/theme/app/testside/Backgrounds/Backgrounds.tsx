@@ -1,14 +1,13 @@
 import { Heading } from '@digdir/designsystemet-react';
-
-import type { ThemeType } from '../../../utils/themeUtils';
+import type { ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './Backgrounds.module.css';
 
 type BackgroundsProps = {
-  theme1: ThemeType;
-  theme2: ThemeType;
-  theme3: ThemeType;
-  theme4: ThemeType;
+  theme1: ThemeInfo;
+  theme2: ThemeInfo;
+  theme3: ThemeInfo;
+  theme4: ThemeInfo;
 };
 
 export const Backgrounds = ({

@@ -1,13 +1,13 @@
 import cl from 'clsx/lite';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 
 import { Color } from '../Color/Color';
-import type { ColorInfoType } from '../../utils/themeUtils';
 
 import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorInfoType[];
+  colors: ColorInfo[];
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;

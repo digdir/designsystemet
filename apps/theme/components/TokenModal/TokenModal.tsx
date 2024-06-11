@@ -12,11 +12,11 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { generateScaleForColor } from '@digdir/designsystemet/color';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../types';
-import type { ColorInfoType, ColorType } from '../../utils/themeUtils';
-import { generateScaleForColor } from '../../utils/themeUtils';
 import { Settings } from '../../settings';
 
 import classes from './TokenModal.module.css';
@@ -44,7 +44,7 @@ export const TokenModal = ({
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
   const [showGlobals, setShowGlobals] = useState(false);
 
-  const generateJsonForColor = (colorArray: ColorInfoType[]) => {
+  const generateJsonForColor = (colorArray: ColorInfo[]) => {
     const obj: { [key: string]: { value: string; type: string } } = {};
     for (let i = 0; i < colorArray.length; i++) {
       if (i === 13 && colorArray.length >= 14) {

@@ -1,14 +1,14 @@
 import cl from 'clsx/lite';
 import { SunIcon } from '@navikt/aksel-icons';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 
-import type { ColorInfoType } from '../../utils/themeUtils';
 import { useThemeStore } from '../../store';
 
 import classes from './Color.module.css';
 
 type ColorProps = {
   colorNumber: number;
-  color: ColorInfoType;
+  color: ColorInfo;
   contrast?: string;
   lightness?: string;
   featured?: boolean;
