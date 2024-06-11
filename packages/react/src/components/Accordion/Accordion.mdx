@@ -54,7 +54,7 @@ import { Accordion } from '@digdir/designsystemet-react';
 
 #### Kontrollert
 
-`Accordion` holder selv orden på når den er lukket/åpen, men kan kontrolleres utenfra.
+`Accordion` har egen tilstand på åpen/lukker, men dette kan kontrolleres utenfra.
 
 <Canvas of={AccordionStories.Controlled} />
 
@@ -97,7 +97,9 @@ Accordion skal brukes til maksimalt to avsnitt innenfor hvert nedtrekk. Sørg fo
 
 ## Tilgjengelighet
 
-[`Chevron`](https://aksel.nav.no/ikoner/ChevronDown)-ikonet er bevisst plassert til venstre for teksten, av hensyn til brukeren med nedsatt synsfelt. Der er det lettere for brukeren å se det (fordi vi leser fra venstre). Mange brukere tror at de må peke på og velge ikonet for å åpne.
+Som standard er `Accordion.Header` et `h1` element. Du må selv velge riktig overskriftsnivå for din side. Hvis `Accordion.Header` er en del av en større overskrift, kan du bruke `h2`, `h3` osv. for å opprettholde en logisk rekkefølge.
+
+[`Chevron`](https://aksel.nav.no/ikoner/ChevronDown)-ikonet er bevisst plassert til venstre for teksten, av hensyn til brukerer med nedsatt synsfelt. Der er det lettere for brukeren å se det (fordi vi leser fra venstre). Mange brukere tror at de må peke på og velge ikonet for å åpne.
 
 Ikke plasser andre interaktive elementer inn i `Accordion`-header, da hele raden skal være klikkbar. Ikonet og teksten skal _ikke_ lenke til ulike handlinger (for eksempel at teksten går videre til en side, mens ikonet åpner listen). Brukerne forventer ikke at ikon og tekst skal gi ulikt resultat når de velger dem.
 
