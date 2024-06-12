@@ -5,6 +5,7 @@ import type { Config, TransformedToken } from 'style-dictionary/types';
 import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
+import { permutateThemes as permutateThemes_ } from './permutateThemes';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
@@ -56,9 +57,9 @@ const outputColorReferences = (token: TransformedToken) => {
 };
 
 export const permutateThemes = ($themes: ThemeObject[]) =>
-  tokenStudio.permutateThemes($themes, {
+  permutateThemes_($themes, {
     separator,
-  }) as Record<string, string[]>;
+  });
 
 type GetConfig = (options: {
   mode?: string;
