@@ -14,6 +14,16 @@ export default ({ children }) => (
   />
 );
 
+export const metadata = {
+  title: 'Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det',
+  description:
+    'Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints',
+  ogImage: '/img/bloggen/fluid-front.png',
+  ogImageAlt:
+    'Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.',
+  twitterImage: '/img/bloggen/fluid-front.png',
+};
+
 Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt brekkpunkt. Den lineære funksjonen tilnærmer seg ønsket størrelse jevnt over skjermens bredde.
 
 Tekststørrelsene øker gradvis fra viewport-bredde 320px helt til det treffer maksbredden på viewporten som er satt til 1360px. En tekst på 16px vil f.eks øke til 18px på den største viewporten.
