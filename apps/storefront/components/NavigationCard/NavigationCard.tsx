@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import cl from 'clsx';
 import type * as React from 'react';

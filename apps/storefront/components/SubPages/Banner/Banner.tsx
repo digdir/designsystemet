@@ -1,3 +1,4 @@
+'use client';
 import { Heading, Ingress } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import cl from 'clsx';

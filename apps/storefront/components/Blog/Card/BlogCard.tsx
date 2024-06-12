@@ -1,5 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card, Heading, Paragraph, Tag } from '@digdir/designsystemet-react';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardMedia,
+  Heading,
+  Paragraph,
+  Tag,
+} from '@digdir/designsystemet-react';
 import Link from 'next/link';
 import cl from 'clsx';
 
@@ -41,15 +50,15 @@ export const BlogCard = ({
       {...props}
     >
       <Link href={href}>
-        <Card.Media className={classes.media}>
+        <CardMedia className={classes.media}>
           <img
             src={image}
             alt=''
             className={classes.image}
           />
-        </Card.Media>
+        </CardMedia>
         <div className={classes.wrapper}>
-          <Card.Header className={classes.heading}>
+          <CardHeader className={classes.heading}>
             {tagText && (
               <Tag
                 className={classes.tag}
@@ -65,13 +74,13 @@ export const BlogCard = ({
             >
               {title}
             </Heading>
-          </Card.Header>
-          <Card.Content>
+          </CardHeader>
+          <CardContent>
             <Paragraph size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-          </Card.Content>
+          </CardContent>
           {author ||
             (date && (
-              <Card.Footer className={classes.footer}>
+              <CardFooter className={classes.footer}>
                 <Paragraph
                   size={featured ? 'md' : 'xs'}
                   className={classes.meta}
@@ -87,7 +96,7 @@ export const BlogCard = ({
                     </>
                   )}
                 </Paragraph>
-              </Card.Footer>
+              </CardFooter>
             ))}
         </div>
       </Link>

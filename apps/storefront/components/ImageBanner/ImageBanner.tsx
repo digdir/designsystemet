@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable @next/next/no-img-element */
 import type React from 'react';
 import type { ButtonProps } from '@digdir/designsystemet-react';

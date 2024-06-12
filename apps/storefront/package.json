@@ -20,7 +20,7 @@
     "@vercel/analytics": "^1.1.1",
     "hastscript": "^8.0.0",
     "mdx-embed": "^1.1.2",
-    "next": "^14.0.4",
+    "next": "^14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-element-to-jsx-string": "^15.0.0",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18"
+    "@types/react-dom": "^18.2.18",
+    "eslint-config-next": "^14.2.4"
   }
 }
