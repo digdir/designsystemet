@@ -1,12 +1,11 @@
-'use client';
 import type * as React from 'react';
 import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 
-import { Container, MdxContent, Image, Meta } from '../../components';
-import { Link } from '../../components/Link/Link';
+import { Container, MdxContent, Image, Meta } from '../../../../components';
+import { Link } from '../../../../components/Link/Link';
+import { Figures } from '../Figures';
 
-import classes from './BlogArticleLayout.module.css';
-import { Figures } from './components/Figures';
+import classes from './PostLayout.module.css';
 
 type BlogArticleLayoutProps = {
   content: React.ReactNode;
@@ -22,7 +21,7 @@ type BlogArticleLayoutProps = {
 
 const FIGURE_COUNT = 4;
 
-const BlogArticleLayout = ({
+const PostLayout = ({
   content,
   heading,
   ingress,
@@ -104,4 +103,4 @@ const BlogArticleLayout = ({
   );
 };
 
-export { BlogArticleLayout };
+export { PostLayout };

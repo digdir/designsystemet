@@ -1,9 +1,8 @@
-import { BlogArticleLayout } from '@layouts';
 import { ResponsiveIframe, Image } from '@components';
-import { Contributors } from '../../_components';
+import { Contributors, PostLayout } from '../../_components';
 
 export default ({ children }) => (
-  <BlogArticleLayout
+  <PostLayout
     content={children}
     heading='Derfor trenger vi et felles designsystem'
     ingress='Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger på gevinster og utfordringer.'

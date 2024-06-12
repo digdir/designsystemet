@@ -1,9 +1,8 @@
-import { BlogArticleLayout } from '@layouts';
 import { ResponsiveIframe } from '@components';
-import { Contributors } from '../../_components';
+import { Contributors, PostLayout } from '../../_components';
 
 export default ({ children }) => (
-  <BlogArticleLayout
+  <PostLayout
     content={children}
     heading='Temabygger som bacheloroppgave'
     ingress='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
