@@ -16,7 +16,6 @@ export const Contributors = ({ authors }: ContributorsProps) => {
           alt='Designsystemet logo'
         />
       </div>
-
       <Heading
         level={3}
         size='2xs'

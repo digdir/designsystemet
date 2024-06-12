@@ -9,7 +9,7 @@ import { Container } from '@components';
 import classes from './not-found.module.css';
 
 export const metadata: Metadata = {
-  title: 'Fant ikke siden - Designsystemet',
+  title: 'Fant ikke siden',
 };
 
 const NotFound = ({ children }: { children: React.ReactNode }) => {

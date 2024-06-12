@@ -10,7 +10,10 @@ import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 
 export const metadata: Metadata = {
-  title: 'Designsystemet',
+  title: {
+    template: '%s - Designsystemet',
+    default: 'Designsystemet',
+  },
 };
 
 export default function RootLayout({

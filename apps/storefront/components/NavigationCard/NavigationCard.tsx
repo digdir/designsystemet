@@ -29,7 +29,7 @@ const NavigationCard = ({
     <Link
       href={url}
       prefetch={false}
-      className={cl(classes.card, classes[backgroundColor])}
+      className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
     >
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
       <Heading

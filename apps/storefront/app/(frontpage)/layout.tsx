@@ -6,13 +6,9 @@ import cn from 'clsx';
 
 import { NavigationCard, Container } from '@components';
 
-import classes from './FrontpageLayout.module.css';
+import classes from './layout.module.css';
 
-type FrontpageLayoutProps = {
-  content: React.ReactNode;
-};
-
-const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main id='main'>
       <div>
@@ -110,9 +106,9 @@ const FrontpageLayout = ({ content }: FrontpageLayoutProps) => {
           </Container>
         </div>
       </div>
-      {content}
+      {children}
     </main>
   );
 };
 
-export { FrontpageLayout };
+export default Layout;

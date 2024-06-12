@@ -6,7 +6,9 @@
   text-decoration: none;
   box-shadow: var(--ds-shadow-sm);
   border-radius: 8px;
-  transition: 0.2s all;
+  transition:
+    0.2s transform,
+    0.2s box-shadow;
   position: relative;
   z-index: 2;
   height: 100%;
@@ -55,6 +57,10 @@
 .grey {
   background-color: var(--ds-color-neutral-background-subtle);
   box-shadow: none;
+}
+
+.white {
+  background-color: white;
 }
 
 .title {
