@@ -46,7 +46,7 @@ module.exports = {
     {
       files: ['apps/storefront/**/*', 'apps/dev/**/*', 'apps/theme/**/*'],
       extends: ['plugin:@next/next/recommended'],
-      overrides: {
+      rules: {
         '@next/next/no-img-element': 'off',
       },
     },

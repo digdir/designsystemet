@@ -1,7 +1,8 @@
 import cl from 'clsx';
 
-import classes from './Image.module.css';
 import { Paragraph } from '@digdir/designsystemet-react';
+
+import classes from './Image.module.css';
 
 interface ImageProps {
   alt: string;
