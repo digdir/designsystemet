@@ -10,6 +10,10 @@ import {
 
 import classes from './layout.module.css';
 
+export const metadata = {
+  title: 'Komponenter',
+};
+
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main

@@ -21,7 +21,7 @@ type BlogArticleLayoutProps = {
 
 const FIGURE_COUNT = 4;
 
-const PostLayout = ({
+function PostLayout({
   content,
   heading,
   ingress,
@@ -31,7 +31,7 @@ const PostLayout = ({
   imageAlt,
   imageCaption,
   figureCount = FIGURE_COUNT,
-}: BlogArticleLayoutProps) => {
+}: BlogArticleLayoutProps) {
   return (
     <div className={classes.wrapper}>
       <Meta
@@ -101,6 +101,6 @@ const PostLayout = ({
       </Container>
     </div>
   );
-};
+}
 
 export { PostLayout };
