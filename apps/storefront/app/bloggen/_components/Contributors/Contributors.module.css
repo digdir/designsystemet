@@ -33,12 +33,12 @@
   background-color: white;
 }
 
-.logo img {
-  box-shadow: none;
-  width: 50%;
-  height: 50%;
+.logo .logoImage {
+  box-shadow: none !important;
+  width: 50% !important;
+  height: 50% !important;
   margin: 0 !important;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .meta {
