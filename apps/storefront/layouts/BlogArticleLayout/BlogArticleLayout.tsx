@@ -1,3 +1,4 @@
+'use client';
 import type * as React from 'react';
 import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 

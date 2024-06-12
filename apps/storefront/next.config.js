@@ -1,12 +1,7 @@
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypeHighlight from 'rehype-highlight';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { s } from 'hastscript';
+const withMDX = require('@next/mdx')();
 
-export default {
-  webpack: (config, options) => {
+const nextConfig = {
+  /* webpack: (config, options) => {
     config.module.rules.push({
       test: /\.mdx?$/,
       use: [
@@ -47,7 +42,7 @@ export default {
     });
 
     return config;
-  },
+  }, */
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   eslint: {
@@ -61,3 +56,5 @@ export default {
     defaultLocale: 'no',
   },
 };
+
+module.exports = withMDX(nextConfig);

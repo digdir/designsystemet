@@ -1,5 +1,4 @@
 import { ComponentFillIcon } from '@navikt/aksel-icons';
-import type { Metadata } from 'next';
 
 import { Container } from '@components';
 import {
@@ -10,10 +9,6 @@ import {
 } from 'components/SubPages/Banner/Banner';
 
 import classes from './layout.module.css';
-
-export const metadata: Metadata = {
-  title: 'Komponenter - Designsystemet',
-};
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
