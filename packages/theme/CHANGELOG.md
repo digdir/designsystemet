@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-rc.6](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.3...@digdir/designsystemet-theme@1.0.0-rc.6) (2024-06-11)
+
+### Features
+
+- 🎨 V1 Release candidate ([#1849](https://github.com/digdir/designsystemet/issues/1849)) ([917ac1f](https://github.com/digdir/designsystemet/commit/917ac1f4a90b7ec2f96247ee015ab47224117d86))
+
 ## [0.15.3](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-theme@0.15.2...@digdir/designsystemet-theme@0.15.3) (2024-04-23)
 
 **Note:** Version bump only for package @digdir/designsystemet-theme

@@ -2,24 +2,23 @@
 import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
-
-import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './Interaction.module.css';
 
 type InteractionProps = {
-  theme1: ThemeType;
-  theme2: ThemeType;
-  theme3: ThemeType;
-  theme4: ThemeType;
-  theme5: ThemeType;
-  theme6: ThemeType;
-  theme7: ThemeType;
-  theme8: ThemeType;
-  theme9: ThemeType;
-  theme10: ThemeType;
-  theme11: ThemeType;
-  theme12: ThemeType;
+  theme1: ThemeInfo;
+  theme2: ThemeInfo;
+  theme3: ThemeInfo;
+  theme4: ThemeInfo;
+  theme5: ThemeInfo;
+  theme6: ThemeInfo;
+  theme7: ThemeInfo;
+  theme8: ThemeInfo;
+  theme9: ThemeInfo;
+  theme10: ThemeInfo;
+  theme11: ThemeInfo;
+  theme12: ThemeInfo;
 };
 
 export const Interaction = ({
@@ -97,19 +96,19 @@ export const Interaction = ({
 
 type ColumnProps = {
   title: string;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
 };
 
 const Column = ({ title, scales }: ColumnProps) => {
   return (
     <div
       className={classes.column}
-      style={{ backgroundColor: scales[0][0].hexColor }}
+      style={{ backgroundColor: scales[0][0].hex }}
     >
       <Heading
         className={classes.boxTitle}
         size='xs'
-        style={{ color: scales[0][12].hexColor }}
+        style={{ color: scales[0][12].hex }}
       >
         {title}
       </Heading>
@@ -139,7 +138,7 @@ const Column = ({ title, scales }: ColumnProps) => {
 
 type BoxProps = {
   colorIndex: number;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
   type: 'base' | 'surface';
   columnTitle: string;
 };
@@ -157,13 +156,13 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
       // Hover
       setToken(
         '--interaction' + i + 'Hover',
-        scales[i][type === 'surface' ? 3 : 9].hexColor,
+        scales[i][type === 'surface' ? 3 : 9].hex,
         'box' + type + columnTitle,
       );
       // Active
       setToken(
         '--interaction' + i + 'Active',
-        scales[i][type === 'surface' ? 4 : 10].hexColor,
+        scales[i][type === 'surface' ? 4 : 10].hex,
         'box' + type + columnTitle,
       );
     }
@@ -179,11 +178,9 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
           key={index}
           className={cl(classes.surface, 'interactionSurface' + index)}
           style={{
-            backgroundColor: scales[index][colorIndex].hexColor,
+            backgroundColor: scales[index][colorIndex].hex,
             color:
-              type === 'base'
-                ? scales[index][13].hexColor
-                : scales[index][12].hexColor,
+              type === 'base' ? scales[index][13].hex : scales[index][12].hex,
           }}
         >
           Tekst
@@ -206,13 +203,13 @@ const Box2 = ({ scales, type, columnTitle }: BoxProps) => {
       // Hover
       setToken(
         '--interaction' + i + 'Hover',
-        scales[i][type === 'surface' ? 3 : 9].hexColor,
+        scales[i][type === 'surface' ? 3 : 9].hex,
         'box' + type + columnTitle,
       );
       // Active
       setToken(
         '--interaction' + i + 'Active',
-        scales[i][type === 'surface' ? 4 : 10].hexColor,
+        scales[i][type === 'surface' ? 4 : 10].hex,
         'box' + type + columnTitle,
       );
     }
@@ -225,8 +222,8 @@ const Box2 = ({ scales, type, columnTitle }: BoxProps) => {
           key={index}
           className={cl(classes.surface, 'interactionSurface' + index)}
           style={{
-            color: scales[index][11].hexColor,
-            borderColor: scales[index][8].hexColor,
+            color: scales[index][11].hex,
+            borderColor: scales[index][8].hex,
           }}
         >
           Tekst

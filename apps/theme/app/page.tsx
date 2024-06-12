@@ -6,23 +6,24 @@ import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Heading } from '@digdir/designsystemet-react';
-
-import { useThemeStore } from '../store';
-import { mapTokens } from '../utils/tokenMapping';
 import type {
   ColorError,
-  ColorInfoType,
+  ColorInfo,
   ColorType,
   ContrastMode,
-  ThemeMode,
-  ThemeType,
-} from '../utils/themeUtils';
+  Mode,
+  ThemeInfo,
+} from '@digdir/designsystemet/color';
 import {
   canTextBeUsedOnColors,
   generateColorTheme,
   generateThemeForColor,
-} from '../utils/themeUtils';
-import { areColorsContrasting, isHexColor } from '../utils/colorUtils';
+  areColorsContrasting,
+  isHexColor,
+} from '@digdir/designsystemet/color';
+
+import { useThemeStore } from '../store';
+import { mapTokens } from '../utils/tokenMapping';
 import {
   Container,
   Header,
@@ -55,7 +56,7 @@ export default function Home() {
   const [brandTwoError, setBrandTwoError] = useState<ColorError>('none');
   const [brandThreeError, setBrandThreeError] = useState<ColorError>('none');
 
-  const [themeMode, setThemeMode] = useState<ThemeMode>('light');
+  const [themeMode, setThemeMode] = useState<Mode>('light');
   const [contrastMode, setContrastMode] = useState<ContrastMode>('aa');
 
   const { replace } = useRouter();
@@ -66,7 +67,7 @@ export default function Home() {
 
   /* get theme from query on initial load */
   useEffect(() => {
-    const theme = params.get('theme') as ThemeMode;
+    const theme = params.get('theme') as Mode;
     if (theme) {
       setThemeMode(theme);
     }
@@ -154,7 +155,7 @@ export default function Home() {
    * @param color The color to update
    * @param theme The theme to update
    */
-  const updateColor = (type: ColorType, color: CssColor, theme: ThemeType) => {
+  const updateColor = (type: ColorType, color: CssColor, theme: ThemeInfo) => {
     const colorErrorSetterMap = {
       accent: setAccentError,
       neutral: setNeutralError,
@@ -197,7 +198,7 @@ export default function Home() {
     }
   };
 
-  const themeQuerySetter = (themeMode: ThemeMode) => {
+  const themeQuerySetter = (themeMode: Mode) => {
     params.set('theme', themeMode);
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
@@ -208,16 +209,13 @@ export default function Home() {
    * @param scale The color scale to check
    * @returns The error type
    */
-  const getColorError = (scale: ColorInfoType[]) => {
+  const getColorError = (scale: ColorInfo[]) => {
     const contrast = areColorsContrasting(
-      scale[8].hexColor as CssColor,
+      scale[8].hex as CssColor,
       '#ffffff',
       'decorative',
     );
-    const textCanBeUsed = canTextBeUsedOnColors(
-      scale[8].hexColor,
-      scale[10].hexColor,
-    );
+    const textCanBeUsed = canTextBeUsedOnColors(scale[8].hex, scale[10].hex);
 
     if (!contrast && textCanBeUsed) {
       return 'decorative';
@@ -234,7 +232,7 @@ export default function Home() {
 
       <ColorModal
         name={selectedColor.name}
-        color={selectedColor.hexColor}
+        color={selectedColor.hex}
         colorModalRef={colorModalRef}
       />
 
@@ -265,7 +263,7 @@ export default function Home() {
 
           <Previews
             themeMode={themeMode}
-            onThemeModeChange={(themeMode: ThemeMode) => {
+            onThemeModeChange={(themeMode: Mode) => {
               setThemeMode(themeMode);
               themeQuerySetter(themeMode);
             }}

@@ -54,11 +54,11 @@
 }
 
 .logo svg path:first-child {
-  fill: var(--ds-color-neutral-border-hover);
+  fill: var(--ds-color-accent-base-default);
 }
 
 .logo svg path:last-child {
-  fill: var(--ds-color-neutral-border-default);
+  fill: var(--ds-color-accent-border-subtle);
 }
 
 .cardTitle {
@@ -134,7 +134,7 @@
   font-size: 15px;
   min-height: 8px;
   display: block;
-  color: var(--ds-color-brand2-text-subtle);
+  color: var(--ds-color-brand1-text-subtle);
   font-weight: 500;
 }
 

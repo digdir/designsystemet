@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+import { CodeSnippet } from '@doc-components';
+
+<Meta title='Bruk React' />
+
+# Hvordan bruke React
+
+Introduksjon til bruk, regler og gotchas.
+
+## SSR
+
+Alle våre komponenter er klient komponenter, og bruker `"use client"`.
+
+Dersom du ønsker å bruke våre komponenter i dine server komponenter, så kan du ikke bruke dot-notation.
+Dette betyr at du ikke kan skrive `<Accordion.Item>`, men må skrive `<AccordionItem>`. Grunnen for dette er at serveren ikke kan få tak i noe
+som ligger i en klient komponent, som `Accordion` er.
+
+### I en server komponent:
+
+<CodeSnippet language='ts'>
+{`
+import { Accordion, AccordionHeader, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
+
+<Accordion>
+  <AccordionItem>
+    <AccordionHeader>...</AccordionHeader>
+    <AccordionContent>...</AccordionContent>
+  </AccordionItem>
+</Accordion>
+`}
+</CodeSnippet>
+
+### I en klient komponent:
+
+<CodeSnippet language='ts'>
+{`
+import { Accordion } from '@digdir/designsystemet-react';
+
+<Accordion>
+  <Accordion.Item>
+    <Accordion.Header>...</Accordion.Header>
+    <Accordion.Content>...</Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+`}
+</CodeSnippet>

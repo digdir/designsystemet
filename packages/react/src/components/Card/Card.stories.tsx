@@ -29,7 +29,12 @@ export const Preview: Story = (args) => (
     style={{ width: '320px' }}
   >
     <Card.Header>
-      <Heading size='sm'>Card Neutral</Heading>
+      <Heading
+        size='sm'
+        level={2}
+      >
+        Card Neutral
+      </Heading>
     </Card.Header>
     <Card.Content>
       Most provide as with carried business are much better more the perfected
@@ -71,7 +76,12 @@ export const LinkCard: Story = (args) => (
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='sm'>Link Card</Heading>
+          <Heading
+            size='sm'
+            level={2}
+          >
+            Link Card
+          </Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -101,7 +111,12 @@ export const LinkCard: Story = (args) => (
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='sm'>Link Card</Heading>
+          <Heading
+            size='sm'
+            level={2}
+          >
+            Link Card
+          </Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -134,7 +149,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Neutral
@@ -155,7 +170,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Subtle
@@ -176,7 +191,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card First
@@ -197,7 +212,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Second
@@ -218,7 +233,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Third
@@ -251,7 +266,7 @@ export const Media: Story = () => (
       </Card.Media>
       <Card.Header>
         <Heading
-          level={3}
+          level={2}
           size='sm'
         >
           Card Neutral
@@ -266,7 +281,7 @@ export const Media: Story = () => (
     <Card>
       <Card.Header>
         <Heading
-          level={3}
+          level={2}
           size='sm'
         >
           Card Neutral
@@ -303,7 +318,7 @@ export const Video: Story = () => (
     </Card.Media>
     <Card.Header>
       <Heading
-        level={3}
+        level={2}
         size='sm'
       >
         <Link
@@ -338,7 +353,7 @@ export const Composed: Story = () => (
         }}
       >
         <Heading
-          level={3}
+          level={2}
           size='xs'
         >
           Rolle 1

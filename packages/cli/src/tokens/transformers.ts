@@ -1,24 +1,31 @@
+import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
 import { noCase } from './noCase.js';
+
+const isPx = R.test(/\b\d+px\b/g);
 
 export const sizeRem: Transform = {
   name: 'ds/size/toRem',
   type: 'value',
   transitive: true,
-  filter: (token) => ['sizing', 'spacing'].includes(token.type as string) && !token.name.includes('base'),
+  filter: (token) => ['sizing', 'spacing', 'borderRadius'].includes(token.type as string),
   transform: (token, config, options) => {
     const { usesDtcg } = options;
 
     const value = (usesDtcg ? token.$value : token.value) as string;
-    const baseFont = (config.basePxFontSize as unknown as number) || 16;
-    const size = parseInt(value);
 
-    if (size === 0) {
-      return '0';
+    if (isPx(value)) {
+      const baseFont = (config.basePxFontSize as unknown as number) || 16;
+      const size = parseInt(value);
+
+      if (size === 0) {
+        return '0';
+      }
+
+      return `${size / baseFont}rem`;
     }
-
-    return `${size / baseFont}rem`;
+    return value;
   },
 };
 

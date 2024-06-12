@@ -1,20 +1,19 @@
 'use client';
 
 import { Heading } from '@digdir/designsystemet-react';
-
-import type { ColorInfoType, ThemeType } from '../../../utils/themeUtils';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './BackgroundSurface.module.css';
 
 type BackgroundsProps = {
-  theme1: ThemeType;
-  theme2: ThemeType;
-  theme3: ThemeType;
-  theme4: ThemeType;
-  theme5: ThemeType;
-  theme6: ThemeType;
-  theme7: ThemeType;
-  theme8: ThemeType;
+  theme1: ThemeInfo;
+  theme2: ThemeInfo;
+  theme3: ThemeInfo;
+  theme4: ThemeInfo;
+  theme5: ThemeInfo;
+  theme6: ThemeInfo;
+  theme7: ThemeInfo;
+  theme8: ThemeInfo;
 };
 
 export const BackgroundSurface = ({
@@ -76,7 +75,7 @@ export const BackgroundSurface = ({
 
 type ColumnProps = {
   title: string;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
 };
 
 const Column = ({ title, scales }: ColumnProps) => {
@@ -110,48 +109,48 @@ const Column = ({ title, scales }: ColumnProps) => {
 };
 
 type BoxProps = {
-  colorScale: ColorInfoType[];
+  colorScale: ColorInfo[];
   backgroundIndex: 0 | 1;
-  scales: ColorInfoType[][];
+  scales: ColorInfo[][];
 };
 
 const Box = ({ colorScale, backgroundIndex, scales }: BoxProps) => {
   return (
     <div
       className={classes.box}
-      style={{ backgroundColor: colorScale[backgroundIndex].hexColor }}
+      style={{ backgroundColor: colorScale[backgroundIndex].hex }}
     >
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[0][2].hexColor }}
+        style={{ backgroundColor: scales[0][2].hex }}
       ></div>
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[1][2].hexColor }}
+        style={{ backgroundColor: scales[1][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[2][2].hexColor }}
+        style={{ backgroundColor: scales[2][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[3][2].hexColor }}
+        style={{ backgroundColor: scales[3][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[4][2].hexColor }}
+        style={{ backgroundColor: scales[4][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[5][2].hexColor }}
+        style={{ backgroundColor: scales[5][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[6][2].hexColor }}
+        style={{ backgroundColor: scales[6][2].hex }}
       />
       <div
         className={classes.surface}
-        style={{ backgroundColor: scales[7][2].hexColor }}
+        style={{ backgroundColor: scales[7][2].hex }}
       />
     </div>
   );

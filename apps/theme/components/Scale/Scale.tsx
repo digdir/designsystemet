@@ -1,38 +1,38 @@
 import { useEffect, useState } from 'react';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 
 import type { modeType } from '../../types';
 import { Group } from '../Group/Group';
-import type { ColorInfoType } from '../../utils/themeUtils';
 
 import classes from './Scale.module.css';
 
 type ScaleProps = {
-  colorScale: ColorInfoType[];
+  colorScale: ColorInfo[];
   showHeader?: boolean;
   showColorMeta?: boolean;
   themeMode: modeType;
   type: 'accent' | 'grey' | 'brandOne' | 'brandTwo' | 'brandThree';
 };
 
-const setTokens = (lightColors: ColorInfoType[], type: string) => {
+const setTokens = (lightColors: ColorInfo[], type: string) => {
   const previewElement = document.getElementById('preview');
   if (previewElement) {
     for (let i = 0; i < lightColors.length; i++) {
       previewElement.style.setProperty(
         '--' + type + (i + 1),
-        lightColors[i].hexColor,
+        lightColors[i].hex,
       );
     }
   }
 };
 
 const generateDefaultColors = () => {
-  const arr: ColorInfoType[] = [];
+  const arr: ColorInfo[] = [];
 
   for (let i = 0; i < 14; i++) {
     arr.push({
-      hexColor: '#ffffff',
-      colorNumber: 1,
+      hex: '#ffffff',
+      number: 1,
       name: 'Default',
     });
   }
@@ -47,9 +47,7 @@ export const Scale = ({
   themeMode,
   type,
 }: ScaleProps) => {
-  const [colors, setColors] = useState<ColorInfoType[]>(
-    generateDefaultColors(),
-  );
+  const [colors, setColors] = useState<ColorInfo[]>(generateDefaultColors());
 
   useEffect(() => {
     if (colorScale.length > 0) {

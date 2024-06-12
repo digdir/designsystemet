@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
-import type { ColorInfoType, ThemeType } from './utils/themeUtils';
 import { Settings } from './settings';
 
 type StoreThemeType = {
-  theme: ThemeType;
+  theme: ThemeInfo;
   color: CssColor;
 };
 
@@ -16,13 +16,13 @@ type ColorStore = {
   brandOneTheme: StoreThemeType;
   brandTwoTheme: StoreThemeType;
   brandThreeTheme: StoreThemeType;
-  setAccentTheme: (theme: ThemeType, color: CssColor) => void;
-  setNeutralTheme: (theme: ThemeType, color: CssColor) => void;
-  setBrandOneTheme: (theme: ThemeType, color: CssColor) => void;
-  setBrandTwoTheme: (theme: ThemeType, color: CssColor) => void;
-  setBrandThreeTheme: (theme: ThemeType, color: CssColor) => void;
-  selectedColor: ColorInfoType;
-  setSelectedColor: (color: ColorInfoType) => void;
+  setAccentTheme: (theme: ThemeInfo, color: CssColor) => void;
+  setNeutralTheme: (theme: ThemeInfo, color: CssColor) => void;
+  setBrandOneTheme: (theme: ThemeInfo, color: CssColor) => void;
+  setBrandTwoTheme: (theme: ThemeInfo, color: CssColor) => void;
+  setBrandThreeTheme: (theme: ThemeInfo, color: CssColor) => void;
+  selectedColor: ColorInfo;
+  setSelectedColor: (color: ColorInfo) => void;
 };
 
 const defaultTheme = () => {
@@ -56,8 +56,8 @@ export const useThemeStore = create(
       color: Settings.brand3BaseColor,
     },
     selectedColor: {
-      hexColor: '#ffffff',
-      colorNumber: 1,
+      hex: '#ffffff',
+      number: 1,
       name: 'Default',
     },
     setSelectedColor: (color) => set({ selectedColor: color }),

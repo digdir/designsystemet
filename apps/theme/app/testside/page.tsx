@@ -3,9 +3,9 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
+import type { ColorInfo } from '@digdir/designsystemet/color';
+import { generateThemeForColor } from '@digdir/designsystemet/color';
 
-import type { ColorInfoType } from '../../utils/themeUtils';
-import { generateThemeForColor } from '../../utils/themeUtils';
 import { Settings } from '../../settings';
 import { Header, Container } from '../../components';
 
@@ -35,7 +35,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
 
 const Row = (
   title: string,
-  colors: ColorInfoType[],
+  colors: ColorInfo[],
   whiteText: boolean = false,
 ) => {
   return (
@@ -49,7 +49,7 @@ const Row = (
       <div className={classes.row}>
         <div
           className={classes.column}
-          style={{ backgroundColor: colors[0].hexColor }}
+          style={{ backgroundColor: colors[0].hex }}
         >
           <Heading
             size='2xs'
@@ -57,15 +57,15 @@ const Row = (
           >
             Background default
           </Heading>
-          {Box('Border subtle', colors[5].hexColor, colors[0].hexColor)}
-          {Box('Border default', colors[6].hexColor, colors[0].hexColor)}
-          {Box('Border strong', colors[7].hexColor, colors[0].hexColor)}
-          {Box('Text subtle', colors[11].hexColor, colors[0].hexColor)}
-          {Box('Text default', colors[12].hexColor, colors[0].hexColor)}
+          {Box('Border subtle', colors[5].hex, colors[0].hex)}
+          {Box('Border default', colors[6].hex, colors[0].hex)}
+          {Box('Border strong', colors[7].hex, colors[0].hex)}
+          {Box('Text subtle', colors[11].hex, colors[0].hex)}
+          {Box('Text default', colors[12].hex, colors[0].hex)}
         </div>
         <div
           className={classes.column}
-          style={{ backgroundColor: colors[1].hexColor }}
+          style={{ backgroundColor: colors[1].hex }}
         >
           <Heading
             size='2xs'
@@ -73,15 +73,15 @@ const Row = (
           >
             Background subtle
           </Heading>
-          {Box('Border subtle', colors[5].hexColor, colors[1].hexColor)}
-          {Box('Border default', colors[6].hexColor, colors[1].hexColor)}
-          {Box('Border strong', colors[7].hexColor, colors[1].hexColor)}
-          {Box('Text subtle', colors[11].hexColor, colors[1].hexColor)}
-          {Box('Text default', colors[12].hexColor, colors[1].hexColor)}
+          {Box('Border subtle', colors[5].hex, colors[1].hex)}
+          {Box('Border default', colors[6].hex, colors[1].hex)}
+          {Box('Border strong', colors[7].hex, colors[1].hex)}
+          {Box('Text subtle', colors[11].hex, colors[1].hex)}
+          {Box('Text default', colors[12].hex, colors[1].hex)}
         </div>
         <div
           className={classes.column}
-          style={{ backgroundColor: colors[2].hexColor }}
+          style={{ backgroundColor: colors[2].hex }}
         >
           <Heading
             size='2xs'
@@ -89,15 +89,15 @@ const Row = (
           >
             Surface default
           </Heading>
-          {Box('Border subtle', colors[5].hexColor, colors[2].hexColor)}
-          {Box('Border default', colors[6].hexColor, colors[2].hexColor)}
-          {Box('Border strong', colors[7].hexColor, colors[2].hexColor)}
-          {Box('Text subtle', colors[11].hexColor, colors[2].hexColor)}
-          {Box('Text default', colors[12].hexColor, colors[2].hexColor)}
+          {Box('Border subtle', colors[5].hex, colors[2].hex)}
+          {Box('Border default', colors[6].hex, colors[2].hex)}
+          {Box('Border strong', colors[7].hex, colors[2].hex)}
+          {Box('Text subtle', colors[11].hex, colors[2].hex)}
+          {Box('Text default', colors[12].hex, colors[2].hex)}
         </div>
         <div
           className={classes.column}
-          style={{ backgroundColor: colors[3].hexColor }}
+          style={{ backgroundColor: colors[3].hex }}
         >
           <Heading
             size='2xs'
@@ -105,15 +105,15 @@ const Row = (
           >
             Surface hover
           </Heading>
-          {Box('Border subtle', colors[5].hexColor, colors[3].hexColor)}
-          {Box('Border default', colors[6].hexColor, colors[3].hexColor)}
-          {Box('Border strong', colors[7].hexColor, colors[3].hexColor)}
-          {Box('Text subtle', colors[11].hexColor, colors[3].hexColor)}
-          {Box('Text default', colors[12].hexColor, colors[3].hexColor)}
+          {Box('Border subtle', colors[5].hex, colors[3].hex)}
+          {Box('Border default', colors[6].hex, colors[3].hex)}
+          {Box('Border strong', colors[7].hex, colors[3].hex)}
+          {Box('Text subtle', colors[11].hex, colors[3].hex)}
+          {Box('Text default', colors[12].hex, colors[3].hex)}
         </div>
         <div
           className={classes.column}
-          style={{ backgroundColor: colors[4].hexColor }}
+          style={{ backgroundColor: colors[4].hex }}
         >
           <Heading
             size='2xs'
@@ -121,11 +121,11 @@ const Row = (
           >
             Surface active
           </Heading>
-          {Box('Border subtle', colors[5].hexColor, colors[4].hexColor)}
-          {Box('Border default', colors[6].hexColor, colors[4].hexColor)}
-          {Box('Border strong', colors[7].hexColor, colors[4].hexColor)}
-          {Box('Text subtle', colors[11].hexColor, colors[4].hexColor)}
-          {Box('Text default', colors[12].hexColor, colors[4].hexColor)}
+          {Box('Border subtle', colors[5].hex, colors[4].hex)}
+          {Box('Border default', colors[6].hex, colors[4].hex)}
+          {Box('Border strong', colors[7].hex, colors[4].hex)}
+          {Box('Text subtle', colors[11].hex, colors[4].hex)}
+          {Box('Text default', colors[12].hex, colors[4].hex)}
         </div>
       </div>
     </div>
@@ -259,51 +259,51 @@ export default function Dev() {
         <BaseContrast
           themes={[
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme1,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme2,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme3,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme4,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme5,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme6,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme7,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme8,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme9,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme10,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme11,
             },
             {
-              title: 'Base: ' + theme1.light[8].hexColor,
+              title: 'Base: ' + theme1.light[8].hex,
               theme: theme12,
             },
             {

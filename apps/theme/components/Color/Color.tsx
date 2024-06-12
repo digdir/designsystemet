@@ -1,14 +1,14 @@
 import cl from 'clsx/lite';
 import { SunIcon } from '@navikt/aksel-icons';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 
-import type { ColorInfoType } from '../../utils/themeUtils';
 import { useThemeStore } from '../../store';
 
 import classes from './Color.module.css';
 
 type ColorProps = {
   colorNumber: number;
-  color: ColorInfoType;
+  color: ColorInfo;
   contrast?: string;
   lightness?: string;
   featured?: boolean;
@@ -30,12 +30,12 @@ const Color = ({
       <button
         onClick={() => {
           setSelectedColor({
-            hexColor: color.hexColor,
-            colorNumber: color.colorNumber,
+            hex: color.hex,
+            number: color.number,
             name: color.name,
           });
         }}
-        style={{ backgroundColor: color.hexColor }}
+        style={{ backgroundColor: color.hex }}
         className={cl(classes.box, featured && classes.featured)}
       ></button>
 

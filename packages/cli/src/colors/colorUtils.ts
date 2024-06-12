@@ -2,7 +2,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 import chroma from 'chroma-js';
 
-import type { modeType } from '../types';
+import type { Mode } from './types.ts';
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
  *
@@ -178,12 +178,9 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  */
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(
-    shorthandRegex,
-    function (m, r: string, g: string, b: string) {
-      return r + r + g + g + b + b;
-    },
-  );
+  hex = hex.replace(shorthandRegex, function (m, r: string, g: string, b: string) {
+    return r + r + g + g + b + b;
+  });
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
@@ -294,11 +291,7 @@ export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
  * @param backgroundColor The background color
  * @returns The contrast ratio
  */
-export const getContrastFromLightness = (
-  lightness: number,
-  mainColor: CssColor,
-  backgroundColor: CssColor,
-) => {
+export const getContrastFromLightness = (lightness: number, mainColor: CssColor, backgroundColor: CssColor) => {
   const conv = new Hsluv();
   conv.hex = mainColor;
   conv.hexToHsluv();
@@ -312,14 +305,13 @@ export const getContrastFromLightness = (
   return ratio;
 };
 
-export const lightenDarkColor = (color: CssColor, mode: modeType) => {
+export const lightenDarkColor = (color: CssColor, mode: Mode) => {
   const lightness = getLightnessFromHex(color);
 
   const conv = new Hsluv();
   conv.hex = color;
   conv.hexToHsluv();
-  conv.hsluv_l =
-    lightness < 45 ? getLightnessForDarkMode(color, mode) : conv.hsluv_l;
+  conv.hsluv_l = lightness < 45 ? getLightnessForDarkMode(color, mode) : conv.hsluv_l;
   conv.hsluv_s = getSaturationForDarkMode(color, conv.hsluv_s);
   conv.hsluvToHex();
   return conv.hex as CssColor;
@@ -341,7 +333,7 @@ const getSaturationForDarkMode = (color: CssColor, hslUvSat: number) => {
   return hslUvSat;
 };
 
-const getLightnessForDarkMode = (color: CssColor, mode: modeType) => {
+const getLightnessForDarkMode = (color: CssColor, mode: Mode) => {
   const lightness: number = getLightnessFromHex(color);
   if (mode === 'dark') {
     if (lightness >= 23) {
@@ -361,13 +353,7 @@ const getLightnessForDarkMode = (color: CssColor, mode: modeType) => {
 /**
  * Maps the numbers from [start1 - end1] to the range [start2 - end2], maintaining the proportionality between the numbers in the ranges using lineaer interpolation.
  */
-const mapRange = (
-  value: number,
-  start1: number,
-  end1: number,
-  start2: number,
-  end2: number,
-) => {
+const mapRange = (value: number, start1: number, end1: number, start2: number, end2: number) => {
   return start2 + ((value - start1) * (end2 - start2)) / (end1 - start1);
 };
 
@@ -378,11 +364,7 @@ const mapRange = (
  * @param {CssColor} color2 The second color
  * @returns {boolean} If the colors have enough contrast
  */
-export const areColorsContrasting = (
-  color1: CssColor,
-  color2: CssColor,
-  type: 'text' | 'decorative' = 'text',
-) => {
+export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: 'text' | 'decorative' = 'text') => {
   const contrast = getContrastFromHex(color1, color2);
   if (contrast !== null) {
     if (type === 'text') {
@@ -401,7 +383,5 @@ export const areColorsContrasting = (
  * @returns {boolean} If the string is a HEX color
  */
 export const isHexColor = (hex: string) => {
-  return (
-    typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
-  );
+  return typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex));
 };
