@@ -26,20 +26,6 @@ export default ({ children }) => (
 
 Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen tar for seg brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
 
-<Card
-  color='third'
->
-  <Card.Content
-  style={{
-    paddingTop: '0px',
-    paddingBottom: '0px'
-  }}
-  >
-    *Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
-
-  </Card.Content>
-</Card>
-
 ## Vi skiller mellom systemgenererte meldinger, brukerutløste infomeldinger og feilmeldinger
 
 ### Systemgenererte meldinger
@@ -89,16 +75,6 @@ Alle skjemakomponenter skal kunne ha en feilmelding som kan plasseres nært felt
   boxShadow={false}
 />
 
-#### Feilmelding basert på inndata som gjelder flere felter
-
-I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
-
-<Image
-  src='/img/errormessage-co-2.png'
-  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
-  boxShadow={false}
-/>
-
 #### Oppsummering av flere feilmeldinger
 
 En oppsummering kan gjelde for én eller flere feil.
@@ -128,7 +104,9 @@ Det er altså løsningen eller tjenesten du lager, som bestemmer om du bør plas
   boxShadow={false}
 />
 
-## Hvordan kan vi unngå å gi feilmeldinger?
+## Språk
+
+### Hvordan kan vi unngå å gi feilmeldinger?
 
 Det er best om vi klarer å hindre at det oppstår feil. Slik kan vi gjøre det:
 
@@ -141,7 +119,7 @@ Det er best om vi klarer å hindre at det oppstår feil. Slik kan vi gjøre det:
 - Legg inn en bestemt rekkefølge på svaralternativene, for å hindre at brukeren tar valg som fører til feil.
 - Hvis vi har tegnbegrensing i et felt, viser vi en teller og en beskrivelse under ledeteksten om maks. antall tegn.
 
-## Slik skriver du en god feilmelding
+### Slik skriver du en god feilmelding
 
 Den viktigste jobben til teksten i en feilmelding er å hjelpe brukerne videre:
 
@@ -156,22 +134,9 @@ Eksempler på forklarende feilmeldinger:
 - “Du må velge minst ett av leveringsalternativene”
 - “Kryss av i ruten for å bekrefte at navnet er riktig, før du sender inn skjemaet”
 
-## Når skal vi vise en feilmelding?
+## Design og opplevelse
 
-Vi kan presentere feilmeldinger for brukerne når brukerne forlater feltet eller når de velger "Gå videre" eller "Send inn". Vi unngår å vise feilmeldinger mens brukeren fyller ut feltet.
-
-Når brukerne forlater et felt, viser vi feilmeldinger når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
-
-Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å gå til neste side eller sende inn skjemaet. Det samme gjelder om det er en feilmelding som baserer seg på input fra flere felter. Siden vi ikke vet når brukeren er ferdig med å fylle ut feltene, venter vi til brukeren selv er klar til å gå videre.
-Det er spesielt viktig når når brukere benytter tastaturet til å navigere i løsningen. Da virker det forstyrrende hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
-
-[Artikkel om markerering av obligatoriske og valgfrie skjemafelt.](/monstre/obligatoriske-og-valgfrie-felt).
-
-### Ikke deaktiver submit-knappen
-
-Vi bruker ikke deaktivert "Gå videre"/"Send inn"-knapp til å validere skjema. Noen brukere forstår ikke hvorfor knappen er deaktivert og kan bli forvirret. Brukere med nedsatt syn kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Hvis brukeren prøver å velge knappen mens det er feil i skjemaet, kan vi heller vise en oppsummerende feilmelding over "Gå videre"/"Send inn"-knappen.
-
-## Utseendet på feilmeldinger
+### Utseendet på feilmeldinger
 
 Når et skjemafelt feiler er det viktig å fremheve feltet slik at det er lett for våre brukere å se hvor de har gjenstående oppgaver.
 
@@ -206,7 +171,7 @@ Vi viser feilmeldingen under feltet med feil. Det kan være uheldig å plassere 
   </Card.Content>
 </Card>
 
-## Validering og kryssvalidering
+### Validering og kryssvalidering
 
 Noen ganger vil ett eller flere felter og hvilke valg som tas i dem påvirke hverandre og resultere i feil som ikke vil være opplagt ut fra de enkelte feltene alene. For eksempel kan valg verdi i en radiogruppe gjøre et frivillig felt senere i utfyllingen påkrevd, eller et valg et sted kan gjøre at valg i et annet felt må være innenfor en viss verdi. Dette kalles kryssvalidering.
 
@@ -220,7 +185,49 @@ Så hva gjør vi når felter som grunnet slik kryssvalidering, har feil ikke st�
 - Forklar hvilke forhold utløste feilen.
 - Gi veiledning i hvordan en kan rette feilen.
 
-## Feilmeldinger og tilgjengelighet
+#### Feilmelding basert på inndata som gjelder flere felter
+
+I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
+
+<Accordion
+  color='neutral'
+>
+  <Accordion.Item>
+    <Accordion.Header level={3}>Eksempel på feilmelding over flere felter</Accordion.Header>
+    <Accordion.Content
+    style={{
+    paddingTop: '0px',
+    paddingBottom: '0px',
+    maxWidth: '780px'
+  }}>
+<Image
+  src='/img/errormessage-co-2.png'
+  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
+  boxShadow={false}
+/>
+</Accordion.Content>
+
+  </Accordion.Item>
+</Accordion>
+
+### Når skal vi vise en feilmelding?
+
+Vi kan presentere feilmeldinger for brukerne når brukerne forlater feltet eller når de velger "Gå videre" eller "Send inn". Vi unngår å vise feilmeldinger mens brukeren fyller ut feltet.
+
+Når brukerne forlater et felt, viser vi feilmeldinger når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
+
+Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å gå til neste side eller sende inn skjemaet. Det samme gjelder om det er en feilmelding som baserer seg på input fra flere felter. Siden vi ikke vet når brukeren er ferdig med å fylle ut feltene, venter vi til brukeren selv er klar til å gå videre.
+Det er spesielt viktig når når brukere benytter tastaturet til å navigere i løsningen. Da virker det forstyrrende hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
+
+[Artikkel om markerering av obligatoriske og valgfrie skjemafelt.](/monstre/obligatoriske-og-valgfrie-felt).
+
+#### Ikke deaktiver submit-knappen
+
+Vi bruker ikke deaktivert "Gå videre"/"Send inn"-knapp til å validere skjema. Noen brukere forstår ikke hvorfor knappen er deaktivert og kan bli forvirret. Brukere med nedsatt syn kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Hvis brukeren prøver å velge knappen mens det er feil i skjemaet, kan vi heller vise en oppsummerende feilmelding over "Gå videre"/"Send inn"-knappen.
+
+## Kode
+
+### Feilmeldinger og tilgjengelighet
 
 Det er flere WCAG-kriterier som er relevante når vi jobber med feilmeldinger. Vi har tatt hensyn til disse i arbeidet med mønsteret. Om du er interessert i å lese mer om disse, kan du lese tolkningene av WCAG-kravene hos Tilsynet for universell utforming av IKT.
 
@@ -231,7 +238,7 @@ Det er flere WCAG-kriterier som er relevante når vi jobber med feilmeldinger. V
 - [1.4.3 Kontrast (minimum)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva-aa/95)
 - [1.4.11 kontrast for ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva-aa/145)
 
-## HTML og Aria
+### HTML og Aria
 
 For at alle brukere skal kunne oppfatte feilmeldinger er det viktig at forholdet mellom feilmelding og feltene de hører til er tydelig, også for dem som får tilgang til innhold med ulike hjelpemidler.
 
@@ -261,20 +268,31 @@ For feilmeldinger som dukker opp dynamisk må vi bruke aria-live for at meldinge
 
 <br />
 <br />
-<br />
----
 
+<Card
+  color='third'
+>
+  <Card.Content
+  style={{
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  }}
+  >
+    Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
+
+  </Card.Content>
+</Card>
 <Contributors
   authors={[
-    'Roy Halvor Frimanslund',
-    'Astrid Eline Øksnes',
-    'Bernard Tommerbakke',
-    'Kari Breidal',
-    'Lasse Febakke Straum',
-    'Marianne Røsvik',
-    'Marianne Nordberg',
-    'Camilla Orten',
-    'Gørild Døhl',
+    'Roy Halvor Frimanslund (Brreg)',
+    'Astrid Eline Øksnes (Politiet)',
+    'Bernard Tommerbakke (Oslo Kommune)',
+    'Kari Breidal (NAV)',
+    'Lasse Febakke Straum (Digdir)',
+    'Marianne Røsvik (Digdir)',
+    'Marianne Nordberg (KS)',
+    'Camilla Orten (SKD)',
+    'Gørild Døhl (Digdir)',
   ]}
 />
 <br />
