@@ -55,29 +55,12 @@
   margin: 0 auto;
 }
 
-.content p {
-  max-width: var(--text-max-width);
-  margin: var(--ds-spacing-6) 0;
-  margin-top: var(--ds-spacing-5);
-  line-height: 170%;
-}
-
 .content img {
   display: block;
   width: 860px;
   margin: var(--ds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--ds-color-neutral-background-subtle);
-}
-
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
-  margin-top: var(--ds-spacing-12);
-  margin-bottom: var(--ds-spacing-5);
 }
 
 .content:last-child {

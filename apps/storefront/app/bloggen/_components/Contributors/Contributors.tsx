@@ -14,6 +14,7 @@ export const Contributors = ({ authors }: ContributorsProps) => {
         <img
           src='/img/diamond-logo.svg'
           alt='Designsystemet logo'
+          className={classes.logoImage}
         />
       </div>
       <Heading
