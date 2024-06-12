@@ -24,12 +24,3 @@
 .textContainer {
   flex-basis: 380px;
 }
-
-.title {
-  font: var(--ds-typography-heading-lg);
-  margin-bottom: var(--ds-spacing-4);
-}
-
-.desc {
-  font: var(--ds-typography-paragraph-md);
-}

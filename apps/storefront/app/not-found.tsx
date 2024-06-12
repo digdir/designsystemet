@@ -1,21 +1,18 @@
 import type * as React from 'react';
 import NextLink from 'next/link';
-import { Link } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 
-import { Container } from '../../components/Container/Container';
+import { Container } from '@components';
 
-import classes from './NotFoundLayout.module.css';
+import classes from './not-found.module.css';
 
-interface NotFoundLayoutProps {
-  content: React.ReactNode;
-  data: {
-    title: string;
-    description: string;
-  };
-}
+export const metadata: Metadata = {
+  title: 'Fant ikke siden - Designsystemet',
+};
 
-const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
+const NotFound = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={classes.content}>
       <Container className={classes.container}>
@@ -29,12 +26,17 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
           />
         </div>
         <div className={classes.textContainer}>
-          <h1 className={classes.title}>{data.title}</h1>
-          <p className={classes.desc}>{data.description}</p>
-          <Link
-            className={classes.link}
-            asChild
+          <Heading
+            spacing
+            size='md'
           >
+            Denne siden finnes ikke
+          </Heading>
+          <Paragraph spacing>
+            Beklager, vi finner ikke siden du ba om. Siden kan være flyttet
+            eller slettet.
+          </Paragraph>
+          <Link asChild>
             <NextLink
               href='/'
               prefetch={false}
@@ -43,12 +45,11 @@ const NotFoundLayout = ({ content, data }: NotFoundLayoutProps) => {
             </NextLink>
           </Link>
         </div>
-        {content}
+        {children}
       </Container>
       ;
     </div>
   );
 };
 
-export { NotFoundLayout };
-export type { NotFoundLayoutProps };
+export default NotFound;
