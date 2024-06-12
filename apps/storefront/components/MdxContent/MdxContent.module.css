@@ -11,11 +11,6 @@
   max-width: 740px;
 }
 
-.content > p {
-  font: var(--ds-typography-paragraph-md);
-  margin-bottom: var(--ds-spacing-5);
-}
-
 /* A <p> tag that comes directly after <h1> will be treated as an ingress */
 .content h1 + p {
   font: var(--ds-typography-ingress-md);
@@ -77,14 +72,6 @@
   width: 24px;
   margin-top: -2px;
   left: -4px;
-}
-
-/* Styling for links */
-.content > p a,
-.content > ul > li a,
-.content > ol > li a {
-  color: var(--ds-color-accent-base-default);
-  text-underline-offset: 4px;
 }
 
 /* Anchor links appear on heading hover */

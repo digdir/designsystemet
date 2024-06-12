@@ -1,5 +1,4 @@
 import { PencilIcon } from '@navikt/aksel-icons';
-import type { Metadata } from 'next';
 
 import { Container } from '@components';
 import {
@@ -10,11 +9,7 @@ import {
 
 import classes from './layout.module.css';
 
-export const metadata: Metadata = {
-  title: 'Bloggen - Designsystemet',
-};
-
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Banner color='red'>
@@ -34,5 +29,3 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
-
-export default Layout;
