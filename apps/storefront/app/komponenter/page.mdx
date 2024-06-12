@@ -3,18 +3,7 @@ import { ComponentFillIcon } from '@navikt/aksel-icons';
 import { ComponentsLayout } from '@layouts';
 import { ComponentCard } from '@components';
 
-export default ({ children }) => (
-  <ComponentsLayout
-    content={children}
-    banner={{
-      title: 'Komponenter',
-      icon: <ComponentFillIcon fontSize={'2.5rem'} />,
-      color: 'blue',
-      ingress:
-        'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
-    }}
-  />
-);
+export default ({ children }) => <>{children}</>;
 
 <ComponentCard
   title='Accordion'

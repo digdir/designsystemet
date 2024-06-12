@@ -1,19 +1,9 @@
 import { PencilIcon } from '@navikt/aksel-icons';
 
-import { BlogPageLayout } from '@layouts';
 import { Meta } from '@components';
 import { BlogCard } from '@blog';
 
-export default ({ children }) => (
-  <BlogPageLayout
-    content={children}
-    banner={{
-      title: 'Bloggen',
-      icon: <PencilIcon fontSize={34} />,
-      color: 'red',
-    }}
-  />
-);
+export default ({ children }) => <>{children}</>;
 
 <Meta
   title='Bloggen'

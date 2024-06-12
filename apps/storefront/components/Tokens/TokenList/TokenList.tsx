@@ -1,3 +1,4 @@
+'use client';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import cl from 'clsx';

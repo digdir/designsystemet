@@ -3,8 +3,8 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--ds-spacing-8);
-  margin-top: var(--ds-spacing-18);
-  margin-bottom: var(--page-spacing-bottom);
+  margin-top: var(--ds-spacing-18) !important;
+  margin-bottom: var(--page-spacing-bottom) !important;
 }
 
 .main {
