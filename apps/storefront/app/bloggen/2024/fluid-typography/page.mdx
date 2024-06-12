@@ -1,9 +1,8 @@
-import { BlogArticleLayout } from '@layouts';
 import { ResponsiveIframe, Image } from '@components';
-import { Contributors } from '../../_components';
+import { Contributors, PostLayout } from '../../_components';
 
 export default ({ children }) => (
-  <BlogArticleLayout
+  <PostLayout
     content={children}
     heading='Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det'
     ingress='Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints, men det medfører noen ulemper.  '

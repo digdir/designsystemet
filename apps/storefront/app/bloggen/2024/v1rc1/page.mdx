@@ -1,11 +1,10 @@
 import { Link } from '@digdir/designsystemet-react';
 
-import { BlogArticleLayout } from '@layouts';
+import { PostLayout, Contributors } from '../../_components';
 import { ResponsiveIframe, CodeSnippet } from '@components';
-import { Contributors } from '../../_components';
 
 export default ({ children }) => (
-  <BlogArticleLayout
+  <PostLayout
     content={children}
     heading='Dette kommer i V1!'
     ingress='Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.'

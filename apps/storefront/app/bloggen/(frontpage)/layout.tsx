@@ -9,7 +9,7 @@ import {
 
 import classes from './layout.module.css';
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Banner color='red'>
@@ -29,3 +29,5 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+
+export default Layout;
