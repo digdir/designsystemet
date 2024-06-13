@@ -4,6 +4,7 @@ import fs from 'fs';
 import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import * as R from 'ramda';
+import chalk from 'chalk';
 
 import * as configs from './configs.js';
 
@@ -49,7 +50,7 @@ export async function run(options: Options): Promise<void> {
   const typographyConfigs = getConfigs(configs.typographyCSS, tokensOutDir, tokensDir, semanticThemes);
 
   if (typographyConfigs.length > 0) {
-    console.log('\n🍱 Building Typography classes');
+    console.log(`\n🍱 Building ${chalk.green('typography')}`);
 
     await Promise.all(
       typographyConfigs.map(async ({ name, config }) => {
@@ -61,11 +62,10 @@ export async function run(options: Options): Promise<void> {
         return typographyClasses.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building Typography classes!');
   }
 
   if (semanticConfigs.length > 0) {
-    console.log('\n🍱 Building Semantic CSS variables');
+    console.log(`\n🍱 Building ${chalk.green('semantic')}`);
 
     await Promise.all(
       semanticConfigs.map(async ({ name, config }) => {
@@ -77,12 +77,11 @@ export async function run(options: Options): Promise<void> {
         return typographyClasses.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building Semantic CSS variables!');
   }
 
   if (colorModeConfigs.length > 0) {
-    console.log('\n🍱 Building Color mode CSS variables');
-    console.log('➡️  Tokens path: ', tokensDir);
+    console.log(`\n🍱 Building ${chalk.green('color-mode')}`);
+
     await Promise.all(
       colorModeConfigs.map(async ({ name, config }) => {
         console.log(`👷 Processing: ${name}`);
@@ -92,7 +91,6 @@ export async function run(options: Options): Promise<void> {
         return themeVariablesSD.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building Color mode CSS variables!');
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
