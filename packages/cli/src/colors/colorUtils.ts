@@ -2,7 +2,6 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 import chroma from 'chroma-js';
 
-import type { Mode } from './types.ts';
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
  *
@@ -305,57 +304,12 @@ export const getContrastFromLightness = (lightness: number, mainColor: CssColor,
   return ratio;
 };
 
-export const lightenDarkColor = (color: CssColor, mode: Mode) => {
-  const lightness = getLightnessFromHex(color);
-
-  const conv = new Hsluv();
-  conv.hex = color;
-  conv.hexToHsluv();
-  conv.hsluv_l = lightness < 45 ? getLightnessForDarkMode(color, mode) : conv.hsluv_l;
-  conv.hsluv_s = getSaturationForDarkMode(color, conv.hsluv_s);
-  conv.hsluvToHex();
-  return conv.hex as CssColor;
-};
-
-/**
- *
- * @param color The hex color
- * @param uvSat The HSLuv saturation value
- * @returns
- */
-const getSaturationForDarkMode = (color: CssColor, hslUvSat: number) => {
-  const hslLightness = getHslLightessFromHex(color) * 100;
-  if (hslLightness > 35 && hslLightness < 65) {
-    if (hslUvSat >= 90) {
-      return hslUvSat - 10;
-    }
-  }
-  return hslUvSat;
-};
-
-const getLightnessForDarkMode = (color: CssColor, mode: Mode) => {
-  const lightness: number = getLightnessFromHex(color);
-  if (mode === 'dark') {
-    if (lightness >= 23) {
-      return mapRange(lightness, 23, 44, 38, 45);
-    } else {
-      return mapRange(lightness, 0, 23, 28, 38);
-    }
-  } else {
-    if (lightness >= 23) {
-      return mapRange(lightness, 23, 44, 28, 35);
-    } else {
-      return mapRange(lightness, 0, 23, 18, 28);
-    }
-  }
-};
-
 /**
  * Maps the numbers from [start1 - end1] to the range [start2 - end2], maintaining the proportionality between the numbers in the ranges using lineaer interpolation.
  */
-const mapRange = (value: number, start1: number, end1: number, start2: number, end2: number) => {
-  return start2 + ((value - start1) * (end2 - start2)) / (end1 - start1);
-};
+// const mapRange = (value: number, start1: number, end1: number, start2: number, end2: number) => {
+//   return start2 + ((value - start1) * (end2 - start2)) / (end1 - start1);
+// };
 
 /**
  * Check if two colors have enough contrast to be used together

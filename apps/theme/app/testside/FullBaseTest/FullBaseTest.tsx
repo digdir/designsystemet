@@ -5,8 +5,8 @@ import cl from 'clsx/lite';
 import {
   getContrastFromLightness,
   getLightnessFromHex,
-  lightenDarkColor,
   calculateContrastOneColor,
+  getBaseColor,
 } from '@digdir/designsystemet/color';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
@@ -16,7 +16,7 @@ export const FullBaseTest = () => {
   const [blueColors, setBlueColors] = useState<CssColor[]>([]);
 
   useEffect(() => {
-    const blue = GenerateColor('#0163BA');
+    const blue = GenerateColor('#0062BA');
     setBlueColors(blue);
   }, []);
 
@@ -101,13 +101,26 @@ export const FullBaseTest = () => {
     baseActive,
     bgColor,
     active,
+    theme,
   }: {
     baseDefault: CssColor;
     baseHover: CssColor;
     baseActive: CssColor;
     bgColor: CssColor;
     active: boolean;
+    theme: 'light' | 'dark' | 'contrast';
   }) => {
+    let bgDefault = blueColors[99];
+    let bgSubtle = blueColors[95];
+
+    if (theme == 'dark') {
+      bgDefault = blueColors[9];
+      bgSubtle = blueColors[13];
+    } else if (theme == 'contrast') {
+      bgDefault = blueColors[0];
+      bgSubtle = blueColors[5];
+    }
+
     return (
       <div className={cl(classes.list, active && classes.listActive)}>
         <Item
@@ -122,6 +135,14 @@ export const FullBaseTest = () => {
           mainColor={baseActive}
           bgColor={bgColor}
         />
+        <Item
+          mainColor={bgDefault}
+          bgColor={baseDefault}
+        />
+        <Item
+          mainColor={bgSubtle}
+          bgColor={baseDefault}
+        />
       </div>
     );
   };
@@ -134,19 +155,18 @@ export const FullBaseTest = () => {
 
     theme: 'light' | 'dark' | 'contrast';
   }) => {
-    let baseDefault = color;
-
+    let lightness = getLightnessFromHex(color);
     if (theme === 'dark' || theme === 'contrast') {
-      baseDefault = lightenDarkColor(color, theme);
+      color = getBaseColor(color);
+      lightness = 90;
     }
-
-    const lightness = getLightnessFromHex(baseDefault);
     const multiplier = lightness <= 30 ? -8 : 8;
 
+    const baseDefault = blueColors[lightness];
     const baseHover = blueColors[lightness - multiplier];
     const baseActive = blueColors[lightness - multiplier * 2];
 
-    const contrastOneColor = calculateContrastOneColor(baseDefault);
+    const contrastOneColor = calculateContrastOneColor(blueColors[lightness]);
 
     return (
       <div
@@ -162,6 +182,7 @@ export const FullBaseTest = () => {
           baseHover={baseHover}
           baseActive={baseActive}
           active={contrastOneColor === '#ffffff'}
+          theme={theme}
         />
         <List
           bgColor='#000000'
@@ -169,6 +190,7 @@ export const FullBaseTest = () => {
           baseHover={baseHover}
           baseActive={baseActive}
           active={contrastOneColor === '#000000'}
+          theme={theme}
         />
       </div>
     );

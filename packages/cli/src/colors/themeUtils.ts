@@ -1,8 +1,9 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
+import { Hsluv } from 'hsluv';
 
 import type { ContrastMode, Mode, ColorInfo, ColorNumber, ThemeInfo } from './types.ts';
-import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex, lightenDarkColor } from './colorUtils';
+import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils';
 
 const blueBaseColor = '#0A71C0';
 const greenBaseColor = '#078D19';
@@ -43,12 +44,12 @@ const generateThemeColor = (color: CssColor, mode: Mode, contrastMode: 'aa' | 'a
     colorKeys: ['#ffffff'],
     ratios: [1],
   });
-
+  let colorLightness = getLightnessFromHex(color);
   if (mode === 'dark' || mode === 'contrast') {
-    color = lightenDarkColor(color, mode);
+    color = getBaseColor(color);
+    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
 
-  const colorLightness = getLightnessFromHex(color);
   const multiplier = colorLightness <= 30 ? -8 : 8;
   const baseDefaultContrast = getContrastFromLightness(colorLightness, color, leoBackgroundColor.colorKeys[0]);
   const baseHoverContrast = getContrastFromLightness(
@@ -268,7 +269,7 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
  * @param color The base color
  * @param lightness The lightness value from 0 to 100
  */
-const createColorWithLightness = (color: CssColor, lightness: number) => {
+export const createColorWithLightness = (color: CssColor, lightness: number) => {
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',
     colorKeys: ['#ffffff'],
@@ -338,4 +339,15 @@ export const getColorNameFromNumber = (number: ColorNumber): string => {
     15: 'Contrast Subtle',
   };
   return colorMap[number];
+};
+
+export const getBaseColor = (color: CssColor) => {
+  const conv = new Hsluv();
+  conv.hex = color;
+  conv.hexToHsluv();
+  // conv.hsluv_l = 100 - conv.hsluv_l;
+  // conv.hsluv_s = getSaturationForDarkMode(color, conv.hsluv_s);
+  conv.hsluvToHex();
+
+  return conv.hex as CssColor;
 };
