@@ -8,11 +8,7 @@
       "primitives/colors/light/theme4": "enabled",
       "primitives/colors/light/theme3": "enabled",
       "primitives/colors/light/theme2": "enabled",
-      "primitives/colors/light/theme": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "primitives/colors/light/theme": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
@@ -419,11 +415,7 @@
       "primitives/colors/dark/theme4": "enabled",
       "primitives/colors/dark/theme3": "enabled",
       "primitives/colors/dark/theme2": "enabled",
-      "primitives/colors/dark/theme": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "primitives/colors/dark/theme": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:1",
@@ -918,11 +910,7 @@
     "name": "altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme2": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "themes/theme2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:37143:55574",
     "$figmaModeId": "37143:17",
@@ -1016,11 +1004,7 @@
     "selectedTokenSets": {
       "semantic/style": "enabled",
       "semantic/color": "enabled",
-      "primitives/globals": "source",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "primitives/globals": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1651,11 +1635,7 @@
       "shadow.xl": "S:12d1833dd64569353680aa00c9d340d6f770698f,"
     },
     "selectedTokenSets": {
-      "themes/theme4": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "themes/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:37143:55574",
     "$figmaModeId": "37143:19",
@@ -1747,11 +1727,7 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/size/default": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "primitives/size/default": "enabled"
     },
     "group": "Size",
     "$figmaCollectionId": "VariableCollectionId:37102:63",
@@ -1775,11 +1751,7 @@
     "name": "compact",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/size/compact": "enabled",
-      "primitives/typography/default/theme": "disabled",
-      "primitives/typography/alt/theme": "disabled",
-      "primitives/typography/alt/theme2": "disabled",
-      "primitives/typography/default/theme2": "disabled"
+      "primitives/size/compact": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:37102:63",
     "$figmaModeId": "37102:2",
