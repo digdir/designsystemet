@@ -1,18 +1,16 @@
 {
-  "font-family": {
+  "theme": {
     "main": {
       "type": "fontFamilies",
       "value": "Inter"
-    }
-  },
-  "font-weight": {
+    },
     "medium": {
       "type": "fontWeights",
       "value": "Medium"
     },
     "semibold": {
       "type": "fontWeights",
-      "value": "Semi Bold"
+      "value": "Semi bold"
     },
     "regular": {
       "type": "fontWeights",

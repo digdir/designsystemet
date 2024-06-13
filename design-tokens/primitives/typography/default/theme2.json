@@ -1,18 +1,16 @@
 {
-  "font-family": {
+  "theme2": {
     "main": {
       "type": "fontFamilies",
-      "value": "Arial"
-    }
-  },
-  "font-weight": {
+      "value": "Roboto"
+    },
     "medium": {
       "type": "fontWeights",
-      "value": "Regular"
+      "value": "Medium"
     },
     "semibold": {
       "type": "fontWeights",
-      "value": "Bold"
+      "value": "SemiBold"
     },
     "regular": {
       "type": "fontWeights",
@@ -22,11 +20,5 @@
   "letter-spacing": {
     "type": "letterSpacing",
     "value": "0.2px"
-  },
-  "line-height": {
-    "paragraph": {
-      "type": "lineHeights",
-      "value": "130%"
-    }
   }
 }

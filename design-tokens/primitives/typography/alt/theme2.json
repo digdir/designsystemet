@@ -1,0 +1,24 @@
+{
+  "theme2": {
+    "main": {
+      "type": "fontFamilies",
+      "value": "Times New Roman"
+    },
+    "medium": {
+      "type": "fontWeights",
+      "value": "Regular"
+    },
+    "semibold": {
+      "type": "fontWeights",
+      "value": "Bold"
+    },
+    "regular": {
+      "type": "fontWeights",
+      "value": "Regular"
+    }
+  },
+  "letter-spacing": {
+    "type": "letterSpacing",
+    "value": "0.2px"
+  }
+}
