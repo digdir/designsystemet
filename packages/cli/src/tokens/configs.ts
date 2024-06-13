@@ -142,7 +142,9 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
             format: cssVariables.name,
             filter: (token) => {
               const type = getType(token);
-              return (!token.isSource || includeSource(token)) && type !== 'color';
+              return (
+                (!token.isSource || includeSource(token)) && !['color', 'fontWeights', 'fontFamilies'].includes(type)
+              );
             },
           },
         ],
@@ -212,7 +214,13 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
           {
             destination: `typography.css`,
             format: cssClassesTypography.name,
-            filter: (token) => ['typography', 'fontWeights'].includes(token.type as string),
+            filter: (token) => {
+              console.log(token.path);
+              return (
+                ['typography', 'fontWeights', 'fontFamilies'].includes(getType(token)) &&
+                !(token.path[0] || '').startsWith('theme')
+              );
+            },
           },
         ],
         options: {
