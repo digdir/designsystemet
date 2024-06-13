@@ -2337,13 +2337,13 @@ export const  color = [
 export const  typography = [
   {
     type: "typography",
-    value: "500 3.75rem/1.3 'Inter'",
+    value: "500 3.75rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f7}"
@@ -2359,14 +2359,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 3rem/1.3 'Inter'",
+    value: "500 3rem/1.3 'Roboto'",
     description: "H1",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f6}"
@@ -2383,14 +2383,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 2.25rem/1.3 'Inter'",
+    value: "500 2.25rem/1.3 'Roboto'",
     description: "H2",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f5}"
@@ -2407,14 +2407,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.875rem/1.3 'Inter'",
+    value: "500 1.875rem/1.3 'Roboto'",
     description: "H3",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f4}"
@@ -2431,14 +2431,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.5rem/1.3 'Inter'",
+    value: "500 1.5rem/1.3 'Roboto'",
     description: "H4",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f3}"
@@ -2455,14 +2455,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.3125rem/1.3 'Inter'",
+    value: "500 1.3125rem/1.3 'Roboto'",
     description: "H5",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
@@ -2479,14 +2479,14 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.125rem/1.3 'Inter'",
+    value: "500 1.125rem/1.3 'Roboto'",
     description: "H6",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
@@ -2503,13 +2503,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.875rem/1.7 'Inter'",
+    value: "400 1.875rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f4}"
@@ -2525,13 +2525,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.5rem/1.7 'Inter'",
+    value: "400 1.5rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f3}"
@@ -2547,13 +2547,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.7 'Inter'",
+    value: "400 1.3125rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f2}"
@@ -2569,13 +2569,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.7 'Inter'",
+    value: "400 1.125rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
@@ -2591,13 +2591,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.5 'Inter'",
+    value: "400 1.3125rem/1.5 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f2}"
@@ -2613,13 +2613,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.5 'Inter'",
+    value: "400 1.125rem/1.5 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f1}"
@@ -2635,13 +2635,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.5 'Inter'",
+    value: "400 1rem/1.5 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f0}"
@@ -2657,13 +2657,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.5 'Inter'",
+    value: "400 0.875rem/1.5 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.500}",
         fontSize: "{font-size.f-1}"
@@ -2679,13 +2679,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.3 'Inter'",
+    value: "400 1.3125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
@@ -2702,13 +2702,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.3 'Inter'",
+    value: "400 1.125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
@@ -2725,13 +2725,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.3 'Inter'",
+    value: "400 1rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
@@ -2748,13 +2748,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.3 'Inter'",
+    value: "400 0.875rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
@@ -2771,13 +2771,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.7 'Inter'",
+    value: "400 1.125rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f1}"
@@ -2794,13 +2794,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.7 'Inter'",
+    value: "400 1rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f0}"
@@ -2817,13 +2817,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.7 'Inter'",
+    value: "400 0.875rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-1}"
@@ -2840,13 +2840,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.8125rem/1.7 'Inter'",
+    value: "400 0.8125rem/1.7 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.700}",
         fontSize: "{font-size.f-2}"
@@ -2863,13 +2863,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.3125rem/1.3 'Inter'",
+    value: "500 1.3125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
@@ -2885,13 +2885,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.125rem/1.3 'Inter'",
+    value: "500 1.125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
@@ -2907,13 +2907,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1rem/1.3 'Inter'",
+    value: "500 1rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
@@ -2929,13 +2929,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 0.875rem/1.3 'Inter'",
+    value: "500 0.875rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
@@ -2951,13 +2951,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.3 'Inter'",
+    value: "400 1.3125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f2}"
@@ -2973,13 +2973,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.3 'Inter'",
+    value: "400 1.125rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f1}"
@@ -2995,13 +2995,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.3 'Inter'",
+    value: "400 1rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f0}"
@@ -3017,13 +3017,13 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.3 'Inter'",
+    value: "400 0.875rem/1.3 'Roboto'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       type: "typography",
       value: {
-        fontFamily: "{font-family.main}",
+        fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.300}",
         fontSize: "{font-size.f-1}"
