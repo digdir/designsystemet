@@ -2,23 +2,19 @@
   "theme": {
     "main": {
       "type": "fontFamilies",
-      "value": "Times New Roman"
+      "value": "Inter"
     },
     "medium": {
       "type": "fontWeights",
-      "value": "Regular"
+      "value": "Medium"
     },
     "semibold": {
       "type": "fontWeights",
-      "value": "Bold"
+      "value": "Semi bold"
     },
     "regular": {
       "type": "fontWeights",
       "value": "Regular"
     }
-  },
-  "letter-spacing": {
-    "type": "letterSpacing",
-    "value": "0.2px"
   }
 }
