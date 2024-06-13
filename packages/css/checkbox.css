@@ -75,9 +75,9 @@
 
   /*   .ds-checkbox__input:focus-visible {
     outline-offset: 3px;
-    outline: var(--dsc-checkbox-focus-border-width) solid var(--ds-focus-outer);
+    outline: var(--dsc-checkbox-focus-border-width) solid var(--ds-color-focus-outer);
     box-shadow:
-      0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-focus-inner),
+      0 0 0 var(--dsc-checkbox-focus-border-width) var(--ds-color-focus-inner),
       inset 0 0 0 2px var(--dsc-checkbox-border-color);
   } */
 
@@ -129,9 +129,9 @@
   .ds-checkbox:has(.ds-checkbox__input:focus-visible) {
     --dsc-focus-border-width: 3px;
 
-    outline: var(--dsc-focus-border-width) solid var(--ds-focus-outer);
+    outline: var(--dsc-focus-border-width) solid var(--ds-color-focus-outer);
     outline-offset: var(--dsc-focus-border-width);
-    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-focus-inner);
+    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
     border-radius: var(--ds-border-radius-md);
   }
 

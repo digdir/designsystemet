@@ -2300,34 +2300,36 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#c9ccd0",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "color",
-      value: "{color.neutral.text-default}"
-    },
-    name: "--ds-focus-outer",
-    attributes: {},
-    path: [
-      "focus",
-      "outer"
-    ]
-  },
-  {
-    type: "color",
     value: "#131c27",
-    filePath: "../../design-tokens/semantic/style.json",
+    filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       type: "color",
       value: "{color.neutral.background-default}"
     },
-    name: "--ds-focus-inner",
+    name: "--ds-color-focus-inner",
     attributes: {},
     path: [
+      "color",
       "focus",
       "inner"
+    ]
+  },
+  {
+    type: "color",
+    value: "#b0cfea",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      type: "color",
+      value: "{color.accent.text-default}"
+    },
+    name: "--ds-color-focus-outer",
+    attributes: {},
+    path: [
+      "color",
+      "focus",
+      "outer"
     ]
   }
 ] 
