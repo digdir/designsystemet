@@ -29,7 +29,7 @@ export const cssVariables: Format = {
         typeof outputReferences === 'function' &&
         outputReferences?.(token, { dictionary })
       ) {
-        if ((baseTypes as string[]).includes(type)) {
+        if (R.isNotNil(baseTypes) && (baseTypes as string[]).includes(type)) {
           return calculatedVariable(format(token));
         }
       }

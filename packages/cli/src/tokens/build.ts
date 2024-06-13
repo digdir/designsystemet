@@ -5,7 +5,9 @@ import type { ThemeObject } from '@tokens-studio/types';
 import StyleDictionary from 'style-dictionary';
 import * as R from 'ramda';
 
-import { getConfigs, cssVariablesConfig, tsTokensConfig, cssTypographyConfig, permutateThemes } from './configs.js';
+import * as configs from './configs.js';
+
+const { permutateThemes, getConfigs } = configs;
 
 type Options = {
   /** Design tokens path  */
@@ -36,14 +38,15 @@ export async function run(options: Options): Promise<void> {
   });
 
   const themes = permutateThemes(relevant$themes);
-  const typographyThemes = R.pickBy<Record<string, string[]>, Record<string, string[]>>(
+  const semanticThemes = R.pickBy<Record<string, string[]>, Record<string, string[]>>(
     (_, key) => R.startsWith('light', R.toLower(key)),
     themes,
   );
 
-  const themeVariableConfigs = getConfigs(cssVariablesConfig, tokensOutDir, tokensDir, themes);
-  const storefrontConfigs = getConfigs(tsTokensConfig, storefrontOutDir, tokensDir, themes);
-  const typographyConfigs = getConfigs(cssTypographyConfig, tokensOutDir, tokensDir, typographyThemes);
+  const colorModeConfigs = getConfigs(configs.colorModeVariables, tokensOutDir, tokensDir, themes);
+  const semanticConfigs = getConfigs(configs.semanticVariables, tokensOutDir, tokensDir, semanticThemes);
+  const storefrontConfigs = getConfigs(configs.typescriptTokens, storefrontOutDir, tokensDir, themes);
+  const typographyConfigs = getConfigs(configs.typographyCSS, tokensOutDir, tokensDir, semanticThemes);
 
   if (typographyConfigs.length > 0) {
     console.log('\n🍱 Building Typography classes');
@@ -61,11 +64,27 @@ export async function run(options: Options): Promise<void> {
     console.log('🏁 Finished building Typography classes!');
   }
 
-  if (themeVariableConfigs.length > 0) {
-    console.log('\n🍱 Building CSS variables from tokens');
+  if (semanticConfigs.length > 0) {
+    console.log('\n🍱 Building Semantic CSS variables');
+
+    await Promise.all(
+      semanticConfigs.map(async ({ name, config }) => {
+        const typographyTheme = name.split('-')[0];
+        console.log(`👷 Processing: ${typographyTheme}`);
+
+        const typographyClasses = await sd.extend(config);
+
+        return typographyClasses.buildAllPlatforms();
+      }),
+    );
+    console.log('🏁 Finished building Semantic CSS variables!');
+  }
+
+  if (colorModeConfigs.length > 0) {
+    console.log('\n🍱 Building Color mode CSS variables');
     console.log('➡️  Tokens path: ', tokensDir);
     await Promise.all(
-      themeVariableConfigs.map(async ({ name, config }) => {
+      colorModeConfigs.map(async ({ name, config }) => {
         console.log(`👷 Processing: ${name}`);
 
         const themeVariablesSD = await sd.extend(config);
@@ -73,7 +92,7 @@ export async function run(options: Options): Promise<void> {
         return themeVariablesSD.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building CSS variables!');
+    console.log('🏁 Finished building Color mode CSS variables!');
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
