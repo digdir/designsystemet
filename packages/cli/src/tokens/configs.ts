@@ -92,7 +92,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         actions: [makeEntryFile.name],
         files: [
           {
-            destination: `${mode}.css`,
+            destination: `color-mode/${mode}.css`,
             format: cssVariables.name,
             filter: (token, options) => {
               const type = getType(token, options.usesDtcg);
