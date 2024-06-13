@@ -56,7 +56,10 @@ const outputColorReferences = (token: TransformedToken) => {
   return false;
 };
 
-const getType = (token: TransformedToken, usesDtcg: boolean | undefined) => (usesDtcg ? token.$type : token.type) || '';
+export const getType = (token: TransformedToken, usesDtcg: boolean | undefined) =>
+  (usesDtcg ? token.$type : token.type) || '';
+
+export type IncludeSource = (token: TransformedToken, options: Config) => boolean;
 
 export const permutateThemes = ($themes: ThemeObject[]) =>
   permutateThemes_($themes, {
@@ -112,7 +115,12 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
-  const baseTypes = ['spacing', 'sizing', 'borderRadius'];
+
+  const includeSource = (token: TransformedToken, options: Config) => {
+    const type = getType(token, options.usesDtcg);
+
+    return ['spacing', 'sizing', 'borderRadius'].includes(type);
+  };
 
   return {
     log: { verbosity: 'silent' },
@@ -123,7 +131,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         outPath,
         theme,
         basePxFontSize,
-        baseTypes,
+        includeSource,
         selector,
         //
         prefix,
@@ -136,20 +144,13 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
             format: cssVariables.name,
             filter: (token, options) => {
               const type = getType(token, options.usesDtcg);
-
-              return (!token.isSource || baseTypes.includes(type)) && type !== 'color';
+              return (!token.isSource || includeSource(token, options)) && type !== 'color';
             },
           },
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => {
-            const type = getType(token, options.usesDtcg);
-
-            const isBaseType = baseTypes.includes(type);
-
-            return isBaseType && outputReferencesFilter(token, options);
-          },
+          outputReferences: (token, options) => includeSource(token, options) && outputReferencesFilter(token, options),
         },
       },
     },
