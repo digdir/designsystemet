@@ -56,6 +56,8 @@ const outputColorReferences = (token: TransformedToken) => {
   return false;
 };
 
+const getType = (token: TransformedToken, usesDtcg: boolean | undefined) => (usesDtcg ? token.$type : token.type) || '';
+
 export const permutateThemes = ($themes: ThemeObject[]) =>
   permutateThemes_($themes, {
     separator,
@@ -70,10 +72,8 @@ type GetConfig = (options: {
   outPath?: string;
 }) => Config;
 
-export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }) => {
+export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
-
-  const baseTypes = ['spacing', 'sizing', 'borderRadius'];
 
   return {
     log: { verbosity: 'silent' },
@@ -84,9 +84,7 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
         outPath,
         mode,
         theme,
-        basePxFontSize,
         selector,
-        baseTypes,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -97,23 +95,60 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
             destination: `${mode}.css`,
             format: cssVariables.name,
             filter: (token, options) => {
-              const { usesDtcg } = options;
-              const type = (usesDtcg ? token.$type : token.type) || '';
+              const type = getType(token, options.usesDtcg);
 
-              return !token.isSource || baseTypes.includes(type);
+              return !token.isSource && type === 'color';
+            },
+          },
+        ],
+        options: {
+          fileHeader,
+          outputReferences: (token, options) => outputColorReferences(token) && outputReferencesFilter(token, options),
+        },
+      },
+    },
+  };
+};
+
+export const semanticVariables: GetConfig = ({ outPath, theme }) => {
+  const selector = `:root`;
+  const baseTypes = ['spacing', 'sizing', 'borderRadius'];
+
+  return {
+    log: { verbosity: 'silent' },
+    preprocessors: ['tokens-studio'],
+    platforms: {
+      css: {
+        // custom
+        outPath,
+        theme,
+        basePxFontSize,
+        baseTypes,
+        selector,
+        //
+        prefix,
+        buildPath: `${outPath}/${theme}/`,
+        transforms: dsTransformers,
+        actions: [makeEntryFile.name],
+        files: [
+          {
+            destination: `semantic.css`,
+            format: cssVariables.name,
+            filter: (token, options) => {
+              const type = getType(token, options.usesDtcg);
+
+              return (!token.isSource || baseTypes.includes(type)) && type !== 'color';
             },
           },
         ],
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const { usesDtcg } = options;
-            const type = (usesDtcg ? token.$type : token.type) || '';
+            const type = getType(token, options.usesDtcg);
 
             const isBaseType = baseTypes.includes(type);
-            const isInterestedColor = outputColorReferences(token);
 
-            return (isInterestedColor || isBaseType) && outputReferencesFilter(token, options);
+            return isBaseType && outputReferencesFilter(token, options);
           },
         },
       },
@@ -121,7 +156,7 @@ export const cssVariablesConfig: GetConfig = ({ mode = 'light', outPath, theme }
   };
 };
 
-export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
+export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
@@ -160,7 +195,7 @@ export const tsTokensConfig: GetConfig = ({ mode = 'unknown', outPath, theme }) 
   };
 };
 
-export const cssTypographyConfig: GetConfig = ({ outPath, theme, typography }) => {
+export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   // const selector = `${typography === 'default' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
 
   return {
