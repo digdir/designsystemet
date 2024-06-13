@@ -303,6 +303,8 @@
   --ds-color-warning-text-default: var(--ds-global-orange-13);
   --ds-color-warning-contrast-default: var(--ds-global-yellow-contrast-1);
   --ds-color-warning-contrast-subtle: var(--ds-global-yellow-contrast-2);
+  --ds-color-focus-inner: #131c27;
+  --ds-color-focus-outer: #b0cfea;
   --ds-typography-heading-2xl: 500 3.75rem/1.3 'Inter';
   --ds-typography-heading-xl: 500 3rem/1.3 'Inter';
   --ds-typography-heading-lg: 500 2.25rem/1.3 'Inter';
@@ -393,6 +395,4 @@
   --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
   --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
   --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
-  --ds-focus-outer: #c9ccd0;
-  --ds-focus-inner: #131c27;
 }
