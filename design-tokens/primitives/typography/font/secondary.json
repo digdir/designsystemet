@@ -18,5 +18,15 @@
       "type": "fontWeights",
       "value": "Regular"
     }
+  },
+  "letter-spacing": {
+    "type": "letterSpacing",
+    "value": "0.2px"
+  },
+  "line-height": {
+    "paragraph": {
+      "type": "lineHeights",
+      "value": "130%"
+    }
   }
 }
