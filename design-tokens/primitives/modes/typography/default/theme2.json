@@ -16,9 +16,5 @@
       "type": "fontWeights",
       "value": "Regular"
     }
-  },
-  "letter-spacing": {
-    "type": "letterSpacing",
-    "value": "0.2px"
   }
 }
