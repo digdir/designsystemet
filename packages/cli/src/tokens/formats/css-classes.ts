@@ -45,12 +45,6 @@ export const cssClassesTypography: Format = {
         (acc, token) => {
           const type = getType(token);
 
-          if (type === 'fontWeights') {
-            const variable = format(token);
-
-            return { ...acc, variables: [...acc.variables, variable] };
-          }
-
           if (type === 'typography') {
             const typography = getValue<Typgraphy>(token);
 
@@ -77,7 +71,9 @@ export const cssClassesTypography: Format = {
             return { ...acc, classes: [...acc.classes, className] };
           }
 
-          return acc;
+          const variable = format(token);
+
+          return { ...acc, variables: [...acc.variables, variable] };
         },
         { variables: [], classes: [] },
       ),
