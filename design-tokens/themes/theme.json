@@ -310,5 +310,45 @@
         "value": "{theme.brand3.contrast-2}"
       }
     }
+  },
+  "font": {
+    "main": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontFamilies",
+      "value": "{theme.main}"
+    }
+  },
+  "font-weight": {
+    "medium": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "{theme.medium}"
+    },
+    "semibold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "{theme.semibold}"
+    },
+    "regular": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "{theme.regular}"
+    }
   }
 }
