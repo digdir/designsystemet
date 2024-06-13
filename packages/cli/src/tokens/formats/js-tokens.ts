@@ -2,7 +2,9 @@ import * as R from 'ramda';
 import type { TransformedToken, Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter } from 'style-dictionary/utils';
 
-const groupByType = R.groupBy((token: TransformedToken) => token.type as string);
+import { getType } from '../utils';
+
+const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
 /** Add token name with prefix to list for removal */
 const removeUnwatedTokens = R.filter(

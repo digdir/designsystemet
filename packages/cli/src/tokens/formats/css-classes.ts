@@ -3,6 +3,8 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, getReferences } from 'style-dictionary/utils';
 
+import { getValue, getType } from '../utils';
+
 type Typgraphy = {
   fontWeight: string;
   fontSize: string;
@@ -26,7 +28,7 @@ const getVariableName = R.pipe<string[], string[], string, string, string>(
 export const cssClassesTypography: Format = {
   name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
-    const { usesDtcg, outputReferences } = options;
+    const { outputReferences } = options;
     const { basePxFontSize, selector } = platform;
 
     const header = await fileHeader({ file });
@@ -41,7 +43,7 @@ export const cssClassesTypography: Format = {
       sortByType,
       R.reduce<TransformedToken, ProcessedTokens>(
         (acc, token) => {
-          const type = token.type ?? token.$type;
+          const type = getType(token);
 
           if (type === 'fontWeights') {
             const variable = format(token);
@@ -50,14 +52,14 @@ export const cssClassesTypography: Format = {
           }
 
           if (type === 'typography') {
-            const typography = (usesDtcg ? token.$value : token.value) as Typgraphy;
+            const typography = getValue<Typgraphy>(token);
 
             const baseFontPx = (basePxFontSize as unknown as number) || 16;
             const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
             const classSelector = R.replace('-typography', '', token.name);
 
             // const formattedTypography = format(token);
-            const references = getReferences((token.original.value as Typgraphy).fontWeight, dictionary.tokens);
+            const references = getReferences(getValue<Typgraphy>(token.original).fontWeight, dictionary.tokens);
             const fontWeight = R.last(references);
 
             let fontWeightName: string = '';

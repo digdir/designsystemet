@@ -94,7 +94,8 @@ export async function run(options: Options): Promise<void> {
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
-    console.log('\n🏗️  Building Storefront tokens');
+    console.log(`\n🍱 Building ${chalk.bgGreen('Storefront')}`);
+
     await Promise.all(
       storefrontConfigs.map(async ({ name, config }) => {
         console.log(`👷 Processing: ${name}`);
@@ -104,6 +105,5 @@ export async function run(options: Options): Promise<void> {
         return storefrontSD.buildAllPlatforms();
       }),
     );
-    console.log('🏁 Finished building Storefront tokens');
   }
 }

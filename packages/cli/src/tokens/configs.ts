@@ -11,6 +11,7 @@ import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
 import { cssClassesTypography } from './formats/css-classes';
 import { makeEntryFile } from './actions.js';
+import { getType } from './utils';
 
 void tokenStudio.registerTransforms(StyleDictionary);
 
@@ -56,9 +57,6 @@ const outputColorReferences = (token: TransformedToken) => {
   return false;
 };
 
-export const getType = (token: TransformedToken, usesDtcg: boolean | undefined) =>
-  (usesDtcg ? token.$type : token.type) || '';
-
 export type IncludeSource = (token: TransformedToken, options: Config) => boolean;
 
 export const permutateThemes = ($themes: ThemeObject[]) =>
@@ -97,8 +95,8 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
           {
             destination: `color-mode/${mode}.css`,
             format: cssVariables.name,
-            filter: (token, options) => {
-              const type = getType(token, options.usesDtcg);
+            filter: (token) => {
+              const type = getType(token);
 
               return !token.isSource && type === 'color';
             },
@@ -116,8 +114,8 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
 
-  const includeSource = (token: TransformedToken, options: Config) => {
-    const type = getType(token, options.usesDtcg);
+  const includeSource = (token: TransformedToken) => {
+    const type = getType(token);
 
     return ['spacing', 'sizing', 'borderRadius'].includes(type);
   };
@@ -142,15 +140,15 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
           {
             destination: `semantic.css`,
             format: cssVariables.name,
-            filter: (token, options) => {
-              const type = getType(token, options.usesDtcg);
-              return (!token.isSource || includeSource(token, options)) && type !== 'color';
+            filter: (token) => {
+              const type = getType(token);
+              return (!token.isSource || includeSource(token)) && type !== 'color';
             },
           },
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => includeSource(token, options) && outputReferencesFilter(token, options),
+          outputReferences: (token, options) => includeSource(token) && outputReferencesFilter(token, options),
         },
       },
     },
@@ -215,15 +213,6 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
             destination: `typography.css`,
             format: cssClassesTypography.name,
             filter: (token) => ['typography', 'fontWeights'].includes(token.type as string),
-            outputColorReferences: (token: TransformedToken) => {
-              const type = token.$type ?? token.type;
-
-              if (type === 'fontWeights') {
-                return true;
-              }
-
-              return false;
-            },
           },
         ],
         options: {
