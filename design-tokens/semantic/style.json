@@ -535,15 +535,5 @@
       "type": "boxShadow",
       "value": "{shadow.500}"
     }
-  },
-  "focus": {
-    "outer": {
-      "type": "color",
-      "value": "{color.neutral.text-default}"
-    },
-    "inner": {
-      "type": "color",
-      "value": "{color.neutral.background-default}"
-    }
   }
 }
