@@ -6,7 +6,7 @@
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cssvar.files": ["packages/theme/brand/digdir/light.css"],
+  "cssvar.files": ["packages/theme/brand/digdir/color-mode/light.css"],
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
