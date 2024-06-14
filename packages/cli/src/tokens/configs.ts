@@ -57,7 +57,7 @@ const outputColorReferences = (token: TransformedToken) => {
   return false;
 };
 
-export type IncludeSource = (token: TransformedToken, options: Config) => boolean;
+export type IsCalculatedToken = (token: TransformedToken, options?: Config) => boolean;
 
 export const permutateThemes = ($themes: ThemeObject[]) =>
   permutateThemes_($themes, {
@@ -114,7 +114,14 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
 
-  const includeSource = (token: TransformedToken) => {
+  /**
+   * This is a workaround for our formatters to support transative transformers while retaining outputReference.
+   *
+   * This function will wrap formatted token in `calc()`
+   *
+   * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
+   */
+  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) => {
     const type = getType(token);
 
     return ['spacing', 'sizing', 'borderRadius'].includes(type);
@@ -129,7 +136,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         outPath,
         theme,
         basePxFontSize,
-        includeSource,
+        isCalculatedToken,
         selector,
         //
         prefix,
@@ -143,14 +150,15 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
             filter: (token) => {
               const type = getType(token);
               return (
-                (!token.isSource || includeSource(token)) && !['color', 'fontWeights', 'fontFamilies'].includes(type)
+                (!token.isSource || isCalculatedToken(token)) &&
+                !['color', 'fontWeights', 'fontFamilies'].includes(type)
               );
             },
           },
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => includeSource(token) && outputReferencesFilter(token, options),
+          outputReferences: (token, options) => isCalculatedToken(token) && outputReferencesFilter(token, options),
         },
       },
     },
@@ -173,7 +181,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
             format: jsTokens.name,
             outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/colors|\/themes/, token.filePath)) {
+              if (R.test(/primitives\/modes|\/themes/, token.filePath)) {
                 return false;
               }
 
@@ -215,7 +223,6 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
             destination: `typography.css`,
             format: cssClassesTypography.name,
             filter: (token) => {
-              console.log(token.path);
               return (
                 ['typography', 'fontWeights', 'fontFamilies'].includes(getType(token)) &&
                 !(token.path[0] || '').startsWith('theme')
