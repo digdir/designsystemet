@@ -210,6 +210,28 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   return {
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
+    hooks: {
+      transforms: {
+        typographyClassName: {
+          type: 'name',
+          filter: (token) => getType(token) === 'typography',
+          transform: (token) => {
+            const name = R.pipe(
+              (list: string[]) => {
+                const withPrefix = R.concat([prefix], R.remove(0, 0, list));
+                const [rest, last] = R.splitAt(-1, withPrefix);
+
+                return `${rest.join('-')}--${R.head(last)}`;
+              },
+              R.trim,
+              R.toLower,
+            )(token.path);
+            console.log({ path: token.path, name });
+            return name;
+          },
+        },
+      },
+    },
     platforms: {
       css: {
         prefix,
@@ -217,7 +239,13 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         // selector,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
-        transforms: [nameKebab.name, 'ts/size/lineheight', 'ts/size/px', 'ts/typography/fontWeight'],
+        transforms: [
+          nameKebab.name,
+          'typographyClassName',
+          'ts/size/lineheight',
+          'ts/size/px',
+          'ts/typography/fontWeight',
+        ],
         files: [
           {
             destination: `typography.css`,
