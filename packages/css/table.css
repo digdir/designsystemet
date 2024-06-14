@@ -33,7 +33,6 @@
   .ds-table__head {
     z-index: 0;
     box-sizing: border-box;
-    font: inherit;
     font-family: inherit;
     border-spacing: 0;
     font-weight: 500;
@@ -42,7 +41,6 @@
 
   .ds-table__header__cell {
     padding: var(--dsc-table-padding);
-    font: inherit;
     font-family: inherit;
     background-color: var(--ds-color-neutral-background-default);
     border-spacing: 0;
@@ -63,7 +61,6 @@
     position: relative;
     width: 100%;
     border: none;
-    font: inherit;
     font-family: inherit;
     display: flex;
     cursor: pointer;

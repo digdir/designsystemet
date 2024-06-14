@@ -1,5 +1,4 @@
 .title {
-  font: var(--ds-typography-paragraph-md);
   font-weight: 600;
   margin-bottom: var(--ds-spacing-5);
 }
@@ -28,7 +27,6 @@
 }
 
 .innerTitle {
-  font: var(--ds-typography-paragraph-md);
   font-weight: 500;
   margin-bottom: 12px;
 }
@@ -43,7 +41,6 @@
   text-decoration: none;
   padding: var(--ds-spacing-1) var(--ds-spacing-4);
   display: block;
-  font: var(--ds-typography-paragraph-sm);
   line-height: 1.3em;
   position: relative;
   border-radius: var(--ds-border-radius-md);

@@ -139,7 +139,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               style={{ ...floatingStyles, ...animationStyles, ...style }}
               role='tooltip'
               {...getFloatingProps({
-                className: cl('ds-tooltip', className),
+                className: cl('ds-tooltip', 'ds-paragraph--xs', className),
                 ref: mergedRef,
                 ...rest,
               })}

@@ -3,10 +3,11 @@
 @layer ds.typography, ds.utils, ds.box, ds.btn;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./label.css');
-@import url('./heading.css');
-@import url('./paragraph.css');
-@import url('./ingress.css');
+@import url('./typography/label.css');
+@import url('./typography/heading.css');
+@import url('./typography/paragraph.css');
+@import url('./typography/ingress.css');
+@import url('./typography/error-message.css');
 @import url('./button.css');
 @import url('./utils.css');
 @import url('./box.css');
@@ -15,7 +16,6 @@
 @import url('./accordion.css');
 @import url('./switch.css');
 @import url('./checkbox.css');
-@import url('./error-message.css');
 @import url('./radio.css');
 @import url('./search.css');
 @import url('./native-select.css');

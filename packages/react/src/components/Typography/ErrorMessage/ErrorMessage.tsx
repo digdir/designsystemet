@@ -33,7 +33,7 @@ export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
         ref={ref}
         className={cl(
           'ds-error-message',
-          `ds-error-message--${size}`,
+          `ds-error_message--${size}`,
           spacing && 'ds-error-message--spacing',
           error && 'ds-error-message--error',
           className,

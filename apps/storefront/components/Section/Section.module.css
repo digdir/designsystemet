@@ -7,8 +7,8 @@
   background-color: white;
 }
 
-.title {
-  font: var(--ds-typography-heading-lg);
+.grey {
+  background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .header {

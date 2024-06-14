@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 
 import { Container } from '../Container/Container';
 
@@ -133,7 +134,7 @@ const Footer = () => {
             </div>
             <NextLink
               href='mailto:designsystem@digdir.no'
-              className={classes.button}
+              className={cl(classes.button, 'ds-paragraph-short--sm')}
             >
               Din etat? Ta kontakt!
             </NextLink>
@@ -160,7 +161,7 @@ const Footer = () => {
           </div>
         </Container>
       </div>
-      <div className={classes.bottom}>
+      <div className={cl(classes.bottom, 'ds-paragraph--sm')}>
         <Container>
           <Paragraph>© {getCurrentYear()} Designsystemet</Paragraph>
         </Container>

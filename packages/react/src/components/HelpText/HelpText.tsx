@@ -79,7 +79,9 @@ const HelpText = ({
             <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content className='ds-helptext__content'>
+        <Popover.Content
+          className={cl('ds-helptext__content', 'ds-paragraph--md')}
+        >
           {children}
         </Popover.Content>
       </Popover>

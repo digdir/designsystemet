@@ -60,11 +60,10 @@
 }
 
 .white {
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 .title {
-  font: var(--ds-typography-heading-xs);
   margin-top: var(--ds-spacing-4);
   margin-bottom: var(--ds-spacing-4);
   text-align: center;
@@ -74,7 +73,6 @@
 }
 
 .desc {
-  font: var(--ds-typography-paragraph-sm);
   text-align: center;
   line-height: 1.7em;
 }

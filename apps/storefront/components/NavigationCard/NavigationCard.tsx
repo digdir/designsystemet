@@ -34,11 +34,11 @@ const NavigationCard = ({
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
       <Heading
         level={level}
-        className={classes.title}
+        className={cl(classes.title, 'ds-heading--xs')}
       >
         {title}
       </Heading>
-      <div className={classes.desc}>{description}</div>
+      <div className={cl(classes.desc, 'ds-paragraph-sm')}>{description}</div>
     </Link>
   );
 };

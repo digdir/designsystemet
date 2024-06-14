@@ -52,7 +52,6 @@
   }
 
   .ds-search__input {
-    font: inherit;
     font-family: inherit;
     position: relative;
     box-sizing: border-box;

@@ -22,7 +22,6 @@
 
   .ds-native-select {
     position: relative;
-    font: inherit;
     font-family: inherit;
     box-sizing: border-box;
     padding: 0 var(--ds-spacing-2);

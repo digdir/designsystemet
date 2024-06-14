@@ -71,8 +71,6 @@
     gap: var(--ds-spacing-4);
     flex-wrap: wrap;
     word-wrap: break-word;
-    font: var(--ds-typography-paragraph-md);
-    font-family: inherit;
     padding: var(--ds-spacing-2) 0;
     color: inherit;
   }
@@ -86,7 +84,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     word-wrap: break-word;
-    font: var(--ds-typography-heading-md);
     font-family: inherit;
     padding: var(--ds-spacing-2) 0;
   }

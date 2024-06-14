@@ -53,7 +53,7 @@ type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
 const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
     <Ingress
-      className={cl(classes.ingress, className)}
+      className={cl(classes.ingress, 'ds-ingress--sm', className)}
       {...props}
     />
   );

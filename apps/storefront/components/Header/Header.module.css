@@ -45,7 +45,6 @@
 .link {
   color: inherit;
   text-decoration: none;
-  font: var(--ds-typography-paragraph-md);
   border-bottom: 3px solid transparent;
   padding-bottom: var(--ds-spacing-2);
   transition: 0.1s all ease-out;

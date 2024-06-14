@@ -17,7 +17,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
 
     return (
       <Component
-        className={cl(`ds-card__content`, className)}
+        className={cl(`ds-card__content`, `ds-paragraph--md`, className)}
         ref={ref}
         {...rest}
       />

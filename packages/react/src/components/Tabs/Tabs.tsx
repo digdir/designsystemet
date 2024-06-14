@@ -74,7 +74,11 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          className={cl(`ds-tabs--${size}`, className)}
+          className={cl(
+            `ds-tabs--${size}`,
+            `ds-paragraph-short--${size}`,
+            className,
+          )}
           ref={ref}
           {...rest}
         >

@@ -35,9 +35,7 @@
   }
 
   .ds-helptext__content {
-    font: var(--ds-typography-paragraph-md);
     color: var(--ds-color-neutral-text-default);
-    font-family: inherit;
     width: fit-content;
     max-width: 700px;
   }
