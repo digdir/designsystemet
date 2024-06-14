@@ -3,7 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, getReferences } from 'style-dictionary/utils';
 
-import { getValue, getType } from '../utils';
+import { getValue, getType } from '../utils/utils';
 
 type Typgraphy = {
   fontWeight: string;
