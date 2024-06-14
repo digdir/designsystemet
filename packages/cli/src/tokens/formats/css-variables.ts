@@ -3,7 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, usesReferences } from 'style-dictionary/utils';
 
-import type { IncludeSource } from '../configs';
+import type { IsCalculatedToken } from '../configs';
 import { getValue } from '../utils';
 
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
@@ -13,7 +13,7 @@ export const cssVariables: Format = {
   format: async function ({ dictionary, file, options, platform }) {
     const { allTokens } = dictionary;
     const { outputReferences } = options;
-    const { selector, includeSource } = platform;
+    const { selector, isCalculatedToken } = platform;
 
     const header = await fileHeader({ file });
 
@@ -31,7 +31,7 @@ export const cssVariables: Format = {
         typeof outputReferences === 'function' &&
         outputReferences?.(token, { dictionary })
       ) {
-        if ((includeSource as IncludeSource)?.(token, options)) {
+        if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
           return calculatedVariable(format(token));
         }
       }

@@ -71,9 +71,7 @@ export const cssClassesTypography: Format = {
             return { ...acc, classes: [...acc.classes, className] };
           }
 
-          const variable = format(token);
-
-          return { ...acc, variables: [...acc.variables, variable] };
+          return { ...acc, variables: [...acc.variables, format(token)] };
         },
         { variables: [], classes: [] },
       ),
