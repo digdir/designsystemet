@@ -5,13 +5,13 @@ import type { Config, TransformedToken } from 'style-dictionary/types';
 import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
-import { permutateThemes as permutateThemes_ } from './permutateThemes';
+import { permutateThemes as permutateThemes_ } from './utils/permutateThemes';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
 import { cssClassesTypography } from './formats/css-classes';
 import { makeEntryFile } from './actions.js';
-import { getType } from './utils';
+import { getType } from './utils/utils';
 
 void tokenStudio.registerTransforms(StyleDictionary);
 

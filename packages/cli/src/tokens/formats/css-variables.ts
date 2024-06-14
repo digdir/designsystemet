@@ -4,7 +4,7 @@ import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../configs';
-import { getValue } from '../utils';
+import { getValue } from '../utils/utils';
 
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
 

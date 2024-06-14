@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
-import { noCase } from './noCase.js';
-import { getValue } from './utils';
+import { noCase } from './utils/noCase';
+import { getValue } from './utils/utils';
 
 const isPx = R.test(/\b\d+px\b/g);
 
