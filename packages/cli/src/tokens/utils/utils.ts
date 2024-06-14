@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import type { TransformedToken, DesignToken } from 'style-dictionary/types';
 
 /**
@@ -15,3 +16,11 @@ export const getType = (token: TransformedToken) => ((token.$type ?? token.type)
  * @returns value
  */
 export const getValue = <T>(token: TransformedToken | DesignToken): T => (token.$value ?? token.value) as T;
+
+export const typeEquals = (types: string[] | string, token?: TransformedToken) => {
+  if (R.isNil(token)) {
+    return false;
+  }
+
+  return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
+};

@@ -11,7 +11,7 @@ import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
 import { cssClassesTypography } from './formats/css-classes';
 import { makeEntryFile } from './actions.js';
-import { getType } from './utils/utils';
+import { typeEquals } from './utils/utils';
 
 void tokenStudio.registerTransforms(StyleDictionary);
 
@@ -95,11 +95,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
           {
             destination: `color-mode/${mode}.css`,
             format: cssVariables.name,
-            filter: (token) => {
-              const type = getType(token);
-
-              return !token.isSource && type === 'color';
-            },
+            filter: (token) => !token.isSource && typeEquals('color', token),
           },
         ],
         options: {
@@ -121,11 +117,8 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
    *
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
-  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) => {
-    const type = getType(token);
-
-    return ['spacing', 'sizing', 'borderRadius'].includes(type);
-  };
+  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
+    typeEquals(['spacing', 'sizing', 'borderRadius'], token);
 
   return {
     log: { verbosity: 'silent' },
@@ -147,13 +140,9 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
           {
             destination: `semantic.css`,
             format: cssVariables.name,
-            filter: (token) => {
-              const type = getType(token);
-              return (
-                (!token.isSource || isCalculatedToken(token)) &&
-                !['color', 'fontWeights', 'fontFamilies'].includes(type)
-              );
-            },
+            filter: (token) =>
+              (!token.isSource || isCalculatedToken(token)) &&
+              !typeEquals(['color', 'fontWeights', 'fontFamilies'], token),
           },
         ],
         options: {
@@ -214,7 +203,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
       transforms: {
         typographyClassName: {
           type: 'name',
-          filter: (token) => getType(token) === 'typography',
+          filter: (token) => typeEquals('typography', token),
           transform: (token) => {
             const name = R.pipe(
               (list: string[]) => {
@@ -226,7 +215,6 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
               R.trim,
               R.toLower,
             )(token.path);
-            console.log({ path: token.path, name });
             return name;
           },
         },
@@ -252,7 +240,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
             format: cssClassesTypography.name,
             filter: (token) => {
               return (
-                ['typography', 'fontWeights', 'fontFamilies'].includes(getType(token)) &&
+                typeEquals(['typography', 'fontweights', 'fontfamilies', 'lineheights', 'fontsizes'], token) &&
                 !(token.path[0] || '').startsWith('theme')
               );
             },

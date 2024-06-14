@@ -3,7 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, getReferences } from 'style-dictionary/utils';
 
-import { getValue, getType } from '../utils/utils';
+import { getValue, getType, typeEquals } from '../utils/utils';
 
 type Typgraphy = {
   fontWeight: string;
@@ -46,25 +46,27 @@ export const cssClassesTypography: Format = {
           const type = getType(token);
 
           if (type === 'typography') {
-            const typography = getValue<Typgraphy>(token);
-
             const baseFontPx = (basePxFontSize as unknown as number) || 16;
-            const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
             const classSelector = R.replace('-typography', '', token.name);
 
-            // const formattedTypography = format(token);
-            const references = getReferences(getValue<Typgraphy>(token.original).fontWeight, dictionary.tokens);
-            const fontWeight = R.last(references);
+            const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
+            const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
+            const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
+            const lineheightValue = R.isNotNil(lineheight) ? getValue<string>(lineheight) : '';
+            const fontsize_ = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
+            const fontSizeValue = R.isNotNil(fontsize_)
+              ? `${parseInt(getValue<string>(fontsize_)) / baseFontPx}rem`
+              : '';
 
             let fontWeightName: string = '';
-            if (fontWeight) {
-              fontWeightName = getVariableName(format(fontWeight));
+            if (fontweight) {
+              fontWeightName = getVariableName(format(fontweight));
             }
 
             const className = `
   .${classSelector} {
-    font-size: ${fontSize};
-    line-height: ${typography?.lineHeight};
+    font-size: ${fontSizeValue};
+    line-height: ${lineheightValue};
     ${fontWeightName && `font-weight: var(${fontWeightName});`}
   }`;
 
