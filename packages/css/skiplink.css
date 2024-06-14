@@ -37,8 +37,8 @@
     position: relative;
     border-radius: var(--ds-border-radius-md);
     min-height: var(--ds-sizing-10);
-    outline: var(--dsc-skiplink-border-width) solid var(--ds-color-neutral-text-default);
+    outline: var(--dsc-skiplink-border-width) solid var(--ds-color-focus-outer);
     outline-offset: var(--dsc-skiplink-border-width);
-    box-shadow: 0 0 0 var(--dsc-skiplink-border-width) var(--ds-color-neutral-background-default);
+    box-shadow: 0 0 0 var(--dsc-skiplink-border-width) var(--ds-color-focus-inner);
   }
 }
