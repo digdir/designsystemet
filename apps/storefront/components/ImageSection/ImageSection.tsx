@@ -49,7 +49,11 @@ const ImageSection = ({
 
   useEffect(() => {
     setHeading(
-      createElement(headingLevel, { className: classes.title }, title),
+      createElement(
+        headingLevel,
+        { className: cl(classes.title, 'ds-heading-md') },
+        title,
+      ),
     );
   }, [headingLevel, title]);
 
@@ -69,7 +73,9 @@ const ImageSection = ({
         )}
         <div className={classes.textContainer}>
           {title && heading}
-          {description && <p className={classes.desc}>{description}</p>}
+          {description && (
+            <p className={cl(classes.desc, 'ds-paragraph-md')}>{description}</p>
+          )}
           {content && content}
           {link && (
             <a

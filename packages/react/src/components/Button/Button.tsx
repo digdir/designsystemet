@@ -57,6 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'ds-btn',
           `ds-focus`,
           `ds-btn--${size}`,
+          `ds-paragraph-short--${size}`,
           `ds-btn--${variant}`,
           `ds-btn--${color}`,
           fullWidth && 'ds-btn--full-width',

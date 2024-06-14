@@ -3,7 +3,7 @@
 import type React from 'react';
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { useEffect, useState, createElement } from 'react';
-import cn from 'clsx';
+import cl from 'clsx';
 import { Link, Button } from '@digdir/designsystemet-react';
 import NextLink from 'next/link';
 
@@ -60,16 +60,20 @@ const ImageBanner = ({
 
   useEffect(() => {
     setHeading(
-      createElement(headingLevel, { className: classes.title }, title),
+      createElement(
+        headingLevel,
+        { className: cl(classes.title, 'ds-heading--lg') },
+        title,
+      ),
     );
   }, [headingLevel, title]);
 
   return (
     <div className={(classes[backgroundColor], classes.section)}>
-      <Container className={cn(classes.container)}>
+      <Container className={cl(classes.container)}>
         {imgPosition === 'left' && (
           <div
-            className={cn(classes.imgContainer, {
+            className={cl(classes.imgContainer, {
               [classes.smallImage]: imgWidth === 'small',
             })}
           >
@@ -93,14 +97,14 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={cn(classes.img)}
+                className={cl(classes.img)}
                 src={imgSrc}
                 alt={imgAlt}
               />
             )}
             {fallbackImgSrc && (
               <img
-                className={cn(classes.img, classes.fallbackImg)}
+                className={cl(classes.img, classes.fallbackImg)}
                 src={fallbackImgSrc}
                 alt={fallbackImgAlt}
               />
@@ -110,7 +114,11 @@ const ImageBanner = ({
 
         <div className={classes.textContainer}>
           {title && heading}
-          {description && <p className={classes.desc}>{description}</p>}
+          {description && (
+            <p className={cl(classes.desc, 'ds-paragraph--md')}>
+              {description}
+            </p>
+          )}
           {content && content}
           {link && (
             <Link
@@ -169,14 +177,14 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={cn(classes.img)}
+                className={cl(classes.img)}
                 alt={imgAlt}
                 src={imgSrc}
               />
             )}
             {fallbackImgSrc && (
               <img
-                className={cn(classes.img, classes.fallbackImg)}
+                className={cl(classes.img, classes.fallbackImg)}
                 src={fallbackImgSrc}
                 alt={fallbackImgAlt}
               />

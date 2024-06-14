@@ -60,6 +60,7 @@ export const ComboboxOption = memo(
           }}
           className={cl(
             'ds-combobox__option',
+            'ds-label--md',
             active && 'ds-combobox__option--active',
             multiple && 'ds-combobox__option--multiple',
             className,

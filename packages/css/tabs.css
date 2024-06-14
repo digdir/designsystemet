@@ -16,26 +16,12 @@
     cursor: pointer;
     color: var(--ds-color-neutral-text-subtle);
     position: relative;
+    font-family: inherit;
   }
 
   .ds-tabs__content {
     padding: var(--ds-spacing-5);
     color: var(--ds-color-neutral-text-default);
-  }
-
-  .ds-tabs--sm .ds-tabs__tab,
-  .ds-tabs--sm .ds-tabs__content {
-    font: var(--ds-typography-paragraph-short-sm);
-  }
-
-  .ds-tabs--md .ds-tabs__tab,
-  .ds-tabs--md .ds-tabs__content {
-    font: var(--ds-typography-paragraph-short-md);
-  }
-
-  .ds-tabs--lg .ds-tabs__tab,
-  .ds-tabs--lg .ds-tabs__content {
-    font: var(--ds-typography-paragraph-short-lg);
   }
 
   .ds-tabs--sm .ds-tabs__tab {

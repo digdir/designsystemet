@@ -49,8 +49,6 @@
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-3);
 
     gap: var(--ds-sizing-1);
-    font: var(--ds-typography-paragraph-short-sm);
-    font-family: inherit;
     min-height: var(--ds-sizing-10);
   }
 
@@ -76,8 +74,6 @@
     --dsc-btn-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
     gap: var(--ds-sizing-2);
-    font: var(--ds-typography-paragraph-short-md);
-    font-family: inherit;
     min-height: var(--ds-sizing-12);
   }
 
@@ -85,8 +81,6 @@
     --dsc-btn-padding: var(--ds-spacing-3) var(--ds-spacing-5);
 
     gap: var(--ds-sizing-2);
-    font: var(--ds-typography-paragraph-short-lg);
-    font-family: inherit;
     min-height: var(--ds-sizing-14);
   }
 

@@ -15,8 +15,3 @@
 .boxShadow .img {
   box-shadow: var(--ds-shadow-md);
 }
-
-.container .caption {
-  color: var(--ds-color-neutral-text-subtle);
-  font: var(--ds-typography-paragraph-sm);
-}

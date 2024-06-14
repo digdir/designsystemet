@@ -58,6 +58,7 @@ export const ComboboxInput = ({
     getReferenceProps,
     setInputValue,
     handleSelectOption,
+    size,
   } = context;
 
   const mergedRefs = useMergeRefs([forwareddRef, inputRef]);
@@ -110,6 +111,7 @@ export const ComboboxInput = ({
       aria-disabled={disabled ? 'true' : undefined}
       className={cl(
         'ds-textfield__input',
+        `ds-paragraph--${size}`,
         'ds-combobox__input__wrapper',
         readOnly && 'ds-combobox--readonly',
         error && 'ds-combobox--error',
@@ -131,7 +133,7 @@ export const ComboboxInput = ({
           value={inputValue}
           {...omit(['style', 'className'], rest)}
           {...formFieldProps.inputProps}
-          className='ds-combobox__input'
+          className={cl('ds-combobox__input', `ds-paragraph--${size}`)}
           onChange={(e) => {
             onChange(e);
             !open && setOpen(true);

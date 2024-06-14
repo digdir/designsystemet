@@ -92,6 +92,7 @@ const Header = () => {
                   className={cl(
                     href === item.url ? classes.active : '',
                     classes.link,
+                    'ds-paragraph--md',
                   )}
                 >
                   {item.name}

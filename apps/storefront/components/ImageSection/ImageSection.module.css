@@ -24,6 +24,10 @@
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
+.white {
+  background-color: var(--ds-color-neutral-background-default);
+}
+
 .imgContainer {
   flex-basis: calc(35% - (var(--ds-spacing-18) / 2));
   flex-grow: 1;
@@ -37,12 +41,10 @@
 }
 
 .title {
-  font: var(--ds-typography-heading-md);
   margin-bottom: var(--ds-spacing-4);
 }
 
 .desc {
-  font: var(--ds-typography-paragraph-md);
   margin-top: 0;
   margin-bottom: 0;
 }

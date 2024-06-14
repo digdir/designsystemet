@@ -17,7 +17,6 @@
   text-align: center;
   max-width: 780px;
   text-wrap: balance;
-  font: var(--ds-typography-ingress-sm);
 }
 
 .icon {

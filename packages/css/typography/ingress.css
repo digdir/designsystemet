@@ -10,31 +10,19 @@
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .ds-ingress--md {
-    --dsc-bottom-spacing: var(--ds-spacing-5);
-
-    font: var(--ds-typography-ingress-md);
-    font-family: inherit;
-  }
-
   .ds-ingress--lg {
     --dsc-bottom-spacing: var(--ds-spacing-6);
+  }
 
-    font: var(--ds-typography-ingress-lg);
-    font-family: inherit;
+  .ds-ingress--md {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
   }
 
   .ds-ingress--sm {
     --dsc-bottom-spacing: var(--ds-spacing-7);
-
-    font: var(--ds-typography-ingress-sm);
-    font-family: inherit;
   }
 
   .ds-ingress--xs {
     --dsc-bottom-spacing: var(--ds-spacing-8);
-
-    font: var(--ds-typography-ingress-xs);
-    font-family: inherit;
   }
 }

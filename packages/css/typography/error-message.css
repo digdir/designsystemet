@@ -13,31 +13,19 @@
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .ds-error-message--lg {
+  .ds-error_message--lg {
     --dsc-bottom-spacing: var(--ds-spacing-5);
-
-    font: var(--ds-typography-error_message-lg);
-    font-family: inherit;
   }
 
-  .ds-error-message--md {
+  .ds-error_message--md {
     --dsc-bottom-spacing: var(--ds-spacing-5);
-
-    font: var(--ds-typography-error_message-md);
-    font-family: inherit;
   }
 
-  .ds-error-message--sm {
+  .ds-error_message--sm {
     --dsc-bottom-spacing: var(--ds-spacing-4);
-
-    font: var(--ds-typography-error_message-sm);
-    font-family: inherit;
   }
 
-  .ds-error-message--xs {
+  .ds-error_message--xs {
     --dsc-bottom-spacing: var(--ds-spacing-3);
-
-    font: var(--ds-typography-error_message-xs);
-    font-family: inherit;
   }
 }

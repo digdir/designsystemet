@@ -47,7 +47,6 @@
   text-align: center;
   justify-content: center;
   margin-bottom: var(--ds-spacing-3);
-  font: var(--ds-typography-paragraph-short-lg);
 }
 
 .content {

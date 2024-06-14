@@ -12,26 +12,6 @@
     margin-bottom: var(--dsc-bottom-spacing);
   }
 
-  .ds-label--lg {
-    font: var(--ds-typography-label-lg);
-    font-family: inherit;
-  }
-
-  .ds-label--md {
-    font: var(--ds-typography-label-md);
-    font-family: inherit;
-  }
-
-  .ds-label--sm {
-    font: var(--ds-typography-label-sm);
-    font-family: inherit;
-  }
-
-  .ds-label--xs {
-    font: var(--ds-typography-label-xs);
-    font-family: inherit;
-  }
-
   .ds-label--regular-weight {
     font-weight: 400;
   }

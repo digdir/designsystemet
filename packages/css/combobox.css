@@ -32,8 +32,6 @@
     width: 100%;
     height: auto;
     justify-content: space-between;
-    font: var(--ds-typography-paragraph-md);
-    font-family: inherit;
   }
 
   .ds-combobox__input__wrapper .ds-combobox__input {
@@ -48,38 +46,17 @@
 
   .ds-combobox--sm .ds-combobox__input__wrapper {
     min-height: var(--ds-sizing-10);
-    font: var(--ds-typography-paragraph-sm);
-    font-family: inherit;
     padding: 5px var(--ds-spacing-2);
-  }
-
-  .ds-combobox--sm .ds-combobox__input__wrapper .ds-combobox__input {
-    font: var(--ds-typography-paragraph-sm);
-    font-family: inherit;
   }
 
   .ds-combobox--md .ds-combobox__input__wrapper {
     min-height: var(--ds-sizing-12);
-    font: var(--ds-typography-paragraph-md);
-    font-family: inherit;
     padding: 7px var(--ds-spacing-3);
-  }
-
-  .ds-combobox--md .ds-combobox__input__wrapper .ds-combobox__input {
-    font: var(--ds-typography-paragraph-md);
-    font-family: inherit;
   }
 
   .ds-combobox--lg .ds-combobox__input__wrapper {
     min-height: var(--ds-sizing-14);
-    font: var(--ds-typography-paragraph-lg);
-    font-family: inherit;
     padding: 7px var(--ds-spacing-4);
-  }
-
-  .ds-combobox--lg .ds-combobox__input__wrapper .ds-combobox__input {
-    font: var(--ds-typography-paragraph-lg);
-    font-family: inherit;
   }
 
   .ds-combobox__input__wrapper .ds-combobox__input:focus {
@@ -202,47 +179,13 @@
   }
 
   .ds-combobox__empty {
+    font-weight: 400;
     padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  }
-
-  .ds-combobox--lg .ds-combobox__empty {
-    font: var(--ds-typography-label-lg);
-    font-family: inherit;
-    font-weight: 400;
-  }
-
-  .ds-combobox--md .ds-combobox__empty {
-    font: var(--ds-typography-label-md);
-    font-family: inherit;
-    font-weight: 400;
-  }
-
-  .ds-combobox--sm .ds-combobox__empty {
-    font: var(--ds-typography-label-sm);
-    font-family: inherit;
-    font-weight: 400;
   }
 
   .ds-combobox__custom {
+    font-weight: 400;
     padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  }
-
-  .ds-combobox--lg .ds-combobox__custom {
-    font: var(--ds-typography-label-lg);
-    font-family: inherit;
-    font-weight: 400;
-  }
-
-  .ds-combobox--md .ds-combobox__custom {
-    font: var(--ds-typography-label-md);
-    font-family: inherit;
-    font-weight: 400;
-  }
-
-  .ds-combobox--sm .ds-combobox__custom {
-    font: var(--ds-typography-label-sm);
-    font-family: inherit;
-    font-weight: 400;
   }
 
   .ds-combobox__option {
@@ -259,7 +202,6 @@
     text-align: left;
     height: auto;
     cursor: pointer;
-    font: var(--ds-typography-label-md);
     font-family: inherit;
   }
 
@@ -350,7 +292,5 @@
     flex-wrap: wrap;
     gap: var(--ds-spacing-1);
     color: var(--ds-color-neutral-text-subtle);
-    font: inherit;
-    font-family: inherit;
   }
 }
