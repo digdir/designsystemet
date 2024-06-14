@@ -11,187 +11,187 @@
 }
 
 
-  .ds-heading-2xl {
+  .ds-heading--2xl {
     font-size: 3.75rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-xl {
+  .ds-heading--xl {
     font-size: 3rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-lg {
+  .ds-heading--lg {
     font-size: 2.25rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-md {
+  .ds-heading--md {
     font-size: 1.875rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-sm {
+  .ds-heading--sm {
     font-size: 1.5rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-xs {
+  .ds-heading--xs {
     font-size: 1.3125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-heading-2xs {
+  .ds-heading--2xs {
     font-size: 1.125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-ingress-lg {
+  .ds-ingress--lg {
     font-size: 1.875rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-ingress-md {
+  .ds-ingress--md {
     font-size: 1.5rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-ingress-sm {
+  .ds-ingress--sm {
     font-size: 1.3125rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-ingress-xs {
+  .ds-ingress--xs {
     font-size: 1.125rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-lg {
+  .ds-paragraph--lg {
     font-size: 1.3125rem;
     line-height: 1.5;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-md {
+  .ds-paragraph--md {
     font-size: 1.125rem;
     line-height: 1.5;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-sm {
+  .ds-paragraph--sm {
     font-size: 1rem;
     line-height: 1.5;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-xs {
+  .ds-paragraph--xs {
     font-size: 0.875rem;
     line-height: 1.5;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-short-lg {
+  .ds-paragraph-short--lg {
     font-size: 1.3125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-short-md {
+  .ds-paragraph-short--md {
     font-size: 1.125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-short-sm {
+  .ds-paragraph-short--sm {
     font-size: 1rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-short-xs {
+  .ds-paragraph-short--xs {
     font-size: 0.875rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-long-lg {
+  .ds-paragraph-long--lg {
     font-size: 1.125rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-long-md {
+  .ds-paragraph-long--md {
     font-size: 1rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-long-sm {
+  .ds-paragraph-long--sm {
     font-size: 0.875rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-paragraph-long-xs {
+  .ds-paragraph-long--xs {
     font-size: 0.8125rem;
     line-height: 1.7;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-label-lg {
+  .ds-label--lg {
     font-size: 1.3125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-label-md {
+  .ds-label--md {
     font-size: 1.125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-label-sm {
+  .ds-label--sm {
     font-size: 1rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-label-xs {
+  .ds-label--xs {
     font-size: 0.875rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-medium);
   }
 
-  .ds-error_message-lg {
+  .ds-error_message--lg {
     font-size: 1.3125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-error_message-md {
+  .ds-error_message--md {
     font-size: 1.125rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-error_message-sm {
+  .ds-error_message--sm {
     font-size: 1rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-error_message-xs {
+  .ds-error_message--xs {
     font-size: 0.875rem;
     line-height: 1.3;
     font-weight: var(--ds-font-weight-regular);
