@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { ColorInfo } from '@digdir/designsystemet/color';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 
 import { Color } from '../Color/Color';
 
@@ -11,6 +11,7 @@ type GroupProps = {
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
+  type: ColorType;
 };
 
 export const Group = ({
@@ -18,7 +19,7 @@ export const Group = ({
   colors,
   showColorMeta,
   names,
-
+  type,
   featured = false,
 }: GroupProps) => {
   return (
@@ -46,6 +47,7 @@ export const Group = ({
               lightness={'dd'}
               hex={item.hex}
               showColorMeta={showColorMeta}
+              type={type}
             />
           );
         })}

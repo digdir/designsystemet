@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
+import type {
+  ColorInfo,
+  ColorType,
+  ThemeInfo,
+} from '@digdir/designsystemet/color';
 
 import { Settings } from './settings';
 
@@ -21,8 +25,8 @@ type ColorStore = {
   setBrandOneTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandTwoTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandThreeTheme: (theme: ThemeInfo, color: CssColor) => void;
-  selectedColor: ColorInfo;
-  setSelectedColor: (color: ColorInfo) => void;
+  selectedColor: { color: ColorInfo; type: string };
+  setSelectedColor: (color: ColorInfo, type: ColorType) => void;
 };
 
 const defaultTheme = () => {
@@ -56,11 +60,15 @@ export const useThemeStore = create(
       color: Settings.brand3BaseColor,
     },
     selectedColor: {
-      hex: '#ffffff',
-      number: 1,
-      name: 'Default',
+      color: {
+        hex: '#ffffff',
+        number: 1,
+        name: 'Default',
+      },
+      type: '',
     },
-    setSelectedColor: (color) => set({ selectedColor: color }),
+    setSelectedColor: (color, type) =>
+      set({ selectedColor: { color: color, type: type } }),
     setAccentTheme: (theme, color) => set({ accentTheme: { theme, color } }),
     setNeutralTheme: (theme, color) => set({ neutralTheme: { theme, color } }),
     setBrandOneTheme: (theme, color) =>

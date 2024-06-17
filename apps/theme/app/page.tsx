@@ -231,8 +231,7 @@ export default function Home() {
       <Header />
 
       <ColorModal
-        name={selectedColor.name}
-        color={selectedColor.hex}
+        color={selectedColor}
         colorModalRef={colorModalRef}
       />
 

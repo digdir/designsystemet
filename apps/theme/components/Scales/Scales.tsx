@@ -34,7 +34,7 @@ export const Scales = ({ themeMode }: ScalesProps) => {
           colorScale={neutralTheme.theme[themeMode]}
           showColorMeta={false}
           themeMode={themeMode}
-          type='grey'
+          type='neutral'
         />
       </div>
 
@@ -44,7 +44,7 @@ export const Scales = ({ themeMode }: ScalesProps) => {
           colorScale={brandOneTheme.theme[themeMode]}
           showColorMeta={false}
           themeMode={themeMode}
-          type='brandOne'
+          type='brand1'
         />
       </div>
       <div className={classes.row}>
@@ -53,7 +53,7 @@ export const Scales = ({ themeMode }: ScalesProps) => {
           colorScale={brandTwoTheme.theme[themeMode]}
           showColorMeta={false}
           themeMode={themeMode}
-          type='brandTwo'
+          type='brand2'
         />
       </div>
 
@@ -63,7 +63,7 @@ export const Scales = ({ themeMode }: ScalesProps) => {
           colorScale={brandThreeTheme.theme[themeMode]}
           showColorMeta={false}
           themeMode={themeMode}
-          type='brandThree'
+          type='brand3'
         />
       </div>
     </div>

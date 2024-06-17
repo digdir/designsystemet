@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import { SunIcon } from '@navikt/aksel-icons';
-import type { ColorInfo } from '@digdir/designsystemet/color';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 
 import { useThemeStore } from '../../store';
 
@@ -14,6 +14,7 @@ type ColorProps = {
   featured?: boolean;
   hex?: string;
   showColorMeta?: boolean;
+  type: ColorType;
 };
 
 const Color = ({
@@ -23,17 +24,21 @@ const Color = ({
   lightness,
   hex,
   showColorMeta = true,
+  type,
 }: ColorProps) => {
   const setSelectedColor = useThemeStore((state) => state.setSelectedColor);
   return (
     <div>
       <button
         onClick={() => {
-          setSelectedColor({
-            hex: color.hex,
-            number: color.number,
-            name: color.name,
-          });
+          setSelectedColor(
+            {
+              hex: color.hex,
+              number: color.number,
+              name: color.name,
+            },
+            type,
+          );
         }}
         style={{ backgroundColor: color.hex }}
         className={cl(classes.box, featured && classes.featured)}

@@ -3,9 +3,9 @@
 }
 
 .container {
-  border: 1px solid #d3d3d3;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
-  min-height: 280px;
+  min-height: 275px;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -13,17 +13,26 @@
 
 .left {
   width: 50%;
-  padding: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 16px;
 }
 
 .right {
   width: 50%;
+  border-left: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .field {
   display: flex;
   align-items: center;
-  font-size: 18px;
+  height: 24px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
 }
 
 .label {
@@ -32,5 +41,5 @@
 }
 
 .value {
-  margin-right: 12px;
+  margin-right: 8px;
 }

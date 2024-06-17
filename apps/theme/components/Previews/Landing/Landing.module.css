@@ -12,11 +12,11 @@
 }
 
 .headerLeft svg path:first-child {
-  fill: var(--accent9);
+  fill: var(--accent-9);
 }
 
 .headerLeft svg path:last-child {
-  fill: var(--accent6);
+  fill: var(--accent-6);
 }
 
 .headerLeft svg {
@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  background-color: var(--accent1);
+  background-color: var(--accent-1);
 }
 
 .headerLeft {
@@ -39,7 +39,7 @@
   font-weight: 500;
   gap: 10px;
   font-size: 21px;
-  color: var(--grey12);
+  color: var(--neutral-12);
 }
 
 .headerRight {
@@ -51,7 +51,7 @@
 .headerMiddle {
   margin-right: auto;
   margin-left: 72px;
-  color: var(--grey12);
+  color: var(--neutral-12);
 }
 
 .menu {
@@ -61,7 +61,7 @@
 }
 
 .banner {
-  background-color: var(--accent2);
+  background-color: var(--accent-2);
   padding: 72px 0;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .bannerSub {
-  color: var(--accent11);
+  color: var(--accent-11);
   font-weight: 500;
   font-size: 21px;
 }
@@ -95,5 +95,5 @@
   width: 220px;
   margin-left: 250px;
   border-radius: 50%;
-  background-color: var(--accent7);
+  background-color: var(--accent-7);
 }

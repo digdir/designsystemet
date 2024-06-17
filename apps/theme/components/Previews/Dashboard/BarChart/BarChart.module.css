@@ -3,9 +3,9 @@
 }
 
 .bar svg g:nth-child(7) path {
-  fill: var(--brandThree6);
+  fill: var(--brand3-6);
 }
 
 .bar svg g:nth-child(8) path {
-  fill: var(--brandOne6);
+  fill: var(--brand1-6);
 }
