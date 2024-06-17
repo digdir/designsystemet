@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
 import { noCase } from './utils/noCase';
-import { getValue } from './utils/utils';
+import { getValue, typeEquals } from './utils/utils';
 
 const isPx = R.test(/\b\d+px\b/g);
 
@@ -10,7 +10,7 @@ export const sizeRem: Transform = {
   name: 'ds/size/toRem',
   type: 'value',
   transitive: true,
-  filter: (token) => ['sizing', 'spacing', 'borderRadius'].includes(token.type as string),
+  filter: (token) => typeEquals(['sizing', 'spacing', 'borderRadius', 'fontsizes'], token),
   transform: (token, config) => {
     const value = getValue<string>(token);
 
@@ -51,12 +51,8 @@ export const typographyShorthand: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => token.type === 'typography',
-  transform: (token, config) => {
+  transform: (token) => {
     const typography = getValue<Typgraphy>(token);
-
-    const baseFontPx = (config.basePxFontSize as unknown as number) || 16;
-    const fontSize = `${parseInt(typography.fontSize) / baseFontPx}rem`;
-
-    return `${typography.fontWeight} ${fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
+    return `${typography.fontWeight} ${typography.fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },
 };
