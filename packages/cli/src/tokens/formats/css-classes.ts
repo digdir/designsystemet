@@ -29,7 +29,7 @@ export const cssClassesTypography: Format = {
   name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { outputReferences } = options;
-    const { basePxFontSize, selector } = platform;
+    const { selector } = platform;
 
     const header = await fileHeader({ file });
 
@@ -46,17 +46,14 @@ export const cssClassesTypography: Format = {
           const type = getType(token);
 
           if (type === 'typography') {
-            const baseFontPx = (basePxFontSize as unknown as number) || 16;
             const classSelector = R.replace('-typography', '', token.name);
 
             const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
             const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
             const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
             const lineheightValue = R.isNotNil(lineheight) ? getValue<string>(lineheight) : '';
-            const fontsize_ = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
-            const fontSizeValue = R.isNotNil(fontsize_)
-              ? `${parseInt(getValue<string>(fontsize_)) / baseFontPx}rem`
-              : '';
+            const fontsize = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
+            const fontSizeValue = R.isNotNil(fontsize) ? getValue<string>(fontsize) : '';
 
             let fontWeightName: string = '';
             if (fontweight) {

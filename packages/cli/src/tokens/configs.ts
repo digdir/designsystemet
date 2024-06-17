@@ -229,9 +229,10 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         basePxFontSize,
         transforms: [
           nameKebab.name,
+          'ts/size/px',
+          sizeRem.name,
           'typographyClassName',
           'ts/size/lineheight',
-          'ts/size/px',
           'ts/typography/fontWeight',
         ],
         files: [
