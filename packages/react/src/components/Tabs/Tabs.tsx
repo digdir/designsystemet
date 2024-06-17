@@ -35,6 +35,7 @@ export type TabsContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  size?: TabsProps['size'];
 };
 
 export const TabsContext = createContext<TabsContextProps>({});
@@ -71,14 +72,11 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           value,
           defaultValue,
           onChange: onValueChange,
+          size,
         }}
       >
         <div
-          className={cl(
-            `ds-tabs--${size}`,
-            `ds-paragraph-short--${size}`,
-            className,
-          )}
+          className={cl(`ds-tabs--${size}`, className)}
           ref={ref}
           {...rest}
         >
