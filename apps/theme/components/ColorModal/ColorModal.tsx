@@ -8,7 +8,6 @@ import classes from './ColorModal.module.css';
 
 type ColorModalProps = {
   colorModalRef: React.RefObject<HTMLDialogElement>;
-  name: string;
   color: { color: ColorInfo; type: ColorType };
 };
 
