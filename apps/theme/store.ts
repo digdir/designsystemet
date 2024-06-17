@@ -65,7 +65,7 @@ export const useThemeStore = create(
         number: 1,
         name: 'Default',
       },
-      type: '',
+      type: 'accent',
     },
     setSelectedColor: (color, type) =>
       set({ selectedColor: { color: color, type: type } }),
