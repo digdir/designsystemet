@@ -229,7 +229,6 @@ export default function Home() {
   return (
     <div>
       <Header />
-
       <ColorModal
         color={selectedColor}
         colorModalRef={colorModalRef}

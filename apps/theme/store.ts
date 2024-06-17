@@ -25,7 +25,7 @@ type ColorStore = {
   setBrandOneTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandTwoTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandThreeTheme: (theme: ThemeInfo, color: CssColor) => void;
-  selectedColor: { color: ColorInfo; type: string };
+  selectedColor: { color: ColorInfo; type: ColorType };
   setSelectedColor: (color: ColorInfo, type: ColorType) => void;
 };
 
