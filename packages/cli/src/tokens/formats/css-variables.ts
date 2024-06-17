@@ -8,12 +8,20 @@ import { getValue } from '../utils/utils';
 
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
 
+const prefersColorScheme = (mode: string, content: string) => `
+@media (prefers-color-scheme: ${mode}) {
+  [data-ds-color-mode="auto"] ${content}
+}
+`;
+
 export const cssVariables: Format = {
   name: 'ds/css-variables',
   format: async function ({ dictionary, file, options, platform }) {
     const { allTokens } = dictionary;
     const { outputReferences } = options;
-    const { selector, isCalculatedToken } = platform;
+    const { selector, isCalculatedToken, mode } = platform;
+
+    const mode_ = mode as string;
 
     const header = await fileHeader({ file });
 
@@ -40,7 +48,9 @@ export const cssVariables: Format = {
     });
 
     const formattedVariables = formatTokens(allTokens);
+    const content = `{\n${formattedVariables.join('\n')}\n}\n`;
+    const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
 
-    return header + `${selector} {\n${formattedVariables.join('\n')}\n}\n`;
+    return header + `${selector} ${content}` + autoSelectorContent;
   },
 };
