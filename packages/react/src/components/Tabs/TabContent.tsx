@@ -13,13 +13,17 @@ export type TabContentProps = {
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, value, className, ...rest }, ref) => {
-    const { value: tabsValue } = useContext(TabsContext);
+    const { value: tabsValue, size } = useContext(TabsContext);
     const active = value == tabsValue;
 
     return (
       <>
         {active && (
-          <Paragraph asChild>
+          <Paragraph
+            asChild
+            variant='short'
+            size={size}
+          >
             <div
               className={cl('ds-tabs__content', className)}
               ref={ref}
