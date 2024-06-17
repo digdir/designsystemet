@@ -3,9 +3,9 @@
 }
 
 .area svg g:nth-child(7) path:first-child {
-  fill: var(--brandOne7);
+  fill: var(--brand1-7);
 }
 
 .area svg g:nth-child(8) path:first-child {
-  fill: var(--brandThree7);
+  fill: var(--brand3-7);
 }

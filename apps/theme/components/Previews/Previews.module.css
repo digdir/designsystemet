@@ -69,8 +69,8 @@
 }
 
 .preview {
-  --background: var(--grey2);
-  --foreground: var(--grey1);
+  --background: var(--neutral-2);
+  --foreground: var(--neutral-1);
 
   border: 1px solid #ebebeb;
   width: 100%;
@@ -82,6 +82,6 @@
 
 .preview[data-ds-color-mode='dark'],
 .preview[data-ds-color-mode='contrast'] {
-  --background: var(--grey1);
-  --foreground: var(--grey2);
+  --background: var(--neutral-1);
+  --foreground: var(--neutral-2);
 }
