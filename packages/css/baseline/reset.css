@@ -1,5 +1,7 @@
 /* https://piccalil.li/blog/a-more-modern-css-reset/ */
 
+/* https://wiki.csswg.org/ideas/mistakes */
+
 @layer ds.reset {
   /* Box sizing rules */
   *,
