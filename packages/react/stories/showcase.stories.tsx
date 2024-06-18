@@ -428,7 +428,7 @@ export const Showcase: StoryFn = () => {
         >
           Ofte stillte spørsmål
         </Heading>
-        <Accordion
+        <Accordion.Root
           color='brand3'
           border
         >
@@ -464,7 +464,7 @@ export const Showcase: StoryFn = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion>
+        </Accordion.Root>
       </div>
     </div>
   );

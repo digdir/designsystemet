@@ -42,14 +42,14 @@ som ligger i en klient komponent, som `Accordion` er.
 
 <CodeSnippet language='ts'>
 {`
-import { Accordion, AccordionHeader, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
+import { AccordionRoot, AccordionHeader, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
 
-<Accordion>
+<AccordionRoot>
   <AccordionItem>
     <AccordionHeader>...</AccordionHeader>
     <AccordionContent>...</AccordionContent>
   </AccordionItem>
-</Accordion>
+</AccordionRoot>
 `}
 </CodeSnippet>
 
@@ -59,11 +59,11 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionContent } from '@di
 {`
 import { Accordion } from '@digdir/designsystemet-react';
 
-<Accordion>
+<Accordion.Root>
   <Accordion.Item>
     <Accordion.Header>...</Accordion.Header>
     <Accordion.Content>...</Accordion.Content>
   </Accordion.Item>
-</Accordion>
+</Accordion.Root>
 `}
 </CodeSnippet>
