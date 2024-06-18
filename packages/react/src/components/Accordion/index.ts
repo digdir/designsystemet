@@ -1,25 +1,25 @@
 import type { AccordionProps } from './Accordion';
 import type { AccordionItemProps } from './AccordionItem';
 import type { AccordionContentProps } from './AccordionContent';
-import type { AccordionHeaderProps } from './AccordionHeader';
+import type { AccordionHeaderProps } from './AccordionHeading';
 import { Accordion as AccordionParent } from './Accordion';
 import { AccordionItem } from './AccordionItem';
 import { AccordionContent } from './AccordionContent';
-import { AccordionHeader } from './AccordionHeader';
+import { AccordionHeading } from './AccordionHeading';
 
 type AccordionComponent = typeof AccordionParent & {
   Item: typeof AccordionItem;
-  Header: typeof AccordionHeader;
+  Heading: typeof AccordionHeading;
   Content: typeof AccordionContent;
 };
 
 const Accordion = AccordionParent as AccordionComponent;
 
-Accordion.Header = AccordionHeader;
+Accordion.Heading = AccordionHeading;
 Accordion.Content = AccordionContent;
 Accordion.Item = AccordionItem;
 
-Accordion.Header.displayName = 'Accordion.Header';
+Accordion.Heading.displayName = 'Accordion.Heading';
 Accordion.Content.displayName = 'Accordion.Content';
 Accordion.Item.displayName = 'Accordion.Item';
 
@@ -29,4 +29,4 @@ export type {
   AccordionHeaderProps,
   AccordionItemProps,
 };
-export { Accordion, AccordionItem, AccordionContent, AccordionHeader };
+export { Accordion, AccordionItem, AccordionContent, AccordionHeading };

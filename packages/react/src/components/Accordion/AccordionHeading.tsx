@@ -19,7 +19,7 @@ export type AccordionHeaderProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
-export const AccordionHeader = forwardRef<
+export const AccordionHeading = forwardRef<
   HTMLHeadingElement,
   AccordionHeaderProps
 >(({ level = 1, children, className, onHeaderClick, ...rest }, ref) => {
@@ -68,4 +68,4 @@ export const AccordionHeader = forwardRef<
   );
 });
 
-AccordionHeader.displayName = 'AccordionHeader';
+AccordionHeading.displayName = 'AccordionHeading';
