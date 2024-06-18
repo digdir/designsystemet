@@ -3,6 +3,8 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
+import { Heading } from '../Typography';
+
 export type CardHeaderProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -16,11 +18,16 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Component
-        className={cl(`ds-card__header`, `ds-heading--md`, className)}
-        ref={ref}
-        {...rest}
-      />
+      <Heading
+        size='md'
+        asChild
+      >
+        <Component
+          className={cl(`ds-card__header`, className)}
+          ref={ref}
+          {...rest}
+        />
+      </Heading>
     );
   },
 );

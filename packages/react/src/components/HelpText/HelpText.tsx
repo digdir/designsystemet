@@ -3,7 +3,7 @@ import { useState } from 'react';
 import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
-import { Popover } from '../Popover';
+import { Popover, Paragraph } from '../';
 import type { PopoverProps } from '../Popover/Popover';
 import type { PortalProps } from '../../types/Portal';
 
@@ -79,11 +79,14 @@ const HelpText = ({
             <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content
-          className={cl('ds-helptext__content', 'ds-paragraph--md')}
+        <Paragraph
+          size='md'
+          asChild
         >
-          {children}
-        </Popover.Content>
+          <Popover.Content className='ds-helptext__content'>
+            {children}
+          </Popover.Content>
+        </Paragraph>
       </Popover>
     </>
   );

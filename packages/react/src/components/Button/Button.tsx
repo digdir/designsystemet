@@ -3,6 +3,8 @@ import type { ButtonHTMLAttributes } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
+import { Paragraph } from '../Typography';
+
 export type ButtonProps = {
   /** Specify which variant to use */
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -50,24 +52,29 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : 'button';
 
     return (
-      <Component
-        ref={ref}
-        type={type}
-        className={cl(
-          'ds-btn',
-          `ds-focus`,
-          `ds-btn--${size}`,
-          `ds-paragraph-short--${size}`,
-          `ds-btn--${variant}`,
-          `ds-btn--${color}`,
-          fullWidth && 'ds-btn--full-width',
-          icon && 'ds-btn--icon-only',
-          className,
-        )}
-        {...rest}
+      <Paragraph
+        variant='short'
+        size={size}
+        asChild
       >
-        {children}
-      </Component>
+        <Component
+          ref={ref}
+          type={type}
+          className={cl(
+            'ds-btn',
+            `ds-focus`,
+            `ds-btn--${size}`,
+            `ds-btn--${variant}`,
+            `ds-btn--${color}`,
+            fullWidth && 'ds-btn--full-width',
+            icon && 'ds-btn--icon-only',
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </Component>
+      </Paragraph>
     );
   },
 );

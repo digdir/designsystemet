@@ -21,6 +21,7 @@ import {
 } from '@floating-ui/react';
 
 import type { PortalProps } from '../../types/Portal';
+import { Paragraph } from '../Typography';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -134,24 +135,29 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, ...animationStyles, ...style }}
-              role='tooltip'
-              {...getFloatingProps({
-                className: cl('ds-tooltip', 'ds-paragraph--xs', className),
-                ref: mergedRef,
-                ...rest,
-              })}
+            <Paragraph
+              size='xs'
+              asChild
             >
-              {content}
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className='ds-tooltip__arrow'
-                height={ARROW_HEIGHT}
-              />
-            </div>
+              <div
+                ref={refs.setFloating}
+                style={{ ...floatingStyles, ...animationStyles, ...style }}
+                role='tooltip'
+                {...getFloatingProps({
+                  className: cl('ds-tooltip', className),
+                  ref: mergedRef,
+                  ...rest,
+                })}
+              >
+                {content}
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  className='ds-tooltip__arrow'
+                  height={ARROW_HEIGHT}
+                />
+              </div>
+            </Paragraph>
           </Container>
         )}
       </>
