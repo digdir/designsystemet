@@ -4,9 +4,31 @@ import { CodeSnippet } from '@doc-components';
 
 <Meta title='Bruk React' />
 
-# Hvordan bruke React
+# Bruk
 
 Introduksjon til bruk, regler og gotchas.
+
+## Installasjon
+
+For å bruke Designsystemet i React, så må du installere `@digdir/designsystemet-react`.
+
+<CodeSnippet language='bash'>
+  {`
+npm install @digdir/designsystemet-react
+`}
+</CodeSnippet>
+
+Deretter kan du importere komponentene du trenger.
+
+<CodeSnippet language='ts'>
+{`
+import { Button } from '@digdir/designsystemet-react';
+
+<Button>Click me</Button>
+`}
+</CodeSnippet>
+
+Alle komponentene som er tilgjengelige i Designsystemet er uten styling. Legg til styling ved å importere vår css pakke, `@digdir/designsystemet-css`.
 
 ## SSR
 
