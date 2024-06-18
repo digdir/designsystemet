@@ -223,7 +223,7 @@ export const TokenModal = ({
                 Json til Figma
               </Heading>
               <div className={classes.tabs}>
-                <Tabs
+                <Tabs.Root
                   defaultValue='value1'
                   size='sm'
                 >
@@ -269,7 +269,7 @@ export const TokenModal = ({
                       </>
                     )}
                   </Tabs.List>
-                </Tabs>
+                </Tabs.Root>
               </div>
               <div className={classes.snippet}>
                 <CodeSnippet language='css'>{JSONTheme}</CodeSnippet>
