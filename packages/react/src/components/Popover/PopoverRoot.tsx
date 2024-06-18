@@ -112,4 +112,4 @@ export const PopoverContext = React.createContext<{
   setInternalOpen: () => {},
 });
 
-PopoverRoot.displayName = 'Popover.Root';
+PopoverRoot.displayName = 'PopoverRoot';

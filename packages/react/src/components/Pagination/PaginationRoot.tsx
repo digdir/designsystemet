@@ -47,4 +47,6 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
   },
 );
 
+PaginationRoot.displayName = 'PaginationRoot';
+
 export default PaginationRoot;

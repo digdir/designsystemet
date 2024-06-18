@@ -18,6 +18,8 @@ export const PaginationNext = forwardRef<
   );
 });
 
+PaginationNext.displayName = 'PaginationNext';
+
 export type PaginationPreviousProps = PaginationButtonProps;
 
 export const PaginationPrevious = forwardRef<
@@ -32,3 +34,5 @@ export const PaginationPrevious = forwardRef<
     />
   );
 });
+
+PaginationPrevious.displayName = 'PaginationPrevious';

@@ -33,4 +33,6 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   },
 );
 
+PaginationItem.displayName = 'PaginationItem';
+
 export default PaginationItem;

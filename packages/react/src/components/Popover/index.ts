@@ -17,5 +17,9 @@ Popover.Root = PopoverRoot;
 Popover.Content = PopoverContent;
 Popover.Trigger = PopoverTrigger;
 
+Popover.Root.displayName = 'Popover.Root';
+Popover.Content.displayName = 'Popover.Content';
+Popover.Trigger.displayName = 'Popover.Trigger';
+
 export type { PopoverRootProps, PopoverContentProps, PopoverTriggerProps };
 export { Popover, PopoverRoot, PopoverContent, PopoverTrigger };

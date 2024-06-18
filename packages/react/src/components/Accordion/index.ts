@@ -21,6 +21,11 @@ Accordion.Heading = AccordionHeading;
 Accordion.Content = AccordionContent;
 Accordion.Item = AccordionItem;
 
+Accordion.Root.displayName = 'Accordion.Root';
+Accordion.Heading.displayName = 'Accordion.Heading';
+Accordion.Content.displayName = 'Accordion.Content';
+Accordion.Item.displayName = 'Accordion.Item';
+
 export type {
   AccordionRootProps,
   AccordionContentProps,

@@ -30,4 +30,4 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
   },
 );
 
-AccordionRoot.displayName = 'Accordion.Root';
+AccordionRoot.displayName = 'AccordionRoot';

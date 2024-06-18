@@ -1,7 +1,7 @@
 import { useContext, useId } from 'react';
 
-import type { ToggleGroupContextProps } from '../ToggleGroup';
-import { ToggleGroupContext } from '../ToggleGroup';
+import type { ToggleGroupContextProps } from '../ToggleGroupRoot';
+import { ToggleGroupContext } from '../ToggleGroupRoot';
 import type { ButtonProps } from '../../Button';
 
 import type { ToggleGroupItemProps } from './ToggleGroupItem';

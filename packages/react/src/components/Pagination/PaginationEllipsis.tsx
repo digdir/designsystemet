@@ -29,4 +29,6 @@ export const PaginationEllipsis = forwardRef<
   );
 });
 
+PaginationEllipsis.displayName = 'PaginationEllipsis';
+
 export default PaginationEllipsis;
