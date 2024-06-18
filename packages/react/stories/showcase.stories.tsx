@@ -355,14 +355,14 @@ export const Showcase: StoryFn = () => {
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup
+          <ToggleGroup.Root
             defaultValue='norway'
             size='sm'
           >
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup>
+          </ToggleGroup.Root>
           <Combobox
             description='Velg et sted'
             label='Hvor går reisen?'

@@ -34,14 +34,14 @@ export type ToggleGroupProps = {
 /** `ToggleGroup` component.
  * @example
  * ```tsx
- * <ToggleGroup onChange={(value) => console.log(value)}>
+ * <ToggleGroup.Root onChange={(value) => console.log(value)}>
  *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
  *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
- * </ToggleGroup>
+ * </ToggleGroup.Root>
  * ```
  */
-export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
+export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
   (
     {
       size = 'md',
@@ -109,4 +109,4 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   },
 );
 
-ToggleGroup.displayName = 'ToggleGroup';
+ToggleGroupRoot.displayName = 'ToggleGroupRoot';
