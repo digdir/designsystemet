@@ -47,7 +47,7 @@ Alle komponentene som er tilgjengelige i Designsystemet er uten styling. Legg ti
 Når du sender inn props så vil disse bli lagt bakerst på komponenten.
 Dersom du sender inn funksjoner som `onClick`, og disse er i bruk fra før, vil disse bli kalt etter vår funksjon.
 
-Klassenavn vil også bli lagt bakerst.
+Klassenavn vil også bli lagt bakerst i lista av klasser.
 
 #### Eksempel
 
@@ -125,12 +125,12 @@ For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-
 ### Layers
 
 Vi bruker [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for å få lavest mulig spesifisitet i våre css klasser.
-Dette betyr at du lett kan overstye med dine egne klasser.
+Dette betyr at du lett kan overstye med din egen styling.
 
 Alle våre layers ligger under root layeren `ds`.
 Under har vi lagt sub-layers for hver komponent, som `ds.btn`.
 
-Vi har bare sortert det slik at det som senere skal bli overstyrt kommer først i listen:
+Vi har sortert det slik at det som potensielt skal bli overstyrt av andre komponenter kommer først i listen:
 
 <CodeSnippet language='css'>{`@layer ds.base, ds.box, ds.btn;`}</CodeSnippet>
 
