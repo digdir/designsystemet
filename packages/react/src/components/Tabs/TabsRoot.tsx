@@ -87,4 +87,4 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
   },
 );
 
-TabsRoot.displayName = 'TabsRoot';
+TabsRoot.displayName = 'Tabs.Root';
