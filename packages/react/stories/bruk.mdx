@@ -11,6 +11,7 @@ Under vil du finne:
 
 - [React](#react)
   - [Installasjon](#installasjon)
+  - [Sende props](#sende-props)
   - [SSR](#ssr)
 - [CSS](#css)
   - [Layers](#layers)
@@ -38,6 +39,42 @@ import { Button } from '@digdir/designsystemet-react';
 </CodeSnippet>
 
 Alle komponentene som er tilgjengelige i Designsystemet er uten styling. Legg til styling ved å importere vår css pakke, `@digdir/designsystemet-css`.
+
+<br />
+
+## Sende props
+
+Når du sender inn props så vil disse bli lagt bakerst på komponenten.
+Dersom du sender inn funksjoner som `onClick`, og disse er i bruk fra før, vil disse bli kalt etter vår funksjon.
+
+Klassenavn vil også bli lagt bakerst.
+
+### Eksempel
+
+<CodeSnippet language='ts'>
+  {`
+  <Button className='my-class' onClick={() => console.log('my click')} data-attr="data">Click me</Button>
+`}
+</CodeSnippet>
+
+Vil bli til:
+
+<CodeSnippet language='ts'>
+  {`
+  <button 
+    className='ds-btn ... my-class' 
+    onClick={() => {
+      () => {} // vår funksjon
+      rest.onClick(); // logget til konsollen kommer her
+    }}
+    data-attr="data"
+  >
+    Click me
+  </button>
+`}
+</CodeSnippet>
+
+<br />
 
 ### SSR
 
