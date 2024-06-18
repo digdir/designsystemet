@@ -43,7 +43,7 @@ export const ColorPicker = ({
   const getStatus = () => {
     return (
       <div>
-        <Popover
+        <Popover.Root
           onOpenChange={function Ya() {}}
           placement='top'
           size='sm'
@@ -90,7 +90,7 @@ export const ColorPicker = ({
               )}
             </div>
           </Popover.Content>
-        </Popover>
+        </Popover.Root>
       </div>
     );
   };

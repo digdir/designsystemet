@@ -7,19 +7,8 @@
   height: fit-content;
 }
 
-.copyContainer {
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: calc(100% - 1px);
-  width: calc(100% - 1px);
-  float: left;
-  margin-right: -100%;
-  pointer-events: none;
-}
-
-.icon {
+.copyButton {
   position: absolute;
-  top: var(--ds-spacing-4);
-  right: var(--ds-spacing-4);
+  top: var(--ds-spacing-2);
+  right: var(--ds-spacing-2);
 }
