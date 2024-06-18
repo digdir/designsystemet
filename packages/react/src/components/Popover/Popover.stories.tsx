@@ -13,15 +13,15 @@ const marginDecorator = (Story: StoryFn) => (
 
 export default {
   title: 'Komponenter/Popover',
-  component: Popover,
+  component: Popover.Root,
 } as Meta;
 
-export const Preview: StoryFn<typeof Popover> = (args) => {
+export const Preview: StoryFn<typeof Popover.Root> = (args) => {
   return (
-    <Popover {...args}>
+    <Popover.Root {...args}>
       <Popover.Trigger>My trigger!</Popover.Trigger>
       <Popover.Content>popover content</Popover.Content>
-    </Popover>
+    </Popover.Root>
   );
 };
 
@@ -34,7 +34,7 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-export const Variants: StoryFn<typeof Popover> = () => {
+export const Variants: StoryFn<typeof Popover.Root> = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -43,37 +43,37 @@ export const Variants: StoryFn<typeof Popover> = () => {
 
   return (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Popover
+      <Popover.Root
         open={open}
         placement='top'
       >
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>default</Popover.Content>
-      </Popover>
-      <Popover
+      </Popover.Root>
+      <Popover.Root
         open={open}
         placement='bottom'
         variant='danger'
       >
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>danger</Popover.Content>
-      </Popover>
-      <Popover
+      </Popover.Root>
+      <Popover.Root
         open={open}
         placement='top'
         variant='info'
       >
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>info</Popover.Content>
-      </Popover>
-      <Popover
+      </Popover.Root>
+      <Popover.Root
         open={open}
         placement='bottom'
         variant='warning'
       >
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>warning</Popover.Content>
-      </Popover>
+      </Popover.Root>
     </div>
   );
 };
@@ -85,7 +85,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 
   return (
     <>
-      <Popover
+      <Popover.Root
         open={open}
         onClose={() => setOpen(false)}
       >
@@ -105,7 +105,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
             Slett
           </Button>
         </Popover.Content>
-      </Popover>
+      </Popover.Root>
     </>
   );
 };
@@ -114,9 +114,9 @@ Controlled.decorators = [marginDecorator];
 
 export const InPortal = () => {
   return (
-    <Popover portal>
+    <Popover.Root portal>
       <Popover.Trigger>My trigger</Popover.Trigger>
       <Popover.Content>popover content</Popover.Content>
-    </Popover>
+    </Popover.Root>
   );
 };

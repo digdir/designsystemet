@@ -20,7 +20,7 @@ import cl from 'clsx/lite';
 import { Paragraph } from '../Typography';
 import { useIsomorphicLayoutEffect } from '../../hooks';
 
-import { PopoverContext } from './Popover';
+import { PopoverContext } from './PopoverRoot';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;

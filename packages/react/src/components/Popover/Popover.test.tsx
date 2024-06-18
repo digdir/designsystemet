@@ -1,22 +1,22 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { PopoverProps } from './Popover';
+import type { PopoverRootProps } from './PopoverRoot';
 
 import { Popover } from './';
 
 const contentText = 'popover content';
 
-const Comp = (args: Partial<PopoverProps>) => {
+const Comp = (args: Partial<PopoverRootProps>) => {
   return (
-    <Popover {...args}>
+    <Popover.Root {...args}>
       <Popover.Trigger>trigger</Popover.Trigger>
       <Popover.Content>{contentText}</Popover.Content>
-    </Popover>
+    </Popover.Root>
   );
 };
 
-const render = async (props: Partial<PopoverProps> = {}) => {
+const render = async (props: Partial<PopoverRootProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
