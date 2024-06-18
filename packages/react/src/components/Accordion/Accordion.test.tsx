@@ -10,14 +10,14 @@ const TestComponent = ({
   ...rest
 }: Omit<AccordionItemProps, 'children'>): JSX.Element => {
   return (
-    <Accordion>
+    <Accordion.Root>
       <Accordion.Item {...rest}>
         <Accordion.Heading>Accordion Header Title Text</Accordion.Heading>
         <Accordion.Content>
           The fantastic accordion content text
         </Accordion.Content>
       </Accordion.Item>
-    </Accordion>
+    </Accordion.Root>
   );
 };
 

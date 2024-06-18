@@ -7,14 +7,14 @@ import { Accordion } from '.';
 
 export default {
   title: 'Komponenter/Accordion',
-  component: Accordion,
+  component: Accordion.Root,
   parameters: {
     layout: 'padded',
   },
 } as Meta;
 
-export const Preview: StoryFn<typeof Accordion> = (args) => (
-  <Accordion {...args}>
+export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
+  <Accordion.Root {...args}>
     <Accordion.Item>
       <Accordion.Heading level={3}>
         Hvem kan registrere seg i Frivillighetsregisteret?
@@ -36,11 +36,11 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
         registrene samtidig i Samordnet registermelding.
       </Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
-export const AccordionBorder: StoryFn<typeof Accordion> = () => (
-  <Accordion
+export const AccordionBorder: StoryFn<typeof Accordion.Root> = () => (
+  <Accordion.Root
     border
     color='subtle'
   >
@@ -48,11 +48,11 @@ export const AccordionBorder: StoryFn<typeof Accordion> = () => (
       <Accordion.Heading level={3}>Vedlegg</Accordion.Heading>
       <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
-export const AccordionColor: StoryFn<typeof Accordion> = () => (
-  <Accordion
+export const AccordionColor: StoryFn<typeof Accordion.Root> = () => (
+  <Accordion.Root
     border
     color='brand2'
   >
@@ -74,7 +74,7 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
         <Link href='https://minjegerside.brreg.no/'>Min jegerside</Link>
       </Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
 // Default values are selected in Controls
@@ -83,14 +83,14 @@ Preview.args = {
   color: 'neutral',
 };
 
-export const Controlled: StoryFn<typeof Accordion> = () => {
+export const Controlled: StoryFn<typeof Accordion.Root> = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Toggle Accordions</Button>
       <br />
-      <Accordion>
+      <Accordion.Root>
         <Accordion.Item open={open}>
           <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
             Enkeltpersonforetak
@@ -126,7 +126,7 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             risiko? Da kan du vurdere å etablere et ansvarlig selskap.
           </Accordion.Content>
         </Accordion.Item>
-      </Accordion>
+      </Accordion.Root>
     </>
   );
 };
