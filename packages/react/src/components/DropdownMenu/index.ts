@@ -1,4 +1,4 @@
-import { DropdownMenuRoot } from './DropdownMenu';
+import { DropdownMenuRoot } from './DropdownMenuRoot';
 import { DropdownMenuGroup } from './DropdownMenuGroup';
 import { DropdownMenuItem } from './DropdownMenuItem';
 import { DropdownMenuTrigger } from './DropdownMenuTrigger';
@@ -20,7 +20,13 @@ DropdownMenu.Group = DropdownMenuGroup;
 DropdownMenu.Item = DropdownMenuItem;
 DropdownMenu.Trigger = DropdownMenuTrigger;
 
-export type { DropdownMenuRootProps } from './DropdownMenu';
+DropdownMenu.Root.displayName = 'DropdownMenu.Root';
+DropdownMenu.Content.displayName = 'DropdownMenu.Content';
+DropdownMenu.Group.displayName = 'DropdownMenu.Group';
+DropdownMenu.Item.displayName = 'DropdownMenu.Item';
+DropdownMenu.Trigger.displayName = 'DropdownMenu.Trigger';
+
+export type { DropdownMenuRootProps } from './DropdownMenuRoot';
 export type { DropdownMenuGroupProps } from './DropdownMenuGroup';
 export type { DropdownMenuItemProps } from './DropdownMenuItem';
 export type { DropdownMenuContentProps } from './DropdownMenuContent';

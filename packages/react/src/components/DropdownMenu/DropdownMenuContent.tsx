@@ -18,7 +18,7 @@ import cl from 'clsx/lite';
 
 import { useIsomorphicLayoutEffect } from '../../hooks';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 const GAP = 4;
 

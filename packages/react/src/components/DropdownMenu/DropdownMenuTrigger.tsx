@@ -5,7 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuTriggerProps = React.ComponentPropsWithRef<
   typeof Button

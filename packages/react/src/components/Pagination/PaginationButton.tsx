@@ -29,3 +29,5 @@ export const PaginationButton = forwardRef<
     />
   );
 });
+
+PaginationButton.displayName = 'PaginationButton';

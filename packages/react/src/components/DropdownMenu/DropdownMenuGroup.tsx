@@ -3,7 +3,7 @@ import type * as React from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuGroupProps = {
   /**

@@ -21,6 +21,7 @@ Tabs.Tab = Tab;
 Tabs.List = TabList;
 Tabs.Content = TabContent;
 
+Tabs.Root.displayName = 'Tabs.Root';
 Tabs.Tab.displayName = 'Tabs.Tab';
 Tabs.List.displayName = 'Tabs.List';
 Tabs.Content.displayName = 'Tabs.Content';
