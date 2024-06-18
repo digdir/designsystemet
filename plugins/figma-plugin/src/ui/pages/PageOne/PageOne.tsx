@@ -109,7 +109,7 @@ function PageOne() {
           i feltet under.
         </Paragraph>
 
-        <ToggleGroup
+        <ToggleGroup.Root
           className='modes'
           defaultValue='light'
           name='toggle-group-nuts'
@@ -119,7 +119,7 @@ function PageOne() {
           <ToggleGroup.Item value='light'>Light Mode</ToggleGroup.Item>
           <ToggleGroup.Item value='dark'>Dark Mode</ToggleGroup.Item>
           {/* <ToggleGroup.Item value='contrast'>Contrast</ToggleGroup.Item> */}
-        </ToggleGroup>
+        </ToggleGroup.Root>
         <Textarea
           className='textarea'
           cols={40}
