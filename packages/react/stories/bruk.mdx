@@ -88,9 +88,7 @@ Under har vi lagt sub-layers for hver komponent, som `ds.btn`.
 
 Vi har bare sortert det slik at det som senere skal bli overstyrt kommer først i listen:
 
-<CodeSnippet language='css'>
-  {`@layer ds.reset, ds.typography, ds.utils, ds.box, ds.btn;`}
-</CodeSnippet>
+<CodeSnippet language='css'>{`@layer ds.base, ds.box, ds.btn;`}</CodeSnippet>
 
 Har du en css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
 
