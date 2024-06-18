@@ -4,7 +4,7 @@ import type { Placement } from '@floating-ui/react';
 
 import type { PortalProps } from '../../types/Portal';
 
-export type DropdownMenuProps = {
+export type DropdownMenuRootProps = {
   /** Whether the dropdown is open or not.
    * @default false
    */
@@ -23,14 +23,14 @@ export type DropdownMenuProps = {
   children: React.ReactNode;
 } & PortalProps;
 
-export const DropdownMenu = ({
+export const DropdownMenuRoot = ({
   open,
   onClose,
   placement = 'bottom-end',
   portal,
   size = 'md',
   children,
-}: DropdownMenuProps) => {
+}: DropdownMenuRootProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
@@ -63,13 +63,13 @@ export const DropdownMenu = ({
 type DropdownMenuContextType = {
   anchorEl: Element | null;
   triggerRef: React.RefObject<Element>;
-  size: NonNullable<DropdownMenuProps['size']>;
+  size: NonNullable<DropdownMenuRootProps['size']>;
   portal?: PortalProps['portal'];
-  placement?: DropdownMenuProps['placement'];
+  placement?: DropdownMenuRootProps['placement'];
   internalOpen: boolean;
   isControlled?: boolean;
   setInternalOpen: (open: boolean) => void;
-  onClose?: DropdownMenuProps['onClose'];
+  onClose?: DropdownMenuRootProps['onClose'];
 };
 
 export const DropdownMenuContext = createContext<DropdownMenuContextType>({
@@ -80,4 +80,4 @@ export const DropdownMenuContext = createContext<DropdownMenuContextType>({
   setInternalOpen: () => {},
 });
 
-DropdownMenu.displayName = 'DropdownMenu';
+DropdownMenuRoot.displayName = 'DropdownMenu.Root';
