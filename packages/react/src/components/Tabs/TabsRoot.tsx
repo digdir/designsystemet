@@ -40,7 +40,7 @@ export type TabsContextProps = {
 
 export const TabsContext = createContext<TabsContextProps>({});
 
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+export const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
   (
     {
       size = 'md',
@@ -87,4 +87,4 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   },
 );
 
-Tabs.displayName = 'Tabs';
+TabsRoot.displayName = 'TabsRoot';
