@@ -46,52 +46,56 @@ export const ComboboxOption = memo(
       const props = getItemProps();
 
       return (
-        <button
-          ref={ref}
-          id={id}
-          role='option'
-          type='button'
-          aria-selected={!!selected}
-          aria-labelledby={labelId}
-          tabIndex={-1}
-          onClick={(e) => {
-            onOptionClick();
-            rest.onClick?.(e);
-          }}
-          className={cl(
-            'ds-combobox__option',
-            'ds-label--md',
-            active && 'ds-combobox__option--active',
-            multiple && 'ds-combobox__option--multiple',
-            className,
-          )}
-          {...omit(['displayValue'], rest)}
-          {...omit(['onClick', 'onPointerLeave'], props)}
+        <Label
+          size='md'
+          asChild
         >
-          <Label
-            asChild
-            size={size}
-          >
-            <span>
-              <SelectedIcon
-                multiple={multiple}
-                selected={!!selected}
-              />
-            </span>
-          </Label>
-          <Label
-            className={'ds-combobox__option__label'}
-            size={size}
-            id={labelId}
-          >
-            {children}
-            {description && (
-              <ComboboxOptionDescription>
-                {description}
-              </ComboboxOptionDescription>
+          <button
+            ref={ref}
+            id={id}
+            role='option'
+            type='button'
+            aria-selected={!!selected}
+            aria-labelledby={labelId}
+            tabIndex={-1}
+            onClick={(e) => {
+              onOptionClick();
+              rest.onClick?.(e);
+            }}
+            className={cl(
+              'ds-combobox__option',
+              active && 'ds-combobox__option--active',
+              multiple && 'ds-combobox__option--multiple',
+              className,
             )}
-          </Label>
-        </button>
+            {...omit(['displayValue'], rest)}
+            {...omit(['onClick', 'onPointerLeave'], props)}
+          >
+            <Label
+              asChild
+              size={size}
+            >
+              <span>
+                <SelectedIcon
+                  multiple={multiple}
+                  selected={!!selected}
+                />
+              </span>
+            </Label>
+            <Label
+              className={'ds-combobox__option__label'}
+              size={size}
+              id={labelId}
+            >
+              {children}
+              {description && (
+                <ComboboxOptionDescription>
+                  {description}
+                </ComboboxOptionDescription>
+              )}
+            </Label>
+          </button>
+        </Label>
       );
     },
   ),
