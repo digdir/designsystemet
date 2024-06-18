@@ -4,6 +4,7 @@
   overflow-x: auto;
   width: 100%;
   border-radius: var(--ds-border-radius-md);
+  height: fit-content;
 }
 
 .copyContainer {
@@ -19,8 +20,6 @@
 
 .icon {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  height: 40px;
-  width: 40px;
+  top: var(--ds-spacing-4);
+  right: var(--ds-spacing-4);
 }
