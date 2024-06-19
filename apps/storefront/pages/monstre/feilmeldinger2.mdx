@@ -24,17 +24,13 @@ export default ({ children }) => (
   />
 );
 
-Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen tar for seg brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
-
-## Brukerutløste feilmeldinger
-
-Feilmeldinger kan komme fra systemet eller være utløst av noe brukerne har gjort. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå å gi feilmeldinger, og hvordan kan vi hjelpe brukerne å komme seg videre når det likevel har oppstått en feil?
+Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
 
 Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
 
 Feilmeldinger kan være knyttet til et enkelt felt eller til flere felt. Vi har også oppsummering av flere feilmeldinger som vises dersom brukeren forsøker å gå videre uten å ha fylt ut alt.
 
-### Feilmeldinger på enkeltfelter
+## Feilmeldinger på enkeltfelter
 
 Vi skal kunne vise feilmeldinger sammen med alle typer felt i et skjema. Meldingen skal stå nært feltet som feiler.
 
@@ -44,7 +40,7 @@ Vi skal kunne vise feilmeldinger sammen med alle typer felt i et skjema. Melding
   boxShadow={false}
 />
 
-### Oppsummering av flere feilmeldinger
+## Oppsummering av flere feilmeldinger
 
 En oppsummering kan gjelde for én eller flere feil. Hvis brukerne prøver å gå videre uten å ha fylt ut alt, eller de har gjort feil, oppsummerer vi like over Neste/Send inn-knappen.
 
@@ -69,7 +65,7 @@ Vi anbefaler å vise oppsummeringen i nærheten av Neste-knappen for at brukerne
   boxShadow={false}
 />
 
-### Det er best om vi kan unngå å gi feilmeldinger
+## Det er best om vi kan unngå å gi feilmeldinger
 
 Når vi planlegger en løsning, bør målet være å hindre at det oppstår feil. Disse punktene kan hjelpe i planleggingen:
 
@@ -82,13 +78,13 @@ Når vi planlegger en løsning, bør målet være å hindre at det oppstår feil
 - Legg inn en bestemt rekkefølge på svaralternativene, for å hindre at brukeren tar valg som fører til feil.
 - Vis informasjon om maks. antall tegn under ledeteksten hvis feltet har det.
 
-### Andre typer meldinger
+## Andre typer meldinger
 
-#### Systemgenererte meldinger
+### Systemgenererte meldinger
 
 Systemgenererte meldinger, eller "systemvarsler", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
 
-#### Brukerutløste infomeldinger
+### Brukerutløste infomeldinger
 
 Brukerutløste infomeldinger, eller "myke valideringer", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
 
