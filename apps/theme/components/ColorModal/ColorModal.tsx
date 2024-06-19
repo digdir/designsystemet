@@ -35,55 +35,57 @@ const capitalizeFirstLetter = (str: string) => {
 
 export const ColorModal = ({ colorModalRef, color }: ColorModalProps) => {
   return (
-    <Modal
-      ref={colorModalRef}
-      style={{
-        maxWidth: '1000px',
-      }}
-      className={classes.modal}
-      onInteractOutside={() => colorModalRef.current?.close()}
-    >
-      <Modal.Header>
-        {capitalizeFirstLetter(color.type) + ' ' + color.color.name}
-      </Modal.Header>
-      <Modal.Content className={classes.modalContent}>
-        <div className={classes.container}>
-          <div className={classes.left}>
-            <Field
-              label='Hexkode:'
-              value={color.color.hex}
-              copyBtn
-            />
-            <Field
-              label='HSLuv:'
-              value={
-                hexToHSL(color.color.hex)[0].toFixed(0) +
-                '° ' +
-                hexToHSL(color.color.hex)[1].toFixed(0) +
-                '% ' +
-                hexToHSL(color.color.hex)[2].toFixed(0) +
-                '%'
-              }
-            />
-            <Field
-              label='CSS variabel:'
-              value={getCssVariable(color.type, color.color.number)}
-              copyBtn
-            />
-            {/* <Field
+    <Modal.Root>
+      <Modal.Dialog
+        ref={colorModalRef}
+        style={{
+          maxWidth: '1000px',
+        }}
+        className={classes.modal}
+        onInteractOutside={() => colorModalRef.current?.close()}
+      >
+        <Modal.Header>
+          {capitalizeFirstLetter(color.type) + ' ' + color.color.name}
+        </Modal.Header>
+        <Modal.Content className={classes.modalContent}>
+          <div className={classes.container}>
+            <div className={classes.left}>
+              <Field
+                label='Hexkode:'
+                value={color.color.hex}
+                copyBtn
+              />
+              <Field
+                label='HSLuv:'
+                value={
+                  hexToHSL(color.color.hex)[0].toFixed(0) +
+                  '° ' +
+                  hexToHSL(color.color.hex)[1].toFixed(0) +
+                  '% ' +
+                  hexToHSL(color.color.hex)[2].toFixed(0) +
+                  '%'
+                }
+              />
+              <Field
+                label='CSS variabel:'
+                value={getCssVariable(color.type, color.color.number)}
+                copyBtn
+              />
+              {/* <Field
               label='Illuminans terskel:'
               value='30-40%'
             />
             <div>
               Les mer om denne fargen <Link href='#'>her</Link>.
             </div> */}
+            </div>
+            <div
+              className={classes.right}
+              style={{ backgroundColor: color.color.hex }}
+            ></div>
           </div>
-          <div
-            className={classes.right}
-            style={{ backgroundColor: color.color.hex }}
-          ></div>
-        </div>
-      </Modal.Content>
-    </Modal>
+        </Modal.Content>
+      </Modal.Dialog>
+    </Modal.Root>
   );
 };
