@@ -60,7 +60,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { customIds, listRef, getItemProps, size } = context;
+    const { customIds, setListRef, getItemProps, size } = context;
 
     const index = useMemo(
       () => (id && customIds.indexOf(id)) || 0,
@@ -69,7 +69,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     const combinedRef = useMergeRefs([
       (node: HTMLElement | null) => {
-        listRef.current[index] = node;
+        setListRef(index, node);
       },
       ref,
     ]);
