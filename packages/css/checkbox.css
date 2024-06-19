@@ -56,7 +56,7 @@
   }
 
   .ds-checkbox__description {
-    margin-top: calc(var(--ds-spacing-3) * -1);
+    margin-top: calc(var(--ds-spacing-2) * -1);
     color: var(--ds-color-neutral-text-subtle);
     grid-column: 2;
   }
