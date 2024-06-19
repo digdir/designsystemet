@@ -3,7 +3,7 @@ import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
 import type { ContrastMode, Mode, ColorInfo, ColorNumber, ThemeInfo, ColorType } from './types.ts';
-import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils';
+import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils.js';
 
 const blueBaseColor = '#0A71C0';
 const greenBaseColor = '#078D19';
