@@ -1,6 +1,7 @@
-import { createContext, useRef, useState } from 'react';
+import { createContext, useCallback, useRef, useState } from 'react';
 
 export type ModalContextProps = {
+  setCloseModal: (fn: () => void) => void;
   closeModal?: () => void;
   modalRef: React.RefObject<HTMLDialogElement>;
   open: boolean;
@@ -12,6 +13,7 @@ export type ModalRootProps = {
 };
 
 export const ModalContext = createContext<ModalContextProps>({
+  setCloseModal: () => {},
   modalRef: { current: null },
   open: false,
   setOpen: () => {},
@@ -20,11 +22,17 @@ export const ModalContext = createContext<ModalContextProps>({
 export const ModalRoot = ({ children }: ModalRootProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
+  const [closeModal, setCloseModal] = useState<(() => void) | undefined>();
+
+  const setCloseModalInContext = useCallback((fn: () => void) => {
+    setCloseModal(() => fn);
+  }, []);
 
   return (
     <ModalContext.Provider
       value={{
-        closeModal: () => {},
+        setCloseModal: setCloseModalInContext,
+        closeModal,
         modalRef,
         open,
         setOpen,
