@@ -2,8 +2,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
-import type { ContrastMode, Mode, ColorInfo, ColorNumber, ThemeInfo, ColorType } from './types.ts';
-import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils.js';
+import type { ContrastMode, Mode, ColorInfo, ColorNumber, ThemeInfo, ColorType } from './types';
+import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils';
 
 const blueBaseColor = '#0A71C0';
 const greenBaseColor = '#078D19';

@@ -8,9 +8,8 @@
     "emitDeclarationOnly": false,
     "noEmit": false,
     "esModuleInterop": true,
-    "target": "esnext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "sourceMap": false
   },
   "rootDir": "./src",
