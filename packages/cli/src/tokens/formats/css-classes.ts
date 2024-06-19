@@ -3,7 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { fileHeader, createPropertyFormatter, getReferences } from 'style-dictionary/utils';
 
-import { getValue, getType, typeEquals } from '../utils/utils';
+import { getValue, typeEquals } from '../utils/utils';
 
 type Typgraphy = {
   fontWeight: string;
@@ -15,12 +15,15 @@ type Typgraphy = {
 type ProcessedTokens = { variables: string[]; classes: string[] };
 
 const sortByType = R.sortBy<TransformedToken>((token) => token?.type === 'typography');
-const getVariableName = R.pipe<string[], string[], string, string, string>(
+const getVariableName = R.pipe<string[], string[], string, string, string, string>(
   R.split(':'),
   R.head,
   R.defaultTo(''),
   R.trim,
+  (name) => `var(${name})`,
 );
+
+const classSelector = R.replace('-typography', '');
 
 /**
  * Creates CSS classes from typography tokens
@@ -43,28 +46,47 @@ export const cssClassesTypography: Format = {
       sortByType,
       R.reduce<TransformedToken, ProcessedTokens>(
         (acc, token) => {
-          const type = getType(token);
+          if (typeEquals('fontweights', token)) {
+            const className = `
+.${classSelector(token.name)} {
+    font-weight: ${getValue<string>(token)};
+  }`;
 
-          if (type === 'typography') {
-            const classSelector = R.replace('-typography', '', token.name);
+            return {
+              ...acc,
+              variables: [...acc.variables, format(token)],
+              classes: [...acc.classes, className],
+            };
+          }
 
+          if (typeEquals('lineheights', token)) {
+            const className = `
+  .${classSelector(token.name)} {
+    line-height: ${getValue<string>(token)};
+  }`;
+
+            return {
+              ...acc,
+              variables: [...acc.variables, format(token)],
+              classes: [...acc.classes, className],
+            };
+          }
+
+          if (typeEquals('typography', token)) {
             const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
             const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
             const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
-            const lineheightValue = R.isNotNil(lineheight) ? getValue<string>(lineheight) : '';
             const fontsize = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
-            const fontSizeValue = R.isNotNil(fontsize) ? getValue<string>(fontsize) : '';
 
-            let fontWeightName: string = '';
-            if (fontweight) {
-              fontWeightName = getVariableName(format(fontweight));
-            }
+            const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
+            const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
+            const lineheightVar = lineheight ? getVariableName(format(lineheight)) : null;
 
             const className = `
-  .${classSelector} {
-    font-size: ${fontSizeValue};
-    line-height: ${lineheightValue};
-    ${fontWeightName && `font-weight: var(${fontWeightName});`}
+  .${classSelector(token.name)} {
+    ${fontSizeVar && `font-size: ${fontSizeVar};`}
+    ${lineheightVar && `line-height: ${lineheightVar};`}
+    ${fontWeightVar && `font-weight: ${fontWeightVar};`}
   }`;
 
             return { ...acc, classes: [...acc.classes, className] };
