@@ -35,7 +35,6 @@
     box-sizing: border-box;
     font-family: inherit;
     border-spacing: 0;
-    font-weight: 500;
     border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
   }
 
@@ -45,6 +44,7 @@
     background-color: var(--ds-color-neutral-background-default);
     border-spacing: 0;
     border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
+    font-weight: 500;
   }
 
   .ds-table--sticky-header .ds-table__head .ds-table__header__cell {
@@ -62,6 +62,7 @@
     width: 100%;
     border: none;
     font-family: inherit;
+    font-weight: 500;
     display: flex;
     cursor: pointer;
     gap: var(--ds-spacing-1);
