@@ -1,11 +1,7 @@
 import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from '../Button';
-import { Textfield } from '../form/Textfield';
-import { Paragraph } from '../Typography';
-import { Divider } from '../Divider';
-import { Combobox } from '..';
+import { Combobox, Divider, Paragraph, Textfield, Button } from '..';
 
 import { Modal } from '.';
 
