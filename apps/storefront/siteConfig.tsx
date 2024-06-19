@@ -150,6 +150,10 @@ export const SiteConfig = {
               name: 'Feilmeldinger *',
               url: 'monstre/feilmeldinger',
             },
+            {
+              name: 'Feilmeldinger 2.versjon',
+              url: 'monstre/feilmeldinger2',
+            },
           ],
         },
         {
