@@ -30,10 +30,10 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 </Modal.Root>
 ```
 
-## Alternativ bruk med `ref`
+## Bruk med eksten trigger
 
-Alternativt kan du bruke `ref` for å styre hvor `Modal`, men da må du selv håndtere tilstand for åpning/lukking.
-Det er heller ikke behov for å bruke `Trigger` og `Root` med denne tilnærmingen.
+Dersom du vil bruke en ekstern trigger, som for eksempel ligger en annen plass i treet, kan du bruke `ref` for å åpne modalen.
+Du må fortsatt ha `Modal.Root` rundt `Modal.Dialog` for at modalen skal fungere, men du kan fjerne `Modal.Trigger`.
 
 ```tsx
 const modalRef = useRef<HTMLDialogElement>(null);
@@ -41,13 +41,15 @@ const modalRef = useRef<HTMLDialogElement>(null);
 ...
 
 <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-<Modal
-  ref={modalRef}
->
-  <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
-  <Modal.Content>Content</Modal.Content>
-  <Modal.Footer>Footer</Modal.Footer>
-</Modal>
+<Modal.Root>
+  <Modal.Dialog
+    ref={modalRef}
+  >
+    <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
+    <Modal.Content>Content</Modal.Content>
+    <Modal.Footer>Footer</Modal.Footer>
+  </Modal.Dialog>
+</Modal.Root>
 ```
 
 ### Med bruk av `ref`

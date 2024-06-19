@@ -30,7 +30,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ) => {
     const Component = asChild ? Slot : 'div';
 
-    const context = useContext(ModalContext);
+    const { closeModal } = useContext(ModalContext);
 
     return (
       <Component
@@ -62,7 +62,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             variant='tertiary'
             color='neutral'
             size='md'
-            onClick={context?.closeModal}
+            onClick={() => closeModal?.()}
             autoFocus
             icon={true}
             className='ds-modal__header__button'
