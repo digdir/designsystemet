@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.1.0-alpha.11",
+  "version": "0.1.0-alpha.12",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -14,21 +14,35 @@
     "./color": "./src/colors/index.ts"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "bin": "dist/bin/designsystemet.js",
+    "exports": {
+      "./color": "./dist/src/colors/index.js"
+    }
+  },
+  "tsup": {
+    "entry": [
+      "bin/designsystemet.ts",
+      "src/**/*.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "format": [
+      "esm"
+    ]
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "yarn clean && tsc",
-    "prepublish:tsup": "yarn clean && tsup src/**/*.ts bin/designsystemet.ts --cjsInterop --shims --format esm",
-    "clean": "rimraf dist",
+    "build": "tsup",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "files": [
     "./dist/**"
   ],
-  "bin": "dist/build/bin/designsystemet.js",
+  "bin": "bin/designsystemet.js",
   "dependencies": {
     "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@commander-js/extra-typings": "^12.0.1",
@@ -43,8 +57,7 @@
     "postcss": "^8.4.38",
     "ramda": "^0.29.1",
     "rimraf": "^5.0.5",
-    "style-dictionary": "^4.0.0-prerelease.34",
-    "tsup": "^8.0.2"
+    "style-dictionary": "^4.0.0-prerelease.34"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -54,6 +67,7 @@
     "@types/object-hash": "^3",
     "@types/ramda": "^0.29.9",
     "fs-extra": "^11.2.0",
+    "tsup": "^8.1.0",
     "tsx": "^4.11.2",
     "typescript": "^5.4.5"
   }
