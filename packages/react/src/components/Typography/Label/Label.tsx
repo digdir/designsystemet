@@ -38,7 +38,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
           'ds-label',
           `ds-label--${size}`,
           spacing && 'ds-label--spacing',
-          weight && `ds-label--${weight}-weight`,
+          weight && `ds-font-weight--${weight}`,
           className,
         )}
         {...rest}

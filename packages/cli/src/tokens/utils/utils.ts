@@ -17,7 +17,7 @@ export const getType = (token: TransformedToken) => ((token.$type ?? token.type)
  */
 export const getValue = <T>(token: TransformedToken | DesignToken): T => (token.$value ?? token.value) as T;
 
-export const typeEquals = (types: string[] | string, token?: TransformedToken) => {
+export const typeEquals = (types: string[] | string, token: TransformedToken) => {
   if (R.isNil(token)) {
     return false;
   }

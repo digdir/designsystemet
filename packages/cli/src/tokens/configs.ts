@@ -15,9 +15,9 @@ import { typeEquals } from './utils/utils';
 
 void tokenStudio.registerTransforms(StyleDictionary);
 
-const prefix = 'ds';
-const basePxFontSize = 16;
-const separator = '_';
+export const prefix = 'ds';
+export const basePxFontSize = 16;
+export const separator = '_';
 
 const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
@@ -199,27 +199,6 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   return {
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
-    hooks: {
-      transforms: {
-        typographyClassName: {
-          type: 'name',
-          filter: (token) => typeEquals('typography', token),
-          transform: (token) => {
-            const name = R.pipe(
-              (list: string[]) => {
-                const withPrefix = R.concat([prefix], R.remove(0, 0, list));
-                const [rest, last] = R.splitAt(-1, withPrefix);
-
-                return `${rest.join('-')}--${R.head(last)}`;
-              },
-              R.trim,
-              R.toLower,
-            )(token.path);
-            return name;
-          },
-        },
-      },
-    },
     platforms: {
       css: {
         prefix,
@@ -227,14 +206,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         // selector,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
-        transforms: [
-          nameKebab.name,
-          'ts/size/px',
-          sizeRem.name,
-          'typographyClassName',
-          'ts/size/lineheight',
-          'ts/typography/fontWeight',
-        ],
+        transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
         files: [
           {
             destination: `typography.css`,

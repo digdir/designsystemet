@@ -11,16 +11,4 @@
   .ds-label--spacing {
     margin-bottom: var(--dsc-bottom-spacing);
   }
-
-  .ds-label--regular-weight {
-    font-weight: 400;
-  }
-
-  .ds-label--medium-weight {
-    font-weight: 500;
-  }
-
-  .ds-label--semibold-weight {
-    font-weight: 600;
-  }
 }
