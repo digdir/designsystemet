@@ -52,6 +52,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
             zebra && 'ds-table--zebra',
             stickyHeader && 'ds-table--sticky-header',
             border && 'ds-table--border',
+            `ds-paragraph--${size}`,
             className,
           )}
           {...rest}
