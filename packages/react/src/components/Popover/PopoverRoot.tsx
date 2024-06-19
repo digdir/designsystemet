@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 
-export type PopoverProps = {
+export type PopoverRootProps = {
   /**
    * Placement of the tooltip on the trigger.
    * @default top
@@ -34,7 +34,7 @@ export type PopoverProps = {
   children: React.ReactNode;
 } & PortalProps;
 
-export const Popover = ({
+export const PopoverRoot = ({
   children,
   placement = 'top',
   open,
@@ -43,7 +43,7 @@ export const Popover = ({
   size = 'md',
   onOpenChange,
   onClose,
-}: PopoverProps) => {
+}: PopoverRootProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
@@ -94,11 +94,11 @@ export const PopoverContext = React.createContext<{
   triggerId?: string;
   isControlled?: boolean;
   internalOpen: boolean;
-  size: NonNullable<PopoverProps['size']>;
-  variant: NonNullable<PopoverProps['variant']>;
+  size: NonNullable<PopoverRootProps['size']>;
+  variant: NonNullable<PopoverRootProps['variant']>;
   placement: Placement;
-  onOpenChange?: PopoverProps['onOpenChange'];
-  onClose?: PopoverProps['onClose'];
+  onOpenChange?: PopoverRootProps['onOpenChange'];
+  onClose?: PopoverRootProps['onClose'];
   setPopoverId?: (id: string) => void;
   setTriggerId?: (id: string) => void;
   setInternalOpen: (open: boolean) => void;
@@ -112,4 +112,4 @@ export const PopoverContext = React.createContext<{
   setInternalOpen: () => {},
 });
 
-Popover.displayName = 'Popover';
+PopoverRoot.displayName = 'PopoverRoot';

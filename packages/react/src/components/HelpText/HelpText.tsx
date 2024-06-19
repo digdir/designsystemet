@@ -3,8 +3,8 @@ import { useState } from 'react';
 import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
-import { Popover } from '../Popover';
-import type { PopoverProps } from '../Popover/Popover';
+import { Popover, Paragraph } from '../';
+import type { PopoverRootProps } from '../Popover/PopoverRoot';
 import type { PortalProps } from '../../types/Portal';
 
 import { HelpTextIcon } from './HelpTextIcon';
@@ -18,7 +18,7 @@ export type HelpTextProps = {
    * Size of the helptext
    * @default md
    */
-  size?: PopoverProps['size'];
+  size?: PopoverRootProps['size'];
   /**
    * Placement of the Popover.
    * @default 'right'
@@ -40,7 +40,7 @@ const HelpText = ({
 
   return (
     <>
-      <Popover
+      <Popover.Root
         variant='info'
         placement={placement}
         size={size}
@@ -79,12 +79,15 @@ const HelpText = ({
             <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content
-          className={cl('ds-helptext__content', 'ds-paragraph--md')}
+        <Paragraph
+          size='md'
+          asChild
         >
-          {children}
-        </Popover.Content>
-      </Popover>
+          <Popover.Content className='ds-helptext__content'>
+            {children}
+          </Popover.Content>
+        </Paragraph>
+      </Popover.Root>
     </>
   );
 };

@@ -5,6 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
+import { Label } from '../../Typography';
 
 import { ComboboxContext } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
@@ -74,17 +75,22 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     ]);
 
     return (
-      <Component
-        ref={combinedRef}
-        tabIndex={-1}
-        className={cl('ds-combobox__custom', `ds-label--${size}`, className)}
-        id={id || randomId}
-        role='option'
-        aria-selected={activeIndex === index}
-        data-active={activeIndex === index}
-        {...omit(['interactive'], rest)}
-        {...omit(['onClick', 'onPointerLeave'], getItemProps())}
-      />
+      <Label
+        size={size}
+        asChild
+      >
+        <Component
+          ref={combinedRef}
+          tabIndex={-1}
+          className={cl('ds-combobox__custom', className)}
+          id={id || randomId}
+          role='option'
+          aria-selected={activeIndex === index}
+          data-active={activeIndex === index}
+          {...omit(['interactive'], rest)}
+          {...omit(['onClick', 'onPointerLeave'], getItemProps())}
+        />
+      </Label>
     );
   },
 );

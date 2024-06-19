@@ -25,16 +25,16 @@ Med `Accordion` kan du presentere mye innhold på liten plass i en eller flere r
 ```tsx
 import { Accordion } from '@digdir/designsystemet-react';
 
-<Accordion>
+<Accordion.Root>
   <Accordion.Item>
-    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Accordion.Heading>Accordion heading text</Accordion.Heading>
     <Accordion.Content>Accordion content</Accordion.Content>
   </Accordion.Item>
   <Accordion.Item>
-    <Accordion.Header>Accordion header text</Accordion.Header>
+    <Accordion.Heading>Accordion heading text</Accordion.Heading>
     <Accordion.Content>Accordion content</Accordion.Content>
   </Accordion.Item>
-</Accordion>;
+</Accordion.Root>;
 ```
 
 ## Eksempler
@@ -97,11 +97,11 @@ Accordion skal brukes til maksimalt to avsnitt innenfor hvert nedtrekk. Sørg fo
 
 ## Tilgjengelighet
 
-Som standard er `Accordion.Header` et `h1` element. Du må selv velge riktig overskriftsnivå for din side. Hvis `Accordion.Header` er en del av en større overskrift, kan du bruke `h2`, `h3` osv. for å opprettholde en logisk rekkefølge.
+Som standard er `Accordion.Heading` et `h1` element. Du må selv velge riktig overskriftsnivå for din side. Hvis `Accordion.Heading` er en del av en større overskrift, kan du bruke `h2`, `h3` osv. for å opprettholde en logisk rekkefølge.
 
 [`Chevron`](https://aksel.nav.no/ikoner/ChevronDown)-ikonet er bevisst plassert til venstre for teksten, av hensyn til brukerer med nedsatt synsfelt. Der er det lettere for brukeren å se det (fordi vi leser fra venstre). Mange brukere tror at de må peke på og velge ikonet for å åpne.
 
-Ikke plasser andre interaktive elementer inn i `Accordion`-header, da hele raden skal være klikkbar. Ikonet og teksten skal _ikke_ lenke til ulike handlinger (for eksempel at teksten går videre til en side, mens ikonet åpner listen). Brukerne forventer ikke at ikon og tekst skal gi ulikt resultat når de velger dem.
+Ikke plasser andre interaktive elementer inn i `Accordion`-heading, da hele raden skal være klikkbar. Ikonet og teksten skal _ikke_ lenke til ulike handlinger (for eksempel at teksten går videre til en side, mens ikonet åpner listen). Brukerne forventer ikke at ikon og tekst skal gi ulikt resultat når de velger dem.
 
 `Tab` : Flytter fokus til neste element som kan ha fokus \
 `Shift` + `Tab` : Flytter fokus til forrige element som kan ha fokus \
@@ -116,9 +116,9 @@ Ikke plasser andre interaktive elementer inn i `Accordion`-header, da hele raden
 
 <ArgTypes of={Accordion.Item} />
 
-### Accordion.Header
+### Accordion.Heading
 
-<ArgTypes of={Accordion.Header} />
+<ArgTypes of={Accordion.Heading} />
 
 ### Accordion.Content
 

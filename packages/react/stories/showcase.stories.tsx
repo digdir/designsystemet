@@ -355,14 +355,14 @@ export const Showcase: StoryFn = () => {
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup
+          <ToggleGroup.Root
             defaultValue='norway'
             size='sm'
           >
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup>
+          </ToggleGroup.Root>
           <Combobox
             description='Velg et sted'
             label='Hvor går reisen?'
@@ -383,7 +383,7 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs
+        <Tabs.Root
           defaultValue='value1'
           size='sm'
         >
@@ -392,7 +392,7 @@ export const Showcase: StoryFn = () => {
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
-        </Tabs>
+        </Tabs.Root>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link
@@ -428,14 +428,14 @@ export const Showcase: StoryFn = () => {
         >
           Ofte stillte spørsmål
         </Heading>
-        <Accordion
+        <Accordion.Root
           color='brand3'
           border
         >
           <Accordion.Item>
-            <Accordion.Header level={3}>
+            <Accordion.Heading level={3}>
               Hvem kan registrere seg i Frivillighetsregisteret?
-            </Accordion.Header>
+            </Accordion.Heading>
             <Accordion.Content>
               For å kunne bli registrert i Frivillighetsregisteret, må
               organisasjonen drive frivillig virksomhet. Det er bare foreninger,
@@ -445,9 +445,9 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Header level={3}>
+            <Accordion.Heading level={3}>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-            </Accordion.Header>
+            </Accordion.Heading>
             <Accordion.Content>
               Virksomheten må være registrert i Enhetsregisteret før den kan bli
               registrert i Frivillighetsregisteret. Du kan registrere i begge
@@ -455,16 +455,16 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Header level={3}>
+            <Accordion.Heading level={3}>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-            </Accordion.Header>
+            </Accordion.Heading>
             <Accordion.Content>
               Virksomheten må være registrert i Enhetsregisteret før den kan bli
               registrert i Frivillighetsregisteret. Du kan registrere i begge
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion>
+        </Accordion.Root>
       </div>
     </div>
   );

@@ -219,7 +219,7 @@ const TokenList = ({
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
           {showThemePicker && (
-            <DropdownMenu>
+            <DropdownMenu.Root>
               <DropdownMenu.Trigger variant='secondary'>
                 Brand: {capitalizeString(brand)}
               </DropdownMenu.Trigger>
@@ -237,10 +237,10 @@ const TokenList = ({
                   Brreg
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
-            </DropdownMenu>
+            </DropdownMenu.Root>
           )}
           {showModeSwitcher && (
-            <DropdownMenu>
+            <DropdownMenu.Root>
               <DropdownMenu.Trigger variant='secondary'>
                 Mode: {mode}
               </DropdownMenu.Trigger>
@@ -252,7 +252,7 @@ const TokenList = ({
                   Dark
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
-            </DropdownMenu>
+            </DropdownMenu.Root>
           )}
         </div>
       )}

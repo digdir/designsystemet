@@ -14,11 +14,11 @@ import { Tabs } from '.';
 
 export default {
   title: 'Komponenter/Tabs',
-  component: Tabs,
+  component: Tabs.Root,
 } as Meta;
 
-export const Preview: StoryFn<typeof Tabs> = (args) => (
-  <Tabs {...args}>
+export const Preview: StoryFn<typeof Tabs.Root> = (args) => (
+  <Tabs.Root {...args}>
     <Tabs.List>
       <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
       <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -27,7 +27,7 @@ export const Preview: StoryFn<typeof Tabs> = (args) => (
     <Tabs.Content value='value1'>content 1</Tabs.Content>
     <Tabs.Content value='value2'>content 2</Tabs.Content>
     <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs>
+  </Tabs.Root>
 );
 
 Preview.args = {
@@ -36,7 +36,7 @@ Preview.args = {
 };
 
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
-  <Tabs defaultValue='value1'>
+  <Tabs.Root defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
         <AirplaneIcon
@@ -60,7 +60,7 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
     <Tabs.Content value='value1'>content 1</Tabs.Content>
     <Tabs.Content value='value2'>content 2</Tabs.Content>
     <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs>
+  </Tabs.Root>
 );
 
 export const Controlled: StoryFn<typeof Tabs> = () => {
@@ -75,7 +75,7 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
         Choose Tab 3
       </Button>
       <br />
-      <Tabs
+      <Tabs.Root
         value={value}
         onChange={setValue}
       >
@@ -96,7 +96,7 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
         <Tabs.Content value='value1'>content 1</Tabs.Content>
         <Tabs.Content value='value2'>content 2</Tabs.Content>
         <Tabs.Content value='value3'>content 3</Tabs.Content>
-      </Tabs>
+      </Tabs.Root>
     </>
   );
 };

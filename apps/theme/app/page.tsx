@@ -139,7 +139,7 @@ export default function Home() {
    * @returns The color from the query or the default color
    */
   const getQueryColor = (colorType: ColorType, returnColor: CssColor) => {
-    const queryColor = params.get(colorType as ColorType);
+    const queryColor = params.get(colorType);
     if (queryColor && isHexColor(queryColor.substring(1))) {
       return queryColor as CssColor;
     } else {
@@ -211,7 +211,7 @@ export default function Home() {
    */
   const getColorError = (scale: ColorInfo[]) => {
     const contrast = areColorsContrasting(
-      scale[8].hex as CssColor,
+      scale[8].hex,
       '#ffffff',
       'decorative',
     );

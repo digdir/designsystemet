@@ -10,19 +10,19 @@ const TestComponent = ({
   ...rest
 }: Omit<AccordionItemProps, 'children'>): JSX.Element => {
   return (
-    <Accordion>
+    <Accordion.Root>
       <Accordion.Item {...rest}>
-        <Accordion.Header>Accordion Header Title Text</Accordion.Header>
+        <Accordion.Heading>Accordion Header Title Text</Accordion.Heading>
         <Accordion.Content>
           The fantastic accordion content text
         </Accordion.Content>
       </Accordion.Item>
-    </Accordion>
+    </Accordion.Root>
   );
 };
 
 describe('Accordion', () => {
-  test('accordion should have Header, Content and be closed by default', () => {
+  test('accordion should have heading, Content and be closed by default', () => {
     render(<TestComponent />);
     const accordionExpandButton = screen.getByRole('button');
 

@@ -2,7 +2,7 @@ import type { ReactNode, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
-export type AccordionProps = {
+export type AccordionRootProps = {
   /** Accordion background color
    * @default neutral
    */
@@ -13,7 +13,7 @@ export type AccordionProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
   ({ border = false, color = 'neutral', className, ...rest }, ref) => {
     return (
       <div
@@ -30,4 +30,4 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   },
 );
 
-Accordion.displayName = 'Accordion';
+AccordionRoot.displayName = 'AccordionRoot';

@@ -72,7 +72,7 @@ export const LinkCard: Story = (args) => (
         <Card.Media>
           <img
             src={cat5}
-            alt='katt 1'
+            alt=''
           />
         </Card.Media>
         <Card.Header>
@@ -107,7 +107,7 @@ export const LinkCard: Story = (args) => (
         <Card.Media>
           <img
             src={cat6}
-            alt='katt 2'
+            alt=''
           />
         </Card.Media>
         <Card.Header>
