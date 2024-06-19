@@ -26,204 +26,8 @@
 }
 
 
-.ds-font-weight-medium {
-    font-weight: 500;
-  }
-
-.ds-font-weight-semibold {
-    font-weight: 600;
-  }
-
-.ds-font-weight-regular {
-    font-weight: 400;
-  }
-
-  .ds-line-height-300 {
-    line-height: 1.3;
-  }
-
-  .ds-line-height-500 {
-    line-height: 1.5;
-  }
-
-  .ds-line-height-600 {
-    line-height: 1.6;
-  }
-
-  .ds-line-height-700 {
-    line-height: 1.7;
-  }
-
-  .ds-heading--2xl {
-    font-size: var(--ds-font-size-f7);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--xl {
-    font-size: var(--ds-font-size-f6);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--lg {
-    font-size: var(--ds-font-size-f5);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--md {
-    font-size: var(--ds-font-size-f4);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--sm {
-    font-size: var(--ds-font-size-f3);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--xs {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-heading--2xs {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-ingress--lg {
-    font-size: var(--ds-font-size-f4);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-ingress--md {
-    font-size: var(--ds-font-size-f3);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-ingress--sm {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-ingress--xs {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph--lg {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-500);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph--md {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-500);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph--sm {
-    font-size: var(--ds-font-size-f0);
-    line-height: var(--ds-line-height-500);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph--xs {
+  .ds-error_message--xs {
     font-size: var(--ds-font-size-f-1);
-    line-height: var(--ds-line-height-500);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-short--lg {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-short--md {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-short--sm {
-    font-size: var(--ds-font-size-f0);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-short--xs {
-    font-size: var(--ds-font-size-f-1);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-long--lg {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-long--md {
-    font-size: var(--ds-font-size-f0);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-long--sm {
-    font-size: var(--ds-font-size-f-1);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-paragraph-long--xs {
-    font-size: var(--ds-font-size-f-2);
-    line-height: var(--ds-line-height-700);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-label--lg {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-label--md {
-    font-size: var(--ds-font-size-f1);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-label--sm {
-    font-size: var(--ds-font-size-f0);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-label--xs {
-    font-size: var(--ds-font-size-f-1);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  .ds-error_message--lg {
-    font-size: var(--ds-font-size-f2);
-    line-height: var(--ds-line-height-300);
-    font-weight: var(--ds-font-weight-regular);
-  }
-
-  .ds-error_message--md {
-    font-size: var(--ds-font-size-f1);
     line-height: var(--ds-line-height-300);
     font-weight: var(--ds-font-weight-regular);
   }
@@ -234,9 +38,205 @@
     font-weight: var(--ds-font-weight-regular);
   }
 
-  .ds-error_message--xs {
+  .ds-error_message--md {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-error_message--lg {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-label--xs {
+    font-size: var(--ds-font-size-f-1);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-label--sm {
+    font-size: var(--ds-font-size-f0);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-label--md {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-label--lg {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-paragraph-long--xs {
+    font-size: var(--ds-font-size-f-2);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-long--sm {
+    font-size: var(--ds-font-size-f-1);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-long--md {
+    font-size: var(--ds-font-size-f0);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-long--lg {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-short--xs {
     font-size: var(--ds-font-size-f-1);
     line-height: var(--ds-line-height-300);
     font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-short--sm {
+    font-size: var(--ds-font-size-f0);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-short--md {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph-short--lg {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph--xs {
+    font-size: var(--ds-font-size-f-1);
+    line-height: var(--ds-line-height-500);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph--sm {
+    font-size: var(--ds-font-size-f0);
+    line-height: var(--ds-line-height-500);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph--md {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-500);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-paragraph--lg {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-500);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-ingress--xs {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-ingress--sm {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-ingress--md {
+    font-size: var(--ds-font-size-f3);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-ingress--lg {
+    font-size: var(--ds-font-size-f4);
+    line-height: var(--ds-line-height-700);
+    font-weight: var(--ds-font-weight-regular);
+  }
+
+  .ds-heading--2xs {
+    font-size: var(--ds-font-size-f1);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--xs {
+    font-size: var(--ds-font-size-f2);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--sm {
+    font-size: var(--ds-font-size-f3);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--md {
+    font-size: var(--ds-font-size-f4);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--lg {
+    font-size: var(--ds-font-size-f5);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--xl {
+    font-size: var(--ds-font-size-f6);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-heading--2xl {
+    font-size: var(--ds-font-size-f7);
+    line-height: var(--ds-line-height-300);
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  .ds-font-weight--medium {
+    font-weight: 500;
+  }
+
+  .ds-font-weight--semibold {
+    font-weight: 600;
+  }
+
+  .ds-font-weight--regular {
+    font-weight: 400;
+  }
+
+  .ds-line-height--300 {
+    line-height: 1.3;
+  }
+
+  .ds-line-height--500 {
+    line-height: 1.5;
+  }
+
+  .ds-line-height--600 {
+    line-height: 1.6;
+  }
+
+  .ds-line-height--700 {
+    line-height: 1.7;
   }
 }
