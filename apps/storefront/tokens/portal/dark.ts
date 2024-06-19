@@ -2345,8 +2345,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f7}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.11}",
+        letterSpacing: "{letter-spacing.1}"
       }
     },
     name: "--ds-typography-heading-2xl",
@@ -2368,8 +2369,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f6}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.10}",
+        letterSpacing: "{letter-spacing.1}"
       },
       description: "H1"
     },
@@ -2392,8 +2394,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f5}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.9}",
+        letterSpacing: "{letter-spacing.2}"
       },
       description: "H2"
     },
@@ -2416,8 +2419,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f4}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.8}",
+        letterSpacing: "{letter-spacing.3}"
       },
       description: "H3"
     },
@@ -2440,8 +2444,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f3}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.7}",
+        letterSpacing: "{letter-spacing.5}"
       },
       description: "H4"
     },
@@ -2464,8 +2469,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.6}"
       },
       description: "H5"
     },
@@ -2488,8 +2494,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.6}"
       },
       description: "H6"
     },
@@ -2511,8 +2518,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f4}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.8}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-ingress-lg",
@@ -2533,8 +2541,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f3}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.7}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-ingress-md",
@@ -2555,8 +2564,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-ingress-sm",
@@ -2577,8 +2587,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-ingress-xs",
@@ -2599,8 +2610,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.500}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-lg",
@@ -2621,8 +2633,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.500}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-md",
@@ -2643,8 +2656,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.500}",
-        fontSize: "{font-size.f0}"
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-paragraph-sm",
@@ -2665,8 +2679,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.500}",
-        fontSize: "{font-size.f-1}"
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-paragraph-xs",
@@ -2687,8 +2702,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-short-lg",
@@ -2710,8 +2726,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-short-md",
@@ -2733,8 +2750,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f0}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-paragraph-short-sm",
@@ -2756,8 +2774,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f-1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-paragraph-short-xs",
@@ -2779,8 +2798,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-long-lg",
@@ -2802,8 +2822,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f0}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-paragraph-long-md",
@@ -2825,8 +2846,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f-1}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-paragraph-long-sm",
@@ -2848,8 +2870,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.700}",
-        fontSize: "{font-size.f-2}"
+        lineHeight: "{line-height.lg}",
+        fontSize: "{font-size.2}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-paragraph-long-xs",
@@ -2871,8 +2894,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-label-lg",
@@ -2893,8 +2917,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-label-md",
@@ -2915,8 +2940,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f0}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-label-sm",
@@ -2937,8 +2963,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f-1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-label-xs",
@@ -2959,8 +2986,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f2}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-error_message-lg",
@@ -2981,8 +3009,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
       }
     },
     name: "--ds-typography-error_message-md",
@@ -3003,8 +3032,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f0}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
       }
     },
     name: "--ds-typography-error_message-sm",
@@ -3025,8 +3055,9 @@ export const  typography = [
       value: {
         fontFamily: "{font.main}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.300}",
-        fontSize: "{font-size.f-1}"
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
       }
     },
     name: "--ds-typography-error_message-xs",

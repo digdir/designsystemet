@@ -213,8 +213,10 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
             format: cssClassesTypography.name,
             filter: (token) => {
               return (
-                typeEquals(['typography', 'fontweights', 'fontfamilies', 'lineheights', 'fontsizes'], token) &&
-                !(token.path[0] || '').startsWith('theme')
+                typeEquals(
+                  ['typography', 'fontweights', 'fontfamilies', 'lineheights', 'fontsizes', 'letterSpacing'],
+                  token,
+                ) && !(token.path[0] || '').startsWith('theme')
               );
             },
           },

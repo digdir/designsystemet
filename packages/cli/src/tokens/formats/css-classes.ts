@@ -94,16 +94,19 @@ export const cssClassesTypography: Format = {
             const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
             const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
             const fontsize = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
+            const letterSpacing = R.find<TransformedToken>(R.curry(typeEquals)(['letterSpacing']))(references);
 
             const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
             const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
             const lineheightVar = lineheight ? getVariableName(format(lineheight)) : null;
+            const letterSpacingVar = letterSpacing ? getVariableName(format(letterSpacing)) : null;
 
             const className = `
   .${classSelector(token)} {
     ${fontSizeVar && `font-size: ${fontSizeVar};`}
     ${lineheightVar && `line-height: ${lineheightVar};`}
     ${fontWeightVar && `font-weight: ${fontWeightVar};`}
+    ${letterSpacingVar && `letter-spacing: ${letterSpacingVar};`}
   }`;
 
             return { ...acc, classes: [className, ...acc.classes] };
