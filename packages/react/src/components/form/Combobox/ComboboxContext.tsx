@@ -46,6 +46,7 @@ export type ComboboxContextType = {
   }) => void;
   listRef: UseListNavigationProps['listRef'];
   forwareddRef: React.Ref<HTMLInputElement>;
+  setListRef: (index: number, ref: HTMLElement | null) => void;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType | undefined>(

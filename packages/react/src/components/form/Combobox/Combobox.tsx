@@ -349,6 +349,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           chipSrLabel,
           listRef,
           forwareddRef,
+          setListRef: (index: number, node: HTMLElement | null) => {
+            listRef.current[index] = node;
+          },
         }}
       >
         <Box

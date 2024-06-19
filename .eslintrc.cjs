@@ -15,7 +15,7 @@ module.exports = {
     'plugin:storybook/recommended',
     'prettier',
   ],
-  plugins: ['import', 'react', 'jsx-a11y'],
+  plugins: ['import', 'react', 'jsx-a11y', 'react-compiler'],
   overrides: [
     {
       // Typescript
@@ -41,6 +41,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-exports': 'warn',
         '@typescript-eslint/consistent-type-imports': 'warn',
         'prefer-const': 'warn',
+        'react-compiler/react-compiler': 'warn',
       },
     },
     {
