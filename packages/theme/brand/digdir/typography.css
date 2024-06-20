@@ -4,7 +4,7 @@
 
 @layer ds.typography {
 :root {
-  --ds-font-main: Inter;
+  --ds-font-family: Inter;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
   --ds-font-weight-regular: 400;
