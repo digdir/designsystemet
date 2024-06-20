@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import {
