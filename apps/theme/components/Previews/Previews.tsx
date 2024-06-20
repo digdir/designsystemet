@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import cl from 'clsx/lite';
 import type { Mode } from '@digdir/designsystemet/color';
