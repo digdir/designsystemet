@@ -30,7 +30,8 @@ const bemify = R.pipe(
     const withPrefix = R.concat([prefix], R.remove(0, 0, filteredPath));
     const [rest, last] = R.splitAt(-1, withPrefix);
 
-    return `${rest.join('-')}--${R.head(last)}`;
+    const className = `${rest.join('-')}--${R.head(last)}`;
+    return className;
   },
   R.trim,
   R.toLower,
@@ -48,7 +49,7 @@ export const cssClassesTypography: Format = {
   name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { outputReferences } = options;
-    const { selector } = platform;
+    const { selector, typography } = platform;
 
     const header = await fileHeader({ file });
 
@@ -124,6 +125,6 @@ export const cssClassesTypography: Format = {
     const variables_ = `:root {\n${variables}\n}\n`;
     const content = selector ? `${selector} {\n${classes}\n}` : classes;
 
-    return header + `@layer ds.typography {\n${variables_}\n${content}\n}\n`;
+    return header + `@layer ds.base.typography.${typography} {\n${variables_}\n${content}\n}\n`;
   },
 };
