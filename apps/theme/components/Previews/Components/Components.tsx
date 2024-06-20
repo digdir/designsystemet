@@ -23,6 +23,7 @@ import {
   Tooltip,
   Chip,
   Textarea,
+  Fieldset,
 } from '@digdir/designsystemet-react';
 
 import classes from './Components.module.css';
@@ -266,6 +267,7 @@ export const Components = () => {
         <Radio.Group
           error=''
           legend='Hvilken iskremsmak er best?'
+          description='Velg din favorittsmak'
           size='sm'
           value={radioValue}
           onChange={(e: string) => setRadioValue(e)}
@@ -335,40 +337,21 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading
-          size='xs'
-          spacing
-        >
-          Innstillinger
-        </Heading>
-        <Paragraph
+        <Fieldset
+          legend='Instillinger'
+          description='Her kan du justere på innstillingene dine'
           size='sm'
-          spacing
         >
-          Her kan du justere på innstillingene dine
-        </Paragraph>
-        <div className={classes.switchGroup}>
-          <Switch
-            size='sm'
-            defaultChecked
-          >
-            TV-visning
-          </Switch>
+          <Switch defaultChecked>TV-visning</Switch>
           <Switch size='sm'>Desktopvisning</Switch>
           <Switch
-            size='sm'
             defaultChecked
             readOnly
           >
             Tabletvisning
           </Switch>
-          <Switch
-            size='sm'
-            disabled
-          >
-            Mobilvisning
-          </Switch>
-        </div>
+          <Switch disabled>Mobilvisning</Switch>
+        </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
         <Heading
