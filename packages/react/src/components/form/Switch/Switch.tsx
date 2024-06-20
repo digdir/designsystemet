@@ -62,7 +62,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           <Label
             className={cl(
               `ds-switch__label`,
-              'ds-font-weight--regular',
               position === 'right' && `ds-switch__label--right`,
             )}
             htmlFor={inputProps.id}

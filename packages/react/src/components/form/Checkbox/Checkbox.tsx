@@ -68,7 +68,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {children && (
             <>
               <Label
-                className={cl(`ds-checkbox__label`, 'ds-font-weight--regular')}
+                className={cl(`ds-checkbox__label`)}
                 htmlFor={inputProps.id}
                 size={size}
                 weight='regular'

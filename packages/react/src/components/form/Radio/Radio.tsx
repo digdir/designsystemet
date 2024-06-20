@@ -51,7 +51,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         {children && (
           <>
             <Label
-              className={cl('ds-radio__label', 'ds-font-weight--regular')}
+              className={cl('ds-radio__label')}
               htmlFor={inputProps.id}
               size={size}
               weight='regular'
