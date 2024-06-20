@@ -2,13 +2,23 @@
   "theme2": {
     "main": {
       "type": "fontFamilies",
-      "value": "Times New Roman"
+      "value": "IBM Plex Mono"
     },
-    "medium": {
+    "bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
       "type": "fontWeights",
       "value": "Regular"
     },
-    "semibold": {
+    "extra-bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
       "type": "fontWeights",
       "value": "Bold"
     },

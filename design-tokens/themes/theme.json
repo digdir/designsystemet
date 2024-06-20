@@ -313,11 +313,6 @@
   },
   "font": {
     "family": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "type": "fontFamilies",
       "value": "{theme.main}"
     }
@@ -325,11 +320,11 @@
   "font-weight": {
     "medium": {
       "type": "fontWeights",
-      "value": "{theme.medium}"
+      "value": "{theme.bold}"
     },
     "semibold": {
       "type": "fontWeights",
-      "value": "{theme.semibold}"
+      "value": "{theme.extra-bold}"
     },
     "regular": {
       "type": "fontWeights",

@@ -1,0 +1,30 @@
+{
+  "theme2": {
+    "main": {
+      "type": "fontFamilies",
+      "value": "Helvetica Neue"
+    },
+    "bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "Medium"
+    },
+    "extra-bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "Bold"
+    },
+    "regular": {
+      "type": "fontWeights",
+      "value": "Regular"
+    }
+  }
+}
