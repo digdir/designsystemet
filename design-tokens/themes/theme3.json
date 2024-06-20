@@ -313,27 +313,22 @@
   },
   "font": {
     "family": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "type": "fontFamilies",
-      "value": "{theme.main}"
+      "value": "{theme3.main}"
     }
   },
   "font-weight": {
     "medium": {
       "type": "fontWeights",
-      "value": "{theme.medium}"
+      "value": "{theme3.bold}"
     },
     "semibold": {
       "type": "fontWeights",
-      "value": "{theme.semibold}"
+      "value": "{theme3.extra-bold}"
     },
     "regular": {
       "type": "fontWeights",
-      "value": "{theme.regular}"
+      "value": "{theme3.regular}"
     }
   }
 }

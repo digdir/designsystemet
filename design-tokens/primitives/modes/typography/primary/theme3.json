@@ -1,14 +1,24 @@
 {
-  "theme": {
+  "theme3": {
     "main": {
       "type": "fontFamilies",
       "value": "Inter"
     },
-    "medium": {
+    "bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
       "type": "fontWeights",
       "value": "Medium"
     },
-    "semibold": {
+    "extra-bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
       "type": "fontWeights",
       "value": "Semi bold"
     },
