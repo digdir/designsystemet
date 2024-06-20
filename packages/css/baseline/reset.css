@@ -81,6 +81,7 @@
   select {
     font-family: inherit;
     font-size: inherit;
+    font-weight: inherit;
   }
 
   /* Make sure textareas without a rows attribute are not tiny */
