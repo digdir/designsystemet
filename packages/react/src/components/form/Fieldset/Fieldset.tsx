@@ -96,6 +96,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
                 id={descriptionId}
                 className={cl(
                   'ds-fieldset__description',
+                  'ds-font-weight--regular',
                   hideLegend && `ds-sr-only`,
                 )}
               >
