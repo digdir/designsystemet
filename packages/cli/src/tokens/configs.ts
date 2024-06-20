@@ -45,6 +45,7 @@ const dsTransformers = [
 ];
 
 const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
+const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
 
 const outputColorReferences = (token: TransformedToken) => {
   if (
@@ -243,8 +244,7 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
 
       const [mode, theme, semantic, fontSize, typography] = processThemeName(name);
 
-      const paritionPrimitives = /(?!.*global\.json).*primitives.*/;
-      const [source, include] = R.partition(R.test(paritionPrimitives), setsWithPaths);
+      const [source, include] = paritionPrimitives(setsWithPaths);
 
       const config_ = getConfig({
         outPath,
