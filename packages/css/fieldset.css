@@ -14,18 +14,19 @@
 
   .ds-fieldset__description {
     color: var(--ds-color-neutral-text-subtle);
+    margin-bottom: var(--ds-spacing-2);
   }
 
   .ds-fieldset__legend {
     display: contents;
   }
 
-  .ds-fieldset:not(:has(.ds-fieldset__description)) .ds-fieldset__legend {
-    margin-bottom: var(--ds-spacing-2);
-  }
-
   .ds-fieldset--readonly .ds-fieldset__legend__content {
     display: inline-flex;
+  }
+
+  .ds-fieldset:not(:has(.ds-fieldset__description)) .ds-fieldset__legend__content {
+    margin-bottom: var(--ds-spacing-4);
   }
 
   .ds-fieldset--readonly .ds-fieldset__readonly__icon {
