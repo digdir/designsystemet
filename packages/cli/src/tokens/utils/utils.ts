@@ -17,10 +17,17 @@ export const getType = (token: TransformedToken) => ((token.$type ?? token.type)
  */
 export const getValue = <T>(token: TransformedToken | DesignToken): T => (token.$value ?? token.value) as T;
 
-export const typeEquals = (types: string[] | string, token: TransformedToken) => {
+/**
+ * Check if token type matches provided type
+ * This function is curried
+ * @param types Type or array of types to check against
+ * @param token Transformed token
+ * @returns boolean
+ */
+export const typeEquals = R.curry((types: string[] | string, token: TransformedToken) => {
   if (R.isNil(token)) {
     return false;
   }
 
   return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
-};
+});
