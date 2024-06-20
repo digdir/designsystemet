@@ -210,7 +210,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
         files: [
           {
-            destination: `typography.css`,
+            destination: `typography/${typography}.css`,
             format: cssClassesTypography.name,
             filter: (token) => {
               return (
@@ -235,7 +235,7 @@ type getConfigs = (
   outPath: string,
   tokensDir: string,
   themes: Record<string, string[]>,
-) => { name: string; config: Config }[];
+) => { mode: string; theme: string; semantic: string; fontSize: string; typography: string; config: Config }[];
 
 export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
   Object.entries(themes)
@@ -261,6 +261,6 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
         include,
       };
 
-      return { name: `${theme}-${mode}`, config };
+      return { mode, theme, semantic, fontSize, typography, config };
     })
     .sort();
