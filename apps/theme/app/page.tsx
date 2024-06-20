@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -59,7 +57,7 @@ export default function Home() {
   const [themeMode, setThemeMode] = useState<Mode>('light');
   const [contrastMode, setContrastMode] = useState<ContrastMode>('aa');
 
-  const { replace } = useRouter();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
@@ -71,6 +69,7 @@ export default function Home() {
     if (theme) {
       setThemeMode(theme);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -101,6 +100,7 @@ export default function Home() {
     updateColor('brand1', queryBrand1, colors.brand1);
     updateColor('brand2', queryBrand2, colors.brand2);
     updateColor('brand3', queryBrand3, colors.brand3);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contrastMode]);
 
   useEffect(() => {
@@ -194,13 +194,13 @@ export default function Home() {
 
     if (color !== defaultColor[colorType]) {
       params.set(colorType, color);
-      replace(`${pathname}?${params.toString()}`, { scroll: false });
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
   };
 
   const themeQuerySetter = (themeMode: Mode) => {
     params.set('theme', themeMode);
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   /**
