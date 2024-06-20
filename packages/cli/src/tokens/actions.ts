@@ -4,7 +4,7 @@ import type { Action } from 'style-dictionary/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 
-const sortLightmodeFirst = R.sortWith([R.descend(R.includes('light'))]);
+const sortLightmodeFirst = R.sortWith([R.descend(R.includes('light')), R.descend(R.includes('secondary'))]);
 
 /**
  * Creates a CSS entry file that imports base CSS files for a theme
