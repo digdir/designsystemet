@@ -60,7 +60,7 @@ export const TableHeaderCell = React.forwardRef<
       >
         {sortable && (
           <button
-            className={cl(`ds-focus`, 'ds-font-weight--medium')}
+            className='ds-focus'
             onClick={onSortClick}
           >
             {children}
