@@ -898,10 +898,10 @@
       "color.brand3.13": "6c18cc4fd4e2df483bc72138e2e25e9278354907",
       "color.brand3.contrast-1": "845896e0ceaab8e747411b34c8ab2c89e8159ec1",
       "color.brand3.contrast-2": "5702a97f681bb47c3577b579b95514b863cbbfb7",
-      "font.main": "d3792e2633a3b10b22a96e88cad9d42981bf9a69",
       "font-weight.medium": "9478c247d6eedfe8729133f14275efd7893f1573",
       "font-weight.semibold": "579599f347e4ad144214f1b11db1e0c60b11e352",
-      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b"
+      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b",
+      "font.family": "d3792e2633a3b10b22a96e88cad9d42981bf9a69"
     },
     "group": "Theme"
   },
@@ -990,10 +990,10 @@
       "color.brand3.13": "6c18cc4fd4e2df483bc72138e2e25e9278354907",
       "color.brand3.contrast-1": "845896e0ceaab8e747411b34c8ab2c89e8159ec1",
       "color.brand3.contrast-2": "5702a97f681bb47c3577b579b95514b863cbbfb7",
-      "font.main": "d3792e2633a3b10b22a96e88cad9d42981bf9a69",
       "font-weight.medium": "9478c247d6eedfe8729133f14275efd7893f1573",
       "font-weight.semibold": "579599f347e4ad144214f1b11db1e0c60b11e352",
-      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b"
+      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b",
+      "font.family": "d3792e2633a3b10b22a96e88cad9d42981bf9a69"
     },
     "group": "Theme"
   },
@@ -1284,10 +1284,10 @@
       "color.brand3.13": "6c18cc4fd4e2df483bc72138e2e25e9278354907",
       "color.brand3.contrast-1": "845896e0ceaab8e747411b34c8ab2c89e8159ec1",
       "color.brand3.contrast-2": "5702a97f681bb47c3577b579b95514b863cbbfb7",
-      "font.main": "d3792e2633a3b10b22a96e88cad9d42981bf9a69",
       "font-weight.medium": "9478c247d6eedfe8729133f14275efd7893f1573",
       "font-weight.semibold": "579599f347e4ad144214f1b11db1e0c60b11e352",
-      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b"
+      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b",
+      "font.family": "d3792e2633a3b10b22a96e88cad9d42981bf9a69"
     },
     "group": "Theme"
   },
@@ -1715,10 +1715,10 @@
       "color.brand3.13": "6c18cc4fd4e2df483bc72138e2e25e9278354907",
       "color.brand3.contrast-1": "845896e0ceaab8e747411b34c8ab2c89e8159ec1",
       "color.brand3.contrast-2": "5702a97f681bb47c3577b579b95514b863cbbfb7",
-      "font.main": "d3792e2633a3b10b22a96e88cad9d42981bf9a69",
       "font-weight.medium": "9478c247d6eedfe8729133f14275efd7893f1573",
       "font-weight.semibold": "579599f347e4ad144214f1b11db1e0c60b11e352",
-      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b"
+      "font-weight.regular": "3296aa034f5208602a2f0bcfc76d1eeda762d42b",
+      "font.family": "d3792e2633a3b10b22a96e88cad9d42981bf9a69"
     },
     "group": "Theme"
   },
