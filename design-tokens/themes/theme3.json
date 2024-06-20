@@ -312,7 +312,12 @@
     }
   },
   "font": {
-    "main": {
+    "family": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
       "type": "fontFamilies",
       "value": "{theme.main}"
     }
