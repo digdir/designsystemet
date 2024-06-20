@@ -40,20 +40,14 @@ export async function run(options: Options): Promise<void> {
 
   const themes = permutateThemes(relevant$themes);
 
-  const semanticThemes = R.pickBy<Record<string, string[]>, Record<string, string[]>>(
-    (_, key) => R.startsWith('light', R.toLower(key)),
-    themes,
-  );
-
-  const colormodeThemes = R.pickBy<Record<string, string[]>, Record<string, string[]>>(
-    (_, key) => R.endsWith('default', R.toLower(key)),
-    themes,
-  );
+  const typographyThemes = R.filter((val) => val.mode === 'light', themes);
+  const colormodeThemes = R.filter((val) => val.typography === 'primary', themes);
+  const semanticThemes = R.filter((val) => val.mode === 'light' && val.typography === 'primary', themes);
 
   const colorModeConfigs = getConfigs(configs.colorModeVariables, tokensOutDir, tokensDir, colormodeThemes);
   const semanticConfigs = getConfigs(configs.semanticVariables, tokensOutDir, tokensDir, semanticThemes);
+  const typographyConfigs = getConfigs(configs.typographyCSS, tokensOutDir, tokensDir, typographyThemes);
   const storefrontConfigs = getConfigs(configs.typescriptTokens, storefrontOutDir, tokensDir, colormodeThemes);
-  const typographyConfigs = getConfigs(configs.typographyCSS, tokensOutDir, tokensDir, semanticThemes);
 
   if (typographyConfigs.length > 0) {
     console.log(`\n🍱 Building ${chalk.green('typography')}`);
@@ -73,8 +67,8 @@ export async function run(options: Options): Promise<void> {
     console.log(`\n🍱 Building ${chalk.green('semantic')}`);
 
     await Promise.all(
-      semanticConfigs.map(async ({ theme, config }) => {
-        console.log(`👷 Processing: ${theme}`);
+      semanticConfigs.map(async ({ theme, config, semantic }) => {
+        console.log(`👷 Processing: ${theme} - ${semantic}`);
 
         const typographyClasses = await sd.extend(config);
 
@@ -101,8 +95,8 @@ export async function run(options: Options): Promise<void> {
     console.log(`\n🍱 Building ${chalk.bgGreen('Storefront')}`);
 
     await Promise.all(
-      storefrontConfigs.map(async ({ theme, config }) => {
-        console.log(`👷 Processing: ${theme}`);
+      storefrontConfigs.map(async ({ theme, mode, config }) => {
+        console.log(`👷 Processing: ${theme} - ${mode}`);
 
         const storefrontSD = await sd.extend(config);
 

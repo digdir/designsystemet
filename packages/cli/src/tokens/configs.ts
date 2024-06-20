@@ -6,6 +6,7 @@ import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
+import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { cssVariables } from './formats/css-variables.js';
@@ -44,8 +45,9 @@ const dsTransformers = [
   'ts/shadow/css/shorthand',
 ];
 
-const processThemeName = R.pipe(R.replace(`${separator}semantic`, ''), R.toLower, R.split(separator));
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
+
+const hasUnknownProps = R.pipe(R.values, R.none(R.equals('unknown')), R.not);
 
 const outputColorReferences = (token: TransformedToken) => {
   if (
@@ -69,7 +71,7 @@ type GetConfig = (options: {
   mode?: string;
   theme?: string;
   semantic?: string;
-  fontSize?: string;
+  size?: string;
   typography?: string;
   outPath?: string;
 }) => Config;
@@ -234,15 +236,26 @@ type getConfigs = (
   getConfig: GetConfig,
   outPath: string,
   tokensDir: string,
-  themes: Record<string, string[]>,
-) => { mode: string; theme: string; semantic: string; fontSize: string; typography: string; config: Config }[];
+  themes: PermutatedThemes,
+) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
 
-export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
-  Object.entries(themes)
-    .map(([name, tokensets]) => {
-      const setsWithPaths = tokensets.map((x) => `${tokensDir}/${x}.json`);
+export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes) =>
+  permutatedThemes
+    .map((permutatedTheme) => {
+      const {
+        selectedTokenSets = [],
+        mode = 'unknown',
+        theme = 'unknown',
+        semantic = 'unknown',
+        size = 'unknown',
+        typography = 'unknown',
+      } = permutatedTheme;
 
-      const [mode, theme, semantic, fontSize, typography] = processThemeName(name);
+      if (hasUnknownProps(permutatedTheme)) {
+        throw Error(`Theme ${permutatedTheme.name} has unknown props: ${JSON.stringify(permutatedTheme)}`);
+      }
+
+      const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
       const [source, include] = paritionPrimitives(setsWithPaths);
 
@@ -251,7 +264,7 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
         theme,
         mode,
         semantic,
-        fontSize,
+        size,
         typography,
       });
 
@@ -261,6 +274,6 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, themes) =>
         include,
       };
 
-      return { mode, theme, semantic, fontSize, typography, config };
+      return { mode, theme, semantic, size, typography, config };
     })
     .sort();
