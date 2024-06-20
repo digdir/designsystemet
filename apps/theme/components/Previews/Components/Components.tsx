@@ -11,7 +11,6 @@ import {
   Search,
   NativeSelect,
   Pagination,
-  Divider,
   Card,
   Tag,
   Radio,
@@ -58,7 +57,6 @@ export const Components = () => {
           >
             Tre liter lettmelk
           </Checkbox>
-          <Divider />
           <Checkbox value='sms'>2kg smågodt</Checkbox>
           <Checkbox value='sms'>10 poser med Smash</Checkbox>
         </Checkbox.Group>
