@@ -37,8 +37,9 @@ const bemify = R.pipe(
 );
 
 const classSelector = R.pipe(R.prop('path'), bemify);
-const isTypography = R.curry(typeEquals)('typography');
-const sortTypographyLast = R.sortWith<TransformedToken>([R.ascend((token) => (isTypography(token) ? 1 : 0))]);
+const sortTypographyLast = R.sortWith<TransformedToken>([
+  R.ascend((token) => (typeEquals('typography')(token) ? 1 : 0)),
+]);
 
 /**
  * Creates CSS classes from typography tokens
@@ -91,10 +92,10 @@ export const cssClassesTypography: Format = {
 
           if (typeEquals('typography', token)) {
             const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
-            const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
-            const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
-            const fontsize = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
-            const letterSpacing = R.find<TransformedToken>(R.curry(typeEquals)(['letterSpacing']))(references);
+            const fontweight = R.find<TransformedToken>(typeEquals(['fontweights']))(references);
+            const lineheight = R.find<TransformedToken>(typeEquals(['lineheights']))(references);
+            const fontsize = R.find<TransformedToken>(typeEquals(['fontsizes']))(references);
+            const letterSpacing = R.find<TransformedToken>(typeEquals(['letterSpacing']))(references);
 
             const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
             const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
