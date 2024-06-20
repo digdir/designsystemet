@@ -2337,7 +2337,7 @@ export const  color = [
 export const  typography = [
   {
     type: "typography",
-    value: "500 3.75rem/1.3 'Roboto'",
+    value: "500 3.75rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2360,7 +2360,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 3rem/1.3 'Roboto'",
+    value: "500 3rem/1.3 'Helvetica Neue'",
     description: "H1",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2385,7 +2385,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 2.25rem/1.3 'Roboto'",
+    value: "500 2.25rem/1.3 'Helvetica Neue'",
     description: "H2",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2410,7 +2410,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.875rem/1.3 'Roboto'",
+    value: "500 1.875rem/1.3 'Helvetica Neue'",
     description: "H3",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2435,7 +2435,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.5rem/1.3 'Roboto'",
+    value: "500 1.5rem/1.3 'Helvetica Neue'",
     description: "H4",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2460,7 +2460,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.3125rem/1.3 'Roboto'",
+    value: "500 1.3125rem/1.3 'Helvetica Neue'",
     description: "H5",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2485,7 +2485,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.125rem/1.3 'Roboto'",
+    value: "500 1.125rem/1.3 'Helvetica Neue'",
     description: "H6",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
@@ -2510,7 +2510,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.875rem/1.7 'Roboto'",
+    value: "400 1.875rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2533,7 +2533,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.5rem/1.7 'Roboto'",
+    value: "400 1.5rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2556,7 +2556,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.7 'Roboto'",
+    value: "400 1.3125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2579,7 +2579,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.7 'Roboto'",
+    value: "400 1.125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2602,7 +2602,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.5 'Roboto'",
+    value: "400 1.3125rem/1.5 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2625,7 +2625,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.5 'Roboto'",
+    value: "400 1.125rem/1.5 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2648,7 +2648,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.5 'Roboto'",
+    value: "400 1rem/1.5 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2671,7 +2671,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.5 'Roboto'",
+    value: "400 0.875rem/1.5 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2694,7 +2694,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.3 'Roboto'",
+    value: "400 1.3125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2718,7 +2718,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.3 'Roboto'",
+    value: "400 1.125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2742,7 +2742,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.3 'Roboto'",
+    value: "400 1rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2766,7 +2766,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.3 'Roboto'",
+    value: "400 0.875rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2790,7 +2790,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.7 'Roboto'",
+    value: "400 1.125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2814,7 +2814,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.7 'Roboto'",
+    value: "400 1rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2838,7 +2838,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.7 'Roboto'",
+    value: "400 0.875rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2862,7 +2862,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.8125rem/1.7 'Roboto'",
+    value: "400 0.8125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2886,7 +2886,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.3125rem/1.3 'Roboto'",
+    value: "500 1.3125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2909,7 +2909,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1.125rem/1.3 'Roboto'",
+    value: "500 1.125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2932,7 +2932,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 1rem/1.3 'Roboto'",
+    value: "500 1rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2955,7 +2955,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "500 0.875rem/1.3 'Roboto'",
+    value: "500 0.875rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2978,7 +2978,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.3125rem/1.3 'Roboto'",
+    value: "400 1.3125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3001,7 +3001,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.3 'Roboto'",
+    value: "400 1.125rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3024,7 +3024,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.3 'Roboto'",
+    value: "400 1rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3047,7 +3047,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.3 'Roboto'",
+    value: "400 0.875rem/1.3 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {

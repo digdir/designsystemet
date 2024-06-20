@@ -1,4 +1,5 @@
 @import url('./portal/color-mode/light.css');
-@import url('./portal/color-mode/dark.css');
-@import url('./portal/typography.css');
+@import url('./portal/typography/secondary.css');
 @import url('./portal/semantic.css');
+@import url('./portal/color-mode/dark.css');
+@import url('./portal/typography/primary.css');
