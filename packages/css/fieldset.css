@@ -14,7 +14,7 @@
 
   .ds-fieldset__description {
     color: var(--ds-color-neutral-text-subtle);
-    font-weight: 400;
+    margin-bottom: var(--ds-spacing-2);
   }
 
   .ds-fieldset__legend {
@@ -23,6 +23,10 @@
 
   .ds-fieldset--readonly .ds-fieldset__legend__content {
     display: inline-flex;
+  }
+
+  .ds-fieldset:not(:has(.ds-fieldset__description)) .ds-fieldset__legend__content {
+    margin-bottom: var(--ds-spacing-4);
   }
 
   .ds-fieldset--readonly .ds-fieldset__readonly__icon {

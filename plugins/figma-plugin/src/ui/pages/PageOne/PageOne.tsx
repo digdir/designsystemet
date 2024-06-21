@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Heading,
   Paragraph,
@@ -7,7 +6,7 @@ import {
   Button,
   Link,
 } from '@digdir/designsystemet-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Toast } from '@ui/components/Toast/Toast';
 

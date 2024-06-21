@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
 import type React from 'react';
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { useEffect, useState, createElement } from 'react';
@@ -137,9 +136,9 @@ const ImageBanner = ({
               {buttons.map((item, index) => (
                 <Button
                   key={index}
-                  asChild
                   variant={item.variant ?? 'secondary'}
-                  color={item.color}
+                  color={item.color ?? 'accent'}
+                  asChild
                 >
                   <a
                     href={item.href}

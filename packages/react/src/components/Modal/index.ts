@@ -12,7 +12,7 @@ export type { ModalFooterProps } from './ModalFooter';
 export type { ModalDialogProps } from './ModalDialog';
 export type { ModalTriggerProps } from './ModalTrigger';
 
-type ModalComponent = typeof ModalDialog & {
+type ModalComponent = {
   Root: typeof ModalRoot;
   Content: typeof ModalContent;
   Footer: typeof ModalFooter;
@@ -21,7 +21,7 @@ type ModalComponent = typeof ModalDialog & {
   Dialog: typeof ModalDialog;
 };
 
-const Modal = ModalDialog as ModalComponent;
+const Modal = {} as ModalComponent;
 
 Modal.Root = ModalRoot;
 Modal.Content = ModalContent;

@@ -49,6 +49,7 @@ export const TableHeaderCell = React.forwardRef<
       <th
         className={cl(
           'ds-table__header__cell',
+          'ds-font-weight--medium',
           sortable && 'ds-table__header__cell--sortable',
           sort && `ds-table__header__cell--sorted`,
           className,
@@ -59,7 +60,7 @@ export const TableHeaderCell = React.forwardRef<
       >
         {sortable && (
           <button
-            className={`ds-focus`}
+            className='ds-focus'
             onClick={onSortClick}
           >
             {children}

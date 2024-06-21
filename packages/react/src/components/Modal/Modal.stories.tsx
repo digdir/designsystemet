@@ -1,11 +1,7 @@
 import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from '../Button';
-import { Textfield } from '../form/Textfield';
-import { Paragraph } from '../Typography';
-import { Divider } from '../Divider';
-import { Combobox } from '..';
+import { Combobox, Divider, Paragraph, Textfield, Button } from '..';
 
 import { Modal } from '.';
 
@@ -19,11 +15,11 @@ const decorators = [
 
 export default {
   title: 'Komponenter/Modal',
-  component: Modal,
+  component: Modal.Dialog,
   decorators,
 } as Meta;
 
-export const Preview: StoryFn<typeof Modal> = (args) => {
+export const Preview: StoryFn<typeof Modal.Dialog> = (args) => {
   return (
     <>
       <Modal.Root>
@@ -43,30 +39,32 @@ export const Preview: StoryFn<typeof Modal> = (args) => {
   );
 };
 
-export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
+export const WithoutTriggerComponent: StoryFn<typeof Modal.Dialog> = (args) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-      <Modal
-        {...args}
-        ref={modalRef}
-      >
-        <Modal.Header subtitle='Modal subtittel'>Modal header</Modal.Header>
-        <Modal.Content>
-          <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
-          </Paragraph>
-        </Modal.Content>
-        <Modal.Footer>Modal footer</Modal.Footer>
-      </Modal>
+      <Modal.Root>
+        <Modal.Dialog
+          {...args}
+          ref={modalRef}
+        >
+          <Modal.Header subtitle='Modal subtittel'>Modal header</Modal.Header>
+          <Modal.Content>
+            <Paragraph>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
+            </Paragraph>
+          </Modal.Content>
+          <Modal.Footer>Modal footer</Modal.Footer>
+        </Modal.Dialog>
+      </Modal.Root>
     </>
   );
 };
 
-export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
+export const CloseOnBackdropClick: StoryFn<typeof Modal.Dialog> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -91,7 +89,7 @@ export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const WithDivider: StoryFn<typeof Modal> = () => {
+export const WithDivider: StoryFn<typeof Modal.Dialog> = () => {
   return (
     <Modal.Root>
       <Modal.Trigger>Open Modal</Modal.Trigger>
@@ -110,7 +108,7 @@ export const WithDivider: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const ModalWithForm: StoryFn<typeof Modal> = () => {
+export const ModalWithForm: StoryFn<typeof Modal.Dialog> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [input, setInput] = useState('');
 
@@ -152,7 +150,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
+export const ModalWithMaxWidth: StoryFn<typeof Modal.Dialog> = () => {
   return (
     <>
       <Modal.Root>
@@ -172,7 +170,7 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const ModalWithSelect: StoryFn<typeof Modal> = () => {
+export const ModalWithSelect: StoryFn<typeof Modal.Dialog> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (

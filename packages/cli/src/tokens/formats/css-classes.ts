@@ -30,15 +30,17 @@ const bemify = R.pipe(
     const withPrefix = R.concat([prefix], R.remove(0, 0, filteredPath));
     const [rest, last] = R.splitAt(-1, withPrefix);
 
-    return `${rest.join('-')}--${R.head(last)}`;
+    const className = `${rest.join('-')}--${R.head(last)}`;
+    return className;
   },
   R.trim,
   R.toLower,
 );
 
 const classSelector = R.pipe(R.prop('path'), bemify);
-const isTypography = R.curry(typeEquals)('typography');
-const sortTypographyLast = R.sortWith<TransformedToken>([R.ascend((token) => (isTypography(token) ? 1 : 0))]);
+const sortTypographyLast = R.sortWith<TransformedToken>([
+  R.ascend((token) => (typeEquals('typography')(token) ? 1 : 0)),
+]);
 
 /**
  * Creates CSS classes from typography tokens
@@ -47,7 +49,7 @@ export const cssClassesTypography: Format = {
   name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { outputReferences } = options;
-    const { selector } = platform;
+    const { selector, typography } = platform;
 
     const header = await fileHeader({ file });
 
@@ -91,19 +93,22 @@ export const cssClassesTypography: Format = {
 
           if (typeEquals('typography', token)) {
             const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
-            const fontweight = R.find<TransformedToken>(R.curry(typeEquals)(['fontweights']))(references);
-            const lineheight = R.find<TransformedToken>(R.curry(typeEquals)(['lineheights']))(references);
-            const fontsize = R.find<TransformedToken>(R.curry(typeEquals)(['fontsizes']))(references);
+            const fontweight = R.find<TransformedToken>(typeEquals(['fontweights']))(references);
+            const lineheight = R.find<TransformedToken>(typeEquals(['lineheights']))(references);
+            const fontsize = R.find<TransformedToken>(typeEquals(['fontsizes']))(references);
+            const letterSpacing = R.find<TransformedToken>(typeEquals(['letterSpacing']))(references);
 
             const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
             const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
             const lineheightVar = lineheight ? getVariableName(format(lineheight)) : null;
+            const letterSpacingVar = letterSpacing ? getVariableName(format(letterSpacing)) : null;
 
             const className = `
   .${classSelector(token)} {
     ${fontSizeVar && `font-size: ${fontSizeVar};`}
     ${lineheightVar && `line-height: ${lineheightVar};`}
     ${fontWeightVar && `font-weight: ${fontWeightVar};`}
+    ${letterSpacingVar && `letter-spacing: ${letterSpacingVar};`}
   }`;
 
             return { ...acc, classes: [className, ...acc.classes] };
@@ -120,6 +125,6 @@ export const cssClassesTypography: Format = {
     const variables_ = `:root {\n${variables}\n}\n`;
     const content = selector ? `${selector} {\n${classes}\n}` : classes;
 
-    return header + `@layer ds.typography {\n${variables_}\n${content}\n}\n`;
+    return header + `@layer ds.base.typography.${typography} {\n${variables_}\n${content}\n}\n`;
   },
 };

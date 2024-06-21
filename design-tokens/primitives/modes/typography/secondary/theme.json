@@ -1,0 +1,30 @@
+{
+  "theme": {
+    "main": {
+      "type": "fontFamilies",
+      "value": "IBM Plex Mono"
+    },
+    "bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "Medium"
+    },
+    "extra-bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "SemiBold"
+    },
+    "regular": {
+      "type": "fontWeights",
+      "value": "Regular"
+    }
+  }
+}
