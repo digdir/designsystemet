@@ -1,7 +1,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
-import type { ChangeEvent } from 'react';
 import type {
   ColorError,
   ColorType,
@@ -20,10 +19,14 @@ type ThemeToolbarProps = {
   brand1Error: ColorError;
   brand2Error: ColorError;
   brand3Error: ColorError;
+  borderRadius: string;
   onColorChanged: (type: ColorType, color: CssColor) => void;
   onContrastModeChanged: (mode: 'aa' | 'aaa') => void;
+  onBorderRadiusChanged: (radius: string) => void;
   contrastMode: ContrastMode;
 };
+
+export const borderRadii = ['0', '0.25rem', '0.5rem', '0.75rem', '1rem'];
 
 export const ThemeToolbar = ({
   accentError,
@@ -31,8 +34,10 @@ export const ThemeToolbar = ({
   brand1Error,
   brand2Error,
   brand3Error,
+  borderRadius,
   onColorChanged,
   onContrastModeChanged,
+  onBorderRadiusChanged,
   contrastMode,
 }: ThemeToolbarProps) => {
   const accentTheme = useThemeStore((state) => state.accentTheme);
@@ -90,12 +95,30 @@ export const ThemeToolbar = ({
             size='md'
             className={classes.contrastSelect}
             value={contrastMode}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+            onChange={(e) => {
               onContrastModeChanged(e.target.value as 'aa' | 'aaa');
             }}
           >
             <option value='aa'>AA</option>
             <option value='aaa'>AAA (WIP)</option>
+          </NativeSelect>
+        </div>
+        <div className={classes.borderRadii}>
+          <NativeSelect
+            label='Border radius'
+            size='md'
+            className={classes.borderRadiiSelect}
+            value={borderRadius}
+            onChange={(e) => onBorderRadiusChanged(e.target.value)}
+          >
+            {borderRadii.map((radius) => (
+              <option
+                key={radius}
+                value={radius}
+              >
+                {radius}
+              </option>
+            ))}
           </NativeSelect>
         </div>
         <div className={classes.dropdown}>
