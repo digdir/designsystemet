@@ -14,7 +14,7 @@ Lister er strukturelementer, som gjør at vi kan utheve viktig informasjon for b
 
 ## Slik bruker du `List`
 
-Listen kan være både nummerert og unummerert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
 
 `List.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
 
@@ -33,17 +33,17 @@ import { List } from '@digdir/designsystemet-react';
 
 <br />
 
-### Unummerert liste
+### Usortert liste
 
-I unummererte lister bruker vi kulepunkter. Hensikten med en slik liste er å organisere informasjonen og fremheve viktige opplysninger. Her er ikke rekkefølgen skal utføre noe viktig, men vi må likevel passe på at vi presenterer det innholdet som er mest relevant først.
+I usorterte lister bruker vi kulepunkter. Hensikten med en slik liste er å organisere informasjonen og fremheve viktige opplysninger. Her er ikke rekkefølgen skal utføre noe viktig, men vi må likevel passe på at vi presenterer det innholdet som er mest relevant først.
 
-<Canvas of={ListStories.Unummerert} />
+<Canvas of={ListStories.Usortert} />
 
-### Nummert liste
+### Sortert liste
 
-En nummerert liste brukes når det er viktig at brukerne forstår grader av viktighet, et hendelsesforløp eller lignende. En nummerert liste egner seg f.eks. for de ulike trinnene i matlaging.
+En sortert liste brukes når det er viktig at brukerne forstår grader av viktighet, et hendelsesforløp eller lignende. En sortert liste egner seg f.eks. for de ulike trinnene i matlaging.
 
-<Canvas of={ListStories.Nummerert} />
+<Canvas of={ListStories.Sortert} />
 
 <br />
 

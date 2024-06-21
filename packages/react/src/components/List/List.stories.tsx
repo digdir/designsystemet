@@ -35,7 +35,7 @@ Preview.args = {
   size: 'md',
 };
 
-export const Nummerert: Story = (args) => (
+export const Sortert: Story = (args) => (
   <List.Root {...args}>
     <List.Heading>Slik gjør du</List.Heading>
     <List.Ordered>
@@ -56,7 +56,7 @@ export const Nummerert: Story = (args) => (
   </List.Root>
 );
 
-export const Unummerert: Story = (args) => (
+export const Usortert: Story = (args) => (
   <List.Root {...args}>
     <List.Heading level={2}>
       Foreningen har plikt til å ha revisor hvis de har
