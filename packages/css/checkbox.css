@@ -29,7 +29,7 @@
     cursor: pointer;
     box-shadow: inset 0 0 0 2px var(--dsc-checkbox-border-color);
     background: var(--dsc-checkbox-background);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(0.25rem, var(--ds-border-radius-md));
   }
 
   .ds-checkbox__input::before {
