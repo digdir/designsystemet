@@ -94,17 +94,48 @@ Passer ikke til å
 Alle elementer i en liste bør ha samme form og struktur.
 
 Når hvert punkt er en fortsettelse av innledningen til punktlisten, bruker vi
+
 - liten forbokstav i punktene
 - ikke kolon etter innledningen
 - ikke punktum eller komma til slutt på hvert punkt
 
 Når punktene er hele setninger, bruker vi
+
 - stor forbokstav i det første ordet
 - punktum til slutt på hvert punkt
 
 <br />
 
 ## Tilgjengelighet
+
+### `menu` istedenfor `ul`
+
+Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
+Begge element representerer en usortert liste, og nettlesere oppfatter disse likt.
+Forskjellen er at `ul` er for å vise element, og `menu` er til bruk for interaktive elementer.
+
+#### Eksempel på `menu`
+
+Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensjonen
+for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
+
+```tsx
+<List.Root>
+  <List.Unordered asChild>
+    <menu>
+      <List.item>
+        <Button>Copy</Button>
+      </List.item>
+      <List.item>
+        <Button>Cut</Button>
+      </List.item>
+      <List.item>
+        <Button>Paste</Button>
+      </List.item>
+    </menu>
+  </List.Unordered>
+</List.Root>
+```
 
 ### Liste eller tabell?
 
