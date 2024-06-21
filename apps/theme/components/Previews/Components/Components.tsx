@@ -131,7 +131,7 @@ export const Components = () => {
             label='Label'
             placeholder='Søk etter bruker...'
             size='sm'
-            variant='simple'
+            variant='primary'
             className={classes.tableSearch}
           />
         </div>

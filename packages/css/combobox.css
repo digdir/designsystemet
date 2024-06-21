@@ -16,6 +16,7 @@
     color: var(--ds-color-neutral-text-default);
     overflow-y: auto;
     z-index: 1600;
+    border-radius: min(1rem, var(--ds-border-radius-md));
   }
 
   .ds-combobox--readonly .ds-combobox__input {
@@ -111,7 +112,7 @@
     color: var(--ds-color-neutral-text-default);
     border: none;
     padding: 0;
-    border-radius: var(--ds-spacing-1);
+    border-radius: var(--ds-border-radius-sm);
     height: 29px;
     width: 29px;
     aspect-ratio: 1;
@@ -196,7 +197,7 @@
     padding-left: var(--ds-spacing-1);
     border: none;
     border-left: 5px solid transparent;
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     justify-content: start;
     background: none;
     text-align: left;
@@ -237,7 +238,7 @@
     width: var(--ds-spacing-6);
     aspect-ratio: 1 / 1;
     border: 2px solid var(--ds-color-neutral-border-default);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(0.25rem, var(--ds-border-radius-md));
     background-color: var(--ds-color-neutral-background-default);
     display: grid;
     place-items: center;

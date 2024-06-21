@@ -36,7 +36,7 @@
     appearance: none;
     padding: var(--ds-spacing-3);
     border: solid 1px var(--ds-color-neutral-border-default);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     resize: vertical;
     background: var(--ds-color-neutral-background-default);
     color: var(--ds-color-neutral-text-default);
