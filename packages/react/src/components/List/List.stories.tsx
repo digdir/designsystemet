@@ -122,7 +122,7 @@ export const Innrykk: Story = (args) => (
   </List.Root>
 );
 
-export const ListeMedLinker: Story = (args) => (
+export const ListeMedLenker: Story = (args) => (
   <List.Root {...args}>
     <List.Heading>Designsystemet</List.Heading>
     <List.Unordered
