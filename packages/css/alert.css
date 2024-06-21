@@ -1,7 +1,7 @@
 @layer ds.alert {
   .ds-alert {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
-    --dsc-alert-border-radius: var(--ds-border-radius-md);
+    --dsc-alert-border-radius: min(1rem, var(--ds-border-radius-md));
     --dsc-alert-color: var(--ds-color-neutral-text-default);
     --dsc-alert-icon-color: var(--ds-color-neutral-text-subtle);
     --dsc-alert-icon-size: var(--ds-sizing-7);

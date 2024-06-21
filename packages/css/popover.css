@@ -7,7 +7,7 @@
     background: var(--dsc-popover-background);
     padding: var(--ds-spacing-3);
     border: var(--dsc-popover-border);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     max-width: 300px;
   }
 

@@ -11,12 +11,12 @@
 
   .ds-skeleton--circle {
     width: 1.3em;
-    border-radius: 50%;
+    border-radius: var(--ds-border-radius-full);
   }
 
   .ds-skeleton--rectangle {
     width: 100%;
-    border-radius: 0.2em;
+    border-radius: min(1rem, var(--ds-border-radius-lg));
   }
 
   .ds-skeleton--text {
@@ -24,7 +24,7 @@
     height: auto;
     transform-origin: 0 55%;
     transform: scale(1, 0.6);
-    border-radius: 0.55em;
+    border-radius: var(--ds-border-radius-full);
   }
 
   .ds-skeleton--text:empty::before {
