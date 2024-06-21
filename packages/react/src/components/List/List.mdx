@@ -7,16 +7,16 @@ import * as ListStories from './List.stories';
 
 # List
 
-Liste brukes for å vise en liste med elementer. Listen kan inneholde både tekst, linker og ikoner.
+Lister er strukturelementer, som gjør at vi kan utheve viktig informasjon for brukerne, eller fortelle dem at de må gjøre noe i en bestemt rekkefølge.
 
 <Primary />
 <Controls />
 
 ## Slik bruker du `List`
 
-Lista kan være både ordnet og uordnet, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
 
-`List.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
+`List.Root` er påkrevd for å få riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
 
 ```tsx
 import { List } from '@digdir/designsystemet-react';
@@ -29,29 +29,125 @@ import { List } from '@digdir/designsystemet-react';
 </List.Root>;
 ```
 
-## Eksempler på bruk av `List`
+## Eksempler
 
-### Uten heading
+<br />
+
+### Usortert liste
+
+I usorterte lister bruker vi kulepunkter. Hensikten med en slik liste er å organisere informasjonen og fremheve viktige opplysninger. Her er skal ikke rekkefølgen utføre noe viktig, men vi må likevel passe på at vi presenterer det innholdet som er mest relevant først.
+
+<Canvas of={ListStories.Usortert} />
+
+### Sortert liste
+
+En sortert liste brukes når det er viktig at brukerne forstår grader av viktighet, et hendelsesforløp eller lignende. En sortert liste egner seg f.eks. for de ulike trinnene i matlaging.
+
+<Canvas of={ListStories.Sortert} />
+
+<br />
+
+### Uten overskrift
 
 Dersom du bruker `List.Heading` så legger vi automatisk på `aria-labelledby` på `List.Heading` og `List.Ordered/Unordered`
-for å gi skjermlesere beskjed om at `List.Heading` er en heading for `List`.
+for å gi skjermlesere beskjed om at `List.Heading` er en overskrift for `List`.
 
-Dersom du ikke legger til en heading kommer vi ikke til å legge til `aria-labelledby`.
+Dersom du ikke legger til en overskrift kommer vi ikke til å legge til `aria-labelledby`.
 
-<Canvas of={ListStories.WithoutHeading} />
+<Canvas of={ListStories.UtenOverskrift} />
 
-### Avansert
+### Lister i lister
 
-Du kan nøste lister så mye du vil, og stylingen vil tilpasse seg automatisk. Dette er browserens default styling.
+Vi kan legge en liste under et enkelt listepunkt når punktet inneholder tilleggsinformasjon som må deles opp videre. Før du bruker en underliste, vurder om dette er et hovedpunkt som kan stå for seg selv, eller om det er informasjon som passer best som underpunkt. Selvstendige punkter skal ikke ha en underliste.
 
-<Canvas of={ListStories.Advanced} />
+<Canvas of={ListStories.Innrykk} />
 
-### List of links
+### Liste med lenker
 
-`List` kan bli brukt til å lage en liste med linker, og i eksempelet under har vi skrudd av list-stylingen på `List.Unordered`.
+`List` kan bli brukt til å lage en liste med lenker, og i eksempelet under har vi skrudd av list-stylingen på `List.Unordered`.
 
-<Canvas of={ListStories.LinkList} />
+<Canvas of={ListStories.ListeMedLenker} />
 
-## `List.Heading`
+<br />
+
+## Retningslinjer for `List`
+
+Vi bruker lister til å strukturere innhold og utheve informasjon som er viktig for brukerne, eller fortelle dem at de må gjøre noe i en bestemt rekkefølge.
+
+Passer til å
+
+- gi brukerne rask oversikt over innhold i lengre tekster
+- liste opp kriterier
+
+<br />
+
+Passer ikke til å
+
+- vise brukerne lengre innhold
+- sammenligne flere grupper av informasjon
+
+<br />
+<br />
+
+## Tekst i komponenten
+
+Alle elementer i en liste bør ha samme form og struktur.
+
+Når hvert punkt er en fortsettelse av innledningen til punktlisten, bruker vi
+
+- liten forbokstav i punktene
+- ikke kolon etter innledningen
+- ikke punktum eller komma til slutt på hvert punkt
+
+Når punktene er hele setninger, bruker vi
+
+- stor forbokstav i det første ordet
+- punktum til slutt på hvert punkt
+
+<br />
+
+## Tilgjengelighet
+
+### `menu` istedenfor `ul`
+
+Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
+Begge element representerer en usortert liste, og nettlesere oppfatter disse likt.
+Forskjellen er at `menu` er tiltenkt interaktive elementer.
+
+#### Eksempel på `menu`
+
+Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensjonen
+for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
+
+```tsx
+<List.Root>
+  <List.Unordered asChild>
+    <menu>
+      <List.item>
+        <Button>Copy</Button>
+      </List.item>
+      <List.item>
+        <Button>Cut</Button>
+      </List.item>
+      <List.item>
+        <Button>Paste</Button>
+      </List.item>
+    </menu>
+  </List.Unordered>
+</List.Root>
+```
+
+### Liste eller tabell?
+
+Lister og tabeller har forskjellige bruksområder. Riktig bruk gjør opplevelsen tydelig for alle brukere, spesielt for de med kognitive vansker og læringsvansker, eller de som bruker skjermlesere.
+
+- En liste presenterer relatert informasjon på en oversiktlig måte.
+- En tabell lar brukeren se og sammenligne flere grupper av informasjon.
+
+<br />
+
+## Andre props
+
+### `List.Heading`
 
 <ArgTypes of={ListHeading} />
