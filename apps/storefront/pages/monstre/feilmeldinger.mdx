@@ -10,7 +10,7 @@ import { Contributors } from '@blog';
 import { MenuPageLayout } from '@layouts';
 
 <Meta
-  title='Feilmeldinger i skjema'
+  title='Feilmeldinger i skjema 2'
   description='Slik forteller du brukeren at noe har gått galt eller mangler i et skjema.'
 />
 
@@ -18,56 +18,27 @@ export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Brukerutløste feilmeldinger',
+      title: 'Brukerutløste feilmeldinger 2',
       date: '4. juni 2024',
     }}
   />
 );
 
-Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen tar for seg brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
+## Innledning
 
-## Vi skiller mellom systemgenererte meldinger, brukerutløste infomeldinger og feilmeldinger
+Feilmeldinger kan komme fra systemet eller være utløst av noe brukerne har gjort. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå å gi feilmeldinger, og hvordan kan vi hjelpe brukerne å komme seg videre når det likevel har oppstått en feil?
 
-### Systemgenererte meldinger
+Når brukerne har gjort en feil som hindrer dem i å komme videre, skal vi varsle dem om feilen slik at de kan rette opp:
 
-Systemgenererte meldinger, eller "systemvarsler", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
+- Beskriv problemet på en lettforståelig måte.
+- Forklar hva brukerne må gjøre for å komme videre.
+- Passe på at feilmeldingen er lett synlig.
 
-### Brukerutløste infomeldinger
+Feilmeldinger kan være knyttet til ett enkelt felt eller til flere. Vi viser en oppsummering av flere feil hvis brukeren forsøker å gå videre uten å ha fylt ut alt.
 
-Brukerutløste infomeldinger, eller "myke valideringer", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
+### Feilmeldinger på enkeltfelt
 
-<Accordion
-  color='neutral'
->
-  <Accordion.Item>
-    <Accordion.Header level={3}>Mer om brukerutløste infomeldinger</Accordion.Header>
-    <Accordion.Content
-    style={{
-    paddingTop: '0px',
-    paddingBottom: '0px',
-    maxWidth: '780px'
-  }}>
-      Brukerutløste infomeldinger, eller "myke valideringer", er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen. De gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
-
-Eksempler:
-
-- Du starter en bedrift og skal registrere navnet. Du får beskjeden “Bedriftsnavnet er allerede i bruk av noen andre. Du kan bruke det men det er ikke sikkert du vil finne ledig webdomene, og du kan risikere at ditt foretak vil bli forvekslet med et annet. ”
-- Du gjør et valg i skjemaet som fører til lengre behandlingstid for søknaden. Du får en infomelding om at "Ventetiden vil være 2-3 måneder lengre med alternativet du har valgt."
-
-</Accordion.Content>
-
-  </Accordion.Item>
-</Accordion>
-
-### Brukerutløste feilmeldinger
-
-Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
-
-Feilmeldinger kan være knyttet til et enkelt felt eller til flere felt. Vi har også oppsummering av flere feilmeldinger som vises dersom brukeren forsøker å gå videre uten å ha fylt ut alt.
-
-#### Feilmeldinger på enkeltfelter
-
-Alle skjemakomponenter skal kunne ha en feilmelding som kan plasseres nært feltet som feiler.
+Vi skal kunne vise feilmeldinger sammen med alle typer felt i et skjema. Meldingen skal stå nært feltet som feiler.
 
 <Image
   src='/img/errormessage-co-1.png'
@@ -75,28 +46,24 @@ Alle skjemakomponenter skal kunne ha en feilmelding som kan plasseres nært felt
   boxShadow={false}
 />
 
-#### Oppsummering av flere feilmeldinger
+### Oppsummering av flere feilmeldinger
 
-En oppsummering kan gjelde for én eller flere feil.
+En oppsummering kan gjelde for én eller flere feil. Hvis brukerne prøver å gå videre uten å ha fylt ut alt, eller de har gjort feil, oppsummerer vi like over Neste/Send inn-knappen.
 
-Generelt anbefaler vi at hvis brukerne prøver å gå videre uten å ha fylt ut alt, eller de har gjort feil, oppsummerer like over "Neste"/"Send inn"-knappen. Vi vil vise oppsummeringen i nærheten av "Neste"-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre.
+Vi anbefaler å vise oppsummeringen i nærheten av Neste-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre. I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, for eksempel hvis
 
-I noen tilfeller kan det være bedre å vise oppsummeringen i toppen:
+- den tekniske løsningen laster siden på nytt når brukerne velger Neste
+- brukerne har vært ute av et skjema og går inn igjen
+- løsningen ikke stopper brukerne fra å gå til neste side selv om de har feil på en side
 
-- Hvis den tekniske løsningen laster siden på nytt når brukerne prøver å trykke Neste.
-- Når brukeren har vært ute av et skjema og går inn igjen.
-- Når løsningen ikke stopper deg fra å gå videre til neste side selv om du har feil på en side.
-
-Det er altså løsningen eller tjenesten du lager, som bestemmer om du bør plassere oppsummeringen øverst på siden eller lenger nede, før knappen som tar brukerne videre. Det viktigste er at brukeren lett ser oppsummeringen.
-
-**Pass på at**
+Pass på at
 
 - oppsummeringen viser alle feilmeldingene som gjelder for siden eller trinnet
-- brukerne kan gå direkte til feilene de må rette og fokuset blir flyttet dit
-- lenkene i oppsummeringen stemmer med feilmeldingen de lenker til
-- hvis det er flere feil, så lenker du til den første feilen i rekken
+- brukerne kan gå direkte til feilene de må rette opp, og fokuset blir flyttet dit
+- lenkene i oppsummeringen stemmer med feilmeldingene de lenker til
+- du lenker til den første av flere feil
 - feilene forsvinner fra oppsummeringen etter hvert som brukerne fikser dem
-- teksten i en oppsummerende feilmelding skal ha med nøkkelord fra ledetekstene til feltene som har feil
+- feilmeldingen i oppsummeringen har med nøkkelord fra ledeteksten
 
 <Image
   src='/img/errormessage-co-3.png'
@@ -104,58 +71,81 @@ Det er altså løsningen eller tjenesten du lager, som bestemmer om du bør plas
   boxShadow={false}
 />
 
+### Det er best om vi kan unngå å gi feilmeldinger
+
+Når vi planlegger en løsning, bør målet være å hindre at det oppstår feil. Disse punktene kan hjelpe i planleggingen:
+
+- Gi all relevant informasjon før brukerne starter, i klart og tydelig språk.
+- Bruk ledetekster og beskrivelser for å hjelpe brukerne underveis.
+- Unngå hjelpetekster bak spørsmålstegn om du kan, men bruk dem om nødvendig.
+- Gi brukerne mulighet til å endre svar i felt eller gå tilbake.
+- La brukerne ta en pause i utfyllingen eller avbryte den.
+- Sørg for at feltene godtar ulik formatering, for eksempel for datoer og telefonnummer.
+- Legg inn en bestemt rekkefølge på svaralternativene, for å hindre at brukeren tar valg som fører til feil.
+- Vis informasjon om maks. antall tegn under ledeteksten hvis feltet har tegnbegrensning.
+
+### Ulike typer feilmeldinger
+
+#### Systemgenererte meldinger
+
+Vi bruker systemmeldinger, eller systemvarsler, for å varsle brukeren om feil i systemet eller gi dem viktig informasjon de bør få med seg. Vi har en [egen artikkel om systemvarsler](/monstre/systemvarsler).
+
+#### Infomeldinger til brukeren
+
+Infomeldinger som vises på grunn av noe brukerne gjør, stopper ikke brukerne fra å sende inn eller gå videre til neste steg.
+
+Vi viser infomeldinger når vi skal informere om konsekvenser av et valg. Slike meldinger kan vi for eksempel presentere i en alert av typen "info" eller "success". Disse meldingene vises etter at brukeren har oppgitt informasjon i et skjemafelt, og oppfører seg på samme måte som feilmeldinger.
+
+Eksempler:
+
+- Du starter en bedrift og skal registrere navnet. Du får beskjed om at bedriftsnavnet allerede er i bruk av noen andre. Du kan bruke navnet du har valgt, men du kan få problemer med domenenavn eller at foretaket ditt blir forvekslet med et annet.
+- Du gjør et valg i et søknadskjema som fører til lengre behandlingstid. Du får en infomelding om lengre ventetid.
+
 ## Språk
 
-### Hvordan kan vi unngå å gi feilmeldinger?
+### Skriv gode feilmeldinger
 
-Det er best om vi klarer å hindre at det oppstår feil. Slik kan vi gjøre det:
+Den viktigste jobben til en feilmelding er å hjelpe brukerne videre:
 
-- Gi all relevant informasjon på en tydelig måte før brukerne starter.
-- Feltene må godta ulik formatering, for eksempel for datoer og telefonnummer.
-- Gi brukerne mulighet til å endre svar i felter eller gå tilbake.
-- La brukerne ta en pause i utfyllingen eller avbryte den.
-- Bruk ledetekster og beskrivelser for å hjelpe brukerne på vei.
-- Suppler med hjelpetekster om nødvendig.
-- Legg inn en bestemt rekkefølge på svaralternativene, for å hindre at brukeren tar valg som fører til feil.
-- Hvis vi har tegnbegrensing i et felt, viser vi en teller og en beskrivelse under ledeteksten om maks. antall tegn.
+- Skriv vennlig, klart og tydelig.
+- Hold feilmeldingen så kort som mulig.
+- Vær konkret. Hvis vi skriver “Feltet er ikke fylt ut korrekt”, får brukeren ingen forklaring på hva som er feil.
+- Gjenta nøkkelord fra ledeteksten/feltnavnet så tidlig som mulig i feilmeldingen.
 
-### Slik skriver du en god feilmelding
+Noen tekniske løsninger gjør at vi kan ta inn feltnavnet som en variabel i feilmeldinger, da blir feltnavnet i ubestemt form, som i disse eksemplene:
 
-Den viktigste jobben til teksten i en feilmelding er å hjelpe brukerne videre:
+- “Postnummer må ha 4 siffer”
+- "Fødselsnummer må ha 11 siffer"
+- “Velg minst ett leveringsalternativ”
 
-- Skriv vennlig, klart og tydelig og hold feilmeldingen kort.
-- Vær konkret. Når du skriver “Feltet er ikke fylt ut korrekt”, får ikke brukeren noen forklaring på hva som er feil.
-- Gi spesifikk informasjon om hva som er problemet og gjenta nøkkelord fra ledeteksten.
-
-Eksempler på forklarende feilmeldinger:
-
-- “Postnummeret må ha 4 siffer”
-- "Fødselsnummeret må ha 11 siffer"
-- “Du må velge minst ett av leveringsalternativene”
-- “Kryss av i ruten for å bekrefte at navnet er riktig, før du sender inn skjemaet”
+Hvis løsningen ikke tar inn feltnavnet som variabel i feilmeldinger, anbefaler vi å skrive substantivet med bestemt form: Postnummeret må ha fire siffer.
 
 ## Design og opplevelse
 
 ### Utseendet på feilmeldinger
 
-Når et skjemafelt feiler er det viktig å fremheve feltet slik at det er lett for våre brukere å se hvor de har gjenstående oppgaver.
+Når det oppstår feil i et felt er det viktig at feltet blir godt synlig, slik at det er lett for brukerne å se hvor de må fylle ut eller rette opp noe.
 
 <Image
   src='/img/errormessage-design.png'
-  alt='2 skjemafelter, det første er i en vanlig tilstand og det andre er i en tilstand som viser feil på informasjonen som er fylt ut. Ved feltet som feiler blir de visuelle elementene som skiller det fra et vanlig felt fremhevet: Det er tykkere kant rundt feltet, det er farget rødt og det er en rød tekst med et tilhørende fareikon som beskriver feilen på feltet.'
+  alt='Et skjemafelt som viser feil på informasjonen som er fylt ut. På feltet blir de visuelle elementene som skiller det fra et vanlig felt fremhevet: Det er tykkere kant rundt feltet, det er farget rødt og det er en rød tekst med et tilhørende fareikon som beskriver feilen på feltet.'
   boxShadow={false}
 />
 
-Vi ønsker å fremheve felter som har valideringsfeil. For å få dette til bruker vi en kombinasjon av virkemidler.
+Når den tekniske løsningen sjekker for feil, det vi kaller validerer, ønsker vi å vise hvilke felt som har feil. Til det kan vi bruke flere virkemidler.
 
-**Visuelle endringer** <br />
-Legg selve feilmeldingsteksten nært feltet det gjelder. Vi bruker en rød varseltrekant med utropstegn som vises før teksten. Vi anbefaler å ha med et symbol fordi det kan være fint med en visuell indikator i tillegg til tekst. For de komponentene hvor det er mulig kan man også endre tykkelsen på selve komponenten som vist i eksempelet over.
+#### Visuelle endringer
 
-**Fargevalg** <br />
-Feltet og selve feilmeldingen farges rødt. Dette er et godt etablert mønster som hjelper med å skille feltet fra andre felter. Husk at feltet må ha 3:1 kontrast til bakgrunnsfargen. Om du også bruker rød tekst til feilmeldingen må den minst være 4.5:1. [Tilsynet for universell utforming av ikt's artikkel om kontraster](https://www.uutilsynet.no/veiledning/kontrast/48)
+Vis feilmeldingsteksten nært feltet det gjelder. Vi anbefaler å ha med et ikon som en visuell indikator i tillegg til tekst. For skjemakomponenter som tillater det, kan vi også endre tykkelsen på rammen rundt, som vist i eksempelet over.
 
-**Plassering av feilmelding** <br />
-Vi viser feilmeldingen under feltet med feil. Det kan være uheldig å plassere ny informasjon tidligere i flyten, og alle vil kanskje ikke få det med seg. Derfor bør feilmeldingen komme rett etterpå. Dette er også det vanligste mønsteret.
+#### Fargevalg
+
+Vi bruker rød som varselfarge for feil, det vi si at feltet og selve feilmeldingen blir røde. Dette er et godt etablert mønster, som hjelper med å skille feltet fra andre felt.  
+Feltet må ha 3:1 kontrast til bakgrunnsfargen. Hvis vi også bruker rød tekst til feilmeldingen, må den minst ha kontrasten 4.5:1.[Les mer om kontraster hos Tilsynet for universell utforming av IKT.](https://www.uutilsynet.no/veiledning/kontrast/48)
+
+#### Slik plasser vi en feilmelding
+
+Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret, selv om det også diskuteres om den skal stå mellom ledeteksten og feltet.
 
 <Card
   color='first'
@@ -166,34 +156,38 @@ Vi viser feilmeldingen under feltet med feil. Det kan være uheldig å plassere 
     paddingBottom: '0px'
   }}
   >
-    NB: Vi ønsker mer innsikt rundt plasseringen, og har en [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
+  Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plasseringen, og har [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 
   </Card.Content>
 </Card>
 
-### Validering og kryssvalidering
+### Når skal vi vise en feilmelding?
 
-Noen ganger vil ett eller flere felter og hvilke valg som tas i dem påvirke hverandre og resultere i feil som ikke vil være opplagt ut fra de enkelte feltene alene. For eksempel kan valg verdi i en radiogruppe gjøre et frivillig felt senere i utfyllingen påkrevd, eller et valg et sted kan gjøre at valg i et annet felt må være innenfor en viss verdi. Dette kalles kryssvalidering.
+Vi kan vise feilmeldinger når brukerne forlater feltet eller når de velger å gå videre eller sende inn. Vi unngår å vise feilmeldinger mens brukeren fyller ut et felt.
 
-For å gjøre det så tydelig som mulig for brukeren at et eller flere felter påvirker hverandre så kan det være lurt å informere om det med dynamisk hjelpetekst når et slikt valg er tatt.
+Når brukerne har gjort en feil når de fyller ut et felt og de går videre, viser vi feilmeldinger når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
 
-Så hva gjør vi når felter som grunnet slik kryssvalidering, har feil ikke står i nærheten av hverandre?
+Brukerne bør ikke få feilmelding for et tomt obligatorisk felt før de går til neste side eller sender inn skjemaet. Vi vet ikke alltid når brukeren er ferdig med å fylle ut feltene, så da venter vi til brukeren selv er klar til å gå videre. Det er spesielt viktig når brukere benytter tastaturet til å navigere i løsningen.
 
-- Merk alle feltene med feilmarkering og feilmelding.
-- Gjør det tydelig at det er en feil som skyldes kryssvalidering.
-- Gjengi verdiene fra andre felter i hver feilmelding.
-- Forklar hvilke forhold utløste feilen.
-- Gi veiledning i hvordan en kan rette feilen.
+### Kryssvalidering
 
-#### Feilmelding basert på inndata som gjelder flere felter
+Noen ganger vil det brukeren velger i ett eller flere felt påvirke felt som kommer senere i skjemaet. For eksempel kan et valg brukerne gjør i en radiogruppe, gjøre at et frivillig felt lenger ut i skjemaet blir obligatorisk. Et valg på ett sted kan også gjøre at et valg et annet sted må være innenfor en viss verdi. I slike tilfeller snakker vi om kryssvalidering.
 
-I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
+Her må vi gjøre det så tydelig som mulig for brukeren at flere felt påvirker hverandre:
+
+- Merk alle feltene visuelt og med feilmelding.
+- Forklar hva som utløste feilen. Vær tydelig på at feilen skyldes kryssvalidering.
+- Fortell brukerne hva de kan gjøre for å rette feilen.
+
+#### Feilmeldinger som gjelder flere felt
+
+I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
 <Accordion
   color='neutral'
 >
   <Accordion.Item>
-    <Accordion.Header level={3}>Eksempel på feilmelding over flere felter</Accordion.Header>
+    <Accordion.Header level={3}>Eksempel på feilmelding som gjelder flere felt</Accordion.Header>
     <Accordion.Content
     style={{
     paddingTop: '0px',
@@ -202,7 +196,7 @@ I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis 
   }}>
 <Image
   src='/img/errormessage-co-2.png'
-  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
+  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer skal inneholde 11 siffer.'
   boxShadow={false}
 />
 </Accordion.Content>
@@ -210,26 +204,11 @@ I dette eksempelet har vi en gruppe med felter, der brukeren ikke nødvendigvis 
   </Accordion.Item>
 </Accordion>
 
-### Når skal vi vise en feilmelding?
-
-Vi kan presentere feilmeldinger for brukerne når brukerne forlater feltet eller når de velger "Gå videre" eller "Send inn". Vi unngår å vise feilmeldinger mens brukeren fyller ut feltet.
-
-Når brukerne forlater et felt, viser vi feilmeldinger når vi kan se at brukeren ikke har fylt ut det vi forventer. Et eksempel kan være at de har lagt inn bokstaver i et fødselsnummer, eller at en e-postadresse mangler krøllalfa (@).
-
-Brukerne bør ikke få feilmelding for et obligatorisk felt før de prøver å gå til neste side eller sende inn skjemaet. Det samme gjelder om det er en feilmelding som baserer seg på input fra flere felter. Siden vi ikke vet når brukeren er ferdig med å fylle ut feltene, venter vi til brukeren selv er klar til å gå videre.
-Det er spesielt viktig når når brukere benytter tastaturet til å navigere i løsningen. Da virker det forstyrrende hvis det dukker opp feilmeldinger på felter brukeren ikke har fylt ut enda.
-
-[Artikkel om markerering av obligatoriske og valgfrie skjemafelt.](/monstre/obligatoriske-og-valgfrie-felt).
-
-#### Ikke deaktiver submit-knappen
-
-Vi bruker ikke deaktivert "Gå videre"/"Send inn"-knapp til å validere skjema. Noen brukere forstår ikke hvorfor knappen er deaktivert og kan bli forvirret. Brukere med nedsatt syn kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Hvis brukeren prøver å velge knappen mens det er feil i skjemaet, kan vi heller vise en oppsummerende feilmelding over "Gå videre"/"Send inn"-knappen.
-
 ## Kode
 
 ### Feilmeldinger og tilgjengelighet
 
-Det er flere WCAG-kriterier som er relevante når vi jobber med feilmeldinger. Vi har tatt hensyn til disse i arbeidet med mønsteret. Om du er interessert i å lese mer om disse, kan du lese tolkningene av WCAG-kravene hos Tilsynet for universell utforming av IKT.
+Det er flere WCAG-kriterier som gjelder for feilmeldinger. Vi har tatt hensyn til disse i arbeidet med denne artikkelen. Hvis du vil vite mer om det, kan du lese tolkningene av WCAG-kravene hos Tilsynet for universell utforming av IKT.
 
 **Relevante WCAG-krav:**
 
@@ -238,20 +217,24 @@ Det er flere WCAG-kriterier som er relevante når vi jobber med feilmeldinger. V
 - [1.4.3 Kontrast (minimum)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva-aa/95)
 - [1.4.11 kontrast for ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva-aa/145)
 
+### Ikke deaktiver submit-knappen
+
+Vi bruker ikke deaktivert Gå videre/Send inn-knapp til å validere skjema. Noen brukere forstår ikke hvorfor knappen er deaktivert og blir forvirret. Brukere med nedsatt syn kan slite med å finne knappen og tro at skjemaet har tekniske problemer. Hvis brukerne prøver å gå videre mens det fortsatt er feil i skjemaet, kan vi heller vise en oppsummerende feilmelding over Gå videre/Send inn-knappen.
+
 ### HTML og Aria
 
-For at alle brukere skal kunne oppfatte feilmeldinger er det viktig at forholdet mellom feilmelding og feltene de hører til er tydelig, også for dem som får tilgang til innhold med ulike hjelpemidler.
+For at alle brukere skal oppfatte feilmeldinger, er det viktig med et tydelig forhold mellom feilmeldingene og feltene de tilhører, også for dem som ser på innhold med ulike hjelpemidler.
 
 Vi kan bruke disse aria-attributtene og rollene:
 
-- Vi setter aria-invalid=”true” på felt med en feil, for å si fra om at det er en feil der.
-- Vi bruker aria-errormessage=”feilmeldingID” på felt med feil for å fortelle hvilket html-element som gir forklarende tekst til feilen. “feilmeldingID” står for den ID-en tilhører elementet med feilmeldingen.
+- Vi setter `aria-invalid=true` på felt med feil, for å si fra om at det er en feil der.
+- Vi bruker `aria-errormessage=feilmeldingID` på felt med feil for å fortelle hvilket html-element som gir forklarende tekst til feilen. FeilmeldingID er den ID-en som tilhører elementet med feilmeldingen.
 
-### Bruke automatiske beskjeder
+### Gi automatiske beskjeder
 
-Vi kan også utløse automatiske beskjeder når vi vil at brukeren skal få opplest viktig informasjon så snart som mulig. Det kan for eksempel være når det blir en stor visuell endring eller nytt innhold.
+Vi kan også gi automatiske beskjeder når vi vil at brukeren så snart som mulig skal få opplest viktig informasjon. Det kan for eksempel være når det blir en stor visuell endring eller nytt innhold.
 
-For feilmeldinger som dukker opp dynamisk må vi bruke aria-live for at meldingen skal bli lest opp av skjermlesere. Vær oppmerksom på om du setter aria-live til å være assertive eller polite. I de aller fleste tilfeller vil det være best å sette polite, for da venter den til skjermleseren er ferdig med å lese opp.
+For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldingen skal bli lest opp av skjermlesere. Pass godt på om du setter `aria-live` til å være `assertive` eller `polite`. I de fleste tilfeller er det best å bruke `polite`, for da venter skjermleseren med å lese opp feilmeldingen til den er ferdig med å lese opp innholdet.
 
 ## Kilder
 
