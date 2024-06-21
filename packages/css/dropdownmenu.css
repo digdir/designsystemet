@@ -5,7 +5,7 @@
     z-index: 1500;
     margin: 0;
     list-style: none;
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     box-shadow: var(--ds-shadow-md);
     background-color: var(--ds-color-neutral-background-default);
     border: 1px solid var(--ds-color-neutral-border-subtle);

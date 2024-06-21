@@ -4,7 +4,7 @@
     width: 100%;
     max-width: 650px;
     border: none;
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     box-shadow: var(--ds-shadow-xl);
     background-color: var(--ds-color-neutral-background-default);
     color: var(--ds-color-neutral-text-default);
