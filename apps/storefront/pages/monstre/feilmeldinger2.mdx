@@ -26,7 +26,7 @@ export default ({ children }) => (
 
 ## Innledning
 
-Feil som hindrer brukeren i å komme videre kan skyldes både [systemfeil](/monstre/systemvarsler) og brukerutløste feil. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå dem, og hvordan kan vi best mulig hjelpe brukerne å komme seg videre når en feil likevel har oppstått?
+Feilmeldinger kan komme fra systemet eller være utløst av noe brukerne har gjort. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå å gi feilmeldinger, og hvordan kan vi hjelpe brukerne å komme seg videre når det likevel har oppstått en feil?
 
 Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
 
@@ -48,9 +48,9 @@ En oppsummering kan gjelde for én eller flere feil. Hvis brukerne prøver å g�
 
 Vi anbefaler å vise oppsummeringen i nærheten av Neste-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre. I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, for eksempel hvis
 
-- Hvis den tekniske løsningen laster siden på nytt når brukerne prøver å trykke Neste.
-- Når brukeren har vært ute av et skjema og går inn igjen.
-- Når løsningen ikke stopper deg fra å gå videre til neste side selv om du har feil på en side.
+- hvis den tekniske løsningen laster siden på nytt når brukerne prøver å trykke Neste
+- når brukeren har vært ute av et skjema og går inn igjen
+- når løsningen ikke stopper deg fra å gå videre til neste side selv om du har feil på en side
 
 **Pass på at**
 
@@ -101,7 +101,7 @@ Brukerutløste infomeldinger, eller "myke valideringer", bruker vi til å gi bru
     paddingBottom: '0px',
     maxWidth: '780px'
   }}>
-      Brukerutløste infomeldinger, eller "myke valideringer", er meldinger som ikke stopper brukeren fra å sende inn eller gå videre til neste steg i prosessen. De gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
+      Brukerutløste infomeldinger gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
 
 Eksempler:
 
