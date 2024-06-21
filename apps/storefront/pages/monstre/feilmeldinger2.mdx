@@ -28,9 +28,9 @@ export default ({ children }) => (
 
 Feilmeldinger kan komme fra systemet eller være utløst av noe brukerne har gjort. Denne artikkelen handler om brukerutløste feilmeldinger i selvbetjeningsløsninger og skjema. Hvordan kan vi unngå å gi feilmeldinger, og hvordan kan vi hjelpe brukerne å komme seg videre når det likevel har oppstått en feil?
 
-Vi bruker feilmeldinger når brukerne har gjort en feil som hindrer dem i å komme videre. Da skal vi beskrive problemet i en feilmelding og forklare hva brukerne må gjøre for å komme videre. Feilmeldingen skal være lett å se og presist formulert.
+Når brukerne har gjort en feil som hindrer dem i å komme videre, skal vi varsle dem om feilen slik at de kan rette opp. Meldingen skal beskrive problemet og forklare hva brukerne må gjøre for å komme videre. Vi må passe på at feilmeldingen er lett synlig og enkel å forstå.
 
-Feilmeldinger kan være knyttet til et enkelt felt eller til flere felt. Vi har også oppsummering av flere feilmeldinger som vises dersom brukeren forsøker å gå videre uten å ha fylt ut alt.
+Feilmeldinger kan være knyttet til ett enkelt felt eller til flere. Vi viser en oppsummering av flere feil hvis brukeren forsøker å gå videre uten å ha fylt ut alt.
 
 ### Feilmeldinger på enkeltfelter
 
@@ -48,16 +48,16 @@ En oppsummering kan gjelde for én eller flere feil. Hvis brukerne prøver å g�
 
 Vi anbefaler å vise oppsummeringen i nærheten av Neste-knappen for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre. I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, for eksempel hvis
 
-- hvis den tekniske løsningen laster siden på nytt når brukerne prøver å trykke Neste
-- når brukeren har vært ute av et skjema og går inn igjen
-- når løsningen ikke stopper deg fra å gå videre til neste side selv om du har feil på en side
+- den tekniske løsningen laster siden på nytt når brukerne velger Neste
+- brukerne har vært ute av et skjema og går inn igjen
+- løsningen ikke stopper brukerne fra å gå neste side selv om de har feil på en side
 
-**Pass på at**
+Pass på at
 
 - oppsummeringen viser alle feilmeldingene som gjelder for siden eller trinnet
-- brukerne kan gå direkte til feilene de må rette og fokuset blir flyttet dit
-- lenkene i oppsummeringen stemmer med feilmeldingen de lenker til
-- hvis det er flere feil, så lenker du til den første feilen i rekken
+- brukerne kan gå direkte til feilene de må rette opp, og fokuset blir flyttet dit
+- lenkene i oppsummeringen stemmer med feilmeldingene de lenker til
+- du lenker du til den første av flere feil
 - feilene forsvinner fra oppsummeringen etter hvert som brukerne fikser dem
 - feilmeldingen i oppsummeringen har med nøkkelord fra ledeteksten
 
@@ -80,42 +80,26 @@ Når vi planlegger en løsning, bør målet være å hindre at det oppstår feil
 - Legg inn en bestemt rekkefølge på svaralternativene, for å hindre at brukeren tar valg som fører til feil.
 - Vis informasjon om maks. antall tegn under ledeteksten hvis feltet har det.
 
-### Andre typer meldinger
+### Ulike typer feilmeldinger
 
 #### Systemgenererte meldinger
 
-Systemgenererte meldinger, eller "systemvarsler", brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Det finnes en [egen artikkel om systemvarsler](/monstre/systemvarsler).
+Vi bruker systemmeldinger, eller systemvarsler, for å varsle brukeren om feil i systemet eller gi dem viktig informasjon de bør få med seg. Vi har en [egen artikkel om systemvarsler](/monstre/systemvarsler).
 
-#### Brukerutløste infomeldinger
+#### Infomeldinger til brukeren
 
-Brukerutløste infomeldinger, eller "myke valideringer", bruker vi til å gi brukeren informasjon, uten å stoppe dem fra å sende inn eller gå videre til neste steg.
+Infomeldinger som vises på grunn av noe brukerne gjør, stopper ikke brukerne fra å sende inn eller gå videre til neste steg.
 
-<Accordion
-  color='neutral'
->
-  <Accordion.Item>
-    <Accordion.Header level={3}>Mer om brukerutløste infomeldinger</Accordion.Header>
-    <Accordion.Content
-    style={{
-    paddingTop: '0px',
-    paddingBottom: '0px',
-    maxWidth: '780px'
-  }}>
-      Brukerutløste infomeldinger gir kun informasjon til brukeren. Slike meldinger kan for eksempel presenteres i en [alert](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs#informasjon) av typen "info" eller "success". Disse meldingene oppfører seg på samme måte som feilmeldinger og blir vist etter at brukeren har oppgitt informasjon i et skjemafelt. Vi kan bruke denne typen melding når vi skal informere om konsekvenser av et valg.
+Vi viser infomeldinger når vi skal informere om konsekvenser av et valg. Slike meldinger kan vi for eksempel presentere i en alert av typen "info" eller "success". Disse meldingene vises etter at brukeren har oppgitt informasjon i et skjemafelt, og oppfører seg på samme måte som feilmeldinger.
 
 Eksempler:
 
-- Du starter en bedrift og skal registrere navnet. Du får beskjeden “Bedriftsnavnet er allerede i bruk av noen andre. Du kan bruke det men det er ikke sikkert du vil finne ledig webdomene, og du kan risikere at ditt foretak vil bli forvekslet med et annet. ”
-- Du gjør et valg i skjemaet som fører til lengre behandlingstid for søknaden. Du får en infomelding om at "Ventetiden vil være 2-3 måneder lengre med alternativet du har valgt."
-
-</Accordion.Content>
-
-  </Accordion.Item>
-</Accordion>
+- Du starter en bedrift og skal registrere navnet. Du får beskjed om at bedriftsnavnet allerede er i bruk av noen andre. Du kan bruke navnet du har valgt, men du kan få problemer med domenenavn eller at foretaket ditt blir forvekslet med et annet.
+- Du gjør et valg i et søknadskjema som fører til lengre behandlingstid. Du får en infomelding om lengre ventetid.
 
 ## Språk
 
-### Slik skriver du en god feilmelding
+### Skriv gode feilmeldinger
 
 Den viktigste jobben til en feilmelding er å hjelpe brukerne videre:
 
@@ -130,7 +114,7 @@ Noen tekniske løsninger gjør at vi kan ta inn feltnavnet som en variabel i fei
 - "Fødselsnummer må ha 11 siffer"
 - “Velg minst ett leveringsalternativ”
 
-Hvis løsningen ikke tar inn feltnavnet som variabel i feilmeldinger, anbefaler vi å skrive substantivet med bestemt form: Postnummer<strong>et</strong> må ha fire siffer.
+Hvis løsningen ikke tar inn feltnavnet som variabel i feilmeldinger, anbefaler vi å skrive substantivet med bestemt form: Postnummeret må ha fire siffer.
 
 ## Design og opplevelse
 
@@ -152,8 +136,8 @@ Vis feilmeldingsteksten nært feltet det gjelder. Vi anbefaler å ha med et ikon
 
 #### Fargevalg
 
-Vi bruker rød som varselfarge for feil, det vi si at feltet og selve feilmeldingen blir røde. Dette er et godt etablert mønster, som hjelper med å skille feltet fra andre felt.
-Feltet må ha 3:1 kontrast til bakgrunnsfargen. Om du også bruker rød tekst til feilmeldingen må den minst være 4.5:1. [Tilsynet for universell utforming av ikt's artikkel om kontraster](https://www.uutilsynet.no/veiledning/kontrast/48)
+Vi bruker rød som varselfarge for feil, det vi si at feltet og selve feilmeldingen blir røde. Dette er et godt etablert mønster, som hjelper med å skille feltet fra andre felt.  
+Feltet må ha 3:1 kontrast til bakgrunnsfargen. Hvis vi også bruker rød tekst til feilmeldingen, må den minst ha kontrasten 4.5:1.[Tilsynet for universell utforming av ikt's artikkel om kontraster](https://www.uutilsynet.no/veiledning/kontrast/48)
 
 #### Plassering av feilmelding
 
@@ -168,7 +152,7 @@ Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret,
     paddingBottom: '0px'
   }}
   >
-   Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plasseringen, og har en [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
+  Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plasseringen, og har [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 
   </Card.Content>
 </Card>
@@ -235,18 +219,18 @@ Det er flere WCAG-kriterier som gjelder for feilmeldinger. Vi har tatt hensyn ti
 
 ### HTML og Aria
 
-For at alle brukere skal kunne oppfatte feilmeldinger er det viktig at forholdet mellom feilmelding og feltene de hører til er tydelig, også for dem som får tilgang til innhold med ulike hjelpemidler.
+For at alle brukere skal oppfatte feilmeldinger, er det viktig med et tydelig forhold mellom feilmeldingene og feltene de tilhører, også for dem som ser på innhold med ulike hjelpemidler.
 
 Vi kan bruke disse aria-attributtene og rollene:
 
-- Vi setter aria-invalid=”true” på felt med en feil, for å si fra om at det er en feil der.
-- Vi bruker aria-errormessage=”feilmeldingID” på felt med feil for å fortelle hvilket html-element som gir forklarende tekst til feilen. “feilmeldingID” står for den ID-en tilhører elementet med feilmeldingen.
+- Vi setter aria-invalid= true på felt med feil, for å si fra om at det er en feil der.
+- Vi bruker aria-errormessage=feilmeldingID på felt med feil for å fortelle hvilket html-element som gir forklarende tekst til feilen. FeilmeldingID er den ID-en som tilhører elementet med feilmeldingen.
 
-### Bruke automatiske beskjeder
+### Gi automatiske beskjeder
 
-Vi kan også utløse automatiske beskjeder når vi vil at brukeren skal få opplest viktig informasjon så snart som mulig. Det kan for eksempel være når det blir en stor visuell endring eller nytt innhold.
+Vi kan også gi automatiske beskjeder når vi vil at brukeren så snart som mulig skal få opplest viktig informasjon. Det kan for eksempel være når det blir en stor visuell endring eller nytt innhold.
 
-For feilmeldinger som dukker opp dynamisk må vi bruke aria-live for at meldingen skal bli lest opp av skjermlesere. Vær oppmerksom på om du setter aria-live til å være assertive eller polite. I de aller fleste tilfeller vil det være best å sette polite, for da venter den til skjermleseren er ferdig med å lese opp.
+For feilmeldinger som dukker opp dynamisk må vi bruke aria-live for at meldingen skal bli lest opp av skjermlesere. Pass godt på om du setter aria-live til å være assertive eller polite. I de fleste tilfeller er det best å bruke polite, for da venter skjermleseren med å lese opp feilmeldingen til den er ferdig med å lese opp innholdet.
 
 ## Kilder
 
