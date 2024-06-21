@@ -54,7 +54,7 @@
   .ds-link:active {
     color: var(--dsc-link-color-active);
     background: var(--dsc-link-color-active-background);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(0.25rem, var(--ds-border-radius-md));
     outline: none;
   }
 }

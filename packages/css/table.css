@@ -1,7 +1,7 @@
 @layer ds.table {
   .ds-table {
     --dsc-table-padding: 0;
-    --dsc-table-border-radius: var(--ds-border-radius-md);
+    --dsc-table-border-radius: min(1rem, var(--ds-border-radius-md));
 
     position: relative;
     border-collapse: separate;

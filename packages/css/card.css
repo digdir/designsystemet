@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
     color: var(--dsc-card-color);
-    border-radius: var(--ds-border-radius-md);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     border: 1px solid var(--dsc-card-border-color);
     background: var(--dsc-card-backround);
   }
