@@ -1,0 +1,55 @@
+.colorCard {
+  background-color: var(--brand1-3);
+  width: 270px;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.colorCardTwo {
+  background-color: var(--brand2-3);
+}
+
+.colorCardThree {
+  background-color: var(--brand3-3);
+}
+
+.colorCardIcon {
+  background-color: var(--brand1-5);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brandOne12);
+}
+
+.colorCardIconTwo {
+  background-color: var(--brand2-5);
+  color: var(--brand2-12);
+}
+
+.colorCardIconThree {
+  background-color: var(--brand3-5);
+  color: var(--brand3-12);
+}
+
+.colorCardTitle {
+  color: var(--brand1-12);
+  margin-bottom: 8px;
+}
+
+.colorCardDesc {
+  color: var(--brand1-12);
+}
+
+.textTwo .colorCardTitle,
+.textTwo .colorCardDesc {
+  color: var(--brand2-12) !important;
+}
+
+.textThree .colorCardTitle,
+.textThree .colorCardDesc {
+  color: var(--brand3-12) !important;
+}

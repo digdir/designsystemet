@@ -1,3 +1,4 @@
+'use client';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import cl from 'clsx';
@@ -24,11 +25,12 @@ type TokenListProps = {
   type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
   token?: string;
   showThemePicker?: boolean;
+  showModeSwitcher: boolean;
   hideValue?: boolean;
 };
 
 type CardColumnType = 2 | 3;
-type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
+type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'portal';
 
 type TokenTableProps = {
   tokens: [string, Token[]][];
@@ -85,7 +87,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
     return (
       <div key={group}>
         <Heading
-          size='xsmall'
+          size='xs'
           level={4}
           className={classes.title}
         >
@@ -138,7 +140,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       <div className={classes.textContainer}>
         <Heading
           level={5}
-          size='xxsmall'
+          size='2xs'
           className={classes.name}
         >
           {capitalizeString(title)}
@@ -170,10 +172,12 @@ const mapTokens = (tokens: Token[]): [string, Token[]][] =>
 
 const TokenList = ({
   showThemePicker,
+  showModeSwitcher,
   type = 'color',
   hideValue = false,
 }: TokenListProps) => {
   const [brand, setBrand] = useState<BrandType>('digdir');
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
   const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
 
   useEffect(() => {
@@ -198,7 +202,10 @@ const TokenList = ({
   );
 
   return (
-    <div className={classes.tokens}>
+    <div
+      className={classes.tokens}
+      data-ds-color-mode={mode}
+    >
       <div className={classes.package}>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
           <img
@@ -207,29 +214,46 @@ const TokenList = ({
             className={classes.npmShield}
           />
         </Link>
-        <Paragraph size='small'>@digdir/designsystemet-theme</Paragraph>
+        <Paragraph size='sm'>@digdir/designsystemet-theme</Paragraph>
       </div>
-      {showThemePicker && (
+      {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
-          <DropdownMenu>
-            <DropdownMenu.Trigger variant='secondary'>
-              Brand: {capitalizeString(brand)}
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-              <DropdownMenu.Item onClick={() => setBrand('digdir')}>
-                Digdir
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('altinn')}>
-                Altinn
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
-                Tilsynet
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('brreg')}>
-                Brreg
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
+          {showThemePicker && (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger variant='secondary'>
+                Brand: {capitalizeString(brand)}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Item onClick={() => setBrand('digdir')}>
+                  Digdir
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('altinn')}>
+                  Altinn
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
+                  Tilsynet
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('portal')}>
+                  Brreg
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          )}
+          {showModeSwitcher && (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger variant='secondary'>
+                Mode: {mode}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Item onClick={() => setMode('light')}>
+                  Light
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setMode('dark')}>
+                  Dark
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          )}
         </div>
       )}
       <>

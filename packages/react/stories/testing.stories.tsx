@@ -14,6 +14,19 @@ import {
 
 export default {
   title: 'Testing',
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          background: 'var(--ds-color-neutral-background-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const MediumRow: StoryFn<{
@@ -25,7 +38,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
         }}
@@ -53,7 +66,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           alignItems: 'flex-start',
           flexDirection: direction,

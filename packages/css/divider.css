@@ -1,18 +1,19 @@
-@layer fds.divider {
-  .fds-divider {
+@layer ds.divider {
+  .ds-divider {
     border: none;
     border-top: 1px solid;
+    width: 100%;
   }
 
-  .fds-divider--default {
-    border-color: var(--fds-semantic-border-divider-default);
+  .ds-divider--default {
+    border-color: var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-divider--strong {
-    border-color: var(--fds-semantic-border-divider-strong);
+  .ds-divider--strong {
+    border-color: var(--ds-color-neutral-border-default);
   }
 
-  .fds-divider--subtle {
-    border-color: var(--fds-semantic-border-divider-subtle);
+  .ds-divider--subtle {
+    border-color: var(--ds-color-neutral-border-subtle);
   }
 }

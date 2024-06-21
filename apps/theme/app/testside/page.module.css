@@ -1,0 +1,119 @@
+.page {
+  margin-bottom: 100px;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.column {
+  background-color: white;
+  width: 33.33%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  flex-basis: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.pageTitle {
+  font-weight: 500;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: inherit;
+}
+
+.sectionTitle {
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.sectionDesc {
+  margin-bottom: 32px;
+  margin-top: -12px;
+}
+
+.box {
+  border-radius: 4px;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  width: 100%;
+}
+
+.mainTitle {
+  color: black;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.test {
+  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.color {
+  padding: 10px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.name {
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.whiteText {
+  color: white;
+}
+
+.dotMeaning {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.dotMeaningItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dotMeadingTitle {
+  font-weight: 500;
+}
+
+.dotMeaningDot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.dotMeaningDotOrange {
+  background-color: #ffa200;
+}
+
+.dotMeaningDotRed {
+  background-color: red;
+}

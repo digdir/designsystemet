@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import cl from 'clsx';
@@ -34,14 +35,14 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
   };
 
   return (
-    <div className={classes.sidebar}>
+    <div>
       {activeIndex >= 0 && (
         <>
           <Button
             className={classes.toggleBtn}
             fullWidth
-            size='medium'
-            color='second'
+            size='md'
+            color='neutral'
             variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
@@ -50,7 +51,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
           </Button>
 
           <div className={cl(classes.menu, { [classes.activeMenu]: showMenu })}>
-            <h3 className={classes.title}>
+            <h3 className={cl(classes.title, 'ds-paragraph--md')}>
               {SiteConfig.menu[activeIndex].name}
             </h3>
             <ul className={classes.list}>
@@ -64,7 +65,11 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                   >
                     {item.children && (
                       <>
-                        <div className={classes.innerTitle}>{item.name}</div>
+                        <div
+                          className={cl(classes.innerTitle, 'ds-paragraph--md')}
+                        >
+                          {item.name}
+                        </div>
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
@@ -75,12 +80,12 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}
-                                  className={cl(classes.link, {
-                                    [classes.linkActive]: isItemActive(
-                                      item2.url,
-                                      routerPath,
-                                    ),
-                                  })}
+                                  className={cl(
+                                    classes.link,
+                                    isItemActive(item2.url, routerPath) &&
+                                      classes.linkActive,
+                                    'ds-paragraph--sm',
+                                  )}
                                 >
                                   {item2.name}
                                 </Link>
@@ -94,12 +99,13 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                       <Link
                         href={'/' + item.url}
                         prefetch={false}
-                        className={cl(classes.link, classes.linkCompact, {
-                          [classes.linkActive]: isItemActive(
-                            item.url,
-                            routerPath,
-                          ),
-                        })}
+                        className={cl(
+                          classes.link,
+                          classes.linkCompact,
+                          isItemActive(item.url, routerPath) &&
+                            classes.linkActive,
+                          'ds-paragraph--sm',
+                        )}
                       >
                         {item.name}
                       </Link>

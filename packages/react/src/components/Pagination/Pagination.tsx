@@ -3,8 +3,6 @@ import type * as React from 'react';
 import cl from 'clsx/lite';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { getSize } from '../../utilities/getSize';
-
 import { PaginationRoot } from './PaginationRoot';
 import { PaginationContent } from './PaginationContent';
 import { PaginationItem } from './PaginationItem';
@@ -13,8 +11,6 @@ import { PaginationEllipsis } from './PaginationEllipsis';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import { usePagination } from './usePagination';
 
-type OldPaginationSizes = 'small' | 'medium' | 'large';
-
 export type PaginationProps = {
   /** Sets the text label for the next page button */
   nextLabel: string;
@@ -22,9 +18,8 @@ export type PaginationProps = {
   previousLabel: string;
   /** Sets the size of the component
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldPaginationSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Sets how compact the component will be. If true, only 5 steps will show. */
   compact?: boolean;
   /** Hides the component's previous and next button labels */
@@ -56,6 +51,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       hideLabels = false,
       currentPage = 1,
       totalPages,
+      size = 'md',
       onChange,
       itemLabel = (num) => `Side ${num}`,
       ...rest
@@ -68,8 +64,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       totalPages,
     });
 
-    const size = getSize(rest.size || 'md') as 'sm' | 'md' | 'lg';
-
     return (
       <PaginationRoot
         ref={ref}
@@ -81,7 +75,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              className={cl(!showPreviousPage && 'fds-pagination--hidden')}
+              className={cl(!showPreviousPage && 'ds-pagination--hidden')}
               onClick={() => {
                 onChange(currentPage - 1);
               }}
@@ -118,7 +112,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               onClick={() => {
                 onChange(currentPage + 1);
               }}
-              className={cl(!showNextPage && 'fds-pagination--hidden')}
+              className={cl(!showNextPage && 'ds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
               <ChevronRightIcon

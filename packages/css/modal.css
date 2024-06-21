@@ -1,35 +1,37 @@
-@layer fds.modal {
-  .fds-modal {
+@layer ds.modal {
+  .ds-modal {
     padding: 0;
     width: 100%;
     max-width: 650px;
     border: none;
-    border-radius: var(--fds-border_radius-medium);
-    box-shadow: var(--fds-shadow-xlarge);
+    border-radius: var(--ds-border-radius-md);
+    box-shadow: var(--ds-shadow-xl);
+    background-color: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-modal::backdrop {
+  .ds-modal::backdrop {
     background-color: rgb(0 0 0 / 0.5);
     animation: fade-in 300ms ease-in-out;
   }
 
-  .fds-modal[open] {
+  .ds-modal[open] {
     animation:
       slide-in 300ms ease-in-out,
       fade-in 300ms ease-in-out;
   }
 
-  .fds-modal > hr {
-    margin: var(--fds-spacing-3) 0 !important;
-    border-color: var(--fds-semantic-border-divider-subtle);
+  .ds-modal > hr {
+    margin: var(--ds-spacing-3) 0 !important;
+    border-color: var(--ds-color-neutral-border-subtle);
   }
 
-  .fds-modal--lock-scroll {
+  .ds-modal--lock-scroll {
     overflow: hidden;
   }
 
   @media (max-width: 650px) {
-    .fds-modal {
+    .ds-modal {
       min-width: 100%;
       max-width: 100%;
       border-radius: 0;
@@ -37,11 +39,11 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fds-modal[open] {
+    .ds-modal[open] {
       animation: none;
     }
 
-    .fds-modal::backdrop {
+    .ds-modal::backdrop {
       animation: none;
     }
   }
@@ -66,40 +68,40 @@
     }
   }
 
-  .fds-modal__header {
+  .ds-modal__header {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding-top: var(--fds-spacing-6);
-    padding-bottom: var(--fds-spacing-2);
-    padding-left: var(--fds-spacing-6);
-    padding-right: var(--fds-spacing-18);
-    gap: var(--fds-spacing-1);
-    color: var(--fds-semantic-text-neutral-default);
+    padding-top: var(--ds-spacing-6);
+    padding-bottom: var(--ds-spacing-2);
+    padding-left: var(--ds-spacing-6);
+    padding-right: var(--ds-spacing-18);
+    gap: var(--ds-spacing-1);
+    color: var(--ds-color-neutral-text-default);
   }
 
-  .fds-modal__header--no-button {
-    padding-right: var(--fds-spacing-6);
+  .ds-modal__header--no-button {
+    padding-right: var(--ds-spacing-6);
   }
 
-  .fds-modal__header__button {
+  .ds-modal__header__button {
     position: absolute;
-    top: var(--fds-spacing-3);
-    right: var(--fds-spacing-3);
+    top: var(--ds-spacing-3);
+    right: var(--ds-spacing-3);
   }
 
-  .fds-modal__footer {
+  .ds-modal__footer {
     display: flex;
     align-items: center;
-    gap: var(--fds-spacing-4);
-    padding-top: var(--fds-spacing-3);
-    padding-bottom: var(--fds-spacing-6);
-    padding-left: var(--fds-spacing-6);
-    padding-right: var(--fds-spacing-6);
+    gap: var(--ds-spacing-4);
+    padding-top: var(--ds-spacing-3);
+    padding-bottom: var(--ds-spacing-6);
+    padding-left: var(--ds-spacing-6);
+    padding-right: var(--ds-spacing-6);
   }
 
-  .fds-modal__content {
-    padding: var(--fds-spacing-2) var(--fds-spacing-6);
+  .ds-modal__content {
+    padding: var(--ds-spacing-2) var(--ds-spacing-6);
     max-height: 80vh;
     overflow-y: auto;
   }

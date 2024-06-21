@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx';
 
 import classes from './ResponsiveIframe.module.css';

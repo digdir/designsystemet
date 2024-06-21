@@ -1,23 +1,14 @@
-@layer fds.tooltip {
-  .fds-tooltip {
-    background: var(--fds-semantic-surface-neutral-inverted);
-    padding: var(--fds-spacing-1) var(--fds-spacing-2);
-    color: var(--fds-semantic-text-neutral-on_inverted);
-    border-radius: var(--fds-border_radius-medium);
-    font: var(--fds-typography-paragraph-xsmall);
-    font-family: inherit;
+@layer ds.tooltip {
+  .ds-tooltip {
+    --dsc-tooltip-background: var(--ds-color-neutral-text-default);
+
+    background: var(--dsc-tooltip-background);
+    padding: var(--ds-spacing-1) var(--ds-spacing-2);
+    color: var(--ds-color-neutral-background-default);
+    border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-tooltip--inverted {
-    background: var(--fds-semantic-surface-neutral-subtle);
-    color: var(--fds-semantic-text-neutral-default);
-  }
-
-  .fds-tooltip__arrow {
-    fill: var(--fds-semantic-surface-neutral-inverted);
-  }
-
-  .fds-tooltip--inverted .fds-tooltip__arrow {
-    fill: var(--fds-semantic-surface-neutral-subtle);
+  .ds-tooltip__arrow {
+    fill: var(--dsc-tooltip-background);
   }
 }

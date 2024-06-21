@@ -49,19 +49,19 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     // This local ref is used to make sure the modal works without a ModalRoot
     const modalDialogRef = useRef<HTMLDialogElement>(null);
     const { context } = useFloating();
-    const modal = useContext(ModalContext);
+    const { modalRef, setOpen, setCloseModal } = useContext(ModalContext);
     const open = useModalState(modalDialogRef);
 
-    const { modalRef, setOpen } = modal;
+    useEffect(() => {
+      setCloseModal?.(() => {
+        if (onBeforeClose && onBeforeClose() === false) return;
 
-    modal.closeModal = () => {
-      if (onBeforeClose && onBeforeClose() === false) return;
-
-      modalDialogRef.current?.close();
-    };
+        modalDialogRef.current?.close();
+      });
+    }, [onBeforeClose, setCloseModal]);
 
     const mergedRefs = useMergeRefs([modalRef, ref, modalDialogRef]);
-    useScrollLock(modalDialogRef, 'fds-modal--lock-scroll');
+    useScrollLock(modalDialogRef, 'ds-modal--lock-scroll');
 
     useEffect(() => {
       setOpen(open);
@@ -115,7 +115,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
     return (
       <Component
         ref={mergedRefs}
-        className={cl('fds-modal', className)}
+        className={cl('ds-modal', className)}
         onCancel={onCancel}
         {...rest}
       >

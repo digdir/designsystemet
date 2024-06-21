@@ -4,7 +4,7 @@
     "paths": {
       "@components": ["components"],
       "@layouts": ["layouts"],
-      "@blog": ["components/Blog"]
+      "@blog": ["app/bloggen/_components"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

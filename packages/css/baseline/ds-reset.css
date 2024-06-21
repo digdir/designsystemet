@@ -1,0 +1,22 @@
+/* https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+/* https://wiki.csswg.org/ideas/mistakes */
+
+@layer ds.reset {
+  [class^='ds-'],
+  [class^='ds-']::before,
+  [class^='ds-']::after {
+    box-sizing: border-box;
+  }
+
+  /* Inherit fonts for inputs and buttons */
+  input[class^='ds-'],
+  button[class^='ds-'],
+  textarea[class^='ds-'],
+  select[class^='ds-'] {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+  }
+}

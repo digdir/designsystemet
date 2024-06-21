@@ -9,7 +9,6 @@ import {
 import cl from 'clsx/lite';
 
 import { Paragraph } from '..';
-import { getSize } from '../../utilities/getSize';
 
 const icons: Record<
   Severity,
@@ -29,8 +28,6 @@ const icons: Record<
 
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
-type OldAlertSizes = 'small' | 'medium' | 'large';
-
 export type AlertProps = {
   /** Sets color & icon according to severity */
   severity?: Severity;
@@ -46,27 +43,32 @@ export type AlertProps = {
    * Does not affect font size.
    *
    * @default md
-   *
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldAlertSizes;
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLDivElement>;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    { severity = 'info', elevated, iconTitle, children, className, ...rest },
+    {
+      severity = 'info',
+      elevated,
+      iconTitle,
+      children,
+      size = 'md',
+      className,
+      ...rest
+    },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md') as AlertProps['size'];
     const { Icon, title } = icons[severity];
 
     return (
       <div
         ref={ref}
         className={cl(
-          'fds-alert',
-          `fds-alert--${size}`,
-          `fds-alert--${severity}`,
-          elevated && `fds-alert--elevated`,
+          'ds-alert',
+          `ds-alert--${size}`,
+          `ds-alert--${severity}`,
+          elevated && `ds-alert--elevated`,
           className,
         )}
         {...rest}
@@ -74,12 +76,12 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         <>
           <Icon
             title={iconTitle || title}
-            className='fds-alert__icon'
+            className='ds-alert__icon'
           />
           <Paragraph
             asChild
             size={size}
-            className='fds-alert__content'
+            className='ds-alert__content'
           >
             <span>{children}</span>
           </Paragraph>

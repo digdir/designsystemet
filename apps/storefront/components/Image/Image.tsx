@@ -1,4 +1,5 @@
 import cl from 'clsx';
+import { Paragraph } from '@digdir/designsystemet-react';
 
 import classes from './Image.module.css';
 
@@ -21,7 +22,12 @@ const Image = ({ alt, src, boxShadow, caption, ...rest }: ImageProps) => {
         {...rest}
       ></img>
       {caption && (
-        <figcaption className={classes.caption}>{caption}</figcaption>
+        <Paragraph
+          size='sm'
+          asChild
+        >
+          <figcaption>{caption}</figcaption>
+        </Paragraph>
       )}
     </figure>
   );

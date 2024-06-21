@@ -1,5 +1,5 @@
-@layer fds.skiplink {
-  .fds-skiplink:focus {
+@layer ds.skiplink {
+  .ds-skiplink:focus {
     display: block;
     outline: 0;
     position: static;
@@ -10,11 +10,35 @@
     clip: auto;
     clip-path: none;
     white-space: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 0.3em;
-    padding: var(--fds-spacing-3) var(--fds-spacing-4) var(--fds-spacing-3) var(--fds-spacing-6);
-    color: var(--fds-semantic-text-neutral-default);
-    background: var(--fds-semantic-border-focus-outline);
+    text-decoration: none;
+    padding: var(--ds-spacing-3) var(--ds-spacing-4) var(--ds-spacing-3) var(--ds-spacing-6);
+    color: var(--ds-color-neutral-text-default);
+    background: var(--ds-color-neutral-backround-default);
+  }
+
+  .ds-skiplink__content {
+    --dsc-skiplink-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+    --dsc-skiplink-border-width: 3px;
+
+    display: flex;
+    align-items: center;
+    border: var(--ds-border-width-default) solid transparent;
+    background-color: transparent;
+    color: var(--ds-color-accent-text-subtle);
+    border-color: var(--ds-color-accent-border-strong);
+    width: fit-content;
+    padding: var(--dsc-skiplink-padding);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: inherit;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    border-radius: var(--ds-border-radius-md);
+    min-height: var(--ds-sizing-10);
+    outline: var(--dsc-skiplink-border-width) solid var(--ds-color-focus-outer);
+    outline-offset: var(--dsc-skiplink-border-width);
+    box-shadow: 0 0 0 var(--dsc-skiplink-border-width) var(--ds-color-focus-inner);
   }
 }

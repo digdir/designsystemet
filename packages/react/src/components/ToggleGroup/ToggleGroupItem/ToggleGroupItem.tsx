@@ -24,9 +24,8 @@ export const ToggleGroupItem = forwardRef<
       value={rest.value}
     >
       <Button
-        className={cl('fds-togglegroup__item', className)}
+        className={cl('ds-togglegroup__item', className)}
         icon={icon}
-        color='first'
         variant={active ? 'primary' : 'tertiary'}
         size={size}
         ref={ref}

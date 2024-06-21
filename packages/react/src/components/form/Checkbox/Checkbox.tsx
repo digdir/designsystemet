@@ -48,16 +48,16 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       >
         <div
           className={cl(
-            'fds-checkbox',
-            `fds-checkbox--${size}`,
-            hasError && `fds-checkbox--error`,
-            readOnly && `fds-checkbox--readonly`,
+            'ds-checkbox',
+            `ds-checkbox--${size}`,
+            hasError && `ds-checkbox--error`,
+            readOnly && `ds-checkbox--readonly`,
             className,
           )}
           style={style}
         >
           <input
-            className={`fds-checkbox__input`}
+            className={`ds-checkbox__input`}
             ref={inputRef}
             {...omit(['size', 'error', 'indeterminate'], rest)}
             {...inputProps}
@@ -68,7 +68,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {children && (
             <>
               <Label
-                className={`fds-checkbox__label`}
+                className={cl(`ds-checkbox__label`)}
                 htmlFor={inputProps.id}
                 size={size}
                 weight='regular'
@@ -82,7 +82,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 >
                   <div
                     id={descriptionId}
-                    className={`fds-checkbox__description`}
+                    className={`ds-checkbox__description`}
                   >
                     {description}
                   </div>

@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 var(--fds-spacing-8);
+  padding: 0 var(--ds-spacing-8);
 }
 
 .logo {
@@ -39,34 +39,33 @@
 
 .item {
   list-style: none;
-  margin-left: var(--fds-spacing-7);
+  margin-left: var(--ds-spacing-7);
 }
 
 .link {
   color: inherit;
   text-decoration: none;
-  font: var(--fds-typography-paragraph-medium);
   border-bottom: 3px solid transparent;
-  padding-bottom: var(--fds-spacing-2);
+  padding-bottom: var(--ds-spacing-2);
   transition: 0.1s all ease-out;
 }
 
 .link:hover {
-  border-color: var(--fds-semantic-border-neutral-subtle);
+  border-color: var(--ds-color-neutral-border-subtle);
 }
 
 .itemIcon {
-  margin-left: var(--fds-spacing-1);
+  margin-left: var(--ds-spacing-1);
 }
 
 .firstIcon {
-  margin-left: var(--fds-spacing-8);
+  margin-left: var(--ds-spacing-8);
 }
 
 .linkIcon {
   display: grid;
   place-items: center;
-  padding: 0 var(--fds-spacing-2);
+  padding: 0 var(--ds-spacing-2);
 }
 
 .linkIcon > svg {
@@ -75,28 +74,28 @@
 }
 
 .linkIcon.figma path {
-  stroke: var(--fds-colors-grey-800);
+  stroke: var(--ds-color-neutral-8);
 }
 
 .linkIcon.github path {
-  fill: var(--fds-colors-grey-800);
+  fill: var(--ds-color-neutral-8);
 }
 
 .linkIcon.figma:hover path {
-  stroke: var(--fds-semantic-border-neutral-default);
+  stroke: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github:hover path {
-  fill: var(--fds-semantic-border-neutral-default);
+  fill: var(--ds-color-neutral-border-strong);
 }
 
 .item .active {
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--ds-color-neutral-border-strong);
   font-weight: 500;
 }
 
 .item .active.link:hover {
-  border-color: var(--fds-semantic-border-neutral-default);
+  border-color: var(--ds-color-neutral-border-strong);
 }
 
 @media (max-width: 991.98px) {
@@ -116,7 +115,7 @@
     right: 0;
     top: 71px;
     background-color: white;
-    box-shadow: var(--fds-shadow-large);
+    box-shadow: var(--ds-shadow-lg);
     flex-direction: column;
     display: none;
     padding: 20px 0;

@@ -1,4 +1,3 @@
 **/dist/**/*.css
-packages/theme/brand/**/*.css
+packages/theme/**/*.css
 packages/css/dist/**/*.css
-apps/theme/**

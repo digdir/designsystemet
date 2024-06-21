@@ -1,0 +1,60 @@
+import { ResponsiveIframe } from '@components';
+import { Contributors, PostLayout } from '../../_components';
+
+export default ({ children }) => (
+  <PostLayout
+    content={children}
+    heading='Temabygger som bacheloroppgave'
+    ingress='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
+    date='7. mai 2024'
+    author='Designsystemet'
+    imageSrc='/img/bloggen/temavelger-front.png'
+    imageAlt='Illustrasjon av en lilla fargeskala som går fra 100-900. I midten av skalaen står det "Velg farge"'
+    imageCaption='Ulike avsenderidentitet kan ivaretas blant annet gjennom farger, fonter og former, men hvordan kan vi tilrettelegge Designsystemet best mulig for dette?'
+  />
+);
+
+export const metadata = {
+  title: 'Temabygger som bacheloroppgave',
+  description:
+    'Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!',
+  ogImage: '/img/bloggen/temavelger-front.png',
+  ogImageAlt:
+    'Illustrasjon av en lilla fargeskala som går fra 100-900. I midten av skalaen står det "Velg farge"',
+  twitterImage: '/img/bloggen/temavelger-front.png',
+};
+
+Kristian Birkeli, bachelorstudent i Datateknologi ved UiS, har vårsemesteret 2024 gjennomført en bacheloroppgave i samarbeid med Digdir og Designsystemet.
+
+I oppgaven har Birkeli utforsket hvordan det kan bli enklere å adoptere og ta i bruk Designsystemet. Han har gjennomført en rekke intervjuer med brukere og potensielle brukere av Designsystemet. Gjennom intervjuene har vi fått innsikt i hva som i dag er utfordrende med å ta Designsystemet i bruk, samt hvilke forventninger potensielle brukere har.
+
+## Temabygger
+
+En del av oppgaven har vært å utforske og prototype en «Temabygger» med et grafisk brukergrensesnitt som skal gjøre det enklere å se hvordan komponenter fra Designsystemet kan tilpasses den enkeltes avsenderidentitet. Temabyggeren hadde også mulighet for å eksportere valgte verdier til CSS for å gjøre det enklere å komme i gang med å ta designsystemet i bruk.
+
+<ResponsiveIframe
+  src='/img/bloggen/temavelger-prototype-1.mp4'
+  title='Skjermopptak fra prototypen. Filmen viser at brukeren endrer en farge og at komponentene påvirkes umiddelbart.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+Ved bruk av verktøyet kan brukerne med få tastetrykk se komponentene fra designsystemet med sine egne farger.
+
+## Brukertester og videre arbeid
+
+Brukertesting av prototypen har også vært en viktig del av bacheloroppgaven. Brukertestene, som har vært gjennomført med seks designere og utviklere, har gitt oss verdifull innsikt i hva som skal til for å gjøre designsystemet enklere å adoptere.
+
+Digdir har allerede tatt innsikten videre i arbeidet med å forbedre token-strukturen og fargesystemet. Gjennom brukertestene kom det blant annet frem at det eksisterende fargesystemet var vanskelig å forstå. `Action`-fargen påvirket kun `Button`-komponenten, men det var forventet at den skulle fungere som en `accent`-farge som påvirket flere skjema-elementer. Med bakgrunn i innsikten har Digdir videre utforsket et helt nytt fargesystem og token-struktur som skal støtte tematisering ytterligere.
+
+Innsikten viste også at brukerne forventet at verktøyet automatisk skulle ivareta kontrastkrav. Vi jobbet derfor videre med et fargesystem som tar utgangspunkt i organisasjonens brandfarge, samtidig som farger tiltenkt tekst alltid har god nok kontrast mot farger tiltenkt bakgrunner, både for light- og darkmode.
+
+## Vi takker for samarbeidet
+
+Vi takker Birkeli for et veldig godt samarbeid gjennom ukentlige møter. Prototypen Birkeli har utviklet, og innsikten som er samlet, er et svært viktig bidrag som gjør at vi nå er bedre rustet til å lande et fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Designsystem-teamet vil jobbe videre med å lage en temabygger for Designsystemet basert på arbeidet Birkeli har startet.
+
+<Contributors
+  authors={['Marianne Røsvik', 'Kristian Birkeli', 'Michael Marszalek']}
+/>

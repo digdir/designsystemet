@@ -1,0 +1,30 @@
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.green {
+  background-color: green;
+}
+
+.orange {
+  background-color: #ffa200;
+}
+
+.red {
+  background-color: red;
+}
+
+.contrast {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 2px;
+  width: 77px;
+  color: #272727 !important;
+  font-size: 15px;
+  font-weight: 500;
+}

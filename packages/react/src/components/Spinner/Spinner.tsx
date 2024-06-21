@@ -2,18 +2,9 @@ import type * as React from 'react';
 import cl from 'clsx/lite';
 
 import { useSynchronizedAnimation } from '../../hooks';
-import { getSize } from '../../utilities/getSize';
-
-type OldSpinnerSizes =
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge';
 
 const sizeMap: {
-  [key in Exclude<NonNullable<SpinnerProps['size']>, OldSpinnerSizes>]: number;
+  [key in NonNullable<SpinnerProps['size']>]: number;
 } = {
   '2xs': 13,
   xs: 20,
@@ -30,40 +21,35 @@ export type SpinnerProps = {
    * Spinner size
    *
    * @default md
-   * @note `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` is deprecated
    */
-  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | OldSpinnerSizes;
-  /** Spinner appearance  */
-  variant?: 'default' | 'interaction' | 'inverted';
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /**
+   * Spinner appearance
+   * @default neutral
+   */
+  color?: 'neutral' | 'accent';
 } & React.ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({
   title,
-  variant = 'default',
+  color = 'neutral',
+  size = 'md',
   className,
   style,
   ...rest
 }: SpinnerProps): JSX.Element => {
-  const size = getSize(rest.size || 'md') as
-    | '2xs'
-    | 'xs'
-    | 'sm'
-    | 'md'
-    | 'lg'
-    | 'xl';
-
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
-    'fds-spinner-rotate-animation',
+    'ds-spinner-rotate-animation',
   );
 
   const strokeRef = useSynchronizedAnimation<SVGCircleElement>(
-    'fds-spinner-stroke-animation',
+    'ds-spinner-stroke-animation',
   );
 
   return (
     <svg
-      className={cl('fds-spinner', `fds-spinner--${variant}`, className)}
+      className={cl('ds-spinner', `ds-spinner--${color}`, className)}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}
@@ -71,10 +57,7 @@ export const Spinner = ({
     >
       <title>{title}</title>
       <circle
-        className={cl(
-          'fds-spinner__background',
-          variant === 'inverted' && 'fds-spinner__background--inverted',
-        )}
+        className={cl('ds-spinner__background')}
         cx='25'
         cy='25'
         r='20'
@@ -82,7 +65,7 @@ export const Spinner = ({
         strokeWidth='5'
       ></circle>
       <circle
-        className={cl(`fds-spinner__circle`)}
+        className={cl(`ds-spinner__circle`)}
         cx='25'
         cy='25'
         r='20'

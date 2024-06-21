@@ -1,79 +1,82 @@
-@layer fds.fds-popover {
-  .fds-popover {
-    --fds-popover-border: 1px solid;
-    --fds-popover-background: var(--fds-semantic-surface-neutral-default);
+@layer ds.popover {
+  .ds-popover {
+    --dsc-popover-border: 1px solid;
+    --dsc-popover-background: var(--ds-color-neutral-background-default);
 
     z-index: 1500;
-    background: var(--fds-popover-background);
-    padding: var(--fds-spacing-3);
-    border: var(--fds-popover-border);
-    border-radius: var(--fds-border_radius-medium);
+    background: var(--dsc-popover-background);
+    padding: var(--ds-spacing-3);
+    border: var(--dsc-popover-border);
+    border-radius: var(--ds-border-radius-md);
     max-width: 300px;
   }
 
-  .fds-popover--sm {
-    padding: var(--fds-spacing-2) var(--fds-spacing-3);
+  .ds-popover--sm {
+    padding: var(--ds-spacing-2) var(--ds-spacing-3);
   }
 
-  .fds-popover--md {
-    padding: var(--fds-spacing-3) var(--fds-spacing-4);
+  .ds-popover--md {
+    padding: var(--ds-spacing-3) var(--ds-spacing-4);
   }
 
-  .fds-popover--lg {
-    padding: var(--fds-spacing-3) var(--fds-spacing-5);
+  .ds-popover--lg {
+    padding: var(--ds-spacing-3) var(--ds-spacing-5);
   }
 
-  .fds-popover--default {
-    --fds-popover-background: var(--fds-semantic-surface-neutral-default);
+  .ds-popover--default {
+    --dsc-popover-background: var(--ds-color-neutral-background-default);
 
-    border-color: var(--fds-semantic-border-neutral-default);
+    border-color: var(--ds-color-neutral-border-default);
   }
 
-  .fds-popover--info {
-    --fds-popover-background: var(--fds-semantic-surface-info-subtle);
+  .ds-popover--info {
+    --dsc-popover-background: var(--ds-color-info-surface-default);
 
-    border-color: var(--fds-semantic-border-info-default);
+    border-color: var(--ds-color-info-border-default);
+    color: var(--ds-color-info-text-default);
   }
 
-  .fds-popover--warning {
-    --fds-popover-background: var(--fds-semantic-surface-warning-subtle);
+  .ds-popover--warning {
+    --dsc-popover-background: var(--ds-color-warning-surface-default);
 
-    border-color: var(--fds-semantic-border-warning-default);
+    border-color: var(--ds-color-warning-border-default);
+    color: var(--ds-color-warning-text-default);
   }
 
-  .fds-popover--danger {
-    --fds-popover-background: var(--fds-semantic-surface-danger-subtle);
+  .ds-popover--danger {
+    --dsc-popover-background: var(--ds-color-danger-surface-default);
 
-    border-color: var(--fds-semantic-border-danger-default);
+    border-color: var(--ds-color-danger-border-default);
+    color: var(--ds-color-danger-text-default);
   }
 
-  .fds-popover__arrow {
+  .ds-popover__arrow {
     position: absolute;
-    background: var(--fds-popover-background);
+    background: var(--dsc-popover-background);
     transform: rotate(45deg);
   }
 
-  .fds-popover__arrow.fds-popover__arrow--top {
-    border-top: var(--fds-popover-border);
-    border-left: var(--fds-popover-border);
+  .ds-popover__arrow.ds-popover__arrow--top {
+    border-top: var(--dsc-popover-border);
+    border-left: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--bottom {
-    border-bottom: var(--fds-popover-border);
-    border-right: var(--fds-popover-border);
+  .ds-popover__arrow.ds-popover__arrow--bottom {
+    border-bottom: var(--dsc-popover-border);
+    border-right: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--right {
-    border-top: var(--fds-popover-border);
-    border-right: var(--fds-popover-border);
+  .ds-popover__arrow.ds-popover__arrow--right {
+    border-top: var(--dsc-popover-border);
+    border-right: var(--dsc-popover-border);
     border-color: inherit;
   }
 
-  .fds-popover__arrow.fds-popover__arrow--left {
-    border-bottom: var(--fds-popover-border);
-    border-left: var(--fds-popover-border);
+  .ds-popover__arrow.ds-popover__arrow--left {
+    border-bottom: var(--dsc-popover-border);
+    border-left: var(--dsc-popover-border);
     border-color: inherit;
   }
 }

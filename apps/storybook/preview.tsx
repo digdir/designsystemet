@@ -1,7 +1,9 @@
-import '../../packages/theme/brand/digdir/tokens.css';
 import '../../packages/css/index.css';
+import '../../packages/theme/brand/digdir.css';
+import './test.css';
 
 import type { Preview } from '@storybook/react';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 import type { LinkProps } from '../../packages/react';
 import { Paragraph, Link, List, Table } from '../../packages/react';
@@ -39,6 +41,7 @@ const components = {
       {...props}
       className='sb-unstyled'
       spacing
+      data-ds-color-mode='light'
     />
   ),
   ol: (props: Props) => (
@@ -47,6 +50,7 @@ const components = {
         {...props}
         style={{ maxWidth: '70ch' }}
         className='sb-unstyled'
+        data-ds-color-mode='light'
       />
     </List.Root>
   ),
@@ -56,6 +60,7 @@ const components = {
         {...props}
         style={{ maxWidth: '70ch' }}
         className='sb-unstyled'
+        data-ds-color-mode='light'
       />
     </List.Root>
   ),
@@ -64,6 +69,7 @@ const components = {
       {...props}
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
+      data-ds-color-mode='light'
     ></List.Item>
   ),
   a: (props: LinkProps) => {
@@ -75,6 +81,7 @@ const components = {
         {...props}
         href={href}
         className='sb-unstyled'
+        data-ds-color-mode='light'
       ></Link>
     );
   },
@@ -84,36 +91,42 @@ const components = {
       zebra
       className='sb-unstyled'
       style={{ width: '100%' }}
+      data-ds-color-mode='light'
     />
   ),
   thead: (props: Props) => (
     <Table.Head
       {...props}
       className='sb-unstyled'
+      data-ds-color-mode='light'
     />
   ),
   tbody: (props: Props) => (
     <Table.Body
       {...props}
       className='sb-unstyled'
+      data-ds-color-mode='light'
     />
   ),
   tr: (props: Props) => (
     <Table.Row
       {...props}
       className='sb-unstyled'
+      data-ds-color-mode='light'
     />
   ),
   th: (props: Props) => (
     <Table.HeaderCell
       {...props}
       className='sb-unstyled'
+      data-ds-color-mode='light'
     />
   ),
   td: (props: Props) => (
     <Table.Cell
       {...props}
       className='sb-unstyled'
+      data-ds-color-mode='light'
     />
   ),
 };
@@ -149,7 +162,22 @@ const preview: Preview = {
     viewport: {
       viewports,
     },
+    backgrounds: {
+      disable: true,
+    },
   },
 };
+
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      Light: 'light',
+      Dark: 'dark',
+      Auto: 'auto',
+    },
+    defaultTheme: 'Light',
+    attributeName: 'data-ds-color-mode',
+  }),
+];
 
 export default preview;

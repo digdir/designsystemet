@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import cl from 'clsx';
 import type * as React from 'react';
@@ -28,16 +29,16 @@ const NavigationCard = ({
     <Link
       href={url}
       prefetch={false}
-      className={cl(classes.card, classes[backgroundColor])}
+      className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
     >
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
       <Heading
         level={level}
-        className={classes.title}
+        className={cl(classes.title, 'ds-heading--xs')}
       >
         {title}
       </Heading>
-      <div className={classes.desc}>{description}</div>
+      <div className={cl(classes.desc, 'ds-paragraph-sm')}>{description}</div>
     </Link>
   );
 };

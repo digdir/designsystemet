@@ -5,11 +5,10 @@ import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
-import { Box } from '../../../Box';
+import { Box, Paragraph } from '../../../';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import type { ComboboxProps } from '../Combobox';
-import { prefix } from '../useCombobox';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -58,6 +57,7 @@ export const ComboboxInput = ({
     getReferenceProps,
     setInputValue,
     handleSelectOption,
+    size,
   } = context;
 
   const mergedRefs = useMergeRefs([forwareddRef, inputRef]);
@@ -69,11 +69,11 @@ export const ComboboxInput = ({
     setActiveIndex(0);
 
     // check if input value is the same as a label, if so, select it
-    const option = options[prefix(value.toLowerCase())];
-    if (!option) return;
-    if (selectedOptions[prefix(option.value)]) return;
-
-    handleSelectOption({ option: option });
+    Object.values(options).forEach((option) => {
+      if (option.label.toLowerCase() === value.toLowerCase()) {
+        handleSelectOption({ option: option });
+      }
+    });
   };
 
   const showClearButton =
@@ -105,57 +105,67 @@ export const ComboboxInput = ({
   });
 
   return (
-    <Box
-      {...props}
-      aria-disabled={disabled}
-      className={cl(
-        'fds-textfield__input',
-        'fds-combobox__input__wrapper',
-        readOnly && 'fds-combobox--readonly',
-        error && 'fds-combobox--error',
-      )}
+    <Paragraph
+      size={size}
+      asChild
     >
-      <div className={'fds-combobox__chip-and-input'}>
-        {/* If the input is in multiple mode, we need to display chips */}
-        {multiple && !hideChips && <ComboboxChips />}
-        <input
-          ref={mergedRefs}
-          aria-activedescendant={props['aria-activedescendant'] as string}
-          readOnly={readOnly}
-          aria-autocomplete='list'
-          role='combobox'
-          aria-expanded={open}
-          aria-controls={listId}
-          autoComplete='off'
-          size={htmlSize}
-          value={inputValue}
-          {...omit(['style', 'className'], rest)}
-          {...formFieldProps.inputProps}
-          className='fds-combobox__input'
-          onChange={(e) => {
-            onChange(e);
-            !open && setOpen(true);
-            rest.onChange && rest.onChange(e);
-          }}
-        />
-      </div>
-      {/* Clear button if we are in multiple mode and have at least one active value */}
-      {showClearButton && <ComboboxClearButton />}
-      {/* Arrow for combobox. Click is handled by the wrapper */}
-      <div className={'fds-combobox__arrow'}>
-        {open ? (
-          <ChevronUpIcon
-            title='arrow up'
-            fontSize='1.5em'
-          />
-        ) : (
-          <ChevronDownIcon
-            title='arrow down'
-            fontSize='1.5em'
-          />
+      <Box
+        {...props}
+        aria-disabled={disabled ? 'true' : undefined}
+        className={cl(
+          'ds-textfield__input',
+          'ds-combobox__input__wrapper',
+          readOnly && 'ds-combobox--readonly',
+          error && 'ds-combobox--error',
         )}
-      </div>
-    </Box>
+      >
+        <div className={'ds-combobox__chip-and-input'}>
+          {/* If the input is in multiple mode, we need to display chips */}
+          {multiple && !hideChips && <ComboboxChips />}
+          <Paragraph
+            size={size}
+            asChild
+          >
+            <input
+              ref={mergedRefs}
+              aria-activedescendant={props['aria-activedescendant'] as string}
+              readOnly={readOnly}
+              aria-autocomplete='list'
+              role='combobox'
+              aria-expanded={open}
+              aria-controls={listId}
+              autoComplete='off'
+              size={htmlSize}
+              value={inputValue}
+              {...omit(['style', 'className'], rest)}
+              {...formFieldProps.inputProps}
+              className='ds-combobox__input'
+              onChange={(e) => {
+                onChange(e);
+                !open && setOpen(true);
+                rest.onChange && rest.onChange(e);
+              }}
+            />
+          </Paragraph>
+        </div>
+        {/* Clear button if we are in multiple mode and have at least one active value */}
+        {showClearButton && <ComboboxClearButton />}
+        {/* Arrow for combobox. Click is handled by the wrapper */}
+        <div className={'ds-combobox__arrow'}>
+          {open ? (
+            <ChevronUpIcon
+              title='arrow up'
+              fontSize='1.5em'
+            />
+          ) : (
+            <ChevronDownIcon
+              title='arrow down'
+              fontSize='1.5em'
+            />
+          )}
+        </div>
+      </Box>
+    </Paragraph>
   );
 };
 

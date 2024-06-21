@@ -1,0 +1,186 @@
+.components {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ds-spacing-8);
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: var(--ds-color-neutral-background-default);
+  border-radius: var(--ds-border-radius-md);
+  padding: 1rem;
+}
+
+.card {
+  background-color: var(--ds-color-neutral-background-subtle);
+  border-radius: var(--ds-border-radius-md);
+  padding: 24px;
+}
+
+.cardTitle {
+  margin-bottom: 16px;
+}
+
+.checkbox {
+  grid-column: span 2;
+  padding-bottom: 16px;
+}
+
+.user {
+  grid-column: span 2;
+}
+
+.tableContainer {
+  grid-column: span 4;
+}
+
+.help {
+  grid-column: span 4;
+}
+
+.radio {
+  grid-column: span 2;
+}
+
+.tag {
+  grid-column: span 2;
+}
+
+.switches {
+  grid-column: span 2;
+}
+
+.combobox {
+  grid-column: span 2;
+}
+
+.tabs {
+  grid-column: span 4;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.faq {
+  grid-column: span 4;
+}
+
+.userLink {
+  margin-top: 20px;
+  margin-left: auto;
+  font-size: 16px;
+}
+
+.userTitle {
+  text-align: center;
+}
+
+.userField {
+  margin-top: 24px;
+}
+
+.userBtn {
+  margin-top: 32px;
+}
+
+.userPar {
+  margin-bottom: -4px;
+  margin-top: -7px;
+}
+
+.tabs button {
+  min-height: 40px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+
+.table thead button {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.tableCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+}
+
+.tableImg {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #353535;
+}
+
+.tableAction {
+  display: flex;
+  align-items: center;
+}
+
+.tableSelect {
+  width: 160px;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.tableSearch {
+  width: 260px;
+}
+
+.tableBtn {
+  margin-left: 20px;
+}
+
+.helpCards {
+  grid-column: 1 / 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.helpHeader {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  margin-bottom: -10px;
+}
+
+.helpHeading {
+  margin-bottom: 20px;
+}
+
+.helpContent {
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.tagList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.switchGroup {
+  display: flex;
+  gap: 26px;
+  flex-direction: column;
+}
+
+.toggleCombo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}

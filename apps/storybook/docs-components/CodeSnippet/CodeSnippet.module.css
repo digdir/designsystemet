@@ -1,0 +1,14 @@
+.codeSnippet {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  width: 100%;
+  border-radius: var(--ds-border-radius-md);
+  height: fit-content;
+}
+
+.copyButton {
+  position: absolute;
+  top: var(--ds-spacing-2);
+  right: var(--ds-spacing-2);
+}

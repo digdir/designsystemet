@@ -20,6 +20,9 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
+import type { PortalProps } from '../../types/Portal';
+import { Paragraph } from '../Typography';
+
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
 
@@ -46,15 +49,8 @@ export type TooltipProps = {
   open?: boolean;
   /** Whether the tooltip is open by default or not. */
   defaultOpen?: boolean;
-  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
-  inverted?: boolean;
-  /**
-   * Portals the floating element outside of the app root and into the body.
-   * @see https://floating-ui.com/docs/floatingportal
-   * @default true
-   */
-  portal?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> &
+  PortalProps;
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
@@ -65,8 +61,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
-      portal = true,
-      inverted,
+      portal = false,
       className,
       style,
       ...rest
@@ -140,28 +135,29 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, ...animationStyles, ...style }}
-              role='tooltip'
-              {...getFloatingProps({
-                className: cl(
-                  'fds-tooltip',
-                  inverted && 'fds-tooltip--inverted',
-                  className,
-                ),
-                ref: mergedRef,
-                ...rest,
-              })}
+            <Paragraph
+              size='xs'
+              asChild
             >
-              {content}
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className='fds-tooltip__arrow'
-                height={ARROW_HEIGHT}
-              />
-            </div>
+              <div
+                ref={refs.setFloating}
+                style={{ ...floatingStyles, ...animationStyles, ...style }}
+                role='tooltip'
+                {...getFloatingProps({
+                  className: cl('ds-tooltip', className),
+                  ref: mergedRef,
+                  ...rest,
+                })}
+              >
+                {content}
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  className='ds-tooltip__arrow'
+                  height={ARROW_HEIGHT}
+                />
+              </div>
+            </Paragraph>
           </Container>
         )}
       </>

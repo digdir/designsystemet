@@ -1,5 +1,5 @@
-@layer fds.helptext {
-  .fds-helptext__button {
+@layer ds.helptext {
+  .ds-helptext__button {
     background-color: transparent;
     border-radius: 50px;
     padding: 0 !important;
@@ -11,48 +11,47 @@
   }
 
   @media print {
-    .fds-helptext__button {
+    .ds-helptext__button {
       display: none;
     }
   }
 
-  .fds-helptext__icon--filled {
+  .ds-helptext__icon--filled {
     display: none;
   }
 
-  .fds-helptext__icon {
-    color: var(--fds-semantic-text-action-default);
-    width: var(--fds-sizing-7);
-    height: var(--fds-sizing-7);
+  .ds-helptext__icon {
+    color: var(--ds-color-accent-base-default);
+    width: var(--ds-sizing-7);
+    height: var(--ds-sizing-7);
   }
 
-  .fds-helptext__button:where(:hover, :focus, [data-state^='open']) > .fds-helptext__icon {
+  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon {
     display: none;
   }
 
-  .fds-helptext__button:where(:hover, :focus, [data-state^='open']) > .fds-helptext__icon--filled {
+  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon--filled {
     display: inline-block;
   }
 
-  .fds-helptext__content {
-    font: var(--fds-typography-paragraph-medium);
-    font-family: inherit;
+  .ds-helptext__content {
+    color: var(--ds-color-neutral-text-default);
     width: fit-content;
     max-width: 700px;
   }
 
-  .fds-helptext--sm .fds-helptext__icon {
-    width: var(--fds-sizing-6);
-    height: var(--fds-sizing-6);
+  .ds-helptext--sm .ds-helptext__icon {
+    width: var(--ds-sizing-6);
+    height: var(--ds-sizing-6);
   }
 
-  .fds-helptext--md .fds-helptext__icon {
-    width: var(--fds-sizing-7);
-    height: var(--fds-sizing-7);
+  .ds-helptext--md .ds-helptext__icon {
+    width: var(--ds-sizing-7);
+    height: var(--ds-sizing-7);
   }
 
-  .fds-helptext--lg .fds-helptext__icon {
-    width: var(--fds-sizing-8);
-    height: var(--fds-sizing-8);
+  .ds-helptext--lg .ds-helptext__icon {
+    width: var(--ds-sizing-8);
+    height: var(--ds-sizing-8);
   }
 }

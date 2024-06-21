@@ -1,3 +1,4 @@
+'use client';
 import { Heading, Ingress } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import cl from 'clsx';
@@ -41,7 +42,7 @@ type BannerHeadingProps = Omit<HeadingProps, 'size'>;
 const BannerHeading = ({ ...props }: BannerHeadingProps) => {
   return (
     <Heading
-      size='large'
+      size='lg'
       {...props}
     />
   );
@@ -52,7 +53,7 @@ type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
 const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
     <Ingress
-      className={cl(classes.ingress, className)}
+      className={cl(classes.ingress, 'ds-ingress--sm', className)}
       {...props}
     />
   );

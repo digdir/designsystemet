@@ -1,0 +1,17 @@
+.pickers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--ds-spacing-4);
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+.pickersContainer {
+  height: 140px;
+}
+
+.contrastSelect {
+  border-color: #c2c2c2;
+  width: 150px;
+}

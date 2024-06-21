@@ -24,9 +24,10 @@ export const PaginationButton = forwardRef<
       ref={ref}
       variant={isActive ? 'primary' : 'tertiary'}
       aria-current={isActive}
-      color={'first'}
       size={size}
       {...rest}
     />
   );
 });
+
+PaginationButton.displayName = 'PaginationButton';

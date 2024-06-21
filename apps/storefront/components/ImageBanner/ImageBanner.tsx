@@ -1,7 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
+'use client';
 import type React from 'react';
+import type { ButtonProps } from '@digdir/designsystemet-react';
 import { useEffect, useState, createElement } from 'react';
-import cn from 'clsx';
+import cl from 'clsx';
+import { Link, Button } from '@digdir/designsystemet-react';
+import NextLink from 'next/link';
 
 import { Container } from '../Container/Container';
 
@@ -31,6 +34,8 @@ type ImageSectionButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
+  variant?: ButtonProps['variant'];
+  color?: ButtonProps['color'];
 };
 
 const ImageBanner = ({
@@ -54,16 +59,20 @@ const ImageBanner = ({
 
   useEffect(() => {
     setHeading(
-      createElement(headingLevel, { className: classes.title }, title),
+      createElement(
+        headingLevel,
+        { className: cl(classes.title, 'ds-heading--lg') },
+        title,
+      ),
     );
   }, [headingLevel, title]);
 
   return (
     <div className={(classes[backgroundColor], classes.section)}>
-      <Container className={cn(classes.container)}>
+      <Container className={cl(classes.container)}>
         {imgPosition === 'left' && (
           <div
-            className={cn(classes.imgContainer, {
+            className={cl(classes.imgContainer, {
               [classes.smallImage]: imgWidth === 'small',
             })}
           >
@@ -87,14 +96,14 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={cn(classes.img)}
+                className={cl(classes.img)}
                 src={imgSrc}
                 alt={imgAlt}
               />
             )}
             {fallbackImgSrc && (
               <img
-                className={cn(classes.img, classes.fallbackImg)}
+                className={cl(classes.img, classes.fallbackImg)}
                 src={fallbackImgSrc}
                 alt={fallbackImgAlt}
               />
@@ -104,28 +113,41 @@ const ImageBanner = ({
 
         <div className={classes.textContainer}>
           {title && heading}
-          {description && <p className={classes.desc}>{description}</p>}
+          {description && (
+            <p className={cl(classes.desc, 'ds-paragraph--md')}>
+              {description}
+            </p>
+          )}
           {content && content}
           {link && (
-            <a
-              href={link.href}
+            <Link
               className={classes.link}
+              color='neutral'
+              asChild
             >
-              {link.prefix} {link.text}
-            </a>
+              <NextLink href={link.href}>
+                {link.prefix} {link.text}
+              </NextLink>
+            </Link>
           )}
 
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
+                <Button
                   key={index}
+                  variant={item.variant ?? 'secondary'}
+                  color={item.color ?? 'accent'}
+                  asChild
                 >
-                  {item.prefix}
-                  {item.text}
-                </a>
+                  <a
+                    href={item.href}
+                    className={classes.button}
+                  >
+                    {item.prefix}
+                    {item.text}
+                  </a>
+                </Button>
               ))}
             </div>
           )}
@@ -154,14 +176,14 @@ const ImageBanner = ({
             )}
             {imgSrc && (
               <img
-                className={cn(classes.img)}
+                className={cl(classes.img)}
                 alt={imgAlt}
                 src={imgSrc}
               />
             )}
             {fallbackImgSrc && (
               <img
-                className={cn(classes.img, classes.fallbackImg)}
+                className={cl(classes.img, classes.fallbackImg)}
                 src={fallbackImgSrc}
                 alt={fallbackImgAlt}
               />

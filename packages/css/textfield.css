@@ -1,150 +1,151 @@
-@layer fds.textfield {
-  .fds-textfield {
+@layer ds.textfield {
+  .ds-textfield {
     display: grid;
-    gap: var(--fds-spacing-2);
+    gap: var(--ds-spacing-2);
   }
 
-  .fds-textfield__adornment {
-    color: var(--fds-semantic-border-neutral-default);
-    background: var(--fds-semantic-surface-neutral-subtle);
-    padding: 9px var(--fds-spacing-4);
-    border-radius: var(--fds-border_radius-medium);
-    border: solid 1px var(--fds-semantic-border-neutral-default);
+  .ds-textfield__adornment {
+    color: var(--ds-color-neutral-text-subtle);
+    background: var(--ds-color-neutral-background-subtle);
+    padding: 9px var(--ds-spacing-4);
+    border-radius: var(--ds-border-radius-md);
+    border: solid 1px var(--ds-color-neutral-border-default);
     box-sizing: border-box;
     display: inline-block;
   }
 
-  .fds-textfield__input {
-    font: inherit;
+  .ds-textfield__input {
     font-family: inherit;
     position: relative;
     box-sizing: border-box;
     flex: 0 1 auto;
     width: 100%;
     appearance: none;
-    padding: 0 var(--fds-spacing-3);
-    border: solid 1px var(--fds-semantic-border-input-default);
-    border-radius: var(--fds-border_radius-medium);
+    padding: 0 var(--ds-spacing-3);
+    border: solid 1px var(--ds-color-neutral-border-default);
+    background: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
+    border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__input:disabled {
+  .ds-textfield__input:disabled {
     cursor: not-allowed;
   }
 
-  .fds-textfield--readonly .fds-textfield__input {
-    background: var(--fds-semantic-surface-neutral-subtle);
-    border-color: var(--fds-semantic-border-neutral-default);
+  .ds-textfield--readonly .ds-textfield__input {
+    background: var(--ds-color-neutral-background-subtle);
+    border-color: var(--ds-color-neutral-border-strong);
   }
 
-  .fds-textfield__field {
+  .ds-textfield__field {
     display: flex;
     align-items: stretch;
-    border-radius: var(--fds-border_radius-medium);
+    border-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__field > *:first-child {
-    border-top-left-radius: var(--fds-border_radius-medium);
-    border-bottom-left-radius: var(--fds-border_radius-medium);
+  .ds-textfield__field > *:first-child {
+    border-top-left-radius: var(--ds-border-radius-md);
+    border-bottom-left-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield__field > *:last-child {
-    border-top-right-radius: var(--fds-border_radius-medium);
-    border-bottom-right-radius: var(--fds-border_radius-medium);
+  .ds-textfield__field > *:last-child {
+    border-top-right-radius: var(--ds-border-radius-md);
+    border-bottom-right-radius: var(--ds-border-radius-md);
   }
 
-  .fds-textfield--sm .fds-textfield__adornment {
-    padding: var(--fds-sizing-2) var(--fds-spacing-3);
+  .ds-textfield--sm .ds-textfield__adornment {
+    padding: var(--ds-sizing-2) var(--ds-spacing-3);
   }
 
-  .fds-textfield--md .fds-textfield__adornment {
-    padding: 0.65rem var(--fds-spacing-4);
+  .ds-textfield--md .ds-textfield__adornment {
+    padding: 0.65rem var(--ds-spacing-4);
   }
 
-  .fds-textfield--lg .fds-textfield__adornment {
-    padding: 0.85rem var(--fds-spacing-5);
+  .ds-textfield--lg .ds-textfield__adornment {
+    padding: 0.85rem var(--ds-spacing-5);
   }
 
-  .fds-textfield--sm .fds-textfield__field {
-    height: var(--fds-sizing-10);
+  .ds-textfield--sm .ds-textfield__field {
+    height: var(--ds-sizing-10);
   }
 
-  .fds-textfield--md .fds-textfield__field {
-    height: var(--fds-sizing-12);
+  .ds-textfield--md .ds-textfield__field {
+    height: var(--ds-sizing-12);
   }
 
-  .fds-textfield--lg .fds-textfield__field {
-    height: var(--fds-sizing-14);
+  .ds-textfield--lg .ds-textfield__field {
+    height: var(--ds-sizing-14);
   }
 
-  .fds-textfield--sm .fds-textfield__input {
-    padding: 0 var(--fds-spacing-2);
+  .ds-textfield--sm .ds-textfield__input {
+    padding: 0 var(--ds-spacing-2);
   }
 
-  .fds-textfield--md .fds-textfield__input {
-    padding: 0 var(--fds-spacing-3);
+  .ds-textfield--md .ds-textfield__input {
+    padding: 0 var(--ds-spacing-3);
   }
 
-  .fds-textfield--lg .fds-textfield__input {
-    padding: 0 var(--fds-spacing-4);
+  .ds-textfield--lg .ds-textfield__input {
+    padding: 0 var(--ds-spacing-4);
   }
 
-  .fds-textfield__label {
+  .ds-textfield__label {
     min-width: min-content;
     display: inline-flex;
     flex-direction: row;
-    gap: var(--fds-spacing-1);
+    gap: var(--ds-spacing-1);
     align-items: center;
   }
 
-  .fds-textfield__description {
-    color: var(--fds-semantic-text-neutral-subtle);
-    margin-top: calc(var(--fds-spacing-2) * -1);
+  .ds-textfield__description {
+    color: var(--ds-color-neutral-text-subtle);
+    margin-top: calc(var(--ds-spacing-2) * -1);
   }
 
-  .fds-textfield:has(.fds-textfield__input:disabled) {
-    opacity: var(--fds-opacity-disabled);
+  .ds-textfield:has(.ds-textfield__input:disabled) {
+    opacity: var(--ds-disabled-opacity);
   }
 
-  .fds-textfield--error .fds-textfield__input:not(:focus-visible) {
-    border-color: var(--fds-semantic-border-danger-default);
-    box-shadow: inset 0 0 0 1px var(--fds-semantic-border-danger-default);
+  .ds-textfield--error .ds-textfield__input:not(:focus-visible) {
+    border-color: var(--ds-color-danger-border-default);
+    box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .fds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-      border-color: var(--fds-semantic-border-input-hover);
-      box-shadow: inset 0 0 0 1px var(--fds-semantic-border-input-hover);
+    .ds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+      border-color: var(--ds-color-accent-border-strong);
+      box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
     }
   }
 
-  .fds-textfield__input--with-prefix {
+  .ds-textfield__input--with-prefix {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .fds-textfield__input--with-suffix {
+  .ds-textfield__input--with-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .fds-textfield__prefix {
+  .ds-textfield__prefix {
     border-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .fds-textfield__suffix {
+  .ds-textfield__suffix {
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .fds-textfield__readonly__icon {
+  .ds-textfield__readonly__icon {
     height: 1.2em;
     width: 1.2em;
   }
 
-  .fds-textfield__error-message:empty {
+  .ds-textfield__error-message:empty {
     display: none;
   }
 }

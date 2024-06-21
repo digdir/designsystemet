@@ -1,7 +1,7 @@
+'use client';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 
@@ -9,18 +9,9 @@ import { GithubLogo } from './logos/github-logo';
 import { FigmaLogo } from './logos/figma-logo';
 import classes from './Header.module.css';
 
-/**
- * Function to check if the menu item should be active
- * @param routerPath - The current router path.
- * @param itemPath - The current menu item path.
- */
-const isMenuItemActive = (routerPath: string, itemPath: string) => {
-  return routerPath.startsWith(itemPath);
-};
-
 const Header = () => {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const href = typeof window !== 'undefined' ? window.location.pathname : '';
 
   const menu = [
     {
@@ -99,10 +90,9 @@ const Header = () => {
                   onClick={() => setOpen(false)}
                   prefetch={false}
                   className={cl(
-                    isMenuItemActive(router.pathname, item.url)
-                      ? classes.active
-                      : '',
+                    href === item.url ? classes.active : '',
                     classes.link,
+                    'ds-paragraph--md',
                   )}
                 >
                   {item.name}

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-rc.6](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.63.0...@digdir/designsystemet-react@1.0.0-rc.6) (2024-06-11)
+
+### Bug Fixes
+
+- **Tab:** Use correct type on Tab button ([f3f5949](https://github.com/digdir/designsystemet/commit/f3f5949d3a0137463cf511317f1c7be5d0c9138e))
+
+### Features
+
+- 🎨 V1 Release candidate ([#1849](https://github.com/digdir/designsystemet/issues/1849)) ([917ac1f](https://github.com/digdir/designsystemet/commit/917ac1f4a90b7ec2f96247ee015ab47224117d86))
+
+### Reverts
+
+- Revert "Publish" ([8b3c1a1](https://github.com/digdir/designsystemet/commit/8b3c1a153d15997e7b95d21eb146a8f456415a33))
+
 # [0.63.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.62.0...@digdir/designsystemet-react@0.63.0) (2024-06-07)
 
 ### Bug Fixes

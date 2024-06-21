@@ -22,9 +22,9 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-pagination__item',
-          `fds-pagination--${size}`,
-          compact && 'fds-pagination--compact',
+          'ds-pagination__item',
+          `ds-pagination--${size}`,
+          compact && 'ds-pagination--compact',
           className,
         )}
         {...rest}
@@ -32,5 +32,7 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
     );
   },
 );
+
+PaginationItem.displayName = 'PaginationItem';
 
 export default PaginationItem;

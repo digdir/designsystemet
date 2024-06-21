@@ -1,0 +1,26 @@
+.content {
+  height: 100%;
+  padding: var(--ds-spacing-14) 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-14);
+  margin: 0 auto;
+}
+
+.imgContainer {
+  flex-basis: 290px;
+}
+
+.img {
+  max-width: 100%;
+  display: block;
+}
+
+.textContainer {
+  flex-basis: 380px;
+}

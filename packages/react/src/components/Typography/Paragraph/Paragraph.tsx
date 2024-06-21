@@ -3,23 +3,21 @@ import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
 
-import { getSize } from '../../../utilities/getSize';
-
-type OldParagraphSizes = 'xsmall' | 'small' | 'medium' | 'large';
-
 export type ParagraphProps = {
   /**
    * Changes text sizing
    *
    * @default `md`
    *
-   * @note `xsmall`, `small`, `medium`, `large` is deprecated
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | OldParagraphSizes;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Adjusts styling for paragraph length */
-  variant?: 'long' | 'short';
+  /**
+   *  Adjusts styling for paragraph length
+   *  @default `default`
+   */
+  variant?: 'long' | 'default' | 'short';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -27,20 +25,26 @@ export type ParagraphProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
+const lineHeightMap = {
+  short: 'ds-line-height--sm',
+  default: 'ds-line-height--md',
+  long: 'ds-line-height--lg',
+};
+
 /** Use `Paragraph` to display text with paragraph text styles. */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ className, spacing, asChild, variant, ...rest }, ref) => {
+  ({ className, spacing, size = 'md', asChild, variant, ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
-    const size = getSize(rest.size || 'md');
 
     return (
       <Component
         ref={ref}
         className={cl(
-          'fds-paragraph',
-          `fds-paragraph--${size}`,
-          spacing && 'fds-paragraph--spacing',
-          variant && `fds-paragraph--${variant}`,
+          'ds-paragraph',
+
+          spacing && 'ds-paragraph--spacing',
+          `ds-paragraph--${size}`,
+          lineHeightMap[variant ?? 'default'],
           className,
         )}
         {...rest}

@@ -10,31 +10,29 @@ const TestComponent = ({
   ...rest
 }: Omit<AccordionItemProps, 'children'>): JSX.Element => {
   return (
-    <Accordion>
+    <Accordion.Root>
       <Accordion.Item {...rest}>
-        <Accordion.Header level={3}>
-          Accordion Header Title Text
-        </Accordion.Header>
+        <Accordion.Heading>Accordion Header Title Text</Accordion.Heading>
         <Accordion.Content>
           The fantastic accordion content text
         </Accordion.Content>
       </Accordion.Item>
-    </Accordion>
+    </Accordion.Root>
   );
 };
 
 describe('Accordion', () => {
-  test('accordion should have Header, Content and be closed by default', () => {
+  test('accordion should have heading, Content and be closed by default', () => {
     render(<TestComponent />);
     const accordionExpandButton = screen.getByRole('button');
 
     expect(
       screen.getByRole('heading', {
         name: 'Accordion Header Title Text',
-        level: 3,
       }),
     ).toBeInTheDocument();
     expect(screen.getByText('The fantastic accordion content text'));
+    expect(screen.getByText('Accordion Header Title Text'));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 
@@ -42,6 +40,31 @@ describe('Accordion', () => {
     render(<TestComponent open />);
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('Should be able to set defaultOpen on uncontrolled', () => {
+    render(<TestComponent defaultOpen />);
+
+    const accordionExpandButton = screen.getByRole('button');
+    expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('should be able to render AccordionItem as controlled', () => {
+    render(<TestComponent open />);
+
+    const accordionExpandButton = screen.getByRole('button');
+    expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('should render heading as level 1 by default', () => {
+    render(<TestComponent />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Accordion Header Title Text',
+        level: 1,
+      }),
+    );
   });
 });
 

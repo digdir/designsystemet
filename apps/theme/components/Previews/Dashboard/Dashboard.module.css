@@ -1,0 +1,165 @@
+.dashboard {
+  background-color: var(--background);
+  width: 100%;
+  position: relative;
+  min-height: 815px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: var(--foreground);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  padding: 16px;
+}
+
+.content {
+  top: 0;
+  left: 280px;
+  right: 0;
+  padding: 32px;
+  position: absolute;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.btn {
+  justify-content: start;
+  gap: 16px;
+  transition: 0.1s all;
+}
+
+.logo {
+  padding: 10.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.logo svg {
+  height: 22px;
+  margin-bottom: -1px;
+}
+
+.logo svg path:first-child {
+  fill: var(--ds-color-accent-base-default);
+}
+
+.logo svg path:last-child {
+  fill: var(--ds-color-accent-border-subtle);
+}
+
+.cardTitle {
+  margin-bottom: 6px;
+}
+
+.colorCardsContainer {
+  grid-area: colorcards;
+}
+
+.card {
+  background-color: var(--foreground);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.colorCards {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 24px;
+  column-gap: 24px;
+  grid-template-areas:
+    'colorcards colorcards colorcards colorcards colorcards colorcards colorcards colorcards users users users users'
+    'graph graph graph graph graph2 graph2 graph2 graph2 graph3 graph3 graph3 graph3';
+}
+
+.users {
+  grid-area: users;
+}
+
+.usersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userName {
+  font-size: 16px;
+  color: var(--neutral-13);
+}
+
+.user img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #333;
+}
+
+.userTextContainer {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.userRole {
+  font-size: 15px;
+  min-height: 8px;
+  display: block;
+  color: var(--ds-color-brand1-text-subtle);
+  font-weight: 500;
+}
+
+.userRoleTwo {
+  color: var(--ds-color-brand2-text-subtle);
+}
+
+.userRoleThree {
+  color: var(--ds-color-brand3-text-subtle);
+}
+
+.graph {
+  grid-area: graph;
+  height: 400px;
+  padding-bottom: 64px;
+}
+
+.graph2 {
+  grid-area: graph2;
+  height: 400px;
+  padding-bottom: 70px;
+}
+
+.graph3 {
+  grid-area: graph3;
+  height: 400px;
+  padding-bottom: 70px;
+}

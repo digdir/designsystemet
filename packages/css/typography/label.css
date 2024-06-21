@@ -1,0 +1,14 @@
+@layer ds.typography.label {
+  .ds-label {
+    --dsc-bottom-spacing: var(--ds-spacing-1);
+
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: var(--ds-color-neutral-text-default);
+  }
+
+  .ds-label--spacing {
+    margin-bottom: var(--dsc-bottom-spacing);
+  }
+}

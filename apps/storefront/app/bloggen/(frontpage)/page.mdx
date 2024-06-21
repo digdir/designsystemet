@@ -1,0 +1,72 @@
+import { PencilIcon } from '@navikt/aksel-icons';
+
+import { Meta } from '@components';
+import { BlogCard } from '../_components';
+
+export default ({ children }) => <>{children}</>;
+
+<Meta
+  title='Bloggen'
+  description='Beskrivelse'
+/>
+
+<BlogCard
+  title='Dette kommer i V1! 🎉'
+  desc='Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.'
+  date='29.mai 2024'
+  href='/bloggen/2024/v1rc1'
+  image='/img/bloggen/v1rc1.png'
+  author='Designsystemet'
+  featured={true}
+/>
+
+<BlogCard
+  title='Temabygger som bacheloroppgave'
+  desc='Hvordan kan vi gjøre det enklere å ta i bruk Designsystemet? Det har blitt utforsket i en bacheloroppgave!'
+  date='7.mai 2024'
+  href='/bloggen/2024/bachelor-temavelger'
+  image='/img/bloggen/temavelger-front.png'
+  author='Designsystemet'
+  featured={false}
+/>
+
+<BlogCard
+  title='Dynamiske font-størrelser og hvorfor vi gikk bort fra det'
+  desc='Det er mulig å bruke dynamiske font-størrelser uten breakpoints, men det medfører noen ulemper. '
+  date='26.april 2024'
+  href='/bloggen/2024/fluid-typography'
+  image='/img/bloggen/fluid-front.png'
+  author='Designsystemet'
+  featured={false}
+  level={2}
+/>
+
+<BlogCard
+  title='Hvordan Altinn Studio bruker Designsystemet'
+  desc='Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!'
+  date='27. mars 2024'
+  href='/bloggen/2024/altinn-studio'
+  image='/img/bloggen/altinnstudio-16-9.png'
+  author='Altinn / David Øvrelid'
+  featured={false}
+  level={2}
+/>
+
+<BlogCard
+  title='Derfor trenger vi et felles designsystem'
+  desc='Se hvordan det gikk da vi arrangerte en åpen presentasjon og mini-workshop om felles designsystem. '
+  date='5. desember 2023'
+  href='/bloggen/2023/derfor-trenger-vi-et-felles-designsystem'
+  image='/img/bloggen/miro.png'
+  author='Digdir og Brønnøysundregistrene'
+  featured={false}
+  level={2}
+/>
+
+<style>
+  {`
+    body {
+      background-color: var(--ds-color-neutral-background-subtle);
+    }
+  `}
+</style>

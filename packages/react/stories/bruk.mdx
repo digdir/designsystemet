@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/blocks';
+
+import { CodeSnippet } from '@doc-components';
+
+<Meta title='Bruk' />
+
+# Bruk
+
+På denne sida finner du god informasjon om hvordan du kan bruke Designsystemet.
+Under vil du finne:
+
+- [React](#react)
+  - [Installasjon](#installasjon)
+  - [Sende props](#sende-props)
+  - [SSR](#ssr)
+- [CSS](#css)
+  - [Layers](#layers)
+
+## React
+
+### Installasjon
+
+For å bruke Designsystemet i React, så må du installere `@digdir/designsystemet-react`.
+
+<CodeSnippet language='bash'>
+  {`
+npm install @digdir/designsystemet-react
+`}
+</CodeSnippet>
+
+Deretter kan du importere komponentene du trenger.
+
+<CodeSnippet language='ts'>
+{`
+import { Button } from '@digdir/designsystemet-react';
+
+<Button>Click me</Button>
+`}
+</CodeSnippet>
+
+Alle komponentene som er tilgjengelige i Designsystemet er uten styling. Legg til styling ved å importere vår css pakke, `@digdir/designsystemet-css`.
+
+<br />
+
+### Sende props
+
+Når du sender inn props så vil disse bli lagt bakerst på komponenten.
+Dersom du sender inn funksjoner som `onClick`, og disse er i bruk fra før, vil disse bli kalt etter vår funksjon.
+
+Klassenavn vil også bli lagt bakerst i lista av klasser.
+
+#### Eksempel
+
+<CodeSnippet language='ts'>
+  {`
+  <Button className='my-class' onClick={() => console.log('my click')} data-attr="data">Click me</Button>
+`}
+</CodeSnippet>
+
+Vil bli til:
+
+<CodeSnippet language='ts'>
+  {`
+  <button 
+    className='ds-btn ... my-class' 
+    onClick={() => {
+      () => {} // vår funksjon
+      rest.onClick(); // logget til konsollen kommer her
+    }}
+    data-attr="data"
+  >
+    Click me
+  </button>
+`}
+</CodeSnippet>
+
+<br />
+
+### SSR
+
+Alle våre komponenter er klient komponenter, og bruker `"use client"`.
+
+Dersom du ønsker å bruke våre komponenter i dine server komponenter, så kan du ikke bruke dot-notation.
+Dette betyr at du ikke kan skrive `<Accordion.Item>`, men må skrive `<AccordionItem>`. Grunnen for dette er at serveren ikke kan få tak i noe
+som ligger i en klient komponent, som `Accordion` er.
+
+#### I en server komponent:
+
+<CodeSnippet language='ts'>
+{`
+import { AccordionRoot, AccordionHeader, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
+
+<AccordionRoot>
+  <AccordionItem>
+    <AccordionHeader>...</AccordionHeader>
+    <AccordionContent>...</AccordionContent>
+  </AccordionItem>
+</AccordionRoot>
+`}
+</CodeSnippet>
+
+#### I en klient komponent:
+
+<CodeSnippet language='ts'>
+{`
+import { Accordion } from '@digdir/designsystemet-react';
+
+<Accordion.Root>
+  <Accordion.Item>
+    <Accordion.Header>...</Accordion.Header>
+    <Accordion.Content>...</Accordion.Content>
+  </Accordion.Item>
+</Accordion.Root>
+`}
+</CodeSnippet>
+
+<br />
+<br />
+<br />
+
+## CSS
+
+For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css`.
+
+### Layers
+
+Vi bruker [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for å få lavest mulig spesifisitet i våre css klasser.
+Dette betyr at du lett kan overstye med din egen styling.
+
+Alle våre layers ligger under root layeren `ds`.
+Under har vi lagt sub-layers for hver komponent, som `ds.btn`.
+
+Vi har sortert det slik at det som potensielt skal bli overstyrt av andre komponenter kommer først i listen:
+
+<CodeSnippet language='css'>{`@layer ds.base, ds.box, ds.btn;`}</CodeSnippet>
+
+Har du en css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
+
+<CodeSnippet language='css'>{`@layer my-reset, ds;`}</CodeSnippet>

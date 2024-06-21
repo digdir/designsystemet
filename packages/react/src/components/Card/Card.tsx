@@ -8,7 +8,7 @@ export type CardProps = {
    * Changes background & border color
    * @default neutral
    */
-  color?: 'neutral' | 'subtle' | 'first' | 'second' | 'third';
+  color?: 'neutral' | 'subtle' | 'brand1' | 'brand2' | 'brand3';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -21,28 +21,22 @@ export type CardProps = {
   isLink?: boolean;
   /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
   children: ReactNode;
-
-  /**
-   * @deprecated Use `asChild` and `isLink={true}` instead
-   */
-  href?: never;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
-    { color = 'neutral', isLink = false, asChild = false, className, ...rest },
+    { isLink = false, asChild = false, color = 'neutral', className, ...rest },
     ref,
   ) => {
     const Component = asChild ? Slot : 'div';
-
     return (
       <Component
         ref={ref}
         className={cl(
-          `fds-card`,
-          `fds-card--${color}`,
-          isLink && `fds-card--link`,
-          isLink && `fds-focus`,
+          `ds-card`,
+          `ds-card--${color}`,
+          isLink && `ds-card--link`,
+          isLink && `ds-focus`,
           className,
         )}
         {...rest}

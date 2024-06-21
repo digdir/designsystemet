@@ -1,0 +1,52 @@
+.boxContainers {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c2c2c2;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.boxContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.box {
+  height: 46px;
+  width: 46px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark {
+  background-color: #131c27;
+}
+
+.contrastCircle {
+  height: 12px;
+  width: 12px;
+  background-color: white;
+  border: 1px solid #b8b8b8;
+  border-radius: 50%;
+}
+
+.contrastCircleBlack {
+  background-color: black;
+}
+
+.contrastBox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.dark .contrastBox {
+  color: white;
+}

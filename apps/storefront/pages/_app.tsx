@@ -1,6 +1,6 @@
 import '../globals.css';
-import '@digdir/designsystemet-theme/brand/digdir/tokens.css';
 import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme';
 
 import type { AppProps } from 'next/app';
 import { Analytics } from '@vercel/analytics/react';

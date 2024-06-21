@@ -1,3 +1,4 @@
+'use client';
 import type * as React from 'react';
 import { useRouter } from 'next/router';
 import { Heading } from '@digdir/designsystemet-react';
@@ -53,7 +54,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
             <div className={classes.header}>
               <div className={classes.headerText}>
                 <Heading
-                  size='large'
+                  size='lg'
                   className={classes.title}
                 >
                   {data.title}

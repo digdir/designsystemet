@@ -2,9 +2,10 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
+import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 
 import { Container } from '../Container/Container';
-import { Link } from '../Link/Link';
 
 import classes from './Footer.module.css';
 
@@ -27,7 +28,12 @@ const rightLinks = [
   {
     text: 'designsystem@digdir.no',
     url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon aria-hidden='true' />,
+    prefix: (
+      <EnvelopeClosedIcon
+        aria-hidden='true'
+        fontSize='1.5em'
+      />
+    ),
   },
   {
     text: 'Bli invitert til slack',
@@ -84,9 +90,10 @@ const LinkList = (links: LinkListItemProps[]) => {
       {links.map((item, index) => (
         <li key={index}>
           <Link
-            prefix={item.prefix}
             href={item.url}
+            color='neutral'
           >
+            {item.prefix}
             {item.text}
           </Link>
         </li>
@@ -97,13 +104,20 @@ const LinkList = (links: LinkListItemProps[]) => {
 
 const Footer = () => {
   return (
-    <footer className={classes.footer}>
+    <footer
+      className={classes.footer}
+      data-ds-color-mode='dark'
+    >
       <div className={classes.top}>
         <Container className={classes.container}>
           <div>
-            <h2 className={classes.title}>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
               Lages på tvers av offentlige etater:
-            </h2>
+            </Heading>
             <div className={classes.logos}>
               <Image
                 alt='Digdir logo'
@@ -120,23 +134,37 @@ const Footer = () => {
             </div>
             <NextLink
               href='mailto:designsystem@digdir.no'
-              className={classes.button}
+              className={cl(classes.button, 'ds-paragraph-short--sm')}
             >
               Din etat? Ta kontakt!
             </NextLink>
           </div>
           <div>
-            <h2 className={classes.title}>Om nettstedet</h2>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
+              Om nettstedet
+            </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
-            <h2 className={classes.title}>Kom i kontakt med oss</h2>
+            <Heading
+              size='xs'
+              level={2}
+              className={classes.title}
+            >
+              Kom i kontakt med oss
+            </Heading>
             {LinkList(rightLinks)}
           </div>
         </Container>
       </div>
-      <div className={classes.bottom}>
-        <Container>© {getCurrentYear()} Designsystemet</Container>
+      <div className={cl(classes.bottom, 'ds-paragraph--sm')}>
+        <Container>
+          <Paragraph>© {getCurrentYear()} Designsystemet</Paragraph>
+        </Container>
       </div>
     </footer>
   );
