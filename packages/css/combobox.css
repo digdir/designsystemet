@@ -30,6 +30,7 @@
     gap: var(--ds-spacing-1);
     cursor: text;
     padding: var(--ds-spacing-2);
+    border-radius: min(1rem, var(--ds-border-radius-md));
     width: 100%;
     height: auto;
     justify-content: space-between;
