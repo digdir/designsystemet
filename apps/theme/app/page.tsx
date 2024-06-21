@@ -40,11 +40,13 @@ export default function Home() {
   const brandOneTheme = useThemeStore((state) => state.brandOneTheme);
   const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
   const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
+  const borderRadius = useThemeStore((state) => state.borderRadius);
   const setAccentTheme = useThemeStore((state) => state.setAccentTheme);
   const setNeutralTheme = useThemeStore((state) => state.setNeutralTheme);
   const setBrandOneTheme = useThemeStore((state) => state.setBrandOneTheme);
   const setBrandTwoTheme = useThemeStore((state) => state.setBrandTwoTheme);
   const setBrandThreeTheme = useThemeStore((state) => state.setBrandThreeTheme);
+  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
 
   const selectedColor = useThemeStore((state) => state.selectedColor);
 
@@ -117,6 +119,14 @@ export default function Home() {
       window.removeEventListener('scroll', isSticky);
     };
   });
+
+  /* Set border radius token when it changes */
+  useEffect(() => {
+    const previewElem = document.getElementById('preview');
+    if (previewElem) {
+      previewElem.style.setProperty('--ds-border-radius-base', borderRadius);
+    }
+  }, [borderRadius]);
 
   /**
    * Check if the header should be sticky
@@ -256,6 +266,10 @@ export default function Home() {
             onContrastModeChanged={(mode) => {
               setContrastMode(mode);
             }}
+            onBorderRadiusChanged={(radius) => {
+              setBorderRadius(radius);
+            }}
+            borderRadius={borderRadius}
           />
           <Scales themeMode={themeMode} />
 

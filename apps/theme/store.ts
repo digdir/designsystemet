@@ -27,6 +27,8 @@ type ColorStore = {
   setBrandThreeTheme: (theme: ThemeInfo, color: CssColor) => void;
   selectedColor: { color: ColorInfo; type: ColorType };
   setSelectedColor: (color: ColorInfo, type: ColorType) => void;
+  borderRadius: string;
+  setBorderRadius: (radius: string) => void;
 };
 
 const defaultTheme = () => {
@@ -67,6 +69,8 @@ export const useThemeStore = create(
       },
       type: 'accent',
     },
+    borderRadius: '0.25rem',
+    setBorderRadius: (radius) => set({ borderRadius: radius }),
     setSelectedColor: (color, type) =>
       set({ selectedColor: { color: color, type: type } }),
     setAccentTheme: (theme, color) => set({ accentTheme: { theme, color } }),
