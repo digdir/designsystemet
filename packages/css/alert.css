@@ -3,7 +3,7 @@
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
     --dsc-alert-border-radius: var(--ds-border-radius-md);
     --dsc-alert-color: var(--ds-color-neutral-text-default);
-    --dsc-alert-icon-color: var(--dsc-alert-border-color);
+    --dsc-alert-icon-color: var(--ds-color-neutral-text-subtle);
     --dsc-alert-icon-size: var(--ds-sizing-7);
     --dsc-alert-background: var(--ds-color-info-surface-default);
     --dsc-alert-padding: var(--ds-spacing-6);
@@ -32,25 +32,25 @@
 
   .ds-alert--info {
     --dsc-alert-border-color: var(--ds-color-info-border-strong);
-    --dsc-alert-icon-color: var(--ds-color-info-base-default);
+    --dsc-alert-icon-color: var(--ds-color-info-text-subtle);
     --dsc-alert-background: var(--ds-color-info-surface-default);
   }
 
   .ds-alert--warning {
     --dsc-alert-border-color: var(--ds-color-warning-border-default);
-    --dsc-alert-icon-color: var(--ds-color-warning-base-default);
+    --dsc-alert-icon-color: var(--ds-color-warning-text-subtle);
     --dsc-alert-background: var(--ds-color-warning-surface-default);
   }
 
   .ds-alert--success {
     --dsc-alert-border-color: var(--ds-color-success-border-default);
-    --dsc-alert-icon-color: var(--ds-color-success-base-default);
+    --dsc-alert-icon-color: var(--ds-color-success-text-subtle);
     --dsc-alert-background: var(--ds-color-success-surface-default);
   }
 
   .ds-alert--danger {
     --dsc-alert-border-color: var(--ds-color-danger-border-default);
-    --dsc-alert-icon-color: var(--ds-color-danger-base-default);
+    --dsc-alert-icon-color: var(--ds-color-danger-text-subtle);
     --dsc-alert-background: var(--ds-color-danger-surface-default);
   }
 
