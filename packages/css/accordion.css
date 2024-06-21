@@ -1,6 +1,6 @@
 @layer ds.accordion {
   .ds-accordion {
-    --dsc-accordion-border-radius: var(--ds-border-radius-md);
+    --dsc-accordion-border-radius: min(1rem, var(--ds-border-radius-md));
     --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-accordion-background: var(--ds-color-neutral-background-default);
     --dsc-accordion-button-background: var(--ds-color-neutral-background-default);

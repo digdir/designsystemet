@@ -26,7 +26,14 @@ type ThemeToolbarProps = {
   contrastMode: ContrastMode;
 };
 
-export const borderRadii = ['0', '0.25rem', '0.5rem', '0.75rem', '1rem'];
+export const borderRadii = {
+  '0 rem': '0',
+  '0.25 rem': '0.25rem',
+  '0.5 rem': '0.5rem',
+  '0.75 rem': '0.75rem',
+  '1 rem': '1rem',
+  full: '99999px',
+};
 
 export const ThemeToolbar = ({
   accentError,
@@ -110,13 +117,19 @@ export const ThemeToolbar = ({
             className={classes.borderRadiiSelect}
             value={borderRadius}
             onChange={(e) => onBorderRadiusChanged(e.target.value)}
+            style={{
+              textTransform: 'capitalize',
+            }}
           >
-            {borderRadii.map((radius) => (
+            {Object.entries(borderRadii).map(([key, value]) => (
               <option
-                key={radius}
-                value={radius}
+                key={key}
+                value={value}
+                style={{
+                  textTransform: 'capitalize',
+                }}
               >
-                {radius}
+                {key}
               </option>
             ))}
           </NativeSelect>

@@ -7,7 +7,7 @@
     padding: 0 var(--ds-spacing-2);
     min-height: var(--ds-sizing-8);
     background-color: var(--dsc-tag-background);
-    border-radius: var(--ds-border-radius-sm);
+    border-radius: min(1rem, var(--ds-border-radius-sm));
     display: flex;
     align-items: center;
     box-sizing: border-box;
