@@ -35,7 +35,46 @@ Preview.args = {
   size: 'md',
 };
 
-export const WithoutHeading: Story = (args) => (
+export const Nummerert: Story = (args) => (
+  <List.Root {...args}>
+    <List.Heading>Slik gjør du</List.Heading>
+    <List.Ordered>
+      <List.Item>
+        Tørk over kyllingfiletene før du krydrer og steker. Dette vil gi en
+        finere stekeskorpe på kjøttet. Ikke bruk kjøkkenpapir som loer.
+        Papirbiter i maten er ikke noe særlig.
+      </List.Item>
+      <List.Item>
+        Ha salt og pepper på filetene og eventuelt annet krydder for ekstra
+        smak. Hvitløkpepper, paprika eller provence kan gi en god smak!
+      </List.Item>
+      <List.Item>
+        Stek filetene på sterk varme i to minutter på hver side. Sett deretter
+        på lokk og stek videre på svak varme i syv minutter på hver side.
+      </List.Item>
+    </List.Ordered>
+  </List.Root>
+);
+
+export const Unummerert: Story = (args) => (
+  <List.Root {...args}>
+    <List.Heading level={2}>
+      Foreningen har plikt til å ha revisor hvis de har
+    </List.Heading>
+    <List.Unordered>
+      <List.Item>
+        et gjennomsnittlig antall ansatte som tilsvarer ti årsverk eller mer
+      </List.Item>
+      <List.Item>balansesum som er 27 millioner kroner eller mer</List.Item>
+      <List.Item>
+        driftsinntekter for sin samlede virksomhet på 7 millioner kroner eller
+        mer
+      </List.Item>
+    </List.Unordered>
+  </List.Root>
+);
+
+export const UtenOverskrift: Story = (args) => (
   <List.Root {...args}>
     <List.Unordered>
       <List.Item>Lasagne</List.Item>
@@ -45,7 +84,7 @@ export const WithoutHeading: Story = (args) => (
   </List.Root>
 );
 
-export const Advanced: Story = (args) => (
+export const Innrykk: Story = (args) => (
   <List.Root {...args}>
     <List.Heading level={2}>Nested lists</List.Heading>
     <List.Unordered>
@@ -69,12 +108,21 @@ export const Advanced: Story = (args) => (
           </List.Unordered>
         </List.Root>
       </List.Item>
-      <List.Item>List Item 3</List.Item>
+      <List.Item>
+        <List.Root>
+          <List.Heading level={3}> List Item 3</List.Heading>
+          <List.Unordered>
+            <List.Item>List Item 3.1</List.Item>
+            <List.Item>List Item 3.2</List.Item>
+            <List.Item>List Item 3.3</List.Item>
+          </List.Unordered>
+        </List.Root>
+      </List.Item>
     </List.Unordered>
   </List.Root>
 );
 
-export const LinkList: Story = (args) => (
+export const ListeMedLinker: Story = (args) => (
   <List.Root {...args}>
     <List.Heading>Designsystemet</List.Heading>
     <List.Unordered
