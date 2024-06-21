@@ -52,9 +52,9 @@ I videoen under kan du se hele prosessen for å få satt opp designsystemet med 
 
 1. Er du designer kan det være lurt å snakke med en utvikler, slik at dere har en felles forståelse av hvordan tokens kobler sammen Figma og kode. For å kunne legge til egne tokens i dagens oppsett må du lage en kopi av dette repoet: [design-tokens](https://github.com/designsystemet/design-tokens). Velg "Use this template" og "Create a new repository".
 
-2. Gå til [theme.designsystemet.no](theme.designsystemet.no). Legg inn dine farger og velg `Kopier` > `Light theme`. [Les mer om fargesystemet her](/grunnleggende/for-designere/fargesystem).
+2. Gå til [next.theme.designsystemet.no](https://next.theme.designsystemet.no). Legg inn dine farger og velg `Kopier` > `Light theme`. [Les mer om fargesystemet her](/grunnleggende/for-designere/fargesystem). 
 
-3. Gå til repoet du lagde i steg 1. Lim inn koden du kopierte i steg 2 her: `DittRepo/design-tokens/primitives/colors/light/theme1.json`.
+3. Gå til repoet du lagde i steg 1. Lim inn koden du kopierte i steg 2 her: `DittRepo/design-tokens/primitives/colors/light/theme.json`.
 
 4. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit)
 
@@ -75,7 +75,7 @@ I videoen under kan du se hele prosessen for å få satt opp designsystemet med 
    - **I Figma Tokens**, under `Sync > GitHub`, fyll inn:
      - Name: `DesignsystemetTokens`
      - Personal Access Token: `*** din PAT ***` (som du fikk fra Github)
-     - Repository: `der-din-fork-ligger/designsystemet`. (Bytt ut Digdir med eieren av ditt repo)
+     - Repository: `owner (brukernavn)/navn på repo`
      - Branch: "main".
      - File Path: `design-tokens`
      - Trykk "Save"
@@ -99,8 +99,8 @@ Ved å _ikke_ ha en kobling kan du sette opp Figma-bibiloteket med dine farger u
 
 ### Slik går du frem:
 
-1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
-2. Filen har nå sannsyligvis lagt seg i dine "drafts" nå, så du må flytte den til et fornuftig sted i din organisasjon.
-3. Gå til [theme.designsystemet.no](theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
-4. Åpne "local variables" i Figma og bytt til settet `Mode`. **IKKE endre noe i `theme` og `semantic`-settet.** Du skal kun redigere HEX-kodene i `mode`-settet. I `mode` - bytt ut `accent`, `neutral`, `brand1`, `brand2`, `brand3` med dine egne farger. Du kan bytte under både light og dark om ønskelig. Det er litt tungvindt nå siden du må manuelt klippe og lime hex-koder. Vi jobber med en [plugin til Figma](https://github.com/digdir/designsystemet/tree/next/plugins/figma-sync) som gjør at du bare kan kopiere inn hele sulamitten. 🎉
-5. Nå skal du se alle komponentene med dine egne profilfarger. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
+1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. Filen har nå lagt seg i dine "drafts", så du må flytte den til et fornuftig sted i din organisasjon.
+2. Installer designystemets [plugin for Figma](https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta).
+3. Gå til [next.theme.designsystemet.no](https://next.theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
+4. Kopier JSON-koden og lim den inn i pluginen du installerte i steg 2.
+5. Velg "Oppdater variabler". Nå skal du se alle komponentene med dine egne profilfarger. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
