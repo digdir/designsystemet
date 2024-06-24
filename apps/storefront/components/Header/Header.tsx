@@ -86,13 +86,15 @@ const Header = () => {
                 key={index}
               >
                 <Link
+                  suppressHydrationWarning
                   href={item.url}
                   onClick={() => setOpen(false)}
                   prefetch={false}
                   className={cl(
-                    href === item.url ? classes.active : '',
+                    item.url.includes(href) && classes.active,
                     classes.link,
                     'ds-paragraph--md',
+                    'ds-focus',
                   )}
                 >
                   {item.name}

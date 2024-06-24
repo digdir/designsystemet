@@ -60,7 +60,6 @@
   padding: 0 var(--ds-spacing-5);
   margin-top: var(--ds-spacing-7);
   border-radius: 2px;
-  transition: 0.1s all;
   color: var(--color-text-on_inverted-subtle);
   border: 1px dashed var(--color-text-on_inverted-subtle);
 }

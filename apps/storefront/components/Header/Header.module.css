@@ -47,10 +47,11 @@
   text-decoration: none;
   border-bottom: 3px solid transparent;
   padding-bottom: var(--ds-spacing-2);
-  transition: 0.1s all ease-out;
+  transition: 0.1s border-color ease-out;
 }
 
-.link:hover {
+.link:hover,
+.link:focus-visible {
   border-color: var(--ds-color-neutral-border-subtle);
 }
 
