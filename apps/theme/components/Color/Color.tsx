@@ -42,6 +42,8 @@ const Color = ({
         }}
         style={{ backgroundColor: color.hex }}
         className={cl(classes.box, featured && classes.featured, 'ds-focus')}
+        aria-label={`${type} farge ${color.number}, ${color.name}`}
+        type='button'
       ></button>
 
       {showColorMeta && (

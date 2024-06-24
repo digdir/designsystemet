@@ -202,6 +202,7 @@ export const TokenModal = ({
               size='sm'
               onClick={() => onButtonClick()}
               onMouseEnter={() => setToolTipText('Kopier nettadresse')}
+              autoFocus
             >
               Del
               <ArrowForwardIcon

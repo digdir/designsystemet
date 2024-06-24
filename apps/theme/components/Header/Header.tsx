@@ -15,6 +15,7 @@ export const Header = () => {
           <Link
             href='/'
             className='ds-focus'
+            aria-label='Gå til forsiden'
           >
             <img
               src='img/logo.svg'
