@@ -37,14 +37,14 @@ code {
   margin: 5px;
 }
 
-ul {
+/* ul {
   margin-top: -10px;
   padding-left: 22px;
-}
+} */
 
-ul li {
+/* ul li {
   line-height: 2.2em;
-}
+} */
 
 .interactionSurface0:hover {
   background-color: var(--interaction0Hover) !important;

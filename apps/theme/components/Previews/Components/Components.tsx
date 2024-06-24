@@ -23,6 +23,9 @@ import {
   Chip,
   Textarea,
   Fieldset,
+  Alert,
+  DropdownMenu,
+  HelpText,
 } from '@digdir/designsystemet-react';
 
 import classes from './Components.module.css';
@@ -512,6 +515,27 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>
+      </div>
+      <div className={cl(classes.card, classes.alert)}>
+        <Alert>
+          Designsystemet er en samling av retningslinjer, prinsipper og
+          ressurser som skal gjøre det enklere å lage gode digitale tjenester
+          for innbyggerne.
+        </Alert>
+      </div>
+      <div className={cl(classes.card, classes.dropdown)}>
+        <DropdownMenu.Root placement='top'>
+          <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
+          <DropdownMenu.Content>
+            <DropdownMenu.Item>Norsk</DropdownMenu.Item>
+            <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
+            <DropdownMenu.Item>Spansk</DropdownMenu.Item>
+            <DropdownMenu.Item>Fransk</DropdownMenu.Item>
+          </DropdownMenu.Content>
+          <HelpText title='Du har ikke valgt språk'>
+            Velg språk for å endre innholdet på siden
+          </HelpText>
+        </DropdownMenu.Root>
       </div>
     </div>
   );
