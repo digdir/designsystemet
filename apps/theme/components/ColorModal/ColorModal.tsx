@@ -1,4 +1,4 @@
-import { Modal } from '@digdir/designsystemet-react';
+import { Modal, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { getCssVariable, hexToHSL } from '@digdir/designsystemet/color';
 
@@ -22,8 +22,8 @@ const Field = ({
 }) => {
   return (
     <div className={classes.field}>
-      <div className={classes.label}>{label}</div>
-      <div className={classes.value}>{value}</div>
+      <Paragraph className={classes.label}>{label}</Paragraph>
+      <Paragraph className={classes.value}>{value}</Paragraph>
       {copyBtn && <CopyBtn text={value} />}
     </div>
   );

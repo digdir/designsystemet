@@ -41,7 +41,7 @@ const Header = () => {
       <div className={classes.container}>
         <div>
           <Link
-            className={classes.logoLink}
+            className={cl(classes.logoLink, 'ds-focus')}
             href='/'
             aria-label='Designsystem forside'
             onClick={() => setOpen(false)}
@@ -107,7 +107,7 @@ const Header = () => {
               <Link
                 href='https://github.com/digdir/designsystemet'
                 target='_blank'
-                className={cl(classes.linkIcon, classes.github)}
+                className={cl(classes.linkIcon, classes.github, 'ds-focus')}
                 title='Designsystemets GitHub-repositorium'
               >
                 <GithubLogo />
@@ -117,7 +117,7 @@ const Header = () => {
               <Link
                 href='https://www.figma.com/@designsystemet'
                 target='_blank'
-                className={cl(classes.linkIcon, classes.figma)}
+                className={cl(classes.linkIcon, classes.figma, 'ds-focus')}
                 title='Designsystemets Figma-prosjekt'
               >
                 <FigmaLogo />

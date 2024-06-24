@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
-import { Tooltip } from '@digdir/designsystemet-react';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './Copybtn.module.css';
 
@@ -16,16 +16,18 @@ export const CopyBtn = ({ text }: CopyBtnProps) => {
       placement='top'
       portal={false}
     >
-      <button
+      <Button
         className={classes.btn}
         onClick={() => {
           setPopupText('Kopiert!');
           void navigator.clipboard.writeText(text);
         }}
+        variant='secondary'
+        size='sm'
         onMouseEnter={() => setPopupText('Kopier')}
       >
         <FilesIcon />
-      </button>
+      </Button>
     </Tooltip>
   );
 };
