@@ -7,7 +7,6 @@
 .container {
   display: flex;
   align-items: center;
-  border-radius: 4px;
   cursor: pointer;
   height: 48px;
   width: 150px;
@@ -15,13 +14,17 @@
   transition:
     0.04s border,
     0.04s outline;
-  border: 1px solid #c0c0c0;
-  background-color: transparent;
+  border: solid 1px var(--ds-color-neutral-border-default);
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
 }
 
-.container:hover:not(:focus-visible) {
-  border: 1px solid #3d3d3d;
-  outline: 1px solid #3d3d3d;
+@media (hover: hover) and (pointer: fine) {
+  .container:not(:focus-visible, :disabled, [aria-disabled]):hover {
+    border-color: var(--ds-color-accent-border-strong);
+    box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
+  }
 }
 
 .color {
@@ -46,7 +49,7 @@
 }
 
 .label {
-  margin-bottom: 12px;
+  margin-bottom: var(--ds-spacing-2);
   font-size: 18px;
   font-weight: 500;
   display: flex;
