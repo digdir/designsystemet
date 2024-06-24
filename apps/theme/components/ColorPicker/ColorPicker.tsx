@@ -25,7 +25,7 @@ export const ColorPicker = ({
   disabled,
   colorError,
 }: ColorPickerProps) => {
-  const [color, setColor] = useState<string>('#0062BA');
+  const [color, setColor] = useState<string>('#FFF');
   const [showModal, setShowModal] = useState(false);
   const handleClick = () => {
     setShowModal(!showModal);
@@ -50,9 +50,10 @@ export const ColorPicker = ({
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
           <Popover.Trigger asChild>
-            <div
+            <button
               className={cl(
                 classes.status,
+                'ds-focus',
                 colorError == 'decorative' && classes.statusYellow,
                 colorError == 'interaction' && classes.statusOrange,
               )}
@@ -66,7 +67,7 @@ export const ColorPicker = ({
               {colorError == 'interaction' && (
                 <ExclamationmarkIcon title='Viktig informasjon om fargen' />
               )}
-            </div>
+            </button>
           </Popover.Trigger>
           <Popover.Content style={{ width: '700px' }}>
             <div>
@@ -106,7 +107,7 @@ export const ColorPicker = ({
           {getStatus()}
         </div>
         <button
-          className={classes.container}
+          className={cl(classes.container, 'ds-focus')}
           onClick={() => handleClick()}
         >
           <div
@@ -118,7 +119,7 @@ export const ColorPicker = ({
       </div>
       <div className={cl(classes.popup, showModal && classes.show)}>
         <ChromePicker
-          onChange={({ hex }: { hex: string }) => {
+          onChangeComplete={({ hex }: { hex: string }) => {
             setColor(hex);
             onColorChanged && onColorChanged(hex as CssColor);
           }}

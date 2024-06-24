@@ -29,6 +29,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.menuItem,
+              'ds-focus',
               previewMode === 'components' && classes.menuItemActive,
             )}
             onClick={() => setPreviewMode('components')}
@@ -38,6 +39,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.menuItem,
+              'ds-focus',
               previewMode === 'dashboard' && classes.menuItemActive,
             )}
             onClick={() => setPreviewMode('dashboard')}
@@ -47,27 +49,33 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.menuItem,
+              'ds-focus',
               previewMode === 'landing' && classes.menuItemActive,
               classes.menuItemDisabled,
             )}
+            aria-disabled
           >
             Landingsside
           </button>
           <button
             className={cl(
               classes.menuItem,
+              'ds-focus',
               previewMode === 'forms' && classes.menuItemActive,
               classes.menuItemDisabled,
             )}
+            aria-disabled
           >
             Skjemaer
           </button>
           <button
             className={cl(
               classes.menuItem,
+              'ds-focus',
               previewMode === 'auth' && classes.menuItemActive,
               classes.menuItemDisabled,
             )}
+            aria-disabled
           >
             Autentisering
           </button>
@@ -76,6 +84,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.toggle,
+              'ds-focus',
               themeMode === 'light' && classes.active,
             )}
             onClick={() => onThemeModeChange('light')}
@@ -89,6 +98,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.toggle,
+              'ds-focus',
               themeMode === 'dark' && classes.active,
             )}
             onClick={() => onThemeModeChange('dark')}
@@ -102,6 +112,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           <button
             className={cl(
               classes.toggle,
+              'ds-focus',
               themeMode === 'contrast' && classes.active,
             )}
             onClick={() => onThemeModeChange('contrast')}

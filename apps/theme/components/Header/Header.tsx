@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import cl from 'clsx/lite';
 
 import { Container } from '../Container/Container';
 
@@ -11,7 +12,10 @@ export const Header = () => {
     <header className={classes.header}>
       <Container className={classes.container}>
         <div className={classes.logoContainer}>
-          <Link href='/'>
+          <Link
+            href='/'
+            className='ds-focus'
+          >
             <img
               src='img/logo.svg'
               alt=''
@@ -19,26 +23,44 @@ export const Header = () => {
           </Link>
           <div className={classes.tag}>Beta</div>
         </div>
-        <div className={classes.links}>
-          <Link
-            className={currentPath === '/' ? classes.active : ''}
-            href='/'
-          >
-            Fargevelger
-          </Link>
-          <Link
-            className={currentPath === '/testside' ? classes.active : ''}
-            href='/testside'
-          >
-            Testside
-          </Link>
-          <Link
-            className={currentPath === '/om-verktoyet' ? classes.active : ''}
-            href='/om-verktoyet'
-          >
-            Om verktøyet
-          </Link>
-        </div>
+        <ul className={classes.links}>
+          <li className={classes.item}>
+            <Link
+              className={cl(
+                currentPath === '/' ? classes.active : '',
+                classes.link,
+                'ds-focus',
+              )}
+              href='/'
+            >
+              Fargevelger
+            </Link>
+          </li>
+          <li className={classes.item}>
+            <Link
+              className={cl(
+                currentPath === '/testside' ? classes.active : '',
+                classes.link,
+                'ds-focus',
+              )}
+              href='/testside'
+            >
+              Testside
+            </Link>
+          </li>
+          <li className={classes.item}>
+            <Link
+              className={cl(
+                currentPath === '/om-verktoyet' ? classes.active : '',
+                classes.link,
+                'ds-focus',
+              )}
+              href='/om-verktoyet'
+            >
+              Om verktøyet
+            </Link>
+          </li>
+        </ul>
       </Container>
     </header>
   );

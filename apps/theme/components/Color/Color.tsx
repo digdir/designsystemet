@@ -41,7 +41,7 @@ const Color = ({
           );
         }}
         style={{ backgroundColor: color.hex }}
-        className={cl(classes.box, featured && classes.featured)}
+        className={cl(classes.box, featured && classes.featured, 'ds-focus')}
       ></button>
 
       {showColorMeta && (

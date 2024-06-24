@@ -7,19 +7,22 @@
   height: 34px;
 }
 
-.links a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  margin-left: 32px;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 10px;
-  font-size: 18px;
-  letter-spacing: 0.1px;
+.item {
+  list-style: none;
+  margin-left: var(--ds-spacing-7);
 }
 
-.links a:hover {
-  border-color: #d4d4d4;
+.link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  padding-bottom: var(--ds-spacing-2);
+  transition: 0.1s border-color ease-out;
+}
+
+.link:hover,
+.link:focus-visible {
+  border-color: var(--ds-color-neutral-border-subtle);
 }
 
 .container {
