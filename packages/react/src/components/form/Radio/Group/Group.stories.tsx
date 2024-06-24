@@ -55,11 +55,12 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
   return (
     <>
-      <span style={{ display: 'flex', gap: '1rem' }}>
+      <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
         <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
         <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
         <Paragraph spacing>Du har valgt: {value}</Paragraph>
       </span>
+      <br />
       <Radio.Group
         legend='Velg pizza (påkreved)'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'

@@ -7,12 +7,12 @@ import * as RadioGroupStories from './Group/Group.stories';
 
 # Radio
 
-`Radio` er en knapp som skal brukes i kombinasjon med andre radioknapper for å velge mellom flere alternativer. Vi anbefaler å bruke `Radio.Group` hvis man har behov for radioknapper.
+`Radio` viser brukeren en liste med alternativer de kan velge mellom. Brukerne kan bytte mellom alternativene, men må velge ett. Bruk `Radio.Group` for å gruppere radioknappene.
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du radio
 
 ```tsx
 import { Radio } from '@digdir/designsystemet-react';
@@ -23,7 +23,11 @@ import { Radio } from '@digdir/designsystemet-react';
 </Radio.Group>;
 ```
 
-### Enkel
+## Eksempler
+
+<br />
+
+### Enkel radio
 
 `Radio` skal alltid ha en label i en form eller annen. Bruk din egen `label` eller ledetekten fra en annen plass, husk å bruk da `aria-label` eller `aria-labelledby`
 
@@ -63,3 +67,35 @@ Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
 Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun bruke dette dersom du har kun to alternativer og kort label, som i f.eks typisk ja/nei spørsmål.
 
 <Canvas of={RadioGroupStories.Inline} />
+
+## Retningslinjer
+
+Vi bruker radio-komponenten når vi skal gi brukerne mulighet til å velge kun ett alternativ.
+
+Passer til å
+
+- velge ett alternativ
+
+<br />
+
+Passer ikke til å
+
+- navigere
+- velge flere alternativer samtidig
+- vise mer enn syv alternativer
+
+<br />
+
+For grupper med radioknapper, kan vi ha opptil syv valg. Da viser vi dem helst på hver sin linje vertikalt, så det blir lett å skanne. Hvis vi bare har to valg med korte ledetekster, kan vi vise dem ved siden av hverandre.
+
+Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`switch`](/docs/komponenter-switch--docs) eller [`checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
+
+Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg eller ikke klarer å ta et bevisst valg selv.
+
+## Tekst i komponenten
+
+En gruppe med radioknapper bør alltid ha en overskrift.
+
+Radioknapper skal alltid ha en ledetekst. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte.
+
+Noen ganger kan vi velge å skjule ledeteksten visuelt. Det kan for eksempel være i tabeller, der vi heller vil at tabelloverskriftene skal fungere som ledetekster. Da koder vi med `aria-label` eller `aria-labelledby`.
