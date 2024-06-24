@@ -116,8 +116,9 @@ export const Components = () => {
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
             <NativeSelect
-              label=''
+              label='Velg handling'
               size='sm'
+              hideLabel
             >
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
