@@ -141,6 +141,7 @@ export const ThemeToolbar = ({
             brand1Color={brandOneTheme.color}
             brand2Color={brandTwoTheme.color}
             brand3Color={brandThreeTheme.color}
+            borderRadius={borderRadius}
           />
         </div>
       </div>
