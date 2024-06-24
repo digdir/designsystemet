@@ -26,6 +26,8 @@ import {
   Alert,
   DropdownMenu,
   HelpText,
+  Skeleton,
+  Spinner,
 } from '@digdir/designsystemet-react';
 
 import classes from './Components.module.css';
@@ -517,10 +519,18 @@ export const Components = () => {
         </Accordion.Root>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert>
-          Designsystemet er en samling av retningslinjer, prinsipper og
-          ressurser som skal gjøre det enklere å lage gode digitale tjenester
-          for innbyggerne.
+        <Alert severity='info'>
+          Dette er informasjon som du bør lese for å forstå hva som skjer
+        </Alert>
+        <Alert severity='warning'>
+          Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
+        </Alert>
+        <Alert severity='danger'>
+          Dette er en melding om at noe har gått galt og du bør gjøre noe med
+          det
+        </Alert>
+        <Alert severity='success'>
+          Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
@@ -536,6 +546,31 @@ export const Components = () => {
             Velg språk for å endre innholdet på siden
           </HelpText>
         </DropdownMenu.Root>
+      </div>
+      <div className={cl(classes.card, classes.loaders)}>
+        <div className={classes.loadersRest}>
+          <Skeleton.Circle
+            width='70px'
+            height='70px'
+          />
+          <Skeleton.Rectangle
+            height='70px'
+            width='100px'
+          />
+        </div>
+        <Skeleton.Text width='100%' />
+        <Skeleton.Text width='100%' />
+        <div>
+          <Spinner
+            title='laster innhold'
+            size='md'
+          />
+          <Spinner
+            title='laster innhold'
+            size='md'
+            color='accent'
+          />
+        </div>
       </div>
     </div>
   );

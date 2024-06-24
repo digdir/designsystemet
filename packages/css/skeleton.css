@@ -12,6 +12,7 @@
   .ds-skeleton--circle {
     width: 1.3em;
     border-radius: var(--ds-border-radius-full);
+    aspect-ratio: 1 / 1;
   }
 
   .ds-skeleton--rectangle {

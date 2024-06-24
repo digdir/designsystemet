@@ -25,6 +25,7 @@ type TokenModalProps = {
   brand1Color: CssColor;
   brand2Color: CssColor;
   brand3Color: CssColor;
+  borderRadius: string;
 };
 
 export const TokenModal = ({
@@ -33,6 +34,7 @@ export const TokenModal = ({
   brand1Color,
   brand2Color,
   brand3Color,
+  borderRadius,
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [JSONTheme, setJSONTheme] = useState('');
@@ -132,6 +134,8 @@ export const TokenModal = ({
     } else {
       CSS = '[data-ds-theme="contrast"] {';
     }
+
+    CSS += `--ds-border-radius-base: ${borderRadius};`;
 
     for (const key in obj.theme) {
       for (const color in obj.theme[key as ColorType]) {

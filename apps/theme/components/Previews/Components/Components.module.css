@@ -58,6 +58,22 @@
 
 .alert {
   grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
+
+.loaders {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
+
+.loadersRest {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-2);
 }
 
 .dropdown {
