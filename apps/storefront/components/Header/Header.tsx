@@ -91,7 +91,7 @@ const Header = () => {
                   onClick={() => setOpen(false)}
                   prefetch={false}
                   className={cl(
-                    item.url.includes(href) && classes.active,
+                    href.includes(item.url) && classes.active,
                     classes.link,
                     'ds-paragraph--md',
                     'ds-focus',
