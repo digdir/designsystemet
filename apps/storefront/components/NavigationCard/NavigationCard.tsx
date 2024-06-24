@@ -34,7 +34,8 @@ const NavigationCard = ({
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
       <Heading
         level={level}
-        className={cl(classes.title, 'ds-heading--xs')}
+        size='sm'
+        className={classes.title}
       >
         {title}
       </Heading>

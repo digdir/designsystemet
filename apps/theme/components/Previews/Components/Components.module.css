@@ -11,7 +11,7 @@
 
 .card {
   background-color: var(--foreground);
-  border-radius: 8px;
+  border-radius: min(1rem, var(--ds-border-radius-md));
   padding: 24px;
 }
 
@@ -54,6 +54,18 @@
 
 .comboBox {
   grid-column: span 4;
+}
+
+.alert {
+  grid-column: span 6;
+}
+
+.dropdown {
+  grid-column: span 3;
+  display: flex;
+  gap: var(--ds-spacing-2);
+  justify-content: center;
+  align-items: center;
 }
 
 .tabs {
