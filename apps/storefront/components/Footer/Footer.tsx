@@ -134,7 +134,11 @@ const Footer = () => {
             </div>
             <NextLink
               href='mailto:designsystem@digdir.no'
-              className={cl(classes.button, 'ds-paragraph-short--sm')}
+              className={cl(
+                classes.button,
+                'ds-paragraph-short--sm',
+                'ds-focus',
+              )}
             >
               Din etat? Ta kontakt!
             </NextLink>
