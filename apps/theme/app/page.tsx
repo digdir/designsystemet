@@ -68,8 +68,12 @@ export default function Home() {
   /* get theme from query on initial load */
   useEffect(() => {
     const theme = params.get('theme') as Mode;
+    const borderRadius = params.get('borderRadius') as string;
     if (theme) {
       setThemeMode(theme);
+    }
+    if (borderRadius) {
+      setBorderRadius(borderRadius);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -213,6 +217,11 @@ export default function Home() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
+  const borderQuerySetter = (borderRadius: string) => {
+    params.set('borderRadius', borderRadius);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   /**
    * Get the color error for a color
    *
@@ -268,6 +277,7 @@ export default function Home() {
             }}
             onBorderRadiusChanged={(radius) => {
               setBorderRadius(radius);
+              borderQuerySetter(radius);
             }}
             borderRadius={borderRadius}
           />
