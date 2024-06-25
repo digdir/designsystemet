@@ -34,7 +34,7 @@ Preview.args = {
 
 export const Error: StoryFn<typeof Radio> = () => (
   <Radio.Group
-    legend='Velg pizza (påkreved)'
+    legend='Velg pizza'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
   >
@@ -62,7 +62,7 @@ export const Controlled: StoryFn<typeof Radio> = () => {
       </span>
       <br />
       <Radio.Group
-        legend='Velg pizza (påkreved)'
+        legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
         onChange={setValue}
