@@ -1,0 +1,216 @@
+import {
+  Card,
+  CardContent,
+  List,
+  ListRoot,
+  ListHeading,
+  ListUnordered,
+  ListItem,
+} from '@digdir/designsystemet-react';
+
+{/* The importing should allow likeList.Root, but it throw a react error */}
+
+import { Image } from '@components';
+import { PageLayout } from '@layouts';
+import { Contributors } from '@blog';
+
+export const metadata = {
+  title: 'Kontrast',
+  description: 'WCAG 3.0 foreslår ny kontrastmetode',
+};
+
+export default ({ children }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'WCAG 3.0 foreslår ny kontrastmetode',
+      date: '11. april 2024',
+      author: 'Brønnøysundregistrene',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
+    }}
+  />
+);
+
+For å sikre god lesbarhet skal all tekst ha tilstrekkelig kontrast mot bakgrunnen. Dette er viktig for alle brukere, særlig under krevende lysforhold. De som trenger dette mest, er svaksynte, dyslektikere og fargeblinde (kilde: [uutilsynet](https://www.uutilsynet.no/veiledning/kontrast/48)).
+
+## Behov for strengere krav til kontrast
+
+Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjenester. Web Content Accessibility Guidelines (WCAG) inneholder suksesskriterier og forslag til løsninger for å lykkes. Men det er ikke samsvar mellom dagens kontrastregler og kravet om at alle skal kunne se innholdet.
+
+<Card color='brand3'>
+  <CardContent>
+    <ListRoot>
+      <ListHeading
+        level={3}
+        size='xs'
+      >
+        Gjeldende regelverk, WCAG 2.1
+      </ListHeading>
+      <ListUnordered>
+        <ListItem>
+          **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
+          teksten og bakgrunnen er minst 4,5:1. [1.4.3 Kontrast (minimum), WCAG
+          2.1
+          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
+        </ListItem>
+        <ListItem>
+          **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den visuelle
+          presentasjonen av det følgende har et kontrastforhold på minst 3:1 mot
+          farge(r) som ligger ved siden av. [1.4.11 Kontrast for ikke-tekstlig
+          innhold, WCAG 2.1
+          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
+        </ListItem>
+      </ListUnordered>
+    </ListRoot>
+  </CardContent>
+</Card>
+
+<br />
+
+<Card color='brand2'>
+  <CardContent>
+    <ListRoot>
+      <ListHeading
+        level={3}
+        size='xs'
+      >
+        Fremtidig eller strengere:
+      </ListHeading>
+      <ListUnordered>
+        <ListItem>
+          **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle presentasjonen
+          av tekst og bilder av tekst har et kontrastforhold på minst 7:1,
+          unntatt uvesentlig tekst og skriftstørrelser større enn 18px eller
+          14px fet. [ 1.4.6 Kontrast (forbedret), WCAG 2.1
+          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
+        </ListItem>
+        <ListItem>
+          **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
+          fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
+          mellom samme piksler i fokusert og ikke-fokusert tilstand.
+          [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
+          W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+        </ListItem>
+        <ListItem>
+          **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
+          (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
+          bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
+          for å regne ut kontrasten.
+        </ListItem>
+      </ListUnordered>
+    </ListRoot>
+  </CardContent>
+</Card>
+
+## Mer presis metode
+
+WCAG 3.0 foreslår nå en mer presis metode enn dagens standard, for å kalkulere kontrast og sette terskelverdier.
+
+<ListRoot>
+  <ListUnordered>
+    <ListItem>
+      Metoden forbedrer hvordan verdien mellom to farger bestemmes, og skiller
+      også på om fargene er i forgrunnen eller i bakgrunnen.
+    </ListItem>
+    <ListItem>
+      Den setter også tydelige terskelverdier eller målverdier for valg av font,
+      tekststørrelse og font-vekt. Metoden heter Advanced Perceptual Contrast
+      Algorithm (APCA).
+    </ListItem>
+    <ListItem>
+      Målet vårt er å ligge over AAA-krav i WCAG 2.1, og vi vil dermed ligge
+      nærmere terskelverdiene i APCA. Det øker sjansen for at vi klarer å
+      oppfylle kravet om at alle, også svaksynte, skal kunne se innholdet på
+      nettstedet.
+    </ListItem>
+  </ListUnordered>
+</ListRoot>
+
+## I dag bruker vi en høyere standard enn kravene til tilgjengelighet
+
+For at innholdet i offentlige, digitale tjenester skal være tilgjengelig for alle brukere, følger vi i dag en ønsket standard for kontrast som er høyere enn kravene som stilles til tilgjengelighet. Standarden heter WCAG 2.1, nivå AAA.
+
+For å øke lesbarheten enda mer, har vi ambisjoner om å oppnå kontrast på nivå 4. Det er toppnivået i APCA-metoden, som nå blir foreslått i WCAG 3.0
+
+## Hvorfor duger ikke dagens standard?
+
+Vi vet at selv om en løsning oppfyller de konkrete kravene fra regelverket om universell utforming, så er den ikke nødvendigvis universelt utformet og tilgjengelig. Siden øyets evne til å oppfatte farger og lys ikke er en del av metoden, er den uegnet til å beregne forskjellen i lysstyrken i fargeparet.
+
+Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til universell utforming, men det betyr ikke at innholdet er tilgjengelig eller universelt utformet. Derfor strekker vi oss langt i å også oppfylle de fremtidige WCAG-3 kravene som bruker APCA-metoden.
+
+<Card color='brand3'>
+  <CardContent>
+    **Kontrast i WCAG 2 «luminosity contrast algorithm** <br />
+    _«I WCAG 2 er kontrast en måleenhet for forskjellen i den opplevde lysintensiteten
+    mellom to farger. Denne forskjellen er beskrevet som et forhold fra 1:1 (for
+    eksempel hvit på hvit) til 21:1 (for eksempel svart på hvit).»_ – WebAIM, vår
+    oversettelse. Kontrastene regnes ut ved hjelp av fargenes RGB, HEX eller HSL
+    verdier i tillegg til transparens (alpha), om fargen er tekst, grafikk, forgrunn
+    eller bakgrunn har ingen betydning.
+  </CardContent>
+</Card>
+
+<br />
+
+<Card color='brand2'>
+  <CardContent>
+    **Kontrast i WCAG 3 «visual contrast algorithm»** <br />I WCAG 3 benyttes en
+    visuell-kontrast algoritme som kalles for APCA, det er fremdeles
+    fargeverdiene som benyttes for å kalkulere kontrasten, men også om fargen er
+    tekst, grafikk, forgrunn eller bakgrunn, i tillegg har også valg av font,
+    font-vekt og størrelse en innvirkning på hvilke kontrastverdier som er
+    godkjent. Forskjellige farger som i WCAG 2 ville oppnådd like
+    kontrastverdier vil i APCA kunne få andre verdier fordi en i større grad
+    kalkulerer ut fra øyets evne til å oppfatte farger enn kun den tekniske
+    fargeverdien.
+  </CardContent>
+</Card>
+
+## Verktøy for å teste kontrastverdier
+
+Fargesystemet for Brønnøysundregistrene finner du i [kontrastverktøyet her](https://contrast.brreg.no/). Du kan teste hvordan kontrastverdier endrer seg etter hvilken tekstfarge, størrelse og vekt du velger. Og du kan se hvilke nivåer av krav som er oppfylt, om det er WCAG AA eller AAA nivåer, eller APCA.
+
+<Image
+  src='/img/Kontrast-terskelverdier.png'
+  alt='Tabell som viser tekststørrelser og vekting, og i hviken grad de oppfyller kontrastkravet.'
+  boxShadow={true}
+/>
+
+Terskelverdiene (over) som viser om kontrasten er godkjent eller ikke, er forenklet fra en tidlig «sølv»-nivåtabell fra APCA-arbeidet. Når en ferdig modell er testet og anbefalt fra WCAG 3, endres terskelverdiene.
+
+<Image
+  src='/img/Kontrast-eksempel.jpg'
+  alt='Illustrasjonen viser to eksempler (A og B) med 16px stor tekst i normal vekt, begge variantene har 4,6 til 1 i kontrast. '
+  boxShadow={false}
+  style={{
+    maxWidth: '350px',
+  }}
+/>
+
+I eksempelet over ser vi at selv om kontrasten som er utregnet til å være lik med WCAG 2-metoden, er graden av lesbarhet ulik for tekstene i variant A og Variant B.
+Begge tekstene har 16px stor tekst i normal vekt, og begge variantene har 4,6 til 1 i kontrast.
+I variant A har teksten fargen #6D7879og bakgrunnen er hvit. Teksten er sånn passe lesbar.
+I variant B er teksten svart, og bakgrunnen er farge #6D7879. Teksten er noe mindre lesbar enn variant A.
+
+<br />
+<br />
+<Card color='brand1'>
+  <CardContent>
+    **Bidra til artikkelen?** <br />
+    Vi vil gjerne ha dine innspill og tilbakemeldinger på artikkelen. Send oss en
+    e-post på: designsystem@digdir.no eller [kontakt oss i Github](https://github.com/digdir/designsystemet/issues/new).
+  </CardContent>
+</Card>
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund',
+    'Gørild Døhl',
+    'Ann-Elisabeth Hammer',
+    'Lasse Febakke Straum',
+    'Marianne Røsvik',
+  ]}
+/>
+<br />
+<br />

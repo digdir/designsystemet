@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
+import { usePathname } from 'next/navigation';
 
 import { GithubLogo } from './logos/github-logo';
 import { FigmaLogo } from './logos/figma-logo';
@@ -11,7 +12,7 @@ import classes from './Header.module.css';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const href = typeof window !== 'undefined' ? window.location.pathname : '';
+  const pathName = usePathname() || '';
 
   const menu = [
     {
@@ -91,7 +92,7 @@ const Header = () => {
                   onClick={() => setOpen(false)}
                   prefetch={false}
                   className={cl(
-                    href.includes(item.url) && classes.active,
+                    pathName === item.url ? classes.active : '',
                     classes.link,
                     'ds-paragraph--md',
                     'ds-focus',
