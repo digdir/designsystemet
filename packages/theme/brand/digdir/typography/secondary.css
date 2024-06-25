@@ -2,7 +2,7 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.base.typography.secondary {
+@layer ds.theme.typography.secondary {
 [data-ds-typography="secondary"] {
   --ds-font-family: IBM Plex Mono;
   --ds-font-weight-medium: 500;

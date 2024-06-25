@@ -19,7 +19,7 @@ export const cssVariables: Format = {
   format: async function ({ dictionary, file, options, platform }) {
     const { allTokens } = dictionary;
     const { outputReferences } = options;
-    const { selector, isCalculatedToken, mode } = platform;
+    const { selector, isCalculatedToken, mode, layer } = platform;
 
     const mode_ = mode as string;
 
@@ -51,6 +51,6 @@ export const cssVariables: Format = {
     const content = `{\n${formattedVariables.join('\n')}\n}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
 
-    return header + `${selector} ${content}` + autoSelectorContent;
+    return header + `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`;
   },
 };

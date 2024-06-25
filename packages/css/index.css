@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-@layer ds.base, ds.box, ds.btn;
+@layer ds.theme, ds.baseline, ds.box, ds.btn;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./baseline/ds-reset.css') layer(ds.base);
-@import url('./utils.css') layer(ds.base);
-@import url('./typography/label.css') layer(ds.base);
-@import url('./typography/heading.css') layer(ds.base);
-@import url('./typography/paragraph.css') layer(ds.base);
-@import url('./typography/ingress.css') layer(ds.base);
-@import url('./typography/error-message.css') layer(ds.base);
+@import url('./baseline/ds-reset.css') layer(ds.baseline.reset);
+@import url('./baseline/utils.css') layer(ds.baseline.utils);
+@import url('./baseline/typography/label.css') layer(ds.baseline.typography);
+@import url('./baseline/typography/heading.css') layer(ds.baseline.typography);
+@import url('./baseline/typography/paragraph.css') layer(ds.baseline.typography);
+@import url('./baseline/typography/ingress.css') layer(ds.baseline.typography);
+@import url('./baseline/typography/error-message.css') layer(ds.baseline.typography);
 @import url('./button.css');
 @import url('./box.css');
 @import url('./alert.css');
