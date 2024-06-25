@@ -3,7 +3,7 @@
 
 import { useRef } from 'react';
 
-import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
 
 /**
  * Synchronizes the css animation of multiple elements with the same `animationName`.

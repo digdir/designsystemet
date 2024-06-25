@@ -1,2 +1,2 @@
 export * from './components';
-export { useSynchronizedAnimation } from './hooks';
+export { useSynchronizedAnimation, useIsomorphicLayoutEffect } from './hooks';

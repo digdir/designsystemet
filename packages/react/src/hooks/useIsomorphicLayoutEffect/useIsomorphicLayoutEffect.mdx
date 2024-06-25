@@ -1,0 +1,15 @@
+import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+
+<Meta title='Hooks/useIsomorphicLayoutEffect' />
+
+# useIsomorphicLayoutEffect
+
+Hook som bruker enten `useLayoutEffect` eller `useEffect` avhengig av om det kjører på klienten eller serveren.
+
+```tsx
+useIsomorphicLayoutEffect(() => {
+  console.log(
+    'I nettleseren, er eg `useLayoutEffect`, men i SSR, er eg `useEffect`.',
+  );
+}, []);
+```
