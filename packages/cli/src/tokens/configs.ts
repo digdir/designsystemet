@@ -197,7 +197,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
 };
 
 export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
-  // const selector = `${typography === 'default' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
 
   return {
     log: { verbosity: 'silent' },
@@ -206,7 +206,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
       css: {
         prefix,
         typography,
-        // selector,
+        selector,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],

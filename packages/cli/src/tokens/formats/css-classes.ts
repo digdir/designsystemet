@@ -122,9 +122,8 @@ export const cssClassesTypography: Format = {
 
     const classes = formattedTokens.classes.join('\n');
     const variables = formattedTokens.variables.join('\n');
-    const variables_ = `:root {\n${variables}\n}\n`;
-    const content = selector ? `${selector} {\n${classes}\n}` : classes;
+    const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
 
-    return header + `@layer ds.base.typography.${typography} {\n${variables_}\n${content}\n}\n`;
+    return header + `@layer ds.base.typography.${typography} {\n${content}\n}\n`;
   },
 };
