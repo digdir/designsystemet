@@ -1,14 +1,14 @@
 .modalContent {
   margin-bottom: 16px;
+  overflow: hidden;
 }
 
 .container {
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
-  min-height: 275px;
+  min-height: 255px;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
 .left {
@@ -16,13 +16,14 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   font-size: 16px;
 }
 
 .right {
   width: 50%;
   border-left: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 0 7px 7px 0;
 }
 
 .field {
@@ -41,5 +42,92 @@
 }
 
 .value {
-  margin-right: 8px;
+  margin-right: 4px;
+}
+
+.description {
+  margin-bottom: 24px;
+  margin-top: -6px;
+  font-size: 16px;
+  line-height: 1.5em;
+  width: 80%;
+}
+
+.accordion {
+  border: none;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.accordionContent {
+  padding-left: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordionHeading {
+  border: none;
+  background-color: transparent;
+}
+
+.accordion button {
+  padding: 0;
+}
+
+.contrastItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.contrastBox {
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-right: 24px;
+  flex-grow: 1;
+  margin-bottom: -14px;
+}
+
+.contrastBox:last-child {
+  border-right: none;
+}
+
+.contrastItem svg {
+  color: #169c00;
+}
+
+.contrastItem .contrastError {
+  color: #dd4b4b;
+}
+
+.contrastSubTitle {
+  font-weight: 500;
+  margin-top: 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.contrastContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.contrastContainer:last-child {
+  margin-bottom: 0;
+}
+
+.apcaHelpText {
+  height: 18px;
+  width: 18px;
+}
+
+.contrastTitle {
+  font-size: 16px;
+}
+
+.contrastItemSubText {
+  font-weight: 400;
 }

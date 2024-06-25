@@ -264,6 +264,7 @@ export default function Home() {
       <ColorModal
         color={selectedColor}
         colorModalRef={colorModalRef}
+        colorTheme={accentTheme.theme.light}
       />
 
       <main className={classes.main}>

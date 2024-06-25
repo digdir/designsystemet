@@ -1,6 +1,7 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 import chroma from 'chroma-js';
+import { APCAcontrast, sRGBtoY } from 'apca-w3';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -100,6 +101,19 @@ export const hexToHSL = (H: string) => {
   l = +(l * 100).toFixed(1);
 
   return [h, s, l];
+};
+
+/**
+ * Converts a HEX color '#xxxxxx' into an array of HSLuv values '[h,s,l]'
+ *
+ * @param hex A hex color string
+ * @returns
+ */
+export const hexToHsluv = (hex: string) => {
+  const conv = new Hsluv();
+  conv.hex = hex;
+  conv.hexToHsluv();
+  return [conv.hsluv_h, conv.hsluv_s, conv.hsluv_l];
 };
 
 /**
@@ -318,16 +332,31 @@ export const getContrastFromLightness = (lightness: number, mainColor: CssColor,
  * @param {CssColor} color2 The second color
  * @returns {boolean} If the colors have enough contrast
  */
-export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: 'text' | 'decorative' = 'text') => {
+export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: 'decorative' | 'aa' | 'aaa' = 'aa') => {
   const contrast = getContrastFromHex(color1, color2);
   if (contrast !== null) {
-    if (type === 'text') {
+    if (type === 'aaa') {
+      return contrast >= 7;
+    } else if (type === 'aa') {
       return contrast >= 4.5;
     } else {
       return contrast >= 3;
     }
   }
   return false;
+};
+
+export const getApcaContrastLc = (textColor: CssColor, backgroundColor: CssColor) => {
+  const textColorRgb = hexToRgb(textColor);
+  const backgroundColorRgb = hexToRgb(backgroundColor);
+
+  if (textColorRgb && backgroundColorRgb) {
+    return APCAcontrast(
+      sRGBtoY([textColorRgb.r, textColorRgb.g, textColorRgb.b]),
+      sRGBtoY([backgroundColorRgb.r, backgroundColorRgb.g, backgroundColorRgb.b]),
+    );
+  }
+  return 0;
 };
 
 /**

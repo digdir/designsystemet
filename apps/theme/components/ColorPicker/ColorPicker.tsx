@@ -69,7 +69,7 @@ export const ColorPicker = ({
               )}
             </button>
           </Popover.Trigger>
-          <Popover.Content style={{ width: '700px' }}>
+          <Popover.Content style={{ width: '800px' }}>
             <div>
               {colorError === 'none' &&
                 'Denne fargen har god nok kontrast og kan brukes normalt i systemet.'}
@@ -77,16 +77,15 @@ export const ColorPicker = ({
             <div>
               {colorError == 'decorative' && (
                 <div>
-                  Base Default fargen har mindre enn 3:1 kontrast mot
-                  bakgrunnsfargene og bør brukes varmsomt på viktige interaktive
-                  komponenter og flater. Mer dokumentasjon kommer senere.
+                  Vær oppmerksom på at Base Default fargen har mindre enn 3:1
+                  kontrast mot bakgrunnsfargene. Se alle kontrastgrensene inne
+                  på hver farge.
                 </div>
               )}
               {colorError == 'interaction' && (
                 <div>
                   Base Default fargen har ikke god nok kontrast mot hvit eller
-                  svart tekst på tvers av Base fargene. Unngå bruk av enkelte
-                  komponenter. Mer dokumentasjon kommer senere.
+                  svart tekst på tvers av Base fargene.
                 </div>
               )}
             </div>
