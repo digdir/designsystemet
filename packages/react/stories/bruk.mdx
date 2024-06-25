@@ -120,7 +120,7 @@ import { Accordion } from '@digdir/designsystemet-react';
 
 ## CSS
 
-For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css`.
+For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css` og `@digdir/designsystemet-theme`.
 
 ### Layers
 
@@ -137,3 +137,41 @@ Vi har sortert det slik at det som potensielt skal bli overstyrt av andre kompon
 Har du en css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
 
 <CodeSnippet language='css'>{`@layer my-reset, ds;`}</CodeSnippet>
+
+### Data attributter
+
+Vi tilbyr flere data attributter som kan brukes for å endre tema på komponentene.
+
+<br />
+#### `data-ds-color-mode`
+
+Dette attributtet kan brukes til å endre fargetema på komponentene. Mulige verdier er `light`, `dark` og `auto`.
+
+Dersom `auto` er valgt som verdi vil farge temaet endres basert på brukerens preferanser ved hjelp av [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
+<br />
+#### `data-ds-typography`
+
+Dette attributtet brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
+
+Et vanlig bruksområde for denne attributten er når du f,eks, ønsker en monospace font på tabeller.
+
+Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
+
+<CodeSnippet language='html'>
+  {`
+  <style>
+    .mono-tekst {
+      font-family: var(--ds-font-family), monospaced;
+    }
+  </style>
+  <table
+    class='mono-tekst'
+    data-ds-typography='secondary'
+  >
+    …
+  </table>
+  `}
+</CodeSnippet>
+
+Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).

@@ -32,7 +32,6 @@ export async function run(options: Options): Promise<void> {
 
   const relevant$themes = $themes.filter((theme) => {
     const group = R.toLower(R.defaultTo('')(theme.group));
-    // if (group === 'typography' && theme.name !== 'default') return false;
     if (group === 'size' && theme.name !== 'default') return false;
 
     return true;
