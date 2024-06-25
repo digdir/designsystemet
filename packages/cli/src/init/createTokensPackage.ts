@@ -1,27 +1,15 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
-import { bold, dim, red, green } from 'kleur';
+import chalk from 'chalk';
 import type { Choice, Options } from 'prompts';
 import prompts from 'prompts';
 
-import packageJsonTemplate from '../template/template-files/package.json';
-
+import packageJsonTemplate from './template/template-files/package.json';
 import generateMetadata from './generateMetadataJson.js';
 import generateThemes from './generateThemesJson.js';
-import {
-  toGeneratedCssFileName,
-  normalizeTokenSetName,
-  toValidPackageName,
-} from './utils.js';
+import { toGeneratedCssFileName, normalizeTokenSetName, toValidPackageName } from './utils.js';
 import { nextStepsMarkdown } from './nextStepsMarkdown.js';
-
-const DEFAULT_FILES_PATH = path.join(__dirname, '../template/default-files');
-
-const TOKEN_TEMPLATE_FILES_PATH = path.join(
-  __dirname,
-  '../template/template-files/design-tokens',
-);
 
 const MODES = ['Light', 'Dark', 'Contrast'] as const;
 export type Mode = (typeof MODES)[number];
@@ -45,12 +33,17 @@ interface ThemeAnswers {
 
 const promptOptions: Options = {
   onCancel: () => {
-    console.log(`${red('✖')} Operation cancelled`);
+    console.log(`${chalk.red('✖')} Operation cancelled`);
     process.exit();
   },
 };
 
 export async function createTokensPackage(targetDir: string) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const DIRNAME: string = import.meta.dirname || __dirname;
+  const DEFAULT_FILES_PATH = path.join(DIRNAME, './template/default-files');
+  const TOKEN_TEMPLATE_FILES_PATH = path.join(DIRNAME, './template/template-files/design-tokens');
+
   const TARGET_DIR = path.resolve(process.cwd(), targetDir);
   const initialPackageName = toValidPackageName(path.basename(TARGET_DIR));
 
@@ -82,8 +75,7 @@ export async function createTokensPackage(targetDir: string) {
         {
           title: 'Ignore',
           value: 'ignore',
-          description:
-            'Keep directory as is. Files may be overwritten with new output.',
+          description: 'Keep directory as is. Files may be overwritten with new output.',
         },
         {
           title: 'Exit',
@@ -134,7 +126,7 @@ export async function createTokensPackage(targetDir: string) {
     ←/→/[space]: Toggle selection
     a: Toggle all
     enter/return: Complete answer
-${green('◉')}   Light ${dim('- This is the default mode, and cannot be disabled')}`,
+${chalk.green('◉')}   Light ${chalk.dim('- This is the default mode, and cannot be disabled')}`,
         onState: (obj: { value: Choice[] }) => {
           obj.value.unshift({ title: 'Light', value: 'Light', selected: true });
         },
@@ -180,25 +172,19 @@ ${green('◉')}   Light ${dim('- This is the default mode, and cannot be disable
   console.log(
     `
 Will now create the following:
-  ${bold('Package name')}: ${packageName}
-  ${bold('Directory')}: ${TARGET_DIR}
-  ${bold('Tokens directory')}: ${TOKENS_TARGET_DIR}
-  ${bold('Themes')}: ${themes.join(', ')}
-  ${bold('Default theme')}: ${defaultTheme}
-  ${bold('Color modes')}: ${modes.join(', ')}
+  ${chalk.bold('Package name')}: ${packageName}
+  ${chalk.bold('Directory')}: ${TARGET_DIR}
+  ${chalk.bold('Tokens directory')}: ${TOKENS_TARGET_DIR}
+  ${chalk.bold('Themes')}: ${themes.join(', ')}
+  ${chalk.bold('Default theme')}: ${defaultTheme}
+  ${chalk.bold('Color modes')}: ${modes.join(', ')}
 `,
   );
   if (directoryAction === 'clean') {
-    console.log(
-      bold().red(`Warning: Contents of ${TARGET_DIR} will be deleted`),
-    );
+    console.log(chalk.bold.red(`Warning: Contents of ${TARGET_DIR} will be deleted`));
   }
   if (directoryAction === 'ignore') {
-    console.log(
-      bold().yellow(
-        `Warning: Existing files in ${TARGET_DIR} may be overwritten`,
-      ),
-    );
+    console.log(chalk.bold.yellow(`Warning: Existing files in ${TARGET_DIR} may be overwritten`));
   }
 
   const res = await prompts(
@@ -223,10 +209,7 @@ Will now create the following:
     recursive: true,
   });
   if (tokensDir !== 'design-tokens') {
-    await fs.rename(
-      path.join(TARGET_DIR, 'design-tokens'),
-      path.join(TOKENS_TARGET_DIR),
-    );
+    await fs.rename(path.join(TARGET_DIR, 'design-tokens'), path.join(TOKENS_TARGET_DIR));
   }
 
   try {
@@ -239,20 +222,14 @@ Will now create the following:
     for (const mode of modes.map(normalizeTokenSetName)) {
       // Copy the global file for the color mode
       await fs.cp(
-        path.join(
-          TOKEN_TEMPLATE_FILES_PATH,
-          `primitives/colors/${mode}/global.json`,
-        ),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/colors/${mode}/global.json`),
         path.join(TOKENS_TARGET_DIR, `primitives/colors/${mode}/global.json`),
         { recursive: true },
       );
 
       // Create theme primitives for the color mode
       const template = await fs.readFile(
-        path.join(
-          TOKEN_TEMPLATE_FILES_PATH,
-          `primitives/colors/${mode}/theme-template.json`,
-        ),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/colors/${mode}/theme-template.json`),
       );
       await fs.writeFile(
         path.join(TOKENS_TARGET_DIR, `primitives/colors/${mode}/${theme}.json`),
@@ -261,9 +238,7 @@ Will now create the following:
     }
 
     // Create main theme token set
-    const template = await fs.readFile(
-      path.join(TOKEN_TEMPLATE_FILES_PATH, `themes/theme-template.json`),
-    );
+    const template = await fs.readFile(path.join(TOKEN_TEMPLATE_FILES_PATH, `themes/theme-template.json`));
     await fs.writeFile(
       path.join(TOKENS_TARGET_DIR, `themes/${theme}.json`),
       template.toString('utf-8').replaceAll('<theme>', theme),
@@ -282,29 +257,18 @@ Will now create the following:
 
   // Configure package.json file
   packageJsonTemplate.name = packageName;
-  packageJsonTemplate.main = packageJsonTemplate.main.replace(
-    '<default-theme>',
-    toGeneratedCssFileName(defaultTheme),
-  );
-  await fs.writeFile(
-    path.join(TARGET_DIR, 'package.json'),
-    JSON.stringify(packageJsonTemplate, undefined, 2),
-  );
+  packageJsonTemplate.main = packageJsonTemplate.main.replace('<default-theme>', toGeneratedCssFileName(defaultTheme));
+  await fs.writeFile(path.join(TARGET_DIR, 'package.json'), JSON.stringify(packageJsonTemplate, undefined, 2));
 
   const readmePath = path.join(TARGET_DIR, 'README.md');
   const currentReadme = await fs.readFile(readmePath);
   await fs.writeFile(
     readmePath,
-    [
-      currentReadme.toString('utf-8'),
-      nextStepsMarkdown(themes, modes, tokensDir, packageName),
-    ].join('\n'),
+    [currentReadme.toString('utf-8'), nextStepsMarkdown(themes, modes, tokensDir, packageName)].join('\n'),
   );
 
   console.log('🎉 Files successfully generated!');
-  console.log(
-    `Read about the next steps in the generated README at ${readmePath}`,
-  );
+  console.log(`Read about the next steps in the generated README at ${readmePath}`);
 }
 
 function isValidThemeName(themes: string[], value: string): true | string {

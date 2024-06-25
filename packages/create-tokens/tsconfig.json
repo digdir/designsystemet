@@ -4,5 +4,5 @@
     "composite": false
   },
   "rootDir": "./src",
-  "include": ["src", "template"]
+  "include": ["src"]
 }

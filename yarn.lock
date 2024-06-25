@@ -2285,12 +2285,7 @@ __metadata:
   resolution: "@digdir/create-tokens@workspace:packages/create-tokens"
   dependencies:
     "@commander-js/extra-typings": "npm:^12.0.1"
-    "@tokens-studio/types": "npm:^0.4.0"
-    "@types/prompts": "npm:^2.4.9"
-    change-case: "npm:^5.3.0"
     commander: "npm:^12.0.0"
-    kleur: "npm:^3.0.3"
-    prompts: "npm:^2.4.0"
     tsx: "npm:^4.11.2"
   bin:
     create-tokens: index.js
@@ -2380,8 +2375,10 @@ __metadata:
     "@types/jscodeshift": "npm:^0.11.11"
     "@types/node": "npm:^20.12.7"
     "@types/object-hash": "npm:^3"
+    "@types/prompts": "npm:^2.4.9"
     "@types/ramda": "npm:^0.29.9"
     chalk: "npm:^5.3.0"
+    change-case: "npm:^5.3.0"
     chroma-js: "npm:^2.4.2"
     commander: "npm:^12.0.0"
     fast-glob: "npm:^3.3.2"
@@ -2390,6 +2387,7 @@ __metadata:
     jscodeshift: "npm:^0.15.2"
     object-hash: "npm:^3.0.0"
     postcss: "npm:^8.4.38"
+    prompts: "npm:^2.4.0"
     ramda: "npm:^0.29.1"
     rimraf: "npm:^5.0.5"
     style-dictionary: "npm:^4.0.0-prerelease.34"

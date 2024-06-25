@@ -2,4 +2,4 @@
 
 import { require } from 'tsx/cjs/api';
 
-require('./src/bin/create-tokens.ts', import.meta.url);
+require('./src/create-tokens.ts', import.meta.url);
