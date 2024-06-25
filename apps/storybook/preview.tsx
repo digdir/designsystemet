@@ -153,6 +153,7 @@ const preview: Preview = {
           'Kom i gang',
           'Endringslogger',
           'Komponenter',
+          'Hooks',
           'Experimental',
           'Primitives',
           'Avviklet',
