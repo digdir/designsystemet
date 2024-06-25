@@ -3,8 +3,20 @@
 
 import { useRef } from 'react';
 
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect';
 
+/**
+ * Synchronizes the css animation of multiple elements with the same `animationName`.
+ *
+ * @example
+ * ```tsx
+ *  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+ *
+ *  <div
+ *   ref={ref}
+ *  />
+ * ```
+ */
 export function useSynchronizedAnimation<T>(animationName: string) {
   const ref = useRef<T>(null);
 

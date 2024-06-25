@@ -1,0 +1,26 @@
+import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+
+import * as SyncStories from './useSynchronizedAnimation.stories';
+import { useSynchronizedAnimation } from '../';
+
+<Meta of={SyncStories} />
+
+# useSynchronizedAnimation
+
+En react hook for å synkronisere CSS animasjoner på tvers av flere elementer.
+
+<Primary />
+
+Du sender inn navnet på animasjonen du vil synkronisere.
+Hooken returnerer en `ref`, som du sender til elementet ditt.
+Animasjonen på elementet ditt blir synkronsisert til den første animasjonen med samme navn på siden.
+
+## Bruk
+
+```tsx
+const SyncedBox = () => {
+  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+
+  return <div ref={ref} />;
+};
+```
