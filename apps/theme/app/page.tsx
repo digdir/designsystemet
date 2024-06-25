@@ -41,6 +41,7 @@ export default function Home() {
   const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
   const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
   const borderRadius = useThemeStore((state) => state.borderRadius);
+  const selectedColor = useThemeStore((state) => state.selectedColor);
   const setAccentTheme = useThemeStore((state) => state.setAccentTheme);
   const setNeutralTheme = useThemeStore((state) => state.setNeutralTheme);
   const setBrandOneTheme = useThemeStore((state) => state.setBrandOneTheme);
@@ -48,16 +49,11 @@ export default function Home() {
   const setBrandThreeTheme = useThemeStore((state) => state.setBrandThreeTheme);
   const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
 
-  const selectedColor = useThemeStore((state) => state.selectedColor);
-
   const [accentError, setAccentError] = useState<ColorError>('none');
   const [neutralError, setNeutralError] = useState<ColorError>('none');
   const [brandOneError, setBrandOneError] = useState<ColorError>('none');
   const [brandTwoError, setBrandTwoError] = useState<ColorError>('none');
   const [brandThreeError, setBrandThreeError] = useState<ColorError>('none');
-
-  const [themeMode, setThemeMode] = useState<Mode>('light');
-  const [contrastMode, setContrastMode] = useState<ContrastMode>('aa');
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -65,18 +61,8 @@ export default function Home() {
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
-  /* get theme from query on initial load */
-  useEffect(() => {
-    const theme = params.get('theme') as Mode;
-    const borderRadius = params.get('borderRadius') as string;
-    if (theme) {
-      setThemeMode(theme);
-    }
-    if (borderRadius) {
-      setBorderRadius(borderRadius);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const themeMode = (params.get('theme') as Mode) || 'light';
+  const contrastMode = (params.get('contrastMode') as ContrastMode) || 'aa';
 
   useEffect(() => {
     mapTokens();
@@ -122,15 +108,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', isSticky);
     };
-  });
-
-  /* Set border radius token when it changes */
-  useEffect(() => {
-    const previewElem = document.getElementById('preview');
-    if (previewElem) {
-      previewElem.style.setProperty('--ds-border-radius-base', borderRadius);
-    }
-  }, [borderRadius]);
+  }, []);
 
   /**
    * Check if the header should be sticky
@@ -212,15 +190,50 @@ export default function Home() {
     }
   };
 
-  const themeQuerySetter = (themeMode: Mode) => {
-    params.set('theme', themeMode);
+  /**
+   * Set the query params
+   *
+   * TODO: Add support for setting colors
+   */
+  const setQueryParams = ({
+    theme,
+    borderRadius,
+    contrastMode,
+  }: {
+    colors?: ThemeInfo;
+    theme?: Mode;
+    borderRadius?: string;
+    contrastMode?: ContrastMode;
+  }) => {
+    theme && params.set('theme', theme);
+    typeof borderRadius === 'string' &&
+      params.set('borderRadius', borderRadius);
+    contrastMode && params.set('contrastMode', contrastMode);
+
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const borderQuerySetter = (borderRadius: string) => {
-    params.set('borderRadius', borderRadius);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  const updateBoderRadius = (radius: string) => {
+    const previewElem = document.getElementById('preview');
+    if (previewElem) {
+      previewElem.style.setProperty('--ds-border-radius-base', radius);
+    }
+
+    setBorderRadius(radius);
+    setQueryParams({ borderRadius: radius });
   };
+
+  const updateTheme = (theme: Mode) => {
+    setQueryParams({ theme });
+  };
+
+  /* get theme from query on initial load */
+  useEffect(() => {
+    const borderRadius = params.get('borderRadius') as string;
+    if (typeof borderRadius === 'string') {
+      updateBoderRadius(borderRadius);
+    }
+  }, []);
 
   /**
    * Get the color error for a color
@@ -273,22 +286,16 @@ export default function Home() {
               updateColor(colorType, color, theme);
             }}
             onContrastModeChanged={(mode) => {
-              setContrastMode(mode);
+              setQueryParams({ contrastMode: mode });
             }}
-            onBorderRadiusChanged={(radius) => {
-              setBorderRadius(radius);
-              borderQuerySetter(radius);
-            }}
+            onBorderRadiusChanged={updateBoderRadius}
             borderRadius={borderRadius}
           />
           <Scales themeMode={themeMode} />
 
           <Previews
             themeMode={themeMode}
-            onThemeModeChange={(themeMode: Mode) => {
-              setThemeMode(themeMode);
-              themeQuerySetter(themeMode);
-            }}
+            onThemeModeChange={updateTheme}
           />
         </Container>
       </main>

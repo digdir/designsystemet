@@ -103,7 +103,11 @@ export const ColorPicker = ({
     >
       <div className={classes.picker}>
         <div className={classes.label}>
-          <div>{label}</div>
+          <span
+            className={cl('ds-label', 'ds-label--md', 'ds-font-weight--medium')}
+          >
+            {label}
+          </span>
           {getStatus()}
         </div>
         <button
