@@ -62,8 +62,9 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
       <span style={{ display: 'flex', gap: '1rem' }}>
         <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
         <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
-        <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       </span>
+      <br />
+      <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       <br />
       <Checkbox.Group
         legend='Skal du reise til noen av disse landene?'

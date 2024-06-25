@@ -10,17 +10,12 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
-
-Vær oppmerksom på:
-
-- Ikke bruk `Checkbox` når det er flere enn 7 alternativer.
-- Vis listen vertikalt, da er det lettere for brukeren å lese alternativene kjapt.
+Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du checkbox
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -86,10 +81,11 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 ## Retningslinjer for checkbox
 
-- Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller `Combobox` (kommer snart).
+Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller [`Combobox`](/docs/komponenter-combobox--docs).
 
-- Ikke bruk `Checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
-  <br />
+Ikke bruk `Checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
+
+<br />
 
 ### Plasering
 
@@ -114,12 +110,7 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 <br />
 
-Det finnes noen unntak:
-
-- I tabeller, for eksempel i et spørreskjema.
-- For å velge rader i tabeller.
-
-I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+Unntaket er i tabeller, for eksempel i et spørreskjema. I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
 
 <br />
 
