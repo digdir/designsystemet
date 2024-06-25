@@ -49,7 +49,7 @@ export const cssClassesTypography: Format = {
   name: 'ds/css-classes-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { outputReferences } = options;
-    const { selector, typography } = platform;
+    const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
 
@@ -124,6 +124,6 @@ export const cssClassesTypography: Format = {
     const variables = formattedTokens.variables.join('\n');
     const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
 
-    return header + `@layer ds.base.typography.${typography} {\n${content}\n}\n`;
+    return header + `@layer ${layer} {\n${content}\n}\n`;
   },
 };

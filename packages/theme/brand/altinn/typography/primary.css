@@ -2,7 +2,7 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.base.typography.primary {
+@layer ds.theme.typography.primary {
 :root, [data-ds-typography="primary"] {
   --ds-font-family: Helvetica Neue;
   --ds-font-weight-medium: 500;

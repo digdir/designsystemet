@@ -78,6 +78,7 @@ type GetConfig = (options: {
 
 export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
+  const layer = `ds.theme.color.${mode}`;
 
   return {
     log: { verbosity: 'silent' },
@@ -89,6 +90,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         mode,
         theme,
         selector,
+        layer,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -112,6 +114,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
+  const layer = `ds.theme.semantic`;
 
   /**
    * This is a workaround for our formatters to support transative transformers while retaining outputReference.
@@ -134,6 +137,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         basePxFontSize,
         isCalculatedToken,
         selector,
+        layer,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -198,6 +202,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
 
 export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const layer = `ds.theme.typography.${typography}`;
 
   return {
     log: { verbosity: 'silent' },
@@ -207,6 +212,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         prefix,
         typography,
         selector,
+        layer,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
