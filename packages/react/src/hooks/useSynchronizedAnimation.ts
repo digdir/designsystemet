@@ -1,8 +1,9 @@
+// Inspired by Sam Selikoff
+// https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
+
 import { useRef } from 'react';
 
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
-
-const stashedTime: { [key: string]: CSSNumberish | null } = {};
 
 export function useSynchronizedAnimation<T>(animationName: string) {
   const ref = useRef<T>(null);
@@ -16,26 +17,28 @@ export function useSynchronizedAnimation<T>(animationName: string) {
           animation.animationName === animationName,
       );
 
+    const firstOfType = animations.find(
+      (animation) =>
+        'animationName' in animation &&
+        animation.animationName === animationName,
+    );
+
     const myAnimation = animations.find(
       (animation) =>
         (animation.effect as KeyframeEffect)?.target === ref.current,
     );
 
-    if (
-      myAnimation &&
-      myAnimation === animations[0] &&
-      stashedTime[animationName]
-    ) {
-      myAnimation.currentTime = stashedTime[animationName];
+    if (myAnimation && myAnimation === firstOfType) {
+      myAnimation.currentTime = 0;
     }
 
-    if (myAnimation && myAnimation !== animations[0]) {
-      myAnimation.currentTime = animations[0].currentTime;
+    if (myAnimation && firstOfType && myAnimation !== firstOfType) {
+      myAnimation.currentTime = firstOfType.currentTime;
     }
 
     return () => {
-      if (myAnimation && myAnimation === animations[0]) {
-        stashedTime[animationName] = myAnimation.currentTime;
+      if (myAnimation && firstOfType) {
+        myAnimation.currentTime = firstOfType.currentTime;
       }
     };
   }, [animationName]);
