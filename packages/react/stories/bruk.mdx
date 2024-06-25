@@ -146,15 +146,15 @@ Vi tilbyr flere data attributter som kan brukes for å endre tema på komponente
 #### `data-ds-color-mode`
 
 Dette attributtet kan brukes til å endre fargetema på komponentene. Mulige verdier er `light`, `dark` og `auto`.
-
 Dersom `auto` er valgt som verdi vil farge temaet endres basert på brukerens preferanser ved hjelp av [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 <br />
 #### `data-ds-typography`
 
 Dette attributtet brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
-
 Et vanlig bruksområde for denne attributten er når du f,eks, ønsker en monospace font på tabeller.
+
+Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
 
 Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
 
@@ -173,5 +173,3 @@ Dersom du skal bruke denne attributten må du huske å definere `font-family` ti
   </table>
   `}
 </CodeSnippet>
-
-Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
