@@ -107,10 +107,3 @@ export const Inline: StoryFn<typeof Radio.Group> = () => (
     <Radio value='nei'>Nei</Radio>
   </Radio.Group>
 );
-
-export const Table: StoryFn<typeof Radio.Group> = () => (
-  <Radio.Group legend='Tabell?'>
-    <Radio value='ja'></Radio>
-    <Radio value='nei'></Radio>
-  </Radio.Group>
-);
