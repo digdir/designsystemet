@@ -21,7 +21,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     p: (props: ParagraphProps) => {
-      return <Paragraph {...props} />;
+      return (
+        <Paragraph
+          {...props}
+          spacing
+        />
+      );
     },
     a: (props) => {
       return <Link {...(props as LinkProps)} />;
