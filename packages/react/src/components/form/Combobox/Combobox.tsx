@@ -8,7 +8,7 @@ import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
-import useDebounce from '../../../utilities/useDebounce';
+import useDebounce from '../../../utilities/hooks/useDebounce';
 import { omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 

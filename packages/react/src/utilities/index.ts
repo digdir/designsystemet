@@ -1,4 +1,5 @@
 export * from './objectUtils';
+export * from './hooks';
 export {
   RovingTabindexRoot,
   useRovingTabindex,

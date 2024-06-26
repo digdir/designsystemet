@@ -16,7 +16,7 @@ import {
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
 
-import { useIsomorphicLayoutEffect } from '../../hooks';
+import { useIsomorphicLayoutEffect } from '../../utilities';
 
 import { DropdownMenuContext } from './DropdownMenuRoot';
 

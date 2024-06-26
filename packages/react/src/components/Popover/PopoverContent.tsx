@@ -18,7 +18,7 @@ import {
 import cl from 'clsx/lite';
 
 import { Paragraph } from '../Typography';
-import { useIsomorphicLayoutEffect } from '../../hooks';
+import { useIsomorphicLayoutEffect } from '../../utilities';
 
 import { PopoverContext } from './PopoverRoot';
 

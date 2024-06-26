@@ -1,4 +1,4 @@
-import useDebounce from '../../../utilities/useDebounce';
+import useDebounce from '../../../utilities/hooks/useDebounce';
 
 import type useCombobox from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';

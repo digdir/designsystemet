@@ -1,7 +1,7 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import * as hooks from '../../hooks';
+import * as hooks from '../../utilities';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';

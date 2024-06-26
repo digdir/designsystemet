@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import cl from 'clsx/lite';
 
-import { useSynchronizedAnimation } from '../../../hooks';
+import { useSynchronizedAnimation } from '../../../utilities';
 
 export type RectangleProps = {
   /** The width of the component */
