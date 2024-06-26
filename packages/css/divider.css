@@ -1,19 +1,17 @@
-@layer ds.divider {
-  .ds-divider {
-    border: none;
-    border-top: 1px solid;
-    width: 100%;
-  }
+.ds-divider {
+  border: none;
+  border-top: 1px solid;
+  width: 100%;
+}
 
-  .ds-divider--default {
-    border-color: var(--ds-color-neutral-border-subtle);
-  }
+.ds-divider--default {
+  border-color: var(--ds-color-neutral-border-subtle);
+}
 
-  .ds-divider--strong {
-    border-color: var(--ds-color-neutral-border-default);
-  }
+.ds-divider--strong {
+  border-color: var(--ds-color-neutral-border-default);
+}
 
-  .ds-divider--subtle {
-    border-color: var(--ds-color-neutral-border-subtle);
-  }
+.ds-divider--subtle {
+  border-color: var(--ds-color-neutral-border-subtle);
 }

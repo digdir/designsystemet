@@ -1,47 +1,45 @@
-@layer ds.dropdownmenu {
-  .ds-dropdownmenu {
-    position: relative;
-    padding: var(--ds-spacing-2);
-    z-index: 1500;
-    margin: 0;
-    list-style: none;
-    border-radius: min(1rem, var(--ds-border-radius-md));
-    box-shadow: var(--ds-shadow-md);
-    background-color: var(--ds-color-neutral-background-default);
-    border: 1px solid var(--ds-color-neutral-border-subtle);
-  }
+.ds-dropdownmenu {
+  position: relative;
+  padding: var(--ds-spacing-2);
+  z-index: 1500;
+  margin: 0;
+  list-style: none;
+  border-radius: min(1rem, var(--ds-border-radius-md));
+  box-shadow: var(--ds-shadow-md);
+  background-color: var(--ds-color-neutral-background-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+}
 
-  .ds-dropdownmenu--sm {
-    min-width: 240px;
-    padding: var(--ds-spacing-2);
-  }
+.ds-dropdownmenu--sm {
+  min-width: 240px;
+  padding: var(--ds-spacing-2);
+}
 
-  .ds-dropdownmenu--md {
-    min-width: 260px;
-    padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  }
+.ds-dropdownmenu--md {
+  min-width: 260px;
+  padding: var(--ds-spacing-3) var(--ds-spacing-2);
+}
 
-  .ds-dropdownmenu--lg {
-    min-width: 280px;
-    padding: var(--ds-spacing-4) var(--ds-spacing-2);
-  }
+.ds-dropdownmenu--lg {
+  min-width: 280px;
+  padding: var(--ds-spacing-4) var(--ds-spacing-2);
+}
 
-  .ds-dropdownmenu > hr {
-    border-color: var(--ds-color-neutral-border-subtle) !important;
-  }
+.ds-dropdownmenu > hr {
+  border-color: var(--ds-color-neutral-border-subtle) !important;
+}
 
-  .ds-dropdownmenu__item {
-    justify-content: start;
-    padding: 0 var(--ds-spacing-4);
-  }
+.ds-dropdownmenu__item {
+  justify-content: start;
+  padding: 0 var(--ds-spacing-4);
+}
 
-  .ds-dropdownmenu__section {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+.ds-dropdownmenu__section {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-  .ds-dropdownmenu__heading {
-    padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  }
+.ds-dropdownmenu__heading {
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
 }
