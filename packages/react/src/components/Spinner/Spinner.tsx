@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import cl from 'clsx/lite';
 
-import { useSynchronizedAnimation } from '../../hooks';
+import { useSynchronizedAnimation } from '../../utilities';
 
 const sizeMap: {
   [key in NonNullable<SpinnerProps['size']>]: number;
