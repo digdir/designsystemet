@@ -1,10 +1,81 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter, getReferences } from 'style-dictionary/utils';
+import { fileHeader, createPropertyFormatter, usesReferences, getReferences } from 'style-dictionary/utils';
 
-import { getValue, typeEquals } from '../utils/utils.js';
+import type { IsCalculatedToken } from '../configs.js';
 import { prefix } from '../configs.js';
+import { getValue, typeEquals } from '../utils/utils.js';
+
+const prefersColorScheme = (mode: string, content: string) => `
+@media (prefers-color-scheme: ${mode}) {
+  [data-ds-color-mode="auto"] ${content}
+}
+`;
+
+export const colormode: Format = {
+  name: 'ds/css-colormode',
+  format: async function ({ dictionary, file, options, platform }) {
+    const { allTokens } = dictionary;
+    const { outputReferences } = options;
+    const { selector, mode, layer } = platform;
+
+    const mode_ = mode as string;
+
+    const header = await fileHeader({ file });
+
+    const format = createPropertyFormatter({
+      outputReferences,
+      dictionary,
+      format: 'css',
+    });
+
+    const content = `{\n${allTokens.map(format).join('\n')}\n}\n`;
+    const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
+
+    return header + `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`;
+  },
+};
+
+const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
+
+export const semantic: Format = {
+  name: 'ds/css-semantic',
+  format: async function ({ dictionary, file, options, platform }) {
+    const { allTokens } = dictionary;
+    const { outputReferences } = options;
+    const { selector, isCalculatedToken, layer } = platform;
+
+    const header = await fileHeader({ file });
+
+    const format = createPropertyFormatter({
+      outputReferences,
+      dictionary,
+      format: 'css',
+    });
+
+    const formatTokens = R.map((token: TransformedToken) => {
+      const originalValue = getValue<string>(token.original);
+
+      if (
+        usesReferences(originalValue) &&
+        typeof outputReferences === 'function' &&
+        outputReferences?.(token, { dictionary })
+      ) {
+        if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
+          return calculatedVariable(format(token));
+        }
+      }
+
+      return format(token);
+    });
+
+    const formattedVariables = formatTokens(allTokens);
+    const content = `{\n${formattedVariables.join('\n')}\n}\n`;
+
+    return header + `@layer ${layer} {\n${selector} ${content}\n}\n`;
+  },
+};
 
 type Typgraphy = {
   fontWeight: string;
@@ -42,14 +113,11 @@ const sortTypographyLast = R.sortWith<TransformedToken>([
   R.ascend((token) => (typeEquals('typography')(token) ? 1 : 0)),
 ]);
 
-/**
- * Creates CSS classes from typography tokens
- */
-export const cssClassesTypography: Format = {
-  name: 'ds/css-classes-typography',
+export const typography: Format = {
+  name: 'ds/css-typography',
   format: async function ({ dictionary, file, options, platform }) {
     const { outputReferences } = options;
-    const { selector, typography } = platform;
+    const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
 
@@ -122,9 +190,8 @@ export const cssClassesTypography: Format = {
 
     const classes = formattedTokens.classes.join('\n');
     const variables = formattedTokens.variables.join('\n');
-    const variables_ = `:root {\n${variables}\n}\n`;
-    const content = selector ? `${selector} {\n${classes}\n}` : classes;
+    const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
 
-    return header + `@layer ds.base.typography.${typography} {\n${variables_}\n${content}\n}\n`;
+    return header + `@layer ${layer} {\n${content}\n}\n`;
   },
 };

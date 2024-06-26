@@ -32,7 +32,6 @@ export async function run(options: Options): Promise<void> {
 
   const relevant$themes = $themes.filter((theme) => {
     const group = R.toLower(R.defaultTo('')(theme.group));
-    // if (group === 'typography' && theme.name !== 'default') return false;
     if (group === 'size' && theme.name !== 'default') return false;
 
     return true;
@@ -54,7 +53,7 @@ export async function run(options: Options): Promise<void> {
 
     await Promise.all(
       typographyConfigs.map(async ({ theme, typography, config }) => {
-        console.log(`👷 Processing: ${theme} - ${typography}`);
+        console.log(`👷 ${theme} - ${typography}`);
 
         const typographyClasses = await sd.extend(config);
 
@@ -68,7 +67,7 @@ export async function run(options: Options): Promise<void> {
 
     await Promise.all(
       semanticConfigs.map(async ({ theme, config, semantic }) => {
-        console.log(`👷 Processing: ${theme} - ${semantic}`);
+        console.log(`👷 ${theme} - ${semantic}`);
 
         const typographyClasses = await sd.extend(config);
 
@@ -82,7 +81,7 @@ export async function run(options: Options): Promise<void> {
 
     await Promise.all(
       colorModeConfigs.map(async ({ theme, mode, config }) => {
-        console.log(`👷 Processing: ${theme} - ${mode}`);
+        console.log(`👷 ${theme} - ${mode}`);
 
         const themeVariablesSD = await sd.extend(config);
 
@@ -92,11 +91,11 @@ export async function run(options: Options): Promise<void> {
   }
 
   if (storefrontConfigs.length > 0 && options.preview) {
-    console.log(`\n🍱 Building ${chalk.bgGreen('Storefront')}`);
+    console.log(`\n🍱 Building ${chalk.green('Storefront preview tokens')}`);
 
     await Promise.all(
       storefrontConfigs.map(async ({ theme, mode, config }) => {
-        console.log(`👷 Processing: ${theme} - ${mode}`);
+        console.log(`👷 ${theme} - ${mode}`);
 
         const storefrontSD = await sd.extend(config);
 

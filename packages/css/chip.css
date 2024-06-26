@@ -1,173 +1,171 @@
-@layer ds.chip {
-  /*
+/*
   The class is unused. There is no root chip component?
   .chip {
     display: flex;
   }
   */
 
-  .ds-chip--button {
-    --dsc-chip-height: var(--ds-sizing-7);
-    --dsc-chip-padding: var(--ds-spacing-3);
-    --dsc-chip-background: var(--ds-color-accent-surface-default);
+.ds-chip--button {
+  --dsc-chip-height: var(--ds-sizing-7);
+  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-chip-background: var(--ds-color-accent-surface-default);
+  --dsc-chip-text-color: var(--ds-color-neutral-text-default);
+  --dsc-chip-border: var(--ds-color-accent-border-subtle);
+  --dsc-chip-border-radius: var(--ds-border-radius-full);
+
+  background: var(--dsc-chip-background);
+  padding: 0 var(--dsc-chip-padding);
+  min-height: var(--dsc-chip-height);
+  border-radius: var(--dsc-chip-border-radius);
+  border: 1px solid var(--dsc-chip-border);
+  color: var(--dsc-chip-text-color);
+  text-decoration: none;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ds-chip--button:disabled,
+.ds-chip--button[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: var(--ds-disabled-opacity);
+}
+
+.ds-chip--button .ds-chip__label {
+  color: inherit;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--ds-spacing-2);
+}
+
+.ds-chip--removable {
+  --dsc-removable-background: var(--ds-color-accent-base-default);
+  --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
+  --dsc-removable-chip-size: var(--ds-sizing-7);
+  --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
+  --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
+  --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
+  --dsc-removable-chip-xmark-wrapper-width: calc(var(--dsc-removable-chip-xmark-size) + var(--dsc-removable-chip-xmark-padding_right));
+
+  color: var(--dsc-removable-text-color);
+  background: var(--dsc-removable-background);
+  border: 0;
+  padding-right: var(--ds-spacing-2);
+  min-height: var(--dsc-chip-height);
+}
+
+.ds-chip--removable.ds-chip--sm {
+  padding-right: var(--ds-spacing-1);
+}
+
+.ds-chip--removable.ds-chip--lg {
+  padding-right: var(--ds-spacing-2);
+}
+
+.ds-chip__x-mark {
+  color: var(--dsc-removable-chip-xmark-color);
+  height: var(--dsc-removable-chip-xmark-size);
+  width: var(--dsc-removable-chip-xmark-size);
+}
+
+.ds-chip__x-mark .ds-chip__icon {
+  height: var(--dsc-removable-chip-xmark-size);
+  width: var(--dsc-removable-chip-xmark-size);
+}
+
+.ds-chip--spacing {
+  padding-left: var(--ds-spacing-2) !important;
+}
+
+.ds-chip--sm .ds-chip__checkmark-icon {
+  height: var(--ds-sizing-5);
+  width: auto;
+}
+
+.ds-chip--md .ds-chip__checkmark-icon {
+  height: 24px;
+  width: auto;
+}
+
+.ds-chip--lg .ds-chip__checkmark-icon {
+  height: 26px;
+  width: auto;
+}
+
+.ds-chip--group-container {
+  --dsc-chip-group-gap: var(--ds-spacing-2);
+
+  display: flex;
+  gap: var(--dsc-chip-group-gap);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ds-chip--group-container.ds-chip--sm {
+  --dsc-chip-group-gap: var(--ds-spacing-2);
+}
+
+.ds-chip--group-container.ds-chip--md {
+  --dsc-chip-group-gap: var(--ds-spacing-2);
+}
+
+.ds-chip--group-container.ds-chip--lg {
+  --dsc-chip-group-gap: var(--ds-spacing-2);
+}
+
+/* Only use hover for non-touch devices to prevent sticky-hovering */
+@media (hover: hover) and (pointer: fine) {
+  .ds-chip--button:not(:disabled, [aria-disabled='true']):hover {
+    --dsc-chip-background: var(--ds-color-accent-surface-hover);
     --dsc-chip-text-color: var(--ds-color-neutral-text-default);
-    --dsc-chip-border: var(--ds-color-accent-border-subtle);
-    --dsc-chip-border-radius: var(--ds-border-radius-full);
+    --dsc-chip-border: var(--ds-color-accent-border-default);
 
-    background: var(--dsc-chip-background);
-    padding: 0 var(--dsc-chip-padding);
-    min-height: var(--dsc-chip-height);
-    border-radius: var(--dsc-chip-border-radius);
-    border: 1px solid var(--dsc-chip-border);
-    color: var(--dsc-chip-text-color);
-    text-decoration: none;
-    font-family: inherit;
-    display: inline-flex;
-    align-items: center;
+    cursor: pointer;
   }
 
-  .ds-chip--button:disabled,
-  .ds-chip--button[aria-disabled='true'] {
-    cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+  .ds-chip--button:not(:disabled, [aria-disabled='true']):is([aria-pressed='true']):hover {
+    --dsc-chip-background: var(--ds-color-accent-surface-hover);
+    --dsc-chip-text-color: var(--ds-color-neutral-text-default);
   }
 
-  .ds-chip--button .ds-chip__label {
-    color: inherit;
-    line-height: normal;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: var(--ds-spacing-2);
-  }
-
-  .ds-chip--removable {
-    --dsc-removable-background: var(--ds-color-accent-base-default);
-    --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
-    --dsc-removable-chip-size: var(--ds-sizing-7);
+  .ds-chip--removable:not(:disabled, [aria-disabled='true']):hover,
+  .ds-chip--removable:not(:disabled, [aria-disabled='true']):focus {
+    --dsc-removable-background: var(--ds-color-accent-base-hover);
     --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
-    --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
-    --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
-    --dsc-removable-chip-xmark-wrapper-width: calc(var(--dsc-removable-chip-xmark-size) + var(--dsc-removable-chip-xmark-padding_right));
-
-    color: var(--dsc-removable-text-color);
-    background: var(--dsc-removable-background);
-    border: 0;
-    padding-right: var(--ds-spacing-2);
-    min-height: var(--dsc-chip-height);
   }
+}
 
-  .ds-chip--removable.ds-chip--sm {
-    padding-right: var(--ds-spacing-1);
-  }
+.ds-chip--button:is([aria-pressed='true']),
+.ds-chip--button:not(:disabled, [aria-disabled='true']):active,
+.ds-chip--removable:is([aria-pressed='true']),
+.ds-chip--removable:not(:disabled, [aria-disabled='true']):active {
+  --dsc-chip-background: var(--ds-color-accent-base-active);
+  --dsc-chip-text-color: var(--ds-color-neutral-contrast-default);
+  --dsc-chip-border: var(--ds-color-accent-base-active);
+  --dsc-removable-background: var(--ds-color-accent-base-active);
+  --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
+}
 
-  .ds-chip--removable.ds-chip--lg {
-    padding-right: var(--ds-spacing-2);
-  }
+.ds-chip--sm {
+  --dsc-chip-height: var(--ds-sizing-7);
+  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-removable-chip-xmark-size: var(--ds-sizing-5);
+  --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
+}
 
-  .ds-chip__x-mark {
-    color: var(--dsc-removable-chip-xmark-color);
-    height: var(--dsc-removable-chip-xmark-size);
-    width: var(--dsc-removable-chip-xmark-size);
-  }
+.ds-chip--md {
+  --dsc-chip-height: var(--ds-sizing-8);
+  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
+  --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-2);
+}
 
-  .ds-chip__x-mark .ds-chip__icon {
-    height: var(--dsc-removable-chip-xmark-size);
-    width: var(--dsc-removable-chip-xmark-size);
-  }
-
-  .ds-chip--spacing {
-    padding-left: var(--ds-spacing-2) !important;
-  }
-
-  .ds-chip--sm .ds-chip__checkmark-icon {
-    height: var(--ds-sizing-5);
-    width: auto;
-  }
-
-  .ds-chip--md .ds-chip__checkmark-icon {
-    height: 24px;
-    width: auto;
-  }
-
-  .ds-chip--lg .ds-chip__checkmark-icon {
-    height: 26px;
-    width: auto;
-  }
-
-  .ds-chip--group-container {
-    --dsc-chip-group-gap: var(--ds-spacing-2);
-
-    display: flex;
-    gap: var(--dsc-chip-group-gap);
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .ds-chip--group-container.ds-chip--sm {
-    --dsc-chip-group-gap: var(--ds-spacing-2);
-  }
-
-  .ds-chip--group-container.ds-chip--md {
-    --dsc-chip-group-gap: var(--ds-spacing-2);
-  }
-
-  .ds-chip--group-container.ds-chip--lg {
-    --dsc-chip-group-gap: var(--ds-spacing-2);
-  }
-
-  /* Only use hover for non-touch devices to prevent sticky-hovering */
-  @media (hover: hover) and (pointer: fine) {
-    .ds-chip--button:not(:disabled, [aria-disabled='true']):hover {
-      --dsc-chip-background: var(--ds-color-accent-surface-hover);
-      --dsc-chip-text-color: var(--ds-color-neutral-text-default);
-      --dsc-chip-border: var(--ds-color-accent-border-default);
-
-      cursor: pointer;
-    }
-
-    .ds-chip--button:not(:disabled, [aria-disabled='true']):is([aria-pressed='true']):hover {
-      --dsc-chip-background: var(--ds-color-accent-surface-hover);
-      --dsc-chip-text-color: var(--ds-color-neutral-text-default);
-    }
-
-    .ds-chip--removable:not(:disabled, [aria-disabled='true']):hover,
-    .ds-chip--removable:not(:disabled, [aria-disabled='true']):focus {
-      --dsc-removable-background: var(--ds-color-accent-base-hover);
-      --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
-    }
-  }
-
-  .ds-chip--button:is([aria-pressed='true']),
-  .ds-chip--button:not(:disabled, [aria-disabled='true']):active,
-  .ds-chip--removable:is([aria-pressed='true']),
-  .ds-chip--removable:not(:disabled, [aria-disabled='true']):active {
-    --dsc-chip-background: var(--ds-color-accent-base-active);
-    --dsc-chip-text-color: var(--ds-color-neutral-contrast-default);
-    --dsc-chip-border: var(--ds-color-accent-base-active);
-    --dsc-removable-background: var(--ds-color-accent-base-active);
-    --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);
-  }
-
-  .ds-chip--sm {
-    --dsc-chip-height: var(--ds-sizing-7);
-    --dsc-chip-padding: var(--ds-spacing-3);
-    --dsc-removable-chip-xmark-size: var(--ds-sizing-5);
-    --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
-  }
-
-  .ds-chip--md {
-    --dsc-chip-height: var(--ds-sizing-8);
-    --dsc-chip-padding: var(--ds-spacing-3);
-    --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
-    --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-2);
-  }
-
-  .ds-chip--lg {
-    --dsc-chip-height: var(--ds-sizing-9);
-    --dsc-chip-padding: var(--ds-spacing-4);
-    --dsc-removable-chip-xmark-size: var(--ds-sizing-7);
-    --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-3);
-  }
+.ds-chip--lg {
+  --dsc-chip-height: var(--ds-sizing-9);
+  --dsc-chip-padding: var(--ds-spacing-4);
+  --dsc-removable-chip-xmark-size: var(--ds-sizing-7);
+  --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-3);
 }

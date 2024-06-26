@@ -94,7 +94,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
           )}
           <RovingTabindexRoot
             asChild
-            valueId={value}
+            activeValue={value}
           >
             <div
               className='ds-togglegroup__content'

@@ -9,8 +9,7 @@ import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js'
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { cssVariables } from './formats/css-variables.js';
-import { cssClassesTypography } from './formats/css-classes.js';
+import * as formats from './formats/css.js';
 import { makeEntryFile } from './actions.js';
 import { typeEquals } from './utils/utils.js';
 
@@ -27,8 +26,9 @@ StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
 
 StyleDictionary.registerFormat(jsTokens);
-StyleDictionary.registerFormat(cssVariables);
-StyleDictionary.registerFormat(cssClassesTypography);
+StyleDictionary.registerFormat(formats.colormode);
+StyleDictionary.registerFormat(formats.semantic);
+StyleDictionary.registerFormat(formats.typography);
 
 StyleDictionary.registerAction(makeEntryFile);
 
@@ -78,6 +78,7 @@ type GetConfig = (options: {
 
 export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
+  const layer = `ds.theme.color-mode.${mode}`;
 
   return {
     log: { verbosity: 'silent' },
@@ -89,6 +90,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         mode,
         theme,
         selector,
+        layer,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -97,7 +99,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         files: [
           {
             destination: `color-mode/${mode}.css`,
-            format: cssVariables.name,
+            format: formats.colormode.name,
             filter: (token) => !token.isSource && typeEquals('color', token),
           },
         ],
@@ -112,6 +114,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
+  const layer = `ds.theme.semantic`;
 
   /**
    * This is a workaround for our formatters to support transative transformers while retaining outputReference.
@@ -134,6 +137,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         basePxFontSize,
         isCalculatedToken,
         selector,
+        layer,
         //
         prefix,
         buildPath: `${outPath}/${theme}/`,
@@ -142,7 +146,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         files: [
           {
             destination: `semantic.css`,
-            format: cssVariables.name,
+            format: formats.semantic.name,
             filter: (token) =>
               (!token.isSource || isCalculatedToken(token)) &&
               !typeEquals(['color', 'fontWeights', 'fontFamilies'], token),
@@ -197,7 +201,8 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
 };
 
 export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
-  // const selector = `${typography === 'default' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const layer = `ds.theme.typography.${typography}`;
 
   return {
     log: { verbosity: 'silent' },
@@ -206,14 +211,15 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
       css: {
         prefix,
         typography,
-        // selector,
+        selector,
+        layer,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
         files: [
           {
             destination: `typography/${typography}.css`,
-            format: cssClassesTypography.name,
+            format: formats.typography.name,
             filter: (token) => {
               return (
                 typeEquals(

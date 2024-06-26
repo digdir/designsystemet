@@ -64,13 +64,13 @@ Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere
 
 ### Disabled
 
-Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `Disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
+Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
 
 <Canvas of={RadioGroupStories.Disabled} />
 
 ### Inline
 
-Bruk `inline` for å plassere alternativene på samme linje. Anbefales ikke dersom du har mer enn to alternativer og lengre ledetekster.
+Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte ledetekster.
 
 <Canvas of={RadioGroupStories.Inline} />
 
@@ -96,7 +96,7 @@ For grupper med radioknapper, kan vi ha opptil syv valg. Da viser vi dem helst p
 
 Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`switch`](/docs/komponenter-switch--docs) eller [`checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
 
-Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg eller ikke klarer å ta et bevisst valg selv.
+Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg, eller ikke klarer å ta et bevisst valg selv.
 
 <br />
 
