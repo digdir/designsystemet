@@ -156,17 +156,16 @@ Et vanlig bruksområde for denne attributten er når du f,eks, ønsker en monosp
 
 Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
 
-Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
+Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen. Dette kan løses ved å false.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.
 
 <CodeSnippet language='html'>
   {`
   <style>
-    .mono-tekst {
-      font-family: var(--ds-font-family), monospaced;
-    }
+  [data-ds-typography='secondary'] {
+    font-family: var(--ds-font-family), monospace;
+  }
   </style>
   <table
-    class='mono-tekst'
     data-ds-typography='secondary'
   >
     …
