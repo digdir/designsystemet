@@ -54,7 +54,7 @@
   font-weight: 500;
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  gap: 12px;
 }
 
 .popup {

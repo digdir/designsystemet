@@ -2,6 +2,7 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
+@layer ds.theme.color-mode.light {
 :root, [data-ds-color-mode="light"] {
   --ds-global-blue-1: #fefeff;
   --ds-global-blue-2: #edf5fa;
@@ -306,7 +307,7 @@
   --ds-color-focus-inner: #fefefe;
   --ds-color-focus-outer: #00315c;
 }
-
+ 
 @media (prefers-color-scheme: light) {
   [data-ds-color-mode="auto"] {
   --ds-global-blue-1: #fefeff;
@@ -611,6 +612,8 @@
   --ds-color-warning-contrast-subtle: var(--ds-global-yellow-contrast-2);
   --ds-color-focus-inner: #fefefe;
   --ds-color-focus-outer: #00315c;
+}
+
 }
 
 }

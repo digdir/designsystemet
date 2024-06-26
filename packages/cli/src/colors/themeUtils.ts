@@ -64,10 +64,10 @@ const generateThemeColor = (color: CssColor, mode: Mode, contrastMode: 'aa' | 'a
   );
 
   const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
-  const textDefLightLightness = contrastMode === 'aa' ? 20 : 17;
+  const textDefLightLightness = contrastMode === 'aa' ? 18 : 12;
 
-  const textSubDarkLightness = contrastMode === 'aa' ? 65 : 78;
-  const textDefDarkLightness = contrastMode === 'aa' ? 89 : 93;
+  const textSubDarkLightness = contrastMode === 'aa' ? 67 : 80;
+  const textDefDarkLightness = contrastMode === 'aa' ? 90 : 94;
 
   let lightnessScale: number[] = [];
 
@@ -297,8 +297,8 @@ export const createColorWithLightness = (color: CssColor, lightness: number) => 
  */
 export const getColorNumberFromName = (name: string): ColorNumber => {
   const colorMap: { [key: string]: ColorNumber } = {
-    'Background Subtle': 1,
-    'Background Default': 2,
+    'Background Default': 1,
+    'Background Subtle': 2,
     'Surface Default': 3,
     'Surface Hover': 4,
     'Surface Active': 5,
@@ -310,6 +310,8 @@ export const getColorNumberFromName = (name: string): ColorNumber => {
     'Base Active': 11,
     'Text Subtle': 12,
     'Text Default': 13,
+    'Contrast Default': 14,
+    'Contrast Subtle': 15,
   };
   return colorMap[name];
 };
@@ -322,8 +324,8 @@ export const getColorNumberFromName = (name: string): ColorNumber => {
  */
 export const getColorNameFromNumber = (number: ColorNumber): string => {
   const colorMap: { [key in ColorNumber]: string } = {
-    1: 'Background Subtle',
-    2: 'Background Default',
+    1: 'Background Default',
+    2: 'Background Subtle',
     3: 'Surface Default',
     4: 'Surface Hover',
     5: 'Surface Active',

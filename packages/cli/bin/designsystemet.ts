@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import { Argument, program } from '@commander-js/extra-typings';
+import { Argument, Command, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import migrations from './../src/migrations/index.js';
-import { run } from './../src/tokens/build.js';
+import migrations from '../src/migrations/index.js';
+import { run } from '../src/tokens/build.js';
+import { makeInitCommand } from '../src/init/index.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet');
 
@@ -51,5 +52,7 @@ program
       console.log('Migrate: please specify a migration name or --list');
     }
   });
+
+program.addCommand(makeInitCommand(new Command('init')));
 
 await program.parseAsync(process.argv);
