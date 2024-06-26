@@ -26,20 +26,7 @@
       "./color": "./dist/src/colors/index.js"
     }
   },
-  "tsup": {
-    "entry": [
-      "bin/designsystemet.ts",
-      "src/**/*.ts"
-    ],
-    "splitting": false,
-    "sourcemap": true,
-    "clean": true,
-    "format": [
-      "esm"
-    ]
-  },
   "scripts": {
-    "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "tsup",
