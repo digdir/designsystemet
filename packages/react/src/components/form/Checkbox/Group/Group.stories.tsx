@@ -39,7 +39,7 @@ export const Error: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Hvilket land er du statborger i?'
     description='Hvis du har dobbelt statsborgerskap, velger du begge landene.'
-    error='Du må velge minst et land for å kunne gå videre'
+    error='Du må velge minst ett land for å kunne gå videre'
   >
     <Checkbox value='norge'>Norge</Checkbox>
     <Checkbox value='europeisk'>Annet europeisk land</Checkbox>
