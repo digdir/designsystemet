@@ -1,57 +1,55 @@
-@layer ds.helptext {
+.ds-helptext__button {
+  background-color: transparent;
+  border-radius: 50px;
+  padding: 0 !important;
+  cursor: pointer;
+  display: flex;
+  border: none;
+  min-width: 0;
+  min-height: 0;
+}
+
+@media print {
   .ds-helptext__button {
-    background-color: transparent;
-    border-radius: 50px;
-    padding: 0 !important;
-    cursor: pointer;
-    display: flex;
-    border: none;
-    min-width: 0;
-    min-height: 0;
-  }
-
-  @media print {
-    .ds-helptext__button {
-      display: none;
-    }
-  }
-
-  .ds-helptext__icon--filled {
     display: none;
   }
+}
 
-  .ds-helptext__icon {
-    color: var(--ds-color-accent-base-default);
-    width: var(--ds-sizing-7);
-    height: var(--ds-sizing-7);
-  }
+.ds-helptext__icon--filled {
+  display: none;
+}
 
-  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon {
-    display: none;
-  }
+.ds-helptext__icon {
+  color: var(--ds-color-accent-base-default);
+  width: var(--ds-sizing-7);
+  height: var(--ds-sizing-7);
+}
 
-  .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon--filled {
-    display: inline-block;
-  }
+.ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon {
+  display: none;
+}
 
-  .ds-helptext__content {
-    color: var(--ds-color-neutral-text-default);
-    width: fit-content;
-    max-width: 700px;
-  }
+.ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon--filled {
+  display: inline-block;
+}
 
-  .ds-helptext--sm .ds-helptext__icon {
-    width: var(--ds-sizing-6);
-    height: var(--ds-sizing-6);
-  }
+.ds-helptext__content {
+  color: var(--ds-color-neutral-text-default);
+  width: fit-content;
+  max-width: 700px;
+}
 
-  .ds-helptext--md .ds-helptext__icon {
-    width: var(--ds-sizing-7);
-    height: var(--ds-sizing-7);
-  }
+.ds-helptext--sm .ds-helptext__icon {
+  width: var(--ds-sizing-6);
+  height: var(--ds-sizing-6);
+}
 
-  .ds-helptext--lg .ds-helptext__icon {
-    width: var(--ds-sizing-8);
-    height: var(--ds-sizing-8);
-  }
+.ds-helptext--md .ds-helptext__icon {
+  width: var(--ds-sizing-7);
+  height: var(--ds-sizing-7);
+}
+
+.ds-helptext--lg .ds-helptext__icon {
+  width: var(--ds-sizing-8);
+  height: var(--ds-sizing-8);
 }
