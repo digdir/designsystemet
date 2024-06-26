@@ -2,7 +2,7 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.theme.color.light {
+@layer ds.theme.color-mode.light {
 :root, [data-ds-color-mode="light"] {
   --ds-global-blue-1: #fefeff;
   --ds-global-blue-2: #edf5fa;
