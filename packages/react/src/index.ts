@@ -1,2 +1,10 @@
 export * from './components';
-export { useSynchronizedAnimation, useIsomorphicLayoutEffect } from './hooks';
+export {
+  useSynchronizedAnimation,
+  useIsomorphicLayoutEffect,
+  RovingTabindexRoot,
+  useRovingTabindex,
+  RovingTabindexItem,
+  getNextFocusableValue,
+  getPrevFocusableValue,
+} from './utilities';

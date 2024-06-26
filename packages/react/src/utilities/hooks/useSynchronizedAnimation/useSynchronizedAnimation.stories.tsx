@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button } from '../../components';
+import { Button } from '../../../components';
 
 import { useSynchronizedAnimation } from './useSynchronizedAnimation';
 
@@ -23,7 +23,7 @@ const decorators = [
 ];
 
 const meta: Meta = {
-  title: 'Hooks/useSynchronizedAnimation',
+  title: 'Utilities/useSynchronizedAnimation',
   decorators,
 };
 
