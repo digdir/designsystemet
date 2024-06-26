@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.1.0-alpha.13",
+  "version": "0.1.0-alpha.14",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -16,9 +16,7 @@
   "exports": {
     "./color": "./src/colors/index.ts"
   },
-  "bin": {
-    "designsystemet": "bin/designsystemet.js"
-  },
+  "bin": "bin/designsystemet.js",
   "publishConfig": {
     "access": "public",
     "bin": {
