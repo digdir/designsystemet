@@ -70,7 +70,7 @@ Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problem
 
 ### Inline
 
-Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte ledetekster.
+Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte ledetekster (`labels`).
 
 <Canvas of={RadioGroupStories.Inline} />
 
@@ -92,7 +92,7 @@ Passer ikke til å
 
 <br />
 
-For grupper med radioknapper, kan vi ha opptil syv valg. Da viser vi dem helst på hver sin linje vertikalt, så det blir lett å skanne. Hvis vi bare har to valg med korte ledetekster, kan vi vise dem ved siden av hverandre.
+For grupper med radioknapper, kan vi ha opptil syv valg. Da viser vi dem helst på hver sin linje vertikalt, så det blir lett å skanne. Hvis vi bare har to valg med korte ledetekster (`labels`), kan vi vise dem ved siden av hverandre.
 
 Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`switch`](/docs/komponenter-switch--docs) eller [`checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
 
@@ -102,9 +102,14 @@ Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det k
 
 ## Tekst i komponenten
 
-En gruppe med radioknapper bør alltid ha en `legend`.
+En gruppe med radioknapper bør alltid ha en `legend` og eventuelt en `description` dersom hjelpetekst er nødvendig.
 
 Radioknapper skal alltid ha en `label`. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte. Radio-komponenten kan også ha hjelpetekst (`description`). Da kommer den rett under `label`.
+
+<img
+  src='/img/component-guidelines/radio/radio-anatomy.png'
+  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med radioknapper.'
+/>
 
 <br />
 
