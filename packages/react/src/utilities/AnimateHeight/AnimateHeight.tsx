@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import type * as React from 'react';
 import cl from 'clsx/lite';
 
-import { useMediaQuery, usePrevious } from '../../hooks';
+import { useMediaQuery, usePrevious } from '../../utilities';
 
 export type AnimateHeightProps = {
   open: boolean;
