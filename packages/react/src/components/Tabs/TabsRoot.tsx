@@ -19,7 +19,7 @@ export type TabsProps = {
 /** `Tabs` component.
  * @example
  * ```tsx
- * <Tabs onChange={(value) => console.log(value)}>
+ * <Tabs.Root onChange={(value) => console.log(value)}>
  *   <Tabs.List>
  *     <Tabs.Item value='1'>Tab 1</Tabs.Item>
  *     <Tabs.Item value='2'>Tab 2</Tabs.Item>
@@ -28,7 +28,7 @@ export type TabsProps = {
  *   <Tabs.Content value='1'>content 1</Tabs.Content>
  *   <Tabs.Content value='2'>content 2</Tabs.Content>
  *   <Tabs.Content value='3'>content 3</Tabs.Content>
- * </Tabs>
+ * </Tabs.Root>
  * ```
  */
 export type TabsContextProps = {

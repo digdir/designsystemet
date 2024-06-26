@@ -1,18 +1,16 @@
-@layer ds.list {
-  .ds-list--sm {
-    padding-left: var(--ds-spacing-4);
-  }
+.ds-list--sm {
+  padding-left: var(--ds-spacing-4);
+}
 
-  .ds-list--md,
-  .ds-list--lg {
-    padding-left: var(--ds-spacing-6);
-  }
+.ds-list--md,
+.ds-list--lg {
+  padding-left: var(--ds-spacing-6);
+}
 
-  .ds-list__item {
-    margin-bottom: var(--ds-spacing-2);
-  }
+.ds-list__item {
+  margin-bottom: var(--ds-spacing-2);
+}
 
-  .ds-list__item > .ds-list {
-    margin-top: var(--ds-spacing-2);
-  }
+.ds-list__item > .ds-list {
+  margin-top: var(--ds-spacing-2);
 }

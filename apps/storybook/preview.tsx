@@ -1,6 +1,5 @@
 import '../../packages/css/index.css';
 import '../../packages/theme/brand/digdir.css';
-import './test.css';
 
 import type { Preview } from '@storybook/react';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
@@ -153,6 +152,7 @@ const preview: Preview = {
           'Kom i gang',
           'Endringslogger',
           'Komponenter',
+          'Hooks',
           'Experimental',
           'Primitives',
           'Avviklet',

@@ -2,8 +2,8 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.base.typography.secondary {
-:root {
+@layer ds.theme.typography.secondary {
+[data-ds-typography="secondary"] {
   --ds-font-family: IBM Plex Mono;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
@@ -31,8 +31,6 @@
   --ds-letter-spacing-7: 0.25%;
   --ds-letter-spacing-8: 0.5%;
   --ds-letter-spacing-9: 1.5%;
-}
-
 
   .ds-error_message--xs {
     font-size: var(--ds-font-size-3);
@@ -274,4 +272,5 @@
   .ds-line-height--lg {
     line-height: 1.7;
   }
+}
 }

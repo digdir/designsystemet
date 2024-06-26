@@ -144,6 +144,7 @@ export const Showcase: StoryFn = () => {
           size='sm'
           border
           className={classes.table}
+          data-ds-typography='secondary'
         >
           <Table.Head>
             <Table.Row>
