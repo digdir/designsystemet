@@ -29,7 +29,7 @@ import { Radio } from '@digdir/designsystemet-react';
 
 ### Enkel radio
 
-`Radio` skal alltid ha en `label`. Når du bruker ledetekten fra en annen plass, husk å bruke `aria-label` eller `aria-labelledby`.
+`Radio` skal alltid ha en `label`. Når du bruker `label` fra en annen plass, husk å bruke `aria-label` eller `aria-labelledby`.
 
 <Canvas of={RadioStories.Single} />
 
@@ -102,9 +102,9 @@ Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det k
 
 ## Tekst i komponenten
 
-En gruppe med radioknapper bør alltid ha en overskrift.
+En gruppe med radioknapper bør alltid ha en `legend`.
 
-Radioknapper skal alltid ha en ledetekst. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte. Radio-komponenten kan også ha hjelpetekst. Da kommer den rett under ledeteksten.
+Radioknapper skal alltid ha en `label`. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte. Radio-komponenten kan også ha hjelpetekst (`description`). Da kommer den rett under `label`.
 
 <br />
 
