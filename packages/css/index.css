@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-@layer ds.theme, ds.baseline, ds.box, ds.btn;
+@layer ds.reset, ds.theme, ds.baseline, ds.box, ds.btn;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./baseline/ds-reset.css') layer(ds.baseline.reset);
+@import url('./baseline/ds-reset.css') layer(ds.reset);
 @import url('./baseline/utils.css') layer(ds.baseline.utils);
 @import url('./baseline/typography/label.css') layer(ds.baseline.typography);
 @import url('./baseline/typography/heading.css') layer(ds.baseline.typography);
