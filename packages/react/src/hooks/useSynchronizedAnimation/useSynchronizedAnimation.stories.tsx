@@ -23,7 +23,7 @@ const decorators = [
 ];
 
 const meta: Meta = {
-  title: 'Hooks/useSynchronizedAnimation',
+  title: 'Utilities/useSynchronizedAnimation',
   decorators,
 };
 
