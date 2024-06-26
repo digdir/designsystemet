@@ -10,44 +10,20 @@ På denne sida finner du god informasjon om hvordan du kan bruke Designsystemet.
 Under vil du finne:
 
 - [React](#react)
-  - [Installasjon](#installasjon)
-  - [Sende props](#sende-props)
+  - [Props](#props)
   - [SSR](#ssr)
 - [CSS](#css)
   - [Layers](#layers)
 
 ## React
 
-### Installasjon
+### Props
 
-For å bruke Designsystemet i React, så må du installere `@digdir/designsystemet-react`.
+Alle komponenter har props og typescript typer iht. underliggende element. F.eks `Button` godtar alle props som en vanlig `button` element gjør.
 
-<CodeSnippet language='bash'>
-  {`
-npm install @digdir/designsystemet-react
-`}
-</CodeSnippet>
-
-Deretter kan du importere komponentene du trenger.
-
-<CodeSnippet language='ts'>
-{`
-import { Button } from '@digdir/designsystemet-react';
-
-<Button>Click me</Button>
-`}
-</CodeSnippet>
-
-Alle komponentene som er tilgjengelige i Designsystemet er uten styling. Legg til styling ved å importere vår css pakke, `@digdir/designsystemet-css`.
-
-<br />
-
-### Sende props
-
-Når du sender inn props så vil disse bli lagt bakerst på komponenten.
-Dersom du sender inn funksjoner som `onClick`, og disse er i bruk fra før, vil disse bli kalt etter vår funksjon.
-
-Klassenavn vil også bli lagt bakerst i lista av klasser.
+- Innsendte props så vil disse bli lagt bakerst på komponenten.
+- Innsendte handler funksjoner (f.eks `onClick`), vil bli kalt sist dersom de er i bruk internt.
+- Innsendte klassenavn vil også bli lagt bakerst i lista av klasser.
 
 #### Eksempel
 
@@ -120,20 +96,50 @@ import { Accordion } from '@digdir/designsystemet-react';
 
 ## CSS
 
-For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css`.
+For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css` og `@digdir/designsystemet-theme`.
 
 ### Layers
 
 Vi bruker [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for å få lavest mulig spesifisitet i våre css klasser.
 Dette betyr at du lett kan overstye med din egen styling.
 
-Alle våre layers ligger under root layeren `ds`.
-Under har vi lagt sub-layers for hver komponent, som `ds.btn`.
+Alle våre layers ligger under layer gruppen `ds`.
 
-Vi har sortert det slik at det som potensielt skal bli overstyrt av andre komponenter kommer først i listen:
-
-<CodeSnippet language='css'>{`@layer ds.base, ds.box, ds.btn;`}</CodeSnippet>
-
-Har du en css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
+Har du en f.eks, css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
 
 <CodeSnippet language='css'>{`@layer my-reset, ds;`}</CodeSnippet>
+
+### Data attributter
+
+Vi tilbyr flere data attributter som kan brukes for å endre tema på komponentene.
+
+<br />
+#### `data-ds-color-mode`
+
+Dette attributtet kan brukes til å endre fargetema på komponentene. Mulige verdier er `light`, `dark` og `auto`.
+Dersom `auto` er valgt som verdi vil farge temaet endres basert på brukerens preferanser ved hjelp av [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
+<br />
+#### `data-ds-typography`
+
+Dette attributtet brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
+Et vanlig bruksområde for denne attributten er når du f,eks, ønsker en monospace font på tabeller.
+
+Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
+
+Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen. Dette kan løses ved å false.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.
+
+<CodeSnippet language='html'>
+  {`
+  <style>
+  [data-ds-typography='secondary'] {
+    font-family: var(--ds-font-family), monospace;
+  }
+  </style>
+  <table
+    data-ds-typography='secondary'
+  >
+    …
+  </table>
+  `}
+</CodeSnippet>

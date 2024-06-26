@@ -1,19 +1,17 @@
-@layer ds.errorsummary {
-  .ds-error-summary {
-    padding: var(--ds-spacing-6) var(--ds-spacing-8);
-    border-radius: min(1rem, var(--ds-border-radius-lg));
-    background-color: var(--ds-color-danger-surface-default);
-  }
+.ds-error-summary {
+  padding: var(--ds-spacing-6) var(--ds-spacing-8);
+  border-radius: min(1rem, var(--ds-border-radius-lg));
+  background-color: var(--ds-color-danger-surface-default);
+}
 
-  .ds-error-summary a {
-    color: var(--ds-color-neutral-text-default);
-  }
+.ds-error-summary a {
+  color: var(--ds-color-neutral-text-default);
+}
 
-  .ds-error-summary li:last-of-type {
-    margin-bottom: 0;
-  }
+.ds-error-summary li:last-of-type {
+  margin-bottom: 0;
+}
 
-  .ds-error-summary__heading {
-    color: var(--ds-color-danger-text-default);
-  }
+.ds-error-summary__heading {
+  color: var(--ds-color-danger-text-default);
 }

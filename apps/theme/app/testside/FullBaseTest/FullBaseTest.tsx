@@ -158,7 +158,7 @@ export const FullBaseTest = () => {
     let lightness = getLightnessFromHex(color);
     if (theme === 'dark' || theme === 'contrast') {
       color = getBaseColor(color);
-      lightness = 90;
+      lightness = lightness <= 30 ? 70 : 100 - lightness;
     }
     const multiplier = lightness <= 30 ? -8 : 8;
 
