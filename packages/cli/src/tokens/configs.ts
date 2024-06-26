@@ -78,7 +78,7 @@ type GetConfig = (options: {
 
 export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
-  const layer = `ds.theme.color.${mode}`;
+  const layer = `ds.theme.color-mode.${mode}`;
 
   return {
     log: { verbosity: 'silent' },
