@@ -2,7 +2,7 @@
   .ds-radio {
     --dsc-radio-size: var(--ds-spacing-5);
     --dsc-radio-focus-border-width: 3px;
-    --dsc-radio-background: var(--ds-color-neutral-background-default);
+    --dsc-radio-background: radial-gradient(circle, var(--ds-color-neutral-background-default) 60%, transparent 60%);
     --dsc-radio-border-color: var(--ds-color-neutral-border-default);
     --dsc-radio-border__hover--size: calc(var(--ds-spacing-3) / 2);
     --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-accent-surface-hover);
@@ -92,9 +92,10 @@
 
   .ds-radio__input:checked {
     --dsc-radio-border-color: var(--ds-color-accent-base-default);
+    --dsc-radio-background: radial-gradient(circle, var(--ds-color-neutral-background-default) 60%, transparent 60%);
 
     /* We use a gradient to avoid bleeding pixels */
-    background: radial-gradient(circle, white 60%, transparent 60%);
+    background: var(--dsc-radio-background);
   }
 
   .ds-radio--readonly > .ds-radio__input {
