@@ -1,7 +1,7 @@
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
-import { createContext, useRef, useState, forwardRef } from 'react';
+import { createContext, useRef, useState, forwardRef, useEffect } from 'react';
 import type {
   MutableRefObject,
   ReactNode,
@@ -15,7 +15,7 @@ type RovingTabindexRootBaseProps = {
   /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
   children: ReactNode;
   /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
-  valueId?: string;
+  activeValue?: string;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -51,7 +51,7 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
 export const RovingTabindexRoot = forwardRef<
   HTMLElement,
   RovingTabindexRootBaseProps
->(({ valueId, asChild, onBlur, onFocus, ...rest }, ref) => {
+>(({ activeValue, asChild, onBlur, onFocus, ...rest }, ref) => {
   const Component = asChild ? Slot : 'div';
 
   const [focusableValue, setFocusableValue] = useState<string | null>(null);
@@ -76,6 +76,10 @@ export const RovingTabindexRoot = forwardRef<
       .map(([value, element]) => ({ value, element }));
   };
 
+  useEffect(() => {
+    setFocusableValue(activeValue ?? null);
+  }, [activeValue]);
+
   return (
     <RovingTabindexContext.Provider
       value={{
@@ -94,6 +98,7 @@ export const RovingTabindexRoot = forwardRef<
         onBlur={(e: FocusEvent<HTMLElement>) => {
           onBlur?.(e);
           setIsShiftTabbing(false);
+          setFocusableValue(activeValue ?? null);
         }}
         onFocus={(e: FocusEvent<HTMLElement>) => {
           onFocus?.(e);
@@ -103,8 +108,8 @@ export const RovingTabindexRoot = forwardRef<
 
           if (focusableValue != null) {
             elements.current.get(focusableValue)?.focus();
-          } else if (valueId != null) {
-            elements.current.get(valueId)?.focus();
+          } else if (activeValue != null) {
+            elements.current.get(activeValue)?.focus();
           } else {
             orderedItems.at(0)?.element.focus();
           }
