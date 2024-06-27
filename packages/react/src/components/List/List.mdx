@@ -35,7 +35,7 @@ import { List } from '@digdir/designsystemet-react';
 
 ### Usortert liste
 
-I usorterte lister bruker vi kulepunkter. Hensikten med en slik liste er å organisere informasjonen og fremheve viktige opplysninger. Her er skal ikke rekkefølgen utføre noe viktig, men vi må likevel passe på at vi presenterer det innholdet som er mest relevant først.
+I usorterte lister bruker vi kulepunkter. Hensikten med en slik liste er å organisere informasjonen og fremheve viktige opplysninger. Her er ikke rekkefølgen viktig, men vi må likevel passe på at vi sorterer listen med det som er mest relevant først.
 
 <Canvas of={ListStories.Usortert} />
 
@@ -64,7 +64,7 @@ Vi kan legge en liste under et enkelt listepunkt når punktet inneholder tillegg
 
 ### Liste med lenker
 
-`List` kan bli brukt til å lage en liste med lenker, og i eksempelet under har vi skrudd av list-stylingen på `List.Unordered`.
+Vi kan bruke `List` til å lage en liste med lenker, og i eksempelet under har vi skrudd av list-stylingen på `List.Unordered`.
 
 <Canvas of={ListStories.ListeMedLenker} />
 
@@ -99,6 +99,8 @@ Når hvert punkt er en fortsettelse av innledningen til punktlisten, bruker vi
 - ikke kolon etter innledningen
 - ikke punktum eller komma til slutt på hvert punkt
 
+<br />
+
 Når punktene er hele setninger, bruker vi
 
 - stor forbokstav i det første ordet
@@ -111,7 +113,7 @@ Når punktene er hele setninger, bruker vi
 ### `menu` istedenfor `ul`
 
 Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
-Begge element representerer en usortert liste, og nettlesere oppfatter disse likt.
+Begge elementene representerer en usortert liste, og nettlesere oppfatter disse likt.
 Forskjellen er at `menu` er tiltenkt interaktive elementer.
 
 #### Eksempel på `menu`
