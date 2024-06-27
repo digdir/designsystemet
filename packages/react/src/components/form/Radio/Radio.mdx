@@ -92,9 +92,19 @@ Passer ikke til å
 
 <br />
 
-Vi ha opptil syv alternativer i en gruppe. Da viser vi dem helst på hver sin linje vertikalt, så det blir lett å skanne. Hvis vi bare har to valg med korte ledetekster (`labels`), kan vi vise dem ved siden av hverandre.
+Vi ha opptil syv alternativer i en gruppe. Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`switch`](/docs/komponenter-switch--docs) eller [`checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
 
-Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`switch`](/docs/komponenter-switch--docs) eller [`checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
+### Sortering
+
+Alternativene skal som hovedregel sorteres alfabetisk. Velger du å presentere de mest aktuelle alternativene først kan det bli vanskelig å finne ønsket alternativ. Du kan også risikere å påvirke svaret, noe som er uheldig.
+
+### Plassering
+
+`Radio` skal som hovedregel plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
+
+Hvis vi bare har to valg med korte ledetekster (`labels`), kan vi vise dem ved siden av hverandre. I en [likert-skala](https://docs.altinn.studio/nb/app/development/ux/components/likert/) vil det også være naturlig å vise dem ved siden av hverandre. I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+
+### Unngå forhåndsvalgt alternativ
 
 Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg, eller ikke klarer å ta et bevisst valg selv.
 
