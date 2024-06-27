@@ -11,10 +11,10 @@ import type {
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 
-type RovingTabindexRootBaseProps = {
-  /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
+type RovingFocusRootBaseProps = {
+  /** The children of the `RovingFocusRoot`. The children should get their roving-relevant props from the `useRovingFocus` hook. */
   children: ReactNode;
-  /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
+  /** The value of the element that should be focused when the `RovingFocusRoot` receives focus. */
   activeValue?: string;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -23,20 +23,20 @@ type RovingTabindexRootBaseProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export type RovingTabindexElement = {
+export type RovingFocusElement = {
   value: string;
   element: HTMLElement;
 };
 
-export type RovingTabindexProps = {
+export type RovingFocusProps = {
   elements: MutableRefObject<Map<string, HTMLElement>>;
-  getOrderedItems: () => RovingTabindexElement[];
+  getOrderedItems: () => RovingFocusElement[];
   setFocusableValue: (value: string) => void;
   focusableValue: string | null;
   onShiftTab: () => void;
 };
 
-export const RovingTabindexContext = createContext<RovingTabindexProps>({
+export const RovingFocusContext = createContext<RovingFocusProps>({
   elements: { current: new Map<string, HTMLElement>() },
   getOrderedItems: () => [],
   setFocusableValue: () => {
@@ -48,9 +48,9 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
   focusableValue: null,
 });
 
-export const RovingTabindexRoot = forwardRef<
+export const RovingFocusRoot = forwardRef<
   HTMLElement,
-  RovingTabindexRootBaseProps
+  RovingFocusRootBaseProps
 >(({ activeValue, asChild, onBlur, onFocus, ...rest }, ref) => {
   const Component = asChild ? Slot : 'div';
 
@@ -61,7 +61,7 @@ export const RovingTabindexRoot = forwardRef<
 
   const refs = useMergeRefs([ref, myRef]);
 
-  const getOrderedItems = (): RovingTabindexElement[] => {
+  const getOrderedItems = (): RovingFocusElement[] => {
     if (!myRef.current) return [];
     const elementsFromDOM = Array.from(
       myRef.current.querySelectorAll<HTMLElement>(
@@ -81,7 +81,7 @@ export const RovingTabindexRoot = forwardRef<
   }, [activeValue]);
 
   return (
-    <RovingTabindexContext.Provider
+    <RovingFocusContext.Provider
       value={{
         elements,
         getOrderedItems,
@@ -116,6 +116,6 @@ export const RovingTabindexRoot = forwardRef<
         }}
         ref={refs}
       />
-    </RovingTabindexContext.Provider>
+    </RovingFocusContext.Provider>
   );
 });

@@ -313,8 +313,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **List:** Change component API ([#1400](https://github.com/digdir/designsystemet/issues/1400)) ([55d8795](https://github.com/digdir/designsystemet/commit/55d87951a270c8449216260cb70e61940fd71293))
 - **Paragraph:** Add `asChild` support to `Paragraph` ([#1462](https://github.com/digdir/designsystemet/issues/1462)) ([c886f65](https://github.com/digdir/designsystemet/commit/c886f652e7062e2bff7148cdc4603c851654a50d))
 - **Popover:** Add `Popover.Trigger` ([#1406](https://github.com/digdir/designsystemet/issues/1406)) ([33c693b](https://github.com/digdir/designsystemet/commit/33c693b7190253368d156273a17442e7603f83b2))
-- **RovingTabindexItem:** Add `asChild` support to `RovingTabindexItem` ([#1468](https://github.com/digdir/designsystemet/issues/1468)) ([8f21be3](https://github.com/digdir/designsystemet/commit/8f21be38dff97d8c1103547d651a77e80b537402))
-- **RovingTabindexRoot:** Add `asChild` support to `RovingTabindexRoot` ([#1469](https://github.com/digdir/designsystemet/issues/1469)) ([c766926](https://github.com/digdir/designsystemet/commit/c7669267312cd583d0e79f196822d4491dcd5bc8))
+- **RovingFocusItem:** Add `asChild` support to `RovingFocusItem` ([#1468](https://github.com/digdir/designsystemet/issues/1468)) ([8f21be3](https://github.com/digdir/designsystemet/commit/8f21be38dff97d8c1103547d651a77e80b537402))
+- **RovingFocusRoot:** Add `asChild` support to `RovingFocusRoot` ([#1469](https://github.com/digdir/designsystemet/issues/1469)) ([c766926](https://github.com/digdir/designsystemet/commit/c7669267312cd583d0e79f196822d4491dcd5bc8))
 - **Tabs:** Remove `icon` prop ([#1418](https://github.com/digdir/designsystemet/issues/1418)) ([75777db](https://github.com/digdir/designsystemet/commit/75777dbc963329ae4e2201de59304786bc6ef6ff))
 
 # [0.47.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.46.1...@digdir/design-system-react@0.47.0) (2024-01-23)

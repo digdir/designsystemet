@@ -1,21 +1,21 @@
-// tests for the RovingTabindexRoot component
+// tests for the RovingFocusRoot component
 
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { RovingTabindexRoot } from './RovingTabindexRoot';
-import { RovingTabindexItem } from './RovingTabindexItem';
+import { RovingFocusRoot } from './RovingFocusRoot';
+import { RovingFocusItem } from './RovingFocusItem';
 
 const user = userEvent.setup();
 
-describe('RovingTabindexRoot', () => {
+describe('RovingFocusRoot', () => {
   test('can navigate with tab and arrow keys', async () => {
     render(
-      <RovingTabindexRoot>
-        <RovingTabindexItem>test</RovingTabindexItem>
-        <RovingTabindexItem>test2</RovingTabindexItem>
-        <RovingTabindexItem>test3</RovingTabindexItem>
-      </RovingTabindexRoot>,
+      <RovingFocusRoot>
+        <RovingFocusItem>test</RovingFocusItem>
+        <RovingFocusItem>test2</RovingFocusItem>
+        <RovingFocusItem>test3</RovingFocusItem>
+      </RovingFocusRoot>,
     );
 
     const item1 = screen.getByText('test');
@@ -39,26 +39,26 @@ describe('RovingTabindexRoot', () => {
 
   test('can navigate with tab and arrow keys with custom value', async () => {
     render(
-      <RovingTabindexRoot>
-        <RovingTabindexItem
+      <RovingFocusRoot>
+        <RovingFocusItem
           data-testid='id1'
           value='banana'
         >
           test
-        </RovingTabindexItem>
-        <RovingTabindexItem
+        </RovingFocusItem>
+        <RovingFocusItem
           data-testid='id2'
           value='strawberry'
         >
           test
-        </RovingTabindexItem>
-        <RovingTabindexItem
+        </RovingFocusItem>
+        <RovingFocusItem
           data-testid='id3'
           value='chocolate'
         >
           test
-        </RovingTabindexItem>
-      </RovingTabindexRoot>,
+        </RovingFocusItem>
+      </RovingFocusRoot>,
     );
 
     const item1 = screen.getByTestId('id1');

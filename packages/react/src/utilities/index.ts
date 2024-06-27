@@ -1,9 +1,9 @@
 export * from './objectUtils';
 export * from './hooks';
 export {
-  RovingTabindexRoot,
-  useRovingTabindex,
-  RovingTabindexItem,
+  RovingFocusRoot,
+  useRovingFocus,
+  RovingFocusItem,
   getNextFocusableValue,
   getPrevFocusableValue,
-} from './RovingTabIndex';
+} from './RovingFocus';

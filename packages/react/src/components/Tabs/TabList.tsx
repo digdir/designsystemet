@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import cl from 'clsx/lite';
 
-import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
+import { RovingFocusRoot } from '../../utilities/RovingFocus';
 
 import { TabsContext } from './TabsRoot';
 
@@ -13,7 +13,7 @@ export const TabList = forwardRef<
   const { value } = useContext(TabsContext);
 
   return (
-    <RovingTabindexRoot
+    <RovingFocusRoot
       role='tablist'
       activeValue={value}
       className={cl('ds-tabs__tablist', className)}
@@ -21,7 +21,7 @@ export const TabList = forwardRef<
       {...rest}
     >
       {children}
-    </RovingTabindexRoot>
+    </RovingFocusRoot>
   );
 });
 
