@@ -28,6 +28,7 @@
     }
   },
   "scripts": {
+    "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
