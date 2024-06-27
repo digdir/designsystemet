@@ -44,7 +44,7 @@ Bruk `Radio.Group` for gruppering av alternativknapper.
 
 Bruk `error` på `Radio.Group` for å vise feilmelding.
 
-Her må vi bruke `Radio.Group`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene når det gjelder tilgjengelighet.
+Her må vi bruke `Radio.Group`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
 
 <Canvas of={RadioGroupStories.Error} />
 
@@ -58,7 +58,7 @@ Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
 
 Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
 
-`Readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
 
 <Canvas of={RadioGroupStories.ReadOnly} />
 
@@ -70,6 +70,7 @@ Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problem
 
 ### Inline
 
+Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte `label`s.
 Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte `labels`.
 
 <Canvas of={RadioGroupStories.Inline} />
