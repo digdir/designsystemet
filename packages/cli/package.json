@@ -29,7 +29,8 @@
   "scripts": {
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "tsup",
+    "build": "yarn clean && swc src bin --copy-files -d dist",
+    "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
   },
   "dependencies": {
@@ -51,6 +52,8 @@
     "style-dictionary": "^4.0.0-prerelease.34"
   },
   "devDependencies": {
+    "@swc/cli": "^0.3.14",
+    "@swc/core": "^1.6.5",
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.11.11",
@@ -59,7 +62,6 @@
     "@types/prompts": "^2.4.9",
     "@types/ramda": "^0.29.9",
     "fs-extra": "^11.2.0",
-    "tsup": "^8.1.0",
     "tsx": "^4.11.2",
     "typescript": "^5.4.5"
   }
