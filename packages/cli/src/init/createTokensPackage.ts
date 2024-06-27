@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import type { Choice, Options } from 'prompts';
 import prompts from 'prompts';
 
-import packageJsonTemplate from './template/template-files/package.json';
+import packageJsonTemplate from './template/template-files/package.json' assert { type: 'json' };
 import generateMetadata from './generateMetadataJson.js';
 import generateThemes from './generateThemesJson.js';
 import { toGeneratedCssFileName, normalizeTokenSetName, toValidPackageName } from './utils.js';
