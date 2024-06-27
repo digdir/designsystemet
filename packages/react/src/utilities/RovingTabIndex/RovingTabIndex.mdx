@@ -1,7 +1,60 @@
 import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+import { RovingTabindexRoot, RovingTabindexItem } from './';
 
-<Meta title='Utilities/RovingTabIndex' />
+<Meta title='Utilities/RovingTabindex' />
 
-# RovingTabIndex
+# RovingTabindex
 
-For å lage liste med elementer som skal bruke piltaster for å flytte fokus
+For å lage liste med elementer som skal bruke piltaster for å flytte fokus.
+Denne komponenten blir brukt internt i `Tabs` og `ToggleGroup`.
+
+## Bruk
+
+Du må alltid ha `RovingTabindexRoot` rundt `RovingTabindexItem` for at det skal fungere.
+Elementet til `RovingTabindexItem` må kunne fokuserest.
+
+```tsx
+import {
+  RovingTabindexRoot,
+  RovingTabindexItem,
+} from '@digdir/designsystemet-react';
+
+<RovingTabindexRoot>
+  <RovingTabindexItem>Item 1</RovingTabindexItem>
+  <RovingTabindexItem>Item 2</RovingTabindexItem>
+  <RovingTabindexItem>Item 3</RovingTabindexItem>
+</RovingTabindexRoot>;
+```
+
+### Bruke egene elementer
+
+Som oftest trenger du å bruke egne elementer, både for `RovingTabindexRoot` og `RovingTabindexItem`.
+Da kan du bruke `asChild`.
+
+```tsx
+<RovingTabindexRoot>
+  <RovingTabindexItem asChild>
+    <MyButton>Item 1</MyButton>
+  </RovingTabindexItem>
+  <RovingTabindexItem asChild>
+    <MyButton>Item 2</MyButton>
+  </RovingTabindexItem>
+  <RovingTabindexItem asChild>
+    <MyButton>Item 3</MyButton>
+  </RovingTabindexItem>
+</RovingTabindexRoot>
+```
+
+## Props
+
+### `RovingTabIndexRoot`
+
+Må være rundt `RovingTabIndexItem`.
+
+<ArgTypes of={RovingTabindexRoot} />
+
+### `RovingTabIndexItem`
+
+Må være inni `RovingTabIndexRoot`, men trenger ikke å være direkte barn.
+
+<ArgTypes of={RovingTabindexItem} />
