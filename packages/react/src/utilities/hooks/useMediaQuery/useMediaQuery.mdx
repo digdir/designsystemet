@@ -1,0 +1,23 @@
+import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+
+import * as SyncStories from './useMediaQuery.stories';
+import { useMediaQuery } from '../';
+
+<Meta of={SyncStories} />
+
+# useMediaQuery
+
+En react hook for å sjekke om en media query matcher.
+
+Prøv å endre størrelsen på vinduet for å se at det fungerer.
+Den bruker ramma rundt eksempelet for å sjekke om det er mindre eller ikke.
+
+<Primary />
+
+Du sender inn en media query som en string, og får tilbake en boolean som sier om media query matcher eller ikke.
+
+## Bruk
+
+```tsx
+const isMobile = useMediaQuery('(max-width: 768px)');
+```
