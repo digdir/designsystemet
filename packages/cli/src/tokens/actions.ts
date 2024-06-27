@@ -6,6 +6,11 @@ import * as R from 'ramda';
 
 const sortLightmodeFirst = R.sortWith([R.descend(R.includes('light')), R.descend(R.includes('secondary'))]);
 
+const header = `@charset "UTF-8";
+
+@layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
+\n`;
+
 /**
  * Creates a CSS entry file that imports base CSS files for a theme
  */
@@ -27,7 +32,7 @@ export const makeEntryFile: Action = {
     );
 
     const files = await glob(`**/*`, { cwd: platform.buildPath });
-    const content = generateImportUrls(files);
+    const content = header + generateImportUrls(files);
 
     await fs.writeFile(writePath, content);
   },
