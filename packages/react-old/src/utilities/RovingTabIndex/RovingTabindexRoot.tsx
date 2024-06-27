@@ -13,10 +13,10 @@ import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
-type RovingTabindexRootBaseProps = {
-  /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
+type RovingFocusRootBaseProps = {
+  /** The children of the `RovingFocusRoot`. The children should get their roving-relevant props from the `useRovingFocus` hook. */
   children: ReactNode;
-  /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
+  /** The value of the element that should be focused when the `RovingFocusRoot` receives focus. */
   valueId?: string;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -25,20 +25,20 @@ type RovingTabindexRootBaseProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export type RovingTabindexElement = {
+export type RovingFocusElement = {
   value: string;
   element: HTMLElement;
 };
 
-export type RovingTabindexProps = {
+export type RovingFocusProps = {
   elements: MutableRefObject<Map<string, HTMLElement>>;
-  getOrderedItems: () => RovingTabindexElement[];
+  getOrderedItems: () => RovingFocusElement[];
   setFocusableValue: (value: string) => void;
   focusableValue: string | null;
   onShiftTab: () => void;
 };
 
-export const RovingTabindexContext = createContext<RovingTabindexProps>({
+export const RovingFocusContext = createContext<RovingFocusProps>({
   elements: { current: new Map<string, HTMLElement>() },
   getOrderedItems: () => [],
   setFocusableValue: () => {
@@ -50,8 +50,8 @@ export const RovingTabindexContext = createContext<RovingTabindexProps>({
   focusableValue: null,
 });
 
-export const RovingTabindexRoot: OverridableComponent<
-  RovingTabindexRootBaseProps,
+export const RovingFocusRoot: OverridableComponent<
+  RovingFocusRootBaseProps,
   HTMLElement
 > = forwardRef(
   ({ valueId, as = 'div', asChild, onBlur, onFocus, ...rest }, ref) => {
@@ -64,7 +64,7 @@ export const RovingTabindexRoot: OverridableComponent<
 
     const refs = useMergeRefs([ref, myRef]);
 
-    const getOrderedItems = (): RovingTabindexElement[] => {
+    const getOrderedItems = (): RovingFocusElement[] => {
       if (!myRef.current) return [];
       const elementsFromDOM = Array.from(
         myRef.current.querySelectorAll<HTMLElement>(
@@ -81,7 +81,7 @@ export const RovingTabindexRoot: OverridableComponent<
     };
 
     return (
-      <RovingTabindexContext.Provider
+      <RovingFocusContext.Provider
         value={{
           elements,
           getOrderedItems,
@@ -115,7 +115,7 @@ export const RovingTabindexRoot: OverridableComponent<
           }}
           ref={refs}
         />
-      </RovingTabindexContext.Provider>
+      </RovingFocusContext.Provider>
     );
   },
 );

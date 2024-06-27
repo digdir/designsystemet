@@ -15,7 +15,7 @@ type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   >;
 };
 
-/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingTabIndex` */
+/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingFocus` */
 export const useToggleGroupItem: UseToggleGroupItem = (
   props: ToggleGroupItemProps,
 ) => {

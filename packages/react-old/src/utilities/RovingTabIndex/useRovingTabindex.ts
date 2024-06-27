@@ -4,17 +4,17 @@
 import type { HTMLAttributes } from 'react';
 import { useContext } from 'react';
 
-import { RovingTabindexContext } from './RovingTabindexRoot';
+import { RovingFocusContext } from './RovingFocusRoot';
 
-/** Handles props for `RovingTabIndex` in context with `RovingTabIndexRoot` */
-export const useRovingTabindex = (value: string) => {
+/** Handles props for `RovingFocus` in context with `RovingFocusRoot` */
+export const useRovingFocus = (value: string) => {
   const {
     elements,
     getOrderedItems,
     setFocusableValue,
     focusableValue,
     onShiftTab,
-  } = useContext(RovingTabindexContext);
+  } = useContext(RovingFocusContext);
 
   return {
     getOrderedItems,

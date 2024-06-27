@@ -6,8 +6,6 @@ import type { HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { OverridableComponent } from '../../types/OverridableComponent';
-
 import type { RovingFocusElement } from './RovingFocusRoot';
 
 import { useRovingFocus } from '.';
@@ -40,44 +38,43 @@ export function getPrevFocusableValue(
   return items.at(currIndex === 0 ? -1 : currIndex - 1);
 }
 
-export const RovingFocusItem: OverridableComponent<
-  RovingFocusItemProps,
-  HTMLElement
-> = forwardRef(({ value, as = 'div', asChild, ...rest }, ref) => {
-  const Component = asChild ? Slot : as;
+export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
+  ({ value, asChild, ...rest }, ref) => {
+    const Component = asChild ? Slot : 'div';
 
-  const focusValue =
-    value ?? (typeof rest.children == 'string' ? rest.children : '');
+    const focusValue =
+      value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-  const { getOrderedItems, getRovingProps } = useRovingFocus(focusValue);
+    const { getOrderedItems, getRovingProps } = useRovingFocus(focusValue);
 
-  const rovingProps = getRovingProps<HTMLElement>({
-    onKeyDown: (e) => {
-      rest?.onKeyDown?.(e);
-      const items = getOrderedItems();
-      let nextItem: RovingFocusElement | undefined;
+    const rovingProps = getRovingProps<HTMLElement>({
+      onKeyDown: (e) => {
+        rest?.onKeyDown?.(e);
+        const items = getOrderedItems();
+        let nextItem: RovingFocusElement | undefined;
 
-      if (e.key === 'ArrowRight') {
-        nextItem = getNextFocusableValue(items, focusValue);
-      }
+        if (e.key === 'ArrowRight') {
+          nextItem = getNextFocusableValue(items, focusValue);
+        }
 
-      if (e.key === 'ArrowLeft') {
-        nextItem = getPrevFocusableValue(items, focusValue);
-      }
+        if (e.key === 'ArrowLeft') {
+          nextItem = getPrevFocusableValue(items, focusValue);
+        }
 
-      nextItem?.element.focus();
-    },
-  });
+        nextItem?.element.focus();
+      },
+    });
 
-  const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
+    const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
 
-  return (
-    <Component
-      {...rest}
-      {...rovingProps}
-      ref={mergedRefs}
-    >
-      {rest.children}
-    </Component>
-  );
-});
+    return (
+      <Component
+        {...rest}
+        {...rovingProps}
+        ref={mergedRefs}
+      >
+        {rest.children}
+      </Component>
+    );
+  },
+);

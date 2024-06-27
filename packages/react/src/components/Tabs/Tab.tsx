@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
-import { RovingTabindexItem } from '../../utilities/RovingTabIndex';
+import { RovingFocusItem } from '../../utilities/RovingFocus';
 import { Paragraph } from '../Typography';
 
 import { useTabItem } from './useTab';
@@ -17,7 +17,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { size, ...useTabRest } = useTabItem(props);
 
   return (
-    <RovingTabindexItem
+    <RovingFocusItem
       {...rest}
       asChild
     >
@@ -35,7 +35,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
           {children}
         </button>
       </Paragraph>
-    </RovingTabindexItem>
+    </RovingFocusItem>
   );
 });
 

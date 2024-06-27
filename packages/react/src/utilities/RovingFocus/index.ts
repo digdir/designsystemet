@@ -1,9 +1,9 @@
 // Inspired by radix-ui https://github.com/radix-ui/primitives/blob/main/packages/react/roving-focus/README.md
 
-export { RovingTabindexRoot } from './RovingTabindexRoot';
-export { useRovingTabindex } from './useRovingTabindex';
+export { RovingFocusRoot } from './RovingFocusRoot';
+export { useRovingFocus } from './useRovingFocus';
 export {
-  RovingTabindexItem,
+  RovingFocusItem,
   getNextFocusableValue,
   getPrevFocusableValue,
-} from './RovingTabindexItem';
+} from './RovingFocusItem';

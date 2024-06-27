@@ -2,9 +2,9 @@ export * from './components';
 export {
   useSynchronizedAnimation,
   useIsomorphicLayoutEffect,
-  RovingTabindexRoot,
-  useRovingTabindex,
-  RovingTabindexItem,
+  RovingFocusRoot,
+  useRovingFocus,
+  RovingFocusItem,
   getNextFocusableValue,
   getPrevFocusableValue,
 } from './utilities';
