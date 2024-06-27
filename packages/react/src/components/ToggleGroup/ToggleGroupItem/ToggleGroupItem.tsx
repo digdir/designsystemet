@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 
 import type { ButtonProps } from '../../Button';
 import { Button } from '../../Button';
-import { RovingTabindexItem } from '../../../utilities/RovingTabIndex';
+import { RovingFocusItem } from '../../../utilities/RovingFocus';
 
 import { useToggleGroupItem } from './useToggleGroupitem';
 
@@ -19,7 +19,7 @@ export const ToggleGroupItem = forwardRef<
   const { children, icon, className, ...rest } = props;
   const { active, size = 'md', buttonProps } = useToggleGroupItem(props);
   return (
-    <RovingTabindexItem
+    <RovingFocusItem
       asChild
       value={rest.value}
     >
@@ -34,7 +34,7 @@ export const ToggleGroupItem = forwardRef<
       >
         {children}
       </Button>
-    </RovingTabindexItem>
+    </RovingFocusItem>
   );
 });
 

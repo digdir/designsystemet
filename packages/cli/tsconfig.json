@@ -8,6 +8,7 @@
     "emitDeclarationOnly": false,
     "noEmit": false,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "sourceMap": false,

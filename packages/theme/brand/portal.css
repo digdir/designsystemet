@@ -1,5 +1,9 @@
+@charset "UTF-8";
+
+@layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
+
 @import url('./portal/color-mode/light.css');
 @import url('./portal/typography/secondary.css');
 @import url('./portal/semantic.css');
-@import url('./portal/color-mode/dark.css');
 @import url('./portal/typography/primary.css');
+@import url('./portal/color-mode/dark.css');
