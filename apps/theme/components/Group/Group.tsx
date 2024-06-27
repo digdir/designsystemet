@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { RovingTabindexItem } from '@digdir/designsystemet-react';
+import { RovingFocusItem } from '@digdir/designsystemet-react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 
 import { Color } from '../Color/Color';
@@ -41,7 +41,7 @@ export const Group = ({
       <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
         {colors.map(function (item, index) {
           return (
-            <RovingTabindexItem
+            <RovingFocusItem
               key={index}
               value={item.name}
               asChild
@@ -55,7 +55,7 @@ export const Group = ({
                 showColorMeta={showColorMeta}
                 type={type}
               />
-            </RovingTabindexItem>
+            </RovingFocusItem>
           );
         })}
       </div>

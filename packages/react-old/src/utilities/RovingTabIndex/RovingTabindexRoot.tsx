@@ -14,7 +14,7 @@ import { Slot } from '@radix-ui/react-slot';
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
 type RovingTabindexRootBaseProps = {
-  /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabIndex` hook. */
+  /** The children of the `RovingTabindexRoot`. The children should get their roving-relevant props from the `useRovingTabindex` hook. */
   children: ReactNode;
   /** The value of the element that should be focused when the `RovingTabindexRoot` receives focus. */
   valueId?: string;

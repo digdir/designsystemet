@@ -2,7 +2,10 @@ import { useRef, useEffect } from 'react';
 
 type DebounceFunction<T> = (...args: T[]) => void;
 
-function useDebounce<T>(callback: DebounceFunction<T>, delay = 50) {
+export function useDebounceCallback<T>(
+  callback: DebounceFunction<T>,
+  delay = 50,
+) {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -26,5 +29,3 @@ function useDebounce<T>(callback: DebounceFunction<T>, delay = 50) {
 
   return debouncedCallback;
 }
-
-export default useDebounce;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
-import { RovingTabindexRoot } from '@digdir/designsystemet-react';
+import { RovingFocusRoot } from '@digdir/designsystemet-react';
 
 import type { modeType } from '../../types';
 import { Group } from '../Group/Group';
@@ -58,7 +58,7 @@ export const Scale = ({
   }, [colorScale, themeMode, type]);
   return (
     <div className={classes.themes}>
-      <RovingTabindexRoot asChild>
+      <RovingFocusRoot asChild>
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
@@ -97,7 +97,7 @@ export const Scale = ({
             type={type}
           />
         </div>
-      </RovingTabindexRoot>
+      </RovingFocusRoot>
     </div>
   );
 };
