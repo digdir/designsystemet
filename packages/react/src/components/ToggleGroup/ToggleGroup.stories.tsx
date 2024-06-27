@@ -9,9 +9,9 @@ import {
 } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
+import { Paragraph } from '../Typography';
 
 import { ToggleGroup } from '.';
-import { Paragraph } from '../Typography';
 
 export default {
   title: 'Komponenter/ToggleGroup',
