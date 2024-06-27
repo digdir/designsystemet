@@ -10,6 +10,7 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
+  "types": "./dist/types",
   "files": [
     "./dist/**"
   ],
@@ -29,7 +30,8 @@
   "scripts": {
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "yarn clean && swc src bin --copy-files -d dist",
+    "build": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
   },
