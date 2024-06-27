@@ -1,0 +1,22 @@
+import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+
+import * as SyncStories from './useDebounceCallback.stories';
+import { useDebounceCallback } from '../';
+
+<Meta of={SyncStories} />
+
+# useDebounceCallback
+
+En react hook for å debounce en callback-funksjon. Denne hooken er nyttig for å forsinke en funksjon som skal kjøres etter at en bruker har sluttet å skrive i et input-felt, eller etter at en bruker har stoppet å scrolle i en liste.
+
+I eksempelet under bruker vi 1000ms som debounce-tid. Dette betyr at funksjonen ikke vil kjøre før 1000ms etter at den ble kalt sist.
+
+<Primary />
+
+## Bruk
+
+```tsx
+const func = useDebounceCallback((value: string) => {
+  console.log(value);
+}, 500);
+```

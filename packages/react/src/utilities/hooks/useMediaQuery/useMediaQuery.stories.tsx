@@ -1,5 +1,7 @@
 import type { Meta } from '@storybook/react';
 
+import { Paragraph } from '../../../components';
+
 import { useMediaQuery } from './useMediaQuery';
 
 const meta: Meta = {
@@ -13,7 +15,9 @@ export const TestMediaQuery = () => {
 
   return (
     <div>
-      <div>Er skjermen mindre enn 1000px? {isBelow ? 'Ja' : 'Nei'}</div>
+      <Paragraph>
+        Er skjermen mindre enn 1000px? {isBelow ? 'Ja' : 'Nei'}
+      </Paragraph>
     </div>
   );
 };

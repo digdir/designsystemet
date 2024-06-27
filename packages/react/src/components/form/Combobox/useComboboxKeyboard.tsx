@@ -1,4 +1,4 @@
-import useDebounce from '../../../utilities/hooks/useDebounce';
+import { useDebounceCallback } from '../../../utilities';
 
 import type useCombobox from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';
@@ -104,7 +104,7 @@ export const useComboboxKeyboard = ({
     }
   };
 
-  const handleKeyDown = useDebounce(handleKeyDownFunc, 20);
+  const handleKeyDown = useDebounceCallback(handleKeyDownFunc, 20);
 
   return handleKeyDown;
 };
