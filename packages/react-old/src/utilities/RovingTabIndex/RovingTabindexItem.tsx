@@ -8,12 +8,12 @@ import { Slot } from '@radix-ui/react-slot';
 
 import type { OverridableComponent } from '../../types/OverridableComponent';
 
-import type { RovingFocusElement } from './RovingFocusRoot';
+import type { RovingTabindexElement } from './RovingTabindexRoot';
 
-import { useRovingFocus } from '.';
+import { useRovingTabindex } from '.';
 
-type RovingFocusItemProps = {
-  /** The value of the `RovingFocusItem` used to determine which item should have focus. */
+type RovingTabindexItemProps = {
+  /** The value of the `RovingTabindexItem` used to determine which item should have focus. */
   value?: string;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -22,26 +22,26 @@ type RovingFocusItemProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-/** Get the next focusable RovingFocusItem */
+/** Get the next focusable RovingTabindexItem */
 export function getNextFocusableValue(
-  items: RovingFocusElement[],
+  items: RovingTabindexElement[],
   value: string,
-): RovingFocusElement | undefined {
+): RovingTabindexElement | undefined {
   const currIndex = items.findIndex((item) => item.value === value);
   return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
 }
 
-/** Get the previous focusable RovingFocusItem */
+/** Get the previous focusable RovingTabindexItem */
 export function getPrevFocusableValue(
-  items: RovingFocusElement[],
+  items: RovingTabindexElement[],
   value: string,
-): RovingFocusElement | undefined {
+): RovingTabindexElement | undefined {
   const currIndex = items.findIndex((item) => item.value === value);
   return items.at(currIndex === 0 ? -1 : currIndex - 1);
 }
 
-export const RovingFocusItem: OverridableComponent<
-  RovingFocusItemProps,
+export const RovingTabindexItem: OverridableComponent<
+  RovingTabindexItemProps,
   HTMLElement
 > = forwardRef(({ value, as = 'div', asChild, ...rest }, ref) => {
   const Component = asChild ? Slot : as;
@@ -49,13 +49,13 @@ export const RovingFocusItem: OverridableComponent<
   const focusValue =
     value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-  const { getOrderedItems, getRovingProps } = useRovingFocus(focusValue);
+  const { getOrderedItems, getRovingProps } = useRovingTabindex(focusValue);
 
   const rovingProps = getRovingProps<HTMLElement>({
     onKeyDown: (e) => {
       rest?.onKeyDown?.(e);
       const items = getOrderedItems();
-      let nextItem: RovingFocusElement | undefined;
+      let nextItem: RovingTabindexElement | undefined;
 
       if (e.key === 'ArrowRight') {
         nextItem = getNextFocusableValue(items, focusValue);
