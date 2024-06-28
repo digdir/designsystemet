@@ -1,12 +1,18 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 import * as CardStories from './Card.stories';
+
 <Meta of={CardStories} />
+
 # Card
+
 Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene finnes i flere varianter og kan inneholde overskrift, underoverskrift, et område for annen tekst og knapper og eller lenker
+
 <br />
 <Primary />
 <Controls />
+
 ## Slik bruker du `Card`
+
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
 <Card>
@@ -15,50 +21,108 @@ import { Card } from '@digdir/designsystemet-react';
   <Card.Footer>Valgfri fotnote</Card.Footer>
 </Card>;
 ```
+
 ## Varianter av `Card`
+
 ### Navigasjonskort – for å komme dit du skal
-Brukerne kan klikke på navigasjonskort, slik at de tar dem videre til en annen side i tjenesten. Overskriften på kortet inneholder en lenke og kan også ha bilde, underoverskrift, tag og annen informasjon. Siden denne typen kort kan klikkes på, skal det ikke ha andre interaktive elementer, for eksempel knapper.
+
+Brukerne kan klikke på navigasjonskort, slik at de tar dem videre til en annen
+side i tjenesten. Overskriften på kortet inneholder en lenke og kan også ha
+bilde, underoverskrift, tag og annen informasjon. Siden denne typen kort kan
+klikkes på, skal det ikke ha andre interaktive elementer, for eksempel knapper.
+
 [Eksempel]
+
 ### Oppgavekort – for å få gjort det du ønsker
-Vi bruker oppgavekort når vi vil samle handlinger som hører sammen med annet innhold på siden. Det kan for eksempel være hvis vi vil vise detaljer om noe i tjenestene våre. Brukerne kan ikke klikke på dette kortet, så da kan du legge til lenker, knapper og skjemaelementer som de kan samhandle med.
+
+Vi bruker oppgavekort når vi vil samle handlinger som hører sammen med annet innhold på siden. Det kan
+for eksempel være hvis vi vil vise detaljer om noe i tjenestene våre. Brukerne
+kan ikke klikke på dette kortet, så da kan du legge til lenker, knapper og
+skjemaelementer som de kan samhandle med.
+
 [Eksempel]
+
 ### Infokort - for å finne ut av noe du lurer på
-Vi bruker infokortet til ren informasjon. Det kan ha et bilde, og bør ha en overskrift og eventuelt en brødtekst. Infokort skal ikke ha knapper eller lenker.
+
+Vi bruker infokortet til ren informasjon. Det kan ha et
+bilde, og bør ha en overskrift og eventuelt en brødtekst. Infokort skal ikke ha
+knapper eller lenker.
+
 [Eksempel]
+
 ## Andre eksempler
-### `Card.Media`
-Bruk `Card.Media` dersom du ønsker å ha bilder eller video i kortene.
+
+`Card.Media`
+
+Bruk`Card.Media` hvis du vi ha bilder eller video i kortene.
+
 <Canvas of={CardStories.Media} />
+
 #### Video
+
 <Canvas of={CardStories.Video} />
+
 ### Link Card
-Bruk `as` til å endre kortet til en lenke. Vær oppmerksom på gyldig html [innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary) og innholdet, fordi skjermlesere leser opp alt samlet.
-Hover og aktivt styling blir kun aktivert dersom du har definert `href`. Dette er for å støtte "Link" komponenter fra tredjeparts bibliotek som [NextJS Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React Router Link](https://reactrouter.com/en/main/components/link)
+
+Bruk `as` til å endre kortet til en lenke. Vær oppmerksom på gyldig html
+[innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary)
+og innholdet, fordi skjermlesere leser opp alt samlet. Hover og aktivt styling
+blir kun aktivert dersom du har definert `href`. Dette er for å støtte "Link"
+komponenter fra tredjeparts bibliotek som [NextJS
+Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React
+Router Link](https://reactrouter.com/en/main/components/link)
+
 <Canvas of={CardStories.LinkCard} />
+
 ### Farger
-Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral,
-subtil, og andre stiler.
+
+Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral, subtil, og andre stiler.
+
 <Canvas of={CardStories.Variants} />
+
 ### Komponert
+
 Eksempler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
+
 <Canvas of={CardStories.Composed} />
+
 ## Retningslinjer for `Card`
-Vi bruker kort når vi vil trekke oppmerksomheten til brukeren mot en funksjon. De fungerer godt til interaksjon, men vi bruker dem bare hvis vi har tenkt å tilby ekstra funksjonalitet med gruppert innhold. Kort passer veldig godt til responsive løsninger.
-Vi kan ha flere kort på en side, men pass på at de oppfattes som rolige elementer på siden, og ikke tar oppmerksomheten og avbryter hvordan brukerne leser informasjonen på siden.
-Passer til å gruppere innhold eller funksjonalitet som du vil skille ut fra resten av innholdet.
+
+Vi bruker kort når vi vil trekke oppmerksomheten til brukeren mot en funksjon.
+De fungerer godt til interaksjon, men vi bruker dem bare hvis vi har tenkt å tilby ekstra funksjonalitet med gruppert innhold.
+
+Kort passer veldig godt til responsive løsninger. Vi kan ha flere kort på en
+side, men pass på at de oppfattes som rolige elementer på siden, og ikke tar
+oppmerksomheten og avbryter hvordan brukerne leser informasjonen på siden.
+
+Passer til å gruppere innhold eller funksjonalitet som du vil skille ut fra
+resten av innholdet.
+
 Passer ikke til å
+
 - presentere hovedinnholdet i tjenesten, men heller innhold som supplerer og skal være en del av helheten
 - være kun et visuelt blikkfang, det bør være interaksjon på kort
 - gi statusmeldinger
+  {' '}
+
 ### Unngå
-- å bruke for mange kort på en side, da dette kan skape forvirring
+
+- å bruke for mange kort på en side, det kan skape forvirring
 - å blande for mange forskjellige typer innhold i et enkelt kort
-<br />
-## Tekst i komponenten
-Unngå lange tekster på kortene. Tenkt nøye gjennom hva du trenger å si og skriv en kort og presis overskrift, underoverskrift og eventuell brødtekst.
-##Tilgjengelighet
+
+## Tekst i komponenten{' '}
+
+Unngå lange tekster på kortene. Tenkt nøye gjennom hva du trenger å si og skriv en kort og presis overskrift, underoverskrift og eventuell
+brødtekst.
+
+## Tilgjengelighet
+
 [Ikke funnet noe her]
+
 ### Kilder
-designsystem.dk
-jokul.no
+
+designsystem.
+dk jokul.no
+
 <br />
+```
