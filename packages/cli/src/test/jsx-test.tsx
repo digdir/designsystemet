@@ -1,4 +1,4 @@
-const cl = (...args: unknown[]) => args.join(' ');
+import cl from 'clsx';
 
 const DEFAULT = 'fds-default';
 
