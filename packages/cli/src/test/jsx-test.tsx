@@ -1,4 +1,4 @@
-import cl from 'classnames';
+const cl = (...args: unknown[]) => args.join(' ');
 
 const DEFAULT = 'fds-default';
 
