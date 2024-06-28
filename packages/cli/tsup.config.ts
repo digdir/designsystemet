@@ -9,7 +9,6 @@ export default defineConfig({
   bundle: false,
   platform: 'node',
   target: 'esnext',
-  dts: true,
   loader: {
     '.md': 'copy',
     '.json': 'copy',
