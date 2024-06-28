@@ -21479,8 +21479,8 @@ __metadata:
     tslib: "npm:^2.6.2"
     typescript: "npm:^5.4.2"
     typescript-plugin-css-modules: "npm:^5.1.0"
-    vite: "npm:^5.2.8"
-    vitest: "npm:^1.4.0"
+    vite: "npm:^5.3.2"
+    vitest: "npm:^1.6.0"
   languageName: unknown
   linkType: soft
 
@@ -24478,7 +24478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.2.8":
+"vite@npm:^5.3.2":
   version: 5.3.2
   resolution: "vite@npm:5.3.2"
   dependencies:
@@ -24518,7 +24518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^1.4.0":
+"vitest@npm:^1.6.0":
   version: 1.6.0
   resolution: "vitest@npm:1.6.0"
   dependencies:
