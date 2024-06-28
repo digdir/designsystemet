@@ -1,10 +1,5 @@
 export default {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-css-modules',
-    // 'stylelint-config-prettier',
-  ],
-  // plugins: ['stylelint-prettier'],
+  extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
   rules: {
     // 'prettier/prettier': true,
     'declaration-block-no-redundant-longhand-properties': null,
