@@ -168,13 +168,19 @@ describe('Combobox', () => {
     const combobox = screen.getByRole('combobox');
 
     await act(async () => await userEvent.click(combobox));
-    await act(async () => await userEvent.click(screen.getByText('Leikanger')));
-    await act(async () => await user.click(document.body));
+    await waitFor(async () => {
+      await act(
+        async () => await userEvent.click(screen.getByText('Leikanger')),
+      );
+    });
+    await waitFor(async () => {
+      await act(async () => await user.click(document.body));
+    });
 
     await waitFor(() => {
       expect(screen.getByText('Leikanger')).toBeInTheDocument();
-      expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
     });
+    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
 
     await act(async () => await userEvent.click(screen.getByText('Leikanger')));
 
@@ -183,7 +189,9 @@ describe('Combobox', () => {
     });
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    expect(onValueChange).toHaveBeenCalledWith([]);
+    await waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith([]);
+    });
   });
 
   it('should remove all values when we click on the clear button', async () => {
