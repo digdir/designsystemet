@@ -97,7 +97,7 @@
     "rollup": "^4.12.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "storybook": "^8.1.5",
+    "storybook": "^8.1.11",
     "storybook-css-modules": "^1.0.8",
     "stylelint": "^16.0.2",
     "stylelint-config-css-modules": "^4.4.0",
