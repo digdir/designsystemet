@@ -1,6 +1,5 @@
-// tests for the RovingFocusRoot component
-
 import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 
 import { RovingFocusRoot } from './RovingFocusRoot';
@@ -21,19 +20,19 @@ describe('RovingFocusRoot', () => {
     const item1 = screen.getByText('test');
     const item2 = screen.getByText('test2');
     const item3 = screen.getByText('test3');
-    await user.tab();
+    await act(async () => await user.tab());
     expect(item1).toHaveFocus();
-    await user.type(item1, '{arrowright}');
+    await act(async () => await user.type(item1, '{arrowright}'));
     expect(item2).toHaveFocus();
-    await user.type(item2, '{arrowright}');
+    await act(async () => await user.type(item2, '{arrowright}'));
     expect(item3).toHaveFocus();
-    await user.type(item3, '{arrowright}');
+    await act(async () => await user.type(item3, '{arrowright}'));
     expect(item1).toHaveFocus();
-    await user.type(item1, '{arrowleft}');
+    await act(async () => await user.type(item1, '{arrowleft}'));
     expect(item3).toHaveFocus();
-    await user.type(item3, '{arrowleft}');
+    await act(async () => await user.type(item3, '{arrowleft}'));
     expect(item2).toHaveFocus();
-    await user.type(item2, '{arrowleft}');
+    await act(async () => await user.type(item2, '{arrowleft}'));
     expect(item1).toHaveFocus();
   });
 
@@ -64,19 +63,19 @@ describe('RovingFocusRoot', () => {
     const item1 = screen.getByTestId('id1');
     const item2 = screen.getByTestId('id2');
     const item3 = screen.getByTestId('id3');
-    await user.tab();
+    await act(async () => await user.tab());
     expect(item1).toHaveFocus();
-    await user.type(item1, '{arrowright}');
+    await act(async () => await user.type(item1, '{arrowright}'));
     expect(item2).toHaveFocus();
-    await user.type(item2, '{arrowright}');
+    await act(async () => await user.type(item2, '{arrowright}'));
     expect(item3).toHaveFocus();
-    await user.type(item3, '{arrowright}');
+    await act(async () => await user.type(item3, '{arrowright}'));
     expect(item1).toHaveFocus();
-    await user.type(item1, '{arrowleft}');
+    await act(async () => await user.type(item1, '{arrowleft}'));
     expect(item3).toHaveFocus();
-    await user.type(item3, '{arrowleft}');
+    await act(async () => await user.type(item3, '{arrowleft}'));
     expect(item2).toHaveFocus();
-    await user.type(item2, '{arrowleft}');
+    await act(async () => await user.type(item2, '{arrowleft}'));
     expect(item1).toHaveFocus();
   });
 });

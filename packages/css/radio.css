@@ -91,7 +91,7 @@
 
 .ds-radio__input:checked {
   --dsc-radio-border-color: var(--ds-color-accent-base-default);
-  --dsc-radio-background: radial-gradient(circle, var(--ds-color-neutral-background-default) 60%, transparent 60%);
+  --dsc-radio-background: radial-gradient(circle, var(--ds-color-accent-contrast-1) 60%, transparent 60%);
 
   /* We use a gradient to avoid bleeding pixels */
   background: var(--dsc-radio-background);
