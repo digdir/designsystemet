@@ -196,9 +196,18 @@ I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis ha
   }}>
 <Image
   src='/img/errormessage-co-2.png'
-  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer skal inneholde 11 siffer.'
+  alt='Skjermbilde av skjema med en gruppe av felter. Brukeren må fylle ut minst ett felt, men forsøker å gå videre uten å ha gjort det. Hen får da røde felter på hele gruppen og en melding i bunnen om at minst et felt må fylles ut.'
   boxShadow={false}
 />
+
+Hadde det bare vært en feil i gruppen, ville feilmeldingen vist på vanlig måte:
+
+<Image
+  src='/img/errormessage-co-2b.png'
+  alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, som var kravet, men det er feil i det ene feltet. Brukeren får da en normal feilmelding kun på det ene feltet. '
+  boxShadow={false}
+/>
+
 </Accordion.Content>
 
   </Accordion.Item>
