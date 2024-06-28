@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.54.0](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.12...@digdir/design-system-react@0.54.0) (2024-06-07)
+
+### Features
+
+- :heavy_minus_sign: Remove re-export of `@digdir/designsystemet-react` components ([#2114](https://github.com/digdir/designsystemet/issues/2114)) ([bc46492](https://github.com/digdir/designsystemet/commit/bc464924590ec64ecdac1af48ec3e2588cca2466))
+
+### BREAKING CHANGES
+
+- Removes re-export of components from
+  `@digdir/designsystemet-react`
+
 ## [0.53.12](https://github.com/digdir/designsystemet/compare/@digdir/design-system-react@0.53.11...@digdir/design-system-react@0.53.12) (2024-05-24)
 
 **Note:** Version bump only for package @digdir/design-system-react
