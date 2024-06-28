@@ -177,12 +177,13 @@ describe('Combobox', () => {
     });
 
     await act(async () => await userEvent.click(screen.getByText('Leikanger')));
-    await act(async () => await user.click(document.body));
 
-    await waitFor(() => {
-      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-      expect(onValueChange).toHaveBeenCalledWith([]);
+    await waitFor(async () => {
+      await act(async () => await user.click(document.body));
     });
+
+    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+    expect(onValueChange).toHaveBeenCalledWith([]);
   });
 
   it('should remove all values when we click on the clear button', async () => {
@@ -217,7 +218,9 @@ describe('Combobox', () => {
       throw new Error('Could not find clear button');
     }
     await act(async () => await userEvent.click(clearButton));
-    await act(async () => await userEvent.click(document.body));
+    await waitFor(async () => {
+      await act(async () => await userEvent.click(document.body));
+    });
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
     expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
