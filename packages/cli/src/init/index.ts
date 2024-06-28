@@ -1,6 +1,6 @@
 import { Argument, type Command } from '@commander-js/extra-typings';
 
-import { createTokensPackage } from './createTokensPackage';
+import { createTokensPackage } from './createTokensPackage.js';
 
 export function makeInitCommand(command: Command) {
   return command
