@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import type { Choice, Options } from 'prompts';
 import prompts from 'prompts';
 
-import packageJsonTemplate from './template/template-files/package.json' assert { type: 'json' };
+import packageJsonTemplate from './template/template-files/package.json' with { type: 'json' };
 import generateMetadata from './generateMetadataJson.js';
 import generateThemes from './generateThemesJson.js';
 import { toGeneratedCssFileName, normalizeTokenSetName, toValidPackageName } from './utils.js';
@@ -257,7 +257,10 @@ Will now create the following:
 
   // Configure package.json file
   packageJsonTemplate.name = packageName;
-  packageJsonTemplate.main = packageJsonTemplate.main.replace('<default-theme>', toGeneratedCssFileName(defaultTheme));
+  packageJsonTemplate.main = packageJsonTemplate.main.replaceAll(
+    '<default-theme>',
+    toGeneratedCssFileName(defaultTheme),
+  );
   await fs.writeFile(path.join(TARGET_DIR, 'package.json'), JSON.stringify(packageJsonTemplate, undefined, 2));
 
   const readmePath = path.join(TARGET_DIR, 'README.md');

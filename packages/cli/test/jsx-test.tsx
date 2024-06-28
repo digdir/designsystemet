@@ -1,4 +1,4 @@
-import cl from 'classnames';
+import cl from 'clsx';
 
 const DEFAULT = 'fds-default';
 
