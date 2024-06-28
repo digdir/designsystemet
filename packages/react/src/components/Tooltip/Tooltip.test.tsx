@@ -13,6 +13,7 @@ const render = async (props: Partial<TooltipProps> = {}) => {
   const allProps: TooltipProps = {
     children: <button>My button</button>,
     content: 'Tooltip text',
+    delay: 0,
     ...props,
   };
   /* Flush microtasks */
@@ -48,11 +49,10 @@ describe('Tooltip', () => {
     });
 
     it('should render tooltip on focus', async () => {
-      await render();
-      const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+      const { user } = await render();
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
-      act(() => tooltipTrigger.focus());
+      await user.click(screen.getByRole('button', { name: 'My button' }));
       const tooltip = await screen.findByText('Tooltip text');
       expect(tooltip).toBeInTheDocument();
       expect(screen.queryByRole('tooltip')).toBeInTheDocument();
