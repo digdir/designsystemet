@@ -1,8 +1,7 @@
 import type { RefObject } from 'react';
-import { createRef } from 'react';
+import { createRef, act } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
 
 import type { NativeSelectProps } from './NativeSelect';
 import { NativeSelect } from './NativeSelect';

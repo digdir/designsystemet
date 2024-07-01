@@ -1,6 +1,6 @@
 import type * as React from 'react';
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { ComboboxProps } from './Combobox';
@@ -113,7 +113,7 @@ describe('Combobox', () => {
 
     await act(async () => await user.type(combobox, '{Enter}'));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
     });
   });
@@ -126,7 +126,7 @@ describe('Combobox', () => {
     await act(async () => await user.click(combobox));
     await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
     });
   });
@@ -138,13 +138,13 @@ describe('Combobox', () => {
 
     await act(async () => await user.click(combobox));
     await act(async () => await user.click(screen.getByText('Leikanger')));
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
     });
 
     await act(async () => await user.click(screen.getByText('Oslo')));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
     });
   });
@@ -161,11 +161,11 @@ describe('Combobox', () => {
     });
 
     await act(async () => await user.click(screen.getByText('Oslo')));
-    await waitFor(async () => {
+    await vi.waitFor(async () => {
       await user.click(document.body);
     });
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
     });
   });
@@ -178,13 +178,13 @@ describe('Combobox', () => {
     await act(async () => await user.click(combobox));
     await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
     });
 
     await act(async () => await user.click(screen.getByText('Oslo')));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
     });
 
@@ -204,7 +204,7 @@ describe('Combobox', () => {
     await act(async () => await user.click(clearButton));
     await act(async () => await user.click(document.body));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
       expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
       expect(onValueChange).toHaveBeenCalledWith([]);
@@ -338,7 +338,7 @@ describe('Combobox', () => {
     await user.click(screen.getByText('Leikanger'));
     await user.click(screen.getByText('Leikanger'));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledTimes(1);
     });
   });

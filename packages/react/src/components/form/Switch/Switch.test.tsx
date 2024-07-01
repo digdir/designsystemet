@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Switch } from './Switch';
 
@@ -44,7 +45,7 @@ describe('Switch', () => {
 
     expect(switch_.checked).toBeFalsy();
 
-    await user.click(switch_);
+    await act(async () => await user.click(switch_));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -92,7 +93,7 @@ describe('Switch', () => {
     );
 
     const switch_ = screen.getByRole('switch');
-    await user.click(switch_);
+    await act(async () => await user.click(switch_));
 
     expect(switch_).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

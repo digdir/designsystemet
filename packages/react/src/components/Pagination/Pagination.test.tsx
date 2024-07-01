@@ -3,7 +3,7 @@ import {
   screen,
   renderHook,
 } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { PaginationRootProps } from './PaginationRoot';
