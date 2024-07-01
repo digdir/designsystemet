@@ -114,18 +114,6 @@
   border-collapse: collapse;
 }
 
-.content > table td,
-.content > table th {
-  padding: var(--ds-spacing-4);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-}
-
-.content > table th {
-  text-align: left;
-  background-color: var(--ds-color-neutral-background-subtle);
-  font-weight: 600;
-}
-
 .content p code,
 .content ul code,
 .content ol code {
