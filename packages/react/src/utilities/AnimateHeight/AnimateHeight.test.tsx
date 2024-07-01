@@ -1,11 +1,11 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import { act } from 'react';
 
 import * as hooks from '../../utilities';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';
-import { act } from 'react';
 
 const defaultProps: AnimateHeightProps = {
   open: false,
