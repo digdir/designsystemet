@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
