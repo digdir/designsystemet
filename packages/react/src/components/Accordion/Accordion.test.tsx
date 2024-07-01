@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 import type { AccordionItemProps } from './';
 import { Accordion } from './';
@@ -75,10 +76,10 @@ describe('Accordion Accessibility', () => {
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
 
-    await user.click(accordionExpandButton);
+    await act(async () => await user.click(accordionExpandButton));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
 
-    await user.click(accordionExpandButton);
+    await act(async () => await user.click(accordionExpandButton));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 

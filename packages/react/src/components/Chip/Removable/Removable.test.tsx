@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 import { Chip, type RemovableChipProps } from '..';
 
@@ -38,7 +39,7 @@ describe('RemovableChip', () => {
     const chip = screen.getByRole('button', { name: 'Norwegian' });
 
     expect(chip);
-    await user.click(chip);
+    await act(async () => await user.click(chip));
     expect(
       screen.queryByRole('button', { name: 'Norwegian' }),
     ).not.toBeInTheDocument();
