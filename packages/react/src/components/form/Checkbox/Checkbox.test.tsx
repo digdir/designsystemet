@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 import { Checkbox } from './Checkbox';
 
@@ -44,7 +45,7 @@ describe('Checkbox', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -68,7 +69,7 @@ describe('Checkbox', () => {
     );
 
     const radio = screen.getByRole('checkbox');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
@@ -92,7 +93,7 @@ describe('Checkbox', () => {
     );
 
     const radio = screen.getByRole('checkbox');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

@@ -2,6 +2,7 @@ import type { RefObject } from 'react';
 import { createRef } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 import type { NativeSelectProps } from './NativeSelect';
 import { NativeSelect } from './NativeSelect';
@@ -66,7 +67,7 @@ describe('NativeSelect', () => {
     render();
     const select = screen.getByRole('combobox');
     const { value } = options[1];
-    await user.selectOptions(select, value);
+    await act(async () => await user.selectOptions(select, value));
     expect(select).toHaveValue(value);
   });
 
@@ -74,7 +75,9 @@ describe('NativeSelect', () => {
     const onChange = vi.fn();
     render({ onChange });
     const { value } = options[1];
-    await user.selectOptions(screen.getByRole('combobox'), value);
+    await act(
+      async () => await user.selectOptions(screen.getByRole('combobox'), value),
+    );
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
   });

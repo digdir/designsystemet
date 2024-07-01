@@ -1,4 +1,4 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 
@@ -78,9 +78,7 @@ describe('Dropdown', () => {
       await user.click(document.body);
     });
 
-    setTimeout(() => {
-      expect(screen.queryByText('Item')).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText('Item')).not.toBeInTheDocument();
   });
 
   it('should close when we press ESC', async () => {
@@ -93,9 +91,7 @@ describe('Dropdown', () => {
 
     await act(async () => await user.keyboard('[Escape]'));
 
-    setTimeout(() => {
-      expect(screen.queryByText('Item')).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText('Item')).not.toBeInTheDocument();
   });
 
   it('should not close if we click inisde the dropdown', async () => {
@@ -160,10 +156,10 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await act(async () => user.click(dropdownTrigger));
+    await act(async () => await user.click(dropdownTrigger));
 
-    setTimeout(() => {
+    await waitFor(() => {
       expect(document.activeElement).toBe(screen.getByText('Item'));
-    }, 1000);
+    });
   });
 });
