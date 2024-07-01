@@ -14,7 +14,7 @@ export const mapTokens = () => {
   setToken('--ds-color-accent-text-subtle', 'var(--accent-12)');
   setToken('--ds-color-accent-text-default', 'var(--accent-13)');
   setToken('--ds-color-accent-contrast-default', 'var(--accent-14)');
-  setToken('--ds-color-accent-contrast-sublte', 'var(--accent-15)');
+  setToken('--ds-color-accent-contrast-subtle', 'var(--accent-15)');
 
   // neutral
   setToken('--ds-color-neutral-background-default', 'var(--neutral-1)');
