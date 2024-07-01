@@ -1,4 +1,4 @@
-import { omit } from './objectUtils';
+import { omit } from './omit';
 
 describe('omit', () => {
   it('Returns copy of object with omitted property', () => {

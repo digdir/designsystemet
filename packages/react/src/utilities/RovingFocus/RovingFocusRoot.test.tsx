@@ -8,7 +8,7 @@ import { RovingFocusItem } from './RovingFocusItem';
 const user = userEvent.setup();
 
 describe('RovingFocusRoot', () => {
-  test('can navigate with tab and arrow keys', async () => {
+  it('can navigate with tab and arrow keys', async () => {
     render(
       <RovingFocusRoot>
         <RovingFocusItem>test</RovingFocusItem>
@@ -36,7 +36,7 @@ describe('RovingFocusRoot', () => {
     expect(item1).toHaveFocus();
   });
 
-  test('can navigate with tab and arrow keys with custom value', async () => {
+  it('can navigate with tab and arrow keys with custom value', async () => {
     render(
       <RovingFocusRoot>
         <RovingFocusItem
