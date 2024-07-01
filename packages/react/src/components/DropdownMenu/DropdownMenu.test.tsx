@@ -1,5 +1,5 @@
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { DropdownMenuRootProps } from './DropdownMenuRoot';
@@ -158,7 +158,7 @@ describe('Dropdown', () => {
 
     await act(async () => await user.click(dropdownTrigger));
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(document.activeElement).toBe(screen.getByText('Item'));
     });
   });

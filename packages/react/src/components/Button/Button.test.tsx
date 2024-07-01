@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import type { ButtonProps } from './Button';
 import { Button } from './Button';

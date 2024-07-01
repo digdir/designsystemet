@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 
 import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';
@@ -87,7 +87,7 @@ describe('Tooltip', () => {
     await user.hover(screen.getByRole('button'));
     expect(screen.queryByRole('tooltip')).toBeNull();
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(screen.queryByRole('tooltip')).toBeVisible();
     });
   });

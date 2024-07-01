@@ -5,6 +5,7 @@ import * as hooks from '../../utilities';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';
+import { act } from 'react';
 
 const defaultProps: AnimateHeightProps = {
   open: false,
@@ -56,7 +57,7 @@ describe('AnimateHeight', () => {
 
   it('Sets class to "openingOrClosing" when opening and "open" when timer has run', async () => {
     const { container, rerender } = render({ open: false });
-    rerender(<AnimateHeight open />);
+    act(() => rerender(<AnimateHeight open />));
     expect(container.firstChild).toHaveClass(
       'ds-animate-height--openingOrClosing',
     );
