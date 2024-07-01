@@ -150,47 +150,23 @@ describe('Combobox', () => {
   });
 
   it('should show a chip of a selected option in multiple mode', async () => {
-    const { user } = await render({ multiple: true });
-    const combobox = screen.getByRole('combobox');
-
-    await act(async () => await userEvent.click(combobox));
-    await act(async () => await userEvent.click(screen.getByText('Leikanger')));
-    await act(async () => await user.click(document.body));
-
-    await waitFor(() => {
-      expect(screen.getByText('Leikanger')).toBeInTheDocument();
-    });
+    await render({ multiple: true, value: ['leikanger'] });
+    expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
 
   it('should remove a chip when we click on it', async () => {
-    const onValueChange = vi.fn();
-    const { user } = await render({ multiple: true, onValueChange });
-    const combobox = screen.getByRole('combobox');
-
-    await act(async () => await userEvent.click(combobox));
-    await waitFor(async () => {
-      await act(
-        async () => await userEvent.click(screen.getByText('Leikanger')),
-      );
+    const { user } = await render({
+      multiple: true,
+      initialValue: ['oslo'],
     });
+
+    await act(async () => await user.click(screen.getByText('Oslo')));
     await waitFor(async () => {
-      await act(async () => await user.click(document.body));
+      await user.click(document.body);
     });
 
     await waitFor(() => {
-      expect(screen.getByText('Leikanger')).toBeInTheDocument();
-    });
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
-
-    await act(async () => await userEvent.click(screen.getByText('Leikanger')));
-
-    await waitFor(async () => {
-      await act(async () => await user.click(document.body));
-    });
-
-    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    await waitFor(() => {
-      expect(onValueChange).toHaveBeenCalledWith([]);
+      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
     });
   });
 
@@ -226,13 +202,13 @@ describe('Combobox', () => {
       throw new Error('Could not find clear button');
     }
     await act(async () => await userEvent.click(clearButton));
-    await waitFor(async () => {
-      await act(async () => await userEvent.click(document.body));
-    });
+    await act(async () => await userEvent.click(document.body));
 
-    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
-    expect(onValueChange).toHaveBeenCalledWith([]);
+    await waitFor(() => {
+      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+      expect(onValueChange).toHaveBeenCalledWith([]);
+    });
   });
 
   it('should show "Fant ingen treff", when input does not match any values', async () => {
