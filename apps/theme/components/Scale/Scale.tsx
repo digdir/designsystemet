@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { RovingFocusRoot } from '@digdir/designsystemet-react';
 
 import type { modeType } from '../../types';
 import { Group } from '../Group/Group';
@@ -57,44 +58,46 @@ export const Scale = ({
   }, [colorScale, themeMode, type]);
   return (
     <div className={classes.themes}>
-      <div className={classes.test}>
-        <Group
-          header={showHeader ? 'Background' : ''}
-          colors={[colors[0], colors[1]]}
-          showColorMeta={showColorMeta}
-          names={['1. Default', '2. Subtle']}
-          type={type}
-        />
-        <Group
-          header={showHeader ? 'Surface' : ''}
-          colors={[colors[2], colors[3], colors[4]]}
-          showColorMeta={showColorMeta}
-          names={['3. Default', '4. Hover', '5. Active']}
-          type={type}
-        />
-        <Group
-          showColorMeta={showColorMeta}
-          header={showHeader ? 'Border' : ''}
-          colors={[colors[5], colors[6], colors[7]]}
-          names={['6. Subtle', '7. Default', '8. Strong']}
-          type={type}
-        />
-        <Group
-          showColorMeta={showColorMeta}
-          header={showHeader ? 'Base' : ''}
-          colors={[colors[8], colors[9], colors[10]]}
-          names={['9. Default', '10. Hover', '11. Active']}
-          type={type}
-          featured
-        />
-        <Group
-          showColorMeta={showColorMeta}
-          header={showHeader ? 'Text' : ''}
-          colors={[colors[11], colors[12]]}
-          names={['12. Subtle', '13. Default']}
-          type={type}
-        />
-      </div>
+      <RovingFocusRoot asChild>
+        <div className={classes.test}>
+          <Group
+            header={showHeader ? 'Background' : ''}
+            colors={[colors[0], colors[1]]}
+            showColorMeta={showColorMeta}
+            names={['1. Default', '2. Subtle']}
+            type={type}
+          />
+          <Group
+            header={showHeader ? 'Surface' : ''}
+            colors={[colors[2], colors[3], colors[4]]}
+            showColorMeta={showColorMeta}
+            names={['3. Default', '4. Hover', '5. Active']}
+            type={type}
+          />
+          <Group
+            showColorMeta={showColorMeta}
+            header={showHeader ? 'Border' : ''}
+            colors={[colors[5], colors[6], colors[7]]}
+            names={['6. Subtle', '7. Default', '8. Strong']}
+            type={type}
+          />
+          <Group
+            showColorMeta={showColorMeta}
+            header={showHeader ? 'Base' : ''}
+            colors={[colors[8], colors[9], colors[10]]}
+            names={['9. Default', '10. Hover', '11. Active']}
+            type={type}
+            featured
+          />
+          <Group
+            showColorMeta={showColorMeta}
+            header={showHeader ? 'Text' : ''}
+            colors={[colors[11], colors[12]]}
+            names={['12. Subtle', '13. Default']}
+            type={type}
+          />
+        </div>
+      </RovingFocusRoot>
     </div>
   );
 };

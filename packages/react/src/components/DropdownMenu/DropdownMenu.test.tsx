@@ -1,4 +1,5 @@
-import { act, render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { DropdownMenuRootProps } from './DropdownMenuRoot';
@@ -37,7 +38,7 @@ describe('Dropdown', () => {
 
     expect(screen.queryByText('Item')).not.toBeInTheDocument();
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.queryByText('Item')).toBeInTheDocument();
   });
@@ -46,8 +47,8 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.queryByText('Item')).not.toBeInTheDocument();
   });
@@ -58,7 +59,7 @@ describe('Dropdown', () => {
     });
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.queryByText('Item 2')).toBeInTheDocument();
   });
@@ -77,24 +78,20 @@ describe('Dropdown', () => {
       await user.click(document.body);
     });
 
-    setTimeout(() => {
-      expect(screen.queryByText('Item')).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText('Item')).not.toBeInTheDocument();
   });
 
   it('should close when we press ESC', async () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.queryByText('Item')).toBeInTheDocument();
 
-    await user.keyboard('[Escape]');
+    await act(async () => await user.keyboard('[Escape]'));
 
-    setTimeout(() => {
-      expect(screen.queryByText('Item')).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText('Item')).not.toBeInTheDocument();
   });
 
   it('should not close if we click inisde the dropdown', async () => {
@@ -103,11 +100,11 @@ describe('Dropdown', () => {
     });
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.queryByText('Item')).toBeInTheDocument();
 
-    await user.click(screen.getByText('Item 2'));
+    await act(async () => await user.click(screen.getByText('Item 2')));
 
     expect(screen.queryByText('Item')).toBeInTheDocument();
   });
@@ -122,7 +119,7 @@ describe('Dropdown', () => {
     });
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.getByText('Anchor')).toHaveAttribute('href', '/');
     expect(screen.getByText('Anchor').tagName).toBe('A');
@@ -132,7 +129,7 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.getByText('Item')).toHaveAttribute('role', 'menuitem');
   });
@@ -141,7 +138,7 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.getByRole('group')).toBeInTheDocument();
   });
@@ -150,7 +147,7 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => user.click(dropdownTrigger));
 
     expect(screen.getByRole('group')).toHaveAttribute('aria-labelledby');
   });
@@ -159,10 +156,10 @@ describe('Dropdown', () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
 
-    await user.click(dropdownTrigger);
+    await act(async () => await user.click(dropdownTrigger));
 
-    setTimeout(() => {
+    await vi.waitFor(() => {
       expect(document.activeElement).toBe(screen.getByText('Item'));
-    }, 1000);
+    });
   });
 });

@@ -1,5 +1,9 @@
+@charset "UTF-8";
+
+@layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
+
 @import url('./altinn/color-mode/light.css');
 @import url('./altinn/typography/secondary.css');
 @import url('./altinn/semantic.css');
-@import url('./altinn/typography/primary.css');
 @import url('./altinn/color-mode/dark.css');
+@import url('./altinn/typography/primary.css');

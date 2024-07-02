@@ -1,5 +1,6 @@
 import type * as React from 'react';
-import { act, render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { ComboboxProps } from './Combobox';
@@ -57,6 +58,10 @@ const render = async (props: Partial<ComboboxProps> = {}) => {
 };
 
 describe('Combobox', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('should render combobox', async () => {
     await render();
     const combobox = screen.getByRole('combobox');
@@ -65,10 +70,10 @@ describe('Combobox', () => {
   });
 
   it('should render children when we click on the combobox', async () => {
-    await render();
+    const { user } = await render();
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
+    await act(async () => await user.click(combobox));
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
@@ -77,11 +82,11 @@ describe('Combobox', () => {
     const { user } = await render();
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
+    await act(async () => await user.click(combobox));
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
-    await user.click(document.body);
-    await wait(300);
+    await act(async () => await user.click(document.body));
+
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
 
@@ -89,12 +94,10 @@ describe('Combobox', () => {
     const { user } = await render({ label: 'closeOnEscape' });
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
+    await act(async () => await user.click(combobox));
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
-    await user.type(combobox, '{Escape}');
-
-    await wait(500);
+    await act(async () => await user.type(combobox, '{Escape}'));
 
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
   });
@@ -105,71 +108,66 @@ describe('Combobox', () => {
     const combobox = screen.getByRole('combobox');
     expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
 
-    await userEvent.click(combobox);
+    await act(async () => await user.click(combobox));
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
 
-    await user.type(combobox, '{Enter}');
+    await act(async () => await user.type(combobox, '{Enter}'));
 
-    await wait(500);
-
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    });
   });
 
   it('should set call `onValueChange` on the Combobox when we click and option', async () => {
     const onValueChange = vi.fn();
-    await render({ onValueChange });
+    const { user } = await render({ onValueChange });
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    });
   });
 
   it('should call `onValueChange` with multiple values when we click multiple options', async () => {
     const onValueChange = vi.fn();
-    await render({ onValueChange, multiple: true });
+    const { user } = await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
-    await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.click(screen.getByText('Leikanger')));
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    });
 
-    await userEvent.click(screen.getByText('Oslo'));
-    await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
+    await act(async () => await user.click(screen.getByText('Oslo')));
+
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
+    });
   });
 
   it('should show a chip of a selected option in multiple mode', async () => {
-    const { user } = await render({ multiple: true });
-    const combobox = screen.getByRole('combobox');
-
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
-    await wait(500);
-    await user.click(document.body);
-    await wait(500);
-
+    await render({ multiple: true, value: ['leikanger'] });
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
   });
 
   it('should remove a chip when we click on it', async () => {
-    const { user } = await render({ multiple: true });
-    const combobox = screen.getByRole('combobox');
+    const { user } = await render({
+      multiple: true,
+      initialValue: ['oslo'],
+    });
 
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
-    await wait(500);
-    await user.click(document.body);
-    await wait(500);
-    expect(screen.getByText('Leikanger')).toBeInTheDocument();
+    await act(async () => await user.click(screen.getByText('Oslo')));
+    await vi.waitFor(async () => {
+      await user.click(document.body);
+    });
 
-    await userEvent.click(screen.getByText('Leikanger'));
-    await user.click(document.body);
-    await wait(500);
-    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+    });
   });
 
   it('should remove all values when we click on the clear button', async () => {
@@ -177,18 +175,21 @@ describe('Combobox', () => {
     const { user } = await render({ multiple: true, onValueChange });
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await wait(100);
-    await userEvent.click(screen.getByText('Leikanger'));
-    await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
-    await wait(500);
-    await userEvent.click(screen.getByText('Oslo'));
-    await wait(500);
-    expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
-    await wait(500);
-    await user.click(document.body);
-    await wait(500);
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.click(screen.getByText('Leikanger')));
+
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger']);
+    });
+
+    await act(async () => await user.click(screen.getByText('Oslo')));
+
+    await vi.waitFor(() => {
+      expect(onValueChange).toHaveBeenCalledWith(['leikanger', 'oslo']);
+    });
+
+    await act(async () => await user.click(document.body));
+
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
 
@@ -200,27 +201,28 @@ describe('Combobox', () => {
     if (!clearButton) {
       throw new Error('Could not find clear button');
     }
-    await userEvent.click(clearButton);
-    await userEvent.click(document.body);
+    await act(async () => await user.click(clearButton));
+    await act(async () => await user.click(document.body));
 
-    await wait(500);
-
-    expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
-    expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
-    expect(onValueChange).toHaveBeenCalledWith([]);
+    await vi.waitFor(() => {
+      expect(screen.queryByText('Leikanger')).not.toBeInTheDocument();
+      expect(screen.queryByText('Oslo')).not.toBeInTheDocument();
+      expect(onValueChange).toHaveBeenCalledWith([]);
+    });
   });
 
   it('should show "Fant ingen treff", when input does not match any values', async () => {
-    await render();
+    const { user } = await render();
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await userEvent.type(combobox, 'test');
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.type(combobox, 'test'));
 
     expect(screen.getByText('Fant ingen treff')).toBeInTheDocument();
   });
 
   it('should work in a form if we pass a name', async () => {
+    const user = userEvent.setup();
     const formSubmitPromise = new Promise<FormData>((resolve) => {
       const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -248,20 +250,21 @@ describe('Combobox', () => {
 
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
+    await user.click(combobox);
 
-    await userEvent.click(screen.getByText('Leikanger'));
+    await user.click(screen.getByText('Leikanger'));
 
     await wait(1000);
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
-    await userEvent.click(submitButton);
+    await user.click(submitButton);
 
     const formData = await formSubmitPromise;
     expect(formData.get('test')).toBe('leikanger');
   });
 
   it('should work in a form if we pass a name, and we click multiple', async () => {
+    const user = userEvent.setup();
     const formSubmitPromise = new Promise<FormData>((resolve) => {
       const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -297,31 +300,29 @@ describe('Combobox', () => {
 
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
+    await user.click(combobox);
 
-    await userEvent.click(screen.getByText('Leikanger'));
+    await user.click(screen.getByText('Leikanger'));
     await wait(100);
-    await userEvent.click(screen.getByText('Oslo'));
+    await user.click(screen.getByText('Oslo'));
     await wait(100);
 
     const submitButton = screen.getAllByTestId('submit')[0];
 
-    await userEvent.click(submitButton);
+    await user.click(submitButton);
 
     const formData = await formSubmitPromise;
     expect(formData.getAll('test')).toEqual(['leikanger', 'oslo']);
   });
 
-  it('should show all options when we are in signle mode, and have a value selected', async () => {
-    await render();
+  it('should show all options when we are in single mode, and have a value selected', async () => {
+    const { user } = await render();
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await wait(500);
-
-    await userEvent.click(combobox);
+    await act(async () => await user.click(combobox));
 
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
@@ -330,16 +331,16 @@ describe('Combobox', () => {
 
   it('should only call onValueChange once when we click the same option fast twice', async () => {
     const onValueChange = vi.fn();
-    await render({ onValueChange, multiple: true });
+    const { user } = await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
 
-    await userEvent.click(combobox);
-    await userEvent.click(screen.getByText('Leikanger'));
-    await userEvent.click(screen.getByText('Leikanger'));
+    await user.click(combobox);
+    await user.click(screen.getByText('Leikanger'));
+    await user.click(screen.getByText('Leikanger'));
 
-    setTimeout(() => {
+    await vi.waitFor(() => {
       expect(onValueChange).toHaveBeenCalledTimes(1);
-    }, 100);
+    });
   });
 
   it('should add aria-busy="true" when loading', async () => {

@@ -9,6 +9,7 @@ import {
 } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
+import { Paragraph } from '../Typography';
 
 import { ToggleGroup } from '.';
 
@@ -34,15 +35,8 @@ Preview.args = {
 };
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
-  const handleChange = (value: string) => {
-    console.log(value);
-  };
-
   return (
-    <ToggleGroup.Root
-      defaultValue={'option-1'}
-      onChange={handleChange}
-    >
+    <ToggleGroup.Root defaultValue={'option-1'}>
       <ToggleGroup.Item
         value={'option-1'}
         icon={true}
@@ -106,7 +100,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         </ToggleGroup.Item>
       </ToggleGroup.Root>
       <br />
-      <span>You have chosen: {value}</span>
+      <Paragraph>You have chosen: {value}</Paragraph>
     </>
   );
 };

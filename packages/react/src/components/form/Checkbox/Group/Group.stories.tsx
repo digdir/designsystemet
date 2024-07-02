@@ -39,7 +39,7 @@ export const Error: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Hvilket land er du statborger i?'
     description='Hvis du har dobbelt statsborgerskap, velger du begge landene.'
-    error='Du må velge minst et land for å kunne gå videre'
+    error='Du må velge minst ett land for å kunne gå videre'
   >
     <Checkbox value='norge'>Norge</Checkbox>
     <Checkbox value='europeisk'>Annet europeisk land</Checkbox>
@@ -62,8 +62,9 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
       <span style={{ display: 'flex', gap: '1rem' }}>
         <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
         <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
-        <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       </span>
+      <br />
+      <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
       <br />
       <Checkbox.Group
         legend='Skal du reise til noen av disse landene?'

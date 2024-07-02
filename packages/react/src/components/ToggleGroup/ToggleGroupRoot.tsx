@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 import cl from 'clsx/lite';
 
-import { RovingTabindexRoot } from '../../utilities/RovingTabIndex';
+import { RovingFocusRoot } from '../../utilities/RovingFocus';
 import type { ButtonProps } from '../Button';
 
 export type ToggleGroupContextProps = {
@@ -92,9 +92,9 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
               value={value}
             />
           )}
-          <RovingTabindexRoot
+          <RovingFocusRoot
             asChild
-            valueId={value}
+            activeValue={value}
           >
             <div
               className='ds-togglegroup__content'
@@ -102,7 +102,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
             >
               {children}
             </div>
-          </RovingTabindexRoot>
+          </RovingFocusRoot>
         </ToggleGroupContext.Provider>
       </div>
     );

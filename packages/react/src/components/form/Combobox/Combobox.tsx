@@ -8,8 +8,7 @@ import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
-import useDebounce from '../../../utilities/useDebounce';
-import { omit } from '../../../utilities';
+import { useDebounceCallback, omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
@@ -289,7 +288,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       refs.domReference.current?.focus();
     };
 
-    const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
+    const debouncedHandleSelectOption = useDebounceCallback(
+      handleSelectOption,
+      50,
+    );
 
     const handleKeyDown = useComboboxKeyboard({
       filteredOptions,

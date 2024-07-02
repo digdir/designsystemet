@@ -1,7 +1,8 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import { act } from 'react';
 
-import * as hooks from '../../hooks';
+import * as hooks from '../../utilities';
 
 import type { AnimateHeightProps } from './AnimateHeight';
 import { AnimateHeight } from './AnimateHeight';
@@ -56,7 +57,7 @@ describe('AnimateHeight', () => {
 
   it('Sets class to "openingOrClosing" when opening and "open" when timer has run', async () => {
     const { container, rerender } = render({ open: false });
-    rerender(<AnimateHeight open />);
+    act(() => rerender(<AnimateHeight open />));
     expect(container.firstChild).toHaveClass(
       'ds-animate-height--openingOrClosing',
     );

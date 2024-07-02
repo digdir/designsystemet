@@ -1,10 +1,6 @@
 import userEvent from '@testing-library/user-event';
-import {
-  act,
-  render as renderRtl,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 
 import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';
@@ -13,6 +9,7 @@ const render = async (props: Partial<TooltipProps> = {}) => {
   const allProps: TooltipProps = {
     children: <button>My button</button>,
     content: 'Tooltip text',
+    delay: 0,
     ...props,
   };
   /* Flush microtasks */
@@ -41,18 +38,19 @@ describe('Tooltip', () => {
       const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
 
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
       await act(async () => await user.hover(tooltipTrigger));
+
       const tooltip = await screen.findByText('Tooltip text');
       expect(tooltip).toBeInTheDocument();
       expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     });
 
     it('should render tooltip on focus', async () => {
-      await render();
-      const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+      const { user } = await render();
 
       expect(screen.queryByText('Tooltip text')).not.toBeInTheDocument();
-      act(() => tooltipTrigger.focus());
+      await user.click(screen.getByRole('button', { name: 'My button' }));
       const tooltip = await screen.findByText('Tooltip text');
       expect(tooltip).toBeInTheDocument();
       expect(screen.queryByRole('tooltip')).toBeInTheDocument();
@@ -84,14 +82,12 @@ describe('Tooltip', () => {
   });
 
   it('delay', async () => {
-    const user = userEvent.setup();
+    const { user } = await render({ delay: 300 });
 
-    await render({ delay: 300 });
-
-    await user.hover(screen.getByRole('button'));
+    await act(async () => await user.hover(screen.getByRole('button')));
     expect(screen.queryByRole('tooltip')).toBeNull();
 
-    await waitFor(() => {
+    await vi.waitFor(() => {
       expect(screen.queryByRole('tooltip')).toBeVisible();
     });
   });

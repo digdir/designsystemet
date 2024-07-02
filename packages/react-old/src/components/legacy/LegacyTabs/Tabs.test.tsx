@@ -1,6 +1,7 @@
 import assert from 'assert';
 
-import { act, screen, render as renderRtl } from '@testing-library/react';
+import { screen, render as renderRtl } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 

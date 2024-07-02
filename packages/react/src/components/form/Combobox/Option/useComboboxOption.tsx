@@ -2,7 +2,7 @@ import { useContext, useEffect, useId, useMemo } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
-import useDebounce from '../../../../utilities/useDebounce';
+import { useDebounceCallback } from '../../../../utilities';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
 import { prefix } from '../useCombobox';
 
@@ -59,7 +59,10 @@ export default function useComboboxOption({
     }
   }, [generatedId, id, dispatch, active, index]);
 
-  const onOptionClickDebounced = useDebounce(() => onOptionClick(value), 50);
+  const onOptionClickDebounced = useDebounceCallback(
+    () => onOptionClick(value),
+    50,
+  );
 
   return {
     id: newId,

@@ -1,0 +1,24 @@
+{
+  "name": "package-name-here",
+  "version": "1.0.0",
+  "description": "CSS variables for @digdir/designsystemet",
+  "type": "module",
+  "main": "dist/<default-theme>",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/<default-theme>",
+    "./*": "./dist/*"
+  },
+  "scripts": {
+    "build": "npm run clean && designsystemet tokens -o ./dist",
+    "clean": "rimraf dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@digdir/designsystemet": "^0.1.0-alpha.7",
+    "rimraf": "^5.0.7"
+  }
+}
