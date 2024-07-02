@@ -1,7 +1,4 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
-
-import { Button } from '../Button';
 
 import { Spinner } from '.';
 
@@ -85,16 +82,3 @@ export const Sizes: Story = () => (
     />
   </>
 );
-
-export const TestSync: Story = () => {
-  const [show, setShow] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setShow(!show)}>Toggle</Button>
-      <Spinner title='laster' />
-
-      {show && <Spinner title='laster' />}
-    </>
-  );
-};
