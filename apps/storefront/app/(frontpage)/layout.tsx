@@ -66,7 +66,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         />
       </div>
       <div className={classes.header}>
-        <div className={classes.content}>
+        <div
+          className={classes.content}
+          /* No idea why, but we need this for Firefox... */
+          tabIndex={-1}
+        >
           <Container className={classes.container}>
             <div className={classes.text}>
               <div className={classes.betaTag}>Beta</div>
