@@ -36,20 +36,11 @@ const config: StorybookConfig = {
   staticDirs: ['./assets'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
-  },
-  async viteFinal(config) {
-    // Merge custom configuration into the default config
-    const { mergeConfig } = await import('vite');
-
-    return mergeConfig(config, {
-      resolve: {
-        alias: {
-          '@doc-components': resolve(__dirname, './docs-components'),
-          '@assets': resolve(__dirname, './assets'),
-        },
+    options: {
+      builder: {
+        viteConfigPath: resolve(__dirname, '../..//vite.config.ts'),
       },
-    });
+    },
   },
 };
 
