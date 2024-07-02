@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import type { LegacyPopoverProps } from './Popover';
 import { popoverVariants, LegacyPopover } from './Popover';

@@ -25,20 +25,21 @@ import { RovingFocusRoot, RovingFocusItem } from '@digdir/designsystemet-react';
 
 ### Bruke egene elementer
 
-Som oftest trenger du å bruke egne elementer, både for `RovingFocusRoot` og `RovingFocusItem`.
-Da kan du bruke `asChild`.
+Trenger du å bruke egne elementer kan du bruke `asChild`, både på `RovingFocusRoot` og `RovingFocusItem`.
 
 ```tsx
-<RovingFocusRoot>
-  <RovingFocusItem asChild>
-    <MyButton>Item 1</MyButton>
-  </RovingFocusItem>
-  <RovingFocusItem asChild>
-    <MyButton>Item 2</MyButton>
-  </RovingFocusItem>
-  <RovingFocusItem asChild>
-    <MyButton>Item 3</MyButton>
-  </RovingFocusItem>
+<RovingFocusRoot asChild>
+  <MyComponent>
+    <RovingFocusItem asChild>
+      <MyButton>Item 1</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 2</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 3</MyButton>
+    </RovingFocusItem>
+  </MyComponent>
 </RovingFocusRoot>
 ```
 

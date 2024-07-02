@@ -18,10 +18,9 @@ export const metadata = {
   title: 'Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det',
   description:
     'Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints',
-  ogImage: '/img/bloggen/fluid-front.png',
-  ogImageAlt:
-    'Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.',
-  twitterImage: '/img/bloggen/fluid-front.png',
+  openGraph: {
+    images: '/img/bloggen/fluid-front.png',
+  },
 };
 
 Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt brekkpunkt. Den lineære funksjonen tilnærmer seg ønsket størrelse jevnt over skjermens bredde.
@@ -58,7 +57,7 @@ Har du behov for å benytte dynamisk typografi, opprett gjerne en [feature reque
 Størrelsene som ble brukt i den dynamiske skalaen ble generert ved hjelp av [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
 
 | Step   | viewport 320px        | viewport 1360px       |
-| ------ | --------------------- | --------------------- |
+| :----- | :-------------------- | :-------------------- |
 | f-3    | 12.00px / 0.75rem     | 12.00px / 0.75rem     |
 | f-2    | 13.00px / 0.81rem     | 13.00px / 0.81rem     |
 | f-1    | 15.00px / 0.94rem     | 16.00px / 1.00rem     |
