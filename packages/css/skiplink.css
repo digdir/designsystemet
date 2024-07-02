@@ -28,6 +28,7 @@
   border-color: var(--ds-color-accent-border-strong);
   width: fit-content;
   padding: var(--dsc-skiplink-padding);
+  margin: var(--ds-spacing-1);
   box-sizing: border-box;
   cursor: pointer;
   font-family: inherit;
