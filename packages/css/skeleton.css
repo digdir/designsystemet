@@ -1,10 +1,11 @@
 .ds-skeleton {
   --dsc-skeleton-animation-duration: 0.8s;
+  --dsc-skeleton-background: var(--ds-color-neutral-surface-default);
 
   height: 1.3em;
   pointer-events: none;
   user-select: none;
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--dsc-skeleton-background);
   animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
 }
 
