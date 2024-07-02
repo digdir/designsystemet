@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
-import { Paragraph, Button } from '../..';
+import { Button } from '../..';
 
 import { Tooltip } from '.';
 
@@ -46,24 +46,6 @@ export const DefaultOpen: Story = {
   },
   decorators,
 };
-
-export const Complex: StoryFn<typeof Tooltip> = () => {
-  return (
-    <Paragraph>
-      Du kan ha{' '}
-      <Tooltip content='Kan gi bra brukeropplevelse'>
-        <abbr
-          style={{ fontWeight: 'bold', textDecoration: 'underline dotted' }}
-        >
-          tooltip
-        </abbr>
-      </Tooltip>{' '}
-      inne i tekst også
-    </Paragraph>
-  );
-};
-
-Complex.decorators = decorators;
 
 export const Portal: Story = {
   args: {

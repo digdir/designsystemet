@@ -83,7 +83,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                                   className={cl(
                                     classes.link,
                                     isItemActive(item2.url, routerPath) &&
-                                      classes.linkActive,
+                                    classes.linkActive,
                                     'ds-paragraph--sm',
                                   )}
                                 >
@@ -103,7 +103,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                           classes.link,
                           classes.linkCompact,
                           isItemActive(item.url, routerPath) &&
-                            classes.linkActive,
+                          classes.linkActive,
                           'ds-paragraph--sm',
                         )}
                       >

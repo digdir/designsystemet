@@ -14,6 +14,12 @@ import {
   ListUnordered,
   Paragraph,
   Heading,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
 } from '@digdir/designsystemet-react';
 import type { MDXComponents } from 'mdx/types';
 
@@ -85,5 +91,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         size='xs'
       />
     ),
+    table: (props) => (
+      <Table
+        {...props}
+        border
+        zebra
+      />
+    ),
+    thead: (props) => <TableHead {...props} />,
+    tbody: (props) => <TableBody {...props} />,
+    tr: (props) => <TableRow {...props} />,
+    th: (props) => <TableHeaderCell {...props} />,
+    td: (props) => <TableCell {...props} />,
   };
 }

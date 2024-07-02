@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     template: '%s - Designsystemet',
     default: 'Designsystemet',
   },
+  openGraph: {
+    images: '/img/designsystemet-meta.png',
+  },
 };
 
 export default function RootLayout({

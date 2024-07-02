@@ -257,7 +257,10 @@ Will now create the following:
 
   // Configure package.json file
   packageJsonTemplate.name = packageName;
-  packageJsonTemplate.main = packageJsonTemplate.main.replace('<default-theme>', toGeneratedCssFileName(defaultTheme));
+  packageJsonTemplate.main = packageJsonTemplate.main.replaceAll(
+    '<default-theme>',
+    toGeneratedCssFileName(defaultTheme),
+  );
   await fs.writeFile(path.join(TARGET_DIR, 'package.json'), JSON.stringify(packageJsonTemplate, undefined, 2));
 
   const readmePath = path.join(TARGET_DIR, 'README.md');
