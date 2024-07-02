@@ -1,0 +1,85 @@
+import { LayersIcon } from '@navikt/aksel-icons';
+
+import { NavMenuPageLayout } from '@layouts';
+
+export const metadata = {
+  title: 'Mønstre',
+  description:
+    'Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.',
+};
+
+export default ({ children }) => (
+  <NavMenuPageLayout
+    content={children}
+    banner={{
+      title: 'Mønstre',
+      ingress:
+        'Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.',
+      icon: <LayersIcon fontSize={34} />,
+      color: 'yellow',
+    }}
+  />
+);
+
+I rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)" er det funnet flere [konkrete problemer med brukskvalitet](https://github.com/digdir/innsiktsbibliotek/issues/3) som kan forbedres dersom vi samarbeider om å etablere like mønstre på tvers av offentlige tjenester. Når vi bruker etablerte mønstre som innbyggerne kjenner igjen på tvers kan løsningene bli mer intuitive og bidra til mindre digitalt utenforskap.
+
+Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene. For eksempel kan vi hjelpe hverandre å etablere felles konvensjoner rundt interaksjon og forventet oppførsel på komponenter, samt plassering av sentrale elementer.
+
+## Planlagte mønstre
+
+Sitter du på innsikt som er relevante for følgende mønstre? Bli med på å utarbeide felles retningslinjer som kan bidra til at vi oppnår mer helhetlige tjenester på tvers. [Ta kontakt](mailto:designsystem@digdir.no)!
+
+### Brukeroppgaver
+
+Vi har lyst å finne felles måter å håndtere gjentagende brukeroppgaver. F.eks eksempler og beste praksis for blant annet:
+
+- [Innlogging](/monstre/innlogging)
+- [Navigering](/monstre/navigering)
+  - Plassering av vesentlige funksjoner
+  - Navigeringsknapper
+  - Navigeringsretninger
+  - Logisk hierarki av handlingsknapper
+- Utfylling av skjema
+- Innsending av skjema
+- Filtrering
+- Signering
+- Samtykke
+- Bytte språk
+- [Ofte brukte handlinger](/monstre/handlinger)
+
+Dette er noen av utfordringene som har blitt trukket frem i rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)". Problemene er rapportert av blant annet Brukerrådet i Helsetilsynet, Deichmanske, Seniornett, Altinn brukerstøtte, Trondheim folkebibliotek, Mangfold i arbeidslivet, samt generelle observasjoner.
+
+### Brukerdialoger
+
+F.eks hvordan vi spør brukeren om:
+
+- Adresse
+- [Datoer](/monstre/dato)
+- Epost
+- Kjønn
+- Navigering
+- Identitet
+- Passord
+- Betalingskort-detaljer
+- Telfonnummer
+
+...Og hvordan vi håndterer [validering og feilmeldinger](/monstre/feilmeldinger) når noe går galt.
+
+### Bruk av...
+
+- Bruk av pop-ups
+- Bruk av modaler
+
+## Eksempel på designsystem som har laget retningslinjer for mønstre:
+
+- [https://carbondesignsystem.com/patterns/overview/](https://carbondesignsystem.com/patterns/overview/)
+- [https://design-system.service.gov.uk/patterns/](https://design-system.service.gov.uk/patterns/)
+- [https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States](https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States)
+
+<style>
+  {`
+    body {
+      background-color: var(--ds-color-neutral-background-subtle);
+    }
+  `}
+</style>

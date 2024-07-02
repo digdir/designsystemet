@@ -11,7 +11,6 @@ export type {
   ImageSectionProps,
 } from './ImageSection';
 export { MdxContent } from './MdxContent';
-export { Meta } from './Meta';
 export { NavigationCard } from './NavigationCard';
 export type { NavigationCardProps } from './NavigationCard';
 export { ResponsiveIframe } from './ResponsiveIframe';

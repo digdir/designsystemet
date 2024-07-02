@@ -1,14 +1,13 @@
 import { PencilIcon } from '@navikt/aksel-icons';
 
-import { Meta } from '@components';
 import { BlogCard } from '../_components';
 
 export default ({ children }) => <>{children}</>;
 
-<Meta
-  title='Bloggen'
-  description='Beskrivelse'
-/>
+export const metadata = {
+  title: 'Bloggen',
+  description: 'Beskrivelse',
+};
 
 <BlogCard
   title='Dette kommer i V1! 🎉'

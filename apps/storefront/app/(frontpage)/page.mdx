@@ -4,16 +4,18 @@ import {
   PersonChatIcon,
 } from '@navikt/aksel-icons';
 
-import { Meta, Section, ImageBanner } from '@components';
+import { Section, ImageBanner } from '@components';
 
 import { BlogCard } from '@blog';
 
 export default ({ children }) => <>{children}</>;
 
-<Meta
-  title='Velkommen'
-  description='Her finner du UI-komponenter, retningslinjer og god praksis for effektiv produktutvikling og helhetlige brukeropplevelser.'
-/>
+export const metadata = {
+  title: 'Velkommen',
+  description:
+    'Her finner du UI-komponenter, retningslinjer og god praksis for effektiv produktutvikling og helhetlige brukeropplevelser.',
+};
+
 <ImageBanner
   title='En felles digital verktøykasse'
   description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.'

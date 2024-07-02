@@ -6,7 +6,7 @@ import {
   Banner,
   BannerIcon,
   BannerHeading,
-} from 'components/SubPages/Banner/Banner';
+} from 'components/Banner/Banner';
 
 import classes from './layout.module.css';
 
