@@ -6,7 +6,12 @@ import cn from 'clsx';
 import { usePathname } from 'next/navigation';
 
 import GithubLink from '../../components/Link/Github/GithubLink';
-import { Banner, BannerHeading, BannerIcon, BannerIngress } from '../../components/Banner/Banner';
+import {
+  Banner,
+  BannerHeading,
+  BannerIcon,
+  BannerIngress,
+} from '../../components/Banner/Banner';
 import { Container, SidebarMenu, MdxContent } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
@@ -53,7 +58,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
             <div className={classes.header}>
               <div className={classes.headerText}>
                 <Heading
-                  size='large'
+                  size='lg'
                   className={classes.title}
                 >
                   {data.title}
