@@ -76,7 +76,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          className={cl(`ds-tabs--${size}`, className)}
+          className={cl('ds-tabs', `ds-tabs--${size}`, className)}
           ref={ref}
           {...rest}
         >
