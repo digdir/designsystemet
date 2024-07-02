@@ -1,4 +1,9 @@
 .ds-helptext__button {
+  --dsc-helptext-color: var(--ds-color-neutral-text-default);
+  --dsc-helptext-icon-color: var(--ds-color-accent-base-default);
+  --dsc-helptext-icon-width: var(--ds-sizing-7);
+  --dsc-helptext-icon-height: var(--ds-sizing-7);
+
   background-color: transparent;
   border-radius: 50px;
   padding: 0 !important;
@@ -20,9 +25,9 @@
 }
 
 .ds-helptext__icon {
-  color: var(--ds-color-accent-base-default);
-  width: var(--ds-sizing-7);
-  height: var(--ds-sizing-7);
+  color: var(--dsc-helptext-icon-color);
+  width: var(--dsc-helptext-icon-width);
+  height: var(--dsc-helptext-icon-height);
 }
 
 .ds-helptext__button:where(:hover, :focus, [data-state^='open']) > .ds-helptext__icon {
@@ -34,22 +39,22 @@
 }
 
 .ds-helptext__content {
-  color: var(--ds-color-neutral-text-default);
+  color: var(--dsc-helptext-color);
   width: fit-content;
   max-width: 700px;
 }
 
 .ds-helptext--sm .ds-helptext__icon {
-  width: var(--ds-sizing-6);
-  height: var(--ds-sizing-6);
+  --dsc-helptext-icon-width: var(--ds-sizing-6);
+  --dsc-helptext-icon-height: var(--ds-sizing-6);
 }
 
 .ds-helptext--md .ds-helptext__icon {
-  width: var(--ds-sizing-7);
-  height: var(--ds-sizing-7);
+  --dsc-helptext-icon-width: var(--ds-sizing-7);
+  --dsc-helptext-icon-height: var(--ds-sizing-7);
 }
 
 .ds-helptext--lg .ds-helptext__icon {
-  width: var(--ds-sizing-8);
-  height: var(--ds-sizing-8);
+  --dsc-helptext-icon-width: var(--ds-sizing-8);
+  --dsc-helptext-icon-height: var(--ds-sizing-8);
 }

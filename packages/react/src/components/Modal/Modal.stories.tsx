@@ -155,7 +155,8 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal.Dialog> = () => {
     <>
       <Modal.Root>
         <Modal.Trigger>Open Modal</Modal.Trigger>
-        <Modal.Dialog style={{ maxWidth: '1200px' }}>
+        {/* @ts-expect-error #2353 */}
+        <Modal.Dialog style={{ '--dsc-modal-max-width': '1200px' }}>
           <Modal.Header>Modal med en veldig lang bredde</Modal.Header>
           <Modal.Content>
             <Paragraph>
@@ -180,7 +181,10 @@ export const ModalWithSelect: StoryFn<typeof Modal.Dialog> = () => {
         <Modal.Dialog style={{ overflow: 'visible' }}>
           <Modal.Header>Modal med select</Modal.Header>
           <Modal.Content>
-            <Combobox portal={false}>
+            <Combobox
+              portal={false}
+              label='Velg sted'
+            >
               <Combobox.Empty>Fant ingen treff</Combobox.Empty>
               <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
               <Combobox.Option value='oslo'>Oslo</Combobox.Option>
