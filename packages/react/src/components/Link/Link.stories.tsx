@@ -7,6 +7,9 @@ import { Link } from '.';
 
 type Story = StoryObj<typeof Link>;
 
+const randomNum = Math.floor(Math.random() * 1000);
+const designsystemetLink = 'https://designsystemet.no/?=' + randomNum;
+
 export default {
   title: 'Komponenter/Link',
   component: Link,
@@ -21,40 +24,16 @@ export default {
 export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
-    href: 'https://designsystemet.no/',
+    href: designsystemetLink,
+    color: 'accent',
   },
-};
-
-export const Invertert: Story = {
-  args: {
-    children: 'Gå til designsystemet',
-    inverted: true,
-    href: 'https://designsystemet.no/',
-  },
-  parameters: {
-    layout: 'fullscreen',
-  },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          background: '#333333',
-          padding: '32px',
-          justifyContent: 'center',
-          display: 'flex',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const InText: StoryFn<typeof Link> = () => (
   <>
     <Paragraph>
       Vi bruker komponenter fra{' '}
-      <Link href='https://designsystem.no/'>et fantastisk designsystem</Link>.
+      <Link href={designsystemetLink}>et fantastisk designsystem</Link>.
     </Paragraph>
     <Paragraph>
       <Link href='mailto:designsystem@digdir.no'>
@@ -67,7 +46,7 @@ export const InText: StoryFn<typeof Link> = () => (
 
 export const LongLink: StoryFn<typeof Link> = () => (
   <Paragraph>
-    <Link href='https://designsystem.no/'>
+    <Link href={designsystemetLink}>
       Dette er en lenke som brekker over flere linjer
     </Link>
   </Paragraph>
@@ -80,3 +59,11 @@ LongLink.decorators = [
     </div>
   ),
 ];
+
+export const Neutral: Story = {
+  args: {
+    children: 'Gå til designsystemet',
+    href: designsystemetLink,
+    color: 'neutral',
+  },
+};

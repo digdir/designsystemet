@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 import { FieldsetContext } from '../Fieldset/FieldsetContext';
-import { getSize } from '../../../utilities/getSize';
 
 import type { NativeSelectProps } from './NativeSelect';
 
@@ -24,12 +23,9 @@ export const useNativeSelect: UseNativeSelect = (props) => {
   const {
     inputProps: selectProps,
     readOnly,
+    size = fieldset?.size ?? 'md',
     ...rest
   } = useFormField(props, 'select');
-
-  const size = getSize(fieldset?.size ?? props.size ?? 'md') as NonNullable<
-    NativeSelectProps['size']
-  >;
 
   return {
     ...rest,

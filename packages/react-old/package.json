@@ -10,6 +10,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
+  "private": true,
   "files": [
     "dist/**"
   ],

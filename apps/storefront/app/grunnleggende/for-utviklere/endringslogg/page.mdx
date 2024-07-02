@@ -1,0 +1,26 @@
+import { MenuPageLayout } from '@layouts';
+
+export const metadata = {
+  title: 'Endringslogg',
+  description: 'Endringslogg for komponenter',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Endringslogg',
+      date: '25. mars 2023',
+    }}
+  />
+);
+
+## v0.10.1 (2023-03-29)
+
+**Bug Fixes**
+
+- Accordion: Fix continous texts word break (#264) (13b3bd6)
+- Button: adjust padding to make icon round (#265) (922014d)
+- RadioButton: RadioButton looks wrong when zoming in browser (#266) (5f40bc3)
+- Select: Display initial value on single select (#268) (7ad5f0f)
+- ToggleButtonGroup: Set correct button type (#261) (a706f07)

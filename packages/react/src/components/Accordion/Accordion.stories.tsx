@@ -7,18 +7,18 @@ import { Accordion } from '.';
 
 export default {
   title: 'Komponenter/Accordion',
-  component: Accordion,
+  component: Accordion.Root,
   parameters: {
     layout: 'padded',
   },
 } as Meta;
 
-export const Preview: StoryFn<typeof Accordion> = (args) => (
-  <Accordion {...args}>
+export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
+  <Accordion.Root {...args}>
     <Accordion.Item>
-      <Accordion.Header level={3}>
+      <Accordion.Heading level={3}>
         Hvem kan registrere seg i Frivillighetsregisteret?
-      </Accordion.Header>
+      </Accordion.Heading>
       <Accordion.Content>
         For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
         drive frivillig virksomhet. Det er bare foreninger, stiftelser og
@@ -27,54 +27,54 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>
+      <Accordion.Heading level={3}>
         Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-      </Accordion.Header>
+      </Accordion.Heading>
       <Accordion.Content>
         Virksomheten må være registrert i Enhetsregisteret før den kan bli
         registrert i Frivillighetsregisteret. Du kan registrere i begge
         registrene samtidig i Samordnet registermelding.
       </Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
-export const AccordionBorder: StoryFn<typeof Accordion> = () => (
-  <Accordion
+export const AccordionBorder: StoryFn<typeof Accordion.Root> = () => (
+  <Accordion.Root
     border
     color='subtle'
   >
     <Accordion.Item>
-      <Accordion.Header level={3}>Vedlegg</Accordion.Header>
+      <Accordion.Heading level={3}>Vedlegg</Accordion.Heading>
       <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
-export const AccordionColor: StoryFn<typeof Accordion> = () => (
-  <Accordion
+export const AccordionColor: StoryFn<typeof Accordion.Root> = () => (
+  <Accordion.Root
     border
-    color='second'
+    color='brand2'
   >
     <Accordion.Item>
-      <Accordion.Header level={3}>
+      <Accordion.Heading level={3}>
         Hvordan får jeg tildelt et jegernummer?
-      </Accordion.Header>
+      </Accordion.Heading>
       <Accordion.Content>
         Du vil automatisk få tildelt jegernummer og bli registrert i
         Jegerregisteret når du har bestått jegerprøven.
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Header level={3}>
+      <Accordion.Heading level={3}>
         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-      </Accordion.Header>
+      </Accordion.Heading>
       <Accordion.Content>
         Du kan finne dette ved å logge inn på{' '}
         <Link href='https://minjegerside.brreg.no/'>Min jegerside</Link>
       </Accordion.Content>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 );
 
 // Default values are selected in Controls
@@ -83,18 +83,18 @@ Preview.args = {
   color: 'neutral',
 };
 
-export const Controlled: StoryFn<typeof Accordion> = () => {
+export const Controlled: StoryFn<typeof Accordion.Root> = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Toggle Accordions</Button>
       <br />
-      <Accordion>
+      <Accordion.Root>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
             Enkeltpersonforetak
-          </Accordion.Header>
+          </Accordion.Heading>
           <Accordion.Content>
             Skal du starte for deg selv? Enkeltpersonforetak er ofte den
             enkleste måten å etablere bedrift på. Denne organisasjonsformen har
@@ -104,9 +104,9 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
             Aksjeselskap (AS)
-          </Accordion.Header>
+          </Accordion.Heading>
           <Accordion.Content>
             Planlegger du å starte næringsvirksomhet alene eller sammen med
             andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
@@ -116,9 +116,9 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Header onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
             Ansvarlig selskap (ANS/DA)
-          </Accordion.Header>
+          </Accordion.Heading>
           <Accordion.Content>
             Er dere minst to personer som skal starte opp egen virksomhet?
             Samarbeider du godt med den/de som du skal starte opp sammen med?
@@ -126,7 +126,7 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             risiko? Da kan du vurdere å etablere et ansvarlig selskap.
           </Accordion.Content>
         </Accordion.Item>
-      </Accordion>
+      </Accordion.Root>
     </>
   );
 };

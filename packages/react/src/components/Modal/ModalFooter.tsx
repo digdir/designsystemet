@@ -18,7 +18,7 @@ export const ModalFooter = forwardRef<HTMLElement, ModalFooterProps>(
     return (
       <Component
         ref={ref}
-        className={cl('fds-modal__footer', className)}
+        className={cl('ds-modal__footer', className)}
         {...rest}
       />
     );

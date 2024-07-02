@@ -33,6 +33,7 @@ export const useSwitch: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
+      role: 'switch',
       defaultChecked: checkboxGroup?.defaultValue
         ? checkboxGroup?.defaultValue.includes(propsValue)
         : props.defaultChecked,

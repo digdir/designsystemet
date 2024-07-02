@@ -4,7 +4,7 @@ import classes from './Stack.module.css';
 
 export const Stack = ({
   style,
-  gap = 'var(--fds-spacing-4)',
+  gap = 'var(--ds-spacing-4)',
   direction = 'row',
   wrap = 'wrap',
   ...rest

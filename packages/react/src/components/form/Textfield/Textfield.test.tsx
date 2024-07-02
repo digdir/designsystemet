@@ -1,5 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { TextfieldProps } from './Textfield';
 import { Textfield } from './Textfield';
@@ -36,6 +37,7 @@ describe('Textfield', () => {
     expect(input).toBeDefined();
     expect(input).toBeInvalid();
   });
+
   test('is invalid with correct error message from errorId', () => {
     renderRtl(
       <>
@@ -53,6 +55,7 @@ describe('Textfield', () => {
     expect(input).toBeDefined();
     expect(input).toBeInvalid();
   });
+
   it('should have max allowed characters label for screen readers', () => {
     render({
       characterLimit: {
@@ -76,7 +79,7 @@ describe('Textfield', () => {
       },
     });
     const inputField = screen.getByLabelText('First name');
-    await user.type(inputField, 'Peter');
+    await act(async () => await user.type(inputField, 'Peter'));
     expect(screen.getByText('5 characters remaining')).toBeInTheDocument();
   });
 
@@ -84,9 +87,9 @@ describe('Textfield', () => {
     const onBlur = vi.fn();
     render({ onBlur });
     const element = screen.getByRole('textbox');
-    await user.click(element);
+    await act(async () => await user.click(element));
     expect(element).toHaveFocus();
-    await user.tab();
+    await act(async () => await user.tab());
     expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
@@ -95,9 +98,9 @@ describe('Textfield', () => {
     const data = 'test';
     render({ onChange });
     const element = screen.getByRole('textbox');
-    await user.click(element);
+    await act(async () => await user.click(element));
     expect(element).toHaveFocus();
-    await user.keyboard(data);
+    await act(async () => await user.keyboard(data));
     expect(onChange).toHaveBeenCalledTimes(data.length);
   });
 
@@ -110,14 +113,14 @@ describe('Textfield', () => {
   it('Focuses on input field when label is clicked and id is not given', async () => {
     const label = 'Lorem ipsum';
     render({ label });
-    await user.click(screen.getByText(label));
+    await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('textbox')).toHaveFocus();
   });
 
   it('Focuses on input field when label is clicked and id is given', async () => {
     const label = 'Lorem ipsum';
     render({ id: 'some-unique-id', label });
-    await user.click(screen.getByText(label));
+    await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('textbox')).toHaveFocus();
   });
 

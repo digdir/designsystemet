@@ -10,13 +10,13 @@ export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
     <div
       className={cl(
-        multiple && 'fds-combobox__option__icon-wrapper',
-        selected && 'fds-combobox__option__icon-wrapper--selected',
+        multiple && 'ds-combobox__option__icon-wrapper',
+        selected && 'ds-combobox__option__icon-wrapper--selected',
       )}
     >
       {selected && (
         <CheckmarkIcon
-          className={'fds-combobox__option__icon-wrapper__icon'}
+          className={'ds-combobox__option__icon-wrapper__icon'}
           aria-hidden
         />
       )}

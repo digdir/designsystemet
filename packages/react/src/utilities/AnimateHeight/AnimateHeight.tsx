@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import type * as React from 'react';
 import cl from 'clsx/lite';
 
-import { useMediaQuery, usePrevious } from '../../hooks';
+import { useMediaQuery, usePrevious } from '../../utilities';
 
 export type AnimateHeightProps = {
   open: boolean;
@@ -58,15 +58,15 @@ export const AnimateHeight = ({
     <div
       {...rest}
       className={cl(
-        'fds-animate-height',
-        `fds-animate-height--${state}`,
+        'ds-animate-height',
+        `ds-animate-height--${state}`,
         className,
       )}
       style={{ height, transition, ...style }}
     >
       <div
         ref={contentRef}
-        className='fds-animate-height__content'
+        className='ds-animate-height__content'
       >
         {children}
       </div>

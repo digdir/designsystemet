@@ -1,0 +1,37 @@
+import { MoonIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { TokenList } from '@components';
+
+export const metadata = {
+  title: 'Skygger',
+  description: 'Hvordan skygger brukes i Designsystemet',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Skygger',
+      date: '10. april 2023',
+      icon: <MoonIcon />,
+      color: 'yellow',
+    }}
+  />
+);
+
+## Bruk av skygger i designet
+
+Skygger bør brukes bevisst og konsistent da de uttrykker at noe ligger over noe annet i løsningen.
+
+Skygger kan hjelpe svaksynte til å identifisere komponenter. Bruk av skygger og konturer gjør det enklere og raskere å finne en komponent når du skanner sider. (Research: [Material Design](https://m2.material.io/design/environment/light-shadows.html#research))
+
+### Styrker
+
+Vi har ulike styrker på skyggene, fra xsmall til xlarge. De ulike styrkene brukes for å antyde høyden til overflaten. Overflater i høyere høyder har større skygger, mens de på lavere høyder bør ha mindre skygger. Skygger skal skape et hierarki slik at det som ligger over eller under noe annet kommer tydeligere frem.
+
+<TokenList type='boxShadow' />
+
+### Eksempel
+
+Popover er en komponent som legger seg over annet innhold. Dette tydeliggjøres ved bruk av en medium skygge.

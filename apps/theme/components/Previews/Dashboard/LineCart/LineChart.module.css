@@ -1,0 +1,11 @@
+.line {
+  margin-top: 24px;
+}
+
+.line svg g:nth-child(7) path {
+  stroke: var(--brand1-9);
+}
+
+.line svg g:nth-child(8) path {
+  stroke: var(--brand3-9);
+}

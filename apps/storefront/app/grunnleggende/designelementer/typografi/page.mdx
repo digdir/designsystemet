@@ -1,0 +1,93 @@
+import { TokenIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { CodeSnippet } from '@components';
+
+export const metadata = {
+  title: 'Typografi',
+  description:
+    'For å presentere innholdet korrekt bruker vi stiler og komponenter for typografi.',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Typografi',
+      date: '28. april 2024',
+      icon: <TokenIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med [typografi-komponenter](https://https://storybook.designsystemet.no/?path=/docs/kjernekomponenter-typography--docs) som wrapper typografi-stilene og har innebygd spacing.
+
+## Font-family
+
+Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Vi anbefaler å bruke fonten Inter da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer. Den oppfyller følgende kriterier:
+
+- [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + har et [aktivt community](https://github.com/rsms/inter)
+- Stor skriftfamilie (light, regular, italic, bold, semibold)
+- Gjenkjennelige bokstaver, tall og spesialtegn (ikke for kreativ)
+- Tydelige overlengder og underlengde på bokstavene.
+- Synlig forskjell på lignende tegn (I, l, 1) (må aktiveres)
+- Åpne bokstaver gror ikke igjen (f.eks tegn som a, e og c)
+- Lik strektykkelse i overgangene.
+- Tabular numbers ([monospace](https://fonts.google.com/knowledge/introducing_type/understanding_numerals))
+- [Variabel font](https://rsms.me/inter/#variable)
+- God bokstav og ordmellomrom
+- Språkstøtte
+
+Fonten er tilgjengelig i Figma uten at du trenger å laste ned og installere den selv. Trenger du den til andre formål kan du laste den ned fra [github.com/rsms/inter](https://github.com/rsms/inter/releases/tag/v3.19).
+
+For hosting kan Altinn CDN benyttes:
+
+<CodeSnippet language='html'>
+  {`<link
+  rel='stylesheet'
+  href='https://altinncdn.no/fonts/inter/inter.css'
+/>`}
+</CodeSnippet>
+
+For å aktivere lowercase l with tail, legg til følgende i din CSS:
+
+<CodeSnippet language='css'>
+  {`font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */`}
+</CodeSnippet>
+
+## Tekststørrelse
+
+Tekststørrelse-variablene blir angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
+og tar utgangspunkt i den vanligste standarden der `1rem = 16px`. Når vi angir tekststørrelse i rem, vil størrelsen være relatert til nettleserens standardstørrelse, og dermed også ta hensyn til om brukeren har valgt å oppskalere tekststørrelsen under innstillingene for tilgjengelighet i sin nettleser.
+
+Vi har totalt 10 størrelser i designsystemet. 12, 14, 16, 18, 21, 24, 30, 36, 48 og 60px. Default tekststørrelse for `paragraph` er `medium` som tilsvarer 18px.
+
+| Steg   | Størrelse          | Paragraph\* | Ingress | Heading |
+| ------ | ------------------ | ----------- | ------- | ------- |
+| f-2    | 12px / 0.75rem     |             |         |         |
+| f-1    | 14px / 0.875rem    | xsmall      |         |         |
+| **f0** | **16px / 1.00rem** | small       |         |         |
+| f1     | 18px / 1.125rem    | medium      | xsmall  | xxsmall |
+| f2     | 21px / 1.313rem    | large       | small   | xsmall  |
+| f3     | 24px / 1.50rem     |             | medium  | small   |
+| f4     | 30px / 1.875rem    |             | large   | medium  |
+| f5     | 36px / 2.25rem     |             |         | large   |
+| f6     | 48px / 3.00rem     |             |         | xlarge  |
+| f7     | 60px / 3.75rem     |             |         | xxlarge |
+
+\*`Paragraph`-størrelsene brukes også på `Label` og `ErrorMessage`.
+
+### Hva med dynamiske tekststørrelser?
+
+Dynamisk font-størrelse uten breakpoints var standard i Designsystemet det meste av Beta-perioden. Dynamiske font-størrelser, eller "_Fluid typography"_, medfører noen ulemper som gjorde at vi valgte å gå for en statisk font-skala i stedet.
+
+    **Les mer om [Fluid typography, og hvorfor vi gikk bort fra det](/bloggen/2024/fluid-typography)**.
+
+## Linjelengde
+
+For best mulig lesbarhet for alle brukere, bør det ikke være mer enn 65-70 tegn per linje inkludert mellomrom. Da blir teksten mer innbydende og mindre overveldende, og er særlig viktig for blant annet brukere med lesevansker eller konsentrasjonsvansker. _Kilde: [uutilsynet.no](https://www.uutilsynet.no/veiledning/tekst-og-struktur/226)_
+
+<br />
+<br />

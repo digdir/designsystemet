@@ -1,7 +1,6 @@
 import type * as React from 'react';
 
-import { Banner } from 'components/SubPages/Banner/Banner';
-
+import { Banner, BannerHeading, BannerIcon, BannerIngress } from '../../components/Banner/Banner';
 import { Container, ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';
 
@@ -31,9 +30,9 @@ const NavPageLayout = ({ content, data, banner }: NavPageLayoutProps) => {
     >
       {banner && (
         <Banner color={banner.color}>
-          <Banner.Icon>{banner.icon}</Banner.Icon>
-          <Banner.Heading>{banner.title}</Banner.Heading>
-          {banner.ingress && <Banner.Ingress>{banner.ingress}</Banner.Ingress>}
+          <BannerIcon>{banner.icon}</BannerIcon>
+          <BannerHeading>{banner.title}</BannerHeading>
+          {banner.ingress && <BannerIngress>{banner.ingress}</BannerIngress>}
         </Banner>
       )}
       {data && (

@@ -7,7 +7,7 @@ export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
   ({ className, children, ...rest }, ref) => {
     return (
       <tr
-        className={cl('fds-table__row', className)}
+        className={cl('ds-table__row', className)}
         ref={ref}
         {...rest}
       >

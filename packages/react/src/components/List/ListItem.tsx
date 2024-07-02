@@ -17,7 +17,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
 
     return (
       <Component
-        className={cl('fds-list__item', className)}
+        className={cl('ds-list__item', className)}
         {...rest}
         ref={ref}
       />

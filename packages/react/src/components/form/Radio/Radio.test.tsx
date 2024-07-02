@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Radio } from './Radio';
 
@@ -85,7 +86,7 @@ describe('Radio', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -109,7 +110,7 @@ describe('Radio', () => {
     );
 
     const radio = screen.getByRole('radio');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
@@ -133,7 +134,7 @@ describe('Radio', () => {
     );
 
     const radio = screen.getByRole('radio');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

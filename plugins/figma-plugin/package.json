@@ -1,0 +1,37 @@
+{
+  "name": "figma-plugin",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "run-s watch",
+    "watch": "run-p 'watch:*'",
+    "watch:ui": "npm run build:ui -- --watch --mode=development",
+    "watch:plugin": "npm run build:plugin -- --watch --mode=development",
+    "build": "npm run build:plugin && npm run build:ui",
+    "build:ui": "vite build -c ./vite.config.ui.ts",
+    "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "types:src": "tsc",
+    "types:node": "tsc -P tsconfig.node.json"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-css": "workspace:^",
+    "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-theme": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.95.0",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.2.1",
+    "npm-run-all2": "^6.2.0",
+    "postcss": "^8.4.21",
+    "vite-plugin-generate-file": "^0.1.1",
+    "vite-plugin-react-rich-svg": "^1.0.0",
+    "vite-plugin-singlefile": "^0.13.5"
+  }
+}

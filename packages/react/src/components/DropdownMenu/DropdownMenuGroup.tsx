@@ -3,7 +3,7 @@ import type * as React from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuGroupProps = {
   /**
@@ -28,7 +28,7 @@ export const DropdownMenuGroup = forwardRef<
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
         role='group'
-        className={'fds-dropdownmenu__section'}
+        className={'ds-dropdownmenu__section'}
         {...rest}
       >
         {heading && (
@@ -38,7 +38,7 @@ export const DropdownMenuGroup = forwardRef<
           >
             <h2
               id={headingId}
-              className={'fds-dropdownmenu__heading'}
+              className={'ds-dropdownmenu__heading'}
             >
               {heading}
             </h2>

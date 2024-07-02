@@ -1,9 +1,9 @@
 import {
-  act,
   render as renderRtl,
   screen,
   renderHook,
 } from '@testing-library/react';
+import { act } from 'react';
 import userEvent from '@testing-library/user-event';
 
 import type { PaginationRootProps } from './PaginationRoot';
@@ -195,10 +195,9 @@ describe('Pagination.Root', () => {
 
   it('should render correctly with custom props', () => {
     renderWithRoot({
-      size: 'large',
+      size: 'lg',
       compact: true,
     });
-
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 

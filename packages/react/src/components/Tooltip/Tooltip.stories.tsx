@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 
-import { Paragraph, Button } from '../..';
+import { Button } from '../..';
 
 import { Tooltip } from '.';
 
@@ -10,20 +10,6 @@ const defaultChildren = <Button>My trigger</Button>;
 const decorators = [
   (Story: StoryFn) => (
     <div style={{ margin: '2rem' }}>
-      <Story />
-    </div>
-  ),
-];
-const invertedDecorator = [
-  (Story: StoryFn) => (
-    <div
-      style={{
-        background: '#1E2B3C',
-        padding: '3rem',
-        justifyContent: 'center',
-        display: 'flex',
-      }}
-    >
       <Story />
     </div>
   ),
@@ -61,42 +47,11 @@ export const DefaultOpen: Story = {
   decorators,
 };
 
-export const Complex: StoryFn<typeof Tooltip> = () => {
-  return (
-    <Paragraph>
-      Du kan ha{' '}
-      <Tooltip content='Kan gi bra brukeropplevelse'>
-        <abbr
-          style={{ fontWeight: 'bold', textDecoration: 'underline dotted' }}
-        >
-          tooltip
-        </abbr>
-      </Tooltip>{' '}
-      inne i tekst også
-    </Paragraph>
-  );
-};
-
-Complex.decorators = decorators;
-
 export const Portal: Story = {
   args: {
     content: 'Tooltip text',
     children: defaultChildren,
     placement: 'top',
     portal: true,
-  },
-};
-
-export const Inverted: Story = {
-  args: {
-    content: 'Tooltip text',
-    placement: 'bottom',
-    children: defaultChildren,
-    inverted: true,
-  },
-  decorators: invertedDecorator,
-  parameters: {
-    layout: 'fullscreen',
   },
 };

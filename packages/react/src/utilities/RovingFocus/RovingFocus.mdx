@@ -1,0 +1,58 @@
+import { Meta, Primary, ArgTypes } from '@storybook/blocks';
+import { RovingFocusRoot, RovingFocusItem } from './';
+
+<Meta title='Utilities/RovingFocus' />
+
+# RovingFocus
+
+For å lage liste med elementer som skal bruke piltaster for å flytte fokus.
+Denne komponenten blir brukt internt i `Tabs` og `ToggleGroup`.
+
+## Bruk
+
+Du må alltid ha `RovingFocusRoot` rundt `RovingFocusItem` for at det skal fungere.
+Elementet til `RovingFocusItem` må kunne fokuserest.
+
+```tsx
+import { RovingFocusRoot, RovingFocusItem } from '@digdir/designsystemet-react';
+
+<RovingFocusRoot>
+  <RovingFocusItem>Item 1</RovingFocusItem>
+  <RovingFocusItem>Item 2</RovingFocusItem>
+  <RovingFocusItem>Item 3</RovingFocusItem>
+</RovingFocusRoot>;
+```
+
+### Bruke egene elementer
+
+Trenger du å bruke egne elementer kan du bruke `asChild`, både på `RovingFocusRoot` og `RovingFocusItem`.
+
+```tsx
+<RovingFocusRoot asChild>
+  <MyComponent>
+    <RovingFocusItem asChild>
+      <MyButton>Item 1</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 2</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 3</MyButton>
+    </RovingFocusItem>
+  </MyComponent>
+</RovingFocusRoot>
+```
+
+## Props
+
+### `RovingFocusRoot`
+
+Må være rundt `RovingFocusItem`.
+
+<ArgTypes of={RovingFocusRoot} />
+
+### `RovingFocusItem`
+
+Må være inni `RovingFocusRoot`, men trenger ikke å være direkte barn.
+
+<ArgTypes of={RovingFocusItem} />

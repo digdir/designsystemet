@@ -23,13 +23,17 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🔗 Links
 
-[Storybook](https://storybook.designsystemet.no/) - For developing and testing our React components.
+[Storybook](https://storybook.designsystemet.no/) - Preview for React components.
 
 [Storefront](https://designsystemet.no/) - General documentation about the design system.
+
+[Theme](https://theme.designsystemet.no/) - Theme builder.
 
 ---
 
 ## 📦 Packages
+
+[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
 [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
 

@@ -1,0 +1,84 @@
+import { MenuPageLayout } from '@layouts';
+import { Image } from '@components';
+
+export const metadata = {
+  title: 'Validering og feilmeldinger',
+  description: 'Slik forteller du brukeren at noe har gått galt eller mangler.',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Obligatoriske og valgfrie skjemafelt',
+      date: '28. november 2023',
+    }}
+  />
+);
+
+Det er flere måter å markere obligatoriske felt på som [oppfyller kravene til merking](https://www.uutilsynet.no/veiledning/skjema/38#ledetekster_og_instruksjoner). I dag gjør vi dette ulikt på tvers. Noen bruker asterisk (stjerne), noen bruker ord, andre informerer i forkant om hva som må fylles ut. Klarer vi å gjøre dette mer likt på tvers blir det lettere for innbygger å forstå og kjenne igjen mønsteret på tvers av løsningene våre. Det vil alltid være unntak og ulike kontekster som krever ulik merking.
+
+En generell retningslinje er at vi bør unngå å be om informasjon vi ikke trenger, altså unngå valgfrie felt.
+
+Her tar vi for oss 3 eksempler.
+
+1. [Ett spørsmål per side](#1-ett-spørsmål-per-side)
+2. [Når vi _må_ ha flere spørsmål per side](#2-når-vi-må-ha-flere-spørsmål-per-side)
+3. [Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)
+
+## 1. Ett spørsmål per side
+
+Hvis vi kan holde oss til ett spørsmål per side, så er det det aller enkleste for brukeren. Gjør vi det, trenger vi ikke å markere hvilke felt som må fylles ut. Da kommer det frem av beskrivelsen at dette må fylles ut.
+
+<Image
+  src='/img/obligatorisk-eks1.png'
+  alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er obligatorisk'
+  boxShadow={false}
+/>
+
+Dersom det er frivillig å fylle ut en av sidene, kan dette også komme frem i beskrivelsen.
+
+<Image
+  src='/img/obligatorisk-eks1b.png'
+  alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er valgfritt'
+  boxShadow={false}
+/>
+
+## 2. Når vi _må_ ha flere spørsmål per side
+
+Hvis vi _må_ ha flere spørsmål på en side, kan vi informere tydelig i toppen om at _alle felt må fylles ut_. Vi skal bare spørre brukeren om informasjon vi absolutt trenger, og unngå valgfrie felt. (Kan du ikke unngå valgfrie felt, se [eksempel 3](#3-når-vi-må-ha-en-kombinasjon-av-obligatoriske-og-valgfrie-felt)).
+
+- Bruk for eksempel en gul tag, som vist i eksemplet under.
+- Bruk teksten **«Alle felt må fylles ut»**. \
+  (_Ikke_ bruk _"Obligatorisk"_ eller _"Påkrevd"_)
+- Pass på at det ikke er for mange spørsmål på samme side. Det som ligger på samme side bør ha samme tema eller spørsmål som er relatert til hverandre.
+  <Image
+    src='/img/obligatorisk-eks2.png'
+    alt='Skjermbilde av skjema med flere spørsmål per side.'
+    boxShadow={false}
+  />
+
+## 3. Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt
+
+En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil være situasjoner der vi ikke kommer unna det. Hvis vi _må_ ha med valgfrie felt i tillegg til de obligatoriske, bør vi markere alle feltene hver for seg. Da trenger vi ikke å informere i toppen.
+
+- Informer tydelig med taggen «Må fylles ut» eller «Valgfritt» bak hvert spørsmål/hver ledetekst.
+- Ikke bruk ordene «Obligatorisk» eller «Påkrevd».
+- Bruk for eksempel gul tag for «Må fylles ut» og blå for valgfritt.
+- Ikke bruk stjerne for å markere felt som må fylles ut.
+
+<Image
+  src='/img/obligatorisk-eks3.png'
+  alt='Skjermbilde av skjema med flere spørsmål per side, både obligatoriske og valgfrie.'
+  boxShadow={false}
+/>
+
+<br />
+
+---
+
+## Kilder og relevant informasjon:<br/>
+
+- [UU-tilsynet](https://www.uutilsynet.no/veiledning/skjema/38#ledetekster_og_instruksjoner)<br/>
+- [Gov UK - Question pages](https://design-system.service.gov.uk/patterns/question-pages/)
+- [NN Group - Marking Required Fields in Forms](https://www.nngroup.com/articles/required-fields/)

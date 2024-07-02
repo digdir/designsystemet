@@ -15,5 +15,8 @@ export default {
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'css',
   singleAttributePerLine: true,
-  overrides: [{ files: '**/*.css', options: { printWidth: 160 } }],
+  overrides: [
+    { files: '**/*.css', options: { printWidth: 160 } },
+    { files: 'packages/cli/**/*.ts', options: { printWidth: 120 } },
+  ],
 };

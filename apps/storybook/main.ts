@@ -31,26 +31,19 @@ const config: StorybookConfig = {
     },
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
+    '@storybook/addon-themes',
   ],
   staticDirs: ['./assets'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
-  },
-  async viteFinal(config) {
-    // Merge custom configuration into the default config
-    const { mergeConfig } = await import('vite');
-
-    return mergeConfig(config, {
-      resolve: {
-        alias: {
-          '@doc-components': resolve(__dirname, './docs-components'),
-          '@assets': resolve(__dirname, './assets'),
-        },
+    options: {
+      builder: {
+        viteConfigPath: resolve(__dirname, '../..//vite.config.ts'),
       },
-    });
+    },
   },
 };
+
 export default config;
 
 function getAbsolutePath(value: string): StorybookConfig['framework'] {

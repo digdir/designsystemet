@@ -1,0 +1,72 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.column {
+  width: calc(50% - 16px);
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-sm);
+  border: 1px solid #f3f3f3;
+}
+
+.snippet {
+  height: 400px;
+  overflow: auto;
+}
+
+.tabsContent {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.modalContent {
+  padding-bottom: 24px;
+}
+
+.tabs {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.modalHeader h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerText {
+  margin-right: auto;
+  font-size: 24px;
+}
+
+.emblem {
+  height: 26px;
+  margin-right: 10px;
+}
+
+.shareBtn {
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.modalHeader > button {
+  right: 22px;
+  top: 22px;
+}
+
+.hiddenGlobalBtn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 48px;
+  width: 48px;
+  background-color: transparent;
+  border: transparent;
+}

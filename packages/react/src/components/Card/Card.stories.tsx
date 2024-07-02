@@ -29,7 +29,12 @@ export const Preview: Story = (args) => (
     style={{ width: '320px' }}
   >
     <Card.Header>
-      <Heading size='sm'>Card Neutral</Heading>
+      <Heading
+        size='sm'
+        level={2}
+      >
+        Card Neutral
+      </Heading>
     </Card.Header>
     <Card.Content>
       Most provide as with carried business are much better more the perfected
@@ -49,13 +54,13 @@ export const LinkCard: Story = (args) => (
   <div
     style={{
       display: 'grid',
-      gap: 'var(--fds-spacing-4)',
+      gap: 'var(--ds-spacing-4)',
       gridTemplateColumns: 'repeat(2, 400px)',
     }}
   >
     <Card
       {...args}
-      color='first'
+      color='brand1'
       isLink
       asChild
     >
@@ -67,11 +72,16 @@ export const LinkCard: Story = (args) => (
         <Card.Media>
           <img
             src={cat5}
-            alt='katt 1'
+            alt=''
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='sm'>Link Card</Heading>
+          <Heading
+            size='sm'
+            level={2}
+          >
+            Link Card
+          </Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -97,11 +107,16 @@ export const LinkCard: Story = (args) => (
         <Card.Media>
           <img
             src={cat6}
-            alt='katt 2'
+            alt=''
           />
         </Card.Media>
         <Card.Header>
-          <Heading size='sm'>Link Card</Heading>
+          <Heading
+            size='sm'
+            level={2}
+          >
+            Link Card
+          </Heading>
         </Card.Header>
         <Card.Content>
           Most provide as with carried business are much better more the
@@ -121,7 +136,7 @@ export const Variants: StoryFn<typeof Card> = () => {
     <div
       style={{
         display: 'grid',
-        gap: 'var(--fds-spacing-4)',
+        gap: 'var(--ds-spacing-4)',
         gridTemplateColumns: 'repeat(2, 400px)',
       }}
     >
@@ -134,7 +149,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Neutral
@@ -155,7 +170,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Subtle
@@ -167,7 +182,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='first'>
+      <Card color='brand1'>
         <Card.Media>
           <img
             src={cat3}
@@ -176,7 +191,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card First
@@ -188,7 +203,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='second'>
+      <Card color='brand2'>
         <Card.Media>
           <img
             src={cat4}
@@ -197,7 +212,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Second
@@ -209,7 +224,7 @@ export const Variants: StoryFn<typeof Card> = () => {
           about this
         </Card.Content>
       </Card>
-      <Card color='third'>
+      <Card color='brand3'>
         <Card.Media>
           <img
             src={cat5}
@@ -218,7 +233,7 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Card.Media>
         <Card.Header>
           <Heading
-            level={3}
+            level={2}
             size='sm'
           >
             Card Third
@@ -238,7 +253,7 @@ export const Media: Story = () => (
   <div
     style={{
       display: 'grid',
-      gap: 'var(--fds-spacing-4)',
+      gap: 'var(--ds-spacing-4)',
       gridTemplateColumns: 'repeat(2, 300px)',
     }}
   >
@@ -251,7 +266,7 @@ export const Media: Story = () => (
       </Card.Media>
       <Card.Header>
         <Heading
-          level={3}
+          level={2}
           size='sm'
         >
           Card Neutral
@@ -266,7 +281,7 @@ export const Media: Story = () => (
     <Card>
       <Card.Header>
         <Heading
-          level={3}
+          level={2}
           size='sm'
         >
           Card Neutral
@@ -303,7 +318,7 @@ export const Video: Story = () => (
     </Card.Media>
     <Card.Header>
       <Heading
-        level={3}
+        level={2}
         size='sm'
       >
         <Link
@@ -338,7 +353,7 @@ export const Composed: Story = () => (
         }}
       >
         <Heading
-          level={3}
+          level={2}
           size='xs'
         >
           Rolle 1

@@ -3,10 +3,9 @@ import { useState } from 'react';
 import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
-import { Popover } from '../Popover';
-import type { PopoverProps } from '../Popover/Popover';
+import { Popover, Paragraph } from '../';
+import type { PopoverRootProps } from '../Popover/PopoverRoot';
 import type { PortalProps } from '../../types/Portal';
-import { getSize } from '../../utilities/getSize';
 
 import { HelpTextIcon } from './HelpTextIcon';
 
@@ -18,9 +17,8 @@ export type HelpTextProps = {
   /**
    * Size of the helptext
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: PopoverProps['size'];
+  size?: PopoverRootProps['size'];
   /**
    * Placement of the Popover.
    * @default 'right'
@@ -33,17 +31,16 @@ const HelpText = ({
   title,
   placement = 'right',
   portal,
+  size = 'md',
   className,
   children,
   ...rest
 }: HelpTextProps) => {
-  const size = getSize(rest.size || 'md') as PopoverProps['size'];
-
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Popover
+      <Popover.Root
         variant='info'
         placement={placement}
         size={size}
@@ -57,9 +54,9 @@ const HelpText = ({
         >
           <button
             className={cl(
-              `fds-helptext--${size}`,
-              'fds-helptext__button',
-              `fds-focus`,
+              `ds-helptext--${size}`,
+              'ds-helptext__button',
+              `ds-focus`,
               className,
             )}
             aria-expanded={open}
@@ -69,23 +66,28 @@ const HelpText = ({
             <HelpTextIcon
               filled
               className={cl(
-                `fds-helptext__icon`,
-                `fds-helptext__icon--filled`,
+                `ds-helptext__icon`,
+                `ds-helptext__icon--filled`,
                 className,
               )}
               openState={open}
             />
             <HelpTextIcon
-              className={cl(`fds-helptext__icon`, className)}
+              className={cl(`ds-helptext__icon`, className)}
               openState={open}
             />
-            <span className={`fds-sr-only`}>{title}</span>
+            <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content className='fds-helptext__content'>
-          {children}
-        </Popover.Content>
-      </Popover>
+        <Paragraph
+          size='md'
+          asChild
+        >
+          <Popover.Content className='ds-helptext__content'>
+            {children}
+          </Popover.Content>
+        </Paragraph>
+      </Popover.Root>
     </>
   );
 };

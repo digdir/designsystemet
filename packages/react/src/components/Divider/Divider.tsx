@@ -14,7 +14,7 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(
   ({ color = 'default', className, ...rest }, ref) => {
     return (
       <hr
-        className={cl('fds-divider', `fds-divider--${color}`, className)}
+        className={cl('ds-divider', `ds-divider--${color}`, className)}
         ref={ref}
         {...rest}
       />

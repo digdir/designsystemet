@@ -14,13 +14,13 @@ const marginDecorator = (Story: StoryFn) => (
 
 export default {
   title: 'Komponenter/DropdownMenu',
-  component: DropdownMenu,
+  component: DropdownMenu.Root,
 } as Meta;
 
-export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
+export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
   return (
     <>
-      <DropdownMenu {...args}>
+      <DropdownMenu.Root {...args}>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group heading='Links'>
@@ -52,7 +52,7 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
             <DropdownMenu.Item disabled>Disabled</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu.Root>
     </>
   );
 };
@@ -64,9 +64,9 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-export const Icons: StoryFn<typeof DropdownMenu> = () => {
+export const Icons: StoryFn<typeof DropdownMenu.Root> = () => {
   return (
-    <DropdownMenu>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -92,7 +92,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 };
 
@@ -100,7 +100,7 @@ Icons.decorators = [marginDecorator];
 
 export const InPortal: StoryFn<typeof DropdownMenu> = () => {
   return (
-    <DropdownMenu portal>
+    <DropdownMenu.Root portal>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -126,7 +126,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 };
 
@@ -135,7 +135,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu
+      <DropdownMenu.Root
         open={open}
         onClose={() => setOpen(false)}
         portal
@@ -167,7 +167,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
             </DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu.Root>
     </>
   );
 };

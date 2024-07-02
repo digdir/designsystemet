@@ -8,10 +8,8 @@ import { Box } from '../../Box';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 import type { PortalProps } from '../../../types/Portal';
-import useDebounce from '../../../utilities/useDebounce';
-import { omit } from '../../../utilities';
+import { useDebounceCallback, omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
-import { getSize } from '../../../utilities/getSize';
 
 import type { Option } from './useCombobox';
 import useCombobox, { prefix, removePrefix } from './useCombobox';
@@ -142,6 +140,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       virtual = false,
       children,
       style,
+      size = 'md',
       loading,
       loadingLabel = 'Laster...',
       filter,
@@ -151,10 +150,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     },
     forwareddRef,
   ) => {
-    const size = getSize(rest.size || 'md') as NonNullable<
-      FormFieldProps['size']
-    >;
-
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
@@ -293,7 +288,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       refs.domReference.current?.focus();
     };
 
-    const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
+    const debouncedHandleSelectOption = useDebounceCallback(
+      handleSelectOption,
+      50,
+    );
 
     const handleKeyDown = useComboboxKeyboard({
       filteredOptions,
@@ -353,13 +351,16 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           chipSrLabel,
           listRef,
           forwareddRef,
+          setListRef: (index: number, node: HTMLElement | null) => {
+            listRef.current[index] = node;
+          },
         }}
       >
         <Box
           className={cl(
-            'fds-combobox',
-            `fds-combobox--${size}`,
-            disabled && 'fds-combobox__disabled',
+            'ds-combobox',
+            `ds-combobox--${size}`,
+            disabled && 'ds-combobox__disabled',
             className,
           )}
           style={style}
@@ -397,7 +398,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             formFieldProps={formFieldProps}
           />
         </Box>
-
         {/* This is the floating list with options */}
         {open && (
           <FloatingPortal root={portal ? null : portalRef}>
@@ -421,8 +421,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                   },
                 })}
                 className={cl(
-                  'fds-combobox__options-wrapper',
-                  `fds-combobox--${size}`,
+                  'ds-combobox__options-wrapper',
+                  `ds-combobox--${size}`,
                 )}
               >
                 {virtual && (
@@ -454,7 +454,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                 )}
 
                 {loading ? (
-                  <ComboboxCustom className={'fds-combobox__loading'}>
+                  <ComboboxCustom className={'ds-combobox__loading'}>
                     <Spinner
                       title='Laster'
                       size='sm'

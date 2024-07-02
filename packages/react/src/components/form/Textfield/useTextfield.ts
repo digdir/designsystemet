@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 import { FieldsetContext } from '../Fieldset/FieldsetContext';
-import { getSize } from '../../../utilities/getSize';
 
 import type { TextfieldProps } from './Textfield';
 
@@ -17,11 +16,12 @@ type UseTextfield = (props: TextfieldProps) => FormField & {
 /** Handles props for `Textfield` in context with `Fieldset` */
 export const useTextfield: UseTextfield = (props) => {
   const fieldset = useContext(FieldsetContext);
-  const { inputProps, readOnly, ...rest } = useFormField(props, 'textfield');
-
-  const size = getSize(fieldset?.size ?? props.size ?? 'md') as NonNullable<
-    TextfieldProps['size']
-  >;
+  const {
+    inputProps,
+    readOnly,
+    size = fieldset?.size ?? 'md',
+    ...rest
+  } = useFormField(props, 'textfield');
 
   return {
     ...rest,

@@ -16,9 +16,9 @@ import {
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
 
-import { useIsomorphicLayoutEffect } from '../../hooks';
+import { useIsomorphicLayoutEffect } from '../../utilities';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 const GAP = 4;
 
@@ -106,8 +106,8 @@ export const DropdownMenuContent = forwardRef<
                 tabIndex: undefined,
               })}
               className={cl(
-                'fds-dropdownmenu',
-                `fds-dropdownmenu--${size}`,
+                'ds-dropdownmenu',
+                `ds-dropdownmenu--${size}`,
                 className,
               )}
               {...rest}

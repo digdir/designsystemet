@@ -1,0 +1,38 @@
+.ds-heading {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  margin: 0;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.ds-heading--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+.ds-heading--2xl {
+  --dsc-bottom-spacing: var(--ds-spacing-7);
+}
+
+.ds-heading--xl {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+}
+
+.ds-heading--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+}
+
+.ds-heading--md {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+}
+
+.ds-heading--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+}
+
+.ds-heading--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-2);
+}
+
+.ds-heading--2xs {
+  --dsc-bottom-spacing: var(--ds-spacing-1);
+}

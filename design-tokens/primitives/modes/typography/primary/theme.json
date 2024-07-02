@@ -1,0 +1,30 @@
+{
+  "theme": {
+    "main": {
+      "type": "fontFamilies",
+      "value": "Inter"
+    },
+    "bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "Medium"
+    },
+    "extra-bold": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontWeights",
+      "value": "Semi bold"
+    },
+    "regular": {
+      "type": "fontWeights",
+      "value": "Regular"
+    }
+  }
+}

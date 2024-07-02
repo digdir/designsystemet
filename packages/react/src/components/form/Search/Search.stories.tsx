@@ -42,8 +42,8 @@ export const Controlled: StoryFn<typeof Search> = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          marginTop: 'var(--fds-spacing-2)',
-          gap: 'var(--fds-spacing-2)',
+          marginTop: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
         }}
       >
         <Search

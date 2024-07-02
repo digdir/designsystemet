@@ -1,0 +1,26 @@
+{
+  "name": "@digdir/create-tokens",
+  "version": "0.1.0-alpha.7",
+  "description": "CLI tool to create an initial token structure for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/create-tokens",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^12.0.1",
+    "commander": "^12.0.0",
+    "tsx": "^4.11.2"
+  }
+}

@@ -8,8 +8,6 @@ import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
 import { useNativeSelect } from './useNativeSelect';
 
-type OldNativeSelectSizes = 'small' | 'medium' | 'large';
-
 export type NativeSelectProps = {
   /**
    * Label that appears over the select box. */
@@ -28,9 +26,8 @@ export type NativeSelectProps = {
   /**
    * Defines the size of the select.
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    **/
-  size?: 'sm' | 'md' | 'lg' | OldNativeSelectSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Error message for form field */
   error?: ReactNode;
   /** Defines if the select is readOnly
@@ -72,9 +69,9 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       >
         <div
           className={cl(
-            'fds-native-select--container',
-            readOnly && 'fds-native-select--readonly',
-            error && 'fds-native-select--error',
+            'ds-native-select--container',
+            readOnly && 'ds-native-select--readonly',
+            error && 'ds-native-select--error',
           )}
         >
           {label && (
@@ -83,14 +80,14 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               size={size}
               htmlFor={selectProps.id}
               className={cl(
-                'fds-native-select__label',
-                hideLabel && 'fds-sr-only',
+                'ds-native-select__label',
+                hideLabel && 'ds-sr-only',
               )}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={'fds-native-select__readonly__icon'}
+                  className={'ds-native-select__readonly__icon'}
                 />
               )}
               {label}
@@ -104,35 +101,37 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  `fds-native-select__description`,
-                  hideLabel && `fds-sr-only`,
+                  `ds-native-select__description`,
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
-          <select
-            disabled={disabled || readOnly}
-            ref={ref}
-            size={htmlSize}
-            className={cl(
-              'fds-native-select',
-              `fds-native-select--${size}`,
-              `fds-focus`,
-              props.multiple && 'fds-native-select--multiple',
-              className,
-            )}
-            {...omit(['size', 'error', 'errorId'], rest)}
-            {...omit(['readOnly', 'disabled'], selectProps)}
-          >
-            {children}
-          </select>
+          <div className='ds-native-select__wrapper'>
+            <select
+              disabled={disabled || readOnly}
+              ref={ref}
+              size={htmlSize}
+              className={cl(
+                'ds-native-select',
+                `ds-native-select--${size}`,
+                `ds-focus`,
+                props.multiple && 'ds-native-select--multiple',
+                className,
+              )}
+              {...omit(['size', 'error', 'errorId'], rest)}
+              {...omit(['readOnly', 'disabled'], selectProps)}
+            >
+              {children}
+            </select>
+          </div>
 
           {error && (
             <div
               id={errorId}
-              className={'fds-native-select__error-message'}
+              className={'ds-native-select__error-message'}
               aria-live='polite'
               aria-relevant='additions removals'
             >

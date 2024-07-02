@@ -39,7 +39,7 @@ export const WithForm: Story = () => (
   <div
     style={{
       display: 'grid',
-      gap: 'var(--fds-spacing-4)',
+      gap: 'var(--ds-spacing-4)',
     }}
   >
     <Textfield

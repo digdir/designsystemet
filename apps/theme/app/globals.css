@@ -1,0 +1,34 @@
+@import url('https://altinncdn.no/fonts/inter/inter.css');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif !important;
+  color: #1e2b3c;
+}
+
+.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 20px 0 #c5c5c5;
+  background-color: #fff !important;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.is-sticky .ColorPicker_label__kYLHj {
+  display: #b4b4b4;
+}
+
+code {
+  background-color: #e0edff;
+  padding: 3px 6px;
+  border-radius: 2px;
+  margin: 5px;
+}

@@ -26,7 +26,7 @@ export const Polymorphic: Story = (args) => (
     <Box
       {...args}
       asChild
-      borderRadius='medium'
+      borderRadius='md'
       borderColor='subtle'
     >
       <button>button</button>
@@ -34,7 +34,7 @@ export const Polymorphic: Story = (args) => (
     <Box
       {...args}
       asChild
-      borderRadius='medium'
+      borderRadius='md'
       borderColor='subtle'
       background='subtle'
     >

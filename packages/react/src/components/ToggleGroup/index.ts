@@ -1,17 +1,20 @@
-import { ToggleGroup as ToggleGroupRoot } from './ToggleGroup';
+import { ToggleGroupRoot } from './ToggleGroupRoot';
 import { ToggleGroupItem } from './ToggleGroupItem/ToggleGroupItem';
 
-export type { ToggleGroupProps } from './ToggleGroup';
+export type { ToggleGroupProps } from './ToggleGroupRoot';
 export type { ToggleGroupItemProps } from './ToggleGroupItem/ToggleGroupItem';
 
-type ToggleGroupComponent = typeof ToggleGroupRoot & {
+type ToggleGroupComponent = {
+  Root: typeof ToggleGroupRoot;
   Item: typeof ToggleGroupItem;
 };
 
-const ToggleGroup = ToggleGroupRoot as ToggleGroupComponent;
+const ToggleGroup = {} as ToggleGroupComponent;
 
+ToggleGroup.Root = ToggleGroupRoot;
 ToggleGroup.Item = ToggleGroupItem;
 
+ToggleGroup.Root.displayName = 'ToggleGroup.Root';
 ToggleGroup.Item.displayName = 'ToggleGroup.Item';
 
-export { ToggleGroup, ToggleGroupItem };
+export { ToggleGroup, ToggleGroupRoot, ToggleGroupItem };

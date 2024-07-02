@@ -6,7 +6,7 @@ import * as TabsStories from './Tabs.stories';
 
 # Tabs
 
-Description of the Tabs component.
+Tabs lar brukerne navigere mellom relaterte deler av innholdet, der én del vises om gangen.
 
 <Primary />
 <Controls />
@@ -16,7 +16,7 @@ Description of the Tabs component.
 ```tsx
 import { Tabs } from '@digdir/designsystemet-react';
 
-<Tabs defaultValue='value1'>
+<Tabs.Root defaultValue='value1'>
   <Tabs.List>
     <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
     <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -25,7 +25,7 @@ import { Tabs } from '@digdir/designsystemet-react';
   <Tabs.Content value='value1'>content 1</Tabs.Content>
   <Tabs.Content value='value2'>content 2</Tabs.Content>
   <Tabs.Content value='value3'>content 3</Tabs.Content>
-</Tabs>;
+</Tabs.Root>;
 ```
 
 ## Icons only

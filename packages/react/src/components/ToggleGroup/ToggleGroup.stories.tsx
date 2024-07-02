@@ -9,21 +9,22 @@ import {
 } from '@navikt/aksel-icons';
 
 import { Button } from '../Button';
+import { Paragraph } from '../Typography';
 
 import { ToggleGroup } from '.';
 
 export default {
   title: 'Komponenter/ToggleGroup',
-  component: ToggleGroup,
+  component: ToggleGroup.Root,
 } as Meta;
 
-export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
+export const Preview: StoryFn<typeof ToggleGroup.Root> = (args) => {
   return (
-    <ToggleGroup {...args}>
-      <ToggleGroup.Item>Peanut</ToggleGroup.Item>
-      <ToggleGroup.Item>Walnut</ToggleGroup.Item>
-      <ToggleGroup.Item>Pistachio 🤤</ToggleGroup.Item>
-    </ToggleGroup>
+    <ToggleGroup.Root {...args}>
+      <ToggleGroup.Item value='Peanut'>Peanut</ToggleGroup.Item>
+      <ToggleGroup.Item value='Walnut'>Walnut</ToggleGroup.Item>
+      <ToggleGroup.Item value='Pistachio'>Pistachio 🤤</ToggleGroup.Item>
+    </ToggleGroup.Root>
   );
 };
 
@@ -34,15 +35,8 @@ Preview.args = {
 };
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
-  const handleChange = (value: string) => {
-    console.log(value);
-  };
-
   return (
-    <ToggleGroup
-      defaultValue={'option-1'}
-      onChange={handleChange}
-    >
+    <ToggleGroup.Root defaultValue={'option-1'}>
       <ToggleGroup.Item
         value={'option-1'}
         icon={true}
@@ -70,7 +64,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
           fontSize='1.5rem'
         />
       </ToggleGroup.Item>
-    </ToggleGroup>
+    </ToggleGroup.Root>
   );
 };
 
@@ -87,7 +81,7 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
         </Button>
       </div>
       <br />
-      <ToggleGroup
+      <ToggleGroup.Root
         value={value}
         size='md'
         onChange={setValue}
@@ -104,9 +98,9 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
           <NewspaperFillIcon fontSize='1.5rem' />
           Walnut
         </ToggleGroup.Item>
-      </ToggleGroup>
+      </ToggleGroup.Root>
       <br />
-      <span>You have chosen: {value}</span>
+      <Paragraph>You have chosen: {value}</Paragraph>
     </>
   );
 };

@@ -18,7 +18,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
     return (
       <Component
         ref={ref}
-        className={cl('fds-modal__content', className)}
+        className={cl('ds-modal__content', className)}
         {...rest}
       />
     );

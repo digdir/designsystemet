@@ -7,8 +7,13 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "sourceMap": false,
+    "incremental": false
   },
   "rootDir": "./src",
-  "include": ["./src/", "./declarations.d.ts"]
+  "include": ["./src", "./bin/", "./declarations.d.ts"]
 }

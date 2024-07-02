@@ -2,6 +2,7 @@ import type * as React from 'react';
 import NextLink from 'next/link';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
 import { Container, MdxContent } from '../../components';
 
@@ -29,6 +30,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
             <Link
               asChild
               className={classes.backBtn}
+              color='neutral'
             >
               <NextLink
                 href={'/' + data.backUrl}
@@ -41,14 +43,14 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
                 {data.backText}
               </NextLink>
             </Link>
-            <div className={classes.meta}>
+            <div className={cl(classes.meta, 'ds-paragraph-short--lg')}>
               <span>{data.author && <div>{data.author}</div>}</span>
               <span className={classes.separator}> - </span>
               <span>{data.date && <div>{data.date}</div>}</span>
             </div>
             <Heading
               level={1}
-              size='large'
+              size='lg'
               className={classes.title}
             >
               {data.title}

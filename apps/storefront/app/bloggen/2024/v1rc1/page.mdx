@@ -1,0 +1,158 @@
+import { Link } from '@digdir/designsystemet-react';
+
+import { PostLayout, Contributors } from '../../_components';
+import { ResponsiveIframe, CodeSnippet } from '@components';
+
+export default ({ children }) => (
+  <PostLayout
+    content={children}
+    heading='Dette kommer i V1!'
+    ingress='Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.'
+    date='29. mai 2024'
+    author='Designsystemet'
+    imageSrc='/img/bloggen/v1rc1.png'
+    imageAlt='Illustrasjon av Designsystemet V1 og emojis som feirer.'
+    imageCaption='Etter over 2000 issues og PRs er vi nærere enn noen gang! Tusen takk til alle som har bidratt til å komme hit! '
+  />
+);
+
+export const metadata = {
+  title: 'Dette kommer i V1!',
+  description:
+    'Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.',
+  openGraph: {
+    images: '/img/bloggen/v1rc1.png',
+  },
+};
+
+Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå nærmer vi oss målstreken og har publisert en release candidate av V1!
+
+## Hva er nytt?
+
+Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.
+
+Her er en kort oppsummering av hva som er nytt:
+
+- Fargesystem og token-struktur
+- Lett å tilpasse til din virksomhet
+- Støtte for darkmode og contrastmode
+- Design-tokens templat på Github
+- Oppdaterte komponenter i React og Figma med nye tokens
+
+### Nytt fargesystem og token-struktur
+
+Flere intervjuer og [brukertester](/bloggen/2024/bachelor-temavelger#brukertester-og-videre-arbeid) avdekket at det første fargesystemet ikke løste alle behov. Fargene hadde heller ikke alltid forventet oppførsel, og strukuren var noe tungtvindt å forholde seg til.
+
+Vi har de siste månedene utforsket et nytt fargesystem og en token-struktur som er mer fleksibel, lettere å forstå og samtidig ivaretar kontrastkrav. Å definere en solid Token-arkitektur med flerdimensjonale temaer krever overraskende mye tankearbeid - inkludert søvnløse netter og tegninger i dusjen. Ikke bare skal tokens fungere som bro mellom design og kode, det skal støtte multibranding og ulike modes (darkmode og contrastmode), og det skal ivareta kontrastkrav mellom farge-tokens tiltenkt tekst og bakgrunner.
+
+Vi har latt oss inspirere av [USWDS sine "magic numbers](https://designsystem.digital.gov/design-tokens/color/overview/)" for å sikre tilgjengelige fargekombinasjoner fra hvilken som helst fargepalett. Vi har også blitt inspirert av [Radix sitt lineære fargesystem](https://www.radix-ui.com/colors) med tydelige intensjoner for de ulike fargene. For å sikre at en organisasjonene skal kunne bruke sin faktiske brandfarge, har vi valgt å kombinere to tilnærminger til et helt nytt system. I det nye fargesystemet kan både brand-farger ivaretas og kontrastkrav sikres gjennom de lineære fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+I forbindelse med det nye fargesystemet har vi utviklet et verktøy der du kan teste dine brand-farger og hvordan det påvirker komponentene. Verktøyet er under arbeid, men er mulig å teste allerede nå. 👀
+
+<ResponsiveIframe
+  src='/img/bloggen/theme-generator.mp4'
+  title='Skjermopptak fra et verktøy der du kan se komponentene med dine egne farger.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+<Link
+  href='https://theme.designsystemet.no/'
+  target='_blank'
+>
+  theme.designsystemet.no
+</Link>
+
+Selv om vi nå har lagt opp til et fargesystem som støtter darkmode og contrastmode, gjenstår det fremdeles litt utforsking før vi er sikre på at genereringen av farger fungerer optimalt.
+
+#### Action --> Accent
+
+Et annet forvirrende element med det forrige fargesystemet var `action`-fargen, som kun endret fargen på `Button`-komponenten. `Action` er nå byttet ut med `neutral` og `accent`-farger som påvirker forventede skjemaelementer.
+
+## Bli med å teste V1 Release Candidate!
+
+I arbeidet med å bygge et designsystem som skal fungere for mange ulike virksomheter er vi avhengige av tilbakemeldinger.
+
+Vi ønsker å være trygge på at det nye systemet er godt testet før vi lanserer det som V1. Derfor håper vi at så mange som mulig vil teste og komme med tilbakemeldinger.
+
+Vi kommer til å jobbe kontinuerlig med mindre forbedringer basert på tilbakemeldinger vi får frem til lansering av V1. Dato for V1 avhenger av tilbakemeldingene vi får.
+
+### Hva må du gjøre for å ta i bruk den nye arkitekturen?
+
+For å lett komme i gang som utvikler med Release Candidate av Designsystemet kan installerer følgende med ditt pakkesystem:
+
+```bash
+npm i @digdir/designsystemet-react@next
+npm i @digdir/designsystemet-theme@next
+npm i @digdir/designsystemet-css@next
+```
+
+Denne installerer alle tre pakken, og inneholder tokens, CSS og React komponenter.
+
+#### Fargemodus
+
+Ønsker du å teste `dark`, `light` eller `contrast` modus kan du legge på data-atributtet `data-ds-color-mode="MODE"`.
+Denne kan legges hvor som helst, og endrer alle barn til modusen du har valgt.
+
+<CodeSnippet language='ts'>
+  {`<Accordion data-ds-color-mode='dark'>...</Accordion>`}
+</CodeSnippet>
+
+#### Design-tokens templat
+
+Du kan sjekke ut templatet vi har laget for Designsystemet design-tokens som du han ta i utgangspunkt for kobling mellom Figma og kode ved hjelp av Token Studio.
+Veiledninger på hvordan dette skal tas i bruk kommer!
+
+<Link
+  href='https://github.com/designsystemet/design-tokens'
+  target='_blank'
+>
+  github.com/designsystemet/design-tokens
+</Link>
+
+#### Migrere fra beta-versjon
+
+Dersom du har tidligere brukt beta-versjonen av Designsystemet, så har vi laget et migreringsscript for CSS som prøver å fikse alle endringer vi har gjort på variabelnavn.
+
+Migreringsscriptet kjører automatisk på alle `.css` filer (inkl. undermapper) der du kjører den. Du kan selv bestemme hvilke filer den kjøres på ved å bruke parmeteret [--glob](<https://en.wikipedia.org/wiki/Glob_(programming)>), f.eks `--glob "./**/*.css"`
+
+_Merk at du må dobbelsjekke koden din etter scriptet har kjørt_
+
+```sh
+npx @digdir/designsystemet migrate beta-to-v1
+```
+
+## Takk for samarbeidet så langt!
+
+I tillegg til teamet som jobber daglig med Designsystemet har vi også en veldig viktig gjeng med bidragsytere som bidrar med både kode, innsikt, design og innspill. Tusen takk!
+
+<ResponsiveIframe
+  src='https://player.vimeo.com/video/951934375?h=40f4d8cea4'
+  width='100%'
+  height='600px'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  aspectRatio='16-9'
+></ResponsiveIframe>
+
+Fikk du ikke med deg demoen 29. mai, kan du se opptaket i videoen over.
+
+<Contributors
+  authors={[
+    'Øyvind Thune',
+    'Tobias Barsnes',
+    'Michael Marszalek',
+    'Lasse Straum',
+    'Gørild Døhl',
+    'Roy Halvor Frimannslund',
+    'Lene Sundsbø',
+    'Wei Quing Yu',
+    'Cecilie Fjellsøy Lammering',
+    'Kristian Birkeli',
+    'Marianne Røsvik',
+  ]}
+/>
+
+Vi skulle gjerne nevnt alle, men du kan finne en full liste av bidragsytere på [Github](https://github.com/digdir/designsystemet/graphs/contributors).

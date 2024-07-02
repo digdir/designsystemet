@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Radio } from '..';
 
@@ -75,7 +76,7 @@ describe('RadioGroup', () => {
 
     const radio = screen.getByDisplayValue<HTMLInputElement>('test2');
 
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(onChangeValue).toEqual('test2');
     expect(radio.checked).toBeTruthy();

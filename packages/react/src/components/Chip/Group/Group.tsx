@@ -2,12 +2,8 @@ import type { HTMLAttributes } from 'react';
 import { Children, isValidElement, forwardRef, createContext } from 'react';
 import cl from 'clsx/lite';
 
-import { getSize } from '../../../utilities/getSize';
-
-type OldChipSizes = 'small' | 'medium' | 'large';
-
 export type ChipGroupContext = {
-  size?: 'sm' | 'md' | 'lg' | OldChipSizes;
+  size?: 'sm' | 'md' | 'lg';
 };
 
 export const ChipGroupContext = createContext<ChipGroupContext | null>(null);
@@ -16,21 +12,18 @@ export type ChipGroupProps = {
   /**
    * Changes Chip size and gap between chips.
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
   size?: ChipGroupContext['size'];
 } & HTMLAttributes<HTMLUListElement>;
 
 export const Group = forwardRef<HTMLUListElement, ChipGroupProps>(
-  ({ children, className, ...rest }: ChipGroupProps, ref) => {
-    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
-
+  ({ size = 'md', children, className, ...rest }: ChipGroupProps, ref) => {
     return (
       <ul
         ref={ref}
         className={cl(
-          `fds-chip--group-container`,
-          `fds-chip--${size}`,
+          `ds-chip--group-container`,
+          `ds-chip--${size}`,
           className,
         )}
         {...rest}

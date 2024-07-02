@@ -5,5 +5,3 @@ packages/theme/brand/**/*
 packages/react-old/**/*
 tsc-build/
 .storybook
-
-apps/theme/**

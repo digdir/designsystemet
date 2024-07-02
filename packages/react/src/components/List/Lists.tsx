@@ -16,7 +16,7 @@ export type ListUnorderedProps = {
 } & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
 export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
-  ({ asChild, ...rest }, ref) => {
+  ({ asChild, className, ...rest }, ref) => {
     const { size, headingId } = useContext(ListContext);
 
     const Component = asChild ? Slot : 'ul';
@@ -27,7 +27,7 @@ export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
         asChild
       >
         <Component
-          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
+          className={cl(`ds-list`, `ds-list--${size}`, className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}
@@ -48,7 +48,7 @@ export type ListOrderedProps = {
 } & Omit<OlHTMLAttributes<HTMLOListElement>, 'size'>;
 
 export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
-  ({ asChild, ...rest }, ref) => {
+  ({ asChild, className, ...rest }, ref) => {
     const { size, headingId } = useContext(ListContext);
 
     const Component = asChild ? Slot : 'ol';
@@ -59,7 +59,7 @@ export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
         asChild
       >
         <Component
-          className={cl(`fds-list`, `fds-list--${size}`, rest.className)}
+          className={cl(`ds-list`, `ds-list--${size}`, className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
           ref={ref}
           {...rest}

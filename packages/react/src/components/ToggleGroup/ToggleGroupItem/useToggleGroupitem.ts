@@ -1,7 +1,7 @@
 import { useContext, useId } from 'react';
 
-import type { ToggleGroupContextProps } from '../ToggleGroup';
-import { ToggleGroupContext } from '../ToggleGroup';
+import type { ToggleGroupContextProps } from '../ToggleGroupRoot';
+import { ToggleGroupContext } from '../ToggleGroupRoot';
 import type { ButtonProps } from '../../Button';
 
 import type { ToggleGroupItemProps } from './ToggleGroupItem';
@@ -15,7 +15,7 @@ type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   >;
 };
 
-/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingTabIndex` */
+/** Handles props for `ToggleGroup.Item` in context with `ToggleGroup` and `RovingFocus` */
 export const useToggleGroupItem: UseToggleGroupItem = (
   props: ToggleGroupItemProps,
 ) => {

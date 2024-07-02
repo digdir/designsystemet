@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Checkbox } from '..';
 
@@ -39,7 +40,7 @@ describe('CheckboxGroup', () => {
 
     const checkbox2 = screen.getByDisplayValue<HTMLInputElement>('test2');
 
-    await user.click(checkbox2);
+    await act(async () => await user.click(checkbox2));
 
     expect(onChangeValue).toContain('test2');
     expect(onChangeValue).toHaveLength(1);
@@ -63,13 +64,13 @@ describe('CheckboxGroup', () => {
 
     const checkbox2 = screen.getByDisplayValue<HTMLInputElement>('test2');
 
-    await user.click(checkbox2);
+    await act(async () => await user.click(checkbox2));
 
     expect(onChangeValue).toContain('test2');
     expect(onChangeValue).toHaveLength(1);
     expect(checkbox2).toBeChecked();
 
-    await user.click(checkbox2);
+    await act(async () => await user.click(checkbox2));
 
     expect(onChangeValue).toHaveLength(0);
     expect(checkbox2).not.toBeChecked();
