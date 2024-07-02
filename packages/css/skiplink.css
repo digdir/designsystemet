@@ -1,5 +1,6 @@
 .ds-skiplink:focus {
-  display: block;
+  display: grid;
+  place-items: center;
   outline: 0;
   position: static;
   width: auto;
@@ -12,7 +13,7 @@
   text-decoration: none;
   padding: var(--ds-spacing-3) var(--ds-spacing-4) var(--ds-spacing-3) var(--ds-spacing-6);
   color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-neutral-backround-default);
+  background: var(--ds-color-accent-surface-default);
 }
 
 .ds-skiplink__content {
@@ -27,6 +28,7 @@
   border-color: var(--ds-color-accent-border-strong);
   width: fit-content;
   padding: var(--dsc-skiplink-padding);
+  margin: var(--ds-spacing-1);
   box-sizing: border-box;
   cursor: pointer;
   font-family: inherit;

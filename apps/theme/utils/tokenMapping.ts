@@ -14,7 +14,7 @@ export const mapTokens = () => {
   setToken('--ds-color-accent-text-subtle', 'var(--accent-12)');
   setToken('--ds-color-accent-text-default', 'var(--accent-13)');
   setToken('--ds-color-accent-contrast-default', 'var(--accent-14)');
-  setToken('--ds-color-accent-contrast-sublte', 'var(--accent-15)');
+  setToken('--ds-color-accent-contrast-subtle', 'var(--accent-15)');
 
   // neutral
   setToken('--ds-color-neutral-background-default', 'var(--neutral-1)');
@@ -31,7 +31,7 @@ export const mapTokens = () => {
   setToken('--ds-color-neutral-text-subtle', 'var(--neutral-12)');
   setToken('--ds-color-neutral-text-default', 'var(--neutral-13)');
   setToken('--ds-color-neutral-contrast-default', 'var(--neutral-14)');
-  setToken('--ds-color-neutral-contrast-sublte', 'var(--neutral-15)');
+  setToken('--ds-color-neutral-contrast-subtle', 'var(--neutral-15)');
 
   // brand 1
   setToken('--ds-color-brand1-background-default', 'var(--brand1-1)');
@@ -48,7 +48,7 @@ export const mapTokens = () => {
   setToken('--ds-color-brand1-text-subtle', 'var(--brand1-12)');
   setToken('--ds-color-brand1-text-default', 'var(--brand1-13)');
   setToken('--ds-color-brand1-contrast-default', 'var(--brand1-14)');
-  setToken('--ds-color-brand1-contrast-sublte', 'var(--brand1-15)');
+  setToken('--ds-color-brand1-contrast-subtle', 'var(--brand1-15)');
 
   // brand 2
   setToken('--ds-color-brand2-background-default', 'var(--brand2-1)');
@@ -65,7 +65,7 @@ export const mapTokens = () => {
   setToken('--ds-color-brand2-text-subtle', 'var(--brand2-12)');
   setToken('--ds-color-brand2-text-default', 'var(--brand2-13)');
   setToken('--ds-color-brand2-contrast-default', 'var(--brand2-14)');
-  setToken('--ds-color-brand2-contrast-sublte', 'var(--brand2-15)');
+  setToken('--ds-color-brand2-contrast-subtle', 'var(--brand2-15)');
 
   // brand 3
   setToken('--ds-color-brand3-background-default', 'var(--brand3-1)');
@@ -82,7 +82,7 @@ export const mapTokens = () => {
   setToken('--ds-color-brand3-text-subtle', 'var(--brand3-12)');
   setToken('--ds-color-brand3-text-default', 'var(--brand3-13)');
   setToken('--ds-color-brand3-contrast-default', 'var(--brand3-14)');
-  setToken('--ds-color-brand3-contrast-sublte', 'var(--brand3-15)');
+  setToken('--ds-color-brand3-contrast-subtle', 'var(--brand3-15)');
 
   setToken('--ds-color-focus-outer', 'var(--neutral-13)');
   setToken('--ds-color-focus-inner', 'var(--neutral-1)');

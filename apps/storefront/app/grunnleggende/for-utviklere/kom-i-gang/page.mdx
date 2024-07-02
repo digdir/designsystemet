@@ -1,0 +1,24 @@
+import { CodeIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+
+export const metadata = {
+  title: 'Kom i gang som utvikler',
+  description: 'All informasjonen du trenger for å komme i gang som utvikler.',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Kom i gang som utvikler',
+      date: '25. juni 2023',
+      icon: <CodeIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Besøk vår [readme på GitHub](https://github.com/digdir/designsystemet#table-of-contents) for all informasjonen du trenger for å komme i gang som utvikler. I tillegg kan det være nyttig å lese om [design tokens](/grunnleggende/designelementer/design-tokens).
+
+Ønsker du å foreslå nytt design eller forbedringer kan [denne informasjonen være nyttig](/grunnleggende/for-designere/bidra-i-figma#ny-komponent).
