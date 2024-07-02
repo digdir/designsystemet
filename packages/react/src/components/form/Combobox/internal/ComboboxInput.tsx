@@ -77,7 +77,7 @@ export const ComboboxInput = ({
   };
 
   const showClearButton =
-    multiple && !hideClearButton && Object.keys(selectedOptions).length > 0;
+    !hideClearButton && Object.keys(selectedOptions).length > 0;
 
   /* Props from floating-ui */
   const props = getReferenceProps({
