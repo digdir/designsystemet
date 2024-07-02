@@ -2,13 +2,13 @@
 import type { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import { Link } from '@digdir/designsystemet-react';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 export const GithubLink = ({
   ...rest
 }: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
-  const { asPath } = useRouter();
-  const href = `https://github.com/digdir/designsystemet/tree/main/apps/storefront/pages${asPath}.mdx`;
+  const pathName = usePathname();
+  const href = `https://github.com/digdir/designsystemet/tree/main/apps/storefront/pages${pathName}/page.mdx`;
 
   return (
     <Link

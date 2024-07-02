@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 
-import { Container, MdxContent, Image, Meta } from '../../../../components';
+import { Container, MdxContent, Image } from '../../../../components';
 import { Link } from '../../../../components/Link/Link';
 import { Figures } from '../Figures';
 
@@ -34,11 +34,6 @@ function PostLayout({
 }: BlogArticleLayoutProps) {
   return (
     <div className={classes.wrapper}>
-      <Meta
-        title={heading}
-        description={ingress}
-        image={imageSrc}
-      />
       <Container className={classes.page}>
         {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
