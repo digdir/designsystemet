@@ -1,10 +1,16 @@
+.ds-list {
+  --dsc-list-padding-left: var(--ds-spacing-6);
+
+  padding-left: var(--dsc-list-padding-left);
+}
+
 .ds-list--sm {
-  padding-left: var(--ds-spacing-4);
+  --dsc-list-padding-left: var(--ds-spacing-4);
 }
 
 .ds-list--md,
 .ds-list--lg {
-  padding-left: var(--ds-spacing-6);
+  --dsc-list-padding-left: var(--ds-spacing-6);
 }
 
 .ds-list__item {
