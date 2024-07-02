@@ -7,14 +7,14 @@
 
 .ds-chip--button {
   --dsc-chip-height: var(--ds-sizing-7);
-  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-chip-padding: 0 var(--ds-spacing-3);
   --dsc-chip-background: var(--ds-color-accent-surface-default);
   --dsc-chip-text-color: var(--ds-color-neutral-text-default);
   --dsc-chip-border: var(--ds-color-accent-border-subtle);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
 
   background: var(--dsc-chip-background);
-  padding: 0 var(--dsc-chip-padding);
+  padding: var(--dsc-chip-padding);
   min-height: var(--dsc-chip-height);
   border-radius: var(--dsc-chip-border-radius);
   border: 1px solid var(--dsc-chip-border);
@@ -151,21 +151,21 @@
 
 .ds-chip--sm {
   --dsc-chip-height: var(--ds-sizing-7);
-  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-chip-padding: 0 var(--ds-spacing-3);
   --dsc-removable-chip-xmark-size: var(--ds-sizing-5);
   --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-1);
 }
 
 .ds-chip--md {
   --dsc-chip-height: var(--ds-sizing-8);
-  --dsc-chip-padding: var(--ds-spacing-3);
+  --dsc-chip-padding: 0 var(--ds-spacing-3);
   --dsc-removable-chip-xmark-size: var(--ds-sizing-6);
   --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-2);
 }
 
 .ds-chip--lg {
   --dsc-chip-height: var(--ds-sizing-9);
-  --dsc-chip-padding: var(--ds-spacing-4);
+  --dsc-chip-padding: 0 var(--ds-spacing-4);
   --dsc-removable-chip-xmark-size: var(--ds-sizing-7);
   --dsc-removable-chip-xmark-padding_right: var(--ds-spacing-3);
 }
