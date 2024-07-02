@@ -1,12 +1,20 @@
 .ds-table {
   --dsc-table-padding: 0;
   --dsc-table-border-radius: min(1rem, var(--ds-border-radius-md));
+  --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-table-color: var(--ds-color-neutral-text-default);
+  --dsc-table-header-cell-background: var(--ds-color-neutral-background-default);
+  --dsc-table-header-sorted-background: var(--ds-color-neutral-background-subtle);
+  --dsc-table-header-sorted-hover: var(--ds-color-neutral-surface-default);
+  --dsc-table-cell-backround: var(--ds-color-neutral-background-default);
+  --dsc-table-cell-zebra-background: var(--ds-color-neutral-background-subtle);
+  --dsc-table-cell-hover-backround: var(--ds-color-neutral-surface-default);
 
   position: relative;
   border-collapse: separate;
   border-spacing: 0;
   text-align: left;
-  color: var(--ds-color-neutral-text-default);
+  color: var(--dsc-table-color);
 }
 
 .ds-table--sticky-header {
@@ -34,15 +42,15 @@
   box-sizing: border-box;
   font-family: inherit;
   border-spacing: 0;
-  border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: 2px solid var(--dsc-table-border-color);
 }
 
 .ds-table__header__cell {
   padding: var(--dsc-table-padding);
   font-family: inherit;
-  background-color: var(--ds-color-neutral-background-default);
+  background-color: var(--dsc-table-header-cell-background);
   border-spacing: 0;
-  border-bottom: 2px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: 2px solid var(--dsc-table-border-color);
 }
 
 .ds-table--sticky-header .ds-table__head .ds-table__header__cell {
@@ -66,12 +74,12 @@
   align-items: center;
   padding: var(--dsc-table-padding);
   background-color: transparent;
-  color: var(--ds-color-neutral-text-default);
+  color: var(--dsc-table-color);
   z-index: 2;
 }
 
 .ds-table__header__cell--sorted button {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--dsc-table-header-sorted-background);
 }
 
 .ds-table__header__cell--sortable button:focus-visible {
@@ -86,8 +94,8 @@
 
 .ds-table__cell {
   padding: var(--dsc-table-padding);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background-color: var(--ds-color-neutral-background-default);
+  border-bottom: 1px solid var(--dsc-table-border-color);
+  background-color: var(--dsc-table-cell-backround);
 }
 
 .ds-table--zebra .ds-table__row {
@@ -95,12 +103,12 @@
 }
 
 .ds-table--zebra tr:nth-child(even):not(:hover) .ds-table__cell {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--dsc-table-cell-zebra-background);
 }
 
 .ds-table--border {
   border-radius: var(--dsc-table-border-radius);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border: 1px solid var(--dsc-table-border-color);
 }
 
 .ds-table--border .ds-table__head .ds-table__header__cell:first-of-type {
@@ -125,10 +133,10 @@
 
 @media (hover: hover) and (pointer: fine) {
   .ds-table__row:hover .ds-table__cell {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--dsc-table-cell-hover-backround);
   }
 
   .ds-table__header__cell--sortable button:hover {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--dsc-table-header-sorted-hover);
   }
 }
