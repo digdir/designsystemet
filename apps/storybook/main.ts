@@ -1,10 +1,27 @@
 import { dirname, join, resolve } from 'path';
+import { env } from 'process';
 
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    /* If in prod, use docgen-typescript, locally use docgen */
+    reactDocgen:
+      env.NODE_ENV === 'production'
+        ? 'react-docgen-typescript'
+        : 'react-docgen',
+    /**
+     * Enable this when docgen-typescript is faster
+     * See: https://github.com/storybookjs/storybook/issues/28269
+     */
+    /* reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
+    }, */
   },
   stories: [
     '../../packages/*.mdx',
