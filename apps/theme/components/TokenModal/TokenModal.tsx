@@ -12,8 +12,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { generateScaleForColor } from '@digdir/designsystemet/color';
+import { CodeSnippet } from '@digdir/components';
 
-import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 import type { modeType } from '../../types';
 import { Settings } from '../../settings';
 

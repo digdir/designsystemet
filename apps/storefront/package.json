@@ -10,6 +10,7 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
+    "@digdir/components": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",

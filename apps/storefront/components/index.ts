@@ -1,5 +1,4 @@
 export { ClipboardBtn } from './ClipboardBtn';
-export { CodeSnippet } from './CodeSnippet';
 export { Container } from './Container';
 export { Footer } from './Footer';
 export { Grid } from './Grid';

@@ -1,4 +1,3 @@
-export { CodeSnippet } from './CodeSnippet/CodeSnippet';
 export { Color } from './Color/Color';
 export { ColorModal } from './ColorModal/ColorModal';
 export { ColorPicker } from './ColorPicker/ColorPicker';
