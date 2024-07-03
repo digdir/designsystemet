@@ -4,8 +4,7 @@ import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-
-import { Container } from '../Container/Container';
+import { Container } from '@digdir/components';
 
 import classes from './Footer.module.css';
 

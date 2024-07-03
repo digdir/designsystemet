@@ -19,11 +19,11 @@ import {
   areColorsContrasting,
   isHexColor,
 } from '@digdir/designsystemet/color';
+import { Container } from '@digdir/components';
 
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';
 import {
-  Container,
   Header,
   ColorModal,
   Previews,

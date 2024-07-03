@@ -3,8 +3,7 @@ import NextLink from 'next/link';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-
-import { Container } from '@components';
+import { Container } from '@digdir/components';
 
 import classes from './not-found.module.css';
 
