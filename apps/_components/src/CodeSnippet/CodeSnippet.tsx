@@ -9,6 +9,7 @@ import * as prettierHtml from 'prettier/plugins/html.js';
 import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import * as prettierEstree from 'prettier/plugins/estree';
+import * as prettierBabel from 'prettier/parser-babel';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Button, Tooltip } from '@digdir/designsystemet-react';
 
@@ -20,10 +21,11 @@ const plugins = [
   prettierCSS,
   prettierMarkdown,
   prettierHtml,
+  prettierBabel,
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json';
   children?: string;
 };
 
@@ -47,12 +49,13 @@ const CodeSnippet = ({
         setSnippet(formatted);
       } catch (error) {
         console.error('Failed formatting code snippet:', error);
+        setSnippet(children);
       }
     }
     void formatSnippet(children, language);
 
     return () => {
-      setSnippet('');
+      setSnippet(children);
     };
   }, [children, language]);
 
