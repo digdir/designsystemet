@@ -1,6 +1,7 @@
 'use client';
+import { Container } from '@digdir/components';
 
-import { Container, Header } from '../../components';
+import { Header } from '../../components';
 
 import classes from './page.module.css';
 

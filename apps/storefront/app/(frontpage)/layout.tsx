@@ -2,8 +2,9 @@ import type React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
 import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx';
+import { Container } from '@digdir/components';
 
-import { NavigationCard, Container } from '@components';
+import { NavigationCard } from '@components';
 
 import classes from './layout.module.css';
 

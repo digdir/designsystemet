@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import cl from 'clsx/lite';
-
-import { Container } from '../Container/Container';
+import { Container } from '@digdir/components';
 
 import classes from './Header.module.css';
 

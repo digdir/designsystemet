@@ -1,12 +1,8 @@
 import { PencilIcon } from '@navikt/aksel-icons';
 import type { Metadata } from 'next';
+import { Container } from '@digdir/components';
 
-import { Container } from '@components';
-import {
-  Banner,
-  BannerIcon,
-  BannerHeading,
-} from 'components/Banner/Banner';
+import { Banner, BannerIcon, BannerHeading } from 'components/Banner/Banner';
 
 import classes from './layout.module.css';
 

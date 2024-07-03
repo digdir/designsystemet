@@ -5,9 +5,10 @@ import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorInfo } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
+import { Container } from '@digdir/components';
 
 import { Settings } from '../../settings';
-import { Header, Container } from '../../components';
+import { Header } from '../../components';
 
 import { ContrastBox } from './ContrastBox/ContrastBox';
 import classes from './page.module.css';

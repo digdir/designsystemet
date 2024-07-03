@@ -1,7 +1,8 @@
 import type * as React from 'react';
 import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
+import { Container } from '@digdir/components';
 
-import { Container, MdxContent, Image } from '../../../../components';
+import { MdxContent, Image } from '../../../../components';
 import { Link } from '../../../../components/Link/Link';
 import { Figures } from '../Figures';
 

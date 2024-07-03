@@ -1,7 +1,13 @@
 import type * as React from 'react';
+import { Container } from '@digdir/components';
 
-import { Banner, BannerHeading, BannerIcon, BannerIngress } from '../../components/Banner/Banner';
-import { Container, ImageSection, MdxContent } from '../../components';
+import {
+  Banner,
+  BannerHeading,
+  BannerIcon,
+  BannerIngress,
+} from '../../components/Banner/Banner';
+import { ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';
 
 import classes from './NavPageLayout.module.css';

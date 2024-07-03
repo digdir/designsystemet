@@ -4,6 +4,7 @@ import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx';
 import { usePathname } from 'next/navigation';
+import { Container } from '@digdir/components';
 
 import GithubLink from '../../components/Link/Github/GithubLink';
 import {
@@ -12,7 +13,7 @@ import {
   BannerIcon,
   BannerIngress,
 } from '../../components/Banner/Banner';
-import { Container, SidebarMenu, MdxContent } from '../../components';
+import { SidebarMenu, MdxContent } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
 
