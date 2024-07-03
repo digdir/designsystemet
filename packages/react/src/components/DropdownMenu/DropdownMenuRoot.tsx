@@ -23,6 +23,18 @@ export type DropdownMenuRootProps = {
   children: React.ReactNode;
 } & PortalProps;
 
+/**
+ * DropdownMenuRoot is the root component for the DropdownMenu component.
+ * @example
+ * <DropdownMenu.Root>
+ *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
+ *  <DropdownMenu.Content>
+ *    <DropdownMenu.Group heading='Heading'>
+ *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
+ *    </DropdownMenu.Group>
+ *  </DropdownMenu.Content>
+ * </DropdownMenu.Root>
+ */
 export const DropdownMenuRoot = ({
   open,
   onClose,

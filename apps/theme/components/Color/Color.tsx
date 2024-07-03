@@ -2,6 +2,7 @@ import cl from 'clsx/lite';
 import { SunIcon } from '@navikt/aksel-icons';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { forwardRef } from 'react';
+import { omit } from '@digdir/designsystemet-react';
 
 import { useThemeStore } from '../../store';
 
@@ -51,7 +52,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
           className={cl(classes.box, featured && classes.featured, 'ds-focus')}
           aria-label={`${type} farge ${color.number}, ${color.name}`}
           type='button'
-          {...rest}
+          {...omit(['colorNumber'], rest)}
         ></button>
 
         {showColorMeta && (
