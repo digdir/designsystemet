@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@adobe/leonardo-contrast-colors": "^1.0.0",
+    "@digdir/components": "workspace:^",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@digdir/components": "workspace:^",
     "@navikt/aksel-icons": "^6.6.0",
     "@react-awesome/use-click-outside": "^0.0.3",
     "apca-w3": "^0.1.9",
