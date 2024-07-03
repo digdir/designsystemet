@@ -29,14 +29,19 @@ const icons: Record<
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
 export type AlertProps = {
-  /** Sets color & icon according to severity */
+  /**
+   * Sets color & icon according to severity
+   * @default info
+   */
   severity?: Severity;
   /** Adds a shadow to elevate the component */
   elevated?: boolean;
-  /** Sets `title` on the icon.
+  /**
+   * Sets `title` on the icon.
    *
    * Use this to inform screenreaders of severity.
-   *  Defaults to Norwegian. */
+   * Defaults to Norwegian.
+   */
   iconTitle?: string;
   /**
    * Sets the size of the alert.
@@ -46,6 +51,12 @@ export type AlertProps = {
    */
   size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Alerts are used to inform users about important information, warnings, errors, or success.
+ * @example
+ * <Alert severity='info'>Dette er en informasjonsmelding</Alert>
+ */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
     {

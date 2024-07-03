@@ -7,9 +7,14 @@ export type AccordionItemProps = {
    * Controls open-state.
    *
    * Using this removes automatic control of open-state
+   *
+   * @default undefined
    */
   open?: boolean;
-  /**  Defaults the accordion to open if not controlled */
+  /**
+   * Defaults the accordion to open if not controlled
+   * @default false
+   */
   defaultOpen?: boolean;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children: ReactNode;
@@ -24,6 +29,14 @@ export type AccordionItemContextProps = {
 export const AccordionItemContext =
   createContext<AccordionItemContextProps | null>(null);
 
+/**
+ * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
+ * @example
+ * <AccordionItem>
+ *  <AccordionHeader>Header</AccordionHeader>
+ *  <AccordionContent>Content</AccordionContent>
+ * </AccordionItem>
+ */
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
     const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);
