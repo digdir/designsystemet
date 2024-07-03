@@ -276,7 +276,7 @@ export const TokenModal = ({
                 </Tabs.Root>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='css'>{JSONTheme}</CodeSnippet>
+                <CodeSnippet language='json'>{JSONTheme}</CodeSnippet>
               </div>
             </div>
             <div className={classes.column}>
