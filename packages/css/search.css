@@ -22,10 +22,6 @@
   --dsc-search-clear-button-size: var(--ds-sizing-8);
 }
 
-.ds-search__error:empty {
-  display: none;
-}
-
 .ds-search__label {
   min-width: min-content;
   display: inline-flex;
@@ -159,12 +155,6 @@
 
 .ds-search__input.ds-search__input--simple {
   padding-left: 2.4em;
-}
-
-.ds-search__error-message > .input:not(:focus-visible) {
-  --dsc-search-input-border-color: var(--ds-color-danger-border-default);
-
-  box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -6,7 +6,7 @@ import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Button } from '../../Button';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
@@ -43,7 +43,10 @@ export type SearchProps = {
    * @default 27
    */
   htmlSize?: number;
-} & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
+} & Omit<
+  FormFieldProps,
+  'size' | 'description' | 'readOnly' | 'error' | 'errorId'
+> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
 /** Search field
@@ -73,7 +76,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       ...rest
     } = props;
 
-    const { inputProps, hasError, errorId, size = 'md' } = useSearch(props);
+    const { inputProps, size = 'md' } = useSearch(props);
 
     const inputRef = useRef<HTMLInputElement>();
     const mergedRef = useMergeRefs([ref, inputRef]);
@@ -175,15 +178,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 {searchButtonLabel}
               </Button>
             )}
-          </div>
-
-          <div
-            className={'ds-search__error-message'}
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-          >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
           </div>
         </div>
       </Paragraph>
