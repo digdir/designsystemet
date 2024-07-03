@@ -7,5 +7,5 @@ export {
 export { Stack } from './Stack/Stack';
 export { Do, Dont } from './DoAndDont/DoAndDont';
 export { LinkHeading } from './LinkHeading/LinkHeading';
-export { CodeSnippet } from './CodeSnippet/CodeSnippet';
+export { CodeSnippet } from '@digdir/components';
 export * from './Information/Information';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -7,8 +9,8 @@ import * as prettierHtml from 'prettier/plugins/html.js';
 import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import * as prettierEstree from 'prettier/plugins/estree';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Tooltip } from '@digdir/designsystemet-react';
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 
@@ -21,11 +23,11 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js';
+  language?: 'css' | 'html' | 'ts' | 'markdown';
   children?: string;
 };
 
-export const CodeSnippet = ({
+const CodeSnippet = ({
   language = 'markdown',
   children = '',
 }: CodeSnippetProps) => {
@@ -38,17 +40,19 @@ export const CodeSnippet = ({
       language: CodeSnippetProps['language'],
     ) {
       try {
-        const formatted = await format(children, { parser: language, plugins });
+        const formatted = await format(children, {
+          parser: language === 'ts' ? 'typescript' : language,
+          plugins,
+        });
         setSnippet(formatted);
       } catch (error) {
         console.error('Failed formatting code snippet:', error);
-        setSnippet(children);
       }
     }
     void formatSnippet(children, language);
 
     return () => {
-      setSnippet(children);
+      setSnippet('');
     };
   }, [children, language]);
 
@@ -60,28 +64,28 @@ export const CodeSnippet = ({
   };
 
   return (
-    <div className={classes.codeSnippet}>
+    <div
+      className={classes.codeSnippet}
+      data-ds-color-mode='dark'
+    >
       {snippet && (
         <>
-          <div className={classes.copyContainer}>
-            <Tooltip
-              content={toolTipText}
-              className={classes.tooltip}
-              portal={false}
-              placement='top'
+          <Tooltip content={toolTipText}>
+            <Button
+              onMouseEnter={() => setToolTipText('Kopier')}
+              onClick={() => onButtonClick()}
+              className={classes.copyButton}
+              title='Kopier'
+              icon
+              color='neutral'
+              size='sm'
             >
-              <button
-                onMouseEnter={() => setToolTipText('Kopier')}
-                onClick={() => onButtonClick()}
-                className={classes.icon}
-              >
-                <FilesIcon fontSize={22} />
-              </button>
-            </Tooltip>
-          </div>
+              <FilesIcon fontSize='1.5rem' />
+            </Button>
+          </Tooltip>
           <SyntaxHighlighter
-            style={oneDark}
-            language={language}
+            style={nightOwl}
+            language='jsx'
             customStyle={{
               fontSize: '15px',
               margin: 0,
@@ -95,3 +99,5 @@ export const CodeSnippet = ({
     </div>
   );
 };
+
+export { CodeSnippet };
