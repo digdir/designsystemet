@@ -7,4 +7,5 @@ export {
   RovingFocusItem,
   getNextFocusableValue,
   getPrevFocusableValue,
+  omit,
 } from './utilities';

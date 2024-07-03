@@ -21,8 +21,7 @@ import {
   CheckmarkCircleFillIcon,
 } from '@navikt/aksel-icons';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-
-import { CopyBtn } from '../CopyBtn/CopyBtn';
+import { ClipboardButton } from '@digdir/components';
 
 import classes from './ColorModal.module.css';
 
@@ -57,7 +56,7 @@ const Field = ({
       >
         {value}
       </Paragraph>
-      {copyBtn && <CopyBtn text={value} />}
+      {copyBtn && <ClipboardButton value={value} />}
     </div>
   );
 };

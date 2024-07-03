@@ -10,9 +10,9 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
+import { ClipboardButton } from '@digdir/components';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
-import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
 import * as tokens from '../../../tokens';
 import { TokenColor } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
@@ -55,7 +55,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
             return (
               <Table.Row key={token.name}>
                 <Table.Cell>
-                  <ClipboardBtn
+                  <ClipboardButton
                     title='Kopier CSS variabel'
                     text={token.name}
                     value={token.name}
@@ -145,7 +145,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
         >
           {capitalizeString(title)}
           &nbsp;
-          <ClipboardBtn
+          <ClipboardButton
             title='Kopier CSS variabel'
             text='CSS'
             value={token.name}

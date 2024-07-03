@@ -10,6 +10,15 @@ type ErrorSummaryComponent = {
   List: typeof ErrorSummaryList;
 };
 
+/**
+ * @example
+ * <ErrorSummary.Root>
+ *  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+ *  <ErrorSummary.List>
+ *    <ErrorSummary.Item>Item 1</ErrorSummary.Item>
+ *  </ErrorSummary.List>
+ * </ErrorSummary.Root>
+ */
 const ErrorSummary = {} as ErrorSummaryComponent;
 
 ErrorSummary.Root = ErrorSummaryRoot;
