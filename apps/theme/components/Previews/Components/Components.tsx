@@ -133,7 +133,6 @@ export const Components = () => {
             </Button>
           </div>
           <Search
-            error=''
             label='Label'
             placeholder='Søk etter bruker...'
             size='sm'

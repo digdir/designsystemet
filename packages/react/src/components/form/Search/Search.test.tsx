@@ -19,33 +19,6 @@ describe('Search', () => {
     expect(screen.getByLabelText('label')).toBeDefined();
   });
 
-  test('is invalid with correct error message', () => {
-    render({ error: 'error-message' });
-
-    const search = screen.getByRole('searchbox', {
-      description: 'error-message',
-    });
-    expect(search).toBeDefined();
-    expect(search).toBeInvalid();
-  });
-  test('is invalid with correct error message from errorId', () => {
-    renderRtl(
-      <>
-        <span id='my-error'>my error message</span>
-        <Search
-          errorId='my-error'
-          error
-        />
-      </>,
-    );
-
-    const search = screen.getByRole('searchbox', {
-      description: 'my error message',
-    });
-    expect(search).toBeDefined();
-    expect(search).toBeInvalid();
-  });
-
   it('Triggers onBlur event when field loses focus', async () => {
     const onBlur = vi.fn();
     const { user } = render({ onBlur });

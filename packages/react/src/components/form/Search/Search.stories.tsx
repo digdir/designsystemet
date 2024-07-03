@@ -18,7 +18,6 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     size: 'md',
-    error: '',
     placeholder: '',
     variant: 'simple',
   },

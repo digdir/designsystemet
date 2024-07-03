@@ -132,7 +132,6 @@ export const Showcase: StoryFn = () => {
             </Button>
           </div>
           <Search
-            error=''
             label='Label'
             placeholder='Søk etter bruker...'
             size='sm'
