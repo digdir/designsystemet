@@ -23,6 +23,15 @@ export type CardProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
+/**
+ * Card component to present content in a structured way.
+ * @example
+ * <Card>
+ *  <Card.Header>Header</Card.Header>
+ *  <Card.Content>Content</Card.Content>
+ *  <Card.Footer>Footer</Card.Footer>
+ * </Card>
+ */
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     { isLink = false, asChild = false, color = 'neutral', className, ...rest },

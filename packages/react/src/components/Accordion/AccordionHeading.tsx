@@ -19,6 +19,11 @@ export type AccordionHeaderProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
+/**
+ * Accordion header component, contains a button to toggle the content.
+ * @example
+ * <AccordionHeader>Header</AccordionHeader>
+ */
 export const AccordionHeading = forwardRef<
   HTMLHeadingElement,
   AccordionHeaderProps

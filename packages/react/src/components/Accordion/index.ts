@@ -14,6 +14,16 @@ type AccordionComponent = {
   Content: typeof AccordionContent;
 };
 
+/**
+ * Accordions are used to toggle the visibility of content.
+ * @example
+ * <Accordion.Root>
+ *  <Accordion.Item>
+ *   <Accordion.Heading>Heading 1</Accordion.Heading>
+ *  <Accordion.Content>Content 1</Accordion.Content>
+ * </Accordion.Item>
+ * <Accordion.Item>
+ */
 const Accordion = {} as AccordionComponent;
 
 Accordion.Root = AccordionRoot;
