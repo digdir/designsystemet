@@ -34,8 +34,6 @@ export type AlertProps = {
    * @default info
    */
   severity?: Severity;
-  /** Adds a shadow to elevate the component */
-  elevated?: boolean;
   /**
    * Sets `title` on the icon.
    *
@@ -59,15 +57,7 @@ export type AlertProps = {
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    {
-      severity = 'info',
-      elevated,
-      iconTitle,
-      children,
-      size = 'md',
-      className,
-      ...rest
-    },
+    { severity = 'info', iconTitle, children, size = 'md', className, ...rest },
     ref,
   ) => {
     const { Icon, title } = icons[severity];
@@ -79,7 +69,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           'ds-alert',
           `ds-alert--${size}`,
           `ds-alert--${severity}`,
-          elevated && `ds-alert--elevated`,
           className,
         )}
         {...rest}
