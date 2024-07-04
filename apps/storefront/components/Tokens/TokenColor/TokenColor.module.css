@@ -6,6 +6,9 @@
   margin-top: -1px;
   border-radius: var(--ds-border-radius-md);
   border: none;
+}
+
+.color:is(button) {
   cursor: pointer;
 }
 
