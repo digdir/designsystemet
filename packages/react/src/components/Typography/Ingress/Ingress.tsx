@@ -17,7 +17,12 @@ export type IngressProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Use `Ingress` to display text as ingress. */
+/**
+ * Use `Ingress` to display text as ingress.
+ *
+ * @example
+ * <Ingress size='lg'>Ingress</Ingress>
+ */
 export const Ingress = forwardRef<HTMLParagraphElement, IngressProps>(
   ({ size = 'md', className, spacing, asChild, ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';

@@ -14,6 +14,22 @@ type TabsComponent = {
   Content: typeof TabContent;
 };
 
+/**
+ * Display a group of tabs that can be toggled between.
+ * @example
+ * ```tsx
+ * <Tabs.Root onChange={(value) => console.log(value)}>
+ *   <Tabs.List>
+ *     <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
+ *     <Tabs.Tab value='2'>Tab 2</Tabs.Tab>
+ *     <Tabs.Tab value='3'>Tab 3</Tabs.Tab>
+ *   </Tabs.List>
+ *   <Tabs.Content value='1'>content 1</Tabs.Content>
+ *   <Tabs.Content value='2'>content 2</Tabs.Content>
+ *   <Tabs.Content value='3'>content 3</Tabs.Content>
+ * </Tabs.Root>
+ * ```
+ */
 const Tabs: TabsComponent = {} as TabsComponent;
 
 Tabs.Root = TabsRoot;

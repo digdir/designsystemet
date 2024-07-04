@@ -39,19 +39,31 @@ export type TooltipProps = {
    * @default 'top'
    */
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  /** Delay in milliseconds before opening.
+  /**
+   * Delay in milliseconds before opening.
    * @default 150
    */
   delay?: number;
-  /** Whether the tooltip is open or not.
+  /**
+   * Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
   open?: boolean;
-  /** Whether the tooltip is open by default or not. */
+  /**
+   * Whether the tooltip is open by default or not.
+   * @default false
+   */
   defaultOpen?: boolean;
 } & HTMLAttributes<HTMLDivElement> &
   PortalProps;
 
+/**
+ * Tooltip component that displays a small piece of information when hovering or focusing on an element.
+ * @example
+ * <Tooltip content='This is a tooltip'>
+ *  <button>Hover me</button>
+ * </Tooltip>
+ */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
     {

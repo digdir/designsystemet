@@ -38,7 +38,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup.Root defaultValue={'option-1'}>
       <ToggleGroup.Item
-        value={'option-1'}
+        value='option-1'
         icon={true}
       >
         <BrailleIcon
@@ -47,7 +47,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         />
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        value={'option-2'}
+        value='option-2'
         icon={true}
       >
         <NewspaperFillIcon
@@ -56,7 +56,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
         />
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        value={'option-3'}
+        value='option-3'
         icon={true}
       >
         <BackpackFillIcon

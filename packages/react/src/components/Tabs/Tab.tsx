@@ -8,10 +8,15 @@ import { Paragraph } from '../Typography';
 import { useTabItem } from './useTab';
 
 export type TabProps = {
-  /** Value that will be set in the `Tabs` components state when the tab is activated*/
+  /** Value that will be set in the `Tabs` components state when the tab is activated */
   value: string;
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
 
+/**
+ * A single item in a Tabs component.
+ * @example
+ * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
+ */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const { size, ...useTabRest } = useTabItem(props);
