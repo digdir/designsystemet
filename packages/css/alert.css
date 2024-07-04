@@ -67,7 +67,3 @@
   --dsc-alert-padding: var(--ds-spacing-7);
   --dsc-alert-icon-size: var(--ds-sizing-8);
 }
-
-.ds-alert--elevated {
-  box-shadow: var(--ds-shadow-sm);
-}
