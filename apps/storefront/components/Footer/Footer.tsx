@@ -91,6 +91,7 @@ const LinkList = (links: LinkListItemProps[]) => {
           <Link
             href={item.url}
             color='neutral'
+            className={classes.link}
           >
             {item.prefix}
             {item.text}
@@ -166,7 +167,7 @@ const Footer = () => {
       </div>
       <div className={cl(classes.bottom, 'ds-paragraph--sm')}>
         <Container>
-          <Paragraph>© {getCurrentYear()} Designsystemet</Paragraph>
+          <Paragraph size='sm'>© {getCurrentYear()} Designsystemet</Paragraph>
         </Container>
       </div>
     </footer>

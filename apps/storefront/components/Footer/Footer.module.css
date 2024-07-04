@@ -42,6 +42,14 @@
   margin-bottom: 0;
 }
 
+.link {
+  gap: var(--ds-spacing-2);
+}
+
+.link:visited {
+  --dsc-link-color: var(--ds-color-neutral-text-default);
+}
+
 .top {
   padding: var(--ds-spacing-18) 0;
 }
