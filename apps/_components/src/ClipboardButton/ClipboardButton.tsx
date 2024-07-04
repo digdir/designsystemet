@@ -5,7 +5,7 @@ import { Tooltip, Button } from '@digdir/designsystemet-react';
 
 import classes from './ClipboardButton.module.css';
 
-interface ClipboardBtnProps {
+interface ClipboardButtonProps {
   title?: string;
   value: string;
   text?: string;
@@ -15,7 +15,7 @@ export const ClipboardButton = ({
   title = 'Kopier',
   value,
   text,
-}: ClipboardBtnProps) => {
+}: ClipboardButtonProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
   const onBtnClick = (text: string) => {
