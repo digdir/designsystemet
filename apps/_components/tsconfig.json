@@ -7,7 +7,8 @@
     "composite": false,
     "allowSyntheticDefaultImports": true,
     "noEmit": false,
-    "incremental": true
+    "incremental": true,
+    "moduleResolution": "Bundler"
   },
   "include": ["./src", "./stories", "declarations.d.ts"],
   "rootDir": "./src"
