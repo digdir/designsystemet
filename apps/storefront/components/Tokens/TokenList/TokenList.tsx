@@ -13,7 +13,8 @@ import {
 import { ClipboardButton } from '@digdir/components';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
-import * as tokens from '../../../tokens';
+import * as tokensLight from '../../../tokens/light';
+import * as tokensDark from '../../../tokens/dark';
 import { TokenColor } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
@@ -185,6 +186,8 @@ const TokenList = ({
   const [mode, setMode] = useState<'light' | 'dark'>('light');
   const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
 
+  const tokens = mode === 'light' ? tokensLight : tokensDark;
+
   useEffect(() => {
     setCardColumns(type === 'color' ? 3 : 2);
   }, [type]);
@@ -207,10 +210,7 @@ const TokenList = ({
   );
 
   return (
-    <div
-      className={classes.tokens}
-      data-ds-color-mode={mode}
-    >
+    <div className={classes.tokens}>
       <div className={classes.package}>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
           <img
@@ -247,7 +247,7 @@ const TokenList = ({
           {showModeSwitcher && (
             <DropdownMenu.Root>
               <DropdownMenu.Trigger variant='secondary'>
-                Mode: {mode}
+                Mode: {capitalizeString(mode)}
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
                 <DropdownMenu.Item onClick={() => setMode('light')}>
