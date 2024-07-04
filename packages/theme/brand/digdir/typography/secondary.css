@@ -89,28 +89,28 @@
   }
 
   .ds-paragraph-long--xs {
-    font-size: var(--ds-font-size-2);
+    font-size: var(--ds-font-size-3);
     line-height: var(--ds-line-height-lg);
     font-weight: var(--ds-font-weight-regular);
     letter-spacing: var(--ds-letter-spacing-6);
   }
 
   .ds-paragraph-long--sm {
-    font-size: var(--ds-font-size-3);
+    font-size: var(--ds-font-size-4);
     line-height: var(--ds-line-height-lg);
     font-weight: var(--ds-font-weight-regular);
     letter-spacing: var(--ds-letter-spacing-7);
   }
 
   .ds-paragraph-long--md {
-    font-size: var(--ds-font-size-4);
+    font-size: var(--ds-font-size-5);
     line-height: var(--ds-line-height-lg);
     font-weight: var(--ds-font-weight-regular);
     letter-spacing: var(--ds-letter-spacing-8);
   }
 
   .ds-paragraph-long--lg {
-    font-size: var(--ds-font-size-5);
+    font-size: var(--ds-font-size-6);
     line-height: var(--ds-line-height-lg);
     font-weight: var(--ds-font-weight-regular);
     letter-spacing: var(--ds-letter-spacing-8);

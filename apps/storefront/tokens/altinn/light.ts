@@ -2790,7 +2790,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1.125rem/1.7 'Helvetica Neue'",
+    value: "400 1.3125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2799,7 +2799,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -2814,7 +2814,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 1rem/1.7 'Helvetica Neue'",
+    value: "400 1.125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2823,7 +2823,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -2838,7 +2838,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.875rem/1.7 'Helvetica Neue'",
+    value: "400 1rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2847,7 +2847,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -2862,7 +2862,7 @@ export const  typography = [
   },
   {
     type: "typography",
-    value: "400 0.8125rem/1.7 'Helvetica Neue'",
+    value: "400 0.875rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2871,7 +2871,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.2}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
