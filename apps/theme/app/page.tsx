@@ -19,17 +19,11 @@ import {
   areColorsContrasting,
   isHexColor,
 } from '@digdir/designsystemet/color';
-import { Container } from '@digdir/components';
+import { Container, ColorModal } from '@digdir/components';
 
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';
-import {
-  Header,
-  ColorModal,
-  Previews,
-  Scales,
-  ThemeToolbar,
-} from '../components';
+import { Header, Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
 
 import classes from './page.module.css';
@@ -262,9 +256,10 @@ export default function Home() {
     <div>
       <Header />
       <ColorModal
-        color={selectedColor}
+        weight={selectedColor.color.number}
+        hex={selectedColor.color.hex}
+        namespace={selectedColor.type}
         colorModalRef={colorModalRef}
-        colorTheme={accentTheme.theme.light}
       />
 
       <main className={classes.main}>

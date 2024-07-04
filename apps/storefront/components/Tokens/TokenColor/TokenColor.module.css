@@ -1,10 +1,12 @@
 .color {
   height: 66px;
   width: 66px;
-  border-radius: 50%;
   padding: 2px;
   margin-left: -1px;
   margin-top: -1px;
+  border-radius: var(--ds-border-radius-md);
+  border: none;
+  cursor: pointer;
 }
 
 .test {
@@ -17,10 +19,9 @@
   background-position:
     0 0,
     10px 10px;
+  border-radius: var(--ds-border-radius-md);
   background-size: 20px 20px;
-  border-radius: 50%;
   height: 64px;
   width: 64px;
-  overflow: hidden;
   box-shadow: 0 2px 4px #0000001a;
 }
