@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
