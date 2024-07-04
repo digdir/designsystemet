@@ -20,7 +20,6 @@ export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
   severity: 'info',
-  elevated: false,
   size: 'md',
   children: 'En beskjed det er viktig at brukeren ser',
 };
@@ -143,16 +142,6 @@ export const MedLenke: Story = (args) => (
       Fristen for å søke opptak til utdanning er 15. april.{' '}
       <Link href='https://designsystemet.no/'>Søk nå</Link>
     </Paragraph>
-  </Alert>
-);
-
-export const MedShadow: Story = (args) => (
-  <Alert
-    {...args}
-    elevated
-    severity='success'
-  >
-    <Paragraph>Skjemaet er lagret automatisk.</Paragraph>
   </Alert>
 );
 
