@@ -1,4 +1,4 @@
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Paragraph } from '@digdir/designsystemet-react';
 
 import classes from './Image.module.css';

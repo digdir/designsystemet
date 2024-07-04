@@ -9,7 +9,7 @@ import {
   Tag,
 } from '@digdir/designsystemet-react';
 import Link from 'next/link';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import classes from './BlogCard.module.css';
 

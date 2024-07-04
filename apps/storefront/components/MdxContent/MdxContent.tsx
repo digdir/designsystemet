@@ -1,6 +1,6 @@
 'use client';
 import type * as React from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 
 import classes from './MdxContent.module.css';
 

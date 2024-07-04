@@ -2,7 +2,7 @@
 import type * as React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
-import cn from 'clsx';
+import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
 import { Container } from '@digdir/components';
 
