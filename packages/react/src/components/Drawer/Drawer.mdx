@@ -1,0 +1,32 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as DrawerStories from './Drawer.stories';
+
+<Meta of={DrawerStories} />
+
+# Drawer
+
+Med `Drawer` kan du vise tilleggsinformasjon eller kontroller uten å forlate den nåværende siden. Den er ideell for å presentere sekundært innhold som ikke trenger å være synlig hele tiden.
+
+**Vær oppmerksom på:**
+
+- Drawer bør ikke inneholde kritisk informasjon som brukeren må se umiddelbart.
+- Innholdet i Drawer bør være fokusert og relevant for den aktuelle konteksten.
+
+<br />
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { Drawer } from '@digdir/designsystemet-react';
+
+<Drawer
+  trigger={<Button>Åpne Drawer</Button>}
+  title='Drawer Tittel'
+>
+  <p>Drawer innhold</p>
+</Drawer>;
+```
