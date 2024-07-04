@@ -1,6 +1,7 @@
-import cl from 'clsx';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
+
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import styles from './DoAndDont.module.css';
 

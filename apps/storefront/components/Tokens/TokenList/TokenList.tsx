@@ -1,7 +1,7 @@
 'use client';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type { TransformedToken as Token } from 'style-dictionary';
 import {
   DropdownMenu,

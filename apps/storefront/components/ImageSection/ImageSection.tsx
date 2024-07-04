@@ -2,7 +2,7 @@
 import { useEffect, useState, createElement } from 'react';
 import type { ReactNode } from 'react';
 import Image from 'next/image';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Container } from '@digdir/components';
 
 import classes from './ImageSection.module.css';

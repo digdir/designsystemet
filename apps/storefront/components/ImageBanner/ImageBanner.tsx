@@ -2,7 +2,7 @@
 import type React from 'react';
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { useEffect, useState, createElement } from 'react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Link, Button } from '@digdir/designsystemet-react';
 import NextLink from 'next/link';
 import { Container } from '@digdir/components';

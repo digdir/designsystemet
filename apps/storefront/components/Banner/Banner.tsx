@@ -1,7 +1,7 @@
 'use client';
 import { Heading, Ingress } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { createContext, useContext, type HTMLAttributes } from 'react';
 
 import classes from './Banner.module.css';

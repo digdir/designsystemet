@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { Button } from '@digdir/designsystemet-react';
 
 import { SiteConfig } from '../../siteConfig';
@@ -83,7 +83,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                                   className={cl(
                                     classes.link,
                                     isItemActive(item2.url, routerPath) &&
-                                    classes.linkActive,
+                                      classes.linkActive,
                                     'ds-paragraph--sm',
                                   )}
                                 >
@@ -103,7 +103,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                           classes.link,
                           classes.linkCompact,
                           isItemActive(item.url, routerPath) &&
-                          classes.linkActive,
+                            classes.linkActive,
                           'ds-paragraph--sm',
                         )}
                       >

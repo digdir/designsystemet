@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type * as React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
 

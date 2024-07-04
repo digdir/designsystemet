@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import { usePathname } from 'next/navigation';
 
 import { GithubLogo } from './logos/github-logo';
