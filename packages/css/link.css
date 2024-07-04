@@ -35,12 +35,14 @@
 }
 
 .ds-link:visited {
-  color: var(--dsc-link-color-visited);
+  --dsc-link-color: var(--dsc-link-color-visited);
+
   text-decoration: none;
 }
 
 .ds-link:hover {
-  color: var(--dsc-link-color-hover);
+  --dsc-link-color: var(--dsc-link-color-hover);
+
   text-decoration-thickness: max(2px, 0.125rem, 0.12em);
 }
 
@@ -51,8 +53,10 @@
 }
 
 .ds-link:active {
-  color: var(--dsc-link-color-active);
-  background: var(--dsc-link-color-active-background);
+  --dsc-link-color: var(--dsc-link-color-active);
+  --dsc-link-color-active-background: var(--dsc-link-color-active-background);
+
+  background-color: var(--dsc-link-color-active-background);
   border-radius: min(0.25rem, var(--ds-border-radius-md));
   outline: none;
 }
