@@ -50,7 +50,7 @@ const ContrastBox = ({
   colorNumber,
 }: {
   title: string;
-  selectedColor: CssColor;
+  selectedColor: string;
   contrastColor: CssColor;
   colorNumber: ColorNumber;
 }) => {
@@ -69,7 +69,11 @@ const ContrastBox = ({
             text='AA'
             subText='(3:1)'
             error={
-              !areColorsContrasting(selectedColor, contrastColor, 'decorative')
+              !areColorsContrasting(
+                selectedColor as CssColor,
+                contrastColor,
+                'decorative',
+              )
             }
           />
         </div>
@@ -78,14 +82,26 @@ const ContrastBox = ({
         <ContrastItem
           text='AA'
           subText='(4.5:1)'
-          error={!areColorsContrasting(selectedColor, contrastColor, 'aa')}
+          error={
+            !areColorsContrasting(
+              selectedColor as CssColor,
+              contrastColor,
+              'aa',
+            )
+          }
         />
       </div>
       <div className={classes.contrastContainer}>
         <ContrastItem
           text='AAA'
           subText='(7:1)'
-          error={!areColorsContrasting(selectedColor, contrastColor, 'aaa')}
+          error={
+            !areColorsContrasting(
+              selectedColor as CssColor,
+              contrastColor,
+              'aaa',
+            )
+          }
         />
       </div>
 
@@ -97,8 +113,10 @@ const ContrastBox = ({
               text='Lc75'
               subText='(18px / 400)'
               error={
-                (getApcaContrastLc(selectedColor, contrastColor) as number) <=
-                75
+                (getApcaContrastLc(
+                  selectedColor as CssColor,
+                  contrastColor,
+                ) as number) <= 75
               }
             />
           </div>
@@ -142,7 +160,7 @@ export const ContrastBoxes = ({
       {contrastColors.map((colorNumber) => (
         <ContrastBox
           key={colorNumber}
-          colorNumber={weight}
+          colorNumber={weight as ColorNumber}
           title={getColorNameFromNumber(colorNumber)}
           selectedColor={hex}
           contrastColor={colorTheme[colorNumber - 1].hex}
