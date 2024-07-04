@@ -47,7 +47,7 @@
 }
 
 .link:visited {
-  --dsc-link-color: var(--ds-color-neutral-text-default);
+  --dsc-link-color-visited: var(--ds-color-neutral-text-default);
 }
 
 .top {
