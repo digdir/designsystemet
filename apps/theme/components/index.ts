@@ -1,5 +1,4 @@
 export { Color } from './Color/Color';
-export { ColorModal } from './ColorModal/ColorModal';
 export { ColorPicker } from './ColorPicker/ColorPicker';
 export { Group } from './Group/Group';
 export { Header } from './Header/Header';

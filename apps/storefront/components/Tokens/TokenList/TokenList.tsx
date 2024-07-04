@@ -132,7 +132,12 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       {...rest}
     >
       <div className={classes.preview}>
-        {type === 'color' && <TokenColor value={val} />}
+        {type === 'color' && (
+          <TokenColor
+            value={val}
+            token={token}
+          />
+        )}
         {type === 'typography' && <TokenFontSize value={val} />}
         {type === 'boxShadow' && <TokenShadow value={val} />}
       </div>
