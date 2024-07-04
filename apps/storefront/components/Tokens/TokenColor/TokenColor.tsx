@@ -49,7 +49,10 @@ const TokenColor = ({ value, token }: TokenColorProps) => {
           style={{ backgroundColor: value }}
           className={cl(classes.color, 'ds-focus')}
           onClick={() => weight && colorModalRef.current?.showModal()}
-          name={`Se mer om ${token.path[1]} ${typeof weight === 'number' && getColorNameFromNumber(weight)}`}
+          aria-label={
+            weight &&
+            `Se mer om ${token.path[1]} ${typeof weight === 'number' && getColorNameFromNumber(weight)}`
+          }
         ></Element>
       </div>
     </>
