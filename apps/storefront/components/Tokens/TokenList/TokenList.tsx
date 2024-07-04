@@ -15,12 +15,13 @@ import { ClipboardButton } from '@digdir/components';
 import { capitalizeString } from '../../../utils/StringHelpers';
 import * as tokensLight from '../../../tokens/light';
 import * as tokensDark from '../../../tokens/dark';
-import { TokenColor } from '../TokenColor/TokenColor';
+import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
 
 import classes from './TokenList.module.css';
+import { getColorNameFromNumber } from '@digdir/designsystemet/color';
 
 type TokenListProps = {
   type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
@@ -106,7 +107,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
                 key={token.name}
                 hideValue={hideValue}
                 type={type}
-              ></TokenCard>
+              />
             ))}
           </div>
         </div>
@@ -126,6 +127,8 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();
+
+  const weight = getColorWeight(token.original.value as string);
 
   return (
     <div
@@ -149,7 +152,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
           size='2xs'
           className={classes.name}
         >
-          {capitalizeString(title)}
+          {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
           &nbsp;
           <ClipboardButton
             title='Kopier CSS variabel'

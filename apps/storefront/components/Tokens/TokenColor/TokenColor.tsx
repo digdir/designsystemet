@@ -13,7 +13,7 @@ interface TokenColorProps {
 }
 
 /* The original.value is something like "{global.yellow.1}", and we need to get the weight between the last . and } */
-function getColorWeight(value: string): ColorNumber | undefined {
+export function getColorWeight(value: string): ColorNumber | undefined {
   const firstSplit = value.split('.').pop()?.replace('}', '');
 
   if (firstSplit?.includes('contrast-')) {
