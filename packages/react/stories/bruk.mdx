@@ -19,19 +19,21 @@ Under vil du finne:
 
 ### Props
 
-Alle komponenter har props og typescript typer iht. underliggende element. F.eks `Button` godtar alle props som en vanlig `button` element gjør.
+Alle komponenter har props og typescript typer iht. underliggende element. F.eks `Button` godtar alle props som et vanlig `button` element gjør.
 
-- Innsendte props så vil disse bli lagt bakerst på komponenten.
-- Innsendte handler funksjoner (f.eks `onClick`), vil bli kalt sist dersom de er i bruk internt.
-- Innsendte klassenavn vil også bli lagt bakerst i lista av klasser.
+- Innsendte props vil bli lagt bakerst på komponenten.
+- Innsendte handler funksjoner (alt som begynner med `on`), vil bli kalt sist dersom de er i bruk internt.
+- Innsendte klassenavn vil bli lagt bakerst i lista av klasser.
 
 #### Eksempel
 
 <CodeSnippet language='ts'>
   {`
-  <Button className='my-class' onClick={() => console.log('my click')} data-attr="data">Click me</Button>
+  <Button data-attr="data" className='my-class' onClick={() => console.log('my click')}>Click me</Button>
 `}
 </CodeSnippet>
+
+<br />
 
 Vil bli til:
 
@@ -90,6 +92,12 @@ import { Accordion } from '@digdir/designsystemet-react';
 `}
 </CodeSnippet>
 
+### Komponenter med `.Root`
+
+Noen komponenter har en `.Root` komponent, som må wrappes rundt barn. Disse må brukes for at komponenten skal funke.
+Accordion har f.eks en `Accordion.Root` komponent som må wrappes rundt `Accordion.Item` komponentene.
+Dette er for å få riktig funksjonalitet gjennom komponenten.
+
 <br />
 <br />
 <br />
@@ -100,12 +108,13 @@ For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-
 
 ### Layers
 
-Vi bruker [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for å få lavest mulig spesifisitet i våre css klasser.
+Vi bruker [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for å få lavest mulig spesifisitet på vår css.
 Dette betyr at du lett kan overstye med din egen styling.
 
 Alle våre layers ligger under layer gruppen `ds`.
 
-Har du en f.eks, css reset, så må du sortere denne først. Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
+Har du f.eks en css reset, så vil denne overstyre deler av det vi har gjort. Vi anbefaler å legge denne i en layer og sortere denne først.
+Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
 
 <CodeSnippet language='css'>{`@layer my-reset, ds;`}</CodeSnippet>
 
@@ -116,18 +125,21 @@ Vi tilbyr flere data attributter som kan brukes for å endre tema på komponente
 <br />
 #### `data-ds-color-mode`
 
-Dette attributtet kan brukes til å endre fargetema på komponentene. Mulige verdier er `light`, `dark` og `auto`.
-Dersom `auto` er valgt som verdi vil farge temaet endres basert på brukerens preferanser ved hjelp av [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+Brukes til å endre fargemodus på komponentene. Mulige verdier er `light`, `dark` og `auto`.
+Dersom `auto` er valgt, vil fargemodusen endres basert på brukerens preferanser ved hjelp av
+[prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 <br />
 #### `data-ds-typography`
 
-Dette attributtet brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
-Et vanlig bruksområde for denne attributten er når du f,eks, ønsker en monospace font på tabeller.
+Brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
+Et vanlig bruksområde for denne attributten er når du ønsker en monospace font på tabeller.
 
-Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Token Studio](https://tokens.studio/) (med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
+Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Tokens Studio](https://tokens.studio/)
+(med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
 
-Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen. Dette kan løses ved å false.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.
+Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
+Dette kan løses ved å f.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.
 
 <CodeSnippet language='html'>
   {`

@@ -11,6 +11,13 @@ export type TabContentProps = {
   value: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
+/**
+ * A single content item in a Tabs component.
+ * @example
+ * ```tsx
+ * <Tabs.Content value='1'>content 1</Tabs.Content>
+ * ```
+ */
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, value, className, ...rest }, ref) => {
     const { value: tabsValue, size } = useContext(TabsContext);

@@ -25,7 +25,7 @@ Du kan bygge opp komponenter og seksjoner av siden din ved å bruke disse som by
 Alle varianter av skeleton har `height` og `width` props, som kan brukes til å manuelt sette størrelser. Du kan oppgi størrelsene i `px`, `%`, eller andre enheter som kan settes direkte på style.
 For `Skeleton.Text` holder det ofte å sette kun `width`, da høyden automatisk skaleres etter tekst-størrelsen til `parent`-elementet.
 
-I de fleste tilfeller er manuell setting av høyde og bredde nok, men du kan også sette andre elementer til å rendres som skeleton, gjennom å bruke propen `as`. Dette er hovedsaklig tenkt brukt for typografiske komponenter.
+I de fleste tilfeller er manuell setting av høyde og bredde nok, men du kan også sette andre elementer til å rendres som skeleton, gjennom å bruke propen `asChild`. Dette er hovedsaklig tenkt brukt for typografi komponenter.
 
 <Canvas of={SkeletonStories.As} />
 
@@ -35,7 +35,7 @@ Skeleton vil også tilpasse seg etter `children` som du sender inn til komponent
 
 ## Text
 
-`Skeleton.Text` skalerer automatisk etter den lokale fontstørrelsen, enten den kommer fra `parent`, `children` , eller fordi typografi-komponenter er satt til Skeletons gjennom `as`-propen.
+`Skeleton.Text` skalerer automatisk etter den lokale fontstørrelsen, enten den kommer fra `parent`, `children` , eller fordi typografi-komponenter er satt til Skeletons gjennom `asChild`-propen.
 For best mulig resultat anbefaler vi at du bruker flere `Skeleton.Text` komponenter for å representere en blokk med tekst, én for hver linje.
 
 <Canvas of={SkeletonStories.TextExample} />

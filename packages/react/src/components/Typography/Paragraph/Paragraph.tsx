@@ -7,7 +7,7 @@ export type ParagraphProps = {
   /**
    * Changes text sizing
    *
-   * @default `md`
+   * @default 'md'
    *
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
@@ -15,7 +15,7 @@ export type ParagraphProps = {
   spacing?: boolean;
   /**
    *  Adjusts styling for paragraph length
-   *  @default `default`
+   *  @default 'default'
    */
   variant?: 'long' | 'default' | 'short';
   /**
@@ -31,7 +31,12 @@ const lineHeightMap = {
   long: 'ds-line-height--lg',
 };
 
-/** Use `Paragraph` to display text with paragraph text styles. */
+/**
+ * Use `Paragraph` to display text with paragraph text styles.
+ *
+ * @example
+ * <Paragraph size='lg'>Paragraph</Paragraph>
+ */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   ({ className, spacing, size = 'md', asChild, variant, ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
@@ -41,7 +46,6 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
         ref={ref}
         className={cl(
           'ds-paragraph',
-
           spacing && 'ds-paragraph--spacing',
           `ds-paragraph--${size}`,
           lineHeightMap[variant ?? 'default'],
