@@ -12,6 +12,12 @@
   cursor: pointer;
 }
 
+.color:is(button):hover:not(:focus-visible) {
+  border-color: #fff;
+  outline: 3px solid #535353;
+  outline-offset: 2px;
+}
+
 .test {
   --color: #cfcfcf;
 
