@@ -1,4 +1,4 @@
-import { Accordion, Paragraph, Modal } from '@digdir/designsystemet-react';
+import { Paragraph, Modal } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
   getColorNameFromNumber,
@@ -115,7 +115,7 @@ export const ColorModal = ({
               style={{ backgroundColor: hex }}
             ></div>
           </div>
-          <Accordion.Root
+          {/* <Accordion.Root
             color='neutral'
             className={classes.accordion}
           >
@@ -127,13 +127,13 @@ export const ColorModal = ({
                 Vis kontrastgrenser mot relevante farger
               </Accordion.Heading>
               <Accordion.Content className={classes.accordionContent}>
-                {/* <Boxes
+                <Boxes
                   selectedColor={hex}
                   colorTheme={namespace}
-                /> */}
+                />
               </Accordion.Content>
             </Accordion.Item>
-          </Accordion.Root>
+          </Accordion.Root> */}
         </Modal.Content>
       </Modal.Dialog>
     </Modal.Root>

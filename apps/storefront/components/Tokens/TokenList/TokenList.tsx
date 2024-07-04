@@ -11,6 +11,7 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 import { ClipboardButton } from '@digdir/components';
+import { getColorNameFromNumber } from '@digdir/designsystemet/color';
 
 import { capitalizeString } from '../../../utils/StringHelpers';
 import * as tokensLight from '../../../tokens/light';
@@ -21,7 +22,6 @@ import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
 
 import classes from './TokenList.module.css';
-import { getColorNameFromNumber } from '@digdir/designsystemet/color';
 
 type TokenListProps = {
   type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';

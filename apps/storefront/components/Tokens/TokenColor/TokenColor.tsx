@@ -51,7 +51,7 @@ const TokenColor = ({ value, token }: TokenColorProps) => {
           onClick={() => weight && colorModalRef.current?.showModal()}
           aria-label={
             weight &&
-            `Se mer om ${token.path[1]} ${typeof weight === 'number' && getColorNameFromNumber(weight)}`
+            `Se mer om ${token.path[1]} ${getColorNameFromNumber(weight)}`
           }
         ></Element>
       </div>
