@@ -42,7 +42,7 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.23.3",
     "@chromatic-com/storybook": "^1.5.0",
-    "@next/eslint-plugin-next": "^14.0.4",
+    "@next/eslint-plugin-next": "^14.2.4",
     "@prettier/sync": "^0.5.2",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
