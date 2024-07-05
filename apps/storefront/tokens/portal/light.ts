@@ -22,7 +22,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f8f2f1",
+    value: "#f5f2f8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -39,7 +39,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#eddedd",
+    value: "#e8e0ee",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -56,7 +56,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#e3cdcb",
+    value: "#d9cce3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -73,7 +73,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d8bab7",
+    value: "#ccbad9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -90,7 +90,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d5b4b2",
+    value: "#c7b4d6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -107,7 +107,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#af706b",
+    value: "#9773b3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -124,7 +124,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#893028",
+    value: "#683591",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -141,7 +141,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#8c322a",
+    value: "#4d107d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -158,7 +158,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#6c2620",
+    value: "#612c8c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -175,7 +175,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#4e1b17",
+    value: "#734499",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -192,7 +192,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#9b4b45",
+    value: "#7c4fa0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -209,7 +209,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#561e19",
+    value: "#420e6a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -226,7 +226,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -243,7 +243,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f4ebeb",
+    value: "#d5c6e0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -396,7 +396,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#1e2b3c",
+    value: "#1E2B3C",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -464,7 +464,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#243142",
+    value: "#202c3d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -481,7 +481,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -515,7 +515,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#fefdff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -532,7 +532,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f8f2f1",
+    value: "#f7f1fc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -549,7 +549,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#eddedd",
+    value: "#ecddf8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -566,7 +566,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#e3cdcb",
+    value: "#e0c8f3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -583,7 +583,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d8bab7",
+    value: "#d5b5ef",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -600,7 +600,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d5b4b2",
+    value: "#d1adee",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -617,7 +617,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#af706b",
+    value: "#a661de",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -634,7 +634,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#893028",
+    value: "#66388b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -651,7 +651,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#8c322a",
+    value: "#a259dc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -668,7 +668,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#6c2620",
+    value: "#884bb9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -685,7 +685,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#4e1b17",
+    value: "#703d97",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -702,7 +702,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#9b4b45",
+    value: "#8248b1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -719,7 +719,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#561e19",
+    value: "#3a204f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -736,7 +736,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#000000",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -753,7 +753,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f4ebeb",
+    value: "#0a060d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -770,7 +770,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#fffeff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -787,7 +787,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f8f2f1",
+    value: "#fbf0fc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -804,7 +804,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#eddedd",
+    value: "#f6d9f8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -821,7 +821,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#e3cdcb",
+    value: "#f1c2f3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -838,7 +838,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d8bab7",
+    value: "#ecabef",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -855,7 +855,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d5b4b2",
+    value: "#eaa3ed",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -872,7 +872,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#af706b",
+    value: "#b75fbb",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -889,7 +889,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#893028",
+    value: "#6f3972",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -906,7 +906,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#8c322a",
+    value: "#df73e4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -923,7 +923,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#6c2620",
+    value: "#c364c7",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -940,7 +940,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#4e1b17",
+    value: "#a656aa",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -957,7 +957,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#9b4b45",
+    value: "#8e4991",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -974,7 +974,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#561e19",
+    value: "#3f2141",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -991,7 +991,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#000000",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1008,7 +1008,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f4ebeb",
+    value: "#190d1a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1025,7 +1025,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#fffefe",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1042,7 +1042,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f8f2f1",
+    value: "#fdeff8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1059,7 +1059,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#eddedd",
+    value: "#f9daef",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1076,7 +1076,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#e3cdcb",
+    value: "#f6c3e5",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1093,7 +1093,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d8bab7",
+    value: "#f2abdb",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1110,7 +1110,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#d5b4b2",
+    value: "#f1a3d7",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1127,7 +1127,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#af706b",
+    value: "#c55aa3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1144,7 +1144,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#893028",
+    value: "#773762",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1161,7 +1161,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#8c322a",
+    value: "#e86abf",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1178,7 +1178,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#6c2620",
+    value: "#c95ca6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1195,7 +1195,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#4e1b17",
+    value: "#ab4e8d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1212,7 +1212,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#9b4b45",
+    value: "#98467d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1229,7 +1229,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#561e19",
+    value: "#451f38",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1246,7 +1246,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefefe",
+    value: "#000000",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1263,7 +1263,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#f4ebeb",
+    value: "#11080e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2317,7 +2317,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#561e19",
+    value: "#420e6a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
