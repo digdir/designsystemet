@@ -141,7 +141,7 @@ Vis feilmeldingsteksten nært feltet det gjelder. Vi anbefaler å ha med et ikon
 #### Fargevalg
 
 Vi bruker rød som varselfarge for feil, det vi si at feltet og selve feilmeldingen blir røde. Dette er et godt etablert mønster, som hjelper med å skille feltet fra andre felt.  
-Feltet må ha 3:1 kontrast til bakgrunnsfargen. Hvis vi også bruker rød tekst til feilmeldingen, må den minst ha kontrasten 4.5:1.[Les mer om kontraster hos Tilsynet for universell utforming av IKT.](https://www.uutilsynet.no/veiledning/kontrast/48)
+Feltet må ha 3:1 kontrast til bakgrunnsfargen. Hvis vi også bruker rød tekst til feilmeldingen, må den minst ha kontrasten 4.5:1. [Les mer om kontraster hos Tilsynet for universell utforming av IKT.](https://www.uutilsynet.no/veiledning/kontrast/48)
 
 #### Slik plasser vi en feilmelding
 
@@ -245,8 +245,22 @@ For at alle brukere skal oppfatte feilmeldinger, er det viktig med et tydelig fo
 
 Vi kan bruke disse aria-attributtene og rollene:
 
-- Vi setter `aria-invalid=true` på felt med feil, for å si fra om at det er en feil der.
-- Vi bruker `aria-errormessage=feilmeldingID` på felt med feil for å fortelle hvilket html-element som gir forklarende tekst til feilen. FeilmeldingID er den ID-en som tilhører elementet med feilmeldingen.
+- Vi setter `aria-invalid="true"` på felt med feil, for å si fra om at det er en feil der.
+- Vi bruker `aria-describedby` for å koble feilmelding til feltet.
+
+<Card
+  color='first'
+>
+  <Card.Content
+  style={{
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  }}
+  >
+  Vi unngår inntill videre å bruke `aria-errormessage` da den ikke har full støtte av hjelpemidler per nå. Men vi kommer til å oppdatere retningslinjene om støtten blir bedre i fremtiden. [diskusjon på github](https://github.com/digdir/designsystemet/discussions/1684)
+
+  </Card.Content>
+</Card>
 
 ### Gi automatiske beskjeder
 
