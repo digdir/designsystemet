@@ -28,7 +28,7 @@ export default function useComboboxOption({
   const {
     selectedOptions,
     onOptionClick,
-    listRef,
+    setListRef,
     customIds,
     filteredOptions,
   } = context;
@@ -40,7 +40,7 @@ export default function useComboboxOption({
 
   const combinedRef = useMergeRefs([
     (node: HTMLElement | null) => {
-      listRef.current[index] = node;
+      setListRef(index, node);
     },
     ref,
   ]);

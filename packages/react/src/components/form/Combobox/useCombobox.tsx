@@ -1,4 +1,10 @@
-import { useMemo, Children, useState, isValidElement } from 'react';
+import {
+  useMemo,
+  Children,
+  useState,
+  isValidElement,
+  useCallback,
+} from 'react';
 import type { ReactNode, ReactElement } from 'react';
 
 import type { ComboboxOptionProps } from './Option/Option';
@@ -51,6 +57,8 @@ export default function useCombobox({
   },
   initialValue,
 }: UseComboboxProps) {
+  const filterCallback = useCallback(filter, [filter]);
+
   const { optionsChildren, customIds, restChildren, interactiveChildren } =
     useMemo(() => {
       const allChildren = Children.toArray(children);
@@ -159,8 +167,9 @@ export default function useCombobox({
           filteredOptions.push(options[option].value);
           return optionsChildren[index];
         }
-        if (filter(inputValue, options[option])) {
-          filteredOptions.push(options[option].value);
+
+        if (filterCallback(inputValue, options[option])) {
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
 
@@ -169,8 +178,14 @@ export default function useCombobox({
       .filter((child) => child);
 
     return { filteredOptions, filteredOptionsChildren };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputValue, multiple, options, optionsChildren, selectedOptions]);
+  }, [
+    filterCallback,
+    inputValue,
+    multiple,
+    options,
+    optionsChildren,
+    selectedOptions,
+  ]);
 
   return {
     filteredOptionsChildren,
