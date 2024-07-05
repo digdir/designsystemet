@@ -30,7 +30,9 @@ export const colormode: Format = {
       format: 'css',
     });
 
-    const content = `{\n${allTokens.map(format).join('\n')}\n}\n`;
+    const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `color-scheme: ${mode_};\n` : '';
+
+    const content = `{\n${allTokens.map(format).join('\n')}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
 
     return header + `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`;
