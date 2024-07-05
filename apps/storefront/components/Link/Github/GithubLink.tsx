@@ -8,7 +8,7 @@ export const GithubLink = ({
   ...rest
 }: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
   const pathName = usePathname();
-  const href = `https://github.com/digdir/designsystemet/tree/main/apps/storefront/pages${pathName}/page.mdx`;
+  const href = `https://github.com/digdir/designsystemet/tree/next/apps/storefront/app${pathName}/page.mdx`;
 
   return (
     <Link

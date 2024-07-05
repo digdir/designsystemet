@@ -1,4 +1,5 @@
 import { Markdown } from '@storybook/blocks';
+
 import type { AlertProps } from '@digdir/designsystemet-react';
 import { Paragraph, Alert, Heading } from '@digdir/designsystemet-react';
 
