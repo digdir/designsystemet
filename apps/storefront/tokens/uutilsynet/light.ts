@@ -1416,7 +1416,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#078d19",
+    value: "#078D19",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1484,7 +1484,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#03380a",
+    value: "#033409",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1671,7 +1671,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#bf1b1b",
+    value: "#C01B1B",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1739,7 +1739,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#620e0e",
+    value: "#5a0d0d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1756,7 +1756,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fffefe",
+    value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1926,7 +1926,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#0c72c1",
+    value: "#0A71C0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1994,7 +1994,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#043256",
+    value: "#042d4d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2011,7 +2011,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#fefeff",
+    value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2181,7 +2181,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#c95c21",
+    value: "#CA5C21",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2249,7 +2249,7 @@ export const  color = [
   },
   {
     type: "color",
-    value: "#50240d",
+    value: "#47210c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
