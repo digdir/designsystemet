@@ -306,6 +306,7 @@
   --ds-color-warning-contrast-subtle: var(--ds-global-yellow-contrast-2);
   --ds-color-focus-inner: #131c27;
   --ds-color-focus-outer: #b0cfea;
+color-scheme: dark;
 }
  
 @media (prefers-color-scheme: dark) {
@@ -612,6 +613,7 @@
   --ds-color-warning-contrast-subtle: var(--ds-global-yellow-contrast-2);
   --ds-color-focus-inner: #131c27;
   --ds-color-focus-outer: #b0cfea;
+color-scheme: dark;
 }
 
 }

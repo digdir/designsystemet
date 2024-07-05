@@ -42,8 +42,3 @@
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
-
-/* We put this here for now, move to a better location later */
-[data-ds-theme='dark'] {
-  color-scheme: dark;
-}
