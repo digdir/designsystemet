@@ -9,6 +9,7 @@ import { Box, Paragraph } from '../../../';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import type { ComboboxProps } from '../Combobox';
+import { prefix } from '../useCombobox';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
@@ -71,6 +72,8 @@ export const ComboboxInput = ({
     // check if input value is the same as a label, if so, select it
     Object.values(options).forEach((option) => {
       if (option.label.toLowerCase() === value.toLowerCase()) {
+        /* if option is already selected, discard selecting it, since it would de-select */
+        if (selectedOptions[prefix(option.value)]) return;
         handleSelectOption({ option: option });
       }
     });
