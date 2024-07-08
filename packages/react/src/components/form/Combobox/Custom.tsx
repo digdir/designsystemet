@@ -43,7 +43,7 @@ export type ComboboxCustomProps = {
 } & React.HTMLAttributes<HTMLDivElement> &
   (InteractiveProps | NonInteractiveProps);
 
-export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
+const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   ({ asChild, interactive, id, className, ...rest }, ref) => {
     if (interactive && !id) {
       throw new Error('If ComboboxCustom is interactive, it must have an id');
@@ -95,4 +95,4 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   },
 );
 
-export default ComboboxCustom;
+export { ComboboxCustom };

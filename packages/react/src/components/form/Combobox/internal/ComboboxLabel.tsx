@@ -14,7 +14,7 @@ type ComboboxLabelProps = {
   formFieldProps: ReturnType<typeof useFormField>;
 };
 
-export const ComboboxLabel = ({
+const ComboboxLabel = ({
   label,
   description,
   hideLabel,

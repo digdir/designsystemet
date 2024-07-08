@@ -6,14 +6,13 @@ import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
 import { Container } from '@digdir/components';
 
-import GithubLink from '../../components/Link/Github/GithubLink';
 import {
   Banner,
   BannerHeading,
   BannerIcon,
   BannerIngress,
 } from '../../components/Banner/Banner';
-import { SidebarMenu, MdxContent } from '../../components';
+import { SidebarMenu, MdxContent, GithubLink } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
 

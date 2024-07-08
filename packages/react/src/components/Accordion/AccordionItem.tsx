@@ -20,7 +20,7 @@ export type AccordionItemProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export type AccordionItemContextProps = {
+type AccordionItemContextProps = {
   open: boolean;
   toggleOpen: () => void;
   contentId: string;

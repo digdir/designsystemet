@@ -42,7 +42,7 @@ const iconSize = {
   lg: '2rem',
 };
 
-export const Pagination = forwardRef<HTMLElement, PaginationProps>(
+const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
     {
       nextLabel = '',
@@ -128,3 +128,5 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 );
 
 Pagination.displayName = 'Pagination';
+
+export { Pagination };

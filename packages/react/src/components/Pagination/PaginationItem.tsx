@@ -12,7 +12,7 @@ export type PaginationItemProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLLIElement>, 'size'>;
 
-export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
+const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'li';
 
@@ -35,4 +35,4 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
 
 PaginationItem.displayName = 'PaginationItem';
 
-export default PaginationItem;
+export { PaginationItem };

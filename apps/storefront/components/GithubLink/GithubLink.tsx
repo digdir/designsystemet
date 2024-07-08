@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Link } from '@digdir/designsystemet-react';
 import { usePathname } from 'next/navigation';
 
-export const GithubLink = ({
+const GithubLink = ({
   ...rest
 }: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
   const pathName = usePathname();
