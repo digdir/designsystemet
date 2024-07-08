@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 
 import { ComboboxContext } from '../ComboboxContext';
 
-export const ComboboxClearButton = () => {
+const ComboboxClearButton = () => {
   const context = useContext(ComboboxContext);
 
   if (!context) {

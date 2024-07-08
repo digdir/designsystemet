@@ -26,7 +26,7 @@ export type ComboboxOptionProps = {
   displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxOption = memo(
+const ComboboxOption = memo(
   forwardRef<HTMLButtonElement, ComboboxOptionProps>(
     ({ value, description, children, className, ...rest }, forwardedRef) => {
       const labelId = useId();
@@ -102,3 +102,5 @@ export const ComboboxOption = memo(
 );
 
 ComboboxOption.displayName = 'ComboboxOption';
+
+export { ComboboxOption };

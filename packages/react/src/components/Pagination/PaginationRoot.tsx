@@ -31,7 +31,7 @@ export type PaginationRootProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
+const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
   ({ asChild, compact = false, size = 'md', ...rest }, ref) => {
     const Component = asChild ? Slot : 'nav';
 
@@ -49,4 +49,4 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
 
 PaginationRoot.displayName = 'PaginationRoot';
 
-export default PaginationRoot;
+export { PaginationRoot };

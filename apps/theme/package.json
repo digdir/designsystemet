@@ -17,9 +17,7 @@
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^6.6.0",
     "@react-awesome/use-click-outside": "^0.0.3",
-    "apca-w3": "^0.1.9",
     "chroma-js": "^2.4.2",
-    "hsluv": "^1.0.1",
     "next": "^14.2.4",
     "react": "^18.3.1",
     "react-color": "^2.19.3",
@@ -28,7 +26,6 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@types/apca-w3": "^0",
     "@types/chroma-js": "^2",
     "@types/react": "^18.3.3",
     "@types/react-color": "^3.0.12",

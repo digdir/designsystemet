@@ -9,7 +9,7 @@ type ComboboxNativeProps = {
   name: ComboboxProps['name'];
 };
 
-export const ComboboxNative = ({
+const ComboboxNative = ({
   selectedOptions,
   multiple,
   name,

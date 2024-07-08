@@ -22,7 +22,7 @@ type ComboboxInputProps = {
   handleKeyDown: (event: React.KeyboardEvent) => void;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const ComboboxInput = ({
+const ComboboxInput = ({
   hideClearButton,
   listId,
   error,

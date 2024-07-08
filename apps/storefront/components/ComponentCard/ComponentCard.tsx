@@ -1,7 +1,9 @@
 import NextLink from 'next/link';
 import { Heading } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 
 import classes from './ComponentCard.module.css';
+
 type ComponentCardProps = {
   title: string;
   image: string;
@@ -12,7 +14,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
   return (
     <NextLink
       href={url}
-      className={classes.card}
+      className={cl(classes.card, 'ds-focus')}
     >
       <img
         src={'/img/component-previews/' + image}

@@ -8,7 +8,7 @@ import { ComboboxContext } from './ComboboxContext';
 
 type ComboboxEmptyProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
+const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   ({ children, className, ...rest }, ref) => {
     const context = useContext(ComboboxContext);
     if (!context) {
@@ -38,4 +38,4 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
 
 ComboboxEmpty.displayName = 'ComboboxEmpty';
 
-export default ComboboxEmpty;
+export { ComboboxEmpty };
