@@ -23,7 +23,7 @@ import { Container, ColorModal } from '@digdir/components';
 
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';
-import { Header, Previews, Scales, ThemeToolbar } from '../components';
+import { Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
 
 import classes from './page.module.css';
@@ -254,7 +254,6 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
       <ColorModal
         weight={selectedColor.color.number}
         hex={selectedColor.color.hex}

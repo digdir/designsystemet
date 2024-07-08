@@ -8,7 +8,6 @@ import { generateThemeForColor } from '@digdir/designsystemet/color';
 import { Container } from '@digdir/components';
 
 import { Settings } from '../../settings';
-import { Header } from '../../components';
 
 import { ContrastBox } from './ContrastBox/ContrastBox';
 import classes from './page.module.css';
@@ -156,7 +155,6 @@ export default function Dev() {
 
   return (
     <div className={classes.page}>
-      <Header />
       <Container>
         <Heading
           size='lg'

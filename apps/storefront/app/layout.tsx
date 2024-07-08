@@ -3,10 +3,9 @@ import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
 import { Analytics } from '@vercel/analytics/react';
-import { SkipLink } from '@digdir/designsystemet-react';
 import type { Metadata } from 'next';
+import { Header } from '@digdir/components';
 
-import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 
 export const metadata: Metadata = {
@@ -19,6 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const menu = [
+  {
+    name: 'Grunnleggende',
+    href: '/grunnleggende',
+  },
+  {
+    name: 'God praksis',
+    href: '/god-praksis',
+  },
+  {
+    name: 'Mønstre',
+    href: '/monstre',
+  },
+  {
+    name: 'Bloggen',
+    href: '/bloggen',
+  },
+  {
+    name: 'Komponenter',
+    href: '/komponenter',
+  },
+];
+
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
@@ -30,8 +52,7 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <div className='root'>
-          <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
-          <Header />
+          <Header menu={menu} />
           {children}
           <Footer />
           <Analytics />

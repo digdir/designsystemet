@@ -15,6 +15,12 @@
   padding: 0 var(--ds-spacing-8);
 }
 
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-4);
+}
+
 .logo {
   height: 34px;
   width: auto;
@@ -23,6 +29,14 @@
 .logoLink {
   display: flex;
   align-items: center;
+}
+
+.tag {
+  background-color: #f2d6ff;
+  border-radius: 4px;
+  padding: 7px 10px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .toggle {

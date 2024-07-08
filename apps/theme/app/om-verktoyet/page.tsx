@@ -1,14 +1,11 @@
 'use client';
 import { Container } from '@digdir/components';
 
-import { Header } from '../../components';
-
 import classes from './page.module.css';
 
 export default function Home() {
   return (
     <div className={classes.page}>
-      <Header />
       <main>
         <Container>
           <h1 className={classes.title}>Om verktøyet</h1>
