@@ -17,7 +17,7 @@ import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
-import ComboboxCustom from './Custom';
+import { ComboboxCustom } from './Custom';
 import { useFloatingCombobox } from './useFloatingCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
 import { ComboboxIdProvider } from './ComboboxIdContext';

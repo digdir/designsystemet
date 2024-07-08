@@ -28,4 +28,4 @@ const GithubLink = ({
   );
 };
 
-export default GithubLink;
+export { GithubLink };
