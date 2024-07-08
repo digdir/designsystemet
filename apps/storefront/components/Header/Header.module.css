@@ -90,7 +90,7 @@
   fill: var(--ds-color-neutral-border-strong);
 }
 
-.item .active {
+.item .activeLink {
   border-color: var(--ds-color-neutral-border-strong);
   font-weight: 500;
 }
@@ -131,7 +131,7 @@
     display: block;
   }
 
-  .item .active {
+  .item .activeLink {
     display: inline-block;
   }
 

@@ -27,7 +27,7 @@ export const Header = () => {
           <li className={classes.item}>
             <Link
               className={cl(
-                currentPath === '/' ? classes.active : '',
+                currentPath === '/' && classes.active,
                 classes.link,
                 'ds-focus',
               )}
@@ -39,7 +39,7 @@ export const Header = () => {
           <li className={classes.item}>
             <Link
               className={cl(
-                currentPath === '/testside' ? classes.active : '',
+                currentPath === '/testside' && classes.active,
                 classes.link,
                 'ds-focus',
               )}
@@ -51,7 +51,7 @@ export const Header = () => {
           <li className={classes.item}>
             <Link
               className={cl(
-                currentPath === '/om-verktoyet' ? classes.active : '',
+                currentPath === '/om-verktoyet' && classes.active,
                 classes.link,
                 'ds-focus',
               )}
