@@ -69,7 +69,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className={classes.header}>
         <div
           className={classes.content}
-          /* No idea why, but we need this for Firefox... */
+          /* We need this for firefox, because it focuses anything with overflow: hidden */
           tabIndex={-1}
         >
           <Container className={classes.container}>
