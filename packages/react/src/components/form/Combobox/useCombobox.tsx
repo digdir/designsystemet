@@ -7,11 +7,11 @@ import {
 } from 'react';
 import type { ReactNode, ReactElement } from 'react';
 
-import type { ComboboxOptionProps } from './Option/Option';
 import { ComboboxOption } from './Option/Option';
+import { ComboboxCustom } from './Custom';
+import type { ComboboxOptionProps } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
-import ComboboxCustom from './Custom';
 
 export type UseComboboxProps = {
   children: ReactNode;
