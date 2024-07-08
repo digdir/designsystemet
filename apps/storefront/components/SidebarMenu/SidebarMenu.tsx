@@ -50,7 +50,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
             {showMenu ? 'Skjul' : 'Vis'} side meny
           </Button>
 
-          <div className={cl(classes.menu, { [classes.activeMenu]: showMenu })}>
+          <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
             <h3 className={cl(classes.title, 'ds-paragraph--md')}>
               {SiteConfig.menu[activeIndex].name}
             </h3>

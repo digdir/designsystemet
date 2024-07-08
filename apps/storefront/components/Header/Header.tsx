@@ -80,7 +80,7 @@ const Header = () => {
               />
             )}
           </button>
-          <ul className={cl(classes.menu, { [classes.active]: open })}>
+          <ul className={cl(classes.menu, open && classes.active)}>
             {menu.map((item, index) => (
               <li
                 className={classes.item}
@@ -92,7 +92,7 @@ const Header = () => {
                   onClick={() => setOpen(false)}
                   prefetch={false}
                   className={cl(
-                    pathName === item.url ? classes.active : '',
+                    pathName.includes(item.url) ? classes.activeLink : '',
                     classes.link,
                     'ds-paragraph--md',
                     'ds-focus',
