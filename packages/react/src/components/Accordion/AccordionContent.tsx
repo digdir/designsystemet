@@ -24,6 +24,10 @@ export const AccordionContent = forwardRef<
 
   useEffect(() => {
     const node = contentRef.current;
+    const eventHander = () => {
+      context?.toggleOpen();
+    };
+
     if (!node) return;
     if (!context?.open) {
       node?.setAttribute('hidden', 'until-found');
@@ -31,10 +35,11 @@ export const AccordionContent = forwardRef<
       node?.removeAttribute('hidden');
     }
 
-    node?.addEventListener('beforematch', () => {
-      console.log('i have been found');
-      context?.toggleOpen();
-    });
+    node?.addEventListener('beforematch', eventHander);
+
+    return () => {
+      node?.removeEventListener('beforematch', eventHander);
+    };
   });
 
   if (context === null) {
