@@ -115,7 +115,7 @@ export default [
       sourceType: 'module',
 
       parserOptions: {
-        tsconfigRootDir: 'C:\\kode\\designsystemet',
+        tsconfigRootDir: './',
 
         ecmaFeatures: {
           jsx: true,
@@ -136,12 +136,16 @@ export default [
       'react-compiler/react-compiler': 'warn',
     },
   },
+  //...compat.extends('plugin:@next/next/recommended').map((config) => ({
+  //  ...config,
+  //  files: ['apps/storefront/**/*', 'apps/dev/**/*', 'apps/theme/**/*'],
+  //})),
 
   {
     ignores: [
       '**/node_modules/**',
       '**/*.d.ts*',
-      '**/dist/',
+      '**/dist/**',
       'packages/theme/brand/**/*',
       'packages/react-old/**/*',
       '**/tsc-build/**',
