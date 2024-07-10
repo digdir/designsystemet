@@ -28,6 +28,10 @@
   text-overflow: ellipsis;
 }
 
+.ds-accordion__content--closed {
+  padding: 0;
+}
+
 .ds-accordion__header {
   margin: 0;
   width: 100%;

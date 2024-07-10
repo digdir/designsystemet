@@ -1,8 +1,8 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
+import { useMergeRefs } from '@floating-ui/react';
 
-import { AnimateHeight } from '../../utilities/AnimateHeight';
 import { Paragraph } from '..';
 
 import { AccordionItemContext } from './AccordionItem';
@@ -19,6 +19,23 @@ export const AccordionContent = forwardRef<
   AccordionContentProps
 >(({ children, className, ...rest }, ref) => {
   const context = useContext(AccordionItemContext);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const mergedRefs = useMergeRefs([ref, contentRef]);
+
+  useEffect(() => {
+    const node = contentRef.current;
+    if (!node) return;
+    if (!context?.open) {
+      node?.setAttribute('hidden', 'until-found');
+    } else {
+      node?.removeAttribute('hidden');
+    }
+
+    node?.addEventListener('beforematch', () => {
+      console.log('i have been found');
+      context?.toggleOpen();
+    });
+  });
 
   if (context === null) {
     console.error(
@@ -28,23 +45,24 @@ export const AccordionContent = forwardRef<
   }
 
   return (
-    <AnimateHeight
-      id={context.contentId}
-      open={context.open}
-    >
+    <>
       <Paragraph
         asChild
         size='sm'
       >
         <div
-          ref={ref}
-          className={cl('ds-accordion__content', className)}
+          ref={mergedRefs}
+          className={cl(
+            'ds-accordion__content',
+            !context.open && 'ds-accordion__content--closed',
+            className,
+          )}
           {...rest}
         >
           {children}
         </div>
       </Paragraph>
-    </AnimateHeight>
+    </>
   );
 });
 
