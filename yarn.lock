@@ -10604,9 +10604,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-compiler@npm:0.0.0-experimental-51a85ea-20240601":
-  version: 0.0.0-experimental-51a85ea-20240601
-  resolution: "eslint-plugin-react-compiler@npm:0.0.0-experimental-51a85ea-20240601"
+"eslint-plugin-react-compiler@npm:0.0.0-experimental-0998c1e-20240625":
+  version: 0.0.0-experimental-0998c1e-20240625
+  resolution: "eslint-plugin-react-compiler@npm:0.0.0-experimental-0998c1e-20240625"
   dependencies:
     "@babel/core": "npm:^7.24.4"
     "@babel/parser": "npm:^7.24.4"
@@ -10616,7 +10616,7 @@ __metadata:
     zod-validation-error: "npm:^3.0.3"
   peerDependencies:
     eslint: ">=7"
-  checksum: 10/5971c53693eea51438beb5ae348c4c59cfe2782a9805c0b8b6413562707cfc4dda61506ffa73f72fca3dd627d732ab509b076919c5a102359a9e043a67fcb23c
+  checksum: 10/c861dd81fb1b84a66c6b21f685f40d49163942165a2013556f2815107c912cb25c5851a5f425644143956d98e9f3fb1aba019a2e6fa832befe6194b1b9e8e354
   languageName: node
   linkType: hard
 
@@ -19763,7 +19763,7 @@ __metadata:
     eslint-plugin-import: "npm:2.29.1"
     eslint-plugin-jsx-a11y: "npm:6.8.0"
     eslint-plugin-react: "npm:7.33.2"
-    eslint-plugin-react-compiler: "npm:0.0.0-experimental-51a85ea-20240601"
+    eslint-plugin-react-compiler: "npm:0.0.0-experimental-0998c1e-20240625"
     eslint-plugin-react-hooks: "npm:4.6.0"
     eslint-plugin-storybook: "npm:^0.8.0"
     jsdom: "npm:^24.1.0"
