@@ -4,6 +4,7 @@ import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { Paragraph } from '..';
+import { AnimateHeight } from '../../utilities/AnimateHeight';
 
 import { AccordionItemContext } from './AccordionItem';
 
@@ -50,7 +51,10 @@ export const AccordionContent = forwardRef<
   }
 
   return (
-    <>
+    <AnimateHeight
+      id={context.contentId}
+      open={context.open}
+    >
       <Paragraph
         asChild
         size='sm'
@@ -67,7 +71,7 @@ export const AccordionContent = forwardRef<
           {children}
         </div>
       </Paragraph>
-    </>
+    </AnimateHeight>
   );
 });
 
