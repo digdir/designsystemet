@@ -28,7 +28,7 @@
   text-overflow: ellipsis;
 }
 
-.ds-accordion__content--closed {
+.ds-accordion__content[hidden] {
   padding: 0;
 }
 

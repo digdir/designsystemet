@@ -25,16 +25,14 @@ export const AccordionContent = forwardRef<
 
   useEffect(() => {
     const node = contentRef.current;
+
+    if (!node) return;
+
     const eventHander = () => {
       context?.toggleOpen();
     };
 
-    if (!node) return;
-    if (!context?.open) {
-      node?.setAttribute('hidden', 'until-found');
-    } else {
-      node?.removeAttribute('hidden');
-    }
+    if (context?.open) node?.removeAttribute('hidden');
 
     node?.addEventListener('beforematch', eventHander);
 
@@ -54,6 +52,10 @@ export const AccordionContent = forwardRef<
     <AnimateHeight
       id={context.contentId}
       open={context.open}
+      animationFinished={(state) => {
+        state === 'closed' &&
+          contentRef.current?.setAttribute('hidden', 'until-found');
+      }}
     >
       <Paragraph
         asChild
@@ -61,11 +63,7 @@ export const AccordionContent = forwardRef<
       >
         <div
           ref={mergedRefs}
-          className={cl(
-            'ds-accordion__content',
-            !context.open && 'ds-accordion__content--closed',
-            className,
-          )}
+          className={cl('ds-accordion__content', className)}
           {...rest}
         >
           {children}

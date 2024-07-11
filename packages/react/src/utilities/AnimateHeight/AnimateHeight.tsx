@@ -6,6 +6,7 @@ import { useMediaQuery, usePrevious } from '../../utilities';
 
 export type AnimateHeightProps = {
   open: boolean;
+  animationFinished?: (state: 'open' | 'closed') => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type InternalState = 'open' | 'closed' | 'openingOrClosing';
@@ -19,6 +20,7 @@ export const AnimateHeight = ({
   children,
   className,
   open = false,
+  animationFinished,
   style,
   ...rest
 }: AnimateHeightProps) => {
@@ -43,10 +45,11 @@ export const AnimateHeight = ({
         timeoutRef.current && clearTimeout(timeoutRef.current); // Reset timeout if already active (i.e. if the user closes the component before it finishes opening)
         timeoutRef.current = setTimeout(() => {
           setState(openOrClosed);
+          animationFinished && animationFinished(openOrClosed);
         }, transitionDurationInMilliseconds);
       }
     },
-    [open, openOrClosed, prevOpen, shouldAnimate],
+    [animationFinished, open, openOrClosed, prevOpen, shouldAnimate],
   );
 
   const transition =
