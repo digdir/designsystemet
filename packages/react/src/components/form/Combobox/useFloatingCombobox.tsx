@@ -50,7 +50,7 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
         apply({ rects, elements }) {
           requestAnimationFrame(() => {
             Object.assign(elements.floating.style, {
-              width: `calc(${rects.reference.width}px - calc(var(--ds-spacing-2) * 2))`,
+              width: `${rects.reference.width}px`,
               maxHeight: `200px`,
             });
           });
