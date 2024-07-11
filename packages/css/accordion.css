@@ -23,13 +23,23 @@
 }
 
 .ds-accordion__content {
-  padding: var(--ds-spacing-5, 1rem);
+  padding-top: var(--ds-spacing-5, 1rem);
+  padding-bottom: var(--ds-spacing-5, 1rem);
+  padding-left: var(--ds-spacing-5, 1rem);
+  padding-right: var(--ds-spacing-5, 1rem);
   overflow: hidden;
   text-overflow: ellipsis;
+  transition-property: height, padding-top, padding-bottom;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
 }
 
 .ds-accordion__content--closed {
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 0;
 }
 
 .ds-accordion__header {
