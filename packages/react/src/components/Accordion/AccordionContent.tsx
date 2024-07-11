@@ -40,7 +40,7 @@ export const AccordionContent = forwardRef<
     return () => {
       node?.removeEventListener('beforematch', eventHander);
     };
-  });
+  }, [context]);
 
   if (context === null) {
     console.error(
