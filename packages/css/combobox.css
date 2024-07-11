@@ -204,6 +204,7 @@
   height: auto;
   cursor: pointer;
   font-family: inherit;
+  font-weight: 400;
 }
 
 .ds-combobox__option.ds-combobox__option--active {
@@ -293,4 +294,5 @@
   flex-wrap: wrap;
   gap: var(--ds-spacing-1);
   color: var(--ds-color-neutral-text-subtle);
+  font-weight: 400;
 }
