@@ -7,6 +7,12 @@ import { Group } from './Group';
 const meta: Meta<typeof Group> = {
   title: 'Komponenter/Chip/Group',
   component: Group,
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;

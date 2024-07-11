@@ -5,6 +5,12 @@ import { ToggleChip } from './Toggle';
 const meta: Meta<typeof ToggleChip> = {
   title: 'Komponenter/Chip/Toggle',
   component: ToggleChip,
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;
