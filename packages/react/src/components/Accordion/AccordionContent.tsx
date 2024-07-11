@@ -64,7 +64,7 @@ export const AccordionContent = forwardRef<
     <AnimateHeight
       id={context.contentId}
       open={context.open}
-      animationFinished={(state) => {
+      onAnimationFinished={(state) => {
         state === 'closed' &&
           contentRef.current?.setAttribute('hidden', 'until-found');
       }}
