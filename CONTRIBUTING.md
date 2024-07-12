@@ -78,7 +78,7 @@ Developing components for the design system requires that developers are closely
 
 Follow these steps to get up and running with storybook and the storefront.
 
-Run the commands from the root of your project.
+Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
 
 #### 1. Install Node 16+ and Yarn 3
 
@@ -111,6 +111,7 @@ When creating a pull request for the design system, there are a few things to ke
   - The pull request title must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
   - We run linting and formatting checks on all the code.
 - When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from the design system team will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
+- Make sure the PR is pointing to the `next` branch.
 
 ---
 
@@ -163,7 +164,10 @@ To ensure a consistent and enjoyable coding experience for everyone, we have est
 
 #### Styling with CSS Modules
 
-We use CSS modules to style our components. This prevents naming conflicts by adding a unique prefix to all components.
+When styling components for react, the css lives in `packages/css`. We use [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), so make sure you are familiar with this
+if you are creating new files in our css package.
+
+We use CSS modules for our apps. This prevents naming conflicts by adding a unique prefix to all components.
 A CSS module file is created by adding `.module.css` to the end of the CSS file.
 
 #### Use of design tokens
