@@ -3,6 +3,7 @@
   "version": "0.1.0-alpha.7",
   "description": "CLI tool to create an initial token structure for Designsystemet",
   "author": "Designsystemet team",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
