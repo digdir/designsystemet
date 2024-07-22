@@ -131,12 +131,14 @@
   border-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  white-space: nowrap;
 }
 
 .ds-textfield__suffix {
   border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  white-space: nowrap;
 }
 
 .ds-textfield__readonly__icon {
