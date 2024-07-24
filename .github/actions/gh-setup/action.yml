@@ -3,8 +3,6 @@ description: Setup GitHub Actions
 runs:
   using: composite
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
     - name: Setup Node & Yarn cache
       uses: actions/setup-node@v4
       with:
