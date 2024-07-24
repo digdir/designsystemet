@@ -35,7 +35,7 @@
     "lint-style:fix": "yarn run lint-style --fix",
     "types:react": "yarn workspace @digdir/designsystemet-react types",
     "types:storefront": "yarn workspace storefront types",
-    "add-changeset": "changeset",
+    "changeset": "changeset",
     "version-packages": "changeset version",
     "publish": "changeset publish"
   },
