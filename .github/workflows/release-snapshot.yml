@@ -1,0 +1,22 @@
+name: Snapshot Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  snapshot:
+    name: Snapshot Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/gh-setup
+      - name: Create Snapshot Release
+        run: |
+          yarn run version-packages --snapshot "${{ github.ref_name }}"
+          echo '---'
+          echo 'Detected Changes:'
+          git diff
+          echo '---'
+          yarn run release --tag "${{ github.ref_name }}" --no-git-tag
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
