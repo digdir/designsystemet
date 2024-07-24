@@ -331,7 +331,7 @@ describe('Combobox', () => {
     const onValueChange = vi.fn();
     const { user } = await render({ onValueChange, multiple: true });
     const combobox = screen.getByRole('combobox');
-<
+
     await user.click(combobox);
     await user.click(screen.getByText('Leikanger'));
     await user.click(screen.getByText('Leikanger'));
