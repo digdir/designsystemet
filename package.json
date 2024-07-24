@@ -36,7 +36,7 @@
     "types:react": "yarn workspace @digdir/designsystemet-react types",
     "types:storefront": "yarn workspace storefront types",
     "add-changeset": "changeset",
-    "version": "changeset version",
+    "version-packages": "changeset version",
     "publish": "yarn run build && changeset publish"
   },
   "devDependencies": {
