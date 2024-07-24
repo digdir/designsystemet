@@ -11,10 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
-      - name: Create Snapshot Release
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Snapshot Release
         run: |
           yarn run version-packages --snapshot "${{ github.ref_name }}"
           echo '---'
