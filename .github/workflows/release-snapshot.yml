@@ -19,5 +19,3 @@ jobs:
           git diff
           echo '---'
           yarn run publish --tag "${{ github.ref_name }}" --no-git-tag
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
