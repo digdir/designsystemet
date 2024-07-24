@@ -8,9 +8,6 @@ runs:
       with:
         node-version: lts/*
         cache: yarn
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
     - name: Install dependencies
       shell: bash
       run: yarn install --immutable
