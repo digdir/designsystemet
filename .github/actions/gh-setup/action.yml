@@ -1,0 +1,16 @@
+name: Setup GH
+description: Setup GitHub Actions
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Setup Node & Yarn cache
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts
+        cache: yarn
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --immutable
