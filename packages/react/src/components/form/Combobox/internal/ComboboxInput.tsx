@@ -89,11 +89,11 @@ const ComboboxInput = ({
     'aria-controls': null,
     'aria-expanded': null,
     'aria-haspopup': null,
-    /* If we click the wrapper, open the list, set index to first option, and focus the input */
+    /* If we click the wrapper, toggle open, set index to first option, and focus the input */
     onClick() {
       if (disabled) return;
       if (readOnly) return;
-      setOpen(true);
+      setOpen(!open);
       setActiveIndex(0);
       inputRef.current?.focus();
     },
