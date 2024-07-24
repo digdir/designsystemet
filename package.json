@@ -37,7 +37,7 @@
     "types:storefront": "yarn workspace storefront types",
     "add-changeset": "changeset",
     "version-packages": "changeset version",
-    "publish": "yarn run build && changeset publish"
+    "publish": "changeset publish"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",

@@ -1,3 +1,4 @@
+# https://github.com/anthonyhastings/turborepo-design-system
 name: Release Snapshot
 
 on:
@@ -17,6 +18,6 @@ jobs:
           echo 'Detected Changes:'
           git diff
           echo '---'
-          yarn run release --tag "${{ github.ref_name }}" --no-git-tag
+          yarn run publish --tag "${{ github.ref_name }}" --no-git-tag
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
