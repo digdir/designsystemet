@@ -3,6 +3,10 @@ name: Release Snapshot
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'NPM tag'
+        default: ''
 
 jobs:
   snapshot:
@@ -11,6 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
+      - id: variables
+        run: echo "tag=${{ github.event.inputs.tag != '' && github.event.inputs.tag || github.ref_name  }}" >> $GITHUB_OUTPUT
       - name: Creating .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
@@ -20,9 +26,9 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create Snapshot Release
         run: |
-          yarn run version-packages --snapshot "${{ github.ref_name }}"
+          yarn run version-packages --snapshot "${{ steps.variables.outputs.tag }}"
           echo '---'
           echo 'Detected Changes:'
           git diff
           echo '---'
-          yarn run publish --tag "${{ github.ref_name }}" --no-git-tag
+          yarn run publish --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
