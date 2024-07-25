@@ -1,0 +1,18 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@digdir/components": "0.0.0",
+    "dev": "0.1.0",
+    "storefront": "0.1.0",
+    "theme": "0.1.0",
+    "@digdir/designsystemet": "0.1.0-alpha.19",
+    "@digdir/create-tokens": "0.1.0-alpha.7",
+    "@digdir/designsystemet-css": "0.11.0-alpha.9",
+    "@digdir/designsystemet-react": "1.0.0-rc.13",
+    "@digdir/design-system-react": "0.54.0",
+    "@digdir/designsystemet-theme": "1.0.0-rc.13",
+    "figma-plugin": "0.1.0"
+  },
+  "changesets": []
+}
