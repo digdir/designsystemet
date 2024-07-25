@@ -15,6 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: yarn build
       - id: variables
         run: echo "tag=${{ github.event.inputs.tag != '' && github.event.inputs.tag || github.ref_name  }}" >> $GITHUB_OUTPUT
       - name: Creating .npmrc
