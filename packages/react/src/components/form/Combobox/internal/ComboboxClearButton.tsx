@@ -1,10 +1,13 @@
-import { useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
 import { ComboboxContext } from '../ComboboxContext';
 
-const ComboboxClearButton = () => {
+const ComboboxClearButton = forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>((props, ref) => {
   const context = useContext(ComboboxContext);
 
   if (!context) {
@@ -15,6 +18,8 @@ const ComboboxClearButton = () => {
 
   return (
     <button
+      {...props}
+      ref={ref}
       disabled={disabled}
       className={cl('ds-combobox__clear-button', `ds-focus`)}
       onClick={() => {
@@ -39,7 +44,7 @@ const ComboboxClearButton = () => {
       />
     </button>
   );
-};
+});
 
 ComboboxClearButton.displayName = 'ComboboxClearButton';
 

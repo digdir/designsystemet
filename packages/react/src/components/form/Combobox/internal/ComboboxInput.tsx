@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import cl from 'clsx/lite';
 import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
@@ -32,6 +32,7 @@ const ComboboxInput = ({
 }: ComboboxInputProps) => {
   const context = useContext(ComboboxContext);
   const idDispatch = useComboboxIdDispatch();
+  const clearButtonRef = useRef<HTMLButtonElement>(null);
 
   if (!context) {
     throw new Error('ComboboxContext is missing');
@@ -90,9 +91,10 @@ const ComboboxInput = ({
     'aria-expanded': null,
     'aria-haspopup': null,
     /* If we click the wrapper, toggle open, set index to first option, and focus the input */
-    onClick() {
+    onClick(event: React.MouseEvent<HTMLDivElement>) {
       if (disabled) return;
       if (readOnly) return;
+      if (clearButtonRef.current?.contains(event.target as Node)) return;
       setOpen(!open);
       setActiveIndex(0);
       inputRef.current?.focus();
@@ -152,7 +154,7 @@ const ComboboxInput = ({
           </Paragraph>
         </div>
         {/* Clear button if we are in multiple mode and have at least one active value */}
-        {showClearButton && <ComboboxClearButton />}
+        {showClearButton && <ComboboxClearButton ref={clearButtonRef} />}
         {/* Arrow for combobox. Click is handled by the wrapper */}
         <div className={'ds-combobox__arrow'}>
           {open ? (
