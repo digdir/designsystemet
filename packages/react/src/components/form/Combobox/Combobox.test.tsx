@@ -322,8 +322,6 @@ describe('Combobox', () => {
     await act(async () => await user.click(combobox));
     await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await act(async () => await user.click(combobox));
-
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
     expect(screen.getByText('Brønnøysund')).toBeInTheDocument();
