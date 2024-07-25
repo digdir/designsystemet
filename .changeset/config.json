@@ -7,5 +7,11 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@digdir/design-system-react"]
+  "ignore": [
+    "@digdir/design-system-react",
+    "storefront",
+    "theme",
+    "figma-plugin",
+    "@digdir/components"
+  ]
 }
