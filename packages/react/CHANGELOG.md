@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.0-next.14
+
+### Patch Changes
+
+- [`2d1da9a`](https://github.com/digdir/designsystemet/commit/2d1da9a4f77a4d01b17a1987a79ea332465c1d99) Thanks [@mimarz](https://github.com/mimarz)! - Testing snapshot release
+
+- [#2184](https://github.com/digdir/designsystemet/pull/2184) [`8b2abdb`](https://github.com/digdir/designsystemet/commit/8b2abdbce4f51fd7771e0ba041515e25aa5e88a3) Thanks [@mimarz](https://github.com/mimarz)! - fix(Combobox): :bug: Button for toggling open/close should now close when open
+
+- [#2185](https://github.com/digdir/designsystemet/pull/2185) [`567329b`](https://github.com/digdir/designsystemet/commit/567329ba0c228490c95ea4c062e7045bde597a53) Thanks [@mimarz](https://github.com/mimarz)! - feat(Combobox): :sparkles: Label now supports other elements
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

@@ -14,5 +14,9 @@
     "@digdir/designsystemet-theme": "1.0.0-rc.13",
     "figma-plugin": "0.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "blue-rocks-pull",
+    "friendly-islands-punch",
+    "short-walls-judge"
+  ]
 }
