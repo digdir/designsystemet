@@ -2,7 +2,7 @@
   "mode": "pre",
   "tag": "next",
   "initialVersions": {
-    "@digdir/components": "0.0.0",
+    "@repo/components": "0.0.0",
     "dev": "0.1.0",
     "storefront": "0.1.0",
     "theme": "0.1.0",

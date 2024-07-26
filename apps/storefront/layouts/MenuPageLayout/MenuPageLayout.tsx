@@ -4,7 +4,7 @@ import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import {
   Banner,

@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import { MdxContent } from '../../components';
 

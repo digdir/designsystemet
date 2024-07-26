@@ -5,7 +5,7 @@ import {
   Paragraph,
   Link,
 } from '@digdir/designsystemet-react';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import { MdxContent, Image } from '../../../../components';
 import { Figures } from '../Figures';

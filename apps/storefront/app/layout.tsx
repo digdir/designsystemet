@@ -4,7 +4,7 @@ import '@digdir/designsystemet-theme';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { Header } from '@digdir/components';
+import { Header } from '@repo/components';
 
 import { Footer } from '../components/Footer/Footer';
 

@@ -2585,19 +2585,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digdir/components@workspace:^, @digdir/components@workspace:apps/_components":
-  version: 0.0.0-use.local
-  resolution: "@digdir/components@workspace:apps/_components"
-  dependencies:
-    "@digdir/designsystemet-react": "workspace:^"
-    "@navikt/aksel-icons": "npm:^5.12.2"
-    typescript: "npm:^5.4.2"
-  peerDependencies:
-    react: ">=18.3.1"
-    react-dom: ">=18.3.1"
-  languageName: unknown
-  linkType: soft
-
 "@digdir/create-tokens@workspace:packages/create-tokens":
   version: 0.0.0-use.local
   resolution: "@digdir/create-tokens@workspace:packages/create-tokens"
@@ -4458,6 +4445,19 @@ __metadata:
   checksum: 10/0bfbf2a04707e7f7fde5c76614e7990945a6d854d50c1f9f63cea50208ff864a8920420534ff7ddff6a0bcb584c84456d2f7613d6d6e896db46cafcc70d8fb65
   languageName: node
   linkType: hard
+
+"@repo/components@workspace:^, @repo/components@workspace:apps/_components":
+  version: 0.0.0-use.local
+  resolution: "@repo/components@workspace:apps/_components"
+  dependencies:
+    "@digdir/designsystemet-react": "workspace:^"
+    "@navikt/aksel-icons": "npm:^5.12.2"
+    typescript: "npm:^5.4.2"
+  peerDependencies:
+    react: ">=18.3.1"
+    react-dom: ">=18.3.1"
+  languageName: unknown
+  linkType: soft
 
 "@rollup/plugin-commonjs@npm:^26.0.1":
   version: 26.0.1
@@ -21034,7 +21034,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "storefront@workspace:apps/storefront"
   dependencies:
-    "@digdir/components": "workspace:^"
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
@@ -21042,6 +21041,7 @@ __metadata:
     "@mdx-js/react": "npm:^3.0.1"
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@next/mdx": "npm:^14.2.4"
+    "@repo/components": "workspace:^"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     "@vercel/analytics": "npm:^1.1.1"
@@ -21813,13 +21813,13 @@ __metadata:
   resolution: "theme@workspace:apps/theme"
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
-    "@digdir/components": "workspace:^"
     "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
     "@navikt/aksel-icons": "npm:^6.6.0"
     "@react-awesome/use-click-outside": "npm:^0.0.3"
+    "@repo/components": "workspace:^"
     "@types/chroma-js": "npm:^2"
     "@types/react": "npm:^18.3.3"
     "@types/react-color": "npm:^3.0.12"

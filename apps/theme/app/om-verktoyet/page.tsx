@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import classes from './page.module.css';
 

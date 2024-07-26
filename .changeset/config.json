@@ -15,6 +15,6 @@
     "storefront",
     "theme",
     "figma-plugin",
-    "@digdir/components"
+    "@repo/components"
   ]
 }

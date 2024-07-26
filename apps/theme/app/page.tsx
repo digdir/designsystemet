@@ -19,7 +19,7 @@ import {
   areColorsContrasting,
   isHexColor,
 } from '@digdir/designsystemet/color';
-import { Container, ColorModal } from '@digdir/components';
+import { Container, ColorModal } from '@repo/components';
 
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';

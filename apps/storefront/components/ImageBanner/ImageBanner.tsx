@@ -5,7 +5,7 @@ import { useEffect, useState, createElement } from 'react';
 import cl from 'clsx/lite';
 import { Link, Button } from '@digdir/designsystemet-react';
 import NextLink from 'next/link';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import classes from './ImageBanner.module.css';
 

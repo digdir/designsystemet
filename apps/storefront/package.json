@@ -10,7 +10,6 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@digdir/components": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
@@ -18,6 +17,7 @@
     "@mdx-js/react": "^3.0.1",
     "@navikt/aksel-icons": "^5.12.2",
     "@next/mdx": "^14.2.4",
+    "@repo/components": "workspace:^",
     "@vercel/analytics": "^1.1.1",
     "hastscript": "^9.0.0",
     "next": "^14.2.4",

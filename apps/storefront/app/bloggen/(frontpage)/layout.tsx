@@ -1,6 +1,6 @@
 import { PencilIcon } from '@navikt/aksel-icons';
 import type { Metadata } from 'next';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import { Banner, BannerIcon, BannerHeading } from 'components/Banner/Banner';
 
