@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useId, forwardRef } from 'react';
-import type * as React from 'react';
+import type { ReactNode, InputHTMLAttributes } from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { useVirtualizer } from '@tanstack/react-virtual';
@@ -25,9 +25,11 @@ import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxProps = {
   /**
-   * Label for the combobox
+   * Label for the combobox.
+   *
+   * Passed label will be encapsulated by a `label` element.
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Visually hides `label` and `description` (still available for screen readers)
    * @default false
@@ -114,7 +116,7 @@ export type ComboboxProps = {
   chipSrLabel?: (option: Option) => string;
 } & PortalProps &
   FormFieldProps &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
