@@ -11,10 +11,11 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@digdir/design-system-react",
-    "storefront",
+    "dev",
     "theme",
-    "figma-plugin",
-    "@repo/components"
+    "storefront",
+    "@repo/components",
+    "@digdir/design-system-react",
+    "figma-plugin"
   ]
 }
