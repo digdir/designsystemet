@@ -8,7 +8,7 @@ import { ComboboxContext } from '../ComboboxContext';
 
 import { SelectedIcon } from './SelectedIcon';
 import ComboboxOptionDescription from './Description';
-import useComboboxOption from './useComboboxOption';
+import { useComboboxOption } from './useComboboxOption';
 
 export type ComboboxOptionProps = {
   /**
