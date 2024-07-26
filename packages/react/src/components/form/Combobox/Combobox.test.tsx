@@ -347,4 +347,20 @@ describe('Combobox', () => {
 
     expect(combobox).toHaveAttribute('aria-busy', 'true');
   });
+
+  it('should have correct label when used as ReactNode', async () => {
+    await render({
+      label: (
+        <>
+          <strong>
+            <abbr>CSS</abbr>
+          </strong>
+          (Cascading Style Sheets)
+        </>
+      ),
+    });
+    const combobox = screen.getByRole('combobox');
+
+    expect(combobox).toHaveAccessibleName('CSS (Cascading Style Sheets)');
+  });
 });
