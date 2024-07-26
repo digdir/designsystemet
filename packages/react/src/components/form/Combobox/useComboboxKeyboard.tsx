@@ -1,6 +1,6 @@
 import { useDebounceCallback } from '../../../utilities';
 
-import type useCombobox from './useCombobox';
+import type { useCombobox } from './useCombobox';
 import { useComboboxId } from './ComboboxIdContext';
 import type { ComboboxContextType } from './ComboboxContext';
 

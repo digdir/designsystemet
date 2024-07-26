@@ -1,22 +1,23 @@
 import { useContext, useEffect, useId, useMemo } from 'react';
+import type { Ref } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
 import { useDebounceCallback } from '../../../../utilities';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
-import { prefix } from '../useCombobox';
+import { prefix } from '../utilities';
 
 type UseComboboxOptionProps = {
   id?: string;
-  ref: React.Ref<HTMLButtonElement>;
+  ref: Ref<HTMLButtonElement>;
   value: string;
 };
 
-export default function useComboboxOption({
+export const useComboboxOption = ({
   id,
   ref,
   value,
-}: UseComboboxOptionProps) {
+}: UseComboboxOptionProps) => {
   const generatedId = useId();
   const newId = id || generatedId;
 
@@ -71,4 +72,4 @@ export default function useComboboxOption({
     active,
     onOptionClick: onOptionClickDebounced,
   };
-}
+};

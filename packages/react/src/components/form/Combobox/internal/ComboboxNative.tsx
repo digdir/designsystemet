@@ -1,6 +1,6 @@
 import type { Option } from '../useCombobox';
 import type { ComboboxProps } from '../Combobox';
-import { removePrefix } from '../useCombobox';
+import { removePrefix } from '../utilities';
 
 type ComboboxNativeProps = {
   selectedOptions: {

@@ -9,7 +9,7 @@ import type { useFormField } from '../useFormField';
 
 import type { ComboboxProps } from './Combobox';
 import type { Option } from './useCombobox';
-import type useCombobox from './useCombobox';
+import type { useCombobox } from './useCombobox';
 
 export type ComboboxContextType = {
   multiple: NonNullable<ComboboxProps['multiple']>;

@@ -3,7 +3,8 @@ import { useState } from 'react';
 import cl from 'clsx/lite';
 import type { Placement } from '@floating-ui/utils';
 
-import { Popover, Paragraph } from '../';
+import { Popover } from '../Popover';
+import { Paragraph } from '../Typography/Paragraph';
 import type { PopoverRootProps } from '../Popover/PopoverRoot';
 import type { PortalProps } from '../../types/Portal';
 
@@ -27,7 +28,7 @@ export type HelpTextProps = {
 } & PortalProps &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
-const HelpText = ({
+export const HelpText = ({
   title,
   placement = 'right',
   portal,
@@ -93,5 +94,3 @@ const HelpText = ({
 };
 
 HelpText.displayName = 'HelpText';
-
-export { HelpText };

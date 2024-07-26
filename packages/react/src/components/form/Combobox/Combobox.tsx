@@ -12,7 +12,8 @@ import { useDebounceCallback, omit } from '../../../utilities';
 import { Spinner } from '../../Spinner';
 
 import type { Option } from './useCombobox';
-import useCombobox, { prefix, removePrefix } from './useCombobox';
+import { useCombobox } from './useCombobox';
+import { prefix, removePrefix } from './utilities';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxError from './internal/ComboboxError';
