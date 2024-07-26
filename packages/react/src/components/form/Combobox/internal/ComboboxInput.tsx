@@ -5,11 +5,12 @@ import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
 
 import { ComboboxContext } from '../ComboboxContext';
-import { Box, Paragraph } from '../../../';
+import { Paragraph } from '../../../Typography';
+import { Box } from '../../../Box';
 import { omit } from '../../../../utilities';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import type { ComboboxProps } from '../Combobox';
-import { prefix } from '../useCombobox';
+import { prefix } from '../utilities';
 
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';

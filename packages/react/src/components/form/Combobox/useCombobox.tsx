@@ -1,17 +1,14 @@
-import {
-  useMemo,
-  Children,
-  useState,
-  isValidElement,
-  useCallback,
-} from 'react';
+import { useMemo, Children, useState, useCallback } from 'react';
 import type { ReactNode, ReactElement } from 'react';
 
-import { ComboboxOption } from './Option/Option';
-import { ComboboxCustom } from './Custom';
 import type { ComboboxOptionProps } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
+import {
+  isComboboxOption,
+  isInteractiveComboboxCustom,
+  prefix,
+} from './utilities';
 
 export type UseComboboxProps = {
   children: ReactNode;
@@ -30,25 +27,7 @@ export type Option = {
 
 const isOption = (option: Option | undefined): option is Option => !!option;
 
-export function isComboboxOption(
-  child: ReactNode,
-): child is ReactElement<ComboboxOptionProps> {
-  return isValidElement(child) && child.type === ComboboxOption;
-}
-
-export function isComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
-  return isValidElement(child) && child.type === ComboboxCustom;
-}
-
-export function isInteractiveComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
-  return isComboboxCustom(child) && child.props.interactive === true;
-}
-
-export default function useCombobox({
+export function useCombobox({
   children,
   inputValue,
   multiple,

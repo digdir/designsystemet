@@ -7,8 +7,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 
 import type { RovingFocusElement } from './RovingFocusRoot';
-
-import { useRovingFocus } from '.';
+import { useRovingFocus } from './useRovingFocus';
 
 type RovingFocusItemProps = {
   /** The value of the `RovingFocusItem` used to determine which item should have focus. */

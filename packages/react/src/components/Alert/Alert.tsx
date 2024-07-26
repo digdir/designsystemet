@@ -8,7 +8,7 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
-import { Paragraph } from '..';
+import { Paragraph } from '../Typography';
 
 const icons: Record<
   Severity,

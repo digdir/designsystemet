@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import cl from 'clsx/lite';
 
-import { RovingFocusItem } from '../../utilities/RovingFocus';
+import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
 import { Paragraph } from '../Typography';
 
 import { useTabItem } from './useTab';

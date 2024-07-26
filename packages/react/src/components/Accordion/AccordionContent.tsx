@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
 import { AnimateHeight } from '../../utilities/AnimateHeight';
-import { Paragraph } from '..';
+import { Paragraph } from '../Typography';
 
 import { AccordionItemContext } from './AccordionItem';
 
