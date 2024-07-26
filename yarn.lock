@@ -2378,6 +2378,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@changesets/get-github-info@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "@changesets/get-github-info@npm:0.5.2"
+  dependencies:
+    dataloader: "npm:^1.4.0"
+    node-fetch: "npm:^2.5.0"
+  checksum: 10/d1fb63ff7d9aa6aef91a4d2f3649b984e59687340e49350f8d1870a2fc150eaa1530bd3e5a07992a0cfe2fb57fedd91dd42eae0e4b845c83f5d98abbfc14f155
+  languageName: node
+  linkType: hard
+
 "@changesets/get-github-info@npm:^0.6.0":
   version: 0.6.0
   resolution: "@changesets/get-github-info@npm:0.6.0"
@@ -5891,6 +5901,16 @@ __metadata:
   peerDependencies:
     "@svgr/core": "*"
   checksum: 10/59d9d214cebaacca9ca71a561f463d8b7e5a68ca9443e4792a42d903acd52259b1790c0680bc6afecc3f00a255a6cbd7ea278a9f625bac443620ea58a590c2d0
+  languageName: node
+  linkType: hard
+
+"@svitejs/changesets-changelog-github-compact@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@svitejs/changesets-changelog-github-compact@npm:1.1.0"
+  dependencies:
+    "@changesets/get-github-info": "npm:^0.5.2"
+    dotenv: "npm:^16.0.3"
+  checksum: 10/51a8727f6ee5d0eddc48c24ef1b809d714d1d1b04cbb4bbb33f39e3096708e7f5957274a2fcaa8eeb273a16295f0f612ca4d7e5e672dfce558e1f3d7faeb1815
   languageName: node
   linkType: hard
 
@@ -10348,7 +10368,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.2":
+"dotenv@npm:^16.0.3, dotenv@npm:^16.4.2":
   version: 16.4.5
   resolution: "dotenv@npm:16.4.5"
   checksum: 10/55a3134601115194ae0f924e54473459ed0d9fc340ae610b676e248cca45aa7c680d86365318ea964e6da4e2ea80c4514c1adab5adb43d6867fb57ff068f95c8
@@ -20280,6 +20300,7 @@ __metadata:
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-vite": "npm:^8.1.11"
     "@storybook/theming": "npm:^8.1.11"
+    "@svitejs/changesets-changelog-github-compact": "npm:^1.1.0"
     "@testing-library/dom": "npm:^10.2.0"
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/react": "npm:^16.0.0"
