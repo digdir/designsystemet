@@ -10,7 +10,7 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
-import { ClipboardButton } from '@digdir/components';
+import { ClipboardButton } from '@repo/components';
 import { getColorNameFromNumber } from '@digdir/designsystemet/color';
 
 import { capitalizeString } from '../../../utils/StringHelpers';

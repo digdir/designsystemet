@@ -5,7 +5,7 @@ import {
   getCssVariable,
   hexToHsluv,
 } from '@digdir/designsystemet/color';
-import { ClipboardButton } from '@digdir/components';
+import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
 import {

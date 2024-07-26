@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import {
   Banner,

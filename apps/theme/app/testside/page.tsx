@@ -5,7 +5,7 @@ import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorInfo } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import { Settings } from '../../settings';
 

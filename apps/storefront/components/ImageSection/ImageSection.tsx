@@ -3,7 +3,7 @@ import { useEffect, useState, createElement } from 'react';
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import cl from 'clsx/lite';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import classes from './ImageSection.module.css';
 

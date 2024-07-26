@@ -1,5 +1,5 @@
 import { ComponentFillIcon } from '@navikt/aksel-icons';
-import { Container } from '@digdir/components';
+import { Container } from '@repo/components';
 
 import {
   Banner,
