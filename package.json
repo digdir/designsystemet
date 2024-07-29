@@ -3,11 +3,7 @@
   "version": "0.0.0",
   "packageManager": "yarn@4.2.2",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "apps/*",
-    "plugins/*"
-  ],
+  "workspaces": ["packages/*", "apps/*", "plugins/*"],
   "scripts": {
     "test": "vitest",
     "storybook": "yarn workspace storybook dev",
@@ -25,8 +21,8 @@
     "build:storefront": "yarn workspace storefront building",
     "build:devsite": "yarn workspace dev building",
     "start:storefront": "yarn workspace storefront start",
-    "lint": "eslint",
-    "lint:all": "eslint .",
+    "lint": "biome lint",
+    "lint:all": "biome ci .",
     "lint:all:fix": "yarn run lint:all --fix",
     "lint-style": "stylelint  \"**/*.css\"",
     "lint-style:fix": "yarn run lint-style --fix",
