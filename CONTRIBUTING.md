@@ -12,16 +12,22 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [Share your feedback and report issues](#share-your-feedback-and-report-issues)
-- [I Want To Contribute](#i-want-to-contribute)
-  - [Getting involved with development](#getting-involved-with-development)
-  - [Getting started with development](#getting-started-with-development)
-  - [Pull requests](#pull-requests)
-- [Styleguides](#styleguides)
-  - [Commit Messages](#commit-messages)
-  - [How to write and structure your code](#how-to-write-and-structure-your-code)
-- [Publishing NPM packages](#publishing-npm-packages)
+- [Contributing to Designsystemet](#contributing-to-designsystemet)
+  - [Table of Contents](#table-of-contents)
+  - [Code of Conduct](#code-of-conduct)
+  - [Share your feedback and report issues](#share-your-feedback-and-report-issues)
+  - [I Want To Contribute](#i-want-to-contribute)
+    - [Getting involved with development](#getting-involved-with-development)
+      - [Addressing minor bugs and handling smaller feature requests](#addressing-minor-bugs-and-handling-smaller-feature-requests)
+      - [Developing new components and handling larger tasks](#developing-new-components-and-handling-larger-tasks)
+    - [Getting started with development](#getting-started-with-development)
+      - [4. Start local development servers](#4-start-local-development-servers)
+    - [Pull requests](#pull-requests)
+  - [Styleguides](#styleguides)
+    - [Commit Messages](#commit-messages)
+      - [Scope](#scope)
+        - [Examples:](#examples)
+      - [When to use what keywords](#when-to-use-what-keywords)
 
 ---
 
@@ -76,25 +82,12 @@ Developing components for the design system requires that developers are closely
 
 ### Getting started with development
 
-Follow these steps to get up and running with storybook and the storefront.
+Follow these steps to get up and running with Storybook or Storefront (designsystemet.no).
 
 Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
 
-#### 1. Install Node 16+ and Yarn 3
-
-Make sure `node` and `yarn` is installed by running: `node --version && yarn --version`
-
-#### 2. Install dependencies
-
-`yarn install`
-
-This will install all the dependancies.
-
-#### 3. Build packages
-
+`yarn`
 `yarn build`
-
-This is required to make sure dependencies between local packages are available. You only need to run this once.
 
 #### 4. Start local development servers
 
@@ -119,7 +112,7 @@ When creating a pull request for the design system, there are a few things to ke
 
 ### Commit Messages
 
-This project uses Lerna with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+This project uses Changesets with the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 specification in order to generate changelogs.
 
 The [Semantic Versioning 2.0](https://semver.org/) specification is used for versioning.
@@ -142,91 +135,6 @@ To make commit messages and the changelog more specific and readable, you have t
 
 It is crucial to understand the distinctions between the two sections mentioned below. If you wish for commit messages to be included in the changelog, please use `fix:` or `feat:` as keywords. These keywords indicate changes that impact the users of our NPM packages and are therefore significant to highlight. For any other types of changes that do not directly affect the end user, please utilize a different keyword. If you are uncertain about which keyword to use and the changes are non-user-facing, you can use `chore:` as a default keyword.
 
-##### Added to changelog
-
-- `fix:` Patches a bug in the codebase. Nothing new is introduced in terms of functionality.
-- `feat:` Introduces a new feature to the codebase. A new component is an often use case.
-
-##### Not added to changelog
-
-- `build:` Changes that affect the build system or external dependencies (example scopes: rollup, stylelint, npm)
-- `chore:` Other changes that don't modify src or test files
-- `docs:` Documentation only changes
-- `style:` Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- `test:` Adding missing tests or correcting existing tests
-- `refactor:` A code change that neither fixes a bug nor adds a feature
-- `revert:` Reverts a previous commit
-- `perf:` A code change that improves performance
-
-### How to write and structure your code
-
-To ensure a consistent and enjoyable coding experience for everyone, we have established guidelines for writing our code.
-
-#### Styling with CSS Modules
-
-When styling components for react, the css lives in `packages/css`. We use [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), so make sure you are familiar with this
-if you are creating new files in our css package.
-
-We use CSS modules for our apps. This prevents naming conflicts by adding a unique prefix to all components.
-A CSS module file is created by adding `.module.css` to the end of the CSS file.
-
-#### Use of design tokens
-
-When styling our components we try to always use semantic tokens from the `@digdir/designsystemet-theme` package when available.
-Using hard-coded values is not reusable and we therefore try to avoid this.
-To learn more about what tokens are available visit our [documentation page](https://www.designsystemet.no/grunnleggende/designelementer/design-tokens).
-
-#### Formatting and linting
-
-In this project, we employ [Prettier](https://prettier.io/) for code formatting. It is advisable to configure your code editor to automatically format files upon saving. This practice will prove beneficial when merging your changes into the main branch. It's worth noting that we enforce rigorous code checks in pull requests, emphasizing the importance of consistent code formatting.
-
-TypeScript and CSS files have been configured with linting, which means that the project will scan these files for potential problems or issues. Linting helps maintain code quality by detecting errors, enforcing coding conventions, and promoting best practices. You have to fix all errors and warnings before the code can be merged into the main branch.
-
-We use [Editorconfig](https://editorconfig.org/) for defining rules and formatting for the IDE.
-
-#### Use of TypeScript files
-
-In code contributions for this project, we do not permit JavaScript files. The use of TypeScript ensures the safety and testability of our code.
-
 ---
-
-## Publishing NPM packages
-
-The following documentation outlines the process for releasing new versions of the NPM packages. Please note that in order to release, you must have an NPM account that is connected to the Digdir organization on NPM. Make sure you are in the `main` branch before proceeding further. Publishing from other branches may lead to issues with the changelog.
-
-### 1. Build distribution files
-
-`yarn build`
-
-Build distribution files for all the packages. Make sure they all run successfully before proceeding to next step.
-
-### 2. Prepare new version
-
-`yarn lerna:version`
-
-This step does a few things:
-
-- Suggests a new version based on the latest commits. Make sure the version is correct before clicking enter. A user error with a commit message might suggest a version that is wrong.
-- Creates a new tag with the latest version number.
-- Commits the changes.
-- Pushes the changes to github.
-
-### 3. Make sure you are logged in to NPM
-
-`npm whoami`
-
-This command will return if you are logged in or not.
-
-### 4. Publish to NPM
-
-`yarn lerna:publish`
-
-Your account also has to be added to the Digdir organisation on NPM.
-
-### 5. Paste the latest changelog entry into the design system Slack channel
-
-You can copy markdown from the changelog in storybook to get nice styling and commit links.
-
-Please ensure that the appearance closely matches the image below. Consistency plays a vital role when interacting with our end users.
 
 ![te](https://i.imgur.com/Uw0qA1O.png)
