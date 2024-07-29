@@ -1,5 +1,26 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [
+      "node_modules",
+      "dist",
+      "tsc-build",
+      "packages/theme/brand/**/*",
+      "apps/storefront/tokens/**",
+      "design-tokens/**/*",
+      "packages/react-old/**/*",
+      ".next/**/*"
+    ]
+  },
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2,
+      "lineEnding": "lf",
+      "lineWidth": 120
+    }
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -127,6 +148,19 @@
     ]
   },
   "javascript": {
+    "globals": [
+      "expect",
+      "it",
+      "describe",
+      "test",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll",
+      "vi",
+      "React",
+      "JSX"
+    ],
     "formatter": {
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
