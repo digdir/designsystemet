@@ -22,6 +22,6 @@
   "dependencies": {
     "@commander-js/extra-typings": "^12.0.1",
     "commander": "^12.0.0",
-    "tsx": "^4.11.2"
+    "tsx": "^4.16.2"
   }
 }

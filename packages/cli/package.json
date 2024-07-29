@@ -63,13 +63,13 @@
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.11.11",
-    "@types/node": "^20.14.12",
-    "@types/object-hash": "^3",
+    "@types/node": "^22.0.0",
+    "@types/object-hash": "^3.0.6",
     "@types/prompts": "^2.4.9",
     "@types/ramda": "^0.29.9",
     "fs-extra": "^11.2.0",
-    "tsup": "^8.1.0",
-    "tsx": "^4.11.2",
-    "typescript": "^5.4.5"
+    "tsup": "^8.2.3",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
   }
 }
