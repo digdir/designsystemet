@@ -116,15 +116,7 @@ import { Button } from '@digdir/designsystemet-react';
 
 ## 🫶 Contributing
 
-Learn how you can contribute to this project by reading our Code of Conduct and Contributing Guide.
-
-### Code of Conduct
-
-The [Code of Conduct](./CODE_OF_CONDUCT.md) emphasizes the importance of respectful communication and the avoidance of discrimination, harassment, or any harmful behavior, promoting a positive and diverse community.
-
-### Contributing Guide
-
-Our [Contributing Guide](./CONTRIBUTING.md) provides clear instructions on how to participate in the project, ensuring that developers can efficiently contribute their skills and ideas to the community.
+Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
 
 ---
 
