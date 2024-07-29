@@ -16,7 +16,7 @@ export default {
 export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
   <Accordion.Root {...args}>
     <Accordion.Item>
-      <Accordion.Heading level={3}>
+      <Accordion.Heading>
         Hvem kan registrere seg i Frivillighetsregisteret?
       </Accordion.Heading>
       <Accordion.Content>
@@ -27,7 +27,7 @@ export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Heading level={3}>
+      <Accordion.Heading>
         Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
       </Accordion.Heading>
       <Accordion.Content>
@@ -45,7 +45,7 @@ export const AccordionBorder: StoryFn<typeof Accordion.Root> = () => (
     color='subtle'
   >
     <Accordion.Item>
-      <Accordion.Heading level={3}>Vedlegg</Accordion.Heading>
+      <Accordion.Heading>Vedlegg</Accordion.Heading>
       <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>
@@ -57,7 +57,7 @@ export const AccordionColor: StoryFn<typeof Accordion.Root> = () => (
     color='brand2'
   >
     <Accordion.Item>
-      <Accordion.Heading level={3}>
+      <Accordion.Heading>
         Hvordan får jeg tildelt et jegernummer?
       </Accordion.Heading>
       <Accordion.Content>
@@ -66,7 +66,7 @@ export const AccordionColor: StoryFn<typeof Accordion.Root> = () => (
       </Accordion.Content>
     </Accordion.Item>
     <Accordion.Item>
-      <Accordion.Heading level={3}>
+      <Accordion.Heading>
         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
       </Accordion.Heading>
       <Accordion.Content>
@@ -92,7 +92,7 @@ export const Controlled: StoryFn<typeof Accordion.Root> = () => {
       <br />
       <Accordion.Root>
         <Accordion.Item open={open}>
-          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onClick={() => setOpen(!open)}>
             Enkeltpersonforetak
           </Accordion.Heading>
           <Accordion.Content>
@@ -104,7 +104,7 @@ export const Controlled: StoryFn<typeof Accordion.Root> = () => {
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onClick={() => setOpen(!open)}>
             Aksjeselskap (AS)
           </Accordion.Heading>
           <Accordion.Content>
@@ -116,7 +116,7 @@ export const Controlled: StoryFn<typeof Accordion.Root> = () => {
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item open={open}>
-          <Accordion.Heading onHeaderClick={() => setOpen(!open)}>
+          <Accordion.Heading onClick={() => setOpen(!open)}>
             Ansvarlig selskap (ANS/DA)
           </Accordion.Heading>
           <Accordion.Content>

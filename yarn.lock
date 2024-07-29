@@ -2640,6 +2640,7 @@ __metadata:
     "@navikt/aksel-icons": "npm:^5.12.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@tanstack/react-virtual": "npm:^3.5.1"
+    "@u-elements/u-details": "npm:^0.0.5"
     copyfiles: "npm:^2.4.1"
     rimraf: "npm:^5.0.5"
     rollup: "npm:^4.12.1"
@@ -7222,6 +7223,13 @@ __metadata:
     "@typescript-eslint/types": "npm:6.15.0"
     eslint-visitor-keys: "npm:^3.4.1"
   checksum: 10/4641a829485f67a5d9d3558aa0d152e5ab57b468cfd9653168ce9a141e1f051730669a024505183b64f7a7e5d8f62533af4ebd4ad7366b551390461e9c45ec18
+  languageName: node
+  linkType: hard
+
+"@u-elements/u-details@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@u-elements/u-details@npm:0.0.5"
+  checksum: 10/1bbfa9c1fa2fadf55a77d5cd6065d1a27202628f3567e88b239792602fd5df900bb3e2175e7f5b15509d8f94a33ae5a95a61ed335a66b7b21b9fa41a1ad4f4a5
   languageName: node
   linkType: hard
 
