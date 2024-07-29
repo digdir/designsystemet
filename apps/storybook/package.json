@@ -1,7 +1,7 @@
 {
-  "name": "storybook",
+  "name": "@designsystemet/storybook",
   "version": "0.1.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o ./dist"
