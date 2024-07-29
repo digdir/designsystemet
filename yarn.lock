@@ -20247,21 +20247,10 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.23.3"
     "@changesets/changelog-github": "npm:^0.5.0"
     "@changesets/cli": "npm:^2.27.7"
-    "@chromatic-com/storybook": "npm:^1.5.0"
     "@next/eslint-plugin-next": "npm:^14.2.4"
     "@prettier/sync": "npm:^0.5.2"
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
-    "@storybook/addon-a11y": "npm:^8.1.11"
-    "@storybook/addon-essentials": "npm:^8.1.11"
-    "@storybook/addon-interactions": "npm:^8.1.11"
-    "@storybook/addon-links": "npm:^8.1.11"
-    "@storybook/addon-mdx-gfm": "npm:^8.1.11"
-    "@storybook/addon-themes": "npm:^8.1.11"
-    "@storybook/blocks": "npm:^8.1.11"
-    "@storybook/react": "npm:^8.1.11"
-    "@storybook/react-vite": "npm:^8.1.11"
-    "@storybook/theming": "npm:^8.1.11"
     "@svitejs/changesets-changelog-github-compact": "npm:^1.1.0"
     "@testing-library/dom": "npm:^10.2.0"
     "@testing-library/jest-dom": "npm:^6.4.6"
@@ -20301,8 +20290,6 @@ __metadata:
     rollup: "npm:^4.12.1"
     rollup-plugin-peer-deps-external: "npm:^2.2.4"
     rollup-plugin-postcss: "npm:^4.0.2"
-    storybook: "npm:^8.1.11"
-    storybook-css-modules: "npm:^1.0.8"
     stylelint: "npm:^16.0.2"
     stylelint-config-css-modules: "npm:^4.4.0"
     stylelint-config-standard: "npm:^35.0.0"
@@ -21056,13 +21043,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"storybook-css-modules@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "storybook-css-modules@npm:1.0.8"
-  checksum: 10/49982090747338ba580faeed9562de0e6cbbeec18206336bfdf4eccd66a8be35669abbb5adc544d23309c1514f56e6bcf5602942e2d8636b3b9418b0f57d8ffa
-  languageName: node
-  linkType: hard
-
 "storybook@npm:^8.1.11":
   version: 8.1.11
   resolution: "storybook@npm:8.1.11"
@@ -21074,6 +21054,29 @@ __metadata:
   checksum: 10/b3fdf0bd980759a347bb19e34f06a954f09250bbde2ae6411d77b3154973f177d231e1a870a8111dae67886e4eb2ca4c9b763356510f07574d7ad378c5de6e82
   languageName: node
   linkType: hard
+
+"storybook@workspace:apps/storybook":
+  version: 0.0.0-use.local
+  resolution: "storybook@workspace:apps/storybook"
+  dependencies:
+    "@chromatic-com/storybook": "npm:^1.5.0"
+    "@digdir/designsystemet-css": "workspace:^"
+    "@digdir/designsystemet-react": "workspace:^"
+    "@digdir/designsystemet-theme": "workspace:^"
+    "@storybook/addon-a11y": "npm:^8.1.11"
+    "@storybook/addon-essentials": "npm:^8.1.11"
+    "@storybook/addon-interactions": "npm:^8.1.11"
+    "@storybook/addon-links": "npm:^8.1.11"
+    "@storybook/addon-mdx-gfm": "npm:^8.1.11"
+    "@storybook/addon-themes": "npm:^8.1.11"
+    "@storybook/blocks": "npm:^8.1.11"
+    "@storybook/react": "npm:^8.1.11"
+    "@storybook/react-vite": "npm:^8.1.11"
+    "@storybook/theming": "npm:^8.1.11"
+    remark-gfm: "npm:^4.0.0"
+    storybook: "npm:^8.1.11"
+  languageName: unknown
+  linkType: soft
 
 "stream-shift@npm:^1.0.0":
   version: 1.0.1

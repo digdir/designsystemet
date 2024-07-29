@@ -1,11 +1,11 @@
-import '../../packages/css/index.css';
-import '../../packages/theme/brand/digdir.css';
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme/digdir.css';
 
 import type { Preview } from '@storybook/react';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
-import type { LinkProps } from '../../packages/react';
-import { Paragraph, Link, List, Table } from '../../packages/react';
+import type { LinkProps } from '@digdir/designsystemet-react';
+import { Paragraph, Link, List, Table } from '@digdir/designsystemet-react';
 
 import customTheme from './customTheme';
 

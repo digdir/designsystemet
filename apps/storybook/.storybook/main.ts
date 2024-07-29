@@ -24,38 +24,27 @@ const config: StorybookConfig = {
     }, */
   },
   stories: [
-    '../../packages/*.mdx',
-    '../../packages/css/**/*.mdx',
-    '../../packages/theme/**/*.mdx',
-    '../../packages/react/**/*.mdx',
-    '../../packages/react/**/*.stories.ts?(x)',
+    '../../../packages/*.mdx',
+    '../../../packages/css/**/*.mdx',
+    '../../../packages/theme/**/*.mdx',
+    '../../../packages/react/**/*.mdx',
+    '../../../packages/react/**/*.stories.ts?(x)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
-    {
-      name: 'storybook-css-modules',
-      options: {
-        cssModulesLoaderOptions: {
-          importLoaders: 1,
-          modules: {
-            localIdentName: '[name]_[local]__[hash:base64:5]',
-          },
-        },
-      },
-    },
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
     '@storybook/addon-themes',
   ],
-  staticDirs: ['./assets'],
+  staticDirs: ['../assets'],
   framework: {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: resolve(__dirname, '../..//vite.config.ts'),
+        viteConfigPath: resolve(__dirname, '../../../vite.config.ts'),
       },
     },
   },
