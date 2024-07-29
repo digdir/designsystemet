@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "vitest",
-    "storybook": "yarn workspace storybook dev",
+    "storybook": "yarn workspace @designsystemet/storybook dev",
     "storefront": "yarn workspace storefront dev",
     "theme": "yarn workspace theme dev",
     "devsite": "yarn workspace dev dev",
@@ -21,7 +21,7 @@
     "build:react": "yarn workspace @digdir/designsystemet-react build",
     "build:tokens": "yarn workspace @digdir/designsystemet build:tokens",
     "build:css": "yarn workspace @digdir/designsystemet-css build",
-    "build:storybook": "yarn workspace storybook build",
+    "build:storybook": "yarn workspace @designsystemet/storybook build",
     "build:storefront": "yarn workspace storefront building",
     "build:devsite": "yarn workspace dev building",
     "start:storefront": "yarn workspace storefront start",
