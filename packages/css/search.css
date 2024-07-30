@@ -53,7 +53,7 @@
 }
 
 .ds-search__input {
-  background: var(---dsc-search-input-background);
+  background: var(--dsc-search-input-background);
   color: var(--dsc-search-input-color);
   border: var(--dsc-search-input-border);
   border-radius: var(--ds-border-radius-md);
