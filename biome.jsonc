@@ -85,7 +85,20 @@
         "useJsxKeyInIterable": "off",
         "noSelfAssign": "off"
       },
-      "style": { "useBlockStatements": "off" },
+      "style": {
+        "useImportType": "off",
+        "useTemplate": "off",
+        "useNodejsImportProtocol": "off",
+        "useConst": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noInferrableTypes": "off",
+        "noVar": "off",
+        "noParameterAssign": "off",
+        "useNumberNamespace": "off",
+        "noNonNullAssertion": "off",
+        "useSelfClosingElements": "off",
+        "useDefaultParameterLast": "off"
+      },
       "suspicious": {
         "noArrayIndexKey": "off"
       }
