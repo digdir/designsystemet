@@ -1,5 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": { "enabled": true },
   "files": {
     "ignoreUnknown": true,
     "ignore": [
@@ -36,14 +37,6 @@
       "**/tsc-build/**"
     ]
   },
-  "css": {
-    "formatter": {
-      "enabled": true,
-      "indentWidth": 2,
-      "lineEnding": "lf",
-      "lineWidth": 120
-    }
-  },
   "javascript": {
     "globals": [
       "expect",
@@ -59,6 +52,7 @@
       "JSX"
     ],
     "formatter": {
+      "enabled": true,
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "trailingCommas": "all",
@@ -66,7 +60,6 @@
       "attributePosition": "auto"
     }
   },
-  "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
     "rules": {
