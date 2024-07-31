@@ -159,7 +159,6 @@ export const TokenModal = ({
     const darkCSS = generateCSSVars('dark');
     const contrastCSS = generateCSSVars('contrast');
     setCss(lightCSS + darkCSS + contrastCSS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

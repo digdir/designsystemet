@@ -86,7 +86,6 @@ export default function Home() {
     updateColor('brand1', queryBrand1, colors.brand1);
     updateColor('brand2', queryBrand2, colors.brand2);
     updateColor('brand3', queryBrand3, colors.brand3);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contrastMode]);
 
   useEffect(() => {

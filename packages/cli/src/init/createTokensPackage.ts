@@ -39,7 +39,6 @@ const promptOptions: Options = {
 };
 
 export async function createTokensPackage(targetDir: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const DIRNAME: string = import.meta.dirname || __dirname;
   const DEFAULT_FILES_PATH = path.join(DIRNAME, './template/default-files');
   const TOKEN_TEMPLATE_FILES_PATH = path.join(DIRNAME, './template/template-files/design-tokens');

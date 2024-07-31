@@ -75,7 +75,7 @@ describe('NativeSelect', () => {
       async () => await user.selectOptions(screen.getByRole('combobox'), value),
     );
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value);
   });
 
   it('Is disabled when "disabled" is true', () => {

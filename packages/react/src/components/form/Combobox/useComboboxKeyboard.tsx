@@ -67,10 +67,8 @@ export const useComboboxKeyboard = ({
         }
 
         // if we are in the options, find the actual index
-        // eslint-disable-next-line no-case-declarations
         const valueIndex = activeIndex - interactiveChildren.length;
 
-        // eslint-disable-next-line no-case-declarations
         const option = filteredOptions[valueIndex];
 
         handleSelectOption({ option: options[option] });
