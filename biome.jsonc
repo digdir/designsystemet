@@ -78,28 +78,17 @@
         "useAriaPropsForRole": "off"
       },
       "complexity": {
-        "useArrowFunction": "off",
         "noForEach": "off" // TODO: Enable this rule
       },
       "correctness": {
-        "useExhaustiveDependencies": "off",
-        "noInnerDeclarations": "off",
-        "useJsxKeyInIterable": "off",
-        "noSelfAssign": "off"
+        "useExhaustiveDependencies": "off"
       },
       "style": {
-        "useImportType": "off",
         "useTemplate": "off",
-        "useNodejsImportProtocol": "off",
-        "useConst": "off",
         "noUnusedTemplateLiteral": "off",
-        "noInferrableTypes": "off",
-        "noVar": "off",
         "noParameterAssign": "off",
         "useNumberNamespace": "off",
-        "noNonNullAssertion": "off",
-        "useSelfClosingElements": "off",
-        "useDefaultParameterLast": "off"
+        "useSelfClosingElements": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
