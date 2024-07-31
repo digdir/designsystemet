@@ -68,7 +68,9 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       refs,
       floatingStyles,
       placement: flPlacement,
-      middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
+      middlewareData: {
+        arrow: { x: arrowX, y: arrowY } = {},
+      },
     } = useFloating({
       placement,
       open: internalOpen,
@@ -123,10 +125,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       <>
         {internalOpen && (
           <Container>
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 ref={floatingEl}
                 className={cl(

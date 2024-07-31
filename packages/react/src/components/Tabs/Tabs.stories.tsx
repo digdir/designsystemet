@@ -39,22 +39,13 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
   <Tabs.Root defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
-        <AirplaneIcon
-          title='Airplane'
-          fontSize='1.75rem'
-        />
+        <AirplaneIcon title='Airplane' fontSize='1.75rem' />
       </Tabs.Tab>
       <Tabs.Tab value='value2'>
-        <NewspaperIcon
-          title='Newspaper'
-          fontSize='1.75rem'
-        />
+        <NewspaperIcon title='Newspaper' fontSize='1.75rem' />
       </Tabs.Tab>
       <Tabs.Tab value='value3'>
-        <DogIcon
-          title='Dog'
-          fontSize='1.75rem'
-        />
+        <DogIcon title='Dog' fontSize='1.75rem' />
       </Tabs.Tab>
     </Tabs.List>
     <Tabs.Content value='value1'>content 1</Tabs.Content>
@@ -68,17 +59,11 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
 
   return (
     <>
-      <Button
-        size='sm'
-        onClick={() => setValue('value3')}
-      >
+      <Button size='sm' onClick={() => setValue('value3')}>
         Choose Tab 3
       </Button>
       <br />
-      <Tabs.Root
-        value={value}
-        onChange={setValue}
-      >
+      <Tabs.Root value={value} onChange={setValue}>
         <Tabs.List>
           <Tabs.Tab value='value1'>
             <BellIcon fontSize='1.75rem' />

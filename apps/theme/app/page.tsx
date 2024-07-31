@@ -129,7 +129,7 @@ export default function Home() {
     if (queryColor && isHexColor(queryColor.substring(1))) {
       return queryColor as CssColor;
     }
-      return returnColor;
+    return returnColor;
   };
 
   /**
@@ -244,7 +244,8 @@ export default function Home() {
 
     if (!contrast && textCanBeUsed) {
       return 'decorative';
-    }if (contrast && !textCanBeUsed) {
+    }
+    if (contrast && !textCanBeUsed) {
       return 'interaction';
     }
 
@@ -262,10 +263,7 @@ export default function Home() {
 
       <main className={classes.main}>
         <Container>
-          <Heading
-            size='md'
-            className={classes.title}
-          >
+          <Heading size='md' className={classes.title}>
             Sett opp fargetema
           </Heading>
           <ThemeToolbar
@@ -287,10 +285,7 @@ export default function Home() {
           />
           <Scales themeMode={themeMode} />
 
-          <Previews
-            themeMode={themeMode}
-            onThemeModeChange={updateTheme}
-          />
+          <Previews themeMode={themeMode} onThemeModeChange={updateTheme} />
         </Container>
       </main>
     </div>

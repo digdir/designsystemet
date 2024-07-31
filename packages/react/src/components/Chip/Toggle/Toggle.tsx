@@ -51,11 +51,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         )}
         {...rest}
       >
-        <Paragraph
-          asChild
-          size={group?.size || size}
-          variant='short'
-        >
+        <Paragraph asChild size={group?.size || size} variant='short'>
           <span className={`ds-chip__label`}>
             {shouldDisplayCheckmark && (
               <CheckmarkIcon

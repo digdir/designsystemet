@@ -105,9 +105,4 @@ describe('AnimateHeight', () => {
 });
 
 const render = (props: Partial<AnimateHeightProps> = {}) =>
-  renderRtl(
-    <AnimateHeight
-      {...defaultProps}
-      {...props}
-    />,
-  );
+  renderRtl(<AnimateHeight {...defaultProps} {...props} />);

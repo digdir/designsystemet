@@ -75,10 +75,7 @@ const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     ]);
 
     return (
-      <Label
-        size={size}
-        asChild
-      >
+      <Label size={size} asChild>
         <Component
           ref={combinedRef}
           tabIndex={-1}

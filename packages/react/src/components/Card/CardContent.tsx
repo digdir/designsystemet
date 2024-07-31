@@ -18,10 +18,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Paragraph
-        size='md'
-        asChild
-      >
+      <Paragraph size='md' asChild>
         <Component
           className={cl(`ds-card__content`, className)}
           ref={ref}

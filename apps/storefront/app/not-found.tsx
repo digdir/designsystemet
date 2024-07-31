@@ -25,10 +25,7 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
           />
         </div>
         <div className={classes.textContainer}>
-          <Heading
-            spacing
-            size='md'
-          >
+          <Heading spacing size='md'>
             Denne siden finnes ikke
           </Heading>
           <Paragraph spacing>
@@ -36,10 +33,7 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
             eller slettet.
           </Paragraph>
           <Link asChild>
-            <NextLink
-              href='/'
-              prefetch={false}
-            >
+            <NextLink href='/' prefetch={false}>
               Gå til forsiden
             </NextLink>
           </Link>

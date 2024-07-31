@@ -35,18 +35,9 @@ function App() {
 
       <div className='content'>
         <Routes>
-          <Route
-            path='/'
-            element={<PageOne />}
-          />
-          <Route
-            path='/pageTwo'
-            element={<PageTwo />}
-          />
-          <Route
-            path='/pageThree'
-            element={<PageThree />}
-          />
+          <Route path='/' element={<PageOne />} />
+          <Route path='/pageTwo' element={<PageTwo />} />
+          <Route path='/pageThree' element={<PageThree />} />
         </Routes>
       </div>
       <Footer />

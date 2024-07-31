@@ -49,25 +49,12 @@ const Header = ({ menu, betaTag }: HeaderProps) => {
                 setOpen(!open);
               }}
             >
-              {open && (
-                <XMarkIcon
-                  fontSize={26}
-                  color='#1E2B3C'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  fontSize={26}
-                  color='#1E2B3C'
-                />
-              )}
+              {open && <XMarkIcon fontSize={26} color='#1E2B3C' />}
+              {!open && <MenuHamburgerIcon fontSize={26} color='#1E2B3C' />}
             </button>
             <ul className={cl(classes.menu, open && classes.active)}>
               {menu.map((item, index) => (
-                <li
-                  className={classes.item}
-                  key={index}
-                >
+                <li className={classes.item} key={index}>
                   <Link
                     suppressHydrationWarning
                     href={item.href}

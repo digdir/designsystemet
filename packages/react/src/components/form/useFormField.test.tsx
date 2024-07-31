@@ -8,10 +8,7 @@ import { useFormField } from './useFormField';
 
 const createWrapper = (Wrapper: typeof Fieldset, props?: FieldsetProps) => {
   return ({ children }: { children: ReactNode }) => (
-    <Wrapper
-      legend='Wrapper'
-      {...props}
-    >
+    <Wrapper legend='Wrapper' {...props}>
       {children}
     </Wrapper>
   );

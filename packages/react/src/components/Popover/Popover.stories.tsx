@@ -43,34 +43,19 @@ export const Variants: StoryFn<typeof Popover.Root> = () => {
 
   return (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Popover.Root
-        open={open}
-        placement='top'
-      >
+      <Popover.Root open={open} placement='top'>
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>default</Popover.Content>
       </Popover.Root>
-      <Popover.Root
-        open={open}
-        placement='bottom'
-        variant='danger'
-      >
+      <Popover.Root open={open} placement='bottom' variant='danger'>
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>danger</Popover.Content>
       </Popover.Root>
-      <Popover.Root
-        open={open}
-        placement='top'
-        variant='info'
-      >
+      <Popover.Root open={open} placement='top' variant='info'>
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>info</Popover.Content>
       </Popover.Root>
-      <Popover.Root
-        open={open}
-        placement='bottom'
-        variant='warning'
-      >
+      <Popover.Root open={open} placement='bottom' variant='warning'>
         <Popover.Trigger>popover</Popover.Trigger>
         <Popover.Content>warning</Popover.Content>
       </Popover.Root>
@@ -85,10 +70,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 
   return (
     <>
-      <Popover.Root
-        open={open}
-        onClose={() => setOpen(false)}
-      >
+      <Popover.Root open={open} onClose={() => setOpen(false)}>
         <Popover.Trigger onClick={() => setOpen(!open)}>
           My trigger
         </Popover.Trigger>

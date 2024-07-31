@@ -22,15 +22,8 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { size, ...useTabRest } = useTabItem(props);
 
   return (
-    <RovingFocusItem
-      {...rest}
-      asChild
-    >
-      <Paragraph
-        asChild
-        variant='short'
-        size={size}
-      >
+    <RovingFocusItem {...rest} asChild>
+      <Paragraph asChild variant='short' size={size}>
         <button
           {...useTabRest}
           type='button'

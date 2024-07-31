@@ -63,10 +63,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
               {contrast}
             </div>
             <div className={classes.lightness}>
-              <SunIcon
-                title='a11y-title'
-                fontSize='1.3rem'
-              />
+              <SunIcon title='a11y-title' fontSize='1.3rem' />
               {lightness}
             </div>
           </>

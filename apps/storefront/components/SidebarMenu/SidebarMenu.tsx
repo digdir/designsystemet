@@ -73,10 +73,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
-                              <li
-                                key={index2}
-                                className={classes.listItem}
-                              >
+                              <li key={index2} className={classes.listItem}>
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}

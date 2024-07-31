@@ -111,10 +111,7 @@ const ComboboxInput = ({
   });
 
   return (
-    <Paragraph
-      size={size}
-      asChild
-    >
+    <Paragraph size={size} asChild>
       <Box
         {...props}
         aria-disabled={disabled ? 'true' : undefined}
@@ -128,10 +125,7 @@ const ComboboxInput = ({
         <div className={'ds-combobox__chip-and-input'}>
           {/* If the input is in multiple mode, we need to display chips */}
           {multiple && !hideChips && <ComboboxChips />}
-          <Paragraph
-            size={size}
-            asChild
-          >
+          <Paragraph size={size} asChild>
             <input
               ref={mergedRefs}
               aria-activedescendant={props['aria-activedescendant'] as string}
@@ -159,15 +153,9 @@ const ComboboxInput = ({
         {/* Arrow for combobox. Click is handled by the wrapper */}
         <div className={'ds-combobox__arrow'}>
           {open ? (
-            <ChevronUpIcon
-              title='arrow up'
-              fontSize='1.5em'
-            />
+            <ChevronUpIcon title='arrow up' fontSize='1.5em' />
           ) : (
-            <ChevronDownIcon
-              title='arrow down'
-              fontSize='1.5em'
-            />
+            <ChevronDownIcon title='arrow down' fontSize='1.5em' />
           )}
         </div>
       </Box>

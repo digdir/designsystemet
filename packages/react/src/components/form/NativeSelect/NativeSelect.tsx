@@ -63,10 +63,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     } = useNativeSelect(props);
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           className={cl(
             'ds-native-select--container',
@@ -94,10 +91,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(

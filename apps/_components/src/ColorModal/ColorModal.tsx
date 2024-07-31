@@ -26,17 +26,11 @@ const Field = ({
   return (
     <div className={classes.field}>
       {label && (
-        <Paragraph
-          size='sm'
-          className={classes.label}
-        >
+        <Paragraph size='sm' className={classes.label}>
           {label}
         </Paragraph>
       )}
-      <Paragraph
-        size='sm'
-        className={classes.value}
-      >
+      <Paragraph size='sm' className={classes.value}>
         {value}
       </Paragraph>
       {copyBtn && <ClipboardButton value={value} />}
@@ -78,11 +72,7 @@ export const ColorModal = ({
           </div>
           <div className={classes.container}>
             <div className={classes.left}>
-              <Field
-                label='Hexkode:'
-                value={hex}
-                copyBtn
-              />
+              <Field label='Hexkode:' value={hex} copyBtn />
               <Field
                 label='HSLuv:'
                 value={
@@ -105,10 +95,7 @@ export const ColorModal = ({
                   value={getColorCombinations(weight)}
                 />
               )}
-              <Field
-                label=''
-                value='Mer informasjon om fargen kommer.'
-              />
+              <Field label='' value='Mer informasjon om fargen kommer.' />
             </div>
             <div
               className={classes.right}

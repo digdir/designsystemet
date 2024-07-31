@@ -28,10 +28,7 @@ export const ToggleGroupItem = forwardRef<
   const { active, size = 'md', buttonProps, value } = useToggleGroupItem(props);
 
   return (
-    <RovingFocusItem
-      asChild
-      value={value}
-    >
+    <RovingFocusItem asChild value={value}>
       <Button
         className={cl('ds-togglegroup__item', className)}
         icon={icon}

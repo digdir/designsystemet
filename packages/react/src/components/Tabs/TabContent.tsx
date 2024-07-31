@@ -26,11 +26,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
     return (
       <>
         {active && (
-          <Paragraph
-            asChild
-            variant='short'
-            size={size}
-          >
+          <Paragraph asChild variant='short' size={size}>
             <div
               className={cl('ds-tabs__content', className)}
               ref={ref}

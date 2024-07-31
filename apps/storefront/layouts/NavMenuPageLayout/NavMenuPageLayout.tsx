@@ -39,10 +39,7 @@ const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
         <div className={classes.left}>
           <SidebarMenu routerPath={pathName} />
         </div>
-        <main
-          id='main'
-          className={classes.right}
-        >
+        <main id='main' className={classes.right}>
           <div>
             <MdxContent>{content}</MdxContent>
           </div>

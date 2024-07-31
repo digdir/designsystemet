@@ -106,10 +106,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(

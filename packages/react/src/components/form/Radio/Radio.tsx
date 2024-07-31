@@ -27,10 +27,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   } = useRadio(props);
 
   return (
-    <Paragraph
-      asChild
-      size={size}
-    >
+    <Paragraph asChild size={size}>
       <div
         className={cl(
           'ds-radio',
@@ -59,14 +56,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
               <span>{children}</span>
             </Label>
             {description && (
-              <Paragraph
-                asChild
-                size={size}
-              >
-                <div
-                  id={descriptionId}
-                  className={'ds-radio__description'}
-                >
+              <Paragraph asChild size={size}>
+                <div id={descriptionId} className={'ds-radio__description'}>
                   {description}
                 </div>
               </Paragraph>

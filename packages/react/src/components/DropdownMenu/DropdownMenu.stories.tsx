@@ -109,11 +109,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu.Root
-        open={open}
-        onClose={() => setOpen(false)}
-        portal
-      >
+      <DropdownMenu.Root open={open} onClose={() => setOpen(false)} portal>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>

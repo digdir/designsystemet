@@ -49,10 +49,7 @@ export const HelpText = ({
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Popover.Trigger
-          asChild
-          variant='tertiary'
-        >
+        <Popover.Trigger asChild variant='tertiary'>
           <button
             className={cl(
               `ds-helptext--${size}`,
@@ -80,10 +77,7 @@ export const HelpText = ({
             <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Paragraph
-          size='md'
-          asChild
-        >
+        <Paragraph size='md' asChild>
           <Popover.Content className='ds-helptext__content'>
             {children}
           </Popover.Content>

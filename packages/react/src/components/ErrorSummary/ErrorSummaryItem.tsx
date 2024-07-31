@@ -32,10 +32,7 @@ export const ErrorSummaryItem = ({
 }: ErrorSummaryItemProps) => {
   return (
     <List.Item {...rest}>
-      <Link
-        href={href}
-        asChild={asChild}
-      >
+      <Link href={href} asChild={asChild}>
         {children}
       </Link>
     </List.Item>

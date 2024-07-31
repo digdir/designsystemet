@@ -96,10 +96,7 @@ export const ColorPicker = ({
   };
 
   return (
-    <div
-      ref={ref}
-      className={cl(classes.whole, disabled && classes.disabled)}
-    >
+    <div ref={ref} className={cl(classes.whole, disabled && classes.disabled)}>
       <div className={classes.picker}>
         <div className={classes.label}>
           <span

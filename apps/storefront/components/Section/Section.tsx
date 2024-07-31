@@ -24,19 +24,13 @@ const Section = ({
       <Container>
         <div className={classes.header}>
           {title && (
-            <Heading
-              level={2}
-              size='md'
-            >
+            <Heading level={2} size='md'>
               {title}
             </Heading>
           )}
           <div className={classes.separator}>
             <div className={classes.separatorContainer}>
-              <img
-                src='img/emblem.svg'
-                alt=''
-              />
+              <img src='img/emblem.svg' alt='' />
             </div>
           </div>
           {detail && (

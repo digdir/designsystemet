@@ -21,10 +21,7 @@ import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 const Box = (name: string, color1: CssColor, color2: CssColor) => {
   return (
     <div className={classes.box}>
-      <div
-        className={classes.color}
-        style={{ backgroundColor: color1 }}
-      />
+      <div className={classes.color} style={{ backgroundColor: color1 }} />
       <div className={classes.test}>
         <div className={classes.name}>{name}</div>
         <div>{ContrastBox(color1, color2)}</div>
@@ -40,10 +37,7 @@ const Row = (
 ) => {
   return (
     <div className={cl(whiteText && classes.whiteText)}>
-      <Heading
-        size='xs'
-        className={classes.mainTitle}
-      >
+      <Heading size='xs' className={classes.mainTitle}>
         {title}
       </Heading>
       <div className={classes.row}>
@@ -51,10 +45,7 @@ const Row = (
           className={classes.column}
           style={{ backgroundColor: colors[0].hex }}
         >
-          <Heading
-            size='2xs'
-            className={classes.title}
-          >
+          <Heading size='2xs' className={classes.title}>
             Background default
           </Heading>
           {Box('Border subtle', colors[5].hex, colors[0].hex)}
@@ -67,10 +58,7 @@ const Row = (
           className={classes.column}
           style={{ backgroundColor: colors[1].hex }}
         >
-          <Heading
-            size='2xs'
-            className={classes.title}
-          >
+          <Heading size='2xs' className={classes.title}>
             Background subtle
           </Heading>
           {Box('Border subtle', colors[5].hex, colors[1].hex)}
@@ -83,10 +71,7 @@ const Row = (
           className={classes.column}
           style={{ backgroundColor: colors[2].hex }}
         >
-          <Heading
-            size='2xs'
-            className={classes.title}
-          >
+          <Heading size='2xs' className={classes.title}>
             Surface default
           </Heading>
           {Box('Border subtle', colors[5].hex, colors[2].hex)}
@@ -99,10 +84,7 @@ const Row = (
           className={classes.column}
           style={{ backgroundColor: colors[3].hex }}
         >
-          <Heading
-            size='2xs'
-            className={classes.title}
-          >
+          <Heading size='2xs' className={classes.title}>
             Surface hover
           </Heading>
           {Box('Border subtle', colors[5].hex, colors[3].hex)}
@@ -115,10 +97,7 @@ const Row = (
           className={classes.column}
           style={{ backgroundColor: colors[4].hex }}
         >
-          <Heading
-            size='2xs'
-            className={classes.title}
-          >
+          <Heading size='2xs' className={classes.title}>
             Surface active
           </Heading>
           {Box('Border subtle', colors[5].hex, colors[4].hex)}
@@ -156,10 +135,7 @@ export default function Dev() {
   return (
     <div className={classes.page}>
       <Container>
-        <Heading
-          size='lg'
-          className={classes.pageTitle}
-        >
+        <Heading size='lg' className={classes.pageTitle}>
           Fargekontrast og visuell vurdering
         </Heading>
         <div className={classes.dotMeaning}>
@@ -182,10 +158,7 @@ export default function Dev() {
             <div className={classes.dotMeadingTitle}>Under dekorativ</div>
           </div>
         </div>
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Background Default og Subtle
         </Heading>
         <Backgrounds
@@ -194,10 +167,7 @@ export default function Dev() {
           theme3={theme7}
           theme4={theme5}
         />
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Background Subtle mot Surface Default
         </Heading>
         <BackgroundSurface
@@ -210,10 +180,7 @@ export default function Dev() {
           theme7={theme7}
           theme8={theme8}
         />
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Surface og Base interaksjon
         </Heading>
         <div className={classes.sectionDesc}>
@@ -235,10 +202,7 @@ export default function Dev() {
           theme11={theme11}
           theme12={theme12}
         />
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Kontrastfarger mot Base
         </Heading>
         <ul>
@@ -331,10 +295,7 @@ export default function Dev() {
             },
           ]}
         />
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Background og Surface mot Border og Tekst
         </Heading>
         <ul>
@@ -364,17 +325,11 @@ export default function Dev() {
         {Row('Light', theme1.light)}
         {Row('Dark', theme1.dark, true)}
         {Row('Contrast', theme1.contrast, true)}
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Overgangen fra svart til hvit kontrastfarge på ulike Base farger
         </Heading>
         <BaseContrastOverview />
-        <Heading
-          className={classes.sectionTitle}
-          size='md'
-        >
+        <Heading className={classes.sectionTitle} size='md'>
           Viser blå base farger i et spekter av lightness verdier og om
           kontrastfargen er hvit eller svart per mode
         </Heading>

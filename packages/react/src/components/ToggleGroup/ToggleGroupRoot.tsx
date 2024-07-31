@@ -70,11 +70,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
     }
 
     return (
-      <div
-        className={cl('ds-togglegroup', className)}
-        ref={ref}
-        {...rest}
-      >
+      <div className={cl('ds-togglegroup', className)} ref={ref} {...rest}>
         <ToggleGroupContext.Provider
           value={{
             value,
@@ -91,14 +87,8 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
               value={value}
             />
           )}
-          <RovingFocusRoot
-            asChild
-            activeValue={value}
-          >
-            <div
-              className='ds-togglegroup__content'
-              role='radiogroup'
-            >
+          <RovingFocusRoot asChild activeValue={value}>
+            <div className='ds-togglegroup__content' role='radiogroup'>
               {children}
             </div>
           </RovingFocusRoot>

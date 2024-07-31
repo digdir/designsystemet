@@ -22,10 +22,7 @@ export const Unordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
     const Component = asChild ? Slot : 'ul';
 
     return (
-      <Paragraph
-        size={size}
-        asChild
-      >
+      <Paragraph size={size} asChild>
         <Component
           className={cl(`ds-list`, `ds-list--${size}`, className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}
@@ -54,10 +51,7 @@ export const Ordered = forwardRef<HTMLOListElement, ListOrderedProps>(
     const Component = asChild ? Slot : 'ol';
 
     return (
-      <Paragraph
-        size={size}
-        asChild
-      >
+      <Paragraph size={size} asChild>
         <Component
           className={cl(`ds-list`, `ds-list--${size}`, className)}
           {...(headingId ? { 'aria-labelledby': headingId } : {})}

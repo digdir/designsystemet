@@ -84,10 +84,7 @@ export const BaseContrastOverview = () => {
             color: calculateContrastOneColor(color),
           }}
         >
-          <CheckmarkIcon
-            title='a11y-title'
-            fontSize='3.5rem'
-          />
+          <CheckmarkIcon title='a11y-title' fontSize='3.5rem' />
         </div>
         <div className={classes.contrastBox}>
           <div className={cl(classes.contrastCircle)}></div>
@@ -108,10 +105,7 @@ export const BaseContrastOverview = () => {
       <div className={classes.boxContainers}>
         <div className={cl(classes.boxContainer, classes.white)}>
           {colors.map((color, index) => (
-            <Box
-              key={index}
-              color={color}
-            />
+            <Box key={index} color={color} />
           ))}
         </div>
         {/* <div className={cl(classes.boxContainer, classes.dark)}>

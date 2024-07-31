@@ -24,15 +24,9 @@ export default {
 } as Meta;
 
 export const Preview: Story = (args) => (
-  <Card
-    {...args}
-    style={{ width: '320px' }}
-  >
+  <Card {...args} style={{ width: '320px' }}>
     <Card.Header>
-      <Heading
-        size='sm'
-        level={2}
-      >
+      <Heading size='sm' level={2}>
         Card Neutral
       </Heading>
     </Card.Header>
@@ -58,28 +52,17 @@ export const LinkCard: Story = (args) => (
       gridTemplateColumns: 'repeat(2, 400px)',
     }}
   >
-    <Card
-      {...args}
-      color='brand1'
-      isLink
-      asChild
-    >
+    <Card {...args} color='brand1' isLink asChild>
       <a
         href='https://designsystemet.no'
         target='_blank'
         rel='noopener noreferrer'
       >
         <Card.Media>
-          <img
-            src={cat5}
-            alt=''
-          />
+          <img src={cat5} alt='' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            size='sm'
-            level={2}
-          >
+          <Heading size='sm' level={2}>
             Link Card
           </Heading>
         </Card.Header>
@@ -93,28 +76,17 @@ export const LinkCard: Story = (args) => (
         </Card.Footer>
       </a>
     </Card>
-    <Card
-      {...args}
-      color='neutral'
-      isLink
-      asChild
-    >
+    <Card {...args} color='neutral' isLink asChild>
       <a
         href='https://designsystemet.no'
         target='_blank'
         rel='noopener noreferrer'
       >
         <Card.Media>
-          <img
-            src={cat6}
-            alt=''
-          />
+          <img src={cat6} alt='' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            size='sm'
-            level={2}
-          >
+          <Heading size='sm' level={2}>
             Link Card
           </Heading>
         </Card.Header>
@@ -142,16 +114,10 @@ export const Variants: StoryFn<typeof Card> = () => {
     >
       <Card color='neutral'>
         <Card.Media>
-          <img
-            src={cat1}
-            alt='katt'
-          />
+          <img src={cat1} alt='katt' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            level={2}
-            size='sm'
-          >
+          <Heading level={2} size='sm'>
             Card Neutral
           </Heading>
         </Card.Header>
@@ -163,16 +129,10 @@ export const Variants: StoryFn<typeof Card> = () => {
       </Card>
       <Card color='subtle'>
         <Card.Media>
-          <img
-            src={cat2}
-            alt='katt'
-          />
+          <img src={cat2} alt='katt' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            level={2}
-            size='sm'
-          >
+          <Heading level={2} size='sm'>
             Card Subtle
           </Heading>
         </Card.Header>
@@ -184,16 +144,10 @@ export const Variants: StoryFn<typeof Card> = () => {
       </Card>
       <Card color='brand1'>
         <Card.Media>
-          <img
-            src={cat3}
-            alt='katter'
-          />
+          <img src={cat3} alt='katter' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            level={2}
-            size='sm'
-          >
+          <Heading level={2} size='sm'>
             Card First
           </Heading>
         </Card.Header>
@@ -205,16 +159,10 @@ export const Variants: StoryFn<typeof Card> = () => {
       </Card>
       <Card color='brand2'>
         <Card.Media>
-          <img
-            src={cat4}
-            alt='katt'
-          />
+          <img src={cat4} alt='katt' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            level={2}
-            size='sm'
-          >
+          <Heading level={2} size='sm'>
             Card Second
           </Heading>
         </Card.Header>
@@ -226,16 +174,10 @@ export const Variants: StoryFn<typeof Card> = () => {
       </Card>
       <Card color='brand3'>
         <Card.Media>
-          <img
-            src={cat5}
-            alt='katt'
-          />
+          <img src={cat5} alt='katt' />
         </Card.Media>
         <Card.Header>
-          <Heading
-            level={2}
-            size='sm'
-          >
+          <Heading level={2} size='sm'>
             Card Third
           </Heading>
         </Card.Header>
@@ -259,16 +201,10 @@ export const Media: Story = () => (
   >
     <Card>
       <Card.Media>
-        <img
-          src={cat1}
-          alt='katt'
-        />
+        <img src={cat1} alt='katt' />
       </Card.Media>
       <Card.Header>
-        <Heading
-          level={2}
-          size='sm'
-        >
+        <Heading level={2} size='sm'>
           Card Neutral
         </Heading>
       </Card.Header>
@@ -280,10 +216,7 @@ export const Media: Story = () => (
 
     <Card>
       <Card.Header>
-        <Heading
-          level={2}
-          size='sm'
-        >
+        <Heading level={2} size='sm'>
           Card Neutral
         </Heading>
       </Card.Header>
@@ -293,20 +226,14 @@ export const Media: Story = () => (
         designer. Writing slightly explain desk unable at supposedly about this
       </Card.Content>
       <Card.Media>
-        <img
-          src={cat1}
-          alt='katt'
-        />
+        <img src={cat1} alt='katt' />
       </Card.Media>
     </Card>
   </div>
 );
 
 export const Video: Story = () => (
-  <Card
-    color='neutral'
-    style={{ width: '320px' }}
-  >
+  <Card color='neutral' style={{ width: '320px' }}>
     <Card.Media>
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
@@ -317,10 +244,7 @@ export const Video: Story = () => (
       ></iframe>
     </Card.Media>
     <Card.Header>
-      <Heading
-        level={2}
-        size='sm'
-      >
+      <Heading level={2} size='sm'>
         <Link
           href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
           target='_blank'
@@ -352,21 +276,11 @@ export const Composed: Story = () => (
           alignItems: 'center',
         }}
       >
-        <Heading
-          level={2}
-          size='xs'
-        >
+        <Heading level={2} size='xs'>
           Rolle 1
         </Heading>
-        <Button
-          variant='secondary'
-          color='danger'
-          size='sm'
-        >
-          <TrashFillIcon
-            aria-hidden
-            fontSize='1.5rem'
-          />
+        <Button variant='secondary' color='danger' size='sm'>
+          <TrashFillIcon aria-hidden fontSize='1.5rem' />
           Fjern
         </Button>
       </div>
@@ -375,10 +289,7 @@ export const Composed: Story = () => (
     <Card.Content>
       <NativeSelect label='Velg rolle'>
         {options.map(({ value, label }, index) => (
-          <option
-            key={index}
-            value={value}
-          >
+          <option key={index} value={value}>
             {label}
           </option>
         ))}

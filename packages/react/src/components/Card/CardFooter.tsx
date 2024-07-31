@@ -18,10 +18,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Paragraph
-        size='md'
-        asChild
-      >
+      <Paragraph size='md' asChild>
         <Component
           className={cl(`ds-card__footer`, className)}
           ref={ref}

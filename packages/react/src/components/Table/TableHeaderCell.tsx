@@ -59,10 +59,7 @@ export const TableHeaderCell = React.forwardRef<
         {...rest}
       >
         {sortable && (
-          <button
-            className='ds-focus'
-            onClick={onSortClick}
-          >
+          <button className='ds-focus' onClick={onSortClick}>
             {children}
             {sortIcon}
           </button>

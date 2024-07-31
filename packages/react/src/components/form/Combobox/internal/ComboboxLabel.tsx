@@ -40,10 +40,7 @@ const ComboboxLabel = ({
         </Label>
       )}
       {description && (
-        <Paragraph
-          asChild
-          size={size}
-        >
+        <Paragraph asChild size={size}>
           <div
             id={formFieldProps.descriptionId}
             className={cl(

@@ -78,18 +78,9 @@ export const FullBaseTest = () => {
           <div>Svart kontrast</div>
         </div>
         <div className={classes.boxes}>
-          <Box
-            color={color}
-            theme='light'
-          />
-          <Box
-            color={color}
-            theme='dark'
-          />
-          <Box
-            color={color}
-            theme='contrast'
-          />
+          <Box color={color} theme='light' />
+          <Box color={color} theme='dark' />
+          <Box color={color} theme='contrast' />
         </div>
       </div>
     );
@@ -123,26 +114,11 @@ export const FullBaseTest = () => {
 
     return (
       <div className={cl(classes.list, active && classes.listActive)}>
-        <Item
-          mainColor={baseDefault}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={baseHover}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={baseActive}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={bgDefault}
-          bgColor={baseDefault}
-        />
-        <Item
-          mainColor={bgSubtle}
-          bgColor={baseDefault}
-        />
+        <Item mainColor={baseDefault} bgColor={bgColor} />
+        <Item mainColor={baseHover} bgColor={bgColor} />
+        <Item mainColor={baseActive} bgColor={bgColor} />
+        <Item mainColor={bgDefault} bgColor={baseDefault} />
+        <Item mainColor={bgSubtle} bgColor={baseDefault} />
       </div>
     );
   };
@@ -221,11 +197,7 @@ export const FullBaseTest = () => {
       {blueColors.map((color, index) => (
         <>
           {index + 1 >= 20 && index + 1 <= 80 && (
-            <Column
-              key={index}
-              color={color}
-              index={index}
-            />
+            <Column key={index} color={color} index={index} />
           )}
         </>
       ))}

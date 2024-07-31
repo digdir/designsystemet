@@ -458,10 +458,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
                 {loading ? (
                   <ComboboxCustom className={'ds-combobox__loading'}>
-                    <Spinner
-                      title='Laster'
-                      size='sm'
-                    />
+                    <Spinner title='Laster' size='sm' />
                     {loadingLabel}
                   </ComboboxCustom>
                 ) : (
@@ -483,10 +480,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (props, ref) => (
     <ComboboxIdProvider>
-      <ComboboxComponent
-        {...props}
-        ref={ref}
-      />
+      <ComboboxComponent {...props} ref={ref} />
     </ComboboxIdProvider>
   ),
 );

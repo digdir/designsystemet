@@ -26,10 +26,7 @@ const BannerRoot = ({
 }: BannerProps) => {
   return (
     <BannerContext.Provider value={{ color }}>
-      <div
-        {...props}
-        className={cl(classes.banner, className)}
-      >
+      <div {...props} className={cl(classes.banner, className)}>
         {children}
         <BannerLogoSvg />
       </div>
@@ -40,12 +37,7 @@ const BannerRoot = ({
 type BannerHeadingProps = Omit<HeadingProps, 'size'>;
 
 const BannerHeading = ({ ...props }: BannerHeadingProps) => {
-  return (
-    <Heading
-      size='lg'
-      {...props}
-    />
-  );
+  return <Heading size='lg' {...props} />;
 };
 
 type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
@@ -65,10 +57,7 @@ const BannerIcon = ({ className, ...props }: BanneIconProps) => {
   const { color } = useContext(BannerContext);
 
   return (
-    <div
-      className={cl(classes.icon, classes[color], className)}
-      {...props}
-    />
+    <div className={cl(classes.icon, classes[color], className)} {...props} />
   );
 };
 

@@ -15,10 +15,7 @@ const TestComponent = ({
   return (
     <>
       {!removed && (
-        <Chip.Removable
-          {...rest}
-          onClick={() => setRemoved(true)}
-        >
+        <Chip.Removable {...rest} onClick={() => setRemoved(true)}>
           {children}
         </Chip.Removable>
       )}

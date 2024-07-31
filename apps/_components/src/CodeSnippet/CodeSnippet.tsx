@@ -67,10 +67,7 @@ const CodeSnippet = ({
   };
 
   return (
-    <div
-      className={classes.codeSnippet}
-      data-ds-color-mode='dark'
-    >
+    <div className={classes.codeSnippet} data-ds-color-mode='dark'>
       {snippet && (
         <>
           <Tooltip content={toolTipText}>

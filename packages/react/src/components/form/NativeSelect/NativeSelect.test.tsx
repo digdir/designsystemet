@@ -15,10 +15,7 @@ const options: { label: string; value: string }[] = [
   { label: 'Option 3', value: '3' },
 ];
 const children = options.map(({ label, value }) => (
-  <option
-    key={value}
-    value={value}
-  >
+  <option key={value} value={value}>
     {label}
   </option>
 ));
@@ -108,11 +105,4 @@ describe('NativeSelect', () => {
 const render = (
   props?: Partial<NativeSelectProps>,
   ref?: RefObject<HTMLSelectElement>,
-) =>
-  renderRtl(
-    <NativeSelect
-      {...defaultProps}
-      {...props}
-      ref={ref}
-    />,
-  );
+) => renderRtl(<NativeSelect {...defaultProps} {...props} ref={ref} />);

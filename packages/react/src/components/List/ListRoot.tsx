@@ -35,10 +35,7 @@ export const ListRoot = forwardRef<HTMLDivElement, ListProps>(
 
     return (
       <ListContext.Provider value={{ size, headingId, setHeadingId }}>
-        <Component
-          ref={ref}
-          {...rest}
-        />
+        <Component ref={ref} {...rest} />
       </ListContext.Provider>
     );
   },

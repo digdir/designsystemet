@@ -36,10 +36,7 @@ export type TagProps = {
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
   ({ size = 'md', color = 'neutral', children, className, ...rest }, ref) => {
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <span
           className={cl(
             'ds-tag',

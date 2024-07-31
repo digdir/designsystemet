@@ -119,18 +119,8 @@ const Column = ({ title, scales }: ColumnProps) => {
           type='surface'
           columnTitle={title}
         />
-        <Box2
-          colorIndex={8}
-          scales={scales}
-          type='base'
-          columnTitle={title}
-        />
-        <Box
-          colorIndex={8}
-          scales={scales}
-          type='base'
-          columnTitle={title}
-        />
+        <Box2 colorIndex={8} scales={scales} type='base' columnTitle={title} />
+        <Box colorIndex={8} scales={scales} type='base' columnTitle={title} />
       </div>
     </div>
   );
@@ -169,10 +159,7 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
   }, [columnTitle, scales, type]);
 
   return (
-    <div
-      className={cl(classes.box)}
-      id={'box' + type + columnTitle}
-    >
+    <div className={cl(classes.box)} id={'box' + type + columnTitle}>
       {scales.map((scale, index) => (
         <div
           key={index}

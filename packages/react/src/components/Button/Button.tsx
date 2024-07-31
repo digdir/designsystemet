@@ -60,11 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : 'button';
 
     return (
-      <Paragraph
-        variant='short'
-        size={size}
-        asChild
-      >
+      <Paragraph variant='short' size={size} asChild>
         <Component
           ref={ref}
           type={type}

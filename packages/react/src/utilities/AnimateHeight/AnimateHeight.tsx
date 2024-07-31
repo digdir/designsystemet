@@ -64,10 +64,7 @@ export const AnimateHeight = ({
       )}
       style={{ height, transition, ...style }}
     >
-      <div
-        ref={contentRef}
-        className='ds-animate-height__content'
-      >
+      <div ref={contentRef} className='ds-animate-height__content'>
         {children}
       </div>
     </div>

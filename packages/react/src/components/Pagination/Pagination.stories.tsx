@@ -63,10 +63,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
               visibility: showPreviousPage ? undefined : 'hidden',
             }}
           >
-            <ChevronLeftIcon
-              aria-hidden
-              fontSize='1.5rem'
-            />
+            <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
             Forrige
           </Pagination.Previous>
         </Pagination.Item>
@@ -95,10 +92,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
             }}
           >
             Neste
-            <ChevronRightIcon
-              aria-hidden
-              fontSize='1.5rem'
-            />
+            <ChevronRightIcon aria-hidden fontSize='1.5rem' />
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.Content>
@@ -125,10 +119,7 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
             }}
           >
             <a href='#forrige-side'>
-              <ChevronLeftIcon
-                aria-hidden
-                fontSize='1.5rem'
-              />
+              <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
               Forrige
             </a>
           </Pagination.Previous>
@@ -160,10 +151,7 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
           >
             <a href='#neste-side'>
               Neste
-              <ChevronRightIcon
-                aria-hidden
-                fontSize='1.5rem'
-              />
+              <ChevronRightIcon aria-hidden fontSize='1.5rem' />
             </a>
           </Pagination.Next>
         </Pagination.Item>

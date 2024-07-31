@@ -42,10 +42,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ]);
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           className={cl(
             'ds-checkbox',
@@ -76,10 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 <span>{children}</span>
               </Label>
               {description && (
-                <Paragraph
-                  asChild
-                  size={size}
-                >
+                <Paragraph asChild size={size}>
                   <div
                     id={descriptionId}
                     className={`ds-checkbox__description`}

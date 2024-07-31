@@ -40,10 +40,7 @@ const render = (
 ) => {
   const allProps = { ...defaultProps, ...props };
   return renderRtl(
-    <Link
-      {...allProps}
-      ref={ref}
-    >
+    <Link {...allProps} ref={ref}>
       {allProps.children}
     </Link>,
   );

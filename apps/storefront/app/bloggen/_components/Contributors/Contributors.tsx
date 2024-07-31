@@ -17,27 +17,16 @@ export const Contributors = ({ authors }: ContributorsProps) => {
           className={classes.logoImage}
         />
       </div>
-      <Heading
-        level={3}
-        size='2xs'
-      >
+      <Heading level={3} size='2xs'>
         Bidragsytere
       </Heading>
-      <Paragraph
-        size='sm'
-        className={classes.meta}
-      >
+      <Paragraph size='sm' className={classes.meta}>
         {authors?.map((author, index) => (
-            <Fragment key={index}>
-              {index !== 0 && (
-                <span
-                  aria-hidden
-                  className={classes.metaSquare}
-                />
-              )}
-              <span>{author}</span>
-            </Fragment>
-          ))}
+          <Fragment key={index}>
+            {index !== 0 && <span aria-hidden className={classes.metaSquare} />}
+            <span>{author}</span>
+          </Fragment>
+        ))}
       </Paragraph>
     </div>
   );

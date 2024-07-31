@@ -31,17 +31,10 @@ export const RemovableChip = forwardRef<HTMLButtonElement, RemovableChipProps>(
         )}
         {...rest}
       >
-        <Paragraph
-          asChild
-          size={group?.size || size}
-          variant='short'
-        >
+        <Paragraph asChild size={group?.size || size} variant='short'>
           <span className={`ds-chip__label`}>
             <span>{children}</span>
-            <span
-              className={`ds-chip__x-mark`}
-              aria-hidden
-            >
+            <span className={`ds-chip__x-mark`} aria-hidden>
               <XMarkIcon className={`ds-chip__icon`} />
             </span>
           </span>

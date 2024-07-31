@@ -37,17 +37,11 @@ export const Landing = () => {
           </div>
           <div className={classes.headerRight}>
             <Button variant='tertiary'>
-              <MagnifyingGlassIcon
-                title='a11y-title'
-                fontSize='1.6rem'
-              />
+              <MagnifyingGlassIcon title='a11y-title' fontSize='1.6rem' />
               Søk
             </Button>
             <Button variant='tertiary'>
-              <MenuHamburgerIcon
-                title='a11y-title'
-                fontSize='1.6rem'
-              />
+              <MenuHamburgerIcon title='a11y-title' fontSize='1.6rem' />
               Meny
             </Button>
           </div>
@@ -58,16 +52,10 @@ export const Landing = () => {
         <div className={classes.container}>
           <div className={classes.bannerLeft}>
             <div className={classes.bannerSub}>Here is a sub heading</div>
-            <Heading
-              size='md'
-              className={classes.bannerTitle}
-            >
+            <Heading size='md' className={classes.bannerTitle}>
               A need explain have out been making it
             </Heading>
-            <Ingress
-              size='sm'
-              className={classes.bannerIngress}
-            >
+            <Ingress size='sm' className={classes.bannerIngress}>
               Multitude a hung structure return her belt of fixed had because a
               been ahead well logbook the accept as effort consideration with
               derived indulged of the all and more soon will you there.

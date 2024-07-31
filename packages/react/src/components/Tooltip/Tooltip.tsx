@@ -147,10 +147,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <Paragraph
-              size='xs'
-              asChild
-            >
+            <Paragraph size='xs' asChild>
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}

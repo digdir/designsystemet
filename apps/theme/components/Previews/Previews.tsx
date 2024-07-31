@@ -89,10 +89,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('light')}
           >
-            <img
-              src='img/light-dot.svg'
-              alt=''
-            />
+            <img src='img/light-dot.svg' alt='' />
             Lys
           </button>
           <button
@@ -103,10 +100,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('dark')}
           >
-            <img
-              src='img/dark-dot.svg'
-              alt=''
-            />
+            <img src='img/dark-dot.svg' alt='' />
             Mørk
           </button>
           <button
@@ -117,10 +111,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('contrast')}
           >
-            <img
-              src='img/contrast-dot.svg'
-              alt=''
-            />
+            <img src='img/contrast-dot.svg' alt='' />
             Kontrast
           </button>
         </div>

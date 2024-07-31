@@ -20,10 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <BannerHeading>Bloggen</BannerHeading>
       </Banner>
       <Container className={classes.page}>
-        <main
-          id='main'
-          className={classes.main}
-        >
+        <main id='main' className={classes.main}>
           {children}
         </main>
       </Container>

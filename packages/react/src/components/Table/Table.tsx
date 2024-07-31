@@ -40,10 +40,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     ref,
   ) => {
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <table
           ref={ref}
           className={cl(

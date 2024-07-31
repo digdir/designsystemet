@@ -10,10 +10,7 @@ export const Footer = () => {
       <div className='footer__left'></div>
       <div className='footer__right'>
         <div className='version'>V {packageJson.version}</div>
-        <Tooltip
-          content='Feedback'
-          placement='top'
-        >
+        <Tooltip content='Feedback' placement='top'>
           <a
             href='https://github.com/digdir/designsystemet'
             rel='noreferrer'

@@ -5,10 +5,7 @@ import { Fieldset } from './Fieldset';
 describe('Fieldset', () => {
   test('has correct legend and description', () => {
     render(
-      <Fieldset
-        legend='test legend'
-        description='test description'
-      ></Fieldset>,
+      <Fieldset legend='test legend' description='test description'></Fieldset>,
     );
     const fieldset = screen.getByRole('group', { name: 'test legend' });
     expect(fieldset).toBeDefined();
@@ -46,14 +43,8 @@ describe('Fieldset', () => {
   });
   test('and its children are disabled', () => {
     render(
-      <Fieldset
-        legend='test legend'
-        disabled
-      >
-        <input
-          value='test'
-          readOnly
-        />
+      <Fieldset legend='test legend' disabled>
+        <input value='test' readOnly />
       </Fieldset>,
     );
 

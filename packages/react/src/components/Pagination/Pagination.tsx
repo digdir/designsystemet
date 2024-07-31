@@ -81,10 +81,7 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
               }}
               aria-label={previousLabel}
             >
-              <ChevronLeftIcon
-                aria-hidden
-                fontSize={iconSize[size]}
-              />
+              <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
@@ -115,10 +112,7 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
               className={cl(!showNextPage && 'ds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
-              <ChevronRightIcon
-                aria-hidden
-                fontSize={iconSize[size]}
-              />
+              <ChevronRightIcon aria-hidden fontSize={iconSize[size]} />
             </PaginationNext>
           </PaginationItem>
         </PaginationContent>

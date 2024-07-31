@@ -32,11 +32,7 @@ const NavigationCard = ({
       className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
     >
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
-      <Heading
-        level={level}
-        size='sm'
-        className={classes.title}
-      >
+      <Heading level={level} size='sm' className={classes.title}>
         {title}
       </Heading>
       <div className={cl(classes.desc, 'ds-paragraph-sm')}>{description}</div>

@@ -77,10 +77,7 @@ const ImageSection = ({
           )}
           {content && content}
           {link && (
-            <a
-              href={link.href}
-              className={classes.link}
-            >
+            <a href={link.href} className={classes.link}>
               {link.prefix} {link.text}
             </a>
           )}
@@ -88,11 +85,7 @@ const ImageSection = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
-                  key={index}
-                >
+                <a href={item.href} className={classes.button} key={index}>
                   {item.prefix}
                   {item.text}
                 </a>

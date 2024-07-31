@@ -18,10 +18,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Heading
-        size='md'
-        asChild
-      >
+      <Heading size='md' asChild>
         <Component
           className={cl(`ds-card__header`, className)}
           ref={ref}

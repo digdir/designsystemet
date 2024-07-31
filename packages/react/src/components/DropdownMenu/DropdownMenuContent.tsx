@@ -89,11 +89,7 @@ export const DropdownMenuContent = forwardRef<
   return (
     <>
       {internalOpen && (
-        <FloatingFocusManager
-          context={context}
-          guards={false}
-          modal={false}
-        >
+        <FloatingFocusManager context={context} guards={false} modal={false}>
           <Container>
             <ul
               role='menu'

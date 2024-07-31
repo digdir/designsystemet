@@ -65,10 +65,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           ref={ref}
           {...rest}
         >
-          <Label
-            asChild
-            size={size}
-          >
+          <Label asChild size={size}>
             <legend className={'ds-fieldset__legend'}>
               <span
                 className={cl(
@@ -87,11 +84,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </legend>
           </Label>
           {description && (
-            <Paragraph
-              size={size}
-              variant='short'
-              asChild
-            >
+            <Paragraph size={size} variant='short' asChild>
               <div
                 id={descriptionId}
                 className={cl(

@@ -37,11 +37,7 @@ const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
 
     return (
       <PaginationContext.Provider value={{ size, compact }}>
-        <Component
-          ref={ref}
-          aria-label='Pagination'
-          {...rest}
-        />
+        <Component ref={ref} aria-label='Pagination' {...rest} />
       </PaginationContext.Provider>
     );
   },

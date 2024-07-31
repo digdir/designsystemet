@@ -67,11 +67,7 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
 
     return (
-      <Component
-        {...rest}
-        {...rovingProps}
-        ref={mergedRefs}
-      >
+      <Component {...rest} {...rovingProps} ref={mergedRefs}>
         {rest.children}
       </Component>
     );

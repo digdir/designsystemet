@@ -33,10 +33,7 @@ const ContrastItem = ({
           className={classes.contrastError}
         />
       ) : (
-        <CheckmarkCircleFillIcon
-          title='a11y-title'
-          fontSize='1.3rem'
-        />
+        <CheckmarkCircleFillIcon title='a11y-title' fontSize='1.3rem' />
       )}
       {text} <span className={classes.contrastItemSubText}>{subText}</span>
     </div>
@@ -56,10 +53,7 @@ const ContrastBox = ({
 }) => {
   return (
     <div className={classes.contrastBox}>
-      <Heading
-        level={2}
-        className={classes.contrastTitle}
-      >
+      <Heading level={2} className={classes.contrastTitle}>
         {title}
       </Heading>
       <h3 className={classes.contrastSubTitle}>WCAG 2</h3>

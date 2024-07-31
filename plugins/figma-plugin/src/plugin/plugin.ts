@@ -38,7 +38,7 @@ function getModeIndex(mode: string) {
   if (mode === 'light') {
     return 0;
   }
-    return 1;
+  return 1;
 }
 
 figma.ui.onmessage = (msg: { type: string; text: string; mode: string }) => {

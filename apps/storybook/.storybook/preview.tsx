@@ -94,25 +94,13 @@ const components = {
     />
   ),
   thead: (props: Props) => (
-    <Table.Head
-      {...props}
-      className='sb-unstyled'
-      data-ds-color-mode='light'
-    />
+    <Table.Head {...props} className='sb-unstyled' data-ds-color-mode='light' />
   ),
   tbody: (props: Props) => (
-    <Table.Body
-      {...props}
-      className='sb-unstyled'
-      data-ds-color-mode='light'
-    />
+    <Table.Body {...props} className='sb-unstyled' data-ds-color-mode='light' />
   ),
   tr: (props: Props) => (
-    <Table.Row
-      {...props}
-      className='sb-unstyled'
-      data-ds-color-mode='light'
-    />
+    <Table.Row {...props} className='sb-unstyled' data-ds-color-mode='light' />
   ),
   th: (props: Props) => (
     <Table.HeaderCell
@@ -122,11 +110,7 @@ const components = {
     />
   ),
   td: (props: Props) => (
-    <Table.Cell
-      {...props}
-      className='sb-unstyled'
-      data-ds-color-mode='light'
-    />
+    <Table.Cell {...props} className='sb-unstyled' data-ds-color-mode='light' />
   ),
 };
 

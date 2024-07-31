@@ -1,12 +1,7 @@
 import { normalizeTokenSetName, toGeneratedCssFileName } from './utils.js';
 import type { Mode } from './createTokensPackage.js';
 
-export function nextStepsMarkdown(
-  themes: string[],
-  modes: Mode[],
-  tokensTargetDir: string,
-  packageName: string,
-) {
+export function nextStepsMarkdown(themes: string[], modes: Mode[], tokensTargetDir: string, packageName: string) {
   const themeModeCombinations = themes.flatMap((theme) =>
     modes.map((mode): [theme: string, mode: string] => [theme, mode]),
   );

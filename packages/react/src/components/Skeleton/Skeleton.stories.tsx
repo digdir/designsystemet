@@ -28,18 +28,9 @@ export const Components: StoryFn<typeof Text> = () => {
         gap: '20px',
       }}
     >
-      <Skeleton.Circle
-        width='50px'
-        height='50px'
-      />
-      <Skeleton.Rectangle
-        width='100px'
-        height='50px'
-      />
-      <Skeleton.Text
-        width='50px'
-        height='16px'
-      />
+      <Skeleton.Circle width='50px' height='50px' />
+      <Skeleton.Rectangle width='100px' height='50px' />
+      <Skeleton.Text width='50px' height='16px' />
     </div>
   );
 };
@@ -51,10 +42,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         width: '400px',
       }}
     >
-      <Skeleton.Rectangle
-        width='100%'
-        height='150px'
-      />
+      <Skeleton.Rectangle width='100%' height='150px' />
       <div
         style={{
           display: 'flex',
@@ -63,14 +51,8 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
           padding: '5px 0 5px 0',
         }}
       >
-        <Skeleton.Circle
-          width='30px'
-          height='30px'
-        />
-        <Heading
-          asChild
-          size='md'
-        >
+        <Skeleton.Circle width='30px' height='30px' />
+        <Heading asChild size='md'>
           <Skeleton.Text>En medium tittel</Skeleton.Text>
         </Heading>
       </div>
@@ -100,10 +82,7 @@ export const Children: StoryFn<typeof Skeleton> = () => {
 export const As: StoryFn<typeof Skeleton> = () => {
   return (
     <>
-      <Heading
-        size='lg'
-        asChild
-      >
+      <Heading size='lg' asChild>
         <Skeleton.Text>Her er en heading</Skeleton.Text>
       </Heading>
       <Paragraph asChild>
@@ -132,10 +111,7 @@ export const TextExample: StoryFn<typeof Text> = () => {
           </Paragraph>
         </div>
         <div style={{ width: '140px' }}>
-          <Heading
-            size='md'
-            asChild
-          >
+          <Heading size='md' asChild>
             <Skeleton.Text>Heading</Skeleton.Text>
           </Heading>
           <Paragraph size='sm'>

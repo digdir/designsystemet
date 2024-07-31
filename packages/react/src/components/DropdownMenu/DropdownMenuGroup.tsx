@@ -20,10 +20,7 @@ export const DropdownMenuGroup = forwardRef<
   const headingId = useId();
 
   return (
-    <li
-      className={className}
-      style={style}
-    >
+    <li className={className} style={style}>
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
@@ -32,14 +29,8 @@ export const DropdownMenuGroup = forwardRef<
         {...rest}
       >
         {heading && (
-          <Paragraph
-            asChild
-            size={size}
-          >
-            <h2
-              id={headingId}
-              className={'ds-dropdownmenu__heading'}
-            >
+          <Paragraph asChild size={size}>
+            <h2 id={headingId} className={'ds-dropdownmenu__heading'}>
               {heading}
             </h2>
           </Paragraph>

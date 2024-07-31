@@ -16,10 +16,7 @@ export const metadata = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main
-      id='main'
-      className={classes.page}
-    >
+    <main id='main' className={classes.page}>
       <Banner color='blue'>
         <BannerIcon>
           <ComponentFillIcon fontSize={'2.5rem'} />

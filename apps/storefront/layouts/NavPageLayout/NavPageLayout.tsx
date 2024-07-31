@@ -30,10 +30,7 @@ interface NavPageLayoutData {
 
 const NavPageLayout = ({ content, data, banner }: NavPageLayoutProps) => {
   return (
-    <main
-      id='main'
-      className='greyBackground'
-    >
+    <main id='main' className='greyBackground'>
       {banner && (
         <Banner color={banner.color}>
           <BannerIcon>{banner.icon}</BannerIcon>

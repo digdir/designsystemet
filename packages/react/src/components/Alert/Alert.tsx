@@ -74,15 +74,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         {...rest}
       >
         <>
-          <Icon
-            title={iconTitle || title}
-            className='ds-alert__icon'
-          />
-          <Paragraph
-            asChild
-            size={size}
-            className='ds-alert__content'
-          >
+          <Icon title={iconTitle || title} className='ds-alert__icon' />
+          <Paragraph asChild size={size} className='ds-alert__content'>
             <span>{children}</span>
           </Paragraph>
         </>

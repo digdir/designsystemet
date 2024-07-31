@@ -41,11 +41,7 @@ export const Group = ({
       <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
         {colors.map(function (item, index) {
           return (
-            <RovingFocusItem
-              key={index}
-              value={item.name}
-              asChild
-            >
+            <RovingFocusItem key={index} value={item.name} asChild>
               <Color
                 color={item}
                 colorNumber={5}

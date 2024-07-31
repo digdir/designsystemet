@@ -38,10 +38,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     } = useSwitch(props);
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           className={cl(
             `ds-switch`,
@@ -80,14 +77,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             {children && <span>{children}</span>}
           </Label>
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
-              <div
-                id={descriptionId}
-                className={`ds-switch__description`}
-              >
+            <Paragraph asChild size={size}>
+              <div id={descriptionId} className={`ds-switch__description`}>
                 {description}
               </div>
             </Paragraph>

@@ -26,10 +26,7 @@ const ComboboxNative = ({
       onChange={() => {}}
     >
       {VALUE.map((value) => (
-        <option
-          key={value}
-          value={value}
-        />
+        <option key={value} value={value} />
       ))}
     </select>
   );

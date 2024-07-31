@@ -68,10 +68,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       ) || undefined;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
@@ -98,10 +95,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(

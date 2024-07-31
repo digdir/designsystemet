@@ -102,10 +102,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       ) || undefined;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
@@ -133,10 +130,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(
@@ -150,11 +144,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           )}
           <div className='ds-textfield__field'>
             {prefix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -186,11 +176,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               }}
             />
             {suffix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,

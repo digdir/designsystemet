@@ -62,10 +62,7 @@ export const AccordionHeading = forwardRef<
           className='ds-accordion__expand-icon'
           fontSize={'1.5rem'}
         />
-        <Paragraph
-          asChild
-          size='sm'
-        >
+        <Paragraph asChild size='sm'>
           <span>{children}</span>
         </Paragraph>
       </button>

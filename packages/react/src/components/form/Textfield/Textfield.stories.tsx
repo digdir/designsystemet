@@ -50,21 +50,9 @@ export const HtmlSize: Story = {
 
 export const Adornments: StoryFn<typeof Textfield> = () => (
   <div style={{ display: 'grid', gap: 'var(--ds-spacing-2)' }}>
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='sm'
-    />
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='md'
-    />
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='lg'
-    />
+    <Textfield prefix='prefix' suffix='suffix' size='sm' />
+    <Textfield prefix='prefix' suffix='suffix' size='md' />
+    <Textfield prefix='prefix' suffix='suffix' size='lg' />
   </div>
 );
 

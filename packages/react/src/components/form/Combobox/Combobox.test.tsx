@@ -273,10 +273,7 @@ describe('Combobox', () => {
 
       renderRtl(
         <form onSubmit={handleSubmit}>
-          <Combobox
-            name='test'
-            multiple={true}
-          >
+          <Combobox name='test' multiple={true}>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             {PLACES.map((option, index) => (
               <Combobox.Option
@@ -288,10 +285,7 @@ describe('Combobox', () => {
               </Combobox.Option>
             ))}
           </Combobox>
-          <button
-            data-testid='submit'
-            type='submit'
-          >
+          <button data-testid='submit' type='submit'>
             Submit
           </button>
         </form>,
