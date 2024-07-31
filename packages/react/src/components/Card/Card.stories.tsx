@@ -59,7 +59,7 @@ export const LinkCard: Story = (args) => (
         rel='noopener noreferrer'
       >
         <Card.Media>
-          <img src={cat5} />
+          <img src={cat5} alt='' />
         </Card.Media>
         <Card.Header>
           <Heading size='sm' level={2}>

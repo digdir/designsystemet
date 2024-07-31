@@ -1,4 +1,4 @@
-name: Builds & Test Packages
+name: Packages
 on:
   workflow_dispatch:
   pull_request:
