@@ -1,11 +1,8 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
 
-import { AnimateHeight } from '../../utilities/AnimateHeight';
-import { Paragraph } from '../Typography';
-
-import { AccordionItemContext } from './AccordionItem';
+import { Paragraph } from '..';
 
 export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
 
@@ -17,34 +14,18 @@ export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
 export const AccordionContent = forwardRef<
   HTMLDivElement,
   AccordionContentProps
->(({ children, className, ...rest }, ref) => {
-  const context = useContext(AccordionItemContext);
-
-  if (context === null) {
-    console.error(
-      '<Accordion.Content> has to be used within an <Accordion.Item>',
-    );
-    return null;
-  }
-
+>(({ className, ...rest }, ref) => {
   return (
-    <AnimateHeight
-      id={context.contentId}
-      open={context.open}
+    <Paragraph
+      asChild
+      size='sm'
     >
-      <Paragraph
-        asChild
-        size='sm'
-      >
-        <div
-          ref={ref}
-          className={cl('ds-accordion__content', className)}
-          {...rest}
-        >
-          {children}
-        </div>
-      </Paragraph>
-    </AnimateHeight>
+      <div
+        ref={ref}
+        className={cl('ds-accordion__content', className)}
+        {...rest}
+      />
+    </Paragraph>
   );
 });
 

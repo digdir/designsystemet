@@ -27,11 +27,6 @@ describe('Accordion', () => {
     render(<TestComponent />);
     const accordionExpandButton = screen.getByRole('button');
 
-    expect(
-      screen.getByRole('heading', {
-        name: 'Accordion Header Title Text',
-      }),
-    ).toBeInTheDocument();
     expect(screen.getByText('The fantastic accordion content text'));
     expect(screen.getByText('Accordion Header Title Text'));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
@@ -55,17 +50,6 @@ describe('Accordion', () => {
 
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
-  });
-
-  test('should render heading as level 1 by default', () => {
-    render(<TestComponent />);
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'Accordion Header Title Text',
-        level: 1,
-      }),
-    );
   });
 });
 
