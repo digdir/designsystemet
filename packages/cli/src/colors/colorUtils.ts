@@ -193,9 +193,7 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  */
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r: string, g: string, b: string) {
-    return r + r + g + g + b + b;
-  });
+  hex = hex.replace(shorthandRegex, (m, r: string, g: string, b: string) => r + r + g + g + b + b);
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
@@ -216,7 +214,7 @@ export const hexToRgb = (hex: string) => {
  * @returns
  */
 export const luminanceFromRgb = (r: string, g: string, b: string) => {
-  const a = [Number(r), Number(g), Number(b)].map(function (v) {
+  const a = [Number(r), Number(g), Number(b)].map((v) => {
     v /= 255;
     return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
   });

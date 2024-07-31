@@ -30,11 +30,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
   );
 };
 
-const Row = (
-  title: string,
-  colors: ColorInfo[],
-  whiteText: boolean = false,
-) => {
+const Row = (title: string, colors: ColorInfo[], whiteText = false) => {
   return (
     <div className={cl(whiteText && classes.whiteText)}>
       <Heading size='xs' className={classes.mainTitle}>

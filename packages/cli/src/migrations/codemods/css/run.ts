@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 import glob from 'fast-glob';
 import type { AcceptedPlugin } from 'postcss';

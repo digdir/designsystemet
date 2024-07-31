@@ -16,7 +16,7 @@ const header = `@charset "UTF-8";
  */
 export const makeEntryFile: Action = {
   name: 'make_entryfile',
-  do: async function (dictionary, platform) {
+  do: async (dictionary, platform) => {
     const { outPath, theme, log } = platform;
 
     const writePath = `${outPath}/${theme}.css`;

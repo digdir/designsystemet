@@ -194,13 +194,11 @@ export const FullBaseTest = () => {
 
   return (
     <div className={classes.content}>
-      {blueColors.map((color, index) => (
-        <>
-          {index + 1 >= 20 && index + 1 <= 80 && (
-            <Column key={index} color={color} index={index} />
-          )}
-        </>
-      ))}
+      {blueColors.map(
+        (color, index) =>
+          index + 1 >= 20 &&
+          index + 1 <= 80 && <Column key={index} color={color} index={index} />,
+      )}
     </div>
   );
 };

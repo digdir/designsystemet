@@ -39,21 +39,19 @@ export const Group = ({
       )}
 
       <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
-        {colors.map(function (item, index) {
-          return (
-            <RovingFocusItem key={index} value={item.name} asChild>
-              <Color
-                color={item}
-                colorNumber={5}
-                contrast={'dd'}
-                lightness={'dd'}
-                hex={item.hex}
-                showColorMeta={showColorMeta}
-                type={type}
-              />
-            </RovingFocusItem>
-          );
-        })}
+        {colors.map((item, index) => (
+          <RovingFocusItem key={index} value={item.name} asChild>
+            <Color
+              color={item}
+              colorNumber={5}
+              contrast={'dd'}
+              lightness={'dd'}
+              hex={item.hex}
+              showColorMeta={showColorMeta}
+              type={type}
+            />
+          </RovingFocusItem>
+        ))}
       </div>
     </div>
   );
