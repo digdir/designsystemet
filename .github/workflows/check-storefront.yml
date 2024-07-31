@@ -27,8 +27,8 @@ jobs:
         run: yarn build:storefront
       - name: Types
         run: yarn types:storefront
-      - name: Lint Code
-        run: yarn lint ./apps/storefront
+      - name: Biome CI
+        run: yarn biome ci ./apps/storefront --reporter=github
       - name: Lint CSS
         run: yarn lint-style ./apps/storefront/**/*.css
       - name: Test

@@ -19,7 +19,7 @@ jobs:
         run: yarn build
       - name: Types
         run: yarn types:react
-      - name: Lint Code
+      - name: Biome CI
         run: yarn biome ci . --reporter=github
       - name: Lint CSS
         run: yarn lint-style
