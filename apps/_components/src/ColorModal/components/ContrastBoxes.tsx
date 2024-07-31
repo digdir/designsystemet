@@ -1,6 +1,4 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
@@ -120,46 +118,47 @@ const ContrastBox = ({
   );
 };
 
-export const ContrastBoxes = ({
-  weight,
-  hex,
-}: {
-  weight: number;
-  hex: string;
-}) => {
-  let contrastColors: ColorNumber[] = [];
+// TODO: Disabled due to colorTheme not being defined
+// export const ContrastBoxes = ({
+//   weight,
+//   hex,
+// }: {
+//   weight: number;
+//   hex: string;
+// }) => {
+//   let contrastColors: ColorNumber[] = [];
 
-  if (
-    weight === 1 ||
-    weight === 2 ||
-    weight === 3 ||
-    weight === 4 ||
-    weight === 5
-  ) {
-    contrastColors = [6, 7, 8, 12, 13];
-  } else if (
-    weight === 6 ||
-    weight === 7 ||
-    weight === 8 ||
-    weight === 9 ||
-    weight === 10 ||
-    weight === 11 ||
-    weight === 12 ||
-    weight === 13
-  ) {
-    contrastColors = [1, 2, 3, 4, 5];
-  }
-  return (
-    <>
-      {contrastColors.map((colorNumber) => (
-        <ContrastBox
-          key={colorNumber}
-          colorNumber={weight as ColorNumber}
-          title={getColorNameFromNumber(colorNumber)}
-          selectedColor={hex}
-          contrastColor={colorTheme[colorNumber - 1].hex}
-        />
-      ))}
-    </>
-  );
-};
+//   if (
+//     weight === 1 ||
+//     weight === 2 ||
+//     weight === 3 ||
+//     weight === 4 ||
+//     weight === 5
+//   ) {
+//     contrastColors = [6, 7, 8, 12, 13];
+//   } else if (
+//     weight === 6 ||
+//     weight === 7 ||
+//     weight === 8 ||
+//     weight === 9 ||
+//     weight === 10 ||
+//     weight === 11 ||
+//     weight === 12 ||
+//     weight === 13
+//   ) {
+//     contrastColors = [1, 2, 3, 4, 5];
+//   }
+//   return (
+//     <>
+//       {contrastColors.map((colorNumber) => (
+//         <ContrastBox
+//           key={colorNumber}
+//           colorNumber={weight as ColorNumber}
+//           title={getColorNameFromNumber(colorNumber)}
+//           selectedColor={hex}
+//           contrastColor={colorTheme[colorNumber - 1].hex}
+//         />
+//       ))}
+//     </>
+//   );
+// };
