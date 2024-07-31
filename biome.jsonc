@@ -78,7 +78,8 @@
         "useAriaPropsForRole": "off"
       },
       "complexity": {
-        "useArrowFunction": "off"
+        "useArrowFunction": "off",
+        "noForEach": "off" // TODO: Enable this rule
       },
       "correctness": {
         "useExhaustiveDependencies": "off",
@@ -101,7 +102,8 @@
         "useDefaultParameterLast": "off"
       },
       "suspicious": {
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noDoubleEquals": "off" // TODO: Enable this rule
       }
     },
     "ignore": []
