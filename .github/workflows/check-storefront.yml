@@ -1,4 +1,4 @@
-name: Checks Storefront
+name: Build Storefront
 on:
   workflow_dispatch:
   pull_request:
@@ -22,9 +22,4 @@ jobs:
         run: yarn build
       - name: Build storefront
         run: yarn build:storefront
-      - name: Types
-        run: yarn types:storefront
-      - name: Biome CI
-        run: yarn biome ci ./apps/storefront
-      - name: Lint CSS
-        run: yarn lint-style ./apps/storefront/**/*.css
+

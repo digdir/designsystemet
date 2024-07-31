@@ -26,7 +26,6 @@
     "build:devsite": "yarn workspace dev building",
     "start:storefront": "yarn workspace storefront start",
     "lint-style": "stylelint  \"**/*.css\"",
-    "lint-style:fix": "yarn run lint-style --fix",
     "types": "yarn workspaces foreach -Ap --topological-dev --no-private run types",
     "types:react": "yarn workspace @digdir/designsystemet-react types",
     "types:storefront": "yarn workspace storefront types",
