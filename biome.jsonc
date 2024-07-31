@@ -4,6 +4,7 @@
   "files": {
     "ignoreUnknown": true,
     "ignore": [
+      "package.json",
       "**/tsc-build/**",
       "**/packages/theme/brand/**/*",
       "**/apps/storefront/tokens/**",
