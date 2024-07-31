@@ -35,7 +35,7 @@ Preview.args = {
   size: 'md',
 };
 
-export const Error: StoryFn<typeof Checkbox> = () => (
+export const WithError: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Hvilket land er du statborger i?'
     description='Hvis du har dobbelt statsborgerskap, velger du begge landene.'
