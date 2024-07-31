@@ -39,7 +39,7 @@ export const AccordionHeading = forwardRef<
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     context.toggleOpen();
-    onHeaderClick && onHeaderClick(e);
+    onHeaderClick?.(e);
   };
 
   return (

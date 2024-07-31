@@ -95,7 +95,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const handleClear = () => {
       onClear?.(internalValue);
       setInternalValue('');
-      inputRef?.current && inputRef.current.focus();
+      inputRef?.current?.focus();
     };
 
     const handleSearchClick = () => {

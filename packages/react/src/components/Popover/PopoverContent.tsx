@@ -73,8 +73,8 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       placement,
       open: internalOpen,
       onOpenChange: (localOpen) => {
-        onOpenChange && onOpenChange(localOpen);
-        if (!localOpen) onClose && onClose();
+        onOpenChange?.(localOpen);
+        if (!localOpen) onClose?.();
         if (!isControlled) setInternalOpen(localOpen);
       },
       whileElementsMounted: autoUpdate,

@@ -27,8 +27,7 @@ export const Contributors = ({ authors }: ContributorsProps) => {
         size='sm'
         className={classes.meta}
       >
-        {authors &&
-          authors.map((author, index) => (
+        {authors?.map((author, index) => (
             <Fragment key={index}>
               {index !== 0 && (
                 <span

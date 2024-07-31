@@ -52,7 +52,7 @@ export const useComboboxKeyboard = ({
 
         setOpen(false);
         break;
-      case 'Enter':
+      case 'Enter': {
         event.preventDefault();
         // ignore if it is closed
         if (!open) break;
@@ -75,6 +75,7 @@ export const useComboboxKeyboard = ({
 
         handleSelectOption({ option: options[option] });
         break;
+      }
 
       case 'Backspace':
         // if we are in single mode, we need to set selectedOptions to empty

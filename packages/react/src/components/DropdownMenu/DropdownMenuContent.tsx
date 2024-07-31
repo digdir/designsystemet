@@ -54,7 +54,7 @@ export const DropdownMenuContent = forwardRef<
     placement,
     open: internalOpen,
     onOpenChange: (localOpen) => {
-      if (!localOpen) onClose && onClose();
+      if (!localOpen) onClose?.();
       if (!isControlled) setInternalOpen(localOpen);
     },
     elements: {

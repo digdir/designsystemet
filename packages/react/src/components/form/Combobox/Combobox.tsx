@@ -355,7 +355,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           listRef,
           forwareddRef,
           setListRef: (index: number, node: HTMLElement | null) => {
-            return (listRef.current[index] = node);
+            listRef.current[index] = node;
           },
         }}
       >

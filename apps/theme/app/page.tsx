@@ -128,9 +128,8 @@ export default function Home() {
     const queryColor = params.get(colorType);
     if (queryColor && isHexColor(queryColor.substring(1))) {
       return queryColor as CssColor;
-    } else {
-      return returnColor;
     }
+      return returnColor;
   };
 
   /**
@@ -245,7 +244,7 @@ export default function Home() {
 
     if (!contrast && textCanBeUsed) {
       return 'decorative';
-    } else if (contrast && !textCanBeUsed) {
+    }if (contrast && !textCanBeUsed) {
       return 'interaction';
     }
 

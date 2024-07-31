@@ -84,7 +84,7 @@ function filterTokenSets(tokensets: Record<string, TokenSetStatus>) {
       .sort((a, b) => {
         if (a[1] === TokenSetStatus.SOURCE && b[1] === TokenSetStatus.ENABLED) {
           return -1;
-        } else if (a[1] === TokenSetStatus.ENABLED && b[1] === TokenSetStatus.SOURCE) {
+        }if (a[1] === TokenSetStatus.ENABLED && b[1] === TokenSetStatus.SOURCE) {
           return 1;
         }
         return 0;

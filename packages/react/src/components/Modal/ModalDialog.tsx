@@ -3,14 +3,14 @@ import {
   useFloating,
   useMergeRefs,
 } from '@floating-ui/react';
-import type { DialogHTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect, useRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
+import type { DialogHTMLAttributes } from 'react';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
 
-import { useScrollLock } from './useScrollLock';
-import { useModalState } from './useModalState';
 import { ModalContext } from './ModalRoot';
+import { useModalState } from './useModalState';
+import { useScrollLock } from './useScrollLock';
 
 export type ModalDialogProps = {
   /**
@@ -27,7 +27,7 @@ export type ModalDialogProps = {
    * Called before the modal is closed when using the close button, `closeOnBackdropClick` or `ESCAPE`.
    * If the function returns `false` the modal will not close.
    */
-  onBeforeClose?: () => boolean | void;
+  onBeforeClose?: () => boolean | undefined;
   asChild?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
@@ -121,6 +121,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
       >
         {open && (
           <FloatingFocusManager context={context}>
+            {/* biome-ignore lint/complexity/noUselessFragments: Workaround for @radix-ui/react-slot support */}
             <>{children}</>
           </FloatingFocusManager>
         )}

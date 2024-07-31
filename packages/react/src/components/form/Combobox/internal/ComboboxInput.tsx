@@ -149,7 +149,7 @@ const ComboboxInput = ({
               onChange={(e) => {
                 onChange(e);
                 !open && setOpen(true);
-                rest.onChange && rest.onChange(e);
+                rest.onChange?.(e);
               }}
             />
           </Paragraph>

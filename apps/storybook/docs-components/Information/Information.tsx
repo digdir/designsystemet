@@ -36,7 +36,6 @@ const getSeverity = (text: Texts): AlertProps['severity'] => {
       return 'danger';
     case 'development':
       return 'warning';
-    case 'altinn':
     default:
       return 'info';
   }

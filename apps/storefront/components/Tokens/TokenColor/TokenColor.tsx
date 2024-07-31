@@ -25,7 +25,7 @@ export function getColorWeight(value: string): ColorNumber | undefined {
 
   const parsed = parseInt(firstSplit as string);
 
-  return isNaN(parsed) ? undefined : (parsed as ColorNumber);
+  return Number.isNaN(parsed) ? undefined : (parsed as ColorNumber);
 }
 
 const TokenColor = ({ value, token }: TokenColorProps) => {

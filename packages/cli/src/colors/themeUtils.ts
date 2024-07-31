@@ -255,7 +255,7 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
 
   if (defaultAgainstWhite >= 4.5 && activeAgainstWhite >= 4.5) {
     return true;
-  } else if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
+  }if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
     return true;
   }
 

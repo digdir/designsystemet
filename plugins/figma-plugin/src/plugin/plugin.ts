@@ -25,7 +25,7 @@ function UpdateColor(
   if (variable.name.startsWith(`theme/${type}`)) {
     for (const [key, value] of Object.entries(obj)) {
       if (key === suffix) {
-        const rgb = hexToRgb(value['value'] as string);
+        const rgb = hexToRgb(value.value as string);
         if (rgb) {
           variable.setValueForMode(modeId, rgb);
         }
@@ -37,19 +37,18 @@ function UpdateColor(
 function getModeIndex(mode: string) {
   if (mode === 'light') {
     return 0;
-  } else {
-    return 1;
   }
+    return 1;
 }
 
 figma.ui.onmessage = (msg: { type: string; text: string; mode: string }) => {
   if (msg.type === 'update-variables') {
     const obj = JSON.parse(msg.text);
-    const accent = obj['theme']['accent'] as object;
-    const neutral = obj['theme']['neutral'] as object;
-    const brand1 = obj['theme']['brand1'] as object;
-    const brand2 = obj['theme']['brand2'] as object;
-    const brand3 = obj['theme']['brand3'] as object;
+    const accent = obj.theme.accent as object;
+    const neutral = obj.theme.neutral as object;
+    const brand1 = obj.theme.brand1 as object;
+    const brand2 = obj.theme.brand2 as object;
+    const brand3 = obj.theme.brand3 as object;
 
     figma.variables.getLocalVariableCollectionsAsync().then((collections) => {
       for (const collection of collections) {

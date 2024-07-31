@@ -124,7 +124,7 @@ export const ColorPicker = ({
         <ChromePicker
           onChangeComplete={({ hex }: { hex: string }) => {
             setColor(hex);
-            onColorChanged && onColorChanged(hex as CssColor);
+            onColorChanged?.(hex as CssColor);
           }}
           color={color}
         />

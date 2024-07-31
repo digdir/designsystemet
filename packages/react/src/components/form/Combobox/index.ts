@@ -16,7 +16,7 @@ Combobox.Option.displayName = 'Combobox.Option';
 Combobox.Empty.displayName = 'Combobox.Empty';
 
 export {
-  Combobox as Combobox,
-  ComboboxOption as ComboboxOption,
-  ComboboxEmpty as ComboboxEmpty,
+  Combobox,
+  ComboboxOption,
+  ComboboxEmpty,
 };
