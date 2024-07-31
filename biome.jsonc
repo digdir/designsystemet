@@ -104,6 +104,9 @@
       "suspicious": {
         "noArrayIndexKey": "off",
         "noDoubleEquals": "off" // TODO: Enable this rule
+      },
+      "performance": {
+        "noAccumulatingSpread": "off" // TODO: Enable this rule
       }
     },
     "ignore": []
