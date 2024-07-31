@@ -6,12 +6,14 @@ on:
       - 'packages/**'
 jobs:
   checks:
-    name: Builds, lints and tests code
+    name: Builds & tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: yarn build
+      - name: Types
+        run: yarn types:react
       - name: Test
         run: yarn test
