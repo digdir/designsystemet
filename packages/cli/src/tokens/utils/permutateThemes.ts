@@ -1,6 +1,6 @@
-import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
+import * as R from 'ramda';
 
 declare interface Options {
   separator?: string;

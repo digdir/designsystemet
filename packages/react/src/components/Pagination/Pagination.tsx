@@ -1,14 +1,14 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { PaginationRoot } from './PaginationRoot';
-import { PaginationContent } from './PaginationContent';
-import { PaginationItem } from './PaginationItem';
 import { PaginationButton } from './PaginationButton';
+import { PaginationContent } from './PaginationContent';
 import { PaginationEllipsis } from './PaginationEllipsis';
+import { PaginationItem } from './PaginationItem';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
+import { PaginationRoot } from './PaginationRoot';
 import { usePagination } from './usePagination';
 
 export type PaginationProps = {

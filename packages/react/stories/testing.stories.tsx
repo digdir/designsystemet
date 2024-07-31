@@ -1,15 +1,15 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  Textfield,
-  Switch,
-  NativeSelect,
   Button,
   Checkbox,
-  Radio,
-  Tag,
-  Combobox,
   Chip,
+  Combobox,
+  NativeSelect,
+  Radio,
+  Switch,
+  Tag,
+  Textfield,
 } from '../src/components';
 
 export default {

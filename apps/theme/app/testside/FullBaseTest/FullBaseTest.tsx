@@ -1,13 +1,13 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
-import { useEffect, useState } from 'react';
-import cl from 'clsx/lite';
 import {
-  getContrastFromLightness,
-  getLightnessFromHex,
   calculateContrastOneColor,
   getBaseColor,
+  getContrastFromLightness,
+  getLightnessFromHex,
 } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
+import { useEffect, useState } from 'react';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
 

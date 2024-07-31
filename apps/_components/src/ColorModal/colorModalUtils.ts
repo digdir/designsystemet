@@ -1,6 +1,6 @@
 import {
-  getColorNameFromNumber,
   type ColorNumber,
+  getColorNameFromNumber,
 } from '@digdir/designsystemet/color';
 
 export const capitalizeFirstLetter = (str: string) => {

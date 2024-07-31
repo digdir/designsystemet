@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
-import { useState, forwardRef, createContext } from 'react';
+import { createContext, forwardRef, useState } from 'react';
 
 export type ListContextType = {
   size: 'sm' | 'md' | 'lg';

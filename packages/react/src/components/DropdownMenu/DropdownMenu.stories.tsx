@@ -1,6 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { useState } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { DropdownMenu } from '.';
 

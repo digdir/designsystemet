@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Heading } from '@digdir/designsystemet-react';
 import type {
   ColorError,
@@ -13,18 +11,20 @@ import type {
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
+  areColorsContrasting,
   canTextBeUsedOnColors,
   generateColorTheme,
   generateThemeForColor,
-  areColorsContrasting,
   isHexColor,
 } from '@digdir/designsystemet/color';
-import { Container, ColorModal } from '@repo/components';
+import { ColorModal, Container } from '@repo/components';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
-import { useThemeStore } from '../store';
-import { mapTokens } from '../utils/tokenMapping';
 import { Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
+import { useThemeStore } from '../store';
+import { mapTokens } from '../utils/tokenMapping';
 
 import classes from './page.module.css';
 

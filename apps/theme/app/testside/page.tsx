@@ -1,22 +1,22 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cl from 'clsx/lite';
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorInfo } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
 
 import { Settings } from '../../settings';
 
-import { ContrastBox } from './ContrastBox/ContrastBox';
-import classes from './page.module.css';
-import { BaseContrast } from './BaseContrast/BaseContrast';
 import { BackgroundSurface } from './BackgroundSurface/BackgroundSurface';
-import { Interaction } from './Interaction/Interaction';
 import { Backgrounds } from './Backgrounds/Backgrounds';
+import { BaseContrast } from './BaseContrast/BaseContrast';
 import { BaseContrastOverview } from './BaseContrastOverview/BaseContrastOverview';
+import { ContrastBox } from './ContrastBox/ContrastBox';
 import { FullBaseTest } from './FullBaseTest/FullBaseTest';
+import { Interaction } from './Interaction/Interaction';
+import classes from './page.module.css';
 
 const Box = (name: string, color1: CssColor, color2: CssColor) => {
   return (

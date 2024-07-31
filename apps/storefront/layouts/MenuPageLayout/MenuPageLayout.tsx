@@ -1,18 +1,18 @@
 'use client';
-import type * as React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
+import { Container } from '@repo/components';
 import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
-import { Container } from '@repo/components';
+import type * as React from 'react';
 
+import { GithubLink, MdxContent, SidebarMenu } from '../../components';
 import {
   Banner,
   BannerHeading,
   BannerIcon,
   BannerIngress,
 } from '../../components/Banner/Banner';
-import { SidebarMenu, MdxContent, GithubLink } from '../../components';
 
 import classes from './MenuPageLayout.module.css';
 

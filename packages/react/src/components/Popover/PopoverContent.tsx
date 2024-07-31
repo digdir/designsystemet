@@ -1,5 +1,3 @@
-import { forwardRef, useContext, useMemo, useRef, useEffect } from 'react';
-import * as React from 'react';
 import {
   FloatingPortal,
   arrow,
@@ -16,9 +14,11 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext, useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 
-import { Paragraph } from '../Typography';
 import { useIsomorphicLayoutEffect } from '../../utilities';
+import { Paragraph } from '../Typography';
 
 import { PopoverContext } from './PopoverRoot';
 

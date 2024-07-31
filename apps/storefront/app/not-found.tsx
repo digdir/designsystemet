@@ -1,9 +1,9 @@
-import type * as React from 'react';
-import NextLink from 'next/link';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
-import Image from 'next/image';
-import type { Metadata } from 'next';
 import { Container } from '@repo/components';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import type * as React from 'react';
 
 import classes from './not-found.module.css';
 

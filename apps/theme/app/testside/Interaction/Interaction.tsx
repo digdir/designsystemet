@@ -1,8 +1,8 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './Interaction.module.css';
 

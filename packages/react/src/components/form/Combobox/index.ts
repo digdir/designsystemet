@@ -1,6 +1,6 @@
 import { Combobox as ComboboxRoot } from './Combobox';
-import { ComboboxOption } from './Option/Option';
 import { ComboboxEmpty } from './Empty';
+import { ComboboxOption } from './Option/Option';
 
 type ComboboxComponent = typeof ComboboxRoot & {
   Option: typeof ComboboxOption;

@@ -1,11 +1,11 @@
 import {
-  ChevronUpIcon,
   ChevronDownIcon,
   ChevronUpDownIcon,
+  ChevronUpIcon,
 } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import type { AriaAttributes } from 'react';
 import * as React from 'react';
-import cl from 'clsx/lite';
 
 const SORT_ICON = {
   ascending: <ChevronUpIcon />,

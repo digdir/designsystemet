@@ -1,5 +1,6 @@
 'use client';
 
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
   Button,
   Heading,
@@ -7,15 +8,14 @@ import {
   Tabs,
   Tooltip,
 } from '@digdir/designsystemet-react';
-import { useEffect, useRef, useState } from 'react';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { generateScaleForColor } from '@digdir/designsystemet/color';
+import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
+import { useEffect, useRef, useState } from 'react';
 
-import type { modeType } from '../../types';
 import { Settings } from '../../settings';
+import type { modeType } from '../../types';
 
 import classes from './TokenModal.module.css';
 

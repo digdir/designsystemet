@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 import {
   AirplaneIcon,
-  NewspaperIcon,
-  DogIcon,
   BackpackIcon,
   BellIcon,
+  DogIcon,
+  NewspaperIcon,
 } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button } from '../Button';
 

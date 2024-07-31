@@ -1,9 +1,9 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
+import type { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Paragraph, Heading } from '../Typography';
+import { Heading, Paragraph } from '../Typography';
 
 import { AccordionItemContext } from './AccordionItem';
 

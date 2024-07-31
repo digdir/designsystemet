@@ -1,15 +1,15 @@
 'use client';
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { SkipLink } from '@digdir/designsystemet-react';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { SkipLink } from '@digdir/designsystemet-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
-import { GithubLogo } from './logos/github-logo';
-import { FigmaLogo } from './logos/figma-logo';
-import { DsLogo } from './logos/ds-logo';
 import classes from './Header.module.css';
+import { DsLogo } from './logos/ds-logo';
+import { FigmaLogo } from './logos/figma-logo';
+import { GithubLogo } from './logos/github-logo';
 
 type HeaderProps = {
   menu: { name: string; href: string }[];

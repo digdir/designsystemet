@@ -8,8 +8,8 @@ import {
   Paragraph,
   Tag,
 } from '@digdir/designsystemet-react';
-import Link from 'next/link';
 import cl from 'clsx/lite';
+import Link from 'next/link';
 
 import classes from './BlogCard.module.css';
 

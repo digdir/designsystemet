@@ -3,8 +3,8 @@ import { Container } from '@repo/components';
 
 import {
   Banner,
-  BannerIcon,
   BannerHeading,
+  BannerIcon,
   BannerIngress,
 } from 'components/Banner/Banner';
 

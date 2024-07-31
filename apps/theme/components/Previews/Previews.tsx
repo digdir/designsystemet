@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import cl from 'clsx/lite';
 import type { Mode } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
+import { useState } from 'react';
 
+import { Components } from './Components/Components';
 import { Dashboard } from './Dashboard/Dashboard';
 import { Landing } from './Landing/Landing';
 import classes from './Previews.module.css';
-import { Components } from './Components/Components';
 
 type previewModeType =
   | 'dashboard'

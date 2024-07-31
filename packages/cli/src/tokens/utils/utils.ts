@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import type { TransformedToken, DesignToken } from 'style-dictionary/types';
+import type { DesignToken, TransformedToken } from 'style-dictionary/types';
 
 /**
  * Returns type based on design token format used. Read more:https://v4.styledictionary.com/info/dtcg/

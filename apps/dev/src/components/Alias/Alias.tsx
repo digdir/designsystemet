@@ -1,5 +1,5 @@
+import { ClockIcon, ExternalLinkIcon } from '@navikt/aksel-icons';
 import { DateTime } from 'luxon';
-import { ExternalLinkIcon, ClockIcon } from '@navikt/aksel-icons';
 
 import classes from './Alias.module.css';
 

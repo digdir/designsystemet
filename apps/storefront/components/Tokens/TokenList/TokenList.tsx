@@ -1,8 +1,4 @@
 'use client';
-import type { HTMLAttributes } from 'react';
-import { useEffect, useState } from 'react';
-import cl from 'clsx/lite';
-import type { TransformedToken as Token } from 'style-dictionary';
 import {
   DropdownMenu,
   Heading,
@@ -10,12 +6,16 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
-import { ClipboardButton } from '@repo/components';
 import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { ClipboardButton } from '@repo/components';
+import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { useEffect, useState } from 'react';
+import type { TransformedToken as Token } from 'style-dictionary';
 
-import { capitalizeString } from '../../../utils/StringHelpers';
-import * as tokensLight from '../../../tokens/light';
 import * as tokensDark from '../../../tokens/dark';
+import * as tokensLight from '../../../tokens/light';
+import { capitalizeString } from '../../../utils/StringHelpers';
 import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';

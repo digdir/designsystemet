@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { DropdownMenuRootProps } from './DropdownMenuRoot';
 

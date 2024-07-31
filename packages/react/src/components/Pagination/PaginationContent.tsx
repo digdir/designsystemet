@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef, useContext, type HTMLAttributes } from 'react';
 import cl from 'clsx/lite';
+import { type HTMLAttributes, forwardRef, useContext } from 'react';
 
 import { PaginationContext } from './PaginationRoot';
 

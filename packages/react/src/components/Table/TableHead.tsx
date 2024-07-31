@@ -1,5 +1,5 @@
-import * as React from 'react';
 import cl from 'clsx/lite';
+import * as React from 'react';
 
 export type TableHeadProps = React.HTMLAttributes<HTMLTableSectionElement>;
 

@@ -1,13 +1,13 @@
-import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import { useContext, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { FieldsetHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
-import { useFieldset } from './useFieldset';
 import { FieldsetContext } from './FieldsetContext';
+import { useFieldset } from './useFieldset';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */

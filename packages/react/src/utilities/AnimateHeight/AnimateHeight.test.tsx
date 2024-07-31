@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 import { act } from 'react';
+import { vi } from 'vitest';
 
 import * as hooks from '../../utilities';
 

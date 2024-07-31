@@ -1,28 +1,28 @@
-import { useState, useRef, useEffect, useId, forwardRef } from 'react';
-import type { ReactNode, InputHTMLAttributes } from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-import cl from 'clsx/lite';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import cl from 'clsx/lite';
+import { forwardRef, useEffect, useId, useRef, useState } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 
+import type { PortalProps } from '../../../types/Portal';
+import { omit, useDebounceCallback } from '../../../utilities';
 import { Box } from '../../Box';
+import { Spinner } from '../../Spinner';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
-import type { PortalProps } from '../../../types/Portal';
-import { useDebounceCallback, omit } from '../../../utilities';
-import { Spinner } from '../../Spinner';
 
-import type { Option } from './useCombobox';
-import { useCombobox } from './useCombobox';
-import { prefix, removePrefix } from './utilities';
+import { ComboboxContext } from './ComboboxContext';
+import { ComboboxIdProvider } from './ComboboxIdContext';
+import { ComboboxCustom } from './Custom';
+import ComboboxError from './internal/ComboboxError';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
-import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
-import { ComboboxCustom } from './Custom';
-import { useFloatingCombobox } from './useFloatingCombobox';
+import type { Option } from './useCombobox';
+import { useCombobox } from './useCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
-import { ComboboxIdProvider } from './ComboboxIdContext';
-import { ComboboxContext } from './ComboboxContext';
+import { useFloatingCombobox } from './useFloatingCombobox';
+import { prefix, removePrefix } from './utilities';
 
 export type ComboboxProps = {
   /**

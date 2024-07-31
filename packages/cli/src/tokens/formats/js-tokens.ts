@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import type { TransformedToken, Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter } from 'style-dictionary/utils';
+import type { Format, TransformedToken } from 'style-dictionary/types';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 import { getType } from '../utils/utils.js';
 

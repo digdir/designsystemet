@@ -1,13 +1,13 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useId, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import type { FormFieldProps } from '../useFormField';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
+import type { FormFieldProps } from '../useFormField';
 
 import { useTextfield } from './useTextfield';
 

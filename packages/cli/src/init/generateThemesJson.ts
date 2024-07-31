@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-import { TokenSetStatus, type ThemeObject } from '@tokens-studio/types';
+import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import { normalizeTokenSetName } from './utils.js';
 

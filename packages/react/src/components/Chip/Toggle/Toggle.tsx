@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';

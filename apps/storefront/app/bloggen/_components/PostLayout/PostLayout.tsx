@@ -1,13 +1,13 @@
-import type * as React from 'react';
 import {
   Heading,
   Ingress,
-  Paragraph,
   Link,
+  Paragraph,
 } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
+import type * as React from 'react';
 
-import { MdxContent, Image } from '../../../../components';
+import { Image, MdxContent } from '../../../../components';
 import { Figures } from '../Figures';
 
 import classes from './PostLayout.module.css';

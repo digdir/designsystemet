@@ -1,19 +1,19 @@
-import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
-import type { PartialStoryFn } from '@storybook/types';
+import { Stack } from '@doc-components';
 import {
-  PencilWritingIcon,
-  PrinterSmallIcon,
   ArrowForwardIcon,
-  TrashIcon,
-  ExternalLinkIcon,
-  PlusCircleIcon,
-  BellIcon,
-  CogIcon,
   ArrowRightIcon,
   ArrowUndoIcon,
+  BellIcon,
+  CogIcon,
+  ExternalLinkIcon,
+  PencilWritingIcon,
+  PlusCircleIcon,
   PlusIcon,
+  PrinterSmallIcon,
+  TrashIcon,
 } from '@navikt/aksel-icons';
-import { Stack } from '@doc-components';
+import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
+import type { PartialStoryFn } from '@storybook/types';
 
 import { Spinner } from '../Spinner';
 import { Tooltip } from '../Tooltip';

@@ -1,8 +1,8 @@
 import { useDebounceCallback } from '../../../utilities';
 
-import type { useCombobox } from './useCombobox';
-import { useComboboxId } from './ComboboxIdContext';
 import type { ComboboxContextType } from './ComboboxContext';
+import { useComboboxId } from './ComboboxIdContext';
+import type { useCombobox } from './useCombobox';
 
 type UseComboboxKeyboardProps = {
   filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];

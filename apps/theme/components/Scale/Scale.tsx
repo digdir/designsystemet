@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { useEffect, useState } from 'react';
 
 import type { modeType } from '../../types';
 import { Group } from '../Group/Group';

@@ -1,13 +1,13 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
-import { useEffect, useState } from 'react';
+import {
+  calculateContrastOneColor,
+  getContrastFromHex,
+  getContrastFromLightness,
+} from '@digdir/designsystemet/color';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import {
-  getContrastFromLightness,
-  getContrastFromHex,
-  calculateContrastOneColor,
-} from '@digdir/designsystemet/color';
+import { useEffect, useState } from 'react';
 
 import classes from './BaseContrastOverview.module.css';
 export const BaseContrastOverview = () => {

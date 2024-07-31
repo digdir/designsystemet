@@ -1,11 +1,11 @@
-import type { AccordionRootProps } from './AccordionRoot';
-import type { AccordionItemProps } from './AccordionItem';
 import type { AccordionContentProps } from './AccordionContent';
-import type { AccordionHeaderProps } from './AccordionHeading';
-import { AccordionRoot } from './AccordionRoot';
-import { AccordionItem } from './AccordionItem';
 import { AccordionContent } from './AccordionContent';
+import type { AccordionHeaderProps } from './AccordionHeading';
 import { AccordionHeading } from './AccordionHeading';
+import type { AccordionItemProps } from './AccordionItem';
+import { AccordionItem } from './AccordionItem';
+import type { AccordionRootProps } from './AccordionRoot';
+import { AccordionRoot } from './AccordionRoot';
 
 type AccordionComponent = {
   Root: typeof AccordionRoot;

@@ -1,19 +1,19 @@
 import type {
+  HeadingProps,
+  LinkProps,
   ListItemProps,
   ListOrderedProps,
   ListUnorderedProps,
   ParagraphProps,
-  LinkProps,
-  HeadingProps,
 } from '@digdir/designsystemet-react';
 import {
+  Heading,
   Link,
   ListItem,
   ListOrdered,
   ListRoot,
   ListUnordered,
   Paragraph,
-  Heading,
   Table,
   TableBody,
   TableCell,

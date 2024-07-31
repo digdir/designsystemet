@@ -1,14 +1,14 @@
-import type * as React from 'react';
 import { Container } from '@repo/components';
+import type * as React from 'react';
 
+import { ImageSection, MdxContent } from '../../components';
+import type { ImageSectionProps } from '../../components';
 import {
   Banner,
   BannerHeading,
   BannerIcon,
   BannerIngress,
 } from '../../components/Banner/Banner';
-import { ImageSection, MdxContent } from '../../components';
-import type { ImageSectionProps } from '../../components';
 
 import classes from './NavPageLayout.module.css';
 

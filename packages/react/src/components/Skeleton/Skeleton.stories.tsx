@@ -1,7 +1,7 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Paragraph, Heading } from '../Typography';
 import { Button } from '../Button';
+import { Heading, Paragraph } from '../Typography';
 
 import { Skeleton } from '.';
 

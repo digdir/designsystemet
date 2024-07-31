@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useEffect, useState } from 'react';
 
 import { Pagination, usePagination } from '.';
 

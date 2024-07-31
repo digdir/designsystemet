@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 import { FilesIcon } from '@navikt/aksel-icons';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { format } from 'prettier/standalone.js';
-import * as prettierMarkdown from 'prettier/plugins/markdown.js';
+import * as prettierBabel from 'prettier/parser-babel';
+import * as prettierEstree from 'prettier/plugins/estree';
 import * as prettierHtml from 'prettier/plugins/html.js';
+import * as prettierMarkdown from 'prettier/plugins/markdown.js';
 import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
-import * as prettierEstree from 'prettier/plugins/estree';
-import * as prettierBabel from 'prettier/parser-babel';
+import { format } from 'prettier/standalone.js';
+import { useEffect, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Button, Tooltip } from '@digdir/designsystemet-react';
 
 import classes from './CodeSnippet.module.css';
 

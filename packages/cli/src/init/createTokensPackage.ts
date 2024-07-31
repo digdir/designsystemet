@@ -1,15 +1,15 @@
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import chalk from 'chalk';
 import type { Choice, Options } from 'prompts';
 import prompts from 'prompts';
 
-import packageJsonTemplate from './template/template-files/package.json' with { type: 'json' };
 import generateMetadata from './generateMetadataJson.js';
 import generateThemes from './generateThemesJson.js';
-import { toGeneratedCssFileName, normalizeTokenSetName, toValidPackageName } from './utils.js';
 import { nextStepsMarkdown } from './nextStepsMarkdown.js';
+import packageJsonTemplate from './template/template-files/package.json' with { type: 'json' };
+import { normalizeTokenSetName, toGeneratedCssFileName, toValidPackageName } from './utils.js';
 
 const MODES = ['Light', 'Dark', 'Contrast'] as const;
 export type Mode = (typeof MODES)[number];

@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-import cl from 'clsx/lite';
 
 import { FieldsetContext } from './Fieldset/FieldsetContext';
 

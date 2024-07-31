@@ -1,8 +1,8 @@
-import type * as React from 'react';
-import cl from 'clsx/lite';
-import Image from 'next/image';
 import { Heading } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import type * as React from 'react';
 
 import classes from './Section.module.css';
 

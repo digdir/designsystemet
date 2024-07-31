@@ -1,8 +1,8 @@
-import cl from 'clsx/lite';
-import { SunIcon } from '@navikt/aksel-icons';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
-import { forwardRef } from 'react';
 import { omit } from '@digdir/designsystemet-react';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { SunIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import { forwardRef } from 'react';
 
 import { useThemeStore } from '../../store';
 

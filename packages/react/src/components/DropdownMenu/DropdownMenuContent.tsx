@@ -1,20 +1,20 @@
-import { forwardRef, useContext, useRef } from 'react';
-import * as React from 'react';
 import {
-  useFloating,
+  FloatingFocusManager,
+  FloatingPortal,
   autoUpdate,
   offset,
+  shift,
   useClick,
   useDismiss,
+  useFloating,
   useFocus,
   useInteractions,
   useMergeRefs,
   useRole,
-  shift,
-  FloatingFocusManager,
-  FloatingPortal,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext, useRef } from 'react';
+import * as React from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../utilities';
 

@@ -1,6 +1,6 @@
-import cl from 'clsx/lite';
 import { RovingFocusItem } from '@digdir/designsystemet-react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
 
 import { Color } from '../Color/Color';
 

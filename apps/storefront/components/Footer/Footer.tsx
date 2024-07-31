@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react';
-import Image from 'next/image';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import NextLink from 'next/link';
-import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
-import cl from 'clsx/lite';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import type { ReactNode } from 'react';
 
 import classes from './Footer.module.css';
 

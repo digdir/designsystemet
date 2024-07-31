@@ -1,6 +1,6 @@
-import { useState, act } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act, useState } from 'react';
 
 import { Chip, type RemovableChipProps } from '..';
 

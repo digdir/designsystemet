@@ -1,5 +1,5 @@
-import cl from 'clsx/lite';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 

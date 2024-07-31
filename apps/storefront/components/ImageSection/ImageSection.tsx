@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState, createElement } from 'react';
-import type { ReactNode } from 'react';
-import Image from 'next/image';
-import cl from 'clsx/lite';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import { createElement, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
 import classes from './ImageSection.module.css';
 

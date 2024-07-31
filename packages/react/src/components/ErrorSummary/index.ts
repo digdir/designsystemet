@@ -1,7 +1,7 @@
-import { ErrorSummaryRoot } from './ErrorSummaryRoot';
 import { ErrorSummaryHeading } from './ErrorSummaryHeading';
 import { ErrorSummaryItem } from './ErrorSummaryItem';
 import ErrorSummaryList from './ErrorSummaryList';
+import { ErrorSummaryRoot } from './ErrorSummaryRoot';
 
 type ErrorSummaryComponent = {
   Root: typeof ErrorSummaryRoot;

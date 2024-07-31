@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
-import cl from 'clsx/lite';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { Heading, Paragraph } from '../Typography';
 import { Button } from '../Button';
+import { Heading, Paragraph } from '../Typography';
 
 import { ModalContext } from './ModalRoot';
 

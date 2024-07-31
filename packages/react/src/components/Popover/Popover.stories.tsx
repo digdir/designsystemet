@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 

@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';

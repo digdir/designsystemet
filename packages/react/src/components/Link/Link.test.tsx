@@ -1,6 +1,6 @@
+import { render as renderRtl, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import type { ComponentProps, RefObject } from 'react';
-import { render as renderRtl, screen } from '@testing-library/react';
 
 import { Link } from './Link';
 import type { LinkProps } from './Link';

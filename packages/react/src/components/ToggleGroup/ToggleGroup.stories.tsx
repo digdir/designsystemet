@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 import {
   AirplaneFillIcon,
-  NewspaperFillIcon,
-  BrailleIcon,
   BackpackFillIcon,
   BellFillIcon,
+  BrailleIcon,
+  NewspaperFillIcon,
 } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button } from '../Button';
 import { Paragraph } from '../Typography';

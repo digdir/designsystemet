@@ -1,6 +1,6 @@
 import './Footer.css';
-import { ChatElipsisIcon } from '@navikt/aksel-icons';
 import { Tooltip } from '@digdir/designsystemet-react';
+import { ChatElipsisIcon } from '@navikt/aksel-icons';
 
 import packageJson from '../../../../package.json';
 

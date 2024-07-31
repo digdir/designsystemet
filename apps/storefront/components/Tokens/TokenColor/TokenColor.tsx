@@ -1,8 +1,8 @@
-import type { TransformedToken } from 'style-dictionary';
-import { ColorModal } from '@repo/components';
-import { useRef } from 'react';
-import cl from 'clsx/lite';
 import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { ColorModal } from '@repo/components';
+import cl from 'clsx/lite';
+import { useRef } from 'react';
+import type { TransformedToken } from 'style-dictionary';
 
 import type { ColorNumber } from '../../../../../packages/cli/src/colors/types';
 

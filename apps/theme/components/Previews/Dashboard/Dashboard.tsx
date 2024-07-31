@@ -1,21 +1,21 @@
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import {
-  HouseIcon,
-  CogIcon,
-  PersonGroupIcon,
-  PadlockLockedIcon,
-  FileTextIcon,
-  NewspaperIcon,
-  TokenIcon,
   ArchiveIcon,
+  CogIcon,
+  FileTextIcon,
+  HouseIcon,
+  NewspaperIcon,
+  PadlockLockedIcon,
+  PersonGroupIcon,
   TeddyBearIcon,
+  TokenIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
-import classes from './Dashboard.module.css';
-import { ColorCard } from './ColorCard/ColorCard';
-import { BarChartComponent } from './BarChart/BarChart';
 import { AreaChartComponent } from './AreaChart/AreaChart';
+import { BarChartComponent } from './BarChart/BarChart';
+import { ColorCard } from './ColorCard/ColorCard';
+import classes from './Dashboard.module.css';
 import { LineChartComponent } from './LineCart/LineChart';
 
 export const Dashboard = () => {

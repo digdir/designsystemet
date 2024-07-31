@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import cl from 'clsx/lite';
 import { Button } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';

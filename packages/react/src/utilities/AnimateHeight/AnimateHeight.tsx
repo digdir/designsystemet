@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { useCallback, useRef, useState } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
 import { useMediaQuery, usePrevious } from '../../utilities';
 

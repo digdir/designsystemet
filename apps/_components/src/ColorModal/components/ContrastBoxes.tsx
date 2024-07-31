@@ -1,3 +1,4 @@
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Heading } from '@digdir/designsystemet-react';
@@ -8,10 +9,9 @@ import {
   getColorNameFromNumber,
 } from '@digdir/designsystemet/color';
 import {
-  ExclamationmarkTriangleFillIcon,
   CheckmarkCircleFillIcon,
+  ExclamationmarkTriangleFillIcon,
 } from '@navikt/aksel-icons';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 import classes from '../ColorModal.module.css';
 

@@ -1,9 +1,9 @@
-import { PopoverRoot } from './PopoverRoot';
 import type { PopoverContentProps } from './PopoverContent';
 import { PopoverContent } from './PopoverContent';
+import { PopoverRoot } from './PopoverRoot';
+import type { PopoverRootProps } from './PopoverRoot';
 import type { PopoverTriggerProps } from './PopoverTrigger';
 import { PopoverTrigger } from './PopoverTrigger';
-import type { PopoverRootProps } from './PopoverRoot';
 
 type PopoverComponent = {
   Root: typeof PopoverRoot;

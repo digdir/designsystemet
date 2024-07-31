@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { createContext, forwardRef, type HTMLAttributes } from 'react';
+import { type HTMLAttributes, createContext, forwardRef } from 'react';
 
 import type { PaginationProps } from './Pagination';
 

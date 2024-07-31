@@ -1,9 +1,9 @@
 'use client';
-import type * as React from 'react';
-import { usePathname } from 'next/navigation';
 import { Container } from '@repo/components';
+import { usePathname } from 'next/navigation';
+import type * as React from 'react';
 
-import { SidebarMenu, MdxContent } from '../../components';
+import { MdxContent, SidebarMenu } from '../../components';
 import {
   Banner,
   BannerHeading,

@@ -1,6 +1,6 @@
-import NextLink from 'next/link';
 import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
+import NextLink from 'next/link';
 
 import classes from './ComponentCard.module.css';
 

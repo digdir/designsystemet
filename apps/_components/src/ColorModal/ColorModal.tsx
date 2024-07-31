@@ -1,4 +1,4 @@
-import { Paragraph, Modal } from '@digdir/designsystemet-react';
+import { Modal, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
   getColorNameFromNumber,

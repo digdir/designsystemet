@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useRef, useState } from 'react';
 
-import { Combobox, Divider, Paragraph, Textfield, Button } from '..';
+import { Button, Combobox, Divider, Paragraph, Textfield } from '..';
 
 import { Modal } from '.';
 

@@ -1,7 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
-import { Tooltip, Button } from '@digdir/designsystemet-react';
+import { useState } from 'react';
 
 import classes from './ClipboardButton.module.css';
 

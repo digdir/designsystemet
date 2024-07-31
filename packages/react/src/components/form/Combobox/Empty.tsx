@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
 import { Label } from '../../Typography';
 

@@ -1,13 +1,13 @@
+import cl from 'clsx/lite';
 import { forwardRef, memo, useContext, useId } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
-import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
+import { Label } from '../../../Typography';
 import { ComboboxContext } from '../ComboboxContext';
 
-import { SelectedIcon } from './SelectedIcon';
 import ComboboxOptionDescription from './Description';
+import { SelectedIcon } from './SelectedIcon';
 import { useComboboxOption } from './useComboboxOption';
 
 export type ComboboxOptionProps = {

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter, usesReferences, getReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../configs.js';
 import { prefix } from '../configs.js';

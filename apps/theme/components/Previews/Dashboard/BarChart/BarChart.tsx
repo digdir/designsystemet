@@ -1,12 +1,12 @@
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
   Rectangle,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
 } from 'recharts';
 
 import classes from './BarChart.module.css';

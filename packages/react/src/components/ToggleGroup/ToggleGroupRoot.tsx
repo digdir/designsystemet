@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-import cl from 'clsx/lite';
 
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
 import type { ButtonProps } from '../Button';

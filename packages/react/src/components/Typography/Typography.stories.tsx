@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress } from './';
+import { Heading, Ingress, Paragraph } from './';
 
 const meta: Meta = {
   title: 'Komponenter/Typography',

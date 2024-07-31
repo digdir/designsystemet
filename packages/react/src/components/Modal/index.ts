@@ -1,8 +1,8 @@
-import { ModalRoot } from './ModalRoot';
 import { ModalContent } from './ModaContent';
 import { ModalDialog } from './ModalDialog';
 import { ModalFooter } from './ModalFooter';
 import { ModalHeader } from './ModalHeader';
+import { ModalRoot } from './ModalRoot';
 import { ModalTrigger } from './ModalTrigger';
 
 export type { ModalRootProps } from './ModalRoot';

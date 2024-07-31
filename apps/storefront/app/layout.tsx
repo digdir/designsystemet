@@ -2,9 +2,9 @@ import '../globals.css';
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
+import { Header } from '@repo/components';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { Header } from '@repo/components';
 
 import { Footer } from '../components/Footer/Footer';
 

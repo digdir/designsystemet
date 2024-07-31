@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
-import { Button, Paragraph, Heading } from '../..';
+import { Button, Heading, Paragraph } from '../..';
 
 import { Search } from '.';
 

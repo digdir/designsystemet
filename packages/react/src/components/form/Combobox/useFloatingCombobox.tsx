@@ -1,13 +1,13 @@
 import {
   autoUpdate,
   flip,
+  size as floatingSize,
   offset,
   useDismiss,
   useFloating,
+  useInteractions,
   useListNavigation,
   useRole,
-  size as floatingSize,
-  useInteractions,
 } from '@floating-ui/react';
 import { useState } from 'react';
 import { flushSync } from 'react-dom';

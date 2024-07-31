@@ -1,8 +1,8 @@
 import fs from 'fs';
 
+import glob from 'fast-glob';
 import type { AcceptedPlugin } from 'postcss';
 import postcss from 'postcss';
-import glob from 'fast-glob';
 
 type CssCodemodProps = {
   plugins: AcceptedPlugin[];

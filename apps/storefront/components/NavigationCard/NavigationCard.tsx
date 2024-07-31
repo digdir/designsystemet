@@ -1,8 +1,8 @@
 'use client';
-import Link from 'next/link';
-import cl from 'clsx/lite';
-import type * as React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import type * as React from 'react';
 
 import classes from './NavigationCard.module.css';
 

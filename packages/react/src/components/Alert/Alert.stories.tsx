@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Heading, Paragraph, Link } from '../';
+import { Heading, Link, Paragraph } from '../';
 
 import { Alert } from '.';
 

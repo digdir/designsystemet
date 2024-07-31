@@ -1,9 +1,9 @@
-import type * as React from 'react';
-import NextLink from 'next/link';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import NextLink from 'next/link';
+import type * as React from 'react';
 
 import { MdxContent } from '../../components';
 

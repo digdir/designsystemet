@@ -1,7 +1,7 @@
-import type { ListItemProps } from '../List';
-import { List } from '../List';
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
+import type { ListItemProps } from '../List';
+import { List } from '../List';
 
 type RequiredHref = {
   href: LinkProps['href'];

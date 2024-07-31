@@ -1,12 +1,12 @@
+import type { Placement } from '@floating-ui/utils';
+import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes } from 'react';
 import { useState } from 'react';
-import cl from 'clsx/lite';
-import type { Placement } from '@floating-ui/utils';
 
-import { Popover } from '../Popover';
-import { Paragraph } from '../Typography/Paragraph';
-import type { PopoverRootProps } from '../Popover/PopoverRoot';
 import type { PortalProps } from '../../types/Portal';
+import { Popover } from '../Popover';
+import type { PopoverRootProps } from '../Popover/PopoverRoot';
+import { Paragraph } from '../Typography/Paragraph';
 
 import { HelpTextIcon } from './HelpTextIcon';
 

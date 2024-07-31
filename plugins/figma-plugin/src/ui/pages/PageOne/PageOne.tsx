@@ -1,10 +1,10 @@
 import {
-  Heading,
-  Paragraph,
-  ToggleGroup,
-  Textarea,
   Button,
+  Heading,
   Link,
+  Paragraph,
+  Textarea,
+  ToggleGroup,
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 

@@ -1,8 +1,8 @@
-import fs from 'fs-extra';
-import glob from 'fast-glob';
-import type { Action } from 'style-dictionary/types';
 import chalk from 'chalk';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
 import * as R from 'ramda';
+import type { Action } from 'style-dictionary/types';
 
 const sortLightmodeFirst = R.sortWith([R.descend(R.includes('light')), R.descend(R.includes('secondary'))]);
 

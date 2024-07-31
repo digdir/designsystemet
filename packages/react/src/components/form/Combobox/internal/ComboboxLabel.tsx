@@ -1,9 +1,9 @@
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
 import { Label, Paragraph } from '../../../Typography';
-import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
+import type { ComboboxProps } from '../Combobox';
 
 type ComboboxLabelProps = {
   label?: ComboboxProps['label'];
