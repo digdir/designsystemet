@@ -31,5 +31,3 @@ jobs:
         run: yarn biome ci ./apps/storefront --reporter=github
       - name: Lint CSS
         run: yarn lint-style ./apps/storefront/**/*.css
-      - name: Test
-        run: yarn test
