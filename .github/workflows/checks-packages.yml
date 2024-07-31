@@ -4,10 +4,6 @@ on:
   pull_request:
     paths:
       - 'packages/**'
-      - '*.*js'
-  push:
-    paths:
-      - 'packages/**'
 jobs:
   checks:
     name: Builds, lints and tests code

@@ -4,9 +4,6 @@ on:
   pull_request:
     paths:
       - 'apps/storefront/**'
-  push:
-    paths:
-      - 'apps/storefront/**'
 jobs:
   checks:
     name: Builds, lints and tests code
