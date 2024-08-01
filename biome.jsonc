@@ -4,21 +4,19 @@
   "files": {
     "ignoreUnknown": true,
     "ignore": [
-      "package.json",
-      "**/tsc-build/**",
-      "**/packages/theme/brand/**/*",
-      "**/apps/storefront/tokens/**",
+      "node_modules/**",
+      ".next/**",
+      ".vscode/**",
+      ".github/**",
+      ".changeset/**",
+      "dist/**",
+      "./package.json", // yarn and biome disagrees on package.json formatting
+      "tsc-build/**",
       "design-tokens/**/*",
+      "packages/theme/brand/**/*",
+      "apps/storefront/tokens/**",
       "packages/react-old/**/*",
-      "**/node_modules/**",
-      "**/lib/**",
-      "**/public/**",
-      "**/dist/**",
-      "**/.next/**",
-      "**/.vscode/**",
-      "**/.github/**",
-      "**/.changeset/**"
-    ]
+    ],
   },
   "formatter": {
     "enabled": true,
@@ -27,16 +25,6 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80,
-    "ignore": [
-      "**/packages/theme/brand/**/*",
-      "**/apps/storefront/tokens/**",
-      "design-tokens/**/*",
-      "**/node_modules/**",
-      "**/*.d.ts*",
-      "**/dist/**",
-      "**/packages/react-old/**/*",
-      "**/tsc-build/**"
-    ]
   },
   "javascript": {
     "globals": [
@@ -50,7 +38,7 @@
       "afterAll",
       "vi",
       "React",
-      "JSX"
+      "JSX",
     ],
     "formatter": {
       "enabled": true,
@@ -58,8 +46,8 @@
       "quoteProperties": "asNeeded",
       "trailingCommas": "all",
       "quoteStyle": "single",
-      "attributePosition": "auto"
-    }
+      "attributePosition": "auto",
+    },
   },
   "linter": {
     "enabled": true,
@@ -75,37 +63,37 @@
         "useMediaCaption": "off",
         "useKeyWithClickEvents": "off",
         "noNoninteractiveTabindex": "off",
-        "useAriaPropsForRole": "off"
+        "useAriaPropsForRole": "off",
       },
       "complexity": {
-        "noForEach": "off" // TODO: Enable this rule
+        "noForEach": "off", // TODO: Enable this rule
       },
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
       },
       "style": {
         "useTemplate": "off",
         "noUnusedTemplateLiteral": "off",
         "noParameterAssign": "off",
         "useNumberNamespace": "off",
-        "useSelfClosingElements": "off"
+        "useSelfClosingElements": "off",
       },
       "suspicious": {
         "noArrayIndexKey": "off",
-        "noDoubleEquals": "off" // TODO: Enable this rule
+        "noDoubleEquals": "off", // TODO: Enable this rule
       },
       "performance": {
-        "noAccumulatingSpread": "off" // TODO: Enable this rule
-      }
+        "noAccumulatingSpread": "off", // TODO: Enable this rule
+      },
     },
-    "ignore": []
+    "ignore": [],
   },
 
   "overrides": [
     { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
       "include": ["**/packages/cli/**/*.ts"],
-      "formatter": { "lineWidth": 120 }
-    }
-  ]
+      "formatter": { "lineWidth": 120 },
+    },
+  ],
 }
