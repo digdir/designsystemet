@@ -1,7 +1,7 @@
+/** @type {import('stylelint').Config} */
 export default {
-  extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
+  extends: ['stylelint-config-standard'],
   rules: {
-    // 'prettier/prettier': true,
     'declaration-block-no-redundant-longhand-properties': null,
     'media-feature-range-notation': 'prefix',
     'custom-property-pattern': null,
