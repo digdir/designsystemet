@@ -45,8 +45,7 @@
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "trailingCommas": "all",
-      "quoteStyle": "single",
-      "attributePosition": "auto"
+      "quoteStyle": "single"
     }
   },
   "linter": {
