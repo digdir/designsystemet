@@ -12,11 +12,15 @@
     "@digdir/designsystemet-react": "1.0.0-rc.13",
     "@digdir/design-system-react": "0.54.0",
     "@digdir/designsystemet-theme": "1.0.0-rc.13",
-    "figma-plugin": "0.1.0"
+    "figma-plugin": "0.1.0",
+    "@designsystemet/storybook": "0.1.0"
   },
   "changesets": [
     "blue-rocks-pull",
+    "cool-lamps-drive",
     "friendly-islands-punch",
-    "short-walls-judge"
+    "short-walls-judge",
+    "tender-ties-swim",
+    "three-carrots-hammer"
   ]
 }

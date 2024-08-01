@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.15
+
+### Patch Changes
+
+- chore: Fix rollup build warnings for react package ([#2187](https://github.com/digdir/designsystemet/pull/2187))
+
+- chore: Replace eslint with biomejs ([#2189](https://github.com/digdir/designsystemet/pull/2189))
+
 ## 1.0.0-next.14
 
 ### Patch Changes
