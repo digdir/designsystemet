@@ -2710,7 +2710,7 @@ __metadata:
     tsx: "npm:^4.11.2"
     typescript: "npm:^5.4.5"
   bin:
-    designsystemet: bin/designsystemet.js
+    designsystemet: dist/bin/designsystemet.js
   languageName: unknown
   linkType: soft
 
