@@ -3954,6 +3954,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@repo/components@workspace:apps/_components"
   dependencies:
+    "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@navikt/aksel-icons": "npm:^5.12.2"
     typescript: "npm:^5.4.2"
