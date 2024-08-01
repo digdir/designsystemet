@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from 'react';
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
 
 import { useSynchronizedAnimation } from '../../../utilities';
 

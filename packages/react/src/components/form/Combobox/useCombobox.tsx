@@ -1,9 +1,9 @@
-import { useMemo, Children, useState, useCallback } from 'react';
-import type { ReactNode, ReactElement } from 'react';
+import { Children, useCallback, useMemo, useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-import type { ComboboxOptionProps } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
+import type { ComboboxOptionProps } from './Option/Option';
 import {
   isComboboxOption,
   isInteractiveComboboxCustom,

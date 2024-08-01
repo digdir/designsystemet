@@ -81,28 +81,13 @@ type ColumnProps = {
 const Column = ({ title, scales }: ColumnProps) => {
   return (
     <div className={classes.column}>
-      <Heading
-        className={classes.boxTitle}
-        size='xs'
-      >
+      <Heading className={classes.boxTitle} size='xs'>
         {title}
       </Heading>
       <div className={classes.boxes}>
-        <Box
-          colorScale={scales[0]}
-          backgroundIndex={1}
-          scales={scales}
-        />
-        <Box
-          colorScale={scales[1]}
-          backgroundIndex={1}
-          scales={scales}
-        />
-        <Box
-          colorScale={scales[5]}
-          backgroundIndex={1}
-          scales={scales}
-        />
+        <Box colorScale={scales[0]} backgroundIndex={1} scales={scales} />
+        <Box colorScale={scales[1]} backgroundIndex={1} scales={scales} />
+        <Box colorScale={scales[5]} backgroundIndex={1} scales={scales} />
       </div>
     </div>
   );

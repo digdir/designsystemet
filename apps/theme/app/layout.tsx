@@ -32,10 +32,7 @@ export default function RootLayout({
   return (
     <html lang='no'>
       <body>
-        <Header
-          menu={menu}
-          betaTag
-        />
+        <Header menu={menu} betaTag />
         {children}
       </body>
     </html>

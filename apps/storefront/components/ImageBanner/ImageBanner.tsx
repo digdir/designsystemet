@@ -1,11 +1,11 @@
 'use client';
-import type React from 'react';
 import type { ButtonProps } from '@digdir/designsystemet-react';
-import { useEffect, useState, createElement } from 'react';
-import cl from 'clsx/lite';
-import { Link, Button } from '@digdir/designsystemet-react';
-import NextLink from 'next/link';
+import { Button, Link } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import NextLink from 'next/link';
+import type React from 'react';
+import { createElement, useEffect, useState } from 'react';
 
 import classes from './ImageBanner.module.css';
 
@@ -67,7 +67,7 @@ const ImageBanner = ({
   }, [headingLevel, title]);
 
   return (
-    <div className={(classes[backgroundColor], classes.section)}>
+    <div className={cl(classes[backgroundColor], classes.section)}>
       <Container className={cl(classes.container)}>
         {imgPosition === 'left' && (
           <div
@@ -76,29 +76,13 @@ const ImageBanner = ({
             })}
           >
             {videoSrc && (
-              <video
-                autoPlay
-                playsInline
-                muted
-                loop
-                className={classes.video}
-              >
-                <source
-                  src={videoSrc + '.webm'}
-                  type='video/webm'
-                />
-                <source
-                  src={videoSrc + '.mp4'}
-                  type='video/mp4'
-                />
+              <video autoPlay playsInline muted loop className={classes.video}>
+                <source src={videoSrc + '.webm'} type='video/webm' />
+                <source src={videoSrc + '.mp4'} type='video/mp4' />
               </video>
             )}
             {imgSrc && (
-              <img
-                className={cl(classes.img)}
-                src={imgSrc}
-                alt={imgAlt}
-              />
+              <img className={cl(classes.img)} src={imgSrc} alt={imgAlt} />
             )}
             {fallbackImgSrc && (
               <img
@@ -119,11 +103,7 @@ const ImageBanner = ({
           )}
           {content && content}
           {link && (
-            <Link
-              className={classes.link}
-              color='neutral'
-              asChild
-            >
+            <Link className={classes.link} color='neutral' asChild>
               <NextLink href={link.href}>
                 {link.prefix} {link.text}
               </NextLink>
@@ -139,10 +119,7 @@ const ImageBanner = ({
                   color={item.color ?? 'accent'}
                   asChild
                 >
-                  <a
-                    href={item.href}
-                    className={classes.button}
-                  >
+                  <a href={item.href} className={classes.button}>
                     {item.prefix}
                     {item.text}
                   </a>
@@ -156,29 +133,13 @@ const ImageBanner = ({
         {imgPosition === 'right' && (
           <div className={classes.imgContainer}>
             {videoSrc && (
-              <video
-                autoPlay
-                playsInline
-                muted
-                loop
-                className={classes.video}
-              >
-                <source
-                  src={videoSrc + '.webm'}
-                  type='video/webm'
-                />
-                <source
-                  src={videoSrc + '.mp4'}
-                  type='video/mp4'
-                />
+              <video autoPlay playsInline muted loop className={classes.video}>
+                <source src={videoSrc + '.webm'} type='video/webm' />
+                <source src={videoSrc + '.mp4'} type='video/mp4' />
               </video>
             )}
             {imgSrc && (
-              <img
-                className={cl(classes.img)}
-                alt={imgAlt}
-                src={imgSrc}
-              />
+              <img className={cl(classes.img)} alt={imgAlt} src={imgSrc} />
             )}
             {fallbackImgSrc && (
               <img

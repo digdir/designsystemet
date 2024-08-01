@@ -1,8 +1,8 @@
-import cl from 'clsx/lite';
-import { SunIcon } from '@navikt/aksel-icons';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
-import { forwardRef } from 'react';
 import { omit } from '@digdir/designsystemet-react';
+import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { SunIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import { forwardRef } from 'react';
 
 import { useThemeStore } from '../../store';
 
@@ -63,10 +63,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
               {contrast}
             </div>
             <div className={classes.lightness}>
-              <SunIcon
-                title='a11y-title'
-                fontSize='1.3rem'
-              />
+              <SunIcon title='a11y-title' fontSize='1.3rem' />
               {lightness}
             </div>
           </>

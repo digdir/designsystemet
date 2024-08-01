@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter, usesReferences, getReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../configs.js';
 import { prefix } from '../configs.js';
@@ -15,7 +15,7 @@ const prefersColorScheme = (mode: string, content: string) => `
 
 export const colormode: Format = {
   name: 'ds/css-colormode',
-  format: async function ({ dictionary, file, options, platform }) {
+  format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
     const { outputReferences } = options;
     const { selector, mode, layer } = platform;
@@ -43,7 +43,7 @@ const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: 
 
 export const semantic: Format = {
   name: 'ds/css-semantic',
-  format: async function ({ dictionary, file, options, platform }) {
+  format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
     const { outputReferences } = options;
     const { selector, isCalculatedToken, layer } = platform;
@@ -117,7 +117,7 @@ const sortTypographyLast = R.sortWith<TransformedToken>([
 
 export const typography: Format = {
   name: 'ds/css-typography',
-  format: async function ({ dictionary, file, options, platform }) {
+  format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences } = options;
     const { selector, layer } = platform;
 

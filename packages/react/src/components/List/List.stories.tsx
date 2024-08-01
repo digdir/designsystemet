@@ -140,18 +140,12 @@ export const ListeMedLenker: Story = (args) => (
         </Link>
       </List.Item>
       <List.Item>
-        <Link
-          href='https://www.designsystemet.no/god-praksis'
-          target='_blank'
-        >
+        <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
           God praksis
         </Link>
       </List.Item>
       <List.Item>
-        <Link
-          href='https://www.designsystemet.no/monstre'
-          target='_blank'
-        >
+        <Link href='https://www.designsystemet.no/monstre' target='_blank'>
           Mønstre
         </Link>
       </List.Item>

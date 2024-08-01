@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button, Link } from '../';
 
@@ -40,10 +40,7 @@ export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
 );
 
 export const AccordionBorder: StoryFn<typeof Accordion.Root> = () => (
-  <Accordion.Root
-    border
-    color='subtle'
-  >
+  <Accordion.Root border color='subtle'>
     <Accordion.Item>
       <Accordion.Heading level={3}>Vedlegg</Accordion.Heading>
       <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
@@ -52,10 +49,7 @@ export const AccordionBorder: StoryFn<typeof Accordion.Root> = () => (
 );
 
 export const AccordionColor: StoryFn<typeof Accordion.Root> = () => (
-  <Accordion.Root
-    border
-    color='brand2'
-  >
+  <Accordion.Root border color='brand2'>
     <Accordion.Item>
       <Accordion.Heading level={3}>
         Hvordan får jeg tildelt et jegernummer?

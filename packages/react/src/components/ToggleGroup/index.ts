@@ -1,5 +1,5 @@
-import { ToggleGroupRoot } from './ToggleGroupRoot';
 import { ToggleGroupItem } from './ToggleGroupItem/ToggleGroupItem';
+import { ToggleGroupRoot } from './ToggleGroupRoot';
 
 export type { ToggleGroupProps } from './ToggleGroupRoot';
 export type { ToggleGroupItemProps } from './ToggleGroupItem/ToggleGroupItem';

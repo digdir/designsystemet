@@ -39,7 +39,7 @@ export const useRovingFocus = (value: string) => {
         props?.onFocus?.(e);
         setFocusableValue(value);
       },
-      ['data-roving-tabindex-item']: true,
+      'data-roving-tabindex-item': true,
       tabIndex: focusableValue === value ? 0 : -1,
     }),
   };

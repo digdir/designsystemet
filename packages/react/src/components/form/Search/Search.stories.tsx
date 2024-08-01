@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
-import { Button, Paragraph, Heading } from '../..';
+import { Button, Heading, Paragraph } from '../..';
 
 import { Search } from '.';
 
@@ -63,10 +63,7 @@ export const OnlyIcon: StoryFn<typeof Search> = () => {
       label='Search after content'
       clearButtonLabel='Empty'
       searchButtonLabel={
-        <MagnifyingGlassIcon
-          fontSize={'1.5em'}
-          title='Search'
-        />
+        <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
       }
       variant='primary'
     />
@@ -79,11 +76,7 @@ export const Form: StoryFn<typeof Search> = () => {
 
   return (
     <>
-      <Heading
-        level={3}
-        size='2xs'
-        spacing
-      >
+      <Heading level={3} size='2xs' spacing>
         Submitted value: {submittedValue}
       </Heading>
       <form
@@ -98,10 +91,7 @@ export const Form: StoryFn<typeof Search> = () => {
           clearButtonLabel='Empty'
           onChange={(e) => setValue(e.target.value)}
           searchButtonLabel={
-            <MagnifyingGlassIcon
-              fontSize={'1.5em'}
-              title='Search'
-            />
+            <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
           }
           variant='primary'
         />

@@ -1,7 +1,7 @@
+import { useMergeRefs } from '@floating-ui/react';
+import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -42,10 +42,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ]);
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           className={cl(
             'ds-checkbox',
@@ -76,10 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 <span>{children}</span>
               </Label>
               {description && (
-                <Paragraph
-                  asChild
-                  size={size}
-                >
+                <Paragraph asChild size={size}>
                   <div
                     id={descriptionId}
                     className={`ds-checkbox__description`}

@@ -1,5 +1,5 @@
-import { dirname, join, resolve } from 'path';
-import { env } from 'process';
+import { dirname, join, resolve } from 'node:path';
+import { env } from 'node:process';
 
 import type { StorybookConfig } from '@storybook/react-vite';
 

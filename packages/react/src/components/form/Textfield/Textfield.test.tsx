@@ -42,10 +42,7 @@ describe('Textfield', () => {
     renderRtl(
       <>
         <span id='my-error'>my error message</span>
-        <Textfield
-          errorId='my-error'
-          error
-        />
+        <Textfield errorId='my-error' error />
       </>,
     );
 

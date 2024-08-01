@@ -1,8 +1,8 @@
 import { PencilIcon } from '@navikt/aksel-icons';
-import type { Metadata } from 'next';
 import { Container } from '@repo/components';
+import type { Metadata } from 'next';
 
-import { Banner, BannerIcon, BannerHeading } from 'components/Banner/Banner';
+import { Banner, BannerHeading, BannerIcon } from 'components/Banner/Banner';
 
 import classes from './layout.module.css';
 
@@ -20,10 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <BannerHeading>Bloggen</BannerHeading>
       </Banner>
       <Container className={classes.page}>
-        <main
-          id='main'
-          className={classes.main}
-        >
+        <main id='main' className={classes.main}>
           {children}
         </main>
       </Container>

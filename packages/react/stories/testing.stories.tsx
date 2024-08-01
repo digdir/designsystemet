@@ -1,15 +1,15 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  Textfield,
-  Switch,
-  NativeSelect,
   Button,
   Checkbox,
-  Radio,
-  Tag,
-  Combobox,
   Chip,
+  Combobox,
+  NativeSelect,
+  Radio,
+  Switch,
+  Tag,
+  Textfield,
 } from '../src/components';
 
 export default {
@@ -73,29 +73,16 @@ export const MediumRow: StoryFn<{
         }}
       >
         <Switch size={size}>Switch</Switch>
-        <Switch
-          size={size}
-          aria-label='no label switch'
-        ></Switch>
+        <Switch size={size} aria-label='no label switch'></Switch>
         <Chip.Toggle>Toggle</Chip.Toggle>
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 
-        <Radio
-          value='radio'
-          size={size}
-        >
+        <Radio value='radio' size={size}>
           Radio
         </Radio>
-        <Radio
-          value='radio2'
-          size={size}
-          aria-label='no label radio'
-        ></Radio>
-        <Checkbox
-          value='checkbox'
-          size={size}
-        >
+        <Radio value='radio2' size={size} aria-label='no label radio'></Radio>
+        <Checkbox value='checkbox' size={size}>
           Checkbox
         </Checkbox>
         <Checkbox

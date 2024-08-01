@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import type { TransformedToken, Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter } from 'style-dictionary/utils';
+import type { Format, TransformedToken } from 'style-dictionary/types';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 import { getType } from '../utils/utils.js';
 
@@ -18,7 +18,7 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const jsTokens: Format = {
   name: 'ds/js-tokens',
-  format: async function ({ dictionary, file }) {
+  format: async ({ dictionary, file }) => {
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',

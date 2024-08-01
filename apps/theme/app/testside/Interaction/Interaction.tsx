@@ -1,8 +1,8 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './Interaction.module.css';
 
@@ -119,18 +119,8 @@ const Column = ({ title, scales }: ColumnProps) => {
           type='surface'
           columnTitle={title}
         />
-        <Box2
-          colorIndex={8}
-          scales={scales}
-          type='base'
-          columnTitle={title}
-        />
-        <Box
-          colorIndex={8}
-          scales={scales}
-          type='base'
-          columnTitle={title}
-        />
+        <Box2 colorIndex={8} scales={scales} type='base' columnTitle={title} />
+        <Box colorIndex={8} scales={scales} type='base' columnTitle={title} />
       </div>
     </div>
   );
@@ -169,10 +159,7 @@ const Box = ({ scales, colorIndex, type, columnTitle }: BoxProps) => {
   }, [columnTitle, scales, type]);
 
   return (
-    <div
-      className={cl(classes.box)}
-      id={'box' + type + columnTitle}
-    >
+    <div className={cl(classes.box)} id={'box' + type + columnTitle}>
       {scales.map((scale, index) => (
         <div
           key={index}

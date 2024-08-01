@@ -1,7 +1,7 @@
-import type { RefObject } from 'react';
-import { createRef, act } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type { RefObject } from 'react';
+import { act, createRef } from 'react';
 
 import type { NativeSelectProps } from './NativeSelect';
 import { NativeSelect } from './NativeSelect';
@@ -15,10 +15,7 @@ const options: { label: string; value: string }[] = [
   { label: 'Option 3', value: '3' },
 ];
 const children = options.map(({ label, value }) => (
-  <option
-    key={value}
-    value={value}
-  >
+  <option key={value} value={value}>
     {label}
   </option>
 ));
@@ -78,7 +75,7 @@ describe('NativeSelect', () => {
       async () => await user.selectOptions(screen.getByRole('combobox'), value),
     );
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value);
   });
 
   it('Is disabled when "disabled" is true', () => {
@@ -108,11 +105,4 @@ describe('NativeSelect', () => {
 const render = (
   props?: Partial<NativeSelectProps>,
   ref?: RefObject<HTMLSelectElement>,
-) =>
-  renderRtl(
-    <NativeSelect
-      {...defaultProps}
-      {...props}
-      ref={ref}
-    />,
-  );
+) => renderRtl(<NativeSelect {...defaultProps} {...props} ref={ref} />);

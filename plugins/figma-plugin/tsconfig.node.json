@@ -6,7 +6,5 @@
     "moduleResolution": "Node",
     "esModuleInterop": true
   },
-  "include": [
-    "*.ts"
-  ]
+  "include": ["*.ts"]
 }

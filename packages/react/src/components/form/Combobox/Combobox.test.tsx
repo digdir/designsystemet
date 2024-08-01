@@ -1,7 +1,7 @@
-import type * as React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react';
 import userEvent from '@testing-library/user-event';
+import type * as React from 'react';
+import { act } from 'react';
 
 import type { ComboboxProps } from './Combobox';
 
@@ -273,10 +273,7 @@ describe('Combobox', () => {
 
       renderRtl(
         <form onSubmit={handleSubmit}>
-          <Combobox
-            name='test'
-            multiple={true}
-          >
+          <Combobox name='test' multiple={true}>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             {PLACES.map((option, index) => (
               <Combobox.Option
@@ -288,10 +285,7 @@ describe('Combobox', () => {
               </Combobox.Option>
             ))}
           </Combobox>
-          <button
-            data-testid='submit'
-            type='submit'
-          >
+          <button data-testid='submit' type='submit'>
             Submit
           </button>
         </form>,

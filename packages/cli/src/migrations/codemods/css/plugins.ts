@@ -1,7 +1,7 @@
-import * as R from 'ramda';
-import type { Plugin, Declaration } from 'postcss';
 import chalk from 'chalk';
 import hash from 'object-hash';
+import type { Declaration, Plugin } from 'postcss';
+import * as R from 'ramda';
 
 type PluginGenerator = (dictionary: Record<string, string>) => Plugin;
 

@@ -1,8 +1,8 @@
-import type React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
-import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
-import cn from 'clsx/lite';
+import { ComponentIcon, PaletteIcon, WrenchIcon } from '@navikt/aksel-icons';
 import { Container } from '@repo/components';
+import cn from 'clsx/lite';
+import type React from 'react';
 
 import { NavigationCard } from '@components';
 

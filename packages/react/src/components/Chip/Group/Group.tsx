@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react';
-import { Children, isValidElement, forwardRef, createContext } from 'react';
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { Children, createContext, forwardRef, isValidElement } from 'react';
 
 export type ChipGroupContext = {
   size?: 'sm' | 'md' | 'lg';

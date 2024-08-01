@@ -1,8 +1,8 @@
+import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
-import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label } from '../../Typography';
@@ -75,10 +75,7 @@ const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     ]);
 
     return (
-      <Label
-        size={size}
-        asChild
-      >
+      <Label size={size} asChild>
         <Component
           ref={combinedRef}
           tabIndex={-1}

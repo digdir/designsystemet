@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
-import type { ReactNode, HTMLAttributes } from 'react';
-import { createContext, forwardRef, useState, useId } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { createContext, forwardRef, useId, useState } from 'react';
 
 export type AccordionItemProps = {
   /**

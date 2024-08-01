@@ -23,20 +23,12 @@ export const PullRequestCard = ({
     <div className={classes.card}>
       <div className={classes.top}>
         <h2>
-          <a
-            href={PRLink}
-            className={classes.link}
-            target='blank'
-          >
+          <a href={PRLink} className={classes.link} target='blank'>
             {title} <span className={classes.number}> #{PRNumber}</span>
           </a>
         </h2>
         <div className={classes.author}>
-          <img
-            src={userAvatar}
-            alt='User avatar'
-            className={classes.avatar}
-          />
+          <img src={userAvatar} alt='User avatar' className={classes.avatar} />
           {user}
         </div>
       </div>

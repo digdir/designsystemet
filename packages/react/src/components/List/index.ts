@@ -1,6 +1,6 @@
-import { ListRoot } from './ListRoot';
-import { ListItem } from './ListItem';
 import { ListHeading } from './ListHeading';
+import { ListItem } from './ListItem';
+import { ListRoot } from './ListRoot';
 import { Ordered, Unordered } from './Lists';
 
 type ListComponent = {

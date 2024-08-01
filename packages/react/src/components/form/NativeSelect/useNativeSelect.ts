@@ -1,9 +1,9 @@
 import type { SelectHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
+import { FieldsetContext } from '../Fieldset/FieldsetContext';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
-import { FieldsetContext } from '../Fieldset/FieldsetContext';
 
 import type { NativeSelectProps } from './NativeSelect';
 

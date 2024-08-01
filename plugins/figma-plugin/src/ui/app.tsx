@@ -2,12 +2,12 @@ import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import { Footer } from './components/Footer/Footer';
 import PageOne from './pages/PageOne/PageOne';
 import PageTwo from './pages/PageTwo/PageTwo';
 import PageThree from './pages/pageThree/PageThree';
-import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -35,18 +35,9 @@ function App() {
 
       <div className='content'>
         <Routes>
-          <Route
-            path='/'
-            element={<PageOne />}
-          />
-          <Route
-            path='/pageTwo'
-            element={<PageTwo />}
-          />
-          <Route
-            path='/pageThree'
-            element={<PageThree />}
-          />
+          <Route path='/' element={<PageOne />} />
+          <Route path='/pageTwo' element={<PageTwo />} />
+          <Route path='/pageThree' element={<PageThree />} />
         </Routes>
       </div>
       <Footer />

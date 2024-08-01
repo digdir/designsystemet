@@ -13,10 +13,7 @@ describe('Switch', () => {
 
   test('has correct description', () => {
     render(
-      <Switch
-        value='test'
-        description='description'
-      >
+      <Switch value='test' description='description'>
         test
       </Switch>,
     );
@@ -32,11 +29,7 @@ describe('Switch', () => {
     const value = 'test';
 
     render(
-      <Switch
-        value={value}
-        onChange={onChange}
-        onClick={onClick}
-      >
+      <Switch value={value} onChange={onChange} onClick={onClick}>
         label
       </Switch>,
     );
@@ -58,12 +51,7 @@ describe('Switch', () => {
     const onClick = vi.fn();
 
     render(
-      <Switch
-        value='test'
-        disabled
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Switch value='test' disabled onClick={onClick} onChange={onChange}>
         disabled switch_
       </Switch>,
     );
@@ -82,12 +70,7 @@ describe('Switch', () => {
     const onClick = vi.fn();
 
     render(
-      <Switch
-        value='test'
-        readOnly
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Switch value='test' readOnly onClick={onClick} onChange={onChange}>
         readonly switch_
       </Switch>,
     );

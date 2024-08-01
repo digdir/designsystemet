@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-import { PullRequestCard } from '../components/PullRequestCard/PullRequestCard';
 import { Alias } from '../components/Alias/Alias';
+import { PullRequestCard } from '../components/PullRequestCard/PullRequestCard';
+import { SkeletonCard } from '../components/SkeletonCard/SkeletonCard';
 import { getActivePullRequests } from '../services/GithubService';
 import { getAliases } from '../services/VercelService';
-import { SkeletonCard } from '../components/SkeletonCard/SkeletonCard';
-import type { PullRequestType } from '../types/PullRequest';
 import type { AliasType } from '../types/Aliases';
+import type { PullRequestType } from '../types/PullRequest';
 
 import classes from './page.module.css';
 

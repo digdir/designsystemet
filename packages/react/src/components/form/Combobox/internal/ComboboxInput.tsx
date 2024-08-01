@@ -1,15 +1,15 @@
+import { useMergeRefs } from '@floating-ui/react';
+import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import type { ChangeEvent } from 'react';
 import { useContext, useRef } from 'react';
-import cl from 'clsx/lite';
-import { ChevronUpIcon, ChevronDownIcon } from '@navikt/aksel-icons';
-import { useMergeRefs } from '@floating-ui/react';
 
-import { ComboboxContext } from '../ComboboxContext';
-import { Paragraph } from '../../../Typography';
-import { Box } from '../../../Box';
 import { omit } from '../../../../utilities';
-import { useComboboxIdDispatch } from '../ComboboxIdContext';
+import { Box } from '../../../Box';
+import { Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
+import { ComboboxContext } from '../ComboboxContext';
+import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import { prefix } from '../utilities';
 
 import ComboboxChips from './ComboboxChips';
@@ -111,10 +111,7 @@ const ComboboxInput = ({
   });
 
   return (
-    <Paragraph
-      size={size}
-      asChild
-    >
+    <Paragraph size={size} asChild>
       <Box
         {...props}
         aria-disabled={disabled ? 'true' : undefined}
@@ -128,10 +125,7 @@ const ComboboxInput = ({
         <div className={'ds-combobox__chip-and-input'}>
           {/* If the input is in multiple mode, we need to display chips */}
           {multiple && !hideChips && <ComboboxChips />}
-          <Paragraph
-            size={size}
-            asChild
-          >
+          <Paragraph size={size} asChild>
             <input
               ref={mergedRefs}
               aria-activedescendant={props['aria-activedescendant'] as string}
@@ -149,7 +143,7 @@ const ComboboxInput = ({
               onChange={(e) => {
                 onChange(e);
                 !open && setOpen(true);
-                rest.onChange && rest.onChange(e);
+                rest.onChange?.(e);
               }}
             />
           </Paragraph>
@@ -159,15 +153,9 @@ const ComboboxInput = ({
         {/* Arrow for combobox. Click is handled by the wrapper */}
         <div className={'ds-combobox__arrow'}>
           {open ? (
-            <ChevronUpIcon
-              title='arrow up'
-              fontSize='1.5em'
-            />
+            <ChevronUpIcon title='arrow up' fontSize='1.5em' />
           ) : (
-            <ChevronDownIcon
-              title='arrow down'
-              fontSize='1.5em'
-            />
+            <ChevronDownIcon title='arrow down' fontSize='1.5em' />
           )}
         </div>
       </Box>

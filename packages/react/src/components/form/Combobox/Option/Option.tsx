@@ -1,13 +1,13 @@
+import cl from 'clsx/lite';
 import { forwardRef, memo, useContext, useId } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
-import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
+import { Label } from '../../../Typography';
 import { ComboboxContext } from '../ComboboxContext';
 
-import { SelectedIcon } from './SelectedIcon';
 import ComboboxOptionDescription from './Description';
+import { SelectedIcon } from './SelectedIcon';
 import { useComboboxOption } from './useComboboxOption';
 
 export type ComboboxOptionProps = {
@@ -46,10 +46,7 @@ const ComboboxOption = memo(
       const props = getItemProps();
 
       return (
-        <Label
-          size='md'
-          asChild
-        >
+        <Label size='md' asChild>
           <button
             ref={ref}
             id={id}
@@ -71,15 +68,9 @@ const ComboboxOption = memo(
             {...omit(['displayValue'], rest)}
             {...omit(['onClick', 'onPointerLeave'], props)}
           >
-            <Label
-              asChild
-              size={size}
-            >
+            <Label asChild size={size}>
               <span>
-                <SelectedIcon
-                  multiple={multiple}
-                  selected={!!selected}
-                />
+                <SelectedIcon multiple={multiple} selected={!!selected} />
               </span>
             </Label>
             <Label

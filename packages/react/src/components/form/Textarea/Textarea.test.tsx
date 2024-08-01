@@ -43,10 +43,7 @@ describe('Textarea', () => {
     renderRtl(
       <>
         <span id='my-error'>my error message</span>
-        <Textarea
-          errorId='my-error'
-          error
-        />
+        <Textarea errorId='my-error' error />
       </>,
     );
 

@@ -1,11 +1,9 @@
-import cl from 'clsx/lite';
 import { Paragraph } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 
 import classes from './Image.module.css';
 
-interface ImageProps {
-  alt: string;
-  src: string;
+interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   boxShadow: boolean;
   caption: string;
 }
@@ -20,12 +18,10 @@ const Image = ({ alt, src, boxShadow, caption, ...rest }: ImageProps) => {
         src={src}
         alt={alt}
         {...rest}
+        aria-label={alt}
       ></img>
       {caption && (
-        <Paragraph
-          size='sm'
-          asChild
-        >
+        <Paragraph size='sm' asChild>
           <figcaption>{caption}</figcaption>
         </Paragraph>
       )}

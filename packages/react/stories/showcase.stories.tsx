@@ -3,24 +3,24 @@ import cl from 'clsx/lite';
 import { useState } from 'react';
 
 import {
+  Accordion,
+  Button,
+  Card,
   Checkbox,
+  Combobox,
   Divider,
   Heading,
-  Textfield,
   Link,
-  Button,
   NativeSelect,
-  Search,
-  Table,
   Pagination,
-  Card,
-  Radio,
-  Tag,
-  Tabs,
   Paragraph,
-  Accordion,
+  Radio,
+  Search,
   Switch,
-  Combobox,
+  Table,
+  Tabs,
+  Tag,
+  Textfield,
   ToggleGroup,
   Tooltip,
 } from '../src';
@@ -36,29 +36,16 @@ export const Showcase: StoryFn = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Checkbox.Group
-          error=''
-          legend='Handleliste'
-          size='sm'
-        >
+        <Checkbox.Group error='' legend='Handleliste' size='sm'>
           <Checkbox value='epost'>En kilo poteter</Checkbox>
           <Checkbox value='telefon'>To liter Farris</Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Blomkål
           </Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Pizza
           </Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Tre liter lettmelk
           </Checkbox>
           <Divider />
@@ -67,10 +54,7 @@ export const Showcase: StoryFn = () => {
         </Checkbox.Group>
       </div>
       <div className={cl(classes.card, classes.user)}>
-        <Heading
-          className={cl(classes.cardTitle, classes.userTitle)}
-          size='xs'
-        >
+        <Heading className={cl(classes.cardTitle, classes.userTitle)} size='xs'>
           Opprett ny bruker
         </Heading>
 
@@ -87,47 +71,28 @@ export const Showcase: StoryFn = () => {
           placeholder='ola@norge.no'
           className={classes.userField}
         />
-        <Tooltip
-          content='Trykk for å få hjelp'
-          portal={false}
-        >
-          <Link
-            href='#'
-            className={classes.userLink}
-          >
+        <Tooltip content='Trykk for å få hjelp' portal={false}>
+          <Link href='#' className={classes.userLink}>
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button
-          fullWidth
-          size='sm'
-          className={classes.userBtn}
-        >
+        <Button fullWidth size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading
-          className={classes.cardTitle}
-          size='2xs'
-        >
+        <Heading className={classes.cardTitle} size='2xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect
-              label=''
-              size='sm'
-            >
+            <NativeSelect label='' size='sm'>
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
               <option value='aconcagua'>Slett</option>
               <option value='denali'>Oppdater</option>
             </NativeSelect>
-            <Button
-              className={classes.tableBtn}
-              size='sm'
-            >
+            <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
           </div>
@@ -147,17 +112,11 @@ export const Showcase: StoryFn = () => {
         >
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell
-                onClick={function Ya() {}}
-                sortable
-              >
+              <Table.HeaderCell onClick={function Ya() {}} sortable>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell
-                onClick={function Ya() {}}
-                sortable
-              >
+              <Table.HeaderCell onClick={function Ya() {}} sortable>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -199,10 +158,7 @@ export const Showcase: StoryFn = () => {
         />
       </div>
       <div className={cl(classes.card, classes.help)}>
-        <Heading
-          size='xs'
-          className={classes.helpHeading}
-        >
+        <Heading size='xs' className={classes.helpHeading}>
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
@@ -222,11 +178,7 @@ export const Showcase: StoryFn = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card
-            color='brand3'
-            isLink
-            asChild
-          >
+          <Card color='brand3' isLink asChild>
             <a href='#preview'>
               <Card.Header className={classes.helpHeader}>
                 <Heading size='2xs'>Mat og helse</Heading>
@@ -255,110 +207,61 @@ export const Showcase: StoryFn = () => {
       <div className={cl(classes.card, classes.tag)}>
         <Heading size='xs'>Emner</Heading>
         <div className={classes.tagList}>
-          <Tag
-            color='brand1'
-            size='sm'
-          >
+          <Tag color='brand1' size='sm'>
             Data og IKT
           </Tag>
-          <Tag
-            color='brand2'
-            size='sm'
-          >
+          <Tag color='brand2' size='sm'>
             Mat og ernæring
           </Tag>
-          <Tag
-            color='brand3'
-            size='sm'
-          >
+          <Tag color='brand3' size='sm'>
             Sport og Idrett
           </Tag>
-          <Tag
-            color='neutral'
-            size='sm'
-          >
+          <Tag color='neutral' size='sm'>
             Politikk og samfunn
           </Tag>
-          <Tag
-            color='success'
-            size='sm'
-          >
+          <Tag color='success' size='sm'>
             Utenriks
           </Tag>
-          <Tag
-            color='info'
-            size='sm'
-          >
+          <Tag color='info' size='sm'>
             Helse og velvære
           </Tag>
-          <Tag
-            color='danger'
-            size='sm'
-          >
+          <Tag color='danger' size='sm'>
             PC Gaming
           </Tag>
-          <Tag
-            color='warning'
-            size='sm'
-          >
+          <Tag color='warning' size='sm'>
             Trening og livsstil
           </Tag>
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading
-          size='xs'
-          spacing
-        >
+        <Heading size='xs' spacing>
           Innstillinger
         </Heading>
-        <Paragraph
-          size='sm'
-          spacing
-        >
+        <Paragraph size='sm' spacing>
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
-          <Switch
-            size='sm'
-            defaultChecked
-          >
+          <Switch size='sm' defaultChecked>
             TV-visning
           </Switch>
           <Switch size='sm'>Desktopvisning</Switch>
-          <Switch
-            size='sm'
-            defaultChecked
-            readOnly
-          >
+          <Switch size='sm' defaultChecked readOnly>
             Tabletvisning
           </Switch>
-          <Switch
-            size='sm'
-            disabled
-          >
+          <Switch size='sm' disabled>
             Mobilvisning
           </Switch>
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading
-          size='xs'
-          spacing
-        >
+        <Heading size='xs' spacing>
           Hvor er du fra?
         </Heading>
-        <Paragraph
-          size='sm'
-          spacing
-        >
+        <Paragraph size='sm' spacing>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root
-            defaultValue='norway'
-            size='sm'
-          >
+          <ToggleGroup.Root defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
@@ -383,10 +286,7 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root
-          defaultValue='value1'
-          size='sm'
-        >
+        <Tabs.Root defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
@@ -395,43 +295,28 @@ export const Showcase: StoryFn = () => {
         </Tabs.Root>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             Frivillighetsregisteret
           </Link>
           , må organisasjonen drive frivillig virksomhet. Det er bare
           foreninger,{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             stiftelser
           </Link>{' '}
           og som kan registreres. Virksomheten kan ikke dele ut midler til
           fysiske personer. Virksomheten må ha et styre. Virksomheten må være
           registrert i{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             Enhetsregisteret
           </Link>{' '}
           før den kan bli registrert.
         </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>
-        <Heading
-          size='xs'
-          className={classes.cardTitle}
-        >
+        <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root
-          color='brand3'
-          border
-        >
+        <Accordion.Root color='brand3' border>
           <Accordion.Item>
             <Accordion.Heading level={3}>
               Hvem kan registrere seg i Frivillighetsregisteret?

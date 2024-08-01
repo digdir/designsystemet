@@ -1,8 +1,4 @@
 'use client';
-import type { HTMLAttributes } from 'react';
-import { useEffect, useState } from 'react';
-import cl from 'clsx/lite';
-import type { TransformedToken as Token } from 'style-dictionary';
 import {
   DropdownMenu,
   Heading,
@@ -10,12 +6,16 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
-import { ClipboardButton } from '@repo/components';
 import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { ClipboardButton } from '@repo/components';
+import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { useEffect, useState } from 'react';
+import type { TransformedToken as Token } from 'style-dictionary';
 
-import { capitalizeString } from '../../../utils/StringHelpers';
-import * as tokensLight from '../../../tokens/light';
 import * as tokensDark from '../../../tokens/dark';
+import * as tokensLight from '../../../tokens/light';
+import { capitalizeString } from '../../../utils/StringHelpers';
 import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
@@ -88,11 +88,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <Heading
-          size='xs'
-          level={4}
-          className={classes.title}
-        >
+        <Heading size='xs' level={4} className={classes.title}>
           {capitalizeString(group)}
         </Heading>
         <div className={cl(classes.group)}>
@@ -131,27 +127,15 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
   const weight = getColorWeight(token.original.value as string);
 
   return (
-    <div
-      className={classes.card}
-      {...rest}
-    >
+    <div className={classes.card} {...rest}>
       <div className={classes.preview}>
-        {type === 'color' && (
-          <TokenColor
-            value={val}
-            token={token}
-          />
-        )}
+        {type === 'color' && <TokenColor value={val} token={token} />}
         {type === 'typography' && <TokenFontSize value={val} />}
         {type === 'boxShadow' && <TokenShadow value={val} />}
       </div>
 
       <div className={classes.textContainer}>
-        <Heading
-          level={5}
-          size='2xs'
-          className={classes.name}
-        >
+        <Heading level={5} size='2xs' className={classes.name}>
           {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
           &nbsp;
           <ClipboardButton
@@ -282,10 +266,7 @@ const TokenList = ({
             );
           };
           return (
-            <div
-              key={section as string}
-              className={classes.section}
-            >
+            <div key={section as string} className={classes.section}>
               <h3>{capitalizeString(section as string)}</h3>
               <List />
             </div>

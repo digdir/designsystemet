@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react';
-import { useRef, useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import * as React from 'react';
 
 import type { PortalProps } from '../../types/Portal';

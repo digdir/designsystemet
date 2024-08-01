@@ -1,10 +1,10 @@
-import path from 'path';
-import fs from 'fs';
+import fs from 'node:fs';
+import path from 'node:path';
 
 import type { ThemeObject } from '@tokens-studio/types';
-import StyleDictionary from 'style-dictionary';
-import * as R from 'ramda';
 import chalk from 'chalk';
+import * as R from 'ramda';
+import StyleDictionary from 'style-dictionary';
 
 import * as configs from './configs.js';
 

@@ -1,13 +1,13 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
-import { useEffect, useState } from 'react';
-import cl from 'clsx/lite';
 import {
-  getContrastFromLightness,
-  getLightnessFromHex,
   calculateContrastOneColor,
   getBaseColor,
+  getContrastFromLightness,
+  getLightnessFromHex,
 } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
+import { useEffect, useState } from 'react';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
 
@@ -78,18 +78,9 @@ export const FullBaseTest = () => {
           <div>Svart kontrast</div>
         </div>
         <div className={classes.boxes}>
-          <Box
-            color={color}
-            theme='light'
-          />
-          <Box
-            color={color}
-            theme='dark'
-          />
-          <Box
-            color={color}
-            theme='contrast'
-          />
+          <Box color={color} theme='light' />
+          <Box color={color} theme='dark' />
+          <Box color={color} theme='contrast' />
         </div>
       </div>
     );
@@ -123,26 +114,11 @@ export const FullBaseTest = () => {
 
     return (
       <div className={cl(classes.list, active && classes.listActive)}>
-        <Item
-          mainColor={baseDefault}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={baseHover}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={baseActive}
-          bgColor={bgColor}
-        />
-        <Item
-          mainColor={bgDefault}
-          bgColor={baseDefault}
-        />
-        <Item
-          mainColor={bgSubtle}
-          bgColor={baseDefault}
-        />
+        <Item mainColor={baseDefault} bgColor={bgColor} />
+        <Item mainColor={baseHover} bgColor={bgColor} />
+        <Item mainColor={baseActive} bgColor={bgColor} />
+        <Item mainColor={bgDefault} bgColor={baseDefault} />
+        <Item mainColor={bgSubtle} bgColor={baseDefault} />
       </div>
     );
   };
@@ -218,17 +194,11 @@ export const FullBaseTest = () => {
 
   return (
     <div className={classes.content}>
-      {blueColors.map((color, index) => (
-        <>
-          {index + 1 >= 20 && index + 1 <= 80 && (
-            <Column
-              key={index}
-              color={color}
-              index={index}
-            />
-          )}
-        </>
-      ))}
+      {blueColors.map(
+        (color, index) =>
+          index + 1 >= 20 &&
+          index + 1 <= 80 && <Column key={index} color={color} index={index} />,
+      )}
     </div>
   );
 };

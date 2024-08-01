@@ -33,16 +33,10 @@ export const ColorCard = ({ brand, icon }: ColorCardProps) => {
           brand === 'three' && classes.textThree,
         )}
       >
-        <Heading
-          size='2xs'
-          className={classes.colorCardTitle}
-        >
+        <Heading size='2xs' className={classes.colorCardTitle}>
           Grafikk one
         </Heading>
-        <Paragraph
-          size='sm'
-          className={classes.colorCardDesc}
-        >
+        <Paragraph size='sm' className={classes.colorCardDesc}>
           Her er ein beskrivelse
         </Paragraph>
       </div>

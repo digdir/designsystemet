@@ -1,6 +1,6 @@
+import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-import { Slot } from '@radix-ui/react-slot';
 
 import type { ListProps } from '../List';
 import { List } from '../List';

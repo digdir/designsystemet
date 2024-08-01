@@ -151,31 +151,9 @@ export const SiteConfig = {
       url: 'monstre',
       children: [
         {
-          name: 'Ferdig',
+          name: 'Brukeroppgaver',
           url: 'monstre/brukeroppgaver',
           children: [
-            {
-              name: 'Obligatoriske felt *',
-              url: 'monstre/obligatoriske-og-valgfrie-felt',
-            },
-            {
-              name: 'Feilmeldinger *',
-              url: 'monstre/feilmeldinger',
-            },
-          ],
-        },
-        {
-          name: 'Kommende',
-          url: 'monstre/skjema',
-          children: [
-            {
-              name: 'Systemvarsler *',
-              url: 'monstre/systemvarsler',
-            },
-            {
-              name: 'Dato',
-              url: 'monstre/dato',
-            },
             {
               name: 'Innlogging',
               url: 'monstre/innlogging',
@@ -187,6 +165,24 @@ export const SiteConfig = {
             {
               name: 'Ofte brukte handlinger',
               url: 'monstre/handlinger',
+            },
+          ],
+        },
+        {
+          name: 'Skjema',
+          url: 'monstre/skjema',
+          children: [
+            {
+              name: 'Obligatoriske og valgfrie skjemafelt',
+              url: 'monstre/obligatoriske-og-valgfrie-felt',
+            },
+            {
+              name: 'Feilmeldinger',
+              url: 'monstre/feilmeldinger',
+            },
+            {
+              name: 'Dato',
+              url: 'monstre/dato',
             },
           ],
         },

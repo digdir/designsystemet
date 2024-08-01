@@ -1,19 +1,19 @@
 import { Pagination as PaginationParent } from './Pagination';
-import { PaginationContent } from './PaginationContent';
-import { PaginationEllipsis } from './PaginationEllipsis';
-import { PaginationItem } from './PaginationItem';
-import { PaginationButton } from './PaginationButton';
-import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
-import { PaginationRoot } from './PaginationRoot';
 import type { PaginationProps } from './Pagination';
-import type { PaginationContentProps } from './PaginationContent';
-import type { PaginationItemProps } from './PaginationItem';
-import type { PaginationEllipsisProps } from './PaginationEllipsis';
+import { PaginationButton } from './PaginationButton';
 import type { PaginationButtonProps } from './PaginationButton';
+import { PaginationContent } from './PaginationContent';
+import type { PaginationContentProps } from './PaginationContent';
+import { PaginationEllipsis } from './PaginationEllipsis';
+import type { PaginationEllipsisProps } from './PaginationEllipsis';
+import { PaginationItem } from './PaginationItem';
+import type { PaginationItemProps } from './PaginationItem';
+import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import type {
   PaginationNextProps,
   PaginationPreviousProps,
 } from './PaginationNextPrev';
+import { PaginationRoot } from './PaginationRoot';
 
 type PaginationComponent = typeof PaginationParent & {
   Root: typeof PaginationRoot;

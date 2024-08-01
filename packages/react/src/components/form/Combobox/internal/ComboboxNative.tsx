@@ -1,5 +1,5 @@
-import type { Option } from '../useCombobox';
 import type { ComboboxProps } from '../Combobox';
+import type { Option } from '../useCombobox';
 import { removePrefix } from '../utilities';
 
 type ComboboxNativeProps = {
@@ -27,11 +27,8 @@ const ComboboxNative = ({
       }
       onChange={() => {}}
     >
-      {Object.keys(selectedOptions).map((value) => (
-        <option
-          key={value}
-          value={value}
-        />
+      {VALUE.map((value) => (
+        <option key={value} value={value} />
       ))}
     </select>
   );

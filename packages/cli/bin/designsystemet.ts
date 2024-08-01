@@ -2,9 +2,9 @@
 import { Argument, Command, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
+import { makeInitCommand } from '../src/init/index.js';
 import migrations from '../src/migrations/index.js';
 import { run } from '../src/tokens/build.js';
-import { makeInitCommand } from '../src/init/index.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet');
 

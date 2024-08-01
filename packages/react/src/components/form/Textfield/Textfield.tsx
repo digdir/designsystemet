@@ -1,13 +1,13 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useId, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import type { FormFieldProps } from '../useFormField';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
+import type { FormFieldProps } from '../useFormField';
 
 import { useTextfield } from './useTextfield';
 
@@ -102,10 +102,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       ) || undefined;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
@@ -133,10 +130,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(
@@ -150,11 +144,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           )}
           <div className='ds-textfield__field'>
             {prefix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -186,11 +176,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               }}
             />
             {suffix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,

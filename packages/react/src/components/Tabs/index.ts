@@ -1,7 +1,7 @@
-import { TabsRoot } from './TabsRoot';
 import { Tab } from './Tab';
-import { TabList } from './TabList';
 import { TabContent } from './TabContent';
+import { TabList } from './TabList';
+import { TabsRoot } from './TabsRoot';
 
 export type { TabsProps } from './TabsRoot';
 export type { TabProps } from './Tab';

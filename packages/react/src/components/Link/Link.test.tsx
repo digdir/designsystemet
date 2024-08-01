@@ -1,6 +1,6 @@
+import { render as renderRtl, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import type { ComponentProps, RefObject } from 'react';
-import { render as renderRtl, screen } from '@testing-library/react';
 
 import { Link } from './Link';
 import type { LinkProps } from './Link';
@@ -40,10 +40,7 @@ const render = (
 ) => {
   const allProps = { ...defaultProps, ...props };
   return renderRtl(
-    <Link
-      {...allProps}
-      ref={ref}
-    >
+    <Link {...allProps} ref={ref}>
       {allProps.children}
     </Link>,
   );

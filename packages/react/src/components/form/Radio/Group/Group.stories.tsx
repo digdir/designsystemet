@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
-import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
+import { Button, Paragraph } from '../../..';
 
 export default {
   title: 'Komponenter/Radio/Group',
@@ -12,10 +12,7 @@ export default {
 export const Preview: StoryFn<typeof Radio.Group> = (args) => (
   <Radio.Group {...args}>
     <Radio value='vanilje'>Vanilje</Radio>
-    <Radio
-      value='jordbær'
-      description='Jordbær er best'
-    >
+    <Radio value='jordbær' description='Jordbær er best'>
       Jordbær
     </Radio>
     <Radio value='sjokolade'>Sjokolade</Radio>
@@ -32,7 +29,7 @@ Preview.args = {
   size: 'md',
 };
 
-export const Error: StoryFn<typeof Radio> = () => (
+export const WithError: StoryFn<typeof Radio> = () => (
   <Radio.Group
     legend='Velg pizza'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'

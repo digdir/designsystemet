@@ -9,10 +9,7 @@ import { CardMedia } from './CardMedia';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(
-    <Card
-      title='card'
-      {...props}
-    >
+    <Card title='card' {...props}>
       <CardHeader />
       <CardContent />
       <CardFooter />
@@ -31,10 +28,7 @@ describe('Card Component', () => {
     renderRtl(
       <Card title='card'>
         <CardMedia>
-          <img
-            src={mediaImage}
-            alt='cat'
-          />
+          <img src={mediaImage} alt='cat' />
         </CardMedia>
         <CardHeader />
         <CardContent />

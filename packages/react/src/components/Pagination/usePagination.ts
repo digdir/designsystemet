@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { type PaginationProps } from './Pagination';
+import type { PaginationProps } from './Pagination';
 
 type GetStepsProps = Pick<
   PaginationProps,

@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react';
-import Image from 'next/image';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import NextLink from 'next/link';
-import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
-import cl from 'clsx/lite';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import type { ReactNode } from 'react';
 
 import classes from './Footer.module.css';
 
@@ -27,12 +27,7 @@ const rightLinks = [
   {
     text: 'designsystem@digdir.no',
     url: 'mailto:designsystem@digdir.no',
-    prefix: (
-      <EnvelopeClosedIcon
-        aria-hidden='true'
-        fontSize='1.5em'
-      />
-    ),
+    prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
   },
   {
     text: 'Bli invitert til slack',
@@ -88,11 +83,7 @@ const LinkList = (links: LinkListItemProps[]) => {
     <ul className={classes.links}>
       {links.map((item, index) => (
         <li key={index}>
-          <Link
-            href={item.url}
-            color='neutral'
-            className={classes.link}
-          >
+          <Link href={item.url} color='neutral' className={classes.link}>
             {item.prefix}
             {item.text}
           </Link>
@@ -104,18 +95,11 @@ const LinkList = (links: LinkListItemProps[]) => {
 
 const Footer = () => {
   return (
-    <footer
-      className={classes.footer}
-      data-ds-color-mode='dark'
-    >
+    <footer className={classes.footer} data-ds-color-mode='dark'>
       <div className={classes.top}>
         <Container className={classes.container}>
           <div>
-            <Heading
-              size='xs'
-              level={2}
-              className={classes.title}
-            >
+            <Heading size='xs' level={2} className={classes.title}>
               Lages på tvers av offentlige etater:
             </Heading>
             <div className={classes.logos}>
@@ -144,21 +128,13 @@ const Footer = () => {
             </NextLink>
           </div>
           <div>
-            <Heading
-              size='xs'
-              level={2}
-              className={classes.title}
-            >
+            <Heading size='xs' level={2} className={classes.title}>
               Om nettstedet
             </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
-            <Heading
-              size='xs'
-              level={2}
-              className={classes.title}
-            >
+            <Heading size='xs' level={2} className={classes.title}>
               Kom i kontakt med oss
             </Heading>
             {LinkList(rightLinks)}

@@ -17,10 +17,7 @@ export const DropdownMenuItem = forwardRef<
   const { size } = useContext(DropdownMenuContext);
 
   return (
-    <li
-      className={className}
-      style={style}
-    >
+    <li className={className} style={style}>
       <Button
         ref={ref}
         variant='tertiary'

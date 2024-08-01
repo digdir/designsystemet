@@ -1,24 +1,24 @@
+import {
+  FloatingArrow,
+  FloatingPortal,
+  arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useMergeRefs,
+  useRole,
+  useTransitionStyles,
+} from '@floating-ui/react';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { cloneElement, forwardRef, useState } from 'react';
 import * as React from 'react';
-import cl from 'clsx/lite';
-import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  arrow,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useTransitionStyles,
-  useMergeRefs,
-  FloatingArrow,
-  FloatingPortal,
-} from '@floating-ui/react';
 
 import type { PortalProps } from '../../types/Portal';
 import { Paragraph } from '../Typography';
@@ -147,10 +147,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <Paragraph
-              size='xs'
-              asChild
-            >
+            <Paragraph size='xs' asChild>
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}

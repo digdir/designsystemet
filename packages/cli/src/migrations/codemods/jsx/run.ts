@@ -1,7 +1,7 @@
-import glob from 'fast-glob';
-import { run as jscodeshift } from 'jscodeshift/src/Runner.js';
-import type { Options } from 'jscodeshift';
 import chalk from 'chalk';
+import glob from 'fast-glob';
+import type { Options } from 'jscodeshift';
+import { run as jscodeshift } from 'jscodeshift/src/Runner.js';
 
 type CssCodemodProps = {
   globPattern?: string;

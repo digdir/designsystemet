@@ -57,9 +57,4 @@ describe('HelpTextIcon', () => {
 });
 
 const render = (props: Partial<HelpTextIconProps> = {}) =>
-  renderRtl(
-    <HelpTextIcon
-      {...defaultProps}
-      {...props}
-    />,
-  );
+  renderRtl(<HelpTextIcon {...defaultProps} {...props} />);

@@ -4,21 +4,11 @@ import { Box } from './Box';
 
 type BoxProps = Parameters<typeof Box>['0'];
 
-const render = (props?: BoxProps) =>
-  renderRtl(
-    <Box
-      {...props}
-      title='box'
-    />,
-  );
+const render = (props?: BoxProps) => renderRtl(<Box {...props} title='box' />);
 
 const renderAsChild = (props?: BoxProps) =>
   renderRtl(
-    <Box
-      {...props}
-      asChild
-      title='box'
-    >
+    <Box {...props} asChild title='box'>
       <button>child</button>
     </Box>,
   );

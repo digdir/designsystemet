@@ -1,5 +1,5 @@
-import * as React from 'react';
 import cl from 'clsx/lite';
+import * as React from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -40,10 +40,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     ref,
   ) => {
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <table
           ref={ref}
           className={cl(

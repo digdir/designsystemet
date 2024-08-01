@@ -27,21 +27,14 @@ export const Toast = () => {
       {success && (
         <>
           <div className='icon'>
-            <CheckmarkIcon
-              title='a11y-title'
-              fontSize='2rem'
-            />
+            <CheckmarkIcon title='a11y-title' fontSize='2rem' />
           </div>{' '}
           Oppdatering vellykket!
         </>
       )}
       {!success && (
         <>
-          <Spinner
-            color='accent'
-            title='loading'
-            size='sm'
-          />
+          <Spinner color='accent' title='loading' size='sm' />
           Oppdaterer variabler...
         </>
       )}

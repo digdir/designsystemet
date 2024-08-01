@@ -1,7 +1,7 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { LiHTMLAttributes } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 export type ListItemProps = {
   /**

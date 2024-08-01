@@ -13,10 +13,7 @@ describe('Checkbox', () => {
 
   test('has correct description', () => {
     render(
-      <Checkbox
-        value='test'
-        description='description'
-      >
+      <Checkbox value='test' description='description'>
         test
       </Checkbox>,
     );
@@ -32,11 +29,7 @@ describe('Checkbox', () => {
     const value = 'test';
 
     render(
-      <Checkbox
-        value={value}
-        onChange={onChange}
-        onClick={onClick}
-      >
+      <Checkbox value={value} onChange={onChange} onClick={onClick}>
         label
       </Checkbox>,
     );
@@ -58,12 +51,7 @@ describe('Checkbox', () => {
     const onClick = vi.fn();
 
     render(
-      <Checkbox
-        value='test'
-        disabled
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Checkbox value='test' disabled onClick={onClick} onChange={onChange}>
         disabled radio
       </Checkbox>,
     );
@@ -82,12 +70,7 @@ describe('Checkbox', () => {
     const onClick = vi.fn();
 
     render(
-      <Checkbox
-        value='test'
-        readOnly
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Checkbox value='test' readOnly onClick={onClick} onChange={onChange}>
         readonly radio
       </Checkbox>,
     );

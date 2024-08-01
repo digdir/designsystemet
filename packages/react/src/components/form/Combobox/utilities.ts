@@ -1,10 +1,10 @@
 import { isValidElement } from 'react';
-import type { ReactNode, ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-import { ComboboxOption } from './Option/Option';
 import { ComboboxCustom } from './Custom';
-import type { ComboboxOptionProps } from './Option/Option';
 import type { ComboboxCustomProps } from './Custom';
+import { ComboboxOption } from './Option/Option';
+import type { ComboboxOptionProps } from './Option/Option';
 
 export function isComboboxOption(
   child: ReactNode,

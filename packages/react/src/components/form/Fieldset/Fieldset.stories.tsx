@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Textfield } from '../Textfield';
 import { Textarea } from '../Textarea';
+import { Textfield } from '../Textfield';
 
 import { Fieldset } from '.';
 

@@ -1,10 +1,10 @@
-import type { CardContentProps } from './CardContent';
-import type { CardFooterProps } from './CardFooter';
 import type { CardProps } from './Card';
-import { CardHeader, type CardHeaderProps } from './CardHeader';
-import { CardContent } from './CardContent';
-import { CardFooter } from './CardFooter';
 import { Card as CardParent } from './Card';
+import type { CardContentProps } from './CardContent';
+import { CardContent } from './CardContent';
+import type { CardFooterProps } from './CardFooter';
+import { CardFooter } from './CardFooter';
+import { CardHeader, type CardHeaderProps } from './CardHeader';
 import { CardMedia, type CardMediaProps } from './CardMedia';
 
 type CardComponent = typeof CardParent & {

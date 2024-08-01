@@ -1,16 +1,16 @@
 import * as tokenStudio from '@tokens-studio/sd-transforms';
-import StyleDictionary from 'style-dictionary';
-import { outputReferencesFilter } from 'style-dictionary/utils';
-import type { Config, TransformedToken } from 'style-dictionary/types';
-import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
+import * as R from 'ramda';
+import StyleDictionary from 'style-dictionary';
+import type { Config, TransformedToken } from 'style-dictionary/types';
+import { outputReferencesFilter } from 'style-dictionary/utils';
 
+import { makeEntryFile } from './actions.js';
+import * as formats from './formats/css.js';
+import { jsTokens } from './formats/js-tokens.js';
+import { nameKebab, sizeRem, typographyShorthand } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
-import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { jsTokens } from './formats/js-tokens.js';
-import * as formats from './formats/css.js';
-import { makeEntryFile } from './actions.js';
 import { typeEquals } from './utils/utils.js';
 
 void tokenStudio.registerTransforms(StyleDictionary);

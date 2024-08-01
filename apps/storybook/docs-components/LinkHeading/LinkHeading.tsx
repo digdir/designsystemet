@@ -15,10 +15,7 @@ type LinkHeadingProps = {
 
 export const LinkHeading = ({ ...rest }: LinkHeadingProps) => {
   return (
-    <Heading
-      {...rest}
-      className={cl(classes.linkHeading, rest.className)}
-    >
+    <Heading {...rest} className={cl(classes.linkHeading, rest.className)}>
       <Link
         aria-hidden='true'
         href={`#${rest.id}`}

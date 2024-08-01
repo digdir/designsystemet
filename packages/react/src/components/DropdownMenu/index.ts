@@ -1,8 +1,8 @@
-import { DropdownMenuRoot } from './DropdownMenuRoot';
+import { DropdownMenuContent } from './DropdownMenuContent';
 import { DropdownMenuGroup } from './DropdownMenuGroup';
 import { DropdownMenuItem } from './DropdownMenuItem';
+import { DropdownMenuRoot } from './DropdownMenuRoot';
 import { DropdownMenuTrigger } from './DropdownMenuTrigger';
-import { DropdownMenuContent } from './DropdownMenuContent';
 
 type DropdownMenuComponent = {
   Root: typeof DropdownMenuRoot;
