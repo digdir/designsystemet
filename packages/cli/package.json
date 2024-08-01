@@ -14,18 +14,14 @@
   "files": [
     "./dist/**"
   ],
-  "exports": {
-    "./color": "./src/colors/index.ts"
+  "bin": {
+    "designsystemet": "dist/bin/designsystemet.js"
   },
-  "bin": "bin/designsystemet.js",
+  "exports": {
+    "./color": "./dist/src/colors/index.js"
+  },
   "publishConfig": {
-    "access": "public",
-    "bin": {
-      "designsystemet": "dist/bin/designsystemet.js"
-    },
-    "exports": {
-      "./color": "./dist/src/colors/index.js"
-    }
+    "access": "public"
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
