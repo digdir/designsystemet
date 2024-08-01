@@ -1,6 +1,6 @@
-import { forwardRef, useContext } from 'react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { forwardRef, useContext } from 'react';
 
 import { ComboboxContext } from '../ComboboxContext';
 
@@ -38,10 +38,7 @@ const ComboboxClearButton = forwardRef<
       type='button'
       aria-label={clearButtonLabel}
     >
-      <XMarkIcon
-        fontSize='1.5em'
-        title='Clear selection'
-      />
+      <XMarkIcon fontSize='1.5em' title='Clear selection' />
     </button>
   );
 });

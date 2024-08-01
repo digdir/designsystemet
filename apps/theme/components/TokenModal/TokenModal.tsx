@@ -1,5 +1,6 @@
 'use client';
 
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
   Button,
   Heading,
@@ -7,15 +8,14 @@ import {
   Tabs,
   Tooltip,
 } from '@digdir/designsystemet-react';
-import { useEffect, useRef, useState } from 'react';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
 import { generateScaleForColor } from '@digdir/designsystemet/color';
+import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
+import { useEffect, useRef, useState } from 'react';
 
-import type { modeType } from '../../types';
 import { Settings } from '../../settings';
+import type { modeType } from '../../types';
 
 import classes from './TokenModal.module.css';
 
@@ -159,7 +159,6 @@ export const TokenModal = ({
     const darkCSS = generateCSSVars('dark');
     const contrastCSS = generateCSSVars('contrast');
     setCss(lightCSS + darkCSS + contrastCSS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -185,16 +184,9 @@ export const TokenModal = ({
         className={classes.modal}
       >
         <Modal.Header className={classes.modalHeader}>
-          <img
-            src='img/emblem.svg'
-            alt=''
-            className={classes.emblem}
-          />
+          <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Kopier fargetema</span>
-          <Tooltip
-            content={toolTipText}
-            portal={false}
-          >
+          <Tooltip content={toolTipText} portal={false}>
             <Button
               className={classes.shareBtn}
               variant='tertiary'
@@ -205,10 +197,7 @@ export const TokenModal = ({
               autoFocus
             >
               Del
-              <ArrowForwardIcon
-                title='a11y-title'
-                fontSize='1.5rem'
-              />
+              <ArrowForwardIcon title='a11y-title' fontSize='1.5rem' />
             </Button>
           </Tooltip>
         </Modal.Header>
@@ -220,17 +209,11 @@ export const TokenModal = ({
               onClick={() => setShowGlobals(!showGlobals)}
             ></button>
             <div className={classes.column}>
-              <Heading
-                className={classes.title}
-                size='xs'
-              >
+              <Heading className={classes.title} size='xs'>
                 Json til Figma
               </Heading>
               <div className={classes.tabs}>
-                <Tabs.Root
-                  defaultValue='value1'
-                  size='sm'
-                >
+                <Tabs.Root defaultValue='value1' size='sm'>
                   <Tabs.List>
                     <Tabs.Tab
                       onClick={() => generateThemeJson('light')}
@@ -280,10 +263,7 @@ export const TokenModal = ({
               </div>
             </div>
             <div className={classes.column}>
-              <Heading
-                className={classes.title}
-                size='xs'
-              >
+              <Heading className={classes.title} size='xs'>
                 CSS variabler
               </Heading>
 

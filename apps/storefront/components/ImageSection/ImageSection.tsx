@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState, createElement } from 'react';
-import type { ReactNode } from 'react';
-import Image from 'next/image';
-import cl from 'clsx/lite';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import { createElement, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
 import classes from './ImageSection.module.css';
 
@@ -77,10 +77,7 @@ const ImageSection = ({
           )}
           {content && content}
           {link && (
-            <a
-              href={link.href}
-              className={classes.link}
-            >
+            <a href={link.href} className={classes.link}>
               {link.prefix} {link.text}
             </a>
           )}
@@ -88,11 +85,7 @@ const ImageSection = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
-                  key={index}
-                >
+                <a href={item.href} className={classes.button} key={index}>
                   {item.prefix}
                   {item.text}
                 </a>

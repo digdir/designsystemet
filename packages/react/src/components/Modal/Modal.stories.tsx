@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useRef, useState } from 'react';
 
-import { Combobox, Divider, Paragraph, Textfield, Button } from '..';
+import { Button, Combobox, Divider, Paragraph, Textfield } from '..';
 
 import { Modal } from '.';
 
@@ -46,10 +46,7 @@ export const WithoutTriggerComponent: StoryFn<typeof Modal.Dialog> = (args) => {
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal.Root>
-        <Modal.Dialog
-          {...args}
-          ref={modalRef}
-        >
+        <Modal.Dialog {...args} ref={modalRef}>
           <Modal.Header subtitle='Modal subtittel'>Modal header</Modal.Header>
           <Modal.Content>
             <Paragraph>
@@ -115,10 +112,7 @@ export const ModalWithForm: StoryFn<typeof Modal.Dialog> = () => {
   return (
     <Modal.Root>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal.Dialog
-        ref={modalRef}
-        onClose={() => setInput('')}
-      >
+      <Modal.Dialog ref={modalRef} onClose={() => setInput('')}>
         <Modal.Header>Modal med skjema</Modal.Header>
         <Modal.Content>
           <Textfield
@@ -138,10 +132,7 @@ export const ModalWithForm: StoryFn<typeof Modal.Dialog> = () => {
           >
             Send inn skjema
           </Button>
-          <Button
-            variant='secondary'
-            onClick={() => modalRef.current?.close()}
-          >
+          <Button variant='secondary' onClick={() => modalRef.current?.close()}>
             Avbryt
           </Button>
         </Modal.Footer>
@@ -181,10 +172,7 @@ export const ModalWithSelect: StoryFn<typeof Modal.Dialog> = () => {
         <Modal.Dialog style={{ overflow: 'visible' }}>
           <Modal.Header>Modal med select</Modal.Header>
           <Modal.Content>
-            <Combobox
-              portal={false}
-              label='Velg sted'
-            >
+            <Combobox portal={false} label='Velg sted'>
               <Combobox.Empty>Fant ingen treff</Combobox.Empty>
               <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
               <Combobox.Option value='oslo'>Oslo</Combobox.Option>

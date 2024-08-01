@@ -1,8 +1,8 @@
 import { useDebounceCallback } from '../../../utilities';
 
-import type { useCombobox } from './useCombobox';
-import { useComboboxId } from './ComboboxIdContext';
 import type { ComboboxContextType } from './ComboboxContext';
+import { useComboboxId } from './ComboboxIdContext';
+import type { useCombobox } from './useCombobox';
 
 type UseComboboxKeyboardProps = {
   filteredOptions: ReturnType<typeof useCombobox>['filteredOptions'];
@@ -52,7 +52,7 @@ export const useComboboxKeyboard = ({
 
         setOpen(false);
         break;
-      case 'Enter':
+      case 'Enter': {
         event.preventDefault();
         // ignore if it is closed
         if (!open) break;
@@ -67,14 +67,13 @@ export const useComboboxKeyboard = ({
         }
 
         // if we are in the options, find the actual index
-        // eslint-disable-next-line no-case-declarations
         const valueIndex = activeIndex - interactiveChildren.length;
 
-        // eslint-disable-next-line no-case-declarations
         const option = filteredOptions[valueIndex];
 
         handleSelectOption({ option: options[option] });
         break;
+      }
 
       case 'Backspace':
         // if we are in single mode, we need to set selectedOptions to empty

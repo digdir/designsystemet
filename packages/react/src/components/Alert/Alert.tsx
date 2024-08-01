@@ -1,12 +1,12 @@
-import type { HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
 import {
-  InformationSquareFillIcon,
   CheckmarkCircleFillIcon,
-  XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
+  InformationSquareFillIcon,
+  XMarkOctagonFillIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -74,15 +74,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         {...rest}
       >
         <>
-          <Icon
-            title={iconTitle || title}
-            className='ds-alert__icon'
-          />
-          <Paragraph
-            asChild
-            size={size}
-            className='ds-alert__content'
-          >
+          <Icon title={iconTitle || title} className='ds-alert__icon' />
+          <Paragraph asChild size={size} className='ds-alert__content'>
             <span>{children}</span>
           </Paragraph>
         </>

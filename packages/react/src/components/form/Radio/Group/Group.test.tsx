@@ -19,10 +19,7 @@ describe('RadioGroup', () => {
   });
   test('has passed name to Radio children', (): void => {
     render(
-      <RadioGroup
-        legend='Radio group legend'
-        name='my name'
-      >
+      <RadioGroup legend='Radio group legend' name='my name'>
         <Radio value='test'>test</Radio>
       </RadioGroup>,
     );
@@ -32,10 +29,7 @@ describe('RadioGroup', () => {
   });
   test('has passed required to Radio children', (): void => {
     render(
-      <RadioGroup
-        legend='Radio group legend'
-        required
-      >
+      <RadioGroup legend='Radio group legend' required>
         <Radio value='test'>test</Radio>
       </RadioGroup>,
     );
@@ -45,10 +39,7 @@ describe('RadioGroup', () => {
   });
   test('has correct Radio defaultChecked & checked when defaultValue is used', () => {
     render(
-      <RadioGroup
-        legend='Radio group legend'
-        defaultValue='test2'
-      >
+      <RadioGroup legend='Radio group legend' defaultValue='test2'>
         <Radio value='test1'>test1</Radio>
         <Radio value='test2'>test2</Radio>
         <Radio value='test3'>test3</Radio>
@@ -61,13 +52,10 @@ describe('RadioGroup', () => {
   });
   test('has passed clicked Radio element to onChange', async () => {
     const user = userEvent.setup();
-    let onChangeValue = '';
+    const onChangeMock = vi.fn();
 
     render(
-      <RadioGroup
-        legend='Radio group legend'
-        onChange={(value) => (onChangeValue = value)}
-      >
+      <RadioGroup legend='Radio group legend' onChange={onChangeMock}>
         <Radio value='test1'>test1</Radio>
         <Radio value='test2'>test2</Radio>
         <Radio value='test3'>test3</Radio>
@@ -78,7 +66,7 @@ describe('RadioGroup', () => {
 
     await act(async () => await user.click(radio));
 
-    expect(onChangeValue).toEqual('test2');
+    expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(radio.checked).toBeTruthy();
   });
 });

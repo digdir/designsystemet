@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Heading } from '@digdir/designsystemet-react';
 import type {
   ColorError,
@@ -13,18 +11,20 @@ import type {
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
+  areColorsContrasting,
   canTextBeUsedOnColors,
   generateColorTheme,
   generateThemeForColor,
-  areColorsContrasting,
   isHexColor,
 } from '@digdir/designsystemet/color';
-import { Container, ColorModal } from '@repo/components';
+import { ColorModal, Container } from '@repo/components';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
-import { useThemeStore } from '../store';
-import { mapTokens } from '../utils/tokenMapping';
 import { Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
+import { useThemeStore } from '../store';
+import { mapTokens } from '../utils/tokenMapping';
 
 import classes from './page.module.css';
 
@@ -86,7 +86,6 @@ export default function Home() {
     updateColor('brand1', queryBrand1, colors.brand1);
     updateColor('brand2', queryBrand2, colors.brand2);
     updateColor('brand3', queryBrand3, colors.brand3);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contrastMode]);
 
   useEffect(() => {
@@ -128,9 +127,8 @@ export default function Home() {
     const queryColor = params.get(colorType);
     if (queryColor && isHexColor(queryColor.substring(1))) {
       return queryColor as CssColor;
-    } else {
-      return returnColor;
     }
+    return returnColor;
   };
 
   /**
@@ -245,7 +243,8 @@ export default function Home() {
 
     if (!contrast && textCanBeUsed) {
       return 'decorative';
-    } else if (contrast && !textCanBeUsed) {
+    }
+    if (contrast && !textCanBeUsed) {
       return 'interaction';
     }
 
@@ -263,10 +262,7 @@ export default function Home() {
 
       <main className={classes.main}>
         <Container>
-          <Heading
-            size='md'
-            className={classes.title}
-          >
+          <Heading size='md' className={classes.title}>
             Sett opp fargetema
           </Heading>
           <ThemeToolbar
@@ -288,10 +284,7 @@ export default function Home() {
           />
           <Scales themeMode={themeMode} />
 
-          <Previews
-            themeMode={themeMode}
-            onThemeModeChange={updateTheme}
-          />
+          <Previews themeMode={themeMode} onThemeModeChange={updateTheme} />
         </Container>
       </main>
     </div>

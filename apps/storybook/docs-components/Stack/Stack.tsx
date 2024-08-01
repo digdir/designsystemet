@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode, CSSProperties } from 'react';
+import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
 import classes from './Stack.module.css';
 

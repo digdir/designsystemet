@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 import { act } from 'react';
+import { vi } from 'vitest';
 
 import * as hooks from '../../utilities';
 
@@ -105,9 +105,4 @@ describe('AnimateHeight', () => {
 });
 
 const render = (props: Partial<AnimateHeightProps> = {}) =>
-  renderRtl(
-    <AnimateHeight
-      {...defaultProps}
-      {...props}
-    />,
-  );
+  renderRtl(<AnimateHeight {...defaultProps} {...props} />);

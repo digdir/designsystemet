@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
 import { Label } from '../../Typography';
 
@@ -19,10 +19,7 @@ const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
 
     return (
       filteredOptions.length === 0 && (
-        <Label
-          size={size}
-          asChild
-        >
+        <Label size={size} asChild>
           <div
             ref={ref}
             className={cl('ds-combobox__empty', className)}

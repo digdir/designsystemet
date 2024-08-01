@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
@@ -51,11 +51,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         )}
         {...rest}
       >
-        <Paragraph
-          asChild
-          size={group?.size || size}
-          variant='short'
-        >
+        <Paragraph asChild size={group?.size || size} variant='short'>
           <span className={`ds-chip__label`}>
             {shouldDisplayCheckmark && (
               <CheckmarkIcon

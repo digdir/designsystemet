@@ -6,14 +6,8 @@ interface TokenFontSizeProps {
 
 const TokenSize = ({ value }: TokenFontSizeProps) => {
   return (
-    <div
-      style={{ font: value }}
-      className={classes.size}
-    >
-      <div
-        className={classes.bar}
-        style={{ width: value }}
-      ></div>
+    <div style={{ font: value }} className={classes.size}>
+      <div className={classes.bar} style={{ width: value }}></div>
     </div>
   );
 };

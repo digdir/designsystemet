@@ -1,5 +1,5 @@
-import { forwardRef, useContext } from 'react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext } from 'react';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';

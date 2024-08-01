@@ -1,5 +1,3 @@
-import { forwardRef, useContext, useMemo, useRef, useEffect } from 'react';
-import * as React from 'react';
 import {
   FloatingPortal,
   arrow,
@@ -16,9 +14,11 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext, useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 
-import { Paragraph } from '../Typography';
 import { useIsomorphicLayoutEffect } from '../../utilities';
+import { Paragraph } from '../Typography';
 
 import { PopoverContext } from './PopoverRoot';
 
@@ -68,13 +68,15 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       refs,
       floatingStyles,
       placement: flPlacement,
-      middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
+      middlewareData: {
+        arrow: { x: arrowX, y: arrowY } = {},
+      },
     } = useFloating({
       placement,
       open: internalOpen,
       onOpenChange: (localOpen) => {
-        onOpenChange && onOpenChange(localOpen);
-        if (!localOpen) onClose && onClose();
+        onOpenChange?.(localOpen);
+        if (!localOpen) onClose?.();
         if (!isControlled) setInternalOpen(localOpen);
       },
       whileElementsMounted: autoUpdate,
@@ -123,10 +125,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       <>
         {internalOpen && (
           <Container>
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 ref={floatingEl}
                 className={cl(

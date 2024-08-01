@@ -24,17 +24,10 @@ export const Preview: Story = {
 
 export const FullWidth: StoryFn<typeof Switch> = (args) => (
   <Fieldset legend='Skru av/på en eller flere innstillinger'>
-    <Switch
-      description='Beskrivelse av innstilling'
-      value='alt1'
-      {...args}
-    >
+    <Switch description='Beskrivelse av innstilling' value='alt1' {...args}>
       Innstilling 1
     </Switch>
-    <Switch
-      value='alt2'
-      {...args}
-    >
+    <Switch value='alt2' {...args}>
       Innstilling 2
     </Switch>
     <Switch

@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
-import cl from 'clsx/lite';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */

@@ -1,5 +1,5 @@
-import cl from 'clsx/lite';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
@@ -48,23 +48,13 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
 
 export const Do = ({ description, image, alt }: DoAndDontProps) => {
   return (
-    <Wrapper
-      variant='do'
-      description={description}
-      image={image}
-      alt={alt}
-    />
+    <Wrapper variant='do' description={description} image={image} alt={alt} />
   );
 };
 
 export const Dont = ({ description, image, alt }: DoAndDontProps) => {
   return (
-    <Wrapper
-      variant='dont'
-      description={description}
-      image={image}
-      alt={alt}
-    />
+    <Wrapper variant='dont' description={description} image={image} alt={alt} />
   );
 };
 

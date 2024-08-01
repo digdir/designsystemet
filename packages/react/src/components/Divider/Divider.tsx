@@ -1,5 +1,5 @@
-import type * as React from 'react';
 import cl from 'clsx/lite';
+import type * as React from 'react';
 import { forwardRef } from 'react';
 
 export type DividerProps = {

@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 
 import { NextResponse } from 'next/server';
 
@@ -26,6 +26,6 @@ export async function GET() {
   }
   return NextResponse.json({
     status: 200,
-    body: outputObj
+    body: outputObj,
   });
 }

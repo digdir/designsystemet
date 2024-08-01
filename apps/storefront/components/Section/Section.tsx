@@ -1,8 +1,8 @@
-import type * as React from 'react';
-import cl from 'clsx/lite';
-import Image from 'next/image';
 import { Heading } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import Image from 'next/image';
+import type * as React from 'react';
 
 import classes from './Section.module.css';
 
@@ -24,19 +24,13 @@ const Section = ({
       <Container>
         <div className={classes.header}>
           {title && (
-            <Heading
-              level={2}
-              size='md'
-            >
+            <Heading level={2} size='md'>
               {title}
             </Heading>
           )}
           <div className={classes.separator}>
             <div className={classes.separatorContainer}>
-              <img
-                src='img/emblem.svg'
-                alt=''
-              />
+              <img src='img/emblem.svg' alt='' />
             </div>
           </div>
           {detail && (

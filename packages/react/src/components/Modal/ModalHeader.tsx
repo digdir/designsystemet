@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
-import cl from 'clsx/lite';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { Heading, Paragraph } from '../Typography';
 import { Button } from '../Button';
+import { Heading, Paragraph } from '../Typography';
 
 import { ModalContext } from './ModalRoot';
 
@@ -43,17 +43,11 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
         {...rest}
       >
         {subtitle && (
-          <Paragraph
-            size='sm'
-            variant='short'
-          >
+          <Paragraph size='sm' variant='short'>
             {subtitle}
           </Paragraph>
         )}
-        <Heading
-          level={2}
-          size='xs'
-        >
+        <Heading level={2} size='xs'>
           {children}
         </Heading>
         {closeButton && (
@@ -67,10 +61,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             icon={true}
             className='ds-modal__header__button'
           >
-            <XMarkIcon
-              title='close modal'
-              fontSize='1.5em'
-            />
+            <XMarkIcon title='close modal' fontSize='1.5em' />
           </Button>
         )}
       </Component>

@@ -1,8 +1,8 @@
-import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
-import { forwardRef, useCallback, useRef, useState } from 'react';
-import cl from 'clsx/lite';
-import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
+import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useCallback, useRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
 import { Button } from '../../Button';
@@ -95,7 +95,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const handleClear = () => {
       onClear?.(internalValue);
       setInternalValue('');
-      inputRef?.current && inputRef.current.focus();
+      inputRef?.current?.focus();
     };
 
     const handleSearchClick = () => {
@@ -106,10 +106,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(

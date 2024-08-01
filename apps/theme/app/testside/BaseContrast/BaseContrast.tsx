@@ -19,11 +19,7 @@ export const BaseContrast = ({ themes }: BaseContrastProps) => {
   return (
     <div className={classes.container}>
       {themes.map((item, index) => (
-        <BaseColumn
-          key={index}
-          title={item.title}
-          colorTheme={item.theme}
-        />
+        <BaseColumn key={index} title={item.title} colorTheme={item.theme} />
       ))}
     </div>
   );
@@ -39,18 +35,9 @@ const BaseColumn = ({ colorTheme, title }: BaseColumnProps) => {
     <div className={classes.column}>
       <Heading size='sm'>{title}</Heading>
       <div className={classes.boxes}>
-        <BaseBox
-          title='Light'
-          colorScale={colorTheme.light}
-        />
-        <BaseBox
-          title='Dark'
-          colorScale={colorTheme.dark}
-        />
-        <BaseBox
-          title='Contrast'
-          colorScale={colorTheme.contrast}
-        />
+        <BaseBox title='Light' colorScale={colorTheme.light} />
+        <BaseBox title='Dark' colorScale={colorTheme.dark} />
+        <BaseBox title='Contrast' colorScale={colorTheme.contrast} />
       </div>
     </div>
   );
@@ -64,10 +51,7 @@ type BaseBoxProps = {
 const BaseBox = ({ colorScale, title }: BaseBoxProps) => {
   return (
     <div className={classes.box}>
-      <Heading
-        className={classes.boxTitle}
-        size='xs'
-      >
+      <Heading className={classes.boxTitle} size='xs'>
         {title}
       </Heading>
       <div

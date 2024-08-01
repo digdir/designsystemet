@@ -1,10 +1,10 @@
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
-import { forwardRef } from 'react';
-import type { HTMLAttributes } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
+import { forwardRef } from 'react';
+import type { HTMLAttributes } from 'react';
 
 import type { RovingFocusElement } from './RovingFocusRoot';
 import { useRovingFocus } from './useRovingFocus';
@@ -67,11 +67,7 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const mergedRefs = useMergeRefs([ref, rovingProps.ref]);
 
     return (
-      <Component
-        {...rest}
-        {...rovingProps}
-        ref={mergedRefs}
-      >
+      <Component {...rest} {...rovingProps} ref={mergedRefs}>
         {rest.children}
       </Component>
     );

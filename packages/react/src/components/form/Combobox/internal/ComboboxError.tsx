@@ -1,6 +1,6 @@
 import { ErrorMessage } from '../../../Typography';
-import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
+import type { ComboboxProps } from '../Combobox';
 
 type ComboboxErrorProps = {
   size: ComboboxProps['size'];

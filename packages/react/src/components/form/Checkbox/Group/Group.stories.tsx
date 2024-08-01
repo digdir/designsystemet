@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
-import { Button, Paragraph } from '../../..';
 import { Checkbox } from '../';
+import { Button, Paragraph } from '../../..';
 
 export default {
   title: 'Komponenter/Checkbox/Group',
@@ -35,7 +35,7 @@ Preview.args = {
   size: 'md',
 };
 
-export const Error: StoryFn<typeof Checkbox> = () => (
+export const WithError: StoryFn<typeof Checkbox> = () => (
   <Checkbox.Group
     legend='Hvilket land er du statborger i?'
     description='Hvis du har dobbelt statsborgerskap, velger du begge landene.'

@@ -1,15 +1,15 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cl from 'clsx/lite';
 import { NativeSelect } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorType,
   ContrastMode,
 } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
 
+import { useThemeStore } from '../../store';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 import { TokenModal } from '../TokenModal/TokenModal';
-import { useThemeStore } from '../../store';
 
 import classes from './ThemeToolbar.module.css';
 

@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import { renderHook } from '@testing-library/react';
+import type { ReactNode } from 'react';
 
 import type { FieldsetProps } from './Fieldset';
 import { Fieldset } from './Fieldset';
@@ -8,10 +8,7 @@ import { useFormField } from './useFormField';
 
 const createWrapper = (Wrapper: typeof Fieldset, props?: FieldsetProps) => {
   return ({ children }: { children: ReactNode }) => (
-    <Wrapper
-      legend='Wrapper'
-      {...props}
-    >
+    <Wrapper legend='Wrapper' {...props}>
       {children}
     </Wrapper>
   );

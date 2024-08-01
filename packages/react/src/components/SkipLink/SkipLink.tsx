@@ -1,5 +1,5 @@
-import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import cl from 'clsx/lite';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 
 export type SkipLinkProps = {
   /** The content to display inside the skiplink. */

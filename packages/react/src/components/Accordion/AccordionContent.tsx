@@ -28,14 +28,8 @@ export const AccordionContent = forwardRef<
   }
 
   return (
-    <AnimateHeight
-      id={context.contentId}
-      open={context.open}
-    >
-      <Paragraph
-        asChild
-        size='sm'
-      >
+    <AnimateHeight id={context.contentId} open={context.open}>
+      <Paragraph asChild size='sm'>
         <div
           ref={ref}
           className={cl('ds-accordion__content', className)}

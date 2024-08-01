@@ -1,6 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { useState } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { DropdownMenu } from '.';
 
@@ -109,11 +109,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu.Root
-        open={open}
-        onClose={() => setOpen(false)}
-        portal
-      >
+      <DropdownMenu.Root open={open} onClose={() => setOpen(false)} portal>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>

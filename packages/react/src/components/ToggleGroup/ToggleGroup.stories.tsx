@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 import {
   AirplaneFillIcon,
-  NewspaperFillIcon,
-  BrailleIcon,
   BackpackFillIcon,
   BellFillIcon,
+  BrailleIcon,
+  NewspaperFillIcon,
 } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button } from '../Button';
 import { Paragraph } from '../Typography';
@@ -37,32 +37,14 @@ Preview.args = {
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup.Root defaultValue={'option-1'}>
-      <ToggleGroup.Item
-        value='option-1'
-        icon={true}
-      >
-        <BrailleIcon
-          title='Braille'
-          fontSize='1.5rem'
-        />
+      <ToggleGroup.Item value='option-1' icon={true}>
+        <BrailleIcon title='Braille' fontSize='1.5rem' />
       </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='option-2'
-        icon={true}
-      >
-        <NewspaperFillIcon
-          title='Newspaper'
-          fontSize='1.5rem'
-        />
+      <ToggleGroup.Item value='option-2' icon={true}>
+        <NewspaperFillIcon title='Newspaper' fontSize='1.5rem' />
       </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value='option-3'
-        icon={true}
-      >
-        <BackpackFillIcon
-          title='Backpack'
-          fontSize='1.5rem'
-        />
+      <ToggleGroup.Item value='option-3' icon={true}>
+        <BackpackFillIcon title='Backpack' fontSize='1.5rem' />
       </ToggleGroup.Item>
     </ToggleGroup.Root>
   );
@@ -73,19 +55,12 @@ export const Controlled: StoryFn<typeof ToggleGroup> = () => {
   return (
     <>
       <div style={{ display: 'flex', gap: '4px' }}>
-        <Button
-          size='sm'
-          onClick={() => setValue('peanut')}
-        >
+        <Button size='sm' onClick={() => setValue('peanut')}>
           Select Peanut
         </Button>
       </div>
       <br />
-      <ToggleGroup.Root
-        value={value}
-        size='md'
-        onChange={setValue}
-      >
+      <ToggleGroup.Root value={value} size='md' onChange={setValue}>
         <ToggleGroup.Item value='pistachio'>
           <AirplaneFillIcon fontSize='1.5rem' />
           Pistachio

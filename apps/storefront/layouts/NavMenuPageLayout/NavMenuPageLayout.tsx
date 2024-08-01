@@ -1,9 +1,9 @@
 'use client';
-import type * as React from 'react';
-import { usePathname } from 'next/navigation';
 import { Container } from '@repo/components';
+import { usePathname } from 'next/navigation';
+import type * as React from 'react';
 
-import { SidebarMenu, MdxContent } from '../../components';
+import { MdxContent, SidebarMenu } from '../../components';
 import {
   Banner,
   BannerHeading,
@@ -39,10 +39,7 @@ const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
         <div className={classes.left}>
           <SidebarMenu routerPath={pathName} />
         </div>
-        <main
-          id='main'
-          className={classes.right}
-        >
+        <main id='main' className={classes.right}>
           <div>
             <MdxContent>{content}</MdxContent>
           </div>

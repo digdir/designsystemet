@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import cl from 'clsx/lite';
 import { Button } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';
@@ -73,10 +73,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
-                              <li
-                                key={index2}
-                                className={classes.listItem}
-                              >
+                              <li key={index2} className={classes.listItem}>
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}

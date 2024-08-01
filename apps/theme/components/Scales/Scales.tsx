@@ -1,8 +1,8 @@
-import cl from 'clsx/lite';
 import type { Mode } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
 
-import { Scale } from '../Scale/Scale';
 import { useThemeStore } from '../../store';
+import { Scale } from '../Scale/Scale';
 
 import classes from './Scales.module.css';
 

@@ -1,7 +1,7 @@
 import { Markdown } from '@storybook/blocks';
 
 import type { AlertProps } from '@digdir/designsystemet-react';
-import { Paragraph, Alert, Heading } from '@digdir/designsystemet-react';
+import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import classes from './Information.module.css';
 
@@ -36,7 +36,6 @@ const getSeverity = (text: Texts): AlertProps['severity'] => {
       return 'danger';
     case 'development':
       return 'warning';
-    case 'altinn':
     default:
       return 'info';
   }
@@ -51,16 +50,9 @@ export const Information = ({ text, description }: InformationProps) => {
   const textData = texts[text];
 
   return (
-    <Alert
-      className={classes.container}
-      severity={getSeverity(text)}
-    >
+    <Alert className={classes.container} severity={getSeverity(text)}>
       {textData.title && (
-        <Heading
-          level={2}
-          size='xs'
-          spacing
-        >
+        <Heading level={2} size='xs' spacing>
           {textData.title}
         </Heading>
       )}
@@ -68,10 +60,7 @@ export const Information = ({ text, description }: InformationProps) => {
         options={{
           overrides: {
             p: (props: Record<string, unknown>) => (
-              <Paragraph
-                style={{ maxWidth: '70ch' }}
-                {...props}
-              ></Paragraph>
+              <Paragraph style={{ maxWidth: '70ch' }} {...props}></Paragraph>
             ),
           },
         }}
