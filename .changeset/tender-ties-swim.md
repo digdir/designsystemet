@@ -3,4 +3,4 @@
 '@digdir/designsystemet': patch
 ---
 
-Changed linter and formatter from eslint to biomejs
+chore: Replace eslint with biomejs
