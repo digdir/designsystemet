@@ -1,6 +1,7 @@
 {
   "git.rebaseWhenSync": true,
   "git.autofetch": true,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
     "source.organizeImports.biome": "explicit"
@@ -9,10 +10,6 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  //  "[json]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  "editor.formatOnSave": true,
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
@@ -21,18 +18,5 @@
     "packages/theme/brand/digdir/typography/primary.css",
     "packages/theme/brand/digdir/semantic.css"
   ],
-  // "[ignore]": {
-  //   "editor.defaultFormatter": "foxundermoon.shell-format"
-  // },
-  // "eslint.probe": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   "typescript",
-  //   "typescriptreact",
-  //   "html",
-  //   "vue",
-  //   "markdown",
-  //   "mdx"
-  // ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}"
 }
