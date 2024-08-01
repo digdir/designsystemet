@@ -16,7 +16,10 @@
   ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
-    "./color": "./dist/src/colors/index.js"
+    "./color": {
+      "types": "./dist/types/src/colors/index.d.ts",
+      "import": "./dist/src/colors/index.js"
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -25,7 +28,7 @@
     "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "tsup",
+    "build": "tsup && yarn build:types",
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "clean": "rimraf dist",

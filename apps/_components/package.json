@@ -21,6 +21,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@navikt/aksel-icons": "^5.12.2"
   },
