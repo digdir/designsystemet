@@ -65,6 +65,7 @@
     "@types/prompts": "^2.4.9",
     "@types/ramda": "^0.29.9",
     "fs-extra": "^11.2.0",
+    "tslib": "^2.6.2",
     "tsup": "^8.1.0",
     "tsx": "^4.11.2",
     "typescript": "^5.4.5"
