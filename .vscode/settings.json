@@ -18,5 +18,8 @@
     "packages/theme/brand/digdir/typography/primary.css",
     "packages/theme/brand/digdir/semantic.css"
   ],
-  "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}"
+  "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
