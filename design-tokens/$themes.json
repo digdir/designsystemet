@@ -52,11 +52,11 @@
     "name": "Light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/modes/colors/light/colors/global": "enabled",
-      "primitives/modes/colors/light/colors/theme": "enabled",
-      "primitives/modes/colors/light/colors/theme2": "enabled",
-      "primitives/modes/colors/light/colors/theme3": "enabled",
-      "primitives/modes/colors/light/colors/theme4": "enabled"
+      "primitives/modes/colors/light/global": "enabled",
+      "primitives/modes/colors/light/theme": "enabled",
+      "primitives/modes/colors/light/theme2": "enabled",
+      "primitives/modes/colors/light/theme3": "enabled",
+      "primitives/modes/colors/light/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
