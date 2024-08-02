@@ -2579,6 +2579,7 @@ __metadata:
     "@storybook/react": "npm:^8.2.7"
     "@storybook/react-vite": "npm:^8.2.7"
     "@storybook/theming": "npm:^8.2.7"
+    "@storybook/types": "npm:^8.2.7"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     react: "npm:^18.3.1"
@@ -2640,7 +2641,7 @@ __metadata:
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
     "@floating-ui/react": "npm:0.26.12"
-    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@navikt/aksel-icons": "npm:^6.13.0"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@tanstack/react-virtual": "npm:^3.5.1"
     copyfiles: "npm:^2.4.1"
@@ -3373,16 +3374,16 @@ __metadata:
   linkType: hard
 
 "@navikt/aksel-icons@npm:^5.12.2":
-  version: 5.12.2
-  resolution: "@navikt/aksel-icons@npm:5.12.2"
-  checksum: 10/3458af6d88726a6572f8de01fed89da627e15cf81e7dc21a6f26cae52b137d9f2025efcdea22582cb985ab42c50cf963385bac3435c51d5af42ad1e5bf26d775
+  version: 5.18.3
+  resolution: "@navikt/aksel-icons@npm:5.18.3"
+  checksum: 10/de01c59ade08d8c4dc54db77131eff8f29f6a1d25e9dfb031bb6280dc853d51a686ae78b845ff2a7d3dc0291f568ec3714076325ccbd65ed829041e300bbd65b
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^6.6.0":
-  version: 6.8.0
-  resolution: "@navikt/aksel-icons@npm:6.8.0"
-  checksum: 10/7c436726471d9e441a8f8730c7a6373a77b81a0827ee56c5d1c4b5cec71316f89c1a2b4d0bd1dc3d2fbdd71ac312b64dc0538e3cda81bc7c4b80b1239effdce4
+"@navikt/aksel-icons@npm:^6.13.0":
+  version: 6.13.0
+  resolution: "@navikt/aksel-icons@npm:6.13.0"
+  checksum: 10/cb1f90e08f546fbe1e8003ad6f2e1accfd8e655c669bf0c59fc75ecc5b23bf55a96978ebe3a0f92ee72f8349f84eb294c5c023bb0c415ba817ce02a8f594476b
   languageName: node
   linkType: hard
 
@@ -3659,7 +3660,7 @@ __metadata:
   dependencies:
     "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
-    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@navikt/aksel-icons": "npm:^6.13.0"
     typescript: "npm:^5.4.2"
   peerDependencies:
     react: ">=18.3.1"
@@ -4551,6 +4552,15 @@ __metadata:
   peerDependencies:
     storybook: ^8.2.7
   checksum: 10/774d435d37b9dc8573696f71e6f8df35239e4e44b6a6f1ed639743d0b908b7e48d47ef85ee8aeebe715cd9de844953aadf2b0ef7a3d8852851c35341b7e0ff7f
+  languageName: node
+  linkType: hard
+
+"@storybook/types@npm:^8.2.7":
+  version: 8.2.7
+  resolution: "@storybook/types@npm:8.2.7"
+  peerDependencies:
+    storybook: ^8.2.7
+  checksum: 10/8aef8b0d1d8f81e94a4bd467319c87fb915a8cf252a4f645ab49aa5945c3fc95b1a8011a637a07240cc75d8b2afee40c69c7b5a7587319a293f5c3a1e1701089
   languageName: node
   linkType: hard
 
@@ -7955,7 +7965,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev@workspace:apps/dev"
   dependencies:
-    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@navikt/aksel-icons": "npm:^6.13.0"
     "@types/luxon": "npm:^3.3.7"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -16018,7 +16028,7 @@ __metadata:
     "@digdir/designsystemet-theme": "workspace:^"
     "@mdx-js/loader": "npm:^3.0.1"
     "@mdx-js/react": "npm:^3.0.1"
-    "@navikt/aksel-icons": "npm:^5.12.2"
+    "@navikt/aksel-icons": "npm:^6.13.0"
     "@next/mdx": "npm:^14.2.4"
     "@repo/components": "workspace:^"
     "@types/react": "npm:^18.3.3"
@@ -16633,7 +16643,7 @@ __metadata:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
-    "@navikt/aksel-icons": "npm:^6.6.0"
+    "@navikt/aksel-icons": "npm:^6.13.0"
     "@react-awesome/use-click-outside": "npm:^0.0.3"
     "@repo/components": "workspace:^"
     "@types/chroma-js": "npm:^2"
