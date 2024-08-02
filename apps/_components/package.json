@@ -9,8 +9,6 @@
     "src/**"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c --bundleConfigAsCjs",
-    "clean": "rimraf dist && rimraf tsc-build",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {

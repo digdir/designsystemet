@@ -29,7 +29,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "npm-run-all2": "^6.2.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.40",
     "vite-plugin-generate-file": "^0.1.1",
     "vite-plugin-react-rich-svg": "^1.0.0",
     "vite-plugin-singlefile": "^0.13.5"
