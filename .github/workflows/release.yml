@@ -23,6 +23,8 @@ jobs:
           # this expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn publish
           version: yarn version-packages
+          commit: 'chore: new release'
+          title: 'chore: new release candidate'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
