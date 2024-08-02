@@ -23,7 +23,7 @@
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "^5.12.2"
+    "@navikt/aksel-icons": "^6.13.0"
   },
   "devDependencies": {
     "typescript": "^5.4.2"

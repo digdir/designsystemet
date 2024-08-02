@@ -16,6 +16,7 @@
     "devsite": "yarn workspace dev dev",
     "figma-plugin": "yarn workspace figma-plugin dev",
     "build": "yarn workspaces foreach -Ap --topological-dev --no-private run build",
+    "build:all": "yarn workspaces foreach -A --topological-dev run build",
     "build:theme": "yarn workspace theme build",
     "build:figma-plugin": "yarn workspace figma-plugin build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
