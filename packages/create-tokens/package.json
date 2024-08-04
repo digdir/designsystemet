@@ -20,8 +20,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^12.0.1",
-    "commander": "^12.0.0",
+    "@commander-js/extra-typings": "^12.1.0",
+    "commander": "^12.1.0",
     "tsx": "^4.16.5"
   }
 }

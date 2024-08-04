@@ -32,10 +32,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.12",
+    "@floating-ui/react": "0.26.20",
     "@navikt/aksel-icons": "^6.13.0",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@tanstack/react-virtual": "^3.5.1"
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-virtual": "^3.8.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
