@@ -26,6 +26,6 @@
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
-    "typescript": "^5.4.2"
+    "typescript": "^5.5.4"
   }
 }
