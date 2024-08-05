@@ -10,9 +10,6 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   eslint: {
     ignoreDuringBuilds: true,
-    rules: {
-      '@next/next/no-img-element': 'off',
-    },
   },
   i18n: {
     locales: ['no'],
