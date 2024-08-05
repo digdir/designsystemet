@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@navikt/aksel-icons": "^6.13.0",
-    "@types/luxon": "^3.3.7",
+    "@types/luxon": "^3.4.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "luxon": "^3.4.4",
+    "luxon": "^3.5.0",
     "normalize.css": "^8.0.1",
     "react-countdown-circle-timer": "^3.2.1"
   }

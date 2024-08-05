@@ -32,15 +32,25 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.12",
+    "@floating-ui/react": "0.26.20",
     "@navikt/aksel-icons": "^6.13.0",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@tanstack/react-virtual": "^3.5.1"
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-virtual": "^3.8.4"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "copyfiles": "^2.4.1",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.12.1",
-    "typescript": "^5.4.2"
+    "jsdom": "^24.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.20.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.5.4"
   }
 }
