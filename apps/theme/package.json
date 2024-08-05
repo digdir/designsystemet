@@ -17,16 +17,16 @@
     "@navikt/aksel-icons": "^6.13.0",
     "@react-awesome/use-click-outside": "^0.0.3",
     "@repo/components": "workspace:^",
-    "chroma-js": "^2.4.2",
+    "chroma-js": "^2.6.0",
     "next": "^14.2.4",
     "react": "^18.3.1",
     "react-color": "^2.19.3",
     "react-dom": "^18.3.1",
-    "recharts": "^2.12.6",
-    "zustand": "^4.5.2"
+    "recharts": "^2.12.7",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@types/chroma-js": "^2",
+    "@types/chroma-js": "^2.4.4",
     "@types/react": "^18.3.3",
     "@types/react-color": "^3.0.12",
     "@types/react-dom": "^18.3.0"
