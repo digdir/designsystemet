@@ -30,7 +30,6 @@
     "types": "yarn workspaces foreach -Ap --topological-dev --no-private run types",
     "types:react": "yarn workspace @digdir/designsystemet-react types",
     "types:storefront": "yarn workspace storefront types",
-    "changeset": "changeset",
     "version-packages": "changeset version",
     "publish": "yarn build && changeset publish"
   },
