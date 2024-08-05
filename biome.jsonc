@@ -14,8 +14,7 @@
       "tsc-build/**",
       "design-tokens/**/*",
       "packages/theme/brand/**/*",
-      "apps/storefront/tokens/**",
-      "packages/react-old/**/*"
+      "apps/storefront/tokens/**"
     ]
   },
   "formatter": {
