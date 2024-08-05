@@ -15,6 +15,14 @@ export type ModalHeaderProps = {
    * @default true
    */
   closeButton?: boolean;
+  /**
+   * The title of the close button.
+   * @default 'close modal'
+   */
+  closeButtonTitle?: string;
+  /**
+   * The subtitle of the modal.
+   */
   subtitle?: string;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -25,7 +33,15 @@ export type ModalHeaderProps = {
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   (
-    { closeButton = true, children, subtitle, asChild, className, ...rest },
+    {
+      closeButton = true,
+      closeButtonTitle = 'close modal',
+      children,
+      subtitle,
+      asChild,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const Component = asChild ? Slot : 'div';
@@ -60,8 +76,9 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             autoFocus
             icon={true}
             className='ds-modal__header__button'
+            title={closeButtonTitle}
           >
-            <XMarkIcon title='close modal' fontSize='1.5em' />
+            <XMarkIcon title={closeButtonTitle} fontSize='1.5em' />
           </Button>
         )}
       </Component>
