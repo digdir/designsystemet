@@ -10,7 +10,6 @@
     "@digdir/create-tokens": "0.1.0-alpha.7",
     "@digdir/designsystemet-css": "0.11.0-alpha.9",
     "@digdir/designsystemet-react": "1.0.0-rc.13",
-    "@digdir/design-system-react": "0.54.0",
     "@digdir/designsystemet-theme": "1.0.0-rc.13",
     "figma-plugin": "0.1.0",
     "@designsystemet/storybook": "0.1.0"
