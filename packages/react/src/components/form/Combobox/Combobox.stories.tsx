@@ -206,9 +206,9 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           setValue(value);
         }}
       >
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
-          <Combobox.Option key={index} value={item.value}>
+        <Combobox.Empty key='empty'>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item) => (
+          <Combobox.Option key={item.value} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
