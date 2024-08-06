@@ -1,11 +1,15 @@
 import {
   Card,
+  CardContent,
   Heading,
   Paragraph,
-  Accordion,
+  AccordionRoot,
+  AccordionItem,
+  AccordionContent,
+  AccordionHeader
 } from '@digdir/designsystemet-react';
 
-import { Meta, Image } from '@components';
+import { Image } from '@components';
 import { Contributors } from '@blog';
 import { MenuPageLayout } from '@layouts';
 
@@ -151,7 +155,7 @@ Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret,
 <Card
   color='first'
 >
-  <Card.Content
+  <CardContent
   style={{
     paddingTop: '0px',
     paddingBottom: '0px'
@@ -159,7 +163,7 @@ Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret,
   >
   Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plassering, og har [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 
-  </Card.Content>
+  </CardContent>
 </Card>
 
 ### Når skal vi vise en feilmelding?
@@ -184,44 +188,40 @@ Her må vi gjøre det så tydelig som mulig for brukeren at flere felt påvirker
 
 I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
-<Accordion
+{/* <AccordionRoot
   color='neutral'
 >
-  <Accordion.Item>
-    <Accordion.Header level={3}>Eksempel på feilmelding som gjelder flere felt</Accordion.Header>
-    <Accordion.Content
-    style={{
-    paddingTop: '0px',
-    paddingBottom: '0px',
-    maxWidth: '780px'
-  }}>
+  <AccordionItem>
+    <AccordionHeader level={3}>Eksempel på feilmelding som gjelder flere felt</AccordionHeader>
+    <AccordionContent
+        style={{
+        paddingTop: '0px',
+        paddingBottom: '0px',
+        maxWidth: '780px'
+    }}>
+      Videoen under viser at brukeren forsøker å gå videre uten å ha fyllt ut minst ett felt, som er påkrevd. Alle feltene i gruppen blir da røde og en feilmelding vises i bunnen.
+      <video
+        controls
+        autoplay
+        width='100%'
+        loop
+      >
+        <source
+          src='/img/error-message-group-error.mp4'
+          type='video/mp4'
+        />
+      </video>
 
-Videoen under viser at brukeren forsøker å gå videre uten å ha fyllt ut minst ett felt, som er påkrevd. Alle feltene i gruppen blir da røde og en feilmelding vises i bunnen.
+      Hadde det vært bare en feil i gruppen, ville feilmeldingen vist på vanlig måte under kun et av feltene, uten at hele gruppen ble rød.
 
-<video
-  controls
-  autoplay
-  width='100%'
-  loop
->
-  <source
-    src='/img/error-message-group-error.mp4'
-    type='video/mp4'
-  />
-</video>
-
-Hadde det vært bare en feil i gruppen, ville feilmeldingen vist på vanlig måte under kun et av feltene, uten at hele gruppen ble rød.
-
-<Image
-  src='/img/errormessage-co-22b.png'
-  alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, men har en feil i utfyllingen. Feilmeldingen vises da på vanlig måte under det aktuelle feltet. '
-  boxShadow={false}
-/>
-
-</Accordion.Content>
-
-  </Accordion.Item>
-</Accordion>
+      <Image
+        src='/img/errormessage-co-22b.png'
+        alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, men har en feil i utfyllingen. Feilmeldingen vises da på vanlig måte under det aktuelle feltet. '
+        boxShadow={false}
+      />
+    </AccordionContent>
+  </AccordionItem>
+</AccordionRoot> */}
 
 ## Kode
 
@@ -252,7 +252,7 @@ Vi kan bruke disse aria-attributtene og rollene:
 <Card
   color='first'
 >
-  <Card.Content
+  <CardContent
   style={{
     paddingTop: '0px',
     paddingBottom: '0px'
@@ -260,7 +260,7 @@ Vi kan bruke disse aria-attributtene og rollene:
   >
   Vi unngår inntill videre å bruke `aria-errormessage` da den ikke har full støtte av hjelpemidler per nå. Men vi kommer til å oppdatere retningslinjene om støtten blir bedre i fremtiden. [Se diskusjon på github](https://github.com/digdir/designsystemet/discussions/1684)
 
-  </Card.Content>
+  </CardContent>
 </Card>
 
 ### Gi automatiske beskjeder
@@ -288,7 +288,7 @@ For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldin
 <Card
   color='third'
 >
-  <Card.Content
+  <CardContent
   style={{
     paddingTop: '0px',
     paddingBottom: '0px'
@@ -296,7 +296,7 @@ For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldin
   >
     Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
 
-  </Card.Content>
+  </CardContent>
 </Card>
 <Contributors
   authors={[
@@ -314,4 +314,4 @@ For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldin
 <br />
 <br />
 <br />
----
+
