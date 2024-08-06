@@ -6,7 +6,7 @@ import { Label } from '../../Typography';
 
 import { ComboboxContext } from './ComboboxContext';
 
-type ComboboxEmptyProps = React.HTMLAttributes<HTMLDivElement>;
+export type ComboboxEmptyProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   ({ children, className, ...rest }, ref) => {
