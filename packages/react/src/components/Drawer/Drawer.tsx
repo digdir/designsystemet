@@ -1,8 +1,10 @@
 import React, { type HTMLAttributes } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { XMarkIcon } from '@navikt/aksel-icons';
-import styles from './Drawer.module.css';
+
 import { Button } from '../Button';
+
+import styles from './Drawer.module.css';
 
 export type DrawerProps = {
   position?: 'top' | 'bottom' | 'left' | 'right';

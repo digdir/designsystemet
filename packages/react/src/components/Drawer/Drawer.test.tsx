@@ -1,10 +1,10 @@
 import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Drawer, DrawerProps } from './Drawer';
+
+import { Drawer, type DrawerProps } from './Drawer';
 
 const TRIGGER_TEXT = 'Open Drawer';
 const DRAWER_CONTENT = 'Drawer Content';
-const DRAWER_TITLE = 'Drawer Title';
 
 const TestComponent = (props: Partial<DrawerProps>) => (
   <Drawer
