@@ -61,29 +61,29 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
 };
 
 export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
-  const [value, setValue] = useState<string>('peanut');
+  const [value, setValue] = useState<string>('utkast');
   return (
     <>
       <div style={{ display: 'flex', gap: '4px' }}>
-        <Button size='sm' onClick={() => setValue('Arkiv')}>
+        <Button size='sm' onClick={() => setValue('arkiv')}>
           Velg Arkiv
         </Button>
       </div>
       <br />
       <ToggleGroup.Root value={value} size='md' onChange={setValue}>
-        <ToggleGroup.Item value='Innboks'>
+        <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon fontSize='1.5rem' />
           Innboks
         </ToggleGroup.Item>
-        <ToggleGroup.Item value='Utkast'>
+        <ToggleGroup.Item value='utkast'>
           <DocPencilIcon fontSize='1.5rem' />
           Utkast
         </ToggleGroup.Item>
-        <ToggleGroup.Item value='Arkiv'>
+        <ToggleGroup.Item value='arkiv'>
           <ArchiveIcon fontSize='1.5rem' />
           Arkiv
         </ToggleGroup.Item>
-        <ToggleGroup.Item value='Sendt'>
+        <ToggleGroup.Item value='sendt'>
           <PaperplaneIcon fontSize='1.5rem' />
           Sendt
         </ToggleGroup.Item>
