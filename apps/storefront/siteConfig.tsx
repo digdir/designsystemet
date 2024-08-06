@@ -152,7 +152,6 @@ export const SiteConfig = {
       children: [
         {
           name: 'Ferdig',
-          name: 'Ferdig',
           url: 'monstre/brukeroppgaver',
           children: [
             {
