@@ -152,8 +152,31 @@ export const SiteConfig = {
       children: [
         {
           name: 'Ferdig',
+          name: 'Ferdig',
           url: 'monstre/brukeroppgaver',
           children: [
+            {
+              name: 'Obligatoriske felt *',
+              url: 'monstre/obligatoriske-og-valgfrie-felt',
+            },
+            {
+              name: 'Feilmeldinger *',
+              url: 'monstre/feilmeldinger',
+            },
+          ],
+        },
+        {
+          name: 'Kommende',
+          url: 'monstre/skjema',
+          children: [
+            {
+              name: 'Systemvarsler *',
+              url: 'monstre/systemvarsler',
+            },
+            {
+              name: 'Dato',
+              url: 'monstre/dato',
+            },
             {
               name: 'Obligatoriske felt *',
               url: 'monstre/obligatoriske-og-valgfrie-felt',
