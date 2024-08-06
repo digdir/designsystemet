@@ -1,4 +1,4 @@
-import { Children, useCallback, useMemo, useState } from 'react';
+import { Children, useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import type { ComboboxProps } from './Combobox';
@@ -78,6 +78,7 @@ export function useCombobox({
     }, [children]);
 
   const options = useMemo(() => {
+    const values: string[] = [];
     const allOptions: {
       [key: string]: Option;
     } = {};
@@ -101,6 +102,14 @@ export function useCombobox({
 
         label = childrenLabel;
       }
+
+      if (values.includes(props.value)) {
+        console.warn(
+          `Combobox has multiple options with the same value: ${props.value}`,
+        );
+      }
+
+      values.push(props.value);
 
       allOptions[prefix(String(props.value))] = {
         value: String(props.value),
