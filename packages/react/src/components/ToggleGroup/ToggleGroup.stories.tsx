@@ -1,11 +1,11 @@
 import {
-  EnvelopeClosedIcon,
-  AlignRightIcon,
-  DocPencilIcon,
-  PaperplaneIcon,
-  ArchiveIcon,
-  AlignLeftIcon,
   AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  ArchiveIcon,
+  DocPencilIcon,
+  EnvelopeClosedIcon,
+  PaperplaneIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
