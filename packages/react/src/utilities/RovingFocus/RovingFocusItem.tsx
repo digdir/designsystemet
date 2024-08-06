@@ -52,12 +52,24 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
         const items = getOrderedItems();
         let nextItem: RovingFocusElement | undefined;
 
-        if (e.key === 'ArrowRight') {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
           nextItem = getNextFocusableValue(items, focusValue);
+          e.preventDefault();
         }
 
-        if (e.key === 'ArrowLeft') {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
           nextItem = getPrevFocusableValue(items, focusValue);
+          e.preventDefault();
+        }
+
+        if (e.key === 'Home') {
+          nextItem = items[0];
+          e.preventDefault();
+        }
+
+        if (e.key === 'End') {
+          nextItem = items[items.length - 1];
+          e.preventDefault();
         }
 
         nextItem?.element.focus();
