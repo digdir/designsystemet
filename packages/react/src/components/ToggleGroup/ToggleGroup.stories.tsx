@@ -14,6 +14,7 @@ import { Button } from '../Button';
 import { Paragraph } from '../Typography';
 
 import { ToggleGroup } from '.';
+import { Tooltip } from '../Tooltip';
 
 export default {
   title: 'Komponenter/ToggleGroup',
@@ -40,15 +41,21 @@ Preview.args = {
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup.Root defaultValue={'option-1'}>
-      <ToggleGroup.Item value='option-1' icon={true}>
-        <AlignLeftIcon title='AlignLeftIcon' fontSize='1.5rem' />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value='option-2' icon={true}>
-        <AlignCenterIcon title='AlignCenterIcon' fontSize='1.5rem' />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value='option-3' icon={true}>
-        <AlignRightIcon title='AlignRightIcon' fontSize='1.5rem' />
-      </ToggleGroup.Item>
+      <Tooltip content='Venstrestilt'>
+        <ToggleGroup.Item value='option-1' icon={true}>
+          <AlignLeftIcon title='AlignLeftIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Midtstilt'>
+        <ToggleGroup.Item value='option-2' icon={true}>
+          <AlignCenterIcon title='AlignCenterIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Høyrestilt'>
+        <ToggleGroup.Item value='option-3' icon={true}>
+          <AlignRightIcon title='AlignRightIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
     </ToggleGroup.Root>
   );
 };
