@@ -1,7 +1,7 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { LiHTMLAttributes } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 export type ListItemProps = {
   /**
@@ -17,7 +17,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
 
     return (
       <Component
-        className={cl('fds-list__item', className)}
+        className={cl('ds-list__item', className)}
         {...rest}
         ref={ref}
       />

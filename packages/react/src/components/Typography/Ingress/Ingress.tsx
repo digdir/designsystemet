@@ -1,18 +1,13 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
-
-import { getSize } from '../../../utilities/getSize';
-
-type OldIngressSizes = 'large' | 'medium' | 'small' | 'xsmall';
 
 export type IngressProps = {
   /** Changes text sizing
    * @default md
-   * @note `xsmall`, `small`, `medium`, `large` is deprecated
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | OldIngressSizes;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
@@ -22,19 +17,23 @@ export type IngressProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-/** Use `Ingress` to display text as ingress. */
+/**
+ * Use `Ingress` to display text as ingress.
+ *
+ * @example
+ * <Ingress size='lg'>Ingress</Ingress>
+ */
 export const Ingress = forwardRef<HTMLParagraphElement, IngressProps>(
-  ({ className, spacing, asChild, ...rest }, ref) => {
+  ({ size = 'md', className, spacing, asChild, ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
-    const size = getSize(rest.size || 'md');
 
     return (
       <Component
         ref={ref}
         className={cl(
-          `fds-ingress`,
-          `fds-ingress--${size}`,
-          spacing && 'fds-ingress--spacing',
+          `ds-ingress`,
+          `ds-ingress--${size}`,
+          spacing && 'ds-ingress--spacing',
           className,
         )}
         {...rest}

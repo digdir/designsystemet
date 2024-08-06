@@ -3,7 +3,7 @@ import type * as React from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuGroupProps = {
   /**
@@ -20,26 +20,17 @@ export const DropdownMenuGroup = forwardRef<
   const headingId = useId();
 
   return (
-    <li
-      className={className}
-      style={style}
-    >
+    <li className={className} style={style}>
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
         role='group'
-        className={'fds-dropdownmenu__section'}
+        className={'ds-dropdownmenu__section'}
         {...rest}
       >
         {heading && (
-          <Paragraph
-            asChild
-            size={size}
-          >
-            <h2
-              id={headingId}
-              className={'fds-dropdownmenu__heading'}
-            >
+          <Paragraph asChild size={size}>
+            <h2 id={headingId} className={'ds-dropdownmenu__heading'}>
               {heading}
             </h2>
           </Paragraph>

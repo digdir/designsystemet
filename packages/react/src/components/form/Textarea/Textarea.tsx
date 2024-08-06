@@ -1,13 +1,13 @@
-import type { ReactNode, TextareaHTMLAttributes } from 'react';
-import { useState, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { ReactNode, TextareaHTMLAttributes } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import type { FormFieldProps } from '../useFormField';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
+import type { FormFieldProps } from '../useFormField';
 
 import { useTextarea } from './useTextarea';
 
@@ -68,16 +68,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       ) || undefined;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
-            'fds-textarea',
-            `fds-textarea--${size}`,
-            hasError && `fds-textarea--error`,
+            'ds-textarea',
+            `ds-textarea--${size}`,
+            hasError && `ds-textarea--error`,
             className,
           )}
         >
@@ -86,27 +83,24 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               size={size}
               weight='medium'
               htmlFor={textareaProps.id}
-              className={cl('fds-textarea__label', hideLabel && `fds-sr-only`)}
+              className={cl('ds-textarea__label', hideLabel && `ds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className='fds-textarea__readonly-icon'
+                  className='ds-textarea__readonly-icon'
                 />
               )}
               <span>{label}</span>
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(
-                  'fds-textarea__description',
-                  hideLabel && `fds-sr-only`,
+                  'ds-textarea__description',
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
@@ -114,7 +108,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Paragraph>
           )}
           <textarea
-            className={cl('fds-textarea__input', `fds-focus`)}
+            className={cl('ds-textarea__input', `ds-focus`)}
             ref={ref}
             aria-describedby={describedBy}
             disabled={textareaProps.disabled}
@@ -135,7 +129,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             />
           )}
           <div
-            className='fds-textarea__error-message'
+            className='ds-textarea__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

@@ -1,6 +1,6 @@
-import type * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type * as React from 'react';
 
 import { ToggleGroup } from '.';
 
@@ -9,9 +9,9 @@ const user = userEvent.setup();
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup.Root>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const item = screen.getByRole('radio');
@@ -20,9 +20,9 @@ describe('ToggleGroup', () => {
 
   test('has passed name to ToggleGroupItem children', (): void => {
     render(
-      <ToggleGroup name='my name'>
+      <ToggleGroup.Root name='my name'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio');
@@ -31,11 +31,11 @@ describe('ToggleGroup', () => {
 
   test('can navigate with tab and arrow keys', async () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup.Root>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const item1 = screen.getByRole<HTMLButtonElement>('radio', {
@@ -58,11 +58,11 @@ describe('ToggleGroup', () => {
   });
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
     render(
-      <ToggleGroup defaultValue='test2'>
+      <ToggleGroup.Root defaultValue='test2'>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio', {
@@ -70,14 +70,14 @@ describe('ToggleGroup', () => {
     });
     expect(item).toHaveAttribute('aria-checked', 'true');
   });
-  test('has passed clicked ToggleGroupItem element to onChange', async () => {
-    let onChangeValue = '';
+  test('has passed clicked ToggleGroupItem value to onChange', async () => {
+    const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup onChange={(value) => (onChangeValue = value)}>
+      <ToggleGroup.Root onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
-        <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
-      </ToggleGroup>,
+        <ToggleGroup.Item value='test2value'>test2</ToggleGroup.Item>
+      </ToggleGroup.Root>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio', {
@@ -88,20 +88,17 @@ describe('ToggleGroup', () => {
 
     await user.click(item);
 
-    expect(onChangeValue).toEqual('test2');
+    expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveAttribute('aria-checked', 'true');
   });
-  test('has passed clicked ToggleGroupItem element to onChange when defaultValue is used', async () => {
-    let onChangeValue = '';
+  test('has correct aria-checked on correct ToggleGroupItem when clicked', async () => {
+    const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup
-        defaultValue='test1'
-        onChange={(value) => (onChangeValue = value)}
-      >
+      <ToggleGroup.Root defaultValue='test1' onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const item1 = screen.getByRole<HTMLButtonElement>('radio', {
@@ -116,16 +113,16 @@ describe('ToggleGroup', () => {
 
     await user.click(item2);
 
-    expect(onChangeValue).toEqual('test2');
+    expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveAttribute('aria-checked', 'true');
   });
 
   test('if we pass a name, we should have a hidden input with that name', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup name={name}>
+      <ToggleGroup.Root name={name}>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const input = container.querySelector(`input[name="${name}"]`);
@@ -135,12 +132,9 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name and value', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup
-        name='my-name'
-        defaultValue='test'
-      >
+      <ToggleGroup.Root name='my-name' defaultValue='test'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const input = container.querySelector(`input[name="${name}"]`);
@@ -156,13 +150,10 @@ describe('ToggleGroup', () => {
 
       render(
         <form onSubmit={handleSubmit}>
-          <ToggleGroup
-            name='test'
-            defaultValue='test2'
-          >
+          <ToggleGroup.Root name='test' defaultValue='test2'>
             <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
             <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
-          </ToggleGroup>
+          </ToggleGroup.Root>
           <button type='submit'>Submit</button>
         </form>,
       );
@@ -177,9 +168,9 @@ describe('ToggleGroup', () => {
 
   test('if we dont pass a name, we should not have a hidden input', () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup.Root>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup>,
+      </ToggleGroup.Root>,
     );
 
     const input = document.querySelector('input[type="hidden"]');

@@ -1,9 +1,11 @@
-import type * as React from 'react';
-import NextLink from 'next/link';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
+import { Container } from '@repo/components';
+import cl from 'clsx/lite';
+import NextLink from 'next/link';
+import type * as React from 'react';
 
-import { Container, MdxContent } from '../../components';
+import { MdxContent } from '../../components';
 
 import classes from './PageLayout.module.css';
 
@@ -26,31 +28,18 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
       <div className={classes.header}>
         <Container>
           <div className={classes.headerContent}>
-            <Link
-              asChild
-              className={classes.backBtn}
-            >
-              <NextLink
-                href={'/' + data.backUrl}
-                prefetch={false}
-              >
-                <ArrowLeftIcon
-                  title='Tilbake'
-                  fontSize={28}
-                />
+            <Link asChild className={classes.backBtn} color='neutral'>
+              <NextLink href={'/' + data.backUrl} prefetch={false}>
+                <ArrowLeftIcon title='Tilbake' fontSize={28} />
                 {data.backText}
               </NextLink>
             </Link>
-            <div className={classes.meta}>
+            <div className={cl(classes.meta, 'ds-paragraph-short--lg')}>
               <span>{data.author && <div>{data.author}</div>}</span>
               <span className={classes.separator}> - </span>
               <span>{data.date && <div>{data.date}</div>}</span>
             </div>
-            <Heading
-              level={1}
-              size='large'
-              className={classes.title}
-            >
+            <Heading level={1} size='lg' className={classes.title}>
               {data.title}
             </Heading>
           </div>

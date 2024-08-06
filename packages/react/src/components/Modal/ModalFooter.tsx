@@ -1,7 +1,7 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 export type ModalFooterProps = {
   /**
@@ -18,7 +18,7 @@ export const ModalFooter = forwardRef<HTMLElement, ModalFooterProps>(
     return (
       <Component
         ref={ref}
-        className={cl('fds-modal__footer', className)}
+        className={cl('ds-modal__footer', className)}
         {...rest}
       />
     );

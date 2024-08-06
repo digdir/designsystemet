@@ -4,10 +4,10 @@
   width: 100%;
   max-width: var(--media-max-width);
   padding-top: 56.25%;
-  box-shadow: var(--fds-shadow-medium);
+  box-shadow: var(--ds-shadow-md);
   border-radius: 4px;
-  margin-top: var(--fds-spacing-10);
-  margin-bottom: var(--fds-spacing-10);
+  margin-top: var(--ds-spacing-10);
+  margin-bottom: var(--ds-spacing-10);
 }
 
 .aspectFourThree {

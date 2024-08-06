@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef, useContext, type HTMLAttributes } from 'react';
 import cl from 'clsx/lite';
+import { type HTMLAttributes, forwardRef, useContext } from 'react';
 
 import { PaginationContext } from './PaginationRoot';
 
@@ -12,7 +12,7 @@ export type PaginationItemProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLLIElement>, 'size'>;
 
-export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
+const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'li';
 
@@ -22,9 +22,9 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
       <Component
         ref={ref}
         className={cl(
-          'fds-pagination__item',
-          `fds-pagination--${size}`,
-          compact && 'fds-pagination--compact',
+          'ds-pagination__item',
+          `ds-pagination--${size}`,
+          compact && 'ds-pagination--compact',
           className,
         )}
         {...rest}
@@ -33,4 +33,6 @@ export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   },
 );
 
-export default PaginationItem;
+PaginationItem.displayName = 'PaginationItem';
+
+export { PaginationItem };

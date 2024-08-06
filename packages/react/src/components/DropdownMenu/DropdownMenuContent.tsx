@@ -1,24 +1,24 @@
-import { forwardRef, useContext, useRef } from 'react';
-import * as React from 'react';
 import {
-  useFloating,
+  FloatingFocusManager,
+  FloatingPortal,
   autoUpdate,
   offset,
+  shift,
   useClick,
   useDismiss,
+  useFloating,
   useFocus,
   useInteractions,
   useMergeRefs,
   useRole,
-  shift,
-  FloatingFocusManager,
-  FloatingPortal,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext, useRef } from 'react';
+import * as React from 'react';
 
-import { useIsomorphicLayoutEffect } from '../../hooks';
+import { useIsomorphicLayoutEffect } from '../../utilities';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 const GAP = 4;
 
@@ -54,7 +54,7 @@ export const DropdownMenuContent = forwardRef<
     placement,
     open: internalOpen,
     onOpenChange: (localOpen) => {
-      if (!localOpen) onClose && onClose();
+      if (!localOpen) onClose?.();
       if (!isControlled) setInternalOpen(localOpen);
     },
     elements: {
@@ -89,11 +89,7 @@ export const DropdownMenuContent = forwardRef<
   return (
     <>
       {internalOpen && (
-        <FloatingFocusManager
-          context={context}
-          guards={false}
-          modal={false}
-        >
+        <FloatingFocusManager context={context} guards={false} modal={false}>
           <Container>
             <ul
               role='menu'
@@ -106,8 +102,8 @@ export const DropdownMenuContent = forwardRef<
                 tabIndex: undefined,
               })}
               className={cl(
-                'fds-dropdownmenu',
-                `fds-dropdownmenu--${size}`,
+                'ds-dropdownmenu',
+                `ds-dropdownmenu--${size}`,
                 className,
               )}
               {...rest}

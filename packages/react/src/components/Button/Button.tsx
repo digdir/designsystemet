@@ -1,24 +1,29 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
-import { getSize } from '../../utilities/getSize';
-
-type OldButtonSizes = 'small' | 'medium' | 'large';
+import { Paragraph } from '../Typography';
 
 export type ButtonProps = {
-  /** Specify which variant to use */
+  /**
+   * Specify which variant to use
+   * @default primary
+   */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which color palette to use */
-  color?: 'first' | 'second' | 'success' | 'danger';
+  /** Specify which color palette to use
+   * @default accent
+   */
+  color?: 'accent' | 'neutral' | 'danger';
   /**
    * Size
-   * @default `md`
-   * @note `small`, `medium`, `large` is deprecated
+   * @default md
    */
-  size?: 'sm' | 'md' | 'lg' | OldButtonSizes;
-  /** If `Button` should fill full width of its container */
+  size?: 'sm' | 'md' | 'lg';
+  /**
+   * If `Button` should fill full width of its container
+   * @default false
+   */
   fullWidth?: boolean;
   /** Toggle icon only styling, pass icon as children
    * @default false
@@ -33,43 +38,47 @@ export type ButtonProps = {
 
 /**
  * Button used for interaction
+ * @example
+ * <Button>Click me</Button>
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      color = 'first',
       variant = 'primary',
+      color = 'accent',
       fullWidth = false,
       icon = false,
       type = 'button',
-      className,
+      size = 'md',
       asChild,
+      className,
       ...rest
     },
     ref,
   ) => {
-    const size = getSize(rest.size || 'md');
     const Component = asChild ? Slot : 'button';
 
     return (
-      <Component
-        ref={ref}
-        type={type}
-        className={cl(
-          'fds-btn',
-          `fds-focus`,
-          `fds-btn--${size}`,
-          `fds-btn--${variant}`,
-          `fds-btn--${color}`,
-          fullWidth && 'fds-btn--full-width',
-          icon && 'fds-btn--icon-only',
-          className,
-        )}
-        {...rest}
-      >
-        {children}
-      </Component>
+      <Paragraph variant='short' size={size} asChild>
+        <Component
+          ref={ref}
+          type={type}
+          className={cl(
+            'ds-btn',
+            `ds-focus`,
+            `ds-btn--${size}`,
+            `ds-btn--${variant}`,
+            `ds-btn--${color}`,
+            fullWidth && 'ds-btn--full-width',
+            icon && 'ds-btn--icon-only',
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </Component>
+      </Paragraph>
     );
   },
 );

@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef, useContext, type HTMLAttributes } from 'react';
 import cl from 'clsx/lite';
+import { type HTMLAttributes, forwardRef, useContext } from 'react';
 
 import { PaginationContext } from './PaginationRoot';
 
@@ -23,8 +23,10 @@ export const PaginationContent = forwardRef<
   return (
     <Component
       ref={ref}
-      className={cl('fds-pagination', `fds-pagination--${size}`, className)}
+      className={cl('ds-pagination', `ds-pagination--${size}`, className)}
       {...rest}
     />
   );
 });
+
+PaginationContent.displayName = 'PaginationContent';

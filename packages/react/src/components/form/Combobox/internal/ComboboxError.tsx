@@ -1,6 +1,6 @@
 import { ErrorMessage } from '../../../Typography';
-import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../../useFormField';
+import type { ComboboxProps } from '../Combobox';
 
 type ComboboxErrorProps = {
   size: ComboboxProps['size'];
@@ -8,14 +8,10 @@ type ComboboxErrorProps = {
   formFieldProps: ReturnType<typeof useFormField>;
 };
 
-export const ComboboxError = ({
-  size,
-  error,
-  formFieldProps,
-}: ComboboxErrorProps) => {
+const ComboboxError = ({ size, error, formFieldProps }: ComboboxErrorProps) => {
   return (
     <div
-      className={'fds-combobox__error-message'}
+      className={'ds-combobox__error-message'}
       id={formFieldProps.errorId}
       aria-live='polite'
       aria-relevant='additions removals'

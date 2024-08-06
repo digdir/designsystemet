@@ -1,17 +1,15 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import { useState, useId, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useId, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
-import type { FormFieldProps } from '../useFormField';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
+import type { FormFieldProps } from '../useFormField';
 
 import { useTextfield } from './useTextfield';
-
-type OldTextfieldSizes = 'small' | 'medium' | 'large';
 
 export type TextfieldProps = {
   /** Label */
@@ -21,28 +19,27 @@ export type TextfieldProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldTextfieldSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
   suffix?: string;
   /** Supported `input` types */
   type?:
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week';
   /**
    *  The characterLimit function calculates remaining characters based on `maxCount`
    *
@@ -92,7 +89,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       readOnly,
     } = useTextfield(props);
 
-    const [inputValue, setInputValue] = useState(props.value || props.defaultValue);
+    const [inputValue, setInputValue] = useState(
+      props.value || props.defaultValue,
+    );
     const characterLimitId = `textfield-charactercount-${useId()}`;
     const hasCharacterLimit = characterLimit != null;
 
@@ -103,17 +102,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       ) || undefined;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
-            `fds-textfield`,
-            `fds-textfield--${size}`,
-            readOnly && `fds-textfield--readonly`,
-            hasError && `fds-textfield--error`,
+            `ds-textfield`,
+            `ds-textfield--${size}`,
+            readOnly && `ds-textfield--readonly`,
+            hasError && `ds-textfield--error`,
             className,
           )}
         >
@@ -122,44 +118,37 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl(`fds-textfield__label`, hideLabel && `fds-sr-only`)}
+              className={cl(`ds-textfield__label`, hideLabel && `ds-sr-only`)}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className='fds-textfield__readonly__icon'
+                  className='ds-textfield__readonly__icon'
                 />
               )}
               <span>{label}</span>
             </Label>
           )}
           {description && (
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 id={descriptionId}
                 className={cl(
-                  `fds-textfield__description`,
-                  hideLabel && `fds-sr-only`,
+                  `ds-textfield__description`,
+                  hideLabel && `ds-sr-only`,
                 )}
               >
                 {description}
               </div>
             </Paragraph>
           )}
-          <div className='fds-textfield__field'>
+          <div className='ds-textfield__field'>
             {prefix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
-                    `fds-textfield__adornment`,
-                    `fds-textfield__prefix`,
+                    `ds-textfield__adornment`,
+                    `ds-textfield__prefix`,
                   )}
                   aria-hidden='true'
                 >
@@ -169,10 +158,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             )}
             <input
               className={cl(
-                `fds-textfield__input`,
-                `fds-focus`,
-                prefix && `fds-textfield__input--with-prefix`,
-                suffix && `fds-textfield__input--with-suffix`,
+                `ds-textfield__input`,
+                `ds-focus`,
+                prefix && `ds-textfield__input--with-prefix`,
+                suffix && `ds-textfield__input--with-suffix`,
               )}
               ref={ref}
               type={type}
@@ -187,15 +176,11 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               }}
             />
             {suffix && (
-              <Paragraph
-                asChild
-                size={size}
-                variant='short'
-              >
+              <Paragraph asChild size={size} variant='short'>
                 <div
                   className={cl(
-                    `fds-textfield__adornment`,
-                    `fds-textfield__suffix`,
+                    `ds-textfield__adornment`,
+                    `ds-textfield__suffix`,
                   )}
                   aria-hidden='true'
                 >
@@ -213,7 +198,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             />
           )}
           <div
-            className='fds-textfield__error-message'
+            className='ds-textfield__error-message'
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'

@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.column {
+  width: calc(50% - 12px);
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+}
+
+.boxes {
+  display: flex;
+  gap: 24px;
+  padding: 18px 20px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.box {
+  display: flex;
+  flex-basis: 5;
+  flex-wrap: wrap;
+  width: 33.33%;
+}
+
+.boxTitle {
+  margin-bottom: 12px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+}
+
+.box .item:nth-child(2) {
+  border-radius: 4px 4px 0 0;
+}
+
+.box .item:nth-child(4) {
+  border-radius: 0 0 4px 4px;
+}
+
+.colorRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+}
+
+.colorItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

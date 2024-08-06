@@ -1,6 +1,6 @@
+import { render as renderRtl, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import type { ComponentProps, RefObject } from 'react';
-import { render as renderRtl, screen } from '@testing-library/react';
 
 import { Link } from './Link';
 import type { LinkProps } from './Link';
@@ -23,14 +23,8 @@ describe('Link', () => {
     const className = 'foo';
     render({ className });
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('fds-link');
+    expect(link).toHaveClass('ds-link');
     expect(link).toHaveClass(className);
-  });
-
-  it('Is inverted when the `inverted` property is `true`', () => {
-    render({ inverted: true });
-    const link = screen.getByRole('link');
-    expect(link).toHaveClass('fds-link--inverted');
   });
 
   it('Sets the ref on the anchor element if given', () => {
@@ -46,10 +40,7 @@ const render = (
 ) => {
   const allProps = { ...defaultProps, ...props };
   return renderRtl(
-    <Link
-      {...allProps}
-      ref={ref}
-    >
+    <Link {...allProps} ref={ref}>
       {allProps.children}
     </Link>,
   );

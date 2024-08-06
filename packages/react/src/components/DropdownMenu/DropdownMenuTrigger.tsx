@@ -1,11 +1,11 @@
-import { forwardRef, useContext } from 'react';
-import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
+import { forwardRef, useContext } from 'react';
+import type * as React from 'react';
 
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenu';
+import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuTriggerProps = React.ComponentPropsWithRef<
   typeof Button

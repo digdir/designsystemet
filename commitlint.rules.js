@@ -1,5 +1,3 @@
-module.exports = {
-  rules: {
-    'subject-case': [0],
-  },
+export const rules = {
+  'subject-case': [0],
 };

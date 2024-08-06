@@ -1,7 +1,4 @@
-import type { HTMLAttributes } from 'react';
-import { useEffect, useState } from 'react';
-import cl from 'clsx';
-import type { TransformedToken as Token } from 'style-dictionary';
+'use client';
 import {
   DropdownMenu,
   Heading,
@@ -9,11 +6,17 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
+import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { ClipboardButton } from '@repo/components';
+import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { useEffect, useState } from 'react';
+import type { TransformedToken as Token } from 'style-dictionary';
 
+import * as tokensDark from '../../../tokens/dark';
+import * as tokensLight from '../../../tokens/light';
 import { capitalizeString } from '../../../utils/StringHelpers';
-import { ClipboardBtn } from '../../ClipboardBtn/ClipboardBtn';
-import * as tokens from '../../../tokens';
-import { TokenColor } from '../TokenColor/TokenColor';
+import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
@@ -24,11 +27,12 @@ type TokenListProps = {
   type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
   token?: string;
   showThemePicker?: boolean;
+  showModeSwitcher: boolean;
   hideValue?: boolean;
 };
 
 type CardColumnType = 2 | 3;
-type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'brreg';
+type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'portal';
 
 type TokenTableProps = {
   tokens: [string, Token[]][];
@@ -53,7 +57,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
             return (
               <Table.Row key={token.name}>
                 <Table.Cell>
-                  <ClipboardBtn
+                  <ClipboardButton
                     title='Kopier CSS variabel'
                     text={token.name}
                     value={token.name}
@@ -84,11 +88,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <Heading
-          size='xsmall'
-          level={4}
-          className={classes.title}
-        >
+        <Heading size='xs' level={4} className={classes.title}>
           {capitalizeString(group)}
         </Heading>
         <div className={cl(classes.group)}>
@@ -103,7 +103,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
                 key={token.name}
                 hideValue={hideValue}
                 type={type}
-              ></TokenCard>
+              />
             ))}
           </div>
         </div>
@@ -124,26 +124,21 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
+  const weight = getColorWeight(token.original.value as string);
+
   return (
-    <div
-      className={classes.card}
-      {...rest}
-    >
+    <div className={classes.card} {...rest}>
       <div className={classes.preview}>
-        {type === 'color' && <TokenColor value={val} />}
+        {type === 'color' && <TokenColor value={val} token={token} />}
         {type === 'typography' && <TokenFontSize value={val} />}
         {type === 'boxShadow' && <TokenShadow value={val} />}
       </div>
 
       <div className={classes.textContainer}>
-        <Heading
-          level={5}
-          size='xxsmall'
-          className={classes.name}
-        >
-          {capitalizeString(title)}
+        <Heading level={5} size='2xs' className={classes.name}>
+          {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
           &nbsp;
-          <ClipboardBtn
+          <ClipboardButton
             title='Kopier CSS variabel'
             text='CSS'
             value={token.name}
@@ -170,11 +165,15 @@ const mapTokens = (tokens: Token[]): [string, Token[]][] =>
 
 const TokenList = ({
   showThemePicker,
+  showModeSwitcher,
   type = 'color',
   hideValue = false,
 }: TokenListProps) => {
   const [brand, setBrand] = useState<BrandType>('digdir');
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
   const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
+
+  const tokens = mode === 'light' ? tokensLight : tokensDark;
 
   useEffect(() => {
     setCardColumns(type === 'color' ? 3 : 2);
@@ -207,29 +206,46 @@ const TokenList = ({
             className={classes.npmShield}
           />
         </Link>
-        <Paragraph size='small'>@digdir/designsystemet-theme</Paragraph>
+        <Paragraph size='sm'>@digdir/designsystemet-theme</Paragraph>
       </div>
-      {showThemePicker && (
+      {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
-          <DropdownMenu>
-            <DropdownMenu.Trigger variant='secondary'>
-              Brand: {capitalizeString(brand)}
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-              <DropdownMenu.Item onClick={() => setBrand('digdir')}>
-                Digdir
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('altinn')}>
-                Altinn
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
-                Tilsynet
-              </DropdownMenu.Item>
-              <DropdownMenu.Item onClick={() => setBrand('brreg')}>
-                Brreg
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
+          {showThemePicker && (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger variant='secondary'>
+                Brand: {capitalizeString(brand)}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Item onClick={() => setBrand('digdir')}>
+                  Digdir
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('altinn')}>
+                  Altinn
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
+                  Tilsynet
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setBrand('portal')}>
+                  Brreg
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          )}
+          {showModeSwitcher && (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger variant='secondary'>
+                Mode: {capitalizeString(mode)}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Item onClick={() => setMode('light')}>
+                  Light
+                </DropdownMenu.Item>
+                <DropdownMenu.Item onClick={() => setMode('dark')}>
+                  Dark
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          )}
         </div>
       )}
       <>
@@ -250,10 +266,7 @@ const TokenList = ({
             );
           };
           return (
-            <div
-              key={section as string}
-              className={classes.section}
-            >
+            <div key={section as string} className={classes.section}>
               <h3>{capitalizeString(section as string)}</h3>
               <List />
             </div>

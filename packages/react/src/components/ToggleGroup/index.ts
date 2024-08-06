@@ -1,17 +1,31 @@
-import { ToggleGroup as ToggleGroupRoot } from './ToggleGroup';
 import { ToggleGroupItem } from './ToggleGroupItem/ToggleGroupItem';
+import { ToggleGroupRoot } from './ToggleGroupRoot';
 
-export type { ToggleGroupProps } from './ToggleGroup';
+export type { ToggleGroupProps } from './ToggleGroupRoot';
 export type { ToggleGroupItemProps } from './ToggleGroupItem/ToggleGroupItem';
 
-type ToggleGroupComponent = typeof ToggleGroupRoot & {
+type ToggleGroupComponent = {
+  Root: typeof ToggleGroupRoot;
   Item: typeof ToggleGroupItem;
 };
 
-const ToggleGroup = ToggleGroupRoot as ToggleGroupComponent;
+/**
+ * Display a group of buttons that can be toggled between.
+ * @example
+ * ```tsx
+ * <ToggleGroup.Root onChange={(value) => console.log(value)}>
+ *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
+ *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
+ *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
+ * </ToggleGroup.Root>
+ * ```
+ */
+const ToggleGroup = {} as ToggleGroupComponent;
 
+ToggleGroup.Root = ToggleGroupRoot;
 ToggleGroup.Item = ToggleGroupItem;
 
+ToggleGroup.Root.displayName = 'ToggleGroup.Root';
 ToggleGroup.Item.displayName = 'ToggleGroup.Item';
 
-export { ToggleGroup, ToggleGroupItem };
+export { ToggleGroup, ToggleGroupRoot, ToggleGroupItem };

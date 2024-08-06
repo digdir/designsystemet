@@ -1,17 +1,15 @@
-import type { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
-import { forwardRef, useCallback, useRef, useState } from 'react';
-import cl from 'clsx/lite';
-import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useMergeRefs } from '@floating-ui/react';
+import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useCallback, useRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
 import { Button } from '../../Button';
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
-
-type OldSearchSizes = 'small' | 'medium' | 'large';
 
 export type SearchProps = {
   /** Label */
@@ -23,9 +21,8 @@ export type SearchProps = {
   /**
    * Changes field size and paddings
    * @default md
-   * @note `small`, `medium`, `large` is deprecated
    */
-  size?: 'sm' | 'md' | 'lg' | OldSearchSizes;
+  size?: 'sm' | 'md' | 'lg';
   /** Variant
    * @default 'simple'
    */
@@ -46,7 +43,10 @@ export type SearchProps = {
    * @default 27
    */
   htmlSize?: number;
-} & Omit<FormFieldProps, 'size' | 'description' | 'readOnly'> &
+} & Omit<
+  FormFieldProps,
+  'size' | 'description' | 'readOnly' | 'error' | 'errorId'
+> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
 
 /** Search field
@@ -76,7 +76,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       ...rest
     } = props;
 
-    const { inputProps, hasError, errorId, size = 'md' } = useSearch(props);
+    const { inputProps, size = 'md' } = useSearch(props);
 
     const inputRef = useRef<HTMLInputElement>();
     const mergedRef = useMergeRefs([ref, inputRef]);
@@ -95,7 +95,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const handleClear = () => {
       onClear?.(internalValue);
       setInternalValue('');
-      inputRef?.current && inputRef.current.focus();
+      inputRef?.current?.focus();
     };
 
     const handleSearchClick = () => {
@@ -106,16 +106,13 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           style={style}
           className={cl(
-            'fds-search',
-            inputProps.disabled && 'fds-search--disabled',
-            `fds-search--${size}`,
+            'ds-search',
+            inputProps.disabled && 'ds-search--disabled',
+            `ds-search--${size}`,
             className,
           )}
         >
@@ -124,17 +121,17 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               size={size}
               weight='medium'
               htmlFor={inputProps.id}
-              className={cl('fds-search__label', hideLabel && 'fds-sr-only')}
+              className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
             >
               <span>{label}</span>
             </Label>
           )}
 
-          <div className={'fds-search__field'}>
-            <div className={cl('fds-search__field', `fds-search--${size}`)}>
+          <div className={'ds-search__field'}>
+            <div className={cl('ds-search__field', `ds-search--${size}`)}>
               {isSimple && (
                 <MagnifyingGlassIcon
-                  className={'fds-search__icon'}
+                  className={'ds-search__icon'}
                   aria-hidden
                 ></MagnifyingGlassIcon>
               )}
@@ -144,11 +141,11 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 value={value ?? internalValue}
                 disabled={disabled}
                 className={cl(
-                  'fds-search__input',
-                  `fds-focus`,
+                  'ds-search__input',
+                  `ds-focus`,
                   isSimple
-                    ? 'fds-search__input--simple'
-                    : 'fds-search__input--with-search-button',
+                    ? 'ds-search__input--simple'
+                    : 'ds-search__input--with-search-button',
                 )}
                 {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
                 {...inputProps}
@@ -156,19 +153,19 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               />
               {showClearButton && (
                 <button
-                  className={cl('fds-search__clear-button', `fds-focus`)}
+                  className={cl('ds-search__clear-button', `ds-focus`)}
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
                 >
-                  <span className={`fds-sr-only`}>{clearButtonLabel}</span>
+                  <span className={`ds-sr-only`}>{clearButtonLabel}</span>
                   <XMarkIcon aria-hidden />
                 </button>
               )}
             </div>
             {!isSimple && (
               <Button
-                className={'fds-search__search-button'}
+                className={'ds-search__search-button'}
                 size={size}
                 variant={variant}
                 type='submit'
@@ -178,15 +175,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 {searchButtonLabel}
               </Button>
             )}
-          </div>
-
-          <div
-            className={'fds-search__error-message'}
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-          >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
           </div>
         </div>
       </Paragraph>

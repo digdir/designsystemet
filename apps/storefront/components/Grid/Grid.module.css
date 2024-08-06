@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--grid-gap);
-  margin: var(--fds-spacing-7) 0;
+  margin: var(--ds-spacing-7) 0;
 }
 
 @media (max-width: 1200px) {

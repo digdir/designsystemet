@@ -1,15 +1,13 @@
-import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { PlusCircleIcon } from '@navikt/aksel-icons';
+import * as React from 'react';
 
 import { Button } from '../../Button';
+import { ChipRemovable } from '../../Chip';
+import { Modal } from '../../Modal';
 import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
-import { Modal } from '../../Modal';
-import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
-import ComboboxCustom from './Custom';
 
 import { Combobox } from './index';
 
@@ -78,10 +76,7 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -117,10 +112,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -214,12 +206,9 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           setValue(value);
         }}
       >
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+        <Combobox.Empty key='empty'>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item) => (
+          <Combobox.Option key={item.value} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -252,10 +241,7 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
         >
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           {PLACES.map((item, index) => (
-            <Combobox.Option
-              key={index}
-              value={item.value}
-            >
+            <Combobox.Option key={index} value={item.value}>
               {item.name}
             </Combobox.Option>
           ))}
@@ -292,36 +278,35 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
       >
         Open Modal
       </Button>
-      <Modal
-        ref={modalRef}
-        style={{
-          overflow: 'visible',
-        }}
-      >
-        <Modal.Header>Combobox i Modal</Modal.Header>
-        <Modal.Content>
-          <Combobox
-            {...args}
-            value={value}
-            multiple={true}
-            onValueChange={(value) => {
-              setValue(value);
-            }}
-            label='Hvor går reisen?'
-            portal={false}
-          >
-            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-            {PLACES.map((item, index) => (
-              <Combobox.Option
-                key={index}
-                value={item.value}
-              >
-                {item.name}
-              </Combobox.Option>
-            ))}
-          </Combobox>
-        </Modal.Content>
-      </Modal>
+      <Modal.Root>
+        <Modal.Dialog
+          ref={modalRef}
+          style={{
+            overflow: 'visible',
+          }}
+        >
+          <Modal.Header>Combobox i Modal</Modal.Header>
+          <Modal.Content>
+            <Combobox
+              {...args}
+              value={value}
+              multiple={true}
+              onValueChange={(value) => {
+                setValue(value);
+              }}
+              label='Hvor går reisen?'
+              portal={false}
+            >
+              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+              {PLACES.map((item, index) => (
+                <Combobox.Option key={index} value={item.value}>
+                  {item.name}
+                </Combobox.Option>
+              ))}
+            </Combobox>
+          </Modal.Content>
+        </Modal.Dialog>
+      </Modal.Root>
     </>
   );
 };
@@ -336,7 +321,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
           marginBottom: '2rem',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
         }}
       >
         {value.map((item, index) => (
@@ -363,10 +348,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -406,10 +388,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         <Combobox.Option value={'all'}>Alle kommuner</Combobox.Option>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -489,10 +468,7 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {options.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -502,97 +478,6 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
 };
 
 Loading.args = {
-  multiple: false,
-  size: 'md',
-  label: 'Hvor går reisen?',
-};
-
-export const CustomNewValue: StoryFn<typeof Combobox> = (args) => {
-  const [inputValue, setInputValue] = React.useState<string>('');
-  const [value, setValue] = React.useState<string[]>([]);
-  const [options, setOptions] = React.useState(PLACES);
-
-  const onNewValueAdd = () => {
-    if (!showAddNew) return;
-
-    setOptions([
-      ...options,
-      {
-        name: inputValue,
-        value: inputValue.toLowerCase(),
-        description: '',
-      },
-    ]);
-    setValue([...value, inputValue.toLowerCase()]);
-  };
-
-  const showAddNew =
-    inputValue &&
-    !options.some((option) => option.value === inputValue.toLowerCase());
-
-  return (
-    <>
-      <style>
-        {`
-        [data-active='true'] {
-          background-color: var(--fds-semantic-surface-action-first-no_fill-hover);
-        }
-      `}
-      </style>
-      <Combobox
-        {...args}
-        value={value}
-        onValueChange={(value) => {
-          setValue(value);
-          setInputValue('');
-        }}
-        inputValue={inputValue}
-        multiple={true}
-        placeholder='Skriv for å legge inn ny'
-        onChange={(e) => setInputValue(e.target.value)}
-      >
-        {showAddNew && (
-          <ComboboxCustom
-            style={{
-              display: 'flex',
-              gap: 'var(--fds-spacing-2)',
-              alignContent: 'center',
-            }}
-            asChild
-            interactive
-            id='custom-option'
-            onSelect={onNewValueAdd}
-          >
-            <Button
-              variant='secondary'
-              onClick={onNewValueAdd}
-              style={{
-                width: '100%',
-              }}
-            >
-              <PlusCircleIcon
-                title='plus'
-                fontSize='1.5rem'
-              />
-              Legg til &quot;{inputValue}&quot;
-            </Button>
-          </ComboboxCustom>
-        )}
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {options.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
-            {item.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
-  );
-};
-
-CustomNewValue.args = {
   multiple: false,
   size: 'md',
   label: 'Hvor går reisen?',
@@ -608,10 +493,7 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
     <Combobox {...args}>
       <Combobox.Empty>Fant ingen treff</Combobox.Empty>
       {items.map((item, index) => (
-        <Combobox.Option
-          key={index}
-          value={item.value}
-        >
+        <Combobox.Option key={index} value={item.value}>
           {item.name}
         </Combobox.Option>
       ))}
@@ -677,18 +559,10 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
 export const WithNumberValues: StoryFn<typeof Combobox> = () => {
   return (
     <Combobox initialValue={['2000']}>
-      <Combobox.Option
-        id={'3000'}
-        key={'3000'}
-        value={'3000'}
-      >
+      <Combobox.Option id={'3000'} key={'3000'} value={'3000'}>
         some value
       </Combobox.Option>
-      <Combobox.Option
-        id={'2000'}
-        key={'2000'}
-        value={'2000'}
-      >
+      <Combobox.Option id={'2000'} key={'2000'} value={'2000'}>
         some other value
       </Combobox.Option>
     </Combobox>

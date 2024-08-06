@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
-import { Button, Paragraph } from '../../..';
 import { Radio } from '../';
+import { Button, Paragraph } from '../../..';
 
 export default {
   title: 'Komponenter/Radio/Group',
@@ -12,10 +12,7 @@ export default {
 export const Preview: StoryFn<typeof Radio.Group> = (args) => (
   <Radio.Group {...args}>
     <Radio value='vanilje'>Vanilje</Radio>
-    <Radio
-      value='jordbær'
-      description='Jordbær er best'
-    >
+    <Radio value='jordbær' description='Jordbær er best'>
       Jordbær
     </Radio>
     <Radio value='sjokolade'>Sjokolade</Radio>
@@ -32,9 +29,9 @@ Preview.args = {
   size: 'md',
 };
 
-export const Error: StoryFn<typeof Radio> = () => (
+export const WithError: StoryFn<typeof Radio> = () => (
   <Radio.Group
-    legend='Velg pizza (påkreved)'
+    legend='Velg pizza'
     description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
     error='Du må velge en av våre pizzaer for å legge inn bestilling'
   >
@@ -55,13 +52,14 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
   return (
     <>
-      <span style={{ display: 'flex', gap: '1rem' }}>
+      <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
         <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
         <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
         <Paragraph spacing>Du har valgt: {value}</Paragraph>
       </span>
+      <br />
       <Radio.Group
-        legend='Velg pizza (påkreved)'
+        legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
         value={value}
         onChange={setValue}
@@ -98,8 +96,8 @@ Disabled.args = {
 
 export const Inline: StoryFn<typeof Radio.Group> = () => (
   <Radio.Group
-    legend='Kontaktes på epost?'
-    description='Bekreft om du ønsker å bli kontaktet per epost. '
+    legend='Kontaktes på e-post?'
+    description='Bekreft om du ønsker å bli kontaktet per e-post. '
     inline
   >
     <Radio value='ja'>Ja</Radio>

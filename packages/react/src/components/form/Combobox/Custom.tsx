@@ -1,10 +1,11 @@
+import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
-import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
+import { Label } from '../../Typography';
 
 import { ComboboxContext } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
@@ -42,7 +43,7 @@ export type ComboboxCustomProps = {
 } & React.HTMLAttributes<HTMLDivElement> &
   (InteractiveProps | NonInteractiveProps);
 
-export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
+const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   ({ asChild, interactive, id, className, ...rest }, ref) => {
     if (interactive && !id) {
       throw new Error('If ComboboxCustom is interactive, it must have an id');
@@ -59,7 +60,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
       throw new Error('ComboboxCustom must be used within a Combobox');
     }
 
-    const { customIds, listRef, getItemProps } = context;
+    const { customIds, setListRef, getItemProps, size } = context;
 
     const index = useMemo(
       () => (id && customIds.indexOf(id)) || 0,
@@ -68,25 +69,27 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     const combinedRef = useMergeRefs([
       (node: HTMLElement | null) => {
-        listRef.current[index] = node;
+        setListRef(index, node);
       },
       ref,
     ]);
 
     return (
-      <Component
-        ref={combinedRef}
-        tabIndex={-1}
-        className={cl('fds-combobox__custom', className)}
-        id={id || randomId}
-        role='option'
-        aria-selected={activeIndex === index}
-        data-active={activeIndex === index}
-        {...omit(['interactive'], rest)}
-        {...omit(['onClick', 'onPointerLeave'], getItemProps())}
-      />
+      <Label size={size} asChild>
+        <Component
+          ref={combinedRef}
+          tabIndex={-1}
+          className={cl('ds-combobox__custom', className)}
+          id={id || randomId}
+          role='option'
+          aria-selected={activeIndex === index}
+          data-active={activeIndex === index}
+          {...omit(['interactive'], rest)}
+          {...omit(['onClick', 'onPointerLeave'], getItemProps())}
+        />
+      </Label>
     );
   },
 );
 
-export default ComboboxCustom;
+export { ComboboxCustom };

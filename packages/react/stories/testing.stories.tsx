@@ -1,19 +1,32 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  Textfield,
-  Switch,
-  NativeSelect,
   Button,
   Checkbox,
-  Radio,
-  Tag,
-  Combobox,
   Chip,
+  Combobox,
+  NativeSelect,
+  Radio,
+  Switch,
+  Tag,
+  Textfield,
 } from '../src/components';
 
 export default {
   title: 'Testing',
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          background: 'var(--ds-color-neutral-background-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const MediumRow: StoryFn<{
@@ -25,7 +38,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
         }}
@@ -53,36 +66,23 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
-          gap: 'var(--fds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           alignItems: 'flex-start',
           flexDirection: direction,
         }}
       >
         <Switch size={size}>Switch</Switch>
-        <Switch
-          size={size}
-          aria-label='no label switch'
-        ></Switch>
+        <Switch size={size} aria-label='no label switch'></Switch>
         <Chip.Toggle>Toggle</Chip.Toggle>
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 
-        <Radio
-          value='radio'
-          size={size}
-        >
+        <Radio value='radio' size={size}>
           Radio
         </Radio>
-        <Radio
-          value='radio2'
-          size={size}
-          aria-label='no label radio'
-        ></Radio>
-        <Checkbox
-          value='checkbox'
-          size={size}
-        >
+        <Radio value='radio2' size={size} aria-label='no label radio'></Radio>
+        <Checkbox value='checkbox' size={size}>
           Checkbox
         </Checkbox>
         <Checkbox

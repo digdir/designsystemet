@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act, useState } from 'react';
 
 import { Chip, type RemovableChipProps } from '..';
 
@@ -15,10 +15,7 @@ const TestComponent = ({
   return (
     <>
       {!removed && (
-        <Chip.Removable
-          {...rest}
-          onClick={() => setRemoved(true)}
-        >
+        <Chip.Removable {...rest} onClick={() => setRemoved(true)}>
           {children}
         </Chip.Removable>
       )}
@@ -38,7 +35,7 @@ describe('RemovableChip', () => {
     const chip = screen.getByRole('button', { name: 'Norwegian' });
 
     expect(chip);
-    await user.click(chip);
+    await act(async () => await user.click(chip));
     expect(
       screen.queryByRole('button', { name: 'Norwegian' }),
     ).not.toBeInTheDocument();

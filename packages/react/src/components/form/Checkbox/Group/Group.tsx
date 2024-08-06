@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useState, forwardRef, createContext } from 'react';
+import { createContext, forwardRef, useState } from 'react';
 
 import type { FieldsetProps } from '../../Fieldset';
 import { Fieldset } from '../../Fieldset';
@@ -51,12 +51,7 @@ export const CheckboxGroup = forwardRef<
     };
 
     return (
-      <Fieldset
-        readOnly={readOnly}
-        size={size}
-        ref={ref}
-        {...rest}
-      >
+      <Fieldset readOnly={readOnly} size={size} ref={ref} {...rest}>
         <CheckboxGroupContext.Provider
           value={{
             value,
@@ -64,7 +59,7 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div>{children}</div>
+          <div className='ds-checkbox__group'>{children}</div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );

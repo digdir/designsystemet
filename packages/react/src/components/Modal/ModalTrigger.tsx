@@ -1,6 +1,6 @@
+import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
 import type * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
 
 import { Button } from '../Button';
 

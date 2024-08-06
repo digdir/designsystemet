@@ -1,9 +1,9 @@
-import { useEffect, useState, createElement } from 'react';
-import type { ReactNode } from 'react';
+'use client';
+import { Container } from '@repo/components';
+import cl from 'clsx/lite';
 import Image from 'next/image';
-import cl from 'clsx';
-
-import { Container } from '../Container/Container';
+import { createElement, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
 import classes from './ImageSection.module.css';
 
@@ -48,7 +48,11 @@ const ImageSection = ({
 
   useEffect(() => {
     setHeading(
-      createElement(headingLevel, { className: classes.title }, title),
+      createElement(
+        headingLevel,
+        { className: cl(classes.title, 'ds-heading-md') },
+        title,
+      ),
     );
   }, [headingLevel, title]);
 
@@ -68,13 +72,12 @@ const ImageSection = ({
         )}
         <div className={classes.textContainer}>
           {title && heading}
-          {description && <p className={classes.desc}>{description}</p>}
+          {description && (
+            <p className={cl(classes.desc, 'ds-paragraph-md')}>{description}</p>
+          )}
           {content && content}
           {link && (
-            <a
-              href={link.href}
-              className={classes.link}
-            >
+            <a href={link.href} className={classes.link}>
               {link.prefix} {link.text}
             </a>
           )}
@@ -82,11 +85,7 @@ const ImageSection = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                <a
-                  href={item.href}
-                  className={classes.button}
-                  key={index}
-                >
+                <a href={item.href} className={classes.button} key={index}>
                   {item.prefix}
                   {item.text}
                 </a>

@@ -5,6 +5,6 @@
 
 .bar {
   height: 36px;
-  background-color: var(--fds-semantic-text-action-default);
+  background-color: var(--ds-color-accent-base-default);
   border-radius: 2px;
 }

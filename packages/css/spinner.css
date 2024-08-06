@@ -1,75 +1,69 @@
-@layer fds.spinner {
-  .fds-spinner {
-    animation: fds-spinner-rotate-animation linear infinite;
-    animation-duration: 2s;
+.ds-spinner {
+  --dsc-spinner-background: var(--ds-color-neutral-surface-default);
+  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+
+  animation: ds-spinner-rotate-animation linear infinite;
+  animation-duration: 2s;
+}
+
+.ds-spinner__circle {
+  stroke: var(--dsc-spinner-stroke);
+  stroke-dasharray: 1px, 200px;
+  transform-origin: center;
+  animation: ds-spinner-stroke-animation ease-in-out infinite;
+  animation-duration: 2s;
+}
+
+/* Prefers reduced motion needs longer animation,
+but don't remove it since it is not decorative.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .ds-spinner {
+    animation-duration: 6s;
   }
 
-  .fds-spinner__circle {
+  .ds-spinner__circle {
+    animation-duration: 6s;
+  }
+}
+
+.ds-spinner--neutral {
+  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
+}
+
+.ds-spinner--accent {
+  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+}
+
+.ds-spinner__background {
+  stroke: var(--dsc-spinner-background);
+}
+
+@keyframes ds-spinner-rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ds-spinner-stroke-animation {
+  0% {
     stroke-dasharray: 1px, 200px;
-    transform-origin: center;
-    animation: fds-spinner-stroke-animation ease-in-out infinite;
-    animation-duration: 2s;
+    stroke-dashoffset: 0;
   }
 
-  /* Prefers reduced motion needs longer animation,
-    but don't remove it since it is not decorative.
-   */
-  @media (prefers-reduced-motion: reduce) {
-    .fds-spinner {
-      animation-duration: 6s;
-    }
-
-    .fds-spinner__circle {
-      animation-duration: 6s;
-    }
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+    transform: rotate(0deg);
   }
 
-  .fds-spinner--default .fds-spinner__circle {
-    stroke: var(--fds-semantic-border-neutral-default);
-  }
-
-  .fds-spinner--interaction .fds-spinner__circle {
-    stroke: var(--fds-semantic-border-action-first-default);
-  }
-
-  .fds-spinner--inverted .fds-spinner__circle {
-    stroke: var(--fds-semantic-surface-neutral-default);
-  }
-
-  .fds-spinner__background {
-    stroke: var(--fds-semantic-border-neutral-subtle);
-  }
-
-  .fds-spinner__background--inverted {
-    stroke: var(--fds-semantic-surface-neutral-dark);
-  }
-
-  @keyframes fds-spinner-rotate-animation {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes fds-spinner-stroke-animation {
-    0% {
-      stroke-dasharray: 1px, 200px;
-      stroke-dashoffset: 0;
-    }
-
-    50% {
-      stroke-dasharray: 100px, 200px;
-      stroke-dashoffset: -15px;
-      transform: rotate(0deg);
-    }
-
-    100% {
-      stroke-dasharray: 1px, 200px;
-      stroke-dashoffset: -120px;
-      transform: rotate(15deg);
-    }
+  100% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: -120px;
+    transform: rotate(15deg);
   }
 }

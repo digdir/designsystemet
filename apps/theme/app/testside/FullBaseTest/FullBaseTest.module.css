@@ -1,0 +1,79 @@
+.check {
+  height: 40px;
+  width: 40px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.column {
+  width: 300px;
+}
+
+.list {
+  padding: 8px;
+  width: 50%;
+}
+
+.listActive {
+  border: 2px solid #000;
+  outline: 2px solid #ff00d4;
+  border-radius: 1px;
+}
+
+.boxes {
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  margin-right: -1px;
+}
+
+.box {
+  color: red;
+  display: flex;
+  padding: 8px;
+}
+
+.boxTitle {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.btn {
+  height: 40px;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boxDark {
+  background-color: #001c36;
+}
+
+.boxContrast {
+  background-color: #000409;
+}
+
+.textContrast {
+  display: flex;
+  margin-bottom: 8px;
+  padding: 0 8px;
+}
+
+.textContrast div {
+  width: 50%;
+  text-align: center;
+  font-weight: 500;
+}

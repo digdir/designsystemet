@@ -1,4 +1,5 @@
-import cl from 'clsx';
+'use client';
+import cl from 'clsx/lite';
 
 import classes from './ResponsiveIframe.module.css';
 

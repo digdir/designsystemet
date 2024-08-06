@@ -1,5 +1,6 @@
-import { act, render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { HelpTextProps } from './HelpText';
 import { HelpText } from './HelpText';
@@ -9,10 +10,7 @@ const render = (props: Partial<HelpTextProps> = {}) => {
     ...props,
   };
   renderRtl(
-    <HelpText
-      title={'Helptext for test'}
-      {...allProps}
-    >
+    <HelpText title={'Helptext for test'} {...allProps}>
       Help
     </HelpText>,
   );

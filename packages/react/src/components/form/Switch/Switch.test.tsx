@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Switch } from './Switch';
 
@@ -12,15 +13,12 @@ describe('Switch', () => {
 
   test('has correct description', () => {
     render(
-      <Switch
-        value='test'
-        description='description'
-      >
+      <Switch value='test' description='description'>
         test
       </Switch>,
     );
     expect(
-      screen.getByRole('checkbox', { description: 'description' }),
+      screen.getByRole('switch', { description: 'description' }),
     ).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
@@ -31,20 +29,16 @@ describe('Switch', () => {
     const value = 'test';
 
     render(
-      <Switch
-        value={value}
-        onChange={onChange}
-        onClick={onClick}
-      >
+      <Switch value={value} onChange={onChange} onClick={onClick}>
         label
       </Switch>,
     );
 
-    const switch_ = screen.getByRole<HTMLInputElement>('checkbox');
+    const switch_ = screen.getByRole<HTMLInputElement>('switch');
 
     expect(switch_.checked).toBeFalsy();
 
-    await user.click(switch_);
+    await act(async () => await user.click(switch_));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -57,17 +51,12 @@ describe('Switch', () => {
     const onClick = vi.fn();
 
     render(
-      <Switch
-        value='test'
-        disabled
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Switch value='test' disabled onClick={onClick} onChange={onChange}>
         disabled switch_
       </Switch>,
     );
 
-    const switch_ = screen.getByRole('checkbox');
+    const switch_ = screen.getByRole('switch');
     await user.click(switch_);
 
     expect(switch_).toBeDisabled();
@@ -81,18 +70,13 @@ describe('Switch', () => {
     const onClick = vi.fn();
 
     render(
-      <Switch
-        value='test'
-        readOnly
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Switch value='test' readOnly onClick={onClick} onChange={onChange}>
         readonly switch_
       </Switch>,
     );
 
-    const switch_ = screen.getByRole('checkbox');
-    await user.click(switch_);
+    const switch_ = screen.getByRole('switch');
+    await act(async () => await user.click(switch_));
 
     expect(switch_).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

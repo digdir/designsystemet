@@ -1,7 +1,9 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
+
+import { Paragraph } from '../Typography';
 
 export type CardFooterProps = {
   /**
@@ -16,11 +18,13 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Component
-        className={cl(`fds-card__footer`, className)}
-        ref={ref}
-        {...rest}
-      />
+      <Paragraph size='md' asChild>
+        <Component
+          className={cl(`ds-card__footer`, className)}
+          ref={ref}
+          {...rest}
+        />
+      </Paragraph>
     );
   },
 );

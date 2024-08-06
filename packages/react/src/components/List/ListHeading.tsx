@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useMemo, useContext, useId } from 'react';
+import { forwardRef, useContext, useEffect, useId, useMemo } from 'react';
 
 import { Heading, type HeadingProps } from '../Typography';
 

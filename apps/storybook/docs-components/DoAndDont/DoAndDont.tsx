@@ -1,6 +1,7 @@
-import cl from 'clsx';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import styles from './DoAndDont.module.css';
 
@@ -9,12 +10,15 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
   return (
-    <figure className={cl(styles.wrapper, styles[variant])}>
+    <figure
+      className={cl(styles.wrapper, styles[variant])}
+      data-ds-color-mode='light'
+    >
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <Heading
           level={2}
-          size='small'
+          size='sm'
           spacing={false}
           style={{
             margin: 0,
@@ -44,23 +48,13 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
 
 export const Do = ({ description, image, alt }: DoAndDontProps) => {
   return (
-    <Wrapper
-      variant='do'
-      description={description}
-      image={image}
-      alt={alt}
-    />
+    <Wrapper variant='do' description={description} image={image} alt={alt} />
   );
 };
 
 export const Dont = ({ description, image, alt }: DoAndDontProps) => {
   return (
-    <Wrapper
-      variant='dont'
-      description={description}
-      image={image}
-      alt={alt}
-    />
+    <Wrapper variant='dont' description={description} image={image} alt={alt} />
   );
 };
 

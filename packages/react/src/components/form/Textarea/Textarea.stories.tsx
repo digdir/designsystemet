@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
@@ -55,8 +55,8 @@ export const Controlled: StoryFn<typeof Textarea> = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          marginTop: 'var(--fds-spacing-2)',
-          gap: 'var(--fds-spacing-2)',
+          marginTop: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
         }}
       >
         <Textarea

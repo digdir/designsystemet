@@ -1,8 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { useState } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
-
-import { Divider } from '../..';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { DropdownMenu } from '.';
 
@@ -14,45 +12,21 @@ const marginDecorator = (Story: StoryFn) => (
 
 export default {
   title: 'Komponenter/DropdownMenu',
-  component: DropdownMenu,
+  component: DropdownMenu.Root,
 } as Meta;
 
-export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
+export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
   return (
     <>
-      <DropdownMenu {...args}>
+      <DropdownMenu.Root {...args}>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
-          <DropdownMenu.Group heading='Links'>
-            <DropdownMenu.Item asChild>
-              <a
-                href='https://github.com/digdir/designsystemet'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon fontSize='1.5rem' />
-                Github
-              </a>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item asChild>
-              <a
-                href='https://designsystemet.no'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon fontSize='1.5rem' />
-                Designsystemet.no
-              </a>
-            </DropdownMenu.Item>
-          </DropdownMenu.Group>
-          <Divider />
-          <DropdownMenu.Group>
+          <DropdownMenu.Group heading='Heading'>
             <DropdownMenu.Item>Button 1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 2</DropdownMenu.Item>
-            <DropdownMenu.Item disabled>Disabled</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu.Root>
     </>
   );
 };
@@ -64,9 +38,9 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-export const Icons: StoryFn<typeof DropdownMenu> = () => {
+export const Icons: StoryFn<typeof DropdownMenu.Root> = () => {
   return (
-    <DropdownMenu>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -92,7 +66,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 };
 
@@ -100,7 +74,7 @@ Icons.decorators = [marginDecorator];
 
 export const InPortal: StoryFn<typeof DropdownMenu> = () => {
   return (
-    <DropdownMenu portal>
+    <DropdownMenu.Root portal>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -126,7 +100,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 };
 
@@ -135,11 +109,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu
-        open={open}
-        onClose={() => setOpen(false)}
-        portal
-      >
+      <DropdownMenu.Root open={open} onClose={() => setOpen(false)} portal>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>
@@ -167,7 +137,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
             </DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu.Root>
     </>
   );
 };

@@ -1,6 +1,6 @@
+import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-import { Slot } from '@radix-ui/react-slot';
 
 import type { ListProps } from '../List';
 import { List } from '../List';
@@ -37,7 +37,7 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Slot
-          className={'fds-error-summary'}
+          className={'ds-error-summary'}
           ref={ref}
           role={role}
           aria-live={ariaLive}

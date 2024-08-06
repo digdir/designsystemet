@@ -1,35 +1,36 @@
-import { useState, useRef, useEffect, useId, forwardRef } from 'react';
-import type * as React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-import cl from 'clsx/lite';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import cl from 'clsx/lite';
+import { forwardRef, useEffect, useId, useRef, useState } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 
+import type { PortalProps } from '../../../types/Portal';
+import { omit, useDebounceCallback } from '../../../utilities';
 import { Box } from '../../Box';
+import { Spinner } from '../../Spinner';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
-import type { PortalProps } from '../../../types/Portal';
-import useDebounce from '../../../utilities/useDebounce';
-import { omit } from '../../../utilities';
-import { Spinner } from '../../Spinner';
-import { getSize } from '../../../utilities/getSize';
 
-import type { Option } from './useCombobox';
-import useCombobox, { prefix, removePrefix } from './useCombobox';
+import { ComboboxContext } from './ComboboxContext';
+import { ComboboxIdProvider } from './ComboboxIdContext';
+import { ComboboxCustom } from './Custom';
+import ComboboxError from './internal/ComboboxError';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
-import ComboboxError from './internal/ComboboxError';
 import ComboboxNative from './internal/ComboboxNative';
-import ComboboxCustom from './Custom';
-import { useFloatingCombobox } from './useFloatingCombobox';
+import type { Option } from './useCombobox';
+import { useCombobox } from './useCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
-import { ComboboxIdProvider } from './ComboboxIdContext';
-import { ComboboxContext } from './ComboboxContext';
+import { useFloatingCombobox } from './useFloatingCombobox';
+import { prefix, removePrefix } from './utilities';
 
 export type ComboboxProps = {
   /**
-   * Label for the combobox
+   * Label for the combobox.
+   *
+   * Passed label will be encapsulated by a `label` element.
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Visually hides `label` and `description` (still available for screen readers)
    * @default false
@@ -116,7 +117,7 @@ export type ComboboxProps = {
   chipSrLabel?: (option: Option) => string;
 } & PortalProps &
   FormFieldProps &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
@@ -142,6 +143,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       virtual = false,
       children,
       style,
+      size = 'md',
       loading,
       loadingLabel = 'Laster...',
       filter,
@@ -151,10 +153,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     },
     forwareddRef,
   ) => {
-    const size = getSize(rest.size || 'md') as NonNullable<
-      FormFieldProps['size']
-    >;
-
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
@@ -293,7 +291,10 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       refs.domReference.current?.focus();
     };
 
-    const debouncedHandleSelectOption = useDebounce(handleSelectOption, 50);
+    const debouncedHandleSelectOption = useDebounceCallback(
+      handleSelectOption,
+      50,
+    );
 
     const handleKeyDown = useComboboxKeyboard({
       filteredOptions,
@@ -353,13 +354,16 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           chipSrLabel,
           listRef,
           forwareddRef,
+          setListRef: (index: number, node: HTMLElement | null) => {
+            listRef.current[index] = node;
+          },
         }}
       >
         <Box
           className={cl(
-            'fds-combobox',
-            `fds-combobox--${size}`,
-            disabled && 'fds-combobox__disabled',
+            'ds-combobox',
+            `ds-combobox--${size}`,
+            disabled && 'ds-combobox__disabled',
             className,
           )}
           style={style}
@@ -397,7 +401,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             formFieldProps={formFieldProps}
           />
         </Box>
-
         {/* This is the floating list with options */}
         {open && (
           <FloatingPortal root={portal ? null : portalRef}>
@@ -421,8 +424,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                   },
                 })}
                 className={cl(
-                  'fds-combobox__options-wrapper',
-                  `fds-combobox--${size}`,
+                  'ds-combobox__options-wrapper',
+                  `ds-combobox--${size}`,
                 )}
               >
                 {virtual && (
@@ -454,11 +457,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                 )}
 
                 {loading ? (
-                  <ComboboxCustom className={'fds-combobox__loading'}>
-                    <Spinner
-                      title='Laster'
-                      size='sm'
-                    />
+                  <ComboboxCustom className={'ds-combobox__loading'}>
+                    <Spinner title='Laster' size='sm' />
                     {loadingLabel}
                   </ComboboxCustom>
                 ) : (
@@ -480,10 +480,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (props, ref) => (
     <ComboboxIdProvider>
-      <ComboboxComponent
-        {...props}
-        ref={ref}
-      />
+      <ComboboxComponent {...props} ref={ref} />
     </ComboboxIdProvider>
   ),
 );

@@ -23,13 +23,17 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🔗 Links
 
-[Storybook](https://storybook.designsystemet.no/) - For developing and testing our React components.
+[Storybook](https://storybook.designsystemet.no/) - Preview for React components.
 
 [Storefront](https://designsystemet.no/) - General documentation about the design system.
+
+[Theme](https://theme.designsystemet.no/) - Theme builder.
 
 ---
 
 ## 📦 Packages
+
+[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
 [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
 
@@ -112,15 +116,7 @@ import { Button } from '@digdir/designsystemet-react';
 
 ## 🫶 Contributing
 
-Learn how you can contribute to this project by reading our Code of Conduct and Contributing Guide.
-
-### Code of Conduct
-
-The [Code of Conduct](./CODE_OF_CONDUCT.md) emphasizes the importance of respectful communication and the avoidance of discrimination, harassment, or any harmful behavior, promoting a positive and diverse community.
-
-### Contributing Guide
-
-Our [Contributing Guide](./CONTRIBUTING.md) provides clear instructions on how to participate in the project, ensuring that developers can efficiently contribute their skills and ideas to the community.
+Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
 
 ---
 

@@ -1,18 +1,22 @@
-@layer fds.list {
-  .fds-list--sm {
-    padding-left: var(--fds-spacing-4);
-  }
+.ds-list {
+  --dsc-list-padding-left: var(--ds-spacing-6);
 
-  .fds-list--md,
-  .fds-list--lg {
-    padding-left: var(--fds-spacing-6);
-  }
+  padding-left: var(--dsc-list-padding-left);
+}
 
-  .fds-list__item {
-    margin-bottom: var(--fds-spacing-2);
-  }
+.ds-list--sm {
+  --dsc-list-padding-left: var(--ds-spacing-4);
+}
 
-  .fds-list__item > .fds-list {
-    margin-top: var(--fds-spacing-2);
-  }
+.ds-list--md,
+.ds-list--lg {
+  --dsc-list-padding-left: var(--ds-spacing-6);
+}
+
+.ds-list__item {
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.ds-list__item > .ds-list {
+  margin-top: var(--ds-spacing-2);
 }

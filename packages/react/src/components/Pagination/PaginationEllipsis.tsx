@@ -1,5 +1,5 @@
-import { forwardRef, useContext } from 'react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext } from 'react';
 
 import type { ParagraphProps } from '../Typography';
 import { Paragraph } from '../Typography';
@@ -11,7 +11,7 @@ export type PaginationEllipsisProps = Omit<
   'size' | 'spacing' | 'short'
 >;
 
-export const PaginationEllipsis = forwardRef<
+const PaginationEllipsis = forwardRef<
   HTMLParagraphElement,
   PaginationEllipsisProps
 >(({ className, ...rest }, ref) => {
@@ -20,7 +20,7 @@ export const PaginationEllipsis = forwardRef<
   return (
     <Paragraph
       ref={ref}
-      className={cl('fds-pagination__ellipsis', className)}
+      className={cl('ds-pagination__ellipsis', className)}
       size={size}
       {...rest}
     >
@@ -29,4 +29,6 @@ export const PaginationEllipsis = forwardRef<
   );
 });
 
-export default PaginationEllipsis;
+PaginationEllipsis.displayName = 'PaginationEllipsis';
+
+export { PaginationEllipsis };

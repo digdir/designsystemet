@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Textfield } from '../Textfield';
 import { Textarea } from '../Textarea';
+import { Textfield } from '../Textfield';
 
 import { Fieldset } from '.';
 
@@ -22,11 +22,11 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  description:
-    'Gi en kort beskrivelse i begge feltene',
+  description: 'Gi en kort beskrivelse i begge feltene',
   disabled: false,
   error: '',
   legend: 'Skriv inn dine svar',
   readOnly: false,
   hideLegend: false,
+  size: 'md',
 };

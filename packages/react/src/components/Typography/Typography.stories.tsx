@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph, Heading, Ingress } from './';
+import { Heading, Ingress, Paragraph } from './';
 
 const meta: Meta = {
   title: 'Komponenter/Typography',
@@ -10,11 +10,7 @@ export default meta;
 
 export const EksempelTekst: StoryFn = () => (
   <>
-    <Heading
-      level={1}
-      size='xl'
-      spacing
-    >
+    <Heading level={1} size='xl' spacing>
       Samordnet registermelding (H1)
     </Heading>
 
@@ -25,11 +21,7 @@ export const EksempelTekst: StoryFn = () => (
       bruke denne tjenesten.
     </Ingress>
 
-    <Heading
-      level={2}
-      size='lg'
-      spacing
-    >
+    <Heading level={2} size='lg' spacing>
       Når skal du bruke skjemaet? (H2)
     </Heading>
 
@@ -41,28 +33,17 @@ export const EksempelTekst: StoryFn = () => (
       skattytere.
     </Paragraph>
 
-    <Heading
-      level={3}
-      size='md'
-      spacing
-    >
+    <Heading level={3} size='md' spacing>
       Signering (H3)
     </Heading>
 
-    <Paragraph
-      variant='short'
-      spacing
-    >
+    <Paragraph variant='short' spacing>
       Når du skal signere meldingen vil du motta en signeringsoppgave i
       meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
       alle har signert.
     </Paragraph>
 
-    <Heading
-      level={4}
-      size='sm'
-      spacing
-    >
+    <Heading level={4} size='sm' spacing>
       Krav om rolle for signering (H4)
     </Heading>
 
@@ -74,18 +55,11 @@ export const EksempelTekst: StoryFn = () => (
       til deg.
     </Paragraph>
 
-    <Heading
-      level={5}
-      size='xs'
-      spacing
-    >
+    <Heading level={5} size='xs' spacing>
       Personvern (H5)
     </Heading>
 
-    <Paragraph
-      variant='short'
-      spacing
-    >
+    <Paragraph variant='short' spacing>
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi
       behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
     </Paragraph>

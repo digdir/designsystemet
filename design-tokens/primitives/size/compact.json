@@ -1,0 +1,175 @@
+{
+  "line-height": {
+    "sm": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "lineHeights",
+      "value": "130%"
+    },
+    "md": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "lineHeights",
+      "value": "150%"
+    },
+    "lg": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "lineHeights",
+      "value": "170%"
+    }
+  },
+  "font-size": {
+    "1": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "12"
+    },
+    "2": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "13"
+    },
+    "3": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "14"
+    },
+    "4": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "16"
+    },
+    "5": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "18"
+    },
+    "6": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "20"
+    },
+    "7": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "22"
+    },
+    "8": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "26"
+    },
+    "9": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "32"
+    },
+    "10": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "40"
+    },
+    "11": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "fontSizes",
+      "value": "48"
+    }
+  },
+  "letter-spacing": {
+    "1": {
+      "type": "letterSpacing",
+      "value": "-1%"
+    },
+    "2": {
+      "type": "letterSpacing",
+      "value": "-0.5%"
+    },
+    "3": {
+      "type": "letterSpacing",
+      "value": "-0.25%"
+    },
+    "4": {
+      "type": "letterSpacing",
+      "value": "-0.15%"
+    },
+    "5": {
+      "type": "letterSpacing",
+      "value": "0%"
+    },
+    "6": {
+      "type": "letterSpacing",
+      "value": "0.15%"
+    },
+    "7": {
+      "type": "letterSpacing",
+      "value": "0.25%"
+    },
+    "8": {
+      "type": "letterSpacing",
+      "value": "0.5%"
+    },
+    "9": {
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {}
+        }
+      },
+      "type": "letterSpacing",
+      "value": "1.5%"
+    }
+  }
+}

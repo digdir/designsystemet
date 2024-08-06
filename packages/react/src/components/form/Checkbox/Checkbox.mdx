@@ -10,17 +10,12 @@ import * as CheckboxGroupStories from './Group/Group.stories';
 
 # Checkbox
 
-Vi bruker `checkbox` (avmerkingsboks) til å gi brukerne en liste med valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Vi anbefaler å bruke [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
-
-Vær oppmerksom på:
-
-- Ikke bruk `Checkbox` når det er flere enn 7 alternativer.
-- Vis listen vertikalt, da er det lettere for brukeren å lese alternativene kjapt.
+Vi bruker `Checkbox` (avmerkingsboks) for å gi brukerne valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Checkbox.Group`](/docs/komponenter-checkbox-group--docs) til å gruppere flere valg.
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du checkbox
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -62,7 +57,7 @@ Bruk `error` på `Checkbox.Group` for å vise feilmelding.
 
 Her må du bruke `Checkbox.Group` for å gjøre innholdet tilgjengelig og aktivere riktig stil.
 
-<Canvas of={CheckboxGroupStories.Error} />
+<Canvas of={CheckboxGroupStories.WithError} />
 
 #### Kontrollert
 
@@ -72,13 +67,15 @@ Bruk `value` på `Checkbox.Group` for å kontrollere verdiene selv.
 
 #### Readonly
 
-Ikke bruk `readOnly` med mindre det er absolutt umulig å gjøre noe annet.
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`Readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå readonly så langt det lar seg gjøre.
 
 <Canvas of={CheckboxGroupStories.ReadOnly} />
 
 #### Disabled
 
-Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
+Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `Disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
 
 <Canvas of={CheckboxGroupStories.Disabled} />
 
@@ -86,14 +83,20 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 ## Retningslinjer for checkbox
 
-- Hvis det er flere enn 7 svaralternativer bruk heller [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller `Combobox` (kommer snart).
+Hvis det er flere enn 7 svaralternativer, bruk [`NativeSelect`](/docs/komponenter-nativeselect--docs) eller [`Combobox`](/docs/komponenter-combobox--docs) istedenfor.
 
-- Ikke bruk `Checkbox` til å skjule eller vise innhold, eller til gjensidig utelukkende alternativer.
-  <br />
+### Sortering
 
-### Plasering
+Alternativene skal som hovedregel sorteres alfabetisk. Velger du å
+presentere de mest aktuelle alternativene først kan det bli vanskelig å finne ønsket
+alternativ. Du kan også risikere å påvirke svaret, noe som er uheldig.
 
-`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
+### Plassering
+
+`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn
+til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger
+under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å
+se godt nok, er en horisontal liste ekstra vanskelig.
 
 <Stack
   direction='row'
@@ -114,25 +117,22 @@ Ikke bruk `disabled` med mindre det er absolutt umulig å gjøre noe annet.
 
 <br />
 
-Det finnes noen unntak:
-
-- I tabeller, for eksempel i et spørreskjema.
-- For å velge rader i tabeller.
-
-I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
-
-<br />
-
 ## Tekst i checkbox
 
-Plasser både (`legend`) og eventuell hjelpetekst (`description`) brukeren trenger for å forstå oppgaven, før listen med avmerkingsbokser kommer. I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer.
+I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer.
 
-- Ledeteksten (`label`) til hver boks må beskrive alternativet.
-- Ledeteksten skal stå til høyre for boksen. Hvis det er nødvendig, kan du ha en ekstra beskrivelse under ledeteksten.
-- Ledeteksten skal alltid ha stor forbokstav.
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
+er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form.
 
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når ledeteksten
-er en setning, kan du skrive den i du-form og svaralternativene i jeg-form.
+- `legend` og eventuell `description` plasseres før listen med svaralternativ kommer.
+- `label` til hver boks må beskrive alternativet.
+- `label` skal stå til høyre for boksen. Hvis det er nødvendi med ekstra beskrivelse, kan du ha en `description` under `label` .
+- `label` skal alltid ha stor forbokstav.
+
+<img
+  src='/img/component-guidelines/checkbox/checkbox-anatomy.png'
+  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med avmerkingsbokser.'
+/>
 
 ### Lag logisk sammenheng mellom forklaringen og svaralternativene
 
@@ -162,6 +162,6 @@ Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke `Tab` på tas
 
 ### Bruk label
 
-`Checkbox` skal alltid ha en label. Bruker du ledetekst fra en annen plass, husk da å bruke `aria-label` eller `aria-labelledby` (Se kode under).
+`Checkbox` skal alltid ha en `label`. Bruker du `label` fra en annen plass, husk da å bruke `aria-label` eller `aria-labelledby` (Se kode under).
 
 <Canvas of={CheckboxStories.Single} />

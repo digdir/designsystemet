@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
+  "changelog": [
+    "@svitejs/changesets-changelog-github-compact",
+    { "repo": "digdir/designsystemet" }
+  ],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "restricted",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "dev",
+    "theme",
+    "storefront",
+    "@repo/components",
+    "@designsystemet/storybook",
+    "figma-plugin",
+    "@digdir/create-tokens"
+  ]
+}

@@ -1,19 +1,19 @@
-import type { Meta, StoryObj, StoryFn, ReactRenderer } from '@storybook/react';
-import type { PartialStoryFn } from '@storybook/types';
+import { Stack } from '@doc-components';
 import {
-  PencilWritingIcon,
-  PrinterSmallIcon,
   ArrowForwardIcon,
-  TrashIcon,
-  ExternalLinkIcon,
-  PlusCircleIcon,
-  BellIcon,
-  CogIcon,
   ArrowRightIcon,
   ArrowUndoIcon,
+  BellIcon,
+  CogIcon,
+  ExternalLinkIcon,
+  PencilWritingIcon,
+  PlusCircleIcon,
   PlusIcon,
+  PrinterSmallIcon,
+  TrashIcon,
 } from '@navikt/aksel-icons';
-import { Stack } from '@doc-components';
+import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
+import type { PartialStoryFn } from '@storybook/types';
 
 import { Spinner } from '../Spinner';
 import { Tooltip } from '../Tooltip';
@@ -42,7 +42,7 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    color: 'first',
+    color: 'accent',
     size: 'md',
     icon: false,
     fullWidth: false,
@@ -51,10 +51,7 @@ export const Preview: Story = {
 
 export const Primary: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      color='first'
-    >
+    <Button variant='primary' color='accent'>
       Lagre
     </Button>
   </>
@@ -64,10 +61,7 @@ Primary.decorators = [stack];
 
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='secondary'
-      color='first'
-    >
+    <Button variant='secondary' color='accent'>
       Avbryt
     </Button>
   </>
@@ -77,14 +71,8 @@ Secondary.decorators = [stack];
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='tertiary'
-      color='first'
-    >
-      <PencilWritingIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='tertiary' color='accent'>
+      <PencilWritingIcon aria-hidden fontSize='1.5rem' />
       Rediger
     </Button>
   </>
@@ -94,22 +82,13 @@ Tertiary.decorators = [stack];
 
 export const First: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      color='first'
-    >
+    <Button variant='primary' color='accent'>
       Gå videre
     </Button>
-    <Button
-      variant='secondary'
-      color='first'
-    >
+    <Button variant='secondary' color='accent'>
       Fortsett senere
     </Button>
-    <Button
-      variant='tertiary'
-      color='first'
-    >
+    <Button variant='tertiary' color='accent'>
       Avbryt
     </Button>
   </>
@@ -119,34 +98,16 @@ First.decorators = [stack];
 
 export const Second: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='secondary'
-      color='second'
-    >
-      <PrinterSmallIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='secondary' color='neutral'>
+      <PrinterSmallIcon aria-hidden fontSize='1.5rem' />
       Skriv ut
     </Button>
-    <Button
-      variant='secondary'
-      color='second'
-    >
-      <PencilWritingIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='secondary' color='neutral'>
+      <PencilWritingIcon aria-hidden fontSize='1.5rem' />
       Rediger
     </Button>
-    <Button
-      variant='secondary'
-      color='second'
-    >
-      <ArrowForwardIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='secondary' color='neutral'>
+      <ArrowForwardIcon aria-hidden fontSize='1.5rem' />
       Videresend
     </Button>
   </>
@@ -156,14 +117,8 @@ Second.decorators = [stack];
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      color='danger'
-    >
-      <TrashIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='primary' color='danger'>
+      <TrashIcon aria-hidden fontSize='1.5rem' />
       Slett
     </Button>
   </>
@@ -182,37 +137,15 @@ Danger.decorators = [
   ),
 ];
 
-export const Success: StoryFn<typeof Button> = () => (
-  <>
-    <Button
-      variant='primary'
-      color='success'
-    >
-      Send inn
-    </Button>
-  </>
-);
-
-Success.decorators = [stack];
-
 export const KombinereFarger: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      color='second'
-    >
+    <Button variant='primary' color='neutral'>
       Publiser
     </Button>
-    <Button
-      variant='secondary'
-      color='second'
-    >
+    <Button variant='secondary' color='neutral'>
       Lagre kladd
     </Button>
-    <Button
-      variant='tertiary'
-      color='danger'
-    >
+    <Button variant='tertiary' color='danger'>
       Forkast
     </Button>
   </>
@@ -222,11 +155,7 @@ KombinereFarger.decorators = [stack];
 
 export const KnappSomLenke: StoryFn<typeof Button> = () => (
   <Button asChild>
-    <a
-      target='_blank'
-      rel='noreferrer'
-      href='https://www.designsystemet.no'
-    >
+    <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
       Gå til Designsystemet
       <ExternalLinkIcon fontSize='1.5rem' />
     </a>
@@ -238,7 +167,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Legg til ny'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -248,7 +177,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Varslinger'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -258,7 +187,7 @@ export const BareIkon: StoryFn<typeof Button> = () => (
     <Tooltip content='Instillinger'>
       <Button
         icon={true}
-        color='second'
+        color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
       >
@@ -283,24 +212,12 @@ BareIkon.decorators = [
 
 export const TekstOgIkon: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      color='second'
-    >
+    <Button variant='primary' color='neutral'>
       Start utfylling
-      <ArrowRightIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+      <ArrowRightIcon aria-hidden fontSize='1.5rem' />
     </Button>
-    <Button
-      variant='secondary'
-      color='second'
-    >
-      <ArrowUndoIcon
-        aria-hidden
-        fontSize='1.5rem'
-      />
+    <Button variant='secondary' color='neutral'>
+      <ArrowUndoIcon aria-hidden fontSize='1.5rem' />
       Angre
     </Button>
   </>
@@ -310,37 +227,16 @@ TekstOgIkon.decorators = [stack];
 
 export const Lasting: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      aria-disabled
-    >
-      <Spinner
-        variant='interaction'
-        title='loading'
-        size='sm'
-      />
+    <Button variant='primary' aria-disabled>
+      <Spinner color='accent' title='loading' size='sm' />
       Laster...
     </Button>
-    <Button
-      variant='secondary'
-      aria-disabled
-    >
-      <Spinner
-        variant='interaction'
-        title='loading'
-        size='sm'
-      />
+    <Button variant='secondary' aria-disabled>
+      <Spinner color='accent' title='loading' size='sm' />
       Laster...
     </Button>
-    <Button
-      variant='tertiary'
-      aria-disabled
-    >
-      <Spinner
-        variant='interaction'
-        title='loading'
-        size='sm'
-      />
+    <Button variant='tertiary' aria-disabled>
+      <Spinner color='accent' title='loading' size='sm' />
       Laster...
     </Button>
   </>
@@ -358,7 +254,7 @@ export const FullBredde: Story = {
       </>
     ),
     fullWidth: true,
-    color: 'second',
+    color: 'neutral',
     variant: 'secondary',
   },
   parameters: {
@@ -368,24 +264,15 @@ export const FullBredde: Story = {
 
 export const Ikoner: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      variant='primary'
-      size='sm'
-    >
+    <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' />
       Small
     </Button>
-    <Button
-      variant='primary'
-      size='md'
-    >
+    <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' />
       Medium
     </Button>
-    <Button
-      variant='primary'
-      size='lg'
-    >
+    <Button variant='primary' size='lg'>
       <CogIcon fontSize='2rem' />
       Large
     </Button>
@@ -396,25 +283,13 @@ Ikoner.decorators = [stack];
 
 export const Kunikoner: StoryFn<typeof Button> = () => (
   <>
-    <Button
-      icon={true}
-      variant='primary'
-      size='sm'
-    >
+    <Button icon={true} variant='primary' size='sm'>
       <CogIcon fontSize='1.5rem' />
     </Button>
-    <Button
-      icon={true}
-      variant='primary'
-      size='md'
-    >
+    <Button icon={true} variant='primary' size='md'>
       <CogIcon fontSize='2rem' />
     </Button>
-    <Button
-      icon={true}
-      variant='primary'
-      size='lg'
-    >
+    <Button icon={true} variant='primary' size='lg'>
       <CogIcon fontSize='2.5rem' />
     </Button>
   </>

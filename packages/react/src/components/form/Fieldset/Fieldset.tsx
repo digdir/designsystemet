@@ -1,13 +1,13 @@
-import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import { useContext, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { FieldsetHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
-import { useFieldset } from './useFieldset';
 import { FieldsetContext } from './FieldsetContext';
+import { useFieldset } from './useFieldset';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */
@@ -56,29 +56,26 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         <fieldset
           {...fieldsetProps}
           className={cl(
-            'fds-fieldset',
-            !hideLegend && 'fds-fieldset--spacing',
-            readOnly && 'fds-fieldset--readonly',
+            'ds-fieldset',
+            !hideLegend && 'ds-fieldset--spacing',
+            readOnly && 'ds-fieldset--readonly',
             className,
           )}
           disabled={props?.disabled}
           ref={ref}
           {...rest}
         >
-          <Label
-            asChild
-            size={size}
-          >
-            <legend className={'fds-fieldset__legend'}>
+          <Label asChild size={size}>
+            <legend className={'ds-fieldset__legend'}>
               <span
                 className={cl(
-                  'fds-fieldset__legend__content',
-                  hideLegend && `fds-sr-only`,
+                  'ds-fieldset__legend__content',
+                  hideLegend && `ds-sr-only`,
                 )}
               >
                 {readOnly && (
                   <PadlockLockedFillIcon
-                    className={'fds-fieldset__readonly__icon'}
+                    className={'ds-fieldset__readonly__icon'}
                     aria-hidden
                   />
                 )}
@@ -87,16 +84,13 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </legend>
           </Label>
           {description && (
-            <Paragraph
-              size={size}
-              variant='short'
-              asChild
-            >
+            <Paragraph size={size} variant='short' asChild>
               <div
                 id={descriptionId}
                 className={cl(
-                  'fds-fieldset__description',
-                  hideLegend && `fds-sr-only`,
+                  'ds-fieldset__description',
+                  'ds-font-weight--regular',
+                  hideLegend && `ds-sr-only`,
                 )}
               >
                 {description}
@@ -108,7 +102,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
-            className={'fds-fieldset__error-message'}
+            className={'ds-fieldset__error-message'}
           >
             {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
           </div>

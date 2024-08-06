@@ -6,17 +6,17 @@ type SelectedIconProps = {
   selected: boolean;
 };
 
-export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
+const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
     <div
       className={cl(
-        multiple && 'fds-combobox__option__icon-wrapper',
-        selected && 'fds-combobox__option__icon-wrapper--selected',
+        multiple && 'ds-combobox__option__icon-wrapper',
+        selected && 'ds-combobox__option__icon-wrapper--selected',
       )}
     >
       {selected && (
         <CheckmarkIcon
-          className={'fds-combobox__option__icon-wrapper__icon'}
+          className={'ds-combobox__option__icon-wrapper__icon'}
           aria-hidden
         />
       )}
@@ -26,4 +26,4 @@ export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
 
 SelectedIcon.displayName = 'SelectedIcon';
 
-export default SelectedIcon;
+export { SelectedIcon };

@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "unifiedjs.vscode-mdx",
     "christian-kohler.npm-intellisense",
@@ -22,6 +21,7 @@
     "editorconfig.editorconfig",
     "zignd.html-css-class-completion",
     "streetsidesoftware.code-spell-checker",
-    "streetsidesoftware.code-spell-checker-norwegian-bokmal"
+    "streetsidesoftware.code-spell-checker-norwegian-bokmal",
+    "biomejs.biome"
   ]
 }

@@ -1,9 +1,15 @@
 import { Table as TableRoot } from './Table';
-import { TableHead } from './TableHead';
+import type { TableProps } from './Table';
 import { TableBody } from './TableBody';
-import { TableRow } from './TableRow';
+import type { TableBodyProps } from './TableBody';
 import { TableCell } from './TableCell';
+import type { TableCellProps } from './TableCell';
+import { TableHead } from './TableHead';
+import type { TableHeadProps } from './TableHead';
 import { TableHeaderCell } from './TableHeaderCell';
+import type { TableHeaderCellProps } from './TableHeaderCell';
+import { TableRow } from './TableRow';
+import type { TableRowProps } from './TableRow';
 
 type TableComponent = typeof TableRoot & {
   Head: typeof TableHead;
@@ -29,3 +35,11 @@ Table.Cell.displayName = 'Table.Cell';
 Table.HeaderCell.displayName = 'Table.HeaderCell';
 
 export { Table, TableHead, TableBody, TableRow, TableCell, TableHeaderCell };
+export type {
+  TableProps,
+  TableHeadProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableHeaderCellProps,
+};

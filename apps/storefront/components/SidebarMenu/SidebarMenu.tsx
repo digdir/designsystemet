@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import cl from 'clsx';
+'use client';
 import { Button } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';
@@ -34,14 +35,14 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
   };
 
   return (
-    <div className={classes.sidebar}>
+    <div>
       {activeIndex >= 0 && (
         <>
           <Button
             className={classes.toggleBtn}
             fullWidth
-            size='medium'
-            color='second'
+            size='md'
+            color='neutral'
             variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
@@ -49,8 +50,8 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
             {showMenu ? 'Skjul' : 'Vis'} side meny
           </Button>
 
-          <div className={cl(classes.menu, { [classes.activeMenu]: showMenu })}>
-            <h3 className={classes.title}>
+          <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
+            <h3 className={cl(classes.title, 'ds-paragraph--md')}>
               {SiteConfig.menu[activeIndex].name}
             </h3>
             <ul className={classes.list}>
@@ -64,23 +65,24 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                   >
                     {item.children && (
                       <>
-                        <div className={classes.innerTitle}>{item.name}</div>
+                        <div
+                          className={cl(classes.innerTitle, 'ds-paragraph--md')}
+                        >
+                          {item.name}
+                        </div>
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
-                              <li
-                                key={index2}
-                                className={classes.listItem}
-                              >
+                              <li key={index2} className={classes.listItem}>
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}
-                                  className={cl(classes.link, {
-                                    [classes.linkActive]: isItemActive(
-                                      item2.url,
-                                      routerPath,
-                                    ),
-                                  })}
+                                  className={cl(
+                                    classes.link,
+                                    isItemActive(item2.url, routerPath) &&
+                                      classes.linkActive,
+                                    'ds-paragraph--sm',
+                                  )}
                                 >
                                   {item2.name}
                                 </Link>
@@ -94,12 +96,13 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                       <Link
                         href={'/' + item.url}
                         prefetch={false}
-                        className={cl(classes.link, classes.linkCompact, {
-                          [classes.linkActive]: isItemActive(
-                            item.url,
-                            routerPath,
-                          ),
-                        })}
+                        className={cl(
+                          classes.link,
+                          classes.linkCompact,
+                          isItemActive(item.url, routerPath) &&
+                            classes.linkActive,
+                          'ds-paragraph--sm',
+                        )}
                       >
                         {item.name}
                       </Link>

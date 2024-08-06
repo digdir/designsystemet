@@ -1,7 +1,7 @@
+import { useMergeRefs } from '@floating-ui/react';
+import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -42,22 +42,19 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ]);
 
     return (
-      <Paragraph
-        asChild
-        size={size}
-      >
+      <Paragraph asChild size={size}>
         <div
           className={cl(
-            'fds-checkbox',
-            `fds-checkbox--${size}`,
-            hasError && `fds-checkbox--error`,
-            readOnly && `fds-checkbox--readonly`,
+            'ds-checkbox',
+            `ds-checkbox--${size}`,
+            hasError && `ds-checkbox--error`,
+            readOnly && `ds-checkbox--readonly`,
             className,
           )}
           style={style}
         >
           <input
-            className={`fds-checkbox__input`}
+            className={`ds-checkbox__input`}
             ref={inputRef}
             {...omit(['size', 'error', 'indeterminate'], rest)}
             {...inputProps}
@@ -68,7 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {children && (
             <>
               <Label
-                className={`fds-checkbox__label`}
+                className={cl(`ds-checkbox__label`)}
                 htmlFor={inputProps.id}
                 size={size}
                 weight='regular'
@@ -76,13 +73,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 <span>{children}</span>
               </Label>
               {description && (
-                <Paragraph
-                  asChild
-                  size={size}
-                >
+                <Paragraph asChild size={size}>
                   <div
                     id={descriptionId}
-                    className={`fds-checkbox__description`}
+                    className={`ds-checkbox__description`}
                   >
                     {description}
                   </div>

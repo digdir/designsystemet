@@ -7,10 +7,7 @@ export const TableBody = React.forwardRef<
   TableBodyProps
 >(({ children, ...rest }, ref) => {
   return (
-    <tbody
-      ref={ref}
-      {...rest}
-    >
+    <tbody ref={ref} {...rest}>
       {children}
     </tbody>
   );

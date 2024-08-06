@@ -1,9 +1,9 @@
 import type { InputHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
+import { CheckboxGroupContext } from '../Checkbox/Group';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
-import { CheckboxGroupContext } from '../Checkbox/Group';
 
 import type { SwitchProps } from './Switch';
 
@@ -33,6 +33,7 @@ export const useSwitch: UseCheckbox = (props) => {
       ...inputProps,
       readOnly,
       type: 'checkbox',
+      role: 'switch',
       defaultChecked: checkboxGroup?.defaultValue
         ? checkboxGroup?.defaultValue.includes(propsValue)
         : props.defaultChecked,

@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
 
 import { omit } from '../../../utilities';
 import { Label, Paragraph } from '../../Typography';
@@ -27,22 +27,19 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   } = useRadio(props);
 
   return (
-    <Paragraph
-      asChild
-      size={size}
-    >
+    <Paragraph asChild size={size}>
       <div
         className={cl(
-          'fds-radio',
-          `fds-radio--${size}`,
-          hasError && `fds-radio--error`,
-          readOnly && `fds-radio--readonly`,
+          'ds-radio',
+          `ds-radio--${size}`,
+          hasError && `ds-radio--error`,
+          readOnly && `ds-radio--readonly`,
           className,
         )}
         style={style}
       >
         <input
-          className={'fds-radio__input'}
+          className={'ds-radio__input'}
           disabled={inputProps.disabled}
           ref={ref}
           {...omit(['size', 'error'], rest)}
@@ -51,7 +48,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         {children && (
           <>
             <Label
-              className={'fds-radio__label'}
+              className={cl('ds-radio__label')}
               htmlFor={inputProps.id}
               size={size}
               weight='regular'
@@ -59,14 +56,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
               <span>{children}</span>
             </Label>
             {description && (
-              <Paragraph
-                asChild
-                size={size}
-              >
-                <div
-                  id={descriptionId}
-                  className={'fds-radio__description'}
-                >
+              <Paragraph asChild size={size}>
+                <div id={descriptionId} className={'ds-radio__description'}>
                   {description}
                 </div>
               </Paragraph>

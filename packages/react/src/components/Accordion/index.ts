@@ -1,32 +1,51 @@
-import type { AccordionProps } from './Accordion';
-import type { AccordionItemProps } from './AccordionItem';
 import type { AccordionContentProps } from './AccordionContent';
-import type { AccordionHeaderProps } from './AccordionHeader';
-import { Accordion as AccordionParent } from './Accordion';
-import { AccordionItem } from './AccordionItem';
 import { AccordionContent } from './AccordionContent';
-import { AccordionHeader } from './AccordionHeader';
+import type { AccordionHeaderProps } from './AccordionHeading';
+import { AccordionHeading } from './AccordionHeading';
+import type { AccordionItemProps } from './AccordionItem';
+import { AccordionItem } from './AccordionItem';
+import type { AccordionRootProps } from './AccordionRoot';
+import { AccordionRoot } from './AccordionRoot';
 
-type AccordionComponent = typeof AccordionParent & {
+type AccordionComponent = {
+  Root: typeof AccordionRoot;
   Item: typeof AccordionItem;
-  Header: typeof AccordionHeader;
+  Heading: typeof AccordionHeading;
   Content: typeof AccordionContent;
 };
 
-const Accordion = AccordionParent as AccordionComponent;
+/**
+ * Accordions are used to toggle the visibility of content.
+ * @example
+ * <Accordion.Root>
+ *  <Accordion.Item>
+ *   <Accordion.Heading>Heading 1</Accordion.Heading>
+ *  <Accordion.Content>Content 1</Accordion.Content>
+ * </Accordion.Item>
+ * <Accordion.Item>
+ */
+const Accordion = {} as AccordionComponent;
 
-Accordion.Header = AccordionHeader;
+Accordion.Root = AccordionRoot;
+Accordion.Heading = AccordionHeading;
 Accordion.Content = AccordionContent;
 Accordion.Item = AccordionItem;
 
-Accordion.Header.displayName = 'Accordion.Header';
+Accordion.Root.displayName = 'Accordion.Root';
+Accordion.Heading.displayName = 'Accordion.Heading';
 Accordion.Content.displayName = 'Accordion.Content';
 Accordion.Item.displayName = 'Accordion.Item';
 
 export type {
-  AccordionProps,
+  AccordionRootProps,
   AccordionContentProps,
   AccordionHeaderProps,
   AccordionItemProps,
 };
-export { Accordion, AccordionItem, AccordionContent, AccordionHeader };
+export {
+  Accordion,
+  AccordionRoot,
+  AccordionItem,
+  AccordionContent,
+  AccordionHeading,
+};

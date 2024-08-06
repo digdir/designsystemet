@@ -1,7 +1,7 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 export type CardMediaProps = {
   /**
@@ -17,7 +17,7 @@ export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
 
     return (
       <Component
-        className={cl(`fds-card__media`, className)}
+        className={cl(`ds-card__media`, className)}
         ref={ref}
         {...rest}
       />

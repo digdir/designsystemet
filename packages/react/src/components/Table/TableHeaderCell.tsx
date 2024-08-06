@@ -1,11 +1,11 @@
 import {
-  ChevronUpIcon,
   ChevronDownIcon,
   ChevronUpDownIcon,
+  ChevronUpIcon,
 } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import type { AriaAttributes } from 'react';
 import * as React from 'react';
-import cl from 'clsx/lite';
 
 const SORT_ICON = {
   ascending: <ChevronUpIcon />,
@@ -48,9 +48,10 @@ export const TableHeaderCell = React.forwardRef<
     return (
       <th
         className={cl(
-          'fds-table__header__cell',
-          sortable && 'fds-table__header__cell--sortable',
-          sort && `fds-table__header__cell--sorted`,
+          'ds-table__header__cell',
+          'ds-font-weight--medium',
+          sortable && 'ds-table__header__cell--sortable',
+          sort && `ds-table__header__cell--sorted`,
           className,
         )}
         aria-sort={sort}
@@ -58,15 +59,11 @@ export const TableHeaderCell = React.forwardRef<
         {...rest}
       >
         {sortable && (
-          <button
-            className={`fds-focus`}
-            onClick={onSortClick}
-          >
+          <button className='ds-focus' onClick={onSortClick}>
             {children}
             {sortIcon}
           </button>
         )}
-
         {!sortable && children}
       </th>
     );

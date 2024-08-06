@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import cl from 'clsx';
-import type * as React from 'react';
+'use client';
 import { Heading } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import type * as React from 'react';
 
 import classes from './NavigationCard.module.css';
 
@@ -28,16 +29,13 @@ const NavigationCard = ({
     <Link
       href={url}
       prefetch={false}
-      className={cl(classes.card, classes[backgroundColor])}
+      className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
     >
       <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
-      <Heading
-        level={level}
-        className={classes.title}
-      >
+      <Heading level={level} size='sm' className={classes.title}>
         {title}
       </Heading>
-      <div className={classes.desc}>{description}</div>
+      <div className={cl(classes.desc, 'ds-paragraph-sm')}>{description}</div>
     </Link>
   );
 };

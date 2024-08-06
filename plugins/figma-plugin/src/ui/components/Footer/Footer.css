@@ -1,0 +1,40 @@
+.footer {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.version {
+  background-color: var(--ds-color-neutral-surface-default);
+  font-size: 14px;
+  color: var(--ds-color-neutral-text-subtle);
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: 2px;
+}
+
+.feedback {
+  color: var(--ds-color-neutral-text-subtle);
+  padding: 3px;
+  border-radius: 1px;
+}
+
+.feedback:hover {
+  background-color: var(--ds-color-neutral-surface-default);
+  color: var(--ds-color-neutral-text-default);
+}

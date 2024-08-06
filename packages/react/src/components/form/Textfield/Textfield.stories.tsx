@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Paragraph } from '../..';
@@ -49,22 +49,10 @@ export const HtmlSize: Story = {
 };
 
 export const Adornments: StoryFn<typeof Textfield> = () => (
-  <div style={{ display: 'grid', gap: 'var(--fds-spacing-2)' }}>
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='sm'
-    />
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='md'
-    />
-    <Textfield
-      prefix='prefix'
-      suffix='suffix'
-      size='lg'
-    />
+  <div style={{ display: 'grid', gap: 'var(--ds-spacing-2)' }}>
+    <Textfield prefix='prefix' suffix='suffix' size='sm' />
+    <Textfield prefix='prefix' suffix='suffix' size='md' />
+    <Textfield prefix='prefix' suffix='suffix' size='lg' />
   </div>
 );
 
@@ -77,8 +65,8 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
         style={{
           display: 'flex',
           alignItems: 'end',
-          marginTop: 'var(--fds-spacing-2)',
-          gap: 'var(--fds-spacing-2)',
+          marginTop: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-spacing-2)',
         }}
       >
         <Textfield

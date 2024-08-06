@@ -1,11 +1,10 @@
-import type { ButtonHTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
 import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Paragraph } from '../../Typography';
 import { ChipGroupContext } from '../Group/Group';
-import { getSize } from '../../../utilities/getSize';
 
 export type ToggleChipProps = {
   /**
@@ -15,7 +14,6 @@ export type ToggleChipProps = {
   /**
    * Changes Chip size and gap between chips.
    * @default 'md'
-   * @note `small`, `medium`, `large` is deprecated
    */
   size?: ChipGroupContext['size'];
   /**
@@ -30,6 +28,7 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
       children,
       selected = false,
       checkmark = true,
+      size = 'md',
       className,
       ...rest
     }: ToggleChipProps,
@@ -37,7 +36,6 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
   ) => {
     const shouldDisplayCheckmark = checkmark && selected;
     const group = useContext(ChipGroupContext);
-    const size = getSize(rest.size || 'md') as ChipGroupContext['size'];
 
     return (
       <button
@@ -45,23 +43,19 @@ export const ToggleChip = forwardRef<HTMLButtonElement, ToggleChipProps>(
         type='button'
         aria-pressed={selected}
         className={cl(
-          `fds-focus`,
-          `fds-chip--button`,
-          `fds-chip--${group?.size || size}`,
-          shouldDisplayCheckmark && `fds-chip--spacing`,
+          `ds-focus`,
+          `ds-chip--button`,
+          `ds-chip--${group?.size || size}`,
+          shouldDisplayCheckmark && `ds-chip--spacing`,
           className,
         )}
         {...rest}
       >
-        <Paragraph
-          asChild
-          size={group?.size || size}
-          variant='short'
-        >
-          <span className={`fds-chip__label`}>
+        <Paragraph asChild size={group?.size || size} variant='short'>
+          <span className={`ds-chip__label`}>
             {shouldDisplayCheckmark && (
               <CheckmarkIcon
-                className={`fds-chip__checkmark-icon`}
+                className={`ds-chip__checkmark-icon`}
                 aria-hidden
               />
             )}

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Checkbox } from './Checkbox';
 
@@ -12,10 +13,7 @@ describe('Checkbox', () => {
 
   test('has correct description', () => {
     render(
-      <Checkbox
-        value='test'
-        description='description'
-      >
+      <Checkbox value='test' description='description'>
         test
       </Checkbox>,
     );
@@ -31,11 +29,7 @@ describe('Checkbox', () => {
     const value = 'test';
 
     render(
-      <Checkbox
-        value={value}
-        onChange={onChange}
-        onClick={onClick}
-      >
+      <Checkbox value={value} onChange={onChange} onClick={onClick}>
         label
       </Checkbox>,
     );
@@ -44,7 +38,7 @@ describe('Checkbox', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -57,18 +51,13 @@ describe('Checkbox', () => {
     const onClick = vi.fn();
 
     render(
-      <Checkbox
-        value='test'
-        disabled
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Checkbox value='test' disabled onClick={onClick} onChange={onChange}>
         disabled radio
       </Checkbox>,
     );
 
     const radio = screen.getByRole('checkbox');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
@@ -81,18 +70,13 @@ describe('Checkbox', () => {
     const onClick = vi.fn();
 
     render(
-      <Checkbox
-        value='test'
-        readOnly
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Checkbox value='test' readOnly onClick={onClick} onChange={onChange}>
         readonly radio
       </Checkbox>,
     );
 
     const radio = screen.getByRole('checkbox');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

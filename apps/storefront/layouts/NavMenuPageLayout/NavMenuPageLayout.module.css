@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--fds-spacing-10);
+  gap: var(--ds-spacing-10);
   margin-top: var(--page-spacing-top);
   margin-bottom: var(--page-spacing-bottom);
 }
@@ -18,5 +18,5 @@
 }
 
 .outerPage {
-  background-color: var(--fds-semantic-background-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
 }

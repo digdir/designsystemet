@@ -1,11 +1,11 @@
-import { forwardRef, useContext, useEffect } from 'react';
-import type * as React from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
+import { forwardRef, useContext, useEffect } from 'react';
+import type * as React from 'react';
 
 import { Button } from '../Button';
 
-import { PopoverContext } from './Popover';
+import { PopoverContext } from './PopoverRoot';
 
 export type PopoverTriggerProps = React.ComponentPropsWithRef<typeof Button>;
 

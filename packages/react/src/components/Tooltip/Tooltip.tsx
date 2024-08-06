@@ -1,24 +1,27 @@
+import {
+  FloatingArrow,
+  FloatingPortal,
+  arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useMergeRefs,
+  useRole,
+  useTransitionStyles,
+} from '@floating-ui/react';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { cloneElement, forwardRef, useState } from 'react';
 import * as React from 'react';
-import cl from 'clsx/lite';
-import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  arrow,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useTransitionStyles,
-  useMergeRefs,
-  FloatingArrow,
-  FloatingPortal,
-} from '@floating-ui/react';
+
+import type { PortalProps } from '../../types/Portal';
+import { Paragraph } from '../Typography';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -36,26 +39,31 @@ export type TooltipProps = {
    * @default 'top'
    */
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  /** Delay in milliseconds before opening.
+  /**
+   * Delay in milliseconds before opening.
    * @default 150
    */
   delay?: number;
-  /** Whether the tooltip is open or not.
+  /**
+   * Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
   open?: boolean;
-  /** Whether the tooltip is open by default or not. */
-  defaultOpen?: boolean;
-  /** Inverts the color of the tooltip. Use this on dark backgrounds. */
-  inverted?: boolean;
   /**
-   * Portals the floating element outside of the app root and into the body.
-   * @see https://floating-ui.com/docs/floatingportal
-   * @default true
+   * Whether the tooltip is open by default or not.
+   * @default false
    */
-  portal?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  defaultOpen?: boolean;
+} & HTMLAttributes<HTMLDivElement> &
+  PortalProps;
 
+/**
+ * Tooltip component that displays a small piece of information when hovering or focusing on an element.
+ * @example
+ * <Tooltip content='This is a tooltip'>
+ *  <button>Hover me</button>
+ * </Tooltip>
+ */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
     {
@@ -65,8 +73,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       delay = 150,
       open: userOpen,
       defaultOpen = false,
-      portal = true,
-      inverted,
+      portal = false,
       className,
       style,
       ...rest
@@ -140,28 +147,26 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, ...animationStyles, ...style }}
-              role='tooltip'
-              {...getFloatingProps({
-                className: cl(
-                  'fds-tooltip',
-                  inverted && 'fds-tooltip--inverted',
-                  className,
-                ),
-                ref: mergedRef,
-                ...rest,
-              })}
-            >
-              {content}
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className='fds-tooltip__arrow'
-                height={ARROW_HEIGHT}
-              />
-            </div>
+            <Paragraph size='xs' asChild>
+              <div
+                ref={refs.setFloating}
+                style={{ ...floatingStyles, ...animationStyles, ...style }}
+                role='tooltip'
+                {...getFloatingProps({
+                  className: cl('ds-tooltip', className),
+                  ref: mergedRef,
+                  ...rest,
+                })}
+              >
+                {content}
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  className='ds-tooltip__arrow'
+                  height={ARROW_HEIGHT}
+                />
+              </div>
+            </Paragraph>
           </Container>
         )}
       </>

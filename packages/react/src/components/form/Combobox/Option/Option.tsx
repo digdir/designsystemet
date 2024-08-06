@@ -1,14 +1,14 @@
+import cl from 'clsx/lite';
 import { forwardRef, memo, useContext, useId } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
-import { Label } from '../../../Typography';
 import { omit } from '../../../../utilities';
+import { Label } from '../../../Typography';
 import { ComboboxContext } from '../ComboboxContext';
 
-import { SelectedIcon } from './SelectedIcon';
 import ComboboxOptionDescription from './Description';
-import useComboboxOption from './useComboboxOption';
+import { SelectedIcon } from './SelectedIcon';
+import { useComboboxOption } from './useComboboxOption';
 
 export type ComboboxOptionProps = {
   /**
@@ -26,7 +26,7 @@ export type ComboboxOptionProps = {
   displayValue?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ComboboxOption = memo(
+const ComboboxOption = memo(
   forwardRef<HTMLButtonElement, ComboboxOptionProps>(
     ({ value, description, children, className, ...rest }, forwardedRef) => {
       const labelId = useId();
@@ -46,54 +46,52 @@ export const ComboboxOption = memo(
       const props = getItemProps();
 
       return (
-        <button
-          ref={ref}
-          id={id}
-          role='option'
-          type='button'
-          aria-selected={!!selected}
-          aria-labelledby={labelId}
-          tabIndex={-1}
-          onClick={(e) => {
-            onOptionClick();
-            rest.onClick?.(e);
-          }}
-          className={cl(
-            'fds-combobox__option',
-            active && 'fds-combobox__option--active',
-            multiple && 'fds-combobox__option--multiple',
-            className,
-          )}
-          {...omit(['displayValue'], rest)}
-          {...omit(['onClick', 'onPointerLeave'], props)}
-        >
-          <Label
-            asChild
-            size={size}
-          >
-            <span>
-              <SelectedIcon
-                multiple={multiple}
-                selected={!!selected}
-              />
-            </span>
-          </Label>
-          <Label
-            className={'fds-combobox__option__label'}
-            size={size}
-            id={labelId}
-          >
-            {children}
-            {description && (
-              <ComboboxOptionDescription>
-                {description}
-              </ComboboxOptionDescription>
+        <Label size='md' asChild>
+          <button
+            ref={ref}
+            id={id}
+            role='option'
+            type='button'
+            aria-selected={!!selected}
+            aria-labelledby={labelId}
+            tabIndex={-1}
+            onClick={(e) => {
+              onOptionClick();
+              rest.onClick?.(e);
+            }}
+            className={cl(
+              'ds-combobox__option',
+              active && 'ds-combobox__option--active',
+              multiple && 'ds-combobox__option--multiple',
+              className,
             )}
-          </Label>
-        </button>
+            {...omit(['displayValue'], rest)}
+            {...omit(['onClick', 'onPointerLeave'], props)}
+          >
+            <Label asChild size={size}>
+              <span>
+                <SelectedIcon multiple={multiple} selected={!!selected} />
+              </span>
+            </Label>
+            <Label
+              className={'ds-combobox__option__label'}
+              size={size}
+              id={labelId}
+            >
+              {children}
+              {description && (
+                <ComboboxOptionDescription>
+                  {description}
+                </ComboboxOptionDescription>
+              )}
+            </Label>
+          </button>
+        </Label>
       );
     },
   ),
 );
 
 ComboboxOption.displayName = 'ComboboxOption';
+
+export { ComboboxOption };

@@ -1,5 +1,3 @@
-import { forwardRef, useContext, useMemo, useRef, useEffect } from 'react';
-import * as React from 'react';
 import {
   FloatingPortal,
   arrow,
@@ -16,11 +14,13 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
+import { forwardRef, useContext, useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 
+import { useIsomorphicLayoutEffect } from '../../utilities';
 import { Paragraph } from '../Typography';
-import { useIsomorphicLayoutEffect } from '../../hooks';
 
-import { PopoverContext } from './Popover';
+import { PopoverContext } from './PopoverRoot';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -68,13 +68,15 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       refs,
       floatingStyles,
       placement: flPlacement,
-      middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
+      middlewareData: {
+        arrow: { x: arrowX, y: arrowY } = {},
+      },
     } = useFloating({
       placement,
       open: internalOpen,
       onOpenChange: (localOpen) => {
-        onOpenChange && onOpenChange(localOpen);
-        if (!localOpen) onClose && onClose();
+        onOpenChange?.(localOpen);
+        if (!localOpen) onClose?.();
         if (!isControlled) setInternalOpen(localOpen);
       },
       whileElementsMounted: autoUpdate,
@@ -123,16 +125,13 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       <>
         {internalOpen && (
           <Container>
-            <Paragraph
-              asChild
-              size={size}
-            >
+            <Paragraph asChild size={size}>
               <div
                 ref={floatingEl}
                 className={cl(
-                  'fds-popover',
-                  `fds-popover--${variant}`,
-                  `fds-popover--${size}`,
+                  'ds-popover',
+                  `ds-popover--${variant}`,
+                  `ds-popover--${size}`,
                   className,
                 )}
                 data-placement={flPlacement}
@@ -149,8 +148,8 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
                 <div
                   ref={arrowRef}
                   className={cl(
-                    'fds-popover__arrow',
-                    `fds-popover__arrow--${arrowPlacement}`,
+                    'ds-popover__arrow',
+                    `ds-popover__arrow--${arrowPlacement}`,
                   )}
                   style={{
                     height: ARROW_HEIGHT,

@@ -1,12 +1,15 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "0.15.3",
-  "description": "Tokens for Designsystemet",
+  "version": "1.0.0-next.14",
+  "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/theme",
   "license": "MIT",
-  "main": "brand/digdir/tokens.css",
+  "exports": {
+    ".": "./brand/digdir.css",
+    "./*": "./brand/*"
+  },
   "files": [
     "brand/**",
     "*.css"
@@ -18,6 +21,6 @@
     "clean": "rimraf brand"
   },
   "devDependencies": {
-    "rimraf": "^5.0.5"
+    "rimraf": "^6.0.1"
   }
 }

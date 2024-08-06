@@ -1,15 +1,23 @@
-@layer fds.errorsummary {
-  .fds-error-summary {
-    padding: var(--fds-spacing-6) var(--fds-spacing-8);
-    border-radius: var(--fds-border_radius-large);
-    background-color: var(--fds-semantic-surface-danger-subtle);
-  }
+.ds-error-summary {
+  --dsc-errorsummary-background: var(--ds-color-danger-surface-default);
+  --dsc-errorsummary-border-radius: min(1rem, var(--ds-border-radius-lg));
+  --dsc-errorsummary-padding: var(--ds-spacing-6) var(--ds-spacing-8);
+  --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
+  --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
 
-  .fds-error-summary a {
-    color: var(--fds-semantic-text-neutral-default);
-  }
+  padding: var(--dsc-errorsummary-padding);
+  border-radius: var(--dsc-errorsummary-border-radius);
+  background-color: var(--dsc-errorsummary-background);
+}
 
-  .fds-error-summary li:last-of-type {
-    margin-bottom: 0;
-  }
+.ds-error-summary a {
+  color: var(--dsc-errorsummary-link-color);
+}
+
+.ds-error-summary li:last-of-type {
+  margin-bottom: 0;
+}
+
+.ds-error-summary__heading {
+  color: var(--dsc-errorsummary-heading-color);
 }

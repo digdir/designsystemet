@@ -29,10 +29,7 @@ const render = (props: Partial<SkipLinkProps> = {}) => {
   return renderRtl(
     <>
       <SkipLink {...allProps}>{allProps.children}</SkipLink>
-      <main
-        id={props.href?.replace('#', '')}
-        tabIndex={-1}
-      >
+      <main id={props.href?.replace('#', '')} tabIndex={-1}>
         Hovedinnhold
       </main>
     </>,

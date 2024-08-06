@@ -1,7 +1,39 @@
 # Change Log
 
+## 1.0.0-next.15
+
+### Patch Changes
+
+- chore: Fix rollup build warnings for react package ([#2187](https://github.com/digdir/designsystemet/pull/2187))
+
+- chore: Replace eslint with biomejs ([#2189](https://github.com/digdir/designsystemet/pull/2189))
+
+## 1.0.0-next.14
+
+### Patch Changes
+
+- [`2d1da9a`](https://github.com/digdir/designsystemet/commit/2d1da9a4f77a4d01b17a1987a79ea332465c1d99) Thanks [@mimarz](https://github.com/mimarz)! - Testing snapshot release
+
+- [#2184](https://github.com/digdir/designsystemet/pull/2184) [`8b2abdb`](https://github.com/digdir/designsystemet/commit/8b2abdbce4f51fd7771e0ba041515e25aa5e88a3) Thanks [@mimarz](https://github.com/mimarz)! - fix(Combobox): :bug: Button for toggling open/close should now close when open
+
+- [#2185](https://github.com/digdir/designsystemet/pull/2185) [`567329b`](https://github.com/digdir/designsystemet/commit/567329ba0c228490c95ea4c062e7045bde597a53) Thanks [@mimarz](https://github.com/mimarz)! - feat(Combobox): :sparkles: Label now supports other elements
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.0.0-rc.6](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.63.0...@digdir/designsystemet-react@1.0.0-rc.6) (2024-06-11)
+
+### Bug Fixes
+
+- **Tab:** Use correct type on Tab button ([f3f5949](https://github.com/digdir/designsystemet/commit/f3f5949d3a0137463cf511317f1c7be5d0c9138e))
+
+### Features
+
+- 🎨 V1 Release candidate ([#1849](https://github.com/digdir/designsystemet/issues/1849)) ([917ac1f](https://github.com/digdir/designsystemet/commit/917ac1f4a90b7ec2f96247ee015ab47224117d86))
+
+### Reverts
+
+- Revert "Publish" ([8b3c1a1](https://github.com/digdir/designsystemet/commit/8b3c1a153d15997e7b95d21eb146a8f456415a33))
 
 # [0.63.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.62.0...@digdir/designsystemet-react@0.63.0) (2024-06-07)
 
