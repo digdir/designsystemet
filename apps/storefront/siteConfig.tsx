@@ -180,10 +180,6 @@ export const SiteConfig = {
               name: 'Obligatoriske felt *',
               url: 'monstre/obligatoriske-og-valgfrie-felt',
             },
-            {
-              name: 'Feilmeldinger *',
-              url: 'monstre/feilmeldinger',
-            },
           ],
         },
         {
