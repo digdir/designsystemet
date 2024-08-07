@@ -15,7 +15,7 @@
     "@digdir/designsystemet-theme": "workspace:^",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@navikt/aksel-icons": "^6.13.0",
+    "@navikt/aksel-icons": "^6.14.0",
     "@next/mdx": "^14.2.5",
     "@repo/components": "workspace:^",
     "@vercel/analytics": "^1.3.1",
