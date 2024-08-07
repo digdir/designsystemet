@@ -44,7 +44,8 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const focusValue =
       value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-    const { getOrderedItems, getRovingProps } = useRovingFocus(focusValue);
+    const { getOrderedItems, getRovingProps, orientation } =
+      useRovingFocus(focusValue);
 
     const rovingProps = getRovingProps<HTMLElement>({
       onKeyDown: (e) => {
@@ -52,15 +53,39 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
         const items = getOrderedItems();
         let nextItem: RovingFocusElement | undefined;
 
-        if (e.key === 'ArrowRight') {
-          nextItem = getNextFocusableValue(items, focusValue);
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+            if (
+              (orientation === 'horizontal' && e.key === 'ArrowRight') ||
+              (orientation === 'vertical' && e.key === 'ArrowDown') ||
+              orientation === 'ambiguous'
+            ) {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+            break;
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            if (
+              (orientation === 'horizontal' && e.key === 'ArrowLeft') ||
+              (orientation === 'vertical' && e.key === 'ArrowUp') ||
+              orientation === 'ambiguous'
+            ) {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
+            break;
+          case 'Home':
+            nextItem = items[0];
+            break;
+          case 'End':
+            nextItem = items[items.length - 1];
+            break;
         }
 
-        if (e.key === 'ArrowLeft') {
-          nextItem = getPrevFocusableValue(items, focusValue);
+        if (nextItem) {
+          e.preventDefault();
+          nextItem.element.focus();
         }
-
-        nextItem?.element.focus();
       },
     });
 
