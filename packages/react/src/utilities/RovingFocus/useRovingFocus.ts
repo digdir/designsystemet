@@ -14,11 +14,15 @@ export const useRovingFocus = (value: string) => {
     setFocusableValue,
     focusableValue,
     onShiftTab,
+    horizontalArrows,
+    verticalArrows,
   } = useContext(RovingFocusContext);
 
   return {
     getOrderedItems,
     isFocusable: focusableValue === value,
+    horizontalArrows,
+    verticalArrows,
     getRovingProps: <T extends HTMLElement>(props: HTMLAttributes<T>) => ({
       ...props,
       ref: (element: HTMLElement | null) => {
