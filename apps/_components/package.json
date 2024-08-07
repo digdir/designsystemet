@@ -21,7 +21,7 @@
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "^6.13.0",
+    "@navikt/aksel-icons": "^6.14.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "react-syntax-highlighter": "^15.5.0"
   },
