@@ -57,26 +57,31 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
         const items = getOrderedItems();
         let nextItem: RovingFocusElement | undefined;
 
-        if (horizontalArrows && e.key === 'ArrowRight') {
-          nextItem = getNextFocusableValue(items, focusValue);
-        }
-        if (verticalArrows && e.key === 'ArrowDown') {
-          nextItem = getNextFocusableValue(items, focusValue);
-        }
-
-        if (horizontalArrows && e.key === 'ArrowLeft') {
-          nextItem = getPrevFocusableValue(items, focusValue);
-        }
-        if (verticalArrows && e.key === 'ArrowUp') {
-          nextItem = getPrevFocusableValue(items, focusValue);
-        }
-
-        if (e.key === 'Home') {
-          nextItem = items[0];
-        }
-
-        if (e.key === 'End') {
-          nextItem = items[items.length - 1];
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+            if (
+              (horizontalArrows && e.key === 'ArrowRight') ||
+              (verticalArrows && e.key === 'ArrowDown')
+            ) {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+            break;
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            if (
+              (horizontalArrows && e.key === 'ArrowLeft') ||
+              (verticalArrows && e.key === 'ArrowUp')
+            ) {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
+            break;
+          case 'Home':
+            nextItem = items[0];
+            break;
+          case 'End':
+            nextItem = items[items.length - 1];
+            break;
         }
 
         if (nextItem) {
