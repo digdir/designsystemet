@@ -34,8 +34,11 @@ export const colormode: Format = {
 
     const content = `{\n${allTokens.map(format).join('\n')}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
+    const body = R.isNotNil(layer)
+      ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
+      : `${selector} ${content} ${autoSelectorContent}\n`;
 
-    return header + `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`;
+    return header + body;
   },
 };
 
@@ -74,8 +77,9 @@ export const semantic: Format = {
 
     const formattedVariables = formatTokens(allTokens);
     const content = `{\n${formattedVariables.join('\n')}\n}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
-    return header + `@layer ${layer} {\n${selector} ${content}\n}\n`;
+    return header + body;
   },
 };
 
@@ -193,7 +197,8 @@ export const typography: Format = {
     const classes = formattedTokens.classes.join('\n');
     const variables = formattedTokens.variables.join('\n');
     const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
 
-    return header + `@layer ${layer} {\n${content}\n}\n`;
+    return header + body;
   },
 };

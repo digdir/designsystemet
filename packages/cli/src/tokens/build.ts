@@ -7,6 +7,7 @@ import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
 import * as configs from './configs.js';
+import { makeEntryFile } from './utils/entryfile.js';
 
 const { permutateThemes, getConfigs } = configs;
 
@@ -26,7 +27,7 @@ const sd = new StyleDictionary();
 export async function run(options: Options): Promise<void> {
   const tokensDir = options.tokens;
   const storefrontOutDir = path.resolve('../../apps/storefront/tokens');
-  const tokensOutDir = path.resolve(options.out);
+  const outPath = path.resolve(options.out);
 
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
@@ -43,9 +44,9 @@ export async function run(options: Options): Promise<void> {
   const colormodeThemes = R.filter((val) => val.typography === 'primary', themes);
   const semanticThemes = R.filter((val) => val.mode === 'light' && val.typography === 'primary', themes);
 
-  const colorModeConfigs = getConfigs(configs.colorModeVariables, tokensOutDir, tokensDir, colormodeThemes);
-  const semanticConfigs = getConfigs(configs.semanticVariables, tokensOutDir, tokensDir, semanticThemes);
-  const typographyConfigs = getConfigs(configs.typographyCSS, tokensOutDir, tokensDir, typographyThemes);
+  const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes);
+  const semanticConfigs = getConfigs(configs.semanticVariables, outPath, tokensDir, semanticThemes);
+  const typographyConfigs = getConfigs(configs.typographyCSS, outPath, tokensDir, typographyThemes);
   const storefrontConfigs = getConfigs(configs.typescriptTokens, storefrontOutDir, tokensDir, colormodeThemes);
 
   if (typographyConfigs.length > 0) {
@@ -54,20 +55,6 @@ export async function run(options: Options): Promise<void> {
     await Promise.all(
       typographyConfigs.map(async ({ theme, typography, config }) => {
         console.log(`👷 ${theme} - ${typography}`);
-
-        const typographyClasses = await sd.extend(config);
-
-        return typographyClasses.buildAllPlatforms();
-      }),
-    );
-  }
-
-  if (semanticConfigs.length > 0) {
-    console.log(`\n🍱 Building ${chalk.green('semantic')}`);
-
-    await Promise.all(
-      semanticConfigs.map(async ({ theme, config, semantic }) => {
-        console.log(`👷 ${theme} - ${semantic}`);
 
         const typographyClasses = await sd.extend(config);
 
@@ -90,6 +77,20 @@ export async function run(options: Options): Promise<void> {
     );
   }
 
+  if (semanticConfigs.length > 0) {
+    console.log(`\n🍱 Building ${chalk.green('semantic')}`);
+
+    await Promise.all(
+      semanticConfigs.map(async ({ theme, config, semantic }) => {
+        console.log(`👷 ${theme} - ${semantic}`);
+
+        const typographyClasses = await sd.extend(config);
+
+        return typographyClasses.buildAllPlatforms();
+      }),
+    );
+  }
+
   if (storefrontConfigs.length > 0 && options.preview) {
     console.log(`\n🍱 Building ${chalk.green('Storefront preview tokens')}`);
 
@@ -100,6 +101,18 @@ export async function run(options: Options): Promise<void> {
         const storefrontSD = await sd.extend(config);
 
         return storefrontSD.buildAllPlatforms();
+      }),
+    );
+  }
+
+  if (semanticConfigs.length > 0) {
+    console.log(`\n🍱 Building ${chalk.green('CSS file')}`);
+
+    await Promise.all(
+      semanticConfigs.map(async ({ theme }) => {
+        console.log(`👷 ${theme}.css`);
+
+        return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
       }),
     );
   }

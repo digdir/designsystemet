@@ -5,7 +5,6 @@ import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
-import { makeEntryFile } from './actions.js';
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, sizeRem, typographyShorthand } from './transformers.js';
@@ -29,8 +28,6 @@ StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
 StyleDictionary.registerFormat(formats.semantic);
 StyleDictionary.registerFormat(formats.typography);
-
-StyleDictionary.registerAction(makeEntryFile);
 
 const dsTransformers = [
   nameKebab.name,
@@ -95,7 +92,6 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         prefix,
         buildPath: `${outPath}/${theme}/`,
         transforms: dsTransformers,
-        actions: [makeEntryFile.name],
         files: [
           {
             destination: `color-mode/${mode}.css`,
@@ -142,7 +138,6 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         prefix,
         buildPath: `${outPath}/${theme}/`,
         transforms: dsTransformers,
-        actions: [makeEntryFile.name],
         files: [
           {
             destination: `semantic.css`,
