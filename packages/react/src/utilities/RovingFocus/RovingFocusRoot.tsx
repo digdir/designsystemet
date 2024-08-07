@@ -23,6 +23,8 @@ type RovingFocusRootBaseProps = {
   asChild?: boolean;
   /**
    * Changes what arrow keys are used to navigate the roving focus.
+   * Sets correct `aria-orientation` attribute, if `vertical` or `horizontal`.
+   *
    * @default 'horizontal'
    */
   orientation?: 'vertical' | 'horizontal' | 'ambiguous';
@@ -134,6 +136,9 @@ export const RovingFocusRoot = forwardRef<
               orderedItems.at(0)?.element.focus();
             }
           }}
+          aria-orientation={
+            orientation === 'ambiguous' ? undefined : orientation
+          }
           ref={refs}
         />
       </RovingFocusContext.Provider>
