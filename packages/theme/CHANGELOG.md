@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.15
+
+### Patch Changes
+
+- refactor: single CSS file for theme ([#2204](https://github.com/digdir/designsystemet/pull/2204))
+
 ## 1.0.0-next.14
 
 ### Patch Changes
