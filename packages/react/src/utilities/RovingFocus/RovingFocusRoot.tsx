@@ -22,17 +22,10 @@ type RovingFocusRootBaseProps = {
    */
   asChild?: boolean;
   /**
-   * If `true`, the `RovingFocusItem` will be focusable with the left and right arrow keys.
-   *
-   * @default false
+   * Changes what arrow keys are used to navigate the roving focus.
+   * @default 'horizontal'
    */
-  verticalArrows?: boolean;
-  /**
-   * If `true`, the `RovingFocusItem` will be focusable with the up and down arrow keys.
-   *
-   * @default true
-   */
-  horizontalArrows?: boolean;
+  orientation?: 'vertical' | 'horizontal' | 'ambiguous';
 } & HTMLAttributes<HTMLElement>;
 
 export type RovingFocusElement = {
@@ -46,8 +39,7 @@ export type RovingFocusProps = {
   setFocusableValue: (value: string) => void;
   focusableValue: string | null;
   onShiftTab: () => void;
-  horizontalArrows: boolean;
-  verticalArrows: boolean;
+  orientation: 'vertical' | 'horizontal' | 'ambiguous';
 };
 
 export const RovingFocusContext = createContext<RovingFocusProps>({
@@ -60,8 +52,7 @@ export const RovingFocusContext = createContext<RovingFocusProps>({
     /* intentionally empty */
   },
   focusableValue: null,
-  horizontalArrows: true,
-  verticalArrows: false,
+  orientation: 'horizontal',
 });
 
 export const RovingFocusRoot = forwardRef<
@@ -72,8 +63,7 @@ export const RovingFocusRoot = forwardRef<
     {
       activeValue,
       asChild,
-      verticalArrows = false,
-      horizontalArrows = true,
+      orientation = 'horizontal',
       onBlur,
       onFocus,
       ...rest
@@ -119,8 +109,7 @@ export const RovingFocusRoot = forwardRef<
           onShiftTab: () => {
             setIsShiftTabbing(true);
           },
-          horizontalArrows,
-          verticalArrows,
+          orientation,
         }}
       >
         <Component

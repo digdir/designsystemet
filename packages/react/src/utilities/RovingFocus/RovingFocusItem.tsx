@@ -44,12 +44,8 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const focusValue =
       value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-    const {
-      getOrderedItems,
-      getRovingProps,
-      horizontalArrows,
-      verticalArrows,
-    } = useRovingFocus(focusValue);
+    const { getOrderedItems, getRovingProps, orientation } =
+      useRovingFocus(focusValue);
 
     const rovingProps = getRovingProps<HTMLElement>({
       onKeyDown: (e) => {
@@ -61,8 +57,9 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
           case 'ArrowRight':
           case 'ArrowDown':
             if (
-              (horizontalArrows && e.key === 'ArrowRight') ||
-              (verticalArrows && e.key === 'ArrowDown')
+              (orientation === 'horizontal' && e.key === 'ArrowRight') ||
+              (orientation === 'vertical' && e.key === 'ArrowDown') ||
+              orientation === 'ambiguous'
             ) {
               nextItem = getNextFocusableValue(items, focusValue);
             }
@@ -70,8 +67,9 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
           case 'ArrowLeft':
           case 'ArrowUp':
             if (
-              (horizontalArrows && e.key === 'ArrowLeft') ||
-              (verticalArrows && e.key === 'ArrowUp')
+              (orientation === 'horizontal' && e.key === 'ArrowLeft') ||
+              (orientation === 'vertical' && e.key === 'ArrowUp') ||
+              orientation === 'ambiguous'
             ) {
               nextItem = getPrevFocusableValue(items, focusValue);
             }

@@ -87,12 +87,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
               value={value}
             />
           )}
-          <RovingFocusRoot
-            asChild
-            activeValue={value}
-            verticalArrows={true}
-            horizontalArrows={true}
-          >
+          <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
             <div className='ds-togglegroup__content' role='radiogroup'>
               {children}
             </div>
