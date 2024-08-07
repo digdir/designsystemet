@@ -59,33 +59,30 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
 
         if (horizontalArrows && e.key === 'ArrowRight') {
           nextItem = getNextFocusableValue(items, focusValue);
-          e.preventDefault();
         }
         if (verticalArrows && e.key === 'ArrowDown') {
           nextItem = getNextFocusableValue(items, focusValue);
-          e.preventDefault();
         }
 
         if (horizontalArrows && e.key === 'ArrowLeft') {
           nextItem = getPrevFocusableValue(items, focusValue);
-          e.preventDefault();
         }
         if (verticalArrows && e.key === 'ArrowUp') {
           nextItem = getPrevFocusableValue(items, focusValue);
-          e.preventDefault();
         }
 
         if (e.key === 'Home') {
           nextItem = items[0];
-          e.preventDefault();
         }
 
         if (e.key === 'End') {
           nextItem = items[items.length - 1];
-          e.preventDefault();
         }
 
-        nextItem?.element.focus();
+        if (nextItem) {
+          e.preventDefault();
+          nextItem.element.focus();
+        }
       },
     });
 
