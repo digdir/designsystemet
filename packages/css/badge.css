@@ -1,0 +1,46 @@
+.ds-badge {
+  --dsc-badge-background: var(--ds-color-accent-base-default);
+  --dsc-badge-color: var(--ds-color-accent-contrast-default);
+  --dsc-badge-padding: 0 var(--ds-spacing-1);
+  --dsc-badge-height: 14px;
+  --dsc-badge-width: 14px;
+
+  background: var(--dsc-badge-background);
+  color: var(--dsc-badge-color);
+  border-radius: var(--ds-border-radius-full);
+  display: grid;
+  place-items: center;
+  padding: var(--dsc-badge-padding);
+  height: var(--dsc-badge-height);
+  width: var(--dsc-badge-width);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: center;
+  transform: translateX(50%) translateY(-50%);
+}
+
+.ds-badge__wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.ds-badge--sm {
+  --dsc-badge-height: var(--ds-sizing-3);
+  --dsc-badge-width: var(--ds-sizing-3);
+}
+
+.ds-badge--md {
+  --dsc-badge-height: calc(var(--ds-sizing-3) + 2px);
+  --dsc-badge-width: calc(var(--ds-sizing-3) + 2px);
+}
+
+.ds-badge--lg {
+  --dsc-badge-height: var(--ds-sizing-4);
+  --dsc-badge-width: var(--ds-sizing-4);
+}
+
+.ds-badge--count {
+  --dsc-badge-height: auto;
+  --dsc-badge-width: auto;
+}
