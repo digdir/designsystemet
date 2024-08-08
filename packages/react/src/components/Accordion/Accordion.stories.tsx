@@ -15,7 +15,7 @@ export default {
 
 export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
   <Accordion.Root {...args}>
-    <Accordion.Item>
+    <Accordion.Item defaultOpen>
       <Accordion.Heading level={3}>
         Hvem kan registrere seg i Frivillighetsregisteret?
       </Accordion.Heading>
@@ -26,7 +26,7 @@ export const Preview: StoryFn<typeof Accordion.Root> = (args) => (
         til fysiske personer. Virksomheten må ha et styre.
       </Accordion.Content>
     </Accordion.Item>
-    <Accordion.Item>
+    <Accordion.Item defaultOpen>
       <Accordion.Heading level={3}>
         Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
       </Accordion.Heading>
