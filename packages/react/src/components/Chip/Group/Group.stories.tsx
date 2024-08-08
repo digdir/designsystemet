@@ -29,3 +29,17 @@ export const Preview: Story = (args) => (
 Preview.args = {
   size: 'sm',
 };
+
+export const CheckGroup: Story = (args) => (
+  <Chip.Group {...args}>
+    <Chip.Toggle selected checkmark>
+      Utsikt
+    </Chip.Toggle>
+    <Chip.Toggle>Heis</Chip.Toggle>
+    <Chip.Toggle selected checkmark>
+      Strandlinje
+    </Chip.Toggle>
+    <Chip.Toggle>Vaskemaskin</Chip.Toggle>
+    <Chip.Toggle>Dyrevennlig</Chip.Toggle>
+  </Chip.Group>
+);
