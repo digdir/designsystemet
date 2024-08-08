@@ -32,7 +32,7 @@ import { Chip } from '@digdir/designsystemet-react';
 
 <br/>
 ### `Chip.Toggle` 
-`Chip.Toggle` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. Det kan for eksempel være å klikke på en `Chip` med kategorien "Miljø" for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
+`Chip.Toggle` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. 
 <Canvas of={ChipStories.Preview} />
 <br/>
 
@@ -58,7 +58,7 @@ Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verd
 Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
 
-<Canvas of={RemovableChipStories.Preview} />
+<Canvas of={GroupChipStories.RemoveGroup} />
 <Controls of={RemovableChipStories.Preview} />
 <br/>
 

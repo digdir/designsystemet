@@ -43,3 +43,12 @@ export const CheckGroup: Story = (args) => (
     <Chip.Toggle>Dyrevennlig</Chip.Toggle>
   </Chip.Group>
 );
+
+export const RemoveGroup: Story = (args) => (
+  <Chip.Group {...args}>
+    <Chip.Removable>Norge</Chip.Removable>
+    <Chip.Removable>Danmark</Chip.Removable>
+    <Chip.Removable>Sverige</Chip.Removable>
+    <Chip.Removable>Finland</Chip.Removable>
+  </Chip.Group>
+);
