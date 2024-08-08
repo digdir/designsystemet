@@ -6,12 +6,14 @@ import * as ToggleGroupStories from './ToggleGroup.stories';
 
 # ToggleGroup
 
-En toggle group er en gruppe knapper som gjør at brukerne kan bytte mellom tilstander uten å måtte bekrefte valget. Brukerne kan skru av eller på, eller veksle mellom innhold på siden.
+Med `ToggleGroup` kan brukerne velge alternativer som påvirker innholdet på en side. Komponenten består av en gruppe knapper som henger sammen, der kun én knapp er mulig å velge om gangen.
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du `ToggleGroup`
+
+Plasser helst innholdet du skal styre rett etter `ToggleGroup` i DOM-en. Hvis ikke, bør du bruke `aria-controls` på `ToggleGroup` for å knytte komponenten til den containeren for innholdet som endrer seg.
 
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
@@ -23,10 +25,75 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 </ToggleGroup.Root>;
 ```
 
-## Only Icons
+## Eksempler
+
+<br />
+
+### Innholdet på knappene
+`ToggleGroup` kan ha tre typer innhold:
+- Bare tekst.
+- Tekst med ikon til venstre for teksten.
+- Bare ikon.
+
+<br />
+
+#### Bare ikon
+Alternativet "Bare ikon" brukes kun når du vet at brukerne vil forstå ikonet. Det kan for eksempel være ekspertbrukere eller brukere av interne tjenester, som kjenner symbolene i den aktuelle `ToggleGroup` godt. Forklar handlingene med [`Tooltip`](/docs/komponenter-tooltip--docs) når du bruker kun ikoner. 
+
 
 <Canvas of={ToggleGroupStories.OnlyIcons} />
 
-## Controlled
+### Kontrollert
+Bruk `value` på `ToggleGroup.Item` og `ToggleGroup.Root` for å kontrollere verdiene selv.
 
-<Canvas of={ToggleGroupStories.Controlled} />
+<Canvas of={ToggleGroupStories.Kontrollert} />
+
+
+## Retningslinjer for `ToggleGroup`
+
+<br />
+
+Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger du flere valg enn fem, bruker du [`Combobox`](/docs/komponenter-combobox--docs).
+
+Passer til å
+
+- filtrere innhold i lister og tabeller
+- veksle mellom datavisning og innhold, for eksempel mellom tabell og graf
+- styre hvilke felter i et skjema som skal vises
+
+<br />
+Passer ikke til å
+
+- bruke som skjemaelement – bruk heller [`Radio`](/docs/komponenter-radio--docs)
+- navigere – bruk heller [`Tabs`](/docs/komponenter-tabs--docs) hvis det dreier seg om panelnavigasjon
+<br />
+### Gi nok plass til komponenten
+
+Pass på at hele komponenten får plass på skjermen og at alle valgene er godt synlig for brukerne. I grensesnitt med liten plass, for eksempel på mobil, kan vi bruke [`Combobox`](/docs/komponenter-combobox--docs) i stedet.
+
+<br />
+
+## Tekst i komponenten 
+
+Ha gjerne med en ledetekst for gruppen, som forklarer hva valgene gjelder. Skriv tydelige tekster for valgene i komponenten, og pass på at de har samme språklige form. Ta med hint i [`Tooltip`](/docs/komponenter-tooltip--docs), særlig hvis du bare viser ikoner.
+
+<br />
+
+## Tilgjengelighet
+
+`ToggleGroup` har standard fokusindikator (ramme).
+Vi bruker `roving tabindex` for å håndtere fokusbevegelse mellom knappene.
+
+### Tastaturinteraksjon 
+
+- `Tab` Flytter fokuset til den aktive toggle-knappen.
+- `Shift+Tab` Flytter fokuset til elementet før `ToggleGroup` i tabindex.
+- `Mellomrom` Velger en knapp.
+- `Enter` Velger en knapp.
+- `Pil opp` Flytter fokuset til forrige knapp i gruppa.
+- `Pil venstre` Flytter fokuset til forrige knapp i gruppa.
+- `Pil ned` Flytter fokuset til neste knapp i gruppa.
+- `Pil høyre` Flytter fokuset til neste knapp i gruppa.
+- `Home` Går til første knapp i gruppa.
+- `End` Går til siste knapp i gruppa.
+
