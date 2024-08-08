@@ -9,14 +9,16 @@ import * as GroupChipStories from './Group/Group.stories';
 
 # Chip
 
-`Chips` er små avrundede knapper som kan brukes til å filtrere og navigere gjennom innhold eller data. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat, samt vise hvilke filter som er aktive. Ikke bruk Chip til statisk metadata for å tagge innholdselementer. Bruk heller [Tag](https://storybook.designsystemet.no/?path=/docs/komponenter-tag--docs) -komponenten dersom informasjonen ikke er klikkbar.
+`Chip` er små, interaktive komponenter som lar brukerne styre hvordan de vil se innhold. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat og vise hvilke filter som er aktive. 
 
+- Ikke bruk `Chip` til å merke innhold med kategori/emne som ikke er interaktivt. Bruk heller [`Tag`](/docs/komponenter-tag--docs)-komponenten dersom kategori/emne ikke er klikkbart.
 
+- Ikke bruk `Chip` som varsler for antall nye elementer eller status. Bruk heller [`Badge`](/docs/komponenter-badge--docs)-komponenten.
 
 <Primary />
 <Controls />
 
-## Slik  bruker du `Chips`
+## Slik  bruker du `Chip`
 
 ```tsx
 import { Chip } from '@digdir/designsystemet-react';
@@ -24,41 +26,63 @@ import { Chip } from '@digdir/designsystemet-react';
 <Chip.Toggle>You are using the Chip component!</Chip.Toggle>;
 ```
 
-Chip-komponenten består av flere komponenter. Disse er:
+<br/>
 
-- `Chip.Toggle`
-- `Chip.Removable`
-- `Chip.Group`
+## Eksempler
 
-Hvordan komponentene som nevnes over brukes kan du se i eksemplene under.
+<br/>
+### `Chip.Toggle` 
+`Chip.Toggle` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. Det kan for eksempel være å klikke på en `Chip` med kategorien "Miljø" for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
+<Canvas of={ChipStories.Preview} />
+<br/>
 
-### Chip.Toggle
+### `Chip.Group`
 
-Denne kodeblokken representerer en enkel Chip med teksten "Nynorsk".
-
-<Canvas of={ToggleChipStories.Preview} />
-<Controls of={ToggleChipStories.Preview} />
-
-### Chip.Removable
-
-Denne kodeblokken representerer en fjernbar Chip med teksten "Nynorsk". Denne komponenten viser også et kryss som indikerer at den kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
-i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
-
-<Canvas of={RemovableChipStories.Preview} />
-<Controls of={RemovableChipStories.Preview} />
-
-### Chip.Group
-
-Denne kodeblokken viser hvordan du grupperer Chips ved hjelp av Chip.Group-komponenten. Eksempelet under inneholder to fjernbare brikker med tekstene "Nynorsk" og "Bokmål", men her kan du bruke Chips varianten som passer deg best.
+Denne kodeblokken viser hvordan du grupperer `Chip` ved hjelp av `Chip.Group`. 
 
 <Canvas of={GroupChipStories.Preview} />
 <Controls of={GroupChipStories.Preview} />
 
 
-## Varianter
+### `Chip.Toggle` med `selected=true` 
+Vi bruker `Chip` med hake som alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data. Innholdet endres til å vise kun det som er valgt.
+<Canvas of={ChipStories.Preview} />
+<br/>
+### `Chip.Removable`
+Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verdier. Det kan for eksempel være filter som er satt, eller verdier som brukerne selv har skrevet inn i et tekstfelt.
 
-Chip eksisterer i ulike varianter:
+Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
+i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett nynorsk"`.
 
-- `Chip.Toggle` er et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet og når handlingen ikke krever like mye oppmerksomhet som vanlige knapper. Det kan for eksempel være å klikke på en Chip for så å bli sendt til en søkeresultatside med filtrering på denne kategorien.
-- `Chip.Toggle` med `selected=true` er alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data, når det skal tilbys et valg mellom flere ulike opsjoner. Innholdet endres til å vise kun det som er valgt.
-- `Chip.Removable` er valgte verdier som brukeren kan fjerne. For eksempel filter som har blitt aktivert i et søk som kan fjernes igjen, eller som har blitt valgt i en `Multiselect`.
+<Canvas of={RemovableChipStories.Preview} />
+<Controls of={RemovableChipStories.Preview} />
+<br/>
+
+
+
+<br/>
+
+## Retningslinjer for `Chip`
+
+`Chip` lar brukerne styre hvordan de vil vise innhold. `Chip` kan vises på en eller flere rekker, de tilpasser seg den plassen de får.
+
+Unngå å plassere `Chip` vertikalt. Velg heller [`Checkbox`](/docs/komponenter-checkbox--docs) eller [`Radio`](/docs/komponenter-radio--docs) hvis du vil ha alternativer under hverandre.
+
+Passer til å
+- filtrere informasjon, for eksempel i lister eller tabeller
+- vise hvilke filtre som er valgt
+
+Passer ikke til
+- menyer, som sidemenyer eller hovedmenyer
+- ikke klikkbare kategorier/emner (bruk heller [`Tag`](/docs/komponenter-tag--docs))
+- varsler for antall nye elementer eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs))
+
+<br/>
+
+## Tekst i komponenten
+Chips bør ha så få ord som mulig, helst bare ett eller to.
+
+<br/>
+
+## Tilgjengelighet
+Hvis deler av en side blir oppdatert samtidig som brukerne gjør noe på siden, må vi passe på at brukere med skjermleser får beskjed om det. Vi kan bruke en `ARIA live region` til det, som kan vise antall treff eller andre endringer.
