@@ -22,7 +22,10 @@ export const AnimateHeight = ({
   style,
   ...rest
 }: AnimateHeightProps) => {
-  const [height, setHeight] = useState<number>(0);
+  /* We don't know the initial height we want to start with.
+  It depends on if it should start open or not, therefore we set height to `undefined`,
+  so we don't get any layoutshift on first render */
+  const [height, setHeight] = useState<number | undefined>(undefined);
   const prevOpen = usePrevious(open);
   const openOrClosed: InternalState = open ? 'open' : 'closed';
   const [state, setState] = useState<InternalState>(openOrClosed);

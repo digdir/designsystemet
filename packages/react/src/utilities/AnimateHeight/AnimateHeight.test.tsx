@@ -35,7 +35,7 @@ describe('AnimateHeight', () => {
   it('Appends given style to root element', () => {
     const style = { color: 'rgb(255, 0, 0)' };
     const { container } = render({ style });
-    expect(container.firstChild).toHaveStyle({ height: 0 });
+    expect(container.firstChild).toHaveStyle({ height: undefined });
     expect(container.firstChild).toHaveStyle(style);
   });
 
