@@ -28,6 +28,36 @@
   transform: translateX(50%) translateY(-50%);
 }
 
+.ds-bade--accent {
+  --dsc-badge-background: var(--ds-color-accent-base-default);
+  --dsc-badge-color: var(--ds-color-accent-contrast-default);
+}
+
+.ds-badge--info {
+  --dsc-badge-background: var(--ds-color-info-base-default);
+  --dsc-badge-color: var(--ds-color-info-contrast-default);
+}
+
+.ds-badge--success {
+  --dsc-badge-background: var(--ds-color-success-base-default);
+  --dsc-badge-color: var(--ds-color-success-contrast-default);
+}
+
+.ds-badge--warning {
+  --dsc-badge-background: var(--ds-color-warning-base-default);
+  --dsc-badge-color: var(--ds-color-warning-contrast-default);
+}
+
+.ds-badge--danger {
+  --dsc-badge-background: var(--ds-color-danger-base-default);
+  --dsc-badge-color: var(--ds-color-danger-contrast-default);
+}
+
+.ds-badge--neutral {
+  --dsc-badge-background: var(--ds-color-neutral-base-default);
+  --dsc-badge-color: var(--ds-color-neutral-contrast-default);
+}
+
 .ds-badge--sm {
   --dsc-badge-height: var(--ds-sizing-3);
   --dsc-badge-width: var(--ds-sizing-3);

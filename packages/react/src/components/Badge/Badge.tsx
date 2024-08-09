@@ -54,6 +54,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             className={cl(
               'ds-badge',
               `ds-badge--${size}`,
+              `ds-badge--${color}`,
               count && 'ds-badge--count',
               children && 'ds-badge--float',
             )}

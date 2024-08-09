@@ -19,4 +19,5 @@ Preview.args = {
   /* children: <CogIcon fontSize='2rem' />, */
   count: 10,
   maxCount: 9,
+  color: 'accent',
 };
