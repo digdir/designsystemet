@@ -3,12 +3,23 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { HeartFillIcon, PencilIcon, VideoFillIcon } from '@navikt/aksel-icons';
 import { Tabs } from '../Tabs';
 import { Badge } from './Badge';
+import type { BadgeProps } from './Badge';
 
 type Story = StoryFn<typeof Badge>;
 
 const meta: Meta<typeof Badge> = {
   title: 'Komponenter/Badge',
   component: Badge,
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+    },
+    color: {
+      options: ['accent', 'info', 'success', 'warning', 'danger', 'neutral'],
+      control: { type: 'select' },
+    },
+  },
 };
 
 export default meta;
