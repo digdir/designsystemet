@@ -8,3 +8,34 @@ import * as BadgeStories from './Badge.stories';
 
 <Primary />
 <Controls />
+
+## Bruk
+
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
+
+/* Inline */
+<Badge count={5} />
+
+/* Flytende over element */
+<Badge count={5}>
+  <Elem />
+</Badge>
+
+/* Flytende over element som dot */
+<Badge>
+  <Elem />
+</Badge>
+```
+
+## Show status
+
+Dersom du ikke sender inn `count`, viser kun en sirkel. Dette kan brukes for å vise status.
+
+<Canvas of={BadgeStories.Status} />
+
+## I tabs
+
+Du kan bruke komponenten inline eller flytene over et element.
+
+<Canvas of={BadgeStories.InTabs} />

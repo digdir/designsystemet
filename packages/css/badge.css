@@ -54,8 +54,8 @@
 }
 
 .ds-badge--neutral {
-  --dsc-badge-background: var(--ds-color-neutral-base-default);
-  --dsc-badge-color: var(--ds-color-neutral-contrast-default);
+  --dsc-badge-background: var(--ds-color-neutral-surface-default);
+  --dsc-badge-color: var(--ds-color-neutral-text-default);
 }
 
 .ds-badge--sm {
