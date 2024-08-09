@@ -1,4 +1,4 @@
-import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 
 import { withThemeByDataAttribute } from '@storybook/addon-themes';

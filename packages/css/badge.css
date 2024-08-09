@@ -13,16 +13,19 @@
   padding: var(--dsc-badge-padding);
   height: var(--dsc-badge-height);
   width: var(--dsc-badge-width);
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform-origin: center;
-  transform: translateX(50%) translateY(-50%);
 }
 
 .ds-badge__wrapper {
   display: inline-block;
   position: relative;
+}
+
+.ds-badge--float {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: center;
+  transform: translateX(50%) translateY(-50%);
 }
 
 .ds-badge--sm {

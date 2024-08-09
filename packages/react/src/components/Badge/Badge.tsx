@@ -45,10 +45,9 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     { color = 'accent', size = 'md', count, maxCount, children, ...props },
     ref,
   ) => {
-    const [displayCount, setDisplayCount] = useState(count);
-
     return (
       <div className='ds-badge__wrapper'>
+        {children}
         <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
           <span
             {...props}
@@ -56,13 +55,13 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               'ds-badge',
               `ds-badge--${size}`,
               count && 'ds-badge--count',
+              children && 'ds-badge--float',
             )}
             ref={ref}
           >
-            {count}
+            {maxCount && count && count > maxCount ? `${maxCount}+` : count}
           </span>
         </Paragraph>
-        {children}
       </div>
     );
   },

@@ -16,7 +16,7 @@ export const Preview: Story = (args) => <Badge {...args}></Badge>;
 
 Preview.args = {
   size: 'md',
-  children: <CogIcon fontSize='3rem' />,
+  /* children: <CogIcon fontSize='2rem' />, */
   count: 10,
   maxCount: 9,
 };
