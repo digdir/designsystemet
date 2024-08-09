@@ -115,6 +115,12 @@ const Footer = () => {
                 width={600}
                 src='/img/logos/bronnoysund.svg'
               ></Image>
+              <Image
+                alt='Mattilsynet logo'
+                height={100}
+                width={600}
+                src='/img/logos/mattilsynet.svg'
+              ></Image>
             </div>
             <NextLink
               href='mailto:designsystem@digdir.no'
