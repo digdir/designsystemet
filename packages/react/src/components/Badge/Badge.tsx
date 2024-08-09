@@ -42,15 +42,22 @@ const paragraphSizeMap: {
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
-    { color = 'accent', size = 'md', count, maxCount, children, ...props },
+    {
+      color = 'accent',
+      size = 'md',
+      count,
+      maxCount,
+      children,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     return (
-      <div className='ds-badge__wrapper'>
+      <div className={cl('ds-badge__wrapper', className)}>
         {children}
         <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
           <span
-            {...props}
             className={cl(
               'ds-badge',
               `ds-badge--${size}`,
@@ -59,6 +66,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               children && 'ds-badge--float',
             )}
             ref={ref}
+            {...rest}
           >
             {maxCount && count && count > maxCount ? `${maxCount}+` : count}
           </span>
