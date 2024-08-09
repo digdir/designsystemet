@@ -42,3 +42,4 @@
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
+@import url('./badge.css') layer(ds.components);
