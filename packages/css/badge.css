@@ -28,6 +28,13 @@
   transform: translateX(50%) translateY(-50%);
 }
 
+[dir='rtl'] .ds-badge--float {
+  top: 0;
+  left: 0;
+  right: auto;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .ds-bade--accent {
   --dsc-badge-background: var(--ds-color-accent-base-default);
   --dsc-badge-color: var(--ds-color-accent-contrast-default);
