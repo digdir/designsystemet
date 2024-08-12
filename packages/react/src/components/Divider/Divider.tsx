@@ -11,17 +11,15 @@ export type DividerProps = {
 } & React.HTMLAttributes<HTMLHRElement>;
 
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(
-  ({ color = 'default', className, ...rest }, ref) => {
-    return (
-      <hr
-        className={cl('ds-divider', `ds-divider--${color}`, className)}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
+  ({ color = 'default', className, ...rest }, ref) => (
+    // biome-ignore lint/a11y/noAriaHiddenOnFocusable: <hr> is not foucsable but biome thinks it is
+    <hr
+      aria-hidden='true'
+      className={cl('ds-divider', `ds-divider--${color}`, className)}
+      ref={ref}
+      {...rest}
+    />
+  ),
 );
-
-Divider.displayName = 'Divider';
 
 Divider.displayName = 'Divider';
