@@ -1,5 +1,6 @@
 .ds-breadcrumbs {
   /* TODO CODE: Discuss setting --md sizes here to see all CSS properties gathered, and avoid repeading code */
+
   /* TODO CODE: Discuss setting CSS properties on :root */
   --dsc-breadcrumbs-gap-block: var(--ds-spacing-2);
   --dsc-breadcrumbs-gap-inline: var(--ds-spacing-2);
@@ -28,7 +29,7 @@
 
 .ds-breadcrumbs__item:where(:not(:last-child))::after,
 .ds-breadcrumbs > .ds-breadcrumbs__link::before {
-  background: currentColor;
+  background: currentcolor;
   content: '';
   display: inline-block;
   height: var(--dsc-breadcrumbs-chevron-size);
@@ -63,6 +64,7 @@
   .ds-breadcrumbs > .ds-breadcrumbs__nav:where(:not(:only-child)) {
     display: none;
   }
+
   .ds-breadcrumbs > .ds-breadcrumbs__link {
     display: block;
     width: fit-content;
