@@ -47,7 +47,7 @@
     "hsluv": "^1.0.1",
     "jscodeshift": "^0.16.1",
     "object-hash": "^3.0.0",
-    "postcss": "^8.4.40",
+    "postcss": "^8.4.41",
     "prompts": "^2.4.2",
     "ramda": "^0.30.1",
     "rimraf": "^6.0.1",

@@ -60,7 +60,7 @@ export const Controlled: StoryFn<typeof Search> = () => {
 export const OnlyIcon: StoryFn<typeof Search> = () => {
   return (
     <Search
-      label='Search after content'
+      label='Search for content'
       clearButtonLabel='Empty'
       searchButtonLabel={
         <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
@@ -87,7 +87,7 @@ export const Form: StoryFn<typeof Search> = () => {
         }}
       >
         <Search
-          label='Search after content'
+          label='Search for content'
           clearButtonLabel='Empty'
           onChange={(e) => setValue(e.target.value)}
           searchButtonLabel={

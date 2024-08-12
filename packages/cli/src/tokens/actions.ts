@@ -27,7 +27,7 @@ export const makeEntryFile: Action = {
 
     const generateImportUrls = R.pipe(
       sortLightmodeFirst,
-      R.map((file): string => `@import url('./${theme}/${file.toString()}');`),
+      R.map((file): string => `@import url('${theme}/${file.toString()}');`),
       R.join('\n'),
     );
 
