@@ -44,7 +44,8 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const focusValue =
       value ?? (typeof rest.children == 'string' ? rest.children : '');
 
-    const { getOrderedItems, getRovingProps } = useRovingFocus(focusValue);
+    const { getOrderedItems, getRovingProps, orientation } =
+      useRovingFocus(focusValue);
 
     const rovingProps = getRovingProps<HTMLElement>({
       onKeyDown: (e) => {
@@ -52,15 +53,46 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
         const items = getOrderedItems();
         let nextItem: RovingFocusElement | undefined;
 
-        if (e.key === 'ArrowRight') {
-          nextItem = getNextFocusableValue(items, focusValue);
+        switch (orientation) {
+          case 'horizontal':
+            if (e.key === 'ArrowRight') {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+
+            if (e.key === 'ArrowLeft') {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
+            break;
+          case 'vertical':
+            if (e.key === 'ArrowDown') {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+
+            if (e.key === 'ArrowUp') {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
+            break;
+          case 'ambiguous':
+            if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+
+            if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
         }
 
-        if (e.key === 'ArrowLeft') {
-          nextItem = getPrevFocusableValue(items, focusValue);
+        if (e.key === 'Home') {
+          nextItem = items[0];
+        }
+        if (e.key === 'End') {
+          nextItem = items[items.length - 1];
         }
 
-        nextItem?.element.focus();
+        if (nextItem) {
+          e.preventDefault();
+          nextItem.element.focus();
+        }
       },
     });
 

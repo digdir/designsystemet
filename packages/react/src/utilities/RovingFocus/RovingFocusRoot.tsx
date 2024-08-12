@@ -21,6 +21,13 @@ type RovingFocusRootBaseProps = {
    * @default false
    */
   asChild?: boolean;
+  /**
+   * Changes what arrow keys are used to navigate the roving focus.
+   * Sets correct `aria-orientation` attribute, if `vertical` or `horizontal`.
+   *
+   * @default 'horizontal'
+   */
+  orientation?: 'vertical' | 'horizontal' | 'ambiguous';
 } & HTMLAttributes<HTMLElement>;
 
 export type RovingFocusElement = {
@@ -34,6 +41,7 @@ export type RovingFocusProps = {
   setFocusableValue: (value: string) => void;
   focusableValue: string | null;
   onShiftTab: () => void;
+  orientation: 'vertical' | 'horizontal' | 'ambiguous';
 };
 
 export const RovingFocusContext = createContext<RovingFocusProps>({
@@ -46,76 +54,91 @@ export const RovingFocusContext = createContext<RovingFocusProps>({
     /* intentionally empty */
   },
   focusableValue: null,
+  orientation: 'horizontal',
 });
 
 export const RovingFocusRoot = forwardRef<
   HTMLElement,
   RovingFocusRootBaseProps
->(({ activeValue, asChild, onBlur, onFocus, ...rest }, ref) => {
-  const Component = asChild ? Slot : 'div';
+>(
+  (
+    {
+      activeValue,
+      asChild,
+      orientation = 'horizontal',
+      onBlur,
+      onFocus,
+      ...rest
+    },
+    ref,
+  ) => {
+    const Component = asChild ? Slot : 'div';
 
-  const [focusableValue, setFocusableValue] = useState<string | null>(null);
-  const [isShiftTabbing, setIsShiftTabbing] = useState(false);
-  const elements = useRef(new Map<string, HTMLElement>());
-  const myRef = useRef<HTMLElement>();
+    const [focusableValue, setFocusableValue] = useState<string | null>(null);
+    const [isShiftTabbing, setIsShiftTabbing] = useState(false);
+    const elements = useRef(new Map<string, HTMLElement>());
+    const myRef = useRef<HTMLElement>();
 
-  const refs = useMergeRefs([ref, myRef]);
+    const refs = useMergeRefs([ref, myRef]);
 
-  const getOrderedItems = (): RovingFocusElement[] => {
-    if (!myRef.current) return [];
-    const elementsFromDOM = Array.from(
-      myRef.current.querySelectorAll<HTMLElement>(
-        '[data-roving-tabindex-item]',
-      ),
+    const getOrderedItems = (): RovingFocusElement[] => {
+      if (!myRef.current) return [];
+      const elementsFromDOM = Array.from(
+        myRef.current.querySelectorAll<HTMLElement>(
+          '[data-roving-tabindex-item]',
+        ),
+      );
+
+      return Array.from(elements.current)
+        .sort(
+          (a, b) =>
+            elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
+        )
+        .map(([value, element]) => ({ value, element }));
+    };
+
+    useEffect(() => {
+      setFocusableValue(activeValue ?? null);
+    }, [activeValue]);
+
+    return (
+      <RovingFocusContext.Provider
+        value={{
+          elements,
+          getOrderedItems,
+          focusableValue,
+          setFocusableValue,
+          onShiftTab: () => {
+            setIsShiftTabbing(true);
+          },
+          orientation,
+        }}
+      >
+        <Component
+          {...rest}
+          tabIndex={isShiftTabbing ? -1 : 0}
+          onBlur={(e: FocusEvent<HTMLElement>) => {
+            onBlur?.(e);
+            setIsShiftTabbing(false);
+            setFocusableValue(activeValue ?? null);
+          }}
+          onFocus={(e: FocusEvent<HTMLElement>) => {
+            onFocus?.(e);
+            if (e.target !== e.currentTarget) return;
+            const orderedItems = getOrderedItems();
+            if (orderedItems.length === 0) return;
+
+            if (focusableValue != null) {
+              elements.current.get(focusableValue)?.focus();
+            } else if (activeValue != null) {
+              elements.current.get(activeValue)?.focus();
+            } else {
+              orderedItems.at(0)?.element.focus();
+            }
+          }}
+          ref={refs}
+        />
+      </RovingFocusContext.Provider>
     );
-
-    return Array.from(elements.current)
-      .sort(
-        (a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
-      )
-      .map(([value, element]) => ({ value, element }));
-  };
-
-  useEffect(() => {
-    setFocusableValue(activeValue ?? null);
-  }, [activeValue]);
-
-  return (
-    <RovingFocusContext.Provider
-      value={{
-        elements,
-        getOrderedItems,
-        focusableValue,
-        setFocusableValue,
-        onShiftTab: () => {
-          setIsShiftTabbing(true);
-        },
-      }}
-    >
-      <Component
-        {...rest}
-        tabIndex={isShiftTabbing ? -1 : 0}
-        onBlur={(e: FocusEvent<HTMLElement>) => {
-          onBlur?.(e);
-          setIsShiftTabbing(false);
-          setFocusableValue(activeValue ?? null);
-        }}
-        onFocus={(e: FocusEvent<HTMLElement>) => {
-          onFocus?.(e);
-          if (e.target !== e.currentTarget) return;
-          const orderedItems = getOrderedItems();
-          if (orderedItems.length === 0) return;
-
-          if (focusableValue != null) {
-            elements.current.get(focusableValue)?.focus();
-          } else if (activeValue != null) {
-            elements.current.get(activeValue)?.focus();
-          } else {
-            orderedItems.at(0)?.element.focus();
-          }
-        }}
-        ref={refs}
-      />
-    </RovingFocusContext.Provider>
-  );
-});
+  },
+);
