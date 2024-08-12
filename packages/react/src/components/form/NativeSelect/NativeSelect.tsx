@@ -58,7 +58,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       selectProps,
       descriptionId,
       errorId,
-      readOnly = false,
+      readOnly,
       size = 'md',
     } = useNativeSelect(props);
 
@@ -105,7 +105,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           )}
           <div className='ds-native-select__wrapper'>
             <select
-              disabled={disabled || readOnly}
+              disabled={disabled}
               ref={ref}
               size={htmlSize}
               className={cl(

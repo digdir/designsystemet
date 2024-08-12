@@ -1,8 +1,4 @@
-import {
-  FloatingFocusManager,
-  useFloating,
-  useMergeRefs,
-} from '@floating-ui/react';
+import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { DialogHTMLAttributes } from 'react';
@@ -48,7 +44,6 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
 
     // This local ref is used to make sure the modal works without a ModalRoot
     const modalDialogRef = useRef<HTMLDialogElement>(null);
-    const { context } = useFloating();
     const { modalRef, setOpen, setCloseModal } = useContext(ModalContext);
     const open = useModalState(modalDialogRef);
 
@@ -119,12 +114,7 @@ export const ModalDialog = forwardRef<HTMLDialogElement, ModalDialogProps>(
         onCancel={onCancel}
         {...rest}
       >
-        {open && (
-          <FloatingFocusManager context={context}>
-            {/* biome-ignore lint/complexity/noUselessFragments: Workaround for @radix-ui/react-slot support */}
-            <>{children}</>
-          </FloatingFocusManager>
-        )}
+        {children}
       </Component>
     );
   },
