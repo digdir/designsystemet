@@ -53,6 +53,7 @@ export const useNativeSelect: UseNativeSelect = (props) => {
       },
       onKeyDown: (e) => {
         if (readOnly) {
+          if (e.key === 'Tab') return;
           e.preventDefault();
           return;
         }
