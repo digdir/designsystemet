@@ -11,6 +11,7 @@
 @import url('./baseline/typography/error-message.css') layer(ds.base.typography);
 @import url('./utilities.css') layer(ds.utilities);
 @import url('./box.css') layer(ds.components);
+@import url('./breadcrumbs.css') layer(ds.components);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);

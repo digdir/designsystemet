@@ -1,0 +1,77 @@
+import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
+
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+`Breadcrumb` er en navigasjon med synlig søkebane. Vi bruker denne komponenten til å hjelpe brukerne å forstå hvor de er i en struktur, for eksempel på en nettside. Da kan de lettere bytte mellom de ulike nivåene i strukturen.
+
+<Primary />
+<Controls of={BreadcrumbsStories.Preview} />
+
+## Slik bruker du `Breadcrumb`
+
+Den siste lenken i brødsmulestien blir automatisk markert med `aria-current="page"`
+
+```tsx
+<Breadcrumbs.Root>
+  <Breadcrumbs.List>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/niva-3/">Nivå 3</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/niva-3/niva-4/">Nivå 4</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+  </Breadcrumbs.List>
+</Breadcrumbs.Root>
+```
+
+### Varianter av `Breadcrumb`
+
+Oppsummering av de ulike variantene, hvis nødvendig.
+
+[Eksempler]
+
+### Andre eksempler på denne komponenten
+
+Gjelder hvordan komponenten kan brukes sammen med andre komponenter og stiler.
+
+[Eksempel]
+eventuelt "Gjør dette"- og "Ikke gjør dette"-eksempler.
+
+## Retningslinjer for `breadcrumb`
+
+En navigasjon med synlig søkebane vises vanligvis høyt oppe på nettsiden, gjerne rett under sidetittelen. 
+
+Det er først når det er tre eller flere nivåer at det er behov for en brødsmulesti. 
+
+Hvis vi bruker `breadcrumb` i applikasjoner, skal vi vise den på alle sider som ikke er forsiden. Alle elementene i brødsmulestien skal være lenker, men siden brukerne står på, skal se ut som vanlig tekst. 
+
+Hvis vi bare har to nivåer, er det bedre å bruke `Navlink`.
+
+Vi bruker **ikke** brødsmulestier til lineær navigasjon, for eksempel for de ulike stegene i en arbeidsflyt et skjema.
+
+
+## Tilgjengelighet
+
+# ⚠️ NOE OM ARIA-LABEL HER
+
+Det skal være enkelt for brukerne å benytte seg av brødsmulestien. Pass derfor på at det ikke ligger andre interaktive elementer for nær den.
+
+`Breadcrumb` kan ha flere interaktive elementer som de som navigerer med tastaturet må komme seg forbi på en enkel måte. Pass derfor på at du legger inn at `[Skiplink](https://jokul.fremtind.no/universell-utforming/guide/#uu/hoppe-over-blokker)` til hovedinnholdet også skal hoppe over brødsmulestien.
+
+### Skjule brødsmulestien på mobil
+
+Hvis du har lang navigasjon, kan du sette opp komponenten til bare å vise første og siste del av søkebanen på mobil. (Noe om hvordan vi gjør det hos oss, med hvilken collapse-kode?)
+
+### Brødsmulestier på mørk bakgrunn
+
+Pass på at du inverterer til hvite lenker og piler på mørk bakgrunn, for eksempel i overskrifter, tilpassede komponenter og mønstre med mørk bakgrunn. Bakgrunnskontrasten må være minst 4.5:1 med hvit.
