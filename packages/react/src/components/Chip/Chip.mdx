@@ -56,7 +56,7 @@ Vi bruker `Chip` med hake som alternativer til vanlige radiobuttons og checkboxe
 Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verdier. Det kan for eksempel være filter som er satt, eller verdier som brukerne selv har skrevet inn i et tekstfelt.
 
 Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
-i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett Danmark"`.
+i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
 
 <Canvas of={GroupChipStories.RemoveGroup} />
 <Controls of={RemovableChipStories.Preview} />
