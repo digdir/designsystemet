@@ -14,25 +14,22 @@ export type BreadcrumbsNavProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const BreadcrumbsNav = forwardRef<
-HTMLElement,
-  BreadcrumbsNavProps
->(({
-  ['aria-label']: ariaLabel = 'Du er her:',
-  asChild,
-  className,
-  ...rest
-}, ref) => {
-  const Component = asChild ? Slot : 'nav';
+export const BreadcrumbsNav = forwardRef<HTMLElement, BreadcrumbsNavProps>(
+  (
+    { 'aria-label': ariaLabel = 'Du er her:', asChild, className, ...rest },
+    ref,
+  ) => {
+    const Component = asChild ? Slot : 'nav';
 
-  return (
-    <Component
-      aria-label={ariaLabel}
-      ref={ref}
-      className={cl('ds-breadcrumbs__nav', className)}
-      {...rest}
-    />
-  );
-});
+    return (
+      <Component
+        aria-label={ariaLabel}
+        ref={ref}
+        className={cl('ds-breadcrumbs__nav', className)}
+        {...rest}
+      />
+    );
+  },
+);
 
 BreadcrumbsNav.displayName = 'BreadcrumbsNav';

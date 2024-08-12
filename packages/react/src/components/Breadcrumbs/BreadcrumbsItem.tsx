@@ -17,10 +17,7 @@ export const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(
     return (
       <Component
         ref={ref}
-        className={cl(
-          'ds-breadcrumbs__item',
-          className
-        )}
+        className={cl('ds-breadcrumbs__item', className)}
         {...rest}
       />
     );
@@ -28,4 +25,3 @@ export const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(
 );
 
 BreadcrumbsItem.displayName = 'BreadcrumbsItem';
-

@@ -1,5 +1,5 @@
-import { Slot } from '@radix-ui/react-slot';
 import { inner, useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
 

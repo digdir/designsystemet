@@ -9,20 +9,21 @@ export type BreadcrumbsLinkProps = LinkProps & {
   mobileLabel?: string;
 };
 
-export const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(
-  ({ asChild, className, mobileLabel, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'a';
+export const BreadcrumbsLink = forwardRef<
+  HTMLAnchorElement,
+  BreadcrumbsLinkProps
+>(({ asChild, className, mobileLabel, ...rest }, ref) => {
+  const Component = asChild ? Slot : 'a';
 
-    return (
-      <Link asChild>
-        <Component
-          className={cl(`ds-breadcrumbs__link`, className)}
-          ref={ref}
-          {...rest}
-        />
-      </Link>
-    );
-  },
-);
+  return (
+    <Link asChild>
+      <Component
+        className={cl(`ds-breadcrumbs__link`, className)}
+        ref={ref}
+        {...rest}
+      />
+    </Link>
+  );
+});
 
 BreadcrumbsLink.displayName = 'BreadcrumbsLink';
