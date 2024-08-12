@@ -1,5 +1,4 @@
 .ds-breadcrumbs {
-  /* TODO CODE: Discuss setting CSS properties on :root */
   --dsc-breadcrumbs-spacing: var(--ds-spacing-2);
   --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
   --dsc-breadcrumbs-link-color: inherit;
@@ -48,8 +47,7 @@
   transform: rotate(180deg);
 }
 
-/* TODO CODE: Discuss double selector to overwrite .ds-link */
-.ds-breadcrumbs__link.ds-breadcrumbs__link {
+.ds-breadcrumbs__link {
   --dsc-link-color: var(--dsc-breadcrumbs-link-color);
   --dsc-link-color-visited: var(--dsc-breadcrumbs-link-color);
 }
