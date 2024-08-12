@@ -23,6 +23,10 @@ const meta: Meta<typeof Badge> = {
       options: ['accent', 'info', 'success', 'warning', 'danger', 'neutral'],
       control: { type: 'select' },
     },
+    placement: {
+      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      control: { type: 'radio' },
+    },
   },
 };
 
