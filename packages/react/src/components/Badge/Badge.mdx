@@ -6,6 +6,8 @@ import * as BadgeStories from './Badge.stories';
 
 # Badge
 
+`Badge` er en ikke-interaktiv komponent som viser status med eller uten tall.
+
 <Primary />
 <Controls />
 
@@ -28,7 +30,11 @@ import { Badge } from '@digdir/designsystemet-react';
 </Badge>
 ```
 
-## Show status
+# Flytende over element
+
+<Canvas of={BadgeStories.Floating} />
+
+## Vise staus
 
 Dersom du ikke sender inn `count`, viser kun en sirkel. Dette kan brukes for å vise status.
 

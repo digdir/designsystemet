@@ -16,23 +16,42 @@
 }
 
 .ds-badge__wrapper {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
+  width: fit-content;
+  height: fit-content;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .ds-badge--float {
+  transform-origin: center;
   position: absolute;
+}
+
+.ds-badge--float.ds-badge--top-right {
   top: 0;
   right: 0;
-  transform-origin: center;
   transform: translateX(50%) translateY(-50%);
 }
 
-[dir='rtl'] .ds-badge--float {
+.ds-badge--float.ds-badge--top-left {
   top: 0;
   left: 0;
-  right: auto;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.ds-badge--float.ds-badge--bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translateX(50%) translateY(50%);
+}
+
+.ds-badge--float.ds-badge--bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translateX(-50%) translateY(50%);
 }
 
 .ds-bade--accent {

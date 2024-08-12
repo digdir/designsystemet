@@ -1,9 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { HeartFillIcon, PencilIcon, VideoFillIcon } from '@navikt/aksel-icons';
+import {
+  EnvelopeClosedFillIcon,
+  HeartFillIcon,
+  PencilIcon,
+  VideoFillIcon,
+} from '@navikt/aksel-icons';
 import { Tabs } from '../Tabs';
 import { Badge } from './Badge';
-import type { BadgeProps } from './Badge';
 
 type Story = StoryFn<typeof Badge>;
 
@@ -32,6 +36,28 @@ Preview.args = {
   maxCount: 9,
   color: 'accent',
 };
+
+export const Floating: Story = (args) => (
+  <div
+    style={{
+      display: 'flex',
+      gap: 'var(--ds-spacing-6)',
+    }}
+  >
+    <Badge color='accent' size='md' placement='top-right'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='top-left'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='bottom-right'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='bottom-left'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+  </div>
+);
 
 export const Status: Story = (args) => (
   <div

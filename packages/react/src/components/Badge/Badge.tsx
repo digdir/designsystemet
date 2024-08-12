@@ -1,10 +1,5 @@
 import cl from 'clsx/lite';
-import {
-  type HTMLAttributes,
-  type ReactNode,
-  forwardRef,
-  useState,
-} from 'react';
+import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
 import { Paragraph, type ParagraphProps } from '../Typography';
 
 export type BadgeProps = {
@@ -25,10 +20,18 @@ export type BadgeProps = {
    */
   count?: number;
   /**
-   * The maximum number to display in the badge, when the count exceeds this number, the badge will display "{max}+"
+   * The maximum number to display in the badge, when the count exceeds this number, the badge will display `{max}+`
    */
   maxCount?: number;
-
+  /**
+   * The placement of the badge
+   *
+   * @default top-right
+   */
+  placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  /**
+   * The badge will float on top of the children
+   */
   children?: ReactNode;
 } & HTMLAttributes<HTMLSpanElement>;
 
@@ -40,11 +43,27 @@ const paragraphSizeMap: {
   lg: 'md',
 };
 
+/**
+ * `Badge` is a non-interactive component for displaying status with or without numbers.
+ *
+ * @example without children
+ * ```jsx
+ * <Badge color='accent' size='md' count={5} />
+ * ```
+ *
+ * @example with children
+ * ```jsx
+ * <Badge color='accent' size='md'>
+ *  <Icon />
+ * </Badge>
+ * ```
+ */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
       color = 'accent',
       size = 'md',
+      placement = 'top-right',
       count,
       maxCount,
       children,
@@ -63,6 +82,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               `ds-badge--${size}`,
               `ds-badge--${color}`,
               count && 'ds-badge--count',
+              children && `ds-badge--${placement}`,
               children && 'ds-badge--float',
             )}
             ref={ref}
@@ -75,3 +95,5 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     );
   },
 );
+
+Badge.displayName = 'Badge';
