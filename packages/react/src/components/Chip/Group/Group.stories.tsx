@@ -46,9 +46,9 @@ export const CheckGroup: Story = (args) => (
 
 export const RemoveGroup: Story = (args) => (
   <Chip.Group {...args}>
-    <Chip.Removable>Norge</Chip.Removable>
-    <Chip.Removable>Danmark</Chip.Removable>
-    <Chip.Removable>Sverige</Chip.Removable>
-    <Chip.Removable>Finland</Chip.Removable>
+    <Chip.Removable aria-label='Slett Norge'>Norge</Chip.Removable>
+    <Chip.Removable aria-label='Slett Danmark'>Danmark</Chip.Removable>
+    <Chip.Removable aria-label='Slett Sverige'>Sverige</Chip.Removable>
+    <Chip.Removable aria-label='Slett Finland'>Finland</Chip.Removable>
   </Chip.Group>
 );
