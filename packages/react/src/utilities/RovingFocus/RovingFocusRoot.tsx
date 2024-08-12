@@ -136,9 +136,6 @@ export const RovingFocusRoot = forwardRef<
               orderedItems.at(0)?.element.focus();
             }
           }}
-          aria-orientation={
-            orientation === 'ambiguous' ? undefined : orientation
-          }
           ref={refs}
         />
       </RovingFocusContext.Provider>
