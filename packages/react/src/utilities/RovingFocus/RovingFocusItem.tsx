@@ -53,33 +53,40 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
         const items = getOrderedItems();
         let nextItem: RovingFocusElement | undefined;
 
-        switch (e.key) {
-          case 'ArrowRight':
-          case 'ArrowDown':
-            if (
-              (orientation === 'horizontal' && e.key === 'ArrowRight') ||
-              (orientation === 'vertical' && e.key === 'ArrowDown') ||
-              orientation === 'ambiguous'
-            ) {
+        switch (orientation) {
+          case 'horizontal':
+            if (e.key === 'ArrowRight') {
               nextItem = getNextFocusableValue(items, focusValue);
             }
-            break;
-          case 'ArrowLeft':
-          case 'ArrowUp':
-            if (
-              (orientation === 'horizontal' && e.key === 'ArrowLeft') ||
-              (orientation === 'vertical' && e.key === 'ArrowUp') ||
-              orientation === 'ambiguous'
-            ) {
+
+            if (e.key === 'ArrowLeft') {
               nextItem = getPrevFocusableValue(items, focusValue);
             }
             break;
-          case 'Home':
-            nextItem = items[0];
+          case 'vertical':
+            if (e.key === 'ArrowDown') {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+
+            if (e.key === 'ArrowUp') {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
             break;
-          case 'End':
-            nextItem = items[items.length - 1];
-            break;
+          case 'ambiguous':
+            if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
+              nextItem = getNextFocusableValue(items, focusValue);
+            }
+
+            if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
+              nextItem = getPrevFocusableValue(items, focusValue);
+            }
+        }
+
+        if (e.key === 'Home') {
+          nextItem = items[0];
+        }
+        if (e.key === 'End') {
+          nextItem = items[items.length - 1];
         }
 
         if (nextItem) {
