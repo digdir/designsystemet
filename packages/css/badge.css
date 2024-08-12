@@ -5,7 +5,7 @@
   --dsc-badge-height: 14px;
   --dsc-badge-width: 14px;
 
-  background: var(--dsc-badge-background);
+  background-color: var(--dsc-badge-background);
   color: var(--dsc-badge-color);
   border-radius: var(--ds-border-radius-full);
   display: grid;
