@@ -27,6 +27,7 @@ export const TabList = forwardRef<
       role='tablist'
       activeValue={value}
       className={cl('ds-tabs__tablist', className)}
+      orientation='ambiguous'
       ref={ref}
       {...rest}
     >
