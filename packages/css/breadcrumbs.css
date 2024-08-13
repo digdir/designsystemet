@@ -44,7 +44,7 @@
 /* When link is direct child of Breadcrumbs, make it back button */
 .ds-breadcrumbs > .ds-breadcrumbs__link::before {
   margin: 0;
-  transform: rotate(180deg);
+  rotate: 180deg;
 }
 
 .ds-breadcrumbs__link {
