@@ -2,8 +2,8 @@ import cl from 'clsx/lite';
 import type { ReactNode } from 'react';
 import { createContext, forwardRef, useState } from 'react';
 
-import type { FieldsetProps } from '../../Fieldset';
-import { Fieldset } from '../../Fieldset';
+import type { FieldsetProps } from '../Fieldset';
+import { Fieldset } from '../Fieldset';
 
 export type CheckboxGroupContextProps = {
   value?: string[];
