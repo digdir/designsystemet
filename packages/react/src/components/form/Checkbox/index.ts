@@ -1,7 +1,7 @@
 import type { CheckboxProps } from './Checkbox';
 import { Checkbox as CheckboxParent } from './Checkbox';
-import type { CheckboxGroupProps } from './Group';
-import { CheckboxGroup } from './Group';
+import type { CheckboxGroupProps } from './CheckboxGroup';
+import { CheckboxGroup } from './CheckboxGroup';
 
 type CheckboxComponent = typeof CheckboxParent & {
   /**

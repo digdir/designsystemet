@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
-import { CheckboxGroupContext } from '../Checkbox/Group';
+import { CheckboxGroupContext } from '../Checkbox/CheckboxGroup';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 

@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Radio } from '..';
+import { Radio } from '.';
 
-import { RadioGroup } from './Group';
+import { RadioGroup } from './RadioGroup';
 
 describe('RadioGroup', () => {
   test('has generated name for Radio children', () => {

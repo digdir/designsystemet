@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Checkbox } from '../';
-import { Button, Paragraph } from '../../..';
+import { Checkbox } from '.';
+import { Button, Paragraph } from '../..';
 
 export default {
   title: 'Komponenter/Checkbox/Group',

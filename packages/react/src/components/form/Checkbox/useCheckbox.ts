@@ -5,7 +5,7 @@ import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 
 import type { CheckboxProps } from './Checkbox';
-import { CheckboxGroupContext } from './Group';
+import { CheckboxGroupContext } from './CheckboxGroup';
 
 type UseCheckbox = (props: CheckboxProps) => FormField & {
   inputProps?: Pick<

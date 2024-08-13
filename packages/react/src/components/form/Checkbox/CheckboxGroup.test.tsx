@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Checkbox } from '..';
+import { Checkbox } from '.';
 
-import { CheckboxGroup } from './Group';
+import { CheckboxGroup } from './CheckboxGroup';
 
 describe('CheckboxGroup', () => {
   test('has correct Checkbox defaultChecked & checked when defaultValue is used', () => {
