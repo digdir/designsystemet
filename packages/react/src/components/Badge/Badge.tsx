@@ -30,6 +30,12 @@ export type BadgeProps = {
    */
   placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   /**
+   * Use when badge is floating to change the position of the badge
+   *
+   * @default rectangle
+   */
+  overlap?: 'circle' | 'rectangle';
+  /**
    * The badge will float on top of the children
    */
   children?: ReactNode;
@@ -64,6 +70,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       color = 'accent',
       size = 'md',
       placement = 'top-right',
+      overlap = 'rectangle',
       count,
       maxCount,
       children,
@@ -82,7 +89,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               `ds-badge--${size}`,
               `ds-badge--${color}`,
               count && 'ds-badge--count',
-              children && `ds-badge--${placement}`,
+              children && `ds-badge--${placement}__${overlap}`,
               children && 'ds-badge--float',
             )}
             ref={ref}

@@ -60,6 +60,46 @@ export const Floating: Story = (args) => (
     <Badge color='accent' size='md' placement='bottom-left'>
       <EnvelopeClosedFillIcon fontSize='2rem' />
     </Badge>
+    <Badge color='accent' size='md' placement='top-right' overlap='circle'>
+      <div
+        style={{
+          width: '2rem',
+          height: '2rem',
+          borderRadius: '50%',
+          backgroundColor: 'var(--ds-color-brand2-base-default)',
+        }}
+      />
+    </Badge>
+    <Badge color='accent' size='md' placement='top-left' overlap='circle'>
+      <div
+        style={{
+          width: '2rem',
+          height: '2rem',
+          borderRadius: '50%',
+          backgroundColor: 'var(--ds-color-brand2-base-default)',
+        }}
+      />
+    </Badge>
+    <Badge color='accent' size='md' placement='bottom-right' overlap='circle'>
+      <div
+        style={{
+          width: '2rem',
+          height: '2rem',
+          borderRadius: '50%',
+          backgroundColor: 'var(--ds-color-brand2-base-default)',
+        }}
+      />
+    </Badge>
+    <Badge color='accent' size='md' placement='bottom-left' overlap='circle'>
+      <div
+        style={{
+          width: '2rem',
+          height: '2rem',
+          borderRadius: '50%',
+          backgroundColor: 'var(--ds-color-brand2-base-default)',
+        }}
+      />
+    </Badge>
   </div>
 );
 
