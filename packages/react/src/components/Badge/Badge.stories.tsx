@@ -24,7 +24,13 @@ const meta: Meta<typeof Badge> = {
       control: { type: 'select' },
     },
     placement: {
-      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      options: [
+        'right top',
+        'left top',
+        'right bottom',
+        'left bottom',
+        '10% 90%',
+      ],
       control: { type: 'radio' },
     },
   },
@@ -48,16 +54,28 @@ export const Floating: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge color='accent' size='md' placement='top-right'>
+    <Badge color='accent' size='md' placement='right top'>
       <EnvelopeClosedFillIcon fontSize='2rem' />
     </Badge>
-    <Badge color='accent' size='md' placement='top-left'>
+    <Badge color='accent' size='md' placement='left top'>
       <EnvelopeClosedFillIcon fontSize='2rem' />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-right'>
+    <Badge color='accent' size='md' placement='right bottom'>
       <EnvelopeClosedFillIcon fontSize='2rem' />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-left'>
+    <Badge color='accent' size='md' placement='left bottom'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='90% 25%'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='10% 25%'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='.25em 1.5em'>
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+    <Badge color='accent' size='md' placement='1.75em 1.5em'>
       <EnvelopeClosedFillIcon fontSize='2rem' />
     </Badge>
   </div>

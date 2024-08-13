@@ -28,7 +28,12 @@ export type BadgeProps = {
    *
    * @default top-right
    */
-  placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  placement?:
+    | 'right top'
+    | 'left top'
+    | 'right bottom'
+    | 'left bottom'
+    | (CSSStyleDeclaration['backgroundPosition'] & {}); // For better IntelliSense - see https://stackoverflow.com/a/61048124
   /**
    * The badge will float on top of the children
    */
@@ -61,13 +66,14 @@ const paragraphSizeMap: {
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
-      color = 'accent',
-      size = 'md',
-      placement = 'top-right',
-      count,
-      maxCount,
       children,
       className,
+      color = 'accent',
+      count,
+      maxCount,
+      placement = 'top right',
+      size = 'md',
+      style,
       ...rest
     },
     ref,
@@ -82,9 +88,11 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               `ds-badge--${size}`,
               `ds-badge--${color}`,
               count && 'ds-badge--count',
-              children && `ds-badge--${placement}`,
               children && 'ds-badge--float',
             )}
+            style={
+              children ? { ...parsePlacement(placement), ...style } : style
+            }
             ref={ref}
             {...rest}
           >
@@ -97,3 +105,15 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 );
 
 Badge.displayName = 'Badge';
+
+function parsePlacement(placement: BadgeProps['placement']) {
+  const parts = placement?.toLowerCase().split(/[\s-]+/) || [];
+  let [left = '100%', top = '0%'] = parts;
+
+  if (parts.includes('bottom')) top = '100%';
+  if (parts.includes('left')) left = '0%';
+  if (parts.includes('right')) left = '100%';
+  if (parts.includes('top')) top = '0%';
+
+  return { left, top };
+}
