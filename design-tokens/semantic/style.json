@@ -39,8 +39,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.8}",
           "letterSpacing": "{letter-spacing.3}"
-        },
-        "$description": "H3"
+        }
       },
       "sm": {
         "$type": "typography",
