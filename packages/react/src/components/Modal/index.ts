@@ -39,6 +39,7 @@ Modal.Trigger.displayName = 'Modal.Trigger';
 
 export {
   Modal,
+  ModalRoot,
   ModalContent,
   ModalFooter,
   ModalHeader,
