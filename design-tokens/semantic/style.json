@@ -19,8 +19,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.10}",
           "letterSpacing": "{letter-spacing.1}"
-        },
-        "$description": "H1"
+        }
       },
       "lg": {
         "$type": "typography",
@@ -30,8 +29,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.9}",
           "letterSpacing": "{letter-spacing.2}"
-        },
-        "$description": "H2"
+        }
       },
       "md": {
         "$type": "typography",
@@ -52,8 +50,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.7}",
           "letterSpacing": "{letter-spacing.5}"
-        },
-        "$description": "H4"
+        }
       },
       "xs": {
         "$type": "typography",
@@ -63,8 +60,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.6}",
           "letterSpacing": "{letter-spacing.6}"
-        },
-        "$description": "H5"
+        }
       },
       "2xs": {
         "$type": "typography",
@@ -74,8 +70,7 @@
           "lineHeight": "{line-height.sm}",
           "fontSize": "{font-size.5}",
           "letterSpacing": "{letter-spacing.6}"
-        },
-        "$description": "H6"
+        }
       }
     },
     "ingress": {
