@@ -14,6 +14,7 @@ import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 
+const usesDtcg = true;
 export const prefix = 'ds';
 export const basePxFontSize = 16;
 export const separator = '_';
@@ -78,6 +79,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
   const layer = `ds.theme.color-mode.${mode}`;
 
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -123,6 +125,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
     pathStartsWithOneOf(['spacing', 'sizing', 'border-radius'], token);
 
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -158,6 +161,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
 
 export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -199,6 +203,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   const layer = `ds.theme.typography.${typography}`;
 
   return {
+    usesDtcg: true,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {

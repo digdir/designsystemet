@@ -55,7 +55,7 @@ export const typographyShorthand: Transform = {
   name: 'typography/shorthand',
   type: 'value',
   transitive: true,
-  filter: (token) => token.type === 'typography',
+  filter: (token) => typeEquals('typography', token),
   transform: (token) => {
     const typography = getValue<Typgraphy>(token);
     return `${typography.fontWeight} ${typography.fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
