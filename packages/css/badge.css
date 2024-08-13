@@ -30,26 +30,6 @@
   translate: -50% -50%;
 }
 
-.ds-badge--float.ds-badge--top-right {
-  top: 0;
-  left: 100%;
-}
-
-.ds-badge--float.ds-badge--top-left {
-  top: 0;
-  left: 0;
-}
-
-.ds-badge--float.ds-badge--bottom-right {
-  top: 100%;
-  left: 100%;
-}
-
-.ds-badge--float.ds-badge--bottom-left {
-  top: 100%;
-  left: 0;
-}
-
 .ds-bade--accent {
   --dsc-badge-background: var(--ds-color-accent-base-default);
   --dsc-badge-color: var(--ds-color-accent-contrast-default);
