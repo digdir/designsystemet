@@ -89,6 +89,27 @@ export const Floating: Story = (args) => (
   </div>
 );
 
+export const CustomPlacement: Story = (args) => (
+  <div
+    style={{
+      display: 'flex',
+      gap: 'var(--ds-spacing-6)',
+    }}
+  >
+    <Badge
+      color='accent'
+      size='md'
+      placement='top-right'
+      style={{
+        top: '16%',
+        right: '10%',
+      }}
+    >
+      <EnvelopeClosedFillIcon fontSize='2rem' />
+    </Badge>
+  </div>
+);
+
 export const Status: Story = (args) => (
   <div
     style={{

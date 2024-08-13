@@ -36,6 +36,12 @@ Sett plassering med `placement`. Dersom elementet du plasserer over er en sirkel
 
 <Canvas of={BadgeStories.Floating} />
 
+Noen ganger kan ikon være forskjellige, og da må du endre på hvor `Badge` skal plasseres.
+Dersom du ikke får `Badge` til å ligge der du vil, kan du bruke `style` for å overstyre posisjoneringen.
+Dette vil også fungere for `overlap="circle"`.
+
+<Canvas of={BadgeStories.CustomPlacement} />
+
 ## Vise staus
 
 Dersom du ikke sender inn `count`, viser kun en sirkel. Dette kan brukes for å vise status.
