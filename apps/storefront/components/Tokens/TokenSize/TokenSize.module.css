@@ -7,4 +7,5 @@
   height: 36px;
   background-color: var(--ds-color-accent-base-default);
   border-radius: 2px;
+  max-width: 300px;
 }

@@ -172,9 +172,8 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
             format: jsTokens.name,
             outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/modes|\/themes/, token.filePath)) {
-                return false;
-              }
+              if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
+              if (pathStartsWithOneOf(['border-width'], token)) return false;
 
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||

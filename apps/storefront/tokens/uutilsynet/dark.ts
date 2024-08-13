@@ -3857,38 +3857,6 @@ export const  dimension = [
       "sizing",
       "30"
     ]
-  },
-  {
-    type: "dimension",
-    value: "1px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "dimension",
-      value: "{border-width.1}"
-    },
-    name: "--ds-border-width-default",
-    attributes: {},
-    path: [
-      "border-width",
-      "default"
-    ]
-  },
-  {
-    type: "dimension",
-    value: "2px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "dimension",
-      value: "{border-width.2}"
-    },
-    name: "--ds-border-width-highlight",
-    attributes: {},
-    path: [
-      "border-width",
-      "highlight"
-    ]
   }
 ] 
 
