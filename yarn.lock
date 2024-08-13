@@ -2891,6 +2891,7 @@ __metadata:
     "@storybook/addon-interactions": "npm:^8.2.7"
     "@storybook/addon-links": "npm:^8.2.7"
     "@storybook/addon-mdx-gfm": "npm:^8.2.7"
+    "@storybook/addon-storysource": "npm:^8.2.9"
     "@storybook/addon-themes": "npm:^8.2.7"
     "@storybook/blocks": "npm:^8.2.7"
     "@storybook/manager-api": "npm:^8.2.7"
@@ -4520,6 +4521,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-storysource@npm:^8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/addon-storysource@npm:8.2.9"
+  dependencies:
+    "@storybook/source-loader": "npm:8.2.9"
+    estraverse: "npm:^5.2.0"
+    tiny-invariant: "npm:^1.3.1"
+  peerDependencies:
+    storybook: ^8.2.9
+  checksum: 10/39e22d0f1f6d86d14b3e4692562bc8792b32ddbbd23aba11ca847a5a065d0ae3de2e11369508dcd006b33db788bf7de79e52c77c28e750612eda5cbce7ea9560
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-themes@npm:^8.2.7":
   version: 8.2.7
   resolution: "@storybook/addon-themes@npm:8.2.7"
@@ -4796,6 +4810,20 @@ __metadata:
     typescript:
       optional: true
   checksum: 10/498bd8164b4c9a617b54175ead7d1282427f6933fc9d9bc48d1bbe5813b54a649f5c1609e56c584dfddb363530d0943abd04d4df0550aae5c44483da9396616f
+  languageName: node
+  linkType: hard
+
+"@storybook/source-loader@npm:8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/source-loader@npm:8.2.9"
+  dependencies:
+    "@storybook/csf": "npm:0.1.11"
+    estraverse: "npm:^5.2.0"
+    lodash: "npm:^4.17.21"
+    prettier: "npm:^3.1.1"
+  peerDependencies:
+    storybook: ^8.2.9
+  checksum: 10/f2c8fd02d567cd40155c313fa55fbd1ee9726003bad185f74e0584bccbfc68c17e135d43c94c4fa3e2d1de9eb60fc8f42a54c9a3708f2f689f61ddbd2e521e00
   languageName: node
   linkType: hard
 
