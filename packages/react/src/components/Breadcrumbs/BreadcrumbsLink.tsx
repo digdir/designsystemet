@@ -5,14 +5,12 @@ import { forwardRef } from 'react';
 import { Link } from '../Link';
 import type { LinkProps } from '../Link';
 
-export type BreadcrumbsLinkProps = LinkProps & {
-  mobileLabel?: string;
-};
+export type BreadcrumbsLinkProps = LinkProps;
 
 export const BreadcrumbsLink = forwardRef<
   HTMLAnchorElement,
   BreadcrumbsLinkProps
->(({ asChild, className, mobileLabel, ...rest }, ref) => {
+>(({ asChild, className, ...rest }, ref) => {
   const Component = asChild ? Slot : 'a';
 
   return (
