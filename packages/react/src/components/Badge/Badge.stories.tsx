@@ -14,20 +14,6 @@ type Story = StoryFn<typeof Badge>;
 const meta: Meta<typeof Badge> = {
   title: 'Komponenter/Badge',
   component: Badge,
-  argTypes: {
-    size: {
-      options: ['sm', 'md', 'lg'],
-      control: { type: 'radio' },
-    },
-    color: {
-      options: ['accent', 'info', 'success', 'warning', 'danger', 'neutral'],
-      control: { type: 'select' },
-    },
-    placement: {
-      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
-      control: { type: 'radio' },
-    },
-  },
 };
 
 export default meta;
