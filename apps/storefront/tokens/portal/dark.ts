@@ -3095,19 +3095,9 @@ export const  dimension = [
     value: "0.125rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*0.5",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*0.5"
     },
     name: "--ds-border-radius-sm",
     attributes: {},
@@ -3121,19 +3111,9 @@ export const  dimension = [
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*1",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*1"
     },
     name: "--ds-border-radius-md",
     attributes: {},
@@ -3147,19 +3127,9 @@ export const  dimension = [
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*2",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*2"
     },
     name: "--ds-border-radius-lg",
     attributes: {},
@@ -3173,19 +3143,9 @@ export const  dimension = [
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*3",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*3"
     },
     name: "--ds-border-radius-xl",
     attributes: {},
@@ -3199,19 +3159,9 @@ export const  dimension = [
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*4",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*4"
     },
     name: "--ds-border-radius-2xl",
     attributes: {},
@@ -3225,19 +3175,9 @@ export const  dimension = [
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*6",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*6"
     },
     name: "--ds-border-radius-3xl",
     attributes: {},
@@ -3251,19 +3191,9 @@ export const  dimension = [
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-radius.base}*8",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "{border-radius.base}*8"
     },
     name: "--ds-border-radius-4xl",
     attributes: {},
@@ -3277,19 +3207,9 @@ export const  dimension = [
     value: "624.9375rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderRadius"
-      }
-    },
     original: {
       type: "dimension",
-      value: "9999",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderRadius"
-        }
-      }
+      value: "9999"
     },
     name: "--ds-border-radius-full",
     attributes: {},
@@ -3303,19 +3223,9 @@ export const  dimension = [
     value: "0rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*0",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*0"
     },
     name: "--ds-spacing-0",
     attributes: {},
@@ -3329,19 +3239,9 @@ export const  dimension = [
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*1",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*1"
     },
     name: "--ds-spacing-1",
     attributes: {},
@@ -3355,19 +3255,9 @@ export const  dimension = [
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*2",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*2"
     },
     name: "--ds-spacing-2",
     attributes: {},
@@ -3381,19 +3271,9 @@ export const  dimension = [
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*3",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*3"
     },
     name: "--ds-spacing-3",
     attributes: {},
@@ -3407,19 +3287,9 @@ export const  dimension = [
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*4",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*4"
     },
     name: "--ds-spacing-4",
     attributes: {},
@@ -3433,19 +3303,9 @@ export const  dimension = [
     value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*5",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*5"
     },
     name: "--ds-spacing-5",
     attributes: {},
@@ -3459,19 +3319,9 @@ export const  dimension = [
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*6",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*6"
     },
     name: "--ds-spacing-6",
     attributes: {},
@@ -3485,19 +3335,9 @@ export const  dimension = [
     value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*7",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*7"
     },
     name: "--ds-spacing-7",
     attributes: {},
@@ -3511,19 +3351,9 @@ export const  dimension = [
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*8",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*8"
     },
     name: "--ds-spacing-8",
     attributes: {},
@@ -3537,19 +3367,9 @@ export const  dimension = [
     value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*9",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*9"
     },
     name: "--ds-spacing-9",
     attributes: {},
@@ -3563,19 +3383,9 @@ export const  dimension = [
     value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*10",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*10"
     },
     name: "--ds-spacing-10",
     attributes: {},
@@ -3589,19 +3399,9 @@ export const  dimension = [
     value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*11",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*11"
     },
     name: "--ds-spacing-11",
     attributes: {},
@@ -3615,19 +3415,9 @@ export const  dimension = [
     value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*12",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*12"
     },
     name: "--ds-spacing-12",
     attributes: {},
@@ -3641,19 +3431,9 @@ export const  dimension = [
     value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*13",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*13"
     },
     name: "--ds-spacing-13",
     attributes: {},
@@ -3667,19 +3447,9 @@ export const  dimension = [
     value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*14",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*14"
     },
     name: "--ds-spacing-14",
     attributes: {},
@@ -3693,19 +3463,9 @@ export const  dimension = [
     value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*15",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*15"
     },
     name: "--ds-spacing-15",
     attributes: {},
@@ -3719,19 +3479,9 @@ export const  dimension = [
     value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*18",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*18"
     },
     name: "--ds-spacing-18",
     attributes: {},
@@ -3745,19 +3495,9 @@ export const  dimension = [
     value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*22",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*22"
     },
     name: "--ds-spacing-22",
     attributes: {},
@@ -3771,19 +3511,9 @@ export const  dimension = [
     value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*26",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*26"
     },
     name: "--ds-spacing-26",
     attributes: {},
@@ -3797,19 +3527,9 @@ export const  dimension = [
     value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "spacing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{spacing.base}*30",
-      $extensions: {
-        studio.tokens: {
-          originalType: "spacing"
-        }
-      }
+      value: "{spacing.base}*30"
     },
     name: "--ds-spacing-30",
     attributes: {},
@@ -3823,19 +3543,9 @@ export const  dimension = [
     value: "0rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*0",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*0"
     },
     name: "--ds-sizing-0",
     attributes: {},
@@ -3849,19 +3559,9 @@ export const  dimension = [
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*1",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*1"
     },
     name: "--ds-sizing-1",
     attributes: {},
@@ -3875,19 +3575,9 @@ export const  dimension = [
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*2",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*2"
     },
     name: "--ds-sizing-2",
     attributes: {},
@@ -3901,19 +3591,9 @@ export const  dimension = [
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*3",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*3"
     },
     name: "--ds-sizing-3",
     attributes: {},
@@ -3927,19 +3607,9 @@ export const  dimension = [
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*4",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*4"
     },
     name: "--ds-sizing-4",
     attributes: {},
@@ -3953,19 +3623,9 @@ export const  dimension = [
     value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*5",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*5"
     },
     name: "--ds-sizing-5",
     attributes: {},
@@ -3979,19 +3639,9 @@ export const  dimension = [
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*6",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*6"
     },
     name: "--ds-sizing-6",
     attributes: {},
@@ -4005,19 +3655,9 @@ export const  dimension = [
     value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*7",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*7"
     },
     name: "--ds-sizing-7",
     attributes: {},
@@ -4031,19 +3671,9 @@ export const  dimension = [
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*8",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*8"
     },
     name: "--ds-sizing-8",
     attributes: {},
@@ -4057,19 +3687,9 @@ export const  dimension = [
     value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*9",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*9"
     },
     name: "--ds-sizing-9",
     attributes: {},
@@ -4083,19 +3703,9 @@ export const  dimension = [
     value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*10",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*10"
     },
     name: "--ds-sizing-10",
     attributes: {},
@@ -4109,19 +3719,9 @@ export const  dimension = [
     value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*11",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*11"
     },
     name: "--ds-sizing-11",
     attributes: {},
@@ -4135,19 +3735,9 @@ export const  dimension = [
     value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*12",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*12"
     },
     name: "--ds-sizing-12",
     attributes: {},
@@ -4161,19 +3751,9 @@ export const  dimension = [
     value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*13",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*13"
     },
     name: "--ds-sizing-13",
     attributes: {},
@@ -4187,19 +3767,9 @@ export const  dimension = [
     value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*14",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*14"
     },
     name: "--ds-sizing-14",
     attributes: {},
@@ -4213,19 +3783,9 @@ export const  dimension = [
     value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*15",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*15"
     },
     name: "--ds-sizing-15",
     attributes: {},
@@ -4239,19 +3799,9 @@ export const  dimension = [
     value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*18",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*18"
     },
     name: "--ds-sizing-18",
     attributes: {},
@@ -4265,19 +3815,9 @@ export const  dimension = [
     value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*22",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*22"
     },
     name: "--ds-sizing-22",
     attributes: {},
@@ -4291,19 +3831,9 @@ export const  dimension = [
     value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*26",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*26"
     },
     name: "--ds-sizing-26",
     attributes: {},
@@ -4317,19 +3847,9 @@ export const  dimension = [
     value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "sizing"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{sizing.base}*30",
-      $extensions: {
-        studio.tokens: {
-          originalType: "sizing"
-        }
-      }
+      value: "{sizing.base}*30"
     },
     name: "--ds-sizing-30",
     attributes: {},
@@ -4343,19 +3863,9 @@ export const  dimension = [
     value: "1px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderWidth"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-width.1}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderWidth"
-        }
-      }
+      value: "{border-width.1}"
     },
     name: "--ds-border-width-default",
     attributes: {},
@@ -4369,19 +3879,9 @@ export const  dimension = [
     value: "2px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "borderWidth"
-      }
-    },
     original: {
       type: "dimension",
-      value: "{border-width.2}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "borderWidth"
-        }
-      }
+      value: "{border-width.2}"
     },
     name: "--ds-border-width-highlight",
     attributes: {},
@@ -4398,19 +3898,9 @@ export const  shadow = [
     value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "boxShadow"
-      }
-    },
     original: {
       type: "shadow",
-      value: "{shadow.100}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "boxShadow"
-        }
-      }
+      value: "{shadow.100}"
     },
     name: "--ds-shadow-xs",
     attributes: {},
@@ -4424,19 +3914,9 @@ export const  shadow = [
     value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "boxShadow"
-      }
-    },
     original: {
       type: "shadow",
-      value: "{shadow.200}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "boxShadow"
-        }
-      }
+      value: "{shadow.200}"
     },
     name: "--ds-shadow-sm",
     attributes: {},
@@ -4450,19 +3930,9 @@ export const  shadow = [
     value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "boxShadow"
-      }
-    },
     original: {
       type: "shadow",
-      value: "{shadow.300}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "boxShadow"
-        }
-      }
+      value: "{shadow.300}"
     },
     name: "--ds-shadow-md",
     attributes: {},
@@ -4476,19 +3946,9 @@ export const  shadow = [
     value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "boxShadow"
-      }
-    },
     original: {
       type: "shadow",
-      value: "{shadow.400}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "boxShadow"
-        }
-      }
+      value: "{shadow.400}"
     },
     name: "--ds-shadow-lg",
     attributes: {},
@@ -4502,19 +3962,9 @@ export const  shadow = [
     value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
-    $extensions: {
-      studio.tokens: {
-        originalType: "boxShadow"
-      }
-    },
     original: {
       type: "shadow",
-      value: "{shadow.500}",
-      $extensions: {
-        studio.tokens: {
-          originalType: "boxShadow"
-        }
-      }
+      value: "{shadow.500}"
     },
     name: "--ds-shadow-xl",
     attributes: {},

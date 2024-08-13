@@ -24,7 +24,7 @@ import { TokenSize } from '../TokenSize/TokenSize';
 import classes from './TokenList.module.css';
 
 type TokenListProps = {
-  type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
+  type: 'color' | 'typography' | 'shadow' | 'dimension';
   token?: string;
   showThemePicker?: boolean;
   showModeSwitcher: boolean;
@@ -131,7 +131,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       <div className={classes.preview}>
         {type === 'color' && <TokenColor value={val} token={token} />}
         {type === 'typography' && <TokenFontSize value={val} />}
-        {type === 'boxShadow' && <TokenShadow value={val} />}
+        {type === 'shadow' && <TokenShadow value={val} />}
       </div>
 
       <div className={classes.textContainer}>
