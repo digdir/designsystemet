@@ -12,7 +12,7 @@
   width: 100%;
   max-width: var(--dsc-modal-max-width);
   border: none;
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: min(1rem, var(--ds-border-radius-lg));
   box-shadow: var(--ds-shadow-xl);
   background-color: var(--dsc-modal-background);
   color: var(--dsc-modal-color);
