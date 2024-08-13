@@ -25,7 +25,7 @@
 }
 
 .ds-fieldset:not(:has(.ds-fieldset__description)) .ds-fieldset__legend__content {
-  margin-bottom: var(--ds-spacing-4);
+  margin-bottom: var(--ds-spacing-2);
 }
 
 .ds-fieldset--readonly .ds-fieldset__readonly__icon {
