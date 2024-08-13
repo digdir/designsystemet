@@ -10,6 +10,21 @@ export type { BreadcrumbsListProps } from './BreadcrumbsList';
 export type { BreadcrumbsItemProps } from './BreadcrumbsItem';
 export type { BreadcrumbsLinkProps } from './BreadcrumbsLink';
 
+/**
+ * Breadcrumbs are used to visualize the current page path.
+ * @example
+ * <Breadcrumbs.Root>
+ *  <Breadcrumbs.Link aria-label="Go back to level 2">Level 2</Breadcrumbs.Link>
+ *  <Breadcrumbs.Nav aria-label="You are here:">
+ *   <Breadcrumbs.List>
+ *    <Breadcrumbs.Item><Breadcrumbs.Link>Level 1</Breadcrumbs.Link></Breadcrumbs.Item>
+ *    <Breadcrumbs.Item><Breadcrumbs.Link>Level 2</Breadcrumbs.Link></Breadcrumbs.Item>
+ *    <Breadcrumbs.Item><Breadcrumbs.Link>Level 3</Breadcrumbs.Link></Breadcrumbs.Item>
+ *    <Breadcrumbs.Item><Breadcrumbs.Link>Level 4</Breadcrumbs.Link></Breadcrumbs.Item>
+ *   </Breadcrumbs.List>
+ *  </Breadcrumbs.Nav>
+ * <Breadcrumbs.Root>
+ */
 const Breadcrumbs = {
   Root: BreadcrumbsRoot,
   Nav: BreadcrumbsNav,
