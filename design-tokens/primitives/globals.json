@@ -15,7 +15,6 @@
       "value": [
         {
           "color": "rgba(0,0,0,0.16)",
-          "type": "dropShadow",
           "x": "0",
           "y": "0",
           "blur": "1",
@@ -26,8 +25,7 @@
           "y": "1",
           "blur": "2",
           "spread": "0",
-          "color": "rgba(0,0,0,0.12)",
-          "type": "dropShadow"
+          "color": "rgba(0,0,0,0.12)"
         }
       ]
     },
@@ -36,7 +34,6 @@
       "value": [
         {
           "color": "rgba(0,0,0,0.15)",
-          "type": "dropShadow",
           "x": "0",
           "y": "0",
           "blur": "1",
@@ -44,7 +41,6 @@
         },
         {
           "color": "rgba(0,0,0,0.12)",
-          "type": "dropShadow",
           "x": "0",
           "y": "1",
           "blur": "2",
@@ -55,8 +51,7 @@
           "y": "2",
           "blur": "4",
           "spread": "0",
-          "color": "rgba(0,0,0,0.1)",
-          "type": "dropShadow"
+          "color": "rgba(0,0,0,0.1)"
         }
       ]
     },
@@ -65,7 +60,6 @@
       "value": [
         {
           "color": "rgba(0,0,0,0.14)",
-          "type": "dropShadow",
           "x": "0",
           "y": "0",
           "blur": "1",
@@ -73,7 +67,6 @@
         },
         {
           "color": "rgba(0,0,0,0.12)",
-          "type": "dropShadow",
           "x": "0",
           "y": "2",
           "blur": "4",
@@ -84,8 +77,7 @@
           "y": "4",
           "blur": "8",
           "spread": "0",
-          "color": "rgba(0,0,0,0.12)",
-          "type": "dropShadow"
+          "color": "rgba(0,0,0,0.12)"
         }
       ]
     },
@@ -94,7 +86,6 @@
       "value": [
         {
           "color": "rgba(0,0,0,0.13)",
-          "type": "dropShadow",
           "x": "0",
           "y": "0",
           "blur": "1",
@@ -102,7 +93,6 @@
         },
         {
           "color": "rgba(0,0,0,0.13)",
-          "type": "dropShadow",
           "x": "0",
           "y": "3",
           "blur": "5",
@@ -113,8 +103,7 @@
           "y": "6",
           "blur": "12",
           "spread": "0",
-          "color": "rgba(0,0,0,0.14)",
-          "type": "dropShadow"
+          "color": "rgba(0,0,0,0.14)"
         }
       ]
     },
@@ -123,7 +112,6 @@
       "value": [
         {
           "color": "rgba(0,0,0,0.12)",
-          "type": "dropShadow",
           "x": "0",
           "y": "0",
           "blur": "1",
@@ -131,7 +119,6 @@
         },
         {
           "color": "rgba(0,0,0,0.16)",
-          "type": "dropShadow",
           "x": "0",
           "y": "4",
           "blur": "8",
@@ -142,8 +129,7 @@
           "y": "12",
           "blur": "24",
           "spread": "0",
-          "color": "rgba(0,0,0,0.16)",
-          "type": "dropShadow"
+          "color": "rgba(0,0,0,0.16)"
         }
       ]
     }

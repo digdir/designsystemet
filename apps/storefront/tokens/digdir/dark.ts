@@ -3089,14 +3089,14 @@ export const  opacity = [
   }
 ] 
 
-export const  borderRadius = [
+export const  dimension = [
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "0.125rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*0.5"
     },
     name: "--ds-border-radius-sm",
@@ -3107,12 +3107,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*1"
     },
     name: "--ds-border-radius-md",
@@ -3123,12 +3123,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*2"
     },
     name: "--ds-border-radius-lg",
@@ -3139,12 +3139,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*3"
     },
     name: "--ds-border-radius-xl",
@@ -3155,12 +3155,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*4"
     },
     name: "--ds-border-radius-2xl",
@@ -3171,12 +3171,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*6"
     },
     name: "--ds-border-radius-3xl",
@@ -3187,12 +3187,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "{border-radius.base}*8"
     },
     name: "--ds-border-radius-4xl",
@@ -3203,12 +3203,12 @@ export const  borderRadius = [
     ]
   },
   {
-    type: "borderRadius",
+    type: "dimension",
     value: "624.9375rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "borderRadius",
+      type: "dimension",
       value: "9999"
     },
     name: "--ds-border-radius-full",
@@ -3217,17 +3217,14 @@ export const  borderRadius = [
       "border-radius",
       "full"
     ]
-  }
-] 
-
-export const  spacing = [
+  },
   {
-    type: "spacing",
+    type: "dimension",
     value: "0rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*0"
     },
     name: "--ds-spacing-0",
@@ -3238,12 +3235,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*1"
     },
     name: "--ds-spacing-1",
@@ -3254,12 +3251,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*2"
     },
     name: "--ds-spacing-2",
@@ -3270,12 +3267,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*3"
     },
     name: "--ds-spacing-3",
@@ -3286,12 +3283,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*4"
     },
     name: "--ds-spacing-4",
@@ -3302,12 +3299,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*5"
     },
     name: "--ds-spacing-5",
@@ -3318,12 +3315,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*6"
     },
     name: "--ds-spacing-6",
@@ -3334,12 +3331,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*7"
     },
     name: "--ds-spacing-7",
@@ -3350,12 +3347,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*8"
     },
     name: "--ds-spacing-8",
@@ -3366,12 +3363,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*9"
     },
     name: "--ds-spacing-9",
@@ -3382,12 +3379,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*10"
     },
     name: "--ds-spacing-10",
@@ -3398,12 +3395,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*11"
     },
     name: "--ds-spacing-11",
@@ -3414,12 +3411,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*12"
     },
     name: "--ds-spacing-12",
@@ -3430,12 +3427,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*13"
     },
     name: "--ds-spacing-13",
@@ -3446,12 +3443,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*14"
     },
     name: "--ds-spacing-14",
@@ -3462,12 +3459,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*15"
     },
     name: "--ds-spacing-15",
@@ -3478,12 +3475,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*18"
     },
     name: "--ds-spacing-18",
@@ -3494,12 +3491,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*22"
     },
     name: "--ds-spacing-22",
@@ -3510,12 +3507,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*26"
     },
     name: "--ds-spacing-26",
@@ -3526,12 +3523,12 @@ export const  spacing = [
     ]
   },
   {
-    type: "spacing",
+    type: "dimension",
     value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "spacing",
+      type: "dimension",
       value: "{spacing.base}*30"
     },
     name: "--ds-spacing-30",
@@ -3540,17 +3537,14 @@ export const  spacing = [
       "spacing",
       "30"
     ]
-  }
-] 
-
-export const  sizing = [
+  },
   {
-    type: "sizing",
+    type: "dimension",
     value: "0rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*0"
     },
     name: "--ds-sizing-0",
@@ -3561,12 +3555,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*1"
     },
     name: "--ds-sizing-1",
@@ -3577,12 +3571,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*2"
     },
     name: "--ds-sizing-2",
@@ -3593,12 +3587,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*3"
     },
     name: "--ds-sizing-3",
@@ -3609,12 +3603,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*4"
     },
     name: "--ds-sizing-4",
@@ -3625,12 +3619,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*5"
     },
     name: "--ds-sizing-5",
@@ -3641,12 +3635,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*6"
     },
     name: "--ds-sizing-6",
@@ -3657,12 +3651,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*7"
     },
     name: "--ds-sizing-7",
@@ -3673,12 +3667,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*8"
     },
     name: "--ds-sizing-8",
@@ -3689,12 +3683,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*9"
     },
     name: "--ds-sizing-9",
@@ -3705,12 +3699,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*10"
     },
     name: "--ds-sizing-10",
@@ -3721,12 +3715,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*11"
     },
     name: "--ds-sizing-11",
@@ -3737,12 +3731,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*12"
     },
     name: "--ds-sizing-12",
@@ -3753,12 +3747,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*13"
     },
     name: "--ds-sizing-13",
@@ -3769,12 +3763,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*14"
     },
     name: "--ds-sizing-14",
@@ -3785,12 +3779,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*15"
     },
     name: "--ds-sizing-15",
@@ -3801,12 +3795,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*18"
     },
     name: "--ds-sizing-18",
@@ -3817,12 +3811,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*22"
     },
     name: "--ds-sizing-22",
@@ -3833,12 +3827,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*26"
     },
     name: "--ds-sizing-26",
@@ -3849,12 +3843,12 @@ export const  sizing = [
     ]
   },
   {
-    type: "sizing",
+    type: "dimension",
     value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "sizing",
+      type: "dimension",
       value: "{sizing.base}*30"
     },
     name: "--ds-sizing-30",
@@ -3866,49 +3860,14 @@ export const  sizing = [
   }
 ] 
 
-export const  borderWidth = [
+export const  shadow = [
   {
-    type: "borderWidth",
-    value: "1px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "borderWidth",
-      value: "{border-width.1}"
-    },
-    name: "--ds-border-width-default",
-    attributes: {},
-    path: [
-      "border-width",
-      "default"
-    ]
-  },
-  {
-    type: "borderWidth",
-    value: "2px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      type: "borderWidth",
-      value: "{border-width.2}"
-    },
-    name: "--ds-border-width-highlight",
-    attributes: {},
-    path: [
-      "border-width",
-      "highlight"
-    ]
-  }
-] 
-
-export const  boxShadow = [
-  {
-    type: "boxShadow",
+    type: "shadow",
     value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "boxShadow",
+      type: "shadow",
       value: "{shadow.100}"
     },
     name: "--ds-shadow-xs",
@@ -3919,12 +3878,12 @@ export const  boxShadow = [
     ]
   },
   {
-    type: "boxShadow",
+    type: "shadow",
     value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "boxShadow",
+      type: "shadow",
       value: "{shadow.200}"
     },
     name: "--ds-shadow-sm",
@@ -3935,12 +3894,12 @@ export const  boxShadow = [
     ]
   },
   {
-    type: "boxShadow",
+    type: "shadow",
     value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "boxShadow",
+      type: "shadow",
       value: "{shadow.300}"
     },
     name: "--ds-shadow-md",
@@ -3951,12 +3910,12 @@ export const  boxShadow = [
     ]
   },
   {
-    type: "boxShadow",
+    type: "shadow",
     value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "boxShadow",
+      type: "shadow",
       value: "{shadow.400}"
     },
     name: "--ds-shadow-lg",
@@ -3967,12 +3926,12 @@ export const  boxShadow = [
     ]
   },
   {
-    type: "boxShadow",
+    type: "shadow",
     value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
-      type: "boxShadow",
+      type: "shadow",
       value: "{shadow.500}"
     },
     name: "--ds-shadow-xl",

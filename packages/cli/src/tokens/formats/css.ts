@@ -139,7 +139,7 @@ export const typography: Format = {
       sortByType,
       R.reduce<TransformedToken, ProcessedTokens>(
         (acc, token) => {
-          if (typeEquals('fontweights', token)) {
+          if (typeEquals('fontweight', token)) {
             const className = `
   .${classSelector(token)} {
     font-weight: ${getValue<string>(token)};
@@ -152,7 +152,7 @@ export const typography: Format = {
             };
           }
 
-          if (typeEquals('lineheights', token)) {
+          if (typeEquals('lineheight', token)) {
             const className = `
   .${classSelector(token)} {
     line-height: ${getValue<string>(token)};
@@ -166,11 +166,17 @@ export const typography: Format = {
           }
 
           if (typeEquals('typography', token)) {
-            const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
-            const fontweight = R.find<TransformedToken>(typeEquals(['fontweights']))(references);
-            const lineheight = R.find<TransformedToken>(typeEquals(['lineheights']))(references);
-            const fontsize = R.find<TransformedToken>(typeEquals(['fontsizes']))(references);
-            const letterSpacing = R.find<TransformedToken>(typeEquals(['letterSpacing']))(references);
+            let references: TransformedToken[] = [];
+            try {
+              references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
+            } catch (error) {
+              console.error('Error getting references', error);
+              throw new Error(JSON.stringify(token, null, 2));
+            }
+            const fontweight = R.find<TransformedToken>(typeEquals(['fontweight']))(references);
+            const lineheight = R.find<TransformedToken>(typeEquals(['lineheight']))(references);
+            const fontsize = R.find<TransformedToken>(typeEquals(['fontsize']))(references);
+            const letterSpacing = R.find<TransformedToken>(typeEquals(['dimension']))(references);
 
             const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
             const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
@@ -179,10 +185,10 @@ export const typography: Format = {
 
             const className = `
   .${classSelector(token)} {
-    ${fontSizeVar && `font-size: ${fontSizeVar};`}
-    ${lineheightVar && `line-height: ${lineheightVar};`}
-    ${fontWeightVar && `font-weight: ${fontWeightVar};`}
-    ${letterSpacingVar && `letter-spacing: ${letterSpacingVar};`}
+    ${fontSizeVar ? `font-size: ${fontSizeVar};` : ''}
+    ${lineheightVar ? `line-height: ${lineheightVar};` : ''}
+    ${fontWeightVar ? `font-weight: ${fontWeightVar};` : ''}
+    ${letterSpacingVar ? `letter-spacing: ${letterSpacingVar};` : ''}
   }`;
 
             return { ...acc, classes: [className, ...acc.classes] };
