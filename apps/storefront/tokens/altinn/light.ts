@@ -2361,7 +2361,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 3rem/1.3 'Helvetica Neue'",
-    $description: "H1",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2372,8 +2371,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.10}",
         letterSpacing: "{letter-spacing.1}"
-      },
-      $description: "H1"
+      }
     },
     name: "--ds-typography-heading-xl",
     attributes: {},
@@ -2386,7 +2384,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 2.25rem/1.3 'Helvetica Neue'",
-    $description: "H2",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2397,8 +2394,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.9}",
         letterSpacing: "{letter-spacing.2}"
-      },
-      $description: "H2"
+      }
     },
     name: "--ds-typography-heading-lg",
     attributes: {},
@@ -2411,7 +2407,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 1.875rem/1.3 'Helvetica Neue'",
-    $description: "H3",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2422,8 +2417,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.8}",
         letterSpacing: "{letter-spacing.3}"
-      },
-      $description: "H3"
+      }
     },
     name: "--ds-typography-heading-md",
     attributes: {},
@@ -2436,7 +2430,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 1.5rem/1.3 'Helvetica Neue'",
-    $description: "H4",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2447,8 +2440,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.7}",
         letterSpacing: "{letter-spacing.5}"
-      },
-      $description: "H4"
+      }
     },
     name: "--ds-typography-heading-sm",
     attributes: {},
@@ -2461,7 +2453,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 1.3125rem/1.3 'Helvetica Neue'",
-    $description: "H5",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2472,8 +2463,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.6}"
-      },
-      $description: "H5"
+      }
     },
     name: "--ds-typography-heading-xs",
     attributes: {},
@@ -2486,7 +2476,6 @@ export const  typography = [
   {
     $type: "typography",
     $value: "500 1.125rem/1.3 'Helvetica Neue'",
-    $description: "H6",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2497,8 +2486,7 @@ export const  typography = [
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.6}"
-      },
-      $description: "H6"
+      }
     },
     name: "--ds-typography-heading-2xs",
     attributes: {},
