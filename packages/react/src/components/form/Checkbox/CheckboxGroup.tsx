@@ -1,8 +1,9 @@
+import cl from 'clsx/lite';
 import type { ReactNode } from 'react';
 import { createContext, forwardRef, useState } from 'react';
 
-import type { FieldsetProps } from '../../Fieldset';
-import { Fieldset } from '../../Fieldset';
+import type { FieldsetProps } from '../Fieldset';
+import { Fieldset } from '../Fieldset';
 
 export type CheckboxGroupContextProps = {
   value?: string[];
@@ -59,7 +60,11 @@ export const CheckboxGroup = forwardRef<
             toggleValue,
           }}
         >
-          <div className='ds-checkbox__group'>{children}</div>
+          <div
+            className={cl('ds-checkbox__group', `ds-checkbox__group--${size}`)}
+          >
+            {children}
+          </div>
         </CheckboxGroupContext.Provider>
       </Fieldset>
     );

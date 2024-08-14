@@ -2533,6 +2533,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bundled-es-modules/postcss-calc-ast-parser@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@bundled-es-modules/postcss-calc-ast-parser@npm:0.1.6"
+  dependencies:
+    postcss-calc-ast-parser: "npm:^0.1.4"
+  checksum: 10/a080de0c84dfa5f0b9f33541477442a54fd6e7033252aaaeb5368edc90f9d31a2f6c5cc468e2c75c30c036db575e35f2872967c406837c07784a3297391528a8
+  languageName: node
+  linkType: hard
+
 "@changesets/apply-release-plan@npm:^7.0.4":
   version: 7.0.4
   resolution: "@changesets/apply-release-plan@npm:7.0.4"
@@ -2882,6 +2891,7 @@ __metadata:
     "@storybook/addon-interactions": "npm:^8.2.7"
     "@storybook/addon-links": "npm:^8.2.7"
     "@storybook/addon-mdx-gfm": "npm:^8.2.7"
+    "@storybook/addon-storysource": "npm:^8.2.9"
     "@storybook/addon-themes": "npm:^8.2.7"
     "@storybook/blocks": "npm:^8.2.7"
     "@storybook/manager-api": "npm:^8.2.7"
@@ -2965,7 +2975,7 @@ __metadata:
   dependencies:
     "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
     "@commander-js/extra-typings": "npm:^12.1.0"
-    "@tokens-studio/sd-transforms": "npm:^0.16.1"
+    "@tokens-studio/sd-transforms": "npm:1.2.2"
     "@types/apca-w3": "npm:^0.1.3"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/glob": "npm:^8.1.0"
@@ -4511,6 +4521,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-storysource@npm:^8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/addon-storysource@npm:8.2.9"
+  dependencies:
+    "@storybook/source-loader": "npm:8.2.9"
+    estraverse: "npm:^5.2.0"
+    tiny-invariant: "npm:^1.3.1"
+  peerDependencies:
+    storybook: ^8.2.9
+  checksum: 10/39e22d0f1f6d86d14b3e4692562bc8792b32ddbbd23aba11ca847a5a065d0ae3de2e11369508dcd006b33db788bf7de79e52c77c28e750612eda5cbce7ea9560
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-themes@npm:^8.2.7":
   version: 8.2.7
   resolution: "@storybook/addon-themes@npm:8.2.7"
@@ -4787,6 +4810,20 @@ __metadata:
     typescript:
       optional: true
   checksum: 10/498bd8164b4c9a617b54175ead7d1282427f6933fc9d9bc48d1bbe5813b54a649f5c1609e56c584dfddb363530d0943abd04d4df0550aae5c44483da9396616f
+  languageName: node
+  linkType: hard
+
+"@storybook/source-loader@npm:8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/source-loader@npm:8.2.9"
+  dependencies:
+    "@storybook/csf": "npm:0.1.11"
+    estraverse: "npm:^5.2.0"
+    lodash: "npm:^4.17.21"
+    prettier: "npm:^3.1.1"
+  peerDependencies:
+    storybook: ^8.2.9
+  checksum: 10/f2c8fd02d567cd40155c313fa55fbd1ee9726003bad185f74e0584bccbfc68c17e135d43c94c4fa3e2d1de9eb60fc8f42a54c9a3708f2f689f61ddbd2e521e00
   languageName: node
   linkType: hard
 
@@ -5259,27 +5296,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:^0.16.1":
-  version: 0.16.1
-  resolution: "@tokens-studio/sd-transforms@npm:0.16.1"
+"@tokens-studio/sd-transforms@npm:1.2.2":
+  version: 1.2.2
+  resolution: "@tokens-studio/sd-transforms@npm:1.2.2"
   dependencies:
-    "@tokens-studio/types": "npm:^0.4.0"
-    color2k: "npm:^2.0.1"
+    "@bundled-es-modules/deepmerge": "npm:^4.3.1"
+    "@bundled-es-modules/postcss-calc-ast-parser": "npm:^0.1.6"
+    "@tokens-studio/types": "npm:^0.5.1"
     colorjs.io: "npm:^0.4.3"
-    deepmerge: "npm:^4.3.1"
     expr-eval-fork: "npm:^2.0.2"
     is-mergeable-object: "npm:^1.1.1"
-    postcss-calc-ast-parser: "npm:^0.1.4"
   peerDependencies:
-    style-dictionary: ^4.0.0-prerelease.27
-  checksum: 10/f386a81e4bf6ae4f94dd13ae8a706a1a761a656ffac43f00842e2896cd439d388b1a53fe2edf75c3f8d7382384bbbd6468b668b3eb8b28779179f9a9dc3cbffb
+    style-dictionary: ^4.0.1
+  checksum: 10/800d3bceec7ab40d378578c69728e62e23c9155012d2dd9b0c3f1b9e94bfe318b8c4d7f7a956ba1e62f6e503c6fa761e4f8db104d0d55796be7d0522a1ddb67a
   languageName: node
   linkType: hard
 
-"@tokens-studio/types@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "@tokens-studio/types@npm:0.4.0"
-  checksum: 10/3280d41483d5bf53e4dbc26f93ab159206cdba9ed83d4e148a0d0ab6feb3a6a97212fb390778af4a724400384931cca67264187876bf31e187d771e657999bec
+"@tokens-studio/types@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "@tokens-studio/types@npm:0.5.1"
+  checksum: 10/225106085465997f1bd3589956841430abd945aa89e824840c549f4de4462960993d28a1efbd3e4beaef3ff00962e53535c98261087d53de4d64b151c404263a
   languageName: node
   linkType: hard
 
@@ -7410,13 +7446,6 @@ __metadata:
   bin:
     color-support: bin.js
   checksum: 10/4bcfe30eea1498fe1cabc852bbda6c9770f230ea0e4faf4611c5858b1b9e4dde3730ac485e65f54ca182f4c50b626c1bea7c8441ceda47367a54a818c248aa7a
-  languageName: node
-  linkType: hard
-
-"color2k@npm:^2.0.1":
-  version: 2.0.2
-  resolution: "color2k@npm:2.0.2"
-  checksum: 10/408a132ed8132ed60320d77c53143a09321f11dfe302c128e7ca533316ff930aad88fa1a25d8761ebdd9cfef060de81a45044111a864553d82a30c45c35eb858
   languageName: node
   linkType: hard
 

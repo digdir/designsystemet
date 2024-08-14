@@ -43,3 +43,4 @@
 @import url('./table.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
 @import url('./breadcrumbs.css') layer(ds.components);
+@import url('./badge.css') layer(ds.components);

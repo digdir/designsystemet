@@ -8,8 +8,12 @@ const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
 /** Add token name with prefix to list for removal */
 const removeUnwatedTokens = R.filter(
-  (token: TransformedToken) => !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
+  (token: TransformedToken) => !['ds-base-spacing', 'ds-base-sizing'].includes(token.name),
 );
+
+const dissocExtensions = R.pipe(R.dissoc('$extensions'), R.dissocPath(['original', '$extensions']));
+
+const removeUnwatedProps = R.map((token: TransformedToken) => dissocExtensions(token) as TransformedToken);
 
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
@@ -29,7 +33,7 @@ export const jsTokens: Format = {
       name: toCssVarName(format(token)),
     }));
 
-    const processTokens = R.pipe(removeUnwatedTokens, formatTokens, groupByType);
+    const processTokens = R.pipe(removeUnwatedTokens, removeUnwatedProps, formatTokens, groupByType);
 
     const tokens = processTokens(dictionary.allTokens);
 
