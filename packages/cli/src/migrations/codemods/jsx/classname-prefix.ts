@@ -25,11 +25,11 @@ const replaceInLiteral = (node: string) => {
 };
 
 const replaceInTemplateLiteral = (node: TemplateElement[]) => {
-  node.forEach((element) => {
+  for (const element of node) {
     const value = element.value.raw;
-    if (typeof value !== 'string') return;
+    if (typeof value !== 'string') continue;
     element.value.raw = replaceInLiteral(value);
-  });
+  }
 };
 
 const processNode = (node: Node) => {
@@ -76,13 +76,13 @@ function replaceClassNamePrefix(file: FileInfo, api: API): string | undefined {
   const j = api.jscodeshift;
   const root = j(file.source);
 
-  root.find(j.JSXElement).forEach((path) => {
-    j(path)
-      .find(j.JSXAttribute, { name: { name: 'className' } })
-      .forEach((nodePath) => {
-        processNode(nodePath.value.value as Node);
-      });
-  });
+  for (const path of root.find(j.JSXElement).paths()) {
+    const nodes = j(path).find(j.JSXAttribute, { name: { name: 'className' } });
+
+    for (const nodePath of nodes.paths()) {
+      processNode(nodePath.value.value as Node);
+    }
+  }
 
   return root.toSource({
     quote: 'single',

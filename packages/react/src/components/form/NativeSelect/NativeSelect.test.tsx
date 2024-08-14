@@ -54,9 +54,9 @@ describe('NativeSelect', () => {
 
   it('Renders all options', () => {
     render();
-    options.forEach(({ label, value }) => {
+    for (const { label, value } of options) {
       expect(screen.getByRole('option', { name: label })).toHaveValue(value);
-    });
+    }
   });
 
   it('Lets the user select a value', async () => {

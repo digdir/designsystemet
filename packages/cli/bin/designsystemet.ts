@@ -34,9 +34,9 @@ program
     const { glob, list } = opts;
 
     if (list) {
-      Object.keys(migrations).forEach((key) => {
+      for (const key of Object.keys(migrations)) {
         console.log(key);
-      });
+      }
     } else if (migrationKey) {
       const migration = migrations[migrationKey as keyof typeof migrations];
       if (!migration) {
