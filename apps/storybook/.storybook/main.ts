@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     /* reactDocgen: 'react-docgen-typescript', */
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      include: ['src/**/*.{ts,tsx}'],
+      include: ['**/src/**/*.{ts,tsx}'],
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
