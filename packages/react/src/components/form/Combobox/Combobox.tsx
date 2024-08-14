@@ -268,9 +268,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         inputRef.current?.focus();
       } else {
         /* clear newSelectedOptions */
-        Object.keys(newSelectedOptions).forEach((key) => {
+        for (const key of Object.keys(newSelectedOptions)) {
           delete newSelectedOptions[key];
-        });
+        }
         newSelectedOptions[prefix(option.value)] = option;
         setInputValue(option?.label || '');
         // move cursor to the end of the input
