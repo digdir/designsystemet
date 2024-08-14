@@ -25,6 +25,9 @@ const config: StorybookConfig = {
     }, */
     reactDocgenTypescriptOptions: {
       include: ['../../../packages/react/src/**/**.tsx'], // <- This is the important line.
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
   stories: [
