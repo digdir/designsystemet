@@ -17,7 +17,7 @@ export const colormode: Format = {
   name: 'ds/css-colormode',
   format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
-    const { outputReferences } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, mode, layer } = platform;
 
     const mode_ = mode as string;
@@ -28,6 +28,7 @@ export const colormode: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `color-scheme: ${mode_};\n` : '';
@@ -48,7 +49,7 @@ export const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
-    const { outputReferences } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, isCalculatedToken, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -57,6 +58,7 @@ export const semantic: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const formatTokens = R.map((token: TransformedToken) => {
@@ -92,7 +94,7 @@ type Typgraphy = {
 
 type ProcessedTokens = { variables: string[]; classes: string[] };
 
-const sortByType = R.sortBy<TransformedToken>((token) => token?.type === 'typography');
+const sortByType = R.sortBy<TransformedToken>((token) => token?.$type === 'typography');
 const getVariableName = R.pipe<string[], string[], string, string, string, string>(
   R.split(':'),
   R.head,
@@ -122,7 +124,7 @@ const sortTypographyLast = R.sortWith<TransformedToken>([
 export const typography: Format = {
   name: 'ds/css-typography',
   format: async ({ dictionary, file, options, platform }) => {
-    const { outputReferences } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -131,6 +133,7 @@ export const typography: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const sortedTokens = sortTypographyLast(dictionary.allTokens);
