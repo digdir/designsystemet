@@ -28,7 +28,7 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
   }
   // Sort themes by groups
   const groups: Record<string, ThemeObject[]> = {};
-  themes.forEach((theme) => {
+  for (const theme of themes) {
     if (theme.group) {
       groups[theme.group] = [...(groups[theme.group] ?? []), theme];
     } else {
@@ -36,7 +36,7 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
         `Theme ${theme.name} does not have a group property, which is required for multi-dimensional theming.`,
       );
     }
-  });
+  }
 
   if (Object.keys(groups).length <= 1) {
     return mapThemesToSetsObject(themes);
