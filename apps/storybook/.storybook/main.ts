@@ -14,14 +14,15 @@ const config: StorybookConfig = {
      * Enable this when docgen-typescript is faster
      * See: https://github.com/storybookjs/storybook/issues/28269
      */
-    /* reactDocgen: 'react-docgen-typescript',
+    /* reactDocgen: 'react-docgen-typescript', */
     reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
       },
       tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
-    }, */
+    },
   },
   stories: [
     '../../../packages/*.mdx',
