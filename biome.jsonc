@@ -63,9 +63,6 @@
         "noNoninteractiveTabindex": "off",
         "useAriaPropsForRole": "off"
       },
-      "complexity": {
-        "noForEach": "error"
-      },
       "correctness": {
         "useExhaustiveDependencies": "off"
       },
