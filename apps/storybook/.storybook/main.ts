@@ -36,6 +36,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-storysource'),
     '@storybook/addon-themes',
   ],
   staticDirs: ['../assets'],
