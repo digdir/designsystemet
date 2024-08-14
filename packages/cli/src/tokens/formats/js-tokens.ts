@@ -22,10 +22,12 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const jsTokens: Format = {
   name: 'ds/js-tokens',
-  format: async ({ dictionary, file }) => {
+  format: async ({ dictionary, file, options }) => {
+    const { usesDtcg } = options;
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const formatTokens = R.map((token: TransformedToken) => ({

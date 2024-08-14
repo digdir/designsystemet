@@ -1,8 +1,8 @@
 {
   "theme2": {
     "main": {
-      "type": "fontFamilies",
-      "value": "Helvetica Neue"
+      "$type": "fontFamilies",
+      "$value": "Helvetica Neue"
     },
     "bold": {
       "$extensions": {
@@ -10,8 +10,8 @@
           "modify": {}
         }
       },
-      "type": "fontWeights",
-      "value": "Medium"
+      "$type": "fontWeights",
+      "$value": "Medium"
     },
     "extra-bold": {
       "$extensions": {
@@ -19,12 +19,12 @@
           "modify": {}
         }
       },
-      "type": "fontWeights",
-      "value": "Bold"
+      "$type": "fontWeights",
+      "$value": "Bold"
     },
     "regular": {
-      "type": "fontWeights",
-      "value": "Regular"
+      "$type": "fontWeights",
+      "$value": "Regular"
     }
   }
 }

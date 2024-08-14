@@ -31,7 +31,7 @@ export function getColorWeight(value: string): ColorNumber | undefined {
 const TokenColor = ({ value, token }: TokenColorProps) => {
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
-  const weight = getColorWeight(token.original.value as string);
+  const weight = getColorWeight(token.original.$value as string);
   const Element = weight ? 'button' : 'div';
 
   return (
