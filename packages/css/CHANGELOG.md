@@ -1,5 +1,23 @@
 # Change Log
 
+## 0.11.0-next.11
+
+### Patch Changes
+
+- Fixes so spacing is the same in checkbox and radio groups ([#2234](https://github.com/digdir/designsystemet/pull/2234))
+
+- Button: `text-align: inherit` when not in full width ([#2216](https://github.com/digdir/designsystemet/pull/2216))
+
+- Breadcrumbs: ✨ new component ([#2226](https://github.com/digdir/designsystemet/pull/2226))
+
+- Badge: ✨ New component ([#2220](https://github.com/digdir/designsystemet/pull/2220))
+
+## 0.11.0-next.10
+
+### Patch Changes
+
+- [`2d1da9a`](https://github.com/digdir/designsystemet/commit/2d1da9a4f77a4d01b17a1987a79ea332465c1d99) Thanks [@mimarz](https://github.com/mimarz)! - Testing snapshot release
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

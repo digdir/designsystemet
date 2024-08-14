@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act, useState } from 'react';
 
 import { Chip, type ToggleChipProps } from '..';
 
@@ -41,7 +41,7 @@ describe('ToggleChip', () => {
     const chip = screen.getByRole('button', { name: 'Norwegian' });
 
     expect(chip).toHaveAttribute('aria-pressed', 'false');
-    await user.click(chip);
+    await act(async () => await user.click(chip));
     expect(chip).toHaveAttribute('aria-pressed', 'true');
   });
 

@@ -23,12 +23,7 @@ Preview.args = {
 
 export const Polymorphic: Story = (args) => (
   <>
-    <Box
-      {...args}
-      asChild
-      borderRadius='md'
-      borderColor='subtle'
-    >
+    <Box {...args} asChild borderRadius='md' borderColor='subtle'>
       <button>button</button>
     </Box>
     <Box
@@ -38,11 +33,7 @@ export const Polymorphic: Story = (args) => (
       borderColor='subtle'
       background='subtle'
     >
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noreferrer'
-      >
+      <a href='https://designsystemet.no' target='_blank' rel='noreferrer'>
         link
       </a>
     </Box>

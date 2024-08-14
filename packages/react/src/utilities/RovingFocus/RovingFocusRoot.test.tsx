@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
-import { RovingFocusRoot } from './RovingFocusRoot';
 import { RovingFocusItem } from './RovingFocusItem';
+import { RovingFocusRoot } from './RovingFocusRoot';
 
 const user = userEvent.setup();
 
 describe('RovingFocusRoot', () => {
-  test('can navigate with tab and arrow keys', async () => {
+  it('can navigate with tab and arrow keys', async () => {
     render(
       <RovingFocusRoot>
         <RovingFocusItem>test</RovingFocusItem>
@@ -36,25 +36,16 @@ describe('RovingFocusRoot', () => {
     expect(item1).toHaveFocus();
   });
 
-  test('can navigate with tab and arrow keys with custom value', async () => {
+  it('can navigate with tab and arrow keys with custom value', async () => {
     render(
       <RovingFocusRoot>
-        <RovingFocusItem
-          data-testid='id1'
-          value='banana'
-        >
+        <RovingFocusItem data-testid='id1' value='banana'>
           test
         </RovingFocusItem>
-        <RovingFocusItem
-          data-testid='id2'
-          value='strawberry'
-        >
+        <RovingFocusItem data-testid='id2' value='strawberry'>
           test
         </RovingFocusItem>
-        <RovingFocusItem
-          data-testid='id3'
-          value='chocolate'
-        >
+        <RovingFocusItem data-testid='id3' value='chocolate'>
           test
         </RovingFocusItem>
       </RovingFocusRoot>,

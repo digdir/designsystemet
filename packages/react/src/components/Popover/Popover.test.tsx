@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { PopoverRootProps } from './PopoverRoot';
 
@@ -35,7 +35,7 @@ describe('Popover', () => {
 
     expect(screen.queryByText(contentText)).not.toBeInTheDocument();
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
   });
@@ -44,11 +44,11 @@ describe('Popover', () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
@@ -57,41 +57,37 @@ describe('Popover', () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.click(document.body);
+    await act(async () => await user.click(document.body));
 
-    setTimeout(() => {
-      expect(screen.queryByText(contentText)).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
 
   it('should close when we press ESC', async () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.keyboard('[Escape]');
+    await act(async () => await user.keyboard('[Escape]'));
 
-    setTimeout(() => {
-      expect(screen.queryByText(contentText)).not.toBeInTheDocument();
-    }, 1000);
+    expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
 
   it('should close when we press SPACE', async () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.keyboard('[Space]');
+    await act(async () => await user.keyboard('[Space]'));
 
     expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
@@ -100,11 +96,11 @@ describe('Popover', () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.keyboard('[Enter]');
+    await act(async () => await user.keyboard('[Enter]'));
 
     expect(screen.queryByText(contentText)).not.toBeInTheDocument();
   });
@@ -113,11 +109,11 @@ describe('Popover', () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
 
-    await user.click(screen.getByText(contentText));
+    await act(async () => await user.click(screen.getByText(contentText)));
 
     expect(screen.queryByText(contentText)).toBeInTheDocument();
   });
@@ -126,7 +122,7 @@ describe('Popover', () => {
     const { user } = await render();
     const popoverTrigger = screen.getByRole('button');
 
-    await user.click(popoverTrigger);
+    await act(async () => await user.click(popoverTrigger));
 
     const popoverContent = screen.getByText(contentText);
 

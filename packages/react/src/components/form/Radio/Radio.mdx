@@ -1,7 +1,7 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
 import * as RadioStories from './Radio.stories';
-import * as RadioGroupStories from './Group/Group.stories';
+import * as RadioGroupStories from './RadioGroup.stories';
 
 <Meta of={RadioStories} />
 
@@ -46,7 +46,7 @@ Bruk `error` på `Radio.Group` for å vise feilmelding.
 
 Her må vi bruke `Radio.Group`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
 
-<Canvas of={RadioGroupStories.Error} />
+<Canvas of={RadioGroupStories.WithError} />
 
 ### Kontrollert
 
@@ -122,3 +122,4 @@ Merk at vi bruker piltastene til å velge alternativer i `Radio`-komponenten, ik
 - Pil ned/høyre - går til neste valg
 - Mellomromstasten - går til det første alternativet i en gruppe med alternativknapper, når gruppa ikke har et forhåndsvalgt alternativ.
 - Tab - går til hele gruppa med alternativer.
+./Group.stories

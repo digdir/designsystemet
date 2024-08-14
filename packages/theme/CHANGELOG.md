@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.0.0-next.15
+
+### Patch Changes
+
+- refactor: single CSS file for theme ([#2204](https://github.com/digdir/designsystemet/pull/2204))
+
+## 1.0.0-next.14
+
+### Patch Changes
+
+- [`2d1da9a`](https://github.com/digdir/designsystemet/commit/2d1da9a4f77a4d01b17a1987a79ea332465c1d99) Thanks [@mimarz](https://github.com/mimarz)! - Testing snapshot release
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

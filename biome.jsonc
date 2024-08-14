@@ -1,0 +1,94 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": { "enabled": true },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [
+      "node_modules/**",
+      ".next/**",
+      ".vscode/**",
+      ".github/**",
+      ".changeset/**",
+      "dist/**",
+      "./package.json", // yarn and biome disagrees on package.json formatting
+      "tsc-build/**",
+      "design-tokens/**/*",
+      "packages/theme/brand/**/*",
+      "apps/storefront/tokens/**"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80
+  },
+  "javascript": {
+    "globals": [
+      "expect",
+      "it",
+      "describe",
+      "test",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll",
+      "vi",
+      "React",
+      "JSX"
+    ],
+    "formatter": {
+      "enabled": true,
+      "jsxQuoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "useValidAnchor": "off",
+        "useButtonType": "off",
+        "useValidAriaRole": "off",
+        "useValidAriaValues": "off",
+        "useMediaCaption": "off",
+        "useKeyWithClickEvents": "off",
+        "noNoninteractiveTabindex": "off",
+        "useAriaPropsForRole": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      },
+      "style": {
+        "useTemplate": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noParameterAssign": "off",
+        "useNumberNamespace": "off",
+        "useSelfClosingElements": "off"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noDoubleEquals": "off" // TODO: Enable this rule
+      },
+      "performance": {
+        "noAccumulatingSpread": "off" // TODO: Enable this rule
+      }
+    },
+    "ignore": []
+  },
+
+  "overrides": [
+    { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
+    {
+      "include": ["**/packages/cli/**/*.ts"],
+      "formatter": { "lineWidth": 120 }
+    }
+  ]
+}

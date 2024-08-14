@@ -8,8 +8,8 @@ import {
   Paragraph,
   Tag,
 } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 import Link from 'next/link';
-import cl from 'clsx';
 
 import classes from './BlogCard.module.css';
 
@@ -50,27 +50,16 @@ export const BlogCard = ({
     >
       <Link href={href}>
         <CardMedia className={classes.media}>
-          <img
-            src={image}
-            alt=''
-            className={classes.image}
-          />
+          <img src={image} alt='' className={classes.image} />
         </CardMedia>
         <div className={classes.wrapper}>
           <CardHeader className={classes.heading}>
             {tagText && (
-              <Tag
-                className={classes.tag}
-                color={tagColor}
-                size='sm'
-              >
+              <Tag className={classes.tag} color={tagColor} size='sm'>
                 {tagText}
               </Tag>
             )}
-            <Heading
-              level={level}
-              size={featured ? 'lg' : 'sm'}
-            >
+            <Heading level={level} size={featured ? 'lg' : 'sm'}>
               {title}
             </Heading>
           </CardHeader>
@@ -87,10 +76,7 @@ export const BlogCard = ({
                   <span>{date}</span>
                   {author && (
                     <>
-                      <span
-                        aria-hidden
-                        className={classes.metaSquare}
-                      />
+                      <span aria-hidden className={classes.metaSquare} />
                       <span>{author}</span>
                     </>
                   )}

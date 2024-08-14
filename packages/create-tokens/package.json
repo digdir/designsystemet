@@ -3,6 +3,7 @@
   "version": "0.1.0-alpha.7",
   "description": "CLI tool to create an initial token structure for Designsystemet",
   "author": "Designsystemet team",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
@@ -19,8 +20,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^12.0.1",
-    "commander": "^12.0.0",
-    "tsx": "^4.11.2"
+    "@commander-js/extra-typings": "^12.1.0",
+    "commander": "^12.1.0",
+    "tsx": "^4.16.5"
   }
 }

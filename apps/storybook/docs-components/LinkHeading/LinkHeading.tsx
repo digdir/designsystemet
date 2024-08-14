@@ -1,8 +1,9 @@
-import { Heading, Link } from '@digdir/designsystemet-react';
-import type { HeadingProps } from '@digdir/designsystemet-react';
 import { LinkIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
+import cl from 'clsx/lite';
 import type * as React from 'react';
+
+import type { HeadingProps } from '@digdir/designsystemet-react';
+import { Heading, Link } from '@digdir/designsystemet-react';
 
 import classes from './LinkHeading.module.css';
 
@@ -14,10 +15,7 @@ type LinkHeadingProps = {
 
 export const LinkHeading = ({ ...rest }: LinkHeadingProps) => {
   return (
-    <Heading
-      {...rest}
-      className={cl(classes.linkHeading, rest.className)}
-    >
+    <Heading {...rest} className={cl(classes.linkHeading, rest.className)}>
       <Link
         aria-hidden='true'
         href={`#${rest.id}`}

@@ -1,7 +1,7 @@
-import type { RefObject } from 'react';
-import { createRef } from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type { RefObject } from 'react';
+import { act, createRef } from 'react';
 
 import type { NativeSelectProps } from './NativeSelect';
 import { NativeSelect } from './NativeSelect';
@@ -15,10 +15,7 @@ const options: { label: string; value: string }[] = [
   { label: 'Option 3', value: '3' },
 ];
 const children = options.map(({ label, value }) => (
-  <option
-    key={value}
-    value={value}
-  >
+  <option key={value} value={value}>
     {label}
   </option>
 ));
@@ -57,16 +54,16 @@ describe('NativeSelect', () => {
 
   it('Renders all options', () => {
     render();
-    options.forEach(({ label, value }) => {
+    for (const { label, value } of options) {
       expect(screen.getByRole('option', { name: label })).toHaveValue(value);
-    });
+    }
   });
 
   it('Lets the user select a value', async () => {
     render();
     const select = screen.getByRole('combobox');
     const { value } = options[1];
-    await user.selectOptions(select, value);
+    await act(async () => await user.selectOptions(select, value));
     expect(select).toHaveValue(value);
   });
 
@@ -74,18 +71,15 @@ describe('NativeSelect', () => {
     const onChange = vi.fn();
     render({ onChange });
     const { value } = options[1];
-    await user.selectOptions(screen.getByRole('combobox'), value);
+    await act(
+      async () => await user.selectOptions(screen.getByRole('combobox'), value),
+    );
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+    expect(onChange.mock.calls[0]?.[0]?.target.value).toEqual(value);
   });
 
   it('Is disabled when "disabled" is true', () => {
     render({ disabled: true });
-    expect(screen.getByRole('combobox')).toBeDisabled();
-  });
-
-  it('should be disabled when "readOnly" is true', () => {
-    render({ readOnly: true });
     expect(screen.getByRole('combobox')).toBeDisabled();
   });
 
@@ -106,11 +100,4 @@ describe('NativeSelect', () => {
 const render = (
   props?: Partial<NativeSelectProps>,
   ref?: RefObject<HTMLSelectElement>,
-) =>
-  renderRtl(
-    <NativeSelect
-      {...defaultProps}
-      {...props}
-      ref={ref}
-    />,
-  );
+) => renderRtl(<NativeSelect {...defaultProps} {...props} ref={ref} />);

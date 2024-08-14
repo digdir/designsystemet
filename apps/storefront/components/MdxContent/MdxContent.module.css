@@ -7,7 +7,9 @@
 .content h3,
 .content h4,
 .content ul,
-.content ol {
+.content ol,
+.content [class^='ds-accordion'],
+.content [class^='ds-card'] {
   max-width: 740px;
 }
 
@@ -112,18 +114,6 @@
   width: 100%;
   margin: var(--ds-spacing-7) 0;
   border-collapse: collapse;
-}
-
-.content > table td,
-.content > table th {
-  padding: var(--ds-spacing-4);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-}
-
-.content > table th {
-  text-align: left;
-  background-color: var(--ds-color-neutral-background-subtle);
-  font-weight: 600;
 }
 
 .content p code,

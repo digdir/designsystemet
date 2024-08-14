@@ -27,7 +27,7 @@
   cursor: pointer;
   font-family: inherit;
   justify-content: center;
-  text-align: center;
+  text-align: inherit;
   text-decoration: none;
   position: relative;
   border-radius: var(--ds-border-radius-md);
@@ -85,6 +85,7 @@
 
 .ds-btn--full-width {
   width: 100%;
+  text-align: center;
 }
 
 .ds-btn--secondary,

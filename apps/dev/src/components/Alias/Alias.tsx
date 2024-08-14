@@ -1,5 +1,5 @@
+import { ClockIcon, ExternalLinkIcon } from '@navikt/aksel-icons';
 import { DateTime } from 'luxon';
-import { ExternalLinkIcon, ClockIcon } from '@navikt/aksel-icons';
 
 import classes from './Alias.module.css';
 
@@ -11,16 +11,9 @@ type CardProps = {
 
 export const Alias = ({ date, type, alias }: CardProps) => {
   return (
-    <a
-      className={classes.card}
-      href={'https://' + alias}
-      target='blank'
-    >
+    <a className={classes.card} href={'https://' + alias} target='blank'>
       <div className={classes.type}>
-        <img
-          src={'img/' + type + '-logo.png'}
-          alt=''
-        />
+        <img src={'img/' + type + '-logo.png'} alt='' />
       </div>
       <div className={classes.textContainer}>
         <h3 className={classes.title}>

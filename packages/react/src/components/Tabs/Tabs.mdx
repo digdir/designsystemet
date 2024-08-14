@@ -1,5 +1,8 @@
-import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 
+import { TabsRoot } from './TabsRoot';
+import { Tab } from './Tab';
+import { TabContent } from './TabContent';
 import * as TabsStories from './Tabs.stories';
 
 <Meta of={TabsStories} />
@@ -35,6 +38,20 @@ import { Tabs } from '@digdir/designsystemet-react';
 ## Controlled
 
 <Canvas of={TabsStories.Controlled} />
+
+### Props
+
+#### `Tabs.Root`
+
+<ArgTypes of={TabsRoot} />
+
+#### `Tabs.Tab`
+
+<ArgTypes of={Tab} />
+
+#### `Tabs.Content`
+
+<ArgTypes of={TabContent} />
 
 ### Størrelse på ikon
 

@@ -1,10 +1,6 @@
-export { CodeSnippet } from './CodeSnippet/CodeSnippet';
 export { Color } from './Color/Color';
-export { ColorModal } from './ColorModal/ColorModal';
 export { ColorPicker } from './ColorPicker/ColorPicker';
-export { Container } from './Container/Container';
 export { Group } from './Group/Group';
-export { Header } from './Header/Header';
 export { Previews } from './Previews/Previews';
 export { Scale } from './Scale/Scale';
 export { Scales } from './Scales/Scales';

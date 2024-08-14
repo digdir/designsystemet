@@ -1,21 +1,26 @@
 import cl from 'clsx/lite';
-import type { ReactNode, HTMLAttributes } from 'react';
-import { createContext, forwardRef, useState, useId } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { createContext, forwardRef, useId, useState } from 'react';
 
 export type AccordionItemProps = {
   /**
    * Controls open-state.
    *
    * Using this removes automatic control of open-state
+   *
+   * @default undefined
    */
   open?: boolean;
-  /**  Defaults the accordion to open if not controlled */
+  /**
+   * Defaults the accordion to open if not controlled
+   * @default false
+   */
   defaultOpen?: boolean;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export type AccordionItemContextProps = {
+type AccordionItemContextProps = {
   open: boolean;
   toggleOpen: () => void;
   contentId: string;
@@ -24,6 +29,14 @@ export type AccordionItemContextProps = {
 export const AccordionItemContext =
   createContext<AccordionItemContextProps | null>(null);
 
+/**
+ * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
+ * @example
+ * <AccordionItem>
+ *  <AccordionHeader>Header</AccordionHeader>
+ *  <AccordionContent>Content</AccordionContent>
+ * </AccordionItem>
+ */
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
     const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);

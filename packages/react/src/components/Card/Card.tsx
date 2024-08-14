@@ -1,7 +1,7 @@
-import type { ReactNode, HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 
 export type CardProps = {
   /**
@@ -23,6 +23,15 @@ export type CardProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
+/**
+ * Card component to present content in a structured way.
+ * @example
+ * <Card>
+ *  <Card.Header>Header</Card.Header>
+ *  <Card.Content>Content</Card.Content>
+ *  <Card.Footer>Footer</Card.Footer>
+ * </Card>
+ */
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     { isLink = false, asChild = false, color = 'neutral', className, ...rest },

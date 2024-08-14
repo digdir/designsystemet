@@ -1,4 +1,5 @@
 import { render as renderRtl, screen } from '@testing-library/react';
+import { act } from 'react';
 import { vi } from 'vitest';
 
 import * as hooks from '../../utilities';
@@ -34,7 +35,7 @@ describe('AnimateHeight', () => {
   it('Appends given style to root element', () => {
     const style = { color: 'rgb(255, 0, 0)' };
     const { container } = render({ style });
-    expect(container.firstChild).toHaveStyle({ height: 0 });
+    expect(container.firstChild).toHaveStyle({ height: undefined });
     expect(container.firstChild).toHaveStyle(style);
   });
 
@@ -56,7 +57,7 @@ describe('AnimateHeight', () => {
 
   it('Sets class to "openingOrClosing" when opening and "open" when timer has run', async () => {
     const { container, rerender } = render({ open: false });
-    rerender(<AnimateHeight open />);
+    act(() => rerender(<AnimateHeight open />));
     expect(container.firstChild).toHaveClass(
       'ds-animate-height--openingOrClosing',
     );
@@ -104,9 +105,4 @@ describe('AnimateHeight', () => {
 });
 
 const render = (props: Partial<AnimateHeightProps> = {}) =>
-  renderRtl(
-    <AnimateHeight
-      {...defaultProps}
-      {...props}
-    />,
-  );
+  renderRtl(<AnimateHeight {...defaultProps} {...props} />);

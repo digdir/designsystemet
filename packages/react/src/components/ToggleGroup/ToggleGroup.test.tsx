@@ -1,6 +1,6 @@
-import type * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type * as React from 'react';
 
 import { ToggleGroup } from '.';
 
@@ -70,13 +70,13 @@ describe('ToggleGroup', () => {
     });
     expect(item).toHaveAttribute('aria-checked', 'true');
   });
-  test('has passed clicked ToggleGroupItem element to onChange', async () => {
-    let onChangeValue = '';
+  test('has passed clicked ToggleGroupItem value to onChange', async () => {
+    const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup.Root onChange={(value) => (onChangeValue = value)}>
+      <ToggleGroup.Root onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
-        <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
+        <ToggleGroup.Item value='test2value'>test2</ToggleGroup.Item>
       </ToggleGroup.Root>,
     );
 
@@ -88,17 +88,14 @@ describe('ToggleGroup', () => {
 
     await user.click(item);
 
-    expect(onChangeValue).toEqual('test2');
+    expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveAttribute('aria-checked', 'true');
   });
-  test('has passed clicked ToggleGroupItem element to onChange when defaultValue is used', async () => {
-    let onChangeValue = '';
+  test('has correct aria-checked on correct ToggleGroupItem when clicked', async () => {
+    const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup.Root
-        defaultValue='test1'
-        onChange={(value) => (onChangeValue = value)}
-      >
+      <ToggleGroup.Root defaultValue='test1' onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
       </ToggleGroup.Root>,
@@ -116,7 +113,7 @@ describe('ToggleGroup', () => {
 
     await user.click(item2);
 
-    expect(onChangeValue).toEqual('test2');
+    expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveAttribute('aria-checked', 'true');
   });
 
@@ -135,10 +132,7 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name and value', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup.Root
-        name='my-name'
-        defaultValue='test'
-      >
+      <ToggleGroup.Root name='my-name' defaultValue='test'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup.Root>,
     );
@@ -156,10 +150,7 @@ describe('ToggleGroup', () => {
 
       render(
         <form onSubmit={handleSubmit}>
-          <ToggleGroup.Root
-            name='test'
-            defaultValue='test2'
-          >
+          <ToggleGroup.Root name='test' defaultValue='test2'>
             <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
             <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
           </ToggleGroup.Root>

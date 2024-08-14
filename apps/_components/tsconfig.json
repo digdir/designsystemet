@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./tsc-build",
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": false,
+    "composite": false,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false,
+    "incremental": true,
+    "moduleResolution": "Bundler"
+  },
+  "include": ["./src", "./stories", "declarations.d.ts"],
+  "rootDir": "./src"
+}

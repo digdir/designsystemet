@@ -1,8 +1,8 @@
-import { DropdownMenuRoot } from './DropdownMenuRoot';
+import { DropdownMenuContent } from './DropdownMenuContent';
 import { DropdownMenuGroup } from './DropdownMenuGroup';
 import { DropdownMenuItem } from './DropdownMenuItem';
+import { DropdownMenuRoot } from './DropdownMenuRoot';
 import { DropdownMenuTrigger } from './DropdownMenuTrigger';
-import { DropdownMenuContent } from './DropdownMenuContent';
 
 type DropdownMenuComponent = {
   Root: typeof DropdownMenuRoot;
@@ -12,6 +12,17 @@ type DropdownMenuComponent = {
   Trigger: typeof DropdownMenuTrigger;
 };
 
+/**
+ * @example
+ * <DropdownMenu.Root>
+ *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
+ *  <DropdownMenu.Content>
+ *    <DropdownMenu.Group heading='Heading'>
+ *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
+ *    </DropdownMenu.Group>
+ *  </DropdownMenu.Content>
+ * </DropdownMenu.Root>
+ */
 const DropdownMenu = {} as DropdownMenuComponent;
 
 DropdownMenu.Root = DropdownMenuRoot;

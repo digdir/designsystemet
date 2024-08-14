@@ -18,11 +18,7 @@ const TeaserCard = ({
   date,
 }: TeaserCardProps) => {
   return (
-    <Link
-      className={classes.card}
-      href={href}
-      prefetch={false}
-    >
+    <Link className={classes.card} href={href} prefetch={false}>
       <h3 className={classes.title}>{title}</h3>
       <p className={classes.desc}>{description}</p>
       {author && date && (

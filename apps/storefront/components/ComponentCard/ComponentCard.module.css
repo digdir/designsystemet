@@ -6,7 +6,9 @@
   border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
-  transition: 0.2s all;
+  transition:
+    0.2s transform ease-in-out,
+    0.2s box-shadow ease-in-out;
 }
 
 .card:hover {
@@ -18,14 +20,6 @@
   margin-top: var(--ds-spacing-3);
   text-decoration: underline;
   text-underline-offset: 7px;
-}
-
-.card:focus-visible {
-  --dsc-focus-border-width: 3px;
-
-  box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-neutral-background-default);
-  outline: var(--dsc-focus-border-width) solid var(--ds-color-neutral-text-default);
-  outline-offset: var(--dsc-focus-border-width);
 }
 
 .image {

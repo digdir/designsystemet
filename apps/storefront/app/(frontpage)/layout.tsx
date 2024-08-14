@@ -1,9 +1,10 @@
-import type React from 'react';
 import { Heading } from '@digdir/designsystemet-react';
-import { PaletteIcon, WrenchIcon, ComponentIcon } from '@navikt/aksel-icons';
-import cn from 'clsx';
+import { ComponentIcon, PaletteIcon, WrenchIcon } from '@navikt/aksel-icons';
+import { Container } from '@repo/components';
+import cn from 'clsx/lite';
+import type React from 'react';
 
-import { NavigationCard, Container } from '@components';
+import { NavigationCard } from '@components';
 
 import classes from './layout.module.css';
 
@@ -66,7 +67,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         />
       </div>
       <div className={classes.header}>
-        <div className={classes.content}>
+        <div
+          className={classes.content}
+          /* We need this for firefox, because it focuses anything with overflow: hidden */
+          tabIndex={-1}
+        >
           <Container className={classes.container}>
             <div className={classes.text}>
               <div className={classes.betaTag}>Beta</div>

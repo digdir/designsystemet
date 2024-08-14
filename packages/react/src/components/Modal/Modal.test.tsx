@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { ModalDialogProps } from './';
 import { Modal } from './';
@@ -36,7 +36,7 @@ describe('Modal', () => {
   });
 
   it('should open the modal', async () => {
-    await render({
+    const { user } = await render({
       children: (
         <>
           <Modal.Header>{HEADER_TITLE}</Modal.Header>
@@ -48,7 +48,7 @@ describe('Modal', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
-    await userEvent.click(button);
+    await act(async () => await user.click(button));
 
     expect(spy).toHaveBeenCalledTimes(1);
 
@@ -56,7 +56,7 @@ describe('Modal', () => {
   });
 
   it('should open and close the modal', async () => {
-    await render({
+    const { user } = await render({
       children: (
         <>
           <Modal.Header>{HEADER_TITLE}</Modal.Header>
@@ -69,14 +69,14 @@ describe('Modal', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
-    await userEvent.click(button);
+    await act(async () => await user.click(button));
 
     expect(showSpy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
 
     const closeButton = screen.getByRole('button', { name: /close/i });
-    await userEvent.click(closeButton);
+    await act(async () => await user.click(closeButton));
 
     expect(closeSpy).toHaveBeenCalledTimes(1);
 

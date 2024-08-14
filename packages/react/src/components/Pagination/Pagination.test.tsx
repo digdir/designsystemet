@@ -1,10 +1,10 @@
 import {
+  renderHook,
   render as renderRtl,
   screen,
-  renderHook,
 } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { PaginationRootProps } from './PaginationRoot';
 

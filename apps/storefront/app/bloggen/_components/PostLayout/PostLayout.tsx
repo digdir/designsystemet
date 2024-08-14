@@ -1,8 +1,13 @@
+import {
+  Heading,
+  Ingress,
+  Link,
+  Paragraph,
+} from '@digdir/designsystemet-react';
+import { Container } from '@repo/components';
 import type * as React from 'react';
-import { Heading, Ingress, Paragraph } from '@digdir/designsystemet-react';
 
-import { Container, MdxContent, Image, Meta } from '../../../../components';
-import { Link } from '../../../../components/Link/Link';
+import { Image, MdxContent } from '../../../../components';
 import { Figures } from '../Figures';
 
 import classes from './PostLayout.module.css';
@@ -34,11 +39,6 @@ function PostLayout({
 }: BlogArticleLayoutProps) {
   return (
     <div className={classes.wrapper}>
-      <Meta
-        title={heading}
-        description={ingress}
-        image={imageSrc}
-      />
       <Container className={classes.page}>
         {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
@@ -51,22 +51,13 @@ function PostLayout({
             }}
           />
         ))}
-        <main
-          id='main'
-          className={classes.main}
-        >
+        <main id='main' className={classes.main}>
           <div className={classes.intro}>
             <Heading level={1}>{heading}</Heading>
             <Ingress className={classes.ingress}>{ingress}</Ingress>
-            <Paragraph
-              size='sm'
-              className={classes.meta}
-            >
+            <Paragraph size='sm' className={classes.meta}>
               <span>{date}</span>
-              <span
-                aria-hidden
-                className={classes.metaSquare}
-              />
+              <span aria-hidden className={classes.metaSquare} />
               <span>{author}</span>
             </Paragraph>
           </div>
@@ -79,10 +70,7 @@ function PostLayout({
             />
             {content}
             <div className={classes.wantToWrite}>
-              <Heading
-                level={3}
-                size='xs'
-              >
+              <Heading level={3} size='xs'>
                 Ønsker du å skrive for bloggen?
               </Heading>
               <Paragraph size='sm'>

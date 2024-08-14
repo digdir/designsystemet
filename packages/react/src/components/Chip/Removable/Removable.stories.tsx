@@ -5,6 +5,12 @@ import { RemovableChip } from './Removable';
 export default {
   title: 'Komponenter/Chip/Removable',
   component: RemovableChip,
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+    },
+  },
 } as Meta;
 
 type Story = StoryObj<typeof RemovableChip>;

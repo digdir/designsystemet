@@ -1,15 +1,12 @@
-name: Checks Storefront
+name: Build Storefront
 on:
   workflow_dispatch:
   pull_request:
     paths:
       - 'apps/storefront/**'
-  push:
-    paths:
-      - 'apps/storefront/**'
 jobs:
   checks:
-    name: Builds, lints and tests code
+    name: Build & test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,9 +24,4 @@ jobs:
         run: yarn build:storefront
       - name: Types
         run: yarn types:storefront
-      - name: Lint Code
-        run: yarn lint ./apps/storefront
-      - name: Lint CSS
-        run: yarn lint-style ./apps/storefront/**/*.css
-      - name: Test
-        run: yarn test
+

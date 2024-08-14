@@ -1,6 +1,7 @@
-import cl from 'clsx/lite';
-import { SunIcon } from '@navikt/aksel-icons';
+import { omit } from '@digdir/designsystemet-react';
 import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import { SunIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
 import { useThemeStore } from '../../store';
@@ -51,7 +52,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
           className={cl(classes.box, featured && classes.featured, 'ds-focus')}
           aria-label={`${type} farge ${color.number}, ${color.name}`}
           type='button'
-          {...rest}
+          {...omit(['colorNumber'], rest)}
         ></button>
 
         {showColorMeta && (
@@ -62,10 +63,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
               {contrast}
             </div>
             <div className={classes.lightness}>
-              <SunIcon
-                title='a11y-title'
-                fontSize='1.3rem'
-              />
+              <SunIcon title='a11y-title' fontSize='1.3rem' />
               {lightness}
             </div>
           </>

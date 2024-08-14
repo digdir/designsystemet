@@ -1,14 +1,15 @@
 'use client';
+import { Container } from '@repo/components';
+import { usePathname } from 'next/navigation';
 import type * as React from 'react';
-import { useRouter } from 'next/router';
 
-import { Container, SidebarMenu, MdxContent } from '../../components';
+import { MdxContent, SidebarMenu } from '../../components';
 import {
   Banner,
   BannerHeading,
   BannerIcon,
   BannerIngress,
-} from '../../components/SubPages/Banner/Banner';
+} from '../../components/Banner/Banner';
 
 import classes from './NavMenuPageLayout.module.css';
 
@@ -23,7 +24,7 @@ type NavMenuPageLayoutProps = {
 };
 
 const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
-  const router = useRouter();
+  const pathName = usePathname() || '';
 
   return (
     <div className={classes.outerPage}>
@@ -36,12 +37,9 @@ const NavMenuPageLayout = ({ content, banner }: NavMenuPageLayoutProps) => {
       )}
       <Container className={classes.page}>
         <div className={classes.left}>
-          <SidebarMenu routerPath={router.pathname} />
+          <SidebarMenu routerPath={pathName} />
         </div>
-        <main
-          id='main'
-          className={classes.right}
-        >
+        <main id='main' className={classes.right}>
           <div>
             <MdxContent>{content}</MdxContent>
           </div>

@@ -1,10 +1,10 @@
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { Popover } from '@digdir/designsystemet-react';
+import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
+import { useClickOutside } from '@react-awesome/use-click-outside';
+import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import cl from 'clsx/lite';
-import { useClickOutside } from '@react-awesome/use-click-outside';
-import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
-import { Popover } from '@digdir/designsystemet-react';
 
 import classes from './ColorPicker.module.css';
 
@@ -96,10 +96,7 @@ export const ColorPicker = ({
   };
 
   return (
-    <div
-      ref={ref}
-      className={cl(classes.whole, disabled && classes.disabled)}
-    >
+    <div ref={ref} className={cl(classes.whole, disabled && classes.disabled)}>
       <div className={classes.picker}>
         <div className={classes.label}>
           <span
@@ -124,7 +121,7 @@ export const ColorPicker = ({
         <ChromePicker
           onChangeComplete={({ hex }: { hex: string }) => {
             setColor(hex);
-            onColorChanged && onColorChanged(hex as CssColor);
+            onColorChanged?.(hex as CssColor);
           }}
           color={color}
         />

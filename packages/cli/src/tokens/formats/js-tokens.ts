@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import type { TransformedToken, Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter } from 'style-dictionary/utils';
+import type { Format, TransformedToken } from 'style-dictionary/types';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 import { getType } from '../utils/utils.js';
 
@@ -8,8 +8,12 @@ const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
 /** Add token name with prefix to list for removal */
 const removeUnwatedTokens = R.filter(
-  (token: TransformedToken) => !['fds-base_spacing', 'fds-base_sizing'].includes(token.name),
+  (token: TransformedToken) => !['ds-base-spacing', 'ds-base-sizing'].includes(token.name),
 );
+
+const dissocExtensions = R.pipe(R.dissoc('$extensions'), R.dissocPath(['original', '$extensions']));
+
+const removeUnwatedProps = R.map((token: TransformedToken) => dissocExtensions(token) as TransformedToken);
 
 const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
 
@@ -18,10 +22,12 @@ const toCssVarName = R.pipe(R.split(':'), R.head, R.trim);
  */
 export const jsTokens: Format = {
   name: 'ds/js-tokens',
-  format: async function ({ dictionary, file }) {
+  format: async ({ dictionary, file, options }) => {
+    const { usesDtcg } = options;
     const format = createPropertyFormatter({
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const formatTokens = R.map((token: TransformedToken) => ({
@@ -29,7 +35,7 @@ export const jsTokens: Format = {
       name: toCssVarName(format(token)),
     }));
 
-    const processTokens = R.pipe(removeUnwatedTokens, formatTokens, groupByType);
+    const processTokens = R.pipe(removeUnwatedTokens, removeUnwatedProps, formatTokens, groupByType);
 
     const tokens = processTokens(dictionary.allTokens);
 

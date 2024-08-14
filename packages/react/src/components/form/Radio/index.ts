@@ -1,7 +1,7 @@
 import type { RadioProps } from './Radio';
-import type { RadioGroupProps } from './Group';
 import { Radio as RadioParent } from './Radio';
-import { RadioGroup } from './Group';
+import type { RadioGroupProps } from './RadioGroup';
+import { RadioGroup } from './RadioGroup';
 
 type RadioComponent = typeof RadioParent & {
   /**

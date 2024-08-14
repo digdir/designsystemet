@@ -1,5 +1,53 @@
 # Change Log
 
+## 1.0.0-next.16
+
+### Minor Changes
+
+- Breadcrumbs: ✨ new component ([#2226](https://github.com/digdir/designsystemet/pull/2226))
+
+- Badge: ✨ New component ([#2220](https://github.com/digdir/designsystemet/pull/2220))
+
+### Patch Changes
+
+- Modal: add missing ModalRoot export ([#2228](https://github.com/digdir/designsystemet/pull/2228))
+
+- RovingFocus: add `orientation` to support for different arrow directions, and add support home/end buttons ([#2206](https://github.com/digdir/designsystemet/pull/2206))
+
+  - Affects `ToggleGroup`, where up and down arrows can now be used
+  - Affects `ToggleGroup`, where home and end can now be used
+  - Affects `Tabs`, where home and end can now be used
+
+- Accordion: Fix `defaultOpen` flicker on first render ([#2214](https://github.com/digdir/designsystemet/pull/2214))
+
+- Tabs: Make arrow keys work in any direction ([#2223](https://github.com/digdir/designsystemet/pull/2223))
+
+- Fixes so spacing is the same in checkbox and radio groups ([#2234](https://github.com/digdir/designsystemet/pull/2234))
+
+- Divider: hide from screen readers ([#2232](https://github.com/digdir/designsystemet/pull/2232))
+
+- Modal: remove `FloatingFocusManager` ([#2224](https://github.com/digdir/designsystemet/pull/2224))
+
+- NativeSelect: add focus in `readOnly` state ([#2212](https://github.com/digdir/designsystemet/pull/2212))
+
+## 1.0.0-next.15
+
+### Patch Changes
+
+- chore: Fix rollup build warnings for react package ([#2187](https://github.com/digdir/designsystemet/pull/2187))
+
+- chore: Replace eslint with biomejs ([#2189](https://github.com/digdir/designsystemet/pull/2189))
+
+## 1.0.0-next.14
+
+### Patch Changes
+
+- [`2d1da9a`](https://github.com/digdir/designsystemet/commit/2d1da9a4f77a4d01b17a1987a79ea332465c1d99) Thanks [@mimarz](https://github.com/mimarz)! - Testing snapshot release
+
+- [#2184](https://github.com/digdir/designsystemet/pull/2184) [`8b2abdb`](https://github.com/digdir/designsystemet/commit/8b2abdbce4f51fd7771e0ba041515e25aa5e88a3) Thanks [@mimarz](https://github.com/mimarz)! - fix(Combobox): :bug: Button for toggling open/close should now close when open
+
+- [#2185](https://github.com/digdir/designsystemet/pull/2185) [`567329b`](https://github.com/digdir/designsystemet/commit/567329ba0c228490c95ea4c062e7045bde597a53) Thanks [@mimarz](https://github.com/mimarz)! - feat(Combobox): :sparkles: Label now supports other elements
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import { Radio } from './Radio';
 
@@ -12,10 +13,7 @@ describe('Radio', () => {
 
   test('has correct description', () => {
     render(
-      <Radio
-        value='test'
-        description='description'
-      >
+      <Radio value='test' description='description'>
         test
       </Radio>,
     );
@@ -26,10 +24,7 @@ describe('Radio', () => {
 
   test('should pass down name attribute to input', () => {
     render(
-      <Radio
-        value='test'
-        name='radio-group123'
-      >
+      <Radio value='test' name='radio-group123'>
         label
       </Radio>,
     );
@@ -40,12 +35,7 @@ describe('Radio', () => {
   });
 
   test('has correct label when using aria-label', () => {
-    render(
-      <Radio
-        value='test'
-        aria-label='label'
-      />,
-    );
+    render(<Radio value='test' aria-label='label' />);
     expect(screen.getByRole('radio', { name: 'label' })).toBeVisible();
   });
 
@@ -53,10 +43,7 @@ describe('Radio', () => {
     render(
       <div>
         <div id='label-id'>label outside radio</div>
-        <Radio
-          value='test'
-          aria-labelledby='label-id'
-        />
+        <Radio value='test' aria-labelledby='label-id' />
       </div>,
     );
     expect(
@@ -72,11 +59,7 @@ describe('Radio', () => {
     const value = 'test';
 
     render(
-      <Radio
-        value={value}
-        onChange={onChange}
-        onClick={onClick}
-      >
+      <Radio value={value} onChange={onChange} onClick={onClick}>
         label
       </Radio>,
     );
@@ -85,7 +68,7 @@ describe('Radio', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -98,18 +81,13 @@ describe('Radio', () => {
     const onClick = vi.fn();
 
     render(
-      <Radio
-        value='test'
-        disabled
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Radio value='test' disabled onClick={onClick} onChange={onChange}>
         disabled radio
       </Radio>,
     );
 
     const radio = screen.getByRole('radio');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
@@ -122,18 +100,13 @@ describe('Radio', () => {
     const onClick = vi.fn();
 
     render(
-      <Radio
-        value='test'
-        readOnly
-        onClick={onClick}
-        onChange={onChange}
-      >
+      <Radio value='test' readOnly onClick={onClick} onChange={onChange}>
         readonly radio
       </Radio>,
     );
 
     const radio = screen.getByRole('radio');
-    await user.click(radio);
+    await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
     expect(onClick).not.toHaveBeenCalled();

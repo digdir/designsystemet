@@ -1,8 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { useState } from 'react';
 import { LinkIcon } from '@navikt/aksel-icons';
-
-import { Divider } from '../..';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { DropdownMenu } from '.';
 
@@ -23,33 +21,9 @@ export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
       <DropdownMenu.Root {...args}>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
-          <DropdownMenu.Group heading='Links'>
-            <DropdownMenu.Item asChild>
-              <a
-                href='https://github.com/digdir/designsystemet'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon fontSize='1.5rem' />
-                Github
-              </a>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item asChild>
-              <a
-                href='https://designsystemet.no'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon fontSize='1.5rem' />
-                Designsystemet.no
-              </a>
-            </DropdownMenu.Item>
-          </DropdownMenu.Group>
-          <Divider />
-          <DropdownMenu.Group>
+          <DropdownMenu.Group heading='Heading'>
             <DropdownMenu.Item>Button 1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 2</DropdownMenu.Item>
-            <DropdownMenu.Item disabled>Disabled</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
@@ -135,11 +109,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu.Root
-        open={open}
-        onClose={() => setOpen(false)}
-        portal
-      >
+      <DropdownMenu.Root open={open} onClose={() => setOpen(false)} portal>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>

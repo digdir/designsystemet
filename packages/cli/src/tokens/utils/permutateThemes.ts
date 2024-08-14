@@ -1,6 +1,6 @@
-import * as R from 'ramda';
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
+import * as R from 'ramda';
 
 declare interface Options {
   separator?: string;
@@ -28,7 +28,7 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
   }
   // Sort themes by groups
   const groups: Record<string, ThemeObject[]> = {};
-  themes.forEach((theme) => {
+  for (const theme of themes) {
     if (theme.group) {
       groups[theme.group] = [...(groups[theme.group] ?? []), theme];
     } else {
@@ -36,7 +36,7 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
         `Theme ${theme.name} does not have a group property, which is required for multi-dimensional theming.`,
       );
     }
-  });
+  }
 
   if (Object.keys(groups).length <= 1) {
     return mapThemesToSetsObject(themes);
@@ -84,7 +84,8 @@ function filterTokenSets(tokensets: Record<string, TokenSetStatus>) {
       .sort((a, b) => {
         if (a[1] === TokenSetStatus.SOURCE && b[1] === TokenSetStatus.ENABLED) {
           return -1;
-        } else if (a[1] === TokenSetStatus.ENABLED && b[1] === TokenSetStatus.SOURCE) {
+        }
+        if (a[1] === TokenSetStatus.ENABLED && b[1] === TokenSetStatus.SOURCE) {
           return 1;
         }
         return 0;

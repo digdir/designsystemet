@@ -1,8 +1,8 @@
+import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef, useContext, useId, useMemo } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
-import { useMergeRefs } from '@floating-ui/react';
 
 import { omit } from '../../../utilities';
 import { Label } from '../../Typography';
@@ -43,7 +43,7 @@ export type ComboboxCustomProps = {
 } & React.HTMLAttributes<HTMLDivElement> &
   (InteractiveProps | NonInteractiveProps);
 
-export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
+const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   ({ asChild, interactive, id, className, ...rest }, ref) => {
     if (interactive && !id) {
       throw new Error('If ComboboxCustom is interactive, it must have an id');
@@ -75,10 +75,7 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
     ]);
 
     return (
-      <Label
-        size={size}
-        asChild
-      >
+      <Label size={size} asChild>
         <Component
           ref={combinedRef}
           tabIndex={-1}
@@ -95,4 +92,4 @@ export const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
   },
 );
 
-export default ComboboxCustom;
+export { ComboboxCustom };

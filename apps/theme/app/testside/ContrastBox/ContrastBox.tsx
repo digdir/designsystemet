@@ -1,7 +1,7 @@
 'use client';
-import cl from 'clsx/lite';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getContrastFromHex } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
 
 import classes from './ContrastBox.module.css';
 

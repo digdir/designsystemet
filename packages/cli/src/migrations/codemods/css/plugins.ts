@@ -1,7 +1,7 @@
-import * as R from 'ramda';
-import type { Plugin, Declaration } from 'postcss';
 import chalk from 'chalk';
 import hash from 'object-hash';
+import type { Declaration, Plugin } from 'postcss';
+import * as R from 'ramda';
 
 type PluginGenerator = (dictionary: Record<string, string>) => Plugin;
 
@@ -17,13 +17,13 @@ export const cssClassRename: PluginGenerator = (dictionary) => ({
 
     if (!selector) return;
 
-    Object.entries(dictionary).forEach(([from, to]) => {
+    for (const [from, to] of Object.entries(dictionary)) {
       if (!selector.includes(from)) return;
 
       const newSelector = selector.replace(new RegExp(from, 'g'), to);
 
       rule.selector = newSelector;
-    });
+    }
   },
 });
 
@@ -34,23 +34,21 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
 
     const deleted = new Set<string>();
 
-    Object.entries(dictionary).forEach(([from, to]) => {
+    for (const [from, to] of Object.entries(dictionary)) {
       if (!R.isEmpty(to)) {
-        switch (true) {
-          case R.includes(from, value):
-            to === '[delete]' && deleted.add(deleteMsg(decl, from));
-            decl.value = value.replace(from, to);
-            break;
-
-          case R.includes(from, prop):
-            if (decl.variable) {
-              to === '[delete]' && deleted.add(deleteMsg(decl, from));
-              decl.prop = prop.replace(from, to);
-              break;
-            }
+        if (R.includes(from, value)) {
+          if (to === '[delete]') {
+            deleted.add(deleteMsg(decl, from));
+          }
+          decl.value = value.replace(from, to);
+        } else if (R.includes(from, prop) && decl.variable) {
+          if (to === '[delete]') {
+            deleted.add(deleteMsg(decl, from));
+          }
+          decl.prop = prop.replace(from, to);
         }
       }
-    });
+    }
 
     if (deleted.size > 0) {
       Array.from(deleted).forEach(printDelete);

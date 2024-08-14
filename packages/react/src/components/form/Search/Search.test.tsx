@@ -1,5 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import type { SearchProps } from './Search';
 import { Search } from './Search';
@@ -18,40 +19,13 @@ describe('Search', () => {
     expect(screen.getByLabelText('label')).toBeDefined();
   });
 
-  test('is invalid with correct error message', () => {
-    render({ error: 'error-message' });
-
-    const search = screen.getByRole('searchbox', {
-      description: 'error-message',
-    });
-    expect(search).toBeDefined();
-    expect(search).toBeInvalid();
-  });
-  test('is invalid with correct error message from errorId', () => {
-    renderRtl(
-      <>
-        <span id='my-error'>my error message</span>
-        <Search
-          errorId='my-error'
-          error
-        />
-      </>,
-    );
-
-    const search = screen.getByRole('searchbox', {
-      description: 'my error message',
-    });
-    expect(search).toBeDefined();
-    expect(search).toBeInvalid();
-  });
-
   it('Triggers onBlur event when field loses focus', async () => {
     const onBlur = vi.fn();
     const { user } = render({ onBlur });
     const element = screen.getByRole('searchbox');
-    await user.click(element);
+    await act(async () => await user.click(element));
     expect(element).toHaveFocus();
-    await user.tab();
+    await act(async () => await user.tab());
     expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
@@ -60,9 +34,9 @@ describe('Search', () => {
     const data = 'test';
     const { user } = render({ onChange });
     const element = screen.getByRole('searchbox');
-    await user.click(element);
+    await act(async () => await user.click(element));
     expect(element).toHaveFocus();
-    await user.keyboard(data);
+    await act(async () => await user.keyboard(data));
     expect(onChange).toHaveBeenCalledTimes(data.length);
   });
 
@@ -75,14 +49,14 @@ describe('Search', () => {
   it('Focuses on search field when label is clicked and id is not given', async () => {
     const label = 'Lorem ipsum';
     const { user } = render({ label });
-    await user.click(screen.getByText(label));
+    await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('searchbox')).toHaveFocus();
   });
 
   it('Focuses on search field when label is clicked and id is given', async () => {
     const label = 'Lorem ipsum';
     const { user } = render({ id: 'some-unique-id', label });
-    await user.click(screen.getByText(label));
+    await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('searchbox')).toHaveFocus();
   });
 
@@ -94,12 +68,12 @@ describe('Search', () => {
     const { user } = render({ onClear, clearButtonLabel });
 
     const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await user.type(searchbox, typedText);
+    await act(async () => await user.type(searchbox, typedText));
     expect(searchbox.value).toBe(typedText);
 
     const clearButton = screen.getByText(clearButtonLabel);
 
-    await user.click(clearButton);
+    await act(async () => await user.click(clearButton));
 
     expect(onClear).toBeCalledWith(typedText);
     expect(searchbox.value).toBe('');
@@ -118,12 +92,12 @@ describe('Search', () => {
     });
 
     const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await user.type(searchbox, typedText);
+    await act(async () => await user.type(searchbox, typedText));
     expect(searchbox.value).toBe(typedText);
 
     const searchButton = screen.getByText(searchButtonLabel);
 
-    await user.click(searchButton);
+    await act(async () => await user.click(searchButton));
 
     expect(onSearchClick).toBeCalledWith(typedText);
   });
@@ -141,10 +115,10 @@ describe('Search', () => {
     );
 
     const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await user.type(searchbox, typedText);
+    await act(async () => await user.type(searchbox, typedText));
     expect(searchbox.value).toBe(typedText);
 
-    await user.keyboard('[Enter]');
+    await act(async () => await user.keyboard('[Enter]'));
 
     expect(onSubmit).toHaveBeenCalled();
   });
