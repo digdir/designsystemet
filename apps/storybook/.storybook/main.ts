@@ -16,18 +16,10 @@ const config: StorybookConfig = {
      * See: https://github.com/storybookjs/storybook/issues/28269
      */
     /* reactDocgen: 'react-docgen-typescript', */
-    /* reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-      tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
-    }, */
     reactDocgenTypescriptOptions: {
-      include: ['../../../packages/react/src/**/**.tsx'], // <- This is the important line.
+      include: [resolve(__dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      shouldRemoveUndefinedFromOptional: true,
     },
   },
   stories: [
