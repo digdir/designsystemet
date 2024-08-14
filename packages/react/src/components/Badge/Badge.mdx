@@ -1,0 +1,61 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+`Badge` er en ikke-interaktiv komponent som viser status med eller uten tall.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
+
+/* Inline */
+<Badge count={5} />
+
+/* Flytende over element */
+<Badge count={5}>
+  <Elem />
+</Badge>
+
+/* Flytende over element som dot */
+<Badge>
+  <Elem />
+</Badge>
+```
+
+## Flytende over element
+
+Sett plassering med `placement`. Dersom elementet du plasserer over er en sirkel kan du sette `overlap="circle"`.
+
+<Canvas of={BadgeStories.Floating} />
+
+Noen ganger kan ikon være forskjellige, og da må du endre på hvor `Badge` skal plasseres.
+Dersom du ikke får `Badge` til å ligge der du vil, kan du bruke `style` for å overstyre posisjoneringen.
+Dette vil også fungere for `overlap="circle"`.
+
+<Canvas of={BadgeStories.CustomPlacement} />
+
+## Vise staus
+
+Dersom du ikke sender inn `count`, viser kun en sirkel. Dette kan brukes for å vise status.
+
+<Canvas of={BadgeStories.Status} />
+
+## I tabs
+
+Du kan bruke komponenten inline eller flytene over et element.
+
+<Canvas of={BadgeStories.InTabs} />
+
+## I button
+
+Du kan bruke komponenten inni eller flytende på en knapp.
+
+<Canvas of={BadgeStories.InButton} />
