@@ -6,29 +6,29 @@ import type { StorybookConfig } from '@storybook/react-vite';
 const config: StorybookConfig = {
   typescript: {
     /* If in prod, use docgen-typescript, locally use docgen */
-    reactDocgen:
-      env.NODE_ENV === 'production'
-        ? 'react-docgen-typescript'
-        : 'react-docgen',
+    // reactDocgen:
+    //   env.NODE_ENV === 'production'
+    //     ? 'react-docgen-typescript'
+    //     : 'react-docgen',
     /**
      * Enable this when docgen-typescript is faster
      * See: https://github.com/storybookjs/storybook/issues/28269
      */
-    /* reactDocgen: 'react-docgen-typescript',
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
       },
-      tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
-    }, */
+      tsconfigPath: resolve(__dirname, '../packages/react/tsconfig.json'),
+    },
   },
   stories: [
-    '../../../packages/*.mdx',
-    '../../../packages/css/**/*.mdx',
-    '../../../packages/theme/**/*.mdx',
-    '../../../packages/react/**/*.mdx',
-    '../../../packages/react/**/*.stories.ts?(x)',
+    '../packages/*.mdx',
+    '../packages/css/**/*.mdx',
+    '../packages/theme/**/*.mdx',
+    '../packages/react/**/*.mdx',
+    '../packages/react/**/*.stories.ts?(x)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
@@ -40,12 +40,12 @@ const config: StorybookConfig = {
     getAbsolutePath('@chromatic-com/storybook'),
     '@storybook/addon-themes',
   ],
-  staticDirs: ['../assets'],
+  staticDirs: ['../apps/storybook/assets'],
   framework: {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: resolve(__dirname, '../../../vite.config.ts'),
+        viteConfigPath: resolve(__dirname, '../vite.config.ts'),
       },
     },
   },
