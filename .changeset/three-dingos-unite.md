@@ -2,4 +2,4 @@
 '@digdir/designsystemet': minor
 ---
 
-feat: Support DTCG token format
+feat: Convert to W3C design token format
