@@ -122,7 +122,12 @@ const preview: Preview = {
       theme: customTheme,
       components,
     },
-
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
     options: {
       storySort: {
         method: 'alphabetical',

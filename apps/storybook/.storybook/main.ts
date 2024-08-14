@@ -5,22 +5,27 @@ import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   typescript: {
+    check: true,
+    checkOptions: {
+      eslint: false,
+    },
     /* If in prod, use docgen-typescript, locally use docgen */
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen:
+      env.NODE_ENV === 'production'
+        ? 'react-docgen-typescript'
+        : 'react-docgen',
     /**
      * Enable this when docgen-typescript is faster
      * See: https://github.com/storybookjs/storybook/issues/28269
      */
     /* reactDocgen: 'react-docgen-typescript', */
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      include: ['**/src/**/*.{ts,tsx}'],
+    /* reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
       },
       tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
-    },
+    }, */
   },
   stories: [
     '../../../packages/*.mdx',
@@ -34,7 +39,6 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-storysource'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
     '@storybook/addon-themes',
