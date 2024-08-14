@@ -13,7 +13,9 @@ import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
-
+/** Use official W3C design token format
+ @see https://v4.styledictionary.com/info/dtcg/
+ @see https://design-tokens.github.io/community-group/format/ */
 const usesDtcg = true;
 export const prefix = 'ds';
 export const basePxFontSize = 16;
