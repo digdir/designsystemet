@@ -2882,29 +2882,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@designsystemet/storybook@workspace:apps/storybook"
   dependencies:
-    "@chromatic-com/storybook": "npm:^1.6.1"
-    "@digdir/designsystemet-css": "workspace:^"
-    "@digdir/designsystemet-react": "workspace:^"
-    "@digdir/designsystemet-theme": "workspace:^"
-    "@storybook/addon-a11y": "npm:^8.2.7"
-    "@storybook/addon-essentials": "npm:^8.2.7"
-    "@storybook/addon-interactions": "npm:^8.2.7"
-    "@storybook/addon-links": "npm:^8.2.7"
-    "@storybook/addon-mdx-gfm": "npm:^8.2.7"
-    "@storybook/addon-storysource": "npm:^8.2.9"
-    "@storybook/addon-themes": "npm:^8.2.7"
-    "@storybook/blocks": "npm:^8.2.7"
-    "@storybook/manager-api": "npm:^8.2.7"
-    "@storybook/react": "npm:^8.2.7"
-    "@storybook/react-vite": "npm:^8.2.7"
-    "@storybook/theming": "npm:^8.2.7"
-    "@storybook/types": "npm:^8.2.7"
-    "@types/react": "npm:18.3.3"
-    "@types/react-dom": "npm:^18.3.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
-    remark-gfm: "npm:^4.0.0"
-    storybook: "npm:^8.2.7"
   languageName: unknown
   linkType: soft
 
