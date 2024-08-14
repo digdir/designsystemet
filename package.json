@@ -22,7 +22,7 @@
     "build:react": "yarn workspace @digdir/designsystemet-react build",
     "build:tokens": "yarn workspace @digdir/designsystemet build:tokens",
     "build:css": "yarn workspace @digdir/designsystemet-css build",
-    "build:storybook": "storybook build -o ./dist",
+    "build:storybook": "storybook build -o .apps/storybook/dist",
     "build:storefront": "yarn workspace storefront build",
     "build:devsite": "yarn workspace dev build",
     "start:storefront": "yarn workspace storefront start",
