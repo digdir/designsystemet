@@ -72,13 +72,13 @@ const ComboboxInput = ({
     setActiveIndex(0);
 
     // check if input value is the same as a label, if so, select it
-    Object.values(options).forEach((option) => {
+    for (const option of Object.values(options)) {
       if (option.label.toLowerCase() === value.toLowerCase()) {
         /* if option is already selected, discard selecting it, since it would de-select */
-        if (selectedOptions[prefix(option.value)]) return;
-        handleSelectOption({ option: option });
+        if (selectedOptions[prefix(option.value)]) continue;
+        handleSelectOption({ option });
       }
-    });
+    }
   };
 
   const showClearButton =
