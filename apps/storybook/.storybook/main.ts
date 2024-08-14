@@ -6,9 +6,6 @@ import type { StorybookConfig } from '@storybook/react-vite';
 const config: StorybookConfig = {
   typescript: {
     check: true,
-    checkOptions: {
-      eslint: false,
-    },
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen:
       env.NODE_ENV === 'production'
