@@ -10,18 +10,8 @@ export type BreadcrumbsLinkProps = LinkProps;
 export const BreadcrumbsLink = forwardRef<
   HTMLAnchorElement,
   BreadcrumbsLinkProps
->(({ asChild, className, ...rest }, ref) => {
-  const Component = asChild ? Slot : 'a';
-
-  return (
-    <Link asChild>
-      <Component
-        className={cl(`ds-breadcrumbs__link`, className)}
-        ref={ref}
-        {...rest}
-      />
-    </Link>
-  );
-});
+>(({ className, ...rest }, ref) => (
+  <Link className={cl(`ds-breadcrumbs__link`, className)} ref={ref} {...rest} />
+));
 
 BreadcrumbsLink.displayName = 'BreadcrumbsLink';

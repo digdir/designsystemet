@@ -5,12 +5,6 @@ import { Breadcrumbs } from '.';
 export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs.Root,
-  argTypes: {
-    size: {
-      options: ['sm', 'md', 'lg'],
-      control: { type: 'radio' },
-    },
-  },
   args: {
     size: 'md',
   },

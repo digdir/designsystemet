@@ -10,25 +10,16 @@ export type BreadcrumbsRootProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const BreadcrumbsRoot = forwardRef<HTMLDivElement, BreadcrumbsRootProps>(
-  ({ asChild, className, size = 'md', ...rest }, ref) => {
-    const Component = asChild ? Slot : 'div';
-
-    return (
-      <Component
-        ref={ref}
-        className={cl('ds-breadcrumbs', `ds-breadcrumbs--${size}`, className)}
-        {...rest}
-      />
-    );
-  },
+  ({ className, size = 'md', ...rest }, ref) => (
+    <div
+      ref={ref}
+      className={cl('ds-breadcrumbs', `ds-breadcrumbs--${size}`, className)}
+      {...rest}
+    />
+  ),
 );
 
 BreadcrumbsRoot.displayName = 'BreadcrumbsRoot';
