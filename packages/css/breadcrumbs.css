@@ -1,0 +1,72 @@
+.ds-breadcrumbs {
+  --dsc-breadcrumbs-spacing: var(--ds-spacing-2);
+  --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
+  --dsc-breadcrumbs-link-color: inherit;
+}
+
+.ds-breadcrumbs--sm {
+  --dsc-breadcrumbs-spacing: var(--ds-spacing-1);
+  --dsc-breadcrumbs-chevron-size: var(--ds-sizing-5);
+}
+
+.ds-breadcrumbs--md {
+  --dsc-breadcrumbs-spacing: var(--ds-spacing-2);
+  --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
+}
+
+.ds-breadcrumbs--lg {
+  --dsc-breadcrumbs-spacing: var(--ds-spacing-3);
+  --dsc-breadcrumbs-chevron-size: var(--ds-sizing-7);
+}
+
+.ds-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--dsc-breadcrumbs-spacing) 0;
+}
+
+.ds-breadcrumbs__item:where(:not(:last-child))::after,
+.ds-breadcrumbs > .ds-breadcrumbs__link::before {
+  background: currentcolor;
+  content: '';
+  display: inline-block;
+  height: var(--dsc-breadcrumbs-chevron-size);
+  margin-inline: var(--dsc-breadcrumbs-spacing);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E")
+    50% / contain no-repeat;
+  vertical-align: middle;
+  width: var(--dsc-breadcrumbs-chevron-size);
+}
+
+/* When link is direct child of Breadcrumbs, make it back button */
+.ds-breadcrumbs > .ds-breadcrumbs__link::before {
+  margin: 0;
+  rotate: 180deg;
+}
+
+.ds-breadcrumbs__link {
+  --dsc-link-color: var(--dsc-breadcrumbs-link-color);
+  --dsc-link-color-visited: var(--dsc-breadcrumbs-link-color);
+}
+
+.ds-breadcrumbs__link[aria-current='page'] {
+  text-decoration: none;
+}
+
+.ds-breadcrumbs > .ds-breadcrumbs__link:where(:not(:only-child)) {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .ds-breadcrumbs > .ds-breadcrumbs__nav:where(:not(:only-child)) {
+    display: none;
+  }
+
+  .ds-breadcrumbs > .ds-breadcrumbs__link {
+    display: block;
+    width: fit-content;
+  }
+}

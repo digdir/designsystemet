@@ -1,4 +1,5 @@
 export * from './Button';
+export * from './Breadcrumbs';
 export * from './HelpText';
 export * from './Spinner';
 export * from './Link';

@@ -1,0 +1,56 @@
+import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
+
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+`Breadcrumb` er en navigasjon med synlig søkebane. Vi bruker denne komponenten til å hjelpe brukerne å forstå hvor de er i en struktur, for eksempel på en nettside. Da kan de lettere bytte mellom de ulike nivåene i strukturen.
+
+<Primary />
+<Controls of={BreadcrumbsStories.Preview} />
+
+## Slik bruker du `Breadcrumb`
+
+Den siste lenken i brødsmulestien blir automatisk markert med `aria-current="page"`
+
+```tsx
+<Breadcrumbs.Root>
+  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
+  <Breadcrumbs.Nav aria-label="Du er her:">
+    <Breadcrumbs.List>
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link href="https://designsystemet.no/niva-2/niva-3/">Nivå 3</Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link href="https://designsystemet.no/niva-2/niva-3/niva-4/">Nivå 4</Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+    </Breadcrumbs.List>
+  </Breadcrumbs.Nav>
+</Breadcrumbs.Root>
+```
+
+## Kun tilbake-knapp
+
+Dersom du legger en `Breadcrumbs.Link` som direkte barn av `Breadcrumbs.Root`, vil denne lenken vises som en tilbake-knapp.
+
+<Canvas of={BreadcrumbsStories.BackOnly} />
+
+## Kun sti
+
+Dersom du legger en `Breadcrumbs.List` som direkte barn av `Breadcrumbs.Root`, vil denne vises som en sti.
+
+<Canvas of={BreadcrumbsStories.ListOnly} />
+
+## Både sti på desktop og tilbake-knapp på mobil
+
+Dersom du legger både en `Breadcrumbs.Link` som direkte barn av `Breadcrumbs.Root` og en `Breadcrumbs.List`, vil tilbake-knapp vises på mobil, og sti vises på desktop.
+
+<Canvas of={BreadcrumbsStories.Preview} />

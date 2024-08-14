@@ -20,8 +20,8 @@ type AccordionComponent = {
  * <Accordion.Root>
  *  <Accordion.Item>
  *   <Accordion.Heading>Heading 1</Accordion.Heading>
- *  <Accordion.Content>Content 1</Accordion.Content>
- * </Accordion.Item>
+ *   <Accordion.Content>Content 1</Accordion.Content>
+ *  </Accordion.Item>
  * <Accordion.Item>
  */
 const Accordion = {} as AccordionComponent;
