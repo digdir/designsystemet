@@ -9,13 +9,18 @@ import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
 import customTheme from './customTheme';
 
-const viewports = [320, 375, 576, 768, 992, 1200, 1440].map((width) => ({
-  name: `${width}px`,
-  styles: {
-    width: `${width}px`,
-    height: '100%',
-  },
-}));
+const viewports: Record<string, object> = {};
+const viewportWidths = [320, 375, 576, 768, 992, 1200, 1440];
+
+for (const width of viewportWidths) {
+  viewports[`${width}px`] = {
+    name: `${width}px`,
+    styles: {
+      width: `${width}px`,
+      height: '100%',
+    },
+  };
+}
 
 type Props = Record<string, unknown>;
 

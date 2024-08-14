@@ -108,3 +108,33 @@ export const LongItems: StoryFn<typeof Breadcrumbs.Root> = (args) => (
     </Breadcrumbs.Nav>
   </Breadcrumbs.Root>
 );
+
+export const MobileViewport: StoryFn<typeof Breadcrumbs.Root> = (args) => (
+  <Breadcrumbs.Root {...args}>
+    <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
+      Nivå 3
+    </Breadcrumbs.Link>
+    <Breadcrumbs.Nav aria-label='Du er her:'>
+      <Breadcrumbs.List>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 3</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+      </Breadcrumbs.List>
+    </Breadcrumbs.Nav>
+  </Breadcrumbs.Root>
+);
+
+MobileViewport.parameters = {
+  viewport: {
+    defaultViewport: '375px', // Large mobile default viewport
+  },
+};
