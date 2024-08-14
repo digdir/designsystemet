@@ -64,7 +64,7 @@
         "useAriaPropsForRole": "off"
       },
       "complexity": {
-        "noForEach": "error" // TODO: Enable this rule
+        "noForEach": "error"
       },
       "correctness": {
         "useExhaustiveDependencies": "off"
