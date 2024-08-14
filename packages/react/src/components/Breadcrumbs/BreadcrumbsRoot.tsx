@@ -1,8 +1,5 @@
-import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
-
-import { Paragraph } from '../Typography';
 
 export type BreadcrumbsRootProps = {
   /**

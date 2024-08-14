@@ -1,6 +1,6 @@
-import { Slot } from '@radix-ui/react-slot';
+import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import { Link } from '../Link';
 import type { LinkProps } from '../Link';

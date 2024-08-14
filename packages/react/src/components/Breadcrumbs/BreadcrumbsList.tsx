@@ -1,5 +1,4 @@
-import { inner, useMergeRefs } from '@floating-ui/react';
-import { Slot } from '@radix-ui/react-slot';
+import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
 
@@ -16,10 +15,10 @@ export const BreadcrumbsList = forwardRef<
   useEffect(() => {
     const links = innerRef.current?.querySelectorAll('a') || [];
     const lastLink = links[links?.length - 1];
-    lastLink?.setAttribute('aria-current', 'page');
 
+    lastLink?.setAttribute('aria-current', 'page');
     return () => lastLink?.removeAttribute('aria-current'); // Remove on re-render as React can re-use DOM elements
-  }, [rest.children]);
+  });
 
   return (
     <ol
