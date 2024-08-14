@@ -6,6 +6,7 @@ import {
   PencilIcon,
   VideoFillIcon,
 } from '@navikt/aksel-icons';
+import { Button } from '../Button';
 import { Tabs } from '../Tabs';
 import { Badge } from './Badge';
 
@@ -148,4 +149,23 @@ export const InTabs: Story = (args) => (
     <Tabs.Content value='value2'>content 2</Tabs.Content>
     <Tabs.Content value='value3'>content 3</Tabs.Content>
   </Tabs.Root>
+);
+
+export const InButton: Story = (args) => (
+  <div
+    style={{
+      display: 'flex',
+      gap: 'var(--ds-spacing-4)',
+    }}
+  >
+    <Button>
+      Favoritter
+      <Badge count={64} maxCount={10} color='neutral' />
+    </Button>
+    <Badge color='neutral' count={2}>
+      <Button icon>
+        <PencilIcon fontSize='1.75rem' />
+      </Button>
+    </Badge>
+  </div>
 );

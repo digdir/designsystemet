@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": minor
 ---
 
-Badge: ✨ new component
+Badge: ✨ New component
