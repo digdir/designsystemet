@@ -53,7 +53,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Body>
         {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
-            const value = token.value as string;
+            const value = token.$value as string;
             const pxSize = /\b\d+px\b/.test(value)
               ? value
               : `${parseFloat(value) * 16}px`;
@@ -68,7 +68,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                     value={token.name}
                   />
                 </Table.Cell>
-                <Table.Cell>{token.value}</Table.Cell>
+                <Table.Cell>{token.$value}</Table.Cell>
                 <Table.Cell>{pxSize}</Table.Cell>
                 <Table.Cell>
                   {isBorderRadius ? (
@@ -128,12 +128,12 @@ type TokenCardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = token.value as string;
+  const val = token.$value as string;
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
-  const weight = getColorWeight(token.original.value as string);
+  const weight = getColorWeight(token.original.$value as string);
 
   return (
     <div className={classes.card} {...rest}>
@@ -153,7 +153,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
             value={token.name}
           />
         </Heading>
-        {!hideValue && <div className={classes.value}>{token.value}</div>}
+        {!hideValue && <div className={classes.value}>{token.$value}</div>}
       </div>
     </div>
   );
