@@ -1,10 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
+  ChatIcon,
   EnvelopeClosedFillIcon,
   HeartFillIcon,
+  InboxIcon,
   PencilIcon,
   VideoFillIcon,
+  VideoIcon,
 } from '@navikt/aksel-icons';
 import { Button } from '../Button';
 import { Tabs } from '../Tabs';
@@ -158,14 +161,20 @@ export const InButton: Story = (args) => (
       gap: 'var(--ds-spacing-4)',
     }}
   >
-    <Button>
-      Favoritter
-      <Badge count={64} maxCount={10} color='neutral' />
+    <Button icon variant='tertiary'>
+      <Badge color='danger' count={1000} maxCount={99} size='sm'>
+        <InboxIcon fontSize='1.75rem' />
+      </Badge>
     </Button>
-    <Badge color='neutral' count={2}>
-      <Button icon>
-        <PencilIcon fontSize='1.75rem' />
-      </Button>
-    </Badge>
+    <Button icon variant='tertiary'>
+      <Badge color='danger' count={10} size='sm'>
+        <ChatIcon fontSize='1.75rem' />
+      </Badge>
+    </Button>
+    <Button icon variant='tertiary'>
+      <Badge color='danger' size='sm'>
+        <VideoIcon fontSize='1.75rem' />
+      </Badge>
+    </Button>
   </div>
 );
