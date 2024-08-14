@@ -23,6 +23,9 @@ const config: StorybookConfig = {
       },
       tsconfigPath: resolve(__dirname, '../../packages/react/tsconfig.json'),
     }, */
+    reactDocgenTypescriptOptions: {
+      include: ['../../../packages/react/src/**/**.tsx'], // <- This is the important line.
+    },
   },
   stories: [
     '../../../packages/*.mdx',
