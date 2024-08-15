@@ -131,7 +131,7 @@ export const data = [
   },
   {
     title: 'Textarea',
-    image: 'TextArea.svg',
+    image: 'Textarea.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-textarea--docs',
   },
   {
