@@ -104,10 +104,10 @@ export const FullBaseTest = () => {
     let bgDefault = blueColors[99];
     let bgSubtle = blueColors[95];
 
-    if (theme == 'dark') {
+    if (theme === 'dark') {
       bgDefault = blueColors[9];
       bgSubtle = blueColors[13];
-    } else if (theme == 'contrast') {
+    } else if (theme === 'contrast') {
       bgDefault = blueColors[0];
       bgSubtle = blueColors[5];
     }
