@@ -77,7 +77,7 @@
         "noArrayIndexKey": "off"
       },
       "performance": {
-        "noAccumulatingSpread": "off" // TODO: Enable this rule
+        "noArrayIndexKey": "off",
       }
     },
     "ignore": []
