@@ -11,34 +11,18 @@
   clip-path: none;
   white-space: inherit;
   text-decoration: none;
-  padding: var(--ds-spacing-3) var(--ds-spacing-4) var(--ds-spacing-3) var(--ds-spacing-6);
+  padding: var(--ds-spacing-4);
   color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-accent-surface-default);
+  background: var(--ds-color-accent-surface-hover);
 }
 
 .ds-skiplink__content {
-  --dsc-skiplink-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-skiplink-border-width: 3px;
-
-  display: flex;
+  color: var(--dsc-link-color);
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: max(5px, 0.25rem);
+  display: inline-flex;
   align-items: center;
-  border: var(--ds-border-width-default) solid transparent;
-  background-color: transparent;
-  color: var(--ds-color-accent-text-subtle);
-  border-color: var(--ds-color-accent-border-strong);
-  width: fit-content;
-  padding: var(--dsc-skiplink-padding);
-  margin: var(--ds-spacing-1);
-  box-sizing: border-box;
-  cursor: pointer;
-  font-family: inherit;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  position: relative;
-  border-radius: var(--ds-border-radius-md);
-  min-height: var(--ds-sizing-10);
-  outline: var(--dsc-skiplink-border-width) solid var(--ds-color-focus-outer);
-  outline-offset: var(--dsc-skiplink-border-width);
-  box-shadow: 0 0 0 var(--dsc-skiplink-border-width) var(--ds-color-focus-inner);
+  gap: var(--ds-spacing-1);
+  margin: 0;
 }
