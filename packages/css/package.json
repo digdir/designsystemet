@@ -37,6 +37,7 @@
     "postcss": "^8.4.41",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.0",
     "rimraf": "^6.0.1"
   }
 }
