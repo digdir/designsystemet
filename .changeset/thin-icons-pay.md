@@ -2,5 +2,5 @@
 "@digdir/designsystemet-react": patch
 ---
 
-ToggleGroup: Active item check now adhers to value type
-Tabs: Active item check now adhers to value type
+ToggleGroup: Active item equality check is now strict
+Tabs: Active item equality check is now strict
