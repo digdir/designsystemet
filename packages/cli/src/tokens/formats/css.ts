@@ -195,7 +195,7 @@ export const typography: Format = {
             return Object.assign(acc, { classes: [className, ...acc.classes] });
           }
 
-          return Object.assign(acc, { variables: acc.variables.concat(format(token)) });
+          return Object.assign(acc, { variables: [...acc.variables, format(token)] });
         },
         { variables: [], classes: [] },
       ),
