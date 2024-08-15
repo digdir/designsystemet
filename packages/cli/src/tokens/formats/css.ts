@@ -148,11 +148,10 @@ export const typography: Format = {
     font-weight: ${getValue<string>(token)};
   }`;
 
-            return {
-              ...acc,
+            return Object.assign({}, acc, {
               variables: [...acc.variables, format(token)],
               classes: [...acc.classes, className],
-            };
+            });
           }
 
           if (typeEquals('lineheight', token)) {
@@ -161,11 +160,10 @@ export const typography: Format = {
     line-height: ${getValue<string>(token)};
   }`;
 
-            return {
-              ...acc,
+            return Object.assign({}, acc, {
               variables: [...acc.variables, format(token)],
               classes: [...acc.classes, className],
-            };
+            });
           }
 
           if (typeEquals('typography', token)) {
@@ -194,10 +192,10 @@ export const typography: Format = {
     ${letterSpacingVar ? `letter-spacing: ${letterSpacingVar};` : ''}
   }`;
 
-            return { ...acc, classes: [className, ...acc.classes] };
+            return Object.assign({}, acc, { classes: [className, ...acc.classes] });
           }
 
-          return { ...acc, variables: [...acc.variables, format(token)] };
+          return Object.assign({}, acc, { variables: acc.variables.concat(format(token)) });
         },
         { variables: [], classes: [] },
       ),
