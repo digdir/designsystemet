@@ -2,13 +2,19 @@ import { randomUUID } from 'node:crypto';
 
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
+import { Theme } from '@adobe/leonardo-contrast-colors';
 import { normalizeTokenSetName } from './utils.js';
 
 export default function generateThemesJson(
   modes: Array<'Light' | 'Dark' | 'Contrast'>,
   themes: string[],
 ): ThemeObject[] {
-  return [...generateModesGroup(modes, themes), ...generateThemesGroup(themes), generateSemanticGroup()];
+  return [
+    ...generateModesGroup(modes, themes),
+    ...generateThemesGroup(themes),
+    generateSemanticGroup(),
+    ...generateTypographyGroup(themes),
+  ];
 }
 
 function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes: string[]): ThemeObject[] {
@@ -17,11 +23,11 @@ function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes:
       id: randomUUID(),
       name: mode,
       selectedTokenSets: Object.fromEntries([
-        [`primitives/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
+        [`primitives/modes/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
         ...themes.map(
           (theme) =>
             [
-              `primitives/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
+              `primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
               TokenSetStatus.ENABLED,
             ] as const,
         ),
@@ -56,4 +62,31 @@ function generateSemanticGroup(): ThemeObject {
     },
     group: 'Semantic',
   };
+}
+
+function generateTypographyGroup(themes: string[]): ThemeObject[] {
+  return [
+    {
+      id: randomUUID(),
+      name: 'primary',
+      selectedTokenSets: Object.fromEntries(
+        themes.map((theme) => [
+          `primitives/modes/typography/primary/${normalizeTokenSetName(theme)}`,
+          TokenSetStatus.ENABLED,
+        ]),
+      ),
+      group: 'Typography',
+    },
+    {
+      id: randomUUID(),
+      name: 'secondary',
+      selectedTokenSets: Object.fromEntries(
+        themes.map((theme) => [
+          `primitives/modes/secondary/primary/${normalizeTokenSetName(theme)}`,
+          TokenSetStatus.ENABLED,
+        ]),
+      ),
+      group: 'Typography',
+    },
+  ];
 }

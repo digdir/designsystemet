@@ -221,18 +221,36 @@ Will now create the following:
     for (const mode of modes.map(normalizeTokenSetName)) {
       // Copy the global file for the color mode
       await fs.cp(
-        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/colors/${mode}/global.json`),
-        path.join(TOKENS_TARGET_DIR, `primitives/colors/${mode}/global.json`),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/colors/${mode}/global.json`),
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/colors/${mode}/global.json`),
         { recursive: true },
       );
 
       // Create theme primitives for the color mode
       const template = await fs.readFile(
-        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/colors/${mode}/theme-template.json`),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/colors/${mode}/theme-template.json`),
       );
       await fs.writeFile(
-        path.join(TOKENS_TARGET_DIR, `primitives/colors/${mode}/${theme}.json`),
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/colors/${mode}/${theme}.json`),
         template.toString('utf-8').replaceAll('<theme>', theme),
+      );
+
+      // Create theme primitives for primary typography
+      const templatePrimaryTypo = await fs.readFile(
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/typography/primary/theme-template.json`),
+      );
+      await fs.writeFile(
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/typography/primary/${theme}.json`),
+        templatePrimaryTypo.toString('utf-8').replaceAll('<theme>', theme),
+      );
+
+      // Create theme primitives for secondary typography
+      const templateSecondaryTypo = await fs.readFile(
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/typography/secondary/theme-template.json`),
+      );
+      await fs.writeFile(
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/typography/secondary/${theme}.json`),
+        templateSecondaryTypo.toString('utf-8').replaceAll('<theme>', theme),
       );
     }
 
