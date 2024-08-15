@@ -5,7 +5,7 @@ import { data } from './component-list';
 
 const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
 
-const IS_NEXT_BRANCH = process.env.defaultenvironment === ('next' || 'preview');
+const IS_NEXT_BRANCH = process.env.VERCEL_GIT_COMMIT_REF !== 'main';
 
 /* If we are in the next branch, send us to the next storybook */
 if (IS_NEXT_BRANCH) {
