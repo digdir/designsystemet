@@ -21,7 +21,7 @@ export type TabContentProps = {
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, value, className, ...rest }, ref) => {
     const { value: tabsValue, size } = useContext(TabsContext);
-    const active = value == tabsValue;
+    const active = value === tabsValue;
 
     return (
       <>

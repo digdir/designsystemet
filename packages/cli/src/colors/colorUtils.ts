@@ -29,7 +29,7 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   let h = 0;
   let s = 0;
   let l = (max + min) / 2;
-  if (max == min) {
+  if (max === min) {
     h = s = 0; // achromatic
   } else {
     const d = max - min;
@@ -68,11 +68,11 @@ export const hexToHSL = (H: string) => {
   let r = 0;
   let g = 0;
   let b = 0;
-  if (H.length == 4) {
+  if (H.length === 4) {
     r = parseInt('0x' + H[1] + H[1]);
     g = parseInt('0x' + H[2] + H[2]);
     b = parseInt('0x' + H[3] + H[3]);
-  } else if (H.length == 7) {
+  } else if (H.length === 7) {
     r = parseInt('0x' + H[1] + H[2]);
     g = parseInt('0x' + H[3] + H[4]);
     b = parseInt('0x' + H[5] + H[6]);
@@ -88,9 +88,9 @@ export const hexToHSL = (H: string) => {
   const cmax = Math.max(r, g, b);
   const delta = cmax - cmin;
 
-  if (delta == 0) h = 0;
-  else if (cmax == r) h = ((g - b) / delta) % 6;
-  else if (cmax == g) h = (b - r) / delta + 2;
+  if (delta === 0) h = 0;
+  else if (cmax === r) h = ((g - b) / delta) % 6;
+  else if (cmax === g) h = (b - r) / delta + 2;
   else h = (r - g) / delta + 4;
 
   h = Math.round(h * 60);
@@ -98,7 +98,7 @@ export const hexToHSL = (H: string) => {
   if (h < 0) h += 360;
 
   l = (cmax + cmin) / 2;
-  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
@@ -178,9 +178,9 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   b = parseInt(Math.round((b + m) * 255).toString(16), 16);
 
   // Prepend 0s, if necessary
-  if (r.toString().length == 1) r = parseInt('0' + r.toString(), 10);
-  if (g.toString().length == 1) g = parseInt('0' + g.toString(), 10);
-  if (b.toString().length == 1) b = parseInt('0' + b.toString(), 10);
+  if (r.toString().length === 1) r = parseInt('0' + r.toString(), 10);
+  if (g.toString().length === 1) g = parseInt('0' + g.toString(), 10);
+  if (b.toString().length === 1) b = parseInt('0' + b.toString(), 10);
 
   return '#' + r + g + b;
 };

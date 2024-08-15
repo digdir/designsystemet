@@ -24,7 +24,7 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   const genValue = useId();
   const toggleGroup = useContext(ToggleGroupContext);
   const value = props.value ?? genValue;
-  const active = toggleGroup.value == value;
+  const active = toggleGroup.value === value;
   const buttonId = `togglegroup-item-${useId()}`;
 
   return {

@@ -54,8 +54,8 @@ export const ColorPicker = ({
               className={cl(
                 classes.status,
                 'ds-focus',
-                colorError == 'decorative' && classes.statusYellow,
-                colorError == 'interaction' && classes.statusOrange,
+                colorError === 'decorative' && classes.statusYellow,
+                colorError === 'interaction' && classes.statusOrange,
               )}
             >
               {colorError === 'none' && (
@@ -64,7 +64,7 @@ export const ColorPicker = ({
               {colorError === 'decorative' && (
                 <ExclamationmarkIcon title='Viktig informasjon om fargen' />
               )}
-              {colorError == 'interaction' && (
+              {colorError === 'interaction' && (
                 <ExclamationmarkIcon title='Viktig informasjon om fargen' />
               )}
             </button>
@@ -75,14 +75,14 @@ export const ColorPicker = ({
                 'Denne fargen har god nok kontrast og kan brukes normalt i systemet.'}
             </div>
             <div>
-              {colorError == 'decorative' && (
+              {colorError === 'decorative' && (
                 <div>
                   Vær oppmerksom på at Base Default fargen har mindre enn 3:1
                   kontrast mot bakgrunnsfargene. Se alle kontrastgrensene inne
                   på hver farge.
                 </div>
               )}
-              {colorError == 'interaction' && (
+              {colorError === 'interaction' && (
                 <div>
                   Base Default fargen har ikke god nok kontrast mot hvit eller
                   svart tekst på tvers av Base fargene.
