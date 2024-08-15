@@ -208,7 +208,8 @@ export const WithFormElements: Story = (args) => {
     setHeaderChecked(event.target.checked);
     setCheckedItems(
       rows.reduce(
-        (acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }),
+        (acc: CheckedItems, row) =>
+          Object.assign(acc, { [row]: event.target.checked }),
         {},
       ),
     );
