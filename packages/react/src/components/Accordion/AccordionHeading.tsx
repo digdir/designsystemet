@@ -7,7 +7,7 @@ import { Heading, Paragraph } from '../Typography';
 
 import { AccordionItemContext } from './AccordionItem';
 
-export type AccordionHeaderProps = {
+export type AccordionHeadingProps = {
   /**
    * Heading level. Use this to make sure the heading is correct according to you page heading levels
    * @default 1
@@ -20,19 +20,19 @@ export type AccordionHeaderProps = {
 } & HTMLAttributes<HTMLHeadingElement>;
 
 /**
- * Accordion header component, contains a button to toggle the content.
+ * Accordion heading component, contains a button to toggle the content.
  * @example
- * <AccordionHeader>Header</AccordionHeader>
+ * <AccordionHeading>Header</AccordionHeading>
  */
 export const AccordionHeading = forwardRef<
   HTMLHeadingElement,
-  AccordionHeaderProps
+  AccordionHeadingProps
 >(({ level = 1, children, className, onHeaderClick, ...rest }, ref) => {
   const context = useContext(AccordionItemContext);
 
   if (context === null) {
     console.error(
-      '<Accordion.Header> has to be used within an <Accordion.Item>',
+      '<Accordion.Heading> has to be used within an <Accordion.Item>',
     );
     return null;
   }
@@ -47,7 +47,7 @@ export const AccordionHeading = forwardRef<
       ref={ref}
       size='xs'
       level={level}
-      className={cl('ds-accordion__header', className)}
+      className={cl('ds-accordion__heading', className)}
       {...rest}
     >
       <button
