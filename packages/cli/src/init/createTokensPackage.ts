@@ -217,6 +217,19 @@ Will now create the following:
     // Directory creation failed, probably because the directory already exists
   }
 
+  try {
+    await fs.mkdir(path.join(TOKENS_TARGET_DIR, 'themes'));
+  } catch {
+    // Directory creation failed, probably because the directory already exists
+  }
+
+  try {
+    await fs.mkdir(path.join(TOKENS_TARGET_DIR, 'primitives/modes/typography/primary'), { recursive: true });
+    await fs.mkdir(path.join(TOKENS_TARGET_DIR, 'primitives/modes/typography/secondary'), { recursive: true });
+  } catch {
+    // Directory creation failed, probably because the directory already exists
+  }
+
   for (const theme of themes.map(normalizeTokenSetName)) {
     for (const mode of modes.map(normalizeTokenSetName)) {
       // Copy the global file for the color mode
@@ -248,6 +261,7 @@ Will now create the following:
       const templateSecondaryTypo = await fs.readFile(
         path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/typography/secondary/theme-template.json`),
       );
+
       await fs.writeFile(
         path.join(TOKENS_TARGET_DIR, `primitives/modes/typography/secondary/${theme}.json`),
         templateSecondaryTypo.toString('utf-8').replaceAll('<theme>', theme),
