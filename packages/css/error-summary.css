@@ -8,14 +8,14 @@
   padding: var(--dsc-errorsummary-padding);
   border-radius: var(--dsc-errorsummary-border-radius);
   background-color: var(--dsc-errorsummary-background);
-}
 
-.ds-error-summary a {
-  color: var(--dsc-errorsummary-link-color);
-}
+  & a {
+    color: var(--dsc-errorsummary-link-color);
+  }
 
-.ds-error-summary li:last-of-type {
-  margin-bottom: 0;
+  & li:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .ds-error-summary__heading {
