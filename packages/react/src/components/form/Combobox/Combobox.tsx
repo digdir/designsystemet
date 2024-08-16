@@ -22,7 +22,7 @@ import type { Option } from './useCombobox';
 import { useCombobox } from './useCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
 import { useFloatingCombobox } from './useFloatingCombobox';
-import { prefix, removePrefix } from './utilities';
+import { prefix, removePrefix, setReactInputValue } from './utilities';
 
 export type ComboboxProps = {
   /**
@@ -161,6 +161,12 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
 
+    useEffect(() => {
+      if (typeof rest.inputValue === 'string') {
+        setInputValue(rest.inputValue);
+      }
+    }, [rest.inputValue]);
+
     const {
       selectedOptions,
       options,
@@ -208,7 +214,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     useEffect(() => {
       if (value && value.length > 0 && !multiple) {
         const option = options[prefix(value[0])];
-        setInputValue(option?.label || '');
+        inputRef.current &&
+          setReactInputValue(inputRef.current, option?.label || '');
       }
     }, [multiple, value, options]);
 
@@ -239,7 +246,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       const { option, clear, remove } = args;
       if (clear) {
         setSelectedOptions({});
-        setInputValue('');
+        inputRef.current && setReactInputValue(inputRef.current, '');
         onValueChange?.([]);
         return;
       }
@@ -264,7 +271,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
         } else {
           newSelectedOptions[prefix(option.value)] = option;
         }
-        setInputValue('');
+        inputRef.current && setReactInputValue(inputRef.current, '');
         inputRef.current?.focus();
       } else {
         /* clear newSelectedOptions */
@@ -272,7 +279,8 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           delete newSelectedOptions[key];
         }
         newSelectedOptions[prefix(option.value)] = option;
-        setInputValue(option?.label || '');
+        inputRef.current &&
+          setReactInputValue(inputRef.current, option?.label || '');
         // move cursor to the end of the input
         setTimeout(() => {
           inputRef.current?.setSelectionRange(
