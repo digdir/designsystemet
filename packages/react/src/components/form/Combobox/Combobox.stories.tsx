@@ -174,20 +174,10 @@ WithDescription.args = {
 
 export const Controlled: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = React.useState<string[]>([]);
-  const [inputValue, setInputValue] = React.useState<string>('');
   const [multiple, setMultiple] = React.useState<boolean>(false);
 
   return (
     <>
-      <p>Input er: {inputValue}</p>
-      <Button
-        onClick={() => {
-          setValue([]);
-          setInputValue('');
-        }}
-      >
-        Nullstill
-      </Button>
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
       <Switch
         checked={multiple}
@@ -215,10 +205,6 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         onValueChange={(value) => {
           setValue(value);
         }}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-        }}
-        inputValue={inputValue}
       >
         <Combobox.Empty key='empty'>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item) => (
