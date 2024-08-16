@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+  --figma-color-text: #e1e3e5;
+  --figma-color-text-secondary: #9ea3ab;
+  --figma-color-bg-secondary: #2d2d2d;
+}
+
+* {
+  font-feature-settings: 'cv05' 1;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #202020;
+  color: var(--figma-color-text);
+  font-size: 14px;
+}
+
+[data-ds-color-mode='dark'] {
+  --ds-color-neutral-1: #1b1b1b;
+  --ds-color-neutral-2: #242424;
+  --ds-color-neutral-3: #303030;
+  --ds-color-neutral-4: #3e3e3e;
+  --ds-color-neutral-5: #4b4b4b;
+  --ds-color-neutral-6: #525252;
+  --ds-color-neutral-7: #6f6f6f;
+  --ds-color-neutral-8: #bebebe;
+  --ds-color-neutral-9: #ababab;
+  --ds-color-neutral-10: #969696;
+  --ds-color-neutral-11: #818181;
+  --ds-color-neutral-12: #a3a3a3;
+  --ds-color-neutral-13: #e1e1e1;
+}
+
+.links {
+  display: flex;
+  border-bottom: 1px solid var(--figma-color-border);
+  padding: 0 16px;
+}
+
+.link {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--figma-color-text-secondary);
+  margin-right: 20px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.active {
+  color: var(--figma-color-text);
+  font-weight: 500;
+}
+
+.btn {
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: #b9b9b9;
+  color: black;
+  font-weight: 500;
+  transition: 0.1s all;
+  min-height: 34px;
+}
+
+.btn:hover {
+  background-color: #d4d4d4;
+}
+
+.ds-spinner__background {
+  stroke: var(--figma-color-text);
+  stroke-width: 3px;
+}
+
+.ds-spinner__circle {
+  stroke: #494949;
+}
+
+.textfield {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.textfield input {
+  height: 34px;
+  font-size: 14px;
+}
+
+.ds-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ds-textfield__prefix {
+  font-size: 14px;
+  height: 34px;
+}
+
+.pageTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.toast {
+  background-color: #3d3d3d !important;
+  color: white !important;
+}
+
+.select {
+  font-size: 14px;
+  height: 34px;
+}

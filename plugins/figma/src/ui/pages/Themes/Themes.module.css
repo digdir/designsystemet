@@ -1,0 +1,9 @@
+.cards {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.content {
+  padding: 16px;
+}

@@ -1,0 +1,42 @@
+.card {
+  background-color: var(--figma-color-bg-secondary);
+  height: 100px;
+  width: 156px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.15s all;
+}
+
+.card:hover {
+  box-shadow: 0 0 0 1px #777;
+}
+
+.circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 60px;
+}
+
+.circle {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  outline: 1px solid #3a3a3a;
+}
+
+.icon {
+  color: var(--figma-color-text-secondary);
+}
+
+.title {
+  font-weight: 400;
+}
