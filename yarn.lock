@@ -2869,12 +2869,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/selector-resolve-nested@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@csstools/selector-resolve-nested@npm:2.0.0"
+  peerDependencies:
+    postcss-selector-parser: ^6.1.0
+  checksum: 10/996093f9fe45c93f1af38e0dd58b099e49de35608a27ad8fadd3070601e3aa689e1f9c0f2fb4ab55339ea32d239d83b1c7926196d287ff516cf74236b84eeebc
+  languageName: node
+  linkType: hard
+
 "@csstools/selector-specificity@npm:^3.1.1":
   version: 3.1.1
   resolution: "@csstools/selector-specificity@npm:3.1.1"
   peerDependencies:
     postcss-selector-parser: ^6.0.13
   checksum: 10/3786a6afea97b08ad739ee8f4004f7e0a9e25049cee13af809dbda6462090744012a54bd9275a44712791e8f103f85d21641f14e81799f9dab946b0459a5e1ef
+  languageName: node
+  linkType: hard
+
+"@csstools/selector-specificity@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@csstools/selector-specificity@npm:4.0.0"
+  peerDependencies:
+    postcss-selector-parser: ^6.1.0
+  checksum: 10/7076c1d8af0fba94f06718f87fba5bfea583f39089efa906ae38b5ecd6912d3d5865f7047a871ac524b1057e4c970622b2ade456b90d69fb9393902250057994
   languageName: node
   linkType: hard
 
@@ -2929,6 +2947,7 @@ __metadata:
     postcss: "npm:^8.4.41"
     postcss-cli: "npm:^11.0.0"
     postcss-import: "npm:^16.1.0"
+    postcss-nesting: "npm:^13.0.0"
     rimraf: "npm:^6.0.1"
   languageName: unknown
   linkType: soft
@@ -13606,6 +13625,19 @@ __metadata:
   peerDependencies:
     postcss: ^8.1.0
   checksum: 10/ca035969eba62cf126864b10d7722e49c0d4f050cbd4618b6e9714d81b879cf4c53a5682501e00f9622e8f4ea6d7d7d53af295ae935fa833e0cc0bda416a287b
+  languageName: node
+  linkType: hard
+
+"postcss-nesting@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "postcss-nesting@npm:13.0.0"
+  dependencies:
+    "@csstools/selector-resolve-nested": "npm:^2.0.0"
+    "@csstools/selector-specificity": "npm:^4.0.0"
+    postcss-selector-parser: "npm:^6.1.0"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 10/c2cb54589cb29ecaf57b53055be75e1a17c6f9e00a6a190b61cb6f2d53de53306df94bc434e7d3035b7d9948f36e3b94f7627e03862326057a58c820fc181a54
   languageName: node
   linkType: hard
 
