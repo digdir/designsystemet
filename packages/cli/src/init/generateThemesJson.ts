@@ -10,10 +10,32 @@ export default function generateThemesJson(
   themes: string[],
 ): ThemeObject[] {
   return [
-    ...generateModesGroup(modes, themes),
+    ...generateSizeGroup(),
     ...generateThemesGroup(themes),
-    generateSemanticGroup(),
     ...generateTypographyGroup(themes),
+    ...generateModesGroup(modes, themes),
+    generateSemanticGroup(),
+  ];
+}
+
+function generateSizeGroup(): ThemeObject[] {
+  return [
+    {
+      id: randomUUID(),
+      name: 'default',
+      selectedTokenSets: {
+        'primitives/size/default': TokenSetStatus.ENABLED,
+      },
+      group: 'Size',
+    },
+    {
+      id: randomUUID(),
+      name: 'compact',
+      selectedTokenSets: {
+        'primitives/size/compact': TokenSetStatus.ENABLED,
+      },
+      group: 'Size',
+    },
   ];
 }
 
@@ -58,7 +80,6 @@ function generateSemanticGroup(): ThemeObject {
       'semantic/style': TokenSetStatus.ENABLED,
       'semantic/color': TokenSetStatus.ENABLED,
       'primitives/globals': TokenSetStatus.SOURCE,
-      'primitives/typography/default': TokenSetStatus.SOURCE,
     },
     group: 'Semantic',
   };
@@ -82,7 +103,7 @@ function generateTypographyGroup(themes: string[]): ThemeObject[] {
       name: 'secondary',
       selectedTokenSets: Object.fromEntries(
         themes.map((theme) => [
-          `primitives/modes/secondary/primary/${normalizeTokenSetName(theme)}`,
+          `primitives/modes/typography/secondary/${normalizeTokenSetName(theme)}`,
           TokenSetStatus.ENABLED,
         ]),
       ),
