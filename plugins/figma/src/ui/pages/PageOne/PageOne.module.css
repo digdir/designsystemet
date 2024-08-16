@@ -1,0 +1,9 @@
+.pickers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.content {
+  padding: 8px;
+}

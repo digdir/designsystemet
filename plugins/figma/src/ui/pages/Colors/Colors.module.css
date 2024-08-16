@@ -1,0 +1,17 @@
+.pickers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 50;
+  margin-top: 20px;
+}
+
+.content {
+  padding: 16px 12px 12px;
+}
+
+.btn {
+  font-size: 14px;
+  margin-top: 32px;
+}

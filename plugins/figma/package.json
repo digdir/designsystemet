@@ -1,0 +1,47 @@
+{
+  "name": "figma-plugin",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "run-s watch",
+    "watch": "run-p 'watch:*'",
+    "watch:ui": "npm run build:ui -- --watch --mode=development",
+    "watch:plugin": "npm run build:plugin -- --watch --mode=development",
+    "build": "npm run build:plugin && npm run build:ui",
+    "build:ui": "vite build -c ./vite.config.ui.ts",
+    "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "types:src": "tsc",
+    "types:node": "tsc -P tsconfig.node.json"
+  },
+  "dependencies": {
+    "@adobe/leonardo-contrast-colors": "^1.0.0",
+    "@digdir/designsystemet": "workspace:^",
+    "@digdir/designsystemet-css": "workspace:^",
+    "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-theme": "workspace:^",
+    "@isomorphic-git/lightning-fs": "^4.6.0",
+    "@react-awesome/use-click-outside": "^0.0.3",
+    "@types/node": "^22.3.0",
+    "isomorphic-git": "^1.27.0",
+    "lucide-react": "^0.399.0",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.23.1",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.95.0",
+    "@types/react": "^18.0.28",
+    "@types/react-color": "^3.0.12",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.3.1",
+    "npm-run-all2": "^6.2.0",
+    "postcss": "^8.4.21",
+    "vite-plugin-generate-file": "^0.1.1",
+    "vite-plugin-react-rich-svg": "^1.0.0",
+    "vite-plugin-singlefile": "^2.0.2"
+  }
+}
