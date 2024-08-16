@@ -1,18 +1,15 @@
 import createMDX from '@next/mdx';
+import { s } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import { s } from 'hastscript';
 
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   eslint: {
     ignoreDuringBuilds: true,
-    rules: {
-      '@next/next/no-img-element': 'off',
-    },
   },
   i18n: {
     locales: ['no'],

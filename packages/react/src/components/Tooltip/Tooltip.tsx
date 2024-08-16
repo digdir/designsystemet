@@ -1,24 +1,24 @@
+import {
+  FloatingArrow,
+  FloatingPortal,
+  arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useMergeRefs,
+  useRole,
+  useTransitionStyles,
+} from '@floating-ui/react';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { cloneElement, forwardRef, useState } from 'react';
 import * as React from 'react';
-import cl from 'clsx/lite';
-import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  arrow,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useTransitionStyles,
-  useMergeRefs,
-  FloatingArrow,
-  FloatingPortal,
-} from '@floating-ui/react';
 
 import type { PortalProps } from '../../types/Portal';
 import { Paragraph } from '../Typography';
@@ -39,19 +39,31 @@ export type TooltipProps = {
    * @default 'top'
    */
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  /** Delay in milliseconds before opening.
+  /**
+   * Delay in milliseconds before opening.
    * @default 150
    */
   delay?: number;
-  /** Whether the tooltip is open or not.
+  /**
+   * Whether the tooltip is open or not.
    * This overrides the internal state of the tooltip.
    */
   open?: boolean;
-  /** Whether the tooltip is open by default or not. */
+  /**
+   * Whether the tooltip is open by default or not.
+   * @default false
+   */
   defaultOpen?: boolean;
 } & HTMLAttributes<HTMLDivElement> &
   PortalProps;
 
+/**
+ * Tooltip component that displays a small piece of information when hovering or focusing on an element.
+ * @example
+ * <Tooltip content='This is a tooltip'>
+ *  <button>Hover me</button>
+ * </Tooltip>
+ */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (
     {
@@ -135,10 +147,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         )}
         {internalOpen && (
           <Container>
-            <Paragraph
-              size='xs'
-              asChild
-            >
+            <Paragraph size='xs' asChild>
               <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, ...animationStyles, ...style }}

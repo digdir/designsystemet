@@ -1,14 +1,14 @@
-import type { HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
 import {
-  InformationSquareFillIcon,
   CheckmarkCircleFillIcon,
-  XMarkOctagonFillIcon,
   ExclamationmarkTriangleFillIcon,
+  InformationSquareFillIcon,
+  XMarkOctagonFillIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
-import { Paragraph } from '..';
+import { Paragraph } from '../Typography';
 
 const icons: Record<
   Severity,
@@ -29,14 +29,17 @@ const icons: Record<
 type Severity = 'info' | 'warning' | 'success' | 'danger';
 
 export type AlertProps = {
-  /** Sets color & icon according to severity */
+  /**
+   * Sets color & icon according to severity
+   * @default info
+   */
   severity?: Severity;
-  /** Adds a shadow to elevate the component */
-  elevated?: boolean;
-  /** Sets `title` on the icon.
+  /**
+   * Sets `title` on the icon.
    *
    * Use this to inform screenreaders of severity.
-   *  Defaults to Norwegian. */
+   * Defaults to Norwegian.
+   */
   iconTitle?: string;
   /**
    * Sets the size of the alert.
@@ -46,17 +49,15 @@ export type AlertProps = {
    */
   size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Alerts are used to inform users about important information, warnings, errors, or success.
+ * @example
+ * <Alert severity='info'>Dette er en informasjonsmelding</Alert>
+ */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    {
-      severity = 'info',
-      elevated,
-      iconTitle,
-      children,
-      size = 'md',
-      className,
-      ...rest
-    },
+    { severity = 'info', iconTitle, children, size = 'md', className, ...rest },
     ref,
   ) => {
     const { Icon, title } = icons[severity];
@@ -68,21 +69,13 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           'ds-alert',
           `ds-alert--${size}`,
           `ds-alert--${severity}`,
-          elevated && `ds-alert--elevated`,
           className,
         )}
         {...rest}
       >
         <>
-          <Icon
-            title={iconTitle || title}
-            className='ds-alert__icon'
-          />
-          <Paragraph
-            asChild
-            size={size}
-            className='ds-alert__content'
-          >
+          <Icon title={iconTitle || title} className='ds-alert__icon' />
+          <Paragraph asChild size={size} className='ds-alert__content'>
             <span>{children}</span>
           </Paragraph>
         </>

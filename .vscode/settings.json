@@ -1,31 +1,28 @@
 {
   "git.rebaseWhenSync": true,
   "git.autofetch": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cssvar.files": [
     "packages/theme/brand/digdir/color-mode/light.css",
-    "packages/theme/brand/digdir/typography/primary.css"
-  ],
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "markdown",
-    "mdx"
+    "packages/theme/brand/digdir/typography/primary.css",
+    "packages/theme/brand/digdir/semantic.css"
   ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
-  "cSpell.words": ["altinn", "brreg", "designsystemet", "digdir"],
-  "cSpell.language": "en,nb",
-  "cSpell.ignorePaths": ["**/node_modules/**", "**/package.json", "yarn.lock"],
-  "cSpell.enabledLanguageIds": ["markdown", "plaintext"]
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

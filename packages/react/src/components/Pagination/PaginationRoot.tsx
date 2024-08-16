@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { createContext, forwardRef, type HTMLAttributes } from 'react';
+import { type HTMLAttributes, createContext, forwardRef } from 'react';
 
 import type { PaginationProps } from './Pagination';
 
@@ -31,17 +31,13 @@ export type PaginationRootProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
+const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
   ({ asChild, compact = false, size = 'md', ...rest }, ref) => {
     const Component = asChild ? Slot : 'nav';
 
     return (
       <PaginationContext.Provider value={{ size, compact }}>
-        <Component
-          ref={ref}
-          aria-label='Pagination'
-          {...rest}
-        />
+        <Component ref={ref} aria-label='Pagination' {...rest} />
       </PaginationContext.Provider>
     );
   },
@@ -49,4 +45,4 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
 
 PaginationRoot.displayName = 'PaginationRoot';
 
-export default PaginationRoot;
+export { PaginationRoot };

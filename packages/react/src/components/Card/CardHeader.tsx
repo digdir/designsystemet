@@ -1,7 +1,7 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 import { Heading } from '../Typography';
 
@@ -18,10 +18,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Heading
-        size='md'
-        asChild
-      >
+      <Heading size='md' asChild>
         <Component
           className={cl(`ds-card__header`, className)}
           ref={ref}

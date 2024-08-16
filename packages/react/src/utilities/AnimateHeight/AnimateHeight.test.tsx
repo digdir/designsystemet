@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 import { act } from 'react';
+import { vi } from 'vitest';
 
 import * as hooks from '../../utilities';
 
@@ -35,7 +35,7 @@ describe('AnimateHeight', () => {
   it('Appends given style to root element', () => {
     const style = { color: 'rgb(255, 0, 0)' };
     const { container } = render({ style });
-    expect(container.firstChild).toHaveStyle({ height: 0 });
+    expect(container.firstChild).toHaveStyle({ height: undefined });
     expect(container.firstChild).toHaveStyle(style);
   });
 
@@ -105,9 +105,4 @@ describe('AnimateHeight', () => {
 });
 
 const render = (props: Partial<AnimateHeightProps> = {}) =>
-  renderRtl(
-    <AnimateHeight
-      {...defaultProps}
-      {...props}
-    />,
-  );
+  renderRtl(<AnimateHeight {...defaultProps} {...props} />);

@@ -5,7 +5,7 @@ import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 
 import type { RadioProps } from './Radio';
-import { RadioGroupContext } from './Group';
+import { RadioGroupContext } from './RadioGroup';
 
 type UseRadio = (props: RadioProps) => FormField & {
   inputProps?: Pick<

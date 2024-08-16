@@ -1,10 +1,9 @@
-import type * as React from 'react';
-import NextLink from 'next/link';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
-import Image from 'next/image';
+import { Container } from '@repo/components';
 import type { Metadata } from 'next';
-
-import { Container } from '@components';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import type * as React from 'react';
 
 import classes from './not-found.module.css';
 
@@ -26,10 +25,7 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
           />
         </div>
         <div className={classes.textContainer}>
-          <Heading
-            spacing
-            size='md'
-          >
+          <Heading spacing size='md'>
             Denne siden finnes ikke
           </Heading>
           <Paragraph spacing>
@@ -37,10 +33,7 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
             eller slettet.
           </Paragraph>
           <Link asChild>
-            <NextLink
-              href='/'
-              prefetch={false}
-            >
+            <NextLink href='/' prefetch={false}>
               Gå til forsiden
             </NextLink>
           </Link>

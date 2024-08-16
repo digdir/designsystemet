@@ -1,30 +1,18 @@
 import { renderHook } from '@testing-library/react';
 
 import type { UseComboboxProps } from './useCombobox';
-import useCombobox from './useCombobox';
+import { useCombobox } from './useCombobox';
 
 import { Combobox } from '.';
 
 const CHILDREN = [
-  <Combobox.Option
-    key='1'
-    value='leikanger'
-    displayValue='Leikanger'
-  >
+  <Combobox.Option key='1' value='leikanger' displayValue='Leikanger'>
     Leikanger
   </Combobox.Option>,
-  <Combobox.Option
-    key='2'
-    value='oslo'
-    displayValue='Oslo'
-  >
+  <Combobox.Option key='2' value='oslo' displayValue='Oslo'>
     Oslo
   </Combobox.Option>,
-  <Combobox.Option
-    key='3'
-    value='bronnoysund'
-    displayValue='Brønnøysund'
-  >
+  <Combobox.Option key='3' value='bronnoysund' displayValue='Brønnøysund'>
     Brønnøysund
   </Combobox.Option>,
   <Combobox.Empty key='4'>No items</Combobox.Empty>,

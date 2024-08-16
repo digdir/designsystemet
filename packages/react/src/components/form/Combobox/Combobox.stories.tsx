@@ -1,11 +1,11 @@
-import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
 import { Button } from '../../Button';
+import { ChipRemovable } from '../../Chip';
+import { Modal } from '../../Modal';
 import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
-import { Modal } from '../../Modal';
-import { ChipRemovable } from '../../Chip';
 
 import { data } from './data/data';
 
@@ -76,10 +76,7 @@ export const Preview: StoryFn<typeof Combobox> = (args) => {
       <Combobox {...args}>
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -115,10 +112,7 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -212,12 +206,9 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           setValue(value);
         }}
       >
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+        <Combobox.Empty key='empty'>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item) => (
+          <Combobox.Option key={item.value} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -250,10 +241,7 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
         >
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           {PLACES.map((item, index) => (
-            <Combobox.Option
-              key={index}
-              value={item.value}
-            >
+            <Combobox.Option key={index} value={item.value}>
               {item.name}
             </Combobox.Option>
           ))}
@@ -311,10 +299,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
             >
               <Combobox.Empty>Fant ingen treff</Combobox.Empty>
               {PLACES.map((item, index) => (
-                <Combobox.Option
-                  key={index}
-                  value={item.value}
-                >
+                <Combobox.Option key={index} value={item.value}>
                   {item.name}
                 </Combobox.Option>
               ))}
@@ -363,10 +348,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -406,10 +388,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         <Combobox.Option value={'all'}>Alle kommuner</Combobox.Option>
         {PLACES.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -489,10 +468,7 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
       >
         <Combobox.Empty>Fant ingen treff</Combobox.Empty>
         {options.map((item, index) => (
-          <Combobox.Option
-            key={index}
-            value={item.value}
-          >
+          <Combobox.Option key={index} value={item.value}>
             {item.name}
           </Combobox.Option>
         ))}
@@ -517,10 +493,7 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
     <Combobox {...args}>
       <Combobox.Empty>Fant ingen treff</Combobox.Empty>
       {items.map((item, index) => (
-        <Combobox.Option
-          key={index}
-          value={item.value}
-        >
+        <Combobox.Option key={index} value={item.value}>
           {item.name}
         </Combobox.Option>
       ))}
@@ -586,18 +559,10 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
 export const WithNumberValues: StoryFn<typeof Combobox> = () => {
   return (
     <Combobox initialValue={['2000']}>
-      <Combobox.Option
-        id={'3000'}
-        key={'3000'}
-        value={'3000'}
-      >
+      <Combobox.Option id={'3000'} key={'3000'} value={'3000'}>
         some value
       </Combobox.Option>
-      <Combobox.Option
-        id={'2000'}
-        key={'2000'}
-        value={'2000'}
-      >
+      <Combobox.Option id={'2000'} key={'2000'} value={'2000'}>
         some other value
       </Combobox.Option>
     </Combobox>

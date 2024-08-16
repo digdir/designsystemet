@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import cl from 'clsx/lite';
 import type { Mode } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
+import { useState } from 'react';
 
+import { Components } from './Components/Components';
 import { Dashboard } from './Dashboard/Dashboard';
 import { Landing } from './Landing/Landing';
 import classes from './Previews.module.css';
-import { Components } from './Components/Components';
 
 type previewModeType =
   | 'dashboard'
@@ -89,10 +89,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('light')}
           >
-            <img
-              src='img/light-dot.svg'
-              alt=''
-            />
+            <img src='img/light-dot.svg' alt='' />
             Lys
           </button>
           <button
@@ -103,10 +100,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('dark')}
           >
-            <img
-              src='img/dark-dot.svg'
-              alt=''
-            />
+            <img src='img/dark-dot.svg' alt='' />
             Mørk
           </button>
           <button
@@ -117,10 +111,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
             )}
             onClick={() => onThemeModeChange('contrast')}
           >
-            <img
-              src='img/contrast-dot.svg'
-              alt=''
-            />
+            <img src='img/contrast-dot.svg' alt='' />
             Kontrast
           </button>
         </div>

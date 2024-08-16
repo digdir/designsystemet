@@ -1,14 +1,14 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 
-import { PaginationRoot } from './PaginationRoot';
-import { PaginationContent } from './PaginationContent';
-import { PaginationItem } from './PaginationItem';
 import { PaginationButton } from './PaginationButton';
+import { PaginationContent } from './PaginationContent';
 import { PaginationEllipsis } from './PaginationEllipsis';
+import { PaginationItem } from './PaginationItem';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
+import { PaginationRoot } from './PaginationRoot';
 import { usePagination } from './usePagination';
 
 export type PaginationProps = {
@@ -42,7 +42,7 @@ const iconSize = {
   lg: '2rem',
 };
 
-export const Pagination = forwardRef<HTMLElement, PaginationProps>(
+const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (
     {
       nextLabel = '',
@@ -81,10 +81,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               }}
               aria-label={previousLabel}
             >
-              <ChevronLeftIcon
-                aria-hidden
-                fontSize={iconSize[size]}
-              />
+              <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
@@ -115,10 +112,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               className={cl(!showNextPage && 'ds-pagination--hidden')}
             >
               {!hideLabels && nextLabel}
-              <ChevronRightIcon
-                aria-hidden
-                fontSize={iconSize[size]}
-              />
+              <ChevronRightIcon aria-hidden fontSize={iconSize[size]} />
             </PaginationNext>
           </PaginationItem>
         </PaginationContent>
@@ -128,3 +122,5 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 );
 
 Pagination.displayName = 'Pagination';
+
+export { Pagination };

@@ -7,7 +7,9 @@
 .content h3,
 .content h4,
 .content ul,
-.content ol {
+.content ol,
+.content [class^='ds-accordion'],
+.content [class^='ds-card'] {
   max-width: 740px;
 }
 

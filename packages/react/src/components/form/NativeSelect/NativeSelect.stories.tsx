@@ -50,7 +50,7 @@ Disabled.args = {
   disabled: true,
 };
 
-export const Error: StoryFn<typeof NativeSelect> = (args) => (
+export const WithError: StoryFn<typeof NativeSelect> = (args) => (
   <NativeSelect {...args}>
     <option value='blank'>Velg &hellip;</option>
     <option value='everest'>Mount Everest</option>
@@ -64,7 +64,7 @@ export const Error: StoryFn<typeof NativeSelect> = (args) => (
   </NativeSelect>
 );
 
-Error.args = {
+WithError.args = {
   label: 'Velg et fjell',
   error: 'Du må velge et fjell',
 };

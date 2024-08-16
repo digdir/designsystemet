@@ -1,52 +1,56 @@
 .ds-popover {
   --dsc-popover-border: 1px solid;
   --dsc-popover-background: var(--ds-color-neutral-background-default);
+  --dsc-popover-color: var(--ds-color-neutral-text-default);
+  --dsc-popover-border-color: var(--ds-color-neutral-border-default);
+  --dsc-popover-padding: var(--ds-spacing-3);
+  --dsc-popover-max-width: 300px;
+  --dsc-popover-border-radius: min(1rem, var(--ds-border-radius-md));
 
   z-index: 1500;
   background: var(--dsc-popover-background);
-  padding: var(--ds-spacing-3);
+  color: var(--dsc-popover-color);
+  padding: var(--dsc-popover-padding);
   border: var(--dsc-popover-border);
-  border-radius: min(1rem, var(--ds-border-radius-md));
-  max-width: 300px;
+  border-radius: var(--dsc-popover-border-radius);
+  border-color: var(--dsc-popover-border-color);
+  max-width: var(--dsc-popover-max-width);
 }
 
 .ds-popover--sm {
-  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  --dsc-popover-padding: var(--ds-spacing-2) var(--ds-spacing-3);
 }
 
 .ds-popover--md {
-  padding: var(--ds-spacing-3) var(--ds-spacing-4);
+  --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-4);
 }
 
 .ds-popover--lg {
-  padding: var(--ds-spacing-3) var(--ds-spacing-5);
+  --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-5);
 }
 
 .ds-popover--default {
   --dsc-popover-background: var(--ds-color-neutral-background-default);
-
-  border-color: var(--ds-color-neutral-border-default);
+  --dsc-popover-border-color: var(--ds-color-neutral-border-default);
+  --dsc-popover-color: var(--ds-color-neutral-text-default);
 }
 
 .ds-popover--info {
   --dsc-popover-background: var(--ds-color-info-surface-default);
-
-  border-color: var(--ds-color-info-border-default);
-  color: var(--ds-color-info-text-default);
+  --dsc-popover-border-color: var(--ds-color-info-border-default);
+  --dsc-popover-color: var(--ds-color-info-text-default);
 }
 
 .ds-popover--warning {
   --dsc-popover-background: var(--ds-color-warning-surface-default);
-
-  border-color: var(--ds-color-warning-border-default);
-  color: var(--ds-color-warning-text-default);
+  --dsc-popover-border-color: var(--ds-color-warning-border-default);
+  --dsc-popover-color: var(--ds-color-warning-text-default);
 }
 
 .ds-popover--danger {
   --dsc-popover-background: var(--ds-color-danger-surface-default);
-
-  border-color: var(--ds-color-danger-border-default);
-  color: var(--ds-color-danger-text-default);
+  --dsc-popover-border-color: var(--ds-color-danger-border-default);
+  --dsc-popover-color: var(--ds-color-danger-text-default);
 }
 
 .ds-popover__arrow {

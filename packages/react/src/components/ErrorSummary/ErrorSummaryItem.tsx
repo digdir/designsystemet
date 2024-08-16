@@ -1,7 +1,7 @@
-import type { ListItemProps } from '../List';
-import { List } from '../List';
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
+import type { ListItemProps } from '../List';
+import { List } from '../List';
 
 type RequiredHref = {
   href: LinkProps['href'];
@@ -32,10 +32,7 @@ export const ErrorSummaryItem = ({
 }: ErrorSummaryItemProps) => {
   return (
     <List.Item {...rest}>
-      <Link
-        href={href}
-        asChild={asChild}
-      >
+      <Link href={href} asChild={asChild}>
         {children}
       </Link>
     </List.Item>

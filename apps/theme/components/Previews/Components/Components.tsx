@@ -1,34 +1,34 @@
-import cl from 'clsx/lite';
-import { useState } from 'react';
 import {
-  Checkbox,
-  Switch,
-  Heading,
-  Paragraph,
-  Textfield,
+  Accordion,
+  Alert,
   Button,
-  Table,
-  Search,
+  Card,
+  Checkbox,
+  Chip,
+  Combobox,
+  DropdownMenu,
+  Fieldset,
+  Heading,
+  HelpText,
+  Link,
   NativeSelect,
   Pagination,
-  Card,
-  Tag,
+  Paragraph,
   Radio,
-  Tabs,
-  Accordion,
-  Link,
-  ToggleGroup,
-  Combobox,
-  Tooltip,
-  Chip,
-  Textarea,
-  Fieldset,
-  Alert,
-  DropdownMenu,
-  HelpText,
+  Search,
   Skeleton,
   Spinner,
+  Switch,
+  Table,
+  Tabs,
+  Tag,
+  Textarea,
+  Textfield,
+  ToggleGroup,
+  Tooltip,
 } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import { useState } from 'react';
 
 import classes from './Components.module.css';
 
@@ -37,29 +37,16 @@ export const Components = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Checkbox.Group
-          error=''
-          legend='Handleliste'
-          size='sm'
-        >
+        <Checkbox.Group error='' legend='Handleliste' size='sm'>
           <Checkbox value='epost'>En kilo poteter</Checkbox>
           <Checkbox value='telefon'>To liter Farris</Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Blomkål
           </Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Pizza
           </Checkbox>
-          <Checkbox
-            value='sms'
-            defaultChecked
-          >
+          <Checkbox value='sms' defaultChecked>
             Tre liter lettmelk
           </Checkbox>
           <Checkbox value='sms'>2kg smågodt</Checkbox>
@@ -67,10 +54,7 @@ export const Components = () => {
         </Checkbox.Group>
       </div>
       <div className={cl(classes.card, classes.user)}>
-        <Heading
-          className={cl(classes.cardTitle, classes.userTitle)}
-          size='xs'
-        >
+        <Heading className={cl(classes.cardTitle, classes.userTitle)} size='xs'>
           Opprett ny bruker
         </Heading>
 
@@ -87,53 +71,32 @@ export const Components = () => {
           placeholder='ola@norge.no'
           className={classes.userField}
         />
-        <Tooltip
-          content='Trykk for å få hjelp'
-          portal={false}
-        >
-          <Link
-            href='#'
-            className={classes.userLink}
-          >
+        <Tooltip content='Trykk for å få hjelp' portal={false}>
+          <Link href='#' className={classes.userLink}>
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button
-          fullWidth
-          size='sm'
-          className={classes.userBtn}
-        >
+        <Button fullWidth size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading
-          className={classes.cardTitle}
-          size='2xs'
-        >
+        <Heading className={classes.cardTitle} size='2xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect
-              label='Velg handling'
-              size='sm'
-              hideLabel
-            >
+            <NativeSelect label='Velg handling' size='sm' hideLabel>
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
               <option value='aconcagua'>Slett</option>
               <option value='denali'>Oppdater</option>
             </NativeSelect>
-            <Button
-              className={classes.tableBtn}
-              size='sm'
-            >
+            <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
           </div>
           <Search
-            error=''
             label='Label'
             placeholder='Søk etter bruker...'
             size='sm'
@@ -141,24 +104,14 @@ export const Components = () => {
             className={classes.tableSearch}
           />
         </div>
-        <Table
-          size='sm'
-          border
-          className={classes.table}
-        >
+        <Table size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell
-                onClick={function Ya() {}}
-                sortable
-              >
+              <Table.HeaderCell onClick={function Ya() {}} sortable>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell
-                onClick={function Ya() {}}
-                sortable
-              >
+              <Table.HeaderCell onClick={function Ya() {}} sortable>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -200,22 +153,13 @@ export const Components = () => {
         />
       </div>
       <div className={cl(classes.card, classes.help)}>
-        <Heading
-          size='xs'
-          className={classes.helpHeading}
-        >
+        <Heading size='xs' className={classes.helpHeading}>
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
-          <Card
-            color='brand1'
-            className={classes.helpFirst}
-          >
+          <Card color='brand1' className={classes.helpFirst}>
             <Card.Header className={classes.helpHeader}>
-              <Heading
-                size='2xs'
-                className={classes.helpFirstTitle}
-              >
+              <Heading size='2xs' className={classes.helpFirstTitle}>
                 Sikkerhet og drift
               </Heading>
             </Card.Header>
@@ -225,15 +169,9 @@ export const Components = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card
-            color='brand2'
-            className={classes.helpSecond}
-          >
+          <Card color='brand2' className={classes.helpSecond}>
             <Card.Header className={classes.helpHeader}>
-              <Heading
-                size='2xs'
-                className={classes.helpSecondTitle}
-              >
+              <Heading size='2xs' className={classes.helpSecondTitle}>
                 Skole og utdanning
               </Heading>
             </Card.Header>
@@ -243,18 +181,10 @@ export const Components = () => {
               Most provide as with carried business are much better more the.
             </Card.Content>
           </Card>
-          <Card
-            color='brand3'
-            className={classes.helpThird}
-            isLink
-            asChild
-          >
+          <Card color='brand3' className={classes.helpThird} isLink asChild>
             <a href='#preview'>
               <Card.Header className={classes.helpHeader}>
-                <Heading
-                  className={classes.helpThirdTitle}
-                  size='2xs'
-                >
+                <Heading className={classes.helpThirdTitle} size='2xs'>
                   Mat og helse
                 </Heading>
               </Card.Header>
@@ -283,59 +213,32 @@ export const Components = () => {
         </Radio.Group>
       </div>
       <div className={cl(classes.card, classes.tag)}>
-        <Heading
-          size='xs'
-          className={classes.tagHeading}
-        >
+        <Heading size='xs' className={classes.tagHeading}>
           Emner
         </Heading>
         <div className={classes.tagList}>
-          <Tag
-            color='brand1'
-            size='sm'
-          >
+          <Tag color='brand1' size='sm'>
             Data og IKT
           </Tag>
-          <Tag
-            color='brand2'
-            size='sm'
-          >
+          <Tag color='brand2' size='sm'>
             Mat og ernæring
           </Tag>
-          <Tag
-            color='brand3'
-            size='sm'
-          >
+          <Tag color='brand3' size='sm'>
             Sport og Idrett
           </Tag>
-          <Tag
-            color='neutral'
-            size='sm'
-          >
+          <Tag color='neutral' size='sm'>
             Politikk og samfunn
           </Tag>
-          <Tag
-            color='success'
-            size='sm'
-          >
+          <Tag color='success' size='sm'>
             Utenriks
           </Tag>
-          <Tag
-            color='info'
-            size='sm'
-          >
+          <Tag color='info' size='sm'>
             Helse og velvære
           </Tag>
-          <Tag
-            color='danger'
-            size='sm'
-          >
+          <Tag color='danger' size='sm'>
             PC Gaming
           </Tag>
-          <Tag
-            color='warning'
-            size='sm'
-          >
+          <Tag color='warning' size='sm'>
             Trening og livsstil
           </Tag>
         </div>
@@ -348,51 +251,31 @@ export const Components = () => {
         >
           <Switch defaultChecked>TV-visning</Switch>
           <Switch size='sm'>Desktopvisning</Switch>
-          <Switch
-            defaultChecked
-            readOnly
-          >
+          <Switch defaultChecked readOnly>
             Tabletvisning
           </Switch>
           <Switch disabled>Mobilvisning</Switch>
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
-        <Heading
-          size='xs'
-          spacing
-        >
+        <Heading size='xs' spacing>
           Hvor er du fra?
         </Heading>
-        <Paragraph
-          size='sm'
-          spacing
-        >
+        <Paragraph size='sm' spacing>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root
-            defaultValue='norway'
-            size='sm'
-          >
+          <ToggleGroup.Root defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup.Root>
         </div>
-        <Heading
-          size='xs'
-          spacing
-          className={classes.chipsHeading}
-        >
+        <Heading size='xs' spacing className={classes.chipsHeading}>
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Toggle
-            selected
-            checkmark={false}
-            size='sm'
-          >
+          <Chip.Toggle selected checkmark={false} size='sm'>
             Bokmål
           </Chip.Toggle>
           <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
@@ -400,19 +283,10 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
-        <Heading
-          size='xs'
-          spacing
-          className={classes.comboHeading}
-        >
+        <Heading size='xs' spacing className={classes.comboHeading}>
           Hvor skal du reise?
         </Heading>
-        <Combobox
-          label='Destinasjon'
-          size='sm'
-          portal={false}
-          multiple
-        >
+        <Combobox label='Destinasjon' size='sm' portal={false} multiple>
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
           <Combobox.Option value='oslo'>Oslo</Combobox.Option>
@@ -435,10 +309,7 @@ export const Components = () => {
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root
-          defaultValue='value1'
-          size='sm'
-        >
+        <Tabs.Root defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
@@ -447,44 +318,28 @@ export const Components = () => {
         </Tabs.Root>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             Frivillighetsregisteret
           </Link>
           , må organisasjonen drive frivillig virksomhet. Det er bare
           foreninger,{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             stiftelser
           </Link>{' '}
           og som kan registreres. Virksomheten kan ikke dele ut midler til
           fysiske personer. Virksomheten må ha et styre. Virksomheten må være
           registrert i{' '}
-          <Link
-            href='#'
-            color='neutral'
-          >
+          <Link href='#' color='neutral'>
             Enhetsregisteret
           </Link>{' '}
           før den kan bli registrert.
         </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>
-        <Heading
-          size='xs'
-          className={classes.cardTitle}
-        >
+        <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root
-          color='brand3'
-          border
-          className={classes.accordion}
-        >
+        <Accordion.Root color='brand3' border className={classes.accordion}>
           <Accordion.Item>
             <Accordion.Heading level={3}>
               Hvem kan registrere seg i Frivillighetsregisteret?
@@ -550,27 +405,14 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>
-          <Skeleton.Circle
-            width='70px'
-            height='70px'
-          />
-          <Skeleton.Rectangle
-            height='70px'
-            width='100px'
-          />
+          <Skeleton.Circle width='70px' height='70px' />
+          <Skeleton.Rectangle height='70px' width='100px' />
         </div>
         <Skeleton.Text width='100%' />
         <Skeleton.Text width='100%' />
         <div>
-          <Spinner
-            title='laster innhold'
-            size='md'
-          />
-          <Spinner
-            title='laster innhold'
-            size='md'
-            color='accent'
-          />
+          <Spinner title='laster innhold' size='md' />
+          <Spinner title='laster innhold' size='md' color='accent' />
         </div>
       </div>
     </div>

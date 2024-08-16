@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 import {
-  AirplaneFillIcon,
-  NewspaperFillIcon,
-  BrailleIcon,
-  BackpackFillIcon,
-  BellFillIcon,
+  AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  ArchiveIcon,
+  DocPencilIcon,
+  EnvelopeClosedIcon,
+  PaperplaneIcon,
 } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button } from '../Button';
 import { Paragraph } from '../Typography';
 
 import { ToggleGroup } from '.';
+import { Tooltip } from '../Tooltip';
 
 export default {
   title: 'Komponenter/ToggleGroup',
@@ -21,15 +24,16 @@ export default {
 export const Preview: StoryFn<typeof ToggleGroup.Root> = (args) => {
   return (
     <ToggleGroup.Root {...args}>
-      <ToggleGroup.Item value='Peanut'>Peanut</ToggleGroup.Item>
-      <ToggleGroup.Item value='Walnut'>Walnut</ToggleGroup.Item>
-      <ToggleGroup.Item value='Pistachio'>Pistachio 🤤</ToggleGroup.Item>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
     </ToggleGroup.Root>
   );
 };
 
 Preview.args = {
-  defaultValue: 'Peanut',
+  defaultValue: 'innboks',
   size: 'md',
   name: 'toggle-group-nuts',
 };
@@ -37,70 +41,55 @@ Preview.args = {
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   return (
     <ToggleGroup.Root defaultValue={'option-1'}>
-      <ToggleGroup.Item
-        value={'option-1'}
-        icon={true}
-      >
-        <BrailleIcon
-          title='Braille'
-          fontSize='1.5rem'
-        />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value={'option-2'}
-        icon={true}
-      >
-        <NewspaperFillIcon
-          title='Newspaper'
-          fontSize='1.5rem'
-        />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item
-        value={'option-3'}
-        icon={true}
-      >
-        <BackpackFillIcon
-          title='Backpack'
-          fontSize='1.5rem'
-        />
-      </ToggleGroup.Item>
+      <Tooltip content='Venstrestilt'>
+        <ToggleGroup.Item value='option-1' icon={true}>
+          <AlignLeftIcon title='AlignLeftIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Midtstilt'>
+        <ToggleGroup.Item value='option-2' icon={true}>
+          <AlignCenterIcon title='AlignCenterIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Høyrestilt'>
+        <ToggleGroup.Item value='option-3' icon={true}>
+          <AlignRightIcon title='AlignRightIcon' fontSize='1.5rem' />
+        </ToggleGroup.Item>
+      </Tooltip>
     </ToggleGroup.Root>
   );
 };
 
-export const Controlled: StoryFn<typeof ToggleGroup> = () => {
-  const [value, setValue] = useState<string>('peanut');
+export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
+  const [value, setValue] = useState<string>('utkast');
   return (
     <>
       <div style={{ display: 'flex', gap: '4px' }}>
-        <Button
-          size='sm'
-          onClick={() => setValue('peanut')}
-        >
-          Select Peanut
+        <Button size='sm' onClick={() => setValue('arkiv')}>
+          Velg Arkiv
         </Button>
       </div>
       <br />
-      <ToggleGroup.Root
-        value={value}
-        size='md'
-        onChange={setValue}
-      >
-        <ToggleGroup.Item value='pistachio'>
-          <AirplaneFillIcon fontSize='1.5rem' />
-          Pistachio
+      <ToggleGroup.Root value={value} size='md' onChange={setValue}>
+        <ToggleGroup.Item value='innboks'>
+          <EnvelopeClosedIcon fontSize='1.5rem' />
+          Innboks
         </ToggleGroup.Item>
-        <ToggleGroup.Item value='peanut'>
-          <BellFillIcon fontSize='1.5rem' />
-          Peanut
+        <ToggleGroup.Item value='utkast'>
+          <DocPencilIcon fontSize='1.5rem' />
+          Utkast
         </ToggleGroup.Item>
-        <ToggleGroup.Item value='walnut'>
-          <NewspaperFillIcon fontSize='1.5rem' />
-          Walnut
+        <ToggleGroup.Item value='arkiv'>
+          <ArchiveIcon fontSize='1.5rem' />
+          Arkiv
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='sendt'>
+          <PaperplaneIcon fontSize='1.5rem' />
+          Sendt
         </ToggleGroup.Item>
       </ToggleGroup.Root>
       <br />
-      <Paragraph>You have chosen: {value}</Paragraph>
+      <Paragraph>Du har valgt: {value}</Paragraph>
     </>
   );
 };

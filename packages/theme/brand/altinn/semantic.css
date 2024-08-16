@@ -23,10 +23,10 @@
   --ds-typography-paragraph-short-md: 400 1.125rem/1.3 'Helvetica Neue';
   --ds-typography-paragraph-short-sm: 400 1rem/1.3 'Helvetica Neue';
   --ds-typography-paragraph-short-xs: 400 0.875rem/1.3 'Helvetica Neue';
-  --ds-typography-paragraph-long-lg: 400 1.125rem/1.7 'Helvetica Neue';
-  --ds-typography-paragraph-long-md: 400 1rem/1.7 'Helvetica Neue';
-  --ds-typography-paragraph-long-sm: 400 0.875rem/1.7 'Helvetica Neue';
-  --ds-typography-paragraph-long-xs: 400 0.8125rem/1.7 'Helvetica Neue';
+  --ds-typography-paragraph-long-lg: 400 1.3125rem/1.7 'Helvetica Neue';
+  --ds-typography-paragraph-long-md: 400 1.125rem/1.7 'Helvetica Neue';
+  --ds-typography-paragraph-long-sm: 400 1rem/1.7 'Helvetica Neue';
+  --ds-typography-paragraph-long-xs: 400 0.875rem/1.7 'Helvetica Neue';
   --ds-typography-label-lg: 500 1.3125rem/1.3 'Helvetica Neue';
   --ds-typography-label-md: 500 1.125rem/1.3 'Helvetica Neue';
   --ds-typography-label-sm: 500 1rem/1.3 'Helvetica Neue';

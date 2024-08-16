@@ -1,9 +1,9 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ReactNode, MouseEventHandler, HTMLAttributes } from 'react';
+import type { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Paragraph, Heading } from '..';
+import { Heading, Paragraph } from '../Typography';
 
 import { AccordionItemContext } from './AccordionItem';
 
@@ -19,6 +19,11 @@ export type AccordionHeaderProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
 
+/**
+ * Accordion header component, contains a button to toggle the content.
+ * @example
+ * <AccordionHeader>Header</AccordionHeader>
+ */
 export const AccordionHeading = forwardRef<
   HTMLHeadingElement,
   AccordionHeaderProps
@@ -34,7 +39,7 @@ export const AccordionHeading = forwardRef<
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     context.toggleOpen();
-    onHeaderClick && onHeaderClick(e);
+    onHeaderClick?.(e);
   };
 
   return (
@@ -57,10 +62,7 @@ export const AccordionHeading = forwardRef<
           className='ds-accordion__expand-icon'
           fontSize={'1.5rem'}
         />
-        <Paragraph
-          asChild
-          size='sm'
-        >
+        <Paragraph asChild size='sm'>
           <span>{children}</span>
         </Paragraph>
       </button>

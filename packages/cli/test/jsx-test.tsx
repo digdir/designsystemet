@@ -5,10 +5,7 @@ const DEFAULT = 'fds-default';
 export default function JsxTest({ className }: { className?: string }) {
   return (
     <div>
-      <div
-        className='fds-hey'
-        onMouseEnter={() => 'fds-func'}
-      >
+      <div className='fds-hey' onMouseEnter={() => 'fds-func'}>
         <button
           className={cl(
             'fds-skrr',

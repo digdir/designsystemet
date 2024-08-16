@@ -57,7 +57,7 @@
 
 .content img {
   display: block;
-  width: 860px;
+  width: 860px !important;
   margin: var(--ds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--ds-color-neutral-background-subtle);

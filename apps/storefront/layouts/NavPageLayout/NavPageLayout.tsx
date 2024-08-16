@@ -1,8 +1,14 @@
+import { Container } from '@repo/components';
 import type * as React from 'react';
 
-import { Banner, BannerHeading, BannerIcon, BannerIngress } from '../../components/Banner/Banner';
-import { Container, ImageSection, MdxContent } from '../../components';
+import { ImageSection, MdxContent } from '../../components';
 import type { ImageSectionProps } from '../../components';
+import {
+  Banner,
+  BannerHeading,
+  BannerIcon,
+  BannerIngress,
+} from '../../components/Banner/Banner';
 
 import classes from './NavPageLayout.module.css';
 
@@ -24,10 +30,7 @@ interface NavPageLayoutData {
 
 const NavPageLayout = ({ content, data, banner }: NavPageLayoutProps) => {
   return (
-    <main
-      id='main'
-      className='greyBackground'
-    >
+    <main id='main' className='greyBackground'>
       {banner && (
         <Banner color={banner.color}>
           <BannerIcon>{banner.icon}</BannerIcon>

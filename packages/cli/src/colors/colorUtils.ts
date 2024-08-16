@@ -1,7 +1,7 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Hsluv } from 'hsluv';
-import chroma from 'chroma-js';
 import { APCAcontrast, sRGBtoY } from 'apca-w3';
+import chroma from 'chroma-js';
+import { Hsluv } from 'hsluv';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -21,13 +21,15 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
     g = parseInt(result[2], 16);
     b = parseInt(result[3], 16);
   }
-  (r /= 255), (g /= 255), (b /= 255);
-  const max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  let h,
-    s,
-    l = (max + min) / 2;
-  if (max == min) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  let s = 0;
+  let l = (max + min) / 2;
+  if (max === min) {
     h = s = 0; // achromatic
   } else {
     const d = max - min;
@@ -63,14 +65,14 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
  */
 export const hexToHSL = (H: string) => {
   // Convert hex to RGB first
-  let r = 0,
-    g = 0,
-    b = 0;
-  if (H.length == 4) {
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  if (H.length === 4) {
     r = parseInt('0x' + H[1] + H[1]);
     g = parseInt('0x' + H[2] + H[2]);
     b = parseInt('0x' + H[3] + H[3]);
-  } else if (H.length == 7) {
+  } else if (H.length === 7) {
     r = parseInt('0x' + H[1] + H[2]);
     g = parseInt('0x' + H[3] + H[4]);
     b = parseInt('0x' + H[5] + H[6]);
@@ -79,16 +81,16 @@ export const hexToHSL = (H: string) => {
   r /= 255;
   g /= 255;
   b /= 255;
-  let h = 0,
-    s = 0,
-    l = 0;
-  const cmin = Math.min(r, g, b),
-    cmax = Math.max(r, g, b),
-    delta = cmax - cmin;
+  let h = 0;
+  let s = 0;
+  let l = 0;
+  const cmin = Math.min(r, g, b);
+  const cmax = Math.max(r, g, b);
+  const delta = cmax - cmin;
 
-  if (delta == 0) h = 0;
-  else if (cmax == r) h = ((g - b) / delta) % 6;
-  else if (cmax == g) h = (b - r) / delta + 2;
+  if (delta === 0) h = 0;
+  else if (cmax === r) h = ((g - b) / delta) % 6;
+  else if (cmax === g) h = (b - r) / delta + 2;
   else h = (r - g) / delta + 4;
 
   h = Math.round(h * 60);
@@ -96,7 +98,7 @@ export const hexToHSL = (H: string) => {
   if (h < 0) h += 360;
 
   l = (cmax + cmin) / 2;
-  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
@@ -138,12 +140,12 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
 
-  let r = 0,
-    g = 0,
-    b = 0;
-  const c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2;
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
 
   if (0 <= h && h < 60) {
     r = c;
@@ -176,9 +178,9 @@ export const HSLToHex = (h: number, s: number, l: number) => {
   b = parseInt(Math.round((b + m) * 255).toString(16), 16);
 
   // Prepend 0s, if necessary
-  if (r.toString().length == 1) r = parseInt('0' + r.toString(), 10);
-  if (g.toString().length == 1) g = parseInt('0' + g.toString(), 10);
-  if (b.toString().length == 1) b = parseInt('0' + b.toString(), 10);
+  if (r.toString().length === 1) r = parseInt('0' + r.toString(), 10);
+  if (g.toString().length === 1) g = parseInt('0' + g.toString(), 10);
+  if (b.toString().length === 1) b = parseInt('0' + b.toString(), 10);
 
   return '#' + r + g + b;
 };
@@ -191,9 +193,7 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  */
 export const hexToRgb = (hex: string) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r: string, g: string, b: string) {
-    return r + r + g + g + b + b;
-  });
+  hex = hex.replace(shorthandRegex, (m, r: string, g: string, b: string) => r + r + g + g + b + b);
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
@@ -214,9 +214,9 @@ export const hexToRgb = (hex: string) => {
  * @returns
  */
 export const luminanceFromRgb = (r: string, g: string, b: string) => {
-  const a = [Number(r), Number(g), Number(b)].map(function (v) {
+  const a = [Number(r), Number(g), Number(b)].map((v) => {
     v /= 255;
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
   });
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
@@ -248,9 +248,8 @@ export const luminanceFromHex = (hex: CssColor) => {
 export const getRatioFromLum = (lum1: number, lum2: number) => {
   if (lum1 !== null && lum2 !== null) {
     return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
-  } else {
-    return -1;
   }
+  return -1;
 };
 
 /**
@@ -337,11 +336,11 @@ export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: '
   if (contrast !== null) {
     if (type === 'aaa') {
       return contrast >= 7;
-    } else if (type === 'aa') {
-      return contrast >= 4.5;
-    } else {
-      return contrast >= 3;
     }
+    if (type === 'aa') {
+      return contrast >= 4.5;
+    }
+    return contrast >= 3;
   }
   return false;
 };
@@ -366,5 +365,5 @@ export const getApcaContrastLc = (textColor: CssColor, backgroundColor: CssColor
  * @returns {boolean} If the string is a HEX color
  */
 export const isHexColor = (hex: string) => {
-  return typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex));
+  return typeof hex === 'string' && hex.length === 6 && !Number.isNaN(Number('0x' + hex));
 };

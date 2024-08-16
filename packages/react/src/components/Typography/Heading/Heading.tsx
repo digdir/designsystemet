@@ -1,10 +1,13 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { ElementType, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 export type HeadingProps = {
-  /** Heading level. This will translate into any h1-6 level unless `as` is defined */
+  /**
+   * Heading level. This will translate into any h1-6 level unless `asChild` is `true`
+   * @default 1
+   */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Changes text sizing
    * @default 'xl'
@@ -20,7 +23,12 @@ export type HeadingProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLHeadingElement>;
 
-/** Use `Heading` to render h1-6 elements with heading text styles.  */
+/**
+ * Use `Heading` to render h1-6 elements with heading text styles.
+ *
+ * @example
+ * <Heading size='lg' level={2}>Heading</Heading>
+ */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   (
     { size = 'xl', level = 1, spacing = false, className, asChild, ...rest },

@@ -6,7 +6,7 @@ type SelectedIconProps = {
   selected: boolean;
 };
 
-export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
+const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
   return (
     <div
       className={cl(
@@ -26,4 +26,4 @@ export const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
 
 SelectedIcon.displayName = 'SelectedIcon';
 
-export default SelectedIcon;
+export { SelectedIcon };

@@ -1,14 +1,19 @@
 {
   "name": "@digdir/designsystemet-react",
-  "version": "1.0.0-rc.12",
+  "version": "1.0.0-next.16",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": "https://github.com/digdir/designsystemet",
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist/**"
@@ -27,16 +32,25 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.12",
-    "@navikt/aksel-icons": "^5.12.2",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@tanstack/react-virtual": "^3.5.1"
+    "@floating-ui/react": "0.26.21",
+    "@navikt/aksel-icons": "^6.14.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-virtual": "^3.8.4"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "copyfiles": "^2.4.1",
-    "esno": "^4.7.0",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.12.1",
-    "typescript": "^5.4.2"
+    "jsdom": "^24.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.20.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.5.4"
   }
 }

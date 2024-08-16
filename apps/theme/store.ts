@@ -1,11 +1,11 @@
-import { create } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type {
   ColorInfo,
   ColorType,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
+import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
 
 import { Settings } from './settings';
 

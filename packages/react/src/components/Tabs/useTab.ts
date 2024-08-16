@@ -22,7 +22,7 @@ export const useTabItem: UseTab = (props: TabProps) => {
   return {
     ...rest,
     id: buttonId,
-    'aria-selected': tabs.value == value,
+    'aria-selected': tabs.value === value,
     role: 'tab',
     size: tabs.size,
     onClick: () => {

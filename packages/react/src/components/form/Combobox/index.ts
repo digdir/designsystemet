@@ -1,6 +1,6 @@
 import { Combobox as ComboboxRoot } from './Combobox';
-import { ComboboxOption } from './Option/Option';
 import { ComboboxEmpty } from './Empty';
+import { ComboboxOption } from './Option/Option';
 
 type ComboboxComponent = typeof ComboboxRoot & {
   Option: typeof ComboboxOption;
@@ -15,8 +15,7 @@ Combobox.Empty = ComboboxEmpty;
 Combobox.Option.displayName = 'Combobox.Option';
 Combobox.Empty.displayName = 'Combobox.Empty';
 
-export {
-  Combobox as Combobox,
-  ComboboxOption as ComboboxOption,
-  ComboboxEmpty as ComboboxEmpty,
-};
+export type { ComboboxProps } from './Combobox';
+export type { ComboboxOptionProps } from './Option/Option';
+export type { ComboboxEmptyProps } from './Empty';
+export { Combobox, ComboboxOption, ComboboxEmpty };

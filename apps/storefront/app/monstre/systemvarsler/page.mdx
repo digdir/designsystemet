@@ -1,0 +1,46 @@
+import { Card, CardContent, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+import { Image } from '@components';
+import { MenuPageLayout } from '@layouts';
+
+export const metadata = {
+  title: 'Systemvarsler',
+  description: 'Systemvarsler brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg.'
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Systemvarsler',
+      date: '4. juni 2024',
+    }}
+  />
+);
+
+<Card
+  color='third'
+>
+  <CardContent
+  style={{
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  }}
+  >
+    *Retningslinjene er under arbeid fra 5. juni 2024 i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Alle er velkommen til å påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/2083) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
+
+  </CardContent>
+</Card>
+
+Systemvarsler brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg. Vi bruker dem til feil som ikke tilhører et skjemaelement, og som ikke validerer brukerens inndata. De bør derfor ha et annet utseende enn [brukerutløste feil](/monstre/feilmeldinger).
+
+Systemvarsler kan for eksempel komme i form av [`alert`](https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs), `toast`, [`modal`](https://storybook.designsystemet.no/?path=/docs/komponenter-modal--docs) eller [`popover`](https://storybook.designsystemet.no/?path=/docs/komponenter-popover--docs).
+
+Eksempler på varsler:
+
+- Tjenesten vår er dessverre nede, men vi jobber med saken. Prøv igjen om litt. Hvis du fortsatt har problemer, kan du ta kontakt med oss.
+- Det kan se ut som du ikke er koblet til internett. Sjekk tilkoblingen din og prøv igjen.
+- Tjenesten vil være nede onsdag 24. juni 2029 mellom klokken 04-06.
+- Du har nå tatt i bruk den nyeste versjonen av tjenesten. Du kan bytte tilbake til den gamle versjonen ved å klikke her.
+- Du har ikke foretatt deg noe på en stund, og påloggingen er i ferd med å utløpe. Du vil bli logget ut om 5 minutter. Arbeidet ditt er lagret.
+- Er du sikker på at du vil avbryte nå? Du kan miste arbeidet du allerede har gjort.

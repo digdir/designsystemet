@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-import { TokenSetStatus, type ThemeObject } from '@tokens-studio/types';
+import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import { normalizeTokenSetName } from './utils.js';
 
@@ -8,26 +8,16 @@ export default function generateThemesJson(
   modes: Array<'Light' | 'Dark' | 'Contrast'>,
   themes: string[],
 ): ThemeObject[] {
-  return [
-    ...generateModesGroup(modes, themes),
-    ...generateThemesGroup(themes),
-    generateSemanticGroup(),
-  ];
+  return [...generateModesGroup(modes, themes), ...generateThemesGroup(themes), generateSemanticGroup()];
 }
 
-function generateModesGroup(
-  modes: Array<'Light' | 'Dark' | 'Contrast'>,
-  themes: string[],
-): ThemeObject[] {
+function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes: string[]): ThemeObject[] {
   return modes.map(
     (mode): ThemeObject => ({
       id: randomUUID(),
       name: mode,
       selectedTokenSets: Object.fromEntries([
-        [
-          `primitives/colors/${normalizeTokenSetName(mode)}/global`,
-          TokenSetStatus.ENABLED,
-        ],
+        [`primitives/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
         ...themes.map(
           (theme) =>
             [

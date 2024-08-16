@@ -1,10 +1,10 @@
 import {
-  Heading,
-  Paragraph,
-  ToggleGroup,
-  Textarea,
   Button,
+  Heading,
   Link,
+  Paragraph,
+  Textarea,
+  ToggleGroup,
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
@@ -79,17 +79,11 @@ function PageOne() {
   return (
     <div className='content'>
       <div className='content'>
-        <Heading
-          className='heading'
-          size='2xs'
-        >
+        <Heading className='heading' size='2xs'>
           Oppdater fargetema
         </Heading>
 
-        <Paragraph
-          size='sm'
-          className='paragraph'
-        >
+        <Paragraph size='sm' className='paragraph'>
           Oppdater{' '}
           <Link
             target='_blank'
@@ -98,10 +92,7 @@ function PageOne() {
             Designsystemet - Core UI Kit
           </Link>{' '}
           community filen med ditt eget fargetema. Gå til{' '}
-          <Link
-            target='_blank'
-            href='https://theme.designsystemet.no/'
-          >
+          <Link target='_blank' href='https://theme.designsystemet.no/'>
             theme.designsystemet.no
           </Link>{' '}
           og lag temaet ditt, velg light- eller dark mode og lim inn JSON koden
@@ -131,11 +122,7 @@ function PageOne() {
           value={jsonText}
           onChange={(e) => setJsonText(e.target.value)}
         />
-        <Button
-          onClick={() => onSubmit()}
-          size='sm'
-          className='button'
-        >
+        <Button onClick={() => onSubmit()} size='sm' className='button'>
           Oppdater variabler
         </Button>
         {isLoading && <Toast />}

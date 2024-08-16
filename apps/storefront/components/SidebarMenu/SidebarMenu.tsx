@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import cl from 'clsx';
 import { Button } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import { SiteConfig } from '../../siteConfig';
 import type { PageMenuItemType } from '../../utils/menus/PageMenu';
@@ -50,7 +50,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
             {showMenu ? 'Skjul' : 'Vis'} side meny
           </Button>
 
-          <div className={cl(classes.menu, { [classes.activeMenu]: showMenu })}>
+          <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
             <h3 className={cl(classes.title, 'ds-paragraph--md')}>
               {SiteConfig.menu[activeIndex].name}
             </h3>
@@ -73,17 +73,14 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
-                              <li
-                                key={index2}
-                                className={classes.listItem}
-                              >
+                              <li key={index2} className={classes.listItem}>
                                 <Link
                                   href={'/' + item2.url}
                                   prefetch={false}
                                   className={cl(
                                     classes.link,
                                     isItemActive(item2.url, routerPath) &&
-                                    classes.linkActive,
+                                      classes.linkActive,
                                     'ds-paragraph--sm',
                                   )}
                                 >
@@ -103,7 +100,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                           classes.link,
                           classes.linkCompact,
                           isItemActive(item.url, routerPath) &&
-                          classes.linkActive,
+                            classes.linkActive,
                           'ds-paragraph--sm',
                         )}
                       >

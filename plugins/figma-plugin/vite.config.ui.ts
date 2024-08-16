@@ -1,9 +1,9 @@
 import path from 'node:path';
 
-import { defineConfig } from 'vite';
-import { viteSingleFile } from 'vite-plugin-singlefile';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import richSvg from 'vite-plugin-react-rich-svg';
+import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig(({ mode }) => ({
   plugins: [react(), richSvg(), viteSingleFile()],

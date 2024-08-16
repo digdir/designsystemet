@@ -1,5 +1,5 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Stack } from '@doc-components';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import type { TagProps } from '.';
 import { Tag } from '.';
@@ -31,11 +31,7 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
       {sizes.map((size) => (
-        <Tag
-          key={size}
-          size={size}
-          {...rest}
-        >
+        <Tag key={size} size={size} {...rest}>
           {size}
         </Tag>
       ))}
@@ -58,11 +54,7 @@ export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
       {colors.map((color) => (
-        <Tag
-          key={color}
-          color={color}
-          {...rest}
-        >
+        <Tag key={color} color={color} {...rest}>
           {color}
         </Tag>
       ))}

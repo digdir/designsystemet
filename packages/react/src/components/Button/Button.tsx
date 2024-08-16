@@ -1,12 +1,15 @@
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import cl from 'clsx/lite';
-import { Slot } from '@radix-ui/react-slot';
 
 import { Paragraph } from '../Typography';
 
 export type ButtonProps = {
-  /** Specify which variant to use */
+  /**
+   * Specify which variant to use
+   * @default primary
+   */
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Specify which color palette to use
    * @default accent
@@ -17,7 +20,10 @@ export type ButtonProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /** If `Button` should fill full width of its container */
+  /**
+   * If `Button` should fill full width of its container
+   * @default false
+   */
   fullWidth?: boolean;
   /** Toggle icon only styling, pass icon as children
    * @default false
@@ -32,6 +38,8 @@ export type ButtonProps = {
 
 /**
  * Button used for interaction
+ * @example
+ * <Button>Click me</Button>
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -52,11 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : 'button';
 
     return (
-      <Paragraph
-        variant='short'
-        size={size}
-        asChild
-      >
+      <Paragraph variant='short' size={size} asChild>
         <Component
           ref={ref}
           type={type}

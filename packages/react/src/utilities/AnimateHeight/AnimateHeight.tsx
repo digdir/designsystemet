@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { useCallback, useRef, useState } from 'react';
 import type * as React from 'react';
-import cl from 'clsx/lite';
 
 import { useMediaQuery, usePrevious } from '../../utilities';
 
@@ -22,7 +22,10 @@ export const AnimateHeight = ({
   style,
   ...rest
 }: AnimateHeightProps) => {
-  const [height, setHeight] = useState<number>(0);
+  /* We don't know the initial height we want to start with.
+  It depends on if it should start open or not, therefore we set height to `undefined`,
+  so we don't get any layoutshift on first render */
+  const [height, setHeight] = useState<number | undefined>(undefined);
   const prevOpen = usePrevious(open);
   const openOrClosed: InternalState = open ? 'open' : 'closed';
   const [state, setState] = useState<InternalState>(openOrClosed);
@@ -64,10 +67,7 @@ export const AnimateHeight = ({
       )}
       style={{ height, transition, ...style }}
     >
-      <div
-        ref={contentRef}
-        className='ds-animate-height__content'
-      >
+      <div ref={contentRef} className='ds-animate-height__content'>
         {children}
       </div>
     </div>

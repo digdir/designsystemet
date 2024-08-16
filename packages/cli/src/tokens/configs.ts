@@ -1,20 +1,22 @@
-import * as tokenStudio from '@tokens-studio/sd-transforms';
-import StyleDictionary from 'style-dictionary';
-import { outputReferencesFilter } from 'style-dictionary/utils';
-import type { Config, TransformedToken } from 'style-dictionary/types';
-import * as R from 'ramda';
+import { register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
+import * as R from 'ramda';
+import StyleDictionary from 'style-dictionary';
+import type { Config, TransformedToken } from 'style-dictionary/types';
+import { outputReferencesFilter } from 'style-dictionary/utils';
 
+import * as formats from './formats/css.js';
+import { jsTokens } from './formats/js-tokens.js';
+import { nameKebab, sizeRem, typographyShorthand } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
-import { nameKebab, typographyShorthand, sizeRem } from './transformers.js';
-import { jsTokens } from './formats/js-tokens.js';
-import * as formats from './formats/css.js';
-import { makeEntryFile } from './actions.js';
-import { typeEquals } from './utils/utils.js';
+import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
-void tokenStudio.registerTransforms(StyleDictionary);
-
+void register(StyleDictionary, { withSDBuiltins: false });
+/** Use official W3C design token format
+ @see https://v4.styledictionary.com/info/dtcg/
+ @see https://design-tokens.github.io/community-group/format/ */
+const usesDtcg = true;
 export const prefix = 'ds';
 export const basePxFontSize = 16;
 export const separator = '_';
@@ -30,8 +32,6 @@ StyleDictionary.registerFormat(formats.colormode);
 StyleDictionary.registerFormat(formats.semantic);
 StyleDictionary.registerFormat(formats.typography);
 
-StyleDictionary.registerAction(makeEntryFile);
-
 const dsTransformers = [
   nameKebab.name,
   `ts/resolveMath`,
@@ -42,7 +42,7 @@ const dsTransformers = [
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/size/lineheight',
-  'ts/shadow/css/shorthand',
+  'shadow/css/shorthand',
 ];
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
@@ -81,6 +81,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
   const layer = `ds.theme.color-mode.${mode}`;
 
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -95,7 +96,6 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         prefix,
         buildPath: `${outPath}/${theme}/`,
         transforms: dsTransformers,
-        actions: [makeEntryFile.name],
         files: [
           {
             destination: `color-mode/${mode}.css`,
@@ -124,9 +124,10 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
   const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    typeEquals(['spacing', 'sizing', 'borderRadius'], token);
+    pathStartsWithOneOf(['spacing', 'sizing', 'border-radius'], token);
 
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -142,14 +143,13 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         prefix,
         buildPath: `${outPath}/${theme}/`,
         transforms: dsTransformers,
-        actions: [makeEntryFile.name],
         files: [
           {
             destination: `semantic.css`,
             format: formats.semantic.name,
             filter: (token) =>
               (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeights', 'fontFamilies'], token),
+              !typeEquals(['color', 'fontWeight', 'fontFamily'], token),
           },
         ],
         options: {
@@ -163,6 +163,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
 
 export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
+    usesDtcg,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -177,9 +178,8 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
             format: jsTokens.name,
             outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/modes|\/themes/, token.filePath)) {
-                return false;
-              }
+              if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
+              if (pathStartsWithOneOf(['border-width'], token)) return false;
 
               if (
                 R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
@@ -205,6 +205,7 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
   const layer = `ds.theme.typography.${typography}`;
 
   return {
+    usesDtcg: true,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -221,11 +222,17 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
             destination: `typography/${typography}.css`,
             format: formats.typography.name,
             filter: (token) => {
+              const included = typeEquals(
+                ['typography', 'fontweight', 'fontFamily', 'lineheight', 'fontsize', 'dimension', 'font'],
+                token,
+              );
+
               return (
-                typeEquals(
-                  ['typography', 'fontweights', 'fontfamilies', 'lineheights', 'fontsizes', 'letterSpacing'],
+                included &&
+                !pathStartsWithOneOf(
+                  ['spacing', 'sizing', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
                   token,
-                ) && !(token.path[0] || '').startsWith('theme')
+                )
               );
             },
           },

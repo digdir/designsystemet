@@ -1,13 +1,13 @@
-import type { FieldsetHTMLAttributes, ReactNode } from 'react';
-import { useContext, forwardRef } from 'react';
-import cl from 'clsx/lite';
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import type { FieldsetHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useContext } from 'react';
 
-import { Label, Paragraph, ErrorMessage } from '../../Typography';
+import { ErrorMessage, Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 
-import { useFieldset } from './useFieldset';
 import { FieldsetContext } from './FieldsetContext';
+import { useFieldset } from './useFieldset';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */
@@ -65,10 +65,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           ref={ref}
           {...rest}
         >
-          <Label
-            asChild
-            size={size}
-          >
+          <Label asChild size={size}>
             <legend className={'ds-fieldset__legend'}>
               <span
                 className={cl(
@@ -87,11 +84,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             </legend>
           </Label>
           {description && (
-            <Paragraph
-              size={size}
-              variant='short'
-              asChild
-            >
+            <Paragraph size={size} variant='short' asChild>
               <div
                 id={descriptionId}
                 className={cl(

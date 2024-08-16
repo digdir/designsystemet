@@ -1,0 +1,20 @@
+name: Checks
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'apps/**'
+      - 'biome.jsonc'
+jobs:
+  checks:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/gh-setup
+      - name: Biome CI
+        run: yarn biome ci .
+      - name: Lint CSS
+        run: yarn lint-style
+

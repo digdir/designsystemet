@@ -1,10 +1,10 @@
 import { ComponentFillIcon } from '@navikt/aksel-icons';
+import { Container } from '@repo/components';
 
-import { Container } from '@components';
 import {
   Banner,
-  BannerIcon,
   BannerHeading,
+  BannerIcon,
   BannerIngress,
 } from 'components/Banner/Banner';
 
@@ -16,10 +16,7 @@ export const metadata = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main
-      id='main'
-      className={classes.page}
-    >
+    <main id='main' className={classes.page}>
       <Banner color='blue'>
         <BannerIcon>
           <ComponentFillIcon fontSize={'2.5rem'} />

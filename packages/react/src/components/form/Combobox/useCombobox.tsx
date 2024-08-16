@@ -1,11 +1,14 @@
-import { useMemo, Children, useState, isValidElement } from 'react';
-import type { ReactNode, ReactElement } from 'react';
+import { Children, useCallback, useEffect, useMemo, useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-import type { ComboboxOptionProps } from './Option/Option';
-import { ComboboxOption } from './Option/Option';
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
-import ComboboxCustom from './Custom';
+import type { ComboboxOptionProps } from './Option/Option';
+import {
+  isComboboxOption,
+  isInteractiveComboboxCustom,
+  prefix,
+} from './utilities';
 
 export type UseComboboxProps = {
   children: ReactNode;
@@ -24,40 +27,7 @@ export type Option = {
 
 const isOption = (option: Option | undefined): option is Option => !!option;
 
-export function isComboboxOption(
-  child: ReactNode,
-): child is ReactElement<ComboboxOptionProps> {
-  return isValidElement(child) && child.type === ComboboxOption;
-}
-
-export function isComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
-  return isValidElement(child) && child.type === ComboboxCustom;
-}
-
-export function isInteractiveComboboxCustom(
-  child: ReactNode,
-): child is ReactElement<ComboboxCustomProps> {
-  return isComboboxCustom(child) && child.props.interactive === true;
-}
-
-const INTERNAL_OPTION_PREFIX = 'internal-option-';
-
-/**
- * We use this function to prefix the value of the options so we can make sure numbers as strings are not parsed as numbers in objects
- * @param value
- * @returns
- */
-export const prefix = (value?: string): string => {
-  return INTERNAL_OPTION_PREFIX + value;
-};
-
-export const removePrefix = (value: string): string => {
-  return value.slice(INTERNAL_OPTION_PREFIX.length);
-};
-
-export default function useCombobox({
+export function useCombobox({
   children,
   inputValue,
   multiple,
@@ -66,6 +36,8 @@ export default function useCombobox({
   },
   initialValue,
 }: UseComboboxProps) {
+  const filterCallback = useCallback(filter, [filter]);
+
   const { optionsChildren, customIds, restChildren, interactiveChildren } =
     useMemo(() => {
       const allChildren = Children.toArray(children);
@@ -106,6 +78,7 @@ export default function useCombobox({
     }, [children]);
 
   const options = useMemo(() => {
+    const values: string[] = [];
     const allOptions: {
       [key: string]: Option;
     } = {};
@@ -129,6 +102,14 @@ export default function useCombobox({
 
         label = childrenLabel;
       }
+
+      if (values.includes(props.value)) {
+        console.warn(
+          `Combobox has multiple options with the same value: ${props.value}`,
+        );
+      }
+
+      values.push(props.value);
 
       allOptions[prefix(String(props.value))] = {
         value: String(props.value),
@@ -179,7 +160,7 @@ export default function useCombobox({
           return optionsChildren[index];
         }
 
-        if (filter(inputValue, options[option])) {
+        if (filterCallback(inputValue, options[option])) {
           filteredOptions.push(option);
           return optionsChildren[index];
         }
@@ -189,8 +170,14 @@ export default function useCombobox({
       .filter((child) => child);
 
     return { filteredOptions, filteredOptionsChildren };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputValue, multiple, options, optionsChildren, selectedOptions]);
+  }, [
+    filterCallback,
+    inputValue,
+    multiple,
+    options,
+    optionsChildren,
+    selectedOptions,
+  ]);
 
   return {
     filteredOptionsChildren,

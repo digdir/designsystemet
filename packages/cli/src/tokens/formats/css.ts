@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { fileHeader, createPropertyFormatter, usesReferences, getReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../configs.js';
 import { prefix } from '../configs.js';
@@ -15,9 +15,9 @@ const prefersColorScheme = (mode: string, content: string) => `
 
 export const colormode: Format = {
   name: 'ds/css-colormode',
-  format: async function ({ dictionary, file, options, platform }) {
+  format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
-    const { outputReferences } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, mode, layer } = platform;
 
     const mode_ = mode as string;
@@ -28,12 +28,18 @@ export const colormode: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
-    const content = `{\n${allTokens.map(format).join('\n')}\n}\n`;
-    const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
+    const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `color-scheme: ${mode_};\n` : '';
 
-    return header + `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`;
+    const content = `{\n${allTokens.map(format).join('\n')}\n${colorSchemeProperty}}\n`;
+    const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
+    const body = R.isNotNil(layer)
+      ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
+      : `${selector} ${content} ${autoSelectorContent}\n`;
+
+    return header + body;
   },
 };
 
@@ -41,9 +47,9 @@ const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: 
 
 export const semantic: Format = {
   name: 'ds/css-semantic',
-  format: async function ({ dictionary, file, options, platform }) {
+  format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
-    const { outputReferences } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, isCalculatedToken, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -52,6 +58,7 @@ export const semantic: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const formatTokens = R.map((token: TransformedToken) => {
@@ -72,8 +79,9 @@ export const semantic: Format = {
 
     const formattedVariables = formatTokens(allTokens);
     const content = `{\n${formattedVariables.join('\n')}\n}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
-    return header + `@layer ${layer} {\n${selector} ${content}\n}\n`;
+    return header + body;
   },
 };
 
@@ -86,7 +94,7 @@ type Typgraphy = {
 
 type ProcessedTokens = { variables: string[]; classes: string[] };
 
-const sortByType = R.sortBy<TransformedToken>((token) => token?.type === 'typography');
+const sortByType = R.sortBy<TransformedToken>((token) => token?.$type === 'typography');
 const getVariableName = R.pipe<string[], string[], string, string, string, string>(
   R.split(':'),
   R.head,
@@ -115,8 +123,8 @@ const sortTypographyLast = R.sortWith<TransformedToken>([
 
 export const typography: Format = {
   name: 'ds/css-typography',
-  format: async function ({ dictionary, file, options, platform }) {
-    const { outputReferences } = options;
+  format: async ({ dictionary, file, options, platform }) => {
+    const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -125,6 +133,7 @@ export const typography: Format = {
       outputReferences,
       dictionary,
       format: 'css',
+      usesDtcg,
     });
 
     const sortedTokens = sortTypographyLast(dictionary.allTokens);
@@ -133,38 +142,42 @@ export const typography: Format = {
       sortByType,
       R.reduce<TransformedToken, ProcessedTokens>(
         (acc, token) => {
-          if (typeEquals('fontweights', token)) {
+          if (typeEquals('fontweight', token)) {
             const className = `
   .${classSelector(token)} {
     font-weight: ${getValue<string>(token)};
   }`;
 
-            return {
-              ...acc,
+            return Object.assign(acc, {
               variables: [...acc.variables, format(token)],
               classes: [...acc.classes, className],
-            };
+            });
           }
 
-          if (typeEquals('lineheights', token)) {
+          if (typeEquals('lineheight', token)) {
             const className = `
   .${classSelector(token)} {
     line-height: ${getValue<string>(token)};
   }`;
 
-            return {
-              ...acc,
+            return Object.assign(acc, {
               variables: [...acc.variables, format(token)],
               classes: [...acc.classes, className],
-            };
+            });
           }
 
           if (typeEquals('typography', token)) {
-            const references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
-            const fontweight = R.find<TransformedToken>(typeEquals(['fontweights']))(references);
-            const lineheight = R.find<TransformedToken>(typeEquals(['lineheights']))(references);
-            const fontsize = R.find<TransformedToken>(typeEquals(['fontsizes']))(references);
-            const letterSpacing = R.find<TransformedToken>(typeEquals(['letterSpacing']))(references);
+            let references: TransformedToken[] = [];
+            try {
+              references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
+            } catch (error) {
+              console.error('Error getting references', error);
+              throw new Error(JSON.stringify(token, null, 2));
+            }
+            const fontweight = R.find<TransformedToken>(typeEquals(['fontweight']))(references);
+            const lineheight = R.find<TransformedToken>(typeEquals(['lineheight']))(references);
+            const fontsize = R.find<TransformedToken>(typeEquals(['fontsize']))(references);
+            const letterSpacing = R.find<TransformedToken>(typeEquals(['dimension']))(references);
 
             const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
             const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
@@ -173,16 +186,16 @@ export const typography: Format = {
 
             const className = `
   .${classSelector(token)} {
-    ${fontSizeVar && `font-size: ${fontSizeVar};`}
-    ${lineheightVar && `line-height: ${lineheightVar};`}
-    ${fontWeightVar && `font-weight: ${fontWeightVar};`}
-    ${letterSpacingVar && `letter-spacing: ${letterSpacingVar};`}
+    ${fontSizeVar ? `font-size: ${fontSizeVar};` : ''}
+    ${lineheightVar ? `line-height: ${lineheightVar};` : ''}
+    ${fontWeightVar ? `font-weight: ${fontWeightVar};` : ''}
+    ${letterSpacingVar ? `letter-spacing: ${letterSpacingVar};` : ''}
   }`;
 
-            return { ...acc, classes: [className, ...acc.classes] };
+            return Object.assign(acc, { classes: [className, ...acc.classes] });
           }
 
-          return { ...acc, variables: [...acc.variables, format(token)] };
+          return Object.assign(acc, { variables: [...acc.variables, format(token)] });
         },
         { variables: [], classes: [] },
       ),
@@ -191,7 +204,8 @@ export const typography: Format = {
     const classes = formattedTokens.classes.join('\n');
     const variables = formattedTokens.variables.join('\n');
     const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
 
-    return header + `@layer ${layer} {\n${content}\n}\n`;
+    return header + body;
   },
 };

@@ -2,8 +2,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
-import type { ContrastMode, Mode, ColorInfo, ColorNumber, ThemeInfo, ColorType } from './types';
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils';
+import type { ColorInfo, ColorNumber, ContrastMode, Mode, ThemeInfo } from './types';
 
 const blueBaseColor = '#0A71C0';
 const greenBaseColor = '#078D19';
@@ -255,7 +255,8 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
 
   if (defaultAgainstWhite >= 4.5 && activeAgainstWhite >= 4.5) {
     return true;
-  } else if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
+  }
+  if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
     return true;
   }
 
@@ -354,6 +355,6 @@ export const getBaseColor = (color: CssColor) => {
   return conv.hex as CssColor;
 };
 
-export const getCssVariable = (colorType: ColorType, colorNumber: ColorNumber) => {
+export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
   return `--ds-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
 };

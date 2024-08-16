@@ -1,6 +1,6 @@
+import type { Meta, StoryFn } from '@storybook/react';
 import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
 
 import { Checkbox } from '../form/Checkbox';
 import { Textfield } from '../form/Textfield';
@@ -9,11 +9,11 @@ import type { TableHeaderCellProps } from './TableHeaderCell';
 
 import {
   Table,
-  TableHead,
   TableBody,
-  TableRow,
   TableCell,
+  TableHead,
   TableHeaderCell,
+  TableRow,
 } from '.';
 
 type Story = StoryFn<typeof Table>;
@@ -208,7 +208,8 @@ export const WithFormElements: Story = (args) => {
     setHeaderChecked(event.target.checked);
     setCheckedItems(
       rows.reduce(
-        (acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }),
+        (acc: CheckedItems, row) =>
+          Object.assign(acc, { [row]: event.target.checked }),
         {},
       ),
     );

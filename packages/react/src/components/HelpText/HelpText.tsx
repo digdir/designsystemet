@@ -1,11 +1,12 @@
+import type { Placement } from '@floating-ui/utils';
+import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes } from 'react';
 import { useState } from 'react';
-import cl from 'clsx/lite';
-import type { Placement } from '@floating-ui/utils';
 
-import { Popover, Paragraph } from '../';
-import type { PopoverRootProps } from '../Popover/PopoverRoot';
 import type { PortalProps } from '../../types/Portal';
+import { Popover } from '../Popover';
+import type { PopoverRootProps } from '../Popover/PopoverRoot';
+import { Paragraph } from '../Typography/Paragraph';
 
 import { HelpTextIcon } from './HelpTextIcon';
 
@@ -27,7 +28,7 @@ export type HelpTextProps = {
 } & PortalProps &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
-const HelpText = ({
+export const HelpText = ({
   title,
   placement = 'right',
   portal,
@@ -48,10 +49,7 @@ const HelpText = ({
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Popover.Trigger
-          asChild
-          variant='tertiary'
-        >
+        <Popover.Trigger asChild variant='tertiary'>
           <button
             className={cl(
               `ds-helptext--${size}`,
@@ -79,10 +77,7 @@ const HelpText = ({
             <span className={`ds-sr-only`}>{title}</span>
           </button>
         </Popover.Trigger>
-        <Paragraph
-          size='md'
-          asChild
-        >
+        <Paragraph size='md' asChild>
           <Popover.Content className='ds-helptext__content'>
             {children}
           </Popover.Content>
@@ -93,5 +88,3 @@ const HelpText = ({
 };
 
 HelpText.displayName = 'HelpText';
-
-export { HelpText };

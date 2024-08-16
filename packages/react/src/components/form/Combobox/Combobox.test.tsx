@@ -1,7 +1,7 @@
-import type * as React from 'react';
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react';
 import userEvent from '@testing-library/user-event';
+import type * as React from 'react';
+import { act } from 'react';
 
 import type { ComboboxProps } from './Combobox';
 
@@ -273,10 +273,7 @@ describe('Combobox', () => {
 
       renderRtl(
         <form onSubmit={handleSubmit}>
-          <Combobox
-            name='test'
-            multiple={true}
-          >
+          <Combobox name='test' multiple={true}>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             {PLACES.map((option, index) => (
               <Combobox.Option
@@ -288,10 +285,7 @@ describe('Combobox', () => {
               </Combobox.Option>
             ))}
           </Combobox>
-          <button
-            data-testid='submit'
-            type='submit'
-          >
+          <button data-testid='submit' type='submit'>
             Submit
           </button>
         </form>,
@@ -322,8 +316,6 @@ describe('Combobox', () => {
     await act(async () => await user.click(combobox));
     await act(async () => await user.click(screen.getByText('Leikanger')));
 
-    await act(async () => await user.click(combobox));
-
     expect(screen.getByText('Leikanger')).toBeInTheDocument();
     expect(screen.getByText('Oslo')).toBeInTheDocument();
     expect(screen.getByText('Brønnøysund')).toBeInTheDocument();
@@ -348,5 +340,21 @@ describe('Combobox', () => {
     const combobox = screen.getByRole('combobox');
 
     expect(combobox).toHaveAttribute('aria-busy', 'true');
+  });
+
+  it('should have correct label when used as ReactNode', async () => {
+    await render({
+      label: (
+        <>
+          <strong>
+            <abbr>CSS</abbr>
+          </strong>
+          (Cascading Style Sheets)
+        </>
+      ),
+    });
+    const combobox = screen.getByRole('combobox');
+
+    expect(combobox).toHaveAccessibleName('CSS (Cascading Style Sheets)');
   });
 });

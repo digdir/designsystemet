@@ -1,9 +1,13 @@
-import type { SelectHTMLAttributes } from 'react';
+import type {
+  KeyboardEventHandler,
+  MouseEventHandler,
+  SelectHTMLAttributes,
+} from 'react';
 import { useContext } from 'react';
 
+import { FieldsetContext } from '../Fieldset/FieldsetContext';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
-import { FieldsetContext } from '../Fieldset/FieldsetContext';
 
 import type { NativeSelectProps } from './NativeSelect';
 
@@ -13,7 +17,13 @@ type UseNativeSelect = (props: NativeSelectProps) => Omit<
 > & {
   selectProps: Pick<
     SelectHTMLAttributes<HTMLSelectElement>,
-    'name' | 'required' | 'onClick' | 'onChange' | 'id'
+    | 'name'
+    | 'required'
+    | 'onClick'
+    | 'onChange'
+    | 'id'
+    | 'onKeyDown'
+    | 'onMouseDown'
   >;
 };
 
@@ -22,7 +32,7 @@ export const useNativeSelect: UseNativeSelect = (props) => {
   const fieldset = useContext(FieldsetContext);
   const {
     inputProps: selectProps,
-    readOnly,
+    readOnly = false,
     size = fieldset?.size ?? 'md',
     ...rest
   } = useFormField(props, 'select');
@@ -40,6 +50,22 @@ export const useNativeSelect: UseNativeSelect = (props) => {
           return;
         }
         props?.onClick?.(e);
+      },
+      onKeyDown: (e) => {
+        if (readOnly) {
+          if (e.key === 'Tab') return;
+          e.preventDefault();
+          return;
+        }
+        props?.onKeyDown?.(e);
+      },
+      onMouseDown: (e) => {
+        if (readOnly) {
+          e.preventDefault();
+          if (e.target instanceof HTMLElement) e.target.focus();
+          return;
+        }
+        props?.onMouseDown?.(e);
       },
       onChange: (e) => {
         if (readOnly) {

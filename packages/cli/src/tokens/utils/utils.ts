@@ -1,5 +1,9 @@
 import * as R from 'ramda';
-import type { TransformedToken, DesignToken } from 'style-dictionary/types';
+import type { DesignToken, TransformedToken } from 'style-dictionary/types';
+
+const mapToLowerCase = R.map<string, string>(R.toLower);
+
+const hasAnyTruth = R.any(R.equals(true));
 
 /**
  * Returns type based on design token format used. Read more:https://v4.styledictionary.com/info/dtcg/
@@ -30,4 +34,15 @@ export const typeEquals = R.curry((types: string[] | string, token: TransformedT
   }
 
   return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
+});
+
+export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedToken) => {
+  if (R.isNil(token)) {
+    return false;
+  }
+
+  const tokenPath = mapToLowerCase(token.path);
+  const matchPathsStartingWith = R.map((path) => R.startsWith([path], tokenPath), mapToLowerCase(paths));
+
+  return hasAnyTruth(matchPathsStartingWith);
 });
