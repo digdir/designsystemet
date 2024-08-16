@@ -33,7 +33,7 @@ export const AccordionItemContext =
  * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
  * @example
  * <AccordionItem>
- *  <AccordionHeader>Header</AccordionHeader>
+ *  <AccordionHeading>Header</AccordionHeading>
  *  <AccordionContent>Content</AccordionContent>
  * </AccordionItem>
  */
