@@ -3,4 +3,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Table: New `hover` prop for toggling hover state on row. Default `false`.
+Table: New hover prop and class for toggling hover on rows
