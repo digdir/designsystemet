@@ -24,6 +24,11 @@ export type TableProps = {
    * @default false
    */
   border?: boolean;
+  /**
+   * If true, the table will have a hover effect on rows
+   * @default false
+   */
+  hover?: boolean;
 } & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
@@ -32,6 +37,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       zebra = false,
       stickyHeader = false,
       border = false,
+      hover = false,
       size = 'md',
       className,
       children,
@@ -49,6 +55,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
             zebra && 'ds-table--zebra',
             stickyHeader && 'ds-table--sticky-header',
             border && 'ds-table--border',
+            hover && 'ds-table--hover',
             `ds-paragraph--${size}`,
             className,
           )}
