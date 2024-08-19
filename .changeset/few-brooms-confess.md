@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Table: New prop `hover` to get hover state on each row, default `false`
+Table: New `hover` prop for toggling hover state on row. Default `false`.
