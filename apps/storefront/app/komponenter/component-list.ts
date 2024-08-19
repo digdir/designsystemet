@@ -9,10 +9,25 @@ export const data = [
     image: 'Alert.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs',
   },
+  // {
+  //   title: 'Avatar',
+  //   image: 'Avatar.svg',
+  //   url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-avatar--docs',
+  // },
+  {
+    title: 'Badge',
+    image: 'Badge.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-badge--docs',
+  },
   {
     title: 'Button',
     image: 'Button.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-button--docs',
+  },
+  {
+    title: 'Breadcrumbs',
+    image: 'Breadcrumbs.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-breadcrumbs--docs',
   },
   {
     title: 'Card',
