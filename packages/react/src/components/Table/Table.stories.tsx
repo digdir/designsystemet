@@ -54,6 +54,7 @@ Preview.args = {
   zebra: false,
   stickyHeader: false,
   border: false,
+  hover: false,
 };
 
 const dummyData = [
