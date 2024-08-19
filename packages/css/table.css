@@ -15,6 +15,7 @@
   border-spacing: 0;
   text-align: left;
   color: var(--dsc-table-color);
+  width: 100%;
 }
 
 .ds-table--sticky-header {
@@ -132,7 +133,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ds-table__row:hover .ds-table__cell {
+  .ds-table--hover .ds-table__row:hover .ds-table__cell {
     background-color: var(--dsc-table-cell-hover-backround);
   }
 
