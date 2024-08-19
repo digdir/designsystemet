@@ -26,8 +26,8 @@ export function nextStepsMarkdown(themes: string[], modes: Mode[], tokensTargetD
 1. Go to https://theme.designsystemet.no and set up a color theme
 2. Press "Kopier tema"
 3. Under "Json til Figma", copy the contents under ${modes.join(' / ')} to
-   the corresponding file under \`${tokensTargetDir}\`:  
-${themeModeCombinations.map(([theme, mode]) => `     **${theme}, ${mode}**: \`primitives/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}.json\`  `).join('\n')}
+   the corresponding file under \`${tokensTargetDir}\`:
+${themeModeCombinations.map(([theme, mode]) => `     **${theme}, ${mode}**: \`primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}.json\`  `).join('\n')}
    This can also be done in Tokens Studio for Figma.
 4. **IMPORTANT!** In the JSON data you copied, replace \`theme\` on line 2
    with the correct theme identifier, depending on the theme you're customizing.
