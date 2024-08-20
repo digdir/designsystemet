@@ -176,10 +176,6 @@ export const SiteConfig = {
               name: 'Dato',
               url: 'monstre/dato',
             },
-            {
-              name: 'Obligatoriske felt *',
-              url: 'monstre/obligatoriske-og-valgfrie-felt',
-            },
           ],
         },
         {
