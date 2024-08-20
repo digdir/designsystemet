@@ -47,12 +47,9 @@ import { Table } from '@digdir/designsystemet-react';
 Bruk [`caption`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption) til å beskrive en tabell 
 på samme måte som vi ville brukt en overskrift.
 En tabelltekst hjelper brukerne til å finne, navigere og forstå tabeller.
-Det er også andre stil-alternativer for tabelltekster.
 Denne plasseres rett etter `Table`-taggen.
 
 ```jsx
-import { Table } from '@digdir/designsystemet-react';
-
 <Table >
   <caption>Her er tittelen på tabellen</caption>
   ...
@@ -171,8 +168,8 @@ effektivt i tabellen med skjermleser. Husk å bruke `scope="row"` og `scope="col
 - Tomme celler skal være `Table.Cell`. 
 - Sjekk at du kan velge ulik sortering med tastatur. 
 - Test med skjermleser at du hører hva som er sorterbart, typer sortering og at du ikke mister fokus når du endrer sortering. 
-- Tabeller skal alltid ha et caption-element med kort tekst om hva tabellen viser. Som standard er caption visuelt skjult, men kan vises ved behov. 
-Skjermlesere vil lese caption-elementet og brukerne kan ta stilling til om de vil lese videre i tabellen. 
+- Tabeller skal alltid ha et caption-element med kort tekst om hva tabellen viser.
+Skjermlesere vil lese caption-elementet og brukerne kan ta stilling til om de vil lese videre i tabellen.
 
 ## `TableHeaderCell` Props
 
