@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { Argument, Command, program } from '@commander-js/extra-typings';
+import { Argument, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import { makeInitCommand } from '../src/init/index.js';
+import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
 import { run } from '../src/tokens/build.js';
 
@@ -53,6 +53,13 @@ program
     }
   });
 
-program.addCommand(makeInitCommand(new Command('init')));
+program
+  .command('init')
+  .showHelpAfterError()
+  .description('create an initial token structure for Designsystemet')
+  .addArgument(new Argument('<targetDir>', 'Target directory for the generated code'))
+  .action(async (targetDir) => {
+    await createTokensPackage(targetDir);
+  });
 
 await program.parseAsync(process.argv);
