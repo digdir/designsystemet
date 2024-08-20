@@ -176,20 +176,6 @@ export const SiteConfig = {
               name: 'Dato',
               url: 'monstre/dato',
             },
-          ],
-        },
-        {
-          name: 'Kommende',
-          url: 'monstre/skjema',
-          children: [
-            {
-              name: 'Systemvarsler *',
-              url: 'monstre/systemvarsler',
-            },
-            {
-              name: 'Dato',
-              url: 'monstre/dato',
-            },
             {
               name: 'Innlogging',
               url: 'monstre/innlogging',
