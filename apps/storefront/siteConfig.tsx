@@ -177,24 +177,6 @@ export const SiteConfig = {
               url: 'monstre/dato',
             },
             {
-              name: 'Obligatoriske felt *',
-              url: 'monstre/obligatoriske-og-valgfrie-felt',
-            },
-          ],
-        },
-        {
-          name: 'Kommende',
-          url: 'monstre/skjema',
-          children: [
-            {
-              name: 'Systemvarsler *',
-              url: 'monstre/systemvarsler',
-            },
-            {
-              name: 'Dato',
-              url: 'monstre/dato',
-            },
-            {
               name: 'Innlogging',
               url: 'monstre/innlogging',
             },

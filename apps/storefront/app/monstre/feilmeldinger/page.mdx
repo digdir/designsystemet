@@ -153,14 +153,9 @@ Feltet må ha 3:1 kontrast til bakgrunnsfargen. Hvis vi også bruker rød tekst 
 Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret, selv om det også diskuteres om den skal stå mellom ledeteksten og feltet.
 
 <Card
-  color='first'
+  color='brand1'
 >
-  <CardContent
-  style={{
-    paddingTop: '0px',
-    paddingBottom: '0px'
-  }}
-  >
+  <CardContent>
   Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plassering, og har [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 
   </CardContent>
@@ -250,16 +245,10 @@ Vi kan bruke disse aria-attributtene og rollene:
 - Vi bruker `aria-describedby` for å koble feilmelding til feltet.
 
 <Card
-  color='first'
+  color='brand1'
 >
-  <CardContent
-  style={{
-    paddingTop: '0px',
-    paddingBottom: '0px'
-  }}
-  >
+  <CardContent>
   Vi unngår inntill videre å bruke `aria-errormessage` da den ikke har full støtte av hjelpemidler per nå. Men vi kommer til å oppdatere retningslinjene om støtten blir bedre i fremtiden. [Se diskusjon på github](https://github.com/digdir/designsystemet/discussions/1684)
-
   </CardContent>
 </Card>
 
@@ -286,18 +275,13 @@ For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldin
 <br />
 
 <Card
-  color='third'
+  color='brand3'
 >
-  <CardContent
-  style={{
-    paddingTop: '0px',
-    paddingBottom: '0px'
-  }}
-  >
+  <CardContent>
     Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
-
   </CardContent>
 </Card>
+
 <Contributors
   authors={[
     'Roy Halvor Frimanslund (Brreg)',
