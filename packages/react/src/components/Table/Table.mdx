@@ -16,7 +16,7 @@ Table kalles tabell på norsk. Tabeller gjør det enklere for brukerne å skanne
 ## Slik bruker vi table
 
 ```jsx
-import { Table } from '@navikt/ds-react';
+import { Table } from '@digdir/designsystemet-react';
 
 <Table>
   <Table.Head>
@@ -44,9 +44,20 @@ import { Table } from '@navikt/ds-react';
 
 ## Tabelltekster
 
-Bruk bildetekst-elementet til å beskrive en tabell på samme måte som vi ville brukt en oevrskrift. 
-En bildetekst/tabelltekst hjelper brukerne til å finne, navigere og forstå tabeller. 
+Bruk [`caption`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption) til å beskrive en tabell 
+på samme måte som vi ville brukt en overskrift.
+En tabelltekst hjelper brukerne til å finne, navigere og forstå tabeller.
 Det er også andre stil-alternativer for tabelltekster.
+Denne plasseres rett etter `Table`-taggen.
+
+```jsx
+import { Table } from '@digdir/designsystemet-react';
+
+<Table >
+  <caption>Her er tittelen på tabellen</caption>
+  ...
+</Table>
+```
 
 ## Tabelloverskrifter
 
@@ -56,17 +67,7 @@ skille mellom overskriftene på rader og kolonner.
 
 ## Tall i en tabell
 
-Når tall i en tabell skal sammenlignes, plasser tallene til høyre i tabellfeltet.
-
-Vi bruker standardstørrelsen medium på eksterne og interne flater.
-
-## Sortering
-
-`TableHeaderCell` har ein `sortable` prop som kan brukast for å visa at rada er sortberbar.
-Du sender inn `sort` prop til `TableHeaderCell` for å indikere at rada er sortert på den.
-Bruk `onSortClick` prop for å handtere klikk på sorterbare rader.
-
-<Canvas of={TableStories.Sortable} />
+Når det er tall i en tabell som skal sammenlignes, plasser tallene til høyre i tabellfeltet.
 
 ## Varianter av table
 
@@ -78,13 +79,23 @@ Tabellen skal kunne vises i den bredden som innholdet krever.
 
 ### Sticky header
 
+Bruke `stickyHeader={true}` for å få en sticky header.
+
 <Canvas of={TableStories.StickyHeader} />
 
 ### Med form elementer
 
-Du kan legge inn form elementer i ein tabell, men du må håndtere logikken sjølv.
+Du kan legge inn form elementer i ein tabell, men du må håndtere logikken selv.
 
 <Canvas of={TableStories.WithFormElements} />
+
+### Sortering
+
+`TableHeaderCell` har en `sortable` prop som kan brukes for å visa at raden er sortberbare.
+Du sender inn `sort` prop til `TableHeaderCell` for å indikere at raden er sortert på den.
+Bruk `onSortClick` prop for å håndtere klikk på sorterbare rader.
+
+<Canvas of={TableStories.Sortable} />
 
 ### Fixed
 
@@ -95,61 +106,64 @@ Dette hjelper nettleseren til å tegne tabellen raskere, og er nyttig når du ha
 
 ## Retningslinjer for når du skal bruke table
 
-Vi bruker table-komponenten når vi skal organisere og vise data på en strukturert måte i rader og kolonner for brukerne.  
-Alt innhold bør være venstrejustert i tabeller, unntatt tall, som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene.  
-For å spare plass, kan vi bruke meny hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. 
-I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver innholdet i cellene under eller ved siden av.
+Vi bruker `Table` når vi skal organisere og vise data på en strukturert måte i rader og kolonner for brukerne.  
+Alt innhold bør være venstrejustert i tabeller, unntatt tall som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene.  
+For å spare plass, kan vi bruke en meny, hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. 
+I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver 
+innholdet i cellene under eller ved siden av.
 
-Passer til å  
-- gjøre det enkelt for brukerne å sammenligne og scanne informasjon 
+Passer til å
+- gjøre det enkelt for brukerne å sammenligne og skanne informasjon
 - organisere og vise data på en effektiv måte i rekker og kolonner
 
 Passer ikke til å 
-- lage layout for innholdet på nettsiden eller å dele innholdet på en side systematisk 
-- vise store mengder data på mobil 
+- lage layout for innholdet på nettsiden eller å dele opp innholdet på en side systematisk
+- vise store mengder data på mobil
 
 ## Tekst i komponenten
 
-Vi bruker overskrifter til å fortelle brukerne hva som er innholdet i radene og kolonnene. 
+Vi bruker overskrifter til å fortelle brukerne hva som er innholdet i radene og kolonnene.
 
-Innholdet i cellene skal som regel være venstrejustert.  
-Unntak som skal være høyrejustert: 
-- Tall og valuta  
-- Knapper 
+Innholdet i cellene skal som regel være venstrejustert.
+Unntak som skal være høyrejustert:
+- Tall og valuta
+- Knapper
 
-For å gjøre tabellraden lesbar på smale skjermer, skal innholdet normalt være toppjustert. 
+<br />
+
+For å gjøre tabellraden lesbar på smale skjermer, skal innholdet normalt være toppjustert.
 Men hvis raden har en eller flere knapper, bruker vi sentrering.
 
-For å gjøre det Størrelsen på overskriften i tabellen bør være lik størrelsen på innholdet i tabellen
+For å gjøre det bør overskriften være lik størrelsen på innholdet i tabellen
 - Når tabellen blir filtrert av ett eller flere skjemafelt, bruker vi en kompakt tabelloverskrift som passer til merkelappen for skjemafeltet.
 - Når tabellen er rett under en overskrift 2 og et avsnitt med tekst, er det bedre å bruke en vanlig størrelse.
-- Hvis du er usikker, kan du bruke en kompakt og bold overskrift. 
+- Hvis du er usikker, kan du bruke en kompakt og bold overskrift.
 
 Overskrifter kan med fordel gjøres `sticky`, det vil si at de fortsatt blir vist, selv om brukeren ruller nedover i tabellen. 
 
 ## Tilgjengelighet
 
-Selv om ulike skjermlesere håndterer tabeller litt forskjellig, har de til felles at bare en liten del 
-av tabellen kan presenteres om gangen, ofte bare én celle.  
+Selv om ulike skjermlesere håndterer tabeller litt forskjellig, har de til felles at bare en liten del
+av tabellen kan presenteres om gangen, ofte bare én celle.
 Tabellceller bør ikke slås sammen, og cellene bør kun inneholde ett interaktivt element. Da får brukerne 
-raskt oversikt over innholdet og kan sammenligne og scanne informasjonen. 
+raskt oversikt over innholdet og kan sammenligne og scanne informasjonen.
 
-Alle tabeller må ha overskrifter for hver kolonne (`<Table.HeaderCell>`). Unntaket er kolonner som inneholder kun 
+Alle tabeller må ha overskrifter for hver kolonne (`<Table.HeaderCell>`). Unntaket er kolonner som inneholder kun har 
 interaktive elementer, de skal ha ledetekst. Se eksempel ["Med form elementer"](#med-form-elementer).
 
-For at brukerne skal kunne navigere i innholdet med skjermleser, må det være overskrifter i kolonnene.   
-Hvis det er behov for å spare plass, kan vi skjule visuelt en eller flere overskrifter. 
+For at brukerne skal kunne navigere i innholdet med skjermleser, må det være overskrifter i kolonnene.
+Hvis det er behov for å spare plass, kan vi visuelt skjule en eller flere overskrifter.
 
 Det kan være vanskelig å vise tabeller på mobil, siden det ikke finnes et felles design som fungerer i alle sammenhenger.
 Noen ganger er det nødvendig å sammenligne flere kolonner vertikalt for å forstå innholdet, også på mobil.
 Andre ganger lar innholdet seg legges oppå hverandre i høyden på små skjermer uten at det går for mye ut over lesbarheten.
 Alternativt kan vi bruke en graf for å presentere innhold på mobil, dersom mulig.
 
-De to vanligste tabellene som brukes på mobil er  
-- en tabell som ruller horisontalt 
+De to vanligste tabellene som brukes på mobil er
+- en tabell som ruller horisontalt
 - en tabell som blir gjort om til en listevisning
 
-Universell utforming 
+## Universell utforming
 
 På små skjermer vil endre-ikon flyttes til venstre, og tabellen har horisontal scrolling ved behov. 
 - `Table.HeaderCell` skal brukes på kolonneoverskrifter. Kan også brukes på radoverskrifter for at brukerne skal kunne navigere mer 
