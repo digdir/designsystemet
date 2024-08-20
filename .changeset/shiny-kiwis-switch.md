@@ -2,4 +2,4 @@
 '@digdir/designsystemet-react': patch
 ---
 
-fix(Badge): Export component
+Badge: Export component
