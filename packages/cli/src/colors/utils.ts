@@ -282,8 +282,8 @@ export const getLightnessFromHex = (hex: string) => {
 /**
  * Get the contrast ratio between two HEX colors
  *
- * @param {CssColor} color1 The first color
- * @param {CssColor} color2 The second color
+ * @param color1 The first color
+ * @param color2 The second color
  * @returns
  */
 export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
@@ -327,9 +327,9 @@ export const getContrastFromLightness = (lightness: number, mainColor: CssColor,
 /**
  * Check if two colors have enough contrast to be used together
  *
- * @param {CssColor} color1 The first color
- * @param {CssColor} color2 The second color
- * @returns {boolean} If the colors have enough contrast
+ * @param color1 The first color
+ * @param color2 The second color
+ * @returns If the colors have enough contrast
  */
 export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: 'decorative' | 'aa' | 'aaa' = 'aa') => {
   const contrast = getContrastFromHex(color1, color2);
@@ -361,8 +361,8 @@ export const getApcaContrastLc = (textColor: CssColor, backgroundColor: CssColor
 /**
  * Check if aa string value is a HEX color
  *
- * @param {string} hex The string to check
- * @returns {boolean} If the string is a HEX color
+ * @param hex The string to check
+ * @returns If the string is a HEX color
  */
 export const isHexColor = (hex: string) => {
   return typeof hex === 'string' && hex.length === 6 && !Number.isNaN(Number('0x' + hex));

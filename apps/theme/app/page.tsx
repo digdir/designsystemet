@@ -5,8 +5,8 @@ import { Heading } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorInfo,
+  ColorMode,
   ContrastMode,
-  Mode,
   ThemeColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
@@ -55,7 +55,7 @@ export default function Home() {
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
-  const themeMode = (params.get('theme') as Mode) || 'light';
+  const themeMode = (params.get('theme') as ColorMode) || 'light';
   const contrastMode = (params.get('contrastMode') as ContrastMode) || 'aa';
 
   useEffect(() => {
@@ -197,7 +197,7 @@ export default function Home() {
     contrastMode,
   }: {
     colors?: ThemeInfo;
-    theme?: Mode;
+    theme?: ColorMode;
     borderRadius?: string;
     contrastMode?: ContrastMode;
   }) => {
@@ -219,7 +219,7 @@ export default function Home() {
     setQueryParams({ borderRadius: radius });
   };
 
-  const updateTheme = (theme: Mode) => {
+  const updateTheme = (theme: ColorMode) => {
     setQueryParams({ theme });
   };
 
