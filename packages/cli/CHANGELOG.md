@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.0-next.23
+
+### Minor Changes
+
+- Update init script to new design-tokens format ([#2255](https://github.com/digdir/designsystemet/pull/2255))
+
 ## 0.1.0-next.22
 
 ### Minor Changes

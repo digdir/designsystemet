@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.17
+
+### Patch Changes
+
+- Table: New hover prop and class for toggling hover on rows ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- Combobox: Make controlled input adhere to `inputValue` and send all change events ([#2267](https://github.com/digdir/designsystemet/pull/2267))
+
+- AccordionHeading: Correct name on types ([#2276](https://github.com/digdir/designsystemet/pull/2276))
+
+- Badge: Export component ([#2297](https://github.com/digdir/designsystemet/pull/2297))
+
+- ToggleGroup, Tabs: Active item equality check is now strict ([#2253](https://github.com/digdir/designsystemet/pull/2253))
+
 ## 1.0.0-next.16
 
 ### Minor Changes
