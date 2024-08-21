@@ -1,3 +1,3 @@
 export * from './utils';
-export * from './themeUtils';
+export * from './theme';
 export * from './types';
