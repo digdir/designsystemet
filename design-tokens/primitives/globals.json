@@ -134,12 +134,6 @@
       ]
     }
   },
-  "border-radius": {
-    "base": {
-      "$type": "borderRadius",
-      "$value": "4"
-    }
-  },
   "opacity": {
     "30": {
       "$type": "opacity",

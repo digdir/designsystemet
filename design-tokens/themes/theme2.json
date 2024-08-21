@@ -330,5 +330,35 @@
       "$type": "fontWeights",
       "$value": "{theme2.regular}"
     }
+  },
+  "border-radius": {
+    "base": {
+      "$type": "borderRadius",
+      "$value": "24"
+    }
+  },
+  "sm-max4": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}) , 4)"
+  },
+  "md-max-8": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}) , 8)"
+  },
+  "lg-max-12": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}) , 12)"
+  },
+  "xl-max-16": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}) , 16)"
+  },
+  "2xl-max-24": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}),24)"
+  },
+  "3xl-max-32": {
+    "$type": "borderRadius",
+    "$value": "min( max( 0, {border-radius.base}),32)"
   }
 }
