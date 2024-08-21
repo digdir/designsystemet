@@ -1,5 +1,19 @@
 # Change Log
 
+## 0.11.0-next.12
+
+### Minor Changes
+
+- SkipLink: New style ([#2260](https://github.com/digdir/designsystemet/pull/2260))
+
+### Patch Changes
+
+- Table: New hover prop and class for toggling hover on rows ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- Table: Width is now by default `100%` ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- AccordionHeading: Correct name on types ([#2276](https://github.com/digdir/designsystemet/pull/2276))
+
 ## 0.11.0-next.11
 
 ### Patch Changes
