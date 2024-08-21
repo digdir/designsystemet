@@ -2,8 +2,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { NativeSelect } from '@digdir/designsystemet-react';
 import type {
   ColorError,
-  ColorType,
-  ContrastMode,
+  ContrastModeee,
+  ThemeColors,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
@@ -20,7 +20,7 @@ type ThemeToolbarProps = {
   brand2Error: ColorError;
   brand3Error: ColorError;
   borderRadius: string;
-  onColorChanged: (type: ColorType, color: CssColor) => void;
+  onColorChanged: (type: ThemeColors, color: CssColor) => void;
   onContrastModeChanged: (mode: 'aa' | 'aaa') => void;
   onBorderRadiusChanged: (radius: string) => void;
   contrastMode: ContrastMode;

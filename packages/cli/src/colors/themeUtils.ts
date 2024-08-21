@@ -3,14 +3,18 @@ import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './colorUtils';
-import type { ColorInfo, ColorNumber, ContrastMode, Mode, ThemeInfo } from './types';
+import type { ColorInfo, ColorNumber, ContrastMode, Mode, ThemeColors, ThemeInfo, BaseColors } from './types';
 
-const blueBaseColor = '#0A71C0';
-const greenBaseColor = '#078D19';
-const orangeBaseColor = '#CA5C21';
-const purpleBaseColor = '#663299';
-const redBaseColor = '#C01B1B';
-const yellowBaseColor = '#EABF28';
+export const baseColors: Record<BaseColors, CssColor> = {
+  blue: '#0A71C0',
+  green: '#078D19',
+  orange: '#CA5C21',
+  purple: '#663299',
+  red: '#C01B1B',
+  yellow: '#EABF28',
+};
+
+type Colors = Record<ThemeColors, CssColor>;
 
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
@@ -20,13 +24,7 @@ type GlobalGenType = {
 };
 
 type ThemeGenType = {
-  colors: {
-    accent: CssColor;
-    neutral: CssColor;
-    brand1: CssColor;
-    brand2: CssColor;
-    brand3: CssColor;
-  };
+  colors: Colors;
   contrastMode?: ContrastMode;
 };
 
@@ -163,12 +161,12 @@ export const generateThemeForColor = (color: CssColor, contrastMode: 'aa' | 'aaa
 };
 
 export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType) => {
-  const blueTheme = generateThemeForColor(blueBaseColor, contrastMode);
-  const greenTheme = generateThemeForColor(greenBaseColor, contrastMode);
-  const orangeTheme = generateThemeForColor(orangeBaseColor, contrastMode);
-  const purpleTheme = generateThemeForColor(purpleBaseColor, contrastMode);
-  const redTheme = generateThemeForColor(redBaseColor, contrastMode);
-  const yellowTheme = generateThemeForColor(yellowBaseColor, contrastMode);
+  const blueTheme = generateThemeForColor(baseColors.blue, contrastMode);
+  const greenTheme = generateThemeForColor(baseColors.green, contrastMode);
+  const orangeTheme = generateThemeForColor(baseColors.orange, contrastMode);
+  const purpleTheme = generateThemeForColor(baseColors.purple, contrastMode);
+  const redTheme = generateThemeForColor(baseColors.red, contrastMode);
+  const yellowTheme = generateThemeForColor(baseColors.yellow, contrastMode);
 
   return {
     blue: blueTheme,

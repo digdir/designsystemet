@@ -4,7 +4,7 @@ import chalk from 'chalk';
 
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
-import { run } from '../src/tokens/build/build.js';
+import { run } from '../src/tokens/build/index.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet');
 

@@ -8,7 +8,7 @@ import {
   Tabs,
   Tooltip,
 } from '@digdir/designsystemet-react';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
 import { generateScaleForColor } from '@digdir/designsystemet/color';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
@@ -138,8 +138,8 @@ export const TokenModal = ({
     CSS += `--ds-border-radius-base: ${borderRadius};`;
 
     for (const key in obj.theme) {
-      for (const color in obj.theme[key as ColorType]) {
-        CSS += `--ds-color-${key}-${color}: ${obj.theme[key as ColorType][color].value};`;
+      for (const color in obj.theme[key as ThemeColors]) {
+        CSS += `--ds-color-${key}-${color}: ${obj.theme[key as ThemeColors][color].value};`;
       }
     }
     CSS += '}';

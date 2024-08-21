@@ -5,9 +5,9 @@ import { Heading } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorInfo,
-  ColorType,
   ContrastMode,
   Mode,
+  ThemeColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
@@ -123,7 +123,7 @@ export default function Home() {
    * @param returnColor The default color to return
    * @returns The color from the query or the default color
    */
-  const getQueryColor = (colorType: ColorType, returnColor: CssColor) => {
+  const getQueryColor = (colorType: ThemeColors, returnColor: CssColor) => {
     const queryColor = params.get(colorType);
     if (queryColor && isHexColor(queryColor.substring(1))) {
       return queryColor as CssColor;
@@ -139,7 +139,11 @@ export default function Home() {
    * @param color The color to update
    * @param theme The theme to update
    */
-  const updateColor = (type: ColorType, color: CssColor, theme: ThemeInfo) => {
+  const updateColor = (
+    type: ThemeColors,
+    color: CssColor,
+    theme: ThemeInfo,
+  ) => {
     const colorErrorSetterMap = {
       accent: setAccentError,
       neutral: setNeutralError,
@@ -167,7 +171,7 @@ export default function Home() {
    * @param colorType The type of color to set
    * @param color The color to set
    */
-  const colorQuerySetter = (colorType: ColorType, color: CssColor) => {
+  const colorQuerySetter = (colorType: ThemeColors, color: CssColor) => {
     const defaultColor = {
       accent: Settings.accentBaseColor,
       neutral: Settings.neutralBaseColor,
