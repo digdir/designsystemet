@@ -2,7 +2,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { NativeSelect } from '@digdir/designsystemet-react';
 import type {
   ColorError,
-  ContrastModeee,
+  ContrastMode,
   ThemeColors,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
