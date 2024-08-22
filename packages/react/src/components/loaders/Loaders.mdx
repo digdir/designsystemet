@@ -1,8 +1,47 @@
 import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
 
+import * as SkeletonStories from './Skeleton/Skeleton.stories';
+import * as SpinnerStories from './Spinner/Spinner.stories';
+
 <Meta title="Komponenter/Loaders" />
 
 # Loaders
 
 En loader kalles lasteindikator på norsk. Det viser brukeren at systemet jobber. 
-Vi bruker lasteindikatoren når handlinger eller prosesser tar lengre tid enn ett sekund.     
+Vi bruker lasteindikatoren når handlinger eller prosesser tar mer enn ett sekund.     
+
+I Designsystemet har vi to typer lasteindikatorer:
+- Spinner
+- Skeleton
+
+Disse har ulike bruksområder og skal brukes i henhold til lastingen som foregår.
+
+
+## Spinner
+
+`Spinner` brukes når vi venter på at en handling skal fullføres. Dette kan være når vi venter på at et skjema skal sendes inn.
+
+<Canvas of={SpinnerStories.Preview} />
+
+## Skeleton
+
+`Skeleton` brukes når vi venter på at deler av en side skal lastes inn. Den skal vise brukeren at det er innhold som kommer, og hvordan er vil se ut.
+
+Det er ulike varianter av `Skeleton` som kan brukes avhengig av hva som lastes inn.
+Dem skal prøve å gjenskape innholdet som vil bli lastet inn.
+
+<Canvas of={SkeletonStories.UsageExample} />
+
+## Overordnet retningslinjer
+
+Passer til å
+- laste innhold på siden
+- fortelle brukeren at en handling midlertidig har stoppet applikasjonen
+- fortelle brukeren når lasting vil ta mer enn 1 sekund
+- fortelle brukeren at data blir lagret når hen trykker "lagre"
+
+<br />
+<br />
+
+Passer ikke
+- når en lasting tar mindre enn 1 sekund
