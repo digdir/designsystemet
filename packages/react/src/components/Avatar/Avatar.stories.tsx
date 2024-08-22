@@ -34,6 +34,7 @@ Preview.args = {
   name: 'Ola Nordmann',
   color: 'accent-strong',
   size: 'md',
+  variant: 'circle',
 };
 
 export const NoName: Story = () => <Avatar />;
@@ -47,7 +48,7 @@ export const Sizes: Story = () => (
   </>
 );
 
-export const Variants: Story = () => (
+export const ColorVariants: Story = () => (
   <>
     <Avatar color='accent-subtle' />
     <Avatar color='accent-strong' />
@@ -59,5 +60,14 @@ export const Variants: Story = () => (
     <Avatar color='brand2-strong' />
     <Avatar color='brand3-subtle' />
     <Avatar color='brand3-strong' />
+  </>
+);
+
+export const ShapeVariants: Story = () => (
+  <>
+    <Avatar variant='circle' />
+    <Avatar variant='square' />
+    <Avatar variant='circle' name='Kristoffer Kristoffersen' />
+    <Avatar variant='square' name='Kristoffer Kristoffersen' />
   </>
 );
