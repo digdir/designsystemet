@@ -2,6 +2,7 @@
   --ds-avatar-background: var(--ds-color-accent-base-default);
   --ds-avatar-color: var(--ds-color-accent-contrast-default);
   --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-sm);
   --ds-avatar-border-radius: 50%;
 
@@ -16,6 +17,10 @@
   place-items: center;
   user-select: none;
   text-transform: uppercase;
+
+  &:has(> svg) {
+    padding: var(--ds-avatar-padding);
+  }
 
   & svg {
     width: 100%;
@@ -83,20 +88,24 @@
 
 .ds-avatar--xs {
   --ds-avatar-size: var(--ds-spacing-6);
+  --ds-avatar-padding: var(--ds-spacing-1);
   --ds-avatar-font-size: var(--ds-typography-paragraph-xs);
 }
 
 .ds-avatar--sm {
   --ds-avatar-size: var(--ds-spacing-9);
+  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-xs);
 }
 
 .ds-avatar--md {
   --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-sm);
 }
 
 .ds-avatar--lg {
   --ds-avatar-size: var(--ds-spacing-15);
+  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-md);
 }
