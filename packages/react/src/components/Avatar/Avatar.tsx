@@ -79,9 +79,14 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   );
 });
 
+/**
+ * Gets initials using first and last word of a name.
+ *
+ * @param name
+ * @returns
+ */
 function getInitials(name: string) {
-  return name
-    .split(' ')
-    .map((word) => word[0])
-    .join('');
+  const splitName = name.split(' ');
+
+  return `${splitName[0][0]}${splitName[splitName.length - 1][0]}`.toUpperCase();
 }
