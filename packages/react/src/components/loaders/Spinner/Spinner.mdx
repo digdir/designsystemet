@@ -6,16 +6,23 @@ import * as SpinnerStories from './Spinner.stories';
 
 # Spinner
 
+`Spinner` brukes for å indikere at en handling pågår. Dette kan være når vi venter på at et skjema skal sendes inn.
+
 <Primary />
 <Controls />
 
-Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 6 sekunder.
-Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
-
 ## Størrelser
+
+Du kan justere størrelsen på `Spinner` etter hvor den skal plasseres. 
+Størrelsen vil være mindre i knapper, men større dersom den er ved et skjemafelt.
 
 <Canvas of={SpinnerStories.Sizes} />
 
 ## Varianter
 
 <Canvas of={SpinnerStories.Variants} />
+
+## Tilgjengelighet
+
+Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 6 sekunder.
+Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
