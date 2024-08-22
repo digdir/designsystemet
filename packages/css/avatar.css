@@ -1,0 +1,13 @@
+.ds-avatar {
+  --ds-avatar-background: var(--ds-color-accent-base-default);
+  --ds-avatar-color: var(--ds-color-accent-contrast-1);
+
+  aspect-ratio: 1;
+  background-color: var(--ds-avatar-background);
+  border-radius: 50%;
+  overflow: hidden;
+  width: var(--ds-spacing-10);
+  display: grid;
+  place-items: center;
+  color: var(--ds-avatar-color);
+}
