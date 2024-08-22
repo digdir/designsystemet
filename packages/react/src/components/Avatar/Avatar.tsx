@@ -80,9 +80,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       role='img'
       aria-label={name}
     >
-      {children}
-      {!children && initials && initials}
-      {!children && !initials && <PersonIcon />}
+      {children || initials || <PersonIcon />}
     </span>
   );
 });
@@ -94,7 +92,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
  * @returns
  */
 function getInitials(name: string) {
-  const splitName = name.split(' ');
+  const splitName = name.trim().split(' ');
 
   return `${splitName[0][0]}${splitName[splitName.length - 1][0]}`.toUpperCase();
 }
