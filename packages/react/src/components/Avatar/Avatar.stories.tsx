@@ -63,6 +63,8 @@ export const Variants: Story = () => (
   >
     <Avatar color='accent-subtle' />
     <Avatar color='accent-strong' />
+    <Avatar color='neutral-subtle' />
+    <Avatar color='neutral-strong' />
     <Avatar color='brand1-subtle' />
     <Avatar color='brand1-strong' />
     <Avatar color='brand2-subtle' />

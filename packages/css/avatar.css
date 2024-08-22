@@ -4,6 +4,7 @@
   --ds-avatar-size: var(--ds-spacing-12);
   --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-sm);
+  --ds-avatar-border-radius: 50%;
 
   background-color: var(--ds-avatar-background);
   height: var(--ds-avatar-size);
@@ -11,7 +12,7 @@
   color: var(--ds-avatar-color);
   padding: var(--ds-avatar-padding);
   font-size: var(--ds-avatar-font-size);
-  border-radius: 50%;
+  border-radius: var(--ds-avatar-border-radius);
   overflow: hidden;
   display: inline-grid;
   place-items: center;
@@ -23,6 +24,14 @@
   }
 }
 
+.ds-avatar--circle {
+  --ds-avatar-border-radius: 50%;
+}
+
+.ds-avatar--square {
+  --ds-avatar-border-radius: var(--ds-border-radius-sm);
+}
+
 .ds-avatar--accent-strong {
   --ds-avatar-background: var(--ds-color-accent-base-default);
   --ds-avatar-color: var(--ds-color-accent-contrast-default);
@@ -31,6 +40,16 @@
 .ds-avatar--accent-subtle {
   --ds-avatar-background: var(--ds-color-accent-surface-default);
   --ds-avatar-color: var(--ds-color-accent-text-default);
+}
+
+.ds-avatar--neutral-strong {
+  --ds-avatar-background: var(--ds-color-neutral-base-default);
+  --ds-avatar-color: var(--ds-color-neutral-contrast-default);
+}
+
+.ds-avatar--neutral-subtle {
+  --ds-avatar-background: var(--ds-color-neutral-surface-default);
+  --ds-avatar-color: var(--ds-color-neutral-text-default);
 }
 
 .ds-avatar--brand1-strong {

@@ -16,6 +16,8 @@ export type AvatarProps = {
   color?:
     | 'accent-subtle'
     | 'accent-strong'
+    | 'neutral-subtle'
+    | 'neutral-strong'
     | 'brand1-subtle'
     | 'brand1-strong'
     | 'brand2-subtle'
@@ -28,10 +30,23 @@ export type AvatarProps = {
    * @default 'md'
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  /**
+   * The shape of the avatar.
+   *
+   * @default 'circle'
+   */
+  variant?: 'circle' | 'square';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
-  { name, color = 'accent-strong', size = 'md', className, ...rest },
+  {
+    name,
+    color = 'accent-strong',
+    size = 'md',
+    variant = 'circle',
+    className,
+    ...rest
+  },
   ref,
 ) {
   const [initials, setInitials] = useState<string>('');
@@ -47,6 +62,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       ref={ref}
       className={cl(
         'ds-avatar',
+        `ds-avatar--${variant}`,
         `ds-avatar--${color}`,
         `ds-avatar--${size}`,
         className,
