@@ -1,13 +1,68 @@
 .ds-avatar {
   --ds-avatar-background: var(--ds-color-accent-base-default);
-  --ds-avatar-color: var(--ds-color-accent-contrast-1);
+  --ds-avatar-color: var(--ds-color-accent-contrast-default);
+  --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-padding: var(--ds-spacing-2);
+  --ds-avatar-font-size: var(--ds-typography-heading-sm);
 
-  aspect-ratio: 1;
   background-color: var(--ds-avatar-background);
+  height: var(--ds-avatar-size);
+  aspect-ratio: 1 / 1;
+  color: var(--ds-avatar-color);
+  padding: var(--ds-avatar-padding);
+  font-size: var(--ds-avatar-font-size);
   border-radius: 50%;
   overflow: hidden;
-  width: var(--ds-spacing-10);
-  display: grid;
+  display: inline-grid;
   place-items: center;
-  color: var(--ds-avatar-color);
+  user-select: none;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ds-avatar--accent {
+  --ds-avatar-background: var(--ds-color-accent-base-default);
+  --ds-avatar-color: var(--ds-color-accent-contrast-default);
+}
+
+.ds-avatar--brand1 {
+  --ds-avatar-background: var(--ds-color-brand1-base-default);
+  --ds-avatar-color: var(--ds-color-brand1-contrast-default);
+}
+
+.ds-avatar--brand2 {
+  --ds-avatar-background: var(--ds-color-brand2-base-default);
+  --ds-avatar-color: var(--ds-color-brand2-contrast-default);
+}
+
+.ds-avatar--brand3 {
+  --ds-avatar-background: var(--ds-color-brand3-base-default);
+  --ds-avatar-color: var(--ds-color-brand3-contrast-default);
+}
+
+.ds-avatar--xs {
+  --ds-avatar-size: var(--ds-spacing-6);
+  --ds-avatar-padding: var(--ds-spacing-1);
+  --ds-avatar-font-size: var(--ds-typography-paragraph-xs);
+}
+
+.ds-avatar--sm {
+  --ds-avatar-size: var(--ds-spacing-9);
+  --ds-avatar-padding: var(--ds-spacing-2);
+  --ds-avatar-font-size: var(--ds-typography-heading-xs);
+}
+
+.ds-avatar--md {
+  --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-padding: var(--ds-spacing-2);
+  --ds-avatar-font-size: var(--ds-typography-heading-sm);
+}
+
+.ds-avatar--lg {
+  --ds-avatar-size: var(--ds-spacing-15);
+  --ds-avatar-padding: var(--ds-spacing-2);
+  --ds-avatar-font-size: var(--ds-typography-heading-md);
 }
