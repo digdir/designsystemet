@@ -71,3 +71,9 @@ export const ShapeVariants: Story = () => (
     <Avatar variant='square' name='Kristoffer Kristoffersen' />
   </>
 );
+
+export const WithImage: Story = () => (
+  <Avatar name='Ola Nordmann'>
+    <img src='https://picsum.photos/200' alt='ola nordmann' />
+  </Avatar>
+);

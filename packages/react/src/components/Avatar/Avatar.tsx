@@ -45,6 +45,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     size = 'md',
     variant = 'circle',
     className,
+    children,
     ...rest
   },
   ref,
@@ -71,7 +72,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       role='img'
       aria-label={name}
     >
-      {name ? initials : <PersonIcon fontSize='1.5rem' />}
+      {children}
+      {!children && initials && initials}
+      {!children && !initials && <PersonIcon />}
     </span>
   );
 });
