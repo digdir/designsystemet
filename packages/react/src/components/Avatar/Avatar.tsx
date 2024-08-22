@@ -38,6 +38,13 @@ export type AvatarProps = {
   variant?: 'circle' | 'square';
 } & HTMLAttributes<HTMLSpanElement>;
 
+const fontSizeMap = {
+  xs: 'ds-paragraph--xs',
+  sm: 'ds-heading--xs',
+  md: 'ds-heading--sm',
+  lg: 'ds-heading--md',
+};
+
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     name,
@@ -66,6 +73,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
         `ds-avatar--${variant}`,
         `ds-avatar--${color}`,
         `ds-avatar--${size}`,
+        fontSizeMap[size],
         className,
       )}
       {...rest}
