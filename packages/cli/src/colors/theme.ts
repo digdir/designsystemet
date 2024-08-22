@@ -2,10 +2,10 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 
-import type { BaseColors, ColorInfo, ColorMode, ColorNumber, ContrastMode, ThemeColors, ThemeInfo } from './types';
+import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeColors, ThemeInfo } from './types';
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './utils';
 
-export const baseColors: Record<BaseColors, CssColor> = {
+export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
   green: '#078D19',
   orange: '#CA5C21',
@@ -164,7 +164,7 @@ export const generateThemeForColor = (color: CssColor, contrastMode: 'aa' | 'aaa
   };
 };
 
-export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType) => {
+export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType): Record<GlobalColors, ThemeInfo> => {
   const blueTheme = generateThemeForColor(baseColors.blue, contrastMode);
   const greenTheme = generateThemeForColor(baseColors.green, contrastMode);
   const orangeTheme = generateThemeForColor(baseColors.orange, contrastMode);
