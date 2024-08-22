@@ -10,6 +10,18 @@ const meta: Meta = {
   parameters: {
     layout: 'padded',
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'grid',
+          placeItems: 'center',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -18,7 +30,7 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   name: 'Ola Nordmann',
-  color: 'accent',
+  color: 'accent-strong',
   size: 'md',
 };
 
@@ -49,9 +61,13 @@ export const Variants: Story = () => (
       alignItems: 'center',
     }}
   >
-    <Avatar color='accent' />
-    <Avatar color='brand1' />
-    <Avatar color='brand2' />
-    <Avatar color='brand3' />
+    <Avatar color='accent-subtle' />
+    <Avatar color='accent-strong' />
+    <Avatar color='brand1-subtle' />
+    <Avatar color='brand1-strong' />
+    <Avatar color='brand2-subtle' />
+    <Avatar color='brand2-strong' />
+    <Avatar color='brand3-subtle' />
+    <Avatar color='brand3-strong' />
   </div>
 );

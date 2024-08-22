@@ -10,16 +10,28 @@ export type AvatarProps = {
   name?: string;
   /**
    * The color of the avatar.
+   *
+   * @default 'accent-strong'
    */
-  color?: 'accent' | 'brand1' | 'brand2' | 'brand3';
+  color?:
+    | 'accent-subtle'
+    | 'accent-strong'
+    | 'brand1-subtle'
+    | 'brand1-strong'
+    | 'brand2-subtle'
+    | 'brand2-strong'
+    | 'brand3-subtle'
+    | 'brand3-strong';
   /**
    * The size of the avatar.
+   *
+   * @default 'md'
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
-  { name, color, size, className, ...rest },
+  { name, color = 'accent-strong', size = 'md', className, ...rest },
   ref,
 ) {
   const [initials, setInitials] = useState<string>('');
@@ -40,6 +52,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
         className,
       )}
       {...rest}
+      role='img'
+      aria-label={name}
     >
       {name ? initials : <PersonIcon fontSize='1.5rem' />}
     </span>
