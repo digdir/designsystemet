@@ -2,7 +2,6 @@
   --ds-avatar-background: var(--ds-color-accent-base-default);
   --ds-avatar-color: var(--ds-color-accent-contrast-default);
   --ds-avatar-size: var(--ds-spacing-12);
-  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-sm);
   --ds-avatar-border-radius: 50%;
 
@@ -10,13 +9,13 @@
   height: var(--ds-avatar-size);
   aspect-ratio: 1 / 1;
   color: var(--ds-avatar-color);
-  padding: var(--ds-avatar-padding);
-  font-size: var(--ds-avatar-font-size);
+  font: var(--ds-avatar-font-size);
   border-radius: var(--ds-avatar-border-radius);
   overflow: hidden;
   display: inline-grid;
   place-items: center;
   user-select: none;
+  text-transform: uppercase;
 
   & svg {
     width: 100%;
@@ -84,24 +83,20 @@
 
 .ds-avatar--xs {
   --ds-avatar-size: var(--ds-spacing-6);
-  --ds-avatar-padding: var(--ds-spacing-1);
   --ds-avatar-font-size: var(--ds-typography-paragraph-xs);
 }
 
 .ds-avatar--sm {
   --ds-avatar-size: var(--ds-spacing-9);
-  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-xs);
 }
 
 .ds-avatar--md {
   --ds-avatar-size: var(--ds-spacing-12);
-  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-sm);
 }
 
 .ds-avatar--lg {
   --ds-avatar-size: var(--ds-spacing-15);
-  --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-font-size: var(--ds-typography-heading-md);
 }
