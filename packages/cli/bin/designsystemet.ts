@@ -2,9 +2,11 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
+import { convertToHex } from '../src/colors';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
-import { run } from '../src/tokens/build/index.js';
+import { buildTokens } from '../src/tokens/build/index.js';
+import { createTokens } from '../src/tokens/create//index.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -13,16 +15,42 @@ function makeTokenCommands() {
 
   tokenCmd
     .command('build')
-    .description('run Designsystemet token builder')
-    .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
-    .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
+    .description('Build Designsystemet tokens')
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
+    .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .action((opts) => {
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : './design-tokens';
       const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       const preview = opts.preview;
       console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-      return run({ tokens, out, preview });
+      return buildTokens({ tokens, out, preview });
+    });
+
+  tokenCmd
+    .command('create')
+    .description('Create Designsystemet tokens')
+    .option('-o, --out <string>', `Output directory for created ${chalk.blue('design-tokens')}`, './design-tokens')
+    .option('-a, --accent <number>', `Accent hex color`)
+    .option('-n, --neutral <number>', `Neutral hex color`)
+    .option('-b1, --brand1 <number>', `Brand1 hex color`)
+    .option('-b2, --brand2 <number>', `Brand2 hex color`)
+    .option('-b3, --brand3 <number>', `Brand3 hex color`)
+    .action((opts) => {
+      // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
+      console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts))}`);
+      const props = {
+        colors: {
+          accent: convertToHex(opts.accent),
+          neutral: convertToHex(opts.neutral),
+          brand1: convertToHex(opts.brand1),
+          brand2: convertToHex(opts.brand2),
+          brand3: convertToHex(opts.brand3),
+        },
+        outPath: opts.out,
+      };
+
+      return createTokens(props);
     });
 
   return tokenCmd;

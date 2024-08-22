@@ -4,6 +4,11 @@ import type { ColorInfo, ColorMode, ThemeColors } from '../../colors';
 
 type Colors = Record<ThemeColors, CssColor>;
 
+type CreateTokens = {
+  colors: Colors;
+  outPath: string;
+};
+
 const generateJsonForColor = (colorArray: ColorInfo[]) => {
   const obj: { [key: string]: { $value: string; $type: string } } = {};
   for (let i = 0; i < colorArray.length; i++) {
@@ -46,7 +51,8 @@ const genereateGlobalsJson = (theme: ColorMode) => {
   const json = JSON.stringify(obj, null, '\t');
 };
 
-const run = ({ colors }: { colors: Colors }) => {
+export const createTokens = async (opts: CreateTokens) => {
+  const { colors } = opts;
   const generateThemeJson = (theme: ColorMode) => {
     const accentColors = generateScaleForColor(colors.accent, theme);
     const neutralColors = generateScaleForColor(colors.neutral, theme);
@@ -66,4 +72,6 @@ const run = ({ colors }: { colors: Colors }) => {
 
     return JSON.stringify(obj, null, '\t');
   };
+
+  console.log(generateThemeJson('light'));
 };

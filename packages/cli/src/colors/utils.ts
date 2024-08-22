@@ -367,3 +367,18 @@ export const getApcaContrastLc = (textColor: CssColor, backgroundColor: CssColor
 export const isHexColor = (hex: string) => {
   return typeof hex === 'string' && hex.length === 6 && !Number.isNaN(Number('0x' + hex));
 };
+
+/**
+ *
+ * @param color
+ * @returns
+ */
+export const convertToHex = (color?: string): CssColor => {
+  if (!color) {
+    return '#000000';
+  }
+  if (color.startsWith('#')) {
+    return color as CssColor;
+  }
+  return chroma(color).hex() as CssColor;
+};
