@@ -40,7 +40,7 @@ export type AvatarProps = {
 
 const fontSizeMap = {
   xs: 'ds-paragraph--xs',
-  sm: 'ds-heading--xs',
+  sm: 'ds-heading--2xs',
   md: 'ds-heading--sm',
   lg: 'ds-heading--md',
 };
