@@ -1,31 +1,37 @@
 #!/usr/bin/env node
-import { Argument, program } from '@commander-js/extra-typings';
+import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
 import { run } from '../src/tokens/build/index.js';
 
-program.name('Designsystemet').description('CLI for working with Designsystemet');
+program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
-program
-  .command('tokens')
-  .showHelpAfterError()
-  .description('run Designsystemet token builder')
-  .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
-  .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
-  .option('-p, --preview', 'Generate preview token.ts files', false)
-  .action((opts) => {
-    const tokens = typeof opts.tokens === 'string' ? opts.tokens : './design-tokens';
-    const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
-    const preview = opts.preview;
-    console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-    return run({ tokens, out, preview });
-  });
+function makeTokenCommands() {
+  const tokenCmd = createCommand('tokens');
+
+  tokenCmd
+    .command('build')
+    .description('run Designsystemet token builder')
+    .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
+    .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
+    .option('-p, --preview', 'Generate preview token.ts files', false)
+    .action((opts) => {
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : './design-tokens';
+      const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
+      const preview = opts.preview;
+      console.log(`Bulding tokens in ${chalk.green(tokens)}`);
+      return run({ tokens, out, preview });
+    });
+
+  return tokenCmd;
+}
+
+program.addCommand(makeTokenCommands());
 
 program
   .command('migrate')
-  .showHelpAfterError()
   .description('run a Designsystemet migration')
   .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
@@ -55,7 +61,6 @@ program
 
 program
   .command('init')
-  .showHelpAfterError()
   .description('create an initial token structure for Designsystemet')
   .addArgument(new Argument('<targetDir>', 'Target directory for the generated code'))
   .action(async (targetDir) => {
