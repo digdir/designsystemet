@@ -12,10 +12,18 @@
   width: 1px;
 }
 
+/* TODO: Should this be part of theme? */
+:root {
+  --dsc-focus-border-width: 3px; /* Default focus border width */
+  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner),
+    0 0 0 calc(var(--dsc-focus-border-width) * 2) var(--ds-color-focus-outer);
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
+ * TODO: Remove when all components use --dsc-focus-boxShadow;
  */
-.ds-focus:focus-visible {
+ .ds-focus:focus-visible {
   --dsc-focus-border-width: 3px;
 
   outline: var(--dsc-focus-border-width) solid var(--ds-color-focus-outer);

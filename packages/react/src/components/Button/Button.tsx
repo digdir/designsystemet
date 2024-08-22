@@ -1,9 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-import type { ButtonHTMLAttributes } from 'react';
-
-import { Paragraph } from '../Typography';
 
 export type ButtonProps = {
   /**
@@ -11,7 +8,7 @@ export type ButtonProps = {
    * @default primary
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which color palette to use
+  /** Specify which severity to use
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
@@ -21,10 +18,10 @@ export type ButtonProps = {
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * If `Button` should fill full width of its container
+   * If `Button` should fill width of its container
    * @default false
    */
-  fullWidth?: boolean;
+  fill?: boolean;
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -34,7 +31,7 @@ export type ButtonProps = {
    * @default false
    */
   asChild?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Button used for interaction
@@ -42,45 +39,33 @@ export type ButtonProps = {
  * <Button>Click me</Button>
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
+  function Button(
     {
-      children,
-      variant = 'primary',
-      color = 'accent',
-      fullWidth = false,
-      icon = false,
-      type = 'button',
-      size = 'md',
+      // icon = false,
       asChild,
       className,
+      color = 'accent',
+      fill = false,
+      size,
+      type = 'button',
+      variant = 'primary',
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const Component = asChild ? Slot : 'button';
 
     return (
-      <Paragraph variant='short' size={size} asChild>
-        <Component
-          ref={ref}
-          type={type}
-          className={cl(
-            'ds-btn',
-            `ds-focus`,
-            `ds-btn--${size}`,
-            `ds-btn--${variant}`,
-            `ds-btn--${color}`,
-            fullWidth && 'ds-btn--full-width',
-            icon && 'ds-btn--icon-only',
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </Component>
-      </Paragraph>
+      <Component
+        className={cl('ds-button', className)}
+        data-color={color}
+        data-fill={fill || undefined}
+        data-size={size}
+        data-variant={variant}
+        ref={ref}
+        type={type}
+        {...rest}
+      />
     );
   },
 );
-
-Button.displayName = 'Button';

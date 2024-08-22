@@ -1,17 +1,17 @@
 .ds-divider {
-  border: none;
-  border-top: 1px solid;
+  --dsc-divider-background: var(--ds-color-neutral-border-subtle);
+
+  background: var(--dsc-divider-background);
+  border: 0;
+  height: 1px;
+  margin-block: .5em; /* TODO: What should be default? (.5em is browser default in Chrome) */
   width: 100%;
-}
 
-.ds-divider--default {
-  border-color: var(--ds-color-neutral-border-subtle);
-}
+  &[data-variant="strong"] {
+    --dsc-divider-background: var(--ds-color-neutral-border-default);
+  }
 
-.ds-divider--strong {
-  border-color: var(--ds-color-neutral-border-default);
-}
-
-.ds-divider--subtle {
-  border-color: var(--ds-color-neutral-border-subtle);
+  &[data-variant="subtle"] {
+    --dsc-divider-background: var(--ds-color-neutral-border-subtle); /* TODO: Same as default? */
+  }
 }

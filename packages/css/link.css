@@ -1,58 +1,56 @@
 .ds-link {
+  --dsc-link-background--active: var(--ds-color-accent-surface-default);
+  --dsc-link-background--focus: var(--ds-color-focus-outer);
+  --dsc-link-color--active: var(--ds-color-accent-text-default);
+  --dsc-link-color--hover: var(--ds-color-accent-text-default);
+  --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-color: var(--ds-color-accent-text-subtle);
-  --dsc-link-color-hover: var(--ds-color-accent-text-default);
-  --dsc-link-color-active: var(--ds-color-accent-text-default);
-  --dsc-link-color-active-background: var(--ds-color-accent-surface-default);
-  --dsc-link-color-visited: var(--ds-global-purple-12);
-  --dsc-link-color-focus: var(--ds-color-focus-inner);
-  --dsc-link-color-focus-background: var(--ds-color-focus-outer);
 
-  position: relative;
   color: var(--dsc-link-color);
-  cursor: pointer;
-  text-decoration: underline;
+  cursor: pointer; /* TODO: Why - should we keep default (not causing pointer if missing href)? */
+  outline: none;
+  text-decoration-style: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: max(5px, 0.25rem);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-spacing-1);
-}
 
-.ds-link--accent {
-  --dsc-link-color: var(--ds-color-accent-text-subtle);
-  --dsc-link-color-hover: var(--ds-color-accent-text-default);
-  --dsc-link-color-active: var(--ds-color-accent-text-default);
-  --dsc-link-color-active-background: var(--ds-color-accent-surface-default);
-  --dsc-link-color-visited: var(--ds-global-purple-12);
-}
+  /* gap: var(--ds-spacing-1); /* TODO: Was inline-flex, but why? */
 
-.ds-link--neutral {
-  --dsc-link-color: var(--ds-color-neutral-text-default);
-  --dsc-link-color-hover: var(--ds-color-neutral-text-subtle);
-  --dsc-link-color-active: var(--ds-color-neutral-text-subtle);
-  --dsc-link-color-active-background: var(--ds-color-neutral-surface-default);
-  --dsc-link-color-visited: var(--ds-global-purple-12);
-}
+  /**
+    * Colors
+    */
+  &[data-color="neutral"] {
+    --dsc-link-background--active: var(--ds-color-neutral-surface-default);
+    --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color--visited: var(--ds-global-purple-12);
+    --dsc-link-color: var(--ds-color-neutral-text-default);
+  }
 
-.ds-link:visited {
-  color: var(--dsc-link-color-visited);
-  text-decoration: none;
-}
+  /**
+    * States
+    */
+  &:visited {
+    color: var(--dsc-link-color--visited);
+    text-decoration: none; /* TODO: Why? :) */
+  }
 
-.ds-link:hover {
-  color: var(--dsc-link-color-hover);
-  text-decoration-thickness: max(2px, 0.125rem, 0.12em);
-}
+  @media (hover: hover) and (pointer: fine) { /* Only use hover for non-touch devices to prevent sticky-hovering */
+    &:hover {
+      color: var(--dsc-link-color--hover);
+      text-decoration-thickness: max(2px, 0.125rem, 0.12em); /* TODO: Should this be a component token as well? */
+    }
+  }
 
-.ds-link:focus-visible {
-  color: var(--dsc-link-color-focus);
-  background: var(--dsc-link-color-focus-background);
-  outline: none;
-}
+  &:focus-visible {
+    background: var(--dsc-link-color--focus-background);
+    box-shadow: var(--dsc-focus-boxShadow);
+    color: var(--dsc-link-color--focus);
+  }
 
-.ds-link:active {
-  color: var(--dsc-link-color-active);
-  background: var(--dsc-link-color-active-background);
-  border-radius: min(0.25rem, var(--ds-border-radius-md));
-  outline: none;
+  &:active {
+    background: var(--dsc-link-background--active);
+    border-radius: min(0.25rem, var(--ds-border-radius-md)); /* TODO: Why changing border-radius on active? */
+    color: var(--dsc-link-color--active);
+  }
+
 }
