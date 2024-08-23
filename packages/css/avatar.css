@@ -11,18 +11,15 @@
   color: var(--ds-avatar-color);
   border-radius: var(--ds-avatar-border-radius);
   overflow: hidden;
-  display: inline-grid;
+  display: inline-flex;
   place-items: center;
+  justify-content: center;
+  align-items: center;
   user-select: none;
   text-transform: uppercase;
 
   &:has(> svg) {
     padding: var(--ds-avatar-padding);
-  }
-
-  & svg {
-    width: 100%;
-    height: 100%;
   }
 
   & img {

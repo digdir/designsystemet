@@ -42,9 +42,13 @@ export const NoName: Story = () => <Avatar />;
 export const Sizes: Story = () => (
   <>
     <Avatar size='xs' name='x s' />
+    <Avatar size='xs' />
     <Avatar size='sm' name='s m' />
+    <Avatar size='sm' />
     <Avatar size='md' name='m d' />
+    <Avatar size='md' />
     <Avatar size='lg' name='l g' />
+    <Avatar size='lg' />
   </>
 );
 
