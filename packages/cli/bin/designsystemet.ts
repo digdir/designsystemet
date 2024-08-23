@@ -30,15 +30,17 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option('-o, --out <string>', `Output directory for created ${chalk.blue('design-tokens')}`, './design-tokens')
+    .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, './design-tokens')
     .option('-a, --accent <number>', `Accent hex color`)
     .option('-n, --neutral <number>', `Neutral hex color`)
     .option('-b1, --brand1 <number>', `Brand1 hex color`)
     .option('-b2, --brand2 <number>', `Brand2 hex color`)
     .option('-b3, --brand3 <number>', `Brand3 hex color`)
-    .action((opts) => {
+    .action(async (opts) => {
       // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts))}`);
+      const outPath = typeof opts.write === 'string' ? opts.write : './design-tokens';
+
       const props = {
         colors: {
           accent: convertToHex(opts.accent),
@@ -47,10 +49,10 @@ function makeTokenCommands() {
           brand2: convertToHex(opts.brand2),
           brand3: convertToHex(opts.brand3),
         },
-        outPath: opts.out,
+        outPath: outPath,
       };
 
-      return createTokens(props);
+      await createTokens(props);
     });
 
   return tokenCmd;
