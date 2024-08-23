@@ -1,6 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar } from '.';
+import { DropdownMenu } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
@@ -80,4 +82,27 @@ export const WithImage: Story = () => (
   <Avatar name='Ola Nordmann'>
     <img src='https://picsum.photos/200' alt='ola nordmann' />
   </Avatar>
+);
+
+export const InDropdownMenu: Story = () => (
+  <DropdownMenu.Root placement='bottom-end' size='md' portal>
+    <DropdownMenu.Trigger variant='tertiary'>
+      <Avatar name='Ola Nordmann' size='sm' />
+      Velg Profil
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Group heading='Alle kontoer'>
+        <DropdownMenu.Item>
+          <Avatar name='Ola Nordmann' size='xs' />
+          Ola Nordmann
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <Avatar size='xs' color='brand1-strong'>
+            <BriefcaseIcon fontSize='1.4em' />
+          </Avatar>
+          Sogndal kommune
+        </DropdownMenu.Item>
+      </DropdownMenu.Group>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
 );

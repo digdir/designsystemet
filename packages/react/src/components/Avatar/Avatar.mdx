@@ -6,25 +6,44 @@ import * as AvatarStories from './Avatar.stories';
 
 # Avatar
 
+`Avatar` er en komponent som viser et bilde, initialer eller ikon for en bruker eller profil.
+
 <Primary />
 <Controls />
 
 ## Ingen navn
 
+Sender du ikke inn navn, legger vi til et standard ikon.
+
 <Canvas of={AvatarStories.NoName} />
 
 ## Størrelser
+
+`Avatar` kommer i flere størrelser. Tekst vil skalere, mens ikoner må du selv endre størrelsen på.
 
 <Canvas of={AvatarStories.Sizes} />
 
 ## Fargevarianter
 
+Du kan bruke alle tema fargene dine på `Avatar`.
+
 <Canvas of={AvatarStories.ColorVariants} />
 
 ## Varianter
+
+Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
 
 <Canvas of={AvatarStories.ShapeVariants} />
 
 ## Med bilde
 
+Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
+Du kan fortsatt sende inn navn.
+
 <Canvas of={AvatarStories.WithImage} />
+
+## I `DropdownMenu`
+
+Du kan komponere `Avatar` inn i andre komponenter, som `DropdownMenu`.
+
+<Canvas of={AvatarStories.InDropdownMenu} />
