@@ -12,7 +12,6 @@
   border-radius: var(--ds-avatar-border-radius);
   overflow: hidden;
   display: inline-flex;
-  place-items: center;
   justify-content: center;
   align-items: center;
   user-select: none;
@@ -94,7 +93,7 @@
 
 .ds-avatar--sm {
   --ds-avatar-size: var(--ds-spacing-9);
-  --ds-avatar-padding: var(--ds-spacing-2);
+  --ds-avatar-padding: var(--ds-spacing-1);
 }
 
 .ds-avatar--md {
