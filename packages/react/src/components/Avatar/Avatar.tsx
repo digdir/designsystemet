@@ -1,6 +1,6 @@
 import { PersonIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef, useEffect, useState } from 'react';
+import { type HTMLAttributes, forwardRef, useMemo } from 'react';
 
 export type AvatarProps = {
   /**
@@ -57,12 +57,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
-  const [initials, setInitials] = useState<string>('');
-
-  useEffect(() => {
+  const initials = useMemo(() => {
     if (name) {
-      setInitials(getInitials(name));
+      return getInitials(name);
     }
+    return '';
   }, [name]);
 
   return (

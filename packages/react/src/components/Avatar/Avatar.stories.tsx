@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar } from '.';
-import { DropdownMenu } from '../';
+import { Badge, DropdownMenu } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
@@ -93,7 +93,9 @@ export const InDropdownMenu: Story = () => (
     <DropdownMenu.Content>
       <DropdownMenu.Group heading='Alle kontoer'>
         <DropdownMenu.Item>
-          <Avatar name='Ola Nordmann' size='xs' />
+          <Badge overlap='circle' color='danger' size='sm'>
+            <Avatar name='Ola Nordmann' size='xs' />
+          </Badge>
           Ola Nordmann
         </DropdownMenu.Item>
         <DropdownMenu.Item>
