@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 
 export type AlertProps = {
   /**
-   * Sets color & icon according
+   * Sets color and icon.
    * @default info
    */
   color?: 'info' | 'warning' | 'success' | 'danger';

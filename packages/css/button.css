@@ -3,9 +3,13 @@
   --dsc-button-background--hover: var(--dsc-button-primary-background--hover);
   --dsc-button-background: var(--dsc-button-primary-background);
   --dsc-button-color: var(--dsc-button-primary-color);
+  --dsc-button-font-size: var(--ds-font-size-5);
+  --dsc-button-font-size--mobile: var(--ds-font-size-4);
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-button-padding--mobile: var(--ds-spacing-2) var(--ds-spacing-3);
   --dsc-button-size: var(--ds-sizing-12);
+  --dsc-button-size--mobile: var(--ds-sizing-10);
   --dsc-button-primary-background--active: var(--ds-color-accent-base-active);
   --dsc-button-primary-background--hover: var(--ds-color-accent-base-hover);
   --dsc-button-primary-background: var(--ds-color-accent-base-default);
@@ -32,9 +36,11 @@
   color: var(--dsc-button-color);
   cursor: pointer;
   display: flex;
-  font: inherit;
+  font-family: inherit;
+  font-size: var(--dsc-button-font-size);
   gap: var(--dsc-button-gap);
   justify-content: center;
+  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-button-size);
   min-width: var(--dsc-button-size); /* 2.5em; /* TODO: Why not ds-spacing here? */
   outline: none;
@@ -47,18 +53,26 @@
   /**
     * Sizes
     */
+  @media (max-width: 650px) {
+    --dsc-button-font-size: var(--dsc-button-font-size--mobile);
+    --dsc-button-padding: var(--dsc-button-padding--mobile);
+    --dsc-button-size: var(--dsc-button-size--mobile);
+  }
+
   &[data-size="sm"] {
-    --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-3);
+    --dsc-button-font-size: var(--ds-font-size-4);
     --dsc-button-gap: var(--ds-sizing-1);
+    --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10); /* TODO: 40px, enough click surface? Yes accordting to Nielsen Norman group https://www.nngroup.com/articles/touch-target-size/ */
   }
 
   &[data-size="lg"] {
+    --dsc-button-font-size: var(--ds-font-size-6);
     --dsc-button-padding: var(--ds-spacing-3) var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
   }
 
-  &[data-fill]:not([data-fill="false"]) {
+  &[data-fill] {
     width: 100%;
     text-align: center;
   }
@@ -101,7 +115,6 @@
     --dsc-button-tertiary-color--hover: var(--ds-color-danger-text-default);
     --dsc-button-tertiary-color: var(--ds-color-danger-text-subtle);
   }
-
 
   /**
     * Variants
@@ -152,7 +165,6 @@
   }
 }
 
-/* TODO: Should sync design how icon-spacing/alignment should work in general  */
 .ds-button--icon-only {
-  --dsc-button-padding: 0;
+  --dsc-button-padding: 0; /* TODO: Should sync design how icon-spacing/alignment should work in general  */
 }

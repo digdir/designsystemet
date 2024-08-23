@@ -3,6 +3,7 @@
   --dsc-alert-border-color: var(--ds-color-info-border-strong);
   --dsc-alert-border-radius: min(1rem, var(--ds-border-radius-md));
   --dsc-alert-color: var(--ds-color-neutral-text-default);
+  --dsc-alert-font-size: var(--ds-font-size-5);
   --dsc-alert-gap: var(--ds-spacing-2);
   --dsc-alert-icon-color: var(--ds-color-info-text-subtle);
   --dsc-alert-icon-size: var(--ds-sizing-7);
@@ -13,6 +14,8 @@
   border-radius: var(--dsc-alert-border-radius);
   border: 1px solid var(--dsc-alert-border-color);
   color: var(--dsc-alert-color);
+  font-size: var(--dsc-alert-font-size);
+  line-height: var(--ds-line-height-md);
   padding: var(--dsc-alert-padding);
   padding-left: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap));
 
@@ -58,12 +61,14 @@
     * Sizes
     */
   &[data-size="sm"] {
-    --dsc-alert-padding: var(--ds-spacing-5);
+    --dsc-alert-font-size: var(--ds-font-size-4);
     --dsc-alert-icon-size: var(--ds-sizing-6);
+    --dsc-alert-padding: var(--ds-spacing-5);
   }
 
   &[data-size="lg"] {
-    --dsc-alert-padding: var(--ds-spacing-7);
+    --dsc-alert-font-size: var(--ds-font-size-6);
     --dsc-alert-icon-size: var(--ds-sizing-8);
+    --dsc-alert-padding: var(--ds-spacing-7);
   }
 }

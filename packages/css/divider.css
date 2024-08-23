@@ -1,5 +1,5 @@
 .ds-divider {
-  --dsc-divider-background: var(--ds-color-neutral-border-subtle);
+  --dsc-divider-background: var(--ds-color-neutral-border-default); /* TODO: Updated to default since was same subtle before? */
 
   background: var(--dsc-divider-background);
   border: 0;
@@ -12,6 +12,6 @@
   }
 
   &[data-variant="subtle"] {
-    --dsc-divider-background: var(--ds-color-neutral-border-subtle); /* TODO: Same as default? */
+    --dsc-divider-background: var(--ds-color-neutral-border-subtle);
   }
 }

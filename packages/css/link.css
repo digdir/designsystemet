@@ -2,6 +2,7 @@
   --dsc-link-background--active: var(--ds-color-accent-surface-default);
   --dsc-link-background--focus: var(--ds-color-focus-outer);
   --dsc-link-color--active: var(--ds-color-accent-text-default);
+  --dsc-link-color--focus: var(--ds-color-focus-inner);
   --dsc-link-color--hover: var(--ds-color-accent-text-default);
   --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-color: var(--ds-color-accent-text-subtle);
@@ -11,7 +12,7 @@
   outline: none;
   text-decoration-style: solid;
   text-decoration-thickness: max(1px, 0.0625rem);
-  text-underline-offset: max(5px, 0.25rem);
+  text-underline-offset: max(5px, 0.25rem); /* TODO: Should this be a component token as well? */
 
   & svg {
     margin-inline-end: .25em; /* TODO: Is this good enough or should white-space be allowed to have underline? */
@@ -44,14 +45,13 @@
   }
 
   &:focus-visible {
-    background: var(--dsc-link-color--focus-background);
-    box-shadow: var(--dsc-focus-boxShadow);
+    background: var(--dsc-link-background--focus);
     color: var(--dsc-link-color--focus);
   }
 
   &:active {
+    /* TODO: More of a note, but border-radius is removed here after dialogue with Lasse */
     background: var(--dsc-link-background--active);
-    border-radius: min(0.25rem, var(--ds-border-radius-md)); /* TODO: Why changing border-radius on active? */
     color: var(--dsc-link-color--active);
   }
 

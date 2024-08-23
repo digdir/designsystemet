@@ -59,7 +59,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         className={cl('ds-button', className)}
         data-color={color}
-        data-fill={fill || undefined}
+        data-fill={fill || undefined} // Fallback to undefined to prevent false from rendering data-fill="false"
         data-size={size}
         data-variant={variant}
         ref={ref}
