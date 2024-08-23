@@ -34,7 +34,6 @@
     */
   &:visited {
     color: var(--dsc-link-color--visited);
-    text-decoration: none; /* TODO: Why? :) */
   }
 
   @media (hover: hover) and (pointer: fine) { /* Only use hover for non-touch devices to prevent sticky-hovering */
