@@ -9,11 +9,14 @@
   color: var(--dsc-link-color);
   cursor: pointer; /* TODO: Why - should we keep default (not causing pointer if missing href)? */
   outline: none;
-  text-decoration-style: underline;
+  text-decoration-style: solid;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: max(5px, 0.25rem);
 
-  /* gap: var(--ds-spacing-1); /* TODO: Was inline-flex, but why? */
+  & svg {
+    margin-inline-end: .25em; /* TODO: Is this good enough or should white-space be allowed to have underline? */
+    vertical-align: middle; /* If adding SVG icon - align it to the text */
+  }
 
   /**
     * Colors
