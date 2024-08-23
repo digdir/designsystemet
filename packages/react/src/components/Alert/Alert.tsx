@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 
 export type AlertProps = {
   /**
-   * Sets color & icon according to severity
+   * Sets color & icon according
    * @default info
    */
   color?: 'info' | 'warning' | 'success' | 'danger';
@@ -20,10 +20,10 @@ export type AlertProps = {
 /**
  * Alerts are used to inform users about important information, warnings, errors, or success.
  * @example
- * <Alert severity='info'>Dette er en informasjonsmelding</Alert>
+ * <Alert color='info'>Dette er en informasjonsmelding</Alert>
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { color, size, className, ...rest },
+  { color = 'info', size = 'md', className, ...rest },
   ref,
 ) {
   return (

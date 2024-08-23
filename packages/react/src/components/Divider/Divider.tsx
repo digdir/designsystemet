@@ -10,7 +10,7 @@ export type DividerProps = {
 } & React.HTMLAttributes<HTMLHRElement>;
 
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
-  { variant, className, ...rest },
+  { variant = 'default', className, ...rest },
   ref,
 ) {
   return (

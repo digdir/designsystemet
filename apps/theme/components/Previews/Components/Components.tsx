@@ -76,7 +76,7 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button fullWidth size='sm' className={classes.userBtn}>
+        <Button fill size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
@@ -375,17 +375,17 @@ export const Components = () => {
         </Accordion.Root>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert severity='info'>
+        <Alert color='info'>
           Dette er informasjon som du bør lese for å forstå hva som skjer
         </Alert>
-        <Alert severity='warning'>
+        <Alert color='warning'>
           Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
         </Alert>
-        <Alert severity='danger'>
+        <Alert color='danger'>
           Dette er en melding om at noe har gått galt og du bør gjøre noe med
           det
         </Alert>
-        <Alert severity='success'>
+        <Alert color='success'>
           Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>

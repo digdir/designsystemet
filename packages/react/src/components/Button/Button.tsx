@@ -8,7 +8,7 @@ export type ButtonProps = {
    * @default primary
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which severity to use
+  /** Specify which color to use
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
@@ -46,7 +46,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       color = 'accent',
       fill = false,
-      size,
+      size = 'md',
       type = 'button',
       variant = 'primary',
       ...rest

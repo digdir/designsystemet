@@ -25,7 +25,7 @@ export type LinkProps = {
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ color, asChild, className, ...rest }, ref) => {
+  ({ asChild, className, color = 'accent', ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
 
     return (
