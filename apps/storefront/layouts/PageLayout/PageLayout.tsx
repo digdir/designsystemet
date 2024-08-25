@@ -1,3 +1,4 @@
+import paragraph from '@digdir/designsystemet-css/baseline/typography/paragraph.module.css';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import { Container } from '@repo/components';
@@ -34,7 +35,9 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
                 {data.backText}
               </NextLink>
             </Link>
-            <div className={cl(classes.meta, 'ds-paragraph-short--lg')}>
+            <div
+              className={cl(classes.meta, paragraph['ds-paragraph-short--lg'])}
+            >
               <span>{data.author && <div>{data.author}</div>}</span>
               <span className={classes.separator}> - </span>
               <span>{data.date && <div>{data.date}</div>}</span>

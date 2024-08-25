@@ -1,3 +1,4 @@
+import styles from '@digdir/designsystemet-css/baseline/typography/paragraph.module.css';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -45,10 +46,10 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(
-          'ds-paragraph',
-          spacing && 'ds-paragraph--spacing',
-          `ds-paragraph--${size}`,
-          lineHeightMap[variant ?? 'default'],
+          styles['ds-paragraph'],
+          spacing && styles['ds-paragraph--spacing'],
+          styles[`ds-paragraph--${size}`],
+          styles[lineHeightMap[variant ?? 'default'] as keyof typeof styles],
           className,
         )}
         {...rest}

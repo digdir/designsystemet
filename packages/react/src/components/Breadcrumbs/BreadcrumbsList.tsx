@@ -1,3 +1,4 @@
+import styles from '@digdir/designsystemet-css/breadcrumbs.module.css';
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
@@ -22,7 +23,7 @@ export const BreadcrumbsList = forwardRef<
 
   return (
     <ol
-      className={cl('ds-breadcrumbs__list', className)}
+      className={cl(styles['ds-breadcrumbs__list'], className)}
       ref={mergedRefs}
       {...rest}
     />

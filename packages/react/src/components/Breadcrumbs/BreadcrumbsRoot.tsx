@@ -1,3 +1,4 @@
+import styles from '@digdir/designsystemet-css/breadcrumbs.module.css';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 
@@ -13,7 +14,11 @@ export const BreadcrumbsRoot = forwardRef<HTMLDivElement, BreadcrumbsRootProps>(
   ({ className, size = 'md', ...rest }, ref) => (
     <div
       ref={ref}
-      className={cl('ds-breadcrumbs', `ds-breadcrumbs--${size}`, className)}
+      className={cl(
+        styles['ds-breadcrumbs'],
+        styles[`ds-breadcrumbs--${size}`],
+        className,
+      )}
       {...rest}
     />
   ),

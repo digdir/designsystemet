@@ -1,3 +1,4 @@
+import styles from '@digdir/designsystemet-css/box.module.css';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -51,10 +52,10 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
       <Component
         ref={ref}
         className={cl(
-          shadow && `ds-box--${shadow}-shadow`,
-          borderColor && `ds-box--${borderColor}-border-color`,
-          borderRadius && `ds-box--${borderRadius}-border-radius`,
-          `ds-box--${background}-background`,
+          shadow && styles[`ds-box--${shadow}-shadow`],
+          borderColor && styles[`ds-box--${borderColor}-border-color`],
+          borderRadius && styles[`ds-box--${borderRadius}-border-radius`],
+          styles[`ds-box--${background}-background`],
           className,
         )}
         {...rest}

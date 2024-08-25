@@ -6,11 +6,11 @@
 @import url('./baseline/ds-reset.css') layer(ds.reset);
 @import url('./baseline/typography/label.css') layer(ds.base.typography);
 @import url('./baseline/typography/heading.css') layer(ds.base.typography);
-@import url('./baseline/typography/paragraph.css') layer(ds.base.typography);
+@import url('./baseline/typography/paragraph.module.css') layer(ds.base.typography);
 @import url('./baseline/typography/ingress.css') layer(ds.base.typography);
 @import url('./baseline/typography/error-message.css') layer(ds.base.typography);
 @import url('./utilities.css') layer(ds.utilities);
-@import url('./box.css') layer(ds.components);
+@import url('./box.module.css') layer(ds.components);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
@@ -42,5 +42,5 @@
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
-@import url('./breadcrumbs.css') layer(ds.components);
+@import url('./breadcrumbs.module.css') layer(ds.components);
 @import url('./badge.css') layer(ds.components);

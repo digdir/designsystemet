@@ -1,4 +1,4 @@
-import { useMergeRefs } from '@floating-ui/react';
+import styles from '@digdir/designsystemet-css/breadcrumbs.module.css';
 import cl from 'clsx/lite';
 import { forwardRef, useRef } from 'react';
 
@@ -11,7 +11,11 @@ export const BreadcrumbsLink = forwardRef<
   HTMLAnchorElement,
   BreadcrumbsLinkProps
 >(({ className, ...rest }, ref) => (
-  <Link className={cl(`ds-breadcrumbs__link`, className)} ref={ref} {...rest} />
+  <Link
+    className={cl(styles[`ds-breadcrumbs__link`], className)}
+    ref={ref}
+    {...rest}
+  />
 ));
 
 BreadcrumbsLink.displayName = 'BreadcrumbsLink';

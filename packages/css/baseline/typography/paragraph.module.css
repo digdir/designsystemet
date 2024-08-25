@@ -1,3 +1,4 @@
+/* TODO: Could these styles be placed in css root like the other files? */
 .ds-paragraph {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 

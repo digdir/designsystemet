@@ -1,3 +1,4 @@
+import styles from '@digdir/designsystemet-css/breadcrumbs.module.css';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 
@@ -13,7 +14,7 @@ export const BreadcrumbsNav = forwardRef<HTMLElement, BreadcrumbsNavProps>(
     <nav
       aria-label={ariaLabel}
       ref={ref}
-      className={cl('ds-breadcrumbs__nav', className)}
+      className={cl(styles['ds-breadcrumbs__nav'], className)}
       {...rest}
     />
   ),

@@ -2,6 +2,7 @@
 
 /* https://wiki.csswg.org/ideas/mistakes */
 
+/* TODO: Can this be moved to the related components? */
 [class^='ds-'],
 [class^='ds-']::before,
 [class^='ds-']::after {
@@ -9,6 +10,8 @@
 }
 
 /* Inherit fonts for inputs and buttons */
+
+/* TODO: Can this be moved to the related form element CSS files? */
 input[class^='ds-'],
 button[class^='ds-'],
 textarea[class^='ds-'],
