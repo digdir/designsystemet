@@ -2,7 +2,7 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import { convertToHex } from '../src/colors';
+import { convertToHex } from '../src/colors/index.js';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
 import { typography } from '../src/tokens/build/formats/css';
