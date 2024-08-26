@@ -28,6 +28,16 @@
   }
 }
 
+.ds-avatar--icon::before {
+  content: '';
+  width: calc(100% - var(--ds-avatar-padding) * 2);
+  height: calc(100% - var(--ds-avatar-padding) * 2);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: var(--ds-avatar-color);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' fill-rule='evenodd' d='M8.25 7.5a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0M12 2.25a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5M8.288 17.288A5.25 5.25 0 0 1 17.25 21a.75.75 0 0 0 1.5 0 6.75 6.75 0 0 0-13.5 0 .75.75 0 0 0 1.5 0 5.25 5.25 0 0 1 1.538-3.712' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+}
+
 .ds-avatar--circle {
   --ds-avatar-border-radius: 50%;
 }

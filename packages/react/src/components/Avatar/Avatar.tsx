@@ -61,7 +61,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     if (name) {
       return getInitials(name);
     }
-    return '';
+    return null;
   }, [name]);
 
   return (
@@ -72,6 +72,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
         `ds-avatar--${variant}`,
         `ds-avatar--${color}`,
         `ds-avatar--${size}`,
+        !children && !initials && 'ds-avatar--icon',
         fontSizeMap[size],
         className,
       )}
@@ -79,7 +80,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       role='img'
       aria-label={name}
     >
-      {children || initials || <PersonIcon fontSize='1.4em' />}
+      {children || initials || null}
     </span>
   );
 });
