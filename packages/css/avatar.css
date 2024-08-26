@@ -28,7 +28,7 @@
   }
 }
 
-.ds-avatar--icon::before {
+.ds-avatar:empty::before {
   content: '';
   width: calc(100% - var(--ds-avatar-padding) * 2);
   height: calc(100% - var(--ds-avatar-padding) * 2);

@@ -1,6 +1,13 @@
 import { PersonIcon } from '@navikt/aksel-icons';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef, useMemo } from 'react';
+import {
+  Fragment,
+  type HTMLAttributes,
+  type ReactNode,
+  forwardRef,
+  useMemo,
+} from 'react';
 
 export type AvatarProps = {
   /**
@@ -36,6 +43,12 @@ export type AvatarProps = {
    * @default 'circle'
    */
   variant?: 'circle' | 'square';
+  /**
+   * Image or icon to display inside the avatar.
+   *
+   * Gets `aria-hidden="true"`
+   */
+  children?: ReactNode;
 } & HTMLAttributes<HTMLSpanElement>;
 
 const fontSizeMap = {
@@ -57,6 +70,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
+  const Component = children ? Slot : Fragment;
+
   const initials = useMemo(() => {
     if (name) {
       return getInitials(name);
@@ -80,7 +95,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       role='img'
       aria-label={name}
     >
-      {children || initials || null}
+      <Component {...(children ? { 'aria-hidden': true } : {})}>
+        {children || initials}
+      </Component>
     </span>
   );
 });

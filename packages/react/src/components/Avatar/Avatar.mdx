@@ -38,12 +38,15 @@ Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
 ## Med bilde
 
 Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
-Du kan fortsatt sende inn navn.
+Du burde fortsatt sende inn navn, da denne legger på `aria-label`.
+
+Bildet får `aria-hidden="true"` for å unngå dobbel informasjon.
 
 <Canvas of={AvatarStories.WithImage} />
 
-## I `DropdownMenu`
+## Komponering
 
-Du kan komponere `Avatar` inn i andre komponenter, som `DropdownMenu`.
+Du kan komponere `Avatar` inn i andre komponenter, som `DropdownMenu`, samt bruke komponenter som
+`Badge` rundt for å vise status.
 
 <Canvas of={AvatarStories.InDropdownMenu} />

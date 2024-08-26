@@ -1,3 +1,4 @@
+import cat1 from '@assets/img/cats/Cat 3.jpg';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
@@ -78,9 +79,9 @@ export const ShapeVariants: Story = () => (
   </>
 );
 
-export const WithImage: Story = () => (
-  <Avatar name='Ola Nordmann'>
-    <img src='https://picsum.photos/200' alt='ola nordmann' />
+export const WithImage: Story = (args) => (
+  <Avatar name='Ola Nordmann' {...args}>
+    <img src={cat1} alt='' />
   </Avatar>
 );
 
