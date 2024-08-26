@@ -8,7 +8,7 @@ export default ({ children }) => (
   <PostLayout
     content={children}
     heading='Hvor blir det av V1?'
-    ingress='Første Release Candidate av V1 ble sluppet før sommeren. Etter det har vi fått flere verdifulle tilbakemeldinger fra våre brukere.'
+    ingress='En Release Candidate av V1 ble sluppet før sommeren. Etter det har vi fått flere verdifulle tilbakemeldinger fra våre brukere.'
     date='28. august 2024'
     author='Designsystemet'
     imageSrc='/img/bloggen/v1rc2.png'
@@ -20,26 +20,26 @@ export default ({ children }) => (
 export const metadata = {
   title: 'Hvor blir det av V1?',
   description:
-    'Første Release Candidate av V1 ble sluppet før sommeren. Etter det har vi fått flere verdifulle tilbakemeldinger fra våre brukere.',
+    'En Release Candidate av V1 ble sluppet før sommeren. Etter det har vi fått flere verdifulle tilbakemeldinger fra våre brukere.',
   openGraph: {
     images: '/img/bloggen/v1rc2.png',
   },
 };
 
-Som mange av dere vet, har vi jobbet hardt med å utvikle Designsystemet. Målet har alltid vært å skape et robust og helhetlig system som ikke bare møter dagens behov, men som også er fleksibelt og fremtidsrettet. Etter lansering av "V1 Release Cancidate" har vi fått verdifulle tilbakemeldinger fra dere som har testet systemet. Basert på denne innsikten har vi nådd et veiskille som krever at vi tar noen viktige beslutninger.
+Som mange av dere vet, har vi jobbet hardt med å utvikle et designsystem som skal fungere for flere ulike aktører. Målet har alltid vært å skape et robust og helhetlig system som er fleksibelt og fremtidsrettet. Etter lansering av "V1 Release Cancidate" har vi fått verdifulle tilbakemeldinger fra dere som har testet systemet. Basert på denne innsikten har vi nådd et veiskille som krever at vi tar noen viktige beslutninger.
 
 Et av de mest sentrale spørsmålene vi står overfor, er hvordan vi skal strukturere lanseringen av V1. Vi har nå en fullt funksjonell React-pakke, som mange av dere har begynt å bruke i ulike løsninger. Dette er en stor milepæl for oss, og vi har fått positive tilbakemeldinger på at utvikler-opplevelsen med React-komponentene er god. Samtidig har vi også fått klare signaler om at mange av dere har behov for et tilhørende CSS-rammeverk. Et godt CSS-rammeverk vil ikke bare styrke React-pakken, men det vil også sikre en mer helhetlig tilnærming til hvordan vi bygger grensesnitt på tvers av ulike teknologier. 
 
 
 <Image
   src='/img/bloggen/v1-flyt.png'
-  alt='Flyt-illustrasjon av designsystemets produkter og verktøy.'
+  alt='Flyt-illustrasjon av Designsystemets produkter og verktøy.'
   caption='Designsystemet består i dag av flere mikroprodukter, inkludert Temabygger, Design-tokens, Figma bibliotek, CSS rammeverk, React bibliotek, Tema pakke og CLI (Kommandoverktøy). Alle disse delene av systemet skal fungere sømløst sammen og gi en sammenhengende opplevelse for brukerne.'
   boxShadow={false}
 />
 
 ## Potensielle endringer og "breaking changes"
-Vi har identifisert at arbeidet med å utvikle et solid CSS-rammeverk vil påvirke de eksisterende React-komponentene. Det kan til og med kreve noen endringer i komponent-APIet. Det siste vi ønsker er å påføre dere hyppige og unødvendige "breaking changes" i systemet. Derfor vurderer vi nå om det er bedre å samle opp disse endringene og implementere dem samlet i V1, slik at vi reduserer risikoen for breaking changes etter lansering. Dette krever imidlertid at vi tar oss litt mer tid til å ferdigstille systemet som en helhet.
+Vi har identifisert at arbeidet med å utvikle et solid CSS-rammeverk vil påvirke de eksisterende React-komponentene. Dette kan til og med kreve noen endringer i komponent-APIet. Det siste vi ønsker er å påføre dere hyppige og unødvendige "breaking changes" i systemet. Derfor vurderer vi nå om det er bedre å samle opp disse endringene og implementere dem samlet i V1, slik at vi reduserer risikoen for breaking changes etter lansering. Dette krever imidlertid at vi tar oss litt mer tid til å ferdigstille systemet som en helhet.
 
 ## Hvorfor utsetting kan være det riktige valget
 Å utsette en lansering er aldri en enkel beslutning, men i dette tilfellet tror vi at det kan være det riktige valget. Ved å utsette lanseringen, får vi tid til å sørge for at Designsystemet inkluderer både React-komponentene og CSS-rammeverket. Dette gir oss muligheten til å levere et mer komplett produkt som vil være mer brukervennlig og enklere å vedlikeholde i det lange løp.
@@ -47,7 +47,7 @@ Vi har identifisert at arbeidet med å utvikle et solid CSS-rammeverk vil påvir
 Vi forstår at mange av dere ser frem til V1-lanseringen, og vi setter stor pris på tålmodigheten deres. Vi tror at denne utsettelsen vil resultere i et bedre produkt som vil gagne alle brukerne våre på sikt. Vi ønsker å holde dere oppdatert med jevnlige oppdateringer og åpen kommunikasjon gjennom hele prosessen, og vi ser frem til å dele et enda bedre designsystem med dere snart!
 
 ## Din tilbakemelding er viktig
-I arbeidet med å bygge et designsystem som skal fungere for mange ulike aktører, er vi avhengige av tilbakemeldinger fra dere som faktisk bruker systemet i praksis. For å sikre at det nye systemet er godt testet og klart for lansering, oppfordrer vi så mange som mulig til å teste de nyeste endringene som legges ut i vår `next`-branch (`@next`). Der vil dere finne de siste oppdateringene og nye funksjoner som vi vurderer å inkludere i den endelige lanseringen av V1.
+I arbeidet med å bygge et designsystem som skal fungere for mange ulike aktører, er vi helt avhengige av tilbakemeldinger fra dere som faktisk bruker systemet i praksis. For å sikre at det nye systemet er godt testet og klart for lansering, oppfordrer vi så mange som mulig til å teste de nyeste endringene som legges ut i vår `next`-branch (`@next`). Der vil dere finne de siste oppdateringene og nye funksjoner som vi vurderer å inkludere i den endelige lanseringen av V1.
 
 Din innsats og dine innspill er helt avgjørende for at vi skal kunne levere et designsystem som fungerer optimalt for alle.
 
