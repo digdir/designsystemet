@@ -2,7 +2,6 @@ import { randomUUID } from 'node:crypto';
 
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import { Theme } from '@adobe/leonardo-contrast-colors';
 import { normalizeTokenSetName } from './utils.js';
 
 export default function generateThemesJson(

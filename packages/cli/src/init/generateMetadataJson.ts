@@ -8,7 +8,8 @@ export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Co
   return {
     tokenSetOrder: [
       'primitives/modes/globals',
-      'primitives/modes/typography/default',
+      'primitives/size/default',
+      'primitives/modes/typography/primary/theme',
       ...modes.flatMap((mode) => [
         `primitives/modes/colors/${normalizeTokenSetName(mode)}/global`,
         ...themes.map(

@@ -1,9 +1,11 @@
-import fs, { glob } from 'node:fs';
-import { resolve } from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../../colors';
 import type { ColorInfo, ColorMode, ThemeColors } from '../../colors';
+import generateMetadataJson from '../../init/generateMetadataJson';
+import generateThemesJson from '../../init/generateThemesJson';
 
 type Colors = Record<ThemeColors, CssColor>;
 type Typography = Record<string, string>;
@@ -27,6 +29,9 @@ type Tokens1ary = Record<string, DesignTokens>;
 type Tokens = Tokens1ary | Tokens2ary;
 
 type Collection = 'theme' | 'global';
+
+const DIRNAME: string = import.meta.dirname || __dirname;
+const DEFAULT_FILES_PATH = path.join(DIRNAME, '../../init/template/default-files/design-tokens/');
 
 const createColorTokens = (colorArray: ColorInfo[]): DesignTokens => {
   const obj: DesignTokens = {};
@@ -148,6 +153,22 @@ export const createTokens = async (opts: CreateTokens) => {
   const write = R.isNotNil(outPath);
 
   if (write) {
+    const targetDir = path.resolve(process.cwd(), outPath);
+    await fs.mkdir(targetDir, { recursive: true });
+
+    // Generate metadata and themes json for Token Studio and build script
+    console.log('Generating metadata and themes files');
+    const $theme = generateThemesJson(['Light', 'Dark', 'Contrast'], ['theme']);
+    const $metadata = generateMetadataJson(['Light', 'Dark', 'Contrast'], ['theme']);
+
+    await fs.writeFile(path.join(targetDir, '$theme.json'), JSON.stringify($theme, null, '\t'));
+    await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, '\t'));
+
+    console.log(`Copy files to ${targetDir}`);
+    await fs.cp(DEFAULT_FILES_PATH, targetDir, {
+      recursive: true,
+    });
+
     const files: File[] = [
       generateColorModeFile('light', 'theme', tokens.colors.light.theme, outPath),
       generateColorModeFile('light', 'global', tokens.colors.light.global, outPath),
@@ -159,9 +180,11 @@ export const createTokens = async (opts: CreateTokens) => {
     ];
 
     for (const file of files) {
-      console.log(`Writing file ${resolve(file.filePath)}`);
-      fs.mkdirSync(resolve(file.path), { recursive: true });
-      fs.writeFileSync(resolve(file.filePath), file.data, { encoding: 'utf-8' });
+      const path_ = path.resolve(file.path);
+      const filePath = path.resolve(file.filePath);
+      console.log(`Writing file ${filePath}`);
+      await fs.mkdir(path_, { recursive: true });
+      await fs.writeFile(filePath, file.data, { encoding: 'utf-8' });
     }
   }
 
