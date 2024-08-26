@@ -87,7 +87,6 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
         `ds-avatar--${variant}`,
         `ds-avatar--${color}`,
         `ds-avatar--${size}`,
-        !children && !initials && 'ds-avatar--icon',
         fontSizeMap[size],
         className,
       )}
