@@ -1,4 +1,3 @@
-import { PersonIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import {

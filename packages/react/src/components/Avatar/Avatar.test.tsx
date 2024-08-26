@@ -15,7 +15,7 @@ describe('Avatar', () => {
     );
   });
 
-  it('should render correctly with name', () => {
+  it('should render initials when name is set', () => {
     render(<Avatar name='Ola Nordmann' />);
     expect(screen.getByText('ON')).toBeInTheDocument();
   });
@@ -25,12 +25,25 @@ describe('Avatar', () => {
     expect(screen.getByText('OK')).toBeInTheDocument();
   });
 
-  it('should render correctly with children', () => {
+  it('should render children', () => {
     render(
       <Avatar>
-        <img src='' alt='ola nordmann' />
+        <img src='' alt='ola nordmann' data-testid='child-image' />
       </Avatar>,
     );
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    /* look for image with correct id */
+    expect(screen.getByTestId('child-image')).toBeInTheDocument();
+  });
+
+  it('children should have aria-hidden', () => {
+    render(
+      <Avatar>
+        <img src='' alt='ola nordmann' data-testid='child-image' />
+      </Avatar>,
+    );
+    expect(screen.getByTestId('child-image')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
   });
 });
