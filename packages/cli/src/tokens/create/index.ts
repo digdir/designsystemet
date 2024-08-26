@@ -2,10 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import * as R from 'ramda';
-import { baseColors, generateScaleForColor } from '../../colors';
-import type { ColorInfo, ColorMode, ThemeColors } from '../../colors';
-import generateMetadataJson from '../../init/generateMetadataJson';
-import generateThemesJson from '../../init/generateThemesJson';
+import { baseColors, generateScaleForColor } from '../../colors/index.js';
+import type { ColorInfo, ColorMode, ThemeColors } from '../../colors/index.js';
+import generateMetadataJson from '../../init/generateMetadataJson.js';
+import generateThemesJson from '../../init/generateThemesJson.js';
 
 type Colors = Record<ThemeColors, CssColor>;
 type Typography = Record<string, string>;
