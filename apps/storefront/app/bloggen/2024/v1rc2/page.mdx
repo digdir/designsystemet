@@ -30,6 +30,8 @@ Som mange av dere vet, har vi jobbet hardt med å utvikle et designsystem som sk
 
 Et av de mest sentrale spørsmålene vi står overfor, er hvordan vi skal strukturere lanseringen av V1. Vi har nå en fullt funksjonell React-pakke, som mange av dere har begynt å bruke i ulike løsninger. Dette er en stor milepæl for oss, og vi har fått positive tilbakemeldinger på at utvikler-opplevelsen med React-komponentene er god. Samtidig har vi også fått klare signaler om at mange av dere har behov for et tilhørende CSS-rammeverk. Et godt CSS-rammeverk vil ikke bare styrke React-pakken, men det vil også sikre en mer helhetlig tilnærming til hvordan vi bygger grensesnitt på tvers av ulike teknologier. 
 
+## Potensielle endringer og "breaking changes"
+Vi har identifisert at arbeidet med å utvikle et solid CSS-rammeverk vil påvirke de eksisterende React-komponentene. Dette kan til og med kreve noen endringer i komponent-APIet. Det siste vi ønsker er å påføre dere hyppige og unødvendige "breaking changes" i systemet. Derfor vurderer vi nå om det er bedre å samle opp disse endringene og implementere dem samlet i V1, slik at vi reduserer risikoen for breaking changes etter lansering. Dette krever imidlertid at vi tar oss litt mer tid til å ferdigstille systemet som en helhet.
 
 <Image
   src='/img/bloggen/v1-flyt.png'
@@ -38,8 +40,6 @@ Et av de mest sentrale spørsmålene vi står overfor, er hvordan vi skal strukt
   boxShadow={false}
 />
 
-## Potensielle endringer og "breaking changes"
-Vi har identifisert at arbeidet med å utvikle et solid CSS-rammeverk vil påvirke de eksisterende React-komponentene. Dette kan til og med kreve noen endringer i komponent-APIet. Det siste vi ønsker er å påføre dere hyppige og unødvendige "breaking changes" i systemet. Derfor vurderer vi nå om det er bedre å samle opp disse endringene og implementere dem samlet i V1, slik at vi reduserer risikoen for breaking changes etter lansering. Dette krever imidlertid at vi tar oss litt mer tid til å ferdigstille systemet som en helhet.
 
 ## Hvorfor utsetting kan være det riktige valget
 Å utsette en lansering er aldri en enkel beslutning, men i dette tilfellet tror vi at det kan være det riktige valget. Ved å utsette lanseringen, får vi tid til å sørge for at Designsystemet inkluderer både React-komponentene og CSS-rammeverket. Dette gir oss muligheten til å levere et mer komplett produkt som vil være mer brukervennlig og enklere å vedlikeholde i det lange løp.
