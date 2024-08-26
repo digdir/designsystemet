@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { MemoryRouter } from 'react-router-dom';
-import 'dotenv/config';
 
 async function bootstrap() {
   const App = (await import('./app')).default;
