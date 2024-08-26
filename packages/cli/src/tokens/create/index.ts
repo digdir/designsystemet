@@ -6,22 +6,25 @@ import { baseColors, generateScaleForColor } from '../../colors';
 import type { ColorInfo, ColorMode, ThemeColors } from '../../colors';
 
 type Colors = Record<ThemeColors, CssColor>;
+type Typography = Record<string, string>;
+type TypographyModes = 'primary' | 'secondary';
 
 type CreateTokens = {
   colors: Colors;
+  typography: Typography;
   outPath: string;
 };
 
 type File = {
-  name: string;
   data: string;
   path: string;
   filePath: string;
 };
 
-type DesignTokens = { [key: string]: { $value: string; $type: string } };
-
-type TokenSet = Record<string, Record<string, DesignTokens>>;
+type DesignTokens = Record<string, { $value: string; $type: string }>;
+type Tokens2ary = Record<string, Record<string, DesignTokens>>;
+type Tokens1ary = Record<string, DesignTokens>;
+type Tokens = Tokens1ary | Tokens2ary;
 
 type Collection = 'theme' | 'global';
 
@@ -46,7 +49,30 @@ const createColorTokens = (colorArray: ColorInfo[]): DesignTokens => {
   return obj;
 };
 
-const generateThemeTokens = (theme: ColorMode, colors: Colors): TokenSet => {
+const generateTypographyTokens = ({ family }: Typography): Tokens => {
+  return {
+    theme: {
+      main: {
+        $type: 'fontFamilies',
+        $value: family,
+      },
+      bold: {
+        $type: 'fontWeights',
+        $value: 'Medium',
+      },
+      'extra-bold': {
+        $type: 'fontWeights',
+        $value: 'Semi bold',
+      },
+      regular: {
+        $type: 'fontWeights',
+        $value: 'Regular',
+      },
+    },
+  };
+};
+
+const generateThemeTokens = (theme: ColorMode, colors: Colors): Tokens => {
   const accentColors = generateScaleForColor(colors.accent, theme);
   const neutralColors = generateScaleForColor(colors.neutral, theme);
   const brand1Colors = generateScaleForColor(colors.brand1, theme);
@@ -64,12 +90,23 @@ const generateThemeTokens = (theme: ColorMode, colors: Colors): TokenSet => {
   };
 };
 
-const generateModeFile = (folder: ColorMode, name: Collection, tokens: TokenSet, outPath: string): File => ({
-  name: 'light',
-  data: JSON.stringify(tokens, null, '\t'),
-  path: `${outPath}/primitives/modes/colors/${folder}`,
-  filePath: `${outPath}/primitives/modes/colors/${folder}/${name}.json`,
-});
+const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Tokens, outPath: string): File => {
+  const path = `${outPath}/primitives/modes/colors/${folder}`;
+  return {
+    data: JSON.stringify(tokens, null, '\t'),
+    path,
+    filePath: `${path}/${name}.json`,
+  };
+};
+
+const generateTypographyFile = (folder: TypographyModes, name: Collection, tokens: Tokens, outPath: string): File => {
+  const path = `${outPath}/primitives/modes/typography/${folder}`;
+  return {
+    data: JSON.stringify(tokens, null, '\t'),
+    path,
+    filePath: `${path}/${name}.json`,
+  };
+};
 
 const generateGlobalTokens = (theme: ColorMode) => {
   const blueScale = generateScaleForColor(baseColors.blue, theme);
@@ -92,27 +129,33 @@ const generateGlobalTokens = (theme: ColorMode) => {
 };
 
 export const createTokens = async (opts: CreateTokens) => {
-  const { colors, outPath } = opts;
+  const { colors, outPath, typography } = opts;
 
   const tokens = {
-    light: {
-      theme: generateThemeTokens('light', colors),
-      global: generateGlobalTokens('light'),
+    colors: {
+      light: {
+        theme: generateThemeTokens('light', colors),
+        global: generateGlobalTokens('light'),
+      },
+      dark: { theme: generateThemeTokens('dark', colors), global: generateGlobalTokens('dark') },
+      contrast: { theme: generateThemeTokens('contrast', colors), global: generateGlobalTokens('contrast') },
     },
-    dark: { theme: generateThemeTokens('dark', colors), global: generateGlobalTokens('dark') },
-    contrast: { theme: generateThemeTokens('contrast', colors), global: generateGlobalTokens('contrast') },
+    typography: {
+      primary: generateTypographyTokens(typography),
+    },
   };
 
   const write = R.isNotNil(outPath);
 
   if (write) {
     const files: File[] = [
-      generateModeFile('light', 'theme', tokens.light.theme, outPath),
-      generateModeFile('light', 'global', tokens.light.global, outPath),
-      generateModeFile('dark', 'theme', tokens.dark.theme, outPath),
-      generateModeFile('dark', 'global', tokens.dark.global, outPath),
-      generateModeFile('contrast', 'theme', tokens.contrast.theme, outPath),
-      generateModeFile('contrast', 'global', tokens.contrast.global, outPath),
+      generateColorModeFile('light', 'theme', tokens.colors.light.theme, outPath),
+      generateColorModeFile('light', 'global', tokens.colors.light.global, outPath),
+      generateColorModeFile('dark', 'theme', tokens.colors.dark.theme, outPath),
+      generateColorModeFile('dark', 'global', tokens.colors.dark.global, outPath),
+      generateColorModeFile('contrast', 'theme', tokens.colors.contrast.theme, outPath),
+      generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, outPath),
+      generateTypographyFile('primary', 'theme', tokens.typography.primary, outPath),
     ];
 
     for (const file of files) {

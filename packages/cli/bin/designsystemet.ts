@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import { convertToHex } from '../src/colors';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
+import { typography } from '../src/tokens/build/formats/css';
 import { buildTokens } from '../src/tokens/build/index.js';
 import { createTokens } from '../src/tokens/create//index.js';
 
@@ -36,10 +37,12 @@ function makeTokenCommands() {
     .option('-b1, --brand1 <number>', `Brand1 hex color`)
     .option('-b2, --brand2 <number>', `Brand2 hex color`)
     .option('-b3, --brand3 <number>', `Brand3 hex color`)
+    .option('-f, --font-family <string>', `Font family`)
     .action(async (opts) => {
       // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts))}`);
       const outPath = typeof opts.write === 'string' ? opts.write : './design-tokens';
+      const family = typeof opts.fontFamily === 'string' ? opts.fontFamily : 'Inter';
 
       const props = {
         colors: {
@@ -48,6 +51,9 @@ function makeTokenCommands() {
           brand1: convertToHex(opts.brand1),
           brand2: convertToHex(opts.brand2),
           brand3: convertToHex(opts.brand3),
+        },
+        typography: {
+          family,
         },
         outPath: outPath,
       };
