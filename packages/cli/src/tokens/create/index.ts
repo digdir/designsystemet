@@ -160,8 +160,8 @@ export const createTokens = async (opts: CreateTokens) => {
 
     for (const file of files) {
       console.log(`Writing file ${resolve(file.filePath)}`);
-      fs.mkdirSync(file.path, { recursive: true });
-      fs.writeFileSync(file.filePath, file.data, { encoding: 'utf-8' });
+      fs.mkdirSync(resolve(file.path), { recursive: true });
+      fs.writeFileSync(resolve(file.filePath), file.data, { encoding: 'utf-8' });
     }
   }
 

@@ -19,6 +19,10 @@
     "./color": {
       "types": "./dist/types/src/colors/index.d.ts",
       "import": "./dist/src/colors/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/types/src/tokens/index.d.ts",
+      "import": "./dist/src/tokens/index.js"
     }
   },
   "publishConfig": {
