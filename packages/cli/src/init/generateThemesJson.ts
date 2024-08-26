@@ -27,14 +27,14 @@ function generateSizeGroup(): ThemeObject[] {
       },
       group: 'Size',
     },
-    {
-      id: randomUUID(),
-      name: 'compact',
-      selectedTokenSets: {
-        'primitives/size/compact': TokenSetStatus.ENABLED,
-      },
-      group: 'Size',
-    },
+    // {
+    //   id: randomUUID(),
+    //   name: 'compact',
+    //   selectedTokenSets: {
+    //     'primitives/size/compact': TokenSetStatus.ENABLED,
+    //   },
+    //   group: 'Size',
+    // },
   ];
 }
 

@@ -39,16 +39,16 @@ const createColorTokens = (colorArray: ColorInfo[]): DesignTokens => {
   for (let i = 0; i < colorArray.length; i++) {
     if (i === 13 && colorArray.length >= 14) {
       obj['contrast-1'] = {
-        $value: colorArray[i].hex,
         $type,
+        $value: colorArray[i].hex,
       };
     } else if (i === 14 && colorArray.length >= 15) {
       obj['contrast-2'] = {
-        $value: colorArray[i].hex,
         $type,
+        $value: colorArray[i].hex,
       };
     } else {
-      obj[i + 1] = { $value: colorArray[i].hex, $type };
+      obj[i + 1] = { $type, $value: colorArray[i].hex };
     }
   }
   return obj;
@@ -98,7 +98,7 @@ const generateThemeTokens = (theme: ColorMode, colors: Colors): Tokens => {
 const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Tokens, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
   return {
-    data: JSON.stringify(tokens, null, '\t'),
+    data: `${JSON.stringify(tokens, null, 2)}\n`,
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -107,7 +107,7 @@ const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Toke
 const generateTypographyFile = (folder: TypographyModes, name: Collection, tokens: Tokens, outPath: string): File => {
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
-    data: JSON.stringify(tokens, null, '\t'),
+    data: `${JSON.stringify(tokens, null, 2)}\n`,
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -161,8 +161,8 @@ export const createTokens = async (opts: CreateTokens) => {
     const $theme = generateThemesJson(['Light', 'Dark', 'Contrast'], ['theme']);
     const $metadata = generateMetadataJson(['Light', 'Dark', 'Contrast'], ['theme']);
 
-    await fs.writeFile(path.join(targetDir, '$theme.json'), JSON.stringify($theme, null, '\t'));
-    await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, '\t'));
+    await fs.writeFile(path.join(targetDir, '$themes.json'), JSON.stringify($theme, null, 2));
+    await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, 2));
 
     console.log(`Copy files to ${targetDir}`);
     await fs.cp(DEFAULT_FILES_PATH, targetDir, {
@@ -177,6 +177,7 @@ export const createTokens = async (opts: CreateTokens) => {
       generateColorModeFile('contrast', 'theme', tokens.colors.contrast.theme, outPath),
       generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, outPath),
       generateTypographyFile('primary', 'theme', tokens.typography.primary, outPath),
+      generateTypographyFile('secondary', 'theme', tokens.typography.primary, outPath),
     ];
 
     for (const file of files) {

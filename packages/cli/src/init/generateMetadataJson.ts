@@ -10,6 +10,7 @@ export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Co
       'primitives/modes/globals',
       'primitives/size/default',
       'primitives/modes/typography/primary/theme',
+      'primitives/modes/typography/secondary/theme',
       ...modes.flatMap((mode) => [
         `primitives/modes/colors/${normalizeTokenSetName(mode)}/global`,
         ...themes.map(
@@ -19,6 +20,7 @@ export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Co
       ...themes.map((theme) => `themes/${normalizeTokenSetName(theme)}`),
       'semantic/color',
       'semantic/style',
+      'Figma/components',
     ],
   };
 }
