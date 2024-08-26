@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-fix(Chip): Add wrapping to Chip groups
+Chip: Support wrapping in group
