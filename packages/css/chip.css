@@ -97,11 +97,13 @@
 .ds-chip--group-container {
   --dsc-chip-group-gap: var(--ds-spacing-2);
 
+  align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: var(--dsc-chip-group-gap);
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .ds-chip--group-container.ds-chip--sm {
