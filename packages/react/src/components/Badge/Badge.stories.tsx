@@ -161,17 +161,17 @@ export const InButton: Story = (args) => (
       gap: 'var(--ds-spacing-4)',
     }}
   >
-    <Button icon variant='tertiary'>
+    <Button variant='tertiary'>
       <Badge color='danger' count={1000} maxCount={99} size='sm'>
         <InboxIcon fontSize='1.75rem' />
       </Badge>
     </Button>
-    <Button icon variant='tertiary'>
+    <Button variant='tertiary'>
       <Badge color='danger' count={10} size='sm'>
         <ChatIcon fontSize='1.75rem' />
       </Badge>
     </Button>
-    <Button icon variant='tertiary'>
+    <Button variant='tertiary'>
       <Badge color='danger' size='sm'>
         <VideoIcon fontSize='1.75rem' />
       </Badge>

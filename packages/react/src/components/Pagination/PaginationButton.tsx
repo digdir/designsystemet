@@ -11,7 +11,7 @@ export type PaginationButtonProps = {
    * @default false
    */
   isActive?: boolean;
-} & Omit<ButtonProps, 'size' | 'icon'>;
+} & Omit<ButtonProps, 'size'>;
 
 export const PaginationButton = forwardRef<
   HTMLButtonElement,
