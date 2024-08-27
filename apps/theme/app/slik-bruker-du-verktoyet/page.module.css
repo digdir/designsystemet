@@ -1,0 +1,27 @@
+.page {
+  margin-top: 32px;
+}
+
+.row {
+  margin: 0 auto;
+  max-width: 750px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.ingress {
+  margin-bottom: 24px;
+}
+
+.page img {
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.page h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}

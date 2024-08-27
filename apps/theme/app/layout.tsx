@@ -15,8 +15,8 @@ const menu = [
     href: '/',
   }, */
   {
-    name: 'Testside',
-    href: '/testside',
+    name: 'Slik bruker du verktøyet',
+    href: '/slik-bruker-du-verktoyet',
   },
   {
     name: 'Om verktøyet',

@@ -145,6 +145,9 @@ export const ThemeToolbar = ({
           />
         </div>
       </div>
+      <div className={classes.banner}>
+        ff
+      </div>
     </div>
   );
 };
