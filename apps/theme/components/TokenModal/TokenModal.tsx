@@ -35,7 +35,7 @@ export const TokenModal = ({
 
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
-  const cliSnippet = `npx @digdir/designsystemet tokens create --accent "${accentColor}" --neutral "${neutralColor}" --brand1 "${brand1Color}" --brand2 "${brand2Color}" --brand3 "${brand3Color}"`;
+  const cliSnippet = `npx @digdir/designsystemet tokens create --write --accent "${accentColor}" --neutral "${neutralColor}" --brand1 "${brand1Color}" --brand2 "${brand2Color}" --brand3 "${brand3Color}"`;
 
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
