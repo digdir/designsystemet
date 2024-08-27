@@ -17,19 +17,9 @@ export type AvatarProps = {
   /**
    * The color of the avatar.
    *
-   * @default 'accent-strong'
+   * @default 'accent'
    */
-  color?:
-    | 'accent-subtle'
-    | 'accent-strong'
-    | 'neutral-subtle'
-    | 'neutral-strong'
-    | 'brand1-subtle'
-    | 'brand1-strong'
-    | 'brand2-subtle'
-    | 'brand2-strong'
-    | 'brand3-subtle'
-    | 'brand3-strong';
+  color?: 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
   /**
    * The size of the avatar.
    *
@@ -60,7 +50,7 @@ const fontSizeMap = {
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     name,
-    color = 'accent-strong',
+    color = 'accent',
     size = 'md',
     variant = 'circle',
     className,

@@ -35,7 +35,7 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   name: 'Ola Nordmann',
-  color: 'accent-strong',
+  color: 'accent',
   size: 'md',
   variant: 'circle',
 };
@@ -57,16 +57,11 @@ export const Sizes: Story = () => (
 
 export const ColorVariants: Story = () => (
   <>
-    <Avatar color='accent-subtle' />
-    <Avatar color='accent-strong' />
-    <Avatar color='neutral-subtle' />
-    <Avatar color='neutral-strong' />
-    <Avatar color='brand1-subtle' />
-    <Avatar color='brand1-strong' />
-    <Avatar color='brand2-subtle' />
-    <Avatar color='brand2-strong' />
-    <Avatar color='brand3-subtle' />
-    <Avatar color='brand3-strong' />
+    <Avatar color='accent' />
+    <Avatar color='neutral' />
+    <Avatar color='brand1' />
+    <Avatar color='brand2' />
+    <Avatar color='brand3' />
   </>
 );
 
@@ -100,7 +95,7 @@ export const InDropdownMenu: Story = () => (
           Ola Nordmann
         </DropdownMenu.Item>
         <DropdownMenu.Item>
-          <Avatar size='xs' color='brand1-strong'>
+          <Avatar size='xs' color='brand1'>
             <BriefcaseIcon fontSize='1.4em' />
           </Avatar>
           Sogndal kommune
