@@ -3,9 +3,6 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
 export type LinkProps = {
-  /** The content to display inside the link. */
-  children: React.ReactNode; // TODO: Can we remove as this is inherited from React.AnchorHTMLAttributes<HTMLAnchorElement>?
-
   /** Custom class name for the link. This will be appended to the design system class names. */
   className?: string;
 

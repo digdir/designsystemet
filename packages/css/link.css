@@ -6,16 +6,16 @@
   --dsc-link-color--hover: var(--ds-color-accent-text-default);
   --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-color: var(--ds-color-accent-text-subtle);
+  --dsc-link-text-decoration-thickness--hover: max(2px, 0.125rem, 0.12em);
+  --dsc-link-text-decoration-thickness: max(1px, 0.0625rem);
 
   color: var(--dsc-link-color);
-  cursor: pointer; /* TODO: Why - should we keep default (not causing pointer if missing href)? */
   outline: none;
   text-decoration-style: solid;
-  text-decoration-thickness: max(1px, 0.0625rem);
-  text-underline-offset: max(5px, 0.25rem); /* TODO: Should this be a component token as well? */
+  text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
+  text-underline-offset: max(5px, 0.25rem);
 
   & svg {
-    margin-inline-end: .25em; /* TODO: Is this good enough or should white-space be allowed to have underline? */
     vertical-align: middle; /* If adding SVG icon - align it to the text */
   }
 
@@ -40,7 +40,7 @@
   @media (hover: hover) and (pointer: fine) { /* Only use hover for non-touch devices to prevent sticky-hovering */
     &:hover {
       color: var(--dsc-link-color--hover);
-      text-decoration-thickness: max(2px, 0.125rem, 0.12em); /* TODO: Should this be a component token as well? */
+      text-decoration-thickness: var(--dsc-link-text-decoration-thickness--hover);
     }
   }
 
@@ -50,9 +50,7 @@
   }
 
   &:active {
-    /* TODO: More of a note, but border-radius is removed here after dialogue with Lasse */
     background: var(--dsc-link-background--active);
     color: var(--dsc-link-color--active);
   }
-
 }

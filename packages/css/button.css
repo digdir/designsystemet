@@ -1,32 +1,12 @@
 .ds-button {
-  --dsc-button-background--active: var(--dsc-button-primary-background--active);
-  --dsc-button-background--hover: var(--dsc-button-primary-background--hover);
-  --dsc-button-background: var(--dsc-button-primary-background);
-  --dsc-button-color: var(--dsc-button-primary-color);
+  --dsc-button-background--active: var(--ds-color-accent-base-active);
+  --dsc-button-background--hover: var(--ds-color-accent-base-hover);
+  --dsc-button-background: var(--ds-color-accent-base-default);
+  --dsc-button-color: var(--ds-color-accent-contrast-default);
   --dsc-button-font-size: var(--ds-font-size-5);
-  --dsc-button-font-size--mobile: var(--ds-font-size-4);
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-button-padding--mobile: var(--ds-spacing-2) var(--ds-spacing-3);
   --dsc-button-size: var(--ds-sizing-12);
-  --dsc-button-size--mobile: var(--ds-sizing-10);
-  --dsc-button-primary-background--active: var(--ds-color-accent-base-active);
-  --dsc-button-primary-background--hover: var(--ds-color-accent-base-hover);
-  --dsc-button-primary-background: var(--ds-color-accent-base-default);
-  --dsc-button-primary-color: var(--ds-color-accent-contrast-default);
-  --dsc-button-secondary-background--active: var(--ds-color-accent-surface-hover);
-  --dsc-button-secondary-background--hover: var(--ds-color-accent-surface-default);
-  --dsc-button-secondary-background: transparent;
-  --dsc-button-secondary-border-color: var(--ds-color-accent-border-strong);
-  --dsc-button-secondary-color--active: var(--ds-color-accent-text-default);
-  --dsc-button-secondary-color--hover: var(--ds-color-accent-text-default);
-  --dsc-button-secondary-color: var(--ds-color-accent-text-subtle);
-  --dsc-button-tertiary-background--active: var(--ds-color-accent-surface-hover);
-  --dsc-button-tertiary-background--hover: var(--ds-color-accent-surface-default);
-  --dsc-button-tertiary-background: transparent;
-  --dsc-button-tertiary-color--active: var(--ds-color-accent-text-default);
-  --dsc-button-tertiary-color--hover: var(--ds-color-accent-text-default);
-  --dsc-button-tertiary-color: var(--ds-color-accent-text-subtle);
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -37,37 +17,26 @@
   cursor: pointer;
   display: flex;
   font-family: inherit;
-  font-size: var(--dsc-button-font-size);
+  font-size: var(--dsc-button-font-size); /* Replace with composes paragraph-md */
+  line-height: var(--ds-line-height-sm); /* Replace with composes paragraph-md */
   gap: var(--dsc-button-gap);
   justify-content: center;
-  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-button-size);
-  min-width: var(--dsc-button-size); /* 2.5em; /* TODO: Why not ds-spacing here? */
+  min-width: var(--dsc-button-size);
   outline: none;
   padding: var(--dsc-button-padding);
   text-align: inherit;
   text-decoration: none;
 
-  & svg { overflow: visible } /* TODO: Add comment about why? */
-
-  /**
-    * Sizes
-    */
-  @media (max-width: 650px) {
-    --dsc-button-font-size: var(--dsc-button-font-size--mobile);
-    --dsc-button-padding: var(--dsc-button-padding--mobile);
-    --dsc-button-size: var(--dsc-button-size--mobile);
-  }
-
   &[data-size="sm"] {
-    --dsc-button-font-size: var(--ds-font-size-4);
+    --dsc-button-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
     --dsc-button-gap: var(--ds-sizing-1);
     --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-3);
-    --dsc-button-size: var(--ds-sizing-10); /* TODO: 40px, enough click surface? Yes accordting to Nielsen Norman group https://www.nngroup.com/articles/touch-target-size/ */
+    --dsc-button-size: var(--ds-sizing-10);
   }
 
   &[data-size="lg"] {
-    --dsc-button-font-size: var(--ds-font-size-6);
+    --dsc-button-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-lg */
     --dsc-button-padding: var(--ds-spacing-3) var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
   }
@@ -78,77 +47,103 @@
   }
 
   /**
-    * Colors
-    */
-  &[data-color="neutral"] {
-    --dsc-button-primary-background--active: var(--ds-color-neutral-base-active);
-    --dsc-button-primary-background--hover: var(--ds-color-neutral-base-hover);
-    --dsc-button-primary-background: var(--ds-color-neutral-base-default);
-    --dsc-button-primary-color: var(--ds-color-neutral-contrast-default);
-    --dsc-button-secondary-background--active: var(--ds-color-neutral-surface-hover);
-    --dsc-button-secondary-background--hover: var(--ds-color-neutral-surface-default);
-    --dsc-button-secondary-border-color: var(--ds-color-neutral-border-strong);
-    --dsc-button-secondary-color--active: var(--ds-color-neutral-text-default);
-    --dsc-button-secondary-color--hover: var(--ds-color-neutral-text-default);
-    --dsc-button-secondary-color: var(--ds-color-neutral-text-subtle);
-    --dsc-button-tertiary-background--active: var(--ds-color-neutral-surface-hover);
-    --dsc-button-tertiary-background--hover: var(--ds-color-neutral-surface-default);
-    --dsc-button-tertiary-color--active: var(--ds-color-neutral-text-default);
-    --dsc-button-tertiary-color--hover: var(--ds-color-neutral-text-default);
-    --dsc-button-tertiary-color: var(--ds-color-neutral-text-subtle);
-  }
-
-  &[data-color="danger"] {
-    --dsc-button-primary-background--active: var(--ds-color-danger-base-active);
-    --dsc-button-primary-background--hover: var(--ds-color-danger-base-hover);
-    --dsc-button-primary-background: var(--ds-color-danger-base-default);
-    --dsc-button-primary-color: var(--ds-color-danger-contrast-default);
-    --dsc-button-secondary-background--active: var(--ds-color-danger-surface-hover);
-    --dsc-button-secondary-background--hover: var(--ds-color-danger-surface-default);
-    --dsc-button-secondary-border-color: var(--ds-color-danger-border-strong);
-    --dsc-button-secondary-color--active: var(--ds-color-danger-text-default);
-    --dsc-button-secondary-color--hover: var(--ds-color-danger-text-default);
-    --dsc-button-secondary-color: var(--ds-color-danger-text-subtle);
-    --dsc-button-tertiary-background--active: var(--ds-color-danger-surface-hover);
-    --dsc-button-tertiary-background--hover: var(--ds-color-danger-surface-default);
-    --dsc-button-tertiary-color--active: var(--ds-color-danger-text-default);
-    --dsc-button-tertiary-color--hover: var(--ds-color-danger-text-default);
-    --dsc-button-tertiary-color: var(--ds-color-danger-text-subtle);
-  }
-
-  /**
     * Variants
     */
   &[data-variant="secondary"] {
-    --dsc-button-background--active: var(--dsc-button-secondary-background--active);
-    --dsc-button-background--hover: var(--dsc-button-secondary-background--hover);
-    --dsc-button-background: var(--dsc-button-secondary-background);
-    --dsc-button-border-color: var(--dsc-button-secondary-border-color);
-    --dsc-button-color--active: var(--dsc-button-secondary-color--active);
-    --dsc-button-color--hover: var(--dsc-button-secondary-color--hover);
-    --dsc-button-color: var(--dsc-button-secondary-color);
+    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-background: transparent;
+    --dsc-button-border-color: var(--ds-color-accent-border-strong);
+    --dsc-button-color--active: var(--ds-color-accent-text-default);
+    --dsc-button-color--hover: var(--ds-color-accent-text-default);
+    --dsc-button-color: var(--ds-color-accent-text-subtle);
   }
 
   &[data-variant="tertiary"] {
-    --dsc-button-background--active: var(--dsc-button-tertiary-background--active);
-    --dsc-button-background--hover: var(--dsc-button-tertiary-background--hover);
-    --dsc-button-background: var(--dsc-button-tertiary-background);
+    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-background: transparent;
     --dsc-button-border-color: var(--dsc-button-tertiary-border-color);
-    --dsc-button-color--active: var(--dsc-button-tertiary-color--active);
-    --dsc-button-color--hover: var(--dsc-button-tertiary-color--hover);
-    --dsc-button-color: var(--dsc-button-tertiary-color);
+    --dsc-button-color--active: var(--ds-color-accent-text-default);
+    --dsc-button-color--hover: var(--ds-color-accent-text-default);
+    --dsc-button-color: var(--ds-color-accent-text-subtle);
+  }
+
+  /**
+    * Colors
+    */
+  &[data-color="neutral"] {
+    --dsc-button-background--active: var(--ds-color-neutral-base-active);
+    --dsc-button-background--hover: var(--ds-color-neutral-base-hover);
+    --dsc-button-background: var(--ds-color-neutral-base-default);
+    --dsc-button-color: var(--ds-color-neutral-contrast-default);
+  }
+
+  &[data-color="neutral"][data-variant="secondary"] {
+    --dsc-button-background--active: var(--ds-color-neutral-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-neutral-surface-default);
+    --dsc-button-background: transparent;
+    --dsc-button-border-color: var(--ds-color-neutral-border-strong);
+    --dsc-button-color--active: var(--ds-color-neutral-text-default);
+    --dsc-button-color--hover: var(--ds-color-neutral-text-default);
+    --dsc-button-color: var(--ds-color-neutral-text-subtle);
+  }
+
+  &[data-color="neutral"][data-variant="tertiary"] {
+    --dsc-button-background--active: var(--ds-color-neutral-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-neutral-surface-default);
+    --dsc-button-background: transparent;
+    --dsc-button-color--active: var(--ds-color-neutral-text-default);
+    --dsc-button-color--hover: var(--ds-color-neutral-text-default);
+    --dsc-button-color: var(--ds-color-neutral-text-subtle);
+  }
+
+  &[data-color="danger"] {
+    --dsc-button-background--active: var(--ds-color-danger-base-active);
+    --dsc-button-background--hover: var(--ds-color-danger-base-hover);
+    --dsc-button-background: var(--ds-color-danger-base-default);
+    --dsc-button-color: var(--ds-color-danger-contrast-default);
+  }
+
+  &[data-color="danger"][data-variant="secondary"] {
+    --dsc-button-background--active: var(--ds-color-danger-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-danger-surface-default);
+    --dsc-button-background: transparent;
+    --dsc-button-border-color: var(--ds-color-danger-border-strong);
+    --dsc-button-color--active: var(--ds-color-danger-text-default);
+    --dsc-button-color--hover: var(--ds-color-danger-text-default);
+    --dsc-button-color: var(--ds-color-danger-text-subtle);
+  }
+
+  &[data-color="danger"][data-variant="tertiary"] {
+    --dsc-button-background--active: var(--ds-color-danger-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-danger-surface-default);
+    --dsc-button-background: transparent;
+    --dsc-button-color--active: var(--ds-color-danger-text-default);
+    --dsc-button-color--hover: var(--ds-color-danger-text-default);
+    --dsc-button-color: var(--ds-color-danger-text-subtle);
   }
 
   /**
     * States
     */
 
-  /* TODO: Add state for aria-busy="true" (loading?) */
-
   @media (hover: hover) and (pointer: fine) { /* Only use hover for non-touch devices to prevent sticky-hovering */
-    &:not([aria-disabled="true"], :disabled):hover {
+    &:not(:disabled, [aria-disabled="true"], [aria-busy="true"]):hover {
       background: var(--dsc-button-background--hover);
     }
+  }
+
+  &[aria-busy="true"]{
+    cursor: progress;
+  }
+
+  &[aria-busy="true"]::before {
+    background: currentcolor;
+    content: '';
+    height: 1.5em;
+    mask: center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cstyle%3E@keyframes rotate%7Bto%7Brotate:360deg%7D%7D@keyframes stroke%7B50%25%7Bstroke-dasharray:100,200;stroke-dashoffset:-15;transform:rotate(0deg)%7Dto%7Bstroke-dasharray:1,200;stroke-dashoffset:-120;transform:rotate(15deg)%7D%7Dcircle%7Bcx:25;cy:25;r:20;fill:none;stroke:currentcolor;stroke-width:5%7Dcircle:last-child%7Banimation:stroke ease-in-out infinite 2s,rotate linear infinite 2s;transform-origin:center%7D%3C/style%3E%3Ccircle opacity='.15'/%3E%3Ccircle stroke-dasharray='1, 200'/%3E%3C/svg%3E");
+    width: 1.5em;
   }
 
   &:focus-visible {
@@ -160,7 +155,7 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  &:not(:disabled, [aria-disabled="true"]):active {
+  &:not(:disabled, [aria-disabled="true"], [aria-busy="true"]):active {
     background-color: var(--dsc-button-background--active);
   }
 }

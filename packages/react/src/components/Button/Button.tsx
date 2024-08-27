@@ -8,7 +8,7 @@ export type ButtonProps = {
    * @default primary
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which color to use
+  /** Specify which color palette to use
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
@@ -22,10 +22,10 @@ export type ButtonProps = {
    * @default false
    */
   fill?: boolean;
-  /** Toggle icon only styling, pass icon as children
+  /** Toggle loading state
    * @default false
    */
-  icon?: boolean;
+  loading?: boolean;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -41,11 +41,11 @@ export type ButtonProps = {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      // icon = false,
       asChild,
       className,
       color = 'accent',
       fill = false,
+      loading = false,
       size = 'md',
       type = 'button',
       variant = 'primary',
@@ -57,6 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Component
+        aria-busy={loading || undefined} // Fallback to undefined to prevent false from rendering aria-busy="false"
         className={cl('ds-button', className)}
         data-color={color}
         data-fill={fill || undefined} // Fallback to undefined to prevent false from rendering data-fill="false"

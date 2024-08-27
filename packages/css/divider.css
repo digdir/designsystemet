@@ -1,17 +1,16 @@
 .ds-divider {
-  --dsc-divider-background: var(--ds-color-neutral-border-default); /* TODO: Updated to default since was same subtle before? */
+  --dsc-divider-color: var(--ds-color-neutral-border-default);
 
-  background: var(--dsc-divider-background);
-  border: 0;
-  height: 1px;
-  margin-block: .5em; /* TODO: What should be default? (.5em is browser default in Chrome) */
+  border-top: 1px solid var(--dsc-divider-color);
+  border-width: 1px 0 0;
+  margin-block: .5em;
   width: 100%;
 
   &[data-variant="strong"] {
-    --dsc-divider-background: var(--ds-color-neutral-border-default);
+    --dsc-divider-color: var(--ds-color-neutral-border-default);
   }
 
   &[data-variant="subtle"] {
-    --dsc-divider-background: var(--ds-color-neutral-border-subtle);
+    --dsc-divider-color: var(--ds-color-neutral-border-subtle);
   }
 }

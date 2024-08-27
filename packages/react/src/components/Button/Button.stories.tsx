@@ -44,7 +44,6 @@ export const Preview: Story = {
     variant: 'primary',
     color: 'accent',
     size: 'md',
-    icon: false,
     fill: false,
   },
 };
@@ -179,16 +178,13 @@ TextAndIcon.decorators = [stack];
 
 export const Loading: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='primary' loading>
       Laster...
     </Button>
-    <Button variant='secondary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='secondary' loading>
       Laster...
     </Button>
-    <Button variant='tertiary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='tertiary' loading>
       Laster...
     </Button>
   </>
@@ -235,32 +231,17 @@ Icons.decorators = [stack];
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
-      <Button
-        icon={true}
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
+      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
         <PlusCircleIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
-      <Button
-        icon={true}
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
+      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
         <BellIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
-      <Button
-        icon={true}
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
+      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
         <CogIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
@@ -282,13 +263,13 @@ IconOnly.decorators = [
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button icon={true} variant='primary' size='sm'>
+    <Button variant='primary' size='sm'>
       <CogIcon fontSize='1.5rem' />
     </Button>
-    <Button icon={true} variant='primary' size='md'>
+    <Button variant='primary' size='md'>
       <CogIcon fontSize='2rem' />
     </Button>
-    <Button icon={true} variant='primary' size='lg'>
+    <Button variant='primary' size='lg'>
       <CogIcon fontSize='2.5rem' />
     </Button>
   </>
