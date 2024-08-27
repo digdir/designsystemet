@@ -104,3 +104,11 @@ export const InDropdownMenu: Story = () => (
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 );
+
+export const AsLink: Story = () => (
+  <Avatar name='Ola Nordmann' asChild>
+    <a href='#'>
+      <img src={cat1} alt='' />
+    </a>
+  </Avatar>
+);
