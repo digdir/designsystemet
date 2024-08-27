@@ -9,6 +9,11 @@ import type { Metadata } from 'next';
 import { Footer } from '../components/Footer/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_GIT_COMMIT_REF !== 'main'
+      ? 'https://next.designsystemet.no'
+      : 'https://designsystemet.no',
+  ),
   title: {
     template: '%s - Designsystemet',
     default: 'Designsystemet',
