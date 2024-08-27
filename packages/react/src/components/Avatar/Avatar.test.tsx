@@ -5,13 +5,21 @@ describe('Avatar', () => {
   it('should render correctly with default props', () => {
     render(<Avatar />);
     expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByRole('img')).toHaveAttribute('data-ds-size', 'md');
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'data-ds-variant',
+      'circle',
+    );
+    expect(screen.getByRole('img')).toHaveAttribute('data-ds-color', 'accent');
   });
 
   it('should render correctly with custom props', () => {
     render(<Avatar size='lg' variant='square' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
-    expect(screen.getByRole('img')).toHaveClass(
-      'ds-avatar--lg ds-avatar--square',
+    expect(screen.getByRole('img')).toHaveAttribute('data-ds-size', 'lg');
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'data-ds-variant',
+      'square',
     );
   });
 
