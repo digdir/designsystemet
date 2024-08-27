@@ -7,8 +7,8 @@ import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } fro
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
-  green: '#078D19',
-  orange: '#CA5C21',
+  green: '#068718',
+  orange: '#B8581D',
   purple: '#663299',
   red: '#C01B1B',
   yellow: '#EABF28',
