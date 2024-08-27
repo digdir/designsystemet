@@ -98,7 +98,7 @@ const generateThemeTokens = (theme: ColorMode, colors: Colors): Tokens => {
 const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Tokens, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
   return {
-    data: `${JSON.stringify(tokens, null, 2)}\n`,
+    data: JSON.stringify(tokens, null, 2),
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -107,7 +107,7 @@ const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Toke
 const generateTypographyFile = (folder: TypographyModes, name: Collection, tokens: Tokens, outPath: string): File => {
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
-    data: `${JSON.stringify(tokens, null, 2)}\n`,
+    data: JSON.stringify(tokens, null, 2),
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -162,7 +162,7 @@ export const createTokens = async (opts: CreateTokens) => {
     await fs.writeFile(path.join(targetDir, '$themes.json'), JSON.stringify($theme, null, 2));
     await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, 2));
 
-    console.log(`Copy files to ${targetDir}`);
+    console.log(`Copying default files to ${targetDir}`);
     await fs.cp(DEFAULT_FILES_PATH, targetDir, {
       recursive: true,
     });
@@ -179,10 +179,10 @@ export const createTokens = async (opts: CreateTokens) => {
     ];
 
     for (const file of files) {
-      const path_ = path.resolve(file.path);
+      const dirPath = path.resolve(file.path);
       const filePath = path.resolve(file.filePath);
       console.log(`Writing file ${filePath}`);
-      await fs.mkdir(path_, { recursive: true });
+      await fs.mkdir(dirPath, { recursive: true });
       await fs.writeFile(filePath, file.data, { encoding: 'utf-8' });
     }
   }
