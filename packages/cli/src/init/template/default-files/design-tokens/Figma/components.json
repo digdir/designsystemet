@@ -1,0 +1,22 @@
+{
+  "switch": {
+    "circle": {
+      "small": {
+        "$type": "sizing",
+        "$value": "{sizing.5} - {switch.border}"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "{sizing.6} - {switch.border}"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "{sizing.7} - {switch.border}"
+      }
+    },
+    "border": {
+      "$type": "sizing",
+      "$value": "4"
+    }
+  }
+}

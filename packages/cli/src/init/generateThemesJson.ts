@@ -2,7 +2,6 @@ import { randomUUID } from 'node:crypto';
 
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import { Theme } from '@adobe/leonardo-contrast-colors';
 import { normalizeTokenSetName } from './utils.js';
 
 export default function generateThemesJson(
@@ -28,14 +27,14 @@ function generateSizeGroup(): ThemeObject[] {
       },
       group: 'Size',
     },
-    {
-      id: randomUUID(),
-      name: 'compact',
-      selectedTokenSets: {
-        'primitives/size/compact': TokenSetStatus.ENABLED,
-      },
-      group: 'Size',
-    },
+    // {
+    //   id: randomUUID(),
+    //   name: 'compact',
+    //   selectedTokenSets: {
+    //     'primitives/size/compact': TokenSetStatus.ENABLED,
+    //   },
+    //   group: 'Size',
+    // },
   ];
 }
 

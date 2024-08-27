@@ -1,4 +1,4 @@
-import type { Mode } from '@digdir/designsystemet/color';
+import type { ColorMode } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 
@@ -15,8 +15,8 @@ type previewModeType =
   | 'components';
 
 type PreviewsProps = {
-  themeMode: Mode;
-  onThemeModeChange: (themeMode: Mode) => void;
+  themeMode: ColorMode;
+  onThemeModeChange: (themeMode: ColorMode) => void;
 };
 
 export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {

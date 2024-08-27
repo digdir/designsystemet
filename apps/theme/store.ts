@@ -1,7 +1,7 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type {
   ColorInfo,
-  ColorType,
+  ThemeColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
@@ -25,8 +25,8 @@ type ColorStore = {
   setBrandOneTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandTwoTheme: (theme: ThemeInfo, color: CssColor) => void;
   setBrandThreeTheme: (theme: ThemeInfo, color: CssColor) => void;
-  selectedColor: { color: ColorInfo; type: ColorType };
-  setSelectedColor: (color: ColorInfo, type: ColorType) => void;
+  selectedColor: { color: ColorInfo; type: ThemeColors };
+  setSelectedColor: (color: ColorInfo, type: ThemeColors) => void;
   borderRadius: string;
   setBorderRadius: (radius: string) => void;
 };

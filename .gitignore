@@ -1,6 +1,5 @@
 # Built files
 dist
-build
 ignore
 tsc-build
 
