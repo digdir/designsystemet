@@ -29,8 +29,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return (
     <div
       className={cl('ds-alert', className)}
-      data-color={color}
-      data-size={size}
+      data-ds-color={color}
+      data-ds-size={size}
       ref={ref}
       {...rest}
     />

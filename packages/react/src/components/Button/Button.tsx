@@ -59,10 +59,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         aria-busy={loading || undefined} // Fallback to undefined to prevent false from rendering aria-busy="false"
         className={cl('ds-button', className)}
-        data-color={color}
-        data-fill={fill || undefined} // Fallback to undefined to prevent false from rendering data-fill="false"
-        data-size={size}
-        data-variant={variant}
+        data-ds-color={color}
+        data-ds-fill={fill || undefined} // Fallback to undefined to prevent false from rendering data-ds-fill="false"
+        data-ds-size={size}
+        data-ds-variant={variant}
         ref={ref}
         type={type}
         {...rest}

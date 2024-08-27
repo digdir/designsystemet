@@ -28,20 +28,20 @@
   text-align: inherit;
   text-decoration: none;
 
-  &[data-size="sm"] {
+  &[data-ds-size="sm"] {
     --dsc-button-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
     --dsc-button-gap: var(--ds-sizing-1);
     --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10);
   }
 
-  &[data-size="lg"] {
+  &[data-ds-size="lg"] {
     --dsc-button-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-lg */
     --dsc-button-padding: var(--ds-spacing-3) var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
   }
 
-  &[data-fill] {
+  &[data-ds-fill] {
     width: 100%;
     text-align: center;
   }
@@ -49,7 +49,7 @@
   /**
     * Variants
     */
-  &[data-variant="secondary"] {
+  &[data-ds-variant="secondary"] {
     --dsc-button-background--active: var(--ds-color-accent-surface-hover);
     --dsc-button-background--hover: var(--ds-color-accent-surface-default);
     --dsc-button-background: transparent;
@@ -59,7 +59,7 @@
     --dsc-button-color: var(--ds-color-accent-text-subtle);
   }
 
-  &[data-variant="tertiary"] {
+  &[data-ds-variant="tertiary"] {
     --dsc-button-background--active: var(--ds-color-accent-surface-hover);
     --dsc-button-background--hover: var(--ds-color-accent-surface-default);
     --dsc-button-background: transparent;
@@ -72,14 +72,14 @@
   /**
     * Colors
     */
-  &[data-color="neutral"] {
+  &[data-ds-color="neutral"] {
     --dsc-button-background--active: var(--ds-color-neutral-base-active);
     --dsc-button-background--hover: var(--ds-color-neutral-base-hover);
     --dsc-button-background: var(--ds-color-neutral-base-default);
     --dsc-button-color: var(--ds-color-neutral-contrast-default);
   }
 
-  &[data-color="neutral"][data-variant="secondary"] {
+  &[data-ds-color="neutral"][data-ds-variant="secondary"] {
     --dsc-button-background--active: var(--ds-color-neutral-surface-hover);
     --dsc-button-background--hover: var(--ds-color-neutral-surface-default);
     --dsc-button-background: transparent;
@@ -89,7 +89,7 @@
     --dsc-button-color: var(--ds-color-neutral-text-subtle);
   }
 
-  &[data-color="neutral"][data-variant="tertiary"] {
+  &[data-ds-color="neutral"][data-ds-variant="tertiary"] {
     --dsc-button-background--active: var(--ds-color-neutral-surface-hover);
     --dsc-button-background--hover: var(--ds-color-neutral-surface-default);
     --dsc-button-background: transparent;
@@ -98,14 +98,14 @@
     --dsc-button-color: var(--ds-color-neutral-text-subtle);
   }
 
-  &[data-color="danger"] {
+  &[data-ds-color="danger"] {
     --dsc-button-background--active: var(--ds-color-danger-base-active);
     --dsc-button-background--hover: var(--ds-color-danger-base-hover);
     --dsc-button-background: var(--ds-color-danger-base-default);
     --dsc-button-color: var(--ds-color-danger-contrast-default);
   }
 
-  &[data-color="danger"][data-variant="secondary"] {
+  &[data-ds-color="danger"][data-ds-variant="secondary"] {
     --dsc-button-background--active: var(--ds-color-danger-surface-hover);
     --dsc-button-background--hover: var(--ds-color-danger-surface-default);
     --dsc-button-background: transparent;
@@ -115,7 +115,7 @@
     --dsc-button-color: var(--ds-color-danger-text-subtle);
   }
 
-  &[data-color="danger"][data-variant="tertiary"] {
+  &[data-ds-color="danger"][data-ds-variant="tertiary"] {
     --dsc-button-background--active: var(--ds-color-danger-surface-hover);
     --dsc-button-background--hover: var(--ds-color-danger-surface-default);
     --dsc-button-background: transparent;

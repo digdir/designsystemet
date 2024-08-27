@@ -18,7 +18,7 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
     <hr
       aria-hidden='true'
       className={cl('ds-divider', className)}
-      data-variant={variant}
+      data-ds-variant={variant}
       ref={ref}
       {...rest}
     />

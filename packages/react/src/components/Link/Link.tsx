@@ -28,7 +28,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     return (
       <Component
         className={cl('ds-link', className)}
-        data-color={color}
+        data-ds-color={color}
         ref={ref}
         {...rest}
       />

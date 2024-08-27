@@ -22,7 +22,7 @@
   /**
     * Colors
     */
-  &[data-color="neutral"] {
+  &[data-ds-color="neutral"] {
     --dsc-link-background--active: var(--ds-color-neutral-surface-default);
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
     --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
