@@ -14,7 +14,7 @@ type TypographyModes = 'primary' | 'secondary';
 type CreateTokens = {
   colors: Colors;
   typography: Typography;
-  outPath: string;
+  write?: string;
 };
 
 type File = {
@@ -134,7 +134,7 @@ const generateGlobalTokens = (theme: ColorMode) => {
 };
 
 export const createTokens = async (opts: CreateTokens) => {
-  const { colors, outPath, typography } = opts;
+  const { colors, write, typography } = opts;
 
   const tokens = {
     colors: {
@@ -150,10 +150,8 @@ export const createTokens = async (opts: CreateTokens) => {
     },
   };
 
-  const write = R.isNotNil(outPath);
-
-  if (write) {
-    const targetDir = path.resolve(process.cwd(), outPath);
+  if (R.isNotNil(write)) {
+    const targetDir = path.resolve(process.cwd(), String(write));
     await fs.mkdir(targetDir, { recursive: true });
 
     // Generate metadata and themes json for Token Studio and build script
@@ -170,14 +168,14 @@ export const createTokens = async (opts: CreateTokens) => {
     });
 
     const files: File[] = [
-      generateColorModeFile('light', 'theme', tokens.colors.light.theme, outPath),
-      generateColorModeFile('light', 'global', tokens.colors.light.global, outPath),
-      generateColorModeFile('dark', 'theme', tokens.colors.dark.theme, outPath),
-      generateColorModeFile('dark', 'global', tokens.colors.dark.global, outPath),
-      generateColorModeFile('contrast', 'theme', tokens.colors.contrast.theme, outPath),
-      generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, outPath),
-      generateTypographyFile('primary', 'theme', tokens.typography.primary, outPath),
-      generateTypographyFile('secondary', 'theme', tokens.typography.primary, outPath),
+      generateColorModeFile('light', 'theme', tokens.colors.light.theme, targetDir),
+      generateColorModeFile('light', 'global', tokens.colors.light.global, targetDir),
+      generateColorModeFile('dark', 'theme', tokens.colors.dark.theme, targetDir),
+      generateColorModeFile('dark', 'global', tokens.colors.dark.global, targetDir),
+      generateColorModeFile('contrast', 'theme', tokens.colors.contrast.theme, targetDir),
+      generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
+      generateTypographyFile('primary', 'theme', tokens.typography.primary, targetDir),
+      generateTypographyFile('secondary', 'theme', tokens.typography.primary, targetDir),
     ];
 
     for (const file of files) {

@@ -2,6 +2,7 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
+import { write } from 'node:fs';
 import { convertToHex } from '../src/colors/index.js';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
@@ -31,7 +32,7 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, './design-tokens')
+    .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`)
     .option('-a, --accent <number>', `Accent hex color`)
     .option('-n, --neutral <number>', `Neutral hex color`)
     .option('-b1, --brand1 <number>', `Brand1 hex color`)
@@ -41,8 +42,8 @@ function makeTokenCommands() {
     .action(async (opts) => {
       // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts))}`);
-      const outPath = typeof opts.write === 'string' ? opts.write : './design-tokens';
       const family = typeof opts.fontFamily === 'string' ? opts.fontFamily : 'Inter';
+      const write = typeof opts.write === 'boolean' ? './design-tokens' : opts.write;
 
       const props = {
         colors: {
@@ -55,7 +56,7 @@ function makeTokenCommands() {
         typography: {
           family,
         },
-        outPath: outPath,
+        write,
       };
 
       await createTokens(props);
