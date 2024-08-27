@@ -96,7 +96,7 @@ export const InDropdownMenu: Story = () => (
         </DropdownMenu.Item>
         <DropdownMenu.Item>
           <Avatar size='xs' color='brand1'>
-            <BriefcaseIcon fontSize='1.4em' />
+            <BriefcaseIcon fontSize='5em' />
           </Avatar>
           Sogndal kommune
         </DropdownMenu.Item>
