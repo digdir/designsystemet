@@ -1,7 +1,7 @@
 .ds-avatar {
   --ds-avatar-background: var(--ds-color-accent-base-default);
   --ds-avatar-color: var(--ds-color-accent-contrast-default);
-  --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-size: var(--ds-sizing-12);
   --ds-avatar-padding: var(--ds-spacing-2);
   --ds-avatar-border-radius: 50%;
 
@@ -97,21 +97,21 @@
 }
 
 .ds-avatar--xs {
-  --ds-avatar-size: var(--ds-spacing-6);
+  --ds-avatar-size: var(--ds-sizing-7);
   --ds-avatar-padding: var(--ds-spacing-1);
 }
 
 .ds-avatar--sm {
-  --ds-avatar-size: var(--ds-spacing-9);
+  --ds-avatar-size: var(--ds-sizing-9);
   --ds-avatar-padding: var(--ds-spacing-1);
 }
 
 .ds-avatar--md {
-  --ds-avatar-size: var(--ds-spacing-12);
+  --ds-avatar-size: var(--ds-sizing-12);
   --ds-avatar-padding: var(--ds-spacing-2);
 }
 
 .ds-avatar--lg {
-  --ds-avatar-size: var(--ds-spacing-15);
+  --ds-avatar-size: var(--ds-sizing-15);
   --ds-avatar-padding: var(--ds-spacing-2);
 }
