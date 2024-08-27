@@ -21,10 +21,11 @@ import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
 
+import { TokenBorderRadius } from '../TokenBorderRadius/TokenBorderRadius';
 import classes from './TokenList.module.css';
 
 type TokenListProps = {
-  type: 'color' | 'typography' | 'boxShadow' | 'sizing' | 'spacing';
+  type: 'color' | 'typography' | 'shadow' | 'dimension';
   token?: string;
   showThemePicker?: boolean;
   showModeSwitcher: boolean;
@@ -52,7 +53,11 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Body>
         {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
-            const pxSize = `${parseFloat(token.value as string) * 16}px`;
+            const value = token.$value as string;
+            const pxSize = /\b\d+px\b/.test(value)
+              ? value
+              : `${parseFloat(value) * 16}px`;
+            const isBorderRadius = token.path.includes('border-radius');
 
             return (
               <Table.Row key={token.name}>
@@ -63,10 +68,14 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                     value={token.name}
                   />
                 </Table.Cell>
-                <Table.Cell>{token.value}</Table.Cell>
+                <Table.Cell>{token.$value}</Table.Cell>
                 <Table.Cell>{pxSize}</Table.Cell>
                 <Table.Cell>
-                  <TokenSize value={pxSize} />
+                  {isBorderRadius ? (
+                    <TokenBorderRadius value={pxSize} />
+                  ) : (
+                    <TokenSize value={pxSize} />
+                  )}
                 </Table.Cell>
               </Table.Row>
             );
@@ -119,19 +128,19 @@ type TokenCardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = token.value as string;
+  const val = token.$value as string;
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
-  const weight = getColorWeight(token.original.value as string);
+  const weight = getColorWeight(token.original.$value as string);
 
   return (
     <div className={classes.card} {...rest}>
       <div className={classes.preview}>
         {type === 'color' && <TokenColor value={val} token={token} />}
         {type === 'typography' && <TokenFontSize value={val} />}
-        {type === 'boxShadow' && <TokenShadow value={val} />}
+        {type === 'shadow' && <TokenShadow value={val} />}
       </div>
 
       <div className={classes.textContainer}>
@@ -144,7 +153,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
             value={token.name}
           />
         </Heading>
-        {!hideValue && <div className={classes.value}>{token.value}</div>}
+        {!hideValue && <div className={classes.value}>{token.$value}</div>}
       </div>
     </div>
   );
@@ -252,7 +261,7 @@ const TokenList = ({
         {sectionedTokens.map(([section, tokens]) => {
           const tokens_ = tokens as [string, Token[]][];
           const List = () => {
-            if (['spacing', 'sizing'].includes(type)) {
+            if (type === 'dimension') {
               return <TokensTable tokens={tokens_} />;
             }
 

@@ -1,4 +1,6 @@
 export * from './Button';
+export * from './Badge';
+export * from './Breadcrumbs';
 export * from './HelpText';
 export * from './Spinner';
 export * from './Link';

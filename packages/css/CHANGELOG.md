@@ -1,5 +1,31 @@
 # Change Log
 
+## 0.11.0-next.12
+
+### Minor Changes
+
+- SkipLink: New style ([#2260](https://github.com/digdir/designsystemet/pull/2260))
+
+### Patch Changes
+
+- Table: New hover prop and class for toggling hover on rows ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- Table: Width is now by default `100%` ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- AccordionHeading: Correct name on types ([#2276](https://github.com/digdir/designsystemet/pull/2276))
+
+## 0.11.0-next.11
+
+### Patch Changes
+
+- Fixes so spacing is the same in checkbox and radio groups ([#2234](https://github.com/digdir/designsystemet/pull/2234))
+
+- Button: `text-align: inherit` when not in full width ([#2216](https://github.com/digdir/designsystemet/pull/2216))
+
+- Breadcrumbs: ✨ new component ([#2226](https://github.com/digdir/designsystemet/pull/2226))
+
+- Badge: ✨ New component ([#2220](https://github.com/digdir/designsystemet/pull/2220))
+
 ## 0.11.0-next.10
 
 ### Patch Changes

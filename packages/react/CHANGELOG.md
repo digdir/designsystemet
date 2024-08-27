@@ -1,5 +1,49 @@
 # Change Log
 
+## 1.0.0-next.17
+
+### Patch Changes
+
+- Table: New hover prop and class for toggling hover on rows ([#2285](https://github.com/digdir/designsystemet/pull/2285))
+
+- Combobox: Make controlled input adhere to `inputValue` and send all change events ([#2267](https://github.com/digdir/designsystemet/pull/2267))
+
+- AccordionHeading: Correct name on types ([#2276](https://github.com/digdir/designsystemet/pull/2276))
+
+- Badge: Export component ([#2297](https://github.com/digdir/designsystemet/pull/2297))
+
+- ToggleGroup, Tabs: Active item equality check is now strict ([#2253](https://github.com/digdir/designsystemet/pull/2253))
+
+## 1.0.0-next.16
+
+### Minor Changes
+
+- Breadcrumbs: ✨ new component ([#2226](https://github.com/digdir/designsystemet/pull/2226))
+
+- Badge: ✨ New component ([#2220](https://github.com/digdir/designsystemet/pull/2220))
+
+### Patch Changes
+
+- Modal: add missing ModalRoot export ([#2228](https://github.com/digdir/designsystemet/pull/2228))
+
+- RovingFocus: add `orientation` to support for different arrow directions, and add support home/end buttons ([#2206](https://github.com/digdir/designsystemet/pull/2206))
+
+  - Affects `ToggleGroup`, where up and down arrows can now be used
+  - Affects `ToggleGroup`, where home and end can now be used
+  - Affects `Tabs`, where home and end can now be used
+
+- Accordion: Fix `defaultOpen` flicker on first render ([#2214](https://github.com/digdir/designsystemet/pull/2214))
+
+- Tabs: Make arrow keys work in any direction ([#2223](https://github.com/digdir/designsystemet/pull/2223))
+
+- Fixes so spacing is the same in checkbox and radio groups ([#2234](https://github.com/digdir/designsystemet/pull/2234))
+
+- Divider: hide from screen readers ([#2232](https://github.com/digdir/designsystemet/pull/2232))
+
+- Modal: remove `FloatingFocusManager` ([#2224](https://github.com/digdir/designsystemet/pull/2224))
+
+- NativeSelect: add focus in `readOnly` state ([#2212](https://github.com/digdir/designsystemet/pull/2212))
+
 ## 1.0.0-next.15
 
 ### Patch Changes

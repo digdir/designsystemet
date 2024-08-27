@@ -54,6 +54,7 @@ Preview.args = {
   zebra: false,
   stickyHeader: false,
   border: false,
+  hover: false,
 };
 
 const dummyData = [
@@ -208,7 +209,8 @@ export const WithFormElements: Story = (args) => {
     setHeaderChecked(event.target.checked);
     setCheckedItems(
       rows.reduce(
-        (acc: CheckedItems, row) => ({ ...acc, [row]: event.target.checked }),
+        (acc: CheckedItems, row) =>
+          Object.assign(acc, { [row]: event.target.checked }),
         {},
       ),
     );
@@ -255,6 +257,35 @@ export const WithFormElements: Story = (args) => {
             <TableCell>
               <Textfield size='sm' />
             </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+export const FixedTable: Story = (args) => {
+  const rows = Array.from({ length: 3 }, (_, i) => i + 1);
+  return (
+    <Table
+      {...args}
+      style={{
+        tableLayout: 'fixed',
+      }}
+    >
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Header 1</TableHeaderCell>
+          <TableHeaderCell>Header 2</TableHeaderCell>
+          <TableHeaderCell>Header 3</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row}>
+            <TableCell>{`Cell ${row}1`}</TableCell>
+            <TableCell>{`Cell ${row}2`}</TableCell>
+            <TableCell>{`Cell ${row}3`}</TableCell>
           </TableRow>
         ))}
       </TableBody>

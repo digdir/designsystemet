@@ -1,6 +1,6 @@
 import type { AccordionContentProps } from './AccordionContent';
 import { AccordionContent } from './AccordionContent';
-import type { AccordionHeaderProps } from './AccordionHeading';
+import type { AccordionHeadingProps } from './AccordionHeading';
 import { AccordionHeading } from './AccordionHeading';
 import type { AccordionItemProps } from './AccordionItem';
 import { AccordionItem } from './AccordionItem';
@@ -20,8 +20,8 @@ type AccordionComponent = {
  * <Accordion.Root>
  *  <Accordion.Item>
  *   <Accordion.Heading>Heading 1</Accordion.Heading>
- *  <Accordion.Content>Content 1</Accordion.Content>
- * </Accordion.Item>
+ *   <Accordion.Content>Content 1</Accordion.Content>
+ *  </Accordion.Item>
  * <Accordion.Item>
  */
 const Accordion = {} as AccordionComponent;
@@ -39,7 +39,7 @@ Accordion.Item.displayName = 'Accordion.Item';
 export type {
   AccordionRootProps,
   AccordionContentProps,
-  AccordionHeaderProps,
+  AccordionHeadingProps,
   AccordionItemProps,
 };
 export {

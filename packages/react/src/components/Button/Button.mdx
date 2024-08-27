@@ -70,7 +70,7 @@ Knappene kommer i to hovedfarger `accent` og `neutral`. Hvis du har overstyrt fa
 
 En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal tydeliggjøre en handling brukeren ikke kan angre, for eksempel Forkast. Vi skal ikke kombinere andre fargevarianter.
 
-<Canvas of={ButtonStories.KombinereFarger} />
+<Canvas of={ButtonStories.CombinedColors} />
 
 <br />
 
@@ -81,19 +81,19 @@ En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal ty
 Bruk `asChild` dersom du trenger å bruke knappen som en lenke. Vurder først om det er bedre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten.
 Du kan lese mer om komposisjon [her](https://www.designsystemet.no/grunnleggende/for-utviklere/komposisjon).
 
-<Canvas of={ButtonStories.KnappSomLenke} />
+<Canvas of={ButtonStories.AsLink} />
 
 ### Knapp med kun ikon
 
 Knapper med kun ikon bruker vi bare for godt kjente ikoner som Lukk og Slett. Når knappen bare har ikon, må vi ha med en tilgjengelig tekst som forklarer hva knappen gjør. Dette kan legges i `title`, `aria-label` eller i en `Tooltip` som i eksempelet under.
 
-<Canvas of={ButtonStories.BareIkon} />
+<Canvas of={ButtonStories.IconOnly} />
 
 ### Knapp med tekst og ikon
 
 Når vi bruker ikon sammen med tekst, skal ikonet ha `aria-hidden` slik at teksten ikke blir lest opp av skjermleser to ganger.
 
-<Canvas of={ButtonStories.TekstOgIkon} />
+<Canvas of={ButtonStories.TextAndIcon} />
 
 Vi plasserer ikonet til venstre eller høyre for teksten, avhengig av hva knappen kommuniserer og hvor den står i grensesnittet.
 
@@ -114,7 +114,7 @@ Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å br
 | md                 | 1.5rem                 |
 | lg                 | 2rem                   |
 
-<Canvas of={ButtonStories.Ikoner} />
+<Canvas of={ButtonStories.IconOnly} />
 
 For knapper med kun ikon anbefaler vi å bruke større ikon:
 
@@ -124,7 +124,7 @@ For knapper med kun ikon anbefaler vi å bruke større ikon:
 | md                 | 2rem                   |
 | lg                 | 2.5rem                 |
 
-<Canvas of={ButtonStories.Kunikoner} />
+<Canvas of={ButtonStories.IconOnly} />
 
 <br />
 
@@ -132,13 +132,13 @@ For knapper med kun ikon anbefaler vi å bruke større ikon:
 
 Noen ganger ser det best ut når knappen fyller hele bredden. For eksempel i bunnen av en liste.
 
-<Canvas of={ButtonStories.FullBredde} />
+<Canvas of={ButtonStories.FullWidth} />
 
 ### Last inn
 
 Når vi skal vise brukeren at knappen laster noe, kan vi kombinere knappen med en `spinner`.
 
-<Canvas of={ButtonStories.Lasting} />
+<Canvas of={ButtonStories.Loading} />
 
 I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
 

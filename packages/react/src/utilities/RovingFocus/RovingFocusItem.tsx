@@ -42,7 +42,7 @@ export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
     const Component = asChild ? Slot : 'div';
 
     const focusValue =
-      value ?? (typeof rest.children == 'string' ? rest.children : '');
+      value ?? (typeof rest.children === 'string' ? rest.children : '');
 
     const { getOrderedItems, getRovingProps, orientation } =
       useRovingFocus(focusValue);

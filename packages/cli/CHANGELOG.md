@@ -1,5 +1,23 @@
 # Change Log
 
+## 0.1.0-next.23
+
+### Minor Changes
+
+- Update init script to new design-tokens format ([#2255](https://github.com/digdir/designsystemet/pull/2255))
+
+## 0.1.0-next.22
+
+### Minor Changes
+
+- feat: Convert to W3C design token format ([#2240](https://github.com/digdir/designsystemet/pull/2240))
+
+### Patch Changes
+
+- refactor: single CSS file for theme ([#2204](https://github.com/digdir/designsystemet/pull/2204))
+
+- fix: Export correct types for color ([`e6325afa14e349698daf1082ba8844e80f46c5c0`](https://github.com/digdir/designsystemet/commit/e6325afa14e349698daf1082ba8844e80f46c5c0))
+
 ## 0.1.0-next.21
 
 ### Patch Changes
