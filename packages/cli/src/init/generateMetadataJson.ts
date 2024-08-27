@@ -7,7 +7,7 @@ interface Metadata {
 export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes: string[]): Metadata {
   return {
     tokenSetOrder: [
-      'primitives/modes/globals',
+      'primitives/globals',
       'primitives/size/default',
       'primitives/modes/typography/primary/theme',
       'primitives/modes/typography/secondary/theme',
