@@ -7,6 +7,10 @@
   height: fit-content;
 }
 
+.codeSnippet > pre {
+  padding-right: var(--ds-spacing-11) !important;
+}
+
 .copyButton {
   position: absolute;
   top: var(--ds-spacing-2);
