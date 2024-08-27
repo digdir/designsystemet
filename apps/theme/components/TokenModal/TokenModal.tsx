@@ -204,10 +204,11 @@ export const TokenModal = ({
         <Modal.Content className={classes.modalContent}>
           <div className={classes.content}>
             <button
+              aria-label='Lukk modal'
               tabIndex={-1}
               className={classes.hiddenGlobalBtn}
               onClick={() => setShowGlobals(!showGlobals)}
-            ></button>
+            />
             <div className={classes.column}>
               <Heading className={classes.title} size='xs'>
                 Json til Figma

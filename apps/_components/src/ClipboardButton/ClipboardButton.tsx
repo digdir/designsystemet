@@ -32,7 +32,6 @@ export const ClipboardButton = ({
           onMouseEnter={() => setToolTipText(title)}
           onClick={() => onBtnClick(value)}
           title={title}
-          icon={!text}
           variant='tertiary'
           color='neutral'
           size='sm'

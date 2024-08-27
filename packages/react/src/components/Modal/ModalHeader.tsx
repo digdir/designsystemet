@@ -74,7 +74,6 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             size='md'
             onClick={() => closeModal?.()}
             autoFocus
-            icon={true}
             className='ds-modal__header__button'
             title={closeButtonTitle}
           >
