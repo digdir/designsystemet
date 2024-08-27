@@ -61,13 +61,13 @@ function PostLayout({
               <span>{author}</span>
             </Paragraph>
           </div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            caption={imageCaption}
+            boxShadow={false}
+          />
           <MdxContent classname={classes.content}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              caption={imageCaption}
-              boxShadow={false}
-            />
             {content}
             <div className={classes.wantToWrite}>
               <Heading level={3} size='xs'>
