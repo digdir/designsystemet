@@ -33,11 +33,6 @@ export type AvatarProps = {
    */
   variant?: 'circle' | 'square';
   /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-  /**
    * Image or icon to display inside the avatar.
    *
    * Gets `aria-hidden="true"`
@@ -58,22 +53,20 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     color = 'accent',
     size = 'md',
     variant = 'circle',
-    asChild,
     className,
     children,
     ...rest
   },
   ref,
 ) {
-  const Component = asChild ? Slot : 'span';
-  const InternalComponent = children ? Slot : Fragment;
+  const Component = children ? Slot : Fragment;
 
   const initials = useMemo(() => {
     return getInitials(name);
   }, [name]);
 
   return (
-    <Component
+    <span
       ref={ref}
       className={cl('ds-avatar', fontSizeMap[size], className)}
       data-ds-variant={variant}
@@ -83,10 +76,10 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       role='img'
       aria-label={name}
     >
-      <InternalComponent {...(children ? { 'aria-hidden': true } : {})}>
+      <Component {...(children ? { 'aria-hidden': true } : {})}>
         {children || initials}
-      </InternalComponent>
-    </Component>
+      </Component>
+    </span>
   );
 });
 

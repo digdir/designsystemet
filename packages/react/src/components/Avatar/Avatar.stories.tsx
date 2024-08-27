@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar } from '.';
-import { Badge, DropdownMenu } from '../';
+import { Badge, DropdownMenu, Link } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
@@ -106,9 +106,7 @@ export const InDropdownMenu: Story = () => (
 );
 
 export const AsLink: Story = () => (
-  <Avatar name='Ola Nordmann' asChild>
-    <a href='#'>
-      <img src={cat1} alt='' />
-    </a>
-  </Avatar>
+  <a href='#'>
+    <Avatar name='Ola Nordmann' />
+  </a>
 );

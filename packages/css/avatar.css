@@ -16,6 +16,7 @@
   align-items: center;
   user-select: none;
   text-transform: uppercase;
+  text-decoration: none;
 
   &:has(> svg) {
     padding: var(--ds-avatar-padding);
