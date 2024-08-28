@@ -11,6 +11,25 @@ import * as AvatarStories from './Avatar.stories';
 <Primary />
 <Controls />
 
+## Bruk
+
+```tsx
+import { Avatar } from '@digdir/designsystemet-react';
+
+/* Med kun initaler */
+<Avatar name='John Doe' />
+
+/* Med bilde */
+<Avatar name='John Doe'>
+  <img src='...' alt='John Doe' />
+</Avatar>
+
+/* Med ikon */
+<Avatar name='John Doe'>
+  <Icon />
+</Avatar>
+```
+
 ## Ingen navn
 
 Sender du ikke inn navn, legger vi til et standard ikon.

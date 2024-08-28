@@ -11,7 +11,7 @@ import {
 export type AvatarProps = {
   /**
    * The name of the person the avatar represents.
-   * Will be used to generate initials if no image is provided.
+   * Will be used to generate initials if no children are provided.
    */
   name?: string;
   /**
@@ -47,6 +47,22 @@ const fontSizeMap = {
   lg: 'ds-heading--md',
 };
 
+/**
+ * Avatars are used to represent people or entities.
+ *
+ * @example
+ * <Avatar name='John Doe' />
+ *
+ * @example
+ * <Avatar name='John Doe'>
+ *  <img src='...' alt='John Doe' />
+ * </Avatar>
+ *
+ * @example
+ * <Avatar name='John Doe'>
+ *  <Icon />
+ * </Avatar>
+ */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     name,
