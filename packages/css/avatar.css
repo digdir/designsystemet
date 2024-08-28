@@ -18,12 +18,17 @@
   text-transform: uppercase;
   text-decoration: none;
 
-  &:not(:has(> svg, > img)) {
+  &:not(:has(> img)) {
     padding: var(--ds-avatar-padding);
   }
 
   & img {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  & svg {
     width: 100%;
     height: 100%;
   }
