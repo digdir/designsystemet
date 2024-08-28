@@ -104,6 +104,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
  */
 function getInitials(name: string | undefined): string | null {
   if (!name) return null;
-  const splitName = name.trim().split(' ');
-  return `${splitName[0][0]}${splitName.length > 1 ? splitName[splitName.length - 1][0] : ''}`.toUpperCase();
+  const initialis = [];
+  const segments = new Intl.Segmenter(document.documentElement.lang, {
+    granularity: 'word',
+  }).segment(name);
+  for (const segment of segments)
+    if (segment.isWordLike) initialis.push(segment.segment);
+  return `${initialis[0][0]}${initialis[initialis.length - 1][0]}`;
 }
