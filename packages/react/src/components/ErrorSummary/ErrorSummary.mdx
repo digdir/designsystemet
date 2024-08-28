@@ -8,12 +8,15 @@ import { ErrorSummary } from './';
 
 # ErrorSummary
 
+Error summary kalles feiloppsummeringer på norsk. Det gir brukeren oversikt over feil eller 
+mangler som må rettes på en side eller trinn, før man kan komme videre.
+
 <Primary />
 <Controls />
 
 ## Slik bruker du `ErrorSummary`
 
-`ErrorSummary.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.) mellom listen, tittel og alerten.
+`ErrorSummary.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.).
 Alle `ErrorSummary.Item` må ha en `href` for å kunne navigere til riktig sted i skjemaet.
 
 ```tsx
@@ -24,18 +27,73 @@ import { ErrorSummary } from '@digdir/designsystemet-react';
   <ErrorSummary.List>
     <ErrorSummary.Item href='#'>Item</ErrorSummary.Item>
   </ErrorSummary.List>
-</ErrorSummary.Root>;
+</ErrorSummary.Root>
 ```
 
-## Bruk med tekstfelt
+## Eksempler
+
+### Bruk med tekstfelt
 
 <Canvas of={ErrorSummaryStories.WithForm} />
 
-## aria-role='alert'
+### aria-role='alert'
 
-`ErrorSummary` har `aria-role='alert'` som standard. Dette betyr at skjermlesere vil lese opp innholdet i `ErrorSummary` automatisk.
+`ErrorSummary` har `aria-role='alert'` som standard. Dette betyr at skjermlesere vil lese opp innholdet i `ErrorSummary` automatisk. 
+Det er fortsatt viktig at `ErrorSummary` får fokus ved submit slik at brukeren får med seg at det er feil eller mangler i skjemaet.
 
 <Canvas of={ErrorSummaryStories.ShowHide} />
+
+## Retningslinjer
+
+Brukes til å vise en feiloppsummering når det er feil i noe brukeren har tastet inn, også hvis det er kun én feil på siden.
+
+Slik fungerer det
+- flytt fokuset på tastaturet til `ErrorSummary`
+- bruk overskriften “det er oppstått et problem”
+- lag lenke til hvert av svarene som har valideringsfeil
+- forsikre deg om at feilmeldingen i `ErrorSummary` er formulert likt som de som vises ved siden av innspillene med feil
+
+Passer til å 
+- oppsummere feil for å gi brukeren oversikt over alle feilene, før feilmeldingsskjemaet sendes inn
+- gi brukerne muligheten til å hoppe direkte til feltene med feil i skjemaet
+
+<br />
+
+Passer ikke til å 
+- vise lange, tekniske feilkoder til brukerne. 
+
+<br />
+
+### Plassering
+
+Oppsummeringen vises øverst på siden, trinnet under headeren, men over den øverste overskriften på siden.
+Dette er viktig dersom siden blir lastet inn på nytt etter brukeren har sendt inn skjemaet.
+`ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukere navigere direkte 
+til feilene og manglene.
+
+Det skal være lenker fra `ErrorSummary` til der feilen er på siden. Når brukeren trykker på en av lenkene, 
+skal fokus flyttes til det feltet som feilmeldingen gjelder.
+
+Lenketeksten i `ErrorSummary` må være identisk med feilen den lenker til.
+
+### Synlighet
+
+Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling om utløser feil.
+
+- Hvis vi validerer fortløpende (feks. ved onBlur på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet (submit).
+- Det er viktig at komponenten får fokus ved submit slik at brukeren får med seg at det er feil eller mangler i skjemaet. 
+Fokus gjør at brukeren blir sendt til komponenten, og skjermleserbrukere får overskriften lest opp.
+- Feilmeldingene i oppsummeringen skal være formulert lik feilmeldingen ved feltet.
+- Feilmeldingene skal lenke direkte til feltet det gjelder.
+- Hvis feilen gjelder flere felt, lenker vi til det første tilfellet av feilen.
+
+## Tilgjengelighet
+
+`ErrorSummary` har `aria-role='alert'` som standard. Dette betyr at skjermlesere vil lese opp innholdet i `ErrorSummary` automatisk.
+Alle punkt i listen er lenker, og oppfører seg som en lenke.
+
+<br />
+<br />
 
 ### `ErrorSummary.Item`
 
