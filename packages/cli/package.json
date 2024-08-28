@@ -14,7 +14,9 @@
   "files": [
     "./dist/**"
   ],
-  "bin": "dist/bin/designsystemet.js",
+  "bin": {
+    "designsystemet": "dist/bin/designsystemet.js"
+  },
   "exports": {
     "./color": {
       "types": "./dist/types/src/colors/index.d.ts",
