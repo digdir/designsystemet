@@ -105,7 +105,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
 function getInitials(name: string | undefined): string | null {
   if (!name) return null;
   const initialis = [];
-  const segments = new Intl.Segmenter(document.documentElement.lang, {
+  const segments = new Intl.Segmenter(document.documentElement.lang || 'no', {
     granularity: 'word',
   }).segment(name);
   for (const segment of segments)
