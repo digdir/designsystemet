@@ -110,5 +110,5 @@ function getInitials(name: string | undefined): string | null {
   }).segment(name);
   for (const segment of segments)
     if (segment.isWordLike) initialis.push(segment.segment);
-  return `${initialis[0][0]}${initialis[initialis.length - 1][0]}`;
+  return `${initialis[0][0]}${initialis.length > 1 ? initialis[initialis.length - 1][0] : ''}`;
 }

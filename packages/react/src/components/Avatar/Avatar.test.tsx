@@ -28,6 +28,11 @@ describe('Avatar', () => {
     expect(screen.getByText('ON')).toBeInTheDocument();
   });
 
+  it('should only render one initial when name is one word', () => {
+    render(<Avatar name='Ola' />);
+    expect(screen.getByText('O')).toBeInTheDocument();
+  });
+
   it('should only have two initials', () => {
     render(<Avatar name='Ola Nordmann Kristoffersen' />);
     expect(screen.getByText('OK')).toBeInTheDocument();
