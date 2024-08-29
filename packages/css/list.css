@@ -1,7 +1,8 @@
 .ds-list {
   --dsc-list-font-size: var(--ds-font-size-5);
   --dsc-list-padding-left: var(--ds-spacing-6);
-  --dsc-list-spacing: var(--ds-spacing-2);
+  --dsc-list-spacing: var(--ds-spacing-3);
+  --dsc-list-spacing-nested: var(--ds-spacing-2);
 
   font-size: var(--dsc-list-font-size); /* Replace with composes paragraph-md */
   line-height: var(--ds-line-height-md); /* Replace with composes paragraph-md */
@@ -9,6 +10,7 @@
   padding-left: var(--dsc-list-padding-left);
 
   & > li + li { margin-top: var(--dsc-list-spacing) }
+  & > li > :is(ol, ul) { --dsc-list-spacing: var(--dsc-list-spacing-nested) } /* Shrink spacing a bit when nested */
 
   &[data-ds-size="sm"] {
     --dsc-list-padding-left: var(--ds-spacing-4);
@@ -17,5 +19,6 @@
 
   &[data-ds-size="lg"] {
     --dsc-list-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-sm */
+    --dsc-list-spacing: var(--ds-spacing-4);
   }
 }
