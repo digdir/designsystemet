@@ -48,7 +48,7 @@ describe('List', () => {
 
   it('should have the passed size', () => {
     render({ size: 'lg' });
-    expect(screen.getByRole('list')).toHaveClass('ds-list--lg');
+    expect(screen.getByRole('list')).toHaveAttribute('data-ds-size', 'lg');
   });
 
   it('should have the passed heading', () => {
