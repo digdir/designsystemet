@@ -75,7 +75,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
-  const Component = children ? Slot : Fragment;
+  const Component = children && typeof children !== 'string' ? Slot : Fragment;
 
   const initials = useMemo(() => {
     return getInitials(name);
