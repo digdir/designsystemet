@@ -63,26 +63,32 @@ Det er fortsatt viktig at `ErrorSummary` får fokus ved submit slik at brukeren 
 ### Plassering
 
 Vi anbefaler å vise `ErrorSummary` like over Neste/Send inn-knappen. Dette for 
-at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre
-`ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukere navigere direkte 
+at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre. 
+
+I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, det kan du lese mer om i [artikkelen om feilmeldinger](https://designsystemet.no/monstre/feilmeldinger#oppsummering-av-flere-feilmeldinger).
+
+`ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukerne kan navigere direkte 
 til feilene og manglene.
 
-Du kan lese mer om [oppsummering av flere feilmeldinger på våre nettsider](https://designsystemet.no/monstre/feilmeldinger#oppsummering-av-flere-feilmeldinger).
 
 Det skal være lenker fra `ErrorSummary` til der feilen er på siden. Når brukeren trykker på en av lenkene, 
 skal fokus flyttes til der feilen er.
 
 Lenketeksten i `ErrorSummary` må være identisk med feilen den lenker til.
 
+<br/>
+
 ### Synlighet
 
 Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling om utløser feil.
 
-- Hvis vi validerer fortløpende (feks. ved onBlur på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
-- Det er viktig at komponenten får fokus når den visest, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
+- Hvis vi validerer fortløpende (feks. ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
+- Det er viktig at komponenten får fokus når den blir vist, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
 - Feilmeldingene i oppsummeringen skal være formulert lik feilmeldingen ved feltet.
 - Feilmeldingene skal lenke direkte til feltet det gjelder.
 - Hvis feilen gjelder flere felt, lenker vi til det første tilfellet av feilen.
+
+<br/>
 
 ## Tilgjengelighet
 
