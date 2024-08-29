@@ -8,7 +8,7 @@ function VersionBanner() {
       href='https://v0.designsystemet.no'
       className={cl(classes.banner, 'ds-focus')}
     >
-      Trykk her for dokumentasjon av v0.63.
+      Gå til dokumentasjon for v0.63
     </a>
   );
 }
