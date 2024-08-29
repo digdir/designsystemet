@@ -88,9 +88,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       data-ds-variant={variant}
       data-ds-color={color}
       data-ds-size={size}
-      {...rest}
       role='img'
       aria-label={name}
+      {...rest}
     >
       <Component {...(children ? { 'aria-hidden': true } : {})}>
         {children || initials}
