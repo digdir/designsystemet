@@ -104,11 +104,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
  */
 function getInitials(name: string | undefined): string | null {
   if (!name) return null;
-  const initialis = [];
+  const initials = [];
   const segments = new Intl.Segmenter(document.documentElement.lang || 'no', {
     granularity: 'word',
   }).segment(name);
   for (const segment of segments)
-    if (segment.isWordLike) initialis.push(segment.segment);
-  return `${initialis[0][0]}${initialis.length > 1 ? initialis[initialis.length - 1][0] : ''}`;
+    if (segment.isWordLike) initials.push(segment.segment);
+  return `${initials[0][0]}${initials.length > 1 ? initials[initials.length - 1][0] : ''}`;
 }
