@@ -48,25 +48,21 @@ Det er fortsatt viktig at `ErrorSummary` får fokus ved submit slik at brukeren 
 `ErrorSummary` brukes til å vise en oppsummering når det er feil eller mangler i noe brukeren har gjort. En oppsummering kan gjelde for én eller flere feil.
 
 **Pass på at**
-- flytt fokuset på tastaturet til `ErrorSummary`
-- bruk overskriften “det er oppstått et problem”
-- lag lenke til hvert av svarene som har valideringsfeil
-- forsikre deg om at feilmeldingen i `ErrorSummary` er formulert likt som de som vises ved siden av innspillene med feil
+- brukerne kan gå direkte til feilene de må rette opp, og fokuset blir flyttet dit
+- overskriften “For å gå videre må du rette opp følgende feil” brukes
+- lenkene i oppsummeringen stemmer med feilmeldingene de lenker til
 
-Passer til å 
-- oppsummere feil for å gi brukeren oversikt over alle feilene, før feilmeldingsskjemaet sendes inn
-- gi brukerne muligheten til å hoppe direkte til feltene med feil i skjemaet
+<br/>
 
-<br />
+ 
 
-Passer ikke til å 
-- vise lange, tekniske feilkoder til brukerne. 
+
 
 <br />
 
 ### Plassering
 
-`ErrorSummary` vises nærmest Neste/Send inn-knappen. Vi anbefaler å vise oppsummeringen i nærheten av Neste-knappen for 
+Vi anbefaler å vise `ErrorSummary` like over Neste/Send inn-knappen. Dette for 
 at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre
 `ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukere navigere direkte 
 til feilene og manglene.
