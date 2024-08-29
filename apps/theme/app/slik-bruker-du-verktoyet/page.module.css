@@ -4,7 +4,7 @@
 
 .row {
   margin: 0 auto;
-  max-width: 750px;
+  max-width: 800px;
 }
 
 .title {
@@ -21,7 +21,8 @@
   margin-top: 16px;
 }
 
-.page h2 {
+.page h2,
+.page h3 {
   margin-top: 32px;
   margin-bottom: 16px;
 }

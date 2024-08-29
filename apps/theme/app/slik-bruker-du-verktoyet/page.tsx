@@ -21,7 +21,7 @@ export default function Home() {
             </Heading>
             <Ingress className={classes.ingress}>
               Her vil du lære hvordan du kan bruke teambyggeren til å bygge ditt
-              eget tema. Du vil også finne anbefalinger fra designsystmet på
+              eget tema. Du vil også finne anbefalinger fra designsystemet på
               fargevalg og informasjon rundt feilmeldinger som dukker opp i
               verktøyet.
             </Ingress>
@@ -36,14 +36,25 @@ export default function Home() {
             </Alert>
 
             <Heading level={2} size='md'>
-              Fargevalg
+              Valg av farger og feilmeldinger
             </Heading>
-            <Paragraph>ff</Paragraph>
+            <Paragraph>
+              Temabyggeren lar deg velge 5 farger: Accent, Neutral, Brand1,
+              Brand2 og Brand3. Disse fargekodene vil bli til Base Default i
+              fargeskalaene. Det er derfor enkelte ting man må passe på når man
+              velger en farge for at det skal fungere optimalt i systemet.
+            </Paragraph>
 
             <Heading level={3} size='sm'>
-              Accent farge
+              Den valgte fargen har mindre enn 3:1 kontrast mot bakgrunnsfargene
             </Heading>
-            <Paragraph>ff</Paragraph>
+            <Paragraph>
+              Om du velger en farge som har mindre enn 3:1 kontrast mot
+              bakgrunnsfargene så vil du få ein advarsel om dette i verktøyet.
+              Det er spesielt viktig at Accent og Neutral fargen har mer
+              kontrast enn dette fordi disse fargene blir brukt på for eksempel
+              Button og Checkbox.
+            </Paragraph>
 
             <Heading level={3} size='sm'>
               Neutral farge
