@@ -17,3 +17,4 @@ export { TokenList } from './Tokens';
 export { Image } from './Image';
 export { ComponentCard } from './ComponentCard';
 export { GithubLink } from './GithubLink/GithubLink';
+export { VersionBanner } from './VersionBanner/VersionBanner';

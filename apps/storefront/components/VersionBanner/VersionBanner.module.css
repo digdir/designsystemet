@@ -1,0 +1,8 @@
+.banner {
+  background: var(--ds-color-brand2-surface-hover);
+  color: var(--ds-color-neutral-text-default);
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: var(--ds-sizing-12);
+}
