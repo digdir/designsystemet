@@ -149,6 +149,26 @@ describe('Combobox', () => {
     });
   });
 
+  it('should send `onChange` event when value changes', async () => {
+    const onChange = vi.fn();
+    const { user } = await render({ onChange });
+    const combobox = screen.getByRole('combobox');
+
+    await act(async () => await user.click(combobox));
+    await act(async () => await user.click(screen.getByText('Oslo')));
+
+    await vi.waitFor(() => {
+      /* we expect a change event with (e) => e.target.value === 'Oslo' */
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({
+          target: expect.objectContaining({
+            value: 'Oslo',
+          }),
+        }),
+      );
+    });
+  });
+
   it('should show a chip of a selected option in multiple mode', async () => {
     await render({ multiple: true, value: ['leikanger'] });
     expect(screen.getByText('Leikanger')).toBeInTheDocument();

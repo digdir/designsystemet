@@ -2869,12 +2869,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/selector-resolve-nested@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@csstools/selector-resolve-nested@npm:2.0.0"
+  peerDependencies:
+    postcss-selector-parser: ^6.1.0
+  checksum: 10/996093f9fe45c93f1af38e0dd58b099e49de35608a27ad8fadd3070601e3aa689e1f9c0f2fb4ab55339ea32d239d83b1c7926196d287ff516cf74236b84eeebc
+  languageName: node
+  linkType: hard
+
 "@csstools/selector-specificity@npm:^3.1.1":
   version: 3.1.1
   resolution: "@csstools/selector-specificity@npm:3.1.1"
   peerDependencies:
     postcss-selector-parser: ^6.0.13
   checksum: 10/3786a6afea97b08ad739ee8f4004f7e0a9e25049cee13af809dbda6462090744012a54bd9275a44712791e8f103f85d21641f14e81799f9dab946b0459a5e1ef
+  languageName: node
+  linkType: hard
+
+"@csstools/selector-specificity@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@csstools/selector-specificity@npm:4.0.0"
+  peerDependencies:
+    postcss-selector-parser: ^6.1.0
+  checksum: 10/7076c1d8af0fba94f06718f87fba5bfea583f39089efa906ae38b5ecd6912d3d5865f7047a871ac524b1057e4c970622b2ade456b90d69fb9393902250057994
   languageName: node
   linkType: hard
 
@@ -2929,6 +2947,7 @@ __metadata:
     postcss: "npm:^8.4.41"
     postcss-cli: "npm:^11.0.0"
     postcss-import: "npm:^16.1.0"
+    postcss-nesting: "npm:^13.0.0"
     rimraf: "npm:^6.0.1"
   languageName: unknown
   linkType: soft
@@ -5531,26 +5550,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint-scope@npm:^3.7.3":
-  version: 3.7.7
-  resolution: "@types/eslint-scope@npm:3.7.7"
-  dependencies:
-    "@types/eslint": "npm:*"
-    "@types/estree": "npm:*"
-  checksum: 10/e2889a124aaab0b89af1bab5959847c5bec09809209255de0e63b9f54c629a94781daa04adb66bffcdd742f5e25a17614fb933965093c0eea64aacda4309380e
-  languageName: node
-  linkType: hard
-
-"@types/eslint@npm:*":
-  version: 9.6.0
-  resolution: "@types/eslint@npm:9.6.0"
-  dependencies:
-    "@types/estree": "npm:*"
-    "@types/json-schema": "npm:*"
-  checksum: 10/39fc797c671ec9c9184802b4974748cf45ee1b11d7aaaaede44426abcafd07ec7c18eb090e8f5b3387b51637ce3fdf54499472d8dd58a928f0d005cbacb573b4
-  languageName: node
-  linkType: hard
-
 "@types/estree-jsx@npm:^1.0.0":
   version: 1.0.0
   resolution: "@types/estree-jsx@npm:1.0.0"
@@ -5669,7 +5668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.8":
+"@types/json-schema@npm:^7.0.8":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 10/1a3c3e06236e4c4aab89499c428d585527ce50c24fe8259e8b3926d3df4cfbbbcf306cfc73ddfb66cbafc973116efd15967020b0f738f63e09e64c7d260519e7
@@ -6852,7 +6851,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:^3.0.2, braces@npm:^3.0.3, braces@npm:~3.0.2":
+"braces@npm:^3.0.3, braces@npm:~3.0.2":
   version: 3.0.3
   resolution: "braces@npm:3.0.3"
   dependencies:
@@ -8424,7 +8423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.17.0":
+"enhanced-resolve@npm:^5.17.1":
   version: 5.17.1
   resolution: "enhanced-resolve@npm:5.17.1"
   dependencies:
@@ -12209,23 +12208,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.2, micromatch@npm:^4.0.7":
-  version: 4.0.7
-  resolution: "micromatch@npm:4.0.7"
+"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.7":
+  version: 4.0.8
+  resolution: "micromatch@npm:4.0.8"
   dependencies:
     braces: "npm:^3.0.3"
     picomatch: "npm:^2.3.1"
-  checksum: 10/a11ed1cb67dcbbe9a5fc02c4062cf8bb0157d73bf86956003af8dcfdf9b287f9e15ec0f6d6925ff6b8b5b496202335e497b01de4d95ef6cf06411bc5e5c474a0
-  languageName: node
-  linkType: hard
-
-"micromatch@npm:^4.0.4":
-  version: 4.0.5
-  resolution: "micromatch@npm:4.0.5"
-  dependencies:
-    braces: "npm:^3.0.2"
-    picomatch: "npm:^2.3.1"
-  checksum: 10/a749888789fc15cac0e03273844dbd749f9f8e8d64e70c564bcf06a033129554c789bb9e30d7566d7ff6596611a08e58ac12cf2a05f6e3c9c47c50c4c7e12fa2
+  checksum: 10/6bf2a01672e7965eb9941d1f02044fad2bd12486b5553dc1116ff24c09a8723157601dc992e74c911d896175918448762df3b3fd0a6b61037dd1a9766ddfbf58
   languageName: node
   linkType: hard
 
@@ -12387,10 +12376,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minipass@npm:^4.0.0":
-  version: 4.2.8
-  resolution: "minipass@npm:4.2.8"
-  checksum: 10/e148eb6dcb85c980234cad889139ef8ddf9d5bdac534f4f0268446c8792dd4c74f4502479be48de3c1cce2f6450f6da4d0d4a86405a8a12be04c1c36b339569a
+"minipass@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "minipass@npm:5.0.0"
+  checksum: 10/61682162d29f45d3152b78b08bab7fb32ca10899bc5991ffe98afc18c9e9543bd1e3be94f8b8373ba6262497db63607079dc242ea62e43e7b2270837b7347c93
   languageName: node
   linkType: hard
 
@@ -13606,6 +13595,19 @@ __metadata:
   peerDependencies:
     postcss: ^8.1.0
   checksum: 10/ca035969eba62cf126864b10d7722e49c0d4f050cbd4618b6e9714d81b879cf4c53a5682501e00f9622e8f4ea6d7d7d53af295ae935fa833e0cc0bda416a287b
+  languageName: node
+  linkType: hard
+
+"postcss-nesting@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "postcss-nesting@npm:13.0.0"
+  dependencies:
+    "@csstools/selector-resolve-nested": "npm:^2.0.0"
+    "@csstools/selector-specificity": "npm:^4.0.0"
+    postcss-selector-parser: "npm:^6.1.0"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 10/c2cb54589cb29ecaf57b53055be75e1a17c6f9e00a6a190b61cb6f2d53de53306df94bc434e7d3035b7d9948f36e3b94f7627e03862326057a58c820fc181a54
   languageName: node
   linkType: hard
 
@@ -15588,7 +15590,7 @@ __metadata:
     rehype-highlight: "npm:^7.0.0"
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^4.0.0"
-    webpack: "npm:^5.93.0"
+    webpack: "npm:^5.94.0"
   languageName: unknown
   linkType: soft
 
@@ -16049,16 +16051,16 @@ __metadata:
   linkType: hard
 
 "tar@npm:^6.1.11, tar@npm:^6.1.13, tar@npm:^6.1.2":
-  version: 6.1.13
-  resolution: "tar@npm:6.1.13"
+  version: 6.2.1
+  resolution: "tar@npm:6.2.1"
   dependencies:
     chownr: "npm:^2.0.0"
     fs-minipass: "npm:^2.0.0"
-    minipass: "npm:^4.0.0"
+    minipass: "npm:^5.0.0"
     minizlib: "npm:^2.1.1"
     mkdirp: "npm:^1.0.3"
     yallist: "npm:^4.0.0"
-  checksum: 10/add2c3c6d0d71192186ec118d265b92d94be5cd57a0b8fdf0d29ee46dc846574925a5fc57170eefffd78201eda4c45d7604070b5a4b0648e4d6e1d65918b5a82
+  checksum: 10/bfbfbb2861888077fc1130b84029cdc2721efb93d1d1fb80f22a7ac3a98ec6f8972f29e564103bbebf5e97be67ebc356d37fa48dbc4960600a1eb7230fbd1ea0
   languageName: node
   linkType: hard
 
@@ -17252,11 +17254,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.93.0":
-  version: 5.93.0
-  resolution: "webpack@npm:5.93.0"
+"webpack@npm:^5.94.0":
+  version: 5.94.0
+  resolution: "webpack@npm:5.94.0"
   dependencies:
-    "@types/eslint-scope": "npm:^3.7.3"
     "@types/estree": "npm:^1.0.5"
     "@webassemblyjs/ast": "npm:^1.12.1"
     "@webassemblyjs/wasm-edit": "npm:^1.12.1"
@@ -17265,7 +17266,7 @@ __metadata:
     acorn-import-attributes: "npm:^1.9.5"
     browserslist: "npm:^4.21.10"
     chrome-trace-event: "npm:^1.0.2"
-    enhanced-resolve: "npm:^5.17.0"
+    enhanced-resolve: "npm:^5.17.1"
     es-module-lexer: "npm:^1.2.1"
     eslint-scope: "npm:5.1.1"
     events: "npm:^3.2.0"
@@ -17285,7 +17286,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10/a48bef7a511d826db7f9ebee2c84317214923ac40cb2aabe6a649546c54a76a55fc3b91ff03c05fed22a13a176891c47bbff7fcc644c53bcbe5091555863641b
+  checksum: 10/648449c5fbbb0839814116e3b2b044ac6c75a7ba272435155ddeb1e64dfaa2f8079be3adfbb691f648b69900756ce0f6fb73beab0ced3cf5e0fd46868b4593a6
   languageName: node
   linkType: hard
 

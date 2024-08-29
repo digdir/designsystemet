@@ -1,5 +1,5 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import { Color } from '../Color/Color';
@@ -12,7 +12,7 @@ type GroupProps = {
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
-  type: ColorType;
+  type: ThemeColors;
 };
 
 export const Group = ({
