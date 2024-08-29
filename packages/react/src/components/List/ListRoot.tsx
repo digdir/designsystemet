@@ -31,3 +31,5 @@ export function ListRoot({ children, size = 'md' }: ListProps) {
     </ListContext.Provider>
   );
 }
+
+ListRoot.displayName = 'ListRoot'; // We need to set displayName here to make Typescript happy about renaming it to "List.Root" later on
