@@ -358,5 +358,5 @@ export const getBaseColor = (color: CssColor) => {
 };
 
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
+  return `--ds-color-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
 };
