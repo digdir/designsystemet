@@ -1,10 +1,11 @@
 .page {
   margin-top: 32px;
+  margin-bottom: 64px;
 }
 
 .row {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 720px;
 }
 
 .title {
@@ -13,12 +14,13 @@
 
 .ingress {
   margin-bottom: 24px;
+  font-size: 20px;
 }
 
 .page img {
   border-radius: 4px;
   width: 100%;
-  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .page h2,
