@@ -12,6 +12,7 @@
 }
 
 .intro {
+  width: 100%;
   max-width: 720px;
   display: flex;
   flex-wrap: wrap;
@@ -57,10 +58,19 @@
 
 .content img {
   display: block;
-  width: 860px !important;
+  width: 860px;
   margin: var(--ds-spacing-12) 0;
   margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--ds-color-neutral-background-subtle);
+}
+
+.main > figure {
+  margin: auto;
+  width: 100%;
+}
+
+.main > figure img {
+  width: 100%;
 }
 
 .content:last-child {

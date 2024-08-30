@@ -8,7 +8,34 @@ export default function generateThemesJson(
   modes: Array<'Light' | 'Dark' | 'Contrast'>,
   themes: string[],
 ): ThemeObject[] {
-  return [...generateModesGroup(modes, themes), ...generateThemesGroup(themes), generateSemanticGroup()];
+  return [
+    ...generateSizeGroup(),
+    ...generateThemesGroup(themes),
+    ...generateTypographyGroup(themes),
+    ...generateModesGroup(modes, themes),
+    generateSemanticGroup(),
+  ];
+}
+
+function generateSizeGroup(): ThemeObject[] {
+  return [
+    {
+      id: randomUUID(),
+      name: 'default',
+      selectedTokenSets: {
+        'primitives/size/default': TokenSetStatus.ENABLED,
+      },
+      group: 'Size',
+    },
+    // {
+    //   id: randomUUID(),
+    //   name: 'compact',
+    //   selectedTokenSets: {
+    //     'primitives/size/compact': TokenSetStatus.ENABLED,
+    //   },
+    //   group: 'Size',
+    // },
+  ];
 }
 
 function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes: string[]): ThemeObject[] {
@@ -17,11 +44,11 @@ function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes:
       id: randomUUID(),
       name: mode,
       selectedTokenSets: Object.fromEntries([
-        [`primitives/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
+        [`primitives/modes/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
         ...themes.map(
           (theme) =>
             [
-              `primitives/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
+              `primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
               TokenSetStatus.ENABLED,
             ] as const,
         ),
@@ -52,8 +79,34 @@ function generateSemanticGroup(): ThemeObject {
       'semantic/style': TokenSetStatus.ENABLED,
       'semantic/color': TokenSetStatus.ENABLED,
       'primitives/globals': TokenSetStatus.SOURCE,
-      'primitives/typography/default': TokenSetStatus.SOURCE,
     },
     group: 'Semantic',
   };
+}
+
+function generateTypographyGroup(themes: string[]): ThemeObject[] {
+  return [
+    {
+      id: randomUUID(),
+      name: 'primary',
+      selectedTokenSets: Object.fromEntries(
+        themes.map((theme) => [
+          `primitives/modes/typography/primary/${normalizeTokenSetName(theme)}`,
+          TokenSetStatus.ENABLED,
+        ]),
+      ),
+      group: 'Typography',
+    },
+    {
+      id: randomUUID(),
+      name: 'secondary',
+      selectedTokenSets: Object.fromEntries(
+        themes.map((theme) => [
+          `primitives/modes/typography/secondary/${normalizeTokenSetName(theme)}`,
+          TokenSetStatus.ENABLED,
+        ]),
+      ),
+      group: 'Typography',
+    },
+  ];
 }

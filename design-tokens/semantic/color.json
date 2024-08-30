@@ -551,11 +551,11 @@
       },
       "contrast-default": {
         "$type": "color",
-        "$value": "{global.yellow.contrast-1}"
+        "$value": "{global.orange.contrast-1}"
       },
       "contrast-subtle": {
         "$type": "color",
-        "$value": "{global.yellow.contrast-2}"
+        "$value": "{global.orange.contrast-2}"
       }
     },
     "focus": {

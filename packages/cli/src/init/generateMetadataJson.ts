@@ -8,14 +8,19 @@ export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Co
   return {
     tokenSetOrder: [
       'primitives/globals',
-      'primitives/typography/default',
+      'primitives/size/default',
+      'primitives/modes/typography/primary/theme',
+      'primitives/modes/typography/secondary/theme',
       ...modes.flatMap((mode) => [
-        `primitives/colors/${normalizeTokenSetName(mode)}/global`,
-        ...themes.map((theme) => `primitives/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`),
+        `primitives/modes/colors/${normalizeTokenSetName(mode)}/global`,
+        ...themes.map(
+          (theme) => `primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
+        ),
       ]),
       ...themes.map((theme) => `themes/${normalizeTokenSetName(theme)}`),
       'semantic/color',
       'semantic/style',
+      'Figma/components',
     ],
   };
 }

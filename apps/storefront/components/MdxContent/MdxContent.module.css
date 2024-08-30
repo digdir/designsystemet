@@ -134,3 +134,11 @@
 .content > *:last-child {
   margin-bottom: 0;
 }
+
+.content [class~='ds-card'] p {
+  margin: 0;
+}
+
+.content [class~='ds-card'] {
+  margin: var(--ds-spacing-3) 0;
+}

@@ -1,5 +1,5 @@
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
+import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
 import { useEffect, useState } from 'react';
 
 import type { modeType } from '../../types';
@@ -12,7 +12,7 @@ type ScaleProps = {
   showHeader?: boolean;
   showColorMeta?: boolean;
   themeMode: modeType;
-  type: ColorType;
+  type: ThemeColors;
 };
 
 const setTokens = (lightColors: ColorInfo[], type: string) => {

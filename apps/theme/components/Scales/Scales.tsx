@@ -1,4 +1,4 @@
-import type { Mode } from '@digdir/designsystemet/color';
+import type { ColorMode } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import { useThemeStore } from '../../store';
@@ -7,7 +7,7 @@ import { Scale } from '../Scale/Scale';
 import classes from './Scales.module.css';
 
 type ScalesProps = {
-  themeMode: Mode;
+  themeMode: ColorMode;
 };
 
 export const Scales = ({ themeMode }: ScalesProps) => {

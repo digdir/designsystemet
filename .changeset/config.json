@@ -5,7 +5,14 @@
     { "repo": "digdir/designsystemet" }
   ],
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    [
+      "@digdir/designsystemet",
+      "@digdir/designsystemet-css",
+      "@digdir/designsystemet-theme",
+      "@digdir/designsystemet-react"
+    ]
+  ],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",

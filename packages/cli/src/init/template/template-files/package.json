@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@digdir/designsystemet": "^0.1.0-alpha.7",
+    "@digdir/designsystemet": "^0.1.0-next.22",
     "rimraf": "^5.0.7"
   }
 }
