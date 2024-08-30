@@ -3,7 +3,7 @@ import { Avatar } from './';
 
 describe('Avatar', () => {
   it('should render correctly with default props', () => {
-    render(<Avatar />);
+    render(<Avatar aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-ds-size', 'md');
     expect(screen.getByRole('img')).toHaveAttribute(
@@ -14,7 +14,7 @@ describe('Avatar', () => {
   });
 
   it('should render correctly with custom props', () => {
-    render(<Avatar size='lg' variant='square' />);
+    render(<Avatar size='lg' variant='square' aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-ds-size', 'lg');
     expect(screen.getByRole('img')).toHaveAttribute(
@@ -24,23 +24,13 @@ describe('Avatar', () => {
   });
 
   it('should render initials when name is set', () => {
-    render(<Avatar name='Ola Nordmann' />);
+    render(<Avatar aria-label='Ola Nordmann'>ON</Avatar>);
     expect(screen.getByText('ON')).toBeInTheDocument();
-  });
-
-  it('should only render one initial when name is one word', () => {
-    render(<Avatar name='Ola' />);
-    expect(screen.getByText('O')).toBeInTheDocument();
-  });
-
-  it('should only have two initials', () => {
-    render(<Avatar name='Ola Nordmann Kristoffersen' />);
-    expect(screen.getByText('OK')).toBeInTheDocument();
   });
 
   it('should render children', () => {
     render(
-      <Avatar>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='' alt='ola nordmann' data-testid='child-image' />
       </Avatar>,
     );
@@ -50,7 +40,7 @@ describe('Avatar', () => {
 
   it('children should have aria-hidden', () => {
     render(
-      <Avatar>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='' alt='ola nordmann' data-testid='child-image' />
       </Avatar>,
     );

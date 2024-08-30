@@ -16,29 +16,27 @@ import * as AvatarStories from './Avatar.stories';
 ```tsx
 import { Avatar } from '@digdir/designsystemet-react';
 
-/* Med kun initaler */
-<Avatar name='John Doe' />
+/* Med standard brukerikon */
+<Avatar aria-label="Ola Nordmann" />
+
+/* Med initialer */
+<Avatar aria-label="Ola Nordmann">ON</Avatar>
 
 /* Med bilde */
-<Avatar name='John Doe'>
-  <img src='...' alt='John Doe' />
-</Avatar>
-
-/* Med ikon */
-<Avatar name='John Doe'>
-  <Icon />
+<Avatar aria-label="Ola Nordmann">
+  <img src="..." />
 </Avatar>
 ```
 
-## Ingen navn
+## Standard ikon
 
-Sender du ikke inn navn, legger vi til et standard ikon.
+Sender du ikke inn `children` viser vi et standard brukerikon.	
 
 <Canvas of={AvatarStories.NoName} />
 
 ## Størrelser
 
-`Avatar` kommer i flere størrelser. Tekst vil skalere, mens ikoner må du selv endre størrelsen på.
+`Avatar` kommer i flere størrelser. Tekst og ikon vil skalere, men det kan hende ikonet ditt må tilpasses.
 
 <Canvas of={AvatarStories.Sizes} />
 
@@ -57,7 +55,6 @@ Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
 ## Med bilde
 
 Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
-Du burde fortsatt sende inn navn, da denne legger på `aria-label`.
 
 Bildet får `aria-hidden="true"` for å unngå dobbel informasjon.
 

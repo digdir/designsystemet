@@ -13,7 +13,7 @@ export type AvatarProps = {
    * The name of the person the avatar represents.
    * Will be used to generate initials if no children are provided.
    */
-  name?: string;
+  'aria-label': string;
   /**
    * The color of the avatar.
    *
@@ -65,7 +65,7 @@ const fontSizeMap = {
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
-    name,
+    'aria-label': name,
     color = 'accent',
     size = 'md',
     variant = 'circle',
@@ -76,10 +76,6 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   ref,
 ) {
   const Component = children && typeof children !== 'string' ? Slot : Fragment;
-
-  const initials = useMemo(() => {
-    return getInitials(name);
-  }, [name]);
 
   return (
     <span
@@ -93,7 +89,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       {...rest}
     >
       <Component {...(children ? { 'aria-hidden': true } : {})}>
-        {children || initials}
+        {children}
       </Component>
     </span>
   );
@@ -103,6 +99,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
  * Gets initials using first and last word of a name.
  */
 function getInitials(name: string | undefined): string | null {
+  // Leaving this function for perhaps later use
   if (!name) return null;
   const initials = [];
   const segments = new Intl.Segmenter(document.documentElement.lang || 'no', {

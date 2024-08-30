@@ -34,68 +34,84 @@ export default meta;
 export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
-  name: 'Ola Nordmann',
+  'aria-label': 'Ola Nordmann',
   color: 'accent',
   size: 'md',
   variant: 'circle',
 };
 
-export const NoName: Story = () => <Avatar />;
+export const NoName: Story = () => <Avatar aria-label='Ola' />;
 
 export const Sizes: Story = () => (
   <>
-    <Avatar size='xs' name='x s' />
-    <Avatar size='xs' />
-    <Avatar size='sm' name='s m' />
-    <Avatar size='sm' />
-    <Avatar size='md' name='m d' />
-    <Avatar size='md' />
-    <Avatar size='lg' name='l g' />
-    <Avatar size='lg' />
+    <Avatar size='xs' aria-label='x s'>
+      xs
+    </Avatar>
+    <Avatar size='xs' aria-label='' />
+    <Avatar size='sm' aria-label='s m'>
+      sm
+    </Avatar>
+    <Avatar size='sm' aria-label='' />
+    <Avatar size='md' aria-label='m d'>
+      md
+    </Avatar>
+    <Avatar size='md' aria-label='' />
+    <Avatar size='lg' aria-label='l g'>
+      lg
+    </Avatar>
+    <Avatar size='lg' aria-label='' />
   </>
 );
 
 export const ColorVariants: Story = () => (
   <>
-    <Avatar color='accent' />
-    <Avatar color='neutral' />
-    <Avatar color='brand1' />
-    <Avatar color='brand2' />
-    <Avatar color='brand3' />
+    <Avatar color='accent' aria-label='' />
+    <Avatar color='neutral' aria-label='' />
+    <Avatar color='brand1' aria-label='' />
+    <Avatar color='brand2' aria-label='' />
+    <Avatar color='brand3' aria-label='' />
   </>
 );
 
 export const ShapeVariants: Story = () => (
   <>
-    <Avatar variant='circle' />
-    <Avatar variant='square' />
-    <Avatar variant='circle' name='Kristoffer Kristoffersen' />
-    <Avatar variant='square' name='Kristoffer Kristoffersen' />
+    <Avatar variant='circle' aria-label='' />
+    <Avatar variant='square' aria-label='' />
+    <Avatar variant='circle' aria-label='Kristoffer Kristoffersen'>
+      kk
+    </Avatar>
+    <Avatar variant='square' aria-label='Kristoffer Kristoffersen'>
+      kk
+    </Avatar>
   </>
 );
 
 export const WithImage: Story = (args) => (
-  <Avatar name='Ola Nordmann' {...args}>
-    <img src={cat1} alt='' />
+  <Avatar {...args}>
+    <img src={cat1} alt='Ola Nordmann' />
   </Avatar>
 );
 
 export const InDropdownMenu: Story = () => (
   <DropdownMenu.Root placement='bottom-end' size='md' portal>
     <DropdownMenu.Trigger variant='tertiary'>
-      <Avatar name='Ola Nordmann' size='sm' />
+      <Avatar aria-label='Ola Nordmann' size='sm'>
+        ON
+      </Avatar>
       Velg Profil
     </DropdownMenu.Trigger>
     <DropdownMenu.Content>
       <DropdownMenu.Group heading='Alle kontoer'>
         <DropdownMenu.Item>
           <Badge overlap='circle' color='danger' size='sm'>
-            <Avatar name='Ola Nordmann' size='xs' />
+            <Avatar aria-label='Ola Nordmann' size='xs'>
+              ON
+            </Avatar>
           </Badge>
           Ola Nordmann
         </DropdownMenu.Item>
         <DropdownMenu.Item>
-          <Avatar size='xs' color='brand1'>
+          <Avatar size='xs' color='brand1' aria-label='Sogndal Kommune'>
             <BriefcaseIcon fontSize='5em' />
           </Avatar>
           Sogndal kommune
@@ -107,6 +123,6 @@ export const InDropdownMenu: Story = () => (
 
 export const AsLink: Story = () => (
   <a href='#'>
-    <Avatar name='Ola Nordmann' />
+    <Avatar aria-label='Ola Nordmann' />
   </a>
 );
