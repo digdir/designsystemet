@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar } from '.';
-import { Badge, DropdownMenu, Link } from '../';
+import { Badge, DropdownMenu } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
@@ -38,6 +38,7 @@ Preview.args = {
   color: 'accent',
   size: 'md',
   variant: 'circle',
+  children: '',
 };
 
 export const NoName: Story = () => <Avatar aria-label='Ola' />;

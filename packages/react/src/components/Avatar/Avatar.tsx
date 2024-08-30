@@ -5,7 +5,6 @@ import {
   type HTMLAttributes,
   type ReactNode,
   forwardRef,
-  useMemo,
 } from 'react';
 
 export type AvatarProps = {
