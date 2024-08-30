@@ -5,7 +5,7 @@ import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../../colors/index.js';
 import type { ColorInfo, ColorMode, ThemeColors } from '../../colors/index.js';
 import generateMetadataJson from '../../init/generateMetadataJson.js';
-import generateThemesJson from '../../init/generateThemesJson.js';
+import { generateThemesJson } from './generate$themes.js';
 
 type Colors = Record<ThemeColors, CssColor>;
 type Typography = Record<string, string>;
@@ -156,7 +156,7 @@ export const createTokens = async (opts: CreateTokens) => {
 
     // Generate metadata and themes json for Token Studio and build script
     console.log('Generating metadata and themes files');
-    const $theme = generateThemesJson(['Light', 'Dark', 'Contrast'], ['theme']);
+    const $theme = generateThemesJson(['light', 'dark', 'contrast'], ['theme']);
     const $metadata = generateMetadataJson(['Light', 'Dark', 'Contrast'], ['theme']);
 
     await fs.writeFile(path.join(targetDir, '$themes.json'), JSON.stringify($theme, null, 2));
