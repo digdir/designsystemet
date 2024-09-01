@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Button } from '@digdir/designsystemet-react';
+import { useEffect } from 'react';
 
 import { Card } from '@ui/components/Card/Card';
 import { CardButton } from '@ui/components/CardButton/CardButton';
@@ -39,7 +39,7 @@ function Themes() {
             />
           );
         })}
-        <CardButton url='/theme/add' />
+        {/* <CardButton url='/theme/add' /> */}
       </div>
     </div>
   );

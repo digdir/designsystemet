@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { generateThemeForColor } from '@digdir/designsystemet/color';
 import { Button } from '@digdir/designsystemet-react';
+import { generateThemeForColor } from '@digdir/designsystemet/color';
+import { useState } from 'react';
 
-import { ColorPicker } from '@ui/components/ColorPicker/ColorPicker';
 import { Breadcrumbs } from '@ui/components/Breadcrumbs/Breadcrumbs';
+import { ColorPicker } from '@ui/components/ColorPicker/ColorPicker';
 
 import { getDummyTheme } from '../../../common/dummyTheme';
+import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
-import { useThemeStore, type ColorTheme } from '../../../common/store';
 
 import classes from './AddTheme.module.css';
 
@@ -37,10 +37,7 @@ function AddTheme() {
 
   return (
     <div className={classes.page}>
-      <Breadcrumbs
-        text='Legg til nytt tema'
-        url={'/themes'}
-      />
+      <Breadcrumbs text='Legg til nytt tema' url={'/themes'} />
       <div>
         <input
           className={classes.input}
@@ -101,11 +98,7 @@ function AddTheme() {
           }}
         />
       </div>
-      <Button
-        size='sm'
-        className='btn'
-        onClick={() => handleClick()}
-      >
+      <Button size='sm' className='btn' onClick={() => handleClick()}>
         Legg til
       </Button>
     </div>
