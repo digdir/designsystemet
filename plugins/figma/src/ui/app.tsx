@@ -3,23 +3,29 @@ import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 
 import './App.css';
-import { Routes, Route, NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import {
+  NavLink,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from 'react-router-dom';
 
 import type { StoreThemes } from '../common/store';
 import { useThemeStore } from '../common/store';
 
-import PageTwo from './pages/PageTwo/PageTwo';
-import PageThree from './pages/pageThree/PageThree';
 import { Footer } from './components/Footer/Footer';
-import Themes from './pages/Themes/Themes';
-import Theme from './pages/Theme/Theme';
-import Colors from './pages/Colors/Colors';
 import AddTheme from './pages/AddTheme/AddTheme';
-import { Github } from './pages/Github/Github';
-import { commitToGithub } from './utils/github';
-import Fonts from './pages/Fonts/Fonts';
+import Colors from './pages/Colors/Colors';
 import Font from './pages/Font/Font';
+import Fonts from './pages/Fonts/Fonts';
+import { Github } from './pages/Github/Github';
+import PageTwo from './pages/PageTwo/PageTwo';
+import Theme from './pages/Theme/Theme';
+import Themes from './pages/Themes/Themes';
+import PageThree from './pages/pageThree/PageThree';
+import { commitToGithub } from './utils/github';
 
 function App() {
   const setThemes = useThemeStore((state) => state.setThemes);
@@ -70,62 +76,25 @@ function App() {
         >
           Mine temaer
         </NavLink>
-        <NavLink
-          className='link'
-          to='/settings'
-        >
+        {/* <NavLink className='link' to='/settings'>
           Innstillinger
-        </NavLink>
+        </NavLink> */}
       </div>
 
       <div className='content'>
         <Routes>
-          <Route
-            path='/'
-            element={
-              <Navigate
-                to='/themes'
-                replace
-              />
-            }
-          />
-          <Route
-            path='/fonts'
-            element={<PageTwo />}
-          />
-          <Route
-            path='/settings'
-            element={<PageThree />}
-          />
-          <Route
-            path='/themes'
-            element={<Themes />}
-          />
+          <Route path='/' element={<Navigate to='/themes' replace />} />
 
-          <Route
-            path='/themes/:themeId/colors'
-            element={<Colors />}
-          />
-          <Route
-            path='/themes/:themeId/fonts'
-            element={<Fonts />}
-          />
-          <Route
-            path='/themes/:themeId/fonts/fontId'
-            element={<Font />}
-          />
-          <Route
-            path='/themes/:themeId'
-            element={<Theme />}
-          />
-          <Route
-            path='/theme/add'
-            element={<AddTheme />}
-          />
-          <Route
-            path='/github'
-            element={<Github />}
-          />
+          <Route path='/fonts' element={<PageTwo />} />
+          <Route path='/settings' element={<PageThree />} />
+          <Route path='/themes' element={<Themes />} />
+
+          <Route path='/themes/:themeId/colors' element={<Colors />} />
+          <Route path='/themes/:themeId/fonts' element={<Fonts />} />
+          <Route path='/themes/:themeId/fonts/fontId' element={<Font />} />
+          <Route path='/themes/:themeId' element={<Theme />} />
+          <Route path='/theme/add' element={<AddTheme />} />
+          <Route path='/github' element={<Github />} />
         </Routes>
       </div>
       <Footer />

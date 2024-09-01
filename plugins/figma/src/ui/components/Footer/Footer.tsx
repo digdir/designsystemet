@@ -1,5 +1,5 @@
-import { ChatElipsisIcon } from '@navikt/aksel-icons';
 import { Button, Spinner, Tooltip } from '@digdir/designsystemet-react';
+import { ChatElipsisIcon } from '@navikt/aksel-icons';
 import { Code, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -32,31 +32,24 @@ export const Footer = () => {
     <div className={classes.footer}>
       <div className={classes.top}>
         <div className={classes.topLeft}>
-          <Button
+          {/* <Button
             className={classes.btn}
             size='sm'
             onClick={() => handleClick()}
           >
             Oppdater variabler
-          </Button>
+          </Button> */}
         </div>
 
         <div className={classes.topRight}>
           {loading && (
-            <Spinner
-              title='fff'
-              size='sm'
-              className={classes.spinner}
-            />
+            <Spinner title='fff' size='sm' className={classes.spinner} />
           )}
         </div>
       </div>
       <div className={classes.bottom}>
         <div className={classes.bottomLeft}>
-          <Link
-            className={classes.link}
-            to='/github'
-          >
+          {/* <Link className={classes.link} to='/github'>
             <Button
               className={classes.github}
               size='sm'
@@ -67,10 +60,7 @@ export const Footer = () => {
               Github
             </Button>
           </Link>
-          <Link
-            className={classes.link}
-            to='/github'
-          >
+          <Link className={classes.link} to='/github'>
             <Button
               className={classes.github}
               size='sm'
@@ -80,14 +70,11 @@ export const Footer = () => {
               <Code size={17} />
               NPM
             </Button>
-          </Link>
+          </Link> */}
         </div>
         <div className={classes.bottomRight}>
           <div className={classes.version}>V {packageJson.version}</div>
-          <Tooltip
-            content='Feedback'
-            placement='top'
-          >
+          <Tooltip content='Feedback' placement='top'>
             <a
               href='https://github.com/digdir/designsystemet'
               rel='noreferrer'

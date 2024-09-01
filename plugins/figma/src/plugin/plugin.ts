@@ -3,17 +3,17 @@
 
 import type { ColorTheme, StoreThemes } from '../common/store';
 
+import { getFonts } from './figma/fonts';
+import { getVariables } from './figma/getVariables';
+import { generateJson } from './figma/json';
 import {
   addTheme,
-  getThemes,
   deleteTheme,
+  getThemes,
   renameTheme,
   updateTheme,
 } from './figma/themes';
-import { getVariables } from './figma/getVariables';
 import { updateVariables } from './figma/updateVariables';
-import { generateJson } from './figma/json';
-import { getFonts } from './figma/fonts';
 
 figma.showUI(__html__, { width: 710, height: 550, themeColors: true });
 
@@ -39,6 +39,7 @@ figma.ui.onmessage = (msg: {
     switch (msg.type) {
       case 'updateVariables': {
         if (msg.themes) await updateVariables(msg.themes);
+        console.log('updateVariables');
         figma.ui.postMessage({ type: 'tomato' });
         break;
       }
