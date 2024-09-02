@@ -36,7 +36,7 @@ export type AvatarProps = {
    * Gets `aria-hidden="true"`
    */
   children?: ReactNode;
-} & HTMLAttributes<HTMLSpanElement>;
+} & Omit<React.HTMLAttributes<HTMLSpanElement>, 'aria-label'>;
 
 const fontSizeMap = {
   xs: 'ds-paragraph--xs',
