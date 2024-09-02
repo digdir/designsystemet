@@ -63,7 +63,7 @@
     padding-inline: calc(var(--dsc-accordion-padding) + var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) var(--dsc-accordion-padding);
 
     &::before {
-      background: currentcolor;
+      background-color: currentcolor;
       border-radius: var(--ds-border-radius-md);
       content: '';
       height: var(--dsc-accordion-chevron-size);
