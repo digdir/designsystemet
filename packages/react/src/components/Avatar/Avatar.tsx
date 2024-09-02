@@ -53,7 +53,7 @@ const fontSizeMap = {
  * <Avatar aria-label="John Doe">JD</Avatar>
  *
  * @example
- * <Avatar name='John Doe'>
+ * <Avatar aria-label="John Doe">
  *  <img src='...' alt='John Doe' />
  * </Avatar>
  *
