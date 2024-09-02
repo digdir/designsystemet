@@ -16,8 +16,8 @@
   color: var(--dsc-alert-color);
   font-size: var(--dsc-alert-font-size);
   line-height: var(--ds-line-height-md);
-  padding: var(--dsc-alert-padding);
-  padding-left: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap));
+  padding-block: var(--dsc-alert-padding);
+  padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
 
   & > :is(h1,h2,h3,h4,h5,h6):first-child::before, /* If Alert starts with Heading, align icon to this */
   &:not(:has(> :is(h1,h2,h3,h4,h5,h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
@@ -25,12 +25,11 @@
     content: '';
     display: block;
     height: var(--dsc-alert-icon-size);
+    margin-inline: calc((var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
     mask: var(--dsc-alert-icon-url) center/contain no-repeat;
-    width: var(--dsc-alert-icon-size);
     position: absolute;
-    translate: /* Using translate instead of top/left to avoid position: relative or display: grid on alert */
-      calc((var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1)
-      calc(.5lh - var(--dsc-alert-icon-size) / 2); /* Center icon to line height */
+    translate: 0 calc(.5lh - var(--dsc-alert-icon-size) / 2); /* Center icon to line height */
+    width: var(--dsc-alert-icon-size);
   }
 
   /**
