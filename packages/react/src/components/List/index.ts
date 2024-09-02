@@ -13,7 +13,4 @@ List.Item.displayName = 'List.Item';
 export type { ListProps } from './List';
 export type { ListItemProps } from './ListItem';
 
-export {
-  List,
-  ListItem
-};
+export { List, ListItem };
