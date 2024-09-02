@@ -23,7 +23,7 @@ describe('Avatar', () => {
     );
   });
 
-  it('should render initials when name is set', () => {
+  it('should render initials when aria-label is set', () => {
     render(<Avatar aria-label='Ola Nordmann'>ON</Avatar>);
     expect(screen.getByText('ON')).toBeInTheDocument();
   });
