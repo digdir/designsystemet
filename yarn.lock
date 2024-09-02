@@ -2973,6 +2973,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.4.8"
     "@testing-library/react": "npm:^16.0.0"
     "@testing-library/user-event": "npm:^14.5.2"
+    "@u-elements/u-details": "npm:^0.0.5"
     copyfiles: "npm:^2.4.1"
     jsdom: "npm:^24.1.1"
     react: "npm:^18.3.1"
@@ -5970,6 +5971,13 @@ __metadata:
   version: 9.0.7
   resolution: "@types/uuid@npm:9.0.7"
   checksum: 10/c7321194aeba9ea173efd1e721403bdf4e7ae6945f8f8cdbc87c791f4b505ccf3dbc4a8883d90b394ef13b7c2dc778045792b05dbb23b3c746f8ea347804d448
+  languageName: node
+  linkType: hard
+
+"@u-elements/u-details@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@u-elements/u-details@npm:0.0.5"
+  checksum: 10/1bbfa9c1fa2fadf55a77d5cd6065d1a27202628f3567e88b239792602fd5df900bb3e2175e7f5b15509d8f94a33ae5a95a61ed335a66b7b21b9fa41a1ad4f4a5
   languageName: node
   linkType: hard
 
