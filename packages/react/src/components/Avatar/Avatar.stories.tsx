@@ -87,9 +87,9 @@ export const ShapeVariants: Story = () => (
   </>
 );
 
-export const WithImage: Story = (args) => (
-  <Avatar {...args}>
-    <img src={cat1} alt='Ola Nordmann' />
+export const WithImage: Story = () => (
+  <Avatar aria-label='Ola Nordman'>
+    <img src={cat1} alt='' />
   </Avatar>
 );
 
