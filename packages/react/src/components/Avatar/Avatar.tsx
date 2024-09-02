@@ -32,7 +32,7 @@ export type AvatarProps = {
    */
   variant?: 'circle' | 'square';
   /**
-   * Image or icon to display inside the avatar.
+   * Image, icon or initials to display inside the avatar.
    *
    * Gets `aria-hidden="true"`
    */
