@@ -1,6 +1,5 @@
 import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
 
-import { ListHeading } from './ListHeading';
 import * as ListStories from './List.stories';
 
 <Meta of={ListStories} />
@@ -21,12 +20,9 @@ Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.O
 ```tsx
 import { List } from '@digdir/designsystemet-react';
 
-<List.Root>
-  <List.Heading>Heading</List.Heading>
-  <List.Ordered>
-    <List.Item>Item</List.Item>
-  </List.Ordered>
-</List.Root>;
+<List>
+  <List.Item>Item</List.Item>
+</List>
 ```
 
 ## Eksempler
@@ -47,7 +43,7 @@ En sortert liste brukes når det er viktig at brukerne forstår grader av viktig
 
 <br />
 
-### Uten overskrift
+### Med overskrift
 
 Dersom du bruker `List.Heading` så legger vi automatisk på `aria-labelledby` på `List.Heading` og `List.Ordered/Unordered`
 for å gi skjermlesere beskjed om at `List.Heading` er en overskrift for `List`.
@@ -122,21 +118,19 @@ Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensj
 for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
 
 ```tsx
-<List.Root>
-  <List.Unordered asChild>
-    <menu>
-      <List.item>
-        <Button>Copy</Button>
-      </List.item>
-      <List.item>
-        <Button>Cut</Button>
-      </List.item>
-      <List.item>
-        <Button>Paste</Button>
-      </List.item>
-    </menu>
-  </List.Unordered>
-</List.Root>
+<List asChild>
+  <menu>
+    <List.item>
+      <Button>Copy</Button>
+    </List.item>
+    <List.item>
+      <Button>Cut</Button>
+    </List.item>
+    <List.item>
+      <Button>Paste</Button>
+    </List.item>
+  </menu>
+</List>
 ```
 
 ### Liste eller tabell?
@@ -145,11 +139,3 @@ Lister og tabeller har forskjellige bruksområder. Riktig bruk gjør opplevelsen
 
 - En liste presenterer relatert informasjon på en oversiktlig måte.
 - En tabell lar brukeren se og sammenligne flere grupper av informasjon.
-
-<br />
-
-## Andre props
-
-### `List.Heading`
-
-<ArgTypes of={ListHeading} />

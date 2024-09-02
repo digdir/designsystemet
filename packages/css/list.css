@@ -12,6 +12,14 @@
   & > li + li { margin-top: var(--dsc-list-spacing) }
   & > li > :is(ol, ul) { --dsc-list-spacing: var(--dsc-list-spacing-nested) } /* Shrink spacing a bit when nested */
 
+  /* Add zero-width space to fix VoiceOver: https://gerardkcohen.me/writing/2017/voiceover-list-style-type.html
+   * This can also be acheived by using role="list" + role="listitem", but is nice to solve with CSS avoiding cluttered HTML
+   */
+  & > li::before {
+    content: "\200B";
+    position: absolute;
+  }
+
   &[data-ds-size="sm"] {
     --dsc-list-padding-left: var(--ds-spacing-4);
     --dsc-list-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
@@ -20,5 +28,11 @@
   &[data-ds-size="lg"] {
     --dsc-list-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-sm */
     --dsc-list-spacing: var(--ds-spacing-4);
+  }
+
+  &[data-ds-variant="none"] {
+    --dsc-list-padding-left: 0;
+
+    list-style: none;
   }
 }

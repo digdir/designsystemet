@@ -1,5 +1,4 @@
-import { Slot } from '@radix-ui/react-slot';
-import type { HTMLAttributes } from 'react';
+import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
 
 import type { ListProps } from '../List';
@@ -17,11 +16,12 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
 
 export type ErrorSummaryProps = {
   size?: ListProps['size'];
-} & HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   (
     {
+      className,
       size,
       role = 'alert',
       'aria-live': ariaLive = 'polite',
@@ -36,8 +36,8 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
 
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
-        <Slot
-          className={'ds-error-summary'}
+        <div
+          className={cl('ds-error-summary', className)}
           ref={ref}
           role={role}
           aria-live={ariaLive}
@@ -45,8 +45,8 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
           aria-labelledby={headingId}
           {...rest}
         >
-          <List.Root size={size}>{children}</List.Root>
-        </Slot>
+          <List size={size}>{children}</List>
+        </div>
       </ErrorSummaryContext.Provider>
     );
   },

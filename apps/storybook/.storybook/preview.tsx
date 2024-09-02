@@ -49,24 +49,22 @@ const components = {
     />
   ),
   ol: (props: Props) => (
-    <List.Root>
-      <List.Ordered
-        {...props}
-        style={{ maxWidth: '70ch' }}
-        className='sb-unstyled'
-        data-ds-color-mode='light'
-      />
-    </List.Root>
+    <List
+      {...props}
+      variant='ordered'
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+      data-ds-color-mode='light'
+    />
   ),
   ul: (props: Props) => (
-    <List.Root>
-      <List.Unordered
-        {...props}
-        style={{ maxWidth: '70ch' }}
-        className='sb-unstyled'
-        data-ds-color-mode='light'
-      />
-    </List.Root>
+    <List
+      {...props}
+      variant='unordered'
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+      data-ds-color-mode='light'
+    />
   ),
   li: (props: Props) => (
     <List.Item
@@ -74,7 +72,7 @@ const components = {
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
       data-ds-color-mode='light'
-    ></List.Item>
+    />
   ),
   a: (props: LinkProps) => {
     // if link starts with /, add current path to link
@@ -86,7 +84,7 @@ const components = {
         href={href}
         className='sb-unstyled'
         data-ds-color-mode='light'
-      ></Link>
+      />
     );
   },
   table: (props: Props) => (

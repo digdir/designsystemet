@@ -1,19 +1,16 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './ListRoot';
+import type { ListProps } from './List';
 
 import { List } from '.';
+import { Heading } from '../Typography/Heading';
 
 const render = (props: Partial<ListProps> = {}) => {
   const allProps: ListProps = {
-    children: (
-      <List.Unordered>
-        <List.Item>Test</List.Item>
-      </List.Unordered>
-    ),
+    children: <List.Item>Test</List.Item>,
     ...props,
   };
-  return renderRtl(<List.Root {...allProps} />);
+  return renderRtl(<List {...allProps} />);
 };
 
 describe('List', () => {
@@ -30,13 +27,7 @@ describe('List', () => {
   });
 
   it('Renders an ordered list', () => {
-    render({
-      children: (
-        <List.Ordered>
-          <List.Item>Test</List.Item>
-        </List.Ordered>
-      ),
-    });
+    render({ variant: 'ordered' });
     const list = document.querySelector('ol');
     expect(list).toBeInTheDocument();
   });
@@ -51,46 +42,41 @@ describe('List', () => {
     expect(screen.getByRole('list')).toHaveAttribute('data-ds-size', 'lg');
   });
 
-  it('should have the passed heading', () => {
-    render({
-      children: <List.Heading>Heading</List.Heading>,
-    });
-    expect(screen.getByRole('heading')).toBeInTheDocument();
-  });
-
-  it('should have aria-labelledby when heading is passed', () => {
-    render({
-      children: (
-        <>
-          <List.Heading>Heading</List.Heading>
-          <List.Ordered></List.Ordered>
-        </>
-      ),
-    });
-    expect(screen.getByRole('list')).toHaveAttribute('aria-labelledby');
+  it('should have aria-labelledby when previous element is heading', () => {
+    renderRtl(
+      <>
+        <Heading>Title</Heading>
+        <List />
+      </>,
+    );
+    expect(screen.getByRole('list')).toHaveAttribute(
+      'aria-labelledby',
+      screen.getByRole('heading').getAttribute('id'),
+    );
   });
   it('should have aria-labelledby when heading is with passed id', () => {
-    render({
-      children: (
-        <>
-          <List.Heading id='passedId'>Heading</List.Heading>
-          <List.Ordered></List.Ordered>
-        </>
-      ),
-    });
+    renderRtl(
+      <>
+        <Heading id='passedId'>Title</Heading>
+        <List />
+      </>,
+    );
     expect(screen.getByRole('list')).toHaveAttribute(
       'aria-labelledby',
       'passedId',
     );
   });
   it('should not have aria-labelledby when heading is missing', () => {
-    render({
-      children: (
-        <>
-          <List.Ordered></List.Ordered>
-        </>
-      ),
-    });
+    render();
+    expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
+  });
+  it('should not have aria-labelledby when list has aria-label', () => {
+    renderRtl(
+      <>
+        <Heading>Title</Heading>
+        <List aria-label='Custom list label' />
+      </>,
+    );
     expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
   });
 });

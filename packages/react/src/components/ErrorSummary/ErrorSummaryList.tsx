@@ -1,9 +1,11 @@
-import { List } from '../List';
+import { forwardRef } from 'react';
+import { List, type ListProps } from '../List';
 
-export type ErrorSummaryListProps = React.ComponentProps<typeof List.Unordered>;
+export type ErrorSummaryListProps = Omit<ListProps, 'ref'>;
 
-export default function ErrorSummaryList({ ...rest }: ErrorSummaryListProps) {
-  return <List.Unordered {...rest} />;
-}
-
-ErrorSummaryList.displayName = 'ErrorSummaryList';
+export const ErrorSummaryList = forwardRef<
+  HTMLOListElement,
+  ErrorSummaryListProps
+>(function ErrorSummaryList({ ...rest }: ErrorSummaryListProps) {
+  return <List {...rest} />;
+});

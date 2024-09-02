@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Link } from '../Link';
-
 import { List } from '.';
+import { Link } from '../Link';
+import { Heading } from '../Typography/Heading';
 
-type Story = StoryFn<typeof List.Root>;
+type Story = StoryFn<typeof List>;
 
 const decorators = [
   (Story: StoryFn) => (
@@ -16,19 +16,18 @@ const decorators = [
 
 export default {
   title: 'Komponenter/List',
-  component: List.Root,
+  component: List,
   decorators,
 } as Meta;
 
 export const Preview: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>List</List.Heading>
-    <List.Unordered>
+  <>
+    <List {...args}>
       <List.Item>List Item 1</List.Item>
       <List.Item>List Item 2</List.Item>
       <List.Item>List Item 3</List.Item>
-    </List.Unordered>
-  </List.Root>
+    </List>
+  </>
 );
 
 Preview.args = {
@@ -36,9 +35,11 @@ Preview.args = {
 };
 
 export const Sortert: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>Slik gjør du</List.Heading>
-    <List.Ordered>
+  <>
+    <Heading level={2} size='xs' spacing>
+      Slik gjør du
+    </Heading>
+    <List {...args}>
       <List.Item>
         Tørk over kyllingfiletene før du krydrer og steker. Dette vil gi en
         finere stekeskorpe på kjøttet. Ikke bruk kjøkkenpapir som loer.
@@ -52,16 +53,20 @@ export const Sortert: Story = (args) => (
         Stek filetene på sterk varme i to minutter på hver side. Sett deretter
         på lokk og stek videre på svak varme i syv minutter på hver side.
       </List.Item>
-    </List.Ordered>
-  </List.Root>
+    </List>
+  </>
 );
 
+Sortert.args = {
+  variant: 'ordered',
+};
+
 export const Usortert: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading level={2}>
+  <>
+    <Heading level={2} size='xs' spacing>
       Foreningen har plikt til å ha revisor hvis de har
-    </List.Heading>
-    <List.Unordered>
+    </Heading>
+    <List {...args}>
       <List.Item>
         et gjennomsnittlig antall ansatte som tilsvarer ti årsverk eller mer
       </List.Item>
@@ -70,67 +75,69 @@ export const Usortert: Story = (args) => (
         driftsinntekter for sin samlede virksomhet på 7 millioner kroner eller
         mer
       </List.Item>
-    </List.Unordered>
-  </List.Root>
+    </List>
+  </>
 );
 
 export const UtenOverskrift: Story = (args) => (
-  <List.Root {...args}>
-    <List.Unordered>
+  <>
+    <List {...args}>
       <List.Item>Lasagne</List.Item>
       <List.Item>Taco</List.Item>
       <List.Item>Pizza</List.Item>
-    </List.Unordered>
-  </List.Root>
+    </List>
+  </>
 );
 
 export const Innrykk: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading level={2}>Nested lists</List.Heading>
-    <List.Unordered>
+  <>
+    <Heading level={2} size='xs' spacing>
+      Nested lists
+    </Heading>
+    <List {...args}>
       <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 1</List.Heading>
-          <List.Ordered>
-            <List.Item>List Item 1.1</List.Item>
-            <List.Item>List Item 1.2</List.Item>
-            <List.Item>List Item 1.3</List.Item>
-          </List.Ordered>
-        </List.Root>
+        <Heading level={3} size='xs' spacing>
+          {' '}
+          List Item 1
+        </Heading>
+        <List variant='ordered'>
+          <List.Item>List Item 1.1</List.Item>
+          <List.Item>List Item 1.2</List.Item>
+          <List.Item>List Item 1.3</List.Item>
+        </List>
       </List.Item>
       <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 2</List.Heading>
-          <List.Unordered>
-            <List.Item>List Item 2.1</List.Item>
-            <List.Item>List Item 2.2</List.Item>
-            <List.Item>List Item 2.3</List.Item>
-          </List.Unordered>
-        </List.Root>
+        <Heading level={3} size='xs' spacing>
+          {' '}
+          List Item 2
+        </Heading>
+        <List>
+          <List.Item>List Item 2.1</List.Item>
+          <List.Item>List Item 2.2</List.Item>
+          <List.Item>List Item 2.3</List.Item>
+        </List>
       </List.Item>
       <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 3</List.Heading>
-          <List.Unordered>
-            <List.Item>List Item 3.1</List.Item>
-            <List.Item>List Item 3.2</List.Item>
-            <List.Item>List Item 3.3</List.Item>
-          </List.Unordered>
-        </List.Root>
+        <Heading level={3} size='xs' spacing>
+          {' '}
+          List Item 3
+        </Heading>
+        <List>
+          <List.Item>List Item 3.1</List.Item>
+          <List.Item>List Item 3.2</List.Item>
+          <List.Item>List Item 3.3</List.Item>
+        </List>
       </List.Item>
-    </List.Unordered>
-  </List.Root>
+    </List>
+  </>
 );
 
 export const ListeMedLenker: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>Designsystemet</List.Heading>
-    <List.Unordered
-      style={{
-        listStyle: 'none',
-        paddingLeft: 0,
-      }}
-    >
+  <>
+    <Heading level={2} size='xs' spacing>
+      Designsystemet
+    </Heading>
+    <List {...args}>
       <List.Item>
         <Link
           href='https://www.designsystemet.no/grunnleggende'
@@ -149,6 +156,10 @@ export const ListeMedLenker: Story = (args) => (
           Mønstre
         </Link>
       </List.Item>
-    </List.Unordered>
-  </List.Root>
+    </List>
+  </>
 );
+
+ListeMedLenker.args = {
+  variant: 'none',
+};

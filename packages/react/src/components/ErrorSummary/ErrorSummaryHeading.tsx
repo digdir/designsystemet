@@ -1,31 +1,34 @@
-import { useContext, useEffect } from 'react';
+import { forwardRef, useContext, useEffect } from 'react';
 
-import type { ListHeadingProps } from '../List';
-import { List } from '../List';
+import { Heading, type HeadingProps } from '../Typography/Heading';
 
 import { ErrorSummaryContext } from './ErrorSummaryRoot';
 
-export type ErrorSummaryHeadingProps = ListHeadingProps;
+export type ErrorSummaryHeadingProps = Omit<HeadingProps, 'ref'>;
 
-export const ErrorSummaryHeading = ({
-  id,
-  ...rest
-}: ErrorSummaryHeadingProps) => {
+export const ErrorSummaryHeading = forwardRef<
+  HTMLHeadingElement,
+  ErrorSummaryHeadingProps
+>(function ErrorSummaryHeading(
+  { className, id, ...rest }: ErrorSummaryHeadingProps,
+  ref,
+) {
   const { headingId, setHeadingId } = useContext(ErrorSummaryContext);
 
   useEffect(() => {
-    if (id && headingId !== id) {
-      setHeadingId(id);
-    }
+    if (id && headingId !== id) setHeadingId(id);
   }, [headingId, id, setHeadingId]);
 
   return (
-    <List.Heading
-      {...rest}
-      id={headingId}
+    <Heading
       className='ds-error-summary__heading'
+      id={headingId}
+      size='xs'
+      spacing
+      ref={ref}
+      {...rest}
     />
   );
-};
+});
 
 ErrorSummaryHeading.displayName = 'ErrorSummaryHeading';
