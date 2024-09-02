@@ -24,7 +24,7 @@ type Options = {
 
 const sd = new StyleDictionary();
 
-export async function run(options: Options): Promise<void> {
+export async function buildTokens(options: Options): Promise<void> {
   const tokensDir = options.tokens;
   const storefrontOutDir = path.resolve('../../apps/storefront/tokens');
   const outPath = path.resolve(options.out);

@@ -1,3 +1,3 @@
-export * from './colorUtils';
-export * from './themeUtils';
-export * from './types';
+export * from './utils.js';
+export * from './theme.js';
+export * from './types.js';

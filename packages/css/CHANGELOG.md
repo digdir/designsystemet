@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.32
+
+### Patch Changes
+
+- Chip: Support wrapping in group ([#2324](https://github.com/digdir/designsystemet/pull/2324))
+
 ## 0.11.0-next.12
 
 ### Minor Changes
