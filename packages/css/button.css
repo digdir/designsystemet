@@ -5,7 +5,9 @@
   --dsc-button-color: var(--ds-color-accent-contrast-default);
   --dsc-button-font-size: var(--ds-font-size-5);
   --dsc-button-gap: var(--ds-spacing-2);
-  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-button-icon-adjust: calc(var(--dsc-button-padding-block) - var(--dsc-button-padding-inline));
+  --dsc-button-padding-block: var(--ds-spacing-2);
+  --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
   align-items: center;
@@ -19,25 +21,31 @@
   font-family: inherit;
   font-size: var(--dsc-button-font-size); /* Replace with composes paragraph-md */
   line-height: var(--ds-line-height-sm); /* Replace with composes paragraph-md */
-  gap: var(--dsc-button-gap);
+  gap: calc(var(--dsc-button-gap) + var(--dsc-button-icon-adjust) * -1); /* Add icon adjust spacing to achieve correct gap */
   justify-content: center;
   min-height: var(--dsc-button-size);
   min-width: var(--dsc-button-size);
   outline: none;
-  padding: var(--dsc-button-padding);
+  padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
   text-align: inherit;
   text-decoration: none;
+
+  & > svg {
+    margin-inline: var(--dsc-button-icon-adjust); /* Add negative margin so icon only button becomes square */
+  }
 
   &[data-ds-size="sm"] {
     --dsc-button-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
     --dsc-button-gap: var(--ds-sizing-1);
-    --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-3);
+    --dsc-button-padding-block: var(--ds-spacing-2);
+    --dsc-button-padding-inline: var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10);
   }
 
   &[data-ds-size="lg"] {
     --dsc-button-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-lg */
-    --dsc-button-padding: var(--ds-spacing-3) var(--ds-spacing-5);
+    --dsc-button-padding-block: var(--ds-spacing-3);
+    --dsc-button-padding-inline: var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
   }
 
@@ -142,6 +150,7 @@
     background: currentcolor;
     content: '';
     height: 1.5em;
+    margin-inline: var(--dsc-button-icon-adjust);
     mask: center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cstyle%3E@keyframes rotate%7Bto%7Brotate:360deg%7D%7D@keyframes stroke%7B50%25%7Bstroke-dasharray:100,200;stroke-dashoffset:-15;transform:rotate(0deg)%7Dto%7Bstroke-dasharray:1,200;stroke-dashoffset:-120;transform:rotate(15deg)%7D%7Dcircle%7Bcx:25;cy:25;r:20;fill:none;stroke:currentcolor;stroke-width:5%7Dcircle:last-child%7Banimation:stroke ease-in-out infinite 2s,rotate linear infinite 2s;transform-origin:center%7D%3C/style%3E%3Ccircle opacity='.15'/%3E%3Ccircle stroke-dasharray='1, 200'/%3E%3C/svg%3E");
     width: 1.5em;
   }
@@ -160,6 +169,3 @@
   }
 }
 
-.ds-button--icon-only {
-  --dsc-button-padding: 0; /* TODO: Should sync design how icon-spacing/alignment should work in general  */
-}

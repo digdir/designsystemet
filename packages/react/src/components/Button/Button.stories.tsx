@@ -213,11 +213,20 @@ export const Icons: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' />
+    </Button>
+    <Button variant='primary' size='sm'>
+      <CogIcon fontSize='1rem' />
       Small
     </Button>
     <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' />
+    </Button>
+    <Button variant='primary' size='md'>
+      <CogIcon fontSize='1.5rem' />
       Medium
+    </Button>
+    <Button variant='primary' size='lg'>
+      <CogIcon fontSize='2rem' />
     </Button>
     <Button variant='primary' size='lg'>
       <CogIcon fontSize='2rem' />
