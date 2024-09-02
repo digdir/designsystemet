@@ -45,44 +45,44 @@ export const NoName: Story = () => <Avatar aria-label='Ola' />;
 
 export const Sizes: Story = () => (
   <>
-    <Avatar size='xs' aria-label='x s'>
+    <Avatar size='xs' aria-label='extra small'>
       xs
     </Avatar>
-    <Avatar size='xs' aria-label='' />
-    <Avatar size='sm' aria-label='s m'>
+    <Avatar size='xs' aria-label='extra small' />
+    <Avatar size='sm' aria-label='small'>
       sm
     </Avatar>
-    <Avatar size='sm' aria-label='' />
-    <Avatar size='md' aria-label='m d'>
+    <Avatar size='sm' aria-label='small' />
+    <Avatar size='md' aria-label='medium'>
       md
     </Avatar>
-    <Avatar size='md' aria-label='' />
-    <Avatar size='lg' aria-label='l g'>
+    <Avatar size='md' aria-label='medium' />
+    <Avatar size='lg' aria-label='large'>
       lg
     </Avatar>
-    <Avatar size='lg' aria-label='' />
+    <Avatar size='lg' aria-label='large' />
   </>
 );
 
 export const ColorVariants: Story = () => (
   <>
-    <Avatar color='accent' aria-label='' />
-    <Avatar color='neutral' aria-label='' />
-    <Avatar color='brand1' aria-label='' />
-    <Avatar color='brand2' aria-label='' />
-    <Avatar color='brand3' aria-label='' />
+    <Avatar color='accent' aria-label='color accent' />
+    <Avatar color='neutral' aria-label='color neutral' />
+    <Avatar color='brand1' aria-label='color brand1' />
+    <Avatar color='brand2' aria-label='color brand2' />
+    <Avatar color='brand3' aria-label='color brand3' />
   </>
 );
 
 export const ShapeVariants: Story = () => (
   <>
-    <Avatar variant='circle' aria-label='' />
-    <Avatar variant='square' aria-label='' />
-    <Avatar variant='circle' aria-label='Kristoffer Kristoffersen'>
-      kk
+    <Avatar variant='circle' aria-label='variant circle' />
+    <Avatar variant='square' aria-label='variant square' />
+    <Avatar variant='circle' aria-label='Ola Nordman'>
+      ON
     </Avatar>
-    <Avatar variant='square' aria-label='Kristoffer Kristoffersen'>
-      kk
+    <Avatar variant='square' aria-label='Ola Nordman'>
+      ON
     </Avatar>
   </>
 );
