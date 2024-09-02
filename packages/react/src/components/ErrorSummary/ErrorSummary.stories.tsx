@@ -14,34 +14,27 @@ export default {
 } as Meta;
 
 export const Preview: Story = (args) => (
-  <>
-    <ErrorSummary.Root {...args}>
-      <ErrorSummary.Heading>
-        For å gå videre må du rette opp følgende feil:
-      </ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item href='#'>
-          Fødselsdato kan ikke være etter år 2005
-        </ErrorSummary.Item>
-        <ErrorSummary.Item href='#'>
-          Telefonnummer kan kun inneholde siffer
-        </ErrorSummary.Item>
-        <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
-      </ErrorSummary.List>
-    </ErrorSummary.Root>
-  </>
+  <ErrorSummary.Root {...args}>
+    <ErrorSummary.Heading>
+      For å gå videre må du rette opp følgende feil:
+    </ErrorSummary.Heading>
+    <ErrorSummary.List>
+      <ErrorSummary.Item href='#'>
+        Fødselsdato kan ikke være etter år 2005
+      </ErrorSummary.Item>
+      <ErrorSummary.Item href='#'>
+        Telefonnummer kan kun inneholde siffer
+      </ErrorSummary.Item>
+      <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
+    </ErrorSummary.List>
+  </ErrorSummary.Root>
 );
 Preview.args = {
   size: 'md',
 };
 
 export const WithForm: Story = () => (
-  <div
-    style={{
-      display: 'grid',
-      gap: 'var(--ds-spacing-4)',
-    }}
-  >
+  <>
     <Textfield
       label='Fornavn'
       id='fornavn'
@@ -67,15 +60,36 @@ export const WithForm: Story = () => (
         </ErrorSummary.Item>
       </ErrorSummary.List>
     </ErrorSummary.Root>
-  </div>
+  </>
 );
+
+WithForm.decorators = [
+  (Story) => (
+    <div
+      style={{
+        display: 'grid',
+        gap: 'var(--ds-spacing-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
 
 export const ShowHide: Story = () => {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
+      <div
+        style={{
+          display: 'grid',
+          placeItems: 'center',
+          marginBottom: 'var(--ds-spacing-4)',
+        }}
+      >
+        <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
+      </div>
       {show && (
         <ErrorSummary.Root>
           <ErrorSummary.Heading>
