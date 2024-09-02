@@ -25,7 +25,7 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json' | 'sh';
   children?: string;
 };
 
@@ -84,7 +84,7 @@ const CodeSnippet = ({
           </Tooltip>
           <SyntaxHighlighter
             style={nightOwl}
-            language='jsx'
+            language={language}
             customStyle={{
               fontSize: '15px',
               margin: 0,
