@@ -22,17 +22,12 @@ export type ListProps = {
    * @default unordered
    *
    */
-  variant?: 'unordered' | 'ordered' | 'none';
-} & (
-  | ({ variant: 'ordered' } & Omit<
-      React.OlHTMLAttributes<HTMLOListElement>,
-      'size'
-    >)
-  | ({ variant?: 'unordered' | 'none' } & Omit<
-      React.HTMLAttributes<HTMLUListElement>,
-      'size'
-    >)
-);
+  variant?: 'unordered' | 'ordered';
+} & Omit<
+  | ({ variant: 'ordered' } & React.OlHTMLAttributes<HTMLOListElement>)
+  | ({ variant?: 'unordered' } & React.HTMLAttributes<HTMLUListElement>),
+  'size'
+>;
 
 export const List = forwardRef<HTMLOListElement, ListProps>(function List(
   {

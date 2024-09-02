@@ -29,10 +29,4 @@
     --dsc-list-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-sm */
     --dsc-list-spacing: var(--ds-spacing-4);
   }
-
-  &[data-ds-variant="none"] {
-    --dsc-list-padding-left: 0;
-
-    list-style: none;
-  }
 }

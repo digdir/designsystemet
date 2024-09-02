@@ -137,7 +137,7 @@ export const ListeMedLenker: Story = (args) => (
     <Heading level={2} size='xs' spacing>
       Designsystemet
     </Heading>
-    <List {...args}>
+    <List {...args} style={{ listStyle: 'none', padding: 0 }}>
       <List.Item>
         <Link
           href='https://www.designsystemet.no/grunnleggende'
@@ -159,7 +159,3 @@ export const ListeMedLenker: Story = (args) => (
     </List>
   </>
 );
-
-ListeMedLenker.args = {
-  variant: 'none',
-};
