@@ -79,4 +79,19 @@ describe('List', () => {
     );
     expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
   });
+  it('should respect exsisting aria-labelledby', () => {
+    renderRtl(
+      <>
+        <Heading level={2} id='main-title'>
+          Main title
+        </Heading>
+        <Heading level={3}>Subtitle</Heading>
+        <List aria-labelledby='main-title' />
+      </>,
+    );
+    expect(screen.getByRole('list')).toHaveAttribute(
+      'aria-labelledby',
+      'main-title',
+    );
+  });
 });

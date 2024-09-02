@@ -35,12 +35,21 @@ export type ListProps = {
 );
 
 export const List = forwardRef<HTMLOListElement, ListProps>(function List(
-  { asChild, className, size = 'md', variant = 'unordered', ...rest },
+  {
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    asChild,
+    className,
+    size = 'md',
+    variant = 'unordered',
+    ...rest
+  },
   ref,
 ) {
   const Component = asChild ? Slot : variant === 'ordered' ? 'ol' : 'ul';
   const randomId = useId();
   const innerRef = useRef<HTMLOListElement>(null);
+  const hasLabel = ariaLabel ?? ariaLabelledby ?? false;
   const mergedRefs = useMergeRefs([innerRef, ref]);
 
   // Connect previous heading element if available. This does not affect visuall rendering,
@@ -50,16 +59,18 @@ export const List = forwardRef<HTMLOListElement, ListProps>(function List(
     const heading = list?.previousElementSibling;
     const headingId = heading?.id || randomId;
 
-    if (!list?.ariaLabel && heading?.matches('h1,h2,h3,h4,h5,h6')) {
+    if (hasLabel === false && heading?.matches('h1,h2,h3,h4,h5,h6')) {
       list?.setAttribute('aria-labelledby', headingId);
       heading.id = headingId;
     }
     return () => list?.removeAttribute('aria-labelledby');
-  }, []);
+  }, [hasLabel]);
 
   return (
     <Paragraph size={size} asChild>
       <Component
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
         className={cl(`ds-list`, className)}
         data-ds-size={size}
         data-ds-variant={variant}
