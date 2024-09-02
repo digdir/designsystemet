@@ -32,6 +32,7 @@ export type AccordionItemProps = {
  */
 export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
   ({ className, open, defaultOpen = false, ...rest }, ref) => {
+    const isControlled = open !== undefined;
     const internalOpen = useRef(open ?? defaultOpen); // Only render open state on server, let <details> handle state in browser
     const detailsRef = useRef<HTMLDetailsElement>(null);
     const mergedRefs = useMergeRefs([detailsRef, ref]);
@@ -40,7 +41,6 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     useEffect(() => {
       const details = detailsRef.current;
       const summary = details?.querySelector(':scope > u-summary');
-      const isControlled = open !== undefined;
       const handleSummaryClick = (event: Event) => {
         event?.preventDefault(); // Prevent native <details> toggle so we can animate
         if (!isControlled && details) animateToggle(details);
@@ -49,15 +49,12 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
       summary?.addEventListener('click', handleSummaryClick);
       if (details && isControlled) animateToggle(details, open);
       return () => summary?.removeEventListener('click', handleSummaryClick);
-    }, [open]);
+    }, [isControlled, open]);
 
     return (
       <u-details
-        class={cl(
-          'ds-accordion__item',
-          `ds-accordion__item--${open === undefined ? 'uncontrolled' : 'controlled'}`,
-          className,
-        )}
+        class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
+        data-ds-search-prevent={isControlled || undefined} // Give CSS opportunity to entirely hide content
         open={internalOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
         ref={mergedRefs}
         {...rest}

@@ -2,35 +2,19 @@
   --dsc-accordion-background: var(--ds-color-neutral-background-default);
   --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-accordion-border-radius: min(1rem, var(--ds-border-radius-md));
-  --dsc-accordion-button-background--open: var(--ds-color-neutral-background-subtle);
-  --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
   --dsc-accordion-chevron-background--active: var(--ds-color-neutral-surface-default);
   --dsc-accordion-chevron-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-accordion-chevron-gap: var(--ds-spacing-2);
   --dsc-accordion-chevron-size: var(--ds-spacing-6);
+  --dsc-accordion-heading-background--open: var(--ds-color-neutral-background-subtle);
+  --dsc-accordion-heading-background: var(--ds-color-neutral-background-default);
   --dsc-accordion-padding: var(--ds-spacing-4);
-
-  border-bottom: 1px solid var(--dsc-accordion-border-color);
-  box-sizing: border-box;
-  background-color: var(--dsc-accordion-background);
-
-  &[data-ds-border] {
-    border: 1px solid var(--dsc-accordion-border-color);
-    border-radius: var(--dsc-accordion-border-radius);
-  }
-
-  &[data-ds-color="neutral"] {
-    --dsc-accordion-background: var(--ds-color-neutral-background-default);
-    --dsc-accordion-button-background: var(--ds-color-neutral-background-default);
-    --dsc-accordion-button-background--open: var(--ds-color-neutral-background-subtle);
-    --dsc-accordion-chevron-background--hover: var(--ds-color-neutral-surface-default);
-  }
 
   &[data-ds-color="subtle"] {
     --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
     --dsc-accordion-border-color: var(--ds-color-neutral-border-default);
-    --dsc-accordion-button-background: var(--ds-color-neutral-background-subtle);
-    --dsc-accordion-button-background--open: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-heading-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-heading-background--open: var(--ds-color-neutral-surface-default);
     --dsc-accordion-chevron-background--hover: var(--ds-color-neutral-surface-default);
     --dsc-accordion-chevron-background--active: var(--ds-color-neutral-surface-active);
   }
@@ -38,8 +22,8 @@
   &[data-ds-color="brand1"] {
     --dsc-accordion-background: var(--ds-color-brand1-background-subtle);
     --dsc-accordion-border-color: var(--ds-color-brand1-border-subtle);
-    --dsc-accordion-button-background: var(--ds-color-brand1-surface-default);
-    --dsc-accordion-button-background--open: var(--ds-color-brand1-surface-hover);
+    --dsc-accordion-heading-background: var(--ds-color-brand1-surface-default);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand1-surface-hover);
     --dsc-accordion-chevron-background--hover: var(--ds-color-brand1-surface-active);
     --dsc-accordion-chevron-background--active: var(--ds-color-brand1-surface-active);
   }
@@ -47,8 +31,8 @@
   &[data-ds-color="brand2"] {
     --dsc-accordion-background: var(--ds-color-brand2-background-subtle);
     --dsc-accordion-border-color: var(--ds-color-brand2-border-subtle);
-    --dsc-accordion-button-background: var(--ds-color-brand2-surface-default);
-    --dsc-accordion-button-background--open: var(--ds-color-brand2-surface-hover);
+    --dsc-accordion-heading-background: var(--ds-color-brand2-surface-default);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand2-surface-hover);
     --dsc-accordion-chevron-background--hover: var(--ds-color-brand2-surface-active);
     --dsc-accordion-chevron-background--active: var(--ds-color-brand2-surface-active);
   }
@@ -56,84 +40,80 @@
   &[data-ds-color="brand3"] {
     --dsc-accordion-background: var(--ds-color-brand3-background-subtle);
     --dsc-accordion-border-color: var(--ds-color-brand3-border-subtle);
-    --dsc-accordion-button-background: var(--ds-color-brand3-surface-default);
-    --dsc-accordion-button-background--open: var(--ds-color-brand3-surface-hover);
+    --dsc-accordion-heading-background: var(--ds-color-brand3-surface-default);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand3-surface-hover);
     --dsc-accordion-chevron-background--hover: var(--ds-color-brand3-surface-active);
     --dsc-accordion-chevron-background--active: var(--ds-color-brand3-surface-active);
   }
 }
 
 .ds-accordion__item {
+  background: var(--dsc-accordion-background);
+  border-color: var(--dsc-accordion-border-color);
+  border-style: solid;
+  border-width: 1px 0;
+
   & > :is(summary, u-summary) {
-    align-items: center;
-    background: var(--dsc-accordion-button-background);
-    border-top: 1px solid var(--dsc-accordion-border-color);
-    border: none;
+    background: var(--dsc-accordion-heading-background);
+    box-sizing: border-box;
     cursor: pointer;
-    display: flex;
-    gap: var(--ds-spacing-2);
-    justify-content: flex-start;
-    margin: 0;
+    list-style: none;
+    outline: none;
     padding-block: var(--dsc-accordion-padding);
     padding-inline: calc(var(--dsc-accordion-padding) + var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) var(--dsc-accordion-padding);
-    text-align: left;
-    width: 100%;
 
     &::before {
-      content: '';
-      border-radius: var(--ds-border-radius-md);
-      color: var(--ds-color-neutral-text-default);
       background: currentcolor;
-      position: absolute;
+      border-radius: var(--ds-border-radius-md);
+      content: '';
       height: var(--dsc-accordion-chevron-size);
-      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E")
-        50% / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E") 50% / contain no-repeat;
+      position: absolute;
+      transition: rotate .2s;
       translate: calc((var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) * -1);
       width: var(--dsc-accordion-chevron-size);
     }
   }
 
   & > :not(summary, u-summary) {
+    border-radius: inherit;
     padding: var(--ds-spacing-5, 1rem);
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   &:focus-within {
-    position: relative;
+    box-shadow: var(--dsc-focus-boxShadow); /* Will work when #2313 is merged */
+    position: relative; /* Ensure foucs outline renders on top */
   }
 
   &[open] > :is(summary, u-summary) {
-    background-color: var(--dsc-accordion-button-background--open);
+    background-color: var(--dsc-accordion-heading-background--open);
 
-    &::before { rotate: 90deg }
+    &::before { rotate: 180deg }
+  }
+
+  &[data-ds-search-prevent]:not([open]) > :not(summary, u-summary) {
+    display: none; /* Turn off search-in-page-to-open when state is controlled */
   }
 }
 
-.ds-accordion__item--controlled:not([open]) > :not(summary, u-summary) {
-  display: none; /* Turn off search-in-page-to-open when state is controlled */
-}
+.ds-accordion-group[data-ds-border] > * { border-width: 1px }
+.ds-accordion-group[data-ds-border] > * + * { border-top: 0 }
 
-.ds-accordion__item:not(:first-child) > :is(summary, u-summary) {
-  border-top: 1px solid var(--dsc-accordion-border-color);
-}
-
-.ds-accordion-group--border .ds-accordion__item:first-child > :is(summary, u-summary) {
-  border-top: 0;
-}
-
-.ds-accordion-group--border .ds-accordion__item:first-of-type > :is(summary, u-summary):first-of-type {
+.ds-accordion-group[data-ds-border] > :first-child,
+.ds-accordion-group[data-ds-border] > :first-child > :is(summary, u-summary) {
   border-top-left-radius: var(--dsc-accordion-border-radius);
   border-top-right-radius: var(--dsc-accordion-border-radius);
 }
 
-.ds-accordion-group--border .ds-accordion__item:last-of-type:not([open]) > :is(summary, u-summary):first-of-type {
+
+.ds-accordion-group[data-ds-border] > :last-child,
+.ds-accordion-group[data-ds-border] > :last-child:not([open]) > :is(summary, u-summary) {
   border-bottom-left-radius: var(--dsc-accordion-border-radius);
   border-bottom-right-radius: var(--dsc-accordion-border-radius);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ds-accordion__item> :is(summary, u-summary):hover::before {
+  .ds-accordion__item > :is(summary, u-summary):hover::before {
     background-color: var(--dsc-accordion-chevron-background--hover);
   }
 

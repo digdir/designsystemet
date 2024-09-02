@@ -1,3 +1,4 @@
+import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
@@ -14,10 +15,17 @@ export type AccordionHeadingProps = {
  * <AccordionHeader>Header</AccordionHeader>
  */
 export const AccordionHeading = forwardRef<HTMLElement, AccordionHeadingProps>(
-  function AccordionHeading(rest, ref) {
+  function AccordionHeading({ className, ...rest }, ref) {
     return (
       <Paragraph asChild size='sm'>
-        <u-summary ref={ref} {...rest} />
+        <u-summary
+          class={cl(
+            'ds-paragraph ds-paragraph--sm ds-line-height--md', // Very TMP fix awaiting CSS modules
+            className,
+          )}
+          ref={ref}
+          {...rest}
+        />
       </Paragraph>
     );
   },
