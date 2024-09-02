@@ -1,6 +1,8 @@
+import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { createContext, forwardRef, useId, useState } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
+import '@u-elements/u-details';
 
 export type AccordionItemProps = {
   /**
@@ -18,56 +20,75 @@ export type AccordionItemProps = {
   defaultOpen?: boolean;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children: ReactNode;
-} & HTMLAttributes<HTMLDivElement>;
-
-type AccordionItemContextProps = {
-  open: boolean;
-  toggleOpen: () => void;
-  contentId: string;
-};
-
-export const AccordionItemContext =
-  createContext<AccordionItemContextProps | null>(null);
+} & HTMLAttributes<HTMLDetailsElement>;
 
 /**
  * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
  * @example
  * <AccordionItem>
- *  <AccordionHeading>Header</AccordionHeading>
+ *  <AccordionHeader>Header</AccordionHeader>
  *  <AccordionContent>Content</AccordionContent>
  * </AccordionItem>
  */
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
-  ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
-    const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);
-    const contentId = useId();
+export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
+  ({ className, open, defaultOpen = false, ...rest }, ref) => {
+    const internalOpen = useRef(open ?? defaultOpen); // Only render open state on server, let <details> handle state in browser
+    const detailsRef = useRef<HTMLDetailsElement>(null);
+    const mergedRefs = useMergeRefs([detailsRef, ref]);
+
+    // Control state with a useEffect to animate on prop change and prevent native <details> toggle
+    useEffect(() => {
+      const details = detailsRef.current;
+      const summary = details?.querySelector(':scope > u-summary');
+      const isControlled = open !== undefined;
+      const handleSummaryClick = (event: Event) => {
+        event?.preventDefault(); // Prevent native <details> toggle so we can animate
+        if (!isControlled && details) animateToggle(details);
+      };
+
+      summary?.addEventListener('click', handleSummaryClick);
+      if (details && isControlled) animateToggle(details, open);
+      return () => summary?.removeEventListener('click', handleSummaryClick);
+    }, [open]);
 
     return (
-      <div
-        className={cl(
+      <u-details
+        class={cl(
           'ds-accordion__item',
-          (open ?? internalOpen) && 'ds-accordion__item--open',
+          `ds-accordion__item--${open === undefined ? 'uncontrolled' : 'controlled'}`,
           className,
         )}
-        ref={ref}
+        open={internalOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
+        ref={mergedRefs}
         {...rest}
-      >
-        <AccordionItemContext.Provider
-          value={{
-            open: open ?? internalOpen,
-            toggleOpen: () => {
-              if (open === undefined) {
-                setInternalOpen((iOpen) => !iOpen);
-              }
-            },
-            contentId: contentId,
-          }}
-        >
-          {children}
-        </AccordionItemContext.Provider>
-      </div>
+      />
     );
   },
 );
 
 AccordionItem.displayName = 'AccordionItem';
+
+function animateToggle(details: HTMLDetailsElement, open = !details.open) {
+  const isAnimateSupported = 'animate' in details;
+  const isReducedMotion = window.matchMedia?.(
+    '(prefers-reduced-motion: reduce)',
+  ).matches;
+
+  if (isReducedMotion || !isAnimateSupported) {
+    details.open = open;
+  } else if (details.open !== open) {
+    details.open = false;
+    const closed = `${details.scrollHeight}px`;
+    details.open = true;
+    const opened = `${details.scrollHeight}px`;
+
+    details.style.overflow = 'clip'; // Clip content while animating
+    details.animate(
+      { height: [open ? closed : opened, open ? opened : closed] },
+      { duration: 400, easing: 'ease-in-out' },
+    ).onfinish = () => {
+      details.style.removeProperty('overflow'); // Restore overlow
+      details.open = open;
+    };
+  }
+}

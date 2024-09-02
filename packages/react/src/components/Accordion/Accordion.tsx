@@ -18,23 +18,21 @@ export type AccordionRootProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 /**
- * Accordion root component, contains `Accordion.Item` components.
+ * Accordion component, contains `Accordion.Item` components.
  */
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
-  ({ border = false, color = 'neutral', className, ...rest }, ref) => {
+export const Accordion = forwardRef<HTMLDivElement, AccordionRootProps>(
+  function Accordion(
+    { border = false, color = 'neutral', className, ...rest },
+    ref,
+  ) {
     return (
       <div
-        className={cl(
-          'ds-accordion',
-          border && 'ds-accordion--border',
-          color && `ds-accordion--${color}`,
-          className,
-        )}
+        className={cl('ds-accordion-group', className)}
+        data-ds-border={border || undefined} /* Fallback to  */
+        data-ds-color={color}
         ref={ref}
         {...rest}
       />
     );
   },
 );
-
-AccordionRoot.displayName = 'AccordionRoot';
