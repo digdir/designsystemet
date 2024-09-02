@@ -10,7 +10,6 @@ import {
 export type AvatarProps = {
   /**
    * The name of the person the avatar represents.
-   * Will be used to generate initials if no children are provided.
    */
   'aria-label': string;
   /**
@@ -64,7 +63,7 @@ const fontSizeMap = {
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
-    'aria-label': name,
+    'aria-label': ariaLabel,
     color = 'accent',
     size = 'md',
     variant = 'circle',
@@ -84,7 +83,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       data-ds-color={color}
       data-ds-size={size}
       role='img'
-      aria-label={name}
+      aria-label={ariaLabel}
       {...rest}
     >
       <Component {...(children ? { 'aria-hidden': true } : {})}>
