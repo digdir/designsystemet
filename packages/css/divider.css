@@ -1,16 +1,8 @@
 .ds-divider {
-  --dsc-divider-color: var(--ds-color-neutral-border-default);
+  --dsc-divider-color: var(--ds-color-neutral-border-subtle);
 
   border-top: 1px solid var(--dsc-divider-color);
   border-width: 1px 0 0;
   margin-block: .5em;
   width: 100%;
-
-  &[data-ds-variant="strong"] {
-    --dsc-divider-color: var(--ds-color-neutral-border-default);
-  }
-
-  &[data-ds-variant="subtle"] {
-    --dsc-divider-color: var(--ds-color-neutral-border-subtle);
-  }
 }
