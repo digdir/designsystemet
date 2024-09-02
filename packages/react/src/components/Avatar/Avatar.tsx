@@ -50,7 +50,7 @@ const fontSizeMap = {
  * Avatars are used to represent people or entities.
  *
  * @example
- * <Avatar name='John Doe' />
+ * <Avatar aria-label="John Doe">JD</Avatar>
  *
  * @example
  * <Avatar name='John Doe'>
