@@ -4,7 +4,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../../colors/index.js';
 import type { ColorInfo, ColorMode, ThemeColors } from '../../colors/index.js';
-import generateMetadataJson from '../../init/generateMetadataJson.js';
+import { generateMetadataJson } from './generate$metadata.js';
 import { generateThemesJson } from './generate$themes.js';
 
 type Colors = Record<ThemeColors, CssColor>;
@@ -157,7 +157,7 @@ export const createTokens = async (opts: CreateTokens) => {
     // Generate metadata and themes json for Token Studio and build script
     console.log('Generating metadata and themes files');
     const $theme = generateThemesJson(['light', 'dark', 'contrast'], ['theme']);
-    const $metadata = generateMetadataJson(['Light', 'Dark', 'Contrast'], ['theme']);
+    const $metadata = generateMetadataJson(['light', 'dark', 'contrast'], ['theme']);
 
     await fs.writeFile(path.join(targetDir, '$themes.json'), JSON.stringify($theme, null, 2));
     await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, 2));

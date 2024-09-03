@@ -1,4 +1,4 @@
-import { hash, randomUUID } from 'node:crypto';
+import { hash } from 'node:crypto';
 
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
