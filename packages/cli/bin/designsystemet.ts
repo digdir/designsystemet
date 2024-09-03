@@ -2,7 +2,6 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import { write } from 'node:fs';
 import { convertToHex } from '../src/colors/index.js';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
@@ -54,7 +53,7 @@ function makeTokenCommands() {
           brand3: convertToHex(opts.brand3),
         },
         typography: {
-          family,
+          fontFamily: family,
         },
         write,
       };

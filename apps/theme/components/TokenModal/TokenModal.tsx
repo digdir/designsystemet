@@ -1,16 +1,17 @@
 'use client';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { type CssColor, Theme } from '@adobe/leonardo-contrast-colors';
 import {
   Button,
   Heading,
   Modal,
-  Tabs,
+  Paragraph,
   Tooltip,
 } from '@digdir/designsystemet-react';
+import { createTokens } from '@digdir/designsystemet/tokens';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 
 import classes from './TokenModal.module.css';
 
@@ -32,10 +33,19 @@ export const TokenModal = ({
   borderRadius,
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [lightThemeSnippet, setLightThemeSnippet] = useState<string>('');
+  const [darkThemeSnippet, setDarkThemeSnippet] = useState<string>('');
 
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
-  const cliSnippet = `npx @digdir/designsystemet tokens create --write --accent "${accentColor}" --neutral "${neutralColor}" --brand1 "${brand1Color}" --brand2 "${brand2Color}" --brand3 "${brand3Color}"`;
+  const cliSnippet = `npx @digdir/designsystemet tokens create \\
+   --accent "${accentColor}" \\
+   --neutral "${neutralColor}" \\
+   --brand1 "${brand1Color}" \\
+   --brand2 "${brand2Color}" \\
+   --brand3 "${brand3Color}" \\
+   --write
+   `;
 
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
@@ -44,6 +54,31 @@ export const TokenModal = ({
     });
   };
 
+  useEffect(() => {
+    const createFigmaPluginSnippets = async () => {
+      const tokens = await createTokens({
+        colors: {
+          accent: accentColor,
+          neutral: neutralColor,
+          brand1: brand1Color,
+          brand2: brand2Color,
+          brand3: brand3Color,
+        },
+        typography: { fontFamily: 'Inter' },
+      });
+
+      const lightTheme = { theme: tokens.colors.light.theme };
+      const darkTheme = { theme: tokens.colors.dark.theme };
+
+      setLightThemeSnippet(
+        JSON.stringify(lightTheme, null, 2).replace('$', ''),
+      );
+      setDarkThemeSnippet(JSON.stringify(darkTheme, null, 2).replace('$', ''));
+    };
+
+    createFigmaPluginSnippets();
+  });
+
   return (
     <Modal.Root>
       <Modal.Trigger
@@ -51,7 +86,7 @@ export const TokenModal = ({
           return modalRef.current?.showModal();
         }}
       >
-        Kopier tema
+        Last ned tema
       </Modal.Trigger>
       <Modal.Dialog
         ref={modalRef}
@@ -80,9 +115,29 @@ export const TokenModal = ({
           </Tooltip>
         </Modal.Header>
         <Modal.Content className={classes.modalContent}>
+          <Paragraph spacing>
+            Kopier kommandosnutten under og kjør den på maskinen din for å
+            generere design tokens (json-filer) basert på fargene du har valgt.
+          </Paragraph>
+          <div className={classes.snippet}>
+            <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
+          </div>
           <div className={classes.content}>
-            <div className={classes.snippet}>
-              <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
+            <Heading level={2}>Figma plugin</Heading>
+            <Paragraph spacing>
+              Kopier kommandosnutten under og kjør den på maskinen din for å
+              generere design tokens (json-filer) basert på fargene du har
+              valgt.
+            </Paragraph>
+            <div className={classes.column}>
+              <div className={classes.snippet}>
+                <CodeSnippet language='js'>{lightThemeSnippet}</CodeSnippet>
+              </div>
+            </div>
+            <div className={classes.column}>
+              <div className={classes.snippet}>
+                <CodeSnippet language='js'>{darkThemeSnippet}</CodeSnippet>
+              </div>
             </div>
           </div>
         </Modal.Content>

@@ -1,40 +1,27 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../../colors/index.js';
-import type { ColorInfo, ColorMode, ThemeColors } from '../../colors/index.js';
+import type { ColorInfo, ColorMode } from '../../colors/types.js';
+import type {
+  Collection,
+  Colors,
+  CreateTokens,
+  File,
+  Tokens,
+  Tokens1ary,
+  TokensSet,
+  Typography,
+  TypographyModes,
+} from '../types.js';
 import { generateMetadataJson } from './generate$metadata.js';
 import { generateThemesJson } from './generate$themes.js';
-
-type Colors = Record<ThemeColors, CssColor>;
-type Typography = Record<string, string>;
-type TypographyModes = 'primary' | 'secondary';
-
-type CreateTokens = {
-  colors: Colors;
-  typography: Typography;
-  write?: string;
-};
-
-type File = {
-  data: string;
-  path: string;
-  filePath: string;
-};
-
-type DesignTokens = Record<string, { $value: string; $type: string }>;
-type Tokens2ary = Record<string, Record<string, DesignTokens>>;
-type Tokens1ary = Record<string, DesignTokens>;
-type Tokens = Tokens1ary | Tokens2ary;
-
-type Collection = 'theme' | 'global';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 const DEFAULT_FILES_PATH = path.join(DIRNAME, '../../init/template/default-files/design-tokens/');
 
-const createColorTokens = (colorArray: ColorInfo[]): DesignTokens => {
-  const obj: DesignTokens = {};
+const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
+  const obj: Tokens1ary = {};
   const $type = 'color';
   for (let i = 0; i < colorArray.length; i++) {
     if (i === 13 && colorArray.length >= 14) {
@@ -54,12 +41,12 @@ const createColorTokens = (colorArray: ColorInfo[]): DesignTokens => {
   return obj;
 };
 
-const generateTypographyTokens = ({ family }: Typography): Tokens => {
+const generateTypographyTokens = ({ fontFamily }: Typography): TokensSet => {
   return {
     theme: {
       main: {
         $type: 'fontFamilies',
-        $value: family,
+        $value: fontFamily ?? 'Inter',
       },
       bold: {
         $type: 'fontWeights',
@@ -77,7 +64,7 @@ const generateTypographyTokens = ({ family }: Typography): Tokens => {
   };
 };
 
-const generateThemeTokens = (theme: ColorMode, colors: Colors): Tokens => {
+const generateThemeTokens = (theme: ColorMode, colors: Colors): TokensSet => {
   const accentColors = generateScaleForColor(colors.accent, theme);
   const neutralColors = generateScaleForColor(colors.neutral, theme);
   const brand1Colors = generateScaleForColor(colors.brand1, theme);
@@ -95,7 +82,7 @@ const generateThemeTokens = (theme: ColorMode, colors: Colors): Tokens => {
   };
 };
 
-const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Tokens, outPath: string): File => {
+const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
   return {
     data: JSON.stringify(tokens, null, 2),
@@ -104,7 +91,12 @@ const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: Toke
   };
 };
 
-const generateTypographyFile = (folder: TypographyModes, name: Collection, tokens: Tokens, outPath: string): File => {
+const generateTypographyFile = (
+  folder: TypographyModes,
+  name: Collection,
+  tokens: TokensSet,
+  outPath: string,
+): File => {
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
     data: JSON.stringify(tokens, null, 2),
@@ -136,7 +128,7 @@ const generateGlobalTokens = (theme: ColorMode) => {
 export const createTokens = async (opts: CreateTokens) => {
   const { colors, write, typography } = opts;
 
-  const tokens = {
+  const tokens: Tokens = {
     colors: {
       light: {
         theme: generateThemeTokens('light', colors),
