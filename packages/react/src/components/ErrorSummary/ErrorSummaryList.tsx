@@ -6,6 +6,6 @@ export type ErrorSummaryListProps = Omit<ListProps, 'ref'>;
 export const ErrorSummaryList = forwardRef<
   HTMLOListElement,
   ErrorSummaryListProps
->(function ErrorSummaryList({ ...rest }: ErrorSummaryListProps) {
-  return <List {...rest} />;
+>(function ErrorSummaryList({ ...rest }: ErrorSummaryListProps, ref) {
+  return <List {...rest} ref={ref} />;
 });
