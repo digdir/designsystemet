@@ -57,12 +57,19 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find preview comment body
+      - name: Find Storybook deployment
         uses: actions-ecosystem/action-regex-match@v2
-        id: regex
+        id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '📖 \[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
+
+      - name: Find Storefront deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-storefront
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -80,6 +87,8 @@ jobs:
           body: |
             ## Preview deployments
 
+            ${{ steps.regex-storybook.outputs.match }}
+
             [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
-            ${{ steps.regex.outputs.match }}
+            ${{ steps.regex-storefront.outputs.match }}
