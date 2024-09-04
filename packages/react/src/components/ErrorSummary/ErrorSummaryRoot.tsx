@@ -26,7 +26,6 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
       role = 'alert',
       'aria-live': ariaLive = 'polite',
       'aria-relevant': ariaRelevant = 'all',
-      children,
       ...rest
     },
     ref,
@@ -44,9 +43,7 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
           aria-relevant={ariaRelevant}
           aria-labelledby={headingId}
           {...rest}
-        >
-          <List size={size}>{children}</List>
-        </div>
+        />
       </ErrorSummaryContext.Provider>
     );
   },
