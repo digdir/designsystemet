@@ -20,11 +20,6 @@ export type ButtonProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * If `Button` should fill width of its container
-   * @default false
-   */
-  fullWidth?: boolean;
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -52,7 +47,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       children,
       color = 'accent',
-      fullWidth = false,
       icon = false,
       loading = false,
       size = 'md',
@@ -72,7 +66,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           aria-busy={Boolean(loading) || undefined}
           className={cl('ds-button', className)}
           data-ds-color={color}
-          data-ds-fullwidth={fullWidth || undefined}
           data-ds-icon={icon || undefined}
           data-ds-size={size}
           data-ds-variant={variant}

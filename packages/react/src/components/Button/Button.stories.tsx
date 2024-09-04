@@ -45,7 +45,6 @@ export const Preview: Story = {
     color: 'accent',
     size: 'md',
     icon: false,
-    fullWidth: false,
   },
 };
 
@@ -192,23 +191,6 @@ export const Loading: StoryFn<typeof Button> = () => (
 );
 
 Loading.decorators = [stack];
-
-export const FullWidth: Story = {
-  args: {
-    children: (
-      <>
-        <PlusIcon fontSize='1.5rem' />
-        Last inn flere
-      </>
-    ),
-    fullWidth: true,
-    color: 'neutral',
-    variant: 'secondary',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
