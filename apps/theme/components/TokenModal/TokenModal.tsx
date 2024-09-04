@@ -113,18 +113,18 @@ export const TokenModal = ({
           <Paragraph spacing>
             JSON for bruk med Designsystemet{' '}
             <Link
-              href='https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit'
-              target='_blank'
-            >
-              Figma UI kit (åpnes i ny fane)
-            </Link>{' '}
-            og{' '}
-            <Link
               href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
               target='_blank'
             >
               Figma Plugin (åpnes i ny fane)
             </Link>{' '}
+            og{' '}
+            <Link
+              href='https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit'
+              target='_blank'
+            >
+              Figma UI kit (åpnes i ny fane)
+            </Link>
             .
           </Paragraph>
           <Paragraph spacing>
