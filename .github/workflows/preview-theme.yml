@@ -46,7 +46,7 @@ jobs:
       - name: Set Vercel alias
         run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.theme.designsystemet.no
 
-      - name: Find Preview Comment
+      - name: Find Preview comment
         uses: peter-evans/find-comment@v2
         id: fc
         with:
@@ -57,7 +57,7 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find Theme preview comment
+      - name: Find preview comment body
         uses: actions-ecosystem/action-regex-match@v2
         id: regex
         with:
@@ -78,8 +78,8 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
           body: |
-            **Preview deployments for this pull request:**
+            ## 📖 Preview deployments
 
-            📖 [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex.outputs.match }}
