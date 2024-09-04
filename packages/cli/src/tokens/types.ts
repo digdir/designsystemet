@@ -25,12 +25,6 @@ export type Colors = Record<ThemeColors, CssColor>;
 export type Typography = { fontFamily?: string };
 export type TypographyModes = 'primary' | 'secondary';
 
-export type CreateTokens = {
-  colors: Colors;
-  typography: Typography;
-  write?: string;
-};
-
 export type File = {
   data: string;
   path: string;

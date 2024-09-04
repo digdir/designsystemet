@@ -24,6 +24,9 @@ type TokenModalProps = {
   borderRadius: string;
 };
 
+const toFigmaSnippet = (obj: unknown) =>
+  JSON.stringify(obj, null, 2).replace('$', '');
+
 export const TokenModal = ({
   accentColor,
   neutralColor,
@@ -33,8 +36,6 @@ export const TokenModal = ({
   borderRadius,
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const [lightThemeSnippet, setLightThemeSnippet] = useState<string>('');
-  const [darkThemeSnippet, setDarkThemeSnippet] = useState<string>('');
 
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
@@ -54,30 +55,21 @@ export const TokenModal = ({
     });
   };
 
-  useEffect(() => {
-    const createFigmaPluginSnippets = async () => {
-      const tokens = await createTokens({
-        colors: {
-          accent: accentColor,
-          neutral: neutralColor,
-          brand1: brand1Color,
-          brand2: brand2Color,
-          brand3: brand3Color,
-        },
-        typography: { fontFamily: 'Inter' },
-      });
-
-      const lightTheme = { theme: tokens.colors.light.theme };
-      const darkTheme = { theme: tokens.colors.dark.theme };
-
-      setLightThemeSnippet(
-        JSON.stringify(lightTheme, null, 2).replace('$', ''),
-      );
-      setDarkThemeSnippet(JSON.stringify(darkTheme, null, 2).replace('$', ''));
-    };
-
-    createFigmaPluginSnippets();
+  const tokens = createTokens({
+    colors: {
+      accent: accentColor,
+      neutral: neutralColor,
+      brand1: brand1Color,
+      brand2: brand2Color,
+      brand3: brand3Color,
+    },
+    typography: { fontFamily: 'Inter' },
   });
+
+  const lightThemeSnippet = toFigmaSnippet({
+    theme: tokens.colors.light.theme,
+  });
+  const darkThemeSnippet = toFigmaSnippet({ theme: tokens.colors.dark.theme });
 
   return (
     <Modal.Root>

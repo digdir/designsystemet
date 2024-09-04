@@ -7,7 +7,7 @@ import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
 import { typography } from '../src/tokens/build/formats/css';
 import { buildTokens } from '../src/tokens/build/index.js';
-import { createTokens } from '../src/tokens/create//index.js';
+import { createTokens, writeTokens } from '../src/tokens/index.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -55,10 +55,13 @@ function makeTokenCommands() {
         typography: {
           fontFamily: family,
         },
-        write,
       };
 
-      await createTokens(props);
+      const tokens = createTokens(props);
+
+      if (write) {
+        await writeTokens(write, tokens);
+      }
     });
 
   return tokenCmd;
