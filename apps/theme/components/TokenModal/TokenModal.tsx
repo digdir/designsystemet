@@ -14,7 +14,7 @@ import {
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import classes from './TokenModal.module.css';
 
@@ -40,6 +40,8 @@ export const TokenModal = ({
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
+  const [lightThemeSnippet, setLightThemeSnippet] = useState('');
+  const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
   const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
   const cliSnippet = `npx @digdir/designsystemet tokens create \\
@@ -58,19 +60,21 @@ export const TokenModal = ({
     });
   };
 
-  const tokens = createTokens({
-    colors: {
-      accent: accentColor,
-      neutral: neutralColor,
-      brand1: brand1Color,
-      brand2: brand2Color,
-      brand3: brand3Color,
-    },
-    typography: { fontFamily: 'Inter' },
-  });
+  useEffect(() => {
+    const tokens = createTokens({
+      colors: {
+        accent: accentColor,
+        neutral: neutralColor,
+        brand1: brand1Color,
+        brand2: brand2Color,
+        brand3: brand3Color,
+      },
+      typography: { fontFamily: 'Inter' },
+    });
 
-  const lightThemeSnippet = toFigmaSnippet(tokens.colors.light.theme);
-  const darkThemeSnippet = toFigmaSnippet(tokens.colors.dark.theme);
+    setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
+    setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
+  }, []);
 
   return (
     <Modal.Root>
