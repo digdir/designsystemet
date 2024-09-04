@@ -6,8 +6,8 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import * as configs from './configs.js';
-import { makeEntryFile } from './utils/entryfile.js';
+import * as configs from './build/configs.js';
+import { makeEntryFile } from './build/utils/entryfile.js';
 
 const { permutateThemes, getConfigs } = configs;
 
