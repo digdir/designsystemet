@@ -54,7 +54,7 @@ export const ThemeToolbar = ({
   const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
   const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
 
-  const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
+  const [toolTipText, setToolTipText] = useState('Kopier nettadresse');
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(window.location.href).catch((reason) => {
