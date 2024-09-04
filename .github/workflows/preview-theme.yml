@@ -52,7 +52,7 @@ jobs:
         with:
           issue-number: ${{ env.PR_NUMBER }}
           body-includes: |
-            ## 📖 Preview deployments
+            ## Preview deployments
 
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
@@ -78,8 +78,8 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
           body: |
-            ## 📖 Preview deployments
+            ## Preview deployments
 
-            [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            - [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex.outputs.match }}
