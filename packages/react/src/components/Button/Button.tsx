@@ -1,4 +1,4 @@
-import { Slot } from '@radix-ui/react-slot';
+import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
@@ -65,14 +65,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : 'button';
     const spinnerColor = color === 'accent' ? color : 'neutral';
 
+    // Fallbacks to undefined to prevent rendering attribute="false"
     return (
       <Paragraph variant='short' size={size} asChild>
         <Component
-          aria-busy={Boolean(loading) || undefined} // Fallback to undefined to prevent false from rendering aria-busy="false"
+          aria-busy={Boolean(loading) || undefined}
           className={cl('ds-button', className)}
           data-ds-color={color}
-          data-ds-fullwidth={fullWidth || undefined} // Fallback to undefined to prevent false from rendering data-ds-fill="false"
-          data-ds-icon={icon || undefined} // Fallback to undefined to prevent false from rendering data-ds-icon="false"}
+          data-ds-fullwidth={fullWidth || undefined}
+          data-ds-icon={icon || undefined}
           data-ds-size={size}
           data-ds-variant={variant}
           ref={ref}
@@ -84,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           ) : (
             loading // Allow custom loading spinner
           )}
-          {children}
+          <Slottable>{children}</Slottable>
         </Component>
       </Paragraph>
     );
