@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import * as R from 'ramda';
-import type { ColorMode } from '../../colors/types.js';
-import type { Collection, File, Tokens, TokensSet, TypographyModes } from '../types.js';
-import { generateMetadataJson } from './generate$metadata.js';
-import { generateThemesJson } from './generate$themes.js';
+import type { ColorMode } from '../colors/types.js';
+import type { Collection, File, Tokens, TokensSet, TypographyModes } from './types.js';
+import { generateMetadataJson } from './write/generate$metadata.js';
+import { generateThemesJson } from './write/generate$themes.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 const DEFAULT_FILES_PATH = path.join(DIRNAME, '../../init/template/default-files/design-tokens/');

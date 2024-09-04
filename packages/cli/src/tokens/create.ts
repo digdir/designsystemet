@@ -1,11 +1,10 @@
-import { baseColors, generateScaleForColor } from '../../colors/index.js';
-import type { ColorInfo, ColorMode } from '../../colors/types.js';
-import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from '../types.js';
+import { baseColors, generateScaleForColor } from '../colors/index.js';
+import type { ColorInfo, ColorMode } from '../colors/types.js';
+import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
 export type CreateTokensOptions = {
   colors: Colors;
   typography: Typography;
-  write?: string;
 };
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {

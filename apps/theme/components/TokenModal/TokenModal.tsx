@@ -3,15 +3,18 @@
 import { type CssColor, Theme } from '@adobe/leonardo-contrast-colors';
 import {
   Button,
+  Divider,
   Heading,
+  Ingress,
+  Link,
   Modal,
   Paragraph,
   Tooltip,
 } from '@digdir/designsystemet-react';
-import { createTokens } from '@digdir/designsystemet/tokens';
+import { createTokens } from '@digdir/designsystemet/tokens/create.js';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { use, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import classes from './TokenModal.module.css';
 
@@ -25,7 +28,7 @@ type TokenModalProps = {
 };
 
 const toFigmaSnippet = (obj: unknown) =>
-  JSON.stringify(obj, null, 2).replace('$', '');
+  JSON.stringify(obj, null, 2).replaceAll('$', '');
 
 export const TokenModal = ({
   accentColor,
@@ -66,10 +69,8 @@ export const TokenModal = ({
     typography: { fontFamily: 'Inter' },
   });
 
-  const lightThemeSnippet = toFigmaSnippet({
-    theme: tokens.colors.light.theme,
-  });
-  const darkThemeSnippet = toFigmaSnippet({ theme: tokens.colors.dark.theme });
+  const lightThemeSnippet = toFigmaSnippet(tokens.colors.light.theme);
+  const darkThemeSnippet = toFigmaSnippet(tokens.colors.dark.theme);
 
   return (
     <Modal.Root>
@@ -107,26 +108,57 @@ export const TokenModal = ({
           </Tooltip>
         </Modal.Header>
         <Modal.Content className={classes.modalContent}>
+          <Ingress size='xs' spacing>
+            Velg et av alternativene under for å ta i bruk design-tokens med
+            ditt tema.
+          </Ingress>
+          <Heading level={3} size='xs' spacing>
+            Alt 1. Alle design tokens
+          </Heading>
           <Paragraph spacing>
-            Kopier kommandosnutten under og kjør den på maskinen din for å
-            generere design tokens (json-filer) basert på fargene du har valgt.
+            Kopier kommandosnutten under og kjør på maskinen din for å generere
+            alle design tokens (json-filer). Sørg for at du har{' '}
+            <Link href='https://nodejs.org' target='_blank'>
+              Node.js
+            </Link>{' '}
+            installert på maskinen din.
           </Paragraph>
-          <div className={classes.snippet}>
+          <div
+            className={classes.snippet}
+            style={{ marginBottom: 'var(--ds-spacing-8)' }}
+          >
             <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
           </div>
+          <Heading level={3} size='xs' spacing>
+            Alt 2. Designsystemet Figma plugin
+          </Heading>
+          <Paragraph spacing>
+            JSON for bruk med{' '}
+            <Link
+              href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+              target='_blank'
+            >
+              Designsystemet Figma Plugin.
+            </Link>{' '}
+          </Paragraph>
+          <Paragraph spacing>
+            Dette alternativet er kun ment for rask prototyping av valgt tema i
+            Figma. For å bruke design tokens i produksjon, anbefales det å bruke
+            alternativ 1.
+          </Paragraph>
           <div className={classes.content}>
-            <Heading level={2}>Figma plugin</Heading>
-            <Paragraph spacing>
-              Kopier kommandosnutten under og kjør den på maskinen din for å
-              generere design tokens (json-filer) basert på fargene du har
-              valgt.
-            </Paragraph>
             <div className={classes.column}>
+              <Heading level={4} size='2xs' spacing>
+                Light
+              </Heading>
               <div className={classes.snippet}>
                 <CodeSnippet language='js'>{lightThemeSnippet}</CodeSnippet>
               </div>
             </div>
             <div className={classes.column}>
+              <Heading level={4} size='2xs' spacing>
+                Dark
+              </Heading>
               <div className={classes.snippet}>
                 <CodeSnippet language='js'>{darkThemeSnippet}</CodeSnippet>
               </div>
