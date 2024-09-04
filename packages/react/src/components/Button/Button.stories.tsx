@@ -241,17 +241,32 @@ Icons.decorators = [stack];
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
-      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
+      <Button
+        icon
+        color='neutral'
+        variant='tertiary'
+        aria-label='Tertiary med ikon'
+      >
         <PlusCircleIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
-      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
+      <Button
+        icon
+        color='neutral'
+        variant='tertiary'
+        aria-label='Tertiary med ikon'
+      >
         <BellIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
-      <Button color='neutral' variant='tertiary' aria-label='Tertiary med ikon'>
+      <Button
+        icon
+        color='neutral'
+        variant='tertiary'
+        aria-label='Tertiary med ikon'
+      >
         <CogIcon fontSize='1.5rem' />
       </Button>
     </Tooltip>

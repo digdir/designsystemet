@@ -1,8 +1,11 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 export type LinkProps = {
+  /** The content to display inside the link. */
+  children: ReactNode;
   /** Custom class name for the link. This will be appended to the design system class names. */
   className?: string;
 
@@ -19,7 +22,7 @@ export type LinkProps = {
    * @default false
    */
   asChild?: boolean;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ asChild, className, color = 'accent', ...rest }, ref) => {
