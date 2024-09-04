@@ -1,11 +1,12 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { NativeSelect } from '@digdir/designsystemet-react';
+import { Button, NativeSelect, Tooltip } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ContrastMode,
   ThemeColors,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
+import { useState } from 'react';
 
 import { useThemeStore } from '../../store';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
@@ -52,6 +53,15 @@ export const ThemeToolbar = ({
   const brandOneTheme = useThemeStore((state) => state.brandOneTheme);
   const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
   const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
+
+  const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
+  const onButtonClick = () => {
+    setToolTipText('Kopiert!');
+    navigator.clipboard.writeText(window.location.href).catch((reason) => {
+      throw Error(String(reason));
+    });
+  };
+
   return (
     <div className={classes.pickersContainer}>
       <div className={cl(classes.pickers, 'pickers')}>
@@ -134,16 +144,26 @@ export const ThemeToolbar = ({
             ))}
           </NativeSelect>
         </div>
-        <div className={classes.dropdown}>
-          <TokenModal
-            accentColor={accentTheme.color}
-            neutralColor={neutralTheme.color}
-            brand1Color={brandOneTheme.color}
-            brand2Color={brandTwoTheme.color}
-            brand3Color={brandThreeTheme.color}
-            borderRadius={borderRadius}
-          />
-        </div>
+        <Tooltip content={toolTipText} portal={false}>
+          <Button
+            className={classes.shareBtn}
+            variant='secondary'
+            color='neutral'
+            onClick={() => onButtonClick()}
+            onMouseEnter={() => setToolTipText('Kopier nettadresse')}
+            autoFocus
+          >
+            Del tema
+          </Button>
+        </Tooltip>
+        <TokenModal
+          accentColor={accentTheme.color}
+          neutralColor={neutralTheme.color}
+          brand1Color={brandOneTheme.color}
+          brand2Color={brandTwoTheme.color}
+          brand3Color={brandThreeTheme.color}
+          borderRadius={borderRadius}
+        />
       </div>
     </div>
   );

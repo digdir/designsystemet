@@ -2,14 +2,11 @@
 
 import { type CssColor, Theme } from '@adobe/leonardo-contrast-colors';
 import {
-  Button,
-  Divider,
   Heading,
   Ingress,
   Link,
   Modal,
   Paragraph,
-  Tooltip,
 } from '@digdir/designsystemet-react';
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
 import { ArrowForwardIcon } from '@navikt/aksel-icons';
@@ -42,7 +39,6 @@ export const TokenModal = ({
 
   const [lightThemeSnippet, setLightThemeSnippet] = useState('');
   const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
-  const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
 
   const cliSnippet = `npx @digdir/designsystemet tokens create \\
    --accent "${accentColor}" \\
@@ -52,13 +48,6 @@ export const TokenModal = ({
    --brand3 "${brand3Color}" \\
    --write
    `;
-
-  const onButtonClick = () => {
-    setToolTipText('Kopiert!');
-    navigator.clipboard.writeText(window.location.href).catch((reason) => {
-      throw Error(String(reason));
-    });
-  };
 
   useEffect(() => {
     const tokens = createTokens({
@@ -83,7 +72,7 @@ export const TokenModal = ({
           return modalRef.current?.showModal();
         }}
       >
-        Last ned tema
+        Ta i bruk tema
       </Modal.Trigger>
       <Modal.Dialog
         ref={modalRef}
@@ -96,20 +85,6 @@ export const TokenModal = ({
         <Modal.Header className={classes.modalHeader}>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Kopier fargetema</span>
-          <Tooltip content={toolTipText} portal={false}>
-            <Button
-              className={classes.shareBtn}
-              variant='tertiary'
-              color='neutral'
-              size='sm'
-              onClick={() => onButtonClick()}
-              onMouseEnter={() => setToolTipText('Kopier nettadresse')}
-              autoFocus
-            >
-              Del
-              <ArrowForwardIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          </Tooltip>
         </Modal.Header>
         <Modal.Content className={classes.modalContent}>
           <Ingress size='xs' spacing>
