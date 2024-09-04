@@ -123,7 +123,7 @@ export const TokenModal = ({
             Kopier kommandosnutten under og kjør på maskinen din for å generere
             alle design tokens (json-filer). Sørg for at du har{' '}
             <Link href='https://nodejs.org' target='_blank'>
-              Node.js
+              Node.js (åpnes i ny fane)
             </Link>{' '}
             installert på maskinen din.
           </Paragraph>
@@ -142,7 +142,7 @@ export const TokenModal = ({
               href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
               target='_blank'
             >
-              Designsystemet Figma Plugin.
+              Designsystemet Figma Plugin (åpnes i ny fane).
             </Link>{' '}
           </Paragraph>
           <Paragraph spacing>
@@ -153,7 +153,7 @@ export const TokenModal = ({
           <div className={classes.content}>
             <div className={classes.column}>
               <Heading level={4} size='2xs' spacing>
-                Light
+                Light Mode
               </Heading>
               <div className={classes.snippet}>
                 <CodeSnippet language='js'>{lightThemeSnippet}</CodeSnippet>
@@ -161,7 +161,7 @@ export const TokenModal = ({
             </div>
             <div className={classes.column}>
               <Heading level={4} size='2xs' spacing>
-                Dark
+                Dark Mode
               </Heading>
               <div className={classes.snippet}>
                 <CodeSnippet language='js'>{darkThemeSnippet}</CodeSnippet>
