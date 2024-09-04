@@ -151,7 +151,6 @@ export const ThemeToolbar = ({
             color='neutral'
             onClick={() => onButtonClick()}
             onMouseEnter={() => setToolTipText('Kopier nettadresse')}
-            autoFocus
           >
             Del tema
           </Button>
