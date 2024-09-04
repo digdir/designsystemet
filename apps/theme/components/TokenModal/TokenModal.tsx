@@ -91,7 +91,7 @@ export const TokenModal = ({
             ditt tema.
           </Ingress>
           <Heading level={3} size='xs' spacing>
-            Alt 1. Alle design tokens
+            Alt 1. Design tokens
           </Heading>
           <Paragraph spacing>
             Kopier kommandosnutten under og kjør på maskinen din for å generere
@@ -108,7 +108,7 @@ export const TokenModal = ({
             <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
           </div>
           <Heading level={3} size='xs' spacing>
-            Alt 2. Designsystemet Figma plugin
+            Alt 2. Figma plugin
           </Heading>
           <Paragraph spacing>
             JSON for bruk med Designsystemet{' '}
