@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize]
     paths:
       - 'packages/**'
-      - 'apps/storybook/**'
+      - 'apps/theme/**'
       - 'assets/**'
 jobs:
   Deploy-Preview:
@@ -57,7 +57,7 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find Storybook deployment
+      - name: Find Theme preview comment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex
         with:
@@ -77,12 +77,9 @@ jobs:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
-          reactions: rocket, eyes
           body: |
             **Preview deployments for this pull request:**
 
-            📖 [Theme](pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            📖 [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex.outputs.match }}
-
-            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
