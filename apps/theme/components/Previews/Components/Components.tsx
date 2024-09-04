@@ -76,7 +76,7 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button fill size='sm' className={classes.userBtn}>
+        <Button fullWidth size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
