@@ -62,7 +62,7 @@ jobs:
         id: regex
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\- [Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -80,6 +80,6 @@ jobs:
           body: |
             ## Preview deployments
 
-            - [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex.outputs.match }}
