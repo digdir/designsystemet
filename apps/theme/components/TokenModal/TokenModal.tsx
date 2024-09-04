@@ -111,13 +111,21 @@ export const TokenModal = ({
             Alt 2. Designsystemet Figma plugin
           </Heading>
           <Paragraph spacing>
-            JSON for bruk med{' '}
+            JSON for bruk med Designsystemet{' '}
+            <Link
+              href='https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit'
+              target='_blank'
+            >
+              Figma UI kit (åpnes i ny fane)
+            </Link>{' '}
+            og{' '}
             <Link
               href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
               target='_blank'
             >
-              Designsystemet Figma Plugin (åpnes i ny fane).
+              Figma Plugin (åpnes i ny fane)
             </Link>{' '}
+            .
           </Paragraph>
           <Paragraph spacing>
             Dette alternativet er kun ment for rask prototyping av valgt tema i
