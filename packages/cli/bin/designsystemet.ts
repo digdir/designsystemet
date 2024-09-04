@@ -2,13 +2,13 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import { write } from 'node:fs';
 import { convertToHex } from '../src/colors/index.js';
 import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
+import { buildTokens } from '../src/tokens/build.js';
 import { typography } from '../src/tokens/build/formats/css';
-import { buildTokens } from '../src/tokens/build/index.js';
-import { createTokens } from '../src/tokens/create//index.js';
+import { createTokens } from '../src/tokens/create.js';
+import { writeTokens } from '../src/tokens/write.js';
 
 program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -54,12 +54,17 @@ function makeTokenCommands() {
           brand3: convertToHex(opts.brand3),
         },
         typography: {
-          family,
+          fontFamily: family,
         },
-        write,
       };
 
-      await createTokens(props);
+      const tokens = createTokens(props);
+
+      if (write) {
+        await writeTokens(write, tokens);
+      }
+
+      return Promise.resolve();
     });
 
   return tokenCmd;
