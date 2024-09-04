@@ -1,6 +1,6 @@
 'use client';
 
-import { type CssColor, Theme } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
   Heading,
   Ingress,
@@ -9,7 +9,6 @@ import {
   Paragraph,
 } from '@digdir/designsystemet-react';
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
-import { ArrowForwardIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
 
