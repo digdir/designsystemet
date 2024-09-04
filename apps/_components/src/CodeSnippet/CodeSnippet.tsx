@@ -76,6 +76,7 @@ const CodeSnippet = ({
               onClick={() => onButtonClick()}
               className={classes.copyButton}
               aria-label='Kopier'
+              icon
               color='neutral'
               size='sm'
             >

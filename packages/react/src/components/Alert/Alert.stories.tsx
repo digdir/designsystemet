@@ -29,12 +29,10 @@ export const VariantInfo: Story = (args) => (
     <Heading level={2} size='xs' spacing>
       Har du husket å bestille passtime?
     </Heading>
-    Det er lange køer for å bestille pass om dagen, det kan være lurt å bestille
-    i god tid før du skal reise.
-    {/* <Paragraph>
+    <Paragraph>
       Det er lange køer for å bestille pass om dagen, det kan være lurt å
       bestille i god tid før du skal reise.
-    </Paragraph> */}
+    </Paragraph>
   </Alert>
 );
 

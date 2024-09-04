@@ -5,7 +5,7 @@ import { Heading } from '../';
 import { Alert } from './Alert';
 
 describe('Alert', () => {
-/* TODO: Add visual tests for icons */
+  /* TODO: Add visual tests for icons */
   test('should render children, heading level 1', () => {
     render(
       <Alert color='info'>

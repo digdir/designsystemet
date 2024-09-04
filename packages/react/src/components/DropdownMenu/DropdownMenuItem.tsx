@@ -7,7 +7,7 @@ import { DropdownMenuContext } from './DropdownMenuRoot';
 
 export type DropdownMenuItemProps = Omit<
   ButtonProps,
-  'variant' | 'size' | 'color' | 'fill'
+  'variant' | 'size' | 'color' | 'fullWidth'
 >;
 
 export const DropdownMenuItem = forwardRef<
@@ -22,7 +22,7 @@ export const DropdownMenuItem = forwardRef<
         ref={ref}
         variant='tertiary'
         size={size}
-        fill
+        fullWidth
         className='ds-dropdownmenu__item'
         role='menuitem'
         {...rest}

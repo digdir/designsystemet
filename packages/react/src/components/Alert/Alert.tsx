@@ -1,6 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import { Paragraph } from '../Typography';
 
 export type AlertProps = {
   /**
@@ -27,12 +28,14 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   ref,
 ) {
   return (
-    <div
-      className={cl('ds-alert', className)}
-      data-ds-color={color}
-      data-ds-size={size}
-      ref={ref}
-      {...rest}
-    />
+    <Paragraph asChild size={size}>
+      <div
+        className={cl('ds-alert', className)}
+        data-ds-color={color}
+        data-ds-size={size}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
   );
 });

@@ -1,6 +1,9 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import { Spinner } from '../Spinner';
+import { Paragraph } from '../Typography';
 
 export type ButtonProps = {
   /**
@@ -21,7 +24,11 @@ export type ButtonProps = {
    * If `Button` should fill width of its container
    * @default false
    */
-  fill?: boolean;
+  fullWidth?: boolean;
+  /** Toggle icon only styling, pass icon as children
+   * @default false
+   */
+  icon?: boolean;
   /** Toggle loading state
    * @default false
    */
@@ -31,7 +38,7 @@ export type ButtonProps = {
    * @default false
    */
   asChild?: boolean;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Button used for interaction
@@ -43,8 +50,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       asChild,
       className,
+      children,
       color = 'accent',
-      fill = false,
+      fullWidth = false,
+      icon = false,
       loading = false,
       size = 'md',
       type = 'button',
@@ -54,19 +63,30 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) {
     const Component = asChild ? Slot : 'button';
+    const spinnerColor = color === 'accent' ? color : 'neutral';
 
     return (
-      <Component
-        aria-busy={loading || undefined} // Fallback to undefined to prevent false from rendering aria-busy="false"
-        className={cl('ds-button', className)}
-        data-ds-color={color}
-        data-ds-fill={fill || undefined} // Fallback to undefined to prevent false from rendering data-ds-fill="false"
-        data-ds-size={size}
-        data-ds-variant={variant}
-        ref={ref}
-        type={type}
-        {...rest}
-      />
+      <Paragraph variant='short' size={size} asChild>
+        <Component
+          aria-busy={Boolean(loading) || undefined} // Fallback to undefined to prevent false from rendering aria-busy="false"
+          className={cl('ds-button', className)}
+          data-ds-color={color}
+          data-ds-fullwidth={fullWidth || undefined} // Fallback to undefined to prevent false from rendering data-ds-fill="false"
+          data-ds-icon={icon || undefined} // Fallback to undefined to prevent false from rendering data-ds-icon="false"}
+          data-ds-size={size}
+          data-ds-variant={variant}
+          ref={ref}
+          type={type}
+          {...rest}
+        >
+          {loading === true ? (
+            <Spinner size='sm' color={spinnerColor} title='' />
+          ) : (
+            loading // Allow custom loading spinner
+          )}
+          {children}
+        </Component>
+      </Paragraph>
     );
   },
 );

@@ -23,9 +23,8 @@ export type ToggleGroupItemProps = {
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
->((props, ref) => {
-  const { children, className, ...rest } = props;
-  const { active, size = 'md', buttonProps, value } = useToggleGroupItem(props);
+>(({ className, ...rest }, ref) => {
+  const { active, size = 'md', buttonProps, value } = useToggleGroupItem(rest);
 
   return (
     <RovingFocusItem asChild value={value}>
@@ -36,9 +35,7 @@ export const ToggleGroupItem = forwardRef<
         ref={ref}
         {...rest}
         {...buttonProps}
-      >
-        {children}
-      </Button>
+      />
     </RovingFocusItem>
   );
 });

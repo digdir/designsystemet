@@ -44,7 +44,8 @@ export const Preview: Story = {
     variant: 'primary',
     color: 'accent',
     size: 'md',
-    fill: false,
+    icon: false,
+    fullWidth: false,
   },
 };
 
@@ -192,7 +193,7 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 Loading.decorators = [stack];
 
-export const Fill: Story = {
+export const FullWidth: Story = {
   args: {
     children: (
       <>
@@ -200,7 +201,7 @@ export const Fill: Story = {
         Last inn flere
       </>
     ),
-    fill: true,
+    fullWidth: true,
     color: 'neutral',
     variant: 'secondary',
   },
@@ -272,13 +273,13 @@ IconOnly.decorators = [
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' size='sm'>
+    <Button icon variant='primary' size='sm'>
       <CogIcon fontSize='1.5rem' />
     </Button>
-    <Button variant='primary' size='md'>
+    <Button icon variant='primary' size='md'>
       <CogIcon fontSize='2rem' />
     </Button>
-    <Button variant='primary' size='lg'>
+    <Button icon variant='primary' size='lg'>
       <CogIcon fontSize='2.5rem' />
     </Button>
   </>

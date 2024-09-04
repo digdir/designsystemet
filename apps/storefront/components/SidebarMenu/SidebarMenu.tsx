@@ -40,7 +40,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
         <>
           <Button
             className={classes.toggleBtn}
-            fill
+            fullWidth
             size='md'
             color='neutral'
             variant='secondary'

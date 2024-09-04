@@ -1,7 +1,8 @@
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type DividerProps = React.HTMLAttributes<HTMLHRElement>;
+export type DividerProps = HTMLAttributes<HTMLHRElement>;
 
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
   { className, ...rest },
