@@ -2945,7 +2945,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/designsystemet-css@npm:0.11.0-next.12, @digdir/designsystemet-css@workspace:^, @digdir/designsystemet-css@workspace:packages/css":
+"@digdir/designsystemet-css@workspace:^, @digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"
   dependencies:
@@ -2963,7 +2963,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
-    "@digdir/designsystemet-css": "npm:0.11.0-next.12"
+    "@digdir/designsystemet-css": "workspace:^"
     "@floating-ui/react": "npm:0.26.21"
     "@navikt/aksel-icons": "npm:^6.14.0"
     "@radix-ui/react-slot": "npm:^1.1.0"
