@@ -211,7 +211,7 @@
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
-.ds-switch--readonly .ds-switch__input[readonly] + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
+.ds-switch--readonly .ds-switch__input[readonly]:checked + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
   --dsc-switch-check_color: var(--ds-color-neutral-background-subtle);
 
   background-color: var(--ds-color-neutral-border-strong);
