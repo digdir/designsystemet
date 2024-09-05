@@ -16,6 +16,8 @@
   overflow-y: auto;
   z-index: 1600;
   border-radius: min(1rem, var(--ds-border-radius-md));
+  box-shadow: var(--ds-shadow-md);
+  border: 1px solid var(--ds-color-neutral-border-default);
 }
 
 .ds-combobox--readonly .ds-combobox__input {
