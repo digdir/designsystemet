@@ -42,7 +42,7 @@ export const HtmlSize: Story = {
 export const Adornments: Story = {
   args: {
     prefix: 'NOK',
-    suffix: 'per måned',
+    suffix: 'pr. mnd',
     size: 'md',
     label: 'Hvor mange kroner koster det per måned?',
   },
