@@ -3,19 +3,19 @@
 /* https://wiki.csswg.org/ideas/mistakes */
 
 /* TODO: Can this be moved to the related components? */
-[class^='ds-'],
-[class^='ds-']::before,
-[class^='ds-']::after {
+[class~='ds-'],
+[class~='ds-']::before,
+[class~='ds-']::after {
   box-sizing: border-box;
 }
 
 /* Inherit fonts for inputs and buttons */
 
 /* TODO: Can this be moved to the related form element CSS files? */
-input[class^='ds-'],
-button[class^='ds-'],
-textarea[class^='ds-'],
-select[class^='ds-'] {
+input[class~='ds-'],
+button[class~='ds-'],
+textarea[class~='ds-'],
+select[class~='ds-'] {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
