@@ -32,15 +32,6 @@ export const WithCharacterCounter: Story = {
   },
 };
 
-export const FullWidth: Story = {
-  args: {
-    label: 'Label',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
-
 export const HtmlSize: Story = {
   args: {
     label: 'Label',
