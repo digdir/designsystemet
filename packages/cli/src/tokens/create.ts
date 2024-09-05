@@ -5,6 +5,7 @@ import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.
 export type CreateTokensOptions = {
   colors: Colors;
   typography: Typography;
+  name: string;
 };
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
