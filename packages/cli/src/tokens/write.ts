@@ -35,16 +35,23 @@ const generateTypographyFile = (
 
 export const writeTokens = async (writeDir: string, tokens: Tokens, themeName: string) => {
   const targetDir = path.resolve(process.cwd(), String(writeDir));
+  const $themesPath = path.join(targetDir, '$themes.json');
+  const $metadataPath = path.join(targetDir, '$metadata.json');
+  let themes = [themeName];
+
   await fs.mkdir(targetDir, { recursive: true });
 
-  const $themes = await fs.readFile(path.join(targetDir, '$themes.json'), 'utf-8');
-  const themeobj = JSON.parse($themes) as ThemeObject[];
-  const themes = R.pipe(
-    R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
-    R.map(R.prop('name')),
-    R.append(themeName),
-    R.uniq,
-  )(themeobj) as string[];
+  try {
+    // Update with existing themes
+    const $themes = await fs.readFile($themesPath, 'utf-8');
+    const themeobj = JSON.parse($themes) as ThemeObject[];
+    themes = R.pipe(
+      R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
+      R.map(R.prop('name')),
+      R.append(themeName),
+      R.uniq,
+    )(themeobj || []) as string[];
+  } catch (error) {}
 
   console.log(`Writing tokens to ${targetDir} with themes: ${themes}`);
 
@@ -53,8 +60,8 @@ export const writeTokens = async (writeDir: string, tokens: Tokens, themeName: s
   const $theme = generateThemesJson(['light', 'dark', 'contrast'], themes);
   const $metadata = generateMetadataJson(['light', 'dark', 'contrast'], themes);
 
-  await fs.writeFile(path.join(targetDir, '$themes.json'), JSON.stringify($theme, null, 2));
-  await fs.writeFile(path.join(targetDir, '$metadata.json'), JSON.stringify($metadata, null, 2));
+  await fs.writeFile($themesPath, JSON.stringify($theme, null, 2));
+  await fs.writeFile($metadataPath, JSON.stringify($metadata, null, 2));
 
   console.log(`Copying default files to ${targetDir}`);
   await fs.cp(DEFAULT_FILES_PATH, targetDir, {
