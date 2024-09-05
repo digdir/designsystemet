@@ -48,13 +48,14 @@ export const HtmlSize: Story = {
   },
 };
 
-export const Adornments: StoryFn<typeof Textfield> = () => (
-  <div style={{ display: 'grid', gap: 'var(--ds-spacing-2)' }}>
-    <Textfield prefix='prefix' suffix='suffix' size='sm' />
-    <Textfield prefix='prefix' suffix='suffix' size='md' />
-    <Textfield prefix='prefix' suffix='suffix' size='lg' />
-  </div>
-);
+export const Adornments: Story = {
+  args: {
+    prefix: 'NOK',
+    suffix: 'per måned',
+    size: 'md',
+    label: 'Hvor mange kroner koster det per måned?',
+  },
+};
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();
