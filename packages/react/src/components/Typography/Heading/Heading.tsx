@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 export type HeadingProps = {
   /**
    * Heading level. This will translate into any h1-6 level unless `asChild` is `true`
-   * @default 1
+   * @default 2
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Changes text sizing
