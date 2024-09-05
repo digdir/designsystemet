@@ -1,16 +1,10 @@
+import crypto from 'node:crypto';
+
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorMode } from '../../colors/types.js';
 
-const createHash = (text: string) => {
-  let hash = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    const chr = text.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
-  }
-  return (hash + 2147483648).toString(16);
-};
+const createHash = (text: string) => crypto.hash('sha1', text);
 
 type ColorModes = Array<ColorMode>;
 

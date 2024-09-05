@@ -64,7 +64,7 @@ function makeTokenCommands() {
       const tokens = createTokens(props);
 
       if (write) {
-        await writeTokens(write, tokens);
+        await writeTokens(write, tokens, name);
       }
 
       return Promise.resolve();
