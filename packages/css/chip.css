@@ -9,7 +9,7 @@
   --dsc-chip-height: var(--ds-sizing-7);
   --dsc-chip-padding: 0 var(--ds-spacing-3);
   --dsc-chip-background: var(--ds-color-accent-surface-default);
-  --dsc-chip-text-color: var(--ds-color-neutral-text-default);
+  --dsc-chip-text-color: var(--ds-color-accent-text-default);
   --dsc-chip-border: var(--ds-color-accent-border-subtle);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
 
@@ -97,11 +97,13 @@
 .ds-chip--group-container {
   --dsc-chip-group-gap: var(--ds-spacing-2);
 
+  align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: var(--dsc-chip-group-gap);
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .ds-chip--group-container.ds-chip--sm {
@@ -120,7 +122,7 @@
 @media (hover: hover) and (pointer: fine) {
   .ds-chip--button:not(:disabled, [aria-disabled='true']):hover {
     --dsc-chip-background: var(--ds-color-accent-surface-hover);
-    --dsc-chip-text-color: var(--ds-color-neutral-text-default);
+    --dsc-chip-text-color: var(--ds-color-accent-text-default);
     --dsc-chip-border: var(--ds-color-accent-border-default);
 
     cursor: pointer;
@@ -128,13 +130,13 @@
 
   .ds-chip--button:not(:disabled, [aria-disabled='true']):is([aria-pressed='true']):hover {
     --dsc-chip-background: var(--ds-color-accent-surface-hover);
-    --dsc-chip-text-color: var(--ds-color-neutral-text-default);
+    --dsc-chip-text-color: var(--ds-color-accent-text-default);
   }
 
   .ds-chip--removable:not(:disabled, [aria-disabled='true']):hover,
   .ds-chip--removable:not(:disabled, [aria-disabled='true']):focus {
     --dsc-removable-background: var(--ds-color-accent-base-hover);
-    --dsc-removable-chip-xmark-color: var(--ds-color-neutral-contrast-default);
+    --dsc-removable-chip-xmark-color: var(--ds-color-accent-contrast-default);
   }
 }
 
@@ -143,7 +145,7 @@
 .ds-chip--removable:is([aria-pressed='true']),
 .ds-chip--removable:not(:disabled, [aria-disabled='true']):active {
   --dsc-chip-background: var(--ds-color-accent-base-active);
-  --dsc-chip-text-color: var(--ds-color-neutral-contrast-default);
+  --dsc-chip-text-color: var(--ds-color-accent-contrast-default);
   --dsc-chip-border: var(--ds-color-accent-base-active);
   --dsc-removable-background: var(--ds-color-accent-base-active);
   --dsc-removable-text-color: var(--ds-color-neutral-contrast-default);

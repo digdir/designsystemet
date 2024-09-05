@@ -12,10 +12,6 @@ on:
         options:
           - production
           - next
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - 'apps/theme/**'
   push:
     branches:
       - next

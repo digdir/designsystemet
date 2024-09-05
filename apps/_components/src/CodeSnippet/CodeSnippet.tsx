@@ -15,6 +15,8 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import classes from './CodeSnippet.module.css';
 
+import cl from 'clsx/lite';
+
 const plugins = [
   prettierTypescript,
   prettierEstree,
@@ -25,13 +27,15 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json' | 'sh';
   children?: string;
+  className?: string;
 };
 
 const CodeSnippet = ({
   language = 'markdown',
   children = '',
+  className,
 }: CodeSnippetProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
   const [snippet, setSnippet] = useState('');
@@ -67,7 +71,10 @@ const CodeSnippet = ({
   };
 
   return (
-    <div className={classes.codeSnippet} data-ds-color-mode='dark'>
+    <div
+      className={cl(classes.codeSnippet, className)}
+      data-ds-color-mode='dark'
+    >
       {snippet && (
         <>
           <Tooltip content={toolTipText}>
@@ -85,7 +92,7 @@ const CodeSnippet = ({
           </Tooltip>
           <SyntaxHighlighter
             style={nightOwl}
-            language='jsx'
+            language={language}
             customStyle={{
               fontSize: '15px',
               margin: 0,
