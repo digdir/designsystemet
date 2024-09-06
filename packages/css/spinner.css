@@ -1,9 +1,13 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
-  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
 
   animation: ds-spinner-rotate-animation linear infinite;
   animation-duration: 2s;
+
+  &[data-color='accent'] {
+    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  }
 }
 
 .ds-spinner__circle {
@@ -25,14 +29,6 @@ but don't remove it since it is not decorative.
   .ds-spinner__circle {
     animation-duration: 6s;
   }
-}
-
-.ds-spinner--neutral {
-  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
-}
-
-.ds-spinner--accent {
-  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
 }
 
 .ds-spinner__background {

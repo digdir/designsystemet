@@ -49,7 +49,8 @@ export const Spinner = ({
 
   return (
     <svg
-      className={cl('ds-spinner', `ds-spinner--${color}`, className)}
+      className={cl('ds-spinner', className)}
+      data-color={color}
       style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}
