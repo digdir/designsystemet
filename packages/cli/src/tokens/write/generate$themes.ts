@@ -86,9 +86,10 @@ function generateModesGroup(modes: Array<ColorMode>, themes: string[]): ThemeObj
 
 function generateThemesGroup(themes: string[]): ThemeObject_[] {
   return themes.map(
-    (theme): ThemeObject_ => ({
+    (theme, index): ThemeObject_ => ({
       id: createHash(theme),
       $figmaCollectionId: 'VariableCollectionId:36329:62335',
+      $figmaModeId: `36329:${index + 4}`, // Start on 4 in Token Studio and Community file for some reason
       name: theme,
       selectedTokenSets: {
         [`themes/${theme}`]: TokenSetStatus.ENABLED,
