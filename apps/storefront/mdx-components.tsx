@@ -11,7 +11,6 @@ import {
   Link,
   ListItem,
   ListOrdered,
-  ListRoot,
   ListUnordered,
   Paragraph,
   Table,
