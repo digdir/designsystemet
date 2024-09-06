@@ -58,7 +58,7 @@ export const TokenModal = ({
         brand3: brand3Color,
       },
       typography: { fontFamily: 'Inter' },
-      name: 'theme',
+      themeName: 'theme',
     });
 
     setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
