@@ -43,7 +43,7 @@ describe('List', () => {
 
   it('should have the passed size', () => {
     render({ size: 'lg' });
-    expect(screen.getByRole('list')).toHaveAttribute('data-ds-size', 'lg');
+    expect(screen.getByRole('list')).toHaveAttribute('data-size', 'lg');
   });
 
   it('should have aria-labelledby when previous element is heading', () => {
