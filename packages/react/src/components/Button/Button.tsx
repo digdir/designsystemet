@@ -65,10 +65,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <Component
           aria-busy={Boolean(loading) || undefined}
           className={cl('ds-button', className)}
-          data-ds-color={color}
-          data-ds-icon={icon || undefined}
-          data-ds-size={size}
-          data-ds-variant={variant}
+          data-color={color}
+          data-icon={icon || undefined}
+          data-size={size}
+          data-variant={variant}
           ref={ref}
           type={type}
           {...rest}

@@ -31,8 +31,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     <Paragraph asChild size={size}>
       <div
         className={cl('ds-alert', className)}
-        data-ds-color={color}
-        data-ds-size={size}
+        data-color={color}
+        data-size={size}
         ref={ref}
         {...rest}
       />
