@@ -137,7 +137,7 @@
     }
   }
 
-  &[aria-busy="true"]{
+  &[aria-busy="true"] {
     cursor: progress;
   }
 
