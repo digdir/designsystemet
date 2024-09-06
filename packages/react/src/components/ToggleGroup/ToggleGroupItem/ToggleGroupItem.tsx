@@ -13,7 +13,7 @@ export type ToggleGroupItemProps = {
    * Generates a random value if not set.
    **/
   value?: string;
-} & Omit<ButtonProps, 'value'>;
+} & Omit<ButtonProps, 'loading' | 'size' | 'value'>;
 
 /**
  * A single item in a ToggleGroup.
@@ -23,7 +23,7 @@ export type ToggleGroupItemProps = {
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
->(({ className, ...rest }, ref) => {
+>(function ToggleGroupItem({ className, ...rest }, ref) {
   const { active, size = 'md', buttonProps, value } = useToggleGroupItem(rest);
 
   return (
@@ -39,5 +39,3 @@ export const ToggleGroupItem = forwardRef<
     </RovingFocusItem>
   );
 });
-
-ToggleGroupItem.displayName = 'ToggleGroupItem';

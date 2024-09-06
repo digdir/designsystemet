@@ -11,12 +11,12 @@ export type PaginationButtonProps = {
    * @default false
    */
   isActive?: boolean;
-} & Omit<ButtonProps, 'size' | 'icon'>;
+} & Omit<ButtonProps, 'icon' | 'loading' | 'size'>;
 
 export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
->(({ isActive, ...rest }, ref) => {
+>(function PaginationButton({ isActive, ...rest }, ref) {
   const { size } = useContext(PaginationContext);
 
   return (
@@ -29,5 +29,3 @@ export const PaginationButton = forwardRef<
     />
   );
 });
-
-PaginationButton.displayName = 'PaginationButton';
