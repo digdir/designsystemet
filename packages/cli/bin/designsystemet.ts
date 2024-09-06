@@ -48,7 +48,7 @@ function makeTokenCommands() {
       const name = typeof opts.name === 'string' ? opts.name : 'theme';
 
       const props = {
-        name,
+        themeName: name,
         colors: {
           accent: convertToHex(opts.accent),
           neutral: convertToHex(opts.neutral),
@@ -64,7 +64,7 @@ function makeTokenCommands() {
       const tokens = createTokens(props);
 
       if (write) {
-        await writeTokens(write, tokens, name);
+        await writeTokens({ writeDir: write, tokens, themeName: name });
       }
 
       return Promise.resolve();

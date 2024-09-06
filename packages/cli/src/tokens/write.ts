@@ -33,7 +33,14 @@ const generateTypographyFile = (
   };
 };
 
-export const writeTokens = async (writeDir: string, tokens: Tokens, themeName: string) => {
+type WriteTokensOptions = {
+  writeDir: string;
+  tokens: Tokens;
+  themeName: string;
+};
+
+export const writeTokens = async (options: WriteTokensOptions) => {
+  const { writeDir, tokens, themeName } = options;
   const targetDir = path.resolve(process.cwd(), String(writeDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
@@ -44,13 +51,13 @@ export const writeTokens = async (writeDir: string, tokens: Tokens, themeName: s
   try {
     // Update with existing themes
     const $themes = await fs.readFile($themesPath, 'utf-8');
-    const themeobj = JSON.parse($themes) as ThemeObject[];
+    const themeObjects = (JSON.parse($themes) as ThemeObject[]) || [];
     themes = R.pipe(
       R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
       R.map(R.prop('name')),
       R.append(themeName),
       R.uniq,
-    )(themeobj || []) as string[];
+    )(themeObjects) as string[];
   } catch (error) {}
 
   console.log(`Writing tokens to ${targetDir} with themes: ${themes}`);
@@ -69,14 +76,14 @@ export const writeTokens = async (writeDir: string, tokens: Tokens, themeName: s
   });
 
   const files: File[] = [
-    generateColorModeFile('light', 'theme', tokens.colors.light.theme, targetDir),
+    generateColorModeFile('light', themeName, tokens.colors.light[themeName], targetDir),
     generateColorModeFile('light', 'global', tokens.colors.light.global, targetDir),
-    generateColorModeFile('dark', 'theme', tokens.colors.dark.theme, targetDir),
+    generateColorModeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
     generateColorModeFile('dark', 'global', tokens.colors.dark.global, targetDir),
-    generateColorModeFile('contrast', 'theme', tokens.colors.contrast.theme, targetDir),
+    generateColorModeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
     generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
-    generateTypographyFile('primary', 'theme', tokens.typography.primary, targetDir),
-    generateTypographyFile('secondary', 'theme', tokens.typography.primary, targetDir),
+    generateTypographyFile('primary', themeName, tokens.typography.primary, targetDir),
+    generateTypographyFile('secondary', themeName, tokens.typography.primary, targetDir),
   ];
 
   for (const file of files) {

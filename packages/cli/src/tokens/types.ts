@@ -2,8 +2,8 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type { ThemeColors } from '../colors/types.js';
 
 export type ColorModeTokens = {
-  theme: TokensSet;
   global: TokensSet;
+  [key: string]: TokensSet;
 };
 
 // Define types for typography tokens
@@ -37,4 +37,4 @@ export type Tokens2ary = Record<string, Tokens1ary>;
 export type Tokens3ary = Record<string, Record<string, Tokens1ary>>;
 export type TokensSet = Tokens1ary | Tokens2ary | Tokens3ary;
 
-export type Collection = 'theme' | 'global';
+export type Collection = string | 'global';
