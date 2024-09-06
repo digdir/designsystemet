@@ -1,8 +1,7 @@
 import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
 
-import type { ListProps } from '../List';
-import { List } from '../List';
+import type { ListUnorderedProps } from '../List';
 
 type ErrorSummaryContextType = {
   headingId?: string;
@@ -15,7 +14,7 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
 });
 
 export type ErrorSummaryProps = {
-  size?: ListProps['size'];
+  size?: ListUnorderedProps['size'];
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
