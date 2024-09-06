@@ -74,7 +74,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {...rest}
         >
           {loading === true ? (
-            <Spinner size='sm' color={spinnerColor} title='' />
+            <Spinner
+              aria-hidden='true'
+              color={spinnerColor}
+              size='sm'
+              title=''
+            />
           ) : (
             loading // Allow custom loading spinner
           )}
