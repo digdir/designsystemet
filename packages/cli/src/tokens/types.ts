@@ -1,6 +1,12 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type { ThemeColors } from '../colors/types.js';
 
+export type Token = { $value: string; $type: string };
+export type Tokens1ary = Record<string, Token>;
+export type Tokens2ary = Record<string, Tokens1ary>;
+export type Tokens3ary = Record<string, Record<string, Tokens1ary>>;
+export type TokensSet = Tokens1ary | Tokens2ary | Tokens3ary;
+
 export type ColorModeTokens = {
   global: TokensSet;
   [key: string]: TokensSet;
@@ -30,11 +36,5 @@ export type File = {
   path: string;
   filePath: string;
 };
-
-export type Token = { $value: string; $type: string };
-export type Tokens1ary = Record<string, Token>;
-export type Tokens2ary = Record<string, Tokens1ary>;
-export type Tokens3ary = Record<string, Record<string, Tokens1ary>>;
-export type TokensSet = Tokens1ary | Tokens2ary | Tokens3ary;
 
 export type Collection = string | 'global';

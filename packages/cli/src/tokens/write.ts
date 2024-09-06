@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
+import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorMode } from '../colors/types.js';
 import type { Collection, File, Tokens, TokensSet, TypographyModes } from './types.js';
@@ -8,7 +9,8 @@ import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
-const DEFAULT_FILES_PATH = path.join(DIRNAME, '../init/template/default-files/design-tokens/');
+const DEFAULT_FILES_PATH = path.join(DIRNAME, './template/default');
+const TEMPLATE_FILES_PATH = path.join(DIRNAME, './template/template/');
 
 const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
@@ -60,20 +62,26 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     )(themeObjects) as string[];
   } catch (error) {}
 
-  console.log(`Writing tokens to ${targetDir} with themes: ${themes}`);
+  console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
-  // Generate metadata and themes json for Token Studio and build script
-  console.log('Generating metadata and themes files');
+  // Create metadata and themes json for Token Studio and build script
   const $theme = generateThemesJson(['light', 'dark', 'contrast'], themes);
   const $metadata = generateMetadataJson(['light', 'dark', 'contrast'], themes);
 
   await fs.writeFile($themesPath, JSON.stringify($theme, null, 2));
   await fs.writeFile($metadataPath, JSON.stringify($metadata, null, 2));
 
-  console.log(`Copying default files to ${targetDir}`);
+  // Copy default files
   await fs.cp(DEFAULT_FILES_PATH, targetDir, {
     recursive: true,
   });
+
+  // Create themes file
+  const themeTemplate = await fs.readFile(path.join(TEMPLATE_FILES_PATH, `themes/theme.json`));
+  await fs.writeFile(
+    path.join(targetDir, `themes/${themeName}.json`),
+    themeTemplate.toString('utf-8').replaceAll('<theme>', themeName),
+  );
 
   const files: File[] = [
     generateColorModeFile('light', themeName, tokens.colors.light[themeName], targetDir),
@@ -89,8 +97,11 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   for (const file of files) {
     const dirPath = path.resolve(file.path);
     const filePath = path.resolve(file.filePath);
-    console.log(`Writing file ${filePath}`);
     await fs.mkdir(dirPath, { recursive: true });
     await fs.writeFile(filePath, file.data, { encoding: 'utf-8' });
   }
+
+  console.log(
+    `Finished creating Designsystem design tokens in ${chalk.green(writeDir)} for theme ${chalk.blue(themeName)}`,
+  );
 };

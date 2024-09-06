@@ -42,7 +42,7 @@ function makeTokenCommands() {
     .option('--name <string>', `Theme name`)
     .action(async (opts) => {
       // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
-      console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts))}`);
+      console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
       const family = typeof opts.fontFamily === 'string' ? opts.fontFamily : 'Inter';
       const write = typeof opts.write === 'boolean' ? './design-tokens' : opts.write;
       const name = typeof opts.name === 'string' ? opts.name : 'theme';
