@@ -4,7 +4,7 @@ import { ListItem } from './ListItem';
 const List = {
   Item: ListItem,
   Ordered: ListOrdered,
-  Unordered: ListUnordered
+  Unordered: ListUnordered,
 };
 
 List.Item.displayName = 'List.Item';
