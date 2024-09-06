@@ -1,10 +1,6 @@
 .ds-dropdownmenu {
-  --dsc-dropdownmenu-background: var(--ds-color-neutral-background-default);
-  --dsc-dropdownmenu-padding: var(--ds-spacing-2);
-  --dsc-dropdownmenu-border-radius: min(1rem, var(--ds-border-radius-md));
-  --dsc-dropdownmenu-border: 1px solid var(--ds-color-neutral-border-subtle);
+  --dsc-dropdownmenu-padding: var(--ds-spacing-3) var(--ds-spacing-2);
   --dsc-dropdownmenu-min-width: 260px;
-  --dsc-dropdownmenu-shadow: var(--ds-shadow-md);
   --dsc-dropdownmenu-hr-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-dropdownmenu-item-padding: 0 var(--ds-spacing-4);
   --dsc-dropdownmenu-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
@@ -14,30 +10,25 @@
   z-index: 1500;
   margin: 0;
   list-style: none;
-  border-radius: var(--dsc-dropdownmenu-border-radius);
-  box-shadow: var(--dsc-dropdownmenu-shadow);
-  background-color: var(--dsc-dropdownmenu-background);
-  border: var(--dsc-dropdownmenu-border);
+  border-radius: min(1rem, var(--ds-border-radius-md));
+  box-shadow: var(--ds-shadow-md);
+  background-color: var(--ds-color-neutral-background-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
   min-width: var(--dsc-dropdownmenu-min-width);
-}
 
-.ds-dropdownmenu--sm {
-  --dsc-dropdownmenu-padding: var(--ds-spacing-2);
-  --dsc-dropdownmenu-min-width: 240px;
-}
+  &[data-size='sm'] {
+    --dsc-dropdownmenu-padding: var(--ds-spacing-2);
+    --dsc-dropdownmenu-min-width: 240px;
+  }
 
-.ds-dropdownmenu--md {
-  --dsc-dropdownmenu-padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  --dsc-dropdownmenu-min-width: 260px;
-}
+  &[data-size='lg'] {
+    --dsc-dropdownmenu-padding: var(--ds-spacing-4) var(--ds-spacing-2);
+    --dsc-dropdownmenu-min-width: 280px;
+  }
 
-.ds-dropdownmenu--lg {
-  --dsc-dropdownmenu-padding: var(--ds-spacing-4) var(--ds-spacing-2);
-  --dsc-dropdownmenu-min-width: 280px;
-}
-
-.ds-dropdownmenu > hr {
-  border-color: var(--dsc-dropdownmenu-hr-border-color) !important;
+  & > hr {
+    border-color: var(--dsc-dropdownmenu-hr-border-color) !important;
+  }
 }
 
 .ds-dropdownmenu__item {
@@ -46,7 +37,7 @@
   width: 100%;
 }
 
-.ds-dropdownmenu__section {
+.ds-dropdownmenu__group {
   margin: 0;
   padding: 0;
   list-style: none;
