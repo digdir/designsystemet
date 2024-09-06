@@ -82,7 +82,7 @@ const CodeSnippet = ({
               onMouseEnter={() => setToolTipText('Kopier')}
               onClick={() => onButtonClick()}
               className={classes.copyButton}
-              title='Kopier'
+              aria-label='Kopier'
               icon
               color='neutral'
               size='sm'
