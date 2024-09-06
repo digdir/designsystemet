@@ -40,14 +40,13 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
         <>
           <Button
             className={classes.toggleBtn}
-            fullWidth
             size='md'
             color='neutral'
             variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
           >
-            {showMenu ? 'Skjul' : 'Vis'} side meny
+            {showMenu ? 'Skjul' : 'Vis'} sidemeny
           </Button>
 
           <div className={cl(classes.menu, showMenu && classes.activeMenu)}>

@@ -45,7 +45,6 @@ export const Preview: Story = {
     color: 'accent',
     size: 'md',
     icon: false,
-    fullWidth: false,
   },
 };
 
@@ -179,16 +178,13 @@ TextAndIcon.decorators = [stack];
 
 export const Loading: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='primary' loading>
       Laster...
     </Button>
-    <Button variant='secondary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='secondary' loading>
       Laster...
     </Button>
-    <Button variant='tertiary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='tertiary' loading>
       Laster...
     </Button>
   </>
@@ -196,33 +192,24 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 Loading.decorators = [stack];
 
-export const FullWidth: Story = {
-  name: 'Full Width',
-  args: {
-    children: (
-      <>
-        <PlusIcon fontSize='1.5rem' />
-        Last inn flere
-      </>
-    ),
-    fullWidth: true,
-    color: 'neutral',
-    variant: 'secondary',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
-
 export const Icons: StoryFn<typeof Button> = () => (
   <>
+    <Button variant='primary' size='sm'>
+      <CogIcon fontSize='1rem' />
+    </Button>
     <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' />
       Small
     </Button>
     <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' />
+    </Button>
+    <Button variant='primary' size='md'>
+      <CogIcon fontSize='1.5rem' />
       Medium
+    </Button>
+    <Button variant='primary' size='lg'>
+      <CogIcon fontSize='2rem' />
     </Button>
     <Button variant='primary' size='lg'>
       <CogIcon fontSize='2rem' />
@@ -237,7 +224,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
       <Button
-        icon={true}
+        icon
         color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
@@ -247,7 +234,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
     </Tooltip>
     <Tooltip content='Varslinger'>
       <Button
-        icon={true}
+        icon
         color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
@@ -257,7 +244,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
     </Tooltip>
     <Tooltip content='Instillinger'>
       <Button
-        icon={true}
+        icon
         color='neutral'
         variant='tertiary'
         aria-label='Tertiary med ikon'
@@ -283,13 +270,13 @@ IconOnly.decorators = [
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button icon={true} variant='primary' size='sm'>
+    <Button icon variant='primary' size='sm'>
       <CogIcon fontSize='1.5rem' />
     </Button>
-    <Button icon={true} variant='primary' size='md'>
+    <Button icon variant='primary' size='md'>
       <CogIcon fontSize='2rem' />
     </Button>
-    <Button icon={true} variant='primary' size='lg'>
+    <Button icon variant='primary' size='lg'>
       <CogIcon fontSize='2.5rem' />
     </Button>
   </>

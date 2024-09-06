@@ -1,69 +1,68 @@
 .ds-alert {
+  --dsc-alert-background: var(--ds-color-info-surface-default);
   --dsc-alert-border-color: var(--ds-color-info-border-strong);
   --dsc-alert-border-radius: min(1rem, var(--ds-border-radius-md));
   --dsc-alert-color: var(--ds-color-neutral-text-default);
-  --dsc-alert-icon-color: var(--ds-color-neutral-text-subtle);
-  --dsc-alert-icon-size: var(--ds-sizing-7);
-  --dsc-alert-background: var(--ds-color-info-surface-default);
-  --dsc-alert-padding: var(--ds-spacing-6);
-
-  border: 1px solid var(--dsc-alert-border-color);
-  border-radius: var(--dsc-alert-border-radius);
-  background: var(--dsc-alert-background);
-  color: var(--dsc-alert-color);
-  padding: var(--dsc-alert-padding);
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min-content auto;
-  gap: var(--ds-spacing-2);
-}
-
-.ds-alert__icon {
-  height: var(--dsc-alert-icon-size);
-  width: var(--dsc-alert-icon-size);
-  color: var(--dsc-alert-icon-color);
-}
-
-.ds-alert__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.ds-alert--info {
-  --dsc-alert-border-color: var(--ds-color-info-border-strong);
+  --dsc-alert-gap: var(--ds-spacing-2);
   --dsc-alert-icon-color: var(--ds-color-info-text-subtle);
-  --dsc-alert-background: var(--ds-color-info-surface-default);
-}
-
-.ds-alert--warning {
-  --dsc-alert-border-color: var(--ds-color-warning-border-default);
-  --dsc-alert-icon-color: var(--ds-color-warning-text-subtle);
-  --dsc-alert-background: var(--ds-color-warning-surface-default);
-}
-
-.ds-alert--success {
-  --dsc-alert-border-color: var(--ds-color-success-border-default);
-  --dsc-alert-icon-color: var(--ds-color-success-text-subtle);
-  --dsc-alert-background: var(--ds-color-success-surface-default);
-}
-
-.ds-alert--danger {
-  --dsc-alert-border-color: var(--ds-color-danger-border-default);
-  --dsc-alert-icon-color: var(--ds-color-danger-text-subtle);
-  --dsc-alert-background: var(--ds-color-danger-surface-default);
-}
-
-.ds-alert--sm {
-  --dsc-alert-padding: var(--ds-spacing-5);
-  --dsc-alert-icon-size: var(--ds-sizing-6);
-}
-
-.ds-alert--md {
-  --dsc-alert-padding: var(--ds-spacing-6);
   --dsc-alert-icon-size: var(--ds-sizing-7);
-}
+  --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M3.25 4A.75.75 0 0 1 4 3.25h16a.75.75 0 0 1 .75.75v16a.75.75 0 0 1-.75.75H4a.75.75 0 0 1-.75-.75zM11 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0m-1.25 3a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 .75.75v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4h-.75a.75.75 0 0 1-.75-.75'/%3E%3C/svg%3E");
+  --dsc-alert-padding: var(--ds-spacing-6);
 
-.ds-alert--lg {
-  --dsc-alert-padding: var(--ds-spacing-7);
-  --dsc-alert-icon-size: var(--ds-sizing-8);
+  background: var(--dsc-alert-background);
+  border-radius: var(--dsc-alert-border-radius);
+  border: 1px solid var(--dsc-alert-border-color);
+  color: var(--dsc-alert-color);
+  padding-block: var(--dsc-alert-padding);
+  padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
+
+  & > :is(h1,h2,h3,h4,h5,h6):first-child::before, /* If Alert starts with Heading, align icon to this */
+  &:not(:has(> :is(h1,h2,h3,h4,h5,h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
+    background-color: var(--dsc-alert-icon-color);
+    content: '';
+    display: block;
+    height: var(--dsc-alert-icon-size);
+    margin-inline: calc((var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    mask: var(--dsc-alert-icon-url) center/contain no-repeat;
+    position: absolute;
+    translate: 0 calc(.5lh - var(--dsc-alert-icon-size) / 2); /* Center icon to line height */
+    width: var(--dsc-alert-icon-size);
+  }
+
+  /**
+    * Colors
+    */
+  &[data-color="warning"] {
+    --dsc-alert-border-color: var(--ds-color-warning-border-default);
+    --dsc-alert-icon-color: var(--ds-color-warning-text-subtle);
+    --dsc-alert-background: var(--ds-color-warning-surface-default);
+    --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25a.75.75 0 0 1 .66.39l9.52 17.25a.75.75 0 0 1-.65 1.11H2.47a.75.75 0 0 1-.65-1.11l9.52-17.25a.75.75 0 0 1 .66-.39m0 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75m-1 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0'/%3E%3C/svg%3E");
+  }
+
+  &[data-color="success"] {
+    --dsc-alert-background: var(--ds-color-success-surface-default);
+    --dsc-alert-border-color: var(--ds-color-success-border-default);
+    --dsc-alert-icon-color: var(--ds-color-success-text-subtle);
+    --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 21.75a9.75 9.75 0 1 0 0-19.5 9.75 9.75 0 0 0 0 19.5m4.95-12.47a.81.81 0 0 0-1.24-1.05l-5.39 6.36-2.62-2.62a.81.81 0 0 0-1.15 1.15l3.25 3.25a.81.81 0 0 0 1.2-.05z'/%3E%3C/svg%3E");
+  }
+
+  &[data-color="danger"] {
+    --dsc-alert-background: var(--ds-color-danger-surface-default);
+    --dsc-alert-border-color: var(--ds-color-danger-border-default);
+    --dsc-alert-icon-color: var(--ds-color-danger-text-subtle);
+    --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M7.74 2.47a.75.75 0 0 1 .53-.22h7.46a.75.75 0 0 1 .53.22l5.27 5.27c.14.14.22.33.22.53v7.46a.75.75 0 0 1-.22.53l-5.27 5.27a.75.75 0 0 1-.53.22H8.27a.75.75 0 0 1-.53-.22l-5.27-5.27a.75.75 0 0 1-.22-.53V8.27a.75.75 0 0 1 .22-.53zm1.29 5.5a.75.75 0 0 0-1.06 1.06L10.94 12l-2.97 2.97a.75.75 0 1 0 1.06 1.06L12 13.06l2.97 2.97a.75.75 0 1 0 1.06-1.06L13.06 12l2.97-2.97a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+  }
+
+  /**
+    * Sizes
+    */
+  &[data-size="sm"] {
+    --dsc-alert-icon-size: var(--ds-sizing-6);
+    --dsc-alert-padding: var(--ds-spacing-5);
+  }
+
+  &[data-size="lg"] {
+    --dsc-alert-icon-size: var(--ds-sizing-8);
+    --dsc-alert-padding: var(--ds-spacing-7);
+  }
 }
