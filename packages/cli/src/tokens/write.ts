@@ -12,10 +12,12 @@ const DIRNAME: string = import.meta.dirname || __dirname;
 const DEFAULT_FILES_PATH = path.join(DIRNAME, './template/default');
 const TEMPLATE_FILES_PATH = path.join(DIRNAME, './template/template/');
 
+const stringify = (data: unknown) => JSON.stringify(data, null, 2).replace(/\r\n/g, '');
+
 const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
   return {
-    data: JSON.stringify(tokens, null, 2),
+    data: stringify(tokens),
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -29,7 +31,7 @@ const generateTypographyFile = (
 ): File => {
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
-    data: JSON.stringify(tokens, null, 2),
+    data: stringify(tokens),
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -68,8 +70,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   const $theme = generateThemesJson(['light', 'dark', 'contrast'], themes);
   const $metadata = generateMetadataJson(['light', 'dark', 'contrast'], themes);
 
-  await fs.writeFile($themesPath, JSON.stringify($theme, null, 2));
-  await fs.writeFile($metadataPath, JSON.stringify($metadata, null, 2));
+  await fs.writeFile($themesPath, stringify($theme));
+  await fs.writeFile($metadataPath, stringify($metadata));
 
   // Copy default files
   await fs.cp(DEFAULT_FILES_PATH, targetDir, {
@@ -77,6 +79,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   });
 
   // Create themes file
+  await fs.mkdir(path.join(targetDir, 'themes'), { recursive: true });
   const themeTemplate = await fs.readFile(path.join(TEMPLATE_FILES_PATH, `themes/theme.json`));
   await fs.writeFile(
     path.join(targetDir, `themes/${themeName}.json`),

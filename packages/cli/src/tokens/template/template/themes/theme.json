@@ -3,7 +3,7 @@
     "accent": {
       "1": {
         "$type": "color",
-        "$value": "{<<theme>>.accent.1}"
+        "$value": "{<theme>.accent.1}"
       },
       "2": {
         "$type": "color",
