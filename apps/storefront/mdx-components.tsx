@@ -26,22 +26,10 @@ import type { MDXComponents } from 'mdx/types';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    p: (props: ParagraphProps) => {
-      return <Paragraph {...props} spacing />;
-    },
-    a: (props) => {
-      return <Link {...(props as LinkProps)} />;
-    },
-    ol: (props: ListOrderedProps) => (
-      <ListRoot>
-        <ListOrdered {...props} />
-      </ListRoot>
-    ),
-    ul: (props: ListUnorderedProps) => (
-      <ListRoot>
-        <ListUnordered {...props} />
-      </ListRoot>
-    ),
+    p: (props: ParagraphProps) => <Paragraph {...props} spacing />,
+    a: (props) => <Link {...(props as LinkProps)} />,
+    ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
+    ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,
     li: (props: ListItemProps) => <ListItem {...props}></ListItem>,
     h1: (props: HeadingProps) => (
       <Heading {...props} level={1} size='xl' spacing />

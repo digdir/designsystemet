@@ -1,16 +1,16 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListProps } from './List';
+import type { ListUnorderedProps } from './List';
 
 import { List } from '.';
 import { Heading } from '../Typography/Heading';
 
-const render = (props: Partial<ListProps> = {}) => {
-  const allProps: ListProps = {
+const render = (props: Partial<ListUnorderedProps> = {}) => {
+  const allProps: ListUnorderedProps = {
     children: <List.Item>Test</List.Item>,
     ...props,
   };
-  return renderRtl(<List {...allProps} />);
+  return renderRtl(<List.Unordered {...allProps} />);
 };
 
 describe('List', () => {
@@ -27,7 +27,11 @@ describe('List', () => {
   });
 
   it('Renders an ordered list', () => {
-    render({ variant: 'ordered' });
+    renderRtl(
+      <List.Ordered>
+        <List.Item>Test</List.Item>
+      </List.Ordered>,
+    );
     const list = document.querySelector('ol');
     expect(list).toBeInTheDocument();
   });
@@ -46,7 +50,7 @@ describe('List', () => {
     renderRtl(
       <>
         <Heading>Title</Heading>
-        <List />
+        <List.Unordered />
       </>,
     );
     expect(screen.getByRole('list')).toHaveAttribute(
@@ -58,7 +62,7 @@ describe('List', () => {
     renderRtl(
       <>
         <Heading id='passedId'>Title</Heading>
-        <List />
+        <List.Unordered />
       </>,
     );
     expect(screen.getByRole('list')).toHaveAttribute(
@@ -74,7 +78,7 @@ describe('List', () => {
     renderRtl(
       <>
         <Heading>Title</Heading>
-        <List aria-label='Custom list label' />
+        <List.Unordered aria-label='Custom list label' />
       </>,
     );
     expect(screen.getByRole('list')).not.toHaveAttribute('aria-labelledby');
@@ -86,7 +90,7 @@ describe('List', () => {
           Main title
         </Heading>
         <Heading level={3}>Subtitle</Heading>
-        <List aria-labelledby='main-title' />
+        <List.Unordered aria-labelledby='main-title' />
       </>,
     );
     expect(screen.getByRole('list')).toHaveAttribute(

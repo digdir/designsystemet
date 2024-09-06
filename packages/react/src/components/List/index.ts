@@ -1,16 +1,16 @@
-import { List as ListParent } from './List';
+import { ListOrdered, ListUnordered } from './List';
 import { ListItem } from './ListItem';
 
-type ListComponent = typeof ListParent & {
-  Item: typeof ListItem;
+const List = {
+  Item: ListItem,
+  Ordered: ListOrdered,
+  Unordered: ListUnordered
 };
 
-const List = ListParent as ListComponent;
-
-List.Item = ListItem;
 List.Item.displayName = 'List.Item';
+List.Ordered.displayName = 'List.Ordered';
+List.Unordered.displayName = 'List.Unordered';
 
-export type { ListProps } from './List';
+export type { ListOrderedProps, ListUnorderedProps } from './List';
 export type { ListItemProps } from './ListItem';
-
 export { List, ListItem };

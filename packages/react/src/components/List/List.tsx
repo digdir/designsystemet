@@ -5,7 +5,7 @@ import { forwardRef, useEffect, useId, useRef } from 'react';
 
 import { Paragraph } from '../Typography';
 
-export type ListProps = {
+type ListBaseProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -17,33 +17,29 @@ export type ListProps = {
    *
    */
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * Changes type of list style
-   * @default unordered
-   *
-   */
-  variant?: 'unordered' | 'ordered';
-} & Omit<
-  | ({ variant: 'ordered' } & React.OlHTMLAttributes<HTMLOListElement>)
-  | ({ variant?: 'unordered' } & React.HTMLAttributes<HTMLUListElement>),
-  'size'
->;
+};
 
-export const List = forwardRef<HTMLOListElement, ListProps>(function List(
+export type ListUnorderedProps = ListBaseProps &
+  Omit<React.HTMLAttributes<HTMLUListElement>, 'size'>;
+
+export type ListOrderedProps = ListBaseProps &
+  Omit<React.OlHTMLAttributes<HTMLOListElement>, 'size'>;
+
+const render = <HTMLType extends HTMLElement>(
+  tagName: string,
   {
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledby,
     asChild,
     className,
     size = 'md',
-    variant = 'unordered',
     ...rest
-  },
-  ref,
-) {
-  const Component = asChild ? Slot : variant === 'ordered' ? 'ol' : 'ul';
+  }: ListOrderedProps,
+  ref: React.ForwardedRef<HTMLType>,
+) => {
+  const Component = asChild ? Slot : tagName;
   const randomId = useId();
-  const innerRef = useRef<HTMLOListElement>(null);
+  const innerRef = useRef<HTMLType>(null);
   const hasLabel = ariaLabel ?? ariaLabelledby ?? false;
   const mergedRefs = useMergeRefs([innerRef, ref]);
 
@@ -67,11 +63,22 @@ export const List = forwardRef<HTMLOListElement, ListProps>(function List(
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
         className={cl(`ds-list`, className)}
-        data-ds-size={size}
-        data-ds-variant={variant}
+        data-size={size}
         ref={mergedRefs}
         {...rest}
       />
     </Paragraph>
   );
-});
+};
+
+export const ListUnordered = forwardRef<HTMLUListElement, ListOrderedProps>(
+  function ListUnordered(props, ref) {
+    return render<HTMLUListElement>('ul', props, ref);
+  },
+);
+
+export const ListOrdered = forwardRef<HTMLOListElement, ListOrderedProps>(
+  function ListOrdered(props, ref) {
+    return render<HTMLOListElement>('ol', props, ref);
+  },
+);

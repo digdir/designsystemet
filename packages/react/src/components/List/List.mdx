@@ -20,9 +20,9 @@ Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.O
 ```tsx
 import { List } from '@digdir/designsystemet-react';
 
-<List>
+<List.Unordered>
   <List.Item>Item</List.Item>
-</List>
+</List.Unordered>
 ```
 
 ## Eksempler
@@ -118,19 +118,19 @@ Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensj
 for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
 
 ```tsx
-<List asChild>
+<List.Unordered asChild>
   <menu>
-    <List.item>
+    <List.Item>
       <Button>Copy</Button>
-    </List.item>
-    <List.item>
+    </List.Item>
+    <List.Item>
       <Button>Cut</Button>
-    </List.item>
-    <List.item>
+    </List.Item>
+    <List.Item>
       <Button>Paste</Button>
-    </List.item>
+    </List.Item>
   </menu>
-</List>
+</List.Unordered>
 ```
 
 ### Liste eller tabell?

@@ -49,18 +49,16 @@ const components = {
     />
   ),
   ol: (props: Props) => (
-    <List
+    <List.Ordered
       {...props}
-      variant='ordered'
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
       data-ds-color-mode='light'
     />
   ),
   ul: (props: Props) => (
-    <List
+    <List.Unordered
       {...props}
-      variant='unordered'
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
       data-ds-color-mode='light'

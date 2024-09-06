@@ -20,12 +20,12 @@
     position: absolute;
   }
 
-  &[data-ds-size="sm"] {
+  &[data-size="sm"] {
     --dsc-list-padding-left: var(--ds-spacing-4);
     --dsc-list-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
   }
 
-  &[data-ds-size="lg"] {
+  &[data-size="lg"] {
     --dsc-list-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-sm */
     --dsc-list-spacing: var(--ds-spacing-4);
   }
