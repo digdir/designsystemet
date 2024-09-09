@@ -66,7 +66,9 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
 AccordionItem.displayName = 'AccordionItem';
 
 function animateToggle(details: HTMLDetailsElement, open = !details.open) {
-  const content = details.querySelector<HTMLElement>(':scope > div');
+  const content = details.querySelector<HTMLElement>(
+    ':scope > :not(u-summary)',
+  );
   const isAnimateSupported = 'animate' in details;
   const isReducedMotion = window.matchMedia?.(
     '(prefers-reduced-motion: reduce)',
