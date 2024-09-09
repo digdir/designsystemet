@@ -119,16 +119,14 @@ export const Sortable: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell
-            sortable
-            sort={sortField === 'navn' ? sortDirection : undefined}
+            sort={sortField === 'navn' ? sortDirection : 'none'}
             onClick={() => handleSort('navn')}
           >
             Navn
           </TableHeaderCell>
           <TableHeaderCell>Epost</TableHeaderCell>
           <TableHeaderCell
-            sortable
-            sort={sortField === 'telefon' ? sortDirection : undefined}
+            sort={sortField === 'telefon' ? sortDirection : 'none'}
             onClick={() => handleSort('telefon')}
           >
             Telefon
