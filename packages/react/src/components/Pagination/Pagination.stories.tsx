@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
@@ -17,13 +16,7 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
   }, [args.currentPage]);
 
   return (
-    <>
-      <Pagination
-        {...args}
-        onChange={setCurrentPage}
-        currentPage={currentPage}
-      ></Pagination>
-    </>
+    <Pagination {...args} onChange={setCurrentPage} currentPage={currentPage} />
   );
 };
 Preview.args = {
@@ -61,7 +54,6 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
             onClick={previousPage}
             disabled={!showPreviousPage}
           >
-            <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
             Forrige
           </Pagination.Previous>
         </Pagination.Item>
@@ -85,7 +77,6 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
         <Pagination.Item>
           <Pagination.Next onClick={nextPage} disabled={!showNextPage}>
             Neste
-            <ChevronRightIcon aria-hidden fontSize='1.5rem' />
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.List>
@@ -105,10 +96,7 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Previous asChild aria-label='Naviger til forrige side'>
-            <a href='#forrige-side'>
-              <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
-              Forrige
-            </a>
+            <a href='#forrige-side'>Forrige</a>
           </Pagination.Previous>
         </Pagination.Item>
 
@@ -130,10 +118,7 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
 
         <Pagination.Item>
           <Pagination.Next asChild aria-label='Naviger til neste side'>
-            <a href='#neste-side'>
-              Neste
-              <ChevronRightIcon aria-hidden fontSize='1.5rem' />
-            </a>
+            <a href='#neste-side'>Neste</a>
           </Pagination.Next>
         </Pagination.Item>
       </Pagination.List>

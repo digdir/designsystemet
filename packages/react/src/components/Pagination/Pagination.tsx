@@ -1,5 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type * as React from 'react';
 
@@ -79,7 +77,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               disabled={!showPreviousPage}
               onClick={() => onChange(currentPage - 1)}
             >
-              <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
@@ -106,7 +103,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               onClick={() => onChange(currentPage + 1)}
             >
               {!hideLabels && nextLabel}
-              <ChevronRightIcon aria-hidden fontSize={iconSize[size]} />
             </PaginationNext>
           </PaginationItem>
         </PaginationList>

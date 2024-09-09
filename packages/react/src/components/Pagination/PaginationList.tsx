@@ -19,9 +19,9 @@ export const PaginationList = forwardRef<HTMLUListElement, PaginationListProps>(
 
     return (
       <Component
-        ref={ref}
         className={cl('ds-pagination', className)}
         data-size={size}
+        ref={ref}
         {...rest}
       />
     );
