@@ -34,6 +34,10 @@
   }
 }
 
+.ds-spinner__background {
+  stroke: var(--dsc-spinner-background);
+}
+
 .ds-spinner__circle {
   stroke: var(--dsc-spinner-stroke);
   stroke-dasharray: 1px, 200px;
@@ -49,10 +53,6 @@ but don't remove it since it is not decorative.
   .ds-spinner {
     --dsc-spinner-animation-duration: 6s;
   }
-}
-
-.ds-spinner__background {
-  stroke: var(--dsc-spinner-background);
 }
 
 @keyframes ds-spinner-rotate-animation {
