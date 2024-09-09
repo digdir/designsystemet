@@ -2,11 +2,12 @@
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
   --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
   --dsc-spinner-size: 40px;
+  --dsc-spinner-animation-duration: 2s;
 
   width: var(--dsc-spinner-size);
   height: var(--dsc-spinner-size);
   animation: ds-spinner-rotate-animation linear infinite;
-  animation-duration: 2s;
+  animation-duration: var(--dsc-spinner-animation-duration);
 
   &[data-color='accent'] {
     --dsc-spinner-stroke: var(--ds-color-accent-base-default);
@@ -38,7 +39,7 @@
   stroke-dasharray: 1px, 200px;
   transform-origin: center;
   animation: ds-spinner-stroke-animation ease-in-out infinite;
-  animation-duration: 2s;
+  animation-duration: var(--dsc-spinner-animation-duration);
 }
 
 /* Prefers reduced motion needs longer animation,
@@ -46,11 +47,7 @@ but don't remove it since it is not decorative.
 */
 @media (prefers-reduced-motion: reduce) {
   .ds-spinner {
-    animation-duration: 6s;
-  }
-
-  .ds-spinner__circle {
-    animation-duration: 6s;
+    --dsc-spinner-animation-duration: 6s;
   }
 }
 
