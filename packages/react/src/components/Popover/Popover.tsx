@@ -107,7 +107,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       const handleKeydown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && popover?.matches(':popover-open')) {
+        if (event.key === 'Escape' && isOpen(popover)) {
           event.preventDefault(); // Prevent closing fullscreen in Safari
           setInternalOpen(false);
           onClose?.();
@@ -148,8 +148,8 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       <Paragraph asChild size={size}>
         <div
           className={cl('ds-popover', className)}
-          data-ds-size={size}
-          data-ds-variant={variant}
+          data-size={size}
+          data-variant={variant}
           // @ts-ignore @types/react-dom does not understand popover yet
           popover='manual'
           ref={mergedRefs}
@@ -159,6 +159,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+
+const isOpen = (el?: Element | null) => {
+  try {
+    return el?.matches(':popover-open');
+  } catch (err) {
+    return el?.matches('.:popover-open');
+  }
+};
 
 const getTrigger = (id?: string) =>
   id ? document.querySelector(`[popovertarget="${id}"]`) : null;
@@ -170,7 +178,7 @@ const arrowPseudoElement = {
     const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
     const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
 
-    elements.floating.setAttribute('data-ds-placement', placement);
+    elements.floating.setAttribute('data-placement', placement);
     elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
     elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
     return data;
