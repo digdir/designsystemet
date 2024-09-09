@@ -188,13 +188,16 @@ const renderWithRoot = (props: PaginationRootProps) => {
 
 describe('Pagination.Root', () => {
   it('should render correctly with default props', () => {
-    renderWithRoot({});
+    renderWithRoot({
+      'aria-label': 'pagination',
+    });
 
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 
   it('should render correctly with custom props', () => {
     renderWithRoot({
+      'aria-label': 'pagination',
       size: 'lg',
       compact: true,
     });
@@ -202,7 +205,9 @@ describe('Pagination.Root', () => {
   });
 
   it('should render all children correctly', () => {
-    renderWithRoot({});
+    renderWithRoot({
+      'aria-label': 'pagination',
+    });
 
     expect(screen.getByText('Forrige')).toBeInTheDocument();
     expect(screen.getByText('Neste')).toBeInTheDocument();
@@ -217,7 +222,7 @@ describe('Pagination.Root', () => {
 describe('Pagination.Button', () => {
   it('should render correctly with default props', () => {
     renderRtl(
-      <Pagination.Root>
+      <Pagination.Root aria-label='Pagination'>
         <Pagination.Button>1</Pagination.Button>
       </Pagination.Root>,
     );
@@ -227,7 +232,7 @@ describe('Pagination.Button', () => {
 
   it('should render as anchor when asChild is true', () => {
     renderRtl(
-      <Pagination.Root>
+      <Pagination.Root aria-label='Pagination'>
         <Pagination.Button asChild>
           <a href='#1'>1</a>
         </Pagination.Button>

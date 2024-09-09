@@ -15,18 +15,16 @@ export type PaginationContentProps = {
 export const PaginationContent = forwardRef<
   HTMLUListElement,
   PaginationContentProps
->(({ asChild, className, ...rest }, ref) => {
-  const Component = asChild ? Slot : 'ul';
-
+>(function PaginationContent({ asChild, className, ...rest }, ref) {
   const { size } = useContext(PaginationContext);
+  const Component = asChild ? Slot : 'ul';
 
   return (
     <Component
       ref={ref}
-      className={cl('ds-pagination', `ds-pagination--${size}`, className)}
+      className={cl('ds-pagination', className)}
+      data-size={size}
       {...rest}
     />
   );
 });
-
-PaginationContent.displayName = 'PaginationContent';

@@ -1,67 +1,30 @@
 .ds-pagination {
-  --dsc-pagination-listitem-margin: var(--ds-spacing-4);
+  --dsc-pagination-gap: var(--ds-spacing-4);
   --dsc-pagination-ellipsis-width: var(--ds-sizing-12);
-  --dsc-pagination-chevron-margin: var(--ds-spacing-2);
 
-  list-style-type: none;
   display: flex;
-  padding: 0;
+  flex-wrap: wrap;
+  gap: var(--dsc-pagination-gap);
+  list-style: none;
   margin: 0;
-  position: relative;
-  width: fit-content;
-}
+  padding: 0;
 
-.ds-pagination--hidden {
-  visibility: hidden;
-}
+  /* Style ellipsis When not containing interactive element */
+  & > li:not(:has(a, button)) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: var(--dsc-pagination-ellipsis-width);
+  }
 
-.ds-pagination--sm {
-  --dsc-pagination-chevron-margin: var(--ds-spacing-2);
-}
+  &[data-size="sm"] {
+    --dsc-pagination-gap: var(--ds-spacing-2);
+    --dsc-pagination-ellipsis-width: var(--ds-sizing-10);
+  }
 
-.ds-pagination--md {
-  --dsc-pagination-chevron-margin: var(--ds-spacing-2);
-}
-
-.ds-pagination--lg {
-  --dsc-pagination-chevron-margin: var(--ds-spacing-2);
-}
-
-.ds-pagination li:first-child {
-  margin-right: var(--dsc-pagination-chevron-margin);
-}
-
-.ds-pagination li:last-child {
-  margin-left: var(--dsc-pagination-chevron-margin);
-}
-
-.ds-pagination__item {
-  flex: 1;
-  margin-right: var(--dsc-pagination-listitem-margin);
-}
-
-.ds-pagination--sm .ds-pagination__item {
-  --dsc-pagination-listitem-margin: var(--ds-spacing-2);
-  --dsc-pagination-ellipsis-width: var(--ds-sizing-10);
-}
-
-.ds-pagination--md .ds-pagination__item {
-  --dsc-pagination-listitem-margin: var(--ds-spacing-4);
-  --dsc-pagination-ellipsis-width: var(--ds-sizing-12);
-}
-
-.ds-pagination--lg .ds-pagination__item {
-  --dsc-pagination-listitem-margin: var(--ds-spacing-6);
-  --dsc-pagination-ellipsis-width: var(--ds-sizing-14);
-}
-
-.ds-pagination__item.ds-pagination--compact {
-  --dsc-pagination-listitem-margin: var(--ds-spacing-0);
-  --dsc-pagination-chevron-margin: var(--ds-spacing-1);
-}
-
-.ds-pagination__ellipsis {
-  margin-top: 0.5em;
-  text-align: center;
-  width: var(--dsc-pagination-ellipsis-width);
+  &[data-size="lg"] {
+    --dsc-pagination-gap: var(--ds-spacing-6);
+    --dsc-pagination-ellipsis-width: var(--ds-sizing-14);
+  }
+  &[data-compact] { --dsc-pagination-gap: var(--ds-spacing-0) }
 }
