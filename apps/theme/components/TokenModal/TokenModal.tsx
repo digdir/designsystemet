@@ -45,6 +45,7 @@ export const TokenModal = ({
    --brand1 "${brand1Color}" \\
    --brand2 "${brand2Color}" \\
    --brand3 "${brand3Color}" \\
+   --theme "theme" \\
    --write
    `;
 

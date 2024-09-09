@@ -39,13 +39,13 @@ function makeTokenCommands() {
     .option('-b2, --brand2 <number>', `Brand2 hex color`)
     .option('-b3, --brand3 <number>', `Brand3 hex color`)
     .option('-f, --font-family [string]', `Font family`, 'Inter')
-    .option('--name <string>', `Theme name`)
+    .option('--theme <string>', `Theme name`)
     .action(async (opts) => {
       // const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
       const family = typeof opts.fontFamily === 'string' ? opts.fontFamily : 'Inter';
       const write = typeof opts.write === 'boolean' ? './design-tokens' : opts.write;
-      const name = typeof opts.name === 'string' ? opts.name : 'theme';
+      const name = typeof opts.theme === 'string' ? opts.theme : 'theme';
 
       const props = {
         themeName: name,
