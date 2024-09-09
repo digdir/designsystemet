@@ -33,9 +33,4 @@ export type { AccordionContentProps } from './AccordionContent';
 export type { AccordionHeadingProps } from './AccordionHeading';
 export type { AccordionItemProps } from './AccordionItem';
 export type { AccordionProps } from './Accordion';
-export {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionHeading,
-};
+export { Accordion, AccordionItem, AccordionContent, AccordionHeading };
