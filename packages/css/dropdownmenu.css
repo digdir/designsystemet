@@ -43,6 +43,7 @@
 .ds-dropdownmenu__item {
   justify-content: start;
   padding: var(--dsc-dropdownmenu-item-padding);
+  width: 100%;
 }
 
 .ds-dropdownmenu__section {

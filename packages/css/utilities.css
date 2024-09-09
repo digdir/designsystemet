@@ -12,15 +12,18 @@
   width: 1px;
 }
 
+:root {
+  --dsc-focus-border-width: 3px; /* Default focus border width */
+  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner),
+    0 0 0 calc(var(--dsc-focus-border-width) * 2) var(--ds-color-focus-outer);
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
-.ds-focus:focus-visible {
-  --dsc-focus-border-width: 3px;
-
-  outline: var(--dsc-focus-border-width) solid var(--ds-color-focus-outer);
-  outline-offset: var(--dsc-focus-border-width);
-  box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
+ .ds-focus:focus-visible {
+  outline: none;
+  box-shadow: var(--dsc-focus-boxShadow);
 }
 
 .ds-animate-height--openingOrClosing,

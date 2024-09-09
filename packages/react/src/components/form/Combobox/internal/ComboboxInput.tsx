@@ -5,7 +5,6 @@ import type { ChangeEvent } from 'react';
 import { useContext, useRef } from 'react';
 
 import { omit } from '../../../../utilities';
-import { Box } from '../../../Box';
 import { Paragraph } from '../../../Typography';
 import type { ComboboxProps } from '../Combobox';
 import { ComboboxContext } from '../ComboboxContext';
@@ -112,7 +111,7 @@ const ComboboxInput = ({
 
   return (
     <Paragraph size={size} asChild>
-      <Box
+      <div
         {...props}
         aria-disabled={disabled ? 'true' : undefined}
         className={cl(
@@ -158,7 +157,7 @@ const ComboboxInput = ({
             <ChevronDownIcon title='arrow down' fontSize='1.5em' />
           )}
         </div>
-      </Box>
+      </div>
     </Paragraph>
   );
 };
