@@ -37,14 +37,14 @@ export type PaginationRootProps = {
 
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
   function PaginationRoot(
-    { 'aria-label': ariaLabel, asChild, compact = false, size = 'md', ...rest },
+    { asChild, compact = false, size = 'md', ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'nav';
 
     return (
       <PaginationContext.Provider value={{ size, compact }}>
-        <Component ref={ref} aria-label={ariaLabel} {...rest} />
+        <Component ref={ref} {...rest} />
       </PaginationContext.Provider>
     );
   },
