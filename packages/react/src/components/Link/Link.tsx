@@ -6,7 +6,6 @@ import { forwardRef } from 'react';
 export type LinkProps = {
   /** The content to display inside the link. */
   children: ReactNode;
-
   /** Custom class name for the link. This will be appended to the design system class names. */
   className?: string;
 
@@ -26,17 +25,16 @@ export type LinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ color = 'accent', asChild, children, className, ...rest }, ref) => {
+  ({ asChild, className, color = 'accent', ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
 
     return (
       <Component
-        className={cl('ds-link', `ds-link--${color}`, className)}
+        className={cl('ds-link', className)}
+        data-color={color}
         ref={ref}
         {...rest}
-      >
-        {children}
-      </Component>
+      />
     );
   },
 );

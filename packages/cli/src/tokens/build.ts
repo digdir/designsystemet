@@ -6,8 +6,8 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import * as configs from './configs.js';
-import { makeEntryFile } from './utils/entryfile.js';
+import * as configs from './build/configs.js';
+import { makeEntryFile } from './build/utils/entryfile.js';
 
 const { permutateThemes, getConfigs } = configs;
 
@@ -24,7 +24,7 @@ type Options = {
 
 const sd = new StyleDictionary();
 
-export async function run(options: Options): Promise<void> {
+export async function buildTokens(options: Options): Promise<void> {
   const tokensDir = options.tokens;
   const storefrontOutDir = path.resolve('../../apps/storefront/tokens');
   const outPath = path.resolve(options.out);

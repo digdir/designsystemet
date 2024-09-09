@@ -6,9 +6,15 @@ import { Header } from '@repo/components';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 
+import { VersionBanner } from '@components';
 import { Footer } from '../components/Footer/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_GIT_COMMIT_REF !== 'main'
+      ? 'https://next.designsystemet.no'
+      : 'https://designsystemet.no',
+  ),
   title: {
     template: '%s - Designsystemet',
     default: 'Designsystemet',
@@ -52,6 +58,7 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <div className='root'>
+          <VersionBanner />
           <Header menu={menu} />
           {children}
           <Footer />
