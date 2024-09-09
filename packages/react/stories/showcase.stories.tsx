@@ -316,9 +316,9 @@ export const Showcase: StoryFn = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border>
+        <Accordion color='brand3' border>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -330,7 +330,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -340,7 +340,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -349,7 +349,7 @@ export const Showcase: StoryFn = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
     </div>
   );
