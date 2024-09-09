@@ -62,8 +62,13 @@
     padding-block: var(--dsc-accordion-padding);
     padding-inline: calc(var(--dsc-accordion-padding) + var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) var(--dsc-accordion-padding);
 
+    &:focus-visible {
+      box-shadow: var(--dsc-focus-boxShadow); /* Will work when #2313 is merged */
+      position: relative; /* Ensure foucs outline renders on top */
+    }
+
     &::before {
-      background-color: currentcolor;
+      background: currentcolor;
       border-radius: var(--ds-border-radius-md);
       content: '';
       height: var(--dsc-accordion-chevron-size);
@@ -80,13 +85,8 @@
     padding: var(--ds-spacing-5, 1rem);
   }
 
-  &:focus-within {
-    box-shadow: var(--dsc-focus-boxShadow); /* Will work when #2313 is merged */
-    position: relative; /* Ensure foucs outline renders on top */
-  }
-
   &[open] > :is(summary, u-summary) {
-    background-color: var(--dsc-accordion-heading-background--open);
+    background: var(--dsc-accordion-heading-background--open);
 
     &::before { rotate: 180deg }
   }
@@ -113,11 +113,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ds-accordion__item > :is(summary, u-summary):hover::before {
-    background-color: var(--dsc-accordion-chevron-background--hover);
+  .ds-accordion__item > :is(summary, u-summary):hover {
+    background: var(--dsc-accordion-chevron-background--hover);
   }
 
-  .ds-accordion__item[open] > :is(summary, u-summary):hover::before {
-    background-color: var(--dsc-accordion-chevron-background--active);
+  .ds-accordion__item[open] > :is(summary, u-summary):hover {
+    background: var(--dsc-accordion-chevron-background--active);
   }
 }

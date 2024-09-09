@@ -66,25 +66,27 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
 AccordionItem.displayName = 'AccordionItem';
 
 function animateToggle(details: HTMLDetailsElement, open = !details.open) {
+  const content = details.querySelector<HTMLElement>(':scope > div');
   const isAnimateSupported = 'animate' in details;
   const isReducedMotion = window.matchMedia?.(
     '(prefers-reduced-motion: reduce)',
   ).matches;
 
-  if (isReducedMotion || !isAnimateSupported) {
+  if (isReducedMotion || !isAnimateSupported || !content) {
     details.open = open;
   } else if (details.open !== open) {
-    details.open = false;
-    const closed = `${details.scrollHeight}px`;
     details.open = true;
-    const opened = `${details.scrollHeight}px`;
+    const opened = `${content.scrollHeight}px`;
 
-    details.style.overflow = 'clip'; // Clip content while animating
-    details.animate(
-      { height: [open ? closed : opened, open ? opened : closed] },
+    content.style.overflow = 'clip'; // Clip content while animating
+    content.animate(
+      {
+        height: [open ? '0px' : opened, open ? opened : '0px'],
+        paddingBlock: [open ? '0px' : 'auto', open ? 'auto' : '0px'],
+      },
       { duration: 400, easing: 'ease-in-out' },
     ).onfinish = () => {
-      details.style.removeProperty('overflow'); // Restore overlow
+      content.style.removeProperty('overflow'); // Restore overlow
       details.open = open;
     };
   }
