@@ -1,7 +1,7 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
   --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
-  --dsc-spinner-size: 40px;
+  --dsc-spinner-size: var(--ds-sizing-10);
   --dsc-spinner-animation-duration: 2s;
 
   width: var(--dsc-spinner-size);
@@ -14,23 +14,23 @@
   }
 
   &[data-size='2xs'] {
-    --dsc-spinner-size: 13px;
+    --dsc-spinner-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 4));
   }
 
   &[data-size='xs'] {
-    --dsc-spinner-size: 20px;
+    --dsc-spinner-size: var(--ds-sizing-5);
   }
 
   &[data-size='sm'] {
-    --dsc-spinner-size: 27px;
+    --dsc-spinner-size: calc(var(--ds-sizing-7) - calc(var(--ds-spacing-1) / 4));
   }
 
   &[data-size='lg'] {
-    --dsc-spinner-size: 56px;
+    --dsc-spinner-size: var(--ds-sizing-14);
   }
 
   &[data-size='xl'] {
-    --dsc-spinner-size: 79px;
+    --dsc-spinner-size: calc(var(--ds-sizing-18) + var(--ds-sizing-1) + calc((var(--ds-spacing-1) / 4) * 3));
   }
 }
 
