@@ -14,7 +14,7 @@
   }
 
   &[data-size='2xs'] {
-    --dsc-spinner-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 4));
+    --dsc-spinner-size: calc(var(--ds-sizing-3) + calc(var(--ds-sizing-1) / 4));
   }
 
   &[data-size='xs'] {
@@ -22,7 +22,7 @@
   }
 
   &[data-size='sm'] {
-    --dsc-spinner-size: calc(var(--ds-sizing-7) - calc(var(--ds-spacing-1) / 4));
+    --dsc-spinner-size: calc(var(--ds-sizing-7) - calc(var(--ds-sizing-1) / 4));
   }
 
   &[data-size='lg'] {
