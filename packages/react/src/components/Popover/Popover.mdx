@@ -14,10 +14,8 @@ import * as PopoverStories from './Popover.stories.tsx';
 ```tsx
 import { Popover } from '@digdir/designsystemet-react';
 
-<Popover.Root>
-  <Popover.Trigger>Trigger</Popover.Trigger>
-  <Popover.Content>Content</Popover.Content>
-</Popover.Trigger>
+<button popovertarget="my-popover">Trigger</button>
+<Popover id="my-popover">Content</Popover>
 ```
 
 ## Eksempler

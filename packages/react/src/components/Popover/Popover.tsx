@@ -23,6 +23,11 @@ declare global {
       popovertarget?: string;
     }
   }
+  namespace React {
+    interface HTMLAttributes<T> {
+      popovertarget?: string;
+    }
+  }
 }
 
 export type PopoverProps = {
