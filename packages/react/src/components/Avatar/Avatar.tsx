@@ -79,9 +79,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     <span
       ref={ref}
       className={cl('ds-avatar', fontSizeMap[size], className)}
-      data-ds-variant={variant}
-      data-ds-color={color}
-      data-ds-size={size}
+      data-variant={variant}
+      data-color={color}
+      data-size={size}
       role='img'
       aria-label={ariaLabel}
       {...rest}
