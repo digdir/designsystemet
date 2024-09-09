@@ -84,15 +84,17 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         {children}
         <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
           <span
-            className={cl(
-              'ds-badge',
-              `ds-badge--${size}`,
-              `ds-badge--${color}`,
-              count && 'ds-badge--count',
-              children && `ds-badge--${placement}__${overlap}`,
-              children && 'ds-badge--float',
-            )}
+            className={cl('ds-badge', count && 'ds-badge--count')}
             ref={ref}
+            data-size={size}
+            data-color={color}
+            {...(children
+              ? {
+                  'data-children': true,
+                  'data-placement': placement,
+                  'data-overlap': overlap,
+                }
+              : {})}
             {...rest}
           >
             {maxCount && count && count > maxCount ? `${maxCount}+` : count}
