@@ -36,7 +36,8 @@
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "clean": "rimraf dist",
-    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean"
+    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
+    "update:template": "tsx ./src/tokens/template.ts"
   },
   "dependencies": {
     "@adobe/leonardo-contrast-colors": "^1.0.0",

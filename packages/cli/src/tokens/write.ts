@@ -80,11 +80,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   // Create themes file
   await fs.mkdir(path.join(targetDir, 'themes'), { recursive: true });
-  const themeTemplate = await fs.readFile(path.join(TEMPLATE_FILES_PATH, `themes/theme.json`));
-  await fs.writeFile(
-    path.join(targetDir, `themes/${themeName}.json`),
-    themeTemplate.toString('utf-8').replaceAll('<theme>', themeName),
-  );
+  const themeTemplate = await fs.readFile(path.join(TEMPLATE_FILES_PATH, `themes/theme.json`), 'utf-8');
+  await fs.writeFile(path.join(targetDir, `themes/${themeName}.json`), themeTemplate.replaceAll('<theme>', themeName));
 
   const files: File[] = [
     generateColorModeFile('light', themeName, tokens.colors.light[themeName], targetDir),
