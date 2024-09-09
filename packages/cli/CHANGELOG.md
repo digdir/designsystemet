@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.32
+
+### Minor Changes
+
+- Fix design-token warning contrast color reference ([#2339](https://github.com/digdir/designsystemet/pull/2339))
+
+- New create tokens script with color options support ([#2290](https://github.com/digdir/designsystemet/pull/2290))
+
+## 0.1.0-next.23
+
+### Minor Changes
+
+- Update init script to new design-tokens format ([#2255](https://github.com/digdir/designsystemet/pull/2255))
+
 ## 0.1.0-next.22
 
 ### Minor Changes

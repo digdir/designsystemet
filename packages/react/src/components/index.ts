@@ -1,4 +1,6 @@
+export * from './Avatar';
 export * from './Button';
+export * from './Badge';
 export * from './Breadcrumbs';
 export * from './HelpText';
 export * from './Spinner';
@@ -27,7 +29,6 @@ export * from './Modal';
 export * from './DropdownMenu';
 export * from './form/Search';
 export * from './Skeleton';
-export * from './Box/Box';
 export * from './Card';
 export * from './form/Combobox';
 export * from './Table';

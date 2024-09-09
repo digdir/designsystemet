@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.1.0-next.22",
+  "version": "1.0.0-next.32",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -19,6 +19,10 @@
     "./color": {
       "types": "./dist/types/src/colors/index.d.ts",
       "import": "./dist/src/colors/index.js"
+    },
+    "./tokens/*": {
+      "types": "./dist/types/src/tokens/*",
+      "import": "./dist/src/tokens/*"
     }
   },
   "publishConfig": {
@@ -26,8 +30,8 @@
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
-    "build:tokens": "yarn clean:theme && yarn designsystemet tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens -p -t ../../design-tokens -o ../../packages/theme/brand",
+    "build:tokens": "yarn clean:theme && yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
+    "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "tsup && yarn build:types",
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
