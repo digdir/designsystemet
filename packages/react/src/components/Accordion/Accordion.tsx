@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-export type AccordionRootProps = {
+export type AccordionProps = {
   /**
    * Accordion background color
    * @default neutral
@@ -20,7 +20,7 @@ export type AccordionRootProps = {
 /**
  * Accordion component, contains `Accordion.Item` components.
  */
-export const Accordion = forwardRef<HTMLDivElement, AccordionRootProps>(
+export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   function Accordion(
     { border = false, color = 'neutral', className, ...rest },
     ref,

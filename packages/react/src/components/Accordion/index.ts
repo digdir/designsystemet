@@ -1,10 +1,6 @@
-import type { AccordionRootProps } from './Accordion';
 import { Accordion as AccordionParent } from './Accordion';
-import type { AccordionContentProps } from './AccordionContent';
 import { AccordionContent } from './AccordionContent';
-import type { AccordionHeadingProps } from './AccordionHeading';
 import { AccordionHeading } from './AccordionHeading';
-import type { AccordionItemProps } from './AccordionItem';
 import { AccordionItem } from './AccordionItem';
 
 type AccordionComponent = typeof AccordionParent & {
@@ -33,12 +29,10 @@ Accordion.Heading.displayName = 'Accordion.Heading';
 Accordion.Content.displayName = 'Accordion.Content';
 Accordion.Item.displayName = 'Accordion.Item';
 
-export type {
-  AccordionRootProps,
-  AccordionContentProps,
-  AccordionHeadingProps,
-  AccordionItemProps,
-};
+export type { AccordionContentProps } from './AccordionContent';
+export type { AccordionHeadingProps } from './AccordionHeading';
+export type { AccordionItemProps } from './AccordionItem';
+export type { AccordionProps } from './Accordion';
 export {
   Accordion,
   AccordionItem,
