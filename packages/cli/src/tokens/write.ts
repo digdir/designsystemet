@@ -9,8 +9,8 @@ import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
-const DEFAULT_FILES_PATH = path.join(DIRNAME, './template/default');
-const TEMPLATE_FILES_PATH = path.join(DIRNAME, './template/template/');
+const DEFAULT_FILES_PATH = path.join(DIRNAME, './design-tokens/default');
+const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template/');
 
 const stringify = (data: unknown) => JSON.stringify(data, null, 2).replace(/\r\n/g, '');
 
