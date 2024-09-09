@@ -76,7 +76,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           <PaginationItem>
             <PaginationPrevious
               aria-label={previousLabel}
-              className={cl(!showPreviousPage && 'ds-pagination--hidden')}
+              disabled={!showPreviousPage}
               onClick={() => onChange(currentPage - 1)}
             >
               <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
@@ -102,7 +102,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           <PaginationItem>
             <PaginationNext
               aria-label={nextLabel}
-              className={cl(!showNextPage && 'ds-pagination--hidden')}
+              disabled={!showNextPage}
               onClick={() => onChange(currentPage + 1)}
             >
               {!hideLabels && nextLabel}

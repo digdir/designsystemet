@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
-import { useArgs } from '@storybook/manager-api';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useEffect, useState } from 'react';
 
 import { Pagination, usePagination } from '.';
 
@@ -10,16 +10,22 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [, updateArgs] = useArgs();
+  const [currentPage, setCurrentPage] = useState(args.currentPage);
+
+  useEffect(() => {
+    setCurrentPage(args.currentPage);
+  }, [args.currentPage]);
 
   return (
-    <Pagination
-      {...args}
-      onChange={(currentPage) => updateArgs({ currentPage })}
-    />
+    <>
+      <Pagination
+        {...args}
+        onChange={setCurrentPage}
+        currentPage={currentPage}
+      ></Pagination>
+    </>
   );
 };
-
 Preview.args = {
   'aria-label': 'Sidenavigering',
   size: 'md',
@@ -53,9 +59,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
         <Pagination.Item>
           <Pagination.Previous
             onClick={previousPage}
-            style={{
-              visibility: showPreviousPage ? undefined : 'hidden',
-            }}
+            disabled={!showPreviousPage}
           >
             <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
             Forrige
@@ -79,7 +83,7 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
         ))}
 
         <Pagination.Item>
-          <Pagination.Next onClick={nextPage}>
+          <Pagination.Next onClick={nextPage} disabled={!showNextPage}>
             Neste
             <ChevronRightIcon aria-hidden fontSize='1.5rem' />
           </Pagination.Next>
