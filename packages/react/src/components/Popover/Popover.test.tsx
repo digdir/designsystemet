@@ -26,19 +26,21 @@ const render = async (props: PopoverProps = { id: 'my-popover' }) => {
 };
 
 describe('Popover', () => {
-  it('should render popover on trigger-click when closed', async () => {
-    // const { user } = await render();
-    // const popoverTrigger = screen.getByRole('button');
-
-    // expect(screen.queryByText(contentText)).not.toBeInTheDocument();
-
-    // await act(async () => await user.click(popoverTrigger));
-
-    // expect(screen.queryByText(contentText)).toBeInTheDocument();
-
-    // TODO: How to test when JSDOM does not support Popover API yet? https://github.com/jsdom/jsdom/issues/3721
+  // TODO: How to test when JSDOM does not support Popover API yet? https://github.com/jsdom/jsdom/issues/3721
+  it('exists', () => {
     expect(true).toBe(true);
   });
+
+  // it('should render popover on trigger-click when closed', async () => {
+  //   const { user } = await render();
+  //   const popoverTrigger = screen.getByRole('button');
+
+  //   expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+
+  //   await act(async () => await user.click(popoverTrigger));
+
+  //   expect(screen.queryByText(contentText)).toBeInTheDocument();
+  // });
 
   // it('should close when we click the button twitce', async () => {
   //   const { user } = await render();

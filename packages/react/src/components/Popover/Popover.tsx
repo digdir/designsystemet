@@ -101,8 +101,20 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         }
       };
 
+      const handleKeydown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape' && popover?.matches(':popover-open')) {
+          event.preventDefault(); // Prevent closing fullscreen in Safari
+          setInternalOpen(false);
+          onClose?.();
+        }
+      };
+
       document.addEventListener('click', handleClick);
-      return () => document.removeEventListener('click', handleClick);
+      document.addEventListener('keydown', handleKeydown);
+      return () => {
+        document.removeEventListener('click', handleClick);
+        document.removeEventListener('keydown', handleKeydown);
+      };
     }, []);
 
     useEffect(() => {
