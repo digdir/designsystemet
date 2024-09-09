@@ -1,12 +1,35 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
   --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
+  --dsc-spinner-size: 40px;
 
+  width: var(--dsc-spinner-size);
+  height: var(--dsc-spinner-size);
   animation: ds-spinner-rotate-animation linear infinite;
   animation-duration: 2s;
 
   &[data-color='accent'] {
     --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  }
+
+  &[data-size='2xs'] {
+    --dsc-spinner-size: 13px;
+  }
+
+  &[data-size='xs'] {
+    --dsc-spinner-size: 20px;
+  }
+
+  &[data-size='sm'] {
+    --dsc-spinner-size: 27px;
+  }
+
+  &[data-size='lg'] {
+    --dsc-spinner-size: 56px;
+  }
+
+  &[data-size='xl'] {
+    --dsc-spinner-size: 79px;
   }
 }
 

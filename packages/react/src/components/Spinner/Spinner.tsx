@@ -3,17 +3,6 @@ import type * as React from 'react';
 
 import { useSynchronizedAnimation } from '../../utilities';
 
-const sizeMap: {
-  [key in NonNullable<SpinnerProps['size']>]: number;
-} = {
-  '2xs': 13,
-  xs: 20,
-  sm: 27,
-  md: 40,
-  lg: 56,
-  xl: 79,
-};
-
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
@@ -36,7 +25,6 @@ export const Spinner = ({
   color = 'neutral',
   size = 'md',
   className,
-  style,
   ...rest
 }: SpinnerProps): JSX.Element => {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
@@ -50,10 +38,10 @@ export const Spinner = ({
   return (
     <svg
       className={cl('ds-spinner', className)}
-      data-color={color}
-      style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
       viewBox='0 0 50 50'
       ref={svgRef}
+      data-color={color}
+      data-size={size}
       {...rest}
     >
       <title>{title}</title>
