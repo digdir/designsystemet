@@ -4,9 +4,9 @@ import { forwardRef } from 'react';
 import type * as React from 'react';
 
 import { PaginationButton } from './PaginationButton';
-import { PaginationContent } from './PaginationContent';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import { PaginationItem } from './PaginationItem';
+import { PaginationList } from './PaginationList';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import { PaginationRoot } from './PaginationRoot';
 import { usePagination } from './usePagination';
@@ -72,14 +72,12 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         size={size}
         {...rest}
       >
-        <PaginationContent>
+        <PaginationList>
           <PaginationItem>
             <PaginationPrevious
               aria-label={previousLabel}
               className={cl(!showPreviousPage && 'ds-pagination--hidden')}
-              onClick={() => {
-                onChange(currentPage - 1);
-              }}
+              onClick={() => onChange(currentPage - 1)}
             >
               <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
               {!hideLabels && previousLabel}
@@ -111,7 +109,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
               <ChevronRightIcon aria-hidden fontSize={iconSize[size]} />
             </PaginationNext>
           </PaginationItem>
-        </PaginationContent>
+        </PaginationList>
       </PaginationRoot>
     );
   },

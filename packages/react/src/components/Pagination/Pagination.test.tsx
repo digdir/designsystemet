@@ -156,7 +156,7 @@ describe('Pagination', () => {
 const renderWithRoot = (props: PaginationRootProps) => {
   renderRtl(
     <Pagination.Root {...props}>
-      <Pagination.Content>
+      <Pagination.List>
         <Pagination.Item>
           <Pagination.Previous>Forrige</Pagination.Previous>
         </Pagination.Item>
@@ -181,7 +181,7 @@ const renderWithRoot = (props: PaginationRootProps) => {
         <Pagination.Item>
           <Pagination.Next>Neste</Pagination.Next>
         </Pagination.Item>
-      </Pagination.Content>
+      </Pagination.List>
     </Pagination.Root>,
   );
 };

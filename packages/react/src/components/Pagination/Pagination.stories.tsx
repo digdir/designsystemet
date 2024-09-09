@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+import { useArgs } from '@storybook/manager-api';
 import type { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useState } from 'react';
 
 import { Pagination, usePagination } from '.';
 
@@ -10,24 +10,18 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [currentPage, setCurrentPage] = useState(args.currentPage);
-
-  useEffect(() => {
-    setCurrentPage(args.currentPage);
-  }, [args.currentPage]);
+  const [, updateArgs] = useArgs();
 
   return (
-    <>
-      <Pagination
-        {...args}
-        onChange={setCurrentPage}
-        currentPage={currentPage}
-      ></Pagination>
-    </>
+    <Pagination
+      {...args}
+      onChange={(currentPage) => updateArgs({ currentPage })}
+    />
   );
 };
 
 Preview.args = {
+  'aria-label': 'Sidenavigering',
   size: 'md',
   nextLabel: 'Neste',
   previousLabel: 'Forrige',
@@ -54,8 +48,8 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
   });
 
   return (
-    <Pagination.Root>
-      <Pagination.Content>
+    <Pagination.Root aria-label='Sidenavigering'>
+      <Pagination.List>
         <Pagination.Item>
           <Pagination.Previous
             onClick={previousPage}
@@ -85,17 +79,12 @@ export const UsePagination: StoryFn<typeof Pagination> = (args) => {
         ))}
 
         <Pagination.Item>
-          <Pagination.Next
-            onClick={nextPage}
-            style={{
-              visibility: showNextPage ? undefined : 'hidden',
-            }}
-          >
+          <Pagination.Next onClick={nextPage}>
             Neste
             <ChevronRightIcon aria-hidden fontSize='1.5rem' />
           </Pagination.Next>
         </Pagination.Item>
-      </Pagination.Content>
+      </Pagination.List>
     </Pagination.Root>
   );
 };
@@ -108,16 +97,10 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
   });
 
   return (
-    <Pagination.Root>
-      <Pagination.Content>
+    <Pagination.Root aria-label='Sidenavigering'>
+      <Pagination.List>
         <Pagination.Item>
-          <Pagination.Previous
-            asChild
-            aria-label='Naviger til forrige side'
-            style={{
-              visibility: currentPage === 1 ? 'hidden' : undefined,
-            }}
-          >
+          <Pagination.Previous asChild aria-label='Naviger til forrige side'>
             <a href='#forrige-side'>
               <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
               Forrige
@@ -142,20 +125,14 @@ export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
         ))}
 
         <Pagination.Item>
-          <Pagination.Next
-            asChild
-            aria-label='Naviger til neste side'
-            style={{
-              visibility: currentPage === totalPages ? 'hidden' : undefined,
-            }}
-          >
+          <Pagination.Next asChild aria-label='Naviger til neste side'>
             <a href='#neste-side'>
               Neste
               <ChevronRightIcon aria-hidden fontSize='1.5rem' />
             </a>
           </Pagination.Next>
         </Pagination.Item>
-      </Pagination.Content>
+      </Pagination.List>
     </Pagination.Root>
   );
 };
