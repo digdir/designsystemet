@@ -21,6 +21,7 @@ declare global {
   namespace React.JSX {
     interface IntrinsicAttributes {
       popovertarget?: string;
+      popover?: 'manual' | 'auto';
     }
   }
 }
