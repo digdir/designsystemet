@@ -42,11 +42,6 @@
     }
   }
 
-  &[data-color='accent'] {
-    --dsc-badge-background: var(--ds-color-accent-base-default);
-    --dsc-badge-color: var(--ds-color-accent-contrast-default);
-  }
-
   &[data-color='info'] {
     --dsc-badge-background: var(--ds-color-info-base-default);
     --dsc-badge-color: var(--ds-color-info-contrast-default);
