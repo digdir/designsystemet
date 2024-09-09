@@ -90,7 +90,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             data-color={color}
             {...(children
               ? {
-                  'data-children': true,
                   'data-placement': placement,
                   'data-overlap': overlap,
                 }
