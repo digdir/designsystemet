@@ -98,9 +98,16 @@ export const TokenModal = ({
             Alt 1. Design tokens
           </Heading>
           <Textfield
-            value={themeName}
             label='Tema navn'
-            onChange={(e) => setThemeName(e.currentTarget.value)}
+            value={themeName}
+            onChange={(e) => {
+              const value = e.currentTarget.value
+                .replace(/\s+/g, '-')
+                .replace(/[^A-Z0-9-]+/gi, '')
+                .toLowerCase();
+
+              setThemeName(value);
+            }}
             style={{ marginBlock: 'var(--ds-spacing-4)' }}
           ></Textfield>
           <Paragraph spacing>
@@ -115,7 +122,7 @@ export const TokenModal = ({
             className={classes.snippet}
             style={{ marginBottom: 'var(--ds-spacing-8)' }}
           >
-            <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
+            <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
           </div>
           <Heading level={3} size='xs' spacing>
             Alt 2. Figma plugin
@@ -148,7 +155,7 @@ export const TokenModal = ({
                 Light Mode
               </Heading>
               <div className={classes.snippet}>
-                <CodeSnippet language='js'>{lightThemeSnippet}</CodeSnippet>
+                <CodeSnippet language='json'>{lightThemeSnippet}</CodeSnippet>
               </div>
             </div>
             <div className={classes.column}>
@@ -156,7 +163,7 @@ export const TokenModal = ({
                 Dark Mode
               </Heading>
               <div className={classes.snippet}>
-                <CodeSnippet language='js'>{darkThemeSnippet}</CodeSnippet>
+                <CodeSnippet language='json'>{darkThemeSnippet}</CodeSnippet>
               </div>
             </div>
           </div>
