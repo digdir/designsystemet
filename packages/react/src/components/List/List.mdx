@@ -45,12 +45,17 @@ En sortert liste brukes når det er viktig at brukerne forstår grader av viktig
 
 ### Med overskrift
 
-Dersom du plasserer en `Heading` (`h1`/`h2`/`h3`/`h4`/`h5`/`h6`) forran listen, så kobler vi automatisk overskrift og liste sammen med `aria-labelledby`,
-for å gi skjermlesere beskjed om at `Heading` er en overskrift for `List`.
+Liste kan brukes sammen med en `Heading` for å gi brukeren en rask oversikt over innholdet. Dette er spesielt nyttig for lengre lister.
 
-Dersom du ikke legger til en overskrift kommer vi ikke til å legge til `aria-labelledby`.
+Størrelse på overskrift over liste er avhengig av brukskontekst, og er derfor noe du må sette selv.
+I løpende tekst anbefaler vi disse størrelsene for overskrifter:
 
-<Canvas of={ListStories.UtenOverskrift} />
+| Størrelse på `List` | Størrelse på `Heading` |
+| :----------------- | :---------------------- |
+| sm                 | 2xs                     |
+| md                 | xs                      |
+| lg                 | sm                      |
+
 
 ### Lister i lister
 
@@ -84,6 +89,7 @@ Passer ikke til å
 
 <br />
 <br />
+
 
 ## Tekst i komponenten
 

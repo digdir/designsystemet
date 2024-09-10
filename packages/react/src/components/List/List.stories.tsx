@@ -35,7 +35,7 @@ Preview.args = {
 export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
     <Heading level={2} size='xs' spacing>
-      Slik gjør du
+      Slik gjør du:
     </Heading>
     <List.Ordered {...args}>
       <List.Item>
@@ -73,80 +73,59 @@ export const Usortert: Story = (args) => (
   </>
 );
 
-export const UtenOverskrift: Story = (args) => (
+export const Innrykk: Story = (args) => (
   <List.Unordered {...args}>
-    <List.Item>Lasagne</List.Item>
-    <List.Item>Taco</List.Item>
-    <List.Item>Pizza</List.Item>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        {' '}
+        List Item 1
+      </Heading>
+      <List.Ordered>
+        <List.Item>List Item 1.1</List.Item>
+        <List.Item>List Item 1.2</List.Item>
+        <List.Item>List Item 1.3</List.Item>
+      </List.Ordered>
+    </List.Item>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        {' '}
+        List Item 2
+      </Heading>
+      <List.Unordered>
+        <List.Item>List Item 2.1</List.Item>
+        <List.Item>List Item 2.2</List.Item>
+        <List.Item>List Item 2.3</List.Item>
+      </List.Unordered>
+    </List.Item>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        List Item 3
+      </Heading>
+      <List.Unordered>
+        <List.Item>List Item 3.1</List.Item>
+        <List.Item>List Item 3.2</List.Item>
+        <List.Item>List Item 3.3</List.Item>
+      </List.Unordered>
+    </List.Item>
   </List.Unordered>
 );
 
-export const Innrykk: Story = (args) => (
-  <>
-    <Heading level={2} size='xs' spacing>
-      Nested lists
-    </Heading>
-    <List.Unordered {...args}>
-      <List.Item>
-        <Heading level={3} size='xs' spacing>
-          {' '}
-          List Item 1
-        </Heading>
-        <List.Ordered>
-          <List.Item>List Item 1.1</List.Item>
-          <List.Item>List Item 1.2</List.Item>
-          <List.Item>List Item 1.3</List.Item>
-        </List.Ordered>
-      </List.Item>
-      <List.Item>
-        <Heading level={3} size='xs' spacing>
-          {' '}
-          List Item 2
-        </Heading>
-        <List.Unordered>
-          <List.Item>List Item 2.1</List.Item>
-          <List.Item>List Item 2.2</List.Item>
-          <List.Item>List Item 2.3</List.Item>
-        </List.Unordered>
-      </List.Item>
-      <List.Item>
-        <Heading level={3} size='xs' spacing>
-          List Item 3
-        </Heading>
-        <List.Unordered>
-          <List.Item>List Item 3.1</List.Item>
-          <List.Item>List Item 3.2</List.Item>
-          <List.Item>List Item 3.3</List.Item>
-        </List.Unordered>
-      </List.Item>
-    </List.Unordered>
-  </>
-);
-
 export const ListeMedLenker: Story = (args) => (
-  <>
-    <Heading level={2} size='xs' spacing>
-      Designsystemet
-    </Heading>
-    <List.Unordered {...args} style={{ listStyle: 'none', padding: 0 }}>
-      <List.Item>
-        <Link
-          href='https://www.designsystemet.no/grunnleggende'
-          target='_blank'
-        >
-          Grunnleggende
-        </Link>
-      </List.Item>
-      <List.Item>
-        <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
-          God praksis
-        </Link>
-      </List.Item>
-      <List.Item>
-        <Link href='https://www.designsystemet.no/monstre' target='_blank'>
-          Mønstre
-        </Link>
-      </List.Item>
-    </List.Unordered>
-  </>
+  <List.Unordered {...args} style={{ listStyle: 'none', padding: 0 }}>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/grunnleggende' target='_blank'>
+        Grunnleggende
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
+        God praksis
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+        Mønstre
+      </Link>
+    </List.Item>
+  </List.Unordered>
 );
