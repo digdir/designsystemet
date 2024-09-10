@@ -6,12 +6,16 @@ import * as LinkStories from './Link.stories';
 
 # Link
 
-`Link` er basert på HTML-taggen `<a>`, som brukes til å lage en lenke til andre sider.
+`Link` er en klikkbar tekst eller grafikk, 
+som gjør det enkelt og raskt for brukerne å navigere til filer eller sider internt eller eksternt.
+Komponenten er basert på [anchor HTML-taggen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du `Link`
+
+`Link` støtter de samme attributter som en vanlig anchor tag, men har i tillegg også `color` for å velge fargen på linken.
 
 ```tsx
 import { Link } from '@digdir/designsystemet-react';
@@ -25,6 +29,13 @@ En lenke brukes ofte som en del av en tekst. Teksten som omfattes av lenken bør
 
 <Canvas of={LinkStories.InText} />
 
+### Med ikon
+
+Ikonet legges på venstre side. Dette er et funksjonelt ikon som forteller brukerne hva lenken leder dem til. 
+Ikonet burde være skjult skjermleser, ved å legge på `aria-hidden`.
+
+<Canvas of={LinkStories.WithIcon} />
+
 ### Flere linjer
 
 <Canvas of={LinkStories.LongLink} />
@@ -32,6 +43,42 @@ En lenke brukes ofte som en del av en tekst. Teksten som omfattes av lenken bør
 ### Nøytral farge
 
 <Canvas of={LinkStories.Neutral} />
+
+## Retningslinjer for `Link`
+
+Når vi legger `Link` på siden, kan brukerne gå direkte til en annen relevant nettside, 
+eller direkte til annen informasjon på samme nettside. Det er viktig å ikke overbruke lenker,
+det kan gjøre det vanskelig for brukerne å finne veien videre.
+### Åpne lenker i ny fane/vindu
+
+Både interne og eksterne lenker bør åpnes i samme fane/vindu. Da sikrer vi en forutsigbar brukeropplevelse fordi brukerens egne lenkeinnstillinger i nettleseren videreføres. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken ble åpnet i en ny fane.
+
+Unntaket er hvis brukeren risikerer å miste innhold ved å klikke på lenken, for eksempel ved utfylling av et skjema. Det skal da informeres om at lenken åpnes i en ny fane. 
+
+[Les mer om lenker på uutilsynet.no](https://www.uutilsynet.no/veiledning/lenker/214)
+
+<br/>
+
+## Tekst i komponenten
+
+Pass på at teksten i lenken er beskriverne og forklarende på hvor lenken går. 
+Gode lenker er selvforklarende og forteller umiddelbart brukerne hvor de kommer ved å trykke på lenken.
+- Bruk triggerord tidlig i lenketeksten.
+- Vi lager ikke flere lenker enn de brukerne trenger
+
+Vi bruker aldri lenketekster som “Klikk her”, “Se her” og “Les mer”. Det er fordi brukerne ofte skanner teksten og leter etter veier videre. 
+Når brukerne kan lese et meningsbærende innhold i lenketeksten, finner de raskt det innholdet de leter etter. 
+
+<br/>
+
+## Tilgjengelighet
+
+`Link` fungerer som anchor tag, og det er ikke endret på funksjonalitet.
+Fokus legger på ein bakgrunn rundt lenken.
+
+Når brukeren har besøkt en lenke tidligere, vil fargen på lenken endres.
+
+<br/>
 
 ## Kjente mangler
 
