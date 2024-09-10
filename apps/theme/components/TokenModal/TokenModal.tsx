@@ -99,6 +99,7 @@ export const TokenModal = ({
           </Heading>
           <Textfield
             label='Tema navn'
+            description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
             value={themeName}
             onChange={(e) => {
               const value = e.currentTarget.value
