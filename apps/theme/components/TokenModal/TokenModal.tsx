@@ -7,6 +7,7 @@ import {
   Link,
   Modal,
   Paragraph,
+  Textfield,
 } from '@digdir/designsystemet-react';
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
 import { CodeSnippet } from '@repo/components';
@@ -38,6 +39,7 @@ export const TokenModal = ({
 
   const [lightThemeSnippet, setLightThemeSnippet] = useState('');
   const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
+  const [themeName, setThemeName] = useState('theme');
 
   const cliSnippet = `npx @digdir/designsystemet tokens create \\
    --accent "${accentColor}" \\
@@ -45,7 +47,7 @@ export const TokenModal = ({
    --brand1 "${brand1Color}" \\
    --brand2 "${brand2Color}" \\
    --brand3 "${brand3Color}" \\
-   --theme "theme" \\
+   --theme "${themeName}" \\
    --write
    `;
 
@@ -95,6 +97,12 @@ export const TokenModal = ({
           <Heading level={3} size='xs' spacing>
             Alt 1. Design tokens
           </Heading>
+          <Textfield
+            value={themeName}
+            label='Tema navn'
+            onChange={(e) => setThemeName(e.currentTarget.value)}
+            style={{ marginBlock: 'var(--ds-spacing-4)' }}
+          ></Textfield>
           <Paragraph spacing>
             Kopier kommandosnutten under og kjør på maskinen din for å generere
             alle design tokens (json-filer). Sørg for at du har{' '}
