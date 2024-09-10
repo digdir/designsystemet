@@ -33,25 +33,19 @@ export type TagProps = {
  * @example
  * <Tag color='success'>Success</Tag>
  */
-export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  ({ size = 'md', color = 'neutral', children, className, ...rest }, ref) => {
-    return (
-      <Paragraph asChild size={size}>
-        <span
-          className={cl(
-            'ds-tag',
-            `ds-tag--${color}`,
-            `ds-tag--${size}`,
-            className,
-          )}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </span>
-      </Paragraph>
-    );
-  },
-);
-
-Tag.displayName = 'Tag';
+export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
+  { size = 'md', color = 'neutral', className, ...rest },
+  ref,
+) {
+  return (
+    <Paragraph asChild size={size}>
+      <span
+        className={cl('ds-tag', className)}
+        data-color={size}
+        data-size={size}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
+  );
+});
