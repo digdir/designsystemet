@@ -903,10 +903,10 @@
   },
   {
     "id": "de7b392ea3a3ba7f9afc9e307bb834c9ec5e5f0c",
-    "name": "digdir",
+    "name": "<theme>",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme": "enabled"
+      "themes/<theme>": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36329:62335",
     "$figmaModeId": "36329:4",

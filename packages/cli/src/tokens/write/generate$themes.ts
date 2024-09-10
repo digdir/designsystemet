@@ -65,12 +65,6 @@ const modeDefaults: Record<ColorMode, ThemeObject_> = {
   },
 };
 
-const modeIds: Record<ColorMode, string> = {
-  light: '0daa3ca0b427b9349da7e7dc00101b5668972926',
-  dark: '9ebd8aed52afbffc17e2666e8b4653a53498b257',
-  contrast: '9ebd8aed52afbffc17e2666e8b4653a53498b123',
-};
-
 function generateModesGroup(modes: Array<ColorMode>, themes: string[]): ThemeObject_[] {
   return modes.map(
     (mode): ThemeObject_ => ({
