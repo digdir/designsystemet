@@ -1,7 +1,6 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { forwardRef, useEffect, useId, useRef } from 'react';
+import { forwardRef } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -27,44 +26,17 @@ export type ListOrderedProps = ListBaseProps &
 
 const render = <HTMLType extends HTMLElement>(
   tagName: string,
-  {
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-    asChild,
-    className,
-    size = 'md',
-    ...rest
-  }: ListOrderedProps,
+  { asChild, className, size = 'md', ...rest }: ListOrderedProps,
   ref: React.ForwardedRef<HTMLType>,
 ) => {
   const Component = asChild ? Slot : tagName;
-  const randomId = useId();
-  const innerRef = useRef<HTMLType>(null);
-  const hasLabel = ariaLabel ?? ariaLabelledby ?? false;
-  const mergedRefs = useMergeRefs([innerRef, ref]);
-
-  // Connect previous heading element if available. This does not affect visuall rendering,
-  // and is not an accessibility requirement, but its a nice enhancement when heading + list relation is obvious.
-  useEffect(() => {
-    const list = innerRef.current;
-    const heading = list?.previousElementSibling;
-    const headingId = heading?.id || randomId;
-
-    if (hasLabel === false && heading?.matches('h1,h2,h3,h4,h5,h6')) {
-      list?.setAttribute('aria-labelledby', headingId);
-      heading.id = headingId;
-    }
-    return () => list?.removeAttribute('aria-labelledby');
-  }, [hasLabel]);
 
   return (
     <Paragraph size={size} asChild>
       <Component
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledby}
         className={cl(`ds-list`, className)}
         data-size={size}
-        ref={mergedRefs}
+        ref={ref}
         {...rest}
       />
     </Paragraph>

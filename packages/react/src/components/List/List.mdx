@@ -106,6 +106,29 @@ Når punktene er hele setninger, bruker vi
 
 ## Tilgjengelighet
 
+### Lister til navigasjon
+
+Dersom liste brukes som navigasjonselement (for eksempel i bunn eller på ved siden av hovedinnholdet), 
+kan du legge et `<nav>` element rundt med `aria-label=""` for å gi skjermlesere en bedre brukeropplevelse.
+
+#### Eksempel på `nav`
+
+```tsx
+<nav aria-label="Snarveier">
+  <List.Unordered>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </List.Unordered>
+</nav>
+```
+
 ### `menu` istedenfor `ul`
 
 Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
