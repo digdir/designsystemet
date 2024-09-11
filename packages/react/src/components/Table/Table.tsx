@@ -32,7 +32,7 @@ export type TableProps = {
 } & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  (
+  function Table(
     {
       zebra = false,
       stickyHeader = false,
@@ -44,21 +44,17 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     return (
       <Paragraph asChild size={size}>
         <table
+          className={cl('ds-table', className)}
+          data-border={border || undefined}
+          data-hover={hover || undefined}
+          data-size={size}
+          data-sticky-header={stickyHeader || undefined}
+          data-zebra={zebra || undefined}
           ref={ref}
-          className={cl(
-            'ds-table',
-            `ds-table--${size}`,
-            zebra && 'ds-table--zebra',
-            stickyHeader && 'ds-table--sticky-header',
-            border && 'ds-table--border',
-            hover && 'ds-table--hover',
-            `ds-paragraph--${size}`,
-            className,
-          )}
           {...rest}
         >
           {children}
@@ -67,5 +63,3 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     );
   },
 );
-
-Table.displayName = 'Table';

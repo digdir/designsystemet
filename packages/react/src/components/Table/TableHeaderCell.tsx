@@ -1,73 +1,21 @@
-import {
-  ChevronDownIcon,
-  ChevronUpDownIcon,
-  ChevronUpIcon,
-} from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import type { AriaAttributes } from 'react';
-import * as React from 'react';
-
-const SORT_ICON = {
-  ascending: <ChevronUpIcon />,
-  descending: <ChevronDownIcon />,
-};
+import { type MouseEvent, type ThHTMLAttributes, forwardRef } from 'react';
 
 export type TableHeaderCellProps = {
   /**
-   * If true, will add a button to the header cell
-   * @default false
-   */
-  sortable?: boolean;
-  /**
-   * If true, will change aria-sort and icon
+   * If 'none' | 'ascending' | 'descending' | 'other' will add a button to the header cell and change aria-sort and icon
    * @default undefined
    */
   sort?: AriaAttributes['aria-sort'];
-  /**
-   * Callback for when the sort button is clicked
-   * @default undefined
-   */
-  onSortClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-} & React.ThHTMLAttributes<HTMLTableCellElement>;
+} & ThHTMLAttributes<HTMLTableCellElement>;
 
-export const TableHeaderCell = React.forwardRef<
+export const TableHeaderCell = forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps
->(
-  (
-    { sortable = false, sort, onSortClick, className, children, ...rest },
-    ref,
-  ) => {
-    const sortIcon =
-      sort === 'ascending' || sort === 'descending' ? (
-        SORT_ICON[sort]
-      ) : (
-        <ChevronUpDownIcon />
-      );
-
-    return (
-      <th
-        className={cl(
-          'ds-table__header__cell',
-          'ds-font-weight--medium',
-          sortable && 'ds-table__header__cell--sortable',
-          sort && `ds-table__header__cell--sorted`,
-          className,
-        )}
-        aria-sort={sort}
-        ref={ref}
-        {...rest}
-      >
-        {sortable && (
-          <button className='ds-focus' onClick={onSortClick}>
-            {children}
-            {sortIcon}
-          </button>
-        )}
-        {!sortable && children}
-      </th>
-    );
-  },
-);
-
-TableHeaderCell.displayName = 'TableHeaderCell';
+>(function TableHeaderCell({ sort, children, ...rest }, ref) {
+  return (
+    <th aria-sort={sort} ref={ref} {...rest}>
+      {sort ? <button className='ds-focus'>{children}</button> : children}
+    </th>
+  );
+});

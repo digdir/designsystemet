@@ -6,7 +6,7 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 
 import type { PortalProps } from '../../../types/Portal';
 import { omit, useDebounceCallback } from '../../../utilities';
-import { Spinner } from '../../Spinner';
+import { Spinner } from '../../loaders/Spinner';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 
