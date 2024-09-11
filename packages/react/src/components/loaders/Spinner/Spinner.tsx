@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import type * as React from 'react';
 
-import { useSynchronizedAnimation } from '../../utilities';
+import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
   /** Spinner title  */

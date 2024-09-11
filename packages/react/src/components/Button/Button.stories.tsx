@@ -15,8 +15,7 @@ import {
 import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 
-import { Spinner } from '../Spinner';
-import { Tooltip } from '../Tooltip';
+import { Spinner, Tooltip } from '../';
 
 import { Button } from './';
 
