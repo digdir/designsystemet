@@ -129,3 +129,92 @@ export const ListeMedLenker: Story = (args) => (
     </List.Item>
   </List.Unordered>
 );
+
+export const ListeMedOverskrift: Story = (args) => (
+  <div style={{ display: 'flex', gap: '2rem' }}>
+    <div>
+      <Heading level={2} size='2xs' spacing>
+        List sm og Heading 2xs
+      </Heading>
+      <List.Unordered size='sm'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+    <div>
+      <Heading level={2} size='xs' spacing>
+        List md og Heading xs
+      </Heading>
+      <List.Unordered size='md'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+    <div>
+      <Heading level={2} size='sm' spacing>
+        List lg og Heading sm
+      </Heading>
+      <List.Unordered size='lg'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+  </div>
+);
