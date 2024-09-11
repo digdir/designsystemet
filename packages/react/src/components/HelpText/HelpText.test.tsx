@@ -19,84 +19,62 @@ const render = (props: Partial<HelpTextProps> = {}) => {
 const user = userEvent.setup();
 
 describe('HelpText', () => {
-  // TODO: How to test when JSDOM does not support Popover API yet? https://github.com/jsdom/jsdom/issues/3721
-  it('exists', () => {
-    expect(true).toBe(true);
+  it('should render HelpText button', () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
+
+    expect(helpTextTrigger).toBeVisible();
   });
 
-  // it('should render HelpText button', () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
+  it('should open HelpText on trigger-click when closed', async () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
 
-  //   expect(helpTextTrigger).toBeInTheDocument();
-  // });
+    expect(screen.queryByText('Help')).not.toBeVisible();
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).toBeVisible();
+  });
 
-  // it('should open HelpText on trigger-click when closed', async () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
+  it('should close HelpText on trigger-click when open', async () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
 
-  //   expect(screen.queryByText('Help')).not.toBeInTheDocument();
-  //   await act(async () => {
-  //     await user.click(helpTextTrigger);
-  //   });
-  //   expect(screen.queryByText('Help')).toBeInTheDocument();
-  // });
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).toBeVisible();
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).not.toBeVisible();
+  });
 
-  // it('should close HelpText on trigger-click when open', async () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
+  it('should open HelpText on SPACE pressed when closed', async () => {
+    render();
+    const helpTextTrigger = screen.getByRole('button');
 
-  //   await act(async () => {
-  //     await user.click(helpTextTrigger);
-  //   });
-  //   expect(screen.queryByText('Help')).toBeInTheDocument();
-  //   await act(async () => {
-  //     await user.click(helpTextTrigger);
-  //   });
-  //   expect(screen.queryByText('Help')).not.toBeInTheDocument();
-  // });
+    expect(screen.queryByText('Help')).not.toBeVisible();
+    helpTextTrigger.focus();
+    await act(async () => {
+      await user.keyboard('[Space]');
+    });
+    expect(screen.queryByText('Help')).toBeVisible();
+  });
 
-  // it('should open HelpText on SPACE pressed when closed', async () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
+  it('should close HelpText on ESC pressed when open', async () => {
+    render();
 
-  //   expect(screen.queryByText('Help')).not.toBeInTheDocument();
-  //   helpTextTrigger.focus();
-  //   await act(async () => {
-  //     await user.keyboard('[Space]');
-  //   });
-  //   expect(screen.queryByText('Help')).toBeInTheDocument();
-  // });
+    const helpTextTrigger = screen.getByRole('button');
 
-  // it('should close HelpText on ESC pressed when open', async () => {
-  //   render();
-
-  //   const helpTextTrigger = screen.getByRole('button');
-
-  //   await act(async () => {
-  //     await user.click(helpTextTrigger);
-  //   });
-  //   expect(screen.queryByText('Help')).toBeInTheDocument();
-  //   await act(async () => {
-  //     await user.keyboard('[Escape]');
-  //   });
-  //   expect(screen.queryByText('Help')).not.toBeInTheDocument();
-  // });
-
-  // it('should have `aria-expanded` set to `false` when closed', () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
-
-  //   expect(helpTextTrigger).toHaveAttribute('aria-expanded', 'false');
-  // });
-
-  // it('should have `aria-expanded` set to `true` when open', async () => {
-  //   render();
-  //   const helpTextTrigger = screen.getByRole('button');
-
-  //   await act(async () => {
-  //     await user.click(helpTextTrigger);
-  //   });
-  //   expect(helpTextTrigger).toHaveAttribute('aria-expanded', 'true');
-  // });
+    await act(async () => {
+      await user.click(helpTextTrigger);
+    });
+    expect(screen.queryByText('Help')).toBeVisible();
+    await act(async () => {
+      await user.keyboard('[Escape]');
+    });
+    expect(screen.queryByText('Help')).not.toBeVisible();
+  });
 });
