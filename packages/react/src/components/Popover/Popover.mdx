@@ -14,7 +14,13 @@ import * as PopoverStories from './Popover.stories.tsx';
 ```tsx
 import { Popover } from '@digdir/designsystemet-react';
 
-<button popovertarget="my-popover">Trigger</button>
+<Popover.Context>
+  <Popover.Trigger>Trigger</Popover.Trigger>
+  <Popover>Content</Popover>
+</Popover.Context>
+
+// eller:
+<Button popovertarget="my-popover">Trigger</Button>
 <Popover id="my-popover">Content</Popover>
 ```
 
@@ -37,11 +43,3 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
-## `popovertarget`
-
-Med attributten `popovertarget="id-of-popover"` kan du koble et trigger element sammen med `Popover`.
-Triggeren burde rendres med [Button](/docs/komponenter-button--docs) som standard.
-
-### Referanser
-
-- [1] [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)

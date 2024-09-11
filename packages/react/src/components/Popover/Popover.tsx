@@ -8,9 +8,10 @@ import {
 import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import { forwardRef, useRef, useState } from 'react';
+import { forwardRef, useContext, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { Paragraph } from '../Typography';
+import { Context } from './PopoverContext';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;
@@ -32,10 +33,9 @@ declare global {
 
 export type PopoverProps = {
   /**
-   * Required id to connect the trigger with the popover.
-   * @required
+   * id to connect the trigger with the popover - required when used without Popover.Context.
    */
-  id: string;
+  id?: string;
   /**
    * Placement of the tooltip on the trigger.
    * @default top
@@ -69,6 +69,7 @@ export type PopoverProps = {
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
+      id,
       className,
       onClose,
       onOpen,
@@ -81,19 +82,19 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     },
     ref,
   ) {
-    const [internalOpen, setInternalOpen] = useState(false);
-    const controlledOpen = open ?? internalOpen;
     const popoverRef = useRef<HTMLDivElement>(null);
     const mergedRefs = useMergeRefs([popoverRef, ref]);
+    const { popoverId, setPopoverId } = useContext(Context);
+    const [internalOpen, setInternalOpen] = useState(false);
+    const controlledOpen = open ?? internalOpen;
 
-    // NOTE: This code is not needed if we use the Popover API as inteded,
-    // but is purely added to align with React controlled component pattern
+    // NOTE: This code is purely to add React controlled component ability to Popover API
     useEffect(() => {
       const popover = popoverRef.current;
       const handleClick = (event: MouseEvent) => {
-        const node = event.target as Node;
-        const isTrigger = getTrigger(popover?.id)?.contains(node);
-        const isOutside = !isTrigger && !popover?.contains(node);
+        const el = event.target as Element | null;
+        const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
+        const isOutside = !isTrigger && !popover?.contains(el);
 
         if (isTrigger) {
           event.preventDefault(); // Prevent native Popover API
@@ -107,26 +108,28 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       const handleKeydown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && isOpen(popover)) {
-          event.preventDefault(); // Prevent closing fullscreen in Safari
-          setInternalOpen(false);
-          onClose?.();
-        }
+        if (event.key !== 'Escape' || !controlledOpen) return;
+        event.preventDefault(); // Prevent closing fullscreen in Safari
+        setInternalOpen(false);
+        onClose?.();
       };
 
+      popover?.togglePopover?.(controlledOpen);
       document.addEventListener('click', handleClick);
       document.addEventListener('keydown', handleKeydown);
       return () => {
         document.removeEventListener('click', handleClick);
         document.removeEventListener('keydown', handleKeydown);
       };
-    }, []);
+    }, [controlledOpen]);
 
+    // Position with floating-ui
     useEffect(() => {
       const popover = popoverRef.current;
-      const trigger = getTrigger(popover?.id);
+      const trigger = document.querySelector(
+        `[popovertarget="${popover?.id}"]`,
+      );
 
-      popover?.togglePopover?.(controlledOpen);
       if (popover && trigger && controlledOpen)
         return autoUpdate(trigger, popover, () => {
           computePosition(trigger, popover, {
@@ -142,7 +145,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             popover.style.translate = `${x}px ${y}px`;
           });
         });
-    }, [controlledOpen, placement, rest.id]);
+    }, [controlledOpen, placement, id]);
+
+    // Update context with id
+    useEffect(() => {
+      if (id) setPopoverId?.(id);
+    }, [id]);
 
     return (
       <Paragraph asChild size={size}>
@@ -150,6 +158,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           className={cl('ds-popover', className)}
           data-size={size}
           data-variant={variant}
+          id={id || popoverId}
           // @ts-ignore @types/react-dom does not understand popover yet
           popover='manual'
           ref={mergedRefs}
@@ -159,17 +168,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
-
-const isOpen = (el?: Element | null) => {
-  try {
-    return el?.matches(':popover-open');
-  } catch (err) {
-    return el?.matches('.:popover-open');
-  }
-};
-
-const getTrigger = (id?: string) =>
-  id ? document.querySelector(`[popovertarget="${id}"]`) : null;
 
 const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
