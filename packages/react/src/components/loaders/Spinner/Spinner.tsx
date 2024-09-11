@@ -3,17 +3,6 @@ import type * as React from 'react';
 
 import { useSynchronizedAnimation } from '../../../utilities';
 
-const sizeMap: {
-  [key in NonNullable<SpinnerProps['size']>]: number;
-} = {
-  '2xs': 13,
-  xs: 20,
-  sm: 27,
-  md: 40,
-  lg: 56,
-  xl: 79,
-};
-
 export type SpinnerProps = {
   /** Spinner title  */
   title: string;
