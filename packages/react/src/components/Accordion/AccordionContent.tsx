@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { Paragraph } from '..';
+import { Paragraph } from '../Typography/Paragraph';
 
 export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
 

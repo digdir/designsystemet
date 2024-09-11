@@ -28,8 +28,8 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     return (
       <div
         className={cl('ds-accordion-group', className)}
-        data-ds-border={border || undefined} /* Fallback to  */
-        data-ds-color={color}
+        data-border={border || undefined} /* Fallback to  */
+        data-color={color}
         ref={ref}
         {...rest}
       />
