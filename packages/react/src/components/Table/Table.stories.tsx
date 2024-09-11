@@ -290,3 +290,31 @@ export const FixedTable: Story = (args) => {
     </Table>
   );
 };
+
+export const MultipleHeaderRows: Story = (args) => {
+  const rows = Array.from({ length: 50 }, (_, i) => i + 1);
+  return (
+    <Table {...args}>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Header 1</TableHeaderCell>
+          <TableHeaderCell colSpan={2}>Header 2</TableHeaderCell>
+        </TableRow>
+        <TableRow>
+          <TableHeaderCell>Header 3</TableHeaderCell>
+          <TableHeaderCell>Header 4</TableHeaderCell>
+          <TableHeaderCell>Header 5</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row}>
+            <TableCell>{`Cell ${row}1`}</TableCell>
+            <TableCell>{`Cell ${row}2`}</TableCell>
+            <TableCell>{`Cell ${row}3`}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
