@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-List: Removes `List.Root`, `List.Heading` and rather add automatic heading a11y connection
+List: Remove `List.Root` and `List.Heading`, which changes API
