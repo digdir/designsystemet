@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Table: Use sort property to both enable sorting and set sortable state
+TableHeaderCell: Remove `sortable` prop, `sort` now handles this
