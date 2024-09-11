@@ -31,7 +31,6 @@ export const Portal: Story = {
     title: 'Help text title',
     children: 'Help text content',
     size: 'md',
-    portal: true,
     placement: 'top',
   },
 };
