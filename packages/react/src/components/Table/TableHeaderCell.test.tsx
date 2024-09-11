@@ -18,18 +18,13 @@ describe('table header cell', (): void => {
     expect(screen.getByRole('columnheader')).toBeInTheDocument();
   });
 
-  it('should render table header cell with sort icon', (): void => {
-    render({ sortable: true });
-    expect(screen.getByRole('img')).toBeInTheDocument();
-  });
-
   it('should render table header cell with sort button', (): void => {
-    render({ sortable: true });
+    render({ sort: 'none' });
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('should render table header cell with sort button with aria-sort', (): void => {
-    render({ sortable: true, sort: 'ascending' });
+    render({ sort: 'ascending' });
     expect(screen.getByRole('columnheader')).toHaveAttribute(
       'aria-sort',
       'ascending',

@@ -107,11 +107,11 @@ export const Components = () => {
         <Table size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
