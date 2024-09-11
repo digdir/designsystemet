@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { ListUnorderedProps } from './List';
+import type { ListUnorderedProps } from './Lists';
 
 import { List } from '.';
 import { Heading } from '../Typography/Heading';

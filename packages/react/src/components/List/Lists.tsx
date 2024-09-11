@@ -43,7 +43,7 @@ const render = <HTMLType extends HTMLElement>(
   );
 };
 
-export const ListUnordered = forwardRef<HTMLUListElement, ListOrderedProps>(
+export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
   function ListUnordered(props, ref) {
     return render<HTMLUListElement>('ul', props, ref);
   },
