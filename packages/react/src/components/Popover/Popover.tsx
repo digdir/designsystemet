@@ -76,7 +76,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       open,
       placement = 'top',
       size = 'md',
-      style,
       variant = 'default',
       ...rest
     },
