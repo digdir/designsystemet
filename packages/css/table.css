@@ -67,13 +67,14 @@
     padding: 0;
 
     & > button {
+      background: none;
+      border: 0;
       box-sizing: border-box;
       color: inherit;
+      cursor: pointer;
+      display: block;
       font: inherit;
       padding: var(--dsc-table-padding);
-      border: 0;
-      background: none;
-      display: block;
       text-align: inherit;
       width: 100%;
 
