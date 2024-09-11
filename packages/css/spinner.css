@@ -1,9 +1,41 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
-  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
+  --dsc-spinner-size: var(--ds-sizing-11);
+  --dsc-spinner-animation-duration: 2s;
 
+  width: var(--dsc-spinner-size);
+  height: var(--dsc-spinner-size);
   animation: ds-spinner-rotate-animation linear infinite;
-  animation-duration: 2s;
+  animation-duration: var(--dsc-spinner-animation-duration);
+
+  &[data-color='accent'] {
+    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  }
+
+  &[data-size='2xs'] {
+    --dsc-spinner-size: var(--ds-sizing-3);
+  }
+
+  &[data-size='xs'] {
+    --dsc-spinner-size: var(--ds-sizing-5);
+  }
+
+  &[data-size='sm'] {
+    --dsc-spinner-size: var(--ds-sizing-8);
+  }
+
+  &[data-size='lg'] {
+    --dsc-spinner-size: var(--ds-sizing-15);
+  }
+
+  &[data-size='xl'] {
+    --dsc-spinner-size: var(--ds-sizing-22);
+  }
+}
+
+.ds-spinner__background {
+  stroke: var(--dsc-spinner-background);
 }
 
 .ds-spinner__circle {
@@ -11,7 +43,7 @@
   stroke-dasharray: 1px, 200px;
   transform-origin: center;
   animation: ds-spinner-stroke-animation ease-in-out infinite;
-  animation-duration: 2s;
+  animation-duration: var(--dsc-spinner-animation-duration);
 }
 
 /* Prefers reduced motion needs longer animation,
@@ -19,24 +51,8 @@ but don't remove it since it is not decorative.
 */
 @media (prefers-reduced-motion: reduce) {
   .ds-spinner {
-    animation-duration: 6s;
+    --dsc-spinner-animation-duration: 6s;
   }
-
-  .ds-spinner__circle {
-    animation-duration: 6s;
-  }
-}
-
-.ds-spinner--neutral {
-  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
-}
-
-.ds-spinner--accent {
-  --dsc-spinner-stroke: var(--ds-color-accent-base-default);
-}
-
-.ds-spinner__background {
-  stroke: var(--dsc-spinner-background);
 }
 
 @keyframes ds-spinner-rotate-animation {
