@@ -1,6 +1,6 @@
 .ds-card {
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-surface-default);
+  --dsc-card-backround: var(--ds-color-neutral-background-default);
   --dsc-card-color: var(--ds-color-neutral-text-default);
 
   display: flex;
@@ -25,92 +25,90 @@
     & h4,
     & h5,
     & h6 {
+      color: var(--dsc-card-color);
       text-decoration: underline;
       text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
       text-underline-offset: max(6px, 0.25rem, 0.22em);
     }
-  }
 
-  &[data-color='neutral'] {
-    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-card-backround: var(--ds-color-neutral-background-default);
-  }
+    &:hover {
+      --dsc-card-backround: var(--ds-color-neutral-background-subtle);
+    }
 
-  &[data-color='neutral'][data-link]:hover {
-    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-  }
-
-  &[data-color='neutral'][data-link]:active {
-    --dsc-card-backround: var(--ds-color-neutral-surface-default);
+    &:active {
+      --dsc-card-backround: var(--ds-color-neutral-surface-default);
+    }
   }
 
   &[data-color='subtle'] {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-  }
 
-  &[data-color='subtle'][data-link]:hover {
-    --dsc-card-border-color: var(--ds-color-neutral-border-default);
-    --dsc-card-backround: var(--ds-color-neutral-surface-default);
-  }
+    &[data-link] {
+      --dsc-card-border-color: var(--ds-color-neutral-border-default);
 
-  &[data-color='subtle'][data-link]:active {
-    --dsc-card-backround: var(--ds-color-neutral-surface-hover);
+      &:hover {
+        --dsc-card-backround: var(--ds-color-neutral-surface-default);
+      }
+
+      &:active {
+        --dsc-card-backround: var(--ds-color-neutral-surface-hover);
+      }
+    }
   }
 
   &[data-color='brand1'] {
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
     --dsc-card-backround: var(--ds-color-brand1-surface-default);
     --dsc-card-color: var(--ds-color-brand1-text-default);
-  }
 
-  &[data-color='brand1'][data-link] {
-    --dsc-card-border-color: var(--ds-color-brand1-border-default);
-  }
+    &[data-link] {
+      --dsc-card-border-color: var(--ds-color-brand1-border-default);
 
-  &[data-color='brand1'][data-link]:hover {
-    --dsc-card-backround: var(--ds-color-brand1-surface-hover);
-  }
+      &:hover {
+        --dsc-card-backround: var(--ds-color-brand1-surface-hover);
+      }
 
-  &[data-color='brand1'][data-link]:active {
-    --dsc-card-backround: var(--ds-color-brand1-surface-active);
+      &:active {
+        --dsc-card-backround: var(--ds-color-brand1-surface-active);
+      }
+    }
   }
 
   &[data-color='brand2'] {
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
     --dsc-card-backround: var(--ds-color-brand2-surface-default);
     --dsc-card-color: var(--ds-color-brand2-text-default);
-  }
 
-  &[data-color='brand2'][data-link] {
-    --dsc-card-border-color: var(--ds-color-brand2-border-default);
-  }
+    &[data-link] {
+      --dsc-card-border-color: var(--ds-color-brand2-border-default);
 
-  &[data-color='brand2'][data-link]:hover {
-    --dsc-card-backround: var(--ds-color-brand2-surface-hover);
-  }
+      &:hover {
+        --dsc-card-backround: var(--ds-color-brand2-surface-hover);
+      }
 
-  &[data-color='brand2'][data-link]:active {
-    --dsc-card-backround: var(--ds-color-brand2-surface-active);
+      &:active {
+        --dsc-card-backround: var(--ds-color-brand2-surface-active);
+      }
+    }
   }
 
   &[data-color='brand3'] {
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-card-backround: var(--ds-color-brand3-surface-default);
     --dsc-card-color: var(--ds-color-brand3-text-default);
-  }
 
-  &[data-color='brand3'][data-link] {
-    --dsc-card-border-color: var(--ds-color-brand3-border-default);
-  }
+    &[data-link] {
+      --dsc-card-border-color: var(--ds-color-brand3-border-default);
 
-  &[data-color='brand3'][data-link]:hover {
-    --dsc-card-backround: var(--ds-color-brand3-surface-hover);
-  }
+      &:hover {
+        --dsc-card-backround: var(--ds-color-brand3-surface-hover);
+      }
 
-  &[data-color='brand3'][data-link]:active {
-    --dsc-card-backround: var(--ds-color-brand3-surface-active);
+      &:active {
+        --dsc-card-backround: var(--ds-color-brand3-surface-active);
+      }
+    }
   }
 
   .ds-card__header h1,
