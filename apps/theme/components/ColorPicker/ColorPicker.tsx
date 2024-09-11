@@ -3,7 +3,7 @@ import { Popover } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx/lite';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 
 import classes from './ColorPicker.module.css';
@@ -41,56 +41,55 @@ export const ColorPicker = ({
   }, [defaultColor]);
 
   const getStatus = () => {
+    const popoverId = useId();
     return (
       <div>
-        <Popover.Root
-          onOpenChange={function Ya() {}}
+        <button
+          popovertarget={popoverId}
+          className={cl(
+            classes.status,
+            'ds-focus',
+            colorError === 'decorative' && classes.statusYellow,
+            colorError === 'interaction' && classes.statusOrange,
+          )}
+        >
+          {colorError === 'none' && (
+            <CheckmarkIcon title='Alt er OK med fargen' />
+          )}
+          {colorError === 'decorative' && (
+            <ExclamationmarkIcon title='Viktig informasjon om fargen' />
+          )}
+          {colorError === 'interaction' && (
+            <ExclamationmarkIcon title='Viktig informasjon om fargen' />
+          )}
+        </button>
+        <Popover
+          style={{ width: '800px' }}
+          id={popoverId}
           placement='top'
           size='sm'
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
-          <Popover.Trigger asChild>
-            <button
-              className={cl(
-                classes.status,
-                'ds-focus',
-                colorError === 'decorative' && classes.statusYellow,
-                colorError === 'interaction' && classes.statusOrange,
-              )}
-            >
-              {colorError === 'none' && (
-                <CheckmarkIcon title='Alt er OK med fargen' />
-              )}
-              {colorError === 'decorative' && (
-                <ExclamationmarkIcon title='Viktig informasjon om fargen' />
-              )}
-              {colorError === 'interaction' && (
-                <ExclamationmarkIcon title='Viktig informasjon om fargen' />
-              )}
-            </button>
-          </Popover.Trigger>
-          <Popover.Content style={{ width: '800px' }}>
-            <div>
-              {colorError === 'none' &&
-                'Denne fargen har god nok kontrast og kan brukes normalt i systemet.'}
-            </div>
-            <div>
-              {colorError === 'decorative' && (
-                <div>
-                  Vær oppmerksom på at Base Default fargen har mindre enn 3:1
-                  kontrast mot bakgrunnsfargene. Se alle kontrastgrensene inne
-                  på hver farge.
-                </div>
-              )}
-              {colorError === 'interaction' && (
-                <div>
-                  Base Default fargen har ikke god nok kontrast mot hvit eller
-                  svart tekst på tvers av Base fargene.
-                </div>
-              )}
-            </div>
-          </Popover.Content>
-        </Popover.Root>
+          <div>
+            {colorError === 'none' &&
+              'Denne fargen har god nok kontrast og kan brukes normalt i systemet.'}
+          </div>
+          <div>
+            {colorError === 'decorative' && (
+              <div>
+                Vær oppmerksom på at Base Default fargen har mindre enn 3:1
+                kontrast mot bakgrunnsfargene. Se alle kontrastgrensene inne på
+                hver farge.
+              </div>
+            )}
+            {colorError === 'interaction' && (
+              <div>
+                Base Default fargen har ikke god nok kontrast mot hvit eller
+                svart tekst på tvers av Base fargene.
+              </div>
+            )}
+          </div>
+        </Popover>
       </div>
     );
   };
