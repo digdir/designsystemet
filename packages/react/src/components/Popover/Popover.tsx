@@ -175,7 +175,7 @@ const arrowPseudoElement = {
     const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
     const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
 
-    elements.floating.setAttribute('data-placement', placement);
+    elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
     elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
     elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
     return data;
