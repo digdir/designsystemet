@@ -106,7 +106,14 @@
     padding: var(--ds-spacing-5, 1rem);
   }
 
-  &[open] > :is(summary, u-summary) {
+  /* Used to prevent glitchy toggle on beforematch when controlled */
+  &[data-controlled]:not([data-open]) > :not(summary, u-summary) {
+    position: absolute;
+    opacity: 0;
+  }
+
+  /* data-open is used to prevent glitchy toggle on beforematch when controlled */
+  &[data-open] > :is(summary, u-summary) {
     background: var(--dsc-accordion-heading-background--open);
 
     &::before {

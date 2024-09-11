@@ -18,8 +18,8 @@ export type AccordionItemProps = {
    * @default false
    */
   defaultOpen?: boolean;
-  /** Callback function when AccordionItem toggles */
-  onToggle?: () => void;
+  /** Callback function when AccordionItem toggles due to a find in page */
+  onFound?: () => void;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children: ReactNode;
 } & HTMLAttributes<HTMLDetailsElement>;
@@ -33,7 +33,7 @@ export type AccordionItemProps = {
  * </AccordionItem>
  */
 export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
-  ({ className, open, defaultOpen = false, onToggle, ...rest }, ref) => {
+  ({ className, open, defaultOpen = false, onFound, ...rest }, ref) => {
     const isControlled = open !== undefined;
     const internalOpen = useRef(open ?? defaultOpen); // Only render open state on server, let <details> handle state in browser
     const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -42,18 +42,17 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     // Control state with a useEffect to animate on prop change and prevent native <details> toggle
     useEffect(() => {
       const details = detailsRef.current;
-      const summary = details?.querySelector(':scope > u-summary');
+      const summary = details?.querySelector(':scope > :is(summary,u-summary)');
       const handleSummaryClick = (event: Event) => {
         event?.preventDefault(); // Prevent native <details> toggle so we can animate
         if (!isControlled && details) animateToggle(details);
       };
       const handleToggle = () => {
-        if (isControlled && details && details?.open !== open) {
-          setTimeout(() => {
-            details.open = open;
-            onToggle?.();
-          });
-        } else onToggle?.();
+        setTimeout(() => {
+          if (details?.open === details?.hasAttribute('data-open')) return;
+          if (isControlled) details?.toggleAttribute('open', open);
+          onFound?.();
+        });
       };
 
       details?.addEventListener('toggle', handleToggle, true);
@@ -69,6 +68,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
       <u-details
         class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
         open={internalOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
+        data-controlled={isControlled || undefined} // Used to prevent glitchy toggle on beforematch when controlled
         ref={mergedRefs}
         {...rest}
       />
@@ -78,18 +78,20 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
 
 AccordionItem.displayName = 'AccordionItem';
 
-function animateToggle(details: HTMLDetailsElement, open = !details.open) {
-  const content = details.querySelector<HTMLElement>(
-    ':scope > :not(summary, u-summary)',
-  );
+const animateToggle = (details: HTMLDetailsElement, open = !details.open) => {
   const isAnimateSupported = 'animate' in details;
   const isReducedMotion = window.matchMedia?.(
     '(prefers-reduced-motion: reduce)',
   ).matches;
+  const content = details.querySelector<HTMLElement>(
+    ':scope > :not(summary, u-summary)',
+  );
 
   if (isReducedMotion || !isAnimateSupported || !content) {
+    details.toggleAttribute('data-open', open); // Used to prevent glitchy toggle on beforematch when controlled
     details.open = open;
   } else if (details.open !== open) {
+    details.toggleAttribute('data-open', true); // Used to prevent glitchy toggle on beforematch when controlled
     details.open = true;
     const opened = `${content.scrollHeight}px`;
 
@@ -102,7 +104,8 @@ function animateToggle(details: HTMLDetailsElement, open = !details.open) {
       { duration: 400, easing: 'ease-in-out' },
     ).onfinish = () => {
       content.style.removeProperty('overflow'); // Restore overlow
+      details.toggleAttribute('data-open', open); // Used to prevent glitchy toggle on beforematch when controlled
       details.open = open;
     };
   }
-}
+};
