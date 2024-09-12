@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type * as React from 'react';
+import type { FormEvent } from 'react';
 
 import { ToggleGroup } from '.';
 
@@ -143,7 +143,7 @@ describe('ToggleGroup', () => {
 
   test('should send the value to a form when the form is submitted', async () => {
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };

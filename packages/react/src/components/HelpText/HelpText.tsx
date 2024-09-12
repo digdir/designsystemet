@@ -1,6 +1,7 @@
 import type { Placement } from '@floating-ui/utils';
 import cl from 'clsx/lite';
 import { forwardRef, useId, useState } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 import { Popover, type PopoverProps } from '../Popover';
 import { Paragraph } from '../Typography/Paragraph';
@@ -22,7 +23,7 @@ export type HelpTextProps = {
    * @default 'right'
    */
   placement?: Placement;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
