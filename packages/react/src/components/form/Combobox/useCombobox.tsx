@@ -1,4 +1,4 @@
-import { Children, useCallback, useEffect, useMemo, useState } from 'react';
+import { Children, useCallback, useMemo, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import type { ComboboxProps } from './Combobox';
@@ -45,7 +45,7 @@ export function useCombobox({
       const result = allChildren.reduce<{
         optionsChildren: ReactElement<ComboboxOptionProps>[];
         customIds: string[];
-        restChildren: React.ReactNode[];
+        restChildren: ReactNode[];
         interactiveChildren: ReactElement<ComboboxCustomProps>[];
       }>(
         (acc, child) => {

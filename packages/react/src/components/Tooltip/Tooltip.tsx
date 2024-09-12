@@ -16,9 +16,13 @@ import {
   useTransitionStyles,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
-import { cloneElement, forwardRef, useState } from 'react';
-import * as React from 'react';
+import type {
+  HTMLAttributes,
+  MutableRefObject,
+  ReactElement,
+  RefAttributes,
+} from 'react';
+import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 import { Paragraph } from '../Typography';
@@ -29,9 +33,9 @@ const ARROW_GAP = 4;
 export type TooltipProps = {
   /**
    * The element that triggers the tooltip.
-   * @note Needs to be a single ReactElement and not: <React.Fragment/> | <></>
+   * @note Needs to be a single ReactElement and not: <Fragment/> | <></>
    */
-  children: React.ReactElement & React.RefAttributes<HTMLElement>;
+  children: ReactElement & RefAttributes<HTMLElement>;
   /** Content of the tooltip */
   content: string;
   /**
@@ -82,9 +86,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
-    const Container = portal ? FloatingPortal : React.Fragment;
+    const Container = portal ? FloatingPortal : Fragment;
 
-    const arrowRef = React.useRef<SVGSVGElement>(null);
+    const arrowRef = useRef<SVGSVGElement>(null);
     const internalOpen = userOpen ?? isOpen;
 
     const { refs, floatingStyles, context } = useFloating({
@@ -121,18 +125,18 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const mergedRef = useMergeRefs([ref, refs.setFloating]);
 
     const childMergedRef = useMergeRefs([
-      (children as React.ReactElement & React.RefAttributes<HTMLElement>)
-        .ref as React.MutableRefObject<HTMLElement>,
+      (children as ReactElement & RefAttributes<HTMLElement>)
+        .ref as MutableRefObject<HTMLElement>,
       refs.setReference,
     ]);
 
     if (
       !children ||
-      children?.type === React.Fragment ||
-      (children as unknown) === React.Fragment
+      children?.type === Fragment ||
+      (children as unknown) === Fragment
     ) {
       console.error(
-        '<Tooltip> children needs to be a single ReactElement and not: <React.Fragment/> | <></>',
+        '<Tooltip> children needs to be a single ReactElement and not: <Fragment/> | <></>',
       );
       return null;
     }

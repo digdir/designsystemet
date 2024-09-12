@@ -9,6 +9,7 @@ import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
+import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import { Paragraph } from '../Typography';
 import { Context } from './PopoverContext';
@@ -64,7 +65,7 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(

@@ -1,7 +1,12 @@
 import { useMergeRefs } from '@floating-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ChangeEvent } from 'react';
+import type {
+  ChangeEvent,
+  InputHTMLAttributes,
+  KeyboardEvent,
+  MouseEvent,
+} from 'react';
 import { useContext, useRef } from 'react';
 
 import { omit } from '../../../../utilities';
@@ -19,8 +24,8 @@ type ComboboxInputProps = {
   listId: string;
   error: ComboboxProps['error'];
   hideChips: NonNullable<ComboboxProps['hideChips']>;
-  handleKeyDown: (event: React.KeyboardEvent) => void;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  handleKeyDown: (event: KeyboardEvent) => void;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 const ComboboxInput = ({
   hideClearButton,
@@ -91,7 +96,7 @@ const ComboboxInput = ({
     'aria-expanded': null,
     'aria-haspopup': null,
     /* If we click the wrapper, toggle open, set index to first option, and focus the input */
-    onClick(event: React.MouseEvent<HTMLDivElement>) {
+    onClick(event: MouseEvent<HTMLDivElement>) {
       if (disabled) return;
       if (readOnly) return;
       if (clearButtonRef.current?.contains(event.target as Node)) return;
@@ -102,7 +107,7 @@ const ComboboxInput = ({
     /* Handles list navigation */
     onKeyDown: handleKeyDown,
     // preventDefault on keydown to avoid sending in form
-    onKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
+    onKeyPress(event: KeyboardEvent<HTMLDivElement>) {
       if (event.key === 'Enter') {
         event.preventDefault();
       }

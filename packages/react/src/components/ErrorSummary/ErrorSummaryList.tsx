@@ -3,7 +3,7 @@ import { List, type ListUnorderedProps } from '../List';
 
 import { ErrorSummaryContext } from './ErrorSummaryRoot';
 
-export type ErrorSummaryListProps = Omit<ListUnorderedProps, 'ref'>;
+export type ErrorSummaryListProps = ListUnorderedProps;
 
 export const ErrorSummaryList = forwardRef<
   HTMLOListElement,
