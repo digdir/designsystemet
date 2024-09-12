@@ -27,7 +27,7 @@
 
   &[data-color='subtle'] {
     --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
-    --dsc-accordion-border: 1px solid var(--ds-color-neutral-border-default);
+    --dsc-accordion-border: 1px solid var(--ds-color-neutral-border-subtle);
     --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-hover);
     --dsc-accordion-heading-background--open: var(--ds-color-neutral-surface-default);
     --dsc-accordion-heading-background: var(--ds-color-neutral-background-subtle);
@@ -35,25 +35,25 @@
 
   &[data-color='brand1'] {
     --dsc-accordion-background: var(--ds-color-brand1-background-subtle);
-    --dsc-accordion-border: 1px solid var(--ds-color-brand1-border-default);
-    --dsc-accordion-heading-background--hover: var(--ds-color-brand1-surface-active);
-    --dsc-accordion-heading-background--open: var(--ds-color-brand1-surface-hover);
+    --dsc-accordion-border: 1px solid var(--ds-color-brand1-border-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand1-surface-default);
     --dsc-accordion-heading-background: var(--ds-color-brand1-surface-default);
   }
 
   &[data-color='brand2'] {
     --dsc-accordion-background: var(--ds-color-brand2-background-subtle);
-    --dsc-accordion-border: 1px solid var(--ds-color-brand2-border-default);
-    --dsc-accordion-heading-background--hover: var(--ds-color-brand2-surface-active);
-    --dsc-accordion-heading-background--open: var(--ds-color-brand2-surface-hover);
+    --dsc-accordion-border: 1px solid var(--ds-color-brand2-border-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand2-surface-default);
     --dsc-accordion-heading-background: var(--ds-color-brand2-surface-default);
   }
 
   &[data-color='brand3'] {
     --dsc-accordion-background: var(--ds-color-brand3-background-subtle);
-    --dsc-accordion-border: 1px solid var(--ds-color-brand3-border-default);
-    --dsc-accordion-heading-background--hover: var(--ds-color-brand3-surface-active);
-    --dsc-accordion-heading-background--open: var(--ds-color-brand3-surface-hover);
+    --dsc-accordion-border: 1px solid var(--ds-color-brand3-border-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-brand3-surface-default);
     --dsc-accordion-heading-background: var(--ds-color-brand3-surface-default);
   }
 }
