@@ -24,10 +24,10 @@ export type ListUnorderedProps = ListBaseProps &
 export type ListOrderedProps = ListBaseProps &
   Omit<React.OlHTMLAttributes<HTMLOListElement>, 'size'>;
 
-const render = <HTMLType extends HTMLElement>(
+const render = <T extends HTMLElement>(
   tagName: string,
   { asChild, className, size = 'md', ...rest }: ListOrderedProps,
-  ref: React.ForwardedRef<HTMLType>,
+  ref: React.ForwardedRef<T>,
 ) => {
   const Component = asChild ? Slot : tagName;
 
