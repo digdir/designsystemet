@@ -1,6 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
+import type { ForwardedRef, HTMLAttributes, OlHTMLAttributes } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -19,15 +20,15 @@ type ListBaseProps = {
 };
 
 export type ListUnorderedProps = ListBaseProps &
-  Omit<React.HTMLAttributes<HTMLUListElement>, 'size'>;
+  Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
 export type ListOrderedProps = ListBaseProps &
-  Omit<React.OlHTMLAttributes<HTMLOListElement>, 'size'>;
+  Omit<OlHTMLAttributes<HTMLOListElement>, 'size'>;
 
 const render = <T extends HTMLElement>(
   tagName: string,
   { asChild, className, size = 'md', ...rest }: ListOrderedProps,
-  ref: React.ForwardedRef<T>,
+  ref: ForwardedRef<T>,
 ) => {
   const Component = asChild ? Slot : tagName;
 

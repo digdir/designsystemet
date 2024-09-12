@@ -7,7 +7,7 @@ import {
   type ErrorSummaryProps,
 } from './ErrorSummaryRoot';
 
-export type ErrorSummaryHeadingProps = Omit<HeadingProps, 'ref'>;
+export type ErrorSummaryHeadingProps = HeadingProps;
 
 const HEADING_SIZE_MAP: {
   [key in NonNullable<ErrorSummaryProps['size']>]: HeadingProps['size'];

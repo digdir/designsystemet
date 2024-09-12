@@ -16,7 +16,7 @@ const decorators = [
 
 export default {
   title: 'Komponenter/List',
-  component: List.Ordered,
+  component: List.Unordered,
   decorators,
 } as Meta;
 
