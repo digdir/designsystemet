@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { useRef, useState } from 'react';
+import type { FormEvent } from 'react';
 
 import { Button } from '../../Button';
 import { ChipRemovable } from '../../Chip';
@@ -99,7 +100,7 @@ Preview.args = {
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <>
@@ -128,8 +129,8 @@ Multiple.args = {
 };
 
 export const WithDescription: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [multiple, setMultiple] = React.useState<boolean>(false);
+  const [value, setValue] = useState<string[]>([]);
+  const [multiple, setMultiple] = useState<boolean>(false);
 
   return (
     <>
@@ -173,8 +174,8 @@ WithDescription.args = {
 };
 
 export const Controlled: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [multiple, setMultiple] = React.useState<boolean>(false);
+  const [value, setValue] = useState<string[]>([]);
+  const [multiple, setMultiple] = useState<boolean>(false);
 
   return (
     <>
@@ -218,9 +219,9 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const InForm: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const values = Array.from(formData.values());
@@ -266,8 +267,8 @@ InForm.args = {
 };
 
 export const InModal: StoryFn<typeof Combobox> = (args) => {
-  const modalRef = React.useRef<HTMLDialogElement>(null);
-  const [value, setValue] = React.useState<string[]>([]);
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <>
@@ -312,7 +313,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <>
@@ -359,7 +360,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const SelectAll: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>(['all']);
+  const [value, setValue] = useState<string[]>(['all']);
 
   const handleValueChange = (newVal: string[]) => {
     setValue(newVal);
@@ -399,7 +400,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const Virtualized: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <Combobox
@@ -431,9 +432,9 @@ Virtualized.args = {
 };
 
 export const Loading: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [options, setOptions] = React.useState<typeof PLACES>([]);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [value, setValue] = useState<string[]>([]);
+  const [options, setOptions] = useState<typeof PLACES>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchOptions = () => {
     if (!loading) return;
@@ -506,11 +507,11 @@ ThousandsOfOptions.args = {
 };
 
 export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
-  const [selectedValues, setSelectedValues] = React.useState<string[]>([
+  const [selectedValues, setSelectedValues] = useState<string[]>([
     'test1',
     'test2',
   ]);
-  const [values, setValues] = React.useState<string[]>(['test1', 'test2']);
+  const [values, setValues] = useState<string[]>(['test1', 'test2']);
 
   const handleComboboxChange = (values: string[]) => {
     setSelectedValues(values);

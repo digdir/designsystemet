@@ -1,12 +1,12 @@
 import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 
 import { Label } from '../../Typography';
 
 import { ComboboxContext } from './ComboboxContext';
 
-export type ComboboxEmptyProps = React.HTMLAttributes<HTMLDivElement>;
+export type ComboboxEmptyProps = HTMLAttributes<HTMLDivElement>;
 
 const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   ({ children, className, ...rest }, ref) => {

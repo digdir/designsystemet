@@ -1,11 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import {
-  Fragment,
-  type HTMLAttributes,
-  type ReactNode,
-  forwardRef,
-} from 'react';
+import { Fragment, forwardRef } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export type AvatarProps = {
   /**
@@ -36,7 +32,7 @@ export type AvatarProps = {
    * Gets `aria-hidden="true"`
    */
   children?: ReactNode;
-} & Omit<React.HTMLAttributes<HTMLSpanElement>, 'aria-label'>;
+} & Omit<HTMLAttributes<HTMLSpanElement>, 'aria-label'>;
 
 const fontSizeMap = {
   xs: 'ds-paragraph--xs',

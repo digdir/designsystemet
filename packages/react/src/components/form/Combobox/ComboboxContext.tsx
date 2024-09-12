@@ -4,6 +4,7 @@ import type {
   useInteractions,
 } from '@floating-ui/react';
 import { createContext } from 'react';
+import type { Dispatch, Ref, RefObject, SetStateAction } from 'react';
 
 import type { useFormField } from '../useFormField';
 
@@ -26,11 +27,11 @@ export type ComboboxContextType = {
   size: NonNullable<ComboboxProps['size']>;
   formFieldProps: ReturnType<typeof useFormField>;
   refs: UseFloatingReturn['refs'];
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement>;
   open: boolean;
   inputValue: string;
   customIds: string[];
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setInputValue: Dispatch<SetStateAction<string>>;
   setOpen: (open: boolean) => void;
   getReferenceProps: (
     props?: Record<string, unknown>,
@@ -44,7 +45,7 @@ export type ComboboxContextType = {
     clear?: boolean;
   }) => void;
   listRef: UseListNavigationProps['listRef'];
-  forwareddRef: React.Ref<HTMLInputElement>;
+  forwareddRef: Ref<HTMLInputElement>;
   setListRef: (index: number, ref: HTMLElement | null) => void;
 };
 

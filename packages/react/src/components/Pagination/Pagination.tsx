@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 
 import { PaginationButton } from './PaginationButton';
 import { PaginationContent } from './PaginationContent';
@@ -34,7 +34,7 @@ export type PaginationProps = {
   onChange: (currentPage: number) => void;
   /** `aria-label` for pagination item */
   itemLabel?: (currentPage: number) => string;
-} & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
+} & Omit<HTMLAttributes<HTMLElement>, 'onChange'>;
 
 const iconSize = {
   sm: '1rem',

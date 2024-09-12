@@ -1,5 +1,6 @@
 import cl from 'clsx/lite';
-import * as React from 'react';
+import { forwardRef } from 'react';
+import type { TableHTMLAttributes } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -29,37 +30,35 @@ export type TableProps = {
    * @default false
    */
   hover?: boolean;
-} & Omit<React.TableHTMLAttributes<HTMLTableElement>, 'border'>;
+} & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'>;
 
-export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  function Table(
-    {
-      zebra = false,
-      stickyHeader = false,
-      border = false,
-      hover = false,
-      size = 'md',
-      className,
-      children,
-      ...rest
-    },
-    ref,
-  ) {
-    return (
-      <Paragraph asChild size={size}>
-        <table
-          className={cl('ds-table', className)}
-          data-border={border || undefined}
-          data-hover={hover || undefined}
-          data-size={size}
-          data-sticky-header={stickyHeader || undefined}
-          data-zebra={zebra || undefined}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </table>
-      </Paragraph>
-    );
+export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
+  {
+    zebra = false,
+    stickyHeader = false,
+    border = false,
+    hover = false,
+    size = 'md',
+    className,
+    children,
+    ...rest
   },
-);
+  ref,
+) {
+  return (
+    <Paragraph asChild size={size}>
+      <table
+        className={cl('ds-table', className)}
+        data-border={border || undefined}
+        data-hover={hover || undefined}
+        data-size={size}
+        data-sticky-header={stickyHeader || undefined}
+        data-zebra={zebra || undefined}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </table>
+    </Paragraph>
+  );
+});

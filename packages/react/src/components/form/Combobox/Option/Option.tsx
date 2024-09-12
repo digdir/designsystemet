@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import { forwardRef, memo, useContext, useId } from 'react';
-import type * as React from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 import { omit } from '../../../../utilities';
 import { Label } from '../../../Typography';
@@ -24,7 +24,7 @@ export type ComboboxOptionProps = {
    * Required if children is not composed of strings only.
    */
   displayValue?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ComboboxOption = memo(
   forwardRef<HTMLButtonElement, ComboboxOptionProps>(

@@ -1,12 +1,12 @@
 import cl from 'clsx/lite';
 import { useCallback, useRef, useState } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 
 import { useMediaQuery, usePrevious } from '../../utilities';
 
 export type AnimateHeightProps = {
   open: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
 type InternalState = 'open' | 'closed' | 'openingOrClosing';
 

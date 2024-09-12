@@ -1,5 +1,6 @@
 import { useDebounceCallback } from '../../../utilities';
 
+import type { KeyboardEvent } from 'react';
 import type { ComboboxContextType } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
 import type { useCombobox } from './useCombobox';
@@ -35,7 +36,7 @@ export const useComboboxKeyboard = ({
   const { activeIndex } = useComboboxId();
 
   // handle keyboard navigation in the list
-  const handleKeyDownFunc = (event: React.KeyboardEvent) => {
+  const handleKeyDownFunc = (event: KeyboardEvent) => {
     if (readOnly || disabled) return;
     if (!event) return;
     switch (event.key) {

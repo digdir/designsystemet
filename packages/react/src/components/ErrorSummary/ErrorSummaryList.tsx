@@ -1,6 +1,7 @@
+import type { ComponentProps } from 'react';
 import { List } from '../List';
 
-export type ErrorSummaryListProps = React.ComponentProps<typeof List.Unordered>;
+export type ErrorSummaryListProps = ComponentProps<typeof List.Unordered>;
 
 export default function ErrorSummaryList({ ...rest }: ErrorSummaryListProps) {
   return <List.Unordered {...rest} />;
