@@ -1,32 +1,33 @@
-import { Slot } from '@radix-ui/react-slot';
-import type { HTMLAttributes } from 'react';
+import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
+import type { HTMLAttributes } from 'react';
 
-import type { ListProps } from '../List';
-import { List } from '../List';
+import type { ListUnorderedProps } from '../List';
 
 type ErrorSummaryContextType = {
+  size: ListUnorderedProps['size'];
   headingId?: string;
   setHeadingId: (id: string) => void;
 };
 
 export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
+  size: 'md',
   headingId: 'heading',
   setHeadingId: () => {},
 });
 
 export type ErrorSummaryProps = {
-  size?: ListProps['size'];
+  size?: ListUnorderedProps['size'];
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   (
     {
-      size,
+      className,
+      size = 'md',
       role = 'alert',
       'aria-live': ariaLive = 'polite',
       'aria-relevant': ariaRelevant = 'all',
-      children,
       ...rest
     },
     ref,
@@ -35,18 +36,16 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     const [headingId, setHeadingId] = useState<string>(randomId);
 
     return (
-      <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
-        <Slot
-          className={'ds-error-summary'}
+      <ErrorSummaryContext.Provider value={{ size, headingId, setHeadingId }}>
+        <div
+          className={cl('ds-error-summary', className)}
           ref={ref}
           role={role}
           aria-live={ariaLive}
           aria-relevant={ariaRelevant}
           aria-labelledby={headingId}
           {...rest}
-        >
-          <List.Root size={size}>{children}</List.Root>
-        </Slot>
+        />
       </ErrorSummaryContext.Provider>
     );
   },

@@ -1,14 +1,12 @@
 import {
   Card,
   CardContent,
+  Heading,
   List,
-  ListRoot,
   ListHeading,
   ListUnordered,
   ListItem,
 } from '@digdir/designsystemet-react';
-
-{/* The importing should allow likeList.Root, but it throw a react error */}
 
 import { Image } from '@components';
 import { PageLayout } from '@layouts';
@@ -40,29 +38,27 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
 
 <Card color='brand3'>
   <CardContent>
-    <ListRoot>
-      <ListHeading
-        level={3}
-        size='xs'
-      >
-        Gjeldende regelverk, WCAG 2.1
-      </ListHeading>
-      <ListUnordered>
-        <ListItem>
-          **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
-          teksten og bakgrunnen er minst 4,5:1. [1.4.3 Kontrast (minimum), WCAG
-          2.1
-          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
-        </ListItem>
-        <ListItem>
-          **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den visuelle
-          presentasjonen av det følgende har et kontrastforhold på minst 3:1 mot
-          farge(r) som ligger ved siden av. [1.4.11 Kontrast for ikke-tekstlig
-          innhold, WCAG 2.1
-          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
-        </ListItem>
-      </ListUnordered>
-    </ListRoot>
+    <Heading
+      level={3}
+      size='xs'
+    >
+      Gjeldende regelverk, WCAG 2.1
+    </Heading>
+    <ListUnordered>
+      <ListItem>
+        **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
+        teksten og bakgrunnen er minst 4,5:1. [1.4.3 Kontrast (minimum), WCAG
+        2.1
+        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
+      </ListItem>
+      <ListItem>
+        **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den visuelle
+        presentasjonen av det følgende har et kontrastforhold på minst 3:1 mot
+        farge(r) som ligger ved siden av. [1.4.11 Kontrast for ikke-tekstlig
+        innhold, WCAG 2.1
+        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
+      </ListItem>
+    </ListUnordered>
   </CardContent>
 </Card>
 
@@ -70,36 +66,34 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
 
 <Card color='brand2'>
   <CardContent>
-    <ListRoot>
-      <ListHeading
-        level={3}
-        size='xs'
-      >
-        Fremtidig eller strengere:
-      </ListHeading>
-      <ListUnordered>
-        <ListItem>
-          **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle presentasjonen
-          av tekst og bilder av tekst har et kontrastforhold på minst 7:1,
-          unntatt uvesentlig tekst og skriftstørrelser større enn 18px eller
-          14px fet. [ 1.4.6 Kontrast (forbedret), WCAG 2.1
-          (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
-        </ListItem>
-        <ListItem>
-          **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
-          fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
-          mellom samme piksler i fokusert og ikke-fokusert tilstand.
-          [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
-          W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
-        </ListItem>
-        <ListItem>
-          **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
-          (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
-          bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
-          for å regne ut kontrasten.
-        </ListItem>
-      </ListUnordered>
-    </ListRoot>
+    <Heading
+      level={3}
+      size='xs'
+    >
+      Fremtidig eller strengere:
+    </Heading>
+    <ListUnordered>
+      <ListItem>
+        **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle presentasjonen
+        av tekst og bilder av tekst har et kontrastforhold på minst 7:1,
+        unntatt uvesentlig tekst og skriftstørrelser større enn 18px eller
+        14px fet. [ 1.4.6 Kontrast (forbedret), WCAG 2.1
+        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
+      </ListItem>
+      <ListItem>
+        **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
+        fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
+        mellom samme piksler i fokusert og ikke-fokusert tilstand.
+        [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
+        W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+      </ListItem>
+      <ListItem>
+        **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
+        (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
+        bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
+        for å regne ut kontrasten.
+      </ListItem>
+    </ListUnordered>
   </CardContent>
 </Card>
 
@@ -107,25 +101,23 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
 
 WCAG 3.0 foreslår nå en mer presis metode enn dagens standard, for å kalkulere kontrast og sette terskelverdier.
 
-<ListRoot>
-  <ListUnordered>
-    <ListItem>
-      Metoden forbedrer hvordan verdien mellom to farger bestemmes, og skiller
-      også på om fargene er i forgrunnen eller i bakgrunnen.
-    </ListItem>
-    <ListItem>
-      Den setter også tydelige terskelverdier eller målverdier for valg av font,
-      tekststørrelse og font-vekt. Metoden heter Advanced Perceptual Contrast
-      Algorithm (APCA).
-    </ListItem>
-    <ListItem>
-      Målet vårt er å ligge over AAA-krav i WCAG 2.1, og vi vil dermed ligge
-      nærmere terskelverdiene i APCA. Det øker sjansen for at vi klarer å
-      oppfylle kravet om at alle, også svaksynte, skal kunne se innholdet på
-      nettstedet.
-    </ListItem>
-  </ListUnordered>
-</ListRoot>
+<ListUnordered>
+  <ListItem>
+    Metoden forbedrer hvordan verdien mellom to farger bestemmes, og skiller
+    også på om fargene er i forgrunnen eller i bakgrunnen.
+  </ListItem>
+  <ListItem>
+    Den setter også tydelige terskelverdier eller målverdier for valg av font,
+    tekststørrelse og font-vekt. Metoden heter Advanced Perceptual Contrast
+    Algorithm (APCA).
+  </ListItem>
+  <ListItem>
+    Målet vårt er å ligge over AAA-krav i WCAG 2.1, og vi vil dermed ligge
+    nærmere terskelverdiene i APCA. Det øker sjansen for at vi klarer å
+    oppfylle kravet om at alle, også svaksynte, skal kunne se innholdet på
+    nettstedet.
+  </ListItem>
+</ListUnordered>
 
 ## I dag bruker vi en høyere standard enn kravene til tilgjengelighet
 

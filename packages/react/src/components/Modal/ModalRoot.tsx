@@ -1,15 +1,16 @@
 import { createContext, useCallback, useRef, useState } from 'react';
+import type { ReactNode, RefObject } from 'react';
 
 export type ModalContextProps = {
   setCloseModal: (fn: () => void) => void;
   closeModal?: () => void;
-  modalRef: React.RefObject<HTMLDialogElement>;
+  modalRef: RefObject<HTMLDialogElement>;
   open: boolean;
   setOpen: (open: boolean) => void;
 };
 
 export type ModalRootProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const ModalContext = createContext<ModalContextProps>({
