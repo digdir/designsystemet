@@ -1,6 +1,5 @@
 import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
 
-import { ListHeading } from './ListHeading';
 import * as ListStories from './List.stories';
 
 <Meta of={ListStories} />
@@ -16,17 +15,12 @@ Lister er strukturelementer, som gjør at vi kan utheve viktig informasjon for b
 
 Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
 
-`List.Root` er påkrevd for å få riktig aria attributter (`aria-labelledby`) mellom listen og tittel.
-
 ```tsx
 import { List } from '@digdir/designsystemet-react';
 
-<List.Root>
-  <List.Heading>Heading</List.Heading>
-  <List.Ordered>
-    <List.Item>Item</List.Item>
-  </List.Ordered>
-</List.Root>;
+<List.Unordered>
+  <List.Item>Item</List.Item>
+</List.Unordered>
 ```
 
 ## Eksempler
@@ -47,14 +41,20 @@ En sortert liste brukes når det er viktig at brukerne forstår grader av viktig
 
 <br />
 
-### Uten overskrift
+### Med overskrift
 
-Dersom du bruker `List.Heading` så legger vi automatisk på `aria-labelledby` på `List.Heading` og `List.Ordered/Unordered`
-for å gi skjermlesere beskjed om at `List.Heading` er en overskrift for `List`.
+Liste kan brukes sammen med en `Heading` for å gi brukeren en rask oversikt over innholdet. Dette er spesielt nyttig for lengre lister.
 
-Dersom du ikke legger til en overskrift kommer vi ikke til å legge til `aria-labelledby`.
+Størrelse på overskrifter over lister er avhengig av bruksområde, og er derfor noe du må sette selv.
+I løpende tekst anbefaler vi disse størrelsene:
 
-<Canvas of={ListStories.UtenOverskrift} />
+| Størrelse på `List` | Størrelse på `Heading` |
+| :----------------- | :---------------------- |
+| sm                 | 2xs                     |
+| md                 | xs                      |
+| lg                 | sm                      |
+
+<Canvas of={ListStories.ListeMedOverskrift} />
 
 ### Lister i lister
 
@@ -89,6 +89,7 @@ Passer ikke til å
 <br />
 <br />
 
+
 ## Tekst i komponenten
 
 Alle elementer i en liste bør ha samme form og struktur.
@@ -110,6 +111,30 @@ Når punktene er hele setninger, bruker vi
 
 ## Tilgjengelighet
 
+### Lister til navigasjon
+
+Dersom liste brukes som navigasjonselement (for eksempel i bunn eller ved siden av hovedinnholdet), 
+kan du legge et `<nav>` element rundt med `aria-label=""` for å gi skjermlesere en bedre brukeropplevelse.
+Dette gjøres siden [W3C anbefaler](https://www.w3.org/TR/using-aria/#label-support) å unngå `aria-label` / `aria-labelledby` rett på `ul`/`ol`.
+
+#### Eksempel på `nav`
+
+```tsx
+<nav aria-label="Snarveier">
+  <List.Unordered>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </List.Unordered>
+</nav>
+```
+
 ### `menu` istedenfor `ul`
 
 Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
@@ -122,21 +147,19 @@ Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensj
 for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
 
 ```tsx
-<List.Root>
-  <List.Unordered asChild>
-    <menu>
-      <List.item>
-        <Button>Copy</Button>
-      </List.item>
-      <List.item>
-        <Button>Cut</Button>
-      </List.item>
-      <List.item>
-        <Button>Paste</Button>
-      </List.item>
-    </menu>
-  </List.Unordered>
-</List.Root>
+<List.Unordered asChild>
+  <menu>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </menu>
+</List.Unordered>
 ```
 
 ### Liste eller tabell?
@@ -145,11 +168,3 @@ Lister og tabeller har forskjellige bruksområder. Riktig bruk gjør opplevelsen
 
 - En liste presenterer relatert informasjon på en oversiktlig måte.
 - En tabell lar brukeren se og sammenligne flere grupper av informasjon.
-
-<br />
-
-## Andre props
-
-### `List.Heading`
-
-<ArgTypes of={ListHeading} />

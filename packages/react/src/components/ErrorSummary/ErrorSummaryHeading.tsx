@@ -1,31 +1,45 @@
-import { useContext, useEffect } from 'react';
+import { forwardRef, useContext, useEffect } from 'react';
 
-import type { ListHeadingProps } from '../List';
-import { List } from '../List';
+import { Heading, type HeadingProps } from '../Typography/Heading';
 
-import { ErrorSummaryContext } from './ErrorSummaryRoot';
+import {
+  ErrorSummaryContext,
+  type ErrorSummaryProps,
+} from './ErrorSummaryRoot';
 
-export type ErrorSummaryHeadingProps = ListHeadingProps;
+export type ErrorSummaryHeadingProps = HeadingProps;
 
-export const ErrorSummaryHeading = ({
-  id,
-  ...rest
-}: ErrorSummaryHeadingProps) => {
-  const { headingId, setHeadingId } = useContext(ErrorSummaryContext);
+const HEADING_SIZE_MAP: {
+  [key in NonNullable<ErrorSummaryProps['size']>]: HeadingProps['size'];
+} = {
+  sm: '2xs',
+  md: 'xs',
+  lg: 'sm',
+} as const;
+
+export const ErrorSummaryHeading = forwardRef<
+  HTMLHeadingElement,
+  ErrorSummaryHeadingProps
+>(function ErrorSummaryHeading(
+  { className, id, ...rest }: ErrorSummaryHeadingProps,
+  ref,
+) {
+  const { size, headingId, setHeadingId } = useContext(ErrorSummaryContext);
 
   useEffect(() => {
-    if (id && headingId !== id) {
-      setHeadingId(id);
-    }
+    if (id && headingId !== id) setHeadingId(id);
   }, [headingId, id, setHeadingId]);
 
   return (
-    <List.Heading
-      {...rest}
-      id={headingId}
+    <Heading
       className='ds-error-summary__heading'
+      id={headingId}
+      size={HEADING_SIZE_MAP[size ?? 'md']}
+      spacing
+      ref={ref}
+      {...rest}
     />
   );
-};
+});
 
 ErrorSummaryHeading.displayName = 'ErrorSummaryHeading';

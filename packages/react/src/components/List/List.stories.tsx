@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Link } from '../Link';
-
 import { List } from '.';
+import { Link } from '../Link';
+import { Heading } from '../Typography/Heading';
 
-type Story = StoryFn<typeof List.Root>;
+type Story = StoryFn<typeof List.Unordered>;
 
 const decorators = [
   (Story: StoryFn) => (
@@ -16,29 +16,28 @@ const decorators = [
 
 export default {
   title: 'Komponenter/List',
-  component: List.Root,
+  component: List.Unordered,
   decorators,
 } as Meta;
 
 export const Preview: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>List</List.Heading>
-    <List.Unordered>
-      <List.Item>List Item 1</List.Item>
-      <List.Item>List Item 2</List.Item>
-      <List.Item>List Item 3</List.Item>
-    </List.Unordered>
-  </List.Root>
+  <List.Unordered {...args}>
+    <List.Item>List Item 1</List.Item>
+    <List.Item>List Item 2</List.Item>
+    <List.Item>List Item 3</List.Item>
+  </List.Unordered>
 );
 
 Preview.args = {
   size: 'md',
 };
 
-export const Sortert: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>Slik gjør du</List.Heading>
-    <List.Ordered>
+export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
+  <>
+    <Heading level={2} size='xs' spacing>
+      Slik gjør du:
+    </Heading>
+    <List.Ordered {...args}>
       <List.Item>
         Tørk over kyllingfiletene før du krydrer og steker. Dette vil gi en
         finere stekeskorpe på kjøttet. Ikke bruk kjøkkenpapir som loer.
@@ -53,15 +52,15 @@ export const Sortert: Story = (args) => (
         på lokk og stek videre på svak varme i syv minutter på hver side.
       </List.Item>
     </List.Ordered>
-  </List.Root>
+  </>
 );
 
 export const Usortert: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading level={2}>
+  <>
+    <Heading level={2} size='xs' spacing>
       Foreningen har plikt til å ha revisor hvis de har
-    </List.Heading>
-    <List.Unordered>
+    </Heading>
+    <List.Unordered {...args}>
       <List.Item>
         et gjennomsnittlig antall ansatte som tilsvarer ti årsverk eller mer
       </List.Item>
@@ -71,84 +70,151 @@ export const Usortert: Story = (args) => (
         mer
       </List.Item>
     </List.Unordered>
-  </List.Root>
-);
-
-export const UtenOverskrift: Story = (args) => (
-  <List.Root {...args}>
-    <List.Unordered>
-      <List.Item>Lasagne</List.Item>
-      <List.Item>Taco</List.Item>
-      <List.Item>Pizza</List.Item>
-    </List.Unordered>
-  </List.Root>
+  </>
 );
 
 export const Innrykk: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading level={2}>Nested lists</List.Heading>
-    <List.Unordered>
-      <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 1</List.Heading>
-          <List.Ordered>
-            <List.Item>List Item 1.1</List.Item>
-            <List.Item>List Item 1.2</List.Item>
-            <List.Item>List Item 1.3</List.Item>
-          </List.Ordered>
-        </List.Root>
-      </List.Item>
-      <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 2</List.Heading>
-          <List.Unordered>
-            <List.Item>List Item 2.1</List.Item>
-            <List.Item>List Item 2.2</List.Item>
-            <List.Item>List Item 2.3</List.Item>
-          </List.Unordered>
-        </List.Root>
-      </List.Item>
-      <List.Item>
-        <List.Root>
-          <List.Heading level={3}> List Item 3</List.Heading>
-          <List.Unordered>
-            <List.Item>List Item 3.1</List.Item>
-            <List.Item>List Item 3.2</List.Item>
-            <List.Item>List Item 3.3</List.Item>
-          </List.Unordered>
-        </List.Root>
-      </List.Item>
-    </List.Unordered>
-  </List.Root>
+  <List.Unordered {...args}>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        {' '}
+        List Item 1
+      </Heading>
+      <List.Ordered>
+        <List.Item>List Item 1.1</List.Item>
+        <List.Item>List Item 1.2</List.Item>
+        <List.Item>List Item 1.3</List.Item>
+      </List.Ordered>
+    </List.Item>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        {' '}
+        List Item 2
+      </Heading>
+      <List.Unordered>
+        <List.Item>List Item 2.1</List.Item>
+        <List.Item>List Item 2.2</List.Item>
+        <List.Item>List Item 2.3</List.Item>
+      </List.Unordered>
+    </List.Item>
+    <List.Item>
+      <Heading level={3} size='xs' spacing>
+        List Item 3
+      </Heading>
+      <List.Unordered>
+        <List.Item>List Item 3.1</List.Item>
+        <List.Item>List Item 3.2</List.Item>
+        <List.Item>List Item 3.3</List.Item>
+      </List.Unordered>
+    </List.Item>
+  </List.Unordered>
 );
 
 export const ListeMedLenker: Story = (args) => (
-  <List.Root {...args}>
-    <List.Heading>Designsystemet</List.Heading>
-    <List.Unordered
-      style={{
-        listStyle: 'none',
-        paddingLeft: 0,
-      }}
-    >
-      <List.Item>
-        <Link
-          href='https://www.designsystemet.no/grunnleggende'
-          target='_blank'
-        >
-          Grunnleggende
-        </Link>
-      </List.Item>
-      <List.Item>
-        <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
-          God praksis
-        </Link>
-      </List.Item>
-      <List.Item>
-        <Link href='https://www.designsystemet.no/monstre' target='_blank'>
-          Mønstre
-        </Link>
-      </List.Item>
-    </List.Unordered>
-  </List.Root>
+  <List.Unordered {...args} style={{ listStyle: 'none', padding: 0 }}>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/grunnleggende' target='_blank'>
+        Grunnleggende
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
+        God praksis
+      </Link>
+    </List.Item>
+    <List.Item>
+      <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+        Mønstre
+      </Link>
+    </List.Item>
+  </List.Unordered>
+);
+
+export const ListeMedOverskrift: Story = (args) => (
+  <div style={{ display: 'flex', gap: '2rem' }}>
+    <div>
+      <Heading level={2} size='2xs' spacing>
+        List sm og Heading 2xs
+      </Heading>
+      <List.Unordered size='sm'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+    <div>
+      <Heading level={2} size='xs' spacing>
+        List md og Heading xs
+      </Heading>
+      <List.Unordered size='md'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+    <div>
+      <Heading level={2} size='sm' spacing>
+        List lg og Heading sm
+      </Heading>
+      <List.Unordered size='lg'>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/grunnleggende'
+            target='_blank'
+          >
+            Grunnleggende
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link
+            href='https://www.designsystemet.no/god-praksis'
+            target='_blank'
+          >
+            God praksis
+          </Link>
+        </List.Item>
+        <List.Item>
+          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+            Mønstre
+          </Link>
+        </List.Item>
+      </List.Unordered>
+    </div>
+  </div>
 );
