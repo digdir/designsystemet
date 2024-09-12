@@ -15,7 +15,13 @@ export const TableHeaderCell = forwardRef<
 >(function TableHeaderCell({ sort, children, ...rest }, ref) {
   return (
     <th aria-sort={sort} ref={ref} {...rest}>
-      {sort ? <button className='ds-focus'>{children}</button> : children}
+      {sort ? (
+        <button type='button' className='ds-focus'>
+          {children}
+        </button>
+      ) : (
+        children
+      )}
     </th>
   );
 });
