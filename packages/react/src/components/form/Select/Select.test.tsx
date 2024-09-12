@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import type { RefObject } from 'react';
 import { act, createRef } from 'react';
 
-import type { NativeSelectProps } from './NativeSelect';
-import { NativeSelect } from './NativeSelect';
+import type { SelectProps } from './Select';
+import { Select } from './Select';
 
 const user = userEvent.setup();
 
@@ -19,11 +19,11 @@ const children = options.map(({ label, value }) => (
     {label}
   </option>
 ));
-const defaultProps: NativeSelectProps = {
+const defaultProps: SelectProps = {
   children,
 };
 
-describe('NativeSelect', () => {
+describe('Select', () => {
   it('Renders with given label', () => {
     const label = 'Test label';
     render({ label });
@@ -98,6 +98,6 @@ describe('NativeSelect', () => {
 });
 
 const render = (
-  props?: Partial<NativeSelectProps>,
+  props?: Partial<SelectProps>,
   ref?: RefObject<HTMLSelectElement>,
-) => renderRtl(<NativeSelect {...defaultProps} {...props} ref={ref} />);
+) => renderRtl(<Select {...defaultProps} {...props} ref={ref} />);
