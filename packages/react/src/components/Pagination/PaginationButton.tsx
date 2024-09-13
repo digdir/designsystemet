@@ -21,10 +21,10 @@ export const PaginationButton = forwardRef<
 
   return (
     <Button
-      ref={ref}
-      variant={isActive ? 'primary' : 'tertiary'}
       aria-current={isActive}
+      ref={ref}
       size={size}
+      variant={isActive ? 'primary' : 'tertiary'}
       {...rest}
     />
   );

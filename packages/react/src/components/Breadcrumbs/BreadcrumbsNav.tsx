@@ -2,7 +2,8 @@ import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 
 export type BreadcrumbsNavProps = {
-  /** Sets the text label for Breadcrumbs area
+  /**
+   * Sets the screen reader label for the Breadcrumbs area
    * @default 'Du er her'
    */
   'aria-label'?: string;
