@@ -14,5 +14,6 @@ export default {
     ],
     'alpha-value-notation': 'number',
     'font-family-name-quotes': 'always-unless-keyword',
+    'at-rule-no-unknown': [true, { ignoreAtRules: ['apply'] }], // Allow @apply directive to inline existing utility classes into a class name
   },
 };
