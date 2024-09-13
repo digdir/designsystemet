@@ -1,8 +1,8 @@
-import { useId, useRef, useState } from 'react';
-import { createContext, useEffect } from 'react';
+import { createContext, useId, useState } from 'react';
+import type { ReactNode } from 'react';
 
 export type PopoverContextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const PopoverContext = ({ children }: PopoverContextProps) => {
