@@ -23,7 +23,7 @@ function postcssComposes() {
         const [selector, from] = sanitizedParams.split(/\s+from\s+/);
 
         if (!cache[from])
-          sources[from] = await postcss([]).process(fs.readFileSync(from), {
+          cache[from] = await postcss([]).process(fs.readFileSync(from), {
             from,
           });
 
