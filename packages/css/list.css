@@ -1,22 +1,32 @@
 .ds-list {
+  --dsc-list-font-size: var(--ds-font-size-5);
   --dsc-list-padding-left: var(--ds-spacing-6);
+  --dsc-list-spacing: var(--ds-spacing-3);
+  --dsc-list-spacing-nested: var(--ds-spacing-2);
 
+  font-size: var(--dsc-list-font-size); /* Replace with composes paragraph-md */
+  line-height: var(--ds-line-height-md); /* Replace with composes paragraph-md */
+  margin: 0;
   padding-left: var(--dsc-list-padding-left);
-}
 
-.ds-list--sm {
-  --dsc-list-padding-left: var(--ds-spacing-4);
-}
+  & > li + li { margin-top: var(--dsc-list-spacing) }
+  & > li > :is(ol, ul) { --dsc-list-spacing: var(--dsc-list-spacing-nested) } /* Shrink spacing a bit when nested */
 
-.ds-list--md,
-.ds-list--lg {
-  --dsc-list-padding-left: var(--ds-spacing-6);
-}
+  /* Add zero-width space to fix VoiceOver: https://gerardkcohen.me/writing/2017/voiceover-list-style-type.html
+   * This can also be acheived by using role="list" + role="listitem", but is nice to solve with CSS avoiding cluttered HTML
+   */
+  & > li::before {
+    content: "\200B";
+    position: absolute;
+  }
 
-.ds-list__item {
-  margin-bottom: var(--ds-spacing-2);
-}
+  &[data-size="sm"] {
+    --dsc-list-padding-left: var(--ds-spacing-4);
+    --dsc-list-font-size: var(--ds-font-size-4); /* Replace with composes paragraph-sm */
+  }
 
-.ds-list__item > .ds-list {
-  margin-top: var(--ds-spacing-2);
+  &[data-size="lg"] {
+    --dsc-list-font-size: var(--ds-font-size-6); /* Replace with composes paragraph-sm */
+    --dsc-list-spacing: var(--ds-spacing-4);
+  }
 }

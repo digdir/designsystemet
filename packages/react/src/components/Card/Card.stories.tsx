@@ -11,7 +11,7 @@ import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import { Heading, Paragraph } from '../Typography';
-import { NativeSelect } from '../form/NativeSelect';
+import { Select } from '../form/Select';
 import { Textfield } from '../form/Textfield';
 
 import { Card } from '.';
@@ -287,13 +287,13 @@ export const Composed: Story = () => (
     </Card.Header>
     <Divider color='subtle' />
     <Card.Content>
-      <NativeSelect label='Velg rolle'>
+      <Select label='Velg rolle'>
         {options.map(({ value, label }, index) => (
           <option key={index} value={value}>
             {label}
           </option>
         ))}
-      </NativeSelect>
+      </Select>
       <Textfield label='Fødsels- eller d-nummer' />
       <Textfield label='Etternavn' />
     </Card.Content>

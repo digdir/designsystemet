@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
-import type * as React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-import { useSynchronizedAnimation } from '../../utilities';
+import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
   /** Spinner title  */
@@ -17,7 +17,7 @@ export type SpinnerProps = {
    * @default neutral
    */
   color?: 'neutral' | 'accent';
-} & React.ComponentPropsWithoutRef<'svg'>;
+} & ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({

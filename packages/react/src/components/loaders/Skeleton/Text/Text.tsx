@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 
-import { useSynchronizedAnimation } from '../../../utilities';
+import { useSynchronizedAnimation } from '../../../../utilities';
 
 export type TextProps = {
   /** The width of the component */
