@@ -11,10 +11,10 @@ export type PaginationEllipsisProps = Omit<
   'size' | 'spacing' | 'short'
 >;
 
-const PaginationEllipsis = forwardRef<
+export const PaginationEllipsis = forwardRef<
   HTMLParagraphElement,
   PaginationEllipsisProps
->(({ className, ...rest }, ref) => {
+>(function PaginationEllipsis({ className, ...rest }, ref) {
   const { size } = useContext(PaginationContext);
 
   return (
@@ -24,11 +24,7 @@ const PaginationEllipsis = forwardRef<
       size={size}
       {...rest}
     >
-      …
+      &hellip;
     </Paragraph>
   );
 });
-
-PaginationEllipsis.displayName = 'PaginationEllipsis';
-
-export { PaginationEllipsis };
