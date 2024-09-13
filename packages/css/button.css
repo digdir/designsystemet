@@ -9,6 +9,8 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
+  @composes ds-focus from './utilities.css';
+
   align-items: center;
   background: var(--dsc-button-background);
   border-radius: var(--ds-border-radius-md);
@@ -143,10 +145,6 @@
 
   &[aria-busy='true'] {
     cursor: progress;
-  }
-
-  &:focus-visible {
-    box-shadow: var(--dsc-focus-boxShadow);
   }
 
   &:is(:disabled, [aria-disabled='true']) {
