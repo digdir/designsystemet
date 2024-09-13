@@ -41,7 +41,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
     <Paragraph asChild size={size}>
       <span
         className={cl('ds-tag', className)}
-        data-color={size}
+        data-color={color}
         data-size={size}
         ref={ref}
         {...rest}
