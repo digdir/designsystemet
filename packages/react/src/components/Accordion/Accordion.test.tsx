@@ -6,10 +6,9 @@ import type { AccordionItemProps } from './';
 import { Accordion } from './';
 
 const user = userEvent.setup();
+const VOID = () => {};
 
-const TestComponent = ({
-  ...rest
-}: Omit<AccordionItemProps, 'children'>): JSX.Element => {
+const TestComponent = (rest: AccordionItemProps): JSX.Element => {
   return (
     <Accordion>
       <Accordion.Item {...rest}>
@@ -33,7 +32,7 @@ describe('Accordion', () => {
   });
 
   test('should render accordion with open state as controlled', () => {
-    render(<TestComponent open />);
+    render(<TestComponent open onFound={VOID} />);
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
   });
@@ -46,7 +45,7 @@ describe('Accordion', () => {
   });
 
   test('should be able to render AccordionItem as controlled', () => {
-    render(<TestComponent open />);
+    render(<TestComponent open onFound={VOID} />);
 
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
@@ -68,12 +67,12 @@ describe('Accordion Accessibility', () => {
   });
 
   test('should have correct aria-expanded when controlled', () => {
-    const { rerender } = render(<TestComponent open />);
+    const { rerender } = render(<TestComponent open onFound={VOID} />);
 
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
 
-    rerender(<TestComponent open={false} />);
+    rerender(<TestComponent open={false} onFound={VOID} />);
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 });

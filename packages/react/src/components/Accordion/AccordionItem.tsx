@@ -21,11 +21,11 @@ export type AccordionItemProps = {
   /** Callback function when AccordionItem toggles due to a find in page */
   onFound?: () => void;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
-  children: ReactNode;
+  children?: ReactNode;
 } & HTMLAttributes<HTMLDetailsElement> &
   (
-    | { defaultOpen?: boolean; open?: never; onFound?: () => void }
     | { open: boolean; onFound: () => void }
+    | { open?: never; onFound?: () => void }
   );
 
 /**
