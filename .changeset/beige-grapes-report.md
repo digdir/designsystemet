@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Pagination: Require aria-label for better accessibility
+Pagination: Use data attrs instead of class names
