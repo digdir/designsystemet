@@ -18,7 +18,6 @@
   box-sizing: border-box;
   color: var(--dsc-button-color);
   cursor: pointer;
-  display: flex;
   font-family: inherit;
   gap: var(--dsc-button-gap);
   justify-content: center;
@@ -29,6 +28,10 @@
   text-align: inherit;
   text-decoration: none;
 
+  &:not([hidden]) {
+    display: flex;
+  }
+  
   &[data-size='sm'] {
     --dsc-button-gap: var(--ds-sizing-1);
     --dsc-button-padding-block: var(--ds-spacing-2);
