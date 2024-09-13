@@ -1,6 +1,6 @@
 import type { Placement } from '@floating-ui/react';
 import { createContext, useEffect, useRef, useState } from 'react';
-import type * as React from 'react';
+import type { ReactNode, RefObject } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 
@@ -20,7 +20,7 @@ export type DropdownMenuRootProps = {
    * @default md
    **/
   size?: 'sm' | 'md' | 'lg';
-  children: React.ReactNode;
+  children: ReactNode;
 } & PortalProps;
 
 /**
@@ -74,7 +74,7 @@ export const DropdownMenuRoot = ({
 
 type DropdownMenuContextType = {
   anchorEl: Element | null;
-  triggerRef: React.RefObject<Element>;
+  triggerRef: RefObject<Element>;
   size: NonNullable<DropdownMenuRootProps['size']>;
   portal?: PortalProps['portal'];
   placement?: DropdownMenuRootProps['placement'];

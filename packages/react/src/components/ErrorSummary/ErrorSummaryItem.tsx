@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 import type { ListItemProps } from '../List';
@@ -22,21 +23,20 @@ type OptionalHref = {
 };
 
 export type ErrorSummaryItemProps = (RequiredHref | OptionalHref) &
-  Omit<ListItemProps, 'asChild'>;
+  Omit<ListItemProps, 'asChild' | 'ref'>;
 
-export const ErrorSummaryItem = ({
-  href,
-  asChild,
-  children,
-  ...rest
-}: ErrorSummaryItemProps) => {
+export const ErrorSummaryItem = forwardRef<
+  HTMLLIElement,
+  ErrorSummaryItemProps
+>(function ErrorSummaryItem(
+  { href, asChild, children, ...rest }: ErrorSummaryItemProps,
+  ref,
+) {
   return (
-    <List.Item {...rest}>
+    <List.Item {...rest} ref={ref}>
       <Link href={href} asChild={asChild}>
         {children}
       </Link>
     </List.Item>
   );
-};
-
-ErrorSummaryItem.displayName = 'ErrorSummaryItem';
+});

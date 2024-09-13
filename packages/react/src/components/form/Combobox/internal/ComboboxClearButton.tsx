@@ -1,12 +1,13 @@
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 import { ComboboxContext } from '../ComboboxContext';
 
 const ComboboxClearButton = forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
+  ButtonHTMLAttributes<HTMLButtonElement>
 >((props, ref) => {
   const context = useContext(ComboboxContext);
 

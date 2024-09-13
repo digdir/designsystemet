@@ -11,11 +11,11 @@ import {
   Divider,
   Heading,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Switch,
   Table,
   Tabs,
@@ -86,12 +86,12 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='' size='sm'>
+            <Select label='' size='sm'>
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
               <option value='aconcagua'>Slett</option>
               <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
