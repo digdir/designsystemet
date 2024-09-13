@@ -9,7 +9,7 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
-  /* @apply ds-focus; */
+  @apply ds-focus;
 
   align-items: center;
   background: var(--dsc-button-background);
