@@ -50,7 +50,7 @@ export const AccordionBorder: StoryFn<typeof Accordion> = () => (
 
 export const AccordionColor: StoryFn<typeof Accordion> = () => (
   <Accordion border color='brand2'>
-    <Accordion.Item onFound={() => console.log('a')}>
+    <Accordion.Item>
       <Accordion.Heading>
         Hvordan får jeg tildelt et jegernummer?
       </Accordion.Heading>
@@ -59,7 +59,7 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
         Jegerregisteret når du har bestått jegerprøven.
       </Accordion.Content>
     </Accordion.Item>
-    <Accordion.Item onFound={() => console.log('b')}>
+    <Accordion.Item>
       <Accordion.Heading>
         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
       </Accordion.Heading>
@@ -78,16 +78,22 @@ Preview.args = {
 };
 
 export const Controlled: StoryFn<typeof Accordion> = () => {
-  const [open, setOpen] = useState(false);
-  const toggleOpen = () => setOpen(!open);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const toggleOpen = () => {
+    setOpen1(!open1);
+    setOpen2(!open1);
+    setOpen3(!open1);
+  };
 
   return (
     <>
       <Button onClick={toggleOpen}>Toggle Accordions</Button>
       <br />
       <Accordion>
-        <Accordion.Item open={open} onFound={toggleOpen}>
-          <Accordion.Heading onClick={toggleOpen}>
+        <Accordion.Item open={open1} onFound={() => setOpen1(true)}>
+          <Accordion.Heading onClick={() => setOpen1(!open1)}>
             Enkeltpersonforetak
           </Accordion.Heading>
           <Accordion.Content>
@@ -98,8 +104,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             økonomien.
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item open={open} onFound={toggleOpen}>
-          <Accordion.Heading onClick={toggleOpen}>
+        <Accordion.Item open={open2} onFound={() => setOpen2(false)}>
+          <Accordion.Heading onClick={() => setOpen2(!open2)}>
             Aksjeselskap (AS)
           </Accordion.Heading>
           <Accordion.Content>
@@ -110,8 +116,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             hensiktsmessig organisasjonsform.
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item open={open} onFound={toggleOpen}>
-          <Accordion.Heading onClick={toggleOpen}>
+        <Accordion.Item open={open3} onFound={() => setOpen3(true)}>
+          <Accordion.Heading onClick={() => setOpen3(!open3)}>
             Ansvarlig selskap (ANS/DA)
           </Accordion.Heading>
           <Accordion.Content>
