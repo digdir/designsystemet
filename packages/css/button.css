@@ -9,7 +9,7 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
-  @apply ds-focus;
+  @composes ds-focus from './utilities.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -31,7 +31,7 @@
   &:not([hidden]) {
     display: flex;
   }
-  
+
   &[data-size='sm'] {
     --dsc-button-gap: var(--ds-sizing-1);
     --dsc-button-padding-block: var(--ds-spacing-2);

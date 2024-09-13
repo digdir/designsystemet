@@ -1,7 +1,10 @@
+const postcss = require('postcss');
+const fs = require('node:fs');
+
 module.exports = {
   plugins: [
     require('postcss-import'),
-    postcssApply(),
+    postcssComposes(),
     require('postcss-nesting'),
     require('cssnano')({
       preset: 'default',
@@ -10,16 +13,25 @@ module.exports = {
   ],
 };
 
-function postcssApply() {
+function postcssComposes() {
   return {
-    postcssPlugin: '@apply', // Add support for @apply directive to enable inlining utility classes
+    postcssPlugin: '@composes', // Allows `@composes classname from './file.css'` directive
     AtRule: {
-      apply: (rule) => {
-        rule.root().walkRules((from) => {
-          if (from.selector.startsWith(`.${rule.params}`))
+      composes: async (rule) => {
+        const cache = {};
+        const sanitizedParams = rule.params.replace(/["']/g, '').trim();
+        const [selector, from] = sanitizedParams.split(/\s+from\s+/);
+
+        if (!cache[from])
+          sources[from] = await postcss([]).process(fs.readFileSync(from), {
+            from,
+          });
+
+        cache[from].root.walkRules((from) => {
+          if (from.selector.startsWith(`.${selector}`))
             rule.replaceWith(
               from.clone({
-                selector: from.selector.replace(`.${rule.params}`, '&'),
+                selector: from.selector.replace(`.${selector}`, '&'),
               }),
             );
         });
