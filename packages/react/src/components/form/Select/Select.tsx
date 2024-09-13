@@ -6,9 +6,9 @@ import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 import { omit } from '../../../utilities';
 import { ErrorMessage, Label, Paragraph } from '../../Typography';
 
-import { useNativeSelect } from './useNativeSelect';
+import { useSelect } from './useSelect';
 
-export type NativeSelectProps = {
+export type SelectProps = {
   /**
    * Label that appears over the select box. */
   label?: string;
@@ -40,8 +40,8 @@ export type NativeSelectProps = {
   htmlSize?: number;
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
-export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
-  (props, ref: ForwardedRef<HTMLSelectElement>) => {
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  function Select(props, ref: ForwardedRef<HTMLSelectElement>) {
     const {
       children,
       disabled = false,
@@ -60,15 +60,15 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       errorId,
       readOnly,
       size = 'md',
-    } = useNativeSelect(props);
+    } = useSelect(props);
 
     return (
       <Paragraph asChild size={size}>
         <div
           className={cl(
-            'ds-native-select--container',
-            readOnly && 'ds-native-select--readonly',
-            error && 'ds-native-select--error',
+            'ds-select--container',
+            readOnly && 'ds-select--readonly',
+            error && 'ds-select--error',
           )}
         >
           {label && (
@@ -76,15 +76,12 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               weight='medium'
               size={size}
               htmlFor={selectProps.id}
-              className={cl(
-                'ds-native-select__label',
-                hideLabel && 'ds-sr-only',
-              )}
+              className={cl('ds-select__label', hideLabel && 'ds-sr-only')}
             >
               {readOnly && (
                 <PadlockLockedFillIcon
                   aria-hidden
-                  className={'ds-native-select__readonly__icon'}
+                  className={'ds-select__readonly__icon'}
                 />
               )}
               {label}
@@ -95,7 +92,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               <div
                 id={descriptionId}
                 className={cl(
-                  `ds-native-select__description`,
+                  `ds-select__description`,
                   hideLabel && `ds-sr-only`,
                 )}
               >
@@ -103,16 +100,16 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               </div>
             </Paragraph>
           )}
-          <div className='ds-native-select__wrapper'>
+          <div className='ds-select__wrapper'>
             <select
               disabled={disabled}
               ref={ref}
               size={htmlSize}
               className={cl(
-                'ds-native-select',
-                `ds-native-select--${size}`,
+                'ds-select',
+                `ds-select--${size}`,
                 `ds-focus`,
-                props.multiple && 'ds-native-select--multiple',
+                props.multiple && 'ds-select--multiple',
                 className,
               )}
               {...omit(['size', 'error', 'errorId'], rest)}
@@ -125,7 +122,7 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           {error && (
             <div
               id={errorId}
-              className={'ds-native-select__error-message'}
+              className={'ds-select__error-message'}
               aria-live='polite'
               aria-relevant='additions removals'
             >
@@ -137,5 +134,3 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     );
   },
 );
-
-NativeSelect.displayName = 'NativeSelect';

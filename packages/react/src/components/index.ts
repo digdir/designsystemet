@@ -9,7 +9,7 @@ export * from './Link';
 export * from './List';
 export * from './Typography/';
 export * from './Accordion';
-export * from './form/NativeSelect';
+export * from './form/Select';
 export * from './Alert';
 export * from './Tag';
 export * from './Chip';

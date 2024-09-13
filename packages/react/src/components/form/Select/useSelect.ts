@@ -9,12 +9,9 @@ import { FieldsetContext } from '../Fieldset/FieldsetContext';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 
-import type { NativeSelectProps } from './NativeSelect';
+import type { SelectProps } from './Select';
 
-type UseNativeSelect = (props: NativeSelectProps) => Omit<
-  FormField,
-  'inputProps'
-> & {
+type UseSelect = (props: SelectProps) => Omit<FormField, 'inputProps'> & {
   selectProps: Pick<
     SelectHTMLAttributes<HTMLSelectElement>,
     | 'name'
@@ -27,8 +24,8 @@ type UseNativeSelect = (props: NativeSelectProps) => Omit<
   >;
 };
 
-/** Handles props for `NativeSelect` in context with `Fieldset` */
-export const useNativeSelect: UseNativeSelect = (props) => {
+/** Handles props for `Select` in context with `Fieldset` */
+export const useSelect: UseSelect = (props) => {
   const fieldset = useContext(FieldsetContext);
   const {
     inputProps: selectProps,
@@ -44,35 +41,27 @@ export const useNativeSelect: UseNativeSelect = (props) => {
     selectProps: {
       ...selectProps,
       readOnly,
-      onClick: (e) => {
-        if (readOnly) {
-          e.preventDefault();
-          return;
-        }
-        props?.onClick?.(e);
+      onClick: (event) => {
+        if (readOnly) return event.preventDefault();
+        props?.onClick?.(event);
       },
-      onKeyDown: (e) => {
+      onKeyDown: (event) => {
         if (readOnly) {
-          if (e.key === 'Tab') return;
-          e.preventDefault();
-          return;
+          if (event.key === 'Tab') return;
+          return event.preventDefault();
         }
-        props?.onKeyDown?.(e);
+        props?.onKeyDown?.(event);
       },
-      onMouseDown: (e) => {
+      onMouseDown: (event) => {
         if (readOnly) {
-          e.preventDefault();
-          if (e.target instanceof HTMLElement) e.target.focus();
-          return;
+          if (event.target instanceof HTMLElement) event.target.focus();
+          return event.preventDefault();
         }
-        props?.onMouseDown?.(e);
+        props?.onMouseDown?.(event);
       },
-      onChange: (e) => {
-        if (readOnly) {
-          e.preventDefault();
-          return;
-        }
-        props?.onChange?.(e);
+      onChange: (event) => {
+        if (readOnly) return event.preventDefault();
+        props?.onChange?.(event);
       },
     },
   };

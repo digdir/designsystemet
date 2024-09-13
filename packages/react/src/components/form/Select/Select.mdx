@@ -1,12 +1,12 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
-import * as NativeSelectStories from './NativeSelect.stories';
+import * as SelectStories from './Select.stories';
 
-<Meta of={NativeSelectStories} />
+<Meta of={SelectStories} />
 
-# NativeSelect
+# Select
 
-`NativeSelect` er en enkel nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg.
+`Select` er en enkel nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg.
 Komponenten er bygget på HTML-elementet `select`, som benytter seg av operativsystemets standarder (derav "native").
 Dette sikrer forutsigbarhet og tilgjengelighet, men det setter noen begrensninger på hvordan komponenten kan tilpasses.
 For eksempel er det ikke mulig å overstyre formateringen av alternativene.
@@ -19,25 +19,25 @@ For eksempel er det ikke mulig å overstyre formateringen av alternativene.
 ## Bruk
 
 ```tsx
-import { NativeSelect } from '@digdir/designsystemet-react';
+import { Select } from '@digdir/designsystemet-react';
 
-<NativeSelect label='Ta et valg'>
+<Select label='Ta et valg'>
   <option value='1'>Alternativ 1</option>
   <option value='2'>Alternativ 2</option>
   <option value='3'>Alternativ 3</option>
-</NativeSelect>;
+</Select>;
 ```
 
 ## Eksempler
 
 ### Deaktivert
 
-<Canvas of={NativeSelectStories.Disabled} />
+<Canvas of={SelectStories.Disabled} />
 
 ### Med feil
 
-<Canvas of={NativeSelectStories.WithError} />
+<Canvas of={SelectStories.WithError} />
 
 ### Flervalg
 
-<Canvas of={NativeSelectStories.Multiple} />
+<Canvas of={SelectStories.Multiple} />
