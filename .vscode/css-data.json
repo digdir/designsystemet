@@ -1,6 +1,6 @@
 {
   "version": 1.1,
   "atDirectives": [
-    { "name": "@apply", "description": "Allow @apply directive to inline existing utility classes into a class name" }
+    { "name": "@apply", "description": "Add support for @apply directive to enable inlining utility classes" }
   ]
 }
