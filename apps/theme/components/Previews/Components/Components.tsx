@@ -11,11 +11,11 @@ import {
   Heading,
   HelpText,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Skeleton,
   Spinner,
   Switch,
@@ -86,12 +86,12 @@ export const Components = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='Velg handling' size='sm' hideLabel>
+            <Select label='Velg handling' size='sm' hideLabel>
               <option value='blank'>Velg handling</option>
               <option value='everest'>Dupliser</option>
               <option value='aconcagua'>Slett</option>
               <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
@@ -107,11 +107,11 @@ export const Components = () => {
         <Table size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>

@@ -1,4 +1,4 @@
-import type { Dispatch } from 'react';
+import type { Dispatch, ReactNode } from 'react';
 import { createContext, useContext, useReducer } from 'react';
 
 type ComboboxIdContextType = {
@@ -40,7 +40,7 @@ export const ComboboxIdDispatch = createContext<
 export const ComboboxIdProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const [state, dispatch] = useReducer(ComboboxIdReducer, {
     activeIndex: 0,
