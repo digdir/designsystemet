@@ -7,6 +7,7 @@
     "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
+  "css.customData": ["./.vscode/css-data.json"],
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
