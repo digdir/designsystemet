@@ -58,6 +58,15 @@ describe('Select', () => {
     }
   });
 
+  it('Renders with optgroup', () => {
+    render({
+      children: <Select.Optgroup label='Group'>{children}</Select.Optgroup>,
+    });
+    const optgroup = screen.getByRole('group');
+    expect(optgroup).toBeInTheDocument();
+    expect(optgroup.children.length).toBe(options.length);
+  });
+
   it('Lets the user select a value', async () => {
     render();
     const select = screen.getByRole('combobox');

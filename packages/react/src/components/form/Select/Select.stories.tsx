@@ -69,20 +69,23 @@ WithError.args = {
   error: 'Du må velge et fjell',
 };
 
-export const Multiple: StoryFn<typeof Select> = (args) => (
+export const WithOptgroup: StoryFn<typeof Select> = (args) => (
   <Select {...args}>
-    <Select.Option value='everest'>Mount Everest</Select.Option>
-    <Select.Option value='aconcagua'>Aconcagua</Select.Option>
-    <Select.Option value='denali'>Denali</Select.Option>
-    <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
-    <Select.Option value='elbrus'>Elbrus</Select.Option>
-    <Select.Option value='vinson'>Mount Vinson</Select.Option>
-    <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
-    <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
+    <Select.Optgroup label='Gruppe 1'>
+      <Select.Option value='everest'>Mount Everest</Select.Option>
+      <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+      <Select.Option value='denali'>Denali</Select.Option>
+      <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+    </Select.Optgroup>
+    <Select.Optgroup label='Gruppe 2'>
+      <Select.Option value='elbrus'>Elbrus</Select.Option>
+      <Select.Option value='vinson'>Mount Vinson</Select.Option>
+      <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+      <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
+    </Select.Optgroup>
   </Select>
 );
 
-Multiple.args = {
+WithOptgroup.args = {
   label: 'Velg fjell',
-  multiple: true,
 };
