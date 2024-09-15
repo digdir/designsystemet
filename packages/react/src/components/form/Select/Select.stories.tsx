@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Select } from './Select';
+import { Select } from './';
 
 export default {
   title: 'Komponenter/Select',
@@ -12,15 +12,15 @@ export default {
 
 export const Preview: StoryFn<typeof Select> = (args) => (
   <Select {...args}>
-    <option value='blank'>Velg &hellip;</option>
-    <option value='everest'>Mount Everest</option>
-    <option value='aconcagua'>Aconcagua</option>
-    <option value='denali'>Denali</option>
-    <option value='kilimanjaro'>Kilimanjaro</option>
-    <option value='elbrus'>Elbrus</option>
-    <option value='vinson'>Mount Vinson</option>
-    <option value='puncakjaya'>Puncak Jaya</option>
-    <option value='kosciuszko'>Mount Kosciuszko</option>
+    <Select.Option value='blank'>Velg &hellip;</Select.Option>
+    <Select.Option value='everest'>Mount Everest</Select.Option>
+    <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+    <Select.Option value='denali'>Denali</Select.Option>
+    <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+    <Select.Option value='elbrus'>Elbrus</Select.Option>
+    <Select.Option value='vinson'>Mount Vinson</Select.Option>
+    <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+    <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
   </Select>
 );
 
@@ -33,15 +33,15 @@ Preview.args = {
 
 export const Disabled: StoryFn<typeof Select> = (args) => (
   <Select {...args}>
-    <option value='blank'>Velg &hellip;</option>
-    <option value='everest'>Mount Everest</option>
-    <option value='aconcagua'>Aconcagua</option>
-    <option value='denali'>Denali</option>
-    <option value='kilimanjaro'>Kilimanjaro</option>
-    <option value='elbrus'>Elbrus</option>
-    <option value='vinson'>Mount Vinson</option>
-    <option value='puncakjaya'>Puncak Jaya</option>
-    <option value='kosciuszko'>Mount Kosciuszko</option>
+    <Select.Option value='blank'>Velg &hellip;</Select.Option>
+    <Select.Option value='everest'>Mount Everest</Select.Option>
+    <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+    <Select.Option value='denali'>Denali</Select.Option>
+    <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+    <Select.Option value='elbrus'>Elbrus</Select.Option>
+    <Select.Option value='vinson'>Mount Vinson</Select.Option>
+    <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+    <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
   </Select>
 );
 
@@ -52,15 +52,15 @@ Disabled.args = {
 
 export const WithError: StoryFn<typeof Select> = (args) => (
   <Select {...args}>
-    <option value='blank'>Velg &hellip;</option>
-    <option value='everest'>Mount Everest</option>
-    <option value='aconcagua'>Aconcagua</option>
-    <option value='denali'>Denali</option>
-    <option value='kilimanjaro'>Kilimanjaro</option>
-    <option value='elbrus'>Elbrus</option>
-    <option value='vinson'>Mount Vinson</option>
-    <option value='puncakjaya'>Puncak Jaya</option>
-    <option value='kosciuszko'>Mount Kosciuszko</option>
+    <Select.Option value='blank'>Velg &hellip;</Select.Option>
+    <Select.Option value='everest'>Mount Everest</Select.Option>
+    <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+    <Select.Option value='denali'>Denali</Select.Option>
+    <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+    <Select.Option value='elbrus'>Elbrus</Select.Option>
+    <Select.Option value='vinson'>Mount Vinson</Select.Option>
+    <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+    <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
   </Select>
 );
 
@@ -71,14 +71,14 @@ WithError.args = {
 
 export const Multiple: StoryFn<typeof Select> = (args) => (
   <Select {...args}>
-    <option value='everest'>Mount Everest</option>
-    <option value='aconcagua'>Aconcagua</option>
-    <option value='denali'>Denali</option>
-    <option value='kilimanjaro'>Kilimanjaro</option>
-    <option value='elbrus'>Elbrus</option>
-    <option value='vinson'>Mount Vinson</option>
-    <option value='puncakjaya'>Puncak Jaya</option>
-    <option value='kosciuszko'>Mount Kosciuszko</option>
+    <Select.Option value='everest'>Mount Everest</Select.Option>
+    <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+    <Select.Option value='denali'>Denali</Select.Option>
+    <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+    <Select.Option value='elbrus'>Elbrus</Select.Option>
+    <Select.Option value='vinson'>Mount Vinson</Select.Option>
+    <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+    <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
   </Select>
 );
 

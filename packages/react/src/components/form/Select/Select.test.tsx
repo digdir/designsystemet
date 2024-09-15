@@ -3,8 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { RefObject } from 'react';
 import { act, createRef } from 'react';
 
-import type { SelectProps } from './Select';
-import { Select } from './Select';
+import { Select, type SelectProps } from './';
 
 const user = userEvent.setup();
 
@@ -15,9 +14,9 @@ const options: { label: string; value: string }[] = [
   { label: 'Option 3', value: '3' },
 ];
 const children = options.map(({ label, value }) => (
-  <option key={value} value={value}>
+  <Select.Option key={value} value={value}>
     {label}
-  </option>
+  </Select.Option>
 ));
 const defaultProps: SelectProps = {
   children,

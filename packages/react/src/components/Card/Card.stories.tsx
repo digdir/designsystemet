@@ -289,9 +289,9 @@ export const Composed: Story = () => (
     <Card.Content>
       <Select label='Velg rolle'>
         {options.map(({ value, label }, index) => (
-          <option key={index} value={value}>
+          <Select.Option key={index} value={value}>
             {label}
-          </option>
+          </Select.Option>
         ))}
       </Select>
       <Textfield label='Fødsels- eller d-nummer' />
