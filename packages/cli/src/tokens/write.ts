@@ -12,7 +12,7 @@ const DIRNAME: string = import.meta.dirname || __dirname;
 const DEFAULT_FILES_PATH = path.join(DIRNAME, './design-tokens/default');
 const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template/');
 
-export const stringify = (data: unknown) => JSON.stringify(data, null, 2).replace(/\r\n/g, '');
+export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
 const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
   const path = `${outPath}/primitives/modes/colors/${folder}`;
