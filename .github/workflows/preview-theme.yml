@@ -9,9 +9,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'packages/**'
       - 'apps/theme/**'
-      - 'assets/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -71,6 +69,13 @@ jobs:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
 
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
         id: current-time
@@ -84,11 +89,12 @@ jobs:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
+          reactions: rocket, eyes
           body: |
-            ## Preview deployments
+            **Preview deployments for this pull request:**
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
-
             ${{ steps.regex-storefront.outputs.match }}
+
+            [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
