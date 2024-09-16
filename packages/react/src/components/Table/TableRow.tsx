@@ -1,16 +1,9 @@
-import cl from 'clsx/lite';
-import * as React from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
 
-export type TableRowProps = React.HTMLAttributes<HTMLTableRowElement>;
+export type TableRowProps = HTMLAttributes<HTMLTableRowElement>;
 
-export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ className, children, ...rest }, ref) => {
-    return (
-      <tr className={cl('ds-table__row', className)} ref={ref} {...rest}>
-        {children}
-      </tr>
-    );
+export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+  function TableRow(rest, ref) {
+    return <tr ref={ref} {...rest} />;
   },
 );
-
-TableRow.displayName = 'TableRow';

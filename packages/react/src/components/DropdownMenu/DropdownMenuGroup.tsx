@@ -1,5 +1,5 @@
 import { forwardRef, useContext, useId } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -9,8 +9,8 @@ export type DropdownMenuGroupProps = {
   /**
    * Heading of the group
    */
-  heading?: React.ReactNode;
-} & React.HTMLAttributes<HTMLUListElement>;
+  heading?: ReactNode;
+} & HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,

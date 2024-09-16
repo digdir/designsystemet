@@ -1,18 +1,7 @@
 import cl from 'clsx/lite';
-import type * as React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-import { useSynchronizedAnimation } from '../../utilities';
-
-const sizeMap: {
-  [key in NonNullable<SpinnerProps['size']>]: number;
-} = {
-  '2xs': 13,
-  xs: 20,
-  sm: 27,
-  md: 40,
-  lg: 56,
-  xl: 79,
-};
+import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
   /** Spinner title  */
@@ -28,7 +17,7 @@ export type SpinnerProps = {
    * @default neutral
    */
   color?: 'neutral' | 'accent';
-} & React.ComponentPropsWithoutRef<'svg'>;
+} & ComponentPropsWithoutRef<'svg'>;
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = ({
@@ -36,7 +25,6 @@ export const Spinner = ({
   color = 'neutral',
   size = 'md',
   className,
-  style,
   ...rest
 }: SpinnerProps): JSX.Element => {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
@@ -49,10 +37,11 @@ export const Spinner = ({
 
   return (
     <svg
-      className={cl('ds-spinner', `ds-spinner--${color}`, className)}
-      style={{ width: sizeMap[size], height: sizeMap[size], ...style }}
+      className={cl('ds-spinner', className)}
       viewBox='0 0 50 50'
       ref={svgRef}
+      data-color={color}
+      data-size={size}
       {...rest}
     >
       <title>{title}</title>

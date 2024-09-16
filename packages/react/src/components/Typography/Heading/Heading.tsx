@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 export type HeadingProps = {
   /**
    * Heading level. This will translate into any h1-6 level unless `asChild` is `true`
-   * @default 1
+   * @default 2
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Changes text sizing
@@ -31,10 +31,10 @@ export type HeadingProps = {
  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   (
-    { size = 'xl', level = 1, spacing = false, className, asChild, ...rest },
+    { size = 'xl', level = 2, spacing = false, className, asChild, ...rest },
     ref,
   ) => {
-    const Component = asChild ? Slot : (`h${level ?? 1}` as ElementType);
+    const Component = asChild ? Slot : (`h${level}` as ElementType);
 
     return (
       <Component
