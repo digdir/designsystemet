@@ -98,7 +98,7 @@ export const TokenModal = ({
             Alt 1. Design tokens
           </Heading>
           <Textfield
-            label='Tema navn'
+            label='Navn på tema'
             description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
             value={themeName}
             onChange={(e) => {
