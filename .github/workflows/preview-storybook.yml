@@ -64,6 +64,13 @@ jobs:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
 
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
         id: current-time
@@ -85,4 +92,4 @@ jobs:
 
             ${{ steps.regex-storefront.outputs.match }}
 
-            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
+            ${{ steps.regex-theme.outputs.match }}
