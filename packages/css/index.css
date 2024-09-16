@@ -2,7 +2,7 @@
 
 @layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
 
-/** Import order defines ordinal specificity for layers */
+/** Import order defines ordinal specificity for layers! */
 @import url('./baseline/ds-reset.css') layer(ds.reset);
 @import url('./baseline/typography/label.css') layer(ds.base.typography);
 @import url('./baseline/typography/heading.css') layer(ds.base.typography);
