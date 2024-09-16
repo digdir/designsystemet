@@ -106,7 +106,7 @@
     background: var(--dsc-accordion-heading-background--open);
   }
 
-  /* Make chevron animate with content */
+  /* Make flip on click */
   &[open]:not([data-chevron-open='false']) {
     --dsc-accordion-chevron-rotate: -180deg;
   }

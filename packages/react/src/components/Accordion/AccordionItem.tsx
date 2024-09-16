@@ -96,7 +96,7 @@ const animateHeight = (details: HTMLDetailsElement | null, open: boolean) => {
     '(prefers-reduced-motion: reduce)',
   ).matches;
 
-  details?.setAttribute('data-chevron-open', `${open}`); // Make chevron animate with content
+  details?.setAttribute('data-chevron-open', `${open}`); // Make flip on click
   if (hasReducedMotion || !hasAnimate || !hasContent) {
     if (details) details.open = open;
   } else if (details.open !== open) {
