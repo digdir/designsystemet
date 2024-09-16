@@ -93,5 +93,3 @@ jobs:
             ${{ steps.regex-storefront.outputs.match }}
 
             ${{ steps.regex-theme.outputs.match }}
-
-            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)

@@ -98,5 +98,3 @@ jobs:
             ${{ steps.regex-storefront.outputs.match }}
 
             [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
-
-            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
