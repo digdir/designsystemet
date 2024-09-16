@@ -173,8 +173,7 @@
     padding: var(--ds-spacing-2) 0;
   }
 
-  & a,
-  & a:visited {
+  & a:any-link {
     color: var(--ds-color-neutral-text-default);
   }
 
