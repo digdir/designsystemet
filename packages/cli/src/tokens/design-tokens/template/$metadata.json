@@ -1,0 +1,17 @@
+{
+  "tokenSetOrder": [
+    "primitives/globals",
+    "primitives/size/default",
+    "primitives/size/compact",
+    "primitives/modes/typography/primary/<theme>",
+    "primitives/modes/typography/secondary/<theme>",
+    "primitives/modes/colors/dark/global",
+    "primitives/modes/colors/dark/<theme>",
+    "primitives/modes/colors/light/global",
+    "primitives/modes/colors/light/<theme>",
+    "themes/<theme>",
+    "semantic/color",
+    "semantic/style",
+    "Figma/components"
+  ]
+}
