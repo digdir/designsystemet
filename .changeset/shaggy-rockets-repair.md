@@ -1,6 +1,5 @@
 ---
 "@digdir/designsystemet-react": patch
-"theme": patch
 ---
 
 Select:
