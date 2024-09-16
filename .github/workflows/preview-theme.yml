@@ -50,7 +50,7 @@ jobs:
         with:
           issue-number: ${{ env.PR_NUMBER }}
           body-includes: |
-            ## Preview deployments
+            **Preview deployments for this pull request:**
 
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
