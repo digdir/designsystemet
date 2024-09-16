@@ -3,8 +3,8 @@ export { Grid } from './Grid';
 export { ImageSection } from './ImageSection';
 export { ImageBanner } from './ImageBanner';
 export type {
-  ImageSectionButtonProps,
-  ImageSectionProps,
+    ImageSectionButtonProps,
+    ImageSectionProps,
 } from './ImageSection';
 export { MdxContent } from './MdxContent';
 export { NavigationCard } from './NavigationCard';
@@ -18,3 +18,4 @@ export { Image } from './Image';
 export { ComponentCard } from './ComponentCard';
 export { GithubLink } from './GithubLink/GithubLink';
 export { VersionBanner } from './VersionBanner/VersionBanner';
+export { BlogCard } from './Card/BlogCard';

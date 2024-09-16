@@ -1,4 +1,4 @@
-@import url('https://altinncdn.no/fonts/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
   --color-background-darkest: #121212;
@@ -14,7 +14,9 @@ body {
   max-width: 1000px;
   margin: 0 auto !important;
   padding: 0 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 @media (max-width: 500px) {
