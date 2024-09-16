@@ -62,6 +62,13 @@ jobs:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '📖 \[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
 
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '🖥 \[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
         id: current-time
@@ -80,6 +87,8 @@ jobs:
             **Preview deployments for this pull request:**
 
             ${{ steps.regex-storybook.outputs.match }}
+
+            ${{ steps.regex-theme.outputs.match }}
 
             🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
