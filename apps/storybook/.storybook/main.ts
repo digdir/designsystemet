@@ -4,6 +4,10 @@ import { env } from 'node:process';
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
 
+const storybookPropFilter = (prop: unknown) => true;
+// storybookTypescriptConfig().typescript.reactDocgenTypescriptOptions
+//   .propFilter;
+
 const config: StorybookConfig = {
   typescript: {
     check: true,
@@ -11,7 +15,7 @@ const config: StorybookConfig = {
     reactDocgen:
       env.NODE_ENV === 'production'
         ? 'react-docgen-typescript'
-        : 'react-docgen',
+        : 'react-docgen-typescript',
     /**
      * Enable this when docgen-typescript is faster
      * See: https://github.com/storybookjs/storybook/issues/28269
@@ -21,13 +25,13 @@ const config: StorybookConfig = {
       include: [resolve(__dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: ({ name, declarations = [] }: PropItem) => {
-        /* Default from `react-docgen-typescript` we have to add back when using a custom prop filter */
-        const hasDescription = declarations.some(
-          ({ fileName }) => !fileName.includes('node_modules'),
-        );
-
-        return hasDescription && name !== 'popovertarget'; // Skip popovertarget @types/react-dom patch
+      propFilter: (prop: PropItem) => {
+        // Keep the default filter logic from storybook:
+        // https://github.com/storybookjs/storybook/blob/40523765403480c4065373664553bb6cbdf9543d/code/core/src/core-server/presets/common-preset.ts#L169C5-L169C98
+        const defaultLogicFromStorybook = prop.parent
+          ? !/node_modules/.test(prop.parent.fileName)
+          : true;
+        return defaultLogicFromStorybook && prop.name !== 'popovertarget'; // Skip popovertarget @types/react-dom patch}
       },
     },
   },
