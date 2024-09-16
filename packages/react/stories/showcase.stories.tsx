@@ -87,10 +87,10 @@ export const Showcase: StoryFn = () => {
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
             <Select label='' size='sm'>
-              <option value='blank'>Velg handling</option>
-              <option value='everest'>Dupliser</option>
-              <option value='aconcagua'>Slett</option>
-              <option value='denali'>Oppdater</option>
+              <Select.Option value='blank'>Velg handling</Select.Option>
+              <Select.Option value='everest'>Dupliser</Select.Option>
+              <Select.Option value='aconcagua'>Slett</Select.Option>
+              <Select.Option value='denali'>Oppdater</Select.Option>
             </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør

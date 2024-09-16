@@ -116,8 +116,8 @@ export const ThemeToolbar = ({
               onContrastModeChanged(e.target.value as 'aa' | 'aaa');
             }}
           >
-            <option value='aa'>AA</option>
-            <option value='aaa'>AAA (WIP)</option>
+            <Select.Option value='aa'>AA</Select.Option>
+            <Select.Option value='aaa'>AAA (WIP)</Select.Option>
           </Select>
         </div>
         <div className={classes.borderRadii}>
@@ -132,7 +132,7 @@ export const ThemeToolbar = ({
             }}
           >
             {Object.entries(borderRadii).map(([key, value]) => (
-              <option
+              <Select.Option
                 key={key}
                 value={value}
                 style={{
@@ -140,7 +140,7 @@ export const ThemeToolbar = ({
                 }}
               >
                 {key}
-              </option>
+              </Select.Option>
             ))}
           </Select>
         </div>
