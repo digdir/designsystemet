@@ -22,6 +22,7 @@ const config: StorybookConfig = {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: ({ name, declarations = [] }: PropItem) => {
+      /* Default from `react-docgen-typescript` we have to add back when using a custom prop filter */
         const hasDescription = declarations.some(
           ({ fileName }) => !fileName.includes('node_modules'),
         );
