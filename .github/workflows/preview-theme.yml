@@ -9,9 +9,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'packages/**'
       - 'apps/theme/**'
-      - 'assets/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -84,11 +82,14 @@ jobs:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
+          reactions: rocket, eyes
           body: |
-            ## Preview deployments
+            **Preview deployments for this pull request:**
 
             ${{ steps.regex-storybook.outputs.match }}
 
             [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex-storefront.outputs.match }}
+
+            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
