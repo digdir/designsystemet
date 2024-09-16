@@ -3,7 +3,7 @@ import {
   CardContent,
   Heading,
   Paragraph,
-  AccordionRoot,
+  Accordion,
   AccordionItem,
   AccordionContent,
   AccordionHeading
@@ -183,11 +183,11 @@ Her må vi gjøre det så tydelig som mulig for brukeren at flere felt påvirker
 
 I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
-<AccordionRoot
+<Accordion
   color='neutral'
 >
   <AccordionItem>
-    <AccordionHeading level={3}>Eksempel på feilmelding som gjelder flere felt</AccordionHeading>
+    <AccordionHeading>Eksempel på feilmelding som gjelder flere felt</AccordionHeading>
     <AccordionContent
         style={{
         paddingTop: '0px',
@@ -216,7 +216,7 @@ I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis ha
       />
     </AccordionContent>
   </AccordionItem>
-</AccordionRoot>
+</Accordion>
 
 ## Kode
 

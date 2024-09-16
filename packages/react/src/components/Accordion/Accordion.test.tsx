@@ -6,19 +6,18 @@ import type { AccordionItemProps } from './';
 import { Accordion } from './';
 
 const user = userEvent.setup();
+const VOID = () => {};
 
-const TestComponent = ({
-  ...rest
-}: Omit<AccordionItemProps, 'children'>): JSX.Element => {
+const TestComponent = (rest: AccordionItemProps): JSX.Element => {
   return (
-    <Accordion.Root>
+    <Accordion>
       <Accordion.Item {...rest}>
         <Accordion.Heading>Accordion Header Title Text</Accordion.Heading>
         <Accordion.Content>
           The fantastic accordion content text
         </Accordion.Content>
       </Accordion.Item>
-    </Accordion.Root>
+    </Accordion>
   );
 };
 
@@ -27,18 +26,13 @@ describe('Accordion', () => {
     render(<TestComponent />);
     const accordionExpandButton = screen.getByRole('button');
 
-    expect(
-      screen.getByRole('heading', {
-        name: 'Accordion Header Title Text',
-      }),
-    ).toBeInTheDocument();
     expect(screen.getByText('The fantastic accordion content text'));
     expect(screen.getByText('Accordion Header Title Text'));
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 
   test('should render accordion with open state as controlled', () => {
-    render(<TestComponent open />);
+    render(<TestComponent open onFound={VOID} />);
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
   });
@@ -51,21 +45,10 @@ describe('Accordion', () => {
   });
 
   test('should be able to render AccordionItem as controlled', () => {
-    render(<TestComponent open />);
+    render(<TestComponent open onFound={VOID} />);
 
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
-  });
-
-  test('should render heading as level 1 by default', () => {
-    render(<TestComponent />);
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'Accordion Header Title Text',
-        level: 1,
-      }),
-    );
   });
 });
 
@@ -84,12 +67,12 @@ describe('Accordion Accessibility', () => {
   });
 
   test('should have correct aria-expanded when controlled', () => {
-    const { rerender } = render(<TestComponent open />);
+    const { rerender } = render(<TestComponent open onFound={VOID} />);
 
     const accordionExpandButton = screen.getByRole('button');
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
 
-    rerender(<TestComponent open={false} />);
+    rerender(<TestComponent open={false} onFound={VOID} />);
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 });
