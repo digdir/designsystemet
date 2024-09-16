@@ -339,9 +339,9 @@ export const Components = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border className={classes.accordion}>
+        <Accordion color='brand3' border className={classes.accordion}>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -353,7 +353,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -363,7 +363,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -372,7 +372,7 @@ export const Components = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
         <Alert color='info'>
