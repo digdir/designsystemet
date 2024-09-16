@@ -95,7 +95,7 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            ${{ steps.regex-theme.outputs.match }}
+            ${{ steps.regex-storefront.outputs.match }}
 
             [Theme](https://pr-${{ env.PR_NUMBER }}.theme.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 

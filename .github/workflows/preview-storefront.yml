@@ -88,8 +88,8 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            ${{ steps.regex-theme.outputs.match }}
-
             🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+
+            ${{ steps.regex-theme.outputs.match }}
 
             See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
