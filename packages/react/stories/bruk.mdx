@@ -68,14 +68,14 @@ som ligger i en klient komponent, som `Accordion` er.
 
 <CodeSnippet language='ts'>
 {`
-import { AccordionRoot, AccordionHeading, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
+import { Accordion, AccordionHeading, AccordionItem, AccordionContent } from '@digdir/designsystemet-react';
 
-<AccordionRoot>
+<Accordion>
   <AccordionItem>
     <AccordionHeading>...</AccordionHeading>
     <AccordionContent>...</AccordionContent>
   </AccordionItem>
-</AccordionRoot>
+</Accordion>
 `}
 </CodeSnippet>
 
@@ -85,19 +85,19 @@ import { AccordionRoot, AccordionHeading, AccordionItem, AccordionContent } from
 {`
 import { Accordion } from '@digdir/designsystemet-react';
 
-<Accordion.Root>
+<Accordion>
   <Accordion.Item>
     <Accordion.Heading>...</Accordion.Heading>
     <Accordion.Content>...</Accordion.Content>
   </Accordion.Item>
-</Accordion.Root>
+</Accordion>
 `}
 </CodeSnippet>
 
 ### Komponenter med `.Root`
 
 Noen komponenter har en `.Root` komponent, som må wrappes rundt barn. Disse må brukes for at komponenten skal funke.
-Accordion har f.eks en `Accordion.Root` komponent som må wrappes rundt `Accordion.Item` komponentene.
+Accordion har f.eks en `Accordion` komponent som må wrappes rundt `Accordion.Item` komponentene.
 Dette er for å få riktig funksjonalitet gjennom komponenten.
 
 <br />
