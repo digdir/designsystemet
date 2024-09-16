@@ -52,9 +52,9 @@ export const MediumRow: StoryFn<{
         />
 
         <Select size={size}>
-          <option>opt1</option>
-          <option>opt2</option>
-          <option>opt3</option>
+          <Select.Option>opt1</Select.Option>
+          <Select.Option>opt2</Select.Option>
+          <Select.Option>opt3</Select.Option>
         </Select>
         <Button size={size}>Knapp</Button>
         <Combobox size={size}>

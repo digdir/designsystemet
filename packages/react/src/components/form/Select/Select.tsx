@@ -38,7 +38,7 @@ export type SelectProps = {
    * @default 0
    */
   htmlSize?: number;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
+} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'>;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select(props, ref: ForwardedRef<HTMLSelectElement>) {
