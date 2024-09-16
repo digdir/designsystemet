@@ -21,13 +21,13 @@ const config: StorybookConfig = {
       include: [resolve(__dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: ({ name, declarations = [] }: PropItem) => {
-        /* Default from `react-docgen-typescript` we have to add back when using a custom prop filter */
-        const hasDescription = declarations.some(
-          ({ fileName }) => !fileName.includes('node_modules'),
-        );
-
-        return hasDescription && name !== 'popovertarget'; // Skip popovertarget @types/react-dom patch
+      propFilter: (prop: PropItem) => {
+        // Keep the default filter logic from storybook:
+        // https://github.com/storybookjs/storybook/blob/40523765403480c4065373664553bb6cbdf9543d/code/core/src/core-server/presets/common-preset.ts#L169C5-L169C98
+        const defaultLogicFromStorybook = prop.parent
+          ? !/node_modules/.test(prop.parent.fileName)
+          : true;
+        return defaultLogicFromStorybook && prop.name !== 'popovertarget'; // Skip popovertarget @types/react-dom patch}
       },
     },
   },
