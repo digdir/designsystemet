@@ -27,15 +27,17 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'js' | 'json' | 'sh';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json';
   children?: string;
   className?: string;
+  syntax?: string;
 };
 
 const CodeSnippet = ({
   language = 'markdown',
   children = '',
   className,
+  syntax = 'js',
 }: CodeSnippetProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
   const [snippet, setSnippet] = useState('');
@@ -47,7 +49,7 @@ const CodeSnippet = ({
     ) {
       try {
         const formatted = await format(children, {
-          parser: language === 'ts' ? 'typescript' : language,
+          parser: language === 'ts' ? 'babel-ts' : language,
           plugins,
         });
         setSnippet(formatted);
@@ -92,7 +94,7 @@ const CodeSnippet = ({
           </Tooltip>
           <SyntaxHighlighter
             style={nightOwl}
-            language={language}
+            language={syntax}
             customStyle={{
               fontSize: '15px',
               margin: 0,
