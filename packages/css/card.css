@@ -31,12 +31,14 @@
       text-underline-offset: max(6px, 0.25rem, 0.22em);
     }
 
-    &:hover {
-      --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-    }
-
     &:active {
       --dsc-card-backround: var(--ds-color-neutral-surface-default);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        --dsc-card-backround: var(--ds-color-neutral-background-subtle);
+      }
     }
   }
 
@@ -47,12 +49,14 @@
     &[data-link] {
       --dsc-card-border-color: var(--ds-color-neutral-border-default);
 
-      &:hover {
-        --dsc-card-backround: var(--ds-color-neutral-surface-default);
-      }
-
       &:active {
         --dsc-card-backround: var(--ds-color-neutral-surface-hover);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          --dsc-card-backround: var(--ds-color-neutral-surface-default);
+        }
       }
     }
   }
@@ -65,12 +69,14 @@
     &[data-link] {
       --dsc-card-border-color: var(--ds-color-brand1-border-default);
 
-      &:hover {
-        --dsc-card-backround: var(--ds-color-brand1-surface-hover);
-      }
-
       &:active {
         --dsc-card-backround: var(--ds-color-brand1-surface-active);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          --dsc-card-backround: var(--ds-color-brand1-surface-hover);
+        }
       }
     }
   }
@@ -83,12 +89,14 @@
     &[data-link] {
       --dsc-card-border-color: var(--ds-color-brand2-border-default);
 
-      &:hover {
-        --dsc-card-backround: var(--ds-color-brand2-surface-hover);
-      }
-
       &:active {
         --dsc-card-backround: var(--ds-color-brand2-surface-active);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          --dsc-card-backround: var(--ds-color-brand2-surface-hover);
+        }
       }
     }
   }
@@ -101,12 +109,14 @@
     &[data-link] {
       --dsc-card-border-color: var(--ds-color-brand3-border-default);
 
-      &:hover {
-        --dsc-card-backround: var(--ds-color-brand3-surface-hover);
-      }
-
       &:active {
         --dsc-card-backround: var(--ds-color-brand3-surface-active);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          --dsc-card-backround: var(--ds-color-brand3-surface-hover);
+        }
       }
     }
   }
