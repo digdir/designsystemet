@@ -67,7 +67,7 @@ jobs:
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '🖥 \[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
