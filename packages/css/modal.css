@@ -16,44 +16,43 @@
   box-shadow: var(--ds-shadow-xl);
   background-color: var(--dsc-modal-background);
   color: var(--dsc-modal-color);
-}
 
-.ds-modal::backdrop {
-  background-color: var(--dsc-modal-backdrop-background);
-  animation: fade-in 300ms ease-in-out;
-}
+  &::backdrop {
+    background-color: var(--dsc-modal-backdrop-background);
+    animation: fade-in 300ms ease-in-out;
+  }
 
-.ds-modal[open] {
-  animation:
-    slide-in 300ms ease-in-out,
-    fade-in 300ms ease-in-out;
-}
+  &[open] {
+    animation:
+      slide-in 300ms ease-in-out,
+      fade-in 300ms ease-in-out;
+  }
 
-.ds-modal > hr {
-  margin: var(--ds-spacing-3) 0 !important;
-  border-color: var(--ds-color-neutral-border-subtle);
+  & > hr {
+    margin: var(--ds-spacing-3) 0 !important;
+  }
+
+  @media (max-width: 650px) {
+    & {
+      min-width: 100%;
+      max-width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &[open] {
+      animation: none;
+    }
+
+    &::backdrop {
+      animation: none;
+    }
+  }
 }
 
 .ds-modal--lock-scroll {
   overflow: hidden;
-}
-
-@media (max-width: 650px) {
-  .ds-modal {
-    min-width: 100%;
-    max-width: 100%;
-    border-radius: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ds-modal[open] {
-    animation: none;
-  }
-
-  .ds-modal::backdrop {
-    animation: none;
-  }
 }
 
 .ds-modal__header {
