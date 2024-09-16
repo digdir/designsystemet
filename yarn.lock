@@ -5716,13 +5716,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/luxon@npm:^3.4.2":
-  version: 3.4.2
-  resolution: "@types/luxon@npm:3.4.2"
-  checksum: 10/fd89566e3026559f2bc4ddcc1e70a2c16161905ed50be9473ec0cfbbbe919165041408c4f6e06c4bcf095445535052e2c099087c76b1b38e368127e618fc968d
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^4.0.0":
   version: 4.0.3
   resolution: "@types/mdast@npm:4.0.3"
@@ -8256,23 +8249,6 @@ __metadata:
   checksum: 10/ab953a73c72dbd4e8fc68e4ed4bfd92c97eb6c43734af3900add963fd3a9316f3bc0578b018b24198d4c31a358571eff5f0656e81a1f3b9ad5c547d58b2d093d
   languageName: node
   linkType: hard
-
-"dev@workspace:apps/dev":
-  version: 0.0.0-use.local
-  resolution: "dev@workspace:apps/dev"
-  dependencies:
-    "@navikt/aksel-icons": "npm:^6.14.0"
-    "@types/luxon": "npm:^3.4.2"
-    "@types/react": "npm:^18.3.3"
-    "@types/react-dom": "npm:^18.3.0"
-    luxon: "npm:^3.5.0"
-    next: "npm:^14.2.5"
-    normalize.css: "npm:^8.0.1"
-    react: "npm:^18.3.1"
-    react-countdown-circle-timer: "npm:^3.2.1"
-    react-dom: "npm:^18.3.1"
-  languageName: unknown
-  linkType: soft
 
 "devlop@npm:^1.0.0, devlop@npm:^1.1.0":
   version: 1.1.0
@@ -11418,13 +11394,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"luxon@npm:^3.5.0":
-  version: 3.5.0
-  resolution: "luxon@npm:3.5.0"
-  checksum: 10/48f86e6c1c96815139f8559456a3354a276ba79bcef0ae0d4f2172f7652f3ba2be2237b0e103b8ea0b79b47715354ac9fac04eb1db3485dcc72d5110491dd47f
-  languageName: node
-  linkType: hard
-
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -12802,13 +12771,6 @@ __metadata:
   version: 0.1.2
   resolution: "normalize-range@npm:0.1.2"
   checksum: 10/9b2f14f093593f367a7a0834267c24f3cb3e887a2d9809c77d8a7e5fd08738bcd15af46f0ab01cc3a3d660386f015816b5c922cea8bf2ee79777f40874063184
-  languageName: node
-  linkType: hard
-
-"normalize.css@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "normalize.css@npm:8.0.1"
-  checksum: 10/c3af2145c21d57b94fe9f1abe7bac82ec91f8088810ada6ee3385f29a2d51af441a469b3c680d25b27bfab5291908a3ef3ed7012955036e8967f0b18fe39f38a
   languageName: node
   linkType: hard
 
@@ -14319,15 +14281,6 @@ __metadata:
   peerDependencies:
     react: ^16.3.0 || ^17.0.1 || ^18.0.0
   checksum: 10/33423767c42362b29e0c8fd09f60bcf40d64aeb721fd63564f85c61357706a6080563ec40f33435d210d5b5b1af7277aef4545deccf771d08785a3cb19749470
-  languageName: node
-  linkType: hard
-
-"react-countdown-circle-timer@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "react-countdown-circle-timer@npm:3.2.1"
-  peerDependencies:
-    react: ">=16.8.0"
-  checksum: 10/6d8b1e4c620c51cf4f9036fe85b1bbb2b7d096f292cc3f1f442a31d1708927132fa479bb6172a4601ab1f9a0f07dc43f7a625b82cc5e2503db667b7797bd8b5b
   languageName: node
   linkType: hard
 
