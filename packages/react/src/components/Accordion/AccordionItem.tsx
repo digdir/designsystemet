@@ -18,7 +18,7 @@ export type AccordionItemProps = {
    * @default false
    */
   defaultOpen?: boolean;
-  /** Callback function when AccordionItem toggles due to a find in page */
+  /** Callback function when AccordionItem wants to open due to a find in page-search */
   onFound?: () => void;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children?: ReactNode;
