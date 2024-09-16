@@ -2,20 +2,20 @@
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
-import type {
-  ColorError,
-  ColorInfo,
-  ColorMode,
-  ContrastMode,
-  ThemeColors,
-  ThemeInfo,
-} from '@digdir/designsystemet/color';
 import {
   areColorsContrasting,
   canTextBeUsedOnColors,
   generateColorTheme,
   generateThemeForColor,
   isHexColor,
+  type {
+    ColorError,
+    ColorInfo,
+    ColorMode,
+    ContrastMode,
+    ThemeColors,
+    ThemeInfo,
+  }
 } from '@digdir/designsystemet/color';
 import { ColorModal, Container } from '@repo/components';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
