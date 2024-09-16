@@ -5,6 +5,7 @@ import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.
 export type CreateTokensOptions = {
   colors: Colors;
   typography: Typography;
+  themeName: string;
 };
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
@@ -28,9 +29,9 @@ const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
   return obj;
 };
 
-const generateTypographyTokens = ({ fontFamily }: Typography): TokensSet => {
+const generateTypographyTokens = (themeName: string, { fontFamily }: Typography): TokensSet => {
   return {
-    theme: {
+    [themeName]: {
       main: {
         $type: 'fontFamilies',
         $value: fontFamily ?? 'Inter',
@@ -51,7 +52,7 @@ const generateTypographyTokens = ({ fontFamily }: Typography): TokensSet => {
   };
 };
 
-const generateThemeTokens = (theme: ColorMode, colors: Colors): TokensSet => {
+const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors): TokensSet => {
   const accentColors = generateScaleForColor(colors.accent, theme);
   const neutralColors = generateScaleForColor(colors.neutral, theme);
   const brand1Colors = generateScaleForColor(colors.brand1, theme);
@@ -59,7 +60,7 @@ const generateThemeTokens = (theme: ColorMode, colors: Colors): TokensSet => {
   const brand3Colors = generateScaleForColor(colors.brand3, theme);
 
   return {
-    theme: {
+    [themeName]: {
       accent: createColorTokens(accentColors),
       neutral: createColorTokens(neutralColors),
       brand1: createColorTokens(brand1Colors),
@@ -90,19 +91,22 @@ const generateGlobalTokens = (theme: ColorMode) => {
 };
 
 export const createTokens = (opts: CreateTokensOptions) => {
-  const { colors, typography } = opts;
+  const { colors, typography, themeName: name } = opts;
 
   const tokens: Tokens = {
     colors: {
       light: {
-        theme: generateThemeTokens('light', colors),
+        [name]: generateThemeTokens(name, 'light', colors),
         global: generateGlobalTokens('light'),
       },
-      dark: { theme: generateThemeTokens('dark', colors), global: generateGlobalTokens('dark') },
-      contrast: { theme: generateThemeTokens('contrast', colors), global: generateGlobalTokens('contrast') },
+      dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
+      contrast: {
+        [name]: generateThemeTokens(name, 'contrast', colors),
+        global: generateGlobalTokens('contrast'),
+      },
     },
     typography: {
-      primary: generateTypographyTokens(typography),
+      primary: generateTypographyTokens(name, typography),
     },
   };
 

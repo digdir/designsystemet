@@ -11,8 +11,8 @@ export function generateMetadataJson(modes: ColorModes, themes: string[]): Metad
     tokenSetOrder: [
       'primitives/globals',
       'primitives/size/default',
-      'primitives/modes/typography/primary/theme',
-      'primitives/modes/typography/secondary/theme',
+      ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
+      ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
       ...modes.flatMap((mode) => [
         `primitives/modes/colors/${mode}/global`,
         ...themes.map((theme) => `primitives/modes/colors/${mode}/${theme}`),
