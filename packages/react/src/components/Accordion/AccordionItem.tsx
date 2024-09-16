@@ -1,6 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import type { HTMLAttributes, MutableRefObject, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import '@u-elements/u-details';
 
@@ -96,6 +96,7 @@ const animateHeight = (details: HTMLDetailsElement | null, open: boolean) => {
     '(prefers-reduced-motion: reduce)',
   ).matches;
 
+  details?.setAttribute('data-chevron-open', `${open}`); // Make chevron animate with content
   if (hasReducedMotion || !hasAnimate || !hasContent) {
     if (details) details.open = open;
   } else if (details.open !== open) {
