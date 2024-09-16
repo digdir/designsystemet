@@ -15,7 +15,7 @@ const menu = [
     href: '/',
   }, */
   {
-    name: 'Testside!',
+    name: 'Testside',
     href: '/testside',
   },
   {
