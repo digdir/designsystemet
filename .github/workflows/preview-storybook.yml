@@ -57,7 +57,7 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find Storybook deployment
+      - name: Find Storefront deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-storefront
         with:
@@ -69,7 +69,7 @@ jobs:
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Theme\]\((https:\/\/[^)]+)\)'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
