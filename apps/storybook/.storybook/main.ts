@@ -4,10 +4,6 @@ import { env } from 'node:process';
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
 
-const storybookPropFilter = (prop: unknown) => true;
-// storybookTypescriptConfig().typescript.reactDocgenTypescriptOptions
-//   .propFilter;
-
 const config: StorybookConfig = {
   typescript: {
     check: true,
