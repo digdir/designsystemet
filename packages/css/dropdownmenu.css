@@ -1,7 +1,6 @@
 .ds-dropdownmenu {
   --dsc-dropdownmenu-padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  --dsc-dropdownmenu-min-width: 260px;
-  --dsc-dropdownmenu-hr-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dropdownmenu-min-width: 16rem;
   --dsc-dropdownmenu-item-padding: 0 var(--ds-spacing-4);
   --dsc-dropdownmenu-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
@@ -18,16 +17,12 @@
 
   &[data-size='sm'] {
     --dsc-dropdownmenu-padding: var(--ds-spacing-2);
-    --dsc-dropdownmenu-min-width: 240px;
+    --dsc-dropdownmenu-min-width: 15rem;
   }
 
   &[data-size='lg'] {
     --dsc-dropdownmenu-padding: var(--ds-spacing-4) var(--ds-spacing-2);
-    --dsc-dropdownmenu-min-width: 280px;
-  }
-
-  & > hr {
-    border-color: var(--dsc-dropdownmenu-hr-border-color) !important;
+    --dsc-dropdownmenu-min-width: 18rem;
   }
 }
 
