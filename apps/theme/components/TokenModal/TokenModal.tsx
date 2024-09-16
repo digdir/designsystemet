@@ -7,6 +7,7 @@ import {
   Link,
   Modal,
   Paragraph,
+  Textfield,
 } from '@digdir/designsystemet-react';
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
 import { CodeSnippet } from '@repo/components';
@@ -38,6 +39,7 @@ export const TokenModal = ({
 
   const [lightThemeSnippet, setLightThemeSnippet] = useState('');
   const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
+  const [themeName, setThemeName] = useState('theme');
 
   const cliSnippet = `npx @digdir/designsystemet tokens create \\
    --accent "${accentColor}" \\
@@ -45,6 +47,7 @@ export const TokenModal = ({
    --brand1 "${brand1Color}" \\
    --brand2 "${brand2Color}" \\
    --brand3 "${brand3Color}" \\
+   --theme "${themeName}" \\
    --write
    `;
 
@@ -58,6 +61,7 @@ export const TokenModal = ({
         brand3: brand3Color,
       },
       typography: { fontFamily: 'Inter' },
+      themeName: 'theme',
     });
 
     setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
@@ -93,6 +97,20 @@ export const TokenModal = ({
           <Heading level={3} size='xs' spacing>
             Alt 1. Design tokens
           </Heading>
+          <Textfield
+            label='Navn på tema'
+            description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
+            value={themeName}
+            onChange={(e) => {
+              const value = e.currentTarget.value
+                .replace(/\s+/g, '-')
+                .replace(/[^A-Z0-9-]+/gi, '')
+                .toLowerCase();
+
+              setThemeName(value);
+            }}
+            style={{ marginBlock: 'var(--ds-spacing-4)' }}
+          ></Textfield>
           <Paragraph spacing>
             Kopier kommandosnutten under og kjør på maskinen din for å generere
             alle design tokens (json-filer). Sørg for at du har{' '}
@@ -105,7 +123,7 @@ export const TokenModal = ({
             className={classes.snippet}
             style={{ marginBottom: 'var(--ds-spacing-8)' }}
           >
-            <CodeSnippet language='js'>{cliSnippet}</CodeSnippet>
+            <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
           </div>
           <Heading level={3} size='xs' spacing>
             Alt 2. Figma plugin
@@ -138,7 +156,7 @@ export const TokenModal = ({
                 Light Mode
               </Heading>
               <div className={classes.snippet}>
-                <CodeSnippet language='js'>{lightThemeSnippet}</CodeSnippet>
+                <CodeSnippet language='json'>{lightThemeSnippet}</CodeSnippet>
               </div>
             </div>
             <div className={classes.column}>
@@ -146,7 +164,7 @@ export const TokenModal = ({
                 Dark Mode
               </Heading>
               <div className={classes.snippet}>
-                <CodeSnippet language='js'>{darkThemeSnippet}</CodeSnippet>
+                <CodeSnippet language='json'>{darkThemeSnippet}</CodeSnippet>
               </div>
             </div>
           </div>
