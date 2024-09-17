@@ -34,14 +34,14 @@ export type ToggleGroupProps = {
 /**
  * Display a group of buttons that can be toggled between.
  * @example
- * <ToggleGroup.Root onChange={(value) => console.log(value)}>
+ * <ToggleGroup onChange={(value) => console.log(value)}>
  *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
  *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
- * </ToggleGroup.Root>
+ * </ToggleGroup>
  */
-export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
-  (
+export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
+  function ToggleGroup(
     {
       size = 'md',
       children,
@@ -53,7 +53,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const nameId = useId();
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
@@ -70,32 +70,27 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupProps>(
     }
 
     return (
-      <div className={cl('ds-togglegroup', className)} ref={ref} {...rest}>
-        <ToggleGroupContext.Provider
-          value={{
-            value,
-            defaultValue,
-            name: name ?? `togglegroup-name-${nameId}`,
-            onChange: onValueChange,
-            size,
-          }}
-        >
-          {name && (
-            <input
-              className='ds-togglegroup__input'
-              name={name}
-              value={value}
-            />
-          )}
-          <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
-            <div className='ds-togglegroup__content' role='radiogroup'>
-              {children}
-            </div>
-          </RovingFocusRoot>
-        </ToggleGroupContext.Provider>
-      </div>
+      <ToggleGroupContext.Provider
+        value={{
+          value,
+          defaultValue,
+          name: name ?? `togglegroup-name-${nameId}`,
+          onChange: onValueChange,
+          size,
+        }}
+      >
+        <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
+          <div
+            className={cl('ds-togglegroup', className)}
+            role='radiogroup'
+            ref={ref}
+            {...rest}
+          >
+            {name && <input type='hidden' name={name} value={value} />}
+            {children}
+          </div>
+        </RovingFocusRoot>
+      </ToggleGroupContext.Provider>
     );
   },
 );
-
-ToggleGroupRoot.displayName = 'ToggleGroupRoot';
