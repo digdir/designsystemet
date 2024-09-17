@@ -12,13 +12,15 @@ export type ModalHeaderProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-  function ModalHeader({ children, asChild, ...rest }, ref) {
-    const Component = asChild ? Slot : 'header';
+  function ModalHeader({ className, asChild, ...rest }, ref) {
+    const Component = asChild ? Slot : 'div';
 
     return (
-      <Component ref={ref} {...rest}>
-        {children}
-      </Component>
+      <Component
+        className={cl('ds-modal__header', className)}
+        ref={ref}
+        {...rest}
+      />
     );
   },
 );
