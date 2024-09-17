@@ -4,7 +4,7 @@ import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 
 import { RovingFocusItem } from '../../utilities';
-import { DropdownMenuCtx } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenu';
 
 export type DropdownMenuItemProps = Omit<
   ButtonProps,
@@ -16,7 +16,6 @@ export const DropdownMenuItem = forwardRef<
   DropdownMenuItemProps
 >(function DropdownMenuItem({ children, className, style, ...rest }, ref) {
   const { size } = useContext(DropdownMenuCtx);
-  const value = useId();
 
   return (
     <li className={className} style={style}>

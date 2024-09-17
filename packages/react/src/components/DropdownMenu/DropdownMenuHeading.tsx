@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef, useContext } from 'react';
 import { Paragraph } from '../Typography';
-import { DropdownMenuCtx } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenu';
 
 export type DropdownMenuHeadingProps = HTMLAttributes<HTMLHeadingElement>;
 
