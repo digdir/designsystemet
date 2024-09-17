@@ -11,8 +11,6 @@ export type ErrorMessageProps = {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Adds margin-bottom */
   spacing?: boolean;
-  /** Toggle error color */
-  error?: boolean;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -22,26 +20,20 @@ export type ErrorMessageProps = {
 
 /** Use `ErrorMessage` to display text as error message. */
 export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
-  (
-    { size = 'md', className, spacing, asChild, error = true, ...rest },
+  function ErrorMessage(
+    { size = 'md', className, spacing, asChild, ...rest },
     ref,
-  ) => {
+  ) {
     const Component = asChild ? Slot : 'div';
 
     return (
       <Component
         ref={ref}
-        className={cl(
-          'ds-error-message',
-          `ds-error_message--${size}`,
-          spacing && 'ds-error-message--spacing',
-          error && 'ds-error-message--error',
-          className,
-        )}
+        className={cl('ds-error-message', className)}
+        data-size={size}
+        data-spacing={spacing || undefined}
         {...rest}
       />
     );
   },
 );
-
-ErrorMessage.displayName = 'ErrorMessage';

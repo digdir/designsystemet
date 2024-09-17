@@ -5,8 +5,8 @@
   margin: 0;
   padding: 0;
   color: var(--ds-color-neutral-text-default);
-}
 
-.ds-label--spacing {
-  margin-bottom: var(--dsc-bottom-spacing);
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
+  }
 }
