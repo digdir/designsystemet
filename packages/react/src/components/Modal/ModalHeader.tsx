@@ -51,11 +51,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
     return (
       <Component
         ref={ref}
-        className={cl(
-          'ds-modal__header',
-          !closeButton && 'ds-modal__header--no-button',
-          className,
-        )}
+        className={cl('ds-modal__header', className)}
         {...rest}
       >
         {subtitle && (
@@ -77,9 +73,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
             icon
             className='ds-modal__header__button'
             title={closeButtonTitle}
-          >
-            <XMarkIcon title={closeButtonTitle} fontSize='1.5em' />
-          </Button>
+          />
         )}
       </Component>
     );
