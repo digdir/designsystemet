@@ -13,7 +13,7 @@ const decorators = [
 ];
 
 export default {
-  'aria-label': 'Komponenter/HelpText',
+  title: 'Komponenter/HelpText',
   component: HelpText,
 } as Meta;
 
