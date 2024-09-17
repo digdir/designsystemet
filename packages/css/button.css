@@ -28,6 +28,10 @@
   text-align: inherit;
   text-decoration: none;
 
+  &:focus-visible {
+    position: relative; /* Place focusring on top */
+  }
+
   &:not([hidden]) {
     display: flex;
   }
