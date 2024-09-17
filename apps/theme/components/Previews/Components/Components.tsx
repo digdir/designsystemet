@@ -265,11 +265,11 @@ export const Components = () => {
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup.Root>
+          </ToggleGroup>
         </div>
         <Heading size='xs' spacing className={classes.chipsHeading}>
           Filtrer på språk

@@ -99,17 +99,17 @@ function PageOne() {
           i feltet under.
         </Paragraph>
 
-        <ToggleGroup.Root
+        <ToggleGroup
           className='modes'
           defaultValue='light'
           name='toggle-group-nuts'
           size='sm'
-          onChange={(e) => setMode(e)}
+          onChange={(e: string) => setMode(e)}
         >
           <ToggleGroup.Item value='light'>Light Mode</ToggleGroup.Item>
           <ToggleGroup.Item value='dark'>Dark Mode</ToggleGroup.Item>
           {/* <ToggleGroup.Item value='contrast'>Contrast</ToggleGroup.Item> */}
-        </ToggleGroup.Root>
+        </ToggleGroup>
         <Textarea
           className='textarea'
           cols={40}
