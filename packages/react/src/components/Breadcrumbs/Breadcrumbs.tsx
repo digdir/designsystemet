@@ -1,5 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
+import { Paragraph } from '../Typography';
 
 export type BreadcrumbsProps = {
   /**
@@ -15,12 +16,18 @@ export type BreadcrumbsProps = {
 } & HTMLAttributes<HTMLElement>;
 
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
-  ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
-    <nav
-      aria-label={ariaLabel}
-      className={cl('ds-breadcrumbs', className)}
-      ref={ref}
-      {...rest}
-    />
+  (
+    { 'aria-label': ariaLabel = 'Du er her:', className, size, ...rest },
+    ref,
+  ) => (
+    <Paragraph asChild size={size}>
+      <nav
+        aria-label={ariaLabel}
+        className={cl('ds-breadcrumbs', className)}
+        data-size={size}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
   ),
 );
