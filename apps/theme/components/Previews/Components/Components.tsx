@@ -398,7 +398,7 @@ export const Components = () => {
             <DropdownMenu.Item>Spansk</DropdownMenu.Item>
             <DropdownMenu.Item>Fransk</DropdownMenu.Item>
           </DropdownMenu.Content>
-          <HelpText title='Du har ikke valgt språk'>
+          <HelpText aria-label='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
         </DropdownMenu.Root>

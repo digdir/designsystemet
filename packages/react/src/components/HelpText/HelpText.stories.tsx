@@ -13,24 +13,15 @@ const decorators = [
 ];
 
 export default {
-  title: 'Komponenter/HelpText',
+  'aria-label': 'Komponenter/HelpText',
   component: HelpText,
 } as Meta;
 
 export const Preview: Story = {
   args: {
-    title: 'Help text title',
+    'aria-label': 'Help text title',
     children: 'Help text content',
     size: 'md',
   },
   decorators,
-};
-
-export const Portal: Story = {
-  args: {
-    title: 'Help text title',
-    children: 'Help text content',
-    size: 'md',
-    placement: 'top',
-  },
 };
