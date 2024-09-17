@@ -5,13 +5,6 @@
 /** Import order defines ordinal specificity for layers */
 @import url('./baseline/ds-reset.css') layer(ds.reset);
 @import url('./baseline/typography.css') layer(ds.typography);
-
-/* @import url('./baseline/typography/label.css') layer(ds.base.typography);
-@import url('./baseline/typography/heading.css') layer(ds.base.typography);
-@import url('./baseline/typography/paragraph.css') layer(ds.base.typography);
-@import url('./baseline/typography/ingress.css') layer(ds.base.typography);
-@import url('./baseline/typography/error-message.css') layer(ds.base.typography); */
-
 @import url('./utilities.css') layer(ds.utilities);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
