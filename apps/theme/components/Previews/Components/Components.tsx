@@ -390,9 +390,9 @@ export const Components = () => {
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
-        <DropdownMenu.Context placement='top'>
+        <DropdownMenu.Context>
           <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
-          <DropdownMenu>
+          <DropdownMenu placement='top'>
             <DropdownMenu.Item>Norsk</DropdownMenu.Item>
             <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
             <DropdownMenu.Item>Spansk</DropdownMenu.Item>
