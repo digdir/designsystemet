@@ -60,14 +60,14 @@ jobs:
         id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '📖 \[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Find Storefront deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-storefront
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2

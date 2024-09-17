@@ -62,7 +62,7 @@ jobs:
         id: regex-storefront
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '🖥 \[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
 
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
@@ -88,7 +88,7 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            📖 [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex-storefront.outputs.match }}
 
