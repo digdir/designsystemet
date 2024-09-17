@@ -1,10 +1,11 @@
 name: Create Initial Preview Comment
 on:
-  pull_request:
-    types: [opened]
+  workflow_dispatch:
+#     pull_request:
+#       types: [opened]
 
-env:
-  PR_NUMBER: ${{ github.event.number }}
+# env:
+#   PR_NUMBER: ${{ github.event.number }}
 
 jobs:
   Deploy-Preview:
@@ -12,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ env.PR_NUMBER }}
-          body: |
-            **Preview deployments for this pull request:**
-            > No deployments found.
+      # - name: Create comment
+      #   uses: peter-evans/create-or-update-comment@v3
+      #   with:
+      #     issue-number: ${{ env.PR_NUMBER }}
+      #     body: |
+      #       **Preview deployments for this pull request:**
+      #       > No deployments found.
