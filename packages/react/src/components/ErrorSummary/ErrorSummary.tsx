@@ -20,8 +20,8 @@ export type ErrorSummaryProps = {
   size?: ListUnorderedProps['size'];
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
-  (
+export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
+  function ErrorSummary(
     {
       className,
       size = 'md',
@@ -31,24 +31,22 @@ export const ErrorSummaryRoot = forwardRef<HTMLDivElement, ErrorSummaryProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const randomId = useId();
     const [headingId, setHeadingId] = useState<string>(randomId);
 
     return (
       <ErrorSummaryContext.Provider value={{ size, headingId, setHeadingId }}>
         <div
+          aria-labelledby={headingId}
+          aria-live={ariaLive}
+          aria-relevant={ariaRelevant}
           className={cl('ds-error-summary', className)}
           ref={ref}
           role={role}
-          aria-live={ariaLive}
-          aria-relevant={ariaRelevant}
-          aria-labelledby={headingId}
           {...rest}
         />
       </ErrorSummaryContext.Provider>
     );
   },
 );
-
-ErrorSummaryRoot.displayName = 'ErrorSummaryRoot';

@@ -9,6 +9,10 @@
   border-radius: var(--dsc-errorsummary-border-radius);
   background-color: var(--dsc-errorsummary-background);
 
+  & :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--dsc-errorsummary-heading-color);
+  }
+
   & a {
     color: var(--dsc-errorsummary-link-color);
   }
@@ -16,8 +20,4 @@
   & li:last-of-type {
     margin-bottom: 0;
   }
-}
-
-.ds-error-summary__heading {
-  color: var(--dsc-errorsummary-heading-color);
 }
