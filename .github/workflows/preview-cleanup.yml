@@ -5,10 +5,9 @@ on:
 
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STOREFRONT }}
-  STORYBOOK_URL: storybook-pr-${{ github.event.number }}.dev.designsystemet.no
-  STOREFRONT_URL: storefront-pr-${{ github.event.number }}.dev.designsystemet.no
+  STORYBOOK_URL: pr-${{ github.event.number }}.storybook.designsystemet.no
+  STOREFRONT_URL: pr-${{ github.event.number }}.designsystemet.no
+  THEME_URL: pr-${{ github.event.number }}.theme.designsystemet.no
   ALIASES:
 
 jobs:
@@ -33,3 +32,7 @@ jobs:
       - name: Remove Storefront alias if it exists
         if: contains(env.ALIASES, env.STOREFRONT_URL)
         run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.STOREFRONT_URL }}
+
+      - name: Remove Theme alias if it exists
+        if: contains(env.ALIASES, env.THEME_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.THEME_URL }}
