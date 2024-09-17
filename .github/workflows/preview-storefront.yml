@@ -42,7 +42,7 @@ jobs:
         run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.designsystemet.no
 
       - name: Find Preview Comment
         uses: peter-evans/find-comment@v2
@@ -88,6 +88,6 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storefront](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex-theme.outputs.match }}

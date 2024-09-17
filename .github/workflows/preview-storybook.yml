@@ -44,7 +44,7 @@ jobs:
         run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no
 
       - name: Find Preview Comment
         uses: peter-evans/find-comment@v2
@@ -88,7 +88,7 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storybook](https://pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
 
             ${{ steps.regex-storefront.outputs.match }}
 
