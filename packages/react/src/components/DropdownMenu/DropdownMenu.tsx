@@ -17,14 +17,7 @@ export type DropdownMenuProps = {
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   function DropddownMenuContent(
-    {
-      open,
-      onClose,
-      placement = 'bottom-end',
-      size = 'md',
-      className,
-      ...rest
-    },
+    { placement = 'bottom-end', size = 'md', className, ...rest },
     ref,
   ) {
     const { setSize } = useContext(DropdownMenuCtx);
@@ -39,10 +32,8 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       <Popover
         ref={ref}
         placement={placement}
-        onClose={onClose}
-        open={open}
+        size={size}
         className={cl('ds-dropdownmenu', className)}
-        data-size={size}
         {...rest}
       />
     );

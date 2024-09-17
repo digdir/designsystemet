@@ -12,7 +12,7 @@ export const DropdownMenuList = forwardRef<
     <ul
       ref={ref}
       role='group'
-      className={cl('ds-dropdownmenu__group', className)}
+      className={cl('ds-dropdownmenu__list', className)}
       {...rest}
     />
   );
