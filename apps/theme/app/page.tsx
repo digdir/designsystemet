@@ -267,7 +267,7 @@ export default function Home() {
       <main className={classes.main}>
         <Container>
           <Heading size='md' className={classes.title}>
-            Sett opp fargetema
+            Sett opp fargetema X
           </Heading>
           <ThemeToolbar
             accentError={accentError}
