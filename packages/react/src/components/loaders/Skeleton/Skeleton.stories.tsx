@@ -4,11 +4,11 @@ import { Button, Heading, Paragraph } from '../../';
 
 import { Skeleton } from '.';
 
-type Story = StoryObj<typeof Skeleton.Rectangle>;
+type Story = StoryObj<typeof Skeleton>;
 
 export default {
   title: 'Komponenter/Loaders/Skeleton',
-  component: Skeleton.Rectangle,
+  component: Skeleton,
 } as Meta;
 
 export const Preview: Story = {
@@ -27,9 +27,9 @@ export const Components: StoryFn<typeof Text> = () => {
         gap: '20px',
       }}
     >
-      <Skeleton.Circle width='50px' height='50px' />
-      <Skeleton.Rectangle width='100px' height='50px' />
-      <Skeleton.Text width='50px' height='16px' />
+      <Skeleton variant='circle' width='50px' height='50px' />
+      <Skeleton variant='rectangle' width='100px' height='50px' />
+      <Skeleton variant='text' width='50px' height='16px' />
     </div>
   );
 };
@@ -41,7 +41,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         width: '400px',
       }}
     >
-      <Skeleton.Rectangle width='100%' height='150px' />
+      <Skeleton height='150px' />
       <div
         style={{
           display: 'flex',
@@ -50,31 +50,29 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
           padding: '5px 0 5px 0',
         }}
       >
-        <Skeleton.Circle width='30px' height='30px' />
+        <Skeleton variant='circle' width='30px' height='30px' />
         <Heading asChild size='md'>
-          <Skeleton.Text>En medium tittel</Skeleton.Text>
+          <Skeleton variant='text'>En medium tittel</Skeleton>
         </Heading>
       </div>
-      <Skeleton.Text width='100%' />
-      <Skeleton.Text width='100%' />
-      <Skeleton.Text width='80%' />
+      <Skeleton variant='text' />
+      <Skeleton variant='text' />
+      <Skeleton variant='text' width='80%' />
     </div>
   );
 };
 
 export const Children: StoryFn<typeof Skeleton> = () => {
   return (
-    <>
-      <Skeleton.Text>
-        <Paragraph>
-          Her er en tekst som blir sendt inn som barn av en Skeleton.Text.
-        </Paragraph>
-        <Paragraph>
-          Se hvordan Skeleton da dekker den samlede bredden og høyden til barna.
-        </Paragraph>
-        <Button>Knapp</Button>
-      </Skeleton.Text>
-    </>
+    <Skeleton variant='rectangle'>
+      <Paragraph>
+        Her er en tekst som blir sendt inn som barn av en Skeleton.
+      </Paragraph>
+      <Paragraph>
+        Se hvordan Skeleton da dekker den samlede bredden og høyden til barna.
+      </Paragraph>
+      <Button>Knapp</Button>
+    </Skeleton>
   );
 };
 
@@ -82,18 +80,19 @@ export const As: StoryFn<typeof Skeleton> = () => {
   return (
     <>
       <Heading size='lg' asChild>
-        <Skeleton.Text>Her er en heading</Skeleton.Text>
+        <Skeleton variant='text'>Her er en heading</Skeleton>
       </Heading>
       <Paragraph asChild>
-        <Skeleton.Text>
-          Her er en paragraf-komponent som blir rendret som en Skeleton.Text.
-        </Skeleton.Text>
+        <Skeleton variant='text'>
+          Her er en paragraf-komponent som blir rendret som en Skeleton
+          variant="text".
+        </Skeleton>
       </Paragraph>
       <Paragraph asChild>
-        <Skeleton.Text>
+        <Skeleton variant='text'>
           Se hvordan Skeleton da overskriver stylingen til det enkelte
           elementet.
-        </Skeleton.Text>
+        </Skeleton>
       </Paragraph>
     </>
   );
@@ -111,13 +110,13 @@ export const TextExample: StoryFn<typeof Text> = () => {
         </div>
         <div style={{ width: '140px' }}>
           <Heading size='md' asChild>
-            <Skeleton.Text>Heading</Skeleton.Text>
+            <Skeleton variant='text'>Heading</Skeleton>
           </Heading>
           <Paragraph size='sm'>
-            <Skeleton.Text width='100%' />
+            <Skeleton variant='text' />
 
-            <Skeleton.Text width='100%' />
-            <Skeleton.Text width='40%' />
+            <Skeleton variant='text' />
+            <Skeleton variant='text' />
           </Paragraph>
         </div>
       </div>
