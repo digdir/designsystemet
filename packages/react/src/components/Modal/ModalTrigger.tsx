@@ -3,26 +3,22 @@ import { forwardRef, useContext } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 
 import { Button } from '../Button';
-
-import { ModalContext } from './ModalRoot';
+import { Context } from './ModalContext';
 
 export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
 
 export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
-  ({ asChild, ...rest }, ref) => {
-    const { modalRef, open } = useContext(ModalContext);
+  function ModalTrigger({ asChild, ...rest }, ref) {
+    const { modalRef } = useContext(Context);
     const Component = asChild ? Slot : Button;
 
     return (
       <Component
-        ref={ref}
-        onClick={() => modalRef?.current?.showModal()}
-        aria-expanded={open}
         aria-haspopup='dialog'
+        onClick={() => modalRef?.current?.showModal()}
+        ref={ref}
         {...rest}
       />
     );
   },
 );
-
-ModalTrigger.displayName = 'ModalTrigger';

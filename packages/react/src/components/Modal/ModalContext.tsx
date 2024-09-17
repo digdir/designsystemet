@@ -1,26 +1,24 @@
 import { createContext, useCallback, useRef, useState } from 'react';
 import type { ReactNode, RefObject } from 'react';
 
-export type ModalContextProps = {
-  setCloseModal: (fn: () => void) => void;
+export type ContextProps = {
   closeModal?: () => void;
   modalRef: RefObject<HTMLDialogElement>;
   open: boolean;
+  setCloseModal: (fn: () => void) => void;
   setOpen: (open: boolean) => void;
 };
 
-export type ModalRootProps = {
-  children: ReactNode;
-};
+export type ModalContextProps = { children: ReactNode };
 
-export const ModalContext = createContext<ModalContextProps>({
-  setCloseModal: () => {},
+export const Context = createContext<ContextProps>({
   modalRef: { current: null },
   open: false,
+  setCloseModal: () => {},
   setOpen: () => {},
 });
 
-export const ModalRoot = ({ children }: ModalRootProps) => {
+export const ModalContext = ({ children }: ModalContextProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
   const [closeModal, setCloseModal] = useState<(() => void) | undefined>();
@@ -30,18 +28,18 @@ export const ModalRoot = ({ children }: ModalRootProps) => {
   }, []);
 
   return (
-    <ModalContext.Provider
+    <Context.Provider
       value={{
-        setCloseModal: setCloseModalInContext,
         closeModal,
         modalRef,
         open,
+        setCloseModal: setCloseModalInContext,
         setOpen,
       }}
     >
       {children}
-    </ModalContext.Provider>
+    </Context.Provider>
   );
 };
 
-ModalRoot.displayName = 'ModalRoot';
+ModalContext.displayName = 'ModalContext';
