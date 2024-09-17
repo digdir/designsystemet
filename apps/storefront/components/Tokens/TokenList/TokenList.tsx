@@ -224,7 +224,7 @@ const TokenList = ({
               <DropdownMenu.Trigger variant='secondary'>
                 Brand: {capitalizeString(brand)}
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
+              <DropdownMenu>
                 <DropdownMenu.Item onClick={() => setBrand('digdir')}>
                   Digdir
                 </DropdownMenu.Item>
@@ -237,7 +237,7 @@ const TokenList = ({
                 <DropdownMenu.Item onClick={() => setBrand('portal')}>
                   Brreg
                 </DropdownMenu.Item>
-              </DropdownMenu.Content>
+              </DropdownMenu>
             </DropdownMenu.Context>
           )}
           {showModeSwitcher && (
@@ -245,14 +245,14 @@ const TokenList = ({
               <DropdownMenu.Trigger variant='secondary'>
                 Mode: {capitalizeString(mode)}
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
+              <DropdownMenu>
                 <DropdownMenu.Item onClick={() => setMode('light')}>
                   Light
                 </DropdownMenu.Item>
                 <DropdownMenu.Item onClick={() => setMode('dark')}>
                   Dark
                 </DropdownMenu.Item>
-              </DropdownMenu.Content>
+              </DropdownMenu>
             </DropdownMenu.Context>
           )}
         </div>

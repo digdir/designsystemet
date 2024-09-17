@@ -1,55 +1,34 @@
-import type { Placement } from '@floating-ui/react';
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import type { ReactNode } from 'react';
 
-import type { PortalProps } from '../../types/Portal';
 import { PopoverContext } from '../Popover';
+import type { DropdownMenuProps } from './DropdownMenu';
 
 export type DropdownMenuContextProps = {
-  /** Whether the dropdown is open or not.
-   * @default false
-   */
-  open?: boolean;
-  /** Callback function when dropdown closes */
-  onClose?: () => void;
-  /** The placement of the dropdown
-   * @default bottom-end
-   */
-  placement?: Placement;
-  /**
-   * The size of the dropdown
-   * @default md
-   **/
-  size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
-} & PortalProps;
+};
 
 /**
  * DropdownMenuContext is the root component for the DropdownMenu component.
  * @example
  * <DropdownMenu.Context>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
- *  <DropdownMenu.Content>
+ *  <DropdownMenu>
  *    <DropdownMenu.Group heading='Heading'>
  *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
  *    </DropdownMenu.Group>
- *  </DropdownMenu.Content>
+ *  </DropdownMenu>
  * </DropdownMenu.Context>
  */
-export const DropdownMenuContext = ({
-  open,
-  onClose,
-  placement = 'bottom-end',
-  size = 'md',
-  children,
-}: DropdownMenuContextProps) => {
+export const DropdownMenuContext = ({ children }: DropdownMenuContextProps) => {
+  const [size, setSize] =
+    useState<NonNullable<DropdownMenuProps['size']>>('md');
+
   return (
     <DropdownMenuCtx.Provider
       value={{
         size,
-        placement,
-        onClose,
-        open,
+        setSize,
       }}
     >
       <PopoverContext>{children}</PopoverContext>
@@ -60,10 +39,8 @@ export const DropdownMenuContext = ({
 DropdownMenuContext.displayName = 'DropdownMenuContext';
 
 type DropdownMenuCtxType = {
-  size: NonNullable<DropdownMenuContextProps['size']>;
-  placement?: DropdownMenuContextProps['placement'];
-  open?: boolean;
-  onClose?: DropdownMenuContextProps['onClose'];
+  size: NonNullable<DropdownMenuProps['size']>;
+  setSize?: (size: NonNullable<DropdownMenuProps['size']>) => void;
 };
 
 export const DropdownMenuCtx = createContext<DropdownMenuCtxType>({

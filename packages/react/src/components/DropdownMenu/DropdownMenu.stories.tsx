@@ -6,15 +6,15 @@ import { DropdownMenu } from '.';
 
 export default {
   title: 'Komponenter/DropdownMenu',
-  component: DropdownMenu.Context,
+  component: DropdownMenu,
 } as Meta;
 
-export const Preview: StoryFn<typeof DropdownMenu.Context> = (args) => {
+export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
   return (
     <>
-      <DropdownMenu.Context {...args}>
+      <DropdownMenu.Context>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
-        <DropdownMenu.Content>
+        <DropdownMenu {...args}>
           <DropdownMenu.Group heading='Heading 2'>
             <DropdownMenu.Item>Button 1.1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 1.2</DropdownMenu.Item>
@@ -23,7 +23,7 @@ export const Preview: StoryFn<typeof DropdownMenu.Context> = (args) => {
             <DropdownMenu.Item>Button 2.1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 2.2</DropdownMenu.Item>
           </DropdownMenu.Group>
-        </DropdownMenu.Content>
+        </DropdownMenu>
       </DropdownMenu.Context>
     </>
   );
@@ -34,11 +34,11 @@ Preview.args = {
   size: 'md',
 };
 
-export const Icons: StoryFn<typeof DropdownMenu.Context> = () => {
+export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
   return (
     <DropdownMenu.Context>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
-      <DropdownMenu.Content>
+      <DropdownMenu {...args}>
         <DropdownMenu.Group>
           <DropdownMenu.Item asChild>
             <a
@@ -61,7 +61,7 @@ export const Icons: StoryFn<typeof DropdownMenu.Context> = () => {
             </a>
           </DropdownMenu.Item>
         </DropdownMenu.Group>
-      </DropdownMenu.Content>
+      </DropdownMenu>
     </DropdownMenu.Context>
   );
 };
@@ -71,11 +71,11 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu.Context open={open} onClose={() => setOpen(false)} portal>
+      <DropdownMenu.Context>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content>
+        <DropdownMenu open={open} onClose={() => setOpen(false)}>
           <DropdownMenu.Group>
             <DropdownMenu.Item asChild>
               <a
@@ -98,7 +98,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
               </a>
             </DropdownMenu.Item>
           </DropdownMenu.Group>
-        </DropdownMenu.Content>
+        </DropdownMenu>
       </DropdownMenu.Context>
     </>
   );

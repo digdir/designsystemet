@@ -1,9 +1,7 @@
-import { useMergeRefs } from '@floating-ui/react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 
 import { PopoverTrigger } from '../Popover';
-import { DropdownMenuCtx } from './DropdownMenuContext';
 
 export type DropdownMenuTriggerProps = ComponentPropsWithRef<
   typeof PopoverTrigger

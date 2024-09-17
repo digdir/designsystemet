@@ -10,12 +10,12 @@ const Comp = (args: Partial<DropdownMenuContextProps>) => {
   return (
     <DropdownMenu.Context {...args}>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
-      <DropdownMenu.Content>
+      <DropdownMenu>
         <DropdownMenu.Group heading='Links'>
           <DropdownMenu.Item>Item</DropdownMenu.Item>
           {args.children}
         </DropdownMenu.Group>
-      </DropdownMenu.Content>
+      </DropdownMenu>
     </DropdownMenu.Context>
   );
 };

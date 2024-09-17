@@ -94,14 +94,14 @@ export const WithImage: Story = () => (
 );
 
 export const InDropdownMenu: Story = () => (
-  <DropdownMenu.Context placement='bottom-end' size='md' portal>
+  <DropdownMenu.Context>
     <DropdownMenu.Trigger variant='tertiary'>
       <Avatar aria-label='Ola Nordmann' size='sm'>
         ON
       </Avatar>
       Velg Profil
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content>
+    <DropdownMenu placement='bottom-end' size='md'>
       <DropdownMenu.Group heading='Alle kontoer'>
         <DropdownMenu.Item>
           <Badge overlap='circle' color='danger' size='sm'>
@@ -118,7 +118,7 @@ export const InDropdownMenu: Story = () => (
           Sogndal kommune
         </DropdownMenu.Item>
       </DropdownMenu.Group>
-    </DropdownMenu.Content>
+    </DropdownMenu>
   </DropdownMenu.Context>
 );
 

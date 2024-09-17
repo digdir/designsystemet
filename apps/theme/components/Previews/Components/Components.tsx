@@ -392,12 +392,12 @@ export const Components = () => {
       <div className={cl(classes.card, classes.dropdown)}>
         <DropdownMenu.Context placement='top'>
           <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
-          <DropdownMenu.Content>
+          <DropdownMenu>
             <DropdownMenu.Item>Norsk</DropdownMenu.Item>
             <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
             <DropdownMenu.Item>Spansk</DropdownMenu.Item>
             <DropdownMenu.Item>Fransk</DropdownMenu.Item>
-          </DropdownMenu.Content>
+          </DropdownMenu>
           <HelpText title='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
