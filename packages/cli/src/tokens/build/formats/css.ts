@@ -192,7 +192,10 @@ export const typography: Format = {
     ${letterSpacingVar ? `letter-spacing: ${letterSpacingVar};` : ''}
   }`;
 
-            return Object.assign(acc, { classes: [className, ...acc.classes] });
+            return Object.assign(acc, {
+              classes: [className, ...acc.classes],
+              variables: [...acc.variables, format(token)],
+            });
           }
 
           return Object.assign(acc, { variables: [...acc.variables, format(token)] });
