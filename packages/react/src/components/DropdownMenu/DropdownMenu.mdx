@@ -16,6 +16,7 @@ import { DropdownMenu } from './';
 ```tsx
 import { DropdownMenu } from '@digdir/designsystemet-react';
 
+// med context
 <DropdownMenu.Context>
   <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
   <DropdownMenu>
@@ -23,7 +24,15 @@ import { DropdownMenu } from '@digdir/designsystemet-react';
       <DropdownMenu.Item>Item</DropdownMenu.Item>
     </DropdownMenu.Group>
   </DropdownMenu>
-</DropdownMenu.Context>;
+</DropdownMenu.Context>
+
+// uten context
+<Button popovertarget="my-dropdown">Trigger</Button>
+<Dropdown id="my-dropdown">
+  <DropdownMenu.Group>
+    <DropdownMenu.Item>Item</DropdownMenu.Item>
+  </DropdownMenu.Group>
+</Dropdown>
 ```
 
 ## Eksempler på bruk
