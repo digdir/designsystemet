@@ -1,11 +1,6 @@
 import { forwardRef, useContext, useEffect } from 'react';
-
 import { Heading, type HeadingProps } from '../Typography/Heading';
-
-import {
-  ErrorSummaryContext,
-  type ErrorSummaryProps,
-} from './ErrorSummaryRoot';
+import { ErrorSummaryContext, type ErrorSummaryProps } from './ErrorSummary';
 
 export type ErrorSummaryHeadingProps = HeadingProps;
 
@@ -32,7 +27,6 @@ export const ErrorSummaryHeading = forwardRef<
 
   return (
     <Heading
-      className='ds-error-summary__heading'
       id={headingId}
       size={HEADING_SIZE_MAP[size ?? 'md']}
       spacing
@@ -41,5 +35,3 @@ export const ErrorSummaryHeading = forwardRef<
     />
   );
 });
-
-ErrorSummaryHeading.displayName = 'ErrorSummaryHeading';
