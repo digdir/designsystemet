@@ -13,7 +13,7 @@ export const DropdownMenuContent = forwardRef<
   HTMLDivElement,
   DropdownMenuContentProps
 >(function DropddownMenuContent({ className, children, ...rest }, ref) {
-  const { size, placement, onClose } = useContext(DropdownMenuCtx);
+  const { size, placement, onClose, open } = useContext(DropdownMenuCtx);
 
   return (
     <Popover
@@ -21,6 +21,7 @@ export const DropdownMenuContent = forwardRef<
       ref={ref}
       placement={placement}
       onClose={onClose}
+      open={open}
       {...rest}
     >
       <ul

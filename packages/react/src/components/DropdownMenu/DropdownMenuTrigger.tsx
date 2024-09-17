@@ -13,8 +13,5 @@ export const DropdownMenuTrigger = forwardRef<
   HTMLButtonElement,
   DropdownMenuTriggerProps
 >(function DropdownMenuTrigger({ asChild, ...rest }, ref) {
-  const { triggerRef } = useContext(DropdownMenuCtx);
-  const mergedRefs = useMergeRefs([ref, triggerRef]);
-
-  return <PopoverTrigger ref={mergedRefs} aria-haspopup='menu' {...rest} />;
+  return <PopoverTrigger ref={ref} aria-haspopup='menu' {...rest} />;
 });
