@@ -1,4 +1,4 @@
-name: Deploy Storybook PR
+name: Deploy Storybook Preview
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -44,7 +44,7 @@ jobs:
         run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no
 
       - name: Find Preview Comment
         uses: peter-evans/find-comment@v2
@@ -62,14 +62,14 @@ jobs:
         id: regex-storefront
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storefront\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storefront\]\((https:\/\/[^)]+)\).*'
 
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Theme\]\((https:\/\/[^)]+)\)'
+          regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -84,11 +84,10 @@ jobs:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
-          reactions: rocket, eyes
           body: |
             **Preview deployments for this pull request:**
 
-            [Storybook](https://storybook-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storybook](https://pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
 
             ${{ steps.regex-storefront.outputs.match }}
 
