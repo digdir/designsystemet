@@ -2,8 +2,6 @@
   --dsc-breadcrumbs-spacing: var(--ds-spacing-2);
   --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
 
-  display: contents;
-
   &[data-size='sm'] {
     --dsc-breadcrumbs-spacing: var(--ds-spacing-1);
     --dsc-breadcrumbs-chevron-size: var(--ds-sizing-5);
