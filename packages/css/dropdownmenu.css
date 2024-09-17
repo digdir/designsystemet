@@ -15,6 +15,10 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   min-width: var(--dsc-dropdownmenu-min-width);
 
+  &::before {
+    display: none;
+  }
+
   &[data-size='sm'] {
     --dsc-dropdownmenu-padding: var(--ds-spacing-2);
     --dsc-dropdownmenu-min-width: 15rem;

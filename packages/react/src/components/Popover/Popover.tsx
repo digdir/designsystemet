@@ -7,6 +7,7 @@ import {
 } from '@floating-ui/dom';
 import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import { useMergeRefs } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
@@ -65,6 +66,8 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
+
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
@@ -78,10 +81,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = 'top',
       size = 'md',
       variant = 'default',
+      asChild = false,
       ...rest
     },
     ref,
   ) {
+    const Component = asChild ? Slot : 'div';
+
     const popoverRef = useRef<HTMLDivElement>(null);
     const mergedRefs = useMergeRefs([popoverRef, ref]);
     const { popoverId, setPopoverId } = useContext(Context);
@@ -154,7 +160,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     return (
       <Paragraph asChild size={size}>
-        <div
+        <Component
           className={cl('ds-popover', className)}
           data-size={size}
           data-variant={variant}

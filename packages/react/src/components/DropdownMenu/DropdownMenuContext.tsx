@@ -3,6 +3,7 @@ import { createContext, useEffect, useRef, useState } from 'react';
 import type { ReactNode, RefObject } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
+import { PopoverContext } from '../Popover';
 
 export type DropdownMenuContextProps = {
   /** Whether the dropdown is open or not.
@@ -67,7 +68,7 @@ export const DropdownMenuContext = ({
         setInternalOpen,
       }}
     >
-      {children}
+      <PopoverContext>{children}</PopoverContext>
     </DropdownMenuCtx.Provider>
   );
 };
