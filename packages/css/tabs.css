@@ -53,6 +53,7 @@
 
   @composes ds-focus from './utilities.css';
 
+  /* We set z-index to make sure the active line does not bleed over the focus indicator */
   &:focus-visible {
     z-index: 2;
   }
