@@ -1,23 +1,26 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 
-export type BreadcrumbsNavProps = {
+export type BreadcrumbsProps = {
   /**
    * Sets the screen reader label for the Breadcrumbs area
    * @default 'Du er her'
    */
   'aria-label'?: string;
+  /**
+   * Sets the size of the component
+   * @default md
+   */
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLElement>;
 
-export const BreadcrumbsNav = forwardRef<HTMLElement, BreadcrumbsNavProps>(
+export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
   ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
     <nav
       aria-label={ariaLabel}
+      className={cl('ds-breadcrumbs', className)}
       ref={ref}
-      className={cl('ds-breadcrumbs__nav', className)}
       {...rest}
     />
   ),
 );
-
-BreadcrumbsNav.displayName = 'BreadcrumbsNav';
