@@ -14,14 +14,14 @@ type DropdownMenuComponent = {
 
 /**
  * @example
- * <DropdownMenu.Root>
+ * <DropdownMenu.Context>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
  *  <DropdownMenu.Content>
  *    <DropdownMenu.Group heading='Heading'>
  *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
  *    </DropdownMenu.Group>
  *  </DropdownMenu.Content>
- * </DropdownMenu.Root>
+ * </DropdownMenu.Context>
  */
 const DropdownMenu = {} as DropdownMenuComponent;
 

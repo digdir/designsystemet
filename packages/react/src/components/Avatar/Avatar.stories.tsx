@@ -94,7 +94,7 @@ export const WithImage: Story = () => (
 );
 
 export const InDropdownMenu: Story = () => (
-  <DropdownMenu.Root placement='bottom-end' size='md' portal>
+  <DropdownMenu.Context placement='bottom-end' size='md' portal>
     <DropdownMenu.Trigger variant='tertiary'>
       <Avatar aria-label='Ola Nordmann' size='sm'>
         ON
@@ -119,7 +119,7 @@ export const InDropdownMenu: Story = () => (
         </DropdownMenu.Item>
       </DropdownMenu.Group>
     </DropdownMenu.Content>
-  </DropdownMenu.Root>
+  </DropdownMenu.Context>
 );
 
 export const AsLink: Story = () => (

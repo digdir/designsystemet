@@ -2,13 +2,13 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { DropdownMenuRootProps } from './DropdownMenuContext';
+import type { DropdownMenuContextProps } from './DropdownMenuContext';
 
 import { DropdownMenu } from '.';
 
-const Comp = (args: Partial<DropdownMenuRootProps>) => {
+const Comp = (args: Partial<DropdownMenuContextProps>) => {
   return (
-    <DropdownMenu.Root {...args}>
+    <DropdownMenu.Context {...args}>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group heading='Links'>
@@ -16,11 +16,11 @@ const Comp = (args: Partial<DropdownMenuRootProps>) => {
           {args.children}
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu.Root>
+    </DropdownMenu.Context>
   );
 };
 
-const render = async (props: Partial<DropdownMenuRootProps> = {}) => {
+const render = async (props: Partial<DropdownMenuContextProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
