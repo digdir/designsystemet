@@ -84,6 +84,12 @@ export const semantic: Format = {
   },
 };
 
+// Predicate to filter tokens with .path array that includes both typography and fontFamily
+const typographyFontFamilyPredicate = R.allPass([
+  R.pathSatisfies(R.includes('typography'), ['path']),
+  R.pathSatisfies(R.includes('fontFamily'), ['path']),
+]);
+
 export const typography: Format = {
   name: 'ds/css-typography',
   format: async ({ dictionary, file, options, platform }) => {
@@ -99,7 +105,11 @@ export const typography: Format = {
       usesDtcg,
     });
 
-    const formattedTokens = R.pipe(R.map(format), R.join('\n'))(dictionary.allTokens);
+    console.log('dictionary.allTokens', dictionary.allTokens);
+
+    const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
+
+    const formattedTokens = R.pipe(R.map(format), R.join('\n'))(filteredTokens);
 
     const content = selector ? `${selector} {\n${formattedTokens}\n}` : formattedTokens;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
