@@ -17,7 +17,7 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
   <Accordion {...args}>
     <Accordion.Item>
       <Accordion.Heading>
-        Hvem kan registrere seg i Frivillighetsregisteret? X
+        Hvem kan registrere seg i Frivillighetsregisteret?
       </Accordion.Heading>
       <Accordion.Content>
         For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
