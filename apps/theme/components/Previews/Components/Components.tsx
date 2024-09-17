@@ -265,11 +265,11 @@ export const Components = () => {
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup.Root>
+          </ToggleGroup>
         </div>
         <Heading size='xs' spacing className={classes.chipsHeading}>
           Filtrer på språk
@@ -405,11 +405,11 @@ export const Components = () => {
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>
-          <Skeleton.Circle width='70px' height='70px' />
-          <Skeleton.Rectangle height='70px' width='100px' />
+          <Skeleton variant='circle' width='70px' height='70px' />
+          <Skeleton variant='rectangle' height='70px' width='100px' />
         </div>
-        <Skeleton.Text width='100%' />
-        <Skeleton.Text width='100%' />
+        <Skeleton variant='text' />
+        <Skeleton variant='text' />
         <div>
           <Spinner title='laster innhold' size='md' />
           <Spinner title='laster innhold' size='md' color='accent' />
