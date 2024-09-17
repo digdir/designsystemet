@@ -7,7 +7,7 @@ env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   STORYBOOK_URL: pr-${{ github.event.number }}.storybook.designsystemet.no
   STOREFRONT_URL: pr-${{ github.event.number }}.designsystemet.no
-  THEME_URL: pr-${{ github.event.number }}.designsystemet.no
+  THEME_URL: pr-${{ github.event.number }}.theme.designsystemet.no
   ALIASES:
 
 jobs:
