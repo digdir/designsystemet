@@ -1,3 +1,6 @@
+/** Font weight
+ ** used for weight on Label */
+
 .ds-font-weight--medium {
   font-weight: var(--ds-font-weight-medium);
 }
@@ -9,6 +12,9 @@
 .ds-font-weight--regular {
   font-weight: var(--ds-font-weight-regular);
 }
+
+/** Line height
+ ** used for long, short Paragraph */
 
 .ds-line-height--sm {
   line-height: var(--ds-line-height-sm);
