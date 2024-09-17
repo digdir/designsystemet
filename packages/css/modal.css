@@ -1,5 +1,5 @@
 .ds-modal {
-  --dsc-modal-max-width: 650px;
+  --dsc-modal-max-width: 40rem;
   --dsc-modal-background: var(--ds-color-neutral-background-default);
   --dsc-modal-color: var(--ds-color-neutral-text-default);
   --dsc-modal-backdrop-background: rgb(0 0 0 / 0.5);
@@ -32,7 +32,7 @@
     margin: var(--ds-spacing-3) 0 !important;
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 40rem) {
     & {
       min-width: 100%;
       max-width: 100%;
@@ -49,52 +49,51 @@
       animation: none;
     }
   }
-}
 
-.ds-modal--lock-scroll {
-  overflow: hidden;
-}
-
-.ds-modal__header {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: var(--dsc-modal-header-padding);
-  gap: var(--ds-spacing-1);
-  color: var(--dsc-modal-color);
-
-  &:not(:has(> .ds-modal__header__button)) {
-    --dsc-modal-header-padding: var(--ds-spacing-6) var(--ds-spacing-6) var(--ds-spacing-2) var(--ds-spacing-6);
+  &.ds-modal--lock-scroll {
+    overflow: hidden;
   }
 
-  .ds-modal__header__button {
-    position: absolute;
-    top: var(--ds-spacing-3);
-    right: var(--ds-spacing-3);
-    color: var(--dsc-modal-color);
+  .ds-modal__header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: var(--dsc-modal-header-padding);
+    gap: var(--ds-spacing-1);
 
-    &::before {
-      content: '';
-      background: currentcolor;
-      height: 1.5em;
-      width: 1.5em;
-      mask: center/contain no-repeat
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
+    &:not(:has(> .ds-modal__header__button)) {
+      --dsc-modal-header-padding: var(--ds-spacing-6) var(--ds-spacing-6) var(--ds-spacing-2) var(--ds-spacing-6);
+    }
+
+    .ds-modal__header__button {
+      position: absolute;
+      top: var(--ds-spacing-3);
+      right: var(--ds-spacing-3);
+      color: var(--dsc-modal-color);
+
+      &::before {
+        content: '';
+        background: currentcolor;
+        height: 1.5em;
+        width: 1.5em;
+        mask: center/contain no-repeat
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
+      }
     }
   }
-}
 
-.ds-modal__footer {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-spacing-4);
-  padding: var(--dsc-modal-footer-padding);
-}
+  .ds-modal__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-spacing-4);
+    padding: var(--dsc-modal-footer-padding);
+  }
 
-.ds-modal__content {
-  padding: var(--dsc-modal-content-padding);
-  max-height: var(--dsc-modal-content-max-height);
-  overflow-y: auto;
+  .ds-modal__content {
+    padding: var(--dsc-modal-content-padding);
+    max-height: var(--dsc-modal-content-max-height);
+    overflow-y: auto;
+  }
 }
 
 @keyframes slide-in {
