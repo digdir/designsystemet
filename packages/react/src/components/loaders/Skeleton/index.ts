@@ -1,27 +1,11 @@
-import { SkeletonCircle, SkeletonRectangle, SkeletonText } from './Skeletons';
-
 /**
  * Represent a draft of page while the content loads. Mix different skeleton components to create your layout.
  * @example
- *   <Skeleton.Circle />
- *   <Skeleton.Text />
- *   <Skeleton.Text />
- *   <Skeleton.Text />
- *   <Skeleton.Rectangle />
+ *   <Skeleton variant="circle" />
+ *   <Skeleton variant="text" />
+ *   <Skeleton variant="text" />
+ *   <Skeleton variant="text" />
+ *   <Skeleton variant="rectangle" />
  */
-const Skeleton = {
-  Circle: SkeletonCircle,
-  Rectangle: SkeletonRectangle,
-  Text: SkeletonText,
-};
-
-Skeleton.Circle.displayName = 'Skeleton.Circle';
-Skeleton.Rectangle.displayName = 'Skeleton.Rectangle';
-Skeleton.Text.displayName = 'Skeleton.Text';
-
-export type {
-  SkeletonCircleProps,
-  SkeletonRectangleProps,
-  SkeletonTextProps,
-} from './Skeletons';
-export { Skeleton, SkeletonCircle, SkeletonRectangle, SkeletonText };
+export type { SkeletonProps } from './Skeleton';
+export { Skeleton } from './Skeleton';

@@ -4,27 +4,24 @@
 
   animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   background: var(--dsc-skeleton-background);
+  border-radius: min(1rem, var(--ds-border-radius-lg));
+  box-sizing: border-box;
+  display: block;
   height: 1.3em;
   pointer-events: none;
   user-select: none;
+  width: 100%;
 
-  &[data-type='circle'] {
-    width: 1.3em;
-    border-radius: var(--ds-border-radius-full);
+  &[data-variant='circle'] {
     aspect-ratio: 1 / 1;
-  }
-
-  &[data-type='rectangle'] {
-    width: 100%;
-    border-radius: min(1rem, var(--ds-border-radius-lg));
-  }
-
-  &[data-type='text'] {
-    width: 100%;
-    height: auto;
-    transform-origin: 0 55%;
-    transform: scale(1, 0.6);
     border-radius: var(--ds-border-radius-full);
+    width: 1.3em;
+  }
+
+  &[data-variant='text'] {
+    border-radius: var(--ds-border-radius-full);
+    height: auto;
+    margin-block: calc(1lh - 1em);
 
     &:empty::before {
       content: '\00a0';
@@ -43,9 +40,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    & {
-      --dsc-skeleton-animation-duration: 1.6s;
-    }
+    --dsc-skeleton-animation-duration: 1.6s;
   }
 }
 
