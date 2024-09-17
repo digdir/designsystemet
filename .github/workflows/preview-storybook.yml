@@ -87,7 +87,7 @@ jobs:
           body: |
             **Preview deployments for this pull request:**
 
-            [Storybook](https://pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storybook](https://pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
 
             ${{ steps.regex-storefront.outputs.match }}
 

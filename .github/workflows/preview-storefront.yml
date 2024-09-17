@@ -87,6 +87,6 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            [Storefront](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storefront](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
 
             ${{ steps.regex-theme.outputs.match }}
