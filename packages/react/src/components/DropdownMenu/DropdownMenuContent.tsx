@@ -13,8 +13,8 @@ import {
   useRole,
 } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import { forwardRef, useContext, useRef } from 'react';
-import * as React from 'react';
+import { Fragment, forwardRef, useContext, useRef } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../utilities';
 
@@ -23,8 +23,8 @@ import { DropdownMenuContext } from './DropdownMenuRoot';
 const GAP = 4;
 
 export type DropdownMenuContentProps = {
-  children: React.ReactNode;
-} & React.HTMLAttributes<HTMLUListElement>;
+  children: ReactNode;
+} & HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuContent = forwardRef<
   HTMLUListElement,
@@ -41,7 +41,7 @@ export const DropdownMenuContent = forwardRef<
     onClose,
   } = useContext(DropdownMenuContext);
 
-  const Container = portal ? FloatingPortal : React.Fragment;
+  const Container = portal ? FloatingPortal : Fragment;
   const floatingEl = useRef<HTMLUListElement>(null);
 
   const {
@@ -101,11 +101,8 @@ export const DropdownMenuContent = forwardRef<
                 ref: floatingRef,
                 tabIndex: undefined,
               })}
-              className={cl(
-                'ds-dropdownmenu',
-                `ds-dropdownmenu--${size}`,
-                className,
-              )}
+              className={cl('ds-dropdownmenu', className)}
+              data-size={size}
               {...rest}
             >
               {children}

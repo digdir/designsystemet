@@ -1,5 +1,47 @@
 # Change Log
 
+## 1.0.0-next.33
+
+### Patch Changes
+
+- Pagination: Use data attrs instead of class names ([#2395](https://github.com/digdir/designsystemet/pull/2395))
+
+- Badge: Style using css attributes ([#2391](https://github.com/digdir/designsystemet/pull/2391))
+
+- TableHeaderCell: Remove `sortable` prop, `sort` now handles this ([#2393](https://github.com/digdir/designsystemet/pull/2393))
+
+- dropdownmenu: Style using data attributes ([#2387](https://github.com/digdir/designsystemet/pull/2387))
+
+- Chip: Text color is now `accent` ([#2371](https://github.com/digdir/designsystemet/pull/2371))
+
+- List: Remove `List.Root` and `List.Heading`, which changes API ([#2348](https://github.com/digdir/designsystemet/pull/2348))
+
+- Alert, Avatar, Button, Divider, Link: Use data-attributes for variant, size and color and move icons to CSS ([#2313](https://github.com/digdir/designsystemet/pull/2313))
+
+- Box: Remove component ([#2372](https://github.com/digdir/designsystemet/pull/2372))
+
+- Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
+
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Remove `portal` prop
+
+- Tooltip: Only expose background css variable ([#2389](https://github.com/digdir/designsystemet/pull/2389))
+
+- Switch: don't show check when not checked in readonly ([#2377](https://github.com/digdir/designsystemet/pull/2377))
+
+- Select: Rename from `NativeSelect` ([#2404](https://github.com/digdir/designsystemet/pull/2404))
+
+- Accordion: Now uses details and summary HTML elements ([`5d1c5062b526e6829c322ce66c6df08568bb9f63`](https://github.com/digdir/designsystemet/commit/5d1c5062b526e6829c322ce66c6df08568bb9f63))
+
+- Spinner: Style using data attributes ([#2390](https://github.com/digdir/designsystemet/pull/2390))
+
+- Avatar: new component ([#2312](https://github.com/digdir/designsystemet/pull/2312))
+
+- Tag: Make neutral default color in CSS ([#2397](https://github.com/digdir/designsystemet/pull/2397))
+
+- Card: Use data attrs ([#2398](https://github.com/digdir/designsystemet/pull/2398))
+
 ## 1.0.0-next.32
 
 ### Patch Changes

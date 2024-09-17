@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-react",
-  "version": "1.0.0-next.32",
+  "version": "1.0.0-next.33",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -35,10 +35,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.10",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^6.14.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@tanstack/react-virtual": "^3.10.7"
+    "@tanstack/react-virtual": "^3.10.7",
+    "@u-elements/u-details": "^0.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",

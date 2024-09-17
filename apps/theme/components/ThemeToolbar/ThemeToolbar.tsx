@@ -1,5 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Button, NativeSelect, Tooltip } from '@digdir/designsystemet-react';
+import { Button, Select, Tooltip } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ContrastMode,
@@ -107,7 +107,7 @@ export const ThemeToolbar = ({
         />
 
         <div className={classes.dropdown}>
-          <NativeSelect
+          <Select
             label='Kontrastnivå'
             size='md'
             className={classes.contrastSelect}
@@ -116,12 +116,12 @@ export const ThemeToolbar = ({
               onContrastModeChanged(e.target.value as 'aa' | 'aaa');
             }}
           >
-            <option value='aa'>AA</option>
-            <option value='aaa'>AAA (WIP)</option>
-          </NativeSelect>
+            <Select.Option value='aa'>AA</Select.Option>
+            <Select.Option value='aaa'>AAA (WIP)</Select.Option>
+          </Select>
         </div>
         <div className={classes.borderRadii}>
-          <NativeSelect
+          <Select
             label='Border radius'
             size='md'
             className={classes.borderRadiiSelect}
@@ -132,7 +132,7 @@ export const ThemeToolbar = ({
             }}
           >
             {Object.entries(borderRadii).map(([key, value]) => (
-              <option
+              <Select.Option
                 key={key}
                 value={value}
                 style={{
@@ -140,9 +140,9 @@ export const ThemeToolbar = ({
                 }}
               >
                 {key}
-              </option>
+              </Select.Option>
             ))}
-          </NativeSelect>
+          </Select>
         </div>
         <Tooltip content={toolTipText} portal={false}>
           <Button

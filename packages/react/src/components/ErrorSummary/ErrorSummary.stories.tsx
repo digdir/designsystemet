@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import { useState } from 'react';
 
 import { Button } from '../Button';
 import { Textfield } from '../form/Textfield';
@@ -77,7 +77,7 @@ WithForm.decorators = [
 ];
 
 export const ShowHide: Story = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
 
   return (
     <>

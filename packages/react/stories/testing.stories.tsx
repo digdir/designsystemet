@@ -5,8 +5,8 @@ import {
   Checkbox,
   Chip,
   Combobox,
-  NativeSelect,
   Radio,
+  Select,
   Switch,
   Tag,
   Textfield,
@@ -51,11 +51,11 @@ export const MediumRow: StoryFn<{
           suffix='suffix'
         />
 
-        <NativeSelect size={size}>
-          <option>opt1</option>
-          <option>opt2</option>
-          <option>opt3</option>
-        </NativeSelect>
+        <Select size={size}>
+          <Select.Option>opt1</Select.Option>
+          <Select.Option>opt2</Select.Option>
+          <Select.Option>opt3</Select.Option>
+        </Select>
         <Button size={size}>Knapp</Button>
         <Combobox size={size}>
           <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>

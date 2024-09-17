@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.0.0-next.32",
+  "version": "1.0.0-next.33",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -8,7 +8,10 @@
     "url": "git+https://github.com/digdir/designsystemet.git"
   },
   "license": "MIT",
-  "main": "./dist/index.css",
+  "exports": {
+    ".": "./dist/index.css",
+    "./*": "./dist/*"
+  },
   "files": [
     "dist",
     "*.css"

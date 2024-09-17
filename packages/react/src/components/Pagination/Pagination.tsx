@@ -1,12 +1,10 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 
 import { PaginationButton } from './PaginationButton';
-import { PaginationContent } from './PaginationContent';
 import { PaginationEllipsis } from './PaginationEllipsis';
 import { PaginationItem } from './PaginationItem';
+import { PaginationList } from './PaginationList';
 import { PaginationNext, PaginationPrevious } from './PaginationNextPrev';
 import { PaginationRoot } from './PaginationRoot';
 import { usePagination } from './usePagination';
@@ -34,7 +32,7 @@ export type PaginationProps = {
   onChange: (currentPage: number) => void;
   /** `aria-label` for pagination item */
   itemLabel?: (currentPage: number) => string;
-} & Omit<React.HTMLAttributes<HTMLElement>, 'onChange'>;
+} & Omit<HTMLAttributes<HTMLElement>, 'onChange'>;
 
 const iconSize = {
   sm: '1rem',
@@ -42,8 +40,8 @@ const iconSize = {
   lg: '2rem',
 };
 
-const Pagination = forwardRef<HTMLElement, PaginationProps>(
-  (
+export const Pagination = forwardRef<HTMLElement, PaginationProps>(
+  function Pagination(
     {
       nextLabel = '',
       previousLabel = '',
@@ -57,7 +55,7 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
       ...rest
     }: PaginationProps,
     ref,
-  ) => {
+  ) {
     const { pages, showNextPage, showPreviousPage } = usePagination({
       compact,
       currentPage,
@@ -66,22 +64,19 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
 
     return (
       <PaginationRoot
-        ref={ref}
         aria-label='Pagination'
-        size={size}
         compact={compact}
+        ref={ref}
+        size={size}
         {...rest}
       >
-        <PaginationContent>
+        <PaginationList>
           <PaginationItem>
             <PaginationPrevious
-              className={cl(!showPreviousPage && 'ds-pagination--hidden')}
-              onClick={() => {
-                onChange(currentPage - 1);
-              }}
               aria-label={previousLabel}
+              disabled={!showPreviousPage}
+              onClick={() => onChange(currentPage - 1)}
             >
-              <ChevronLeftIcon aria-hidden fontSize={iconSize[size]} />
               {!hideLabels && previousLabel}
             </PaginationPrevious>
           </PaginationItem>
@@ -92,11 +87,9 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
               ) : (
                 <PaginationButton
                   aria-current={currentPage === page}
-                  isActive={currentPage === page}
                   aria-label={itemLabel(page)}
-                  onClick={() => {
-                    onChange(page);
-                  }}
+                  isActive={currentPage === page}
+                  onClick={() => onChange(page)}
                 >
                   {page}
                 </PaginationButton>
@@ -106,21 +99,14 @@ const Pagination = forwardRef<HTMLElement, PaginationProps>(
           <PaginationItem>
             <PaginationNext
               aria-label={nextLabel}
-              onClick={() => {
-                onChange(currentPage + 1);
-              }}
-              className={cl(!showNextPage && 'ds-pagination--hidden')}
+              disabled={!showNextPage}
+              onClick={() => onChange(currentPage + 1)}
             >
               {!hideLabels && nextLabel}
-              <ChevronRightIcon aria-hidden fontSize={iconSize[size]} />
             </PaginationNext>
           </PaginationItem>
-        </PaginationContent>
+        </PaginationList>
       </PaginationRoot>
     );
   },
 );
-
-Pagination.displayName = 'Pagination';
-
-export { Pagination };

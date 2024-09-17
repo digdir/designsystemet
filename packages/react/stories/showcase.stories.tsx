@@ -11,11 +11,11 @@ import {
   Divider,
   Heading,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Switch,
   Table,
   Tabs,
@@ -86,12 +86,12 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='' size='sm'>
-              <option value='blank'>Velg handling</option>
-              <option value='everest'>Dupliser</option>
-              <option value='aconcagua'>Slett</option>
-              <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            <Select label='' size='sm'>
+              <Select.Option value='blank'>Velg handling</Select.Option>
+              <Select.Option value='everest'>Dupliser</Select.Option>
+              <Select.Option value='aconcagua'>Slett</Select.Option>
+              <Select.Option value='denali'>Oppdater</Select.Option>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
@@ -112,11 +112,11 @@ export const Showcase: StoryFn = () => {
         >
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -316,9 +316,9 @@ export const Showcase: StoryFn = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border>
+        <Accordion color='brand3' border>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -330,7 +330,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -340,7 +340,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -349,7 +349,7 @@ export const Showcase: StoryFn = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
     </div>
   );

@@ -15,6 +15,11 @@ export const PaginationContext = createContext<PaginationContextProps>({
 
 export type PaginationRootProps = {
   /**
+   * Sets the screen reader label for the Pagination area
+   * @default 'Sidenavigering'
+   */
+  'aria-label'?: string;
+  /**
    * Sets the size of the component
    * @default md
    */
@@ -31,18 +36,23 @@ export type PaginationRootProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
-  ({ asChild, compact = false, size = 'md', ...rest }, ref) => {
+export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>(
+  function PaginationRoot(
+    {
+      'aria-label': ariaLabel = 'Sidenavigering',
+      asChild,
+      compact = false,
+      size = 'md',
+      ...rest
+    },
+    ref,
+  ) {
     const Component = asChild ? Slot : 'nav';
 
     return (
       <PaginationContext.Provider value={{ size, compact }}>
-        <Component ref={ref} aria-label='Pagination' {...rest} />
+        <Component aria-label={ariaLabel} ref={ref} {...rest} />
       </PaginationContext.Provider>
     );
   },
 );
-
-PaginationRoot.displayName = 'PaginationRoot';
-
-export { PaginationRoot };

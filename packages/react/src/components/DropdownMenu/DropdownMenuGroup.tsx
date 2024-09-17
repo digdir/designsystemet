@@ -1,5 +1,5 @@
 import { forwardRef, useContext, useId } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import { Paragraph } from '../Typography';
 
@@ -9,8 +9,8 @@ export type DropdownMenuGroupProps = {
   /**
    * Heading of the group
    */
-  heading?: React.ReactNode;
-} & React.HTMLAttributes<HTMLUListElement>;
+  heading?: ReactNode;
+} & HTMLAttributes<HTMLUListElement>;
 
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,
@@ -25,7 +25,7 @@ export const DropdownMenuGroup = forwardRef<
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
         role='group'
-        className={'ds-dropdownmenu__section'}
+        className={'ds-dropdownmenu__group'}
         {...rest}
       >
         {heading && (

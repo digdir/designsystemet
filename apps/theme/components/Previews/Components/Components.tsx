@@ -11,11 +11,11 @@ import {
   Heading,
   HelpText,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Skeleton,
   Spinner,
   Switch,
@@ -86,12 +86,12 @@ export const Components = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='Velg handling' size='sm' hideLabel>
-              <option value='blank'>Velg handling</option>
-              <option value='everest'>Dupliser</option>
-              <option value='aconcagua'>Slett</option>
-              <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            <Select label='Velg handling' size='sm' hideLabel>
+              <Select.Option value='blank'>Velg handling</Select.Option>
+              <Select.Option value='everest'>Dupliser</Select.Option>
+              <Select.Option value='aconcagua'>Slett</Select.Option>
+              <Select.Option value='denali'>Oppdater</Select.Option>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
@@ -107,11 +107,11 @@ export const Components = () => {
         <Table size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -339,9 +339,9 @@ export const Components = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border className={classes.accordion}>
+        <Accordion color='brand3' border className={classes.accordion}>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -353,7 +353,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -363,7 +363,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -372,7 +372,7 @@ export const Components = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
         <Alert color='info'>

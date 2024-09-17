@@ -14,10 +14,15 @@ import * as PopoverStories from './Popover.stories.tsx';
 ```tsx
 import { Popover } from '@digdir/designsystemet-react';
 
-<Popover.Root>
+// med context
+<Popover.Context>
   <Popover.Trigger>Trigger</Popover.Trigger>
-  <Popover.Content>Content</Popover.Content>
-</Popover.Trigger>
+  <Popover>Content</Popover>
+</Popover.Context>
+
+// uten context med egen trigger
+<Button popovertarget="my-popover">Trigger</Button>
+<Popover id="my-popover">Content</Popover>
 ```
 
 ## Eksempler
@@ -35,29 +40,11 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 <Canvas of={PopoverStories.Controlled} />
 
-### I Portal
-
-<Canvas of={PopoverStories.InPortal} />
-
 ## Tilgjengelighet
 
-Det er innebygd tilgjengelighet i `Popover.Trigger` med `aria-expanded={true/false}`, i henhold til åpne/lukket tilstand, på trigger elementet.
+Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
-## `Popover.Trigger`
-
-Med `Popover.Trigger` kan du styre hvordan triggeren til `Popover` skal vises. Du kan bruke `asChild` for å endre hvordan `Popover.Trigger` rendres.
-Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Popover.Trigger`.
-Triggeren rendres som [Button](/docs/komponenter-button--docs) som standard.
-
-Dette vil rendre ein input som triggeren din:
-
-```tsx
-<Popover.Trigger asChild>
-  <input ... />
-</Popover.Trigger>
-```
-
-### Referanser
-
-- [1] [Popover - React Aria](https://react-spectrum.adobe.com/react-aria/Popover.html)
-- [2] [w3.org Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
+## React og `popovertarget`
+Når du bruker `Popover` uten `Popover.Context`, kobler du selv sammen utløseren og `Popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
