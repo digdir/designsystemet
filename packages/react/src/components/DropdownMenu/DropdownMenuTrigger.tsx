@@ -5,7 +5,7 @@ import type { ComponentPropsWithRef } from 'react';
 
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenuRoot';
+import { DropdownMenuContext } from './DropdownMenuContext';
 
 export type DropdownMenuTriggerProps = ComponentPropsWithRef<typeof Button>;
 

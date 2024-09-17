@@ -1,11 +1,11 @@
 import { DropdownMenuContent } from './DropdownMenuContent';
+import { DropdownMenuContext } from './DropdownMenuContext';
 import { DropdownMenuGroup } from './DropdownMenuGroup';
 import { DropdownMenuItem } from './DropdownMenuItem';
-import { DropdownMenuRoot } from './DropdownMenuRoot';
 import { DropdownMenuTrigger } from './DropdownMenuTrigger';
 
 type DropdownMenuComponent = {
-  Root: typeof DropdownMenuRoot;
+  Context: typeof DropdownMenuContext;
   Content: typeof DropdownMenuContent;
   Group: typeof DropdownMenuGroup;
   Item: typeof DropdownMenuItem;
@@ -25,7 +25,7 @@ type DropdownMenuComponent = {
  */
 const DropdownMenu = {} as DropdownMenuComponent;
 
-DropdownMenu.Root = DropdownMenuRoot;
+DropdownMenu.Context = DropdownMenuContext;
 DropdownMenu.Content = DropdownMenuContent;
 DropdownMenu.Group = DropdownMenuGroup;
 DropdownMenu.Item = DropdownMenuItem;
@@ -37,13 +37,13 @@ DropdownMenu.Group.displayName = 'DropdownMenu.Group';
 DropdownMenu.Item.displayName = 'DropdownMenu.Item';
 DropdownMenu.Trigger.displayName = 'DropdownMenu.Trigger';
 
-export type { DropdownMenuRootProps } from './DropdownMenuRoot';
+export type { DropdownMenuContextProps } from './DropdownMenuContext';
 export type { DropdownMenuGroupProps } from './DropdownMenuGroup';
 export type { DropdownMenuItemProps } from './DropdownMenuItem';
 export type { DropdownMenuContentProps } from './DropdownMenuContent';
 export {
   DropdownMenu,
-  DropdownMenuRoot,
+  DropdownMenuContext,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,

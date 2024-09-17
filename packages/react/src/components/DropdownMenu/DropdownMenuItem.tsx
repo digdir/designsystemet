@@ -3,7 +3,7 @@ import { forwardRef, useContext } from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenuRoot';
+import { DropdownMenuContext } from './DropdownMenuContext';
 
 export type DropdownMenuItemProps = Omit<
   ButtonProps,

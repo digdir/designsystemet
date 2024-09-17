@@ -18,7 +18,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../utilities';
 
-import { DropdownMenuContext } from './DropdownMenuRoot';
+import { DropdownMenuContext } from './DropdownMenuContext';
 
 const GAP = 4;
 

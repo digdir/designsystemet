@@ -4,7 +4,7 @@ import type { ReactNode, RefObject } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 
-export type DropdownMenuRootProps = {
+export type DropdownMenuContextProps = {
   /** Whether the dropdown is open or not.
    * @default false
    */
@@ -24,7 +24,7 @@ export type DropdownMenuRootProps = {
 } & PortalProps;
 
 /**
- * DropdownMenuRoot is the root component for the DropdownMenu component.
+ * DropdownMenuContext is the root component for the DropdownMenu component.
  * @example
  * <DropdownMenu.Root>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
@@ -35,14 +35,14 @@ export type DropdownMenuRootProps = {
  *  </DropdownMenu.Content>
  * </DropdownMenu.Root>
  */
-export const DropdownMenuRoot = ({
+export function DropdownMenuContext({
   open,
   onClose,
   placement = 'bottom-end',
   portal,
   size = 'md',
   children,
-}: DropdownMenuRootProps) => {
+}: DropdownMenuContextProps) {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
@@ -54,7 +54,7 @@ export const DropdownMenuRoot = ({
   }, [open]);
 
   return (
-    <DropdownMenuContext.Provider
+    <DropdownMenuCtx.Provider
       value={{
         anchorEl,
         triggerRef,
@@ -68,28 +68,26 @@ export const DropdownMenuRoot = ({
       }}
     >
       {children}
-    </DropdownMenuContext.Provider>
+    </DropdownMenuCtx.Provider>
   );
-};
+}
 
 type DropdownMenuContextType = {
   anchorEl: Element | null;
   triggerRef: RefObject<Element>;
-  size: NonNullable<DropdownMenuRootProps['size']>;
+  size: NonNullable<DropdownMenuContextProps['size']>;
   portal?: PortalProps['portal'];
-  placement?: DropdownMenuRootProps['placement'];
+  placement?: DropdownMenuContextProps['placement'];
   internalOpen: boolean;
   isControlled?: boolean;
   setInternalOpen: (open: boolean) => void;
-  onClose?: DropdownMenuRootProps['onClose'];
+  onClose?: DropdownMenuContextProps['onClose'];
 };
 
-export const DropdownMenuContext = createContext<DropdownMenuContextType>({
+export const DropdownMenuCtx = createContext<DropdownMenuContextType>({
   triggerRef: { current: null },
   size: 'md',
   anchorEl: null,
   internalOpen: false,
   setInternalOpen: () => {},
 });
-
-DropdownMenuRoot.displayName = 'DropdownMenuRoot';

@@ -18,7 +18,7 @@ export default {
 export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
   return (
     <>
-      <DropdownMenu.Root {...args}>
+      <DropdownMenu.Context {...args}>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group heading='Heading'>
@@ -26,7 +26,7 @@ export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
             <DropdownMenu.Item>Button 2</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu.Root>
+      </DropdownMenu.Context>
     </>
   );
 };
@@ -40,7 +40,7 @@ Preview.decorators = [marginDecorator];
 
 export const Icons: StoryFn<typeof DropdownMenu.Root> = () => {
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Context>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -66,7 +66,7 @@ export const Icons: StoryFn<typeof DropdownMenu.Root> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu.Root>
+    </DropdownMenu.Context>
   );
 };
 
@@ -74,7 +74,7 @@ Icons.decorators = [marginDecorator];
 
 export const InPortal: StoryFn<typeof DropdownMenu> = () => {
   return (
-    <DropdownMenu.Root portal>
+    <DropdownMenu.Context portal>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Group>
@@ -100,7 +100,7 @@ export const InPortal: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
-    </DropdownMenu.Root>
+    </DropdownMenu.Context>
   );
 };
 
@@ -109,7 +109,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
 
   return (
     <>
-      <DropdownMenu.Root open={open} onClose={() => setOpen(false)} portal>
+      <DropdownMenu.Context open={open} onClose={() => setOpen(false)} portal>
         <DropdownMenu.Trigger onClick={() => setOpen(!open)}>
           Dropdown
         </DropdownMenu.Trigger>
@@ -137,7 +137,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
             </DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
-      </DropdownMenu.Root>
+      </DropdownMenu.Context>
     </>
   );
 };
