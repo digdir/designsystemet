@@ -1,4 +1,4 @@
-import { register } from '@tokens-studio/sd-transforms';
+import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
@@ -212,15 +212,7 @@ export const typographyVariables: GetConfig = ({ outPath, theme, typography }) =
     preprocessors: ['tokens-studio'],
     expand: {
       include: ['typography'],
-      // // more info about typesMap later...
-      // typesMap: {
-      //   // all width props are mapped to 'dimension' type
-      //   width: 'dimension',
-      //   typography: {
-      //     // fontSize prop is mapped to 'dimension' type if inside a typography composite type token
-      //     fontSize: 'dimension',
-      //   },
-      // },
+      typesMap: { ...expandTypesMap, typography: { ...expandTypesMap.typography, letterSpacing: 'dimension' } },
     },
     platforms: {
       css: {

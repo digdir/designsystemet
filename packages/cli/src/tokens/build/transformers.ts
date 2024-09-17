@@ -68,7 +68,6 @@ export const typographyName: Transform = {
   transitive: true,
   filter: (token) => typeEquals('typography', token),
   transform: (token) => {
-    console.log(token);
     return token.name.replace('-typography', '');
   },
 };
