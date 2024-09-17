@@ -2350,7 +2350,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.1}"
       }
     },
-    name: "--ds-typography-heading-2xl",
+    name: "--ds-heading-2xl",
     attributes: {},
     path: [
       "typography",
@@ -2373,7 +2373,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.1}"
       }
     },
-    name: "--ds-typography-heading-xl",
+    name: "--ds-heading-xl",
     attributes: {},
     path: [
       "typography",
@@ -2396,7 +2396,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.2}"
       }
     },
-    name: "--ds-typography-heading-lg",
+    name: "--ds-heading-lg",
     attributes: {},
     path: [
       "typography",
@@ -2419,7 +2419,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.3}"
       }
     },
-    name: "--ds-typography-heading-md",
+    name: "--ds-heading-md",
     attributes: {},
     path: [
       "typography",
@@ -2442,7 +2442,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.5}"
       }
     },
-    name: "--ds-typography-heading-sm",
+    name: "--ds-heading-sm",
     attributes: {},
     path: [
       "typography",
@@ -2465,7 +2465,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-heading-xs",
+    name: "--ds-heading-xs",
     attributes: {},
     path: [
       "typography",
@@ -2488,7 +2488,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-heading-2xs",
+    name: "--ds-heading-2xs",
     attributes: {},
     path: [
       "typography",
@@ -2511,7 +2511,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-ingress-lg",
+    name: "--ds-ingress-lg",
     attributes: {},
     path: [
       "typography",
@@ -2534,7 +2534,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-ingress-md",
+    name: "--ds-ingress-md",
     attributes: {},
     path: [
       "typography",
@@ -2557,7 +2557,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-ingress-sm",
+    name: "--ds-ingress-sm",
     attributes: {},
     path: [
       "typography",
@@ -2580,7 +2580,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-ingress-xs",
+    name: "--ds-ingress-xs",
     attributes: {},
     path: [
       "typography",
@@ -2603,7 +2603,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-lg",
+    name: "--ds-paragraph-lg",
     attributes: {},
     path: [
       "typography",
@@ -2626,7 +2626,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-md",
+    name: "--ds-paragraph-md",
     attributes: {},
     path: [
       "typography",
@@ -2649,7 +2649,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-paragraph-sm",
+    name: "--ds-paragraph-sm",
     attributes: {},
     path: [
       "typography",
@@ -2672,7 +2672,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-paragraph-xs",
+    name: "--ds-paragraph-xs",
     attributes: {},
     path: [
       "typography",
@@ -2695,7 +2695,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-short-lg",
+    name: "--ds-paragraph-short-lg",
     attributes: {},
     path: [
       "typography",
@@ -2719,7 +2719,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-short-md",
+    name: "--ds-paragraph-short-md",
     attributes: {},
     path: [
       "typography",
@@ -2743,7 +2743,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-paragraph-short-sm",
+    name: "--ds-paragraph-short-sm",
     attributes: {},
     path: [
       "typography",
@@ -2767,7 +2767,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-paragraph-short-xs",
+    name: "--ds-paragraph-short-xs",
     attributes: {},
     path: [
       "typography",
@@ -2791,7 +2791,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-long-lg",
+    name: "--ds-paragraph-long-lg",
     attributes: {},
     path: [
       "typography",
@@ -2815,7 +2815,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-long-md",
+    name: "--ds-paragraph-long-md",
     attributes: {},
     path: [
       "typography",
@@ -2839,7 +2839,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-paragraph-long-sm",
+    name: "--ds-paragraph-long-sm",
     attributes: {},
     path: [
       "typography",
@@ -2863,7 +2863,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-paragraph-long-xs",
+    name: "--ds-paragraph-long-xs",
     attributes: {},
     path: [
       "typography",
@@ -2887,7 +2887,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-label-lg",
+    name: "--ds-label-lg",
     attributes: {},
     path: [
       "typography",
@@ -2910,7 +2910,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-label-md",
+    name: "--ds-label-md",
     attributes: {},
     path: [
       "typography",
@@ -2933,7 +2933,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-label-sm",
+    name: "--ds-label-sm",
     attributes: {},
     path: [
       "typography",
@@ -2956,7 +2956,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-label-xs",
+    name: "--ds-label-xs",
     attributes: {},
     path: [
       "typography",
@@ -2979,7 +2979,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-error_message-lg",
+    name: "--ds-error_message-lg",
     attributes: {},
     path: [
       "typography",
@@ -3002,7 +3002,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-error_message-md",
+    name: "--ds-error_message-md",
     attributes: {},
     path: [
       "typography",
@@ -3025,7 +3025,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-error_message-sm",
+    name: "--ds-error_message-sm",
     attributes: {},
     path: [
       "typography",
@@ -3048,7 +3048,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-error_message-xs",
+    name: "--ds-error_message-xs",
     attributes: {},
     path: [
       "typography",

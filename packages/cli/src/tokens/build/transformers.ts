@@ -61,3 +61,14 @@ export const typographyShorthand: Transform = {
     return `${typography.fontWeight} ${typography.fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
   },
 };
+
+export const typographyName: Transform = {
+  name: 'name/typography',
+  type: 'name',
+  transitive: true,
+  filter: (token) => typeEquals('typography', token),
+  transform: (token) => {
+    console.log(token);
+    return token.name.replace('-typography', '');
+  },
+};

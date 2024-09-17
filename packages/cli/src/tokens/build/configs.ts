@@ -7,7 +7,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, sizeRem, typographyShorthand } from './transformers.js';
+import { nameKebab, sizeRem, typographyName, typographyShorthand } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
@@ -26,6 +26,7 @@ const fileHeader = () => [`These files are generated from design tokens defind u
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyShorthand);
+StyleDictionary.registerTransform(typographyName);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
@@ -38,6 +39,7 @@ const dsTransformers = [
   'ts/size/px',
   sizeRem.name,
   'ts/typography/fontWeight',
+  typographyName.name,
   typographyShorthand.name,
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
@@ -200,7 +202,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
   };
 };
 
-export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
+export const typographyVariables: GetConfig = ({ outPath, theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -228,7 +230,14 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         layer,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
-        transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
+        transforms: [
+          nameKebab.name,
+          'ts/size/px',
+          sizeRem.name,
+          'ts/size/lineheight',
+          'ts/typography/fontWeight',
+          typographyName.name,
+        ],
         files: [
           {
             destination: `typography/${typography}.css`,
