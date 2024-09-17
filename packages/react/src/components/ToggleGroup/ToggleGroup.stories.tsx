@@ -18,17 +18,17 @@ import { Tooltip } from '../Tooltip';
 
 export default {
   title: 'Komponenter/ToggleGroup',
-  component: ToggleGroup.Root,
+  component: ToggleGroup,
 } as Meta;
 
-export const Preview: StoryFn<typeof ToggleGroup.Root> = (args) => {
+export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup.Root {...args}>
+    <ToggleGroup {...args}>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
-    </ToggleGroup.Root>
+    </ToggleGroup>
   );
 };
 
@@ -40,7 +40,7 @@ Preview.args = {
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
   return (
-    <ToggleGroup.Root defaultValue={'option-1'}>
+    <ToggleGroup defaultValue={'option-1'}>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1' icon>
           <AlignLeftIcon title='AlignLeftIcon' fontSize='1.5rem' />
@@ -56,7 +56,7 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
           <AlignRightIcon title='AlignRightIcon' fontSize='1.5rem' />
         </ToggleGroup.Item>
       </Tooltip>
-    </ToggleGroup.Root>
+    </ToggleGroup>
   );
 };
 
@@ -70,7 +70,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
         </Button>
       </div>
       <br />
-      <ToggleGroup.Root value={value} size='md' onChange={setValue}>
+      <ToggleGroup value={value} size='md' onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon fontSize='1.5rem' />
           Innboks
@@ -87,7 +87,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
           <PaperplaneIcon fontSize='1.5rem' />
           Sendt
         </ToggleGroup.Item>
-      </ToggleGroup.Root>
+      </ToggleGroup>
       <br />
       <Paragraph>Du har valgt: {value}</Paragraph>
     </>

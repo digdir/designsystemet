@@ -42,18 +42,7 @@ export const TabsContext = createContext<TabsContextProps>({});
  * ```
  */
 export const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
-  (
-    {
-      size = 'md',
-      children,
-      value,
-      defaultValue,
-      className,
-      onChange,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ size = 'md', value, defaultValue, className, onChange, ...rest }, ref) => {
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState<
       string | undefined
@@ -77,12 +66,11 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          className={cl('ds-tabs', `ds-tabs--${size}`, className)}
+          className={cl('ds-tabs', className)}
+          data-size={size}
           ref={ref}
           {...rest}
-        >
-          {children}
-        </div>
+        />
       </TabsContext.Provider>
     );
   },
