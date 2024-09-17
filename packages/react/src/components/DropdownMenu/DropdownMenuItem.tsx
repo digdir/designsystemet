@@ -20,18 +20,15 @@ export const DropdownMenuItem = forwardRef<
 
   return (
     <li className={className} style={style}>
-      <RovingFocusItem asChild value={value}>
-        <Button
-          ref={ref}
-          variant='tertiary'
-          size={size}
-          className='ds-dropdownmenu__item'
-          role='menuitem'
-          {...rest}
-        >
-          {children}
-        </Button>
-      </RovingFocusItem>
+      <Button
+        ref={ref}
+        variant='tertiary'
+        size={size}
+        className='ds-dropdownmenu__item'
+        {...rest}
+      >
+        {children}
+      </Button>
     </li>
   );
 });

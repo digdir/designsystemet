@@ -1,3 +1,4 @@
+import cl from 'clsx/lite';
 import { forwardRef, useContext, useId } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 
@@ -15,31 +16,28 @@ export type DropdownMenuGroupProps = {
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,
   DropdownMenuGroupProps
->(function DropdownMenuGroup(
-  { children, heading, className, style, ...rest },
-  ref,
-) {
+>(function DropdownMenuGroup({ children, heading, className, ...rest }, ref) {
   const { size } = useContext(DropdownMenuCtx);
   const headingId = useId();
 
   return (
-    <li className={className} style={style}>
+    <>
+      {heading && (
+        <Paragraph asChild size={size}>
+          <h2 id={headingId} className={'ds-dropdownmenu__heading'}>
+            {heading}
+          </h2>
+        </Paragraph>
+      )}
       <ul
         {...(heading ? { 'aria-labelledby': headingId } : {})}
         ref={ref}
         role='group'
-        className={'ds-dropdownmenu__group'}
+        className={cl('ds-dropdownmenu__group', className)}
         {...rest}
       >
-        {heading && (
-          <Paragraph asChild size={size}>
-            <h2 id={headingId} className={'ds-dropdownmenu__heading'}>
-              {heading}
-            </h2>
-          </Paragraph>
-        )}
         {children}
       </ul>
-    </li>
+    </>
   );
 });
