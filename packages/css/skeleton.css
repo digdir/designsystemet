@@ -2,58 +2,50 @@
   --dsc-skeleton-animation-duration: 0.8s;
   --dsc-skeleton-background: var(--ds-color-neutral-surface-default);
 
+  animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
+  background: var(--dsc-skeleton-background);
+  border-radius: min(1rem, var(--ds-border-radius-lg));
+  box-sizing: border-box;
+  display: block;
   height: 1.3em;
   pointer-events: none;
   user-select: none;
-  background-color: var(--dsc-skeleton-background);
-  animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
-}
-
-.ds-skeleton--circle {
-  width: 1.3em;
-  border-radius: var(--ds-border-radius-full);
-  aspect-ratio: 1 / 1;
-}
-
-.ds-skeleton--rectangle {
   width: 100%;
-  border-radius: min(1rem, var(--ds-border-radius-lg));
-}
 
-.ds-skeleton--text {
-  width: 100%;
-  height: auto;
-  transform-origin: 0 55%;
-  transform: scale(1, 0.6);
-  border-radius: var(--ds-border-radius-full);
-}
+  &[data-variant='circle'] {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--ds-border-radius-full);
+    width: 1.3em;
+  }
 
-.ds-skeleton--text:empty::before {
-  content: '\00a0';
-}
+  &[data-variant='text'] {
+    border-radius: var(--ds-border-radius-full);
+    height: auto;
+    margin-block: calc(1lh - 1em);
 
-.ds-skeleton--has-children {
-  width: fit-content;
-  height: fit-content;
-  color: transparent !important;
-}
+    &:empty::before {
+      content: '\00a0';
+    }
+  }
 
-.ds-skeleton--has-children > * {
-  visibility: hidden;
-}
+  /* When having children, let them define size */
+  &:not(:empty) {
+    width: fit-content;
+    height: fit-content;
+    color: transparent !important;
 
-@media (prefers-reduced-motion: reduce) {
-  .ds-skeleton {
+    & > * {
+      visibility: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
     --dsc-skeleton-animation-duration: 1.6s;
   }
 }
 
 @keyframes ds-skeleton-opacity-fade {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
+  to {
     opacity: 0.4;
   }
 }
