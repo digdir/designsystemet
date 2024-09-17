@@ -3,7 +3,7 @@ import { forwardRef, useContext } from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenuContext';
 
 export type DropdownMenuItemProps = Omit<
   ButtonProps,
@@ -13,8 +13,8 @@ export type DropdownMenuItemProps = Omit<
 export const DropdownMenuItem = forwardRef<
   HTMLButtonElement,
   DropdownMenuItemProps
->(({ children, className, style, ...rest }, ref) => {
-  const { size } = useContext(DropdownMenuContext);
+>(function DropdownMenuItem({ children, className, style, ...rest }, ref) {
+  const { size } = useContext(DropdownMenuCtx);
 
   return (
     <li className={className} style={style}>
@@ -31,5 +31,3 @@ export const DropdownMenuItem = forwardRef<
     </li>
   );
 });
-
-DropdownMenuItem.displayName = 'DropdownMenuItem';

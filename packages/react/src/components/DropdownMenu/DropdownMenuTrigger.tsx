@@ -5,16 +5,16 @@ import type { ComponentPropsWithRef } from 'react';
 
 import { Button } from '../Button';
 
-import { DropdownMenuContext } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenuContext';
 
 export type DropdownMenuTriggerProps = ComponentPropsWithRef<typeof Button>;
 
 export const DropdownMenuTrigger = forwardRef<
   HTMLButtonElement,
   DropdownMenuTriggerProps
->(({ asChild, ...rest }, ref) => {
+>(function DropdownMenuTrigger({ asChild, ...rest }, ref) {
   const { triggerRef, internalOpen, setInternalOpen, isControlled } =
-    useContext(DropdownMenuContext);
+    useContext(DropdownMenuCtx);
   const mergedRefs = useMergeRefs([ref, triggerRef]);
 
   const Component = asChild ? Slot : Button;
@@ -31,5 +31,3 @@ export const DropdownMenuTrigger = forwardRef<
     />
   );
 });
-
-DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';

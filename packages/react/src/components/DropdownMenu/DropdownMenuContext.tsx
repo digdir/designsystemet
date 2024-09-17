@@ -26,23 +26,23 @@ export type DropdownMenuContextProps = {
 /**
  * DropdownMenuContext is the root component for the DropdownMenu component.
  * @example
- * <DropdownMenu.Root>
+ * <DropdownMenu.Context>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
  *  <DropdownMenu.Content>
  *    <DropdownMenu.Group heading='Heading'>
  *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
  *    </DropdownMenu.Group>
  *  </DropdownMenu.Content>
- * </DropdownMenu.Root>
+ * </DropdownMenu.Context>
  */
-export function DropdownMenuContext({
+export const DropdownMenuContext = ({
   open,
   onClose,
   placement = 'bottom-end',
   portal,
   size = 'md',
   children,
-}: DropdownMenuContextProps) {
+}: DropdownMenuContextProps) => {
   const triggerRef = useRef<Element>(null);
   const [internalOpen, setInternalOpen] = useState(open ?? false);
 
@@ -70,9 +70,11 @@ export function DropdownMenuContext({
       {children}
     </DropdownMenuCtx.Provider>
   );
-}
+};
 
-type DropdownMenuContextType = {
+DropdownMenuContext.displayName = 'DropdownMenuContext';
+
+type DropdownMenuCtxType = {
   anchorEl: Element | null;
   triggerRef: RefObject<Element>;
   size: NonNullable<DropdownMenuContextProps['size']>;
@@ -84,7 +86,7 @@ type DropdownMenuContextType = {
   onClose?: DropdownMenuContextProps['onClose'];
 };
 
-export const DropdownMenuCtx = createContext<DropdownMenuContextType>({
+export const DropdownMenuCtx = createContext<DropdownMenuCtxType>({
   triggerRef: { current: null },
   size: 'md',
   anchorEl: null,

@@ -18,7 +18,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../utilities';
 
-import { DropdownMenuContext } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenuContext';
 
 const GAP = 4;
 
@@ -29,7 +29,7 @@ export type DropdownMenuContentProps = {
 export const DropdownMenuContent = forwardRef<
   HTMLUListElement,
   DropdownMenuContentProps
->(({ className, children, ...rest }, ref) => {
+>(function DropddownMenuContent({ className, children, ...rest }, ref) {
   const {
     size,
     placement,
@@ -39,7 +39,7 @@ export const DropdownMenuContent = forwardRef<
     internalOpen,
     setInternalOpen,
     onClose,
-  } = useContext(DropdownMenuContext);
+  } = useContext(DropdownMenuCtx);
 
   const Container = portal ? FloatingPortal : Fragment;
   const floatingEl = useRef<HTMLUListElement>(null);
@@ -113,5 +113,3 @@ export const DropdownMenuContent = forwardRef<
     </>
   );
 });
-
-DropdownMenuContent.displayName = 'DropdownMenuContent';

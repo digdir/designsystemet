@@ -3,7 +3,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { DropdownMenuContext } from './DropdownMenuContext';
+import { DropdownMenuCtx } from './DropdownMenuContext';
 
 export type DropdownMenuGroupProps = {
   /**
@@ -15,8 +15,11 @@ export type DropdownMenuGroupProps = {
 export const DropdownMenuGroup = forwardRef<
   HTMLUListElement,
   DropdownMenuGroupProps
->(({ children, heading, className, style, ...rest }, ref) => {
-  const { size } = useContext(DropdownMenuContext);
+>(function DropdownMenuGroup(
+  { children, heading, className, style, ...rest },
+  ref,
+) {
+  const { size } = useContext(DropdownMenuCtx);
   const headingId = useId();
 
   return (
@@ -40,5 +43,3 @@ export const DropdownMenuGroup = forwardRef<
     </li>
   );
 });
-
-DropdownMenuGroup.displayName = 'DropdownMenuGroup';

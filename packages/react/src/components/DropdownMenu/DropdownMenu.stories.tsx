@@ -12,10 +12,10 @@ const marginDecorator = (Story: StoryFn) => (
 
 export default {
   title: 'Komponenter/DropdownMenu',
-  component: DropdownMenu.Root,
+  component: DropdownMenu.Context,
 } as Meta;
 
-export const Preview: StoryFn<typeof DropdownMenu.Root> = (args) => {
+export const Preview: StoryFn<typeof DropdownMenu.Context> = (args) => {
   return (
     <>
       <DropdownMenu.Context {...args}>
@@ -38,7 +38,7 @@ Preview.args = {
 
 Preview.decorators = [marginDecorator];
 
-export const Icons: StoryFn<typeof DropdownMenu.Root> = () => {
+export const Icons: StoryFn<typeof DropdownMenu.Context> = () => {
   return (
     <DropdownMenu.Context>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
