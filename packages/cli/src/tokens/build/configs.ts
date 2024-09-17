@@ -208,6 +208,18 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
     usesDtcg: true,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
+    expand: {
+      include: ['typography'],
+      // // more info about typesMap later...
+      // typesMap: {
+      //   // all width props are mapped to 'dimension' type
+      //   width: 'dimension',
+      //   typography: {
+      //     // fontSize prop is mapped to 'dimension' type if inside a typography composite type token
+      //     fontSize: 'dimension',
+      //   },
+      // },
+    },
     platforms: {
       css: {
         prefix,

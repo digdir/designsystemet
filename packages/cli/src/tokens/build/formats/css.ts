@@ -204,9 +204,10 @@ export const typography: Format = {
       ),
     )(sortedTokens);
 
-    const classes = formattedTokens.classes.join('\n');
+    // const classes = formattedTokens.classes.join('\n');
+    const classes = '';
     const variables = formattedTokens.variables.join('\n');
-    const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
+    const content = selector ? `${selector} {\n${variables}\n}` : classes;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
 
     return header + body;
