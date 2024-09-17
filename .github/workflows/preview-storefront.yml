@@ -60,14 +60,14 @@ jobs:
         id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storybook\]\((https:\/\/[^)]+)\) `[^-]+`'
 
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Theme\]\((https:\/\/[^)]+)\) `[^-]+`'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
