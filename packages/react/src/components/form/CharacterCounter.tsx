@@ -45,7 +45,7 @@ export const CharacterCounter = ({
       <span className={`ds-sr-only`} id={id}>
         {srLabel}
       </span>
-      <ErrorMessage asChild size={size} error={hasExceededLimit}>
+      <ErrorMessage asChild size={size}>
         <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
           {label(currentCount)}
         </span>
