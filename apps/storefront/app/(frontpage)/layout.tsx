@@ -76,7 +76,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className={classes.text}>
               <div className={classes.betaTag}>Next</div>
               <Heading size='lg'>
-                Designsystemet hjelper deg å lage gode digitale tjenester
+                Designsystemet hjelper deg å lage gode digitale tjenester x
               </Heading>
             </div>
             <div className={classes.cards}>
