@@ -1,0 +1,23 @@
+name: Test reports
+on:
+  workflow_dispatch:
+    inputs:
+      calling_workflow_id:
+        required: true
+      calling_workflow_run_id:
+        required: true
+      calling_workflow_head_sha:
+        required: true
+
+permissions:
+  checks: write
+  pull-requests: write
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      # This is just a placeholder workflow, the actual contents of the workflow will be populated in
+      # another pull request. But https://github.com/digdir/designsystemet/actions/workflows/test-reports.yml
+      # only works if the workflow file is already present on the default branch
+      - run: echo "Hello, dummy workflow"
