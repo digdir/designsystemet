@@ -11,11 +11,6 @@
     --dsc-tabs-content-padding: var(--ds-spacing-4);
   }
 
-  &[data-size='md'] {
-    --dsc-tabs-tab-padding: var(--ds-spacing-3) var(--ds-spacing-5);
-    --dsc-tabs-content-padding: var(--ds-spacing-5);
-  }
-
   &[data-size='lg'] {
     --dsc-tabs-tab-padding: var(--ds-spacing-4) var(--ds-spacing-6);
     --dsc-tabs-content-padding: var(--ds-spacing-6);
