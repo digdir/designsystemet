@@ -1,9 +1,8 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
-import { RovingFocusItem } from '../../../utilities/RovingFocus/RovingFocusItem';
-import type { ButtonProps } from '../../Button';
-import { Button } from '../../Button';
+import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
+import { Button, type ButtonProps } from '../Button';
 
 import { useToggleGroupItem } from './useToggleGroupitem';
 
@@ -23,13 +22,12 @@ export type ToggleGroupItemProps = {
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupItemProps
->(function ToggleGroupItem({ className, ...rest }, ref) {
+>(function ToggleGroupItem(rest, ref) {
   const { active, size = 'md', buttonProps, value } = useToggleGroupItem(rest);
 
   return (
     <RovingFocusItem asChild value={value}>
       <Button
-        className={cl('ds-togglegroup__item', className)}
         variant={active ? 'primary' : 'tertiary'}
         size={size}
         ref={ref}
