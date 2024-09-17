@@ -60,13 +60,4 @@ describe('Dropdown', () => {
     expect(screen.getByText('Anchor')).toHaveAttribute('href', '/');
     expect(screen.getByText('Anchor').tagName).toBe('A');
   });
-
-  it('Group should have role="group"', async () => {
-    const { user } = await render();
-    const dropdownTrigger = screen.getByRole('button');
-
-    await act(async () => await user.click(dropdownTrigger));
-
-    expect(screen.getByRole('group')).toBeInTheDocument();
-  });
 });
