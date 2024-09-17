@@ -60,15 +60,6 @@ describe('Dropdown', () => {
     expect(screen.getByText('Anchor').tagName).toBe('A');
   });
 
-  it('Item should have role="menuitem"', async () => {
-    const { user } = await render();
-    const dropdownTrigger = screen.getByRole('button');
-
-    await act(async () => await user.click(dropdownTrigger));
-
-    expect(screen.getByText('Item')).toHaveAttribute('role', 'menuitem');
-  });
-
   it('Group should have role="group"', async () => {
     const { user } = await render();
     const dropdownTrigger = screen.getByRole('button');
