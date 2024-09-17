@@ -1,8 +1,9 @@
-import { forwardRef, useContext } from 'react';
+import { forwardRef, useContext, useId } from 'react';
 
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 
+import { RovingFocusItem } from '../../utilities';
 import { DropdownMenuCtx } from './DropdownMenuContext';
 
 export type DropdownMenuItemProps = Omit<
@@ -15,19 +16,22 @@ export const DropdownMenuItem = forwardRef<
   DropdownMenuItemProps
 >(function DropdownMenuItem({ children, className, style, ...rest }, ref) {
   const { size } = useContext(DropdownMenuCtx);
+  const value = useId();
 
   return (
     <li className={className} style={style}>
-      <Button
-        ref={ref}
-        variant='tertiary'
-        size={size}
-        className='ds-dropdownmenu__item'
-        role='menuitem'
-        {...rest}
-      >
-        {children}
-      </Button>
+      <RovingFocusItem asChild value={value}>
+        <Button
+          ref={ref}
+          variant='tertiary'
+          size={size}
+          className='ds-dropdownmenu__item'
+          role='menuitem'
+          {...rest}
+        >
+          {children}
+        </Button>
+      </RovingFocusItem>
     </li>
   );
 });

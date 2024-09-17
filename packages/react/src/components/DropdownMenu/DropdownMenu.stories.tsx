@@ -15,9 +15,13 @@ export const Preview: StoryFn<typeof DropdownMenu.Context> = (args) => {
       <DropdownMenu.Context {...args}>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu.Content>
-          <DropdownMenu.Group heading='Heading'>
-            <DropdownMenu.Item>Button 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Button 2</DropdownMenu.Item>
+          <DropdownMenu.Group heading='Heading 2'>
+            <DropdownMenu.Item>Button 1.1</DropdownMenu.Item>
+            <DropdownMenu.Item>Button 1.2</DropdownMenu.Item>
+          </DropdownMenu.Group>
+          <DropdownMenu.Group heading='Heading 2'>
+            <DropdownMenu.Item>Button 2.1</DropdownMenu.Item>
+            <DropdownMenu.Item>Button 2.2</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
       </DropdownMenu.Context>

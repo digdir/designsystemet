@@ -1,6 +1,6 @@
 import type { Placement } from '@floating-ui/react';
-import { createContext, useEffect, useRef, useState } from 'react';
-import type { ReactNode, RefObject } from 'react';
+import { createContext } from 'react';
+import type { ReactNode } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 import { PopoverContext } from '../Popover';

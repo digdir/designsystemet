@@ -2,6 +2,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 
+import { RovingFocusRoot } from '../../utilities';
 import { Popover } from '../Popover';
 import { DropdownMenuCtx } from './DropdownMenuContext';
 
@@ -29,7 +30,7 @@ export const DropdownMenuContent = forwardRef<
         className={cl('ds-dropdownmenu', className)}
         data-size={size}
       >
-        {children}
+        <RovingFocusRoot orientation='vertical'>{children}</RovingFocusRoot>
       </ul>
     </Popover>
   );
