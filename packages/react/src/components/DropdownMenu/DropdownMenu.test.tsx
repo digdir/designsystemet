@@ -11,10 +11,11 @@ const Comp = (args: Partial<DropdownMenuContextProps>) => {
     <DropdownMenu.Context {...args}>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu>
-        <DropdownMenu.Group heading='Links'>
+        <DropdownMenu.Heading>Links</DropdownMenu.Heading>
+        <DropdownMenu.List>
           <DropdownMenu.Item>Item</DropdownMenu.Item>
           {args.children}
-        </DropdownMenu.Group>
+        </DropdownMenu.List>
       </DropdownMenu>
     </DropdownMenu.Context>
   );
@@ -67,14 +68,5 @@ describe('Dropdown', () => {
     await act(async () => await user.click(dropdownTrigger));
 
     expect(screen.getByRole('group')).toBeInTheDocument();
-  });
-
-  it('Group should be described by heading', async () => {
-    const { user } = await render();
-    const dropdownTrigger = screen.getByRole('button');
-
-    await act(async () => user.click(dropdownTrigger));
-
-    expect(screen.getByRole('group')).toHaveAttribute('aria-labelledby');
   });
 });

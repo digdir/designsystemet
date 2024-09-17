@@ -102,7 +102,8 @@ export const InDropdownMenu: Story = () => (
       Velg Profil
     </DropdownMenu.Trigger>
     <DropdownMenu placement='bottom-end' size='md'>
-      <DropdownMenu.Group heading='Alle kontoer'>
+      <DropdownMenu.Heading>Alle kontoer</DropdownMenu.Heading>
+      <DropdownMenu.List>
         <DropdownMenu.Item>
           <Badge overlap='circle' color='danger' size='sm'>
             <Avatar aria-label='Ola Nordmann' size='xs'>
@@ -117,7 +118,7 @@ export const InDropdownMenu: Story = () => (
           </Avatar>
           Sogndal kommune
         </DropdownMenu.Item>
-      </DropdownMenu.Group>
+      </DropdownMenu.List>
     </DropdownMenu>
   </DropdownMenu.Context>
 );

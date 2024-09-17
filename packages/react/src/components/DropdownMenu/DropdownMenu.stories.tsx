@@ -16,14 +16,16 @@ export const Preview: StoryFn<typeof DropdownMenu> = (args) => {
       <DropdownMenu.Context>
         <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
         <DropdownMenu {...args}>
-          <DropdownMenu.Group heading='Heading 2'>
+          <DropdownMenu.Heading>Heading 1</DropdownMenu.Heading>
+          <DropdownMenu.List>
             <DropdownMenu.Item>Button 1.1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 1.2</DropdownMenu.Item>
-          </DropdownMenu.Group>
-          <DropdownMenu.Group heading='Heading 2'>
+          </DropdownMenu.List>
+          <DropdownMenu.Heading>Heading 2</DropdownMenu.Heading>
+          <DropdownMenu.List>
             <DropdownMenu.Item>Button 2.1</DropdownMenu.Item>
             <DropdownMenu.Item>Button 2.2</DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.List>
         </DropdownMenu>
       </DropdownMenu.Context>
     </>
@@ -40,7 +42,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
     <DropdownMenu.Context>
       <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
       <DropdownMenu {...args}>
-        <DropdownMenu.Group>
+        <DropdownMenu.List>
           <DropdownMenu.Item asChild>
             <a
               href='https://github.com/digdir/designsystemet'
@@ -61,7 +63,7 @@ export const Icons: StoryFn<typeof DropdownMenu> = (args) => {
               Designsystemet.no
             </a>
           </DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.List>
       </DropdownMenu>
     </DropdownMenu.Context>
   );
@@ -77,7 +79,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
           Dropdown
         </DropdownMenu.Trigger>
         <DropdownMenu open={open} onClose={() => setOpen(false)}>
-          <DropdownMenu.Group>
+          <DropdownMenu.List>
             <DropdownMenu.Item asChild>
               <a
                 href='https://github.com/digdir/designsystemet'
@@ -98,7 +100,7 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
                 Designsystemet.no
               </a>
             </DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.List>
         </DropdownMenu>
       </DropdownMenu.Context>
     </>
@@ -110,9 +112,9 @@ export const WithoutTrigger: StoryFn<typeof DropdownMenu> = () => {
     <>
       <Button popovertarget='dropdown'>Dropdown</Button>
       <DropdownMenu id='dropdown'>
-        <DropdownMenu.Group>
+        <DropdownMenu.List>
           <DropdownMenu.Item>Item</DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.List>
       </DropdownMenu>
     </>
   );

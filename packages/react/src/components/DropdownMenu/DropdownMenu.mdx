@@ -20,18 +20,18 @@ import { DropdownMenu } from '@digdir/designsystemet-react';
 <DropdownMenu.Context>
   <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
   <DropdownMenu>
-    <DropdownMenu.Group>
+    <DropdownMenu.List>
       <DropdownMenu.Item>Item</DropdownMenu.Item>
-    </DropdownMenu.Group>
+    </DropdownMenu.List>
   </DropdownMenu>
 </DropdownMenu.Context>
 
 // uten context
 <Button popovertarget="my-dropdown">Trigger</Button>
 <Dropdown id="my-dropdown">
-  <DropdownMenu.Group>
+  <DropdownMenu.List>
     <DropdownMenu.Item>Item</DropdownMenu.Item>
-  </DropdownMenu.Group>
+  </DropdownMenu.List>
 </Dropdown>
 ```
 
@@ -60,9 +60,9 @@ Du må da legge til `popovertarget={id}` på `DropdownMenu`, og `id` på `Dropdo
 
 Det er innebygd tilgjengelighet i `DropdownMenu.Trigger` med `aria-expanded={true/false}` i henhold til åpne/lukket tilstand, og `aria-haspopup='menu'`.
 
-### `DropdownMenu.Group`
+### `DropdownMenu.List`
 
-<ArgTypes of={DropdownMenu.Group} />
+<ArgTypes of={DropdownMenu.List} />
 
 ### `DropdownMenu.Trigger`
 

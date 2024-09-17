@@ -14,9 +14,10 @@ export type DropdownMenuContextProps = {
  * <DropdownMenu.Context>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
  *  <DropdownMenu>
- *    <DropdownMenu.Group heading='Heading'>
+ *   <DropdownMenu.Heading>Heading</DropdownMenu.Heading>
+ *    <DropdownMenu.List>
  *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
- *    </DropdownMenu.Group>
+ *    </DropdownMenu.List>
  *  </DropdownMenu>
  * </DropdownMenu.Context>
  */
