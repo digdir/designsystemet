@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { DropdownMenu } from '.';
+import { Button } from '../Button';
 
 export default {
   title: 'Komponenter/DropdownMenu',
@@ -100,6 +101,19 @@ export const Controlled: StoryFn<typeof DropdownMenu> = () => {
           </DropdownMenu.Group>
         </DropdownMenu>
       </DropdownMenu.Context>
+    </>
+  );
+};
+
+export const WithoutTrigger: StoryFn<typeof DropdownMenu> = () => {
+  return (
+    <>
+      <Button popovertarget='dropdown'>Dropdown</Button>
+      <DropdownMenu id='dropdown'>
+        <DropdownMenu.Group>
+          <DropdownMenu.Item>Item</DropdownMenu.Item>
+        </DropdownMenu.Group>
+      </DropdownMenu>
     </>
   );
 };

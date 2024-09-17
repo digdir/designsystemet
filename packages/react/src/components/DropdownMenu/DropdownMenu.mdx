@@ -40,9 +40,16 @@ Du kan legge ikon rett inn i `DropdownMenu.Item`, dersom det blir mye mellomrom 
 
 <Canvas of={DropdownMenuStories.Icons} />
 
+### Uten Trigger
+
+`DropdownMenu` bruker popover APIet, så du kan bruke `DropdownMenu` uten `DropdownMenu.Trigger`.
+
+<Canvas of={DropdownMenuStories.WithoutTrigger} />
+
 ## Tilgjengelighet
 
 Det er innebygd tilgjengelighet i `DropdownMenu.Trigger` med `aria-expanded={true/false}` i henhold til åpne/lukket tilstand, og `aria-haspopup='menu'`.
+Du må da legge til `popovertarget={id}` på `DropdownMenu`, og `id` på `DropdownMenu`.
 
 ### `DropdownMenu.Group`
 
