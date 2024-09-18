@@ -23,19 +23,17 @@ export default {
 
 export const Preview: StoryFn<typeof Modal> = (args) => {
   return (
-    <>
-      <Modal.Context>
-        <Modal.Trigger>Open Modal</Modal.Trigger>
-        <Modal {...args}>
-          <Modal.Header>Modal header</Modal.Header>
-          <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
-          </Paragraph>
-          <Modal.Footer>Modal footer</Modal.Footer>
-        </Modal>
-      </Modal.Context>
-    </>
+    <Modal.Context>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal {...args}>
+        <Modal.Header>Modal header</Modal.Header>
+        <Paragraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        <Modal.Footer>Modal footer</Modal.Footer>
+      </Modal>
+    </Modal.Context>
   );
 };
 
@@ -47,28 +45,28 @@ export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal.Context>
         <Modal {...args} ref={modalRef}>
-          <Modal.Header>
-            <Heading size='sm'>Modal subtittel</Heading>
-            <Heading>Modal header</Heading>
-          </Modal.Header>
-          <Paragraph>
+          <Paragraph>Modal subtittel</Paragraph>
+          <Heading size='xs' spacing>
+            Modal header
+          </Heading>
+          <Paragraph spacing>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
-          <Modal.Footer>Modal footer</Modal.Footer>
+          Modal footer
         </Modal>
       </Modal.Context>
     </>
   );
 };
 
-export const CloseOnBackdropClick: StoryFn<typeof Modal> = () => {
+export const PreventBackdropClick: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} onInteractOutside={() => modalRef.current?.close()}>
+      <Modal ref={modalRef} preventBackdropClick>
         <Heading size='xs'>
           Modal med closeOnBackdropClick og en veldig lang tittel
         </Heading>
@@ -91,7 +89,6 @@ export const WithDivider: StoryFn<typeof Modal> = () => {
           <Paragraph size='sm'>Her er det også divider</Paragraph>
           <Heading size='xs'>Vi kan legge divider under header</Heading>
         </Modal.Header>
-        <Divider />
         <Paragraph spacing>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
           sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec
@@ -114,7 +111,6 @@ export const WithDivider: StoryFn<typeof Modal> = () => {
           arcu. Donec cursus leo a dui auctor pulvinar. Sed in elit urna. Nunc
           vitae magna sed nibh elementum dignissim et ut massa.
         </Paragraph>
-        <Divider />
         <Modal.Footer>Og over footer</Modal.Footer>
       </Modal>
     </Modal.Context>
@@ -162,14 +158,11 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
         <Modal.Trigger>Open Modal</Modal.Trigger>
         {/* @ts-expect-error #2353 */}
         <Modal style={{ '--dsc-modal-max-width': '1200px' }}>
-          <Modal.Header>
-            <Heading>Modal med en veldig lang bredde</Heading>
-          </Modal.Header>
+          <Heading size='xs'>Modal med en veldig lang bredde</Heading>
           <Paragraph>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
             doloremque obcaecati assumenda odio ducimus sunt et.
           </Paragraph>
-          <Footer>Footer</Footer>
         </Modal>
       </Modal.Context>
     </>
@@ -184,7 +177,9 @@ export const ModalWithSelect: StoryFn<typeof Modal> = () => {
       <Modal.Context>
         <Modal.Trigger>Open Modal</Modal.Trigger>
         <Modal style={{ overflow: 'visible' }}>
-          <Modal.Header>Modal med select</Modal.Header>
+          <Modal.Header>
+            <Heading size='xs'>Modal med select</Heading>
+          </Modal.Header>
           <Combobox portal={false} label='Velg sted'>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>

@@ -1,6 +1,7 @@
 .ds-modal {
   --dsc-modal-backdrop-background: rgb(0 0 0 / 0.5);
   --dsc-modal-background: var(--ds-color-neutral-background-default);
+  --dsc-modal-divider: 1px solid var(--ds-color-neutral-border-subtle);
   --dsc-modal-color: var(--ds-color-neutral-text-default);
   --dsc-modal-padding: var(--ds-spacing-6);
   --dsc-modal-padding-invert: calc(var(--dsc-modal-padding) * -1);
@@ -66,13 +67,17 @@
 }
 
 .ds-modal__header {
+  border-bottom: var(--dsc-modal-divider);
+  margin-block: var(--dsc-modal-padding-invert) var(--dsc-modal-padding);
+  margin-inline: var(--dsc-modal-padding-invert);
   padding: var(--dsc-modal-padding);
-  margin: var(--dsc-modal-padding-invert) var(--dsc-modal-padding-invert) 0;
 }
 
 .ds-modal__footer {
+  border-top: var(--dsc-modal-divider);
+  margin-block: var(--dsc-modal-padding) var(--dsc-modal-padding-invert);
+  margin-inline: var(--dsc-modal-padding-invert);
   padding: var(--dsc-modal-padding);
-  margin: 0 var(--dsc-modal-padding-invert) var(--dsc-modal-padding-invert);
 }
 
 /* Prevent scroll when open */

@@ -9,13 +9,13 @@ export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
 
 export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
   function ModalTrigger({ asChild, ...rest }, ref) {
-    const { modalRef } = useContext(Context);
+    const contextRef = useContext(Context);
     const Component = asChild ? Slot : Button;
 
     return (
       <Component
         aria-haspopup='dialog'
-        onClick={() => modalRef?.current?.showModal()}
+        onClick={() => contextRef?.current?.showModal()}
         ref={ref}
         {...rest}
       />

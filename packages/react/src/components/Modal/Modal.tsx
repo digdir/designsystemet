@@ -15,20 +15,15 @@ export type ModalProps = {
    */
   closeLabel?: string | false;
   /**
-   * Close modal when clicking on backdrop.
+   * Prevent closing on backdrop click.
    * @default undefined
    */
-  onInteractOutside?: () => void;
+  preventBackdropClick?: boolean;
   /**
    * Callback that is called when the modal is closed.
    * @default undefined
    */
   onClose?: () => void;
-  /**
-   * Called before the modal is closed when using the close button, `closeOnBackdropClick` or `ESCAPE`.
-   * If the function returns `false` the modal will not close.
-   */
-  onBeforeClose?: () => boolean | undefined;
   asChild?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
@@ -38,67 +33,32 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
     children,
     className,
     closeLabel = 'Lukk',
-    onBeforeClose,
     onClose,
-    onInteractOutside,
+    open,
+    preventBackdropClick = false,
     ...rest
   },
   ref,
 ) {
-  const { modalRef, setOpen, setCloseModal } = useContext(Context);
-  const modalDialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the modal works without a ModalContext
-  const open = useModalState(modalDialogRef);
+  const contextRef = useContext(Context);
+  const modalRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the modal works without a ModalContext
   const Component = asChild ? Slot : 'dialog';
-  const mergedRefs = useMergeRefs([modalRef, ref, modalDialogRef]);
+  const mergedRefs = useMergeRefs([contextRef, ref, modalRef]);
 
+  useEffect(() => modalRef.current?.[open ? 'showModal' : 'close'](), [open]); // Toggle open based on prop
   useEffect(() => {
-    setCloseModal?.(() => {
-      if (onBeforeClose && onBeforeClose() === false) return;
-
-      modalDialogRef.current?.close();
-    });
-  }, [onBeforeClose, setCloseModal]);
-
-  useEffect(() => {
-    setOpen(open);
-  }, [open, setOpen]);
-
-  useEffect(() => {
-    const modalEl = modalRef.current;
-    const handleBackdropClick = (e: MouseEvent) => {
-      if (e.target === modalEl && onInteractOutside) {
-        // Fix bug where if you select text spanning two divs it thinks you clicked outside
-        if (window.getSelection()?.toString()) return;
-        onInteractOutside?.();
-      }
+    const modal = modalRef.current;
+    const handleBackdropClick = (event: MouseEvent) => {
+      if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
+      if (event.target === modal && !preventBackdropClick) modal?.close();
     };
 
-    modalEl?.addEventListener('click', handleBackdropClick);
-    return () => modalEl?.removeEventListener('click', handleBackdropClick);
-  }, [onInteractOutside, modalRef, onBeforeClose, ref]);
-
-  useEffect(() => {
-    const modalEl = modalRef.current;
-    const handleModalClose = () => onClose?.();
-
-    modalEl?.addEventListener('close', handleModalClose);
-    return () => modalEl?.removeEventListener('close', handleModalClose);
-  }, [modalRef, onClose]);
-
-  const onCancel: ModalProps['onCancel'] = (event) => {
-    if (onBeforeClose && onBeforeClose() === false)
-      return event.preventDefault();
-
-    modalRef.current?.close();
-  };
+    modal?.addEventListener('click', handleBackdropClick);
+    return () => modal?.removeEventListener('click', handleBackdropClick);
+  }, [preventBackdropClick]);
 
   return (
-    <Component
-      className={cl('ds-modal', className)}
-      onCancel={onCancel}
-      ref={mergedRefs}
-      {...rest}
-    >
+    <Component className={cl('ds-modal', className)} ref={mergedRefs} {...rest}>
       {closeLabel !== false && (
         <form method='dialog'>
           <Button
