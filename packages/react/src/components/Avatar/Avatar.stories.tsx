@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar } from '.';
-import { Badge, DropdownMenu } from '../';
+import { Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
@@ -93,34 +93,34 @@ export const WithImage: Story = () => (
   </Avatar>
 );
 
-export const InDropdownMenu: Story = () => (
-  <DropdownMenu.Context>
-    <DropdownMenu.Trigger variant='tertiary'>
+export const InDropdown: Story = () => (
+  <Dropdown.Context>
+    <Dropdown.Trigger variant='tertiary'>
       <Avatar aria-label='Ola Nordmann' size='sm'>
         ON
       </Avatar>
       Velg Profil
-    </DropdownMenu.Trigger>
-    <DropdownMenu placement='bottom-end' size='md'>
-      <DropdownMenu.Heading>Alle kontoer</DropdownMenu.Heading>
-      <DropdownMenu.List>
-        <DropdownMenu.Item>
+    </Dropdown.Trigger>
+    <Dropdown placement='bottom-end' size='md'>
+      <Dropdown.Heading>Alle kontoer</Dropdown.Heading>
+      <Dropdown.List>
+        <Dropdown.Item>
           <Badge overlap='circle' color='danger' size='sm'>
             <Avatar aria-label='Ola Nordmann' size='xs'>
               ON
             </Avatar>
           </Badge>
           Ola Nordmann
-        </DropdownMenu.Item>
-        <DropdownMenu.Item>
+        </Dropdown.Item>
+        <Dropdown.Item>
           <Avatar size='xs' color='brand1' aria-label='Sogndal Kommune'>
             <BriefcaseIcon fontSize='5em' />
           </Avatar>
           Sogndal kommune
-        </DropdownMenu.Item>
-      </DropdownMenu.List>
-    </DropdownMenu>
-  </DropdownMenu.Context>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
+  </Dropdown.Context>
 );
 
 export const AsLink: Story = () => (

@@ -2,26 +2,26 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { DropdownMenuContextProps } from './DropdownMenuContext';
+import type { DropdownContextProps } from './DropdownContext';
 
-import { DropdownMenu } from '.';
+import { Dropdown } from '.';
 
-const Comp = (args: Partial<DropdownMenuContextProps>) => {
+const Comp = (args: Partial<DropdownContextProps>) => {
   return (
-    <DropdownMenu.Context {...args}>
-      <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
-      <DropdownMenu>
-        <DropdownMenu.Heading>Links</DropdownMenu.Heading>
-        <DropdownMenu.List>
-          <DropdownMenu.Item>Item</DropdownMenu.Item>
+    <Dropdown.Context {...args}>
+      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+      <Dropdown>
+        <Dropdown.Heading>Links</Dropdown.Heading>
+        <Dropdown.List>
+          <Dropdown.Item>Item</Dropdown.Item>
           {args.children}
-        </DropdownMenu.List>
-      </DropdownMenu>
-    </DropdownMenu.Context>
+        </Dropdown.List>
+      </Dropdown>
+    </Dropdown.Context>
   );
 };
 
-const render = async (props: Partial<DropdownMenuContextProps> = {}) => {
+const render = async (props: Partial<DropdownContextProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
@@ -36,7 +36,7 @@ describe('Dropdown', () => {
   /* We are testing closing and opening in Popover.tests.tsx */
   it('should render children', async () => {
     const { user } = await render({
-      children: <DropdownMenu.Item>Item 2</DropdownMenu.Item>,
+      children: <Dropdown.Item>Item 2</Dropdown.Item>,
     });
     const dropdownTrigger = screen.getByRole('button');
 
@@ -48,9 +48,9 @@ describe('Dropdown', () => {
   it('should be able to render `Dropdown.Item` as a anchor element using asChild', async () => {
     const { user } = await render({
       children: (
-        <DropdownMenu.Item asChild>
+        <Dropdown.Item asChild>
           <a href='/'>Anchor</a>
-        </DropdownMenu.Item>
+        </Dropdown.Item>
       ),
     });
     const dropdownTrigger = screen.getByRole('button');

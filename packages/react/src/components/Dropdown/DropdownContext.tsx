@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 
 import { PopoverContext } from '../Popover';
 
-export type DropdownMenuContextProps = {
+export type DropdownContextProps = {
   children: ReactNode;
 };
 
 /**
- * DropdownMenuContext is the root component for the DropdownMenu component.
+ * DropdownContext is the root component for the DropdownMenu component.
  * @example
  * <DropdownMenu.Context>
  *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
@@ -19,8 +19,8 @@ export type DropdownMenuContextProps = {
  *  </DropdownMenu>
  * </DropdownMenu.Context>
  */
-export const DropdownMenuContext = ({ children }: DropdownMenuContextProps) => {
+export const DropdownContext = ({ children }: DropdownContextProps) => {
   return <PopoverContext>{children}</PopoverContext>;
 };
 
-DropdownMenuContext.displayName = 'DropdownMenuContext';
+DropdownContext.displayName = 'DropdownContext';

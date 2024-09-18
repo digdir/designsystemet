@@ -4,6 +4,7 @@
 ---
 
 DropdownMenu: 
+- Rename from `DropdownMenu` to `Dropdown`
 - Change API and structure
 - Rename `.Root` to `.Context`
-- Rename `.Content` to `DropdownMenu`
+- Rename `.Content` to `Dropdown`

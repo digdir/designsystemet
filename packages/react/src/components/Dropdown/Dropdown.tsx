@@ -1,18 +1,12 @@
 import cl from 'clsx/lite';
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, forwardRef, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
 import type { Placement } from '@floating-ui/react';
 import { Popover } from '../Popover';
 import type { PopoverProps } from '../Popover';
 
-export type DropdownMenuProps = {
+export type DropdownProps = {
   /** The placement of the dropdown
    * @default bottom-end
    */
@@ -20,12 +14,12 @@ export type DropdownMenuProps = {
   children: ReactNode;
 } & Omit<PopoverProps, 'variant' | 'placement'>;
 
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
+export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   function DropddownMenuContent(
     { placement = 'bottom-end', className, ...rest },
     ref,
   ) {
-    const [size, setSize] = useState<NonNullable<DropdownMenuProps['size']>>(
+    const [size, setSize] = useState<NonNullable<DropdownProps['size']>>(
       rest.size || 'md',
     );
 
@@ -34,7 +28,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     }, [rest.size]);
 
     return (
-      <DropdownMenuCtx.Provider
+      <DropdownCtx.Provider
         value={{
           size,
         }}
@@ -43,18 +37,18 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           ref={ref}
           placement={placement}
           size={size}
-          className={cl('ds-dropdownmenu', className)}
+          className={cl('ds-dropdown', className)}
           {...rest}
         />
-      </DropdownMenuCtx.Provider>
+      </DropdownCtx.Provider>
     );
   },
 );
 
 type DropdownMenuCtxType = {
-  size: NonNullable<DropdownMenuProps['size']>;
+  size: NonNullable<DropdownProps['size']>;
 };
 
-export const DropdownMenuCtx = createContext<DropdownMenuCtxType>({
+export const DropdownCtx = createContext<DropdownMenuCtxType>({
   size: 'md',
 });

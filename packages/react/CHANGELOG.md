@@ -199,7 +199,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **Box:** Remove deprecated `as` prop ([#1896](https://github.com/digdir/designsystemet/issues/1896)) ([59dd231](https://github.com/digdir/designsystemet/commit/59dd2310cfb7c91e4be20a54412e036a8a268b73))
 - **Button:** Remove deprecated `as` prop ([#1894](https://github.com/digdir/designsystemet/issues/1894)) ([c346203](https://github.com/digdir/designsystemet/commit/c34620344be7d25c4c73b147b136254b177cab2c))
 - **Card:** Remove deprecated `as` prop ([#1897](https://github.com/digdir/designsystemet/issues/1897)) ([17ef8c6](https://github.com/digdir/designsystemet/commit/17ef8c64c3ad07d8a0bf036a032c1a5bd62a4233))
-- **DropdownMenuItem:** Remove deprecated `as` prop ([#1895](https://github.com/digdir/designsystemet/issues/1895)) ([2f705bb](https://github.com/digdir/designsystemet/commit/2f705bbe063317fd6f21d340ab222e966d912d7e))
+- **DropdownItem:** Remove deprecated `as` prop ([#1895](https://github.com/digdir/designsystemet/issues/1895)) ([2f705bb](https://github.com/digdir/designsystemet/commit/2f705bbe063317fd6f21d340ab222e966d912d7e))
 - **ErrorMessage:** Remove deprecated `as` prop ([#1899](https://github.com/digdir/designsystemet/issues/1899)) ([b37584a](https://github.com/digdir/designsystemet/commit/b37584af07b2b8a4f536b5931213227fd1fc1c9d))
 - **Heading:** Remove deprecated `as` prop ([#1900](https://github.com/digdir/designsystemet/issues/1900)) ([685e438](https://github.com/digdir/designsystemet/commit/685e43897775276c331b2cf548f70fa508806d9e))
 - **Ingress:** Remove deprecated `as` prop ([#1903](https://github.com/digdir/designsystemet/issues/1903)) ([1139b31](https://github.com/digdir/designsystemet/commit/1139b312defa3411e9133c949dc19d48011fa74d))
@@ -529,7 +529,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **DropDownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
+- **DropdownItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
 - **List:** Wrap in `div` to allow access to `Heading` ([#1217](https://github.com/digdir/designsystemet/issues/1217)) ([afcadb7](https://github.com/digdir/designsystemet/commit/afcadb7c4cb4b368d247af0c41ed8debf53c4b66))
 - **Pagination:** Only use needed space for buttons ([#1220](https://github.com/digdir/designsystemet/issues/1220)) ([4bf3d74](https://github.com/digdir/designsystemet/commit/4bf3d745888f500259df5aadf4edee97ec4f95bc))
 - **Select:** Select not working properly in Modal ([#1195](https://github.com/digdir/designsystemet/issues/1195)) ([fb8be6a](https://github.com/digdir/designsystemet/commit/fb8be6a647ba0da8b5b23e65813508f34e09c8c1))
