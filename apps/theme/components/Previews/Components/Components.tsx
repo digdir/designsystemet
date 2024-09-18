@@ -6,7 +6,7 @@ import {
   Checkbox,
   Chip,
   Combobox,
-  DropdownMenu,
+  Dropdown,
   Fieldset,
   Heading,
   HelpText,
@@ -390,18 +390,18 @@ export const Components = () => {
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
-        <DropdownMenu.Root placement='top'>
-          <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item>Norsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Spansk</DropdownMenu.Item>
-            <DropdownMenu.Item>Fransk</DropdownMenu.Item>
-          </DropdownMenu.Content>
+        <Dropdown.Context>
+          <Dropdown.Trigger>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top'>
+            <Dropdown.Item>Norsk</Dropdown.Item>
+            <Dropdown.Item>Engelsk</Dropdown.Item>
+            <Dropdown.Item>Spansk</Dropdown.Item>
+            <Dropdown.Item>Fransk</Dropdown.Item>
+          </Dropdown>
           <HelpText title='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
-        </DropdownMenu.Root>
+        </Dropdown.Context>
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>
