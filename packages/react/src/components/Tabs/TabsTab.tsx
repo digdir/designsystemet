@@ -7,7 +7,7 @@ import { Paragraph } from '../Typography';
 
 import { useTabItem } from './useTab';
 
-export type TabProps = {
+export type TabsTabProps = {
   /** Value that will be set in the `Tabs` components state when the tab is activated */
   value: string;
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
@@ -17,8 +17,8 @@ export type TabProps = {
  * @example
  * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  */
-export const Tab = forwardRef<HTMLButtonElement, TabProps>(
-  function Tab(props, ref) {
+export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
+  function TabsTab(props, ref) {
     const { children, className, ...rest } = props;
     const { size, ...useTabRest } = useTabItem(props);
 

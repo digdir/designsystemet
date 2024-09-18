@@ -1,7 +1,7 @@
-import { Tab } from './Tab';
-import { TabList } from './TabList';
-import { TabPanel } from './TabPanel';
 import { Tabs as TabsParent } from './Tabs';
+import { TabsList } from './TabsList';
+import { TabsPanel } from './TabsPanel';
+import { TabsTab } from './TabsTab';
 
 /**
  * Display a group of tabs that can be toggled between.
@@ -20,9 +20,9 @@ import { Tabs as TabsParent } from './Tabs';
  * ```
  */
 const Tabs = Object.assign(TabsParent, {
-  List: TabList,
-  Tab,
-  Panel: TabPanel,
+  List: TabsList,
+  Tab: TabsTab,
+  Panel: TabsPanel,
 });
 
 Tabs.Tab.displayName = 'Tabs.Tab';
@@ -30,6 +30,7 @@ Tabs.List.displayName = 'Tabs.List';
 Tabs.Panel.displayName = 'Tabs.Panel';
 
 export type { TabsProps } from './Tabs';
-export type { TabProps } from './Tab';
-export type { TabPanelProps } from './TabPanel';
-export { Tabs, Tab, TabList, TabPanel };
+export type { TabsListProps } from './TabsList';
+export type { TabsTabProps } from './TabsTab';
+export type { TabsPanelProps } from './TabsPanel';
+export { Tabs, TabsTab, TabsList, TabsPanel };

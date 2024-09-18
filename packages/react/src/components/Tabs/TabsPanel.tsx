@@ -6,7 +6,7 @@ import { Paragraph } from '../Typography';
 
 import { Context } from './Tabs';
 
-export type TabPanelProps = {
+export type TabsPanelProps = {
   /** When this value is selected as the current state, render this `TabPanel` component*/
   value: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
@@ -18,8 +18,8 @@ export type TabPanelProps = {
  * <Tabs.Panel value='1'>content 1</Tabs.Panel>
  * ```
  */
-export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
-  function TabPanel({ children, value, className, ...rest }, ref) {
+export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
+  function TabsPanel({ children, value, className, ...rest }, ref) {
     const { value: tabsValue, size } = useContext(Context);
     const active = value === tabsValue;
 
