@@ -4,17 +4,17 @@ import { useContext, useId } from 'react';
 import type { ContextProps } from './Tabs';
 import { Context } from './Tabs';
 
-import type { TabProps } from '.';
+import type { TabsTabProps } from '.';
 
 type UseTab = (
-  props: TabProps,
+  props: TabsTabProps,
 ) => Pick<
   HTMLAttributes<HTMLButtonElement>,
   'id' | 'aria-selected' | 'role' | 'onClick'
 > & { size?: ContextProps['size'] };
 
 /** Handles props for `Tab` in context with `Tabs` */
-export const useTabItem: UseTab = (props: TabProps) => {
+export const useTabItem: UseTab = (props: TabsTabProps) => {
   const { value, ...rest } = props;
   const tabs = useContext(Context);
   const buttonId = `tab-${useId()}`;
