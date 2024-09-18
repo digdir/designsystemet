@@ -5,7 +5,6 @@
   --dsc-dropdownmenu-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
   padding: var(--dsc-dropdownmenu-padding);
-  margin-top: -6px;
   list-style: none;
   border-radius: min(1rem, var(--ds-border-radius-md));
   box-shadow: var(--ds-shadow-md);
