@@ -1,11 +1,10 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useContext, useId } from 'react';
 
 import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
 import { Paragraph } from '../Typography';
-
-import { useTabItem } from './useTab';
+import { Context } from './Tabs';
 
 export type TabsTabProps = {
   /** Value that will be set in the `Tabs` components state when the tab is activated */
@@ -18,21 +17,23 @@ export type TabsTabProps = {
  * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  */
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
-  function TabsTab(props, ref) {
-    const { children, className, ...rest } = props;
-    const { size, ...useTabRest } = useTabItem(props);
+  function TabsTab({ className, value, ...rest }, ref) {
+    const tabs = useContext(Context);
+    const buttonId = `tab-${useId()}`;
 
     return (
-      <RovingFocusItem {...rest} asChild>
-        <Paragraph asChild variant='short' size={size}>
+      <RovingFocusItem value={value} {...rest} asChild>
+        <Paragraph asChild variant='short' size={tabs.size}>
           <button
-            {...useTabRest}
-            type='button'
+            {...rest}
+            aria-selected={tabs.value === value}
             className={cl('ds-tabs__tab', className)}
+            id={buttonId}
+            onClick={() => tabs.onChange?.(value)}
             ref={ref}
-          >
-            {children}
-          </button>
+            role='tab'
+            type='button'
+          />
         </Paragraph>
       </RovingFocusItem>
     );
