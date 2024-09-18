@@ -156,48 +156,146 @@
 .ds-paragraph {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
-  color: var(--ds-color-neutral-text-default);
-  margin: 0;
-}
-
-.ds-paragraph--spacing {
-  margin-bottom: var(--dsc-bottom-spacing);
-}
-
-.ds-paragraph--xs {
-  --dsc-bottom-spacing: var(--ds-spacing-3);
-
-  font-weight: var(--ds-paragraph-xs-font-weight);
-  line-height: var(--ds-paragraph-xs-line-height);
-  font-size: var(--ds-paragraph-xs-font-size);
-  letter-spacing: var(--ds-paragraph-xs-letter-spacing);
-}
-
-.ds-paragraph--sm {
-  --dsc-bottom-spacing: var(--ds-spacing-4);
-
-  font-weight: var(--ds-paragraph-sm-font-weight);
-  line-height: var(--ds-paragraph-sm-line-height);
-  font-size: var(--ds-paragraph-sm-font-size);
-  letter-spacing: var(--ds-paragraph-sm-letter-spacing);
-}
-
-.ds-paragraph--md {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
   font-weight: var(--ds-paragraph-md-font-weight);
   line-height: var(--ds-paragraph-md-line-height);
   font-size: var(--ds-paragraph-md-font-size);
   letter-spacing: var(--ds-paragraph-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-xs-font-weight);
+    line-height: var(--ds-paragraph-xs-line-height);
+    font-size: var(--ds-paragraph-xs-font-size);
+    letter-spacing: var(--ds-paragraph-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-sm-font-weight);
+    line-height: var(--ds-paragraph-sm-line-height);
+    font-size: var(--ds-paragraph-sm-font-size);
+    letter-spacing: var(--ds-paragraph-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-md-font-weight);
+    line-height: var(--ds-paragraph-md-line-height);
+    font-size: var(--ds-paragraph-md-font-size);
+    letter-spacing: var(--ds-paragraph-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-lg-font-weight);
+    line-height: var(--ds-paragraph-lg-line-height);
+    font-size: var(--ds-paragraph-lg-font-size);
+    letter-spacing: var(--ds-paragraph-lg-letter-spacing);
+  }
 }
 
-.ds-paragraph--lg {
-  --dsc-bottom-spacing: var(--ds-spacing-6);
+.ds-paragraph-long {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
 
-  font-weight: var(--ds-paragraph-lg-font-weight);
-  line-height: var(--ds-paragraph-lg-line-height);
-  font-size: var(--ds-paragraph-lg-font-size);
-  letter-spacing: var(--ds-paragraph-lg-letter-spacing);
+  font-weight: var(--ds-paragraph-long-md-font-weight);
+  line-height: var(--ds-paragraph-long-md-line-height);
+  font-size: var(--ds-paragraph-long-md-font-size);
+  letter-spacing: var(--ds-paragraph-long-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-long-xs-font-weight);
+    line-height: var(--ds-paragraph-long-xs-line-height);
+    font-size: var(--ds-paragraph-long-xs-font-size);
+    letter-spacing: var(--ds-paragraph-long-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-long-sm-font-weight);
+    line-height: var(--ds-paragraph-long-sm-line-height);
+    font-size: var(--ds-paragraph-long-sm-font-size);
+    letter-spacing: var(--ds-paragraph-long-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-long-md-font-weight);
+    line-height: var(--ds-paragraph-long-md-line-height);
+    font-size: var(--ds-paragraph-long-md-font-size);
+    letter-spacing: var(--ds-paragraph-long-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-long-lg-font-weight);
+    line-height: var(--ds-paragraph-long-lg-line-height);
+    font-size: var(--ds-paragraph-long-lg-font-size);
+    letter-spacing: var(--ds-paragraph-long-lg-letter-spacing);
+  }
+}
+
+.ds-paragraph-short {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-short-md-font-weight);
+  line-height: var(--ds-paragraph-short-md-line-height);
+  font-size: var(--ds-paragraph-short-md-font-size);
+  letter-spacing: var(--ds-paragraph-short-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-short-xs-font-weight);
+    line-height: var(--ds-paragraph-short-xs-line-height);
+    font-size: var(--ds-paragraph-short-xs-font-size);
+    letter-spacing: var(--ds-paragraph-short-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-short-sm-font-weight);
+    line-height: var(--ds-paragraph-short-sm-line-height);
+    font-size: var(--ds-paragraph-short-sm-font-size);
+    letter-spacing: var(--ds-paragraph-short-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-short-md-font-weight);
+    line-height: var(--ds-paragraph-short-md-line-height);
+    font-size: var(--ds-paragraph-short-md-font-size);
+    letter-spacing: var(--ds-paragraph-short-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-short-lg-font-weight);
+    line-height: var(--ds-paragraph-short-lg-line-height);
+    font-size: var(--ds-paragraph-short-lg-font-size);
+    letter-spacing: var(--ds-paragraph-short-lg-letter-spacing);
+  }
+}
+
+.ds-paragraph--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
 }
 
 /** Label */

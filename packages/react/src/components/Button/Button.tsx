@@ -60,31 +60,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
-      <Paragraph variant='short' size={size} asChild>
-        <Component
-          aria-busy={Boolean(loading) || undefined}
-          className={cl('ds-button', className)}
-          data-color={color}
-          data-icon={icon || undefined}
-          data-size={size}
-          data-variant={variant}
-          ref={ref}
-          type={type}
-          {...rest}
-        >
-          {loading === true ? (
-            <Spinner
-              aria-hidden='true'
-              color={spinnerColor}
-              size='sm'
-              title=''
-            />
-          ) : (
-            loading // Allow custom loading spinner
-          )}
-          <Slottable>{children}</Slottable>
-        </Component>
-      </Paragraph>
+      <Component
+        aria-busy={Boolean(loading) || undefined}
+        className={cl('ds-button', className)}
+        data-color={color}
+        data-icon={icon || undefined}
+        data-size={size}
+        data-variant={variant}
+        ref={ref}
+        type={type}
+        {...rest}
+      >
+        {loading === true ? (
+          <Spinner aria-hidden='true' color={spinnerColor} size='sm' title='' />
+        ) : (
+          loading // Allow custom loading spinner
+        )}
+        <Slottable>{children}</Slottable>
+      </Component>
     );
   },
 );
