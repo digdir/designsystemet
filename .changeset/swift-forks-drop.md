@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Breadcrumbs: Rename Breadcrumbs.Root to Breadcrumbs and remove Breadcrumbs.Nav
+Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav`
