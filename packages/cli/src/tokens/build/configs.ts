@@ -7,7 +7,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, sizeRem, typographyName, typographyShorthand } from './transformers.js';
+import { nameKebab, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
@@ -25,7 +25,6 @@ const fileHeader = () => [`These files are generated from design tokens defind u
 
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
-StyleDictionary.registerTransform(typographyShorthand);
 StyleDictionary.registerTransform(typographyName);
 
 StyleDictionary.registerFormat(jsTokens);
@@ -40,7 +39,6 @@ const dsTransformers = [
   sizeRem.name,
   'ts/typography/fontWeight',
   typographyName.name,
-  typographyShorthand.name,
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/size/lineheight',
@@ -151,7 +149,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
             format: formats.semantic.name,
             filter: (token) =>
               (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeight', 'fontFamily'], token),
+              !typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token),
           },
         ],
         options: {

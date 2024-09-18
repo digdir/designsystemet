@@ -44,24 +44,6 @@ export const nameKebab: Transform = {
   },
 };
 
-type Typgraphy = {
-  fontWeight: string;
-  fontSize: string;
-  lineHeight: number;
-  fontFamily: string;
-};
-
-export const typographyShorthand: Transform = {
-  name: 'typography/shorthand',
-  type: 'value',
-  transitive: true,
-  filter: (token) => typeEquals('typography', token),
-  transform: (token) => {
-    const typography = getValue<Typgraphy>(token);
-    return `${typography.fontWeight} ${typography.fontSize}/${typography.lineHeight} '${typography.fontFamily}'`;
-  },
-};
-
 export const typographyName: Transform = {
   name: 'name/typography',
   type: 'name',

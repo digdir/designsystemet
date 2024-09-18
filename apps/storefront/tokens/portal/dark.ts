@@ -2337,7 +2337,13 @@ export const  color = [
 export const  typography = [
   {
     $type: "typography",
-    $value: "500 3.75rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "3.75rem",
+      letterSpacing: "-1%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2360,7 +2366,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 3rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "3rem",
+      letterSpacing: "-1%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2383,7 +2395,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 2.25rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "2.25rem",
+      letterSpacing: "-0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2406,7 +2424,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.875rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.875rem",
+      letterSpacing: "-0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2429,7 +2453,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.5rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.5rem",
+      letterSpacing: "0%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2452,7 +2482,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.3125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2475,7 +2511,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2498,7 +2540,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.875rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.875rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2521,7 +2569,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.5rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.5rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2544,7 +2598,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2567,7 +2627,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.125rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2590,7 +2656,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.5 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2613,7 +2685,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.5 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2636,7 +2714,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.5 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2659,7 +2743,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.5 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2682,7 +2772,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2706,7 +2802,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2730,7 +2832,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2754,7 +2862,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2778,7 +2892,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2802,7 +2922,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2826,7 +2952,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2850,7 +2982,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.7 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2874,7 +3012,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.3125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2897,7 +3041,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2920,7 +3070,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2943,7 +3099,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 0.875rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2966,7 +3128,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2989,7 +3157,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3012,7 +3186,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3035,7 +3215,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.3 'Inter'",
+    $value: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
