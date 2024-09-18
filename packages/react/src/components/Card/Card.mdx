@@ -1,28 +1,20 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
 import * as CardStories from './Card.stories';
 
 <Meta of={CardStories} />
 
 # Card
 
-Med `Card` kan du presentere informasjon på en strukturert og oversiktlig måte. Det er ideelt for å vise innhold som er relatert, men som kan deles inn i forskjellige seksjoner.
-
-**Vær oppmerksom på:**
-
-- Kort bør ikke inneholde for mye informasjon som kan overvelde brukeren.
-- Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, og `alt` attributtet skal være tomt.
+Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene finnes i flere varianter og kan inneholde overskrift, underoverskrift, et område for annen tekst og knapper og eller lenker
 
 <br />
-
 <Primary />
 <Controls />
 
-## Bruk
+## Slik bruker du `Card`
 
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
-
 <Card>
   <Card.Header>Tittel</Card.Header>
   <Card.Content>Innhold</Card.Content>
@@ -30,11 +22,14 @@ import { Card } from '@digdir/designsystemet-react';
 </Card>;
 ```
 
+
+
+
 ## Eksempler
 
-### `Card.Media`
+`Card.Media`
 
-Bruk `Card.Media` dersom du ønsker å ha bilder eller video i kortene.
+Bruk`Card.Media` hvis du vi ha bilder eller video i kortene.
 
 <Canvas of={CardStories.Media} />
 
@@ -44,16 +39,19 @@ Bruk `Card.Media` dersom du ønsker å ha bilder eller video i kortene.
 
 ### Link Card
 
-Bruk `as` til å endre kortet til en lenke. Vær oppmerksom på gyldig html [innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary) og innholdet da skjermleser alt samlet.
-
-Hover og aktivt styling blir kun aktivert dersom `href` er definert. Dette er for å støtte "Link" komponenter fra tredjeparts bibliotek som [NextJS Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React Router Link](https://reactrouter.com/en/main/components/link)
+Bruk `as` til å endre kortet til en lenke. Vær oppmerksom på gyldig html
+[innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary)
+og innholdet, fordi skjermlesere leser opp alt samlet. Hover og aktivt styling
+blir kun aktivert dersom du har definert `href`. Dette er for å støtte "Link"
+komponenter fra tredjeparts bibliotek som [NextJS
+Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React
+Router Link](https://reactrouter.com/en/main/components/link)
 
 <Canvas of={CardStories.LinkCard} />
 
 ### Farger
 
-Viser forskjellige varianter av Card komponenten, inkludert nøytral,
-subtil, og andre stiler.
+Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral, subtil, og andre stiler.
 
 <Canvas of={CardStories.Variants} />
 
@@ -63,30 +61,28 @@ Eksempler på hvordan andre komponenter kan brukes til å komponere sammen i et 
 
 <Canvas of={CardStories.Composed} />
 
-## Retningslinjer
+## Retningslinjer for `Card`
 
-### Egnet til
+Vi bruker kort når vi vil trekke oppmerksomheten til brukeren mot en funksjon.
+Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, og `alt` attributtet skal være tomt.
 
-- Presentere relatert informasjon i en oversiktlig format.
-- Vise produktinformasjon, brukeranmeldelser, eller blogginnlegg.
-- Gruppere funksjoner eller tjenester i en app eller på en nettside.
 
-### Ikke egnet til
+Passer til å gruppere innhold eller funksjonalitet som du vil skille ut fra
+resten av innholdet.
 
-- Vise store mengder tekst eller data som kan være overveldende.
-- Erstatte navigasjonskomponenter.
-- Skjule viktig informasjon som brukeren må se umiddelbart.
+
 
 ### Unngå
 
-- Å bruke for mange kort på en side, da dette kan skape forvirring.
-- Å blande for mange forskjellige typer innhold i et enkelt kort.
+- å bruke for mange kort på en side, det kan skape forvirring
+- å blande for mange forskjellige typer innhold i et enkelt kort
 
-<br />
-## Tekst i komponenten
+## Tekst i komponenten{' '}
 
-Sørg for at overskriftene og innholdet i kortet er klare og informative.
-Unngå vage titler og gi brukerne en god forståelse av hva de kan forvente å finne
-i hvert kort.
+Unngå lange tekster på kortene. Tenk nøye gjennom hva du trenger å si og skriv en kort og presis overskrift, underoverskrift og eventuell
+brødtekst.
 
-<br />
+## Tilgjengelighet
+
+[Ikke funnet noe her]
+
