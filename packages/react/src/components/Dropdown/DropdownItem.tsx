@@ -8,7 +8,7 @@ import { DropdownCtx } from './Dropdown';
 export type DropdownItemProps = Omit<ButtonProps, 'variant' | 'size' | 'color'>;
 
 export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
-  function DropdownItem({ children, className, style, ...rest }, ref) {
+  function DropdownItem({ className, style, ...rest }, ref) {
     const { size } = useContext(DropdownCtx);
 
     return (
@@ -19,9 +19,7 @@ export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
           size={size}
           className='ds-dropdown__item'
           {...rest}
-        >
-          {children}
-        </Button>
+        />
       </li>
     );
   },
