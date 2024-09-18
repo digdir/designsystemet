@@ -4,7 +4,7 @@ import { forwardRef, useContext } from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { TabsContext } from './Tabs';
+import { Context } from './Tabs';
 
 export type TabPanelProps = {
   /** When this value is selected as the current state, render this `TabPanel` component*/
@@ -20,7 +20,7 @@ export type TabPanelProps = {
  */
 export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
   function TabPanel({ children, value, className, ...rest }, ref) {
-    const { value: tabsValue, size } = useContext(TabsContext);
+    const { value: tabsValue, size } = useContext(Context);
     const active = value === tabsValue;
 
     return (

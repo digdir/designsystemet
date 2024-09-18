@@ -4,7 +4,7 @@ import { forwardRef, useContext } from 'react';
 
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
 
-import { TabsContext } from './Tabs';
+import { Context } from './Tabs';
 
 /**
  * The container for all `Tab` components.
@@ -20,7 +20,7 @@ export const TabList = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
 >(function TabList({ children, className, ...rest }, ref) {
-  const { value } = useContext(TabsContext);
+  const { value } = useContext(Context);
 
   return (
     <RovingFocusRoot

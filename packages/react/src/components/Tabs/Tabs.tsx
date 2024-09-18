@@ -23,7 +23,7 @@ export type ContextProps = {
   size?: TabsProps['size'];
 };
 
-export const TabsContext = createContext<ContextProps>({});
+export const Context = createContext<ContextProps>({});
 
 /**
  * Display a group of tabs that can be toggled between.
@@ -59,7 +59,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     value = uncontrolledValue;
   }
   return (
-    <TabsContext.Provider
+    <Context.Provider
       value={{
         value,
         defaultValue,
@@ -73,6 +73,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         ref={ref}
         {...rest}
       />
-    </TabsContext.Provider>
+    </Context.Provider>
   );
 });

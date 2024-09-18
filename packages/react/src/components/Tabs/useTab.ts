@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { useContext, useId } from 'react';
 
 import type { ContextProps } from './Tabs';
-import { TabsContext } from './Tabs';
+import { Context } from './Tabs';
 
 import type { TabProps } from '.';
 
@@ -16,7 +16,7 @@ type UseTab = (
 /** Handles props for `Tab` in context with `Tabs` */
 export const useTabItem: UseTab = (props: TabProps) => {
   const { value, ...rest } = props;
-  const tabs = useContext(TabsContext);
+  const tabs = useContext(Context);
   const buttonId = `tab-${useId()}`;
 
   return {
