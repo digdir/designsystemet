@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import type { BreadcrumbsRootProps } from './BreadcrumbsRoot';
+import type { BreadcrumbsProps } from './Breadcrumbs';
 
 import { Breadcrumbs } from './';
 
-const renderWithRoot = (props?: BreadcrumbsRootProps) =>
+const renderWithRoot = (props?: BreadcrumbsProps) =>
   render(
-    <Breadcrumbs.Root {...props}>
-      <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
-        Nivå 3
-      </Breadcrumbs.Link>
-      <Breadcrumbs.Nav aria-label='Du er her:'>
+    <>
+      <Breadcrumbs aria-label='Du er her:' {...props}>
+        <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
+          Nivå 3
+        </Breadcrumbs.Link>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
@@ -24,11 +24,11 @@ const renderWithRoot = (props?: BreadcrumbsRootProps) =>
             <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
           </Breadcrumbs.Item>
         </Breadcrumbs.List>
-      </Breadcrumbs.Nav>
-    </Breadcrumbs.Root>,
+      </Breadcrumbs>
+    </>,
   );
 
-describe('Breadcrumbs.Root', () => {
+describe('Breadcrumbs', () => {
   it('should render correctly with default props', () => {
     renderWithRoot();
 
@@ -58,30 +58,28 @@ describe('Breadcrumbs.List', () => {
 
     // Re-render with additional level
     render(
-      <Breadcrumbs.Root>
+      <Breadcrumbs aria-label='Du er her:'>
         <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
           Nivå 3
         </Breadcrumbs.Link>
-        <Breadcrumbs.Nav aria-label='Du er her:'>
-          <Breadcrumbs.List>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href='#'>Nivå 3</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href='#'>Nivå 5</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-          </Breadcrumbs.List>
-        </Breadcrumbs.Nav>
-      </Breadcrumbs.Root>,
+        <Breadcrumbs.List>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href='#'>Nivå 3</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href='#'>Nivå 5</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.List>
+      </Breadcrumbs>,
     );
 
     expect(links.at(-2)).not.toHaveAttribute('aria-current', 'page');
