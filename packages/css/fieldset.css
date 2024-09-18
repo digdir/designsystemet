@@ -19,7 +19,8 @@
     display: none;
   }
 
-  &[data-hidelegend] > legend {
+  &[data-hidelegend] > legend,
+  &[data-hidelegend] > legend + p {
     @composes ds-sr-only from '../css/utilities.css';
   }
 
