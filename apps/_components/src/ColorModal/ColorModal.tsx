@@ -52,18 +52,18 @@ export const ColorModal = ({
   weight,
 }: ColorModalProps) => {
   return (
-    <Modal.Root>
-      <Modal.Dialog
+    <Modal.Context>
+      <Modal
         ref={colorModalRef}
         style={{
           maxWidth: '1050px',
         }}
-        onInteractOutside={() => colorModalRef.current?.close()}
+        /* onInteractOutside={() => colorModalRef.current?.close()} */
       >
         <Modal.Header>
           {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
         </Modal.Header>
-        <Modal.Content className={classes.modalContent}>
+        <div className={classes.modalContent}>
           <div className={classes.description}>
             {getColorDescription({
               weight,
@@ -121,8 +121,8 @@ export const ColorModal = ({
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root> */}
-        </Modal.Content>
-      </Modal.Dialog>
-    </Modal.Root>
+        </div>
+      </Modal>
+    </Modal.Context>
   );
 };

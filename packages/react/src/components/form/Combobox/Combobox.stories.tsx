@@ -279,35 +279,34 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
       >
         Open Modal
       </Button>
-      <Modal.Root>
-        <Modal.Dialog
+      <Modal.Context>
+        <Modal
           ref={modalRef}
           style={{
             overflow: 'visible',
           }}
         >
           <Modal.Header>Combobox i Modal</Modal.Header>
-          <Modal.Content>
-            <Combobox
-              {...args}
-              value={value}
-              multiple={true}
-              onValueChange={(value) => {
-                setValue(value);
-              }}
-              label='Hvor går reisen?'
-              portal={false}
-            >
-              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-              {PLACES.map((item, index) => (
-                <Combobox.Option key={index} value={item.value}>
-                  {item.name}
-                </Combobox.Option>
-              ))}
-            </Combobox>
-          </Modal.Content>
-        </Modal.Dialog>
-      </Modal.Root>
+
+          <Combobox
+            {...args}
+            value={value}
+            multiple={true}
+            onValueChange={(value) => {
+              setValue(value);
+            }}
+            label='Hvor går reisen?'
+            portal={false}
+          >
+            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+            {PLACES.map((item, index) => (
+              <Combobox.Option key={index} value={item.value}>
+                {item.name}
+              </Combobox.Option>
+            ))}
+          </Combobox>
+        </Modal>
+      </Modal.Context>
     </>
   );
 };
