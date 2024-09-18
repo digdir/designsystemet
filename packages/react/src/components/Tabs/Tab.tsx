@@ -17,24 +17,24 @@ export type TabProps = {
  * @example
  * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  */
-export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const { size, ...useTabRest } = useTabItem(props);
+export const Tab = forwardRef<HTMLButtonElement, TabProps>(
+  function Tab(props, ref) {
+    const { children, className, ...rest } = props;
+    const { size, ...useTabRest } = useTabItem(props);
 
-  return (
-    <RovingFocusItem {...rest} asChild>
-      <Paragraph asChild variant='short' size={size}>
-        <button
-          {...useTabRest}
-          type='button'
-          className={cl('ds-tabs__tab', className)}
-          ref={ref}
-        >
-          {children}
-        </button>
-      </Paragraph>
-    </RovingFocusItem>
-  );
-});
-
-Tab.displayName = 'Tab';
+    return (
+      <RovingFocusItem {...rest} asChild>
+        <Paragraph asChild variant='short' size={size}>
+          <button
+            {...useTabRest}
+            type='button'
+            className={cl('ds-tabs__tab', className)}
+            ref={ref}
+          >
+            {children}
+          </button>
+        </Paragraph>
+      </RovingFocusItem>
+    );
+  },
+);
