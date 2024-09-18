@@ -56,8 +56,8 @@ export const data = [
   },
   {
     title: 'Dropdown Menu',
-    image: 'DropdownMenu.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dropdownmenu--docs',
+    image: 'Dropdown.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dropdown--docs',
   },
   {
     title: 'Error Summary',

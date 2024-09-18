@@ -1,6 +1,6 @@
 'use client';
 import {
-  DropdownMenu,
+  Dropdown,
   Heading,
   Link,
   Paragraph,
@@ -220,40 +220,40 @@ const TokenList = ({
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
           {showThemePicker && (
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger variant='secondary'>
+            <Dropdown.Context>
+              <Dropdown.Trigger variant='secondary'>
                 Brand: {capitalizeString(brand)}
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
-                <DropdownMenu.Item onClick={() => setBrand('digdir')}>
+              </Dropdown.Trigger>
+              <Dropdown>
+                <Dropdown.Item onClick={() => setBrand('digdir')}>
                   Digdir
-                </DropdownMenu.Item>
-                <DropdownMenu.Item onClick={() => setBrand('altinn')}>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setBrand('altinn')}>
                   Altinn
-                </DropdownMenu.Item>
-                <DropdownMenu.Item onClick={() => setBrand('tilsynet')}>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setBrand('tilsynet')}>
                   Tilsynet
-                </DropdownMenu.Item>
-                <DropdownMenu.Item onClick={() => setBrand('portal')}>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setBrand('portal')}>
                   Brreg
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu.Root>
+                </Dropdown.Item>
+              </Dropdown>
+            </Dropdown.Context>
           )}
           {showModeSwitcher && (
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger variant='secondary'>
+            <Dropdown.Context>
+              <Dropdown.Trigger variant='secondary'>
                 Mode: {capitalizeString(mode)}
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
-                <DropdownMenu.Item onClick={() => setMode('light')}>
+              </Dropdown.Trigger>
+              <Dropdown>
+                <Dropdown.Item onClick={() => setMode('light')}>
                   Light
-                </DropdownMenu.Item>
-                <DropdownMenu.Item onClick={() => setMode('dark')}>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setMode('dark')}>
                   Dark
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu.Root>
+                </Dropdown.Item>
+              </Dropdown>
+            </Dropdown.Context>
           )}
         </div>
       )}
