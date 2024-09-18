@@ -286,13 +286,13 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
-        </Tabs.Root>
+        </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>

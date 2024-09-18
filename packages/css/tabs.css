@@ -17,7 +17,7 @@
   }
 }
 
-.ds-tabs__content {
+.ds-tabs__panel {
   padding: var(--dsc-tabs-content-padding);
   color: var(--dsc-tabs-content-color);
 }

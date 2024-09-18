@@ -4,10 +4,10 @@ import { forwardRef, useContext } from 'react';
 
 import { Paragraph } from '../Typography';
 
-import { TabsContext } from './TabsRoot';
+import { Context } from './Tabs';
 
-export type TabContentProps = {
-  /** When this value is selected as the current state, render this `TabContent` component*/
+export type TabsPanelProps = {
+  /** When this value is selected as the current state, render this `TabsPanel` component*/
   value: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
@@ -15,12 +15,12 @@ export type TabContentProps = {
  * A single content item in a Tabs component.
  * @example
  * ```tsx
- * <Tabs.Content value='1'>content 1</Tabs.Content>
+ * <Tabs.Panel value='1'>content 1</Tabs.Panel>
  * ```
  */
-export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
-  ({ children, value, className, ...rest }, ref) => {
-    const { value: tabsValue, size } = useContext(TabsContext);
+export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
+  function TabsPanel({ children, value, className, ...rest }, ref) {
+    const { value: tabsValue, size } = useContext(Context);
     const active = value === tabsValue;
 
     return (
@@ -28,7 +28,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
         {active && (
           <Paragraph asChild variant='short' size={size}>
             <div
-              className={cl('ds-tabs__content', className)}
+              className={cl('ds-tabs__panel', className)}
               ref={ref}
               {...rest}
             >
@@ -40,5 +40,3 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
     );
   },
 );
-
-TabContent.displayName = 'TabContent';
