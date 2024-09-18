@@ -4,9 +4,7 @@
   --dsc-dropdownmenu-item-padding: 0 var(--ds-spacing-4);
   --dsc-dropdownmenu-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
-  position: relative;
   padding: var(--dsc-dropdownmenu-padding);
-  z-index: 1500;
   margin: 0;
   list-style: none;
   border-radius: min(1rem, var(--ds-border-radius-md));
