@@ -69,7 +69,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
     className,
     color = 'accent',
     count,
-    maxCount = Infinity,
+    maxCount,
     overlap = 'rectangle',
     placement = 'top-right',
     size = 'md',
@@ -82,7 +82,9 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       <span
         className={cl('ds-badge', className)}
         data-color={color}
-        data-count={count && count > maxCount ? `${maxCount}+` : count}
+        data-count={
+          count && maxCount && count > maxCount ? `${maxCount}+` : count
+        }
         data-overlap={rest.children ? overlap : null}
         data-placement={rest.children ? placement : null}
         data-size={size}
