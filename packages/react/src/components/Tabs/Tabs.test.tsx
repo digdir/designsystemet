@@ -63,7 +63,7 @@ describe('Tabs', () => {
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
-  test('renders ReactNodes as children when TabPanels value is selected', () => {
+  test('renders ReactNodes as children when TabsPanels value is selected', () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.Panel value='value1'>

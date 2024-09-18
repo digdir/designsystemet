@@ -7,7 +7,7 @@ import { Paragraph } from '../Typography';
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {
-  /** When this value is selected as the current state, render this `TabPanel` component*/
+  /** When this value is selected as the current state, render this `TabsPanel` component*/
   value: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
