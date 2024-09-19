@@ -170,6 +170,45 @@
   }
 }
 
+/** REMOVE after migrate to @composes  */
+.ds-paragraph--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-paragraph-xs-font-weight);
+  line-height: var(--ds-paragraph-xs-line-height);
+  font-size: var(--ds-paragraph-xs-font-size);
+  letter-spacing: var(--ds-paragraph-xs-letter-spacing);
+}
+
+.ds-paragraph--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-weight: var(--ds-paragraph-sm-font-weight);
+  line-height: var(--ds-paragraph-sm-line-height);
+  font-size: var(--ds-paragraph-sm-font-size);
+  letter-spacing: var(--ds-paragraph-sm-letter-spacing);
+}
+
+.ds-paragraph--md {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-md-font-weight);
+  line-height: var(--ds-paragraph-md-line-height);
+  font-size: var(--ds-paragraph-md-font-size);
+  letter-spacing: var(--ds-paragraph-md-letter-spacing);
+}
+
+.ds-paragraph--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  font-weight: var(--ds-paragraph-lg-font-weight);
+  line-height: var(--ds-paragraph-lg-line-height);
+  font-size: var(--ds-paragraph-lg-font-size);
+  letter-spacing: var(--ds-paragraph-lg-letter-spacing);
+}
+
+/** END */
+
 .ds-paragraph-long {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 

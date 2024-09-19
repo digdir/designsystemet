@@ -25,6 +25,12 @@ export type ParagraphProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
 
+const lineHeightMap = {
+  short: 'ds-line-height--sm',
+  default: 'ds-line-height--md',
+  long: 'ds-line-height--lg',
+};
+
 /**
  * Use `Paragraph` to display text with paragraph text styles.
  *
@@ -39,11 +45,12 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(
-          variant === 'default' ? 'ds-paragraph' : `ds-paragraph-${variant}`,
+          'ds-paragraph',
           spacing && 'ds-paragraph--spacing',
+          `ds-paragraph--${size}`,
+          lineHeightMap[variant ?? 'default'],
           className,
         )}
-        data-size={size}
         {...rest}
       />
     );
