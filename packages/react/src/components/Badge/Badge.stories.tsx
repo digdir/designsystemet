@@ -134,7 +134,7 @@ export const Status: Story = (args) => (
 );
 
 export const InTabs: Story = (args) => (
-  <Tabs.Root defaultValue='value1' size='md'>
+  <Tabs defaultValue='value1' size='md'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
         <HeartFillIcon fontSize='1.75rem' />
@@ -148,10 +148,10 @@ export const InTabs: Story = (args) => (
         <Badge count={2} color='neutral' />
       </Tabs.Tab>
     </Tabs.List>
-    <Tabs.Content value='value1'>content 1</Tabs.Content>
-    <Tabs.Content value='value2'>content 2</Tabs.Content>
-    <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs.Root>
+    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+  </Tabs>
 );
 
 export const InButton: Story = (args) => (

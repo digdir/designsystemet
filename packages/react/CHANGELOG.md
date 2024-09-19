@@ -529,7 +529,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **DropDownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
+- **DropdownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
 - **List:** Wrap in `div` to allow access to `Heading` ([#1217](https://github.com/digdir/designsystemet/issues/1217)) ([afcadb7](https://github.com/digdir/designsystemet/commit/afcadb7c4cb4b368d247af0c41ed8debf53c4b66))
 - **Pagination:** Only use needed space for buttons ([#1220](https://github.com/digdir/designsystemet/issues/1220)) ([4bf3d74](https://github.com/digdir/designsystemet/commit/4bf3d745888f500259df5aadf4edee97ec4f95bc))
 - **Select:** Select not working properly in Modal ([#1195](https://github.com/digdir/designsystemet/issues/1195)) ([fb8be6a](https://github.com/digdir/designsystemet/commit/fb8be6a647ba0da8b5b23e65813508f34e09c8c1))
