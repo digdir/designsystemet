@@ -31,9 +31,10 @@ export const colormode: Format = {
       usesDtcg,
     });
 
-    const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `color-scheme: ${mode_};\n` : '';
+    const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `\n  color-scheme: ${mode_};\n` : '';
 
-    const content = `{\n${allTokens.map(format).join('\n')}\n${colorSchemeProperty}}\n`;
+    const formattedTokens = dictionary.allTokens.map(format).join('\n');
+    const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
     const body = R.isNotNil(layer)
       ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
@@ -48,7 +49,6 @@ const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: 
 export const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, file, options, platform }) => {
-    const { allTokens } = dictionary;
     const { outputReferences, usesDtcg } = options;
     const { selector, isCalculatedToken, layer } = platform;
 
@@ -61,7 +61,7 @@ export const semantic: Format = {
       usesDtcg,
     });
 
-    const formatTokens = R.map((token: TransformedToken) => {
+    const formattedTokens = R.map((token: TransformedToken) => {
       const originalValue = getValue<string>(token.original);
 
       if (
@@ -75,50 +75,19 @@ export const semantic: Format = {
       }
 
       return format(token);
-    });
+    }, dictionary.allTokens);
 
-    const formattedVariables = formatTokens(allTokens);
-    const content = `{\n${formattedVariables.join('\n')}\n}\n`;
+    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
     return header + body;
   },
 };
 
-type Typgraphy = {
-  fontWeight: string;
-  fontSize: string;
-  lineHeight: number;
-  fontFamily: string;
-};
-
-type ProcessedTokens = { variables: string[]; classes: string[] };
-
-const sortByType = R.sortBy<TransformedToken>((token) => token?.$type === 'typography');
-const getVariableName = R.pipe<string[], string[], string, string, string, string>(
-  R.split(':'),
-  R.head,
-  R.defaultTo(''),
-  R.trim,
-  (name) => `var(${name})`,
-);
-
-const bemify = R.pipe(
-  (path: string[]) => {
-    const filteredPath = path.filter((p) => p !== 'typography');
-    const withPrefix = R.concat([prefix], R.remove(0, 0, filteredPath));
-    const [rest, last] = R.splitAt(-1, withPrefix);
-
-    const className = `${rest.join('-')}--${R.head(last)}`;
-    return className;
-  },
-  R.trim,
-  R.toLower,
-);
-
-const classSelector = R.pipe(R.prop('path'), bemify);
-const sortTypographyLast = R.sortWith<TransformedToken>([
-  R.ascend((token) => (typeEquals('typography')(token) ? 1 : 0)),
+// Predicate to filter tokens with .path array that includes both typography and fontFamily
+const typographyFontFamilyPredicate = R.allPass([
+  R.pathSatisfies(R.includes('typography'), ['path']),
+  R.pathSatisfies(R.includes('fontFamily'), ['path']),
 ]);
 
 export const typography: Format = {
@@ -136,74 +105,13 @@ export const typography: Format = {
       usesDtcg,
     });
 
-    const sortedTokens = sortTypographyLast(dictionary.allTokens);
+    console.log('dictionary.allTokens', dictionary.allTokens);
 
-    const formattedTokens = R.pipe(
-      sortByType,
-      R.reduce<TransformedToken, ProcessedTokens>(
-        (acc, token) => {
-          if (typeEquals('fontweight', token)) {
-            const className = `
-  .${classSelector(token)} {
-    font-weight: ${getValue<string>(token)};
-  }`;
+    const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 
-            return Object.assign(acc, {
-              variables: [...acc.variables, format(token)],
-              classes: [...acc.classes, className],
-            });
-          }
+    const formattedTokens = R.pipe(R.map(format), R.join('\n'))(filteredTokens);
 
-          if (typeEquals('lineheight', token)) {
-            const className = `
-  .${classSelector(token)} {
-    line-height: ${getValue<string>(token)};
-  }`;
-
-            return Object.assign(acc, {
-              variables: [...acc.variables, format(token)],
-              classes: [...acc.classes, className],
-            });
-          }
-
-          if (typeEquals('typography', token)) {
-            let references: TransformedToken[] = [];
-            try {
-              references = getReferences(getValue<Typgraphy>(token.original), dictionary.tokens);
-            } catch (error) {
-              console.error('Error getting references', error);
-              throw new Error(JSON.stringify(token, null, 2));
-            }
-            const fontweight = R.find<TransformedToken>(typeEquals(['fontweight']))(references);
-            const lineheight = R.find<TransformedToken>(typeEquals(['lineheight']))(references);
-            const fontsize = R.find<TransformedToken>(typeEquals(['fontsize']))(references);
-            const letterSpacing = R.find<TransformedToken>(typeEquals(['dimension']))(references);
-
-            const fontSizeVar = fontsize ? getVariableName(format(fontsize)) : null;
-            const fontWeightVar = fontweight ? getVariableName(format(fontweight)) : null;
-            const lineheightVar = lineheight ? getVariableName(format(lineheight)) : null;
-            const letterSpacingVar = letterSpacing ? getVariableName(format(letterSpacing)) : null;
-
-            const className = `
-  .${classSelector(token)} {
-    ${fontSizeVar ? `font-size: ${fontSizeVar};` : ''}
-    ${lineheightVar ? `line-height: ${lineheightVar};` : ''}
-    ${fontWeightVar ? `font-weight: ${fontWeightVar};` : ''}
-    ${letterSpacingVar ? `letter-spacing: ${letterSpacingVar};` : ''}
-  }`;
-
-            return Object.assign(acc, { classes: [className, ...acc.classes] });
-          }
-
-          return Object.assign(acc, { variables: [...acc.variables, format(token)] });
-        },
-        { variables: [], classes: [] },
-      ),
-    )(sortedTokens);
-
-    const classes = formattedTokens.classes.join('\n');
-    const variables = formattedTokens.variables.join('\n');
-    const content = selector ? `${selector} {\n${variables}\n${classes}\n}` : classes;
+    const content = selector ? `${selector} {\n${formattedTokens}\n}` : formattedTokens;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
 
     return header + body;

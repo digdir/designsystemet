@@ -46,7 +46,7 @@ export async function buildTokens(options: Options): Promise<void> {
 
   const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes);
   const semanticConfigs = getConfigs(configs.semanticVariables, outPath, tokensDir, semanticThemes);
-  const typographyConfigs = getConfigs(configs.typographyCSS, outPath, tokensDir, typographyThemes);
+  const typographyConfigs = getConfigs(configs.typographyVariables, outPath, tokensDir, typographyThemes);
   const storefrontConfigs = getConfigs(configs.typescriptTokens, storefrontOutDir, tokensDir, colormodeThemes);
 
   if (typographyConfigs.length > 0) {

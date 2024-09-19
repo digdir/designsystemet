@@ -1,4 +1,4 @@
-import { register } from '@tokens-studio/sd-transforms';
+import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
@@ -7,7 +7,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, sizeRem, typographyShorthand } from './transformers.js';
+import { nameKebab, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
@@ -25,7 +25,7 @@ const fileHeader = () => [`These files are generated from design tokens defind u
 
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
-StyleDictionary.registerTransform(typographyShorthand);
+StyleDictionary.registerTransform(typographyName);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
@@ -38,7 +38,7 @@ const dsTransformers = [
   'ts/size/px',
   sizeRem.name,
   'ts/typography/fontWeight',
-  typographyShorthand.name,
+  typographyName.name,
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/size/lineheight',
@@ -149,7 +149,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
             format: formats.semantic.name,
             filter: (token) =>
               (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeight', 'fontFamily'], token),
+              !typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token),
           },
         ],
         options: {
@@ -200,7 +200,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
   };
 };
 
-export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
+export const typographyVariables: GetConfig = ({ outPath, theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -208,6 +208,10 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
     usesDtcg: true,
     log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
+    expand: {
+      include: ['typography'],
+      typesMap: { ...expandTypesMap, typography: { ...expandTypesMap.typography, letterSpacing: 'dimension' } },
+    },
     platforms: {
       css: {
         prefix,
@@ -216,7 +220,14 @@ export const typographyCSS: GetConfig = ({ outPath, theme, typography }) => {
         layer,
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
-        transforms: [nameKebab.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
+        transforms: [
+          nameKebab.name,
+          'ts/size/px',
+          sizeRem.name,
+          'ts/size/lineheight',
+          'ts/typography/fontWeight',
+          typographyName.name,
+        ],
         files: [
           {
             destination: `typography/${typography}.css`,

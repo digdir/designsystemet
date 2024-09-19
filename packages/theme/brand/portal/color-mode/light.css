@@ -306,7 +306,8 @@
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #fefefe;
   --ds-color-focus-outer: #420e6a;
-color-scheme: light;
+
+  color-scheme: light;
 }
  
 @media (prefers-color-scheme: light) {
@@ -613,7 +614,8 @@ color-scheme: light;
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #fefefe;
   --ds-color-focus-outer: #420e6a;
-color-scheme: light;
+
+  color-scheme: light;
 }
 
 }

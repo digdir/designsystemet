@@ -10,6 +10,7 @@
   --dsc-button-size: var(--ds-sizing-12);
 
   @composes ds-focus from './utilities.css';
+  @composes ds-paragraph-short from './baseline/typography.css';
 
   align-items: center;
   background: var(--dsc-button-background);
