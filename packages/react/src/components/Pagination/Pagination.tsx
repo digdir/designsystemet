@@ -1,16 +1,10 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, createContext, forwardRef, useRef } from 'react';
+import { createContext, forwardRef, useState } from 'react';
+import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 
-type PaginationContextProps = {
-  size: NonNullable<PaginationProps['size']>;
-  compact: boolean;
-};
-
-export const PaginationContext = createContext<PaginationContextProps>({
-  size: 'md',
-  compact: false,
+export const PaginationContext = createContext({
+  size: 'md' as NonNullable<PaginationProps['size']>,
 });
 
 export type PaginationProps = {
@@ -23,11 +17,6 @@ export type PaginationProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * Sets how compact the component will be. If true, only 5 steps will show.
-   * @default false
-   */
-  compact?: boolean;
   /** Sets the current page
    * @default 1
    */
@@ -49,24 +38,19 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       'aria-label': ariaLabel = 'Sidenavigering',
       className,
       asChild,
-      compact = false,
       size = 'md',
       ...rest
     },
     ref,
   ) {
     const Component = asChild ? Slot : 'nav';
-    const paginationRef = useRef<HTMLElement>(null);
-    const mergedRef = useMergeRefs([paginationRef, ref]);
-
-    // TODO: ResizeObserver
 
     return (
-      <PaginationContext.Provider value={{ size, compact }}>
+      <PaginationContext.Provider value={{ size }}>
         <Component
           aria-label={ariaLabel}
           className={cl('ds-pagination', className)}
-          ref={mergedRef}
+          ref={ref}
           {...rest}
         />
       </PaginationContext.Provider>

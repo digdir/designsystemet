@@ -31,11 +31,13 @@ export default {
 //   itemLabel: (num) => `Side ${num}`,
 // };
 
-export const Preview: StoryFn<typeof Pagination> = ({ totalPages = 10 }) => {
-  const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
-    currentPage: 4,
-    totalPages,
-  });
+export const Preview: StoryFn<typeof Pagination> = () => {
+  const { currentPage, pages, goNext, goPrevious, hasNext, hasPrevious } =
+    usePagination({
+      currentPage: 4,
+      totalPages: 10,
+      show: 7,
+    });
 
   return (
     <Pagination aria-label='Sidenavigering'>
@@ -45,8 +47,8 @@ export const Preview: StoryFn<typeof Pagination> = ({ totalPages = 10 }) => {
             Forrige
           </Pagination.Button>
         </Pagination.Item>
-        {pages.map(({ page, ...rest }, index) => (
-          <Pagination.Item key={index}>
+        {pages.map(({ key, page, ...rest }) => (
+          <Pagination.Item key={key}>
             <Pagination.Button {...rest}>{page}</Pagination.Button>
           </Pagination.Item>
         ))}
@@ -58,6 +60,11 @@ export const Preview: StoryFn<typeof Pagination> = ({ totalPages = 10 }) => {
       </Pagination.List>
     </Pagination>
   );
+};
+
+Preview.args = {
+  currentPage: 4,
+  totalPages: 10,
 };
 
 // export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
