@@ -1,86 +1,40 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import type { PaginationProps } from './Pagination';
+const getSteps = (now: number, max: number, show: number) => {
+  const offset = (show - 1) / 2;
+  const start = Math.min(Math.max(now - Math.floor(offset), 1), max - show + 1);
+  const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
+  const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
 
-type GetStepsProps = Pick<
-  PaginationProps,
-  'compact' | 'currentPage' | 'totalPages'
->;
-
-const getSteps = ({
-  compact,
-  currentPage,
-  totalPages,
-}: GetStepsProps): ('ellipsis' | number)[] => {
-  /**  Number of always visible pages at the start and end. */
-  const boundaryCount = 1;
-
-  /** Number of always visible pages before and after the current page. */
-  const siblingCount = compact ? 0 : 1;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  if (totalPages <= (boundaryCount + siblingCount) * 2 + 3)
-    return range(1, totalPages);
-
-  const startPages = range(1, boundaryCount);
-  const endPages = range(totalPages - boundaryCount + 1, totalPages);
-
-  const siblingsStart = Math.max(
-    Math.min(
-      currentPage - siblingCount,
-      totalPages - boundaryCount - siblingCount * 2 - 1,
-    ),
-    boundaryCount + 2,
-  );
-  const siblingsEnd = siblingsStart + siblingCount * 2;
-
-  return [
-    ...startPages,
-    siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
-      ? siblingsStart - 1
-      : 'ellipsis',
-    ...range(siblingsStart, siblingsEnd),
-    (endPages[0] ?? totalPages + 1) - siblingsEnd === 2
-      ? siblingsEnd + 1
-      : 'ellipsis',
-    ...endPages,
-  ];
+  if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
+  if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
+  return pages;
 };
 
-export type UsePaginationProps = Pick<
-  PaginationProps,
-  'compact' | 'totalPages'
-> &
-  Partial<Pick<PaginationProps, 'currentPage'>>;
+export type UsePaginationProps = {
+  currentPage: number;
+  totalPages: number;
+  show?: number;
+};
 
 /** Hook to help manage pagination state */
 export const usePagination = ({
+  currentPage: currentProp = 1,
   totalPages,
-  currentPage: currentPageProps = 1,
-  compact,
+  show = 7,
 }: UsePaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(currentPageProps);
+  const [currentPage, setCurrentPage] = useState(currentProp);
+  const pages = useMemo(() => {
+    return getSteps(currentPage, totalPages, show).map((page) => ({
+      'aria-current': page === currentPage ? ('page' as const) : undefined,
+      'aria-hidden': !page || undefined,
+      onClick: page ? () => setCurrentPage(page) : undefined,
+      tabIndex: page ? undefined : -1,
+      page: page || '', // Replace 0 with '' to prevent React from rendering "0" as a child
+    }));
+  }, [currentPage, totalPages, show]);
 
-  useEffect(() => {
-    setCurrentPage(currentPageProps);
-  }, [currentPageProps]);
-
-  const pages = getSteps({ currentPage, totalPages, compact });
-
-  const showNextPage = currentPage < totalPages;
-  const showPreviousPage = currentPage !== 1;
-
-  const nextPage = () => {
-    setCurrentPage(
-      currentPage + 1 <= totalPages ? currentPage + 1 : totalPages,
-    );
-  };
-
-  const previousPage = () => {
-    setCurrentPage(currentPage - 1 > 0 ? currentPage - 1 : 1);
-  };
+  useEffect(() => setCurrentPage(currentProp), [currentProp]);
 
   return {
     /** Number of steps */
@@ -90,14 +44,14 @@ export const usePagination = ({
     /** Set active page */
     setCurrentPage,
     /** Decrements active page by 1 */
-    previousPage,
+    goPrevious: () => setCurrentPage(Math.max(0, currentPage - 1)),
     /** Increments active page by 1 */
-    nextPage,
+    goNext: () => setCurrentPage(Math.min(currentPage + 1, totalPages)),
     /** Total amount of pages */
     totalPages,
     /** Indication if next page action should be shown or not */
-    showNextPage,
+    hasNext: currentPage < totalPages,
     /** Indication if previous page action should be shown or not */
-    showPreviousPage,
+    hasPrevious: currentPage !== 1,
   };
 };

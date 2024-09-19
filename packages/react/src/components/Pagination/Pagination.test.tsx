@@ -6,9 +6,8 @@ import {
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { PaginationRootProps } from './PaginationRoot';
+import type { PaginationProps } from './Pagination';
 
-import type { PaginationProps } from './';
 import { Pagination, usePagination } from './';
 
 const render = (props: PaginationProps) => renderRtl(<Pagination {...props} />);
