@@ -39,6 +39,7 @@
   resize: vertical;
   background: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
+  field-sizing: content;
 }
 
 .ds-textarea--sm .ds-textarea__input {
