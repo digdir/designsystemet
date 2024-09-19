@@ -22,8 +22,9 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
+import { Fragment, forwardRef, useRef, useState } from 'react';
 
+import { Slot } from '@radix-ui/react-slot';
 import type { PortalProps } from '../../types/Portal';
 import { Paragraph } from '../Typography';
 
@@ -130,25 +131,15 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs.setReference,
     ]);
 
-    if (
-      !children ||
-      children?.type === Fragment ||
-      (children as unknown) === Fragment
-    ) {
-      console.error(
-        '<Tooltip> children needs to be a single ReactElement and not: <Fragment/> | <></>',
-      );
-      return null;
-    }
-
     return (
       <>
-        {cloneElement(
-          children,
-          getReferenceProps({
+        <Slot
+          {...getReferenceProps({
             ref: childMergedRef,
-          }),
-        )}
+          })}
+        >
+          {children}
+        </Slot>
         {internalOpen && (
           <Container>
             <Paragraph size='xs' asChild>

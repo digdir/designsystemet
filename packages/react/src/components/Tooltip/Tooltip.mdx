@@ -9,6 +9,19 @@ import * as TooltipStories from './Tooltip.stories.tsx';
 <Primary />
 <Controls />
 
+## Bruk
+
+Vi bruker `asChild` internt for å koble `Tooltip` sammen med barnet du sender inn, dette betyr at komponenten din må kunne motta `ref` for å fungere.
+Du kan lese mer om `asChild` i [dokumentasjonen om komposisjon](https://www.designsystemet.no/grunnleggende/for-utviklere/komposisjon).
+
+```tsx
+import { Tooltip } from '@digdir/designsystemet-react';
+
+<Tooltip>
+  <button>min trigger</button>
+</Tooltip>
+```
+
 ## Plassering
 
 <Canvas of={TooltipStories.Placement} />
