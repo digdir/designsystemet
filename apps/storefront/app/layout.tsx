@@ -3,10 +3,10 @@ import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
 import { Header } from '@repo/components';
-import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 
 import { VersionBanner } from '@components';
+import Script from 'next/script';
 import { Footer } from '../components/Footer/Footer';
 
 export const metadata: Metadata = {
@@ -62,7 +62,9 @@ export default function RootLayout({
           <Header menu={menu} />
           {children}
           <Footer />
-          <Analytics />
+          {process.env.VERCEL_GIT_COMMIT_REF === 'main' && (
+            <Script src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js' />
+          )}
         </div>
       </body>
     </html>
