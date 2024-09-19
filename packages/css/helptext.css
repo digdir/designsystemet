@@ -19,7 +19,7 @@
     border-radius: inherit;
     background: currentcolor;
     mask-composite: exclude;
-    mask-image: var(--dsc-helptext-icon-url); /* Cut icon out of currentcolor surface */
+    mask-image: var(--dsc-helptext-icon-url);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size:
