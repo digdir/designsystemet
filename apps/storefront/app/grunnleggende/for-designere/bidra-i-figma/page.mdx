@@ -51,7 +51,7 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 
 - [Alle styles](https://docs.tokens.studio/available-tokens/available-tokens) (farger, avstander, størrelser, skygger, osv) skal være koblet opp mot korrekt tokens. Bruker du stilene som finnes, er disse allerede automatisk koblet mot tokens. Trenger du nye stiler, må disse også lages som tokens.
 
-- Bruk [typografi-komponentene](https://www.figma.com/file/vpM9dqqQPHqU6ogfKp5tlr/Felles-komponenter?type=design&node-id=9219%3A49516&mode=design&t=kNm7x1CMRXwbfmP9-1) for all tekst som skal eksistere i komponenten.
+- Bruk typografi-komponentene for all tekst som skal eksistere i komponenten.
 
 - [Autolayout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): Innholdet skal skalere som forventet ved størrelseendring. Tenk over om innholdet skal wrappe under hverandre dersom det ikke er plass i bredden. Kan det være hensiktsmessig med en min- eller max-width? Og kanskje truncate (...) på teksten dersom den blir for lang?
 
@@ -66,8 +66,6 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 - Navgivning og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
 
 - Tenk over hvordan en annen designer vil ta i bruk komponenten. Er den intuitiv å bruke? Er den fleksibel nok slik at de ikke trenger å detache den? Kanskje bør den settes opp med [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) slik at det er mulig å bytte ut innholdet i den og legge inn andre komponenter uten å måtte detache. Bruk gjerne også "[Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred)" for å femheve komponentene vi tror kommer til å bli mest brukt som innhold.
-
-- Pass på at designet til komponenten er universelt utformet. [Krav som er spesielt relevant for designere](https://www.figma.com/file/V4dzf3m1sapmU048OQnu7L/Arbeidsomr%C3%A5de%3A-Felles-komponenter?type=design&node-id=349%3A45786&mode=design&t=6lrzQ94NOQl06gY2-1):
 
   - Sjekk at du har gode nok [kontraster](https://www.uutilsynet.no/regelverk/testprosedyrar-nettstader/709#suksesskriterium_143_kontrast)
   - At du har tenkt over hvordan tastaturnavigering skal fungere dersom du lager en ny komponent som ikke er standard. (Standard HTML-elementer har tastaturnavigasjon allerede definert).
