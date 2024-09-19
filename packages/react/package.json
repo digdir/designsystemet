@@ -17,7 +17,6 @@
       "require": "./dist/cjs/index.js"
     }
   },
-  "sideEffects": false,
   "files": [
     "dist/**"
   ],
