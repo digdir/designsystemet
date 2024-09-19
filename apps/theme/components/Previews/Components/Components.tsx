@@ -6,7 +6,7 @@ import {
   Checkbox,
   Chip,
   Combobox,
-  DropdownMenu,
+  Dropdown,
   Fieldset,
   Heading,
   HelpText,
@@ -309,13 +309,13 @@ export const Components = () => {
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
-        </Tabs.Root>
+        </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>
@@ -390,26 +390,26 @@ export const Components = () => {
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
-        <DropdownMenu.Root placement='top'>
-          <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item>Norsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Spansk</DropdownMenu.Item>
-            <DropdownMenu.Item>Fransk</DropdownMenu.Item>
-          </DropdownMenu.Content>
+        <Dropdown.Context>
+          <Dropdown.Trigger>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top'>
+            <Dropdown.Item>Norsk</Dropdown.Item>
+            <Dropdown.Item>Engelsk</Dropdown.Item>
+            <Dropdown.Item>Spansk</Dropdown.Item>
+            <Dropdown.Item>Fransk</Dropdown.Item>
+          </Dropdown>
           <HelpText title='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
-        </DropdownMenu.Root>
+        </Dropdown.Context>
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>
-          <Skeleton.Circle width='70px' height='70px' />
-          <Skeleton.Rectangle height='70px' width='100px' />
+          <Skeleton variant='circle' width='70px' height='70px' />
+          <Skeleton variant='rectangle' height='70px' width='100px' />
         </div>
-        <Skeleton.Text width='100%' />
-        <Skeleton.Text width='100%' />
+        <Skeleton variant='text' />
+        <Skeleton variant='text' />
         <div>
           <Spinner title='laster innhold' size='md' />
           <Spinner title='laster innhold' size='md' color='accent' />
