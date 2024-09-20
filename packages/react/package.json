@@ -40,7 +40,8 @@
     "@navikt/aksel-icons": "^6.14.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-virtual": "^3.10.7",
-    "@u-elements/u-details": "^0.0.5"
+    "@u-elements/u-details": "^0.0.5",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
