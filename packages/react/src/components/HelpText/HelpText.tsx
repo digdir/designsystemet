@@ -1,18 +1,15 @@
 import type { Placement } from '@floating-ui/utils';
 import cl from 'clsx/lite';
-import { forwardRef, useId, useState } from 'react';
+import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 
 import { Popover, type PopoverProps } from '../Popover';
-import { Paragraph } from '../Typography/Paragraph';
-
-import { HelpTextIcon } from './HelpTextIcon';
 
 export type HelpTextProps = {
   /**
-   * Title for screen readers.
+   * Required descriptive label for screen readers.
    **/
-  title: string;
+  'aria-label': string;
   /**
    * Size of the helptext
    * @default md
@@ -23,68 +20,26 @@ export type HelpTextProps = {
    * @default 'right'
    */
   placement?: Placement;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
-    {
-      title,
-      placement = 'right',
-      size = 'md',
-      className,
-      children,
-      ...rest
-    }: HelpTextProps,
+    { placement = 'right', size = 'md', className, children, ...rest },
     ref,
   ) {
-    const [open, setOpen] = useState(false);
-    const randomId = useId();
-
     return (
-      <>
-        <button
-          className={cl(
-            `ds-helptext--${size}`,
-            'ds-helptext__button',
-            `ds-focus`,
-            className,
-          )}
-          onClick={() => setOpen(!open)}
-          // @ts-ignore
-          popovertarget={randomId}
+      <Popover.Context>
+        <Popover.Trigger
+          className={cl('ds-helptext', className)}
           ref={ref}
+          size={size}
+          variant='tertiary'
           {...rest}
-        >
-          <HelpTextIcon
-            filled
-            className={cl(
-              `ds-helptext__icon`,
-              `ds-helptext__icon--filled`,
-              className,
-            )}
-            openState={open}
-          />
-          <HelpTextIcon
-            className={cl(`ds-helptext__icon`, className)}
-            openState={open}
-          />
-          <span className={`ds-sr-only`}>{title}</span>
-        </button>
-        {/* TODO: Why is popover wrapped in paragraph here? */}
-        <Paragraph size='md' asChild>
-          <Popover
-            id={randomId}
-            className='ds-helptext__content'
-            onClose={() => setOpen(false)}
-            open={open}
-            placement={placement}
-            size={size}
-            variant='info'
-          >
-            {children}
-          </Popover>
-        </Paragraph>
-      </>
+        />
+        <Popover placement={placement} size={size} variant='info'>
+          {children}
+        </Popover>
+      </Popover.Context>
     );
   },
 );
