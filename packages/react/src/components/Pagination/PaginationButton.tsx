@@ -1,7 +1,7 @@
 import { type AriaAttributes, forwardRef, useContext } from 'react';
 
 import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 
 import { PaginationContext } from './Pagination';
 
