@@ -1,8 +1,7 @@
-import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
 import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
-import { Button, type ButtonProps } from '../Button';
+import { Button, type ButtonProps } from '../Button/Button';
 
 import { useToggleGroupItem } from './useToggleGroupitem';
 

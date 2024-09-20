@@ -2,7 +2,8 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import { Paragraph, Spinner } from '../';
+import { Paragraph } from '../Typography';
+import { Spinner } from '../loaders/Spinner';
 
 export type ButtonProps = {
   /**
