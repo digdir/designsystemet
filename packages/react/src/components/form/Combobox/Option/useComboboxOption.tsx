@@ -2,7 +2,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import { useContext, useEffect, useId, useMemo } from 'react';
 import type { Ref } from 'react';
 
-import { useDebounceCallback } from '../../../../utilities';
+import { useDebounceCallback } from '../../../../utilities/hooks/useDebounceCallback/useDebounceCallback';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
 import { prefix } from '../utilities';
