@@ -38,9 +38,12 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
   return (
     <Component
       ref={ref}
-      className={cl('ds-label', className)}
+      className={cl(
+        'ds-label',
+        weight && `ds-font-weight--${weight}`,
+        className,
+      )}
       data-size={size}
-      data-weight={weight}
       data-spacing={spacing || undefined}
       {...rest}
     />
