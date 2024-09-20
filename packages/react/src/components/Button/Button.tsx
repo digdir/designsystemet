@@ -33,7 +33,12 @@ export type ButtonProps = {
    * @default false
    */
   asChild?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  /**
+   * Specify the type of button. Unset when `asChild` is true
+   * @default 'button'
+   */
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
 
 /**
  * Button used for interaction
@@ -50,7 +55,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon = false,
       loading = false,
       size = 'md',
-      type = 'button',
       variant = 'primary',
       ...rest
     },
@@ -70,7 +74,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           data-size={size}
           data-variant={variant}
           ref={ref}
-          type={type}
+          /* don't set type when we use `asChild` */
+          {...(asChild ? { asChild: true } : { type: 'button' })}
+          /* if consumers set type, our default does not set anything, as `rest` contains this */
           {...rest}
         >
           {loading === true ? (
