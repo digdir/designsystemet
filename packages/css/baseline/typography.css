@@ -1,0 +1,433 @@
+/** Heading */
+.ds-heading {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  margin: 0;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.ds-heading--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+.ds-heading--2xs {
+  --dsc-bottom-spacing: var(--ds-spacing-1);
+
+  font-weight: var(--ds-heading-2xs-font-weight);
+  line-height: var(--ds-heading-2xs-line-height);
+  font-size: var(--ds-heading-2xs-font-size);
+  letter-spacing: var(--ds-heading-2xs-letter-spacing);
+}
+
+.ds-heading--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-2);
+
+  font-weight: var(--ds-heading-xs-font-weight);
+  line-height: var(--ds-heading-xs-line-height);
+  font-size: var(--ds-heading-xs-font-size);
+  letter-spacing: var(--ds-heading-xs-letter-spacing);
+}
+
+.ds-heading--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-heading-sm-font-weight);
+  line-height: var(--ds-heading-sm-line-height);
+  font-size: var(--ds-heading-sm-font-size);
+  letter-spacing: var(--ds-heading-sm-letter-spacing);
+}
+
+.ds-heading--md {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-weight: var(--ds-heading-md-font-weight);
+  line-height: var(--ds-heading-md-line-height);
+  font-size: var (--ds-heading-md-font-size);
+  letter-spacing: var(--ds-heading-md-letter-spacing);
+}
+
+.ds-heading--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-heading-lg-font-weight);
+  line-height: var(--ds-heading-lg-line-height);
+  font-size: var(--ds-heading-lg-font-size);
+  letter-spacing: var(--ds-heading-lg-letter-spacing);
+}
+
+.ds-heading--xl {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  font-weight: var(--ds-heading-xl-font-weight);
+  line-height: var(--ds-heading-xl-line-height);
+  font-size: var(--ds-heading-xl-font-size);
+  letter-spacing: var(--ds-heading-xl-letter-spacing);
+}
+
+.ds-heading--2xl {
+  --dsc-bottom-spacing: var(--ds-spacing-7);
+
+  font-weight: var(--ds-heading-2xl-font-weight);
+  line-height: var(--ds-heading-2xl-line-height);
+  font-size: var(--ds-heading-2xl-font-size);
+  letter-spacing: var(--ds-heading-2xl-letter-spacing);
+}
+
+/** Ingress */
+
+.ds-ingress {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  margin: 0;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.ds-ingress--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+.ds-ingress--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-8);
+
+  font-weight: var(--ds-ingress-xs-font-weight);
+  line-height: var(--ds-ingress-xs-line-height);
+  font-size: var(--ds-ingress-xs-font-size);
+  letter-spacing: var(--ds-ingress-xs-letter-spacing);
+}
+
+.ds-ingress--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-7);
+
+  font-weight: var(--ds-ingress-sm-font-weight);
+  line-height: var(--ds-ingress-sm-line-height);
+  font-size: var(--ds-ingress-sm-font-size);
+  letter-spacing: var(--ds-ingress-sm-letter-spacing);
+}
+
+.ds-ingress--md {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-ingress-md-font-weight);
+  line-height: var(--ds-ingress-md-line-height);
+  font-size: var(--ds-ingress-md-font-size);
+  letter-spacing: var(--ds-ingress-md-letter-spacing);
+}
+
+.ds-ingress--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  font-weight: var(--ds-ingress-lg-font-weight);
+  line-height: var(--ds-ingress-lg-line-height);
+  font-size: var(--ds-ingress-lg-font-size);
+  letter-spacing: var(--ds-ingress-lg-letter-spacing);
+}
+
+/** Paragraph */
+.ds-paragraph {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-md-font-weight);
+  line-height: var(--ds-paragraph-md-line-height);
+  font-size: var(--ds-paragraph-md-font-size);
+  letter-spacing: var(--ds-paragraph-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-xs-font-weight);
+    line-height: var(--ds-paragraph-xs-line-height);
+    font-size: var(--ds-paragraph-xs-font-size);
+    letter-spacing: var(--ds-paragraph-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-sm-font-weight);
+    line-height: var(--ds-paragraph-sm-line-height);
+    font-size: var(--ds-paragraph-sm-font-size);
+    letter-spacing: var(--ds-paragraph-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-md-font-weight);
+    line-height: var(--ds-paragraph-md-line-height);
+    font-size: var(--ds-paragraph-md-font-size);
+    letter-spacing: var(--ds-paragraph-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-lg-font-weight);
+    line-height: var(--ds-paragraph-lg-line-height);
+    font-size: var(--ds-paragraph-lg-font-size);
+    letter-spacing: var(--ds-paragraph-lg-letter-spacing);
+  }
+}
+
+/** REMOVE after migrate to @composes  */
+.ds-paragraph--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-paragraph-xs-font-weight);
+  line-height: var(--ds-paragraph-xs-line-height);
+  font-size: var(--ds-paragraph-xs-font-size);
+  letter-spacing: var(--ds-paragraph-xs-letter-spacing);
+}
+
+.ds-paragraph--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-weight: var(--ds-paragraph-sm-font-weight);
+  line-height: var(--ds-paragraph-sm-line-height);
+  font-size: var(--ds-paragraph-sm-font-size);
+  letter-spacing: var(--ds-paragraph-sm-letter-spacing);
+}
+
+.ds-paragraph--md {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-md-font-weight);
+  line-height: var(--ds-paragraph-md-line-height);
+  font-size: var(--ds-paragraph-md-font-size);
+  letter-spacing: var(--ds-paragraph-md-letter-spacing);
+}
+
+.ds-paragraph--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  font-weight: var(--ds-paragraph-lg-font-weight);
+  line-height: var(--ds-paragraph-lg-line-height);
+  font-size: var(--ds-paragraph-lg-font-size);
+  letter-spacing: var(--ds-paragraph-lg-letter-spacing);
+}
+
+/** END */
+
+.ds-paragraph-long {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-long-md-font-weight);
+  line-height: var(--ds-paragraph-long-md-line-height);
+  font-size: var(--ds-paragraph-long-md-font-size);
+  letter-spacing: var(--ds-paragraph-long-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-long-xs-font-weight);
+    line-height: var(--ds-paragraph-long-xs-line-height);
+    font-size: var(--ds-paragraph-long-xs-font-size);
+    letter-spacing: var(--ds-paragraph-long-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-long-sm-font-weight);
+    line-height: var(--ds-paragraph-long-sm-line-height);
+    font-size: var(--ds-paragraph-long-sm-font-size);
+    letter-spacing: var(--ds-paragraph-long-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-long-md-font-weight);
+    line-height: var(--ds-paragraph-long-md-line-height);
+    font-size: var(--ds-paragraph-long-md-font-size);
+    letter-spacing: var(--ds-paragraph-long-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-long-lg-font-weight);
+    line-height: var(--ds-paragraph-long-lg-line-height);
+    font-size: var(--ds-paragraph-long-lg-font-size);
+    letter-spacing: var(--ds-paragraph-long-lg-letter-spacing);
+  }
+}
+
+.ds-paragraph-short {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-paragraph-short-md-font-weight);
+  line-height: var(--ds-paragraph-short-md-line-height);
+  font-size: var(--ds-paragraph-short-md-font-size);
+  letter-spacing: var(--ds-paragraph-short-md-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+
+  &[data-size='xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-3);
+
+    font-weight: var(--ds-paragraph-short-xs-font-weight);
+    line-height: var(--ds-paragraph-short-xs-line-height);
+    font-size: var(--ds-paragraph-short-xs-font-size);
+    letter-spacing: var(--ds-paragraph-short-xs-letter-spacing);
+  }
+
+  &[data-size='sm'] {
+    --dsc-bottom-spacing: var(--ds-spacing-4);
+
+    font-weight: var(--ds-paragraph-short-sm-font-weight);
+    line-height: var(--ds-paragraph-short-sm-line-height);
+    font-size: var(--ds-paragraph-short-sm-font-size);
+    letter-spacing: var(--ds-paragraph-short-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    font-weight: var(--ds-paragraph-short-md-font-weight);
+    line-height: var(--ds-paragraph-short-md-line-height);
+    font-size: var(--ds-paragraph-short-md-font-size);
+    letter-spacing: var(--ds-paragraph-short-md-letter-spacing);
+  }
+
+  &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-6);
+
+    font-weight: var(--ds-paragraph-short-lg-font-weight);
+    line-height: var(--ds-paragraph-short-lg-line-height);
+    font-size: var(--ds-paragraph-short-lg-font-size);
+    letter-spacing: var(--ds-paragraph-short-lg-letter-spacing);
+  }
+}
+
+.ds-paragraph--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+/** Label */
+
+.ds-label {
+  --dsc-bottom-spacing: var(--ds-spacing-1);
+
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.ds-label--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+.ds-label--xs {
+  font-weight: var(--ds-label-xs-font-weight);
+  line-height: var(--ds-label-xs-line-height);
+  font-size: var(--ds-label-xs-font-size);
+  letter-spacing: var(--ds-label-xs-letter-spacing);
+}
+
+.ds-label--sm {
+  font-weight: var(--ds-label-sm-font-weight);
+  line-height: var(--ds-label-sm-line-height);
+  font-size: var(--ds-label-sm-font-size);
+  letter-spacing: var(--ds-label-sm-letter-spacing);
+}
+
+.ds-label--md {
+  font-weight: var(--ds-label-md-font-weight);
+  line-height: var(--ds-label-md-line-height);
+  font-size: var(--ds-label-md-font-size);
+  letter-spacing: var(--ds-label-md-letter-spacing);
+}
+
+.ds-label--lg {
+  font-weight: var(--ds-label-lg-font-weight);
+  line-height: var(--ds-label-lg-line-height);
+  font-size: var(--ds-label-lg-font-size);
+  letter-spacing: var(--ds-label-lg-letter-spacing);
+}
+
+/** Error message */
+
+.ds-validation-message {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  margin: 0;
+}
+
+.ds-validation-message--error {
+  color: var(--ds-color-danger-text-subtle);
+}
+
+.ds-validation-message--spacing {
+  margin-bottom: var(--dsc-bottom-spacing);
+}
+
+.ds-validation-message--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-error_message-xs-font-weight);
+  line-height: var(--ds-error_message-xs-line-height);
+  font-size: var(--ds-error_message-xs-font-size);
+  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+}
+
+.ds-validation-message--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-weight: var(--ds-error_message-sm-font-weight);
+  line-height: var(--ds-error_message-sm-line-height);
+  font-size: var(--ds-error_message-sm-font-size);
+  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+}
+
+.ds-validation-message--md {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-error_message-md-font-weight);
+  line-height: var(--ds-error_message-md-line-height);
+  font-size: var(--ds-error_message-md-font-size);
+  letter-spacing: var(--ds-error_message-md-letter-spacing);
+}
+
+.ds-validation-message--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-error_message-lg-font-weight);
+  line-height: var(--ds-error_message-lg-line-height);
+  font-size: var(--ds-error_message-lg-font-size);
+  letter-spacing: var(--ds-error_message-lg-letter-spacing);
+}
+
+/** Font weight
+ ** used for weight on Label */
+
+.ds-font-weight--medium {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.ds-font-weight--semibold {
+  font-weight: var(--ds-font-weight-semibold);
+}
+
+.ds-font-weight--regular {
+  font-weight: var(--ds-font-weight-regular);
+}
+
+/** Line height
+ ** used for long, short Paragraph */
+
+.ds-line-height--sm {
+  line-height: var(--ds-line-height-sm);
+}
+
+.ds-line-height--md {
+  line-height: var(--ds-line-height-md);
+}
+
+.ds-line-height--lg {
+  line-height: var(--ds-line-height-lg);
+}

@@ -1,8 +1,8 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 
-import { TabsRoot } from './TabsRoot';
-import { Tab } from './Tab';
-import { TabContent } from './TabContent';
+import { Tabs } from './Tabs';
+import { TabsTab } from './TabsTab';
+import { TabsPanel } from './TabsPanel';
 import * as TabsStories from './Tabs.stories';
 
 <Meta of={TabsStories} />
@@ -19,16 +19,16 @@ Tabs lar brukerne navigere mellom relaterte deler av innholdet, der én del vise
 ```tsx
 import { Tabs } from '@digdir/designsystemet-react';
 
-<Tabs.Root defaultValue='value1'>
+<Tabs defaultValue='value1'>
   <Tabs.List>
     <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
     <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
     <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Content value='value1'>content 1</Tabs.Content>
-  <Tabs.Content value='value2'>content 2</Tabs.Content>
-  <Tabs.Content value='value3'>content 3</Tabs.Content>
-</Tabs.Root>;
+  <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+  <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+  <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+</Tabs>;
 ```
 
 ## Icons only
@@ -41,17 +41,17 @@ import { Tabs } from '@digdir/designsystemet-react';
 
 ### Props
 
-#### `Tabs.Root`
+#### `Tabs`
 
-<ArgTypes of={TabsRoot} />
+<ArgTypes of={Tabs} />
 
 #### `Tabs.Tab`
 
-<ArgTypes of={Tab} />
+<ArgTypes of={TabsTab} />
 
-#### `Tabs.Content`
+#### `Tabs.Panel`
 
-<ArgTypes of={TabContent} />
+<ArgTypes of={TabsPanel} />
 
 ### Størrelse på ikon
 

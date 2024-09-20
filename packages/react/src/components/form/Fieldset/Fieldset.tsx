@@ -1,13 +1,11 @@
-import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { ErrorMessage, Label, Paragraph } from '../../Typography';
-import type { FormFieldProps } from '../useFormField';
+import { Label, Paragraph, ValidationMessage } from '../../Typography';
+import { type FormFieldProps, useFormField } from '../useFormField';
 
 import { FieldsetContext } from './FieldsetContext';
-import { useFieldset } from './useFieldset';
 
 export type FieldsetProps = {
   /** A description of the fieldset. This will appear below the legend. */
@@ -27,7 +25,7 @@ export type FieldsetProps = {
   FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
-  (props, ref) => {
+  function Fieldset(props, ref) {
     const {
       children,
       legend,
@@ -38,78 +36,50 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
       ...rest
     } = props;
 
-    const { fieldsetProps, size, readOnly, errorId, hasError, descriptionId } =
-      useFieldset(props);
-
     const fieldset = useContext(FieldsetContext);
+    const { inputProps, size, readOnly, errorId, hasError, descriptionId } =
+      useFormField(props, 'fieldset');
 
     return (
       <FieldsetContext.Provider
         value={{
+          disabled: props?.disabled,
           error: error ?? fieldset?.error,
           errorId: hasError ? errorId : undefined,
-          size,
-          disabled: props?.disabled,
           readOnly,
+          size,
         }}
       >
         <fieldset
-          {...fieldsetProps}
-          className={cl(
-            'ds-fieldset',
-            !hideLegend && 'ds-fieldset--spacing',
-            readOnly && 'ds-fieldset--readonly',
-            className,
-          )}
+          aria-describedby={inputProps['aria-describedby']}
+          aria-invalid={inputProps['aria-invalid']}
+          className={cl('ds-fieldset', className)}
+          data-hidelegend={hideLegend || undefined}
+          data-readonly={readOnly || undefined}
           disabled={props?.disabled}
           ref={ref}
           {...rest}
         >
           <Label asChild size={size}>
-            <legend className={'ds-fieldset__legend'}>
-              <span
-                className={cl(
-                  'ds-fieldset__legend__content',
-                  hideLegend && `ds-sr-only`,
-                )}
-              >
-                {readOnly && (
-                  <PadlockLockedFillIcon
-                    className={'ds-fieldset__readonly__icon'}
-                    aria-hidden
-                  />
-                )}
-                {legend}
-              </span>
-            </legend>
+            <legend>{legend}</legend>
           </Label>
-          {description && (
-            <Paragraph size={size} variant='short' asChild>
-              <div
-                id={descriptionId}
-                className={cl(
-                  'ds-fieldset__description',
-                  'ds-font-weight--regular',
-                  hideLegend && `ds-sr-only`,
-                )}
-              >
-                {description}
-              </div>
+          {!!description && (
+            <Paragraph id={descriptionId} size={size} variant='short'>
+              {description}
             </Paragraph>
           )}
           {children}
           <div
-            id={errorId}
             aria-live='polite'
             aria-relevant='additions removals'
-            className={'ds-fieldset__error-message'}
+            id={errorId}
           >
-            {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
+            {hasError && (
+              <ValidationMessage size={size}>{error}</ValidationMessage>
+            )}
           </div>
         </fieldset>
       </FieldsetContext.Provider>
     );
   },
 );
-
-Fieldset.displayName = 'Fieldset';

@@ -27,7 +27,7 @@ export * from './ToggleGroup';
 export * from './Popover';
 export * from './Divider';
 export * from './Modal';
-export * from './DropdownMenu';
+export * from './Dropdown';
 export * from './form/Search';
 export * from './Card';
 export * from './form/Combobox';

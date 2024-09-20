@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../Typography';
+import { ValidationMessage } from '../Typography';
 
 import type { TextfieldProps } from './Textfield';
 
@@ -45,11 +45,11 @@ export const CharacterCounter = ({
       <span className={`ds-sr-only`} id={id}>
         {srLabel}
       </span>
-      <ErrorMessage asChild size={size}>
+      <ValidationMessage asChild size={size} error={hasExceededLimit}>
         <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
           {label(currentCount)}
         </span>
-      </ErrorMessage>
+      </ValidationMessage>
     </>
   );
 };

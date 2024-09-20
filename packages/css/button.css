@@ -10,6 +10,7 @@
   --dsc-button-size: var(--ds-sizing-12);
 
   @composes ds-focus from './utilities.css';
+  @composes ds-paragraph-short from './baseline/typography.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -141,8 +142,8 @@
     */
 
   @media (hover: hover) and (pointer: fine) {
-    /* Only use hover for non-touch devices to prevent sticky-hovering */
-    &:not(:disabled, [aria-disabled='true'], [aria-busy='true']):hover {
+    /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */
+    &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):hover {
       background: var(--dsc-button-background--hover);
     }
   }
@@ -156,7 +157,8 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  &:not(:disabled, [aria-disabled='true'], [aria-busy='true']):active {
+  /* Using :where to prevent adding specificity */
+  &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):active {
     background-color: var(--dsc-button-background--active);
   }
 }

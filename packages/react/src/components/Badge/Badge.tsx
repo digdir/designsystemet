@@ -64,44 +64,33 @@ const paragraphSizeMap: {
  * </Badge>
  * ```
  */
-export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  (
-    {
-      color = 'accent',
-      size = 'md',
-      placement = 'top-right',
-      overlap = 'rectangle',
-      count,
-      maxCount,
-      children,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
-    return (
-      <div className={cl('ds-badge__wrapper', className)}>
-        {children}
-        <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
-          <span
-            className={cl('ds-badge', count && 'ds-badge--count')}
-            ref={ref}
-            data-size={size}
-            data-color={color}
-            {...(children
-              ? {
-                  'data-placement': placement,
-                  'data-overlap': overlap,
-                }
-              : {})}
-            {...rest}
-          >
-            {maxCount && count && count > maxCount ? `${maxCount}+` : count}
-          </span>
-        </Paragraph>
-      </div>
-    );
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
+  {
+    className,
+    color = 'accent',
+    count,
+    maxCount,
+    overlap = 'rectangle',
+    placement = 'top-right',
+    size = 'md',
+    ...rest
   },
-);
-
-Badge.displayName = 'Badge';
+  ref,
+) {
+  return (
+    <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
+      <span
+        className={cl('ds-badge', className)}
+        data-color={color}
+        data-count={
+          count && maxCount && count > maxCount ? `${maxCount}+` : count
+        }
+        data-overlap={rest.children ? overlap : null}
+        data-placement={rest.children ? placement : null}
+        data-size={size}
+        ref={ref}
+        {...rest}
+      />
+    </Paragraph>
+  );
+});
