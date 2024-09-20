@@ -49,7 +49,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon = false,
       loading = false,
       size = 'md',
-      type = 'button',
       variant = 'primary',
       ...rest
     },
@@ -69,7 +68,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           data-size={size}
           data-variant={variant}
           ref={ref}
-          type={type}
           {...rest}
         >
           {loading === true ? (
