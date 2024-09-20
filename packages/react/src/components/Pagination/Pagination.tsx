@@ -17,14 +17,6 @@ export type PaginationProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /** Sets the current page
-   * @default 1
-   */
-  currentPage?: number;
-  /** Total number of pages */
-  totalPages?: number;
-  /** Function to be called when the selected page changes. */
-  onChange?: (currentPage: number) => void;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false

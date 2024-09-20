@@ -8,52 +8,40 @@ export default {
   component: Pagination,
 } as Meta;
 
-// export const Preview: StoryFn<typeof Pagination> = (args) => {
-//   const [currentPage, setCurrentPage] = useState(args.currentPage);
-
-//   useEffect(() => {
-//     setCurrentPage(args.currentPage);
-//   }, [args.currentPage]);
-
-//   return (
-//     <Pagination {...args} onChange={setCurrentPage} currentPage={currentPage} />
-//   );
-// };
-// Preview.args = {
-//   'aria-label': 'Sidenavigering',
-//   size: 'md',
-//   nextLabel: 'Neste',
-//   previousLabel: 'Forrige',
-//   totalPages: 10,
-//   hideLabels: false,
-//   compact: false,
-//   currentPage: 1,
-//   itemLabel: (num) => `Side ${num}`,
-// };
-
 export const Preview: StoryFn<typeof Pagination> = () => {
-  const { currentPage, pages, goNext, goPrevious, hasNext, hasPrevious } =
-    usePagination({
-      currentPage: 4,
-      totalPages: 10,
-      show: 7,
-    });
+  const [currentPage, setCurrentPage] = useState(4);
+  const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
 
   return (
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button onClick={goPrevious} disabled={!hasPrevious}>
+          <Pagination.Button
+            aria-label='Forrige side'
+            disabled={!hasPrevious}
+            onClick={goPrevious}
+          >
             Forrige
           </Pagination.Button>
         </Pagination.Item>
-        {pages.map(({ key, page, ...rest }) => (
-          <Pagination.Item key={key}>
-            <Pagination.Button {...rest}>{page}</Pagination.Button>
+        {pages.map(({ page, itemKey, buttonProps }) => (
+          <Pagination.Item key={itemKey}>
+            <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+              {page}
+            </Pagination.Button>
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button onClick={goNext} disabled={!hasNext}>
+          <Pagination.Button
+            aria-label='Neste side'
+            disabled={!hasNext}
+            onClick={goNext}
+          >
             Neste
           </Pagination.Button>
         </Pagination.Item>
@@ -62,49 +50,41 @@ export const Preview: StoryFn<typeof Pagination> = () => {
   );
 };
 
-Preview.args = {
-  currentPage: 4,
-  totalPages: 10,
+export const WithAnchor: StoryFn<typeof Pagination> = () => {
+  const [currentPage, setCurrentPage] = useState(2);
+  const { pages } = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+  });
+
+  return (
+    <Pagination aria-label='Sidenavigering'>
+      <Pagination.List>
+        <Pagination.Item>
+          <Pagination.Button asChild aria-label='Forrige side'>
+            <a href='#forrige-side'>Forrige</a>
+          </Pagination.Button>
+        </Pagination.Item>
+
+        {pages.map(({ page, itemKey, buttonProps }) => (
+          <Pagination.Item key={itemKey}>
+            <Pagination.Button
+              asChild
+              {...buttonProps}
+              aria-label={`Side ${page}`}
+            >
+              <a href={`#side-${page}`}> {page}</a>
+            </Pagination.Button>
+          </Pagination.Item>
+        ))}
+
+        <Pagination.Item>
+          <Pagination.Button asChild aria-label='Neste side'>
+            <a href='#neste-side'>Neste</a>
+          </Pagination.Button>
+        </Pagination.Item>
+      </Pagination.List>
+    </Pagination>
+  );
 };
-
-// export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
-//   const { totalPages = 4 } = args;
-//   const { pages, currentPage } = usePagination({
-//     currentPage: 2,
-//     totalPages,
-//   });
-
-//   return (
-//     <Pagination aria-label='Sidenavigering'>
-//       <Pagination.List>
-//         <Pagination.Item>
-//           <Pagination.Previous asChild aria-label='Naviger til forrige side'>
-//             <a href='#forrige-side'>Forrige</a>
-//           </Pagination.Previous>
-//         </Pagination.Item>
-
-//         {pages.map((page, index) => (
-//           <Pagination.Item key={`${page}-${index}`}>
-//             {page === 'ellipsis' ? (
-//               <Pagination.Ellipsis />
-//             ) : (
-//               <Pagination.Button
-//                 asChild
-//                 isActive={currentPage === page}
-//                 aria-label={`Naviger til side ${page}`}
-//               >
-//                 <a href={`#side-${page}`}> {page}</a>
-//               </Pagination.Button>
-//             )}
-//           </Pagination.Item>
-//         ))}
-
-//         <Pagination.Item>
-//           <Pagination.Next asChild aria-label='Naviger til neste side'>
-//             <a href='#neste-side'>Neste</a>
-//           </Pagination.Next>
-//         </Pagination.Item>
-//       </Pagination.List>
-//     </Pagination>
-//   );
-// };
