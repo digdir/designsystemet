@@ -352,21 +352,21 @@
 
 /** Error message */
 
-.ds-error-message {
+.ds-validation-message {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
   margin: 0;
 }
 
-.ds-error-message--error {
+.ds-validation-message--error {
   color: var(--ds-color-danger-text-subtle);
 }
 
-.ds-error-message--spacing {
+.ds-validation-message--spacing {
   margin-bottom: var(--dsc-bottom-spacing);
 }
 
-.ds-error-message--xs {
+.ds-validation-message--xs {
   --dsc-bottom-spacing: var(--ds-spacing-3);
 
   font-weight: var(--ds-error_message-xs-font-weight);
@@ -375,7 +375,7 @@
   letter-spacing: var(--ds-error_message-xs-letter-spacing);
 }
 
-.ds-error-message--sm {
+.ds-validation-message--sm {
   --dsc-bottom-spacing: var(--ds-spacing-4);
 
   font-weight: var(--ds-error_message-sm-font-weight);
@@ -384,7 +384,7 @@
   letter-spacing: var(--ds-error_message-sm-letter-spacing);
 }
 
-.ds-error-message--md {
+.ds-validation-message--md {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
   font-weight: var(--ds-error_message-md-font-weight);
@@ -393,7 +393,7 @@
   letter-spacing: var(--ds-error_message-md-letter-spacing);
 }
 
-.ds-error-message--lg {
+.ds-validation-message--lg {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
   font-weight: var(--ds-error_message-lg-font-weight);

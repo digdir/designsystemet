@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ErrorMessage } from './';
+import { ValidationMessage } from '.';
 
-const meta: Meta<typeof ErrorMessage> = {
-  title: 'Komponenter/Typography/ErrorMessage',
-  component: ErrorMessage,
+const meta: Meta<typeof ValidationMessage> = {
+  title: 'Komponenter/Typography/ValidationMessage',
+  component: ValidationMessage,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ErrorMessage>;
+type Story = StoryObj<typeof ValidationMessage>;
 
 export const Preview: Story = {
   args: {
