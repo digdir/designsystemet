@@ -1,8 +1,8 @@
 import cl from 'clsx/lite';
-import { forwardRef, memo, useContext, useId } from 'react';
-import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, isValidElement, memo, useContext, useId } from 'react';
+import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
-import { omit } from '../../../../utilities';
+import { omit } from '../../../../utilities/omit/omit';
 import { Label } from '../../../Typography';
 import { ComboboxContext } from '../ComboboxContext';
 
@@ -95,3 +95,9 @@ const ComboboxOption = memo(
 ComboboxOption.displayName = 'ComboboxOption';
 
 export { ComboboxOption };
+
+export function isComboboxOption(
+  child: ReactNode,
+): child is ReactElement<ComboboxOptionProps> {
+  return isValidElement(child) && child.type === ComboboxOption;
+}

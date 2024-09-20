@@ -3,12 +3,8 @@ import type { ReactElement, ReactNode } from 'react';
 
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';
-import type { ComboboxOptionProps } from './Option/Option';
-import {
-  isComboboxOption,
-  isInteractiveComboboxCustom,
-  prefix,
-} from './utilities';
+import { type ComboboxOptionProps, isComboboxOption } from './Option/Option';
+import { isInteractiveComboboxCustom, prefix } from './utilities';
 
 export type UseComboboxProps = {
   children: ReactNode;

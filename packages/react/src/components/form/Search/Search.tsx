@@ -5,7 +5,7 @@ import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Button } from '../../Button';
+import { Button } from '../../Button/Button';
 import { Label, Paragraph } from '../../Typography';
 import type { FormFieldProps } from '../useFormField';
 

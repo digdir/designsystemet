@@ -3,14 +3,6 @@ import type { ReactElement, ReactNode } from 'react';
 
 import { ComboboxCustom } from './Custom';
 import type { ComboboxCustomProps } from './Custom';
-import { ComboboxOption } from './Option/Option';
-import type { ComboboxOptionProps } from './Option/Option';
-
-export function isComboboxOption(
-  child: ReactNode,
-): child is ReactElement<ComboboxOptionProps> {
-  return isValidElement(child) && child.type === ComboboxOption;
-}
 
 export function isComboboxCustom(
   child: ReactNode,
