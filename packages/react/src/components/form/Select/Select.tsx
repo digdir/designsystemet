@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import { omit } from '../../../utilities';
-import { ErrorMessage, Label, Paragraph } from '../../Typography';
+import { Label, Paragraph, ValidationMessage } from '../../Typography';
 
 import { useSelect } from './useSelect';
 
@@ -126,7 +126,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               aria-live='polite'
               aria-relevant='additions removals'
             >
-              <ErrorMessage size={size}>{error}</ErrorMessage>
+              <ValidationMessage size={size}>{error}</ValidationMessage>
             </div>
           )}
         </div>
