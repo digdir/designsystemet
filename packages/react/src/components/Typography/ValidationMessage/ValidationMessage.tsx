@@ -34,10 +34,10 @@ export const ValidationMessage = forwardRef<
     <Component
       ref={ref}
       className={cl(
-        'ds-error-message',
+        'ds-validation-message',
         `ds-error_message--${size}`,
-        spacing && 'ds-error-message--spacing',
-        error && 'ds-error-message--error',
+        spacing && 'ds-validation-message--spacing',
+        error && 'ds-validation-message--error',
         className,
       )}
       {...rest}
