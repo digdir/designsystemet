@@ -3,4 +3,7 @@
 "@digdir/designsystemet-react": patch
 ---
 
-HelpText: Render icon with pseudo element and require aria-label
+HelpText: 
+- Use Popover API
+- Remove `portal` prop
+- Render icon with pseudo element and require aria-label
