@@ -38,6 +38,7 @@ export const useToggleGroupItem: UseToggleGroupItem = (
       'aria-current': active,
       role: 'radio',
       name: toggleGroup.name,
+      type: 'button',
       onClick: () => {
         toggleGroup.onChange?.(value);
       },

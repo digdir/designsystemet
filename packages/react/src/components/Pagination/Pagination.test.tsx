@@ -242,6 +242,20 @@ describe('Pagination.Button', () => {
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByRole('link')).toBeInTheDocument();
   });
+
+  it('should not have type="button" when asChild is true', () => {
+    renderRtl(
+      <Pagination.Root aria-label='Pagination'>
+        <Pagination.Button asChild>
+          <a href='#1'>1</a>
+        </Pagination.Button>
+      </Pagination.Root>,
+    );
+
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByRole('link')).toBeInTheDocument();
+    expect(screen.getByRole('link')).not.toHaveAttribute('type');
+  });
 });
 
 describe('usePagination', () => {

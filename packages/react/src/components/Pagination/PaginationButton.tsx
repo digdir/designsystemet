@@ -16,7 +16,7 @@ export type PaginationButtonProps = {
 export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
->(function PaginationButton({ isActive, ...rest }, ref) {
+>(function PaginationButton({ isActive, asChild, ...rest }, ref) {
   const { size } = useContext(PaginationContext);
 
   return (
@@ -25,6 +25,8 @@ export const PaginationButton = forwardRef<
       ref={ref}
       size={size}
       variant={isActive ? 'primary' : 'tertiary'}
+      /* don't set type when we use `asChild` */
+      {...(asChild ? { asChild: true } : { type: 'button' })}
       {...rest}
     />
   );
