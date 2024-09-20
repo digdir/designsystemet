@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Button: Remove default `type="button"`
+Button: Remove `type` when `asChild={true}`
