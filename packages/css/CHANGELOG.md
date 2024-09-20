@@ -1,5 +1,47 @@
 # Change Log
 
+## 1.0.0-next.34
+
+### Patch Changes
+
+- Textarea: Use `field-sizing: content` ([#2463](https://github.com/digdir/designsystemet/pull/2463))
+
+- ErrorSummary: Rename ErrorSummary.Root to ErrorSummary ([#2437](https://github.com/digdir/designsystemet/pull/2437))
+
+- Tabs: ([#2448](https://github.com/digdir/designsystemet/pull/2448))
+
+  - Renames `Tabs.Root` to `Tabs`
+  - Renames `Tabs.Content` to `Tabs.Panel`
+
+- Rename classes from `ds-error-message*` to `ds-validation-message*` ([#2473](https://github.com/digdir/designsystemet/pull/2473))
+
+- Modal: css changes ([#2418](https://github.com/digdir/designsystemet/pull/2418))
+
+- DropdownMenu: ([#2432](https://github.com/digdir/designsystemet/pull/2432))
+
+  - Rename from `DropdownMenu` to `Dropdown`
+  - Change API and structure
+  - Rename `.Root` to `.Context`
+  - Rename `.Content` to `Dropdown`
+
+- Tabs: css changes ([#2431](https://github.com/digdir/designsystemet/pull/2431))
+
+- ToggleGroup: Rename ToggleGroup.Root to ToggleGroup ([#2424](https://github.com/digdir/designsystemet/pull/2424))
+
+- Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
+
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+
+- Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
+
+- HelpText: ([#2438](https://github.com/digdir/designsystemet/pull/2438))
+
+  - Use Popover API
+  - Remove `portal` prop
+  - Render icon with pseudo element and require aria-label
+
+- Fieldset: Style using css attributes ([#2447](https://github.com/digdir/designsystemet/pull/2447))
+
 ## 1.0.0-next.33
 
 ### Patch Changes
