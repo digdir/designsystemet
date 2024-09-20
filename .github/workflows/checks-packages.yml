@@ -13,6 +13,9 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: yarn build
+      - name: Check that we don't bundle node_modules
+        shell: bash
+        run: if [ -d packages/react/dist/esm/node_modules ]; then exit 1; fi
       - name: Types
         run: yarn types:react
       - name: Test
