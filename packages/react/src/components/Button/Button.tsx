@@ -36,8 +36,8 @@ export type ButtonProps = {
    * Specify the type of button. Unset when `asChild` is true
    * @default 'button'
    */
-  type?: 'button' | 'submit' | 'reset';
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
 
 /**
  * Button used for interaction
