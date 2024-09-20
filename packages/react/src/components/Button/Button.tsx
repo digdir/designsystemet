@@ -75,7 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           data-variant={variant}
           ref={ref}
           /* don't set type when we use `asChild` */
-          {...(asChild ? { asChild: true, type } : { type: 'button' })}
+          {...(asChild ? { asChild: true, type } : { type: type ?? 'button' })}
           {...rest}
         >
           {loading === true ? (
