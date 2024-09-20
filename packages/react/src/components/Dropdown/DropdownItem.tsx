@@ -18,7 +18,6 @@ export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
           variant='tertiary'
           size={size}
           className='ds-dropdown__item'
-          type='button'
           {...rest}
         />
       </li>
