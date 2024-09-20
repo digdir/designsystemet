@@ -37,8 +37,8 @@
     color: var(--dsc-link-color--visited);
   }
 
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    /* Only use hover for non-touch devices to prevent sticky-hovering */
     &:hover {
       color: var(--dsc-link-color--hover);
       text-decoration-thickness: var(--dsc-link-text-decoration-thickness--hover);
