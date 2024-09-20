@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { ErrorMessage, Label, Paragraph } from '../../Typography';
+import { Label, Paragraph, ValidationMessage } from '../../Typography';
 import { type FormFieldProps, useFormField } from '../useFormField';
 
 import { FieldsetContext } from './FieldsetContext';
@@ -74,7 +74,9 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             aria-relevant='additions removals'
             id={errorId}
           >
-            {hasError && <ErrorMessage size={size}>{error}</ErrorMessage>}
+            {hasError && (
+              <ValidationMessage size={size}>{error}</ValidationMessage>
+            )}
           </div>
         </fieldset>
       </FieldsetContext.Provider>
