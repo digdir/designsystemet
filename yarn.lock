@@ -2983,7 +2983,6 @@ __metadata:
     react-dom: "npm:^18.3.1"
     rimraf: "npm:^6.0.1"
     rollup: "npm:^4.20.0"
-    rollup-plugin-peer-deps-external: "npm:^2.2.4"
     typescript: "npm:^5.5.4"
   peerDependencies:
     react: ">=18.3.1"
@@ -14981,15 +14980,6 @@ __metadata:
   bin:
     rimraf: ./bin.js
   checksum: 10/756419f2fa99aa119c46a9fc03e09d84ecf5421a80a72d1944c5088c9e4671e77128527a900a313ed9d3fdbdd37e2ae05486cd7e9116d5812d8c31f2399d7c86
-  languageName: node
-  linkType: hard
-
-"rollup-plugin-peer-deps-external@npm:^2.2.4":
-  version: 2.2.4
-  resolution: "rollup-plugin-peer-deps-external@npm:2.2.4"
-  peerDependencies:
-    rollup: "*"
-  checksum: 10/49b7b3f5ca14550146249b5fd86043bffb82a2c40750c80a1845c3b694fadde58435bae0c912ad8cb1c1ef6c1f8ad64914153793391cb13d52e2bc3aa2ac61e2
   languageName: node
   linkType: hard
 
