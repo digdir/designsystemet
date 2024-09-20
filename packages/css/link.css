@@ -15,14 +15,14 @@
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
   text-underline-offset: max(5px, 0.25rem);
 
-  & svg {
-    vertical-align: middle; /* If adding SVG icon - align it to the text */
+  & :is(img, svg) {
+    vertical-align: middle; /* Align img or svg icon with text */
   }
 
   /**
     * Colors
     */
-  &[data-color="neutral"] {
+  &[data-color='neutral'] {
     --dsc-link-background--active: var(--ds-color-neutral-surface-default);
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
     --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
@@ -37,7 +37,8 @@
     color: var(--dsc-link-color--visited);
   }
 
-  @media (hover: hover) and (pointer: fine) { /* Only use hover for non-touch devices to prevent sticky-hovering */
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       color: var(--dsc-link-color--hover);
       text-decoration-thickness: var(--dsc-link-text-decoration-thickness--hover);
