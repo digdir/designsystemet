@@ -10,9 +10,10 @@ export default {
 
 export const Preview: StoryFn<typeof Pagination> = () => {
   const [currentPage, setCurrentPage] = useState(4);
-  const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
+  const { pages, nextButtonProps, prevButtonProps } = usePagination({
     currentPage,
     setCurrentPage,
+    onChange: console.log, // Open console to see this event
     totalPages: 10,
     showPages: 7,
   });
@@ -21,11 +22,7 @@ export const Preview: StoryFn<typeof Pagination> = () => {
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            aria-label='Forrige side'
-            disabled={!hasPrevious}
-            onClick={goPrevious}
-          >
+          <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
             Forrige
           </Pagination.Button>
         </Pagination.Item>
@@ -37,11 +34,7 @@ export const Preview: StoryFn<typeof Pagination> = () => {
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            aria-label='Neste side'
-            disabled={!hasNext}
-            onClick={goNext}
-          >
+          <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
             Neste
           </Pagination.Button>
         </Pagination.Item>
@@ -51,10 +44,8 @@ export const Preview: StoryFn<typeof Pagination> = () => {
 };
 
 export const WithAnchor: StoryFn<typeof Pagination> = () => {
-  const [currentPage, setCurrentPage] = useState(2);
-  const { pages } = usePagination({
-    currentPage,
-    setCurrentPage,
+  const { pages, prevButtonProps, nextButtonProps } = usePagination({
+    currentPage: 2,
     totalPages: 10,
   });
 
@@ -62,7 +53,11 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button asChild aria-label='Forrige side'>
+          <Pagination.Button
+            asChild
+            aria-label='Forrige side'
+            {...prevButtonProps}
+          >
             <a href='#forrige-side'>Forrige</a>
           </Pagination.Button>
         </Pagination.Item>
@@ -71,8 +66,8 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
           <Pagination.Item key={itemKey}>
             <Pagination.Button
               asChild
-              {...buttonProps}
               aria-label={`Side ${page}`}
+              {...buttonProps}
             >
               <a href={`#side-${page}`}> {page}</a>
             </Pagination.Button>
@@ -80,7 +75,11 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
         ))}
 
         <Pagination.Item>
-          <Pagination.Button asChild aria-label='Neste side'>
+          <Pagination.Button
+            asChild
+            aria-label='Neste side'
+            {...nextButtonProps}
+          >
             <a href='#neste-side'>Neste</a>
           </Pagination.Button>
         </Pagination.Item>

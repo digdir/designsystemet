@@ -28,8 +28,8 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   function Pagination(
     {
       'aria-label': ariaLabel = 'Sidenavigering',
-      className,
       asChild,
+      className,
       size = 'md',
       ...rest
     },

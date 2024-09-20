@@ -29,7 +29,7 @@ Vær oppmerksom på:
 import { Pagination } from '@digdir/designsystemet-react';
 
 const [currentPage, setCurrentPage] = useState(4);
-const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
+const { pages, onChange, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
   currentPage,
   setCurrentPage,
   totalPages: 10,
@@ -39,11 +39,7 @@ const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
 <Pagination>
   <Pagination.List>
     <Pagination.Item>
-      <Pagination.Button
-        aria-label='Forrige side'
-        disabled={!hasPrevious}
-        onClick={goPrevious}
-      >
+      <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
         Forrige
       </Pagination.Button>
     </Pagination.Item>
@@ -55,11 +51,7 @@ const { pages, goNext, goPrevious, hasNext, hasPrevious } = usePagination({
       </Pagination.Item>
     ))}
     <Pagination.Item>
-      <Pagination.Button
-        aria-label='Neste side'
-        disabled={!hasNext}
-        onClick={goNext}
-      >
+      <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
         Neste
       </Pagination.Button>
     </Pagination.Item>
@@ -73,7 +65,10 @@ Bruk `usePagination` for paginering logikk sammen med de enkelt del-komponentene
 
 `Pagination` er bygget på `usePagination`.
 
-Bruk `key={itemKey}` på `Pagination.Item` og `...buttonProps` på `Pagination.Button` for å sikre universell utforming og indikere aktiv side.
+Bruk `...prevButtonProps` og `...nextButtonProps` for å få funsjonalitet på forrige- og neste-knappene.
+I sidelisten, bruk `key={itemKey}` på `Pagination.Item` og `...buttonProps` på `Pagination.Button`.
+
+Bruk `hasNext` og `hasPrev` dersom du trenger å sjekke om det er flere sider å gå til.
 
 <Canvas of={PaginationStories.Preview} />
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { Dispatch, MouseEvent, SetStateAction } from 'react';
 
 const getSteps = (now: number, max: number, show: number) => {
@@ -15,7 +15,8 @@ const getSteps = (now: number, max: number, show: number) => {
 
 export type UsePaginationProps = {
   currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setCurrentPage?: Dispatch<SetStateAction<number>>;
+  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
   totalPages: number;
   showPages?: number;
 };
@@ -23,11 +24,20 @@ export type UsePaginationProps = {
 /** Hook to help manage pagination state */
 export const usePagination = ({
   currentPage = 1,
-  setCurrentPage = () => {},
+  setCurrentPage,
+  onChange,
   totalPages,
   showPages = 7,
 }: UsePaginationProps) =>
   useMemo(() => {
+    const hasNext = currentPage < totalPages;
+    const hasPrev = currentPage !== 1;
+    const onClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
+      if (page < 1 || page > totalPages) return event.preventDefault(); // Prevent out of bounds navigation
+      onChange?.(event, page);
+      if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
+    };
+
     return {
       /** Number of steps */
       pages: getSteps(currentPage, totalPages, showPages).map(
@@ -38,20 +48,24 @@ export const usePagination = ({
             'aria-current':
               page === currentPage ? ('page' as const) : undefined,
             'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
-            onClick: page ? () => setCurrentPage(page) : undefined,
+            onClick: onClick(page),
             tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
           },
         }),
       ),
-      /** Decrements active page by 1 */
-      goPrevious: () => setCurrentPage(Math.max(0, currentPage - 1)),
-      /** Increments active page by 1 */
-      goNext: () => setCurrentPage(Math.min(currentPage + 1, totalPages)),
-      /** Total amount of pages */
-      totalPages,
+      /** Properties to spread on Pagination.Button used for previous naviagation */
+      prevButtonProps: {
+        'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
+        onClick: onClick(currentPage - 1),
+      },
+      /** Properties to spread on Pagination.Button used for next naviagation */
+      nextButtonProps: {
+        'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
+        onClick: onClick(currentPage + 1),
+      },
       /** Indication if next page action should be shown or not */
-      hasNext: currentPage < totalPages,
+      hasNext,
       /** Indication if previous page action should be shown or not */
-      hasPrevious: currentPage !== 1,
+      hasPrev,
     };
   }, [currentPage, totalPages, showPages]);
