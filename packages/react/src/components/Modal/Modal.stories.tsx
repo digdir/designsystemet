@@ -21,23 +21,23 @@ export default {
   decorators,
 } as Meta;
 
-export const Preview: StoryFn<typeof Modal> = (args) => {
-  return (
-    <Modal.Context>
-      <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal {...args}>
-        <Modal.Header>Modal header</Modal.Header>
-        <Paragraph>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-          doloremque obcaecati assumenda odio ducimus sunt et.
-        </Paragraph>
-        <Modal.Footer>Modal footer</Modal.Footer>
-      </Modal>
-    </Modal.Context>
-  );
-};
+export const Preview: StoryFn<typeof Modal> = (args) => (
+  <Modal.Context>
+    <Modal.Trigger>Open Modal</Modal.Trigger>
+    <Modal {...args}>
+      <Heading size='xs' spacing>
+        Modal header
+      </Heading>
+      <Paragraph spacing>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+        doloremque obcaecati assumenda odio ducimus sunt et.
+      </Paragraph>
+      <Paragraph size='sm'>Modal footer</Paragraph>
+    </Modal>
+  </Modal.Context>
+);
 
-export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
+export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -45,7 +45,7 @@ export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal.Context>
         <Modal {...args} ref={modalRef}>
-          <Paragraph>Modal subtittel</Paragraph>
+          <Paragraph size='sm'>Modal subtittel</Paragraph>
           <Heading size='xs' spacing>
             Modal header
           </Heading>
@@ -60,15 +60,15 @@ export const WithoutTriggerComponent: StoryFn<typeof Modal> = (args) => {
   );
 };
 
-export const PreventBackdropClick: StoryFn<typeof Modal> = () => {
+export const PreventBackdropClose: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} preventBackdropClick>
+      <Modal ref={modalRef} preventBackdropClose>
         <Heading size='xs'>
-          Modal med closeOnBackdropClick og en veldig lang tittel
+          Modal med preventBackdropClose og en veldig lang tittel
         </Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
@@ -80,42 +80,39 @@ export const PreventBackdropClick: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const WithDivider: StoryFn<typeof Modal> = () => {
-  return (
-    <Modal.Context>
-      <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal>
-        <Modal.Header>
-          <Paragraph size='sm'>Her er det også divider</Paragraph>
-          <Heading size='xs'>Vi kan legge divider under header</Heading>
-        </Modal.Header>
-        <Paragraph spacing>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-          sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec
-          vulputate mattis. Nunc placerat euismod pulvinar. Sed nec fringilla
-          nulla, sit amet ultricies ante. Morbi egestas venenatis massa, eu
-          interdum leo rutrum eu. Nulla varius, mi ac feugiat lacinia, magna
-          eros ullamcorper arcu, vel tincidunt erat leo nec tortor. Sed ut dui
-          arcu. Morbi commodo ipsum hendrerit est imperdiet imperdiet. Etiam sed
-          maximus nisi. Quisque posuere posuere orci, non egestas risus
-          facilisis a. Vivamus non tempus felis, in maximus lorem. Class aptent
-          taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-          himenaeos.
-        </Paragraph>
-        <Paragraph>
-          Etiam nec tincidunt est. Integer semper sodales efficitur.
-          Pellentesque pellentesque varius leo id congue. Integer lacinia
-          porttitor massa id euismod. Maecenas porta, magna nec interdum
-          eleifend, risus magna condimentum neque, a gravida nisl risus a elit.
-          Donec accumsan metus et lectus placerat varius. Donec tristique odio
-          arcu. Donec cursus leo a dui auctor pulvinar. Sed in elit urna. Nunc
-          vitae magna sed nibh elementum dignissim et ut massa.
-        </Paragraph>
-        <Modal.Footer>Og over footer</Modal.Footer>
-      </Modal>
-    </Modal.Context>
-  );
-};
+export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
+  <Modal.Context>
+    <Modal.Trigger>Open Modal</Modal.Trigger>
+    <Modal>
+      <Modal.Header>
+        <Paragraph size='sm'>Her er det også divider</Paragraph>
+        <Heading size='xs'>Vi kan legge divider under header</Heading>
+      </Modal.Header>
+      <Paragraph spacing>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+        sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec vulputate
+        mattis. Nunc placerat euismod pulvinar. Sed nec fringilla nulla, sit
+        amet ultricies ante. Morbi egestas venenatis massa, eu interdum leo
+        rutrum eu. Nulla varius, mi ac feugiat lacinia, magna eros ullamcorper
+        arcu, vel tincidunt erat leo nec tortor. Sed ut dui arcu. Morbi commodo
+        ipsum hendrerit est imperdiet imperdiet. Etiam sed maximus nisi. Quisque
+        posuere posuere orci, non egestas risus facilisis a. Vivamus non tempus
+        felis, in maximus lorem. Class aptent taciti sociosqu ad litora torquent
+        per conubia nostra, per inceptos himenaeos.
+      </Paragraph>
+      <Paragraph>
+        Etiam nec tincidunt est. Integer semper sodales efficitur. Pellentesque
+        pellentesque varius leo id congue. Integer lacinia porttitor massa id
+        euismod. Maecenas porta, magna nec interdum eleifend, risus magna
+        condimentum neque, a gravida nisl risus a elit. Donec accumsan metus et
+        lectus placerat varius. Donec tristique odio arcu. Donec cursus leo a
+        dui auctor pulvinar. Sed in elit urna. Nunc vitae magna sed nibh
+        elementum dignissim et ut massa.
+      </Paragraph>
+      <Modal.Footer>Og over footer</Modal.Footer>
+    </Modal>
+  </Modal.Context>
+);
 
 export const ModalWithForm: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -125,15 +122,23 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal ref={modalRef} onClose={() => setInput('')}>
-        <Modal.Header>Modal med skjema</Modal.Header>
+        <Heading size='xs' spacing>
+          Modal med skjema
+        </Heading>
         <Textfield
+          // @ts-expect-error We want the native "autofocus" and Reacts onMount smartness (see https://react.dev/reference/react-dom/components/input#input)
+          autofocus='true'
           label='Navn'
-          placeholder='Ola Nordmann'
           value={input}
-          autoFocus
           onChange={(e) => setInput(e.target.value)}
         />
-        <Footer>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-4)',
+            marginTop: 'var(--ds-spacing-4)',
+          }}
+        >
           <Button
             onClick={() => {
               window.alert(`Du har sendt inn skjema med navn: ${input}`);
@@ -145,42 +150,39 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
           <Button variant='secondary' onClick={() => modalRef.current?.close()}>
             Avbryt
           </Button>
-        </Footer>
+        </div>
       </Modal>
     </Modal.Context>
   );
 };
 
-export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => {
-  return (
-    <>
-      <Modal.Context>
-        <Modal.Trigger>Open Modal</Modal.Trigger>
-        {/* @ts-expect-error #2353 */}
-        <Modal style={{ '--dsc-modal-max-width': '1200px' }}>
-          <Heading size='xs'>Modal med en veldig lang bredde</Heading>
-          <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
-          </Paragraph>
-        </Modal>
-      </Modal.Context>
-    </>
-  );
-};
+export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => (
+  <Modal.Context>
+    <Modal.Trigger>Open Modal</Modal.Trigger>
+    <Modal style={{ maxWidth: '1200px' }}>
+      <Heading size='xs' spacing>
+        Modal med en veldig lang bredde
+      </Heading>
+      <Paragraph>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+        doloremque obcaecati assumenda odio ducimus sunt et.
+      </Paragraph>
+    </Modal>
+  </Modal.Context>
+);
 
-export const ModalWithSelect: StoryFn<typeof Modal> = () => {
+export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
       <Modal.Context>
         <Modal.Trigger>Open Modal</Modal.Trigger>
-        <Modal style={{ overflow: 'visible' }}>
+        <Modal style={{ overflow: 'visible' }} ref={modalRef}>
           <Modal.Header>
-            <Heading size='xs'>Modal med select</Heading>
+            <Heading size='xs'>Modal med combobox</Heading>
           </Modal.Header>
-          <Combobox portal={false} label='Velg sted'>
+          <Combobox portal={false} label='Velg sted' autoFocus>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
             <Combobox.Option value='oslo'>Oslo</Combobox.Option>

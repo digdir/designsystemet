@@ -6,7 +6,6 @@ import { forwardRef, useContext, useEffect, useRef } from 'react';
 
 import { Button } from '../Button';
 import { Context } from './ModalContext';
-import { useModalState } from './useModalState';
 
 export type ModalProps = {
   /**
@@ -18,7 +17,7 @@ export type ModalProps = {
    * Prevent closing on backdrop click.
    * @default undefined
    */
-  preventBackdropClick?: boolean;
+  preventBackdropClose?: boolean;
   /**
    * Callback that is called when the modal is closed.
    * @default undefined
@@ -35,7 +34,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
     closeLabel = 'Lukk',
     onClose,
     open,
-    preventBackdropClick = false,
+    preventBackdropClose = false,
     ...rest
   },
   ref,
@@ -46,16 +45,35 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   const mergedRefs = useMergeRefs([contextRef, ref, modalRef]);
 
   useEffect(() => modalRef.current?.[open ? 'showModal' : 'close'](), [open]); // Toggle open based on prop
+
   useEffect(() => {
     const modal = modalRef.current;
-    const handleBackdropClick = (event: MouseEvent) => {
+    const handleBackdropClick = ({
+      clientY: y,
+      clientX: x,
+      target,
+    }: MouseEvent) => {
       if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-      if (event.target === modal && !preventBackdropClick) modal?.close();
+      if (modal && target === modal && !preventBackdropClose) {
+        const { top, left, right, bottom } = modal.getBoundingClientRect();
+        const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
+
+        if (!isInDialog) modal?.close(); // Both <dialog> and ::backdrop is considered same event.target
+      }
     };
 
+    const handleAutoFocus = () => {
+      const autofocus = modal?.querySelector<HTMLElement>('[autofocus]');
+      if (document.activeElement !== autofocus) autofocus?.focus();
+    };
+
+    modal?.addEventListener('animationend', handleAutoFocus);
     modal?.addEventListener('click', handleBackdropClick);
-    return () => modal?.removeEventListener('click', handleBackdropClick);
-  }, [preventBackdropClick]);
+    return () => {
+      modal?.removeEventListener('animationend', handleAutoFocus);
+      modal?.removeEventListener('click', handleBackdropClick);
+    };
+  }, [preventBackdropClose]);
 
   return (
     <Component className={cl('ds-modal', className)} ref={mergedRefs} {...rest}>
@@ -64,7 +82,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
           <Button
             aria-label={closeLabel}
             autoFocus
-            className='ds-modal__header__button'
             color='neutral'
             icon
             name='close'
