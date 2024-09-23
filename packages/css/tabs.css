@@ -27,53 +27,53 @@
   flex-direction: row;
   border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
   position: relative;
-}
 
-.ds-tabs__tab {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  gap: var(--ds-spacing-1);
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: var(--dsc-tabs-tab-padding);
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--dsc-tabs-tab-color);
-  position: relative;
-  font-family: inherit;
+  & > u-tab {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: var(--ds-spacing-1);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: var(--dsc-tabs-tab-padding);
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--dsc-tabs-tab-color);
+    position: relative;
+    font-family: inherit;
 
-  &[aria-selected='true'] {
-    --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
-    --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
-  }
+    &[aria-selected='true'] {
+      --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
+      --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
+    }
 
-  @composes ds-focus from './utilities.css';
+    @composes ds-focus from './utilities.css';
 
-  /* We set z-index to make sure the active line does not bleed over the focus indicator */
-  &:focus-visible {
-    z-index: 2;
-  }
+    /* We set z-index to make sure the active line does not bleed over the focus indicator */
+    &:focus-visible {
+      z-index: 2;
+    }
 
-  &::after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 100%;
-    border-radius: var(--dsc-border-radius-full);
-    background-color: var(--dsc-tabs__tab-bottom-border-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+    &::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      border-radius: var(--dsc-border-radius-full);
+      background-color: var(--dsc-tabs__tab-bottom-border-color);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover:not([aria-selected='true']) {
-      --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
-      --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:not([aria-selected='true']) {
+        --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
+        --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+      }
     }
   }
 }
