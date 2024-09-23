@@ -121,6 +121,12 @@ const Footer = () => {
                 width={600}
                 src='/img/logos/mattilsynet.svg'
               ></Image>
+              {/* <Image
+                alt='Udir logo'
+                height={100}
+                width={600}
+                src='/img/logos/udir.svg'
+              ></Image> */}
             </div>
             <NextLink
               href='mailto:designsystem@digdir.no'

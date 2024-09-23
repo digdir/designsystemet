@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Context } from './ModalContext';
 
 export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
