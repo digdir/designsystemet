@@ -33,6 +33,7 @@
 
   &[data-size='sm'] {
     --dsc-bottom-spacing: var(--ds-spacing-3);
+
     font-weight: var(--ds-heading-sm-font-weight);
     line-height: var(--ds-heading-sm-line-height);
     font-size: var(--ds-heading-sm-font-size);
