@@ -6,8 +6,6 @@
   --dsc-modal-padding: var(--ds-spacing-6);
   --dsc-modal-padding-invert: calc(var(--dsc-modal-padding) * -1);
   --dsc-modal-max-height: 80vh;
-  --dsc-modal-footer-padding: var(--ds-spacing-3) var(--ds-spacing-6) var(--ds-spacing-6) var(--ds-spacing-6);
-  --dsc-modal-header-padding: var(--ds-spacing-6) var(--ds-spacing-18) var(--ds-spacing-2) var(--ds-spacing-6);
   --dsc-modal-max-width: 40rem;
 
   background: var(--dsc-modal-background);
