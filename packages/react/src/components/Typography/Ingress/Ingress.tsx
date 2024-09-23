@@ -24,22 +24,17 @@ export type IngressProps = {
  * <Ingress size='lg'>Ingress</Ingress>
  */
 export const Ingress = forwardRef<HTMLParagraphElement, IngressProps>(
-  ({ size = 'md', className, spacing, asChild, ...rest }, ref) => {
+  function Ingress({ size = 'md', className, spacing, asChild, ...rest }, ref) {
     const Component = asChild ? Slot : 'p';
 
     return (
       <Component
         ref={ref}
-        className={cl(
-          `ds-ingress`,
-          `ds-ingress--${size}`,
-          spacing && 'ds-ingress--spacing',
-          className,
-        )}
+        className={cl(`ds-ingress`, className)}
+        data-size={size}
+        data-spacing={spacing || undefined}
         {...rest}
       />
     );
   },
 );
-
-Ingress.displayName = 'Ingress';
