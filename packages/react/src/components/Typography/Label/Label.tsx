@@ -29,27 +29,23 @@ export type LabelProps = {
  * @example
  * <Label size='lg'>Label</Label>
  */
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  (
-    { className, spacing, size = 'md', weight = 'medium', asChild, ...rest },
-    ref,
-  ) => {
-    const Component = asChild ? Slot : 'label';
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
+  { className, spacing, size = 'md', weight = 'medium', asChild, ...rest },
+  ref,
+) {
+  const Component = asChild ? Slot : 'label';
 
-    return (
-      <Component
-        ref={ref}
-        className={cl(
-          'ds-label',
-          `ds-label--${size}`,
-          spacing && 'ds-label--spacing',
-          weight && `ds-font-weight--${weight}`,
-          className,
-        )}
-        {...rest}
-      />
-    );
-  },
-);
-
-Label.displayName = 'Label';
+  return (
+    <Component
+      ref={ref}
+      className={cl(
+        'ds-label',
+        weight && `ds-font-weight--${weight}`,
+        className,
+      )}
+      data-size={size}
+      data-spacing={spacing || undefined}
+      {...rest}
+    />
+  );
+});

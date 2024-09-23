@@ -30,25 +30,20 @@ export type HeadingProps = {
  * <Heading size='lg' level={2}>Heading</Heading>
  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (
+  function Heading(
     { size = 'xl', level = 2, spacing = false, className, asChild, ...rest },
     ref,
-  ) => {
+  ) {
     const Component = asChild ? Slot : (`h${level}` as ElementType);
 
     return (
       <Component
+        className={cl('ds-heading', className)}
+        data-size={size}
+        data-spacing={spacing || undefined}
         ref={ref}
-        className={cl(
-          'ds-heading',
-          `ds-heading--${size}`,
-          spacing && 'ds-heading--spacing',
-          className,
-        )}
         {...rest}
       />
     );
   },
 );
-
-Heading.displayName = 'Heading';
