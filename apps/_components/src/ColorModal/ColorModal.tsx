@@ -58,7 +58,6 @@ export const ColorModal = ({
         style={{
           maxWidth: '1050px',
         }}
-        /* onInteractOutside={() => colorModalRef.current?.close()} */
       >
         <Modal.Header>
           {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
