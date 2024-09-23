@@ -42,7 +42,7 @@
 
   font-weight: var(--ds-heading-md-font-weight);
   line-height: var(--ds-heading-md-line-height);
-  font-size: var (--ds-heading-md-font-size);
+  font-size: var(--ds-heading-md-font-size);
   letter-spacing: var(--ds-heading-md-letter-spacing);
 }
 
