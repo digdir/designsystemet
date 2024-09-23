@@ -5,7 +5,7 @@ import type { FormEvent } from 'react';
 import { Button } from '../../Button';
 import { ChipRemovable } from '../../Chip';
 import { Modal } from '../../Modal';
-import { Paragraph } from '../../Typography';
+import { Heading, Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
 
 import { data } from './data/data';
@@ -267,47 +267,34 @@ InForm.args = {
 };
 
 export const InModal: StoryFn<typeof Combobox> = (args) => {
-  const modalRef = useRef<HTMLDialogElement>(null);
   const [value, setValue] = useState<string[]>([]);
 
   return (
-    <>
-      <Button
-        onClick={() => {
-          modalRef.current?.showModal();
-        }}
-      >
-        Open Modal
-      </Button>
-      <Modal.Context>
-        <Modal
-          ref={modalRef}
-          style={{
-            overflow: 'visible',
+    <Modal.Context>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal style={{ overflow: 'visible' }}>
+        <Heading size='xs' spacing>
+          Combobox i Modal
+        </Heading>
+        <Combobox
+          {...args}
+          value={value}
+          multiple={true}
+          onValueChange={(value) => {
+            setValue(value);
           }}
+          label='Hvor går reisen?'
+          portal={false}
         >
-          <Modal.Header>Combobox i Modal</Modal.Header>
-
-          <Combobox
-            {...args}
-            value={value}
-            multiple={true}
-            onValueChange={(value) => {
-              setValue(value);
-            }}
-            label='Hvor går reisen?'
-            portal={false}
-          >
-            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-            {PLACES.map((item, index) => (
-              <Combobox.Option key={index} value={item.value}>
-                {item.name}
-              </Combobox.Option>
-            ))}
-          </Combobox>
-        </Modal>
-      </Modal.Context>
-    </>
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          {PLACES.map((item, index) => (
+            <Combobox.Option key={index} value={item.value}>
+              {item.name}
+            </Combobox.Option>
+          ))}
+        </Combobox>
+      </Modal>
+    </Modal.Context>
   );
 };
 

@@ -11,7 +11,7 @@ const Modal = Object.assign(ModalParent, {
   Trigger: ModalTrigger,
 });
 
-Modal.Context.displayName = 'Modal.Root';
+Modal.Context.displayName = 'Modal.Context';
 Modal.Footer.displayName = 'Modal.Footer';
 Modal.Header.displayName = 'Modal.Header';
 Modal.Trigger.displayName = 'Modal.Trigger';

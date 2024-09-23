@@ -35,7 +35,6 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 ## Bruk med eksten trigger
 
 Dersom du vil bruke en ekstern trigger, som for eksempel ligger en annen plass i treet, kan du bruke `ref` for å åpne modalen.
-Du må fortsatt ha `Modal.Root` rundt `Modal.Dialog` for at modalen skal fungere, men du kan fjerne `Modal.Trigger`.
 
 ```tsx
 const modalRef = useRef<HTMLDialogElement>(null);
