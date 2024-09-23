@@ -29,11 +29,6 @@
       fade-in 300ms ease-in-out;
   }
 
-  & > hr {
-    width: calc(100% + var(--dsc-modal-padding) * 2);
-    margin: 0 var(--dsc-modal-padding-invert);
-  }
-
   @media (max-width: 40rem) {
     min-width: 100%;
     max-width: 100%;
