@@ -159,7 +159,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
 export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
-    <Modal style={{ maxWidth: '1200px' }}>
+    <Modal style={{ maxWidth: 1200 }}>
       <Heading size='xs' spacing>
         Modal med en veldig lang bredde
       </Heading>
