@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import type { Dispatch, MouseEvent, SetStateAction } from 'react';
+import type { ButtonProps } from '../Button';
 
 const getSteps = (now: number, max: number, show: number) => {
   const offset = (show - 1) / 2;
@@ -32,7 +33,7 @@ export const usePagination = ({
   useMemo(() => {
     const hasNext = currentPage < totalPages;
     const hasPrev = currentPage !== 1;
-    const onClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
+    const handleClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
       if (page < 1 || page > totalPages) return event.preventDefault(); // Prevent out of bounds navigation
       onChange?.(event, page);
       if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
@@ -45,27 +46,29 @@ export const usePagination = ({
           page: page || '',
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
           buttonProps: {
-            'aria-current':
-              page === currentPage ? ('page' as const) : undefined,
+            'aria-current': page === currentPage ? 'page' : undefined,
             'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
-            onClick: onClick(page),
+            onClick: handleClick(page),
             tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
-          },
+            variant: page === currentPage ? 'primary' : 'tertiary',
+          } as ButtonProps,
         }),
       ),
       /** Properties to spread on Pagination.Button used for previous naviagation */
       prevButtonProps: {
         'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
-        onClick: onClick(currentPage - 1),
-      },
+        onClick: handleClick(currentPage - 1),
+        variant: 'tertiary',
+      } as ButtonProps,
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
         'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
-        onClick: onClick(currentPage + 1),
-      },
-      /** Indication if next page action should be shown or not */
-      hasNext,
+        onClick: handleClick(currentPage + 1),
+        variant: 'tertiary',
+      } as ButtonProps,
       /** Indication if previous page action should be shown or not */
       hasPrev,
+      /** Indication if next page action should be shown or not */
+      hasNext,
     };
   }, [currentPage, totalPages, showPages]);

@@ -25,17 +25,18 @@
       rotate: 180deg;
     }
 
+    /* Makes page buttons square */
     & > li:not(:first-child, :last-child) > :is(a, button) {
-      --dsc-button-padding-inline: var(--dsc-button-padding-block); /* Makes pagination buttons square unless content is more than characters */
+      --dsc-button-padding-inline: var(--dsc-button-padding-block);
+    }
 
-      /* Style as non-interactive ellipsis when empty */
-      &:empty {
-        pointer-events: none;
-        color: inherit;
+    /* Style as non-interactive ellipsis when empty */
+    & > li > [aria-hidden='true'] {
+      color: inherit;
+      pointer-events: none;
 
-        &::before {
-          content: '\2026'; /* ellipsis */
-        }
+      &::before {
+        content: '\2026'; /* ellipsis */
       }
     }
   }

@@ -1,21 +1,19 @@
+import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { Pagination, usePagination } from '.';
+import { Pagination, type UsePaginationProps, usePagination } from '.';
 
 export default {
   title: 'Komponenter/Pagination',
   component: Pagination,
 } as Meta;
 
-export const Preview: StoryFn<typeof Pagination> = () => {
-  const [currentPage, setCurrentPage] = useState(4);
+export const Preview: StoryFn<UsePaginationProps> = (args) => {
+  const [, updateArgs] = useArgs();
   const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    currentPage,
-    setCurrentPage,
-    onChange: console.log, // Open console to see this event
-    totalPages: 10,
-    showPages: 7,
+    ...args,
+    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
   });
 
   return (
@@ -43,10 +41,18 @@ export const Preview: StoryFn<typeof Pagination> = () => {
   );
 };
 
-export const WithAnchor: StoryFn<typeof Pagination> = () => {
-  const { pages, prevButtonProps, nextButtonProps } = usePagination({
-    currentPage: 2,
-    totalPages: 10,
+Preview.args = {
+  currentPage: 4,
+  onChange: console.log, // Open console to see this event
+  totalPages: 10,
+  showPages: 7,
+};
+
+export const WithAnchor: StoryFn<UsePaginationProps> = (args) => {
+  const [, updateArgs] = useArgs();
+  const { pages, nextButtonProps, prevButtonProps } = usePagination({
+    ...args,
+    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
   });
 
   return (
@@ -61,7 +67,6 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
             <a href='#forrige-side'>Forrige</a>
           </Pagination.Button>
         </Pagination.Item>
-
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
             <Pagination.Button
@@ -69,11 +74,10 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
               aria-label={`Side ${page}`}
               {...buttonProps}
             >
-              <a href={`#side-${page}`}> {page}</a>
+              <a href={`#side-${page}`}>{page}</a>
             </Pagination.Button>
           </Pagination.Item>
         ))}
-
         <Pagination.Item>
           <Pagination.Button
             asChild
@@ -86,4 +90,11 @@ export const WithAnchor: StoryFn<typeof Pagination> = () => {
       </Pagination.List>
     </Pagination>
   );
+};
+
+WithAnchor.args = {
+  currentPage: 2,
+  onChange: console.log, // Open console to see this event
+  totalPages: 10,
+  showPages: 7,
 };

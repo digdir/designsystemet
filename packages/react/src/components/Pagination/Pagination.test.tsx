@@ -3,152 +3,11 @@ import {
   render as renderRtl,
   screen,
 } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import type { MouseEvent } from 'react';
 
 import type { PaginationProps } from './Pagination';
 
 import { Pagination, usePagination } from './';
-
-// const render = (props: PaginationProps) => renderRtl(<Pagination {...props} />);
-
-// const defaultProps = {
-//   currentPage: 5,
-//   totalPages: 10,
-//   showPages: 7,
-// };
-
-// describe('Pagination', () => {
-//   it('should render correctly with default props', () => {
-//     render({
-//       onChange: () => null,
-//       ...defaultProps,
-//     });
-
-//     const buttons = screen.getAllByRole('button');
-//     expect(buttons.length).toBe(7);
-
-//     const ellipsisElements = screen.getAllByText('…');
-//     expect(ellipsisElements.length).toBe(2);
-
-//     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-
-//     expect(
-//       screen.getByRole('button', { name: 'Previous' }),
-//     ).toBeInTheDocument();
-//   });
-
-//   it('compact pagination should render correctly with default props', () => {
-//     render({
-//       onChange: () => null,
-//       ...defaultProps,
-//     });
-
-//     const buttons = screen.getAllByRole('button');
-//     expect(buttons.length).toBe(5);
-
-//     const ellipsisElements = screen.getAllByText('…');
-//     expect(ellipsisElements.length).toBe(2);
-
-//     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-
-//     expect(
-//       screen.getByRole('button', { name: 'Previous' }),
-//     ).toBeInTheDocument();
-//   });
-
-//   it('should render correctly when totalPages are 3', () => {
-//     render({
-//       totalPages: 3,
-//       currentPage: 2,
-//       nextLabel: 'Next',
-//       previousLabel: 'Previous',
-//       onChange: () => null,
-//     });
-
-//     expect(
-//       screen.getByRole('button', { name: 'Previous' }),
-//     ).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 2')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 3')).toBeInTheDocument();
-//   });
-
-//   it('should call onChange with the correct page number when buttons are clicked', async () => {
-//     const mockOnChange = vi.fn();
-//     render({
-//       onChange: mockOnChange,
-//       ...defaultProps,
-//     });
-
-//     const user = userEvent.setup();
-
-//     await act(() => user.click(screen.getByRole('button', { name: 'Next' })));
-//     expect(mockOnChange).toHaveBeenCalledWith(6);
-
-//     await act(() =>
-//       user.click(screen.getByRole('button', { name: 'Previous' })),
-//     );
-//     expect(mockOnChange).toHaveBeenCalledWith(4);
-
-//     await act(() => user.click(screen.getByLabelText('Side 1')));
-//     expect(mockOnChange).toHaveBeenCalledWith(1);
-//   });
-
-//   it('should show aria-current and aria-label correctly', () => {
-//     render({
-//       onChange: () => null,
-//       ...defaultProps,
-//     });
-
-//     expect(
-//       screen.getByRole('button', { name: 'Previous' }),
-//     ).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 5')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 6')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 10')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 5')).toHaveAttribute(
-//       'aria-current',
-//       'true',
-//     );
-//   });
-
-//   it('should show aria-labels when hideLabels = true', () => {
-//     render({
-//       onChange: () => null,
-//       ...defaultProps,
-//       hideLabels: true,
-//     });
-
-//     expect(
-//       screen.getByRole('button', { name: 'Previous' }),
-//     ).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 1')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 4')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 5')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 6')).toBeInTheDocument();
-//     expect(screen.getByLabelText('Side 10')).toBeInTheDocument();
-//   });
-
-//   it('should show custom aria-labels correctly', () => {
-//     render({
-//       onChange: () => null,
-//       itemLabel: (num) => `Page ${num}`,
-//       ...defaultProps,
-//     });
-
-//     expect(screen.getByRole('button', { name: 'Page 1' })).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Page 4' })).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Page 5' })).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Page 6' })).toBeInTheDocument();
-//     expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument();
-//   });
-// });
 
 const renderWithRoot = (props: PaginationProps) => {
   renderRtl(
@@ -186,7 +45,7 @@ const renderWithRoot = (props: PaginationProps) => {
 describe('Pagination', () => {
   it('should render correctly with default props', () => {
     renderWithRoot({
-      'aria-label': 'pagination',
+      'aria-label': 'Pagination',
     });
 
     expect(screen.getByRole('navigation')).toBeInTheDocument();
@@ -194,16 +53,14 @@ describe('Pagination', () => {
 
   it('should render correctly with custom props', () => {
     renderWithRoot({
-      'aria-label': 'pagination',
+      'aria-label': 'Pagination',
       size: 'lg',
     });
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 
   it('should render all children correctly', () => {
-    renderWithRoot({
-      'aria-label': 'pagination',
-    });
+    renderWithRoot({ 'aria-label': 'Pagination' });
 
     expect(screen.getByText('Forrige')).toBeInTheDocument();
     expect(screen.getByText('Neste')).toBeInTheDocument();
@@ -242,101 +99,82 @@ describe('Pagination.Button', () => {
 
 describe('usePagination', () => {
   it('should provide correct amount of pages with 10 pages when current page is 6', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 6 }),
-    );
-    const { pages } = result.current;
+    const expected = [
+      [6],
+      [6, 7],
+      [5, 6, 7],
+      [5, 6, '', 10],
+      [1, '', 6, '', 10],
+      [1, '', 6, 7, '', 10],
+      [1, '', 5, 6, 7, '', 10],
+      [1, '', 5, 6, 7, 8, 9, 10],
+      [1, '', 4, 5, 6, 7, 8, 9, 10],
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ];
 
-    expect(pages).toHaveLength(7);
-    expect(pages[0]).toBe(1);
-    expect(pages[1]).toBe('ellipsis');
-    expect(pages[2]).toBe(5);
-    expect(pages[3]).toBe(6);
-    expect(pages[4]).toBe(7);
-    expect(pages[5]).toBe('ellipsis');
-    expect(pages[6]).toBe(10);
+    for (const expectPages of expected) {
+      const { result } = renderHook(() =>
+        usePagination({
+          totalPages: 10,
+          currentPage: 6,
+          showPages: expectPages.length,
+        }),
+      );
+      const { pages } = result.current;
+
+      expect(pages).toHaveLength(expectPages.length);
+
+      expectPages.forEach((value, index) => {
+        expect(pages[index].itemKey).toBe(
+          value ? `page-${value}` : `ellipsis-${index}`,
+        );
+      });
+    }
   });
 
-  it('should provide correct amount of pages with 10 pages when current page is 6 and compact', () => {
-    const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 6 }),
-    );
-    const { pages } = result.current;
-
-    expect(pages).toHaveLength(5);
-    expect(pages[0]).toBe(1);
-    expect(pages[1]).toBe('ellipsis');
-    expect(pages[2]).toBe(6);
-    expect(pages[3]).toBe('ellipsis');
-    expect(pages[4]).toBe(10);
-  });
-
-  it('should update current page and pages correctly when setCurrentPage is called', () => {
+  it('should prevet previous when at start', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 1 }),
     );
 
     expect(result.current.hasPrev).toBe(false);
     expect(result.current.hasNext).toBe(true);
-
-    renderHook(() => result.current.setCurrentPage(5));
-
-    const updatedCurrentPage = result.current.currentPage;
-    expect(updatedCurrentPage).toBe(5);
-
-    const { pages } = result.current;
-    expect(pages[0]).toBe(1);
-    expect(pages[1]).toBe('ellipsis');
-    expect(pages[2]).toBe(4);
-    expect(pages[3]).toBe(5);
-    expect(pages[4]).toBe(6);
-    expect(pages[5]).toBe('ellipsis');
-    expect(pages[6]).toBe(10);
+    expect(result.current.prevButtonProps['aria-disabled']).toBe(true);
+    expect(result.current.nextButtonProps['aria-disabled']).toBe(false);
   });
 
-  it('should update current page and pages correctly when setNextPage is called ', () => {
+  it('should prevet next when at end', () => {
     const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 2 }),
+      usePagination({ totalPages: 10, currentPage: 10 }),
     );
 
-    const initalCurrentPage = result.current.currentPage;
-    expect(initalCurrentPage).toBe(2);
-
-    renderHook(() => result.current.nextPage());
-
-    const updatedCurrentPage = result.current.currentPage;
-    expect(updatedCurrentPage).toBe(3);
-
-    const { pages } = result.current;
-    expect(pages[0]).toBe(1);
-    expect(pages[1]).toBe(2);
-    expect(pages[2]).toBe(3);
-    expect(pages[3]).toBe(4);
-    expect(pages[4]).toBe(5);
-    expect(pages[5]).toBe('ellipsis');
-    expect(pages[6]).toBe(10);
+    expect(result.current.hasPrev).toBe(true);
+    expect(result.current.hasNext).toBe(false);
+    expect(result.current.prevButtonProps['aria-disabled']).toBe(false);
+    expect(result.current.nextButtonProps['aria-disabled']).toBe(true);
   });
 
-  it('should update current page and pages correctly when setPreviousPage is called ', () => {
+  it('should trigger onChange when clickinging button', async () => {
+    const mockOnChange = vi.fn();
+    const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
     const { result } = renderHook(() =>
-      usePagination({ totalPages: 10, currentPage: 9 }),
+      usePagination({ totalPages: 10, currentPage: 1, onChange: mockOnChange }),
     );
 
-    const initalCurrentPage = result.current.currentPage;
-    expect(initalCurrentPage).toBe(9);
+    result.current.nextButtonProps.onClick?.(event);
 
-    renderHook(() => result.current.previousPage());
+    expect(mockOnChange).toHaveBeenCalledWith(event, 2);
+  });
 
-    const updatedCurrentPage = result.current.currentPage;
-    expect(updatedCurrentPage).toBe(8);
+  it('should not trigger onChange when clickinging previous button and in start', async () => {
+    const mockOnChange = vi.fn();
+    const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 10, currentPage: 1, onChange: mockOnChange }),
+    );
 
-    const { pages } = result.current;
-    expect(pages[0]).toBe(1);
-    expect(pages[1]).toBe('ellipsis');
-    expect(pages[2]).toBe(6);
-    expect(pages[3]).toBe(7);
-    expect(pages[4]).toBe(8);
-    expect(pages[5]).toBe(9);
-    expect(pages[6]).toBe(10);
+    result.current.prevButtonProps.onClick?.(event);
+
+    expect(mockOnChange).not.toHaveBeenCalledWith(event, 2);
   });
 });
