@@ -16,6 +16,7 @@ export * from './Chip';
 export * from './Pagination';
 export * from './SkipLink';
 export * from './Tooltip';
+export * from './form/Field';
 export * from './form/Checkbox';
 export * from './form/Radio';
 export * from './form/Fieldset';
