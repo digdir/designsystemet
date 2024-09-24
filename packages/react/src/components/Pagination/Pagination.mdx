@@ -59,18 +59,33 @@ const { pages, onChange, prevButtonProps, nextButtonProps, hasNext, hasPrevious 
 </Pagination>
 ```
 
-## Paginering logikk
+## Paginering med `usePagination`
 
-Bruk `usePagination` for paginering logikk sammen med de enkelt del-komponentene for mer avanserte og tilpasset paginering komponent.
+Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
+Du kan sende inn:
 
-`Pagination` er bygget på `usePagination`.
-
-Bruk `...prevButtonProps` og `...nextButtonProps` for å få funsjonalitet på forrige- og neste-knappene.
-I sidelisten, bruk `key={itemKey}` på `Pagination.Item` og `...buttonProps` på `Pagination.Button`.
-
-Bruk `hasNext` og `hasPrev` dersom du trenger å sjekke om det er flere sider å gå til.
-
-<Canvas of={PaginationStories.Preview} />
+```ts
+usePagination({
+  currentPage: number, // Hvilken side som er aktiv (begynner på 1)
+  setCurrentPage: (page: number) => void, // Funksjonen for å endre side - typisk funksjonen du får fra useState
+  totalPages: number, // Totalt antall side
+  showPages: number, // Antall sider som skal vises i pagineringen
+});
+```
+I respons får du objektet:
+```ts
+{
+  hasPrev: boolean, // Indikererer om det finnes en forrige side
+  hasNext: boolean, // Indikererer om det finnes en neste side
+  prevButtonProps: PaginationButtonProps, // Properties du kan spre på forrie-knappen
+  nextButtonProps: PaginationButtonProps, // Properties du kan spre på neste-knappen
+  pages: Array<{
+    page: number | string; // Tall for side, eller tom streng dersom knappen skal være ...
+    itemKey: string; // key du kan sende til Pagination.Item for å sikre riktig fokus håndtering
+    buttonProps: PaginationButtonProps; // Properties du kan spre på Pagination.Button
+  }>
+}
+```
 
 ### Pagenering med lenker
 

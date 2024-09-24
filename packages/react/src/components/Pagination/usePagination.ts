@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import type { Dispatch, MouseEvent, SetStateAction } from 'react';
-import type { ButtonProps } from '../Button';
+import type { PaginationButtonProps } from './PaginationButton';
 
 const getSteps = (now: number, max: number, show: number) => {
   const offset = (show - 1) / 2;
@@ -51,7 +51,7 @@ export const usePagination = ({
             onClick: handleClick(page),
             tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
             variant: page === currentPage ? 'primary' : 'tertiary',
-          } as ButtonProps,
+          } as PaginationButtonProps,
         }),
       ),
       /** Properties to spread on Pagination.Button used for previous naviagation */
@@ -59,13 +59,13 @@ export const usePagination = ({
         'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage - 1),
         variant: 'tertiary',
-      } as ButtonProps,
+      } as PaginationButtonProps,
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
         'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage + 1),
         variant: 'tertiary',
-      } as ButtonProps,
+      } as PaginationButtonProps,
       /** Indication if previous page action should be shown or not */
       hasPrev,
       /** Indication if next page action should be shown or not */
