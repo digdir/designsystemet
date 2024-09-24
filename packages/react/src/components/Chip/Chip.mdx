@@ -1,9 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 
 import * as ChipStories from './Chip.stories';
-import * as ToggleChipStories from './Toggle/Toggle.stories';
-import * as RemovableChipStories from './Removable/Removable.stories';
-import * as GroupChipStories from './Group/Group.stories';
 
 <Meta of={ChipStories} />
 
@@ -23,7 +20,7 @@ import * as GroupChipStories from './Group/Group.stories';
 ```tsx
 import { Chip } from '@digdir/designsystemet-react';
 
-<Chip.Toggle>You are using the Chip component!</Chip.Toggle>;
+<Chip.Button>You are using the Chip component!</Chip.Button>;
 ```
 
 <br/>
@@ -31,25 +28,10 @@ import { Chip } from '@digdir/designsystemet-react';
 ## Eksempler
 
 <br/>
-### `Chip.Toggle` 
-`Chip.Toggle` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. 
-<Canvas of={ChipStories.Preview} />
-<br/>
-
-### `Chip.Group`
-
-Denne kodeblokken viser hvordan du grupperer `Chip` ved hjelp av `Chip.Group`. 
-
-<Canvas of={GroupChipStories.Preview} />
-<Controls of={GroupChipStories.Preview} />
-
-<br/>
-
-### `Chip.Toggle` med `selected=true` 
-Vi bruker `Chip` med hake som alternativer til vanlige radiobuttons og checkboxer. Brukes til filtrering av innhold og data. Innholdet tilpasser seg kategoriene som blir valgt. 
-
-<Canvas of={GroupChipStories.CheckGroup} />
-
+### `Chip.Radio` og `Chip.Checkbox` 
+`Chip.Radio` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. 
+<Canvas of={ChipStories.Checkbox} />
+<Canvas of={ChipStories.Radio} />
 <br/>
 
 ### `Chip.Removable`
@@ -58,12 +40,8 @@ Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verd
 Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
 
-<Canvas of={GroupChipStories.RemoveGroup} />
-<Controls of={RemovableChipStories.Preview} />
+<Canvas of={ChipStories.Removable} />
 <br/>
-
-
-
 <br/>
 
 ## Retningslinjer for `Chip`

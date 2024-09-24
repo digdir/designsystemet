@@ -10,6 +10,7 @@
   --dsc-chip-padding: 0 var(--ds-spacing-3);
 
   @composes ds-focus from './utilities.css';
+  @composes ds-paragraph-short from './baseline/typography.css';
 
   align-items: center;
   background: var(--dsc-chip-background);

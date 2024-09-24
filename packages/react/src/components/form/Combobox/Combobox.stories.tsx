@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
 import { Button } from '../../Button';
-import { ChipRemovable } from '../../Chip';
+import { Chip } from '../../Chip';
 import { Modal } from '../../Modal';
 import { Paragraph } from '../../Typography';
 import { Switch } from '../Switch';
@@ -326,14 +326,14 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
         }}
       >
         {value.map((item, index) => (
-          <ChipRemovable
+          <Chip.Removable
             key={index}
             onClick={() => {
               setValue(value.filter((v) => v !== item));
             }}
           >
             {item}
-          </ChipRemovable>
+          </Chip.Removable>
         ))}
       </div>
 

@@ -1,21 +1,9 @@
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-import type {
-  ButtonHTMLAttributes,
-  ForwardedRef,
-  InputHTMLAttributes,
-  LabelHTMLAttributes,
-} from 'react';
+import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 import { Paragraph } from '../Typography';
 
-type Button = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
-type Label = LabelHTMLAttributes<HTMLLabelElement> & {
-  name?: string;
-  value?: string;
-  checked?: boolean;
-  disabled?: boolean;
-};
 type ChipBaseProps = {
   /**
    * Size
@@ -29,38 +17,12 @@ type ChipBaseProps = {
   asChild?: boolean;
 };
 
-export type ChipButtonProps = ChipBaseProps & Button;
-export type ChipRemovableProps = ChipBaseProps & Button;
-export type ChipCheckboxProps = ChipBaseProps & Label;
-export type ChipRadioProps = ChipBaseProps & Label;
-
-const render = <
-  I extends InputHTMLAttributes<HTMLInputElement> | undefined,
-  T extends I extends undefined ? HTMLButtonElement : HTMLLabelElement,
-  R extends I extends undefined ? ChipButtonProps : ChipRadioProps,
->(
-  { asChild, className, children, size = 'md', ...rest }: R,
-  ref: ForwardedRef<T>,
-  input?: I,
-) => {
-  const tagName: string = input ? 'label' : 'button';
-  const Component = asChild ? Slot : tagName;
-
-  return (
-    <Paragraph size={size} asChild>
-      <Component
-        className={cl('ds-chip', className)}
-        data-size={size}
-        type={asChild || input ? undefined : 'button'}
-        ref={ref}
-        {...rest}
-      >
-        {input && <input {...input} />}
-        <Slottable>{children}</Slottable>
-      </Component>
-    </Paragraph>
-  );
-};
+export type ChipRemovableProps = ChipButtonProps;
+export type ChipRadioProps = ChipCheckboxProps;
+export type ChipButtonProps = ChipBaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
+export type ChipCheckboxProps = ChipBaseProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>;
 
 /**
  * Chip.Button used for interaction
@@ -68,54 +30,64 @@ const render = <
  * <Chip.Button>Click me</Chip.Button>
  */
 export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
-  function ChipButton(props, ref) {
-    return render(props, ref);
+  function ChipButton({ asChild, className, size, ...rest }, ref) {
+    const Component = asChild ? Slot : 'button';
+
+    return (
+      <Component
+        className={cl('ds-chip', className)}
+        data-size={size}
+        type={asChild ? undefined : 'button'}
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );
 
 /**
  * Chip.Removable used for interaction
  * @example
- * <Chip.Removable>Click me</Chip.Removable>
+ * <Chip.Removable>Click to remove me</Chip.Removable>
  */
-export const ChipRemovable = forwardRef<HTMLButtonElement, ChipButtonProps>(
+export const ChipRemovable = forwardRef<HTMLButtonElement, ChipRemovableProps>(
   function ChipRemovable(props, ref) {
-    return render({ 'data-removable': true, ...props }, ref);
+    return <ChipButton data-removable ref={ref} {...props}></ChipButton>;
   },
 );
 
 /**
  * Chip.Checkbox used for multiselection
  * @example
- * <Chip.Checkbox name="language">Nynorsk</Chip.Checkbox>
- * <Chip.Checkbox name="language">Bokmål</Chip.Checkbox>
+ * <Chip.Checkbox name="language" value="nynorsk">Nynorsk</Chip.Checkbox>
+ * <Chip.Checkbox name="language" value="bokmål">Bokmål</Chip.Checkbox>
  */
 export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
-  function ChipCheckbox({ checked, name, value, disabled, ...props }, ref) {
-    return render(props, ref, {
-      checked,
-      disabled,
-      name,
-      type: 'checkbox',
-      value,
-    });
+  function ChipCheckbox({ asChild, children, className, size, ...rest }, ref) {
+    const inputType = (rest as { type?: string }).type ?? 'checkbox';
+    const Component = asChild ? Slot : 'label';
+
+    return (
+      <Component
+        className={cl('ds-chip', className)}
+        data-size={size}
+        ref={ref}
+      >
+        <input {...rest} type={inputType} />
+        <Slottable>{children}</Slottable>
+      </Component>
+    );
   },
 );
 
 /**
  * Chip.Radio used for single selection
  * @example
- * <Chip.Radio name="language">Nynorsk</Chip.Radio>
- * <Chip.Radio name="language">Bokmål</Chip.Radio>
+ * <Chip.Radio name="language" value="nynorsk">Nynorsk</Chip.Radio>
+ * <Chip.Radio name="language" value="bokmål">Bokmål</Chip.Radio>
  */
 export const ChipRadio = forwardRef<HTMLLabelElement, ChipRadioProps>(
-  function ChipRadio({ name, value, checked, disabled, ...props }, ref) {
-    return render(props, ref, {
-      checked,
-      disabled,
-      name,
-      type: 'radio',
-      value,
-    });
+  function ChipRadio(props, ref) {
+    return <ChipCheckbox {...{ ref, type: 'radio', ...props }} />;
   },
 );
