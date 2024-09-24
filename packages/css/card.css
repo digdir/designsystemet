@@ -37,6 +37,8 @@
   &:has(:is(h1, h2, h3, h4, h5, h6) a) {
     --dsc-card-border-color: var(--dsc-card-border-color--link);
 
+    cursor: pointer;
+
     &:active {
       --dsc-card-backround--active: var(--ds-color-neutral-surface-default);
       --dsc-card-backround--hover: var(--ds-color-neutral-background-subtle);
@@ -86,13 +88,17 @@
 }
 
 :is(.ds-card, .ds-card__section) {
-  & > hr {
-    margin: 0 var(--dsc-card-padding-invert);
-    width: var(--dsc-card-padding-width);
+  & > :first-child {
+    margin-block: 0;
   }
 
   & > * + * {
-    margin-top: var(--dsc-card-gap); /* https://every-layout.dev/layouts/stack/ */
+    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
+  }
+
+  & > hr {
+    margin: 0 var(--dsc-card-padding-invert);
+    width: var(--dsc-card-padding-width);
   }
 }
 
