@@ -20,6 +20,16 @@ import * as ChipStories from './Chip.stories';
 ```tsx
 import { Chip } from '@digdir/designsystemet-react';
 
+// som radio
+<Chip.Radio>You are using the Chip component!</Chip.Radio>;
+
+// som checkbox
+<Chip.Checkbox>You are using the Chip component!</Chip.Checkbox>;
+
+// som removable
+<Chip.Removable>You are using the Chip component!</Chip.Removable>;
+
+// som button
 <Chip.Button>You are using the Chip component!</Chip.Button>;
 ```
 
@@ -28,10 +38,9 @@ import { Chip } from '@digdir/designsystemet-react';
 ## Eksempler
 
 <br/>
-### `Chip.Radio` og `Chip.Checkbox` 
-`Chip.Radio` kan brukes som et alternativ til `Button`. Den brukes når handlingen(e) er direkte relatert til hovedinnholdet. 
+### `Chip.Checkbox` 
+`Chip.Checkbox` kan brukes som et alternativ til `Checkbox`.
 <Canvas of={ChipStories.Checkbox} />
-<Canvas of={ChipStories.Radio} />
 <br/>
 
 ### `Chip.Removable`
@@ -41,6 +50,10 @@ Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
 
 <Canvas of={ChipStories.Removable} />
+<br/>
+### `Chip.Button` 
+`Chip.Button` kan brukes i gruppe, for å vise valgmuligheter - ikke handlinger.
+<Canvas of={ChipStories.Button} />
 <br/>
 <br/>
 

@@ -86,12 +86,8 @@
 
     &[type='checkbox']:checked {
       background: currentcolor;
-      mask-composite: exclude;
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M15.56.44a1.5 1.5 0 0 1 0 2.12l-8.5 8.5a1.5 1.5 0 0 1-2.12 0l-4.5-4.5a1.5 1.5 0 1 1 2.12-2.12L6 7.88 13.44.44a1.5 1.5 0 0 1 2.12 0Z' /%3E%3C/svg%3E"),
-        linear-gradient(currentcolor, currentcolor);
-      mask-position: 50% 55%; /* Optically center checkmark */
-      mask-repeat: no-repeat;
-      mask-size: 62.5%, cover;
+      mask: center/cover no-repeat
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M24 0H0v24h24V0Zm-4.44 8.56a1.5 1.5 0 0 0-2.12-2.12L10 13.88l-3.44-3.44a1.5 1.5 0 0 0-2.12 2.12l4.5 4.5a1.5 1.5 0 0 0 2.12 0l8.5-8.5Z'/%3E%3C/svg%3E");
     }
   }
 
