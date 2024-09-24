@@ -4,13 +4,7 @@ import { Chip } from '.';
 
 export default {
   title: 'Komponenter/Chip',
-  component: Chip.Button,
-  argTypes: {
-    size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
-    },
-  },
+  component: Chip.Radio,
   decorators: [
     (Story) => (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
