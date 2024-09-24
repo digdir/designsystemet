@@ -36,11 +36,11 @@ export const Checkbox: StoryFn<typeof Chip.Checkbox> = (args) => (
 );
 
 export const Removable: StoryFn<typeof Chip.Removable> = (args) => (
-  <Chip.Removable {...args}>Nynorsk</Chip.Removable>
+  <Chip.Removable {...args}>Norge</Chip.Removable>
 );
 
 Removable.args = {
-  'aria-label': 'Slett Nynorsk',
+  'aria-label': 'Slett Norge',
 };
 
 export const Button: StoryFn<typeof Chip.Button> = (args) => (
