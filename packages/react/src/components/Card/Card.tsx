@@ -14,12 +14,7 @@ export type CardProps = {
    * @default false
    */
   asChild?: boolean;
-  /**
-   * Changes styling if card is used as a link
-   * @default false
-   */
-  isLink?: boolean;
-  /** Instances of `Card.Header`, `Card.Content`, `Card.Footer` or other React nodes like `Divider` */
+  /** Instances of `Card.Section`, `Divider` or other React nodes */
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -27,27 +22,23 @@ export type CardProps = {
  * Card component to present content in a structured way.
  * @example
  * <Card>
- *  <Card.Header>Header</Card.Header>
- *  <Card.Content>Content</Card.Content>
- *  <Card.Footer>Footer</Card.Footer>
+ *  <Card.Section>Header</Card.Section>
+ *  <Card.Section>Content</Card.Section>
+ *  <Card.Section>Footer</Card.Section>
  * </Card>
  */
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    { isLink = false, asChild = false, color = 'neutral', className, ...rest },
-    ref,
-  ) => {
-    const Component = asChild ? Slot : 'div';
-    return (
-      <Component
-        ref={ref}
-        className={cl(`ds-card`, isLink && `ds-focus`, className)}
-        data-color={color}
-        data-link={isLink ? '' : undefined}
-        {...rest}
-      />
-    );
-  },
-);
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  { asChild = false, color = 'neutral', className, ...rest },
+  ref,
+) {
+  const Component = asChild ? Slot : 'div';
 
-Card.displayName = 'Card';
+  return (
+    <Component
+      className={cl(`ds-card`, className)}
+      data-color={color}
+      ref={ref}
+      {...rest}
+    />
+  );
+});

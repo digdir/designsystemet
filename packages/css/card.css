@@ -1,43 +1,50 @@
 .ds-card {
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-card-border-color--link: var(--ds-color-neutral-border-subtle);
   --dsc-card-backround: var(--ds-color-neutral-background-default);
+  --dsc-card-backround--active: var(--ds-color-neutral-surface-default);
+  --dsc-card-backround--hover: var(--ds-color-neutral-background-subtle);
   --dsc-card-color: var(--ds-color-neutral-text-default);
+  --dsc-card-padding: var(--ds-spacing-6);
+  --dsc-card-gap: 1rem;
 
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  color: var(--dsc-card-color);
+  /* For internal use only */
+  --dsc-card-padding-half: calc(var(--dsc-card-padding) / 2);
+  --dsc-card-padding-invert: calc(var(--dsc-card-padding) * -1);
+  --dsc-card-padding-width: calc(100% + var(--dsc-card-padding) * 2);
+
+  @composes ds-paragraph from './baseline/typography.css';
+
+  background: var(--dsc-card-backround);
   border-radius: min(1rem, var(--ds-border-radius-md));
   border: 1px solid var(--dsc-card-border-color);
-  background: var(--dsc-card-backround);
+  box-sizing: border-box;
+  color: var(--dsc-card-color);
+  padding: var(--dsc-card-padding);
 
-  &[data-link] {
-    --dsc-card-border-color: var(--ds-color-neutral-border-default);
+  :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
 
-    text-decoration: none;
-
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-      color: var(--dsc-card-color);
+    & a:any-link {
+      color: inherit;
       text-decoration: underline;
       text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
       text-underline-offset: max(6px, 0.25rem, 0.22em);
     }
+  }
+
+  /* Add states when contaning clickable heading */
+  &:has(:is(h1, h2, h3, h4, h5, h6) a) {
+    --dsc-card-border-color: var(--dsc-card-border-color--link);
 
     &:active {
-      --dsc-card-backround: var(--ds-color-neutral-surface-default);
+      --dsc-card-backround--active: var(--ds-color-neutral-surface-default);
+      --dsc-card-backround--hover: var(--ds-color-neutral-background-subtle);
     }
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        --dsc-card-backround: var(--ds-color-neutral-background-subtle);
+        --dsc-card-backround: var(--dsc-card-backround--hover);
       }
     }
   }
@@ -45,153 +52,78 @@
   &[data-color='subtle'] {
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-neutral-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-neutral-surface-hover);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-neutral-surface-default);
-        }
-      }
-    }
+    --dsc-card-backround--active: var(--ds-color-neutral-surface-hover);
+    --dsc-card-backround--hover: var(--ds-color-neutral-surface-default);
+    --dsc-card-border-color--link: var(--ds-color-neutral-border-default);
   }
 
   &[data-color='brand1'] {
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
     --dsc-card-backround: var(--ds-color-brand1-surface-default);
     --dsc-card-color: var(--ds-color-brand1-text-default);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand1-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand1-surface-active);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand1-surface-hover);
-        }
-      }
-    }
+    --dsc-card-backround--active: var(--ds-color-brand1-surface-active);
+    --dsc-card-backround--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-card-border-color--link: var(--ds-color-brand1-border-default);
   }
 
   &[data-color='brand2'] {
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
     --dsc-card-backround: var(--ds-color-brand2-surface-default);
     --dsc-card-color: var(--ds-color-brand2-text-default);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand2-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand2-surface-active);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand2-surface-hover);
-        }
-      }
-    }
+    --dsc-card-backround--active: var(--ds-color-brand2-surface-active);
+    --dsc-card-backround--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-card-border-color--link: var(--ds-color-brand2-border-default);
   }
 
   &[data-color='brand3'] {
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-card-backround: var(--ds-color-brand3-surface-default);
     --dsc-card-color: var(--ds-color-brand3-text-default);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand3-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand3-surface-active);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand3-surface-hover);
-        }
-      }
-    }
+    --dsc-card-backround--active: var(--ds-color-brand3-surface-active);
+    --dsc-card-backround--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-card-border-color--link: var(--ds-color-brand3-border-default);
   }
+}
 
-  .ds-card__header h1,
-  .ds-card__header h2,
-  .ds-card__header h3,
-  .ds-card__header h4,
-  .ds-card__header h5,
-  .ds-card__header h6 {
-    color: inherit;
-  }
-
-  .ds-card__media > * {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 0;
-  }
-
-  .ds-card__media {
-    width: auto;
-  }
-
-  .ds-card__media:first-child {
-    padding-bottom: var(--ds-spacing-4);
-  }
-
-  .ds-card__media:last-child {
-    padding-top: var(--ds-spacing-6);
-  }
-
-  .ds-card__footer,
-  .ds-card__content {
-    display: flex;
-    justify-content: flex-start;
-    gap: var(--ds-spacing-4);
-    flex-wrap: wrap;
-    word-wrap: break-word;
-    padding: var(--ds-spacing-2) 0;
-    color: inherit;
-  }
-
-  .ds-card__content {
-    flex-direction: column;
-  }
-
-  .ds-card__header {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    word-wrap: break-word;
-    font-family: inherit;
-    padding: var(--ds-spacing-2) 0;
-  }
-
-  & a:any-link {
-    color: var(--ds-color-neutral-text-default);
-  }
-
+:is(.ds-card, .ds-card__section) {
   & > hr {
-    width: 100%;
-    margin: var(--ds-spacing-3) 0;
+    margin: 0 var(--dsc-card-padding-invert);
+    width: var(--dsc-card-padding-width);
   }
 
-  & > *:not(.ds-card__media, hr) {
-    padding-left: var(--ds-spacing-6);
-    padding-right: var(--ds-spacing-6);
+  & > * + * {
+    margin-top: var(--dsc-card-gap); /* https://every-layout.dev/layouts/stack/ */
+  }
+}
+
+.ds-card__section {
+  padding: var(--dsc-card-padding) var(--dsc-card-padding);
+  margin: var(--dsc-card-padding) var(--dsc-card-padding-invert);
+
+  :is(&, hr) + & {
+    margin-top: 0; /* No margin-top if previous element is hr or also ds-card__section */
   }
 
-  & > *:not(.ds-card__media):first-child {
-    padding-top: var(--ds-spacing-6);
+  &:has(+ &, + hr) {
+    margin-bottom: 0; /* No margin-bottom if next element is hr or also ds-card__section */
   }
 
-  & > *:not(.ds-card__media):last-child {
-    padding-bottom: var(--ds-spacing-6);
+  &:first-child {
+    margin-top: var(--dsc-card-padding-invert);
+  }
+
+  &:last-child {
+    margin-bottom: var(--dsc-card-padding-invert);
+  }
+
+  & > :where(img, figure, video, audio, iframe):only-child {
+    border: 0;
+    display: block;
+    margin: var(--dsc-card-padding-invert);
+    width: var(--dsc-card-padding-width);
+  }
+
+  & > :where(img, video):only-child {
+    height: auto;
   }
 }

@@ -158,41 +158,41 @@ export const Components = () => {
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1' className={classes.helpFirst}>
-            <Card.Header className={classes.helpHeader}>
+            <Card.Section className={classes.helpHeader}>
               <Heading size='2xs' className={classes.helpFirstTitle}>
                 Sikkerhet og drift
               </Heading>
-            </Card.Header>
-            <Card.Content
+            </Card.Section>
+            <Card.Section
               className={cl(classes.helpContent, classes.helpFirstDesc)}
             >
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Card.Section>
           </Card>
           <Card color='brand2' className={classes.helpSecond}>
-            <Card.Header className={classes.helpHeader}>
+            <Card.Section className={classes.helpHeader}>
               <Heading size='2xs' className={classes.helpSecondTitle}>
                 Skole og utdanning
               </Heading>
-            </Card.Header>
-            <Card.Content
+            </Card.Section>
+            <Card.Section
               className={cl(classes.helpContent, classes.helpSecondDesc)}
             >
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Card.Section>
           </Card>
           <Card color='brand3' className={classes.helpThird} isLink asChild>
             <a href='#preview'>
-              <Card.Header className={classes.helpHeader}>
+              <Card.Section className={classes.helpHeader}>
                 <Heading className={classes.helpThirdTitle} size='2xs'>
                   Mat og helse
                 </Heading>
-              </Card.Header>
-              <Card.Content
+              </Card.Section>
+              <Card.Section
                 className={cl(classes.helpContent, classes.helpThirdDesc)}
               >
                 Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-              </Card.Content>
+              </Card.Section>
             </a>
           </Card>
         </div>

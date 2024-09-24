@@ -1,36 +1,12 @@
-import type { CardProps } from './Card';
 import { Card as CardParent } from './Card';
-import type { CardContentProps } from './CardContent';
-import { CardContent } from './CardContent';
-import type { CardFooterProps } from './CardFooter';
-import { CardFooter } from './CardFooter';
-import { CardHeader, type CardHeaderProps } from './CardHeader';
-import { CardMedia, type CardMediaProps } from './CardMedia';
+import { CardSection } from './CardSection';
 
-type CardComponent = typeof CardParent & {
-  Header: typeof CardHeader;
-  Content: typeof CardContent;
-  Footer: typeof CardFooter;
-  Media: typeof CardMedia;
-};
+const Card = Object.assign(CardParent, {
+  Section: CardSection,
+});
 
-const Card = CardParent as CardComponent;
+Card.Section.displayName = 'Card.Section';
 
-Card.Header = CardHeader;
-Card.Content = CardContent;
-Card.Footer = CardFooter;
-Card.Media = CardMedia;
-
-Card.Header.displayName = 'Card.Header';
-Card.Content.displayName = 'Card.Content';
-Card.Footer.displayName = 'Card.Footer';
-Card.Media.displayName = 'Card.Media';
-
-export type {
-  CardProps,
-  CardHeaderProps,
-  CardContentProps,
-  CardFooterProps,
-  CardMediaProps,
-};
-export { Card, CardHeader, CardContent, CardFooter, CardMedia };
+export type { CardProps } from './Card';
+export type { CardSectionProps } from './CardSection';
+export { Card, CardSection };

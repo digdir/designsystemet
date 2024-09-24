@@ -163,29 +163,29 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1'>
-            <Card.Header className={classes.helpHeader}>
+            <Card.Section className={classes.helpHeader}>
               <Heading size='2xs'>Sikkerhet og drift</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
+            </Card.Section>
+            <Card.Section className={cl(classes.helpContent)}>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Card.Section>
           </Card>
           <Card color='brand2'>
-            <Card.Header className={classes.helpHeader}>
+            <Card.Section className={classes.helpHeader}>
               <Heading size='2xs'>Skole og utdanning</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
+            </Card.Section>
+            <Card.Section className={cl(classes.helpContent)}>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Card.Section>
           </Card>
           <Card color='brand3' isLink asChild>
             <a href='#preview'>
-              <Card.Header className={classes.helpHeader}>
+              <Card.Section className={classes.helpHeader}>
                 <Heading size='2xs'>Mat og helse</Heading>
-              </Card.Header>
-              <Card.Content className={cl(classes.helpContent)}>
+              </Card.Section>
+              <Card.Section className={cl(classes.helpContent)}>
                 Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-              </Card.Content>
+              </Card.Section>
             </a>
           </Card>
         </div>
