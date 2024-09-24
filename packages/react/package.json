@@ -41,6 +41,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-virtual": "^3.10.7",
     "@u-elements/u-details": "^0.0.5",
+    "@u-elements/u-tabs": "^0.0.7",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

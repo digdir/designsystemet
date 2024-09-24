@@ -1,12 +1,10 @@
+import type { UHTMLTabListElement } from '@u-elements/u-tabs';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
+import '@u-elements/u-tabs';
 
-import { RovingFocusRoot } from '../../utilities/RovingFocus';
-
-import { Context } from './Tabs';
-
-export type TabsListProps = HTMLAttributes<HTMLDivElement>;
+export type TabsListProps = HTMLAttributes<UHTMLTabListElement>;
 
 /**
  * The container for all `Tab` components.
@@ -18,21 +16,14 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
  * </Tabs.List>
  * ```
  */
-export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  function TabsList({ children, className, ...rest }, ref) {
-    const { value } = useContext(Context);
-
+export const TabsList = forwardRef<UHTMLTabListElement, TabsListProps>(
+  function TabsList({ className, ...rest }, ref) {
     return (
-      <RovingFocusRoot
-        role='tablist'
-        activeValue={value}
-        className={cl('ds-tabs__tablist', className)}
-        orientation='ambiguous'
+      <u-tablist
+        class={cl('ds-tabs__tablist', className)}
         ref={ref}
         {...rest}
-      >
-        {children}
-      </RovingFocusRoot>
+      />
     );
   },
 );
