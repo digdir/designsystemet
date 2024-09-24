@@ -14,8 +14,8 @@ export type ModalProps = {
    */
   closeLabel?: string | false;
   /**
-   * Prevent closing on backdrop click.
-   * @default undefined
+   * Close on backdrop click.
+   * @default false
    */
   backdropClose?: boolean;
   /**
