@@ -126,6 +126,7 @@ const Footer = () => {
                 height={100}
                 width={600}
                 src='/img/logos/udir.svg'
+                className={classes.udir}
               ></Image>
             </div>
             <NextLink
