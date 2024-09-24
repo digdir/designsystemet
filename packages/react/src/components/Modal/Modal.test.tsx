@@ -5,6 +5,7 @@ import { act } from 'react';
 import type { ModalProps } from './';
 import { Modal } from './';
 
+const CLOSE_LABEL = 'Lukk dialogvindu';
 const HEADER_TITLE = 'Modal header title';
 const OPEN_MODAL = 'Open Modal';
 
@@ -55,64 +56,43 @@ describe('Modal', () => {
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });
 
-  /* it('should open and close the modal', async () => {
-    const { user } = await render({
-      children: (
-        <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
-        </>
-      ),
-    });
-    const showSpy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
-    const closeSpy = vi.spyOn(HTMLDialogElement.prototype, 'close');
+  it('should open and close the modal', async () => {
+    const { user } = await render();
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_MODAL });
     await act(async () => await user.click(button));
 
-    expect(showSpy).toHaveBeenCalledTimes(1);
-
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
 
-    const closeButton = screen.getByRole('button', { name: /close/i });
+    const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });
     await act(async () => await user.click(closeButton));
 
-    expect(closeSpy).toHaveBeenCalledTimes(1);
-
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  }); */
+  });
 
   it('should render the modal', async () => {
     await render({ open: true });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 
-  /* it('should render the close button', async () => {
-    await render({
-      children: (
-        <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
-        </>
-      ),
-      open: true,
-    });
-    expect(screen.getByRole('button', { name: /close/i })).toBeInTheDocument();
-  }); */
+  it('should render the close button', async () => {
+    await render({ open: true });
+    expect(
+      screen.getByRole('button', { name: CLOSE_LABEL }),
+    ).toBeInTheDocument();
+  });
 
-  /* it('should not render the close button when closeButton is false', async () => {
+  it('should not render the close button when closeButton is false', async () => {
     await render({
       open: true,
-      children: (
-        <>
-          <Modal.Header closeButton={false}>{HEADER_TITLE}</Modal.Header>
-        </>
-      ),
+      closeLabel: false,
     });
     expect(
-      screen.queryByRole('button', { name: /close/i }),
+      screen.queryByRole('button', { name: CLOSE_LABEL }),
     ).not.toBeInTheDocument();
-  }); */
+  });
 
   it('should render the header title', async () => {
     await render({
@@ -125,19 +105,6 @@ describe('Modal', () => {
     });
     expect(screen.getByText(HEADER_TITLE)).toBeInTheDocument();
   });
-
-  /* it('should render the header subtitle', async () => {
-    const headerSubtitle = 'Modal header subtitle';
-    await render({
-      open: true,
-      children: (
-        <>
-          <Modal.Header subtitle={headerSubtitle}>{HEADER_TITLE}</Modal.Header>
-        </>
-      ),
-    });
-    expect(screen.getByText(headerSubtitle)).toBeInTheDocument();
-  }); */
 
   it('should render the children', async () => {
     const children = 'Modal children';

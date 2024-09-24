@@ -51,11 +51,11 @@ const modalRef = useRef<HTMLDialogElement>(null);
 
 <Canvas of={ModalStories.WithoutModalContext} />
 
-### Prevent close on backdrop click
+### Close on backdrop click
 
-Vi bruker `preventBackdropClose={true}` proppen for å ikke lukke modalen når brukeren klikker utenfor.
+Vi bruker `backdropClose={true}` proppen for å lukke modalen når brukeren klikker utenfor.
 
-<Canvas of={ModalStories.PreventBackdropClose} />
+<Canvas of={ModalStories.BackdropClose} />
 
 ### Med `Header` og `Footer`
 

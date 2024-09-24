@@ -60,15 +60,15 @@ export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
   );
 };
 
-export const PreventBackdropClose: StoryFn<typeof Modal> = () => {
+export const BackdropClose: StoryFn<typeof Modal> = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} preventBackdropClose>
+      <Modal ref={modalRef} backdropClose>
         <Heading size='xs'>
-          Modal med preventBackdropClose og en veldig lang tittel
+          Modal med backdropClose og en veldig lang tittel
         </Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis

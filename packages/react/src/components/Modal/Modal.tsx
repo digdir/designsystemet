@@ -10,14 +10,14 @@ import { Context } from './ModalContext';
 export type ModalProps = {
   /**
    * Screen reader label of close button. Set false to hide the close button.
-   * @default 'Lukk'
+   * @default 'Lukk dialogvindu'
    */
   closeLabel?: string | false;
   /**
    * Prevent closing on backdrop click.
    * @default undefined
    */
-  preventBackdropClose?: boolean;
+  backdropClose?: boolean;
   /**
    * Callback that is called when the modal is closed.
    * @default undefined
@@ -31,10 +31,10 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
     asChild,
     children,
     className,
-    closeLabel = 'Lukk',
+    closeLabel = 'Lukk dialogvindu',
     onClose,
     open,
-    preventBackdropClose = false,
+    backdropClose = false,
     ...rest
   },
   ref,
@@ -54,7 +54,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
       target,
     }: MouseEvent) => {
       if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-      if (modal && target === modal && !preventBackdropClose) {
+      if (modal && target === modal && backdropClose) {
         const { top, left, right, bottom } = modal.getBoundingClientRect();
         const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
 
@@ -73,7 +73,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
       modal?.removeEventListener('animationend', handleAutoFocus);
       modal?.removeEventListener('click', handleBackdropClick);
     };
-  }, [preventBackdropClose]);
+  }, [backdropClose]);
 
   return (
     <Component className={cl('ds-modal', className)} ref={mergedRefs} {...rest}>
