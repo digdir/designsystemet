@@ -48,47 +48,43 @@ export const LinkCard: Story = (args) => (
       gridTemplateColumns: 'repeat(2, 400px)',
     }}
   >
-    <Card {...args} color='brand1' asChild>
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        <Card.Section>
-          <img src={cat5} alt='' />
-        </Card.Section>
-        <Heading size='sm' level={2}>
+    <Card {...args} color='brand1'>
+      <Card.Section>
+        <img src={cat5} alt='' />
+      </Card.Section>
+      <Heading size='sm' level={2}>
+        <a
+          href='https://designsystemet.no'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           Link Card
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-        <Paragraph size='sm'>Footer text</Paragraph>
-      </a>
+        </a>
+      </Heading>
+      <Paragraph>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Paragraph>
+      <Paragraph size='sm'>Footer text</Paragraph>
     </Card>
-    <Card {...args} color='neutral' asChild>
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        <Card.Section>
-          <img src={cat6} alt='' />
-        </Card.Section>
-        <Heading size='sm' level={2}>
+    <Card {...args} color='neutral'>
+      <Card.Section>
+        <img src={cat6} alt='' />
+      </Card.Section>
+      <Heading size='sm' level={2}>
+        <a
+          href='https://designsystemet.no'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           Link Card
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-        <Card.Section>
-          <Paragraph size='sm'>Footer text</Paragraph>
-        </Card.Section>
-      </a>
+        </a>
+      </Heading>
+      <Paragraph>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Paragraph>
+      <Paragraph size='sm'>Footer text</Paragraph>
     </Card>
   </div>
 );
@@ -270,4 +266,55 @@ export const Composed: Story = () => (
       <Textfield label='Etternavn' />
     </Card.Section>
   </Card>
+);
+
+export const AsLink: Story = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gap: 'var(--ds-spacing-4)',
+      gridTemplateColumns: 'repeat(2, 400px)',
+    }}
+  >
+    <Card {...args} color='brand1' asChild>
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Card.Section>
+          <img src={cat5} alt='' />
+        </Card.Section>
+        <Heading size='sm' level={2}>
+          Link Card
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+        <Paragraph size='sm'>Footer text</Paragraph>
+      </a>
+    </Card>
+    <Card {...args} color='neutral' asChild>
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Card.Section>
+          <img src={cat6} alt='' />
+        </Card.Section>
+        <Heading size='sm' level={2}>
+          Link Card
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+        <Paragraph size='sm'>Footer text</Paragraph>
+      </a>
+    </Card>
+  </div>
 );

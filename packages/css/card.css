@@ -1,9 +1,9 @@
 .ds-card {
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-card-border-color--link: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-background-default);
-  --dsc-card-backround--active: var(--ds-color-neutral-surface-default);
-  --dsc-card-backround--hover: var(--ds-color-neutral-background-subtle);
+  --dsc-card-background: var(--ds-color-neutral-background-default);
+  --dsc-card-background--active: var(--ds-color-neutral-surface-default);
+  --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
   --dsc-card-color: var(--ds-color-neutral-text-default);
   --dsc-card-padding: var(--ds-spacing-6);
   --dsc-card-gap: 1rem;
@@ -15,79 +15,89 @@
 
   @composes ds-paragraph from './baseline/typography.css';
 
-  background: var(--dsc-card-backround);
+  background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
   border: 1px solid var(--dsc-card-border-color);
   box-sizing: border-box;
   color: var(--dsc-card-color);
+  overflow: clip; /* Bad, but needed to make media clipped by card radius */
   padding: var(--dsc-card-padding);
 
-  :is(h1, h2, h3, h4, h5, h6) {
+  :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li) {
     color: inherit;
-
-    & a:any-link {
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-      text-underline-offset: max(6px, 0.25rem, 0.22em);
-    }
   }
 
-  /* Add states when contaning clickable heading */
+  /* Style link in heading, or heading when Card is anchor */
+  :is(h1, h2, h3, h4, h5, h6) a:any-link,
+  &:is(a:any-link) :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+    outline: 0;
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
+    text-underline-offset: max(6px, 0.25rem, 0.22em);
+  }
+
+  /* Add states when Card is a anchor, button, or when containing a anchor in heading */
+  &:is(a),
   &:has(:is(h1, h2, h3, h4, h5, h6) a) {
     --dsc-card-border-color: var(--dsc-card-border-color--link);
 
     cursor: pointer;
-
-    &:active {
-      --dsc-card-backround--active: var(--ds-color-neutral-surface-default);
-      --dsc-card-backround--hover: var(--ds-color-neutral-background-subtle);
-    }
+    text-decoration: none;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        --dsc-card-backround: var(--dsc-card-backround--hover);
+        --dsc-card-background: var(--dsc-card-background--hover);
       }
+    }
+
+    &:where(:focus-visible, :has(:focus-visible)) {
+      box-shadow: var(--dsc-focus-boxShadow);
+    }
+
+    &:active {
+      --dsc-card-background: var(--dsc-card-background--active);
     }
   }
 
   &[data-color='subtle'] {
-    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-    --dsc-card-backround--active: var(--ds-color-neutral-surface-hover);
-    --dsc-card-backround--hover: var(--ds-color-neutral-surface-default);
+    --dsc-card-background--active: var(--ds-color-neutral-surface-hover);
+    --dsc-card-background--hover: var(--ds-color-neutral-surface-default);
+    --dsc-card-background: var(--ds-color-neutral-background-subtle);
     --dsc-card-border-color--link: var(--ds-color-neutral-border-default);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
   }
 
   &[data-color='brand1'] {
-    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand1-surface-default);
-    --dsc-card-color: var(--ds-color-brand1-text-default);
-    --dsc-card-backround--active: var(--ds-color-brand1-surface-active);
-    --dsc-card-backround--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-card-background--active: var(--ds-color-brand1-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-card-background: var(--ds-color-brand1-surface-default);
     --dsc-card-border-color--link: var(--ds-color-brand1-border-default);
+    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
+    --dsc-card-color: var(--ds-color-brand1-text-default);
   }
 
   &[data-color='brand2'] {
-    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand2-surface-default);
-    --dsc-card-color: var(--ds-color-brand2-text-default);
-    --dsc-card-backround--active: var(--ds-color-brand2-surface-active);
-    --dsc-card-backround--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-card-background--active: var(--ds-color-brand2-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-card-background: var(--ds-color-brand2-surface-default);
     --dsc-card-border-color--link: var(--ds-color-brand2-border-default);
+    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
+    --dsc-card-color: var(--ds-color-brand2-text-default);
   }
 
   &[data-color='brand3'] {
-    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand3-surface-default);
-    --dsc-card-color: var(--ds-color-brand3-text-default);
-    --dsc-card-backround--active: var(--ds-color-brand3-surface-active);
-    --dsc-card-backround--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-card-background--active: var(--ds-color-brand3-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-card-background: var(--ds-color-brand3-surface-default);
     --dsc-card-border-color--link: var(--ds-color-brand3-border-default);
+    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
+    --dsc-card-color: var(--ds-color-brand3-text-default);
   }
 }
 
-:is(.ds-card, .ds-card__section) {
+/* Usin :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card, .ds-card__section) {
   & > :first-child {
     margin-block: 0;
   }
@@ -116,6 +126,7 @@
 
   &:first-child {
     margin-top: var(--dsc-card-padding-invert);
+    overflow: hidden;
   }
 
   &:last-child {
