@@ -14,7 +14,7 @@ export const EksempelTekst: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Paragraph spacing>
+    <Paragraph spacing variant='long'>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
