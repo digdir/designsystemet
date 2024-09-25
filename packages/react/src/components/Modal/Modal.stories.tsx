@@ -43,19 +43,17 @@ export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
   return (
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-      <Modal.Context>
-        <Modal {...args} ref={modalRef}>
-          <Paragraph size='sm'>Modal subtittel</Paragraph>
-          <Heading size='xs' spacing>
-            Modal header
-          </Heading>
-          <Paragraph spacing>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-            doloremque obcaecati assumenda odio ducimus sunt et.
-          </Paragraph>
-          Modal footer
-        </Modal>
-      </Modal.Context>
+      <Modal {...args} ref={modalRef}>
+        <Paragraph size='sm'>Modal subtittel</Paragraph>
+        <Heading size='xs' spacing>
+          Modal header
+        </Heading>
+        <Paragraph spacing>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        Modal footer
+      </Modal>
     </>
   );
 };
