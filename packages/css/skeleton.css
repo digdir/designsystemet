@@ -46,6 +46,6 @@
 
 @keyframes ds-skeleton-opacity-fade {
   to {
-    opacity: 0.4;
+    background: rgb(from var(--dsc-skeleton-background) r g b / 0.4);
   }
 }
