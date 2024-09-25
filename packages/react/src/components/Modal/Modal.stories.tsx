@@ -1,11 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useRef, useState } from 'react';
 
-import { Button, Combobox, Divider, Heading, Paragraph, Textfield } from '..';
+import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
 
 import { Modal } from '.';
-
-const Footer = (props: JSX.IntrinsicElements['div']) => <div {...props} />;
 
 const decorators = [
   (Story: StoryFn) => (
@@ -72,7 +70,7 @@ export const BackdropClose: StoryFn<typeof Modal> = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        <Footer>Footer</Footer>
+        <Paragraph size='sm'>Modal footer</Paragraph>
       </Modal>
     </Modal.Context>
   );
