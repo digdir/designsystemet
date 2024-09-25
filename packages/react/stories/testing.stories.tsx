@@ -14,6 +14,15 @@ import {
 
 export default {
   title: 'Testing',
+  parameters: {
+    a11y: {
+      /*
+      These stories only exist to test sizing/alignment, so we don't want to
+      do the work to add correct aria attributes.
+      */
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div
