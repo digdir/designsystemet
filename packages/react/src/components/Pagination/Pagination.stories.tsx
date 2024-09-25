@@ -121,21 +121,34 @@ export const UsePaginationArgs = {
       defaultValue: {
         summary: 1,
       },
-      control: {
-        type: 'number',
+      table: {
+        type: {
+          summary: 'number',
+        },
       },
     },
     onChange: {
-      action: 'onChange',
+      table: {
+        type: {
+          summary: '(event: MouseEvent<HTMLElement>, page: number) => void',
+        },
+      },
     },
     totalPages: {
-      control: {
-        type: 'number',
+      table: {
+        type: {
+          summary: 'number',
+        },
       },
     },
     showPages: {
-      control: {
-        type: 'number',
+      defaultValue: {
+        summary: 7,
+      },
+      table: {
+        type: {
+          summary: 'number',
+        },
       },
     },
   },
