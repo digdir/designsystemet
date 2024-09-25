@@ -9,23 +9,31 @@ type Story = StoryFn<typeof Field>;
 export default {
   title: 'Komponenter/Field',
   component: Field,
+  argTypes: {
+    type: {
+      control: { type: 'radio' },
+      options: ['textarea', 'input', 'select'],
+    },
+  },
 } as Meta;
 
 // TMP toggles to test a11yField utility
 const toggles = {
+  type: 'textarea',
   label: true,
   description: true,
   validation: true,
 };
 
 export const Preview: Story = (args) => {
-  const { label, description, validation } = args as typeof toggles;
+  const { type, label, description, validation } = args as typeof toggles;
+  const Component = type;
 
   return (
     <Field>
-      {label && <Label>Kort beskrivelse</Label>}
+      {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
       {description && <Field.Help>Beskrivelse</Field.Help>}
-      <textarea style={{ display: 'block' }} />
+      <Component />
       {validation && <Field.Validation>Feilmelding</Field.Validation>}
     </Field>
   );
