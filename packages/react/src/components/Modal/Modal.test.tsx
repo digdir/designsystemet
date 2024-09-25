@@ -87,7 +87,7 @@ describe('Modal', () => {
   it('should not render the close button when closeButton is false', async () => {
     await render({
       open: true,
-      closeLabel: false,
+      closeButton: false,
     });
     expect(
       screen.queryByRole('button', { name: CLOSE_LABEL }),

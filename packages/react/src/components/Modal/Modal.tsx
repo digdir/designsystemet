@@ -12,7 +12,7 @@ export type ModalProps = {
    * Screen reader label of close button. Set false to hide the close button.
    * @default 'Lukk dialogvindu'
    */
-  closeLabel?: string | false;
+  closeButton?: string | false;
   /**
    * Close on backdrop click.
    * @default false
@@ -31,7 +31,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
     asChild,
     children,
     className,
-    closeLabel = 'Lukk dialogvindu',
+    closeButton = 'Lukk dialogvindu',
     onClose,
     open,
     backdropClose = false,
@@ -77,10 +77,10 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
 
   return (
     <Component className={cl('ds-modal', className)} ref={mergedRefs} {...rest}>
-      {closeLabel !== false && (
+      {closeButton !== false && (
         <form method='dialog'>
           <Button
-            aria-label={closeLabel}
+            aria-label={closeButton}
             autoFocus
             color='neutral'
             icon
