@@ -172,6 +172,7 @@ export const StickyHeader: Story = (args) => {
 
 StickyHeader.args = {
   stickyHeader: true,
+  tabIndex: 0,
 };
 
 StickyHeader.decorators = [
