@@ -1,6 +1,7 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 
 import * as PaginationStories from './Pagination.stories';
+import { usePagination } from './usePagination';
 
 <Meta of={PaginationStories} />
 
@@ -87,8 +88,13 @@ I respons får du objektet:
 }
 ```
 
+## Props
+
+<ArgTypes of={PaginationStories.UsePaginationArgs} />
+
 ### Pagenering med lenker
 
 Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker (`a`).
 
 <Canvas of={PaginationStories.WithAnchor} />
+

@@ -1,6 +1,5 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
 
 import { Pagination, type UsePaginationProps, usePagination } from '.';
 
@@ -97,4 +96,47 @@ WithAnchor.args = {
   onChange: console.log, // Open console to see this event
   totalPages: 10,
   showPages: 7,
+};
+
+export const UsePaginationArgs = {
+  argTypes: {
+    /* remove size, aria-label, asChild */
+    size: {
+      table: {
+        disable: true,
+      },
+    },
+    'aria-label': {
+      table: {
+        disable: true,
+      },
+    },
+    asChild: {
+      table: {
+        disable: true,
+      },
+    },
+    currentPage: {
+      description: 'The current page number',
+      defaultValue: {
+        summary: 1,
+      },
+      control: {
+        type: 'number',
+      },
+    },
+    onChange: {
+      action: 'onChange',
+    },
+    totalPages: {
+      control: {
+        type: 'number',
+      },
+    },
+    showPages: {
+      control: {
+        type: 'number',
+      },
+    },
+  },
 };
