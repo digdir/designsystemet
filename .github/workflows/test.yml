@@ -8,6 +8,8 @@ on:
 
 permissions:
   checks: write
+  # Required to put a comment into the pull-request
+  pull-requests: write
 
 jobs:
   checks:
@@ -21,7 +23,12 @@ jobs:
       - name: Types
         run: yarn types:react
       - name: Test
-        run: yarn test
+        run: yarn test --coverage.enabled true
+      - name: 'Report Coverage'
+        # Set if: always() to also generate the report if tests are failing
+        # Only works if you set `reportOnFailure: true` in your vite config as specified above
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build storybook
