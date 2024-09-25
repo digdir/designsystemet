@@ -33,6 +33,15 @@ HTMLDialogElement.prototype.close = vi.fn(function mock(
   this.open = false;
 });
 
+// Add support for dialog form method
+document.addEventListener('click', ({ target }) => {
+  if (target instanceof HTMLElement)
+    target
+      .closest('form[method="dialog"] button[type="submit"]')
+      ?.closest('dialog')
+      ?.close();
+});
+
 const { setScreenWidth } = mockMediaQuery(800);
 setScreenWidth(800);
 

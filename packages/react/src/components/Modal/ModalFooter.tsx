@@ -9,20 +9,18 @@ export type ModalFooterProps = {
    * @default false
    */
   asChild?: boolean;
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
-export const ModalFooter = forwardRef<HTMLElement, ModalFooterProps>(
-  ({ asChild, className, ...rest }, ref) => {
-    const Component = asChild ? Slot : 'footer';
+export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
+  function ModalFooter({ asChild, className, ...rest }, ref) {
+    const Component = asChild ? Slot : 'div';
 
     return (
       <Component
-        ref={ref}
         className={cl('ds-modal__footer', className)}
+        ref={ref}
         {...rest}
       />
     );
   },
 );
-
-ModalFooter.displayName = 'ModalFooter';

@@ -1,48 +1,24 @@
-import { ModalContent } from './ModaContent';
-import { ModalDialog } from './ModalDialog';
+import { Modal as ModalParent } from './Modal';
+import { ModalContext } from './ModalContext';
 import { ModalFooter } from './ModalFooter';
 import { ModalHeader } from './ModalHeader';
-import { ModalRoot } from './ModalRoot';
 import { ModalTrigger } from './ModalTrigger';
 
-export type { ModalRootProps } from './ModalRoot';
-export type { ModalHeaderProps } from './ModalHeader';
-export type { ModalContentProps } from './ModaContent';
-export type { ModalFooterProps } from './ModalFooter';
-export type { ModalDialogProps } from './ModalDialog';
-export type { ModalTriggerProps } from './ModalTrigger';
+const Modal = Object.assign(ModalParent, {
+  Context: ModalContext,
+  Footer: ModalFooter,
+  Header: ModalHeader,
+  Trigger: ModalTrigger,
+});
 
-type ModalComponent = {
-  Root: typeof ModalRoot;
-  Content: typeof ModalContent;
-  Footer: typeof ModalFooter;
-  Header: typeof ModalHeader;
-  Trigger: typeof ModalTrigger;
-  Dialog: typeof ModalDialog;
-};
-
-const Modal = {} as ModalComponent;
-
-Modal.Root = ModalRoot;
-Modal.Content = ModalContent;
-Modal.Footer = ModalFooter;
-Modal.Header = ModalHeader;
-Modal.Trigger = ModalTrigger;
-Modal.Dialog = ModalDialog;
-
-Modal.Root.displayName = 'Modal.Root';
-Modal.Dialog.displayName = 'Modal.Dialog';
+Modal.Context.displayName = 'Modal.Context';
 Modal.Footer.displayName = 'Modal.Footer';
 Modal.Header.displayName = 'Modal.Header';
-Modal.Content.displayName = 'Modal.Content';
 Modal.Trigger.displayName = 'Modal.Trigger';
 
-export {
-  Modal,
-  ModalRoot,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalTrigger,
-  ModalDialog,
-};
+export type { ModalContextProps } from './ModalContext';
+export type { ModalFooterProps } from './ModalFooter';
+export type { ModalHeaderProps } from './ModalHeader';
+export type { ModalProps } from './Modal';
+export type { ModalTriggerProps } from './ModalTrigger';
+export { Modal, ModalContext, ModalFooter, ModalHeader, ModalTrigger };
