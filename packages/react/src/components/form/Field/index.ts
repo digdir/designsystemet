@@ -6,7 +6,7 @@ import { FieldValidation } from './FieldValidation';
  * @example
  * <Field>
  *  <Label>Label text</Label>
- *  <Field.Hint>Description</Field.Hint>
+ *  <Field.Description>Description</Field.Description>
  *  <Input />
  *  <Field.Validation>Validation message</Field.Validation>
  * </Field>
