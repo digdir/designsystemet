@@ -32,7 +32,7 @@ export const Preview: Story = (args) => {
   return (
     <Field>
       {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
-      {description && <Field.Help>Beskrivelse</Field.Help>}
+      {description && <Field.Description>Beskrivelse</Field.Description>}
       <Component />
       {validation && <Field.Validation>Feilmelding</Field.Validation>}
     </Field>

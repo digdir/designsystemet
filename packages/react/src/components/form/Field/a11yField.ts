@@ -3,7 +3,7 @@ let a11yFieldId = Date.now();
 const ARIA_DESC = 'aria-describedby';
 
 export const a11yField = (field: HTMLElement | null) => {
-  const desc = field?.querySelector('[data-field-help]');
+  const desc = field?.querySelector('[data-field-description]');
   const label = field?.querySelector('label');
   const valid = field?.querySelector('[data-field-validation]');
   const input = Array.from(field?.querySelectorAll('*') || []).find(
