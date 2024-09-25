@@ -18,6 +18,10 @@
   height: 26px;
   width: auto;
   margin-right: var(--ds-spacing-2);
+
+  &.udir {
+    height: 32px;
+  }
 }
 
 .logos {
