@@ -274,46 +274,105 @@
 }
 
 /** Label */
-.ds-label {
+.ds-label--md {
   --dsc-bottom-spacing: var(--ds-spacing-1);
 
-  color: var(--ds-color-neutral-text-default);
-  display: inline-block;
   font-size: var(--ds-label-md-font-size);
   font-weight: var(--ds-label-md-font-weight);
   letter-spacing: var(--ds-label-md-letter-spacing);
   line-height: var(--ds-label-md-line-height);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
   margin: 0;
   padding: 0;
 
   &[data-spacing] {
     margin-bottom: var(--dsc-bottom-spacing);
   }
+}
 
-  &[data-size='xs'] {
-    font-weight: var(--ds-label-xs-font-weight);
-    line-height: var(--ds-label-xs-line-height);
-    font-size: var(--ds-label-xs-font-size);
-    letter-spacing: var(--ds-label-xs-letter-spacing);
+.ds-label--xs {
+  font-weight: var(--ds-label-xs-font-weight);
+  line-height: var(--ds-label-xs-line-height);
+  font-size: var(--ds-label-xs-font-size);
+  letter-spacing: var(--ds-label-xs-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
   }
+}
 
-  &[data-size='sm'] {
-    font-weight: var(--ds-label-sm-font-weight);
-    line-height: var(--ds-label-sm-line-height);
-    font-size: var(--ds-label-sm-font-size);
-    letter-spacing: var(--ds-label-sm-letter-spacing);
+.ds-label--sm {
+  font-weight: var(--ds-label-sm-font-weight);
+  line-height: var(--ds-label-sm-line-height);
+  font-size: var(--ds-label-sm-font-size);
+  letter-spacing: var(--ds-label-sm-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
   }
+}
 
-  &[data-size='lg'] {
-    font-weight: var(--ds-label-lg-font-weight);
-    line-height: var(--ds-label-lg-line-height);
-    font-size: var(--ds-label-lg-font-size);
-    letter-spacing: var(--ds-label-lg-letter-spacing);
+.ds-label--lg {
+  font-weight: var(--ds-label-lg-font-weight);
+  line-height: var(--ds-label-lg-line-height);
+  font-size: var(--ds-label-lg-font-size);
+  letter-spacing: var(--ds-label-lg-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
   }
 }
 
 /** Validation message */
-.ds-validation-message {
+
+.ds-validation-message--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-error_message-xs-font-weight);
+  line-height: var(--ds-error_message-xs-line-height);
+  font-size: var(--ds-error_message-xs-font-size);
+  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
+  }
+}
+
+.ds-validation-message--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-weight: var(--ds-error_message-sm-font-weight);
+  line-height: var(--ds-error_message-sm-line-height);
+  font-size: var(--ds-error_message-sm-font-size);
+  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
+  }
+}
+
+.ds-validation-message--md {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
   font-size: var(--ds-error_message-md-font-size);
@@ -329,32 +388,22 @@
   &[data-spacing] {
     margin-bottom: var(--dsc-bottom-spacing);
   }
+}
 
-  &[data-size='xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-3);
+.ds-validation-message--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
 
-    font-weight: var(--ds-error_message-xs-font-weight);
-    line-height: var(--ds-error_message-xs-line-height);
-    font-size: var(--ds-error_message-xs-font-size);
-    letter-spacing: var(--ds-error_message-xs-letter-spacing);
+  font-weight: var(--ds-error_message-lg-font-weight);
+  line-height: var(--ds-error_message-lg-line-height);
+  font-size: var(--ds-error_message-lg-font-size);
+  letter-spacing: var(--ds-error_message-lg-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
   }
 
-  &[data-size='sm'] {
-    --dsc-bottom-spacing: var(--ds-spacing-4);
-
-    font-weight: var(--ds-error_message-sm-font-weight);
-    line-height: var(--ds-error_message-sm-line-height);
-    font-size: var(--ds-error_message-sm-font-size);
-    letter-spacing: var(--ds-error_message-sm-letter-spacing);
-  }
-
-  &[data-size='lg'] {
-    --dsc-bottom-spacing: var(--ds-spacing-5);
-
-    font-weight: var(--ds-error_message-lg-font-weight);
-    line-height: var(--ds-error_message-lg-line-height);
-    font-size: var(--ds-error_message-lg-font-size);
-    letter-spacing: var(--ds-error_message-lg-letter-spacing);
+  &[data-spacing] {
+    margin-bottom: var(--dsc-bottom-spacing);
   }
 }
 
