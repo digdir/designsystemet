@@ -6,6 +6,14 @@ import { Pagination, type UsePaginationProps, usePagination } from '.';
 export default {
   title: 'Komponenter/Pagination',
   component: Pagination,
+  argTypes: {
+    /* Hide usePagination props: */
+    currentPage: { table: { disable: true } },
+    onChange: { table: { disable: true } },
+    setCurrentPage: { table: { disable: true } },
+    showPages: { table: { disable: true } },
+    totalPages: { table: { disable: true } },
+  },
 } as Meta;
 
 export const Preview: StoryFn<UsePaginationProps> = (args) => {
@@ -96,60 +104,4 @@ WithAnchor.args = {
   onChange: console.log, // Open console to see this event
   totalPages: 10,
   showPages: 7,
-};
-
-export const UsePaginationArgs = {
-  argTypes: {
-    /* remove size, aria-label, asChild */
-    size: {
-      table: {
-        disable: true,
-      },
-    },
-    'aria-label': {
-      table: {
-        disable: true,
-      },
-    },
-    asChild: {
-      table: {
-        disable: true,
-      },
-    },
-    currentPage: {
-      description: 'The current page number',
-      defaultValue: {
-        summary: 1,
-      },
-      table: {
-        type: {
-          summary: 'number',
-        },
-      },
-    },
-    onChange: {
-      table: {
-        type: {
-          summary: '(event: MouseEvent<HTMLElement>, page: number) => void',
-        },
-      },
-    },
-    totalPages: {
-      table: {
-        type: {
-          summary: 'number',
-        },
-      },
-    },
-    showPages: {
-      defaultValue: {
-        summary: 7,
-      },
-      table: {
-        type: {
-          summary: 'number',
-        },
-      },
-    },
-  },
 };

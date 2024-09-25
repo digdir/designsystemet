@@ -10,7 +10,7 @@ export const PaginationContext = createContext({
 export type PaginationProps = {
   /**
    * Sets the screen reader label for the Pagination area
-   * @default 'Sidenavigering'
+   * @default Sidenavigering
    */
   'aria-label'?: string;
   /** Sets the size of the component

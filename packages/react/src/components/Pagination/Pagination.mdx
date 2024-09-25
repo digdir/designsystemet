@@ -1,6 +1,7 @@
 import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 
 import * as PaginationStories from './Pagination.stories';
+import * as usePaginationStories from './usePagination.stories';
 import { usePagination } from './usePagination';
 
 <Meta of={PaginationStories} />
@@ -65,14 +66,11 @@ const { pages, onChange, prevButtonProps, nextButtonProps, hasNext, hasPrevious 
 Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
 Du kan sende inn:
 
-```ts
-usePagination({
-  currentPage: number, // Hvilken side som er aktiv (begynner på 1)
-  setCurrentPage: (page: number) => void, // Funksjonen for å endre side - typisk funksjonen du får fra useState
-  totalPages: number, // Totalt antall side
-  showPages: number, // Antall sider som skal vises i pagineringen
-});
-```
+
+## Props
+
+<ArgTypes of={usePaginationStories.UsePaginationArgs} />
+
 I respons får du objektet:
 ```ts
 {
@@ -87,10 +85,6 @@ I respons får du objektet:
   }>
 }
 ```
-
-## Props
-
-<ArgTypes of={PaginationStories.UsePaginationArgs} />
 
 ### Pagenering med lenker
 
