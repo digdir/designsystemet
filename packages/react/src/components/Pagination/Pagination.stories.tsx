@@ -6,14 +6,6 @@ import { Pagination, type UsePaginationProps, usePagination } from '.';
 export default {
   title: 'Komponenter/Pagination',
   component: Pagination,
-  argTypes: {
-    /* Hide usePagination props: */
-    currentPage: { table: { disable: true } },
-    onChange: { table: { disable: true } },
-    setCurrentPage: { table: { disable: true } },
-    showPages: { table: { disable: true } },
-    totalPages: { table: { disable: true } },
-  },
 } as Meta;
 
 export const Preview: StoryFn<UsePaginationProps> = (args) => {
@@ -50,6 +42,7 @@ export const Preview: StoryFn<UsePaginationProps> = (args) => {
 
 Preview.args = {
   currentPage: 4,
+  setCurrentPage: console.log, // Added to include in storybook args
   onChange: console.log, // Open console to see this event
   totalPages: 10,
   showPages: 7,

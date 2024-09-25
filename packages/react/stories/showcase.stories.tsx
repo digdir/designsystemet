@@ -23,6 +23,7 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
+  usePagination,
 } from '../src';
 
 import classes from './showcase.module.css';
@@ -33,6 +34,14 @@ export default {
 
 export const Showcase: StoryFn = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
+
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
@@ -151,28 +160,19 @@ export const Showcase: StoryFn = () => {
         <Pagination>
           <Pagination.List>
             <Pagination.Item>
-              <Pagination.Button>Forrige</Pagination.Button>
+              <Pagination.Button {...pagination.prevButtonProps}>
+                Forrige
+              </Pagination.Button>
             </Pagination.Item>
+            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+              <Pagination.Item key={itemKey}>
+                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+              </Pagination.Item>
+            ))}
             <Pagination.Item>
-              <Pagination.Button aria-current='page'>1</Pagination.Button>
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button>2</Pagination.Button>
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button>3</Pagination.Button>
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button />
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button>6</Pagination.Button>
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button>7</Pagination.Button>
-            </Pagination.Item>
-            <Pagination.Item>
-              <Pagination.Button>Neste</Pagination.Button>
+              <Pagination.Button {...pagination.nextButtonProps}>
+                Neste
+              </Pagination.Button>
             </Pagination.Item>
           </Pagination.List>
         </Pagination>

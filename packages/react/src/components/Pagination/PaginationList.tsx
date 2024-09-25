@@ -1,8 +1,6 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 import type { HTMLAttributes } from 'react';
-import { PaginationContext } from './Pagination';
 
 export type PaginationListProps = {
   /**

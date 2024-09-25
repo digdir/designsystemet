@@ -1,7 +1,6 @@
 import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 
 import * as PaginationStories from './Pagination.stories';
-import * as usePaginationStories from './usePagination.stories';
 import { usePagination } from './usePagination';
 
 <Meta of={PaginationStories} />
@@ -19,7 +18,7 @@ Vær oppmerksom på:
   - Se eksempel [Paginering med lenker](/docs/komponenter-pagination--with-anchor).
 
 <Primary />
-<Controls of={PaginationStories.Preview} />
+<Controls of={PaginationStories.Preview} include={['aria-label', 'asChild', 'size']} />
 
 ## Bruk
 
@@ -30,10 +29,12 @@ Vær oppmerksom på:
 ```tsx
 import { Pagination } from '@digdir/designsystemet-react';
 
+const onChange = (event, page: number) => console.log(`Going to page ${page}`);
 const [currentPage, setCurrentPage] = useState(4);
-const { pages, onChange, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
+const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
   currentPage,
   setCurrentPage,
+  onChange,
   totalPages: 10,
   showPages: 7,
 });
@@ -69,9 +70,11 @@ Du kan sende inn:
 
 ## Props
 
-<ArgTypes of={usePaginationStories.UsePaginationArgs} />
+<ArgTypes of={PaginationStories.Preview} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
 
+<br />
 I respons får du objektet:
+
 ```ts
 {
   hasPrev: boolean, // Indikererer om det finnes en forrige side

@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { createContext, forwardRef, useState } from 'react';
-import type { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import { createContext, forwardRef } from 'react';
+import type { HTMLAttributes } from 'react';
 
 export const PaginationContext = createContext({
   size: 'md' as NonNullable<PaginationProps['size']>,

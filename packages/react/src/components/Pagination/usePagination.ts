@@ -15,10 +15,29 @@ const getSteps = (now: number, max: number, show: number) => {
 };
 
 export type UsePaginationProps = {
+  /**
+   * The current page number
+   * @default 1
+   */
   currentPage: number;
-  setCurrentPage?: Dispatch<SetStateAction<number>>;
+  /**
+   * Function to change currentPage - typically returned from useState
+   */
+  setCurrentPage?: (page: number) => void;
+  /**
+   * Callback when the page changes
+   * (event: MouseEvent<HTMLElement>, page: number) => void
+   */
   onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
+  /**
+   * The total number of pages
+   * @default 1
+   */
   totalPages: number;
+  /**
+   * The maximum number of pages to show
+   * @default 1
+   */
   showPages?: number;
 };
 
