@@ -1,12 +1,12 @@
 import { Card as CardParent } from './Card';
-import { CardSection } from './CardSection';
+import { CardPart } from './CardPart';
 
 const Card = Object.assign(CardParent, {
-  Section: CardSection,
+  Part: CardPart,
 });
 
-Card.Section.displayName = 'Card.Section';
+Card.Part.displayName = 'Card.Part';
 
 export type { CardProps } from './Card';
-export type { CardSectionProps } from './CardSection';
-export { Card, CardSection };
+export type { CardPartProps } from './CardPart';
+export { Card, CardPart };

@@ -97,7 +97,7 @@
 }
 
 /* Usin :where to overwrite user agent CSS, but not our own CSS */
-:where(.ds-card, .ds-card__section) {
+:where(.ds-card, .ds-card__part) {
   & > :first-child {
     margin-block: 0;
   }
@@ -112,16 +112,16 @@
   }
 }
 
-.ds-card__section {
+.ds-card__part {
   padding: var(--dsc-card-padding) var(--dsc-card-padding);
   margin: var(--dsc-card-padding) var(--dsc-card-padding-invert);
 
   :is(&, hr) + & {
-    margin-top: 0; /* No margin-top if previous element is hr or also ds-card__section */
+    margin-top: 0; /* No margin-top if previous element is hr or also ds-card__part */
   }
 
   &:has(+ &, + hr) {
-    margin-bottom: 0; /* No margin-bottom if next element is hr or also ds-card__section */
+    margin-bottom: 0; /* No margin-bottom if next element is hr or also ds-card__part */
   }
 
   &:first-child {

@@ -1,6 +1,6 @@
 import {
   Card,
-  CardSection,
+  CardPart,
   Heading,
   Paragraph,
   Tag,
@@ -43,10 +43,10 @@ export const BlogCard = ({
       className={cl(classes.card, className)}
       {...props}
     >
-      <CardSection>
+      <CardPart>
         <img src={image} alt='' className={classes.image} />
-      </CardSection>
-      <CardSection>
+      </CardPart>
+      <CardPart>
         {tagText && (
           <Tag className={classes.tag} color={tagColor} size='sm'>
             {tagText}
@@ -70,7 +70,7 @@ export const BlogCard = ({
               </>
             ))}
         </Paragraph>
-      </CardSection>
+      </CardPart>
     </Card>
   );
 };

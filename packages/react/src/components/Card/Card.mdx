@@ -16,9 +16,9 @@ Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
 <Card>
-  <Card.Section>Tittel</Card.Section>
-  <Card.Section>Innhold</Card.Section>
-  <Card.Section>Valgfri fotnote</Card.Section>
+  <Card.Part>Tittel</Card.Part>
+  <Card.Part>Innhold</Card.Part>
+  <Card.Part>Valgfri fotnote</Card.Part>
 </Card>;
 ```
 
@@ -27,9 +27,9 @@ import { Card } from '@digdir/designsystemet-react';
 
 ## Eksempler
 
-`Card.Section`
+`Card.Part`
 
-Bruk`Card.Section` hvis du vi ha bilder eller video i kortene.
+Bruk`Card.Part` hvis du vi ha bilder eller video i kortene.
 
 <Canvas of={CardStories.Media} />
 

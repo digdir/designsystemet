@@ -15,7 +15,7 @@ export type CardProps = {
    * @default false
    */
   asChild?: boolean;
-  /** Instances of `Card.Section`, `Divider` or other React nodes */
+  /** Instances of `Card.Part`, `Divider` or other React nodes */
   children: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -23,9 +23,9 @@ export type CardProps = {
  * Card component to present content in a structured way.
  * @example
  * <Card>
- *  <Card.Section>Header</Card.Section>
- *  <Card.Section>Content</Card.Section>
- *  <Card.Section>Footer</Card.Section>
+ *  <Card.Part>Header</Card.Part>
+ *  <Card.Part>Content</Card.Part>
+ *  <Card.Part>Footer</Card.Part>
  * </Card>
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(

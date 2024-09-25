@@ -49,9 +49,9 @@ export const LinkCard: Story = (args) => (
     }}
   >
     <Card {...args} color='brand1'>
-      <Card.Section>
+      <Card.Part>
         <img src={cat5} alt='' />
-      </Card.Section>
+      </Card.Part>
       <Heading size='sm' level={2}>
         <a
           href='https://designsystemet.no'
@@ -68,9 +68,9 @@ export const LinkCard: Story = (args) => (
       <Paragraph size='sm'>Footer text</Paragraph>
     </Card>
     <Card {...args} color='neutral'>
-      <Card.Section>
+      <Card.Part>
         <img src={cat6} alt='' />
-      </Card.Section>
+      </Card.Part>
       <Heading size='sm' level={2}>
         <a
           href='https://designsystemet.no'
@@ -99,9 +99,9 @@ export const Variants: StoryFn<typeof Card> = () => {
       }}
     >
       <Card color='neutral'>
-        <Card.Section>
+        <Card.Part>
           <img src={cat1} alt='katt' />
-        </Card.Section>
+        </Card.Part>
         <Heading level={2} size='sm'>
           Card Neutral
         </Heading>
@@ -112,9 +112,9 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Paragraph>
       </Card>
       <Card color='subtle'>
-        <Card.Section>
+        <Card.Part>
           <img src={cat2} alt='katt' />
-        </Card.Section>
+        </Card.Part>
         <Heading level={2} size='sm'>
           Card Subtle
         </Heading>
@@ -125,9 +125,9 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Paragraph>
       </Card>
       <Card color='brand1'>
-        <Card.Section>
+        <Card.Part>
           <img src={cat3} alt='katter' />
-        </Card.Section>
+        </Card.Part>
         <Heading level={2} size='sm'>
           Card First
         </Heading>
@@ -138,9 +138,9 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Paragraph>
       </Card>
       <Card color='brand2'>
-        <Card.Section>
+        <Card.Part>
           <img src={cat4} alt='katt' />
-        </Card.Section>
+        </Card.Part>
         <Heading level={2} size='sm'>
           Card Second
         </Heading>
@@ -151,9 +151,9 @@ export const Variants: StoryFn<typeof Card> = () => {
         </Paragraph>
       </Card>
       <Card color='brand3'>
-        <Card.Section>
+        <Card.Part>
           <img src={cat5} alt='katt' />
-        </Card.Section>
+        </Card.Part>
         <Heading level={2} size='sm'>
           Card Third
         </Heading>
@@ -176,9 +176,9 @@ export const Media: Story = () => (
     }}
   >
     <Card>
-      <Card.Section>
+      <Card.Part>
         <img src={cat1} alt='katt' />
-      </Card.Section>
+      </Card.Part>
       <Heading level={2} size='sm'>
         Card Neutral
       </Heading>
@@ -195,16 +195,16 @@ export const Media: Story = () => (
         Most provide as with carried business are much better more the perfected
         designer. Writing slightly explain desk unable at supposedly about this
       </Paragraph>
-      <Card.Section>
+      <Card.Part>
         <img src={cat1} alt='katt' />
-      </Card.Section>
+      </Card.Part>
     </Card>
   </div>
 );
 
 export const Video: Story = () => (
   <Card color='neutral' style={{ width: '320px' }}>
-    <Card.Section>
+    <Card.Part>
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
         width='320px'
@@ -212,7 +212,7 @@ export const Video: Story = () => (
         allow='autoplay; fullscreen; picture-in-picture'
         title='30 år med digitalt innsyn'
       ></iframe>
-    </Card.Section>
+    </Card.Part>
     <Heading level={2} size='sm'>
       <Link
         href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
@@ -236,7 +236,7 @@ const options = [
 
 export const Composed: Story = () => (
   <Card style={{ width: '320px' }}>
-    <Card.Section>
+    <Card.Part>
       <div
         style={{
           display: 'flex',
@@ -252,9 +252,9 @@ export const Composed: Story = () => (
           Fjern
         </Button>
       </div>
-    </Card.Section>
+    </Card.Part>
     <Divider />
-    <Card.Section>
+    <Card.Part>
       <Select label='Velg rolle'>
         {options.map(({ value, label }, index) => (
           <Select.Option key={index} value={value}>
@@ -264,7 +264,7 @@ export const Composed: Story = () => (
       </Select>
       <Textfield label='Fødsels- eller d-nummer' />
       <Textfield label='Etternavn' />
-    </Card.Section>
+    </Card.Part>
   </Card>
 );
 
@@ -282,9 +282,9 @@ export const AsLink: Story = (args) => (
         target='_blank'
         rel='noopener noreferrer'
       >
-        <Card.Section>
+        <Card.Part>
           <img src={cat5} alt='' />
-        </Card.Section>
+        </Card.Part>
         <Heading size='sm' level={2}>
           Link Card
         </Heading>
@@ -302,9 +302,9 @@ export const AsLink: Story = (args) => (
         target='_blank'
         rel='noopener noreferrer'
       >
-        <Card.Section>
+        <Card.Part>
           <img src={cat6} alt='' />
-        </Card.Section>
+        </Card.Part>
         <Heading size='sm' level={2}>
           Link Card
         </Heading>
