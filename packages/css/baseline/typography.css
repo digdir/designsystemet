@@ -93,49 +93,6 @@
   }
 }
 
-/** Ingress */
-.ds-ingress {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
-  color: var(--ds-color-neutral-text-default);
-  font-size: var(--ds-ingress-md-font-size);
-  font-weight: var(--ds-ingress-md-font-weight);
-  letter-spacing: var(--ds-ingress-md-letter-spacing);
-  line-height: var(--ds-ingress-md-line-height);
-  margin: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-
-  &[data-size='xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-8);
-
-    font-weight: var(--ds-ingress-xs-font-weight);
-    line-height: var(--ds-ingress-xs-line-height);
-    font-size: var(--ds-ingress-xs-font-size);
-    letter-spacing: var(--ds-ingress-xs-letter-spacing);
-  }
-
-  &[data-size='sm'] {
-    --dsc-bottom-spacing: var(--ds-spacing-7);
-
-    font-weight: var(--ds-ingress-sm-font-weight);
-    line-height: var(--ds-ingress-sm-line-height);
-    font-size: var(--ds-ingress-sm-font-size);
-    letter-spacing: var(--ds-ingress-sm-letter-spacing);
-  }
-
-  &[data-size='lg'] {
-    --dsc-bottom-spacing: var(--ds-spacing-6);
-
-    font-weight: var(--ds-ingress-lg-font-weight);
-    line-height: var(--ds-ingress-lg-line-height);
-    font-size: var(--ds-ingress-lg-font-size);
-    letter-spacing: var(--ds-ingress-lg-letter-spacing);
-  }
-}
-
 /** Body */
 .ds-body-text--xs {
   --dsc-bottom-spacing: var(--ds-spacing-3);
