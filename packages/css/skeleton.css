@@ -29,7 +29,7 @@
       content: '';
       background: var(--dsc-skeleton-background);
       border-radius: inherit;
-      inset: 6% 0;
+      inset: 20% 0;
       position: absolute;
     }
 
