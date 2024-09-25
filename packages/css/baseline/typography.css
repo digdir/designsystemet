@@ -137,7 +137,7 @@
 }
 
 /** Body */
-.ds-body--default-xs {
+.ds-body--xs {
   --dsc-bottom-spacing: var(--ds-spacing-3);
 
   font-weight: var(--ds-paragraph-xs-font-weight);
@@ -148,7 +148,7 @@
   margin: 0;
 }
 
-.ds-body--default-sm {
+.ds-body--sm {
   --dsc-bottom-spacing: var(--ds-spacing-4);
 
   font-weight: var(--ds-paragraph-sm-font-weight);
@@ -159,7 +159,7 @@
   margin: 0;
 }
 
-.ds-body--default-md {
+.ds-body--md {
   --dsc-bottom-spacing: var(--ds-spacing-5);
 
   font-weight: var(--ds-paragraph-md-font-weight);
@@ -170,7 +170,7 @@
   margin: 0;
 }
 
-.ds-body--default-lg {
+.ds-body--lg {
   --dsc-bottom-spacing: var(--ds-spacing-6);
 
   font-weight: var(--ds-paragraph-lg-font-weight);
