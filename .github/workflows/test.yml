@@ -1,0 +1,47 @@
+name: Test
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'apps/storybook/**'
+
+permissions:
+  checks: write
+
+jobs:
+  checks:
+    name: Build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: yarn build
+      - name: Types
+        run: yarn types:react
+      - name: Test
+        run: yarn test
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Build storybook
+        run: yarn build:storybook
+      - name: Run Storybook tests
+        run: yarn test:storybook
+      - name: Replace relative paths in test report
+        uses: jacobtomlinson/gha-find-replace@v3
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          include: 'apps/storybook/test-results.xml'
+          find: '../../'
+          replace: ''
+          regex: false
+      - name: Publish Storybook test report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: 'apps/storybook/test-results.xml'
+          detailed_summary: true
+          check_name: Storybook Test Report
+          check_annotations: true
+          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
