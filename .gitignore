@@ -35,3 +35,6 @@ coverage/
 
 # Typescript
 next-env.d.ts
+
+# jest/vitest test reports
+test-report.xml

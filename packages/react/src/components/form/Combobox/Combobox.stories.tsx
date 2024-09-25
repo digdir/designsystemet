@@ -218,6 +218,10 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
+Controlled.args = {
+  label: 'Hvor går reisen?',
+};
+
 export const InForm: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState<string[]>([]);
 
@@ -489,6 +493,7 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
 };
 
 ThousandsOfOptions.args = {
+  label: 'Hvor går reisen?',
   virtual: true,
 };
 
@@ -543,9 +548,13 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-export const WithNumberValues: StoryFn<typeof Combobox> = () => {
+RemoveAllOptions.args = {
+  label: 'Hvor går reisen?',
+};
+
+export const WithNumberValues: StoryFn<typeof Combobox> = (args) => {
   return (
-    <Combobox initialValue={['2000']}>
+    <Combobox {...args} initialValue={['2000']}>
       <Combobox.Option id={'3000'} key={'3000'} value={'3000'}>
         some value
       </Combobox.Option>
@@ -554,4 +563,8 @@ export const WithNumberValues: StoryFn<typeof Combobox> = () => {
       </Combobox.Option>
     </Combobox>
   );
+};
+
+WithNumberValues.args = {
+  label: 'Hvor går reisen?',
 };
