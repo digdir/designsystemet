@@ -38,7 +38,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     } = useSwitch(props);
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph
+        asChild
+        size={size}
+        {...(inputProps.disabled && { 'aria-disabled': true })}
+      >
         <div
           className={cl(
             `ds-switch`,

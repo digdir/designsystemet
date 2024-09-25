@@ -155,7 +155,7 @@ export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
       Gå til Designsystemet
-      <ExternalLinkIcon fontSize='1.5rem' />
+      <ExternalLinkIcon fontSize='1.5rem' title='Ekstern lenke' />
     </a>
   </Button>
 );
@@ -194,24 +194,24 @@ Loading.decorators = [stack];
 export const Icons: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' size='sm'>
-      <CogIcon fontSize='1rem' />
+      <CogIcon fontSize='1rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='sm'>
-      <CogIcon fontSize='1rem' />
+      <CogIcon fontSize='1rem' aria-hidden />
       Small
     </Button>
     <Button variant='primary' size='md'>
-      <CogIcon fontSize='1.5rem' />
+      <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='md'>
-      <CogIcon fontSize='1.5rem' />
+      <CogIcon fontSize='1.5rem' aria-hidden />
       Medium
     </Button>
     <Button variant='primary' size='lg'>
-      <CogIcon fontSize='2rem' />
+      <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='lg'>
-      <CogIcon fontSize='2rem' />
+      <CogIcon fontSize='2rem' aria-hidden />
       Large
     </Button>
   </>
@@ -222,23 +222,13 @@ Icons.decorators = [stack];
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
-      <Button
-        icon
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
-        <PlusCircleIcon fontSize='1.5rem' />
+      <Button icon color='neutral' variant='tertiary' aria-label='Legg til ny'>
+        <PlusCircleIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
-      <Button
-        icon
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
-        <BellIcon fontSize='1.5rem' />
+      <Button icon color='neutral' variant='tertiary' aria-label='Varslinger'>
+        <BellIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
@@ -246,9 +236,9 @@ export const IconOnly: StoryFn<typeof Button> = () => (
         icon
         color='neutral'
         variant='tertiary'
-        aria-label='Tertiary med ikon'
+        aria-label='Innstillinger'
       >
-        <CogIcon fontSize='1.5rem' />
+        <CogIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
   </>
@@ -270,13 +260,13 @@ IconOnly.decorators = [
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
     <Button icon variant='primary' size='sm'>
-      <CogIcon fontSize='1.5rem' />
+      <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
     <Button icon variant='primary' size='md'>
-      <CogIcon fontSize='2rem' />
+      <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
     <Button icon variant='primary' size='lg'>
-      <CogIcon fontSize='2.5rem' />
+      <CogIcon fontSize='2.5rem' title='Innstillinger' />
     </Button>
   </>
 );

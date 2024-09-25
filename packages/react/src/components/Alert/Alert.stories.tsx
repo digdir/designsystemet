@@ -116,8 +116,8 @@ export const UtenAria: Story = (args) => (
 );
 
 export const MedAria: Story = (args) => (
-  <Alert {...args} color='danger'>
-    <Heading level={2} size='xs' spacing role='alert'>
+  <Alert {...args} color='danger' role='alert'>
+    <Heading level={2} size='xs' spacing>
       Vi klarer ikke lagre skjemaet
     </Heading>
     <Paragraph>

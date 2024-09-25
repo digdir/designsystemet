@@ -17,4 +17,3 @@ jobs:
         run: yarn biome ci .
       - name: Lint CSS
         run: yarn lint-style
-

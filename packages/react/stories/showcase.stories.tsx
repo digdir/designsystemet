@@ -86,7 +86,7 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select label='' size='sm'>
+            <Select aria-label='Velg handling' size='sm'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>

@@ -72,19 +72,19 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
       <br />
       <ToggleGroup value={value} size='md' onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
-          <EnvelopeClosedIcon fontSize='1.5rem' />
+          <EnvelopeClosedIcon fontSize='1.5rem' aria-hidden />
           Innboks
         </ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>
-          <DocPencilIcon fontSize='1.5rem' />
+          <DocPencilIcon fontSize='1.5rem' aria-hidden />
           Utkast
         </ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>
-          <ArchiveIcon fontSize='1.5rem' />
+          <ArchiveIcon fontSize='1.5rem' aria-hidden />
           Arkiv
         </ToggleGroup.Item>
         <ToggleGroup.Item value='sendt'>
-          <PaperplaneIcon fontSize='1.5rem' />
+          <PaperplaneIcon fontSize='1.5rem' aria-hidden />
           Sendt
         </ToggleGroup.Item>
       </ToggleGroup>
