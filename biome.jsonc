@@ -53,7 +53,6 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "noSvgWithoutTitle": "off",
         "noNoninteractiveElementToInteractiveRole": "off",
         "useValidAnchor": "off",
         "useButtonType": "off",
@@ -86,6 +85,20 @@
     {
       "include": ["**/packages/cli/**/*.ts"],
       "formatter": { "lineWidth": 120 }
+    },
+    {
+      "include": [
+        "**/apps/_components/**",
+        "**/apps/storefront/**",
+        "**/apps/theme/**"
+      ],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noSvgWithoutTitle": "off"
+          }
+        }
+      }
     }
   ]
 }
