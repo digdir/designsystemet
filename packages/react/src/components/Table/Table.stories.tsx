@@ -15,6 +15,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
+import { Label } from '../Typography';
 
 type Story = StoryFn<typeof Table>;
 
@@ -227,13 +228,16 @@ export const WithFormElements: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell>
-            <Checkbox
-              checked={headerChecked}
-              onChange={handleHeaderCheckboxChange}
-              indeterminate={interderminate}
-              value='all'
-              size='sm'
-            />
+            <Label style={{ display: 'flex', gap: '8px' }}>
+              <Checkbox
+                checked={headerChecked}
+                onChange={handleHeaderCheckboxChange}
+                indeterminate={interderminate}
+                value='all'
+                size='sm'
+              />
+              Selection
+            </Label>
           </TableHeaderCell>
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>
@@ -245,6 +249,7 @@ export const WithFormElements: Story = (args) => {
           <TableRow key={row}>
             <TableCell>
               <Checkbox
+                aria-label={`Checkbox ${row}`}
                 checked={!!checkedItems[row]}
                 value={row.toString()}
                 onChange={(event) => handleCheckboxChange(event, row)}
@@ -254,7 +259,7 @@ export const WithFormElements: Story = (args) => {
             <TableCell>1</TableCell>
             <TableCell>2</TableCell>
             <TableCell>
-              <Textfield size='sm' />
+              <Textfield size='sm' aria-label={`Textfield ${row}`} />
             </TableCell>
           </TableRow>
         ))}
