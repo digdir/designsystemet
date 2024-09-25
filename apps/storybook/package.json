@@ -6,7 +6,7 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o ./dist",
     "static-storybook": "npx http-server dist --port 6006 --silent",
-    "test-storybook": "rimraf test-results.xml && wait-on tcp:6006 && test-storybook --junit",
+    "test-storybook": "rimraf test-report.xml && wait-on tcp:6006 && test-storybook --junit",
     "run-and-test-storybook": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'yarn static-storybook' 'yarn test-storybook'"
   },
   "author": "",
@@ -47,7 +47,8 @@
     "wait-on": "^8.0.1"
   },
   "jest-junit": {
-    "outputName": "test-results.xml",
+    "suiteName": "Storybook tests",
+    "outputName": "test-report.xml",
     "addFileAttribute": "true",
     "ancestorSeparator": " › ",
     "suiteNameTemplate": "{filepath}",

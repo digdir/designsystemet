@@ -23,12 +23,19 @@ jobs:
       - name: Types
         run: yarn types:react
       - name: Test
-        run: yarn test --coverage.enabled true
+        run: yarn test
       - name: 'Report Coverage'
-        # Set if: always() to also generate the report if tests are failing
-        # Only works if you set `reportOnFailure: true` in your vite config as specified above
-        if: always()
+        if: success() || failure()
         uses: davelosert/vitest-coverage-report-action@v2
+      - name: Publish unit test report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure()
+        with:
+          report_paths: 'test-report.xml'
+          detailed_summary: true
+          check_name: Unit Test Report
+          check_annotations: true
+          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build storybook
@@ -37,17 +44,17 @@ jobs:
         run: yarn test:storybook
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@v3
-        if: success() || failure() # always run even if the previous step fails
+        if: success() || failure()
         with:
-          include: 'apps/storybook/test-results.xml'
+          include: 'apps/storybook/test-report.xml'
           find: '../../'
           replace: ''
           regex: false
       - name: Publish Storybook test report
         uses: mikepenz/action-junit-report@v4
-        if: success() || failure() # always run even if the previous step fails
+        if: success() || failure()
         with:
-          report_paths: 'apps/storybook/test-results.xml'
+          report_paths: 'apps/storybook/test-report.xml'
           detailed_summary: true
           check_name: Storybook Test Report
           check_annotations: true
