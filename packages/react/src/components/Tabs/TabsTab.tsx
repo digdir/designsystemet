@@ -23,18 +23,16 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
 
     return (
       <RovingFocusItem value={value} {...rest} asChild>
-        <Paragraph asChild variant='short' size={tabs.size}>
-          <button
-            {...rest}
-            aria-selected={tabs.value === value}
-            className={cl('ds-tabs__tab', className)}
-            id={buttonId}
-            onClick={() => tabs.onChange?.(value)}
-            ref={ref}
-            role='tab'
-            type='button'
-          />
-        </Paragraph>
+        <button
+          {...rest}
+          aria-selected={tabs.value === value}
+          className={cl('ds-tabs__tab', className)}
+          id={buttonId}
+          onClick={() => tabs.onChange?.(value)}
+          ref={ref}
+          role='tab'
+          type='button'
+        />
       </RovingFocusItem>
     );
   },

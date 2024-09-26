@@ -26,15 +26,9 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     return (
       <>
         {active && (
-          <Paragraph asChild variant='short' size={size}>
-            <div
-              className={cl('ds-tabs__panel', className)}
-              ref={ref}
-              {...rest}
-            >
-              {children}
-            </div>
-          </Paragraph>
+          <div className={cl('ds-tabs__panel', className)} ref={ref} {...rest}>
+            {children}
+          </div>
         )}
       </>
     );
