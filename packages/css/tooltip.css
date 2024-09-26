@@ -6,7 +6,7 @@
   color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
 
-  @composes ds-body-text--short-xs from './baseline/typography.css';
+  @composes ds-body-text--short-xs from './utilities.css';
 }
 
 .ds-tooltip__arrow {

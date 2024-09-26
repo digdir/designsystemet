@@ -6,7 +6,7 @@
   margin: 0;
   padding-left: var(--dsc-list-padding-left);
 
-  @composes ds-body-text--md from './baseline/typography.css';
+  @composes ds-body-text--md from './utilities.css';
 
   & > li + li {
     margin-top: var(--dsc-list-spacing);
@@ -27,12 +27,12 @@
   &[data-size='sm'] {
     --dsc-list-padding-left: var(--ds-spacing-4);
 
-    @composes ds-body-text--sm from './baseline/typography.css';
+    @composes ds-body-text--sm from './utilities.css';
   }
 
   &[data-size='lg'] {
     --dsc-list-spacing: var(--ds-spacing-4);
 
-    @composes ds-body-text--lg from './baseline/typography.css';
+    @composes ds-body-text--lg from './utilities.css';
   }
 }
