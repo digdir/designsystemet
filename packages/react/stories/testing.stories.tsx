@@ -83,7 +83,7 @@ export const MediumRow: StoryFn<{
       >
         <Switch size={size}>Switch</Switch>
         <Switch size={size} aria-label='no label switch'></Switch>
-        <Chip.Toggle>Toggle</Chip.Toggle>
+        <Chip.Checkbox>Toggle</Chip.Checkbox>
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 

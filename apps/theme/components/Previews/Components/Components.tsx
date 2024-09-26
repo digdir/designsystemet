@@ -275,11 +275,15 @@ export const Components = () => {
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Toggle selected checkmark={false} size='sm'>
+          <Chip.Radio name='language' size='sm' checked>
             Bokmål
-          </Chip.Toggle>
-          <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
-          <Chip.Toggle size='sm'>Engelsk</Chip.Toggle>
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Nynorsk
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Engelsk
+          </Chip.Radio>
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
