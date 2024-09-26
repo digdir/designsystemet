@@ -28,14 +28,12 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   ref,
 ) {
   return (
-    <Paragraph asChild size={size}>
-      <div
-        className={cl('ds-alert', className)}
-        data-color={color}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
-    </Paragraph>
+    <div
+      className={cl('ds-alert', className)}
+      data-color={color}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
   );
 });
