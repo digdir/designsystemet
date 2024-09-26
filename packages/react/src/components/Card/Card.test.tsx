@@ -2,7 +2,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CardProps } from './Card';
 import { Card } from './Card';
-import { CardPart } from './CardPart';
+import { CardPart } from './CardBlock';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(

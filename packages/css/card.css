@@ -8,56 +8,29 @@
   --dsc-card-padding: var(--ds-spacing-6);
   --dsc-card-gap: 1rem;
 
-  /* For internal use only */
-  --dsc-card-padding-half: calc(var(--dsc-card-padding) / 2);
-  --dsc-card-padding-invert: calc(var(--dsc-card-padding) * -1);
-  --dsc-card-padding-width: calc(100% + var(--dsc-card-padding) * 2);
+  background: var(--dsc-card-background);
+  border-radius: min(1rem, var(--ds-border-radius-md));
+  border: 0; /* Reset if <button> */
+  color: var(--dsc-card-color);
+  font: inherit; /* Reset if <button> */
+  padding: 0; /* Reset if <button> */
+  text-align: inherit; /* Reset if <button> */
 
   @composes ds-paragraph from './baseline/typography.css';
 
-  background: var(--dsc-card-background);
-  border-radius: min(1rem, var(--ds-border-radius-md));
-  border: 1px solid var(--dsc-card-border-color);
-  box-sizing: border-box;
-  color: var(--dsc-card-color);
-  overflow: clip; /* Bad, but needed to make media clipped by card radius */
-  padding: var(--dsc-card-padding);
-
+  /* TMP: Will be removed when https://github.com/digdir/designsystemet/issues/2454 is done */
   :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li) {
     color: inherit;
   }
 
   /* Style link in heading, or heading when Card is anchor */
   :is(h1, h2, h3, h4, h5, h6) a:any-link,
-  &:is(a:any-link) :is(h1, h2, h3, h4, h5, h6) {
+  &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
     outline: 0;
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
     text-underline-offset: max(6px, 0.25rem, 0.22em);
-  }
-
-  /* Add states when Card is a anchor, button, or when containing a anchor in heading */
-  &:is(a),
-  &:has(:is(h1, h2, h3, h4, h5, h6) a) {
-    --dsc-card-border-color: var(--dsc-card-border-color--link);
-
-    cursor: pointer;
-    text-decoration: none;
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        --dsc-card-background: var(--dsc-card-background--hover);
-      }
-    }
-
-    &:where(:focus-visible, :has(:focus-visible)) {
-      box-shadow: var(--dsc-focus-boxShadow);
-    }
-
-    &:active {
-      --dsc-card-background: var(--dsc-card-background--active);
-    }
   }
 
   &[data-color='subtle'] {
@@ -96,8 +69,37 @@
   }
 }
 
-/* Usin :where to overwrite user agent CSS, but not our own CSS */
-:where(.ds-card, .ds-card__part) {
+/* Add states when Card is a anchor, button, or when containing a anchor in heading */
+.ds-card:where(a, button, [role='button']),
+.ds-card:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+  --dsc-card-border-color: var(--dsc-card-border-color--link);
+
+  cursor: pointer;
+  text-decoration: none;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      --dsc-card-background: var(--dsc-card-background--hover);
+    }
+  }
+
+  &:where(:focus-visible, :has(:focus-visible)) {
+    box-shadow: var(--dsc-focus-boxShadow);
+  }
+
+  &:active {
+    --dsc-card-background: var(--dsc-card-background--active);
+  }
+}
+
+/* Setup Card padding, border and stacking for Card.Block and Card no Card.Block */
+.ds-card__block,
+.ds-card:where(:not(:has(> .ds-card__block))) {
+  border-radius: min(1rem, var(--ds-border-radius-md));
+  border: 1px solid var(--dsc-card-border-color);
+  box-sizing: border-box;
+  padding: var(--dsc-card-padding);
+
   & > :first-child {
     margin-block: 0;
   }
@@ -105,42 +107,18 @@
   & > * + * {
     margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
   }
-
-  & > hr {
-    margin: 0 var(--dsc-card-padding-invert);
-    width: var(--dsc-card-padding-width);
-  }
 }
 
-.ds-card__part {
-  padding: var(--dsc-card-padding) var(--dsc-card-padding);
-  margin: var(--dsc-card-padding) var(--dsc-card-padding-invert);
+/* Card.Block used for media */
+.ds-card__block:has(> :is(audio, figure, iframe, img, video):only-child) {
+  overflow: clip; /* By card radius */
+  padding: 0;
 
-  :is(&, hr) + & {
-    margin-top: 0; /* No margin-top if previous element is hr or also ds-card__part */
-  }
-
-  &:has(+ &, + hr) {
-    margin-bottom: 0; /* No margin-bottom if next element is hr or also ds-card__part */
-  }
-
-  &:first-child {
-    margin-top: var(--dsc-card-padding-invert);
-    overflow: hidden;
-  }
-
-  &:last-child {
-    margin-bottom: var(--dsc-card-padding-invert);
-  }
-
-  & > :where(img, figure, video, audio, iframe):only-child {
+  & > * {
+    aspect-ratio: 16 / 9;
     border: 0;
     display: block;
-    margin: var(--dsc-card-padding-invert);
-    width: var(--dsc-card-padding-width);
-  }
-
-  & > :where(img, video):only-child {
     height: auto;
+    width: 100%;
   }
 }

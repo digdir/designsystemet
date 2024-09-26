@@ -1,12 +1,12 @@
 import { Card as CardParent } from './Card';
-import { CardPart } from './CardPart';
+import { CardBlock } from './CardBlock';
 
 const Card = Object.assign(CardParent, {
-  Part: CardPart,
+  Block: CardBlock,
 });
 
-Card.Part.displayName = 'Card.Part';
+Card.Block.displayName = 'Card.Block';
 
 export type { CardProps } from './Card';
-export type { CardPartProps } from './CardPart';
-export { Card, CardPart };
+export type { CardBlockProps } from './CardBlock';
+export { Card, CardBlock };

@@ -21,6 +21,23 @@ type Story = StoryFn<typeof Card>;
 export default {
   title: 'Komponenter/Card',
   component: Card,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          width: '90vw',
+          maxWidth: 800,
+          alignItems: 'center',
+          display: 'grid',
+          gap: 'var(--ds-spacing-4)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
+          justifyItems: 'center',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const Preview: Story = (args) => (
@@ -40,68 +57,13 @@ Preview.args = {
   color: 'neutral',
 };
 
-export const LinkCard: Story = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gap: 'var(--ds-spacing-4)',
-      gridTemplateColumns: 'repeat(2, 400px)',
-    }}
-  >
-    <Card {...args} color='brand1'>
-      <Card.Part>
-        <img src={cat5} alt='' />
-      </Card.Part>
-      <Heading size='sm' level={2}>
-        <a
-          href='https://designsystemet.no'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Link Card
-        </a>
-      </Heading>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Paragraph>
-      <Paragraph size='sm'>Footer text</Paragraph>
-    </Card>
-    <Card {...args} color='neutral'>
-      <Card.Part>
-        <img src={cat6} alt='' />
-      </Card.Part>
-      <Heading size='sm' level={2}>
-        <a
-          href='https://designsystemet.no'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Link Card
-        </a>
-      </Heading>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Paragraph>
-      <Paragraph size='sm'>Footer text</Paragraph>
-    </Card>
-  </div>
-);
-
-export const Variants: StoryFn<typeof Card> = () => {
-  return (
-    <div
-      style={{
-        display: 'grid',
-        gap: 'var(--ds-spacing-4)',
-        gridTemplateColumns: 'repeat(2, 400px)',
-      }}
-    >
-      <Card color='neutral'>
-        <Card.Part>
-          <img src={cat1} alt='katt' />
-        </Card.Part>
+export const Variants: StoryFn<typeof Card> = () => (
+  <>
+    <Card color='neutral'>
+      <Card.Block>
+        <img src={cat1} alt='katt' />
+      </Card.Block>
+      <Card.Block>
         <Heading level={2} size='sm'>
           Card Neutral
         </Heading>
@@ -110,11 +72,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-      </Card>
-      <Card color='subtle'>
-        <Card.Part>
-          <img src={cat2} alt='katt' />
-        </Card.Part>
+      </Card.Block>
+    </Card>
+    <Card color='subtle'>
+      <Card.Block>
+        <img src={cat2} alt='katt' />
+      </Card.Block>
+      <Card.Block>
         <Heading level={2} size='sm'>
           Card Subtle
         </Heading>
@@ -123,11 +87,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-      </Card>
-      <Card color='brand1'>
-        <Card.Part>
-          <img src={cat3} alt='katter' />
-        </Card.Part>
+      </Card.Block>
+    </Card>
+    <Card color='brand1'>
+      <Card.Block>
+        <img src={cat3} alt='katter' />
+      </Card.Block>
+      <Card.Block>
         <Heading level={2} size='sm'>
           Card First
         </Heading>
@@ -136,11 +102,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-      </Card>
-      <Card color='brand2'>
-        <Card.Part>
-          <img src={cat4} alt='katt' />
-        </Card.Part>
+      </Card.Block>
+    </Card>
+    <Card color='brand2'>
+      <Card.Block>
+        <img src={cat4} alt='katt' />
+      </Card.Block>
+      <Card.Block>
         <Heading level={2} size='sm'>
           Card Second
         </Heading>
@@ -149,11 +117,13 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-      </Card>
-      <Card color='brand3'>
-        <Card.Part>
-          <img src={cat5} alt='katt' />
-        </Card.Part>
+      </Card.Block>
+    </Card>
+    <Card color='brand3'>
+      <Card.Block>
+        <img src={cat5} alt='katt' />
+      </Card.Block>
+      <Card.Block>
         <Heading level={2} size='sm'>
           Card Third
         </Heading>
@@ -162,49 +132,49 @@ export const Variants: StoryFn<typeof Card> = () => {
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-      </Card>
-    </div>
-  );
-};
+      </Card.Block>
+    </Card>
+  </>
+);
 
 export const Media: Story = () => (
-  <div
-    style={{
-      display: 'grid',
-      gap: 'var(--ds-spacing-4)',
-      gridTemplateColumns: 'repeat(2, 300px)',
-    }}
-  >
+  <>
     <Card>
-      <Card.Part>
+      <Card.Block>
         <img src={cat1} alt='katt' />
-      </Card.Part>
-      <Heading level={2} size='sm'>
-        Card Neutral
-      </Heading>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Paragraph>
+      </Card.Block>
+      <Card.Block>
+        <Heading level={2} size='sm'>
+          Card Neutral
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+      </Card.Block>
     </Card>
     <Card>
-      <Heading level={2} size='sm'>
-        Card Neutral
-      </Heading>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Paragraph>
-      <Card.Part>
+      <Card.Block>
+        <Heading level={2} size='sm'>
+          Card Neutral
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+      </Card.Block>
+      <Card.Block>
         <img src={cat1} alt='katt' />
-      </Card.Part>
+      </Card.Block>
     </Card>
-  </div>
+  </>
 );
 
 export const Video: Story = () => (
   <Card color='neutral' style={{ width: '320px' }}>
-    <Card.Part>
+    <Card.Block>
       <iframe
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
         width='320px'
@@ -212,20 +182,22 @@ export const Video: Story = () => (
         allow='autoplay; fullscreen; picture-in-picture'
         title='30 år med digitalt innsyn'
       ></iframe>
-    </Card.Part>
-    <Heading level={2} size='sm'>
-      <Link
-        href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
-        target='_blank'
-      >
-        Vi feira 30 år med digitalt innsyn
-      </Link>
-    </Heading>
-    <Paragraph>
-      Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
-      Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var historiske
-      tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
-    </Paragraph>
+    </Card.Block>
+    <Card.Block>
+      <Heading level={2} size='sm'>
+        <Link
+          href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
+          target='_blank'
+        >
+          Vi feira 30 år med digitalt innsyn
+        </Link>
+      </Heading>
+      <Paragraph>
+        Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
+        Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var
+        historiske tilbakeblikk og debatt om innsyn og openheit i forvaltninga.
+      </Paragraph>
+    </Card.Block>
   </Card>
 );
 
@@ -236,7 +208,7 @@ const options = [
 
 export const Composed: Story = () => (
   <Card style={{ width: '320px' }}>
-    <Card.Part>
+    <Card.Block>
       <div
         style={{
           display: 'flex',
@@ -252,9 +224,8 @@ export const Composed: Story = () => (
           Fjern
         </Button>
       </div>
-    </Card.Part>
-    <Divider />
-    <Card.Part>
+    </Card.Block>
+    <Card.Block>
       <Select label='Velg rolle'>
         {options.map(({ value, label }, index) => (
           <Select.Option key={index} value={value}>
@@ -264,29 +235,25 @@ export const Composed: Story = () => (
       </Select>
       <Textfield label='Fødsels- eller d-nummer' />
       <Textfield label='Etternavn' />
-    </Card.Part>
+    </Card.Block>
   </Card>
 );
 
-export const AsLink: Story = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gap: 'var(--ds-spacing-4)',
-      gridTemplateColumns: 'repeat(2, 400px)',
-    }}
-  >
-    <Card {...args} color='brand1' asChild>
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        <Card.Part>
-          <img src={cat5} alt='' />
-        </Card.Part>
+export const WithLink: Story = (args) => (
+  <>
+    <Card {...args} color='brand1'>
+      <Card.Block>
+        <img src={cat5} alt='' />
+      </Card.Block>
+      <Card.Block>
         <Heading size='sm' level={2}>
-          Link Card
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Link Card
+          </a>
         </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
@@ -294,6 +261,49 @@ export const AsLink: Story = (args) => (
           about this
         </Paragraph>
         <Paragraph size='sm'>Footer text</Paragraph>
+      </Card.Block>
+    </Card>
+    <Card {...args} color='neutral'>
+      <Heading size='sm' level={2}>
+        <a
+          href='https://designsystemet.no'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Link Card
+        </a>
+      </Heading>
+      <Paragraph>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Paragraph>
+      <Paragraph size='sm'>Footer text</Paragraph>
+    </Card>
+  </>
+);
+
+export const AsLink: Story = (args) => (
+  <>
+    <Card {...args} color='brand1' asChild>
+      <a
+        href='https://designsystemet.no'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Card.Block>
+          <img src={cat5} alt='' />
+        </Card.Block>
+        <Card.Block>
+          <Heading size='sm' level={2}>
+            Link Card
+          </Heading>
+          <Paragraph>
+            Most provide as with carried business are much better more the
+            perfected designer. Writing slightly explain desk unable at
+            supposedly about this
+          </Paragraph>
+          <Paragraph size='sm'>Footer text</Paragraph>
+        </Card.Block>
       </a>
     </Card>
     <Card {...args} color='neutral' asChild>
@@ -302,9 +312,6 @@ export const AsLink: Story = (args) => (
         target='_blank'
         rel='noopener noreferrer'
       >
-        <Card.Part>
-          <img src={cat6} alt='' />
-        </Card.Part>
         <Heading size='sm' level={2}>
           Link Card
         </Heading>
@@ -316,5 +323,41 @@ export const AsLink: Story = (args) => (
         <Paragraph size='sm'>Footer text</Paragraph>
       </a>
     </Card>
-  </div>
+  </>
+);
+
+export const AsButton: Story = (args) => (
+  <>
+    <Card {...args} color='brand1' asChild>
+      <button type='button'>
+        <Card.Block>
+          <img src={cat5} alt='' />
+        </Card.Block>
+        <Card.Block>
+          <Heading size='sm' level={2}>
+            Link Card
+          </Heading>
+          <Paragraph>
+            Most provide as with carried business are much better more the
+            perfected designer. Writing slightly explain desk unable at
+            supposedly about this
+          </Paragraph>
+          <Paragraph size='sm'>Footer text</Paragraph>
+        </Card.Block>
+      </button>
+    </Card>
+    <Card {...args} color='neutral' asChild>
+      <button type='button'>
+        <Heading size='sm' level={2}>
+          Link Card
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+        <Paragraph size='sm'>Footer text</Paragraph>
+      </button>
+    </Card>
+  </>
 );
