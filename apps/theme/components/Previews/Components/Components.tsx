@@ -26,6 +26,7 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
+  usePagination,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
@@ -34,6 +35,14 @@ import classes from './Components.module.css';
 
 export const Components = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
+
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
@@ -143,14 +152,25 @@ export const Components = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination
-          currentPage={3}
-          nextLabel='Neste'
-          onChange={function Ya() {}}
-          previousLabel='Forrige'
-          size='sm'
-          totalPages={6}
-        />
+        <Pagination>
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Button {...pagination.prevButtonProps}>
+                Forrige
+              </Pagination.Button>
+            </Pagination.Item>
+            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+              <Pagination.Item key={itemKey}>
+                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+              </Pagination.Item>
+            ))}
+            <Pagination.Item>
+              <Pagination.Button {...pagination.nextButtonProps}>
+                Neste
+              </Pagination.Button>
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
         <Heading size='xs' className={classes.helpHeading}>
@@ -257,11 +277,15 @@ export const Components = () => {
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Toggle selected checkmark={false} size='sm'>
+          <Chip.Radio name='language' size='sm' checked>
             Bokmål
-          </Chip.Toggle>
-          <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
-          <Chip.Toggle size='sm'>Engelsk</Chip.Toggle>
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Nynorsk
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Engelsk
+          </Chip.Radio>
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
