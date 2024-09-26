@@ -41,10 +41,12 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(
-          `ds-body-text--${variant !== 'default' ? `${variant}-` : ''}${size}`,
-          spacing && 'ds-body-text--spacing',
+          `ds-paragraph`,
+          spacing && 'ds-paragraph--spacing',
           className,
         )}
+        data-size={size}
+        data-variant={variant}
         {...rest}
       />
     );

@@ -72,6 +72,9 @@
     padding-block: var(--dsc-accordion-padding);
     padding-inline: calc(var(--dsc-accordion-padding) + var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) var(--dsc-accordion-padding);
 
+    @composes ds-focus from './utilities.css';
+    @composes ds-body-text--sm from './utilities.css';
+
     &:focus-visible {
       position: relative; /* Ensure foucs outline renders on top */
     }

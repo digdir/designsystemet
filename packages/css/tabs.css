@@ -6,14 +6,20 @@
   --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
 
+  @composes ds-body-text--short-md from './utilities.css';
+
   &[data-size='sm'] {
     --dsc-tabs-tab-padding: var(--ds-spacing-2) var(--ds-spacing-4);
     --dsc-tabs-content-padding: var(--ds-spacing-4);
+
+    @composes ds-body-text--short-sm from './utilities.css';
   }
 
   &[data-size='lg'] {
     --dsc-tabs-tab-padding: var(--ds-spacing-4) var(--ds-spacing-6);
     --dsc-tabs-content-padding: var(--ds-spacing-6);
+
+    @composes ds-body-text--short-lg from './utilities.css';
   }
 }
 

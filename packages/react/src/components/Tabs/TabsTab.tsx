@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId } from 'react';
 
 import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
-import { Paragraph } from '../Typography';
 import { Context } from './Tabs';
 
 export type TabsTabProps = {
@@ -23,18 +22,16 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
 
     return (
       <RovingFocusItem value={value} {...rest} asChild>
-        <Paragraph asChild variant='short' size={tabs.size}>
-          <button
-            {...rest}
-            aria-selected={tabs.value === value}
-            className={cl('ds-tabs__tab', className)}
-            id={buttonId}
-            onClick={() => tabs.onChange?.(value)}
-            ref={ref}
-            role='tab'
-            type='button'
-          />
-        </Paragraph>
+        <button
+          {...rest}
+          aria-selected={tabs.value === value}
+          className={cl('ds-tabs__tab', className)}
+          id={buttonId}
+          onClick={() => tabs.onChange?.(value)}
+          ref={ref}
+          role='tab'
+          type='button'
+        />
       </RovingFocusItem>
     );
   },
