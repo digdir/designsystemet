@@ -10,7 +10,7 @@
   --dsc-button-size: var(--ds-sizing-12);
 
   @composes ds-focus from './utilities.css';
-  @composes ds-body-text--short-md from './baseline/typography.css';
+  @composes ds-body-text--short-md from './utilities.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -43,7 +43,7 @@
     --dsc-button-padding-inline: var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10);
 
-    @composes ds-body-text--short-sm from './baseline/typography.css';
+    @composes ds-body-text--short-sm from './utilities.css';
   }
 
   &[data-size='lg'] {
@@ -51,7 +51,7 @@
     --dsc-button-padding-inline: var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
 
-    @composes ds-body-text--short-lg from './baseline/typography.css';
+    @composes ds-body-text--short-lg from './utilities.css';
   }
 
   &[data-icon] {

@@ -18,7 +18,7 @@
   color: var(--dsc-table-color);
   width: 100%;
 
-  @composes ds-body-text--md from './baseline/typography.css';
+  @composes ds-body-text--md from './utilities.css';
 
   & > :is(tbody, thead) > tr > :is(th, td) {
     background: var(--dsc-table-background);
@@ -115,13 +115,13 @@
   &[data-size='sm'] {
     --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
 
-    @composes ds-body-text--sm from './baseline/typography.css';
+    @composes ds-body-text--sm from './utilities.css';
   }
 
   &[data-size='lg'] {
     --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
 
-    @composes ds-body-text--lg from './baseline/typography.css';
+    @composes ds-body-text--lg from './utilities.css';
   }
 
   /**
