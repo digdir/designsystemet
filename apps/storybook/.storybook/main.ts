@@ -8,10 +8,7 @@ const config: StorybookConfig = {
   typescript: {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
-    reactDocgen:
-      env.NODE_ENV === 'production'
-        ? 'react-docgen-typescript'
-        : 'react-docgen',
+    reactDocgen: 'react-docgen-typescript',
     /**
      * Enable this when docgen-typescript is faster
      * See: https://github.com/storybookjs/storybook/issues/28269
