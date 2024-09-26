@@ -18,6 +18,8 @@
   color: var(--dsc-table-color);
   width: 100%;
 
+  @composes ds-body-text--md from './baseline/typography.css';
+
   & > :is(tbody, thead) > tr > :is(th, td) {
     background: var(--dsc-table-background);
     border-bottom: var(--dsc-table-border);
@@ -112,10 +114,14 @@
     */
   &[data-size='sm'] {
     --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
+
+    @composes ds-body-text--sm from './baseline/typography.css';
   }
 
   &[data-size='lg'] {
     --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
+
+    @composes ds-body-text--lg from './baseline/typography.css';
   }
 
   /**

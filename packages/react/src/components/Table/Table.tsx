@@ -46,19 +46,17 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   ref,
 ) {
   return (
-    <Paragraph asChild size={size}>
-      <table
-        className={cl('ds-table', className)}
-        data-border={border || undefined}
-        data-hover={hover || undefined}
-        data-size={size}
-        data-sticky-header={stickyHeader || undefined}
-        data-zebra={zebra || undefined}
-        ref={ref}
-        {...rest}
-      >
-        {children}
-      </table>
-    </Paragraph>
+    <table
+      className={cl('ds-table', className)}
+      data-border={border || undefined}
+      data-hover={hover || undefined}
+      data-size={size}
+      data-sticky-header={stickyHeader || undefined}
+      data-zebra={zebra || undefined}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </table>
   );
 });
