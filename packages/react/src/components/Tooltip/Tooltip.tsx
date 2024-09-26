@@ -25,7 +25,6 @@ import type {
 import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
-import { Paragraph } from '../Typography';
 
 const ARROW_HEIGHT = 7;
 const ARROW_GAP = 4;

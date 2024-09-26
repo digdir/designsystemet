@@ -2,8 +2,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Paragraph } from '../Typography';
-
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {

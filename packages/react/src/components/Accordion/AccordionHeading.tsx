@@ -1,8 +1,5 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-
-import { Paragraph } from '../Typography/Paragraph';
 
 export type AccordionHeadingProps = {
   /** Heading text */

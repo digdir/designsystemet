@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId } from 'react';
 
 import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
-import { Paragraph } from '../Typography';
 import { Context } from './Tabs';
 
 export type TabsTabProps = {

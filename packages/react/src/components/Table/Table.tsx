@@ -2,8 +2,6 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { TableHTMLAttributes } from 'react';
 
-import { Paragraph } from '../Typography';
-
 export type TableProps = {
   /**
    * The size of the table
