@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Label } from '../../Typography/Label';
 
 import { Field } from '.';
+import { ValidationMessage } from '../../Typography';
 
 type Story = StoryFn<typeof Field>;
 
@@ -34,7 +35,7 @@ export const Preview: Story = (args) => {
       {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
       {description && <Field.Description>Beskrivelse</Field.Description>}
       <Component />
-      {validation && <Field.Validation>Feilmelding</Field.Validation>}
+      {validation && <ValidationMessage>Feilmelding</ValidationMessage>}
     </Field>
   );
 };

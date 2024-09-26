@@ -1,6 +1,5 @@
 import { Field as FieldParent } from './Field';
 import { FieldDescription } from './FieldDescription';
-import { FieldValidation } from './FieldValidation';
 
 /**
  * @example
@@ -13,12 +12,10 @@ import { FieldValidation } from './FieldValidation';
  */
 const Field = Object.assign(FieldParent, {
   Description: FieldDescription,
-  Validation: FieldValidation,
 });
 
 Field.Description.displayName = 'Field.Description';
-Field.Validation.displayName = 'Field.Validation';
 
 export type { FieldProps } from './Field';
 export type { FieldDescriptionProps } from './FieldDescription';
-export { Field, FieldDescription, FieldValidation };
+export { Field, FieldDescription };
