@@ -3,7 +3,7 @@
   --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
   --dsc-card-background: var(--ds-color-neutral-background-default);
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-border-width: 1px;
+  --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
   --dsc-card-gap: 1rem;
   --dsc-card-padding: var(--ds-spacing-6);
@@ -11,10 +11,10 @@
   all: unset; /* Reset if <button> */
   background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
-  border: var(--dsc-card-border-width) solid var(--dsc-card-border-color);
+  border: var(--dsc-card-border);
   box-sizing: border-box;
   color: var(--dsc-card-color);
-  overflow: clip; /* Needed to clip media and Card.Block by radius */
+  overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
 
   @composes ds-paragraph from './baseline/typography.css'; /* Must be after all: unset */
@@ -99,22 +99,27 @@
 }
 
 .ds-card__block {
-  background: inherit;
-  border-left: inherit;
-  border-top: inherit;
   box-sizing: border-box;
-  margin: calc(var(--dsc-card-border-width) * -1) 0 0 calc(var(--dsc-card-border-width) * -1); /* Support for both vertical and horizontal stacking Card.Block */
+  margin: 0;
   padding: var(--dsc-card-padding);
+
+  /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
+  background: inherit;
+  outline: var(--dsc-card-border);
+  position: relative;
 
   &:has(> :is(audio, figure, iframe, img, video):only-child) {
     padding: 0;
 
     & > * {
-      aspect-ratio: 16 / 9;
       border: 0;
       display: block;
       height: auto;
       width: 100%;
+    }
+
+    & > iframe {
+      aspect-ratio: 16 / 9; /* Make iframes scale responsively */
     }
   }
 }
