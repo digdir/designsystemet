@@ -12,7 +12,6 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
-import { Paragraph } from '../Typography';
 import { Context } from './PopoverContext';
 
 const ARROW_HEIGHT = 7;
@@ -159,18 +158,16 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }, [id]);
 
     return (
-      <Paragraph asChild size={size}>
-        <Component
-          className={cl('ds-popover', className)}
-          data-size={size}
-          data-variant={variant}
-          id={id || popoverId}
-          // @ts-ignore @types/react-dom does not understand popover yet
-          popover='manual'
-          ref={mergedRefs}
-          {...rest}
-        />
-      </Paragraph>
+      <Component
+        className={cl('ds-popover', className)}
+        data-size={size}
+        data-variant={variant}
+        id={id || popoverId}
+        // @ts-ignore @types/react-dom does not understand popover yet
+        popover='manual'
+        ref={mergedRefs}
+        {...rest}
+      />
     );
   },
 );
