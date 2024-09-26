@@ -30,7 +30,7 @@
 
     mask: var(--dsc-alert-icon-url) center/contain no-repeat;
     position: absolute;
-    translate: 0 calc(0.5lh - var(--dsc-alert-icon-size) / 2); /* Center icon to line height */
+    translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
   }
 
