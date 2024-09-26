@@ -14,6 +14,15 @@ import {
 
 export default {
   title: 'Testing',
+  parameters: {
+    a11y: {
+      /*
+      These stories only exist to test sizing/alignment, so we don't want to
+      do the work to add correct aria attributes.
+      */
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div
@@ -74,7 +83,7 @@ export const MediumRow: StoryFn<{
       >
         <Switch size={size}>Switch</Switch>
         <Switch size={size} aria-label='no label switch'></Switch>
-        <Chip.Toggle>Toggle</Chip.Toggle>
+        <Chip.Checkbox>Toggle</Chip.Checkbox>
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 

@@ -22,10 +22,6 @@
   padding-right: 0;
 }
 
-.modalContent {
-  padding-bottom: 24px;
-}
-
 .tabs {
   margin-bottom: 16px;
 }
@@ -34,7 +30,7 @@
   margin-bottom: 16px;
 }
 
-.modalHeader h2 {
+.modalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,11 +49,6 @@
 .shareBtn {
   margin-right: 8px;
   font-weight: 500;
-}
-
-.modalHeader > button {
-  right: 22px;
-  top: 22px;
 }
 
 .hiddenGlobalBtn {

@@ -66,15 +66,15 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
       <Tabs value={value} onChange={setValue}>
         <Tabs.List>
           <Tabs.Tab value='value1'>
-            <BellIcon fontSize='1.75rem' />
+            <BellIcon fontSize='1.75rem' aria-hidden />
             Tab 1
           </Tabs.Tab>
           <Tabs.Tab value='value2'>
-            <NewspaperIcon fontSize='1.75rem' />
+            <NewspaperIcon fontSize='1.75rem' aria-hidden />
             Tab 2
           </Tabs.Tab>
           <Tabs.Tab value='value3'>
-            <BackpackIcon fontSize='1.75rem' />
+            <BackpackIcon fontSize='1.75rem' aria-hidden />
             Tab 3
           </Tabs.Tab>
         </Tabs.List>
