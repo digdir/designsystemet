@@ -114,9 +114,8 @@ export const TextExample: StoryFn<typeof Text> = () => {
           </Heading>
           <Paragraph size='sm'>
             <Skeleton variant='text' />
-
             <Skeleton variant='text' />
-            <Skeleton variant='text' />
+            <Skeleton variant='text' width={80} />
           </Paragraph>
         </div>
       </div>
