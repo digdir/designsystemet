@@ -1,7 +1,6 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import { Paragraph } from '../Typography';
 
 export type AlertProps = {
   /**
