@@ -15,7 +15,8 @@ export type AccordionHeadingProps = {
  * <AccordionHeader>Header</AccordionHeader>
  */
 export const AccordionHeading = forwardRef<HTMLElement, AccordionHeadingProps>(
-  function AccordionHeading(rest, ref) {
-    return <u-summary ref={ref} {...rest} />;
+  function AccordionHeading({ className, ...rest }, ref) {
+    /* Set `className` as `class` so react is happy */
+    return <u-summary ref={ref} class={className} {...rest} />;
   },
 );
