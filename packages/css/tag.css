@@ -15,20 +15,20 @@
   width: max-content;
   word-break: break-word;
 
-  @composes ds-body-text--short-md from './baseline/typography.css';
+  @composes ds-body-text--short-md from './utilities.css';
 
   &[data-size='sm'] {
     --dsc-tag-padding: 0 var(--ds-spacing-2);
     --dsc-tag-min-height: var(--ds-sizing-7);
 
-    @composes ds-body-text--short-sm from './baseline/typography.css';
+    @composes ds-body-text--short-sm from './utilities.css';
   }
 
   &[data-size='lg'] {
     --dsc-tag-padding: 0 var(--ds-spacing-3);
     --dsc-tag-min-height: var(--ds-sizing-9);
 
-    @composes ds-body-text--short-lg from './baseline/typography.css';
+    @composes ds-body-text--short-lg from './utilities.css';
   }
 
   &[data-color='info'] {
