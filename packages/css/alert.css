@@ -16,37 +16,42 @@
   padding-block: var(--dsc-alert-padding);
   padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
 
+  @composes ds-body-text--md from './baseline/typography.css';
+
   & > :is(h1,h2,h3,h4,h5,h6):first-child::before, /* If Alert starts with Heading, align icon to this */
   &:not(:has(> :is(h1,h2,h3,h4,h5,h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
     background-color: var(--dsc-alert-icon-color);
     content: '';
     display: block;
     height: var(--dsc-alert-icon-size);
-    margin-inline: calc((var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    margin-inline: calc(
+      (var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1
+    ); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+
     mask: var(--dsc-alert-icon-url) center/contain no-repeat;
     position: absolute;
-    translate: 0 calc(.5lh - var(--dsc-alert-icon-size) / 2); /* Center icon to line height */
+    translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
   }
 
   /**
     * Colors
     */
-  &[data-color="warning"] {
+  &[data-color='warning'] {
     --dsc-alert-border-color: var(--ds-color-warning-border-default);
     --dsc-alert-icon-color: var(--ds-color-warning-text-subtle);
     --dsc-alert-background: var(--ds-color-warning-surface-default);
     --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25a.75.75 0 0 1 .66.39l9.52 17.25a.75.75 0 0 1-.65 1.11H2.47a.75.75 0 0 1-.65-1.11l9.52-17.25a.75.75 0 0 1 .66-.39m0 6.5a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75m-1 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0'/%3E%3C/svg%3E");
   }
 
-  &[data-color="success"] {
+  &[data-color='success'] {
     --dsc-alert-background: var(--ds-color-success-surface-default);
     --dsc-alert-border-color: var(--ds-color-success-border-default);
     --dsc-alert-icon-color: var(--ds-color-success-text-subtle);
     --dsc-alert-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 21.75a9.75 9.75 0 1 0 0-19.5 9.75 9.75 0 0 0 0 19.5m4.95-12.47a.81.81 0 0 0-1.24-1.05l-5.39 6.36-2.62-2.62a.81.81 0 0 0-1.15 1.15l3.25 3.25a.81.81 0 0 0 1.2-.05z'/%3E%3C/svg%3E");
   }
 
-  &[data-color="danger"] {
+  &[data-color='danger'] {
     --dsc-alert-background: var(--ds-color-danger-surface-default);
     --dsc-alert-border-color: var(--ds-color-danger-border-default);
     --dsc-alert-icon-color: var(--ds-color-danger-text-subtle);
@@ -56,13 +61,17 @@
   /**
     * Sizes
     */
-  &[data-size="sm"] {
+  &[data-size='sm'] {
     --dsc-alert-icon-size: var(--ds-sizing-6);
     --dsc-alert-padding: var(--ds-spacing-5);
+
+    @composes ds-body-text--sm from './baseline/typography.css';
   }
 
-  &[data-size="lg"] {
+  &[data-size='lg'] {
     --dsc-alert-icon-size: var(--ds-sizing-8);
     --dsc-alert-padding: var(--ds-spacing-7);
+
+    @composes ds-body-text--lg from './baseline/typography.css';
   }
 }

@@ -2,8 +2,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Paragraph } from '../Typography';
-
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {
@@ -26,15 +24,9 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     return (
       <>
         {active && (
-          <Paragraph asChild variant='short' size={size}>
-            <div
-              className={cl('ds-tabs__panel', className)}
-              ref={ref}
-              {...rest}
-            >
-              {children}
-            </div>
-          </Paragraph>
+          <div className={cl('ds-tabs__panel', className)} ref={ref} {...rest}>
+            {children}
+          </div>
         )}
       </>
     );

@@ -1,8 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { Paragraph } from '../Typography/Paragraph';
-
 export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
 
 /**
@@ -14,9 +12,5 @@ export const AccordionContent = forwardRef<
   HTMLDivElement,
   AccordionContentProps
 >(function AccordionContent(rest, ref) {
-  return (
-    <Paragraph asChild size='sm'>
-      <div ref={ref} {...rest} />
-    </Paragraph>
-  );
+  return <div ref={ref} {...rest} />;
 });
