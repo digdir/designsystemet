@@ -1,9 +1,9 @@
 .ds-skeleton {
   --dsc-skeleton-animation-duration: 0.8s;
+  --dsc-skeleton-animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   --dsc-skeleton-background: var(--ds-color-neutral-surface-default);
 
-  animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
-  background: var(--dsc-skeleton-background);
+  animation: var(--dsc-skeleton-animation);
   border-radius: min(1rem, var(--ds-border-radius-lg));
   box-sizing: border-box;
   display: block;
@@ -19,12 +19,22 @@
   }
 
   &[data-variant='text'] {
+    animation: none;
     border-radius: var(--ds-border-radius-full);
     height: auto;
-    margin-block: calc(1lh - 1em);
+    position: relative; /* So we can position ::after */
+
+    /* Render with ::after so we can add some space to top and bottom */
+    &::after {
+      content: '';
+      animation: var(--dsc-skeleton-animation);
+      border-radius: inherit;
+      inset: 20% 0;
+      position: absolute;
+    }
 
     &:empty::before {
-      content: '\00a0';
+      content: '\00a0'; /* Add non breaking space if empty so we follow line height */
     }
   }
 
@@ -44,7 +54,12 @@
   }
 }
 
+/* Animates background instead of opacity to make Axe Accessibility tests understand color: transparent is intentionally set */
 @keyframes ds-skeleton-opacity-fade {
+  from {
+    background: var(--dsc-skeleton-background);
+  }
+
   to {
     background: rgb(from var(--dsc-skeleton-background) r g b / 0.4);
   }
