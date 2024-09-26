@@ -24,26 +24,34 @@ import { Card } from '@digdir/designsystemet-react';
 
 ## Eksempler
 
-`Card.Block`
+<br />
 
-Bruk`Card.Block` hvis du vi ha bilder eller video i kortene.
+### Card.Block
+
+Bruk `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge inn utfallende bilder eller video.
 
 <Canvas of={CardStories.Media} />
 
-#### Video
+### Video
 
 <Canvas of={CardStories.Video} />
 
 ### Link Card
-`Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side i tjenesten. Hele kortet blir da en lenke, og kortet skal derfor ikke ha andre interaktive elementer, som for eksempel knapper.
+- `Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. 
+- Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+- Dersom kortet kun innholder litt tekst, kan hele kortet bli en lenke eller knapp ved å benytte `asChild`.
 
-Bruk `asChild` til å endre kortet til en lenke. Vær oppmerksom på [gyldig innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary), fordi skjermlesere leser opp alt samlet. `Hover` og `active` styling
-blir kun aktivert dersom du setter `isLink={true}`. 
-komponenter fra tredjeparts bibliotek som [NextJS
-Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React
-Router Link](https://reactrouter.com/en/main/components/link)
+<br />
+<br />
 
+#### Kort med lenke i tittel:
 <Canvas of={CardStories.WithLink} />
+
+#### Kort som er en lenke:
+<Canvas of={CardStories.AsLink} />
+
+#### Kort som er en knapp:
+<Canvas of={CardStories.AsButton} />
 
 ### Farger
 
@@ -53,7 +61,7 @@ Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral, subtil, 
 
 ### Komponert
 
-Eksempler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
+ler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
 
 <Canvas of={CardStories.Composed} />
 
