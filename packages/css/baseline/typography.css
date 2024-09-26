@@ -137,52 +137,52 @@
 }
 
 /** Paragraph */
-.ds-paragraph--xs {
-  @composes ds-body-text--xs from '../utilities.css';
-}
-
-.ds-paragraph--sm {
-  @composes ds-body-text--sm from '../utilities.css';
-}
-
-.ds-paragraph--md {
+.ds-paragraph {
   @composes ds-body-text--md from '../utilities.css';
-}
 
-.ds-paragraph--lg {
-  @composes ds-body-text--lg from '../utilities.css';
-}
+  &[data-size='xs'] {
+    @composes ds-body-text--xs from '../utilities.css';
+  }
 
-.ds-paragraph--long-xs {
-  @composes ds-body-text--long-xs from '../utilities.css';
-}
+  &[data-size='sm'] {
+    @composes ds-body-text--sm from '../utilities.css';
+  }
 
-.ds-paragraph--long-sm {
-  @composes ds-body-text--long-sm from '../utilities.css';
-}
+  &[data-size='lg'] {
+    @composes ds-body-text--lg from '../utilities.css';
+  }
 
-.ds-paragraph--long-md {
-  @composes ds-body-text--long-md from '../utilities.css';
-}
+  &[data-variant='long'] {
+    @composes ds-body-text--long-md from '../utilities.css';
 
-.ds-paragraph--long-lg {
-  @composes ds-body-text--long-lg from '../utilities.css';
-}
+    &[data-size='xs'] {
+      @composes ds-body-text--long-xs from '../utilities.css';
+    }
 
-.ds-paragraph--short-xs {
-  @composes ds-body-text--short-xs from '../utilities.css';
-}
+    &[data-size='sm'] {
+      @composes ds-body-text--long-sm from '../utilities.css';
+    }
 
-.ds-paragraph--short-sm {
-  @composes ds-body-text--short-sm from '../utilities.css';
-}
+    &[data-size='lg'] {
+      @composes ds-body-text--long-lg from '../utilities.css';
+    }
+  }
 
-.ds-paragraph--short-md {
-  @composes ds-body-text--short-md from '../utilities.css';
-}
+  &[data-variant='short'] {
+    @composes ds-body-text--short-md from '../utilities.css';
 
-.ds-paragraph--short-lg {
-  @composes ds-body-text--short-lg from '../utilities.css';
+    &[data-size='xs'] {
+      @composes ds-body-text--short-xs from '../utilities.css';
+    }
+
+    &[data-size='sm'] {
+      @composes ds-body-text--short-sm from '../utilities.css';
+    }
+
+    &[data-size='lg'] {
+      @composes ds-body-text--short-lg from '../utilities.css';
+    }
+  }
 }
 
 .ds-paragraph--spacing {
