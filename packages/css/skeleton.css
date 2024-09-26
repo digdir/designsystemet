@@ -54,6 +54,7 @@
   }
 }
 
+/* Animates background instead of opacity to make Axe Accessibility tests understand color: transparent is intentionally set */
 @keyframes ds-skeleton-opacity-fade {
   from {
     background: var(--dsc-skeleton-background);
