@@ -1,27 +1,23 @@
 .ds-card {
-  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-border-color--link: var(--ds-color-neutral-border-subtle);
-  --dsc-card-background: var(--ds-color-neutral-background-default);
   --dsc-card-background--active: var(--ds-color-neutral-surface-default);
   --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
+  --dsc-card-background: var(--ds-color-neutral-background-default);
+  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-card-border-width: 1px;
   --dsc-card-color: var(--ds-color-neutral-text-default);
-  --dsc-card-padding: var(--ds-spacing-6);
   --dsc-card-gap: 1rem;
+  --dsc-card-padding: var(--ds-spacing-6);
 
+  all: unset; /* Reset if <button> */
   background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
-  border: 0; /* Reset if <button> */
+  border: var(--dsc-card-border-width) solid var(--dsc-card-border-color);
+  box-sizing: border-box;
   color: var(--dsc-card-color);
-  font: inherit; /* Reset if <button> */
-  padding: 0; /* Reset if <button> */
-  text-align: inherit; /* Reset if <button> */
+  overflow: clip; /* Needed to clip media and Card.Block by radius */
+  padding: var(--dsc-card-padding);
 
-  @composes ds-paragraph from './baseline/typography.css';
-
-  /* TMP: Will be removed when https://github.com/digdir/designsystemet/issues/2454 is done */
-  :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li) {
-    color: inherit;
-  }
+  @composes ds-paragraph from './baseline/typography.css'; /* Must be after all: unset */
 
   /* Style link in heading, or heading when Card is anchor */
   :is(h1, h2, h3, h4, h5, h6) a:any-link,
@@ -33,11 +29,36 @@
     text-underline-offset: max(6px, 0.25rem, 0.22em);
   }
 
+  /* Add states when Card is a anchor, button, or when containing a anchor in heading */
+  &:where(a, button, [role='button']),
+  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+    cursor: pointer;
+    text-decoration: none;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        --dsc-card-background: var(--dsc-card-background--hover);
+      }
+    }
+
+    /* Using CSS custom property instead of composes since we need to support :has(:focus-visible) */
+    &:where(:focus-visible, :has(:focus-visible)) {
+      box-shadow: var(--dsc-focus-boxShadow);
+    }
+
+    &:active {
+      --dsc-card-background: var(--dsc-card-background--active);
+    }
+  }
+
+  &:has(> .ds-card__block) {
+    padding: 0; /* Let Card.Block own the padding */
+  }
+
   &[data-color='subtle'] {
     --dsc-card-background--active: var(--ds-color-neutral-surface-hover);
     --dsc-card-background--hover: var(--ds-color-neutral-surface-default);
     --dsc-card-background: var(--ds-color-neutral-background-subtle);
-    --dsc-card-border-color--link: var(--ds-color-neutral-border-default);
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
   }
 
@@ -45,7 +66,6 @@
     --dsc-card-background--active: var(--ds-color-brand1-surface-active);
     --dsc-card-background--hover: var(--ds-color-brand1-surface-hover);
     --dsc-card-background: var(--ds-color-brand1-surface-default);
-    --dsc-card-border-color--link: var(--ds-color-brand1-border-default);
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
     --dsc-card-color: var(--ds-color-brand1-text-default);
   }
@@ -54,7 +74,6 @@
     --dsc-card-background--active: var(--ds-color-brand2-surface-active);
     --dsc-card-background--hover: var(--ds-color-brand2-surface-hover);
     --dsc-card-background: var(--ds-color-brand2-surface-default);
-    --dsc-card-border-color--link: var(--ds-color-brand2-border-default);
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
     --dsc-card-color: var(--ds-color-brand2-text-default);
   }
@@ -63,43 +82,13 @@
     --dsc-card-background--active: var(--ds-color-brand3-surface-active);
     --dsc-card-background--hover: var(--ds-color-brand3-surface-hover);
     --dsc-card-background: var(--ds-color-brand3-surface-default);
-    --dsc-card-border-color--link: var(--ds-color-brand3-border-default);
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-card-color: var(--ds-color-brand3-text-default);
   }
 }
 
-/* Add states when Card is a anchor, button, or when containing a anchor in heading */
-.ds-card:where(a, button, [role='button']),
-.ds-card:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
-  --dsc-card-border-color: var(--dsc-card-border-color--link);
-
-  cursor: pointer;
-  text-decoration: none;
-
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      --dsc-card-background: var(--dsc-card-background--hover);
-    }
-  }
-
-  &:where(:focus-visible, :has(:focus-visible)) {
-    box-shadow: var(--dsc-focus-boxShadow);
-  }
-
-  &:active {
-    --dsc-card-background: var(--dsc-card-background--active);
-  }
-}
-
-/* Setup Card padding, border and stacking for Card.Block and Card no Card.Block */
-.ds-card__block,
-.ds-card:where(:not(:has(> .ds-card__block))) {
-  border-radius: min(1rem, var(--ds-border-radius-md));
-  border: 1px solid var(--dsc-card-border-color);
-  box-sizing: border-box;
-  padding: var(--dsc-card-padding);
-
+/* Using :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card, .ds-card__block) {
   & > :first-child {
     margin-block: 0;
   }
@@ -109,16 +98,23 @@
   }
 }
 
-/* Card.Block used for media */
-.ds-card__block:has(> :is(audio, figure, iframe, img, video):only-child) {
-  overflow: clip; /* By card radius */
-  padding: 0;
+.ds-card__block {
+  background: inherit;
+  border-left: inherit;
+  border-top: inherit;
+  box-sizing: border-box;
+  margin: calc(var(--dsc-card-border-width) * -1) 0 0 calc(var(--dsc-card-border-width) * -1); /* Support for both vertical and horizontal stacking Card.Block */
+  padding: var(--dsc-card-padding);
 
-  & > * {
-    aspect-ratio: 16 / 9;
-    border: 0;
-    display: block;
-    height: auto;
-    width: 100%;
+  &:has(> :is(audio, figure, iframe, img, video):only-child) {
+    padding: 0;
+
+    & > * {
+      aspect-ratio: 16 / 9;
+      border: 0;
+      display: block;
+      height: auto;
+      width: 100%;
+    }
   }
 }

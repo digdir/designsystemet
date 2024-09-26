@@ -2,12 +2,12 @@ import { render as renderRtl, screen } from '@testing-library/react';
 
 import type { CardProps } from './Card';
 import { Card } from './Card';
-import { CardPart } from './CardBlock';
+import { CardBlock } from './CardBlock';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(
     <Card title='card' {...props}>
-      <CardPart />
+      <CardBlock />
     </Card>,
   );
 
@@ -22,12 +22,12 @@ describe('Card Component', () => {
 
     renderRtl(
       <Card title='card'>
-        <CardPart>
+        <CardBlock>
           <img src={mediaImage} alt='cat' />
-        </CardPart>
-        <CardPart />
-        <CardPart />
-        <CardPart />
+        </CardBlock>
+        <CardBlock />
+        <CardBlock />
+        <CardBlock />
       </Card>,
     );
     expect(screen.getByRole('img')).toHaveAttribute('src', mediaImage);

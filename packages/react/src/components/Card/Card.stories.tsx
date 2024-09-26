@@ -3,18 +3,14 @@ import cat2 from '@assets/img/cats/Cat 2.jpg';
 import cat3 from '@assets/img/cats/Cat 3.jpg';
 import cat4 from '@assets/img/cats/Cat 4.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
-import cat6 from '@assets/img/cats/Cat 6.jpg';
-import { TrashFillIcon } from '@navikt/aksel-icons';
+import { PlusIcon, TrashFillIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Card } from '.';
 import { Button } from '../Button';
-import { Divider } from '../Divider';
-import { Link } from '../Link';
 import { Heading, Paragraph } from '../Typography';
 import { Select } from '../form/Select';
 import { Textfield } from '../form/Textfield';
-
-import { Card } from '.';
 
 type Story = StoryFn<typeof Card>;
 
@@ -185,12 +181,13 @@ export const Video: Story = () => (
     </Card.Block>
     <Card.Block>
       <Heading level={2} size='sm'>
-        <Link
+        <a
           href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
           target='_blank'
+          rel='noreferrer'
         >
           Vi feira 30 år med digitalt innsyn
-        </Link>
+        </a>
       </Heading>
       <Paragraph>
         Det er i år 30 år sidan dei første forsøka med elektronisk postjournal i
@@ -236,11 +233,28 @@ export const Composed: Story = () => (
       <Textfield label='Fødsels- eller d-nummer' />
       <Textfield label='Etternavn' />
     </Card.Block>
+    <Card.Block>
+      <Button variant='secondary' size='sm'>
+        Legg til rolle
+        <PlusIcon aria-hidden fontSize='1.5rem' />
+      </Button>
+    </Card.Block>
   </Card>
 );
 
 export const WithLink: Story = (args) => (
   <>
+    <Paragraph
+      style={{
+        gridColumn: '1 / -1',
+        justifySelf: 'start',
+        maxWidth: '40rem',
+      }}
+    >
+      I dette eksempelet rendrer Card med <code>&lt;a&gt;</code> (lenke) inni
+      tittel elementet. Dette er nyttig når Card inneholder tekst eller media,
+      og skal navigere til en annen side.
+    </Paragraph>
     <Card {...args} color='brand1'>
       <Card.Block>
         <img src={cat5} alt='' />
@@ -264,26 +278,43 @@ export const WithLink: Story = (args) => (
       </Card.Block>
     </Card>
     <Card {...args} color='neutral'>
-      <Heading size='sm' level={2}>
-        <a
-          href='https://designsystemet.no'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Link Card
-        </a>
-      </Heading>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
-      </Paragraph>
-      <Paragraph size='sm'>Footer text</Paragraph>
+      <Card.Block>
+        <Heading size='sm' level={2}>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Link Card
+          </a>
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+        <Paragraph size='sm'>Footer text</Paragraph>
+      </Card.Block>
+      <Card.Block>
+        <img src={cat5} alt='' />
+      </Card.Block>
     </Card>
   </>
 );
 
 export const AsLink: Story = (args) => (
   <>
+    <Paragraph
+      style={{
+        gridColumn: '1 / -1',
+        justifySelf: 'start',
+        maxWidth: '40rem',
+      }}
+    >
+      I dette eksempelet rendrer Card som <code>&lt;a&gt;</code> (lenke). Dette
+      er nyttig når Card inneholder lite tekst, og skal navigere til en annen
+      side.
+    </Paragraph>
     <Card {...args} color='brand1' asChild>
       <a
         href='https://designsystemet.no'
@@ -291,18 +322,15 @@ export const AsLink: Story = (args) => (
         rel='noopener noreferrer'
       >
         <Card.Block>
-          <img src={cat5} alt='' />
+          <Heading size='sm' level={2}>
+            Link Card with blocks
+          </Heading>
         </Card.Block>
         <Card.Block>
-          <Heading size='sm' level={2}>
-            Link Card
-          </Heading>
           <Paragraph>
             Most provide as with carried business are much better more the
-            perfected designer. Writing slightly explain desk unable at
-            supposedly about this
+            perfected designer.
           </Paragraph>
-          <Paragraph size='sm'>Footer text</Paragraph>
         </Card.Block>
       </a>
     </Card>
@@ -317,10 +345,8 @@ export const AsLink: Story = (args) => (
         </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          perfected designer.
         </Paragraph>
-        <Paragraph size='sm'>Footer text</Paragraph>
       </a>
     </Card>
   </>
@@ -328,21 +354,29 @@ export const AsLink: Story = (args) => (
 
 export const AsButton: Story = (args) => (
   <>
+    <Paragraph
+      style={{
+        gridColumn: '1 / -1',
+        justifySelf: 'start',
+        maxWidth: '40rem',
+      }}
+    >
+      I dette eksempelet rendrer Card som <code>&lt;button&gt;</code>. Dette er
+      nyttig når Card inneholder lite tekst, og skal åpne en Modal eller utføre
+      annen handling på samme side.
+    </Paragraph>
     <Card {...args} color='brand1' asChild>
       <button type='button'>
         <Card.Block>
-          <img src={cat5} alt='' />
+          <Heading size='sm' level={2}>
+            Button Card with blocks
+          </Heading>
         </Card.Block>
         <Card.Block>
-          <Heading size='sm' level={2}>
-            Link Card
-          </Heading>
           <Paragraph>
             Most provide as with carried business are much better more the
-            perfected designer. Writing slightly explain desk unable at
-            supposedly about this
+            perfected designer.
           </Paragraph>
-          <Paragraph size='sm'>Footer text</Paragraph>
         </Card.Block>
       </button>
     </Card>
@@ -353,11 +387,38 @@ export const AsButton: Story = (args) => (
         </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          perfected designer.
         </Paragraph>
-        <Paragraph size='sm'>Footer text</Paragraph>
       </button>
     </Card>
   </>
+);
+
+export const AsGrid: Story = (args) => (
+  <div>
+    <Paragraph
+      style={{
+        gridColumn: '1 / -1',
+        justifySelf: 'start',
+        maxWidth: '40rem',
+      }}
+    >
+      I dette eksempelet har Card fått <code>display: grid</code> for å legge
+      Card.Block ved siden av hverandre.
+    </Paragraph>
+    <br />
+    <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+      <Card.Block>
+        <Heading size='sm' level={2}>
+          Button Card with blocks
+        </Heading>
+      </Card.Block>
+      <Card.Block>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  </div>
 );

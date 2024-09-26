@@ -16,17 +16,17 @@ Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
 <Card>
-  <Card.Part>Tittel</Card.Part>
-  <Card.Part>Innhold</Card.Part>
-  <Card.Part>Valgfri fotnote</Card.Part>
+  <Card.Block>Tittel</Card.Block>
+  <Card.Block>Innhold</Card.Block>
+  <Card.Block>Valgfri fotnote</Card.Block>
 </Card>;
 ```
 
 ## Eksempler
 
-`Card.Part`
+`Card.Block`
 
-Bruk`Card.Part` hvis du vi ha bilder eller video i kortene.
+Bruk`Card.Block` hvis du vi ha bilder eller video i kortene.
 
 <Canvas of={CardStories.Media} />
 
@@ -43,7 +43,7 @@ komponenter fra tredjeparts bibliotek som [NextJS
 Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React
 Router Link](https://reactrouter.com/en/main/components/link)
 
-<Canvas of={CardStories.LinkCard} />
+<Canvas of={CardStories.WithLink} />
 
 ### Farger
 

@@ -8,16 +8,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .card[data-featured='true'] > * {
-    margin: var(--dsc-card-padding-invert);
-  }
-
-  .card[data-featured='true'] > :first-child {
-    margin-right: 0;
-  }
-
   .card[data-featured='true'] > :last-child {
-    margin-left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
