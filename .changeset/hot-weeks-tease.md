@@ -4,3 +4,4 @@
 ---
 
 Ingress: Remove component
+- Use `Paragraph variant='long'` instead
