@@ -1,6 +1,7 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 
 import * as PaginationStories from './Pagination.stories';
+import { usePagination } from './usePagination';
 
 <Meta of={PaginationStories} />
 
@@ -17,69 +18,80 @@ Vær oppmerksom på:
   - Se eksempel [Paginering med lenker](/docs/komponenter-pagination--with-anchor).
 
 <Primary />
-<Controls of={PaginationStories.Preview} />
+<Controls of={PaginationStories.Preview} include={['aria-label', 'asChild', 'size']} />
 
 ## Bruk
 
 ### Eksempel på bruk med `Pagination`
 
-`Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra. Når komponenten er på første eller siste side, skjules "forrige"/"neste"-pilene.
+`Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra.
 
 ```tsx
 import { Pagination } from '@digdir/designsystemet-react';
 
-const [currentPage, setCurrentPage] = useState(1);
+const onChange = (event, page: number) => console.log(`Going to page ${page}`);
+const [currentPage, setCurrentPage] = useState(4);
+const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
+  currentPage,
+  setCurrentPage,
+  onChange,
+  totalPages: 10,
+  showPages: 7,
+});
 
-<Pagination
-  currentPage={1}
-  totalPages={10}
-  onChange={setCurrentPage}
-  nextLabel='Neste'
-  previousLabel='Forrige'
-  itemLabel={(num) => `Side ${num}`}
-/>;
-```
-
-### Eksempel på bruk med del-komponenter
-
-Er det behov for en tilpasset `Pagination` kan du ta i bruk de enkelte del-kompontenene.
-
-```tsx
-<Pagination.Root>
+<Pagination>
   <Pagination.List>
     <Pagination.Item>
-      <Pagination.Previous>
-        <ChevronLeftIcon aria-hidden />
+      <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
         Forrige
-      </Pagination.Previous>
+      </Pagination.Button>
     </Pagination.Item>
-
+    {pages.map(({ page, itemKey, buttonProps }) => (
+      <Pagination.Item key={itemKey}>
+        <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+          {page}
+        </Pagination.Button>
+      </Pagination.Item>
+    ))}
     <Pagination.Item>
-      <Pagination.Button isActive>1</Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item>
-      <Pagination.Next>
+      <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
         Neste
-        <ChevronRightIcon aria-hidden />
-      </Pagination.Next>
+      </Pagination.Button>
     </Pagination.Item>
   </Pagination.List>
-</Pagination.Root>
+</Pagination>
 ```
 
-## Paginering logikk
+## Paginering med `usePagination`
 
-Bruk `usePagination` for paginering logikk sammen med de enkelt del-komponentene for mer avanserte og tilpasset paginering komponent.
+Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
+Du kan sende inn:
 
-`Pagination` er bygget på `usePagination`.
 
-Bruk `isActive` på `Pagination.Button` for å indikere hvilken side som er aktiv.
+## Props
 
-<Canvas of={PaginationStories.UsePagination} />
+<ArgTypes of={PaginationStories.Preview} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
+
+<br />
+I respons får du objektet:
+
+```ts
+{
+  hasPrev: boolean, // Indikererer om det finnes en forrige side
+  hasNext: boolean, // Indikererer om det finnes en neste side
+  prevButtonProps: PaginationButtonProps, // Properties du kan spre på forrie-knappen
+  nextButtonProps: PaginationButtonProps, // Properties du kan spre på neste-knappen
+  pages: Array<{
+    page: number | string; // Tall for side, eller tom streng dersom knappen skal være ...
+    itemKey: string; // key du kan sende til Pagination.Item for å sikre riktig fokus håndtering
+    buttonProps: PaginationButtonProps; // Properties du kan spre på Pagination.Button
+  }>
+}
+```
 
 ### Pagenering med lenker
 
 Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker (`a`).
 
 <Canvas of={PaginationStories.WithAnchor} />
+

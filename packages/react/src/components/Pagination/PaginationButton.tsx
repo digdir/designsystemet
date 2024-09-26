@@ -1,31 +1,22 @@
-import { forwardRef, useContext } from 'react';
+import { type AriaAttributes, forwardRef, useContext } from 'react';
 
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button/Button';
+import { Button, type ButtonProps } from '../Button/Button';
 
-import { PaginationContext } from './PaginationRoot';
+import { PaginationContext } from './Pagination';
 
 export type PaginationButtonProps = {
   /**
    * Toggle button as active
    * @default false
    */
-  isActive?: boolean;
+  'aria-current'?: AriaAttributes['aria-current'];
 } & Omit<ButtonProps, 'icon' | 'loading' | 'size'>;
 
 export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
->(function PaginationButton({ isActive, ...rest }, ref) {
+>(function PaginationButton(rest, ref) {
   const { size } = useContext(PaginationContext);
 
-  return (
-    <Button
-      aria-current={isActive}
-      ref={ref}
-      size={size}
-      variant={isActive ? 'primary' : 'tertiary'}
-      {...rest}
-    />
-  );
+  return <Button ref={ref} size={size} {...rest} />;
 });

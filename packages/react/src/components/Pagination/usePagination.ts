@@ -1,103 +1,93 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import type { Dispatch, MouseEvent, SetStateAction } from 'react';
+import type { PaginationButtonProps } from './PaginationButton';
 
-import type { PaginationProps } from './Pagination';
+const getSteps = (now: number, max: number, show: number) => {
+  const offset = (show - 1) / 2;
+  const start = Math.min(Math.max(now - Math.floor(offset), 1), max - show + 1);
+  const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
+  const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
 
-type GetStepsProps = Pick<
-  PaginationProps,
-  'compact' | 'currentPage' | 'totalPages'
->;
+  if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
+  if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
 
-const getSteps = ({
-  compact,
-  currentPage,
-  totalPages,
-}: GetStepsProps): ('ellipsis' | number)[] => {
-  /**  Number of always visible pages at the start and end. */
-  const boundaryCount = 1;
-
-  /** Number of always visible pages before and after the current page. */
-  const siblingCount = compact ? 0 : 1;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  if (totalPages <= (boundaryCount + siblingCount) * 2 + 3)
-    return range(1, totalPages);
-
-  const startPages = range(1, boundaryCount);
-  const endPages = range(totalPages - boundaryCount + 1, totalPages);
-
-  const siblingsStart = Math.max(
-    Math.min(
-      currentPage - siblingCount,
-      totalPages - boundaryCount - siblingCount * 2 - 1,
-    ),
-    boundaryCount + 2,
-  );
-  const siblingsEnd = siblingsStart + siblingCount * 2;
-
-  return [
-    ...startPages,
-    siblingsStart - (startPages[startPages.length - 1] ?? 0) === 2
-      ? siblingsStart - 1
-      : 'ellipsis',
-    ...range(siblingsStart, siblingsEnd),
-    (endPages[0] ?? totalPages + 1) - siblingsEnd === 2
-      ? siblingsEnd + 1
-      : 'ellipsis',
-    ...endPages,
-  ];
+  return pages;
 };
 
-export type UsePaginationProps = Pick<
-  PaginationProps,
-  'compact' | 'totalPages'
-> &
-  Partial<Pick<PaginationProps, 'currentPage'>>;
+export type UsePaginationProps = {
+  /**
+   * The current page number
+   * @default 1
+   */
+  currentPage: number;
+  /**
+   * Function to change currentPage - typically returned from useState
+   */
+  setCurrentPage?: (page: number) => void;
+  /**
+   * Callback when the page changes
+   * (event: MouseEvent<HTMLElement>, page: number) => void
+   */
+  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
+  /**
+   * The total number of pages
+   * @default 1
+   */
+  totalPages: number;
+  /**
+   * The maximum number of pages to show
+   * @default 1
+   */
+  showPages?: number;
+};
 
 /** Hook to help manage pagination state */
 export const usePagination = ({
+  currentPage = 1,
+  setCurrentPage,
+  onChange,
   totalPages,
-  currentPage: currentPageProps = 1,
-  compact,
-}: UsePaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(currentPageProps);
+  showPages = 7,
+}: UsePaginationProps) =>
+  useMemo(() => {
+    const hasNext = currentPage < totalPages;
+    const hasPrev = currentPage !== 1;
+    const handleClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
+      if (page < 1 || page > totalPages) return event.preventDefault(); // Prevent out of bounds navigation
+      onChange?.(event, page);
+      if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
+    };
 
-  useEffect(() => {
-    setCurrentPage(currentPageProps);
-  }, [currentPageProps]);
-
-  const pages = getSteps({ currentPage, totalPages, compact });
-
-  const showNextPage = currentPage < totalPages;
-  const showPreviousPage = currentPage !== 1;
-
-  const nextPage = () => {
-    setCurrentPage(
-      currentPage + 1 <= totalPages ? currentPage + 1 : totalPages,
-    );
-  };
-
-  const previousPage = () => {
-    setCurrentPage(currentPage - 1 > 0 ? currentPage - 1 : 1);
-  };
-
-  return {
-    /** Number of steps */
-    pages,
-    /** Current active page  */
-    currentPage,
-    /** Set active page */
-    setCurrentPage,
-    /** Decrements active page by 1 */
-    previousPage,
-    /** Increments active page by 1 */
-    nextPage,
-    /** Total amount of pages */
-    totalPages,
-    /** Indication if next page action should be shown or not */
-    showNextPage,
-    /** Indication if previous page action should be shown or not */
-    showPreviousPage,
-  };
-};
+    return {
+      /** Number of steps */
+      pages: getSteps(currentPage, totalPages, showPages).map(
+        (page, index) => ({
+          page: page || '',
+          itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
+          buttonProps: {
+            'aria-current': page === currentPage ? 'page' : undefined,
+            'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
+            onClick: handleClick(page),
+            tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
+            variant: page === currentPage ? 'primary' : 'tertiary',
+          } as PaginationButtonProps,
+        }),
+      ),
+      /** Properties to spread on Pagination.Button used for previous naviagation */
+      prevButtonProps: {
+        'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
+        onClick: handleClick(currentPage - 1),
+        variant: 'tertiary',
+      } as PaginationButtonProps,
+      /** Properties to spread on Pagination.Button used for next naviagation */
+      nextButtonProps: {
+        'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
+        onClick: handleClick(currentPage + 1),
+        variant: 'tertiary',
+      } as PaginationButtonProps,
+      /** Indication if previous page action should be shown or not */
+      hasPrev,
+      /** Indication if next page action should be shown or not */
+      hasNext,
+    };
+  }, [currentPage, totalPages, showPages]);

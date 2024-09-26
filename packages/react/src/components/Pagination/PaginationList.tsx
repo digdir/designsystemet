@@ -1,8 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef, useContext } from 'react';
-
-import { PaginationContext } from './PaginationRoot';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
+import type { HTMLAttributes } from 'react';
 
 export type PaginationListProps = {
   /**
@@ -13,17 +11,9 @@ export type PaginationListProps = {
 } & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
 export const PaginationList = forwardRef<HTMLUListElement, PaginationListProps>(
-  function PaginationList({ asChild, className, ...rest }, ref) {
-    const { size } = useContext(PaginationContext);
+  function PaginationList({ asChild, ...rest }, ref) {
     const Component = asChild ? Slot : 'ul';
 
-    return (
-      <Component
-        className={cl('ds-pagination', className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
-    );
+    return <Component ref={ref} {...rest} />;
   },
 );

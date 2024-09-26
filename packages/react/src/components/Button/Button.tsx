@@ -75,7 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           data-variant={variant}
           ref={ref}
           /* don't set type when we use `asChild` */
-          {...(asChild ? { asChild: true } : { type: 'button' })}
+          type={asChild ? undefined : 'button'}
           /* if consumers set type, our default does not set anything, as `rest` contains this */
           {...rest}
         >
