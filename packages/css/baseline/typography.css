@@ -1,138 +1,51 @@
 /** Heading */
 
-.ds-heading--2xs {
-  --dsc-bottom-spacing: var(--ds-spacing-1);
-
-  font-weight: var(--ds-heading-2xs-font-weight);
-  line-height: var(--ds-heading-2xs-line-height);
-  font-size: var(--ds-heading-2xs-font-size);
-  letter-spacing: var(--ds-heading-2xs-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-.ds-heading--xs {
-  --dsc-bottom-spacing: var(--ds-spacing-2);
-
-  font-weight: var(--ds-heading-xs-font-weight);
-  line-height: var(--ds-heading-xs-line-height);
-  font-size: var(--ds-heading-xs-font-size);
-  letter-spacing: var(--ds-heading-xs-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-.ds-heading--sm {
-  --dsc-bottom-spacing: var(--ds-spacing-3);
-
-  font-weight: var(--ds-heading-sm-font-weight);
-  line-height: var(--ds-heading-sm-line-height);
-  font-size: var(--ds-heading-sm-font-size);
-  letter-spacing: var(--ds-heading-sm-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-.ds-heading--md {
+.ds-heading {
   --dsc-bottom-spacing: var(--ds-spacing-4);
 
+  @composes ds-heading-text--md from '../utilities.css';
+
   color: var(--ds-color-neutral-text-default);
-  font-size: var(--ds-heading-md-font-size);
-  font-weight: var(--ds-heading-md-font-weight);
-  letter-spacing: var(--ds-heading-md-letter-spacing);
-  line-height: var(--ds-heading-md-line-height);
   margin: 0;
 
   &[data-spacing] {
     margin-bottom: var(--dsc-bottom-spacing);
   }
-}
 
-.ds-heading--lg {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
+  &[data-size='2xs'] {
+    --dsc-bottom-spacing: var(--ds-spacing-1);
 
-  font-weight: var(--ds-heading-lg-font-weight);
-  line-height: var(--ds-heading-lg-line-height);
-  font-size: var(--ds-heading-lg-font-size);
-  letter-spacing: var(--ds-heading-lg-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-.ds-heading--xl {
-  --dsc-bottom-spacing: var(--ds-spacing-6);
-
-  font-weight: var(--ds-heading-xl-font-weight);
-  line-height: var(--ds-heading-xl-line-height);
-  font-size: var(--ds-heading-xl-font-size);
-  letter-spacing: var(--ds-heading-xl-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-.ds-heading--2xl {
-  --dsc-bottom-spacing: var(--ds-spacing-7);
-
-  font-weight: var(--ds-heading-2xl-font-weight);
-  line-height: var(--ds-heading-2xl-line-height);
-  font-size: var(--ds-heading-2xl-font-size);
-  letter-spacing: var(--ds-heading-2xl-letter-spacing);
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-}
-
-/** Ingress */
-.ds-ingress {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
-  color: var(--ds-color-neutral-text-default);
-  font-size: var(--ds-ingress-md-font-size);
-  font-weight: var(--ds-ingress-md-font-weight);
-  letter-spacing: var(--ds-ingress-md-letter-spacing);
-  line-height: var(--ds-ingress-md-line-height);
-  margin: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
+    @composes ds-heading-text--2xs from '../utilities.css';
   }
 
   &[data-size='xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-8);
+    --dsc-bottom-spacing: var(--ds-spacing-2);
 
-    font-weight: var(--ds-ingress-xs-font-weight);
-    line-height: var(--ds-ingress-xs-line-height);
-    font-size: var(--ds-ingress-xs-font-size);
-    letter-spacing: var(--ds-ingress-xs-letter-spacing);
+    @composes ds-heading-text--xs from '../utilities.css';
   }
 
   &[data-size='sm'] {
-    --dsc-bottom-spacing: var(--ds-spacing-7);
+    --dsc-bottom-spacing: var(--ds-spacing-3);
 
-    font-weight: var(--ds-ingress-sm-font-weight);
-    line-height: var(--ds-ingress-sm-line-height);
-    font-size: var(--ds-ingress-sm-font-size);
-    letter-spacing: var(--ds-ingress-sm-letter-spacing);
+    @composes ds-heading-text--sm from '../utilities.css';
   }
 
   &[data-size='lg'] {
+    --dsc-bottom-spacing: var(--ds-spacing-5);
+
+    @composes ds-heading-text--lg from '../utilities.css';
+  }
+
+  &[data-size='xl'] {
     --dsc-bottom-spacing: var(--ds-spacing-6);
 
-    font-weight: var(--ds-ingress-lg-font-weight);
-    line-height: var(--ds-ingress-lg-line-height);
-    font-size: var(--ds-ingress-lg-font-size);
-    letter-spacing: var(--ds-ingress-lg-letter-spacing);
+    @composes ds-heading-text--xl from '../utilities.css';
+  }
+
+  &[data-size='2xl'] {
+    --dsc-bottom-spacing: var(--ds-spacing-7);
+
+    @composes ds-heading-text--2xl from '../utilities.css';
   }
 }
 
@@ -152,6 +65,10 @@
     @composes ds-body-text--lg from '../utilities.css';
   }
 
+  &[data-size='xl'] {
+    @composes ds-body-text--xl from '../utilities.css';
+  }
+
   &[data-variant='long'] {
     @composes ds-body-text--long-md from '../utilities.css';
 
@@ -165,6 +82,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--long-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--long-xl from '../utilities.css';
     }
   }
 
@@ -181,6 +102,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--short-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--short-xl from '../utilities.css';
     }
   }
 }
