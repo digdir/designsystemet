@@ -26,20 +26,6 @@
   box-shadow: var(--dsc-focus-boxShadow);
 }
 
-.ds-animate-height--openingOrClosing,
-.ds-animate-height--closed {
-  overflow: hidden;
-}
-
-.ds-animate-height--open .ds-animate-height__content {
-  height: auto;
-}
-
-.ds-animate-height--closed .ds-animate-height__content {
-  height: 0;
-  display: none;
-}
-
 /** Body typography */
 .ds-body-text--xs {
   --dsc-bottom-spacing: var(--ds-spacing-3);
