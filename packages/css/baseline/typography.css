@@ -65,6 +65,10 @@
     @composes ds-body-text--lg from '../utilities.css';
   }
 
+  &[data-size='xl'] {
+    @composes ds-body-text--xl from '../utilities.css';
+  }
+
   &[data-variant='long'] {
     @composes ds-body-text--long-md from '../utilities.css';
 
@@ -78,6 +82,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--long-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--long-xl from '../utilities.css';
     }
   }
 
@@ -94,6 +102,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--short-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--short-xl from '../utilities.css';
     }
   }
 }
