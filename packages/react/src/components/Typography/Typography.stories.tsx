@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Heading, Ingress, Paragraph } from './';
+import { Heading, Paragraph } from './';
 
 const meta: Meta = {
   title: 'Komponenter/Typography',
@@ -14,12 +14,12 @@ export const EksempelTekst: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Ingress spacing>
+    <Paragraph spacing variant='long'>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
       bruke denne tjenesten.
-    </Ingress>
+    </Paragraph>
 
     <Heading level={2} size='lg' spacing>
       Når skal du bruke skjemaet? (H2)

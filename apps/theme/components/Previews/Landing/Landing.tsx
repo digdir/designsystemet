@@ -1,4 +1,4 @@
-import { Button, Heading, Ingress } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { MagnifyingGlassIcon, MenuHamburgerIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
@@ -55,11 +55,15 @@ export const Landing = () => {
             <Heading size='md' className={classes.bannerTitle}>
               A need explain have out been making it
             </Heading>
-            <Ingress size='sm' className={classes.bannerIngress}>
+            <Paragraph
+              variant='long'
+              size='sm'
+              className={classes.bannerIngress}
+            >
               Multitude a hung structure return her belt of fixed had because a
               been ahead well logbook the accept as effort consideration with
               derived indulged of the all and more soon will you there.
-            </Ingress>
+            </Paragraph>
             <Button>Les mer</Button>
           </div>
           <div className={classes.bannerRight}>
