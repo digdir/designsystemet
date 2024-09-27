@@ -3,48 +3,31 @@
 .ds-heading {
   --dsc-bottom-spacing: var(--ds-spacing-4);
 
-  @composes ds-heading-text--md from '../utilities.css';
-
-  color: var(--ds-color-neutral-text-default);
   margin: 0;
 
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
+  @composes ds-heading-text--md from '../utilities.css';
 
   &[data-size='2xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-1);
-
     @composes ds-heading-text--2xs from '../utilities.css';
   }
 
   &[data-size='xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-2);
-
     @composes ds-heading-text--xs from '../utilities.css';
   }
 
   &[data-size='sm'] {
-    --dsc-bottom-spacing: var(--ds-spacing-3);
-
     @composes ds-heading-text--sm from '../utilities.css';
   }
 
   &[data-size='lg'] {
-    --dsc-bottom-spacing: var(--ds-spacing-5);
-
     @composes ds-heading-text--lg from '../utilities.css';
   }
 
   &[data-size='xl'] {
-    --dsc-bottom-spacing: var(--ds-spacing-6);
-
     @composes ds-heading-text--xl from '../utilities.css';
   }
 
   &[data-size='2xl'] {
-    --dsc-bottom-spacing: var(--ds-spacing-7);
-
     @composes ds-heading-text--2xl from '../utilities.css';
   }
 }
@@ -114,8 +97,6 @@
 
 /** Label */
 .ds-label--md {
-  --dsc-bottom-spacing: var(--ds-spacing-1);
-
   font-size: var(--ds-label-md-font-size);
   font-weight: var(--ds-label-md-font-weight);
   letter-spacing: var(--ds-label-md-letter-spacing);
@@ -124,10 +105,6 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-label--xs {
@@ -139,10 +116,6 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-label--sm {
@@ -154,10 +127,6 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-label--lg {
@@ -169,17 +138,11 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 /** Validation message */
 
 .ds-validation-message--xs {
-  --dsc-bottom-spacing: var(--ds-spacing-3);
-
   font-weight: var(--ds-error_message-xs-font-weight);
   line-height: var(--ds-error_message-xs-line-height);
   font-size: var(--ds-error_message-xs-font-size);
@@ -188,15 +151,9 @@
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
   }
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-validation-message--sm {
-  --dsc-bottom-spacing: var(--ds-spacing-4);
-
   font-weight: var(--ds-error_message-sm-font-weight);
   line-height: var(--ds-error_message-sm-line-height);
   font-size: var(--ds-error_message-sm-font-size);
@@ -205,15 +162,9 @@
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
   }
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-validation-message--md {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
   font-size: var(--ds-error_message-md-font-size);
   font-weight: var(--ds-error_message-md-font-weight);
   letter-spacing: var(--ds-error_message-md-letter-spacing);
@@ -223,15 +174,9 @@
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
   }
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
 }
 
 .ds-validation-message--lg {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
   font-weight: var(--ds-error_message-lg-font-weight);
   line-height: var(--ds-error_message-lg-line-height);
   font-size: var(--ds-error_message-lg-font-size);
@@ -239,10 +184,6 @@
 
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
-  }
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
   }
 }
 

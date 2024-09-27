@@ -14,8 +14,6 @@ export type HeadingProps = {
    *
    */
   size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-  /** Adds margin-bottom */
-  spacing?: boolean;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -31,7 +29,7 @@ export type HeadingProps = {
  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   function Heading(
-    { size = 'xl', level = 2, spacing = false, className, asChild, ...rest },
+    { size = 'xl', level = 2, className, asChild, ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : (`h${level}` as ElementType);
@@ -40,7 +38,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       <Component
         className={cl(`ds-heading`, className)}
         data-size={size}
-        data-spacing={spacing || undefined}
         ref={ref}
         {...rest}
       />
