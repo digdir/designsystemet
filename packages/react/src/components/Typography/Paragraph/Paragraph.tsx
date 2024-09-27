@@ -10,7 +10,7 @@ export type ParagraphProps = {
    * @default 'md'
    *
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /** Adds margin-bottom */
   spacing?: boolean;
   /**
