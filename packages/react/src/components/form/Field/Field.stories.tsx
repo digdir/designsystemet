@@ -22,20 +22,39 @@ export default {
 const toggles = {
   type: 'textarea',
   label: true,
+  ariaDesribedby: '',
   description: true,
+  descriptionId: '',
   validation: true,
+  validationId: '',
 };
 
 export const Preview: Story = (args) => {
-  const { type, label, description, validation } = args as typeof toggles;
+  const {
+    ariaDesribedby,
+    type,
+    label,
+    description,
+    descriptionId,
+    validation,
+    validationId,
+  } = args as typeof toggles;
   const Component = type;
 
   return (
     <Field>
       {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
-      {description && <Field.Description>Beskrivelse</Field.Description>}
-      <Component />
-      {validation && <ValidationMessage>Feilmelding</ValidationMessage>}
+      {description && (
+        <Field.Description id={descriptionId || undefined}>
+          Beskrivelse
+        </Field.Description>
+      )}
+      <Component aria-describedby={ariaDesribedby || undefined} />
+      {validation && (
+        <ValidationMessage id={validationId || undefined}>
+          Feilmelding
+        </ValidationMessage>
+      )}
     </Field>
   );
 };
