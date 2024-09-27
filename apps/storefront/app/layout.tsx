@@ -62,7 +62,7 @@ export default function RootLayout({
           <Header menu={menu} />
           {children}
           <Footer />
-          {process.env.VERCEL_GIT_COMMIT_REF === 'next' && (
+          {process.env.VERCEL_ENV === 'production' && (
             <Script src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js' />
           )}
         </div>
