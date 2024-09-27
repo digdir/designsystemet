@@ -1,7 +1,7 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import '@u-elements/u-details';
 
 export type AccordionItemProps = {
@@ -18,14 +18,14 @@ export type AccordionItemProps = {
    * @default false
    */
   defaultOpen?: boolean;
-  /** Callback function when AccordionItem wants to open due to a find in page-search */
-  onFound?: () => void;
+  /** Callback function when AccordionItem toggles due to click on summary or find in page-search */
+  onToggle?: (event: Event) => void;
   /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
   children?: ReactNode;
-} & HTMLAttributes<HTMLDetailsElement> &
+} & Omit<HTMLAttributes<HTMLDetailsElement>, 'onToggle'> &
   (
-    | { open: boolean; onFound: () => void }
-    | { open?: never; onFound?: () => void }
+    | { open: boolean; onToggle: (event: Event) => void }
+    | { open?: never; onToggle?: (event: Event) => void }
   );
 
 /**
@@ -38,45 +38,35 @@ export type AccordionItemProps = {
  */
 export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
   function AccordionItem(
-    { className, open, defaultOpen = false, onFound, ...rest },
+    { className, open, defaultOpen = false, onToggle, ...rest },
     ref,
   ) {
-    const [internalOpen, setInternalOpen] = useState(open ?? defaultOpen);
-    const controlledOpen = useRef(internalOpen); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
+    const controlledOpen = useRef(open); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
     const detailsRef = useRef<HTMLDetailsElement>(null);
-    const initialOpen = useRef(internalOpen); // Allow rendering initial open state on server, but animate in browser
     const mergedRefs = useMergeRefs([detailsRef, ref]);
-    controlledOpen.current = open ?? internalOpen; // Update controlledOpen on prop change
+    const toggleRef = useRef(onToggle); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
+    controlledOpen.current = open; // Update controlledOpen on prop change
+    toggleRef.current = onToggle; // Update controlledOpen on prop change
 
     // Provide a controlled state and onFound event
     useEffect(() => {
       const details = detailsRef.current;
-      const summary = details?.querySelector(':scope > :is(summary,u-summary)');
-      const handleSummaryClick = (event: Event) => {
-        event?.preventDefault(); // Prevent native <details> toggle so we can animate
-        setInternalOpen((open) => !open);
-      };
-      const handleToggle = () => {
+      const handleToggle = (event: Event) => {
         if (!details || details.open === controlledOpen.current) return;
-        onFound?.();
-        setInternalOpen(details?.open || false);
+        toggleRef.current?.(event);
         setTimeout(() => {
-          details.open = controlledOpen.current;
-        }); // Let onFound run before correcting state
+          details.open = controlledOpen.current ?? details.open;
+        }); // Let onToggle run before correcting state
       };
 
       details?.addEventListener('toggle', handleToggle, true);
-      summary?.addEventListener('click', handleSummaryClick);
-      return () => {
-        details?.removeEventListener('toggle', handleToggle, true);
-        summary?.removeEventListener('click', handleSummaryClick);
-      };
+      return () => details?.removeEventListener('toggle', handleToggle, true);
     }, []);
 
     return (
       <u-details
         class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
-        open={initialOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
+        open={controlledOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
         ref={mergedRefs}
         {...rest}
       />
