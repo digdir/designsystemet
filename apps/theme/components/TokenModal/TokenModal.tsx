@@ -3,7 +3,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
   Heading,
-  Ingress,
   Link,
   Modal,
   Paragraph,
@@ -86,10 +85,10 @@ export const TokenModal = ({
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Kopier fargetema</span>
         </Heading>
-        <Ingress size='xs' spacing>
+        <Paragraph variant='long' size='xs' spacing>
           Velg et av alternativene under for å ta i bruk design-tokens med ditt
           tema.
-        </Ingress>
+        </Paragraph>
         <Heading level={3} size='xs' spacing>
           Alt 1. Design tokens
         </Heading>

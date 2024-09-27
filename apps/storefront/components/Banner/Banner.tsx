@@ -1,5 +1,5 @@
 'use client';
-import { Heading, Ingress } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, createContext, useContext } from 'react';
@@ -44,7 +44,8 @@ type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
 
 const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
-    <Ingress
+    <Paragraph
+      variant='long'
       className={cl(classes.ingress, 'ds-ingress--sm', className)}
       {...props}
     />
