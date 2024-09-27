@@ -193,7 +193,6 @@
 .ds-heading-text--md {
   --dsc-bottom-spacing: var(--ds-spacing-4);
 
-  color: var(--ds-color-neutral-text-default);
   font-size: var(--ds-heading-md-font-size);
   font-weight: var(--ds-heading-md-font-weight);
   letter-spacing: var(--ds-heading-md-letter-spacing);
