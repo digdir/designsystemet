@@ -204,42 +204,67 @@ const options = [
 ];
 
 export const Composed: Story = () => (
-  <Card style={{ width: '320px' }}>
-    <Card.Block>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Heading level={2} size='xs'>
-          Rolle 1
-        </Heading>
-        <Button variant='secondary' color='danger' size='sm'>
-          <TrashFillIcon aria-hidden fontSize='1.5rem' />
-          Fjern
+  <div
+    style={{
+      display: 'grid', // Used to test Card.Block border logic
+      gap: 'var(--ds-spacing-4)',
+      gridColumn: '1 / -1',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
+      width: '100%',
+    }}
+  >
+    <Card>
+      <Card.Block>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Heading level={2} size='xs'>
+            Rolle 1
+          </Heading>
+          <Button variant='secondary' color='danger' size='sm'>
+            <TrashFillIcon aria-hidden fontSize='1.5rem' />
+            Fjern
+          </Button>
+        </div>
+      </Card.Block>
+      <Card.Block>
+        <Select label='Velg rolle'>
+          {options.map(({ value, label }, index) => (
+            <Select.Option key={index} value={value}>
+              {label}
+            </Select.Option>
+          ))}
+        </Select>
+        <Textfield label='Fødsels- eller d-nummer' />
+        <Textfield label='Etternavn' />
+      </Card.Block>
+      <Card.Block>
+        <Button variant='secondary' size='sm'>
+          Legg til rolle
+          <PlusIcon aria-hidden fontSize='1.5rem' />
         </Button>
-      </div>
-    </Card.Block>
-    <Card.Block>
-      <Select label='Velg rolle'>
-        {options.map(({ value, label }, index) => (
-          <Select.Option key={index} value={value}>
-            {label}
-          </Select.Option>
-        ))}
-      </Select>
-      <Textfield label='Fødsels- eller d-nummer' />
-      <Textfield label='Etternavn' />
-    </Card.Block>
-    <Card.Block>
-      <Button variant='secondary' size='sm'>
-        Legg til rolle
-        <PlusIcon aria-hidden fontSize='1.5rem' />
-      </Button>
-    </Card.Block>
-  </Card>
+      </Card.Block>
+    </Card>
+    <Card>
+      <Card.Block>
+        <img src={cat1} alt='katt' />
+      </Card.Block>
+      <Card.Block>
+        <Heading level={2} size='sm'>
+          Card Neutral
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  </div>
 );
 
 export const WithLink: Story = (args) => (

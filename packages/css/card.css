@@ -20,7 +20,7 @@
   @composes ds-paragraph from './baseline/typography.css'; /* Must be after all: unset */
 
   /* Style link in heading, or heading when Card is anchor */
-  :is(h1, h2, h3, h4, h5, h6) a:any-link,
+  :is(h1, h2, h3, h4, h5, h6) a:any-link, /* Using :any-link to target both a and a:visited */
   &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
     outline: 0;
@@ -102,11 +102,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: var(--dsc-card-padding);
+  position: relative;
 
   /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
-  background: inherit;
-  outline: var(--dsc-card-border);
-  position: relative;
+  &::before {
+    content: '';
+    border-top: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 0 auto;
+    translate: 0 -100%;
+  }
+
+  &::after {
+    content: '';
+    border-left: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 auto 0 0;
+    translate: -100%;
+  }
 
   &:has(> :is(audio, figure, iframe, img, video):only-child) {
     padding: 0;
