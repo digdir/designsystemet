@@ -160,3 +160,68 @@
   letter-spacing: var(--ds-paragraph-short-lg-letter-spacing);
   margin: 0;
 }
+
+/** Heading */
+
+.ds-heading-text--2xs {
+  --dsc-bottom-spacing: var(--ds-spacing-1);
+
+  font-weight: var(--ds-heading-2xs-font-weight);
+  line-height: var(--ds-heading-2xs-line-height);
+  font-size: var(--ds-heading-2xs-font-size);
+  letter-spacing: var(--ds-heading-2xs-letter-spacing);
+}
+
+.ds-heading-text--xs {
+  --dsc-bottom-spacing: var(--ds-spacing-2);
+
+  font-weight: var(--ds-heading-xs-font-weight);
+  line-height: var(--ds-heading-xs-line-height);
+  font-size: var(--ds-heading-xs-font-size);
+  letter-spacing: var(--ds-heading-xs-letter-spacing);
+}
+
+.ds-heading-text--sm {
+  --dsc-bottom-spacing: var(--ds-spacing-3);
+
+  font-weight: var(--ds-heading-sm-font-weight);
+  line-height: var(--ds-heading-sm-line-height);
+  font-size: var(--ds-heading-sm-font-size);
+  letter-spacing: var(--ds-heading-sm-letter-spacing);
+}
+
+.ds-heading-text--md {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  font-size: var(--ds-heading-md-font-size);
+  font-weight: var(--ds-heading-md-font-weight);
+  letter-spacing: var(--ds-heading-md-letter-spacing);
+  line-height: var(--ds-heading-md-line-height);
+}
+
+.ds-heading-text--lg {
+  --dsc-bottom-spacing: var(--ds-spacing-5);
+
+  font-weight: var(--ds-heading-lg-font-weight);
+  line-height: var(--ds-heading-lg-line-height);
+  font-size: var(--ds-heading-lg-font-size);
+  letter-spacing: var(--ds-heading-lg-letter-spacing);
+}
+
+.ds-heading-text--xl {
+  --dsc-bottom-spacing: var(--ds-spacing-6);
+
+  font-weight: var(--ds-heading-xl-font-weight);
+  line-height: var(--ds-heading-xl-line-height);
+  font-size: var(--ds-heading-xl-font-size);
+  letter-spacing: var(--ds-heading-xl-letter-spacing);
+}
+
+.ds-heading-text--2xl {
+  --dsc-bottom-spacing: var(--ds-spacing-7);
+
+  font-weight: var(--ds-heading-2xl-font-weight);
+  line-height: var(--ds-heading-2xl-line-height);
+  font-size: var(--ds-heading-2xl-font-size);
+  letter-spacing: var(--ds-heading-2xl-letter-spacing);
+}

@@ -34,13 +34,6 @@ export type AvatarProps = {
   children?: ReactNode;
 } & Omit<HTMLAttributes<HTMLSpanElement>, 'aria-label'>;
 
-const fontSizeMap = {
-  xs: 'ds-paragraph--xs',
-  sm: 'ds-heading--2xs',
-  md: 'ds-heading--sm',
-  lg: 'ds-heading--md',
-};
-
 /**
  * Avatars are used to represent people or entities.
  *
@@ -74,7 +67,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   return (
     <span
       ref={ref}
-      className={cl('ds-avatar', fontSizeMap[size], className)}
+      className={cl('ds-avatar', className)}
       data-variant={variant}
       data-color={color}
       data-size={size}
