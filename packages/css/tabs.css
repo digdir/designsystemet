@@ -36,21 +36,18 @@
 }
 
 .ds-tabs__tab {
+  all: unset; /* Reset <button> */
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--dsc-tabs-tab-color);
+  cursor: pointer;
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
   gap: var(--ds-spacing-1);
   justify-content: center;
-  text-align: center;
-  align-items: center;
   padding: var(--dsc-tabs-tab-padding);
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--dsc-tabs-tab-color);
   position: relative;
-  font-family: inherit;
+  text-align: center;
 
   &[aria-selected='true'] {
     --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
