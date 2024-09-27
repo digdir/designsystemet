@@ -277,7 +277,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal style={{ overflow: 'visible' }}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Combobox i Modal
         </Heading>
         <Combobox

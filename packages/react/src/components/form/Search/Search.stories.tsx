@@ -76,7 +76,11 @@ export const Form: StoryFn<typeof Search> = () => {
 
   return (
     <>
-      <Heading level={3} size='2xs' spacing>
+      <Heading
+        level={3}
+        size='2xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         Submitted value: {submittedValue}
       </Heading>
       <form
