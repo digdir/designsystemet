@@ -45,6 +45,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     const detailsRef = useRef<HTMLDetailsElement>(null);
     const mergedRefs = useMergeRefs([detailsRef, ref]);
     const toggleRef = useRef(onToggle); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
+    const uncontrolledOpen = useRef(defaultOpen || undefined); // Enables rendering defaultOpen on server
     controlledOpen.current = open; // Update controlledOpen on prop change
     toggleRef.current = onToggle; // Update controlledOpen on prop change
 
@@ -66,7 +67,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     return (
       <u-details
         class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
-        open={controlledOpen.current || undefined} // Fallback to undefined to prevent rendering open="false"
+        open={controlledOpen.current || uncontrolledOpen.current}
         ref={mergedRefs}
         {...rest}
       />
