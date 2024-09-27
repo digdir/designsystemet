@@ -10,7 +10,7 @@
   --dsc-button-size: var(--ds-sizing-12);
 
   @composes ds-focus from './utilities.css';
-  @composes ds-paragraph-short from './baseline/typography.css';
+  @composes ds-body-text--short-md from './utilities.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -42,12 +42,16 @@
     --dsc-button-padding-block: var(--ds-spacing-2);
     --dsc-button-padding-inline: var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10);
+
+    @composes ds-body-text--short-sm from './utilities.css';
   }
 
   &[data-size='lg'] {
     --dsc-button-padding-block: var(--ds-spacing-3);
     --dsc-button-padding-inline: var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
+
+    @composes ds-body-text--short-lg from './utilities.css';
   }
 
   &[data-icon] {

@@ -33,14 +33,12 @@ const render = <T extends HTMLElement>(
   const Component = asChild ? Slot : tagName;
 
   return (
-    <Paragraph size={size} asChild>
-      <Component
-        className={cl(`ds-list`, className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
-    </Paragraph>
+    <Component
+      className={cl(`ds-list`, className)}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
   );
 };
 
