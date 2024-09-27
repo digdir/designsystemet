@@ -51,6 +51,8 @@
 
 /** Paragraph */
 .ds-paragraph {
+  margin: 0;
+
   @composes ds-body-text--md from '../utilities.css';
 
   &[data-size='xs'] {
@@ -108,10 +110,6 @@
       @composes ds-body-text--short-xl from '../utilities.css';
     }
   }
-}
-
-.ds-paragraph--spacing {
-  margin-bottom: var(--dsc-bottom-spacing);
 }
 
 /** Label */
