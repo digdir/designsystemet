@@ -4,7 +4,6 @@
   --dsc-accordion-border: 1px solid var(--ds-color-neutral-border-subtle);
   --dsc-accordion-chevron-gap: var(--ds-spacing-2);
   --dsc-accordion-chevron-size: var(--ds-spacing-6);
-  --dsc-accordion-chevron-rotate: 0deg;
   --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-accordion-heading-background--open: var(--ds-color-neutral-background-subtle);
   --dsc-accordion-heading-background: var(--ds-color-neutral-background-default);
@@ -87,7 +86,6 @@
       mask: 50% / contain no-repeat
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
       position: absolute;
-      rotate: var(--dsc-accordion-chevron-rotate);
       margin-inline: calc(
         (var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) * -1
       ); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
@@ -107,16 +105,31 @@
 
   &[open] > :is(summary, u-summary) {
     background: var(--dsc-accordion-heading-background--open);
-  }
 
-  /* Make flip on click */
-  &[open]:not([data-chevron-open='false']) {
-    --dsc-accordion-chevron-rotate: -180deg;
+    &::before {
+      rotate: 180deg;
+    }
   }
 
   @media (hover: hover) and (pointer: fine) {
     & > :is(summary, u-summary):hover {
       background: var(--dsc-accordion-heading-background--hover);
     }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords; /* stylelint-disable-line property-no-unknown */
+  }
+
+  &::part(details-content) {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      content-visibility 400ms allow-discrete,
+      height 400ms;
+  }
+
+  &[open]::part(details-content) {
+    height: auto;
   }
 }

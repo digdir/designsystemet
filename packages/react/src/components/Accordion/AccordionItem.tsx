@@ -42,13 +42,13 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     ref,
   ) {
     const [internalOpen, setInternalOpen] = useState(open ?? defaultOpen);
-    const initialOpen = useRef(internalOpen); // Allow rendering initial open state on server, but animate in browser
     const controlledOpen = useRef(internalOpen); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
     const detailsRef = useRef<HTMLDetailsElement>(null);
+    const initialOpen = useRef(internalOpen); // Allow rendering initial open state on server, but animate in browser
     const mergedRefs = useMergeRefs([detailsRef, ref]);
     controlledOpen.current = open ?? internalOpen; // Update controlledOpen on prop change
 
-    // Control state with a useEffect to animate on prop change and prevent native <details> toggle
+    // Provide a controlled state and onFound event
     useEffect(() => {
       const details = detailsRef.current;
       const summary = details?.querySelector(':scope > :is(summary,u-summary)');
@@ -60,7 +60,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
         if (!details || details.open === controlledOpen.current) return;
         onFound?.();
         setInternalOpen(details?.open || false);
-        window.requestAnimationFrame(() => {
+        setTimeout(() => {
           details.open = controlledOpen.current;
         }); // Let onFound run before correcting state
       };
@@ -73,10 +73,6 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
       };
     }, []);
 
-    useEffect(() => {
-      animateHeight(detailsRef.current, controlledOpen.current);
-    }, [controlledOpen.current]);
-
     return (
       <u-details
         class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
@@ -87,31 +83,3 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     );
   },
 );
-
-const animateHeight = (details: HTMLDetailsElement | null, open: boolean) => {
-  const content = details?.querySelector(':scope > :not(summary, u-summary)');
-  const hasContent = content instanceof HTMLElement;
-  const hasAnimate = details && 'animate' in details;
-  const hasReducedMotion = window.matchMedia?.(
-    '(prefers-reduced-motion: reduce)',
-  ).matches;
-
-  details?.setAttribute('data-chevron-open', `${open}`); // Make flip on click
-  if (hasReducedMotion || !hasAnimate || !hasContent) {
-    if (details) details.open = open;
-  } else if (details.open !== open) {
-    details.open = true;
-    const opened = `${content.scrollHeight}px`;
-    content.style.overflow = 'clip'; // Clip content while animating
-    content.animate(
-      {
-        height: [open ? '0px' : opened, open ? opened : '0px'],
-        paddingBlock: [open ? '0px' : '', open ? '' : '0px'],
-      },
-      { duration: 400, easing: 'ease-in-out' },
-    ).onfinish = () => {
-      content.style.removeProperty('overflow'); // Restore overlow
-      details.open = open;
-    };
-  }
-};
