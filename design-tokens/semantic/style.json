@@ -72,49 +72,17 @@
         }
       }
     },
-    "ingress": {
-      "lg": {
+    "body": {
+      "xl": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{font.family}",
           "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.8}",
-          "letterSpacing": "{letter-spacing.8}"
-        }
-      },
-      "md": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
+          "lineHeight": "{line-height.md}",
           "fontSize": "{font-size.7}",
           "letterSpacing": "{letter-spacing.8}"
         }
       },
-      "sm": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.6}",
-          "letterSpacing": "{letter-spacing.7}"
-        }
-      },
-      "xs": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.5}",
-          "letterSpacing": "{letter-spacing.6}"
-        }
-      }
-    },
-    "paragraph": {
       "lg": {
         "$type": "typography",
         "$value": {
@@ -156,6 +124,16 @@
         }
       },
       "short": {
+        "xl": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{font.family}",
+            "fontWeight": "{font-weight.regular}",
+            "lineHeight": "{line-height.sm}",
+            "fontSize": "{font-size.7}",
+            "letterSpacing": "{letter-spacing.8}"
+          }
+        },
         "lg": {
           "$type": "typography",
           "$value": {
@@ -198,6 +176,16 @@
         }
       },
       "long": {
+        "xl": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{font.family}",
+            "fontWeight": "{font-weight.regular}",
+            "lineHeight": "{line-height.lg}",
+            "fontSize": "{font-size.7}",
+            "letterSpacing": "{letter-spacing.8}"
+          }
+        },
         "lg": {
           "$type": "typography",
           "$value": {

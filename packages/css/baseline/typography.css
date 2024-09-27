@@ -49,49 +49,6 @@
   }
 }
 
-/** Ingress */
-.ds-ingress {
-  --dsc-bottom-spacing: var(--ds-spacing-5);
-
-  color: var(--ds-color-neutral-text-default);
-  font-size: var(--ds-ingress-md-font-size);
-  font-weight: var(--ds-ingress-md-font-weight);
-  letter-spacing: var(--ds-ingress-md-letter-spacing);
-  line-height: var(--ds-ingress-md-line-height);
-  margin: 0;
-
-  &[data-spacing] {
-    margin-bottom: var(--dsc-bottom-spacing);
-  }
-
-  &[data-size='xs'] {
-    --dsc-bottom-spacing: var(--ds-spacing-8);
-
-    font-weight: var(--ds-ingress-xs-font-weight);
-    line-height: var(--ds-ingress-xs-line-height);
-    font-size: var(--ds-ingress-xs-font-size);
-    letter-spacing: var(--ds-ingress-xs-letter-spacing);
-  }
-
-  &[data-size='sm'] {
-    --dsc-bottom-spacing: var(--ds-spacing-7);
-
-    font-weight: var(--ds-ingress-sm-font-weight);
-    line-height: var(--ds-ingress-sm-line-height);
-    font-size: var(--ds-ingress-sm-font-size);
-    letter-spacing: var(--ds-ingress-sm-letter-spacing);
-  }
-
-  &[data-size='lg'] {
-    --dsc-bottom-spacing: var(--ds-spacing-6);
-
-    font-weight: var(--ds-ingress-lg-font-weight);
-    line-height: var(--ds-ingress-lg-line-height);
-    font-size: var(--ds-ingress-lg-font-size);
-    letter-spacing: var(--ds-ingress-lg-letter-spacing);
-  }
-}
-
 /** Paragraph */
 .ds-paragraph {
   @composes ds-body-text--md from '../utilities.css';
@@ -108,6 +65,10 @@
     @composes ds-body-text--lg from '../utilities.css';
   }
 
+  &[data-size='xl'] {
+    @composes ds-body-text--xl from '../utilities.css';
+  }
+
   &[data-variant='long'] {
     @composes ds-body-text--long-md from '../utilities.css';
 
@@ -121,6 +82,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--long-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--long-xl from '../utilities.css';
     }
   }
 
@@ -137,6 +102,10 @@
 
     &[data-size='lg'] {
       @composes ds-body-text--short-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--short-xl from '../utilities.css';
     }
   }
 }
