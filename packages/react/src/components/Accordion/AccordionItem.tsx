@@ -1,7 +1,7 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useCallback, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import '@u-elements/u-details';
 
 export type AccordionItemProps = {
@@ -41,23 +41,20 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     { className, open, defaultOpen = false, onToggle, ...rest },
     ref,
   ) {
-    const controlledOpen = useRef(open); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
     const detailsRef = useRef<HTMLDetailsElement>(null);
+    const initialOpen = useRef(defaultOpen); // Allow rendering defaultOpen on server, but only render once on client
     const mergedRefs = useMergeRefs([detailsRef, ref]);
-    const toggleRef = useRef(onToggle); // Using ref so we can access it inside useEffect without unbinding/binding event listeners
-    const uncontrolledOpen = useRef(defaultOpen || undefined); // Enables rendering defaultOpen on server
-    controlledOpen.current = open; // Update controlledOpen on prop change
-    toggleRef.current = onToggle; // Update controlledOpen on prop change
+    const propsRef = useRef({ open, onToggle }); // Using ref to enable access inside useEffect without re-binding event listeners
+    propsRef.current = { open, onToggle }; // Update ref on every render
 
-    // Provide a controlled state and onFound event
+    // Provide onToggle event and controlled state
     useEffect(() => {
       const details = detailsRef.current;
+      const props = propsRef.current;
       const handleToggle = (event: Event) => {
-        if (!details || details.open === controlledOpen.current) return;
-        toggleRef.current?.(event);
-        setTimeout(() => {
-          details.open = controlledOpen.current ?? details.open;
-        }); // Let onToggle run before correcting state
+        if (!details || details?.open === props.open) return;
+        props.onToggle?.(event);
+        if (props.open !== undefined) details.open = props.open; // Don't update DOM unless controlled state changes
       };
 
       details?.addEventListener('toggle', handleToggle, true);
@@ -67,7 +64,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     return (
       <u-details
         class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
-        open={controlledOpen.current || uncontrolledOpen.current}
+        open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
         ref={mergedRefs}
         {...rest}
       />
