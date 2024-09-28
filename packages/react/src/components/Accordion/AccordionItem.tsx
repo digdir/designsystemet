@@ -44,17 +44,18 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
     const detailsRef = useRef<HTMLDetailsElement>(null);
     const initialOpen = useRef(defaultOpen); // Allow rendering defaultOpen on server, but only render once on client
     const mergedRefs = useMergeRefs([detailsRef, ref]);
-    const propsRef = useRef({ open, onToggle }); // Using ref to enable access inside useEffect without re-binding event listeners
-    propsRef.current = { open, onToggle }; // Update ref on every render
+    const onToggleRef = useRef(onToggle); // Using ref to enable access inside useEffect without re-binding event listeners
+    const openRef = useRef(open);
+    onToggleRef.current = onToggle;
+    openRef.current = open;
 
     // Provide onToggle event and controlled state
     useEffect(() => {
       const details = detailsRef.current;
-      const props = propsRef.current;
       const handleToggle = (event: Event) => {
-        if (!details || details?.open === props.open) return;
-        props.onToggle?.(event);
-        if (props.open !== undefined) details.open = props.open; // Don't update DOM unless controlled state changes
+        if (!details || details?.open === openRef.current) return;
+        onToggleRef.current?.(event);
+        if (openRef.current !== undefined) details.open = openRef.current; // Don't update DOM unless controlled state changes
       };
 
       details?.addEventListener('toggle', handleToggle, true);

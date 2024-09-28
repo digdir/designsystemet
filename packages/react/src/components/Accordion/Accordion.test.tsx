@@ -75,7 +75,6 @@ describe('Accordion Accessibility', () => {
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'true');
 
     rerender(<TestComponent open={false} onToggle={VOID} />);
-    console.log(container.innerHTML);
     expect(accordionExpandButton).toHaveAttribute('aria-expanded', 'false');
   });
 });
