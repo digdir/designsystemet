@@ -61,6 +61,7 @@
 .ds-accordion__item {
   background: var(--dsc-accordion-background);
   border-block: var(--dsc-accordion-border);
+  box-sizing: border-box;
 
   & > :is(summary, u-summary) {
     background: var(--dsc-accordion-heading-background);
