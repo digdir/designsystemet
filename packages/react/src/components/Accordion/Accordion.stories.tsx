@@ -143,9 +143,10 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const toggleOpen = () => {
-    setOpen1(!open1);
-    setOpen2(!open1);
-    setOpen3(!open1);
+    const isOpen = [open1, open2, open3].every(Boolean);
+    setOpen1(!isOpen);
+    setOpen2(!isOpen);
+    setOpen3(!isOpen);
   };
 
   return (
@@ -153,10 +154,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
       <Button onClick={toggleOpen}>Toggle Accordions</Button>
       <br />
       <Accordion>
-        <Accordion.Item open={open1} onFound={() => setOpen1(true)}>
-          <Accordion.Heading onClick={() => setOpen1(!open1)}>
-            Enkeltpersonforetak
-          </Accordion.Heading>
+        <Accordion.Item open={open1} onToggle={() => setOpen1(!open1)}>
+          <Accordion.Heading>Enkeltpersonforetak</Accordion.Heading>
           <Accordion.Content>
             Skal du starte for deg selv? Enkeltpersonforetak er ofte den
             enkleste måten å etablere bedrift på. Denne organisasjonsformen har
@@ -165,10 +164,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             økonomien.
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item open={open2} onFound={() => setOpen2(false)}>
-          <Accordion.Heading onClick={() => setOpen2(!open2)}>
-            Aksjeselskap (AS)
-          </Accordion.Heading>
+        <Accordion.Item open={open2} onToggle={() => setOpen2(!open2)}>
+          <Accordion.Heading>Aksjeselskap (AS)</Accordion.Heading>
           <Accordion.Content>
             Planlegger du å starte næringsvirksomhet alene eller sammen med
             andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
@@ -177,10 +174,8 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
             hensiktsmessig organisasjonsform.
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item open={open3} onFound={() => setOpen3(true)}>
-          <Accordion.Heading onClick={() => setOpen3(!open3)}>
-            Ansvarlig selskap (ANS/DA)
-          </Accordion.Heading>
+        <Accordion.Item open={open3} onToggle={() => setOpen3(!open3)}>
+          <Accordion.Heading>Ansvarlig selskap (ANS/DA)</Accordion.Heading>
           <Accordion.Content>
             Er dere minst to personer som skal starte opp egen virksomhet?
             Samarbeider du godt med den/de som du skal starte opp sammen med?
