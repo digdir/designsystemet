@@ -8,14 +8,13 @@ import {
   ExternalLinkIcon,
   PencilWritingIcon,
   PlusCircleIcon,
-  PlusIcon,
   PrinterSmallIcon,
   TrashIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 
-import { Spinner, Tooltip } from '../';
+import { Tooltip } from '../';
 
 import { Button } from './';
 
@@ -24,15 +23,55 @@ type Story = StoryObj<typeof Button>;
 const meta: Meta<typeof Button> = {
   title: 'Komponenter/Button',
   component: Button,
+  decorators: [
+    (Story: PartialStoryFn<ReactRenderer>) => (
+      <Stack>
+        <style>
+          {`:root {
+          --ds-sizing-min: 2px;
+          --ds-sizing-scale: .25rem; /* 4px */
+          --ds-sizing-calc: calc((var(--ds-font-size-5) - 1em) * .5);
+          --ds-sizing-adjust: calc((var(--ds-font-size-5) - 1em) * .5);
+          --ds-sizing-adjust: round(calc((var(--ds-font-size-5) - 1em) * .5));
+
+          /*
+          18  1   4     18 * 1 - 14 * 1 = 4       18 * 1 - 14 * 1 -  = 4
+          18  2   8     18 * 2 - 14 * 2 = 8
+          18  3   12    18 * 3 - 14 * 2 = 12
+          18  4   16    18 * 4 - 14 * 2 = 16
+          18  30  120   18 * 30 - 14 * 2 = 120
+
+          20  1   6     20 * 1 - 14 * 1 = 6       20 * 1 - 14 * 1 - 20 = 6
+          20  2   12    20 * 2 - 14 * 1 = 12      20 * 2 - 14 * 2 = 6
+          20  3   18    20 * 3 - 14 * 1 = 18
+          20  4   24    20 * 4 - 14 * 1 = 24
+          20  30  180   20 * 30 - 14 * 1 = 180
+          */
+
+          ${Array.from({ length: 31 }, (_, i) =>
+            /*calc(${i}em - var(--ds-sizing-scale)),*/
+            /*calc(4px * ${i} - 18px + 1em),*/
+            /*max(var(--ds-sizing-min) * ${i});*/
+            /*--ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} - var(--ds-font-md) + 1em + var(--ds-sizing-adjust));*/
+            /*--ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} - var(--ds-font-size-5) + 1em + var(--ds-sizing-adjust));*/
+            /*--ds-sizing-${i}: calc(${i}em - (1em - var(--ds-sizing-scale) + var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust));*/
+            `
+            --ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust));
+            --ds-spacing-${i}:var(--ds-sizing-${i});
+          `.trim(),
+          )
+            .slice(1)
+            .join('\n')}
+        }`}
+        </style>
+        <Story />
+      </Stack>
+    ),
+  ],
 };
 
 export default meta;
 
-const stack = (Story: PartialStoryFn<ReactRenderer>) => (
-  <Stack>
-    <Story />
-  </Stack>
-);
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args} />;
@@ -55,8 +94,6 @@ export const Primary: StoryFn<typeof Button> = () => (
   </>
 );
 
-Primary.decorators = [stack];
-
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
     <Button variant='secondary' color='accent'>
@@ -64,8 +101,6 @@ export const Secondary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Secondary.decorators = [stack];
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
@@ -75,8 +110,6 @@ export const Tertiary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Tertiary.decorators = [stack];
 
 export const First: StoryFn<typeof Button> = () => (
   <>
@@ -91,8 +124,6 @@ export const First: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-First.decorators = [stack];
 
 export const Second: StoryFn<typeof Button> = () => (
   <>
@@ -110,8 +141,6 @@ export const Second: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Second.decorators = [stack];
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
@@ -149,8 +178,6 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
   </>
 );
 
-CombinedColors.decorators = [stack];
-
 export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
@@ -173,8 +200,6 @@ export const TextAndIcon: StoryFn<typeof Button> = () => (
   </>
 );
 
-TextAndIcon.decorators = [stack];
-
 export const Loading: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' loading>
@@ -189,25 +214,23 @@ export const Loading: StoryFn<typeof Button> = () => (
   </>
 );
 
-Loading.decorators = [stack];
-
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' size='sm'>
+    <Button variant='primary' size='sm' icon>
       <CogIcon fontSize='1rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' aria-hidden />
       Small
     </Button>
-    <Button variant='primary' size='md'>
+    <Button variant='primary' size='md' icon>
       <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' aria-hidden />
       Medium
     </Button>
-    <Button variant='primary' size='lg'>
+    <Button variant='primary' size='lg' icon>
       <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='lg'>
@@ -216,8 +239,6 @@ export const Icons: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Icons.decorators = [stack];
 
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
@@ -270,5 +291,3 @@ export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-IconsOnlyPrimary.decorators = [stack];
