@@ -12,6 +12,7 @@
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
+    margin-bottom: var(--ds-spacing-2);
   }
 
   & a {

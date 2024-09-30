@@ -11,8 +11,6 @@ export type ParagraphProps = {
    *
    */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  /** Adds margin-bottom */
-  spacing?: boolean;
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -31,20 +29,13 @@ export type ParagraphProps = {
  * <Paragraph size='lg'>Paragraph</Paragraph>
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  (
-    { className, spacing, size = 'md', asChild, variant = 'default', ...rest },
-    ref,
-  ) => {
+  ({ className, size = 'md', asChild, variant = 'default', ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
 
     return (
       <Component
         ref={ref}
-        className={cl(
-          `ds-paragraph`,
-          spacing && 'ds-paragraph--spacing',
-          className,
-        )}
+        className={cl(`ds-paragraph`, className)}
         data-size={size}
         data-variant={variant}
         {...rest}

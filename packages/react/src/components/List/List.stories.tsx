@@ -34,7 +34,11 @@ Preview.args = {
 
 export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
-    <Heading level={2} size='xs' spacing>
+    <Heading
+      level={2}
+      size='xs'
+      style={{ marginBottom: 'var(--ds-spacing-2)' }}
+    >
       Slik gjør du:
     </Heading>
     <List.Ordered {...args}>
@@ -57,7 +61,11 @@ export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
 
 export const Usortert: Story = (args) => (
   <>
-    <Heading level={2} size='xs' spacing>
+    <Heading
+      level={2}
+      size='xs'
+      style={{ marginBottom: 'var(--ds-spacing-2)' }}
+    >
       Foreningen har plikt til å ha revisor hvis de har
     </Heading>
     <List.Unordered {...args}>
@@ -76,7 +84,11 @@ export const Usortert: Story = (args) => (
 export const Innrykk: Story = (args) => (
   <List.Unordered {...args}>
     <List.Item>
-      <Heading level={3} size='xs' spacing>
+      <Heading
+        level={3}
+        size='xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         {' '}
         List Item 1
       </Heading>
@@ -87,7 +99,11 @@ export const Innrykk: Story = (args) => (
       </List.Ordered>
     </List.Item>
     <List.Item>
-      <Heading level={3} size='xs' spacing>
+      <Heading
+        level={3}
+        size='xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         {' '}
         List Item 2
       </Heading>
@@ -98,7 +114,11 @@ export const Innrykk: Story = (args) => (
       </List.Unordered>
     </List.Item>
     <List.Item>
-      <Heading level={3} size='xs' spacing>
+      <Heading
+        level={3}
+        size='xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         List Item 3
       </Heading>
       <List.Unordered>
@@ -133,7 +153,11 @@ export const ListeMedLenker: Story = (args) => (
 export const ListeMedOverskrift: Story = (args) => (
   <div style={{ display: 'flex', gap: '2rem' }}>
     <div>
-      <Heading level={2} size='2xs' spacing>
+      <Heading
+        level={2}
+        size='2xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         List sm og Heading 2xs
       </Heading>
       <List.Unordered size='sm'>
@@ -161,7 +185,11 @@ export const ListeMedOverskrift: Story = (args) => (
       </List.Unordered>
     </div>
     <div>
-      <Heading level={2} size='xs' spacing>
+      <Heading
+        level={2}
+        size='xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         List md og Heading xs
       </Heading>
       <List.Unordered size='md'>
@@ -189,7 +217,11 @@ export const ListeMedOverskrift: Story = (args) => (
       </List.Unordered>
     </div>
     <div>
-      <Heading level={2} size='sm' spacing>
+      <Heading
+        level={2}
+        size='sm'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         List lg og Heading sm
       </Heading>
       <List.Unordered size='lg'>
