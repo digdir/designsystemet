@@ -29,7 +29,6 @@ export const ErrorSummaryHeading = forwardRef<
     <Heading
       id={headingId}
       size={HEADING_SIZE_MAP[size ?? 'md']}
-      spacing
       ref={ref}
       {...rest}
     />

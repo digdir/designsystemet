@@ -248,10 +248,10 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Innstillinger
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
@@ -268,10 +268,10 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Hvor er du fra?
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>

@@ -81,15 +81,15 @@ export const TokenModal = ({
         style={{ maxWidth: 1400 }}
         ref={modalRef}
       >
-        <Heading className={classes.modalHeader} size='xs' spacing>
+        <Heading className={classes.modalHeader} size='xs'>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Kopier fargetema</span>
         </Heading>
-        <Paragraph variant='long' size='xs' spacing>
+        <Paragraph variant='long' size='xs'>
           Velg et av alternativene under for å ta i bruk design-tokens med ditt
           tema.
         </Paragraph>
-        <Heading level={3} size='xs' spacing>
+        <Heading level={3} size='xs'>
           Alt 1. Design tokens
         </Heading>
         <Textfield
@@ -106,7 +106,7 @@ export const TokenModal = ({
           }}
           style={{ marginBlock: 'var(--ds-spacing-4)' }}
         />
-        <Paragraph spacing>
+        <Paragraph>
           Kopier kommandosnutten under og kjør på maskinen din for å generere
           alle design tokens (json-filer). Sørg for at du har{' '}
           <Link href='https://nodejs.org' target='_blank'>
@@ -120,10 +120,10 @@ export const TokenModal = ({
         >
           <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
         </div>
-        <Heading level={3} size='xs' spacing>
+        <Heading level={3} size='xs'>
           Alt 2. Figma plugin
         </Heading>
-        <Paragraph spacing>
+        <Paragraph>
           JSON for bruk med Designsystemet{' '}
           <Link
             href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
@@ -140,14 +140,14 @@ export const TokenModal = ({
           </Link>
           .
         </Paragraph>
-        <Paragraph spacing>
+        <Paragraph>
           Dette alternativet er kun ment for rask prototyping av valgt tema i
           Figma. For å bruke design tokens i produksjon, anbefales det å bruke
           alternativ 1.
         </Paragraph>
         <div className={classes.content}>
           <div className={classes.column}>
-            <Heading level={4} size='2xs' spacing>
+            <Heading level={4} size='2xs'>
               Light Mode
             </Heading>
             <div className={classes.snippet}>
@@ -155,7 +155,7 @@ export const TokenModal = ({
             </div>
           </div>
           <div className={classes.column}>
-            <Heading level={4} size='2xs' spacing>
+            <Heading level={4} size='2xs'>
               Dark Mode
             </Heading>
             <div className={classes.snippet}>
