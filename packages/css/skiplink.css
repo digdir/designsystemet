@@ -14,6 +14,7 @@
   padding: var(--ds-spacing-4);
   color: var(--ds-color-neutral-text-default);
   background: var(--ds-color-accent-surface-hover);
+  box-sizing: border-box;
 }
 
 .ds-skiplink__content {

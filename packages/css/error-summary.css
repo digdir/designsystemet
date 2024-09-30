@@ -5,9 +5,10 @@
   --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
   --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
 
-  padding: var(--dsc-errorsummary-padding);
-  border-radius: var(--dsc-errorsummary-border-radius);
   background-color: var(--dsc-errorsummary-background);
+  border-radius: var(--dsc-errorsummary-border-radius);
+  box-sizing: border-box;
+  padding: var(--dsc-errorsummary-padding);
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);

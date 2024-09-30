@@ -12,6 +12,7 @@
   background: var(--dsc-alert-background);
   border-radius: var(--dsc-alert-border-radius);
   border: 1px solid var(--dsc-alert-border-color);
+  box-sizing: border-box;
   color: var(--dsc-alert-color);
   padding-block: var(--dsc-alert-padding);
   padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
