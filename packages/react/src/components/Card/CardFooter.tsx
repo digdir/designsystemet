@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 export type CardFooterProps = {
   /**
