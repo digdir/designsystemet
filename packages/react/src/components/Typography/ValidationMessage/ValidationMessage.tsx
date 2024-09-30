@@ -9,8 +9,6 @@ export type ValidationMessageProps = {
    * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  /** Adds margin-bottom */
-  spacing?: boolean;
   /** Toggle error color */
   error?: boolean;
   /**
@@ -25,7 +23,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage(
-  { size = 'md', className, spacing, asChild, error = true, ...rest },
+  { size = 'md', className, asChild, error = true, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';
@@ -34,7 +32,6 @@ export const ValidationMessage = forwardRef<
     <Component
       className={cl(`ds-validation-message--${size}`, className)}
       data-error={error || undefined}
-      data-spacing={spacing || undefined}
       ref={ref}
       {...rest}
     />

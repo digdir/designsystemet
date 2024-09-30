@@ -23,10 +23,10 @@ export const Preview: StoryFn<typeof Modal> = (args) => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal {...args}>
-      <Heading size='xs' spacing>
+      <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Modal header
       </Heading>
-      <Paragraph spacing>
+      <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
@@ -43,10 +43,10 @@ export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal {...args} ref={modalRef}>
         <Paragraph size='sm'>Modal subtittel</Paragraph>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal header
         </Heading>
-        <Paragraph spacing>
+        <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
@@ -84,7 +84,7 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
         <Paragraph size='sm'>Her er det også divider</Paragraph>
         <Heading size='xs'>Vi kan legge divider under header</Heading>
       </Modal.Header>
-      <Paragraph spacing>
+      <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
         sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec vulputate
         mattis. Nunc placerat euismod pulvinar. Sed nec fringilla nulla, sit
@@ -118,7 +118,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal ref={modalRef} onClose={() => setInput('')}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal med skjema
         </Heading>
         <Textfield
@@ -156,7 +156,7 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal style={{ maxWidth: 1200 }}>
-      <Heading size='xs' spacing>
+      <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Modal med en veldig lang bredde
       </Heading>
       <Paragraph>

@@ -52,7 +52,7 @@ export const Information = ({ text, description }: InformationProps) => {
   return (
     <Alert className={classes.container} color={getColor(text)}>
       {textData.title && (
-        <Heading level={2} size='xs' spacing>
+        <Heading level={2} size='xs'>
           {textData.title}
         </Heading>
       )}

@@ -14,7 +14,6 @@ type Story = StoryObj<typeof Label>;
 export const Preview: Story = {
   args: {
     children: 'Vennligst skriv inn fødselsnummer. 11 tegn',
-    spacing: false,
     size: 'md',
   },
 };

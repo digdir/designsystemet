@@ -55,7 +55,9 @@ export const Controlled: StoryFn<typeof Radio> = () => {
       <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
         <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
         <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
-        <Paragraph spacing>Du har valgt: {value}</Paragraph>
+        <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Du har valgt: {value}
+        </Paragraph>
       </span>
       <br />
       <Radio.Group
