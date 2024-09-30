@@ -13,6 +13,7 @@
   border-radius: min(1rem, var(--ds-border-radius-lg));
   border: 0;
   box-shadow: var(--ds-shadow-xl);
+  box-sizing: border-box;
   color: var(--dsc-modal-color);
   max-height: var(--dsc-modal-max-height);
   max-width: var(--dsc-modal-max-width);
