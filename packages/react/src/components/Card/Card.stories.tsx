@@ -269,17 +269,6 @@ export const Composed: Story = () => (
 
 export const WithLink: Story = (args) => (
   <>
-    <Paragraph
-      style={{
-        gridColumn: '1 / -1',
-        justifySelf: 'start',
-        maxWidth: '40rem',
-      }}
-    >
-      I dette eksempelet rendrer Card med <code>&lt;a&gt;</code> (lenke) inni
-      tittel elementet. Dette er nyttig når Card inneholder tekst eller media,
-      og skal navigere til en annen side.
-    </Paragraph>
     <Card {...args} color='brand1'>
       <Card.Block>
         <img src={cat5} alt='' />
@@ -329,17 +318,6 @@ export const WithLink: Story = (args) => (
 
 export const AsLink: Story = (args) => (
   <>
-    <Paragraph
-      style={{
-        gridColumn: '1 / -1',
-        justifySelf: 'start',
-        maxWidth: '40rem',
-      }}
-    >
-      I dette eksempelet rendrer Card som <code>&lt;a&gt;</code> (lenke). Dette
-      er nyttig når Card inneholder lite tekst, og skal navigere til en annen
-      side.
-    </Paragraph>
     <Card {...args} color='brand1' asChild>
       <a
         href='https://designsystemet.no'
@@ -379,17 +357,6 @@ export const AsLink: Story = (args) => (
 
 export const AsButton: Story = (args) => (
   <>
-    <Paragraph
-      style={{
-        gridColumn: '1 / -1',
-        justifySelf: 'start',
-        maxWidth: '40rem',
-      }}
-    >
-      I dette eksempelet rendrer Card som <code>&lt;button&gt;</code>. Dette er
-      nyttig når Card inneholder lite tekst, og skal åpne en Modal eller utføre
-      annen handling på samme side.
-    </Paragraph>
     <Card {...args} color='brand1' asChild>
       <button type='button'>
         <Card.Block>
@@ -420,30 +387,17 @@ export const AsButton: Story = (args) => (
 );
 
 export const AsGrid: Story = (args) => (
-  <div>
-    <Paragraph
-      style={{
-        gridColumn: '1 / -1',
-        justifySelf: 'start',
-        maxWidth: '40rem',
-      }}
-    >
-      I dette eksempelet har Card fått <code>display: grid</code> for å legge
-      Card.Block ved siden av hverandre.
-    </Paragraph>
-    <br />
-    <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-      <Card.Block>
-        <Heading size='sm' level={2}>
-          Button Card with blocks
-        </Heading>
-      </Card.Block>
-      <Card.Block>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer.
-        </Paragraph>
-      </Card.Block>
-    </Card>
-  </div>
+  <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+    <Card.Block>
+      <Heading size='sm' level={2}>
+        Button Card with blocks
+      </Heading>
+    </Card.Block>
+    <Card.Block>
+      <Paragraph>
+        Most provide as with carried business are much better more the perfected
+        designer.
+      </Paragraph>
+    </Card.Block>
+  </Card>
 );

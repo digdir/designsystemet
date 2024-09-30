@@ -37,7 +37,7 @@ Merk at innhold kan ikke plasseres direkte i `Card` dersom du bruker `Card.Block
 
 <Canvas of={CardStories.Video} />
 
-### Link Card
+### Klikkbart
 - `Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. 
 - Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
 - Dersom kortet kun innholder litt tekst, kan hele kortet bli en lenke eller knapp ved å benytte `asChild`.
@@ -46,13 +46,25 @@ Merk at innhold kan ikke plasseres direkte i `Card` dersom du bruker `Card.Block
 <br />
 
 #### Kort med lenke i tittel:
+I dette eksempelet rendrer Card med lenke `<a>` inni tittel elementet. Dette er nyttig når Card inneholder tekst eller media, og skal navigere til en annen side.
+
 <Canvas of={CardStories.WithLink} />
 
 #### Kort som er en lenke:
+I dette eksempelet rendrer Card som lenke `<a>`. Dette er nyttig når Card inneholder lite tekst, og skal navigere til en annen side.
+
 <Canvas of={CardStories.AsLink} />
 
 #### Kort som er en knapp:
+
+I dette eksempelet rendrer Card som knapp `<button>`. Dette er nyttig når Card inneholder lite tekst, og skal åpne en Modal eller utføre annen handling på samme side.
+
 <Canvas of={CardStories.AsButton} />
+
+### Horisontalt
+
+`Card` støtter både `display: flex` og `display: grid` for å legge `Card.Block` ved siden av hverandre:
+<Canvas of={CardStories.AsGrid} />
 
 ### Farger
 
@@ -76,7 +88,6 @@ Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, 
 Et kort skal oppfattes som en selvstendig, avgrenset enhet. Innholdet i kortet skal være helhetlig og relatert til et enkelt emne eller en destinasjon.
 
 Kortet skal kunne stå alene uten å være avhengig av omkringliggende elementer for kontekst. Det skal gi tilstrekkelig informasjon til å forstå det presenterte innholdet uten eksterne referanser.
-
 
 ### Unngå
 

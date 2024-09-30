@@ -37,7 +37,7 @@
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        --dsc-card-background: var(--dsc-card-background--hover);
+        background: var(--dsc-card-background--hover);
       }
     }
 
@@ -47,7 +47,7 @@
     }
 
     &:active {
-      --dsc-card-background: var(--dsc-card-background--active);
+      background: var(--dsc-card-background--active);
     }
   }
 
