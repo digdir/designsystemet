@@ -17,7 +17,6 @@
 }
 
 body {
-  color: var(--ds-color-neutral-text-default);
   line-height: 1.5;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
