@@ -312,7 +312,6 @@
   --ds-color-focus-outer: #420e6a;
 
   color-scheme: light;
-  color: var(--ds-color-neutral-text-default);
 }
  
 @media (prefers-color-scheme: light) {
@@ -621,7 +620,6 @@
   --ds-color-focus-outer: #420e6a;
 
   color-scheme: light;
-  color: var(--ds-color-neutral-text-default);
 }
 
 }
@@ -1162,7 +1160,6 @@
   --ds-color-focus-outer: #e8e0ee;
 
   color-scheme: dark;
-  color: var(--ds-color-neutral-text-default);
 }
  
 @media (prefers-color-scheme: dark) {
@@ -1471,7 +1468,6 @@
   --ds-color-focus-outer: #e8e0ee;
 
   color-scheme: dark;
-  color: var(--ds-color-neutral-text-default);
 }
 
 }

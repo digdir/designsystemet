@@ -308,7 +308,6 @@
   --ds-color-focus-outer: #d1e3f3;
 
   color-scheme: dark;
-  color: var(--ds-color-neutral-text-default);
 }
  
 @media (prefers-color-scheme: dark) {
@@ -617,7 +616,6 @@
   --ds-color-focus-outer: #d1e3f3;
 
   color-scheme: dark;
-  color: var(--ds-color-neutral-text-default);
 }
 
 }
