@@ -1,8 +1,10 @@
 :root,
 [data-ds-color='light'] {
   color: var(--ds-color-neutral-text-default);
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 [data-ds-color='dark'] {
   color: var(--ds-color-neutral-text-default);
+  background-color: var(--ds-color-neutral-background-default);
 }
