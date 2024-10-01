@@ -32,9 +32,10 @@ export const colormode: Format = {
     });
 
     const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `\n  color-scheme: ${mode_};\n` : '';
+    const textColor = '  color: var(--ds-color-neutral-text-default);';
 
     const formattedTokens = dictionary.allTokens.map(format).join('\n');
-    const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
+    const content = `{\n${formattedTokens}\n${colorSchemeProperty}${textColor}\n}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
     const body = R.isNotNil(layer)
       ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
