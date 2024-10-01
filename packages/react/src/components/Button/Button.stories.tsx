@@ -28,37 +28,16 @@ const meta: Meta<typeof Button> = {
       <Stack>
         <style>
           {`:root {
-          --ds-sizing-min: 2px;
-          --ds-sizing-scale: .25rem; /* 4px */
-          --ds-sizing-calc: calc((var(--ds-font-size-5) - 1em) * .5);
-          --ds-sizing-adjust: calc((var(--ds-font-size-5) - 1em) * .5);
-          --ds-sizing-adjust: round(calc((var(--ds-font-size-5) - 1em) * .5));
+          --ds-sizing-scale-min: 0.125rem; /* Minimum 2px steps */
+          --ds-sizing-scale: .25rem; /* Default 4px steps */
+          --ds-sizing-adjust: calc((var(--ds-font-size-5) - 1em) * .5); /* Fallback if not supporting round() */
+          --ds-sizing-adjust: round(up, calc((var(--ds-font-size-5) - 1em) * .5), 0.0625rem); /* Round to nearest 1px */
 
-          /*
-          18  1   4     18 * 1 - 14 * 1 = 4       18 * 1 - 14 * 1 -  = 4
-          18  2   8     18 * 2 - 14 * 2 = 8
-          18  3   12    18 * 3 - 14 * 2 = 12
-          18  4   16    18 * 4 - 14 * 2 = 16
-          18  30  120   18 * 30 - 14 * 2 = 120
-
-          20  1   6     20 * 1 - 14 * 1 = 6       20 * 1 - 14 * 1 - 20 = 6
-          20  2   12    20 * 2 - 14 * 1 = 12      20 * 2 - 14 * 2 = 6
-          20  3   18    20 * 3 - 14 * 1 = 18
-          20  4   24    20 * 4 - 14 * 1 = 24
-          20  30  180   20 * 30 - 14 * 1 = 180
-          */
-
-          ${Array.from({ length: 31 }, (_, i) =>
-            /*calc(${i}em - var(--ds-sizing-scale)),*/
-            /*calc(4px * ${i} - 18px + 1em),*/
-            /*max(var(--ds-sizing-min) * ${i});*/
-            /*--ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} - var(--ds-font-md) + 1em + var(--ds-sizing-adjust));*/
-            /*--ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} - var(--ds-font-size-5) + 1em + var(--ds-sizing-adjust));*/
-            /*--ds-sizing-${i}: calc(${i}em - (1em - var(--ds-sizing-scale) + var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust));*/
-            `
-            --ds-sizing-${i}: calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust));
-            --ds-spacing-${i}:var(--ds-sizing-${i});
-          `.trim(),
+          ${Array.from(
+            { length: 31 },
+            (_, i) =>
+              `--ds-sizing-${i}: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * ${i}));
+            --ds-spacing-${i}:var(--ds-sizing-${i});`,
           )
             .slice(1)
             .join('\n')}
