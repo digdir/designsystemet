@@ -158,7 +158,7 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
-    parentSelector: '.sbdocs, .sb-main-padded',
+    parentSelector: '.sbdocs, .sb-main-padded, .sb-show-main',
   }),
 ];
 
