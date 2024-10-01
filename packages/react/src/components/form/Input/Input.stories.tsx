@@ -1,9 +1,9 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Paragraph } from '../..';
+import { Button, Label, Paragraph } from '../..';
 
-import { Input } from '.';
+import { Input, InputAddon, InputAddons } from '.';
 
 type Story = StoryObj<typeof Input>;
 
@@ -14,42 +14,45 @@ export default {
 
 export const Preview: Story = {
   args: {
-    label: 'Label',
     disabled: false,
     readOnly: false,
     size: 'md',
-    description: '',
-    error: '',
   },
+  render: (args) => (
+    <>
+      <Label htmlFor='input'>Input</Label>
+      <Input id='input' {...args} />
+    </>
+  ),
 };
-
-export const WithCharacterCounter: Story = {
-  args: {
-    label: 'Label',
-    characterLimit: {
-      maxCount: 5,
-    },
-  },
-};
-
 export const HtmlSize: Story = {
   args: {
-    label: 'Label',
     htmlSize: 10,
   },
+  render: (args) => (
+    <>
+      <Label htmlFor='input-html-size'>Input with htmlSize</Label>
+      <Input id='input-html-size' {...args} />
+    </>
+  ),
 };
 
-export const Adornments: Story = {
-  args: {
-    prefix: 'NOK',
-    suffix: 'pr. mnd',
-    size: 'md',
-    label: 'Hvor mange kroner koster det per måned?',
-  },
-};
+export const Adornments: StoryFn<typeof Input> = (args) => (
+  <>
+    <Label htmlFor='input-html-size'>
+      Hvor mange kroner koster det per måned?
+    </Label>
+    <InputAddons>
+      <span aria-hidden='true'>NOK</span>
+      <Input id='input-html-size' {...args} />
+      <span aria-hidden='true'>pr.mnd</span>
+    </InputAddons>
+  </>
+);
 
-export const Controlled: StoryFn<typeof Input> = () => {
+export const Controlled: StoryFn<typeof Input> = (args) => {
   const [value, setValue] = useState<string>();
+
   return (
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
@@ -61,11 +64,15 @@ export const Controlled: StoryFn<typeof Input> = () => {
           gap: 'var(--ds-spacing-2)',
         }}
       >
-        <Input
-          label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <div>
+          <Label htmlFor='input-controlled'>Kontroller meg!</Label>
+          <Input
+            id='input-controlled'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            {...args}
+          />
+        </div>
         <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
       </div>
     </>

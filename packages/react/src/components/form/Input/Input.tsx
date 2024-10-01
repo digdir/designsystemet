@@ -1,130 +1,69 @@
-import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useId, useState } from 'react';
-
-import { omit } from '../../../utilities';
-import type { CharacterLimitProps } from '../CharacterCounter';
-import type { FormFieldProps } from '../useFormField';
-
-import { useInput } from './useInput';
+import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 export type InputProps = {
-  /** Label */
-  label?: ReactNode;
-  /** Visually hides `label` and `description` (still available for screen readers)  */
-  hideLabel?: boolean;
   /**
    * Changes field size and paddings
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-  /** Prefix for field. */
-  prefix?: string;
-  /** Suffix for field. */
-  suffix?: string;
   /** Supported `input` types */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
-  /**
-   *  The characterLimit function calculates remaining characters based on `maxCount`
-   *
-   *  Provide a `label` function that takes count as parameter and returns a message.
-   *
-   *  Use `srLabel` to describe `maxCount` for screen readers.
-   *
-   *  Defaults to Norwegian if no labels are provided.
-   */
-  characterLimit?: CharacterLimitProps;
+  type?: InputHTMLAttributes<HTMLInputElement>['type'];
   /** Exposes the HTML `size` attribute.
    * @default 20
    */
   htmlSize?: number;
-} & Omit<FormFieldProps, 'size'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  /** Disables element
+   * @note Avoid using if possible for accessibility purposes
+   */
+  disabled?: boolean;
+  /** Toggle `readOnly` */
+  readOnly?: boolean;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-/** Text input field
+/** Input field
  *
  * @example
  * ```tsx
- * <Input label="Input label">
+ * <Input />
  * ```
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  function Input(props, ref) {
-    const {
-      label,
-      description,
-      suffix,
-      prefix,
-      style,
-      characterLimit,
-      hideLabel,
-      type = 'text',
-      htmlSize = 20,
-      className,
-      ...rest
-    } = props;
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { type = 'text', size = 'md', htmlSize = 20, className, ...rest },
+  ref,
+) {
+  return (
+    <input
+      className={cl(`ds-input`, className)}
+      data-size={size}
+      ref={ref}
+      size={htmlSize}
+      type={type}
+      {...rest}
+    />
+  );
+});
 
-    const {
-      inputProps,
-      descriptionId,
-      hasError,
-      errorId,
-      size = 'md',
-      readOnly,
-    } = useInput(props);
-
-    const [inputValue, setInputValue] = useState(
-      props.value || props.defaultValue,
-    );
-    const characterLimitId = `Input-charactercount-${useId()}`;
-    const hasCharacterLimit = characterLimit != null;
-
-    const describedBy =
-      cl(
-        inputProps['aria-describedby'],
-        hasCharacterLimit && characterLimitId,
-      ) || undefined;
-
+export type InputAddonsProps = HTMLAttributes<HTMLDivElement>;
+export const InputAddons = forwardRef<HTMLDivElement, InputAddonsProps>(
+  function InputAdornments({ className, ...rest }, ref) {
     return (
-      <input
-        className={cl(
-          `ds-input__input`,
-          `ds-focus`,
-          prefix && `ds-input__input--with-prefix`,
-          suffix && `ds-input__input--with-suffix`,
-        )}
-        ref={ref}
-        type={type}
-        disabled={inputProps.disabled}
-        aria-describedby={describedBy}
-        size={htmlSize}
-        {...omit(['size', 'error', 'errorId'], rest)}
-        {...inputProps}
-        onChange={(e) => {
-          inputProps?.onChange?.(e);
-          setInputValue(e.target.value);
-        }}
-      />
+      <div className={cl('ds-input-addons', className)} ref={ref} {...rest} />
     );
   },
 );
 
-export const InputAdornments = forwardRef<HTMLInputElement, InputProps>(
-  function InputAdornments() {
-    return null;
+export type InputAddonProps = HTMLAttributes<HTMLSpanElement>;
+export const InputAddon = forwardRef<HTMLSpanElement, InputAddonProps>(
+  function InputAddon({ className, ...rest }, ref) {
+    return (
+      <span
+        className={cl('ds-input-addon', className)}
+        aria-hidden='true'
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );
