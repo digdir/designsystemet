@@ -1,6 +1,5 @@
 import '../globals.css';
 import '@digdir/designsystemet-css';
-/* import '@digdir/designsystemet-css/utilities.css'; */
 import '@digdir/designsystemet-theme';
 
 import { Header } from '@repo/components';
