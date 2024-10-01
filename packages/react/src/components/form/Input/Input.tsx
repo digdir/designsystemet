@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 export type InputProps = {
@@ -45,25 +45,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   );
 });
 
-export type InputAddonsProps = HTMLAttributes<HTMLDivElement>;
+export type InputAddonsProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
 export const InputAddons = forwardRef<HTMLDivElement, InputAddonsProps>(
-  function InputAdornments({ className, ...rest }, ref) {
+  function InputAddons({ className, ...rest }, ref) {
     return (
       <div className={cl('ds-input-addons', className)} ref={ref} {...rest} />
-    );
-  },
-);
-
-export type InputAddonProps = HTMLAttributes<HTMLSpanElement>;
-export const InputAddon = forwardRef<HTMLSpanElement, InputAddonProps>(
-  function InputAddon({ className, ...rest }, ref) {
-    return (
-      <span
-        className={cl('ds-input-addon', className)}
-        aria-hidden='true'
-        ref={ref}
-        {...rest}
-      />
     );
   },
 );

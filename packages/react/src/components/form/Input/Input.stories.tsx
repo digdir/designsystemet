@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Button, Label, Paragraph } from '../..';
 
-import { Input, InputAddon, InputAddons } from '.';
+import { Input, InputAddons } from '.';
 
 type Story = StoryObj<typeof Input>;
 
