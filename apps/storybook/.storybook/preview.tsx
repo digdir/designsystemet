@@ -1,3 +1,4 @@
+import './style.css';
 import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 
@@ -157,6 +158,8 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
+    parentSelector:
+      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
 ];
 

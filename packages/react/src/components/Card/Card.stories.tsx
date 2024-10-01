@@ -8,7 +8,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Card } from '.';
 import { Button } from '../Button';
-import { Heading, Paragraph } from '../Typography';
+import { Heading } from '../Heading';
+import { Paragraph } from '../Paragraph';
 import { Select } from '../form/Select';
 import { Textfield } from '../form/Textfield';
 

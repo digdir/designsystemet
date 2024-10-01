@@ -1,4 +1,4 @@
-import { ValidationMessage } from '../Typography';
+import { ValidationMessage } from '../ValidationMessage';
 
 import type { TextfieldProps } from './Textfield';
 

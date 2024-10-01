@@ -4,7 +4,9 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useId, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ValidationMessage } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
+import { ValidationMessage } from '../../ValidationMessage';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 import type { FormFieldProps } from '../useFormField';
