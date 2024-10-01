@@ -22,12 +22,14 @@ function makeTokenCommands() {
     .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
     .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
     .option('-p, --preview', 'Generate preview token.ts files', false)
+    .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENSDIR;
       const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       const preview = opts.preview;
+      const verbose = opts.verbose;
       console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview });
+      return buildTokens({ tokens, out, preview, verbose });
     });
 
   tokenCmd
