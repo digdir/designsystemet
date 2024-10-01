@@ -158,7 +158,8 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
-    parentSelector: '.sbdocs, .sb-main-padded',
+    parentSelector:
+      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
 ];
 
