@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { Heading } from '../Typography';
+import { Heading } from '../Heading';
 
 export type CardHeaderProps = {
   /**

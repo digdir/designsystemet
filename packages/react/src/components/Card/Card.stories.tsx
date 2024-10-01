@@ -9,8 +9,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../Button';
 import { Divider } from '../Divider';
+import { Heading } from '../Heading';
 import { Link } from '../Link';
-import { Heading, Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 import { Select } from '../form/Select';
 import { Textfield } from '../form/Textfield';
 

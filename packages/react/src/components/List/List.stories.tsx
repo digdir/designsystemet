@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { List } from '.';
+import { Heading } from '../Heading';
 import { Link } from '../Link';
-import { Heading } from '../Typography/Heading';
 
 type Story = StoryFn<typeof List.Unordered>;
 

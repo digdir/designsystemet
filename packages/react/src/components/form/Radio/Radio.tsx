@@ -3,7 +3,8 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
 import type { FormFieldProps } from '../useFormField';
 
 import { useRadio } from './useRadio';
