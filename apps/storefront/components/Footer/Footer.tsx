@@ -34,8 +34,8 @@ const rightLinks = [
     url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
     prefix: (
       <Image
-        height={20}
-        width={20}
+        height={16}
+        width={16}
         alt=''
         src='/img/logos/slack-negative.png'
       />
@@ -46,8 +46,8 @@ const rightLinks = [
     url: 'https://github.com/digdir/designsystemet',
     prefix: (
       <Image
-        height={20}
-        width={20}
+        height={16}
+        width={16}
         alt=''
         src='/img/logos/github-negative.png'
       />
@@ -58,8 +58,8 @@ const rightLinks = [
     url: 'https://www.figma.com/@designsystemet',
     prefix: (
       <Image
-        height={20}
-        width={20}
+        height={16}
+        width={16}
         alt=''
         src='/img/logos/figma-negative.png'
       />

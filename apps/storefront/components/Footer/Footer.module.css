@@ -47,9 +47,7 @@
 }
 
 .link {
-  --dsc-link-color-visited: var(--ds-color-neutral-text-default);
-
-  gap: var(--ds-spacing-2);
+  --dsc-link-color--visited: var(--ds-color-neutral-text-default);
 }
 
 .top {

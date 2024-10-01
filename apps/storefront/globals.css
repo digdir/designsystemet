@@ -30,6 +30,11 @@ body {
   font-feature-settings: 'cv05' 1 !important;
 }
 
+.ds-link > :is(img, svg) {
+  height: 70%;
+  margin-right: var(--ds-spacing-1);
+}
+
 h1,
 h2,
 h3,
