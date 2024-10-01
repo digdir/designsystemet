@@ -15,7 +15,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
-import { Label } from '../Typography';
+import { Label } from '../Label';
 
 type Story = StoryFn<typeof Table>;
 
