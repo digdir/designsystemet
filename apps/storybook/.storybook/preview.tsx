@@ -1,3 +1,4 @@
+import './style.css';
 import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 
@@ -157,6 +158,7 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
+    parentSelector: '.sbdocs, .sb-main-padded',
   }),
 ];
 
