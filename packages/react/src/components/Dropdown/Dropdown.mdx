@@ -1,0 +1,81 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+
+import * as DropdownStories from './Dropdown.stories';
+
+import { Dropdown } from './';
+
+<Meta of={DropdownStories} />
+
+# Dropdown
+
+<Primary />
+<Controls />
+
+## Slik bruker du `Dropdown`
+
+```tsx
+import { Dropdown } from '@digdir/designsystemet-react';
+
+// med context
+<Dropdown.Context>
+  <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+  <Dropdown>
+    <Dropdown.Heading>Heading</Dropdown.Heading>
+    <Dropdown.List>
+      <Dropdown.Item>Item</Dropdown.Item>
+    </Dropdown.List>
+  </Dropdown>
+</Dropdown.Context>
+
+// uten context
+<Button popovertarget="my-dropdown">Trigger</Button>
+<Dropdown id="my-dropdown">
+  <Dropdown.Heading>Heading</Dropdown.Heading>
+  <Dropdown.List>
+    <Dropdown.Item>Item</Dropdown.Item>
+  </Dropdown.List>
+</Dropdown>
+```
+
+## Eksempler på bruk
+
+### Kontrollert
+
+Dersom du sender inn `open`, så bruker du `Dropdown` kontrollert. Du kan bruke `onClose` for å få beskjed når `Dropdown` vil lukkes.
+
+<Canvas of={DropdownStories.Controlled} />
+
+### Ikoner
+
+Du kan legge ikon rett inn i `Dropdown.Item`, dersom det blir mye mellomrom til kanten kan du legge på din egen klasse og endre på `padding`.
+
+<Canvas of={DropdownStories.Icons} />
+
+### Uten Trigger
+
+`Dropdown` bruker popover APIet, så du kan bruke `Dropdown` uten `Dropdown.Trigger`.
+Du må da legge til `popovertarget={id}` på `Dropdown`, og `id` på `Dropdown`.
+
+<Canvas of={DropdownStories.WithoutTrigger} />
+
+## Tilgjengelighet
+
+Det er innebygd tilgjengelighet i `Dropdown.Trigger` med `aria-expanded={true/false}` i henhold til åpne/lukket tilstand, og `aria-haspopup='menu'`.
+
+### `Dropdown.List`
+
+<ArgTypes of={Dropdown.List} />
+
+### `Dropdown.Trigger`
+
+Triggeren er en [Button](/docs/komponenter-button--docs) som standard.
+
+Bruk `Dropdown.Trigger` til å aktivere `Dropdown`. Du kan bruke `asChild` for å endre `Dropdown.Trigger` elementet.
+Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Dropdown.Trigger`.
+
+### Referanser
+
+Vi bruker `ul` og `li` tags i dropdownen, valget er basert på denne:
+
+- https://www.w3.org/WAI/tutorials/menus/flyout/#flyoutnavkbbtn
+- https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/../Dropdown.stories.

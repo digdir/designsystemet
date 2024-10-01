@@ -1,5 +1,96 @@
 # Change Log
 
+## 1.0.0-next.34
+
+### Patch Changes
+
+- Correctly mark dependencies as external. This ensures Accordion works when consumers have enabled tree-shaking. ([#2479](https://github.com/digdir/designsystemet/pull/2479))
+
+- Button: Remove `type` when `asChild={true}` ([#2472](https://github.com/digdir/designsystemet/pull/2472))
+
+- ErrorSummary: Rename ErrorSummary.Root to ErrorSummary ([#2437](https://github.com/digdir/designsystemet/pull/2437))
+
+- Tabs: ([#2448](https://github.com/digdir/designsystemet/pull/2448))
+
+  - Renames `Tabs.Root` to `Tabs`
+  - Renames `Tabs.Content` to `Tabs.Panel`
+
+- Modal: css changes ([#2418](https://github.com/digdir/designsystemet/pull/2418))
+
+- Rename `ErrorMessage` to `ValidationMessage` ([#2473](https://github.com/digdir/designsystemet/pull/2473))
+
+- DropdownMenu: ([#2432](https://github.com/digdir/designsystemet/pull/2432))
+
+  - Rename from `DropdownMenu` to `Dropdown`
+  - Change API and structure
+  - Rename `.Root` to `.Context`
+  - Rename `.Content` to `Dropdown`
+
+- Tabs: css changes ([#2431](https://github.com/digdir/designsystemet/pull/2431))
+
+- ToggleGroup: Rename ToggleGroup.Root to ToggleGroup ([#2424](https://github.com/digdir/designsystemet/pull/2424))
+
+- Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
+
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+
+- Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
+
+- HelpText: ([#2438](https://github.com/digdir/designsystemet/pull/2438))
+
+  - Use Popover API
+  - Remove `portal` prop
+  - Render icon with pseudo element and require aria-label
+
+- Fieldset: Style using css attributes ([#2447](https://github.com/digdir/designsystemet/pull/2447))
+
+## 1.0.0-next.33
+
+### Patch Changes
+
+- Pagination: Use data attrs instead of class names ([#2395](https://github.com/digdir/designsystemet/pull/2395))
+
+- Badge: Style using css attributes ([#2391](https://github.com/digdir/designsystemet/pull/2391))
+
+- TableHeaderCell: Remove `sortable` prop, `sort` now handles this ([#2393](https://github.com/digdir/designsystemet/pull/2393))
+
+- dropdownmenu: Style using data attributes ([#2387](https://github.com/digdir/designsystemet/pull/2387))
+
+- List: Remove `List.Root` and `List.Heading`, which changes API ([#2348](https://github.com/digdir/designsystemet/pull/2348))
+
+- Alert, Avatar, Button, Divider, Link: Use data-attributes for variant, size and color and move icons to CSS ([#2313](https://github.com/digdir/designsystemet/pull/2313))
+
+- Box: Remove component ([#2372](https://github.com/digdir/designsystemet/pull/2372))
+
+- Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
+
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Remove `portal` prop
+
+- Select: Rename from `NativeSelect` ([#2404](https://github.com/digdir/designsystemet/pull/2404))
+
+- Table: Set sort button type to prevent form submit ([#2402](https://github.com/digdir/designsystemet/pull/2402))
+
+- Heading: default level is now 2 ([#2378](https://github.com/digdir/designsystemet/pull/2378))
+
+- Select: ([#2415](https://github.com/digdir/designsystemet/pull/2415))
+
+  - Add Select.Option and Select.Optgroup compond components
+  - Remove `multiple` prop
+
+- Accordion: Now uses details and summary HTML elements ([`5d1c5062b526e6829c322ce66c6df08568bb9f63`](https://github.com/digdir/designsystemet/commit/5d1c5062b526e6829c322ce66c6df08568bb9f63))
+
+- Spinner: Style using data attributes ([#2390](https://github.com/digdir/designsystemet/pull/2390))
+
+- Avatar: new component ([#2312](https://github.com/digdir/designsystemet/pull/2312))
+
+- Tag: Make neutral default color in CSS ([#2397](https://github.com/digdir/designsystemet/pull/2397))
+
+- Card: Use data attrs ([#2398](https://github.com/digdir/designsystemet/pull/2398))
+
+- Combobox: fix virtual combobox having large gap between items ([#2376](https://github.com/digdir/designsystemet/pull/2376))
+
 ## 1.0.0-next.32
 
 ## 1.0.0-next.17
@@ -482,7 +573,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **DropDownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
+- **DropdownMenuItem:** add list style none ([#1190](https://github.com/digdir/designsystemet/issues/1190)) ([11bd19b](https://github.com/digdir/designsystemet/commit/11bd19bfb6ac76b2c697a22e876117c4128be3bd))
 - **List:** Wrap in `div` to allow access to `Heading` ([#1217](https://github.com/digdir/designsystemet/issues/1217)) ([afcadb7](https://github.com/digdir/designsystemet/commit/afcadb7c4cb4b368d247af0c41ed8debf53c4b66))
 - **Pagination:** Only use needed space for buttons ([#1220](https://github.com/digdir/designsystemet/issues/1220)) ([4bf3d74](https://github.com/digdir/designsystemet/commit/4bf3d745888f500259df5aadf4edee97ec4f95bc))
 - **Select:** Select not working properly in Modal ([#1195](https://github.com/digdir/designsystemet/issues/1195)) ([fb8be6a](https://github.com/digdir/designsystemet/commit/fb8be6a647ba0da8b5b23e65813508f34e09c8c1))

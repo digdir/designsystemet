@@ -6,16 +6,16 @@ import {
   Checkbox,
   Chip,
   Combobox,
-  DropdownMenu,
+  Dropdown,
   Fieldset,
   Heading,
   HelpText,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Skeleton,
   Spinner,
   Switch,
@@ -26,6 +26,7 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
+  usePagination,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
@@ -34,6 +35,14 @@ import classes from './Components.module.css';
 
 export const Components = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
+
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
@@ -76,7 +85,7 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button fullWidth size='sm' className={classes.userBtn}>
+        <Button size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
@@ -86,12 +95,12 @@ export const Components = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='Velg handling' size='sm' hideLabel>
-              <option value='blank'>Velg handling</option>
-              <option value='everest'>Dupliser</option>
-              <option value='aconcagua'>Slett</option>
-              <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            <Select label='Velg handling' size='sm' hideLabel>
+              <Select.Option value='blank'>Velg handling</Select.Option>
+              <Select.Option value='everest'>Dupliser</Select.Option>
+              <Select.Option value='aconcagua'>Slett</Select.Option>
+              <Select.Option value='denali'>Oppdater</Select.Option>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
@@ -107,11 +116,11 @@ export const Components = () => {
         <Table size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -143,14 +152,25 @@ export const Components = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination
-          currentPage={3}
-          nextLabel='Neste'
-          onChange={function Ya() {}}
-          previousLabel='Forrige'
-          size='sm'
-          totalPages={6}
-        />
+        <Pagination>
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Button {...pagination.prevButtonProps}>
+                Forrige
+              </Pagination.Button>
+            </Pagination.Item>
+            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+              <Pagination.Item key={itemKey}>
+                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+              </Pagination.Item>
+            ))}
+            <Pagination.Item>
+              <Pagination.Button {...pagination.nextButtonProps}>
+                Neste
+              </Pagination.Button>
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
         <Heading size='xs' className={classes.helpHeading}>
@@ -258,32 +278,32 @@ export const Components = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
-        <Heading size='xs' spacing>
-          Hvor er du fra?
-        </Heading>
-        <Paragraph size='sm' spacing>
-          Svar under så finner vi flyreise
-        </Paragraph>
+        <Heading size='xs'>Hvor er du fra?</Heading>
+        <Paragraph size='sm'>Svar under så finner vi flyreise</Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup.Root>
+          </ToggleGroup>
         </div>
-        <Heading size='xs' spacing className={classes.chipsHeading}>
+        <Heading size='xs' className={classes.chipsHeading}>
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Toggle selected checkmark={false} size='sm'>
+          <Chip.Radio name='language' size='sm' checked>
             Bokmål
-          </Chip.Toggle>
-          <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
-          <Chip.Toggle size='sm'>Engelsk</Chip.Toggle>
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Nynorsk
+          </Chip.Radio>
+          <Chip.Radio name='language' size='sm'>
+            Engelsk
+          </Chip.Radio>
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
-        <Heading size='xs' spacing className={classes.comboHeading}>
+        <Heading size='xs' className={classes.comboHeading}>
           Hvor skal du reise?
         </Heading>
         <Combobox label='Destinasjon' size='sm' portal={false} multiple>
@@ -309,13 +329,13 @@ export const Components = () => {
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
-        </Tabs.Root>
+        </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>
@@ -339,9 +359,9 @@ export const Components = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border className={classes.accordion}>
+        <Accordion color='brand3' border className={classes.accordion}>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -353,7 +373,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -363,7 +383,7 @@ export const Components = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -372,44 +392,44 @@ export const Components = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert severity='info'>
+        <Alert color='info'>
           Dette er informasjon som du bør lese for å forstå hva som skjer
         </Alert>
-        <Alert severity='warning'>
+        <Alert color='warning'>
           Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
         </Alert>
-        <Alert severity='danger'>
+        <Alert color='danger'>
           Dette er en melding om at noe har gått galt og du bør gjøre noe med
           det
         </Alert>
-        <Alert severity='success'>
+        <Alert color='success'>
           Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
-        <DropdownMenu.Root placement='top'>
-          <DropdownMenu.Trigger>Velg språk</DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item>Norsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Engelsk</DropdownMenu.Item>
-            <DropdownMenu.Item>Spansk</DropdownMenu.Item>
-            <DropdownMenu.Item>Fransk</DropdownMenu.Item>
-          </DropdownMenu.Content>
-          <HelpText title='Du har ikke valgt språk'>
+        <Dropdown.Context>
+          <Dropdown.Trigger>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top'>
+            <Dropdown.Item>Norsk</Dropdown.Item>
+            <Dropdown.Item>Engelsk</Dropdown.Item>
+            <Dropdown.Item>Spansk</Dropdown.Item>
+            <Dropdown.Item>Fransk</Dropdown.Item>
+          </Dropdown>
+          <HelpText aria-label='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
-        </DropdownMenu.Root>
+        </Dropdown.Context>
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>
-          <Skeleton.Circle width='70px' height='70px' />
-          <Skeleton.Rectangle height='70px' width='100px' />
+          <Skeleton variant='circle' width='70px' height='70px' />
+          <Skeleton variant='rectangle' height='70px' width='100px' />
         </div>
-        <Skeleton.Text width='100%' />
-        <Skeleton.Text width='100%' />
+        <Skeleton variant='text' />
+        <Skeleton variant='text' />
         <div>
           <Spinner title='laster innhold' size='md' />
           <Spinner title='laster innhold' size='md' color='accent' />

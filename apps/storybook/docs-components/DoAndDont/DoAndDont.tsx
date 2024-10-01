@@ -19,7 +19,6 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
         <Heading
           level={2}
           size='sm'
-          spacing={false}
           style={{
             margin: 0,
             border: 'none',

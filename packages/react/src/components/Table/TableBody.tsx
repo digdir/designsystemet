@@ -1,16 +1,9 @@
-import * as React from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
 
-export type TableBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
+export type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableBody = React.forwardRef<
-  HTMLTableSectionElement,
-  TableBodyProps
->(({ children, ...rest }, ref) => {
-  return (
-    <tbody ref={ref} {...rest}>
-      {children}
-    </tbody>
-  );
-});
-
-TableBody.displayName = 'TableBody';
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+  function TableBody(rest, ref) {
+    return <tbody ref={ref} {...rest} />;
+  },
+);

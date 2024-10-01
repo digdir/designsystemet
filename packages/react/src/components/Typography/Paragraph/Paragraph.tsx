@@ -10,9 +10,7 @@ export type ParagraphProps = {
    * @default 'md'
    *
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  /** Adds margin-bottom */
-  spacing?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -24,13 +22,6 @@ export type ParagraphProps = {
    */
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
-
-const lineHeightMap = {
-  short: 'ds-line-height--sm',
-  default: 'ds-line-height--md',
-  long: 'ds-line-height--lg',
-};
-
 /**
  * Use `Paragraph` to display text with paragraph text styles.
  *
@@ -38,19 +29,15 @@ const lineHeightMap = {
  * <Paragraph size='lg'>Paragraph</Paragraph>
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ className, spacing, size = 'md', asChild, variant, ...rest }, ref) => {
+  ({ className, size = 'md', asChild, variant = 'default', ...rest }, ref) => {
     const Component = asChild ? Slot : 'p';
 
     return (
       <Component
         ref={ref}
-        className={cl(
-          'ds-paragraph',
-          spacing && 'ds-paragraph--spacing',
-          `ds-paragraph--${size}`,
-          lineHeightMap[variant ?? 'default'],
-          className,
-        )}
+        className={cl(`ds-paragraph`, className)}
+        data-size={size}
+        data-variant={variant}
         {...rest}
       />
     );

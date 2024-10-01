@@ -8,7 +8,15 @@ body:
         Thanks for taking the time to fill out this bug report 🤗
         Make sure there aren't any open/closed issues for this topic 😃
         If possible, please create a [codesandbox](https://codesandbox.io/) with an example of the bug. This will help us a lot to determine the cause of the bug.
-        
+
+  - type: input
+    id: bug-version
+    attributes:
+      label: Version number
+      description: If relevant, please provide the version number of the package you are using.
+    validations:
+      required: false
+
   - type: textarea
     id: bug-description
     attributes:
@@ -16,7 +24,7 @@ body:
       description: Give us a brief description of what happened and what should have happened
     validations:
       required: true
-      
+
   - type: textarea
     id: steps-to-reproduce
     attributes:

@@ -16,18 +16,18 @@ mangler som må rettes på en side eller trinn, for å komme videre.
 
 ## Slik bruker du `ErrorSummary`
 
-`ErrorSummary.Root` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.).
+`ErrorSummary` er påkrevd for å får riktig aria attributter (`aria-labelledby`, `role='alert'`, osv.).
 Alle `ErrorSummary.Item` må ha en `href` for å kunne navigere til riktig sted i skjemaet.
 
 ```tsx
 import { ErrorSummary } from '@digdir/designsystemet-react';
 
-<ErrorSummary.Root>
+<ErrorSummary>
   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
   <ErrorSummary.List>
     <ErrorSummary.Item href='#'>Item</ErrorSummary.Item>
   </ErrorSummary.List>
-</ErrorSummary.Root>
+</ErrorSummary>
 ```
 
 ## Eksempler

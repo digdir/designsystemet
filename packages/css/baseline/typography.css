@@ -1,0 +1,216 @@
+/** Heading */
+
+.ds-heading {
+  --dsc-bottom-spacing: var(--ds-spacing-4);
+
+  margin: 0;
+
+  @composes ds-heading-text--md from '../utilities.css';
+
+  &[data-size='2xs'] {
+    @composes ds-heading-text--2xs from '../utilities.css';
+  }
+
+  &[data-size='xs'] {
+    @composes ds-heading-text--xs from '../utilities.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-heading-text--sm from '../utilities.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-heading-text--lg from '../utilities.css';
+  }
+
+  &[data-size='xl'] {
+    @composes ds-heading-text--xl from '../utilities.css';
+  }
+
+  &[data-size='2xl'] {
+    @composes ds-heading-text--2xl from '../utilities.css';
+  }
+}
+
+/** Paragraph */
+.ds-paragraph {
+  margin: 0;
+
+  @composes ds-body-text--md from '../utilities.css';
+
+  &[data-size='xs'] {
+    @composes ds-body-text--xs from '../utilities.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-body-text--sm from '../utilities.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-body-text--lg from '../utilities.css';
+  }
+
+  &[data-size='xl'] {
+    @composes ds-body-text--xl from '../utilities.css';
+  }
+
+  &[data-variant='long'] {
+    @composes ds-body-text--long-md from '../utilities.css';
+
+    &[data-size='xs'] {
+      @composes ds-body-text--long-xs from '../utilities.css';
+    }
+
+    &[data-size='sm'] {
+      @composes ds-body-text--long-sm from '../utilities.css';
+    }
+
+    &[data-size='lg'] {
+      @composes ds-body-text--long-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--long-xl from '../utilities.css';
+    }
+  }
+
+  &[data-variant='short'] {
+    @composes ds-body-text--short-md from '../utilities.css';
+
+    &[data-size='xs'] {
+      @composes ds-body-text--short-xs from '../utilities.css';
+    }
+
+    &[data-size='sm'] {
+      @composes ds-body-text--short-sm from '../utilities.css';
+    }
+
+    &[data-size='lg'] {
+      @composes ds-body-text--short-lg from '../utilities.css';
+    }
+
+    &[data-size='xl'] {
+      @composes ds-body-text--short-xl from '../utilities.css';
+    }
+  }
+}
+
+/** Label */
+.ds-label--md {
+  font-size: var(--ds-label-md-font-size);
+  font-weight: var(--ds-label-md-font-weight);
+  letter-spacing: var(--ds-label-md-letter-spacing);
+  line-height: var(--ds-label-md-line-height);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-label--xs {
+  font-weight: var(--ds-label-xs-font-weight);
+  line-height: var(--ds-label-xs-line-height);
+  font-size: var(--ds-label-xs-font-size);
+  letter-spacing: var(--ds-label-xs-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-label--sm {
+  font-weight: var(--ds-label-sm-font-weight);
+  line-height: var(--ds-label-sm-line-height);
+  font-size: var(--ds-label-sm-font-size);
+  letter-spacing: var(--ds-label-sm-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-label--lg {
+  font-weight: var(--ds-label-lg-font-weight);
+  line-height: var(--ds-label-lg-line-height);
+  font-size: var(--ds-label-lg-font-size);
+  letter-spacing: var(--ds-label-lg-letter-spacing);
+  color: var(--ds-color-neutral-text-default);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+/** Validation message */
+
+.ds-validation-message--xs {
+  font-weight: var(--ds-error_message-xs-font-weight);
+  line-height: var(--ds-error_message-xs-line-height);
+  font-size: var(--ds-error_message-xs-font-size);
+  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--sm {
+  font-weight: var(--ds-error_message-sm-font-weight);
+  line-height: var(--ds-error_message-sm-line-height);
+  font-size: var(--ds-error_message-sm-font-size);
+  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--md {
+  font-size: var(--ds-error_message-md-font-size);
+  font-weight: var(--ds-error_message-md-font-weight);
+  letter-spacing: var(--ds-error_message-md-letter-spacing);
+  line-height: var(--ds-error_message-md-line-height);
+  margin: 0;
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--lg {
+  font-weight: var(--ds-error_message-lg-font-weight);
+  line-height: var(--ds-error_message-lg-line-height);
+  font-size: var(--ds-error_message-lg-font-size);
+  letter-spacing: var(--ds-error_message-lg-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+/** Font weight
+ ** used for weight on Label */
+.ds-font-weight--medium {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.ds-font-weight--semibold {
+  font-weight: var(--ds-font-weight-semibold);
+}
+
+.ds-font-weight--regular {
+  font-weight: var(--ds-font-weight-regular);
+}
+
+/** Line height
+ ** used for long, short Paragraph */
+.ds-line-height--sm {
+  line-height: var(--ds-line-height-sm);
+}
+
+.ds-line-height--md {
+  line-height: var(--ds-line-height-md);
+}
+
+.ds-line-height--lg {
+  line-height: var(--ds-line-height-lg);
+}

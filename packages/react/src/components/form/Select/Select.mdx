@@ -1,0 +1,43 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+`Select` er en enkel nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg.
+Komponenten er bygget på HTML-elementet `select`, som benytter seg av operativsystemets standarder (derav "native").
+Dette sikrer forutsigbarhet og tilgjengelighet, men det setter noen begrensninger på hvordan komponenten kan tilpasses.
+For eksempel er det ikke mulig å overstyre formateringen av alternativene.
+
+## Props
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { Select } from '@digdir/designsystemet-react';
+
+<Select label='Ta et valg'>
+  <Select.Option value='1'>Alternativ 1</Select.Option>
+  <Select.Option value='2'>Alternativ 2</Select.Option>
+  <Select.Option value='3'>Alternativ 3</Select.Option>
+</Select>;
+```
+
+## Eksempler
+
+### Deaktivert
+
+<Canvas of={SelectStories.Disabled} />
+
+### Med feil
+
+<Canvas of={SelectStories.WithError} />
+
+### Med gruppering
+
+<Canvas of={SelectStories.WithOptgroup} />

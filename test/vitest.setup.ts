@@ -33,5 +33,51 @@ HTMLDialogElement.prototype.close = vi.fn(function mock(
   this.open = false;
 });
 
+// Add support for dialog form method
+document.addEventListener('click', ({ target }) => {
+  if (target instanceof HTMLElement)
+    target
+      .closest('form[method="dialog"] button[type="submit"]')
+      ?.closest('dialog')
+      ?.close();
+});
+
 const { setScreenWidth } = mockMediaQuery(800);
 setScreenWidth(800);
+
+if (!('popover' in HTMLElement.prototype)) {
+  document.head.insertAdjacentHTML(
+    'beforeend',
+    `<style>[popover]:not([data-popping]){display:none!important}</style>`,
+  );
+
+  // @ts-ignore
+  Object.defineProperties(HTMLElement.prototype, {
+    popover: {
+      get() {
+        if (!this.hasAttribute('popover')) return null;
+        const value = (this.getAttribute('popover') || '').toLowerCase();
+        if (value === '' || value === 'auto') return 'auto';
+        return 'manual';
+      },
+      set(value) {
+        this.setAttribute('popover', value);
+      },
+    },
+    showPopover: {
+      value() {
+        this.toggleAttribute('data-popping', true);
+      },
+    },
+    hidePopover: {
+      value() {
+        this.toggleAttribute('data-popping', false);
+      },
+    },
+    togglePopover: {
+      value(state?: boolean) {
+        this.toggleAttribute('data-popping', state);
+      },
+    },
+  });
+}

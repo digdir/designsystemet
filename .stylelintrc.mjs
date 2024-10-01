@@ -14,5 +14,6 @@ export default {
     ],
     'alpha-value-notation': 'number',
     'font-family-name-quotes': 'always-unless-keyword',
+    'at-rule-no-unknown': [true, { ignoreAtRules: ['composes'] }], // Allows `@composes classname from './file.css'` directive
   },
 };

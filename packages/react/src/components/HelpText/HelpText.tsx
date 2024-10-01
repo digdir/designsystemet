@@ -1,90 +1,45 @@
 import type { Placement } from '@floating-ui/utils';
 import cl from 'clsx/lite';
+import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import { useState } from 'react';
 
-import type { PortalProps } from '../../types/Portal';
-import { Popover } from '../Popover';
-import type { PopoverRootProps } from '../Popover/PopoverRoot';
-import { Paragraph } from '../Typography/Paragraph';
-
-import { HelpTextIcon } from './HelpTextIcon';
+import { Popover, type PopoverProps } from '../Popover';
 
 export type HelpTextProps = {
   /**
-   * Title for screen readers.
+   * Required descriptive label for screen readers.
    **/
-  title: string;
+  'aria-label': string;
   /**
    * Size of the helptext
    * @default md
    */
-  size?: PopoverRootProps['size'];
+  size?: PopoverProps['size'];
   /**
    * Placement of the Popover.
    * @default 'right'
    */
   placement?: Placement;
-} & PortalProps &
-  ButtonHTMLAttributes<HTMLButtonElement>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
-export const HelpText = ({
-  title,
-  placement = 'right',
-  portal,
-  size = 'md',
-  className,
-  children,
-  ...rest
-}: HelpTextProps) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Popover.Root
-        variant='info'
-        placement={placement}
-        size={size}
-        portal={portal}
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <Popover.Trigger asChild variant='tertiary'>
-          <button
-            className={cl(
-              `ds-helptext--${size}`,
-              'ds-helptext__button',
-              `ds-focus`,
-              className,
-            )}
-            aria-expanded={open}
-            onClick={() => setOpen(!open)}
-            {...rest}
-          >
-            <HelpTextIcon
-              filled
-              className={cl(
-                `ds-helptext__icon`,
-                `ds-helptext__icon--filled`,
-                className,
-              )}
-              openState={open}
-            />
-            <HelpTextIcon
-              className={cl(`ds-helptext__icon`, className)}
-              openState={open}
-            />
-            <span className={`ds-sr-only`}>{title}</span>
-          </button>
-        </Popover.Trigger>
-        <Paragraph size='md' asChild>
-          <Popover.Content className='ds-helptext__content'>
-            {children}
-          </Popover.Content>
-        </Paragraph>
-      </Popover.Root>
-    </>
-  );
-};
-
-HelpText.displayName = 'HelpText';
+export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
+  function HelpText(
+    { placement = 'right', size = 'md', className, children, ...rest },
+    ref,
+  ) {
+    return (
+      <Popover.Context>
+        <Popover.Trigger
+          className={cl('ds-helptext', className)}
+          ref={ref}
+          size={size}
+          variant='tertiary'
+          {...rest}
+        />
+        <Popover placement={placement} size={size} variant='info'>
+          {children}
+        </Popover>
+      </Popover.Context>
+    );
+  },
+);

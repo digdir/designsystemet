@@ -9,8 +9,6 @@ export type LabelProps = {
    * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  /** Adds margin-bottom */
-  spacing?: boolean;
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'
@@ -29,27 +27,21 @@ export type LabelProps = {
  * @example
  * <Label size='lg'>Label</Label>
  */
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  (
-    { className, spacing, size = 'md', weight = 'medium', asChild, ...rest },
-    ref,
-  ) => {
-    const Component = asChild ? Slot : 'label';
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
+  { className, size = 'md', weight = 'medium', asChild, ...rest },
+  ref,
+) {
+  const Component = asChild ? Slot : 'label';
 
-    return (
-      <Component
-        ref={ref}
-        className={cl(
-          'ds-label',
-          `ds-label--${size}`,
-          spacing && 'ds-label--spacing',
-          weight && `ds-font-weight--${weight}`,
-          className,
-        )}
-        {...rest}
-      />
-    );
-  },
-);
-
-Label.displayName = 'Label';
+  return (
+    <Component
+      ref={ref}
+      className={cl(
+        `ds-label--${size}`,
+        weight && `ds-font-weight--${weight}`,
+        className,
+      )}
+      {...rest}
+    />
+  );
+});

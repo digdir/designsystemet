@@ -1,25 +1,20 @@
 import cl from 'clsx/lite';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type DividerProps = {
-  /**
-   * The color of the divider.
-   * @default 'default'
-   */
-  color?: 'default' | 'strong' | 'subtle';
-} & React.HTMLAttributes<HTMLHRElement>;
+export type DividerProps = HTMLAttributes<HTMLHRElement>;
 
-export const Divider = forwardRef<HTMLHRElement, DividerProps>(
-  ({ color = 'default', className, ...rest }, ref) => (
+export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
+  { className, ...rest },
+  ref,
+) {
+  return (
     // biome-ignore lint/a11y/noAriaHiddenOnFocusable: <hr> is not foucsable but biome thinks it is
     <hr
       aria-hidden='true'
-      className={cl('ds-divider', `ds-divider--${color}`, className)}
+      className={cl('ds-divider', className)}
       ref={ref}
       {...rest}
     />
-  ),
-);
-
-Divider.displayName = 'Divider';
+  );
+});

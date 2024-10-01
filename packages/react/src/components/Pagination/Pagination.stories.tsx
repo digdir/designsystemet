@@ -1,161 +1,100 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@navikt/aksel-icons';
+import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useState } from 'react';
 
-import { Pagination, usePagination } from '.';
+import { Pagination, type UsePaginationProps, usePagination } from '.';
 
 export default {
   title: 'Komponenter/Pagination',
   component: Pagination,
 } as Meta;
 
-export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [currentPage, setCurrentPage] = useState(args.currentPage);
-
-  useEffect(() => {
-    setCurrentPage(args.currentPage);
-  }, [args.currentPage]);
+export const Preview: StoryFn<UsePaginationProps> = (args) => {
+  const [, updateArgs] = useArgs();
+  const { pages, nextButtonProps, prevButtonProps } = usePagination({
+    ...args,
+    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
+  });
 
   return (
-    <>
-      <Pagination
-        {...args}
-        onChange={setCurrentPage}
-        currentPage={currentPage}
-      ></Pagination>
-    </>
+    <Pagination aria-label='Sidenavigering'>
+      <Pagination.List>
+        <Pagination.Item>
+          <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
+            Forrige
+          </Pagination.Button>
+        </Pagination.Item>
+        {pages.map(({ page, itemKey, buttonProps }) => (
+          <Pagination.Item key={itemKey}>
+            <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+              {page}
+            </Pagination.Button>
+          </Pagination.Item>
+        ))}
+        <Pagination.Item>
+          <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
+            Neste
+          </Pagination.Button>
+        </Pagination.Item>
+      </Pagination.List>
+    </Pagination>
   );
 };
 
 Preview.args = {
-  size: 'md',
-  nextLabel: 'Neste',
-  previousLabel: 'Forrige',
+  currentPage: 4,
+  setCurrentPage: console.log, // Added to include in storybook args
+  onChange: console.log, // Open console to see this event
   totalPages: 10,
-  hideLabels: false,
-  compact: false,
-  currentPage: 1,
-  itemLabel: (num) => `Side ${num}`,
+  showPages: 7,
 };
 
-export const UsePagination: StoryFn<typeof Pagination> = (args) => {
-  const { totalPages = 10 } = args;
-  const {
-    pages,
-    currentPage,
-    setCurrentPage,
-    nextPage,
-    previousPage,
-    showNextPage,
-    showPreviousPage,
-  } = usePagination({
-    currentPage: 4,
-    totalPages,
+export const WithAnchor: StoryFn<UsePaginationProps> = (args) => {
+  const [, updateArgs] = useArgs();
+  const { pages, nextButtonProps, prevButtonProps } = usePagination({
+    ...args,
+    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
   });
 
   return (
-    <Pagination.Root>
-      <Pagination.Content>
+    <Pagination aria-label='Sidenavigering'>
+      <Pagination.List>
         <Pagination.Item>
-          <Pagination.Previous
-            onClick={previousPage}
-            style={{
-              visibility: showPreviousPage ? undefined : 'hidden',
-            }}
+          <Pagination.Button
+            asChild
+            aria-label='Forrige side'
+            {...prevButtonProps}
           >
-            <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
-            Forrige
-          </Pagination.Previous>
+            <a href='#forrige-side'>Forrige</a>
+          </Pagination.Button>
         </Pagination.Item>
-
-        {pages.map((page, index) => (
-          <Pagination.Item key={`${page}-${index}`}>
-            {page === 'ellipsis' ? (
-              <Pagination.Ellipsis />
-            ) : (
-              <Pagination.Button
-                isActive={currentPage === page}
-                onClick={() => setCurrentPage(page)}
-                aria-label={`Side ${page}`}
-              >
-                {page}
-              </Pagination.Button>
-            )}
+        {pages.map(({ page, itemKey, buttonProps }) => (
+          <Pagination.Item key={itemKey}>
+            <Pagination.Button
+              asChild
+              aria-label={`Side ${page}`}
+              {...buttonProps}
+            >
+              <a href={`#side-${page}`}>{page}</a>
+            </Pagination.Button>
           </Pagination.Item>
         ))}
-
         <Pagination.Item>
-          <Pagination.Next
-            onClick={nextPage}
-            style={{
-              visibility: showNextPage ? undefined : 'hidden',
-            }}
+          <Pagination.Button
+            asChild
+            aria-label='Neste side'
+            {...nextButtonProps}
           >
-            Neste
-            <ChevronRightIcon aria-hidden fontSize='1.5rem' />
-          </Pagination.Next>
+            <a href='#neste-side'>Neste</a>
+          </Pagination.Button>
         </Pagination.Item>
-      </Pagination.Content>
-    </Pagination.Root>
+      </Pagination.List>
+    </Pagination>
   );
 };
 
-export const WithAnchor: StoryFn<typeof Pagination> = (args) => {
-  const { totalPages = 4 } = args;
-  const { pages, currentPage } = usePagination({
-    currentPage: 2,
-    totalPages,
-  });
-
-  return (
-    <Pagination.Root>
-      <Pagination.Content>
-        <Pagination.Item>
-          <Pagination.Previous
-            asChild
-            aria-label='Naviger til forrige side'
-            style={{
-              visibility: currentPage === 1 ? 'hidden' : undefined,
-            }}
-          >
-            <a href='#forrige-side'>
-              <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
-              Forrige
-            </a>
-          </Pagination.Previous>
-        </Pagination.Item>
-
-        {pages.map((page, index) => (
-          <Pagination.Item key={`${page}-${index}`}>
-            {page === 'ellipsis' ? (
-              <Pagination.Ellipsis />
-            ) : (
-              <Pagination.Button
-                asChild
-                isActive={currentPage === page}
-                aria-label={`Naviger til side ${page}`}
-              >
-                <a href={`#side-${page}`}> {page}</a>
-              </Pagination.Button>
-            )}
-          </Pagination.Item>
-        ))}
-
-        <Pagination.Item>
-          <Pagination.Next
-            asChild
-            aria-label='Naviger til neste side'
-            style={{
-              visibility: currentPage === totalPages ? 'hidden' : undefined,
-            }}
-          >
-            <a href='#neste-side'>
-              Neste
-              <ChevronRightIcon aria-hidden fontSize='1.5rem' />
-            </a>
-          </Pagination.Next>
-        </Pagination.Item>
-      </Pagination.Content>
-    </Pagination.Root>
-  );
+WithAnchor.args = {
+  currentPage: 2,
+  onChange: console.log, // Open console to see this event
+  totalPages: 10,
+  showPages: 7,
 };

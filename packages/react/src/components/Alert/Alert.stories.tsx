@@ -19,14 +19,20 @@ export default meta;
 export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
-  severity: 'info',
+  color: 'info',
   size: 'md',
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
 export const VariantInfo: Story = (args) => (
-  <Alert {...args} severity='info'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='info'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Har du husket å bestille passtime?
     </Heading>
     <Paragraph>
@@ -37,8 +43,14 @@ export const VariantInfo: Story = (args) => (
 );
 
 export const VariantSuccess: Story = (args) => (
-  <Alert {...args} severity='success'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='success'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Gratulerer! Du kan nå starte selskapet ditt
     </Heading>
     <Paragraph>
@@ -49,8 +61,14 @@ export const VariantSuccess: Story = (args) => (
 );
 
 export const VariantWarning: Story = (args) => (
-  <Alert {...args} severity='warning'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='warning'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Vi har tekniske problemer
     </Heading>
     <Paragraph>
@@ -61,8 +79,14 @@ export const VariantWarning: Story = (args) => (
 );
 
 export const VariantDanger: Story = (args) => (
-  <Alert {...args} severity='danger'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='danger'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Det har skjedd en feil
     </Heading>
     <Paragraph>
@@ -75,7 +99,13 @@ export const VariantDanger: Story = (args) => (
 
 export const MedHeading: Story = (args) => (
   <Alert {...args}>
-    <Heading level={2} size='xs' spacing>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Har du husket å bestille passtime?
     </Heading>
     <Paragraph>
@@ -86,14 +116,20 @@ export const MedHeading: Story = (args) => (
 );
 
 export const MedKunHeading: Story = (args) => (
-  <Alert {...args} severity='warning'>
+  <Alert {...args} color='warning'>
     <Paragraph> Du har 7 dager igjen på å fullføre søknaden.</Paragraph>
   </Alert>
 );
 
 export const MedLenke: Story = (args) => (
-  <Alert {...args} severity='warning'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='warning'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Søknadsfristen går ut om 3 dager
     </Heading>
     <Paragraph>
@@ -104,8 +140,14 @@ export const MedLenke: Story = (args) => (
 );
 
 export const UtenAria: Story = (args) => (
-  <Alert {...args} severity='warning'>
-    <Heading level={2} size='xs' spacing>
+  <Alert {...args} color='warning'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Nedetid
     </Heading>
     <Paragraph>
@@ -116,8 +158,14 @@ export const UtenAria: Story = (args) => (
 );
 
 export const MedAria: Story = (args) => (
-  <Alert {...args} severity='danger'>
-    <Heading level={2} size='xs' spacing role='alert'>
+  <Alert {...args} color='danger' role='alert'>
+    <Heading
+      level={2}
+      size='xs'
+      style={{
+        marginBottom: 'var(--ds-spacing-2)',
+      }}
+    >
       Vi klarer ikke lagre skjemaet
     </Heading>
     <Paragraph>

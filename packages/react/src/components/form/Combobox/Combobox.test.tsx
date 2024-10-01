@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type * as React from 'react';
+import type { FormEvent } from 'react';
 import { act } from 'react';
 
 import type { ComboboxProps } from './Combobox';
@@ -244,7 +244,7 @@ describe('Combobox', () => {
   it('should work in a form if we pass a name', async () => {
     const user = userEvent.setup();
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };
@@ -286,7 +286,7 @@ describe('Combobox', () => {
   it('should work in a form if we pass a name, and we click multiple', async () => {
     const user = userEvent.setup();
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };

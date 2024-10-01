@@ -22,6 +22,3 @@ export const Preview: Story = (args) => (
     </Paragraph>
   </>
 );
-Preview.args = {
-  color: 'default',
-};

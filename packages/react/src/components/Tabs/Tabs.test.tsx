@@ -8,14 +8,14 @@ const user = userEvent.setup();
 describe('Tabs', () => {
   test('can navigate tabs with keyboard', async () => {
     render(
-      <Tabs.Root>
+      <Tabs>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
         </Tabs.List>
-        <Tabs.Content value='value1'>content 1</Tabs.Content>
-        <Tabs.Content value='value2'>content 2</Tabs.Content>
-      </Tabs.Root>,
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+      </Tabs>,
     );
 
     const tab1 = screen.getByRole('tab', { name: 'Tab 1' });
@@ -30,14 +30,14 @@ describe('Tabs', () => {
 
   test('renders content based on value', async () => {
     render(
-      <Tabs.Root defaultValue='value1'>
+      <Tabs defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
         </Tabs.List>
-        <Tabs.Content value='value1'>content 1</Tabs.Content>
-        <Tabs.Content value='value2'>content 2</Tabs.Content>
-      </Tabs.Root>,
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+      </Tabs>,
     );
 
     expect(screen.queryByText('content 1')).toBeVisible();
@@ -49,12 +49,12 @@ describe('Tabs', () => {
 
   test('item renders with correct aria attributes', async () => {
     render(
-      <Tabs.Root defaultValue='value1'>
+      <Tabs defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
         </Tabs.List>
-      </Tabs.Root>,
+      </Tabs>,
     );
 
     const tab = screen.getByRole('tab', { name: 'Tab 2' });
@@ -63,13 +63,13 @@ describe('Tabs', () => {
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
-  test('renders ReactNodes as children when TabContents value is selected', () => {
+  test('renders ReactNodes as children when TabsPanels value is selected', () => {
     render(
-      <Tabs.Root defaultValue='value1'>
-        <Tabs.Content value='value1'>
+      <Tabs defaultValue='value1'>
+        <Tabs.Panel value='value1'>
           <div>content 1</div>
-        </Tabs.Content>
-      </Tabs.Root>,
+        </Tabs.Panel>
+      </Tabs>,
     );
 
     const content = screen.queryByText('content 1');

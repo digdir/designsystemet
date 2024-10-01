@@ -8,6 +8,126 @@
   --ds-font-weight-medium: 400;
   --ds-font-weight-semibold: 700;
   --ds-font-weight-regular: 400;
+  --ds-heading-2xl-font-weight: 400;
+  --ds-heading-2xl-line-height: 1.3;
+  --ds-heading-2xl-font-size: 3.75rem;
+  --ds-heading-2xl-letter-spacing: -1%;
+  --ds-heading-xl-font-weight: 400;
+  --ds-heading-xl-line-height: 1.3;
+  --ds-heading-xl-font-size: 3rem;
+  --ds-heading-xl-letter-spacing: -1%;
+  --ds-heading-lg-font-weight: 400;
+  --ds-heading-lg-line-height: 1.3;
+  --ds-heading-lg-font-size: 2.25rem;
+  --ds-heading-lg-letter-spacing: -0.5%;
+  --ds-heading-md-font-weight: 400;
+  --ds-heading-md-line-height: 1.3;
+  --ds-heading-md-font-size: 1.875rem;
+  --ds-heading-md-letter-spacing: -0.25%;
+  --ds-heading-sm-font-weight: 400;
+  --ds-heading-sm-line-height: 1.3;
+  --ds-heading-sm-font-size: 1.5rem;
+  --ds-heading-sm-letter-spacing: 0%;
+  --ds-heading-xs-font-weight: 400;
+  --ds-heading-xs-line-height: 1.3;
+  --ds-heading-xs-font-size: 1.3125rem;
+  --ds-heading-xs-letter-spacing: 0.15%;
+  --ds-heading-2xs-font-weight: 400;
+  --ds-heading-2xs-line-height: 1.3;
+  --ds-heading-2xs-font-size: 1.125rem;
+  --ds-heading-2xs-letter-spacing: 0.15%;
+  --ds-body-xl-font-weight: 400;
+  --ds-body-xl-line-height: 1.5;
+  --ds-body-xl-font-size: 1.5rem;
+  --ds-body-xl-letter-spacing: 0.5%;
+  --ds-body-lg-font-weight: 400;
+  --ds-body-lg-line-height: 1.5;
+  --ds-body-lg-font-size: 1.3125rem;
+  --ds-body-lg-letter-spacing: 0.5%;
+  --ds-body-md-font-weight: 400;
+  --ds-body-md-line-height: 1.5;
+  --ds-body-md-font-size: 1.125rem;
+  --ds-body-md-letter-spacing: 0.5%;
+  --ds-body-sm-font-weight: 400;
+  --ds-body-sm-line-height: 1.5;
+  --ds-body-sm-font-size: 1rem;
+  --ds-body-sm-letter-spacing: 0.25%;
+  --ds-body-xs-font-weight: 400;
+  --ds-body-xs-line-height: 1.5;
+  --ds-body-xs-font-size: 0.875rem;
+  --ds-body-xs-letter-spacing: 0.15%;
+  --ds-body-short-xl-font-weight: 400;
+  --ds-body-short-xl-line-height: 1.3;
+  --ds-body-short-xl-font-size: 1.5rem;
+  --ds-body-short-xl-letter-spacing: 0.5%;
+  --ds-body-short-lg-font-weight: 400;
+  --ds-body-short-lg-line-height: 1.3;
+  --ds-body-short-lg-font-size: 1.3125rem;
+  --ds-body-short-lg-letter-spacing: 0.5%;
+  --ds-body-short-md-font-weight: 400;
+  --ds-body-short-md-line-height: 1.3;
+  --ds-body-short-md-font-size: 1.125rem;
+  --ds-body-short-md-letter-spacing: 0.5%;
+  --ds-body-short-sm-font-weight: 400;
+  --ds-body-short-sm-line-height: 1.3;
+  --ds-body-short-sm-font-size: 1rem;
+  --ds-body-short-sm-letter-spacing: 0.25%;
+  --ds-body-short-xs-font-weight: 400;
+  --ds-body-short-xs-line-height: 1.3;
+  --ds-body-short-xs-font-size: 0.875rem;
+  --ds-body-short-xs-letter-spacing: 0.15%;
+  --ds-body-long-xl-font-weight: 400;
+  --ds-body-long-xl-line-height: 1.7;
+  --ds-body-long-xl-font-size: 1.5rem;
+  --ds-body-long-xl-letter-spacing: 0.5%;
+  --ds-body-long-lg-font-weight: 400;
+  --ds-body-long-lg-line-height: 1.7;
+  --ds-body-long-lg-font-size: 1.3125rem;
+  --ds-body-long-lg-letter-spacing: 0.5%;
+  --ds-body-long-md-font-weight: 400;
+  --ds-body-long-md-line-height: 1.7;
+  --ds-body-long-md-font-size: 1.125rem;
+  --ds-body-long-md-letter-spacing: 0.5%;
+  --ds-body-long-sm-font-weight: 400;
+  --ds-body-long-sm-line-height: 1.7;
+  --ds-body-long-sm-font-size: 1rem;
+  --ds-body-long-sm-letter-spacing: 0.25%;
+  --ds-body-long-xs-font-weight: 400;
+  --ds-body-long-xs-line-height: 1.7;
+  --ds-body-long-xs-font-size: 0.875rem;
+  --ds-body-long-xs-letter-spacing: 0.15%;
+  --ds-label-lg-font-weight: 400;
+  --ds-label-lg-line-height: 1.3;
+  --ds-label-lg-font-size: 1.3125rem;
+  --ds-label-lg-letter-spacing: 0.5%;
+  --ds-label-md-font-weight: 400;
+  --ds-label-md-line-height: 1.3;
+  --ds-label-md-font-size: 1.125rem;
+  --ds-label-md-letter-spacing: 0.5%;
+  --ds-label-sm-font-weight: 400;
+  --ds-label-sm-line-height: 1.3;
+  --ds-label-sm-font-size: 1rem;
+  --ds-label-sm-letter-spacing: 0.25%;
+  --ds-label-xs-font-weight: 400;
+  --ds-label-xs-line-height: 1.3;
+  --ds-label-xs-font-size: 0.875rem;
+  --ds-label-xs-letter-spacing: 0.15%;
+  --ds-error_message-lg-font-weight: 400;
+  --ds-error_message-lg-line-height: 1.3;
+  --ds-error_message-lg-font-size: 1.3125rem;
+  --ds-error_message-lg-letter-spacing: 0.5%;
+  --ds-error_message-md-font-weight: 400;
+  --ds-error_message-md-line-height: 1.3;
+  --ds-error_message-md-font-size: 1.125rem;
+  --ds-error_message-md-letter-spacing: 0.5%;
+  --ds-error_message-sm-font-weight: 400;
+  --ds-error_message-sm-line-height: 1.3;
+  --ds-error_message-sm-font-size: 1rem;
+  --ds-error_message-sm-letter-spacing: 0.25%;
+  --ds-error_message-xs-font-weight: 400;
+  --ds-error_message-xs-line-height: 1.3;
+  --ds-error_message-xs-font-size: 0.875rem;
+  --ds-error_message-xs-letter-spacing: 0.15%;
   --ds-line-height-sm: 1.3;
   --ds-line-height-md: 1.5;
   --ds-line-height-lg: 1.7;
@@ -31,246 +151,5 @@
   --ds-letter-spacing-7: 0.25%;
   --ds-letter-spacing-8: 0.5%;
   --ds-letter-spacing-9: 1.5%;
-
-  .ds-error_message--xs {
-    font-size: var(--ds-font-size-3);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-error_message--sm {
-    font-size: var(--ds-font-size-4);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-error_message--md {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-error_message--lg {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-label--xs {
-    font-size: var(--ds-font-size-3);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-label--sm {
-    font-size: var(--ds-font-size-4);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-label--md {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-label--lg {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph-long--xs {
-    font-size: var(--ds-font-size-3);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-paragraph-long--sm {
-    font-size: var(--ds-font-size-4);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-paragraph-long--md {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph-long--lg {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph-short--xs {
-    font-size: var(--ds-font-size-3);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-paragraph-short--sm {
-    font-size: var(--ds-font-size-4);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-paragraph-short--md {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph-short--lg {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph--xs {
-    font-size: var(--ds-font-size-3);
-    line-height: var(--ds-line-height-md);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-paragraph--sm {
-    font-size: var(--ds-font-size-4);
-    line-height: var(--ds-line-height-md);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-paragraph--md {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-md);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-paragraph--lg {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-md);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-ingress--xs {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-ingress--sm {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-7);
-  }
-
-  .ds-ingress--md {
-    font-size: var(--ds-font-size-7);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-ingress--lg {
-    font-size: var(--ds-font-size-8);
-    line-height: var(--ds-line-height-lg);
-    font-weight: var(--ds-font-weight-regular);
-    letter-spacing: var(--ds-letter-spacing-8);
-  }
-
-  .ds-heading--2xs {
-    font-size: var(--ds-font-size-5);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-heading--xs {
-    font-size: var(--ds-font-size-6);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-6);
-  }
-
-  .ds-heading--sm {
-    font-size: var(--ds-font-size-7);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-5);
-  }
-
-  .ds-heading--md {
-    font-size: var(--ds-font-size-8);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-3);
-  }
-
-  .ds-heading--lg {
-    font-size: var(--ds-font-size-9);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-2);
-  }
-
-  .ds-heading--xl {
-    font-size: var(--ds-font-size-10);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-1);
-  }
-
-  .ds-heading--2xl {
-    font-size: var(--ds-font-size-11);
-    line-height: var(--ds-line-height-sm);
-    font-weight: var(--ds-font-weight-medium);
-    letter-spacing: var(--ds-letter-spacing-1);
-  }
-
-  .ds-font-weight--medium {
-    font-weight: 400;
-  }
-
-  .ds-font-weight--semibold {
-    font-weight: 700;
-  }
-
-  .ds-font-weight--regular {
-    font-weight: 400;
-  }
-
-  .ds-line-height--sm {
-    line-height: 1.3;
-  }
-
-  .ds-line-height--md {
-    line-height: 1.5;
-  }
-
-  .ds-line-height--lg {
-    line-height: 1.7;
-  }
 }
 }

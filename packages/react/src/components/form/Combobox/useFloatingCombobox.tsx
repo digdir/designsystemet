@@ -10,12 +10,13 @@ import {
   useRole,
 } from '@floating-ui/react';
 import { useState } from 'react';
+import type { MutableRefObject } from 'react';
 import { flushSync } from 'react-dom';
 
 import { useComboboxId, useComboboxIdDispatch } from './ComboboxIdContext';
 
 type UseFloatingComboboxProps = {
-  listRef: React.MutableRefObject<(HTMLElement | null)[]>;
+  listRef: MutableRefObject<(HTMLElement | null)[]>;
 };
 
 export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {

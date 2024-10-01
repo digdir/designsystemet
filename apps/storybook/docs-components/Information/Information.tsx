@@ -30,7 +30,7 @@ const texts: Record<Texts, { description: string; title?: string }> = {
   },
 };
 
-const getSeverity = (text: Texts): AlertProps['severity'] => {
+const getColor = (text: Texts): AlertProps['color'] => {
   switch (text) {
     case 'deprecated':
       return 'danger';
@@ -50,9 +50,9 @@ export const Information = ({ text, description }: InformationProps) => {
   const textData = texts[text];
 
   return (
-    <Alert className={classes.container} severity={getSeverity(text)}>
+    <Alert className={classes.container} color={getColor(text)}>
       {textData.title && (
-        <Heading level={2} size='xs' spacing>
+        <Heading level={2} size='xs'>
           {textData.title}
         </Heading>
       )}

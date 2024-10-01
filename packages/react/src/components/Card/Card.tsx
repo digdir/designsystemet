@@ -41,13 +41,9 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <Component
         ref={ref}
-        className={cl(
-          `ds-card`,
-          `ds-card--${color}`,
-          isLink && `ds-card--link`,
-          isLink && `ds-focus`,
-          className,
-        )}
+        className={cl(`ds-card`, isLink && `ds-focus`, className)}
+        data-color={color}
+        data-link={isLink ? '' : undefined}
         {...rest}
       />
     );

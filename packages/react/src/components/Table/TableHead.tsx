@@ -1,17 +1,9 @@
-import cl from 'clsx/lite';
-import * as React from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
 
-export type TableHeadProps = React.HTMLAttributes<HTMLTableSectionElement>;
+export type TableHeadProps = HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableHead = React.forwardRef<
-  HTMLTableSectionElement,
-  TableHeadProps
->(({ className, children, ...rest }, ref) => {
-  return (
-    <thead ref={ref} className={cl('ds-table__head', className)} {...rest}>
-      {children}
-    </thead>
-  );
-});
-
-TableHead.displayName = 'TableHead';
+export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
+  function TableHead(rest, ref) {
+    return <thead ref={ref} {...rest} />;
+  },
+);

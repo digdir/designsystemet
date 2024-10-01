@@ -44,12 +44,16 @@ export function useSynchronizedAnimation<T>(animationName: string) {
       myAnimation.currentTime = 0;
     }
 
-    if (myAnimation && firstOfType && myAnimation !== firstOfType) {
+    if (
+      myAnimation &&
+      firstOfType?.currentTime &&
+      myAnimation !== firstOfType
+    ) {
       myAnimation.currentTime = firstOfType.currentTime;
     }
 
     return () => {
-      if (myAnimation && firstOfType) {
+      if (myAnimation && firstOfType?.currentTime) {
         myAnimation.currentTime = firstOfType.currentTime;
       }
     };

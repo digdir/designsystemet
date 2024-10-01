@@ -11,7 +11,6 @@ import {
   Link,
   ListItem,
   ListOrdered,
-  ListRoot,
   ListUnordered,
   Paragraph,
   Table,
@@ -26,25 +25,27 @@ import type { MDXComponents } from 'mdx/types';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    p: (props: ParagraphProps) => {
-      return <Paragraph {...props} spacing />;
-    },
-    a: (props) => {
-      return <Link {...(props as LinkProps)} />;
-    },
-    ol: (props: ListOrderedProps) => (
-      <ListRoot>
-        <ListOrdered {...props} />
-      </ListRoot>
+    p: (props: ParagraphProps) => (
+      <Paragraph
+        {...props}
+        style={{
+          marginBottom: 'var(--ds-spacing-4)',
+        }}
+      />
     ),
-    ul: (props: ListUnorderedProps) => (
-      <ListRoot>
-        <ListUnordered {...props} />
-      </ListRoot>
-    ),
+    a: (props) => <Link {...(props as LinkProps)} />,
+    ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
+    ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,
     li: (props: ListItemProps) => <ListItem {...props}></ListItem>,
     h1: (props: HeadingProps) => (
-      <Heading {...props} level={1} size='xl' spacing />
+      <Heading
+        {...props}
+        level={1}
+        size='xl'
+        style={{
+          marginBottom: 'var(--ds-spacing-4)',
+        }}
+      />
     ),
     h2: (props: HeadingProps) => <Heading {...props} level={2} size='md' />,
     h3: (props: HeadingProps) => <Heading {...props} level={3} size='sm' />,

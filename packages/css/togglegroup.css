@@ -1,27 +1,16 @@
 .ds-togglegroup {
-  --dsc-togglegroup-padding: var(--ds-spacing-1);
   --dsc-togglegroup-background: var(--ds-color-neutral-background-default);
-  --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
+  --dsc-togglegroup-border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-default);
+  --dsc-togglegroup-padding: var(--ds-spacing-1);
 
-  background-color: var(--dsc-togglegroup-background);
-  border: var(--dsc-togglegroup-border-color) solid var(--ds-border-width-default);
+  background: var(--dsc-togglegroup-background);
   border-radius: calc(var(--ds-border-radius-md) + var(--dsc-togglegroup-padding));
-  width: fit-content;
-  height: fit-content;
-}
-
-.ds-togglegroup__content {
-  display: inline-grid;
+  border: var(--dsc-togglegroup-border);
+  display: grid;
   gap: var(--dsc-togglegroup-padding);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
+  height: fit-content;
   padding: var(--dsc-togglegroup-padding);
-}
-
-.ds-togglegroup__input {
-  display: none;
-}
-
-.ds-togglegroup__item:focus-visible {
-  z-index: 1;
+  width: fit-content;
 }

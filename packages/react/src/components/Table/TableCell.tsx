@@ -1,16 +1,9 @@
-import cl from 'clsx/lite';
-import * as React from 'react';
+import { type TdHTMLAttributes, forwardRef } from 'react';
 
-export type TableCellProps = React.TdHTMLAttributes<HTMLTableCellElement>;
+export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>;
 
-export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
-  ({ className, children, ...rest }, ref) => {
-    return (
-      <td ref={ref} className={cl('ds-table__cell', className)} {...rest}>
-        {children}
-      </td>
-    );
+export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
+  function TableCell(rest, ref) {
+    return <td ref={ref} {...rest} />;
   },
 );
-
-TableCell.displayName = 'TableCell';

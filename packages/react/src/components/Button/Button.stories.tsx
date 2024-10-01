@@ -15,8 +15,7 @@ import {
 import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 
-import { Spinner } from '../Spinner';
-import { Tooltip } from '../Tooltip';
+import { Spinner, Tooltip } from '../';
 
 import { Button } from './';
 
@@ -45,7 +44,6 @@ export const Preview: Story = {
     color: 'accent',
     size: 'md',
     icon: false,
-    fullWidth: false,
   },
 };
 
@@ -157,7 +155,7 @@ export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
       Gå til Designsystemet
-      <ExternalLinkIcon fontSize='1.5rem' />
+      <ExternalLinkIcon fontSize='1.5rem' title='Ekstern lenke' />
     </a>
   </Button>
 );
@@ -179,16 +177,13 @@ TextAndIcon.decorators = [stack];
 
 export const Loading: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='primary' loading>
       Laster...
     </Button>
-    <Button variant='secondary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='secondary' loading>
       Laster...
     </Button>
-    <Button variant='tertiary' aria-disabled>
-      <Spinner color='accent' title='loading' size='sm' />
+    <Button variant='tertiary' loading>
       Laster...
     </Button>
   </>
@@ -196,36 +191,27 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 Loading.decorators = [stack];
 
-export const FullWidth: Story = {
-  name: 'Full Width',
-  args: {
-    children: (
-      <>
-        <PlusIcon fontSize='1.5rem' />
-        Last inn flere
-      </>
-    ),
-    fullWidth: true,
-    color: 'neutral',
-    variant: 'secondary',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
-
 export const Icons: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' size='sm'>
-      <CogIcon fontSize='1rem' />
+      <CogIcon fontSize='1rem' title='Innstillinger' />
+    </Button>
+    <Button variant='primary' size='sm'>
+      <CogIcon fontSize='1rem' aria-hidden />
       Small
     </Button>
     <Button variant='primary' size='md'>
-      <CogIcon fontSize='1.5rem' />
+      <CogIcon fontSize='1.5rem' title='Innstillinger' />
+    </Button>
+    <Button variant='primary' size='md'>
+      <CogIcon fontSize='1.5rem' aria-hidden />
       Medium
     </Button>
     <Button variant='primary' size='lg'>
-      <CogIcon fontSize='2rem' />
+      <CogIcon fontSize='2rem' title='Innstillinger' />
+    </Button>
+    <Button variant='primary' size='lg'>
+      <CogIcon fontSize='2rem' aria-hidden />
       Large
     </Button>
   </>
@@ -236,33 +222,23 @@ Icons.decorators = [stack];
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
-      <Button
-        icon={true}
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
-        <PlusCircleIcon fontSize='1.5rem' />
+      <Button icon color='neutral' variant='tertiary' aria-label='Legg til ny'>
+        <PlusCircleIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
-      <Button
-        icon={true}
-        color='neutral'
-        variant='tertiary'
-        aria-label='Tertiary med ikon'
-      >
-        <BellIcon fontSize='1.5rem' />
+      <Button icon color='neutral' variant='tertiary' aria-label='Varslinger'>
+        <BellIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
       <Button
-        icon={true}
+        icon
         color='neutral'
         variant='tertiary'
-        aria-label='Tertiary med ikon'
+        aria-label='Innstillinger'
       >
-        <CogIcon fontSize='1.5rem' />
+        <CogIcon fontSize='1.5rem' aria-hidden />
       </Button>
     </Tooltip>
   </>
@@ -283,14 +259,14 @@ IconOnly.decorators = [
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button icon={true} variant='primary' size='sm'>
-      <CogIcon fontSize='1.5rem' />
+    <Button icon variant='primary' size='sm'>
+      <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
-    <Button icon={true} variant='primary' size='md'>
-      <CogIcon fontSize='2rem' />
+    <Button icon variant='primary' size='md'>
+      <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
-    <Button icon={true} variant='primary' size='lg'>
-      <CogIcon fontSize='2.5rem' />
+    <Button icon variant='primary' size='lg'>
+      <CogIcon fontSize='2.5rem' title='Innstillinger' />
     </Button>
   </>
 );

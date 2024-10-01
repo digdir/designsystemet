@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type * as React from 'react';
+import type { FormEvent } from 'react';
 
 import { ToggleGroup } from '.';
 
@@ -9,9 +9,9 @@ const user = userEvent.setup();
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
     render(
-      <ToggleGroup.Root>
+      <ToggleGroup>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item = screen.getByRole('radio');
@@ -20,9 +20,9 @@ describe('ToggleGroup', () => {
 
   test('has passed name to ToggleGroupItem children', (): void => {
     render(
-      <ToggleGroup.Root name='my name'>
+      <ToggleGroup name='my name'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio');
@@ -31,11 +31,11 @@ describe('ToggleGroup', () => {
 
   test('can navigate with tab and arrow keys', async () => {
     render(
-      <ToggleGroup.Root>
+      <ToggleGroup>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item1 = screen.getByRole<HTMLButtonElement>('radio', {
@@ -58,11 +58,11 @@ describe('ToggleGroup', () => {
   });
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
     render(
-      <ToggleGroup.Root defaultValue='test2'>
+      <ToggleGroup defaultValue='test2'>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio', {
@@ -74,10 +74,10 @@ describe('ToggleGroup', () => {
     const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup.Root onChange={onChangeMock}>
+      <ToggleGroup onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2value'>test2</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item = screen.getByRole<HTMLButtonElement>('radio', {
@@ -95,10 +95,10 @@ describe('ToggleGroup', () => {
     const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup.Root defaultValue='test1' onChange={onChangeMock}>
+      <ToggleGroup defaultValue='test1' onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const item1 = screen.getByRole<HTMLButtonElement>('radio', {
@@ -120,9 +120,9 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup.Root name={name}>
+      <ToggleGroup name={name}>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const input = container.querySelector(`input[name="${name}"]`);
@@ -132,9 +132,9 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name and value', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup.Root name='my-name' defaultValue='test'>
+      <ToggleGroup name='my-name' defaultValue='test'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const input = container.querySelector(`input[name="${name}"]`);
@@ -143,17 +143,17 @@ describe('ToggleGroup', () => {
 
   test('should send the value to a form when the form is submitted', async () => {
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };
 
       render(
         <form onSubmit={handleSubmit}>
-          <ToggleGroup.Root name='test' defaultValue='test2'>
+          <ToggleGroup name='test' defaultValue='test2'>
             <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
             <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
-          </ToggleGroup.Root>
+          </ToggleGroup>
           <button type='submit'>Submit</button>
         </form>,
       );
@@ -168,9 +168,9 @@ describe('ToggleGroup', () => {
 
   test('if we dont pass a name, we should not have a hidden input', () => {
     render(
-      <ToggleGroup.Root>
+      <ToggleGroup>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
-      </ToggleGroup.Root>,
+      </ToggleGroup>,
     );
 
     const input = document.querySelector('input[type="hidden"]');

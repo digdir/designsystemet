@@ -11,11 +11,11 @@ import {
   Divider,
   Heading,
   Link,
-  NativeSelect,
   Pagination,
   Paragraph,
   Radio,
   Search,
+  Select,
   Switch,
   Table,
   Tabs,
@@ -23,6 +23,7 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
+  usePagination,
 } from '../src';
 
 import classes from './showcase.module.css';
@@ -33,6 +34,14 @@ export default {
 
 export const Showcase: StoryFn = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
+
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
@@ -76,7 +85,7 @@ export const Showcase: StoryFn = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button fullWidth size='sm' className={classes.userBtn}>
+        <Button size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
@@ -86,12 +95,12 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <NativeSelect label='' size='sm'>
-              <option value='blank'>Velg handling</option>
-              <option value='everest'>Dupliser</option>
-              <option value='aconcagua'>Slett</option>
-              <option value='denali'>Oppdater</option>
-            </NativeSelect>
+            <Select aria-label='Velg handling' size='sm'>
+              <Select.Option value='blank'>Velg handling</Select.Option>
+              <Select.Option value='everest'>Dupliser</Select.Option>
+              <Select.Option value='aconcagua'>Slett</Select.Option>
+              <Select.Option value='denali'>Oppdater</Select.Option>
+            </Select>
             <Button className={classes.tableBtn} size='sm'>
               Utfør
             </Button>
@@ -112,11 +121,11 @@ export const Showcase: StoryFn = () => {
         >
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Navn
               </Table.HeaderCell>
               <Table.HeaderCell>Epost</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sortable>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
                 Telefon
               </Table.HeaderCell>
             </Table.Row>
@@ -148,14 +157,25 @@ export const Showcase: StoryFn = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination
-          currentPage={3}
-          nextLabel='Neste'
-          onChange={function Ya() {}}
-          previousLabel='Forrige'
-          size='sm'
-          totalPages={6}
-        />
+        <Pagination>
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Button {...pagination.prevButtonProps}>
+                Forrige
+              </Pagination.Button>
+            </Pagination.Item>
+            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+              <Pagination.Item key={itemKey}>
+                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+              </Pagination.Item>
+            ))}
+            <Pagination.Item>
+              <Pagination.Button {...pagination.nextButtonProps}>
+                Neste
+              </Pagination.Button>
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
         <Heading size='xs' className={classes.helpHeading}>
@@ -234,10 +254,10 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Innstillinger
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
@@ -254,18 +274,18 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Hvor er du fra?
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup.Root defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
-          </ToggleGroup.Root>
+          </ToggleGroup>
           <Combobox
             description='Velg et sted'
             label='Hvor går reisen?'
@@ -286,13 +306,13 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs.Root defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
-        </Tabs.Root>
+        </Tabs>
         <Paragraph size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>
@@ -316,9 +336,9 @@ export const Showcase: StoryFn = () => {
         <Heading size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
-        <Accordion.Root color='brand3' border>
+        <Accordion color='brand3' border>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -330,7 +350,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -340,7 +360,7 @@ export const Showcase: StoryFn = () => {
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
-            <Accordion.Heading level={3}>
+            <Accordion.Heading>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
@@ -349,7 +369,7 @@ export const Showcase: StoryFn = () => {
               registrene samtidig i Samordnet registermelding.
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion.Root>
+        </Accordion>
       </div>
     </div>
   );
