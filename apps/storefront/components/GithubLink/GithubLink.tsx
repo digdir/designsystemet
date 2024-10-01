@@ -18,7 +18,7 @@ const GithubLink = ({
         alt='github logo'
         src='/img/logos/github-logo.svg'
       />
-      Rediger denne siden på Github
+      Rediger denne siden på Github (åpnes i ny fane)
     </Link>
   );
 };
