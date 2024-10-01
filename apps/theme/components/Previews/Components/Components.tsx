@@ -278,12 +278,8 @@ export const Components = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
-        <Heading size='xs' spacing>
-          Hvor er du fra?
-        </Heading>
-        <Paragraph size='sm' spacing>
-          Svar under så finner vi flyreise
-        </Paragraph>
+        <Heading size='xs'>Hvor er du fra?</Heading>
+        <Paragraph size='sm'>Svar under så finner vi flyreise</Paragraph>
         <div className={classes.toggleCombo}>
           <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
@@ -291,7 +287,7 @@ export const Components = () => {
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup>
         </div>
-        <Heading size='xs' spacing className={classes.chipsHeading}>
+        <Heading size='xs' className={classes.chipsHeading}>
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
@@ -307,7 +303,7 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
-        <Heading size='xs' spacing className={classes.comboHeading}>
+        <Heading size='xs' className={classes.comboHeading}>
           Hvor skal du reise?
         </Heading>
         <Combobox label='Destinasjon' size='sm' portal={false} multiple>

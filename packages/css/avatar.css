@@ -5,18 +5,19 @@
   --dsc-avatar-padding: var(--ds-spacing-2);
   --dsc-avatar-border-radius: 50%;
 
-  background: var(--dsc-avatar-background);
-  height: var(--dsc-avatar-size);
-  aspect-ratio: 1 / 1;
-  color: var(--dsc-avatar-color);
-  border-radius: var(--dsc-avatar-border-radius);
-  overflow: hidden;
-  display: inline-flex;
-  justify-content: center;
   align-items: center;
-  user-select: none;
-  text-transform: uppercase;
+  aspect-ratio: 1 / 1;
+  background: var(--dsc-avatar-background);
+  border-radius: var(--dsc-avatar-border-radius);
+  box-sizing: border-box;
+  color: var(--dsc-avatar-color);
+  display: inline-flex;
+  height: var(--dsc-avatar-size);
+  justify-content: center;
+  overflow: hidden;
   text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
 
   @composes ds-body-text--xs from './utilities.css';
 
