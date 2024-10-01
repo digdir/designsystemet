@@ -83,7 +83,6 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
               >
                 <Link
                   href='https://github.com/digdir/designsystemet'
-                  target='_blank'
                   className={cl(classes.linkIcon, classes.github, 'ds-focus')}
                   title='Designsystemets GitHub-repositorium'
                 >
@@ -93,7 +92,6 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
               <li className={cl(classes.item, classes.itemIcon)}>
                 <Link
                   href='https://www.figma.com/@designsystemet'
-                  target='_blank'
                   className={cl(classes.linkIcon, classes.figma, 'ds-focus')}
                   title='Designsystemets Figma-prosjekt'
                 >

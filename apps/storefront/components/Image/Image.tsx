@@ -12,6 +12,7 @@ const Image = ({ alt, src, boxShadow, caption, ...rest }: ImageProps) => {
   return (
     <figure
       className={cl(classes.container, { [classes.boxShadow]: boxShadow })}
+      data-unstyled
     >
       <img
         className={classes.img}
