@@ -36,6 +36,7 @@ function App() {
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'getThemes' } }, '*');
     parent.postMessage({ pluginMessage: { type: 'getFonts' } }, '*');
+    // biome-ignore lint/suspicious/noGlobalAssign: <explanation>
     onmessage = (event: {
       data: {
         pluginMessage: {

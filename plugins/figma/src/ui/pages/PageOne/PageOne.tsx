@@ -78,28 +78,7 @@ function PageOne() {
   };
   return (
     <div className={classes.content}>
-      <div className={classes.pickers}>
-        <ColorPicker
-          color={accent}
-          title='Accent'
-        />
-        <ColorPicker
-          color={neutral}
-          title='Neutral'
-        />
-        <ColorPicker
-          color={brand1}
-          title='Brand 1'
-        />
-        <ColorPicker
-          color={brand2}
-          title='Brand 2'
-        />
-        <ColorPicker
-          color={brand3}
-          title='Brand 3'
-        />
-      </div>
+      <div className={classes.pickers}></div>
     </div>
   );
 }

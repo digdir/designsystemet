@@ -1,8 +1,8 @@
-import { ChromePicker } from 'react-color';
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx';
 import { useRef, useState } from 'react';
-import { useClickOutside } from '@react-awesome/use-click-outside';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { ChromePicker } from 'react-color';
 
 import classes from './ColorPicker.module.css';
 
@@ -28,14 +28,8 @@ export const ColorPicker = ({
   });
 
   return (
-    <div
-      className={classes.container}
-      ref={ref}
-    >
-      <button
-        className={classes.picker}
-        onClick={() => handleClick()}
-      >
+    <div className={classes.container} ref={ref}>
+      <button className={classes.picker} onClick={() => handleClick()}>
         <div
           className={classes.circle}
           style={{ backgroundColor: color }}

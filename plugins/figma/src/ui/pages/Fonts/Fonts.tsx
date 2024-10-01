@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom';
 import { Type } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 
-import { Card } from '../../components/Card/Card';
 import { useThemeStore } from '../../../common/store';
-import { CardButton } from '../../components/CardButton/CardButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { Card } from '../../components/Card/Card';
+import { CardButton } from '../../components/CardButton/CardButton';
 
 import classes from './Fonts.module.css';
 
@@ -13,13 +13,18 @@ const Fonts = () => {
   const themes = useThemeStore((state) => state.themes);
 
   const getTheme = () => {
-    return themes.find((theme) => theme.themeModeId === themeId) || { fonts: [] };
+    return (
+      themes.find((theme) => theme.themeModeId === themeId) || { fonts: [] }
+    );
   };
 
   return (
     <div className={classes.content}>
       <Breadcrumbs
-        text={'Fonter - ' + themes.find((theme) => theme.themeModeId === themeId)?.name}
+        text={
+          'Fonter - ' +
+          themes.find((theme) => theme.themeModeId === themeId)?.name
+        }
         url='/'
       />
       <div className={classes.cards}>

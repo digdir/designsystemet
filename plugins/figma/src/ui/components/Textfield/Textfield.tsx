@@ -7,10 +7,5 @@ type TextfieldProps = {
 };
 
 export const Textfield = ({ ...rest }: TextfieldProps) => {
-  return (
-    <DSTextfield
-      {...rest}
-      className={classes.input}
-    />
-  );
+  return <DSTextfield {...rest} className={classes.input} />;
 };

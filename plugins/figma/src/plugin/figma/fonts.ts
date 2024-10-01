@@ -8,7 +8,10 @@ export const getFonts = async () => {
   const fontArray: FontTest[] = [];
 
   for (const [index, font] of fonts.entries()) {
-    if (index > 0 && fontArray[fontArray.length - 1].name === font.fontName.family) {
+    if (
+      index > 0 &&
+      fontArray[fontArray.length - 1].name === font.fontName.family
+    ) {
       const found = fontArray.find((f) => f.name === font.fontName.family);
       if (found) {
         found.styles.push(font.fontName.style);
