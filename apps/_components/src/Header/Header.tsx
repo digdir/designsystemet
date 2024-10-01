@@ -14,18 +14,21 @@ import { GithubLogo } from './logos/github-logo';
 type HeaderProps = {
   menu: { name: string; href: string }[];
   betaTag?: boolean;
+  skipLink?: boolean;
 };
 
 /**
  * Only works in next.js projects
  */
-const Header = ({ menu, betaTag }: HeaderProps) => {
+const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <>
-      <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
+      {skipLink ? (
+        <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
+      ) : null}
       <header className={classes.header}>
         <div className={classes.container}>
           <div className={classes.logoContainer}>

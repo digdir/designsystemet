@@ -5,11 +5,11 @@ import { Container } from '@repo/components';
 import cl from 'clsx/lite';
 import NextLink from 'next/link';
 import type React from 'react';
-import { createElement, useEffect, useState } from 'react';
+import { type HTMLAttributes, createElement, useEffect, useState } from 'react';
 
 import classes from './ImageBanner.module.css';
 
-interface ImageSectionProps {
+type ImageSectionProps = {
   title?: string;
   description?: string;
   imgSrc?: string;
@@ -27,7 +27,7 @@ interface ImageSectionProps {
   regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
   fallbackImgSrc: string;
   fallbackImgAlt: string;
-}
+} & HTMLAttributes<HTMLDivElement>;
 
 type ImageSectionButtonProps = {
   text: string;
@@ -53,6 +53,8 @@ const ImageBanner = ({
   headingLevel = 'h1',
   fallbackImgSrc,
   fallbackImgAlt,
+  className,
+  ...rest
 }: ImageSectionProps) => {
   const [heading, setHeading] = useState<React.ReactNode | null>(null);
 
@@ -67,7 +69,10 @@ const ImageBanner = ({
   }, [headingLevel, title]);
 
   return (
-    <div className={cl(classes[backgroundColor], classes.section)}>
+    <div
+      className={cl(classes[backgroundColor], classes.section, className)}
+      {...rest}
+    >
       <Container className={cl(classes.container)}>
         {imgPosition === 'left' && (
           <div

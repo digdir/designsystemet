@@ -1,11 +1,13 @@
 import '../globals.css';
 import '@digdir/designsystemet-css';
+/* import '@digdir/designsystemet-css/utilities.css'; */
 import '@digdir/designsystemet-theme';
 
 import { Header } from '@repo/components';
 import type { Metadata } from 'next';
 
 import { VersionBanner } from '@components';
+import { SkipLink } from '@digdir/designsystemet-react';
 import Script from 'next/script';
 import { Footer } from '../components/Footer/Footer';
 
@@ -58,8 +60,9 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <div className='root'>
+          <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
           <VersionBanner />
-          <Header menu={menu} />
+          <Header menu={menu} skipLink={false} />
           {children}
           <Footer />
           {process.env.VERCEL_ENV === 'production' && (
