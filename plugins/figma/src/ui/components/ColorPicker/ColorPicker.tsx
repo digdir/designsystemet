@@ -43,7 +43,7 @@ export const ColorPicker = ({
       <div className={cl(classes.popup, showModal && classes.show)}>
         <ChromePicker
           onChangeComplete={({ hex }: { hex: string }) => {
-            onColorChanged && onColorChanged(hex as CssColor);
+            onColorChanged?.(hex as CssColor);
           }}
           color={color}
         />

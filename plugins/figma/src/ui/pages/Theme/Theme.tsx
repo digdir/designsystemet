@@ -1,4 +1,4 @@
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Link, Textarea } from '@digdir/designsystemet-react';
 import {
   AlignVerticalSpaceAround,
   Check,
@@ -31,6 +31,8 @@ function Theme() {
   const [command, setCommand] = useState('');
   const [themeIndex, setThemeIndex] = useState<number>(0);
   const setThemes = useThemeStore((state) => state.setThemes);
+  const loading = useThemeStore((state) => state.loading);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setThemeIndex(themes.findIndex((theme) => theme.themeModeId === themeId));
@@ -67,9 +69,10 @@ function Theme() {
   };
 
   const handleClick = () => {
+    setError(false);
     const pattern =
       /--accent\s+"(#\w{6})"\s+--neutral\s+"(#\w{6})"\s+--brand1\s+"(#\w{6})"\s+--brand2\s+"(#\w{6})"\s+--brand3\s+"(#\w{6})"/;
-    const matches = command.match(pattern);
+    const matches = command.replace(/\\/g, '').match(pattern);
 
     if (matches) {
       const accent = matches[1] as CssColor;
@@ -97,6 +100,7 @@ function Theme() {
 
       setThemes(newArray);
       setLoading(true);
+      setCommand('');
 
       setTimeout(() => {
         parent.postMessage(
@@ -109,6 +113,9 @@ function Theme() {
           '*',
         );
       }, 500);
+    } else {
+      console.log('No match');
+      setError(true);
     }
   };
 
@@ -137,7 +144,9 @@ function Theme() {
       <div className={classes.header}>
         <div className={classes.headerLeft}>
           <Breadcrumbs
-            text={themes.find((theme) => theme.themeModeId === themeId)?.name}
+            text={
+              themes.find((theme) => theme.themeModeId === themeId)?.name || ''
+            }
             url='/'
           />
 
@@ -177,15 +186,35 @@ function Theme() {
         </div> */}
       </div>
       <div>
-        <textarea
+        <p className={classes.text}>
+          Gå til{' '}
+          <Link href='https://theme.designsystemet.no/'>Temabyggeren</Link> for
+          å lage et tema og lim inn koden i feltet under. Det er kun fargene som
+          blir oppdatert for øyeblikket. Vi jobber med å utvide pluginen med mer
+          funksjonalitet senere.
+        </p>
+
+        <Textarea
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           name=''
+          label='Kodesnutt fra temabyggeren'
           id=''
-          style={{ width: 550, height: 200 }}
-        ></textarea>
-        <Button className={classes.btn} size='sm' onClick={() => handleClick()}>
-          Oppdater variabler
+          rows={9}
+          className={classes.textarea}
+          placeholder='Lim inn her...'
+          error={
+            error &&
+            'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.'
+          }
+        ></Textarea>
+        <Button
+          className={classes.btn}
+          size='sm'
+          onClick={() => handleClick()}
+          disabled={loading}
+        >
+          Oppdater tema
         </Button>
       </div>
       <div className={classes.cards}>

@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { type ColorType, hexToRgb } from '@digdir/designsystemet/color';
+import { hexToRgb } from '@digdir/designsystemet/color';
 
 import { getDummyFonts } from '../../common/dummyFonts';
 import { getDummyTheme } from '../../common/dummyTheme';
@@ -44,8 +44,8 @@ export const getThemes = async () => {
       const nameSplitArr = variable.name.split('/');
 
       const themeName = nameSplitArr[0] as string;
-      const ThemeType = nameSplitArr[1] as ColorType;
-      const ThemeIndex = nameSplitArr[2] as ColorIndex;
+      const ThemeType = nameSplitArr[1] as string;
+      const ThemeIndex = nameSplitArr[2] as string;
 
       if (themeName !== 'global' && modeColModes) {
         for (const mode of modeColModes) {
@@ -57,7 +57,13 @@ export const getThemes = async () => {
           const RGB = variable.valuesByMode[mode.modeId] as RGB;
           const HEX = rgbToHex(RGB);
           const theme = themes.find((theme) => theme.themeId === themeName);
-          if (theme) theme.colors[ThemeType][modeName][ThemeIndex] = HEX;
+          if (theme)
+            (
+              theme.colors as Record<
+                string,
+                Record<string, Record<string, string>>
+              >
+            )[ThemeType][modeName][ThemeIndex] = HEX;
         }
       }
     }
@@ -84,11 +90,14 @@ export const addTheme = async (theme: ColorTheme, name: string) => {
       const types = ['accent', 'neutral', 'brand1', 'brand2', 'brand3'];
       for (const type of types) {
         const lightRGB = hexToRgb(
-          theme[type as ColorType]['light'][key as ColorIndex],
+          (theme[type as keyof ColorTheme].light as Record<ColorIndex, string>)[
+            key as ColorIndex
+          ],
           '1',
         );
         const darkRGB = hexToRgb(
-          theme[type as ColorType]['dark'][key as ColorIndex],
+          (theme as Record<string, { dark: Record<ColorIndex, string> }>)[type]
+            .dark[key as ColorIndex],
           '1',
         );
 
@@ -168,7 +177,7 @@ export const renameTheme = async (
 
   for (const variable of variables) {
     const nameSplitArr = variable.name.split('/');
-    const ThemeType = nameSplitArr[1] as ColorType;
+    const ThemeType = nameSplitArr[1] as string;
     const ThemeIndex = nameSplitArr[2] as ColorIndex;
 
     if (variable.name.startsWith(themeId + '/')) {

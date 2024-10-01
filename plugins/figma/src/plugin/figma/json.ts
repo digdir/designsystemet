@@ -1,9 +1,3 @@
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { rgbToHex } from '@common/utils';
 
 export const generateJson = async () => {
@@ -13,7 +7,14 @@ export const generateJson = async () => {
     (collection) => collection.name === 'Mode',
   );
 
-  const obj2: Record<string, any> = {};
+  type VariableValue = string | { r: number; g: number; b: number };
+  type VariableObject = {
+    [key: string]:
+      | VariableObject
+      | { value?: VariableValue; type?: string }
+      | undefined;
+  };
+  const obj2: Record<string, VariableObject> = {};
 
   for (const collection of collections) {
     if (!obj2[collection.name]) {
@@ -28,8 +29,8 @@ export const generateJson = async () => {
         if (modeCollection && collection.id === variable.variableCollectionId) {
           const name = variable.name;
           const nameArr = name.split('/');
-          let obj: Record<string, any> =
-            obj2[collection.name][collectionMode.name]; // Modified line
+          let obj: VariableObject =
+            obj2[collection.name][collectionMode.name] || {}; // Modified line
 
           for (let i = 0; i < nameArr.length; i++) {
             const key = nameArr[i];
@@ -37,36 +38,45 @@ export const generateJson = async () => {
               obj[key] = {};
             }
             if (key === nameArr[nameArr.length - 1]) {
-              let value;
-              if (
-                variable.valuesByMode[collectionMode.modeId].hasOwnProperty(
-                  'type',
-                ) &&
-                variable.valuesByMode[collectionMode.modeId].type ===
-                  'VARIABLE_ALIAS'
-              ) {
+              let value:
+                | string
+                | { r: number; g: number; b: number }
+                | undefined;
+              const modeValue = variable.valuesByMode[
+                collectionMode.modeId
+              ] as { type?: string; id?: string };
+              if (modeValue.type === 'VARIABLE_ALIAS') {
+                const foundVariable = variables.find(
+                  (v) =>
+                    v.id ===
+                    (
+                      variable.valuesByMode[collectionMode.modeId] as {
+                        id: string;
+                      }
+                    ).id,
+                );
                 value =
                   '{' +
-                  variables.find(
-                    (v) =>
-                      v.id === variable.valuesByMode[collectionMode.modeId].id,
-                  ).name +
+                  (foundVariable ? foundVariable.name : 'undefined') +
                   '}';
               } else if (variable.resolvedType === 'COLOR') {
+                const colorValue = variable.valuesByMode[
+                  collectionMode.modeId
+                ] as { r: number; g: number; b: number };
                 value = rgbToHex({
-                  r: variable.valuesByMode[collectionMode.modeId].r,
-                  g: variable.valuesByMode[collectionMode.modeId].g,
-                  b: variable.valuesByMode[collectionMode.modeId].b,
+                  r: colorValue.r,
+                  g: colorValue.g,
+                  b: colorValue.b,
                 });
               } else {
-                value = variable.valuesByMode[collectionMode.modeId];
+                value = String(variable.valuesByMode[collectionMode.modeId]);
               }
               obj[key] = {
                 value: value,
                 type: variable.resolvedType.toLocaleLowerCase(),
               };
             }
-            obj = obj[key];
+            obj = obj[key] as VariableObject;
           }
         }
       }
