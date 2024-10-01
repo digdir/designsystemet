@@ -15,10 +15,7 @@ type CardProps = {
 
 export const Card = ({ title, icon, url, colors }: CardProps) => {
   return (
-    <Link
-      to={url}
-      className={classes.card}
-    >
+    <Link to={url} className={classes.card}>
       {icon && <div className={classes.icon}>{icon}</div>}
       {colors && (
         <div className={classes.circles}>

@@ -4,12 +4,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { hexToRgb, type ColorType } from '@digdir/designsystemet/color';
+import { type ColorType, hexToRgb } from '@digdir/designsystemet/color';
 
+import { getDummyFonts } from '../../common/dummyFonts';
+import { getDummyTheme } from '../../common/dummyTheme';
 import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
 import { rgbToHex } from '../../common/utils';
-import { getDummyTheme } from '../../common/dummyTheme';
-import { getDummyFonts } from '../../common/dummyFonts';
 
 export const getThemes = async () => {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -225,7 +225,7 @@ export const renameTheme = async (
 };
 
 export const updateTheme = async () => {
-  let variables = await figma.variables.getLocalVariablesAsync('COLOR');
+  const variables = await figma.variables.getLocalVariablesAsync('COLOR');
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
   const modeCollection = collections.find((col) => col.name === 'Mode');
   const lightModeId = modeCollection?.modes[0].modeId;

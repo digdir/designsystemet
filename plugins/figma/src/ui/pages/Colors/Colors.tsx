@@ -1,18 +1,18 @@
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type { ThemeInfo } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ColorPicker } from '@ui/components/ColorPicker/ColorPicker';
 import { Breadcrumbs } from '@ui/components/Breadcrumbs/Breadcrumbs';
+import { ColorPicker } from '@ui/components/ColorPicker/ColorPicker';
 
+import { getDummyTheme } from '../../../common/dummyTheme';
 import type {
   ColorTheme,
   ThemeInfo as testThemeInfo,
 } from '../../../common/store';
 import { useThemeStore } from '../../../common/store';
-import { getDummyTheme } from '../../../common/dummyTheme';
 
 import classes from './Colors.module.css';
 

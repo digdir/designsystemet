@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
 import { NativeSelect, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { useThemeStore } from '../../../common/store';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -21,10 +21,7 @@ function Font() {
   const getFontOptions = () => {
     return fonts.map((font) => {
       return (
-        <option
-          key={font.name}
-          value={font.name}
-        >
+        <option key={font.name} value={font.name}>
           {font.name}
         </option>
       );
@@ -36,10 +33,7 @@ function Font() {
       .find((font) => font.name === name)
       ?.styles.map((style) => {
         return (
-          <option
-            key={style}
-            value={style}
-          >
+          <option key={style} value={style}>
             {style}
           </option>
         );

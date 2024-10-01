@@ -7,11 +7,7 @@ function PageTwo() {
   return (
     <div className='content'>
       <div>
-        <Card
-          url={'/themes/colors'}
-          title='Inter'
-          icon={<Type />}
-        />
+        <Card url={'/themes/colors'} title='Inter' icon={<Type />} />
         <CardButton />
       </div>
     </div>
