@@ -1,0 +1,56 @@
+import { PageLayout } from '@layouts';
+import { Contributors } from '@blog';
+
+export const metadata = {
+  title: 'Begreper',
+  description:
+    'Anbefalinger om felles navn på knapper og navigasjonselementer. ',
+};
+
+export default ({ children }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Anbefalinger om felles begreper på tvers av offentlige digitale løsninger',
+      date: '27. september 2024',
+      author: 'Digdir',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
+    }}
+  />
+);
+
+I Digdir er vi to innholdsdesignere, som skal dekke mange produkter og team. For å bevisstgjøre team på språk, innholdesign og mikrotekster, holder vi kurs om ulike emner knyttet til å lage godt innhold.  
+
+Vi har også startet et arbeid for å standardisere noen språklige ting på tvers. Det gjør vi for at folk som sitter ute i produktteamene skal slippe å lure på hva de skal skrive på en knapp eller i en komponent. 
+
+Denne artikkelen gir anbefalinger om felles navn på knapper og navigasjonselementer. Vi lanserte den i Digdir før sommeren og de ble godt tatt imot. Dette har folk lurt på! Vi håper at anbefalingene kan være nyttig for flere der ute.  
+
+### Hvordan har vi gått frem? 
+
+Vi har søkt og sammenlignet med hva andre virksomheter bruker, der vi har kunnet. Vi har også sjekket definisjoner både på norsk og engelsk. Med disse anbefalingene håper vi at knapper og navigasjonselementer kan bli like på tvers av flere produkter og tjenester. 
+
+Vi tar gjerne imot forslag på andre begreper som det kan være lurt å enes om, slik at de som lager offentlige digitale tjenester kan gi brukerne samstemte innholdselementer fra ett sted til et annet – akkurat som de får samstemte komponenter.   
+
+### Dette er begrepene vi har laget anbefalinger for 
+
+
+| Ord  | Vi anbefaler  |
+|---|---|
+| Slett/Fjern  | Vi anbefaler Slett som knappenavn over alt. Det er for å unngå å ha to begreper for samme handling. Hvis vi trenger å presisere at noe "blir borte permanent" kan vi enten gi en advarsel, eller skrive «Slett permanent» på knappen. Vi har landet på å ikke bruke Fjern. Vi trenger ikke to begreper for samme handling.  |
+| Neste/Forrige  | Vi anbefaler Neste og Forrige på knapper på bokmål, og Neste + Tilbake på nynorsk, hvis man vil unngå Førre.  |
+| Gå videre/Gå tilbake    Gå til (for eksempel innboksen)    Til (innboksen)  | Kan brukes til brødsmulesti/navlink.    På den måten skiller vi mellom neste steg i flyten og handlingen «å bla i mye informasjon».       |
+| Endre/Rediger  | Vi anbefaler Endre. Det er kort og kjent for alle.   |
+| Lukk  | Vi anbefaler Lukk som tekst for å lukke modaler, hvis det trengs noe mer enn x-symbol/ikon.  |
+| Vis/Skjul  | Vi anbefaler Vis og Skjul som tekst i for eksempel i trekkspillister/nedtrekk. Mange bruker kun chevron-symbolet (^) eller pil ned og opp.    I lister med mye tekst, der deler av ingressen vises, kan vi vurdere Vis mer og Vis mindre. Mest aktuelt på nettsider.  |
+
+### Tilby kontekst for skjermlesere
+
+I noen sammenhenger bør vi tilby kontekst for å presisere hva som slettes, lukkes eller endres. For eksempel «Slett søknaden», «Lukk produktoversikt», «Endre profilbilde». De gangene vi ikke viser kontekst, men bare verb, burde kontekst være beskrevet i `aria-label` for skjermlesere.
+
+<Contributors
+  authors={[
+    'Dorte Drange',
+    'Gørild Døhl',
+  ]}
+/>
