@@ -18,7 +18,7 @@ export const SkipLink = ({
   return (
     <a
       href={href}
-      className={cl(`ds-sr-only`, 'ds-skiplink', className)}
+      className={cl('ds-skiplink', className)}
       {...rest}
     >
       <p className='ds-skiplink__content'>{children}</p>
