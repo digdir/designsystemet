@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { useEffect } from 'react';
 import { Label } from '../../Typography/Label';
 
 import { Field } from '.';
@@ -13,7 +14,7 @@ export default {
   argTypes: {
     type: {
       control: { type: 'radio' },
-      options: ['textarea', 'input', 'select'],
+      options: ['textarea', 'input', 'select', false],
     },
   },
 } as Meta;
@@ -27,6 +28,7 @@ const toggles = {
   descriptionId: '',
   validation: true,
   validationId: '',
+  moveToBody: false,
 };
 
 export const Preview: Story = (args) => {
@@ -38,20 +40,28 @@ export const Preview: Story = (args) => {
     descriptionId,
     validation,
     validationId,
+    moveToBody,
   } = args as typeof toggles;
   const Component = type;
 
+  useEffect(() => {
+    const valid = document.querySelector('[data-my-validation]');
+    const field = document.querySelector('[data-my-field]');
+    const root = moveToBody ? document.body : field;
+    if (valid && valid.parentElement !== root) root?.appendChild(valid);
+  }, [moveToBody]);
+
   return (
-    <Field>
+    <Field data-my-field>
       {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
       {description && (
         <Field.Description id={descriptionId || undefined}>
           Beskrivelse
         </Field.Description>
       )}
-      <Component aria-describedby={ariaDesribedby || undefined} />
+      {type && <Component aria-describedby={ariaDesribedby || undefined} />}
       {validation && (
-        <ValidationMessage id={validationId || undefined}>
+        <ValidationMessage data-my-validation id={validationId || undefined}>
           Feilmelding
         </ValidationMessage>
       )}
