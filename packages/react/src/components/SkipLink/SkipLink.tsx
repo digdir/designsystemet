@@ -16,11 +16,7 @@ export const SkipLink = ({
   ...rest
 }: SkipLinkProps): JSX.Element => {
   return (
-    <a
-      href={href}
-      className={cl('ds-skiplink', className)}
-      {...rest}
-    >
+    <a href={href} className={cl('ds-skiplink', className)} {...rest}>
       <p className='ds-skiplink__content'>{children}</p>
     </a>
   );
