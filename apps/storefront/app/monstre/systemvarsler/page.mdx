@@ -86,13 +86,20 @@ En feilside brukes ofte når bruker prøver å få tilgang til en side som ikke 
 <br/>
 
 <br/>
-[Eksempel]
+
+<Image
+  src='/img/full-feilside.png'
+  alt='Skjermbilde som viser eksempel på en full feilside. På feilsiden informeres det om at vi opplever tekniske problemer og jobber med å løse dem. Det står også "Dette skyldes ikke noe du gjorde. Du kan prøve å vente noen minutter og laste siden på nytt eller gå tilbake til forrige side. Hvis du fortsatt har problemer, kan du kontakte oss (åpnes i ny fane)."'
+  boxShadow={true}
+  caption='Full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukeren gjorde. Vi gir også brukeren noen alternativer for å komme videre.'
+/>
+
 
 #### Modal
 
 Modalen fanger brukerens oppmerksomhet, samtidig som konteksten til nettsiden beholdes. Modal kan brukes til systemvarsler når vi skal formidle viktig informasjon som krever umiddelbar oppmerksomhet og handling fra brukeren. Modal fanger brukerens fokus, men bør brukes med omtanke for ikke å forstyrre brukerens arbeidsflyt unødvendig.
 
-Modal passer når brukeren er i ferd med å utføre en handling som ikke kan angres, som å slette viktige data. Da kan vi be om bekreftelse og sikre at brukeren forstår konsekvensene. I noen sammenhenger kan det være bedre å bruke en `popover`, spesielt når alvorlighetsgraden av handlingen er lavere, eller når det er flere elementer som kan slettes. For eksempel, hvis en bruker har mulighet til å slette flere rader i en tabell, kan det bli overveldende å vise en modal for hver rad. I slike tilfeller kan en `popover` gi en mer strømlinjeformet og brukervennlig opplevelse ved å gi tilbakemelding uten å blokkere brukerens arbeidsflyt.
+Modal passer når brukeren er i ferd med å utføre en handling som ikke kan angres, som å slette viktige data. Da kan vi be om bekreftelse og sikre at brukeren forstår konsekvensene. I noen sammenhenger kan det være bedre å bruke en `popover`, spesielt når alvorlighetsgraden av handlingen er lavere, eller når det er flere elementer som kan slettes. For eksempel, hvis en bruker har mulighet til å slette flere rader i en tabell, kan det bli overveldende å vise en modal for hver rad. I slike tilfeller kan en [`popover`](#popover) gi en mer strømlinjeformet og brukervennlig opplevelse ved å gi tilbakemelding uten å blokkere brukerens arbeidsflyt.
 
 **Modal passer i tillegg når:**
 - Det er viktig at brukeren for med seg informasjonen.
@@ -107,31 +114,54 @@ Modal passer når brukeren er i ferd med å utføre en handling som ikke kan ang
 
 
 <br/>
-[Eksempel]
-Global varsling som krever handling: Eksempelet viser en `modal` der brukeren må ta et aktivt valg for å fortsette å være innlogget. Når varselet krever en handling fra brukeren for å forsvinne, kan vi være mer "påtrengende".
+<Image
+  src='/img/modal-systemvarsler-1.png'
+  alt='Skjermbilde av modal.'
+  boxShadow={true}
+  caption='Global varsling som krever handling: Eksempelet viser en modal der brukeren må ta et aktivt valg for å fortsette å være innlogget. Når varselet krever en handling fra brukeren for å forsvinne, kan vi være mer "påtrengende".'
+/>
+
+<Image
+  src='/img/modal-systemvarsler-2.png'
+  alt='Skjermbilde av modal.'
+  boxShadow={true}
+  caption='Eksempelet viser en modal der brukeren må ta et aktivt valg om å lagre utkastet eller ikke.'
+/>
+
+
+
 
 #### Alert
 `Alert` er en komponent som er laget for å gi en beskjed til brukeren og er ofte delt inn i ulike varianter basert på hvor kritisk beskjeden er. De kan vises i en global kontekst hvor de legges øverst i grensesnittet, de kan legges lokalt nærmere der feilen er. De kan også være dynamisk og dukke opp basert på en handling eller feil som oppstår underveis.
 
-<br/>
-[Eksempel]
-Global varsling: Eksempelet viser en `alert` som fyller hele bredden i toppen av siden. Denne type varsling kan brukes for problemer som gjelder hele tjenesten. Gul `alert` (warning) brukes i tilfeller der brukeren fortsatt kan finne informasjon og navigere på nettsidene, men noen av delene er utilgjengelige.
+Eksempelet under viser en global `alert` som fyller hele bredden i toppen av siden. Denne type varsling kan brukes for problemer som gjelder hele tjenesten. Gul `alert` (warning) brukes i tilfeller der brukeren fortsatt kan finne informasjon og navigere på nettsidene, men noen av delene er utilgjengelige.
 
-<br/>
-[Eksempel]
-Lokal varsling: Eksempelet viser en `alert` som er plassert i nærheten av der feilen oppstod. Rød `alert` (danger) brukes i tilfeller der brukeren ikke kan fortsette arbeidet så lenge feilen vedvarer.
+<Image
+  src='/img/alert-global.png'
+  alt='Skjermbilde av glbal alert.'
+  boxShadow={true}
+/>
+
+Eksempelet under viser en lokal `alert` som er plassert i nærheten av der feilen oppstod. Rød `alert` (danger) brukes i tilfeller der brukeren ikke kan fortsette arbeidet så lenge feilen vedvarer.
+
+<Image
+  src='/img/alert-lokal.png'
+  alt='Skjermbilde av lokal alert.'
+  boxShadow={true}
+/>
+
 
 #### Popover
 En `popover` er et ui-element som legger seg over grensesnittet. I motsetning til `modal` så vil ikke grensesnittet bak bli tonet ned, og brukeren vil ikke bli "låst" inne i popover komponenten. Disse kan være nyttige å bruke om du vil gi en beskjed basert på en handling. For eksempel at du vil informere brukeren om at det elementet de ønsker å slette ikke kan gjenopprettes om de velger å slette det. Disse burde kun brukes om det er lite informasjon som skal gies. Om du har bruk for mer plass kan `modal` være et bedre alternativ.
 
 <br/>
 [Eksempel]
-Eksempelet viser popover..
+Eksempelet viser en popover der du må bekrefte at du ønsker å slette en rad i en tabell.
 
 
 ## Kode
 
-Når det kommer til korrekt koding og tilgjengelighet for systemvarsler, er det flere viktige faktorer å vurdere for å sikre at alle brukere, inkludert de som benytter skjermlesere, får riktig informasjon i rett tid.
+Når det kommer til korrekt koding for systemvarsler, er det flere viktige faktorer å vurdere for å sikre at alle brukere, inkludert de som benytter skjermlesere, får riktig informasjon i rett tid.
 
 ### Skjermlesere og kritiske globale varsler
 For skjermleserbrukere er det avgjørende at kritiske globale varsler blir fanget opp, selv når brukeren hopper direkte til hovedinnholdet på siden. En utfordring med varsler som vises øverst på siden er at skjermlesere ofte hopper over dem når brukeren navigerer til hovedinnholdet. For å sikre at slike varsler blir fanget opp, kan det være lurt å plassere dem på en måte som gjør at de alltid blir lest opp ved sidenedlasting, for eksempel ved å bruke ARIA-attributter som sikrer at skjermleseren gjenkjenner innholdet, eller ved å gi varslet en tydelig overskrift (med passende heading-nivå) som skjermleseren kan navigere til.
