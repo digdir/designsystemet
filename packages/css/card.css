@@ -9,6 +9,7 @@
   --dsc-card-padding: var(--ds-spacing-6);
 
   all: unset; /* Reset if <button> */
+  display: block;
   background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
   border: var(--dsc-card-border);
