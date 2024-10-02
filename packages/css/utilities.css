@@ -14,16 +14,28 @@
 
 :root {
   --dsc-focus-border-width: 3px; /* Default focus border width */
-  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner),
-    0 0 0 calc(var(--dsc-focus-border-width) * 2) var(--ds-color-focus-outer);
+  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
+  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
 }
 
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .ds-focus:focus-visible {
-  outline: none;
+  @composes ds-focus--visible from './utilities.css';
+}
+
+/**
+* Focus outline that can be composed if it needs a specific selector
+*/
+.ds-focus--visible {
+  /**
+  * We use both box-shadow and outline to ensure that the focus style is visible,
+  * in case box-shadow is overridden.
+  */
   box-shadow: var(--dsc-focus-boxShadow);
+  outline: var(--dsc-focus-outline);
+  outline-offset: var(--dsc-focus-border-width);
 }
 
 /** Body typography */
