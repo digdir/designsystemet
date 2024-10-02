@@ -1,6 +1,5 @@
 import { dirname, join, resolve } from 'node:path';
 
-import { env } from 'node:process';
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
 
@@ -38,7 +37,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-storysource'),
-    env.NODE_ENV === 'production' ? '' : '@storybook/addon-themes',
+    '@storybook/addon-themes',
   ],
   staticDirs: ['../assets'],
   framework: {
