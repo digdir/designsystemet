@@ -12,7 +12,8 @@
   width: 1px;
 }
 
-:root {
+:root,
+[data-ds-color-mode] {
   --dsc-focus-border-width: 3px; /* Default focus border width */
   --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
