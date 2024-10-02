@@ -177,43 +177,25 @@ export const Components = () => {
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
-          <Card color='brand1' className={classes.helpFirst}>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs' className={classes.helpFirstTitle}>
-                Sikkerhet og drift
-              </Heading>
-            </Card.Header>
-            <Card.Content
-              className={cl(classes.helpContent, classes.helpFirstDesc)}
-            >
+          <Card color='brand1'>
+            <Heading size='2xs'>Sikkerhet og drift</Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
-          <Card color='brand2' className={classes.helpSecond}>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs' className={classes.helpSecondTitle}>
-                Skole og utdanning
-              </Heading>
-            </Card.Header>
-            <Card.Content
-              className={cl(classes.helpContent, classes.helpSecondDesc)}
-            >
+          <Card color='brand2'>
+            <Heading size='2xs'>Skole og utdanning</Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
-          <Card color='brand3' className={classes.helpThird} isLink asChild>
-            <a href='#preview'>
-              <Card.Header className={classes.helpHeader}>
-                <Heading className={classes.helpThirdTitle} size='2xs'>
-                  Mat og helse
-                </Heading>
-              </Card.Header>
-              <Card.Content
-                className={cl(classes.helpContent, classes.helpThirdDesc)}
-              >
-                Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-              </Card.Content>
-            </a>
+          <Card color='brand3'>
+            <Heading size='2xs'>
+              <a href='#preview'>Mat og helse</a>
+            </Heading>
+            <Paragraph>
+              Lenke til artikkel om mat og helse, der du kan lese mer om alt.
+            </Paragraph>
           </Card>
         </div>
       </div>

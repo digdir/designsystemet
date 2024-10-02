@@ -22,6 +22,7 @@ function postcssComposes() {
         const cache = {};
         const sanitizedParams = rule.params.replace(/["']/g, '').trim();
         const [selector, from] = sanitizedParams.split(/\s+from\s+/);
+
         const resolvedFrom = path.resolve(
           path.dirname(rule.source.input.file),
           from,

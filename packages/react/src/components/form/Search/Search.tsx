@@ -6,7 +6,8 @@ import { forwardRef, useCallback, useRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
-import { Label, Paragraph } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';

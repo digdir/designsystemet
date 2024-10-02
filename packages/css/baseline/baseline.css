@@ -1,0 +1,5 @@
+:root,
+[data-ds-color-mode] {
+  color: var(--ds-color-neutral-text-default);
+  background-color: var(--ds-color-neutral-background-default);
+}

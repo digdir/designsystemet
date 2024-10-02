@@ -10,7 +10,7 @@ import type {
 import { useContext, useRef } from 'react';
 
 import { omit } from '../../../../utilities';
-import { Paragraph } from '../../../Typography';
+import { Paragraph } from '../../../Paragraph';
 import type { ComboboxProps } from '../Combobox';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';

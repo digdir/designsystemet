@@ -3,7 +3,7 @@ import { forwardRef, isValidElement, memo, useContext, useId } from 'react';
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import { omit } from '../../../../utilities/omit/omit';
-import { Label } from '../../../Typography';
+import { Label } from '../../../Label';
 import { ComboboxContext } from '../ComboboxContext';
 
 import ComboboxOptionDescription from './Description';

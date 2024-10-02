@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext } from 'react';
 import type { HTMLAttributes } from 'react';
 
-import { Label } from '../../Typography';
+import { Label } from '../../Label';
 
 import { ComboboxContext } from './ComboboxContext';
 

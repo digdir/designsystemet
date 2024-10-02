@@ -1,7 +1,7 @@
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { Link } from '.';
 

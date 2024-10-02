@@ -4,7 +4,9 @@ import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import { forwardRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ValidationMessage } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
+import { ValidationMessage } from '../../ValidationMessage';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 import type { FormFieldProps } from '../useFormField';

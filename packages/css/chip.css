@@ -27,7 +27,7 @@
 
   /* Make focus ring also when input inside is focused */
   &:has(:focus-visible) {
-    box-shadow: var(--dsc-focus-boxShadow);
+    @composes ds-focus--visible from './utilities.css';
   }
 
   &:disabled,

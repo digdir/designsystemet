@@ -105,8 +105,6 @@ export const typography: Format = {
       usesDtcg,
     });
 
-    console.log('dictionary.allTokens', dictionary.allTokens);
-
     const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 
     const formattedTokens = R.pipe(R.map(format), R.join('\n'))(filteredTokens);

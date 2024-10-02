@@ -4,7 +4,9 @@ import { forwardRef } from 'react';
 import type { ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph, ValidationMessage } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
+import { ValidationMessage } from '../../ValidationMessage';
 
 import { useSelect } from './useSelect';
 

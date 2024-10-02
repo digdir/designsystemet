@@ -11,7 +11,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button } from '../Button';
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { ToggleGroup } from '.';
 import { Tooltip } from '../Tooltip';

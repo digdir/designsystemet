@@ -10,17 +10,12 @@ export type SkipLinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const SkipLink = ({
-  href,
   children,
   className,
   ...rest
 }: SkipLinkProps): JSX.Element => {
   return (
-    <a
-      href={href}
-      className={cl(`ds-sr-only`, 'ds-skiplink', className)}
-      {...rest}
-    >
+    <a className={cl('ds-skiplink', className)} {...rest}>
       <p className='ds-skiplink__content'>{children}</p>
     </a>
   );

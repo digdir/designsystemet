@@ -147,22 +147,8 @@
   gap: 20px;
 }
 
-.helpHeader {
-  padding-left: 20px;
-  padding-top: 20px;
-  padding-right: 20px;
-  margin-bottom: -10px;
-}
-
 .helpHeading {
   margin-bottom: 20px;
-}
-
-.helpContent {
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  font-size: 16px;
 }
 
 .tagList {
