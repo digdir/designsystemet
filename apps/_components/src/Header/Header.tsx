@@ -1,5 +1,5 @@
 'use client';
-import { SkipLink } from '@digdir/designsystemet-react';
+import { Paragraph, SkipLink } from '@digdir/designsystemet-react';
 import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import Link from 'next/link';
@@ -58,20 +58,21 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
             <ul className={cl(classes.menu, open && classes.active)}>
               {menu.map((item, index) => (
                 <li className={classes.item} key={index}>
-                  <Link
-                    suppressHydrationWarning
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    prefetch={false}
-                    className={cl(
-                      pathname.includes(item.href) && classes.active,
-                      classes.link,
-                      'ds-paragraph--md',
-                      'ds-focus',
-                    )}
-                  >
-                    {item.name}
-                  </Link>
+                  <Paragraph size='md' asChild>
+                    <Link
+                      suppressHydrationWarning
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      prefetch={false}
+                      className={cl(
+                        pathname.includes(item.href) && classes.active,
+                        classes.link,
+                        'ds-focus',
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  </Paragraph>
                 </li>
               ))}
               <li
