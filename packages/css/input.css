@@ -10,7 +10,126 @@
   font-family: inherit;
   height: var(--ds-sizing-12);
   padding: 0 var(--ds-spacing-3);
-  position: relative; /* Place focus ring on top */
+  position: relative; /* Ensure foucs outline renders on top */
+
+  @composes ds-focus from './utilities.css';
+  @composes ds-body-text--md from './utilities.css';
+
+  &[data-size='sm'] {
+    @composes ds-body-text--sm from './utilities.css';
+
+    height: var(--ds-sizing-10);
+    padding: 0 var(--ds-spacing-2);
+  }
+
+  &[data-size='lg'] {
+    @composes ds-body-text--lg from './utilities.css';
+
+    padding: 0 var(--ds-spacing-2);
+    height: var(--ds-sizing-14);
+  }
+
+  &:not([size]) {
+    width: 100%;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: var(--ds-disabled-opacity);
+  }
+
+  &:read-only {
+    background: var(--ds-color-neutral-background-subtle);
+    border-color: var(--ds-color-neutral-border-strong);
+  }
+
+  &[aria-invalid='true']:not(:focus-visible) {
+    border-color: var(--ds-color-danger-border-default);
+    box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:not(:focus-visible, :disabled, [aria-disabled]):hover {
+      border-color: var(--ds-color-accent-border-strong);
+      box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
+    }
+  }
+
+  &[type='checkbox'],
+  &[type='radio'] {
+    cursor: pointer;
+    flex-shrink: 0;
+    height: var(--ds-sizing-7);
+    margin-inline-end: var(--ds-sizing-1);
+    padding: 0;
+    width: var(--ds-sizing-7);
+  }
+
+  &[type='radio'] {
+    border-radius: 100%;
+  }
+
+  &[type='radio']:checked {
+    background-image: radial-gradient(at center center, transparent 25%, currentcolor 28%);
+  }
+
+  &[type='checkbox']:not([switch]):checked {
+    background-image: linear-gradient(0deg, transparent 38%, currentcolor 0), linear-gradient(45deg, transparent 53%, currentcolor 54%),
+      linear-gradient(135deg, currentcolor 37%, transparent 38%), linear-gradient(-135deg, currentcolor 23%, transparent 0),
+      linear-gradient(135deg, currentcolor 33%, transparent 0), linear-gradient(45deg, currentcolor 28%, transparent 0),
+      linear-gradient(-45deg, currentcolor 42%, transparent 0);
+    background-position-x: 35%, 0, 100%, 100%, 100%, 100%, 100%;
+    background-size:
+      5% 100%,
+      36% 100%,
+      64% 100%,
+      100%,
+      100%,
+      100%,
+      100%;
+  }
+
+  &[type='checkbox']:not([switch]):indeterminate {
+    background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor),
+      linear-gradient(currentcolor 43%, transparent 44%, transparent 58%, currentcolor 59%);
+    background-position-x: 0, 100%, 0;
+    background-position-y: 0;
+    background-size:
+      20% 100%,
+      20% 100%,
+      100% auto;
+  }
+
+  &[switch] {
+    background: var(--mt-color-surface-text) radial-gradient(circle at var(--mt-unit-4), currentcolor 28%, transparent 28.7%, transparent);
+    border-radius: 999rem;
+    border: 0; /* Remove border as it makes radial-gradient calcualtions hard */
+    color: var(--mt-color-surface-bg);
+    width: var(--mt-unit-11);
+
+    /* &:checked {
+      background-color: var(--builders-input-color);
+      background-position-x: var(--builders-unit-30);
+      color: var(--builders-input-checked-color);
+    } */
+  }
+}
+
+/*
+.ds-input {
+  appearance: none;
+  background: var(--ds-color-neutral-background-default);
+  border-radius: var(--ds-border-radius-md);
+  border: var(--dsc-input-addons-border-width, 1px) solid var(--dsc-input-addons-border-color, var(--ds-color-neutral-border-default));
+  box-sizing: border-box;
+  color: var(--ds-color-neutral-text-default);
+  display: block;
+  flex: 0 1 auto; /* Prepare for placing inside ds-input-addons */ /*
+  font-family: inherit;
+  height: var(--ds-sizing-12);
+  padding: 0 var(--ds-spacing-3);
+  position: relative; /* Place focus ring on top */ /*
 
   @composes ds-focus from './utilities.css';
   @composes ds-body-text--md from './utilities.css';
@@ -56,6 +175,7 @@
     }
   }
 }
+  */
 
 .ds-input-addons {
   --dsc-input-addons-border-color: var(--ds-color-neutral-border-default);
