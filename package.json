@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "test": "vitest",
+    "test:cli": "yarn workspace @digdir/designsystemet test",
     "test:storybook": "yarn workspace @designsystemet/storybook run-and-test-storybook",
     "test:coverage": "vitest run --coverage",
     "storybook": "yarn workspace @designsystemet/storybook dev",
