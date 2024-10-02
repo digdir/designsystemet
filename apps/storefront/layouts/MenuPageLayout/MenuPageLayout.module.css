@@ -36,10 +36,6 @@
   padding-right: 290px;
 }
 
-.title {
-  margin-bottom: 0;
-}
-
 .date {
   margin-top: var(--ds-spacing-3);
 }
