@@ -26,7 +26,10 @@ const NavigationCard = ({
   level = 3,
 }: NavigationCardProps) => {
   return (
-    <Card className={cl(classes.card, classes[backgroundColor])} asChild>
+    <Card
+      className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
+      asChild
+    >
       <Link href={url} prefetch={false}>
         <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
 

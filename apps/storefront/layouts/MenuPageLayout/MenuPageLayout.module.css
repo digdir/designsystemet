@@ -89,10 +89,11 @@
 
 .content {
   padding: var(--ds-spacing-4) var(--ds-spacing-10) 0 var(--ds-spacing-10);
+  height: fit-content;
 }
 
 .githubLink {
-  margin-top: var(--ds-spacing-6);
+  margin-top: var(--ds-spacing-12);
 }
 
 @media (max-width: 1200px) {
