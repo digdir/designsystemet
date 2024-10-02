@@ -23,7 +23,7 @@ const Image = ({
       {...(dataUnstyled ? { 'data-unstyled': '' } : {})}
     >
       <img
-        className={classes.img}
+        className={classes.image}
         src={src}
         alt={alt}
         {...rest}

@@ -1,7 +1,12 @@
 .content {
-  width: 100%;
+  & > *:first-child {
+    margin-top: 0;
+  }
 
-  /* Heading styling with anchor link */
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
   & > h1,
   & > h2,
   & > h3,
@@ -48,14 +53,6 @@
     opacity: 1;
   }
 
-  & > *:first-child {
-    margin-top: 0;
-  }
-
-  & > *:last-child {
-    margin-bottom: 0;
-  }
-
   & > ul > li,
   & > ol > li {
     font: var(--ds-typography-paragraph-md);
@@ -73,6 +70,13 @@
     text-decoration-thickness: 2px;
   }
 
+  /* A <p> tag that comes directly after <h1> will be treated as an ingress */
+  & > h1 + p {
+    font: var(--ds-body-long-md-font-size);
+    margin-top: 0;
+    margin-bottom: var(--ds-spacing-8);
+  }
+
   & > iframe {
     box-shadow: var(--ds-shadow-md);
     margin: var(--ds-spacing-5);
@@ -85,7 +89,36 @@
     border-collapse: collapse;
   }
 
-  & :not([data-unstyled]) {
+  & > img {
+    width: 100%;
+    margin: var(--ds-spacing-5) 0;
+    border-radius: var(--ds-border-radius-md);
+    box-shadow: var(--ds-shadow-md);
+  }
+
+  & > code,
+  & > p code {
+    padding: 0.2em 0.5em;
+    margin: 1px;
+    font-size: 0.9em;
+    white-space: break-spaces;
+    background-color: var(--ds-color-neutral-surface-default);
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  & > pre,
+  & > p pre {
+    background-color: var(--ds-color-neutral-background-subtle);
+    padding: var(--ds-spacing-5);
+    margin: var(--ds-spacing-7) 0;
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  & > div + p {
+    margin-top: var(--ds-spacing-5);
+  }
+
+  & *:not([data-unstyled]) {
     & p,
     & h2,
     & h3,
@@ -97,17 +130,6 @@
       max-width: 740px;
     }
 
-    /* A <p> tag that comes directly after <h1> will be treated as an ingress */
-    &:is(h1) + p {
-      font: var(--ds-body-long-md-font-size);
-      margin-top: 0;
-      margin-bottom: var(--ds-spacing-8);
-    }
-
-    &:is(div) + p {
-      margin-top: var(--ds-spacing-5);
-    }
-
     & img {
       width: 100%;
       margin: var(--ds-spacing-5) 0;
@@ -115,28 +137,11 @@
       box-shadow: var(--ds-shadow-md);
     }
 
+    &:is(strong),
     & strong {
       display: inline-block;
       margin-top: var(--ds-spacing-1);
       font-weight: 500;
-    }
-
-    &:is(p) code,
-    &:is(ul) code,
-    &:is(ol) code {
-      padding: 0.2em 0.5em;
-      margin: 1px;
-      font-size: 0.9em;
-      white-space: break-spaces;
-      background-color: var(--ds-color-neutral-surface-default);
-      border-radius: var(--ds-border-radius-md);
-    }
-
-    &:is(pre) {
-      background-color: var(--ds-color-neutral-background-subtle);
-      padding: var(--ds-spacing-5);
-      margin: var(--ds-spacing-7) 0;
-      border-radius: var(--ds-border-radius-md);
     }
   }
 }
