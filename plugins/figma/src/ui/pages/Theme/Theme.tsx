@@ -188,10 +188,12 @@ function Theme() {
       <div>
         <p className={classes.text}>
           Gå til{' '}
-          <Link href='https://theme.designsystemet.no/'>Temabyggeren</Link> for
-          å lage et tema og lim inn koden i feltet under. Det er kun fargene som
-          blir oppdatert for øyeblikket. Vi jobber med å utvide pluginen med mer
-          funksjonalitet senere.
+          <Link href='https://theme.designsystemet.no/' target='_blank'>
+            Temabyggeren
+          </Link>{' '}
+          for å lage et tema og lim inn koden i feltet under. Det er kun fargene
+          som blir oppdatert for øyeblikket. Vi jobber med å utvide pluginen med
+          mer funksjonalitet senere.
         </p>
 
         <Textarea
