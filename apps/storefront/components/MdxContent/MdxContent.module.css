@@ -28,13 +28,23 @@
   & > h2 a,
   & > h3 a,
   & > h4 a {
-    width: 20px;
-    height: 20px;
+    width: fit-content;
+    height: 1em;
+    font-size: 0.7em;
     position: absolute;
-    left: 0;
     color: var(--ds-color-neutral-text-subtle);
     opacity: 0;
     transition: 0.08s all;
+    display: grid;
+    place-items: center;
+    padding: 0 0.2em;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    & svg {
+      margin: 0;
+    }
   }
 
   /* Anchor link styling for <h1> */
