@@ -99,7 +99,7 @@
 
     /* A <p> tag that comes directly after <h1> will be treated as an ingress */
     & h1 + p {
-      font: var(--ds-typography-ingress-md);
+      font: var(--ds-body-long-md-font-size);
       margin-top: 0;
       margin-bottom: var(--ds-spacing-8);
     }

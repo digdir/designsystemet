@@ -6,13 +6,21 @@ import classes from './Image.module.css';
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   boxShadow: boolean;
   caption: string;
+  dataUnstyled?: boolean;
 }
 
-const Image = ({ alt, src, boxShadow, caption, ...rest }: ImageProps) => {
+const Image = ({
+  alt,
+  src,
+  boxShadow,
+  caption,
+  dataUnstyled = false,
+  ...rest
+}: ImageProps) => {
   return (
     <figure
       className={cl(classes.container, { [classes.boxShadow]: boxShadow })}
-      data-unstyled
+      {...(dataUnstyled ? { 'data-unstyled': '' } : {})}
     >
       <img
         className={classes.img}

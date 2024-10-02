@@ -1,11 +1,9 @@
 @import url('https://altinncdn.no/fonts/inter/inter.css');
-@import url('@digdir/designsystemet-css/utilities.css') layer(ds.baseline);
 
 @layer normalize, ds;
 
 :root {
   --color-beta: #d6d4ff;
-  --color-text-on_inverted-subtle: #dbdbdb;
   --color-surface-neutral-inverted-darker: #17202e;
 
   /* Spacing for page and grid */
@@ -18,9 +16,7 @@
 }
 
 body {
-  line-height: 1.5;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
 }
 
 * {
@@ -33,16 +29,6 @@ body {
 .ds-link > :is(img, svg) {
   height: 70%;
   margin-right: var(--ds-spacing-1);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 500;
-  margin-top: 0;
 }
 
 .root {

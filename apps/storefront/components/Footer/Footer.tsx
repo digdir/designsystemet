@@ -1,4 +1,4 @@
-import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
@@ -129,16 +129,14 @@ const Footer = () => {
                 className={classes.udir}
               ></Image>
             </div>
-            <NextLink
-              href='mailto:designsystem@digdir.no'
-              className={cl(
-                classes.button,
-                'ds-paragraph-short--sm',
-                'ds-focus',
-              )}
-            >
-              Din etat? Ta kontakt!
-            </NextLink>
+            <Button asChild variant='secondary' color='neutral' size='sm'>
+              <NextLink
+                href='mailto:designsystem@digdir.no'
+                className={classes.button}
+              >
+                Din etat? Ta kontakt!
+              </NextLink>
+            </Button>
           </div>
           <div>
             <Heading size='xs' level={2} className={classes.title}>
@@ -154,7 +152,7 @@ const Footer = () => {
           </div>
         </Container>
       </div>
-      <div className={cl(classes.bottom, 'ds-paragraph--sm')}>
+      <div className={classes.bottom}>
         <Container>
           <Paragraph size='sm'>© {getCurrentYear()} Designsystemet</Paragraph>
         </Container>
