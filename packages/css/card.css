@@ -43,7 +43,7 @@
 
     /* Using CSS custom property instead of composes since we need to support :has(:focus-visible) */
     &:where(:focus-visible, :has(:focus-visible)) {
-      box-shadow: var(--dsc-focus-boxShadow);
+      @composes ds-focus--visible from './utilities.css';
     }
 
     &:active {
