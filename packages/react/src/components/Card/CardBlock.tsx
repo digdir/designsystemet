@@ -3,9 +3,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { Paragraph } from '../Paragraph';
-
-export type CardFooterProps = {
+export type CardBlockProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -13,20 +11,16 @@ export type CardFooterProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ asChild, className, ...rest }, ref) => {
+export const CardBlock = forwardRef<HTMLDivElement, CardBlockProps>(
+  function CardBlock({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'div';
 
     return (
-      <Paragraph size='md' asChild>
-        <Component
-          className={cl(`ds-card__footer`, className)}
-          ref={ref}
-          {...rest}
-        />
-      </Paragraph>
+      <Component
+        className={cl(`ds-card__block`, className)}
+        ref={ref}
+        {...rest}
+      />
     );
   },
 );
-
-CardFooter.displayName = 'CardFooter';

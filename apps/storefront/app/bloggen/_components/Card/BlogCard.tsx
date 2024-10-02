@@ -1,9 +1,6 @@
 import {
   Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardMedia,
+  CardBlock,
   Heading,
   Paragraph,
   Tag,
@@ -42,49 +39,38 @@ export const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Card
-      asChild
-      isLink
       data-featured={featured}
       className={cl(classes.card, className)}
       {...props}
     >
-      <Link href={href}>
-        <CardMedia className={classes.media}>
-          <img src={image} alt='' className={classes.image} />
-        </CardMedia>
-        <div className={classes.wrapper}>
-          <CardHeader className={classes.heading}>
-            {tagText && (
-              <Tag className={classes.tag} color={tagColor} size='sm'>
-                {tagText}
-              </Tag>
-            )}
-            <Heading level={level} size={featured ? 'lg' : 'sm'}>
-              {title}
-            </Heading>
-          </CardHeader>
-          <CardContent>
-            <Paragraph size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-          </CardContent>
+      <CardBlock>
+        <img src={image} alt='' className={classes.image} />
+      </CardBlock>
+      <CardBlock>
+        {tagText && (
+          <Tag className={classes.tag} color={tagColor} size='sm'>
+            {tagText}
+          </Tag>
+        )}
+        <Heading level={level} size={featured ? 'lg' : 'sm'}>
+          <Link href={href}>{title}</Link>
+        </Heading>
+        <Paragraph size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
+        <Paragraph size={featured ? 'md' : 'xs'} className={classes.meta}>
           {author ||
             (date && (
-              <CardFooter className={classes.footer}>
-                <Paragraph
-                  size={featured ? 'md' : 'xs'}
-                  className={classes.meta}
-                >
-                  <span>{date}</span>
-                  {author && (
-                    <>
-                      <span aria-hidden className={classes.metaSquare} />
-                      <span>{author}</span>
-                    </>
-                  )}
-                </Paragraph>
-              </CardFooter>
+              <>
+                <span>{date}</span>
+                {author && (
+                  <>
+                    <span aria-hidden className={classes.metaSquare} />
+                    <span>{author}</span>
+                  </>
+                )}
+              </>
             ))}
-        </div>
-      </Link>
+        </Paragraph>
+      </CardBlock>
     </Card>
   );
 };
