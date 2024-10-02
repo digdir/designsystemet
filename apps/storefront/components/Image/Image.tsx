@@ -12,14 +12,14 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 const Image = ({
   alt,
   src,
-  boxShadow,
+  boxShadow = false,
   caption,
   dataUnstyled = false,
   ...rest
 }: ImageProps) => {
   return (
     <figure
-      className={cl(classes.container, { [classes.boxShadow]: boxShadow })}
+      className={cl(classes.container, boxShadow && classes.boxShadow)}
       {...(dataUnstyled ? { 'data-unstyled': '' } : {})}
     >
       <img
