@@ -59,8 +59,10 @@
 
 .button {
   --dsc-button-color: var(--ds-color-neutral-text-default);
+  --dsc-button-padding-block: var(--ds-spacing-4);
+  --dsc-button-padding-inline: var(--ds-spacing-5);
 
-  border: 1px dashed var(--ds-color-neutral-border-strong);
+  border: 2px dashed var(--ds-color-neutral-border-strong);
   width: fit-content;
   margin-top: var(--ds-spacing-8);
 }
