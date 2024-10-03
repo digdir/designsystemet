@@ -13,7 +13,7 @@
   --dsc-input-box-shadow--hover: 0 0 0 var(--ds-spacing-1) var(--ds-color-accent-surface-hover);
   --dsc-input-box-shadow--invalid: inset 0 0 0 var(--dsc-input-border-width) var(--dsc-input-border-color--invalid);
   --dsc-input-color: var(--ds-color-neutral-text-default);
-  --dsc-input-padding: 0 var(--ds-spacing-3);
+  --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
   --dsc-input-size--switch: var(--ds-sizing-13);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
@@ -29,7 +29,6 @@
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
-  height: var(--dsc-input-size);
   margin: 0; /* Reset native margin on checkbox and radio */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
@@ -41,6 +40,14 @@
 
   &:where([role='switch']) {
     --dsc-input-background: var(--dsc-input-border-color);
+  }
+
+  &:not(textarea) {
+    height: var(--dsc-input-size);
+  }
+
+  &:not([size]) {
+    width: 100%;
   }
 
   /**
@@ -84,17 +91,13 @@
   /**
   * Sizes
   */
-  &:not([size]) {
-    width: 100%;
-  }
-
   &[data-size='sm'] {
     @composes ds-body-text--sm from './utilities.css';
 
     --dsc-input-size--toggle: var(--ds-sizing-5);
     --dsc-input-size--switch: var(--ds-sizing-11);
     --dsc-input-size: var(--ds-sizing-10);
-    --dsc-input-padding: 0 var(--ds-spacing-2);
+    --dsc-input-padding: var(--ds-spacing-1) var(--ds-spacing-2);
   }
 
   &[data-size='lg'] {
@@ -103,7 +106,7 @@
     --dsc-input-size--toggle: var(--ds-sizing-7);
     --dsc-input-size--switch: var(--ds-sizing-14);
     --dsc-input-size: var(--ds-sizing-14);
-    --dsc-input-padding: 0 var(--ds-spacing-2);
+    --dsc-input-padding: var(--ds-spacing-3) var(--ds-spacing-4);
   }
 
   /**
