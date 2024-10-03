@@ -2,7 +2,7 @@ import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type { Config, TransformedToken } from 'style-dictionary/types';
+import type { Config, LogConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
@@ -82,7 +82,6 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -128,7 +127,6 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
 
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -164,7 +162,6 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
 export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       ts: {
@@ -206,7 +203,6 @@ export const typographyVariables: GetConfig = ({ outPath, theme, typography }) =
 
   return {
     usesDtcg: true,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     expand: {
       include: ['typography'],
@@ -261,9 +257,10 @@ type getConfigs = (
   outPath: string,
   tokensDir: string,
   themes: PermutatedThemes,
+  logVerbosity: LogConfig['verbosity'],
 ) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
 
-export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes) =>
+export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
   permutatedThemes
     .map((permutatedTheme) => {
       const {
@@ -292,8 +289,12 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         typography,
       });
 
-      const config = {
+      const config: Config = {
         ...config_,
+        log: {
+          ...config_?.log,
+          verbosity: logVerbosity,
+        },
         source,
         include,
       };

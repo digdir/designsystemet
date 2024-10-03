@@ -9,8 +9,8 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
-  @composes ds-focus from './utilities.css';
   @composes ds-body-text--short-md from './utilities.css';
+  @composes ds-focus from './utilities.css';
 
   align-items: center;
   background: var(--dsc-button-background);

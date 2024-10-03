@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type CardMediaProps = {
+export type CardBlockProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -11,18 +11,16 @@ export type CardMediaProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const CardMedia = forwardRef<HTMLDivElement, CardMediaProps>(
-  ({ asChild, className, ...rest }, ref) => {
+export const CardBlock = forwardRef<HTMLDivElement, CardBlockProps>(
+  function CardBlock({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'div';
 
     return (
       <Component
-        className={cl(`ds-card__media`, className)}
+        className={cl(`ds-card__block`, className)}
         ref={ref}
         {...rest}
       />
     );
   },
 );
-
-CardMedia.displayName = 'CardMedia';

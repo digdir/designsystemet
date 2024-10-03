@@ -1,3 +1,4 @@
+import './style.css';
 import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 
@@ -41,12 +42,7 @@ const getPath = (href: string | undefined): string => {
 
 const components = {
   p: (props: Props) => (
-    <Paragraph
-      {...props}
-      className='sb-unstyled'
-      spacing
-      data-ds-color-mode='light'
-    />
+    <Paragraph {...props} className='sb-unstyled' data-ds-color-mode='light' />
   ),
   ol: (props: Props) => (
     <List.Ordered
@@ -153,7 +149,8 @@ const preview: Preview = {
   },
 };
 
-export const decorators = [
+/* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
+/* export const decorators = [
   withThemeByDataAttribute({
     themes: {
       Light: 'light',
@@ -162,7 +159,9 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
+    parentSelector:
+      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
-];
+]; */
 
 export default preview;

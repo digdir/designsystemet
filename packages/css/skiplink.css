@@ -1,3 +1,7 @@
+.ds-skiplink {
+  @composes ds-sr-only from './utilities.css';
+}
+
 .ds-skiplink:focus {
   display: grid;
   place-items: center;
@@ -14,6 +18,7 @@
   padding: var(--ds-spacing-4);
   color: var(--ds-color-neutral-text-default);
   background: var(--ds-color-accent-surface-hover);
+  box-sizing: border-box;
 }
 
 .ds-skiplink__content {

@@ -3,8 +3,6 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ForwardedRef, HTMLAttributes, OlHTMLAttributes } from 'react';
 
-import { Paragraph } from '../Typography';
-
 type ListBaseProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.

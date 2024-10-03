@@ -1,11 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import type { FormEvent } from 'react';
 
 import { Button } from '../../Button';
 import { Chip } from '../../Chip';
+import { Heading } from '../../Heading';
 import { Modal } from '../../Modal';
-import { Heading, Paragraph } from '../../Typography';
+import { Paragraph } from '../../Paragraph';
 import { Switch } from '../Switch';
 
 import { data } from './data/data';
@@ -277,7 +278,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal style={{ overflow: 'visible' }}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Combobox i Modal
         </Heading>
         <Combobox

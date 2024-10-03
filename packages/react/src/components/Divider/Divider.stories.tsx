@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { Divider } from './';
 
