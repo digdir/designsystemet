@@ -14,9 +14,9 @@
   --dsc-input-box-shadow--invalid: inset 0 0 0 var(--dsc-input-border-width) var(--dsc-input-border-color--invalid);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-padding: 0 var(--ds-spacing-3);
-  --dsc-input-size--switch: var(--ds-sizing-11);
+  --dsc-input-size--switch: var(--ds-sizing-13);
   --dsc-input-size--toggle: var(--ds-sizing-6);
-  --dsc-input-size: var(--ds-sizing-13);
+  --dsc-input-size: var(--ds-sizing-12);
   --dsc-input-url--checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath d='M18.55 6.32a1 1 0 0 1 0 1.42l-7.97 7.97a1 1 0 0 1-1.41 0l-4.22-4.22a1 1 0 0 1 1.41-1.42l3.52 3.52 7.26-7.27a1 1 0 0 1 1.41 0'/%3E%3C/svg%3E");
   --dsc-input-url--indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12c0-1.1.9-2 2-2h12a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2Z'/%3E%3C/svg%3E");
   --dsc-input-url--radio: radial-gradient(circle closest-side, black 45%, transparent 50%); /* Different percentage to acheive antialiasing */
