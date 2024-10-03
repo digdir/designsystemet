@@ -26,25 +26,6 @@ const meta: Meta<typeof Button> = {
   decorators: [
     (Story: PartialStoryFn<ReactRenderer>) => (
       <Stack>
-        <style>
-          {`:root {
-          --ds-sizing-scale-base: var(--ds-font-size-5);
-          --ds-sizing-scale-min: 0.125rem; /* Minimum 2px steps */
-          --ds-sizing-scale: .25rem; /* Default 4px steps */
-
-          --ds-sizing-adjust: calc((var(--ds-sizing-scale-base) - 1em) * .5); /* Fallback if not supporting round() */
-          --ds-sizing-adjust: round(up, calc((var(--ds-sizing-scale-base) - 1em) * .5), 0.0625rem); /* Round to nearest 1px */
-
-          ${Array.from(
-            { length: 31 },
-            (_, i) =>
-              `--ds-sizing-${i}: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * ${i} + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * ${i}));
-            --ds-spacing-${i}:var(--ds-sizing-${i});`,
-          )
-            .slice(1)
-            .join('\n')}
-        }`}
-        </style>
         <Story />
       </Stack>
     ),
