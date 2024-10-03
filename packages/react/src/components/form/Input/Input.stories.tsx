@@ -1,5 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button, Label, Paragraph } from '../..';
 
@@ -10,20 +10,47 @@ type Story = StoryObj<typeof Input>;
 export default {
   title: 'Komponenter/Input',
   component: Input,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-2)',
+          flexDirection: 'column',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const Preview: Story = {
   args: {
+    'aria-invalid': false,
     disabled: false,
+    htmlSwitch: false,
     readOnly: false,
     size: 'md',
+    type: 'text',
+    name: 'inputs',
   },
-  render: (args) => (
-    <>
-      <Label htmlFor='input'>Input</Label>
-      <Input id='input' {...args} />
-    </>
-  ),
+  render: (args) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+      if (inputRef.current) inputRef.current.indeterminate = true;
+    });
+
+    return (
+      <>
+        <Label htmlFor='input-1'>Input 1</Label>
+        <Input id='input-1' {...args} />
+        <Label htmlFor='input-2'>Input 2</Label>
+        <Input id='input-2' {...args} ref={inputRef} />
+      </>
+    );
+  },
 };
 export const HtmlSize: Story = {
   args: {

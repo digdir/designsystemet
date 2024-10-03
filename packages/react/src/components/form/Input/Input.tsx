@@ -20,6 +20,8 @@ export type InputProps = {
   disabled?: boolean;
   /** Toggle `readOnly` */
   readOnly?: boolean;
+  /** Toggle `switch` attribute */
+  htmlSwitch?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 /** Input field
@@ -30,13 +32,16 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', size = 'md', htmlSize = 20, className, ...rest },
+  { type = 'text', size = 'md', htmlSize = 20, className, htmlSwitch, ...rest },
   ref,
 ) {
   return (
     <input
       className={cl(`ds-input`, className)}
       data-size={size}
+      data-switch={
+        htmlSwitch || undefined
+      } /* Using [data-switch] as React does noe support [switch] */
       ref={ref}
       size={htmlSize}
       type={type}
