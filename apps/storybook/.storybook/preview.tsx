@@ -149,7 +149,8 @@ const preview: Preview = {
   },
 };
 
-export const decorators = [
+/* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
+/* export const decorators = [
   withThemeByDataAttribute({
     themes: {
       Light: 'light',
@@ -158,8 +159,9 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
-    parentSelector: '.sbdocs, .sb-main-padded',
+    parentSelector:
+      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
-];
+]; */
 
 export default preview;
