@@ -2,30 +2,28 @@
   --dsc-input-background--checked-invalid: var(--ds-color-danger-border-default);
   --dsc-input-background--checked: var(--ds-color-accent-base-default);
   --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
-  --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
   --dsc-input-border-color--hover: var(--ds-color-accent-border-strong);
   --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
-  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-strong);
+  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-radius: var(--ds-border-radius-md);
   --dsc-input-border-width--toggle: 2px;
   --dsc-input-border-width: 1px;
   --dsc-input-box-shadow--hover: 0 0 0 var(--ds-spacing-1) var(--ds-color-accent-surface-hover);
   --dsc-input-box-shadow--invalid: inset 0 0 0 var(--dsc-input-border-width) var(--dsc-input-border-color--invalid);
-  --dsc-input-color--switch: var(--ds-color-neutral-background-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-padding: 0 var(--ds-spacing-3);
+  --dsc-input-size--switch: var(--ds-sizing-11);
   --dsc-input-size--toggle: var(--ds-sizing-6);
-  --dsc-input-size: var(--ds-sizing-12);
+  --dsc-input-size: var(--ds-sizing-13);
   --dsc-input-url--checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath d='M18.55 6.32a1 1 0 0 1 0 1.42l-7.97 7.97a1 1 0 0 1-1.41 0l-4.22-4.22a1 1 0 0 1 1.41-1.42l3.52 3.52 7.26-7.27a1 1 0 0 1 1.41 0'/%3E%3C/svg%3E");
   --dsc-input-url--indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12c0-1.1.9-2 2-2h12a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2Z'/%3E%3C/svg%3E");
   --dsc-input-url--radio: radial-gradient(circle closest-side, black 45%, transparent 50%); /* Different percentage to acheive antialiasing */
 
   appearance: none;
   background: var(--dsc-input-background);
-  border-radius: var(--dsc-input-border-radius);
+  border-radius: var(--ds-border-radius-md);
   border: var(--dsc-input-addons-border, var(--dsc-input-border-width) solid var(--dsc-input-border-color)); /* Inherit from .ds-input-addons if present */
   box-shadow: var(--dsc-input-box-shadow);
   box-sizing: border-box;
@@ -36,10 +34,14 @@
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
   transition-duration: 0.2s;
-  transition-property: background, border, box-shadow;
+  transition-property: background, border, box-shadow, mask;
 
   @composes ds-body-text--md from './utilities.css';
   @composes ds-focus from './utilities.css';
+
+  &:where([role='switch']) {
+    --dsc-input-background: var(--dsc-input-border-color);
+  }
 
   /**
   * States
@@ -58,7 +60,7 @@
     --dsc-input-border-color: var(--dsc-input-border-color--checked);
 
     mask:
-      center/cover no-repeat var(--dsc-input-url) exclude,
+      center/contain no-repeat var(--dsc-input-url) exclude,
       linear-gradient(black, black) no-clip;
   }
 
@@ -90,6 +92,7 @@
     @composes ds-body-text--sm from './utilities.css';
 
     --dsc-input-size--toggle: var(--ds-sizing-5);
+    --dsc-input-size--switch: var(--ds-sizing-11);
     --dsc-input-size: var(--ds-sizing-10);
     --dsc-input-padding: 0 var(--ds-spacing-2);
   }
@@ -98,6 +101,7 @@
     @composes ds-body-text--lg from './utilities.css';
 
     --dsc-input-size--toggle: var(--ds-sizing-7);
+    --dsc-input-size--switch: var(--ds-sizing-14);
     --dsc-input-size: var(--ds-sizing-14);
     --dsc-input-padding: 0 var(--ds-spacing-2);
   }
@@ -118,8 +122,9 @@
   }
 
   &[type='radio'] {
-    --dsc-input-border-radius: var(--ds-border-radius-full);
     --dsc-input-url: var(--dsc-input-url--radio);
+
+    border-radius: var(--ds-border-radius-full);
   }
 
   &[type='checkbox'] {
@@ -130,24 +135,24 @@
     --dsc-input-url: var(--dsc-input-url--indeterminate);
   }
 
-  &[role='switch'] {
-    --dsc-input-background: var(--dsc-input-background--switch);
-    --dsc-input-border-radius: var(--ds-border-radius-full);
+  &[role='switch']:where([type='radio'], [type='checkbox']) {
+    --inner-size: calc(var(--dsc-input-size--toggle) - var(--dsc-input-border-width--toggle) * 2);
 
-    mask: none;
-    padding: var(--dsc-input-border-width--toggle);
-    width: var(--ds-spacing-11);
-    color: var(--dsc-input-color--switch);
-    background:
-      content-box radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) 0/50% no-repeat,
-      var(--dsc-input-background);
+    border-radius: var(--ds-border-radius-full);
+    height: var(--dsc-input-size--toggle);
+    width: var(--dsc-input-size--switch);
+    mask:
+      content-box left/0 no-repeat var(--dsc-input-url--checkbox) exclude,
+      linear-gradient(black, black) no-clip exclude,
+      content-box radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) left/var(--inner-size) no-repeat;
 
     &:checked {
-      background-position-x: 100%;
+      mask-position: right;
+      mask-size: contain, cover, var(--inner-size); /* right align radial-gradient */
     }
 
     &:indeterminate {
-      background-position-x: 50%;
+      mask-position: center;
     }
   }
 }
