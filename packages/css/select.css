@@ -1,9 +1,9 @@
+/*
 .ds-select__wrapper {
   position: relative;
   display: grid;
   flex: 0 1 auto;
 
-  /* chevron for native select */
   &::after {
     content: '';
     position: absolute;
@@ -18,17 +18,35 @@
     mask-size: contain;
   }
 }
+*/
 
 .ds-select {
-  position: relative;
-  font-family: inherit;
-  box-sizing: border-box;
-  padding: 0 var(--ds-spacing-2);
-  border: solid 1px var(--ds-color-neutral-border-default);
-  border-radius: var(--ds-border-radius-md);
-  background-color: var(--ds-color-neutral-background-default);
-  color: var(--ds-color-neutral-text-default);
+  --dsc-select-background--checked-invalid: var(--ds-color-danger-border-default);
+  --dsc-select-background--checked: var(--ds-color-accent-base-default);
+  --dsc-select-background--readonly: var(--ds-color-neutral-background-subtle);
+  --dsc-select-background: var(--ds-color-neutral-background-default);
+  --dsc-select-border-color--checked: var(--ds-color-accent-base-default);
+  --dsc-select-border-color--hover: var(--ds-color-accent-border-strong);
+  --dsc-select-border-color--invalid: var(--ds-color-danger-border-default);
+  --dsc-select-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-select-border-color: var(--ds-color-neutral-border-default);
+  --dsc-select-border-width: 1px;
+  --dsc-select-box-shadow--hover: 0 0 0 var(--ds-spacing-1) var(--ds-color-accent-surface-hover);
+  --dsc-select-box-shadow--invalid: inset 0 0 0 var(--dsc-select-border-width) var(--dsc-select-border-color--invalid);
+  --dsc-select-color: var(--ds-color-neutral-text-default);
+  --dsc-select-padding: 0 var(--ds-spacing-3);
+  --dsc-select-size: var(--ds-sizing-13);
+
   appearance: none;
+  background-color: var(--ds-color-neutral-background-default);
+  border-radius: var(--ds-border-radius-md);
+  border: 1px solid var(--ds-color-neutral-border-default);
+  box-sizing: border-box;
+  color: var(--ds-color-neutral-text-default);
+  font-family: inherit;
+  padding: 0 var(--ds-spacing-2);
+  height: var(--ds-sizing-13);
+  position: relative;
 }
 
 @media (hover: hover) and (pointer: fine) {
