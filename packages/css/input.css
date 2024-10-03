@@ -1,6 +1,8 @@
 .ds-input {
+  --dsc-input-background--checked-invalid: var(--ds-color-danger-border-default);
   --dsc-input-background--checked: var(--ds-color-accent-base-default);
   --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
+  --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
   --dsc-input-border-color--hover: var(--ds-color-accent-border-strong);
@@ -11,25 +13,30 @@
   --dsc-input-border-width--toggle: 2px;
   --dsc-input-border-width: 1px;
   --dsc-input-box-shadow--hover: 0 0 0 var(--ds-spacing-1) var(--ds-color-accent-surface-hover);
-  --dsc-input-color: var(--ds-color-neutral-background-default);
+  --dsc-input-box-shadow--invalid: inset 0 0 0 var(--dsc-input-border-width) var(--dsc-input-border-color--invalid);
+  --dsc-input-color--switch: var(--ds-color-neutral-background-default);
+  --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-padding: 0 var(--ds-spacing-3);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
   --dsc-input-url--checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath d='M18.55 6.32a1 1 0 0 1 0 1.42l-7.97 7.97a1 1 0 0 1-1.41 0l-4.22-4.22a1 1 0 0 1 1.41-1.42l3.52 3.52 7.26-7.27a1 1 0 0 1 1.41 0'/%3E%3C/svg%3E");
   --dsc-input-url--indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12c0-1.1.9-2 2-2h12a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2Z'/%3E%3C/svg%3E");
-  --dsc-input-url--radio: radial-gradient(at center center, black 28%, transparent 30%);
+  --dsc-input-url--radio: radial-gradient(circle closest-side, black 45%, transparent 50%); /* Different percentage to acheive antialiasing */
 
   appearance: none;
   background: var(--dsc-input-background);
   border-radius: var(--dsc-input-border-radius);
   border: var(--dsc-input-addons-border, var(--dsc-input-border-width) solid var(--dsc-input-border-color)); /* Inherit from .ds-input-addons if present */
+  box-shadow: var(--dsc-input-box-shadow);
   box-sizing: border-box;
-  color: var(--ds-color-neutral-text-default);
+  color: var(--dsc-input-color);
   font-family: inherit;
   height: var(--dsc-input-size);
   margin: 0; /* Reset native margin on checkbox and radio */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
+  transition-duration: 0.2s;
+  transition-property: background, border, box-shadow;
 
   @composes ds-body-text--md from './utilities.css';
   @composes ds-focus from './utilities.css';
@@ -40,15 +47,16 @@
   @media (hover: hover) and (pointer: fine) {
     /* Using [readonly] since checkbox and radio is always :read-only */
     &:not(:focus-visible, :disabled, [aria-disabled='true'], [readonly]):hover {
-      border-color: var(--dsc-input-border-color--hover);
-      box-shadow: var(--dsc-input-box-shadow--hover);
+      --dsc-input-border-color: var(--dsc-input-border-color--hover);
+      --dsc-input-box-shadow: var(--dsc-input-box-shadow--hover);
     }
   }
 
   &:checked,
   &:indeterminate {
-    background: var(--dsc-input-background--checked);
-    border-color: var(--dsc-input-border-color--checked);
+    --dsc-input-background: var(--dsc-input-background--checked);
+    --dsc-input-border-color: var(--dsc-input-border-color--checked);
+
     mask:
       center/cover no-repeat var(--dsc-input-url) exclude,
       linear-gradient(black, black) no-clip;
@@ -61,13 +69,14 @@
   }
 
   &[readonly] {
-    background: var(--dsc-input-background--readonly);
-    border-color: var(--dsc-input-border-color--readonly);
+    --dsc-input-background: var(--dsc-input-background--readonly);
+    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
   }
 
-  &[aria-invalid='true']:not(:focus-visible, :checked, :indeterminate) {
-    border-color: var(--dsc-input-border-color--invalid);
-    box-shadow: inset 0 0 0 calc(var(--dsc-input-border-width) + 1px) var(--dsc-input-border-color--invalid);
+  &[aria-invalid='true']:not(:focus-visible) {
+    --dsc-input-background--checked: var(--dsc-input-background--checked-invalid);
+    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
+    --dsc-input-box-shadow: var(--dsc-input-box-shadow--invalid);
   }
 
   /**
@@ -96,6 +105,10 @@
   /**
   * Toggle inputs
   */
+  &:read-only:not([readonly]) {
+    cursor: pointer;
+  }
+
   &[type='checkbox'],
   &[type='radio'] {
     border-width: var(--dsc-input-border-width--toggle);
@@ -117,19 +130,25 @@
     --dsc-input-url: var(--dsc-input-url--indeterminate);
   }
 
-  &[switch],
-  &[data-switch] {
+  &[role='switch'] {
+    --dsc-input-background: var(--dsc-input-background--switch);
     --dsc-input-border-radius: var(--ds-border-radius-full);
 
-    /* background: var(--mt-color-surface-text) radial-gradient(circle at var(--mt-unit-4), currentcolor 28%, transparent 28.7%, transparent); */
     mask: none;
+    padding: var(--dsc-input-border-width--toggle);
     width: var(--ds-spacing-11);
+    color: var(--dsc-input-color--switch);
+    background:
+      content-box radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) 0/50% no-repeat,
+      var(--dsc-input-background);
 
-    /* &:checked {
-      background-color: var(--builders-input-color);
-      background-position-x: var(--builders-unit-30);
-      color: var(--builders-input-checked-color);
-    } */
+    &:checked {
+      background-position-x: 100%;
+    }
+
+    &:indeterminate {
+      background-position-x: 50%;
+    }
   }
 }
 

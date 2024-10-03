@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
 export type InputProps = {
@@ -21,7 +21,7 @@ export type InputProps = {
   /** Toggle `readOnly` */
   readOnly?: boolean;
   /** Toggle `switch` attribute */
-  htmlSwitch?: boolean;
+  role?: 'switch' | (string & {}); // (string & {}) for better IntelliSense - see https://stackoverflow.com/a/61048124
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 /** Input field
@@ -32,16 +32,13 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', size = 'md', htmlSize = 20, className, htmlSwitch, ...rest },
+  { type = 'text', size = 'md', htmlSize = 20, className, ...rest },
   ref,
 ) {
   return (
     <input
       className={cl(`ds-input`, className)}
       data-size={size}
-      data-switch={
-        htmlSwitch || undefined
-      } /* Using [data-switch] as React does noe support [switch] */
       ref={ref}
       size={htmlSize}
       type={type}

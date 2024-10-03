@@ -10,6 +10,36 @@ type Story = StoryObj<typeof Input>;
 export default {
   title: 'Komponenter/Input',
   component: Input,
+  argTypes: {
+    // Using argType here to exclude values from React.HTMLInputTypeAttribute
+    type: {
+      control: 'select',
+      options: [
+        'checkbox',
+        'date',
+        'datetime-local',
+        'email',
+        'month',
+        'number',
+        'password',
+        'radio',
+        'search',
+        'tel',
+        'text',
+        'time',
+        'url',
+        'week',
+        // 'button',
+        // 'color',
+        // 'file',
+        // 'hidden',
+        // 'image',
+        // 'range',
+        // 'reset',
+        // 'submit',
+      ],
+    },
+  },
   decorators: [
     (Story) => (
       <div
@@ -29,7 +59,7 @@ export const Preview: Story = {
   args: {
     'aria-invalid': false,
     disabled: false,
-    htmlSwitch: false,
+    role: '',
     readOnly: false,
     size: 'md',
     type: 'text',
@@ -83,6 +113,7 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
   return (
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
+      <Label htmlFor='input-controlled'>Kontroller meg!</Label>
       <div
         style={{
           display: 'flex',
@@ -91,15 +122,12 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
           gap: 'var(--ds-spacing-2)',
         }}
       >
-        <div>
-          <Label htmlFor='input-controlled'>Kontroller meg!</Label>
-          <Input
-            id='input-controlled'
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            {...args}
-          />
-        </div>
+        <Input
+          id='input-controlled'
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          {...args}
+        />
         <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
       </div>
     </>
