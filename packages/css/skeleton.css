@@ -19,23 +19,9 @@
   }
 
   &[data-variant='text'] {
-    animation: none;
     border-radius: var(--ds-border-radius-full);
-    height: auto;
-    position: relative; /* So we can position ::after */
-
-    /* Render with ::after so we can add some space to top and bottom */
-    &::after {
-      content: '';
-      animation: var(--dsc-skeleton-animation);
-      border-radius: inherit;
-      inset: 20% 0;
-      position: absolute;
-    }
-
-    &:empty::before {
-      content: '\00a0'; /* Add non breaking space if empty so we follow line height */
-    }
+    box-decoration-break: clone;
+    display: inline;
   }
 
   /* When having children, let them define size */
@@ -53,6 +39,30 @@
     --dsc-skeleton-animation-duration: 1.6s;
   }
 }
+
+/* div {
+  max-width: 500px;
+}
+
+span {
+  color: transparent;
+  line-height: 1.4em;
+  box-decoration-break: clone;
+  border-radius: 4px;
+  background: linear-gradient(to right, #c1c0c0 33%, #f1f0f0, #c1c0c0 66%);
+  background-size: 300%;
+  animation: shimmer 2s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100%;
+  }
+
+  to {
+    background-position: 0%;
+  }
+} */
 
 /* Animates background instead of opacity to make Axe Accessibility tests understand color: transparent is intentionally set */
 @keyframes ds-skeleton-opacity-fade {

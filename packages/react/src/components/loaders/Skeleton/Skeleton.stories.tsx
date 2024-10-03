@@ -98,27 +98,21 @@ export const As: StoryFn<typeof Skeleton> = () => {
   );
 };
 
-export const TextExample: StoryFn<typeof Text> = () => {
-  return (
-    <>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <div style={{ width: '140px' }}>
-          <Heading size='md'>Heading</Heading>
-          <Paragraph size='sm'>
-            Her er en paragraf som går over flere linjer
-          </Paragraph>
-        </div>
-        <div style={{ width: '140px' }}>
-          <Heading size='md' asChild>
-            <Skeleton variant='text'>Heading</Skeleton>
-          </Heading>
-          <Paragraph size='sm'>
-            <Skeleton variant='text' />
-            <Skeleton variant='text' />
-            <Skeleton variant='text' width={80} />
-          </Paragraph>
-        </div>
-      </div>
-    </>
-  );
-};
+export const TextExample: StoryFn<typeof Text> = () => (
+  <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
+    <div>
+      <Heading size='md'>Heading</Heading>
+      <Paragraph size='sm'>
+        Her er en paragraf som går over flere linjer
+      </Paragraph>
+    </div>
+    <div>
+      <Heading size='md' asChild>
+        <Skeleton variant='text'>Heading</Skeleton>
+      </Heading>
+      <Paragraph size='sm'>
+        <Skeleton variant='text' width={40} />
+      </Paragraph>
+    </div>
+  </div>
+);
