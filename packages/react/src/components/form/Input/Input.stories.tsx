@@ -39,6 +39,11 @@ export default {
         // 'submit',
       ],
     },
+    role: {
+      control: 'radio',
+      options: ['checkbox', 'switch'],
+      if: { arg: 'type', eq: 'checkbox' },
+    },
   },
   decorators: [
     (Story) => (
@@ -59,14 +64,15 @@ export const Preview: Story = {
   args: {
     'aria-invalid': false,
     disabled: false,
-    role: '',
     readOnly: false,
     size: 'md',
     type: 'text',
+    role: 'checkbox',
     name: 'inputs',
   },
   render: (args) => {
     const inputRef = useRef<HTMLInputElement>(null);
+    if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
     useEffect(() => {
       if (inputRef.current) inputRef.current.indeterminate = true;
