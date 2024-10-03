@@ -8,14 +8,13 @@ import {
   ExternalLinkIcon,
   PencilWritingIcon,
   PlusCircleIcon,
-  PlusIcon,
   PrinterSmallIcon,
   TrashIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
 import type { PartialStoryFn } from '@storybook/types';
 
-import { Spinner, Tooltip } from '../';
+import { Tooltip } from '../';
 
 import { Button } from './';
 
@@ -24,15 +23,17 @@ type Story = StoryObj<typeof Button>;
 const meta: Meta<typeof Button> = {
   title: 'Komponenter/Button',
   component: Button,
+  decorators: [
+    (Story: PartialStoryFn<ReactRenderer>) => (
+      <Stack>
+        <Story />
+      </Stack>
+    ),
+  ],
 };
 
 export default meta;
 
-const stack = (Story: PartialStoryFn<ReactRenderer>) => (
-  <Stack>
-    <Story />
-  </Stack>
-);
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args} />;
@@ -55,8 +56,6 @@ export const Primary: StoryFn<typeof Button> = () => (
   </>
 );
 
-Primary.decorators = [stack];
-
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
     <Button variant='secondary' color='accent'>
@@ -64,8 +63,6 @@ export const Secondary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Secondary.decorators = [stack];
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
@@ -75,8 +72,6 @@ export const Tertiary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Tertiary.decorators = [stack];
 
 export const First: StoryFn<typeof Button> = () => (
   <>
@@ -91,8 +86,6 @@ export const First: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-First.decorators = [stack];
 
 export const Second: StoryFn<typeof Button> = () => (
   <>
@@ -110,8 +103,6 @@ export const Second: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Second.decorators = [stack];
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
@@ -149,8 +140,6 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
   </>
 );
 
-CombinedColors.decorators = [stack];
-
 export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
@@ -173,8 +162,6 @@ export const TextAndIcon: StoryFn<typeof Button> = () => (
   </>
 );
 
-TextAndIcon.decorators = [stack];
-
 export const Loading: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' loading>
@@ -189,25 +176,23 @@ export const Loading: StoryFn<typeof Button> = () => (
   </>
 );
 
-Loading.decorators = [stack];
-
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' size='sm'>
+    <Button variant='primary' size='sm' icon>
       <CogIcon fontSize='1rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' aria-hidden />
       Small
     </Button>
-    <Button variant='primary' size='md'>
+    <Button variant='primary' size='md' icon>
       <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' aria-hidden />
       Medium
     </Button>
-    <Button variant='primary' size='lg'>
+    <Button variant='primary' size='lg' icon>
       <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='lg'>
@@ -216,8 +201,6 @@ export const Icons: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Icons.decorators = [stack];
 
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
@@ -270,5 +253,3 @@ export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-IconsOnlyPrimary.decorators = [stack];
