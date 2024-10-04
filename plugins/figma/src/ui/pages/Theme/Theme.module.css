@@ -62,6 +62,10 @@
   font-size: 14px;
 }
 
+.textarea textarea {
+  height: 180px;
+}
+
 .btn {
   margin-top: 24px;
 }

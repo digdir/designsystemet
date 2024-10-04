@@ -39,8 +39,6 @@ figma.ui.onmessage = (msg: {
     switch (msg.type) {
       case 'updateVariables': {
         if (msg.themes) await updateVariables(msg.themes);
-        console.log('updateVariables');
-        figma.ui.postMessage({ type: 'tomato' });
         break;
       }
 

@@ -10,6 +10,7 @@ import classes from './Themes.module.css';
 
 function Themes() {
   const themes = useThemeStore((state) => state.themes);
+  const noThemeFound = useThemeStore((state) => state.noThemesFound);
 
   useEffect(() => {}, []);
 
@@ -24,6 +25,12 @@ function Themes() {
     <div className={classes.content}>
       {/* <Button onClick={() => handleClick2()}>Add theme</Button>
       <Button onClick={() => handleClick()}>update variable</Button> */}
+      {noThemeFound && (
+        <p className={classes.noThemes}>
+          Fant ingen temaer. Husk at du må åpne pluginen i designsystemet sin
+          Core Ui kit Figma community fil.
+        </p>
+      )}
       <div className={classes.cards}>
         {themes.map((theme, index) => {
           return (

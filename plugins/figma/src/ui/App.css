@@ -3,7 +3,13 @@
 :root {
   --figma-color-text: #e1e3e5;
   --figma-color-text-secondary: #9ea3ab;
+  --figma-color-bg: red;
   --figma-color-bg-secondary: #2d2d2d;
+}
+
+.figma-light,
+.figma-dark {
+  --figma-color-border: #4e4e4e;
 }
 
 * {
@@ -116,4 +122,14 @@ body {
 .select {
   font-size: 14px;
   height: 34px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
 }

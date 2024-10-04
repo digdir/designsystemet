@@ -18,8 +18,6 @@ import { useThemeStore } from '../common/store';
 import { Footer } from './components/Footer/Footer';
 import AddTheme from './pages/AddTheme/AddTheme';
 import Colors from './pages/Colors/Colors';
-import Font from './pages/Font/Font';
-import Fonts from './pages/Fonts/Fonts';
 import { Github } from './pages/Github/Github';
 import PageTwo from './pages/PageTwo/PageTwo';
 import Theme from './pages/Theme/Theme';
@@ -32,6 +30,8 @@ function App() {
   const navigate = useNavigate();
   const setLoading = useThemeStore((state) => state.setLoading);
   const setFonts = useThemeStore((state) => state.setFonts);
+  const setError = useThemeStore((state) => state.setCodeSnippetError);
+  const setNoThemesFound = useThemeStore((state) => state.setNoThemesFound);
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'getThemes' } }, '*');
@@ -48,7 +48,11 @@ function App() {
       };
     }) => {
       if (event.data.pluginMessage.type === 'getThemes') {
-        setThemes(event.data.pluginMessage.themes);
+        if (event.data.pluginMessage.themes.length > 0) {
+          setThemes(event.data.pluginMessage.themes);
+        } else {
+          setNoThemesFound(true);
+        }
       } else if (event.data.pluginMessage.type === 'geThemesAndRedirect') {
         navigate('/');
         parent.postMessage({ pluginMessage: { type: 'getThemes' } }, '*');
@@ -62,6 +66,12 @@ function App() {
           .catch((e) => {
             console.log(e);
           });
+      } else if (event.data.pluginMessage.type === 'setValueForModeError') {
+        setError(
+          'En feil har oppstått. Du må ha minimum pro-versjonen av Figma for å kunne generere tema.',
+        );
+      } else if (event.data.pluginMessage.type === 'updateVariables') {
+        setError('');
       }
       console.log('finish');
       setLoading(false);
@@ -69,7 +79,7 @@ function App() {
   }, []);
 
   return (
-    <div data-ds-color-mode='dark'>
+    <div className='page' data-ds-color-mode='dark'>
       <div className='links'>
         <NavLink
           className={({ isActive }) => (isActive ? 'link active' : 'link')}
@@ -91,8 +101,6 @@ function App() {
           <Route path='/themes' element={<Themes />} />
 
           <Route path='/themes/:themeId/colors' element={<Colors />} />
-          <Route path='/themes/:themeId/fonts' element={<Fonts />} />
-          <Route path='/themes/:themeId/fonts/fontId' element={<Font />} />
           <Route path='/themes/:themeId' element={<Theme />} />
           <Route path='/theme/add' element={<AddTheme />} />
           <Route path='/github' element={<Github />} />

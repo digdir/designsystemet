@@ -79,16 +79,23 @@ export const updateVariables = async (themes: StoreThemes) => {
     const lightModeId: string = modeCollection.modes[0].modeId;
     const darkModeId: string = modeCollection.modes[1].modeId;
     const variables = await figma.variables.getLocalVariablesAsync('COLOR');
-    for (const variable of variables) {
-      updateColors(
-        themes,
-        variable,
-        lightModeId,
-        darkModeId,
-        modeCollection,
-        themeCollection,
-        variables,
-      );
+
+    try {
+      for (const variable of variables) {
+        updateColors(
+          themes,
+          variable,
+          lightModeId,
+          darkModeId,
+          modeCollection,
+          themeCollection,
+          variables,
+        );
+      }
+      figma.ui.postMessage({ type: 'updateVariables' });
+    } catch (error) {
+      console.error(error);
+      figma.ui.postMessage({ type: 'setValueForModeError' });
     }
   }
 };
