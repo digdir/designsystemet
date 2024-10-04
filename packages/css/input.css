@@ -30,6 +30,7 @@
   color: var(--dsc-input-color);
   font-family: inherit;
   margin: 0; /* Reset native margin on checkbox and radio */
+  max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
   transition-duration: 0.2s;
@@ -46,8 +47,16 @@
     height: var(--dsc-input-size);
   }
 
-  &:not([size]) {
+  &:not([size], [cols]) {
     width: 100%;
+  }
+
+  @supports (field-sizing: content) {
+    &:where(textarea):not([rows]) {
+      field-sizing: content;
+      min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
+      resize: none;
+    }
   }
 
   /**
