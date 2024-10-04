@@ -32,7 +32,10 @@ function Theme() {
   const [themeIndex, setThemeIndex] = useState<number>(0);
   const setThemes = useThemeStore((state) => state.setThemes);
   const loading = useThemeStore((state) => state.loading);
-  const [error, setError] = useState(false);
+  const codeSnippetError = useThemeStore((state) => state.codeSnipperError);
+  const setCodeSnippetError = useThemeStore(
+    (state) => state.setCodeSnippetError,
+  );
 
   useEffect(() => {
     setThemeIndex(themes.findIndex((theme) => theme.themeModeId === themeId));
@@ -41,10 +44,6 @@ function Theme() {
         ?.colors as ColorTheme,
     );
   });
-
-  const Tomato = (e: string) => {
-    setNewName(e);
-  };
 
   const changeName = () => {
     setLoading(true);
@@ -69,7 +68,6 @@ function Theme() {
   };
 
   const handleClick = () => {
-    setError(false);
     const pattern =
       /--accent\s+"(#\w{6})"\s+--neutral\s+"(#\w{6})"\s+--brand1\s+"(#\w{6})"\s+--brand2\s+"(#\w{6})"\s+--brand3\s+"(#\w{6})"/;
     const matches = command.replace(/\\/g, '').match(pattern);
@@ -115,7 +113,9 @@ function Theme() {
       }, 500);
     } else {
       console.log('No match');
-      setError(true);
+      setCodeSnippetError(
+        'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
+      );
     }
   };
 
@@ -191,28 +191,27 @@ function Theme() {
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
           </Link>{' '}
-          for å lage et tema og lim inn koden i feltet under. Det er kun fargene
-          som blir oppdatert for øyeblikket. Vi jobber med å utvide pluginen med
-          mer funksjonalitet senere.
+          for å lage deg et tema og lim inn koden i feltet under. Det er kun
+          fargene som blir oppdatert for øyeblikket. Vi jobber med å utvide
+          pluginen med mer funksjonalitet senere.
         </p>
 
         <Textarea
+          size='sm'
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           name=''
           label='Kodesnutt fra temabyggeren'
           id=''
-          rows={9}
+          cols={22}
           className={classes.textarea}
           placeholder='Lim inn her...'
-          error={
-            error &&
-            'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.'
-          }
+          error={codeSnippetError}
         ></Textarea>
         <Button
           className={classes.btn}
           size='sm'
+          color='neutral'
           onClick={() => handleClick()}
           disabled={loading}
         >

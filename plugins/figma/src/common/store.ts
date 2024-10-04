@@ -87,9 +87,13 @@ type ColorStore = {
   themes: StoreThemes;
   loading: boolean;
   fonts: FontStore[];
+  codeSnipperError: string;
+  noThemesFound: boolean;
   setThemes: (themes: StoreThemes) => void;
   setLoading: (loading: boolean) => void;
   setFonts: (fonts: FontStore[]) => void;
+  setCodeSnippetError: (error: string) => void;
+  setNoThemesFound: (noThemesFound: boolean) => void;
 };
 
 export const useThemeStore = create(
@@ -97,8 +101,12 @@ export const useThemeStore = create(
     themes: [],
     loading: false,
     fonts: [],
+    codeSnipperError: '',
+    noThemesFound: false,
     setThemes: (themes) => set({ themes }),
     setLoading: (loading) => set({ loading }),
     setFonts: (fonts) => set({ fonts }),
+    setCodeSnippetError: (codeSnipperError) => set({ codeSnipperError }),
+    setNoThemesFound: (noThemesFound) => set({ noThemesFound }),
   })),
 );
