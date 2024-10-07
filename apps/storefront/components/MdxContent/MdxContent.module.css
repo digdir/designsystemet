@@ -7,6 +7,10 @@
     margin-bottom: 0;
   }
 
+  & p {
+    margin-bottom: var(--ds-spacing-4);
+  }
+
   & > h1,
   & > h2,
   & > h3,
@@ -128,7 +132,13 @@
     margin-top: var(--ds-spacing-5);
   }
 
-  & ~ *:not([data-unstyled]) {
+  & *[data-unstyled] {
+    & p {
+      margin: unset;
+    }
+  }
+
+  & *:not([data-unstyled]) {
     & p,
     & h2,
     & h3,

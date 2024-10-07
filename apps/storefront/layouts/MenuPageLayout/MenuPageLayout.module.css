@@ -93,6 +93,7 @@
 }
 
 .githubLink {
+  display: inline-block;
   margin-top: var(--ds-spacing-12);
 }
 
