@@ -1,7 +1,6 @@
 import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
-import cl from 'clsx/lite';
+import { Container, Figma, Github, Slack } from '@repo/components';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import type { ReactNode } from 'react';
@@ -32,38 +31,17 @@ const rightLinks = [
   {
     text: 'Bli invitert til slack',
     url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
-    prefix: (
-      <Image
-        height={16}
-        width={16}
-        alt=''
-        src='/img/logos/slack-negative.png'
-      />
-    ),
+    prefix: <Slack />,
   },
   {
     text: 'Github',
     url: 'https://github.com/digdir/designsystemet',
-    prefix: (
-      <Image
-        height={16}
-        width={16}
-        alt=''
-        src='/img/logos/github-negative.png'
-      />
-    ),
+    prefix: <Github />,
   },
   {
     text: 'Figma',
     url: 'https://www.figma.com/@designsystemet',
-    prefix: (
-      <Image
-        height={16}
-        width={16}
-        alt=''
-        src='/img/logos/figma-negative.png'
-      />
-    ),
+    prefix: <Figma />,
   },
 ];
 

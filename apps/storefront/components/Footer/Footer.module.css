@@ -12,16 +12,6 @@
   margin-bottom: var(--ds-spacing-4);
 }
 
-.footer .logos img {
-  height: 26px;
-  width: auto;
-  margin-right: var(--ds-spacing-2);
-
-  &.udir {
-    height: 32px;
-  }
-}
-
 .logos {
   display: flex;
   flex-direction: column;
@@ -46,6 +36,42 @@
 
 .link {
   --dsc-link-color--visited: var(--ds-color-neutral-text-default);
+
+  & svg {
+    max-width: 24px;
+
+    & * {
+      fill: var(--dsc-link-color);
+    }
+  }
+
+  &:focus-visible {
+    & svg * {
+      fill: var(--dsc-link-color--focus);
+    }
+  }
+
+  &:hover {
+    & svg * {
+      fill: var(--dsc-link-color--hover);
+    }
+  }
+
+  &:active {
+    & svg * {
+      fill: var(--dsc-link-color--active);
+    }
+  }
+}
+
+.footer .logos img {
+  height: 26px;
+  width: auto;
+  margin-right: var(--ds-spacing-2);
+
+  &.udir {
+    height: 32px;
+  }
 }
 
 .top {

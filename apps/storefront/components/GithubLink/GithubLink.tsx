@@ -1,6 +1,6 @@
 'use client';
 import { Link } from '@digdir/designsystemet-react';
-import Image from 'next/image';
+import { Github } from '@repo/components';
 import { usePathname } from 'next/navigation';
 import type { HTMLAttributes } from 'react';
 
@@ -18,12 +18,7 @@ const GithubLink = ({
       {...rest}
       data-unstyled
     >
-      <Image
-        height={20}
-        width={20}
-        alt='github logo'
-        src='/img/logos/github-logo.svg'
-      />
+      <Github />
       Rediger denne siden på Github (åpnes i ny fane)
     </Link>
   );

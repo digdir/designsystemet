@@ -20,6 +20,7 @@
   gap: var(--ds-spacing-5);
   text-align: center;
   margin: 0 auto;
+  margin-top: var(--ds-spacing-12);
 }
 
 .ingress {
