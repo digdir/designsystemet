@@ -128,7 +128,7 @@
     margin-top: var(--ds-spacing-5);
   }
 
-  & *:not([data-unstyled]) {
+  & ~ *:not([data-unstyled]) {
     & p,
     & h2,
     & h3,

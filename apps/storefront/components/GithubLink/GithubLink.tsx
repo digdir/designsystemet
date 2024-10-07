@@ -11,7 +11,13 @@ const GithubLink = ({
   const href = `https://github.com/digdir/designsystemet/tree/next/apps/storefront/app${pathName}/page.mdx`;
 
   return (
-    <Link href={href} target='_blank' rel='noopener noreferrer' {...rest}>
+    <Link
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
+      {...rest}
+      data-unstyled
+    >
       <Image
         height={20}
         width={20}
