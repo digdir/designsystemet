@@ -14,20 +14,11 @@
   clip: auto;
   clip-path: none;
   white-space: inherit;
-  text-decoration: none;
   padding: var(--ds-spacing-4);
-  color: var(--ds-color-neutral-text-default);
+  color: var(--ds-color-accent-text-default);
   background: var(--ds-color-accent-surface-hover);
   box-sizing: border-box;
-}
-
-.ds-skiplink__content {
-  color: var(--dsc-link-color);
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: max(5px, 0.25rem);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-spacing-1);
-  margin: 0;
 }
