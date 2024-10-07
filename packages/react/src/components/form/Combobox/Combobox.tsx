@@ -159,8 +159,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
 
-    const listId = useId();
-
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
 
     const {
@@ -385,7 +383,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           <ComboboxInput
             {...omit(['inputValue'], rest)}
             hideClearButton={hideClearButton}
-            listId={listId}
+            listId={context.floatingId}
             error={error}
             hideChips={hideChips}
             handleKeyDown={handleKeyDown}
@@ -407,7 +405,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
               visuallyHiddenDismiss
             >
               <Box
-                id={listId}
                 shadow='md'
                 borderRadius='md'
                 borderColor='default'
