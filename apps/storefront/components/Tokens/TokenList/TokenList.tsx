@@ -207,7 +207,7 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.package}>
+      <div className={classes.package} data-unstyled>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
           <img
             src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'

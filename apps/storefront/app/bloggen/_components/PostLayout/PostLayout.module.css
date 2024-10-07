@@ -64,6 +64,14 @@
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
+.content video,
+.content [data-iframe-video] {
+  display: block;
+  width: 860px;
+  margin-left: calc((100% - 860px) / 2) !important;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
 .main > figure {
   margin: auto;
   width: 100%;
