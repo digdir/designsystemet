@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { AnchorHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, type AnchorHTMLAttributes, type ReactNode } from 'react';
 
 export type SkipLinkProps = {
   /** The content to display inside the skiplink. */
@@ -9,16 +9,14 @@ export type SkipLinkProps = {
   href: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const SkipLink = ({
-  children,
-  className,
-  ...rest
-}: SkipLinkProps): JSX.Element => {
+export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
+  function SkipLink({children,
+    className,
+    ...rest
+  }) {
   return (
     <a className={cl('ds-skiplink', className)} {...rest}>
-      <p className='ds-skiplink__content'>{children}</p>
+      {children}
     </a>
   );
-};
-
-SkipLink.displayName = 'SkipLink';
+})
