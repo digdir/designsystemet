@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useId, forwardRef } from 'react';
+import { useState, useRef, useEffect, forwardRef } from 'react';
 import type * as React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import cl from 'clsx/lite';
@@ -158,8 +158,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
-
-    const listId = useId();
 
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
 
@@ -385,7 +383,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           <ComboboxInput
             {...omit(['inputValue'], rest)}
             hideClearButton={hideClearButton}
-            listId={listId}
+            listId={context.floatingId}
             error={error}
             hideChips={hideChips}
             handleKeyDown={handleKeyDown}
@@ -407,7 +405,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
               visuallyHiddenDismiss
             >
               <Box
-                id={listId}
                 shadow='md'
                 borderRadius='md'
                 borderColor='default'
