@@ -10,9 +10,9 @@ export type SkipLinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
-  function SkipLink({ children, className, ...rest }) {
+  function SkipLink({ children, className, ...rest }, ref) {
     return (
-      <a className={cl('ds-skiplink', className)} {...rest}>
+      <a className={cl('ds-skiplink', className)} {...rest} ref={ref}>
         {children}
       </a>
     );
