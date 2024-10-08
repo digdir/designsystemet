@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Button, Label, Paragraph } from '../..';
 
-import { Input, InputAffix, InputAffixWrapper } from '.';
+import { Input } from '.';
 
 type Story = StoryObj<typeof Input>;
 
@@ -105,11 +105,11 @@ export const Adornments: StoryFn<typeof Input> = (args) => (
     <Label htmlFor='input-html-size'>
       Hvor mange kroner koster det per måned?
     </Label>
-    <InputAffixWrapper>
-      <InputAffix>NOK</InputAffix>
+    <Input.AffixWrapper>
+      <Input.Affix>NOK</Input.Affix>
       <Input id='input-html-size' {...args} />
-      <InputAffix>pr.mnd</InputAffix>
-    </InputAffixWrapper>
+      <Input.Affix>pr.mnd</Input.Affix>
+    </Input.AffixWrapper>
   </>
 );
 
@@ -149,21 +149,64 @@ export const Radio: StoryFn<typeof Input> = (args) => (
     }}
   >
     <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
-    <Label weight='regular'>
-      <Input {...args} name='non-checked' checked={false} />
-      <Input {...args} name='non-checked' checked={true} hidden />
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' />
       Default
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' readOnly />
+      Read-only
     </Label>
     <Label weight='regular'>
       <Input {...args} />
+      Default
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} defaultChecked />
       Checked
     </Label>
     <Label weight='regular'>
-      <Input {...args} name='non-checked' disabled checked={false} />
+      <Input {...args} disabled />
       Disabled
     </Label>
     <Label weight='regular'>
-      <Input {...args} name='non-checked' readOnly checked={false} />
+      <Input {...args} aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} readOnly />
+      Read-only
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' />
+      Default
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' readOnly />
       Read-only
     </Label>
   </div>
@@ -171,4 +214,158 @@ export const Radio: StoryFn<typeof Input> = (args) => (
 
 Radio.args = {
   type: 'radio',
+  name: 'radio',
+};
+
+export const Checkbox: StoryFn<typeof Input> = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(5, 1fr)',
+      gap: '1rem',
+    }}
+  >
+    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' />
+      Default
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' readOnly />
+      Read-only
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} />
+      Default
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} disabled />
+      Disabled
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} readOnly />
+      Read-only
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' />
+      Default
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' readOnly />
+      Read-only
+    </Label>
+  </div>
+);
+
+Checkbox.args = {
+  type: 'checkbox',
+};
+
+export const Switch: StoryFn<typeof Input> = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(5, 1fr)',
+      gap: '1rem',
+    }}
+  >
+    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' />
+      Default
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm' readOnly />
+      Read-only
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} />
+      Default
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} disabled />
+      Disabled
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} readOnly />
+      Read-only
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' />
+      Default
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' defaultChecked />
+      Checked
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' disabled />
+      Disabled
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg' readOnly />
+      Read-only
+    </Label>
+  </div>
+);
+
+Switch.args = {
+  type: 'checkbox',
+  role: 'switch',
 };

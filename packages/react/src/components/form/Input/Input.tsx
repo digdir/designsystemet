@@ -1,7 +1,8 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
+type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /**
    * Changes field size and paddings
@@ -9,7 +10,7 @@ export type InputProps = {
    */
   size?: 'sm' | 'md' | 'lg';
   /** Supported `input` types */
-  type?: InputHTMLAttributes<HTMLInputElement>['type'];
+  type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.
    * @default 20
    */
@@ -20,9 +21,16 @@ export type InputProps = {
   disabled?: boolean;
   /** Toggle `readOnly` */
   readOnly?: boolean;
-  /** Toggle `switch` attribute */ /* TODO: Only when type="radio" / type="checkbox" */
-  role?: 'switch' | (string & {}); // (string & {}) for better IntelliSense - see https://stackoverflow.com/a/61048124
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  /** Set role, i.e. `switch` when `checkbox` or `radio` */
+  role?: InputAttr['role'];
+} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'> &
+  (
+    | { type: 'checkbox' | 'radio'; role?: 'switch' | InputAttr['role'] }
+    | {
+        type?: Omit<InputAttr['type'], 'checkbox' | 'radio'> | never;
+        role?: Omit<InputAttr['role'], 'switch'>;
+      }
+  );
 
 /** Input field
  *
@@ -46,23 +54,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     />
   );
 });
-
-export type InputAffixWrapperProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  'prefix'
->;
-export const InputAffixWrapper = forwardRef<
-  HTMLDivElement,
-  InputAffixWrapperProps
->(function InputAddons({ className, ...rest }, ref) {
-  return (
-    <div className={cl('ds-input-addons', className)} ref={ref} {...rest} />
-  );
-});
-
-export type InputAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
-export const InputAffix = forwardRef<HTMLSpanElement, InputAffixProps>(
-  function InputAffix(rest, ref) {
-    return <span aria-hidden='true' ref={ref} {...rest} />;
-  },
-);
