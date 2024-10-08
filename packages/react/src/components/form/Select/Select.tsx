@@ -19,7 +19,7 @@ export type SelectProps = {
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'>;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, htmlSize, size, ...rest }, ref) {
+  function Select({ className, htmlSize, size, readOnly, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}

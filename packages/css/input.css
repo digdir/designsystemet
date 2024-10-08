@@ -43,6 +43,28 @@
     --dsc-input-background: var(--dsc-input-border-color);
   }
 
+  &:is(select) {
+    --chevron-smooth: 2%;
+    --chevron-stroke: 0.05rem;
+    --chevron-width: 0.4em;
+    --chevron-y: 0.01rem;
+    --chevron-size: var(--chevron-width) calc(var(--chevron-width) + var(--chevron-y));
+    --chevron-start-smooth: transparent calc(50% + var(--chevron-y) - var(--chevron-stroke) - var(--chevron-smooth));
+    --chevron-start-stroke: currentcolor calc(50% + var(--chevron-y) - var(--chevron-stroke));
+    --chevron-end-stroke: currentcolor calc(50% + var(--chevron-y) + var(--chevron-stroke));
+    --chevron-end-smooth: transparent calc(50% + var(--chevron-y) + var(--chevron-stroke) + var(--chevron-smooth));
+
+    padding-right: 0.75em;
+    background:
+      content-box no-repeat
+        linear-gradient(45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth))
+        calc(100% - var(--chevron-width) + var(--chevron-stroke)) calc(50% + var(--chevron-y)) / var(--chevron-size),
+      content-box no-repeat
+        linear-gradient(-45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth)) right
+        calc(50% + var(--chevron-y)) / var(--chevron-size),
+      var(--dsc-input-background);
+  }
+
   &:not(textarea) {
     height: var(--dsc-input-size);
   }
@@ -52,7 +74,7 @@
   }
 
   @supports (field-sizing: content) {
-    &:where(textarea):not([rows]) {
+    &:is(textarea):not([rows]) {
       field-sizing: content;
       min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
       resize: none;

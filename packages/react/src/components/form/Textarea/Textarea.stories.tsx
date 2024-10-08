@@ -11,15 +11,18 @@ export default {
   title: 'Komponenter/Textarea',
   component: Textarea,
   decorators: [
-    (Story) => (
+    (Story, { parameters }) => (
       <div
+        id='story-render'
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: 'var(--ds-spacing-2)',
+          maxWidth: '100%',
+          width: parameters.layout === 'padded' ? '' : '20rem',
         }}
       >
-        <style>{`#storybook-root{width:20rem;max-width:100vw}`}</style>
+        <style>{'#storybook-root{max-width:100vw}'}</style>
         <Story />
       </div>
     ),
