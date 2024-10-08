@@ -63,16 +63,9 @@
   }
 }
 
-.ds-modal__header {
+.ds-modal__block {
   border-bottom: var(--dsc-modal-divider);
   margin-block: var(--dsc-modal-padding-invert) var(--dsc-modal-padding);
-  margin-inline: var(--dsc-modal-padding-invert);
-  padding: var(--dsc-modal-padding);
-}
-
-.ds-modal__footer {
-  border-top: var(--dsc-modal-divider);
-  margin-block: var(--dsc-modal-padding) var(--dsc-modal-padding-invert);
   margin-inline: var(--dsc-modal-padding-invert);
   padding: var(--dsc-modal-padding);
 }

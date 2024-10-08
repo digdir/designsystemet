@@ -80,10 +80,10 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal>
-      <Modal.Header>
+      <Modal.Block>
         <Paragraph size='sm'>Her er det også divider</Paragraph>
         <Heading size='xs'>Vi kan legge divider under header</Heading>
-      </Modal.Header>
+      </Modal.Block>
       <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
         sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec vulputate
@@ -105,7 +105,7 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
         dui auctor pulvinar. Sed in elit urna. Nunc vitae magna sed nibh
         elementum dignissim et ut massa.
       </Paragraph>
-      <Modal.Footer>Og over footer</Modal.Footer>
+      <Modal.Block>Og over footer</Modal.Block>
     </Modal>
   </Modal.Context>
 );
@@ -175,9 +175,9 @@ export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
       <Modal.Context>
         <Modal.Trigger>Open Modal</Modal.Trigger>
         <Modal style={{ overflow: 'visible' }} ref={modalRef}>
-          <Modal.Header>
+          <Modal.Block>
             <Heading size='xs'>Modal med combobox</Heading>
-          </Modal.Header>
+          </Modal.Block>
           <Combobox portal={false} label='Velg sted' autoFocus>
             <Combobox.Empty>Fant ingen treff</Combobox.Empty>
             <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
@@ -189,14 +189,14 @@ export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
             <Combobox.Option value='bergen'>Bergen</Combobox.Option>
             <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
           </Combobox>
-          <Modal.Footer>
+          <Modal.Block>
             <Button
               variant='secondary'
               onClick={() => modalRef.current?.close()}
             >
               Avbryt
             </Button>
-          </Modal.Footer>
+          </Modal.Block>
         </Modal>
       </Modal.Context>
     </>

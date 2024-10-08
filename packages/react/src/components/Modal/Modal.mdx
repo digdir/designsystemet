@@ -23,11 +23,11 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 <Modal.Context>
   <Modal.Trigger>Open Modal</Modal.Trigger>
   <Modal>
-    <Modal.Header>
+    <Modal.Block>
       <Heading size="xs">Header</Heading>
-    </Modal.Header>
-    Content
-    <Modal.Footer>Footer</Modal.Footer>
+    </Modal.Block>
+    <Modal.Block>Content</Modal.Block>
+    <Modal.Block>Footer</Modal.Block>
   </Modal>
 </Modal.Context>
 ```
@@ -57,9 +57,9 @@ Vi bruker `backdropClose={true}` proppen for å lukke modalen når brukeren klik
 
 <Canvas of={ModalStories.BackdropClose} />
 
-### Med `Header` og `Footer`
+### Med `Block`
 
-Du kan legge til `Modal.Header` og `Modal.Footer` for å få på topp- og bunn-område med sikkelinje.
+Du kan legge til `Modal.Block` for å få på topp- og bunn-område med sikkelinje.
 
 <Canvas of={ModalStories.WithHeaderAndFooter} />
 
@@ -81,6 +81,6 @@ Bruk `overflow: visible` for å la innhold gå utenfor modalen.
 
 <Canvas of={ModalStories.ModalWithCombobox} />
 
-### `Modal.Header`
+### `Modal.Block`
 
-<ArgTypes of={Modal.Header} />
+<ArgTypes of={Modal.Block} />
