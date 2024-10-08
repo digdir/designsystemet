@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.63.1](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.63.0...@digdir/designsystemet-react@0.63.1) (2024-10-08)
+
+### Bug Fixes
+
+- **combobox:** only set `aria-controls` when open ([4d205ad](https://github.com/digdir/designsystemet/commit/4d205adb8d99a06f8add29b146f10b9b5fd51c33))
+
 # [0.63.0](https://github.com/digdir/designsystemet/compare/@digdir/designsystemet-react@0.62.0...@digdir/designsystemet-react@0.63.0) (2024-06-07)
 
 ### Bug Fixes
