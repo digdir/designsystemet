@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Modal: Replace `Modal.Header` and `Modal.Footer` with `Modal.Block`
+Modal: Remove `Modal.Header` and `Modal.Footer`, replace with `Modal.Block`
