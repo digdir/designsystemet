@@ -59,7 +59,8 @@ Vi bruker `backdropClose={true}` proppen for å lukke modalen når brukeren klik
 
 ### Med `Block`
 
-Du kan legge til `Modal.Block` for å få på topp- og bunn-område med sikkelinje.
+Bruk flere `Modal.Block` hvis du vil dele opp modalen med skillelinjer til for eksempel topp- og bunn-område.
+Merk at innhold kan ikke plasseres direkte i `Modal` dersom du bruker `Modal.Block`; da burde alt innholdet være inni en av av modalens `Modal.Block`-seksjoner.
 
 <Canvas of={ModalStories.WithHeaderAndFooter} />
 
