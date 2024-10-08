@@ -26,7 +26,7 @@ export default {
 
 export const Preview: StoryFn<typeof Select> = (args) => (
   <>
-    <Label>Velg et fjell</Label>
+    <Label htmlFor={args.id}>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -46,11 +46,12 @@ Preview.args = {
   size: 'md',
   disabled: false,
   readOnly: false,
+  id: 'my-select',
 };
 
 export const Disabled: StoryFn<typeof Select> = (args) => (
   <>
-    <Label>Velg et fjell</Label>
+    <Label htmlFor={args.id}>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -67,11 +68,12 @@ export const Disabled: StoryFn<typeof Select> = (args) => (
 
 Disabled.args = {
   disabled: true,
+  id: 'my-select',
 };
 
 export const WithError: StoryFn<typeof Select> = (args) => (
   <>
-    <Label>Velg et fjell</Label>
+    <Label htmlFor={args.id}>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -88,11 +90,12 @@ export const WithError: StoryFn<typeof Select> = (args) => (
 
 WithError.args = {
   'aria-invalid': true,
+  id: 'my-select',
 };
 
 export const WithOptgroup: StoryFn<typeof Select> = (args) => (
   <>
-    <Label>Velg et fjell</Label>
+    <Label htmlFor={args.id}>Velg et fjell</Label>
     <Select {...args}>
       <Select.Optgroup label='Gruppe 1'>
         <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -109,3 +112,7 @@ export const WithOptgroup: StoryFn<typeof Select> = (args) => (
     </Select>
   </>
 );
+
+WithOptgroup.args = {
+  id: 'my-select',
+};

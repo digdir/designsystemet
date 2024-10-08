@@ -54,14 +54,12 @@
     --chevron-end-stroke: currentcolor calc(50% + var(--chevron-y) + var(--chevron-stroke));
     --chevron-end-smooth: transparent calc(50% + var(--chevron-y) + var(--chevron-stroke) + var(--chevron-smooth));
 
-    padding-right: 0.75em;
+    padding-right: calc(var(--chevron-width) * 6);
     background:
-      content-box no-repeat
-        linear-gradient(45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth))
-        calc(100% - var(--chevron-width) + var(--chevron-stroke)) calc(50% + var(--chevron-y)) / var(--chevron-size),
-      content-box no-repeat
-        linear-gradient(-45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth)) right
-        calc(50% + var(--chevron-y)) / var(--chevron-size),
+      linear-gradient(45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth))
+        calc(100% - var(--chevron-width) * 3 + var(--chevron-stroke)) calc(50% + var(--chevron-y)) / var(--chevron-size) no-repeat,
+      linear-gradient(-45deg, var(--chevron-start-smooth), var(--chevron-start-stroke), var(--chevron-end-stroke), var(--chevron-end-smooth))
+        calc(100% - var(--chevron-width) * 2) calc(50% + var(--chevron-y)) / var(--chevron-size) no-repeat,
       var(--dsc-input-background);
   }
 
@@ -69,7 +67,7 @@
     height: var(--dsc-input-size);
   }
 
-  &:not([size], [cols]) {
+  &:not([size], [cols], select) {
     width: 100%;
   }
 
