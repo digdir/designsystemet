@@ -139,3 +139,36 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
     </>
   );
 };
+
+export const Radio: StoryFn<typeof Input> = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(5, 1fr)',
+      gap: '1rem',
+    }}
+  >
+    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
+    <Label weight='regular'>
+      <Input {...args} name='non-checked' checked={false} />
+      <Input {...args} name='non-checked' checked={true} hidden />
+      Default
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} />
+      Checked
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} name='non-checked' disabled checked={false} />
+      Disabled
+    </Label>
+    <Label weight='regular'>
+      <Input {...args} name='non-checked' readOnly checked={false} />
+      Read-only
+    </Label>
+  </div>
+);
+
+Radio.args = {
+  type: 'radio',
+};

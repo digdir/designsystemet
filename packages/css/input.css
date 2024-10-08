@@ -114,7 +114,7 @@
   /**
   * Toggle inputs
   */
-  &:read-only:not([readonly]) {
+  &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
     cursor: pointer;
   }
 
