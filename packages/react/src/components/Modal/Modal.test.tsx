@@ -40,7 +40,7 @@ describe('Modal', () => {
     const { user } = await render({
       children: (
         <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
+          <Modal.Block>{HEADER_TITLE}</Modal.Block>
         </>
       ),
     });
@@ -99,7 +99,7 @@ describe('Modal', () => {
       open: true,
       children: (
         <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
+          <Modal.Block>{HEADER_TITLE}</Modal.Block>
         </>
       ),
     });
