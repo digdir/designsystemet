@@ -211,7 +211,6 @@ function Theme() {
         <Button
           className={classes.btn}
           size='sm'
-          color='neutral'
           onClick={() => handleClick()}
           disabled={loading}
         >
