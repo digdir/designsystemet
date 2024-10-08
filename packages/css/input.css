@@ -29,6 +29,7 @@
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
+  height: var(--dsc-input-size);
   margin: 0; /* Reset native margin on checkbox and radio */
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   padding: var(--dsc-input-padding);
@@ -63,20 +64,18 @@
       var(--dsc-input-background);
   }
 
-  &:not(textarea) {
-    height: var(--dsc-input-size);
+  &:is(textarea) {
+    height: auto; /* Allow rows="" to set height */
+    min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
+    resize: vertical; /* Allow resizing vertically only */
+  }
+
+  &:where(textarea):not([rows]) {
+    field-sizing: content;
   }
 
   &:not([size], [cols], select) {
     width: 100%;
-  }
-
-  @supports (field-sizing: content) {
-    &:is(textarea):not([rows]) {
-      field-sizing: content;
-      min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
-      resize: none;
-    }
   }
 
   /**
