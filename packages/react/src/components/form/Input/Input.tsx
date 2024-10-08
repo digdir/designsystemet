@@ -20,7 +20,7 @@ export type InputProps = {
   disabled?: boolean;
   /** Toggle `readOnly` */
   readOnly?: boolean;
-  /** Toggle `switch` attribute */
+  /** Toggle `switch` attribute */ /* TODO: Only when type="radio" / type="checkbox" */
   role?: 'switch' | (string & {}); // (string & {}) for better IntelliSense - see https://stackoverflow.com/a/61048124
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
@@ -47,11 +47,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   );
 });
 
-export type InputAddonsProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
-export const InputAddons = forwardRef<HTMLDivElement, InputAddonsProps>(
-  function InputAddons({ className, ...rest }, ref) {
-    return (
-      <div className={cl('ds-input-addons', className)} ref={ref} {...rest} />
-    );
+export type InputAffixWrapperProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'prefix'
+>;
+export const InputAffixWrapper = forwardRef<
+  HTMLDivElement,
+  InputAffixWrapperProps
+>(function InputAddons({ className, ...rest }, ref) {
+  return (
+    <div className={cl('ds-input-addons', className)} ref={ref} {...rest} />
+  );
+});
+
+export type InputAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
+export const InputAffix = forwardRef<HTMLSpanElement, InputAffixProps>(
+  function InputAffix(rest, ref) {
+    return <span aria-hidden='true' ref={ref} {...rest} />;
   },
 );

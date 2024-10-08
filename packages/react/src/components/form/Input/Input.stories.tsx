@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Button, Label, Paragraph } from '../..';
 
-import { Input, InputAddons } from '.';
+import { Input, InputAffix, InputAffixWrapper } from '.';
 
 type Story = StoryObj<typeof Input>;
 
@@ -105,11 +105,11 @@ export const Adornments: StoryFn<typeof Input> = (args) => (
     <Label htmlFor='input-html-size'>
       Hvor mange kroner koster det per måned?
     </Label>
-    <InputAddons>
-      <span aria-hidden='true'>NOK</span>
+    <InputAffixWrapper>
+      <InputAffix>NOK</InputAffix>
       <Input id='input-html-size' {...args} />
-      <span aria-hidden='true'>pr.mnd</span>
-    </InputAddons>
+      <InputAffix>pr.mnd</InputAffix>
+    </InputAffixWrapper>
   </>
 );
 

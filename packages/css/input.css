@@ -17,9 +17,11 @@
   --dsc-input-size--switch: var(--ds-sizing-13);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
-  --dsc-input-url--checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath d='M18.55 6.32a1 1 0 0 1 0 1.42l-7.97 7.97a1 1 0 0 1-1.41 0l-4.22-4.22a1 1 0 0 1 1.41-1.42l3.52 3.52 7.26-7.27a1 1 0 0 1 1.41 0'/%3E%3C/svg%3E");
+  --dsc-input-url--check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath d='M18.55 6.32a1 1 0 0 1 0 1.42l-7.97 7.97a1 1 0 0 1-1.41 0l-4.22-4.22a1 1 0 0 1 1.41-1.42l3.52 3.52 7.26-7.27a1 1 0 0 1 1.41 0'/%3E%3C/svg%3E");
   --dsc-input-url--indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12c0-1.1.9-2 2-2h12a2 2 0 1 1 0 4H6a2 2 0 0 1-2-2Z'/%3E%3C/svg%3E");
-  --dsc-input-url--radio: radial-gradient(circle closest-side, black 45%, transparent 50%); /* Different percentage to acheive antialiasing */
+  --dsc-input-url--circle: radial-gradient(circle closest-side, black 45%, transparent 50%); /* Different percentage to acheive antialiasing */
+
+  /* TODO: Switch hover */
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -32,7 +34,7 @@
   margin: 0; /* Reset native margin on checkbox and radio */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
-  transition-duration: 0.2s;
+  transition-duration: 0.2s; /* TODO: Do another loop with Lasse */
   transition-property: background, border, box-shadow, mask;
 
   @composes ds-body-text--md from './utilities.css';
@@ -125,19 +127,20 @@
   }
 
   &[type='radio'] {
-    --dsc-input-url: var(--dsc-input-url--radio);
+    --dsc-input-url: var(--dsc-input-url--circle);
 
     border-radius: var(--ds-border-radius-full);
   }
 
   &[type='checkbox'] {
-    --dsc-input-url: var(--dsc-input-url--checkbox);
+    --dsc-input-url: var(--dsc-input-url--check);
   }
 
   &[type='checkbox']:indeterminate {
     --dsc-input-url: var(--dsc-input-url--indeterminate);
   }
 
+  /* TODO: Do another loop with Øyvind */
   &[role='switch']:where([type='radio'], [type='checkbox']) {
     --inner-size: calc(var(--dsc-input-size--toggle) - var(--dsc-input-border-width--toggle) * 2);
 
@@ -145,7 +148,7 @@
     height: var(--dsc-input-size--toggle);
     width: var(--dsc-input-size--switch);
     mask:
-      content-box left/0 no-repeat var(--dsc-input-url--checkbox) exclude,
+      content-box left/0 no-repeat var(--dsc-input-url--check) exclude,
       linear-gradient(black, black) no-clip exclude,
       content-box radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) left/var(--inner-size) no-repeat;
 
@@ -154,9 +157,9 @@
       mask-size: contain, cover, var(--inner-size); /* right align radial-gradient */
     }
 
-    &:indeterminate {
-      mask-position: center;
-    }
+    /* &:indeterminate {
+      mask-position: center; /* TODO: Check with Lasse - remove?
+    } */
   }
 }
 
