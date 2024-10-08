@@ -6,8 +6,8 @@
   --dsc-modal-divider: 1px solid var(--ds-color-neutral-border-subtle);
   --dsc-modal-max-height: 80vh;
   --dsc-modal-max-width: 40rem;
-  --dsc-modal-padding-invert: calc(var(--dsc-modal-padding) * -1);
   --dsc-modal-padding: var(--ds-spacing-6);
+  --close-top-right: calc(var(--dsc-modal-padding) * -1 + var(--dsc-modal-close-margin));
 
   background: var(--dsc-modal-background);
   border-radius: min(1rem, var(--ds-border-radius-lg));
@@ -31,6 +31,12 @@
       fade-in 300ms ease-in-out;
   }
 
+  &:has(> .ds-modal__block) {
+    --close-top-right: var(--dsc-modal-close-margin);
+
+    padding: 0; /* Let Modal.Block own the padding */
+  }
+
   @media (max-width: 40rem) {
     min-width: 100%;
     max-width: 100%;
@@ -46,10 +52,8 @@
 
   /* Close button */
   & > form[method='dialog']:first-child > button:only-child {
-    --margin-top-right: calc(var(--dsc-modal-padding-invert) + var(--dsc-modal-close-margin));
-
     float: right;
-    margin: var(--margin-top-right) var(--margin-top-right) var(--dsc-modal-close-margin) var(--dsc-modal-close-margin);
+    margin: var(--close-top-right) var(--close-top-right) var(--dsc-modal-close-margin) var(--dsc-modal-close-margin);
     color: inherit;
 
     &::before {
@@ -63,18 +67,12 @@
   }
 }
 
-.ds-modal__header {
-  border-bottom: var(--dsc-modal-divider);
-  margin-block: var(--dsc-modal-padding-invert) var(--dsc-modal-padding);
-  margin-inline: var(--dsc-modal-padding-invert);
+.ds-modal__block {
   padding: var(--dsc-modal-padding);
-}
 
-.ds-modal__footer {
-  border-top: var(--dsc-modal-divider);
-  margin-block: var(--dsc-modal-padding) var(--dsc-modal-padding-invert);
-  margin-inline: var(--dsc-modal-padding-invert);
-  padding: var(--dsc-modal-padding);
+  & + & {
+    border-top: var(--dsc-modal-divider);
+  }
 }
 
 /* Prevent scroll when open */
