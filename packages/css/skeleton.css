@@ -22,8 +22,8 @@
     border-radius: var(--ds-border-radius-full);
     box-decoration-break: clone;
     display: inline;
-    font-size: 0.8em;
-    letter-spacing: 0.1em;
+    font-size: 0.8em; /* Scale down font to have larger gap between lines */
+    letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
   }
 
   /* When having children, let them define size */
@@ -41,30 +41,6 @@
     --dsc-skeleton-animation-duration: 1.6s;
   }
 }
-
-/* div {
-  max-width: 500px;
-}
-
-span {
-  color: transparent;
-  line-height: 1.4em;
-  box-decoration-break: clone;
-  border-radius: 4px;
-  background: linear-gradient(to right, #c1c0c0 33%, #f1f0f0, #c1c0c0 66%);
-  background-size: 300%;
-  animation: shimmer 2s infinite ease-in-out;
-}
-
-@keyframes shimmer {
-  from {
-    background-position: 100%;
-  }
-
-  to {
-    background-position: 0%;
-  }
-} */
 
 /* Animates background instead of opacity to make Axe Accessibility tests understand color: transparent is intentionally set */
 @keyframes ds-skeleton-opacity-fade {
