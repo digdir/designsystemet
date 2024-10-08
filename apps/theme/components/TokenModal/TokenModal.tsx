@@ -43,7 +43,7 @@ export const TokenModal = ({
   const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
   const [themeName, setThemeName] = useState('theme');
 
-  const cliSnippet = `npx @digdir/designsystemet tokens create \\
+  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
    --accent "${accentColor}" \\
    --neutral "${neutralColor}" \\
    --brand1 "${brand1Color}" \\
@@ -69,6 +69,36 @@ export const TokenModal = ({
     setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
     setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
   }, []);
+
+  type InfoBoxType = {
+    title: string;
+    desc: React.ReactNode;
+    img: React.ReactNode;
+    type?: 'code' | 'figma';
+  };
+
+  const InfoBox = ({ title, desc, img, type = 'figma' }: InfoBoxType) => {
+    return (
+      <div className={classes.infoBox}>
+        <div className={classes.infoBox__left}>
+          <div
+            className={cl(
+              classes.infoBox__icon,
+              type === 'code' && classes['infoBox__icon--code'],
+            )}
+          >
+            {img}
+          </div>
+        </div>
+        <div className={classes.infoBox__right}>
+          <div className={classes.infoBox__container}>
+            <Heading size='2xs'>{title}</Heading>
+            <Paragraph size='sm'>{desc}</Paragraph>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <Modal.Context>
@@ -107,62 +137,45 @@ export const TokenModal = ({
               }}
             />
             <div className={classes.infoBoxes}>
-              <div className={classes.infoBox}>
-                <div className={classes.infoBox__left}>
-                  <div
-                    className={cl(
-                      classes.infoBox__icon,
-                      classes['infoBox__icon--code'],
-                    )}
-                  >
-                    <CodeIcon aria-hidden='true' fontSize='1.9rem' />
-                  </div>
-                </div>
-                <div className={classes.infoBox__right}>
-                  <div className={classes.infoBox__container}>
-                    <Heading size='2xs'>Design tokens</Heading>
-                    <Paragraph size='sm'>
-                      Kopier kodesnutten og kjør den på maskinen din for å
-                      generere design tokens (json-filer). Sørg for at du har{' '}
-                      <Link target='_blank' href='https://nodejs.org/'>
-                        Node.js
-                      </Link>{' '}
-                      installert på maskinen din.
-                    </Paragraph>
-                  </div>
-                </div>
-              </div>
-              <div className={classes.infoBox}>
-                <div className={classes.infoBox__left}>
-                  <div className={classes.infoBox__icon}>
-                    <img src='img/figma-logo.png' alt='' />
-                  </div>
-                </div>
-                <div className={classes.infoBox__right}>
-                  <div className={classes.infoBox__container}>
-                    <Heading size='2xs'>Figma plugin (under utvikling)</Heading>
-                    <Paragraph size='sm'>
-                      Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
-                      <Link
-                        target='_blank'
-                        href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-                      >
-                        Figma plugin
-                      </Link>{' '}
-                      når du er i{' '}
-                      <Link
-                        target='_blank'
-                        href='https://www.figma.com/community/file/1322138390374166141'
-                      >
-                        Core UI Kit
-                      </Link>{' '}
-                      for å oppdatere et tema. Pluginen er kun ment for rask
-                      prototyping for øyeblikket. Bruk alternativet over for
-                      produksjon.
-                    </Paragraph>
-                  </div>
-                </div>
-              </div>
+              <InfoBox
+                title='Design tokens'
+                img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
+                type='code'
+                desc={
+                  <>
+                    Kopier kodesnutten og kjør den på maskinen din for å
+                    generere design tokens (json-filer). Sørg for at du har{' '}
+                    <Link target='_blank' href='https://nodejs.org/'>
+                      Node.js
+                    </Link>{' '}
+                    installert på maskinen din.
+                  </>
+                }
+              />
+              <InfoBox
+                title='Figma variabler'
+                img={<img src='img/figma-logo.png' alt='' />}
+                desc={
+                  <>
+                    Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                    >
+                      Figma plugin
+                    </Link>{' '}
+                    når du er i{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/file/1322138390374166141'
+                    >
+                      Core UI Kit
+                    </Link>{' '}
+                    for å oppdatere et tema. Pluginen oppdaterer kun farger for
+                    øyeblikket.
+                  </>
+                }
+              />
             </div>
           </div>
           <div className={classes.rightSection}>
