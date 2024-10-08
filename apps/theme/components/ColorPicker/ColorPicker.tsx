@@ -3,7 +3,7 @@ import { Popover } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx/lite';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 
 import classes from './ColorPicker.module.css';
@@ -40,9 +40,11 @@ export const ColorPicker = ({
     setColor(defaultColor);
   }, [defaultColor]);
 
-
   return (
-    <div ref={ref} className={cl(classes.whole, disabled && classes.disabled)}>
+    <div
+      ref={ref}
+      className={cl(classes.whole, disabled && classes.disabled)}
+    >
       <div className={classes.picker}>
         <div className={classes.label}>
           <span
@@ -50,7 +52,6 @@ export const ColorPicker = ({
           >
             {label}
           </span>
-
         </div>
         <button
           className={cl(classes.container, 'ds-focus')}

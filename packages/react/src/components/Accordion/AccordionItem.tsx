@@ -1,6 +1,8 @@
+import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { createContext, forwardRef, useId, useState } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
+import '@u-elements/u-details';
 
 export type AccordionItemProps = {
   /**
@@ -16,58 +18,57 @@ export type AccordionItemProps = {
    * @default false
    */
   defaultOpen?: boolean;
-  /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
-  children: ReactNode;
-} & HTMLAttributes<HTMLDivElement>;
-
-type AccordionItemContextProps = {
-  open: boolean;
-  toggleOpen: () => void;
-  contentId: string;
-};
-
-export const AccordionItemContext =
-  createContext<AccordionItemContextProps | null>(null);
+  /** Callback function when AccordionItem toggles due to click on summary or find in page-search */
+  onToggle?: (event: Event) => void;
+  /** Content should be one `<Accordion.Heading>` and `<Accordion.Content>` */
+  children?: ReactNode;
+} & Omit<HTMLAttributes<HTMLDetailsElement>, 'onToggle'> &
+  (
+    | { open: boolean; onToggle: (event: Event) => void }
+    | { open?: never; onToggle?: (event: Event) => void }
+  );
 
 /**
- * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
+ * Accordion item component, contains `Accordion.Heading` and `Accordion.Content` components.
  * @example
  * <AccordionItem>
  *  <AccordionHeading>Header</AccordionHeading>
  *  <AccordionContent>Content</AccordionContent>
  * </AccordionItem>
  */
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
-  ({ children, className, open, defaultOpen = false, ...rest }, ref) => {
-    const [internalOpen, setInternalOpen] = useState<boolean>(defaultOpen);
-    const contentId = useId();
+export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
+  function AccordionItem(
+    { className, open, defaultOpen = false, onToggle, ...rest },
+    ref,
+  ) {
+    const detailsRef = useRef<HTMLDetailsElement>(null);
+    const initialOpen = useRef(defaultOpen); // Allow rendering defaultOpen on server, but only render once on client
+    const mergedRefs = useMergeRefs([detailsRef, ref]);
+    const onToggleRef = useRef(onToggle); // Using ref to enable access inside useEffect without re-binding event listeners
+    const openRef = useRef(open);
+    onToggleRef.current = onToggle;
+    openRef.current = open;
+
+    // Provide onToggle event and controlled state
+    useEffect(() => {
+      const details = detailsRef.current;
+      const handleToggle = (event: Event) => {
+        if (!details || details?.open === openRef.current) return;
+        onToggleRef.current?.(event);
+        if (openRef.current !== undefined) details.open = openRef.current; // Don't update DOM unless controlled state changes
+      };
+
+      details?.addEventListener('toggle', handleToggle, true);
+      return () => details?.removeEventListener('toggle', handleToggle, true);
+    }, []);
 
     return (
-      <div
-        className={cl(
-          'ds-accordion__item',
-          (open ?? internalOpen) && 'ds-accordion__item--open',
-          className,
-        )}
-        ref={ref}
+      <u-details
+        class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
+        open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
+        ref={mergedRefs}
         {...rest}
-      >
-        <AccordionItemContext.Provider
-          value={{
-            open: open ?? internalOpen,
-            toggleOpen: () => {
-              if (open === undefined) {
-                setInternalOpen((iOpen) => !iOpen);
-              }
-            },
-            contentId: contentId,
-          }}
-        >
-          {children}
-        </AccordionItemContext.Provider>
-      </div>
+      />
     );
   },
 );
-
-AccordionItem.displayName = 'AccordionItem';

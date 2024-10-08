@@ -1,10 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 
 import { Button } from '../../Button';
-import { ChipRemovable } from '../../Chip';
+import { Chip } from '../../Chip';
+import { Heading } from '../../Heading';
 import { Modal } from '../../Modal';
-import { Paragraph } from '../../Typography';
+import { Paragraph } from '../../Paragraph';
 import { Switch } from '../Switch';
 
 import { data } from './data/data';
@@ -99,7 +101,7 @@ Preview.args = {
 };
 
 export const Multiple: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <>
@@ -128,8 +130,8 @@ Multiple.args = {
 };
 
 export const WithDescription: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [multiple, setMultiple] = React.useState<boolean>(false);
+  const [value, setValue] = useState<string[]>([]);
+  const [multiple, setMultiple] = useState<boolean>(false);
 
   return (
     <>
@@ -173,8 +175,8 @@ WithDescription.args = {
 };
 
 export const Controlled: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [multiple, setMultiple] = React.useState<boolean>(false);
+  const [value, setValue] = useState<string[]>([]);
+  const [multiple, setMultiple] = useState<boolean>(false);
 
   return (
     <>
@@ -217,10 +219,14 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-export const InForm: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+Controlled.args = {
+  label: 'Hvor går reisen?',
+};
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export const InForm: StoryFn<typeof Combobox> = (args) => {
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const values = Array.from(formData.values());
@@ -266,53 +272,39 @@ InForm.args = {
 };
 
 export const InModal: StoryFn<typeof Combobox> = (args) => {
-  const modalRef = React.useRef<HTMLDialogElement>(null);
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
-    <>
-      <Button
-        onClick={() => {
-          modalRef.current?.showModal();
-        }}
-      >
-        Open Modal
-      </Button>
-      <Modal.Root>
-        <Modal.Dialog
-          ref={modalRef}
-          style={{
-            overflow: 'visible',
+    <Modal.Context>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal style={{ overflow: 'visible' }}>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Combobox i Modal
+        </Heading>
+        <Combobox
+          {...args}
+          value={value}
+          multiple={true}
+          onValueChange={(value) => {
+            setValue(value);
           }}
+          label='Hvor går reisen?'
+          portal={false}
         >
-          <Modal.Header>Combobox i Modal</Modal.Header>
-          <Modal.Content>
-            <Combobox
-              {...args}
-              value={value}
-              multiple={true}
-              onValueChange={(value) => {
-                setValue(value);
-              }}
-              label='Hvor går reisen?'
-              portal={false}
-            >
-              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-              {PLACES.map((item, index) => (
-                <Combobox.Option key={index} value={item.value}>
-                  {item.name}
-                </Combobox.Option>
-              ))}
-            </Combobox>
-          </Modal.Content>
-        </Modal.Dialog>
-      </Modal.Root>
-    </>
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          {PLACES.map((item, index) => (
+            <Combobox.Option key={index} value={item.value}>
+              {item.name}
+            </Combobox.Option>
+          ))}
+        </Combobox>
+      </Modal>
+    </Modal.Context>
   );
 };
 
 export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <>
@@ -325,14 +317,14 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
         }}
       >
         {value.map((item, index) => (
-          <ChipRemovable
+          <Chip.Removable
             key={index}
             onClick={() => {
               setValue(value.filter((v) => v !== item));
             }}
           >
             {item}
-          </ChipRemovable>
+          </Chip.Removable>
         ))}
       </div>
 
@@ -359,7 +351,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const SelectAll: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>(['all']);
+  const [value, setValue] = useState<string[]>(['all']);
 
   const handleValueChange = (newVal: string[]) => {
     setValue(newVal);
@@ -399,7 +391,7 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
 };
 
 export const Virtualized: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
+  const [value, setValue] = useState<string[]>([]);
 
   return (
     <Combobox
@@ -431,9 +423,9 @@ Virtualized.args = {
 };
 
 export const Loading: StoryFn<typeof Combobox> = (args) => {
-  const [value, setValue] = React.useState<string[]>([]);
-  const [options, setOptions] = React.useState<typeof PLACES>([]);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [value, setValue] = useState<string[]>([]);
+  const [options, setOptions] = useState<typeof PLACES>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchOptions = () => {
     if (!loading) return;
@@ -502,15 +494,16 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
 };
 
 ThousandsOfOptions.args = {
+  label: 'Hvor går reisen?',
   virtual: true,
 };
 
 export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
-  const [selectedValues, setSelectedValues] = React.useState<string[]>([
+  const [selectedValues, setSelectedValues] = useState<string[]>([
     'test1',
     'test2',
   ]);
-  const [values, setValues] = React.useState<string[]>(['test1', 'test2']);
+  const [values, setValues] = useState<string[]>(['test1', 'test2']);
 
   const handleComboboxChange = (values: string[]) => {
     setSelectedValues(values);
@@ -556,9 +549,13 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-export const WithNumberValues: StoryFn<typeof Combobox> = () => {
+RemoveAllOptions.args = {
+  label: 'Hvor går reisen?',
+};
+
+export const WithNumberValues: StoryFn<typeof Combobox> = (args) => {
   return (
-    <Combobox initialValue={['2000']}>
+    <Combobox {...args} initialValue={['2000']}>
       <Combobox.Option id={'3000'} key={'3000'} value={'3000'}>
         some value
       </Combobox.Option>
@@ -567,4 +564,8 @@ export const WithNumberValues: StoryFn<typeof Combobox> = () => {
       </Combobox.Option>
     </Combobox>
   );
+};
+
+WithNumberValues.args = {
+  label: 'Hvor går reisen?',
 };

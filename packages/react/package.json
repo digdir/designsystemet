@@ -1,9 +1,12 @@
 {
   "name": "@digdir/designsystemet-react",
-  "version": "1.0.0-next.17",
+  "version": "1.0.0-next.35",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
-  "repository": "https://github.com/digdir/designsystemet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
   "license": "MIT",
   "types": "dist/types/index.d.ts",
@@ -32,10 +35,13 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.21",
+    "@floating-ui/dom": "^1.6.10",
+    "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^6.14.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@tanstack/react-virtual": "^3.8.4"
+    "@tanstack/react-virtual": "^3.10.7",
+    "@u-elements/u-details": "^0.1.0",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
@@ -49,8 +55,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^6.0.1",
-    "rollup": "^4.20.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup": "^4.22.4",
     "typescript": "^5.5.4"
   }
 }

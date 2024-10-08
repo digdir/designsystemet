@@ -19,19 +19,9 @@ export default {
 
 export const Preview: Story = {
   args: {
-    title: 'Help text title',
+    'aria-label': 'Help text title',
     children: 'Help text content',
     size: 'md',
   },
   decorators,
-};
-
-export const Portal: Story = {
-  args: {
-    title: 'Help text title',
-    children: 'Help text content',
-    size: 'md',
-    portal: true,
-    placement: 'top',
-  },
 };

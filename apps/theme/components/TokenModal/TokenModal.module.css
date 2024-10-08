@@ -1,45 +1,83 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  margin-top: var(--ds-spacing-6);
 }
 
-.column {
-  width: calc(50% - 16px);
-  background-color: white;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: var(--ds-shadow-sm);
-  border: 1px solid #f3f3f3;
+.leftSection,
+.rightSection {
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
-.snippet {
-  height: 400px;
-  overflow: auto;
+.leftSection {
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
+  padding-right: var(--ds-spacing-8);
+}
+
+.rightSection {
+  padding: var(--ds-spacing-4) 0 var(--ds-spacing-4) var(--ds-spacing-8);
+}
+
+.infoBoxes {
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-top: var(--ds-spacing-8);
+  padding-top: var(--ds-spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-8);
+}
+
+.infoBox {
+  display: flex;
+  gap: var(--ds-spacing-3);
+}
+
+.infoBox__container {
+  gap: var(--ds-spacing-1);
+  display: flex;
+  flex-direction: column;
+}
+
+.infoBox__icon {
+  height: 32px;
+  width: 32px;
+  background-color: black;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: -3px;
+}
+
+.infoBox__icon img {
+  height: 16px;
+}
+
+.infoBox__icon--code {
+  background: linear-gradient(137deg, #4ebbff 4.89%, #1c49ff 95.99%);
+}
+
+.contact {
+  margin-top: var(--ds-spacing-6);
+  gap: 8px;
+  display: flex;
+}
+
+.contact__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .snippet code {
   background-color: transparent;
+  height: 290px;
+  display: block;
 }
 
-.tabsContent {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.modalContent {
-  padding-bottom: 24px;
-}
-
-.tabs {
-  margin-bottom: 16px;
-}
-
-.title {
-  margin-bottom: 16px;
-}
-
-.modalHeader h2 {
+.modalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,30 +85,27 @@
 
 .headerText {
   margin-right: auto;
-  font-size: 24px;
+  font-size: var(--ds-spacing-6);
 }
 
 .emblem {
   height: 26px;
-  margin-right: 10px;
+  margin-right: var(--ds-spacing-2);
 }
 
-.shareBtn {
-  margin-right: 8px;
-  font-weight: 500;
-}
+@media (max-width: 1150px) {
+  .content {
+    flex-direction: column;
+  }
 
-.modalHeader > button {
-  right: 22px;
-  top: 22px;
-}
+  .leftSection {
+    border: none;
+    padding: 0;
+  }
 
-.hiddenGlobalBtn {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 48px;
-  width: 48px;
-  background-color: transparent;
-  border: transparent;
+  .rightSection {
+    padding: 0;
+    margin-top: 32px;
+    width: 100%;
+  }
 }

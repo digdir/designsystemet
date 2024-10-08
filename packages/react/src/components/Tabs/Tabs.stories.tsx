@@ -14,20 +14,20 @@ import { Tabs } from '.';
 
 export default {
   title: 'Komponenter/Tabs',
-  component: Tabs.Root,
+  component: Tabs,
 } as Meta;
 
-export const Preview: StoryFn<typeof Tabs.Root> = (args) => (
-  <Tabs.Root {...args}>
+export const Preview: StoryFn<typeof Tabs> = (args) => (
+  <Tabs {...args}>
     <Tabs.List>
       <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
       <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
       <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
     </Tabs.List>
-    <Tabs.Content value='value1'>content 1</Tabs.Content>
-    <Tabs.Content value='value2'>content 2</Tabs.Content>
-    <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs.Root>
+    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+  </Tabs>
 );
 
 Preview.args = {
@@ -36,7 +36,7 @@ Preview.args = {
 };
 
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
-  <Tabs.Root defaultValue='value1'>
+  <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
         <AirplaneIcon title='Airplane' fontSize='1.75rem' />
@@ -48,10 +48,10 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
         <DogIcon title='Dog' fontSize='1.75rem' />
       </Tabs.Tab>
     </Tabs.List>
-    <Tabs.Content value='value1'>content 1</Tabs.Content>
-    <Tabs.Content value='value2'>content 2</Tabs.Content>
-    <Tabs.Content value='value3'>content 3</Tabs.Content>
-  </Tabs.Root>
+    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+  </Tabs>
 );
 
 export const Controlled: StoryFn<typeof Tabs> = () => {
@@ -63,25 +63,25 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
         Choose Tab 3
       </Button>
       <br />
-      <Tabs.Root value={value} onChange={setValue}>
+      <Tabs value={value} onChange={setValue}>
         <Tabs.List>
           <Tabs.Tab value='value1'>
-            <BellIcon fontSize='1.75rem' />
+            <BellIcon fontSize='1.75rem' aria-hidden />
             Tab 1
           </Tabs.Tab>
           <Tabs.Tab value='value2'>
-            <NewspaperIcon fontSize='1.75rem' />
+            <NewspaperIcon fontSize='1.75rem' aria-hidden />
             Tab 2
           </Tabs.Tab>
           <Tabs.Tab value='value3'>
-            <BackpackIcon fontSize='1.75rem' />
+            <BackpackIcon fontSize='1.75rem' aria-hidden />
             Tab 3
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Content value='value1'>content 1</Tabs.Content>
-        <Tabs.Content value='value2'>content 2</Tabs.Content>
-        <Tabs.Content value='value3'>content 3</Tabs.Content>
-      </Tabs.Root>
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+        <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+      </Tabs>
     </>
   );
 };

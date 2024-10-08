@@ -4,7 +4,9 @@ import type { ReactNode, TextareaHTMLAttributes } from 'react';
 import { forwardRef, useState } from 'react';
 
 import { omit } from '../../../utilities';
-import { ErrorMessage, Label, Paragraph } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
+import { ValidationMessage } from '../../ValidationMessage';
 import type { CharacterLimitProps } from '../CharacterCounter';
 import { CharacterCounter } from '../CharacterCounter';
 import type { FormFieldProps } from '../useFormField';
@@ -134,7 +136,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             aria-live='polite'
             aria-relevant='additions removals'
           >
-            {hasError && <ErrorMessage size={size}>{props.error}</ErrorMessage>}
+            {hasError && (
+              <ValidationMessage size={size}>{props.error}</ValidationMessage>
+            )}
           </div>
         </div>
       </Paragraph>

@@ -5,8 +5,8 @@ import {
   Checkbox,
   Chip,
   Combobox,
-  NativeSelect,
   Radio,
+  Select,
   Switch,
   Tag,
   Textfield,
@@ -14,6 +14,15 @@ import {
 
 export default {
   title: 'Testing',
+  parameters: {
+    a11y: {
+      /*
+      These stories only exist to test sizing/alignment, so we don't want to
+      do the work to add correct aria attributes.
+      */
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div
@@ -51,11 +60,11 @@ export const MediumRow: StoryFn<{
           suffix='suffix'
         />
 
-        <NativeSelect size={size}>
-          <option>opt1</option>
-          <option>opt2</option>
-          <option>opt3</option>
-        </NativeSelect>
+        <Select size={size}>
+          <Select.Option>opt1</Select.Option>
+          <Select.Option>opt2</Select.Option>
+          <Select.Option>opt3</Select.Option>
+        </Select>
         <Button size={size}>Knapp</Button>
         <Combobox size={size}>
           <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
@@ -74,7 +83,7 @@ export const MediumRow: StoryFn<{
       >
         <Switch size={size}>Switch</Switch>
         <Switch size={size} aria-label='no label switch'></Switch>
-        <Chip.Toggle>Toggle</Chip.Toggle>
+        <Chip.Checkbox>Toggle</Chip.Checkbox>
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 

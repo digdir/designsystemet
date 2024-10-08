@@ -1,7 +1,7 @@
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { Link } from '.';
 
@@ -29,24 +29,28 @@ export const Normal: Story = {
   },
 };
 
-export const InText: StoryFn<typeof Link> = () => (
+export const InText: StoryFn = (args) => (
   <>
     <Paragraph>
       Vi bruker komponenter fra{' '}
-      <Link href={designsystemetLink}>et fantastisk designsystem</Link>.
-    </Paragraph>
-    <Paragraph>
-      <Link href='mailto:designsystem@digdir.no'>
-        <EnvelopeClosedIcon aria-hidden />
-        Kontakt oss
+      <Link href={designsystemetLink} {...args}>
+        et fantastisk designsystem
       </Link>
+      .
     </Paragraph>
   </>
 );
 
-export const LongLink: StoryFn<typeof Link> = () => (
+export const WithIcon: StoryFn = (args) => (
+  <Link href='mailto:designsystem@digdir.no' {...args}>
+    <EnvelopeClosedIcon aria-hidden />
+    Kontakt oss
+  </Link>
+);
+
+export const LongLink: StoryFn = (args) => (
   <Paragraph>
-    <Link href={designsystemetLink}>
+    <Link href={designsystemetLink} {...args}>
       Dette er en lenke som brekker over flere linjer
     </Link>
   </Paragraph>

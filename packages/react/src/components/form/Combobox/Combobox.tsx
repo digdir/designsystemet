@@ -1,13 +1,12 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import cl from 'clsx/lite';
-import { forwardRef, useEffect, useId, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
 import type { PortalProps } from '../../../types/Portal';
 import { omit, useDebounceCallback } from '../../../utilities';
-import { Box } from '../../Box';
-import { Spinner } from '../../Spinner';
+import { Spinner } from '../../loaders/Spinner';
 import type { FormFieldProps } from '../useFormField';
 import { useFormField } from '../useFormField';
 
@@ -156,8 +155,6 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
-
-    const listId = useId();
 
     const [inputValue, setInputValue] = useState<string>(rest.inputValue || '');
 
@@ -367,7 +364,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           },
         }}
       >
-        <Box
+        <div
           className={cl(
             'ds-combobox',
             `ds-combobox--${size}`,
@@ -397,7 +394,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           <ComboboxInput
             {...omit(['inputValue'], rest)}
             hideClearButton={hideClearButton}
-            listId={listId}
+            listId={context.floatingId}
             error={error}
             hideChips={hideChips}
             handleKeyDown={handleKeyDown}
@@ -408,7 +405,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
             error={error}
             formFieldProps={formFieldProps}
           />
-        </Box>
+        </div>
         {/* This is the floating list with options */}
         {open && (
           <FloatingPortal root={portal ? null : portalRef}>
@@ -417,11 +414,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
               initialFocus={-1}
               visuallyHiddenDismiss
             >
-              <Box
-                id={listId}
-                shadow='md'
-                borderRadius='md'
-                borderColor='default'
+              <div
                 aria-labelledby={formFieldProps.inputProps.id}
                 aria-autocomplete='list'
                 tabIndex={-1}
@@ -476,7 +469,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
                     {!virtual && filteredOptionsChildren}
                   </>
                 )}
-              </Box>
+              </div>
             </FloatingFocusManager>
           </FloatingPortal>
         )}

@@ -1,6 +1,5 @@
 # Built files
 dist
-build
 ignore
 tsc-build
 
@@ -36,3 +35,6 @@ coverage/
 
 # Typescript
 next-env.d.ts
+
+# jest/vitest test reports
+test-report.xml

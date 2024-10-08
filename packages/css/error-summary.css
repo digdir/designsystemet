@@ -5,9 +5,15 @@
   --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
   --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
 
-  padding: var(--dsc-errorsummary-padding);
-  border-radius: var(--dsc-errorsummary-border-radius);
   background-color: var(--dsc-errorsummary-background);
+  border-radius: var(--dsc-errorsummary-border-radius);
+  box-sizing: border-box;
+  padding: var(--dsc-errorsummary-padding);
+
+  & :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--dsc-errorsummary-heading-color);
+    margin-bottom: var(--ds-spacing-2);
+  }
 
   & a {
     color: var(--dsc-errorsummary-link-color);
@@ -16,8 +22,4 @@
   & li:last-of-type {
     margin-bottom: 0;
   }
-}
-
-.ds-error-summary__heading {
-  color: var(--dsc-errorsummary-heading-color);
 }

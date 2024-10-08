@@ -1,0 +1,75 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+
+import * as AvatarStories from './Avatar.stories';
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+`Avatar` er en komponent som viser et bilde, initialer eller ikon for en bruker eller profil.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { Avatar } from '@digdir/designsystemet-react';
+
+/* Med standard brukerikon */
+<Avatar aria-label="Ola Nordmann" />
+
+/* Med initialer */
+<Avatar aria-label="Ola Nordmann">ON</Avatar>
+
+/* Med bilde */
+<Avatar aria-label="Ola Nordmann">
+  <img src="..." />
+</Avatar>
+```
+
+## Standard ikon
+
+Sender du ikke inn `children` viser vi et standard brukerikon.	
+
+<Canvas of={AvatarStories.NoName} />
+
+## Størrelser
+
+`Avatar` kommer i flere størrelser. Tekst og ikon vil skalere, men det kan hende ikonet ditt må tilpasses.
+
+<Canvas of={AvatarStories.Sizes} />
+
+## Fargevarianter
+
+Du kan bruke alle tema fargene dine på `Avatar`.
+
+<Canvas of={AvatarStories.ColorVariants} />
+
+## Varianter
+
+Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
+
+<Canvas of={AvatarStories.ShapeVariants} />
+
+## Med bilde
+
+Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
+
+Bilde (og andre child elements) får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
+
+<Canvas of={AvatarStories.WithImage} />
+
+## Komponering
+
+Du kan komponere `Avatar` inn i andre komponenter, som `DropdownMenu`, samt bruke komponenter som
+`Badge` rundt for å vise status.
+
+<Canvas of={AvatarStories.InDropdown} />
+
+## Som lenke
+
+Legg lenker eller knapper rundt `Avatar` for å gjøre det klikkbart.
+Du må selv sette styling dersom du skal ha en interaktiv `Avatar`.
+
+<Canvas of={AvatarStories.AsLink} />

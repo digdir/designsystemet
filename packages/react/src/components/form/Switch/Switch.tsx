@@ -4,7 +4,8 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label, Paragraph } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSwitch } from './useSwitch';
@@ -38,7 +39,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     } = useSwitch(props);
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph
+        asChild
+        size={size}
+        {...(inputProps.disabled && { 'aria-disabled': true })}
+      >
         <div
           className={cl(
             `ds-switch`,

@@ -1,6 +1,5 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
-import { Paragraph, type ParagraphProps } from '../Typography';
 
 export type BadgeProps = {
   /**
@@ -41,14 +40,6 @@ export type BadgeProps = {
   children?: ReactNode;
 } & HTMLAttributes<HTMLSpanElement>;
 
-const paragraphSizeMap: {
-  [key in NonNullable<BadgeProps['size']>]: NonNullable<ParagraphProps['size']>;
-} = {
-  sm: 'xs',
-  md: 'sm',
-  lg: 'md',
-};
-
 /**
  * `Badge` is a non-interactive component for displaying status with or without numbers.
  *
@@ -64,43 +55,31 @@ const paragraphSizeMap: {
  * </Badge>
  * ```
  */
-export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  (
-    {
-      color = 'accent',
-      size = 'md',
-      placement = 'top-right',
-      overlap = 'rectangle',
-      count,
-      maxCount,
-      children,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
-    return (
-      <div className={cl('ds-badge__wrapper', className)}>
-        {children}
-        <Paragraph asChild variant='short' size={paragraphSizeMap[size]}>
-          <span
-            className={cl(
-              'ds-badge',
-              `ds-badge--${size}`,
-              `ds-badge--${color}`,
-              count && 'ds-badge--count',
-              children && `ds-badge--${placement}__${overlap}`,
-              children && 'ds-badge--float',
-            )}
-            ref={ref}
-            {...rest}
-          >
-            {maxCount && count && count > maxCount ? `${maxCount}+` : count}
-          </span>
-        </Paragraph>
-      </div>
-    );
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
+  {
+    className,
+    color = 'accent',
+    count,
+    maxCount,
+    overlap = 'rectangle',
+    placement = 'top-right',
+    size = 'md',
+    ...rest
   },
-);
-
-Badge.displayName = 'Badge';
+  ref,
+) {
+  return (
+    <span
+      className={cl('ds-badge', className)}
+      data-color={color}
+      data-count={
+        count && maxCount && count > maxCount ? `${maxCount}+` : count
+      }
+      data-overlap={rest.children ? overlap : null}
+      data-placement={rest.children ? placement : null}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
+  );
+});

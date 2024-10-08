@@ -1,31 +1,83 @@
 #!/usr/bin/env node
-import { Argument, Command, program } from '@commander-js/extra-typings';
+import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import { makeInitCommand } from '../src/init/index.js';
+import { convertToHex } from '../src/colors/index.js';
+import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
-import { run } from '../src/tokens/build.js';
+import { buildTokens } from '../src/tokens/build.js';
+import { typography } from '../src/tokens/build/formats/css';
+import { createTokens } from '../src/tokens/create.js';
+import { writeTokens } from '../src/tokens/write.js';
 
-program.name('Designsystemet').description('CLI for working with Designsystemet');
+program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
-program
-  .command('tokens')
-  .showHelpAfterError()
-  .description('run Designsystemet token builder')
-  .option('-t, --tokens [string]', `Path to ${chalk.blue('design-tokens')}`, './design-tokens')
-  .option('-o, --out [string]', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
-  .option('-p, --preview', 'Generate preview token.ts files', false)
-  .action((opts) => {
-    const tokens = typeof opts.tokens === 'string' ? opts.tokens : './design-tokens';
-    const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
-    const preview = opts.preview;
-    console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-    return run({ tokens, out, preview });
-  });
+function makeTokenCommands() {
+  const tokenCmd = createCommand('tokens');
+  const DEFAULT_TOKENSDIR = './design-tokens';
+
+  tokenCmd
+    .command('build')
+    .description('Build Designsystemet tokens')
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
+    .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
+    .option('-p, --preview', 'Generate preview token.ts files', false)
+    .option('--verbose', 'Enable verbose output', false)
+    .action((opts) => {
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENSDIR;
+      const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
+      const preview = opts.preview;
+      const verbose = opts.verbose;
+      console.log(`Bulding tokens in ${chalk.green(tokens)}`);
+      return buildTokens({ tokens, out, preview, verbose });
+    });
+
+  tokenCmd
+    .command('create')
+    .description('Create Designsystemet tokens')
+    .requiredOption('-a, --accent <number>', `Accent hex color`)
+    .requiredOption('-n, --neutral <number>', `Neutral hex color`)
+    .requiredOption('-b1, --brand1 <number>', `Brand1 hex color`)
+    .requiredOption('-b2, --brand2 <number>', `Brand2 hex color`)
+    .requiredOption('-b3, --brand3 <number>', `Brand3 hex color`)
+    .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
+    .option('-f, --font-family <string>', `Font family`, 'Inter')
+    .option('--theme <string>', `Theme name`, 'theme')
+    .action(async (opts) => {
+      const { theme, fontFamily } = opts;
+      console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
+      const write = typeof opts.write === 'boolean' ? DEFAULT_TOKENSDIR : opts.write;
+
+      const props = {
+        themeName: theme,
+        colors: {
+          accent: convertToHex(opts.accent),
+          neutral: convertToHex(opts.neutral),
+          brand1: convertToHex(opts.brand1),
+          brand2: convertToHex(opts.brand2),
+          brand3: convertToHex(opts.brand3),
+        },
+        typography: {
+          fontFamily: fontFamily,
+        },
+      };
+
+      const tokens = createTokens(props);
+
+      if (write) {
+        await writeTokens({ writeDir: write, tokens, themeName: theme });
+      }
+
+      return Promise.resolve();
+    });
+
+  return tokenCmd;
+}
+
+program.addCommand(makeTokenCommands());
 
 program
   .command('migrate')
-  .showHelpAfterError()
   .description('run a Designsystemet migration')
   .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
@@ -53,6 +105,12 @@ program
     }
   });
 
-program.addCommand(makeInitCommand(new Command('init')));
+program
+  .command('init')
+  .description('create an initial token structure for Designsystemet')
+  .addArgument(new Argument('<targetDir>', 'Target directory for the generated code'))
+  .action(async (targetDir) => {
+    await createTokensPackage(targetDir);
+  });
 
 await program.parseAsync(process.argv);

@@ -15,6 +15,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
+import { Label } from '../Label';
 
 type Story = StoryFn<typeof Table>;
 
@@ -119,16 +120,14 @@ export const Sortable: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell
-            sortable
-            sort={sortField === 'navn' ? sortDirection : undefined}
+            sort={sortField === 'navn' ? sortDirection : 'none'}
             onClick={() => handleSort('navn')}
           >
             Navn
           </TableHeaderCell>
           <TableHeaderCell>Epost</TableHeaderCell>
           <TableHeaderCell
-            sortable
-            sort={sortField === 'telefon' ? sortDirection : undefined}
+            sort={sortField === 'telefon' ? sortDirection : 'none'}
             onClick={() => handleSort('telefon')}
           >
             Telefon
@@ -174,6 +173,7 @@ export const StickyHeader: Story = (args) => {
 
 StickyHeader.args = {
   stickyHeader: true,
+  tabIndex: 0,
 };
 
 StickyHeader.decorators = [
@@ -228,13 +228,16 @@ export const WithFormElements: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell>
-            <Checkbox
-              checked={headerChecked}
-              onChange={handleHeaderCheckboxChange}
-              indeterminate={interderminate}
-              value='all'
-              size='sm'
-            />
+            <Label style={{ display: 'flex', gap: '8px' }}>
+              <Checkbox
+                checked={headerChecked}
+                onChange={handleHeaderCheckboxChange}
+                indeterminate={interderminate}
+                value='all'
+                size='sm'
+              />
+              Selection
+            </Label>
           </TableHeaderCell>
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>
@@ -246,6 +249,7 @@ export const WithFormElements: Story = (args) => {
           <TableRow key={row}>
             <TableCell>
               <Checkbox
+                aria-label={`Checkbox ${row}`}
                 checked={!!checkedItems[row]}
                 value={row.toString()}
                 onChange={(event) => handleCheckboxChange(event, row)}
@@ -255,7 +259,7 @@ export const WithFormElements: Story = (args) => {
             <TableCell>1</TableCell>
             <TableCell>2</TableCell>
             <TableCell>
-              <Textfield size='sm' />
+              <Textfield size='sm' aria-label={`Textfield ${row}`} />
             </TableCell>
           </TableRow>
         ))}
@@ -278,6 +282,34 @@ export const FixedTable: Story = (args) => {
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>
           <TableHeaderCell>Header 3</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row}>
+            <TableCell>{`Cell ${row}1`}</TableCell>
+            <TableCell>{`Cell ${row}2`}</TableCell>
+            <TableCell>{`Cell ${row}3`}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+export const MultipleHeaderRows: Story = (args) => {
+  const rows = Array.from({ length: 50 }, (_, i) => i + 1);
+  return (
+    <Table {...args}>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Header 1</TableHeaderCell>
+          <TableHeaderCell colSpan={2}>Header 2</TableHeaderCell>
+        </TableRow>
+        <TableRow>
+          <TableHeaderCell>Header 3</TableHeaderCell>
+          <TableHeaderCell>Header 4</TableHeaderCell>
+          <TableHeaderCell>Header 5</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>

@@ -2,20 +2,18 @@
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
-  Button,
   Heading,
+  Link,
   Modal,
-  Tabs,
-  Tooltip,
+  Paragraph,
+  Textfield,
 } from '@digdir/designsystemet-react';
-import type { ColorInfo, ColorType } from '@digdir/designsystemet/color';
-import { generateScaleForColor } from '@digdir/designsystemet/color';
-import { ArrowForwardIcon } from '@navikt/aksel-icons';
+import { createTokens } from '@digdir/designsystemet/tokens/create.js';
+import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
 
-import { Settings } from '../../settings';
-import type { modeType } from '../../types';
+import cl from 'clsx/lite';
 
 import classes from './TokenModal.module.css';
 
@@ -28,6 +26,9 @@ type TokenModalProps = {
   borderRadius: string;
 };
 
+const toFigmaSnippet = (obj: unknown) =>
+  JSON.stringify(obj, null, 2).replaceAll('$', '');
+
 export const TokenModal = ({
   accentColor,
   neutralColor,
@@ -37,243 +38,178 @@ export const TokenModal = ({
   borderRadius,
 }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const [JSONTheme, setJSONTheme] = useState('');
-  const [css, setCss] = useState(
-    ':root { --color-1: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; --color-2: #F45F63; }',
-  );
-  const [toolTipText, setToolTipText] = useState('Kopier nettaddresse');
-  const [showGlobals, setShowGlobals] = useState(false);
 
-  const generateJsonForColor = (colorArray: ColorInfo[]) => {
-    const obj: { [key: string]: { value: string; type: string } } = {};
-    for (let i = 0; i < colorArray.length; i++) {
-      if (i === 13 && colorArray.length >= 14) {
-        obj['contrast-1'] = {
-          value: colorArray[i].hex,
-          type: 'color',
-        };
-      } else if (i === 14 && colorArray.length >= 15) {
-        obj['contrast-2'] = {
-          value: colorArray[i].hex,
-          type: 'color',
-        };
-      } else {
-        obj[i + 1] = { value: colorArray[i].hex, type: 'color' };
-      }
-    }
-    return obj;
-  };
+  const [lightThemeSnippet, setLightThemeSnippet] = useState('');
+  const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
+  const [themeName, setThemeName] = useState('theme');
 
-  const genereateGlobalsJson = (theme: modeType) => {
-    const blueScale = generateScaleForColor(Settings.blueBaseColor, theme);
-    const greenScale = generateScaleForColor(Settings.greenBaseColor, theme);
-    const orangeScale = generateScaleForColor(Settings.orangeBaseColor, theme);
-    const purpleScale = generateScaleForColor(Settings.purpleBaseColor, theme);
-    const redScale = generateScaleForColor(Settings.redBaseColor, theme);
-    const yellowScale = generateScaleForColor(Settings.yellowBaseColor, theme);
-
-    const obj = {
-      global: {
-        blue: generateJsonForColor(blueScale),
-        green: generateJsonForColor(greenScale),
-        orange: generateJsonForColor(orangeScale),
-        purple: generateJsonForColor(purpleScale),
-        red: generateJsonForColor(redScale),
-        yellow: generateJsonForColor(yellowScale),
-      },
-    };
-
-    const json = JSON.stringify(obj, null, '\t');
-    setJSONTheme(json);
-  };
-
-  const generateThemeJson = (theme: modeType) => {
-    const accentColors = generateScaleForColor(accentColor, theme);
-    const neutralColors = generateScaleForColor(neutralColor, theme);
-    const brand1Colors = generateScaleForColor(brand1Color, theme);
-    const brand2Colors = generateScaleForColor(brand2Color, theme);
-    const brand3Colors = generateScaleForColor(brand3Color, theme);
-
-    const obj = {
-      theme: {
-        accent: generateJsonForColor(accentColors),
-        neutral: generateJsonForColor(neutralColors),
-        brand1: generateJsonForColor(brand1Colors),
-        brand2: generateJsonForColor(brand2Colors),
-        brand3: generateJsonForColor(brand3Colors),
-      },
-    };
-
-    const json = JSON.stringify(obj, null, '\t');
-    setJSONTheme(json);
-  };
-
-  const generateCSSVars = (theme: modeType) => {
-    const accentColors = generateScaleForColor(accentColor, theme);
-    const neutralColors = generateScaleForColor(neutralColor, theme);
-    const brand1Colors = generateScaleForColor(brand1Color, theme);
-    const brand2Colors = generateScaleForColor(brand2Color, theme);
-    const brand3Colors = generateScaleForColor(brand3Color, theme);
-
-    const obj = {
-      theme: {
-        accent: generateJsonForColor(accentColors),
-        neutral: generateJsonForColor(neutralColors),
-        brand1: generateJsonForColor(brand1Colors),
-        brand2: generateJsonForColor(brand2Colors),
-        brand3: generateJsonForColor(brand3Colors),
-      },
-    };
-
-    let CSS = '';
-
-    if (theme === 'light') {
-      CSS = ':root, [data-ds-theme="light"] {';
-    } else if (theme === 'dark') {
-      CSS = '[data-ds-theme="dark"] {';
-    } else {
-      CSS = '[data-ds-theme="contrast"] {';
-    }
-
-    CSS += `--ds-border-radius-base: ${borderRadius};`;
-
-    for (const key in obj.theme) {
-      for (const color in obj.theme[key as ColorType]) {
-        CSS += `--ds-color-${key}-${color}: ${obj.theme[key as ColorType][color].value};`;
-      }
-    }
-    CSS += '}';
-    return CSS;
-  };
-
-  const onButtonClick = () => {
-    setToolTipText('Kopiert!');
-    navigator.clipboard.writeText(window.location.href).catch((reason) => {
-      throw Error(String(reason));
-    });
-  };
+  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
+   --accent "${accentColor}" \\
+   --neutral "${neutralColor}" \\
+   --brand1 "${brand1Color}" \\
+   --brand2 "${brand2Color}" \\
+   --brand3 "${brand3Color}" \\
+   --theme "${themeName}" \\
+   --write
+   `;
 
   useEffect(() => {
-    generateThemeJson('light');
-    const lightCSS = generateCSSVars('light');
-    const darkCSS = generateCSSVars('dark');
-    const contrastCSS = generateCSSVars('contrast');
-    setCss(lightCSS + darkCSS + contrastCSS);
+    const tokens = createTokens({
+      colors: {
+        accent: accentColor,
+        neutral: neutralColor,
+        brand1: brand1Color,
+        brand2: brand2Color,
+        brand3: brand3Color,
+      },
+      typography: { fontFamily: 'Inter' },
+      themeName: 'theme',
+    });
+
+    setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
+    setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
   }, []);
 
+  type InfoBoxType = {
+    title: string;
+    desc: React.ReactNode;
+    img: React.ReactNode;
+    type?: 'code' | 'figma';
+  };
+
+  const InfoBox = ({ title, desc, img, type = 'figma' }: InfoBoxType) => {
+    return (
+      <div className={classes.infoBox}>
+        <div className={classes.infoBox__left}>
+          <div
+            className={cl(
+              classes.infoBox__icon,
+              type === 'code' && classes['infoBox__icon--code'],
+            )}
+          >
+            {img}
+          </div>
+        </div>
+        <div className={classes.infoBox__right}>
+          <div className={classes.infoBox__container}>
+            <Heading size='2xs'>{title}</Heading>
+            <Paragraph size='sm'>{desc}</Paragraph>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <Modal.Root>
+    <Modal.Context>
       <Modal.Trigger
         onClick={() => {
-          generateThemeJson('light');
-          const lightCSS = generateCSSVars('light');
-          const darkCSS = generateCSSVars('dark');
-          const contrastCSS = generateCSSVars('contrast');
-          setCss(lightCSS + darkCSS + contrastCSS);
           return modalRef.current?.showModal();
         }}
       >
-        Kopier tema
+        Ta i bruk tema
       </Modal.Trigger>
-      <Modal.Dialog
-        ref={modalRef}
-        onInteractOutside={() => modalRef.current?.close()}
-        style={{
-          maxWidth: '1400px',
-        }}
+      <Modal
         className={classes.modal}
+        style={{ maxWidth: 1150 }}
+        ref={modalRef}
+        backdropClose={true}
       >
-        <Modal.Header className={classes.modalHeader}>
+        <Heading className={classes.modalHeader} size='xs'>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
-          <span className={classes.headerText}>Kopier fargetema</span>
-          <Tooltip content={toolTipText} portal={false}>
-            <Button
-              className={classes.shareBtn}
-              variant='tertiary'
-              color='neutral'
-              size='sm'
-              onClick={() => onButtonClick()}
-              onMouseEnter={() => setToolTipText('Kopier nettadresse')}
-              autoFocus
-            >
-              Del
-              <ArrowForwardIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          </Tooltip>
-        </Modal.Header>
-        <Modal.Content className={classes.modalContent}>
-          <div className={classes.content}>
-            <button
-              tabIndex={-1}
-              className={classes.hiddenGlobalBtn}
-              onClick={() => setShowGlobals(!showGlobals)}
-            ></button>
-            <div className={classes.column}>
-              <Heading className={classes.title} size='xs'>
-                Json til Figma
-              </Heading>
-              <div className={classes.tabs}>
-                <Tabs.Root defaultValue='value1' size='sm'>
-                  <Tabs.List>
-                    <Tabs.Tab
-                      onClick={() => generateThemeJson('light')}
-                      value='value1'
-                    >
-                      Light Mode
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      onClick={() => generateThemeJson('dark')}
-                      value='value2'
-                    >
-                      Dark Mode
-                    </Tabs.Tab>
-                    {showGlobals && (
-                      <>
-                        <Tabs.Tab
-                          onClick={() => generateThemeJson('contrast')}
-                          value='value3'
-                        >
-                          Contrast Mode
-                        </Tabs.Tab>
-                        <Tabs.Tab
-                          onClick={() => genereateGlobalsJson('light')}
-                          value='value4'
-                        >
-                          G:Light
-                        </Tabs.Tab>
-                        <Tabs.Tab
-                          onClick={() => genereateGlobalsJson('dark')}
-                          value='value5'
-                        >
-                          G:Dark
-                        </Tabs.Tab>
-                        <Tabs.Tab
-                          onClick={() => genereateGlobalsJson('contrast')}
-                          value='value6'
-                        >
-                          G:Contrast
-                        </Tabs.Tab>
-                      </>
-                    )}
-                  </Tabs.List>
-                </Tabs.Root>
-              </div>
-              <div className={classes.snippet}>
-                <CodeSnippet language='json'>{JSONTheme}</CodeSnippet>
-              </div>
-            </div>
-            <div className={classes.column}>
-              <Heading className={classes.title} size='xs'>
-                CSS variabler
-              </Heading>
+          <span className={classes.headerText}>Ta i bruk tema</span>
+        </Heading>
 
-              <div className={classes.snippet}>
-                <CodeSnippet language='css'>{css}</CodeSnippet>
+        <div className={classes.content}>
+          <div className={classes.leftSection}>
+            <Textfield
+              label='Navn på tema'
+              description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
+              value={themeName}
+              size='sm'
+              onChange={(e) => {
+                const value = e.currentTarget.value
+                  .replace(/\s+/g, '-')
+                  .replace(/[^A-Z0-9-]+/gi, '')
+                  .toLowerCase();
+
+                setThemeName(value);
+              }}
+            />
+            <div className={classes.infoBoxes}>
+              <InfoBox
+                title='Design tokens'
+                img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
+                type='code'
+                desc={
+                  <>
+                    Kopier kodesnutten og kjør den på maskinen din for å
+                    generere design tokens (json-filer). Sørg for at du har{' '}
+                    <Link target='_blank' href='https://nodejs.org/'>
+                      Node.js
+                    </Link>{' '}
+                    installert på maskinen din.
+                  </>
+                }
+              />
+              <InfoBox
+                title='Figma variabler'
+                img={<img src='img/figma-logo.png' alt='' />}
+                desc={
+                  <>
+                    Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                    >
+                      Figma plugin
+                    </Link>{' '}
+                    når du er i{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/file/1322138390374166141'
+                    >
+                      Core UI Kit
+                    </Link>{' '}
+                    for å oppdatere et tema. Pluginen oppdaterer kun farger for
+                    øyeblikket.
+                  </>
+                }
+              />
+            </div>
+          </div>
+          <div className={classes.rightSection}>
+            <div className={classes.snippet}>
+              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+            </div>
+            <div className={classes.contact}>
+              <div className={classes.contact__icon}>
+                <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+              </div>
+              <div className={classes.contact__content}>
+                <Heading size='2xs'>Noe som ikke fungerer?</Heading>
+                <Paragraph size='sm'>
+                  Send oss en melding på{' '}
+                  <Link
+                    target='_blank'
+                    href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                  >
+                    Slack
+                  </Link>{' '}
+                  eller lag et{' '}
+                  <Link
+                    target='_blank'
+                    href='https://github.com/digdir/designsystemet/issues/new/choose'
+                  >
+                    Github issue
+                  </Link>
+                  .
+                </Paragraph>
               </div>
             </div>
           </div>
-        </Modal.Content>
-      </Modal.Dialog>
-    </Modal.Root>
+        </div>
+      </Modal>
+    </Modal.Context>
   );
 };

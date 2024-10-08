@@ -2,11 +2,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import type { ParagraphProps } from '../Typography';
-import { Paragraph } from '../Typography';
-
-type Size = Exclude<ParagraphProps['size'], 'xs'>;
-
 export type TagProps = {
   /**
    * Color of the tag
@@ -25,7 +20,7 @@ export type TagProps = {
    * Size of the tag
    * @default md
    */
-  size?: Size;
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**
@@ -33,25 +28,17 @@ export type TagProps = {
  * @example
  * <Tag color='success'>Success</Tag>
  */
-export const Tag = forwardRef<HTMLSpanElement, TagProps>(
-  ({ size = 'md', color = 'neutral', children, className, ...rest }, ref) => {
-    return (
-      <Paragraph asChild size={size}>
-        <span
-          className={cl(
-            'ds-tag',
-            `ds-tag--${color}`,
-            `ds-tag--${size}`,
-            className,
-          )}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </span>
-      </Paragraph>
-    );
-  },
-);
-
-Tag.displayName = 'Tag';
+export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
+  { size = 'md', color = 'neutral', className, ...rest },
+  ref,
+) {
+  return (
+    <span
+      className={cl('ds-tag', className)}
+      data-color={color}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
+  );
+});

@@ -1,9 +1,4 @@
-import {
-  Heading,
-  Ingress,
-  Link,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
 import type * as React from 'react';
 
@@ -54,20 +49,22 @@ function PostLayout({
         <main id='main' className={classes.main}>
           <div className={classes.intro}>
             <Heading level={1}>{heading}</Heading>
-            <Ingress className={classes.ingress}>{ingress}</Ingress>
+            <Paragraph className={classes.ingress} variant='long'>
+              {ingress}
+            </Paragraph>
             <Paragraph size='sm' className={classes.meta}>
               <span>{date}</span>
               <span aria-hidden className={classes.metaSquare} />
               <span>{author}</span>
             </Paragraph>
           </div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            caption={imageCaption}
+            boxShadow={false}
+          />
           <MdxContent classname={classes.content}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              caption={imageCaption}
-              boxShadow={false}
-            />
             {content}
             <div className={classes.wantToWrite}>
               <Heading level={3} size='xs'>

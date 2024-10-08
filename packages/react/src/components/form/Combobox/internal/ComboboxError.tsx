@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../../../Typography';
+import { ValidationMessage } from '../../../ValidationMessage';
 import type { useFormField } from '../../useFormField';
 import type { ComboboxProps } from '../Combobox';
 
@@ -16,7 +16,7 @@ const ComboboxError = ({ size, error, formFieldProps }: ComboboxErrorProps) => {
       aria-live='polite'
       aria-relevant='additions removals'
     >
-      {error && <ErrorMessage size={size}>{error}</ErrorMessage>}
+      {error && <ValidationMessage size={size}>{error}</ValidationMessage>}
     </div>
   );
 };

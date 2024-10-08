@@ -1,25 +1,46 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Chip } from '.';
 
-type Story = StoryObj<typeof Chip.Toggle>;
-
 export default {
   title: 'Komponenter/Chip',
-  component: Chip.Toggle,
-  argTypes: {
-    size: {
-      options: ['sm', 'md', 'lg'],
-      control: { type: 'radio' },
-    },
-  },
+  component: Chip.Radio,
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
-export const Preview: Story = {
-  args: {
-    children: 'Nynorsk',
-    size: 'md',
-    selected: false,
-    checkmark: false,
-  },
+export const Preview: StoryFn<typeof Chip.Radio> = (args) => (
+  <>
+    <Chip.Radio {...args} name='my-radio' value='nynorsk' defaultChecked>
+      Nynorsk
+    </Chip.Radio>
+    <Chip.Radio {...args} name='my-radio' value='bokmål'>
+      Bokmål
+    </Chip.Radio>
+  </>
+);
+
+export const Checkbox: StoryFn<typeof Chip.Checkbox> = (args) => (
+  <Chip.Checkbox {...args}>Nynorsk</Chip.Checkbox>
+);
+
+export const Removable: StoryFn<typeof Chip.Removable> = (args) => (
+  <Chip.Removable {...args}>Norge</Chip.Removable>
+);
+
+Removable.args = {
+  'aria-label': 'Slett Norge',
 };
+
+export const Button: StoryFn<typeof Chip.Button> = (args) => (
+  <>
+    <Chip.Button {...args}>Søk etter nynorsk</Chip.Button>
+    <Chip.Button {...args}>Søk etter bokmål</Chip.Button>
+    <Chip.Button {...args}>Søk etter engelsk</Chip.Button>
+  </>
+);

@@ -1,11 +1,12 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { NativeSelect } from '@digdir/designsystemet-react';
+import { Button, Select, Tooltip } from '@digdir/designsystemet-react';
 import type {
   ColorError,
-  ColorType,
   ContrastMode,
+  ThemeColors,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
+import { useState } from 'react';
 
 import { useThemeStore } from '../../store';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
@@ -20,7 +21,7 @@ type ThemeToolbarProps = {
   brand2Error: ColorError;
   brand3Error: ColorError;
   borderRadius: string;
-  onColorChanged: (type: ColorType, color: CssColor) => void;
+  onColorChanged: (type: ThemeColors, color: CssColor) => void;
   onContrastModeChanged: (mode: 'aa' | 'aaa') => void;
   onBorderRadiusChanged: (radius: string) => void;
   contrastMode: ContrastMode;
@@ -52,6 +53,15 @@ export const ThemeToolbar = ({
   const brandOneTheme = useThemeStore((state) => state.brandOneTheme);
   const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
   const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
+
+  const [toolTipText, setToolTipText] = useState('Kopier nettadresse');
+  const onButtonClick = () => {
+    setToolTipText('Kopiert!');
+    navigator.clipboard.writeText(window.location.href).catch((reason) => {
+      throw Error(String(reason));
+    });
+  };
+
   return (
     <div className={classes.pickersContainer}>
       <div className={cl(classes.pickers, 'pickers')}>
@@ -97,7 +107,7 @@ export const ThemeToolbar = ({
         />
 
         <div className={classes.dropdown}>
-          <NativeSelect
+          <Select
             label='Kontrastnivå'
             size='md'
             className={classes.contrastSelect}
@@ -106,12 +116,12 @@ export const ThemeToolbar = ({
               onContrastModeChanged(e.target.value as 'aa' | 'aaa');
             }}
           >
-            <option value='aa'>AA</option>
-            <option value='aaa'>AAA (WIP)</option>
-          </NativeSelect>
+            <Select.Option value='aa'>AA</Select.Option>
+            <Select.Option value='aaa'>AAA (WIP)</Select.Option>
+          </Select>
         </div>
         <div className={classes.borderRadii}>
-          <NativeSelect
+          <Select
             label='Border radius'
             size='md'
             className={classes.borderRadiiSelect}
@@ -122,7 +132,7 @@ export const ThemeToolbar = ({
             }}
           >
             {Object.entries(borderRadii).map(([key, value]) => (
-              <option
+              <Select.Option
                 key={key}
                 value={value}
                 style={{
@@ -130,20 +140,29 @@ export const ThemeToolbar = ({
                 }}
               >
                 {key}
-              </option>
+              </Select.Option>
             ))}
-          </NativeSelect>
+          </Select>
         </div>
-        <div className={classes.dropdown}>
-          <TokenModal
-            accentColor={accentTheme.color}
-            neutralColor={neutralTheme.color}
-            brand1Color={brandOneTheme.color}
-            brand2Color={brandTwoTheme.color}
-            brand3Color={brandThreeTheme.color}
-            borderRadius={borderRadius}
-          />
-        </div>
+        <Tooltip content={toolTipText} portal={false}>
+          <Button
+            className={classes.shareBtn}
+            variant='secondary'
+            color='neutral'
+            onClick={() => onButtonClick()}
+            onMouseEnter={() => setToolTipText('Kopier nettadresse')}
+          >
+            Del tema
+          </Button>
+        </Tooltip>
+        <TokenModal
+          accentColor={accentTheme.color}
+          neutralColor={neutralTheme.color}
+          brand1Color={brandOneTheme.color}
+          brand2Color={brandTwoTheme.color}
+          brand3Color={brandThreeTheme.color}
+          borderRadius={borderRadius}
+        />
       </div>
       <div className={classes.banner}>
         ff

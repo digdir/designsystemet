@@ -1,5 +1,161 @@
 # Change Log
 
+## 1.0.0-next.35
+
+### Patch Changes
+
+- Pagination: ([#2460](https://github.com/digdir/designsystemet/pull/2460))
+
+  - Remove attributes `currentPage` and `totalPages` on `Pagination`
+  - Replace `Pagination.Root` with `Paginaton`
+  - Replace `Pagination.Next`, `Pagination.Previous` and `Pagination.Ellipsis` with `Paginaton.Button`
+  - Make `usePagination` return spreadable props for subcomponents
+  - Add support for `showPages` and `onChange` in `usePagination`
+
+- Skiplink: ([#2577](https://github.com/digdir/designsystemet/pull/2577))
+
+  - Simplify DOM
+  - Add support for `forwardRef`
+
+- Accordion: Animate open/close with CSS ([#2527](https://github.com/digdir/designsystemet/pull/2527))
+
+  - Replace onFound with onToggle
+
+- Heading: ([#2525](https://github.com/digdir/designsystemet/pull/2525))
+
+  - Classes with data attributes
+  - Move base style to utility classes
+
+- Modal: ([#2440](https://github.com/digdir/designsystemet/pull/2440))
+
+  - Rename `Modal.Dialog` to `Modal`
+  - Rename `Modal.Root` to `Modal.Context`
+  - Replace `onInteractOutside` event with `backdropClose` boolean
+  - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
+  - Add border to `Modal.Header` and `Modal.Footer`
+  - Remove `Modal.Content`
+  - Remove `onBeforeClose`
+  - Remove `subtitle` from `Modal.Header`
+
+- Body/Paragraph ([#2529](https://github.com/digdir/designsystemet/pull/2529))
+
+  - Add body-xl token
+  - Add xl paragraph
+  - Remove ingress tokens
+
+- Ingress: Remove component ([#2515](https://github.com/digdir/designsystemet/pull/2515))
+
+  - Use `Paragraph variant='long'` instead
+
+- Heading: Fix `md` heading size ([#2485](https://github.com/digdir/designsystemet/pull/2485))
+
+- Card: ([#2509](https://github.com/digdir/designsystemet/pull/2509))
+
+  - Allow `Card` with content placed directly inside
+  - Replace `Card.Header`, `Card.Content` and `Card.Footer` with `Card.Block`
+  - Replace `isLink` with anchor-in-heading + `click` handler for better accessibility
+
+- Modal: Remove `Modal.Header` and `Modal.Footer`, replace with `Modal.Block` ([#2583](https://github.com/digdir/designsystemet/pull/2583))
+
+- SkipLink: Remove ds-sr-only class ([#2546](https://github.com/digdir/designsystemet/pull/2546))
+
+- Paragraph: Add css classes and style with data attributes ([#2523](https://github.com/digdir/designsystemet/pull/2523))
+
+- Chip: ([#2493](https://github.com/digdir/designsystemet/pull/2493))
+  - Add `Chip.Button`
+  - Rename `Chip.Toggle` to `Chip.Radio` and `Chip.Checkbox`
+  - Remove `Chip.Group`
+
+## 1.0.0-next.34
+
+### Patch Changes
+
+- Textarea: Use `field-sizing: content` ([#2463](https://github.com/digdir/designsystemet/pull/2463))
+
+- ErrorSummary: Rename ErrorSummary.Root to ErrorSummary ([#2437](https://github.com/digdir/designsystemet/pull/2437))
+
+- Tabs: ([#2448](https://github.com/digdir/designsystemet/pull/2448))
+
+  - Renames `Tabs.Root` to `Tabs`
+  - Renames `Tabs.Content` to `Tabs.Panel`
+
+- Rename classes from `ds-error-message*` to `ds-validation-message*` ([#2473](https://github.com/digdir/designsystemet/pull/2473))
+
+- Modal: css changes ([#2418](https://github.com/digdir/designsystemet/pull/2418))
+
+- DropdownMenu: ([#2432](https://github.com/digdir/designsystemet/pull/2432))
+
+  - Rename from `DropdownMenu` to `Dropdown`
+  - Change API and structure
+  - Rename `.Root` to `.Context`
+  - Rename `.Content` to `Dropdown`
+
+- Tabs: css changes ([#2431](https://github.com/digdir/designsystemet/pull/2431))
+
+- ToggleGroup: Rename ToggleGroup.Root to ToggleGroup ([#2424](https://github.com/digdir/designsystemet/pull/2424))
+
+- Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
+
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+
+- Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
+
+- HelpText: ([#2438](https://github.com/digdir/designsystemet/pull/2438))
+
+  - Use Popover API
+  - Remove `portal` prop
+  - Render icon with pseudo element and require aria-label
+
+- Fieldset: Style using css attributes ([#2447](https://github.com/digdir/designsystemet/pull/2447))
+
+## 1.0.0-next.33
+
+### Patch Changes
+
+- Pagination: Use data attrs instead of class names ([#2395](https://github.com/digdir/designsystemet/pull/2395))
+
+- Badge: Style using css attributes ([#2391](https://github.com/digdir/designsystemet/pull/2391))
+
+- TableHeaderCell: Remove `sortable` prop, `sort` now handles this ([#2393](https://github.com/digdir/designsystemet/pull/2393))
+
+- dropdownmenu: Style using data attributes ([#2387](https://github.com/digdir/designsystemet/pull/2387))
+
+- Chip: Text color is now `accent` ([#2371](https://github.com/digdir/designsystemet/pull/2371))
+
+- List: Remove `List.Root` and `List.Heading`, which changes API ([#2348](https://github.com/digdir/designsystemet/pull/2348))
+
+- Alert, Avatar, Button, Divider, Link: Use data-attributes for variant, size and color and move icons to CSS ([#2313](https://github.com/digdir/designsystemet/pull/2313))
+
+- Box: Remove component ([#2372](https://github.com/digdir/designsystemet/pull/2372))
+
+- Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
+
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Remove `portal` prop
+
+- Tooltip: Only expose background css variable ([#2389](https://github.com/digdir/designsystemet/pull/2389))
+
+- Switch: don't show check when not checked in readonly ([#2377](https://github.com/digdir/designsystemet/pull/2377))
+
+- Select: Rename from `NativeSelect` ([#2404](https://github.com/digdir/designsystemet/pull/2404))
+
+- Accordion: Now uses details and summary HTML elements ([`5d1c5062b526e6829c322ce66c6df08568bb9f63`](https://github.com/digdir/designsystemet/commit/5d1c5062b526e6829c322ce66c6df08568bb9f63))
+
+- Spinner: Style using data attributes ([#2390](https://github.com/digdir/designsystemet/pull/2390))
+
+- Avatar: new component ([#2312](https://github.com/digdir/designsystemet/pull/2312))
+
+- Tag: Make neutral default color in CSS ([#2397](https://github.com/digdir/designsystemet/pull/2397))
+
+- Card: Use data attrs ([#2398](https://github.com/digdir/designsystemet/pull/2398))
+
+## 1.0.0-next.32
+
+### Patch Changes
+
+- Chip: Support wrapping in group ([#2324](https://github.com/digdir/designsystemet/pull/2324))
+
 ## 0.11.0-next.12
 
 ### Minor Changes

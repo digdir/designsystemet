@@ -1,190 +1,139 @@
 .ds-card {
+  --dsc-card-background--active: var(--ds-color-neutral-surface-default);
+  --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
+  --dsc-card-background: var(--ds-color-neutral-background-default);
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-surface-default);
+  --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
+  --dsc-card-gap: 1rem;
+  --dsc-card-padding: var(--ds-spacing-6);
 
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  color: var(--dsc-card-color);
+  all: unset; /* Reset if <button> */
+  display: block;
+  background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
-  border: 1px solid var(--dsc-card-border-color);
-  background: var(--dsc-card-backround);
+  border: var(--dsc-card-border);
+  box-sizing: border-box;
+  color: var(--dsc-card-color);
+  overflow: clip; /* Needed to clip media elements and and Card.Block */
+  padding: var(--dsc-card-padding);
+
+  @composes ds-paragraph from './baseline/typography.css'; /* Must be after all: unset */
+
+  /* Style link in heading, or heading when Card is anchor */
+  :is(h1, h2, h3, h4, h5, h6) a:any-link, /* Using :any-link to target both a and a:visited */
+  &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+    outline: 0;
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
+    text-underline-offset: max(6px, 0.25rem, 0.22em);
+  }
+
+  /* Add states when Card is a anchor, button, or when containing a anchor in heading */
+  &:where(a, button, [role='button']),
+  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+    cursor: pointer;
+    text-decoration: none;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--dsc-card-background--hover);
+      }
+    }
+
+    /* Using CSS custom property instead of composes since we need to support :has(:focus-visible) */
+    &:where(:focus-visible, :has(:focus-visible)) {
+      @composes ds-focus--visible from './utilities.css';
+    }
+
+    &:active {
+      background: var(--dsc-card-background--active);
+    }
+  }
+
+  &:has(> .ds-card__block) {
+    padding: 0; /* Let Card.Block own the padding */
+  }
+
+  &[data-color='subtle'] {
+    --dsc-card-background--active: var(--ds-color-neutral-surface-hover);
+    --dsc-card-background--hover: var(--ds-color-neutral-surface-default);
+    --dsc-card-background: var(--ds-color-neutral-background-subtle);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+  }
+
+  &[data-color='brand1'] {
+    --dsc-card-background--active: var(--ds-color-brand1-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-card-background: var(--ds-color-brand1-surface-default);
+    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
+    --dsc-card-color: var(--ds-color-brand1-text-default);
+  }
+
+  &[data-color='brand2'] {
+    --dsc-card-background--active: var(--ds-color-brand2-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-card-background: var(--ds-color-brand2-surface-default);
+    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
+    --dsc-card-color: var(--ds-color-brand2-text-default);
+  }
+
+  &[data-color='brand3'] {
+    --dsc-card-background--active: var(--ds-color-brand3-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-card-background: var(--ds-color-brand3-surface-default);
+    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
+    --dsc-card-color: var(--ds-color-brand3-text-default);
+  }
 }
 
-.ds-card a,
-.ds-card a:visited {
-  color: var(--ds-color-neutral-text-default);
+/* Using :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card, .ds-card__block) {
+  & > :first-child {
+    margin-block: 0;
+  }
+
+  & > * + * {
+    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
+  }
 }
 
-.ds-card > hr {
-  width: 100%;
-  margin: var(--ds-spacing-3) 0;
-}
+.ds-card__block {
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--dsc-card-padding);
+  position: relative;
 
-.ds-card__media {
-  width: auto;
-}
+  /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
+  &::before {
+    content: '';
+    border-top: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 0 auto;
+    translate: 0 -100%;
+  }
 
-.ds-card__media > * {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 0;
-}
+  &::after {
+    content: '';
+    border-left: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 auto 0 0;
+    translate: -100%;
+  }
 
-.ds-card > *:not(.ds-card__media, hr) {
-  padding-left: var(--ds-spacing-6);
-  padding-right: var(--ds-spacing-6);
-}
+  &:has(> :is(audio, figure, iframe, img, video):only-child) {
+    padding: 0;
 
-.ds-card > *:not(.ds-card__media):first-child {
-  padding-top: var(--ds-spacing-6);
-}
+    & > * {
+      border: 0;
+      display: block;
+      height: auto;
+      width: 100%;
+    }
 
-.ds-card > *:not(.ds-card__media):last-child {
-  padding-bottom: var(--ds-spacing-6);
-}
-
-.ds-card__media:first-child {
-  padding-bottom: var(--ds-spacing-4);
-}
-
-.ds-card__media:last-child {
-  padding-top: var(--ds-spacing-6);
-}
-
-.ds-card--link {
-  --dsc-card-border-color: var(--ds-color-neutral-border-default);
-
-  text-decoration: none;
-}
-
-.ds-card__footer,
-.ds-card__content {
-  display: flex;
-  justify-content: flex-start;
-  gap: var(--ds-spacing-4);
-  flex-wrap: wrap;
-  word-wrap: break-word;
-  padding: var(--ds-spacing-2) 0;
-  color: inherit;
-}
-
-.ds-card__content {
-  flex-direction: column;
-}
-
-.ds-card__header {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  word-wrap: break-word;
-  font-family: inherit;
-  padding: var(--ds-spacing-2) 0;
-}
-
-.ds-card__header h1,
-.ds-card__header h2,
-.ds-card__header h3,
-.ds-card__header h4,
-.ds-card__header h5,
-.ds-card__header h6 {
-  color: inherit;
-}
-
-.ds-card--link h1,
-.ds-card--link h2,
-.ds-card--link h3,
-.ds-card--link h4,
-.ds-card--link h5,
-.ds-card--link h6 {
-  text-decoration: underline;
-  text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-  text-underline-offset: max(6px, 0.25rem, 0.22em);
-}
-
-.ds-card--neutral {
-  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-background-default);
-}
-
-.ds-card--neutral.ds-card--link:hover {
-  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-}
-
-.ds-card--neutral.ds-card--link:active {
-  --dsc-card-backround: var(--ds-color-neutral-surface-default);
-}
-
-.ds-card--subtle {
-  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-}
-
-.ds-card--subtle.ds-card--link:hover {
-  --dsc-card-border-color: var(--ds-color-neutral-border-default);
-  --dsc-card-backround: var(--ds-color-neutral-surface-default);
-}
-
-.ds-card--subtle.ds-card--link:active {
-  --dsc-card-backround: var(--ds-color-neutral-surface-hover);
-}
-
-.ds-card--brand1 {
-  --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
-  --dsc-card-backround: var(--ds-color-brand1-surface-default);
-  --dsc-card-color: var(--ds-color-brand1-text-default);
-}
-
-.ds-card--brand1.ds-card--link {
-  --dsc-card-border-color: var(--ds-color-brand1-border-default);
-}
-
-.ds-card--brand1.ds-card--link:hover {
-  --dsc-card-backround: var(--ds-color-brand1-surface-hover);
-}
-
-.ds-card--brand1.ds-card--link:active {
-  --dsc-card-backround: var(--ds-color-brand1-surface-active);
-}
-
-.ds-card--brand2 {
-  --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
-  --dsc-card-backround: var(--ds-color-brand2-surface-default);
-  --dsc-card-color: var(--ds-color-brand2-text-default);
-}
-
-.ds-card--brand2.ds-card--link {
-  --dsc-card-border-color: var(--ds-color-brand2-border-default);
-}
-
-.ds-card--brand2.ds-card--link:hover {
-  --dsc-card-backround: var(--ds-color-brand2-surface-hover);
-}
-
-.ds-card--brand2.ds-card--link:active {
-  --dsc-card-backround: var(--ds-color-brand2-surface-active);
-}
-
-.ds-card--brand3 {
-  --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
-  --dsc-card-backround: var(--ds-color-brand3-surface-default);
-  --dsc-card-color: var(--ds-color-brand3-text-default);
-}
-
-.ds-card--brand3.ds-card--link {
-  --dsc-card-border-color: var(--ds-color-brand3-border-default);
-}
-
-.ds-card--brand3.ds-card--link:hover {
-  --dsc-card-backround: var(--ds-color-brand3-surface-hover);
-}
-
-.ds-card--brand3.ds-card--link:active {
-  --dsc-card-backround: var(--ds-color-brand3-surface-active);
+    & > iframe {
+      aspect-ratio: 16 / 9; /* Make iframes scale responsively */
+    }
+  }
 }

@@ -1,4 +1,5 @@
-import '@digdir/designsystemet-css/index.css';
+import './style.css';
+import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
@@ -41,32 +42,23 @@ const getPath = (href: string | undefined): string => {
 
 const components = {
   p: (props: Props) => (
-    <Paragraph
+    <Paragraph {...props} className='sb-unstyled' data-ds-color-mode='light' />
+  ),
+  ol: (props: Props) => (
+    <List.Ordered
       {...props}
+      style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-      spacing
       data-ds-color-mode='light'
     />
   ),
-  ol: (props: Props) => (
-    <List.Root>
-      <List.Ordered
-        {...props}
-        style={{ maxWidth: '70ch' }}
-        className='sb-unstyled'
-        data-ds-color-mode='light'
-      />
-    </List.Root>
-  ),
   ul: (props: Props) => (
-    <List.Root>
-      <List.Unordered
-        {...props}
-        style={{ maxWidth: '70ch' }}
-        className='sb-unstyled'
-        data-ds-color-mode='light'
-      />
-    </List.Root>
+    <List.Unordered
+      {...props}
+      style={{ maxWidth: '70ch' }}
+      className='sb-unstyled'
+      data-ds-color-mode='light'
+    />
   ),
   li: (props: Props) => (
     <List.Item
@@ -74,7 +66,7 @@ const components = {
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
       data-ds-color-mode='light'
-    ></List.Item>
+    />
   ),
   a: (props: LinkProps) => {
     // if link starts with /, add current path to link
@@ -86,7 +78,7 @@ const components = {
         href={href}
         className='sb-unstyled'
         data-ds-color-mode='light'
-      ></Link>
+      />
     );
   },
   table: (props: Props) => (
@@ -157,7 +149,8 @@ const preview: Preview = {
   },
 };
 
-export const decorators = [
+/* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
+/* export const decorators = [
   withThemeByDataAttribute({
     themes: {
       Light: 'light',
@@ -166,7 +159,9 @@ export const decorators = [
     },
     defaultTheme: 'Light',
     attributeName: 'data-ds-color-mode',
+    parentSelector:
+      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
-];
+]; */
 
 export default preview;

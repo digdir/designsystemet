@@ -1,0 +1,38 @@
+name: Cleanup Preview Deployments
+on:
+  pull_request:
+    types: [closed]
+
+env:
+  VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+  STORYBOOK_URL: pr-${{ github.event.number }}.storybook.designsystemet.no
+  STOREFRONT_URL: pr-${{ github.event.number }}.designsystemet.no
+  THEME_URL: pr-${{ github.event.number }}.theme.designsystemet.no
+  ALIASES:
+
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: get-aliases
+        name: Get a list of all Vercel aliases and set it to ENV
+        run: |
+          {
+            echo 'ALIASES<<EOF'
+            vercel alias ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} --limit 20
+            echo EOF
+          } >> "$GITHUB_ENV"
+
+      - name: Remove Storybook alias if it exists
+        if: contains(env.ALIASES, env.STORYBOOK_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.STORYBOOK_URL }}
+
+      - name: Remove Storefront alias if it exists
+        if: contains(env.ALIASES, env.STOREFRONT_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.STOREFRONT_URL }}
+
+      - name: Remove Theme alias if it exists
+        if: contains(env.ALIASES, env.THEME_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.THEME_URL }}

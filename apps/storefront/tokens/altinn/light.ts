@@ -1297,7 +1297,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ecf6ed",
+    $value: "#edf6ee",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1314,7 +1314,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#cfe9d3",
+    $value: "#d1e9d4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1331,7 +1331,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b3dcb8",
+    $value: "#b5dbba",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1348,7 +1348,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#95ce9d",
+    $value: "#96cd9e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1365,7 +1365,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#8bca94",
+    $value: "#8fc997",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1382,7 +1382,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#189528",
+    $value: "#229532",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1416,7 +1416,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#078D19",
+    $value: "#068718",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1433,7 +1433,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#067615",
+    $value: "#057114",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1450,7 +1450,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#056011",
+    $value: "#045a10",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1467,7 +1467,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#067314",
+    $value: "#057315",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1484,7 +1484,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#033409",
+    $value: "#023409",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1501,7 +1501,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#000000",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1518,7 +1518,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#000401",
+    $value: "#f9fcf9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2181,7 +2181,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#CA5C21",
+    $value: "#B8581D",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2198,7 +2198,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a94d1c",
+    $value: "#9a4918",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2215,7 +2215,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#8a3f17",
+    $value: "#7c3b14",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2232,7 +2232,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a1491a",
+    $value: "#9e4b19",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2249,7 +2249,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#47210c",
+    $value: "#47220b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2266,12 +2266,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#000000",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.contrast-1}"
+      $value: "{global.orange.contrast-1}"
     },
     name: "--ds-color-warning-contrast-default",
     attributes: {},
@@ -2283,12 +2283,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#382d0a",
+    $value: "#fdfbf9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.contrast-2}"
+      $value: "{global.orange.contrast-2}"
     },
     name: "--ds-color-warning-contrast-subtle",
     attributes: {},
@@ -2337,7 +2337,13 @@ export const  color = [
 export const  typography = [
   {
     $type: "typography",
-    $value: "500 3.75rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "3.75rem",
+      letterSpacing: "-1%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2350,7 +2356,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.1}"
       }
     },
-    name: "--ds-typography-heading-2xl",
+    name: "--ds-heading-2xl",
     attributes: {},
     path: [
       "typography",
@@ -2360,7 +2366,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 3rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "3rem",
+      letterSpacing: "-1%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2373,7 +2385,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.1}"
       }
     },
-    name: "--ds-typography-heading-xl",
+    name: "--ds-heading-xl",
     attributes: {},
     path: [
       "typography",
@@ -2383,7 +2395,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 2.25rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "2.25rem",
+      letterSpacing: "-0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2396,7 +2414,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.2}"
       }
     },
-    name: "--ds-typography-heading-lg",
+    name: "--ds-heading-lg",
     attributes: {},
     path: [
       "typography",
@@ -2406,7 +2424,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.875rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.875rem",
+      letterSpacing: "-0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2419,7 +2443,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.3}"
       }
     },
-    name: "--ds-typography-heading-md",
+    name: "--ds-heading-md",
     attributes: {},
     path: [
       "typography",
@@ -2429,7 +2453,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.5rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.5rem",
+      letterSpacing: "0%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2442,7 +2472,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.5}"
       }
     },
-    name: "--ds-typography-heading-sm",
+    name: "--ds-heading-sm",
     attributes: {},
     path: [
       "typography",
@@ -2452,7 +2482,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.3125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2465,7 +2501,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-heading-xs",
+    name: "--ds-heading-xs",
     attributes: {},
     path: [
       "typography",
@@ -2475,7 +2511,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2488,7 +2530,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-heading-2xs",
+    name: "--ds-heading-2xs",
     attributes: {},
     path: [
       "typography",
@@ -2498,7 +2540,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.875rem/1.7 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1.5rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2506,22 +2554,294 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.8}",
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.7}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-ingress-lg",
+    name: "--ds-body-xl",
     attributes: {},
     path: [
       "typography",
-      "ingress",
+      "body",
+      "xl"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
+      }
+    },
+    name: "--ds-body-lg",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
       "lg"
     ]
   },
   {
     $type: "typography",
-    $value: "400 1.5rem/1.7 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
+      }
+    },
+    name: "--ds-body-md",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "md"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
+      }
+    },
+    name: "--ds-body-sm",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "sm"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.5",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.md}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
+      }
+    },
+    name: "--ds-body-xs",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "xs"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.5rem",
+      letterSpacing: "0.5%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.7}",
+        letterSpacing: "{letter-spacing.8}"
+      }
+    },
+    name: "--ds-body-short-xl",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "short",
+      "xl"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.6}",
+        letterSpacing: "{letter-spacing.8}"
+      }
+    },
+    name: "--ds-body-short-lg",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "short",
+      "lg"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.5}",
+        letterSpacing: "{letter-spacing.8}"
+      }
+    },
+    name: "--ds-body-short-md",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "short",
+      "md"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.4}",
+        letterSpacing: "{letter-spacing.7}"
+      }
+    },
+    name: "--ds-body-short-sm",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "short",
+      "sm"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family}",
+        fontWeight: "{font-weight.regular}",
+        lineHeight: "{line-height.sm}",
+        fontSize: "{font-size.3}",
+        letterSpacing: "{letter-spacing.6}"
+      }
+    },
+    name: "--ds-body-short-xs",
+    attributes: {},
+    path: [
+      "typography",
+      "body",
+      "short",
+      "xs"
+    ]
+  },
+  {
+    $type: "typography",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.5rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2534,251 +2854,24 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-ingress-md",
+    name: "--ds-body-long-xl",
     attributes: {},
     path: [
       "typography",
-      "ingress",
-      "md"
+      "body",
+      "long",
+      "xl"
     ]
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.7 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.7}"
-      }
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
     },
-    name: "--ds-typography-ingress-sm",
-    attributes: {},
-    path: [
-      "typography",
-      "ingress",
-      "sm"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.125rem/1.7 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.6}"
-      }
-    },
-    name: "--ds-typography-ingress-xs",
-    attributes: {},
-    path: [
-      "typography",
-      "ingress",
-      "xs"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.3125rem/1.5 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-typography-paragraph-lg",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "lg"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.125rem/1.5 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-typography-paragraph-md",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "md"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1rem/1.5 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.7}"
-      }
-    },
-    name: "--ds-typography-paragraph-sm",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "sm"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 0.875rem/1.5 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.6}"
-      }
-    },
-    name: "--ds-typography-paragraph-xs",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "xs"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.3125rem/1.3 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-typography-paragraph-short-lg",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "short",
-      "lg"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.125rem/1.3 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-typography-paragraph-short-md",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "short",
-      "md"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1rem/1.3 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.7}"
-      }
-    },
-    name: "--ds-typography-paragraph-short-sm",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "short",
-      "sm"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 0.875rem/1.3 'Helvetica Neue'",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.6}"
-      }
-    },
-    name: "--ds-typography-paragraph-short-xs",
-    attributes: {},
-    path: [
-      "typography",
-      "paragraph",
-      "short",
-      "xs"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: "400 1.3125rem/1.7 'Helvetica Neue'",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2791,18 +2884,24 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-long-lg",
+    name: "--ds-body-long-lg",
     attributes: {},
     path: [
       "typography",
-      "paragraph",
+      "body",
       "long",
       "lg"
     ]
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.7 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2815,18 +2914,24 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-paragraph-long-md",
+    name: "--ds-body-long-md",
     attributes: {},
     path: [
       "typography",
-      "paragraph",
+      "body",
       "long",
       "md"
     ]
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.7 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2839,18 +2944,24 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-paragraph-long-sm",
+    name: "--ds-body-long-sm",
     attributes: {},
     path: [
       "typography",
-      "paragraph",
+      "body",
       "long",
       "sm"
     ]
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.7 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.7",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2863,18 +2974,24 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-paragraph-long-xs",
+    name: "--ds-body-long-xs",
     attributes: {},
     path: [
       "typography",
-      "paragraph",
+      "body",
       "long",
       "xs"
     ]
   },
   {
     $type: "typography",
-    $value: "500 1.3125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2887,7 +3004,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-label-lg",
+    name: "--ds-label-lg",
     attributes: {},
     path: [
       "typography",
@@ -2897,7 +3014,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1.125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2910,7 +3033,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-label-md",
+    name: "--ds-label-md",
     attributes: {},
     path: [
       "typography",
@@ -2920,7 +3043,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 1rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2933,7 +3062,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-label-sm",
+    name: "--ds-label-sm",
     attributes: {},
     path: [
       "typography",
@@ -2943,7 +3072,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "500 0.875rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 500,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2956,7 +3091,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-label-xs",
+    name: "--ds-label-xs",
     attributes: {},
     path: [
       "typography",
@@ -2966,7 +3101,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.3125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.3125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2979,7 +3120,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-error_message-lg",
+    name: "--ds-error_message-lg",
     attributes: {},
     path: [
       "typography",
@@ -2989,7 +3130,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1.125rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1.125rem",
+      letterSpacing: "0.5%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3002,7 +3149,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-typography-error_message-md",
+    name: "--ds-error_message-md",
     attributes: {},
     path: [
       "typography",
@@ -3012,7 +3159,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 1rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "1rem",
+      letterSpacing: "0.25%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3025,7 +3178,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-typography-error_message-sm",
+    name: "--ds-error_message-sm",
     attributes: {},
     path: [
       "typography",
@@ -3035,7 +3188,13 @@ export const  typography = [
   },
   {
     $type: "typography",
-    $value: "400 0.875rem/1.3 'Helvetica Neue'",
+    $value: {
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
+      lineHeight: "1.3",
+      fontSize: "0.875rem",
+      letterSpacing: "0.15%"
+    },
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3048,7 +3207,7 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-typography-error_message-xs",
+    name: "--ds-error_message-xs",
     attributes: {},
     path: [
       "typography",

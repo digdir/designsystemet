@@ -1,4 +1,4 @@
-name: Deploy Storefront PR
+name: Deploy Storefront Preview
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -42,7 +42,7 @@ jobs:
         run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.designsystemet.no
 
       - name: Find Preview Comment
         uses: peter-evans/find-comment@v2
@@ -60,7 +60,14 @@ jobs:
         id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '📖 \[Storybook\]\((https:\/\/[^)]+)\) `[^`]+`'
+          regex: '\[Storybook\]\((https:\/\/[^)]+)\).*'
+
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -75,12 +82,11 @@ jobs:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
-          reactions: rocket, eyes
           body: |
             **Preview deployments for this pull request:**
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            🖥 [Storefront](https://storefront-pr-${{ env.PR_NUMBER }}.dev.designsystemet.no) `${{ steps.current-time.outputs.formattedTime }} (Norwegian time)`
+            [Storefront](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
 
-            See all deployments at [https://dev.designsystemet.no](https://dev.designsystemet.no)
+            ${{ steps.regex-theme.outputs.match }}

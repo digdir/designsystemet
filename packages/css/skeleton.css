@@ -1,59 +1,54 @@
 .ds-skeleton {
   --dsc-skeleton-animation-duration: 0.8s;
+  --dsc-skeleton-animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   --dsc-skeleton-background: var(--ds-color-neutral-surface-default);
 
+  animation: var(--dsc-skeleton-animation);
+  border-radius: min(1rem, var(--ds-border-radius-lg));
+  box-sizing: border-box;
+  display: block;
   height: 1.3em;
   pointer-events: none;
   user-select: none;
-  background-color: var(--dsc-skeleton-background);
-  animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
-}
-
-.ds-skeleton--circle {
-  width: 1.3em;
-  border-radius: var(--ds-border-radius-full);
-  aspect-ratio: 1 / 1;
-}
-
-.ds-skeleton--rectangle {
   width: 100%;
-  border-radius: min(1rem, var(--ds-border-radius-lg));
-}
 
-.ds-skeleton--text {
-  width: 100%;
-  height: auto;
-  transform-origin: 0 55%;
-  transform: scale(1, 0.6);
-  border-radius: var(--ds-border-radius-full);
-}
+  &[data-variant='circle'] {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--ds-border-radius-full);
+    width: 1.3em;
+  }
 
-.ds-skeleton--text:empty::before {
-  content: '\00a0';
-}
+  &[data-variant='text'] {
+    border-radius: var(--ds-border-radius-full);
+    box-decoration-break: clone;
+    display: inline;
+    font-size: 0.8em; /* Scale down font to have larger gap between lines */
+    letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
+  }
 
-.ds-skeleton--has-children {
-  width: fit-content;
-  height: fit-content;
-  color: transparent !important;
-}
+  /* When having children, let them define size */
+  &:not(:empty) {
+    width: fit-content;
+    height: fit-content;
+    color: transparent;
 
-.ds-skeleton--has-children > * {
-  visibility: hidden;
-}
+    & > * {
+      visibility: hidden;
+    }
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .ds-skeleton {
+  @media (prefers-reduced-motion: reduce) {
     --dsc-skeleton-animation-duration: 1.6s;
   }
 }
 
+/* Animates background instead of opacity to make Axe Accessibility tests understand color: transparent is intentionally set */
 @keyframes ds-skeleton-opacity-fade {
-  0% {
-    opacity: 1;
+  from {
+    background: var(--dsc-skeleton-background);
   }
 
-  100% {
-    opacity: 0.4;
+  to {
+    background: rgb(from var(--dsc-skeleton-background) r g b / 0.4);
   }
 }

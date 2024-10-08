@@ -56,8 +56,8 @@ export const data = [
   },
   {
     title: 'Dropdown Menu',
-    image: 'DropdownMenu.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dropdownmenu--docs',
+    image: 'Dropdown.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dropdown--docs',
   },
   {
     title: 'Error Summary',
@@ -95,9 +95,9 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-modal--docs',
   },
   {
-    title: 'Native Select',
+    title: 'Select',
     image: 'Select.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-nativeselect--docs',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-select--docs',
   },
   {
     title: 'Pagination',

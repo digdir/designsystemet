@@ -1,28 +1,24 @@
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
-import type * as React from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
+import { Context } from './ModalContext';
 
-import { ModalContext } from './ModalRoot';
-
-export type ModalTriggerProps = React.ComponentPropsWithRef<typeof Button>;
+export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
 
 export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
-  ({ asChild, ...rest }, ref) => {
-    const { modalRef, open } = useContext(ModalContext);
+  function ModalTrigger({ asChild, ...rest }, ref) {
+    const contextRef = useContext(Context);
     const Component = asChild ? Slot : Button;
 
     return (
       <Component
-        ref={ref}
-        onClick={() => modalRef?.current?.showModal()}
-        aria-expanded={open}
         aria-haspopup='dialog'
+        onClick={() => contextRef?.current?.showModal()}
+        ref={ref}
         {...rest}
       />
     );
   },
 );
-
-ModalTrigger.displayName = 'ModalTrigger';

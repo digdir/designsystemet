@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { Divider } from './';
 
@@ -22,6 +22,3 @@ export const Preview: Story = (args) => (
     </Paragraph>
   </>
 );
-Preview.args = {
-  color: 'default',
-};

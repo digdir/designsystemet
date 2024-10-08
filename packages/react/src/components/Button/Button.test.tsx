@@ -53,6 +53,11 @@ describe('Button', () => {
     await act(async () => await user.click(screen.getByRole('button')));
     expect(fn).toHaveBeenCalled();
   });
+
+  it('should not have type attribute when asChild is true', () => {
+    render({ asChild: true, children: <a href='#'>Link</a> });
+    expect(screen.getByRole('link')).not.toHaveAttribute('type');
+  });
 });
 
 const render = (props?: ButtonProps) => renderRtl(<Button {...props} />);

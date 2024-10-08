@@ -5,72 +5,27 @@
   --dsc-tabs-content-padding: var(--ds-spacing-5);
   --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
-}
 
-.ds-tabs__tab {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  gap: var(--ds-spacing-1);
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: var(--dsc-tabs-tab-padding);
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--dsc-tabs-tab-color);
-  position: relative;
-  font-family: inherit;
-}
+  @composes ds-body-text--short-md from './utilities.css';
 
-.ds-tabs__content {
-  padding: var(--dsc-tabs-content-padding);
-  color: var(--dsc-tabs-content-color);
-}
+  &[data-size='sm'] {
+    --dsc-tabs-tab-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+    --dsc-tabs-content-padding: var(--ds-spacing-4);
 
-.ds-tabs--sm {
-  --dsc-tabs-tab-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-tabs-content-padding: var(--ds-spacing-4);
-}
+    @composes ds-body-text--short-sm from './utilities.css';
+  }
 
-.ds-tabs--md {
-  --dsc-tabs-tab-padding: var(--ds-spacing-3) var(--ds-spacing-5);
-  --dsc-tabs-content-padding: var(--ds-spacing-5);
-}
+  &[data-size='lg'] {
+    --dsc-tabs-tab-padding: var(--ds-spacing-4) var(--ds-spacing-6);
+    --dsc-tabs-content-padding: var(--ds-spacing-6);
 
-.ds-tabs--lg {
-  --dsc-tabs-tab-padding: var(--ds-spacing-4) var(--ds-spacing-6);
-  --dsc-tabs-content-padding: var(--ds-spacing-6);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .ds-tabs__tab:hover:not([aria-selected='true']) {
-    --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+    @composes ds-body-text--short-lg from './utilities.css';
   }
 }
 
-.ds-tabs__tab[aria-selected='true'] {
-  --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
-  --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
-}
-
-.ds-tabs__tab:focus {
-  z-index: 2;
-}
-
-.ds-tabs__tab::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 100%;
-  border-radius: var(--dsc-border-radius-full);
-  background-color: var(--dsc-tabs__tab-bottom-border-color);
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.ds-tabs__panel {
+  padding: var(--dsc-tabs-content-padding);
+  color: var(--dsc-tabs-content-color);
 }
 
 .ds-tabs__tablist {
@@ -78,4 +33,50 @@
   flex-direction: row;
   border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
   position: relative;
+}
+
+.ds-tabs__tab {
+  all: unset; /* Reset <button> */
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--dsc-tabs-tab-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: var(--ds-spacing-1);
+  justify-content: center;
+  padding: var(--dsc-tabs-tab-padding);
+  position: relative;
+  text-align: center;
+
+  &[aria-selected='true'] {
+    --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
+    --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
+  }
+
+  @composes ds-focus from './utilities.css';
+
+  /* We set z-index to make sure the active line does not bleed over the focus indicator */
+  &:focus-visible {
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    border-radius: var(--dsc-border-radius-full);
+    background-color: var(--dsc-tabs__tab-bottom-border-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not([aria-selected='true']) {
+      --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
+      --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+    }
+  }
 }

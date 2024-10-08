@@ -2,10 +2,10 @@ import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef, useContext, useId, useMemo } from 'react';
-import type * as React from 'react';
+import type { HTMLAttributes } from 'react';
 
 import { omit } from '../../../utilities';
-import { Label } from '../../Typography';
+import { Label } from '../../Label';
 
 import { ComboboxContext } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
@@ -40,7 +40,7 @@ export type ComboboxCustomProps = {
    * @default false
    */
   asChild?: boolean;
-} & React.HTMLAttributes<HTMLDivElement> &
+} & HTMLAttributes<HTMLDivElement> &
   (InteractiveProps | NonInteractiveProps);
 
 const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
