@@ -62,7 +62,7 @@
   }
 
   @media (min-width: 651px) {
-    & > :not(ol, ul) {
+    & > :is(:not(ol, ul)):not(:only-child) {
       display: none; /* Hide back link when desktop and having list */
     }
   }
