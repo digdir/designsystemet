@@ -9,10 +9,12 @@ type Story = StoryObj<typeof Skeleton>;
 export default {
   title: 'Komponenter/Loaders/Skeleton',
   component: Skeleton,
-  a11y: {
-    config: {
-      // Disable a11y empty heading rule as we intentionally set aria-hidden="true" on the Skeleton component inside Headings
-      rules: [{ id: 'empty-heading', selector: ':has(.ds-skeleton)' }],
+  parameters: {
+    a11y: {
+      config: {
+        // Disable a11y empty heading rule as we intentionally set aria-hidden="true" on the Skeleton component inside Headings
+        rules: [{ id: 'empty-heading', selector: ':has(.ds-skeleton)' }],
+      },
     },
   },
 } as Meta;
