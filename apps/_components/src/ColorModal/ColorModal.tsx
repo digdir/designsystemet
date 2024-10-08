@@ -59,10 +59,10 @@ export const ColorModal = ({
           maxWidth: '1050px',
         }}
       >
-        <Modal.Header>
+        <Modal.Block>
           {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
-        </Modal.Header>
-        <div className={classes.modalContent}>
+        </Modal.Block>
+        <Modal.Block className={classes.modalContent}>
           <div className={classes.description}>
             {getColorDescription({
               weight,
@@ -120,7 +120,7 @@ export const ColorModal = ({
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root> */}
-        </div>
+        </Modal.Block>
       </Modal>
     </Modal.Context>
   );
