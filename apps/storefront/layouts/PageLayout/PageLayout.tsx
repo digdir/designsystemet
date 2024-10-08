@@ -36,7 +36,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
             </Link>
             <Paragraph size='lg' variant='short' asChild>
               <div className={classes.meta}>
-                <span>{data.author && <div>{data.author}</div>}</span>
+                <span>{data.author && <span>{data.author}</span>}</span>
                 <span className={classes.separator}> - </span>
                 <span>{data.date && <div>{data.date}</div>}</span>
               </div>
