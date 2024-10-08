@@ -22,13 +22,15 @@
     border-radius: var(--ds-border-radius-full);
     box-decoration-break: clone;
     display: inline;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
   }
 
   /* When having children, let them define size */
   &:not(:empty) {
     width: fit-content;
     height: fit-content;
-    color: transparent !important;
+    color: transparent;
 
     & > * {
       visibility: hidden;
