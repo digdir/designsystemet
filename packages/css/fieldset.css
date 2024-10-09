@@ -21,7 +21,7 @@
 
   &[data-hidelegend] > legend,
   &[data-hidelegend] > legend + p {
-    @composes ds-sr-only from '../css/utilities.css';
+    @composes ds-sr-only from './base/base.css';
   }
 
   &[data-readonly] > legend::before {

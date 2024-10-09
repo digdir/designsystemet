@@ -21,7 +21,7 @@
   .ds-dropdown__heading {
     padding: var(--dsc-dropdown-header-padding);
 
-    @composes ds-body-text--md from './utilities.css';
+    @composes ds-body-text--md from './base/base.css';
   }
 
   &[data-size='sm'] {
@@ -29,7 +29,7 @@
     --dsc-dropdown-min-width: 15rem;
 
     & .ds-dropdown__heading {
-      @composes ds-body-text--sm from './utilities.css';
+      @composes ds-body-text--sm from './base/base.css';
     }
   }
 
@@ -38,7 +38,7 @@
     --dsc-dropdown-min-width: 18rem;
 
     & .ds-dropdown__heading {
-      @composes ds-body-text--lg from './utilities.css';
+      @composes ds-body-text--lg from './base/base.css';
     }
   }
 

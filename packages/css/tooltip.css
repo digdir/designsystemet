@@ -7,7 +7,7 @@
   color: var(--ds-color-neutral-background-default);
   padding: var(--ds-spacing-1) var(--ds-spacing-2);
 
-  @composes ds-body-text--short-xs from './utilities.css';
+  @composes ds-body-text--short-xs from './base/base.css';
 }
 
 .ds-tooltip__arrow {

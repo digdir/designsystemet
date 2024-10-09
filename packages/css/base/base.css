@@ -17,13 +17,16 @@
   --dsc-focus-border-width: 3px; /* Default focus border width */
   --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
+
+  color: var(--ds-color-neutral-text-default);
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .ds-focus:focus-visible {
-  @composes ds-focus--visible from './utilities.css';
+  @composes ds-focus--visible from './base.css';
 }
 
 /**
@@ -194,4 +197,61 @@
   line-height: var(--ds-heading-2xl-line-height);
   font-size: var(--ds-heading-2xl-font-size);
   letter-spacing: var(--ds-heading-2xl-letter-spacing);
+}
+
+.ds-label--md {
+  font-size: var(--ds-label-md-font-size);
+  font-weight: var(--ds-label-md-font-weight);
+  letter-spacing: var(--ds-label-md-letter-spacing);
+  line-height: var(--ds-label-md-line-height);
+}
+
+.ds-label--xs {
+  font-weight: var(--ds-label-xs-font-weight);
+  line-height: var(--ds-label-xs-line-height);
+  font-size: var(--ds-label-xs-font-size);
+  letter-spacing: var(--ds-label-xs-letter-spacing);
+}
+
+.ds-label--sm {
+  font-weight: var(--ds-label-sm-font-weight);
+  line-height: var(--ds-label-sm-line-height);
+  font-size: var(--ds-label-sm-font-size);
+  letter-spacing: var(--ds-label-sm-letter-spacing);
+}
+
+.ds-label--lg {
+  font-weight: var(--ds-label-lg-font-weight);
+  line-height: var(--ds-label-lg-line-height);
+  font-size: var(--ds-label-lg-font-size);
+  letter-spacing: var(--ds-label-lg-letter-spacing);
+}
+
+.ds-validation-message--xs {
+  font-weight: var(--ds-error_message-xs-font-weight);
+  line-height: var(--ds-error_message-xs-line-height);
+  font-size: var(--ds-error_message-xs-font-size);
+  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+}
+
+.ds-validation-message--sm {
+  font-weight: var(--ds-error_message-sm-font-weight);
+  line-height: var(--ds-error_message-sm-line-height);
+  font-size: var(--ds-error_message-sm-font-size);
+  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+}
+
+.ds-validation-message--md {
+  font-size: var(--ds-error_message-md-font-size);
+  font-weight: var(--ds-error_message-md-font-weight);
+  letter-spacing: var(--ds-error_message-md-letter-spacing);
+  line-height: var(--ds-error_message-md-line-height);
+  margin: 0;
+}
+
+.ds-validation-message--lg {
+  font-weight: var(--ds-error_message-lg-font-weight);
+  line-height: var(--ds-error_message-lg-line-height);
+  font-size: var(--ds-error_message-lg-font-size);
+  letter-spacing: var(--ds-error_message-lg-letter-spacing);
 }
