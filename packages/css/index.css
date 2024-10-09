@@ -4,7 +4,7 @@
 
 /** Import order defines ordinal specificity for layers */
 @import url('./base/ds-reset.css') layer(ds.reset);
-@import url('./utilities.css') layer(ds.base);
+@import url('./base/base.css') layer(ds.base);
 @import url('./heading.css') layer(ds.typography);
 @import url('./label.css') layer(ds.typography);
 @import url('./paragraph.css') layer(ds.typography);

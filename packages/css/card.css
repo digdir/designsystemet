@@ -44,7 +44,7 @@
 
     /* Using CSS custom property instead of composes since we need to support :has(:focus-visible) */
     &:where(:focus-visible, :has(:focus-visible)) {
-      @composes ds-focus--visible from './utilities.css';
+      @composes ds-focus--visible from './base/base.css';
     }
 
     &:active {

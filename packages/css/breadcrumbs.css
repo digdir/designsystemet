@@ -2,20 +2,20 @@
   --dsc-breadcrumbs-spacing: var(--ds-spacing-2);
   --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
 
-  @composes ds-body-text--md from './utilities.css';
+  @composes ds-body-text--md from './base/base.css';
 
   &[data-size='sm'] {
     --dsc-breadcrumbs-spacing: var(--ds-spacing-1);
     --dsc-breadcrumbs-chevron-size: var(--ds-sizing-5);
 
-    @composes ds-body-text--sm from './utilities.css';
+    @composes ds-body-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-breadcrumbs-spacing: var(--ds-spacing-3);
     --dsc-breadcrumbs-chevron-size: var(--ds-sizing-7);
 
-    @composes ds-body-text--lg from './utilities.css';
+    @composes ds-body-text--lg from './base/base.css';
   }
 
   & > :is(ol, ul) {

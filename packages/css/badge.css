@@ -8,7 +8,7 @@
   display: inline-flex;
   position: relative;
 
-  @composes ds-body-text--short-sm from './utilities.css';
+  @composes ds-body-text--short-sm from './base/base.css';
 
   &::before {
     content: attr(data-count);
@@ -27,7 +27,7 @@
     --dsc-badge-size: var(--ds-sizing-3);
     --dsc-badge-padding: 0 var(--ds-spacing-1);
 
-    @composes ds-body-text--short-xs from './utilities.css';
+    @composes ds-body-text--short-xs from './base/base.css';
 
     &[data-count] {
       --dsc-badge-size: var(--ds-sizing-5);
@@ -38,7 +38,7 @@
     --dsc-badge-size: var(--ds-sizing-4);
     --dsc-badge-padding: 0 var(--ds-spacing-2);
 
-    @composes ds-body-text--short-md from './utilities.css';
+    @composes ds-body-text--short-md from './base/base.css';
 
     &[data-count] {
       --dsc-badge-size: var(--ds-sizing-7);

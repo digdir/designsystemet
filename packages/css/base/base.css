@@ -26,7 +26,7 @@
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .ds-focus:focus-visible {
-  @composes ds-focus--visible from './utilities.css';
+  @composes ds-focus--visible from './base.css';
 }
 
 /**
