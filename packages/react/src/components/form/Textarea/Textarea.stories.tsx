@@ -35,10 +35,11 @@ export const Preview: Story = {
     readOnly: false,
     size: 'md',
     cols: 40,
+    id: 'my-textarea',
   },
   render: (args) => (
     <>
-      <Label>Label</Label>
+      <Label htmlFor={args.id}>Label</Label>
       <Textarea {...args} />
     </>
   ),
@@ -63,13 +64,14 @@ export const FullWidth: Story = {
   args: {
     rows: 10,
     cols: 40,
+    id: 'my-textarea',
   },
   parameters: {
     layout: 'padded',
   },
   render: (args) => (
     <>
-      <Label>Label</Label>
+      <Label htmlFor={args.id}>Label</Label>
       <Textarea {...args} />
     </>
   ),
@@ -81,7 +83,7 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
   return (
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <Label>Kontroller meg!</Label>
+      <Label htmlFor={args.id}>Kontroller meg!</Label>
       <Textarea
         cols={40}
         onChange={(e) => setValue(e.target.value)}
@@ -91,4 +93,8 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
+};
+
+Controlled.args = {
+  id: 'my-textarea',
 };
