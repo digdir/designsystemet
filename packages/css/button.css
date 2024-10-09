@@ -64,8 +64,8 @@
   }
 
   /**
-    * Variants
-    */
+   * Variants
+   */
   &[data-variant='secondary'] {
     --dsc-button-background--active: var(--ds-color-accent-surface-hover);
     --dsc-button-background--hover: var(--ds-color-accent-surface-default);
@@ -87,8 +87,8 @@
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='neutral'] {
     --dsc-button-background--active: var(--ds-color-neutral-base-active);
     --dsc-button-background--hover: var(--ds-color-neutral-base-hover);
@@ -142,8 +142,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
 
   @media (hover: hover) and (pointer: fine) {
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */

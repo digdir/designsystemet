@@ -83,6 +83,14 @@
     "ignore": []
   },
 
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2,
+      "quoteStyle": "single"
+    }
+  },
+
   "overrides": [
     { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {

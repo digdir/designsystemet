@@ -167,8 +167,8 @@
 }
 
 /**
-   * Apply a focus outline on an element when it is focused with keyboard
-   */
+ * Apply a focus outline on an element when it is focused with keyboard
+ */
 .ds-combobox__input__wrapper:has(input:focus) {
   --dsc-focus-border-width: 3px;
 
