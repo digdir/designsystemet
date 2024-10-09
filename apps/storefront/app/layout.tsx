@@ -46,6 +46,10 @@ const menu = [
     name: 'Komponenter',
     href: '/komponenter',
   },
+  /* {
+    name: 'Temabygger',
+    href: 'https://next.theme.designsystemet.no',
+  }, */
 ];
 
 export default function RootLayout({
