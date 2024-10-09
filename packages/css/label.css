@@ -1,0 +1,30 @@
+.ds-label {
+  /* We set these three styles when label is used in `legend` */
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  @composes ds-label--md from '../utilities.css';
+
+  font-weight: var(--ds-font-weight-medium);
+
+  &[data-size='xs'] {
+    @composes ds-label--xs from '../utilities.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-label--sm from '../utilities.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-label--lg from '../utilities.css';
+  }
+
+  &[data-weight='semibold'] {
+    font-weight: var(--ds-font-weight-semibold);
+  }
+
+  &[data-weight='regular'] {
+    font-weight: var(--ds-font-weight-regular);
+  }
+}
