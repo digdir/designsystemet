@@ -1,8 +1,6 @@
 /** Heading */
 
 .ds-heading {
-  --dsc-bottom-spacing: var(--ds-spacing-4);
-
   margin: 0;
 
   @composes ds-heading-text--md from '../utilities.css';
@@ -96,48 +94,34 @@
 }
 
 /** Label */
-.ds-label--md {
-  font-size: var(--ds-label-md-font-size);
-  font-weight: var(--ds-label-md-font-weight);
-  letter-spacing: var(--ds-label-md-letter-spacing);
-  line-height: var(--ds-label-md-line-height);
-  color: var(--ds-color-neutral-text-default);
+.ds-label {
   display: inline-block;
   margin: 0;
   padding: 0;
-}
 
-.ds-label--xs {
-  font-weight: var(--ds-label-xs-font-weight);
-  line-height: var(--ds-label-xs-line-height);
-  font-size: var(--ds-label-xs-font-size);
-  letter-spacing: var(--ds-label-xs-letter-spacing);
-  color: var(--ds-color-neutral-text-default);
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
+  @composes ds-label--md from '../utilities.css';
 
-.ds-label--sm {
-  font-weight: var(--ds-label-sm-font-weight);
-  line-height: var(--ds-label-sm-line-height);
-  font-size: var(--ds-label-sm-font-size);
-  letter-spacing: var(--ds-label-sm-letter-spacing);
-  color: var(--ds-color-neutral-text-default);
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
+  font-weight: var(--ds-font-weight-medium);
 
-.ds-label--lg {
-  font-weight: var(--ds-label-lg-font-weight);
-  line-height: var(--ds-label-lg-line-height);
-  font-size: var(--ds-label-lg-font-size);
-  letter-spacing: var(--ds-label-lg-letter-spacing);
-  color: var(--ds-color-neutral-text-default);
-  display: inline-block;
-  margin: 0;
-  padding: 0;
+  &[data-size='xs'] {
+    @composes ds-label--xs from '../utilities.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-label--sm from '../utilities.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-label--lg from '../utilities.css';
+  }
+
+  &[data-weight='semibold'] {
+    font-weight: var(--ds-font-weight-semibold);
+  }
+
+  &[data-weight='regular'] {
+    font-weight: var(--ds-font-weight-regular);
+  }
 }
 
 /** Validation message */
@@ -185,20 +169,6 @@
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
   }
-}
-
-/** Font weight
- ** used for weight on Label */
-.ds-font-weight--medium {
-  font-weight: var(--ds-font-weight-medium);
-}
-
-.ds-font-weight--semibold {
-  font-weight: var(--ds-font-weight-semibold);
-}
-
-.ds-font-weight--regular {
-  font-weight: var(--ds-font-weight-regular);
 }
 
 /** Line height

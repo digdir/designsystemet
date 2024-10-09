@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-@layer ds.reset, ds.baseline, ds.theme, ds.base, ds.components;
+@layer ds.reset, ds.base, ds.theme, ds.components;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./baseline/ds-reset.css') layer(ds.reset);
-@import url('./baseline/baseline.css') layer(ds.baseline);
-@import url('./baseline/typography.css') layer(ds.base.typography);
+@import url('./base/ds-reset.css') layer(ds.reset);
+@import url('./base/typography.css') layer(ds.base.typography);
 @import url('./utilities.css') layer(ds.base.utilities);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
