@@ -3030,17 +3030,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prettier/sync@npm:^0.5.2":
-  version: 0.5.2
-  resolution: "@prettier/sync@npm:0.5.2"
-  dependencies:
-    make-synchronized: "npm:^0.2.8"
-  peerDependencies:
-    prettier: "*"
-  checksum: 10/172cdc62f4103b022f8e8d0a63839350d97bc51468ea476594bce651c2cda311e4810417f16a3c967941a8493a68468a5df27beea4c85eaeaa37e84be3acf399
-  languageName: node
-  linkType: hard
-
 "@radix-ui/react-compose-refs@npm:1.1.0":
   version: 1.1.0
   resolution: "@radix-ui/react-compose-refs@npm:1.1.0"
@@ -3092,6 +3081,7 @@ __metadata:
     "@navikt/aksel-icons": "npm:^6.14.0"
     "@types/react-syntax-highlighter": "npm:^15.5.13"
     clsx: "npm:^2.1.1"
+    prettier: "npm:^3.3.3"
     react-syntax-highlighter: "npm:^15.5.0"
     typescript: "npm:^5.5.4"
   peerDependencies:
@@ -5047,15 +5037,6 @@ __metadata:
   dependencies:
     postcss: "npm:^8.0.0"
   checksum: 10/4249ace34023dc797b47a1041c844d6a772d6339a96e7a45fdacc70d03db8fb2917ac90728c390a743ecf2da821f921761ad2bdb57f4d6936ad4690bc572ad5c
-  languageName: node
-  linkType: hard
-
-"@types/prettier@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@types/prettier@npm:3.0.0"
-  dependencies:
-    prettier: "npm:*"
-  checksum: 10/a2a512d304e5bcf78f38089dc88ad19215e6ab871d435a17aef3ce538a63b07c0e359c18db23989dc1ed9fff96d99eee1f680416080184df5c7e0e3bf767e165
   languageName: node
   linkType: hard
 
@@ -11633,13 +11614,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-synchronized@npm:^0.2.8":
-  version: 0.2.9
-  resolution: "make-synchronized@npm:0.2.9"
-  checksum: 10/d12c540719641f05f4e40bae5625b7e5ac9dded364e7f97ef3fd8baa1bcbd016f873c5281e4719e321a612635accf0a9e2c07a37d215240b549b99ed0d8a1b3f
-  languageName: node
-  linkType: hard
-
 "makeerror@npm:1.0.12":
   version: 1.0.12
   resolution: "makeerror@npm:1.0.12"
@@ -14205,7 +14179,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:*, prettier@npm:^3.1.1":
+"prettier@npm:^2.7.1, prettier@npm:^2.8.7":
+  version: 2.8.8
+  resolution: "prettier@npm:2.8.8"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 10/00cdb6ab0281f98306cd1847425c24cbaaa48a5ff03633945ab4c701901b8e96ad558eb0777364ffc312f437af9b5a07d0f45346266e8245beaf6247b9c62b24
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.1.1":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -14214,12 +14197,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.7.1, prettier@npm:^2.8.7":
-  version: 2.8.8
-  resolution: "prettier@npm:2.8.8"
+"prettier@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "prettier@npm:3.3.3"
   bin:
-    prettier: bin-prettier.js
-  checksum: 10/00cdb6ab0281f98306cd1847425c24cbaaa48a5ff03633945ab4c701901b8e96ad558eb0777364ffc312f437af9b5a07d0f45346266e8245beaf6247b9c62b24
+    prettier: bin/prettier.cjs
+  checksum: 10/5beac1f30b5b40162532b8e2f7c3a4eb650910a2695e9c8512a62ffdc09dae93190c29db9107fa7f26d1b6c71aad3628ecb9b5de1ecb0911191099be109434d7
   languageName: node
   linkType: hard
 
@@ -15308,10 +15291,8 @@ __metadata:
     "@biomejs/biome": "npm:1.9.3"
     "@changesets/changelog-github": "npm:^0.5.0"
     "@changesets/cli": "npm:^2.27.7"
-    "@prettier/sync": "npm:^0.5.2"
     "@svitejs/changesets-changelog-github-compact": "npm:^1.1.0"
     "@types/node": "npm:^22.1.0"
-    "@types/prettier": "npm:^3.0.0"
     "@vitejs/plugin-react-swc": "npm:^3.7.0"
     "@vitest/coverage-v8": "npm:^2.0.5"
     "@vitest/expect": "npm:^2.0.5"
