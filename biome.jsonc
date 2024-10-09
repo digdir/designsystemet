@@ -86,7 +86,6 @@
   "css": {
     "formatter": {
       "enabled": true,
-      "indentWidth": 2,
       "quoteStyle": "single"
     }
   },
