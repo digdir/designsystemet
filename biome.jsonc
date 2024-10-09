@@ -15,7 +15,10 @@
       "./package.json", // yarn and biome disagrees on package.json formatting
       "design-tokens/**/*",
       "packages/theme/brand/**/*",
-      "apps/storefront/tokens/**"
+      "apps/storefront/tokens/**",
+      "**/dist/**/*.css",
+      "packages/theme/**/*.css",
+      "packages/css/dist/**/*.css"
     ]
   },
   "formatter": {

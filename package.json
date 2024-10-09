@@ -36,7 +36,7 @@
     "publish": "yarn build && changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "1.9.3",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.7",
     "@prettier/sync": "^0.5.2",
@@ -47,8 +47,6 @@
     "@vitest/coverage-v8": "^2.0.5",
     "@vitest/expect": "^2.0.5",
     "copyfiles": "^2.4.1",
-    "prettier": "^3.3.3",
-    "stylelint": "^16.8.1",
     "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.5.4",
     "typescript-plugin-css-modules": "^5.1.0",
