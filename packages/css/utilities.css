@@ -226,3 +226,48 @@
   font-size: var(--ds-label-lg-font-size);
   letter-spacing: var(--ds-label-lg-letter-spacing);
 }
+
+.ds-validation-message--xs {
+  font-weight: var(--ds-error_message-xs-font-weight);
+  line-height: var(--ds-error_message-xs-line-height);
+  font-size: var(--ds-error_message-xs-font-size);
+  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--sm {
+  font-weight: var(--ds-error_message-sm-font-weight);
+  line-height: var(--ds-error_message-sm-line-height);
+  font-size: var(--ds-error_message-sm-font-size);
+  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--md {
+  font-size: var(--ds-error_message-md-font-size);
+  font-weight: var(--ds-error_message-md-font-weight);
+  letter-spacing: var(--ds-error_message-md-letter-spacing);
+  line-height: var(--ds-error_message-md-line-height);
+  margin: 0;
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}
+
+.ds-validation-message--lg {
+  font-weight: var(--ds-error_message-lg-font-weight);
+  line-height: var(--ds-error_message-lg-line-height);
+  font-size: var(--ds-error_message-lg-font-size);
+  letter-spacing: var(--ds-error_message-lg-letter-spacing);
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}

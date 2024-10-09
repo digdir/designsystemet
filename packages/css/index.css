@@ -4,8 +4,8 @@
 
 /** Import order defines ordinal specificity for layers */
 @import url('./base/ds-reset.css') layer(ds.reset);
-@import url('./base/typography.css') layer(ds.base.typography);
 @import url('./utilities.css') layer(ds.base.utilities);
+@import url('./base/typography.css') layer(ds.base.typography);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);

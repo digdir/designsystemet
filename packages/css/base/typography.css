@@ -126,61 +126,21 @@
 
 /** Validation message */
 
-.ds-validation-message--xs {
-  font-weight: var(--ds-error_message-xs-font-weight);
-  line-height: var(--ds-error_message-xs-line-height);
-  font-size: var(--ds-error_message-xs-font-size);
-  letter-spacing: var(--ds-error_message-xs-letter-spacing);
-
-  &[data-error] {
-    color: var(--ds-color-danger-text-subtle);
-  }
-}
-
-.ds-validation-message--sm {
-  font-weight: var(--ds-error_message-sm-font-weight);
-  line-height: var(--ds-error_message-sm-line-height);
-  font-size: var(--ds-error_message-sm-font-size);
-  letter-spacing: var(--ds-error_message-sm-letter-spacing);
-
-  &[data-error] {
-    color: var(--ds-color-danger-text-subtle);
-  }
-}
-
-.ds-validation-message--md {
-  font-size: var(--ds-error_message-md-font-size);
-  font-weight: var(--ds-error_message-md-font-weight);
-  letter-spacing: var(--ds-error_message-md-letter-spacing);
-  line-height: var(--ds-error_message-md-line-height);
+.ds-validation-message {
   margin: 0;
 
-  &[data-error] {
-    color: var(--ds-color-danger-text-subtle);
+  /* color comes from the composed classes */
+  @composes ds-validation-message--md from '../utilities.css';
+
+  &[data-size='xs'] {
+    @composes ds-validation-message--xs from '../utilities.css';
   }
-}
 
-.ds-validation-message--lg {
-  font-weight: var(--ds-error_message-lg-font-weight);
-  line-height: var(--ds-error_message-lg-line-height);
-  font-size: var(--ds-error_message-lg-font-size);
-  letter-spacing: var(--ds-error_message-lg-letter-spacing);
-
-  &[data-error] {
-    color: var(--ds-color-danger-text-subtle);
+  &[data-size='sm'] {
+    @composes ds-validation-message--sm from '../utilities.css';
   }
-}
 
-/** Line height
- ** used for long, short Paragraph */
-.ds-line-height--sm {
-  line-height: var(--ds-line-height-sm);
-}
-
-.ds-line-height--md {
-  line-height: var(--ds-line-height-md);
-}
-
-.ds-line-height--lg {
-  line-height: var(--ds-line-height-lg);
+  &[data-size='lg'] {
+    @composes ds-validation-message--lg from '../utilities.css';
+  }
 }
