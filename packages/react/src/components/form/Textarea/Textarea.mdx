@@ -10,14 +10,28 @@ import * as TextareaStories from './Textarea.stories';
 <Primary />
 <Controls />
 
-## Antall tegn
+## Eksempler på bruk
+
+
+### Antall tegn
+
 
 <Canvas of={TextareaStories.WithCharacterCounter} />
 
-## Kontrollert
+### Kontrollert
 
 <Canvas of={TextareaStories.Controlled} />
 
-## Full bredde
+### Full bredde
 
 <Canvas of={TextareaStories.FullWidth} />
+
+## Retningslinjer for bruk av `Textarea`
+Bruk Textarea når brukerne forventes å skrive inn mer enn én linje med tekst, for eksempel ved åpne spørsmål, tilbakemeldinger, eller andre situasjoner hvor lengre tekstinnhold er nødvendig.
+
+Unngå Textarea for korte svar eller spesifikke formaterte data som e-postadresser eller telefonnumre – bruk i stedet standard tekstfelt for disse.
+ 
+ ### Størrelse og tilpasning
+ `Textarea` skal kunne tilpasses i høyden. Pass på at feltet i utgangspunktet har en høyde etter hva som er forventet tekst lengde.
+
+ Feltet vil automatisk utvide seg når brukeren skriver, slik at de alltid kan se hele innholdet sitt uten å måtte bruke rullefelt.
