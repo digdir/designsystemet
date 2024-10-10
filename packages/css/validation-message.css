@@ -31,7 +31,7 @@
       width: var(--dsc-validation-message-icon-size);
       margin-right: var(--dsc-validation-message-icon-gap);
       vertical-align: top;
-      background-color: currentColor;
+      background-color: currentcolor;
       mask: var(--dsc-validation-message-icon-url) center/contain no-repeat;
     }
   }
