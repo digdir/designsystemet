@@ -7,6 +7,7 @@ import { useDebounceCallback } from './useDebounceCallback';
 
 const meta: Meta = {
   title: 'Utilities/useDebounceCallback',
+  parameters: { chromatic: { disableSnapshot: true } },
 };
 
 export default meta;
