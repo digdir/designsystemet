@@ -32,7 +32,7 @@
       margin-right: var(--dsc-validation-message-icon-gap);
       vertical-align: top;
       background-color: currentcolor;
-      mask: var(--dsc-validation-message-icon-url) center/contain no-repeat;
+      mask: var(--dsc-validation-message-icon-url) center / contain no-repeat;
     }
   }
 }
