@@ -5,26 +5,19 @@ import { Button } from '../../../components';
 
 import { useSynchronizedAnimation } from './useSynchronizedAnimation';
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
 const meta: Meta = {
   title: 'Utilities/useSynchronizedAnimation',
-  decorators,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    customStyles: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px',
+    },
+  },
 };
 
 export default meta;

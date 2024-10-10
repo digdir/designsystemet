@@ -10,14 +10,10 @@ type Story = StoryObj<typeof Textarea>;
 export default {
   title: 'Komponenter/Textarea',
   component: Textarea,
-  decorators: [
-    (Story: StoryFn) => (
-      <div style={{ width: '20rem' }}>
-        <Story />
-      </div>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    customStyles: { maxWidth: '20rem' },
+  },
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {

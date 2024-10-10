@@ -1696,7 +1696,7 @@ __metadata:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
-    "@storybook/addon-a11y": "npm:^8.3.4"
+    "@storybook/addon-a11y": "patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch"
     "@storybook/addon-essentials": "npm:^8.3.4"
     "@storybook/addon-interactions": "npm:^8.3.4"
     "@storybook/addon-links": "npm:^8.3.4"
@@ -3491,7 +3491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-a11y@npm:^8.3.4":
+"@storybook/addon-a11y@npm:8.3.4":
   version: 8.3.4
   resolution: "@storybook/addon-a11y@npm:8.3.4"
   dependencies:
@@ -3500,6 +3500,18 @@ __metadata:
   peerDependencies:
     storybook: ^8.3.4
   checksum: 10/fadbb98defa7c32075cbae05109e9492ea1a86883644c7f1eef29aea438364b162d2718e26c8b7f8916a35dfe1cbc3d6ef9a6213ff726a1f62d6bbe3b999d65e
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-a11y@patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch":
+  version: 8.3.4
+  resolution: "@storybook/addon-a11y@patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch::version=8.3.4&hash=106202"
+  dependencies:
+    "@storybook/addon-highlight": "npm:8.3.4"
+    axe-core: "npm:^4.2.0"
+  peerDependencies:
+    storybook: ^8.3.4
+  checksum: 10/d2725a31cbd28d52e3d66650a4cfc924cdbc60ce15f5c75ed8a78f4819cb294e5489e5e405879bf6269e5cf64ac834c3d42a2b520aa542899d9445dee26d5cfb
   languageName: node
   linkType: hard
 
@@ -6722,6 +6734,25 @@ __metadata:
   version: 2.6.0
   resolution: "chroma-js@npm:2.6.0"
   checksum: 10/245f0a0b1da7c4cedf30e490db9ab4e9e71fde207cbe1ca05e25ef5ba517df2509b96b29d2c168786237c8162a03dccea38721c4927249cd1d5c5fe0184fc13c
+  languageName: node
+  linkType: hard
+
+"chromatic@npm:^11.11.0":
+  version: 11.11.0
+  resolution: "chromatic@npm:11.11.0"
+  peerDependencies:
+    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
+    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
+  peerDependenciesMeta:
+    "@chromatic-com/cypress":
+      optional: true
+    "@chromatic-com/playwright":
+      optional: true
+  bin:
+    chroma: dist/bin.js
+    chromatic: dist/bin.js
+    chromatic-cli: dist/bin.js
+  checksum: 10/5b1fd78af5b0c68b4a3d85f0886326c8bb790e3da7b69c8375a829cc9fa697c7d701d2ef2891109d0b9024102d402b163e5653b3f597d40d01baa74393ed4599
   languageName: node
   linkType: hard
 
@@ -15580,8 +15611,10 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:^3.7.0"
     "@vitest/coverage-v8": "npm:^2.0.5"
     "@vitest/expect": "npm:^2.0.5"
+    chromatic: "npm:^11.11.0"
     copyfiles: "npm:^2.4.1"
     prettier: "npm:^3.3.3"
+    storybook-addon-pseudo-states: "npm:^4.0.2"
     stylelint: "npm:^16.8.1"
     stylelint-config-standard: "npm:^36.0.1"
     typescript: "npm:^5.5.4"
@@ -16227,6 +16260,17 @@ __metadata:
     webpack: "npm:^5.94.0"
   languageName: unknown
   linkType: soft
+
+"storybook-addon-pseudo-states@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "storybook-addon-pseudo-states@npm:4.0.2"
+  dependencies:
+    "@storybook/icons": "npm:^1.2.10"
+  peerDependencies:
+    storybook: ^8.2.0
+  checksum: 10/0b1bcd80c86532eba1937ef17ddeb2101a4a6304e9b2d9a40def9e7b913fa2ce06dea17faf2f79cc03effefdf0c5ebee804dc445441c1bbbddcf79a161684413
+  languageName: node
+  linkType: hard
 
 "storybook@npm:^8.3.4":
   version: 8.3.4

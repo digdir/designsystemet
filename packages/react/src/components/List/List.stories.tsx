@@ -6,19 +6,10 @@ import { Link } from '../Link';
 
 type Story = StoryFn<typeof List.Unordered>;
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '5rem' }}>
-      <Story />
-    </div>
-  ),
-];
-
 export default {
   title: 'Komponenter/List',
   component: List.Unordered,
-  decorators,
-} as Meta;
+} satisfies Meta;
 
 export const Preview: Story = (args) => (
   <List.Unordered {...args}>
@@ -151,7 +142,7 @@ export const ListeMedLenker: Story = (args) => (
 );
 
 export const ListeMedOverskrift: Story = (args) => (
-  <div style={{ display: 'flex', gap: '2rem' }}>
+  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
     <div>
       <Heading
         level={2}

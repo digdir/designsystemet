@@ -1,23 +1,54 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 
 import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
 
 import { Modal } from '.';
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '2rem' }}>
-      <Story />
-    </div>
-  ),
-];
-
 export default {
   title: 'Komponenter/Modal',
   component: Modal,
-  decorators,
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      display: 'grid',
+      alignItems: 'start',
+      justifyItems: 'center',
+      story: {
+        boxSizing: 'border-box',
+        height: '100cqh',
+        width: '100cqw',
+      },
+    },
+    chromatic: {
+      modes: {
+        mobile: {
+          viewport: { height: 600 },
+        },
+        desktop: {
+          viewport: { height: 1080 },
+        },
+      },
+    },
+  },
+  play: async (ctx) => {
+    // When not in Docs mode, automatically open the modal
+    const canvas = within(ctx.canvasElement);
+    const button = canvas.getByRole('button');
+    await userEvent.click(button);
+    // Wait for modal to fade in before running tests
+    const modal = canvas.getByRole('dialog');
+    await new Promise<void>((resolve) => {
+      modal.addEventListener('animationend', () => {
+        resolve();
+      });
+    });
+
+    await expect(modal).toBeInTheDocument();
+    await expect(modal).toHaveAttribute('open');
+  },
+} satisfies Meta;
 
 export const Preview: StoryFn<typeof Modal> = (args) => (
   <Modal.Context>

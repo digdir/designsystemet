@@ -7,7 +7,8 @@
     "build": "storybook build -o ./dist",
     "static-storybook": "npx http-server dist --port 6006 --silent",
     "test-storybook": "rimraf test-report.xml && wait-on tcp:6006 && test-storybook --junit",
-    "run-and-test-storybook": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'yarn static-storybook' 'yarn test-storybook'"
+    "run-and-test-storybook": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'yarn static-storybook' 'yarn test-storybook'",
+    "chromatic": "npx chromatic"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +23,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@storybook/addon-a11y": "^8.3.4",
+    "@storybook/addon-a11y": "patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
