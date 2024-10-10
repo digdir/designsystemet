@@ -62,7 +62,7 @@ export default {
     a11y: {
       config: {
         // Temporarily disable a11y color-contrast rule for readonly as we need design adjustments on this
-        rules: [{ id: 'color-contrast', selector: '[readonly]' }],
+        rules: [{ id: 'color-contrast', selector: ':read-only' }],
       },
     },
   },
