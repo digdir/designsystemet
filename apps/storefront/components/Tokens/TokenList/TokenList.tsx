@@ -257,31 +257,30 @@ const TokenList = ({
           )}
         </div>
       )}
-      <>
-        {sectionedTokens.map(([section, tokens]) => {
-          const tokens_ = tokens as [string, Token[]][];
-          const List = () => {
-            if (type === 'dimension') {
-              return <TokensTable tokens={tokens_} />;
-            }
 
-            return (
-              <TokenCards
-                type={type}
-                cols={cardColumns}
-                tokens={tokens_}
-                hideValue={hideValue}
-              />
-            );
-          };
+      {sectionedTokens.map(([section, tokens]) => {
+        const tokens_ = tokens as [string, Token[]][];
+        const List = () => {
+          if (type === 'dimension') {
+            return <TokensTable tokens={tokens_} />;
+          }
+
           return (
-            <div key={section as string} className={classes.section}>
-              <h3>{capitalizeString(section as string)}</h3>
-              <List />
-            </div>
+            <TokenCards
+              type={type}
+              cols={cardColumns}
+              tokens={tokens_}
+              hideValue={hideValue}
+            />
           );
-        })}
-      </>
+        };
+        return (
+          <div key={section as string} className={classes.section}>
+            <h3>{capitalizeString(section as string)}</h3>
+            <List />
+          </div>
+        );
+      })}
     </div>
   );
 };

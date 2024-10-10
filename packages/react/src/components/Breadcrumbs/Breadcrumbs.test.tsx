@@ -5,27 +5,25 @@ import { Breadcrumbs } from './';
 
 const renderWithRoot = (props?: BreadcrumbsProps) =>
   render(
-    <>
-      <Breadcrumbs aria-label='Du er her:' {...props}>
-        <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
-          Nivå 3
-        </Breadcrumbs.Link>
-        <Breadcrumbs.List>
-          <Breadcrumbs.Item>
-            <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
-          </Breadcrumbs.Item>
-          <Breadcrumbs.Item>
-            <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
-          </Breadcrumbs.Item>
-          <Breadcrumbs.Item>
-            <Breadcrumbs.Link href='#'>Nivå 3</Breadcrumbs.Link>
-          </Breadcrumbs.Item>
-          <Breadcrumbs.Item>
-            <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
-          </Breadcrumbs.Item>
-        </Breadcrumbs.List>
-      </Breadcrumbs>
-    </>,
+    <Breadcrumbs aria-label='Du er her:' {...props}>
+      <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
+        Nivå 3
+      </Breadcrumbs.Link>
+      <Breadcrumbs.List>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 3</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
+        </Breadcrumbs.Item>
+      </Breadcrumbs.List>
+    </Breadcrumbs>,
   );
 
 describe('Breadcrumbs', () => {
