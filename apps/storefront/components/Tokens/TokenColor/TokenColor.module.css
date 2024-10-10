@@ -25,9 +25,7 @@
   opacity: 1;
   background-image: repeating-linear-gradient(45deg, var(--color) 25%, transparent 25%, transparent 75%, var(--color) 75%, var(--color)),
     repeating-linear-gradient(45deg, var(--color) 25%, #e5e5f7 25%, #e5e5f7 75%, var(--color) 75%, var(--color));
-  background-position:
-    0 0,
-    10px 10px;
+  background-position: 0 0, 10px 10px;
   border-radius: var(--ds-border-radius-md);
   background-size: 20px 20px;
   height: 64px;

@@ -23,9 +23,7 @@
     mask-image: var(--dsc-helptext-icon-url);
     mask-position: center;
     mask-repeat: no-repeat;
-    mask-size:
-      var(--dsc-helptext-icon-size) var(--dsc-helptext-icon-size),
-      cover;
+    mask-size: var(--dsc-helptext-icon-size) var(--dsc-helptext-icon-size), cover;
     scale: 1.1; /* Hide tiny half pixel rendeing bug */
     width: 100%;
     height: 100%;
