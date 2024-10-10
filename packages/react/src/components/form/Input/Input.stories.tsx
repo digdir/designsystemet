@@ -134,22 +134,13 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
       <Label htmlFor='input-controlled'>Kontroller meg!</Label>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'end',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Input
-          id='input-controlled'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          {...args}
-        />
-        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
-      </div>
+      <Input
+        id='input-controlled'
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        {...args}
+      />
+      <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
     </>
   );
 };
