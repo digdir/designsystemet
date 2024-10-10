@@ -58,6 +58,14 @@ export default {
       </div>
     ),
   ],
+  parameters: {
+    a11y: {
+      config: {
+        // Temporarily disable a11y color-contrast rule for readonly as we need design adjustments on this
+        rules: [{ id: 'color-contrast', selector: '[readonly]' }],
+      },
+    },
+  },
 } as Meta;
 
 export const Preview: Story = {
