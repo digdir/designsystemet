@@ -10,7 +10,7 @@
   --dsc-chip-padding: 0 var(--ds-spacing-3);
 
   @composes ds-focus from './base/base.css';
-  @composes ds-paragraph-short from './base/base.css';
+  @composes ds-body-text--short-sm from './base/base.css';
 
   align-items: center;
   background: var(--dsc-chip-background);
@@ -58,12 +58,16 @@
     --dsc-chip-height: var(--ds-sizing-7);
     --dsc-chip-icon-size: var(--ds-sizing-5);
     --dsc-chip-input-size: var(--ds-spacing-4);
+
+    @composes ds-body-text--short-xs from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-chip-height: var(--ds-sizing-9);
     --dsc-chip-icon-size: var(--ds-sizing-7);
     --dsc-chip-input-size: var(--ds-spacing-6);
+
+    @composes ds-body-text--short-md from './base/base.css';
   }
 
   & > input {
