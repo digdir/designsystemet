@@ -17,11 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Necessary for Chromatic
+          fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: yarn build
       - name: Types
         run: yarn types:react
+
       - name: Test
         run: yarn test
       - name: 'Report Coverage'
@@ -36,8 +40,10 @@ jobs:
           check_name: Unit Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
       - name: Test CLI (create tokens, then build the theme)
         run: yarn test:cli
+
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build storybook
@@ -61,3 +67,11 @@ jobs:
           check_name: Storybook Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
+      - name: Run Chromatic (visual and interaction tests)
+        uses: chromaui/action@latest
+        with:
+          workingDir: apps/storybook
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          autoAcceptChanges: '{main,next}'
