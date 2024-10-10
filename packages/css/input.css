@@ -53,8 +53,8 @@
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
 
-  @composes ds-body-text--md from './utilities.css';
-  @composes ds-focus from './utilities.css';
+  @composes ds-body-text--md from './base/base.css';
+  @composes ds-focus from './base/base.css';
 
   &:where([role='switch']) {
     --dsc-input-background: var(--dsc-input-background--switch);
