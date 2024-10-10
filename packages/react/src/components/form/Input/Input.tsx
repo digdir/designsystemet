@@ -23,14 +23,7 @@ export type InputProps = {
   readOnly?: boolean;
   /** Set role, i.e. `switch` when `checkbox` or `radio` */
   role?: InputAttr['role'];
-} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'> &
-  (
-    | { type: 'checkbox' | 'radio'; role?: 'switch' | InputAttr['role'] }
-    | {
-        type?: Omit<InputAttr['type'], 'checkbox' | 'radio'> | never;
-        role?: Omit<InputAttr['role'], 'switch'>;
-      }
-  );
+} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'>;
 
 /** Input field
  *
