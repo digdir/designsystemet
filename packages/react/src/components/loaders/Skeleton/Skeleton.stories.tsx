@@ -21,8 +21,8 @@ export default {
 
 export const Preview: Story = {
   args: {
-    width: '200px',
-    height: '100px',
+    width: 200,
+    height: 100,
   },
 };
 
@@ -46,7 +46,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
   return (
     <div
       style={{
-        width: '400px',
+        maxWidth: 400,
       }}
     >
       <Skeleton height='150px' />
