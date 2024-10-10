@@ -167,6 +167,7 @@ export const Video: Story = () => (
   <Card color='neutral' style={{ maxWidth: '320px' }}>
     <Card.Block>
       <iframe
+        data-chromatic='ignore'
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
         width='320px'
         height='179px'
