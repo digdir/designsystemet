@@ -116,7 +116,7 @@
   * Sizes
   */
   &[data-size='sm'] {
-    @composes ds-body-text--sm from './utilities.css';
+    @composes ds-body-text--sm from './base/base.css';
 
     --dsc-input-padding: var(--ds-spacing-1) var(--ds-spacing-2);
     --dsc-input-size--switch: var(--ds-sizing-6);
@@ -125,7 +125,7 @@
   }
 
   &[data-size='lg'] {
-    @composes ds-body-text--lg from './utilities.css';
+    @composes ds-body-text--lg from './base/base.css';
 
     --dsc-input-padding: var(--ds-spacing-3) var(--ds-spacing-4);
     --dsc-input-size--switch: var(--ds-sizing-8);
@@ -232,7 +232,7 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
     position: absolute;
   }
 
-  @composes ds-body-text--md from './utilities.css';
+  @composes ds-body-text--md from './base/base.css';
 
   /* Using double selector to ensure we win specificity */
   .ds-input.ds-input {
@@ -241,13 +241,13 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
   }
 
   &:has([data-size='sm']) {
-    @composes ds-body-text--sm from './utilities.css';
+    @composes ds-body-text--sm from './base/base.css';
 
     --dsc-input-affix-padding: var(--ds-spacing-3);
   }
 
   &:has([data-size='lg']) {
-    @composes ds-body-text--lg from './utilities.css';
+    @composes ds-body-text--lg from './base/base.css';
 
     --dsc-input-affix-padding: var(--ds-spacing-5);
   }
