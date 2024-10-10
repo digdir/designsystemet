@@ -37,7 +37,9 @@ export const Components: StoryFn<typeof Text> = () => {
     >
       <Skeleton variant='circle' width='50px' height='50px' />
       <Skeleton variant='rectangle' width='100px' height='50px' />
-      <Skeleton variant='text' width='10' />
+      <Paragraph>
+        <Skeleton variant='text' width='10' />
+      </Paragraph>
     </div>
   );
 };
@@ -82,39 +84,17 @@ export const Children: StoryFn<typeof Skeleton> = () => {
   );
 };
 
-export const As: StoryFn<typeof Skeleton> = () => {
-  return (
-    <>
-      <Heading size='lg'>
-        <Skeleton variant='text'>Her er en heading</Skeleton>
-      </Heading>
-      <Paragraph>
-        <Skeleton variant='text'>
-          Her er en paragraf-komponent som blir rendret som en Skeleton
-          variant="text".
-        </Skeleton>
-      </Paragraph>
-      <Paragraph>
-        <Skeleton variant='text'>
-          Se hvordan Skeleton da overskriver stylingen til det enkelte
-          elementet.
-        </Skeleton>
-      </Paragraph>
-    </>
-  );
-};
-
-export const TextExample: StoryFn<typeof Text> = () => (
+export const Text: StoryFn<typeof Skeleton> = () => (
   <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
-    <div>
-      <Heading size='md'>Heading</Heading>
+    <div style={{ flex: '1 1 200px' }}>
+      <Heading size='md'>En tittel</Heading>
       <Paragraph size='sm'>
         Her er en paragraf som går over flere linjer
       </Paragraph>
     </div>
-    <div>
+    <div style={{ flex: '1 1 200px' }}>
       <Heading size='md'>
-        <Skeleton variant='text'>Heading</Skeleton>
+        <Skeleton variant='text'>En tittel</Skeleton>
       </Heading>
       <Paragraph size='sm'>
         <Skeleton variant='text' width={40} />
