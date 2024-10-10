@@ -40,6 +40,7 @@
 .ds-combobox__input__wrapper .ds-combobox__input {
   height: 100%;
   min-width: 50px;
+  width: 100%;
   flex-grow: 1;
   appearance: none;
   border: none;
