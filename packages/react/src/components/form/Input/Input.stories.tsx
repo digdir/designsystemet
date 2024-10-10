@@ -146,6 +146,130 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
   );
 };
 
+export const Text: StoryFn<typeof Input> = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: '1rem',
+      maxWidth: '90vw',
+    }}
+  >
+    <style>
+      {'div:has(> label) { display: flex; flex-direction: column; gap: .5rem}'}
+    </style>
+    <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
+      Small
+    </Heading>
+    <div>
+      <Label size='sm' htmlFor='sm-default'>
+        Default
+      </Label>
+      <Input {...args} size='sm' name='sm-default' id='sm-default' />
+    </div>
+    <div>
+      <Label size='sm' htmlFor='sm-disabled'>
+        Disabled
+      </Label>
+      <Input {...args} size='sm' name='sm-disabled' id='sm-disabled' disabled />
+    </div>
+    <div>
+      <Label size='sm' htmlFor='sm-invalid'>
+        Invalid
+      </Label>
+      <Input
+        {...args}
+        size='sm'
+        name='sm-invalid'
+        id='sm-invalid'
+        aria-describedby='sm-invalid-error'
+        aria-invalid='true'
+      />
+      <ValidationMessage id='sm-invalid-error'>Feilmelding</ValidationMessage>
+    </div>
+    <div>
+      <Label size='sm' htmlFor='sm-readonly'>
+        Read-only
+      </Label>
+      <Input {...args} size='sm' name='sm-readonly' id='sm-readonly' readOnly />
+    </div>
+    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
+      Medium
+    </Heading>
+    <div>
+      <Label size='md' htmlFor='md-default'>
+        Default
+      </Label>
+      <Input {...args} size='md' name='md-default' id='md-default' />
+    </div>
+    <div>
+      <Label size='md' htmlFor='md-disabled'>
+        Disabled
+      </Label>
+      <Input {...args} size='md' name='md-disabled' id='md-disabled' disabled />
+    </div>
+    <div>
+      <Label size='md' htmlFor='md-invalid'>
+        Invalid
+      </Label>
+      <Input
+        {...args}
+        size='md'
+        name='md-invalid'
+        id='md-invalid'
+        aria-describedby='md-invalid-error'
+        aria-invalid='true'
+      />
+      <ValidationMessage id='md-invalid-error'>Feilmelding</ValidationMessage>
+    </div>
+    <div>
+      <Label size='md' htmlFor='md-readonly'>
+        Read-only
+      </Label>
+      <Input {...args} size='md' name='md-readonly' id='md-readonly' readOnly />
+    </div>
+    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
+      Large
+    </Heading>
+    <div>
+      <Label size='lg' htmlFor='lg-default'>
+        Default
+      </Label>
+      <Input {...args} size='lg' name='lg-default' id='lg-default' />
+    </div>
+    <div>
+      <Label size='lg' htmlFor='lg-disabled'>
+        Disabled
+      </Label>
+      <Input {...args} size='lg' name='lg-disabled' id='lg-disabled' disabled />
+    </div>
+    <div>
+      <Label size='lg' htmlFor='lg-invalid'>
+        Invalid
+      </Label>
+      <Input
+        {...args}
+        size='lg'
+        name='lg-invalid'
+        id='lg-invalid'
+        aria-describedby='lg-invalid-error'
+        aria-invalid='true'
+      />
+      <ValidationMessage id='lg-invalid-error'>Feilmelding</ValidationMessage>
+    </div>
+    <div>
+      <Label size='lg' htmlFor='lg-readonly'>
+        Read-only
+      </Label>
+      <Input {...args} size='lg' name='lg-readonly' id='lg-readonly' readOnly />
+    </div>
+  </div>
+);
+
+Text.args = {
+  value: 'Value',
+};
+
 export const Radio: StoryFn<typeof Input> = (args) => (
   <div
     style={{
@@ -565,20 +689,6 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       Disabled checked
     </Label>
     <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input
-        {...args}
-        size='sm'
-        name='sm-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='sm'>
       <Input {...args} size='sm' name='sm-readonly' readOnly />
       Read-only
     </Label>
@@ -606,20 +716,6 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       Disabled checked
     </Label>
     <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input
-        {...args}
-        size='md'
-        name='md-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='md'>
       <Input {...args} size='md' name='md-readonly' readOnly />
       Read-only
     </Label>
@@ -645,20 +741,6 @@ export const Switch: StoryFn<typeof Input> = (args) => (
     <Label weight='regular' size='lg'>
       <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
       Disabled checked
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input
-        {...args}
-        size='lg'
-        name='lg-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
     </Label>
     <Label weight='regular' size='lg'>
       <Input {...args} size='lg' name='lg-readonly' readOnly />
