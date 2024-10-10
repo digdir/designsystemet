@@ -24,6 +24,7 @@
     display: inline;
     font-size: 0.8em; /* Scale down font to have larger gap between lines */
     letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
+    word-break: break-word;
   }
 
   /* When having children, let them define size */
