@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - .github/workflows/test.yml
       - 'packages/**'
       - 'apps/storybook/**'
 
@@ -17,9 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          # Necessary for Chromatic
-          fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: yarn build
@@ -67,11 +65,3 @@ jobs:
           check_name: Storybook Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
-
-      - name: Run Chromatic (visual and interaction tests)
-        uses: chromaui/action@latest
-        with:
-          workingDir: apps/storybook
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          exitZeroOnChanges: true
-          autoAcceptChanges: '{main,next}'

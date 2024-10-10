@@ -30,13 +30,13 @@
 }
 
 /**
-* Focus outline that can be composed if it needs a specific selector
-*/
+ * Focus outline that can be composed if it needs a specific selector
+ */
 .ds-focus--visible {
   /**
-  * We use both box-shadow and outline to ensure that the focus style is visible,
-  * in case box-shadow is overridden.
-  */
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
   box-shadow: var(--dsc-focus-boxShadow);
   outline: var(--dsc-focus-outline);
   outline-offset: var(--dsc-focus-border-width);
