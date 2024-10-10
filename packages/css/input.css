@@ -66,8 +66,8 @@
   }
 
   /**
-  * States
-  */
+   * States
+   */
   &[aria-invalid='true'] {
     --dsc-input-accent-color: var(--dsc-input-accent-color--invalid);
   }
@@ -99,8 +99,8 @@
   }
 
   /**
-  * Sizes
-  */
+   * Sizes
+   */
   &[data-size='sm'] {
     @composes ds-body-text--sm from './base/base.css';
 
@@ -120,8 +120,8 @@
   }
 
   /**
-  * Toggle inputs
-  */
+   * Toggle inputs
+   */
   &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
     cursor: pointer;
   }
@@ -148,20 +148,18 @@
   }
 
   &[type='checkbox']:indeterminate {
-    background:
-      center / contain no-repeat content-box
-        linear-gradient(
-          transparent calc(48% - var(--dsc-input-stroke)),
-          currentcolor calc(50% - var(--dsc-input-stroke)),
-          currentcolor calc(50% + var(--dsc-input-stroke)),
-          transparent calc(52% + var(--dsc-input-stroke))
-        ),
-      var(--dsc-input-background);
+    background: center / contain no-repeat content-box
+      linear-gradient(
+        transparent calc(48% - var(--dsc-input-stroke)),
+        currentcolor calc(50% - var(--dsc-input-stroke)),
+        currentcolor calc(50% + var(--dsc-input-stroke)),
+        transparent calc(52% + var(--dsc-input-stroke))
+      ), var(--dsc-input-background);
   }
 
   /**
-  * Switch
-  */
+   * Switch
+   */
   &[role='switch']:is([type='radio'], [type='checkbox']) {
     --dsc-input-color: var(--dsc-input-accent-color);
     --dsc-input-size: var(--dsc-input-size--switch);
@@ -173,11 +171,8 @@
     padding: 4px 4px 4px calc(var(--dsc-input-size) + 4px); /* Push checkmark to right side */
     transition: 0.2s background-position;
     width: calc(var(--dsc-input-size) * 2);
-    background:
-      var(--check-left),
-      var(--check-right),
-      radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position) / var(--circle-size) 100% no-repeat padding-box,
-      var(--dsc-input-background);
+    background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position) /
+      var(--circle-size) 100% no-repeat padding-box, var(--dsc-input-background);
 
     /* This might be adjusted by design so keeping it like this for now: */
     &[readonly] {
@@ -198,8 +193,8 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
 }
 
 /**
-  * Affix
-  */
+ * Affix
+ */
 .ds-input-affix {
   --dsc-input-affix-border-radius: var(--ds-border-radius-md);
   --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
