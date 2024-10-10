@@ -2,19 +2,28 @@ name: Visual tests
 on:
   workflow_dispatch:
   pull_request:
+    branches: [main, next]
+    types:
+      # Ensure workflow is run when PR is ready for review
+      - ready_for_review
+      # Also enable the default trigger types, for instances when
+      # the PR is not opened as a draft first
+      - opened
+      - reopened
+      - synchronize
+
     paths:
       - .github/workflows/visual-tests.yml
       - 'packages/**'
       - 'apps/storybook/**'
   push:
-    branches:
-      - main
-      - next
+    branches: [main, next]
 
 jobs:
   checks:
     name: Build & run visual/interaction tests
     runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
     steps:
       - uses: actions/checkout@v4
         with:
