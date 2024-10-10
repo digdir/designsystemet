@@ -6,9 +6,7 @@
   text-decoration: none;
   box-shadow: var(--ds-shadow-sm);
   border-radius: 8px;
-  transition:
-    0.2s transform,
-    0.2s box-shadow;
+  transition: 0.2s transform, 0.2s box-shadow;
   position: relative;
   z-index: 2;
   height: 100%;

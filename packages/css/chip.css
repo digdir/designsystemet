@@ -49,7 +49,7 @@
     content: '';
     height: var(--dsc-chip-icon-size);
     margin: 0 calc(var(--gap) * -1) 0 var(--gap);
-    mask: center/contain no-repeat
+    mask: center / contain no-repeat
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
     width: var(--dsc-chip-icon-size);
   }
@@ -86,7 +86,7 @@
 
     &[type='checkbox']:checked {
       background: currentcolor;
-      mask: center/cover no-repeat
+      mask: center / cover no-repeat
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M24 0H0v24h24V0Zm-4.44 8.56a1.5 1.5 0 0 0-2.12-2.12L10 13.88l-3.44-3.44a1.5 1.5 0 0 0-2.12 2.12l4.5 4.5a1.5 1.5 0 0 0 2.12 0l8.5-8.5Z'/%3E%3C/svg%3E");
     }
   }

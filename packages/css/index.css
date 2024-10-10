@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @layer ds.reset, ds.base, ds.typography, ds.theme, ds.components;
 

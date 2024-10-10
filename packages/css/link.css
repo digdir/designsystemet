@@ -20,8 +20,8 @@
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='neutral'] {
     --dsc-link-background--active: var(--ds-color-neutral-surface-default);
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
@@ -31,8 +31,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
   &:visited {
     color: var(--dsc-link-color--visited);
   }
