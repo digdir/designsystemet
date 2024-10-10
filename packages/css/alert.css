@@ -17,27 +17,25 @@
   padding-block: var(--dsc-alert-padding);
   padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
 
-  @composes ds-body-text--md from './utilities.css';
+  @composes ds-body-text--md from './base/base.css';
 
-  & > :is(h1,h2,h3,h4,h5,h6):first-child::before, /* If Alert starts with Heading, align icon to this */
-  &:not(:has(> :is(h1,h2,h3,h4,h5,h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
+  & > :is(h1, h2, h3, h4, h5, h6):first-child::before /* If Alert starts with Heading, align icon to this */,
+  &:not(:has(> :is(h1, h2, h3, h4, h5, h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
     background-color: var(--dsc-alert-icon-color);
     content: '';
     display: block;
     height: var(--dsc-alert-icon-size);
-    margin-inline: calc(
-      (var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1
-    ); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    margin-inline: calc((var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
 
-    mask: var(--dsc-alert-icon-url) center/contain no-repeat;
+    mask: var(--dsc-alert-icon-url) center / contain no-repeat;
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='warning'] {
     --dsc-alert-border-color: var(--ds-color-warning-border-default);
     --dsc-alert-icon-color: var(--ds-color-warning-text-subtle);
@@ -60,19 +58,19 @@
   }
 
   /**
-    * Sizes
-    */
+   * Sizes
+   */
   &[data-size='sm'] {
     --dsc-alert-icon-size: var(--ds-sizing-6);
     --dsc-alert-padding: var(--ds-spacing-5);
 
-    @composes ds-body-text--sm from './utilities.css';
+    @composes ds-body-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-alert-icon-size: var(--ds-sizing-8);
     --dsc-alert-padding: var(--ds-spacing-7);
 
-    @composes ds-body-text--lg from './utilities.css';
+    @composes ds-body-text--lg from './base/base.css';
   }
 }

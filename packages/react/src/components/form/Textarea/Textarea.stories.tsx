@@ -27,7 +27,7 @@ export default {
       </div>
     ),
   ],
-} as Meta;
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {

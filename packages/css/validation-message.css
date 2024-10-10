@@ -1,0 +1,21 @@
+.ds-validation-message {
+  margin: 0;
+
+  @composes ds-validation-message--md from './base/base.css';
+
+  &[data-size='xs'] {
+    @composes ds-validation-message--xs from './base/base.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-validation-message--sm from './base/base.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-validation-message--lg from './base/base.css';
+  }
+
+  &[data-error] {
+    color: var(--ds-color-danger-text-subtle);
+  }
+}

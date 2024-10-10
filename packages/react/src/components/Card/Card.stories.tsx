@@ -19,27 +19,21 @@ type Story = StoryFn<typeof Card>;
 export default {
   title: 'Komponenter/Card',
   component: Card,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          width: '90vw',
-          maxWidth: 800,
-          alignItems: 'center',
-          display: 'grid',
-          gap: 'var(--ds-spacing-4)',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
-          justifyItems: 'center',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      width: '100%',
+      maxWidth: 800,
+      alignItems: 'center',
+      display: 'grid',
+      gap: 'var(--ds-spacing-4)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px , 1fr))',
+    },
+  },
+} satisfies Meta;
 
 export const Preview: Story = (args) => (
-  <Card {...args} style={{ width: 320 }}>
+  <Card {...args} style={{ maxWidth: '320px' }}>
     <Heading size='sm' level={2}>
       Card Neutral
     </Heading>
@@ -171,9 +165,10 @@ export const Media: Story = () => (
 );
 
 export const Video: Story = () => (
-  <Card color='neutral' style={{ width: '320px' }}>
+  <Card color='neutral' style={{ maxWidth: '320px' }}>
     <Card.Block>
       <iframe
+        data-chromatic='ignore'
         src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
         width='320px'
         height='179px'
