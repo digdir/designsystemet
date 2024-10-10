@@ -117,7 +117,7 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    /* biome-ignore lint/correctness/noUnknownProperty: <explanation> */
+    /* biome-ignore lint/correctness/noUnknownProperty: biome does not know about this property yet */
     interpolate-size: allow-keywords;
   }
 

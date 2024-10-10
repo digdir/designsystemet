@@ -50,7 +50,7 @@ const ComboboxOption = memo(
           <button
             ref={ref}
             id={id}
-            // biome-ignore lint/a11y/useSemanticElements: <explanation>
+            // biome-ignore lint/a11y/useSemanticElements: biome wants me to use the <option> element
             role='option'
             type='button'
             aria-selected={!!selected}
