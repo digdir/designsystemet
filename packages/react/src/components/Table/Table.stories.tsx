@@ -176,13 +176,9 @@ StickyHeader.args = {
   tabIndex: 0,
 };
 
-StickyHeader.decorators = [
-  (Story) => (
-    <div style={{ height: '280px', overflow: 'auto' }}>
-      <Story />
-    </div>
-  ),
-];
+StickyHeader.parameters = {
+  customStyles: { height: '280px', overflow: 'auto' },
+};
 
 type CheckedItems = {
   [key: number]: boolean;
