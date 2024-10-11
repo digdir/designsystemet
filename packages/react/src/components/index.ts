@@ -26,6 +26,7 @@ export * from './form/Fieldset';
 export * from './form/Switch';
 export * from './form/Textfield';
 export * from './form/Textarea';
+export * from './form/Input';
 export * from './Tabs';
 export * from './ToggleGroup';
 export * from './Popover';
