@@ -19,13 +19,25 @@ export type SelectProps = {
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'>;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, htmlSize, size, readOnly, ...rest }, ref) {
+  function Select(
+    { className, htmlSize, onKeyDown, onMouseDown, size, ...rest },
+    ref,
+  ) {
     return (
       <select
         className={cl('ds-input', className)}
         data-size={size}
         ref={ref}
         size={htmlSize}
+        onKeyDown={(event) => {
+          if (event.key === 'Tab') return;
+          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
+          onKeyDown?.(event);
+        }}
+        onMouseDown={(event) => {
+          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
+          onMouseDown?.(event);
+        }}
         {...rest}
       />
     );
