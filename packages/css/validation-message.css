@@ -1,38 +1,44 @@
 .ds-validation-message {
-  --dsc-validation-message-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='20' viewBox='0 0 23 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.4692 0.58824C10.9273 -0.19608 12.0727 -0.19608 12.5308 0.58824L22.8388 18.2353C23.2969 19.0196 22.7242 20 21.808 20H1.19204C0.27577 20 -0.29689 19.0196 0.16124 18.2353L10.4692 0.58824ZM11.5001 6.17627C12.1574 6.17627 12.6903 6.70297 12.6903 7.35267V11.7645C12.6903 12.4143 12.1574 12.941 11.5001 12.941C10.8427 12.941 10.3098 12.4143 10.3098 11.7645V7.35267C10.3098 6.70297 10.8427 6.17627 11.5001 6.17627ZM11.5001 16.4706C12.1574 16.4706 12.6903 15.9439 12.6903 15.2941C12.6903 14.6444 12.1574 14.1177 11.5001 14.1177C10.8427 14.1177 10.3098 14.6444 10.3098 15.2941C10.3098 15.9439 10.8427 16.4706 11.5001 16.4706Z' fill='%23C22020'/%3E%3C/svg%3E");
-  --dsc-validation-message-icon-size: 1.2em;
-  --dsc-validation-message-icon-gap: var(--ds-spacing-2);
+  --dsc-validation-message-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill-rule='evenodd' d='M11.15 4.5a.98.98 0 0 1 1.7 0l8.52 14.74a.98.98 0 0 1-.85 1.48H3.48a.98.98 0 0 1-.85-1.48L11.15 4.5ZM12 9.24a1 1 0 0 1 1 1V14a1 1 0 1 1-2 0v-3.75a1 1 0 0 1 1-1ZM12 18a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' /%3E%3C/svg%3E");
+  --dsc-validation-message-icon-size: var(--ds-sizing-7);
+  --dsc-validation-message-gap: var(--ds-spacing-2);
 
-  margin: 0;
+  margin: 0; /* Reset if rendered with <p> */
 
   @composes ds-validation-message--md from './base/base.css';
 
   &[data-size='xs'] {
-    --dsc-validation-message-icon-gap: var(--ds-spacing-1);
+    --dsc-validation-message-icon-size: var(--ds-sizing-5);
+    --dsc-validation-message-gap: var(--ds-spacing-1);
 
     @composes ds-validation-message--xs from './base/base.css';
   }
 
   &[data-size='sm'] {
+    --dsc-validation-message-icon-size: var(--ds-sizing-6);
+
     @composes ds-validation-message--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
+    --dsc-validation-message-icon-size: var(--ds-sizing-8);
+
     @composes ds-validation-message--lg from './base/base.css';
   }
 
   &[data-error] {
     color: var(--ds-color-danger-text-subtle);
+    padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap));
 
-    &::before {
+    &::before /* If there is no Heading, align icon to Alert itself */ {
+      background: currentcolor;
       content: '';
-      display: inline-block;
       height: var(--dsc-validation-message-icon-size);
-      width: var(--dsc-validation-message-icon-size);
-      margin-right: var(--dsc-validation-message-icon-gap);
-      vertical-align: top;
-      background-color: currentcolor;
+      margin-inline: calc((var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
       mask: var(--dsc-validation-message-icon-url) center / contain no-repeat;
+      position: absolute;
+      translate: 0 calc((1lh - var(--dsc-validation-message-icon-size)) / 2); /* Center icon to line height */
+      width: var(--dsc-validation-message-icon-size);
     }
   }
 }
