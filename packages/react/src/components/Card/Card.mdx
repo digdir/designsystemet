@@ -16,34 +16,55 @@ Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
 <Card>
-  <Card.Header>Tittel</Card.Header>
-  <Card.Content>Innhold</Card.Content>
-  <Card.Footer>Valgfri fotnote</Card.Footer>
+  <Card.Block>Tittel</Card.Block>
+  <Card.Block>Innhold</Card.Block>
+  <Card.Block>Valgfri fotnote</Card.Block>
 </Card>;
 ```
 
 ## Eksempler
 
-`Card.Media`
+<br />
 
-Bruk`Card.Media` hvis du vi ha bilder eller video i kortene.
+### Med `Block`
+
+Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge inn utfallende bilder eller video.
+Merk at innhold kan ikke plasseres direkte i `Card` dersom du bruker `Card.Block`; da burde alt innholdet være inni en av av kortets `Card.Block`-seksjoner.
 
 <Canvas of={CardStories.Media} />
 
-#### Video
+### Video
 
 <Canvas of={CardStories.Video} />
 
-### Link Card
-`Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side i tjenesten. Hele kortet blir da en lenke, og kortet skal derfor ikke ha andre interaktive elementer, som for eksempel knapper.
+### Klikkbart
+- `Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. 
+- Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+- Dersom kortet kun innholder litt tekst, kan hele kortet bli en lenke eller knapp ved å benytte `asChild`.
 
-Bruk `asChild` til å endre kortet til en lenke. Vær oppmerksom på [gyldig innhold](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary), fordi skjermlesere leser opp alt samlet. `Hover` og `active` styling
-blir kun aktivert dersom du setter `isLink={true}`. 
-komponenter fra tredjeparts bibliotek som [NextJS
-Link](https://nextjs.org/docs/pages/api-reference/components/link) og [React
-Router Link](https://reactrouter.com/en/main/components/link)
+<br />
+<br />
 
-<Canvas of={CardStories.LinkCard} />
+#### Kort med lenke i tittel:
+I dette eksempelet rendrer Card med lenke `<a>` inni tittel elementet. Dette er nyttig når Card inneholder tekst eller media, og skal navigere til en annen side.
+
+<Canvas of={CardStories.WithLink} />
+
+#### Kort som er en lenke:
+I dette eksempelet rendrer Card som lenke `<a>`. Dette er nyttig når Card inneholder lite tekst, og skal navigere til en annen side.
+
+<Canvas of={CardStories.AsLink} />
+
+#### Kort som er en knapp:
+
+I dette eksempelet rendrer Card som knapp `<button>`. Dette er nyttig når Card inneholder lite tekst, og skal åpne en Modal eller utføre annen handling på samme side.
+
+<Canvas of={CardStories.AsButton} />
+
+### Horisontalt
+
+`Card` støtter både `display: flex` og `display: grid` for å legge `Card.Block` ved siden av hverandre:
+<Canvas of={CardStories.AsGrid} />
 
 ### Farger
 
@@ -53,7 +74,7 @@ Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral, subtil, 
 
 ### Komponert
 
-Eksempler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
+ler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
 
 <Canvas of={CardStories.Composed} />
 
@@ -67,7 +88,6 @@ Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, 
 Et kort skal oppfattes som en selvstendig, avgrenset enhet. Innholdet i kortet skal være helhetlig og relatert til et enkelt emne eller en destinasjon.
 
 Kortet skal kunne stå alene uten å være avhengig av omkringliggende elementer for kontekst. Det skal gi tilstrekkelig informasjon til å forstå det presenterte innholdet uten eksterne referanser.
-
 
 ### Unngå
 

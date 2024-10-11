@@ -5,14 +5,10 @@ import { Chip } from '.';
 export default {
   title: 'Komponenter/Chip',
   component: Chip.Radio,
-  decorators: [
-    (Story) => (
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-        <Story />
-      </div>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    customStyles: { display: 'flex', gap: 'var(--ds-spacing-2)' },
+  },
+} satisfies Meta;
 
 export const Preview: StoryFn<typeof Chip.Radio> = (args) => (
   <>

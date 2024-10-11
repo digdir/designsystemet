@@ -132,15 +132,11 @@
   .ds-radio:not(.ds-radio--readonly) > .ds-radio__input:hover:not(:checked, :disabled, :focus-visible) {
     --dsc-radio-border-color: var(--ds-color-accent-border-strong);
 
-    box-shadow:
-      var(--dsc-radio-border__hover),
-      inset 0 0 0 2px var(--dsc-radio-border-color);
+    box-shadow: var(--dsc-radio-border__hover), inset 0 0 0 2px var(--dsc-radio-border-color);
   }
 
   .ds-radio:not(.ds-radio--readonly) > .ds-radio__input:hover:checked:not(:disabled, :focus-visible) {
-    box-shadow:
-      var(--dsc-radio-border__hover),
-      inset 0 0 0 var(--dsc-radio-box_shadow-size) var(--dsc-radio-border-color);
+    box-shadow: var(--dsc-radio-border__hover), inset 0 0 0 var(--dsc-radio-box_shadow-size) var(--dsc-radio-border-color);
   }
 }
 

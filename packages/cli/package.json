@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.34",
+  "version": "1.0.0-next.35",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -35,6 +35,10 @@
     "build": "tsup && yarn build:types",
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
+    "test:tokens-create": "yarn designsystemet tokens create -a #007682 -n #003333 -b1 #12404f -b2 #0054a6 -b3 #942977 -w ./test-tokens-create",
+    "test:tokens-build": "yarn designsystemet tokens build --verbose -t ./test-tokens-create -o ./test-tokens-build",
+    "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
+    "test": "yarn test:tokens-create-and-build",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
     "update:template": "tsx ./src/tokens/template.ts"

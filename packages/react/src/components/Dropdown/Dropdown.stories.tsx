@@ -1,5 +1,6 @@
 import { LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 
 import { Dropdown } from '.';
@@ -8,7 +9,29 @@ import { Button } from '../Button';
 export default {
   title: 'Komponenter/Dropdown',
   component: Dropdown,
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      display: 'grid',
+      alignItems: 'start',
+      justifyItems: 'center',
+      story: {
+        boxSizing: 'border-box',
+        width: '100cqw',
+        height: '100cqh',
+        maxWidth: '800px',
+        maxHeight: '800px',
+      },
+    },
+  },
+  play: async (ctx) => {
+    // When not in Docs mode, automatically open the dropdown
+    const button = within(ctx.canvasElement).getByRole('button');
+    await userEvent.click(button);
+    const dropdown = ctx.canvasElement.querySelector('[popover]');
+    await expect(dropdown).toBeVisible();
+  },
+} satisfies Meta;
 
 export const Preview: StoryFn<typeof Dropdown> = (args) => {
   return (
@@ -47,7 +70,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon fontSize='1.5rem' />
+              <LinkIcon aria-hidden fontSize='1.5rem' />
               Github
             </a>
           </Dropdown.Item>
@@ -57,7 +80,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon fontSize='1.5rem' />
+              <LinkIcon aria-hidden fontSize='1.5rem' />
               Designsystemet.no
             </a>
           </Dropdown.Item>
@@ -83,7 +106,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon fontSize='1.5rem' />
+              <LinkIcon aria-hidden fontSize='1.5rem' />
               Github
             </a>
           </Dropdown.Item>
@@ -93,7 +116,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon fontSize='1.5rem' />
+              <LinkIcon aria-hidden fontSize='1.5rem' />
               Designsystemet.no
             </a>
           </Dropdown.Item>

@@ -15,10 +15,11 @@
   border-collapse: separate; /* Using separate mode to enable border-radius */
   border-radius: var(--dsc-table-border-radius);
   border-spacing: 0;
+  box-sizing: border-box;
   color: var(--dsc-table-color);
   width: 100%;
 
-  @composes ds-body-text--md from './utilities.css';
+  @composes ds-body-text--md from './base/base.css';
 
   & > :is(tbody, thead) > tr > :is(th, td) {
     background: var(--dsc-table-background);
@@ -62,8 +63,8 @@
   }
 
   /**
-    * Sorting
-    */
+   * Sorting
+   */
   & > thead > tr > [aria-sort] {
     cursor: pointer;
     padding: 0;
@@ -89,7 +90,7 @@
         content: '';
         display: inline-block;
         height: var(--dsc-table-sort-size);
-        mask: center/contain no-repeat
+        mask: center / contain no-repeat
           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.53 4.47a.75.75 0 0 0-1.06 0l-3.5 3.5a.75.75 0 0 0 1.06 1.06L12 6.06l2.97 2.97a.75.75 0 1 0 1.06-1.06zm-3.5 10.5a.75.75 0 0 0-1.06 1.06l3.5 3.5a.75.75 0 0 0 1.06 0l3.5-3.5a.75.75 0 1 0-1.06-1.06L12 17.94z'/%3E%3C/svg%3E");
         vertical-align: middle;
         width: var(--dsc-table-sort-size);
@@ -110,23 +111,23 @@
   }
 
   /**
-    * Sizes
-    */
+   * Sizes
+   */
   &[data-size='sm'] {
     --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
 
-    @composes ds-body-text--sm from './utilities.css';
+    @composes ds-body-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
 
-    @composes ds-body-text--lg from './utilities.css';
+    @composes ds-body-text--lg from './base/base.css';
   }
 
   /**
-    * Configurations
-    */
+   * Configurations
+   */
   &[data-border] {
     --dsc-table-border-radius: min(1rem, var(--ds-border-radius-md));
 
@@ -152,8 +153,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
   @media (hover: hover) and (pointer: fine) {
     &[data-hover] > tbody > tr:hover > :is(th, td) {
       background: var(--dsc-table-background--hover);

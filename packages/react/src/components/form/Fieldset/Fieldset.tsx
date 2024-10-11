@@ -2,7 +2,9 @@ import cl from 'clsx/lite';
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Label, Paragraph, ValidationMessage } from '../../Typography';
+import { Label } from '../../Label';
+import { Paragraph } from '../../Paragraph';
+import { ValidationMessage } from '../../ValidationMessage';
 import { type FormFieldProps, useFormField } from '../useFormField';
 
 import { FieldsetContext } from './FieldsetContext';

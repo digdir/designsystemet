@@ -20,13 +20,18 @@ export type SkeletonProps = {
    * @default 'rectangle'
    * */
   variant?: 'rectangle' | 'circle' | 'text';
-} & HTMLAttributes<HTMLSpanElement>;
+} & HTMLAttributes<HTMLSpanElement> &
+  (
+    | { variant: 'text'; characters?: number }
+    | { variant?: 'rectangle' | 'circle'; characters?: never }
+  );
 
 export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
   function Skeleton(
     {
       asChild,
       className,
+      children,
       height,
       style,
       variant = 'rectangle',
@@ -36,6 +41,8 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
     ref,
   ) {
     const Component = asChild ? Slot : 'span';
+    const isText = variant === 'text';
+    const childrenText = isText && '-'.repeat(Number(width) || 1); // s followed by a &shy; makes the most average character length
     const animationRef = useSynchronizedAnimation<HTMLSpanElement>(
       'ds-skeleton-opacity-fade',
     );
@@ -47,9 +54,11 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
         className={cl('ds-skeleton', className)}
         data-variant={variant}
         ref={mergedRefs}
-        style={{ width, height, ...style }}
+        style={isText ? style : { width, height, ...style }}
         {...rest}
-      />
+      >
+        {children || childrenText}
+      </Component>
     );
   },
 );

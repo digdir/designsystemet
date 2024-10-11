@@ -2,11 +2,12 @@
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
 
   background: var(--dsc-tooltip-background);
-  padding: var(--ds-spacing-1) var(--ds-spacing-2);
-  color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
+  box-sizing: border-box;
+  color: var(--ds-color-neutral-background-default);
+  padding: var(--ds-spacing-1) var(--ds-spacing-2);
 
-  @composes ds-body-text--short-xs from './utilities.css';
+  @composes ds-body-text--short-xs from './base/base.css';
 }
 
 .ds-tooltip__arrow {

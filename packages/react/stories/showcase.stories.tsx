@@ -30,6 +30,15 @@ import classes from './showcase.module.css';
 
 export default {
   title: 'Showcase',
+  parameters: {
+    chromatic: {
+      modes: {
+        mobile: {
+          disable: true,
+        },
+      },
+    },
+  },
 } as Meta;
 
 export const Showcase: StoryFn = () => {
@@ -183,30 +192,24 @@ export const Showcase: StoryFn = () => {
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs'>Sikkerhet og drift</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
+            <Heading size='2xs'>Sikkerhet og drift</Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
           <Card color='brand2'>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs'>Skole og utdanning</Heading>
-            </Card.Header>
-            <Card.Content className={cl(classes.helpContent)}>
+            <Heading size='2xs'>Skole og utdanning</Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
-          <Card color='brand3' isLink asChild>
-            <a href='#preview'>
-              <Card.Header className={classes.helpHeader}>
-                <Heading size='2xs'>Mat og helse</Heading>
-              </Card.Header>
-              <Card.Content className={cl(classes.helpContent)}>
-                Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-              </Card.Content>
-            </a>
+          <Card color='brand3'>
+            <Heading size='2xs'>
+              <a href='#preview'>Mat og helse</a>
+            </Heading>
+            <Paragraph>
+              Lenke til artikkel om mat og helse, der du kan lese mer om alt.
+            </Paragraph>
           </Card>
         </div>
       </div>
@@ -254,10 +257,10 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Innstillinger
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
@@ -274,10 +277,10 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading size='xs' spacing>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Hvor er du fra?
         </Heading>
-        <Paragraph size='sm' spacing>
+        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>

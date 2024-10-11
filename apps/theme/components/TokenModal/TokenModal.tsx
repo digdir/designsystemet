@@ -9,8 +9,11 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { createTokens } from '@digdir/designsystemet/tokens/create.js';
+import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
+
+import cl from 'clsx/lite';
 
 import classes from './TokenModal.module.css';
 
@@ -40,7 +43,7 @@ export const TokenModal = ({
   const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
   const [themeName, setThemeName] = useState('theme');
 
-  const cliSnippet = `npx @digdir/designsystemet tokens create \\
+  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
    --accent "${accentColor}" \\
    --neutral "${neutralColor}" \\
    --brand1 "${brand1Color}" \\
@@ -67,6 +70,36 @@ export const TokenModal = ({
     setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
   }, []);
 
+  type InfoBoxType = {
+    title: string;
+    desc: React.ReactNode;
+    img: React.ReactNode;
+    type?: 'code' | 'figma';
+  };
+
+  const InfoBox = ({ title, desc, img, type = 'figma' }: InfoBoxType) => {
+    return (
+      <div className={classes.infoBox}>
+        <div className={classes.infoBox__left}>
+          <div
+            className={cl(
+              classes.infoBox__icon,
+              type === 'code' && classes['infoBox__icon--code'],
+            )}
+          >
+            {img}
+          </div>
+        </div>
+        <div className={classes.infoBox__right}>
+          <div className={classes.infoBox__container}>
+            <Heading size='2xs'>{title}</Heading>
+            <Paragraph size='sm'>{desc}</Paragraph>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <Modal.Context>
       <Modal.Trigger
@@ -78,88 +111,101 @@ export const TokenModal = ({
       </Modal.Trigger>
       <Modal
         className={classes.modal}
-        style={{ maxWidth: 1400 }}
+        style={{ maxWidth: 1150 }}
         ref={modalRef}
+        backdropClose={true}
       >
-        <Heading className={classes.modalHeader} size='xs' spacing>
+        <Heading className={classes.modalHeader} size='xs'>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
-          <span className={classes.headerText}>Kopier fargetema</span>
+          <span className={classes.headerText}>Ta i bruk tema</span>
         </Heading>
-        <Paragraph variant='long' size='xs' spacing>
-          Velg et av alternativene under for å ta i bruk design-tokens med ditt
-          tema.
-        </Paragraph>
-        <Heading level={3} size='xs' spacing>
-          Alt 1. Design tokens
-        </Heading>
-        <Textfield
-          label='Navn på tema'
-          description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
-          value={themeName}
-          onChange={(e) => {
-            const value = e.currentTarget.value
-              .replace(/\s+/g, '-')
-              .replace(/[^A-Z0-9-]+/gi, '')
-              .toLowerCase();
 
-            setThemeName(value);
-          }}
-          style={{ marginBlock: 'var(--ds-spacing-4)' }}
-        />
-        <Paragraph spacing>
-          Kopier kommandosnutten under og kjør på maskinen din for å generere
-          alle design tokens (json-filer). Sørg for at du har{' '}
-          <Link href='https://nodejs.org' target='_blank'>
-            Node.js (åpnes i ny fane)
-          </Link>{' '}
-          installert på maskinen din.
-        </Paragraph>
-        <div
-          className={classes.snippet}
-          style={{ marginBottom: 'var(--ds-spacing-8)' }}
-        >
-          <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
-        </div>
-        <Heading level={3} size='xs' spacing>
-          Alt 2. Figma plugin
-        </Heading>
-        <Paragraph spacing>
-          JSON for bruk med Designsystemet{' '}
-          <Link
-            href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-            target='_blank'
-          >
-            Figma Plugin (åpnes i ny fane)
-          </Link>{' '}
-          og{' '}
-          <Link
-            href='https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit'
-            target='_blank'
-          >
-            Figma UI kit (åpnes i ny fane)
-          </Link>
-          .
-        </Paragraph>
-        <Paragraph spacing>
-          Dette alternativet er kun ment for rask prototyping av valgt tema i
-          Figma. For å bruke design tokens i produksjon, anbefales det å bruke
-          alternativ 1.
-        </Paragraph>
         <div className={classes.content}>
-          <div className={classes.column}>
-            <Heading level={4} size='2xs' spacing>
-              Light Mode
-            </Heading>
-            <div className={classes.snippet}>
-              <CodeSnippet language='json'>{lightThemeSnippet}</CodeSnippet>
+          <div className={classes.leftSection}>
+            <Textfield
+              label='Navn på tema'
+              description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
+              value={themeName}
+              size='sm'
+              onChange={(e) => {
+                const value = e.currentTarget.value
+                  .replace(/\s+/g, '-')
+                  .replace(/[^A-Z0-9-]+/gi, '')
+                  .toLowerCase();
+
+                setThemeName(value);
+              }}
+            />
+            <div className={classes.infoBoxes}>
+              <InfoBox
+                title='Design tokens'
+                img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
+                type='code'
+                desc={
+                  <>
+                    Kopier kodesnutten og kjør den på maskinen din for å
+                    generere design tokens (json-filer). Sørg for at du har{' '}
+                    <Link target='_blank' href='https://nodejs.org/'>
+                      Node.js
+                    </Link>{' '}
+                    installert på maskinen din.
+                  </>
+                }
+              />
+              <InfoBox
+                title='Figma variabler'
+                img={<img src='img/figma-logo.png' alt='' />}
+                desc={
+                  <>
+                    Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                    >
+                      Figma plugin
+                    </Link>{' '}
+                    når du er i{' '}
+                    <Link
+                      target='_blank'
+                      href='https://www.figma.com/community/file/1322138390374166141'
+                    >
+                      Core UI Kit
+                    </Link>{' '}
+                    for å oppdatere et tema. Pluginen oppdaterer kun farger for
+                    øyeblikket.
+                  </>
+                }
+              />
             </div>
           </div>
-          <div className={classes.column}>
-            <Heading level={4} size='2xs' spacing>
-              Dark Mode
-            </Heading>
+          <div className={classes.rightSection}>
             <div className={classes.snippet}>
-              <CodeSnippet language='json'>{darkThemeSnippet}</CodeSnippet>
+              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+            </div>
+            <div className={classes.contact}>
+              <div className={classes.contact__icon}>
+                <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+              </div>
+              <div className={classes.contact__content}>
+                <Heading size='2xs'>Noe som ikke fungerer?</Heading>
+                <Paragraph size='sm'>
+                  Send oss en melding på{' '}
+                  <Link
+                    target='_blank'
+                    href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                  >
+                    Slack
+                  </Link>{' '}
+                  eller lag et{' '}
+                  <Link
+                    target='_blank'
+                    href='https://github.com/digdir/designsystemet/issues/new/choose'
+                  >
+                    Github issue
+                  </Link>
+                  .
+                </Paragraph>
+              </div>
             </div>
           </div>
         </div>

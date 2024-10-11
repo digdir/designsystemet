@@ -1,5 +1,4 @@
 import { dirname, join, resolve } from 'node:path';
-import { env } from 'node:process';
 
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
@@ -9,11 +8,6 @@ const config: StorybookConfig = {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
-    /**
-     * Enable this when docgen-typescript is faster
-     * See: https://github.com/storybookjs/storybook/issues/28269
-     */
-    /* reactDocgen: 'react-docgen-typescript', */
     reactDocgenTypescriptOptions: {
       include: [resolve(__dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
@@ -44,6 +38,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-storysource'),
     '@storybook/addon-themes',
+    'storybook-addon-pseudo-states',
   ],
   staticDirs: ['../assets'],
   framework: {
