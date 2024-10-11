@@ -77,7 +77,7 @@
    * States
    */
   &:checked,
-  &[type='checkbox']:indeterminate {
+  &:indeterminate:where([type='checkbox']) {
     --dsc-input-background: var(--dsc-input-background--checked);
     --dsc-input-border-color: var(--dsc-input-border-color--checked);
     --dsc-input-color: var(--dsc-input-color--checked);
