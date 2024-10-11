@@ -11,7 +11,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
 ) {
   const fieldRef = useRef<HTMLDivElement>(null);
   const mergedRefs = useMergeRefs([fieldRef, ref]);
-  useEffect(() => fieldA11Y(fieldRef.current), []); // Intentionally run on each render
+  useEffect(() => fieldA11Y(fieldRef.current), []);
 
   return (
     <div className={cl('ds-field', className)} ref={mergedRefs} {...rest} />

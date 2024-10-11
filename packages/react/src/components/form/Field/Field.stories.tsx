@@ -23,9 +23,9 @@ export default {
 // TMP toggles to test a11yField utility
 const toggles = {
   type: 'textarea',
+  inputId: '',
   label: true,
   labelFor: '',
-  ariaDesribedby: '',
   help: true,
   helpId: '',
   validation: true,
@@ -35,8 +35,8 @@ const toggles = {
 
 export const Preview: Story = (args) => {
   const {
-    ariaDesribedby,
     type,
+    inputId,
     label,
     labelFor,
     help,
@@ -45,20 +45,22 @@ export const Preview: Story = (args) => {
     validationId,
     moveToBody,
   } = args as typeof toggles;
-  const Component = type;
+  const Component = type as keyof JSX.IntrinsicElements;
 
   useEffect(() => {
+    const label = document.querySelector('label');
     const valid = document.querySelector('[data-my-validation]');
     const field = document.querySelector('[data-my-field]');
     const root = moveToBody ? document.body : field;
-    if (valid && valid.parentElement !== root) root?.appendChild(valid);
+    if (valid && valid.parentElement !== root) root?.append(valid);
+    if (label && label.parentElement !== root) root?.prepend(label);
   }, [moveToBody]);
 
   return (
-    <Field data-my-field style={{ display: 'flex', flexDirection: 'column' }}>
+    <Field data-my-field>
       {label && <Label htmlFor={labelFor || undefined}>Kort beskrivelse</Label>}
       {help && <Field.Help id={helpId || undefined}>Beskrivelse</Field.Help>}
-      {type && <Component aria-describedby={ariaDesribedby || undefined} />}
+      {type && <Component id={inputId || undefined} />}
       {validation && (
         <ValidationMessage data-my-validation id={validationId || undefined}>
           Feilmelding
