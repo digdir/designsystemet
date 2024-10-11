@@ -1,0 +1,242 @@
+.ds-input {
+  --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
+  --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
+  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-input-border-color: var(--ds-color-neutral-border-default);
+  --dsc-input-background--checked: var(--dsc-input-border-color--checked);
+  --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
+  --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
+  --dsc-input-background--switch: var(--ds-color-neutral-border-default);
+  --dsc-input-background: var(--ds-color-neutral-background-default);
+  --dsc-input-border-width--toggle: 2px;
+  --dsc-input-border-width: 1px;
+  --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
+  --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
+  --dsc-input-color--readonly: var(--ds-color-neutral-border-default);
+  --dsc-input-color: var(--ds-color-neutral-text-default);
+  --dsc-input-stroke: 0.05em;
+  --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  --dsc-input-size--switch: var(--ds-sizing-7);
+  --dsc-input-size--toggle: var(--ds-sizing-6);
+  --dsc-input-size: var(--ds-sizing-12);
+
+  /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
+  --check-left: calc(var(--dsc-input-stroke) / 2) calc(66.66% + var(--dsc-input-stroke) / 2) / 33.33% 33.33% no-repeat content-box
+    linear-gradient(
+      45deg,
+      transparent calc(50% - var(--dsc-input-stroke)),
+      currentcolor calc(48% - var(--dsc-input-stroke)),
+      currentcolor calc(50% + var(--dsc-input-stroke)),
+      transparent calc(52% + var(--dsc-input-stroke))
+    );
+  --check-right: calc(100% - var(--dsc-input-stroke) / 2) / 66.66% 66.66% no-repeat content-box
+    linear-gradient(
+      -45deg,
+      transparent calc(50% - var(--dsc-input-stroke)),
+      currentcolor calc(48% - var(--dsc-input-stroke)),
+      currentcolor calc(50% + var(--dsc-input-stroke)),
+      transparent calc(52% + var(--dsc-input-stroke))
+    );
+
+  appearance: none;
+  background: var(--dsc-input-background);
+  border-radius: var(--ds-border-radius-md);
+  border: var(--dsc-input-affix-border, var(--dsc-input-border-width) solid var(--dsc-input-border-color)); /* Inherit from .ds-input-addons if present */
+  box-shadow: var(--dsc-input-box-shadow);
+  box-sizing: border-box;
+  color: var(--dsc-input-color);
+  font-family: inherit;
+  margin: 0; /* Reset native margin on checkbox and radio */
+  padding: var(--dsc-input-padding);
+  position: relative; /* Ensure foucs outline renders on top */
+
+  @composes ds-body-text--md from './base/base.css';
+  @composes ds-focus from './base/base.css';
+
+  /* Change switch background with low specificity to allow states to overwrite */
+  &:where([role='switch']) {
+    --dsc-input-background: var(--dsc-input-background--switch);
+  }
+
+  &:not(textarea) {
+    height: var(--dsc-input-size);
+  }
+
+  &:not([size]) {
+    width: 100%;
+  }
+
+  /**
+   * States
+   */
+  &:checked,
+  &:indeterminate {
+    --dsc-input-border-color: var(--dsc-input-border-color--checked);
+    --dsc-input-background: var(--dsc-input-background--checked);
+    --dsc-input-color: var(--dsc-input-color--checked);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: var(--ds-disabled-opacity);
+  }
+
+  &[aria-invalid='true'] {
+    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
+    --dsc-input-background--checked: var(--dsc-input-background--invalid);
+    --dsc-input-color--checked: var(--dsc-input-color--invalid);
+  }
+
+  /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
+  &[readonly] {
+    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
+    --dsc-input-background: var(--dsc-input-background--readonly);
+    --dsc-input-color: var(--dsc-input-color--readonly);
+  }
+
+  /**
+   * Sizes
+   */
+  &[data-size='sm'] {
+    @composes ds-body-text--sm from './base/base.css';
+
+    --dsc-input-padding: var(--ds-spacing-1) var(--ds-spacing-2);
+    --dsc-input-size--switch: var(--ds-sizing-6);
+    --dsc-input-size--toggle: var(--ds-sizing-5);
+    --dsc-input-size: var(--ds-sizing-10);
+  }
+
+  &[data-size='lg'] {
+    @composes ds-body-text--lg from './base/base.css';
+
+    --dsc-input-padding: var(--ds-spacing-3) var(--ds-spacing-4);
+    --dsc-input-size--switch: var(--ds-sizing-8);
+    --dsc-input-size--toggle: var(--ds-sizing-7);
+    --dsc-input-size: var(--ds-sizing-14);
+  }
+
+  /**
+   * Toggle inputs
+   */
+  &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
+    cursor: pointer;
+  }
+
+  &[type='checkbox'],
+  &[type='radio'] {
+    --dsc-input-border-width: var(--dsc-input-border-width--toggle);
+    --dsc-input-padding: calc(var(--ds-sizing-1) / 2);
+    --dsc-input-size: var(--dsc-input-size--toggle);
+
+    flex-shrink: 0; /* Never shrink a toggle input */
+    width: var(--dsc-input-size);
+  }
+
+  &[type='radio'] {
+    border-radius: var(--ds-border-radius-full);
+  }
+
+  &[type='radio']:checked {
+    background: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%), var(--dsc-input-background);
+  }
+
+  &[type='checkbox']:checked {
+    background: var(--check-left), var(--check-right), var(--dsc-input-background);
+  }
+
+  &[type='checkbox']:indeterminate {
+    background: center / contain no-repeat content-box
+      linear-gradient(
+        transparent calc(48% - var(--dsc-input-stroke)),
+        currentcolor calc(50% - var(--dsc-input-stroke)),
+        currentcolor calc(50% + var(--dsc-input-stroke)),
+        transparent calc(52% + var(--dsc-input-stroke))
+      ), var(--dsc-input-background);
+  }
+
+  /**
+   * Switch
+   */
+  &[role='switch']:is([type='radio'], [type='checkbox']) {
+    --dsc-input-color: transparent; /* Hide checkmark */
+    --dsc-input-padding: var(--ds-sizing-1);
+    --dsc-input-size: var(--dsc-input-size--switch);
+    --circle-color: var(--dsc-input-color--checked);
+    --circle-position: left;
+
+    border-radius: var(--ds-border-radius-full);
+    padding-left: var(--dsc-input-size); /* Push checkmark to right side */
+    transition: 0.2s background-position;
+    width: calc((var(--dsc-input-size) - var(--dsc-input-border-width)) * 2); /* Subtract border-width to make background-image math correct */
+    background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position) /
+      50% 100% no-repeat padding-box, var(--dsc-input-background);
+
+    &:checked {
+      --dsc-input-color: var(--dsc-input-border-color);
+      --circle-position: right;
+    }
+
+    &[readonly] {
+      --circle-color: var(--dsc-input-color--readonly);
+    }
+  }
+}
+
+/* Change cursor on wrapping <label> */
+label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disabled], [readonly])) {
+  cursor: pointer;
+}
+
+/**
+ * Affix
+ */
+.ds-input-affix {
+  --dsc-input-affix-border-radius: var(--ds-border-radius-md);
+  --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
+  --dsc-input-affix-padding-inline: var(--ds-spacing-4);
+
+  align-items: center;
+  background: var(--ds-color-neutral-background-subtle);
+  border-radius: var(--dsc-input-affix-border-radius);
+  box-sizing: border-box;
+  color: var(--ds-color-neutral-text-subtle);
+  display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+  gap: var(--dsc-input-affix-padding-inline);
+  padding-inline: var(--dsc-input-affix-padding-inline);
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+
+  /* Using ::before to make input border overlap addons border */
+  &::before {
+    border-radius: inherit;
+    border: var(--dsc-input-affix-border);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  @composes ds-body-text--md from './base/base.css';
+
+  /* Using double selector to ensure we win specificity */
+  .ds-input.ds-input {
+    align-self: stretch;
+    border-radius: 0;
+    flex: 1 1 auto;
+    height: auto;
+  }
+
+  &:has([data-size='sm']) {
+    @composes ds-body-text--sm from './base/base.css';
+
+    --dsc-input-affix-padding-inline: var(--ds-spacing-3);
+  }
+
+  &:has([data-size='lg']) {
+    @composes ds-body-text--lg from './base/base.css';
+
+    --dsc-input-affix-padding-inline: var(--ds-spacing-5);
+  }
+}
