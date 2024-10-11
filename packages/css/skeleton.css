@@ -21,9 +21,16 @@
   &[data-variant='text'] {
     border-radius: var(--ds-border-radius-full);
     box-decoration-break: clone;
+    color: transparent;
     display: inline;
     font-size: 0.8em; /* Scale down font to have larger gap between lines */
     letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
+    user-select: none; /* Prevent text selection */
+
+    &:empty::before {
+      content: attr(data-text); /* Only fill with fallback text if empty */
+      word-break: break-word; /* Enable text wrapping */
+    }
   }
 
   /* When having children, let them define size */
