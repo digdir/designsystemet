@@ -63,10 +63,10 @@
     height: auto; /* Allow rows="" to set height */
     min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
     resize: vertical; /* Allow resizing vertically only */
-  }
 
-  &:where(textarea):not([rows]) {
-    field-sizing: content;
+    &:not([rows]) {
+      field-sizing: content;
+    }
   }
 
   &:not([size], [cols], select) {
