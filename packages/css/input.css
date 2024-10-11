@@ -1,42 +1,34 @@
 .ds-input {
-  --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
-  --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
-  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
-  --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-background--checked: var(--dsc-input-border-color--checked);
   --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
   --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
   --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
+  --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
+  --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
+  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-width--toggle: 2px;
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
   --dsc-input-color--readonly: var(--ds-color-neutral-border-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
-  --dsc-input-stroke: 0.05em;
   --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
   --dsc-input-size--switch: var(--ds-sizing-7);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
+  --dsc-input-stroke: 0.05em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
+  --diagonal-1: transparent calc(50% - var(--dsc-input-stroke));
+  --diagonal-2: currentcolor calc(48% - var(--dsc-input-stroke));
+  --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
+  --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
   --check-left: calc(var(--dsc-input-stroke) / 2) calc(66.66% + var(--dsc-input-stroke) / 2) / 33.33% 33.33% no-repeat content-box
-    linear-gradient(
-      45deg,
-      transparent calc(50% - var(--dsc-input-stroke)),
-      currentcolor calc(48% - var(--dsc-input-stroke)),
-      currentcolor calc(50% + var(--dsc-input-stroke)),
-      transparent calc(52% + var(--dsc-input-stroke))
-    );
+    linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
   --check-right: calc(100% - var(--dsc-input-stroke) / 2) / 66.66% 66.66% no-repeat content-box
-    linear-gradient(
-      -45deg,
-      transparent calc(50% - var(--dsc-input-stroke)),
-      currentcolor calc(48% - var(--dsc-input-stroke)),
-      currentcolor calc(50% + var(--dsc-input-stroke)),
-      transparent calc(52% + var(--dsc-input-stroke))
-    );
+    linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -46,7 +38,9 @@
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
+  height: var(--dsc-input-size);
   margin: 0; /* Reset native margin on checkbox and radio */
+  max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
 
@@ -58,11 +52,24 @@
     --dsc-input-background: var(--dsc-input-background--switch);
   }
 
-  &:not(textarea) {
-    height: var(--dsc-input-size);
+  &:is(select) {
+    padding-right: 2.4em;
+    background: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 1.2em + var(--dsc-input-stroke))
+      / 0.4em 0.4em no-repeat, linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 0.8em) / 0.4em
+      0.4em no-repeat, var(--dsc-input-background);
   }
 
-  &:not([size]) {
+  &:is(textarea) {
+    height: auto; /* Allow rows="" to set height */
+    min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
+    resize: vertical; /* Allow resizing vertically only */
+
+    &:not([rows]) {
+      field-sizing: content;
+    }
+  }
+
+  &:not([size], [cols], select) {
     width: 100%;
   }
 
@@ -70,9 +77,9 @@
    * States
    */
   &:checked,
-  &:indeterminate {
-    --dsc-input-border-color: var(--dsc-input-border-color--checked);
+  &:indeterminate:where([type='checkbox']) {
     --dsc-input-background: var(--dsc-input-background--checked);
+    --dsc-input-border-color: var(--dsc-input-border-color--checked);
     --dsc-input-color: var(--dsc-input-color--checked);
   }
 
@@ -83,15 +90,15 @@
   }
 
   &[aria-invalid='true'] {
-    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
     --dsc-input-background--checked: var(--dsc-input-background--invalid);
+    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
     --dsc-input-color--checked: var(--dsc-input-color--invalid);
   }
 
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
   &[readonly] {
-    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-background: var(--dsc-input-background--readonly);
+    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-color: var(--dsc-input-color--readonly);
   }
 
@@ -192,13 +199,12 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
  * Affix
  */
 .ds-input-affix {
-  --dsc-input-affix-border-radius: var(--ds-border-radius-md);
   --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-input-affix-padding-inline: var(--ds-spacing-4);
 
   align-items: center;
   background: var(--ds-color-neutral-background-subtle);
-  border-radius: var(--dsc-input-affix-border-radius);
+  border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
