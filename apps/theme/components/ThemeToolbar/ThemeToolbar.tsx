@@ -1,5 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Button, Select, Tooltip } from '@digdir/designsystemet-react';
+import { Button, Label, Select, Tooltip } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ContrastMode,
@@ -107,8 +107,9 @@ export const ThemeToolbar = ({
         />
 
         <div className={classes.dropdown}>
+          <Label htmlFor='select-contrast'>Kontrastnivå</Label>
           <Select
-            label='Kontrastnivå'
+            id='select-contrast'
             size='md'
             className={classes.contrastSelect}
             value={contrastMode}
@@ -121,8 +122,9 @@ export const ThemeToolbar = ({
           </Select>
         </div>
         <div className={classes.borderRadii}>
+          <Label htmlFor='select-border-radius'>Border radius</Label>
           <Select
-            label='Border radius'
+            id='select-border-radius'
             size='md'
             className={classes.borderRadiiSelect}
             value={borderRadius}

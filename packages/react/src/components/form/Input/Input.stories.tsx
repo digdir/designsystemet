@@ -85,7 +85,7 @@ export const Preview: Story = {
     return (
       <>
         <Label htmlFor='input-1'>Input 1</Label>
-        <Input id='input-1' {...args} />
+        <Input id='input-1' {...args} defaultChecked />
         <ValidationMessage hidden={!args['aria-invalid']}>
           Feilmelding
         </ValidationMessage>

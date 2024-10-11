@@ -9,6 +9,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from '.';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
+import { Label } from '../Label';
 import { Paragraph } from '../Paragraph';
 import { Select } from '../form/Select';
 import { Textfield } from '../form/Textfield';
@@ -228,7 +229,8 @@ export const Composed: Story = () => (
         </div>
       </Card.Block>
       <Card.Block>
-        <Select label='Velg rolle'>
+        <Label htmlFor='my-select'>Velg rolle</Label>
+        <Select id='my-select'>
           {options.map(({ value, label }, index) => (
             <Select.Option key={index} value={value}>
               {label}

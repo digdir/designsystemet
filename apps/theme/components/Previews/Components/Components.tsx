@@ -10,6 +10,7 @@ import {
   Fieldset,
   Heading,
   HelpText,
+  Label,
   Link,
   Pagination,
   Paragraph,
@@ -95,7 +96,7 @@ export const Components = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select label='Velg handling' size='sm' hideLabel>
+            <Select size='sm' aria-label='Velg handling'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
@@ -299,15 +300,13 @@ export const Components = () => {
           <Combobox.Option value='bergen'>Bergen</Combobox.Option>
           <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
         </Combobox>
+        <Label htmlFor='my-textarea'>Ekstra informasjon</Label>
         <Textarea
-          cols={40}
-          rows={3}
-          description=''
-          placeholder='Skriv her...'
-          error=''
-          label='Ekstra informasjon'
-          size='sm'
           className={classes.textarea}
+          cols={40}
+          id='my-textarea'
+          rows={3}
+          size='sm'
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
