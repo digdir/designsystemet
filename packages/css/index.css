@@ -20,6 +20,7 @@
 @import url('./search.css') layer(ds.components);
 @import url('./select.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
+@import url('./input.css') layer(ds.components);
 @import url('./textarea.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);
 @import url('./modal.css') layer(ds.components);
