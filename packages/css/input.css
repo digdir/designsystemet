@@ -194,7 +194,7 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
 .ds-input-affix {
   --dsc-input-affix-border-radius: var(--ds-border-radius-md);
   --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
-  --dsc-input-affix-padding: var(--ds-spacing-4);
+  --dsc-input-affix-padding-inline: var(--ds-spacing-4);
 
   align-items: center;
   background: var(--ds-color-neutral-background-subtle);
@@ -202,8 +202,8 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
-  gap: var(--dsc-input-affix-padding);
-  padding-inline: var(--dsc-input-affix-padding);
+  gap: var(--dsc-input-affix-padding-inline);
+  padding-inline: var(--dsc-input-affix-padding-inline);
   position: relative;
   white-space: nowrap;
   width: fit-content;
@@ -222,19 +222,21 @@ label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disab
 
   /* Using double selector to ensure we win specificity */
   .ds-input.ds-input {
+    align-self: stretch;
     border-radius: 0;
     flex: 1 1 auto;
+    height: auto;
   }
 
   &:has([data-size='sm']) {
     @composes ds-body-text--sm from './base/base.css';
 
-    --dsc-input-affix-padding: var(--ds-spacing-3);
+    --dsc-input-affix-padding-inline: var(--ds-spacing-3);
   }
 
   &:has([data-size='lg']) {
     @composes ds-body-text--lg from './base/base.css';
 
-    --dsc-input-affix-padding: var(--ds-spacing-5);
+    --dsc-input-affix-padding-inline: var(--ds-spacing-5);
   }
 }

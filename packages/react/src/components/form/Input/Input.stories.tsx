@@ -82,10 +82,6 @@ export const Preview: Story = {
     const inputRef = useRef<HTMLInputElement>(null);
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
-    useEffect(() => {
-      if (inputRef.current) inputRef.current.indeterminate = true;
-    });
-
     return (
       <>
         <Label htmlFor='input-1'>Input 1</Label>
