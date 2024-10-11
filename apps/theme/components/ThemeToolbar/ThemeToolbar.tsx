@@ -106,7 +106,7 @@ export const ThemeToolbar = ({
           }}
         />
 
-        <div className={classes.dropdown}>
+        <div className={classes.select}>
           <Label htmlFor='select-contrast'>Kontrastnivå</Label>
           <Select
             id='select-contrast'
@@ -121,12 +121,11 @@ export const ThemeToolbar = ({
             <Select.Option value='aaa'>AAA (WIP)</Select.Option>
           </Select>
         </div>
-        <div className={classes.borderRadii}>
+        <div className={classes.select}>
           <Label htmlFor='select-border-radius'>Border radius</Label>
           <Select
             id='select-border-radius'
             size='md'
-            className={classes.borderRadiiSelect}
             value={borderRadius}
             onChange={(e) => onBorderRadiusChanged(e.target.value)}
             style={{

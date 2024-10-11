@@ -14,3 +14,9 @@
 .contrastSelect {
   width: 150px;
 }
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
