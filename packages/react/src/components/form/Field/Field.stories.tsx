@@ -1,11 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { Label } from '../../Label';
 
 import { Field } from '.';
 import { ValidationMessage } from '../../ValidationMessage';
+import { Input } from '../Input';
+import { Select } from '../Select';
+import { Textarea } from '../Textarea';
 
 type Story = StoryFn<typeof Field>;
 
@@ -16,6 +18,7 @@ export default {
     type: {
       control: { type: 'radio' },
       options: ['textarea', 'input', 'select', false],
+      mapping: { textarea: Textarea, input: Input, select: Select },
     },
   },
 } as Meta;
