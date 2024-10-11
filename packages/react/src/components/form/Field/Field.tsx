@@ -2,7 +2,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import { a11yField } from './a11yField';
+import { fieldA11Y } from './fieldA11Y';
 
 export type FieldProps = HTMLAttributes<HTMLDivElement>;
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
@@ -11,7 +11,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
 ) {
   const fieldRef = useRef<HTMLDivElement>(null);
   const mergedRefs = useMergeRefs([fieldRef, ref]);
-  useEffect(() => a11yField(fieldRef.current), []); // Intentionally run on each render
+  useEffect(() => fieldA11Y(fieldRef.current), []); // Intentionally run on each render
 
   return (
     <div className={cl('ds-field', className)} ref={mergedRefs} {...rest} />

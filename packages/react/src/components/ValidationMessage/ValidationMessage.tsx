@@ -30,10 +30,11 @@ export const ValidationMessage = forwardRef<
 
   return (
     <Component
-      ref={ref}
       className={cl('ds-validation-message', className)}
       data-error={error || undefined}
+      data-field-validation
       data-size={size}
+      ref={ref}
       {...rest}
     />
   );

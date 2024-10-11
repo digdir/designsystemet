@@ -1,110 +1,96 @@
-const ARIA_DESC = 'aria-describedby';
-export const DATA_DESC = 'data-field-description';
-export const DATA_VALID = 'data-field-validation';
-export const DATA_RESET = 'data-field-reset';
+const ARIA_DESC = "aria-describedby";
 
-export const a11yField = (field: HTMLElement | null) => {
+/**
+ * The cache takes a element identifier as key, and a object of element, attribute, and original value.
+ * If there is no original value, we create a fallback value, but do not store it.
+ */
+type Cache = Record<string, Entry>;
+type Entry = {
+  el: Element | null;
+  attr: string;
+  value: string | null;
+  prefix?: string;
+};
+
+export const fieldA11Y = (field: HTMLElement | null) => {
   if (!field) return;
 
+  const elements = field.getElementsByTagName("*"); // Speed up by using a live HTMLCollection instead of traversing MutationRecords
   const uuid = `:${Math.round(Date.now() + Math.random() * 100).toString(36)}`;
-  const queue: MutationRecord[] = [];
-  const elements = field.getElementsByTagName('*'); // Speed up MutationObserver by refering to live HTMLCollection
-  const observer = new MutationObserver((mutations) => {
-    if (!queue.length) requestAnimationFrame(process); // Speed up MutationObserver by queuing and only running when tab is visible
-    queue.push(...mutations);
-  });
-
-  const process = () => {
-    let desc: undefined | Element;
-    let input: undefined | Element;
-    let label: undefined | HTMLLabelElement;
-    let valid: undefined | Element;
-
-    // Find elements
-    for (const el of elements) {
-      if (el instanceof HTMLLabelElement) label = el;
-      else if ('validity' in el) input = el;
-      else if (el.hasAttribute(DATA_DESC)) desc = el;
-      else if (el.hasAttribute(DATA_VALID)) valid = el;
-    }
-
-    // Set attributes
-    if (desc && !desc.id) desc.id = `desc${uuid}`;
-    if (input && !input.id) input.id = uuid; // Must run before label
-    if (label && !label.htmlFor) label.htmlFor = input?.id || '';
-    if (valid && !valid.id) valid.id = `valid${uuid}`;
-
-    // Deregister elements
-    for (const { removedNodes } of queue)
-      for (const el of removedNodes)
-        if (el instanceof Element && el.id.endsWith(uuid))
-          el.removeAttribute('id');
-
-    // Set aria-description, and make order is: validation, description, ...rest
-    const descs =
-      `${valid?.id || ''} ${desc?.id || ''} ${input?.getAttribute(ARIA_DESC) || ''}`
-        .split(' ')
-        .filter((id, idx, all) => id && all.indexOf(id) === idx) // Remove empty and duplicates
-        .join(' ');
-    if (descs) input?.setAttribute(ARIA_DESC, descs);
-    else input?.removeAttribute(ARIA_DESC);
-
-    queue.length = 0;
-    observer.takeRecords(); // Clear queue of our DOM changes
+  const cache: Cache = {
+    input: { el: null, attr: "id", value: null },
+    label: { el: null, attr: "for", value: null },
+    help: { el: null, attr: "id", value: null, prefix: "help" },
+    valid: { el: null, attr: "id", value: null, prefix: "valid" },
   };
 
-  // let inputId: Element | undefined;
-  // const attrs: Record<string, string> = {}; // Map of element to [id, attr]
-  // const handleMutation = (mutations: Partial<MutationRecord>[]) => {
-  //   const changed: Node[] = [];
-  //   const removed: Node[] = [];
+  const observer = createOptimizedMutationObserver(() => {
+    // Find elements
+    for (const el of elements) {
+      if (el instanceof HTMLLabelElement) update(cache, "label", el);
+      else if ("validity" in el) update(cache, "input", el);
+      else if (el.hasAttribute("data-field-help")) update(cache, "help", el);
+      else if (el.hasAttribute("data-field-validation"))
+        update(cache, "valid", el);
+    }
 
-  //   // Collect all changed nodes from MutationRecords
-  //   for (const {
-  //     target = field,
-  //     addedNodes = [],
-  //     removedNodes = [],
-  //   } of mutations) {
-  //     changed.push(target ?? field, ...addedNodes, ...removedNodes);
-  //     removed.push(...removedNodes);
-  //   }
+    // Set attributes or reset if no input or moved outside field
+    const input = cache.input.el;
+    const inputId = input && (cache.input.value || uuid);
+    for (const [key, { el, attr, value, prefix }] of Object.entries(cache)) {
+      if (!inputId || !field.contains(el)) reset(cache, key);
+      else el?.setAttribute(attr, value || `${prefix || ""}${inputId}`);
+    }
 
-  //   // Run through changedNode for each ELEMENTS check
-  //   for (const [key, attr, check] of ELEMENTS)
-  //     for (const el of changed)
-  //       if (el instanceof Element && check(el)) {
-  //         const isInput = key === 'input';
-  //         const value = el.getAttribute(attr);
-  //         const fallback = `${attrs.input ?? (++a11yFieldId).toString(32)}${isInput || attr !== 'id' ? '' : `:${key}`}`;
-  //         attrs[key] = value || fallback; // Store attribute value
+    // Set aria-description, and make order is: validation, help, ...rest
+    const descs =
+      `${cache.valid.prefix}${inputId} ${cache.help.prefix}${inputId} ${input?.getAttribute(ARIA_DESC) || ""}`
+        .split(" ")
+        .filter((id, idx, all) => id && all.indexOf(id) === idx) // Remove empty and duplicates
+        .join(" ");
 
-  //         if (isInput) input = el.parentNode ? el : undefined; // Update connected input
-  //         if (!removed.includes(el)) value || el.setAttribute(attr, fallback);
-  //         else if (value === fallback) el.removeAttribute(attr); // Reset attribute if removed
-  //       }
-
-  //   // Set aria-description, and make order is: validation, description, ...rest
-  //   const descs =
-  //     `${attrs.valid || ''} ${attrs.desc || ''} ${input?.getAttribute(ARIA_DESC) || ''}`
-  //       .split(' ')
-  //       .filter((id, idx, all) => id && all.indexOf(id) === idx) // Remove empty and duplicates
-  //       .join(' ');
-
-  //   if (descs) input?.setAttribute(ARIA_DESC, descs);
-  //   else input?.removeAttribute(ARIA_DESC);
-
-  //   observer.takeRecords(); // Clear queue of our DOM changes
-  // };
+    if (descs) input?.setAttribute(ARIA_DESC, descs);
+    else input?.removeAttribute(ARIA_DESC);
+  });
 
   observer.observe(field, {
-    attributeFilter: ['id', ARIA_DESC],
+    attributeFilter: ["id", ARIA_DESC],
     attributes: true,
     childList: true,
     subtree: true,
   });
 
-  requestAnimationFrame(process); // Inital setup
   return () => observer.disconnect();
+};
+
+const update = (cache: Cache, key: string, el: Element) => {
+  if (cache[key].el === el) return; // TODO: What about storing reset if original attribute changes?
+  reset(cache, key);
+  cache[key].el = el;
+  cache[key].value = el.getAttribute(cache[key].attr);
+};
+
+const reset = (cache: Cache, key: string) => {
+  const { el, attr, value } = cache[key] || {};
+  value ? el?.setAttribute(attr, value) : el?.removeAttribute(attr);
+  cache[key].el = cache[key].value = null;
+};
+
+// Speed up MutationObserver by debouncing and only running when page is visible
+const createOptimizedMutationObserver = (callback: () => void) => {
+  let queue: ReturnType<typeof requestAnimationFrame> = 0;
+  const observer = new MutationObserver(() => {
+    if (!queue) queue = requestAnimationFrame(process);
+  });
+
+  const process = () => {
+    callback();
+    queue = 0; // Empty queue
+    observer.takeRecords(); // Clear queue of our DOM changes
+  };
+
+  requestAnimationFrame(process); // Initial setup
+  return observer;
 };
 
 /*

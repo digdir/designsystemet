@@ -1,10 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { useEffect } from 'react';
-import { Label } from '../../Typography/Label';
+import { createPortal } from 'react-dom';
+import { Label } from '../../Label';
 
 import { Field } from '.';
-import { ValidationMessage } from '../../Typography';
+import { ValidationMessage } from '../../ValidationMessage';
 
 type Story = StoryFn<typeof Field>;
 
@@ -23,9 +24,10 @@ export default {
 const toggles = {
   type: 'textarea',
   label: true,
+  labelFor: '',
   ariaDesribedby: '',
-  description: true,
-  descriptionId: '',
+  help: true,
+  helpId: '',
   validation: true,
   validationId: '',
   moveToBody: false,
@@ -36,8 +38,9 @@ export const Preview: Story = (args) => {
     ariaDesribedby,
     type,
     label,
-    description,
-    descriptionId,
+    labelFor,
+    help,
+    helpId,
     validation,
     validationId,
     moveToBody,
@@ -52,19 +55,16 @@ export const Preview: Story = (args) => {
   }, [moveToBody]);
 
   return (
-    <Field data-my-field>
-      {label && <Label style={{ display: 'block' }}>Kort beskrivelse</Label>}
-      {description && (
-        <Field.Description id={descriptionId || undefined}>
-          Beskrivelse
-        </Field.Description>
-      )}
+    <Field data-my-field style={{ display: 'flex', flexDirection: 'column' }}>
+      {label && <Label htmlFor={labelFor || undefined}>Kort beskrivelse</Label>}
+      {help && <Field.Help id={helpId || undefined}>Beskrivelse</Field.Help>}
       {type && <Component aria-describedby={ariaDesribedby || undefined} />}
       {validation && (
         <ValidationMessage data-my-validation id={validationId || undefined}>
           Feilmelding
         </ValidationMessage>
       )}
+      {/* {createPortal(<div>Hei</div>, document.body)} */}
     </Field>
   );
 };
