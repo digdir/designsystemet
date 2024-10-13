@@ -1,6 +1,6 @@
 {
   "color": {
-    "primary": {
+    "support": {
       "1": {
         "$type": "color",
         "$value": "{color.accent.1}"
@@ -61,26 +61,6 @@
         "$type": "color",
         "$value": "{color.accent.contrast-2}"
       }
-    }
-  },
-  "font": {
-    "family": {
-      "$type": "fontFamilies",
-      "$value": "{color.main}"
-    }
-  },
-  "font-weight": {
-    "medium": {
-      "$type": "fontWeights",
-      "$value": "{color.bold}"
-    },
-    "semibold": {
-      "$type": "fontWeights",
-      "$value": "{color.extra-bold}"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "{color.regular}"
     }
   }
 }

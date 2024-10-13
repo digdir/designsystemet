@@ -62,25 +62,5 @@
         "$value": "{color.complimentary.contrast-2}"
       }
     }
-  },
-  "font": {
-    "family": {
-      "$type": "fontFamilies",
-      "$value": "{theme4.main}"
-    }
-  },
-  "font-weight": {
-    "medium": {
-      "$type": "fontWeights",
-      "$value": "{theme4.bold}"
-    },
-    "semibold": {
-      "$type": "fontWeights",
-      "$value": "{theme4.extra-bold}"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "{theme4.regular}"
-    }
   }
 }

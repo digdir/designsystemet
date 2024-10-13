@@ -1,0 +1,66 @@
+{
+  "color": {
+    "primary": {
+      "1": {
+        "$type": "color",
+        "$value": "{color.accent.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{color.accent.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{color.accent.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{color.accent.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{color.accent.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{color.accent.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{color.accent.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{color.accent.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{color.accent.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{color.accent.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{color.accent.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{color.accent.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{color.accent.13}"
+      },
+      "contrast-1": {
+        "$type": "color",
+        "$value": "{color.accent.contrast-1}"
+      },
+      "contrast-2": {
+        "$type": "color",
+        "$value": "{color.accent.contrast-2}"
+      }
+    }
+  }
+}
