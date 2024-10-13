@@ -313,125 +313,125 @@
     "dominant": {
       "1": {
         "$type": "color",
-        "$value": "{theme.dominant.1}"
+        "$value": "{theme3.dominant.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{theme.dominant.2}"
+        "$value": "{theme3.dominant.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{theme.dominant.3}"
+        "$value": "{theme3.dominant.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{theme.dominant.4}"
+        "$value": "{theme3.dominant.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{theme.dominant.5}"
+        "$value": "{theme3.dominant.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{theme.dominant.6}"
+        "$value": "{theme3.dominant.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{theme.dominant.7}"
+        "$value": "{theme3.dominant.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{theme.dominant.8}"
+        "$value": "{theme3.dominant.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{theme.dominant.9}"
+        "$value": "{theme3.dominant.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{theme.dominant.10}"
+        "$value": "{theme3.dominant.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{theme.dominant.11}"
+        "$value": "{theme3.dominant.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{theme.dominant.12}"
+        "$value": "{theme3.dominant.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{theme.dominant.13}"
+        "$value": "{theme3.dominant.13}"
       },
       "contrast-1": {
         "$type": "color",
-        "$value": "{theme.dominant.contrast-1}"
+        "$value": "{theme3.dominant.contrast-1}"
       },
       "contrast-2": {
         "$type": "color",
-        "$value": "{theme.dominant.contrast-2}"
+        "$value": "{theme3.dominant.contrast-2}"
       }
     },
     "complimentary": {
       "1": {
         "$type": "color",
-        "$value": "{theme.complimentary.1}"
+        "$value": "{theme3.complimentary.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{theme.complimentary.2}"
+        "$value": "{theme3.complimentary.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{theme.complimentary.3}"
+        "$value": "{theme3.complimentary.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{theme.complimentary.4}"
+        "$value": "{theme3.complimentary.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{theme.complimentary.5}"
+        "$value": "{theme3.complimentary.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{theme.complimentary.6}"
+        "$value": "{theme3.complimentary.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{theme.complimentary.7}"
+        "$value": "{theme3.complimentary.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{theme.complimentary.8}"
+        "$value": "{theme3.complimentary.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{theme.complimentary.9}"
+        "$value": "{theme3.complimentary.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{theme.complimentary.10}"
+        "$value": "{theme3.complimentary.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{theme.complimentary.11}"
+        "$value": "{theme3.complimentary.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{theme.complimentary.12}"
+        "$value": "{theme3.complimentary.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{theme.complimentary.13}"
+        "$value": "{theme3.complimentary.13}"
       },
       "contrast-1": {
         "$type": "color",
-        "$value": "{theme.complimentary.contrast-1}"
+        "$value": "{theme3.complimentary.contrast-1}"
       },
       "contrast-2": {
         "$type": "color",
-        "$value": "{theme.complimentary.contrast-2}"
+        "$value": "{theme3.complimentary.contrast-2}"
       }
     }
   },

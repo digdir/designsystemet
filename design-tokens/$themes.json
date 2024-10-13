@@ -1175,10 +1175,6 @@
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:0",
     "$figmaVariableReferences": {
-      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
-      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
-      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
-      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d",
       "color.accent.1": "acaae357eefd398d4d38284ddd432fb6645adf04",
       "color.accent.2": "633c05ea957d4e7de1bed8871f9a23bd78951514",
       "color.accent.3": "72b3d4e0758b3efac1cd4c3e0e8d6bd6fdb2f78a",
@@ -1283,7 +1279,11 @@
       "color.complimentary.12": "6c18140d09bc35732b6aac4e7b972dfac1b2c791",
       "color.complimentary.13": "24b2d08504c3d3314e5d7f1c519ffadd135c17da",
       "color.complimentary.contrast-1": "d165205cc5a780153cd7d4f856ae4949376e1060",
-      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355"
+      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355",
+      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
+      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
+      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
+      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d"
     },
     "group": "Theme"
   },
@@ -1297,10 +1297,6 @@
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:1",
     "$figmaVariableReferences": {
-      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
-      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
-      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
-      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d",
       "color.accent.1": "acaae357eefd398d4d38284ddd432fb6645adf04",
       "color.accent.2": "633c05ea957d4e7de1bed8871f9a23bd78951514",
       "color.accent.3": "72b3d4e0758b3efac1cd4c3e0e8d6bd6fdb2f78a",
@@ -1405,7 +1401,11 @@
       "color.complimentary.12": "6c18140d09bc35732b6aac4e7b972dfac1b2c791",
       "color.complimentary.13": "24b2d08504c3d3314e5d7f1c519ffadd135c17da",
       "color.complimentary.contrast-1": "d165205cc5a780153cd7d4f856ae4949376e1060",
-      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355"
+      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355",
+      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
+      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
+      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
+      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d"
     },
     "group": "Theme"
   },
@@ -1419,10 +1419,6 @@
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:2",
     "$figmaVariableReferences": {
-      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
-      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
-      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
-      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d",
       "color.accent.1": "acaae357eefd398d4d38284ddd432fb6645adf04",
       "color.accent.2": "633c05ea957d4e7de1bed8871f9a23bd78951514",
       "color.accent.3": "72b3d4e0758b3efac1cd4c3e0e8d6bd6fdb2f78a",
@@ -1527,7 +1523,11 @@
       "color.complimentary.12": "6c18140d09bc35732b6aac4e7b972dfac1b2c791",
       "color.complimentary.13": "24b2d08504c3d3314e5d7f1c519ffadd135c17da",
       "color.complimentary.contrast-1": "d165205cc5a780153cd7d4f856ae4949376e1060",
-      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355"
+      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355",
+      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
+      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
+      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
+      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d"
     },
     "group": "Theme"
   },
@@ -1880,10 +1880,6 @@
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:3",
     "$figmaVariableReferences": {
-      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
-      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
-      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
-      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d",
       "color.accent.1": "acaae357eefd398d4d38284ddd432fb6645adf04",
       "color.accent.2": "633c05ea957d4e7de1bed8871f9a23bd78951514",
       "color.accent.3": "72b3d4e0758b3efac1cd4c3e0e8d6bd6fdb2f78a",
@@ -1988,7 +1984,11 @@
       "color.complimentary.12": "6c18140d09bc35732b6aac4e7b972dfac1b2c791",
       "color.complimentary.13": "24b2d08504c3d3314e5d7f1c519ffadd135c17da",
       "color.complimentary.contrast-1": "d165205cc5a780153cd7d4f856ae4949376e1060",
-      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355"
+      "color.complimentary.contrast-2": "883eb80d4f91c511d9f8194173d4ea1653073355",
+      "font.family": "db9d58b12c10374efbb6b3bfc0478718fa9fa83d",
+      "font-weight.medium": "9cacf6f096eede51fb6ace80c5712ac2571482ab",
+      "font-weight.semibold": "a2278e46da52cfb1293d1f1b2c8fe13873ea16f5",
+      "font-weight.regular": "10aa5184b0639eb8a57f8209b857e9e232ee518d"
     },
     "group": "Theme"
   },
@@ -2242,7 +2242,30 @@
     "selectedTokenSets": {
       "primary/dominant": "enabled"
     },
-    "group": "color"
+    "group": "color",
+    "$figmaCollectionId": "VariableCollectionId:40107:65911",
+    "$figmaModeId": "40107:0",
+    "$figmaVariableReferences": {
+      "font.family": "09cd7dbd4c889ee9ba9dc02974b54499dc589621",
+      "font-weight.medium": "cfee42e146ef2dca68dc9fbc800e877679e51f1c",
+      "font-weight.semibold": "f3f2bc526d17abaee5e562ad35465c1d05b673dc",
+      "font-weight.regular": "55a054a8454781af955166409ab8c48064786350",
+      "color.primary.1": "6e1cd4ad3282f3585643e7146b87827ffc186483",
+      "color.primary.2": "bf292c35b1579da8b1234b10e02967ca7bd8b52c",
+      "color.primary.3": "f89e717aa414affd2f2170800977354bcc0bf50e",
+      "color.primary.4": "5956bdcb7916846b4656428f825e3864771bd99f",
+      "color.primary.5": "e109713d635ffb7d280aad1bdb9a010e1c2dd861",
+      "color.primary.6": "2feac4adf2bd319cedbc50a0198c7ec1e5cc1d92",
+      "color.primary.7": "49c79a2b295a0d4fcfdafd5ef91a54fac87ac78b",
+      "color.primary.8": "ba20a1c9eafe657e56edd1e02a06870ceab5cfee",
+      "color.primary.9": "9899b99aa07c4582f7b46a646b25d90eb41f4369",
+      "color.primary.10": "6b29531cf56252481cb4a610171bb8acfb825dba",
+      "color.primary.11": "f11e16674924e8922185d5bafa1d701aeb15571e",
+      "color.primary.12": "da366ca8ab5f269563d0acaeac8e3dd2663ff175",
+      "color.primary.13": "1a23f84b3c09b57058e92eb42f24424d020dd7b0",
+      "color.primary.contrast-1": "63c7376943c2af3bfe22fd0fddcbed586c8c20de",
+      "color.primary.contrast-2": "56c5fdda48a932f3003a152823f187f41192a8af"
+    }
   },
   {
     "id": "a0df482a54ee26e961f7986dae13ead48db4236d",
@@ -2251,7 +2274,30 @@
     "selectedTokenSets": {
       "primary/complimentary": "enabled"
     },
-    "group": "color"
+    "group": "color",
+    "$figmaCollectionId": "VariableCollectionId:40107:65911",
+    "$figmaModeId": "40107:1",
+    "$figmaVariableReferences": {
+      "font.family": "09cd7dbd4c889ee9ba9dc02974b54499dc589621",
+      "font-weight.medium": "cfee42e146ef2dca68dc9fbc800e877679e51f1c",
+      "font-weight.semibold": "f3f2bc526d17abaee5e562ad35465c1d05b673dc",
+      "font-weight.regular": "55a054a8454781af955166409ab8c48064786350",
+      "color.primary.1": "6e1cd4ad3282f3585643e7146b87827ffc186483",
+      "color.primary.2": "bf292c35b1579da8b1234b10e02967ca7bd8b52c",
+      "color.primary.3": "f89e717aa414affd2f2170800977354bcc0bf50e",
+      "color.primary.4": "5956bdcb7916846b4656428f825e3864771bd99f",
+      "color.primary.5": "e109713d635ffb7d280aad1bdb9a010e1c2dd861",
+      "color.primary.6": "2feac4adf2bd319cedbc50a0198c7ec1e5cc1d92",
+      "color.primary.7": "49c79a2b295a0d4fcfdafd5ef91a54fac87ac78b",
+      "color.primary.8": "ba20a1c9eafe657e56edd1e02a06870ceab5cfee",
+      "color.primary.9": "9899b99aa07c4582f7b46a646b25d90eb41f4369",
+      "color.primary.10": "6b29531cf56252481cb4a610171bb8acfb825dba",
+      "color.primary.11": "f11e16674924e8922185d5bafa1d701aeb15571e",
+      "color.primary.12": "da366ca8ab5f269563d0acaeac8e3dd2663ff175",
+      "color.primary.13": "1a23f84b3c09b57058e92eb42f24424d020dd7b0",
+      "color.primary.contrast-1": "63c7376943c2af3bfe22fd0fddcbed586c8c20de",
+      "color.primary.contrast-2": "56c5fdda48a932f3003a152823f187f41192a8af"
+    }
   },
   {
     "id": "e8db1eb9cc7955a97a90cd91b3dc07707c531770",
@@ -2260,6 +2306,29 @@
     "selectedTokenSets": {
       "primary/accent": "enabled"
     },
-    "group": "color"
+    "group": "color",
+    "$figmaCollectionId": "VariableCollectionId:40107:65911",
+    "$figmaModeId": "40107:2",
+    "$figmaVariableReferences": {
+      "font.family": "09cd7dbd4c889ee9ba9dc02974b54499dc589621",
+      "font-weight.medium": "cfee42e146ef2dca68dc9fbc800e877679e51f1c",
+      "font-weight.semibold": "f3f2bc526d17abaee5e562ad35465c1d05b673dc",
+      "font-weight.regular": "55a054a8454781af955166409ab8c48064786350",
+      "color.primary.1": "6e1cd4ad3282f3585643e7146b87827ffc186483",
+      "color.primary.2": "bf292c35b1579da8b1234b10e02967ca7bd8b52c",
+      "color.primary.3": "f89e717aa414affd2f2170800977354bcc0bf50e",
+      "color.primary.4": "5956bdcb7916846b4656428f825e3864771bd99f",
+      "color.primary.5": "e109713d635ffb7d280aad1bdb9a010e1c2dd861",
+      "color.primary.6": "2feac4adf2bd319cedbc50a0198c7ec1e5cc1d92",
+      "color.primary.7": "49c79a2b295a0d4fcfdafd5ef91a54fac87ac78b",
+      "color.primary.8": "ba20a1c9eafe657e56edd1e02a06870ceab5cfee",
+      "color.primary.9": "9899b99aa07c4582f7b46a646b25d90eb41f4369",
+      "color.primary.10": "6b29531cf56252481cb4a610171bb8acfb825dba",
+      "color.primary.11": "f11e16674924e8922185d5bafa1d701aeb15571e",
+      "color.primary.12": "da366ca8ab5f269563d0acaeac8e3dd2663ff175",
+      "color.primary.13": "1a23f84b3c09b57058e92eb42f24424d020dd7b0",
+      "color.primary.contrast-1": "63c7376943c2af3bfe22fd0fddcbed586c8c20de",
+      "color.primary.contrast-2": "56c5fdda48a932f3003a152823f187f41192a8af"
+    }
   }
 ]
