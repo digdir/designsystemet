@@ -3,63 +3,63 @@
     "primary": {
       "1": {
         "$type": "color",
-        "$value": "{theme4.accent.1}"
+        "$value": "{color.complimentary.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{theme4.accent.2}"
+        "$value": "{color.complimentary.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{theme4.accent.3}"
+        "$value": "{color.complimentary.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{theme4.accent.4}"
+        "$value": "{color.complimentary.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{theme4.accent.5}"
+        "$value": "{color.complimentary.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{theme4.accent.6}"
+        "$value": "{color.complimentary.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{theme4.accent.7}"
+        "$value": "{color.complimentary.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{theme4.accent.8}"
+        "$value": "{color.complimentary.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{theme4.accent.9}"
+        "$value": "{color.complimentary.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{theme4.accent.10}"
+        "$value": "{color.complimentary.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{theme4.accent.11}"
+        "$value": "{color.complimentary.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{theme4.accent.12}"
+        "$value": "{color.complimentary.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{theme4.accent.13}"
+        "$value": "{color.complimentary.13}"
       },
       "contrast-1": {
         "$type": "color",
-        "$value": "{theme4.accent.contrast-1}"
+        "$value": "{color.complimentary.contrast-1}"
       },
       "contrast-2": {
         "$type": "color",
-        "$value": "{theme4.accent.contrast-2}"
+        "$value": "{color.complimentary.contrast-2}"
       }
     }
   },

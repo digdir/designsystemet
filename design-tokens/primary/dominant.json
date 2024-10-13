@@ -3,84 +3,84 @@
     "primary": {
       "1": {
         "$type": "color",
-        "$value": "{theme4.accent.1}"
+        "$value": "{color.dominant.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{theme4.accent.2}"
+        "$value": "{color.dominant.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{theme4.accent.3}"
+        "$value": "{color.dominant.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{theme4.accent.4}"
+        "$value": "{color.dominant.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{theme4.accent.5}"
+        "$value": "{color.dominant.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{theme4.accent.6}"
+        "$value": "{color.dominant.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{theme4.accent.7}"
+        "$value": "{color.dominant.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{theme4.accent.8}"
+        "$value": "{color.dominant.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{theme4.accent.9}"
+        "$value": "{color.dominant.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{theme4.accent.10}"
+        "$value": "{color.dominant.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{theme4.accent.11}"
+        "$value": "{color.dominant.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{theme4.accent.12}"
+        "$value": "{color.dominant.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{theme4.accent.13}"
+        "$value": "{color.dominant.13}"
       },
       "contrast-1": {
         "$type": "color",
-        "$value": "{theme4.accent.contrast-1}"
+        "$value": "{color.dominant.contrast-1}"
       },
       "contrast-2": {
         "$type": "color",
-        "$value": "{theme4.accent.contrast-2}"
+        "$value": "{color.dominant.contrast-2}"
       }
     }
   },
   "font": {
     "family": {
       "$type": "fontFamilies",
-      "$value": "{theme4.main}"
+      "$value": "{color4.main}"
     }
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{theme4.bold}"
+      "$value": "{color4.bold}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{theme4.extra-bold}"
+      "$value": "{color4.extra-bold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{theme4.regular}"
+      "$value": "{color4.regular}"
     }
   }
 }
