@@ -3,63 +3,63 @@
     "accent": {
       "background-default": {
         "$type": "color",
-        "$value": "{color.accent.1}"
+        "$value": "{color.primary.1}"
       },
       "background-subtle": {
         "$type": "color",
-        "$value": "{color.accent.2}"
+        "$value": "{color.primary.2}"
       },
       "surface-default": {
         "$type": "color",
-        "$value": "{color.accent.3}"
+        "$value": "{color.primary.3}"
       },
       "surface-hover": {
         "$type": "color",
-        "$value": "{color.accent.4}"
+        "$value": "{color.primary.4}"
       },
       "surface-active": {
         "$type": "color",
-        "$value": "{color.accent.5}"
+        "$value": "{color.primary.5}"
       },
       "border-subtle": {
         "$type": "color",
-        "$value": "{color.accent.6}"
+        "$value": "{color.primary.6}"
       },
       "border-default": {
         "$type": "color",
-        "$value": "{color.accent.7}"
+        "$value": "{color.primary.7}"
       },
       "border-strong": {
         "$type": "color",
-        "$value": "{color.accent.8}"
+        "$value": "{color.primary.8}"
       },
       "base-default": {
         "$type": "color",
-        "$value": "{color.accent.9}"
+        "$value": "{color.primary.9}"
       },
       "base-hover": {
         "$type": "color",
-        "$value": "{color.accent.10}"
+        "$value": "{color.primary.10}"
       },
       "base-active": {
         "$type": "color",
-        "$value": "{color.accent.11}"
+        "$value": "{color.primary.11}"
       },
       "text-subtle": {
         "$type": "color",
-        "$value": "{color.accent.12}"
+        "$value": "{color.primary.12}"
       },
       "text-default": {
         "$type": "color",
-        "$value": "{color.accent.13}"
+        "$value": "{color.primary.13}"
       },
       "contrast-default": {
         "$type": "color",
-        "$value": "{color.accent.contrast-1}"
+        "$value": "{color.primary.contrast-1}"
       },
       "contrast-subtle": {
         "$type": "color",
-        "$value": "{color.accent.contrast-2}"
+        "$value": "{color.primary.contrast-2}"
       }
     },
     "neutral": {

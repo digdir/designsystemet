@@ -25,6 +25,9 @@
     "themes/theme2",
     "themes/theme3",
     "themes/theme4",
+    "primary/dominant",
+    "primary/complimentary",
+    "primary/accent",
     "semantic/color",
     "semantic/style",
     "Figma/components"
