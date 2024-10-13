@@ -18,14 +18,7 @@ export type PermutatedTheme = {
 
 export type PermutatedThemes = PermutatedTheme[];
 
-function mapThemesToSetsObject(themes: ThemeObject[]): PermutatedThemes {
-  return themes.map((theme) => ({ name: theme.name, selectedTokenSets: filterTokenSets(theme.selectedTokenSets) }));
-}
-
 export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} as Options): PermutatedThemes {
-  if (!themes.some((theme) => theme.group)) {
-    return mapThemesToSetsObject(themes);
-  }
   // Sort themes by groups
   const groups: Record<string, ThemeObject[]> = {};
   for (const theme of themes) {
@@ -36,10 +29,6 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
         `Theme ${theme.name} does not have a group property, which is required for multi-dimensional theming.`,
       );
     }
-  }
-
-  if (Object.keys(groups).length <= 1) {
-    return mapThemesToSetsObject(themes);
   }
 
   // Create theme permutations
