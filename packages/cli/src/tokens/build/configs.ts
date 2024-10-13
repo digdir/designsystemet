@@ -1,5 +1,4 @@
 import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
-import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { Config, LogConfig, TransformedToken } from 'style-dictionary/types';
@@ -9,7 +8,7 @@ import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
-import type { PermutatedThemes } from './utils/permutateThemes.js';
+import type { GroupedThemes, PermutatedTheme, PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -29,6 +28,7 @@ StyleDictionary.registerTransform(typographyName);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
+StyleDictionary.registerFormat(formats.colorcategory);
 StyleDictionary.registerFormat(formats.semantic);
 StyleDictionary.registerFormat(formats.typography);
 
@@ -51,7 +51,7 @@ const hasUnknownProps = R.pipe(R.values, R.none(R.equals('unknown')), R.not);
 
 const outputColorReferences = (token: TransformedToken) => {
   if (
-    R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
+    R.test(/accent|primary|support|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
     R.includes('semantic/color', token.filePath)
   ) {
     return true;
@@ -62,19 +62,16 @@ const outputColorReferences = (token: TransformedToken) => {
 
 export type IsCalculatedToken = (token: TransformedToken, options?: Config) => boolean;
 
-export const permutateThemes = ($themes: ThemeObject[]) =>
-  permutateThemes_($themes, {
+export const permutateThemes = (groupedThemes: GroupedThemes) =>
+  permutateThemes_(groupedThemes, {
     separator,
   });
 
-type GetConfig = (options: {
-  mode?: string;
-  theme?: string;
-  semantic?: string;
-  size?: string;
-  typography?: string;
-  outPath?: string;
-}) => Config;
+type GetConfig = (
+  options: PermutationProps & {
+    outPath?: string;
+  },
+) => Config;
 
 export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
@@ -99,7 +96,10 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
           {
             destination: `color-mode/${mode}.css`,
             format: formats.colormode.name,
-            filter: (token) => !token.isSource && typeEquals('color', token),
+            filter: (token) =>
+              !token.isSource &&
+              typeEquals('color', token) &&
+              !(['primary', 'support'] as const).some((category) => isColorCategoryToken(token, category)),
           },
         ],
         options: {
@@ -110,6 +110,62 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
     },
   };
 };
+
+function isColorCategoryToken(token: TransformedToken, category: 'primary' | 'support') {
+  return R.startsWith(['color', category], token.path);
+}
+
+export function capitalize<T extends string>(str: T): Capitalize<T> {
+  if (!str) {
+    return str as Capitalize<T>;
+  }
+  return (str[0].toUpperCase() + str.slice(1)) as Capitalize<T>;
+}
+
+export const colorCategories =
+  (category: 'primary' | 'support' = 'primary'): GetConfig =>
+  ({ mode, outPath, theme, [`color${capitalize(category)}` as const]: color }) => {
+    const layer = `ds.theme.color-${category}`;
+    const optionalRootSelector =
+      (category === 'primary' && color === 'dominant') || (category === 'support' && color === 'support1')
+        ? ':root'
+        : undefined;
+    const dataSelector = `[data-ds-color-${category}="${color}"]`;
+    const selector = [optionalRootSelector, dataSelector].filter((x) => x !== undefined).join(', ');
+
+    return {
+      usesDtcg,
+      preprocessors: ['tokens-studio'],
+      platforms: {
+        css: {
+          // custom
+          outPath,
+          mode,
+          theme,
+          selector,
+          layer,
+          //
+          prefix,
+          buildPath: `${outPath}/${theme}/`,
+          transforms: dsTransformers,
+          files: [
+            {
+              destination: `color-${category}/${color}.css`,
+              format: formats.colorcategory.name,
+              filter: (token) => {
+                return !token.isSource && isColorCategoryToken(token, category);
+              },
+            },
+          ],
+          options: {
+            fileHeader,
+            outputReferences: (token, options) =>
+              outputColorReferences(token) && outputReferencesFilter(token, options),
+          },
+        },
+      },
+    };
+  };
 
 export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
@@ -258,13 +314,15 @@ type getConfigs = (
   tokensDir: string,
   themes: PermutatedThemes,
   logVerbosity: LogConfig['verbosity'],
-) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
+) => (PermutationProps & { config: Config })[];
 
 export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
   permutatedThemes
     .map((permutatedTheme) => {
       const {
         selectedTokenSets = [],
+        colorPrimary = 'unknown',
+        colorSupport = 'unknown',
         mode = 'unknown',
         theme = 'unknown',
         semantic = 'unknown',
@@ -284,6 +342,8 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         outPath,
         theme,
         mode,
+        colorPrimary,
+        colorSupport,
         semantic,
         size,
         typography,
@@ -299,6 +359,6 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         include,
       };
 
-      return { mode, theme, semantic, size, typography, config };
+      return { mode, colorPrimary, colorSupport, theme, semantic, size, typography, config };
     })
     .sort();

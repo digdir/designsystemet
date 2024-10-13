@@ -8,21 +8,20 @@ import StyleDictionary from 'style-dictionary';
 
 import * as configs from './build/configs.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
+import { groupThemes } from './build/utils/permutateThemes.js';
 
 const { permutateThemes, getConfigs } = configs;
 
 type Options = {
-  /** Design tokens path  */
+  /** Design tokens path */
   tokens: string;
-  /** Output directoru for built tokens */
+  /** Output directory for built tokens */
   out: string;
   /** Generate preview tokens */
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
 };
-
-// type FormattedCSSPlatform = { css: { output: string; destination: string }[] };
 
 const sd = new StyleDictionary();
 
@@ -40,14 +39,36 @@ export async function buildTokens(options: Options): Promise<void> {
 
     return true;
   });
-
-  const themes = permutateThemes(relevant$themes);
+  const grouped$themes = groupThemes(relevant$themes);
+  const themes = permutateThemes(grouped$themes);
 
   const typographyThemes = R.filter((val) => val.mode === 'light', themes);
   const colormodeThemes = R.filter((val) => val.typography === 'primary', themes);
+  const primaryColors = R.filter(
+    (val) => grouped$themes.colorPrimary.some((theme) => val.colorPrimary === theme.name),
+    themes,
+  );
+  const supportColors = R.filter(
+    (val) => grouped$themes.colorSupport.some((theme) => val.colorSupport === theme.name),
+    themes,
+  );
   const semanticThemes = R.filter((val) => val.mode === 'light' && val.typography === 'primary', themes);
 
   const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes, verbosity);
+  const primaryColorConfigs = getConfigs(
+    configs.colorCategories('primary'),
+    outPath,
+    tokensDir,
+    primaryColors,
+    verbosity,
+  );
+  const supportColorConfigs = getConfigs(
+    configs.colorCategories('support'),
+    outPath,
+    tokensDir,
+    supportColors,
+    verbosity,
+  );
   const semanticConfigs = getConfigs(configs.semanticVariables, outPath, tokensDir, semanticThemes, verbosity);
   const typographyConfigs = getConfigs(configs.typographyVariables, outPath, tokensDir, typographyThemes, verbosity);
   const storefrontConfigs = getConfigs(
@@ -83,6 +104,28 @@ export async function buildTokens(options: Options): Promise<void> {
           const themeVariablesSD = await sd.extend(config);
 
           return themeVariablesSD.buildAllPlatforms();
+        }),
+      );
+    }
+
+    if (primaryColorConfigs.length > 0) {
+      console.log(`\n🍱 Building ${chalk.green('color-primary')}`);
+
+      await Promise.all(
+        primaryColorConfigs.map(async ({ theme, colorPrimary, config }) => {
+          console.log(`👷 ${theme} - ${colorPrimary}`);
+          return (await sd.extend(config)).buildAllPlatforms();
+        }),
+      );
+    }
+
+    if (supportColorConfigs.length > 0) {
+      console.log(`\n🍱 Building ${chalk.green('color-support')}`);
+
+      await Promise.all(
+        supportColorConfigs.map(async ({ theme, colorSupport, config }) => {
+          console.log(`👷 ${theme} - ${colorSupport}`);
+          return (await sd.extend(config)).buildAllPlatforms();
         }),
       );
     }

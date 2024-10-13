@@ -44,6 +44,30 @@ export const colormode: Format = {
   },
 };
 
+export const colorcategory: Format = {
+  name: 'ds/css-colorcategory',
+  format: async ({ dictionary, file, options, platform }) => {
+    const { allTokens } = dictionary;
+    const { outputReferences, usesDtcg } = options;
+    const { selector, mode, layer } = platform;
+
+    const header = await fileHeader({ file });
+
+    const format = createPropertyFormatter({
+      outputReferences,
+      dictionary,
+      format: 'css',
+      usesDtcg,
+    });
+
+    const formattedTokens = dictionary.allTokens.map(format).join('\n');
+    const content = `{\n${formattedTokens}\n}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
+
+    return header + body;
+  },
+};
+
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
 
 export const semantic: Format = {
