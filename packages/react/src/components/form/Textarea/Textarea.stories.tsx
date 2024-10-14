@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Paragraph } from '../..';
+import { Button, Label, Paragraph } from '../..';
 
 import { Textarea } from '.';
 
@@ -11,69 +11,90 @@ export default {
   title: 'Komponenter/Textarea',
   component: Textarea,
   decorators: [
-    (Story: StoryFn) => (
-      <div style={{ width: '20rem' }}>
+    (Story, { parameters }) => (
+      <div
+        id='story-render'
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+          maxWidth: '100%',
+          width: parameters.layout === 'padded' ? '' : '20rem',
+        }}
+      >
+        <style>{'#storybook-root{max-width:100vw}'}</style>
         <Story />
       </div>
     ),
   ],
-} as Meta;
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {
-    label: 'Label',
     disabled: false,
     readOnly: false,
     size: 'md',
-    description: '',
-    error: '',
-    hideLabel: false,
     cols: 40,
+    id: 'my-textarea',
   },
+  render: (args) => (
+    <>
+      <Label htmlFor={args.id}>Label</Label>
+      <Textarea {...args} />
+    </>
+  ),
 };
 
-export const WithCharacterCounter: Story = {
-  args: {
-    label: 'Label',
-    cols: 40,
-    characterLimit: {
-      maxCount: 5,
-    },
-  },
-};
+// export const WithCharacterCounter: Story = {
+//   args: {
+//     cols: 40,
+//     characterLimit: {
+//       maxCount: 5,
+//     },
+//   },
+//   render: (args) => (
+//     <>
+//       <Label>Label</Label>
+//       <Textarea {...args} />
+//     </>
+//   ),
+// };
 
 export const FullWidth: Story = {
   args: {
-    label: 'Label',
     rows: 10,
     cols: 40,
+    id: 'my-textarea',
   },
   parameters: {
     layout: 'padded',
   },
+  render: (args) => (
+    <>
+      <Label htmlFor={args.id}>Label</Label>
+      <Textarea {...args} />
+    </>
+  ),
 };
 
-export const Controlled: StoryFn<typeof Textarea> = () => {
-  const [value, setValue] = useState<string>();
+export const Controlled: StoryFn<typeof Textarea> = (args) => {
+  const [value, setValue] = useState(`${args.value || ''}`);
+
   return (
     <>
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Textarea
-          label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          cols={40}
-        />
-        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
-      </div>
+      <Label htmlFor={args.id}>Kontroller meg!</Label>
+      <Textarea
+        cols={40}
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+        {...args}
+      />
+      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
+};
+
+Controlled.args = {
+  id: 'my-textarea',
 };

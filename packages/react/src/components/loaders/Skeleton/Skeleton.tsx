@@ -31,7 +31,6 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
     {
       asChild,
       className,
-      children,
       height,
       style,
       variant = 'rectangle',
@@ -42,7 +41,6 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
   ) {
     const Component = asChild ? Slot : 'span';
     const isText = variant === 'text';
-    const childrenText = isText && '-'.repeat(Number(width) || 1); // s followed by a &shy; makes the most average character length
     const animationRef = useSynchronizedAnimation<HTMLSpanElement>(
       'ds-skeleton-opacity-fade',
     );
@@ -52,13 +50,12 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
       <Component
         aria-hidden='true'
         className={cl('ds-skeleton', className)}
+        data-text={isText ? '-'.repeat(Number(width) || 1) : undefined}
         data-variant={variant}
         ref={mergedRefs}
         style={isText ? style : { width, height, ...style }}
         {...rest}
-      >
-        {children || childrenText}
-      </Component>
+      />
     );
   },
 );

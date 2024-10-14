@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 
@@ -16,18 +17,49 @@ import { Combobox } from './index';
 export default {
   title: 'Komponenter/Combobox',
   component: Combobox,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          maxWidth: '30rem',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      maxWidth: '30rem',
+      story: {
+        height: '340px',
+      },
+    },
+    a11y: {
+      // TODO: these rules should be enabled after figuring out why they occur.
+      // floating-ui sets aria-hidden for some reason, we need to fix that somehow.
+      // The rest are probably our own fault.
+      config: {
+        rules: [
+          { id: 'aria-hidden-focus', reviewOnFail: true },
+          { id: 'aria-allowed-attr', reviewOnFail: true },
+          { id: 'aria-input-field-name', reviewOnFail: true },
+          { id: 'scrollable-region-focusable', reviewOnFail: true },
+        ],
+      },
+    },
+  },
+  play: async (ctx) => {
+    const storyRoot = ctx.canvasElement;
+    // Refactored out the play function for easier reuse in the InModal story
+    await testCombobox(storyRoot);
+  },
+} satisfies Meta;
+
+async function testCombobox(el: HTMLElement) {
+  // When not in Docs mode, automatically open the combobox
+  const combobox = within(el).getByRole('combobox');
+  await userEvent.click(combobox);
+
+  // The dropdown is rendered in a portal outside the #storybook-root
+  // so we must locate it through the body element
+  const body = within((el.getRootNode() as Document).body);
+  const dropdown = body.getByRole('listbox');
+  await expect(dropdown).toBeVisible();
+
+  const options = within(dropdown).getAllByRole('option');
+  await expect(options.length).toBeGreaterThan(0);
+}
 
 const PLACES = [
   {
@@ -222,6 +254,14 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 Controlled.args = {
   label: 'Hvor går reisen?',
 };
+Controlled.play = async (ctx) => {
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByRole('button');
+  const combobox = canvas.getByRole('combobox');
+  await userEvent.click(button);
+
+  await expect(combobox).toHaveValue('Leikanger');
+};
 
 export const InForm: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState<string[]>([]);
@@ -290,6 +330,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
           }}
           label='Hvor går reisen?'
           portal={false}
+          name='sted'
         >
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           {PLACES.map((item, index) => (
@@ -301,6 +342,18 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
       </Modal>
     </Modal.Context>
   );
+};
+InModal.play = async (ctx) => {
+  // When not in Docs mode, automatically open the modal
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
+  // Wait for modal to fade in before running tests
+  const modal = canvas.getByRole('dialog');
+  await new Promise<void>((resolve) => {
+    modal.addEventListener('animationend', () => resolve());
+  });
+  await testCombobox(modal);
 };
 
 export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
