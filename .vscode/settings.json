@@ -9,9 +9,8 @@
   "editor.defaultFormatter": "biomejs.biome",
   "css.customData": ["./.vscode/css-data.json"],
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "prettier.prettierPath": "./node_modules/prettier",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cssvar.files": [
@@ -21,10 +20,11 @@
   ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.enabled": false
+
 }

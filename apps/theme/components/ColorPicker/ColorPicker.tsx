@@ -57,10 +57,7 @@ export const ColorPicker = ({
           className={cl(classes.container, 'ds-focus')}
           onClick={() => handleClick()}
         >
-          <div
-            style={{ backgroundColor: color }}
-            className={classes.color}
-          ></div>
+          <div style={{ backgroundColor: color }} className={classes.color} />
           <div className={classes.input}>{color}</div>
         </button>
       </div>
