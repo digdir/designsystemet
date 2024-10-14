@@ -18,10 +18,10 @@
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
 
-  @composes ds-paragraph from './baseline/typography.css'; /* Must be after all: unset */
+  @composes ds-paragraph from './paragraph.css'; /* Must be after all: unset */
 
   /* Style link in heading, or heading when Card is anchor */
-  :is(h1, h2, h3, h4, h5, h6) a:any-link, /* Using :any-link to target both a and a:visited */
+  :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
   &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
     outline: 0;
@@ -42,9 +42,8 @@
       }
     }
 
-    /* Using CSS custom property instead of composes since we need to support :has(:focus-visible) */
     &:where(:focus-visible, :has(:focus-visible)) {
-      @composes ds-focus--visible from './utilities.css';
+      @composes ds-focus--visible from './base/base.css';
     }
 
     &:active {

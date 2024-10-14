@@ -6,6 +6,7 @@ import { useMediaQuery } from './useMediaQuery';
 
 const meta: Meta = {
   title: 'Utilities/useMediaQuery',
+  parameters: { chromatic: { disableSnapshot: true } },
 };
 
 export default meta;
