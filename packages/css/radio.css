@@ -4,7 +4,7 @@
   --dsc-radio-background: radial-gradient(circle, var(--ds-color-neutral-background-default) 60%, transparent 60%);
   --dsc-radio-border-color: var(--ds-color-neutral-border-default);
   --dsc-radio-border__hover--size: calc(var(--ds-spacing-3) / 2);
-  --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-accent-surface-hover);
+  --dsc-radio-border__hover: 0 0 0 var(--dsc-radio-border__hover--size) var(--ds-color-primary-surface-hover);
   --dsc-radio-box_shadow-size: 7px;
 
   display: grid;
@@ -87,8 +87,8 @@
 }
 
 .ds-radio__input:checked {
-  --dsc-radio-border-color: var(--ds-color-accent-base-default);
-  --dsc-radio-background: radial-gradient(circle, var(--ds-color-accent-contrast-1) 60%, transparent 60%);
+  --dsc-radio-border-color: var(--ds-color-primary-base-default);
+  --dsc-radio-background: radial-gradient(circle, var(--ds-color-primary-contrast-1) 60%, transparent 60%);
 
   /* We use a gradient to avoid bleeding pixels */
   background: var(--dsc-radio-background);
@@ -100,7 +100,7 @@
 }
 
 .ds-radio__input:focus-visible:not(:checked) {
-  --dsc-radio-border-color: var(--ds-color-accent-border-strong);
+  --dsc-radio-border-color: var(--ds-color-primary-border-strong);
 
   box-shadow: inset 0 0 0 2px var(--dsc-radio-border-color);
 }
@@ -126,11 +126,11 @@
 @media (hover: hover) and (pointer: fine) {
   .ds-radio:not(.ds-radio--readonly) > .ds-radio__label:hover:not(:disabled),
   .ds-radio:not(.ds-radio--readonly) > .ds-radio__input:hover:not(:disabled) + .ds-radio__label {
-    color: var(--ds-color-accent-text-subtle);
+    color: var(--ds-color-primary-text-subtle);
   }
 
   .ds-radio:not(.ds-radio--readonly) > .ds-radio__input:hover:not(:checked, :disabled, :focus-visible) {
-    --dsc-radio-border-color: var(--ds-color-accent-border-strong);
+    --dsc-radio-border-color: var(--ds-color-primary-border-strong);
 
     box-shadow: var(--dsc-radio-border__hover), inset 0 0 0 2px var(--dsc-radio-border-color);
   }

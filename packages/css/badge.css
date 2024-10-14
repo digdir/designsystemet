@@ -1,6 +1,6 @@
 .ds-badge {
-  --dsc-badge-background: var(--ds-color-accent-base-default);
-  --dsc-badge-color: var(--ds-color-accent-contrast-default);
+  --dsc-badge-background: var(--ds-color-primary-base-default);
+  --dsc-badge-color: var(--ds-color-primary-contrast-default);
   --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
   --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
 

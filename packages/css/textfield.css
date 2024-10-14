@@ -112,8 +112,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .ds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-    border-color: var(--ds-color-accent-border-strong);
-    box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
+    border-color: var(--ds-color-primary-border-strong);
+    box-shadow: inset 0 0 0 1px var(--ds-color-primary-border-strong);
   }
 }
 

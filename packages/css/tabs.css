@@ -50,8 +50,8 @@
   text-align: center;
 
   &[aria-selected='true'] {
-    --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
-    --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
+    --dsc-tabs__tab-bottom-border-color: var(--ds-color-primary-base-default);
+    --dsc-tabs-tab-color: var(--ds-color-primary-text-subtle);
   }
 
   @composes ds-focus from './base/base.css';

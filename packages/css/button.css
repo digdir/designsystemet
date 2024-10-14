@@ -1,8 +1,8 @@
 .ds-button {
-  --dsc-button-background--active: var(--ds-color-accent-base-active);
-  --dsc-button-background--hover: var(--ds-color-accent-base-hover);
-  --dsc-button-background: var(--ds-color-accent-base-default);
-  --dsc-button-color: var(--ds-color-accent-contrast-default);
+  --dsc-button-background--active: var(--ds-color-primary-base-active);
+  --dsc-button-background--hover: var(--ds-color-primary-base-hover);
+  --dsc-button-background: var(--ds-color-primary-base-default);
+  --dsc-button-color: var(--ds-color-primary-contrast-default);
   --dsc-button-font-size: var(--ds-font-size-5);
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding-block: var(--ds-spacing-2);
@@ -67,23 +67,23 @@
    * Variants
    */
   &[data-variant='secondary'] {
-    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
-    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-background--active: var(--ds-color-primary-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-primary-surface-default);
     --dsc-button-background: transparent;
-    --dsc-button-border-color: var(--ds-color-accent-border-strong);
-    --dsc-button-color--active: var(--ds-color-accent-text-default);
-    --dsc-button-color--hover: var(--ds-color-accent-text-default);
-    --dsc-button-color: var(--ds-color-accent-text-subtle);
+    --dsc-button-border-color: var(--ds-color-primary-border-strong);
+    --dsc-button-color--active: var(--ds-color-primary-text-default);
+    --dsc-button-color--hover: var(--ds-color-primary-text-default);
+    --dsc-button-color: var(--ds-color-primary-text-subtle);
   }
 
   &[data-variant='tertiary'] {
-    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
-    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-background--active: var(--ds-color-primary-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-primary-surface-default);
     --dsc-button-background: transparent;
     --dsc-button-border-color: var(--dsc-button-tertiary-border-color);
-    --dsc-button-color--active: var(--ds-color-accent-text-default);
-    --dsc-button-color--hover: var(--ds-color-accent-text-default);
-    --dsc-button-color: var(--ds-color-accent-text-subtle);
+    --dsc-button-color--active: var(--ds-color-primary-text-default);
+    --dsc-button-color--hover: var(--ds-color-primary-text-default);
+    --dsc-button-color: var(--ds-color-primary-text-subtle);
   }
 
   /**

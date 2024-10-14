@@ -15,8 +15,8 @@
   clip-path: none;
   white-space: inherit;
   padding: var(--ds-spacing-4);
-  color: var(--ds-color-accent-text-default);
-  background: var(--ds-color-accent-surface-hover);
+  color: var(--ds-color-primary-text-default);
+  background: var(--ds-color-primary-surface-hover);
   box-sizing: border-box;
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);

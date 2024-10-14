@@ -1,11 +1,11 @@
 .ds-link {
-  --dsc-link-background--active: var(--ds-color-accent-surface-default);
+  --dsc-link-background--active: var(--ds-color-primary-surface-default);
   --dsc-link-background--focus: var(--ds-color-focus-outer);
-  --dsc-link-color--active: var(--ds-color-accent-text-default);
+  --dsc-link-color--active: var(--ds-color-primary-text-default);
   --dsc-link-color--focus: var(--ds-color-focus-inner);
-  --dsc-link-color--hover: var(--ds-color-accent-text-default);
+  --dsc-link-color--hover: var(--ds-color-primary-text-default);
   --dsc-link-color--visited: var(--ds-global-purple-12);
-  --dsc-link-color: var(--ds-color-accent-text-subtle);
+  --dsc-link-color: var(--ds-color-primary-text-subtle);
   --dsc-link-text-decoration-thickness--hover: max(2px, 0.125rem, 0.12em);
   --dsc-link-text-decoration-thickness: max(1px, 0.0625rem);
 
