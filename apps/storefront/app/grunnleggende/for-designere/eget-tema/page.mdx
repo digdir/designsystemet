@@ -29,7 +29,7 @@ Du bør uansett passe på at det er samme Design Tokens som brukes i både Figma
 **Alternativ 1:** _Uten_ kobling mellom Figma og kode
 **Alternativ 2:** _Med_ kobling mellom Figma og kode \
 
-Hvilket alternativ du går for avhenger av dine behov og rammer. Å sette opp en kobling krever en pro-versjon av pluginen [Tokens Studio](https://tokens.studio/) og en Github-bruker. Vi håper vi kan gjøre dette enklere med en egen plugin etter hvert.
+Hvilket alternativ du går for avhenger av dine behov og rammer. **Å sette opp en kobling krever en pro-versjon av pluginen [Tokens Studio](https://tokens.studio/)**. Vi håper vi kan gjøre dette enklere med en egen plugin etter hvert.
 
 Vi guider deg gjennom begge alternativene her.
 
@@ -38,71 +38,41 @@ Vi guider deg gjennom begge alternativene her.
 
 Dette alternativet krever *ikke* Token Studio. Du kan oppdatere variabler i Figma med vår plugin. Her kan du kjøre samme kodesnutt i CLIen og Figma plugin for å oppdatere farge. Det vil ikke være en direkte kobling, men variablene/tokens vil genereres med samme metode og dermed få like verdier i kode og Figma. 
 
-<ResponsiveIframe
-  src='/img/video-kommer.mp4'
-  title='Skjermopptak som viser hvordan du kopierer filen fra Community, flytter den til en mappe, og endrer fargevariablene til de du har generert med temavelgeren.'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowFullScreen
-  aspectRatio='16-9'
-></ResponsiveIframe>
 
 ### Slik går du frem:
 
-1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. Filen har nå lagt seg i dine "drafts", så du må flytte den til et fornuftig sted i din organisasjon.
-2. Installer designystemets [plugin for Figma](https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta).
-3. Gå til [next.theme.designsystemet.no](https://next.theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
-4. Kopier JSON-koden og lim den inn i pluginen du installerte i steg 2.
-5. Velg "Oppdater variabler". Nå skal du se alle komponentene med dine egne profilfarger. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
+1. Gå til [next.theme.designsystemet.no](https://next.theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
+2. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. Filen har nå lagt seg i dine "drafts", så du må flytte den til et fornuftig sted i din organisasjon.
+3. Installer designystemets [plugin for Figma](https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta).
+4. Kopier kodesnutten og lim den inn i pluginen du installerte i steg 2. Utvikler må kjøre samme kodesnutten i en terminal for å generere Design Tokens til bygg i kode. 
+5. Velg "Oppdater variabler". Nå skal du se alle komponentene med dine egne profilfarger i Figma. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
 
 
 ## Alternativ 2: Med kobling
 
-En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra json-filen og holder dem i sync via pluginen "Tokens studio". Du må ha en [Github-bruker](https://github.com) selv eller en Github-venn som kan hjelpe deg.
+En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra pluginen "Tokens studio". **Du må en pro-versjon av pluginen "Tokens studio" for å få til denne koblingen. Du må også ha et sted å lagre filene, f.eks i et Git repo. **
 
 I videoen under kan du se hele prosessen for å få satt opp designsystemet med eget tema.
 
-<ResponsiveIframe
-  src='/img/variabler-alt2.mp4'
-  title='Skjermopptak som viser hvordan du setter opp koblingen mellom Figma og Github og legger inn dine egne profilfarger. Tekslig beskrivelse av det som skjer i videoen ligger under.'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowFullScreen
-  aspectRatio='16-9'
-></ResponsiveIframe>
-
 ### Slik går du frem for å få det til:
 
-1. Er du designer kan det være lurt å snakke med en utvikler, slik at dere har en felles forståelse av hvordan tokens kobler sammen Figma og kode. For å kunne legge til egne tokens i dagens oppsett må du lage en kopi av dette repoet: [design-tokens](https://github.com/designsystemet/design-tokens). Velg "Use this template" og "Create a new repository".
+1. Gå til [Temabyggeren](https://next.theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger.
 
-2. Gå til [next.theme.designsystemet.no](https://next.theme.designsystemet.no). Legg inn dine farger og velg `Kopier` > `Light theme`. [Les mer om fargesystemet her](/grunnleggende/for-designere/fargesystem).
+2. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma"). Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. Filen har nå lagt seg i dine "drafts", så du må flytte den til et fornuftig sted i din organisasjon.
 
-3. Gå til repoet du lagde i steg 1. Lim inn koden du kopierte i steg 2 her: `DittRepo/design-tokens/primitives/colors/light/theme.json`.
+3. Installer pluginen [Tokens Studio](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) for Figma. Tokens Studio sørger for kobling mellom Figma og kode, ved hjelp av Design Tokens (i json-filer). 
 
-4. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit)
+4. Bruk ditt eksisterende Git repo, eller opprett et nytt. F.eks med [Github](https://github.com/new).
 
-5. Nå kan du sette opp [Tokens Studio](https://tokens.studio/) til å peke på repoet. Slik gjør du det:
+5. Gå tilbake til [Temabyggeren](https://next.theme.designsystemet.no) for å "Ta i bruk tema". Kopier kodesnutten og kjør den i en terminal i ditt Git repo. Sjekk inn og push filene. 
 
-   - **[Installer](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) Figma Tokens** - En plugin for Figma som gjør at du kan bruke json-filen til å generere variabler for Figma. De fleste designere skal slippe å forholde seg til denne pluginen, men en person i organisasjonen bør ha ansvar for å holde tokens i sync med variablene som eksisterer i figma.
-   - **I Github:**
+6. Nå setter du opp Figma-pluginen "Tokens Studio", som du installerte i steg 3. 
 
-     - gå til [GitHub Developer Settings](https://github.com/settings/tokens)
-     - trykk "Generate new token" (Classic).
-     - Skriv "Designsystemet" i "Note"
-     - Sett expiration et godt stykke frem i tid.
-     - Huk av "repo" i avkrysningsboksene.
-     - Trykk "Generate token"
-     - Du får nå en "Personal Access Token" (PAT).
-     - Kopier PAT-en (du kan bare se den én gang)
+  - Følg Token Studio sin guide "[Sync your Design Tokens with code](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" for å sette opp ditt Git repo. 
+  - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
 
-   - **I Figma Tokens**, under `Sync > GitHub`, fyll inn:
-     - Name: `DesignsystemetTokens`
-     - Personal Access Token: `*** din PAT ***` (som du fikk fra Github)
-     - Repository: `owner (brukernavn)/navn på repo`
-     - Branch: "main".
-     - File Path: `design-tokens`
-     - Trykk "Save"
+7. Under "Tokens" i Tokens Studio skal du nå se alle fargene du generte med Temabyggeren i steg 1. 
 
-6. Du vil nå se alle tokens-verdiene du genererte i temavelgeren. Du kan velge `Styles & variables` og `Create variables` for å få fargene dine tilgjengelige som variabler i Figma.
+8. I Tokens Studio velg `Styles & variables` og `Export styles & variables to Figma` og følg stegene for å få fargene dine tilgjengelige som variabler i Figma. 
 
-7. Ferdig! 🎉 PS. Dersom du skal gjøre endringer på tokens i pluginen kan du pushe endringene til Github-repoet ditt ved å trykke på "Last-opp"-ikonet (Push) nederst. Men...du må ha Pro-versjonen av Tokens Studio for å kunne gjøre dette, så det kan være like greit at endringer kun gjøres i koden, og at du henter ned eventuelle endringer til Figma ved å velge "Last-ned"-ikonet (Pull) nederst.
+9. Ferdig! 🎉 PS. Dersom du skal gjøre endringer på tokens i pluginen kan du pushe endringene til repoet ditt ved å trykke på "Last-opp"-ikonet (Push) nederst. 
