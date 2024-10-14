@@ -1,63 +1,63 @@
 {
   "color": {
     "primary": {
-      "1": {
+      "background-default": {
         "$type": "color",
         "$value": "{color.accent.1}"
       },
-      "2": {
+      "background-subtle": {
         "$type": "color",
         "$value": "{color.accent.2}"
       },
-      "3": {
+      "surface-default": {
         "$type": "color",
         "$value": "{color.accent.3}"
       },
-      "4": {
+      "surface-hover": {
         "$type": "color",
         "$value": "{color.accent.4}"
       },
-      "5": {
+      "surface-active": {
         "$type": "color",
         "$value": "{color.accent.5}"
       },
-      "6": {
+      "border-subtle": {
         "$type": "color",
         "$value": "{color.accent.6}"
       },
-      "7": {
+      "border-default": {
         "$type": "color",
         "$value": "{color.accent.7}"
       },
-      "8": {
+      "border-strong": {
         "$type": "color",
         "$value": "{color.accent.8}"
       },
-      "9": {
+      "base-default": {
         "$type": "color",
         "$value": "{color.accent.9}"
       },
-      "10": {
+      "base-hover": {
         "$type": "color",
         "$value": "{color.accent.10}"
       },
-      "11": {
+      "base-active": {
         "$type": "color",
         "$value": "{color.accent.11}"
       },
-      "12": {
+      "text-subtle": {
         "$type": "color",
         "$value": "{color.accent.12}"
       },
-      "13": {
+      "text-default": {
         "$type": "color",
         "$value": "{color.accent.13}"
       },
-      "contrast-1": {
+      "contrast-default": {
         "$type": "color",
         "$value": "{color.accent.contrast-1}"
       },
-      "contrast-2": {
+      "contrast-subtle": {
         "$type": "color",
         "$value": "{color.accent.contrast-2}"
       }

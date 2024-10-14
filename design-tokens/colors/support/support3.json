@@ -1,65 +1,65 @@
 {
   "color": {
     "support": {
-      "1": {
+      "background-default": {
         "$type": "color",
-        "$value": "{color.dominant.1}"
+        "$value": "{color.brand3.1}"
       },
-      "2": {
+      "background-subtle": {
         "$type": "color",
-        "$value": "{color.dominant.2}"
+        "$value": "{color.brand3.2}"
       },
-      "3": {
+      "surface-default": {
         "$type": "color",
-        "$value": "{color.dominant.3}"
+        "$value": "{color.brand3.3}"
       },
-      "4": {
+      "surface-hover": {
         "$type": "color",
-        "$value": "{color.dominant.4}"
+        "$value": "{color.brand3.4}"
       },
-      "5": {
+      "surface-active": {
         "$type": "color",
-        "$value": "{color.dominant.5}"
+        "$value": "{color.brand3.5}"
       },
-      "6": {
+      "border-subtle": {
         "$type": "color",
-        "$value": "{color.dominant.6}"
+        "$value": "{color.brand3.6}"
       },
-      "7": {
+      "border-default": {
         "$type": "color",
-        "$value": "{color.dominant.7}"
+        "$value": "{color.brand3.7}"
       },
-      "8": {
+      "border-strong": {
         "$type": "color",
-        "$value": "{color.dominant.8}"
+        "$value": "{color.brand3.8}"
       },
-      "9": {
+      "base-default": {
         "$type": "color",
-        "$value": "{color.dominant.9}"
+        "$value": "{color.brand3.9}"
       },
-      "10": {
+      "base-hover": {
         "$type": "color",
-        "$value": "{color.dominant.10}"
+        "$value": "{color.brand3.10}"
       },
-      "11": {
+      "base-active": {
         "$type": "color",
-        "$value": "{color.dominant.11}"
+        "$value": "{color.brand3.11}"
       },
-      "12": {
+      "text-subtle": {
         "$type": "color",
-        "$value": "{color.dominant.12}"
+        "$value": "{color.brand3.12}"
       },
-      "13": {
+      "text-default": {
         "$type": "color",
-        "$value": "{color.dominant.13}"
+        "$value": "{color.brand3.13}"
       },
-      "contrast-1": {
+      "contrast-default": {
         "$type": "color",
-        "$value": "{color.dominant.contrast-1}"
+        "$value": "{color.brand3.contrast-1}"
       },
-      "contrast-2": {
+      "contrast-subtle": {
         "$type": "color",
-        "$value": "{color.dominant.contrast-2}"
+        "$value": "{color.brand3.contrast-2}"
       }
     }
   }

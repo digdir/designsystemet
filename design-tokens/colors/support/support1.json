@@ -1,65 +1,65 @@
 {
   "color": {
     "support": {
-      "1": {
+      "background-default": {
         "$type": "color",
-        "$value": "{color.accent.1}"
+        "$value": "{color.brand1.1}"
       },
-      "2": {
+      "background-subtle": {
         "$type": "color",
-        "$value": "{color.accent.2}"
+        "$value": "{color.brand1.2}"
       },
-      "3": {
+      "surface-default": {
         "$type": "color",
-        "$value": "{color.accent.3}"
+        "$value": "{color.brand1.3}"
       },
-      "4": {
+      "surface-hover": {
         "$type": "color",
-        "$value": "{color.accent.4}"
+        "$value": "{color.brand1.4}"
       },
-      "5": {
+      "surface-active": {
         "$type": "color",
-        "$value": "{color.accent.5}"
+        "$value": "{color.brand1.5}"
       },
-      "6": {
+      "border-subtle": {
         "$type": "color",
-        "$value": "{color.accent.6}"
+        "$value": "{color.brand1.6}"
       },
-      "7": {
+      "border-default": {
         "$type": "color",
-        "$value": "{color.accent.7}"
+        "$value": "{color.brand1.7}"
       },
-      "8": {
+      "border-strong": {
         "$type": "color",
-        "$value": "{color.accent.8}"
+        "$value": "{color.brand1.8}"
       },
-      "9": {
+      "base-default": {
         "$type": "color",
-        "$value": "{color.accent.9}"
+        "$value": "{color.brand1.9}"
       },
-      "10": {
+      "base-hover": {
         "$type": "color",
-        "$value": "{color.accent.10}"
+        "$value": "{color.brand1.10}"
       },
-      "11": {
+      "base-active": {
         "$type": "color",
-        "$value": "{color.accent.11}"
+        "$value": "{color.brand1.11}"
       },
-      "12": {
+      "text-subtle": {
         "$type": "color",
-        "$value": "{color.accent.12}"
+        "$value": "{color.brand1.12}"
       },
-      "13": {
+      "text-default": {
         "$type": "color",
-        "$value": "{color.accent.13}"
+        "$value": "{color.brand1.13}"
       },
-      "contrast-1": {
+      "contrast-default": {
         "$type": "color",
-        "$value": "{color.accent.contrast-1}"
+        "$value": "{color.brand1.contrast-1}"
       },
-      "contrast-2": {
+      "contrast-subtle": {
         "$type": "color",
-        "$value": "{color.accent.contrast-2}"
+        "$value": "{color.brand1.contrast-2}"
       }
     }
   }
