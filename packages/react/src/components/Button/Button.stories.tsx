@@ -49,28 +49,37 @@ export const Preview: Story = {
 };
 
 export const Primary: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' color='accent'>
-      Lagre
-    </Button>
-  </>
+  <Button variant='primary' color='accent'>
+    Lagre
+  </Button>
 );
 
+export const PrimaryComplimentary: Story = {
+  args: {
+    variant: 'primary',
+    color: 'accent',
+    'data-ds-color-primary': 'complimentary',
+  } as Story['args'],
+};
+export const PrimaryAccent: Story = {
+  args: {
+    variant: 'primary',
+    color: 'accent',
+    'data-ds-color-primary': 'accent',
+  } as Story['args'],
+};
+
 export const Secondary: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='secondary' color='accent'>
-      Avbryt
-    </Button>
-  </>
+  <Button variant='secondary' color='accent'>
+    Avbryt
+  </Button>
 );
 
 export const Tertiary: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='tertiary' color='accent'>
-      <PencilWritingIcon aria-hidden fontSize='1.5rem' />
-      Rediger
-    </Button>
-  </>
+  <Button variant='tertiary' color='accent'>
+    <PencilWritingIcon aria-hidden fontSize='1.5rem' />
+    Rediger
+  </Button>
 );
 
 export const Accent: StoryFn<typeof Button> = () => (
