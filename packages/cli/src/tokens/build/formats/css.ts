@@ -4,7 +4,7 @@ import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../configs.js';
-import { prefix } from '../configs.js';
+import { isColorCategoryToken, prefix } from '../configs.js';
 import { getValue, typeEquals } from '../utils/utils.js';
 
 const prefersColorScheme = (mode: string, content: string) => `
@@ -33,7 +33,9 @@ export const colormode: Format = {
 
     const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `\n  color-scheme: ${mode_};\n` : '';
 
-    const formattedTokens = dictionary.allTokens.map(format).join('\n');
+    // Filter out color category tokens from the formatted output -- they will be defined in a separate layer
+    const filteredAllTokens = dictionary.allTokens.filter((token) => !isColorCategoryToken(token));
+    const formattedTokens = filteredAllTokens.map(format).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
     const body = R.isNotNil(layer)

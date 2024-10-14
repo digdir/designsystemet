@@ -108,7 +108,10 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
   };
 };
 
-function isColorCategoryToken(token: TransformedToken, category: 'primary' | 'support') {
+export function isColorCategoryToken(token: TransformedToken, category?: 'primary' | 'support'): boolean {
+  if (!category) {
+    return (['primary', 'support'] as const).some((c) => isColorCategoryToken(token, c));
+  }
   return R.startsWith(['color', category], token.path);
 }
 
