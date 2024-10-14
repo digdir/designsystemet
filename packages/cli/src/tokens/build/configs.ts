@@ -101,7 +101,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => outputColorReferences(token) && outputReferencesFilter(token, options),
+          outputReferences: false,
         },
       },
     },
@@ -113,6 +113,10 @@ export function isColorCategoryToken(token: TransformedToken, category?: 'primar
     return (['primary', 'support'] as const).some((c) => isColorCategoryToken(token, c));
   }
   return R.startsWith(['color', category], token.path);
+}
+
+export function isSemanticToken(token: TransformedToken): boolean {
+  return token.filePath.includes('semantic/');
 }
 
 export function capitalize<T extends string>(str: T): Capitalize<T> {
