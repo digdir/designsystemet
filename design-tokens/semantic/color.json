@@ -689,7 +689,7 @@
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.primary.text-default}"
+        "$value": "{color.accent.text-default}"
       }
     }
   }

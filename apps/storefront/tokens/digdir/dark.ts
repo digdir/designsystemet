@@ -1280,6 +1280,516 @@ export const  color = [
   },
   {
     $type: "color",
+    $value: "#231a05",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.1}"
+    },
+    name: "--ds-color-dominant-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "background-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#2d2206",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.2}"
+    },
+    name: "--ds-color-dominant-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "background-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#3d2e09",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.3}"
+    },
+    name: "--ds-color-dominant-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "surface-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#4f3a0b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.4}"
+    },
+    name: "--ds-color-dominant-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "surface-hover"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#60470e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.5}"
+    },
+    name: "--ds-color-dominant-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "surface-active"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#694d0f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.6}"
+    },
+    name: "--ds-color-dominant-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "border-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#8e6914",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.7}"
+    },
+    name: "--ds-color-dominant-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "border-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#e8b744",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.8}"
+    },
+    name: "--ds-color-dominant-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "border-strong"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#523c0b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.9}"
+    },
+    name: "--ds-color-dominant-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "base-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#694d0f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.10}"
+    },
+    name: "--ds-color-dominant-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "base-hover"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#826112",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.11}"
+    },
+    name: "--ds-color-dominant-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "base-active"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#d09a1d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.12}"
+    },
+    name: "--ds-color-dominant-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "text-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#f5dfad",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.13}"
+    },
+    name: "--ds-color-dominant-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "text-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.contrast-1}"
+    },
+    name: "--ds-color-dominant-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "contrast-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#ddd9cf",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.dominant.contrast-2}"
+    },
+    name: "--ds-color-dominant-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "dominant",
+      "contrast-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#2f1213",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.1}"
+    },
+    name: "--ds-color-complimentary-background-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "background-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#3e1819",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.2}"
+    },
+    name: "--ds-color-complimentary-background-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "background-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#522022",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.3}"
+    },
+    name: "--ds-color-complimentary-surface-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "surface-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#68292b",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.4}"
+    },
+    name: "--ds-color-complimentary-surface-hover",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "surface-hover"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#7f3234",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.5}"
+    },
+    name: "--ds-color-complimentary-surface-active",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "surface-active"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#8b3639",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.6}"
+    },
+    name: "--ds-color-complimentary-border-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "border-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#bc494c",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.7}"
+    },
+    name: "--ds-color-complimentary-border-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "border-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#f9a9ab",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.8}"
+    },
+    name: "--ds-color-complimentary-border-strong",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "border-strong"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#9f3e41",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.9}"
+    },
+    name: "--ds-color-complimentary-base-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "base-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#7f3234",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.10}"
+    },
+    name: "--ds-color-complimentary-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "base-hover"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#612628",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.11}"
+    },
+    name: "--ds-color-complimentary-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "base-active"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#f58083",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.12}"
+    },
+    name: "--ds-color-complimentary-text-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "text-subtle"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#fcdbdc",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.13}"
+    },
+    name: "--ds-color-complimentary-text-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "text-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.contrast-1}"
+    },
+    name: "--ds-color-complimentary-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "contrast-default"
+    ]
+  },
+  {
+    $type: "color",
+    $value: "#fefefe",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.complimentary.contrast-2}"
+    },
+    name: "--ds-color-complimentary-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "complimentary",
+      "contrast-subtle"
+    ]
+  },
+  {
+    $type: "color",
     $value: "#012106",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
@@ -2317,12 +2827,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d1e3f3",
+    $value: "#fcdbdc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.text-default}"
+      $value: "{color.primary.text-default}"
     },
     name: "--ds-color-focus-outer",
     attributes: {},

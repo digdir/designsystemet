@@ -56,6 +56,7 @@ export const Primary: StoryFn<typeof Button> = () => (
 
 export const PrimaryComplimentary: Story = {
   args: {
+    children: 'Lagre',
     variant: 'primary',
     color: 'accent',
     'data-ds-color-primary': 'complimentary',
@@ -63,6 +64,7 @@ export const PrimaryComplimentary: Story = {
 };
 export const PrimaryAccent: Story = {
   args: {
+    children: 'Lagre',
     variant: 'primary',
     color: 'accent',
     'data-ds-color-primary': 'accent',

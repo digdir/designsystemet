@@ -2240,7 +2240,7 @@
     "name": "dominant",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "colors/primary/dominant": "enabled"
+      "semantic/colors/primary/dominant": "enabled"
     },
     "group": "color-primary",
     "$figmaCollectionId": "VariableCollectionId:40107:65911",
@@ -2272,7 +2272,7 @@
     "name": "complimentary",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "colors/primary/complimentary": "enabled"
+      "semantic/colors/primary/complimentary": "enabled"
     },
     "group": "color-primary",
     "$figmaCollectionId": "VariableCollectionId:40107:65911",
@@ -2304,7 +2304,7 @@
     "name": "accent",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "colors/primary/accent": "enabled"
+      "semantic/colors/primary/accent": "enabled"
     },
     "group": "color-primary",
     "$figmaCollectionId": "VariableCollectionId:40107:65911",

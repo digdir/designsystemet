@@ -218,21 +218,21 @@
   --ds-color-brand2-text-default: var(--ds-color-brand2-13);
   --ds-color-brand2-contrast-default: var(--ds-color-brand2-contrast-1);
   --ds-color-brand2-contrast-subtle: var(--ds-color-brand2-contrast-2);
-  --ds-color-brand3-1: #fffefe;
-  --ds-color-brand3-2: #fdeff8;
-  --ds-color-brand3-3: #f9daef;
-  --ds-color-brand3-4: #f6c3e5;
-  --ds-color-brand3-5: #f2abdb;
-  --ds-color-brand3-6: #f1a3d7;
-  --ds-color-brand3-7: #c55aa3;
-  --ds-color-brand3-8: #773762;
-  --ds-color-brand3-9: #e86abf;
-  --ds-color-brand3-10: #c95ca6;
-  --ds-color-brand3-11: #ab4e8d;
-  --ds-color-brand3-12: #98467d;
-  --ds-color-brand3-13: #451f38;
+  --ds-color-brand3-1: #fdfeff;
+  --ds-color-brand3-2: #eaf6fe;
+  --ds-color-brand3-3: #c8e6fd;
+  --ds-color-brand3-4: #a9d7fb;
+  --ds-color-brand3-5: #84c7fa;
+  --ds-color-brand3-6: #7ac2f9;
+  --ds-color-brand3-7: #1a85d6;
+  --ds-color-brand3-8: #105082;
+  --ds-color-brand3-9: #1e98f5;
+  --ds-color-brand3-10: #1a83d3;
+  --ds-color-brand3-11: #166eb2;
+  --ds-color-brand3-12: #1466a5;
+  --ds-color-brand3-13: #092e4b;
   --ds-color-brand3-contrast-1: #000000;
-  --ds-color-brand3-contrast-2: #11080e;
+  --ds-color-brand3-contrast-2: #010407;
   --ds-color-brand3-background-default: var(--ds-color-brand3-1);
   --ds-color-brand3-background-subtle: var(--ds-color-brand3-2);
   --ds-color-brand3-surface-default: var(--ds-color-brand3-3);
@@ -248,6 +248,66 @@
   --ds-color-brand3-text-default: var(--ds-color-brand3-13);
   --ds-color-brand3-contrast-default: var(--ds-color-brand3-contrast-1);
   --ds-color-brand3-contrast-subtle: var(--ds-color-brand3-contrast-2);
+  --ds-color-dominant-1: #fefeff;
+  --ds-color-dominant-2: #eef4fa;
+  --ds-color-dominant-3: #d4e5f3;
+  --ds-color-dominant-4: #bad5ec;
+  --ds-color-dominant-5: #a1c5e5;
+  --ds-color-dominant-6: #97bfe3;
+  --ds-color-dominant-7: #3a85ca;
+  --ds-color-dominant-8: #004d93;
+  --ds-color-dominant-9: #0062BA;
+  --ds-color-dominant-10: #005099;
+  --ds-color-dominant-11: #003d75;
+  --ds-color-dominant-12: #0163ba;
+  --ds-color-dominant-13: #002c54;
+  --ds-color-dominant-contrast-1: #ffffff;
+  --ds-color-dominant-contrast-2: #dbe9f5;
+  --ds-color-dominant-background-default: #fefeff;
+  --ds-color-dominant-background-subtle: #eef4fa;
+  --ds-color-dominant-surface-default: #d4e5f3;
+  --ds-color-dominant-surface-hover: #bad5ec;
+  --ds-color-dominant-surface-active: #a1c5e5;
+  --ds-color-dominant-border-subtle: #97bfe3;
+  --ds-color-dominant-border-default: #3a85ca;
+  --ds-color-dominant-border-strong: #004d93;
+  --ds-color-dominant-base-default: #0062BA;
+  --ds-color-dominant-base-hover: #005099;
+  --ds-color-dominant-base-active: #003d75;
+  --ds-color-dominant-text-subtle: #0163ba;
+  --ds-color-dominant-text-default: #002c54;
+  --ds-color-dominant-contrast-default: #ffffff;
+  --ds-color-dominant-contrast-subtle: #dbe9f5;
+  --ds-color-complimentary-1: #fffeff;
+  --ds-color-complimentary-2: #fbf0fc;
+  --ds-color-complimentary-3: #f6d9f8;
+  --ds-color-complimentary-4: #f1c2f3;
+  --ds-color-complimentary-5: #ecabef;
+  --ds-color-complimentary-6: #eaa3ed;
+  --ds-color-complimentary-7: #b75fbb;
+  --ds-color-complimentary-8: #6f3972;
+  --ds-color-complimentary-9: #df73e4;
+  --ds-color-complimentary-10: #c364c7;
+  --ds-color-complimentary-11: #a656aa;
+  --ds-color-complimentary-12: #8e4991;
+  --ds-color-complimentary-13: #3f2141;
+  --ds-color-complimentary-contrast-1: #000000;
+  --ds-color-complimentary-contrast-2: #190d1a;
+  --ds-color-complimentary-background-default: #fffeff;
+  --ds-color-complimentary-background-subtle: #fbf0fc;
+  --ds-color-complimentary-surface-default: #f6d9f8;
+  --ds-color-complimentary-surface-hover: #f1c2f3;
+  --ds-color-complimentary-surface-active: #ecabef;
+  --ds-color-complimentary-border-subtle: #eaa3ed;
+  --ds-color-complimentary-border-default: #b75fbb;
+  --ds-color-complimentary-border-strong: #6f3972;
+  --ds-color-complimentary-base-default: #df73e4;
+  --ds-color-complimentary-base-hover: #c364c7;
+  --ds-color-complimentary-base-active: #a656aa;
+  --ds-color-complimentary-text-subtle: #8e4991;
+  --ds-color-complimentary-text-default: #3f2141;
+  --ds-color-complimentary-contrast-default: #000000;
+  --ds-color-complimentary-contrast-subtle: #190d1a;
   --ds-color-success-background-default: var(--ds-global-green-1);
   --ds-color-success-background-subtle: var(--ds-global-green-2);
   --ds-color-success-surface-default: var(--ds-global-green-3);
@@ -309,7 +369,7 @@
   --ds-color-warning-contrast-default: var(--ds-global-orange-contrast-1);
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #fefefe;
-  --ds-color-focus-outer: #420e6a;
+  --ds-color-focus-outer: #3f2141;
 
   color-scheme: light;
 }
@@ -526,21 +586,21 @@
   --ds-color-brand2-text-default: var(--ds-color-brand2-13);
   --ds-color-brand2-contrast-default: var(--ds-color-brand2-contrast-1);
   --ds-color-brand2-contrast-subtle: var(--ds-color-brand2-contrast-2);
-  --ds-color-brand3-1: #fffefe;
-  --ds-color-brand3-2: #fdeff8;
-  --ds-color-brand3-3: #f9daef;
-  --ds-color-brand3-4: #f6c3e5;
-  --ds-color-brand3-5: #f2abdb;
-  --ds-color-brand3-6: #f1a3d7;
-  --ds-color-brand3-7: #c55aa3;
-  --ds-color-brand3-8: #773762;
-  --ds-color-brand3-9: #e86abf;
-  --ds-color-brand3-10: #c95ca6;
-  --ds-color-brand3-11: #ab4e8d;
-  --ds-color-brand3-12: #98467d;
-  --ds-color-brand3-13: #451f38;
+  --ds-color-brand3-1: #fdfeff;
+  --ds-color-brand3-2: #eaf6fe;
+  --ds-color-brand3-3: #c8e6fd;
+  --ds-color-brand3-4: #a9d7fb;
+  --ds-color-brand3-5: #84c7fa;
+  --ds-color-brand3-6: #7ac2f9;
+  --ds-color-brand3-7: #1a85d6;
+  --ds-color-brand3-8: #105082;
+  --ds-color-brand3-9: #1e98f5;
+  --ds-color-brand3-10: #1a83d3;
+  --ds-color-brand3-11: #166eb2;
+  --ds-color-brand3-12: #1466a5;
+  --ds-color-brand3-13: #092e4b;
   --ds-color-brand3-contrast-1: #000000;
-  --ds-color-brand3-contrast-2: #11080e;
+  --ds-color-brand3-contrast-2: #010407;
   --ds-color-brand3-background-default: var(--ds-color-brand3-1);
   --ds-color-brand3-background-subtle: var(--ds-color-brand3-2);
   --ds-color-brand3-surface-default: var(--ds-color-brand3-3);
@@ -556,6 +616,66 @@
   --ds-color-brand3-text-default: var(--ds-color-brand3-13);
   --ds-color-brand3-contrast-default: var(--ds-color-brand3-contrast-1);
   --ds-color-brand3-contrast-subtle: var(--ds-color-brand3-contrast-2);
+  --ds-color-dominant-1: #fefeff;
+  --ds-color-dominant-2: #eef4fa;
+  --ds-color-dominant-3: #d4e5f3;
+  --ds-color-dominant-4: #bad5ec;
+  --ds-color-dominant-5: #a1c5e5;
+  --ds-color-dominant-6: #97bfe3;
+  --ds-color-dominant-7: #3a85ca;
+  --ds-color-dominant-8: #004d93;
+  --ds-color-dominant-9: #0062BA;
+  --ds-color-dominant-10: #005099;
+  --ds-color-dominant-11: #003d75;
+  --ds-color-dominant-12: #0163ba;
+  --ds-color-dominant-13: #002c54;
+  --ds-color-dominant-contrast-1: #ffffff;
+  --ds-color-dominant-contrast-2: #dbe9f5;
+  --ds-color-dominant-background-default: #fefeff;
+  --ds-color-dominant-background-subtle: #eef4fa;
+  --ds-color-dominant-surface-default: #d4e5f3;
+  --ds-color-dominant-surface-hover: #bad5ec;
+  --ds-color-dominant-surface-active: #a1c5e5;
+  --ds-color-dominant-border-subtle: #97bfe3;
+  --ds-color-dominant-border-default: #3a85ca;
+  --ds-color-dominant-border-strong: #004d93;
+  --ds-color-dominant-base-default: #0062BA;
+  --ds-color-dominant-base-hover: #005099;
+  --ds-color-dominant-base-active: #003d75;
+  --ds-color-dominant-text-subtle: #0163ba;
+  --ds-color-dominant-text-default: #002c54;
+  --ds-color-dominant-contrast-default: #ffffff;
+  --ds-color-dominant-contrast-subtle: #dbe9f5;
+  --ds-color-complimentary-1: #fffeff;
+  --ds-color-complimentary-2: #fbf0fc;
+  --ds-color-complimentary-3: #f6d9f8;
+  --ds-color-complimentary-4: #f1c2f3;
+  --ds-color-complimentary-5: #ecabef;
+  --ds-color-complimentary-6: #eaa3ed;
+  --ds-color-complimentary-7: #b75fbb;
+  --ds-color-complimentary-8: #6f3972;
+  --ds-color-complimentary-9: #df73e4;
+  --ds-color-complimentary-10: #c364c7;
+  --ds-color-complimentary-11: #a656aa;
+  --ds-color-complimentary-12: #8e4991;
+  --ds-color-complimentary-13: #3f2141;
+  --ds-color-complimentary-contrast-1: #000000;
+  --ds-color-complimentary-contrast-2: #190d1a;
+  --ds-color-complimentary-background-default: #fffeff;
+  --ds-color-complimentary-background-subtle: #fbf0fc;
+  --ds-color-complimentary-surface-default: #f6d9f8;
+  --ds-color-complimentary-surface-hover: #f1c2f3;
+  --ds-color-complimentary-surface-active: #ecabef;
+  --ds-color-complimentary-border-subtle: #eaa3ed;
+  --ds-color-complimentary-border-default: #b75fbb;
+  --ds-color-complimentary-border-strong: #6f3972;
+  --ds-color-complimentary-base-default: #df73e4;
+  --ds-color-complimentary-base-hover: #c364c7;
+  --ds-color-complimentary-base-active: #a656aa;
+  --ds-color-complimentary-text-subtle: #8e4991;
+  --ds-color-complimentary-text-default: #3f2141;
+  --ds-color-complimentary-contrast-default: #000000;
+  --ds-color-complimentary-contrast-subtle: #190d1a;
   --ds-color-success-background-default: var(--ds-global-green-1);
   --ds-color-success-background-subtle: var(--ds-global-green-2);
   --ds-color-success-surface-default: var(--ds-global-green-3);
@@ -617,7 +737,7 @@
   --ds-color-warning-contrast-default: var(--ds-global-orange-contrast-1);
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #fefefe;
-  --ds-color-focus-outer: #420e6a;
+  --ds-color-focus-outer: #3f2141;
 
   color-scheme: light;
 }
@@ -1096,6 +1216,66 @@
   --ds-color-brand3-text-default: var(--ds-color-brand3-13);
   --ds-color-brand3-contrast-default: var(--ds-color-brand3-contrast-1);
   --ds-color-brand3-contrast-subtle: var(--ds-color-brand3-contrast-2);
+  --ds-color-dominant-1: #001c36;
+  --ds-color-dominant-2: #002445;
+  --ds-color-dominant-3: #00315c;
+  --ds-color-dominant-4: #003d75;
+  --ds-color-dominant-5: #004b8f;
+  --ds-color-dominant-6: #00529d;
+  --ds-color-dominant-7: #1972c1;
+  --ds-color-dominant-8: #9cc2e4;
+  --ds-color-dominant-9: #4b90ce;
+  --ds-color-dominant-10: #287ac5;
+  --ds-color-dominant-11: #0163ba;
+  --ds-color-dominant-12: #72a8d9;
+  --ds-color-dominant-13: #d4e5f3;
+  --ds-color-dominant-contrast-1: #000000;
+  --ds-color-dominant-contrast-2: #0d1823;
+  --ds-color-dominant-background-default: #001c36;
+  --ds-color-dominant-background-subtle: #002445;
+  --ds-color-dominant-surface-default: #00315c;
+  --ds-color-dominant-surface-hover: #003d75;
+  --ds-color-dominant-surface-active: #004b8f;
+  --ds-color-dominant-border-subtle: #00529d;
+  --ds-color-dominant-border-default: #1972c1;
+  --ds-color-dominant-border-strong: #9cc2e4;
+  --ds-color-dominant-base-default: #4b90ce;
+  --ds-color-dominant-base-hover: #287ac5;
+  --ds-color-dominant-base-active: #0163ba;
+  --ds-color-dominant-text-subtle: #72a8d9;
+  --ds-color-dominant-text-default: #d4e5f3;
+  --ds-color-dominant-contrast-default: #000000;
+  --ds-color-dominant-contrast-subtle: #0d1823;
+  --ds-color-complimentary-1: #2b1323;
+  --ds-color-complimentary-2: #38192e;
+  --ds-color-complimentary-3: #4b223e;
+  --ds-color-complimentary-4: #5f2b4e;
+  --ds-color-complimentary-5: #74355f;
+  --ds-color-complimentary-6: #7f3a68;
+  --ds-color-complimentary-7: #ab4e8d;
+  --ds-color-complimentary-8: #f1a7d9;
+  --ds-color-complimentary-9: #863d6e;
+  --ds-color-complimentary-10: #693057;
+  --ds-color-complimentary-11: #4e2440;
+  --ds-color-complimentary-12: #eb7dc7;
+  --ds-color-complimentary-13: #f9daef;
+  --ds-color-complimentary-contrast-1: #ffffff;
+  --ds-color-complimentary-contrast-2: #f8f4f7;
+  --ds-color-complimentary-background-default: #2b1323;
+  --ds-color-complimentary-background-subtle: #38192e;
+  --ds-color-complimentary-surface-default: #4b223e;
+  --ds-color-complimentary-surface-hover: #5f2b4e;
+  --ds-color-complimentary-surface-active: #74355f;
+  --ds-color-complimentary-border-subtle: #7f3a68;
+  --ds-color-complimentary-border-default: #ab4e8d;
+  --ds-color-complimentary-border-strong: #f1a7d9;
+  --ds-color-complimentary-base-default: #863d6e;
+  --ds-color-complimentary-base-hover: #693057;
+  --ds-color-complimentary-base-active: #4e2440;
+  --ds-color-complimentary-text-subtle: #eb7dc7;
+  --ds-color-complimentary-text-default: #f9daef;
+  --ds-color-complimentary-contrast-default: #ffffff;
+  --ds-color-complimentary-contrast-subtle: #f8f4f7;
   --ds-color-success-background-default: var(--ds-global-green-1);
   --ds-color-success-background-subtle: var(--ds-global-green-2);
   --ds-color-success-surface-default: var(--ds-global-green-3);
@@ -1157,7 +1337,7 @@
   --ds-color-warning-contrast-default: var(--ds-global-orange-contrast-1);
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #131c27;
-  --ds-color-focus-outer: #e8e0ee;
+  --ds-color-focus-outer: #f9daef;
 
   color-scheme: dark;
 }
@@ -1404,6 +1584,66 @@
   --ds-color-brand3-text-default: var(--ds-color-brand3-13);
   --ds-color-brand3-contrast-default: var(--ds-color-brand3-contrast-1);
   --ds-color-brand3-contrast-subtle: var(--ds-color-brand3-contrast-2);
+  --ds-color-dominant-1: #001c36;
+  --ds-color-dominant-2: #002445;
+  --ds-color-dominant-3: #00315c;
+  --ds-color-dominant-4: #003d75;
+  --ds-color-dominant-5: #004b8f;
+  --ds-color-dominant-6: #00529d;
+  --ds-color-dominant-7: #1972c1;
+  --ds-color-dominant-8: #9cc2e4;
+  --ds-color-dominant-9: #4b90ce;
+  --ds-color-dominant-10: #287ac5;
+  --ds-color-dominant-11: #0163ba;
+  --ds-color-dominant-12: #72a8d9;
+  --ds-color-dominant-13: #d4e5f3;
+  --ds-color-dominant-contrast-1: #000000;
+  --ds-color-dominant-contrast-2: #0d1823;
+  --ds-color-dominant-background-default: #001c36;
+  --ds-color-dominant-background-subtle: #002445;
+  --ds-color-dominant-surface-default: #00315c;
+  --ds-color-dominant-surface-hover: #003d75;
+  --ds-color-dominant-surface-active: #004b8f;
+  --ds-color-dominant-border-subtle: #00529d;
+  --ds-color-dominant-border-default: #1972c1;
+  --ds-color-dominant-border-strong: #9cc2e4;
+  --ds-color-dominant-base-default: #4b90ce;
+  --ds-color-dominant-base-hover: #287ac5;
+  --ds-color-dominant-base-active: #0163ba;
+  --ds-color-dominant-text-subtle: #72a8d9;
+  --ds-color-dominant-text-default: #d4e5f3;
+  --ds-color-dominant-contrast-default: #000000;
+  --ds-color-dominant-contrast-subtle: #0d1823;
+  --ds-color-complimentary-1: #2b1323;
+  --ds-color-complimentary-2: #38192e;
+  --ds-color-complimentary-3: #4b223e;
+  --ds-color-complimentary-4: #5f2b4e;
+  --ds-color-complimentary-5: #74355f;
+  --ds-color-complimentary-6: #7f3a68;
+  --ds-color-complimentary-7: #ab4e8d;
+  --ds-color-complimentary-8: #f1a7d9;
+  --ds-color-complimentary-9: #863d6e;
+  --ds-color-complimentary-10: #693057;
+  --ds-color-complimentary-11: #4e2440;
+  --ds-color-complimentary-12: #eb7dc7;
+  --ds-color-complimentary-13: #f9daef;
+  --ds-color-complimentary-contrast-1: #ffffff;
+  --ds-color-complimentary-contrast-2: #f8f4f7;
+  --ds-color-complimentary-background-default: #2b1323;
+  --ds-color-complimentary-background-subtle: #38192e;
+  --ds-color-complimentary-surface-default: #4b223e;
+  --ds-color-complimentary-surface-hover: #5f2b4e;
+  --ds-color-complimentary-surface-active: #74355f;
+  --ds-color-complimentary-border-subtle: #7f3a68;
+  --ds-color-complimentary-border-default: #ab4e8d;
+  --ds-color-complimentary-border-strong: #f1a7d9;
+  --ds-color-complimentary-base-default: #863d6e;
+  --ds-color-complimentary-base-hover: #693057;
+  --ds-color-complimentary-base-active: #4e2440;
+  --ds-color-complimentary-text-subtle: #eb7dc7;
+  --ds-color-complimentary-text-default: #f9daef;
+  --ds-color-complimentary-contrast-default: #ffffff;
+  --ds-color-complimentary-contrast-subtle: #f8f4f7;
   --ds-color-success-background-default: var(--ds-global-green-1);
   --ds-color-success-background-subtle: var(--ds-global-green-2);
   --ds-color-success-surface-default: var(--ds-global-green-3);
@@ -1465,7 +1705,7 @@
   --ds-color-warning-contrast-default: var(--ds-global-orange-contrast-1);
   --ds-color-warning-contrast-subtle: var(--ds-global-orange-contrast-2);
   --ds-color-focus-inner: #131c27;
-  --ds-color-focus-outer: #e8e0ee;
+  --ds-color-focus-outer: #f9daef;
 
   color-scheme: dark;
 }
@@ -1628,4 +1868,153 @@
   --ds-letter-spacing-8: 0.5%;
   --ds-letter-spacing-9: 1.5%;
 }
+}
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-primary {
+:root, [data-ds-color-primary="dominant"] {
+  --ds-color-primary-background-default: var(--ds-color-dominant-background-default);
+  --ds-color-primary-background-subtle: var(--ds-color-dominant-background-subtle);
+  --ds-color-primary-surface-default: var(--ds-color-dominant-surface-default);
+  --ds-color-primary-surface-hover: var(--ds-color-dominant-surface-hover);
+  --ds-color-primary-surface-active: var(--ds-color-dominant-surface-active);
+  --ds-color-primary-border-subtle: var(--ds-color-dominant-border-subtle);
+  --ds-color-primary-border-default: var(--ds-color-dominant-border-default);
+  --ds-color-primary-border-strong: var(--ds-color-dominant-border-strong);
+  --ds-color-primary-base-default: var(--ds-color-dominant-base-default);
+  --ds-color-primary-base-hover: var(--ds-color-dominant-base-hover);
+  --ds-color-primary-base-active: var(--ds-color-dominant-base-active);
+  --ds-color-primary-text-subtle: var(--ds-color-dominant-text-subtle);
+  --ds-color-primary-text-default: var(--ds-color-dominant-text-default);
+  --ds-color-primary-contrast-default: var(--ds-color-dominant-contrast-default);
+  --ds-color-primary-contrast-subtle: var(--ds-color-dominant-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-primary {
+[data-ds-color-primary="complimentary"] {
+  --ds-color-primary-background-default: var(--ds-color-complimentary-background-default);
+  --ds-color-primary-background-subtle: var(--ds-color-complimentary-background-subtle);
+  --ds-color-primary-surface-default: var(--ds-color-complimentary-surface-default);
+  --ds-color-primary-surface-hover: var(--ds-color-complimentary-surface-hover);
+  --ds-color-primary-surface-active: var(--ds-color-complimentary-surface-active);
+  --ds-color-primary-border-subtle: var(--ds-color-complimentary-border-subtle);
+  --ds-color-primary-border-default: var(--ds-color-complimentary-border-default);
+  --ds-color-primary-border-strong: var(--ds-color-complimentary-border-strong);
+  --ds-color-primary-base-default: var(--ds-color-complimentary-base-default);
+  --ds-color-primary-base-hover: var(--ds-color-complimentary-base-hover);
+  --ds-color-primary-base-active: var(--ds-color-complimentary-base-active);
+  --ds-color-primary-text-subtle: var(--ds-color-complimentary-text-subtle);
+  --ds-color-primary-text-default: var(--ds-color-complimentary-text-default);
+  --ds-color-primary-contrast-default: var(--ds-color-complimentary-contrast-default);
+  --ds-color-primary-contrast-subtle: var(--ds-color-complimentary-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-primary {
+[data-ds-color-primary="accent"] {
+  --ds-color-primary-background-default: var(--ds-color-accent-background-default);
+  --ds-color-primary-background-subtle: var(--ds-color-accent-background-subtle);
+  --ds-color-primary-surface-default: var(--ds-color-accent-surface-default);
+  --ds-color-primary-surface-hover: var(--ds-color-accent-surface-hover);
+  --ds-color-primary-surface-active: var(--ds-color-accent-surface-active);
+  --ds-color-primary-border-subtle: var(--ds-color-accent-border-subtle);
+  --ds-color-primary-border-default: var(--ds-color-accent-border-default);
+  --ds-color-primary-border-strong: var(--ds-color-accent-border-strong);
+  --ds-color-primary-base-default: var(--ds-color-accent-base-default);
+  --ds-color-primary-base-hover: var(--ds-color-accent-base-hover);
+  --ds-color-primary-base-active: var(--ds-color-accent-base-active);
+  --ds-color-primary-text-subtle: var(--ds-color-accent-text-subtle);
+  --ds-color-primary-text-default: var(--ds-color-accent-text-default);
+  --ds-color-primary-contrast-default: var(--ds-color-accent-contrast-default);
+  --ds-color-primary-contrast-subtle: var(--ds-color-accent-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-support {
+:root, [data-ds-color-support="support1"] {
+  --ds-color-support-background-default: var(--ds-color-brand1-1);
+  --ds-color-support-background-subtle: var(--ds-color-brand1-2);
+  --ds-color-support-surface-default: var(--ds-color-brand1-3);
+  --ds-color-support-surface-hover: var(--ds-color-brand1-4);
+  --ds-color-support-surface-active: var(--ds-color-brand1-5);
+  --ds-color-support-border-subtle: var(--ds-color-brand1-6);
+  --ds-color-support-border-default: var(--ds-color-brand1-7);
+  --ds-color-support-border-strong: var(--ds-color-brand1-8);
+  --ds-color-support-base-default: var(--ds-color-brand1-9);
+  --ds-color-support-base-hover: var(--ds-color-brand1-10);
+  --ds-color-support-base-active: var(--ds-color-brand1-11);
+  --ds-color-support-text-subtle: var(--ds-color-brand1-12);
+  --ds-color-support-text-default: var(--ds-color-brand1-13);
+  --ds-color-support-contrast-default: var(--ds-color-brand1-contrast-1);
+  --ds-color-support-contrast-subtle: var(--ds-color-brand1-contrast-2);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-support {
+[data-ds-color-support="support2"] {
+  --ds-color-support-background-default: var(--ds-color-brand2-1);
+  --ds-color-support-background-subtle: var(--ds-color-brand2-2);
+  --ds-color-support-surface-default: var(--ds-color-brand2-3);
+  --ds-color-support-surface-hover: var(--ds-color-brand2-4);
+  --ds-color-support-surface-active: var(--ds-color-brand2-5);
+  --ds-color-support-border-subtle: var(--ds-color-brand2-6);
+  --ds-color-support-border-default: var(--ds-color-brand2-7);
+  --ds-color-support-border-strong: var(--ds-color-brand2-8);
+  --ds-color-support-base-default: var(--ds-color-brand2-9);
+  --ds-color-support-base-hover: var(--ds-color-brand2-10);
+  --ds-color-support-base-active: var(--ds-color-brand2-11);
+  --ds-color-support-text-subtle: var(--ds-color-brand2-12);
+  --ds-color-support-text-default: var(--ds-color-brand2-13);
+  --ds-color-support-contrast-default: var(--ds-color-brand2-contrast-1);
+  --ds-color-support-contrast-subtle: var(--ds-color-brand2-contrast-2);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-support {
+[data-ds-color-support="support3"] {
+  --ds-color-support-background-default: var(--ds-color-brand3-1);
+  --ds-color-support-background-subtle: var(--ds-color-brand3-2);
+  --ds-color-support-surface-default: var(--ds-color-brand3-3);
+  --ds-color-support-surface-hover: var(--ds-color-brand3-4);
+  --ds-color-support-surface-active: var(--ds-color-brand3-5);
+  --ds-color-support-border-subtle: var(--ds-color-brand3-6);
+  --ds-color-support-border-default: var(--ds-color-brand3-7);
+  --ds-color-support-border-strong: var(--ds-color-brand3-8);
+  --ds-color-support-base-default: var(--ds-color-brand3-9);
+  --ds-color-support-base-hover: var(--ds-color-brand3-10);
+  --ds-color-support-base-active: var(--ds-color-brand3-11);
+  --ds-color-support-text-subtle: var(--ds-color-brand3-12);
+  --ds-color-support-text-default: var(--ds-color-brand3-13);
+  --ds-color-support-contrast-default: var(--ds-color-brand3-contrast-1);
+  --ds-color-support-contrast-subtle: var(--ds-color-brand3-contrast-2);
+}
+
 }
