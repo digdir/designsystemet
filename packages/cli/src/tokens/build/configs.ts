@@ -96,10 +96,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
           {
             destination: `color-mode/${mode}.css`,
             format: formats.colormode.name,
-            filter: (token) =>
-              !token.isSource &&
-              typeEquals('color', token) &&
-              !(['primary', 'support'] as const).some((category) => isColorCategoryToken(token, category)),
+            filter: (token) => !token.isSource && typeEquals('color', token),
           },
         ],
         options: {
@@ -159,8 +156,7 @@ export const colorCategories =
           ],
           options: {
             fileHeader,
-            outputReferences: (token, options) =>
-              outputColorReferences(token) && outputReferencesFilter(token, options),
+            outputReferences: true,
           },
         },
       },
