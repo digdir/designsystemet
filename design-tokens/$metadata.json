@@ -25,13 +25,13 @@
     "themes/theme2",
     "themes/theme3",
     "themes/theme4",
+    "semantic/color",
     "colors/primary/dominant",
     "colors/primary/complimentary",
     "colors/primary/accent",
     "colors/support/support1",
     "colors/support/support2",
     "colors/support/support3",
-    "semantic/color",
     "semantic/style",
     "Figma/components"
   ]

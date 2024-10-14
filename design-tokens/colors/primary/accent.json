@@ -3,63 +3,63 @@
     "primary": {
       "background-default": {
         "$type": "color",
-        "$value": "{color.accent.1}"
+        "$value": "{color.accent.background-default}"
       },
       "background-subtle": {
         "$type": "color",
-        "$value": "{color.accent.2}"
+        "$value": "{color.accent.background-subtle}"
       },
       "surface-default": {
         "$type": "color",
-        "$value": "{color.accent.3}"
+        "$value": "{color.accent.surface-default}"
       },
       "surface-hover": {
         "$type": "color",
-        "$value": "{color.accent.4}"
+        "$value": "{color.accent.surface-hover}"
       },
       "surface-active": {
         "$type": "color",
-        "$value": "{color.accent.5}"
+        "$value": "{color.accent.surface-active}"
       },
       "border-subtle": {
         "$type": "color",
-        "$value": "{color.accent.6}"
+        "$value": "{color.accent.border-subtle}"
       },
       "border-default": {
         "$type": "color",
-        "$value": "{color.accent.7}"
+        "$value": "{color.accent.border-default}"
       },
       "border-strong": {
         "$type": "color",
-        "$value": "{color.accent.8}"
+        "$value": "{color.accent.border-strong}"
       },
       "base-default": {
         "$type": "color",
-        "$value": "{color.accent.9}"
+        "$value": "{color.accent.base-default}"
       },
       "base-hover": {
         "$type": "color",
-        "$value": "{color.accent.10}"
+        "$value": "{color.accent.base-hover}"
       },
       "base-active": {
         "$type": "color",
-        "$value": "{color.accent.11}"
+        "$value": "{color.accent.base-active}"
       },
       "text-subtle": {
         "$type": "color",
-        "$value": "{color.accent.12}"
+        "$value": "{color.accent.text-subtle}"
       },
       "text-default": {
         "$type": "color",
-        "$value": "{color.accent.13}"
+        "$value": "{color.accent.text-default}"
       },
       "contrast-default": {
         "$type": "color",
-        "$value": "{color.accent.contrast-1}"
+        "$value": "{color.accent.contrast-default}"
       },
       "contrast-subtle": {
         "$type": "color",
-        "$value": "{color.accent.contrast-2}"
+        "$value": "{color.accent.contrast-subtle}"
       }
     }
   }

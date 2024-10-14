@@ -3,63 +3,63 @@
     "primary": {
       "background-default": {
         "$type": "color",
-        "$value": "{color.complimentary.1}"
+        "$value": "{color.complimentary.background-default}"
       },
       "background-subtle": {
         "$type": "color",
-        "$value": "{color.complimentary.2}"
+        "$value": "{color.complimentary.background-subtle}"
       },
       "surface-default": {
         "$type": "color",
-        "$value": "{color.complimentary.3}"
+        "$value": "{color.complimentary.surface-default}"
       },
       "surface-hover": {
         "$type": "color",
-        "$value": "{color.complimentary.4}"
+        "$value": "{color.complimentary.surface-hover}"
       },
       "surface-active": {
         "$type": "color",
-        "$value": "{color.complimentary.5}"
+        "$value": "{color.complimentary.surface-active}"
       },
       "border-subtle": {
         "$type": "color",
-        "$value": "{color.complimentary.6}"
+        "$value": "{color.complimentary.border-subtle}"
       },
       "border-default": {
         "$type": "color",
-        "$value": "{color.complimentary.7}"
+        "$value": "{color.complimentary.border-default}"
       },
       "border-strong": {
         "$type": "color",
-        "$value": "{color.complimentary.8}"
+        "$value": "{color.complimentary.border-strong}"
       },
       "base-default": {
         "$type": "color",
-        "$value": "{color.complimentary.9}"
+        "$value": "{color.complimentary.base-default}"
       },
       "base-hover": {
         "$type": "color",
-        "$value": "{color.complimentary.10}"
+        "$value": "{color.complimentary.base-hover}"
       },
       "base-active": {
         "$type": "color",
-        "$value": "{color.complimentary.11}"
+        "$value": "{color.complimentary.base-active}"
       },
       "text-subtle": {
         "$type": "color",
-        "$value": "{color.complimentary.12}"
+        "$value": "{color.complimentary.text-subtle}"
       },
       "text-default": {
         "$type": "color",
-        "$value": "{color.complimentary.13}"
+        "$value": "{color.complimentary.text-default}"
       },
       "contrast-default": {
         "$type": "color",
-        "$value": "{color.complimentary.contrast-1}"
+        "$value": "{color.complimentary.contrast-default}"
       },
       "contrast-subtle": {
         "$type": "color",
-        "$value": "{color.complimentary.contrast-2}"
+        "$value": "{color.complimentary.contrast-subtle}"
       }
     }
   }
