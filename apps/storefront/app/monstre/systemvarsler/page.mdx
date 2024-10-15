@@ -78,22 +78,36 @@ En feilside brukes ofte når bruker prøver å få tilgang til en side som ikke 
 
 <br/>
 
-
 **Opplys om**
-- Hva er galt og hvordan påvirker det brukeren (systemet)
-- Hvor lenge forventer vi at problemet vedvarer?
-- Hvor kan brukeren få hjelp
+- hva er galt og hvordan påvirker det brukeren (systemet)
+- hvor lenge forventer vi at problemet vedvarer?
+- hvor kan brukeren få hjelp
 
-<br/>
-
-<br/>
 
 <Image
-  src='/img/full-feilside.png'
-  alt='Skjermbilde som viser eksempel på en full feilside. På feilsiden informeres det om at vi opplever tekniske problemer og jobber med å løse dem. Det står også "Dette skyldes ikke noe du gjorde. Du kan prøve å vente noen minutter og laste siden på nytt eller gå tilbake til forrige side. Hvis du fortsatt har problemer, kan du kontakte oss (åpnes i ny fane)."'
+  src='/img/Full-feilside500.png'
+  alt='Skjermbilde som viser eksempel på en full feilside med 500-feil. På feilsiden informeres det om at vi opplever tekniske problemer og jobber med å løse dem. Det står også "Dette skyldes ikke noe du gjorde. Du kan prøve å vente noen minutter og laste siden på nytt eller gå tilbake til forrige side. Hvis du fortsatt har problemer, kan du kontakte oss (åpnes i ny fane)."'
   boxShadow={true}
   caption='Full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukeren gjorde. Vi gir også brukeren noen alternativer for å komme videre.'
 />
+
+**Når siden ikke eksisterer**
+- gi brukeren mulighet til å søke etter informasjonen
+- gi brukeren forslag til relevante sider basert på URLen
+- gi brukeren mulighet til å gå til forsiden
+
+
+<Image
+  src='/img/Full-feilside404.png'
+  alt='Skjermbilde som viser eksempel på en full feilside med 404-feil. På feilsiden informeres det om at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Det står også "Du kan søke her etter informasjonen du leter etter" med et tilhørende søkefelt. Deretter viser vi forslag til sider som kan være aktuelle ut i fra lenken brukeren forsøkte å nå.'
+  boxShadow={true}
+  caption='Full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Vi gir brukeren mulighet til å søke etter informasjonen og foreslår noen sider som kan være aktuelle basert på lenken brukeren forsøkte å nå. '
+/>
+
+<br/>
+
+<br/>
+
 
 
 #### Modal
@@ -116,21 +130,18 @@ Modal passer når brukeren er i ferd med å utføre en handling som ikke kan ang
 
 
 <br/>
-<Image
+<Image dataUnstyled
   src='/img/modal-systemvarsler-1.png'
   alt='Skjermbilde av modal.'
-  boxShadow={true}
+  boxShadow={false}
   caption='Global varsling som krever handling: Eksempelet viser en modal der brukeren må ta et aktivt valg for å fortsette å være innlogget. Når varselet krever en handling fra brukeren for å forsvinne, kan vi være mer "påtrengende".'
 />
 
-<Image
+<Image dataUnstyled
   src='/img/modal-systemvarsler-2.png'
   alt='Skjermbilde av modal.'
-  boxShadow={true}
   caption='Eksempelet viser en modal der brukeren må ta et aktivt valg om å lagre utkastet eller ikke.'
 />
-
-
 
 
 #### Alert
@@ -138,18 +149,16 @@ Modal passer når brukeren er i ferd med å utføre en handling som ikke kan ang
 
 Eksempelet under viser en global `alert` som fyller hele bredden i toppen av siden. Denne type varsling kan brukes for problemer som gjelder hele tjenesten. Gul `alert` (warning) brukes i tilfeller der brukeren fortsatt kan finne informasjon og navigere på nettsidene, men noen av delene er utilgjengelige.
 
-<Image
+<Image dataUnstyled
   src='/img/alert-global.png'
   alt='Skjermbilde av glbal alert.'
-  boxShadow={true}
 />
 
 Eksempelet under viser en lokal `alert` som er plassert i nærheten av der feilen oppstod. Rød `alert` (danger) brukes i tilfeller der brukeren ikke kan fortsette arbeidet så lenge feilen vedvarer.
 
-<Image
+<Image dataUnstyled
   src='/img/alert-lokal.png'
   alt='Skjermbilde av lokal alert.'
-  boxShadow={true}
 />
 
 
