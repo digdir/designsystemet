@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Paragraph } from '../..';
+import { Button, Divider, Paragraph } from '../..';
 
 import { Textfield } from '.';
 
@@ -52,22 +52,16 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
+      <Textfield
+        label='Kontroller meg!'
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+
+      <Divider />
+
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'end',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Textfield
-          label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
-      </div>
+      <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
     </>
   );
 };
