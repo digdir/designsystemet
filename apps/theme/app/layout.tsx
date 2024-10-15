@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme';
 import { Header } from '@repo/components';
 
 export const metadata: Metadata = {
@@ -17,10 +17,6 @@ const menu = [
   {
     name: 'Slik bruker du verktøyet',
     href: '/slik-bruker-du-verktoyet',
-  },
-  {
-    name: 'Om verktøyet',
-    href: '/om-verktoyet',
   },
 ];
 

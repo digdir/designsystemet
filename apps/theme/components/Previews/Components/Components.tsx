@@ -255,15 +255,14 @@ export const Components = () => {
           legend='Instillinger'
           description='Her kan du justere på innstillingene dine'
           size='sm'
+          className={classes.SwitchContainer}
         >
-          <div className={classes.SwitchContainer}>
-            <Switch defaultChecked>TV-visning</Switch>
-            <Switch size='sm'>Desktopvisning</Switch>
-            <Switch defaultChecked readOnly>
-              Tabletvisning
-            </Switch>
-            <Switch disabled>Mobilvisning</Switch>
-          </div>
+          <Switch defaultChecked>TV-visning</Switch>
+          <Switch>Desktopvisning</Switch>
+          <Switch defaultChecked readOnly>
+            Tabletvisning
+          </Switch>
+          <Switch disabled>Mobilvisning</Switch>
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
@@ -313,7 +312,7 @@ export const Components = () => {
           className={classes.textarea}
           cols={100}
           id='my-textarea'
-          rows={3}
+          rows={4}
           size='sm'
         />
       </div>

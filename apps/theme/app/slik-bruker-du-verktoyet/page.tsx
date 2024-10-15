@@ -20,15 +20,6 @@ export default function Home() {
               verktøyet.
             </Paragraph>
 
-            <Alert size='md'>
-              <Paragraph>
-                Lurer du på hva token navnene betyr og hvordan du skal bruke
-                fargene?
-                <br /> Les mer om dette på{' '}
-                <Link href='#'>tokenforklaringen</Link> på designsystemet.no.
-              </Paragraph>
-            </Alert>
-
             <Heading level={2} size='md'>
               Valg av farger
             </Heading>

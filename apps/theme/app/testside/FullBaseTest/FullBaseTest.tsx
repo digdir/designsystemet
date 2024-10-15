@@ -131,23 +131,26 @@ export const FullBaseTest = () => {
 
     theme: 'light' | 'dark' | 'contrast';
   }) => {
-    let lightness = getLightnessFromHex(color);
+    let lightness = Math.round(getLightnessFromHex(color));
     if (theme === 'dark' || theme === 'contrast') {
       color = getBaseColor(color);
       lightness = lightness <= 30 ? 70 : 100 - lightness;
     }
 
-    // Default multiplier
-    let multiplier = 7;
+    let modifier = 8;
 
-    // If lightness is in the range of 0-30 or 65-80 reverse the multiplier
-    if (lightness <= 30 || (lightness >= 48.5 && lightness <= 65)) {
-      multiplier = -7;
+    //
+    if (lightness <= 30) {
+      modifier = -modifier;
+    }
+    // 49 is when the contrast flips from white to black, 65 is when the contrast flips from black to white
+    if (lightness >= 49 && lightness <= 65) {
+      modifier = -modifier;
     }
 
     const baseDefault = blueColors[lightness];
-    const baseHover = blueColors[lightness - multiplier];
-    const baseActive = blueColors[lightness - multiplier * 2];
+    const baseHover = blueColors[lightness - modifier];
+    const baseActive = blueColors[lightness - modifier * 2];
 
     const contrastOneColor = calculateContrastOneColor(blueColors[lightness]);
 
