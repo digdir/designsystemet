@@ -28,6 +28,7 @@
   padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
   text-align: inherit;
   text-decoration: none;
+  font-weight: 500;
 
   & svg,
   & img {
