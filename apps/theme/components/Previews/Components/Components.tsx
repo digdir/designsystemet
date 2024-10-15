@@ -354,11 +354,13 @@ export const Components = () => {
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              For å kunne bli registrert i Frivillighetsregisteret, må
-              organisasjonen drive frivillig virksomhet. Det er bare foreninger,
-              stiftelser og aksjeselskap som kan registreres. Virksomheten kan
-              ikke dele ut midler til fysiske personer. Virksomheten må ha et
-              styre.
+              <Paragraph size='sm'>
+                For å kunne bli registrert i Frivillighetsregisteret, må
+                organisasjonen drive frivillig virksomhet. Det er bare
+                foreninger, stiftelser og aksjeselskap som kan registreres.
+                Virksomheten kan ikke dele ut midler til fysiske personer.
+                Virksomheten må ha et styre.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
@@ -366,9 +368,11 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              Virksomheten må være registrert i Enhetsregisteret før den kan bli
-              registrert i Frivillighetsregisteret. Du kan registrere i begge
-              registrene samtidig i Samordnet registermelding.
+              <Paragraph size='sm'>
+                Virksomheten må være registrert i Enhetsregisteret før den kan
+                bli registrert i Frivillighetsregisteret. Du kan registrere i
+                begge registrene samtidig i Samordnet registermelding.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
@@ -376,32 +380,34 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              Virksomheten må være registrert i Enhetsregisteret før den kan bli
-              registrert i Frivillighetsregisteret. Du kan registrere i begge
-              registrene samtidig i Samordnet registermelding.
+              <Paragraph size='sm'>
+                Virksomheten må være registrert i Enhetsregisteret før den kan
+                bli registrert i Frivillighetsregisteret. Du kan registrere i
+                begge registrene samtidig i Samordnet registermelding.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert color='info'>
+        <Alert color='info' size='sm'>
           Dette er informasjon som du bør lese for å forstå hva som skjer
         </Alert>
-        <Alert color='warning'>
+        <Alert color='warning' size='sm'>
           Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
         </Alert>
-        <Alert color='danger'>
+        <Alert color='danger' size='sm'>
           Dette er en melding om at noe har gått galt og du bør gjøre noe med
           det
         </Alert>
-        <Alert color='success'>
+        <Alert color='success' size='sm'>
           Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
         <Dropdown.Context>
-          <Dropdown.Trigger>Velg språk</Dropdown.Trigger>
-          <Dropdown placement='top'>
+          <Dropdown.Trigger size='sm'>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top' size='sm'>
             <Dropdown.Item>Norsk</Dropdown.Item>
             <Dropdown.Item>Engelsk</Dropdown.Item>
             <Dropdown.Item>Spansk</Dropdown.Item>
