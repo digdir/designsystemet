@@ -22,7 +22,7 @@ export default function Home() {
             </Paragraph>
 
             <Heading level={2} size='md'>
-              Valg av farger
+              Farger og WCAG
             </Heading>
             <Paragraph>
               Når du velger en farge i verktøyet så vil{' '}
@@ -51,6 +51,23 @@ export default function Home() {
               farger her. Det er fortsatt viktig å tenke på kontrasten mot
               bakgrunnsfargene om <code>Base</code> fargene skal brukes på
               aktive brukergrensesnittkomponenter eller meningsbærende grafikk.
+            </Paragraph>
+            <Heading level={2} size='md'>
+              Valg av Accentfarge
+            </Heading>
+            <Paragraph>
+              For at <code>Accent - Base</code> fargene skal skille seg tydelig
+              ut fra andre elementer på en side, så er det viktig at disse har
+              god kontrast mot bakgrunnsfargene. <code>Accent</code> er ment for
+              å lyse opp og trekke oppmerksomhet til viktige elementer på
+              nettsiden. Kontrastkravet sier at fargen som blir valgt må ha
+              minst 3:1 kontrast mot bakgrunnsfargene. Det er ikke alltid
+              sikkert at det å ligge akkuratt innenfor 3:1 kravet er godt nok
+              visuellt for å skape et tydelig skille mot andre elementer på
+              siden. Designsystemet anbefaler derfor å velge en relativt mørk{' '}
+              <code>Accent</code> farge for å sikre at fargen skiller seg godt
+              ut fra bakgrunnen. Blåfargen som er valgt som standard i verktøyet
+              har for eksempel 6:1 kontrast mot bakgrunnsfargene.
             </Paragraph>
           </div>
         </Container>
