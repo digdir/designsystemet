@@ -20,6 +20,7 @@ const ResponsiveIframe = ({
       className={cl(classes.container, {
         [classes.aspectFourThree]: aspectRatio === '4-3',
       })}
+      data-iframe-video
     >
       <iframe
         title={title}

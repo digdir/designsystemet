@@ -4,13 +4,10 @@ import type * as React from 'react';
 
 import classes from './MdxContent.module.css';
 
-interface MdxContentProps {
-  children: React.ReactNode;
-  classname?: string;
-}
+type MdxContentProps = React.HTMLAttributes<HTMLDivElement>;
 
-const MdxContent = ({ children, classname }: MdxContentProps) => {
-  return <div className={cl(classname, classes.content)}>{children}</div>;
+const MdxContent = ({ className, ...rest }: MdxContentProps) => {
+  return <div className={cl(classes.content, className)} {...rest} />;
 };
 
 export { MdxContent };

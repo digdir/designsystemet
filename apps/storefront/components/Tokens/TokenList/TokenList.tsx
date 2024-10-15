@@ -207,7 +207,7 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.package}>
+      <div className={classes.package} data-unstyled>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
           <img
             src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
@@ -225,18 +225,20 @@ const TokenList = ({
                 Brand: {capitalizeString(brand)}
               </Dropdown.Trigger>
               <Dropdown>
-                <Dropdown.Item onClick={() => setBrand('digdir')}>
-                  Digdir
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('altinn')}>
-                  Altinn
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('tilsynet')}>
-                  Tilsynet
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('portal')}>
-                  Brreg
-                </Dropdown.Item>
+                <Dropdown.List>
+                  <Dropdown.Item onClick={() => setBrand('digdir')}>
+                    Digdir
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setBrand('altinn')}>
+                    Altinn
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setBrand('tilsynet')}>
+                    Tilsynet
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setBrand('portal')}>
+                    Brreg
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.Context>
           )}
@@ -246,12 +248,14 @@ const TokenList = ({
                 Mode: {capitalizeString(mode)}
               </Dropdown.Trigger>
               <Dropdown>
-                <Dropdown.Item onClick={() => setMode('light')}>
-                  Light
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setMode('dark')}>
-                  Dark
-                </Dropdown.Item>
+                <Dropdown.List>
+                  <Dropdown.Item onClick={() => setMode('light')}>
+                    Light
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setMode('dark')}>
+                    Dark
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.Context>
           )}

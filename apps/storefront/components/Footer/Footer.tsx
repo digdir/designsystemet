@@ -1,7 +1,6 @@
-import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
-import cl from 'clsx/lite';
+import { Container, Figma, Github, Slack } from '@repo/components';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import type { ReactNode } from 'react';
@@ -32,38 +31,17 @@ const rightLinks = [
   {
     text: 'Bli invitert til slack',
     url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
-    prefix: (
-      <Image
-        height={20}
-        width={20}
-        alt=''
-        src='/img/logos/slack-negative.png'
-      />
-    ),
+    prefix: <Slack />,
   },
   {
     text: 'Github',
     url: 'https://github.com/digdir/designsystemet',
-    prefix: (
-      <Image
-        height={20}
-        width={20}
-        alt=''
-        src='/img/logos/github-negative.png'
-      />
-    ),
+    prefix: <Github />,
   },
   {
     text: 'Figma',
     url: 'https://www.figma.com/@designsystemet',
-    prefix: (
-      <Image
-        height={20}
-        width={20}
-        alt=''
-        src='/img/logos/figma-negative.png'
-      />
-    ),
+    prefix: <Figma />,
   },
 ];
 
@@ -129,16 +107,14 @@ const Footer = () => {
                 className={classes.udir}
               ></Image>
             </div>
-            <NextLink
-              href='mailto:designsystem@digdir.no'
-              className={cl(
-                classes.button,
-                'ds-paragraph-short--sm',
-                'ds-focus',
-              )}
-            >
-              Din etat? Ta kontakt!
-            </NextLink>
+            <Button asChild variant='secondary' color='neutral' size='sm'>
+              <NextLink
+                href='mailto:designsystem@digdir.no'
+                className={classes.button}
+              >
+                Din etat? Ta kontakt!
+              </NextLink>
+            </Button>
           </div>
           <div>
             <Heading size='xs' level={2} className={classes.title}>
@@ -154,7 +130,7 @@ const Footer = () => {
           </div>
         </Container>
       </div>
-      <div className={cl(classes.bottom, 'ds-paragraph--sm')}>
+      <div className={classes.bottom}>
         <Container>
           <Paragraph size='sm'>© {getCurrentYear()} Designsystemet</Paragraph>
         </Container>

@@ -2,16 +2,14 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: var(--media-max-width);
-  padding-top: 56.25%;
-  box-shadow: var(--ds-shadow-md);
   border-radius: 4px;
   margin-top: var(--ds-spacing-10);
   margin-bottom: var(--ds-spacing-10);
+  aspect-ratio: 16 / 9;
 }
 
 .aspectFourThree {
-  padding-top: 75%;
+  aspect-ratio: 4 / 3;
 }
 
 .iframe {

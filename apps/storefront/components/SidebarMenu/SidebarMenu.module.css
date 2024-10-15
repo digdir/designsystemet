@@ -44,6 +44,7 @@
   line-height: 1.3em;
   position: relative;
   border-radius: var(--ds-border-radius-md);
+  text-wrap: balance;
 }
 
 .linkActive::before {

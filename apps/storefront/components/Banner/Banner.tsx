@@ -46,7 +46,7 @@ const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
     <Paragraph
       variant='long'
-      className={cl(classes.ingress, 'ds-ingress--sm', className)}
+      className={cl(classes.ingress, className)}
       {...props}
     />
   );
