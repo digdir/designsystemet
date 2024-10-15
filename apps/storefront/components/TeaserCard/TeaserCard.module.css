@@ -20,7 +20,7 @@
 }
 
 .title {
-  margin-bottom: 8px;
+  margin-bottom: var(--ds-spacing-2);
 }
 
 .desc {

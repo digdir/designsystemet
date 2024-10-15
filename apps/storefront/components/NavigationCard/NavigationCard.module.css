@@ -1,10 +1,7 @@
 .card {
-  background-color: white;
-  padding: var(--ds-spacing-8);
-  display: block;
-  color: inherit;
   text-decoration: none;
   box-shadow: var(--ds-shadow-sm);
+  border: none;
   border-radius: 8px;
   transition: 0.2s transform, 0.2s box-shadow;
   position: relative;
@@ -16,7 +13,13 @@
   color: inherit;
   box-shadow: var(--ds-shadow-md);
   transform: translateY(-4px);
-  cursor: pointer;
+}
+
+.card:focus-visible {
+  transition: none;
+  box-shadow: var(--dsc-focus-boxShadow);
+  outline: var(--dsc-focus-outline);
+  outline-offset: var(--dsc-focus-border-width);
 }
 
 .iconContainer {
@@ -72,5 +75,4 @@
 
 .desc {
   text-align: center;
-  line-height: 1.7em;
 }
