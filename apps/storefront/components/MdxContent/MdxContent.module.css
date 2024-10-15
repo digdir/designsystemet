@@ -9,6 +9,10 @@
 
   & p {
     margin-bottom: var(--ds-spacing-4);
+
+    & > strong {
+      margin: 0 !important;
+    }
   }
 
   & > h1,
