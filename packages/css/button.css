@@ -29,6 +29,11 @@
   text-align: inherit;
   text-decoration: none;
 
+  & svg,
+  & img {
+    flex-shrink: 0;
+  }
+
   &:focus-visible {
     position: relative; /* Place focusring on top */
   }
