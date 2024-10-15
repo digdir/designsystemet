@@ -48,6 +48,13 @@
   grid-column: span 4;
 }
 
+.SwitchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
 .toggleGroup {
   grid-column: span 4;
 }
@@ -60,7 +67,7 @@
   grid-column: span 6;
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-spacing-4);
 }
 
 .loaders {
@@ -96,9 +103,10 @@
 }
 
 .userLink {
-  margin-top: 20px;
+  margin-top: 16px;
   margin-left: auto;
   font-size: 16px;
+  display: block;
 }
 
 .userTitle {
@@ -182,6 +190,10 @@
   margin-bottom: 20px;
 }
 
+.helpCardHeading {
+  margin-bottom: 8px;
+}
+
 .tagList {
   display: flex;
   align-items: center;
@@ -200,6 +212,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-2);
+  margin-top: 12px;
 }
 
 .chips {
@@ -214,7 +227,12 @@
 }
 
 .textarea {
-  margin-top: 20px;
+  margin-top: 8px;
+}
+
+.textareaLabel {
+  margin-top: 24px;
+  font-size: 16px;
 }
 
 .comboHeading {

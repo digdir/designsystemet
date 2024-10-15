@@ -153,7 +153,7 @@ export const Components = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination>
+        <Pagination size='sm'>
           <Pagination.List>
             <Pagination.Item>
               <Pagination.Button {...pagination.prevButtonProps}>
@@ -179,19 +179,23 @@ export const Components = () => {
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1'>
-            <Heading size='2xs'>Sikkerhet og drift</Heading>
+            <Heading size='2xs' className={classes.helpCardHeading}>
+              Sikkerhet og drift
+            </Heading>
             <Paragraph>
               Most provide as with carried business are much better more the.
             </Paragraph>
           </Card>
           <Card color='brand2'>
-            <Heading size='2xs'>Skole og utdanning</Heading>
+            <Heading size='2xs' className={classes.helpCardHeading}>
+              Skole og utdanning
+            </Heading>
             <Paragraph>
               Most provide as with carried business are much better more the.
             </Paragraph>
           </Card>
           <Card color='brand3'>
-            <Heading size='2xs'>
+            <Heading size='2xs' className={classes.helpCardHeading}>
               <a href='#preview'>Mat og helse</a>
             </Heading>
             <Paragraph>
@@ -252,12 +256,14 @@ export const Components = () => {
           description='Her kan du justere på innstillingene dine'
           size='sm'
         >
-          <Switch defaultChecked>TV-visning</Switch>
-          <Switch size='sm'>Desktopvisning</Switch>
-          <Switch defaultChecked readOnly>
-            Tabletvisning
-          </Switch>
-          <Switch disabled>Mobilvisning</Switch>
+          <div className={classes.SwitchContainer}>
+            <Switch defaultChecked>TV-visning</Switch>
+            <Switch size='sm'>Desktopvisning</Switch>
+            <Switch defaultChecked readOnly>
+              Tabletvisning
+            </Switch>
+            <Switch disabled>Mobilvisning</Switch>
+          </div>
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
@@ -300,10 +306,12 @@ export const Components = () => {
           <Combobox.Option value='bergen'>Bergen</Combobox.Option>
           <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
         </Combobox>
-        <Label htmlFor='my-textarea'>Ekstra informasjon</Label>
+        <Label className={classes.textareaLabel} htmlFor='my-textarea'>
+          Ekstra informasjon
+        </Label>
         <Textarea
           className={classes.textarea}
-          cols={40}
+          cols={100}
           id='my-textarea'
           rows={3}
           size='sm'
