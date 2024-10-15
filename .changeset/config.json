@@ -22,7 +22,6 @@
     "storefront",
     "@repo/components",
     "@designsystemet/storybook",
-    "figma-plugin",
-    "@digdir/create-tokens"
+    "figma-plugin"
   ]
 }
