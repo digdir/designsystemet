@@ -29,6 +29,11 @@
   text-align: inherit;
   text-decoration: none;
 
+  & svg,
+  & img {
+    min-width: 1em;
+  }
+
   &:focus-visible {
     position: relative; /* Place focusring on top */
   }
