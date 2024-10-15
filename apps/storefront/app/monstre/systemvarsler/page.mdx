@@ -14,13 +14,13 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Systemvarsler',
-      date: '1. oktober 2024',
+      date: '15. oktober 2024',
     }}
   />
 );
 
 ## Innledning
-Systemvarsler brukes for å informere brukeren om feil i systemet eller viktige hendelser de bør være oppmerksomme på. I motsetning til validering er systemvarsler ikke knyttet til brukerens inndata, men informerer om endringer i systemet eller hendelser av interesse. I [artikkelen om brukerutløste feil](/monstre/feilmeldinger) tar vi for oss valideringsfeil relatert til brukerens inndata, mens denne artikkelen fokuserer på feil og varsler i systemet, som er avgjørende for å gi brukeren innsikt i systemets tilstand.
+Systemvarsler brukes for å informere brukeren om feil i systemet eller viktige hendelser brukeren bør være oppmerksomme på. I motsetning til validering er systemvarsler ikke knyttet til brukerens inndata, men informerer om endringer i systemet eller hendelser av interesse. I [artikkelen om brukerutløste feil](/monstre/feilmeldinger) tar vi for oss valideringsfeil relatert til brukerens inndata, mens denne artikkelen fokuserer på feil og varsler i systemet, som er avgjørende for å gi brukeren innsikt i systemets tilstand.
 
 Systemvarsler kan for eksempel komme i form av `alert`, `modal` eller `popover`. Måten vi kommuniserer varselet på avhenger av om varselet krever en handling fra brukerens side eller ikke. Passive varsler kan kommuniseres i form av `alert`, `toast` eller `badge`, mens varsler som krever handling bør være mer påtrengende, for eksempel gjennom `modal` eller `popover` som krever en handling fra brukeren for å forsvinne. Slike varsler ligner på valideringsfeil, men siden de ikke er utløst av brukerens egen handling, krever de et annet design.
 
@@ -28,6 +28,7 @@ I tillegg avhenger måten vi kommuniserer systemvarslene på av flere faktorer s
 - typen informasjon
 - alvorlighetsgraden av informasjonen
 - konteksten - tilhører varselet en spesifikk del av tjenesten eller systemet som helhet
+- er varselet for en planlagt eller en plutselig hendelse
 
 ## Språk
 
