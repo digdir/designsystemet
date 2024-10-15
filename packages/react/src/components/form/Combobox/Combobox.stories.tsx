@@ -525,9 +525,6 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
           setOptions([]);
           setValue([]);
         }}
-        style={{
-          marginBottom: '1rem',
-        }}
       >
         Clear Data
       </Button>

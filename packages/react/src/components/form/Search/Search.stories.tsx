@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Heading, Paragraph } from '../..';
+import { Button, Divider, Heading, Paragraph } from '../..';
 
 import { Search } from '.';
 
@@ -36,23 +36,17 @@ export const Controlled: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
+      <Search
+        label='Kontroller meg!'
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onClear={() => setValue('')}
+      />
+
+      <Divider />
+
       <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Search
-          label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onClear={() => setValue('')}
-        />
-        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
-      </div>
+      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
 };
