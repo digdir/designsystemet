@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Button: Add `min-width: 1em` to SVG and images
+Button: Fix SVG and images shrinking in flex containers
