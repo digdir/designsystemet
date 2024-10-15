@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
-import { Header } from '@repo/components';
+import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { Figma, Footer, Github, Header, Slack } from '@repo/components';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
@@ -20,6 +21,44 @@ const menu = [
   },
 ];
 
+const centerLinks = [
+  {
+    text: 'Om designsystemet',
+    url: '/grunnleggende/introduksjon/om-designsystemet',
+  },
+  {
+    text: 'Personvernerklæring',
+    url: '/grunnleggende/personvernerklaering',
+  },
+  {
+    text: 'Tilgjengelighetserklæring',
+    url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
+  },
+];
+
+const rightLinks = [
+  {
+    text: 'designsystem@digdir.no',
+    url: 'mailto:designsystem@digdir.no',
+    prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
+  },
+  {
+    text: 'Bli invitert til slack',
+    url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
+    prefix: <Slack />,
+  },
+  {
+    text: 'Github',
+    url: 'https://github.com/digdir/designsystemet',
+    prefix: <Github />,
+  },
+  {
+    text: 'Figma',
+    url: 'https://www.figma.com/@designsystemet',
+    prefix: <Figma />,
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +69,7 @@ export default function RootLayout({
       <body>
         <Header menu={menu} betaTag />
         {children}
+        <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
       </body>
     </html>
   );
