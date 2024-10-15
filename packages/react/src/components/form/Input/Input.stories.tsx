@@ -1,7 +1,14 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 
-import { Button, Heading, Label, Paragraph, ValidationMessage } from '../..';
+import {
+  Button,
+  Divider,
+  Heading,
+  Label,
+  Paragraph,
+  ValidationMessage,
+} from '../..';
 
 import { Input } from '.';
 
@@ -128,7 +135,6 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
 
   return (
     <>
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
       <Label htmlFor='input-controlled'>Kontroller meg!</Label>
       <Input
         id='input-controlled'
@@ -136,6 +142,10 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
         onChange={(e) => setValue(e.target.value)}
         {...args}
       />
+
+      <Divider />
+
+      <Paragraph>Du har skrevet inn: {value}</Paragraph>
       <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
     </>
   );

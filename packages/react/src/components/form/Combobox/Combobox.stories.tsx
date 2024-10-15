@@ -12,6 +12,7 @@ import { Switch } from '../Switch';
 
 import { data } from './data/data';
 
+import { Divider } from '../../Divider';
 import { Combobox } from './index';
 
 export default {
@@ -212,25 +213,6 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
-      <Paragraph>Value er: {value.join(', ')}</Paragraph>
-      <Switch
-        checked={multiple}
-        onChange={(e) => {
-          setMultiple(e.target.checked);
-          setValue([]);
-        }}
-      >
-        Multiple
-      </Switch>
-      <Button
-        onClick={() => {
-          setValue(['leikanger']);
-        }}
-        style={{ marginBottom: '1rem' }}
-      >
-        Sett verdi til Leikanger
-      </Button>
-
       <Combobox
         {...args}
         key={multiple ? 'multiple' : 'single'}
@@ -247,6 +229,28 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
+      <Switch
+        checked={multiple}
+        onChange={(e) => {
+          setMultiple(e.target.checked);
+          setValue([]);
+        }}
+      >
+        Multiple
+      </Switch>
+
+      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+      <Button
+        onClick={() => {
+          setValue(['leikanger']);
+        }}
+        style={{ marginBottom: '1rem' }}
+      >
+        Sett verdi til Leikanger
+      </Button>
     </>
   );
 };
@@ -398,6 +402,9 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
@@ -438,6 +445,9 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
@@ -490,18 +500,6 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          setLoading(true);
-          setOptions([]);
-          setValue([]);
-        }}
-        style={{
-          marginBottom: '1rem',
-        }}
-      >
-        Clear Data
-      </Button>
       <Combobox
         {...args}
         value={value}
@@ -518,6 +516,21 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
+      <Button
+        onClick={() => {
+          setLoading(true);
+          setOptions([]);
+          setValue([]);
+        }}
+        style={{
+          marginBottom: '1rem',
+        }}
+      >
+        Clear Data
+      </Button>
     </>
   );
 };
