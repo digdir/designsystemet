@@ -28,6 +28,7 @@
   padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
   text-align: inherit;
   text-decoration: none;
+  font-weight: var(--ds-font-weight-medium);
 
   & svg,
   & img {
@@ -49,6 +50,7 @@
     --dsc-button-size: var(--ds-sizing-10);
 
     @composes ds-body-text--short-sm from './base/base.css';
+    font-weight: var(--ds-font-weight-medium);
   }
 
   &[data-size='lg'] {
@@ -57,6 +59,7 @@
     --dsc-button-size: var(--ds-sizing-14);
 
     @composes ds-body-text--short-lg from './base/base.css';
+    font-weight: var(--ds-font-weight-medium);
   }
 
   &[data-icon] {
