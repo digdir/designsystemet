@@ -58,7 +58,7 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
         onChange={(e) => setValue(e.target.value)}
       />
 
-      <Divider />
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
         Du har skrevet inn: {value}

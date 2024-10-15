@@ -230,7 +230,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         ))}
       </Combobox>
 
-      <Divider />
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
       <Switch
         checked={multiple}

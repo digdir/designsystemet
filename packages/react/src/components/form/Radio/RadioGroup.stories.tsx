@@ -70,7 +70,7 @@ export const Controlled: StoryFn<typeof Radio> = () => {
         <Radio value='snadder'>Snadder</Radio>
       </Radio.Group>
 
-      <Divider />
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
         Du har valgt: {value}
