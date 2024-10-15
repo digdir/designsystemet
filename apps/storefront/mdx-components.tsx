@@ -25,14 +25,7 @@ import type { MDXComponents } from 'mdx/types';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    p: (props: ParagraphProps) => (
-      <Paragraph
-        {...props}
-        style={{
-          marginBottom: 'var(--ds-spacing-4)',
-        }}
-      />
-    ),
+    p: (props: ParagraphProps) => <Paragraph {...props} />,
     a: (props) => <Link {...(props as LinkProps)} />,
     ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
     ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,

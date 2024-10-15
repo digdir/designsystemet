@@ -22,7 +22,6 @@ export const metadata = {
   imgSrc='/img/Toolbox.svg'
   headingLevel='h2'
   imgWidth={1195}
-  imgHeight={270}
   link={{
     text: 'Les mer om designsystemet',
     href: '/grunnleggende/introduksjon/om-designsystemet',
@@ -36,7 +35,6 @@ export const metadata = {
   imgPosition='right'
   headingLevel='h2'
   imgWidth={1195}
-  imgHeight={270}
   fallbackImgSrc='/img/reduced-motion/Page.png'
   fallbackImgAlt='Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.'
 />
@@ -47,7 +45,6 @@ export const metadata = {
   videoSrc='/animations/Theme'
   headingLevel='h2'
   imgWidth={1195}
-  imgHeight={270}
   fallbackImgSrc='/img/reduced-motion/Theme.png'
   fallbackImgAlt='Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.'
 />
@@ -90,6 +87,7 @@ export const metadata = {
   imgSrc='/img/Logotest.svg'
   headingLevel='h2'
   imgWidth='small'
+  className="ds-logo-image"
   buttons={[
     {
       text: 'Bli med på Slack',
@@ -114,6 +112,10 @@ export const metadata = {
   {`
 header:first-of-type {
   background-color: transparent;
+}
+
+.ds-logo-image img {
+  width: 85%;
 }
 `}
 </style>

@@ -1,8 +1,7 @@
 import { Container } from '@repo/components';
 import type * as React from 'react';
 
-import { ImageSection, MdxContent } from '../../components';
-import type { ImageSectionProps } from '../../components';
+import { MdxContent } from '../../components';
 import {
   Banner,
   BannerHeading,
@@ -24,7 +23,6 @@ interface NavPageLayoutProps {
 }
 
 interface NavPageLayoutData {
-  imageSection: ImageSectionProps;
   headerColor?: 'red' | 'blue';
 }
 
@@ -37,19 +35,6 @@ const NavPageLayout = ({ content, data, banner }: NavPageLayoutProps) => {
           <BannerHeading>{banner.title}</BannerHeading>
           {banner.ingress && <BannerIngress>{banner.ingress}</BannerIngress>}
         </Banner>
-      )}
-      {data && (
-        <ImageSection
-          imgSrc={data.imageSection.imgSrc}
-          imgAlt={data.imageSection.imgAlt}
-          backgroundColor={data.imageSection.backgroundColor}
-          imgHeight={220}
-          imgWidth={220}
-          title={data.imageSection.title}
-          description={data.imageSection.description}
-          link={data.imageSection.link}
-          imgPosition='right'
-        ></ImageSection>
       )}
       <div className={classes.content}>
         <Container>
