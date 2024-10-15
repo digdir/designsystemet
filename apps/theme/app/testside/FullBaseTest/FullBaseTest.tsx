@@ -136,7 +136,14 @@ export const FullBaseTest = () => {
       color = getBaseColor(color);
       lightness = lightness <= 30 ? 70 : 100 - lightness;
     }
-    const multiplier = lightness <= 30 ? -8 : 8;
+
+    // Default multiplier
+    let multiplier = 7;
+
+    // If lightness is in the range of 0-30 or 65-80 reverse the multiplier
+    if (lightness <= 30 || (lightness >= 48.5 && lightness <= 65)) {
+      multiplier = -7;
+    }
 
     const baseDefault = blueColors[lightness];
     const baseHover = blueColors[lightness - multiplier];

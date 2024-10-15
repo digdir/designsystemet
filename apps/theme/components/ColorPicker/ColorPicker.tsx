@@ -1,5 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Popover } from '@digdir/designsystemet-react';
+import { Link, Popover } from '@digdir/designsystemet-react';
 import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx/lite';
@@ -40,11 +40,49 @@ export const ColorPicker = ({
     setColor(defaultColor);
   }, [defaultColor]);
 
+  const getStatus = () => {
+    const popoverId = useId();
+    return (
+      <div>
+        {colorError === 'decorative' && (
+          <button
+            popovertarget={popoverId}
+            className={cl(
+              classes.status,
+              'ds-focus',
+              colorError === 'decorative' && classes.statusYellow,
+            )}
+          >
+            <ExclamationmarkIcon title='Viktig informasjon om fargen' />
+          </button>
+        )}
+        <Popover
+          style={{ width: '900px' }}
+          id={popoverId}
+          placement='top'
+          size='sm'
+          variant={colorError === 'none' ? 'default' : 'warning'}
+        >
+          <div>
+            {colorError === 'decorative' && (
+              <div>
+                Fargen har mindre enn 3:1 kontrast mot bakgrunnsfargene. <br />{' '}
+                <br /> Les mer om hva dette betyr på <br />
+                <Link href='slik-bruker-du-verktoyet'>
+                  {' '}
+                  Slik bruker du verktøyet
+                </Link>{' '}
+                siden.
+              </div>
+            )}
+          </div>
+        </Popover>
+      </div>
+    );
+  };
+
   return (
-    <div
-      ref={ref}
-      className={cl(classes.whole, disabled && classes.disabled)}
-    >
+    <div ref={ref} className={cl(classes.whole, disabled && classes.disabled)}>
       <div className={classes.picker}>
         <div className={classes.label}>
           <span
@@ -52,6 +90,7 @@ export const ColorPicker = ({
           >
             {label}
           </span>
+          {getStatus()}
         </div>
         <button
           className={cl(classes.container, 'ds-focus')}

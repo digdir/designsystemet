@@ -1,11 +1,5 @@
 'use client';
-import {
-  Alert,
-  Heading,
-  Ingress,
-  Link,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+import { Alert, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
 
 import classes from './page.module.css';
@@ -19,12 +13,12 @@ export default function Home() {
             <Heading level={1} size='lg' className={classes.title}>
               Slik bruker du verktøyet
             </Heading>
-            <Ingress className={classes.ingress}>
-              Her vil du lære hvordan du kan bruke teambyggeren til å bygge ditt
+            <Paragraph className={classes.ingress}>
+              Her vil du lære hvordan du bruke temabyggeren til å bygge ditt
               eget tema. Du vil også finne anbefalinger fra designsystemet på
               fargevalg og informasjon rundt feilmeldinger som dukker opp i
               verktøyet.
-            </Ingress>
+            </Paragraph>
 
             <Alert size='md'>
               <Paragraph>
@@ -39,9 +33,8 @@ export default function Home() {
               Valg av farger
             </Heading>
             <Paragraph>
-              Når du skal velge en farge i verktøyet er det enkelte ting det er
-              viktig å være klar over. Det gjelder spesielt brukten av{' '}
-              <code>Base</code> fargene.
+              Når du skal velge en farge i verktøyet så er det enkelte ting det
+              er viktig å være klar over.
             </Paragraph>
 
             <Heading level={3} size='sm'>
@@ -51,7 +44,7 @@ export default function Home() {
               Accent fargen blir brukt som farge for å lyse opp viktige
               elementer på en side. Det er derfor viktig at denne fargen er
               sterk nok for å skille seg tydelig ut fra bakgrunnen.
-              Designsystemet anbefaler at fargen man velger har minst 4.5:1
+              Designsystemet anbefaler at fargen man velger har minst 3:1
               kontrast mot bakgrunnsfargene for å både støtte WCAG sitt{' '}
               <a href='https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva-aa/145'>
                 1.4.11 Kontrast for ikke-tekstlig innhold{' '}
@@ -63,7 +56,7 @@ export default function Home() {
               Neutral fargen
             </Heading>
             <Paragraph>
-              Vi anbefaler minst 4.5:1 kontrast mot bakgrunnsfargene for neutral
+              Vi anbefaler minst 3:1 kontrast mot bakgrunnsfargene for neutral
               fargen også.{' '}
             </Paragraph>
 
@@ -110,27 +103,6 @@ export default function Home() {
               <code>Base</code> farger på viktige elementer på siden. Det er
               viktig å være klar over dette om man velger å bruke{' '}
               <code>Base</code> fargene til å lage sine egne ting.
-            </Paragraph>
-            <Heading level={3} size='sm'>
-              Kontrast-fargen fungerer ikke på alle base fargene
-            </Heading>
-
-            <img src='img/test2.png' alt='' />
-
-            <Paragraph>
-              Verktøyet genererer 2 kontrast farger ({' '}
-              <code>Contrast-default</code> og <code>Contrast-subtle</code> )
-              basert på fargen man har valgt i verktøyet. En lys base farge vil
-              gjøre kontrastfargene mørke og omvendt.{' '}
-              <code>Contrast-default</code> fargen skal fungere som tekstfarge
-              oppå alle 3 base farger man velger med en kontrast på minst 4.5:1
-              for å støtte WCAG sitt AA krav. I eksempel 1 i bildet over klarer
-              ikke verktøyet å finne en hvit eller svart kontrast-farge som
-              fungerer på alle 3 base fargene. Verktøyet velger da ut en
-              kontrastfarge som fungerer på <code>Base Default</code> og
-              prioriterer <code>Base Hover</code> og <code>Base Active</code>{' '}
-              mindre. Feilmeldingen i verktøyet vil gi informasjon om hvilke
-              base farger kontrastfargen støtter.
             </Paragraph>
           </div>
         </Container>

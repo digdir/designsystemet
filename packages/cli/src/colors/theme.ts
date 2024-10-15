@@ -48,15 +48,20 @@ const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa'
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
 
-  const multiplier = colorLightness <= 30 ? -8 : 8;
+  let modifier = 8;
+
+  //
+  if (colorLightness <= 30) {
+    modifier = -modifier;
+  }
+  // 49 is when the contrast flips from white to black, 65 is when the contrast flips from black to white
+  if (colorLightness >= 49 && colorLightness <= 65) {
+    modifier = -modifier;
+  }
   const baseDefaultContrast = getContrastFromLightness(colorLightness, color, leoBackgroundColor.colorKeys[0]);
-  const baseHoverContrast = getContrastFromLightness(
-    colorLightness - multiplier,
-    color,
-    leoBackgroundColor.colorKeys[0],
-  );
+  const baseHoverContrast = getContrastFromLightness(colorLightness - modifier, color, leoBackgroundColor.colorKeys[0]);
   const baseActiveContrast = getContrastFromLightness(
-    colorLightness - multiplier * 2,
+    colorLightness - modifier * 2,
     color,
     leoBackgroundColor.colorKeys[0],
   );

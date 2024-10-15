@@ -106,7 +106,7 @@ export const ThemeToolbar = ({
           }}
         />
 
-        <div className={classes.select}>
+        {/* <div className={classes.select}>
           <Label htmlFor='select-contrast'>Kontrastnivå</Label>
           <Select
             id='select-contrast'
@@ -120,7 +120,9 @@ export const ThemeToolbar = ({
             <Select.Option value='aa'>AA</Select.Option>
             <Select.Option value='aaa'>AAA (WIP)</Select.Option>
           </Select>
-        </div>
+        </div> */}
+
+        {/*
         <div className={classes.select}>
           <Label htmlFor='select-border-radius'>Border radius</Label>
           <Select
@@ -145,6 +147,7 @@ export const ThemeToolbar = ({
             ))}
           </Select>
         </div>
+        */}
         <Tooltip content={toolTipText} portal={false}>
           <Button
             className={classes.shareBtn}
@@ -164,9 +167,6 @@ export const ThemeToolbar = ({
           brand3Color={brandThreeTheme.color}
           borderRadius={borderRadius}
         />
-      </div>
-      <div className={classes.banner}>
-        ff
       </div>
     </div>
   );

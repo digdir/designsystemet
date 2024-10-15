@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
 import { Header } from '@repo/components';
 
 export const metadata: Metadata = {
