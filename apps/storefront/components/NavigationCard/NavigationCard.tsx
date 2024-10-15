@@ -1,5 +1,5 @@
 'use client';
-import { Heading } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import Link from 'next/link';
 import type * as React from 'react';
@@ -26,17 +26,22 @@ const NavigationCard = ({
   level = 3,
 }: NavigationCardProps) => {
   return (
-    <Link
-      href={url}
-      prefetch={false}
+    <Card
       className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
+      asChild
     >
-      <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
-      <Heading level={level} size='sm' className={classes.title}>
-        {title}
-      </Heading>
-      <div className={cl(classes.desc, 'ds-paragraph-sm')}>{description}</div>
-    </Link>
+      <Link href={url} prefetch={false}>
+        <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
+
+        <Heading level={level} size='sm' className={classes.title}>
+          {title}
+        </Heading>
+
+        <Paragraph size='sm' variant='long' className={classes.desc}>
+          {description}
+        </Paragraph>
+      </Link>
+    </Card>
   );
 };
 

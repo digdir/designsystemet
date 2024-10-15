@@ -1,28 +1,26 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
-export type ModalContentProps = {
+export type ModalBlockProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
   asChild?: boolean;
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
-export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
-  ({ asChild, className, ...rest }, ref) => {
+export const ModalBlock = forwardRef<HTMLDivElement, ModalBlockProps>(
+  function ModalBlock({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'div';
 
     return (
       <Component
+        className={cl('ds-modal__block', className)}
         ref={ref}
-        className={cl('ds-modal__content', className)}
         {...rest}
       />
     );
   },
 );
-
-ModalContent.displayName = 'ModalContent';

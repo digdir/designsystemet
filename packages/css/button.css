@@ -9,8 +9,8 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
-  @composes ds-body-text--short-md from './utilities.css';
-  @composes ds-focus from './utilities.css';
+  @composes ds-body-text--short-md from './base/base.css';
+  @composes ds-focus from './base/base.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -29,6 +29,11 @@
   text-align: inherit;
   text-decoration: none;
 
+  & svg,
+  & img {
+    flex-shrink: 0;
+  }
+
   &:focus-visible {
     position: relative; /* Place focusring on top */
   }
@@ -43,7 +48,7 @@
     --dsc-button-padding-inline: var(--ds-spacing-3);
     --dsc-button-size: var(--ds-sizing-10);
 
-    @composes ds-body-text--short-sm from './utilities.css';
+    @composes ds-body-text--short-sm from './base/base.css';
   }
 
   &[data-size='lg'] {
@@ -51,7 +56,7 @@
     --dsc-button-padding-inline: var(--ds-spacing-5);
     --dsc-button-size: var(--ds-sizing-14);
 
-    @composes ds-body-text--short-lg from './utilities.css';
+    @composes ds-body-text--short-lg from './base/base.css';
   }
 
   &[data-icon] {
@@ -64,8 +69,8 @@
   }
 
   /**
-    * Variants
-    */
+   * Variants
+   */
   &[data-variant='secondary'] {
     --dsc-button-background--active: var(--ds-color-accent-surface-hover);
     --dsc-button-background--hover: var(--ds-color-accent-surface-default);
@@ -87,8 +92,8 @@
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='neutral'] {
     --dsc-button-background--active: var(--ds-color-neutral-base-active);
     --dsc-button-background--hover: var(--ds-color-neutral-base-hover);
@@ -142,8 +147,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
 
   @media (hover: hover) and (pointer: fine) {
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */
