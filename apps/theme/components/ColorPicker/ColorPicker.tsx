@@ -66,8 +66,9 @@ export const ColorPicker = ({
           <div>
             {colorError === 'decorative' && (
               <div>
-                Fargen har mindre enn 3:1 kontrast mot bakgrunnsfargene. <br />{' '}
-                <br /> Les mer om hva dette betyr på <br />
+                Fargen har mindre enn 3:1 kontrast mot bakgrunnsfargene. I slike
+                tilfeller er det noen viktige hensyn du bør være klar over.{' '}
+                <br /> <br /> Les mer om hva dette betyr inne på
                 <Link href='slik-bruker-du-verktoyet'>
                   {' '}
                   Slik bruker du verktøyet
