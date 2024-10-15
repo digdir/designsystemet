@@ -142,11 +142,14 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
         onChange={(e) => setValue(e.target.value)}
         {...args}
       />
+      <div>
+        <Divider />
 
-      <Divider />
-
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
+        <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+          Du har skrevet inn: {value}
+        </Paragraph>
+        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
+      </div>
     </>
   );
 };

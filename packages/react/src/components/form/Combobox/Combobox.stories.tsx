@@ -242,12 +242,13 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         Multiple
       </Switch>
 
-      <Paragraph>Value er: {value.join(', ')}</Paragraph>
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Value er: {value.join(', ')}
+      </Paragraph>
       <Button
         onClick={() => {
           setValue(['leikanger']);
         }}
-        style={{ marginBottom: '1rem' }}
       >
         Sett verdi til Leikanger
       </Button>

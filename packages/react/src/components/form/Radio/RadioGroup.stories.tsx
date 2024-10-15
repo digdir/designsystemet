@@ -72,7 +72,9 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
       <Divider />
 
-      <Paragraph>Du har valgt: {value}</Paragraph>
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har valgt: {value}
+      </Paragraph>
       <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
         <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
         <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>

@@ -92,7 +92,9 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
 
       <Divider />
 
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har skrevet inn: {value}
+      </Paragraph>
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
