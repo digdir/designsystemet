@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 
 import { omit } from '../../../utilities';
 import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
+import { Input } from '../Input';
 import type { FormFieldProps } from '../useFormField';
 
 import { useRadio } from './useRadio';
@@ -17,57 +17,30 @@ export type RadioProps = {
 } & Omit<FormFieldProps, 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, className, style, ...rest } = props;
-  const {
-    inputProps,
-    descriptionId,
-    hasError,
-    size = 'md',
-    readOnly,
-  } = useRadio(props);
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+  function Radio(props, ref) {
+    const { children, description, className, style, ...rest } = props;
+    const { inputProps, descriptionId, size = 'md' } = useRadio(props);
 
-  return (
-    <Paragraph asChild size={size}>
-      <div
-        className={cl(
-          'ds-radio',
-          `ds-radio--${size}`,
-          hasError && `ds-radio--error`,
-          readOnly && `ds-radio--readonly`,
-          className,
-        )}
-        style={style}
-      >
-        <input
-          className={'ds-radio__input'}
+    return (
+      <div className={cl('ds-radio', className)} data-size={size} style={style}>
+        <Input
           disabled={inputProps.disabled}
           ref={ref}
           {...omit(['size', 'error'], rest)}
           {...inputProps}
         />
         {children && (
-          <>
-            <Label
-              className={cl('ds-radio__label')}
-              htmlFor={inputProps.id}
-              size={size}
-              weight='regular'
-            >
-              <span>{children}</span>
-            </Label>
-            {description && (
-              <Paragraph asChild size={size}>
-                <div id={descriptionId} className={'ds-radio__description'}>
-                  {description}
-                </div>
-              </Paragraph>
-            )}
-          </>
+          <Label htmlFor={inputProps.id} size={size} weight='regular'>
+            {children}
+          </Label>
+        )}
+        {children && description && (
+          <div id={descriptionId} className={'ds-radio__description'}>
+            {description}
+          </div>
         )}
       </div>
-    </Paragraph>
-  );
-});
-
-Radio.displayName = 'Radio';
+    );
+  },
+);

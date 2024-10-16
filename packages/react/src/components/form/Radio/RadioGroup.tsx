@@ -35,7 +35,7 @@ export type RadioGroupProps = {
 } & Omit<FieldsetProps, 'onChange'>;
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
-  (
+  function RadioGroup(
     {
       onChange,
       children,
@@ -50,7 +50,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const nameId = useId();
 
     return (
@@ -71,11 +71,9 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
           }}
         >
           <div
-            className={cl(
-              'ds-radio__group',
-              `ds-radio__group--${size}`,
-              inline && 'ds-radio__group--horizontal',
-            )}
+            className={cl('ds-radio__group', className)}
+            data-inline={inline || undefined}
+            data-size={size}
           >
             {children}
           </div>
@@ -84,5 +82,3 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
     );
   },
 );
-
-RadioGroup.displayName = 'RadioGroup';
