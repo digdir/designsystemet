@@ -16,13 +16,41 @@ export const CssVariables: React.FC<CssVariablesProps> = ({ children }) => {
   useEffect(() => {
     const elem = targetRef.current;
     if (!elem) return;
+
+    /* Find the variable that has this value */
+    const findUsedVariable = (
+      value: string,
+      styles: StylePropertyMapReadOnly,
+    ) => {
+      for (const [prop, val] of Array.from(styles)) {
+        if (val.toString() === value) {
+          return prop;
+        }
+      }
+      return value;
+    };
+
+    const findUsedVariableFirefox = (
+      value: string,
+      styles: CSSStyleDeclaration,
+    ) => {
+      for (let i = 0; i < styles.length; i++) {
+        const propertyName = styles[i];
+        if (styles.getPropertyValue(propertyName) === value) {
+          return propertyName;
+        }
+      }
+      return value;
+    };
+
     const res: { [key: string]: string } = {};
     if ('computedStyleMap' in elem) {
       // Chrome
       const styles = elem.computedStyleMap();
+      console.log(styles);
       for (const [prop, val] of Array.from(styles)) {
         if (prop.startsWith('--dsc')) {
-          res[prop] = val.toString();
+          res[prop] = findUsedVariable(val.toString(), styles);
         }
       }
     } else {
@@ -32,7 +60,7 @@ export const CssVariables: React.FC<CssVariablesProps> = ({ children }) => {
         const propertyName = styles[i];
         if (propertyName.startsWith('--dsc')) {
           const value = styles.getPropertyValue(propertyName);
-          res[propertyName] = value;
+          res[propertyName] = findUsedVariableFirefox(value, styles);
         }
       }
     }
