@@ -112,6 +112,8 @@ describe('Modal', () => {
     expect(screen.getByText(children)).toBeInTheDocument();
   });
 
+  /* We can't test the close function, but once vitest supports it, we can */
+
   /* it('should call onClose when the modal is closed with ESC', async () => {
     const onClose = vi.fn();
     await render({ open: true, onClose });
