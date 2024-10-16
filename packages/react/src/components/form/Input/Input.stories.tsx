@@ -683,6 +683,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input
+        {...args}
+        size='sm'
+        name='sm-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='sm'>
       <Input {...args} size='sm' name='sm-readonly' readOnly />
       Read-only
@@ -710,6 +724,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='md'>
+      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='md'>
+      <Input
+        {...args}
+        size='md'
+        name='md-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='md'>
       <Input {...args} size='md' name='md-readonly' readOnly />
       Read-only
@@ -737,6 +765,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input
+        {...args}
+        size='lg'
+        name='lg-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='lg'>
       <Input {...args} size='lg' name='lg-readonly' readOnly />
       Read-only
