@@ -1690,18 +1690,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@digdir/create-tokens@workspace:packages/create-tokens":
-  version: 0.0.0-use.local
-  resolution: "@digdir/create-tokens@workspace:packages/create-tokens"
-  dependencies:
-    "@commander-js/extra-typings": "npm:^12.1.0"
-    commander: "npm:^12.1.0"
-    tsx: "npm:^4.16.5"
-  bin:
-    create-tokens: index.js
-  languageName: unknown
-  linkType: soft
-
 "@digdir/designsystemet-css@workspace:^, @digdir/designsystemet-css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-css@workspace:packages/css"

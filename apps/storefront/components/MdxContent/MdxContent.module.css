@@ -1,144 +1,171 @@
 .content {
-  width: 100%;
-}
+  & > *:first-child {
+    margin-top: 0;
+  }
 
-.content p,
-.content h2,
-.content h3,
-.content h4,
-.content ul,
-.content ol,
-.content [class^='ds-accordion'],
-.content [class^='ds-card'] {
-  max-width: 740px;
-}
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 
-/* A <p> tag that comes directly after <h1> will be treated as an ingress */
-.content h1 + p {
-  font: var(--ds-typography-ingress-md);
-  margin-top: 0;
-  margin-bottom: var(--ds-spacing-8);
-}
+  & p {
+    margin-bottom: var(--ds-spacing-4);
 
-/* Heading styling with anchor link */
-.content > h1,
-.content > h2,
-.content > h3,
-.content > h4 {
-  position: relative;
-  padding-left: 26px;
-  margin-left: -26px;
-}
+    & > strong {
+      margin: 0 !important;
+    }
+  }
 
-.content > h2,
-.content > h3,
-.content > h4 {
-  margin-top: var(--ds-spacing-10);
-  margin-bottom: var(--ds-spacing-3);
-}
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4 {
+    position: relative;
+    padding-left: 26px;
+    margin-left: -26px;
+  }
 
-/* Anchor link styling */
-.content > h1 a,
-.content > h2 a,
-.content > h3 a,
-.content > h4 a {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 0;
-  color: var(--ds-color-neutral-text-subtle);
-  opacity: 0;
-  transition: 0.08s all;
-}
+  & > h2,
+  & > h3,
+  & > h4 {
+    margin-top: var(--ds-spacing-10);
+    margin-bottom: var(--ds-spacing-3);
+  }
 
-/* Anchor link styling for <h1> */
-.content > h1 a {
-  height: 24px;
-  width: 24px;
-  margin-top: -2px;
-  left: -4px;
-}
+  /* Anchor link styling */
+  & > h1 a,
+  & > h2 a,
+  & > h3 a,
+  & > h4 a {
+    width: fit-content;
+    height: 1em;
+    font-size: 0.7em;
+    position: absolute;
+    color: var(--ds-color-neutral-text-subtle);
+    opacity: 0;
+    transition: 0.08s all;
+    display: grid;
+    place-items: center;
+    padding: 0 0.2em;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 
-/* Anchor links appear on heading hover */
-.content > h1:hover a,
-.content > h2:hover a,
-.content > h3:hover a,
-.content > h4:hover a {
-  opacity: 1;
-}
+    & svg {
+      margin: 0;
+    }
+  }
 
-.content img {
-  width: 100%;
-  margin: var(--ds-spacing-5) 0;
-  border-radius: var(--ds-border-radius-md);
-  box-shadow: var(--ds-shadow-md);
-}
+  /* Anchor link styling for <h1> */
+  & > h1 a {
+    height: 24px;
+    width: 24px;
+    margin-top: -2px;
+    left: -4px;
+  }
 
-.content strong {
-  display: inline-block;
-  margin-top: var(--ds-spacing-1);
-  font-weight: 500;
-}
+  /* Anchor links appear on heading hover */
+  & > h1:hover a,
+  & > h2:hover a,
+  & > h3:hover a,
+  & > h4:hover a {
+    opacity: 1;
+  }
 
-.content > ul > li,
-.content > ol > li {
-  font: var(--ds-typography-paragraph-md);
-  line-height: 1.9em;
-}
+  & > ul > li,
+  & > ol > li {
+    font: var(--ds-typography-paragraph-md);
+    line-height: 1.9em;
+  }
 
-.content > ul > li > ol,
-.content > ol > li > ul {
-  margin-top: var(--ds-spacing-1);
-}
+  & > ul > li > ol,
+  & > ol > li > ul {
+    margin-top: var(--ds-spacing-1);
+  }
 
-.content > p > a:hover,
-.content > ul > li a:hover,
-.content > ol > li a:hover {
-  text-decoration-thickness: 2px;
-}
+  & > p > a:hover,
+  & > ul > li a:hover,
+  & > ol > li a:hover {
+    text-decoration-thickness: 2px;
+  }
 
-.content pre {
-  background-color: var(--ds-color-neutral-background-subtle);
-  padding: var(--ds-spacing-5);
-  margin: var(--ds-spacing-7) 0;
-  border-radius: var(--ds-border-radius-md);
-}
+  /* A <p> tag that comes directly after <h1> will be treated as an ingress */
+  & > h1 + p {
+    font: var(--ds-body-long-md-font-size);
+    margin-top: 0;
+    margin-bottom: var(--ds-spacing-8);
+  }
 
-.content > iframe {
-  box-shadow: var(--ds-shadow-md);
-  margin: var(--ds-spacing-5);
-  border-radius: var(--ds-border-radius-md);
-}
+  & > iframe {
+    box-shadow: var(--ds-shadow-md);
+    margin: var(--ds-spacing-5);
+    border-radius: var(--ds-border-radius-md);
+  }
 
-.content > table {
-  width: 100%;
-  margin: var(--ds-spacing-7) 0;
-  border-collapse: collapse;
-}
+  & > table {
+    width: 100%;
+    margin: var(--ds-spacing-7) 0;
+    border-collapse: collapse;
+  }
 
-.content p code,
-.content ul code,
-.content ol code {
-  padding: 0.2em 0.5em;
-  margin: 1px;
-  font-size: 0.9em;
-  white-space: break-spaces;
-  background-color: var(--ds-color-neutral-surface-default);
-  border-radius: var(--ds-border-radius-md);
-}
+  & > img {
+    width: 100%;
+    margin: var(--ds-spacing-5) 0;
+    border-radius: var(--ds-border-radius-md);
+    box-shadow: var(--ds-shadow-md);
+  }
 
-.content > *:first-child {
-  margin-top: 0;
-}
+  & > code,
+  & > p code {
+    padding: 0.2em 0.5em;
+    margin: 1px;
+    font-size: 0.9em;
+    white-space: break-spaces;
+    background-color: var(--ds-color-neutral-surface-default);
+    border-radius: var(--ds-border-radius-md);
+  }
 
-.content > *:last-child {
-  margin-bottom: 0;
-}
+  & > pre,
+  & > p pre {
+    background-color: var(--ds-color-neutral-background-subtle);
+    padding: var(--ds-spacing-5);
+    margin: var(--ds-spacing-7) 0;
+    border-radius: var(--ds-border-radius-md);
+  }
 
-.content [class~='ds-card'] p {
-  margin: 0;
-}
+  & > div + p {
+    margin-top: var(--ds-spacing-5);
+  }
 
-.content [class~='ds-card'] {
-  margin: var(--ds-spacing-3) 0;
+  & *[data-unstyled] {
+    & p {
+      margin: unset;
+    }
+  }
+
+  & *:not([data-unstyled]) {
+    & p,
+    & h2,
+    & h3,
+    & h4,
+    & ul,
+    & ol,
+    & [class^='ds-accordion'],
+    & [class^='ds-card'] {
+      max-width: 740px;
+    }
+
+    & img {
+      width: 100%;
+      margin: var(--ds-spacing-5) 0;
+      border-radius: var(--ds-border-radius-md);
+      box-shadow: var(--ds-shadow-md);
+    }
+
+    &:is(strong),
+    & strong {
+      display: inline-block;
+      margin-top: var(--ds-spacing-1);
+      font-weight: 500;
+    }
+  }
 }
