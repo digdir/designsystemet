@@ -19,7 +19,7 @@
     "@repo/components": "workspace:^",
     "chroma-js": "^2.6.0",
     "clsx": "^2.1.1",
-    "next": "^14.2.5",
+    "next": "^14.2.10",
     "react": "^18.3.1",
     "react-color": "^2.19.3",
     "react-dom": "^18.3.1",
