@@ -31,6 +31,16 @@ HTMLDialogElement.prototype.close = vi.fn(function mock(
   this: HTMLDialogElement,
 ) {
   this.open = false;
+  /* dispatch close event */
+  this.dispatchEvent(new Event('close'));
+});
+
+/* add support for checking ESC key */
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    const dialog = document.querySelector('dialog');
+    dialog?.close();
+  }
 });
 
 // Add support for dialog form method

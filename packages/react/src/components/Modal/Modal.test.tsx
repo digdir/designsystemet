@@ -114,11 +114,11 @@ describe('Modal', () => {
 
   /* We can't test the close function, but once vitest supports it, we can */
 
-  /* it('should call onClose when the modal is closed with ESC', async () => {
+  it('should call onClose when the modal is closed with ESC', async () => {
     const onClose = vi.fn();
     await render({ open: true, onClose });
     const dialog = screen.getByRole('dialog');
-    await act(async () => await userEvent.type(dialog, '{esc}'));
+    await act(async () => await userEvent.type(dialog, '{Escape}'));
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
@@ -130,5 +130,5 @@ describe('Modal', () => {
     await act(async () => await userEvent.click(closeButton));
 
     expect(onClose).toHaveBeenCalledTimes(1);
-  }); */
+  });
 });
