@@ -7,7 +7,6 @@
     "storefront": "0.1.0",
     "theme": "0.1.0",
     "@digdir/designsystemet": "0.1.0-alpha.19",
-    "@digdir/create-tokens": "0.1.0-alpha.7",
     "@digdir/designsystemet-css": "0.11.0-alpha.9",
     "@digdir/designsystemet-react": "1.0.0-rc.13",
     "@digdir/designsystemet-theme": "1.0.0-rc.13",
