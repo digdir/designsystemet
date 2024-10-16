@@ -147,12 +147,7 @@
   }
 
   & :not([data-unstyled]) {
-    &:is(p),
-    &:is(h2),
-    &:is(h3),
-    &:is(h4),
-    &:is(ul),
-    &:is(ol),
+    &:is(p, h2, h3, h4, ul, ol),
     &[class~='ds-accordion'],
     &[class~='ds-card'] {
       max-width: 740px;
