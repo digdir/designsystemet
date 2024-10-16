@@ -146,17 +146,6 @@
     }
   }
 
-  /*   & > p,
-  & > h2,
-  & > h3,
-  & > h4,
-  & > ul,
-  & > ol,
-  & > [class~='ds-accordion'],
-  & > [class~='ds-card'] {
-    max-width: 740px;
-  } */
-
   & :not([data-unstyled]) {
     &:is(p),
     &:is(h2),
