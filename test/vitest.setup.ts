@@ -15,6 +15,11 @@ class ResizeObserver {
 }
 window.ResizeObserver = ResizeObserver;
 
+/**
+ * TODO: Remove mock of Dialog element when jsdom supports it
+ * issue: https://github.com/jsdom/jsdom/issues/3294
+ */
+
 HTMLDialogElement.prototype.show = vi.fn(function mock(
   this: HTMLDialogElement,
 ) {
