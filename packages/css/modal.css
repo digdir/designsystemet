@@ -22,7 +22,9 @@
 
   &::backdrop {
     animation: fade-in 300ms ease-in-out;
-    background: var(--dsc-modal-backdrop-background);
+    /* we include a fallback color because ::backdrop didn't inherit
+       custom properties in Chrome until version 122 (mid-2024) */
+    background: var(--dsc-modal-backdrop-background, rgb(0 0 0 / 0.5));
   }
 
   &[open] {
