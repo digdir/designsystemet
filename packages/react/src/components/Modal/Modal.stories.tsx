@@ -151,7 +151,7 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
   return (
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} onClose={() => setInput('')}>
+      <Modal ref={modalRef} onClose={() => setInput('')} backdropClose>
         <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal med skjema
         </Heading>
