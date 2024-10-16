@@ -12,7 +12,7 @@
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
-  --dsc-input-color--readonly: var(--ds-color-neutral-border-default);
+  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
   --dsc-input-size--switch: var(--ds-sizing-7);
