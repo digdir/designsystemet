@@ -1661,6 +1661,7 @@ __metadata:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
+    "@radix-ui/react-slot": "npm:^1.1.0"
     "@storybook/addon-a11y": "patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch"
     "@storybook/addon-essentials": "npm:^8.3.4"
     "@storybook/addon-interactions": "npm:^8.3.4"
