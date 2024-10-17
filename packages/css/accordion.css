@@ -1,6 +1,6 @@
 .ds-accordion-group {
   --dsc-accordion-background: var(--ds-color-neutral-background-default);
-  --dsc-accordion-border-radius: min(1rem, var(--ds-border-radius-md));
+  --dsc-accordion-border-radius: var(--ds-border-radius-md);
   --dsc-accordion-border: 1px solid var(--ds-color-neutral-border-subtle);
   --dsc-accordion-chevron-gap: var(--ds-spacing-2);
   --dsc-accordion-chevron-size: var(--ds-spacing-6);
