@@ -9,7 +9,7 @@ import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
-import type { PermutatedThemes } from './utils/permutateThemes.js';
+import type { GroupedThemes, PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -63,19 +63,16 @@ const outputColorReferences = (token: TransformedToken) => {
 
 export type IsCalculatedToken = (token: TransformedToken, options?: Config) => boolean;
 
-export const permutateThemes = ($themes: ThemeObject[]) =>
-  permutateThemes_($themes, {
+export const permutateThemes = (groupedThemes: GroupedThemes) =>
+  permutateThemes_(groupedThemes, {
     separator,
   });
 
-type GetConfig = (options: {
-  mode?: string;
-  theme?: string;
-  semantic?: string;
-  size?: string;
-  typography?: string;
-  outPath?: string;
-}) => Config;
+type GetConfig = (
+  options: PermutationProps & {
+    outPath?: string;
+  },
+) => Config;
 
 export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
@@ -262,7 +259,7 @@ type getConfigs = (
   tokensDir: string,
   themes: PermutatedThemes,
   logVerbosity: LogConfig['verbosity'],
-) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
+) => (PermutationProps & { config: Config })[];
 
 export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
   permutatedThemes
