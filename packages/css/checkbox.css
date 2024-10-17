@@ -4,7 +4,7 @@
   --dsc-checkbox-background: var(--ds-color-neutral-background-default);
   --dsc-checkbox-border-color: var(--ds-color-neutral-border-default);
   --dsc-checkbox-border__hover--size: calc(var(--ds-spacing-3) / 2);
-  --dsc-checkbox-border__hover: 0 0 0 var(--dsc-checkbox-border__hover--size) var(--ds-color-accent-surface-hover);
+  --dsc-checkbox-border__hover: 0 0 0 var(--dsc-checkbox-border__hover--size) var(--ds-color-primary-surface-hover);
   --dsc-checkbox-check_color: transparent;
 
   display: grid;
@@ -93,17 +93,17 @@
 }
 
 .ds-checkbox__input:checked {
-  --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
-  --dsc-checkbox-background: var(--ds-color-accent-base-default);
-  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-1);
+  --dsc-checkbox-border-color: var(--ds-color-primary-base-default);
+  --dsc-checkbox-background: var(--ds-color-primary-base-default);
+  --dsc-checkbox-check_color: var(--ds-color-primary-contrast-1);
 
   background: var(--dsc-checkbox-background);
 }
 
 .ds-checkbox__input:indeterminate {
-  --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
-  --dsc-checkbox-background: var(--ds-color-accent-base-default);
-  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-1);
+  --dsc-checkbox-border-color: var(--ds-color-primary-base-default);
+  --dsc-checkbox-background: var(--ds-color-primary-base-default);
+  --dsc-checkbox-check_color: var(--ds-color-primary-contrast-1);
 }
 
 .ds-checkbox__input:indeterminate::after {
@@ -155,17 +155,17 @@
 @media (hover: hover) and (pointer: fine) {
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:not(:disabled) ~ .ds-checkbox__label:hover,
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:not(:disabled) ~ .ds-checkbox__label {
-    color: var(--ds-color-accent-text-subtle);
+    color: var(--ds-color-primary-text-subtle);
   }
 
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:not(:checked, :disabled, :focus-visible) {
-    --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
+    --dsc-checkbox-border-color: var(--ds-color-primary-border-strong);
 
     box-shadow: var(--dsc-checkbox-border__hover), inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:indeterminate:hover:not(:focus-visible) {
-    --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
+    --dsc-checkbox-border-color: var(--ds-color-primary-border-strong);
 
     box-shadow: var(--dsc-checkbox-border__hover);
   }

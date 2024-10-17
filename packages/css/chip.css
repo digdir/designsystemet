@@ -1,11 +1,11 @@
 .ds-chip {
-  --dsc-chip-background: var(--ds-color-accent-surface-default);
-  --dsc-chip-border-color: var(--ds-color-accent-border-subtle);
+  --dsc-chip-background: var(--ds-color-primary-surface-default);
+  --dsc-chip-border-color: var(--ds-color-primary-border-subtle);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
-  --dsc-chip-color: var(--ds-color-accent-text-default);
+  --dsc-chip-color: var(--ds-color-primary-text-default);
   --dsc-chip-height: var(--ds-sizing-8);
   --dsc-chip-icon-size: var(--ds-spacing-6);
-  --dsc-chip-input-color: var(--ds-color-accent-border-default);
+  --dsc-chip-input-color: var(--ds-color-primary-border-default);
   --dsc-chip-input-size: var(--ds-spacing-5);
   --dsc-chip-padding: 0 var(--ds-spacing-3);
 
@@ -97,9 +97,9 @@
 
   &:has(input:checked),
   &[data-removable] {
-    --dsc-chip-background: var(--ds-color-accent-base-default);
+    --dsc-chip-background: var(--ds-color-primary-base-default);
     --dsc-chip-border-color: transparent;
-    --dsc-chip-color: var(--ds-color-accent-contrast-default);
+    --dsc-chip-color: var(--ds-color-primary-contrast-default);
     --dsc-chip-input-color: currentcolor;
   }
 
@@ -107,31 +107,31 @@
   @media (hover: hover) and (pointer: fine) {
     &:where(:not(:disabled, :has(input:disabled), [aria-disabled='true'])) {
       &:hover {
-        --dsc-chip-background: var(--ds-color-accent-surface-hover);
-        --dsc-chip-border-color: var(--ds-color-accent-border-default);
-        --dsc-chip-color: var(--ds-color-accent-text-default);
-        --dsc-chip-input-color: var(--ds-color-accent-border-strong);
+        --dsc-chip-background: var(--ds-color-primary-surface-hover);
+        --dsc-chip-border-color: var(--ds-color-primary-border-default);
+        --dsc-chip-color: var(--ds-color-primary-text-default);
+        --dsc-chip-input-color: var(--ds-color-primary-border-strong);
       }
 
       &:active {
-        --dsc-chip-background: var(--ds-color-accent-surface-active);
-        --dsc-chip-border-color: var(--ds-color-accent-border-strong);
-        --dsc-chip-input-color: var(--ds-color-accent-border-strong);
+        --dsc-chip-background: var(--ds-color-primary-surface-active);
+        --dsc-chip-border-color: var(--ds-color-primary-border-strong);
+        --dsc-chip-input-color: var(--ds-color-primary-border-strong);
       }
 
       &[data-removable]:hover,
       &:has(input:checked):hover {
-        --dsc-chip-background: var(--ds-color-accent-base-hover);
+        --dsc-chip-background: var(--ds-color-primary-base-hover);
         --dsc-chip-border-color: transparent;
-        --dsc-chip-color: var(--ds-color-accent-contrast-default);
+        --dsc-chip-color: var(--ds-color-primary-contrast-default);
         --dsc-chip-input-color: currentcolor;
       }
 
       &[data-removable]:active,
       &:has(input:checked):active {
-        --dsc-chip-background: var(--ds-color-accent-base-active);
+        --dsc-chip-background: var(--ds-color-primary-base-active);
         --dsc-chip-border-color: transparent;
-        --dsc-chip-color: var(--ds-color-accent-contrast-default);
+        --dsc-chip-color: var(--ds-color-primary-contrast-default);
       }
     }
   }

@@ -1,0 +1,24 @@
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-support {
+[data-ds-color-support="support2"] {
+  --ds-color-support-background-default: var(--ds-color-brand2-1);
+  --ds-color-support-background-subtle: var(--ds-color-brand2-2);
+  --ds-color-support-surface-default: var(--ds-color-brand2-3);
+  --ds-color-support-surface-hover: var(--ds-color-brand2-4);
+  --ds-color-support-surface-active: var(--ds-color-brand2-5);
+  --ds-color-support-border-subtle: var(--ds-color-brand2-6);
+  --ds-color-support-border-default: var(--ds-color-brand2-7);
+  --ds-color-support-border-strong: var(--ds-color-brand2-8);
+  --ds-color-support-base-default: var(--ds-color-brand2-9);
+  --ds-color-support-base-hover: var(--ds-color-brand2-10);
+  --ds-color-support-base-active: var(--ds-color-brand2-11);
+  --ds-color-support-text-subtle: var(--ds-color-brand2-12);
+  --ds-color-support-text-default: var(--ds-color-brand2-13);
+  --ds-color-support-contrast-default: var(--ds-color-brand2-contrast-1);
+  --ds-color-support-contrast-subtle: var(--ds-color-brand2-contrast-2);
+}
+
+}

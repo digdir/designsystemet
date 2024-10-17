@@ -1,0 +1,24 @@
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color-primary {
+[data-ds-color-primary="accent"] {
+  --ds-color-primary-background-default: var(--ds-color-accent-background-default);
+  --ds-color-primary-background-subtle: var(--ds-color-accent-background-subtle);
+  --ds-color-primary-surface-default: var(--ds-color-accent-surface-default);
+  --ds-color-primary-surface-hover: var(--ds-color-accent-surface-hover);
+  --ds-color-primary-surface-active: var(--ds-color-accent-surface-active);
+  --ds-color-primary-border-subtle: var(--ds-color-accent-border-subtle);
+  --ds-color-primary-border-default: var(--ds-color-accent-border-default);
+  --ds-color-primary-border-strong: var(--ds-color-accent-border-strong);
+  --ds-color-primary-base-default: var(--ds-color-accent-base-default);
+  --ds-color-primary-base-hover: var(--ds-color-accent-base-hover);
+  --ds-color-primary-base-active: var(--ds-color-accent-base-active);
+  --ds-color-primary-text-subtle: var(--ds-color-accent-text-subtle);
+  --ds-color-primary-text-default: var(--ds-color-accent-text-default);
+  --ds-color-primary-contrast-default: var(--ds-color-accent-contrast-default);
+  --ds-color-primary-contrast-subtle: var(--ds-color-accent-contrast-subtle);
+}
+
+}

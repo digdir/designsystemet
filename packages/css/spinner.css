@@ -10,7 +10,7 @@
   width: var(--dsc-spinner-size);
 
   &[data-color='accent'] {
-    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+    --dsc-spinner-stroke: var(--ds-color-primary-base-default);
   }
 
   &[data-size='2xs'] {

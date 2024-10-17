@@ -159,12 +159,12 @@
 
 @media (hover: hover) and (pointer: fine) {
   .ds-search__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
-    --dsc-search-input-border-color: var(--ds-color-accent-border-strong);
+    --dsc-search-input-border-color: var(--ds-color-primary-border-strong);
 
-    box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
+    box-shadow: inset 0 0 0 1px var(--ds-color-primary-border-strong);
   }
 
   .ds-search__clear-button:not(:focus-visible, :disabled, [aria-disabled]):hover {
-    background: var(--ds-color-accent-surface-hover);
+    background: var(--ds-color-primary-surface-hover);
   }
 }

@@ -26,6 +26,12 @@
     "themes/theme3",
     "themes/theme4",
     "semantic/color",
+    "semantic/colors/primary/dominant",
+    "semantic/colors/primary/complimentary",
+    "semantic/colors/primary/accent",
+    "semantic/colors/support/support1",
+    "semantic/colors/support/support2",
+    "semantic/colors/support/support3",
     "semantic/style",
     "Figma/components"
   ]

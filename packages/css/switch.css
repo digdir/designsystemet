@@ -173,7 +173,7 @@
 }
 
 .ds-switch__input:not([readonly]):checked + .ds-switch__label .ds-switch__track {
-  background-color: var(--ds-color-accent-base-default);
+  background-color: var(--ds-color-primary-base-default);
 }
 
 .ds-switch__thumb {
@@ -187,8 +187,8 @@
 }
 
 .ds-switch__input:checked + .ds-switch__label .ds-switch__track .ds-switch__thumb {
-  --dsc-switch-check_color: var(--ds-color-accent-base-default);
-  --dsc-switch-thumb-background-color: var(--ds-color-accent-contrast-default);
+  --dsc-switch-check_color: var(--ds-color-primary-base-default);
+  --dsc-switch-thumb-background-color: var(--ds-color-primary-contrast-default);
 
   transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height)) * 1.2));
 }
@@ -227,11 +227,11 @@
   }
 
   .ds-switch__input:not([readonly], :disabled):hover + .ds-switch__label {
-    color: var(--ds-color-accent-text-subtle);
+    color: var(--ds-color-primary-text-subtle);
   }
 
   .ds-switch__input:not(:disabled, [readonly]):checked:hover + .ds-switch__label .ds-switch__track > .ds-switch__thumb {
-    --dsc-switch-check_color: var(--ds-color-accent-base-hover);
+    --dsc-switch-check_color: var(--ds-color-primary-base-hover);
 
     transform: translateX(calc((var(--dsc-switch-width) - var(--dsc-switch-height))));
   }
@@ -241,6 +241,6 @@
   }
 
   .ds-switch__input:not(:disabled, [readonly]):checked:hover + .ds-switch__label .ds-switch__track {
-    background-color: var(--ds-color-accent-base-hover);
+    background-color: var(--ds-color-primary-base-hover);
   }
 }

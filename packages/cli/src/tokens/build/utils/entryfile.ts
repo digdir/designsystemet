@@ -16,6 +16,12 @@ const sortOrder = [
   'color-mode/dark',
   'color-mode/contrast',
   'typography/primary',
+  'color-primary/dominant',
+  'color-primary/complimentary',
+  'color-primary/accent',
+  'color-support/support1',
+  'color-support/support2',
+  'color-support/support3'
 ];
 
 const sortByDefinedOrder = R.sortBy<string>((fileName) => {

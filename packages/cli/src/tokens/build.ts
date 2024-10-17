@@ -8,21 +8,20 @@ import StyleDictionary from 'style-dictionary';
 
 import * as configs from './build/configs.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
+import { type PermutatedTheme, groupThemes } from './build/utils/permutateThemes.js';
 
 const { permutateThemes, getConfigs } = configs;
 
 type Options = {
-  /** Design tokens path  */
+  /** Design tokens path */
   tokens: string;
-  /** Output directoru for built tokens */
+  /** Output directory for built tokens */
   out: string;
   /** Generate preview tokens */
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
 };
-
-// type FormattedCSSPlatform = { css: { output: string; destination: string }[] };
 
 const sd = new StyleDictionary();
 
@@ -40,14 +39,55 @@ export async function buildTokens(options: Options): Promise<void> {
 
     return true;
   });
+  const grouped$themes = groupThemes(relevant$themes);
+  const themes = permutateThemes(grouped$themes);
+  type ThemeDimension = keyof typeof grouped$themes;
 
-  const themes = permutateThemes(relevant$themes);
+  /**
+   * Find the theme permutations that are relevant for the given theme dimensions.
+   *
+   * Technically, for the given dimensions all permutations are included, while for other
+   * dimensions the first permutation is used.
+   *
+   * @param dimensions Which theme dimensions to return permutations for.
+   *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
+   * @returns the relevant theme permutations
+   */
+  const getThemesFor = (...dimensions: ThemeDimension[]) => {
+    const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
+    const keys = R.keys(grouped$themes);
+    const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
+    if (verbosity === 'verbose') {
+      console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
+      console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
+    }
+    return themes.filter((val: PermutatedTheme) => {
+      const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
+      return filters.every((x) => x);
+    });
+  };
 
-  const typographyThemes = R.filter((val) => val.mode === 'light', themes);
-  const colormodeThemes = R.filter((val) => val.typography === 'primary', themes);
-  const semanticThemes = R.filter((val) => val.mode === 'light' && val.typography === 'primary', themes);
+  const typographyThemes = getThemesFor('typography');
+  const colormodeThemes = getThemesFor('mode');
+  const primaryColors = getThemesFor('colorPrimary');
+  const supportColors = getThemesFor('colorSupport');
+  const semanticThemes = getThemesFor('semantic');
 
   const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes, verbosity);
+  const primaryColorConfigs = getConfigs(
+    configs.colorCategories('primary'),
+    outPath,
+    tokensDir,
+    primaryColors,
+    verbosity,
+  );
+  const supportColorConfigs = getConfigs(
+    configs.colorCategories('support'),
+    outPath,
+    tokensDir,
+    supportColors,
+    verbosity,
+  );
   const semanticConfigs = getConfigs(configs.semanticVariables, outPath, tokensDir, semanticThemes, verbosity);
   const typographyConfigs = getConfigs(configs.typographyVariables, outPath, tokensDir, typographyThemes, verbosity);
   const storefrontConfigs = getConfigs(
@@ -83,6 +123,28 @@ export async function buildTokens(options: Options): Promise<void> {
           const themeVariablesSD = await sd.extend(config);
 
           return themeVariablesSD.buildAllPlatforms();
+        }),
+      );
+    }
+
+    if (primaryColorConfigs.length > 0) {
+      console.log(`\n🍱 Building ${chalk.green('color-primary')}`);
+
+      await Promise.all(
+        primaryColorConfigs.map(async ({ theme, colorPrimary, config }) => {
+          console.log(`👷 ${theme} - ${colorPrimary}`);
+          return (await sd.extend(config)).buildAllPlatforms();
+        }),
+      );
+    }
+
+    if (supportColorConfigs.length > 0) {
+      console.log(`\n🍱 Building ${chalk.green('color-support')}`);
+
+      await Promise.all(
+        supportColorConfigs.map(async ({ theme, colorSupport, config }) => {
+          console.log(`👷 ${theme} - ${colorSupport}`);
+          return (await sd.extend(config)).buildAllPlatforms();
         }),
       );
     }
