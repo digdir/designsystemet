@@ -1,13 +1,12 @@
 import { Table } from '@digdir/designsystemet-react';
 import type React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type CssVariablesProps = {
   css: string;
 };
 
 export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
-  const targetRef = useRef<HTMLDivElement>(null);
   const [cssVariables, setCssVariables] = useState<{ [key: string]: string }>(
     {},
   );
@@ -16,7 +15,7 @@ export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
     const res = getCssVariables(css || '');
 
     setCssVariables(res);
-  }, [targetRef]);
+  }, []);
 
   return (
     <Table zebra>
