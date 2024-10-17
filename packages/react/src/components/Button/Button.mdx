@@ -4,9 +4,9 @@ import { Button } from './Button';
 
 import * as ButtonStories from './Button.stories';
 
-<CssVariables>
-  <Button />
-</CssVariables>
+import css from '@digdir/designsystemet-css/button.css?inline';
+
+<CssVariables css={css} />
 
 <Meta of={ButtonStories} />
 

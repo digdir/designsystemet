@@ -1,94 +1,64 @@
 import { Table } from '@digdir/designsystemet-react';
-import { Slot } from '@radix-ui/react-slot';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 type CssVariablesProps = {
-  children: React.ReactNode;
+  css: string;
 };
 
-export const CssVariables: React.FC<CssVariablesProps> = ({ children }) => {
+export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [cssVariables, setCssVariables] = useState<{ [key: string]: string }>(
     {},
   );
 
   useEffect(() => {
-    const elem = targetRef.current;
-    if (!elem) return;
-
-    /* Find the variable that has this value */
-    const findUsedVariable = (
-      value: string,
-      styles: StylePropertyMapReadOnly,
-    ) => {
-      for (const [prop, val] of Array.from(styles)) {
-        if (val.toString() === value) {
-          return prop;
-        }
-      }
-      return value;
-    };
-
-    const findUsedVariableFirefox = (
-      value: string,
-      styles: CSSStyleDeclaration,
-    ) => {
-      for (let i = 0; i < styles.length; i++) {
-        const propertyName = styles[i];
-        if (styles.getPropertyValue(propertyName) === value) {
-          return propertyName;
-        }
-      }
-      return value;
-    };
-
-    const res: { [key: string]: string } = {};
-    if ('computedStyleMap' in elem) {
-      // Chrome
-      const styles = elem.computedStyleMap();
-      console.log(styles);
-      for (const [prop, val] of Array.from(styles)) {
-        if (prop.startsWith('--dsc')) {
-          res[prop] = findUsedVariable(val.toString(), styles);
-        }
-      }
-    } else {
-      // Firefox
-      const styles = getComputedStyle(elem);
-      for (let i = 0; i < styles.length; i++) {
-        const propertyName = styles[i];
-        if (propertyName.startsWith('--dsc')) {
-          const value = styles.getPropertyValue(propertyName);
-          res[propertyName] = findUsedVariableFirefox(value, styles);
-        }
-      }
-    }
+    const res = getCssVariables(css || '');
 
     setCssVariables(res);
   }, [targetRef]);
 
   return (
-    <>
-      <Slot hidden ref={targetRef}>
-        {children}
-      </Slot>
-      <Table zebra>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Value</Table.HeaderCell>
+    <Table zebra>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Value</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {Object.entries(cssVariables).map(([name, value]) => (
+          <Table.Row key={name}>
+            <Table.Cell>{name}</Table.Cell>
+            <Table.Cell>{value}</Table.Cell>
           </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          {Object.entries(cssVariables).map(([name, value]) => (
-            <Table.Row key={name}>
-              <Table.Cell>{name}</Table.Cell>
-              <Table.Cell>{value}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </>
+        ))}
+      </Table.Body>
+    </Table>
   );
 };
+
+/* get variables and its value from css file */
+function getCssVariables(css: string) {
+  const res: { [key: string]: string } = {};
+  /* first, get only the first css block contained in {} */
+  const cssBlock = css.match(/(?<={)([^}]*)/)?.[0];
+  if (!cssBlock) {
+    return res;
+  }
+
+  /* then get all variables with --dsc */
+  const variables = cssBlock.match(/--dsc[^;]+/g);
+
+  if (!variables) {
+    return res;
+  }
+
+  /* get the value of each variable */
+  for (const variable of variables) {
+    const [name, value] = variable.split(':');
+    res[name] = value.trim();
+  }
+
+  return res;
+}
