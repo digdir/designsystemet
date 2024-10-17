@@ -1,7 +1,7 @@
 {
   "name": "figma-plugin",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "run-s watch",
@@ -15,26 +15,32 @@
     "types:node": "tsc -P tsconfig.node.json"
   },
   "dependencies": {
+    "@adobe/leonardo-contrast-colors": "^1.0.0",
+    "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "clsx": "^2.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0"
+    "@isomorphic-git/lightning-fs": "^4.6.0",
+    "@react-awesome/use-click-outside": "^0.0.3",
+    "@types/node": "^22.3.0",
+    "isomorphic-git": "^1.27.0",
+    "lucide-react": "^0.399.0",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.97.0",
-    "@types/node": "^22.1.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@figma/plugin-typings": "^1.95.0",
+    "@types/react": "^18.0.28",
+    "@types/react-color": "^3.0.12",
+    "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.3.1",
-    "npm-run-all2": "^6.2.2",
-    "postcss": "^8.4.41",
-    "rollup": "^4.22.4",
-    "vite": "^5.3.6",
-    "vite-plugin-generate-file": "^0.2.0",
-    "vite-plugin-react-rich-svg": "^1.1.1",
+    "npm-run-all2": "^6.2.0",
+    "postcss": "^8.4.21",
+    "vite-plugin-generate-file": "^0.1.1",
+    "vite-plugin-react-rich-svg": "^1.0.0",
     "vite-plugin-singlefile": "^2.0.2"
   }
 }

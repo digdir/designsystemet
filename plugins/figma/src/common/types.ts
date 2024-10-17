@@ -7,3 +7,5 @@ export type JsonInput = {
     brand3: object;
   };
 };
+
+export type FigmaModeName = 'theme' | 'theme2' | 'theme3' | 'theme4';
