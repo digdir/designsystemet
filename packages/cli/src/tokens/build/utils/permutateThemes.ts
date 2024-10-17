@@ -1,47 +1,68 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
+import { camelCase } from 'change-case';
 import * as R from 'ramda';
 
-declare interface Options {
+interface Options {
   separator?: string;
 }
 
+export type PermutationProps = {
+  mode: string;
+  semantic: string;
+  size: string;
+  theme: string;
+  typography: string;
+};
+
 export type PermutatedTheme = {
-  mode?: string;
-  semantic?: string;
-  size?: string;
-  theme?: string;
-  typography?: string;
   name: string;
   selectedTokenSets: string[];
-};
+} & Partial<PermutationProps>;
 
 export type PermutatedThemes = PermutatedTheme[];
 
-function mapThemesToSetsObject(themes: ThemeObject[]): PermutatedThemes {
-  return themes.map((theme) => ({ name: theme.name, selectedTokenSets: filterTokenSets(theme.selectedTokenSets) }));
+const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
+type ProcessedThemeObject = ThemeObject & { [processed]: true };
+function isProcessed(theme: ThemeObject | ProcessedThemeObject): theme is ProcessedThemeObject {
+  return Boolean((theme as ProcessedThemeObject)[processed]);
 }
 
-export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} as Options): PermutatedThemes {
-  if (!themes.some((theme) => theme.group)) {
-    return mapThemesToSetsObject(themes);
+/**
+ * Normalise theme names and theme group names for easier use in code
+ * @param theme A theme object from $themes.json
+ * @returns Processed theme object
+ */
+function processThemeObject(theme: ThemeObject | ProcessedThemeObject): ProcessedThemeObject {
+  if (isProcessed(theme)) {
+    return theme;
   }
-  // Sort themes by groups
-  const groups: Record<string, ThemeObject[]> = {};
-  for (const theme of themes) {
+  const result: ProcessedThemeObject = { ...theme, [processed]: true };
+  if (result.group) {
+    result.group = camelCase(result.group);
+  }
+  result.name = result.name.toLowerCase();
+  return result;
+}
+
+export type GroupedThemes = Record<keyof PermutationProps, ProcessedThemeObject[]>;
+
+export function groupThemes(themes: ThemeObject[]): GroupedThemes {
+  const groups = {} as GroupedThemes;
+  for (const rawTheme of themes) {
+    const theme = processThemeObject(rawTheme);
     if (theme.group) {
-      groups[theme.group] = [...(groups[theme.group] ?? []), theme];
+      groups[theme.group as keyof GroupedThemes] = [...(groups[theme.group as keyof GroupedThemes] ?? []), theme];
     } else {
       throw new Error(
         `Theme ${theme.name} does not have a group property, which is required for multi-dimensional theming.`,
       );
     }
   }
+  return groups;
+}
 
-  if (Object.keys(groups).length <= 1) {
-    return mapThemesToSetsObject(themes);
-  }
-
+export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} as Options): PermutatedThemes {
   // Create theme permutations
   const permutations = cartesian(Object.values(groups)) as Array<ThemeObject[]>;
 
@@ -52,8 +73,8 @@ export function permutateThemes(themes: ThemeObject[], { separator = '-' } = {} 
         let updatedPermutatedTheme = acc;
 
         if (group) {
-          const groupProp = R.lensProp<PermutatedTheme>(group.toLowerCase() as keyof PermutatedTheme);
-          updatedPermutatedTheme = R.set(groupProp, name.toLowerCase(), updatedPermutatedTheme);
+          const groupProp = R.lensProp<PermutatedTheme>(group as keyof PermutationProps);
+          updatedPermutatedTheme = R.set(groupProp, name, updatedPermutatedTheme);
         }
 
         const updatedName = `${String(acc.name)}${acc ? separator : ''}${name}`;
