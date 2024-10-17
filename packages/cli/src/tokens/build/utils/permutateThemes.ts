@@ -1,11 +1,9 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
+import chalk from 'chalk';
 import { camelCase } from 'change-case';
 import * as R from 'ramda';
-
-interface Options {
-  separator?: string;
-}
+import { buildOptions } from '../../build';
 
 export type PermutationProps = {
   mode: string;
@@ -13,6 +11,36 @@ export type PermutationProps = {
   size: string;
   theme: string;
   typography: string;
+};
+
+type ThemeDimension = keyof PermutationProps;
+
+/**
+ * Find the theme permutations that are relevant for the given theme dimensions.
+ *
+ * Technically, for the given dimensions all permutations are included, while for other
+ * dimensions the first permutation is used.
+ *
+ * @param themes Theme objects from $themes.json (Tokens Studio)
+ * @param dimensions Which theme dimensions to return permutations for.
+ *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
+ * @returns the relevant theme permutations
+ */
+export const getMultidimensionalThemes = (themes: ThemeObject[], ...dimensions: ThemeDimension[]) => {
+  const verboseLogging = buildOptions?.verbose;
+  const grouped$themes = groupThemes(themes);
+  const permutations = permutateThemes(grouped$themes);
+  const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
+  const keys = R.keys(grouped$themes);
+  const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
+  if (verboseLogging) {
+    console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
+    console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
+  }
+  return permutations.filter((val: PermutatedTheme) => {
+    const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
+    return filters.every((x) => x);
+  });
 };
 
 export type PermutatedTheme = {
@@ -47,7 +75,7 @@ function processThemeObject(theme: ThemeObject | ProcessedThemeObject): Processe
 
 export type GroupedThemes = Record<keyof PermutationProps, ProcessedThemeObject[]>;
 
-export function groupThemes(themes: ThemeObject[]): GroupedThemes {
+function groupThemes(themes: ThemeObject[]): GroupedThemes {
   const groups = {} as GroupedThemes;
   for (const rawTheme of themes) {
     const theme = processThemeObject(rawTheme);
@@ -62,7 +90,8 @@ export function groupThemes(themes: ThemeObject[]): GroupedThemes {
   return groups;
 }
 
-export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} as Options): PermutatedThemes {
+function permutateThemes(groups: GroupedThemes): PermutatedThemes {
+  const separator = '_';
   // Create theme permutations
   const permutations = cartesian(Object.values(groups)) as Array<ThemeObject[]>;
 
