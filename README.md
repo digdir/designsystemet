@@ -128,6 +128,13 @@ We are lucky to have a great group of people who help with the design system.
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
 </a>
 
+
+<a style="margin-top: 32px; display: block;" href="https://chromatic.com">
+  <img src="https://user-images.githubusercontent.com/321738/84662277-e3db4f80-af1b-11ea-88f5-91d67a5e59f6.png" />
+</a>
+
+Thanks to [Chromatic](https://chromatic.com) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
+
 ---
 
 ## 📃 License
