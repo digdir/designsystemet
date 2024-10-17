@@ -1,15 +1,14 @@
 import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
-import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { Config, LogConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
+import { buildOptions } from '../build.js';
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
-import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
-import type { PermutatedThemes } from './utils/permutateThemes.js';
+import type { PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -19,7 +18,6 @@ void register(StyleDictionary, { withSDBuiltins: false });
 const usesDtcg = true;
 export const prefix = 'ds';
 export const basePxFontSize = 16;
-export const separator = '_';
 
 const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
@@ -63,21 +61,13 @@ const outputColorReferences = (token: TransformedToken) => {
 
 export type IsCalculatedToken = (token: TransformedToken, options?: Config) => boolean;
 
-export const permutateThemes = ($themes: ThemeObject[]) =>
-  permutateThemes_($themes, {
-    separator,
-  });
+type GetConfig = (
+  options: PermutationProps & {
+    outPath?: string;
+  },
+) => Config;
 
-type GetConfig = (options: {
-  mode?: string;
-  theme?: string;
-  semantic?: string;
-  size?: string;
-  typography?: string;
-  outPath?: string;
-}) => Config;
-
-export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
+const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
   const layer = `ds.theme.color-mode.${mode}`;
 
@@ -112,7 +102,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
   };
 };
 
-export const semanticVariables: GetConfig = ({ outPath, theme }) => {
+const semanticVariables: GetConfig = ({ outPath, theme }) => {
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
@@ -163,7 +153,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   };
 };
 
-export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
+const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -201,7 +191,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
   };
 };
 
-export const typographyVariables: GetConfig = ({ outPath, theme, typography }) => {
+const typographyVariables: GetConfig = ({ outPath, theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -256,16 +246,33 @@ export const typographyVariables: GetConfig = ({ outPath, theme, typography }) =
   };
 };
 
-type getConfigs = (
-  getConfig: GetConfig,
-  outPath: string,
-  tokensDir: string,
-  themes: PermutatedThemes,
-  logVerbosity: LogConfig['verbosity'],
-) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
+export const configs = {
+  colorModeVariables,
+  typographyVariables,
+  semanticVariables,
+  typescriptTokens,
+};
 
-export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
-  permutatedThemes
+type GetConfigsOpts = {
+  outPath: string;
+  tokensDir: string;
+};
+
+export type DeclarativeConfig = {
+  name?: string;
+  config: keyof typeof configs;
+  modes: Array<keyof PermutationProps>;
+  options?: Partial<GetConfigsOpts>;
+};
+
+export const getConfigs = (
+  getConfig: GetConfig,
+  themes: PermutatedThemes,
+  options: GetConfigsOpts,
+): (PermutationProps & { config: Config })[] => {
+  const { outPath, tokensDir } = options;
+
+  return themes
     .map((permutatedTheme) => {
       const {
         selectedTokenSets = [],
@@ -297,7 +304,7 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         ...config_,
         log: {
           ...config_?.log,
-          verbosity: logVerbosity,
+          verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
         },
         source,
         include,
@@ -306,3 +313,4 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
       return { mode, theme, semantic, size, typography, config };
     })
     .sort();
+};
