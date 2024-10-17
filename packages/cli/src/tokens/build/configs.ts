@@ -2,14 +2,21 @@ import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type { Config, LogConfig, TransformedToken } from 'style-dictionary/types';
+import type SD from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
+import { buildOptions } from '../build.js';
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
-import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
-import type { GroupedThemes, PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
+import type {
+  GetSdConfigOptions,
+  IsCalculatedToken,
+  SDConfigForThemePermutation,
+  ThemeDimension,
+  ThemePermutation,
+} from './types.js';
+import { getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -19,7 +26,6 @@ void register(StyleDictionary, { withSDBuiltins: false });
 const usesDtcg = true;
 export const prefix = 'ds';
 export const basePxFontSize = 16;
-export const separator = '_';
 
 const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
@@ -48,9 +54,7 @@ const dsTransformers = [
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
 
-const hasUnknownProps = R.pipe(R.values, R.none(R.equals('unknown')), R.not);
-
-const outputColorReferences = (token: TransformedToken) => {
+const outputColorReferences = (token: SD.TransformedToken) => {
   if (
     R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
     R.includes('semantic/color', token.filePath)
@@ -61,20 +65,13 @@ const outputColorReferences = (token: TransformedToken) => {
   return false;
 };
 
-export type IsCalculatedToken = (token: TransformedToken, options?: Config) => boolean;
-
-export const permutateThemes = (groupedThemes: GroupedThemes) =>
-  permutateThemes_(groupedThemes, {
-    separator,
-  });
-
-type GetConfig = (
-  options: PermutationProps & {
+type GetStyleDictionaryConfig = (
+  options: ThemePermutation & {
     outPath?: string;
   },
-) => Config;
+) => SD.Config;
 
-export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }) => {
+const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
   const layer = `ds.theme.color-mode.${mode}`;
 
@@ -109,7 +106,7 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
   };
 };
 
-export const semanticVariables: GetConfig = ({ outPath, theme }) => {
+const semanticVariables: GetStyleDictionaryConfig = ({ outPath, theme }) => {
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
@@ -120,7 +117,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
    *
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
-  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
+  const isCalculatedToken: IsCalculatedToken = (token: SD.TransformedToken) =>
     pathStartsWithOneOf(['spacing', 'sizing'], token);
 
   return {
@@ -160,7 +157,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
   };
 };
 
-export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
+const typescriptTokens: GetStyleDictionaryConfig = ({ mode, outPath, theme }) => {
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -175,7 +172,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
             destination: `${mode}.ts`,
             format: jsTokens.name,
             outputReferences: outputColorReferences,
-            filter: (token: TransformedToken) => {
+            filter: (token: SD.TransformedToken) => {
               if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
               if (pathStartsWithOneOf(['border-width'], token)) return false;
 
@@ -198,7 +195,7 @@ export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }
   };
 };
 
-export const typographyVariables: GetConfig = ({ outPath, theme, typography }) => {
+const typographyVariables: GetStyleDictionaryConfig = ({ outPath, theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -253,33 +250,30 @@ export const typographyVariables: GetConfig = ({ outPath, theme, typography }) =
   };
 };
 
-type getConfigs = (
-  getConfig: GetConfig,
-  outPath: string,
-  tokensDir: string,
-  themes: PermutatedThemes,
-  logVerbosity: LogConfig['verbosity'],
-) => (PermutationProps & { config: Config })[];
+const configs = {
+  colorModeVariables,
+  typographyVariables,
+  semanticVariables,
+  typescriptTokens,
+};
 
-export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
-  permutatedThemes
-    .map((permutatedTheme) => {
-      const {
-        selectedTokenSets = [],
-        mode = 'unknown',
-        theme = 'unknown',
-        semantic = 'unknown',
-        size = 'unknown',
-        typography = 'unknown',
-      } = permutatedTheme;
+export type StyleDictionaryConfigs = keyof typeof configs;
 
-      if (hasUnknownProps(permutatedTheme)) {
-        throw Error(`Theme ${permutatedTheme.name} has unknown props: ${JSON.stringify(permutatedTheme)}`);
-      }
+export const getConfigsForThemeDimensions = (
+  configName: keyof typeof configs,
+  themes: ThemeObject[],
+  dimensions: ThemeDimension[],
+  options: GetSdConfigOptions,
+): SDConfigForThemePermutation[] => {
+  const { outPath, tokensDir } = options;
 
+  const permutations = getMultidimensionalThemes(themes, dimensions);
+  return permutations
+    .map(({ selectedTokenSets, mode, theme, semantic, size, typography }) => {
       const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
       const [source, include] = paritionPrimitives(setsWithPaths);
+      const getConfig = configs[configName];
 
       const config_ = getConfig({
         outPath,
@@ -290,11 +284,11 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         typography,
       });
 
-      const config: Config = {
+      const config: SD.Config = {
         ...config_,
         log: {
           ...config_?.log,
-          verbosity: logVerbosity,
+          verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
         },
         source,
         include,
@@ -303,3 +297,4 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
       return { mode, theme, semantic, size, typography, config };
     })
     .sort();
+};

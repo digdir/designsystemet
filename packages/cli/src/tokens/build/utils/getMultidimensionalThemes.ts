@@ -1,26 +1,43 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
+import chalk from 'chalk';
 import { camelCase } from 'change-case';
 import * as R from 'ramda';
+import { buildOptions } from '../../build';
+import type { ThemeDimension, ThemePermutation } from '../types';
 
-interface Options {
-  separator?: string;
-}
-
-export type PermutationProps = {
-  mode: string;
-  semantic: string;
-  size: string;
-  theme: string;
-  typography: string;
+/**
+ * Find the theme permutations that are relevant for the given theme dimensions.
+ *
+ * Technically, for the given dimensions all permutations are included, while for other
+ * dimensions the first permutation is used.
+ *
+ * @param themes Theme objects from $themes.json (Tokens Studio)
+ * @param dimensions Which theme dimensions to return permutations for.
+ *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
+ * @returns the relevant theme permutations
+ */
+export const getMultidimensionalThemes = (themes: ThemeObject[], dimensions: ThemeDimension[]) => {
+  const verboseLogging = buildOptions?.verbose;
+  const grouped$themes = groupThemes(themes);
+  const permutations = permutateThemes(grouped$themes);
+  const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
+  const keys = R.keys(grouped$themes);
+  const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
+  if (verboseLogging) {
+    console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
+    console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
+  }
+  return permutations.filter((val: PermutatedTheme) => {
+    const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
+    return filters.every((x) => x);
+  });
 };
 
 export type PermutatedTheme = {
   name: string;
   selectedTokenSets: string[];
-} & Partial<PermutationProps>;
-
-export type PermutatedThemes = PermutatedTheme[];
+} & ThemePermutation;
 
 const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
 type ProcessedThemeObject = ThemeObject & { [processed]: true };
@@ -45,9 +62,9 @@ function processThemeObject(theme: ThemeObject | ProcessedThemeObject): Processe
   return result;
 }
 
-export type GroupedThemes = Record<keyof PermutationProps, ProcessedThemeObject[]>;
+export type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
 
-export function groupThemes(themes: ThemeObject[]): GroupedThemes {
+function groupThemes(themes: ThemeObject[]): GroupedThemes {
   const groups = {} as GroupedThemes;
   for (const rawTheme of themes) {
     const theme = processThemeObject(rawTheme);
@@ -62,7 +79,10 @@ export function groupThemes(themes: ThemeObject[]): GroupedThemes {
   return groups;
 }
 
-export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} as Options): PermutatedThemes {
+const hasUnknownProps = R.pipe(R.values, R.none(R.equals('unknown')), R.not);
+
+function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
+  const separator = '_';
   // Create theme permutations
   const permutations = cartesian(Object.values(groups)) as Array<ThemeObject[]>;
 
@@ -73,7 +93,7 @@ export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} 
         let updatedPermutatedTheme = acc;
 
         if (group) {
-          const groupProp = R.lensProp<PermutatedTheme>(group as keyof PermutationProps);
+          const groupProp = R.lensProp<PermutatedTheme>(group as keyof ThemePermutation);
           updatedPermutatedTheme = R.set(groupProp, name, updatedPermutatedTheme);
         }
 
@@ -86,8 +106,20 @@ export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} 
           selectedTokenSets: sets,
         };
       },
-      { name: '', selectedTokenSets: [] } as PermutatedTheme,
+      {
+        name: '',
+        selectedTokenSets: [],
+        mode: 'unknown',
+        theme: 'unknown',
+        semantic: 'unknown',
+        size: 'unknown',
+        typography: 'unknown',
+      } as PermutatedTheme,
     );
+
+    if (hasUnknownProps(permutatedTheme)) {
+      throw Error(`Theme ${permutatedTheme.name} has unknown props: ${JSON.stringify(permutatedTheme)}`);
+    }
 
     const uniqueTokenSets = new Set(permutatedTheme.selectedTokenSets);
 
