@@ -1,12 +1,11 @@
 import { Table } from '@digdir/designsystemet-react';
-import type React from 'react';
 import { useEffect, useState } from 'react';
 
 type CssVariablesProps = {
   css: string;
 };
 
-export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
+export function CssVariables({ css }: CssVariablesProps) {
   const [cssVariables, setCssVariables] = useState<{ [key: string]: string }>(
     {},
   );
@@ -35,7 +34,7 @@ export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
       </Table.Body>
     </Table>
   );
-};
+}
 
 /* get variables and its value from css file */
 function getCssVariables(css: string) {
