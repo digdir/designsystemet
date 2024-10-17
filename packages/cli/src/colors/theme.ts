@@ -48,16 +48,18 @@ const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa'
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
 
+  // The modifier that will be used to adjust the lightness of the Base Hover and Base Active colors
   let modifier = 8;
 
-  //
+  // When the color becomes dark enough, the modifier should be flipped
   if (colorLightness <= 30) {
     modifier = -modifier;
   }
-  // 49 is when the contrast flips from white to black, 65 is when the contrast flips from black to white
+  // 49 is when the contrast flips from white to black, 65 is when the color becomes dark enough to flip the modifier again
   if (colorLightness >= 49 && colorLightness <= 65) {
     modifier = -modifier;
   }
+
   const baseDefaultContrast = getContrastFromLightness(colorLightness, color, leoBackgroundColor.colorKeys[0]);
   const baseHoverContrast = getContrastFromLightness(colorLightness - modifier, color, leoBackgroundColor.colorKeys[0]);
   const baseActiveContrast = getContrastFromLightness(

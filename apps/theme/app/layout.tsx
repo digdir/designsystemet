@@ -24,11 +24,11 @@ const menu = [
 const centerLinks = [
   {
     text: 'Om designsystemet',
-    url: '/grunnleggende/introduksjon/om-designsystemet',
+    url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
   },
   {
     text: 'Personvernerklæring',
-    url: '/grunnleggende/personvernerklaering',
+    url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
   },
   {
     text: 'Tilgjengelighetserklæring',
