@@ -279,13 +279,13 @@ export const Components = () => {
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Radio name='language' size='sm' checked>
+          <Chip.Radio name='language' size='md' defaultChecked>
             Bokmål
           </Chip.Radio>
-          <Chip.Radio name='language' size='sm'>
+          <Chip.Radio name='language' size='md'>
             Nynorsk
           </Chip.Radio>
-          <Chip.Radio name='language' size='sm'>
+          <Chip.Radio name='language' size='md'>
             Engelsk
           </Chip.Radio>
         </div>
