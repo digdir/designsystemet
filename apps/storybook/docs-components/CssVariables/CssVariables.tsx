@@ -64,7 +64,6 @@ function getCssVariables(css: string) {
   /* Iterate over the CSS properties */
   for (let i = 0; i < tempElement.style.length; i++) {
     const name = tempElement.style[i];
-    console.log(name);
     if (name.startsWith('--dsc')) {
       res[name] = tempElement.style.getPropertyValue(name).trim();
     }
