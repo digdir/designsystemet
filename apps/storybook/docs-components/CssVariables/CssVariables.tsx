@@ -19,7 +19,15 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
     }, []);
 
     return (
-      <Table zebra className={cl('sb-unstyled', className)} {...rest} ref={ref}>
+      <Table
+        zebra
+        className={cl('sb-unstyled', className)}
+        style={{
+          tableLayout: 'fixed',
+        }}
+        {...rest}
+        ref={ref}
+      >
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>
@@ -42,23 +50,24 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
 /* get variables and its value from css file */
 function getCssVariables(css: string) {
   const res: { [key: string]: string } = {};
-  /* first, get only the first css block contained in {} */
+
+  /* get first block of css */
   const cssBlock = css.match(/(?<={)([^}]*)/)?.[0];
   if (!cssBlock) {
     return res;
   }
 
-  /* then get all variables with --dsc */
-  const variables = cssBlock.match(/--dsc[^;]+/g);
+  /* Create a temporary element */
+  const tempElement = document.createElement('div');
+  tempElement.style.cssText = cssBlock;
 
-  if (!variables) {
-    return res;
-  }
-
-  /* get the value of each variable */
-  for (const variable of variables) {
-    const [name, value] = variable.split(':');
-    res[name] = value.trim();
+  /* Iterate over the CSS properties */
+  for (let i = 0; i < tempElement.style.length; i++) {
+    const name = tempElement.style[i];
+    console.log(name);
+    if (name.startsWith('--dsc')) {
+      res[name] = tempElement.style.getPropertyValue(name).trim();
+    }
   }
 
   return res;
