@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - .github/workflows/test.yml
       - 'packages/**'
       - 'apps/storybook/**'
 
@@ -22,6 +23,7 @@ jobs:
         run: yarn build
       - name: Types
         run: yarn types:react
+
       - name: Test
         run: yarn test
       - name: 'Report Coverage'
@@ -36,8 +38,10 @@ jobs:
           check_name: Unit Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
       - name: Test CLI (create tokens, then build the theme)
         run: yarn test:cli
+
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build storybook

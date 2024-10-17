@@ -40,7 +40,7 @@ describe('Modal', () => {
     const { user } = await render({
       children: (
         <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
+          <Modal.Block>{HEADER_TITLE}</Modal.Block>
         </>
       ),
     });
@@ -99,7 +99,7 @@ describe('Modal', () => {
       open: true,
       children: (
         <>
-          <Modal.Header>{HEADER_TITLE}</Modal.Header>
+          <Modal.Block>{HEADER_TITLE}</Modal.Block>
         </>
       ),
     });
@@ -110,5 +110,23 @@ describe('Modal', () => {
     const children = 'Modal children';
     await render({ children, open: true });
     expect(screen.getByText(children)).toBeInTheDocument();
+  });
+
+  it('should call onClose when the modal is closed with ESC', async () => {
+    const onClose = vi.fn();
+    await render({ open: true, onClose });
+    const dialog = screen.getByRole('dialog');
+    await act(async () => await userEvent.type(dialog, '{Escape}'));
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call onClose when the modal is closed with the close button', async () => {
+    const onClose = vi.fn();
+    await render({ open: true, onClose });
+    const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });
+    await act(async () => await userEvent.click(closeButton));
+
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

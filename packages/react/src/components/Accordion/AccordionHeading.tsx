@@ -7,9 +7,9 @@ export type AccordionHeadingProps = {
 } & HTMLAttributes<HTMLElement>;
 
 /**
- * Accordion header component, contains a button to toggle the content.
+ * Accordion heading component, contains a button to toggle the content.
  * @example
- * <AccordionHeader>Header</AccordionHeader>
+ * <AccordionHeading>Heading</AccordionHeading>
  */
 export const AccordionHeading = forwardRef<HTMLElement, AccordionHeadingProps>(
   function AccordionHeading({ className, ...rest }, ref) {

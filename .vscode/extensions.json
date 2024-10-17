@@ -1,11 +1,9 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode",
     "unifiedjs.vscode-mdx",
     "christian-kohler.npm-intellisense",
     "techer.open-in-browser",
     "ionutvmi.path-autocomplete",
-    "stylelint.vscode-stylelint",
     "jock.svg",
     "naumovs.color-highlight",
     "clinyong.vscode-css-modules",

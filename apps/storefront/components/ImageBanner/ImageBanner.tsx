@@ -1,15 +1,15 @@
 'use client';
 import type { ButtonProps } from '@digdir/designsystemet-react';
-import { Button, Link } from '@digdir/designsystemet-react';
+import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
 import NextLink from 'next/link';
 import type React from 'react';
-import { createElement, useEffect, useState } from 'react';
 
+import type { HTMLAttributes } from 'react';
 import classes from './ImageBanner.module.css';
 
-interface ImageSectionProps {
+type ImageBannerProps = {
   title?: string;
   description?: string;
   imgSrc?: string;
@@ -20,16 +20,16 @@ interface ImageSectionProps {
   children?: React.ReactNode;
   imgWidth: string;
   backgroundColor?: 'blue' | 'yellow' | 'red' | 'white';
-  buttons?: ImageSectionButtonProps[];
+  buttons?: ImageBannerButtonProps[];
   link?: { text: string; href: string; prefix: React.ReactNode };
   imgPosition?: 'left' | 'right';
   region?: React.ReactNode;
   regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
   fallbackImgSrc: string;
   fallbackImgAlt: string;
-}
+} & HTMLAttributes<HTMLDivElement>;
 
-type ImageSectionButtonProps = {
+type ImageBannerButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
@@ -53,21 +53,14 @@ const ImageBanner = ({
   headingLevel = 'h1',
   fallbackImgSrc,
   fallbackImgAlt,
-}: ImageSectionProps) => {
-  const [heading, setHeading] = useState<React.ReactNode | null>(null);
-
-  useEffect(() => {
-    setHeading(
-      createElement(
-        headingLevel,
-        { className: cl(classes.title, 'ds-heading--lg') },
-        title,
-      ),
-    );
-  }, [headingLevel, title]);
-
+  className,
+  ...rest
+}: ImageBannerProps) => {
   return (
-    <div className={cl(classes[backgroundColor], classes.section)}>
+    <div
+      className={cl(classes[backgroundColor], classes.section, className)}
+      {...rest}
+    >
       <Container className={cl(classes.container)}>
         {imgPosition === 'left' && (
           <div
@@ -95,12 +88,12 @@ const ImageBanner = ({
         )}
 
         <div className={classes.textContainer}>
-          {title && heading}
-          {description && (
-            <p className={cl(classes.desc, 'ds-paragraph--md')}>
-              {description}
-            </p>
-          )}
+          {title ? (
+            <Heading level={2} size='lg' className={classes.title}>
+              {title}
+            </Heading>
+          ) : null}
+          {description && <Paragraph size='lg'>{description}</Paragraph>}
           {content && content}
           {link && (
             <Link className={classes.link} color='neutral' asChild>
@@ -155,5 +148,5 @@ const ImageBanner = ({
   );
 };
 
-export type { ImageSectionButtonProps, ImageSectionProps };
+export type { ImageBannerButtonProps, ImageBannerProps };
 export { ImageBanner };

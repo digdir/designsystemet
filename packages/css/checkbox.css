@@ -161,9 +161,7 @@
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:hover:not(:checked, :disabled, :focus-visible) {
     --dsc-checkbox-border-color: var(--ds-color-accent-border-strong);
 
-    box-shadow:
-      var(--dsc-checkbox-border__hover),
-      inset 0 0 0 2px var(--dsc-checkbox-border-color);
+    box-shadow: var(--dsc-checkbox-border__hover), inset 0 0 0 2px var(--dsc-checkbox-border-color);
   }
 
   .ds-checkbox:not(.ds-checkbox--readonly) .ds-checkbox__input:indeterminate:hover:not(:focus-visible) {

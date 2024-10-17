@@ -9,6 +9,11 @@
     "noEmit": false,
     "incremental": true
   },
-  "include": ["./src", "./stories", "declarations.d.ts"],
+  "include": [
+    "./src",
+    "./stories",
+    "declarations.d.ts",
+    "../../apps/storybook/story-utils/type-extensions.d.ts"
+  ],
   "rootDir": "./src"
 }

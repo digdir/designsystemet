@@ -14,6 +14,7 @@ export default {
   title: 'Komponenter/Link',
   component: Link,
   parameters: {
+    customStyles: { padding: '2px' },
     status: {
       type: 'beta',
       url: 'http://www.url.com/status',
@@ -56,13 +57,9 @@ export const LongLink: StoryFn = (args) => (
   </Paragraph>
 );
 
-LongLink.decorators = [
-  (Story) => (
-    <div style={{ width: '200px' }}>
-      <Story></Story>
-    </div>
-  ),
-];
+LongLink.parameters = {
+  customStyles: { width: '200px' },
+};
 
 export const Neutral: Story = {
   args: {

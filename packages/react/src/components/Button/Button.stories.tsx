@@ -1,4 +1,3 @@
-import { Stack } from '@doc-components';
 import {
   ArrowForwardIcon,
   ArrowRightIcon,
@@ -8,15 +7,12 @@ import {
   ExternalLinkIcon,
   PencilWritingIcon,
   PlusCircleIcon,
-  PlusIcon,
   PrinterSmallIcon,
   TrashIcon,
 } from '@navikt/aksel-icons';
-import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
-import type { PartialStoryFn } from '@storybook/types';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Spinner, Tooltip } from '../';
-
+import { Tooltip } from '../';
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
@@ -24,15 +20,20 @@ type Story = StoryObj<typeof Button>;
 const meta: Meta<typeof Button> = {
   title: 'Komponenter/Button',
   component: Button,
+  parameters: {
+    customStyles: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 'var(--ds-spacing-4)',
+    },
+  },
 };
 
 export default meta;
 
-const stack = (Story: PartialStoryFn<ReactRenderer>) => (
-  <Stack>
-    <Story />
-  </Stack>
-);
 export const Preview: Story = {
   render: ({ ...args }) => {
     return <Button {...args} />;
@@ -55,8 +56,6 @@ export const Primary: StoryFn<typeof Button> = () => (
   </>
 );
 
-Primary.decorators = [stack];
-
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
     <Button variant='secondary' color='accent'>
@@ -64,8 +63,6 @@ export const Secondary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Secondary.decorators = [stack];
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
@@ -76,9 +73,7 @@ export const Tertiary: StoryFn<typeof Button> = () => (
   </>
 );
 
-Tertiary.decorators = [stack];
-
-export const First: StoryFn<typeof Button> = () => (
+export const Accent: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' color='accent'>
       Gå videre
@@ -92,11 +87,21 @@ export const First: StoryFn<typeof Button> = () => (
   </>
 );
 
-First.decorators = [stack];
+export const AccentHover = Accent.bind({});
+AccentHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
 
-export const Second: StoryFn<typeof Button> = () => (
+export const AccentPressed = Accent.bind({});
+AccentPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const Neutral: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='primary' color='neutral'>
       <PrinterSmallIcon aria-hidden fontSize='1.5rem' />
       Skriv ut
     </Button>
@@ -104,14 +109,24 @@ export const Second: StoryFn<typeof Button> = () => (
       <PencilWritingIcon aria-hidden fontSize='1.5rem' />
       Rediger
     </Button>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='tertiary' color='neutral'>
       <ArrowForwardIcon aria-hidden fontSize='1.5rem' />
       Videresend
     </Button>
   </>
 );
 
-Second.decorators = [stack];
+export const NeutralHover = Neutral.bind({});
+NeutralHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const NeutralPressed = Neutral.bind({});
+NeutralPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
@@ -119,21 +134,28 @@ export const Danger: StoryFn<typeof Button> = () => (
       <TrashIcon aria-hidden fontSize='1.5rem' />
       Slett
     </Button>
+    <Button variant='secondary' color='danger'>
+      <TrashIcon aria-hidden fontSize='1.5rem' />
+      Slett
+    </Button>
+    <Button variant='tertiary' color='danger'>
+      <TrashIcon aria-hidden fontSize='1.5rem' />
+      Slett
+    </Button>
   </>
 );
 
-Danger.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
+export const DangerHover = Danger.bind({});
+DangerHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const DangerPressed = Danger.bind({});
+DangerPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
@@ -148,8 +170,6 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-CombinedColors.decorators = [stack];
 
 export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
@@ -173,8 +193,6 @@ export const TextAndIcon: StoryFn<typeof Button> = () => (
   </>
 );
 
-TextAndIcon.decorators = [stack];
-
 export const Loading: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' loading>
@@ -188,8 +206,6 @@ export const Loading: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-Loading.decorators = [stack];
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
@@ -217,8 +233,6 @@ export const Icons: StoryFn<typeof Button> = () => (
   </>
 );
 
-Icons.decorators = [stack];
-
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
@@ -243,19 +257,12 @@ export const IconOnly: StoryFn<typeof Button> = () => (
     </Tooltip>
   </>
 );
-
-IconOnly.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, auto)',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
+IconOnly.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, auto)',
+  },
+};
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
@@ -270,5 +277,3 @@ export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
-
-IconsOnlyPrimary.decorators = [stack];

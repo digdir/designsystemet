@@ -30,6 +30,15 @@ import classes from './showcase.module.css';
 
 export default {
   title: 'Showcase',
+  parameters: {
+    chromatic: {
+      modes: {
+        mobile: {
+          disable: true,
+        },
+      },
+    },
+  },
 } as Meta;
 
 export const Showcase: StoryFn = () => {

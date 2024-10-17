@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.0.0-next.35
+
+### Patch Changes
+
+- Body/Paragraph ([#2529](https://github.com/digdir/designsystemet/pull/2529))
+  - Add body-xl token
+  - Add xl paragraph
+  - Remove ingress tokens
+
 ## 1.0.0-next.34
 
 ## 1.0.0-next.33

@@ -7,11 +7,12 @@
   gap: var(--ds-spacing-4);
 }
 
-.container .img {
-  box-shadow: none;
+.image {
   margin: 0;
+  width: 100%;
+  box-shadow: none;
 }
 
-.boxShadow .img {
+.boxShadow .image {
   box-shadow: var(--ds-shadow-md);
 }

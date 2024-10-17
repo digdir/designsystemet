@@ -9,14 +9,10 @@ type Story = StoryObj<typeof Tag>;
 export default {
   title: 'Komponenter/Tag',
   component: Tag,
-  decorators: [
-    (Story) => (
-      <Stack style={{ justifyContent: 'start' }}>
-        <Story />
-      </Stack>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    customStyles: { justifyContent: 'start' },
+  },
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {

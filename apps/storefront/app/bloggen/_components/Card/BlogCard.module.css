@@ -1,5 +1,5 @@
 .image {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
 }
 
 @media screen and (min-width: 1024px) {

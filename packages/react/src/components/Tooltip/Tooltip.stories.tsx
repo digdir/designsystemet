@@ -7,18 +7,14 @@ import { Tooltip } from '.';
 type Story = StoryObj<typeof Tooltip>;
 
 const defaultChildren = <Button>My trigger</Button>;
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '2rem' }}>
-      <Story />
-    </div>
-  ),
-];
 
 export default {
   title: 'Komponenter/Tooltip',
   component: Tooltip,
-} as Meta;
+  parameters: {
+    customStyles: { margin: '2rem' },
+  },
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {
@@ -26,7 +22,6 @@ export const Preview: Story = {
     children: defaultChildren,
     placement: 'top',
   },
-  decorators,
 };
 
 export const Placement: Story = {
@@ -35,7 +30,6 @@ export const Placement: Story = {
     placement: 'bottom',
     children: defaultChildren,
   },
-  decorators,
 };
 
 export const DefaultOpen: Story = {
@@ -44,7 +38,6 @@ export const DefaultOpen: Story = {
     defaultOpen: true,
     children: defaultChildren,
   },
-  decorators,
   play: async () => {
     // Wait 500 ms to let tooltip fade in before running tests
     await new Promise((resolve) => setTimeout(resolve, 500));

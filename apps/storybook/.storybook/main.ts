@@ -38,6 +38,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-storysource'),
     '@storybook/addon-themes',
+    'storybook-addon-pseudo-states',
   ],
   staticDirs: ['../assets'],
   framework: {

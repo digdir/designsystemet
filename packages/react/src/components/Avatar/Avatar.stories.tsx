@@ -7,26 +7,18 @@ import { Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 
-const meta: Meta = {
+const meta: Meta<typeof Avatar> = {
   title: 'Komponenter/Avatar',
   component: Avatar,
   parameters: {
     layout: 'padded',
+    customStyles: {
+      display: 'flex',
+      gap: 'var(--ds-spacing-2)',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-spacing-2)',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
@@ -101,7 +93,7 @@ export const InDropdown: Story = () => (
       </Avatar>
       Velg Profil
     </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' size='md'>
+    <Dropdown placement='bottom-end' size='md' open>
       <Dropdown.Heading>Alle kontoer</Dropdown.Heading>
       <Dropdown.List>
         <Dropdown.Item>
@@ -122,6 +114,12 @@ export const InDropdown: Story = () => (
     </Dropdown>
   </Dropdown.Context>
 );
+InDropdown.parameters = {
+  layout: 'fullscreen',
+  customStyles: {
+    height: '320px',
+  },
+};
 
 export const AsLink: Story = () => (
   <a href='#'>

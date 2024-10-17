@@ -9,12 +9,20 @@ type Story = StoryObj<typeof Skeleton>;
 export default {
   title: 'Komponenter/Loaders/Skeleton',
   component: Skeleton,
+  parameters: {
+    a11y: {
+      config: {
+        // Disable a11y empty heading rule as we intentionally set aria-hidden="true" on the Skeleton component inside Headings
+        rules: [{ id: 'empty-heading', selector: ':has(.ds-skeleton)' }],
+      },
+    },
+  },
 } as Meta;
 
 export const Preview: Story = {
   args: {
-    width: '200px',
-    height: '100px',
+    width: 200,
+    height: 100,
   },
 };
 
@@ -29,7 +37,9 @@ export const Components: StoryFn<typeof Text> = () => {
     >
       <Skeleton variant='circle' width='50px' height='50px' />
       <Skeleton variant='rectangle' width='100px' height='50px' />
-      <Skeleton variant='text' width='50px' height='16px' />
+      <Paragraph>
+        <Skeleton variant='text' width='10' />
+      </Paragraph>
     </div>
   );
 };
@@ -38,7 +48,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
   return (
     <div
       style={{
-        width: '400px',
+        maxWidth: 400,
       }}
     >
       <Skeleton height='150px' />
@@ -51,13 +61,11 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         }}
       >
         <Skeleton variant='circle' width='30px' height='30px' />
-        <Heading asChild size='md'>
+        <Heading size='md'>
           <Skeleton variant='text'>En medium tittel</Skeleton>
         </Heading>
       </div>
-      <Skeleton variant='text' />
-      <Skeleton variant='text' />
-      <Skeleton variant='text' width='80%' />
+      <Skeleton variant='text' width='140' />
     </div>
   );
 };
@@ -76,49 +84,21 @@ export const Children: StoryFn<typeof Skeleton> = () => {
   );
 };
 
-export const As: StoryFn<typeof Skeleton> = () => {
-  return (
-    <>
-      <Heading size='lg' asChild>
-        <Skeleton variant='text'>Her er en heading</Skeleton>
+export const Text: StoryFn<typeof Skeleton> = () => (
+  <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
+    <div style={{ flex: '1 1 200px' }}>
+      <Heading size='md'>En tittel</Heading>
+      <Paragraph size='sm'>
+        Her er en paragraf som går over flere linjer
+      </Paragraph>
+    </div>
+    <div style={{ flex: '1 1 200px' }}>
+      <Heading size='md'>
+        <Skeleton variant='text'>En tittel</Skeleton>
       </Heading>
-      <Paragraph asChild>
-        <Skeleton variant='text'>
-          Her er en paragraf-komponent som blir rendret som en Skeleton
-          variant="text".
-        </Skeleton>
+      <Paragraph size='sm'>
+        <Skeleton variant='text' width={40} />
       </Paragraph>
-      <Paragraph asChild>
-        <Skeleton variant='text'>
-          Se hvordan Skeleton da overskriver stylingen til det enkelte
-          elementet.
-        </Skeleton>
-      </Paragraph>
-    </>
-  );
-};
-
-export const TextExample: StoryFn<typeof Text> = () => {
-  return (
-    <>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <div style={{ width: '140px' }}>
-          <Heading size='md'>Heading</Heading>
-          <Paragraph size='sm'>
-            Her er en paragraf som går over flere linjer
-          </Paragraph>
-        </div>
-        <div style={{ width: '140px' }}>
-          <Heading size='md' asChild>
-            <Skeleton variant='text'>Heading</Skeleton>
-          </Heading>
-          <Paragraph size='sm'>
-            <Skeleton variant='text' />
-            <Skeleton variant='text' />
-            <Skeleton variant='text' width={80} />
-          </Paragraph>
-        </div>
-      </div>
-    </>
-  );
-};
+    </div>
+  </div>
+);

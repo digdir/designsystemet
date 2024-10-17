@@ -23,7 +23,7 @@ const config: TestRunnerConfig = {
      */
 
     await configureAxe(page, {
-      // Apply story-level a11y rules
+      // Apply a11y rules set through parameters (global, component or story level)
       rules: storyContext.parameters?.a11y?.config?.rules,
     });
 
@@ -31,7 +31,7 @@ const config: TestRunnerConfig = {
     if (!isA11yDisabled) {
       await checkA11y(
         page,
-        '#storybook-root',
+        storyContext.parameters?.a11y?.element ?? ['#storybook-root'],
         {
           detailedReport: true,
           detailedReportOptions: {

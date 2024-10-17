@@ -9,8 +9,8 @@
   --dsc-chip-input-size: var(--ds-spacing-5);
   --dsc-chip-padding: 0 var(--ds-spacing-3);
 
-  @composes ds-focus from './utilities.css';
-  @composes ds-paragraph-short from './utilities.css';
+  @composes ds-focus from './base/base.css';
+  @composes ds-body-text--short-sm from './base/base.css';
 
   align-items: center;
   background: var(--dsc-chip-background);
@@ -27,7 +27,7 @@
 
   /* Make focus ring also when input inside is focused */
   &:has(:focus-visible) {
-    @composes ds-focus--visible from './utilities.css';
+    @composes ds-focus--visible from './base/base.css';
   }
 
   &:disabled,
@@ -49,7 +49,7 @@
     content: '';
     height: var(--dsc-chip-icon-size);
     margin: 0 calc(var(--gap) * -1) 0 var(--gap);
-    mask: center/contain no-repeat
+    mask: center / contain no-repeat
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
     width: var(--dsc-chip-icon-size);
   }
@@ -58,12 +58,16 @@
     --dsc-chip-height: var(--ds-sizing-7);
     --dsc-chip-icon-size: var(--ds-sizing-5);
     --dsc-chip-input-size: var(--ds-spacing-4);
+
+    @composes ds-body-text--short-xs from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-chip-height: var(--ds-sizing-9);
     --dsc-chip-icon-size: var(--ds-sizing-7);
     --dsc-chip-input-size: var(--ds-spacing-6);
+
+    @composes ds-body-text--short-md from './base/base.css';
   }
 
   & > input {
@@ -86,7 +90,7 @@
 
     &[type='checkbox']:checked {
       background: currentcolor;
-      mask: center/cover no-repeat
+      mask: center / cover no-repeat
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M24 0H0v24h24V0Zm-4.44 8.56a1.5 1.5 0 0 0-2.12-2.12L10 13.88l-3.44-3.44a1.5 1.5 0 0 0-2.12 2.12l4.5 4.5a1.5 1.5 0 0 0 2.12 0l8.5-8.5Z'/%3E%3C/svg%3E");
     }
   }

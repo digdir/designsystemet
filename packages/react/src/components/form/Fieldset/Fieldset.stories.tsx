@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Label } from '../../Label';
 import { Textarea } from '../Textarea';
 import { Textfield } from '../Textfield';
 
@@ -16,7 +17,8 @@ export const Preview: Story = (args) => (
   <form>
     <Fieldset {...args}>
       <Textfield label='Kort beskrivelse'></Textfield>
-      <Textarea label='Lang beskrivelse'></Textarea>
+      <Label htmlFor='my-textarea'>Lang beskrivelse</Label>
+      <Textarea id='my-textarea' />
     </Fieldset>
   </form>
 );

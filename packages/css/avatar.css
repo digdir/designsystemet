@@ -19,7 +19,7 @@
   text-transform: uppercase;
   user-select: none;
 
-  @composes ds-body-text--xs from './utilities.css';
+  @composes ds-body-text--xs from './base/base.css';
 
   &:not(:has(> img)) {
     padding: var(--dsc-avatar-padding);
@@ -83,27 +83,27 @@
     --dsc-avatar-size: var(--ds-sizing-7);
     --dsc-avatar-padding: var(--ds-spacing-1);
 
-    @composes ds-body-text--xs from './utilities.css';
+    @composes ds-body-text--xs from './base/base.css';
   }
 
   &[data-size='sm'] {
     --dsc-avatar-size: var(--ds-sizing-9);
     --dsc-avatar-padding: var(--ds-spacing-1);
 
-    @composes ds-heading-text--2xs from './utilities.css';
+    @composes ds-heading-text--2xs from './base/base.css';
   }
 
   &[data-size='md'] {
     --dsc-avatar-size: var(--ds-sizing-12);
     --dsc-avatar-padding: var(--ds-spacing-2);
 
-    @composes ds-heading-text--sm from './utilities.css';
+    @composes ds-heading-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-avatar-size: var(--ds-sizing-15);
     --dsc-avatar-padding: var(--ds-spacing-2);
 
-    @composes ds-heading-text--md from './utilities.css';
+    @composes ds-heading-text--md from './base/base.css';
   }
 }

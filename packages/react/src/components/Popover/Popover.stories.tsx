@@ -1,20 +1,32 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useEffect, useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
 import { Popover } from '.';
 
-const marginDecorator = (Story: StoryFn) => (
-  <div style={{ margin: '10rem' }}>
-    <Story />
-  </div>
-);
-
 export default {
   title: 'Komponenter/Popover',
   component: Popover,
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      display: 'flex',
+      placeItems: 'end',
+      placeContent: 'center',
+      padding: '1rem 2rem',
+    },
+  },
+  play: async (ctx) => {
+    // When not in Docs mode, automatically open the popover
+    const canvas = within(ctx.canvasElement);
+    const button = canvas.getByRole('button');
+    await userEvent.click(button);
+    const popover = ctx.canvasElement.querySelector('[popover]');
+    await expect(popover).toBeVisible();
+  },
+} satisfies Meta;
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
   return (
@@ -30,8 +42,11 @@ Preview.args = {
   size: 'md',
   variant: 'default',
 };
-
-Preview.decorators = [marginDecorator];
+Preview.parameters = {
+  customStyles: {
+    paddingTop: '5rem',
+  },
+};
 
 export const Variants: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
@@ -39,36 +54,56 @@ export const Variants: StoryFn<typeof Popover> = () => {
   useEffect(() => setOpen(true), []);
 
   return (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Popover.Context>
-        <Popover.Trigger>popover</Popover.Trigger>
-        <Popover open={open} placement='top'>
-          default
-        </Popover>
-      </Popover.Context>
-      <Popover.Context>
-        <Popover.Trigger>popover</Popover.Trigger>
-        <Popover open={open} placement='bottom' variant='danger'>
-          danger
-        </Popover>
-      </Popover.Context>
-      <Popover.Context>
-        <Popover.Trigger>popover</Popover.Trigger>
-        <Popover open={open} placement='top' variant='info'>
-          info
-        </Popover>
-      </Popover.Context>
-      <Popover.Context>
-        <Popover.Trigger>popover</Popover.Trigger>
-        <Popover open={open} placement='bottom' variant='warning'>
-          warning
-        </Popover>
-      </Popover.Context>
+    <div
+      style={{
+        height: '110px',
+        width: '240px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+          flexWrap: 'wrap',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <Popover.Context>
+          <Popover.Trigger>popover</Popover.Trigger>
+          <Popover open={open} placement='top'>
+            default
+          </Popover>
+        </Popover.Context>
+        <Popover.Context>
+          <Popover.Trigger>popover</Popover.Trigger>
+          <Popover open={open} placement='bottom' variant='danger'>
+            danger
+          </Popover>
+        </Popover.Context>
+        <Popover.Context>
+          <Popover.Trigger>popover</Popover.Trigger>
+          <Popover open={open} placement='top' variant='info'>
+            info
+          </Popover>
+        </Popover.Context>
+        <Popover.Context>
+          <Popover.Trigger>popover</Popover.Trigger>
+          <Popover open={open} placement='bottom' variant='warning'>
+            warning
+          </Popover>
+        </Popover.Context>
+      </div>
     </div>
   );
 };
-
-Variants.decorators = [marginDecorator];
+Variants.parameters = {
+  customStyles: {
+    padding: '5rem 1rem',
+  },
+};
+Variants.play = () => {};
 
 export const Controlled: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
@@ -92,8 +127,11 @@ export const Controlled: StoryFn<typeof Popover> = () => {
     </Popover.Context>
   );
 };
-
-Controlled.decorators = [marginDecorator];
+Controlled.parameters = {
+  customStyles: {
+    padding: '8rem 6rem 1rem',
+  },
+};
 
 export const WithoutContext: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
@@ -116,4 +154,9 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
       </Popover>
     </>
   );
+};
+WithoutContext.parameters = {
+  customStyles: {
+    padding: '8rem 6rem 1rem',
+  },
 };

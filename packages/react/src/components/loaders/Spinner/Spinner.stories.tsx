@@ -4,25 +4,17 @@ import { Spinner } from '.';
 
 type Story = StoryFn<typeof Spinner>;
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div
-      style={{
-        margin: '5rem',
-        display: 'flex',
-        gap: '1rem',
-        alignItems: 'flex-end',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
 export default {
   title: 'Komponenter/Loaders/Spinner',
   component: Spinner,
-  decorators,
+  parameters: {
+    customStyles: {
+      display: 'grid',
+      gap: '1rem',
+      gridTemplateColumns: 'repeat(3, auto)',
+      placeItems: 'center',
+    },
+  },
 } as Meta;
 
 export const Preview: Story = (args) => <Spinner {...args} />;

@@ -20,6 +20,7 @@
   gap: var(--ds-spacing-5);
   text-align: center;
   margin: 0 auto;
+  margin-top: var(--ds-spacing-12);
 }
 
 .ingress {
@@ -60,6 +61,14 @@
   display: block;
   width: 860px;
   margin: var(--ds-spacing-12) 0;
+  margin-left: calc((100% - 860px) / 2) !important;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
+.content video,
+.content [data-iframe-video] {
+  display: block;
+  width: 860px;
   margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--ds-color-neutral-background-subtle);
 }
