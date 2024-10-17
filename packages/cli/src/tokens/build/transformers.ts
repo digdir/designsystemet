@@ -1,3 +1,4 @@
+import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
@@ -53,4 +54,17 @@ export const typographyName: Transform = {
   transform: (token) => {
     return token.name.replace('-typography', '');
   },
+};
+
+export const resolveMath: Transform = {
+  name: 'ds/resolveMath',
+  type: 'value',
+  transitive: true,
+  filter: (token) => {
+    const isValidValue = ['string', 'object'].includes(typeof (token.$value ?? token.value));
+    const isTokenOfInterest = !pathStartsWithOneOf(['border-radius'], token);
+
+    return isValidValue && isTokenOfInterest;
+  },
+  transform: (token, platformCfg) => checkAndEvaluateMath(token, platformCfg.mathFractionDigits),
 };

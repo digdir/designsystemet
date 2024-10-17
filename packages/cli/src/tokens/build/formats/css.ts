@@ -72,6 +72,7 @@ export const semantic: Format = {
         if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
           return calculatedVariable(format(token));
         }
+        return format(token);
       }
 
       return format(token);
