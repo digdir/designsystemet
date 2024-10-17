@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Do, Dont, Stack } from '@doc-components';
+import { Do, Dont, Stack, CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/alert.css?inline';
 
 import * as AlertStories from './Alert.stories';
 
@@ -161,3 +162,7 @@ Ikke bruk `role=alert` om `Alert` er synlig når siden lastes inn.
 Bruk `role=alert` hvis den dukker opp dynamisk underveis pga. brukerinput eller andre faktorer som kan utløse en alert.
 
 <Canvas of={AlertStories.MedAria} />
+
+## CSS Variabler
+
+<CssVariables css={css} />
