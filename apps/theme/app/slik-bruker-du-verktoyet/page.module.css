@@ -1,0 +1,30 @@
+.page {
+  margin-top: 24px;
+  margin-bottom: 64px;
+}
+
+.row {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.ingress {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.page img {
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.page h2,
+.page h3 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}

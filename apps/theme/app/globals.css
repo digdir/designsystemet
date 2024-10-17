@@ -26,8 +26,11 @@ body {
 }
 
 code {
-  background-color: #e0edff;
-  padding: 3px 6px;
+  background-color: #e9e9e9;
+  padding: 1px 5px;
   border-radius: 2px;
-  margin: 5px;
+}
+
+.content {
+  min-height: 100vh;
 }

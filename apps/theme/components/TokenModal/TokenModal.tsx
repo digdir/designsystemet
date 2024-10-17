@@ -103,6 +103,7 @@ export const TokenModal = ({
   return (
     <Modal.Context>
       <Modal.Trigger
+        className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();
         }}
