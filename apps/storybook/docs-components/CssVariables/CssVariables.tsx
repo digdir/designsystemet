@@ -1,40 +1,43 @@
 import { Table } from '@digdir/designsystemet-react';
-import { useEffect, useState } from 'react';
+import cl from 'clsx/lite';
+import { forwardRef, useEffect, useState } from 'react';
 
 type CssVariablesProps = {
   css: string;
-};
+} & React.HTMLAttributes<HTMLTableElement>;
 
-export function CssVariables({ css }: CssVariablesProps) {
-  const [cssVariables, setCssVariables] = useState<{ [key: string]: string }>(
-    {},
-  );
+export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
+  function CssVariables({ css, className, ...rest }, ref) {
+    const [cssVariables, setCssVariables] = useState<{ [key: string]: string }>(
+      {},
+    );
 
-  useEffect(() => {
-    const res = getCssVariables(css || '');
+    useEffect(() => {
+      const res = getCssVariables(css || '');
 
-    setCssVariables(res);
-  }, []);
+      setCssVariables(res);
+    }, []);
 
-  return (
-    <Table zebra className='sb-unstyled'>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Name</Table.HeaderCell>
-          <Table.HeaderCell>Value</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {Object.entries(cssVariables).map(([name, value]) => (
-          <Table.Row key={name}>
-            <Table.Cell>{name}</Table.Cell>
-            <Table.Cell>{value}</Table.Cell>
+    return (
+      <Table zebra className={cl('sb-unstyled', className)} {...rest} ref={ref}>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Value</Table.HeaderCell>
           </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
-  );
-}
+        </Table.Head>
+        <Table.Body>
+          {Object.entries(cssVariables).map(([name, value]) => (
+            <Table.Row key={name}>
+              <Table.Cell>{name}</Table.Cell>
+              <Table.Cell>{value}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    );
+  },
+);
 
 /* get variables and its value from css file */
 function getCssVariables(css: string) {
