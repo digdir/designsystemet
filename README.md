@@ -9,8 +9,6 @@
 
 <div align="center">
 
----
-
 </div>
 
 ## 📖 About Designsystemet
@@ -19,8 +17,6 @@ Designsystemet is a collection of important design elements, components and patt
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
----
-
 ## 🔗 Links
 
 [Storybook](https://storybook.designsystemet.no/) - Preview for React components.
@@ -28,8 +24,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 [Storefront](https://designsystemet.no/) - General documentation about the design system.
 
 [Theme](https://theme.designsystemet.no/) - Theme builder.
-
----
 
 ## 📦 Packages
 
@@ -46,8 +40,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 [`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react). Contains legacy components that are no longer maintained
 
 [`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme)
-
----
 
 ## 🚀 Get started
 
@@ -112,13 +104,9 @@ import { Button } from '@digdir/designsystemet-react';
 
 `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
 
----
-
 ## 🫶 Contributing
 
 Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
-
----
 
 ## 💪 Contributors
 
