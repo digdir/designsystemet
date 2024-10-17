@@ -6,7 +6,7 @@
 
   align-items: center;
   background: var(--dsc-tag-background);
-  border-radius: min(1rem, var(--ds-border-radius-sm));
+  border-radius: var(--ds-border-radius-sm);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
   display: flex;

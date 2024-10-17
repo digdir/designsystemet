@@ -129,7 +129,7 @@
    * Configurations
    */
   &[data-border] {
-    --dsc-table-border-radius: min(1rem, var(--ds-border-radius-md));
+    --dsc-table-border-radius: var(--ds-border-radius-md);
 
     border: var(--dsc-table-border);
 

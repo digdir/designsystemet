@@ -4,7 +4,7 @@
   --dsc-togglegroup-padding: var(--ds-spacing-1);
 
   background: var(--dsc-togglegroup-background);
-  border-radius: calc(var(--ds-border-radius-md) + var(--dsc-togglegroup-padding));
+  border-radius: calc(var(--ds-border-radius-default) + var(--dsc-togglegroup-padding));
   border: var(--dsc-togglegroup-border);
   display: grid;
   gap: var(--dsc-togglegroup-padding);
