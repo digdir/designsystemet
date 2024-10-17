@@ -1,17 +1,8 @@
-import { Button, Link, Textarea } from '@digdir/designsystemet-react';
-import {
-  AlignVerticalSpaceAround,
-  Check,
-  Palette,
-  Pencil,
-  Shapes,
-  Type,
-} from 'lucide-react';
+import { Button, Label, Link, Textarea } from '@digdir/designsystemet-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '@ui/components/Breadcrumbs/Breadcrumbs';
-import { Card } from '@ui/components/Card/Card';
 
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 
@@ -24,8 +15,6 @@ import classes from './Theme.module.css';
 function Theme() {
   const { themeId } = useParams();
   const themes = useThemeStore((state) => state.themes);
-  const [newName, setNewName] = useState('');
-  const [editMode, setEditMode] = useState(false);
   const setLoading = useThemeStore((state) => state.setLoading);
   const [theme, setTheme] = useState<ColorTheme>(getDummyTheme());
   const [command, setCommand] = useState('');
@@ -44,28 +33,6 @@ function Theme() {
         ?.colors as ColorTheme,
     );
   });
-
-  const changeName = () => {
-    setLoading(true);
-    setEditMode(false);
-    setTimeout(() => {
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: 'renameTheme',
-            renameTheme: {
-              newName: newName,
-              themeModeId: themes.find((theme) => theme.themeModeId === themeId)
-                ?.themeModeId,
-              themeId: themes.find((theme) => theme.themeModeId === themeId)
-                ?.themeId,
-            },
-          },
-        },
-        '*',
-      );
-    }, 500);
-  };
 
   const handleClick = () => {
     const pattern =
@@ -119,26 +86,6 @@ function Theme() {
     }
   };
 
-  const deleteClicked = () => {
-    setLoading(true);
-    setTimeout(() => {
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: 'deleteTheme',
-            deleteTheme: {
-              themeModeId: themes.find((theme) => theme.themeModeId === themeId)
-                ?.themeModeId,
-              themeId: themes.find((theme) => theme.themeModeId === themeId)
-                ?.themeId,
-            },
-          },
-        },
-        '*',
-      );
-    }, 500);
-  };
-
   return (
     <div className={classes.content}>
       <div className={classes.header}>
@@ -149,41 +96,7 @@ function Theme() {
             }
             url='/'
           />
-
-          {/* {!editMode && (
-            <Pencil
-              size={16}
-              className={classes.edit}
-              onClick={() => setEditMode(true)}
-            />
-          )}
-          {editMode && (
-            <>
-              <input
-                type='text'
-                placeholder='Nytt navn...'
-                onChange={(e) => Tomato(e.target.value)}
-                className={classes.input}
-              />
-              <Check
-                onClick={() => changeName()}
-                size={18}
-                className={classes.edit}
-              />
-            </>
-          )} */}
         </div>
-        {/* <div className={classes.headerRight}>
-          <Button
-            size='sm'
-            color='danger'
-            variant='tertiary'
-            className={classes.removeBtn}
-            onClick={() => deleteClicked()}
-          >
-            Slett tema
-          </Button>
-        </div> */}
       </div>
       <div>
         <p className={classes.text}>
@@ -195,14 +108,13 @@ function Theme() {
           fargene som blir oppdatert for øyeblikket. Vi jobber med å utvide
           pluginen med mer funksjonalitet senere.
         </p>
-
+        <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           size='sm'
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           name=''
-          label='Kodesnutt fra temabyggeren'
-          id=''
+          id='my-textarea'
           cols={22}
           className={classes.textarea}
           placeholder='Lim inn her...'
@@ -217,28 +129,7 @@ function Theme() {
           Oppdater tema
         </Button>
       </div>
-      <div className={classes.cards}>
-        {/* <Card
-          url={'/themes/' + themeId + '/colors'}
-          title='Farger'
-          icon={<Palette />}
-        /> */}
-        {/* <Card
-          url='/themes/altinn/colors'
-          title='Border Radius'
-          icon={<Shapes />}
-        />
-        <Card
-          url={'/themes/' + themeId + '/fonts'}
-          title='Fonter'
-          icon={<Type />}
-        />
-        <Card
-          url='/themes/altinn/colors'
-          title='Avstander'
-          icon={<AlignVerticalSpaceAround />}
-        /> */}
-      </div>
+      <div className={classes.cards}></div>
     </div>
   );
 }

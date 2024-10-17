@@ -45,16 +45,6 @@ export type StoreTheme = {
   themeId: string;
   themeModeId: string;
   colors: ColorTheme;
-  fonts: FontTheme;
-};
-
-export type FontTheme = FontInfo[];
-
-export type FontInfo = {
-  name: string;
-  regularWeight: string;
-  boldWeight: string;
-  extraBoldWeight: string;
 };
 
 export type ColorTheme = {
@@ -78,20 +68,13 @@ export type StoreThemeModes = {
   colors: { brand1Base: string; brand2Base: string; brand3Base: string };
 };
 
-export type FontStore = {
-  name: string;
-  styles: string[];
-};
-
 type ColorStore = {
   themes: StoreThemes;
   loading: boolean;
-  fonts: FontStore[];
   codeSnipperError: string;
   noThemesFound: boolean;
   setThemes: (themes: StoreThemes) => void;
   setLoading: (loading: boolean) => void;
-  setFonts: (fonts: FontStore[]) => void;
   setCodeSnippetError: (error: string) => void;
   setNoThemesFound: (noThemesFound: boolean) => void;
 };
@@ -100,12 +83,10 @@ export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
     themes: [],
     loading: false,
-    fonts: [],
     codeSnipperError: '',
     noThemesFound: false,
     setThemes: (themes) => set({ themes }),
     setLoading: (loading) => set({ loading }),
-    setFonts: (fonts) => set({ fonts }),
     setCodeSnippetError: (codeSnipperError) => set({ codeSnipperError }),
     setNoThemesFound: (noThemesFound) => set({ noThemesFound }),
   })),
