@@ -30,3 +30,7 @@ code {
   padding: 1px 5px;
   border-radius: 2px;
 }
+
+.content {
+  min-height: 100vh;
+}

@@ -68,7 +68,7 @@ export default function RootLayout({
     <html lang='no'>
       <body>
         <Header menu={menu} betaTag />
-        {children}
+        <div className='content'>{children}</div>
         <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
       </body>
     </html>

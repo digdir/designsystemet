@@ -22,6 +22,20 @@ export default function Home() {
             </Paragraph>
 
             <Heading level={2} size='md'>
+              Hva er et tema?
+            </Heading>
+
+            <Paragraph>
+              Et tema er en samling av design tokens som kan overstyres via
+              temabyggeren for å skape sitt eget unike visuelle utrykk. Akkuratt
+              nå er det kun farger som kan overstyres, men vi jobber med å
+              utvide med flere ting i fremtiden. Det neste som kommer er
+              mulighet for å endre på fonter og border-radius. Vi vil også legge
+              opp til at man kan ha flere forskjellige temaer samtidig om man
+              skulle trenge det.
+            </Paragraph>
+
+            <Heading level={2} size='md'>
               Farger og WCAG
             </Heading>
             <Paragraph>
