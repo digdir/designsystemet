@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/avatar.css?inline';
 import * as AvatarStories from './Avatar.stories';
 
 <Meta of={AvatarStories} />
@@ -73,3 +74,7 @@ Legg lenker eller knapper rundt `Avatar` for å gjøre det klikkbart.
 Du må selv sette styling dersom du skal ha en interaktiv `Avatar`.
 
 <Canvas of={AvatarStories.AsLink} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

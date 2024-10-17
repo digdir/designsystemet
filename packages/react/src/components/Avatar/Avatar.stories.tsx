@@ -93,8 +93,7 @@ export const InDropdown: Story = () => (
       </Avatar>
       Velg Profil
     </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' size='md' open>
-      <Dropdown.Heading>Alle kontoer</Dropdown.Heading>
+    <Dropdown placement='bottom-end' size='md'>
       <Dropdown.List>
         <Dropdown.Item>
           <Badge overlap='circle' color='danger' size='sm'>
