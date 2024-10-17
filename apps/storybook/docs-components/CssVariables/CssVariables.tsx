@@ -13,10 +13,8 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
     );
 
     useEffect(() => {
-      const res = getCssVariables(css || '');
-
-      setCssVariables(res);
-    }, []);
+      setCssVariables(getCssVariables(css || ''));
+    }, [css, setCssVariables]);
 
     return (
       <Table
