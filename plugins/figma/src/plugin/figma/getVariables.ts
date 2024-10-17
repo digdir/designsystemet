@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import { rgbToHex } from '@common/utils';
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 export const getVariables = async () => {
   const variables = await figma.variables.getLocalVariablesAsync();
   const arr = [];

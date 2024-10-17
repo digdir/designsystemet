@@ -1,9 +1,5 @@
-import { Button } from '@digdir/designsystemet-react';
-import { useEffect } from 'react';
-
 import { Card } from '@ui/components/Card/Card';
-import { CardButton } from '@ui/components/CardButton/CardButton';
-
+import { useEffect } from 'react';
 import { useThemeStore } from '../../../common/store';
 
 import classes from './Themes.module.css';
@@ -23,8 +19,6 @@ function Themes() {
 
   return (
     <div className={classes.content}>
-      {/* <Button onClick={() => handleClick2()}>Add theme</Button>
-      <Button onClick={() => handleClick()}>update variable</Button> */}
       {noThemeFound && (
         <p className={classes.noThemes}>
           Fant ingen temaer. Husk at du må åpne pluginen i designsystemet sin
@@ -46,7 +40,6 @@ function Themes() {
             />
           );
         })}
-        {/* <CardButton url='/theme/add' /> */}
       </div>
     </div>
   );

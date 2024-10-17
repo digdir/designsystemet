@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Toaster } from 'react-hot-toast';
 import { MemoryRouter } from 'react-router-dom';
 
 async function bootstrap() {
@@ -13,7 +12,6 @@ async function bootstrap() {
     <React.StrictMode>
       <MemoryRouter>
         <App />
-        <Toaster />
       </MemoryRouter>
     </React.StrictMode>,
   );

@@ -22,7 +22,6 @@ const updateColors = (
   const themeName = variable.name.split('/')[0] as FigmaModeName;
   const themeType = variable.name.split('/')[1] as ThemeColors;
   const themeIndex = variable.name.split('/')[2] as ColorIndex;
-
   if (
     variable.variableCollectionId === modeCollection.id &&
     !variable.name.startsWith('global')

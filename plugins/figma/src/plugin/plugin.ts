@@ -44,7 +44,6 @@ figma.ui.onmessage = (msg: {
 
       case 'getThemes': {
         const themes = await getThemes();
-        console.log('themes - ', themes);
         figma.ui.postMessage({ type: 'getThemes', themes: themes });
         break;
       }
