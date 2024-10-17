@@ -84,7 +84,7 @@
     width: var(--dsc-chip-input-size);
 
     &[type='radio'] {
-      border-radius: 50%;
+      border-radius: var(--ds-border-radius-full);
     }
 
     &[type='radio']:checked {
