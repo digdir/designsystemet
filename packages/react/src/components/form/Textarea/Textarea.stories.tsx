@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Label, Paragraph } from '../..';
+import { Button, Divider, Label, Paragraph } from '../..';
 
 import { Textarea } from '.';
 
@@ -82,7 +82,6 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
 
   return (
     <>
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
       <Label htmlFor={args.id}>Kontroller meg!</Label>
       <Textarea
         cols={40}
@@ -90,6 +89,12 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
         value={value}
         {...args}
       />
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har skrevet inn: {value}
+      </Paragraph>
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
