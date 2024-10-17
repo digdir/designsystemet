@@ -2,9 +2,10 @@
   --dsc-togglegroup-background: var(--ds-color-neutral-background-default);
   --dsc-togglegroup-border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-default);
   --dsc-togglegroup-padding: var(--ds-spacing-1);
+  --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
 
   background: var(--dsc-togglegroup-background);
-  border-radius: calc(var(--ds-border-radius-default) + var(--dsc-togglegroup-padding));
+  border-radius: calc(var(--dsc-togglegroup-border-radius) + var(--dsc-togglegroup-padding));
   border: var(--dsc-togglegroup-border);
   display: grid;
   gap: var(--dsc-togglegroup-padding);
@@ -13,4 +14,8 @@
   height: fit-content;
   padding: var(--dsc-togglegroup-padding);
   width: fit-content;
+
+  button {
+    border-radius: var(--dsc-togglegroup-border-radius);
+  }
 }
