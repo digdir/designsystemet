@@ -6,11 +6,10 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import * as configs from './build/configs.js';
+import { configs, getConfigsForThemeDimension } from './build/configs.js';
+import type { BuildConfig, ThemePermutation } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
-import { type PermutatedTheme, groupThemes } from './build/utils/permutateThemes.js';
-
-const { permutateThemes, getConfigs } = configs;
+import { getMultidimensionalThemes } from './build/utils/permutateThemes.js';
 
 type Options = {
   /** Design tokens path */
@@ -23,130 +22,77 @@ type Options = {
   verbose: boolean;
 };
 
-// type FormattedCSSPlatform = { css: { output: string; destination: string }[] };
+export let buildOptions: Options | undefined;
 
 const sd = new StyleDictionary();
 
+/*
+ * Declarative configuration of the build output
+ */
+const buildConfigs = {
+  typography: { config: 'typographyVariables', modes: ['typography'] },
+  'color-mode': { config: 'colorModeVariables', modes: ['mode'] },
+  semantic: { config: 'semanticVariables', modes: ['semantic'] },
+  storefront: {
+    name: 'Storefront preview tokens',
+    config: 'typescriptTokens',
+    modes: ['mode'],
+    options: { outPath: path.resolve('../../apps/storefront/tokens') },
+  },
+} satisfies Record<string, BuildConfig>;
+
 export async function buildTokens(options: Options): Promise<void> {
-  const verbosity = options.verbose ? 'verbose' : 'silent';
+  buildOptions = options;
   const tokensDir = options.tokens;
-  const storefrontOutDir = path.resolve('../../apps/storefront/tokens');
   const outPath = path.resolve(options.out);
 
+  /*
+   * Build the themes
+   */
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
-  const relevant$themes = $themes.filter((theme) => {
-    const group = R.toLower(R.defaultTo('')(theme.group));
-    if (group === 'size' && theme.name.toLowerCase() !== 'default') return false;
-
-    return true;
-  });
-
-  const grouped$themes = groupThemes(relevant$themes);
-  const themes = permutateThemes(grouped$themes);
-  type ThemeDimension = keyof typeof grouped$themes;
-
-  /**
-   * Find the theme permutations that are relevant for the given theme dimensions.
-   *
-   * Technically, for the given dimensions all permutations are included, while for other
-   * dimensions the first permutation is used.
-   *
-   * @param dimensions Which theme dimensions to return permutations for.
-   *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
-   * @returns the relevant theme permutations
-   */
-  const getThemesFor = (...dimensions: ThemeDimension[]) => {
-    const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
-    const keys = R.keys(grouped$themes);
-    const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
-    if (verbosity === 'verbose') {
-      console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
-      console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
-    }
-    return themes.filter((val: PermutatedTheme) => {
-      const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
-      return filters.every((x) => x);
-    });
-  };
-
-  const typographyThemes = getThemesFor('typography');
-  const colormodeThemes = getThemesFor('mode');
-  const semanticThemes = getThemesFor('semantic');
-
-  const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes, verbosity);
-  const semanticConfigs = getConfigs(configs.semanticVariables, outPath, tokensDir, semanticThemes, verbosity);
-  const typographyConfigs = getConfigs(configs.typographyVariables, outPath, tokensDir, typographyThemes, verbosity);
-  const storefrontConfigs = getConfigs(
-    configs.typescriptTokens,
-    storefrontOutDir,
-    tokensDir,
-    colormodeThemes,
-    verbosity,
+  // We only use the 'default' theme for the 'size' group
+  const relevant$themes = $themes.filter((theme) =>
+    R.not(theme.group === 'size' && theme.name.toLowerCase() !== 'default'),
+  );
+  const buildAndSdConfigs = R.map(
+    (val: BuildConfig) => ({
+      buildConfig: val,
+      sdConfigs: getConfigsForThemeDimension(
+        configs[val.config],
+        getMultidimensionalThemes(relevant$themes, ...val.modes),
+        {
+          outPath,
+          tokensDir,
+          ...val.options,
+        },
+      ),
+    }),
+    buildConfigs,
   );
 
   try {
-    if (typographyConfigs.length > 0) {
-      console.log(`\n🍱 Building ${chalk.green('typography')}`);
+    for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
+      if (sdConfigs.length > 0) {
+        console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
-      await Promise.all(
-        typographyConfigs.map(async ({ theme, typography, config }) => {
-          console.log(`👷 ${theme} - ${typography}`);
+        await Promise.all(
+          sdConfigs.map(async ({ config, ...modeNames }) => {
+            const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.modes];
+            const modeMessage = modes.map((x) => modeNames[x]).join(' - ');
+            console.log(modeMessage);
 
-          const typographyClasses = await sd.extend(config);
-
-          return typographyClasses.buildAllPlatforms();
-        }),
-      );
+            return (await sd.extend(config)).buildAllPlatforms();
+          }),
+        );
+      }
     }
 
-    if (colorModeConfigs.length > 0) {
-      console.log(`\n🍱 Building ${chalk.green('color-mode')}`);
+    if (buildAndSdConfigs.semantic.sdConfigs.length > 0) {
+      console.log(`\n🍱 Building ${chalk.green('CSS entry files')}`);
 
       await Promise.all(
-        colorModeConfigs.map(async ({ theme, mode, config }) => {
-          console.log(`👷 ${theme} - ${mode}`);
-
-          const themeVariablesSD = await sd.extend(config);
-
-          return themeVariablesSD.buildAllPlatforms();
-        }),
-      );
-    }
-
-    if (semanticConfigs.length > 0) {
-      console.log(`\n🍱 Building ${chalk.green('semantic')}`);
-
-      await Promise.all(
-        semanticConfigs.map(async ({ theme, config, semantic }) => {
-          console.log(`👷 ${theme} - ${semantic}`);
-
-          const typographyClasses = await sd.extend(config);
-
-          return typographyClasses.buildAllPlatforms();
-        }),
-      );
-    }
-
-    if (storefrontConfigs.length > 0 && options.preview) {
-      console.log(`\n🍱 Building ${chalk.green('Storefront preview tokens')}`);
-
-      await Promise.all(
-        storefrontConfigs.map(async ({ theme, mode, config }) => {
-          console.log(`👷 ${theme} - ${mode}`);
-
-          const storefrontSD = await sd.extend(config);
-
-          return storefrontSD.buildAllPlatforms();
-        }),
-      );
-    }
-
-    if (semanticConfigs.length > 0) {
-      console.log(`\n🍱 Building ${chalk.green('CSS file')}`);
-
-      await Promise.all(
-        semanticConfigs.map(async ({ theme }) => {
+        buildAndSdConfigs.semantic.sdConfigs.map(async ({ theme }) => {
           console.log(`👷 ${theme}.css`);
 
           return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
