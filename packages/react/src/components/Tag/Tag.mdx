@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/tag.css?inline';
 import * as TagStories from './Tag.stories';
 
 <Meta of={TagStories} />
@@ -41,3 +42,7 @@ import { Tag } from '@digdir/designsystemet-react';
 ## Colors
 
 <Canvas of={TagStories.Colors} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

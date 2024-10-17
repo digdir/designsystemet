@@ -1,8 +1,10 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+import { CssVariables } from '@doc-components';
 
 import * as AccordionStories from './Accordion.stories';
 
 import { Accordion } from '.';
+import css from '@digdir/designsystemet-css/accordion.css?inline';
 
 <Meta of={AccordionStories} />
 
@@ -123,3 +125,7 @@ Ikke plasser andre interaktive elementer inn i `Accordion`-heading, da hele rade
 ### Accordion.Content
 
 <ArgTypes of={Accordion.Content} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

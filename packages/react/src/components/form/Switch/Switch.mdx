@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/switch.css?inline';
 import * as SwitchStories from './Switch.stories';
 
 <Meta of={SwitchStories} />
@@ -86,6 +87,10 @@ Hvis du har en gruppe med flere vippebrytere, må du passe på at du er konsekve
 
 Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter. Dette gjør at skjermlesere kan gi brukeren informasjon om at dette er en vippebryter og at den kan skrus av og på.
 Det er ikke lagt på `aria-checked` siden dette er ikke nødvendig når bryteren er en input med `type="checkbox"`. <sup>1</sup>
+
+## CSS Variabler
+
+<CssVariables css={css} />
 
 ### Referanser
 

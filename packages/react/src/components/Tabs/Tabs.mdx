@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/tabs.css?inline';
 import { Tabs } from './Tabs';
 import { TabsTab } from './TabsTab';
 import { TabsPanel } from './TabsPanel';
@@ -62,3 +63,7 @@ Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å br
 | sm               | 1.25rem               |
 | md               | 1.75rem               |
 | lg               | 2.25rem               |
+
+## CSS Variabler
+
+<CssVariables css={css} />

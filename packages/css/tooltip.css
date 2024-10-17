@@ -1,11 +1,14 @@
 .ds-tooltip {
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
+  --dsc-tooltip-color: var(--ds-color-neutral-background-default);
+  --dsc-tooltip-border-radius: var(--ds-border-radius-md);
+  --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
 
   background: var(--dsc-tooltip-background);
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
-  color: var(--ds-color-neutral-background-default);
-  padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  color: var(--dsc-tooltip-color);
+  padding: var(--dsc-tooltip-padding);
 
   @composes ds-body-text--short-xs from './base/base.css';
 }

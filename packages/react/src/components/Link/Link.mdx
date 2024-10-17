@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/link.css?inline';
 import * as LinkStories from './Link.stories';
 
 <Meta of={LinkStories} />
@@ -79,6 +80,10 @@ Fokus legger på ein bakgrunn rundt lenken.
 Når brukeren har besøkt en lenke tidligere, vil fargen på lenken endres.
 
 <br/>
+
+## CSS Variabler
+
+<CssVariables css={css} />
 
 ## Kjente mangler
 

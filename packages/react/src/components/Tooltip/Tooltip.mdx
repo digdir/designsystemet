@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/tooltip.css?inline';
 import * as TooltipStories from './Tooltip.stories.tsx';
 
 <Meta of={TooltipStories} />
@@ -20,3 +21,7 @@ import * as TooltipStories from './Tooltip.stories.tsx';
 ## Portal
 
 <Canvas of={TooltipStories.Portal} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

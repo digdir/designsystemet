@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
 import { Alert } from '../../Alert';
 import * as InputStories from './Input.stories';
 
@@ -79,3 +80,7 @@ Ikke bruk deaktivert tilstand (disabled state) på tekstfelt. Tenk heller over o
 ### Prefiks og suffiks
 
 Prefiks og suffiks er et ekstra visuelt hjelpemiddel, som blir ignorert av skjermlesere. Vi må alltid ha en beskrivende ledetekst. Prefiks og suffiks er plassert utenfor inndatafeltene de tilhører. Da unngår vi at de ikke skaper trøbbel i noen nettlesere, som kan sette inn et ikon i inndatafeltet (for eksempel ikoner for å vise eller lage passord).
+
+## CSS Variabler
+
+<CssVariables css={css} />

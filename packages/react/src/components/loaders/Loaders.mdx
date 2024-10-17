@@ -1,5 +1,7 @@
 import { Meta, Primary, Controls, Canvas } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import cssSpinner from '@digdir/designsystemet-css/spinner.css?inline';
+import cssSkeleton from '@digdir/designsystemet-css/skeleton.css?inline';
 import * as SkeletonStories from './Skeleton/Skeleton.stories';
 import * as SpinnerStories from './Spinner/Spinner.stories';
 
@@ -45,3 +47,11 @@ Du skal prøve å gjenskape innholdet som vil bli lastet inn.
 
 **Passer ikke**
 - når en lasting tar mindre enn 1 sekund
+
+## CSS Variabler for Spinner
+
+<CssVariables css={cssSpinner} />
+
+## CSS Variabler for Skeleton
+
+<CssVariables css={cssSkeleton} />

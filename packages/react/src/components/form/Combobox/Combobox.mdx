@@ -1,8 +1,9 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
-
+import css from '@digdir/designsystemet-css/combobox.css?inline';
+import { CssVariables } from '@doc-components';
 import * as ComboboxStories from './Combobox.stories';
 
-import { Combobox } from './index';
+import { Combobox } from '.';
 
 <Meta of={ComboboxStories} />
 
@@ -62,3 +63,7 @@ det som blir sendt til `onValueChange` når elementet blir valgt.
 
 Brukes som direkte barn av `Combobox` for å vise en melding når det ikke er
 noen elementer i listen.
+
+## CSS Variabler
+
+<CssVariables css={css} />

@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/search.css?inline';
 import * as SearchStories from './Search.stories';
 
 <Meta of={SearchStories} />
@@ -29,6 +30,10 @@ Bruk `searchButtonLabel` og `clearButtonLabel` til å sett innholdet i knappene 
 Søkeknappen har typen `"submit"` og vil dermed automatisk sende inn skjema.
 
 <Canvas of={SearchStories.Form} />
+
+## CSS Variabler
+
+<CssVariables css={css} />
 
 ## Referanser
 
