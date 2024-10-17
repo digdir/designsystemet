@@ -18,7 +18,7 @@ export const CssVariables: React.FC<CssVariablesProps> = ({ css }) => {
   }, []);
 
   return (
-    <Table zebra>
+    <Table zebra className='sb-unstyled'>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Name</Table.HeaderCell>
