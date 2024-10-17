@@ -23,8 +23,6 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "cSpell.enabled": false
-
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }
