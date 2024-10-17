@@ -1,0 +1,78 @@
+import type { Meta, StoryFn } from '@storybook/react';
+
+import { useEffect } from 'react';
+import { Label } from '../../Label';
+
+import { Field } from '.';
+import { ValidationMessage } from '../../ValidationMessage';
+import { Input } from '../Input';
+import { Select } from '../Select';
+import { Textarea } from '../Textarea';
+
+type Story = StoryFn<typeof Field>;
+
+export default {
+  title: 'Komponenter/Field',
+  component: Field,
+  argTypes: {
+    type: {
+      control: { type: 'radio' },
+      options: ['textarea', 'input', 'select', false],
+      mapping: { textarea: Textarea, input: Input, select: Select },
+    },
+  },
+} as Meta;
+
+// TMP toggles to test a11yField utility
+const toggles = {
+  type: 'textarea',
+  inputId: '',
+  label: true,
+  labelFor: '',
+  help: true,
+  helpId: '',
+  validation: true,
+  validationId: '',
+  moveToBody: false,
+};
+
+export const Preview: Story = (args) => {
+  const {
+    type,
+    inputId,
+    label,
+    labelFor,
+    help,
+    helpId,
+    validation,
+    validationId,
+    moveToBody,
+  } = args as typeof toggles;
+  const Component = type as keyof JSX.IntrinsicElements;
+
+  useEffect(() => {
+    const label = document.querySelector('label');
+    const valid = document.querySelector('[data-my-validation]');
+    const field = document.querySelector('[data-my-field]');
+    const root = moveToBody ? document.body : field;
+    if (valid && valid.parentElement !== root) root?.append(valid);
+    if (label && label.parentElement !== root) root?.prepend(label);
+  }, [moveToBody]);
+
+  return (
+    <Field data-my-field>
+      {label && <Label htmlFor={labelFor || undefined}>Kort beskrivelse</Label>}
+      {help && <Field.Help id={helpId || undefined}>Beskrivelse</Field.Help>}
+      {type && <Component id={inputId || undefined} />}
+      {validation && (
+        <ValidationMessage data-my-validation id={validationId || undefined}>
+          Feilmelding
+        </ValidationMessage>
+      )}
+      {/* {createPortal(<div>Hei</div>, document.body)} */}
+    </Field>
+  );
+};
+
+// @ts-expect-error
+Preview.args = toggles;
