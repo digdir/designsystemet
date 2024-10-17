@@ -8,7 +8,7 @@ import StyleDictionary from 'style-dictionary';
 
 import * as configs from './build/configs.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
-import { groupThemes } from './build/utils/permutateThemes.js';
+import { type PermutatedTheme, groupThemes } from './build/utils/permutateThemes.js';
 
 const { permutateThemes, getConfigs } = configs;
 
@@ -41,18 +41,37 @@ export async function buildTokens(options: Options): Promise<void> {
   });
   const grouped$themes = groupThemes(relevant$themes);
   const themes = permutateThemes(grouped$themes);
+  type ThemeDimension = keyof typeof grouped$themes;
 
-  const typographyThemes = R.filter((val) => val.mode === 'light', themes);
-  const colormodeThemes = R.filter((val) => val.typography === 'primary', themes);
-  const primaryColors = R.filter(
-    (val) => grouped$themes.colorPrimary.some((theme) => val.colorPrimary === theme.name),
-    themes,
-  );
-  const supportColors = R.filter(
-    (val) => grouped$themes.colorSupport.some((theme) => val.colorSupport === theme.name),
-    themes,
-  );
-  const semanticThemes = R.filter((val) => val.mode === 'light' && val.typography === 'primary', themes);
+  /**
+   * Find the theme permutations that are relevant for the given theme dimensions.
+   *
+   * Technically, for the given dimensions all permutations are included, while for other
+   * dimensions the first permutation is used.
+   *
+   * @param dimensions Which theme dimensions to return permutations for.
+   *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
+   * @returns the relevant theme permutations
+   */
+  const getThemesFor = (...dimensions: ThemeDimension[]) => {
+    const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
+    const keys = R.keys(grouped$themes);
+    const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
+    if (verbosity === 'verbose') {
+      console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
+      console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
+    }
+    return themes.filter((val: PermutatedTheme) => {
+      const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
+      return filters.every((x) => x);
+    });
+  };
+
+  const typographyThemes = getThemesFor('typography');
+  const colormodeThemes = getThemesFor('mode');
+  const primaryColors = getThemesFor('colorPrimary');
+  const supportColors = getThemesFor('colorSupport');
+  const semanticThemes = getThemesFor('semantic');
 
   const colorModeConfigs = getConfigs(configs.colorModeVariables, outPath, tokensDir, colormodeThemes, verbosity);
   const primaryColorConfigs = getConfigs(

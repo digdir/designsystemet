@@ -27,7 +27,25 @@ export type PermutatedTheme = {
   selectedTokenSets: string[];
 } & Partial<PermutationProps>;
 
-export type GroupedThemes = Record<string, ThemeObject[]>;
+const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
+type ProcessedThemeObject = ThemeObject & { [processed]: true };
+function isProcessed(theme: ThemeObject | ProcessedThemeObject): theme is ProcessedThemeObject {
+  return Boolean((theme as ProcessedThemeObject)[processed]);
+}
+
+function processThemeObject(theme: ThemeObject | ProcessedThemeObject): ProcessedThemeObject {
+  if (isProcessed(theme)) {
+    return theme;
+  }
+  const result: ProcessedThemeObject = { ...theme, [processed]: true };
+  if (result.group) {
+    result.group = camelCase(result.group);
+  }
+  result.name = result.name.toLowerCase();
+  return result;
+}
+
+export type GroupedThemes = Record<keyof PermutationProps, ProcessedThemeObject[]>;
 export type PermutatedThemes = PermutatedTheme[];
 
 export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} as Options): PermutatedThemes {
@@ -41,8 +59,8 @@ export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} 
         let updatedPermutatedTheme = acc;
 
         if (group) {
-          const groupProp = R.lensProp<PermutatedTheme>(camelCase(group) as keyof PermutationProps);
-          updatedPermutatedTheme = R.set(groupProp, name.toLowerCase(), updatedPermutatedTheme);
+          const groupProp = R.lensProp<PermutatedTheme>(group as keyof PermutationProps);
+          updatedPermutatedTheme = R.set(groupProp, name, updatedPermutatedTheme);
         }
 
         const updatedName = `${String(acc.name)}${acc ? separator : ''}${name}`;
@@ -66,10 +84,11 @@ export function permutateThemes(groups: GroupedThemes, { separator = '-' } = {} 
 }
 
 export function groupThemes(themes: ThemeObject[]): GroupedThemes {
-  const groups: GroupedThemes = {};
-  for (const theme of themes) {
+  const groups = {} as GroupedThemes;
+  for (const rawTheme of themes) {
+    const theme = processThemeObject(rawTheme);
     if (theme.group) {
-      groups[camelCase(theme.group)] = [...(groups[camelCase(theme.group)] ?? []), theme];
+      groups[theme.group as keyof GroupedThemes] = [...(groups[theme.group as keyof GroupedThemes] ?? []), theme];
     } else {
       throw new Error(
         `Theme ${theme.name} does not have a group property, which is required for multi-dimensional theming.`,

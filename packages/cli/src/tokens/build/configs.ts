@@ -8,7 +8,7 @@ import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
-import type { GroupedThemes, PermutatedTheme, PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
+import type { GroupedThemes, PermutatedThemes, PermutationProps } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
