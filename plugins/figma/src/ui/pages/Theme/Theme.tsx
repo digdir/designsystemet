@@ -1,4 +1,5 @@
 import {
+  Breadcrumbs,
   Button,
   Label,
   Link,
@@ -6,9 +7,7 @@ import {
   Textarea,
 } from '@digdir/designsystemet-react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
-import { Breadcrumbs } from '@ui/components/Breadcrumbs/Breadcrumbs';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 
@@ -96,12 +95,11 @@ function Theme() {
     <div className={classes.content}>
       <div className={classes.header}>
         <div className={classes.headerLeft}>
-          <Breadcrumbs
-            text={
-              themes.find((theme) => theme.themeModeId === themeId)?.name || ''
-            }
-            url='/'
-          />
+          <Breadcrumbs size='sm'>
+            <Breadcrumbs.Link aria-label='Tilbake til alle temaer' asChild>
+              <RouterLink to='/'>Mine temaer</RouterLink>
+            </Breadcrumbs.Link>
+          </Breadcrumbs>
         </div>
       </div>
       <div className={classes.wrapper}>
