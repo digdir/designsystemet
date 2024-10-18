@@ -42,6 +42,20 @@
   outline-offset: var(--dsc-focus-border-width);
 }
 
+/**
+ * Stack without display: flex allowing children to to have their natural width, but still acheive gap in vertical direction
+ * https://every-layout.dev/layouts/stack/
+ */
+.ds-stack {
+  /* Using :where to overwrite user agent CSS only */
+  :where(&) > * {
+    margin-block: 0;
+  }
+  :where(&) > * + :where(:not(:empty)) {
+    margin-block-start: var(--ds-stack-spacing, var(--ds-spacing-4)); /* Using a fallback, but allow overwrite */
+  }
+}
+
 /** Body typography */
 .ds-body-text--xs {
   font-weight: var(--ds-body-xs-font-weight);

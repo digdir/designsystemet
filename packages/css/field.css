@@ -1,7 +1,66 @@
 .ds-field {
-  display: contents;
+  display: block;
 
-  & > * + * {
-    margin-top: var(--ds-spacing-2);
+  @composes ds-stack from './base/base.css';
+  @composes ds-body-text--md from './base/base.css';
+
+  &[data-size='sm'] {
+    @composes ds-body-text--sm from './base/base.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-body-text--lg from './base/base.css';
+  }
+
+  & [data-field='description'] {
+    color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+  }
+
+  /**
+   * States
+   */
+  &:has([aria-disabled='true'], :disabled) {
+    & > * {
+      opacity: var(--ds-disabled-opacity);
+    }
+    label {
+      cursor: not-allowed;
+    }
+  }
+
+  &:has([readonly]) label {
+    cursor: default;
+  }
+
+  /**
+   * Toggle inputs
+   */
+  &:has(input:where([type='radio'], [type='checkbox'])) {
+    border-radius: var(--ds-border-radius-md);
+    display: grid;
+    column-gap: var(--ds-spacing-2);
+    grid-template-columns: auto 1fr;
+    width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
+
+    & > :not(input) {
+      grid-column: 2; /* Only allow input in column 1 */
+    }
+
+    & > * {
+      --ds-stack-spacing: 0;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    input:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:has(:focus-visible) {
+      @composes ds-focus--visible from './base/base.css';
+    }
   }
 }

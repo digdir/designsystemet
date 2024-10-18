@@ -11,7 +11,7 @@ export default {
 
 export const Preview: Story = {
   args: {
-    children: 'Checkbox label',
+    label: 'Checkbox label',
     description: 'Description',
     disabled: false,
     readOnly: false,

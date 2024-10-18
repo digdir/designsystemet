@@ -57,12 +57,11 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           aria-invalid={inputProps['aria-invalid']}
           className={cl('ds-fieldset', className)}
           data-hidelegend={hideLegend || undefined}
-          data-readonly={readOnly || undefined}
           disabled={props?.disabled}
           ref={ref}
           {...rest}
         >
-          <Label asChild size={size}>
+          <Label asChild size={size} aria-readonly={readOnly}>
             <legend>{legend}</legend>
           </Label>
           {!!description && (
