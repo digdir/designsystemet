@@ -1,4 +1,4 @@
-export const fieldA11Y = (fieldElement: HTMLElement | null) => {
+export function fieldObserver(fieldElement: HTMLElement | null) {
   if (!fieldElement) return;
 
   const elements = new Map<Element, string | null>();
@@ -59,7 +59,7 @@ export const fieldA11Y = (fieldElement: HTMLElement | null) => {
   process([{ addedNodes: fieldElement.querySelectorAll('*') }]); // Initial setup
   observer.takeRecords(); // Clear initial setup queue
   return () => observer.disconnect();
-};
+}
 
 // Utilities
 const isElement = (node: Node) => node instanceof Element;
@@ -68,7 +68,7 @@ const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);
 
 // Speed up MutationObserver by debouncing, clearing internal queue after changes and only running when page is visible
-const createOptimizedMutationObserver = (callback: MutationCallback) => {
+function createOptimizedMutationObserver(callback: MutationCallback) {
   const queue: MutationRecord[] = [];
   const observer = new MutationObserver((mutations) => {
     if (!queue.length) requestAnimationFrame(process);
@@ -82,4 +82,4 @@ const createOptimizedMutationObserver = (callback: MutationCallback) => {
   };
 
   return observer;
-};
+}

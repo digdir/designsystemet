@@ -73,10 +73,9 @@ export const Preview: Story = (args) => {
           Feilmelding
         </ValidationMessage>
       )}
-      {/* {createPortal(<div>Hei</div>, document.body)} */}
     </Field>
   );
 };
 
-// @ts-expect-error
+// @ts-expect-error ts2559: Preview.args uses more properties for testing than what is supported by <Field>
 Preview.args = toggles;
