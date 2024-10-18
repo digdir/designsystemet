@@ -18,3 +18,5 @@ async function bootstrap() {
 }
 
 void bootstrap();
+
+console.log('Hello from Figma Plugin!');
