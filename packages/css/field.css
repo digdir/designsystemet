@@ -1,0 +1,7 @@
+.ds-field {
+  display: contents;
+
+  & > * + * {
+    margin-top: var(--ds-spacing-2);
+  }
+}
