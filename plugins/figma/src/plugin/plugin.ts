@@ -1,18 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-
 import type { ColorTheme, StoreThemes } from '../common/store';
 
-import { getFonts } from './figma/fonts';
 import { getVariables } from './figma/getVariables';
-import { generateJson } from './figma/json';
-import {
-  addTheme,
-  deleteTheme,
-  getThemes,
-  renameTheme,
-  updateTheme,
-} from './figma/themes';
+import { getThemes } from './figma/themes';
 import { updateVariables } from './figma/updateVariables';
 
 figma.showUI(__html__, { width: 710, height: 550, themeColors: true });
@@ -53,7 +42,7 @@ figma.ui.onmessage = (msg: {
         break;
       }
 
-      case 'renameTheme': {
+      /* case 'renameTheme': {
         if (msg.renameTheme) {
           await renameTheme(
             msg.renameTheme.newName,
@@ -63,15 +52,15 @@ figma.ui.onmessage = (msg: {
           figma.ui.postMessage({ type: 'geThemesAndRedirect' });
         }
         break;
-      }
+      } */
 
-      case 'addTheme': {
+      /* case 'addTheme': {
         if (msg.addTheme) await addTheme(msg.addTheme.theme, msg.addTheme.name);
         figma.ui.postMessage({ type: 'geThemesAndRedirect' });
         break;
-      }
+      } */
 
-      case 'deleteTheme': {
+      /* case 'deleteTheme': {
         if (msg.deleteTheme)
           await deleteTheme(
             msg.deleteTheme.themeModeId,
@@ -79,24 +68,25 @@ figma.ui.onmessage = (msg: {
           );
         figma.ui.postMessage({ type: 'geThemesAndRedirect' });
         break;
-      }
+      } */
 
-      case 'updateTheme': {
+      /* case 'updateTheme': {
         await updateTheme();
         break;
-      }
+      } */
 
-      case 'generateJson': {
+      /* case 'generateJson': {
         const json = await generateJson();
         figma.ui.postMessage({ type: 'generateJson', json: json });
         console.log('ff - ', json);
         break;
-      }
-      case 'getFonts': {
+      } */
+
+      /* case 'getFonts': {
         const fonts = await getFonts();
         figma.ui.postMessage({ type: 'getFonts', fonts: fonts });
         break;
-      }
+      } */
     }
   })();
 };
