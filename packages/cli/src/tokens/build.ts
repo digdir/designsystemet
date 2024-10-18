@@ -44,7 +44,7 @@ const buildConfigs = {
     dimensions: ['semantic'],
     build: async (sdConfigs, { outPath }) => {
       await Promise.all(
-        sdConfigs.map(async ({ theme }) => {
+        sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
 
           return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
@@ -90,9 +90,9 @@ export async function buildTokens(options: Options): Promise<void> {
           return await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
         }
         await Promise.all(
-          sdConfigs.map(async ({ config, ...modeNames }) => {
+          sdConfigs.map(async ({ config, permutation }) => {
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
-            const modeMessage = modes.map((x) => modeNames[x]).join(' - ');
+            const modeMessage = modes.map((x) => permutation[x]).join(' - ');
             console.log(modeMessage);
 
             return (await sd.extend(config)).buildAllPlatforms();

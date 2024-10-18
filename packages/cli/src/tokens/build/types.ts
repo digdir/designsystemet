@@ -6,6 +6,8 @@ import type { StyleDictionaryConfigs } from './configs';
  */
 export type ThemePermutation = {
   mode: string;
+  mainColor: string;
+  supportColor: string;
   semantic: string;
   size: string;
   theme: string;
@@ -34,4 +36,4 @@ export type BuildConfig = {
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
 };
 
-export type SDConfigForThemePermutation = ThemePermutation & { config: SD.Config };
+export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SD.Config };
