@@ -68,7 +68,7 @@ const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa'
     leoBackgroundColor.colorKeys[0],
   );
 
-  const textSubLightLightness = contrastMode === 'aa' ? 41 : 30;
+  const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
   const textDefLightLightness = contrastMode === 'aa' ? 18 : 12;
 
   const textSubDarkLightness = contrastMode === 'aa' ? 67 : 80;
