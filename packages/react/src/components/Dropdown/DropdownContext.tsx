@@ -7,17 +7,17 @@ export type DropdownContextProps = {
 };
 
 /**
- * DropdownContext is the root component for the DropdownMenu component.
+ * DropdownContext is the root component for the Dropdown component.
  * @example
- * <DropdownMenu.Context>
- *  <DropdownMenu.Trigger>Dropdown</DropdownMenu.Trigger>
- *  <DropdownMenu>
- *   <DropdownMenu.Heading>Heading</DropdownMenu.Heading>
- *    <DropdownMenu.List>
- *      <DropdownMenu.Item>Button 1</DropdownMenu.Item>
- *    </DropdownMenu.List>
- *  </DropdownMenu>
- * </DropdownMenu.Context>
+ * <Dropdown.Context>
+ *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+ *  <Dropdown>
+ *   <Dropdown.Heading>Heading</Dropdown.Heading>
+ *    <Dropdown.List>
+ *      <Dropdown.Item>Button 1</Dropdown.Item>
+ *    </Dropdown.List>
+ *  </Dropdown>
+ * </Dropdown.Context>
  */
 export const DropdownContext = ({ children }: DropdownContextProps) => {
   return <PopoverContext>{children}</PopoverContext>;
