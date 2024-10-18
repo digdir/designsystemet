@@ -39,8 +39,6 @@ export type PermutatedTheme = {
   selectedTokenSets: string[];
 } & ThemePermutation;
 
-export type PermutatedThemes = PermutatedTheme[];
-
 const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
 type ProcessedThemeObject = ThemeObject & { [processed]: true };
 function isProcessed(theme: ThemeObject | ProcessedThemeObject): theme is ProcessedThemeObject {
@@ -83,7 +81,7 @@ function groupThemes(themes: ThemeObject[]): GroupedThemes {
 
 const hasUnknownProps = R.pipe(R.values, R.none(R.equals('unknown')), R.not);
 
-function permutateThemes(groups: GroupedThemes): PermutatedThemes {
+function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
   const separator = '_';
   // Create theme permutations
   const permutations = cartesian(Object.values(groups)) as Array<ThemeObject[]>;

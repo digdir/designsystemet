@@ -16,7 +16,7 @@ import type {
   ThemeDimension,
   ThemePermutation,
 } from './types.js';
-import { getMultidimensionalThemes } from './utils/permutateThemes.js';
+import { getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
