@@ -1,5 +1,24 @@
 # Change Log
 
+## 1.0.0-next.36
+
+### Patch Changes
+
+- Input: Sufficient color contrast for readonly ([#2621](https://github.com/digdir/designsystemet/pull/2621))
+
+- Modal: Fix `onClose` not being called ([#2622](https://github.com/digdir/designsystemet/pull/2622))
+
+- Field: Adds `<Field>` component wrapping and connecting internal form elements for better accessibility ([#2502](https://github.com/digdir/designsystemet/pull/2502))
+
+- Avatar: Fix `aria-hidden` being wrongly added to a fragment ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Label: Use data attributes for styling ([#2588](https://github.com/digdir/designsystemet/pull/2588))
+
+  ValidationMessage: Use data attributes for styling
+
+- Select + Textarea: ([#2571](https://github.com/digdir/designsystemet/pull/2571))
+  - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
+
 ## 1.0.0-next.35
 
 ### Patch Changes
