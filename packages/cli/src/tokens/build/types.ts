@@ -25,7 +25,10 @@ export type BuildConfig = {
   name?: string;
   config: keyof typeof configs;
   modes: ThemeDimension[];
+  /** Custom StyleDictionary options. If not supplied, the default is used */
   options?: Partial<GetSdConfigOptions>;
+  /** Custom build function. If not supplied, the default is used. */
+  build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
 };
 
 export type SDConfigForThemePermutation = ThemePermutation & { config: SD.Config };

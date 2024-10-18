@@ -39,6 +39,20 @@ const buildConfigs = {
     modes: ['mode'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
   },
+  entryFiles: {
+    name: 'CSS entry files',
+    config: 'semanticVariables',
+    modes: ['semantic'],
+    build: async (sdConfigs, { outPath }) => {
+      await Promise.all(
+        sdConfigs.map(async ({ theme }) => {
+          console.log(`👷 ${theme}.css`);
+
+          return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
+        }),
+      );
+    },
+  },
 } satisfies Record<string, BuildConfig>;
 
 export async function buildTokens(options: Options): Promise<void> {
@@ -55,6 +69,7 @@ export async function buildTokens(options: Options): Promise<void> {
   const relevant$themes = $themes.filter((theme) =>
     R.not(theme.group === 'size' && theme.name.toLowerCase() !== 'default'),
   );
+
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({
       buildConfig: val,
@@ -76,6 +91,9 @@ export async function buildTokens(options: Options): Promise<void> {
       if (sdConfigs.length > 0) {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
+        if (buildConfig.build) {
+          return await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
+        }
         await Promise.all(
           sdConfigs.map(async ({ config, ...modeNames }) => {
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.modes];
@@ -86,18 +104,6 @@ export async function buildTokens(options: Options): Promise<void> {
           }),
         );
       }
-    }
-
-    if (buildAndSdConfigs.semantic.sdConfigs.length > 0) {
-      console.log(`\n🍱 Building ${chalk.green('CSS entry files')}`);
-
-      await Promise.all(
-        buildAndSdConfigs.semantic.sdConfigs.map(async ({ theme }) => {
-          console.log(`👷 ${theme}.css`);
-
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
-        }),
-      );
     }
   } catch (err) {
     // Fix crash error message from StyleDictionary from
