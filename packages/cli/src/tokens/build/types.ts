@@ -1,13 +1,20 @@
 import type SD from 'style-dictionary/types';
 import type { StyleDictionaryConfigs } from './configs';
 
+export const colorCategories = {
+  main: 'main',
+  support: 'support',
+} as const;
+export type ColorCategories = keyof typeof colorCategories;
+export const MAIN_COLOR = `${colorCategories.main}Color` as const;
+export const SUPPORT_COLOR = `${colorCategories.support}Color` as const;
 /**
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions
  */
 export type ThemePermutation = {
   mode: string;
-  mainColor: string;
-  supportColor: string;
+  [MAIN_COLOR]: string;
+  [SUPPORT_COLOR]: string;
   semantic: string;
   size: string;
   theme: string;
