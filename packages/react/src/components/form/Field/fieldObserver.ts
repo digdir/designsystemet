@@ -26,7 +26,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     // Reset removed elements
-    for (const el of changed) {
+    for (const el of removed) {
       if (!isElement(el)) continue;
 
       if (input === el) input = null;
