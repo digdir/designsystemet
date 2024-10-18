@@ -1,3 +1,4 @@
+import { Messages } from '@common/types';
 import type { ColorTheme, StoreThemes } from '../common/store';
 
 import { getVariables } from './figma/getVariables';
@@ -7,7 +8,7 @@ import { updateVariables } from './figma/updateVariables';
 figma.showUI(__html__, { width: 710, height: 550, themeColors: true });
 
 figma.ui.onmessage = (msg: {
-  type: string;
+  type: Messages;
   themes?: StoreThemes;
   themeId?: string;
   renameTheme?: {
@@ -26,19 +27,22 @@ figma.ui.onmessage = (msg: {
 }) => {
   void (async () => {
     switch (msg.type) {
-      case 'updateVariables': {
+      case Messages.UpdateVariables: {
         if (msg.themes) await updateVariables(msg.themes);
         break;
       }
 
-      case 'getThemes': {
+      case Messages.GetThemes: {
         const themes = await getThemes();
-        figma.ui.postMessage({ type: 'getThemes', themes: themes });
+        figma.ui.postMessage({ type: Messages.GetThemes, themes: themes });
         break;
       }
-      case 'getVariables': {
+      case Messages.GetVariables: {
         const variables = await getVariables();
-        figma.ui.postMessage({ type: 'getVariables', variables: variables });
+        figma.ui.postMessage({
+          type: Messages.GetVariables,
+          variables: variables,
+        });
         break;
       }
 
