@@ -17,7 +17,7 @@ import type { ThemeDimension, ThemePermutation } from '../types';
  *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
  * @returns the relevant theme permutations
  */
-export const getMultidimensionalThemes = (themes: ThemeObject[], ...dimensions: ThemeDimension[]) => {
+export const getMultidimensionalThemes = (themes: ThemeObject[], dimensions: ThemeDimension[]) => {
   const verboseLogging = buildOptions?.verbose;
   const grouped$themes = groupThemes(themes);
   const permutations = permutateThemes(grouped$themes);

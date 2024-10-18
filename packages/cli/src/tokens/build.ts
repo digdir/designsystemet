@@ -6,10 +6,9 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import { configs, getConfigsForThemeDimension } from './build/configs.js';
+import { getConfigsForThemeDimensions } from './build/configs.js';
 import type { BuildConfig, ThemePermutation } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
-import { getMultidimensionalThemes } from './build/utils/permutateThemes.js';
 
 type Options = {
   /** Design tokens path */
@@ -30,19 +29,19 @@ const sd = new StyleDictionary();
  * Declarative configuration of the build output
  */
 const buildConfigs = {
-  typography: { config: 'typographyVariables', modes: ['typography'] },
-  'color-mode': { config: 'colorModeVariables', modes: ['mode'] },
-  semantic: { config: 'semanticVariables', modes: ['semantic'] },
+  typography: { sdConfig: 'typographyVariables', dimensions: ['typography'] },
+  'color-mode': { sdConfig: 'colorModeVariables', dimensions: ['mode'] },
+  semantic: { sdConfig: 'semanticVariables', dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
-    config: 'typescriptTokens',
-    modes: ['mode'],
+    sdConfig: 'typescriptTokens',
+    dimensions: ['mode'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
   },
   entryFiles: {
     name: 'CSS entry files',
-    config: 'semanticVariables',
-    modes: ['semantic'],
+    sdConfig: 'semanticVariables',
+    dimensions: ['semantic'],
     build: async (sdConfigs, { outPath }) => {
       await Promise.all(
         sdConfigs.map(async ({ theme }) => {
@@ -73,15 +72,11 @@ export async function buildTokens(options: Options): Promise<void> {
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({
       buildConfig: val,
-      sdConfigs: getConfigsForThemeDimension(
-        configs[val.config],
-        getMultidimensionalThemes(relevant$themes, ...val.modes),
-        {
-          outPath,
-          tokensDir,
-          ...val.options,
-        },
-      ),
+      sdConfigs: getConfigsForThemeDimensions(val.sdConfig, relevant$themes, val.dimensions, {
+        outPath,
+        tokensDir,
+        ...val.options,
+      }),
     }),
     buildConfigs,
   );
@@ -96,7 +91,7 @@ export async function buildTokens(options: Options): Promise<void> {
         }
         await Promise.all(
           sdConfigs.map(async ({ config, ...modeNames }) => {
-            const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.modes];
+            const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
             const modeMessage = modes.map((x) => modeNames[x]).join(' - ');
             console.log(modeMessage);
 

@@ -1,4 +1,5 @@
 import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
+import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type SD from 'style-dictionary/types';
@@ -8,8 +9,14 @@ import { buildOptions } from '../build.js';
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
-import type { GetSdConfigOptions, IsCalculatedToken, SDConfigForThemePermutation, ThemePermutation } from './types.js';
-import type { PermutatedThemes } from './utils/permutateThemes.js';
+import type {
+  GetSdConfigOptions,
+  IsCalculatedToken,
+  SDConfigForThemePermutation,
+  ThemeDimension,
+  ThemePermutation,
+} from './types.js';
+import { getMultidimensionalThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -243,25 +250,30 @@ const typographyVariables: GetStyleDictionaryConfig = ({ outPath, theme, typogra
   };
 };
 
-export const configs = {
+const configs = {
   colorModeVariables,
   typographyVariables,
   semanticVariables,
   typescriptTokens,
 };
 
-export const getConfigsForThemeDimension = (
-  getConfig: GetStyleDictionaryConfig,
-  themes: PermutatedThemes,
+export type StyleDictionaryConfigs = keyof typeof configs;
+
+export const getConfigsForThemeDimensions = (
+  configName: keyof typeof configs,
+  themes: ThemeObject[],
+  dimensions: ThemeDimension[],
   options: GetSdConfigOptions,
 ): SDConfigForThemePermutation[] => {
   const { outPath, tokensDir } = options;
 
-  return themes
+  const permutations = getMultidimensionalThemes(themes, dimensions);
+  return permutations
     .map(({ selectedTokenSets, mode, theme, semantic, size, typography }) => {
       const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
       const [source, include] = paritionPrimitives(setsWithPaths);
+      const getConfig = configs[configName];
 
       const config_ = getConfig({
         outPath,
