@@ -38,17 +38,19 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
     // Connect elements
     const inputId = input?.id || uuid;
-    const descs: string[] = [];
+    const describedbyIds: string[] = [];
     for (const [el, value] of elements) {
-      const desc = el.getAttribute('data-field');
-      const id = desc ? `${inputId}:${desc}` : inputId;
+      const descriptionType = el.getAttribute('data-field');
+      const id = descriptionType ? `${inputId}:${descriptionType}` : inputId;
 
       if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
-      if (desc) descs[desc === 'validation' ? 'unshift' : 'push'](el.id); // Validations to the front
+      if (descriptionType === 'validation')
+        describedbyIds.unshift(el.id); // Validations to the front
+      else if (descriptionType) describedbyIds.push(el.id); // Other descriptions to the back
     }
 
     setAttr(input, 'id', inputId);
-    setAttr(input, 'aria-describedby', descs.join(' '));
+    setAttr(input, 'aria-describedby', describedbyIds.join(' '));
   };
 
   const observer = createOptimizedMutationObserver(process);
