@@ -18,8 +18,10 @@ import { useThemeStore } from '../common/store';
 import { Footer } from './components/Footer/Footer';
 import Theme from './pages/Theme/Theme';
 import Themes from './pages/Themes/Themes';
+import { useDsMode } from './utils/useDsMode';
 
 function App() {
+  const dsMode = useDsMode();
   const setThemes = useThemeStore((state) => state.setThemes);
   const navigate = useNavigate();
   const setLoading = useThemeStore((state) => state.setLoading);
@@ -65,7 +67,7 @@ function App() {
   }, []);
 
   return (
-    <div className='page' data-ds-color-mode='dark'>
+    <div className='page' data-ds-color-mode={dsMode}>
       <div className='links'>
         <NavLink
           className={({ isActive }) => (isActive ? 'link active' : 'link')}
