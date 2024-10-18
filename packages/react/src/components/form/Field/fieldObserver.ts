@@ -17,19 +17,17 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     // Register elements
-    for (const el of changed)
-      if (isElement(el)) {
-        if (isLabel(el)) elements.set(el, el.htmlFor);
-        else if ('validity' in el) input = el;
-        else if (el.hasAttribute('data-field')) elements.set(el, el.id);
-      }
+    for (const el of changed) {
+      if (isLabel(el)) elements.set(el, el.htmlFor);
+      else if (isElement(el) && el.hasAttribute('data-field')) elements.set(el as Element, el.id);
+      else if (isFormAssociated(el)) input = el;
+    }
 
     // Reset removed elements
     for (const el of removed)
       if (input === el) input = null;
       else if (isElement(el) && elements.has(el)) {
-        const attr = isLabel(el) ? 'for' : 'id';
-        setAttr(el, attr, elements.get(el));
+        setAttr(el, isLabel(el) ? 'for' : 'id', elements.get(el));
         elements.delete(el);
       }
 
@@ -64,6 +62,9 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 // Utilities
 const isElement = (node: Node) => node instanceof Element;
 const isLabel = (node: Node) => node instanceof HTMLLabelElement;
+const isFormAssociated = (node: Node): node is Element =>
+  'validity' in node && !(node instanceof HTMLButtonElement);
+
 const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);
 
