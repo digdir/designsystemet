@@ -47,9 +47,7 @@
     }
   }
 
-  &:has(input[disabled]),
-  input[disabled] + &,
-  fieldset[disabled] & {
+  fieldset:disabled & {
     opacity: var(--ds-disabled-opacity);
   }
 }

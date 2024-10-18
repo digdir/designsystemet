@@ -3,26 +3,36 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Label } from '../../Label';
+import { ValidationMessage } from '../../ValidationMessage';
+import { Field } from '../Field';
 import { Input } from '../Input';
-import type { FormFieldProps } from '../useFormField';
 
 export type RadioProps = {
   /** Radio label */
   label?: ReactNode;
+  /** Description for field */
+  description?: ReactNode;
   /** Value of the `input` element */
   value: string;
-} & Omit<FormFieldProps, 'error' | 'errorId'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
+  /** Validation message for field */
+  validation?: ReactNode;
+  /**
+   * Changes field size and paddings
+   * @default md
+   */
+  size?: 'sm' | 'md' | 'lg';
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-  { children, label, description, className, ...rest },
+  { children, label, description, validation, ...rest },
   ref,
 ) {
   return (
-    <div className={cl('ds-radio', className)}>
+    <Field>
       <Input type='radio' ref={ref} {...rest} />
       {label && <Label weight='regular'>{label}</Label>}
       {description && <div data-field='description'>{description}</div>}
-    </div>
+      {validation && <ValidationMessage>{validation}</ValidationMessage>}
+    </Field>
   );
 });

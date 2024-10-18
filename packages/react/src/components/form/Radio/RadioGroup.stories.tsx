@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
+import type { ChangeEvent, MouseEvent } from 'react';
 
 import { Radio } from '.';
 import { Button, Divider, Fieldset, Paragraph } from '../..';
@@ -10,30 +11,24 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Fieldset> = (args) => {
-  const inherit = { readOnly: args.readOnly, size: args.size };
+  const props = {
+    'aria-invalid': !!args.error,
+    name: 'my-radio',
+    readOnly: args.readOnly,
+    size: args.size,
+  };
+
   return (
     <Fieldset {...args}>
-      <Radio name='my-radio' size={args.size} label='Vanilje' value='vanilje' />
+      <Radio label='Vanilje' value='vanilje' {...props} />
       <Radio
-        name='my-radio'
-        size={args.size}
         label='Jordbær'
         value='jordbær'
         description='Jordbær er best'
+        {...props}
       />
-      <Radio
-        name='my-radio'
-        size={args.size}
-        label='Sjokolade'
-        value='sjokolade'
-        defaultChecked
-      />
-      <Radio
-        name='my-radio'
-        size={args.size}
-        label='Jeg spiser ikke iskrem'
-        value='spiser-ikke-is'
-      />
+      <Radio label='Sjokolade' value='sjokolade' defaultChecked {...props} />
+      <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' {...props} />
     </Fieldset>
   );
 };
@@ -47,58 +42,64 @@ Preview.args = {
   size: 'md',
 };
 
-export const WithError: StoryFn<typeof Radio> = () => (
-  <Fieldset
-    legend='Velg pizza'
-    description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
-    error='Du må velge en av våre pizzaer for å legge inn bestilling'
-  >
-    <Radio name='my-radio' label='Bare ost' value='ost' />
-    <Radio
-      name='my-radio'
-      label='Dobbeldekker'
-      value='Dobbeldekker'
-      description='Chorizo spesial med kokkens luksuskylling'
-    />
-    <Radio name='my-radio' label='Flammen' value='flammen' />
-    <Radio name='my-radio' label='Snadder' value='snadder' />
-  </Fieldset>
-);
+export const WithError = {
+  args: {
+    ...Preview.args,
+    error: 'Du må velge jordbær fordi det smaker best',
+  },
+  render: Preview,
+};
 
 export const Controlled: StoryFn<typeof Radio> = () => {
-  const [checked, setChecked] = useState<string>();
-  const checkedProps = (value: string) => ({
-    checked: value === checked,
-    onClick: () => setChecked(value),
-    value,
-  });
+  const [value, setValue] = useState<string>();
+  const onChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setValue(event.target.value);
 
   return (
     <>
       <Fieldset
         legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
-        onChange={(event) => console.log(event)}
       >
-        <Radio name='my-radio' label='Bare ost' {...checkedProps('ost')} />
+        <Radio
+          name='my-radio'
+          label='Bare ost'
+          value='ost'
+          checked={value === 'ost'}
+          onChange={onChange}
+        />
         <Radio
           name='my-radio'
           label='Dobbeldekker'
           description='Chorizo spesial med kokkens luksuskylling'
-          {...checkedProps('dobbeldekker')}
+          value='dobbeldekker'
+          checked={value === 'dobbeldekker'}
+          onChange={onChange}
         />
-        <Radio name='my-radio' label='Flammen' {...checkedProps('flammen')} />
-        <Radio name='my-radio' label='Snadder' {...checkedProps('snadder')} />
+        <Radio
+          name='my-radio'
+          label='Flammen'
+          value='flammen'
+          checked={value === 'flammen'}
+          onChange={onChange}
+        />
+        <Radio
+          name='my-radio'
+          label='Snadder'
+          value='snadder'
+          checked={value === 'snadder'}
+          onChange={onChange}
+        />
       </Fieldset>
 
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
-        Du har valgt: {checked}
+      <Paragraph style={{ marginBlock: 'var(--ds-spacing-2)' }}>
+        Du har valgt: {value}
       </Paragraph>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => setChecked('flammen')}>Velg Flammen</Button>
-        <Button onClick={() => setChecked('snadder')}>Velg Snadder</Button>
+        <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
+        <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
       </div>
     </>
   );

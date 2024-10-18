@@ -1,27 +1,21 @@
-import type { RadioProps } from './Radio';
 import { Radio as RadioParent } from './Radio';
-import type { RadioGroupProps } from './RadioGroup';
 import { RadioGroup } from './RadioGroup';
 
-type RadioComponent = typeof RadioParent & {
+/** `<input> element with `type="radio"` used for selecting one option */
+const Radio = Object.assign(RadioParent, {
   /**
    * Grouping  multiple `Radio` together.
    * @example
-   * <Radio.Group legend="Are you 18 years or older?">
-   *    <Radio value="Yes">Yes</Radio>
-   *    <Radio value="No">No</Radio>
-   * </Radio.Group>
+   * <Fieldset legend="Are you 18 years or older?">
+   *    <Radio name="above-18" label="Yes" value="Yes" />
+   *    <Radio name="above-18" label="No" value="No" />
+   * </Fieldset>
    */
-  Group: typeof RadioGroup;
-};
+  Group: RadioGroup,
+});
 
-/** `<input> element with `type="radio"` used for selecting one option */
-const Radio = RadioParent as RadioComponent;
+Radio.Group.displayName = 'Radio.Group'; // TODO: Remove?
 
-Radio.Group = RadioGroup;
-
-Radio.Group.displayName = 'Radio.Group';
-
-export type { RadioProps, RadioGroupProps };
-
+export type { RadioProps } from './Radio';
+export type { RadioGroupProps } from './RadioGroup';
 export { Radio, RadioGroup };

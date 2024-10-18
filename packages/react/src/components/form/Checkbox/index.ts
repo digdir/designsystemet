@@ -1,9 +1,9 @@
-import type { CheckboxProps } from './Checkbox';
+import type { ChangeEvent } from 'react';
 import { Checkbox as CheckboxParent } from './Checkbox';
-import type { CheckboxGroupProps } from './CheckboxGroup';
 import { CheckboxGroup } from './CheckboxGroup';
 
-type CheckboxComponent = typeof CheckboxParent & {
+/** `<input> element with `type="checkbox"` used for selecting one option */
+const Checkbox = Object.assign(CheckboxParent, {
   /**
    * Grouping  multiple `Checkbox` together.
    * @example
@@ -14,16 +14,15 @@ type CheckboxComponent = typeof CheckboxParent & {
    *    <Checkbox value="ribs">Sembian honey-glazed rothè ribs</Checkbox>
    * </Checkbox.Group>
    */
-  Group: typeof CheckboxGroup;
-};
-
-/** `<input> element with `type="checkbox"` used for selecting one option */
-const Checkbox = CheckboxParent as CheckboxComponent;
-
-Checkbox.Group = CheckboxGroup;
+  Group: CheckboxGroup, // TODO: Remove?
+  getValues: ({ target }: ChangeEvent<HTMLInputElement>) =>
+    Array.from((target.form ?? document).getElementsByTagName('input'))
+      .filter(({ name, checked }) => name === target.name && checked)
+      .map(({ value }) => value),
+});
 
 Checkbox.Group.displayName = 'Checkbox.Group';
 
-export type { CheckboxProps, CheckboxGroupProps };
-
+export type { CheckboxProps } from './Checkbox';
+export type { CheckboxGroupProps } from './CheckboxGroup';
 export { Checkbox, CheckboxGroup };
