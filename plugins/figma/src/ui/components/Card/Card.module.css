@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--figma-color-bg-secondary);
+  background-color: var(--ds-color-neutral-background-subtle);
   height: 100px;
   width: 156px;
   border-radius: 4px;
@@ -10,11 +10,12 @@
   gap: 14px;
   text-decoration: none;
   color: inherit;
-  transition: 0.15s all;
+  border: 1px solid var(--ds-color-neutral-border-default);
+  transition: 0.15s box-shadow;
 }
 
 .card:hover {
-  box-shadow: 0 0 0 1px #777;
+  box-shadow: 0 0 0 1px var(--ds-color-neutral-border-default);
 }
 
 .circles {
@@ -30,11 +31,11 @@
   height: 13px;
   width: 13px;
   border-radius: 50%;
-  outline: 1px solid #3a3a3a;
+  outline: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .icon {
-  color: var(--figma-color-text-secondary);
+  color: var(--ds-color-neutral-text-default);
 }
 
 .title {

@@ -1,7 +1,7 @@
 .footer {
   position: absolute;
   z-index: 10;
-  background-color: var(--figma-background);
+  background-color: var(--ds-color-neutral-background-default);
   bottom: 0;
   left: 0;
   right: 0;
@@ -27,23 +27,9 @@
   background-color: #d4d4d4;
 }
 
-.github {
-  color: var(--figma-color-text-secondary);
-  font-size: 14px;
-  gap: 8px;
-  margin-left: -11px;
-  font-weight: 500;
-  transition: 0.1s all;
-}
-
-.github:hover {
-  color: var(--figma-color-text);
-  background-color: transparent;
-}
-
 .bottom {
   height: 44px;
-  border-top: 1px solid var(--figma-color-border);
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
   padding: 0 16px;
   display: flex;
   align-items: center;
@@ -64,14 +50,14 @@
 
 .version {
   font-size: 14px;
-  color: var(--figma-color-text-secondary);
+  color: var(--ds-color-neutral-text-subtle);
   font-weight: 500;
   padding: 3px 6px;
   border-radius: 2px;
 }
 
 .feedback {
-  color: var(--figma-color-text-secondary);
+  color: var(--ds-color-neutral-text-subtle);
   padding: 3px;
   border-radius: 1px;
 }

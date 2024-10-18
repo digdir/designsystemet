@@ -8759,6 +8759,7 @@ __metadata:
     "@types/react-color": "npm:^3.0.12"
     "@types/react-dom": "npm:^18.0.11"
     "@vitejs/plugin-react": "npm:^4.3.1"
+    clsx: "npm:^2.1.1"
     isomorphic-git: "npm:^1.27.0"
     lucide-react: "npm:^0.399.0"
     npm-run-all2: "npm:^6.2.0"
