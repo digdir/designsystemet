@@ -66,12 +66,13 @@ const outputColorReferences = (token: SD.TransformedToken) => {
 };
 
 type GetStyleDictionaryConfig = (
-  options: ThemePermutation & {
+  permutation: ThemePermutation,
+  options: {
     outPath?: string;
   },
 ) => SD.Config;
 
-const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', outPath, theme }) => {
+const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme }, { outPath }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
   const layer = `ds.theme.color-mode.${mode}`;
 
@@ -106,7 +107,7 @@ const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', outPath,
   };
 };
 
-const semanticVariables: GetStyleDictionaryConfig = ({ outPath, theme }) => {
+const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => {
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
@@ -154,7 +155,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ outPath, theme }) => {
   };
 };
 
-const typescriptTokens: GetStyleDictionaryConfig = ({ mode, outPath, theme }) => {
+const typescriptTokens: GetStyleDictionaryConfig = ({ mode, theme }, { outPath }) => {
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -192,7 +193,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ mode, outPath, theme }) =>
   };
 };
 
-const typographyVariables: GetStyleDictionaryConfig = ({ outPath, theme, typography }) => {
+const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { outPath }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -266,20 +267,13 @@ export const getConfigsForThemeDimensions = (
 
   const permutations = getMultidimensionalThemes(themes, dimensions);
   return permutations
-    .map(({ selectedTokenSets, mode, theme, semantic, size, typography }) => {
+    .map(({ selectedTokenSets, permutation }) => {
       const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
       const [source, include] = paritionPrimitives(setsWithPaths);
       const getConfig = configs[configName];
 
-      const config_ = getConfig({
-        outPath,
-        theme,
-        mode,
-        semantic,
-        size,
-        typography,
-      });
+      const config_ = getConfig(permutation, { outPath });
 
       const config: SD.Config = {
         ...config_,
@@ -291,7 +285,7 @@ export const getConfigsForThemeDimensions = (
         include,
       };
 
-      return { mode, theme, semantic, size, typography, config };
+      return { permutation, config };
     })
     .sort();
 };
