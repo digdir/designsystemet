@@ -99,7 +99,7 @@ const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', outPath,
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => outputColorReferences(token) && outputReferencesFilter(token, options),
+          outputReferences: false,
         },
       },
     },

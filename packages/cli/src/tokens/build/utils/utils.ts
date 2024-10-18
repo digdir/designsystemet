@@ -46,3 +46,11 @@ export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedT
 
   return hasAnyTruth(matchPathsStartingWith);
 });
+
+export function isSemanticToken(token: TransformedToken): boolean {
+  return token.filePath.includes('semantic/');
+}
+
+export function isGlobalColorToken(token: TransformedToken): boolean {
+  return token.$type === 'color' && R.startsWith(['global'], token.path);
+}
