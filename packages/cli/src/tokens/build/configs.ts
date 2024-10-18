@@ -186,10 +186,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius'], token);
-            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
-          },
+          outputReferences: false,
         },
       },
     },
