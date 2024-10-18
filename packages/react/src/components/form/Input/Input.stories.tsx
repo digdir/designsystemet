@@ -1,7 +1,14 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 
-import { Button, Heading, Label, Paragraph, ValidationMessage } from '../..';
+import {
+  Button,
+  Divider,
+  Heading,
+  Label,
+  Paragraph,
+  ValidationMessage,
+} from '../..';
 
 import { Input } from '.';
 
@@ -128,7 +135,6 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
 
   return (
     <>
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
       <Label htmlFor='input-controlled'>Kontroller meg!</Label>
       <Input
         id='input-controlled'
@@ -136,7 +142,14 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
         onChange={(e) => setValue(e.target.value)}
         {...args}
       />
-      <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
+      <div>
+        <Divider />
+
+        <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+          Du har skrevet inn: {value}
+        </Paragraph>
+        <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
+      </div>
     </>
   );
 };
@@ -683,6 +696,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='sm'>
+      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='sm'>
+      <Input
+        {...args}
+        size='sm'
+        name='sm-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='sm'>
       <Input {...args} size='sm' name='sm-readonly' readOnly />
       Read-only
@@ -710,6 +737,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='md'>
+      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='md'>
+      <Input
+        {...args}
+        size='md'
+        name='md-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='md'>
       <Input {...args} size='md' name='md-readonly' readOnly />
       Read-only
@@ -737,6 +778,20 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
       Disabled checked
     </Label>
+    {/* <Label weight='regular' size='lg'>
+      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
+      Invalid
+    </Label>
+    <Label weight='regular' size='lg'>
+      <Input
+        {...args}
+        size='lg'
+        name='lg-invalid'
+        aria-invalid='true'
+        defaultChecked
+      />
+      Invalid checked
+    </Label> */}
     <Label weight='regular' size='lg'>
       <Input {...args} size='lg' name='lg-readonly' readOnly />
       Read-only

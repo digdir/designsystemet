@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Radio } from '.';
-import { Button, Fieldset, Paragraph } from '../..';
+import { Button, Divider, Fieldset, Paragraph } from '../..';
 
 export default {
   title: 'Komponenter/Radio/Group',
@@ -75,12 +75,6 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
-        <Button onClick={() => setChecked('flammen')}>Velg Flammen</Button>
-        <Button onClick={() => setChecked('snadder')}>Velg Snadder</Button>
-        <Paragraph>Du har valgt: {checked}</Paragraph>
-      </div>
-      <br />
       <Fieldset
         legend='Velg pizza'
         description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
@@ -96,6 +90,16 @@ export const Controlled: StoryFn<typeof Radio> = () => {
         <Radio name='my-radio' label='Flammen' {...checkedProps('flammen')} />
         <Radio name='my-radio' label='Snadder' {...checkedProps('snadder')} />
       </Fieldset>
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har valgt: {checked}
+      </Paragraph>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Button onClick={() => setChecked('flammen')}>Velg Flammen</Button>
+        <Button onClick={() => setChecked('snadder')}>Velg Snadder</Button>
+      </div>
     </>
   );
 };
@@ -118,12 +122,8 @@ export const Inline: StoryFn<typeof Radio.Group> = () => (
     <div
       style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}
     >
-      <Radio name='my-radio' value='ja'>
-        Ja
-      </Radio>
-      <Radio name='my-radio' value='nei'>
-        Nei
-      </Radio>
+      <Radio name='my-radio' label='Ja' value='ja' />
+      <Radio name='my-radio' label='Nei' value='nei' />
     </div>
   </Fieldset>
 );
