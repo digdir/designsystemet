@@ -68,6 +68,8 @@ export const semantic: Format = {
       usesDtcg,
     });
 
+    const filteredAllTokens = dictionary.allTokens.filter(isSemanticToken);
+
     const formattedTokens = R.map((token: TransformedToken) => {
       const originalValue = getValue<string>(token.original);
 
@@ -83,7 +85,7 @@ export const semantic: Format = {
       }
 
       return format(token);
-    }, dictionary.allTokens);
+    }, filteredAllTokens);
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
