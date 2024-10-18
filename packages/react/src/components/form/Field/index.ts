@@ -1,5 +1,5 @@
-import { Field as FieldParent } from "./Field";
-import { FieldDescription } from "./FieldDescription";
+import { Field as FieldParent } from './Field';
+import { FieldDescription } from './FieldDescription';
 
 /**
  * @example
@@ -14,8 +14,8 @@ const Field = Object.assign(FieldParent, {
   Description: FieldDescription,
 });
 
-Field.Description.displayName = "Field.Description";
+Field.Description.displayName = 'Field.Description';
 
-export type { FieldProps } from "./Field";
-export type { FieldDescriptionProps } from "./FieldDescription";
+export type { FieldProps } from './Field';
+export type { FieldDescriptionProps } from './FieldDescription';
 export { Field, FieldDescription };

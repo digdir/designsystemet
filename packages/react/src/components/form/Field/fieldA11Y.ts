@@ -20,15 +20,15 @@ export const fieldA11Y = (fieldElement: HTMLElement | null) => {
     for (const el of changed)
       if (isElement(el)) {
         if (isLabel(el)) elements.set(el, el.htmlFor);
-        else if ("validity" in el) input = el;
-        else if (el.hasAttribute("data-field")) elements.set(el, el.id);
+        else if ('validity' in el) input = el;
+        else if (el.hasAttribute('data-field')) elements.set(el, el.id);
       }
 
     // Reset removed elements
     for (const el of removed)
       if (input === el) input = null;
       else if (isElement(el) && elements.has(el)) {
-        const attr = isLabel(el) ? "for" : "id";
+        const attr = isLabel(el) ? 'for' : 'id';
         setAttr(el, attr, elements.get(el));
         elements.delete(el);
       }
@@ -37,26 +37,26 @@ export const fieldA11Y = (fieldElement: HTMLElement | null) => {
     const inputId = input?.id || uuid;
     const descs: string[] = [];
     for (const [el, value] of elements) {
-      const desc = el.getAttribute("data-field");
+      const desc = el.getAttribute('data-field');
       const id = desc ? `${inputId}:${desc}` : inputId;
 
-      if (!value) setAttr(el, isLabel(el) ? "for" : "id", id); // Ensure we have a value
-      if (desc) descs[desc === "validation" ? "unshift" : "push"](el.id); // Validations to the front
+      if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
+      if (desc) descs[desc === 'validation' ? 'unshift' : 'push'](el.id); // Validations to the front
     }
 
-    setAttr(input, "id", inputId);
-    setAttr(input, "aria-describedby", descs.join(" "));
+    setAttr(input, 'id', inputId);
+    setAttr(input, 'aria-describedby', descs.join(' '));
   };
 
   const observer = createOptimizedMutationObserver(process);
   observer.observe(fieldElement, {
-    attributeFilter: ["id", "for", "aria-describedby"],
+    attributeFilter: ['id', 'for', 'aria-describedby'],
     attributes: true,
     childList: true,
     subtree: true,
   });
 
-  process([{ addedNodes: fieldElement.querySelectorAll("*") }]); // Initial setup
+  process([{ addedNodes: fieldElement.querySelectorAll('*') }]); // Initial setup
   observer.takeRecords(); // Clear initial setup queue
   return () => observer.disconnect();
 };
