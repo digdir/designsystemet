@@ -91,11 +91,11 @@
 }
 
 .linkIcon.figma path {
-  stroke: var(--ds-color-neutral-8);
+  stroke: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github path {
-  fill: var(--ds-color-neutral-8);
+  fill: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.figma:hover path {
