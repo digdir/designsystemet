@@ -183,7 +183,7 @@ export const Text: StoryFn<typeof Input> = (args) => (
       <ValidationMessage id='sm-invalid-error'>Feilmelding</ValidationMessage>
     </div>
     <div>
-      <Label size='sm' htmlFor='sm-readonly'>
+      <Label size='sm' htmlFor='sm-readonly' aria-readonly='true'>
         Read-only
       </Label>
       <Input {...args} size='sm' name='sm-readonly' id='sm-readonly' readOnly />
@@ -218,7 +218,7 @@ export const Text: StoryFn<typeof Input> = (args) => (
       <ValidationMessage id='md-invalid-error'>Feilmelding</ValidationMessage>
     </div>
     <div>
-      <Label size='md' htmlFor='md-readonly'>
+      <Label size='md' htmlFor='md-readonly' aria-readonly='true'>
         Read-only
       </Label>
       <Input {...args} size='md' name='md-readonly' id='md-readonly' readOnly />
@@ -253,7 +253,7 @@ export const Text: StoryFn<typeof Input> = (args) => (
       <ValidationMessage id='lg-invalid-error'>Feilmelding</ValidationMessage>
     </div>
     <div>
-      <Label size='lg' htmlFor='lg-readonly'>
+      <Label size='lg' htmlFor='lg-readonly' aria-readonly='true'>
         Read-only
       </Label>
       <Input {...args} size='lg' name='lg-readonly' id='lg-readonly' readOnly />

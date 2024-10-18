@@ -1,5 +1,9 @@
 .ds-radio {
   border-radius: var(--ds-border-radius-md);
+  display: grid;
+  gap: var(--ds-spacing-2);
+  grid-template-columns: auto 1fr;
+  width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
   @composes ds-body-text--md from './base/base.css';
 
@@ -11,45 +15,43 @@
     @composes ds-body-text--lg from './base/base.css';
   }
 
-  &:has(label) {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--ds-spacing-2);
+  & > :not(input) {
+    grid-column: 2; /* Only allow input in column 1 */
   }
 
-  &:has([aria-disabled='true'], :disabled) > * {
+  /* &:has([aria-disabled='true'], :disabled) > * {
     opacity: var(--ds-disabled-opacity);
-  }
+  } */
 
-  &:not([readonly], [aria-disabled='true'], :disabled) > label {
+  /* &:not([readonly], [aria-disabled='true'], :disabled) > label {
     cursor: pointer;
-  }
+  } */
 
   &:has(input:focus-visible) {
     @composes ds-focus--visible from './base/base.css';
   }
 
-  & input:focus-visible {
+  & > input:focus-visible {
     outline: none;
     box-shadow: none;
   }
 
-  & label {
+  /* & label {
     align-items: center;
     display: inline-flex;
     flex-direction: row;
     gap: var(--ds-spacing-1);
     min-width: min-content;
-  }
+  } */
 }
 
-.ds-radio__description {
+/* .ds-radio__description {
   margin-top: calc(var(--ds-spacing-2) * -1);
   color: var(--ds-color-neutral-text-subtle);
   grid-column: 2;
-}
+} */
 
-.ds-radio__group {
+/*.ds-radio__group {
   --dsc-radio-group-gap: var(--ds-spacing-4);
 
   display: flex;
@@ -68,10 +70,4 @@
 
     margin-top: calc(var(--ds-spacing-2) * 1);
   }
-
-  &[data-inline] {
-    display: flex;
-    flex-direction: row;
-    gap: var(--ds-spacing-6);
-  }
-}
+} */
