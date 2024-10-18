@@ -1,0 +1,66 @@
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 12px !important;
+}
+
+.ingress {
+  font-size: 20px;
+  width: 60%;
+  line-height: 1.7em;
+  margin-top: 0;
+}
+
+.page ul {
+  line-height: 1.6em;
+  width: 60%;
+}
+
+.page li {
+  margin-bottom: 10px;
+}
+
+.page h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px !important;
+  margin-top: 40px;
+}
+
+.color {
+  background-color: red;
+  height: 55px;
+  width: 65px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+}
+
+.columns {
+  display: flex;
+}
+
+.label {
+  height: 55px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  margin-right: 17px;
+}
+
+.topLabels {
+  display: flex;
+  margin-left: 180px;
+  margin-bottom: 16px;
+}
+
+.topLabel {
+  width: 65px;
+}
