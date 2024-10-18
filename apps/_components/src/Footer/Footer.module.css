@@ -64,7 +64,7 @@
   }
 }
 
-.footer .logos img {
+.footer .logos svg {
   height: 26px;
   width: auto;
   margin-right: var(--ds-spacing-2);

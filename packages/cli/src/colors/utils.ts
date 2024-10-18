@@ -276,7 +276,7 @@ export const getLightnessFromHex = (hex: string) => {
   const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
-  return Number(conv.hsluv_l.toFixed(0));
+  return Number(conv.hsluv_l.toFixed(1));
 };
 
 /**
