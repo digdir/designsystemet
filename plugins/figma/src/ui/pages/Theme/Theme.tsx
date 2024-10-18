@@ -1,4 +1,10 @@
-import { Button, Label, Link, Textarea } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Label,
+  Link,
+  Paragraph,
+  Textarea,
+} from '@digdir/designsystemet-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -98,8 +104,8 @@ function Theme() {
           />
         </div>
       </div>
-      <div>
-        <p className={classes.text}>
+      <div className={classes.wrapper}>
+        <Paragraph variant='long' size='sm'>
           Gå til{' '}
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
@@ -107,7 +113,7 @@ function Theme() {
           for å lage deg et tema og lim inn koden i feltet under. Det er kun
           fargene som blir oppdatert for øyeblikket. Vi jobber med å utvide
           pluginen med mer funksjonalitet senere.
-        </p>
+        </Paragraph>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           size='sm'
