@@ -18,19 +18,23 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
     // Register elements
     for (const el of changed) {
+      if (!isElement(el)) continue;
+
       if (isLabel(el)) elements.set(el, el.htmlFor);
+      else if (el.hasAttribute('data-field')) elements.set(el, el.id);
       else if (isFormAssociated(el)) input = el;
-      else if (isElement(el) && el.hasAttribute('data-field'))
-        elements.set(el as Element, el.id);
     }
 
     // Reset removed elements
-    for (const el of removed)
+    for (const el of changed) {
+      if (!isElement(el)) continue;
+
       if (input === el) input = null;
-      else if (isElement(el) && elements.has(el)) {
+      if (elements.has(el)) {
         setAttr(el, isLabel(el) ? 'for' : 'id', elements.get(el));
         elements.delete(el);
       }
+    }
 
     // Connect elements
     const inputId = input?.id || uuid;
