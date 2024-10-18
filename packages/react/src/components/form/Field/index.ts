@@ -1,5 +1,5 @@
 import { Field as FieldParent } from "./Field";
-import { FieldHelp } from "./FieldHelp";
+import { FieldDescription } from "./FieldDescription";
 
 /**
  * @example
@@ -7,15 +7,15 @@ import { FieldHelp } from "./FieldHelp";
  *  <Label>Label text</Label>
  *  <Field.Description>Description</Field.Description>
  *  <Input />
- *  <Field.Validation>Validation message</Field.Validation>
+ *  <ValidationMessage>Validation message</ValidationMessage>
  * </Field>
  */
 const Field = Object.assign(FieldParent, {
-  Help: FieldHelp,
+  Description: FieldDescription,
 });
 
-Field.Help.displayName = "Field.Help";
+Field.Description.displayName = "Field.Description";
 
 export type { FieldProps } from "./Field";
-export type { FieldHelpProps } from "./FieldHelp";
-export { Field, FieldHelp };
+export type { FieldDescriptionProps } from "./FieldDescription";
+export { Field, FieldDescription };

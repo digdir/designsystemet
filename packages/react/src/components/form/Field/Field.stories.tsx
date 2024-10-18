@@ -29,8 +29,8 @@ const toggles = {
   inputId: '',
   label: true,
   labelFor: '',
-  help: true,
-  helpId: '',
+  description: true,
+  descriptionId: '',
   validation: true,
   validationId: '',
   moveToBody: false,
@@ -42,8 +42,8 @@ export const Preview: Story = (args) => {
     inputId,
     label,
     labelFor,
-    help,
-    helpId,
+    description,
+    descriptionId,
     validation,
     validationId,
     moveToBody,
@@ -62,7 +62,11 @@ export const Preview: Story = (args) => {
   return (
     <Field data-my-field>
       {label && <Label htmlFor={labelFor || undefined}>Kort beskrivelse</Label>}
-      {help && <Field.Help id={helpId || undefined}>Beskrivelse</Field.Help>}
+      {description && (
+        <Field.Description id={descriptionId || undefined}>
+          Beskrivelse
+        </Field.Description>
+      )}
       {type && <Component id={inputId || undefined} />}
       {validation && (
         <ValidationMessage data-my-validation id={validationId || undefined}>

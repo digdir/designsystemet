@@ -26,7 +26,8 @@ export const fieldA11Y = (fieldElement: HTMLElement | null) => {
 
     // Reset removed elements
     for (const el of removed)
-      if (isElement(el) && elements.has(el)) {
+      if (input === el) input = null;
+      else if (isElement(el) && elements.has(el)) {
         const attr = isLabel(el) ? "for" : "id";
         setAttr(el, attr, elements.get(el));
         elements.delete(el);
@@ -34,18 +35,17 @@ export const fieldA11Y = (fieldElement: HTMLElement | null) => {
 
     // Connect elements
     const inputId = input?.id || uuid;
-    const describedby: string[] = [];
+    const descs: string[] = [];
     for (const [el, value] of elements) {
-      const attr = isLabel(el) ? "for" : "id";
-      const type = el.getAttribute("data-field");
+      const desc = el.getAttribute("data-field");
+      const id = desc ? `${inputId}:${desc}` : inputId;
 
-      if (!value) setAttr(el, attr, type ? `${inputId}:${type}` : inputId); // Ensure we have a value
-      if (type) describedby[type === "validation" ? "unshift" : "push"](el.id); // Validations to the front
+      if (!value) setAttr(el, isLabel(el) ? "for" : "id", id); // Ensure we have a value
+      if (desc) descs[desc === "validation" ? "unshift" : "push"](el.id); // Validations to the front
     }
 
-    // Set aria-describedby
     setAttr(input, "id", inputId);
-    setAttr(input, "aria-describedby", describedby.join(" "));
+    setAttr(input, "aria-describedby", descs.join(" "));
   };
 
   const observer = createOptimizedMutationObserver(process);
