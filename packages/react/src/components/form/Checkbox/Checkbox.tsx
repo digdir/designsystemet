@@ -37,15 +37,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     { children, label, description, validation, ...rest },
     ref,
   ) {
-    // const { children, description, className, style, ...rest } = props;
-    // const {
-    //   inputProps,
-    //   descriptionId,
-    //   hasError,
-    //   size = 'md',
-    //   readOnly,
-    // } = useCheckbox(props);
-
     // const inputRef = useMergeRefs<HTMLInputElement>([
     //   ref,
     //   (el) => {
@@ -61,52 +52,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {validation && <ValidationMessage>{validation}</ValidationMessage>}
       </Field>
     );
-
-    // return (
-    //   <Paragraph asChild size={size}>
-    //     <div
-    //       className={cl(
-    //         'ds-checkbox',
-    //         `ds-checkbox--${size}`,
-    //         hasError && `ds-checkbox--error`,
-    //         readOnly && `ds-checkbox--readonly`,
-    //         className,
-    //       )}
-    //       style={style}
-    //     >
-    //       <input
-    //         className={`ds-checkbox__input`}
-    //         ref={inputRef}
-    //         {...omit(['size', 'error', 'indeterminate'], rest)}
-    //         {...inputProps}
-    //         type='checkbox'
-    //         disabled={inputProps.disabled}
-    //         aria-checked={rest.indeterminate ? 'mixed' : inputProps.checked}
-    //       />
-    //       {children && (
-    //         <>
-    //           <Label
-    //             className={cl(`ds-checkbox__label`)}
-    //             htmlFor={inputProps.id}
-    //             size={size}
-    //             weight='regular'
-    //           >
-    //             <span>{children}</span>
-    //           </Label>
-    //           {description && (
-    //             <Paragraph asChild size={size}>
-    //               <div
-    //                 id={descriptionId}
-    //                 className={`ds-checkbox__description`}
-    //               >
-    //                 {description}
-    //               </div>
-    //             </Paragraph>
-    //           )}
-    //         </>
-    //       )}
-    //     </div>
-    //   </Paragraph>
-    // );
   },
 );
