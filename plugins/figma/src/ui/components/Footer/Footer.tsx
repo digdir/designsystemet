@@ -21,7 +21,7 @@ export const Footer = () => {
       <div className={classes.bottom}>
         <div className={classes.bottomLeft}>
           {loading && (
-            <Spinner title='fff' size='sm' className={classes.spinner} />
+            <Spinner title='fff' size='xs' className={classes.spinner} />
           )}
         </div>
         <div className={classes.bottomRight}>

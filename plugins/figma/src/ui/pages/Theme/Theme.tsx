@@ -128,7 +128,7 @@ function Theme() {
           className={classes.btn}
           size='sm'
           onClick={() => handleClick()}
-          disabled={loading}
+          loading={loading}
         >
           Oppdater tema
         </Button>
