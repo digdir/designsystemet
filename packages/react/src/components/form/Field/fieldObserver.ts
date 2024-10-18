@@ -19,8 +19,9 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     // Register elements
     for (const el of changed) {
       if (isLabel(el)) elements.set(el, el.htmlFor);
-      else if (isElement(el) && el.hasAttribute('data-field')) elements.set(el as Element, el.id);
       else if (isFormAssociated(el)) input = el;
+      else if (isElement(el) && el.hasAttribute('data-field'))
+        elements.set(el as Element, el.id);
     }
 
     // Reset removed elements
