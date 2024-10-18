@@ -14,6 +14,7 @@
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./accordion.css') layer(ds.components);
+@import url('./field.css') layer(ds.components);
 @import url('./switch.css') layer(ds.components);
 @import url('./checkbox.css') layer(ds.components);
 @import url('./radio.css') layer(ds.components);

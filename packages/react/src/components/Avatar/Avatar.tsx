@@ -62,7 +62,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
-  const Component = children && typeof children !== 'string' ? Slot : Fragment;
+  const useSlot = children && typeof children !== 'string';
+  const Component = useSlot ? Slot : Fragment;
 
   return (
     <span
@@ -75,7 +76,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       aria-label={ariaLabel}
       {...rest}
     >
-      <Component {...(children ? { 'aria-hidden': true } : {})}>
+      <Component {...(useSlot ? { 'aria-hidden': true } : {})}>
         {children}
       </Component>
     </span>

@@ -38,6 +38,10 @@
   transition: 0.1s all;
 }
 
+.btnActive {
+  background-color: var(--ds-color-accent-surface-default);
+}
+
 .logo {
   padding: 10.5px;
   display: flex;

@@ -1,5 +1,6 @@
 import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/table.css?inline';
 import * as TableStories from './Table.stories';
 
 import { TableHeaderCell } from './';
@@ -168,3 +169,7 @@ Skjermlesere vil lese caption-elementet og brukerne kan ta stilling til om de vi
 ## `TableHeaderCell` Props
 
 <ArgTypes of={TableHeaderCell} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

@@ -1,5 +1,6 @@
 import { Meta, Controls, Primary, ArgTypes, Canvas } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/error-summary.css?inline';
 import * as ErrorSummaryStories from './ErrorSummary.stories';
 
 import { ErrorSummary } from './';
@@ -105,3 +106,8 @@ Alle punkt i listen er lenker, og oppfører seg som en lenke.
 ### `ErrorSummary.Item`
 
 <ArgTypes of={ErrorSummary.Item} />
+
+
+## CSS Variabler
+
+<CssVariables css={css} />

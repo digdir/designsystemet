@@ -1,5 +1,6 @@
 import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/pagination.css?inline';
 import * as PaginationStories from './Pagination.stories';
 import { usePagination } from './usePagination';
 
@@ -95,3 +96,6 @@ Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.
 
 <Canvas of={PaginationStories.WithAnchor} />
 
+## CSS Variabler
+
+<CssVariables css={css} />

@@ -1,4 +1,3 @@
-export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { ImageBanner } from './ImageBanner';
 export { MdxContent } from './MdxContent';

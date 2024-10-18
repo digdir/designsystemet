@@ -15,7 +15,7 @@ export type DropdownProps = {
 } & Omit<PopoverProps, 'variant' | 'placement'>;
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
-  function DropddownMenuContent(
+  function DropdownContent(
     { placement = 'bottom-end', className, ...rest },
     ref,
   ) {
@@ -45,10 +45,10 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   },
 );
 
-type DropdownMenuCtxType = {
+type DropdownCtxType = {
   size: NonNullable<DropdownProps['size']>;
 };
 
-export const DropdownCtx = createContext<DropdownMenuCtxType>({
+export const DropdownCtx = createContext<DropdownCtxType>({
   size: 'md',
 });

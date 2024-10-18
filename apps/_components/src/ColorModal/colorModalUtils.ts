@@ -22,24 +22,28 @@ export const getColorDescription = ({
     description += ' er en bakgrunnsfarge som har et hint av farge i seg.';
   } else if (weight === 3) {
     description +=
-      ' brukes på flater som ligger oppå bakgrunnsfargene i en nøytral state. Fargen brukes i Card komponenten.';
+      ' brukes på flater som ligger oppå bakgrunnsfargene. Fargen brukes for eksempel i Card komponenten til Designsystemet.';
   } else if (weight === 4) {
     description +=
-      ' brukes på interaktive elementer som ligger oppå bakgrunnsfargene i en hover state.';
+      ' brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state.';
   } else if (weight === 5) {
     description +=
-      ' brukes på interaktive elementer som ligger oppå bakgrunnsfargene i en active state.';
+      ' brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state.';
   } else if (weight === 6) {
     description +=
-      ' er den lyseste border-fargen og brukes for å skille elementer fra hverandre. Fargen brukessom border-farge i Divider komponenten og i Tabeller.';
+      ' er den lyseste border-fargen og brukes for å skille elementer fra hverandre.';
   } else if (weight === 7) {
     description +=
-      ' er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene. Fargen brukes som border-farge i TextField komponenten.';
+      ' er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene.';
   } else if (weight === 8) {
     description +=
-      ' er den mørkeste border-fargen som brukes når man ønsker god kontrast.';
+      ' er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border.';
   } else if (weight === 9) {
-    description += ` er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien.`;
+    description += ` fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet.`;
+  } else if (weight === 10) {
+    description += `  kan brukes som hover farge på elementer som bruker Base Default fargen. `;
+  } else if (weight === 11) {
+    description += ` kan brukes som active farge på elementer som bruker Base Default fargen`;
   } else if (weight === 12) {
     description +=
       ' er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien.';
