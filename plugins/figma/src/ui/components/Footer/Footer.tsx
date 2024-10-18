@@ -11,17 +11,19 @@ export const Footer = () => {
 
   return (
     <div className={classes.footer}>
-      <div className={classes.top}>
+      {/* <div className={classes.top}>
         <div className={classes.topLeft}></div>
 
         <div className={classes.topRight}>
+
+        </div>
+      </div> */}
+      <div className={classes.bottom}>
+        <div className={classes.bottomLeft}>
           {loading && (
             <Spinner title='fff' size='sm' className={classes.spinner} />
           )}
         </div>
-      </div>
-      <div className={classes.bottom}>
-        <div className={classes.bottomLeft}></div>
         <div className={classes.bottomRight}>
           <div className={classes.version}>V {packageJson.version}</div>
           <Tooltip content='Feedback' placement='top'>
