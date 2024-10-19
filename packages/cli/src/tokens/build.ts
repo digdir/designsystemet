@@ -31,6 +31,8 @@ const sd = new StyleDictionary();
 const buildConfigs = {
   typography: { sdConfig: 'typographyVariables', dimensions: ['typography'] },
   'color-mode': { sdConfig: 'colorModeVariables', dimensions: ['mode'] },
+  'main-color': { sdConfig: 'mainColorVariables', dimensions: ['mainColor'] },
+  'support-color': { sdConfig: 'supportColorVariables', dimensions: ['supportColor'] },
   semantic: { sdConfig: 'semanticVariables', dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
