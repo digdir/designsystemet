@@ -1,14 +1,14 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { DefaultProps } from '../../types';
+import type { Color, DefaultProps } from '../../types';
 
 export type AlertProps = {
   /**
    * Sets color and icon.
    * @default info
    */
-  color?: 'info' | 'warning' | 'success' | 'danger';
+  color?: Color;
 } & HTMLAttributes<HTMLDivElement> &
   DefaultProps;
 

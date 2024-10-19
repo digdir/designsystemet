@@ -1,6 +1,11 @@
 .ds-tag {
   --dsc-tag-background: var(--ds-color-neutral-surface-default);
   --dsc-tag-color: var(--ds-color-neutral-text-default);
+
+  &[data-color] {
+    --dsc-tag-background: var(--ds-color-surface-default);
+    --dsc-tag-color: var(--ds-color-text-default);
+  }
   --dsc-tag-min-height: var(--ds-sizing-8);
   --dsc-tag-padding: 0 var(--ds-spacing-2);
 
@@ -15,39 +20,4 @@
   padding: var(--dsc-tag-padding);
   width: max-content;
   word-break: break-word;
-
-  &[data-color='info'] {
-    --dsc-tag-background: var(--ds-color-info-surface-default);
-    --dsc-tag-color: var(--ds-color-info-text-default);
-  }
-
-  &[data-color='success'] {
-    --dsc-tag-background: var(--ds-color-success-surface-default);
-    --dsc-tag-color: var(--ds-color-success-text-default);
-  }
-
-  &[data-color='warning'] {
-    --dsc-tag-background: var(--ds-color-warning-surface-default);
-    --dsc-tag-color: var(--ds-color-warning-text-default);
-  }
-
-  &[data-color='danger'] {
-    --dsc-tag-background: var(--ds-color-danger-surface-default);
-    --dsc-tag-color: var(--ds-color-danger-text-default);
-  }
-
-  &[data-color='brand1'] {
-    --dsc-tag-background: var(--ds-color-brand1-surface-default);
-    --dsc-tag-color: var(--ds-color-brand1-text-default);
-  }
-
-  &[data-color='brand2'] {
-    --dsc-tag-background: var(--ds-color-brand2-surface-default);
-    --dsc-tag-color: var(--ds-color-brand2-text-default);
-  }
-
-  &[data-color='brand3'] {
-    --dsc-tag-background: var(--ds-color-brand3-surface-default);
-    --dsc-tag-color: var(--ds-color-brand3-text-default);
-  }
 }

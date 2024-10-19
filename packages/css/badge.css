@@ -1,6 +1,12 @@
 .ds-badge {
   --dsc-badge-background: var(--ds-color-accent-base-default);
   --dsc-badge-color: var(--ds-color-accent-contrast-default);
+
+  &[data-color] {
+    --dsc-badge-background: var(--ds-color-base-default);
+    --dsc-badge-color: var(--ds-color-contrast-default);
+  }
+
   --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
   --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
 
@@ -26,31 +32,6 @@
   & :where(img, svg) {
     flex-shrink: 0; /* Never shrink icon */
     font-size: 1.25em; /* Auto scale icon based on font-size */
-  }
-
-  &[data-color='info'] {
-    --dsc-badge-background: var(--ds-color-info-base-default);
-    --dsc-badge-color: var(--ds-color-info-contrast-default);
-  }
-
-  &[data-color='success'] {
-    --dsc-badge-background: var(--ds-color-success-base-default);
-    --dsc-badge-color: var(--ds-color-success-contrast-default);
-  }
-
-  &[data-color='warning'] {
-    --dsc-badge-background: var(--ds-color-warning-base-default);
-    --dsc-badge-color: var(--ds-color-warning-contrast-default);
-  }
-
-  &[data-color='danger'] {
-    --dsc-badge-background: var(--ds-color-danger-base-default);
-    --dsc-badge-color: var(--ds-color-danger-contrast-default);
-  }
-
-  &[data-color='neutral'] {
-    --dsc-badge-background: var(--ds-color-neutral-surface-default);
-    --dsc-badge-color: var(--ds-color-neutral-text-default);
   }
 
   /* If placement is present, we are floating */

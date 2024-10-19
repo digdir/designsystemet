@@ -3,17 +3,14 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
+import type { Color } from '../../types';
 
 export type CardProps = {
   /**
    * Changes background & border color
    * @default neutral
    */
-  color?: 'neutral' | 'subtle' | 'brand1' | 'brand2' | 'brand3';
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
+  color?: 'subtle' | Color;
   asChild?: boolean;
   /** Instances of `Card.Block`, `Divider` or other React nodes */
   children: ReactNode;

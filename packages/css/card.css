@@ -1,10 +1,26 @@
 .ds-card {
+  /* default color: neutral */
   --dsc-card-background--active: var(--ds-color-neutral-surface-default);
   --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
   --dsc-card-background: var(--ds-color-neutral-background-default);
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
+
+  &[data-color]:where(:not([data-color='subtle'])) {
+    --dsc-card-background--active: var(--ds-color-surface-default);
+    --dsc-card-background--hover: var(--ds-color-background-subtle);
+    --dsc-card-background: var(--ds-color-surface-default);
+    --dsc-card-border-color: var(--ds-color-border-subtle);
+    --dsc-card-color: var(--ds-color-text-default);
+  }
+  &[data-color='neutral'] {
+    --dsc-card-background: var(--ds-color-background-default);
+  }
+  &[data-color='subtle'] {
+    --dsc-card-background: var(--ds-color-neutral-background-subtle);
+  }
+
+  --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-gap: var(--ds-spacing-3);
   --dsc-card-padding: var(--ds-spacing-6);
 
@@ -57,37 +73,6 @@
 
   &:has(> .ds-card__block) {
     padding: 0; /* Let Card.Block own the padding */
-  }
-
-  &[data-color='subtle'] {
-    --dsc-card-background--active: var(--ds-color-neutral-surface-hover);
-    --dsc-card-background--hover: var(--ds-color-neutral-surface-default);
-    --dsc-card-background: var(--ds-color-neutral-background-subtle);
-    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  }
-
-  &[data-color='brand1'] {
-    --dsc-card-background--active: var(--ds-color-brand1-surface-active);
-    --dsc-card-background--hover: var(--ds-color-brand1-surface-hover);
-    --dsc-card-background: var(--ds-color-brand1-surface-default);
-    --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
-    --dsc-card-color: var(--ds-color-brand1-text-default);
-  }
-
-  &[data-color='brand2'] {
-    --dsc-card-background--active: var(--ds-color-brand2-surface-active);
-    --dsc-card-background--hover: var(--ds-color-brand2-surface-hover);
-    --dsc-card-background: var(--ds-color-brand2-surface-default);
-    --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
-    --dsc-card-color: var(--ds-color-brand2-text-default);
-  }
-
-  &[data-color='brand3'] {
-    --dsc-card-background--active: var(--ds-color-brand3-surface-active);
-    --dsc-card-background--hover: var(--ds-color-brand3-surface-hover);
-    --dsc-card-background: var(--ds-color-brand3-surface-default);
-    --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
-    --dsc-card-color: var(--ds-color-brand3-text-default);
   }
 }
 

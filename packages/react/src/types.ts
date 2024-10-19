@@ -1,4 +1,14 @@
 export type Size = 'sm' | 'md' | 'lg';
+export type Color =
+  | 'accent'
+  | 'neutral'
+  | 'brand1'
+  | 'brand2'
+  | 'brand3'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger';
 
 export type PortalProps = {
   /**
