@@ -1,13 +1,14 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import type { Color } from '../../types';
 
 export type AccordionProps = {
   /**
    * Accordion background color
    * @default neutral
    */
-  color?: 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'subtle';
+  color?: 'subtle' | Color;
   /**
    * Show border
    * @default false

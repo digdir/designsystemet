@@ -2,6 +2,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
+import type { Color } from 'packages/react/src/types';
 import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
@@ -15,7 +16,7 @@ export type SpinnerProps = {
    * Spinner appearance
    * @default neutral
    */
-  color?: 'neutral' | 'accent';
+  color?: Color;
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }

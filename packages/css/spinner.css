@@ -1,6 +1,15 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
   --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
+
+  &[data-color] {
+    --dsc-spinner-stroke: var(--ds-color-border-default);
+  }
+
+  &[data-color='accent'] {
+    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
+  }
+
   --dsc-spinner-animation-duration: 2s;
 
   animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
@@ -8,10 +17,6 @@
   font-size: var(--ds-sizing-11);
   height: 1em;
   width: 1em;
-
-  &[data-color='accent'] {
-    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
-  }
 
   /* Using font-size to ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {

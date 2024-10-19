@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
-import type { DefaultProps } from '../../types';
+import type { Color, DefaultProps } from '../../types';
 
 export type BadgeProps = {
   /**
@@ -8,7 +8,7 @@ export type BadgeProps = {
    *
    * @default accent
    */
-  color?: 'accent' | 'info' | 'success' | 'warning' | 'danger' | 'neutral';
+  color?: Color;
   /**
    * The number to display in the badge
    */
