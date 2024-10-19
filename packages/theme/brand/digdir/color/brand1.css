@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-ds-color="brand1"] {
+[data-color="brand1"] {
   --ds-color-background-default: var(--ds-color-brand1-background-default);
   --ds-color-background-subtle: var(--ds-color-brand1-background-subtle);
   --ds-color-surface-default: var(--ds-color-brand1-surface-default);

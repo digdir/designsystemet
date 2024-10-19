@@ -113,7 +113,7 @@ const colorCategoryVariables =
   (category: ColorCategories): GetStyleDictionaryConfig =>
   ({ mode, theme, [`${category}Color` as const]: color }, { outPath }) => {
     const layer = `ds.theme.color`;
-    const selector = `[data-ds-color="${color}"]`;
+    const selector = `[data-color="${color}"]`;
 
     return {
       usesDtcg,
