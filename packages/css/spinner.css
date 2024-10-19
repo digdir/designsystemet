@@ -1,6 +1,6 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
-  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
+  --dsc-spinner-stroke: var(--ds-color-border-default);
   --dsc-spinner-size: var(--ds-sizing-11);
   --dsc-spinner-animation-duration: 2s;
 
@@ -8,10 +8,6 @@
   box-sizing: border-box;
   height: var(--dsc-spinner-size);
   width: var(--dsc-spinner-size);
-
-  &[data-color='accent'] {
-    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
-  }
 
   &[data-size='2xs'] {
     --dsc-spinner-size: var(--ds-sizing-3);

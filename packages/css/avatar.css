@@ -1,6 +1,6 @@
 .ds-avatar {
-  --dsc-avatar-background: var(--ds-color-accent-base-default);
-  --dsc-avatar-color: var(--ds-color-accent-contrast-default);
+  --dsc-avatar-background: var(--ds-color-base-default);
+  --dsc-avatar-color: var(--ds-color-contrast-default);
   --dsc-avatar-size: var(--ds-sizing-12);
   --dsc-avatar-padding: var(--ds-spacing-2);
   --dsc-avatar-border-radius: var(--ds-border-radius-full);
@@ -52,31 +52,6 @@
 
   &[data-variant='square'] {
     --dsc-avatar-border-radius: var(--ds-border-radius-sm);
-  }
-
-  &[data-color='accent'] {
-    --dsc-avatar-background: var(--ds-color-accent-base-default);
-    --dsc-avatar-color: var(--ds-color-accent-contrast-default);
-  }
-
-  &[data-color='neutral'] {
-    --dsc-avatar-background: var(--ds-color-neutral-base-default);
-    --dsc-avatar-color: var(--ds-color-neutral-contrast-default);
-  }
-
-  &[data-color='brand1'] {
-    --dsc-avatar-background: var(--ds-color-brand1-base-default);
-    --dsc-avatar-color: var(--ds-color-brand1-contrast-default);
-  }
-
-  &[data-color='brand2'] {
-    --dsc-avatar-background: var(--ds-color-brand2-base-default);
-    --dsc-avatar-color: var(--ds-color-brand2-contrast-default);
-  }
-
-  &[data-color='brand3'] {
-    --dsc-avatar-background: var(--ds-color-brand3-base-default);
-    --dsc-avatar-color: var(--ds-color-brand3-contrast-default);
   }
 
   &[data-size='xs'] {
