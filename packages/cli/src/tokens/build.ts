@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import type { ThemeObject } from '@tokens-studio/types';
@@ -50,7 +50,11 @@ const buildConfigs = {
         sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
 
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
+          const builtinColorsFilename = 'builtin-colors.css';
+          const builtinColors = path.resolve(import.meta.dirname, 'build', builtinColorsFilename);
+          await fs.copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename));
+
+          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme) });
         }),
       );
     },
@@ -65,7 +69,7 @@ export async function buildTokens(options: Options): Promise<void> {
   /*
    * Build the themes
    */
-  const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
+  const $themes = JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
   const relevant$themes = $themes
     .map(processThemeObject)
