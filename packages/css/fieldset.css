@@ -9,7 +9,8 @@
     @composes ds-sr-only from './base/base.css';
   }
 
-  &[data-readonly='true'] > legend {
+  /* Add lock icon to legend when only containing readonly inputs */
+  &:has([readonly]):not(:has(:read-write)) > legend {
     --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
   }
 
