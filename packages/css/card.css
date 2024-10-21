@@ -18,6 +18,8 @@
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
 
+  @composes ds-paragraph from './paragraph.css'; /* Must be after all: unset */
+
   /* Style link in heading, or heading when Card is anchor */
   :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
   &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
