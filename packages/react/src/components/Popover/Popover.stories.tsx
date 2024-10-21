@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useEffect, useState } from 'react';
 
-import { Button, Paragraph } from '../..';
+import { Button, Paragraph, Textfield } from '../..';
 
 import { Popover } from '.';
 
@@ -32,7 +32,10 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
   return (
     <Popover.Context>
       <Popover.Trigger>My trigger!</Popover.Trigger>
-      <Popover {...args}>popover content</Popover>
+      <Popover {...args}>
+        popover content 3rgoi heroigj eoijg eijgoeirj goiergjjgerierjg oierg
+        joiergjeoigijgeigjeroig jeroig jerijeor
+      </Popover>
     </Popover.Context>
   );
 };

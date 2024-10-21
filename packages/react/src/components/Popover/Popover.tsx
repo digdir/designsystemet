@@ -176,12 +176,30 @@ const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
-    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+    let arrowX = 0;
+    let arrowY = 0;
+
+    /**
+     * if popover is wider, set arrow in the middle of the reference
+     * if the reference is wider, set the arrow in the middle of the popover
+     */
+    if (rects.reference.width > rects.floating.width) {
+      arrowX = rects.floating.width / 2 - ARROW_HEIGHT / 2;
+      arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+    } else {
+      arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
+      arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+    }
 
     elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-x',
+      `${Math.round(arrowX)}px`,
+    );
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-y',
+      `${Math.round(arrowY)}px`,
+    );
     return data;
   },
 };
