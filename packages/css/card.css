@@ -18,8 +18,6 @@
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
 
-  @composes ds-stack from './base/base.css';
-
   /* Style link in heading, or heading when Card is anchor */
   :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
   &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
@@ -84,6 +82,17 @@
     --dsc-card-background: var(--ds-color-brand3-surface-default);
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
     --dsc-card-color: var(--ds-color-brand3-text-default);
+  }
+}
+
+/* Using :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card, .ds-card__block) {
+  & > :first-child {
+    margin-block: 0;
+  }
+
+  & > * + * {
+    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
   }
 }
 

@@ -4,16 +4,17 @@
   min-width: 0;
   padding: 0;
 
-  @composes ds-stack from './base/base.css';
-
   &[data-hidelegend] > legend,
   &[data-hidelegend] > legend + p {
     @composes ds-sr-only from './base/base.css';
   }
 
-  & > p {
-    --ds-stack-spacing: var(--ds-spacing-2);
+  /* Stack everything that is not after legend */
+  & > :where(:not(legend)) + * {
+    margin-block-start: var(--ds-spacing-4);
+  }
 
+  & > p {
     color: var(--ds-color-neutral-text-subtle);
   }
 

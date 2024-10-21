@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   Button,
   Divider,
+  Field,
   Heading,
   Label,
   Paragraph,
@@ -90,18 +91,13 @@ export const Preview: Story = {
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
     return (
-      <>
-        <Label htmlFor='input-1'>Input 1</Label>
-        <Input id='input-1' {...args} defaultChecked />
+      <Field>
+        <Label>Input 1</Label>
+        <Input {...args} defaultChecked />
         <ValidationMessage hidden={!args['aria-invalid']}>
           Feilmelding
         </ValidationMessage>
-        <Label htmlFor='input-2'>Input 2</Label>
-        <Input id='input-2' {...args} ref={inputRef} />
-        <ValidationMessage hidden={!args['aria-invalid']}>
-          Feilmelding
-        </ValidationMessage>
-      </>
+      </Field>
     );
   },
 };
@@ -110,24 +106,22 @@ export const HtmlSize: Story = {
     htmlSize: 10,
   },
   render: (args) => (
-    <>
-      <Label htmlFor='input-html-size'>Input with htmlSize</Label>
-      <Input id='input-html-size' {...args} />
-    </>
+    <Field>
+      <Label>Input with htmlSize</Label>
+      <Input {...args} />
+    </Field>
   ),
 };
 
 export const Adornments: StoryFn<typeof Input> = (args) => (
-  <>
-    <Label htmlFor='input-html-size'>
-      Hvor mange kroner koster det per måned?
-    </Label>
+  <Field>
+    <Label>Hvor mange kroner koster det per måned?</Label>
     <Input.AffixWrapper>
       <Input.Affix>NOK</Input.Affix>
-      <Input id='input-html-size' {...args} />
+      <Input {...args} />
       <Input.Affix>pr.mnd</Input.Affix>
     </Input.AffixWrapper>
-  </>
+  </Field>
 );
 
 export const Controlled: StoryFn<typeof Input> = (args) => {
@@ -135,13 +129,14 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
 
   return (
     <>
-      <Label htmlFor='input-controlled'>Kontroller meg!</Label>
-      <Input
-        id='input-controlled'
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        {...args}
-      />
+      <Field>
+        <Label>Kontroller meg!</Label>
+        <Input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          {...args}
+        />
+      </Field>
       <div>
         <Divider />
 
@@ -163,114 +158,66 @@ export const Text: StoryFn<typeof Input> = (args) => (
       maxWidth: '90vw',
     }}
   >
-    <style>
-      {'div:has(> label) { display: flex; flex-direction: column; gap: .5rem}'}
-    </style>
     <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
       Small
     </Heading>
-    <div>
-      <Label size='sm' htmlFor='sm-default'>
-        Default
-      </Label>
-      <Input {...args} size='sm' name='sm-default' id='sm-default' />
-    </div>
-    <div>
-      <Label size='sm' htmlFor='sm-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='sm' name='sm-disabled' id='sm-disabled' disabled />
-    </div>
-    <div>
-      <Label size='sm' htmlFor='sm-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='sm'
-        name='sm-invalid'
-        id='sm-invalid'
-        aria-describedby='sm-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='sm-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='sm' htmlFor='sm-readonly' aria-readonly='true'>
-        Read-only
-      </Label>
-      <Input {...args} size='sm' name='sm-readonly' id='sm-readonly' readOnly />
-    </div>
+    <Field>
+      <Label size='sm'>Default</Label>
+      <Input {...args} size='sm' name='sm-default' />
+    </Field>
+    <Field>
+      <Label size='sm'>Disabled</Label>
+      <Input {...args} size='sm' name='sm-disabled' disabled />
+    </Field>
+    <Field>
+      <Label size='sm'>Invalid</Label>
+      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
+      <ValidationMessage>Feilmelding</ValidationMessage>
+    </Field>
+    <Field>
+      <Label size='sm'>Read-only</Label>
+      <Input {...args} size='sm' name='sm-readonly' readOnly />
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Medium
     </Heading>
-    <div>
-      <Label size='md' htmlFor='md-default'>
-        Default
-      </Label>
-      <Input {...args} size='md' name='md-default' id='md-default' />
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='md' name='md-disabled' id='md-disabled' disabled />
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='md'
-        name='md-invalid'
-        id='md-invalid'
-        aria-describedby='md-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='md-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-readonly' aria-readonly='true'>
-        Read-only
-      </Label>
-      <Input {...args} size='md' name='md-readonly' id='md-readonly' readOnly />
-    </div>
+    <Field>
+      <Label size='md'>Default</Label>
+      <Input {...args} size='md' name='md-default' />
+    </Field>
+    <Field>
+      <Label size='md'>Disabled</Label>
+      <Input {...args} size='md' name='md-disabled' disabled />
+    </Field>
+    <Field>
+      <Label size='md'>Invalid</Label>
+      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
+      <ValidationMessage>Feilmelding</ValidationMessage>
+    </Field>
+    <Field>
+      <Label size='md'>Read-only</Label>
+      <Input {...args} size='md' name='md-readonly' readOnly />
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Large
     </Heading>
-    <div>
-      <Label size='lg' htmlFor='lg-default'>
-        Default
-      </Label>
-      <Input {...args} size='lg' name='lg-default' id='lg-default' />
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='lg' name='lg-disabled' id='lg-disabled' disabled />
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='lg'
-        name='lg-invalid'
-        id='lg-invalid'
-        aria-describedby='lg-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='lg-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-readonly' aria-readonly='true'>
-        Read-only
-      </Label>
-      <Input {...args} size='lg' name='lg-readonly' id='lg-readonly' readOnly />
-    </div>
+    <Field>
+      <Label size='lg'>Default</Label>
+      <Input {...args} size='lg' name='lg-default' />
+    </Field>
+    <Field>
+      <Label size='lg'>Disabled</Label>
+      <Input {...args} size='lg' name='lg-disabled' disabled />
+    </Field>
+    <Field>
+      <Label size='lg'>Invalid</Label>
+      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
+      <ValidationMessage>Feilmelding</ValidationMessage>
+    </Field>
+    <Field>
+      <Label size='lg'>Read-only</Label>
+      <Input {...args} size='lg' name='lg-readonly' readOnly />
+    </Field>
   </div>
 );
 
@@ -287,31 +234,30 @@ export const Radio: StoryFn<typeof Input> = (args) => (
       maxWidth: '90vw',
     }}
   >
-    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
     <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
       Small
     </Heading>
-    <Label weight='regular' size='sm'>
+    <Field>
       <Input {...args} size='sm' name='sm-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Disabled checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='sm'
@@ -319,40 +265,40 @@ export const Radio: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Invalid checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='sm'>Read-only checked</Label>
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Medium
     </Heading>
-    <Label weight='regular' size='md'>
+    <Field>
       <Input {...args} size='md' name='md-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Disabled checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='md'
@@ -360,40 +306,40 @@ export const Radio: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Invalid checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='md'>Read-only checked</Label>
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Large
     </Heading>
-    <Label weight='regular' size='lg'>
+    <Field>
       <Input {...args} size='lg' name='lg-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Disabled checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='lg'
@@ -401,16 +347,16 @@ export const Radio: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Invalid checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='lg'>Read-only checked</Label>
+    </Field>
   </div>
 );
 
@@ -433,45 +379,38 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
         gap: '1rem',
       }}
     >
-      <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
       <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
         Small
       </Heading>
-      <Label weight='regular' size='sm'>
+      <Field>
         <Input {...args} size='sm' name='sm-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Default</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Checked</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Disabled</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input
-          {...args}
-          size='sm'
-          name='sm-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Disabled checked</Label>
+      </Field>
+      <Field>
+        <Input {...args} size='sm' name='sm-default' data-indeterminate />
+        <Label size='sm'>Disabled indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Invalid</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='sm'
@@ -479,74 +418,68 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
           aria-invalid='true'
           defaultChecked
         />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Invalid checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='sm'
-          name='sm-invalid'
+          name='sm-default'
           aria-invalid='true'
           data-indeterminate
         />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Invalid indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Read-only</Label>
+      </Field>
+      <Field>
         <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='sm'>
+        <Label size='sm'>Read-only checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='sm'
-          name='sm-readonly'
+          name='sm-default'
           readOnly
           data-indeterminate
         />
-        Read-only indeterminate
-      </Label>
+        <Label size='sm'>Read-only indeterminate</Label>
+      </Field>
       <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
         Medium
       </Heading>
-      <Label weight='regular' size='md'>
+      <Field>
         <Input {...args} size='md' name='md-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Default</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Checked</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Disabled</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input
-          {...args}
-          size='md'
-          name='md-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Disabled checked</Label>
+      </Field>
+      <Field>
+        <Input {...args} size='md' name='md-default' data-indeterminate />
+        <Label size='md'>Disabled indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Invalid</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='md'
@@ -554,74 +487,68 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
           aria-invalid='true'
           defaultChecked
         />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Invalid checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='md'
-          name='md-invalid'
+          name='md-default'
           aria-invalid='true'
           data-indeterminate
         />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Invalid indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Read-only</Label>
+      </Field>
+      <Field>
         <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='md'>
+        <Label size='md'>Read-only checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='md'
-          name='md-readonly'
+          name='md-default'
           readOnly
           data-indeterminate
         />
-        Read-only indeterminate
-      </Label>
+        <Label size='md'>Read-only indeterminate</Label>
+      </Field>
       <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
         Large
       </Heading>
-      <Label weight='regular' size='lg'>
+      <Field>
         <Input {...args} size='lg' name='lg-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Default</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Checked</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Disabled</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input
-          {...args}
-          size='lg'
-          name='lg-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Disabled checked</Label>
+      </Field>
+      <Field>
+        <Input {...args} size='lg' name='lg-default' data-indeterminate />
+        <Label size='lg'>Disabled indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Invalid</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='lg'
@@ -629,36 +556,36 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
           aria-invalid='true'
           defaultChecked
         />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Invalid checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='lg'
-          name='lg-invalid'
+          name='lg-default'
           aria-invalid='true'
           data-indeterminate
         />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Invalid indeterminate</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Read-only</Label>
+      </Field>
+      <Field>
         <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='lg'>
+        <Label size='lg'>Read-only checked</Label>
+      </Field>
+      <Field>
         <Input
           {...args}
           size='lg'
-          name='lg-readonly'
+          name='lg-default'
           readOnly
           data-indeterminate
         />
-        Read-only indeterminate
-      </Label>
+        <Label size='lg'>Read-only indeterminate</Label>
+      </Field>
     </div>
   );
 };
@@ -676,31 +603,30 @@ export const Switch: StoryFn<typeof Input> = (args) => (
       maxWidth: '90vw',
     }}
   >
-    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
     <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
       Small
     </Heading>
-    <Label weight='regular' size='sm'>
+    <Field>
       <Input {...args} size='sm' name='sm-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='sm'>
+      <Label size='sm'>Disabled checked</Label>
+    </Field>
+    {/* <Field>
       <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='sm'
@@ -708,40 +634,40 @@ export const Switch: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Invalid checked</Label>
+    </Field> */}
+    <Field>
       <Input {...args} size='sm' name='sm-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='sm'>
+      <Label size='sm'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='sm'>Read-only checked</Label>
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Medium
     </Heading>
-    <Label weight='regular' size='md'>
+    <Field>
       <Input {...args} size='md' name='md-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='md'>
+      <Label size='md'>Disabled checked</Label>
+    </Field>
+    {/* <Field>
       <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='md'
@@ -749,40 +675,40 @@ export const Switch: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='md'>
+      <Label size='md'>Invalid checked</Label>
+    </Field> */}
+    <Field>
       <Input {...args} size='md' name='md-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='md'>
+      <Label size='md'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='md'>Read-only checked</Label>
+    </Field>
     <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
       Large
     </Heading>
-    <Label weight='regular' size='lg'>
+    <Field>
       <Input {...args} size='lg' name='lg-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Default</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Checked</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Disabled</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='lg'>
+      <Label size='lg'>Disabled checked</Label>
+    </Field>
+    {/* <Field>
       <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Invalid</Label>
+    </Field>
+    <Field>
       <Input
         {...args}
         size='lg'
@@ -790,16 +716,16 @@ export const Switch: StoryFn<typeof Input> = (args) => (
         aria-invalid='true'
         defaultChecked
       />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Invalid checked</Label>
+    </Field> */}
+    <Field>
       <Input {...args} size='lg' name='lg-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='lg'>
+      <Label size='lg'>Read-only</Label>
+    </Field>
+    <Field>
       <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
+      <Label size='lg'>Read-only checked</Label>
+    </Field>
   </div>
 );
 

@@ -1,7 +1,9 @@
 .ds-field {
-  display: block;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
 
-  @composes ds-stack from './base/base.css';
   @composes ds-body-text--md from './base/base.css';
 
   &[data-size='sm'] {
@@ -19,17 +21,13 @@
   /**
    * States
    */
-  &:has([aria-disabled='true'], :disabled) {
-    & > * {
-      opacity: var(--ds-disabled-opacity);
-    }
-    label {
-      cursor: not-allowed;
-    }
+  &:has([aria-disabled='true'], :disabled) > * {
+    cursor: not-allowed;
+    opacity: var(--ds-disabled-opacity);
   }
 
-  &:has([readonly]) label {
-    cursor: default;
+  &:has(:is([readonly], [aria-readonly='true']):not([type='radio'], [type='checkbox'])) label {
+    --dsc-label--readonly: ; /* Activate lock icon for label of readonly text inputs */
   }
 
   /**
@@ -38,20 +36,22 @@
   &:has(input:where([type='radio'], [type='checkbox'])) {
     border-radius: var(--ds-border-radius-md);
     display: grid;
-    column-gap: var(--ds-spacing-2);
+    row-gap: 0;
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
-    & > :not(input) {
+    & > * {
       grid-column: 2; /* Only allow input in column 1 */
     }
 
-    & > * {
-      --ds-stack-spacing: 0;
+    & > input {
+      grid-column: 1; /* Always place input in column 1 */
+      grid-row: 1; /* Always place input in row 1 */
     }
 
-    label {
+    & label {
       cursor: pointer;
+      font-weight: var(--ds-font-weight-regular);
     }
 
     input:focus-visible {
