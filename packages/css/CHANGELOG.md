@@ -1,5 +1,49 @@
 # Change Log
 
+## 1.0.0-next.36
+
+### Patch Changes
+
+- SkipLink: Add css variables ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- ValidationMessage: Add icon when `error={true}` ([#2596](https://github.com/digdir/designsystemet/pull/2596))
+
+- ValidationMessage: fix icon abandoning the component when scrolling ([#2646](https://github.com/digdir/designsystemet/pull/2646))
+
+- Accordion: Add css variable for chevron ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Breadcrumbs: Add css variable for chevron ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Input: Sufficient color contrast for readonly ([#2621](https://github.com/digdir/designsystemet/pull/2621))
+
+- Alert: fix icon abandoning the component when scrolling ([#2648](https://github.com/digdir/designsystemet/pull/2648))
+
+- chip: Fix wrong font sizes ([#2595](https://github.com/digdir/designsystemet/pull/2595))
+
+- Button: Fix SVG and images shrinking in flex containers ([#2612](https://github.com/digdir/designsystemet/pull/2612))
+
+- Tooltip: Add more variables ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Button: Use font-weight `--ds-font-weight-medium` ([#2618](https://github.com/digdir/designsystemet/pull/2618))
+
+- Field: Adds `<Field>` component wrapping and connecting internal form elements for better accessibility ([#2502](https://github.com/digdir/designsystemet/pull/2502))
+
+- Combobox: fix overflow on screens narrower than ~340px ([#2570](https://github.com/digdir/designsystemet/pull/2570))
+
+- Label: Use data attributes for styling ([#2588](https://github.com/digdir/designsystemet/pull/2588))
+
+  ValidationMessage: Use data attributes for styling
+
+- Select + Textarea: ([#2571](https://github.com/digdir/designsystemet/pull/2571))
+
+  - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
+
+- Pagination: Add css variable for chevron ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Remove `baseline` layer and fix layerorder for typography ([#2588](https://github.com/digdir/designsystemet/pull/2588))
+
+- Modal backdrop was invisible in some browser versions. See https://caniuse.com/mdn-css_selectors_backdrop_inherit_from_originating_element for affected versions. ([#2615](https://github.com/digdir/designsystemet/pull/2615))
+
 ## 1.0.0-next.35
 
 ### Patch Changes
