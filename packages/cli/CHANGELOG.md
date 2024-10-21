@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.36
+
+### Patch Changes
+
+- Removed `init` command. Use `tokens create` instead. ([#2616](https://github.com/digdir/designsystemet/pull/2616))
+
 ## 1.0.0-next.35
 
 ### Minor Changes
