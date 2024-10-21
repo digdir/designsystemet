@@ -25,7 +25,6 @@
   }
 
   &[data-size='sm'] {
-    --dsc-dropdown-padding: var(--ds-spacing-2);
     --dsc-dropdown-min-width: 15rem;
 
     & .ds-dropdown__heading {
@@ -34,7 +33,6 @@
   }
 
   &[data-size='lg'] {
-    --dsc-dropdown-padding: var(--ds-spacing-4) var(--ds-spacing-2);
     --dsc-dropdown-min-width: 18rem;
 
     & .ds-dropdown__heading {

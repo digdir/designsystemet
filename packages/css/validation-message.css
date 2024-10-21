@@ -5,27 +5,6 @@
 
   margin: 0; /* Reset if rendered with <p> */
 
-  @composes ds-validation-message--md from './base/base.css';
-
-  &[data-size='xs'] {
-    --dsc-validation-message-icon-size: var(--ds-sizing-5);
-    --dsc-validation-message-gap: var(--ds-spacing-1);
-
-    @composes ds-validation-message--xs from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    --dsc-validation-message-icon-size: var(--ds-sizing-6);
-
-    @composes ds-validation-message--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-validation-message-icon-size: var(--ds-sizing-8);
-
-    @composes ds-validation-message--lg from './base/base.css';
-  }
-
   /* Only render error icon if the ValidationMessage actually contains an error message */
   &[data-error]:not(:empty) {
     color: var(--ds-color-danger-text-subtle);

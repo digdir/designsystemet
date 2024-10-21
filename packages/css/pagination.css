@@ -41,16 +41,6 @@
     }
   }
 
-  &[data-size='sm'] {
-    --dsc-pagination-gap: var(--ds-spacing-2);
-    --dsc-pagination-ellipsis-width: var(--ds-sizing-10);
-  }
-
-  &[data-size='lg'] {
-    --dsc-pagination-gap: var(--ds-spacing-6);
-    --dsc-pagination-ellipsis-width: var(--ds-sizing-14);
-  }
-
   &[data-compact] {
     --dsc-pagination-gap: var(--ds-spacing-0);
   }

@@ -3,22 +3,7 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-
-  @composes ds-label--md from './base/base.css';
-
-  font-weight: var(--ds-font-weight-medium);
-
-  &[data-size='xs'] {
-    @composes ds-label--xs from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    @composes ds-label--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    @composes ds-label--lg from './base/base.css';
-  }
+  font-weight: var(--ds-font-weight-medium) !important; /* TODO: Fix */
 
   &[data-weight='semibold'] {
     font-weight: var(--ds-font-weight-semibold);

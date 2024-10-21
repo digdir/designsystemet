@@ -209,21 +209,21 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' size='sm'>
+    <Button variant='primary' size='sm' icon>
       <CogIcon fontSize='1rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='sm'>
       <CogIcon fontSize='1rem' aria-hidden />
       Small
     </Button>
-    <Button variant='primary' size='md'>
+    <Button variant='primary' size='md' icon>
       <CogIcon fontSize='1.5rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='md'>
       <CogIcon fontSize='1.5rem' aria-hidden />
       Medium
     </Button>
-    <Button variant='primary' size='lg'>
+    <Button variant='primary' size='lg' icon>
       <CogIcon fontSize='2rem' title='Innstillinger' />
     </Button>
     <Button variant='primary' size='lg'>
