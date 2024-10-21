@@ -26,18 +26,18 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  &:has(:is([readonly], [aria-readonly='true']):not([type='radio'], [type='checkbox'])) label {
-    --dsc-label--readonly: ; /* Activate lock icon for label of readonly text inputs */
+  &:has([aria-readonly='true'], :read-only) label {
+    --dsc-label--readonly: ; /* Activate lock icon for label when readonly */
   }
 
   /**
    * Toggle inputs
    */
-  &:has(input:where([type='radio'], [type='checkbox'])) {
+  &:has(input:is([type='radio'], [type='checkbox'])) {
     border-radius: var(--ds-border-radius-md);
     display: grid;
-    row-gap: 0;
     grid-template-columns: auto 1fr;
+    row-gap: 0;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     & > * {
@@ -45,20 +45,18 @@
     }
 
     & label {
+      --dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
     }
 
     & input {
       grid-column: 1; /* Always place input in column 1 */
       grid-row: 1; /* Always place input in row 1 */
-
-      &:focus-visible {
-        outline: none;
-        box-shadow: none;
-      }
+      outline: none;
+      box-shadow: none;
     }
 
-    &:not(:has([readonly], [aria-readonly='true'])) label {
+    &:not(:has([readonly])) label {
       cursor: pointer;
     }
 
