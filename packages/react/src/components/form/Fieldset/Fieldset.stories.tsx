@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Field, Fieldset, Label, Textarea, Textfield } from '../..';
+import { Field, Fieldset, Input, Label, Textarea } from '../..';
 
 type Story = StoryFn<typeof Fieldset>;
 
@@ -12,7 +12,10 @@ export default {
 export const Preview: Story = (args) => (
   <form>
     <Fieldset {...args}>
-      <Textfield label='Kort beskrivelse'></Textfield>
+      <Field>
+        <Label>Kort beskrivelse</Label>
+        <Input />
+      </Field>
       <Field>
         <Label>Lang beskrivelse</Label>
         <Textarea />

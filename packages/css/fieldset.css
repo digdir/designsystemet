@@ -9,16 +9,21 @@
     @composes ds-sr-only from './base/base.css';
   }
 
+  &[data-readonly='true'] > legend {
+    --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
+  }
+
   /* Stack everything that is not after legend */
   & > :where(:not(legend)) + * {
     margin-block-start: var(--ds-spacing-4);
   }
 
-  & > p {
+  & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
   }
 
-  &:disabled > p {
+  &:disabled > legend,
+  &:disabled > legend + p {
     opacity: var(--ds-disabled-opacity);
   }
 }

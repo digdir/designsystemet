@@ -39,13 +39,4 @@
   &[data-weight='regular'] {
     font-weight: var(--ds-font-weight-regular);
   }
-
-  /* States */
-  &[aria-readonly='true'] {
-    --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
-  }
-
-  fieldset:disabled & {
-    opacity: var(--ds-disabled-opacity);
-  }
 }
