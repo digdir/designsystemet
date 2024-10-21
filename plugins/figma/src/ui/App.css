@@ -34,6 +34,7 @@ body {
 .active {
   color: var(--ds-color-neutral-text-default);
   font-weight: 500;
+  border-bottom: 4px solid var(--ds-color-neutral-border-default);
 }
 
 .btn {
@@ -85,5 +86,5 @@ body {
 
 .content {
   flex-grow: 1;
-  overflow: scroll;
+  overflow: auto;
 }

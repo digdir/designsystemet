@@ -4,21 +4,7 @@ import { subscribeWithSelector } from 'zustand/middleware';
 import type { FigmaModeName } from './types';
 
 export type ColorInfo = {
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  5: string;
-  6: string;
-  7: string;
-  8: string;
-  9: string;
-  10: string;
-  11: string;
-  12: string;
-  13: string;
-  'contrast-1': string;
-  'contrast-2': string;
+  [key in ColorIndex]: string;
 };
 
 export type ColorIndex =

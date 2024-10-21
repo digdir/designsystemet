@@ -5,8 +5,9 @@ import {
   Link,
   Paragraph,
   Textarea,
+  ValidationMessage,
 } from '@digdir/designsystemet-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import { type ColorTheme, useThemeStore } from '../../../common/store';
@@ -19,6 +20,7 @@ import classes from './Theme.module.css';
 
 function Theme() {
   const { themeId } = useParams();
+  const errorId = useId();
   const themes = useThemeStore((state) => state.themes);
   const setLoading = useThemeStore((state) => state.setLoading);
   const [theme, setTheme] = useState<ColorTheme>(getDummyTheme());
@@ -122,8 +124,14 @@ function Theme() {
           cols={22}
           className={classes.textarea}
           placeholder='Lim inn her...'
-          error={codeSnippetError}
-        ></Textarea>
+          /* error={codeSnippetError} */
+          aria-describedby={errorId}
+        />
+        <div id={errorId} aria-live='polite' aria-relevant='additions removals'>
+          {codeSnippetError ? (
+            <ValidationMessage>{codeSnippetError}</ValidationMessage>
+          ) : null}
+        </div>
         <Button
           className={classes.btn}
           size='sm'
