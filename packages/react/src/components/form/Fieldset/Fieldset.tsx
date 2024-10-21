@@ -48,7 +48,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           disabled: props?.disabled,
           error: error ?? fieldset?.error,
           errorId: hasError ? errorId : undefined,
-          readOnly,
+          readOnly, // TODO should this be a prop on Fieldset?
           size,
         }}
       >
@@ -57,7 +57,6 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           aria-invalid={inputProps['aria-invalid']}
           className={cl('ds-fieldset', className)}
           data-hidelegend={hideLegend || undefined}
-          data-readonly={readOnly || undefined}
           disabled={props?.disabled}
           ref={ref}
           {...rest}

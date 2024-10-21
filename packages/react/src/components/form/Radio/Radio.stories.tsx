@@ -11,7 +11,7 @@ export default {
 
 export const Preview: Story = {
   args: {
-    children: 'Radio',
+    label: 'Radio',
     description: 'Description',
     disabled: false,
     readOnly: false,

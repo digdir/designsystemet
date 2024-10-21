@@ -1,29 +1,38 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
+import type { ChangeEvent } from 'react';
 
 import { Checkbox } from '.';
-import { Button, Divider, Paragraph } from '../..';
+import { Button, Divider, Fieldset, Paragraph } from '../..';
 
 export default {
   title: 'Komponenter/Checkbox/Group',
   component: Checkbox.Group,
 } as Meta;
 
-export const Preview: StoryFn<typeof Checkbox.Group> = (args) => (
-  <Checkbox.Group {...args}>
-    <Checkbox value='epost'>E-post</Checkbox>
-    <Checkbox value='telefon'>Telefon</Checkbox>
-    <Checkbox value='sms'>SMS</Checkbox>
-  </Checkbox.Group>
-);
+export const Preview: StoryFn<typeof Fieldset> = (args) => {
+  const props = {
+    'aria-invalid': !!args.error,
+    readOnly: args.readOnly,
+    size: args.size,
+  };
 
-export const OneOption: StoryFn<typeof Checkbox> = () => (
-  <Checkbox.Group
+  return (
+    <Fieldset {...args}>
+      <Checkbox label='E-post' value='epost' {...props} defaultChecked />
+      <Checkbox label='Telefon' value='telefon' {...props} />
+      <Checkbox label='SMS' value='sms' {...props} />
+    </Fieldset>
+  );
+};
+
+export const OneOption: StoryFn<typeof Fieldset> = () => (
+  <Fieldset
     legend='Bekreft at du er over 18 år'
     description='For at vi skal kunne sende deg opplysningen du ber om, må du bekrefte at du er myndig.'
   >
-    <Checkbox value='samtykke'>Jeg bekrefter at jeg er over 18 år</Checkbox>
-  </Checkbox.Group>
+    <Checkbox label='Jeg bekrefter at jeg er over 18 år' value='samtykke' />
+  </Fieldset>
 );
 
 Preview.args = {
@@ -35,98 +44,110 @@ Preview.args = {
   size: 'md',
 };
 
-export const WithError: StoryFn<typeof Checkbox> = () => (
-  <Checkbox.Group
-    legend='Hvilket land er du statborger i?'
-    description='Hvis du har dobbelt statsborgerskap, velger du begge landene.'
-    error='Du må velge minst ett land for å kunne gå videre'
-  >
-    <Checkbox value='norge'>Norge</Checkbox>
-    <Checkbox value='europeisk'>Annet europeisk land</Checkbox>
-    <Checkbox value='amerikansk'>Amerikansk</Checkbox>
-    <Checkbox value='annet'>
-      Statsborger i et land utenfor Europa og USA
-    </Checkbox>
-  </Checkbox.Group>
-);
+export const WithError = {
+  args: {
+    ...Preview.args,
+    error: 'Du må velge minst to kontaktalternativ',
+  },
+  render: Preview,
+};
 
 export const Controlled: StoryFn<typeof Checkbox> = () => {
-  const [value, setValue] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([]);
 
-  const myToggle = (val: string) =>
-    setValue(
-      value.includes(val) ? value.filter((x) => x !== val) : [...value, val],
+  const onChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setValues(Checkbox.getValues(event));
+  const myToggle = (value: string) =>
+    setValues(
+      values.includes(value)
+        ? values.filter((val) => val !== value)
+        : [...values, value],
     );
   return (
     <>
-      <Checkbox.Group
+      <Fieldset
         legend='Skal du reise til noen av disse landene?'
         description='Velg alle landene du skal innom.'
-        value={value}
-        onChange={(value) => setValue(value)}
       >
-        <Checkbox value='kroatia'>Kroatia</Checkbox>
-        <Checkbox value='slovakia'>Slovakia</Checkbox>
-        <Checkbox value='hobsyssel'>Hobsyssel</Checkbox>
+        <Checkbox
+          label='Kroatia'
+          value='kroatia'
+          checked={values.includes('kroatia')}
+          onChange={onChange}
+        />
+        <Checkbox
+          label='Slovakia'
+          value='slovakia'
+          checked={values.includes('slovakia')}
+          onChange={onChange}
+        />
+        <Checkbox
+          label='Hobsyssel'
+          value='hobsyssel'
+          checked={values.includes('hobsyssel')}
+          onChange={onChange}
+        />
         <Paragraph>eller</Paragraph>
-        <Checkbox value='ingen'>
-          Jeg skal ikke til noen av disse landene
-        </Checkbox>
-      </Checkbox.Group>
-
+        <Checkbox
+          label='Jeg skal ikke til noen av disse landene'
+          value='ingen'
+          checked={values.includes('ingen')}
+          onChange={onChange}
+        />
+      </Fieldset>
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
-
       <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
-        Du har valgt: {value.toString()}
+        Du har valgt: {values.toString()}
       </Paragraph>
-      <span style={{ display: 'flex', gap: '1rem' }}>
+      <div style={{ display: 'flex', gap: '1rem' }}>
         <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
         <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
-      </span>
+      </div>
     </>
   );
 };
 
-export const ReadOnly = Preview.bind({});
-
-ReadOnly.args = {
-  ...Preview.args,
-  readOnly: true,
-  value: ['epost'],
+export const ReadOnly = {
+  args: {
+    ...Preview.args,
+    readOnly: true,
+  },
+  render: Preview,
 };
 
-export const Disabled = Preview.bind({});
-
-Disabled.args = {
-  ...Preview.args,
-  disabled: true,
-  value: ['sms'],
+export const Disabled = {
+  args: {
+    ...Preview.args,
+    disabled: true,
+  },
+  render: Preview,
 };
 
-export const ContentEx1: StoryFn<typeof Checkbox> = () => (
-  <Checkbox.Group legend='Hvor lenge har du jobbet i det offentlige?'>
-    <Checkbox value='samtykke'>I under ett år</Checkbox>
-    <Checkbox value='samtykke'>Fra 1-3 år</Checkbox>
-    <Checkbox value='samtykke'>Mer enn 3 år</Checkbox>
-  </Checkbox.Group>
+export const ContentEx1: StoryFn<typeof Fieldset> = () => (
+  <Fieldset legend='Hvor lenge har du jobbet i det offentlige?'>
+    <Checkbox label='I under ett år' value='0-3' />
+    <Checkbox label='Fra 1-3 år' value='1-3' />
+    <Checkbox label='Mer enn 3 år' value='3+' />
+  </Fieldset>
 );
 
-export const ContentEx2: StoryFn<typeof Checkbox> = () => (
-  <Checkbox.Group legend='Hva liker du best med jobben din?'>
-    <Checkbox value='selvstendige'>
-      Jeg liker å jobbe med selvstendige oppgaver
-    </Checkbox>
-    <Checkbox value='moter'>Jeg elsker møter</Checkbox>
-    <Checkbox value='lunsj'>Lunsjen er best</Checkbox>
-    <Checkbox value='kolleger'>Jeg liker å møte kolleger</Checkbox>
-  </Checkbox.Group>
+export const ContentEx2: StoryFn<typeof Fieldset> = () => (
+  <Fieldset legend='Hva liker du best med jobben din?'>
+    <Checkbox
+      label='Jeg liker å jobbe med selvstendige oppgaver'
+      value='selvstendige'
+    />
+    <Checkbox label='Jeg elsker møter' value='moter' />
+    <Checkbox label='Lunsjen er best' value='lunsj' />
+    <Checkbox label='Jeg liker å møte kolleger' value='kolleger' />
+  </Fieldset>
 );
 
-export const ContentEx3: StoryFn<typeof Checkbox> = () => (
-  <Checkbox.Group legend='Hva liker du best med jobben din'>
-    <Checkbox value='selvstendige'>Selvstendige oppgaver</Checkbox>
-    <Checkbox value='moter'>Møter</Checkbox>
-    <Checkbox value='lunsj'>Lunsj</Checkbox>
-    <Checkbox value='kolleger'>Kolleger</Checkbox>
-  </Checkbox.Group>
+export const ContentEx3: StoryFn<typeof Fieldset> = () => (
+  <Fieldset legend='Hva liker du best med jobben din'>
+    <Checkbox label='Selvstendige oppgaver' value='selvstendige' />
+    <Checkbox label='Møter' value='moter' />
+    <Checkbox label='Lunsj' value='lunsj' />
+    <Checkbox label='Kolleger' value='kolleger' />
+  </Fieldset>
 );
