@@ -8,8 +8,6 @@
   display: inline-flex;
   position: relative;
 
-  @composes ds-body-text--short-sm from './base/base.css';
-
   &::before {
     content: attr(data-count);
     background: var(--dsc-badge-background);
@@ -21,28 +19,6 @@
     min-width: var(--dsc-badge-size);
     padding: var(--dsc-badge-padding);
     place-items: center;
-  }
-
-  &[data-size='sm'] {
-    --dsc-badge-size: var(--ds-sizing-3);
-    --dsc-badge-padding: 0 var(--ds-spacing-1);
-
-    @composes ds-body-text--short-xs from './base/base.css';
-
-    &[data-count] {
-      --dsc-badge-size: var(--ds-sizing-5);
-    }
-  }
-
-  &[data-size='lg'] {
-    --dsc-badge-size: var(--ds-sizing-4);
-    --dsc-badge-padding: 0 var(--ds-spacing-2);
-
-    @composes ds-body-text--short-md from './base/base.css';
-
-    &[data-count] {
-      --dsc-badge-size: var(--ds-sizing-7);
-    }
   }
 
   &[data-color='info'] {

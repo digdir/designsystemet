@@ -55,6 +55,22 @@ Array.from(
     .join('\n')
 */
 
+[data-size='xs'] {
+  @composes ds-body-text--xs from './base/base.css';
+}
+
+[data-size='sm'] {
+  @composes ds-body-text--sm from './base/base.css';
+}
+
+[data-size='md'] {
+  @composes ds-body-text--md from './base/base.css';
+}
+
+[data-size='lg'] {
+  @composes ds-body-text--lg from './base/base.css';
+}
+
 :root {
   --ds-sizing-scale-base: var(--ds-font-size-5);
   --ds-sizing-scale-min: 0.125rem; /* Minimum 2px steps */

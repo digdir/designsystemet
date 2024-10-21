@@ -9,8 +9,6 @@
   box-sizing: border-box;
   color: var(--dsc-tooltip-color);
   padding: var(--dsc-tooltip-padding);
-
-  @composes ds-body-text--short-xs from './base/base.css';
 }
 
 .ds-tooltip__arrow {

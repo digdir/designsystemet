@@ -9,7 +9,6 @@
   --dsc-button-padding-inline: var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
 
-  @composes ds-body-text--short-md from './base/base.css';
   @composes ds-focus from './base/base.css';
 
   align-items: center;
@@ -28,7 +27,7 @@
   padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
   text-align: inherit;
   text-decoration: none;
-  font-weight: var(--ds-font-weight-medium);
+  font-weight: var(--ds-font-weight-medium) !important; /* TODO: Fix */
 
   & svg,
   & img {
@@ -41,25 +40,6 @@
 
   &:not([hidden]) {
     display: flex;
-  }
-
-  &[data-size='sm'] {
-    --dsc-button-gap: var(--ds-sizing-1);
-    --dsc-button-padding-block: var(--ds-spacing-2);
-    --dsc-button-padding-inline: var(--ds-spacing-3);
-    --dsc-button-size: var(--ds-sizing-10);
-
-    @composes ds-body-text--short-sm from './base/base.css';
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  &[data-size='lg'] {
-    --dsc-button-padding-block: var(--ds-spacing-3);
-    --dsc-button-padding-inline: var(--ds-spacing-5);
-    --dsc-button-size: var(--ds-sizing-14);
-
-    @composes ds-body-text--short-lg from './base/base.css';
-    font-weight: var(--ds-font-weight-medium);
   }
 
   &[data-icon] {

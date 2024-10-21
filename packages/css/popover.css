@@ -18,8 +18,6 @@
   padding: var(--dsc-popover-padding);
   position: fixed;
 
-  @composes ds-body-text--md from './base/base.css';
-
   &::before {
     background: var(--dsc-popover-background);
     border: inherit;
@@ -33,18 +31,6 @@
     top: var(--ds-popover-arrow-y);
     translate: -50% -50%;
     width: var(--dsc-popover-arrow-size);
-  }
-
-  &[data-size='sm'] {
-    --dsc-popover-padding: var(--ds-spacing-2) var(--ds-spacing-3);
-
-    @composes ds-body-text--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-5);
-
-    @composes ds-body-text--lg from './base/base.css';
   }
 
   &[data-placement='top']::before {
