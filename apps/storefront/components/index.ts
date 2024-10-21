@@ -1,11 +1,5 @@
-export { Footer } from './Footer';
 export { Grid } from './Grid';
-export { ImageSection } from './ImageSection';
 export { ImageBanner } from './ImageBanner';
-export type {
-  ImageSectionButtonProps,
-  ImageSectionProps,
-} from './ImageSection';
 export { MdxContent } from './MdxContent';
 export { NavigationCard } from './NavigationCard';
 export type { NavigationCardProps } from './NavigationCard';

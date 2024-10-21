@@ -5,4 +5,6 @@
   place-items: center;
   width: 100%;
   height: var(--ds-sizing-12);
+  position: relative;
+  z-index: 100;
 }

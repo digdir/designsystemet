@@ -1,4 +1,4 @@
-import { Modal, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Modal, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
   getColorNameFromNumber,
@@ -58,11 +58,14 @@ export const ColorModal = ({
         style={{
           maxWidth: '1050px',
         }}
+        backdropClose
       >
-        <Modal.Header>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
-        </Modal.Header>
-        <div className={classes.modalContent}>
+        <Modal.Block>
+          <Heading size='xs'>
+            {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
+          </Heading>
+        </Modal.Block>
+        <Modal.Block className={classes.modalContent}>
           <div className={classes.description}>
             {getColorDescription({
               weight,
@@ -88,13 +91,13 @@ export const ColorModal = ({
                 value={getCssVariable(namespace, weight)}
                 copyBtn
               />
-              {!namespace.includes('Base') && (
+
+              {weight !== 9 && weight !== 10 && weight !== 11 && (
                 <Field
                   label='Brukes mot:'
                   value={getColorCombinations(weight)}
                 />
               )}
-              <Field label='' value='Mer informasjon om fargen kommer.' />
             </div>
             <div
               className={classes.right}
@@ -120,7 +123,7 @@ export const ColorModal = ({
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root> */}
-        </div>
+        </Modal.Block>
       </Modal>
     </Modal.Context>
   );

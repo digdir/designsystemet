@@ -64,7 +64,7 @@ function PostLayout({
             caption={imageCaption}
             boxShadow={false}
           />
-          <MdxContent classname={classes.content}>
+          <MdxContent className={classes.content}>
             {content}
             <div className={classes.wantToWrite}>
               <Heading level={3} size='xs'>

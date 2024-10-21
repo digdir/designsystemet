@@ -1,5 +1,71 @@
 # Change Log
 
+## 1.0.0-next.35
+
+### Patch Changes
+
+- Pagination: ([#2460](https://github.com/digdir/designsystemet/pull/2460))
+
+  - Remove attributes `currentPage` and `totalPages` on `Pagination`
+  - Replace `Pagination.Root` with `Paginaton`
+  - Replace `Pagination.Next`, `Pagination.Previous` and `Pagination.Ellipsis` with `Paginaton.Button`
+  - Make `usePagination` return spreadable props for subcomponents
+  - Add support for `showPages` and `onChange` in `usePagination`
+
+- Skiplink: ([#2577](https://github.com/digdir/designsystemet/pull/2577))
+
+  - Simplify DOM
+  - Add support for `forwardRef`
+
+- Accordion: Animate open/close with CSS ([#2527](https://github.com/digdir/designsystemet/pull/2527))
+
+  - Replace onFound with onToggle
+
+- Heading: ([#2525](https://github.com/digdir/designsystemet/pull/2525))
+
+  - Classes with data attributes
+  - Move base style to utility classes
+
+- Modal: ([#2440](https://github.com/digdir/designsystemet/pull/2440))
+
+  - Rename `Modal.Dialog` to `Modal`
+  - Rename `Modal.Root` to `Modal.Context`
+  - Replace `onInteractOutside` event with `backdropClose` boolean
+  - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
+  - Add border to `Modal.Header` and `Modal.Footer`
+  - Remove `Modal.Content`
+  - Remove `onBeforeClose`
+  - Remove `subtitle` from `Modal.Header`
+
+- Body/Paragraph ([#2529](https://github.com/digdir/designsystemet/pull/2529))
+
+  - Add body-xl token
+  - Add xl paragraph
+  - Remove ingress tokens
+
+- Ingress: Remove component ([#2515](https://github.com/digdir/designsystemet/pull/2515))
+
+  - Use `Paragraph variant='long'` instead
+
+- Heading: Fix `md` heading size ([#2485](https://github.com/digdir/designsystemet/pull/2485))
+
+- Card: ([#2509](https://github.com/digdir/designsystemet/pull/2509))
+
+  - Allow `Card` with content placed directly inside
+  - Replace `Card.Header`, `Card.Content` and `Card.Footer` with `Card.Block`
+  - Replace `isLink` with anchor-in-heading + `click` handler for better accessibility
+
+- Modal: Remove `Modal.Header` and `Modal.Footer`, replace with `Modal.Block` ([#2583](https://github.com/digdir/designsystemet/pull/2583))
+
+- SkipLink: Remove ds-sr-only class ([#2546](https://github.com/digdir/designsystemet/pull/2546))
+
+- Paragraph: Add css classes and style with data attributes ([#2523](https://github.com/digdir/designsystemet/pull/2523))
+
+- Chip: ([#2493](https://github.com/digdir/designsystemet/pull/2493))
+  - Add `Chip.Button`
+  - Rename `Chip.Toggle` to `Chip.Radio` and `Chip.Checkbox`
+  - Remove `Chip.Group`
+
 ## 1.0.0-next.34
 
 ### Patch Changes

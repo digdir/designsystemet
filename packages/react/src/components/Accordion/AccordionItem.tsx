@@ -20,7 +20,7 @@ export type AccordionItemProps = {
   defaultOpen?: boolean;
   /** Callback function when AccordionItem toggles due to click on summary or find in page-search */
   onToggle?: (event: Event) => void;
-  /** Content should be one `<Accordion.Header>` and `<Accordion.Content>` */
+  /** Content should be one `<Accordion.Heading>` and `<Accordion.Content>` */
   children?: ReactNode;
 } & Omit<HTMLAttributes<HTMLDetailsElement>, 'onToggle'> &
   (
@@ -29,10 +29,10 @@ export type AccordionItemProps = {
   );
 
 /**
- * Accordion item component, contains `Accordion.Header` and `Accordion.Content` components.
+ * Accordion item component, contains `Accordion.Heading` and `Accordion.Content` components.
  * @example
  * <AccordionItem>
- *  <AccordionHeader>Header</AccordionHeader>
+ *  <AccordionHeading>Header</AccordionHeading>
  *  <AccordionContent>Content</AccordionContent>
  * </AccordionItem>
  */

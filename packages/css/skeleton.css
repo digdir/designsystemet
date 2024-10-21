@@ -19,22 +19,17 @@
   }
 
   &[data-variant='text'] {
-    animation: none;
     border-radius: var(--ds-border-radius-full);
-    height: auto;
-    position: relative; /* So we can position ::after */
-
-    /* Render with ::after so we can add some space to top and bottom */
-    &::after {
-      content: '';
-      animation: var(--dsc-skeleton-animation);
-      border-radius: inherit;
-      inset: 20% 0;
-      position: absolute;
-    }
+    box-decoration-break: clone;
+    color: transparent;
+    display: inline;
+    font-size: 0.8em; /* Scale down font to have larger gap between lines */
+    letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
+    user-select: none; /* Prevent text selection */
 
     &:empty::before {
-      content: '\00a0'; /* Add non breaking space if empty so we follow line height */
+      content: attr(data-text); /* Only fill with fallback text if empty */
+      word-break: break-word; /* Enable text wrapping */
     }
   }
 
@@ -42,7 +37,7 @@
   &:not(:empty) {
     width: fit-content;
     height: fit-content;
-    color: transparent !important;
+    color: transparent;
 
     & > * {
       visibility: hidden;

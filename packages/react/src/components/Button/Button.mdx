@@ -1,7 +1,10 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Do, Dont, Stack } from '@doc-components';
+import { Do, Dont, Stack, CssVariables } from '@doc-components';
+import { Button } from './Button';
 
 import * as ButtonStories from './Button.stories';
+
+import css from '@digdir/designsystemet-css/button.css?inline';
 
 <Meta of={ButtonStories} />
 
@@ -54,11 +57,11 @@ Knappene kommer i to hovedfarger `accent` og `neutral`. Hvis du har overstyrt fa
 
 - `accent`-fargen stikker seg mer ut enn `neutral` og brukes gjerne når handlingen skal ha oppmerksomhet.
 
-<Canvas of={ButtonStories.First} />
+<Canvas of={ButtonStories.Accent} />
 
 - `neutral`-fargen er mer nøytral og kan brukes når det er flere knapper på en side som ikke skal ta så mye oppmerksomhet.
 
-<Canvas of={ButtonStories.Second} />
+<Canvas of={ButtonStories.Neutral} />
 
 ### Danger
 
@@ -274,14 +277,13 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
     image='/img/component-guidelines/button/button-ex5-dont.png'
   />
 </Stack>
-<br />
+
+## CSS Variabler
+
+<CssVariables css={css} />
+
 <br />
 <br />
 <br />
 
 [^1]: [Deaktiverte tilstander](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) - Aksel.
-
-<br />
-<br />
-<br />
-<br />

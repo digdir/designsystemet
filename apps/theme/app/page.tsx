@@ -1,7 +1,7 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorInfo,
@@ -266,9 +266,13 @@ export default function Home() {
 
       <main className={classes.main}>
         <Container>
+          <div className={classes.test2}>
+            <div className={classes.test}>Temabygger</div>
+          </div>
           <Heading size='md' className={classes.title}>
-            Sett opp fargetema
+            Sett opp temaet ditt
           </Heading>
+
           <ThemeToolbar
             accentError={accentError}
             neutralError={neutralError}

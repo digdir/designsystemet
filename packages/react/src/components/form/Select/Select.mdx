@@ -1,5 +1,4 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
 import * as SelectStories from './Select.stories';
 
 <Meta of={SelectStories} />
@@ -21,7 +20,8 @@ For eksempel er det ikke mulig å overstyre formateringen av alternativene.
 ```tsx
 import { Select } from '@digdir/designsystemet-react';
 
-<Select label='Ta et valg'>
+<Label htmlFor='my-select'>Ta et valg</Label>
+<Select id='my-select'>
   <Select.Option value='1'>Alternativ 1</Select.Option>
   <Select.Option value='2'>Alternativ 2</Select.Option>
   <Select.Option value='3'>Alternativ 3</Select.Option>

@@ -1,4 +1,3 @@
-import { Stack } from '@doc-components';
 import {
   ArrowForwardIcon,
   ArrowRightIcon,
@@ -11,11 +10,9 @@ import {
   PrinterSmallIcon,
   TrashIcon,
 } from '@navikt/aksel-icons';
-import type { Meta, ReactRenderer, StoryFn, StoryObj } from '@storybook/react';
-import type { PartialStoryFn } from '@storybook/types';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Tooltip } from '../';
-
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
@@ -23,13 +20,16 @@ type Story = StoryObj<typeof Button>;
 const meta: Meta<typeof Button> = {
   title: 'Komponenter/Button',
   component: Button,
-  decorators: [
-    (Story: PartialStoryFn<ReactRenderer>) => (
-      <Stack>
-        <Story />
-      </Stack>
-    ),
-  ],
+  parameters: {
+    customStyles: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 'var(--ds-spacing-4)',
+    },
+  },
 };
 
 export default meta;
@@ -73,7 +73,7 @@ export const Tertiary: StoryFn<typeof Button> = () => (
   </>
 );
 
-export const First: StoryFn<typeof Button> = () => (
+export const Accent: StoryFn<typeof Button> = () => (
   <>
     <Button variant='primary' color='accent'>
       Gå videre
@@ -87,9 +87,21 @@ export const First: StoryFn<typeof Button> = () => (
   </>
 );
 
-export const Second: StoryFn<typeof Button> = () => (
+export const AccentHover = Accent.bind({});
+AccentHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const AccentPressed = Accent.bind({});
+AccentPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const Neutral: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='primary' color='neutral'>
       <PrinterSmallIcon aria-hidden fontSize='1.5rem' />
       Skriv ut
     </Button>
@@ -97,12 +109,24 @@ export const Second: StoryFn<typeof Button> = () => (
       <PencilWritingIcon aria-hidden fontSize='1.5rem' />
       Rediger
     </Button>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='tertiary' color='neutral'>
       <ArrowForwardIcon aria-hidden fontSize='1.5rem' />
       Videresend
     </Button>
   </>
 );
+
+export const NeutralHover = Neutral.bind({});
+NeutralHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const NeutralPressed = Neutral.bind({});
+NeutralPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
@@ -110,21 +134,28 @@ export const Danger: StoryFn<typeof Button> = () => (
       <TrashIcon aria-hidden fontSize='1.5rem' />
       Slett
     </Button>
+    <Button variant='secondary' color='danger'>
+      <TrashIcon aria-hidden fontSize='1.5rem' />
+      Slett
+    </Button>
+    <Button variant='tertiary' color='danger'>
+      <TrashIcon aria-hidden fontSize='1.5rem' />
+      Slett
+    </Button>
   </>
 );
 
-Danger.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
+export const DangerHover = Danger.bind({});
+DangerHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const DangerPressed = Danger.bind({});
+DangerPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
@@ -226,19 +257,12 @@ export const IconOnly: StoryFn<typeof Button> = () => (
     </Tooltip>
   </>
 );
-
-IconOnly.decorators = [
-  (Story) => (
-    <Stack
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, auto)',
-      }}
-    >
-      <Story />
-    </Stack>
-  ),
-];
+IconOnly.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, auto)',
+  },
+};
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>

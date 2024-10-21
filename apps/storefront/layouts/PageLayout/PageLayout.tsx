@@ -1,4 +1,4 @@
-import { Heading, Link } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
@@ -34,11 +34,13 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
                 {data.backText}
               </NextLink>
             </Link>
-            <div className={cl(classes.meta, 'ds-paragraph-short--lg')}>
-              <span>{data.author && <div>{data.author}</div>}</span>
-              <span className={classes.separator}> - </span>
-              <span>{data.date && <div>{data.date}</div>}</span>
-            </div>
+            <Paragraph size='lg' variant='short' asChild>
+              <div className={classes.meta}>
+                <span>{data.author && <span>{data.author}</span>}</span>
+                <span className={classes.separator}> - </span>
+                <span>{data.date && <div>{data.date}</div>}</span>
+              </div>
+            </Paragraph>
             <Heading level={1} size='lg' className={classes.title}>
               {data.title}
             </Heading>

@@ -14,6 +14,7 @@ import { Button } from '../Button';
 import { Paragraph } from '../Paragraph';
 
 import { ToggleGroup } from '.';
+import { Divider } from '../Divider';
 import { Tooltip } from '../Tooltip';
 
 export default {
@@ -64,12 +65,6 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <div style={{ display: 'flex', gap: '4px' }}>
-        <Button size='sm' onClick={() => setValue('arkiv')}>
-          Velg Arkiv
-        </Button>
-      </div>
-      <br />
       <ToggleGroup value={value} size='md' onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon fontSize='1.5rem' aria-hidden />
@@ -88,8 +83,11 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
           Sendt
         </ToggleGroup.Item>
       </ToggleGroup>
-      <br />
+      <Divider />
       <Paragraph>Du har valgt: {value}</Paragraph>
+      <Button size='sm' onClick={() => setValue('arkiv')}>
+        Velg Arkiv
+      </Button>
     </>
   );
 };

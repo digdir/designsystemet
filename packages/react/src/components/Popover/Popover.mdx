@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/popover.css?inline';
 import * as PopoverStories from './Popover.stories.tsx';
 
 <Meta of={PopoverStories} />
@@ -48,3 +49,7 @@ Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/
 Når du bruker `Popover` uten `Popover.Context`, kobler du selv sammen utløseren og `Popover`.
 Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
 Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+## CSS Variabler
+
+<CssVariables css={css} />
