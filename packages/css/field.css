@@ -26,7 +26,7 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  &:has([aria-readonly='true'], :read-only) label {
+  &:has([aria-readonly='true'], [readonly]) label {
     --dsc-label--readonly: ; /* Activate lock icon for label when readonly */
   }
 
