@@ -7,7 +7,7 @@
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding-block: var(--ds-spacing-2);
   --dsc-button-padding-inline: var(--ds-spacing-4);
-  --dsc-button-size: var(--ds-sizing-12);
+  --dsc-button-size: var(--ds-sizing-9);
 
   @composes ds-focus from './base/base.css';
 
