@@ -13,8 +13,8 @@
     --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
   }
 
-  /* Stack everything that is not after legend */
-  & > :where(:not(legend)) + * {
+  /* Stack everything that is not directly after legend */
+  & > legend + p ~ * {
     margin-block-start: var(--ds-spacing-4);
   }
 
