@@ -44,16 +44,18 @@
       grid-column: 2; /* Only allow input in column 1 */
     }
 
-    /* Using [type] to increase specificity */
-    & input[type] {
-      grid-column: 1; /* Always place input in column 1 */
-      grid-row: 1; /* Always place input in row 1 */
-      outline: none;
-      box-shadow: none;
-    }
-
     & label {
       font-weight: var(--ds-font-weight-regular);
+    }
+
+    & input {
+      grid-column: 1; /* Always place input in column 1 */
+      grid-row: 1; /* Always place input in row 1 */
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
     }
 
     &:not(:has([readonly], [aria-readonly='true'])) label {
