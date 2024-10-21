@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import type { ThemeColors } from '@digdir/designsystemet/color';
 import { hexToRgb } from '@digdir/designsystemet/color';
 
@@ -9,7 +5,6 @@ import type { ColorIndex, StoreThemes } from '../../common/store';
 import type { FigmaModeName } from '../../common/types';
 import { rgbToHex } from '../../common/utils';
 
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 const updateColors = (
   themes: StoreThemes,
   variable: Variable,

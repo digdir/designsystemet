@@ -1,7 +1,5 @@
-import { hexToRgb } from '@digdir/designsystemet/color';
-
 import { getDummyTheme } from '../../common/dummyTheme';
-import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
+import type { StoreThemes } from '../../common/store';
 import { rgbToHex } from '../../common/utils';
 
 export const getThemes = async () => {

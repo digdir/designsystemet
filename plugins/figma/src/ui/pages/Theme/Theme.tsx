@@ -23,7 +23,7 @@ function Theme() {
   const errorId = useId();
   const themes = useThemeStore((state) => state.themes);
   const setLoading = useThemeStore((state) => state.setLoading);
-  const [theme, setTheme] = useState<ColorTheme>(getDummyTheme());
+  const [, setTheme] = useState<ColorTheme>(getDummyTheme());
   const [command, setCommand] = useState('');
   const [themeIndex, setThemeIndex] = useState<number>(0);
   const setThemes = useThemeStore((state) => state.setThemes);
