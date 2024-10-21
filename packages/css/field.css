@@ -44,19 +44,20 @@
       grid-column: 2; /* Only allow input in column 1 */
     }
 
-    & > input {
+    /* Using [type] to increase specificity */
+    & input[type] {
       grid-column: 1; /* Always place input in column 1 */
       grid-row: 1; /* Always place input in row 1 */
+      outline: none;
+      box-shadow: none;
     }
 
     & label {
-      cursor: pointer;
       font-weight: var(--ds-font-weight-regular);
     }
 
-    input:focus-visible {
-      outline: none;
-      box-shadow: none;
+    &:not(:has([readonly], [aria-readonly='true'])) label {
+      cursor: pointer;
     }
 
     &:has(:focus-visible) {
