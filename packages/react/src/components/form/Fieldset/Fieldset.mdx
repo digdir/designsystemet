@@ -1,5 +1,6 @@
 import { Meta, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/fieldset.css?inline';
 import * as FieldsetStories from './Fieldset.stories';
 
 <Meta of={FieldsetStories} />
@@ -14,3 +15,7 @@ import * as FieldsetStories from './Fieldset.stories';
 ## Referanser
 
 [Providing a description for groups of form controls using fieldset and legend elements](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)
+
+## CSS Variabler
+
+<CssVariables css={css} />

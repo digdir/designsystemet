@@ -4,6 +4,7 @@
   --dsc-validation-message-gap: var(--ds-spacing-2);
 
   margin: 0; /* Reset if rendered with <p> */
+  position: relative;
 
   @composes ds-validation-message--md from './base/base.css';
 

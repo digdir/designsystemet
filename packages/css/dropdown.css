@@ -47,6 +47,7 @@
     justify-content: start;
     padding: var(--dsc-dropdown-item-padding);
     width: 100%;
+    font-weight: var(--ds-font-weight-regular);
   }
 
   .ds-dropdown__list {
