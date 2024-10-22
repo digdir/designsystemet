@@ -14,7 +14,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Systemvarsler',
-      date: '15. oktober 2024',
+      date: '22. oktober 2024',
     }}
   />
 );
@@ -165,9 +165,11 @@ Eksempelet under viser en lokal `alert` som er plassert i nærheten av der feile
 #### Popover
 En `popover` er et ui-element som legger seg over grensesnittet. I motsetning til `modal` så vil ikke grensesnittet bak bli tonet ned, og brukeren vil ikke bli "låst" inne i popover komponenten. Disse kan være nyttige å bruke om du vil gi en beskjed basert på en handling. For eksempel at du vil informere brukeren om at det elementet de ønsker å slette ikke kan gjenopprettes om de velger å slette det. Disse burde kun brukes om det er lite informasjon som skal gies. Om du har bruk for mer plass kan `modal` være et bedre alternativ.
 
-<br/>
-[Eksempel]
-Eksempelet viser en popover der du må bekrefte at du ønsker å slette en rad i en tabell.
+Eksempelet under viser en popover der du må bekrefte at du ønsker å slette en rad i en tabell.
+<Image dataUnstyled
+  src='/img/popover-systemvarsler.png'
+  alt='Skjermbilde av tabell med medlemsliste. Popover viser en knapp der du må bekrefte at du ønsker å fjerne et medlem.'
+/>
 
 
 ## Kode
