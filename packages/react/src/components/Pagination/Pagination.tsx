@@ -12,7 +12,7 @@ export type PaginationProps = {
   /** Sets the size of the component
    * @default md
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false

@@ -9,7 +9,6 @@ export type BreadcrumbsProps = {
   'aria-label'?: string;
   /**
    * Sets the size of the component
-   * @default md
    */
   size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLElement>;

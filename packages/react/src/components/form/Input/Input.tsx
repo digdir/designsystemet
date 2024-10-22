@@ -6,9 +6,8 @@ type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /**
    * Changes field size and paddings
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.

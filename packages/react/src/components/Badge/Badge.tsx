@@ -10,8 +10,6 @@ export type BadgeProps = {
   color?: 'accent' | 'info' | 'success' | 'warning' | 'danger' | 'neutral';
   /**
    * The size of the badge
-   *
-   * @default md
    */
   size?: 'sm' | 'md' | 'lg';
   /**

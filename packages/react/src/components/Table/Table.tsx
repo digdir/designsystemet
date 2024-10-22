@@ -5,9 +5,8 @@ import type { TableHTMLAttributes } from 'react';
 export type TableProps = {
   /**
    * The size of the table
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   /**
    * If true, the table will have zebra striping
    * @default false

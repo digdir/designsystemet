@@ -7,9 +7,8 @@ import { forwardRef } from 'react';
 export type LabelProps = {
   /**
    * Changes text sizing
-   * @default undefined
    */
-  size?: undefined | 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'

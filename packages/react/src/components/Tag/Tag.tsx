@@ -18,9 +18,8 @@ export type TagProps = {
     | 'brand3';
   /**
    * Size of the tag
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**

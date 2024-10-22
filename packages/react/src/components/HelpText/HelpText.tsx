@@ -12,7 +12,6 @@ export type HelpTextProps = {
   'aria-label': string;
   /**
    * Size of the helptext
-   * @default undefined
    */
   size?: PopoverProps['size'];
   /**

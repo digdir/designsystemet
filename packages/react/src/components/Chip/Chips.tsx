@@ -6,7 +6,6 @@ import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 type ChipBaseProps = {
   /**
    * Size
-   * @default md
    */
   size?: 'sm' | 'md' | 'lg';
   /**

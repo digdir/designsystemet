@@ -7,9 +7,8 @@ import { forwardRef } from 'react';
 export type ValidationMessageProps = {
   /**
    * Changes text sizing
-   * @default undefined
    */
-  size?: undefined | 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
   error?: boolean;
   /**

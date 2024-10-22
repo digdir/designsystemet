@@ -54,9 +54,8 @@ export type PopoverProps = {
   open?: boolean;
   /**
    * Size of the popover
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   /**
    * Callback when the popover wants to open.
    */

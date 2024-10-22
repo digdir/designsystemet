@@ -6,9 +6,8 @@ import { forwardRef } from 'react';
 export type ParagraphProps = {
   /**
    * Changes text sizing
-   * @default undefined
    */
-  size?: undefined | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'

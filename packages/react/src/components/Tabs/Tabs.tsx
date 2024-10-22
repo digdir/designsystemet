@@ -11,9 +11,8 @@ export type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * Changes items size and paddings
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 export type ContextProps = {

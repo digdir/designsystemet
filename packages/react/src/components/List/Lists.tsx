@@ -11,10 +11,8 @@ type ListBaseProps = {
   asChild?: boolean;
   /**
    * Changes text sizing
-   * @default undefined
-   *
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 };
 
 export type ListUnorderedProps = ListBaseProps &

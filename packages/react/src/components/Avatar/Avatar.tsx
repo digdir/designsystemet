@@ -16,8 +16,6 @@ export type AvatarProps = {
   color?: 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
   /**
    * The size of the avatar.
-   *
-   * @default 'md'
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /**

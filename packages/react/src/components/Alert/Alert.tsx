@@ -12,7 +12,7 @@ export type AlertProps = {
    * Sets the size of the alert.
    * Does not affect font size.
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLDivElement>;
 
 /**

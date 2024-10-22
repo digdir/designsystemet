@@ -8,9 +8,8 @@ export type SpinnerProps = {
   title: string;
   /**
    * Spinner size
-   * @default undefined
    */
-  size?: undefined | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * Spinner appearance
    * @default neutral

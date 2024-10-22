@@ -24,9 +24,8 @@ export type ToggleGroupProps = {
   name?: string;
   /**
    * Size
-   * @default undefined
    */
-  size?: undefined | 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /**
