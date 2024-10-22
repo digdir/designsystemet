@@ -2,13 +2,13 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { LabelHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../types';
 
-/* TODO: Remove size? */
 export type LabelProps = {
   /**
    * Changes text sizing
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'
