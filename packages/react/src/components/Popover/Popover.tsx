@@ -54,9 +54,9 @@ export type PopoverProps = {
   open?: boolean;
   /**
    * Size of the popover
-   * @default md
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
   /**
    * Callback when the popover wants to open.
    */
@@ -78,7 +78,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onOpen,
       open,
       placement = 'top',
-      size = 'md',
+      size,
       variant = 'default',
       asChild = false,
       ...rest

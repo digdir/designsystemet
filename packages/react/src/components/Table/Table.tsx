@@ -5,9 +5,9 @@ import type { TableHTMLAttributes } from 'react';
 export type TableProps = {
   /**
    * The size of the table
-   * @default md
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -36,7 +36,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
     stickyHeader = false,
     border = false,
     hover = false,
-    size = 'md',
+    size,
     className,
     children,
     ...rest

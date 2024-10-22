@@ -1,7 +1,7 @@
 .ds-avatar {
   --dsc-avatar-background: var(--ds-color-accent-base-default);
   --dsc-avatar-color: var(--ds-color-accent-contrast-default);
-  --dsc-avatar-size: var(--ds-sizing-12);
+  --dsc-avatar-size: var(--ds-sizing-8);
   --dsc-avatar-padding: var(--ds-spacing-2);
   --dsc-avatar-border-radius: 50%;
 

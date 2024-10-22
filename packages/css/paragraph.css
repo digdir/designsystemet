@@ -1,8 +1,6 @@
 .ds-paragraph {
   margin: 0;
 
-  @composes ds-body-text--md from './base/base.css';
-
   &[data-size='xs'] {
     @composes ds-body-text--xs from './base/base.css';
   }

@@ -3,12 +3,13 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
+/* TODO: Remove size? */
 export type ValidationMessageProps = {
   /**
    * Changes text sizing
-   * @default md
+   * @default undefined
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: undefined | 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
   error?: boolean;
   /**
@@ -23,7 +24,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage(
-  { size = 'md', className, asChild, error = true, ...rest },
+  { size, className, asChild, error = true, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

@@ -8,10 +8,9 @@ export type SpinnerProps = {
   title: string;
   /**
    * Spinner size
-   *
-   * @default md
+   * @default undefined
    */
-  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: undefined | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * Spinner appearance
    * @default neutral
@@ -23,7 +22,7 @@ export type SpinnerProps = {
 export const Spinner = ({
   title,
   color = 'neutral',
-  size = 'md',
+  size,
   className,
   ...rest
 }: SpinnerProps): JSX.Element => {

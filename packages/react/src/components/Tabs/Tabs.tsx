@@ -11,9 +11,9 @@ export type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * Changes items size and paddings
-   * @default md
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 export type ContextProps = {
@@ -42,7 +42,7 @@ export const Context = createContext<ContextProps>({});
  * ```
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { size = 'md', value, defaultValue, className, onChange, ...rest },
+  { size, value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
   const isControlled = value !== undefined;

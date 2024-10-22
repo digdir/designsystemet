@@ -6,9 +6,9 @@ type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /**
    * Changes field size and paddings
-   * @default md
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.
@@ -33,7 +33,7 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', size = 'md', htmlSize, className, onClick, ...rest },
+  { type = 'text', size, htmlSize, className, onClick, ...rest },
   ref,
 ) {
   return (

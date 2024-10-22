@@ -58,7 +58,7 @@ Array.from(
 /* TODO: Move */
 @layer ds.base {
   [data-size='xs'] {
-    @composes ds-body-text--sm from './base/base.css';
+    @composes ds-body-text--xs from './base/base.css';
   }
 
   [data-size='sm'] {

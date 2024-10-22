@@ -11,10 +11,10 @@ type ListBaseProps = {
   asChild?: boolean;
   /**
    * Changes text sizing
-   * @default md
+   * @default undefined
    *
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
 };
 
 export type ListUnorderedProps = ListBaseProps &
@@ -25,7 +25,7 @@ export type ListOrderedProps = ListBaseProps &
 
 const render = <T extends HTMLElement>(
   tagName: string,
-  { asChild, className, size = 'md', ...rest }: ListOrderedProps,
+  { asChild, className, size, ...rest }: ListOrderedProps,
   ref: ForwardedRef<T>,
 ) => {
   const Component = asChild ? Slot : tagName;

@@ -16,8 +16,9 @@ export type ButtonProps = {
   color?: 'accent' | 'neutral' | 'danger';
   /**
    * Size
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
   /** Toggle icon only styling, pass icon as children
    * @default false
    */

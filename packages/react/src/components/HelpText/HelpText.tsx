@@ -12,7 +12,7 @@ export type HelpTextProps = {
   'aria-label': string;
   /**
    * Size of the helptext
-   * @default md
+   * @default undefined
    */
   size?: PopoverProps['size'];
   /**
@@ -24,7 +24,7 @@ export type HelpTextProps = {
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
-    { placement = 'right', size = 'md', className, children, ...rest },
+    { placement = 'right', size, className, children, ...rest },
     ref,
   ) {
     return (

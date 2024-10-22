@@ -3,14 +3,12 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
-import type { ButtonProps } from '../Button';
 
 export type ToggleGroupContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
   name?: string;
-  size?: ButtonProps['size'];
 };
 
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
@@ -25,10 +23,10 @@ export type ToggleGroupProps = {
   /** Form element name */
   name?: string;
   /**
-   * Changes items size and paddings
-   * @default md
+   * Size
+   * @default undefined
    */
-  size?: ToggleGroupContextProps['size'];
+  size?: undefined | 'sm' | 'md' | 'lg';
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /**
@@ -42,16 +40,7 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   function ToggleGroup(
-    {
-      size = 'md',
-      children,
-      value,
-      defaultValue,
-      onChange,
-      name,
-      className,
-      ...rest
-    },
+    { size, children, value, defaultValue, onChange, name, className, ...rest },
     ref,
   ) {
     const nameId = useId();
@@ -76,12 +65,12 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           defaultValue,
           name: name ?? `togglegroup-name-${nameId}`,
           onChange: onValueChange,
-          size,
         }}
       >
         <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
           <div
             className={cl('ds-togglegroup', className)}
+            data-size={size}
             role='radiogroup'
             ref={ref}
             {...rest}

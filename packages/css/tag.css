@@ -9,7 +9,7 @@
   border-radius: min(1rem, var(--ds-border-radius-sm));
   box-sizing: border-box;
   color: var(--dsc-tag-color);
-  display: flex;
+  display: inline-flex;
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
   width: max-content;

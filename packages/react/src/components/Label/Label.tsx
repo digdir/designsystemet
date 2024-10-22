@@ -3,12 +3,13 @@ import cl from 'clsx/lite';
 import type { LabelHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
+/* TODO: Remove size? */
 export type LabelProps = {
   /**
    * Changes text sizing
-   * @default md
+   * @default undefined
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: undefined | 'xs' | 'sm' | 'md' | 'lg';
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'
@@ -28,7 +29,7 @@ export type LabelProps = {
  * <Label size='lg'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, size = 'md', weight = 'medium', asChild, ...rest },
+  { className, size, weight = 'medium', asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';

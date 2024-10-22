@@ -18,9 +18,9 @@ export type TagProps = {
     | 'brand3';
   /**
    * Size of the tag
-   * @default md
+   * @default undefined
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: undefined | 'sm' | 'md' | 'lg';
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**
@@ -29,7 +29,7 @@ export type TagProps = {
  * <Tag color='success'>Success</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { size = 'md', color = 'neutral', className, ...rest },
+  { size, color = 'neutral', className, ...rest },
   ref,
 ) {
   return (

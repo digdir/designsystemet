@@ -24,7 +24,7 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(
     {
       className,
-      size = 'md',
+      size,
       role = 'alert',
       'aria-live': ariaLive = 'polite',
       'aria-relevant': ariaRelevant = 'all',

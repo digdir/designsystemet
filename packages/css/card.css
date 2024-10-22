@@ -8,15 +8,22 @@
   --dsc-card-gap: 1rem;
   --dsc-card-padding: var(--ds-spacing-6);
 
-  all: unset; /* Reset if <button> */
-  display: block;
   background: var(--dsc-card-background);
   border-radius: min(1rem, var(--ds-border-radius-md));
   border: var(--dsc-card-border);
   box-sizing: border-box;
   color: var(--dsc-card-color);
+  display: block;
+  font-family: inherit;
+  line-height: inherit;
+  margin: 0;
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
+  text-align: inherit;
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inherits size when <button> */
+  }
 
   /* Style link in heading, or heading when Card is anchor */
   :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,

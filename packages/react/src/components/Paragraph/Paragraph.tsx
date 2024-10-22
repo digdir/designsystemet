@@ -6,11 +6,9 @@ import { forwardRef } from 'react';
 export type ParagraphProps = {
   /**
    * Changes text sizing
-   *
-   * @default 'md'
-   *
+   * @default undefined
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: undefined | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -30,7 +28,7 @@ export type ParagraphProps = {
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   function Paragraph(
-    { className, size = 'md', asChild, variant = 'default', ...rest },
+    { className, size, asChild, variant = 'default', ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'p';
