@@ -9,7 +9,7 @@
   --ds-border-radius-3: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *5);
   --ds-border-radius-4: var(--ds-border-radius-base);
   --ds-border-radius-5: 624.9375rem;
-  --ds-border-radius-base: 0.5rem;
+  --ds-border-radius-base: 0.25rem;
   --ds-border-radius-scale: 0.25rem;
   --ds-border-radius-sm: var(--ds-border-radius-1);
   --ds-border-radius-md: var(--ds-border-radius-2);
