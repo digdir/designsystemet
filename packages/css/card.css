@@ -9,7 +9,7 @@
   --dsc-card-padding: var(--ds-spacing-6);
 
   background: var(--dsc-card-background);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-lg);
   border: var(--dsc-card-border);
   box-sizing: border-box;
   color: var(--dsc-card-color);

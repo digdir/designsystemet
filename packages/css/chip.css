@@ -41,7 +41,7 @@
   }
 
   &:has(input[type='checkbox']) {
-    --dsc-chip-border-radius: var(--ds-border-radius-lg);
+    --dsc-chip-border-radius: var(--ds-border-radius-md);
     --dsc-chip-padding: 0 var(--ds-spacing-2) 0 var(--ds-spacing-3);
   }
 
@@ -62,7 +62,6 @@
 
     appearance: none;
     background: none;
-    border-radius: calc(var(--dsc-chip-border-radius) - (var(--gap) / 2)); /* Use same radius as  */
     border: 2px solid;
     box-sizing: border-box;
     color: var(--dsc-chip-input-color);
@@ -71,8 +70,16 @@
     outline: none;
     width: var(--dsc-chip-input-size);
 
+    &[type='radio'] {
+      border-radius: var(--ds-border-radius-full);
+    }
+
     &[type='radio']:checked {
       border-width: calc(var(--dsc-chip-input-size) / 3.5); /* Matches Figma */
+    }
+
+    &[type='checkbox'] {
+      border-radius: var(--ds-border-radius-sm);
     }
 
     &[type='checkbox']:checked {

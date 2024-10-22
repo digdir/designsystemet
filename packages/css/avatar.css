@@ -3,7 +3,7 @@
   --dsc-avatar-color: var(--ds-color-accent-contrast-default);
   --dsc-avatar-size: var(--ds-sizing-8);
   --dsc-avatar-padding: var(--ds-spacing-2);
-  --dsc-avatar-border-radius: 50%;
+  --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
   align-items: center;
   aspect-ratio: 1 / 1;

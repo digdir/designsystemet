@@ -4,7 +4,7 @@
   --dsc-dropdown-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
   background-color: var(--ds-color-neutral-background-default);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-md);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;

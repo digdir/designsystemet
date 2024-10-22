@@ -10,7 +10,7 @@
   margin: 0 auto;
   margin-top: var(--ds-spacing-18);
   padding: var(--ds-spacing-10);
-  border-radius: var(--ds-border-radius-2xl);
+  border-radius: var(--ds-border-radius-lg);
   border: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
