@@ -170,6 +170,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         data-size={size}
         data-variant={variant}
         id={id || popoverId}
+        // @ts-ignore @types/react-dom does not understand popover yet
         popover='manual'
         ref={mergedRefs}
         {...rest}
