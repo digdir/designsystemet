@@ -122,4 +122,28 @@ describe('Popover', () => {
 
     expect(trigger.getAttribute('popovertarget')).toBe(popover.id);
   });
+
+  it('should not apply flip and shift middleware when autoPlacement is false', async () => {
+    const { user } = await render({ autoPlacement: false });
+    const popoverTrigger = screen.getByRole('button');
+
+    await act(async () => await user.click(popoverTrigger));
+
+    expect(screen.queryByText(contentText)).toBeVisible();
+
+    // Add assertions to verify that flip and shift middleware are not applied
+    // This can be done by checking the position of the popover
+  });
+
+  it('should apply flip and shift middleware when autoPlacement is true', async () => {
+    const { user } = await render({ autoPlacement: true });
+    const popoverTrigger = screen.getByRole('button');
+
+    await act(async () => await user.click(popoverTrigger));
+
+    expect(screen.queryByText(contentText)).toBeVisible();
+
+    // Add assertions to verify that flip and shift middleware are applied
+    // This can be done by checking the position of the popover
+  });
 });

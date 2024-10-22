@@ -41,6 +41,18 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 <Canvas of={PopoverStories.Controlled} />
 
+### Auto Placement
+
+`Popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+
+```tsx
+import { Popover } from '@digdir/designsystemet-react';
+
+<Popover autoPlacement={false}>Content</Popover>
+```
+
+<Canvas of={PopoverStories.AutoPlacement} />
+
 ## Tilgjengelighet
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
