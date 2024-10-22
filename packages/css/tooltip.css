@@ -3,6 +3,7 @@
   --dsc-tooltip-color: var(--ds-color-neutral-background-default);
   --dsc-tooltip-border-radius: var(--ds-border-radius-md);
   --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  --dsc-tooltip-arrow-size: var(--ds-spacing-2);
 
   background: var(--dsc-tooltip-background);
   border-radius: var(--dsc-tooltip-border-radius);
@@ -11,8 +12,33 @@
   padding: var(--dsc-tooltip-padding);
 
   @composes ds-body-text--short-xs from './base/base.css';
-}
 
-.ds-tooltip__arrow {
-  fill: var(--dsc-tooltip-background);
+  &::before {
+    content: '';
+    background: var(--dsc-tooltip-background);
+    box-sizing: border-box;
+    height: var(--dsc-tooltip-arrow-size);
+    width: var(--dsc-tooltip-arrow-size);
+    position: absolute;
+    left: var(--ds-tooltip-arrow-x);
+    top: var(--ds-tooltip-arrow-y);
+    translate: -50% -50%;
+    rotate: 45deg;
+  }
+
+  &[data-placement='top']::before {
+    top: 100%;
+  }
+
+  &[data-placement='left']::before {
+    left: 100%;
+  }
+
+  &[data-placement='right']::before {
+    left: 0;
+  }
+
+  &[data-placement='bottom']::before {
+    top: 0;
+  }
 }
