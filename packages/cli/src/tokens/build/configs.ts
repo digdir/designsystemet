@@ -7,7 +7,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, sizeRem, typographyName } from './transformers.js';
+import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
@@ -26,6 +26,7 @@ const fileHeader = () => [`These files are generated from design tokens defind u
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
+StyleDictionary.registerTransform(resolveMath);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
@@ -34,7 +35,7 @@ StyleDictionary.registerFormat(formats.typography);
 
 const dsTransformers = [
   nameKebab.name,
-  `ts/resolveMath`,
+  resolveMath.name,
   'ts/size/px',
   sizeRem.name,
   'ts/typography/fontWeight',
@@ -123,7 +124,7 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
   const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing', 'border-radius'], token);
+    pathStartsWithOneOf(['spacing', 'sizing'], token);
 
   return {
     usesDtcg,
@@ -152,7 +153,10 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => isCalculatedToken(token) && outputReferencesFilter(token, options),
+          outputReferences: (token, options) => {
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
+          },
         },
       },
     },

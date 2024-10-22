@@ -87,14 +87,14 @@ export const mapTokens = () => {
   setToken('--ds-color-focus-outer', 'var(--neutral-13)');
   setToken('--ds-color-focus-inner', 'var(--neutral-1)');
 
-  setToken('--ds-border-radius-sm', 'calc(var(--ds-border-radius-base)*0.5)');
-  setToken('--ds-border-radius-md', 'calc(var(--ds-border-radius-base)*1)');
-  setToken('--ds-border-radius-lg', 'calc(var(--ds-border-radius-base)*2)');
-  setToken('--ds-border-radius-xl', 'calc(var(--ds-border-radius-base)*3)');
-  setToken('--ds-border-radius-2xl', 'calc(var(--ds-border-radius-base)*4)');
-  setToken('--ds-border-radius-3xl', 'calc(var(--ds-border-radius-base)*6)');
-  setToken('--ds-border-radius-4xl', 'calc(var(--ds-border-radius-base)*8)');
-  setToken('--ds-border-radius-full', '624.9375rem');
+  // setToken('--ds-border-radius-sm', 'calc(var(--ds-border-radius-base)*0.5)');
+  // setToken('--ds-border-radius-md', 'calc(var(--ds-border-radius-base)*1)');
+  // setToken('--ds-border-radius-lg', 'calc(var(--ds-border-radius-base)*2)');
+  // setToken('--ds-border-radius-xl', 'calc(var(--ds-border-radius-base)*3)');
+  // setToken('--ds-border-radius-2xl', 'calc(var(--ds-border-radius-base)*4)');
+  // setToken('--ds-border-radius-3xl', 'calc(var(--ds-border-radius-base)*6)');
+  // setToken('--ds-border-radius-4xl', 'calc(var(--ds-border-radius-base)*8)');
+  // setToken('--ds-border-radius-full', '624.9375rem');
 };
 
 const setToken = (token: string, color: string) => {

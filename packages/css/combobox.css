@@ -15,7 +15,7 @@
   color: var(--ds-color-neutral-text-default);
   overflow-y: auto;
   z-index: 1600;
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-md);
   border: 1px solid var(--ds-color-neutral-border-default);
 }
@@ -31,7 +31,7 @@
   gap: var(--ds-spacing-1);
   cursor: text;
   padding: var(--ds-spacing-2);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-md);
   width: 100%;
   height: auto;
   justify-content: space-between;
@@ -200,7 +200,7 @@
   padding-left: var(--ds-spacing-1);
   border: none;
   border-left: 5px solid transparent;
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-sm);
   justify-content: start;
   background: none;
   text-align: left;
@@ -242,7 +242,7 @@
   width: var(--ds-spacing-6);
   aspect-ratio: 1 / 1;
   border: 2px solid var(--ds-color-neutral-border-default);
-  border-radius: min(0.25rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-sm);
   background-color: var(--ds-color-neutral-background-default);
   display: grid;
   place-items: center;

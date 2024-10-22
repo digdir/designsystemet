@@ -1,7 +1,7 @@
 .ds-tooltip {
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
   --dsc-tooltip-color: var(--ds-color-neutral-background-default);
-  --dsc-tooltip-border-radius: var(--ds-border-radius-md);
+  --dsc-tooltip-border-radius: var(--ds-border-radius-default);
   --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
 
   background: var(--dsc-tooltip-background);

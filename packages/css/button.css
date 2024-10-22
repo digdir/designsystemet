@@ -14,7 +14,7 @@
 
   align-items: center;
   background: var(--dsc-button-background);
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--ds-border-radius-default);
   border: var(--ds-border-width-default) solid var(--dsc-button-border-color, transparent);
   box-sizing: border-box;
   color: var(--dsc-button-color);

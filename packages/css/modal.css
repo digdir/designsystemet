@@ -10,7 +10,7 @@
   --close-top-right: calc(var(--dsc-modal-padding) * -1 + var(--dsc-modal-close-margin));
 
   background: var(--dsc-modal-background);
-  border-radius: min(1rem, var(--ds-border-radius-lg));
+  border-radius: var(--ds-border-radius-lg);
   border: 0;
   box-shadow: var(--ds-shadow-xl);
   box-sizing: border-box;

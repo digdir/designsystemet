@@ -28,7 +28,7 @@
   cursor: pointer;
   box-shadow: inset 0 0 0 2px var(--dsc-checkbox-border-color);
   background: var(--dsc-checkbox-background);
-  border-radius: min(0.25rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-sm);
 }
 
 .ds-checkbox__input::before {
@@ -41,7 +41,7 @@
   top: 50%;
   left: 50%;
   cursor: pointer;
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--ds-border-radius-sm);
 }
 
 .ds-checkbox__label {
@@ -131,7 +131,7 @@
   outline: var(--dsc-focus-border-width) solid var(--ds-color-focus-outer);
   outline-offset: var(--dsc-focus-border-width);
   box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--ds-border-radius-sm);
 }
 
 .ds-checkbox--readonly > .ds-checkbox__input:checked {
