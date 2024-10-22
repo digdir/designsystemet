@@ -17,8 +17,10 @@
   --dsc-focus-border-width: 3px; /* Default focus border width */
   --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
-  --ds-font-size-sm: max(.9em, .875rem); /* Fallback if not supporting round() */
-  --ds-font-size-sm: round(down, max(.9em, .875rem), 1px); /* Default to 90% of font-size, but minimum 14px */
+  --ds-font-size-smaller: max(.9em, .875rem); /* Fallback if not supporting round() */
+  --ds-font-size-smaller: round(down, max(.9em, .875rem), 1px); /* Default to 90% of font-size, but minimum 14px */
+  --ds-font-size-larger: 1.1em; /* Fallback if not supporting round() */
+  --ds-font-size-larger: round(down, 1.1em, 1px); /* Default to 90% */
 
   color: var(--ds-color-neutral-text-default);
   background-color: var(--ds-color-neutral-background-default);

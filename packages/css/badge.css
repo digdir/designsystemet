@@ -23,7 +23,7 @@
   }
 
   &:not([data-size]) {
-    font-size: var(--ds-font-size-sm); /* Default to small when size is not defined */
+    font-size: var(--ds-font-size-smaller); /* Default to small when size is not defined */
   }
 
   &[data-color='info'] {
