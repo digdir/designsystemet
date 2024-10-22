@@ -4,6 +4,7 @@
   --dsc-validation-message-gap: var(--ds-spacing-2);
 
   margin: 0; /* Reset if rendered with <p> */
+  position: relative;
 
   /* Only render error icon if the ValidationMessage actually contains an error message */
   &[data-error]:not(:empty) {

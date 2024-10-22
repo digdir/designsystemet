@@ -16,6 +16,7 @@
   color: var(--dsc-alert-color);
   padding-block: var(--dsc-alert-padding);
   padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
+  position: relative;
 
   & > :is(h1, h2, h3, h4, h5, h6):first-child::before /* If Alert starts with Heading, align icon to this */,
   &:not(:has(> :is(h1, h2, h3, h4, h5, h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
