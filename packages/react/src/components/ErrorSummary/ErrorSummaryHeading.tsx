@@ -4,7 +4,7 @@ import { ErrorSummaryContext, type ErrorSummaryProps } from './ErrorSummary';
 
 export type ErrorSummaryHeadingProps = HeadingProps;
 
-// TODO
+// TODO: Move to CSS
 // const HEADING_SIZE_MAP: {
 //   [key in NonNullable<ErrorSummaryProps['size']>]: HeadingProps['size'];
 // } = {

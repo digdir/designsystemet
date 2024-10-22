@@ -1,7 +1,7 @@
 .ds-dropdown {
   --dsc-dropdown-padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  --dsc-dropdown-item-padding: 0 var(--ds-spacing-4);
-  --dsc-dropdown-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-dropdown-item-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-dropdown-item-size: var(--ds-spacing-12);
 
   background-color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
@@ -18,15 +18,21 @@
   }
 
   .ds-dropdown__heading {
-    padding: var(--dsc-dropdown-header-padding);
-    margin-block: 0;
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--ds-color-neutral-text-subtle);
+    display: flex;
     font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    min-height: var(--dsc-dropdown-item-size);
+    padding: var(--dsc-dropdown-item-padding);
   }
 
   & :is(a, button, [role='button']) {
-    box-sizing: border-box;
     justify-content: start;
     padding: var(--dsc-dropdown-item-padding);
+    min-height: var(--dsc-dropdown-item-size);
     width: 100%;
     font-weight: var(--ds-font-weight-regular);
   }

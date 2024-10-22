@@ -83,7 +83,6 @@ body,
 }
 
 /** Heading */
-/* TODO: Heading sizes */
 .ds-heading-text--2xs {
   font-weight: var(--ds-heading-2xs-font-weight);
   line-height: var(--ds-heading-2xs-line-height);

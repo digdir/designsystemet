@@ -44,7 +44,7 @@
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
 
-/* TODO: Move */
+/* TODO: Will move to tokens as part of #2508 */
 :root {
   --ds-sizing-base: 18; /* Unitless base font-size 18px */
   --ds-sizing-step: 4; /* Unitless step size 4px */
