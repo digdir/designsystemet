@@ -25,7 +25,7 @@
   text-decoration: none;
 
   &:not([data-size]) {
-    font-size: var(--ds-font-size-sm); /* TODO: Fix sizing when changing */
+    font-size: var(--ds-font-size-sm);
   }
 
   /* Make focus ring also when input inside is focused */
