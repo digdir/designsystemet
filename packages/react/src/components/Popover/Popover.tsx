@@ -148,7 +148,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             strategy: 'fixed',
             middleware: [
               offset(ARROW_HEIGHT + ARROW_GAP), // TODO: Should this be configurable?
-              ...(autoPlacement ? [flip({ fallbackAxisSideDirection: 'start' }), shift()] : []),
+              ...(autoPlacement
+                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+                : []),
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
@@ -168,7 +170,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         data-size={size}
         data-variant={variant}
         id={id || popoverId}
-        // @ts-ignore @types/react-dom does not understand popover yet
         popover='manual'
         ref={mergedRefs}
         {...rest}
