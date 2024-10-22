@@ -2337,7 +2337,7 @@ export const  color = [
 export const  dimension = [
   {
     $type: "dimension",
-    $value: "min( 624.9375rem , 0.25rem *1)",
+    $value: "min( 0.25rem , 0.25rem *1)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2353,7 +2353,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "min( 624.9375rem , 0.25rem *2)",
+    $value: "min( 0.25rem , 0.25rem *2)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2369,7 +2369,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "min( 624.9375rem , 0.25rem *5)",
+    $value: "min( 0.25rem , 0.25rem *5)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2385,7 +2385,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "624.9375rem",
+    $value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
