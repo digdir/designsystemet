@@ -176,12 +176,27 @@ const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
-    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    let arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
+    let arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    if (rects.reference.width > rects.floating.width) {
+      arrowX = rects.floating.width / 2;
+    }
+
+    if (rects.reference.height > rects.floating.height) {
+      arrowY = rects.floating.height / 2;
+    }
 
     elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-x',
+      `${Math.round(arrowX)}px`,
+    );
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-y',
+      `${Math.round(arrowY)}px`,
+    );
     return data;
   },
 };
