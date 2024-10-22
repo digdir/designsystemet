@@ -65,7 +65,7 @@ export const Sizes: StoryFn = () => {
       <div>14px</div>
       <div>16px</div>
       <div>18px</div>
-      <div>30px</div>
+      <div>24px</div>
       <Accordion data-size='xs'>
         <Accordion.Item>
           <Accordion.Heading>

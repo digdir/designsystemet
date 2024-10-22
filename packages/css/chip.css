@@ -25,7 +25,7 @@
   text-decoration: none;
 
   &:not([data-size]) {
-    font-size: inherit; /* Ensure inheriting font-size when <button> */
+    font-size: var(--ds-font-size-sm); /* TODO: Fix sizing when changing */
   }
 
   /* Make focus ring also when input inside is focused */

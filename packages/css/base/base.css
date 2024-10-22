@@ -44,36 +44,36 @@
   outline-offset: var(--dsc-focus-border-width);
 }
 
-/** Body typography */
-.ds-body-text--xs {
+[data-size='xs'] {
   font-weight: var(--ds-body-xs-font-weight);
   line-height: var(--ds-body-xs-line-height);
   font-size: var(--ds-body-xs-font-size);
   letter-spacing: var(--ds-body-xs-letter-spacing);
 }
 
-.ds-body-text--sm {
+[data-size='sm'] {
   font-weight: var(--ds-body-sm-font-weight);
   line-height: var(--ds-body-sm-line-height);
   font-size: var(--ds-body-sm-font-size);
   letter-spacing: var(--ds-body-sm-letter-spacing);
 }
 
-.ds-body-text--md {
+body,
+[data-size='md'] {
   font-weight: var(--ds-body-md-font-weight);
   line-height: var(--ds-body-md-line-height);
   font-size: var(--ds-body-md-font-size);
   letter-spacing: var(--ds-body-md-letter-spacing);
 }
 
-.ds-body-text--lg {
+[data-size='lg'] {
   font-weight: var(--ds-body-lg-font-weight);
   line-height: var(--ds-body-lg-line-height);
   font-size: var(--ds-body-lg-font-size);
   letter-spacing: var(--ds-body-lg-letter-spacing);
 }
 
-.ds-body-text--xl {
+[data-size='xl'] {
   font-weight: var(--ds-body-xl-font-weight);
   line-height: var(--ds-body-xl-line-height);
   font-size: var(--ds-body-xl-font-size);
@@ -81,7 +81,7 @@
 }
 
 /** Heading */
-
+/* TODO: Heading sizes */
 .ds-heading-text--2xs {
   font-weight: var(--ds-heading-2xs-font-weight);
   line-height: var(--ds-heading-2xs-line-height);
@@ -131,6 +131,7 @@
   letter-spacing: var(--ds-heading-2xl-letter-spacing);
 }
 
+/* TODO: Label sizes */
 .ds-label--md {
   font-size: var(--ds-label-md-font-size);
   font-weight: var(--ds-label-md-font-weight);
@@ -159,6 +160,7 @@
   letter-spacing: var(--ds-label-lg-letter-spacing);
 }
 
+/* TODO: Validation sizes */
 .ds-validation-message--xs {
   font-weight: var(--ds-error_message-xs-font-weight);
   line-height: var(--ds-error_message-xs-line-height);

@@ -1,6 +1,5 @@
 .ds-dropdown {
   --dsc-dropdown-padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  --dsc-dropdown-min-width: 16rem;
   --dsc-dropdown-item-padding: 0 var(--ds-spacing-4);
   --dsc-dropdown-header-padding: var(--ds-spacing-2) var(--ds-spacing-4);
 
@@ -10,7 +9,7 @@
   box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;
-  min-width: var(--dsc-dropdown-min-width);
+  min-width: 15em;
   padding: var(--dsc-dropdown-padding);
 
   /* Remove popover arrow */
@@ -20,24 +19,8 @@
 
   .ds-dropdown__heading {
     padding: var(--dsc-dropdown-header-padding);
-
-    @composes ds-body-text--md from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    --dsc-dropdown-min-width: 15rem;
-
-    & .ds-dropdown__heading {
-      @composes ds-body-text--sm from './base/base.css';
-    }
-  }
-
-  &[data-size='lg'] {
-    --dsc-dropdown-min-width: 18rem;
-
-    & .ds-dropdown__heading {
-      @composes ds-body-text--lg from './base/base.css';
-    }
+    margin-block: 0;
+    font-size: inherit;
   }
 
   & :is(a, button, [role='button']) {

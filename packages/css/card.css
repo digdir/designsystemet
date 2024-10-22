@@ -5,7 +5,7 @@
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
-  --dsc-card-gap: 1rem;
+  --dsc-card-gap: var(--ds-spacing-3);
   --dsc-card-padding: var(--ds-spacing-6);
 
   background: var(--dsc-card-background);
@@ -15,7 +15,6 @@
   color: var(--dsc-card-color);
   display: block;
   font-family: inherit;
-  line-height: var(--ds-line-height-sm);
   margin: 0;
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);

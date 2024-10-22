@@ -1,59 +1,11 @@
 .ds-paragraph {
-  margin: 0;
-
-  &[data-size='xs'] {
-    @composes ds-body-text--xs from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    @composes ds-body-text--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    @composes ds-body-text--lg from './base/base.css';
-  }
-
-  &[data-size='xl'] {
-    @composes ds-body-text--xl from './base/base.css';
-  }
+  margin-block: 0;
 
   &[data-variant='long'] {
-    @composes ds-body-text--long-md from './base/base.css';
-
-    &[data-size='xs'] {
-      @composes ds-body-text--long-xs from './base/base.css';
-    }
-
-    &[data-size='sm'] {
-      @composes ds-body-text--long-sm from './base/base.css';
-    }
-
-    &[data-size='lg'] {
-      @composes ds-body-text--long-lg from './base/base.css';
-    }
-
-    &[data-size='xl'] {
-      @composes ds-body-text--long-xl from './base/base.css';
-    }
+    line-height: var(--ds-line-height-lg);
   }
 
   &[data-variant='short'] {
-    @composes ds-body-text--short-md from './base/base.css';
-
-    &[data-size='xs'] {
-      @composes ds-body-text--short-xs from './base/base.css';
-    }
-
-    &[data-size='sm'] {
-      @composes ds-body-text--short-sm from './base/base.css';
-    }
-
-    &[data-size='lg'] {
-      @composes ds-body-text--short-lg from './base/base.css';
-    }
-
-    &[data-size='xl'] {
-      @composes ds-body-text--short-xl from './base/base.css';
-    }
+    line-height: var(--ds-line-height-sm);
   }
 }

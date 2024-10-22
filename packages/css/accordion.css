@@ -78,7 +78,6 @@
     padding: var(--dsc-accordion-padding);
 
     @composes ds-focus from './base/base.css';
-    /* @composes ds-body-text--sm from './base/base.css'; /* TODO fix using font sm */
 
     &:focus-visible {
       position: relative; /* Ensure foucs outline renders on top */
