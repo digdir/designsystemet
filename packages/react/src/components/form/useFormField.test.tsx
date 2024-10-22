@@ -99,29 +99,6 @@ describe('useFormField', () => {
     expect(field.inputProps.disabled).toBeTruthy();
   });
 
-  test('is readonly', () => {
-    const { result } = renderHook(
-      () => useFormField({ readOnly: true }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
-
-    const field = result.current;
-
-    expect(field.readOnly).toBeTruthy();
-  });
-
-  test('has disabled take presedens over readonly', () => {
-    const { result } = renderHook(
-      () => useFormField({ readOnly: true, disabled: true }, 'test'),
-      { wrapper: createWrapper(Fieldset) },
-    );
-
-    const field = result.current;
-
-    expect(field.readOnly).toBeFalsy();
-    expect(field.inputProps.disabled).toBeTruthy();
-  });
-
   test('has correct size', () => {
     const { result } = renderHook(() => useFormField({ size: 'sm' }, 'test'), {
       wrapper: createWrapper(Fieldset),
@@ -147,19 +124,6 @@ describe('useFormField', () => {
 
     expect(field.size).toEqual('sm');
     expect(field.inputProps.disabled).toBeTruthy();
-  });
-
-  test('has readOnly inherited from Fieldset', () => {
-    const { result } = renderHook<FormField, FieldsetProps>(
-      () => useFormField({}, 'test'),
-      {
-        wrapper: createWrapper(Fieldset, { readOnly: true, legend: 'Wrapper' }),
-      },
-    );
-
-    const field = result.current;
-
-    expect(field.readOnly).toBeTruthy();
   });
 
   test('has undefined aria-describedby', () => {

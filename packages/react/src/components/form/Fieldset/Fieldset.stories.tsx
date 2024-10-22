@@ -29,7 +29,6 @@ Preview.args = {
   disabled: false,
   error: '',
   legend: 'Skriv inn dine svar',
-  readOnly: false,
   hideLegend: false,
   size: 'md',
 };

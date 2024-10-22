@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
 import { useContext } from 'react';
 
-import { CheckboxGroupContext } from '../Checkbox/CheckboxGroup';
+// import { CheckboxGroupContext } from '../Checkbox/CheckboxGroup';
 import type { FormField } from '../useFormField';
 import { useFormField } from '../useFormField';
 
@@ -22,7 +22,7 @@ type UseCheckbox = (props: SwitchProps) => FormField & {
 };
 /** Handles props for `Switch` in context with `Checkbox.Group` (and `Fieldset`) */
 export const useSwitch: UseCheckbox = (props) => {
-  const checkboxGroup = useContext(CheckboxGroupContext);
+  // const checkboxGroup = useContext(CheckboxGroupContext);
   const { inputProps, readOnly, ...rest } = useFormField(props, 'switch');
 
   const propsValue = props.value || '';
@@ -34,12 +34,12 @@ export const useSwitch: UseCheckbox = (props) => {
       readOnly,
       type: 'checkbox',
       role: 'switch',
-      defaultChecked: checkboxGroup?.defaultValue
-        ? checkboxGroup?.defaultValue.includes(propsValue)
-        : props.defaultChecked,
-      checked: checkboxGroup?.value
-        ? checkboxGroup?.value.includes(propsValue)
-        : props.checked,
+      // defaultChecked: checkboxGroup?.defaultValue
+      //   ? checkboxGroup?.defaultValue.includes(propsValue)
+      //   : props.defaultChecked,
+      // checked: checkboxGroup?.value
+      //   ? checkboxGroup?.value.includes(propsValue)
+      //   : props.checked,
       onClick: (e) => {
         if (readOnly) {
           e.preventDefault();
@@ -53,7 +53,7 @@ export const useSwitch: UseCheckbox = (props) => {
           return;
         }
         props?.onChange?.(e);
-        checkboxGroup?.toggleValue(propsValue);
+        // checkboxGroup?.toggleValue(propsValue);
       },
     },
   };

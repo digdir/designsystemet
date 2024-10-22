@@ -15,12 +15,13 @@
   }
 
   /* Stack everything that is not directly after legend */
-  & > legend + p ~ * {
+  & > * + * {
     margin-block-start: var(--ds-spacing-4);
   }
 
   & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
+    margin-block: 0;
   }
 
   &:disabled > legend,

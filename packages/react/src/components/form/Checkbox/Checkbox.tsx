@@ -1,16 +1,10 @@
-import { useMergeRefs } from '@floating-ui/react';
-import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import { omit } from '../../../utilities';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
 import { Input } from '../Input';
-import type { FormFieldProps } from '../useFormField';
-
-import { useCheckbox } from './useCheckbox';
 
 export type CheckboxProps = {
   /** Checkbox label */
@@ -37,19 +31,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     { children, label, description, validation, ...rest },
     ref,
   ) {
-    // const inputRef = useMergeRefs<HTMLInputElement>([
-    //   ref,
-    //   (el) => {
-    //     if (el) el.indeterminate = rest.indeterminate ?? false;
-    //   },
-    // ]);
-
     return (
       <Field>
         <Input type='checkbox' ref={ref} {...rest} />
-        {label && <Label weight='regular'>{label}</Label>}
-        {description && <div data-field='description'>{description}</div>}
-        {validation && <ValidationMessage>{validation}</ValidationMessage>}
+        {!!label && <Label weight='regular'>{label}</Label>}
+        {!!description && <div data-field='description'>{description}</div>}
+        {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
       </Field>
     );
   },
