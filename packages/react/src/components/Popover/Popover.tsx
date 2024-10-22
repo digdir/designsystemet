@@ -181,26 +181,26 @@ const arrowPseudoElement = {
     let arrowY = 0;
 
     if (placement.includes('bottom') || placement.includes('top')) {
-      /* default `arrowX` is if popover is bigger than the reference */
+      /* It will always be the same height away when top or bottom */
+      arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+      /* default `arrowX` to center of reference, if popover is wider */
       arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
 
-      arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
-      /**
-       * if popover is wider, set arrow in the middle of the reference
-       */
+      /* if reference is wider, set arrow in the middle of the floating */
       if (rects.reference.width > rects.floating.width) {
-        arrowX = rects.floating.width / 2 - ARROW_HEIGHT / 2;
+        arrowX = rects.floating.width / 2;
       }
     } else if (placement.includes('left') || placement.includes('right')) {
-      /* default `arrowX` is if popover is bigger than the reference */
-      arrowX = rects.reference.height / 2 + rects.reference.x - data.x;
+      /* It will always be the same width away when right or left */
+      arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
 
+      /* default `arrowY` to center of reference, if popover is taller */
       arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
-      /**
-       * if popover is taller, set arrow in the middle of the reference
-       */
+
+      /* if reference is taller, set arrow in the middle of the floating */
       if (rects.reference.height > rects.floating.height) {
-        arrowY = rects.floating.height / 2 - ARROW_HEIGHT / 2;
+        arrowY = rects.floating.height / 2;
       }
     }
 
