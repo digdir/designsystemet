@@ -24,6 +24,10 @@
   padding: var(--dsc-chip-padding);
   text-decoration: none;
 
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
+
   /* Make focus ring also when input inside is focused */
   &:has(:focus-visible) {
     @composes ds-focus--visible from './base/base.css';

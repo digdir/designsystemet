@@ -6,8 +6,8 @@
 
   box-sizing: border-box;
   display: inline-flex;
+  line-height: var(--ds-line-height-sm);
   position: relative;
-  /* TODO fix using font sm */
 
   &::before {
     content: attr(data-count);
@@ -20,6 +20,10 @@
     min-width: var(--dsc-badge-size);
     padding: var(--dsc-badge-padding);
     place-items: center;
+  }
+
+  &:not([data-size]) {
+    font-size: var(--ds-font-size-sm); /* Default to small when size is not defined */
   }
 
   &[data-color='info'] {

@@ -20,18 +20,27 @@
 }
 
 .ds-tabs__tab {
-  all: unset; /* Reset <button> */
   align-items: center;
+  background: none;
+  border: 0;
   box-sizing: border-box;
   color: var(--dsc-tabs-tab-color);
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  font-family: inherit;
+  font-size: inherit;
   gap: var(--ds-spacing-1);
   justify-content: center;
+  line-height: var(--ds-line-height-sm);
+  margin: 0;
   padding: var(--dsc-tabs-tab-padding);
   position: relative;
   text-align: center;
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
 
   &[aria-selected='true'] {
     --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);

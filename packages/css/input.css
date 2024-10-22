@@ -38,10 +38,10 @@
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
+  height: var(--dsc-input-size);
   line-height: var(--ds-line-height-sm);
   margin: 0; /* Reset native margin on checkbox and radio */
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
-  min-height: var(--dsc-input-size);
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
 

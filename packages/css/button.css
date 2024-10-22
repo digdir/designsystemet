@@ -6,7 +6,7 @@
   --dsc-button-font-size: var(--ds-font-size-5);
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-button-size: var(--ds-sizing-11);
+  --dsc-button-size: var(--ds-sizing-12);
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -30,7 +30,7 @@
   @composes ds-focus from './base/base.css';
 
   &:not([data-size]) {
-    font-size: inherit; /* Ensure inheriting font-size */
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
 
   & :where(img, svg) {

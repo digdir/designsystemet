@@ -10,6 +10,7 @@
   box-sizing: border-box;
   color: var(--dsc-tag-color);
   display: inline-flex;
+  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
   width: max-content;
