@@ -3,7 +3,8 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 
-import { Popover, type PopoverProps } from '../Popover';
+import type { Size } from '../../types';
+import { Popover } from '../Popover';
 
 export type HelpTextProps = {
   /**
@@ -13,7 +14,7 @@ export type HelpTextProps = {
   /**
    * Size of the helptext
    */
-  size?: PopoverProps['size'];
+  size?: Size;
   /**
    * Placement of the Popover.
    * @default 'right'

@@ -1,6 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type TagProps = {
   /**
@@ -19,7 +20,7 @@ export type TagProps = {
   /**
    * Size of the tag
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**

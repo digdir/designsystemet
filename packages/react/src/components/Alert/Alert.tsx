@@ -1,6 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type AlertProps = {
   /**
@@ -12,7 +13,7 @@ export type AlertProps = {
    * Sets the size of the alert.
    * Does not affect font size.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & HTMLAttributes<HTMLDivElement>;
 
 /**

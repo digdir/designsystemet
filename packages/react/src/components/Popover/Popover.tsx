@@ -12,6 +12,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
+import type { Size } from '../../types';
 import { Context } from './PopoverContext';
 
 const ARROW_HEIGHT = 7;
@@ -55,7 +56,7 @@ export type PopoverProps = {
   /**
    * Size of the popover
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * Callback when the popover wants to open.
    */

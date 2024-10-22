@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
+import type { Size } from '../../types';
 
 export type PaginationProps = {
   /**
@@ -12,7 +13,7 @@ export type PaginationProps = {
   /** Sets the size of the component
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false

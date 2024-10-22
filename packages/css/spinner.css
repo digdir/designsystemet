@@ -13,7 +13,8 @@
     --dsc-spinner-stroke: var(--ds-color-accent-base-default);
   }
 
-  /* &[data-size='2xs'] {
+  /* TODO: Fix */
+  &[data-size='2xs'] {
     --dsc-spinner-size: var(--ds-sizing-3);
   }
 
@@ -31,7 +32,7 @@
 
   &[data-size='xl'] {
     --dsc-spinner-size: var(--ds-sizing-22);
-  } */
+  }
 }
 
 .ds-spinner__background {

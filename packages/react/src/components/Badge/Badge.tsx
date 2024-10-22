@@ -1,5 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type BadgeProps = {
   /**
@@ -11,7 +12,7 @@ export type BadgeProps = {
   /**
    * The size of the badge
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * The number to display in the badge
    */

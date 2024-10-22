@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
+import type { Size } from '../../types';
 
 export type AvatarProps = {
   /**
@@ -17,7 +18,7 @@ export type AvatarProps = {
   /**
    * The size of the avatar.
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * The shape of the avatar.
    *

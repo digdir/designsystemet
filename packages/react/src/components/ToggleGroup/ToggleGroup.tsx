@@ -2,6 +2,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 
+import type { Size } from '../../types';
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
 
 export type ToggleGroupContextProps = {
@@ -25,7 +26,7 @@ export type ToggleGroupProps = {
   /**
    * Size
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /**

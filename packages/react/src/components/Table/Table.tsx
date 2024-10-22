@@ -1,12 +1,13 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { TableHTMLAttributes } from 'react';
+import type { Size } from '../../types';
 
 export type TableProps = {
   /**
    * The size of the table
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * If true, the table will have zebra striping
    * @default false

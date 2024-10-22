@@ -1,13 +1,14 @@
 import cl from 'clsx/lite';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../../types';
 
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /**
    * Changes field size and paddings
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.

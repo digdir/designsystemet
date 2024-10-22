@@ -9,6 +9,5 @@ export const ErrorSummaryList = forwardRef<
   HTMLOListElement,
   ErrorSummaryListProps
 >(function ErrorSummaryList({ ...rest }: ErrorSummaryListProps, ref) {
-  const { size } = useContext(ErrorSummaryContext);
-  return <List.Unordered size={size} {...rest} ref={ref} />;
+  return <List.Unordered {...rest} ref={ref} />;
 });
