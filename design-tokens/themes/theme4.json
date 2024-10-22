@@ -354,7 +354,7 @@
     },
     "base": {
       "$type": "borderRadius",
-      "$value": "0"
+      "$value": "4"
     },
     "scale": {
       "$type": "borderRadius",
