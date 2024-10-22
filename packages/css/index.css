@@ -55,32 +55,75 @@ Array.from(
     .join('\n')
 */
 
-[data-size='xs'] {
-  @composes ds-body-text--xs from './base/base.css';
+/* TODO: Move */
+@layer ds.base {
+  [data-size='xs'] {
+    @composes ds-body-text--sm from './base/base.css';
+  }
+
+  [data-size='sm'] {
+    @composes ds-body-text--sm from './base/base.css';
+  }
+
+  body,
+  [data-size='md'] {
+    @composes ds-body-text--md from './base/base.css';
+  }
+
+  [data-size='lg'] {
+    @composes ds-body-text--lg from './base/base.css';
+  }
 }
 
-[data-size='sm'] {
-  @composes ds-body-text--sm from './base/base.css';
-}
-
-[data-size='md'] {
-  @composes ds-body-text--md from './base/base.css';
-}
-
-[data-size='lg'] {
-  @composes ds-body-text--lg from './base/base.css';
-}
-
+/* TODO: Move */
 :root {
   --ds-sizing-scale-base: var(--ds-font-size-5);
   --ds-sizing-scale-min: 0.125rem; /* Minimum 2px steps */
   --ds-sizing-scale: 0.25rem; /* Default 4px steps */
   --ds-sizing-adjust: calc((var(--ds-sizing-scale-base) - 1em) * 0.5); /* Fallback if not supporting round() */
-
-  /* stylelint-disable-next-line declaration-block-no-duplicate-custom-properties */
   --ds-sizing-adjust: round(up, calc((var(--ds-sizing-scale-base) - 1em) * 0.5), 0.0625rem);
 
   /* Sizing */
+  --ds-sizing-1: round(down, 0.25em, 0.0625rem);
+  --ds-sizing-2: round(down, 0.5em, 0.0625rem);
+  --ds-sizing-3: round(down, 0.75em, 0.0625rem);
+  --ds-sizing-4: round(down, 1em, 0.0625rem);
+  --ds-sizing-5: round(down, 1.25em, 0.0625rem);
+  --ds-sizing-6: round(down, 1.5em, 0.0625rem);
+  --ds-sizing-7: round(down, 1.75em, 0.0625rem);
+  --ds-sizing-8: round(down, 2em, 0.0625rem);
+  --ds-sizing-9: round(down, 2.25em, 0.0625rem);
+  --ds-sizing-10: round(down, 2.5em, 0.0625rem);
+  --ds-sizing-11: round(down, 2.75em, 0.0625rem);
+  --ds-sizing-12: round(down, 3em, 0.0625rem);
+  --ds-sizing-13: round(down, 3.25em, 0.0625rem);
+  --ds-sizing-14: round(down, 3.5em, 0.0625rem);
+  --ds-sizing-15: round(down, 3.75em, 0.0625rem);
+  --ds-sizing-16: round(down, 4em, 0.0625rem);
+  --ds-sizing-17: round(down, 4.25em, 0.0625rem);
+  --ds-sizing-18: round(down, 4.5em, 0.0625rem);
+  --ds-sizing-19: round(down, 4.75em, 0.0625rem);
+  --ds-sizing-20: round(down, 5em, 0.0625rem);
+  --ds-sizing-21: round(down, 5.25em, 0.0625rem);
+  --ds-sizing-22: round(down, 5.5em, 0.0625rem);
+  --ds-sizing-23: round(down, 5.75em, 0.0625rem);
+  --ds-sizing-24: round(down, 6em, 0.0625rem);
+  --ds-sizing-25: round(down, 6.25em, 0.0625rem);
+  --ds-sizing-26: round(down, 6.5em, 0.0625rem);
+  --ds-sizing-27: round(down, 6.75em, 0.0625rem);
+  --ds-sizing-28: round(down, 7em, 0.0625rem);
+  --ds-sizing-29: round(down, 7.25em, 0.0625rem);
+  --ds-sizing-30: round(down, 7.5em, 0.0625rem);
+
+  /*--ds-sizing-1: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 1 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 1));
+  --ds-sizing-2: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 2 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 2));
+  --ds-sizing-3: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 3 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 3));
+  --ds-sizing-4: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 4 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 4));
+  --ds-sizing-5: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 5 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 5));
+  --ds-sizing-6: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 6 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 6));
+  --ds-sizing-7: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 7 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 7));
+  --ds-sizing-8: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 8 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 8));
+  --ds-sizing-9: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 9 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 9));
   --ds-sizing-10: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 10 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 10));
   --ds-sizing-11: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 11 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 11));
   --ds-sizing-12: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 12 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 12));
@@ -91,7 +134,6 @@ Array.from(
   --ds-sizing-17: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 17 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 17));
   --ds-sizing-18: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 18 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 18));
   --ds-sizing-19: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 19 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 19));
-  --ds-sizing-1: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 1 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 1));
   --ds-sizing-20: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 20 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 20));
   --ds-sizing-21: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 21 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 21));
   --ds-sizing-22: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 22 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 22));
@@ -102,15 +144,7 @@ Array.from(
   --ds-sizing-27: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 27 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 27));
   --ds-sizing-28: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 28 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 28));
   --ds-sizing-29: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 29 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 29));
-  --ds-sizing-2: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 2 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 2));
-  --ds-sizing-30: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 30 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 30));
-  --ds-sizing-3: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 3 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 3));
-  --ds-sizing-4: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 4 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 4));
-  --ds-sizing-5: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 5 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 5));
-  --ds-sizing-6: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 6 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 6));
-  --ds-sizing-7: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 7 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 7));
-  --ds-sizing-8: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 8 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 8));
-  --ds-sizing-9: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 9 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 9));
+  --ds-sizing-30: max(calc((var(--ds-sizing-scale) - var(--ds-sizing-adjust)) * 30 + var(--ds-sizing-adjust)), calc(var(--ds-sizing-scale-min) * 30));*/
 
   /* Spacing */
   --ds-spacing-10: var(--ds-sizing-10);

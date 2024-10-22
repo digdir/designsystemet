@@ -16,7 +16,6 @@ export type ButtonProps = {
   color?: 'accent' | 'neutral' | 'danger';
   /**
    * Size
-   * @default md
    */
   size?: 'sm' | 'md' | 'lg';
   /** Toggle icon only styling, pass icon as children
@@ -53,7 +52,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = 'accent',
       icon = false,
       loading = false,
-      size = 'md',
+      size,
       variant = 'primary',
       ...rest
     },

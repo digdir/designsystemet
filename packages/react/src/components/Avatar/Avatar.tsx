@@ -54,7 +54,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
     color = 'accent',
-    size = 'md',
+    size,
     variant = 'circle',
     className,
     children,

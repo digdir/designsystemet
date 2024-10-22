@@ -63,7 +63,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
     maxCount,
     overlap = 'rectangle',
     placement = 'top-right',
-    size = 'md',
+    size,
     ...rest
   },
   ref,

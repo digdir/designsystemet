@@ -3,7 +3,7 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-  font-weight: var(--ds-font-weight-medium) !important; /* TODO: Fix */
+  font-weight: var(--ds-font-weight-medium);
 
   &[data-weight='semibold'] {
     font-weight: var(--ds-font-weight-semibold);

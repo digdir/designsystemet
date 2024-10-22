@@ -25,14 +25,10 @@
       rotate: 180deg;
     }
 
-    /* Makes page buttons square */
-    & > li:not(:first-child, :last-child) > :is(a, button) {
-      --dsc-button-padding-inline: var(--dsc-button-padding-block);
-    }
-
     /* Style as non-interactive ellipsis when empty */
-    & > li > [aria-hidden='true'] {
+    & > li > :empty {
       color: inherit;
+      padding: 0; /* Make ellipsis element square */
       pointer-events: none;
 
       &::before {
