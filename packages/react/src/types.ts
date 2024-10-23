@@ -8,4 +8,3 @@ export type PortalProps = {
    */
   portal?: boolean;
 };
-
