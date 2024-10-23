@@ -8,7 +8,7 @@ export type LabelProps = {
   /**
    * Changes text sizing
    */
-  size?: Size;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'

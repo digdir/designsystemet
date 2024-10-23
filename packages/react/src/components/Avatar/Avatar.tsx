@@ -18,7 +18,7 @@ export type AvatarProps = {
   /**
    * The size of the avatar.
    */
-  size?: Size;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * The shape of the avatar.
    *

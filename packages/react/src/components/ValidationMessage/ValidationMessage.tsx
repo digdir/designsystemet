@@ -8,7 +8,7 @@ export type ValidationMessageProps = {
   /**
    * Changes text sizing
    */
-  size?: Size;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
   error?: boolean;
   /**
