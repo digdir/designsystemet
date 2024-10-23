@@ -26,7 +26,7 @@ function makeTokenCommands() {
       const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       const preview = opts.preview;
       const verbose = opts.verbose;
-      console.log(`Bulding tokens in ${chalk.green(tokens)}`);
+      console.log(`Building tokens in ${chalk.green(tokens)}`);
       return buildTokens({ tokens, out, preview, verbose });
     });
 
