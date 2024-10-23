@@ -83,36 +83,38 @@
   --ds-sizing-30: calc(var(--ds-sizing-scale) * 30em);
 
   /* Sizing when supporting round() */
-  --ds-sizing-1: round(down, calc(var(--ds-sizing-scale) * 1em), 0.0625rem);
-  --ds-sizing-2: round(down, calc(var(--ds-sizing-scale) * 2em), 0.0625rem);
-  --ds-sizing-3: round(down, calc(var(--ds-sizing-scale) * 3em), 0.0625rem);
-  --ds-sizing-4: round(down, calc(var(--ds-sizing-scale) * 4em), 0.0625rem);
-  --ds-sizing-5: round(down, calc(var(--ds-sizing-scale) * 5em), 0.0625rem);
-  --ds-sizing-6: round(down, calc(var(--ds-sizing-scale) * 6em), 0.0625rem);
-  --ds-sizing-7: round(down, calc(var(--ds-sizing-scale) * 7em), 0.0625rem);
-  --ds-sizing-8: round(down, calc(var(--ds-sizing-scale) * 8em), 0.0625rem);
-  --ds-sizing-9: round(down, calc(var(--ds-sizing-scale) * 9em), 0.0625rem);
-  --ds-sizing-10: round(down, calc(var(--ds-sizing-scale) * 10em), 0.0625rem);
-  --ds-sizing-11: round(down, calc(var(--ds-sizing-scale) * 11em), 0.0625rem);
-  --ds-sizing-12: round(down, calc(var(--ds-sizing-scale) * 12em), 0.0625rem);
-  --ds-sizing-13: round(down, calc(var(--ds-sizing-scale) * 13em), 0.0625rem);
-  --ds-sizing-14: round(down, calc(var(--ds-sizing-scale) * 14em), 0.0625rem);
-  --ds-sizing-15: round(down, calc(var(--ds-sizing-scale) * 15em), 0.0625rem);
-  --ds-sizing-16: round(down, calc(var(--ds-sizing-scale) * 16em), 0.0625rem);
-  --ds-sizing-17: round(down, calc(var(--ds-sizing-scale) * 17em), 0.0625rem);
-  --ds-sizing-18: round(down, calc(var(--ds-sizing-scale) * 18em), 0.0625rem);
-  --ds-sizing-19: round(down, calc(var(--ds-sizing-scale) * 19em), 0.0625rem);
-  --ds-sizing-20: round(down, calc(var(--ds-sizing-scale) * 20em), 0.0625rem);
-  --ds-sizing-21: round(down, calc(var(--ds-sizing-scale) * 21em), 0.0625rem);
-  --ds-sizing-22: round(down, calc(var(--ds-sizing-scale) * 22em), 0.0625rem);
-  --ds-sizing-23: round(down, calc(var(--ds-sizing-scale) * 23em), 0.0625rem);
-  --ds-sizing-24: round(down, calc(var(--ds-sizing-scale) * 24em), 0.0625rem);
-  --ds-sizing-25: round(down, calc(var(--ds-sizing-scale) * 25em), 0.0625rem);
-  --ds-sizing-26: round(down, calc(var(--ds-sizing-scale) * 26em), 0.0625rem);
-  --ds-sizing-27: round(down, calc(var(--ds-sizing-scale) * 27em), 0.0625rem);
-  --ds-sizing-28: round(down, calc(var(--ds-sizing-scale) * 28em), 0.0625rem);
-  --ds-sizing-29: round(down, calc(var(--ds-sizing-scale) * 29em), 0.0625rem);
-  --ds-sizing-30: round(down, calc(var(--ds-sizing-scale) * 30em), 0.0625rem);
+  @supports (width: round(down, .1em, 1px)) {
+    --ds-sizing-1: round(down, calc(var(--ds-sizing-scale) * 1em), 0.0625rem);
+    --ds-sizing-2: round(down, calc(var(--ds-sizing-scale) * 2em), 0.0625rem);
+    --ds-sizing-3: round(down, calc(var(--ds-sizing-scale) * 3em), 0.0625rem);
+    --ds-sizing-4: round(down, calc(var(--ds-sizing-scale) * 4em), 0.0625rem);
+    --ds-sizing-5: round(down, calc(var(--ds-sizing-scale) * 5em), 0.0625rem);
+    --ds-sizing-6: round(down, calc(var(--ds-sizing-scale) * 6em), 0.0625rem);
+    --ds-sizing-7: round(down, calc(var(--ds-sizing-scale) * 7em), 0.0625rem);
+    --ds-sizing-8: round(down, calc(var(--ds-sizing-scale) * 8em), 0.0625rem);
+    --ds-sizing-9: round(down, calc(var(--ds-sizing-scale) * 9em), 0.0625rem);
+    --ds-sizing-10: round(down, calc(var(--ds-sizing-scale) * 10em), 0.0625rem);
+    --ds-sizing-11: round(down, calc(var(--ds-sizing-scale) * 11em), 0.0625rem);
+    --ds-sizing-12: round(down, calc(var(--ds-sizing-scale) * 12em), 0.0625rem);
+    --ds-sizing-13: round(down, calc(var(--ds-sizing-scale) * 13em), 0.0625rem);
+    --ds-sizing-14: round(down, calc(var(--ds-sizing-scale) * 14em), 0.0625rem);
+    --ds-sizing-15: round(down, calc(var(--ds-sizing-scale) * 15em), 0.0625rem);
+    --ds-sizing-16: round(down, calc(var(--ds-sizing-scale) * 16em), 0.0625rem);
+    --ds-sizing-17: round(down, calc(var(--ds-sizing-scale) * 17em), 0.0625rem);
+    --ds-sizing-18: round(down, calc(var(--ds-sizing-scale) * 18em), 0.0625rem);
+    --ds-sizing-19: round(down, calc(var(--ds-sizing-scale) * 19em), 0.0625rem);
+    --ds-sizing-20: round(down, calc(var(--ds-sizing-scale) * 20em), 0.0625rem);
+    --ds-sizing-21: round(down, calc(var(--ds-sizing-scale) * 21em), 0.0625rem);
+    --ds-sizing-22: round(down, calc(var(--ds-sizing-scale) * 22em), 0.0625rem);
+    --ds-sizing-23: round(down, calc(var(--ds-sizing-scale) * 23em), 0.0625rem);
+    --ds-sizing-24: round(down, calc(var(--ds-sizing-scale) * 24em), 0.0625rem);
+    --ds-sizing-25: round(down, calc(var(--ds-sizing-scale) * 25em), 0.0625rem);
+    --ds-sizing-26: round(down, calc(var(--ds-sizing-scale) * 26em), 0.0625rem);
+    --ds-sizing-27: round(down, calc(var(--ds-sizing-scale) * 27em), 0.0625rem);
+    --ds-sizing-28: round(down, calc(var(--ds-sizing-scale) * 28em), 0.0625rem);
+    --ds-sizing-29: round(down, calc(var(--ds-sizing-scale) * 29em), 0.0625rem);
+    --ds-sizing-30: round(down, calc(var(--ds-sizing-scale) * 30em), 0.0625rem);
+  }
 
   /* Spacing */
   --ds-spacing-1: var(--ds-sizing-1);
