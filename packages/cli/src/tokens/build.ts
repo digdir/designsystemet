@@ -65,9 +65,7 @@ export async function buildTokens(options: Options): Promise<void> {
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
   // We only use the 'default' theme for the 'size' group
-  const relevant$themes = $themes.filter((theme) =>
-    R.not(theme.group === 'size' && theme.name.toLowerCase() !== 'default'),
-  );
+  const relevant$themes = $themes.filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
 
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({

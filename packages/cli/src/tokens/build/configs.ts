@@ -2,7 +2,7 @@ import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type SD from 'style-dictionary/types';
+import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { buildOptions } from '../build.js';
@@ -54,7 +54,7 @@ const dsTransformers = [
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
 
-const outputColorReferences = (token: SD.TransformedToken) => {
+const outputColorReferences = (token: TransformedToken) => {
   if (
     R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
     R.includes('semantic/color', token.filePath)
@@ -69,7 +69,7 @@ type GetStyleDictionaryConfig = (
   options: ThemePermutation & {
     outPath?: string;
   },
-) => SD.Config;
+) => StyleDictionaryConfig;
 
 const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', outPath, theme }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
@@ -117,7 +117,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ outPath, theme }) => {
    *
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
-  const isCalculatedToken: IsCalculatedToken = (token: SD.TransformedToken) =>
+  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
     pathStartsWithOneOf(['spacing', 'sizing'], token);
 
   return {
@@ -172,7 +172,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ mode, outPath, theme }) =>
             destination: `${mode}.ts`,
             format: jsTokens.name,
             outputReferences: outputColorReferences,
-            filter: (token: SD.TransformedToken) => {
+            filter: (token: TransformedToken) => {
               if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
               if (pathStartsWithOneOf(['border-width'], token)) return false;
 
@@ -284,7 +284,7 @@ export const getConfigsForThemeDimensions = (
         typography,
       });
 
-      const config: SD.Config = {
+      const config: StyleDictionaryConfig = {
         ...config_,
         log: {
           ...config_?.log,
