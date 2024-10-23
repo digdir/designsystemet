@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import { getConfigsForThemeDimensions } from './build/configs.js';
+import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import type { BuildConfig, ThemePermutation } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 
@@ -29,22 +29,22 @@ const sd = new StyleDictionary();
  * Declarative configuration of the build output
  */
 const buildConfigs = {
-  typography: { sdConfig: 'typographyVariables', dimensions: ['typography'] },
-  'color-mode': { sdConfig: 'colorModeVariables', dimensions: ['mode'] },
-  semantic: { sdConfig: 'semanticVariables', dimensions: ['semantic'] },
+  typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  'color-mode': { getConfig: configs.colorModeVariables, dimensions: ['mode'] },
+  semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
-    sdConfig: 'typescriptTokens',
+    getConfig: configs.typescriptTokens,
     dimensions: ['mode'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
   },
   entryFiles: {
     name: 'CSS entry files',
-    sdConfig: 'semanticVariables',
+    getConfig: configs.semanticVariables,
     dimensions: ['semantic'],
     build: async (sdConfigs, { outPath }) => {
       await Promise.all(
-        sdConfigs.map(async ({ theme }) => {
+        sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
 
           return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
@@ -70,7 +70,7 @@ export async function buildTokens(options: Options): Promise<void> {
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({
       buildConfig: val,
-      sdConfigs: getConfigsForThemeDimensions(val.sdConfig, relevant$themes, val.dimensions, {
+      sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
         outPath,
         tokensDir,
         ...val.options,
@@ -88,9 +88,9 @@ export async function buildTokens(options: Options): Promise<void> {
           return await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
         }
         await Promise.all(
-          sdConfigs.map(async ({ config, ...modeNames }) => {
+          sdConfigs.map(async ({ config, permutation }) => {
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
-            const modeMessage = modes.map((x) => modeNames[x]).join(' - ');
+            const modeMessage = modes.map((x) => permutation[x]).join(' - ');
             console.log(modeMessage);
 
             return (await sd.extend(config)).buildAllPlatforms();

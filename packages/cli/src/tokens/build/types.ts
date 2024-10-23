@@ -1,5 +1,5 @@
 import type SD from 'style-dictionary/types';
-import type { StyleDictionaryConfigs } from './configs';
+import type { GetStyleDictionaryConfig } from './configs';
 
 /**
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions
@@ -24,14 +24,14 @@ export type GetSdConfigOptions = {
 export type BuildConfig = {
   /** Optional name of the build config - only used in the console output */
   name?: string;
-  /** Style Dictionary configuration id */
-  sdConfig: StyleDictionaryConfigs;
+  /** Style Dictionary configuration creator */
+  getConfig: GetStyleDictionaryConfig;
   /** Which theme dimensions to include. `theme` (e.g. digdir/altinn) is always included. */
   dimensions: ThemeDimension[];
-  /** Custom StyleDictionary options. If not supplied, the default is used */
+  /** Custom options used when creating Style Dictionary configs. If not supplied, the default is used */
   options?: Partial<GetSdConfigOptions>;
   /** Custom build function. If not supplied, the default is used. */
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
 };
 
-export type SDConfigForThemePermutation = ThemePermutation & { config: SD.Config };
+export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SD.Config };

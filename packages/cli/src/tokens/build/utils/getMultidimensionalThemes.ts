@@ -29,7 +29,7 @@ export const getMultidimensionalThemes = (themes: ThemeObject[], dimensions: The
     console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
   }
   return permutations.filter((val: PermutatedTheme) => {
-    const filters = nonDependentKeys.map((x) => val[x] === grouped$themes[x][0].name);
+    const filters = nonDependentKeys.map((x) => val.permutation[x] === grouped$themes[x][0].name);
     return filters.every((x) => x);
   });
 };
@@ -37,7 +37,8 @@ export const getMultidimensionalThemes = (themes: ThemeObject[], dimensions: The
 export type PermutatedTheme = {
   name: string;
   selectedTokenSets: string[];
-} & ThemePermutation;
+  permutation: ThemePermutation;
+};
 
 const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
 type ProcessedThemeObject = ThemeObject & { [processed]: true };
@@ -91,18 +92,18 @@ function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
     const permutatedTheme = perm.reduce(
       (acc, theme) => {
         const { group, name, selectedTokenSets } = theme;
-        let updatedPermutatedTheme = acc;
+        let updatedPermutation = acc.permutation;
 
         if (group) {
-          const groupProp = R.lensProp<PermutatedTheme>(group as keyof ThemePermutation);
-          updatedPermutatedTheme = R.set(groupProp, name, updatedPermutatedTheme);
+          const groupProp = R.lensProp<ThemePermutation>(group as keyof ThemePermutation);
+          updatedPermutation = R.set(groupProp, name, updatedPermutation);
         }
 
         const updatedName = `${String(acc.name)}${acc ? separator : ''}${name}`;
-        const sets = [...updatedPermutatedTheme.selectedTokenSets, ...filterTokenSets(selectedTokenSets)];
+        const sets = [...acc.selectedTokenSets, ...filterTokenSets(selectedTokenSets)];
 
         return {
-          ...updatedPermutatedTheme,
+          permutation: updatedPermutation,
           name: updatedName,
           selectedTokenSets: sets,
         };
@@ -110,11 +111,13 @@ function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
       {
         name: '',
         selectedTokenSets: [],
-        mode: 'unknown',
-        theme: 'unknown',
-        semantic: 'unknown',
-        size: 'unknown',
-        typography: 'unknown',
+        permutation: {
+          mode: 'unknown',
+          theme: 'unknown',
+          semantic: 'unknown',
+          size: 'unknown',
+          typography: 'unknown',
+        },
       } as PermutatedTheme,
     );
 
