@@ -11,19 +11,13 @@ export type TabsListProps = HTMLAttributes<UHTMLTabListElement>;
  * @example
  * ```tsx
  * <Tabs.List>
- *  <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
- *  <Tabs.Tab value='2'>Tab 2</Tabs.Tab>
+ *  <Tabs.Tab>Tab 1</Tabs.Tab>
+ *  <Tabs.Tab>Tab 2</Tabs.Tab>
  * </Tabs.List>
  * ```
  */
 export const TabsList = forwardRef<UHTMLTabListElement, TabsListProps>(
   function TabsList({ className, ...rest }, ref) {
-    return (
-      <u-tablist
-        class={cl('ds-tabs__tablist', className)}
-        ref={ref}
-        {...rest}
-      />
-    );
+    return <u-tablist class={className} ref={ref} {...rest} />;
   },
 );

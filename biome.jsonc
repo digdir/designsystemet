@@ -1,20 +1,22 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "organizeImports": { "enabled": true },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
   "files": {
     "ignoreUnknown": true,
     "ignore": [
-      "node_modules/**",
-      ".next/**",
       ".vscode/**",
       ".github/**",
       ".changeset/**",
-      "dist/**",
       "./package.json", // yarn and biome disagrees on package.json formatting
-      "tsc-build/**",
       "design-tokens/**/*",
-      "packages/theme/brand/**/*",
-      "apps/storefront/tokens/**"
+      "apps/storefront/tokens/**",
+      "**/dist/**/*",
+      "packages/theme/**/*.css"
     ]
   },
   "formatter": {
@@ -52,7 +54,6 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "noSvgWithoutTitle": "off",
         "noNoninteractiveElementToInteractiveRole": "off",
         "useValidAnchor": "off",
         "useButtonType": "off",
@@ -80,11 +81,32 @@
     "ignore": []
   },
 
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single"
+    }
+  },
+
   "overrides": [
     { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
       "include": ["**/packages/cli/**/*.ts"],
       "formatter": { "lineWidth": 120 }
+    },
+    {
+      "include": [
+        "**/apps/_components/**",
+        "**/apps/storefront/**",
+        "**/apps/theme/**"
+      ],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noSvgWithoutTitle": "off"
+          }
+        }
+      }
     }
   ]
 }

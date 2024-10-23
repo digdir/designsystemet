@@ -12,11 +12,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
-import { Paragraph } from '../Typography';
 import { Context } from './PopoverContext';
-
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
 
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
@@ -66,6 +62,11 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
+  /**
+   * Whether to enable auto placement.
+   * @default true
+   */
+  autoPlacement?: boolean;
 
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
@@ -81,6 +82,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = 'top',
       size = 'md',
       variant = 'default',
+      autoPlacement = true,
       asChild = false,
       ...rest
     },
@@ -142,16 +144,24 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             placement,
             strategy: 'fixed',
             middleware: [
-              offset(ARROW_HEIGHT + ARROW_GAP), // TODO: Should this be configurable?
-              flip({ fallbackAxisSideDirection: 'start' }),
-              shift(),
+              offset((data) => {
+                // get pseudo element arrow size
+                const styles = getComputedStyle(
+                  data.elements.floating,
+                  '::before',
+                );
+                return parseFloat(styles.height);
+              }),
+              ...(autoPlacement
+                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+                : []),
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
             popover.style.translate = `${x}px ${y}px`;
           });
         });
-    }, [controlledOpen, placement, id]);
+    }, [controlledOpen, placement, id, autoPlacement]);
 
     // Update context with id
     useEffect(() => {
@@ -159,18 +169,16 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }, [id]);
 
     return (
-      <Paragraph asChild size={size}>
-        <Component
-          className={cl('ds-popover', className)}
-          data-size={size}
-          data-variant={variant}
-          id={id || popoverId}
-          // @ts-ignore @types/react-dom does not understand popover yet
-          popover='manual'
-          ref={mergedRefs}
-          {...rest}
-        />
-      </Paragraph>
+      <Component
+        className={cl('ds-popover', className)}
+        data-size={size}
+        data-variant={variant}
+        id={id || popoverId}
+        // @ts-ignore @types/react-dom does not understand popover yet
+        popover='manual'
+        ref={mergedRefs}
+        {...rest}
+      />
     );
   },
 );
@@ -179,12 +187,27 @@ const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
-    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    let arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
+    let arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    if (rects.reference.width > rects.floating.width) {
+      arrowX = rects.floating.width / 2;
+    }
+
+    if (rects.reference.height > rects.floating.height) {
+      arrowY = rects.floating.height / 2;
+    }
 
     elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-x',
+      `${Math.round(arrowX)}px`,
+    );
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-y',
+      `${Math.round(arrowY)}px`,
+    );
     return data;
   },
 };

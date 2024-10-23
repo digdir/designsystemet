@@ -1,197 +1,138 @@
 .ds-card {
+  --dsc-card-background--active: var(--ds-color-neutral-surface-default);
+  --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
+  --dsc-card-background: var(--ds-color-neutral-background-default);
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-backround: var(--ds-color-neutral-background-default);
+  --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
+  --dsc-card-gap: 1rem;
+  --dsc-card-padding: var(--ds-spacing-6);
 
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  all: unset; /* Reset if <button> */
+  display: block;
+  background: var(--dsc-card-background);
+  border-radius: var(--ds-border-radius-lg);
+  border: var(--dsc-card-border);
   box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
   color: var(--dsc-card-color);
-  border-radius: min(1rem, var(--ds-border-radius-md));
-  border: 1px solid var(--dsc-card-border-color);
-  background: var(--dsc-card-backround);
+  overflow: clip; /* Needed to clip media elements and and Card.Block */
+  padding: var(--dsc-card-padding);
 
-  &[data-link] {
-    --dsc-card-border-color: var(--ds-color-neutral-border-default);
+  @composes ds-paragraph from './paragraph.css'; /* Must be after all: unset */
 
+  /* Style link in heading, or heading when Card is anchor */
+  :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
+  &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+    outline: 0;
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
+    text-underline-offset: max(6px, 0.25rem, 0.22em);
+  }
+
+  /* Add states when Card is a anchor, button, or when containing a anchor in heading */
+  &:where(a, button, [role='button']),
+  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+    cursor: pointer;
     text-decoration: none;
-
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-      color: var(--dsc-card-color);
-      text-decoration: underline;
-      text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-      text-underline-offset: max(6px, 0.25rem, 0.22em);
-    }
-
-    &:active {
-      --dsc-card-backround: var(--ds-color-neutral-surface-default);
-    }
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        --dsc-card-backround: var(--ds-color-neutral-background-subtle);
+        background: var(--dsc-card-background--hover);
       }
     }
+
+    &:where(:focus-visible, :has(:focus-visible)) {
+      @composes ds-focus--visible from './base/base.css';
+    }
+
+    &:active {
+      background: var(--dsc-card-background--active);
+    }
+  }
+
+  &:has(> .ds-card__block) {
+    padding: 0; /* Let Card.Block own the padding */
   }
 
   &[data-color='subtle'] {
+    --dsc-card-background--active: var(--ds-color-neutral-surface-hover);
+    --dsc-card-background--hover: var(--ds-color-neutral-surface-default);
+    --dsc-card-background: var(--ds-color-neutral-background-subtle);
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-card-backround: var(--ds-color-neutral-background-subtle);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-neutral-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-neutral-surface-hover);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-neutral-surface-default);
-        }
-      }
-    }
   }
 
   &[data-color='brand1'] {
+    --dsc-card-background--active: var(--ds-color-brand1-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand1-surface-hover);
+    --dsc-card-background: var(--ds-color-brand1-surface-default);
     --dsc-card-border-color: var(--ds-color-brand1-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand1-surface-default);
     --dsc-card-color: var(--ds-color-brand1-text-default);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand1-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand1-surface-active);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand1-surface-hover);
-        }
-      }
-    }
   }
 
   &[data-color='brand2'] {
+    --dsc-card-background--active: var(--ds-color-brand2-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand2-surface-hover);
+    --dsc-card-background: var(--ds-color-brand2-surface-default);
     --dsc-card-border-color: var(--ds-color-brand2-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand2-surface-default);
     --dsc-card-color: var(--ds-color-brand2-text-default);
-
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand2-border-default);
-
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand2-surface-active);
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand2-surface-hover);
-        }
-      }
-    }
   }
 
   &[data-color='brand3'] {
+    --dsc-card-background--active: var(--ds-color-brand3-surface-active);
+    --dsc-card-background--hover: var(--ds-color-brand3-surface-hover);
+    --dsc-card-background: var(--ds-color-brand3-surface-default);
     --dsc-card-border-color: var(--ds-color-brand3-border-subtle);
-    --dsc-card-backround: var(--ds-color-brand3-surface-default);
     --dsc-card-color: var(--ds-color-brand3-text-default);
+  }
+}
 
-    &[data-link] {
-      --dsc-card-border-color: var(--ds-color-brand3-border-default);
+/* Using :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card, .ds-card__block) {
+  & > :first-child {
+    margin-block: 0;
+  }
 
-      &:active {
-        --dsc-card-backround: var(--ds-color-brand3-surface-active);
-      }
+  & > * + * {
+    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
+  }
+}
 
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          --dsc-card-backround: var(--ds-color-brand3-surface-hover);
-        }
-      }
+.ds-card__block {
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--dsc-card-padding);
+  position: relative;
+
+  /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
+  &::before {
+    content: '';
+    border-top: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 0 auto;
+    translate: 0 -100%;
+  }
+
+  &::after {
+    content: '';
+    border-left: var(--dsc-card-border);
+    position: absolute;
+    inset: 0 auto 0 0;
+    translate: -100%;
+  }
+
+  &:has(> :is(audio, figure, iframe, img, video):only-child) {
+    padding: 0;
+
+    & > * {
+      border: 0;
+      display: block;
+      height: auto;
+      width: 100%;
     }
-  }
 
-  .ds-card__header h1,
-  .ds-card__header h2,
-  .ds-card__header h3,
-  .ds-card__header h4,
-  .ds-card__header h5,
-  .ds-card__header h6 {
-    color: inherit;
-  }
-
-  .ds-card__media > * {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 0;
-  }
-
-  .ds-card__media {
-    width: auto;
-  }
-
-  .ds-card__media:first-child {
-    padding-bottom: var(--ds-spacing-4);
-  }
-
-  .ds-card__media:last-child {
-    padding-top: var(--ds-spacing-6);
-  }
-
-  .ds-card__footer,
-  .ds-card__content {
-    display: flex;
-    justify-content: flex-start;
-    gap: var(--ds-spacing-4);
-    flex-wrap: wrap;
-    word-wrap: break-word;
-    padding: var(--ds-spacing-2) 0;
-    color: inherit;
-  }
-
-  .ds-card__content {
-    flex-direction: column;
-  }
-
-  .ds-card__header {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    word-wrap: break-word;
-    font-family: inherit;
-    padding: var(--ds-spacing-2) 0;
-  }
-
-  & a:any-link {
-    color: var(--ds-color-neutral-text-default);
-  }
-
-  & > hr {
-    width: 100%;
-    margin: var(--ds-spacing-3) 0;
-  }
-
-  & > *:not(.ds-card__media, hr) {
-    padding-left: var(--ds-spacing-6);
-    padding-right: var(--ds-spacing-6);
-  }
-
-  & > *:not(.ds-card__media):first-child {
-    padding-top: var(--ds-spacing-6);
-  }
-
-  & > *:not(.ds-card__media):last-child {
-    padding-bottom: var(--ds-spacing-6);
+    & > iframe {
+      aspect-ratio: 16 / 9; /* Make iframes scale responsively */
+    }
   }
 }

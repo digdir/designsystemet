@@ -6,14 +6,12 @@
 
 .ingress {
   font-size: 20px;
-  width: 60%;
   line-height: 1.7em;
   margin-top: 0;
 }
 
 .page ul {
   line-height: 1.6em;
-  width: 60%;
 }
 
 .page li {
@@ -25,4 +23,9 @@
   font-weight: 500;
   margin-bottom: 12px !important;
   margin-top: 40px;
+}
+
+.row {
+  margin: 0 auto;
+  max-width: 700px;
 }

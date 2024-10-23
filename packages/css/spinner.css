@@ -4,10 +4,10 @@
   --dsc-spinner-size: var(--ds-sizing-11);
   --dsc-spinner-animation-duration: 2s;
 
-  width: var(--dsc-spinner-size);
+  animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
+  box-sizing: border-box;
   height: var(--dsc-spinner-size);
-  animation: ds-spinner-rotate-animation linear infinite;
-  animation-duration: var(--dsc-spinner-animation-duration);
+  width: var(--dsc-spinner-size);
 
   &[data-color='accent'] {
     --dsc-spinner-stroke: var(--ds-color-accent-base-default);
@@ -39,11 +39,10 @@
 }
 
 .ds-spinner__circle {
-  stroke: var(--dsc-spinner-stroke);
+  animation: ds-spinner-stroke-animation ease-in-out infinite var(--dsc-spinner-animation-duration);
   stroke-dasharray: 1px, 200px;
+  stroke: var(--dsc-spinner-stroke);
   transform-origin: center;
-  animation: ds-spinner-stroke-animation ease-in-out infinite;
-  animation-duration: var(--dsc-spinner-animation-duration);
 }
 
 /* Prefers reduced motion needs longer animation,

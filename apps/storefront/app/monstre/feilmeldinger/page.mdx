@@ -49,6 +49,7 @@ Vi skal kunne vise feilmeldinger sammen med alle typer felt i et skjema. Melding
   src='/img/errormessage-co-1.png'
   alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
   boxShadow={false}
+  dataUnstyled
 />
 
 ### Oppsummering av flere feilmeldinger
@@ -74,6 +75,7 @@ Pass på at
   src='/img/errormessage-co-3.png'
   alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
   boxShadow={false}
+  dataUnstyled
 />
 
 ### Det er best om vi kan unngå å gi feilmeldinger
@@ -135,6 +137,7 @@ Når det oppstår feil i et felt er det viktig at feltet blir godt synlig, slik 
   src='/img/errormessage-design.png'
   alt='Et skjemafelt som viser feil på informasjonen som er fylt ut. På feltet blir de visuelle elementene som skiller det fra et vanlig felt fremhevet: Det er tykkere kant rundt feltet, det er farget rødt og det er en rød tekst med et tilhørende fareikon som beskriver feilen på feltet.'
   boxShadow={false}
+  dataUnstyled
 />
 
 Når den tekniske løsningen sjekker for feil, det vi kaller validerer, ønsker vi å vise hvilke felt som har feil. Til det kan vi bruke flere virkemidler.
@@ -154,11 +157,9 @@ Vi viser feilmeldingen under feltet med feil. Dette er det vanligste mønsteret,
 
 <Card
   color='brand1'
+  data-unstyled
 >
-  <CardContent>
   Merk: Vi ønsker å holde oss oppdatert om andre anbefalinger om plassering, og har [pågående diskusjon om dette på Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
-
-  </CardContent>
 </Card>
 
 ### Når skal vi vise en feilmelding?
@@ -244,12 +245,8 @@ Vi kan bruke disse aria-attributtene og rollene:
 - Vi setter `aria-invalid="true"` på felt med feil, for å si fra om at det er en feil der.
 - Vi bruker `aria-describedby` for å koble feilmelding til feltet.
 
-<Card
-  color='brand1'
->
-  <CardContent>
+<Card color='brand1' data-unstyled>
   Vi unngår inntill videre å bruke `aria-errormessage` da den ikke har full støtte av hjelpemidler per nå. Men vi kommer til å oppdatere retningslinjene om støtten blir bedre i fremtiden. [Se diskusjon på github](https://github.com/digdir/designsystemet/discussions/1684)
-  </CardContent>
 </Card>
 
 ### Gi automatiske beskjeder
@@ -274,12 +271,8 @@ For feilmeldinger som dukker opp dynamisk må vi bruke `aria-live` for at meldin
 <br />
 <br />
 
-<Card
-  color='brand3'
->
-  <CardContent>
-    Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
-  </CardContent>
+<Card color='brand3' data-unstyled>
+  Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1684) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
 </Card>
 
 <Contributors

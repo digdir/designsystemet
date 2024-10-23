@@ -2,12 +2,12 @@ import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type { Config, TransformedToken } from 'style-dictionary/types';
+import type { Config, LogConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import * as formats from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, sizeRem, typographyName } from './transformers.js';
+import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
 import { permutateThemes as permutateThemes_ } from './utils/permutateThemes.js';
 import type { PermutatedThemes } from './utils/permutateThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
@@ -26,6 +26,7 @@ const fileHeader = () => [`These files are generated from design tokens defind u
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
+StyleDictionary.registerTransform(resolveMath);
 
 StyleDictionary.registerFormat(jsTokens);
 StyleDictionary.registerFormat(formats.colormode);
@@ -34,7 +35,7 @@ StyleDictionary.registerFormat(formats.typography);
 
 const dsTransformers = [
   nameKebab.name,
-  `ts/resolveMath`,
+  resolveMath.name,
   'ts/size/px',
   sizeRem.name,
   'ts/typography/fontWeight',
@@ -82,7 +83,6 @@ export const colorModeVariables: GetConfig = ({ mode = 'light', outPath, theme }
 
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -124,11 +124,10 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
   const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing', 'border-radius'], token);
+    pathStartsWithOneOf(['spacing', 'sizing'], token);
 
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       css: {
@@ -154,7 +153,10 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => isCalculatedToken(token) && outputReferencesFilter(token, options),
+          outputReferences: (token, options) => {
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
+          },
         },
       },
     },
@@ -164,7 +166,6 @@ export const semanticVariables: GetConfig = ({ outPath, theme }) => {
 export const typescriptTokens: GetConfig = ({ mode = 'unknown', outPath, theme }) => {
   return {
     usesDtcg,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     platforms: {
       ts: {
@@ -206,7 +207,6 @@ export const typographyVariables: GetConfig = ({ outPath, theme, typography }) =
 
   return {
     usesDtcg: true,
-    log: { verbosity: 'silent' },
     preprocessors: ['tokens-studio'],
     expand: {
       include: ['typography'],
@@ -261,9 +261,10 @@ type getConfigs = (
   outPath: string,
   tokensDir: string,
   themes: PermutatedThemes,
+  logVerbosity: LogConfig['verbosity'],
 ) => { mode: string; theme: string; semantic: string; size: string; typography: string; config: Config }[];
 
-export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes) =>
+export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutatedThemes, logVerbosity) =>
   permutatedThemes
     .map((permutatedTheme) => {
       const {
@@ -292,8 +293,12 @@ export const getConfigs: getConfigs = (getConfig, outPath, tokensDir, permutated
         typography,
       });
 
-      const config = {
+      const config: Config = {
         ...config_,
+        log: {
+          ...config_?.log,
+          verbosity: logVerbosity,
+        },
         source,
         include,
       };

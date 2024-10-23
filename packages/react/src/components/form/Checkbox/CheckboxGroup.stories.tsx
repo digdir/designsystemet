@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Checkbox } from '.';
-import { Button, Paragraph } from '../..';
+import { Button, Divider, Paragraph } from '../..';
 
 export default {
   title: 'Komponenter/Checkbox/Group',
@@ -59,13 +59,6 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
     );
   return (
     <>
-      <span style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
-        <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
-      </span>
-      <br />
-      <Paragraph spacing>Du har valgt: {value.toString()}</Paragraph>
-      <br />
       <Checkbox.Group
         legend='Skal du reise til noen av disse landene?'
         description='Velg alle landene du skal innom.'
@@ -80,6 +73,16 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
           Jeg skal ikke til noen av disse landene
         </Checkbox>
       </Checkbox.Group>
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har valgt: {value.toString()}
+      </Paragraph>
+      <span style={{ display: 'flex', gap: '1rem' }}>
+        <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
+        <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
+      </span>
     </>
   );
 };

@@ -72,6 +72,7 @@ export const semantic: Format = {
         if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
           return calculatedVariable(format(token));
         }
+        return format(token);
       }
 
       return format(token);
@@ -104,8 +105,6 @@ export const typography: Format = {
       format: 'css',
       usesDtcg,
     });
-
-    console.log('dictionary.allTokens', dictionary.allTokens);
 
     const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 

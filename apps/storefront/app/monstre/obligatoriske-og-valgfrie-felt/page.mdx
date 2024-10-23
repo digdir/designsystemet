@@ -1,4 +1,4 @@
-import { Card, CardContent, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 import { MenuPageLayout } from '@layouts';
 import { Image } from '@components';
@@ -36,6 +36,7 @@ Hvis vi kan holde oss til ett spørsmål per side, så er det det aller enkleste
   src='/img/obligatorisk-eks1.png'
   alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er obligatorisk'
   boxShadow={false}
+  dataUnstyled
 />
 
 Dersom det er frivillig å fylle ut en av sidene, kan dette også komme frem i beskrivelsen.
@@ -44,6 +45,7 @@ Dersom det er frivillig å fylle ut en av sidene, kan dette også komme frem i b
   src='/img/obligatorisk-eks1b.png'
   alt='Skjermbilde av skjema med ett spørsmål på en side, der spørsmålet er valgfritt'
   boxShadow={false}
+  dataUnstyled
 />
 
 ## 2. Når vi _må_ ha flere spørsmål per side
@@ -58,6 +60,7 @@ Hvis vi _må_ ha flere spørsmål på en side, kan vi informere tydelig i toppen
     src='/img/obligatorisk-eks2.png'
     alt='Skjermbilde av skjema med flere spørsmål per side.'
     boxShadow={false}
+    dataUnstyled
   />
 
 ## 3. Når vi _må_ ha en kombinasjon av obligatoriske og valgfrie felt
@@ -73,6 +76,7 @@ En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil v�
   src='/img/obligatorisk-eks3.png'
   alt='Skjermbilde av skjema med flere spørsmål per side, både obligatoriske og valgfrie.'
   boxShadow={false}
+  dataUnstyled
 />
 
 <br />
@@ -89,8 +93,7 @@ En kombinasjon av obligatoriske og valgfrie felt er ikke ideellt! Men det vil v�
 
 <Card
   color='brand3'
+  data-unstyled
 >
-  <CardContent>
-    *Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg og Oslo Origo. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/issues/new) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
-  </CardContent>
+  *Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg og Oslo Origo. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/issues/new) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
 </Card>

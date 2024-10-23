@@ -10,6 +10,7 @@ import {
   Fieldset,
   Heading,
   HelpText,
+  Label,
   Link,
   Pagination,
   Paragraph,
@@ -26,6 +27,7 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
+  usePagination,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
@@ -34,6 +36,14 @@ import classes from './Components.module.css';
 
 export const Components = () => {
   const [radioValue, setRadioValue] = useState('vanilje');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages: 10,
+    showPages: 7,
+  });
+
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
@@ -86,7 +96,7 @@ export const Components = () => {
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select label='Velg handling' size='sm' hideLabel>
+            <Select size='sm' aria-label='Velg handling'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
@@ -143,57 +153,54 @@ export const Components = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination
-          currentPage={3}
-          nextLabel='Neste'
-          onChange={function Ya() {}}
-          previousLabel='Forrige'
-          size='sm'
-          totalPages={6}
-        />
+        <Pagination size='sm'>
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Button {...pagination.prevButtonProps}>
+                Forrige
+              </Pagination.Button>
+            </Pagination.Item>
+            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+              <Pagination.Item key={itemKey}>
+                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+              </Pagination.Item>
+            ))}
+            <Pagination.Item>
+              <Pagination.Button {...pagination.nextButtonProps}>
+                Neste
+              </Pagination.Button>
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
         <Heading size='xs' className={classes.helpHeading}>
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
-          <Card color='brand1' className={classes.helpFirst}>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs' className={classes.helpFirstTitle}>
-                Sikkerhet og drift
-              </Heading>
-            </Card.Header>
-            <Card.Content
-              className={cl(classes.helpContent, classes.helpFirstDesc)}
-            >
+          <Card color='brand1'>
+            <Heading size='2xs' className={classes.helpCardHeading}>
+              Sikkerhet og drift
+            </Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
-          <Card color='brand2' className={classes.helpSecond}>
-            <Card.Header className={classes.helpHeader}>
-              <Heading size='2xs' className={classes.helpSecondTitle}>
-                Skole og utdanning
-              </Heading>
-            </Card.Header>
-            <Card.Content
-              className={cl(classes.helpContent, classes.helpSecondDesc)}
-            >
+          <Card color='brand2'>
+            <Heading size='2xs' className={classes.helpCardHeading}>
+              Skole og utdanning
+            </Heading>
+            <Paragraph>
               Most provide as with carried business are much better more the.
-            </Card.Content>
+            </Paragraph>
           </Card>
-          <Card color='brand3' className={classes.helpThird} isLink asChild>
-            <a href='#preview'>
-              <Card.Header className={classes.helpHeader}>
-                <Heading className={classes.helpThirdTitle} size='2xs'>
-                  Mat og helse
-                </Heading>
-              </Card.Header>
-              <Card.Content
-                className={cl(classes.helpContent, classes.helpThirdDesc)}
-              >
-                Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-              </Card.Content>
-            </a>
+          <Card color='brand3'>
+            <Heading size='2xs' className={classes.helpCardHeading}>
+              <a href='#preview'>Mat og helse</a>
+            </Heading>
+            <Paragraph>
+              Lenke til artikkel om mat og helse, der du kan lese mer om alt.
+            </Paragraph>
           </Card>
         </div>
       </div>
@@ -248,9 +255,10 @@ export const Components = () => {
           legend='Instillinger'
           description='Her kan du justere på innstillingene dine'
           size='sm'
+          className={classes.SwitchContainer}
         >
           <Switch defaultChecked>TV-visning</Switch>
-          <Switch size='sm'>Desktopvisning</Switch>
+          <Switch>Desktopvisning</Switch>
           <Switch defaultChecked readOnly>
             Tabletvisning
           </Switch>
@@ -258,12 +266,8 @@ export const Components = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
-        <Heading size='xs' spacing>
-          Hvor er du fra?
-        </Heading>
-        <Paragraph size='sm' spacing>
-          Svar under så finner vi flyreise
-        </Paragraph>
+        <Heading size='xs'>Hvor er du fra?</Heading>
+        <Paragraph size='sm'>Svar under så finner vi flyreise</Paragraph>
         <div className={classes.toggleCombo}>
           <ToggleGroup defaultValue='norway' size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
@@ -271,19 +275,23 @@ export const Components = () => {
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup>
         </div>
-        <Heading size='xs' spacing className={classes.chipsHeading}>
+        <Heading size='xs' className={classes.chipsHeading}>
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Toggle selected checkmark={false} size='sm'>
+          <Chip.Radio name='language' size='md' defaultChecked>
             Bokmål
-          </Chip.Toggle>
-          <Chip.Toggle size='sm'>Nynorsk</Chip.Toggle>
-          <Chip.Toggle size='sm'>Engelsk</Chip.Toggle>
+          </Chip.Radio>
+          <Chip.Radio name='language' size='md'>
+            Nynorsk
+          </Chip.Radio>
+          <Chip.Radio name='language' size='md'>
+            Engelsk
+          </Chip.Radio>
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
-        <Heading size='xs' spacing className={classes.comboHeading}>
+        <Heading size='xs' className={classes.comboHeading}>
           Hvor skal du reise?
         </Heading>
         <Combobox label='Destinasjon' size='sm' portal={false} multiple>
@@ -297,15 +305,15 @@ export const Components = () => {
           <Combobox.Option value='bergen'>Bergen</Combobox.Option>
           <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
         </Combobox>
+        <Label className={classes.textareaLabel} htmlFor='my-textarea'>
+          Ekstra informasjon
+        </Label>
         <Textarea
-          cols={40}
-          rows={3}
-          description=''
-          placeholder='Skriv her...'
-          error=''
-          label='Ekstra informasjon'
-          size='sm'
           className={classes.textarea}
+          cols={100}
+          id='my-textarea'
+          rows={4}
+          size='sm'
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
@@ -345,11 +353,13 @@ export const Components = () => {
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              For å kunne bli registrert i Frivillighetsregisteret, må
-              organisasjonen drive frivillig virksomhet. Det er bare foreninger,
-              stiftelser og aksjeselskap som kan registreres. Virksomheten kan
-              ikke dele ut midler til fysiske personer. Virksomheten må ha et
-              styre.
+              <Paragraph size='sm'>
+                For å kunne bli registrert i Frivillighetsregisteret, må
+                organisasjonen drive frivillig virksomhet. Det er bare
+                foreninger, stiftelser og aksjeselskap som kan registreres.
+                Virksomheten kan ikke dele ut midler til fysiske personer.
+                Virksomheten må ha et styre.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
@@ -357,9 +367,11 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              Virksomheten må være registrert i Enhetsregisteret før den kan bli
-              registrert i Frivillighetsregisteret. Du kan registrere i begge
-              registrene samtidig i Samordnet registermelding.
+              <Paragraph size='sm'>
+                Virksomheten må være registrert i Enhetsregisteret før den kan
+                bli registrert i Frivillighetsregisteret. Du kan registrere i
+                begge registrene samtidig i Samordnet registermelding.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item>
@@ -367,32 +379,34 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              Virksomheten må være registrert i Enhetsregisteret før den kan bli
-              registrert i Frivillighetsregisteret. Du kan registrere i begge
-              registrene samtidig i Samordnet registermelding.
+              <Paragraph size='sm'>
+                Virksomheten må være registrert i Enhetsregisteret før den kan
+                bli registrert i Frivillighetsregisteret. Du kan registrere i
+                begge registrene samtidig i Samordnet registermelding.
+              </Paragraph>
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert color='info'>
+        <Alert color='info' size='sm'>
           Dette er informasjon som du bør lese for å forstå hva som skjer
         </Alert>
-        <Alert color='warning'>
+        <Alert color='warning' size='sm'>
           Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
         </Alert>
-        <Alert color='danger'>
+        <Alert color='danger' size='sm'>
           Dette er en melding om at noe har gått galt og du bør gjøre noe med
           det
         </Alert>
-        <Alert color='success'>
+        <Alert color='success' size='sm'>
           Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
         <Dropdown.Context>
-          <Dropdown.Trigger>Velg språk</Dropdown.Trigger>
-          <Dropdown placement='top'>
+          <Dropdown.Trigger size='sm'>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top' size='sm'>
             <Dropdown.Item>Norsk</Dropdown.Item>
             <Dropdown.Item>Engelsk</Dropdown.Item>
             <Dropdown.Item>Spansk</Dropdown.Item>

@@ -3,20 +3,23 @@
   --dsc-avatar-color: var(--ds-color-accent-contrast-default);
   --dsc-avatar-size: var(--ds-sizing-12);
   --dsc-avatar-padding: var(--ds-spacing-2);
-  --dsc-avatar-border-radius: 50%;
+  --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
-  background: var(--dsc-avatar-background);
-  height: var(--dsc-avatar-size);
-  aspect-ratio: 1 / 1;
-  color: var(--dsc-avatar-color);
-  border-radius: var(--dsc-avatar-border-radius);
-  overflow: hidden;
-  display: inline-flex;
-  justify-content: center;
   align-items: center;
-  user-select: none;
-  text-transform: uppercase;
+  aspect-ratio: 1 / 1;
+  background: var(--dsc-avatar-background);
+  border-radius: var(--dsc-avatar-border-radius);
+  box-sizing: border-box;
+  color: var(--dsc-avatar-color);
+  display: inline-flex;
+  height: var(--dsc-avatar-size);
+  justify-content: center;
+  overflow: hidden;
   text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+
+  @composes ds-body-text--xs from './base/base.css';
 
   &:not(:has(> img)) {
     padding: var(--dsc-avatar-padding);
@@ -79,20 +82,28 @@
   &[data-size='xs'] {
     --dsc-avatar-size: var(--ds-sizing-7);
     --dsc-avatar-padding: var(--ds-spacing-1);
+
+    @composes ds-body-text--xs from './base/base.css';
   }
 
   &[data-size='sm'] {
     --dsc-avatar-size: var(--ds-sizing-9);
     --dsc-avatar-padding: var(--ds-spacing-1);
+
+    @composes ds-heading-text--2xs from './base/base.css';
   }
 
   &[data-size='md'] {
     --dsc-avatar-size: var(--ds-sizing-12);
     --dsc-avatar-padding: var(--ds-spacing-2);
+
+    @composes ds-heading-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
     --dsc-avatar-size: var(--ds-sizing-15);
     --dsc-avatar-padding: var(--ds-spacing-2);
+
+    @composes ds-heading-text--md from './base/base.css';
   }
 }

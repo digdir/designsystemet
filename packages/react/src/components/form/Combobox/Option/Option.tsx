@@ -3,7 +3,7 @@ import { forwardRef, isValidElement, memo, useContext, useId } from 'react';
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import { omit } from '../../../../utilities/omit/omit';
-import { Label } from '../../../Typography';
+import { Label } from '../../../Label';
 import { ComboboxContext } from '../ComboboxContext';
 
 import ComboboxOptionDescription from './Description';
@@ -50,6 +50,7 @@ const ComboboxOption = memo(
           <button
             ref={ref}
             id={id}
+            // biome-ignore lint/a11y/useSemanticElements: biome wants me to use the <option> element
             role='option'
             type='button'
             aria-selected={!!selected}

@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Heading, Paragraph } from '../..';
+import { Button, Divider, Heading, Paragraph } from '../..';
 
 import { Search } from '.';
 
@@ -36,23 +36,19 @@ export const Controlled: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Search
-          label='Kontroller meg!'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onClear={() => setValue('')}
-        />
-        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
-      </div>
+      <Search
+        label='Kontroller meg!'
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onClear={() => setValue('')}
+      />
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har skrevet inn: {value}
+      </Paragraph>
+      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
 };
@@ -76,7 +72,11 @@ export const Form: StoryFn<typeof Search> = () => {
 
   return (
     <>
-      <Heading level={3} size='2xs' spacing>
+      <Heading
+        level={3}
+        size='2xs'
+        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      >
         Submitted value: {submittedValue}
       </Heading>
       <form

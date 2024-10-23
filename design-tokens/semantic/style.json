@@ -72,49 +72,17 @@
         }
       }
     },
-    "ingress": {
-      "lg": {
+    "body": {
+      "xl": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{font.family}",
           "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.8}",
-          "letterSpacing": "{letter-spacing.8}"
-        }
-      },
-      "md": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
+          "lineHeight": "{line-height.md}",
           "fontSize": "{font-size.7}",
           "letterSpacing": "{letter-spacing.8}"
         }
       },
-      "sm": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.6}",
-          "letterSpacing": "{letter-spacing.7}"
-        }
-      },
-      "xs": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{font.family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.lg}",
-          "fontSize": "{font-size.5}",
-          "letterSpacing": "{letter-spacing.6}"
-        }
-      }
-    },
-    "paragraph": {
       "lg": {
         "$type": "typography",
         "$value": {
@@ -156,6 +124,16 @@
         }
       },
       "short": {
+        "xl": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{font.family}",
+            "fontWeight": "{font-weight.regular}",
+            "lineHeight": "{line-height.sm}",
+            "fontSize": "{font-size.7}",
+            "letterSpacing": "{letter-spacing.8}"
+          }
+        },
         "lg": {
           "$type": "typography",
           "$value": {
@@ -198,6 +176,16 @@
         }
       },
       "long": {
+        "xl": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{font.family}",
+            "fontWeight": "{font-weight.regular}",
+            "lineHeight": "{line-height.lg}",
+            "fontSize": "{font-size.7}",
+            "letterSpacing": "{letter-spacing.8}"
+          }
+        },
         "lg": {
           "$type": "typography",
           "$value": {
@@ -334,199 +322,187 @@
   "border-radius": {
     "sm": {
       "$type": "borderRadius",
-      "$value": "{border-radius.base}*0.5"
+      "$value": "{border-radius.1}"
     },
     "md": {
       "$type": "borderRadius",
-      "$value": "{border-radius.base}*1"
+      "$value": "{border-radius.2}"
     },
     "lg": {
       "$type": "borderRadius",
-      "$value": "{border-radius.base}*2"
+      "$value": "{border-radius.3}"
     },
-    "xl": {
+    "default": {
       "$type": "borderRadius",
-      "$value": "{border-radius.base}*3"
-    },
-    "2xl": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.base}*4"
-    },
-    "3xl": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.base}*6"
-    },
-    "4xl": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.base}*8"
+      "$value": "{border-radius.4}"
     },
     "full": {
       "$type": "borderRadius",
-      "$value": "9999"
+      "$value": "{border-radius.5}"
     }
   },
   "spacing": {
     "0": {
       "$type": "spacing",
-      "$value": "{spacing.base}*0"
+      "$value": "{spacing.scale}*0"
     },
     "1": {
       "$type": "spacing",
-      "$value": "{spacing.base}*1"
+      "$value": "{spacing.scale}*1"
     },
     "2": {
       "$type": "spacing",
-      "$value": "{spacing.base}*2"
+      "$value": "{spacing.scale}*2"
     },
     "3": {
       "$type": "spacing",
-      "$value": "{spacing.base}*3"
+      "$value": "{spacing.scale}*3"
     },
     "4": {
       "$type": "spacing",
-      "$value": "{spacing.base}*4"
+      "$value": "{spacing.scale}*4"
     },
     "5": {
       "$type": "spacing",
-      "$value": "{spacing.base}*5"
+      "$value": "{spacing.scale}*5"
     },
     "6": {
       "$type": "spacing",
-      "$value": "{spacing.base}*6"
+      "$value": "{spacing.scale}*6"
     },
     "7": {
       "$type": "spacing",
-      "$value": "{spacing.base}*7"
+      "$value": "{spacing.scale}*7"
     },
     "8": {
       "$type": "spacing",
-      "$value": "{spacing.base}*8"
+      "$value": "{spacing.scale}*8"
     },
     "9": {
       "$type": "spacing",
-      "$value": "{spacing.base}*9"
+      "$value": "{spacing.scale}*9"
     },
     "10": {
       "$type": "spacing",
-      "$value": "{spacing.base}*10"
+      "$value": "{spacing.scale}*10"
     },
     "11": {
       "$type": "spacing",
-      "$value": "{spacing.base}*11"
+      "$value": "{spacing.scale}*11"
     },
     "12": {
       "$type": "spacing",
-      "$value": "{spacing.base}*12"
+      "$value": "{spacing.scale}*12"
     },
     "13": {
       "$type": "spacing",
-      "$value": "{spacing.base}*13"
+      "$value": "{spacing.scale}*13"
     },
     "14": {
       "$type": "spacing",
-      "$value": "{spacing.base}*14"
+      "$value": "{spacing.scale}*14"
     },
     "15": {
       "$type": "spacing",
-      "$value": "{spacing.base}*15"
+      "$value": "{spacing.scale}*15"
     },
     "18": {
       "$type": "spacing",
-      "$value": "{spacing.base}*18"
+      "$value": "{spacing.scale}*18"
     },
     "22": {
       "$type": "spacing",
-      "$value": "{spacing.base}*22"
+      "$value": "{spacing.scale}*22"
     },
     "26": {
       "$type": "spacing",
-      "$value": "{spacing.base}*26"
+      "$value": "{spacing.scale}*26"
     },
     "30": {
       "$type": "spacing",
-      "$value": "{spacing.base}*30"
+      "$value": "{spacing.scale}*30"
     }
   },
   "sizing": {
     "0": {
       "$type": "sizing",
-      "$value": "{sizing.base}*0"
+      "$value": "{sizing.scale}*0"
     },
     "1": {
       "$type": "sizing",
-      "$value": "{sizing.base}*1"
+      "$value": "{sizing.scale}*1"
     },
     "2": {
       "$type": "sizing",
-      "$value": "{sizing.base}*2"
+      "$value": "{sizing.scale}*2"
     },
     "3": {
       "$type": "sizing",
-      "$value": "{sizing.base}*3"
+      "$value": "{sizing.scale}*3"
     },
     "4": {
       "$type": "sizing",
-      "$value": "{sizing.base}*4"
+      "$value": "{sizing.scale}*4"
     },
     "5": {
       "$type": "sizing",
-      "$value": "{sizing.base}*5"
+      "$value": "{sizing.scale}*5"
     },
     "6": {
       "$type": "sizing",
-      "$value": "{sizing.base}*6"
+      "$value": "{sizing.scale}*6"
     },
     "7": {
       "$type": "sizing",
-      "$value": "{sizing.base}*7"
+      "$value": "{sizing.scale}*7"
     },
     "8": {
       "$type": "sizing",
-      "$value": "{sizing.base}*8"
+      "$value": "{sizing.scale}*8"
     },
     "9": {
       "$type": "sizing",
-      "$value": "{sizing.base}*9"
+      "$value": "{sizing.scale}*9"
     },
     "10": {
       "$type": "sizing",
-      "$value": "{sizing.base}*10"
+      "$value": "{sizing.scale}*10"
     },
     "11": {
       "$type": "sizing",
-      "$value": "{sizing.base}*11"
+      "$value": "{sizing.scale}*11"
     },
     "12": {
       "$type": "sizing",
-      "$value": "{sizing.base}*12"
+      "$value": "{sizing.scale}*12"
     },
     "13": {
       "$type": "sizing",
-      "$value": "{sizing.base}*13"
+      "$value": "{sizing.scale}*13"
     },
     "14": {
       "$type": "sizing",
-      "$value": "{sizing.base}*14"
+      "$value": "{sizing.scale}*14"
     },
     "15": {
       "$type": "sizing",
-      "$value": "{sizing.base}*15"
+      "$value": "{sizing.scale}*15"
     },
     "18": {
       "$type": "sizing",
-      "$value": "{sizing.base}*18"
+      "$value": "{sizing.scale}*18"
     },
     "22": {
       "$type": "sizing",
-      "$value": "{sizing.base}*22"
+      "$value": "{sizing.scale}*22"
     },
     "26": {
       "$type": "sizing",
-      "$value": "{sizing.base}*26"
+      "$value": "{sizing.scale}*26"
     },
     "30": {
       "$type": "sizing",
-      "$value": "{sizing.base}*30"
+      "$value": "{sizing.scale}*30"
     }
   },
   "border-width": {

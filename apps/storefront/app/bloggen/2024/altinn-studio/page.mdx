@@ -32,12 +32,10 @@ For at Team Altinn Studio skal nå sine mål om å skape et godt verktøy — m�
 _"Det er viktig at det er mulig å utvide komponentene til det mer komplekse, fordi alle produkter skal løse et unikt behov i markedet, og ofte vil det forekomme situasjoner hvor mer spesialiserte komponenter er nødvendig. Hvis vi kan utvide eksisterende komponenter fra designsystemet, så vil vi kunne ivareta mye av tilgjengelighetskravene og visuell likhet med de grunnleggende komponentene uten å måtte legge inn for mye innsats."_
 
 <Card color='brand2'>
-  <CardContent>
-    David Øvrelid, Tech Lead i Altinn Studio, forklarer hvordan Altinn Studio
-    bruker Designsystemet. Artikkelen ble først publisert på Medium. [Les den
-    opprinnelige
-    artikkelen](https://davidovrelid.com/hvordan-vi-kan-ta-i-bruk-designsystemet-no-p%C3%A5-en-forusigbar-m%C3%A5te-3988980884a2)
-  </CardContent>
+  David Øvrelid, Tech Lead i Altinn Studio, forklarer hvordan Altinn Studio
+  bruker Designsystemet. Artikkelen ble først publisert på Medium. [Les den
+  opprinnelige
+  artikkelen](https://davidovrelid.com/hvordan-vi-kan-ta-i-bruk-designsystemet-no-p%C3%A5-en-forusigbar-m%C3%A5te-3988980884a2)
 </Card>
 <br />
 <br />
@@ -53,6 +51,7 @@ Designsystemet tilbyr en hel rekke av grunnleggende komponenter, som kan utforme
   alt='Illustrasjonen viser flere knapper i ulike varianter og farger.'
   boxShadow={false}
   caption='Figur 1: Illustrasjon som viser varianter av knapper.'
+  dataUnstyled
 />
 
 Selv om knappkomponenten kommer i mange varianter betyr ikke det at du og ditt team skal ta i bruk alle variantene. Designsystemet tilbyr disse mulighetene for at det skal være fleksibelt, og kunne tilby deg funksjonalitet som både er ofte brukt men også kjente mønstre.
@@ -92,6 +91,7 @@ Eksempelvis har Altinn Studio behov for en [ExpressionEditor](https://components
   alt='Illustrasjonen viser eksempel på en sammensatt komponent av flere komponenter fra designsystemet'
   boxShadow={false}
   caption='Figur 2. Eksempel på en sammensatt komponent av flere komponenter fra designsystemet'
+  dataUnstyled
 />
 
 **_Designsystemet er utviklet på en slik måte at det er enkelt å ta i bruk og utvide komponentene til de mer komplekse der det er behov._**
@@ -109,6 +109,7 @@ For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det vikti
   alt='Illustrasjon som viser direkte avhengigheter til designsystemet'
   boxShadow={false}
   caption='Figur 3. Illustrasjon som viser direkte avhengigheter til designsystemet.'
+  dataUnstyled
 />
 
 Hvrdan kan vi løse denne problemstillingen? Helt riktig — vi kan løse det med isolering av komponentene ved hjelp av fasademønsteret.
@@ -124,6 +125,7 @@ Når vi isolerer komponentene våre, eliminerer vi behovet for å endre den eksi
   alt=' Illustrasjon som viser isolering av designsystemet. Illustrasjonen viser også hvordan man kan håndtere breaking chnage, uten å mått endre de 4 side-komponentene.'
   boxShadow={false}
   caption='Figur 4.  Illustrasjon som viser isolering av designsystemet. Illustrasjonen viser også hvordan man kan håndtere breaking chnage, uten å mått endre de 4 side-komponentene.'
+  dataUnstyled
 />
 
 Nå som Team Altinn Studio har oppnådd isolering av sammensatte komponenter, kan frontend-utivklere og designere jobbe tettere sammen mellom det som er teknisk implementert og skissene i Figma. Det vil si at Figma skissene kan gjenspeile komponentnavnene i `studio-components`.

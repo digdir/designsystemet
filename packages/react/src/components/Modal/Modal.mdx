@@ -1,5 +1,6 @@
 import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/modal.css?inline';
 import * as ModalStories from './Modal.stories';
 
 import { Modal } from './';
@@ -20,20 +21,21 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 ## Slik bruker du `Modal`
 
 ```tsx
-<Modal.Root>
+<Modal.Context>
   <Modal.Trigger>Open Modal</Modal.Trigger>
-  <Modal.Dialog>
-    <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
-    <Modal.Content>Content</Modal.Content>
-    <Modal.Footer>Footer</Modal.Footer>
-  </Modal.Dialog>
-</Modal.Root>
+  <Modal>
+    <Modal.Block>
+      <Heading size="xs">Header</Heading>
+    </Modal.Block>
+    <Modal.Block>Content</Modal.Block>
+    <Modal.Block>Footer</Modal.Block>
+  </Modal>
+</Modal.Context>
 ```
 
 ## Bruk med eksten trigger
 
 Dersom du vil bruke en ekstern trigger, som for eksempel ligger en annen plass i treet, kan du bruke `ref` for å åpne modalen.
-Du må fortsatt ha `Modal.Root` rundt `Modal.Dialog` for at modalen skal fungere, men du kan fjerne `Modal.Trigger`.
 
 ```tsx
 const modalRef = useRef<HTMLDialogElement>(null);
@@ -41,32 +43,27 @@ const modalRef = useRef<HTMLDialogElement>(null);
 ...
 
 <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-<Modal.Root>
-  <Modal.Dialog
-    ref={modalRef}
-  >
-    <Modal.Header subtitle='Modal subtittel'>Hader</Modal.Header>
-    <Modal.Content>Content</Modal.Content>
-    <Modal.Footer>Footer</Modal.Footer>
-  </Modal.Dialog>
-</Modal.Root>
+<Modal ref={modalRef} >
+  Content
+</Modal>
 ```
 
 ### Med bruk av `ref`
 
-<Canvas of={ModalStories.WithoutTriggerComponent} />
+<Canvas of={ModalStories.WithoutModalContext} />
 
 ### Close on backdrop click
 
-Vi bruker `onInteractOutside` proppen for å lukke modalen når brukeren klikker utenfor modalen.
+Vi bruker `backdropClose={true}` proppen for å lukke modalen når brukeren klikker utenfor.
 
-<Canvas of={ModalStories.CloseOnBackdropClick} />
+<Canvas of={ModalStories.BackdropClose} />
 
-### Med `Divider`
+### Med `Block`
 
-Du kan legge divider mellom, for å skille innhold fra hverandre. `Divider` får ekstra margin på topp og bunn.
+Bruk flere `Modal.Block` hvis du vil dele opp modalen med skillelinjer til for eksempel topp- og bunn-område.
+Merk at innhold kan ikke plasseres direkte i `Modal` dersom du bruker `Modal.Block`; da burde alt innholdet være inni en av av modalens `Modal.Block`-seksjoner.
 
-<Canvas of={ModalStories.WithDivider} />
+<Canvas of={ModalStories.WithHeaderAndFooter} />
 
 ### Form
 
@@ -76,7 +73,7 @@ Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
 
 ### Med egendefinert bredde
 
-Bruk max-width for å sette egendefinert maks bredde på modalen. Default er 650px.
+Bruk `max-width` for å sette egendefinert maks bredde på modalen. Default er 40rem.
 
 <Canvas of={ModalStories.ModalWithMaxWidth} />
 
@@ -84,8 +81,12 @@ Bruk max-width for å sette egendefinert maks bredde på modalen. Default er 650
 
 Bruk `overflow: visible` for å la innhold gå utenfor modalen.
 
-<Canvas of={ModalStories.ModalWithSelect} />
+<Canvas of={ModalStories.ModalWithCombobox} />
 
-### `Modal.Header`
+### `Modal.Block`
 
-<ArgTypes of={Modal.Header} />
+<ArgTypes of={Modal.Block} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

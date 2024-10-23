@@ -27,17 +27,13 @@
   margin-bottom: var(--ds-spacing-6);
   padding: var(--ds-spacing-10);
   width: 100%;
-  border-radius: var(--ds-border-radius-xl);
+  border-radius: var(--ds-border-radius-lg);
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .headerText {
   color: inherit;
   padding-right: 290px;
-}
-
-.title {
-  margin-bottom: 0;
 }
 
 .date {
@@ -93,10 +89,12 @@
 
 .content {
   padding: var(--ds-spacing-4) var(--ds-spacing-10) 0 var(--ds-spacing-10);
+  height: fit-content;
 }
 
 .githubLink {
-  margin-top: var(--ds-spacing-6);
+  display: inline-block;
+  margin-top: var(--ds-spacing-12);
 }
 
 @media (max-width: 1200px) {

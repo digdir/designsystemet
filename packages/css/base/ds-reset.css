@@ -1,0 +1,14 @@
+/* https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+/* https://wiki.csswg.org/ideas/mistakes */
+
+/* Inherit fonts for inputs and buttons */
+input[class^='ds-'],
+textarea[class^='ds-'],
+select[class^='ds-'] {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}

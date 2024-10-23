@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Radio } from '.';
-import { Button, Paragraph } from '../..';
+import { Button, Divider, Paragraph } from '../..';
 
 export default {
   title: 'Komponenter/Radio/Group',
@@ -52,11 +52,6 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
   return (
     <>
-      <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
-        <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
-        <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
-        <Paragraph spacing>Du har valgt: {value}</Paragraph>
-      </span>
       <br />
       <Radio.Group
         legend='Velg pizza'
@@ -66,7 +61,7 @@ export const Controlled: StoryFn<typeof Radio> = () => {
       >
         <Radio value='ost'>Bare ost</Radio>
         <Radio
-          value='Dobbeldekker'
+          value='dobbeldekker'
           description='Chorizo spesial med kokkens luksuskylling'
         >
           Dobbeldekker
@@ -74,6 +69,16 @@ export const Controlled: StoryFn<typeof Radio> = () => {
         <Radio value='flammen'>Flammen</Radio>
         <Radio value='snadder'>Snadder</Radio>
       </Radio.Group>
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har valgt: {value}
+      </Paragraph>
+      <span style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
+        <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
+        <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
+      </span>
     </>
   );
 };

@@ -1,7 +1,7 @@
 .ds-popover {
   --dsc-popover-arrow-size: var(--ds-spacing-2);
   --dsc-popover-background: var(--ds-color-neutral-background-default);
-  --dsc-popover-border-radius: min(1rem, var(--ds-border-radius-md));
+  --dsc-popover-border-radius: var(--ds-border-radius-md);
   --dsc-popover-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-popover-color: var(--ds-color-neutral-text-default);
   --dsc-popover-max-width: 300px;
@@ -18,6 +18,8 @@
   padding: var(--dsc-popover-padding);
   position: fixed;
 
+  @composes ds-body-text--md from './base/base.css';
+
   &::before {
     background: var(--dsc-popover-background);
     border: inherit;
@@ -33,42 +35,51 @@
     width: var(--dsc-popover-arrow-size);
   }
 
-  &[data-size="sm"] { --dsc-popover-padding: var(--ds-spacing-2) var(--ds-spacing-3) }
-  &[data-size="lg"] { --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-5) }
+  &[data-size='sm'] {
+    --dsc-popover-padding: var(--ds-spacing-2) var(--ds-spacing-3);
 
-  &[data-placement="top"]::before {
+    @composes ds-body-text--sm from './base/base.css';
+  }
+
+  &[data-size='lg'] {
+    --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-5);
+
+    @composes ds-body-text--lg from './base/base.css';
+  }
+
+  &[data-placement='top']::before {
     top: 100%;
     rotate: 45deg;
   }
 
-  &[data-placement="left"]::before {
+  &[data-placement='left']::before {
     left: 100%;
     rotate: -45deg;
   }
 
-  &[data-placement="right"]::before {
+  &[data-placement='right']::before {
     left: 0;
     rotate: 135deg;
   }
 
-  &[data-placement="bottom"]::before {
+  &[data-placement='bottom']::before {
     top: 0;
     rotate: -135deg;
   }
 
-  &[data-variant="info"] {
+  &[data-variant='info'] {
     --dsc-popover-background: var(--ds-color-info-surface-default);
     --dsc-popover-border: 1px solid var(--ds-color-info-border-default);
     --dsc-popover-color: var(--ds-color-info-text-default);
   }
 
-  &[data-variant="warning"] {
+  &[data-variant='warning'] {
     --dsc-popover-background: var(--ds-color-warning-surface-default);
     --dsc-popover-border: 1px solid var(--ds-color-warning-border-default);
     --dsc-popover-color: var(--ds-color-warning-text-default);
   }
 
-  &[data-variant="danger"] {
+  &[data-variant='danger'] {
     --dsc-popover-background: var(--ds-color-danger-surface-default);
     --dsc-popover-border: 1px solid var(--ds-color-danger-border-default);
     --dsc-popover-color: var(--ds-color-danger-text-default);

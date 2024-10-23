@@ -1,3 +1,11 @@
+.ds-skiplink {
+  --dsc-skiplink-padding: var(--ds-spacing-4);
+  --dsc-skiplink-background-color: var(--ds-color-accent-surface-hover);
+  --dsc-skiplink-color: var(--ds-color-accent-text-default);
+
+  @composes ds-sr-only from './base/base.css';
+}
+
 .ds-skiplink:focus {
   display: grid;
   place-items: center;
@@ -10,19 +18,11 @@
   clip: auto;
   clip-path: none;
   white-space: inherit;
-  text-decoration: none;
-  padding: var(--ds-spacing-4);
-  color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-accent-surface-hover);
-}
-
-.ds-skiplink__content {
-  color: var(--dsc-link-color);
+  padding: var(--dsc-skiplink-padding);
+  color: var(--dsc-skiplink-color);
+  background: var(--dsc-skiplink-background-color);
+  box-sizing: border-box;
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: max(5px, 0.25rem);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-spacing-1);
-  margin: 0;
 }

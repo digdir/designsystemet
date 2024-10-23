@@ -3,8 +3,6 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ForwardedRef, HTMLAttributes, OlHTMLAttributes } from 'react';
 
-import { Paragraph } from '../Typography';
-
 type ListBaseProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -33,14 +31,12 @@ const render = <T extends HTMLElement>(
   const Component = asChild ? Slot : tagName;
 
   return (
-    <Paragraph size={size} asChild>
-      <Component
-        className={cl(`ds-list`, className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
-    </Paragraph>
+    <Component
+      className={cl(`ds-list`, className)}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
   );
 };
 

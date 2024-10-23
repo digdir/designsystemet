@@ -2,13 +2,12 @@
   display: block;
   text-align: center;
   background-color: white;
+  color: var(--ds-color-neutral-text-default);
   padding: var(--ds-spacing-10);
   border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
-  transition:
-    0.2s transform ease-in-out,
-    0.2s box-shadow ease-in-out;
+  transition: 0.2s transform ease-in-out, 0.2s box-shadow ease-in-out;
 }
 
 .card:hover {

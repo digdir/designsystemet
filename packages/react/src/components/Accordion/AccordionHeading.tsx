@@ -1,8 +1,5 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-
-import { Paragraph } from '../Typography/Paragraph';
 
 export type AccordionHeadingProps = {
   /** Heading text */
@@ -10,23 +7,13 @@ export type AccordionHeadingProps = {
 } & HTMLAttributes<HTMLElement>;
 
 /**
- * Accordion header component, contains a button to toggle the content.
+ * Accordion heading component, contains a button to toggle the content.
  * @example
- * <AccordionHeader>Header</AccordionHeader>
+ * <AccordionHeading>Heading</AccordionHeading>
  */
 export const AccordionHeading = forwardRef<HTMLElement, AccordionHeadingProps>(
   function AccordionHeading({ className, ...rest }, ref) {
-    return (
-      <Paragraph asChild size='sm'>
-        <u-summary
-          class={cl(
-            'ds-focus ds-paragraph ds-paragraph--sm ds-line-height--md', // Very TMP fix awaiting CSS modules
-            className,
-          )}
-          ref={ref}
-          {...rest}
-        />
-      </Paragraph>
-    );
+    /* Set `className` as `class` so react is happy */
+    return <u-summary ref={ref} class={className} {...rest} />;
   },
 );

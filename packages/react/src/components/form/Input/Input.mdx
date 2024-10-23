@@ -1,0 +1,86 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
+import { Alert } from '../../Alert';
+import * as InputStories from './Input.stories';
+
+<Meta of={InputStories} />
+
+<Alert color="warning">Input er under utvikling og burde ikke tas i bruk enda. Bruk heller Textfield komponenten.</Alert>
+<br />
+
+# Input
+
+`Input` kalles tekstfelt på norsk. Det er et inndatafelt som for eksempel gir brukerne mulighet til å skrive korte tekster eller tall.
+
+<Primary />
+<Controls />
+
+## Prefix/Suffix
+
+Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
+Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
+Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+
+<Canvas of={InputStories.Adornments} />
+
+## Kontrollert
+
+<Canvas of={InputStories.Controlled} />
+
+## Html Size
+
+<Canvas of={InputStories.HtmlSize} />
+
+## Retningslinjer for når du skal bruke `Input`
+
+Vi bruker tekstfelt når vi vil gi brukeren mulighet til å skrive tekst/svar på maks. én linje, Det kan for eksempel være navn eller telefonnummer.
+
+Passer til å
+
+- gi mulighet for korte tekster eller svar
+- legge inn tall, for eksempel et telefonnummer
+
+Passer ikke til å
+
+- gi lengre svar, bruk heller `Textarea`
+- legge inn formaterte data, som markdown
+  <br />
+
+### Plassering av ledeteksten
+
+Ledeteksten og en eventuell beskrivelse skal alltid stå over tekstfeltet. Da er de lette å se på små skjermer og hindres ikke av eventuelle feilmeldinger.
+
+### Unngå plassholdertekster
+
+Plassholdertekster forsvinner når brukerne skriver i feltet. Det er derfor bedre å inkludere hint og viktig informasjon i selve ledeteksten eller den tilhørende beskrivelsen.
+
+### Tilpass bredden på tekstfeltet
+
+Tilpass bredden til det brukerne skal skrive inn, kort bredde til telefonnummer og bredere til stedsnavn. Ulik bredde på feltene gjør det enklere å navigere i skjemaer som har mange felter.
+
+### Inndata og formatering
+
+- Bruk `autoComplete` for felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av (WCAG 1.3.5).
+- Bruk gjerne inndatatyper som viser hva du ber om, for eksempel telefonnummer og e-post. Slike inndatatyper gir mobilbrukere et tastatur som passer til det de skal angi, for eksempel et numerisk tastatur for telefonnummer, men de kan også utløse validering på klientsiden.
+- Godta det meste av inndata fra brukerne, så lenge det er forståelig. Eksempler kan være kontonummer med punktum, telefonnummer med mellomrom eller mellomrom på slutten av en e-postadresse.
+- Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
+- Ikke bruk bare store bokstaver eller kursiv tekst i ledeteksten. Det er vanskelig å lese.
+
+## Tekst i komponenten
+
+Det skal alltid være ledetekst på `Input`. I spesielle tilfeller kan vi skjule ledeteksten med `hidelabel`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
+
+## Tilgjengelighet
+
+### Ikke bruk deaktiverte felt
+
+Ikke bruk deaktivert tilstand (disabled state) på tekstfelt. Tenk heller over om du trenger å vise feltet i det hele tatt, eller om du heller kan skrive informasjonen ut i ren tekst eller bruke Read Only.
+
+### Prefiks og suffiks
+
+Prefiks og suffiks er et ekstra visuelt hjelpemiddel, som blir ignorert av skjermlesere. Vi må alltid ha en beskrivende ledetekst. Prefiks og suffiks er plassert utenfor inndatafeltene de tilhører. Da unngår vi at de ikke skaper trøbbel i noen nettlesere, som kan sette inn et ikon i inndatafeltet (for eksempel ikoner for å vise eller lage passord).
+
+## CSS Variabler
+
+<CssVariables css={css} />

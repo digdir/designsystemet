@@ -15,6 +15,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
+import { Label } from '../Label';
 
 type Story = StoryFn<typeof Table>;
 
@@ -172,15 +173,12 @@ export const StickyHeader: Story = (args) => {
 
 StickyHeader.args = {
   stickyHeader: true,
+  tabIndex: 0,
 };
 
-StickyHeader.decorators = [
-  (Story) => (
-    <div style={{ height: '280px', overflow: 'auto' }}>
-      <Story />
-    </div>
-  ),
-];
+StickyHeader.parameters = {
+  customStyles: { height: '280px', overflow: 'auto' },
+};
 
 type CheckedItems = {
   [key: number]: boolean;
@@ -226,13 +224,16 @@ export const WithFormElements: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell>
-            <Checkbox
-              checked={headerChecked}
-              onChange={handleHeaderCheckboxChange}
-              indeterminate={interderminate}
-              value='all'
-              size='sm'
-            />
+            <Label style={{ display: 'flex', gap: '8px' }}>
+              <Checkbox
+                checked={headerChecked}
+                onChange={handleHeaderCheckboxChange}
+                indeterminate={interderminate}
+                value='all'
+                size='sm'
+              />
+              Selection
+            </Label>
           </TableHeaderCell>
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>
@@ -244,6 +245,7 @@ export const WithFormElements: Story = (args) => {
           <TableRow key={row}>
             <TableCell>
               <Checkbox
+                aria-label={`Checkbox ${row}`}
                 checked={!!checkedItems[row]}
                 value={row.toString()}
                 onChange={(event) => handleCheckboxChange(event, row)}
@@ -253,7 +255,7 @@ export const WithFormElements: Story = (args) => {
             <TableCell>1</TableCell>
             <TableCell>2</TableCell>
             <TableCell>
-              <Textfield size='sm' />
+              <Textfield size='sm' aria-label={`Textfield ${row}`} />
             </TableCell>
           </TableRow>
         ))}

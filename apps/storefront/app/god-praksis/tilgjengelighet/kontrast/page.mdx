@@ -36,65 +36,57 @@ For å sikre god lesbarhet skal all tekst ha tilstrekkelig kontrast mot bakgrunn
 
 Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjenester. Web Content Accessibility Guidelines (WCAG) inneholder suksesskriterier og forslag til løsninger for å lykkes. Men det er ikke samsvar mellom dagens kontrastregler og kravet om at alle skal kunne se innholdet.
 
-<Card color='brand3'>
-  <CardContent>
-    <Heading
-      level={3}
-      size='xs'
-    >
-      Gjeldende regelverk, WCAG 2.1
-    </Heading>
-    <ListUnordered>
-      <ListItem>
-        **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
-        teksten og bakgrunnen er minst 4,5:1. [1.4.3 Kontrast (minimum), WCAG
-        2.1
-        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
-      </ListItem>
-      <ListItem>
-        **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den visuelle
-        presentasjonen av det følgende har et kontrastforhold på minst 3:1 mot
-        farge(r) som ligger ved siden av. [1.4.11 Kontrast for ikke-tekstlig
-        innhold, WCAG 2.1
-        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
-      </ListItem>
-    </ListUnordered>
-  </CardContent>
+<Card color='brand3' data-unstyled>
+  <Heading
+    level={3}
+    size='xs'
+  >Gjeldende regelverk, WCAG 2.1</Heading>
+  <ListUnordered>
+    <ListItem>
+      **1.4.3 Kontrast (minimum) (Nivå AA)**: Kontrastforholdet mellom
+      teksten og bakgrunnen er minst 4,5:1. [1.4.3 Kontrast (minimum), WCAG
+      2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
+    </ListItem>
+    <ListItem>
+      **1.4.11 Kontrast for ikke-tekstlig innhold (Nivå AA)**: Den visuelle
+      presentasjonen av det følgende har et kontrastforhold på minst 3:1 mot
+      farge(r) som ligger ved siden av. [1.4.11 Kontrast for ikke-tekstlig
+      innhold, WCAG 2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
+    </ListItem>
+  </ListUnordered>
 </Card>
 
 <br />
 
-<Card color='brand2'>
-  <CardContent>
-    <Heading
-      level={3}
-      size='xs'
-    >
-      Fremtidig eller strengere:
-    </Heading>
-    <ListUnordered>
-      <ListItem>
-        **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle presentasjonen
-        av tekst og bilder av tekst har et kontrastforhold på minst 7:1,
-        unntatt uvesentlig tekst og skriftstørrelser større enn 18px eller
-        14px fet. [ 1.4.6 Kontrast (forbedret), WCAG 2.1
-        (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
-      </ListItem>
-      <ListItem>
-        **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
-        fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
-        mellom samme piksler i fokusert og ikke-fokusert tilstand.
-        [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
-        W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
-      </ListItem>
-      <ListItem>
-        **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
-        (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
-        bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
-        for å regne ut kontrasten.
-      </ListItem>
-    </ListUnordered>
-  </CardContent>
+<Card color='brand2' data-unstyled>
+  <Heading
+    level={3}
+    size='xs'
+  >Fremtidig eller strengere:</Heading>
+  <ListUnordered>
+    <ListItem>
+      **1.4.6 Kontrast** (forbedret) (Nivå AAA): Den visuelle presentasjonen
+      av tekst og bilder av tekst har et kontrastforhold på minst 7:1,
+      unntatt uvesentlig tekst og skriftstørrelser større enn 18px eller
+      14px fet. [ 1.4.6 Kontrast (forbedret), WCAG 2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
+    </ListItem>
+    <ListItem>
+      **WCAG 2.2: 2.4.13** Focus Appearance (Nivå AAA), om utseende til
+      fokusmarkering krever at fokusindikator har en kontrastverdi på 3:1
+      mellom samme piksler i fokusert og ikke-fokusert tilstand.
+      [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
+      W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+    </ListItem>
+    <ListItem>
+      **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
+      (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
+      bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
+      for å regne ut kontrasten.
+    </ListItem>
+  </ListUnordered>
 </Card>
 
 ## Mer presis metode
@@ -131,32 +123,28 @@ Vi vet at selv om en løsning oppfyller de konkrete kravene fra regelverket om u
 
 Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til universell utforming, men det betyr ikke at innholdet er tilgjengelig eller universelt utformet. Derfor strekker vi oss langt i å også oppfylle de fremtidige WCAG-3 kravene som bruker APCA-metoden.
 
-<Card color='brand3'>
-  <CardContent>
-    **Kontrast i WCAG 2 «luminosity contrast algorithm** <br />
-    _«I WCAG 2 er kontrast en måleenhet for forskjellen i den opplevde lysintensiteten
-    mellom to farger. Denne forskjellen er beskrevet som et forhold fra 1:1 (for
-    eksempel hvit på hvit) til 21:1 (for eksempel svart på hvit).»_ – WebAIM, vår
-    oversettelse. Kontrastene regnes ut ved hjelp av fargenes RGB, HEX eller HSL
-    verdier i tillegg til transparens (alpha), om fargen er tekst, grafikk, forgrunn
-    eller bakgrunn har ingen betydning.
-  </CardContent>
+<Card color='brand3' data-unstyled>
+  **Kontrast i WCAG 2 «luminosity contrast algorithm** <br />
+  _«I WCAG 2 er kontrast en måleenhet for forskjellen i den opplevde lysintensiteten
+  mellom to farger. Denne forskjellen er beskrevet som et forhold fra 1:1 (for
+  eksempel hvit på hvit) til 21:1 (for eksempel svart på hvit).»_ – WebAIM, vår
+  oversettelse. Kontrastene regnes ut ved hjelp av fargenes RGB, HEX eller HSL
+  verdier i tillegg til transparens (alpha), om fargen er tekst, grafikk, forgrunn
+  eller bakgrunn har ingen betydning.
 </Card>
 
 <br />
 
-<Card color='brand2'>
-  <CardContent>
-    **Kontrast i WCAG 3 «visual contrast algorithm»** <br />I WCAG 3 benyttes en
-    visuell-kontrast algoritme som kalles for APCA, det er fremdeles
-    fargeverdiene som benyttes for å kalkulere kontrasten, men også om fargen er
-    tekst, grafikk, forgrunn eller bakgrunn, i tillegg har også valg av font,
-    font-vekt og størrelse en innvirkning på hvilke kontrastverdier som er
-    godkjent. Forskjellige farger som i WCAG 2 ville oppnådd like
-    kontrastverdier vil i APCA kunne få andre verdier fordi en i større grad
-    kalkulerer ut fra øyets evne til å oppfatte farger enn kun den tekniske
-    fargeverdien.
-  </CardContent>
+<Card color='brand2' data-unstyled>
+  **Kontrast i WCAG 3 «visual contrast algorithm»** <br />I WCAG 3 benyttes en
+  visuell-kontrast algoritme som kalles for APCA, det er fremdeles
+  fargeverdiene som benyttes for å kalkulere kontrasten, men også om fargen er
+  tekst, grafikk, forgrunn eller bakgrunn, i tillegg har også valg av font,
+  font-vekt og størrelse en innvirkning på hvilke kontrastverdier som er
+  godkjent. Forskjellige farger som i WCAG 2 ville oppnådd like
+  kontrastverdier vil i APCA kunne få andre verdier fordi en i større grad
+  kalkulerer ut fra øyets evne til å oppfatte farger enn kun den tekniske
+  fargeverdien.
 </Card>
 
 ## Verktøy for å teste kontrastverdier
@@ -187,12 +175,10 @@ I variant B er teksten svart, og bakgrunnen er farge #6D7879. Teksten er noe min
 
 <br />
 <br />
-<Card color='brand1'>
-  <CardContent>
-    **Bidra til artikkelen?** <br />
-    Vi vil gjerne ha dine innspill og tilbakemeldinger på artikkelen. Send oss en
-    e-post på: designsystem@digdir.no eller [kontakt oss i Github](https://github.com/digdir/designsystemet/issues/new).
-  </CardContent>
+<Card color='brand1' data-unstyled>
+  **Bidra til artikkelen?** <br />
+  Vi vil gjerne ha dine innspill og tilbakemeldinger på artikkelen. Send oss en
+  e-post på: designsystem@digdir.no eller [kontakt oss i Github](https://github.com/digdir/designsystemet/issues/new).
 </Card>
 
 <Contributors

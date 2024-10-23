@@ -1,32 +1,66 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useRef, useState } from 'react';
+import { expect, userEvent, within } from '@storybook/test';
+import { useState } from 'react';
 import type { FormEvent } from 'react';
 
 import { Button } from '../../Button';
-import { ChipRemovable } from '../../Chip';
+import { Chip } from '../../Chip';
+import { Heading } from '../../Heading';
 import { Modal } from '../../Modal';
-import { Paragraph } from '../../Typography';
+import { Paragraph } from '../../Paragraph';
 import { Switch } from '../Switch';
 
 import { data } from './data/data';
 
+import { Divider } from '../../Divider';
 import { Combobox } from './index';
 
 export default {
   title: 'Komponenter/Combobox',
   component: Combobox,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          maxWidth: '30rem',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      maxWidth: '30rem',
+      story: {
+        height: '340px',
+      },
+    },
+    a11y: {
+      // TODO: these rules should be enabled after figuring out why they occur.
+      // floating-ui sets aria-hidden for some reason, we need to fix that somehow.
+      // The rest are probably our own fault.
+      config: {
+        rules: [
+          { id: 'aria-hidden-focus', reviewOnFail: true },
+          { id: 'aria-allowed-attr', reviewOnFail: true },
+          { id: 'aria-input-field-name', reviewOnFail: true },
+          { id: 'scrollable-region-focusable', reviewOnFail: true },
+        ],
+      },
+    },
+  },
+  play: async (ctx) => {
+    const storyRoot = ctx.canvasElement;
+    // Refactored out the play function for easier reuse in the InModal story
+    await testCombobox(storyRoot);
+  },
+} satisfies Meta;
+
+async function testCombobox(el: HTMLElement) {
+  // When not in Docs mode, automatically open the combobox
+  const combobox = within(el).getByRole('combobox');
+  await userEvent.click(combobox);
+
+  // The dropdown is rendered in a portal outside the #storybook-root
+  // so we must locate it through the body element
+  const body = within((el.getRootNode() as Document).body);
+  const dropdown = body.getByRole('listbox');
+  await expect(dropdown).toBeVisible();
+
+  const options = within(dropdown).getAllByRole('option');
+  await expect(options.length).toBeGreaterThan(0);
+}
 
 const PLACES = [
   {
@@ -179,25 +213,6 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
-      <Paragraph>Value er: {value.join(', ')}</Paragraph>
-      <Switch
-        checked={multiple}
-        onChange={(e) => {
-          setMultiple(e.target.checked);
-          setValue([]);
-        }}
-      >
-        Multiple
-      </Switch>
-      <Button
-        onClick={() => {
-          setValue(['leikanger']);
-        }}
-        style={{ marginBottom: '1rem' }}
-      >
-        Sett verdi til Leikanger
-      </Button>
-
       <Combobox
         {...args}
         key={multiple ? 'multiple' : 'single'}
@@ -214,8 +229,43 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Switch
+        checked={multiple}
+        onChange={(e) => {
+          setMultiple(e.target.checked);
+          setValue([]);
+        }}
+      >
+        Multiple
+      </Switch>
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Value er: {value.join(', ')}
+      </Paragraph>
+      <Button
+        onClick={() => {
+          setValue(['leikanger']);
+        }}
+      >
+        Sett verdi til Leikanger
+      </Button>
     </>
   );
+};
+
+Controlled.args = {
+  label: 'Hvor går reisen?',
+};
+Controlled.play = async (ctx) => {
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByRole('button');
+  const combobox = canvas.getByRole('combobox');
+  await userEvent.click(button);
+
+  await expect(combobox).toHaveValue('Leikanger');
 };
 
 export const InForm: StoryFn<typeof Combobox> = (args) => {
@@ -267,49 +317,48 @@ InForm.args = {
 };
 
 export const InModal: StoryFn<typeof Combobox> = (args) => {
-  const modalRef = useRef<HTMLDialogElement>(null);
   const [value, setValue] = useState<string[]>([]);
 
   return (
-    <>
-      <Button
-        onClick={() => {
-          modalRef.current?.showModal();
-        }}
-      >
-        Open Modal
-      </Button>
-      <Modal.Root>
-        <Modal.Dialog
-          ref={modalRef}
-          style={{
-            overflow: 'visible',
+    <Modal.Context>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal style={{ overflow: 'visible' }}>
+        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Combobox i Modal
+        </Heading>
+        <Combobox
+          {...args}
+          value={value}
+          multiple={true}
+          onValueChange={(value) => {
+            setValue(value);
           }}
+          label='Hvor går reisen?'
+          portal={false}
+          name='sted'
         >
-          <Modal.Header>Combobox i Modal</Modal.Header>
-          <Modal.Content>
-            <Combobox
-              {...args}
-              value={value}
-              multiple={true}
-              onValueChange={(value) => {
-                setValue(value);
-              }}
-              label='Hvor går reisen?'
-              portal={false}
-            >
-              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-              {PLACES.map((item, index) => (
-                <Combobox.Option key={index} value={item.value}>
-                  {item.name}
-                </Combobox.Option>
-              ))}
-            </Combobox>
-          </Modal.Content>
-        </Modal.Dialog>
-      </Modal.Root>
-    </>
+          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+          {PLACES.map((item, index) => (
+            <Combobox.Option key={index} value={item.value}>
+              {item.name}
+            </Combobox.Option>
+          ))}
+        </Combobox>
+      </Modal>
+    </Modal.Context>
   );
+};
+InModal.play = async (ctx) => {
+  // When not in Docs mode, automatically open the modal
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
+  // Wait for modal to fade in before running tests
+  const modal = canvas.getByRole('dialog');
+  await new Promise<void>((resolve) => {
+    modal.addEventListener('animationend', () => resolve());
+  });
+  await testCombobox(modal);
 };
 
 export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
@@ -326,14 +375,14 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
         }}
       >
         {value.map((item, index) => (
-          <ChipRemovable
+          <Chip.Removable
             key={index}
             onClick={() => {
               setValue(value.filter((v) => v !== item));
             }}
           >
             {item}
-          </ChipRemovable>
+          </Chip.Removable>
         ))}
       </div>
 
@@ -354,6 +403,9 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
@@ -394,6 +446,9 @@ export const SelectAll: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
       <Paragraph>Value er: {value.join(', ')}</Paragraph>
     </>
   );
@@ -446,18 +501,6 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          setLoading(true);
-          setOptions([]);
-          setValue([]);
-        }}
-        style={{
-          marginBottom: '1rem',
-        }}
-      >
-        Clear Data
-      </Button>
       <Combobox
         {...args}
         value={value}
@@ -474,6 +517,18 @@ export const Loading: StoryFn<typeof Combobox> = (args) => {
           </Combobox.Option>
         ))}
       </Combobox>
+
+      <Divider />
+
+      <Button
+        onClick={() => {
+          setLoading(true);
+          setOptions([]);
+          setValue([]);
+        }}
+      >
+        Clear Data
+      </Button>
     </>
   );
 };
@@ -503,6 +558,7 @@ export const ThousandsOfOptions: StoryFn<typeof Combobox> = (args) => {
 };
 
 ThousandsOfOptions.args = {
+  label: 'Hvor går reisen?',
   virtual: true,
 };
 
@@ -557,9 +613,13 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
   );
 };
 
-export const WithNumberValues: StoryFn<typeof Combobox> = () => {
+RemoveAllOptions.args = {
+  label: 'Hvor går reisen?',
+};
+
+export const WithNumberValues: StoryFn<typeof Combobox> = (args) => {
   return (
-    <Combobox initialValue={['2000']}>
+    <Combobox {...args} initialValue={['2000']}>
       <Combobox.Option id={'3000'} key={'3000'} value={'3000'}>
         some value
       </Combobox.Option>
@@ -568,4 +628,8 @@ export const WithNumberValues: StoryFn<typeof Combobox> = () => {
       </Combobox.Option>
     </Combobox>
   );
+};
+
+WithNumberValues.args = {
+  label: 'Hvor går reisen?',
 };

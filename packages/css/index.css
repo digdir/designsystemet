@@ -1,23 +1,26 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
-@layer ds.reset, ds.theme, ds.base, ds.components;
+@layer ds.reset, ds.base, ds.typography, ds.theme, ds.components;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./baseline/ds-reset.css') layer(ds.reset);
-@import url('./baseline/typography.css') layer(ds.base.typography);
-@import url('./utilities.css') layer(ds.base.utilities);
+@import url('./base/ds-reset.css') layer(ds.reset);
+@import url('./base/base.css') layer(ds.base);
+@import url('./heading.css') layer(ds.typography);
+@import url('./label.css') layer(ds.typography);
+@import url('./paragraph.css') layer(ds.typography);
+@import url('./validation-message.css') layer(ds.typography);
 @import url('./button.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./accordion.css') layer(ds.components);
+@import url('./field.css') layer(ds.components);
 @import url('./switch.css') layer(ds.components);
 @import url('./checkbox.css') layer(ds.components);
 @import url('./radio.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
-@import url('./select.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
-@import url('./textarea.css') layer(ds.components);
+@import url('./input.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);
 @import url('./modal.css') layer(ds.components);
 @import url('./list.css') layer(ds.components);

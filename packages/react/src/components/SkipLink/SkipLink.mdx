@@ -1,5 +1,6 @@
 import { Meta, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/skiplink.css?inline';
 import * as SkipLinkStories from './SkipLink.stories';
 
 <Meta of={SkipLinkStories} />
@@ -55,3 +56,7 @@ Snarvei-komponenten er vanligvis ikke synlig før et trykk på tastaturet aktive
 Vær oppmerksom på at noen automatiske tester for tilgjengelighet kan varsle om at snarveien mangler i et landemerke. Dette varslet gjelder ikke for snarveier, så det kan du overse.
 
 Pass på at snarveier oppfører seg forutsigbart. En snarvei med teksten «Gå direkte til innholdet» skal flytte brukerens fokus til starten på innholdet, ikke til starten av første avsnitt under overskriften.
+
+## CSS Variabler
+
+<CssVariables css={css} />

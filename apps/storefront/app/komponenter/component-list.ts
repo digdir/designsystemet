@@ -9,11 +9,11 @@ export const data = [
     image: 'Alert.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-alert--docs',
   },
-  // {
-  //   title: 'Avatar',
-  //   image: 'Avatar.svg',
-  //   url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-avatar--docs',
-  // },
+  {
+    title: 'Avatar',
+    image: 'Avatar.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-avatar--docs',
+  },
   {
     title: 'Badge',
     image: 'Badge.svg',
