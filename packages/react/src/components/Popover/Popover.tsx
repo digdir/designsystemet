@@ -62,6 +62,11 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
+  /**
+   * Whether to enable auto placement.
+   * @default true
+   */
+  autoPlacement?: boolean;
 
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
@@ -77,6 +82,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = 'top',
       size = 'md',
       variant = 'default',
+      autoPlacement = true,
       asChild = false,
       ...rest
     },
@@ -146,15 +152,16 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
                 );
                 return parseFloat(styles.height);
               }),
-              flip({ fallbackAxisSideDirection: 'start' }),
-              shift(),
+              ...(autoPlacement
+                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+                : []),
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
             popover.style.translate = `${x}px ${y}px`;
           });
         });
-    }, [controlledOpen, placement, id]);
+    }, [controlledOpen, placement, id, autoPlacement]);
 
     // Update context with id
     useEffect(() => {
