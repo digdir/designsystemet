@@ -1,7 +1,7 @@
 .ds-popover {
   --dsc-popover-arrow-size: var(--ds-spacing-2);
   --dsc-popover-background: var(--ds-color-neutral-background-default);
-  --dsc-popover-border-radius: min(1rem, var(--ds-border-radius-md));
+  --dsc-popover-border-radius: var(--ds-border-radius-md);
   --dsc-popover-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-popover-color: var(--ds-color-neutral-text-default);
   --dsc-popover-max-width: 300px;
