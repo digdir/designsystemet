@@ -1,7 +1,6 @@
 import {
-  FloatingArrow,
   FloatingPortal,
-  arrow,
+  type MiddlewareState,
   autoUpdate,
   flip,
   offset,
@@ -25,9 +24,6 @@ import type {
 import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
 
 import type { PortalProps } from '../../types';
-
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
 
 export type TooltipProps = {
   /**
@@ -84,11 +80,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+    const internalOpen = userOpen ?? isOpen;
 
     const Container = portal ? FloatingPortal : Fragment;
-
-    const arrowRef = useRef<SVGSVGElement>(null);
-    const internalOpen = userOpen ?? isOpen;
 
     const { refs, floatingStyles, context } = useFloating({
       open: internalOpen,
@@ -96,14 +90,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement,
       whileElementsMounted: autoUpdate,
       middleware: [
-        offset(ARROW_HEIGHT + ARROW_GAP),
+        offset((data) => {
+          // get pseudo element arrow size
+          const styles = getComputedStyle(data.elements.floating, '::before');
+          return parseFloat(styles.height);
+        }),
         flip({
           fallbackAxisSideDirection: 'start',
         }),
         shift(),
-        arrow({
-          element: arrowRef,
-        }),
+        arrowPseudoElement,
       ],
     });
 
@@ -161,12 +157,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               })}
             >
               {content}
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className='ds-tooltip__arrow'
-                height={ARROW_HEIGHT}
-              />
             </div>
           </Container>
         )}
@@ -176,3 +166,24 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 );
 
 Tooltip.displayName = 'Tooltip';
+
+const arrowPseudoElement = {
+  name: 'ArrowPseudoElement',
+  fn(data: MiddlewareState) {
+    const { elements, rects, placement } = data;
+
+    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
+    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    elements.floating.setAttribute('data-placement', placement);
+    elements.floating.style.setProperty(
+      '--ds-tooltip-arrow-x',
+      `${Math.round(arrowX)}px`,
+    );
+    elements.floating.style.setProperty(
+      '--ds-tooltip-arrow-y',
+      `${Math.round(arrowY)}px`,
+    );
+    return data;
+  },
+};
