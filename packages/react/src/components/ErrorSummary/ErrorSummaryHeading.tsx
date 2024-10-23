@@ -1,17 +1,8 @@
 import { forwardRef, useContext, useEffect } from 'react';
 import { Heading, type HeadingProps } from '../Heading';
-import { ErrorSummaryContext, type ErrorSummaryProps } from './ErrorSummary';
+import { ErrorSummaryContext } from './ErrorSummary';
 
 export type ErrorSummaryHeadingProps = HeadingProps;
-
-// TODO: Move to CSS
-// const HEADING_SIZE_MAP: {
-//   [key in NonNullable<ErrorSummaryProps['size']>]: HeadingProps['size'];
-// } = {
-//   sm: '2xs',
-//   md: 'xs',
-//   lg: 'sm',
-// } as const;
 
 export const ErrorSummaryHeading = forwardRef<
   HTMLHeadingElement,

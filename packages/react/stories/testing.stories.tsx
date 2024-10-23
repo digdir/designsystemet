@@ -339,9 +339,7 @@ export const Sizes: StoryFn = () => {
         </Button>
       </div>
       <Card data-size='xs'>
-        <Heading size='2xs' level={2}>
-          Card Neutral
-        </Heading>
+        <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -349,9 +347,7 @@ export const Sizes: StoryFn = () => {
         </Paragraph>
       </Card>
       <Card data-size='sm'>
-        <Heading size='xs' level={2}>
-          Card Neutral
-        </Heading>
+        <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -359,9 +355,7 @@ export const Sizes: StoryFn = () => {
         </Paragraph>
       </Card>
       <Card data-size='md'>
-        <Heading size='sm' level={2}>
-          Card Neutral
-        </Heading>
+        <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -369,9 +363,7 @@ export const Sizes: StoryFn = () => {
         </Paragraph>
       </Card>
       <Card data-size='xl'>
-        <Heading size='lg' level={2}>
-          Card Neutral
-        </Heading>
+        <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -713,7 +705,7 @@ export const Sizes: StoryFn = () => {
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
-            <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Modal header
             </Heading>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -727,7 +719,7 @@ export const Sizes: StoryFn = () => {
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
-            <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Modal header
             </Heading>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -741,7 +733,7 @@ export const Sizes: StoryFn = () => {
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
-            <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Modal header
             </Heading>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -755,7 +747,7 @@ export const Sizes: StoryFn = () => {
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
-            <Heading size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Modal header
             </Heading>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
