@@ -145,7 +145,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
                   '::before',
                 );
                 return parseFloat(styles.height);
-              }), // TODO: Should this be configurable?
+              }),
               flip({ fallbackAxisSideDirection: 'start' }),
               shift(),
               arrowPseudoElement,
