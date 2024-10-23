@@ -50,7 +50,39 @@
   --ds-sizing-step: 4; /* Unitless step size 4px */
   --ds-sizing-scale: var(--ds-sizing-step) / var(--ds-sizing-base);
 
-  /* Sizing */
+  /* Sizing when not supporting round() */
+  --ds-sizing-1: calc(var(--ds-sizing-scale) * 1em);
+  --ds-sizing-2: calc(var(--ds-sizing-scale) * 2em);
+  --ds-sizing-3: calc(var(--ds-sizing-scale) * 3em);
+  --ds-sizing-4: calc(var(--ds-sizing-scale) * 4em);
+  --ds-sizing-5: calc(var(--ds-sizing-scale) * 5em);
+  --ds-sizing-6: calc(var(--ds-sizing-scale) * 6em);
+  --ds-sizing-7: calc(var(--ds-sizing-scale) * 7em);
+  --ds-sizing-8: calc(var(--ds-sizing-scale) * 8em);
+  --ds-sizing-9: calc(var(--ds-sizing-scale) * 9em);
+  --ds-sizing-10: calc(var(--ds-sizing-scale) * 10em);
+  --ds-sizing-11: calc(var(--ds-sizing-scale) * 11em);
+  --ds-sizing-12: calc(var(--ds-sizing-scale) * 12em);
+  --ds-sizing-13: calc(var(--ds-sizing-scale) * 13em);
+  --ds-sizing-14: calc(var(--ds-sizing-scale) * 14em);
+  --ds-sizing-15: calc(var(--ds-sizing-scale) * 15em);
+  --ds-sizing-16: calc(var(--ds-sizing-scale) * 16em);
+  --ds-sizing-17: calc(var(--ds-sizing-scale) * 17em);
+  --ds-sizing-18: calc(var(--ds-sizing-scale) * 18em);
+  --ds-sizing-19: calc(var(--ds-sizing-scale) * 19em);
+  --ds-sizing-20: calc(var(--ds-sizing-scale) * 20em);
+  --ds-sizing-21: calc(var(--ds-sizing-scale) * 21em);
+  --ds-sizing-22: calc(var(--ds-sizing-scale) * 22em);
+  --ds-sizing-23: calc(var(--ds-sizing-scale) * 23em);
+  --ds-sizing-24: calc(var(--ds-sizing-scale) * 24em);
+  --ds-sizing-25: calc(var(--ds-sizing-scale) * 25em);
+  --ds-sizing-26: calc(var(--ds-sizing-scale) * 26em);
+  --ds-sizing-27: calc(var(--ds-sizing-scale) * 27em);
+  --ds-sizing-28: calc(var(--ds-sizing-scale) * 28em);
+  --ds-sizing-29: calc(var(--ds-sizing-scale) * 29em);
+  --ds-sizing-30: calc(var(--ds-sizing-scale) * 30em);
+
+  /* Sizing when supporting round() */
   --ds-sizing-1: round(down, calc(var(--ds-sizing-scale) * 1em), 0.0625rem);
   --ds-sizing-2: round(down, calc(var(--ds-sizing-scale) * 2em), 0.0625rem);
   --ds-sizing-3: round(down, calc(var(--ds-sizing-scale) * 3em), 0.0625rem);
