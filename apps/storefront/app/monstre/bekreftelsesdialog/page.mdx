@@ -1,0 +1,58 @@
+import { Card, CardContent, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+import { Image } from '@components';
+import { MenuPageLayout } from '@layouts';
+import { Contributors } from '@blog';
+
+export const metadata = {
+  title: 'Bekreftelsesdialog',
+  description: '...'
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Bekreftelsesdialog',
+      date: '23. oktober 2024',
+    }}
+  />
+);
+
+## Innledning
+Bekreftelsesdialoger brukes når en handling har alvorlige eller irreversible konsekvenser. 
+
+
+#### Popover
+En `popover` er et ui-element som legger seg over grensesnittet. I motsetning til `modal` så vil ikke grensesnittet bak bli tonet ned, og brukeren vil ikke bli "låst" inne i popover komponenten. Disse kan være nyttige å bruke om du vil gi en beskjed basert på en handling. For eksempel at du vil informere brukeren om at det elementet de ønsker å slette ikke kan gjenopprettes om de velger å slette det. Disse burde kun brukes om det er lite informasjon som skal gies. Om du har bruk for mer plass kan `modal` være et bedre alternativ.
+
+Eksempelet under viser en popover der du må bekrefte at du ønsker å slette en rad i en tabell.
+<Image dataUnstyled
+  src='/img/popover-systemvarsler.png'
+  alt='Skjermbilde av tabell med medlemsliste. Popover viser en knapp der du må bekrefte at du ønsker å fjerne et medlem.'
+/>
+
+
+<Card color='brand3' data-unstyled>
+  *Retningslinjene er under arbeid fra 5. juni 2024 i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatt, Brreg, Politiet, KS DIF og Oslo kommune. Alle er velkommen til å påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1801) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ).
+</Card>
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund (Brreg)',
+    'Astrid Eline Øksnes (Politiet)',
+    'Bernard Tommerbakke (Oslo Kommune)',
+    'Vegard Haugstvedt (NAV)',
+    'Eirik Backer (Mattilsynet)',
+    'Lasse Febakke Straum (Digdir)',
+    'Frida Almqvist (Entur)',
+    'Marianne Røsvik (Digdir)',
+    'Camilla Orten (SKD)',
+    'Gørild Døhl (Digdir)',
+    'Viveca Krishnamoorthi (Digdir)',
+    
+  ]}
+/>
+<br />
+<br />
+<br />

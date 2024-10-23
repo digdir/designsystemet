@@ -121,19 +121,23 @@ Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne, o
 
 Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
-Modal passer når brukeren er i ferd med å utføre en handling som ikke kan angres, som å slette viktige data. Da kan vi be om bekreftelse og sikre at brukeren forstår konsekvensene. I noen sammenhenger kan det være bedre å bruke en `popover`, spesielt når alvorlighetsgraden av handlingen er lavere, eller når det er flere elementer som kan slettes. For eksempel, hvis en bruker har mulighet til å slette flere rader i en tabell, kan det bli overveldende å vise en modal for hver rad. I slike tilfeller kan en [`popover`](#popover) gi en mer strømlinjeformet og brukervennlig opplevelse ved å gi tilbakemelding uten å blokkere brukerens arbeidsflyt.
+Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når de er i ferd med å utføre en handling de ikke kan angre, som å slette data. Da kan vi bruke modal til å sikre at de forstår konsekvensene, og be dem bekrefte handlingen.  
 
-**Modal passer i tillegg når:**
-- Det er viktig at brukeren for med seg informasjonen.
-- Det oppstår feil som hindrer videre bruk av tjenesten, f.eks tap av data eller nedetid.
-- Systemet krever en umiddelbar beslutning før brukeren kan fortsette, som for eksempel valg av innstillinger som påvirker videre arbeid.
+I noen sammenhenger kan det være bedre å bruke en `popover`, for eksempel hvis handlingen er mindre alvorlig, eller når det er flere elementer som kan bli slettet.  
+
+Et eksempel kan være når brukerne har mulighet til å slette flere rader i en tabell. Hvis vi viser en modal for hver rad, kan det virke overveldende. Her kan [`popover`](#popover) gi en bedre opplevelse, fordi den gir tilbakemelding, uten å stoppe arbeidsflyten til brukerne. 
+
+**Vi kan også bruke modal når**
+- det uansett er viktig at brukerne får med seg informasjonen 
+- det oppstår feil som gjør at brukerne ikke kan fortsette å bruke tjenesten, for eksempel når systemet får nedetid eller når data ikke blir lagret 
+- systemet krever at brukerne må bestemme noe før de kan fortsette, for eksempel hvis de må velge innstillinger som påvirker arbeidet deres videre
 
 
 <br/>
 
-**Modal passer ikke til:**
-- Hyppige meldinger, det kan skape frustrasjon.
-- Ubetydelige varsler som kan vente til brukeren selv vil håndtere det.
+**Når passer det ikke med modal?**
+- Til meldinger som kommer for ofte, det kan skape frustrasjon.
+- Varsler som ikke er så viktige, typisk sånne som kan vente til brukerne selv vil ta tak i det. 
 
 
 <br/>
@@ -141,64 +145,65 @@ Modal passer når brukeren er i ferd med å utføre en handling som ikke kan ang
   src='/img/modal-systemvarsler-1.png'
   alt='Skjermbilde av modal.'
   boxShadow={false}
-  caption='Global varsling som krever handling: Eksempelet viser en modal der brukeren må ta et aktivt valg for å fortsette å være innlogget. Når varselet krever en handling fra brukeren for å forsvinne, kan vi være mer "påtrengende".'
+  caption='Eksempel på et globalt varsel som krever handling. En modal der brukerne må ta et aktivt valg for å fortsette å være innlogget. Brukes når vi vil at brukerne skal svare for å få varselet til å forsvinne.'
 />
 
 <Image dataUnstyled
   src='/img/modal-systemvarsler-2.png'
   alt='Skjermbilde av modal.'
-  caption='Eksempelet viser en modal der brukeren må ta et aktivt valg om å lagre utkastet eller ikke.'
+  caption='Dette eksempelet viser en modal der brukerne må ta et aktivt valg om å lagre utkastet eller ikke.'
 />
 
 
-#### Alert
-`Alert` er en komponent som er laget for å gi en beskjed til brukeren og er ofte delt inn i ulike varianter basert på hvor kritisk beskjeden er. De kan vises i en global kontekst hvor de legges øverst i grensesnittet, de kan legges lokalt nærmere der feilen er. De kan også være dynamisk og dukke opp basert på en handling eller feil som oppstår underveis.
+#### Når bruker vi alert?
+`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nærmere der feilen er (lokal kontekst).  
 
-Eksempelet under viser en global `alert` som fyller hele bredden i toppen av siden. Denne type varsling kan brukes for problemer som gjelder hele tjenesten. Gul `alert` (warning) brukes i tilfeller der brukeren fortsatt kan finne informasjon og navigere på nettsidene, men noen av delene er utilgjengelige.
+Alert kan også være dynamisk og vises nå brukerne gjør en handling, eller for feil som oppstår underveis. 
+
+I eksempelet under ser vi en global `alert` som fyller hele bredden øverst på siden. Denne typen varsel anbefales for problemer som gjelder hele tjenesten. Vi bruker gul `alert` (warning) når brukerne fortsatt kan finne informasjon og navigere på nettsidene, men der noen av delene på siden er utilgjengelige. 
 
 <Image dataUnstyled
   src='/img/alert-global.png'
   alt='Skjermbilde av glbal alert.'
 />
 
-Eksempelet under viser en lokal `alert` som er plassert i nærheten av der feilen oppstod. Rød `alert` (danger) brukes i tilfeller der brukeren ikke kan fortsette arbeidet så lenge feilen vedvarer.
+Det neste eksempelet viser en lokal `alert` som er plassert i nærheten av der feilen oppsto. Vi bruker en rød `alert` (danger) i tilfeller der brukerne ikke kan fortsette arbeidet. Den står så lenge feilen finnes. 
 
 <Image dataUnstyled
   src='/img/alert-lokal.png'
   alt='Skjermbilde av lokal alert.'
 />
 
-
-#### Popover
-En `popover` er et ui-element som legger seg over grensesnittet. I motsetning til `modal` så vil ikke grensesnittet bak bli tonet ned, og brukeren vil ikke bli "låst" inne i popover komponenten. Disse kan være nyttige å bruke om du vil gi en beskjed basert på en handling. For eksempel at du vil informere brukeren om at det elementet de ønsker å slette ikke kan gjenopprettes om de velger å slette det. Disse burde kun brukes om det er lite informasjon som skal gies. Om du har bruk for mer plass kan `modal` være et bedre alternativ.
-
-Eksempelet under viser en popover der du må bekrefte at du ønsker å slette en rad i en tabell.
-<Image dataUnstyled
-  src='/img/popover-systemvarsler.png'
-  alt='Skjermbilde av tabell med medlemsliste. Popover viser en knapp der du må bekrefte at du ønsker å fjerne et medlem.'
-/>
-
-
 ## Kode
 
-Når det kommer til korrekt koding for systemvarsler, er det flere viktige faktorer å vurdere for å sikre at alle brukere, inkludert de som benytter skjermlesere, får riktig informasjon i rett tid.
+Det er flere viktige ting å huske på for å kode systemvarsler riktig. Gjør vi det riktig, sikrer vi at alle brukere får riktig informasjon, til rett tid. 
 
 ### Skjermlesere og kritiske globale varsler
-For skjermleserbrukere er det avgjørende at kritiske globale varsler blir fanget opp, selv når brukeren hopper direkte til hovedinnholdet på siden. En utfordring med varsler som vises øverst på siden er at skjermlesere ofte hopper over dem når brukeren navigerer til hovedinnholdet. For å sikre at slike varsler blir fanget opp, kan det være lurt å plassere dem på en måte som gjør at de alltid blir lest opp ved sidenedlasting, for eksempel ved å bruke ARIA-attributter som sikrer at skjermleseren gjenkjenner innholdet, eller ved å gi varslet en tydelig overskrift (med passende heading-nivå) som skjermleseren kan navigere til.
+Brukere med skjermleser må få kritiske globale varsler, selv når de hopper direkte til hovedinnholdet på siden. Skjermlesere hopper ofte over varsler som vises når brukerne navigerer til hovedinnholdet.  
+
+Plasser varselet på en slik måte at det alltid blir lest opp når siden lastes inn. Det kan du gjøre ved å ha aria-attributter, som sikrer at skjermleseren gjenkjenner innholdet. Du kan også velge å gi varselet en tydelig overskrift (med passende heading-nivå), som skjermleseren kan gå til. 
 
 ### Statiske vs. dynamiske varsler
-Det er viktig å skille mellom varsler som finnes ved sidenedlasting (statiske) og de som dukker opp dynamisk. Statiske varsler trenger vanligvis ikke å ha `aria-live`, da de er synlige fra starten av og brukere kan navigere til dem. Statiske varsler må være tydelig plassert i sidens innholdshierarki. For eksempel, hvis det er en kritisk melding som skal leses tidlig, bør den plasseres slik at skjermlesere møter den i en naturlig rekkefølge når brukeren navigerer gjennom siden.
+Varsler som vises når du siden blir lastet inn, kalles statiske varsler, og varsler som dukker opp underveis er dynamiske varsler. 
 
-Dynamiske varsler alltid bruke `aria-live`, ettersom de dukker opp uventet. Det er også viktig å vurdere hvor varslet legges i HTML-strukturen. Ved å laste det dynamisk inn i DOM-en, vil både skjermlesere og visuelle brukere raskt oppdage endringen, noe som kan sikre at varsler ikke blir oversett.
+Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra starten av, og brukerne kan gå til dem. Statiske varsler må ha en tydelig plass i sidens innholdshierarki. Hvis det for eksempel er en kritisk melding som skal leses opp tidlig, plasserer vi den slik at skjermlesere møter meldingen i den naturlige rekkefølgen brukerne beveger seg rundt på siden. 
 
-#### Bruk av `assertive` vs. `polite` nivå
-Valget mellom `aria-live="assertive"` og `aria-live="polite"` er avhengig av alvorlighetsgraden. Kritiske feil som krever umiddelbar handling skal bruke `assertive` for å sikre at meldingen blir lest opp med en gang. `Polite` kan brukes for mindre presserende varsler, som ikke krever øyeblikkelig oppmerksomhet, men likevel er viktige for brukeren å få med seg.
+Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Det er også viktig å vurdere hvor vi legger varselet i HTML-strukturen. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
+
+#### Hvordan skal vi bruke nivåene `assertive` og `polite`
+Om vi skal sette `aria-live="assertive"` eller `aria-live="polite"` i koden, kommer an på hvor alvorlig meldingen er. Kritiske feil som krever at brukerne gjør noe med en gang, skal kodes med `assertive`. Da blir meldingen lest opp med en gang.
+
+Vi kan bruke `polite` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter. 
 
 #### Alternative løsninger
-En annen mulig løsning for kritiske varsler, kan være å alltid laste dem dynamisk inn i DOM. Da vil aria-live fungere opp mot skjermleserbrukere, samt at seende brukere kanskje har høyree sjanse for å registrere den da de ser at det skjer en endring. En mulig annen løsning kan være at varselet lastes inn som del av kildekoden, men deretter får tilført `aria-live="assertive"` dynamisk inn i DOM. Dette vil trigge opplesing av varselet av skjermleseren. 
+Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. En annen mulig løsning kan være at varselet lastes inn som del av kildekoden, men deretter får tilført `aria-live="assertive"` dynamisk inn i DOM. Dette vil trigge opplesing av varselet for skjermleseren. 
 
 ### Bruk av fokus
-Når et varsel dukker opp dynamisk, er det viktig å flytte fokus til aktuelle `modal`, `alert` eller `popover` så snart den vises. Dette kan gjøres ved å bruke metoden focus() i JavaScript, som gjør det mulig å dirigere fokus til det første interaktive elementet i modalen, som en knapp for å lukke den. Ved å implementere dette, sikrer vi at brukeren ikke bare ser varselet, men også er i stand til å handle på det umiddelbart, noe som forbedrer den totale brukeropplevelsen. Det er også viktig å sørge for at når brukeren lukker varselet, gjenopprettes fokus til et logisk sted i applikasjonen, slik at navigasjonen forblir intuitiv og sammenhengende.
+Når vi har dynamiske varsler, er det viktig at den komponenten vi har valgt til å vise det (`modal` eller `alert`), får fokuset.  
+
+Vi setter fokus ved å bruke metoden focus() i JavaScript. Da bestemmer vi at fokuset skal gå til det første interaktive elementet i modalen. Slik sikrer vi at brukerne ser varselet, og kan handle umiddelbart, for eksempel lukke det.  
+
+Det er også viktig å passe på at når brukerne lukker varselet, så går fokus til et logisk sted på siden/i tjenesten. Slik passer vi på at brukerne fortsatt opplever at de får riktig sammenheng og at det er lett å navigere. 
 
 
 <br/>
