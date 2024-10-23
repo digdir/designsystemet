@@ -1,5 +1,4 @@
 import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
-import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
@@ -16,7 +15,7 @@ import type {
   ThemeDimension,
   ThemePermutation,
 } from './types.js';
-import { getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
+import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
@@ -260,7 +259,7 @@ export const configs = {
 
 export const getConfigsForThemeDimensions = (
   getConfig: GetStyleDictionaryConfig,
-  themes: ThemeObject[],
+  themes: ProcessedThemeObject[],
   dimensions: ThemeDimension[],
   options: GetSdConfigOptions,
 ): SDConfigForThemePermutation[] => {

@@ -1,7 +1,7 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
 import chalk from 'chalk';
-import { camelCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import * as R from 'ramda';
 import { buildOptions } from '../../build';
 import type { ThemeDimension, ThemePermutation } from '../types';
@@ -17,7 +17,7 @@ import type { ThemeDimension, ThemePermutation } from '../types';
  *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
  * @returns the relevant theme permutations
  */
-export const getMultidimensionalThemes = (themes: ThemeObject[], dimensions: ThemeDimension[]) => {
+export const getMultidimensionalThemes = (themes: ProcessedThemeObject[], dimensions: ThemeDimension[]) => {
   const verboseLogging = buildOptions?.verbose;
   const grouped$themes = groupThemes(themes);
   const permutations = permutateThemes(grouped$themes);
@@ -41,8 +41,12 @@ export type PermutatedTheme = {
 };
 
 const processed: unique symbol = Symbol('Type brand for ProcessedThemeObject');
-type ProcessedThemeObject = ThemeObject & { [processed]: true };
-function isProcessed(theme: ThemeObject | ProcessedThemeObject): theme is ProcessedThemeObject {
+/**
+ * A Tokens Studio {@link ThemeObject} which has been processed for easier use in code
+ */
+export type ProcessedThemeObject = ThemeObject & { [processed]: true };
+
+function isProcessed(theme: ThemeObject): theme is ProcessedThemeObject {
   return Boolean((theme as ProcessedThemeObject)[processed]);
 }
 
@@ -51,15 +55,15 @@ function isProcessed(theme: ThemeObject | ProcessedThemeObject): theme is Proces
  * @param theme A theme object from $themes.json
  * @returns Processed theme object
  */
-function processThemeObject(theme: ThemeObject | ProcessedThemeObject): ProcessedThemeObject {
+export function processThemeObject(theme: ThemeObject | ProcessedThemeObject): ProcessedThemeObject {
   if (isProcessed(theme)) {
     return theme;
   }
   const result: ProcessedThemeObject = { ...theme, [processed]: true };
   if (result.group) {
-    result.group = camelCase(result.group);
+    result.group = kebabCase(result.group);
   }
-  result.name = camelCase(result.name);
+  result.name = kebabCase(result.name);
   return result;
 }
 

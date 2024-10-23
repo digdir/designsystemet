@@ -9,6 +9,7 @@ import StyleDictionary from 'style-dictionary';
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import type { BuildConfig, ThemePermutation } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
+import { processThemeObject } from './build/utils/getMultidimensionalThemes.js';
 
 type Options = {
   /** Design tokens path */
@@ -64,8 +65,10 @@ export async function buildTokens(options: Options): Promise<void> {
    */
   const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
-  // We only use the 'default' theme for the 'size' group
-  const relevant$themes = $themes.filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
+  const relevant$themes = $themes
+    .map(processThemeObject)
+    // We only use the 'default' theme for the 'size' group
+    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
 
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({
