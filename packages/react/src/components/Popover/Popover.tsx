@@ -14,9 +14,6 @@ import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import { Context } from './PopoverContext';
 
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
-
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
 declare global {
@@ -141,7 +138,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             placement,
             strategy: 'fixed',
             middleware: [
-              offset(ARROW_HEIGHT + ARROW_GAP), // TODO: Should this be configurable?
+              offset((data) => {
+                // get pseudo element arrow size
+                const styles = getComputedStyle(
+                  data.elements.floating,
+                  '::before',
+                );
+                return parseFloat(styles.height);
+              }),
               flip({ fallbackAxisSideDirection: 'start' }),
               shift(),
               arrowPseudoElement,
@@ -176,12 +180,27 @@ const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
-    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    let arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
+    let arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+
+    if (rects.reference.width > rects.floating.width) {
+      arrowX = rects.floating.width / 2;
+    }
+
+    if (rects.reference.height > rects.floating.height) {
+      arrowY = rects.floating.height / 2;
+    }
 
     elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', `${arrowX}px`);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', `${arrowY}px`);
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-x',
+      `${Math.round(arrowX)}px`,
+    );
+    elements.floating.style.setProperty(
+      '--ds-popover-arrow-y',
+      `${Math.round(arrowY)}px`,
+    );
     return data;
   },
 };
