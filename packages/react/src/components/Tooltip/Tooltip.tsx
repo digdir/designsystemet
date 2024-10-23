@@ -25,9 +25,6 @@ import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
 
 import type { PortalProps } from '../../types/Portal';
 
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
-
 export type TooltipProps = {
   /**
    * The element that triggers the tooltip.
