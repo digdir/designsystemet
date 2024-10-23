@@ -14,9 +14,6 @@ import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import { Context } from './PopoverContext';
 
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
-
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
 declare global {
@@ -141,7 +138,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             placement,
             strategy: 'fixed',
             middleware: [
-              offset(ARROW_HEIGHT + ARROW_GAP), // TODO: Should this be configurable?
+              offset((data) => {
+                // get pseudo element arrow size
+                const styles = getComputedStyle(
+                  data.elements.floating,
+                  '::before',
+                );
+                return parseFloat(styles.height);
+              }),
               flip({ fallbackAxisSideDirection: 'start' }),
               shift(),
               arrowPseudoElement,
