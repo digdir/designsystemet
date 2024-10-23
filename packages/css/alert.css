@@ -1,7 +1,7 @@
 .ds-alert {
   --dsc-alert-background: var(--ds-color-info-surface-default);
-  --dsc-alert-border-color: var(--ds-color-info-border-strong);
-  --dsc-alert-border-radius: min(1rem, var(--ds-border-radius-md));
+  --dsc-alert-border-color: var(--ds-color-info-border-default);
+  --dsc-alert-border-radius: var(--ds-border-radius-md);
   --dsc-alert-color: var(--ds-color-neutral-text-default);
   --dsc-alert-gap: var(--ds-spacing-2);
   --dsc-alert-icon-color: var(--ds-color-info-text-subtle);
@@ -16,6 +16,7 @@
   color: var(--dsc-alert-color);
   padding-block: var(--dsc-alert-padding);
   padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
+  position: relative;
 
   @composes ds-body-text--md from './base/base.css';
 
