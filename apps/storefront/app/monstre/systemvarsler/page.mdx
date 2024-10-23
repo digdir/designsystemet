@@ -34,30 +34,30 @@ Måten vi kommuniserer systemvarslene på avhenger også av svaret på disse sp�
 - Hvilken kontekst kommer varselet i? Tilhører det en bestemt del av tjenesten eller dekker det hele systemet? 
 - Skal varselet vises for en planlagt hendelse, eller er det for en plutselig hendelse? 
 
+Vi skal nå se nærmere på språket vi bruker i varslene, og når vi bør bruke ulike typer varslinger. Til slutt tar vi for oss implementeringen i kode, med fokus på tilgjengelighet og hvordan vi bruker ARIA-attributter for å sikre at varslene fungerer optimalt for alle brukere, inkludert de som bruker skjermlesere.
+
 ## Språk
 
 Et godt systemvarsel skal være informativt, klart og brukervennlig.
 - **Vær kort og presis** \
-Bruk klare og enkle setninger. Unngå unødvendig teknisk sjargong, men sikre at brukeren har nok informasjon til å kunne kommunisere feilen til kundestøtte. Varselet bør derfor inneholde relevant kontekst, som for eksempel hvilken tjeneste eller funksjon som er berørt, eller i noen tilfeller en tydelige feilkode eller referansenummer. Dette kan gjøre dialogen med kundestøtte mer effektiv og redusere frustrasjon.
+Bruk klare og enkle setninger. Unngå byråkratisk eller teknisk sjargong. Pass på at brukerne har informasjon til å kunne fortelle om feilen til kundestøtte. Det kan for eksempel være hvor feilen oppsto, om det er en bestemt funksjon som feiler eller om det er en feilkode eller et referansenummer.  
 - **Bruk et vennlig og profesjonelt språk** \
-Hold tonen positiv og hjelpsom. Humor bør brukes varsomt, da det ikke alltid er passende. Innbyggere som bruker tjenesten kan befinne seg i krevende livssituasjoner, og da kan en humoristisk tone virke upassende eller respektløs.
+Skriv for å hjelpe, og hold en positiv tone i varselet. Vær forsiktig med humor. Tenkt over om du kan ha brukere som er i krevende situasjoner, eller som har kognitive vansker som gjør at de ikke så lett forstår humor. 
 - **Prioriter informasjonen** \
-Sett den viktigste informasjonen først. Bruk overskrifter og punktlister for å gjøre varselet lett å skanne.
-- **Gi klare instruksjoner**  \
-Hvis brukeren må gjøre noe, sørg for at instruksjonene er enkle å følge. 
+Skriv det viktigste først. Hvis varselet er langt, kan du bruke mellomoverskrifter og punktlister for å gjøre det lettere å skanne informasjonen. 
+- **Gi tydelig veiledning**  \
+Hvis brukerne må gjøre noe, skriv instruksjoner som er enkle å følge. 
 - **Vær tydelig på at det ikke er brukerens feil**   \
-Tydeliggjør at feilen ligger hos oss. Hvis mulig, gi brukeren en annen vei for å løse oppgaven.
+Fortell tydelig at feilen ligger hos oss/systemet. Hvis det finnes en måte brukerne kan komme videre eller omgå feilen på, fortell det også. 
 - **Test varslene**  \
-Test varslene med ekte brukere for å sikre at de er forståelige og effektive.
+Test varslene på ekte brukere for å sikre at de er lette å forstå. 
 
 ## Design og opplevelse
 
 ### Ulike alvorlighetsgrader for systemvarsler 
 Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
 
-I tillegg er det avgjørende at systemvarsler aldri overskygger kritiske varsler knyttet til liv og helse, som også skal formidles til innbyggere. Slike varsler må alltid ha prioritet over tekniske systemvarsler, uansett alvorlighetsgrad. Dette sikrer at informasjon av livsviktig karakter når fram til innbyggerne uten at den blir forstyrret eller nedtonet av mindre kritiske meldinger om systemfeil eller vedlikehold. 
-
-Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
+I tillegg er det avgjørende at systemvarsler aldri overskygger kritiske varsler knyttet til liv og helse, som også skal formidles til innbyggere. Slike varsler må alltid ha prioritet over tekniske systemvarsler, uansett alvorlighetsgrad. Dette sikrer at informasjon av livsviktig karakter når fram til innbyggerne uten at den blir forstyrret eller nedtonet av mindre kritiske meldinger om systemfeil eller vedlikehold. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
 
 
 #### A) Kritiske systemfeil
