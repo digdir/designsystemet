@@ -8,6 +8,8 @@ import { Field } from '../Field';
 import { Input } from '../Input';
 
 export type RadioProps = {
+  /** Optional aria-label */
+  'aria-label'?: string;
   /** Radio label */
   label?: ReactNode;
   /** Description for field */
@@ -21,7 +23,11 @@ export type RadioProps = {
    * @default md
    */
   size?: 'sm' | 'md' | 'lg';
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+  (
+    | { 'aria-label': string; label?: never }
+    | { 'aria-label'?: never; label: ReactNode }
+  );
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   { children, label, description, validation, ...rest },

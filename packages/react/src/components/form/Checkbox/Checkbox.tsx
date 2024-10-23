@@ -7,6 +7,8 @@ import { Field } from '../Field';
 import { Input } from '../Input';
 
 export type CheckboxProps = {
+  /** Optional aria-label */
+  'aria-label'?: string;
   /** Checkbox label */
   label?: ReactNode;
   /** Description for field */
@@ -24,7 +26,11 @@ export type CheckboxProps = {
    * @default false
    */
   indeterminate?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+  (
+    | { 'aria-label': string; label?: never }
+    | { 'aria-label'?: never; label: ReactNode }
+  );
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
