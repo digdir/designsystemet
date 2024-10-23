@@ -80,7 +80,7 @@
 
   /* TODO: Sizes */
   &[data-size='xs'] {
-    @composes ds-body-text--xs from './base/base.css';
+    font-size: var(--ds-body-xs-font-size);
   }
 
   &[data-size='sm'] {
