@@ -60,8 +60,12 @@
       cursor: pointer;
     }
 
-    &:has(:focus-visible) {
+    &:has(input:focus-visible) {
       @composes ds-focus--visible from './base/base.css';
+    }
+
+    &:has(input:only-child) {
+      gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
     }
   }
 }
