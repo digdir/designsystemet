@@ -1,7 +1,7 @@
 .ds-avatar {
   --dsc-avatar-background: var(--ds-color-accent-base-default);
   --dsc-avatar-color: var(--ds-color-accent-contrast-default);
-  --dsc-avatar-size: var(--ds-sizing-8);
+  --dsc-avatar-size: var(--ds-sizing-12);
   --dsc-avatar-padding: var(--ds-spacing-2);
   --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
@@ -12,6 +12,7 @@
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   display: inline-flex;
+  font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
   justify-content: center;
   overflow: hidden;
@@ -75,5 +76,22 @@
   &[data-color='brand3'] {
     --dsc-avatar-background: var(--ds-color-brand3-base-default);
     --dsc-avatar-color: var(--ds-color-brand3-contrast-default);
+  }
+
+  /* TODO: Sizes */
+  &[data-size='xs'] {
+    @composes ds-body-text--xs from './base/base.css';
+  }
+
+  &[data-size='sm'] {
+    @composes ds-heading-text--2xs from './base/base.css';
+  }
+
+  &[data-size='md'] {
+    @composes ds-heading-text--sm from './base/base.css';
+  }
+
+  &[data-size='lg'] {
+    @composes ds-heading-text--md from './base/base.css';
   }
 }
