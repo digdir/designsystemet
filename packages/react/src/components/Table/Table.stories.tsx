@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { ChangeEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Checkbox } from '../form/Checkbox';
 import { Textfield } from '../form/Textfield';
@@ -185,24 +185,24 @@ type CheckedItems = {
 };
 
 export const WithFormElements: Story = (args) => {
+  const headerCheck = useRef<HTMLInputElement>(null);
   const rows = Array.from({ length: 3 }, (_, i) => i + 1);
-  const [headerChecked, setHeaderChecked] = useState(false);
   const [checkedItems, setCheckedItems] = useState<CheckedItems>({
     1: false,
     2: true,
     3: false,
   });
 
-  const interderminate =
-    Boolean(Object.values(checkedItems).find((item) => item)) && !headerChecked;
-
   useEffect(() => {
-    const allChecked = Object.values(checkedItems).every((item) => item);
-    setHeaderChecked(allChecked);
+    if (!headerCheck.current) return;
+    const indeterminate = Object.values(checkedItems).some((item) => item);
+    const all = Object.values(checkedItems).every((item) => item);
+
+    headerCheck.current.indeterminate = !all && indeterminate;
+    headerCheck.current.checked = all;
   }, [checkedItems]);
 
   const handleHeaderCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setHeaderChecked(event.target.checked);
     setCheckedItems(
       rows.reduce(
         (acc: CheckedItems, row) =>
@@ -224,16 +224,13 @@ export const WithFormElements: Story = (args) => {
       <TableHead>
         <TableRow>
           <TableHeaderCell>
-            <Label style={{ display: 'flex', gap: '8px' }}>
-              <Checkbox
-                checked={headerChecked}
-                onChange={handleHeaderCheckboxChange}
-                indeterminate={interderminate}
-                value='all'
-                size='sm'
-              />
-              Selection
-            </Label>
+            <Checkbox
+              aria-label='Select all'
+              onChange={handleHeaderCheckboxChange}
+              ref={headerCheck}
+              value='all'
+              size='sm'
+            />
           </TableHeaderCell>
           <TableHeaderCell>Header 1</TableHeaderCell>
           <TableHeaderCell>Header 2</TableHeaderCell>

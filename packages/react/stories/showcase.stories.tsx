@@ -56,20 +56,14 @@ export const Showcase: StoryFn = () => {
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
         <Fieldset legend='Handleliste' size='sm'>
-          <Checkbox value='epost'>En kilo poteter</Checkbox>
-          <Checkbox value='telefon'>To liter Farris</Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Blomkål
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Pizza
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Tre liter lettmelk
-          </Checkbox>
+          <Checkbox label='En kilo poteter' value='epost' />
+          <Checkbox label='To liter Farris' value='telefon' />
+          <Checkbox label='Blomkål' value='sms' defaultChecked />
+          <Checkbox label='Pizza' value='sms' defaultChecked />
+          <Checkbox label='Tre liter lettmelk' value='sms' defaultChecked />
           <Divider />
-          <Checkbox value='sms'>2kg smågodt</Checkbox>
-          <Checkbox value='sms'>10 poser med Smash</Checkbox>
+          <Checkbox label='2kg smågodt' value='sms' />
+          <Checkbox label='10 poser med Smash' value='sms' />
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.user)}>
@@ -216,12 +210,10 @@ export const Showcase: StoryFn = () => {
       </div>
       <div className={cl(classes.card, classes.radio)}>
         <Fieldset error='' legend='Hvilken iskremsmak er best?' size='sm'>
-          <Radio value='vanilje'>Vanilje</Radio>
-          <Radio value='jordbær' defaultChecked>
-            Jordbær
-          </Radio>
-          <Radio value='sjokolade'>Sjokolade</Radio>
-          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
+          <Radio label='Vanile' value='vanilje' />
+          <Radio label='Jordbær' value='jordbær' defaultChecked />
+          <Radio label='Sjokolade' value='sjokolade' />
+          <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' />
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.tag)}>

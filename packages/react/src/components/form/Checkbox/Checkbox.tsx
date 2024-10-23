@@ -28,8 +28,9 @@ export type CheckboxProps = {
   indeterminate?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
   (
-    | { 'aria-label': string; label?: never }
-    | { 'aria-label'?: never; label: ReactNode }
+    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
+    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
+    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
   );
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
