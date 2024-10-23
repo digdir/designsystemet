@@ -20,15 +20,19 @@ export default ({ children }) => (
 );
 
 ## Innledning
-Systemvarsler brukes for å informere brukeren om feil i systemet eller viktige hendelser brukeren bør være oppmerksomme på. I motsetning til validering er systemvarsler ikke knyttet til brukerens inndata, men informerer om endringer i systemet eller hendelser av interesse. I [artikkelen om brukerutløste feil](/monstre/feilmeldinger) tar vi for oss valideringsfeil relatert til brukerens inndata, mens denne artikkelen fokuserer på feil og varsler i systemet, som er avgjørende for å gi brukeren innsikt i systemets tilstand.
+Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på.  
 
-Systemvarsler kan for eksempel komme i form av `alert`, `modal` eller `popover`. Måten vi kommuniserer varselet på avhenger av om varselet krever en handling fra brukerens side eller ikke. Passive varsler kan kommuniseres i form av `alert`, `toast` eller `badge`, mens varsler som krever handling bør være mer påtrengende, for eksempel gjennom `modal` eller `popover` som krever en handling fra brukeren for å forsvinne. Slike varsler ligner på valideringsfeil, men siden de ikke er utløst av brukerens egen handling, krever de et annet design.
+Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er, men gir beskjed om feil i systemet eller viktige hendelser. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/monstre/feilmeldinger). Denne artikkelen fokuserer på feil og varsler i systemet. 
 
-I tillegg avhenger måten vi kommuniserer systemvarslene på av flere faktorer som
-- typen informasjon
-- alvorlighetsgraden av informasjonen
-- konteksten - tilhører varselet en spesifikk del av tjenesten eller systemet som helhet
-- er varselet for en planlagt eller en plutselig hendelse
+Systemvarsler kan komme i ulike former, for eksempel som `alert`, `modal` eller `popover`. Hvilken form vi velger på varselet avhenger av om det krever at brukerne gjør noe eller ikke.  
+
+Hvis brukerne ikke skal gjøre noe (passivt varsel) kan vi bruke for eksempel `alert`, `toast` eller `badge`. Hvis brukerne må gjøre noe, må varselet være tydeligere og vi kan for eksempel bruke `modal` eller `popover`, der brukerne må gjøre noe for å få varselet til å forsvinne. Disse varslene ligner på valideringsfeil, men siden det ikke er brukerne som har gjort noe for å utløse feilen, så må vi ha et annet design på dem. 
+
+Måten vi kommuniserer systemvarslene på avhenger også av svaret på disse spørsmålene: 
+- Hvilken type informasjon er det? 
+- Hvor alvorlig er informasjonen i varselet? 
+- Hvilken kontekst kommer varselet i? Tilhører det en bestemt del av tjenesten eller dekker det hele systemet? 
+- Skal varselet vises for en planlagt hendelse, eller er det for en plutselig hendelse? 
 
 ## Språk
 
