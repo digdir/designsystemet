@@ -56,50 +56,51 @@ Test varslene på ekte brukere for å sikre at de er lette å forstå.
 
 ## Design og opplevelse
 
-### Ulike alvorlighetsgrader for systemvarsler 
+### Ulike alvorlighetsgrader for systemvarsler
 Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
 
-I tillegg er det avgjørende at systemvarsler aldri overskygger kritiske varsler knyttet til liv og helse, som også skal formidles til innbyggere. Slike varsler må alltid ha prioritet over tekniske systemvarsler, uansett alvorlighetsgrad. Dette sikrer at informasjon av livsviktig karakter når fram til innbyggerne uten at den blir forstyrret eller nedtonet av mindre kritiske meldinger om systemfeil eller vedlikehold. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
-
+En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
 
 #### A) Kritiske systemfeil
-Når vi har feil som påvirker hele systemet eller store deler av tjenestene burde vi informere om dette tidlig for brukeren. Om tjenesten er nede skal dette kommuniseres på en tydelig måte. Dette kan gjøres på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn det som ligger der til vanlig eller vise en `modal` som forteller brukerene om de kritiske feilene.
+Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
 
 #### B) Viktig melding om systemet
-Det er ikke alle feil som er kritiske, noen ganger er det feil som midlertidig påvirker brukeropplevelsen eller at deler av en tjeneste er nede. Er det lengre behandlingstid på alle tjenester, kan det varsles om som en global `alert` i toppen av siden. Gjelder det kun en del av tjenesten gir det mer mening å plassere det der feilen oppstod.
+Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen oppsto. 
 
-#### C) Informasjon om systemet  
-Mindre viktige systemvarsler kan også være av brukerens interesse. Dette kan inkludere informasjon om planlagt vedlikehold eller mindre informasjon, som at en ny versjon er tilgjengelig eller varsler om automatisk utlogging. Disse meldingene kan vises som en global `alert`, `modal` eller `popover`, avhengig av om det er en global eller lokal kontekst.
+#### C) Informasjon om systemet 
+Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert`, `modal` eller `popover`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
 
 
 ### Hvordan presenterer vi varselet?
-Det finnes flere ulike måter å presentere systemvarsler til brukeren. Riktig presentasjon av varsler er avgjørende for å sikre at brukeren oppfatter dem som både informative og nyttige, samtidig som de unngår å skape unødvendig forvirring eller frustrasjon. Her tar vi for oss feilsider og komponentene `modal`, `alert` og `popover`. Vi vil se nærmere på når og hvordan disse ulike tilnærmingene bør brukes. 
+Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi bør velge den presentasjonsmåten som gjør at brukerne oppfatter varselet som nyttig. Varselet må ikke skape forvirring eller frustrasjon.  
 
-#### Feilside
-En feilside brukes ofte når bruker prøver å få tilgang til en side som ikke eksisterer, eller en lenke som er feil. Men en feilside kan også brukes når det skjer tekniske feil. Fordelen med feilsider er at de ikke krangler med andre elementer for oppmerksomheten til brukeren og er derfor gode til å opplyse om at noe har gått galt.
+Vi skal se nærmere på feilsider og komponentene `modal`, `alert` og `popover`. Når og hvordan skal vi bruke dem? 
 
-**Eksempler på bruk**
-- Kritisk systemfeil, kom tilbake senere
-- 404 og andre lignende feilmeldingssider
+#### Når bruker vi feilsider?
+Vi viser ofte en feilside når brukerne prøver å laste inn en side som ikke finnes, eller de har en lenke som er feil. Vi kan også bruke feilsider til å fortelle om tekniske feil.  
+
+Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne, og de er derfor fine å bruke til å fortelle at noe har gått galt. Vi kan bruke feilsider til 
+- kritiske systemfeil, som «prøv igjen senere» 
+- sider som ikke finnes
 
 <br/>
 
-**Opplys om**
-- hva er galt og hvordan påvirker det brukeren (systemet)
-- hvor lenge forventer vi at problemet vedvarer?
-- hvor kan brukeren få hjelp
+**Fortell alltid brukerne**
+- hva som er galt og hvordan det påvirker dem og/eller systemet 
+- hvor lenge vi forventer at problemet varer 
+- hva de eventuelt kan prøve selv og hvor de kan få hjelp 
 
 
 <Image
   src='/img/Full-feilside500.png'
   alt='Skjermbilde som viser eksempel på en full feilside med 500-feil. På feilsiden informeres det om at vi opplever tekniske problemer og jobber med å løse dem. Det står også "Dette skyldes ikke noe du gjorde. Du kan prøve å vente noen minutter og laste siden på nytt eller gå tilbake til forrige side. Hvis du fortsatt har problemer, kan du kontakte oss (åpnes i ny fane)."'
   boxShadow={true}
-  caption='Full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukeren gjorde. Vi gir også brukeren noen alternativer for å komme videre.'
+  caption='Eksempelet viser en full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukerne gjorde. Vi gir også brukerne noen alternativer for å komme videre.'
 />
 
 **Når siden ikke eksisterer**
 - gi brukeren mulighet til å søke etter informasjonen
-- gi brukeren forslag til relevante sider basert på URLen
+- gi brukerne forslag til andre relevante sider som tar utgangspunkt i samme URL 
 - gi brukeren mulighet til å gå til forsiden
 
 
@@ -107,7 +108,7 @@ En feilside brukes ofte når bruker prøver å få tilgang til en side som ikke 
   src='/img/Full-feilside404.png'
   alt='Skjermbilde som viser eksempel på en full feilside med 404-feil. På feilsiden informeres det om at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Det står også "Du kan søke her etter informasjonen du leter etter" med et tilhørende søkefelt. Deretter viser vi forslag til sider som kan være aktuelle ut i fra lenken brukeren forsøkte å nå.'
   boxShadow={true}
-  caption='Full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Vi gir brukeren mulighet til å søke etter informasjonen og foreslår noen sider som kan være aktuelle basert på lenken brukeren forsøkte å nå. '
+  caption='Eksempel på en full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller at det er en feil i lenken. Vi gir brukerne mulighet til å søke etter informasjonen, og foreslår noen aktuelle sider ut fra lenken brukerne klikket på.'
 />
 
 <br/>
@@ -116,9 +117,9 @@ En feilside brukes ofte når bruker prøver å få tilgang til en side som ikke 
 
 
 
-#### Modal
+#### Når bruker vi modaler?
 
-Modalen fanger brukerens oppmerksomhet, samtidig som konteksten til nettsiden beholdes. Modal kan brukes til systemvarsler når vi skal formidle viktig informasjon som krever umiddelbar oppmerksomhet og handling fra brukeren. Modal fanger brukerens fokus, men bør brukes med omtanke for ikke å forstyrre brukerens arbeidsflyt unødvendig.
+Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
 Modal passer når brukeren er i ferd med å utføre en handling som ikke kan angres, som å slette viktige data. Da kan vi be om bekreftelse og sikre at brukeren forstår konsekvensene. I noen sammenhenger kan det være bedre å bruke en `popover`, spesielt når alvorlighetsgraden av handlingen er lavere, eller når det er flere elementer som kan slettes. For eksempel, hvis en bruker har mulighet til å slette flere rader i en tabell, kan det bli overveldende å vise en modal for hver rad. I slike tilfeller kan en [`popover`](#popover) gi en mer strømlinjeformet og brukervennlig opplevelse ved å gi tilbakemelding uten å blokkere brukerens arbeidsflyt.
 
