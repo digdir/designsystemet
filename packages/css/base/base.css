@@ -64,6 +64,7 @@
   letter-spacing: var(--ds-body-sm-letter-spacing);
 }
 
+/* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */
 body,
 [data-size='md'] {
   font-weight: var(--ds-body-md-font-weight);
