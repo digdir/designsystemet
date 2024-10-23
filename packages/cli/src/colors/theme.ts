@@ -11,7 +11,7 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   orange: '#B8581D',
   purple: '#663299',
   red: '#C01B1B',
-  yellow: '#EABF28',
+  yellow: '#D4B12F',
 };
 
 type Colors = Record<ThemeColors, CssColor>;
