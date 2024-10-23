@@ -93,7 +93,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement,
       whileElementsMounted: autoUpdate,
       middleware: [
-        offset(ARROW_HEIGHT + ARROW_GAP),
+        offset((data) => {
+          // get pseudo element arrow size
+          const styles = getComputedStyle(data.elements.floating, '::before');
+          return parseFloat(styles.height);
+        }),
         flip({
           fallbackAxisSideDirection: 'start',
         }),
