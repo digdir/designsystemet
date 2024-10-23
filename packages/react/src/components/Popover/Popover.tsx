@@ -14,9 +14,6 @@ import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import { Context } from './PopoverContext';
 
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
-
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
 declare global {
@@ -65,6 +62,11 @@ export type PopoverProps = {
    * Callback when the popover wants to close.
    */
   onClose?: () => void;
+  /**
+   * Whether to enable auto placement.
+   * @default true
+   */
+  autoPlacement?: boolean;
 
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
@@ -80,6 +82,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = 'top',
       size = 'md',
       variant = 'default',
+      autoPlacement = true,
       asChild = false,
       ...rest
     },
@@ -141,16 +144,24 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             placement,
             strategy: 'fixed',
             middleware: [
-              offset(ARROW_HEIGHT + ARROW_GAP), // TODO: Should this be configurable?
-              flip({ fallbackAxisSideDirection: 'start' }),
-              shift(),
+              offset((data) => {
+                // get pseudo element arrow size
+                const styles = getComputedStyle(
+                  data.elements.floating,
+                  '::before',
+                );
+                return parseFloat(styles.height);
+              }),
+              ...(autoPlacement
+                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+                : []),
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
             popover.style.translate = `${x}px ${y}px`;
           });
         });
-    }, [controlledOpen, placement, id]);
+    }, [controlledOpen, placement, id, autoPlacement]);
 
     // Update context with id
     useEffect(() => {
