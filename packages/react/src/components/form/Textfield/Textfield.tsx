@@ -105,7 +105,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       ) || undefined;
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph asChild data-size={size}>
         <div
           style={style}
           className={cl(
@@ -118,7 +118,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         >
           {label && (
             <Label
-              size={size}
+              data-size={size}
               weight='medium'
               htmlFor={inputProps.id}
               className={cl(`ds-textfield__label`, hideLabel && `ds-sr-only`)}
@@ -133,7 +133,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Label>
           )}
           {description && (
-            <Paragraph asChild size={size}>
+            <Paragraph asChild data-size={size}>
               <div
                 id={descriptionId}
                 className={cl(
@@ -147,7 +147,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           )}
           <div className='ds-textfield__field'>
             {prefix && (
-              <Paragraph asChild size={size} variant='short'>
+              <Paragraph asChild data-size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -179,7 +179,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               }}
             />
             {suffix && (
-              <Paragraph asChild size={size} variant='short'>
+              <Paragraph asChild data-size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -194,7 +194,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           </div>
           {hasCharacterLimit && (
             <CharacterCounter
-              size={size}
+              data-size={size}
               value={inputValue ? inputValue.toString() : ''}
               id={characterLimitId}
               {...characterLimit}
@@ -207,7 +207,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             aria-relevant='additions removals'
           >
             {hasError && (
-              <ValidationMessage size={size}>{props.error}</ValidationMessage>
+              <ValidationMessage data-size={size}>
+                {props.error}
+              </ValidationMessage>
             )}
           </div>
         </div>

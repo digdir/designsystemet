@@ -108,7 +108,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph asChild data-size={size}>
         <div
           style={style}
           className={cl(
@@ -120,7 +120,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         >
           {label && (
             <Label
-              size={size}
+              data-size={size}
               weight='medium'
               htmlFor={inputProps.id}
               className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
@@ -168,7 +168,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             {!isSimple && (
               <Button
                 className={'ds-search__search-button'}
-                size={size}
+                data-size={size}
                 variant={variant}
                 type='submit'
                 onClick={handleSearchClick}
