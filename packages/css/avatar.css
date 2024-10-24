@@ -12,6 +12,7 @@
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   display: inline-flex;
+  flex-shrink: 0;
   font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
   justify-content: center;
@@ -19,6 +20,7 @@
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
+  width: var(--dsc-avatar-size);
 
   &:not(:has(> img)) {
     padding: var(--dsc-avatar-padding);
