@@ -8,7 +8,7 @@ export type InputProps = {
   /**
    * Changes field size and paddings
    */
-  size?: Size;
+  'data-size'?: Size;
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.
@@ -33,13 +33,12 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', size, htmlSize, className, onChange, onClick, ...rest },
+  { type = 'text', htmlSize, className, onChange, onClick, ...rest },
   ref,
 ) {
   return (
     <input
       className={cl(`ds-input`, className)}
-      data-size={size}
       ref={ref}
       size={htmlSize}
       type={type}

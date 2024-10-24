@@ -61,7 +61,7 @@ export const Preview: StoryFn<typeof Modal> = (args) => (
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-      <Paragraph size='sm'>Modal footer</Paragraph>
+      <Paragraph data-size='sm'>Modal footer</Paragraph>
     </Modal>
   </Modal.Context>
 );
@@ -73,7 +73,7 @@ export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal {...args} ref={modalRef}>
-        <Paragraph size='sm'>Modal subtittel</Paragraph>
+        <Paragraph data-size='sm'>Modal subtittel</Paragraph>
         <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal header
         </Heading>
@@ -99,7 +99,7 @@ export const BackdropClose: StoryFn<typeof Modal> = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        <Paragraph size='sm'>Modal footer</Paragraph>
+        <Paragraph data-size='sm'>Modal footer</Paragraph>
       </Modal>
     </Modal.Context>
   );
@@ -110,7 +110,7 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal>
       <Modal.Block>
-        <Paragraph size='sm'>Her er det også divider</Paragraph>
+        <Paragraph data-size='sm'>Her er det også divider</Paragraph>
         <Heading>Vi kan legge divider under header</Heading>
       </Modal.Block>
       <Modal.Block>

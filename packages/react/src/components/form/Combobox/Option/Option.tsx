@@ -46,7 +46,7 @@ const ComboboxOption = memo(
       const props = getItemProps();
 
       return (
-        <Label size='md' asChild>
+        <Label data-size='md' asChild>
           <button
             ref={ref}
             id={id}
@@ -69,14 +69,14 @@ const ComboboxOption = memo(
             {...omit(['displayValue'], rest)}
             {...omit(['onClick', 'onPointerLeave'], props)}
           >
-            <Label asChild size={size}>
+            <Label asChild data-size={size}>
               <span>
                 <SelectedIcon multiple={multiple} selected={!!selected} />
               </span>
             </Label>
             <Label
               className={'ds-combobox__option__label'}
-              size={size}
+              data-size={size}
               id={labelId}
             >
               {children}

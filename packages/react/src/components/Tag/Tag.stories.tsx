@@ -16,17 +16,17 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'New',
-    size: 'md',
+    'data-size': 'md',
     color: 'neutral',
   },
 };
 
-const sizes: TagProps['size'][] = ['sm', 'md', 'lg'];
+const sizes: TagProps['data-size'][] = ['sm', 'md', 'lg'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
       {sizes.map((size) => (
-        <Tag key={size} size={size} {...rest}>
+        <Tag key={size} data-size={size} {...rest}>
           {size}
         </Tag>
       ))}

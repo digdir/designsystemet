@@ -14,7 +14,7 @@ export type HelpTextProps = {
   /**
    * Size of the helptext
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * Placement of the Popover.
    * @default 'right'
@@ -27,7 +27,7 @@ export type HelpTextProps = {
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
-    { placement = 'right', size, className, children, ...rest },
+    { placement = 'right', className, children, ...rest },
     ref,
   ) {
     return (
@@ -35,15 +35,10 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
         <Popover.Trigger
           className={cl('ds-helptext', className)}
           ref={ref}
-          size={size}
           variant='tertiary'
           {...rest}
         />
-        <Popover
-          placement={placement}
-          size={size || (rest['data-size'] as Size)}
-          variant='info'
-        >
+        <Popover placement={placement} variant='info'>
           {children}
         </Popover>
       </Popover.Context>

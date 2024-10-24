@@ -20,7 +20,7 @@ export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
   color: 'info',
-  size: undefined,
+  'data-size': undefined,
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
@@ -28,7 +28,7 @@ export const VariantInfo: Story = (args) => (
   <Alert {...args} color='info'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -46,7 +46,7 @@ export const VariantSuccess: Story = (args) => (
   <Alert {...args} color='success'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -64,7 +64,7 @@ export const VariantWarning: Story = (args) => (
   <Alert {...args} color='warning'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -82,7 +82,7 @@ export const VariantDanger: Story = (args) => (
   <Alert {...args} color='danger'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -101,7 +101,7 @@ export const MedHeading: Story = (args) => (
   <Alert {...args}>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -125,7 +125,7 @@ export const MedLenke: Story = (args) => (
   <Alert {...args} color='warning'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -143,7 +143,7 @@ export const UtenAria: Story = (args) => (
   <Alert {...args} color='warning'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}
@@ -161,7 +161,7 @@ export const MedAria: Story = (args) => (
   <Alert {...args} color='danger' role='alert'>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{
         marginBottom: 'var(--ds-spacing-2)',
       }}

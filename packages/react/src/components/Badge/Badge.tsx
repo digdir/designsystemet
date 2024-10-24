@@ -12,7 +12,7 @@ export type BadgeProps = {
   /**
    * The size of the badge
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * The number to display in the badge
    */
@@ -44,12 +44,12 @@ export type BadgeProps = {
  *
  * @example without children
  * ```jsx
- * <Badge color='accent' size='md' count={5} />
+ * <Badge color='accent' data-size='md' count={5} />
  * ```
  *
  * @example with children
  * ```jsx
- * <Badge color='accent' size='md'>
+ * <Badge color='accent' data-size='md'>
  *  <Icon />
  * </Badge>
  * ```
@@ -62,7 +62,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
     maxCount,
     overlap = 'rectangle',
     placement = 'top-right',
-    size,
     ...rest
   },
   ref,
@@ -76,7 +75,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       }
       data-overlap={rest.children ? overlap : null}
       data-placement={rest.children ? placement : null}
-      data-size={size}
       ref={ref}
       {...rest}
     />

@@ -39,7 +39,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 
 Preview.args = {
   placement: 'top',
-  size: 'md',
+  'data-size': 'md',
   variant: 'default',
 };
 Preview.parameters = {
@@ -133,7 +133,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
         <Button
           color='danger'
           onClick={() => setOpen(false)}
-          size='sm'
+          data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}
         >
           Slett
@@ -161,7 +161,7 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
         <Button
           color='danger'
           onClick={() => setOpen(false)}
-          size='sm'
+          data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}
         >
           Slett

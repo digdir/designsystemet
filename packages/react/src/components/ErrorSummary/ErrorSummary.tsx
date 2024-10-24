@@ -14,14 +14,13 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
 });
 
 export type ErrorSummaryProps = {
-  size?: Size;
+  'data-size'?: Size;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(
     {
       className,
-      size,
       role = 'alert',
       'aria-live': ariaLive = 'polite',
       'aria-relevant': ariaRelevant = 'all',

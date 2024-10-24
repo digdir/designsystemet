@@ -17,7 +17,7 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     disabled: false,
-    size: 'md',
+    'data-size': 'md',
     placeholder: '',
     variant: 'simple',
   },
@@ -74,7 +74,7 @@ export const Form: StoryFn<typeof Search> = () => {
     <>
       <Heading
         level={3}
-        size='2xs'
+        data-size='2xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         Submitted value: {submittedValue}

@@ -26,7 +26,7 @@ export type ToggleGroupProps = {
   /**
    * Size
    */
-  size?: Size;
+  'data-size'?: Size;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
 
 /**
@@ -40,7 +40,7 @@ export type ToggleGroupProps = {
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   function ToggleGroup(
-    { size, children, value, defaultValue, onChange, name, className, ...rest },
+    { children, value, defaultValue, onChange, name, className, ...rest },
     ref,
   ) {
     const nameId = useId();
@@ -70,7 +70,6 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
         <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
           <div
             className={cl('ds-togglegroup', className)}
-            data-size={size}
             role='radiogroup'
             ref={ref}
             {...rest}

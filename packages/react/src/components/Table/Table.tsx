@@ -7,7 +7,7 @@ export type TableProps = {
   /**
    * The size of the table
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -36,7 +36,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
     stickyHeader = false,
     border = false,
     hover = false,
-    size,
     className,
     children,
     ...rest
@@ -48,7 +47,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
       className={cl('ds-table', className)}
       data-border={border || undefined}
       data-hover={hover || undefined}
-      data-size={size}
       data-sticky-header={stickyHeader || undefined}
       data-zebra={zebra || undefined}
       ref={ref}

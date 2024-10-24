@@ -25,7 +25,7 @@ export default meta;
 export const Preview: Story = (args) => <Badge {...args}></Badge>;
 
 Preview.args = {
-  size: 'md',
+  'data-size': 'md',
   count: 10,
   maxCount: 9,
   color: 'accent',
@@ -38,19 +38,19 @@ export const Floating: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge color='accent' size='md' placement='top-right'>
+    <Badge color='accent' data-size='md' placement='top-right'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' size='md' placement='top-left'>
+    <Badge color='accent' data-size='md' placement='top-left'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-right'>
+    <Badge color='accent' data-size='md' placement='bottom-right'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-left'>
+    <Badge color='accent' data-size='md' placement='bottom-left'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' size='md' placement='top-right' overlap='circle'>
+    <Badge color='accent' data-size='md' placement='top-right' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -60,7 +60,7 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge color='accent' size='md' placement='top-left' overlap='circle'>
+    <Badge color='accent' data-size='md' placement='top-left' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -70,7 +70,12 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-right' overlap='circle'>
+    <Badge
+      color='accent'
+      data-size='md'
+      placement='bottom-right'
+      overlap='circle'
+    >
       <div
         style={{
           width: '2rem',
@@ -80,7 +85,12 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge color='accent' size='md' placement='bottom-left' overlap='circle'>
+    <Badge
+      color='accent'
+      data-size='md'
+      placement='bottom-left'
+      overlap='circle'
+    >
       <div
         style={{
           width: '2rem',
@@ -102,7 +112,7 @@ export const CustomPlacement: Story = (args) => (
   >
     <Badge
       color='accent'
-      size='md'
+      data-size='md'
       placement='top-right'
       style={{
         top: '16%',
@@ -121,20 +131,20 @@ export const Status: Story = (args) => (
       gap: 'var(--ds-spacing-4)',
     }}
   >
-    <Badge color='danger' size='sm'>
+    <Badge color='danger' data-size='sm'>
       <VideoFillIcon fontSize='2rem' title='Videokamera' />
     </Badge>
-    <Badge color='danger' size='md'>
+    <Badge color='danger' data-size='md'>
       <VideoFillIcon fontSize='2rem' title='Videokamera' />
     </Badge>
-    <Badge color='danger' size='lg'>
+    <Badge color='danger' data-size='lg'>
       <VideoFillIcon fontSize='2rem' title='Videokamera' />
     </Badge>
   </div>
 );
 
 export const InTabs: Story = (args) => (
-  <Tabs defaultValue='value1' size='md'>
+  <Tabs defaultValue='value1' data-size='md'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
         <HeartFillIcon fontSize='1.75rem' aria-hidden />
@@ -162,17 +172,17 @@ export const InButton: Story = (args) => (
     }}
   >
     <Button icon variant='tertiary'>
-      <Badge color='danger' count={1000} maxCount={99} size='sm'>
+      <Badge color='danger' count={1000} maxCount={99} data-size='sm'>
         <InboxIcon fontSize='1.75rem' title='Innboks' />
       </Badge>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge color='danger' count={10} size='sm'>
+      <Badge color='danger' count={10} data-size='sm'>
         <ChatIcon fontSize='1.75rem' title='Meldinger' />
       </Badge>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge color='danger' size='sm'>
+      <Badge color='danger' data-size='sm'>
         <VideoIcon fontSize='1.75rem' title='Skru på video' />
       </Badge>
     </Button>

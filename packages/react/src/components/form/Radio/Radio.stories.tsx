@@ -18,7 +18,7 @@ export const Preview: Story = {
     disabled: false,
     readOnly: false,
     value: 'value',
-    size: 'md',
+    'data-size': 'md',
   },
 };
 
@@ -33,7 +33,7 @@ export const Group: StoryFn<typeof Fieldset> = (args) => {
   const props = {
     'aria-invalid': !!args.error,
     name: 'my-radio',
-    size: args.size,
+    'data-size': args.size,
   };
 
   return (

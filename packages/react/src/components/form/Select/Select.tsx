@@ -8,7 +8,7 @@ export type SelectProps = {
    * Defines the size of the select.
    * @default md
    **/
-  size?: Size;
+  'data-size'?: Size;
   /** Defines if the select is readOnly
    * @default false
    */
@@ -21,13 +21,12 @@ export type SelectProps = {
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select(
-    { className, htmlSize, onKeyDown, onMouseDown, size, ...rest },
+    { className, htmlSize, onKeyDown, onMouseDown, ...rest },
     ref,
   ) {
     return (
       <select
         className={cl('ds-input', className)}
-        data-size={size}
         ref={ref}
         size={htmlSize}
         onKeyDown={(event) => {

@@ -28,7 +28,7 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 Preview.args = {
   'aria-label': 'Ola Nordmann',
   color: 'accent',
-  size: 'md',
+  'data-size': 'md',
   variant: 'circle',
   children: '',
 };
@@ -37,22 +37,22 @@ export const NoName: Story = () => <Avatar aria-label='Ola' />;
 
 export const Sizes: Story = () => (
   <>
-    <Avatar size='xs' aria-label='extra small'>
+    <Avatar data-size='xs' aria-label='extra small'>
       xs
     </Avatar>
-    <Avatar size='xs' aria-label='extra small' />
-    <Avatar size='sm' aria-label='small'>
+    <Avatar data-size='xs' aria-label='extra small' />
+    <Avatar data-size='sm' aria-label='small'>
       sm
     </Avatar>
-    <Avatar size='sm' aria-label='small' />
-    <Avatar size='md' aria-label='medium'>
+    <Avatar data-size='sm' aria-label='small' />
+    <Avatar data-size='md' aria-label='medium'>
       md
     </Avatar>
-    <Avatar size='md' aria-label='medium' />
-    <Avatar size='lg' aria-label='large'>
+    <Avatar data-size='md' aria-label='medium' />
+    <Avatar data-size='lg' aria-label='large'>
       lg
     </Avatar>
-    <Avatar size='lg' aria-label='large' />
+    <Avatar data-size='lg' aria-label='large' />
   </>
 );
 
@@ -88,23 +88,23 @@ export const WithImage: Story = () => (
 export const InDropdown: Story = () => (
   <Dropdown.Context>
     <Dropdown.Trigger variant='tertiary'>
-      <Avatar aria-label='Ola Nordmann' size='sm'>
+      <Avatar aria-label='Ola Nordmann' data-size='sm'>
         ON
       </Avatar>
       Velg Profil
     </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' size='md' open>
+    <Dropdown placement='bottom-end' data-size='md' open>
       <Dropdown.List>
         <Dropdown.Item>
-          <Badge overlap='circle' color='danger' size='sm'>
-            <Avatar aria-label='Ola Nordmann' size='xs'>
+          <Badge overlap='circle' color='danger' data-size='sm'>
+            <Avatar aria-label='Ola Nordmann' data-size='xs'>
               ON
             </Avatar>
           </Badge>
           Ola Nordmann
         </Dropdown.Item>
         <Dropdown.Item>
-          <Avatar size='xs' color='brand1' aria-label='Sogndal Kommune'>
+          <Avatar data-size='xs' color='brand1' aria-label='Sogndal Kommune'>
             <BriefcaseIcon fontSize='5em' />
           </Avatar>
           Sogndal kommune

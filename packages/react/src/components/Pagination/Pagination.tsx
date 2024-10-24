@@ -13,7 +13,7 @@ export type PaginationProps = {
   /** Sets the size of the component
    * @default md
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -23,13 +23,7 @@ export type PaginationProps = {
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   function Pagination(
-    {
-      'aria-label': ariaLabel = 'Sidenavigering',
-      asChild,
-      className,
-      size,
-      ...rest
-    },
+    { 'aria-label': ariaLabel = 'Sidenavigering', asChild, className, ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'nav';
@@ -38,7 +32,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       <Component
         aria-label={ariaLabel}
         className={cl('ds-pagination', className)}
-        data-size={size}
         ref={ref}
         {...rest}
       />

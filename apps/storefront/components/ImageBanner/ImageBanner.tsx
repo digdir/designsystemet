@@ -89,11 +89,11 @@ const ImageBanner = ({
 
         <div className={classes.textContainer}>
           {title ? (
-            <Heading level={2} size='lg' className={classes.title}>
+            <Heading level={2} data-size='lg' className={classes.title}>
               {title}
             </Heading>
           ) : null}
-          {description && <Paragraph size='lg'>{description}</Paragraph>}
+          {description && <Paragraph data-size='lg'>{description}</Paragraph>}
           {content && content}
           {link && (
             <Link className={classes.link} color='neutral' asChild>

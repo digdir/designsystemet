@@ -20,7 +20,7 @@ const TeaserCard = ({
 }: TeaserCardProps) => {
   return (
     <Link className={classes.card} href={href} prefetch={false}>
-      <Heading level={3} size='sm' className={classes.title}>
+      <Heading level={3} data-size='sm' className={classes.title}>
         {title}
       </Heading>
       <p className={classes.desc}>{description}</p>

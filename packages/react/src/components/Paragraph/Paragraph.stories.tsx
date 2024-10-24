@@ -15,7 +15,7 @@ export const Preview: Story = {
   args: {
     children:
       'Personvernerklæringen gir informasjon om hvilke personopplysninger vi behandler, hvordan disse blir behandlet og hvilke rettigheter du har.',
-    size: 'md',
+    'data-size': 'md',
     variant: 'default',
   },
 };

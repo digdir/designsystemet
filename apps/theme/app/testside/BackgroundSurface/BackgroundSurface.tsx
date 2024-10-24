@@ -81,7 +81,7 @@ type ColumnProps = {
 const Column = ({ title, scales }: ColumnProps) => {
   return (
     <div className={classes.column}>
-      <Heading className={classes.boxTitle} size='xs'>
+      <Heading className={classes.boxTitle} data-size='xs'>
         {title}
       </Heading>
       <div className={classes.boxes}>

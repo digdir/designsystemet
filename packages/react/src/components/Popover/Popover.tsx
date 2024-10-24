@@ -53,7 +53,7 @@ export type PopoverProps = {
   /**
    * Size of the popover
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * Callback when the popover wants to open.
    */
@@ -80,7 +80,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onOpen,
       open,
       placement = 'top',
-      size,
       variant = 'default',
       autoPlacement = true,
       asChild = false,
@@ -171,7 +170,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     return (
       <Component
         className={cl('ds-popover', className)}
-        data-size={size}
         data-variant={variant}
         id={id || popoverId}
         // @ts-ignore @types/react-dom does not understand popover yet

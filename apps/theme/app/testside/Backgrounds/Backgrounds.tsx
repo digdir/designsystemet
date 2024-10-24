@@ -24,7 +24,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xs'
+          data-size='xs'
           style={{ color: theme1.light[12].hex }}
         >
           Light
@@ -54,7 +54,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xs'
+          data-size='xs'
           style={{ color: theme1.dark[12].hex }}
         >
           Dark
@@ -84,7 +84,7 @@ export const Backgrounds = ({
       >
         <Heading
           className={classes.title}
-          size='xs'
+          data-size='xs'
           style={{ color: theme1.contrast[12].hex }}
         >
           Contrast

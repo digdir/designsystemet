@@ -8,7 +8,7 @@ export type TextareaProps = {
    * Defines the size of the select.
    * @default md
    **/
-  size?: Size;
+  'data-size'?: Size;
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 /** Textarea field
@@ -19,14 +19,9 @@ export type TextareaProps = {
  * ```
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  function Textarea({ className, size, ...rest }, ref) {
+  function Textarea({ className, ...rest }, ref) {
     return (
-      <textarea
-        className={cl('ds-input', className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
+      <textarea className={cl('ds-input', className)} ref={ref} {...rest} />
     );
   },
 );

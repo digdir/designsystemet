@@ -42,7 +42,7 @@ export const Preview: Story = (args) => (
       Most provide as with carried business are much better more the perfected
       designer. Writing slightly explain desk unable at supposedly about this
     </Paragraph>
-    <Paragraph size='sm'>Footer text</Paragraph>
+    <Paragraph data-size='sm'>Footer text</Paragraph>
   </Card>
 );
 
@@ -207,7 +207,7 @@ export const Composed: Story = () => (
           }}
         >
           <Heading>Rolle 1</Heading>
-          <Button variant='secondary' color='danger' size='sm'>
+          <Button variant='secondary' color='danger' data-size='sm'>
             <TrashFillIcon aria-hidden fontSize='1.5rem' />
             Fjern
           </Button>
@@ -228,7 +228,7 @@ export const Composed: Story = () => (
         <Textfield label='Etternavn' />
       </Card.Block>
       <Card.Block>
-        <Button variant='secondary' size='sm'>
+        <Button variant='secondary' data-size='sm'>
           Legg til rolle
           <PlusIcon aria-hidden fontSize='1.5rem' />
         </Button>
@@ -271,7 +271,7 @@ export const WithLink: Story = (args) => (
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-        <Paragraph size='sm'>Footer text</Paragraph>
+        <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
     </Card>
     <Card {...args} color='neutral'>
@@ -290,7 +290,7 @@ export const WithLink: Story = (args) => (
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-        <Paragraph size='sm'>Footer text</Paragraph>
+        <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
       <Card.Block>
         <img src={cat5} alt='' />
