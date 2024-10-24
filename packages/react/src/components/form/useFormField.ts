@@ -56,13 +56,10 @@ export const useFormField = (
   const size = props.size ?? fieldset?.size ?? 'md';
 
   const disabled = fieldset?.disabled || props?.disabled;
-  const readOnly =
-    ((fieldset?.readOnly || props?.readOnly) && !disabled) || undefined;
 
-  const hasError = !disabled && !readOnly && !!(props.error || fieldset?.error);
+  const hasError = !disabled && !!(props.error || fieldset?.error);
 
   return {
-    readOnly,
     hasError,
     errorId,
     descriptionId,

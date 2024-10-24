@@ -6,17 +6,13 @@ import { Checkbox } from './Checkbox';
 
 describe('Checkbox', () => {
   test('has correct value and label', () => {
-    render(<Checkbox value='test'>label</Checkbox>);
+    render(<Checkbox label='label' value='test' />);
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
   test('has correct description', () => {
-    render(
-      <Checkbox value='test' description='description'>
-        test
-      </Checkbox>,
-    );
+    render(<Checkbox label='test' value='test' description='description' />);
     expect(
       screen.getByRole('checkbox', { description: 'description' }),
     ).toBeDefined();
@@ -29,9 +25,12 @@ describe('Checkbox', () => {
     const value = 'test';
 
     render(
-      <Checkbox value={value} onChange={onChange} onClick={onClick}>
-        label
-      </Checkbox>,
+      <Checkbox
+        label='label'
+        value={value}
+        onChange={onChange}
+        onClick={onClick}
+      />,
     );
 
     const radio = screen.getByRole<HTMLInputElement>('checkbox');
@@ -51,9 +50,13 @@ describe('Checkbox', () => {
     const onClick = vi.fn();
 
     render(
-      <Checkbox value='test' disabled onClick={onClick} onChange={onChange}>
-        disabled radio
-      </Checkbox>,
+      <Checkbox
+        label='disabled radio'
+        value='test'
+        disabled
+        onClick={onClick}
+        onChange={onChange}
+      />,
     );
 
     const radio = screen.getByRole('checkbox');
@@ -64,24 +67,23 @@ describe('Checkbox', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call onChange or onClick when user clicks and the radio is readOnly', async () => {
+  it('does not call onChange when user clicks and the radio is readOnly', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
-    const onClick = vi.fn();
 
     render(
-      <Checkbox value='test' readOnly onClick={onClick} onChange={onChange}>
-        readonly radio
-      </Checkbox>,
+      <Checkbox
+        label='readonly radio'
+        value='test'
+        readOnly
+        onChange={onChange}
+      />,
     );
 
     const radio = screen.getByRole('checkbox');
     await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
-    expect(onClick).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
-
-  //TODO is there a good way to test size?
 });

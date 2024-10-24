@@ -18,9 +18,6 @@ export type FieldsetProps = {
   error?: ReactNode;
   /** The legend of the fieldset. */
   legend: ReactNode;
-  /** Toggle `readOnly` on fieldset context.
-   * @note This does not prevent fieldset values from being submited */
-  readOnly?: boolean;
   /** Visually hide `legend` and `description` (still available for screen readers)  */
   hideLegend?: boolean;
 } & Pick<FormFieldProps, 'size'> &
@@ -48,7 +45,6 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           disabled: props?.disabled,
           error: error ?? fieldset?.error,
           errorId: hasError ? errorId : undefined,
-          readOnly,
           size,
         }}
       >
@@ -57,7 +53,6 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           aria-invalid={inputProps['aria-invalid']}
           className={cl('ds-fieldset', className)}
           data-hidelegend={hideLegend || undefined}
-          data-readonly={readOnly || undefined}
           disabled={props?.disabled}
           ref={ref}
           {...rest}

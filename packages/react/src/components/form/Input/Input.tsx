@@ -33,7 +33,7 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', size, htmlSize, className, onClick, ...rest },
+  { type = 'text', size, htmlSize, className, onChange, onClick, ...rest },
   ref,
 ) {
   return (
@@ -43,6 +43,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       ref={ref}
       size={htmlSize}
       type={type}
+      onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
       onClick={(event) => {
         if (rest.readOnly) event.preventDefault(); // Make readonly work for checkbox / radio / switch
         onClick?.(event);
