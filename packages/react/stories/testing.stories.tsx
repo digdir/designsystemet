@@ -75,18 +75,18 @@ export const MediumRow: StoryFn<{
         <Textfield
           hideLabel
           label='Kontroller meg!'
-          size={size}
+          data-size={size}
           prefix='prefix'
           suffix='suffix'
         />
 
-        <Select size={size}>
+        <Select data-size={size}>
           <Select.Option>opt1</Select.Option>
           <Select.Option>opt2</Select.Option>
           <Select.Option>opt3</Select.Option>
         </Select>
-        <Button size={size}>Knapp</Button>
-        <Combobox size={size}>
+        <Button data-size={size}>Knapp</Button>
+        <Combobox data-size={size}>
           <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
           <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
         </Combobox>
@@ -101,18 +101,22 @@ export const MediumRow: StoryFn<{
           flexDirection: direction,
         }}
       >
-        <Switch size={size}>Switch</Switch>
-        <Switch size={size} aria-label='no label switch'></Switch>
+        <Switch data-size={size}>Switch</Switch>
+        <Switch data-size={size} aria-label='no label switch'></Switch>
         <Chip.Checkbox>Toggle</Chip.Checkbox>
         <Chip.Removable>Removable</Chip.Removable>
-        <Tag size={size}>Tag</Tag>
+        <Tag data-size={size}>Tag</Tag>
 
-        <Radio label='Radio' value='radio' size={size} />
-        <Radio value='radio2' size={size} aria-label='no label radio'></Radio>
-        <Checkbox label='Checkbox' value='checkbox' size={size} />
+        <Radio label='Radio' value='radio' data-size={size} />
+        <Radio
+          value='radio2'
+          data-size={size}
+          aria-label='no label radio'
+        ></Radio>
+        <Checkbox label='Checkbox' value='checkbox' data-size={size} />
         <Checkbox
           value='checkbox2'
-          size={size}
+          data-size={size}
           aria-label='no label checkbox'
         />
       </div>
@@ -176,7 +180,7 @@ export const Sizes: StoryFn = () => {
       <div>16px</div>
       <div>18px</div>
       <div>24px</div>
-      <Accordion data-size='xs'>
+      <Accordion data-data-size='xs'>
         <Accordion.Item>
           <Accordion.Heading>
             Hvem kan registrere seg i Frivillighetsregisteret?
@@ -190,7 +194,7 @@ export const Sizes: StoryFn = () => {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-      <Accordion data-size='sm'>
+      <Accordion data-data-size='sm'>
         <Accordion.Item>
           <Accordion.Heading>
             Hvem kan registrere seg i Frivillighetsregisteret?
@@ -204,7 +208,7 @@ export const Sizes: StoryFn = () => {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-      <Accordion data-size='md'>
+      <Accordion data-data-size='md'>
         <Accordion.Item>
           <Accordion.Heading>
             Hvem kan registrere seg i Frivillighetsregisteret?
@@ -218,7 +222,7 @@ export const Sizes: StoryFn = () => {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-      <Accordion data-size='xl'>
+      <Accordion data-data-size='xl'>
         <Accordion.Item>
           <Accordion.Heading>
             Hvem kan registrere seg i Frivillighetsregisteret?
@@ -232,35 +236,35 @@ export const Sizes: StoryFn = () => {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-      <Alert data-size='xs'>Dette er en alert</Alert>
-      <Alert size='sm'>Dette er en alert</Alert>
-      <Alert size='md'>Dette er en alert</Alert>
-      <Alert data-size='xl'>Dette er en alert</Alert>
+      <Alert data-data-size='xs'>Dette er en alert</Alert>
+      <Alert data-size='sm'>Dette er en alert</Alert>
+      <Alert data-size='md'>Dette er en alert</Alert>
+      <Alert data-data-size='xl'>Dette er en alert</Alert>
       <div>
-        <Avatar size='xs' aria-label='Jan Daniel'>
+        <Avatar data-size='xs' aria-label='Jan Daniel'>
           JD
         </Avatar>
       </div>
       <div>
-        <Avatar size='sm' aria-label='Jan Daniel'>
+        <Avatar data-size='sm' aria-label='Jan Daniel'>
           JD
         </Avatar>
       </div>
       <div>
-        <Avatar size='md' aria-label='Jan Daniel'>
+        <Avatar data-size='md' aria-label='Jan Daniel'>
           JD
         </Avatar>
       </div>
       <div>
-        <Avatar data-size='xl' aria-label='Jan Daniel'>
+        <Avatar data-data-size='xl' aria-label='Jan Daniel'>
           JD
         </Avatar>
       </div>
-      <Badge data-size='xs' count={99} maxCount={10} />
-      <Badge size='sm' count={99} maxCount={10} />
-      <Badge size='md' count={99} maxCount={10} />
-      <Badge data-size='xl' count={99} maxCount={10} />
-      <Breadcrumbs data-size='xs'>
+      <Badge data-data-size='xs' count={99} maxCount={10} />
+      <Badge data-size='sm' count={99} maxCount={10} />
+      <Badge data-size='md' count={99} maxCount={10} />
+      <Badge data-data-size='xl' count={99} maxCount={10} />
+      <Breadcrumbs data-data-size='xs'>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
@@ -273,7 +277,7 @@ export const Sizes: StoryFn = () => {
           </Breadcrumbs.Item>
         </Breadcrumbs.List>
       </Breadcrumbs>
-      <Breadcrumbs size='sm'>
+      <Breadcrumbs data-size='sm'>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
@@ -286,7 +290,7 @@ export const Sizes: StoryFn = () => {
           </Breadcrumbs.Item>
         </Breadcrumbs.List>
       </Breadcrumbs>
-      <Breadcrumbs size='md'>
+      <Breadcrumbs data-size='md'>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
@@ -299,7 +303,7 @@ export const Sizes: StoryFn = () => {
           </Breadcrumbs.Item>
         </Breadcrumbs.List>
       </Breadcrumbs>
-      <Breadcrumbs data-size='xl'>
+      <Breadcrumbs data-data-size='xl'>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
@@ -313,28 +317,28 @@ export const Sizes: StoryFn = () => {
         </Breadcrumbs.List>
       </Breadcrumbs>
       <div>
-        <Button data-size='xs'>
+        <Button data-data-size='xs'>
           <PrinterSmallIcon />
           Klikk her
         </Button>
       </div>
       <div>
-        <Button size='sm'>
+        <Button data-size='sm'>
           <PrinterSmallIcon />
           Klikk her
         </Button>
       </div>
       <div>
-        <Button size='md'>
+        <Button data-size='md'>
           <PrinterSmallIcon /> Klikk her
         </Button>
       </div>
       <div>
-        <Button data-size='xl'>
+        <Button data-data-size='xl'>
           <PrinterSmallIcon /> Klikk her
         </Button>
       </div>
-      <Card data-size='xs'>
+      <Card data-data-size='xs'>
         <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
@@ -342,7 +346,7 @@ export const Sizes: StoryFn = () => {
           about this
         </Paragraph>
       </Card>
-      <Card data-size='sm'>
+      <Card data-data-size='sm'>
         <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
@@ -350,7 +354,7 @@ export const Sizes: StoryFn = () => {
           about this
         </Paragraph>
       </Card>
-      <Card data-size='md'>
+      <Card data-data-size='md'>
         <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
@@ -358,7 +362,7 @@ export const Sizes: StoryFn = () => {
           about this
         </Paragraph>
       </Card>
-      <Card data-size='xl'>
+      <Card data-data-size='xl'>
         <Heading>Card Neutral</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
@@ -368,7 +372,7 @@ export const Sizes: StoryFn = () => {
       </Card>
       <div
         style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
-        data-size='xs'
+        data-data-size='xs'
       >
         <Chip.Radio>Radio</Chip.Radio>
         <Chip.Checkbox>Check</Chip.Checkbox>
@@ -376,7 +380,7 @@ export const Sizes: StoryFn = () => {
       </div>
       <div
         style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
-        data-size='sm'
+        data-data-size='sm'
       >
         <Chip.Radio>Radio</Chip.Radio>
         <Chip.Checkbox>Check</Chip.Checkbox>
@@ -384,7 +388,7 @@ export const Sizes: StoryFn = () => {
       </div>
       <div
         style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
-        data-size='md'
+        data-data-size='md'
       >
         <Chip.Radio>Radio</Chip.Radio>
         <Chip.Checkbox>Check</Chip.Checkbox>
@@ -392,13 +396,13 @@ export const Sizes: StoryFn = () => {
       </div>
       <div
         style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
-        data-size='xl'
+        data-data-size='xl'
       >
         <Chip.Radio>Radio</Chip.Radio>
         <Chip.Checkbox>Check</Chip.Checkbox>
         <Chip.Button>Knapp</Chip.Button>
       </div>
-      <div data-size='xs'>
+      <div data-data-size='xs'>
         <Dropdown.Context>
           <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
           <Dropdown>
@@ -410,7 +414,7 @@ export const Sizes: StoryFn = () => {
           </Dropdown>
         </Dropdown.Context>
       </div>
-      <div data-size='sm'>
+      <div data-data-size='sm'>
         <Dropdown.Context>
           <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
           <Dropdown>
@@ -422,7 +426,7 @@ export const Sizes: StoryFn = () => {
           </Dropdown>
         </Dropdown.Context>
       </div>
-      <div data-size='md'>
+      <div data-data-size='md'>
         <Dropdown.Context>
           <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
           <Dropdown>
@@ -434,7 +438,7 @@ export const Sizes: StoryFn = () => {
           </Dropdown>
         </Dropdown.Context>
       </div>
-      <div data-size='xl'>
+      <div data-data-size='xl'>
         <Dropdown.Context>
           <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
           <Dropdown>
@@ -446,7 +450,7 @@ export const Sizes: StoryFn = () => {
           </Dropdown>
         </Dropdown.Context>
       </div>
-      <ErrorSummary data-size='xs'>
+      <ErrorSummary data-data-size='xs'>
         <ErrorSummary.Heading>
           For å gå videre må du rette opp følgende feil:
         </ErrorSummary.Heading>
@@ -457,7 +461,7 @@ export const Sizes: StoryFn = () => {
           <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
         </ErrorSummary.List>
       </ErrorSummary>
-      <ErrorSummary size='sm'>
+      <ErrorSummary data-size='sm'>
         <ErrorSummary.Heading>
           For å gå videre må du rette opp følgende feil:
         </ErrorSummary.Heading>
@@ -468,7 +472,7 @@ export const Sizes: StoryFn = () => {
           <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
         </ErrorSummary.List>
       </ErrorSummary>
-      <ErrorSummary size='md'>
+      <ErrorSummary data-size='md'>
         <ErrorSummary.Heading>
           For å gå videre må du rette opp følgende feil:
         </ErrorSummary.Heading>
@@ -479,7 +483,7 @@ export const Sizes: StoryFn = () => {
           <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
         </ErrorSummary.List>
       </ErrorSummary>
-      <ErrorSummary data-size='xl'>
+      <ErrorSummary data-data-size='xl'>
         <ErrorSummary.Heading>
           For å gå videre må du rette opp følgende feil:
         </ErrorSummary.Heading>
@@ -497,28 +501,28 @@ export const Sizes: StoryFn = () => {
           .ds-field input+label { margin: 0; font-weight: normal }
         `}
       </style>
-      <Field data-size='xs'>
+      <Field data-data-size='xs'>
         <Label>Text</Label>
         <Input aria-invalid='true' defaultValue='Noe tekst' />
         <ValidationMessage>En feil</ValidationMessage>
       </Field>
-      <Field data-size='sm'>
+      <Field data-data-size='sm'>
         <Label>Text</Label>
         <Input aria-invalid='true' defaultValue='Noe tekst' />
         <ValidationMessage>En feil</ValidationMessage>
       </Field>
-      <Field data-size='md'>
+      <Field data-data-size='md'>
         <Label>Text</Label>
         <Input aria-invalid='true' defaultValue='Noe tekst' />
         <ValidationMessage>En feil</ValidationMessage>
       </Field>
-      <Field data-size='xl'>
+      <Field data-data-size='xl'>
         <Label>Text</Label>
         <Input aria-invalid='true' defaultValue='Noe tekst' />
         <ValidationMessage>En feil</ValidationMessage>
       </Field>
       <Field
-        data-size='xs'
+        data-data-size='xs'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -529,7 +533,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='sm'
+        data-data-size='sm'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -540,7 +544,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='md'
+        data-data-size='md'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -551,7 +555,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='xl'
+        data-data-size='xl'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -562,7 +566,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='xs'
+        data-data-size='xs'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -573,7 +577,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='sm'
+        data-data-size='sm'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -584,7 +588,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='md'
+        data-data-size='md'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -595,7 +599,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='xl'
+        data-data-size='xl'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -606,7 +610,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='xs'
+        data-data-size='xs'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -617,7 +621,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='sm'
+        data-data-size='sm'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -628,7 +632,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='md'
+        data-data-size='md'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -639,7 +643,7 @@ export const Sizes: StoryFn = () => {
         <Label>Text</Label>
       </Field>
       <Field
-        data-size='xl'
+        data-data-size='xl'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -649,55 +653,55 @@ export const Sizes: StoryFn = () => {
         <Input type='checkbox' name='my-switch' role='switch' />
         <Label>Text</Label>
       </Field>
-      <HelpText data-size='xs' aria-label='Mer info'>
+      <HelpText data-data-size='xs' aria-label='Mer info'>
         Mer tekst
       </HelpText>
-      <HelpText size='sm' aria-label='Mer info'>
+      <HelpText data-size='sm' aria-label='Mer info'>
         Mer tekst
       </HelpText>
-      <HelpText size='md' aria-label='Mer info'>
+      <HelpText data-size='md' aria-label='Mer info'>
         Mer tekst
       </HelpText>
-      <HelpText data-size='xl' aria-label='Mer info'>
+      <HelpText data-data-size='xl' aria-label='Mer info'>
         Mer tekst
       </HelpText>
-      <div data-size='xs'>
+      <div data-data-size='xs'>
         <Link href='#'>Lenke</Link>
       </div>
-      <div data-size='sm'>
+      <div data-data-size='sm'>
         <Link href='#'>Lenke</Link>
       </div>
-      <div data-size='md'>
+      <div data-data-size='md'>
         <Link href='#'>Lenke</Link>
       </div>
-      <div data-size='xl'>
+      <div data-data-size='xl'>
         <Link href='#'>Lenke</Link>
       </div>
-      <List.Unordered data-size='xs'>
+      <List.Unordered data-data-size='xs'>
         <List.Item>List Item 1</List.Item>
         <List.Item>List Item 2</List.Item>
         <List.Item>List Item 3</List.Item>
       </List.Unordered>
-      <List.Unordered size='sm'>
+      <List.Unordered data-size='sm'>
         <List.Item>List Item 1</List.Item>
         <List.Item>List Item 2</List.Item>
         <List.Item>List Item 3</List.Item>
       </List.Unordered>
-      <List.Unordered size='md'>
+      <List.Unordered data-size='md'>
         <List.Item>List Item 1</List.Item>
         <List.Item>List Item 2</List.Item>
         <List.Item>List Item 3</List.Item>
       </List.Unordered>
-      <List.Unordered data-size='xl'>
+      <List.Unordered data-data-size='xl'>
         <List.Item>List Item 1</List.Item>
         <List.Item>List Item 2</List.Item>
         <List.Item>List Item 3</List.Item>
       </List.Unordered>
-      <Spinner size='xs' title='Loading' />
-      <Spinner size='sm' title='Loading' />
-      <Spinner size='md' title='Loading' />
-      <Spinner size='xl' title='Loading' />
-      <div data-size='xs'>
+      <Spinner data-size='xs' title='Loading' />
+      <Spinner data-size='sm' title='Loading' />
+      <Spinner data-size='md' title='Loading' />
+      <Spinner data-size='xl' title='Loading' />
+      <div data-data-size='xs'>
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
@@ -711,7 +715,7 @@ export const Sizes: StoryFn = () => {
           </Modal>
         </Modal.Context>
       </div>
-      <div data-size='sm'>
+      <div data-data-size='sm'>
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
@@ -725,7 +729,7 @@ export const Sizes: StoryFn = () => {
           </Modal>
         </Modal.Context>
       </div>
-      <div data-size='md'>
+      <div data-data-size='md'>
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
@@ -739,7 +743,7 @@ export const Sizes: StoryFn = () => {
           </Modal>
         </Modal.Context>
       </div>
-      <div data-size='xl'>
+      <div data-data-size='xl'>
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
@@ -753,7 +757,7 @@ export const Sizes: StoryFn = () => {
           </Modal>
         </Modal.Context>
       </div>
-      <Pagination aria-label='Sidenavigering' data-size='xs'>
+      <Pagination aria-label='Sidenavigering' data-data-size='xs'>
         <Pagination.List>
           <Pagination.Item>
             <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
@@ -774,7 +778,7 @@ export const Sizes: StoryFn = () => {
           </Pagination.Item>
         </Pagination.List>
       </Pagination>
-      <Pagination aria-label='Sidenavigering' size='sm'>
+      <Pagination aria-label='Sidenavigering' data-size='sm'>
         <Pagination.List>
           <Pagination.Item>
             <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
@@ -795,7 +799,7 @@ export const Sizes: StoryFn = () => {
           </Pagination.Item>
         </Pagination.List>
       </Pagination>
-      <Pagination aria-label='Sidenavigering' size='md'>
+      <Pagination aria-label='Sidenavigering' data-size='md'>
         <Pagination.List>
           <Pagination.Item>
             <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
@@ -816,7 +820,7 @@ export const Sizes: StoryFn = () => {
           </Pagination.Item>
         </Pagination.List>
       </Pagination>
-      <Pagination aria-label='Sidenavigering' data-size='xl'>
+      <Pagination aria-label='Sidenavigering' data-data-size='xl'>
         <Pagination.List>
           <Pagination.Item>
             <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
@@ -837,31 +841,31 @@ export const Sizes: StoryFn = () => {
           </Pagination.Item>
         </Pagination.List>
       </Pagination>
-      <div data-size='xs'>
+      <div data-data-size='xs'>
         <Popover.Context>
           <Popover.Trigger>My popup</Popover.Trigger>
           <Popover>popover content</Popover>
         </Popover.Context>
       </div>
-      <div data-size='sm'>
+      <div data-data-size='sm'>
         <Popover.Context>
           <Popover.Trigger>My popup</Popover.Trigger>
           <Popover>popover content</Popover>
         </Popover.Context>
       </div>
-      <div data-size='md'>
+      <div data-data-size='md'>
         <Popover.Context>
           <Popover.Trigger>My popup</Popover.Trigger>
           <Popover>popover content</Popover>
         </Popover.Context>
       </div>
-      <div data-size='xl'>
+      <div data-data-size='xl'>
         <Popover.Context>
           <Popover.Trigger>My popup</Popover.Trigger>
           <Popover>popover content</Popover>
         </Popover.Context>
       </div>
-      <Table data-size='xs'>
+      <Table data-data-size='xs'>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -882,7 +886,7 @@ export const Sizes: StoryFn = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Table size='sm'>
+      <Table data-size='sm'>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -903,7 +907,7 @@ export const Sizes: StoryFn = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Table size='md'>
+      <Table data-size='md'>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -924,7 +928,7 @@ export const Sizes: StoryFn = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Table data-size='xl'>
+      <Table data-data-size='xl'>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -945,7 +949,7 @@ export const Sizes: StoryFn = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Tabs data-size='xs' defaultValue='value1'>
+      <Tabs data-data-size='xs' defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -955,7 +959,7 @@ export const Sizes: StoryFn = () => {
         <Tabs.Panel value='value2'>content 2</Tabs.Panel>
         <Tabs.Panel value='value3'>content 3</Tabs.Panel>
       </Tabs>
-      <Tabs size='sm' defaultValue='value1'>
+      <Tabs data-size='sm' defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -965,7 +969,7 @@ export const Sizes: StoryFn = () => {
         <Tabs.Panel value='value2'>content 2</Tabs.Panel>
         <Tabs.Panel value='value3'>content 3</Tabs.Panel>
       </Tabs>
-      <Tabs size='md' defaultValue='value1'>
+      <Tabs data-size='md' defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -975,7 +979,7 @@ export const Sizes: StoryFn = () => {
         <Tabs.Panel value='value2'>content 2</Tabs.Panel>
         <Tabs.Panel value='value3'>content 3</Tabs.Panel>
       </Tabs>
-      <Tabs data-size='xl' defaultValue='value1'>
+      <Tabs data-data-size='xl' defaultValue='value1'>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -985,46 +989,46 @@ export const Sizes: StoryFn = () => {
         <Tabs.Panel value='value2'>content 2</Tabs.Panel>
         <Tabs.Panel value='value3'>content 3</Tabs.Panel>
       </Tabs>
-      <Tag data-size='xs'>Tag</Tag>
-      <Tag size='sm'>Tag</Tag>
-      <Tag size='md'>Tag</Tag>
-      <Tag data-size='xl'>Tag</Tag>
-      <ToggleGroup data-size='xs' defaultValue='innboks'>
+      <Tag data-data-size='xs'>Tag</Tag>
+      <Tag data-size='sm'>Tag</Tag>
+      <Tag data-size='md'>Tag</Tag>
+      <Tag data-data-size='xl'>Tag</Tag>
+      <ToggleGroup data-data-size='xs' defaultValue='innboks'>
         <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       </ToggleGroup>
-      <ToggleGroup size='sm' defaultValue='innboks'>
+      <ToggleGroup data-size='sm' defaultValue='innboks'>
         <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       </ToggleGroup>
-      <ToggleGroup size='md' defaultValue='innboks'>
+      <ToggleGroup data-size='md' defaultValue='innboks'>
         <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       </ToggleGroup>
-      <ToggleGroup data-size='xl' defaultValue='innboks'>
+      <ToggleGroup data-data-size='xl' defaultValue='innboks'>
         <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       </ToggleGroup>
-      <div data-size='xs'>
+      <div data-data-size='xs'>
         <Tooltip content='Tooltip text'>
           <Button>My tooltip</Button>
         </Tooltip>
       </div>
-      <div data-size='sm'>
+      <div data-data-size='sm'>
         <Tooltip content='Tooltip text'>
           <Button>My tooltip</Button>
         </Tooltip>
       </div>
-      <div data-size='md'>
+      <div data-data-size='md'>
         <Tooltip content='Tooltip text'>
           <Button>My tooltip</Button>
         </Tooltip>
       </div>
-      <div data-size='xl'>
+      <div data-data-size='xl'>
         <Tooltip content='Tooltip text'>
           <Button>My tooltip</Button>
         </Tooltip>

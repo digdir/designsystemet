@@ -55,7 +55,7 @@ export const Showcase: StoryFn = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Fieldset legend='Handleliste' size='sm'>
+        <Fieldset legend='Handleliste' data-size='sm'>
           <Checkbox label='En kilo poteter' value='epost' />
           <Checkbox label='To liter Farris' value='telefon' />
           <Checkbox label='Blomkål' value='sms' defaultChecked />
@@ -67,20 +67,23 @@ export const Showcase: StoryFn = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.user)}>
-        <Heading className={cl(classes.cardTitle, classes.userTitle)} size='xs'>
+        <Heading
+          className={cl(classes.cardTitle, classes.userTitle)}
+          data-size='xs'
+        >
           Opprett ny bruker
         </Heading>
 
         <Textfield
           label='Navn'
-          size='sm'
+          data-size='sm'
           placeholder='Ola Normann'
           className={classes.userField}
         />
         <Textfield
           type='email'
           label='E-post'
-          size='sm'
+          data-size='sm'
           placeholder='ola@norge.no'
           className={classes.userField}
         />
@@ -89,36 +92,36 @@ export const Showcase: StoryFn = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button size='sm' className={classes.userBtn}>
+        <Button data-size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} size='2xs'>
+        <Heading className={classes.cardTitle} data-size='2xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select aria-label='Velg handling' size='sm'>
+            <Select aria-label='Velg handling' data-size='sm'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
               <Select.Option value='denali'>Oppdater</Select.Option>
             </Select>
-            <Button className={classes.tableBtn} size='sm'>
+            <Button className={classes.tableBtn} data-size='sm'>
               Utfør
             </Button>
           </div>
           <Search
             label='Label'
             placeholder='Søk etter bruker...'
-            size='sm'
+            data-size='sm'
             variant='simple'
             className={classes.tableSearch}
           />
         </div>
         <Table
-          size='sm'
+          data-size='sm'
           border
           className={classes.table}
           data-ds-typography='secondary'
@@ -182,24 +185,24 @@ export const Showcase: StoryFn = () => {
         </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
-        <Heading size='xs' className={classes.helpHeading}>
+        <Heading data-size='xs' className={classes.helpHeading}>
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1'>
-            <Heading size='2xs'>Sikkerhet og drift</Heading>
+            <Heading data-size='2xs'>Sikkerhet og drift</Heading>
             <Paragraph>
               Most provide as with carried business are much better more the.
             </Paragraph>
           </Card>
           <Card color='brand2'>
-            <Heading size='2xs'>Skole og utdanning</Heading>
+            <Heading data-size='2xs'>Skole og utdanning</Heading>
             <Paragraph>
               Most provide as with carried business are much better more the.
             </Paragraph>
           </Card>
           <Card color='brand3'>
-            <Heading size='2xs'>
+            <Heading data-size='2xs'>
               <a href='#preview'>Mat og helse</a>
             </Heading>
             <Paragraph>
@@ -209,7 +212,7 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.radio)}>
-        <Fieldset error='' legend='Hvilken iskremsmak er best?' size='sm'>
+        <Fieldset error='' legend='Hvilken iskremsmak er best?' data-size='sm'>
           <Radio label='Vanile' value='vanilje' />
           <Radio label='Jordbær' value='jordbær' defaultChecked />
           <Radio label='Sjokolade' value='sjokolade' />
@@ -217,63 +220,69 @@ export const Showcase: StoryFn = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.tag)}>
-        <Heading size='xs'>Emner</Heading>
+        <Heading data-size='xs'>Emner</Heading>
         <div className={classes.tagList}>
-          <Tag color='brand1' size='sm'>
+          <Tag color='brand1' data-size='sm'>
             Data og IKT
           </Tag>
-          <Tag color='brand2' size='sm'>
+          <Tag color='brand2' data-size='sm'>
             Mat og ernæring
           </Tag>
-          <Tag color='brand3' size='sm'>
+          <Tag color='brand3' data-size='sm'>
             Sport og Idrett
           </Tag>
-          <Tag color='neutral' size='sm'>
+          <Tag color='neutral' data-size='sm'>
             Politikk og samfunn
           </Tag>
-          <Tag color='success' size='sm'>
+          <Tag color='success' data-size='sm'>
             Utenriks
           </Tag>
-          <Tag color='info' size='sm'>
+          <Tag color='info' data-size='sm'>
             Helse og velvære
           </Tag>
-          <Tag color='danger' size='sm'>
+          <Tag color='danger' data-size='sm'>
             PC Gaming
           </Tag>
-          <Tag color='warning' size='sm'>
+          <Tag color='warning' data-size='sm'>
             Trening og livsstil
           </Tag>
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading data-size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Innstillinger
         </Heading>
-        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph
+          data-size='sm'
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
-          <Switch size='sm' defaultChecked>
+          <Switch data-size='sm' defaultChecked>
             TV-visning
           </Switch>
-          <Switch size='sm'>Desktopvisning</Switch>
-          <Switch size='sm' defaultChecked readOnly>
+          <Switch data-size='sm'>Desktopvisning</Switch>
+          <Switch data-size='sm' defaultChecked readOnly>
             Tabletvisning
           </Switch>
-          <Switch size='sm' disabled>
+          <Switch data-size='sm' disabled>
             Mobilvisning
           </Switch>
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading data-size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Hvor er du fra?
         </Heading>
-        <Paragraph size='sm' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph
+          data-size='sm'
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' data-size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
@@ -281,7 +290,7 @@ export const Showcase: StoryFn = () => {
           <Combobox
             description='Velg et sted'
             label='Hvor går reisen?'
-            size='sm'
+            data-size='sm'
             portal={false}
             multiple
           >
@@ -298,14 +307,14 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' data-size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-        <Paragraph size='sm'>
+        <Paragraph data-size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>
             Frivillighetsregisteret
@@ -325,7 +334,7 @@ export const Showcase: StoryFn = () => {
         </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>
-        <Heading size='xs' className={classes.cardTitle}>
+        <Heading data-size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
         <Accordion color='brand3' border>
