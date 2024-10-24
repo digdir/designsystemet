@@ -34,17 +34,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Heading
         {...props}
         level={1}
-        data-='xl'
+        data-size='xl'
         style={{
           marginBottom: 'var(--ds-spacing-4)',
         }}
       />
     ),
-    h2: (props: HeadingProps) => <Heading {...props} level={2} data-='md' />,
-    h3: (props: HeadingProps) => <Heading {...props} level={3} data-='sm' />,
-    h4: (props: HeadingProps) => <Heading {...props} level={4} data-='xs' />,
-    h5: (props: HeadingProps) => <Heading {...props} level={5} data-='xs' />,
-    h6: (props: HeadingProps) => <Heading {...props} level={6} data-='xs' />,
+    h2: (props: HeadingProps) => (
+      <Heading {...props} level={2} data-size='md' />
+    ),
+    h3: (props: HeadingProps) => (
+      <Heading {...props} level={3} data-size='sm' />
+    ),
+    h4: (props: HeadingProps) => (
+      <Heading {...props} level={4} data-size='xs' />
+    ),
+    h5: (props: HeadingProps) => (
+      <Heading {...props} level={5} data-size='xs' />
+    ),
+    h6: (props: HeadingProps) => (
+      <Heading {...props} level={6} data-size='xs' />
+    ),
     table: (props) => <Table {...props} border zebra />,
     thead: (props) => <TableHead {...props} />,
     tbody: (props) => <TableBody {...props} />,
