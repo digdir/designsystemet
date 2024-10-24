@@ -8,7 +8,8 @@
   --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-accordion-heading-background--open: var(--ds-color-neutral-background-subtle);
   --dsc-accordion-heading-background: var(--ds-color-neutral-background-default);
-  --dsc-accordion-padding: var(--ds-spacing-4);
+  --dsc-accordion-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-accordion-size: var(--ds-sizing-14);
 
   &[data-border] > * {
     border: var(--dsc-accordion-border);
@@ -65,16 +66,18 @@
   box-sizing: border-box;
 
   & > :is(summary, u-summary) {
+    align-items: center;
     background: var(--dsc-accordion-heading-background);
     box-sizing: border-box;
     cursor: pointer;
+    display: flex;
     list-style: none;
+    min-height: var(--dsc-accordion-size);
+    gap: var(--dsc-accordion-chevron-gap);
     outline: none;
-    padding-block: var(--dsc-accordion-padding);
-    padding-inline: calc(var(--dsc-accordion-padding) + var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) var(--dsc-accordion-padding);
+    padding: var(--dsc-accordion-padding);
 
     @composes ds-focus from './base/base.css';
-    @composes ds-body-text--sm from './base/base.css';
 
     &:focus-visible {
       position: relative; /* Ensure foucs outline renders on top */
@@ -84,11 +87,9 @@
       background: currentcolor;
       border-radius: var(--ds-border-radius-md);
       content: '';
+      flex-shrink: 0;
       height: var(--dsc-accordion-chevron-size);
       mask: 50% / contain no-repeat var(--dsc-accordion-chevron-url);
-      position: absolute;
-      margin-inline: calc((var(--dsc-accordion-chevron-size) + var(--dsc-accordion-chevron-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
-
       width: var(--dsc-accordion-chevron-size);
     }
   }

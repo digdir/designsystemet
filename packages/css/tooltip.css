@@ -9,9 +9,8 @@
   border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
   color: var(--dsc-tooltip-color);
+  line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
-
-  @composes ds-body-text--short-xs from './base/base.css';
 
   &::before {
     content: '';
@@ -24,21 +23,5 @@
     top: var(--ds-tooltip-arrow-y);
     translate: -50% -50%;
     rotate: 45deg;
-  }
-
-  &[data-placement='top']::before {
-    top: 100%;
-  }
-
-  &[data-placement='left']::before {
-    left: 100%;
-  }
-
-  &[data-placement='right']::before {
-    left: 0;
-  }
-
-  &[data-placement='bottom']::before {
-    top: 0;
   }
 }

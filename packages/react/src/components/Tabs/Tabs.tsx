@@ -13,7 +13,6 @@ export type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * Changes items size and paddings
-   * @default md
    */
   size?: 'sm' | 'md' | 'lg';
 } & HTMLAttributes<UHTMLTabsElement>;

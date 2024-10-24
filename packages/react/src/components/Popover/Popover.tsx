@@ -12,6 +12,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
+import type { Size } from '../../types';
 import { Context } from './PopoverContext';
 
 // Make React support popovertarget attribute
@@ -51,9 +52,8 @@ export type PopoverProps = {
   open?: boolean;
   /**
    * Size of the popover
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * Callback when the popover wants to open.
    */
@@ -80,7 +80,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onOpen,
       open,
       placement = 'top',
-      size = 'md',
+      size,
       variant = 'default',
       autoPlacement = true,
       asChild = false,
@@ -188,26 +188,35 @@ const arrowPseudoElement = {
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
 
-    let arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    let arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+    let arrowX = `${Math.round(rects.reference.width / 2 + rects.reference.x - data.x)}px`;
+    let arrowY = `${Math.round(rects.reference.height / 2 + rects.reference.y - data.y)}px`;
 
     if (rects.reference.width > rects.floating.width) {
-      arrowX = rects.floating.width / 2;
+      arrowX = `${Math.round(rects.floating.width / 2)}px`;
     }
 
     if (rects.reference.height > rects.floating.height) {
-      arrowY = rects.floating.height / 2;
+      arrowY = `${Math.round(rects.floating.height / 2)}px`;
+    }
+
+    switch (placement.split('-')[0]) {
+      case 'top':
+        arrowY = '100%';
+        break;
+      case 'right':
+        arrowX = '0';
+        break;
+      case 'bottom':
+        arrowY = '0';
+        break;
+      case 'left':
+        arrowX = '100%';
+        break;
     }
 
     elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty(
-      '--ds-popover-arrow-x',
-      `${Math.round(arrowX)}px`,
-    );
-    elements.floating.style.setProperty(
-      '--ds-popover-arrow-y',
-      `${Math.round(arrowY)}px`,
-    );
+    elements.floating.style.setProperty('--ds-popover-arrow-x', arrowX);
+    elements.floating.style.setProperty('--ds-popover-arrow-y', arrowY);
     return data;
   },
 };
