@@ -1,6 +1,4 @@
 import type {
-  KeyboardEventHandler,
-  MouseEventHandler,
   SelectHTMLAttributes,
 } from 'react';
 import { useContext } from 'react';

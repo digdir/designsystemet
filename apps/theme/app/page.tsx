@@ -1,7 +1,7 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorInfo,

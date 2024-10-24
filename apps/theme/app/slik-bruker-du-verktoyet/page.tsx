@@ -1,5 +1,5 @@
 'use client';
-import { Alert, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
 
 import classes from './page.module.css';

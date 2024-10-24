@@ -1,4 +1,4 @@
-import { Stack } from '@doc-components';
+
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import type { TagProps } from '.';

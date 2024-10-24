@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { HTMLAttributes, } from 'react';
 import { forwardRef } from 'react';
 
 export type InputAffixWrapperProps = Omit<
