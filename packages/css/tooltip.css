@@ -24,20 +24,4 @@
     translate: -50% -50%;
     rotate: 45deg;
   }
-
-  &[data-placement='top']::before {
-    top: 100%;
-  }
-
-  &[data-placement='left']::before {
-    left: 100%;
-  }
-
-  &[data-placement='right']::before {
-    left: 0;
-  }
-
-  &[data-placement='bottom']::before {
-    top: 0;
-  }
 }

@@ -34,22 +34,18 @@
   }
 
   &[data-placement='top']::before {
-    top: 100%;
     rotate: 45deg;
   }
 
   &[data-placement='left']::before {
-    left: 100%;
     rotate: -45deg;
   }
 
   &[data-placement='right']::before {
-    left: 0;
     rotate: 135deg;
   }
 
   &[data-placement='bottom']::before {
-    top: 0;
     rotate: -135deg;
   }
 
