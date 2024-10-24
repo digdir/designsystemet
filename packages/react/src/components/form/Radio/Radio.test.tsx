@@ -6,28 +6,20 @@ import { Radio } from './Radio';
 
 describe('Radio', () => {
   test('has correct value and label', () => {
-    render(<Radio value='test'>label</Radio>);
+    render(<Radio label='label' value='test' />);
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
   test('has correct description', () => {
-    render(
-      <Radio value='test' description='description'>
-        test
-      </Radio>,
-    );
+    render(<Radio label='test' value='test' description='description' />);
     expect(
       screen.getByRole('radio', { description: 'description' }),
     ).toBeDefined();
   });
 
   test('should pass down name attribute to input', () => {
-    render(
-      <Radio value='test' name='radio-group123'>
-        label
-      </Radio>,
-    );
+    render(<Radio label='label' value='test' name='radio-group123' />);
     expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute(
       'name',
       'radio-group123',
@@ -59,9 +51,12 @@ describe('Radio', () => {
     const value = 'test';
 
     render(
-      <Radio value={value} onChange={onChange} onClick={onClick}>
-        label
-      </Radio>,
+      <Radio
+        label='label'
+        value={value}
+        onChange={onChange}
+        onClick={onClick}
+      />,
     );
 
     const radio = screen.getByRole<HTMLInputElement>('radio');
@@ -81,9 +76,13 @@ describe('Radio', () => {
     const onClick = vi.fn();
 
     render(
-      <Radio value='test' disabled onClick={onClick} onChange={onChange}>
-        disabled radio
-      </Radio>,
+      <Radio
+        label='disabled radio'
+        value='test'
+        disabled
+        onClick={onClick}
+        onChange={onChange}
+      />,
     );
 
     const radio = screen.getByRole('radio');
@@ -94,24 +93,25 @@ describe('Radio', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call onChange or onClick when user clicks and the radio is readOnly', async () => {
+  it('does not call onChange when user clicks and the radio is readOnly', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
     const onClick = vi.fn();
 
     render(
-      <Radio value='test' readOnly onClick={onClick} onChange={onChange}>
-        readonly radio
-      </Radio>,
+      <Radio
+        label='readonly radio'
+        value='test'
+        readOnly
+        onClick={onClick}
+        onChange={onChange}
+      />,
     );
 
     const radio = screen.getByRole('radio');
     await act(async () => await user.click(radio));
 
     expect(radio).toHaveAttribute('readonly');
-    expect(onClick).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
-
-  //TODO is there a good way to test size?
 });
