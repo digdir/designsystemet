@@ -35,7 +35,7 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 
 Preview.args = {
   defaultValue: 'innboks',
-  size: 'md',
+  'data-size': 'md',
   name: 'toggle-group-nuts',
 };
 
@@ -65,7 +65,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} size='md' onChange={setValue}>
+      <ToggleGroup value={value} data-size='md' onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon fontSize='1.5rem' aria-hidden />
           Innboks
@@ -85,7 +85,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
       </ToggleGroup>
       <Divider />
       <Paragraph>Du har valgt: {value}</Paragraph>
-      <Button size='sm' onClick={() => setValue('arkiv')}>
+      <Button data-size='sm' onClick={() => setValue('arkiv')}>
         Velg Arkiv
       </Button>
     </>

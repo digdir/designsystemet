@@ -23,7 +23,7 @@ export type ParagraphProps = {
  * Use `Paragraph` to display text with paragraph text styles.
  *
  * @example
- * <Paragraph size='lg'>Paragraph</Paragraph>
+ * <Paragraph data-size='lg'>Paragraph</Paragraph>
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   function Paragraph(
