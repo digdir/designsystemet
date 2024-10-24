@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-4);
+}
+
+.content {
+  padding: var(--ds-spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-6);
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-4);
+  margin-top: var(--ds-spacing-6);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.textarea {
+  font-size: 14px;
+}
+
+.textarea textarea {
+  height: 180px;
+}
+
+.text {
+  line-height: 1.5em;
+}

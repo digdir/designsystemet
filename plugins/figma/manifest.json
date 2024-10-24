@@ -8,5 +8,5 @@
   "enableProposedApi": false,
   "editorType": ["figma"],
   "documentAccess": "dynamic-page",
-  "networkAccess": { "allowedDomains": ["none"] }
+  "networkAccess": { "allowedDomains": ["https://api.github.com"] }
 }
