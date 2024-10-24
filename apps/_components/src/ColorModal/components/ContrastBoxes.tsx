@@ -4,7 +4,6 @@ import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
   areColorsContrasting,
   getApcaContrastLc,
-  getColorNameFromNumber,
 } from '@digdir/designsystemet/color';
 import {
   CheckmarkCircleFillIcon,

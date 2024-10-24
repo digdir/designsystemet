@@ -4,8 +4,6 @@ import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorMode } from '../../colors/types.js';
 
-import * as R from 'ramda';
-
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const createHash = (text: string) => crypto.hash('sha1', text);
