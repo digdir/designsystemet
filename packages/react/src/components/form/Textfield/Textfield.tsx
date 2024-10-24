@@ -3,6 +3,7 @@ import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useId, useState } from 'react';
 
+import type { Size } from '../../../types';
 import { omit } from '../../../utilities';
 import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
@@ -22,7 +23,7 @@ export type TextfieldProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */

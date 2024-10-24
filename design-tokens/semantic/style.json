@@ -270,7 +270,7 @@
         }
       }
     },
-    "error_message": {
+    "validation-message": {
       "lg": {
         "$type": "typography",
         "$value": {

@@ -39,13 +39,17 @@
   color: var(--dsc-input-color);
   font-family: inherit;
   height: var(--dsc-input-size);
+  line-height: var(--ds-line-height-sm);
   margin: 0; /* Reset native margin on checkbox and radio */
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
 
-  @composes ds-body-text--md from './base/base.css';
   @composes ds-focus from './base/base.css';
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size */
+  }
 
   /* Change switch background with low specificity to allow states to overwrite */
   &:where([role='switch']) {
@@ -100,27 +104,6 @@
     --dsc-input-background: var(--dsc-input-background--readonly);
     --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-color: var(--dsc-input-color--readonly);
-  }
-
-  /**
-   * Sizes
-   */
-  &[data-size='sm'] {
-    @composes ds-body-text--sm from './base/base.css';
-
-    --dsc-input-padding: var(--ds-spacing-1) var(--ds-spacing-2);
-    --dsc-input-size--switch: var(--ds-sizing-6);
-    --dsc-input-size--toggle: var(--ds-sizing-5);
-    --dsc-input-size: var(--ds-sizing-10);
-  }
-
-  &[data-size='lg'] {
-    @composes ds-body-text--lg from './base/base.css';
-
-    --dsc-input-padding: var(--ds-spacing-3) var(--ds-spacing-4);
-    --dsc-input-size--switch: var(--ds-sizing-8);
-    --dsc-input-size--toggle: var(--ds-sizing-7);
-    --dsc-input-size: var(--ds-sizing-14);
   }
 
   /**
@@ -219,25 +202,11 @@
     position: absolute;
   }
 
-  @composes ds-body-text--md from './base/base.css';
-
   /* Using double selector to ensure we win specificity */
   .ds-input.ds-input {
     align-self: stretch;
     border-radius: 0;
     flex: 1 1 auto;
     height: auto;
-  }
-
-  &:has([data-size='sm']) {
-    @composes ds-body-text--sm from './base/base.css';
-
-    --dsc-input-affix-padding-inline: var(--ds-spacing-3);
-  }
-
-  &:has([data-size='lg']) {
-    @composes ds-body-text--lg from './base/base.css';
-
-    --dsc-input-affix-padding-inline: var(--ds-spacing-5);
   }
 }

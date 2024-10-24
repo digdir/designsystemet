@@ -61,7 +61,7 @@
   position: relative;
   box-sizing: border-box;
   flex: 0 1 auto;
-  height: var(--ds-sizing-10);
+  height: 100%;
   width: 100%;
   appearance: none;
   padding: 0 var(--ds-spacing-3);

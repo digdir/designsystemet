@@ -18,20 +18,6 @@
     width: var(--dsc-label-icon-size);
   }
 
-  @composes ds-label--md from './base/base.css';
-
-  &[data-size='xs'] {
-    @composes ds-label--xs from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    @composes ds-label--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    @composes ds-label--lg from './base/base.css';
-  }
-
   &[data-weight='semibold'] {
     font-weight: var(--ds-font-weight-semibold);
   }

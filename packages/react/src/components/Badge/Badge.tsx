@@ -1,5 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type BadgeProps = {
   /**
@@ -10,10 +11,8 @@ export type BadgeProps = {
   color?: 'accent' | 'info' | 'success' | 'warning' | 'danger' | 'neutral';
   /**
    * The size of the badge
-   *
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * The number to display in the badge
    */
@@ -63,7 +62,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
     maxCount,
     overlap = 'rectangle',
     placement = 'top-right',
-    size = 'md',
+    size,
     ...rest
   },
   ref,

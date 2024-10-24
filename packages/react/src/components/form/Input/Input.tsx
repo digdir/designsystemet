@@ -1,14 +1,14 @@
 import cl from 'clsx/lite';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../../types';
 
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /**
    * Changes field size and paddings
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.
@@ -33,15 +33,7 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  {
-    type = 'text',
-    size = 'md',
-    htmlSize,
-    className,
-    onChange,
-    onClick,
-    ...rest
-  },
+  { type = 'text', size, htmlSize, className, onChange, onClick, ...rest },
   ref,
 ) {
   return (
@@ -51,9 +43,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       ref={ref}
       size={htmlSize}
       type={type}
-      onChange={(event) => {
-        if (!rest.readOnly) onChange?.(event); // Make readonly work for checkbox / radio / switch
-      }}
+      onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
       onClick={(event) => {
         if (rest.readOnly) event.preventDefault(); // Make readonly work for checkbox / radio / switch
         onClick?.(event);
