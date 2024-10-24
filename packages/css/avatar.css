@@ -6,7 +6,6 @@
   --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
   align-items: center;
-  aspect-ratio: 1 / 1;
   background: var(--dsc-avatar-background);
   border-radius: var(--dsc-avatar-border-radius);
   box-sizing: border-box;
