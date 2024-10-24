@@ -7,7 +7,7 @@ export type LabelProps = {
   /**
    * Changes text sizing
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'
@@ -27,7 +27,7 @@ export type LabelProps = {
  * <Label size='lg'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, size, weight = 'medium', asChild, ...rest },
+  { className, weight = 'medium', asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';
@@ -36,7 +36,6 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
     <Component
       ref={ref}
       className={cl('ds-label', className)}
-      data-size={size}
       data-weight={weight}
       {...rest}
     />

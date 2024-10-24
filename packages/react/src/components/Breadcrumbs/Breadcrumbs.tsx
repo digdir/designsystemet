@@ -11,18 +11,14 @@ export type BreadcrumbsProps = {
   /**
    * Sets the size of the component
    */
-  size?: Size;
+  'data-size'?: Size;
 } & HTMLAttributes<HTMLElement>;
 
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
-  (
-    { 'aria-label': ariaLabel = 'Du er her:', className, size, ...rest },
-    ref,
-  ) => (
+  ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
     <nav
       aria-label={ariaLabel}
       className={cl('ds-breadcrumbs', className)}
-      data-size={size}
       ref={ref}
       {...rest}
     />

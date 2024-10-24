@@ -7,7 +7,7 @@ export type ParagraphProps = {
   /**
    * Changes text sizing
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -27,7 +27,7 @@ export type ParagraphProps = {
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   function Paragraph(
-    { className, size, asChild, variant = 'default', ...rest },
+    { className, asChild, variant = 'default', ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'p';
@@ -36,7 +36,6 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
       <Component
         ref={ref}
         className={cl(`ds-paragraph`, className)}
-        data-size={size}
         data-variant={variant}
         {...rest}
       />

@@ -19,7 +19,7 @@ type CharacterCounterProps = {
   /** The ID of the element that describes the maximum character limit for accessibility purposes. */
   id: string;
   /** Text size */
-  size?: TextfieldProps['size'];
+  'data-size'?: TextfieldProps['size'];
 };
 
 const defaultLabel: CharacterCounterProps['label'] = (count) =>
@@ -33,8 +33,8 @@ export const CharacterCounter = ({
   srLabel: propsSrLabel,
   maxCount,
   value,
+  'data-size': size,
   id,
-  size,
 }: CharacterCounterProps): JSX.Element => {
   const currentCount = maxCount - value.length;
   const hasExceededLimit = value.length > maxCount;
@@ -45,7 +45,7 @@ export const CharacterCounter = ({
       <span className={`ds-sr-only`} id={id}>
         {srLabel}
       </span>
-      <ValidationMessage asChild size={size} error={hasExceededLimit}>
+      <ValidationMessage asChild data-size={size} error={hasExceededLimit}>
         <span aria-live={hasExceededLimit ? 'polite' : 'off'}>
           {label(currentCount)}
         </span>

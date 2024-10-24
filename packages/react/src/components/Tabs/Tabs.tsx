@@ -13,7 +13,7 @@ export type TabsProps = {
   /**
    * Changes items size and paddings
    */
-  size?: Size;
+  'data-size'?: Size;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 export type ContextProps = {
@@ -41,7 +41,7 @@ export const Context = createContext<ContextProps>({});
  * ```
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { size, value, defaultValue, className, onChange, ...rest },
+  { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
   const isControlled = value !== undefined;
@@ -65,12 +65,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         onChange: onValueChange,
       }}
     >
-      <div
-        className={cl('ds-tabs', className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
+      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
     </Context.Provider>
   );
 });

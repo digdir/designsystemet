@@ -13,7 +13,7 @@ export type AlertProps = {
    * Sets the size of the alert.
    * Does not affect font size.
    */
-  size?: Size;
+  'data-size'?: Size;
 } & HTMLAttributes<HTMLDivElement>;
 
 /**
@@ -22,14 +22,13 @@ export type AlertProps = {
  * <Alert color='info'>Dette er en informasjonsmelding</Alert>
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { color = 'info', size, className, ...rest },
+  { color = 'info', className, ...rest },
   ref,
 ) {
   return (
     <div
       className={cl('ds-alert', className)}
       data-color={color}
-      data-size={size}
       ref={ref}
       {...rest}
     />

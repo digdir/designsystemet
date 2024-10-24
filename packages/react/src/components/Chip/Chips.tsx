@@ -8,7 +8,7 @@ type ChipBaseProps = {
   /**
    * Size
    */
-  size?: Size;
+  'data-size'?: Size;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -29,13 +29,12 @@ export type ChipCheckboxProps = ChipBaseProps &
  * <Chip.Button>Click me</Chip.Button>
  */
 export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
-  function ChipButton({ asChild, className, size, ...rest }, ref) {
+  function ChipButton({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'button';
 
     return (
       <Component
         className={cl('ds-chip', className)}
-        data-size={size}
         type={asChild ? undefined : 'button'}
         ref={ref}
         {...rest}
@@ -62,16 +61,12 @@ export const ChipRemovable = forwardRef<HTMLButtonElement, ChipRemovableProps>(
  * <Chip.Checkbox name="language" value="bokmål">Bokmål</Chip.Checkbox>
  */
 export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
-  function ChipCheckbox({ asChild, children, className, size, ...rest }, ref) {
+  function ChipCheckbox({ asChild, children, className, ...rest }, ref) {
     const inputType = (rest as { type?: string }).type ?? 'checkbox';
     const Component = asChild ? Slot : 'label';
 
     return (
-      <Component
-        className={cl('ds-chip', className)}
-        data-size={size}
-        ref={ref}
-      >
+      <Component className={cl('ds-chip', className)} ref={ref}>
         <input {...rest} type={inputType} />
         <Slottable>{children}</Slottable>
       </Component>

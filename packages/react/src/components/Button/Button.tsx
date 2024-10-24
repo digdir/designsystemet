@@ -18,7 +18,7 @@ export type ButtonProps = {
   /**
    * Size
    */
-  size?: Size;
+  'data-size'?: Size;
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -53,7 +53,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = 'accent',
       icon = false,
       loading = false,
-      size,
       variant = 'primary',
       ...rest
     },
@@ -69,7 +68,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cl('ds-button', className)}
         data-color={color}
         data-icon={icon || undefined}
-        data-size={size}
         data-variant={variant}
         ref={ref}
         /* don't set type when we use `asChild` */

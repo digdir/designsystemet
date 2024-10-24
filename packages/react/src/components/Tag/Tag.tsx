@@ -20,7 +20,7 @@ export type TagProps = {
   /**
    * Size of the tag
    */
-  size?: Size;
+  'data-size'?: Size;
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**
@@ -29,14 +29,13 @@ export type TagProps = {
  * <Tag color='success'>Success</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { size, color = 'neutral', className, ...rest },
+  { color = 'neutral', className, ...rest },
   ref,
 ) {
   return (
     <span
       className={cl('ds-tag', className)}
       data-color={color}
-      data-size={size}
       ref={ref}
       {...rest}
     />
