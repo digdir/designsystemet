@@ -6,7 +6,7 @@ export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs,
   args: {
-    size: 'md',
+    'data-size': 'md',
   },
 } as Meta;
 

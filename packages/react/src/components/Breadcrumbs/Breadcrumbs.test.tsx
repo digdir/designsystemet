@@ -34,7 +34,7 @@ describe('Breadcrumbs', () => {
   });
 
   it('should render correctly with custom props', () => {
-    renderWithRoot({ size: 'lg' });
+    renderWithRoot({ 'data-size': 'lg' });
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 });
