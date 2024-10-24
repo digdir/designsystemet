@@ -26,6 +26,10 @@
     "themes/theme3",
     "themes/theme4",
     "semantic/color",
+    "semantic/modes/main-color/accent",
+    "semantic/modes/support-color/brand1",
+    "semantic/modes/support-color/brand2",
+    "semantic/modes/support-color/brand3",
     "semantic/style",
     "Figma/components"
   ]
