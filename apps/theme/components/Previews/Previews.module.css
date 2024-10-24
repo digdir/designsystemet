@@ -24,11 +24,11 @@
 
 .menuItem:hover {
   cursor: pointer;
-  background-color: var(--ds-color-accent-4);
+  background-color: var(--ds-color-accent-surface-hover);
 }
 
 .menuItemActive {
-  background-color: var(--ds-color-accent-3);
+  background-color: var(--ds-color-accent-surface-default);
 }
 
 .menuItem[aria-disabled] {
@@ -58,11 +58,11 @@
 
 .toggle:hover {
   cursor: pointer;
-  background-color: var(--ds-color-accent-4);
+  background-color: var(--ds-color-accent-surface-hover);
 }
 
 .active {
-  background-color: var(--ds-color-accent-3);
+  background-color: var(--ds-color-accent-surface-default);
 }
 
 .toggle img {

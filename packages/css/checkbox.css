@@ -95,7 +95,7 @@
 .ds-checkbox__input:checked {
   --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
   --dsc-checkbox-background: var(--ds-color-accent-base-default);
-  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-1);
+  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-default);
 
   background: var(--dsc-checkbox-background);
 }
@@ -103,7 +103,7 @@
 .ds-checkbox__input:indeterminate {
   --dsc-checkbox-border-color: var(--ds-color-accent-base-default);
   --dsc-checkbox-background: var(--ds-color-accent-base-default);
-  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-1);
+  --dsc-checkbox-check_color: var(--ds-color-accent-contrast-default);
 }
 
 .ds-checkbox__input:indeterminate::after {
