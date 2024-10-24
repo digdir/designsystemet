@@ -62,11 +62,11 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
           ref={ref}
           {...rest}
         >
-          <Label asChild size={size}>
+          <Label asChild data-size={size}>
             <legend>{legend}</legend>
           </Label>
           {!!description && (
-            <Paragraph id={descriptionId} size={size} variant='short'>
+            <Paragraph id={descriptionId} data-size={size} variant='short'>
               {description}
             </Paragraph>
           )}
@@ -77,7 +77,7 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
             id={errorId}
           >
             {hasError && (
-              <ValidationMessage size={size}>{error}</ValidationMessage>
+              <ValidationMessage data-size={size}>{error}</ValidationMessage>
             )}
           </div>
         </fieldset>
