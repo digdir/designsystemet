@@ -52,5 +52,5 @@ export function isSemanticToken(token: TransformedToken): boolean {
 }
 
 export function isGlobalColorToken(token: TransformedToken): boolean {
-  return token.$type === 'color' && R.startsWith(['global'], token.path);
+  return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
 }
