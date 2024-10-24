@@ -173,11 +173,6 @@
   }
 }
 
-/* Change cursor on wrapping <label> */
-label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disabled], [readonly])) {
-  cursor: pointer;
-}
-
 /**
  * Affix
  */

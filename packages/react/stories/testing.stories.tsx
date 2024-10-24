@@ -107,18 +107,14 @@ export const MediumRow: StoryFn<{
         <Chip.Removable>Removable</Chip.Removable>
         <Tag size={size}>Tag</Tag>
 
-        <Radio value='radio' size={size}>
-          Radio
-        </Radio>
+        <Radio label='Radio' value='radio' size={size} />
         <Radio value='radio2' size={size} aria-label='no label radio'></Radio>
-        <Checkbox value='checkbox' size={size}>
-          Checkbox
-        </Checkbox>
+        <Checkbox label='Checkbox' value='checkbox' size={size} />
         <Checkbox
           value='checkbox2'
           size={size}
           aria-label='no label checkbox'
-        ></Checkbox>
+        />
       </div>
     </>
   );
