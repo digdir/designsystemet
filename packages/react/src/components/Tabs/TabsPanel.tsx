@@ -18,7 +18,7 @@ export type TabsPanelProps = {
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
   function TabsPanel({ children, value, className, ...rest }, ref) {
-    const { value: tabsValue, size } = useContext(Context);
+    const { value: tabsValue } = useContext(Context);
     const active = value === tabsValue;
 
     return (

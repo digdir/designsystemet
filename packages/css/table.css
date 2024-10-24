@@ -19,8 +19,6 @@
   color: var(--dsc-table-color);
   width: 100%;
 
-  @composes ds-body-text--md from './base/base.css';
-
   & > :is(tbody, thead) > tr > :is(th, td) {
     background: var(--dsc-table-background);
     border-bottom: var(--dsc-table-border);
@@ -108,21 +106,6 @@
     &:not([aria-sort='none']) > button {
       background: var(--dsc-table-header-background--sorted);
     }
-  }
-
-  /**
-   * Sizes
-   */
-  &[data-size='sm'] {
-    --dsc-table-padding: var(--ds-spacing-1) var(--ds-spacing-3);
-
-    @composes ds-body-text--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-table-padding: var(--ds-spacing-3) var(--ds-spacing-3);
-
-    @composes ds-body-text--lg from './base/base.css';
   }
 
   /**

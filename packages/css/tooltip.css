@@ -9,9 +9,8 @@
   border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
   color: var(--dsc-tooltip-color);
+  line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
-
-  @composes ds-body-text--short-xs from './base/base.css';
 
   &::before {
     content: '';

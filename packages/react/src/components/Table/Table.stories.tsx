@@ -2,20 +2,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
 
-import { Checkbox } from '../form/Checkbox';
-import { Textfield } from '../form/Textfield';
-
 import type { TableHeaderCellProps } from './TableHeaderCell';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-} from '.';
-import { Label } from '../Label';
+import { Checkbox, Label, Table, Textfield } from '../..';
 
 type Story = StoryFn<typeof Table>;
 
@@ -27,25 +16,25 @@ export default {
 export const Preview: Story = (args) => {
   return (
     <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell>Header 2</TableHeaderCell>
-          <TableHeaderCell>Header 3</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell>Cell 1</TableCell>
-          <TableCell>Cell 2</TableCell>
-          <TableCell>Cell 3</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Cell 4</TableCell>
-          <TableCell>Cell 5</TableCell>
-          <TableCell>Cell 6</TableCell>
-        </TableRow>
-      </TableBody>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Header 1</Table.HeaderCell>
+          <Table.HeaderCell>Header 2</Table.HeaderCell>
+          <Table.HeaderCell>Header 3</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>Cell 1</Table.Cell>
+          <Table.Cell>Cell 2</Table.Cell>
+          <Table.Cell>Cell 3</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Cell 4</Table.Cell>
+          <Table.Cell>Cell 5</Table.Cell>
+          <Table.Cell>Cell 6</Table.Cell>
+        </Table.Row>
+      </Table.Body>
     </Table>
   );
 };
@@ -117,32 +106,32 @@ export const Sortable: Story = (args) => {
 
   return (
     <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell
             sort={sortField === 'navn' ? sortDirection : 'none'}
             onClick={() => handleSort('navn')}
           >
             Navn
-          </TableHeaderCell>
-          <TableHeaderCell>Epost</TableHeaderCell>
-          <TableHeaderCell
+          </Table.HeaderCell>
+          <Table.HeaderCell>Epost</Table.HeaderCell>
+          <Table.HeaderCell
             sort={sortField === 'telefon' ? sortDirection : 'none'}
             onClick={() => handleSort('telefon')}
           >
             Telefon
-          </TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+          </Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
         {sortedData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.navn}</TableCell>
-            <TableCell>{row.epost}</TableCell>
-            <TableCell>{row.telefon}</TableCell>
-          </TableRow>
+          <Table.Row key={row.id}>
+            <Table.Cell>{row.navn}</Table.Cell>
+            <Table.Cell>{row.epost}</Table.Cell>
+            <Table.Cell>{row.telefon}</Table.Cell>
+          </Table.Row>
         ))}
-      </TableBody>
+      </Table.Body>
     </Table>
   );
 };
@@ -151,22 +140,22 @@ export const StickyHeader: Story = (args) => {
   const rows = Array.from({ length: 50 }, (_, i) => i + 1);
   return (
     <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell>Header 2</TableHeaderCell>
-          <TableHeaderCell>Header 3</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Header 1</Table.HeaderCell>
+          <Table.HeaderCell>Header 2</Table.HeaderCell>
+          <Table.HeaderCell>Header 3</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
         {rows.map((row) => (
-          <TableRow key={row}>
-            <TableCell>{`Cell ${row}1`}</TableCell>
-            <TableCell>{`Cell ${row}2`}</TableCell>
-            <TableCell>{`Cell ${row}3`}</TableCell>
-          </TableRow>
+          <Table.Row key={row}>
+            <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+          </Table.Row>
         ))}
-      </TableBody>
+      </Table.Body>
     </Table>
   );
 };
@@ -221,9 +210,9 @@ export const WithFormElements: Story = (args) => {
 
   return (
     <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
             <Label style={{ display: 'flex', gap: '8px' }}>
               <Checkbox
                 checked={headerChecked}
@@ -234,16 +223,16 @@ export const WithFormElements: Story = (args) => {
               />
               Selection
             </Label>
-          </TableHeaderCell>
-          <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell>Header 2</TableHeaderCell>
-          <TableHeaderCell>Header 3</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+          </Table.HeaderCell>
+          <Table.HeaderCell>Header 1</Table.HeaderCell>
+          <Table.HeaderCell>Header 2</Table.HeaderCell>
+          <Table.HeaderCell>Header 3</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
         {rows.map((row) => (
-          <TableRow key={row}>
-            <TableCell>
+          <Table.Row key={row}>
+            <Table.Cell>
               <Checkbox
                 aria-label={`Checkbox ${row}`}
                 checked={!!checkedItems[row]}
@@ -251,15 +240,15 @@ export const WithFormElements: Story = (args) => {
                 onChange={(event) => handleCheckboxChange(event, row)}
                 size='sm'
               />
-            </TableCell>
-            <TableCell>1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>
+            </Table.Cell>
+            <Table.Cell>1</Table.Cell>
+            <Table.Cell>2</Table.Cell>
+            <Table.Cell>
               <Textfield size='sm' aria-label={`Textfield ${row}`} />
-            </TableCell>
-          </TableRow>
+            </Table.Cell>
+          </Table.Row>
         ))}
-      </TableBody>
+      </Table.Body>
     </Table>
   );
 };
@@ -273,22 +262,22 @@ export const FixedTable: Story = (args) => {
         tableLayout: 'fixed',
       }}
     >
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell>Header 2</TableHeaderCell>
-          <TableHeaderCell>Header 3</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Header 1</Table.HeaderCell>
+          <Table.HeaderCell>Header 2</Table.HeaderCell>
+          <Table.HeaderCell>Header 3</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
         {rows.map((row) => (
-          <TableRow key={row}>
-            <TableCell>{`Cell ${row}1`}</TableCell>
-            <TableCell>{`Cell ${row}2`}</TableCell>
-            <TableCell>{`Cell ${row}3`}</TableCell>
-          </TableRow>
+          <Table.Row key={row}>
+            <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+          </Table.Row>
         ))}
-      </TableBody>
+      </Table.Body>
     </Table>
   );
 };
@@ -297,26 +286,26 @@ export const MultipleHeaderRows: Story = (args) => {
   const rows = Array.from({ length: 50 }, (_, i) => i + 1);
   return (
     <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Header 1</TableHeaderCell>
-          <TableHeaderCell colSpan={2}>Header 2</TableHeaderCell>
-        </TableRow>
-        <TableRow>
-          <TableHeaderCell>Header 3</TableHeaderCell>
-          <TableHeaderCell>Header 4</TableHeaderCell>
-          <TableHeaderCell>Header 5</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Header 1</Table.HeaderCell>
+          <Table.HeaderCell colSpan={2}>Header 2</Table.HeaderCell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell>Header 3</Table.HeaderCell>
+          <Table.HeaderCell>Header 4</Table.HeaderCell>
+          <Table.HeaderCell>Header 5</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
         {rows.map((row) => (
-          <TableRow key={row}>
-            <TableCell>{`Cell ${row}1`}</TableCell>
-            <TableCell>{`Cell ${row}2`}</TableCell>
-            <TableCell>{`Cell ${row}3`}</TableCell>
-          </TableRow>
+          <Table.Row key={row}>
+            <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+            <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+          </Table.Row>
         ))}
-      </TableBody>
+      </Table.Body>
     </Table>
   );
 };

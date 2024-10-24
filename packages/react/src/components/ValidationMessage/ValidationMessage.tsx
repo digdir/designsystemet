@@ -2,11 +2,11 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type ValidationMessageProps = {
   /**
    * Changes text sizing
-   * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
@@ -23,7 +23,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage(
-  { size = 'md', className, asChild, error = true, ...rest },
+  { size, className, asChild, error = true, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

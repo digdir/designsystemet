@@ -1,6 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { Size } from '../../types';
 
 export type TagProps = {
   /**
@@ -18,9 +19,8 @@ export type TagProps = {
     | 'brand3';
   /**
    * Size of the tag
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**
@@ -29,7 +29,7 @@ export type TagProps = {
  * <Tag color='success'>Success</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { size = 'md', color = 'neutral', className, ...rest },
+  { size, color = 'neutral', className, ...rest },
   ref,
 ) {
   return (

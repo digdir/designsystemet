@@ -12,6 +12,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
+import type { Size } from '../../types';
 import { Context } from './PopoverContext';
 
 // Make React support popovertarget attribute
@@ -51,9 +52,8 @@ export type PopoverProps = {
   open?: boolean;
   /**
    * Size of the popover
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /**
    * Callback when the popover wants to open.
    */
@@ -80,7 +80,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onOpen,
       open,
       placement = 'top',
-      size = 'md',
+      size,
       variant = 'default',
       autoPlacement = true,
       asChild = false,

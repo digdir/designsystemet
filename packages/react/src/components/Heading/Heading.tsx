@@ -10,8 +10,6 @@ export type HeadingProps = {
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Changes text sizing
-   * @default 'xl'
-   *
    */
   size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /**
@@ -28,10 +26,7 @@ export type HeadingProps = {
  * <Heading size='lg' level={2}>Heading</Heading>
  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  function Heading(
-    { size = 'xl', level = 2, className, asChild, ...rest },
-    ref,
-  ) {
+  function Heading({ size, level = 2, className, asChild, ...rest }, ref) {
     const Component = asChild ? Slot : (`h${level}` as ElementType);
 
     return (

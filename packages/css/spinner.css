@@ -1,36 +1,41 @@
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-neutral-surface-default);
   --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
-  --dsc-spinner-size: var(--ds-sizing-11);
   --dsc-spinner-animation-duration: 2s;
 
   animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
   box-sizing: border-box;
-  height: var(--dsc-spinner-size);
-  width: var(--dsc-spinner-size);
+  font-size: var(--ds-sizing-11);
+  height: 1em;
+  width: 1em;
 
   &[data-color='accent'] {
     --dsc-spinner-stroke: var(--ds-color-accent-base-default);
   }
 
+  /* Using font-size to ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    --dsc-spinner-size: var(--ds-sizing-3);
+    font-size: 0.75rem;
   }
 
   &[data-size='xs'] {
-    --dsc-spinner-size: var(--ds-sizing-5);
+    font-size: 1.25rem;
   }
 
   &[data-size='sm'] {
-    --dsc-spinner-size: var(--ds-sizing-8);
+    font-size: 2rem;
+  }
+
+  &[data-size='md'] {
+    font-size: 2.75rem;
   }
 
   &[data-size='lg'] {
-    --dsc-spinner-size: var(--ds-sizing-15);
+    font-size: 3.75rem;
   }
 
   &[data-size='xl'] {
-    --dsc-spinner-size: var(--ds-sizing-22);
+    font-size: 5.5rem;
   }
 }
 
