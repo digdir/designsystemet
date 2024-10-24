@@ -8,3 +8,22 @@ export type PortalProps = {
    */
   portal?: boolean;
 };
+
+declare global {
+  namespace React.JSX {
+    interface IntrinsicAttributes {
+      /**
+       * Affects the size of components.
+       */
+      'data-size'?: Size;
+    }
+  }
+  namespace React {
+    interface HTMLAttributes<T> {
+      /**
+       * Affects the size of components.
+       */
+      'data-size'?: Size;
+    }
+  }
+}
