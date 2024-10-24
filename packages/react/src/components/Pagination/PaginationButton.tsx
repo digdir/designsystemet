@@ -1,4 +1,4 @@
-import { type AriaAttributes, forwardRef, useContext } from 'react';
+import { type AriaAttributes, forwardRef } from 'react';
 
 import { Button, type ButtonProps } from '../Button/Button';
 

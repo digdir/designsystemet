@@ -1,7 +1,5 @@
-import { forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
 import { List, type ListUnorderedProps } from '../List';
-
-import { ErrorSummaryContext } from './ErrorSummary';
 
 export type ErrorSummaryListProps = ListUnorderedProps;
 
