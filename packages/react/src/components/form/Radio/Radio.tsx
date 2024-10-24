@@ -1,4 +1,3 @@
-import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
