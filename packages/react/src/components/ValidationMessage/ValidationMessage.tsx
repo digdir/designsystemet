@@ -6,7 +6,6 @@ import { forwardRef } from 'react';
 export type ValidationMessageProps = {
   /**
    * Changes text sizing
-   * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
@@ -23,7 +22,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage(
-  { size = 'md', className, asChild, error = true, ...rest },
+  { size, className, asChild, error = true, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

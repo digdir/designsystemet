@@ -1,7 +1,6 @@
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import { Container } from '@repo/components';
-import cl from 'clsx/lite';
 import NextLink from 'next/link';
 import type * as React from 'react';
 

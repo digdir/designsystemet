@@ -12,14 +12,13 @@
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   display: inline-flex;
+  font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
   justify-content: center;
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
-
-  @composes ds-body-text--xs from './base/base.css';
 
   &:not(:has(> img)) {
     padding: var(--dsc-avatar-padding);
@@ -79,31 +78,20 @@
     --dsc-avatar-color: var(--ds-color-brand3-contrast-default);
   }
 
+  /* TODO: Sizes */
   &[data-size='xs'] {
-    --dsc-avatar-size: var(--ds-sizing-7);
-    --dsc-avatar-padding: var(--ds-spacing-1);
-
-    @composes ds-body-text--xs from './base/base.css';
+    font-size: var(--ds-body-xs-font-size);
   }
 
   &[data-size='sm'] {
-    --dsc-avatar-size: var(--ds-sizing-9);
-    --dsc-avatar-padding: var(--ds-spacing-1);
-
     @composes ds-heading-text--2xs from './base/base.css';
   }
 
   &[data-size='md'] {
-    --dsc-avatar-size: var(--ds-sizing-12);
-    --dsc-avatar-padding: var(--ds-spacing-2);
-
     @composes ds-heading-text--sm from './base/base.css';
   }
 
   &[data-size='lg'] {
-    --dsc-avatar-size: var(--ds-sizing-15);
-    --dsc-avatar-padding: var(--ds-spacing-2);
-
     @composes ds-heading-text--md from './base/base.css';
   }
 }

@@ -1,6 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
+import type { Size } from '../../types';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -11,16 +12,14 @@ export type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * Changes items size and paddings
-   * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
 
 export type ContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  size?: TabsProps['size'];
 };
 
 export const Context = createContext<ContextProps>({});
@@ -42,7 +41,7 @@ export const Context = createContext<ContextProps>({});
  * ```
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { size = 'md', value, defaultValue, className, onChange, ...rest },
+  { size, value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
   const isControlled = value !== undefined;
@@ -64,7 +63,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         value,
         defaultValue,
         onChange: onValueChange,
-        size,
       }}
     >
       <div

@@ -21,9 +21,9 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
+import { Fragment, cloneElement, forwardRef, useState } from 'react';
 
-import type { PortalProps } from '../../types/Portal';
+import type { PortalProps } from '../../types';
 
 export type TooltipProps = {
   /**

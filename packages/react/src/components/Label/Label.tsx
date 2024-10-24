@@ -6,7 +6,6 @@ import { forwardRef } from 'react';
 export type LabelProps = {
   /**
    * Changes text sizing
-   * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
@@ -28,7 +27,7 @@ export type LabelProps = {
  * <Label size='lg'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, size = 'md', weight = 'medium', asChild, ...rest },
+  { className, size, weight = 'medium', asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';
