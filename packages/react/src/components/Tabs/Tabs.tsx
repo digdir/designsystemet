@@ -1,7 +1,8 @@
+import type { UHTMLTabsElement } from '@u-elements/u-tabs';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { createContext, forwardRef, useState } from 'react';
-import type { Size } from '../../types';
+import { forwardRef, useState } from 'react';
+import '@u-elements/u-tabs';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -13,16 +14,8 @@ export type TabsProps = {
   /**
    * Changes items size and paddings
    */
-  size?: Size;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
-
-export type ContextProps = {
-  value?: string;
-  defaultValue?: string;
-  onChange?: (value: string) => void;
-};
-
-export const Context = createContext<ContextProps>({});
+  size?: 'sm' | 'md' | 'lg';
+} & HTMLAttributes<UHTMLTabsElement>;
 
 /**
  * Display a group of tabs that can be toggled between.
@@ -40,8 +33,8 @@ export const Context = createContext<ContextProps>({});
  * </Tabs>
  * ```
  */
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { size, value, defaultValue, className, onChange, ...rest },
+export const Tabs = forwardRef<UHTMLTabsElement, TabsProps>(function Tabs(
+  { size = 'md', value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
   const isControlled = value !== undefined;
@@ -49,28 +42,31 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     string | undefined
   >(defaultValue);
 
-  let onValueChange = onChange;
+  // let onValueChange = onChange;
   if (!isControlled) {
-    onValueChange = (newValue: string) => {
-      setUncontrolledValue(newValue);
-      onChange?.(newValue);
-    };
+    // onValueChange = (newValue: string) => {
+    //   setUncontrolledValue(newValue);
+    //   onChange?.(newValue);
+    // };
     value = uncontrolledValue;
   }
+  // onClick={() => tabs.onChange?.(value)}
+  // <Context.Provider
+  //   value={{
+  //     value,
+  //     defaultValue,
+  //     onChange: onValueChange,
+  //     size,
+  //   }}
+  // >
+  //   </Context.Provider>
+
   return (
-    <Context.Provider
-      value={{
-        value,
-        defaultValue,
-        onChange: onValueChange,
-      }}
-    >
-      <div
-        className={cl('ds-tabs', className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
-    </Context.Provider>
+    <u-tabs
+      class={cl('ds-tabs', className)}
+      data-size={size}
+      ref={ref}
+      {...rest}
+    />
   );
 });
