@@ -3843,11 +3843,11 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-error_message-lg",
+    name: "--ds-validation-message-lg",
     attributes: {},
     path: [
       "typography",
-      "error_message",
+      "validation-message",
       "lg"
     ]
   },
@@ -3872,11 +3872,11 @@ export const  typography = [
         letterSpacing: "{letter-spacing.8}"
       }
     },
-    name: "--ds-error_message-md",
+    name: "--ds-validation-message-md",
     attributes: {},
     path: [
       "typography",
-      "error_message",
+      "validation-message",
       "md"
     ]
   },
@@ -3901,11 +3901,11 @@ export const  typography = [
         letterSpacing: "{letter-spacing.7}"
       }
     },
-    name: "--ds-error_message-sm",
+    name: "--ds-validation-message-sm",
     attributes: {},
     path: [
       "typography",
-      "error_message",
+      "validation-message",
       "sm"
     ]
   },
@@ -3930,11 +3930,11 @@ export const  typography = [
         letterSpacing: "{letter-spacing.6}"
       }
     },
-    name: "--ds-error_message-xs",
+    name: "--ds-validation-message-xs",
     attributes: {},
     path: [
       "typography",
-      "error_message",
+      "validation-message",
       "xs"
     ]
   }
