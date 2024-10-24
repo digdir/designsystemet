@@ -1,8 +1,6 @@
-import { type AriaAttributes, forwardRef, useContext } from 'react';
+import { type AriaAttributes, forwardRef } from 'react';
 
 import { Button, type ButtonProps } from '../Button/Button';
-
-import { PaginationContext } from './Pagination';
 
 export type PaginationButtonProps = {
   /**
@@ -16,7 +14,5 @@ export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
 >(function PaginationButton(rest, ref) {
-  const { size } = useContext(PaginationContext);
-
-  return <Button ref={ref} size={size} {...rest} />;
+  return <Button ref={ref} {...rest} />;
 });

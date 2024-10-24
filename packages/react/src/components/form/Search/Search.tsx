@@ -4,6 +4,7 @@ import cl from 'clsx/lite';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 
+import type { Size } from '../../../types';
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
 import { Label } from '../../Label';
@@ -23,7 +24,7 @@ export type SearchProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /** Variant
    * @default 'simple'
    */

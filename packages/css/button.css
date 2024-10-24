@@ -5,12 +5,8 @@
   --dsc-button-color: var(--ds-color-accent-contrast-default);
   --dsc-button-font-size: var(--ds-font-size-5);
   --dsc-button-gap: var(--ds-spacing-2);
-  --dsc-button-padding-block: var(--ds-spacing-2);
-  --dsc-button-padding-inline: var(--ds-spacing-4);
+  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
-
-  @composes ds-body-text--short-md from './base/base.css';
-  @composes ds-focus from './base/base.css';
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -20,19 +16,27 @@
   color: var(--dsc-button-color);
   cursor: pointer;
   font-family: inherit;
+  font-weight: var(--ds-font-weight-medium);
   gap: var(--dsc-button-gap);
   justify-content: center;
+  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-button-size);
   min-width: var(--dsc-button-size);
   outline: none;
-  padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
+  padding: var(--dsc-button-padding);
   text-align: inherit;
   text-decoration: none;
-  font-weight: var(--ds-font-weight-medium);
 
-  & svg,
-  & img {
+  @composes ds-focus from './base/base.css';
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
+
+  & :where(img, svg) {
     flex-shrink: 0;
+    font-size: 1.25em;
+    margin-block: -99em; /* Prevent large icon from crashing with padding */
   }
 
   &:focus-visible {
@@ -43,27 +47,8 @@
     display: flex;
   }
 
-  &[data-size='sm'] {
-    --dsc-button-gap: var(--ds-sizing-1);
-    --dsc-button-padding-block: var(--ds-spacing-2);
-    --dsc-button-padding-inline: var(--ds-spacing-3);
-    --dsc-button-size: var(--ds-sizing-10);
-
-    @composes ds-body-text--short-sm from './base/base.css';
-    font-weight: var(--ds-font-weight-medium);
-  }
-
-  &[data-size='lg'] {
-    --dsc-button-padding-block: var(--ds-spacing-3);
-    --dsc-button-padding-inline: var(--ds-spacing-5);
-    --dsc-button-size: var(--ds-sizing-14);
-
-    @composes ds-body-text--short-lg from './base/base.css';
-    font-weight: var(--ds-font-weight-medium);
-  }
-
   &[data-icon] {
-    padding-inline: var(--dsc-button-padding-block);
+    padding: 0;
   }
 
   &[data-fullwidth] {
