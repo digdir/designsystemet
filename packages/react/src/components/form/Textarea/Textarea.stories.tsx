@@ -62,7 +62,6 @@ export const Preview: Story = {
 
 export const FullWidth: Story = {
   args: {
-    rows: 10,
     cols: 40,
     id: 'my-textarea',
   },

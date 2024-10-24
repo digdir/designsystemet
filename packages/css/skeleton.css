@@ -4,7 +4,7 @@
   --dsc-skeleton-background: var(--ds-color-neutral-surface-default);
 
   animation: var(--dsc-skeleton-animation);
-  border-radius: min(1rem, var(--ds-border-radius-lg));
+  border-radius: var(--ds-border-radius-lg);
   box-sizing: border-box;
   display: block;
   height: 1.3em;

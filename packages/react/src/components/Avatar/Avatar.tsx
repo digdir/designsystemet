@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
+import type { Size } from '../../types';
 
 export type AvatarProps = {
   /**
@@ -16,8 +17,6 @@ export type AvatarProps = {
   color?: 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
   /**
    * The size of the avatar.
-   *
-   * @default 'md'
    */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
@@ -54,7 +53,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
     color = 'accent',
-    size = 'md',
+    size,
     variant = 'circle',
     className,
     children,

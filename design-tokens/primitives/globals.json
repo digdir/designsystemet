@@ -134,12 +134,6 @@
       ]
     }
   },
-  "border-radius": {
-    "base": {
-      "$type": "borderRadius",
-      "$value": "4"
-    }
-  },
   "opacity": {
     "30": {
       "$type": "opacity",
@@ -147,13 +141,13 @@
     }
   },
   "sizing": {
-    "base": {
+    "scale": {
       "$type": "sizing",
       "$value": "4"
     }
   },
   "spacing": {
-    "base": {
+    "scale": {
       "$type": "spacing",
       "$value": "4"
     }

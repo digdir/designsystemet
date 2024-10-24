@@ -1,30 +1,27 @@
 import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { HTMLAttributes } from 'react';
-
-import type { ListUnorderedProps } from '../List';
+import type { Size } from '../../types';
 
 type ErrorSummaryContextType = {
-  size: ListUnorderedProps['size'];
   headingId?: string;
   setHeadingId: (id: string) => void;
 };
 
 export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
-  size: 'md',
   headingId: 'heading',
   setHeadingId: () => {},
 });
 
 export type ErrorSummaryProps = {
-  size?: ListUnorderedProps['size'];
+  size?: Size;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(
     {
       className,
-      size = 'md',
+      size,
       role = 'alert',
       'aria-live': ariaLive = 'polite',
       'aria-relevant': ariaRelevant = 'all',
@@ -36,7 +33,7 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     const [headingId, setHeadingId] = useState<string>(randomId);
 
     return (
-      <ErrorSummaryContext.Provider value={{ size, headingId, setHeadingId }}>
+      <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <div
           aria-labelledby={headingId}
           aria-live={ariaLive}

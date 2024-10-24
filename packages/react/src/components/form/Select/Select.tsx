@@ -1,13 +1,14 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { SelectHTMLAttributes } from 'react';
+import type { Size } from '../../../types';
 
 export type SelectProps = {
   /**
    * Defines the size of the select.
    * @default md
    **/
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
   /** Defines if the select is readOnly
    * @default false
    */

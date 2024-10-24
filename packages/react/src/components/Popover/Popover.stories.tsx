@@ -72,25 +72,40 @@ export const Variants: StoryFn<typeof Popover> = () => {
       >
         <Popover.Context>
           <Popover.Trigger>popover</Popover.Trigger>
-          <Popover open={open} placement='top'>
+          <Popover open={open} placement='top' autoPlacement={false}>
             default
           </Popover>
         </Popover.Context>
         <Popover.Context>
           <Popover.Trigger>popover</Popover.Trigger>
-          <Popover open={open} placement='bottom' variant='danger'>
+          <Popover
+            open={open}
+            placement='bottom'
+            variant='danger'
+            autoPlacement={false}
+          >
             danger
           </Popover>
         </Popover.Context>
         <Popover.Context>
           <Popover.Trigger>popover</Popover.Trigger>
-          <Popover open={open} placement='top' variant='info'>
+          <Popover
+            open={open}
+            placement='top'
+            variant='info'
+            autoPlacement={false}
+          >
             info
           </Popover>
         </Popover.Context>
         <Popover.Context>
           <Popover.Trigger>popover</Popover.Trigger>
-          <Popover open={open} placement='bottom' variant='warning'>
+          <Popover
+            open={open}
+            placement='bottom'
+            variant='warning'
+            autoPlacement={false}
+          >
             warning
           </Popover>
         </Popover.Context>

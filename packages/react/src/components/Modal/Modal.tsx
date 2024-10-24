@@ -20,7 +20,6 @@ export type ModalProps = {
   backdropClose?: boolean;
   /**
    * Callback that is called when the modal is closed.
-   * @default undefined
    */
   onClose?: () => void;
   asChild?: boolean;

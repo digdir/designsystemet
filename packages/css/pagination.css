@@ -1,5 +1,5 @@
 .ds-pagination {
-  --dsc-pagination-gap: var(--ds-spacing-4);
+  --dsc-pagination-gap: var(--ds-spacing-2);
   --dsc-pagination-ellipsis-width: var(--ds-sizing-12);
   --dsc-pagination-chevron-size: var(--ds-sizing-6);
   --dsc-pagination-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
@@ -25,30 +25,16 @@
       rotate: 180deg;
     }
 
-    /* Makes page buttons square */
-    & > li:not(:first-child, :last-child) > :is(a, button) {
-      --dsc-button-padding-inline: var(--dsc-button-padding-block);
-    }
-
     /* Style as non-interactive ellipsis when empty */
-    & > li > [aria-hidden='true'] {
+    & > li > :empty {
       color: inherit;
+      padding: 0; /* Make ellipsis element square */
       pointer-events: none;
 
       &::before {
         content: '\2026'; /* ellipsis */
       }
     }
-  }
-
-  &[data-size='sm'] {
-    --dsc-pagination-gap: var(--ds-spacing-2);
-    --dsc-pagination-ellipsis-width: var(--ds-sizing-10);
-  }
-
-  &[data-size='lg'] {
-    --dsc-pagination-gap: var(--ds-spacing-6);
-    --dsc-pagination-ellipsis-width: var(--ds-sizing-14);
   }
 
   &[data-compact] {

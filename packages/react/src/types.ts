@@ -1,3 +1,5 @@
+export type Size = 'sm' | 'md' | 'lg';
+
 export type PortalProps = {
   /**
    * Portals the floating element outside of the app root and into the body.

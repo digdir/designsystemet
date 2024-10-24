@@ -1,8 +1,11 @@
 .ds-heading {
-  margin: 0;
-
   @composes ds-heading-text--md from './base/base.css';
 
+  margin: 0;
+  font-size: 1.3em; /* Fallback if not supporting round() */
+  font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
+
+  /* Using font-size to ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
     @composes ds-heading-text--2xs from './base/base.css';
   }
@@ -13,6 +16,10 @@
 
   &[data-size='sm'] {
     @composes ds-heading-text--sm from './base/base.css';
+  }
+
+  &[data-size='md'] {
+    @composes ds-heading-text--md from './base/base.css';
   }
 
   &[data-size='lg'] {

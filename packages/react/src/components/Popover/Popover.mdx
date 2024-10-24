@@ -41,6 +41,11 @@ Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker p
 
 <Canvas of={PopoverStories.Controlled} />
 
+### Auto Plassering
+
+Standard oppførsel er at `Popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
+`Popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+
 ## Tilgjengelighet
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.

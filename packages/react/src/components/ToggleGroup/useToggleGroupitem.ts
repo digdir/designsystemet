@@ -1,14 +1,12 @@
 import { useContext, useId } from 'react';
 
 import type { ButtonProps } from '../Button';
-import type { ToggleGroupContextProps } from './ToggleGroup';
 import { ToggleGroupContext } from './ToggleGroup';
 
 import type { ToggleGroupItemProps } from './ToggleGroupItem';
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;
-  size?: ToggleGroupContextProps['size'];
   value: string;
   buttonProps?: Pick<
     ButtonProps,
@@ -30,7 +28,6 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   return {
     ...rest,
     active: active,
-    size: toggleGroup?.size,
     value,
     buttonProps: {
       id: buttonId,

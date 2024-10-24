@@ -16,12 +16,15 @@ export default {
   },
 } satisfies Meta;
 
-export const Preview: Story = {
-  args: {
-    content: 'Tooltip text',
-    children: defaultChildren,
-    placement: 'top',
-  },
+export const Preview: StoryFn<typeof Tooltip> = (args) => (
+  <Tooltip {...args}>
+    <Button>My trigger</Button>
+  </Tooltip>
+);
+
+Preview.args = {
+  content: 'Tooltip text',
+  placement: 'top',
 };
 
 export const Placement: Story = {

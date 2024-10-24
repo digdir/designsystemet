@@ -2,6 +2,7 @@ import cl from 'clsx/lite';
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 
+import type { Size } from '../../types';
 import { FieldsetContext } from './Fieldset/FieldsetContext';
 
 export type FormFieldProps = {
@@ -23,7 +24,7 @@ export type FormFieldProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: Size;
 } & Pick<HTMLAttributes<HTMLElement>, 'aria-describedby'>;
 
 export type FormField = {
