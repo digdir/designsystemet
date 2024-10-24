@@ -1,11 +1,10 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
 
-import type { IsCalculatedToken } from '../configs.js';
-import { prefix } from '../configs.js';
-import { getValue, typeEquals } from '../utils/utils.js';
+import type { IsCalculatedToken } from '../types.js';
+import { getValue } from '../utils/utils.js';
 
 const prefersColorScheme = (mode: string, content: string) => `
 @media (prefers-color-scheme: ${mode}) {
