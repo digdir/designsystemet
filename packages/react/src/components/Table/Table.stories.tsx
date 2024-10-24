@@ -218,7 +218,7 @@ export const WithFormElements: Story = (args) => {
               onChange={handleHeaderCheckboxChange}
               ref={headerCheck}
               value='all'
-              size='sm'
+              data-size='sm'
             />
           </Table.HeaderCell>
           <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -235,13 +235,13 @@ export const WithFormElements: Story = (args) => {
                 checked={!!checkedItems[row]}
                 value={row.toString()}
                 onChange={(event) => handleCheckboxChange(event, row)}
-                size='sm'
+                data-size='sm'
               />
             </Table.Cell>
             <Table.Cell>1</Table.Cell>
             <Table.Cell>2</Table.Cell>
             <Table.Cell>
-              <Textfield size='sm' aria-label={`Textfield ${row}`} />
+              <Textfield data-size='sm' aria-label={`Textfield ${row}`} />
             </Table.Cell>
           </Table.Row>
         ))}

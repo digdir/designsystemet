@@ -161,7 +161,7 @@ export const Text: StoryFn<typeof Input> = (args) => {
   const states = [
     { label: 'Default', props: {} },
     { label: 'Disabled', props: { disabled: true } },
-    { label: 'Invalid', props: { 'aria-invalid': 'true' } },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
     { label: 'Read-only', props: { readOnly: true } },
   ];
 
@@ -214,10 +214,10 @@ export const Radio: StoryFn<typeof Input> = (args) => {
       label: 'Disabled checked',
       props: { disabled: true, defaultChecked: true },
     },
-    { label: 'Invalid', props: { 'aria-invalid': 'true' } },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
     {
       label: 'Invalid checked',
-      props: { 'aria-invalid': 'true', defaultChecked: true },
+      props: { 'aria-invalid': true, defaultChecked: true },
     },
     { label: 'Read-only', props: { readOnly: true } },
     {
@@ -285,14 +285,14 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
       label: 'Disabled indeterminate',
       props: { disabled: true, 'data-indeterminate': true },
     },
-    { label: 'Invalid', props: { 'aria-invalid': 'true' } },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
     {
       label: 'Invalid checked',
-      props: { 'aria-invalid': 'true', defaultChecked: true },
+      props: { 'aria-invalid': true, defaultChecked: true },
     },
     {
       label: 'Invalid indeterminate',
-      props: { 'aria-invalid': 'true', 'data-indeterminate': true },
+      props: { 'aria-invalid': true, 'data-indeterminate': true },
     },
     { label: 'Read-only', props: { readOnly: true } },
     {
