@@ -1,7 +1,6 @@
 ---
 "@digdir/designsystemet-css": major
 "@digdir/designsystemet-react": major
-"theme": patch
 ---
 
 Radio + Checkbox:
