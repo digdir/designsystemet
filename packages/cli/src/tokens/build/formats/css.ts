@@ -4,7 +4,7 @@ import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
 
 import type { IsCalculatedToken } from '../types.js';
-import { getValue } from '../utils/utils.js';
+import { getValue, isGlobalColorToken, isSemanticToken } from '../utils/utils.js';
 
 const prefersColorScheme = (mode: string, content: string) => `
 @media (prefers-color-scheme: ${mode}) {
@@ -32,7 +32,15 @@ export const colormode: Format = {
 
     const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `\n  color-scheme: ${mode_};\n` : '';
 
-    const formattedTokens = dictionary.allTokens.map(format).join('\n');
+    const filteredAllTokens = allTokens.filter(
+      R.anyPass([
+        // Include semantic tokens in the output
+        isSemanticToken,
+        // Include global color tokens
+        isGlobalColorToken,
+      ]),
+    );
+    const formattedTokens = filteredAllTokens.map(format).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
     const body = R.isNotNil(layer)
