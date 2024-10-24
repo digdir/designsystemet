@@ -1,5 +1,34 @@
 # Change Log
 
+## 1.0.0-next.36
+
+### Major Changes
+
+- Radio + Checkbox: ([#2607](https://github.com/digdir/designsystemet/pull/2607))
+  - Use `label` prop instead of `children` as label text
+  - Remove `Radio.Group` and `Checkbox.Group` and use `Fieldset` instead
+
+### Patch Changes
+
+- CSS: base sizing on font-size so all components can have all sizes, and naturally inherits size from context ([#2541](https://github.com/digdir/designsystemet/pull/2541))
+
+- Input: Sufficient color contrast for readonly ([#2621](https://github.com/digdir/designsystemet/pull/2621))
+
+- Popover: Make sure arrow does not leave the popover ([#2652](https://github.com/digdir/designsystemet/pull/2652))
+
+- Modal: Fix `onClose` not being called ([#2622](https://github.com/digdir/designsystemet/pull/2622))
+
+- Field: Adds `<Field>` component wrapping and connecting internal form elements for better accessibility ([#2502](https://github.com/digdir/designsystemet/pull/2502))
+
+- Avatar: Fix `aria-hidden` being wrongly added to a fragment ([#2626](https://github.com/digdir/designsystemet/pull/2626))
+
+- Label: Use data attributes for styling ([#2588](https://github.com/digdir/designsystemet/pull/2588))
+
+  ValidationMessage: Use data attributes for styling
+
+- Select + Textarea: ([#2571](https://github.com/digdir/designsystemet/pull/2571))
+  - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
+
 ## 1.0.0-next.35
 
 ### Patch Changes
