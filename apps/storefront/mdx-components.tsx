@@ -34,17 +34,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Heading
         {...props}
         level={1}
-        size='xl'
+        data-='xl'
         style={{
           marginBottom: 'var(--ds-spacing-4)',
         }}
       />
     ),
-    h2: (props: HeadingProps) => <Heading {...props} level={2} size='md' />,
-    h3: (props: HeadingProps) => <Heading {...props} level={3} size='sm' />,
-    h4: (props: HeadingProps) => <Heading {...props} level={4} size='xs' />,
-    h5: (props: HeadingProps) => <Heading {...props} level={5} size='xs' />,
-    h6: (props: HeadingProps) => <Heading {...props} level={6} size='xs' />,
+    h2: (props: HeadingProps) => <Heading {...props} level={2} data-='md' />,
+    h3: (props: HeadingProps) => <Heading {...props} level={3} data-='sm' />,
+    h4: (props: HeadingProps) => <Heading {...props} level={4} data-='xs' />,
+    h5: (props: HeadingProps) => <Heading {...props} level={5} data-='xs' />,
+    h6: (props: HeadingProps) => <Heading {...props} level={6} data-='xs' />,
     table: (props) => <Table {...props} border zebra />,
     thead: (props) => <TableHead {...props} />,
     tbody: (props) => <TableBody {...props} />,
