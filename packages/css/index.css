@@ -10,15 +10,15 @@
 @import url('./paragraph.css') layer(ds.typography);
 @import url('./validation-message.css') layer(ds.typography);
 @import url('./button.css') layer(ds.components);
+@import url('./field.css') layer(ds.components);
+@import url('./input.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./accordion.css') layer(ds.components);
-@import url('./field.css') layer(ds.components);
 @import url('./switch.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
-@import url('./input.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);
 @import url('./modal.css') layer(ds.components);
 @import url('./list.css') layer(ds.components);
