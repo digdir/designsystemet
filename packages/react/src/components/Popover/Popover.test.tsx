@@ -3,8 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
 import type { PopoverProps } from './';
-
-import { Button } from '../Button';
 import { Popover } from './';
 
 const contentText = 'popover content';

@@ -1,5 +1,4 @@
 import { ComponentCard } from '@components';
-import React from 'react';
 
 import { data } from './component-list';
 

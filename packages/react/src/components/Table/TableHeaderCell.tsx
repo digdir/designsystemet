@@ -1,5 +1,5 @@
 import type { AriaAttributes } from 'react';
-import { type MouseEvent, type ThHTMLAttributes, forwardRef } from 'react';
+import { type ThHTMLAttributes, forwardRef } from 'react';
 
 export type TableHeaderCellProps = {
   /**

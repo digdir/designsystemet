@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 
 import { Input, Label } from '../..';
 import { fieldObserver } from './fieldObserver';

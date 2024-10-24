@@ -1,6 +1,5 @@
 import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import Image from 'next/image';
 import NextLink from 'next/link';
 import { type ReactNode, forwardRef } from 'react';
 import { Container } from '../';

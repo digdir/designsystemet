@@ -1,5 +1,5 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Button, Label, Select, Tooltip } from '@digdir/designsystemet-react';
+import { Button, Tooltip } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ContrastMode,

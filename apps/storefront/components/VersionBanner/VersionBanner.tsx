@@ -1,5 +1,4 @@
 import cl from 'clsx/lite';
-import React from 'react';
 import classes from './VersionBanner.module.css';
 
 function VersionBanner() {

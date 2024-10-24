@@ -65,7 +65,8 @@
         "useAriaPropsForRole": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "error"
       },
       "style": {
         "useTemplate": "off",
