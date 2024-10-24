@@ -2,7 +2,6 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Size } from '../../types';
 
 export type ValidationMessageProps = {
   /**
