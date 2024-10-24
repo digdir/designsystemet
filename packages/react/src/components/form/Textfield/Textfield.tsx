@@ -23,7 +23,7 @@ export type TextfieldProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: Size;
+  'data-size'?: Size;
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */

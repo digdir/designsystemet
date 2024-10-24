@@ -17,7 +17,7 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     disabled: false,
-    size: 'md',
+    'data-size': 'md',
     placeholder: '',
     variant: 'simple',
   },

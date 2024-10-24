@@ -24,7 +24,7 @@ export type SearchProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: Size;
+  'data-size'?: Size;
   /** Variant
    * @default 'simple'
    */
