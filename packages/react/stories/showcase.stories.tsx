@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import {
   Accordion,
+  Avatar,
   Button,
   Card,
   Checkbox,
@@ -140,11 +141,9 @@ export const Showcase: StoryFn = () => {
           <Table.Body>
             <Table.Row>
               <Table.Cell className={classes.tableCell}>
-                <img
-                  className={classes.tableImg}
-                  src='img/avatars/female1.png'
-                  alt=''
-                />
+                <Avatar aria-label='dame' data-size='xs'>
+                  <img src='img/avatars/female1.png' alt='' />
+                </Avatar>
                 Lise Nordmann
               </Table.Cell>
               <Table.Cell>lise@nordmann.no</Table.Cell>
@@ -152,11 +151,9 @@ export const Showcase: StoryFn = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell className={classes.tableCell}>
-                <img
-                  className={classes.tableImg}
-                  src='img/avatars/male2.png'
-                  alt=''
-                />
+                <Avatar aria-label='mann' data-size='xs'>
+                  <img src='img/avatars/male2.png' alt='' />
+                </Avatar>
                 Ola Nordmann
               </Table.Cell>
               <Table.Cell>ola@nordmann.no</Table.Cell>
