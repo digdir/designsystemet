@@ -36,6 +36,8 @@ import type { Decorator } from '@storybook/react';
  */
 export const customStylesDecorator: Decorator = (Story, ctx) => {
   const { docs, story, ...style } = ctx.parameters.customStyles ?? {};
+  /* get data-size */
+  const size = ctx.args['data-size'];
 
   return (
     <div
@@ -47,6 +49,7 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
         ...(ctx.viewMode === 'docs' && docs),
         ...(ctx.viewMode === 'story' && story),
       }}
+      data-size={size}
     >
       <Story />
     </div>

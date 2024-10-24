@@ -2,7 +2,6 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import type { Size } from '../../types';
 import { Spinner } from '../loaders/Spinner';
 
 export type ButtonProps = {
@@ -15,10 +14,6 @@ export type ButtonProps = {
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
-  /**
-   * Size
-   */
-  size?: Size;
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -53,7 +48,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = 'accent',
       icon = false,
       loading = false,
-      size,
       variant = 'primary',
       ...rest
     },
@@ -69,7 +63,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cl('ds-button', className)}
         data-color={color}
         data-icon={icon || undefined}
-        data-size={size}
         data-variant={variant}
         ref={ref}
         /* don't set type when we use `asChild` */

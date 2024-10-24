@@ -30,7 +30,7 @@ export type AvatarProps = {
    * Gets `aria-hidden="true"`
    */
   children?: ReactNode;
-} & Omit<HTMLAttributes<HTMLSpanElement>, 'aria-label'>;
+} & Omit<HTMLAttributes<HTMLSpanElement>, 'aria-label' | 'data-size'>;
 
 /**
  * Avatars are used to represent people or entities.
@@ -54,6 +54,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     color = 'accent',
     variant = 'circle',
     className,
+    'data-size': size,
     children,
     ...rest
   },
