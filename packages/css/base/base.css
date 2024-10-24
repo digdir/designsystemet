@@ -168,30 +168,30 @@ body,
 
 /* TODO: Maybe remove validation sizes after sync with design */
 .ds-validation-message--xs {
-  font-weight: var(--ds-error_message-xs-font-weight);
-  line-height: var(--ds-error_message-xs-line-height);
-  font-size: var(--ds-error_message-xs-font-size);
-  letter-spacing: var(--ds-error_message-xs-letter-spacing);
+  font-weight: var(--ds-validation-message-xs-font-weight);
+  line-height: var(--ds-validation-message-xs-line-height);
+  font-size: var(--ds-validation-message-xs-font-size);
+  letter-spacing: var(--ds-validation-message-xs-letter-spacing);
 }
 
 .ds-validation-message--sm {
-  font-weight: var(--ds-error_message-sm-font-weight);
-  line-height: var(--ds-error_message-sm-line-height);
-  font-size: var(--ds-error_message-sm-font-size);
-  letter-spacing: var(--ds-error_message-sm-letter-spacing);
+  font-weight: var(--ds-validation-message-sm-font-weight);
+  line-height: var(--ds-validation-message-sm-line-height);
+  font-size: var(--ds-validation-message-sm-font-size);
+  letter-spacing: var(--ds-validation-message-sm-letter-spacing);
 }
 
 .ds-validation-message--md {
-  font-size: var(--ds-error_message-md-font-size);
-  font-weight: var(--ds-error_message-md-font-weight);
-  letter-spacing: var(--ds-error_message-md-letter-spacing);
-  line-height: var(--ds-error_message-md-line-height);
+  font-size: var(--ds-validation-message-md-font-size);
+  font-weight: var(--ds-validation-message-md-font-weight);
+  letter-spacing: var(--ds-validation-message-md-letter-spacing);
+  line-height: var(--ds-validation-message-md-line-height);
   margin: 0;
 }
 
 .ds-validation-message--lg {
-  font-weight: var(--ds-error_message-lg-font-weight);
-  line-height: var(--ds-error_message-lg-line-height);
-  font-size: var(--ds-error_message-lg-font-size);
-  letter-spacing: var(--ds-error_message-lg-letter-spacing);
+  font-weight: var(--ds-validation-message-lg-font-weight);
+  line-height: var(--ds-validation-message-lg-line-height);
+  font-size: var(--ds-validation-message-lg-font-size);
+  letter-spacing: var(--ds-validation-message-lg-letter-spacing);
 }
