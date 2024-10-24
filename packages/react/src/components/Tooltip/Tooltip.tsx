@@ -172,18 +172,30 @@ const arrowPseudoElement = {
   fn(data: MiddlewareState) {
     const { elements, rects, placement } = data;
 
-    const arrowX = rects.reference.width / 2 + rects.reference.x - data.x;
-    const arrowY = rects.reference.height / 2 + rects.reference.y - data.y;
+    let arrowX = `${Math.round(
+      rects.reference.width / 2 + rects.reference.x - data.x,
+    )}px`;
+    let arrowY = `${Math.round(
+      rects.reference.height / 2 + rects.reference.y - data.y,
+    )}px`;
 
-    elements.floating.setAttribute('data-placement', placement);
-    elements.floating.style.setProperty(
-      '--ds-tooltip-arrow-x',
-      `${Math.round(arrowX)}px`,
-    );
-    elements.floating.style.setProperty(
-      '--ds-tooltip-arrow-y',
-      `${Math.round(arrowY)}px`,
-    );
+    switch (placement) {
+      case 'top':
+        arrowY = '100%';
+        break;
+      case 'right':
+        arrowX = '0';
+        break;
+      case 'bottom':
+        arrowY = '0';
+        break;
+      case 'left':
+        arrowX = '100%';
+        break;
+    }
+
+    elements.floating.style.setProperty('--ds-tooltip-arrow-x', arrowX);
+    elements.floating.style.setProperty('--ds-tooltip-arrow-y', arrowY);
     return data;
   },
 };
