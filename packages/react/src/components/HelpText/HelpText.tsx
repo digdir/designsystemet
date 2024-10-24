@@ -20,7 +20,10 @@ export type HelpTextProps = {
    * @default 'right'
    */
   placement?: Placement;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
+} & { 'data-size'?: string } & Omit<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    'color'
+  >;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
@@ -36,7 +39,11 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
           variant='tertiary'
           {...rest}
         />
-        <Popover placement={placement} size={size} variant='info'>
+        <Popover
+          placement={placement}
+          size={size || (rest['data-size'] as Size)}
+          variant='info'
+        >
           {children}
         </Popover>
       </Popover.Context>
