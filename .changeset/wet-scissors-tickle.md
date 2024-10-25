@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Spinner: Use `aria-label` instead of `title` prop
+Spinner: `aria-label` required instead of `title` prop
