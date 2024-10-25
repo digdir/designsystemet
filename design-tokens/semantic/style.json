@@ -343,165 +343,165 @@
   },
   "spacing": {
     "0": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*0"
     },
     "1": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*1"
     },
     "2": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*2"
     },
     "3": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*3"
     },
     "4": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*4"
     },
     "5": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*5"
     },
     "6": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*6"
     },
     "7": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*7"
     },
     "8": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*8"
     },
     "9": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*9"
     },
     "10": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*10"
     },
     "11": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*11"
     },
     "12": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*12"
     },
     "13": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*13"
     },
     "14": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*14"
     },
     "15": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*15"
     },
     "18": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*18"
     },
     "22": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*22"
     },
     "26": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*26"
     },
     "30": {
-      "$type": "spacing",
+      "$type": "dimension",
       "$value": "{spacing.scale}*30"
     }
   },
   "sizing": {
     "0": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*0"
     },
     "1": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*1"
     },
     "2": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*2"
     },
     "3": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*3"
     },
     "4": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*4"
     },
     "5": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*5"
     },
     "6": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*6"
     },
     "7": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*7"
     },
     "8": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*8"
     },
     "9": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*9"
     },
     "10": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*10"
     },
     "11": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*11"
     },
     "12": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*12"
     },
     "13": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*13"
     },
     "14": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*14"
     },
     "15": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*15"
     },
     "18": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*18"
     },
     "22": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*22"
     },
     "26": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*26"
     },
     "30": {
-      "$type": "sizing",
+      "$type": "dimension",
       "$value": "{sizing.scale}*30"
     }
   },
