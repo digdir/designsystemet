@@ -26,7 +26,7 @@ const ComboboxChips = () => {
         return (
           <ChipRemovable
             key={value}
-            size={size}
+            data-size={size}
             disabled={disabled}
             onKeyDown={(e) => {
               if (readOnly) return;

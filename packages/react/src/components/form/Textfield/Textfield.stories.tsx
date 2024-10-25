@@ -17,7 +17,7 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    size: 'md',
+    'data-size': 'md',
     description: '',
     error: '',
   },
@@ -43,7 +43,7 @@ export const Adornments: Story = {
   args: {
     prefix: 'NOK',
     suffix: 'pr. mnd',
-    size: 'md',
+    'data-size': 'md',
     label: 'Hvor mange kroner koster det per måned?',
   },
 };

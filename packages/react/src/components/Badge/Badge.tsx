@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 export type BadgeProps = {
   /**
@@ -9,10 +9,6 @@ export type BadgeProps = {
    * @default accent
    */
   color?: 'accent' | 'info' | 'success' | 'warning' | 'danger' | 'neutral';
-  /**
-   * The size of the badge
-   */
-  size?: Size;
   /**
    * The number to display in the badge
    */
@@ -37,19 +33,20 @@ export type BadgeProps = {
    * The badge will float on top of the children
    */
   children?: ReactNode;
-} & HTMLAttributes<HTMLSpanElement>;
+} & HTMLAttributes<HTMLSpanElement> &
+  DefaultProps;
 
 /**
  * `Badge` is a non-interactive component for displaying status with or without numbers.
  *
  * @example without children
  * ```jsx
- * <Badge color='accent' size='md' count={5} />
+ * <Badge color='accent' count={5} />
  * ```
  *
  * @example with children
  * ```jsx
- * <Badge color='accent' size='md'>
+ * <Badge color='accent'>
  *  <Icon />
  * </Badge>
  * ```
@@ -62,7 +59,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
     maxCount,
     overlap = 'rectangle',
     placement = 'top-right',
-    size,
     ...rest
   },
   ref,
@@ -76,7 +72,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       }
       data-overlap={rest.children ? overlap : null}
       data-placement={rest.children ? placement : null}
-      data-size={size}
       ref={ref}
       {...rest}
     />

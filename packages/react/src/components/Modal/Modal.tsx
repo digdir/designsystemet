@@ -92,7 +92,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
             color='neutral'
             icon
             name='close'
-            size='md'
             type='submit'
             variant='tertiary'
           />
