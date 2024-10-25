@@ -693,10 +693,10 @@ export const Sizes: StoryFn = () => {
         <List.Item>List Item 2</List.Item>
         <List.Item>List Item 3</List.Item>
       </List.Unordered>
-      <Spinner size='xs' title='Loading' />
-      <Spinner size='sm' title='Loading' />
-      <Spinner size='md' title='Loading' />
-      <Spinner size='xl' title='Loading' />
+      <Spinner size='xs' aria-label='Loading' />
+      <Spinner size='sm' aria-label='Loading' />
+      <Spinner size='md' aria-label='Loading' />
+      <Spinner size='xl' aria-label='Loading' />
       <div data-size='xs'>
         <Modal.Context>
           <Modal.Trigger>Open Modal</Modal.Trigger>
