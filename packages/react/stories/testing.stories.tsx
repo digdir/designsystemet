@@ -490,13 +490,6 @@ export const Sizes: StoryFn = () => {
           <ErrorSummary.Item href='#'>E-post må være gyldig</ErrorSummary.Item>
         </ErrorSummary.List>
       </ErrorSummary>
-      <style>
-        {/* TMP fix */}
-        {`
-          .ds-field { display: block }
-          .ds-field input+label { margin: 0; font-weight: normal }
-        `}
-      </style>
       <Field data-size='xs'>
         <Label>Text</Label>
         <Input aria-invalid='true' defaultValue='Noe tekst' />
@@ -517,135 +510,51 @@ export const Sizes: StoryFn = () => {
         <Input aria-invalid='true' defaultValue='Noe tekst' />
         <ValidationMessage>En feil</ValidationMessage>
       </Field>
-      <Field
-        data-size='xs'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xs'>
         <Input type='radio' name='my-radio' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='sm'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='sm'>
         <Input type='radio' name='my-radio' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='md'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='md'>
         <Input type='radio' name='my-radio' />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='xl'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xl'>
         <Input type='radio' name='my-radio' />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='xs'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xs'>
         <Input type='checkbox' name='my-check' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='sm'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='sm'>
         <Input type='checkbox' name='my-check' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='md'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='md'>
         <Input type='checkbox' name='my-check' />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='xl'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xl'>
         <Input type='checkbox' name='my-check' />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='xs'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xs'>
         <Input type='checkbox' name='my-switch' role='switch' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='sm'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='sm'>
         <Input type='checkbox' name='my-switch' role='switch' defaultChecked />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='md'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='md'>
         <Input type='checkbox' name='my-switch' role='switch' />
         <Label>Text</Label>
       </Field>
-      <Field
-        data-size='xl'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--ds-sizing-2)',
-        }}
-      >
+      <Field data-size='xl'>
         <Input type='checkbox' name='my-switch' role='switch' />
         <Label>Text</Label>
       </Field>
