@@ -35,7 +35,6 @@ import { useState } from 'react';
 import classes from './Components.module.css';
 
 export const Components = () => {
-  const [radioValue, setRadioValue] = useState('vanilje');
   const [currentPage, setCurrentPage] = useState(1);
   const pagination = usePagination({
     currentPage,
@@ -47,21 +46,15 @@ export const Components = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Checkbox.Group error='' legend='Handleliste' size='sm'>
-          <Checkbox value='epost'>En kilo poteter</Checkbox>
-          <Checkbox value='telefon'>To liter Farris</Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Blomkål
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Pizza
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Tre liter lettmelk
-          </Checkbox>
-          <Checkbox value='sms'>2kg smågodt</Checkbox>
-          <Checkbox value='sms'>10 poser med Smash</Checkbox>
-        </Checkbox.Group>
+        <Fieldset legend='Handleliste' size='sm'>
+          <Checkbox label='En kilo poteter' value='epost' />
+          <Checkbox label='To liter Farris' value='telefon' />
+          <Checkbox label='Blomkål' value='sms' defaultChecked />
+          <Checkbox label='Pizza' value='sms' defaultChecked />
+          <Checkbox label='Tre liter lettmelk' value='sms' defaultChecked />
+          <Checkbox label='2kg smågodt' value='sms' />
+          <Checkbox label='10 poser med Smash' value='sms' />
+        </Fieldset>
       </div>
       <div className={cl(classes.card, classes.user)}>
         <Heading className={cl(classes.cardTitle, classes.userTitle)} size='xs'>
@@ -205,19 +198,16 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.radio)}>
-        <Radio.Group
-          error=''
+        <Fieldset
           legend='Hvilken iskremsmak er best?'
           description='Velg din favorittsmak'
           size='sm'
-          value={radioValue}
-          onChange={(e: string) => setRadioValue(e)}
         >
-          <Radio value='vanilje'>Vanilje</Radio>
-          <Radio value='jordbær'>Jordbær</Radio>
-          <Radio value='sjokolade'>Sjokolade</Radio>
-          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
-        </Radio.Group>
+          <Radio label='Vanile' value='vanilje' />
+          <Radio label='Jordbær' value='jordbær' defaultChecked />
+          <Radio label='Sjokolade' value='sjokolade' />
+          <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' />
+        </Fieldset>
       </div>
       <div className={cl(classes.card, classes.tag)}>
         <Heading size='xs' className={classes.tagHeading}>
