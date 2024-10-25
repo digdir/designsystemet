@@ -359,7 +359,7 @@ export const Sizes: StoryFn = () => {
         </List.Unordered>
       ))}
       {sizes.map((size) => (
-        <Spinner key={size} data-size={size} title='Loading' />
+        <Spinner key={size} data-size={size} aria-label='Loading' />
       ))}
       {sizes.map((size) => (
         <div key={size} data-size={size}>
