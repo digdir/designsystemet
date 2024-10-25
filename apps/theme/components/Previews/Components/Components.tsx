@@ -415,8 +415,8 @@ export const Components = () => {
         <Skeleton variant='text' />
         <Skeleton variant='text' />
         <div>
-          <Spinner title='laster innhold' size='md' />
-          <Spinner title='laster innhold' size='md' color='accent' />
+          <Spinner aria-label='laster innhold' size='md' />
+          <Spinner aria-label='laster innhold' size='md' color='accent' />
         </div>
       </div>
     </div>
