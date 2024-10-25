@@ -17,7 +17,7 @@ export type AvatarProps = {
   /**
    * The size of the avatar.
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * The shape of the avatar.
    *
@@ -52,7 +52,6 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
     color = 'accent',
-    size,
     variant = 'circle',
     className,
     children,
@@ -69,7 +68,6 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-color={color}
-      data-size={size}
       role='img'
       aria-label={ariaLabel}
       {...rest}

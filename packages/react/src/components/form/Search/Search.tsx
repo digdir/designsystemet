@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
 import { Label } from '../../Label';
@@ -20,11 +20,6 @@ export type SearchProps = {
    * @default true
    */
   hideLabel?: boolean;
-  /**
-   * Changes field size and paddings
-   * @default md
-   */
-  size?: Size;
   /** Variant
    * @default 'simple'
    */
@@ -49,7 +44,8 @@ export type SearchProps = {
   FormFieldProps,
   'size' | 'description' | 'readOnly' | 'error' | 'errorId'
 > &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'> &
+  DefaultProps;
 
 /** Search field
  *
@@ -108,7 +104,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph asChild data-size={size}>
         <div
           style={style}
           className={cl(
@@ -120,7 +116,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         >
           {label && (
             <Label
-              size={size}
+              data-size={size}
               weight='medium'
               htmlFor={inputProps.id}
               className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
@@ -168,7 +164,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             {!isSimple && (
               <Button
                 className={'ds-search__search-button'}
-                size={size}
+                data-size={size}
                 variant={variant}
                 type='submit'
                 onClick={handleSearchClick}

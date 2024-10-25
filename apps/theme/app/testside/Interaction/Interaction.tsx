@@ -107,7 +107,7 @@ const Column = ({ title, scales }: ColumnProps) => {
     >
       <Heading
         className={classes.boxTitle}
-        size='xs'
+        data-size='xs'
         style={{ color: scales[0][12].hex }}
       >
         {title}

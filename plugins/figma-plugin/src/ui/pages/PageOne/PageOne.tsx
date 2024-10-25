@@ -81,11 +81,11 @@ function PageOne() {
   return (
     <div className='content'>
       <div className='content'>
-        <Heading className='heading' size='2xs'>
+        <Heading className='heading' data-size='2xs'>
           Oppdater fargetema
         </Heading>
 
-        <Paragraph size='sm' className='paragraph'>
+        <Paragraph data-size='sm' className='paragraph'>
           Oppdater{' '}
           <Link
             target='_blank'
@@ -105,7 +105,7 @@ function PageOne() {
           className='modes'
           defaultValue='light'
           name='toggle-group-nuts'
-          size='sm'
+          data-size='sm'
           onChange={(e: string) => setMode(e)}
         >
           <ToggleGroup.Item value='light'>Light Mode</ToggleGroup.Item>
@@ -119,12 +119,12 @@ function PageOne() {
           cols={40}
           rows={7}
           placeholder='Lim inn JSON her'
-          size='sm'
+          data-size='sm'
           value={jsonText}
           onChange={(e) => setJsonText(e.target.value)}
         />
         <ValidationMessage>{errorText}</ValidationMessage>
-        <Button onClick={() => onSubmit()} size='sm' className='button'>
+        <Button onClick={() => onSubmit()} data-size='sm' className='button'>
           Oppdater variabler
         </Button>
         {isLoading && <Toast />}

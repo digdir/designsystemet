@@ -48,15 +48,15 @@ export const BlogCard = ({
       </CardBlock>
       <CardBlock>
         {tagText && (
-          <Tag className={classes.tag} color={tagColor} size='sm'>
+          <Tag className={classes.tag} color={tagColor} data-size='sm'>
             {tagText}
           </Tag>
         )}
-        <Heading level={level} size={featured ? 'lg' : 'sm'}>
+        <Heading level={level} data-size={featured ? 'lg' : 'sm'}>
           <Link href={href}>{title}</Link>
         </Heading>
-        <Paragraph size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-        <Paragraph size={featured ? 'md' : 'xs'} className={classes.meta}>
+        <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
+        <Paragraph data-size={featured ? 'md' : 'xs'} className={classes.meta}>
           {author ||
             (date && (
               <>

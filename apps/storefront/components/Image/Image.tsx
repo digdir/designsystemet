@@ -30,7 +30,7 @@ const Image = ({
         aria-label={alt}
       ></img>
       {caption && (
-        <Paragraph size='sm' asChild>
+        <Paragraph data-size='sm' asChild>
           <figcaption>{caption}</figcaption>
         </Paragraph>
       )}

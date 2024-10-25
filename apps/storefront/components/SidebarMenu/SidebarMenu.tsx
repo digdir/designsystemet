@@ -40,7 +40,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
         <>
           <Button
             className={classes.toggleBtn}
-            size='md'
+            data-size='md'
             color='neutral'
             variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
@@ -50,7 +50,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
           </Button>
 
           <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
-            <Paragraph size='md' asChild>
+            <Paragraph data-size='md' asChild>
               <h3 className={classes.title}>
                 {SiteConfig.menu[activeIndex].name}
               </h3>
@@ -66,14 +66,14 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                   >
                     {item.children && (
                       <>
-                        <Paragraph asChild size='md'>
+                        <Paragraph asChild data-size='md'>
                           <div className={classes.innerTitle}>{item.name}</div>
                         </Paragraph>
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
                               <li key={index2} className={classes.listItem}>
-                                <Paragraph asChild size='sm'>
+                                <Paragraph asChild data-size='sm'>
                                   <Link
                                     href={'/' + item2.url}
                                     prefetch={false}
@@ -93,7 +93,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                       </>
                     )}
                     {!item.children && (
-                      <Paragraph asChild size='sm'>
+                      <Paragraph asChild data-size='sm'>
                         <Link
                           href={'/' + item.url}
                           prefetch={false}

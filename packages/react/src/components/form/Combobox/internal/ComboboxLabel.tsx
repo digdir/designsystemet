@@ -27,7 +27,7 @@ const ComboboxLabel = ({
     <>
       {label && (
         <Label
-          size={size}
+          data-size={size}
           htmlFor={formFieldProps.inputProps.id}
           className={cl('ds-combobox__label', hideLabel && `ds-sr-only`)}
         >
@@ -41,7 +41,7 @@ const ComboboxLabel = ({
         </Label>
       )}
       {description && (
-        <Paragraph asChild size={size}>
+        <Paragraph asChild data-size={size}>
           <div
             id={formFieldProps.descriptionId}
             className={cl(

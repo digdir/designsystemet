@@ -33,11 +33,11 @@ const NavigationCard = ({
       <Link href={url} prefetch={false}>
         <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
 
-        <Heading level={level} size='sm' className={classes.title}>
+        <Heading level={level} data-size='sm' className={classes.title}>
           {title}
         </Heading>
 
-        <Paragraph size='sm' variant='long' className={classes.desc}>
+        <Paragraph data-size='sm' variant='long' className={classes.desc}>
           {description}
         </Paragraph>
       </Link>

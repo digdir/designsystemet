@@ -18,7 +18,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         alt={title}
         className={classes.image}
       />
-      <Heading size='xs' className={classes.title} level={2}>
+      <Heading data-size='xs' className={classes.title} level={2}>
         {title}
       </Heading>
     </NextLink>

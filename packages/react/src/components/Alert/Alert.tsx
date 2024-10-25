@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 export type AlertProps = {
   /**
@@ -9,12 +9,8 @@ export type AlertProps = {
    * @default info
    */
   color?: 'info' | 'warning' | 'success' | 'danger';
-  /**
-   * Sets the size of the alert.
-   * Does not affect font size.
-   */
-  size?: Size;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> &
+  DefaultProps;
 
 /**
  * Alerts are used to inform users about important information, warnings, errors, or success.
@@ -22,14 +18,13 @@ export type AlertProps = {
  * <Alert color='info'>Dette er en informasjonsmelding</Alert>
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { color = 'info', size, className, ...rest },
+  { color = 'info', className, ...rest },
   ref,
 ) {
   return (
     <div
       className={cl('ds-alert', className)}
       data-color={color}
-      data-size={size}
       ref={ref}
       {...rest}
     />

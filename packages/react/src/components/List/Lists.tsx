@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ForwardedRef, HTMLAttributes, OlHTMLAttributes } from 'react';
+import type { DefaultProps } from '../../types';
 
 type ListBaseProps = {
   /**
@@ -9,11 +10,7 @@ type ListBaseProps = {
    * @default false
    */
   asChild?: boolean;
-  /**
-   * Changes text sizing
-   */
-  size?: 'sm' | 'md' | 'lg';
-};
+} & DefaultProps;
 
 export type ListUnorderedProps = ListBaseProps &
   Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
@@ -23,19 +20,12 @@ export type ListOrderedProps = ListBaseProps &
 
 const render = <T extends HTMLElement>(
   tagName: string,
-  { asChild, className, size, ...rest }: ListOrderedProps,
+  { asChild, className, ...rest }: ListOrderedProps,
   ref: ForwardedRef<T>,
 ) => {
   const Component = asChild ? Slot : tagName;
 
-  return (
-    <Component
-      className={cl(`ds-list`, className)}
-      data-size={size}
-      ref={ref}
-      {...rest}
-    />
-  );
+  return <Component className={cl(`ds-list`, className)} ref={ref} {...rest} />;
 };
 
 export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(

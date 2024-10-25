@@ -9,7 +9,7 @@ export default {
   component: Pagination,
 } as Meta;
 
-export const Preview: StoryFn<UsePaginationProps & { size?: Size }> = (
+export const Preview: StoryFn<UsePaginationProps & { 'data-size'?: Size }> = (
   args,
 ) => {
   const [, updateArgs] = useArgs();
@@ -19,7 +19,7 @@ export const Preview: StoryFn<UsePaginationProps & { size?: Size }> = (
   });
 
   return (
-    <Pagination aria-label='Sidenavigering' size={args.size}>
+    <Pagination aria-label='Sidenavigering' data-size={args['data-size']}>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
@@ -44,7 +44,7 @@ export const Preview: StoryFn<UsePaginationProps & { size?: Size }> = (
 };
 
 Preview.args = {
-  size: 'md',
+  'data-size': 'md',
   currentPage: 4,
   setCurrentPage: console.log, // Added to include in storybook args
   onChange: console.log, // Open console to see this event

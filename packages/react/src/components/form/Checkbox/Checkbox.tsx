@@ -21,7 +21,7 @@ export type CheckboxProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  'data-size'?: 'sm' | 'md' | 'lg';
   /**Toggle indeterminate state for Checkbox
    * @default false
    */

@@ -20,14 +20,14 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  size: 'md',
+  'data-size': 'md',
 };
 
 export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Slik gjør du:
@@ -54,7 +54,7 @@ export const Usortert: Story = (args) => (
   <>
     <Heading
       level={2}
-      size='xs'
+      data-size='xs'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Foreningen har plikt til å ha revisor hvis de har
@@ -77,7 +77,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        size='xs'
+        data-size='xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         {' '}
@@ -92,7 +92,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        size='xs'
+        data-size='xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         {' '}
@@ -107,7 +107,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        size='xs'
+        data-size='xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         List Item 3
@@ -146,12 +146,12 @@ export const ListeMedOverskrift: Story = (args) => (
     <div>
       <Heading
         level={2}
-        size='2xs'
+        data-size='2xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         List sm og Heading 2xs
       </Heading>
-      <List.Unordered size='sm'>
+      <List.Unordered data-size='sm'>
         <List.Item>
           <Link
             href='https://www.designsystemet.no/grunnleggende'
@@ -178,12 +178,12 @@ export const ListeMedOverskrift: Story = (args) => (
     <div>
       <Heading
         level={2}
-        size='xs'
+        data-size='xs'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         List md og Heading xs
       </Heading>
-      <List.Unordered size='md'>
+      <List.Unordered data-size='md'>
         <List.Item>
           <Link
             href='https://www.designsystemet.no/grunnleggende'
@@ -210,12 +210,12 @@ export const ListeMedOverskrift: Story = (args) => (
     <div>
       <Heading
         level={2}
-        size='sm'
+        data-size='sm'
         style={{ marginBottom: 'var(--ds-spacing-2)' }}
       >
         List lg og Heading sm
       </Heading>
-      <List.Unordered size='lg'>
+      <List.Unordered data-size='lg'>
         <List.Item>
           <Link
             href='https://www.designsystemet.no/grunnleggende'

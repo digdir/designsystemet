@@ -10,7 +10,7 @@ export type SpinnerProps = {
   /**
    * Spinner size
    */
-  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * Spinner appearance
    * @default neutral
@@ -27,7 +27,6 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
   {
     'aria-label': ariaLabel,
     color = 'neutral',
-    size,
     className,
     ...rest
   }: SpinnerProps,
@@ -48,7 +47,6 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
       aria-label={ariaLabel}
       className={cl('ds-spinner', className)}
       data-color={color}
-      data-size={size}
       ref={mergedRefs}
       role='img'
       viewBox='0 0 50 50'

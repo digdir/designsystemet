@@ -43,7 +43,7 @@ export const Preview: Story = {
     disabled: false,
     variant: 'primary',
     color: 'accent',
-    size: 'md',
+    'data-size': 'md',
     icon: false,
   },
 };
@@ -209,24 +209,24 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' size='sm' icon>
+    <Button variant='primary' data-size='sm' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' size='sm'>
+    <Button variant='primary' data-size='sm'>
       <CogIcon aria-hidden />
       Small
     </Button>
-    <Button variant='primary' size='md' icon>
+    <Button variant='primary' data-size='md' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' size='md'>
+    <Button variant='primary' data-size='md'>
       <CogIcon aria-hidden />
       Medium
     </Button>
-    <Button variant='primary' size='lg' icon>
+    <Button variant='primary' data-size='lg' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' size='lg'>
+    <Button variant='primary' data-size='lg'>
       <CogIcon aria-hidden />
       Large
     </Button>
@@ -266,13 +266,13 @@ IconOnly.parameters = {
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button icon variant='primary' size='sm'>
+    <Button icon variant='primary' data-size='sm'>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button icon variant='primary' size='md'>
+    <Button icon variant='primary' data-size='md'>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button icon variant='primary' size='lg'>
+    <Button icon variant='primary' data-size='lg'>
       <CogIcon title='Innstillinger' />
     </Button>
   </>

@@ -54,7 +54,7 @@ describe('Pagination', () => {
   it('should render correctly with custom props', () => {
     renderWithRoot({
       'aria-label': 'Pagination',
-      size: 'lg',
+      'data-size': 'lg',
     });
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });

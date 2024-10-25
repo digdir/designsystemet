@@ -43,89 +43,91 @@ export const Dashboard = () => {
         <div className={classes.menu}>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={cl(classes.btn, classes.btnActive)}
           >
-            <HouseIcon title='a11y-title' fontSize='1.5rem' />
+            <HouseIcon title='a11y-title' fontdata-size='1.5rem' />
             Dashboard
           </Button>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={classes.btn}
           >
-            <NewspaperIcon title='a11y-title' fontSize='1.5rem' />
+            <NewspaperIcon title='a11y-title' fontdata-size='1.5rem' />
             Sider
           </Button>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={classes.btn}
           >
-            <FileTextIcon title='a11y-title' fontSize='1.5rem' />
+            <FileTextIcon title='a11y-title' fontdata-size='1.5rem' />
             Artikler
           </Button>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={classes.btn}
           >
-            <PersonGroupIcon title='a11y-title' fontSize='1.7rem' />
+            <PersonGroupIcon title='a11y-title' fontdata-size='1.7rem' />
             Brukere
           </Button>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={classes.btn}
           >
-            <PadlockLockedIcon title='a11y-title' fontSize='1.7rem' />
+            <PadlockLockedIcon title='a11y-title' fontdata-size='1.7rem' />
             Tilganger
           </Button>
           <Button
             color='neutral'
-            size='sm'
+            data-size='sm'
             variant='tertiary'
             className={classes.btn}
           >
-            <CogIcon title='a11y-title' fontSize='1.7rem' />
+            <CogIcon title='a11y-title' fontdata-size='1.7rem' />
             Innstillinger
           </Button>
         </div>
       </div>
       <div className={classes.content}>
-        <Heading size='xs' className={classes.title}>
+        <Heading data-size='xs' className={classes.title}>
           Dashboard
         </Heading>
         <div className={classes.grid}>
           <div className={cl(classes.colorCardsContainer, classes.card)}>
-            <Heading size='2xs' className={classes.cardTitle}>
+            <Heading data-size='2xs' className={classes.cardTitle}>
               Grafikk one
             </Heading>
-            <Paragraph size='sm' className={classes.cardDesc}>
+            <Paragraph data-size='sm' className={classes.cardDesc}>
               Her er ein stor beskrivelse
             </Paragraph>
             <div className={classes.colorCards}>
               <ColorCard
                 brand='one'
-                icon={<TeddyBearIcon title='a11y-title' fontSize='1.6rem' />}
+                icon={
+                  <TeddyBearIcon title='a11y-title' fontdata-size='1.6rem' />
+                }
               />
               <ColorCard
                 brand='two'
-                icon={<ArchiveIcon title='a11y-title' fontSize='1.6rem' />}
+                icon={<ArchiveIcon title='a11y-title' fontdata-size='1.6rem' />}
               />
               <ColorCard
                 brand='three'
-                icon={<TokenIcon title='a11y-title' fontSize='1.6rem' />}
+                icon={<TokenIcon title='a11y-title' fontdata-size='1.6rem' />}
               />
             </div>
           </div>
           <div className={cl(classes.users, classes.card)}>
-            <Heading size='2xs' className={classes.cardTitle}>
+            <Heading data-size='2xs' className={classes.cardTitle}>
               Siste brukere
             </Heading>
             <div className={classes.usersContainer}>
@@ -157,19 +159,19 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className={cl(classes.graph, classes.card)}>
-            <Heading size='2xs' className={classes.cardTitle}>
+            <Heading data-size='2xs' className={classes.cardTitle}>
               Vekst de siste 3 årene
             </Heading>
             <BarChartComponent />
           </div>
           <div className={cl(classes.graph2, classes.card)}>
-            <Heading size='2xs' className={classes.cardTitle}>
+            <Heading data-size='2xs' className={classes.cardTitle}>
               Sideklikk siste 6 mnd
             </Heading>
             <AreaChartComponent />
           </div>
           <div className={cl(classes.graph3, classes.card)}>
-            <Heading size='2xs' className={classes.cardTitle}>
+            <Heading data-size='2xs' className={classes.cardTitle}>
               Antall innlogginger
             </Heading>
             <LineChartComponent />

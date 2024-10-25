@@ -60,7 +60,7 @@ export const ColorPicker = ({
           style={{ width: '900px' }}
           id={popoverId}
           placement='top'
-          size='sm'
+          data-size='sm'
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
           <div>

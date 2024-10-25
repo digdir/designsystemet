@@ -108,7 +108,7 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
             >
               {menu.map((item, index) => (
                 <li className={classes.item} key={index}>
-                  <Paragraph size='md' asChild>
+                  <Paragraph data-size='md' asChild>
                     <Link
                       suppressHydrationWarning
                       href={item.href}

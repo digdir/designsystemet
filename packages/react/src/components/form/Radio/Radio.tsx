@@ -21,7 +21,7 @@ export type RadioProps = {
    * Changes field size and paddings
    * @default md
    */
-  size?: 'sm' | 'md' | 'lg';
+  'data-size'?: 'sm' | 'md' | 'lg';
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
   (
     | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }

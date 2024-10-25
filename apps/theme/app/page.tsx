@@ -269,7 +269,7 @@ export default function Home() {
           <div className={classes.test2}>
             <div className={classes.test}>Temabygger</div>
           </div>
-          <Heading size='md' className={classes.title}>
+          <Heading data-size='md' className={classes.title}>
             Sett opp temaet ditt
           </Heading>
 

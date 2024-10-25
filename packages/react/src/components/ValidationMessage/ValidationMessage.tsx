@@ -7,7 +7,7 @@ export type ValidationMessageProps = {
   /**
    * Changes text sizing
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg';
   /** Toggle error color */
   error?: boolean;
   /**
@@ -22,7 +22,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage(
-  { size, className, asChild, error = true, ...rest },
+  { className, asChild, error = true, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';
@@ -32,7 +32,6 @@ export const ValidationMessage = forwardRef<
       className={cl('ds-validation-message', className)}
       data-error={error || undefined}
       data-field='validation'
-      data-size={size}
       ref={ref}
       {...rest}
     />
