@@ -35,7 +35,7 @@ export const ClipboardButton = ({
           icon={!text}
           variant='tertiary'
           color='neutral'
-          size='sm'
+          data-size='sm'
         >
           <ClipboardIcon fontSize={'1.4rem'} />
           {text && <span className={classes.text}>{text}</span>}

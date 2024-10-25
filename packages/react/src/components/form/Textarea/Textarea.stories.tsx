@@ -33,7 +33,7 @@ export const Preview: Story = {
   args: {
     disabled: false,
     readOnly: false,
-    size: 'md',
+    'data-size': 'md',
     cols: 40,
     id: 'my-textarea',
   },

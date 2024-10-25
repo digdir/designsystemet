@@ -7,7 +7,7 @@ Skriv noe om HSL,
 
 Om du ønsker å lage dine egne farger, kan du bruke tabellen under for å passe på at du holder deg innenfor terkskelverdiene for den gitte fargen.
 
-<Table size='md'>
+<Table data-size='md'>
   <Table.Head>
     <Table.Row>
       <Table.HeaderCell>Navn</Table.HeaderCell>

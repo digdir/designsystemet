@@ -8,3 +8,7 @@ export type PortalProps = {
    */
   portal?: boolean;
 };
+
+export type DefaultProps = {
+  'data-size'?: Size;
+};

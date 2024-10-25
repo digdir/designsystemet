@@ -24,7 +24,7 @@ const Section = ({
       <Container>
         <div className={classes.header}>
           {title && (
-            <Heading level={2} size='md'>
+            <Heading level={2} data-size='md'>
               {title}
             </Heading>
           )}

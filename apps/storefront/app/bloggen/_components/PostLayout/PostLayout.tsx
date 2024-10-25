@@ -52,7 +52,7 @@ function PostLayout({
             <Paragraph className={classes.ingress} variant='long'>
               {ingress}
             </Paragraph>
-            <Paragraph size='sm' className={classes.meta}>
+            <Paragraph data-size='sm' className={classes.meta}>
               <span>{date}</span>
               <span aria-hidden className={classes.metaSquare} />
               <span>{author}</span>
@@ -67,10 +67,10 @@ function PostLayout({
           <MdxContent className={classes.content}>
             {content}
             <div className={classes.wantToWrite}>
-              <Heading level={3} size='xs'>
+              <Heading level={3} data-size='xs'>
                 Ønsker du å skrive for bloggen?
               </Heading>
-              <Paragraph size='sm'>
+              <Paragraph data-size='sm'>
                 Ta kontakt med oss på{' '}
                 <Link
                   href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'

@@ -25,7 +25,7 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
           />
         </div>
         <div className={classes.textContainer}>
-          <Heading size='md'>Denne siden finnes ikke</Heading>
+          <Heading data-size='md'>Denne siden finnes ikke</Heading>
           <Paragraph>
             Beklager, vi finner ikke siden du ba om. Siden kan være flyttet
             eller slettet.

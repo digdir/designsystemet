@@ -55,7 +55,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
 
 Preview.args = {
   placement: 'bottom-end',
-  size: 'md',
+  'data-size': 'md',
 };
 
 export const Icons: StoryFn<typeof Dropdown> = (args) => {
