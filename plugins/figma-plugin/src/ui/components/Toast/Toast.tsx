@@ -34,7 +34,7 @@ export const Toast = () => {
       )}
       {!success && (
         <>
-          <Spinner color='accent' title='loading' data-size='sm' />
+          <Spinner color='accent' aria-label='loading' data-size='sm' />
           Oppdaterer variabler...
         </>
       )}

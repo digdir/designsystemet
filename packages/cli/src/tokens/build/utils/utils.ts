@@ -54,3 +54,10 @@ export function isSemanticToken(token: TransformedToken): boolean {
 export function isGlobalColorToken(token: TransformedToken): boolean {
   return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
 }
+
+export function isColorCategoryToken(token: TransformedToken, category?: 'main' | 'support'): boolean {
+  if (!category) {
+    return (['main', 'support'] as const).some((c) => isColorCategoryToken(token, c));
+  }
+  return R.startsWith(['color', category], token.path);
+}
