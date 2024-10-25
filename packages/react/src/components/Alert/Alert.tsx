@@ -11,7 +11,6 @@ export type AlertProps = {
   color?: 'info' | 'warning' | 'success' | 'danger';
   /**
    * Sets the size of the alert.
-   * Does not affect font size.
    */
   'data-size'?: Size;
 } & HTMLAttributes<HTMLDivElement>;
