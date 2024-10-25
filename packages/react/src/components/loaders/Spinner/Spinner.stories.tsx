@@ -20,25 +20,25 @@ export default {
 export const Preview: Story = (args) => <Spinner {...args} />;
 
 Preview.args = {
-  title: 'Henter kaffi',
+  'aria-label': 'Henter kaffi',
   size: 'md',
   color: 'neutral',
 };
 
 export const Variants: Story = () => (
   <>
-    <Spinner title='Henter kaffi' color='neutral' size='xl' />
-    <Spinner title='Henter kaffi' color='accent' size='xl' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='xl' />
+    <Spinner aria-label='Henter kaffi' color='accent' size='xl' />
   </>
 );
 
 export const Sizes: Story = () => (
   <>
-    <Spinner title='Henter kaffi' color='neutral' size='2xs' />
-    <Spinner title='Henter kaffi' color='neutral' size='xs' />
-    <Spinner title='Henter kaffi' color='neutral' size='sm' />
-    <Spinner title='Henter kaffi' color='neutral' size='md' />
-    <Spinner title='Henter kaffi' color='neutral' size='lg' />
-    <Spinner title='Henter kaffi' color='neutral' size='xl' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='2xs' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='xs' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='sm' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='md' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='lg' />
+    <Spinner aria-label='Henter kaffi' color='neutral' size='xl' />
   </>
 );

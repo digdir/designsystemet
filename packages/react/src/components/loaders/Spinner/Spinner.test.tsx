@@ -8,7 +8,7 @@ beforeAll(() => {
 
 describe('spinner', (): void => {
   it('should render with title "loading', (): void => {
-    render(<Spinner title='Loading' />);
+    render(<Spinner aria-label='Loading' />);
     expect(screen.getByTitle('Loading')).toBeInTheDocument();
   });
 });

@@ -5,7 +5,7 @@ import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
   /** Accessibile label  */
-  'aria-label': string;
+  'aria-label'?: string;
   /**
    * Spinner size
    */
@@ -15,7 +15,11 @@ export type SpinnerProps = {
    * @default neutral
    */
   color?: 'neutral' | 'accent';
-} & ComponentPropsWithoutRef<'svg'>;
+} & ComponentPropsWithoutRef<'svg'> &
+  (
+    | { 'aria-label': string; 'aria-hidden'?: never }
+    | { 'aria-label'?: string; 'aria-hidden': true | 'true' } // Make aria-label optional when aria-hidden is true
+  );
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(
