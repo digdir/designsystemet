@@ -1,9 +1,13 @@
 .ds-chip {
   --dsc-chip-background--active: var(--ds-color-accent-surface-active);
+  --dsc-chip-background--checked--active: var(--ds-color-accent-base-hover);
+  --dsc-chip-background--checked--hover: var(--ds-color-accent-base-hover);
   --dsc-chip-background--checked: var(--ds-color-accent-base-hover);
   --dsc-chip-background--hover: var(--ds-color-accent-surface-hover);
   --dsc-chip-background: var(--ds-color-accent-surface-default);
   --dsc-chip-border-color--active: var(--ds-color-accent-border-strong);
+  --dsc-chip-border-color--checked--active: transparent;
+  --dsc-chip-border-color--checked--hover: transparent;
   --dsc-chip-border-color--checked: transparent;
   --dsc-chip-border-color--hover: var(--ds-color-accent-border-default);
   --dsc-chip-border-color: var(--ds-color-accent-border-subtle);
@@ -15,9 +19,14 @@
   --dsc-chip-height: var(--ds-sizing-9);
   --dsc-chip-icon-size: var(--ds-spacing-7);
   --dsc-chip-input-border-color--active: var(--ds-color-accent-border-strong);
+  --dsc-chip-input-border-color--checked--active: var(--ds-color-accent-border-strong);
+  --dsc-chip-input-border-color--checked--hover: var(--ds-color-accent-border-strong);
+  --dsc-chip-input-border-color--checked: var(--ds-color-accent-border-strong);
   --dsc-chip-input-border-color--hover: var(--ds-color-accent-border-strong);
   --dsc-chip-input-border-color: var(--ds-color-accent-border-default);
   --dsc-chip-input-color--active: var(--ds-color-accent-border-strong);
+  --dsc-chip-input-color--checked--active: currentcolor;
+  --dsc-chip-input-color--checked--hover: currentcolor;
   --dsc-chip-input-color--checked: currentcolor;
   --dsc-chip-input-color--hover: var(--ds-color-accent-border-strong);
   --dsc-chip-input-size: var(--ds-spacing-6);
@@ -127,11 +136,11 @@
 
       &[data-removable]:active,
       &:has(input:checked):active {
-        --dsc-chip-background: var(--dsc-chip-background--checked-active);
-        --dsc-chip-border-color: var(--dsc-chip-border-color--checked-active);
-        --dsc-chip-color: var(--dsc-chip-color--checked-active);
-        --dsc-chip-input-border-color: var(--dsc-chip-input-border-color--checked-active);
-        --dsc-chip-input-color: var(--dsc-chip-input-color--checked-active);
+        --dsc-chip-background: var(--dsc-chip-background--checked--active);
+        --dsc-chip-border-color: var(--dsc-chip-border-color--checked--active);
+        --dsc-chip-color: var(--dsc-chip-color--checked--active);
+        --dsc-chip-input-border-color: var(--dsc-chip-input-border-color--checked--active);
+        --dsc-chip-input-color: var(--dsc-chip-input-color--checked--active);
       }
     }
   }
