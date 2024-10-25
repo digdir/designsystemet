@@ -10,9 +10,12 @@
 }
 
 .controls {
-  display: flex;
-  gap: var(--ds-spacing-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: var(--ds-spacing-4);
   padding-bottom: var(--ds-spacing-2);
+  align-items: baseline;
 }
 
 .card {

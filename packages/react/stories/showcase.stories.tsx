@@ -62,7 +62,11 @@ export const Showcase: StoryFn = () => {
 
   return (
     <div>
-      <div className={classes.controls}>
+      <div className={classes.controls} data-size='sm'>
+        <Heading data-size='2xs'>
+          Størrelse
+          <code>(data-size)</code>
+        </Heading>
         <ToggleGroup value={size} onChange={(val) => setSize(val as Size)}>
           {sizes.map((size) => (
             <ToggleGroup.Item key={size} value={size}>
@@ -70,6 +74,11 @@ export const Showcase: StoryFn = () => {
             </ToggleGroup.Item>
           ))}
         </ToggleGroup>
+        <Heading data-size='2xs'>
+          Fargemodus
+          <code>(data-ds-color-mode)</code>
+        </Heading>
+
         <ToggleGroup value={colorMode} onChange={setColorMode}>
           {colorModes.map((colorMode) => (
             <ToggleGroup.Item key={colorMode} value={colorMode}>
@@ -77,6 +86,10 @@ export const Showcase: StoryFn = () => {
             </ToggleGroup.Item>
           ))}
         </ToggleGroup>
+        <Heading data-size='2xs'>
+          Typografi
+          <code>(data-ds-typography)</code>
+        </Heading>
         <ToggleGroup value={typographyMode} onChange={setTypographyMode}>
           {typography.map((typographyMode) => (
             <ToggleGroup.Item key={typographyMode} value={typographyMode}>
