@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-surface-default);
   height: 100px;
   width: 156px;
   border-radius: 4px;
@@ -10,7 +10,6 @@
   gap: 14px;
   text-decoration: none;
   color: inherit;
-  border: 1px solid var(--ds-color-neutral-border-default);
   transition: 0.15s box-shadow;
 }
 

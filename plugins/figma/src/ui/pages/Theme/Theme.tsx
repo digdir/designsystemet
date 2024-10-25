@@ -97,8 +97,12 @@ function Theme() {
     <div className={classes.content}>
       <div className={classes.header}>
         <div className={classes.headerLeft}>
-          <Breadcrumbs size='sm'>
-            <Breadcrumbs.Link aria-label='Tilbake til alle temaer' asChild>
+          <Breadcrumbs size='sm' className={classes.breadcrumbs}>
+            <Breadcrumbs.Link
+              className={classes.breadcrumbs_link}
+              aria-label='Tilbake til alle temaer'
+              asChild
+            >
               <RouterLink to='/'>Mine temaer</RouterLink>
             </Breadcrumbs.Link>
           </Breadcrumbs>
@@ -121,7 +125,7 @@ function Theme() {
           onChange={(e) => setCommand(e.target.value)}
           name=''
           id='my-textarea'
-          cols={22}
+          rows={8}
           className={classes.textarea}
           placeholder='Lim inn her...'
           /* error={codeSnippetError} */
@@ -132,14 +136,16 @@ function Theme() {
             <ValidationMessage>{codeSnippetError}</ValidationMessage>
           ) : null}
         </div>
-        <Button
-          className={classes.btn}
-          size='sm'
-          onClick={() => handleClick()}
-          loading={loading}
-        >
-          Oppdater tema
-        </Button>
+        <div className={classes.btnContainer}>
+          <Button
+            className={classes.btn}
+            size='sm'
+            onClick={() => handleClick()}
+            loading={loading}
+          >
+            Oppdater tema
+          </Button>
+        </div>
       </div>
       <div className={classes.cards}></div>
     </div>

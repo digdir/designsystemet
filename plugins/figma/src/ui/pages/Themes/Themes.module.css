@@ -7,3 +7,7 @@
 .content {
   padding: 16px;
 }
+
+.heading {
+  margin-bottom: var(--ds-spacing-4);
+}

@@ -2,6 +2,7 @@ import { Card } from '@ui/components/Card/Card';
 import { useEffect } from 'react';
 import { useThemeStore } from '../../../common/store';
 
+import { Heading } from '@digdir/designsystemet-react';
 import classes from './Themes.module.css';
 
 function Themes() {
@@ -10,19 +11,15 @@ function Themes() {
 
   useEffect(() => {}, []);
 
-  const handleClick = () => {
-    parent.postMessage({ pluginMessage: { type: 'updateTheme' } }, '*');
-  };
-  const handleClick2 = () => {
-    parent.postMessage({ pluginMessage: { type: 'updateTheme2' } }, '*');
-  };
-
   return (
     <div className={classes.content}>
+      <Heading size='2xs' className={classes.heading}>
+        Mine temaer
+      </Heading>
       {noThemeFound && (
         <p className={classes.noThemes}>
           Fant ingen temaer. Husk at du må åpne pluginen i designsystemet sin
-          Core Ui kit Figma community fil.
+          Core UI kit Figma community fil.
         </p>
       )}
       <div className={classes.cards}>
