@@ -44,12 +44,12 @@ export type BadgeProps = {
  *
  * @example without children
  * ```jsx
- * <Badge color='accent' data-size='md' count={5} />
+ * <Badge color='accent' count={5} />
  * ```
  *
  * @example with children
  * ```jsx
- * <Badge color='accent' data-size='md'>
+ * <Badge color='accent'>
  *  <Icon />
  * </Badge>
  * ```

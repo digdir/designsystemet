@@ -38,19 +38,19 @@ export const Floating: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge color='accent' data-size='md' placement='top-right'>
+    <Badge color='accent' placement='top-right'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' data-size='md' placement='top-left'>
+    <Badge color='accent' placement='top-left'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' data-size='md' placement='bottom-right'>
+    <Badge color='accent' placement='bottom-right'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' data-size='md' placement='bottom-left'>
+    <Badge color='accent' placement='bottom-left'>
       <EnvelopeClosedFillIcon fontSize='2rem' title='Meldinger' />
     </Badge>
-    <Badge color='accent' data-size='md' placement='top-right' overlap='circle'>
+    <Badge color='accent' placement='top-right' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -60,7 +60,7 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge color='accent' data-size='md' placement='top-left' overlap='circle'>
+    <Badge color='accent' placement='top-left' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -70,12 +70,7 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge
-      color='accent'
-      data-size='md'
-      placement='bottom-right'
-      overlap='circle'
-    >
+    <Badge color='accent' placement='bottom-right' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -85,12 +80,7 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge>
-    <Badge
-      color='accent'
-      data-size='md'
-      placement='bottom-left'
-      overlap='circle'
-    >
+    <Badge color='accent' placement='bottom-left' overlap='circle'>
       <div
         style={{
           width: '2rem',
@@ -112,7 +102,6 @@ export const CustomPlacement: Story = (args) => (
   >
     <Badge
       color='accent'
-      data-size='md'
       placement='top-right'
       style={{
         top: '16%',
@@ -134,7 +123,7 @@ export const Status: Story = (args) => (
     <Badge color='danger' data-size='sm'>
       <VideoFillIcon fontSize='2rem' title='Videokamera' />
     </Badge>
-    <Badge color='danger' data-size='md'>
+    <Badge color='danger'>
       <VideoFillIcon fontSize='2rem' title='Videokamera' />
     </Badge>
     <Badge color='danger' data-size='lg'>
@@ -144,7 +133,7 @@ export const Status: Story = (args) => (
 );
 
 export const InTabs: Story = (args) => (
-  <Tabs defaultValue='value1' data-size='md'>
+  <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
         <HeartFillIcon fontSize='1.75rem' aria-hidden />

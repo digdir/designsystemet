@@ -61,7 +61,7 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         }}
       >
         <Skeleton variant='circle' width='30px' height='30px' />
-        <Heading data-size='md'>
+        <Heading>
           <Skeleton variant='text'>En medium tittel</Skeleton>
         </Heading>
       </div>
@@ -87,13 +87,13 @@ export const Children: StoryFn<typeof Skeleton> = () => {
 export const Text: StoryFn<typeof Skeleton> = () => (
   <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
     <div style={{ flex: '1 1 200px' }}>
-      <Heading data-size='md'>En tittel</Heading>
+      <Heading>En tittel</Heading>
       <Paragraph data-size='sm'>
         Her er en paragraf som går over flere linjer
       </Paragraph>
     </div>
     <div style={{ flex: '1 1 200px' }}>
-      <Heading data-size='md'>
+      <Heading>
         <Skeleton variant='text'>En tittel</Skeleton>
       </Heading>
       <Paragraph data-size='sm'>

@@ -41,11 +41,7 @@ export const EksempelTekst: StoryFn = () => (
       skattytere.
     </Paragraph>
 
-    <Heading
-      level={3}
-      data-size='md'
-      style={{ marginBottom: 'var(--ds-spacing-2)' }}
-    >
+    <Heading level={3} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
       Signering (H3)
     </Heading>
 
@@ -119,11 +115,7 @@ export const EksempelTekstDark: StoryFn = () => (
       skattytere.
     </Paragraph>
 
-    <Heading
-      level={3}
-      data-size='md'
-      style={{ marginBottom: 'var(--ds-spacing-2)' }}
-    >
+    <Heading level={3} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
       Signering (H3)
     </Heading>
 

@@ -65,7 +65,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} data-size='md' onChange={setValue}>
+      <ToggleGroup value={value} onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon fontSize='1.5rem' aria-hidden />
           Innboks

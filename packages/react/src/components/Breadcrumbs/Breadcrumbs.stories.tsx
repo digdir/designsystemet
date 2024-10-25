@@ -35,7 +35,7 @@ export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
 );
 
 export const ListOnly: StoryFn<typeof Breadcrumbs> = (args) => (
-  <Breadcrumbs aria-label='Du er her:' data-size='md'>
+  <Breadcrumbs aria-label='Du er her:'>
     <Breadcrumbs.List>
       <Breadcrumbs.Item>
         <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
