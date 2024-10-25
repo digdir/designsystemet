@@ -295,43 +295,19 @@ export const Sizes: StoryFn = () => {
         </Field>
       ))}
       {sizes.map((size) => (
-        <Field
-          key={size}
-          data-size={size}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-sizing-2)',
-          }}
-        >
+        <Field key={size} data-size={size}>
           <Input type='radio' name='my-radio' defaultChecked />
           <Label>Text</Label>
         </Field>
       ))}
       {sizes.map((size) => (
-        <Field
-          key={size}
-          data-size={size}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-sizing-2)',
-          }}
-        >
+        <Field key={size} data-size={size}>
           <Input type='checkbox' name='my-check' defaultChecked />
           <Label>Text</Label>
         </Field>
       ))}
       {sizes.map((size) => (
-        <Field
-          key={size}
-          data-size={size}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-sizing-2)',
-          }}
-        >
+        <Field key={size} data-size={size}>
           <Input
             type='checkbox'
             name='my-switch'
