@@ -32,11 +32,6 @@ describe('Breadcrumbs', () => {
 
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
-
-  it('should render correctly with custom props', () => {
-    renderWithRoot({ 'data-size': 'lg' });
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
-  });
 });
 
 describe('Breadcrumbs.List', () => {

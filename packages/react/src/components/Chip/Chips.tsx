@@ -61,12 +61,19 @@ export const ChipRemovable = forwardRef<HTMLButtonElement, ChipRemovableProps>(
  * <Chip.Checkbox name="language" value="bokmål">Bokmål</Chip.Checkbox>
  */
 export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
-  function ChipCheckbox({ asChild, children, className, ...rest }, ref) {
+  function ChipCheckbox(
+    { asChild, children, className, 'data-size': size, ...rest },
+    ref,
+  ) {
     const inputType = (rest as { type?: string }).type ?? 'checkbox';
     const Component = asChild ? Slot : 'label';
 
     return (
-      <Component className={cl('ds-chip', className)} ref={ref}>
+      <Component
+        className={cl('ds-chip', className)}
+        data-size={size}
+        ref={ref}
+      >
         <input {...rest} type={inputType} />
         <Slottable>{children}</Slottable>
       </Component>
