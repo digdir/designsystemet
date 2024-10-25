@@ -2,19 +2,15 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 type ChipBaseProps = {
-  /**
-   * Size
-   */
-  'data-size'?: Size;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
   asChild?: boolean;
-};
+} & DefaultProps;
 
 export type ChipRemovableProps = ChipButtonProps;
 export type ChipRadioProps = ChipCheckboxProps;

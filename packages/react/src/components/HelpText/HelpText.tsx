@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 import { Popover } from '../Popover';
 
 export type HelpTextProps = {
@@ -12,10 +12,6 @@ export type HelpTextProps = {
    **/
   'aria-label': string;
   /**
-   * Size of the helptext
-   */
-  'data-size'?: Size;
-  /**
    * Placement of the Popover.
    * @default 'right'
    */
@@ -23,7 +19,8 @@ export type HelpTextProps = {
 } & { 'data-size'?: string } & Omit<
     ButtonHTMLAttributes<HTMLButtonElement>,
     'color'
-  >;
+  > &
+  DefaultProps;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(

@@ -1,14 +1,9 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { SelectHTMLAttributes } from 'react';
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 
 export type SelectProps = {
-  /**
-   * Defines the size of the select.
-   * @default md
-   **/
-  'data-size'?: Size;
   /** Defines if the select is readOnly
    * @default false
    */
@@ -17,7 +12,8 @@ export type SelectProps = {
    * @default 0
    */
   htmlSize?: number;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'>;
+} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'> &
+  DefaultProps;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select(

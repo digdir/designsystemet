@@ -1,15 +1,10 @@
 import cl from 'clsx/lite';
 import type { TextareaHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 
-export type TextareaProps = {
-  /**
-   * Defines the size of the select.
-   * @default md
-   **/
-  'data-size'?: Size;
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  DefaultProps;
 
 /** Textarea field
  *

@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 export type TabsProps = {
   /** Controlled state for `Tabs` component. */
@@ -10,11 +10,8 @@ export type TabsProps = {
   defaultValue?: string;
   /** Callback with selected `TabItem` `value` */
   onChange?: (value: string) => void;
-  /**
-   * Changes items size and paddings
-   */
-  'data-size'?: Size;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'> &
+  DefaultProps;
 
 export type ContextProps = {
   value?: string;

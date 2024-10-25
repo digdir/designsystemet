@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useId, useState } from 'react';
 
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
@@ -19,11 +19,6 @@ export type TextfieldProps = {
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /**
-   * Changes field size and paddings
-   * @default md
-   */
-  'data-size'?: Size;
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
@@ -58,7 +53,8 @@ export type TextfieldProps = {
    */
   htmlSize?: number;
 } & Omit<FormFieldProps, 'size'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+  DefaultProps;
 
 /** Text input field
  *

@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
 
 export type ToggleGroupContextProps = {
@@ -23,11 +23,8 @@ export type ToggleGroupProps = {
   onChange?: (value: string) => void;
   /** Form element name */
   name?: string;
-  /**
-   * Size
-   */
-  'data-size'?: Size;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'> &
+  DefaultProps;
 
 /**
  * Display a group of buttons that can be toggled between.

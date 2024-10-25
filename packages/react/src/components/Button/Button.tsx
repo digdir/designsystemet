@@ -2,7 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 import { Spinner } from '../loaders/Spinner';
 
 export type ButtonProps = {
@@ -15,10 +15,6 @@ export type ButtonProps = {
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
-  /**
-   * Size
-   */
-  'data-size'?: Size;
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -37,7 +33,8 @@ export type ButtonProps = {
    * @default 'button'
    */
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> &
+  DefaultProps;
 
 /**
  * Button used for interaction

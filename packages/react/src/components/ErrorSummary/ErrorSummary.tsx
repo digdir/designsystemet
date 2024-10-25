@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { HTMLAttributes } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 type ErrorSummaryContextType = {
   headingId?: string;
@@ -13,9 +13,7 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
   setHeadingId: () => {},
 });
 
-export type ErrorSummaryProps = {
-  'data-size'?: Size;
-} & HTMLAttributes<HTMLDivElement>;
+export type ErrorSummaryProps = HTMLAttributes<HTMLDivElement> & DefaultProps;
 
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(

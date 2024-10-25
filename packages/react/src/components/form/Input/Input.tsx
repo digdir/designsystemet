@@ -1,14 +1,10 @@
 import cl from 'clsx/lite';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
-  /**
-   * Changes field size and paddings
-   */
-  'data-size'?: Size;
   /** Supported `input` types */
   type?: InputAttr['type'];
   /** Exposes the HTML `size` attribute.
@@ -23,7 +19,8 @@ export type InputProps = {
   readOnly?: boolean;
   /** Set role, i.e. `switch` when `checkbox` or `radio` */
   role?: InputAttr['role'];
-} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'>;
+} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'> &
+  DefaultProps;
 
 /** Input field
  *

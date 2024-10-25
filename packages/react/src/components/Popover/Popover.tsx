@@ -12,7 +12,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 import { Context } from './PopoverContext';
 
 // Make React support popovertarget attribute
@@ -51,10 +51,6 @@ export type PopoverProps = {
    */
   open?: boolean;
   /**
-   * Size of the popover
-   */
-  'data-size'?: Size;
-  /**
    * Callback when the popover wants to open.
    */
   onOpen?: () => void;
@@ -69,7 +65,8 @@ export type PopoverProps = {
   autoPlacement?: boolean;
 
   asChild?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> &
+  DefaultProps;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(

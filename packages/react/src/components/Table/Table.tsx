@@ -1,13 +1,9 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { TableHTMLAttributes } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 export type TableProps = {
-  /**
-   * The size of the table
-   */
-  'data-size'?: Size;
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -28,7 +24,8 @@ export type TableProps = {
    * @default false
    */
   hover?: boolean;
-} & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'>;
+} & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'> &
+  DefaultProps;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   {

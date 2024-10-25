@@ -8,3 +8,10 @@ export type PortalProps = {
    */
   portal?: boolean;
 };
+
+export type DefaultProps = {
+  /**
+   * Changes size of components.
+   */
+  'data-size'?: Size;
+};

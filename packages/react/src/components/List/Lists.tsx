@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ForwardedRef, HTMLAttributes, OlHTMLAttributes } from 'react';
-import type { Size } from '../../types';
+import type { DefaultProps } from '../../types';
 
 type ListBaseProps = {
   /**
@@ -10,11 +10,7 @@ type ListBaseProps = {
    * @default false
    */
   asChild?: boolean;
-  /**
-   * Changes text sizing
-   */
-  'data-size'?: Size;
-};
+} & DefaultProps;
 
 export type ListUnorderedProps = ListBaseProps &
   Omit<HTMLAttributes<HTMLUListElement>, 'size'>;

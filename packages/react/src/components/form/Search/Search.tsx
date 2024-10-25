@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
 import { Label } from '../../Label';
@@ -20,11 +20,6 @@ export type SearchProps = {
    * @default true
    */
   hideLabel?: boolean;
-  /**
-   * Changes field size and paddings
-   * @default md
-   */
-  'data-size'?: Size;
   /** Variant
    * @default 'simple'
    */
@@ -49,7 +44,8 @@ export type SearchProps = {
   FormFieldProps,
   'size' | 'description' | 'readOnly' | 'error' | 'errorId'
 > &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'> &
+  DefaultProps;
 
 /** Search field
  *
