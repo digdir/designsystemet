@@ -26,11 +26,11 @@ const Field = ({
   return (
     <div className={classes.field}>
       {label && (
-        <Paragraph size='sm' className={classes.label}>
+        <Paragraph data-size='sm' className={classes.label}>
           {label}
         </Paragraph>
       )}
-      <Paragraph size='sm' className={classes.value}>
+      <Paragraph data-size='sm' className={classes.value}>
         {value}
       </Paragraph>
       {copyBtn && <ClipboardButton value={value} />}
@@ -61,7 +61,7 @@ export const ColorModal = ({
         backdropClose
       >
         <Modal.Block>
-          <Heading size='xs'>
+          <Heading data-size='xs'>
             {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
           </Heading>
         </Modal.Block>

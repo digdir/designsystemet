@@ -12,7 +12,7 @@ export const EksempelTekst: StoryFn = () => (
   <>
     <Heading
       level={1}
-      size='xl'
+      data-size='xl'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Samordnet registermelding (H1)
@@ -27,7 +27,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={2}
-      size='lg'
+      data-size='lg'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Når skal du bruke skjemaet? (H2)
@@ -43,7 +43,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={3}
-      size='md'
+      data-size='md'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Signering (H3)
@@ -57,7 +57,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={4}
-      size='sm'
+      data-size='sm'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Krav om rolle for signering (H4)
@@ -73,7 +73,7 @@ export const EksempelTekst: StoryFn = () => (
 
     <Heading
       level={5}
-      size='xs'
+      data-size='xs'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Personvern (H5)
@@ -90,7 +90,7 @@ export const EksempelTekstDark: StoryFn = () => (
   <div data-ds-color-mode='dark'>
     <Heading
       level={1}
-      size='xl'
+      data-size='xl'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Samordnet registermelding (H1)
@@ -105,7 +105,7 @@ export const EksempelTekstDark: StoryFn = () => (
 
     <Heading
       level={2}
-      size='lg'
+      data-size='lg'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Når skal du bruke skjemaet? (H2)
@@ -121,7 +121,7 @@ export const EksempelTekstDark: StoryFn = () => (
 
     <Heading
       level={3}
-      size='md'
+      data-size='md'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Signering (H3)
@@ -135,7 +135,7 @@ export const EksempelTekstDark: StoryFn = () => (
 
     <Heading
       level={4}
-      size='sm'
+      data-size='sm'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Krav om rolle for signering (H4)
@@ -151,7 +151,7 @@ export const EksempelTekstDark: StoryFn = () => (
 
     <Heading
       level={5}
-      size='xs'
+      data-size='xs'
       style={{ marginBottom: 'var(--ds-spacing-2)' }}
     >
       Personvern (H5)

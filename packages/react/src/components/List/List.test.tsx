@@ -41,7 +41,7 @@ describe('List', () => {
   });
 
   it('should have the passed size', () => {
-    render({ size: 'lg' });
+    render({ 'data-size': 'lg' });
     expect(screen.getByRole('list')).toHaveAttribute('data-size', 'lg');
   });
 });

@@ -6,7 +6,7 @@ export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs,
   args: {
-    size: 'md',
+    'data-size': 'md',
   },
 } as Meta;
 
@@ -35,7 +35,7 @@ export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
 );
 
 export const ListOnly: StoryFn<typeof Breadcrumbs> = (args) => (
-  <Breadcrumbs aria-label='Du er her:' size='md'>
+  <Breadcrumbs aria-label='Du er her:'>
     <Breadcrumbs.List>
       <Breadcrumbs.Item>
         <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
