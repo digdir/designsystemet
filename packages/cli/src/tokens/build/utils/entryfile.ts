@@ -15,10 +15,16 @@ const sortOrder = [
   'color-mode/dark',
   'color-mode/contrast',
   'typography/primary',
+  'color/'
 ];
 
 const sortByDefinedOrder = R.sortBy<string>((fileName) => {
-  const sortIndex = sortOrder.findIndex((sortElement) => fileName.includes(`${sortElement}.css`));
+  const sortIndex = sortOrder.findIndex((sortElement) => {
+    if (sortElement.endsWith('/')) {
+      return fileName.includes(sortElement);
+    }
+    return fileName.includes(`${sortElement}.css`);
+  });
   if (sortIndex === -1) {
     // Ensure file names that don't have a specified sort order appear last
     console.error(
@@ -70,7 +76,8 @@ export const makeEntryFile: EntryFile = async ({ outPath, buildPath, theme }) =>
   const writePath = `${outPath}/${theme}.css`;
 
   const files = await glob(`**/*`, { cwd: buildPath });
-  const sortedFileNames = sortByDefinedOrder(files);
+  const sortAlphabetically = R.sort<string>(R.ascend((x) => x));
+  const sortedFileNames = R.pipe(sortAlphabetically, sortByDefinedOrder)(files);
   const content = header + concat(sortedFileNames.map((file) => `${buildPath}/${file}`));
 
   await fs.writeFile(writePath, content);
