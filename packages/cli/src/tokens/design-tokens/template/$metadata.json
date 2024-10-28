@@ -11,6 +11,10 @@
     "primitives/modes/colors/light/<theme>",
     "themes/<theme>",
     "semantic/color",
+    "semantic/modes/main-color/accent",
+    "semantic/modes/support-color/brand1",
+    "semantic/modes/support-color/brand2",
+    "semantic/modes/support-color/brand3",
     "semantic/style",
     "Figma/components"
   ]
