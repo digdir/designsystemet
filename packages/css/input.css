@@ -107,14 +107,15 @@
   }
 
   /**
-   * Toggle inputs
+   * Toggle inputs and select
    */
   &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
     cursor: pointer;
-    line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
-    translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of label text */
   }
 
+  /**
+   * Toggle inputs
+   */
   &[type='checkbox'],
   &[type='radio'] {
     --dsc-input-border-width: var(--dsc-input-border-width--toggle);
@@ -122,6 +123,8 @@
     --dsc-input-size: var(--dsc-input-size--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */
+    line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
+    translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of label text */
     width: var(--dsc-input-size);
   }
 
