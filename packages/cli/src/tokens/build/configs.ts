@@ -8,14 +8,13 @@ import { buildOptions } from '../build.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
-import {
-  type ColorCategories,
-  type GetSdConfigOptions,
-  type IsCalculatedToken,
-  type SDConfigForThemePermutation,
-  type ThemeDimension,
-  type ThemePermutation,
-  colorCategories,
+import type {
+  ColorCategories,
+  GetSdConfigOptions,
+  IsCalculatedToken,
+  SDConfigForThemePermutation,
+  ThemeDimension,
+  ThemePermutation,
 } from './types.js';
 import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from './utils/utils.js';
