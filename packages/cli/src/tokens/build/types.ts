@@ -6,6 +6,8 @@ import type { GetStyleDictionaryConfig } from './configs';
  */
 export type ThemePermutation = {
   mode: string;
+  'main-color': string;
+  'support-color': string;
   semantic: string;
   size: string;
   theme: string;

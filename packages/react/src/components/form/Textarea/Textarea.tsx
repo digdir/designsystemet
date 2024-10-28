@@ -1,15 +1,10 @@
 import cl from 'clsx/lite';
 import type { TextareaHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Size } from '../../../types';
+import type { DefaultProps } from '../../../types';
 
-export type TextareaProps = {
-  /**
-   * Defines the size of the select.
-   * @default md
-   **/
-  size?: Size;
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  DefaultProps;
 
 /** Textarea field
  *
@@ -19,14 +14,9 @@ export type TextareaProps = {
  * ```
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  function Textarea({ className, size, ...rest }, ref) {
+  function Textarea({ className, ...rest }, ref) {
     return (
-      <textarea
-        className={cl('ds-input', className)}
-        data-size={size}
-        ref={ref}
-        {...rest}
-      />
+      <textarea className={cl('ds-input', className)} ref={ref} {...rest} />
     );
   },
 );

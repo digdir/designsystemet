@@ -2,20 +2,16 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
-import type { Size } from '../../types';
 import { Input } from '../form/Input';
+import type { DefaultProps } from '../../types';
 
 type ChipBaseProps = {
-  /**
-   * Size
-   */
-  size?: Size;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
   asChild?: boolean;
-};
+} & DefaultProps;
 
 export type ChipRemovableProps = ChipButtonProps;
 export type ChipRadioProps = ChipCheckboxProps;
@@ -30,13 +26,12 @@ export type ChipCheckboxProps = ChipBaseProps &
  * <Chip.Button>Click me</Chip.Button>
  */
 export const ChipButton = forwardRef<HTMLButtonElement, ChipButtonProps>(
-  function ChipButton({ asChild, className, size, ...rest }, ref) {
+  function ChipButton({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'button';
 
     return (
       <Component
         className={cl('ds-chip', className)}
-        data-size={size}
         type={asChild ? undefined : 'button'}
         ref={ref}
         {...rest}
@@ -63,7 +58,10 @@ export const ChipRemovable = forwardRef<HTMLButtonElement, ChipRemovableProps>(
  * <Chip.Checkbox name="language" value="bokmål">Bokmål</Chip.Checkbox>
  */
 export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
-  function ChipCheckbox({ asChild, children, className, size, ...rest }, ref) {
+  function ChipCheckbox(
+    { asChild, children, className, 'data-size': size, ...rest },
+    ref,
+  ) {
     const inputType = (rest as { type?: string }).type ?? 'checkbox';
     const Component = asChild ? Slot : 'label';
 

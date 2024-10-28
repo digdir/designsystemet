@@ -9,7 +9,7 @@ describe('Alert', () => {
   test('should render children, heading level 1', () => {
     render(
       <Alert color='info'>
-        <Heading level={1} size='xs'>
+        <Heading level={1} data-size='xs'>
           Alert me!
         </Heading>
       </Alert>,
@@ -25,7 +25,7 @@ describe('Alert', () => {
         style={style}
         className='testClass'
       >
-        <Heading level={1} size='xs'>
+        <Heading level={1} data-size='xs'>
           Alert me!
         </Heading>
       </Alert>,
