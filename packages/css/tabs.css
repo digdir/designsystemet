@@ -42,6 +42,11 @@
     font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
 
+  & :where(img, svg) {
+    flex-shrink: 0; /* Never shrink icon */
+    font-size: 1.25em; /* Auto scale icon based on font-size */
+  }
+
   &[aria-selected='true'] {
     --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
     --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);

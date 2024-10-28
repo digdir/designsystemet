@@ -70,7 +70,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
+              <LinkIcon aria-hidden />
               Github
             </a>
           </Dropdown.Item>
@@ -80,7 +80,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
+              <LinkIcon aria-hidden />
               Designsystemet.no
             </a>
           </Dropdown.Item>
@@ -106,7 +106,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
+              <LinkIcon aria-hidden />
               Github
             </a>
           </Dropdown.Item>
@@ -116,7 +116,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
+              <LinkIcon aria-hidden />
               Designsystemet.no
             </a>
           </Dropdown.Item>

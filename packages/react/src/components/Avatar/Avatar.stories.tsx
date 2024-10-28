@@ -105,7 +105,7 @@ export const InDropdown: Story = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Avatar data-size='xs' color='brand1' aria-label='Sogndal Kommune'>
-            <BriefcaseIcon fontSize='5em' />
+            <BriefcaseIcon aria-hidden />
           </Avatar>
           Sogndal kommune
         </Dropdown.Item>
