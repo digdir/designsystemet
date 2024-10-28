@@ -13,7 +13,9 @@ const Comp = (args: Partial<DropdownContextProps>) => {
       <Dropdown>
         <Dropdown.Heading>Links</Dropdown.Heading>
         <Dropdown.List>
-          <Dropdown.Item>Item</Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Item</Dropdown.Button>
+          </Dropdown.Item>
           {args.children}
         </Dropdown.List>
       </Dropdown>
@@ -36,7 +38,11 @@ describe('Dropdown', () => {
   /* We are testing closing and opening in Popover.tests.tsx */
   it('should render children', async () => {
     const { user } = await render({
-      children: <Dropdown.Item>Item 2</Dropdown.Item>,
+      children: (
+        <Dropdown.Item>
+          <Dropdown.Button>Item 2</Dropdown.Button>
+        </Dropdown.Item>
+      ),
     });
     const dropdownTrigger = screen.getByRole('button');
 
@@ -45,11 +51,13 @@ describe('Dropdown', () => {
     expect(screen.queryByText('Item 2')).toBeInTheDocument();
   });
 
-  it('should be able to render `Dropdown.Item` as a anchor element using asChild', async () => {
+  it('should be able to render `Dropdown.Button` as a anchor element using asChild', async () => {
     const { user } = await render({
       children: (
-        <Dropdown.Item asChild>
-          <a href='/'>Anchor</a>
+        <Dropdown.Item>
+          <Dropdown.Button asChild>
+            <a href='/'>Anchor</a>
+          </Dropdown.Button>
         </Dropdown.Item>
       ),
     });

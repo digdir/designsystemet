@@ -226,17 +226,25 @@ const TokenList = ({
               </Dropdown.Trigger>
               <Dropdown>
                 <Dropdown.List>
-                  <Dropdown.Item onClick={() => setBrand('digdir')}>
-                    Digdir
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('digdir')}>
+                      Digdir
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('altinn')}>
-                    Altinn
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('altinn')}>
+                      Altinn
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('tilsynet')}>
-                    Tilsynet
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('tilsynet')}>
+                      Tilsynet
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('portal')}>
-                    Brreg
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('portal')}>
+                      Brreg
+                    </Dropdown.Button>
                   </Dropdown.Item>
                 </Dropdown.List>
               </Dropdown>

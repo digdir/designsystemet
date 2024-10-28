@@ -400,10 +400,18 @@ export const Components = () => {
         <Dropdown.Context>
           <Dropdown.Trigger data-size='sm'>Velg språk</Dropdown.Trigger>
           <Dropdown placement='top' data-size='sm'>
-            <Dropdown.Item>Norsk</Dropdown.Item>
-            <Dropdown.Item>Engelsk</Dropdown.Item>
-            <Dropdown.Item>Spansk</Dropdown.Item>
-            <Dropdown.Item>Fransk</Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Norsk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Engelsk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Spansk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Fransk</Dropdown.Button>
+            </Dropdown.Item>
           </Dropdown>
           <HelpText aria-label='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
