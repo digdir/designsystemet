@@ -45,9 +45,17 @@
    * We use both box-shadow and outline to ensure that the focus style is visible,
    * in case box-shadow is overridden.
    */
-  box-shadow: var(--dsc-focus-boxShadow);
-  outline: var(--dsc-focus-outline);
-  outline-offset: var(--dsc-focus-border-width);
+  box-shadow: var(--ds--focus, var(--dsc-focus-boxShadow));
+  outline: var(--ds--focus, var(--dsc-focus-outline));
+  outline-offset: var(--ds--focus, var(--dsc-focus-border-width));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --ds--focus: ;
+  }
 }
 
 [data-size='xs'] {
