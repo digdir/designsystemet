@@ -111,6 +111,8 @@
    */
   &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
     cursor: pointer;
+    line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
+    translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of label text */
   }
 
   &[type='checkbox'],
@@ -180,7 +182,6 @@
   --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-input-affix-padding-inline: var(--ds-spacing-4);
 
-  align-items: center;
   background: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
