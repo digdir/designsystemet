@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Dropdown.Item: Add style and className to button element instead of surrounding `<li>`
+Dropdown: Add `Dropdown.Button` for more explicit API
