@@ -52,8 +52,6 @@
     & input {
       grid-column: 1; /* Always place input in column 1 */
       grid-row: 1; /* Always place input in row 1 */
-      outline: none;
-      box-shadow: none;
     }
 
     &:not(:has([readonly], [aria-disabled='true'], :disabled)) label {
