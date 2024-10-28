@@ -265,8 +265,12 @@ export const Sizes: StoryFn = () => {
             <Dropdown>
               <Dropdown.Heading>Heading 1</Dropdown.Heading>
               <Dropdown.List>
-                <Dropdown.Item>Button 1.1</Dropdown.Item>
-                <Dropdown.Item>Button 1.2</Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown.Button>Button 1.1</Dropdown.Button>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown.Button>Button 1.2</Dropdown.Button>
+                </Dropdown.Item>
               </Dropdown.List>
             </Dropdown>
           </Dropdown.Context>
