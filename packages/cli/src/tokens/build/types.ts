@@ -1,4 +1,4 @@
-import type SD from 'style-dictionary/types';
+import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import type { GetStyleDictionaryConfig } from './configs';
 
 export const colorCategories = {
@@ -22,7 +22,7 @@ export type ThemePermutation = {
 
 export type ThemeDimension = keyof ThemePermutation;
 
-export type IsCalculatedToken = (token: SD.TransformedToken, options?: SD.Config) => boolean;
+export type IsCalculatedToken = (token: TransformedToken, options?: StyleDictionaryConfig) => boolean;
 
 export type GetSdConfigOptions = {
   outPath: string;
@@ -42,4 +42,4 @@ export type BuildConfig = {
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
 };
 
-export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SD.Config };
+export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: StyleDictionaryConfig };
