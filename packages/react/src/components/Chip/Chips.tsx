@@ -3,6 +3,7 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
+import { Input } from '../form/Input';
 
 type ChipBaseProps = {
   /**
@@ -70,7 +71,7 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
         data-size={size}
         ref={ref}
       >
-        <input {...rest} type={inputType} />
+        <Input {...rest} type={inputType} />
         <Slottable>{children}</Slottable>
       </Component>
     );

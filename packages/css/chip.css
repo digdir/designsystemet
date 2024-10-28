@@ -1,15 +1,23 @@
 .ds-chip {
   --dsc-chip-background: var(--ds-color-accent-surface-default);
+  --dsc-chip-background--hover: var(--ds-color-accent-surface-hover);
+  --dsc-chip-background--active: var(--ds-color-accent-surface-active);
+  --dsc-chip-background--checked: var(--ds-color-accent-base-default);
+  --dsc-chip-background--checked--hover: var(--ds-color-accent-base-hover);
+  --dsc-chip-background--checked--active: var(--ds-color-accent-base-active);
   --dsc-chip-border-color: var(--ds-color-accent-border-subtle);
-  --dsc-chip-border-radius: var(--ds-border-radius-full);
+  --dsc-chip-border-color--checked: transparent;
   --dsc-chip-color: var(--ds-color-accent-text-default);
-  --dsc-chip-height: var(--ds-sizing-8);
-  --dsc-chip-icon-size: var(--ds-spacing-6);
-  --dsc-chip-input-color: var(--ds-color-accent-border-default);
-  --dsc-chip-input-size: var(--ds-spacing-5);
-  --dsc-chip-padding: 0 var(--ds-spacing-3);
+  --dsc-chip-color--checked: var(--ds-color-accent-contrast-default);
+  --dsc-chip-input-color: var(--ds-color-accent-border-strong);
+  --dsc-chip-input-color--checked: var(--ds-color-accent-base-default);
 
-  @composes ds-focus from './base/base.css';
+  --dsc-chip-border-radius: var(--ds-border-radius-full);
+  --dsc-chip-height: var(--ds-sizing-9);
+  --dsc-chip-icon-size: var(--ds-spacing-7);
+  --dsc-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
+  --dsc-chip-input-size: var(--ds-spacing-6);
+  --gap: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
 
   align-items: center;
   background: var(--dsc-chip-background);
@@ -20,15 +28,20 @@
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
+  gap: var(--gap);
+  line-height: var(--ds-line-height-sm);
+  margin: 0;
   min-height: var(--dsc-chip-height);
-  padding: var(--dsc-chip-padding);
+  padding: 0 var(--ds-spacing-3);
   text-decoration: none;
+
+  @composes ds-focus from './base/base.css';
 
   &:not([data-size]) {
     font-size: var(--ds-font-size-minus-1);
   }
 
-  /* Make focus ring also when input inside is focused */
+  /* Show focus ring when input inside is focused by keyboard interaction */
   &:has(:focus-visible) {
     @composes ds-focus--visible from './base/base.css';
   }
@@ -40,92 +53,54 @@
     opacity: var(--ds-disabled-opacity);
   }
 
-  &:has(input[type='checkbox']) {
-    --dsc-chip-border-radius: var(--ds-border-radius-md);
-    --dsc-chip-padding: 0 var(--ds-spacing-2) 0 var(--ds-spacing-3);
+  &[data-removable] {
+    padding-inline-end: var(--gap);
+
+    &::after {
+      content: '';
+      background: currentcolor;
+      height: var(--dsc-chip-icon-size);
+      mask: center / contain no-repeat var(--dsc-chip-icon-url);
+      width: var(--dsc-chip-icon-size);
+    }
   }
 
-  &[data-removable]::after {
-    --gap: calc((var(--dsc-chip-height) - var(--dsc-chip-icon-size)) / 2); /* Gap is based on remaining space between icon and edge */
+  &:has(input[type='radio']) {
+    padding-inline-start: var(--gap);
+  }
 
-    background: currentcolor;
-    content: '';
-    height: var(--dsc-chip-icon-size);
-    margin: 0 calc(var(--gap) * -1) 0 var(--gap);
-    mask: center / contain no-repeat
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
-    width: var(--dsc-chip-icon-size);
+  &:has(input[type='checkbox']) {
+    --dsc-chip-border-radius: var(--ds-border-radius-md);
+    padding-inline: var(--gap);
   }
 
   & > input {
-    --gap: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Gap is based on remaining space between input and edge */
-
-    appearance: none;
-    background: none;
-    border: 2px solid;
-    box-sizing: border-box;
-    color: var(--dsc-chip-input-color);
-    height: var(--dsc-chip-input-size);
-    margin: 0 var(--gap) 0 calc(var(--gap) * -1);
-    outline: none;
-    width: var(--dsc-chip-input-size);
-
-    &[type='radio'] {
-      border-radius: var(--ds-border-radius-full);
-    }
-
-    &[type='radio']:checked {
-      border-width: calc(var(--dsc-chip-input-size) / 3.5); /* Matches Figma */
-    }
-
-    &[type='checkbox'] {
-      border-radius: var(--ds-border-radius-sm);
-    }
-
-    &[type='checkbox']:checked {
-      background: currentcolor;
-      mask: center / cover no-repeat
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M24 0H0v24h24V0Zm-4.44 8.56a1.5 1.5 0 0 0-2.12-2.12L10 13.88l-3.44-3.44a1.5 1.5 0 0 0-2.12 2.12l4.5 4.5a1.5 1.5 0 0 0 2.12 0l8.5-8.5Z'/%3E%3C/svg%3E");
-    }
+    --dsc-input-background--checked: var(--dsc-chip-color);
+    --dsc-input-background: transparent;
+    --dsc-input-border-color--checked: var(--dsc-chip-color);
+    --dsc-input-border-color: var(--dsc-chip-input-color);
+    --dsc-input-color--checked: var(--dsc-chip-input-color--checked);
+    --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
 
   &:has(input:checked),
   &[data-removable] {
-    --dsc-chip-background: var(--ds-color-accent-base-default);
-    --dsc-chip-border-color: transparent;
-    --dsc-chip-color: var(--ds-color-accent-contrast-default);
-    --dsc-chip-input-color: currentcolor;
+    --dsc-chip-color: var(--dsc-chip-color--checked);
+    --dsc-chip-background: var(--dsc-chip-background--checked);
+    --dsc-chip-border-color: var(--dsc-chip-border-color--checked);
+    --dsc-chip-background--hover: var(--dsc-chip-background--checked--hover);
+    --dsc-chip-background--active: var(--dsc-chip-background--checked--active);
   }
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    &:where(:not(:disabled, :has(input:disabled), [aria-disabled='true'])) {
+    &:not(:has(:disabled, [aria-disabled='true'])) {
       &:hover {
-        --dsc-chip-background: var(--ds-color-accent-surface-hover);
-        --dsc-chip-border-color: var(--ds-color-accent-border-default);
-        --dsc-chip-color: var(--ds-color-accent-text-default);
-        --dsc-chip-input-color: var(--ds-color-accent-border-strong);
+        --dsc-chip-background: var(--dsc-chip-background--hover);
       }
 
       &:active {
-        --dsc-chip-background: var(--ds-color-accent-surface-active);
-        --dsc-chip-border-color: var(--ds-color-accent-border-strong);
-        --dsc-chip-input-color: var(--ds-color-accent-border-strong);
-      }
-
-      &[data-removable]:hover,
-      &:has(input:checked):hover {
-        --dsc-chip-background: var(--ds-color-accent-base-hover);
-        --dsc-chip-border-color: transparent;
-        --dsc-chip-color: var(--ds-color-accent-contrast-default);
-        --dsc-chip-input-color: currentcolor;
-      }
-
-      &[data-removable]:active,
-      &:has(input:checked):active {
-        --dsc-chip-background: var(--ds-color-accent-base-active);
-        --dsc-chip-border-color: transparent;
-        --dsc-chip-color: var(--ds-color-accent-contrast-default);
+        --dsc-chip-background: var(--dsc-chip-background--active);
       }
     }
   }
