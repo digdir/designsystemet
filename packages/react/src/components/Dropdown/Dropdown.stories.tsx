@@ -38,12 +38,12 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
     <Dropdown.Context>
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown {...args}>
-        <Dropdown.Heading>Heading 1</Dropdown.Heading>
+        <Dropdown.Heading>First heading</Dropdown.Heading>
         <Dropdown.List>
           <Dropdown.Item>Button 1.1</Dropdown.Item>
           <Dropdown.Item>Button 1.2</Dropdown.Item>
         </Dropdown.List>
-        <Dropdown.Heading>Heading 2</Dropdown.Heading>
+        <Dropdown.Heading>Second heading</Dropdown.Heading>
         <Dropdown.List>
           <Dropdown.Item>Button 2.1</Dropdown.Item>
           <Dropdown.Item>Button 2.2</Dropdown.Item>
