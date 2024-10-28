@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button/Button';
 
-export type DropdownItemProps = Omit<ButtonProps, 'variant' | 'size' | 'color'>;
+export type DropdownItemProps = Omit<ButtonProps, 'variant' | 'color'>;
 
 export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
   function DropdownItem({ className, style, ...rest }, ref) {
