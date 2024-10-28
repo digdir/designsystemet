@@ -62,7 +62,7 @@
   &::after {
     content: '';
     display: block;
-    height: 3px;
+    height: .15em; /* Scale with font */
     width: 100%;
     background-color: var(--dsc-tabs__tab-bottom-border-color);
     position: absolute;

@@ -8,7 +8,7 @@
   --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-width--toggle: 2px;
+  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
@@ -160,6 +160,7 @@
     --circle-color: var(--dsc-input-color--checked);
     --circle-position: left;
 
+    /* TODO: border-width: calc(var(--ds-spacing-1) / 2) */
     border-radius: var(--ds-border-radius-full);
     padding-left: var(--dsc-input-size); /* Push checkmark to right side */
     transition: 0.2s background-position;

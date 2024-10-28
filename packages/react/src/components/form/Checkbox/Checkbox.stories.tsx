@@ -33,7 +33,6 @@ export const AriaLabel: Story = {
 export const Group: StoryFn<typeof Fieldset> = (args) => {
   const props = {
     'aria-invalid': !!args.error,
-    'data-size': args.size,
   };
 
   return (

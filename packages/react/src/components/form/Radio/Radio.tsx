@@ -19,7 +19,6 @@ export type RadioProps = {
   validation?: ReactNode;
   /**
    * Changes field size and paddings
-   * @default md
    */
   'data-size'?: 'sm' | 'md' | 'lg';
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
