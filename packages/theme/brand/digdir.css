@@ -1268,3 +1268,102 @@
   --ds-letter-spacing-9: 1.5%;
 }
 }
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color {
+[data-ds-color="accent"] {
+  --ds-color-background-default: var(--ds-color-accent-background-default);
+  --ds-color-background-subtle: var(--ds-color-accent-background-subtle);
+  --ds-color-surface-default: var(--ds-color-accent-surface-default);
+  --ds-color-surface-hover: var(--ds-color-accent-surface-hover);
+  --ds-color-surface-active: var(--ds-color-accent-surface-active);
+  --ds-color-border-subtle: var(--ds-color-accent-border-subtle);
+  --ds-color-border-default: var(--ds-color-accent-border-default);
+  --ds-color-border-strong: var(--ds-color-accent-border-strong);
+  --ds-color-base-default: var(--ds-color-accent-base-default);
+  --ds-color-base-hover: var(--ds-color-accent-base-hover);
+  --ds-color-base-active: var(--ds-color-accent-base-active);
+  --ds-color-text-subtle: var(--ds-color-accent-text-subtle);
+  --ds-color-text-default: var(--ds-color-accent-text-default);
+  --ds-color-contrast-default: var(--ds-color-accent-contrast-default);
+  --ds-color-contrast-subtle: var(--ds-color-accent-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color {
+[data-ds-color="brand1"] {
+  --ds-color-background-default: var(--ds-color-brand1-background-default);
+  --ds-color-background-subtle: var(--ds-color-brand1-background-subtle);
+  --ds-color-surface-default: var(--ds-color-brand1-surface-default);
+  --ds-color-surface-hover: var(--ds-color-brand1-surface-hover);
+  --ds-color-surface-active: var(--ds-color-brand1-surface-active);
+  --ds-color-border-subtle: var(--ds-color-brand1-border-subtle);
+  --ds-color-border-default: var(--ds-color-brand1-border-default);
+  --ds-color-border-strong: var(--ds-color-brand1-border-strong);
+  --ds-color-base-default: var(--ds-color-brand1-base-default);
+  --ds-color-base-hover: var(--ds-color-brand1-base-hover);
+  --ds-color-base-active: var(--ds-color-brand1-base-active);
+  --ds-color-text-subtle: var(--ds-color-brand1-text-subtle);
+  --ds-color-text-default: var(--ds-color-brand1-text-default);
+  --ds-color-contrast-default: var(--ds-color-brand1-contrast-default);
+  --ds-color-contrast-subtle: var(--ds-color-brand1-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color {
+[data-ds-color="brand2"] {
+  --ds-color-background-default: var(--ds-color-brand2-background-default);
+  --ds-color-background-subtle: var(--ds-color-brand2-background-subtle);
+  --ds-color-surface-default: var(--ds-color-brand2-surface-default);
+  --ds-color-surface-hover: var(--ds-color-brand2-surface-hover);
+  --ds-color-surface-active: var(--ds-color-brand2-surface-active);
+  --ds-color-border-subtle: var(--ds-color-brand2-border-subtle);
+  --ds-color-border-default: var(--ds-color-brand2-border-default);
+  --ds-color-border-strong: var(--ds-color-brand2-border-strong);
+  --ds-color-base-default: var(--ds-color-brand2-base-default);
+  --ds-color-base-hover: var(--ds-color-brand2-base-hover);
+  --ds-color-base-active: var(--ds-color-brand2-base-active);
+  --ds-color-text-subtle: var(--ds-color-brand2-text-subtle);
+  --ds-color-text-default: var(--ds-color-brand2-text-default);
+  --ds-color-contrast-default: var(--ds-color-brand2-contrast-default);
+  --ds-color-contrast-subtle: var(--ds-color-brand2-contrast-subtle);
+}
+
+}
+
+/**
+ * These files are generated from design tokens defind using Token Studio
+ */
+
+@layer ds.theme.color {
+[data-ds-color="brand3"] {
+  --ds-color-background-default: var(--ds-color-brand3-background-default);
+  --ds-color-background-subtle: var(--ds-color-brand3-background-subtle);
+  --ds-color-surface-default: var(--ds-color-brand3-surface-default);
+  --ds-color-surface-hover: var(--ds-color-brand3-surface-hover);
+  --ds-color-surface-active: var(--ds-color-brand3-surface-active);
+  --ds-color-border-subtle: var(--ds-color-brand3-border-subtle);
+  --ds-color-border-default: var(--ds-color-brand3-border-default);
+  --ds-color-border-strong: var(--ds-color-brand3-border-strong);
+  --ds-color-base-default: var(--ds-color-brand3-base-default);
+  --ds-color-base-hover: var(--ds-color-brand3-base-hover);
+  --ds-color-base-active: var(--ds-color-brand3-base-active);
+  --ds-color-text-subtle: var(--ds-color-brand3-text-subtle);
+  --ds-color-text-default: var(--ds-color-brand3-text-default);
+  --ds-color-contrast-default: var(--ds-color-brand3-contrast-default);
+  --ds-color-contrast-subtle: var(--ds-color-brand3-contrast-subtle);
+}
+
+}
