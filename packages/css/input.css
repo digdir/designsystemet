@@ -185,6 +185,7 @@
   --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-input-affix-padding-inline: var(--ds-spacing-4);
 
+  align-items: center;
   background: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
