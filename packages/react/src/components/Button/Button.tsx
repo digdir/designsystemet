@@ -47,7 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       asChild,
       className,
       children,
-      color = 'accent',
+      color,
       icon = false,
       loading = false,
       variant = 'primary',

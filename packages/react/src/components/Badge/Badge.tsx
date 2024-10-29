@@ -54,7 +54,7 @@ export type BadgeProps = {
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   {
     className,
-    color = 'accent',
+    color,
     count,
     maxCount,
     overlap = 'rectangle',

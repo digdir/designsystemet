@@ -27,7 +27,7 @@ export type LinkProps = {
   DefaultProps;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ asChild, className, color = 'accent', ...rest }, ref) => {
+  ({ asChild, className, color, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
 
     return (
