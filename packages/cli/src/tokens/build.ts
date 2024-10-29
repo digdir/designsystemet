@@ -20,6 +20,8 @@ type Options = {
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
+  /** Set the default "accent" color, if not overridden with data-color */
+  accentColor: string;
 };
 
 export let buildOptions: Options | undefined;

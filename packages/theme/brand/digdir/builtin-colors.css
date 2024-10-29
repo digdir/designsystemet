@@ -1,5 +1,4 @@
 @layer ds.theme.color {
-  :root,
   [data-color='neutral'] {
     --ds-color-background-default: var(--ds-color-neutral-background-default);
     --ds-color-background-subtle: var(--ds-color-neutral-background-subtle);

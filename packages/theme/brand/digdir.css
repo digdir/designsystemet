@@ -1273,7 +1273,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="accent"] {
+:root, [data-color="accent"] {
   --ds-color-background-default: var(--ds-color-accent-background-default);
   --ds-color-background-subtle: var(--ds-color-accent-background-subtle);
   --ds-color-surface-default: var(--ds-color-accent-surface-default);
@@ -1369,7 +1369,6 @@
 }
 
 @layer ds.theme.color {
-  :root,
   [data-color='neutral'] {
     --ds-color-background-default: var(--ds-color-neutral-background-default);
     --ds-color-background-subtle: var(--ds-color-neutral-background-subtle);
