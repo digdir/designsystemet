@@ -1,60 +1,45 @@
-import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
-import type { InputHTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useId, useState } from 'react';
+import {
+  type ForwardedRef,
+  type InputHTMLAttributes,
+  type ReactNode,
+  type TextareaHTMLAttributes,
+  forwardRef,
+} from 'react';
 
-import type { DefaultProps } from '../../../types';
-import { omit } from '../../../utilities';
 import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
 import { ValidationMessage } from '../../ValidationMessage';
-import type { CharacterLimitProps } from '../CharacterCounter';
-import { CharacterCounter } from '../CharacterCounter';
-import type { FormFieldProps } from '../useFormField';
+import { Field } from '../Field';
+import { Input } from '../Input';
+import { Textarea } from '../Textarea';
 
-import { useTextfield } from './useTextfield';
-
-export type TextfieldProps = {
+type SharedTextfieldProps = {
   /** Label */
   label?: ReactNode;
-  /** Visually hides `label` and `description` (still available for screen readers)  */
-  hideLabel?: boolean;
+  /** Description */
+  description?: ReactNode;
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
   suffix?: string;
-  /** Supported `input` types */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
-  /**
-   *  The characterLimit function calculates remaining characters based on `maxCount`
-   *
-   *  Provide a `label` function that takes count as parameter and returns a message.
-   *
-   *  Use `srLabel` to describe `maxCount` for screen readers.
-   *
-   *  Defaults to Norwegian if no labels are provided.
-   */
-  characterLimit?: CharacterLimitProps;
-  /** Exposes the HTML `size` attribute.
-   * @default 20
-   */
-  htmlSize?: number;
-} & FormFieldProps &
-  InputHTMLAttributes<HTMLInputElement> &
-  DefaultProps;
+  /** Validation message for field */
+  validation?: ReactNode;
+  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
+  multiline?: boolean;
+  'data-size'?: 'sm' | 'md' | 'lg';
+};
+
+type TextareaTypes = {
+  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
+  multiline: true;
+} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+
+type InputTypes = {
+  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
+  multiline?: false | never;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+export type TextfieldProps = SharedTextfieldProps &
+  (TextareaTypes | InputTypes);
 
 /** Text input field
  *
@@ -63,155 +48,22 @@ export type TextfieldProps = {
  * <Textfield label="Textfield label">
  * ```
  */
-export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
-  (props, ref) => {
-    const {
-      label,
-      description,
-      suffix,
-      prefix,
-      style,
-      characterLimit,
-      hideLabel,
-      type = 'text',
-      htmlSize = 20,
-      className,
-      ...rest
-    } = props;
+export const Textfield = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  TextfieldProps
+>((props, ref) => {
+  const { label, description, validation } = props;
 
-    const {
-      inputProps,
-      descriptionId,
-      hasError,
-      errorId,
-      size = 'md',
-      readOnly,
-    } = useTextfield(props);
-
-    const [inputValue, setInputValue] = useState(
-      props.value || props.defaultValue,
-    );
-    const characterLimitId = `textfield-charactercount-${useId()}`;
-    const hasCharacterLimit = characterLimit != null;
-
-    const describedBy =
-      cl(
-        inputProps['aria-describedby'],
-        hasCharacterLimit && characterLimitId,
-      ) || undefined;
-
-    return (
-      <Paragraph asChild data-size={size}>
-        <div
-          style={style}
-          className={cl(
-            `ds-textfield`,
-            `ds-textfield--${size}`,
-            readOnly && `ds-textfield--readonly`,
-            hasError && `ds-textfield--error`,
-            className,
-          )}
-        >
-          {label && (
-            <Label
-              data-size={size}
-              weight='medium'
-              htmlFor={inputProps.id}
-              className={cl(`ds-textfield__label`, hideLabel && `ds-sr-only`)}
-            >
-              {readOnly && (
-                <PadlockLockedFillIcon
-                  aria-hidden
-                  className='ds-textfield__readonly__icon'
-                />
-              )}
-              <span>{label}</span>
-            </Label>
-          )}
-          {description && (
-            <Paragraph asChild data-size={size}>
-              <div
-                id={descriptionId}
-                className={cl(
-                  `ds-textfield__description`,
-                  hideLabel && `ds-sr-only`,
-                )}
-              >
-                {description}
-              </div>
-            </Paragraph>
-          )}
-          <div className='ds-textfield__field'>
-            {prefix && (
-              <Paragraph asChild data-size={size} variant='short'>
-                <div
-                  className={cl(
-                    `ds-textfield__adornment`,
-                    `ds-textfield__prefix`,
-                  )}
-                  aria-hidden='true'
-                >
-                  {prefix}
-                </div>
-              </Paragraph>
-            )}
-            <input
-              className={cl(
-                `ds-textfield__input`,
-                `ds-focus`,
-                prefix && `ds-textfield__input--with-prefix`,
-                suffix && `ds-textfield__input--with-suffix`,
-              )}
-              ref={ref}
-              type={type}
-              disabled={inputProps.disabled}
-              aria-describedby={describedBy}
-              size={htmlSize}
-              {...omit(['size', 'error', 'errorId'], rest)}
-              {...inputProps}
-              onChange={(e) => {
-                inputProps?.onChange?.(e);
-                setInputValue(e.target.value);
-              }}
-            />
-            {suffix && (
-              <Paragraph asChild data-size={size} variant='short'>
-                <div
-                  className={cl(
-                    `ds-textfield__adornment`,
-                    `ds-textfield__suffix`,
-                  )}
-                  aria-hidden='true'
-                >
-                  {suffix}
-                </div>
-              </Paragraph>
-            )}
-          </div>
-          {hasCharacterLimit && (
-            <CharacterCounter
-              data-size={size}
-              value={inputValue ? inputValue.toString() : ''}
-              id={characterLimitId}
-              {...characterLimit}
-            />
-          )}
-          <div
-            className='ds-textfield__error-message'
-            id={errorId}
-            aria-live='polite'
-            aria-relevant='additions removals'
-          >
-            {hasError && (
-              <ValidationMessage data-size={size}>
-                {props.error}
-              </ValidationMessage>
-            )}
-          </div>
-        </div>
-      </Paragraph>
-    );
-  },
-);
-
-Textfield.displayName = 'Textfield';
+  return (
+    <Field>
+      {!!label && <Label weight='regular'>{label}</Label>}
+      {!!description && <div data-field='description'>{description}</div>}
+      {props.multiline === true ? (
+        <Textarea ref={ref as ForwardedRef<HTMLTextAreaElement>} {...props} />
+      ) : (
+        <Input ref={ref as ForwardedRef<HTMLInputElement>} {...props} />
+      )}
+      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+    </Field>
+  );
+});

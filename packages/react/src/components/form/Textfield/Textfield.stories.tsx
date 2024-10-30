@@ -19,23 +19,16 @@ export const Preview: Story = {
     readOnly: false,
     'data-size': 'md',
     description: '',
-    error: '',
+    multiline: false,
   },
 };
 
 export const WithCharacterCounter: Story = {
   args: {
     label: 'Label',
-    characterLimit: {
-      maxCount: 5,
-    },
-  },
-};
-
-export const HtmlSize: Story = {
-  args: {
-    label: 'Label',
-    htmlSize: 10,
+    // characterLimit: {
+    //   maxCount: 5,
+    // },
   },
 };
 
