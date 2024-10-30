@@ -35,7 +35,7 @@ type TextareaTypes = {
 
 type InputTypes = {
   /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
-  multiline?: false | never;
+  multiline?: never;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export type TextfieldProps = SharedTextfieldProps &
