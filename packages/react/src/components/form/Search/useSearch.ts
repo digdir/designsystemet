@@ -21,7 +21,7 @@ export const useSearch: UseSearch = (props) => {
   const {
     inputProps,
     readOnly,
-    size = fieldset?.size ?? 'md',
+    size = fieldset?.size,
     ...rest
   } = useFormField(props, 'search');
 

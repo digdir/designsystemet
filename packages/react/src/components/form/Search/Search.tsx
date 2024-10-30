@@ -7,12 +7,8 @@ import { forwardRef, useCallback, useRef, useState } from 'react';
 import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
-import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
 import { Input } from '../Input/Input';
 import type { FormFieldProps } from '../useFormField';
-
-import { useSearch } from './useSearch';
 
 export type SearchProps = {
   /** Variant
@@ -70,10 +66,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       onSearchClick,
       htmlSize = 27,
       className,
+      'data-size': size,
       ...rest
     } = props;
-
-    const { inputProps, size = 'md' } = useSearch(props);
 
     const inputRef = useRef<HTMLInputElement>();
     const mergedRef = useMergeRefs([ref, inputRef]);
@@ -103,73 +98,52 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
-      <Paragraph asChild data-size={size}>
-        <div
-          style={style}
+      <div
+        style={style}
+        className={cl('ds-search', className)}
+        data-size={size}
+        data-variant={variant}
+      >
+        {isSimple && (
+          <MagnifyingGlassIcon className={'ds-search__icon'} aria-hidden />
+        )}
+        <Input
+          ref={mergedRef}
+          size={htmlSize}
+          value={value ?? internalValue}
+          disabled={disabled}
           className={cl(
-            'ds-search',
-            inputProps.disabled && 'ds-search--disabled',
-            `ds-search--${size}`,
-            className,
+            `ds-focus`,
+            isSimple
+              ? 'ds-search__input--simple'
+              : 'ds-search__input--with-search-button',
           )}
-        >
-          {label && (
-            <Label weight='medium' htmlFor={inputProps.id}>
-              {label}
-            </Label>
-          )}
-
-          <div className={'ds-search__field'}>
-            <div className={cl('ds-search__field', `ds-search--${size}`)}>
-              {isSimple && (
-                <MagnifyingGlassIcon
-                  className={'ds-search__icon'}
-                  aria-hidden
-                ></MagnifyingGlassIcon>
-              )}
-              <Input
-                ref={mergedRef}
-                size={htmlSize}
-                value={value ?? internalValue}
-                disabled={disabled}
-                className={cl(
-                  'ds-search__input',
-                  `ds-focus`,
-                  isSimple
-                    ? 'ds-search__input--simple'
-                    : 'ds-search__input--with-search-button',
-                )}
-                {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
-                {...inputProps}
-                onChange={handleChange}
-              />
-              {showClearButton && (
-                <button
-                  className={cl('ds-search__clear-button', `ds-focus`)}
-                  type='button'
-                  onClick={handleClear}
-                  disabled={disabled}
-                  aria-label={clearButtonLabel}
-                >
-                  <XMarkIcon aria-hidden />
-                </button>
-              )}
-            </div>
-            {!isSimple && (
-              <Button
-                className={'ds-search__search-button'}
-                data-size={size}
-                variant={variant}
-                type='submit'
-                onClick={handleSearchClick}
-                disabled={disabled}
-              >
-                {searchButtonLabel}
-              </Button>
-            )}
-          </div>
-        </div>
-      </Paragraph>
+          {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+          onChange={handleChange}
+        />
+        {showClearButton && (
+          <button
+            className={cl('ds-search__clear-button', `ds-focus`)}
+            type='button'
+            onClick={handleClear}
+            disabled={disabled}
+            aria-label={clearButtonLabel}
+          >
+            <XMarkIcon aria-hidden />
+          </button>
+        )}
+        {!isSimple && (
+          <Button
+            className={'ds-search__search-button'}
+            variant={variant}
+            type='submit'
+            onClick={handleSearchClick}
+            disabled={disabled}
+          >
+            {searchButtonLabel}
+          </Button>
+        )}
+      </div>
     );
   },
 );
