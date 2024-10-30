@@ -29,11 +29,11 @@ export type RadioProps = {
   );
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-  { children, label, description, validation, ...rest },
+  { 'data-size': size, children, label, description, validation, ...rest },
   ref,
 ) {
   return (
-    <Field>
+    <Field data-size={size}>
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}

@@ -9,6 +9,7 @@
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
+  --dsc-input-border-width--toggle: round(up, max(1px, calc(var(--ds-spacing-1) / 2)), 0.0625rem); /* Round up to nearest 1px */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
