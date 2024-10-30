@@ -145,15 +145,22 @@ describe('Popover', () => {
 
     const { container } = renderRtl(<CompControlled />);
     const content = screen.queryByText('Content');
-    const getCurrentChevronPath = () =>
-      container.querySelector('button path') as SVGElement;
 
     expect(content).not.toBeVisible();
-    await act(async () => await user.click(getCurrentChevronPath()));
+    await act(
+      async () =>
+        await user.click(container.querySelector('svg') as SVGSVGElement),
+    );
     expect(content).toBeVisible();
-    await act(async () => await user.click(getCurrentChevronPath()));
+    await act(
+      async () =>
+        await user.click(container.querySelector('svg') as SVGSVGElement),
+    );
     expect(content).not.toBeVisible();
-    await act(async () => await user.click(getCurrentChevronPath()));
+    await act(
+      async () =>
+        await user.click(container.querySelector('svg') as SVGSVGElement),
+    );
     expect(content).toBeVisible();
   });
 });
