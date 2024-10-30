@@ -18,11 +18,12 @@ Vi bruker `Checkbox` (avmerkingsboks) for å gi brukerne valg, der de kan velge 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
 
-<Fieldset legend='What would your D&D party like to eat?'>
-  <Checkbox value='elfsalad'>Wood Elf forest salad</Checkbox>
-  <Checkbox value='firecakes'>Fire breath rice cakes</Checkbox>
-  <Checkbox value='dumplings'>Chicken-something dumplings</Checkbox>
-  <Checkbox value='ribs'>Sembian honey-glazed rothè ribs</Checkbox>
+<Fieldset>
+  <Fieldset.Legend>Skal du reise til noen av disse landene?</Fieldset.Legend>
+  <Checkbox label='Kroatia' value='kroatia' />
+  <Checkbox label='Slovakia' value='slovakia' />
+  <Checkbox label='Hobsyssel' value='hobsyssel' />
+  <Checkbox label='Jeg skal ikke til noen av disse landene' value='ingen' />
 </Fieldset>;
 ```
 

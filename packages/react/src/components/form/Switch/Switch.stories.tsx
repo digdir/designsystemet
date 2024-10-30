@@ -42,7 +42,8 @@ export const EnabledHovered: Story = {
 };
 
 export const FullWidth: StoryFn<typeof Switch> = (args) => (
-  <Fieldset legend='Skru av/på en eller flere innstillinger'>
+  <Fieldset>
+    <Fieldset.Legend>Skru av/på en eller flere innstillinger</Fieldset.Legend>
     <Switch
       description='Beskrivelse av innstilling'
       value='alt1'

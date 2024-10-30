@@ -2,7 +2,14 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import type { ChangeEvent } from 'react';
 
-import { Button, Checkbox, Divider, Fieldset, Paragraph } from '../..';
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Fieldset,
+  Paragraph,
+  ValidationMessage,
+} from '../..';
 
 type Story = StoryObj<typeof Checkbox>;
 
@@ -19,7 +26,6 @@ export const Preview: Story = {
     readOnly: false,
     value: 'value',
     'data-size': 'md',
-    indeterminate: false,
   },
 };
 
@@ -37,36 +43,41 @@ export const Group: StoryFn<typeof Fieldset> = (args) => {
 
   return (
     <Fieldset {...args}>
+      <Fieldset.Legend>
+        Hvordan vil du helst at vi skal kontakte deg?
+      </Fieldset.Legend>
+      <Fieldset.Description>
+        Velg alle alternativene som er relevante for deg.
+      </Fieldset.Description>
       <Checkbox label='E-post' value='epost' {...props} defaultChecked />
       <Checkbox label='Telefon' value='telefon' {...props} />
       <Checkbox label='SMS' value='sms' {...props} />
+      {!!args.error && <ValidationMessage>{args.error}</ValidationMessage>}
     </Fieldset>
   );
 };
 
 Group.args = {
-  legend: 'Hvordan vil du helst at vi skal kontakte deg?',
-  description: 'Velg alle alternativene som er relevante for deg.',
   disabled: false,
-  error: '',
-  size: 'md',
 };
 
 export const OneOption: StoryFn<typeof Fieldset> = () => (
-  <Fieldset
-    legend='Bekreft at du er over 18 år'
-    description='For at vi skal kunne sende deg opplysningen du ber om, må du bekrefte at du er myndig.'
-  >
+  <Fieldset>
+    <Fieldset.Legend>Bekreft at du er over 18 år</Fieldset.Legend>
+    <Fieldset.Description>
+      For at vi skal kunne sende deg opplysningen du ber om, må du bekrefte at
+      du er myndig.
+    </Fieldset.Description>
     <Checkbox label='Jeg bekrefter at jeg er over 18 år' value='samtykke' />
   </Fieldset>
 );
 
 export const WithError = {
+  render: Group,
   args: {
     ...Group.args,
-    error: 'Du må velge minst to kontaktalternativ',
+    error: 'Du må velge minst to kontaktalternativ', // TODO: useCheckbox when hook is ready
   },
-  render: Group,
 };
 
 export const Controlled: StoryFn<typeof Checkbox> = () => {
@@ -86,10 +97,13 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
     );
   return (
     <>
-      <Fieldset
-        legend='Skal du reise til noen av disse landene?'
-        description='Velg alle landene du skal innom.'
-      >
+      <Fieldset>
+        <Fieldset.Legend>
+          Skal du reise til noen av disse landene?
+        </Fieldset.Legend>
+        <Fieldset.Description>
+          Velg alle landene du skal innom.
+        </Fieldset.Description>
         <Checkbox
           label='Kroatia'
           value='kroatia'
@@ -145,7 +159,10 @@ export const Disabled = {
 };
 
 export const ContentEx1: StoryFn<typeof Fieldset> = () => (
-  <Fieldset legend='Hvor lenge har du jobbet i det offentlige?'>
+  <Fieldset>
+    <Fieldset.Legend>
+      Hvor lenge har du jobbet i det offentlige?
+    </Fieldset.Legend>
     <Checkbox label='I under ett år' value='0-3' />
     <Checkbox label='Fra 1-3 år' value='1-3' />
     <Checkbox label='Mer enn 3 år' value='3+' />
@@ -153,7 +170,8 @@ export const ContentEx1: StoryFn<typeof Fieldset> = () => (
 );
 
 export const ContentEx2: StoryFn<typeof Fieldset> = () => (
-  <Fieldset legend='Hva liker du best med jobben din?'>
+  <Fieldset>
+    <Fieldset.Legend>Hva liker du best med jobben din?</Fieldset.Legend>
     <Checkbox
       label='Jeg liker å jobbe med selvstendige oppgaver'
       value='selvstendige'
@@ -165,7 +183,8 @@ export const ContentEx2: StoryFn<typeof Fieldset> = () => (
 );
 
 export const ContentEx3: StoryFn<typeof Fieldset> = () => (
-  <Fieldset legend='Hva liker du best med jobben din'>
+  <Fieldset>
+    <Fieldset.Legend>Hva liker du best med jobben din?</Fieldset.Legend>
     <Checkbox label='Selvstendige oppgaver' value='selvstendige' />
     <Checkbox label='Møter' value='moter' />
     <Checkbox label='Lunsj' value='lunsj' />

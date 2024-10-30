@@ -46,7 +46,8 @@ export const Components = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Fieldset legend='Handleliste' data-size='sm'>
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Handleliste</Fieldset.Legend>
           <Checkbox label='En kilo poteter' value='epost' />
           <Checkbox label='To liter Farris' value='telefon' />
           <Checkbox label='Blomkål' value='sms' defaultChecked />
@@ -201,11 +202,9 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.radio)}>
-        <Fieldset
-          legend='Hvilken iskremsmak er best?'
-          description='Velg din favorittsmak'
-          data-size='sm'
-        >
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+          <Fieldset.Description>Velg din favorittsmak</Fieldset.Description>
           <Radio label='Vanile' value='vanilje' />
           <Radio label='Jordbær' value='jordbær' defaultChecked />
           <Radio label='Sjokolade' value='sjokolade' />
@@ -244,12 +243,11 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Fieldset
-          legend='Instillinger'
-          description='Her kan du justere på innstillingene dine'
-          data-size='sm'
-          className={classes.SwitchContainer}
-        >
+        <Fieldset data-size='sm' className={classes.SwitchContainer}>
+          <Fieldset.Legend>Instillinger</Fieldset.Legend>
+          <Fieldset.Description>
+            Her kan du justere på innstillingene dine
+          </Fieldset.Description>
           <Switch defaultChecked>TV-visning</Switch>
           <Switch>Desktopvisning</Switch>
           <Switch defaultChecked readOnly>

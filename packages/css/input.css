@@ -9,7 +9,6 @@
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
-  --dsc-input-border-width--toggle: round(up, max(1px, calc(var(--ds-spacing-1) / 2)), 0.0625rem); /* Round up to nearest 1px */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
@@ -34,7 +33,7 @@
   appearance: none;
   background: var(--dsc-input-background);
   border-radius: var(--ds-border-radius-md);
-  border: var(--dsc-input-affix-border, var(--dsc-input-border-width) solid var(--dsc-input-border-color)); /* Inherit from .ds-input-addons if present */
+  border: var(--dsc-input-border-width) solid var(--dsc-input-border-color); /* Inherit from .ds-input-addons if present */
   box-shadow: var(--dsc-input-box-shadow);
   box-sizing: border-box;
   color: var(--dsc-input-color);
@@ -47,6 +46,11 @@
   position: relative; /* Ensure foucs outline renders on top */
 
   @composes ds-focus from './base/base.css';
+
+  /* Round border-width up to nearest 1px if supported */
+  @supports (width: round(down, .1em, 1px)) {
+    border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
+  }
 
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size */
@@ -210,9 +214,8 @@
 
   /* Using double selector to ensure we win specificity */
   .ds-input.ds-input {
-    align-self: stretch;
     border-radius: 0;
+    border: var(--dsc-input-affix-border);
     flex: 1 1 auto;
-    height: auto;
   }
 }

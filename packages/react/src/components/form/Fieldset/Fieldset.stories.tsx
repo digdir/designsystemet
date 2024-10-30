@@ -12,6 +12,10 @@ export default {
 export const Preview: Story = (args) => (
   <form>
     <Fieldset {...args}>
+      <Fieldset.Legend>Skriv inn dine svar</Fieldset.Legend>
+      <Fieldset.Description>
+        Gi en kort beskrivelse i begge feltene
+      </Fieldset.Description>
       <Field>
         <Label>Kort beskrivelse</Label>
         <Input />
@@ -23,12 +27,3 @@ export const Preview: Story = (args) => (
     </Fieldset>
   </form>
 );
-
-Preview.args = {
-  description: 'Gi en kort beskrivelse i begge feltene',
-  disabled: false,
-  error: '',
-  legend: 'Skriv inn dine svar',
-  hideLegend: false,
-  size: 'md',
-};
