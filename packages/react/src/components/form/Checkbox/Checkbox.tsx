@@ -35,11 +35,11 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
-    { children, label, description, validation, ...rest },
+    { 'data-size': size, children, label, description, validation, ...rest },
     ref,
   ) {
     return (
-      <Field>
+      <Field data-size={size}>
         <Input type='checkbox' ref={ref} {...rest} />
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}

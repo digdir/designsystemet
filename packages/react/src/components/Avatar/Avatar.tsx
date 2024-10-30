@@ -25,6 +25,10 @@ export type AvatarProps = {
    */
   variant?: 'circle' | 'square';
   /**
+   * Initials to display inside the avatar.
+   */
+  initials?: string;
+  /**
    * Image, icon or initials to display inside the avatar.
    *
    * Gets `aria-hidden="true"`
@@ -36,7 +40,7 @@ export type AvatarProps = {
  * Avatars are used to represent people or entities.
  *
  * @example
- * <Avatar aria-label="John Doe">JD</Avatar>
+ * <Avatar aria-label="John Doe" initials="JD" />
  *
  * @example
  * <Avatar aria-label="John Doe">
@@ -55,6 +59,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     variant = 'circle',
     className,
     children,
+    initials,
     ...rest
   },
   ref,
@@ -68,6 +73,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-color={color}
+      data-initials={initials}
       role='img'
       aria-label={ariaLabel}
       {...rest}
