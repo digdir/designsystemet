@@ -84,7 +84,10 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       [onChange, value],
     );
 
-    const handleClear = () => {
+    const handleClear = (
+      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    ) => {
+      e.preventDefault();
       onClear?.(internalValue);
       setInternalValue('');
       inputRef?.current?.focus();
@@ -117,10 +120,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           <Button
             variant='secondary'
             type='reset'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClear();
-            }}
+            onClick={handleClear}
             disabled={disabled}
             aria-label={clearButtonLabel}
           >
