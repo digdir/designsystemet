@@ -8,9 +8,7 @@ import { useFormField } from './useFormField';
 
 const createWrapper = (Wrapper: typeof Fieldset, props?: FieldsetProps) => {
   return ({ children }: { children: ReactNode }) => (
-    <Wrapper legend='Wrapper' {...props}>
-      {children}
-    </Wrapper>
+    <Wrapper {...props}>{children}</Wrapper>
   );
 };
 
@@ -46,7 +44,7 @@ describe('useFormField', () => {
     const { result } = renderHook<FormField, FieldsetProps>(
       () => useFormField({}, 'test'),
       {
-        wrapper: createWrapper(Fieldset, { error: 'error', legend: 'Wrapper' }),
+        wrapper: createWrapper(Fieldset, { error: 'error' }),
       },
     );
 
@@ -114,8 +112,6 @@ describe('useFormField', () => {
       {
         wrapper: createWrapper(Fieldset, {
           disabled: true,
-          size: 'sm',
-          legend: 'Wrapper',
         }),
       },
     );
