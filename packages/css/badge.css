@@ -16,14 +16,16 @@
     box-sizing: border-box;
     color: var(--dsc-badge-color);
     display: grid;
+    font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
     min-height: var(--dsc-badge-size);
     min-width: var(--dsc-badge-size);
     padding: var(--dsc-badge-padding);
     place-items: center;
   }
 
-  &:not([data-size]) {
-    font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
+  & :where(img, svg) {
+    flex-shrink: 0; /* Never shrink icon */
+    font-size: 1.25em; /* Auto scale icon based on font-size */
   }
 
   &[data-color='info'] {
