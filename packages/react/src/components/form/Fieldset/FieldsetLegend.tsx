@@ -1,16 +1,18 @@
-import { forwardRef } from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
+import type { DefaultProps } from '../../../types';
 
-import { Label, type LabelProps } from '../../Label/Label';
+import { Label } from '../../Label/Label';
 
-export type FieldsetLegendProps = LabelProps;
+export type FieldsetLegendProps = HTMLAttributes<HTMLLegendElement> &
+  DefaultProps;
 
 export const FieldsetLegend = forwardRef<
   HTMLLegendElement,
   FieldsetLegendProps
->(function FieldsetLegend({ children, ...rest }, ref) {
+>(function FieldsetLegend(rest, ref) {
   return (
-    <Label asChild {...rest}>
-      <legend ref={ref}>{children}</legend>
+    <Label asChild>
+      <legend ref={ref} {...rest} />
     </Label>
   );
 });

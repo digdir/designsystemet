@@ -1,4 +1,4 @@
-import { Fieldset as FeildsetParent } from './Fieldset';
+import { Fieldset as FieldsetParent } from './Fieldset';
 import { FieldsetDescription } from './FieldsetDescription';
 import { FieldsetLegend } from './FieldsetLegend';
 
@@ -10,7 +10,7 @@ import { FieldsetLegend } from './FieldsetLegend';
  *  ...input components
  * </Fieldset>
  */
-const Fieldset = Object.assign(FeildsetParent, {
+const Fieldset = Object.assign(FieldsetParent, {
   Legend: FieldsetLegend,
   Description: FieldsetDescription,
 });
