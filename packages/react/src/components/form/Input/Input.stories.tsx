@@ -104,11 +104,11 @@ export const Preview: Story = {
 };
 export const HtmlSize: Story = {
   args: {
-    htmlSize: 10,
+    size: 10,
   },
   render: (args) => (
     <Field>
-      <Label>Input with htmlSize</Label>
+      <Label>Input with size</Label>
       <Input {...args} />
     </Field>
   ),

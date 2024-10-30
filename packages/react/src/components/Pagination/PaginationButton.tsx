@@ -8,7 +8,7 @@ export type PaginationButtonProps = {
    * @default false
    */
   'aria-current'?: AriaAttributes['aria-current'];
-} & Omit<ButtonProps, 'icon' | 'loading' | 'size'>;
+} & Omit<ButtonProps, 'icon' | 'loading'>;
 
 export const PaginationButton = forwardRef<
   HTMLButtonElement,

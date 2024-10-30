@@ -11,7 +11,7 @@ export type ToggleGroupItemProps = {
    * Generates a random value if not set.
    **/
   value?: string;
-} & Omit<ButtonProps, 'loading' | 'size' | 'value'>;
+} & Omit<ButtonProps, 'loading' | 'value'>;
 
 /**
  * A single item in a ToggleGroup.
