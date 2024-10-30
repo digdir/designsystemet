@@ -7,7 +7,6 @@ import { forwardRef, useCallback, useRef, useState } from 'react';
 import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
-import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
 import type { FormFieldProps } from '../useFormField';
 
@@ -114,17 +113,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             className,
           )}
         >
-          {label && (
-            <Label
-              data-size={size}
-              weight='medium'
-              htmlFor={inputProps.id}
-              className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
-            >
-              <span>{label}</span>
-            </Label>
-          )}
-
           <div className={'ds-search__field'}>
             <div className={cl('ds-search__field', `ds-search--${size}`)}>
               {isSimple && (
@@ -148,6 +136,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
                 {...inputProps}
                 onChange={handleChange}
+                aria-label={label?.toString()}
               />
               {showClearButton && (
                 <button
