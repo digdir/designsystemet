@@ -18,17 +18,15 @@
   --dsc-input-size--switch: var(--ds-sizing-7);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
-  --dsc-input-stroke: 0.05em;
+  --dsc-input-stroke: 0.055em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
-  --diagonal-1: transparent calc(50% - var(--dsc-input-stroke));
-  --diagonal-2: currentcolor calc(48% - var(--dsc-input-stroke));
+  --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+  --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --check-left: calc(var(--dsc-input-stroke) / 2) calc(66.66% + var(--dsc-input-stroke) / 2) / 33.33% 33.33% no-repeat content-box
-    linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-  --check-right: calc(100% - var(--dsc-input-stroke) / 2) / 66.66% 66.66% no-repeat content-box
-    linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-left: 5% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-right: 80% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
