@@ -36,7 +36,6 @@
   & :where(img, svg) {
     flex-shrink: 0;
     font-size: 1.25em;
-    margin-block: -99em; /* Prevent large icon from crashing with padding */
   }
 
   &:focus-visible {

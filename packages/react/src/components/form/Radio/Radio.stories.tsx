@@ -33,7 +33,6 @@ export const Group: StoryFn<typeof Fieldset> = (args) => {
   const props = {
     'aria-invalid': !!args.error,
     name: 'my-radio',
-    'data-size': args.size,
   };
 
   return (

@@ -24,13 +24,19 @@ export const Preview: Story = {
 const sizes: TagProps['data-size'][] = ['sm', 'md', 'lg'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--ds-spacing-2)',
+      }}
+    >
       {sizes.map((size) => (
         <Tag key={size} data-size={size} {...rest}>
           {size}
         </Tag>
       ))}
-    </>
+    </div>
   );
 };
 

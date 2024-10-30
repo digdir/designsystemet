@@ -208,7 +208,7 @@ export const Composed: Story = () => (
         >
           <Heading>Rolle 1</Heading>
           <Button variant='secondary' color='danger' data-size='sm'>
-            <TrashFillIcon aria-hidden fontSize='1.5rem' />
+            <TrashFillIcon aria-hidden />
             Fjern
           </Button>
         </div>
@@ -230,7 +230,7 @@ export const Composed: Story = () => (
       <Card.Block>
         <Button variant='secondary' data-size='sm'>
           Legg til rolle
-          <PlusIcon aria-hidden fontSize='1.5rem' />
+          <PlusIcon aria-hidden />
         </Button>
       </Card.Block>
     </Card>

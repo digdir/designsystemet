@@ -4,7 +4,7 @@
   --dsc-helptext-size: var(--ds-sizing-7);
 
   border-radius: var(--ds-border-radius-full);
-  border: 2px solid;
+  border: max(1px, calc(var(--ds-spacing-1) / 2)) solid; /* Allow border-width to grow with font-size */
   box-sizing: border-box;
   height: var(--dsc-helptext-size);
   min-height: 0;

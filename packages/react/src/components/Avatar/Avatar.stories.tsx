@@ -37,21 +37,14 @@ export const NoName: Story = () => <Avatar aria-label='Ola' />;
 
 export const Sizes: Story = () => (
   <>
-    <Avatar data-size='xs' aria-label='extra small'>
-      xs
-    </Avatar>
+    <Avatar data-size='xs' aria-label='extra small' initials='xs' />
     <Avatar data-size='xs' aria-label='extra small' />
-    <Avatar data-size='sm' aria-label='small'>
-      sm
-    </Avatar>
+    <Avatar data-size='sm' aria-label='small' initials='sm' />
     <Avatar data-size='sm' aria-label='small' />
-    <Avatar data-size='md' aria-label='medium'>
-      md
-    </Avatar>
+    <Avatar aria-label='default' initials='md' />
+    <Avatar data-size='md' aria-label='medium' initials='md' />
     <Avatar data-size='md' aria-label='medium' />
-    <Avatar data-size='lg' aria-label='large'>
-      lg
-    </Avatar>
+    <Avatar data-size='lg' aria-label='large' initials='lg' />
     <Avatar data-size='lg' aria-label='large' />
   </>
 );
@@ -108,7 +101,7 @@ export const InDropdown: Story = () => (
         <Dropdown.Item>
           <Dropdown.Button>
             <Avatar data-size='xs' color='brand1' aria-label='Sogndal Kommune'>
-              <BriefcaseIcon fontSize='5em' />
+              <BriefcaseIcon aria-hidden />
             </Avatar>
             Sogndal kommune
           </Dropdown.Button>

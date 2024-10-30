@@ -21,7 +21,7 @@
 
   & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
-    margin-block: 0;
+    margin-block: var(--ds-spacing-1) 0;
   }
 
   &:disabled > legend,

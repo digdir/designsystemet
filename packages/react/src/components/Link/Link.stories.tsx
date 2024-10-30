@@ -44,8 +44,7 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden />
-    Kontakt oss
+    <EnvelopeClosedIcon aria-hidden /> Kontakt oss
   </Link>
 );
 
