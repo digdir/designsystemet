@@ -21,7 +21,7 @@ type Options = {
   /** Enable verbose output */
   verbose: boolean;
   /** Set the default "accent" color, if not overridden with data-color */
-  accentColor: string;
+  accentColor?: string;
 };
 
 export let buildOptions: Options | undefined;
@@ -72,12 +72,20 @@ export async function buildTokens(options: Options): Promise<void> {
   /*
    * Build the themes
    */
-  const $themes = JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
+  const $themes = (
+    JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[]
+  ).map(processThemeObject);
 
   const relevant$themes = $themes
-    .map(processThemeObject)
     // We only use the 'default' theme for the 'size' group
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
+
+  if (!buildOptions.accentColor) {
+    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
+    buildOptions.accentColor = firstMainColor?.name;
+  }
+
+  console.log('default accent color:', buildOptions.accentColor);
 
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({

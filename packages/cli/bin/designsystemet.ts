@@ -2,13 +2,14 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
+import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { convertToHex } from '../src/colors/index.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
 
-program.name('Designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
+program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
@@ -27,17 +28,15 @@ function makeTokenCommands() {
       const preview = opts.preview;
       const verbose = opts.verbose;
       console.log(`Building tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview, verbose, accentColor: 'accent' });
+      return buildTokens({ tokens, out, preview, verbose });
     });
 
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .requiredOption('-a, --accent <number>', `Accent hex color`)
-    .requiredOption('-n, --neutral <number>', `Neutral hex color`)
-    .requiredOption('-b1, --brand1 <number>', `Brand1 hex color`)
-    .requiredOption('-b2, --brand2 <number>', `Brand2 hex color`)
-    .requiredOption('-b3, --brand3 <number>', `Brand3 hex color`)
+    .requiredOption('-m, --main-colors <name:hex...>', `Main colors`, parseColorValues)
+    .requiredOption('-s, --support-colors <name:hex...>', `Support colors`, parseColorValues)
+    .requiredOption('-n, --neutral-color <hex>', `Neutral hex color`, convertToHex)
     .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
@@ -49,11 +48,9 @@ function makeTokenCommands() {
       const props = {
         themeName: theme,
         colors: {
-          accent: convertToHex(opts.accent),
-          neutral: convertToHex(opts.neutral),
-          brand1: convertToHex(opts.brand1),
-          brand2: convertToHex(opts.brand2),
-          brand3: convertToHex(opts.brand3),
+          main: opts.mainColors,
+          support: opts.supportColors,
+          neutral: opts.neutralColor,
         },
         typography: {
           fontFamily: fontFamily,
@@ -63,7 +60,7 @@ function makeTokenCommands() {
       const tokens = createTokens(props);
 
       if (write) {
-        await writeTokens({ writeDir: write, tokens, themeName: theme });
+        await writeTokens({ writeDir: write, tokens, themeName: theme, colors: props.colors });
       }
 
       return Promise.resolve();
@@ -104,3 +101,9 @@ program
   });
 
 await program.parseAsync(process.argv);
+
+function parseColorValues(value: string, previous: Record<string, CssColor> = {}): Record<string, CssColor> {
+  const [name, hex] = value.split(':');
+  previous[name] = convertToHex(hex);
+  return previous;
+}

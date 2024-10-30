@@ -1,8 +1,10 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
+import * as R from 'ramda';
 
-import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeColors, ThemeInfo } from './types.js';
+import type { Colors } from '../tokens/types.js';
+import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeInfo } from './types.js';
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
@@ -13,8 +15,6 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   red: '#C01B1B',
   yellow: '#D4B12F',
 };
-
-type Colors = Record<ThemeColors, CssColor>;
 
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
@@ -189,6 +189,11 @@ export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType): Re
   };
 };
 
+type GeneratedColorTheme = {
+  main: Record<string, ThemeInfo>;
+  support: Record<string, ThemeInfo>;
+  neutral: ThemeInfo;
+};
 /**
  * This function generates a complete theme for a set of colors.
  *
@@ -196,19 +201,15 @@ export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType): Re
  * @param contrastMode The contrast mode to use
  * @returns
  */
-export const generateColorTheme = ({ colors, contrastMode = 'aa' }: ThemeGenType): Record<ThemeColors, ThemeInfo> => {
-  const accentTheme = generateThemeForColor(colors.accent, contrastMode);
-  const neutralTheme = generateThemeForColor(colors.neutral, contrastMode);
-  const brand1Theme = generateThemeForColor(colors.brand1, contrastMode);
-  const brand2Theme = generateThemeForColor(colors.brand2, contrastMode);
-  const brand3Theme = generateThemeForColor(colors.brand3, contrastMode);
+export const generateColorTheme = ({ colors, contrastMode = 'aa' }: ThemeGenType): GeneratedColorTheme => {
+  const main = R.map((color) => generateThemeForColor(color, contrastMode), colors.main);
+  const support = R.map((color) => generateThemeForColor(color, contrastMode), colors.main);
+  const neutral = generateThemeForColor(colors.neutral, contrastMode);
 
   return {
-    accent: accentTheme,
-    neutral: neutralTheme,
-    brand1: brand1Theme,
-    brand2: brand2Theme,
-    brand3: brand3Theme,
+    main,
+    support,
+    neutral,
   };
 };
 
