@@ -2,7 +2,14 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { useState } from 'react';
 import type { ChangeEvent } from 'react';
-import { Button, Divider, Fieldset, Paragraph, Radio } from '../..';
+import {
+  Button,
+  Divider,
+  Fieldset,
+  Paragraph,
+  Radio,
+  ValidationMessage,
+} from '../..';
 
 type Story = StoryObj<typeof Radio>;
 
@@ -37,6 +44,10 @@ export const Group: StoryFn<typeof Fieldset> = (args) => {
 
   return (
     <Fieldset {...args}>
+      <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg din favorittsmak blant alternativene.
+      </Fieldset.Description>
       <Radio label='Vanilje' value='vanilje' {...props} />
       <Radio
         label='Jordbær'
@@ -46,22 +57,19 @@ export const Group: StoryFn<typeof Fieldset> = (args) => {
       />
       <Radio label='Sjokolade' value='sjokolade' defaultChecked {...props} />
       <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' {...props} />
+      {!!args.error && <ValidationMessage>{args.error}</ValidationMessage>}
     </Fieldset>
   );
 };
 
 Group.args = {
-  legend: 'Hvilken iskremsmak er best?',
-  description: 'Velg din favorittsmak blant alternativene.',
   disabled: false,
-  error: '',
-  size: 'md',
 };
 
 export const WithError = {
   args: {
     ...Group.args,
-    error: 'Du må velge jordbær fordi det smaker best',
+    error: 'Du må velge jordbær fordi det smaker best', // TODO: useRadio when hook is ready
   },
   render: Group,
 };
@@ -73,10 +81,12 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 
   return (
     <>
-      <Fieldset
-        legend='Velg pizza'
-        description='Alle pizzaene er laget på våre egne nybakte bunner og serveres med kokkens egen osteblanding og tomatsaus.'
-      >
+      <Fieldset>
+        <Fieldset.Legend>Velg pizza</Fieldset.Legend>
+        <Fieldset.Description>
+          Alle pizzaene er laget på våre egne nybakte bunner og serveres med
+          kokkens egen osteblanding og tomatsaus.
+        </Fieldset.Description>
         <Radio
           name='my-radio'
           label='Bare ost'
@@ -132,10 +142,11 @@ export const Disabled = {
 };
 
 export const Inline: StoryFn<typeof Fieldset> = () => (
-  <Fieldset
-    legend='Kontaktes på e-post?'
-    description='Bekreft om du ønsker å bli kontaktet per e-post. '
-  >
+  <Fieldset>
+    <Fieldset.Legend>Kontaktes på e-post?</Fieldset.Legend>
+    <Fieldset.Description>
+      Bekreft om du ønsker å bli kontaktet per e-post.
+    </Fieldset.Description>
     <div
       style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}
     >

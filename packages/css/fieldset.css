@@ -4,11 +4,6 @@
   min-width: 0;
   padding: 0;
 
-  &[data-hidelegend] > legend,
-  &[data-hidelegend] > legend + p {
-    @composes ds-sr-only from './base/base.css';
-  }
-
   /* Add lock icon to legend when only containing readonly inputs */
   &:has([readonly]):not(:has(:read-write)) > legend {
     --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */

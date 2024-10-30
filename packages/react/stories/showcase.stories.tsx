@@ -63,14 +63,11 @@ export const Showcase: StoryFn = () => {
   return (
     <div>
       <div className={classes.controls} data-size='sm'>
-        <Fieldset
-          legend={
-            <>
-              Størrelse
-              <code data-size='xs'>(data-size)</code>
-            </>
-          }
-        >
+        <Fieldset>
+          <Fieldset.Legend>
+            Størrelse
+            <code data-size='xs'>(data-size)</code>
+          </Fieldset.Legend>
           <ToggleGroup value={size} onChange={(val) => setSize(val as Size)}>
             {sizes.map((size) => (
               <ToggleGroup.Item key={size} value={size}>
@@ -79,14 +76,11 @@ export const Showcase: StoryFn = () => {
             ))}
           </ToggleGroup>
         </Fieldset>
-        <Fieldset
-          legend={
-            <>
-              Fargemodus
-              <code data-size='xs'>(data-ds-color-mode)</code>
-            </>
-          }
-        >
+        <Fieldset>
+          <Fieldset.Legend>
+            Fargemodus
+            <code data-size='xs'>(data-ds-color-mode)</code>
+          </Fieldset.Legend>
           <ToggleGroup value={colorMode} onChange={setColorMode}>
             {colorModes.map((colorMode) => (
               <ToggleGroup.Item key={colorMode} value={colorMode}>
@@ -95,14 +89,11 @@ export const Showcase: StoryFn = () => {
             ))}
           </ToggleGroup>
         </Fieldset>
-        <Fieldset
-          legend={
-            <>
-              Typografi
-              <code data-size='xs'>(data-ds-typography)</code>
-            </>
-          }
-        >
+        <Fieldset>
+          <Fieldset.Legend>
+            Typografi
+            <code data-size='xs'>(data-ds-typography)</code>
+          </Fieldset.Legend>
           <ToggleGroup value={typographyMode} onChange={setTypographyMode}>
             {typography.map((typographyMode) => (
               <ToggleGroup.Item key={typographyMode} value={typographyMode}>
@@ -119,7 +110,8 @@ export const Showcase: StoryFn = () => {
         data-ds-typography={typographyMode}
       >
         <div className={cl(classes.card, classes.checkbox)}>
-          <Fieldset legend='Handleliste'>
+          <Fieldset>
+            <Fieldset.Legend>Handleliste</Fieldset.Legend>
             <Checkbox label='En kilo poteter' value='epost' />
             <Checkbox label='To liter Farris' value='telefon' />
             <Checkbox label='Blomkål' value='sms' defaultChecked />
@@ -255,7 +247,8 @@ export const Showcase: StoryFn = () => {
           </div>
         </div>
         <div className={cl(classes.card, classes.radio)}>
-          <Fieldset error='' legend='Hvilken iskremsmak er best?'>
+          <Fieldset>
+            <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
             <Radio label='Vanile' value='vanilje' />
             <Radio label='Jordbær' value='jordbær' defaultChecked />
             <Radio label='Sjokolade' value='sjokolade' />
