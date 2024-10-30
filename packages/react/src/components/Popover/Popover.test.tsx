@@ -1,9 +1,27 @@
+import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import { act, useState } from 'react';
 
+import { Button } from '../Button';
 import type { PopoverProps } from './';
 import { Popover } from './';
+
+const CompControlled = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>
+        Dropdown
+        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
+      </Button>
+      <Popover open={open} onClose={() => setOpen(false)}>
+        Content
+      </Popover>
+    </>
+  );
+};
 
 const contentText = 'popover content';
 
@@ -119,5 +137,23 @@ describe('Popover', () => {
     const popover = screen.getByText(contentText);
 
     expect(trigger.getAttribute('popovertarget')).toBe(popover.id);
+  });
+
+  it('should be able to change content inside Popover trigger element but still toggle when controlled', async () => {
+    await act(async () => {});
+    const user = userEvent.setup();
+
+    const { container } = renderRtl(<CompControlled />);
+    const content = screen.queryByText('Content');
+    const getCurrentChevronPath = () =>
+      container.querySelector('button path') as SVGElement;
+
+    expect(content).not.toBeVisible();
+    await act(async () => await user.click(getCurrentChevronPath()));
+    expect(content).toBeVisible();
+    await act(async () => await user.click(getCurrentChevronPath()));
+    expect(content).not.toBeVisible();
+    await act(async () => await user.click(getCurrentChevronPath()));
+    expect(content).toBeVisible();
   });
 });

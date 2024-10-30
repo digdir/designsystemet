@@ -109,7 +109,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
     <Dropdown.Context>
       <Dropdown.Trigger onClick={() => setOpen(!open)}>
         Dropdown
-        {open ? <ChevronDownIcon /> : <ChevronUpIcon />}
+        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
       </Dropdown.Trigger>
       <Dropdown open={open} onClose={() => setOpen(false)}>
         <Dropdown.List>
