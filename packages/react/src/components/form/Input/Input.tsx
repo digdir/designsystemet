@@ -7,10 +7,9 @@ type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /** Supported `input` types */
   type?: InputAttr['type'];
-  /** Exposes the HTML `size` attribute.
-   * @default 20
+  /** Defines the width of <Input> in count of characters.
    */
-  htmlSize?: number;
+  size?: number;
   /** Disables element
    * @note Avoid using if possible for accessibility purposes
    */
@@ -19,7 +18,7 @@ export type InputProps = {
   readOnly?: boolean;
   /** Set role, i.e. `switch` when `checkbox` or `radio` */
   role?: InputAttr['role'];
-} & Omit<InputAttr, 'size' | 'prefix' | 'role' | 'type'> &
+} & Omit<InputAttr, 'prefix' | 'role' | 'type'> &
   DefaultProps;
 
 /** Input field
@@ -30,14 +29,13 @@ export type InputProps = {
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', htmlSize, className, onChange, onClick, ...rest },
+  { type = 'text', className, onChange, onClick, ...rest },
   ref,
 ) {
   return (
     <input
       className={cl(`ds-input`, className)}
       ref={ref}
-      size={htmlSize}
       type={type}
       onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
       onClick={(event) => {
