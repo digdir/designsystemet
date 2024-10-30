@@ -1,4 +1,4 @@
-import { LinkIcon } from '@navikt/aksel-icons';
+import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
@@ -109,6 +109,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
     <Dropdown.Context>
       <Dropdown.Trigger onClick={() => setOpen(!open)}>
         Dropdown
+        {open ? <ChevronDownIcon /> : <ChevronUpIcon />}
       </Dropdown.Trigger>
       <Dropdown open={open} onClose={() => setOpen(false)}>
         <Dropdown.List>
