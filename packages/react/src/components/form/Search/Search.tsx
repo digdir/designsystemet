@@ -1,5 +1,5 @@
 import { useMergeRefs } from '@floating-ui/react';
-import { MagnifyingGlassIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
@@ -104,33 +104,28 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         data-size={size}
         data-variant={variant}
       >
-        {isSimple && (
-          <MagnifyingGlassIcon className={'ds-search__icon'} aria-hidden />
-        )}
         <Input
           ref={mergedRef}
           size={htmlSize}
           value={value ?? internalValue}
           disabled={disabled}
-          className={cl(
-            `ds-focus`,
-            isSimple
-              ? 'ds-search__input--simple'
-              : 'ds-search__input--with-search-button',
-          )}
           {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+          type='search'
           onChange={handleChange}
         />
         {showClearButton && (
-          <button
-            className={cl('ds-search__clear-button', `ds-focus`)}
-            type='button'
-            onClick={handleClear}
+          <Button
+            variant='secondary'
+            type='reset'
+            onClick={(e) => {
+              e.preventDefault();
+              handleClear();
+            }}
             disabled={disabled}
             aria-label={clearButtonLabel}
           >
             <XMarkIcon aria-hidden />
-          </button>
+          </Button>
         )}
         {!isSimple && (
           <Button
