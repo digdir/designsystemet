@@ -25,12 +25,7 @@ export type SpinnerProps = {
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
-  {
-    'aria-label': ariaLabel,
-    color = 'neutral',
-    className,
-    ...rest
-  }: SpinnerProps,
+  { 'aria-label': ariaLabel, color, className, ...rest }: SpinnerProps,
   ref,
 ) {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(

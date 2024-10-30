@@ -56,7 +56,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) {
     const Component = asChild ? Slot : 'button';
-    const spinnerColor = color === 'accent' ? color : 'neutral';
 
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
@@ -73,7 +72,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {loading === true ? (
-          <Spinner aria-hidden='true' color={spinnerColor} data-size='sm' />
+          <Spinner aria-hidden='true' data-size='sm' />
         ) : (
           loading // Allow custom loading spinner
         )}

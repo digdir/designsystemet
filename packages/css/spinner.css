@@ -1,14 +1,6 @@
 .ds-spinner {
-  --dsc-spinner-background: var(--ds-color-neutral-surface-default);
-  --dsc-spinner-stroke: var(--ds-color-neutral-border-default);
-
-  &[data-color] {
-    --dsc-spinner-stroke: var(--ds-color-border-default);
-  }
-
-  &[data-color='accent'] {
-    --dsc-spinner-stroke: var(--ds-color-accent-base-default);
-  }
+  --dsc-spinner-background: var(--ds-color-surface-default);
+  --dsc-spinner-stroke: var(--ds-color-border-default);
 
   --dsc-spinner-animation-duration: 2s;
 
@@ -83,12 +75,10 @@ but don't remove it since it is not decorative.
   50% {
     stroke-dasharray: 100px, 200px;
     stroke-dashoffset: -15px;
-    transform: rotate(0deg);
   }
 
   100% {
     stroke-dasharray: 1px, 200px;
     stroke-dashoffset: -120px;
-    transform: rotate(15deg);
   }
 }
