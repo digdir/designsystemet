@@ -8,19 +8,6 @@ export default {
   parameters: {
     layout: 'padded',
   },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-spacing-2)',
-          flexDirection: 'column',
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;
 
 export const Preview: StoryFn<typeof Select> = (args) => (
