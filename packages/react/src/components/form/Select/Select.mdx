@@ -18,14 +18,16 @@ For eksempel er det ikke mulig å overstyre formateringen av alternativene.
 ## Bruk
 
 ```tsx
-import { Select } from '@digdir/designsystemet-react';
+import { Select, Field } from '@digdir/designsystemet-react';
 
-<Label htmlFor='my-select'>Ta et valg</Label>
-<Select id='my-select'>
-  <Select.Option value='1'>Alternativ 1</Select.Option>
-  <Select.Option value='2'>Alternativ 2</Select.Option>
-  <Select.Option value='3'>Alternativ 3</Select.Option>
-</Select>;
+<Field>
+  <Label>Ta et valg</Label>
+  <Select>
+    <Select.Option value='1'>Alternativ 1</Select.Option>
+    <Select.Option value='2'>Alternativ 2</Select.Option>
+    <Select.Option value='3'>Alternativ 3</Select.Option>
+  </Select>
+</Field>
 ```
 
 ## Eksempler

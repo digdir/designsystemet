@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Label } from '../../Label';
-import { Select } from './';
+import { Field, Label, Select, ValidationMessage } from '../../';
 
 export default {
   title: 'Komponenter/Select',
@@ -25,8 +24,8 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Select> = (args) => (
-  <>
-    <Label htmlFor={args.id}>Velg et fjell</Label>
+  <Field>
+    <Label>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -38,7 +37,7 @@ export const Preview: StoryFn<typeof Select> = (args) => (
       <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
       <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
     </Select>
-  </>
+  </Field>
 );
 
 Preview.args = {
@@ -46,12 +45,11 @@ Preview.args = {
   'data-size': 'md',
   disabled: false,
   readOnly: false,
-  id: 'my-select',
 };
 
 export const Disabled: StoryFn<typeof Select> = (args) => (
-  <>
-    <Label htmlFor={args.id}>Velg et fjell</Label>
+  <Field>
+    <Label>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -63,17 +61,16 @@ export const Disabled: StoryFn<typeof Select> = (args) => (
       <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
       <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
     </Select>
-  </>
+  </Field>
 );
 
 Disabled.args = {
   disabled: true,
-  id: 'my-select',
 };
 
 export const WithError: StoryFn<typeof Select> = (args) => (
-  <>
-    <Label htmlFor={args.id}>Velg et fjell</Label>
+  <Field>
+    <Label>Velg et fjell</Label>
     <Select {...args}>
       <Select.Option value='blank'>Velg &hellip;</Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -85,17 +82,17 @@ export const WithError: StoryFn<typeof Select> = (args) => (
       <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
       <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
     </Select>
-  </>
+    <ValidationMessage>Velg et fjell</ValidationMessage>
+  </Field>
 );
 
 WithError.args = {
   'aria-invalid': true,
-  id: 'my-select',
 };
 
 export const WithOptgroup: StoryFn<typeof Select> = (args) => (
-  <>
-    <Label htmlFor={args.id}>Velg et fjell</Label>
+  <Field>
+    <Label>Velg et fjell</Label>
     <Select {...args}>
       <Select.Optgroup label='Gruppe 1'>
         <Select.Option value='everest'>Mount Everest</Select.Option>
@@ -110,9 +107,5 @@ export const WithOptgroup: StoryFn<typeof Select> = (args) => (
         <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
       </Select.Optgroup>
     </Select>
-  </>
+  </Field>
 );
-
-WithOptgroup.args = {
-  id: 'my-select',
-};
