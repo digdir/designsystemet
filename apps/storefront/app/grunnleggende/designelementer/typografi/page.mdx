@@ -2,6 +2,7 @@ import { TokenIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
 import { CodeSnippet } from '@repo/components';
+import { Image } from '@components';
 
 export const metadata = {
   title: 'Typografi',
@@ -21,11 +22,13 @@ export default ({ children }) => (
   />
 );
 
-For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med [typografi-komponenter](https://next.storybook.designsystemet.no/?path=/docs/komponenter-typography--docs) som wrapper typografi-stilene og har innebygd spacing.
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med typografi-komponenter som innkapsler disse stilene, slik at de enkelt kan brukes i ulike sammenhenger. Beskrivelse av hvordan typografi-komponenter brukes finner du i komponentartikkelen [Typography](https://next.storybook.designsystemet.no/?path=/docs/komponenter-typography--docs).
 
 ## Font-family
 
-Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Vi anbefaler å bruke fonten Inter da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer. Den oppfyller følgende kriterier:
+Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Komponentene har kun blitt testet med fonten "Inter". Velger du en annen font må du selv teste at det ser bra ut. 
+
+Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer. Den oppfyller følgende kriterier:
 
 - [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + har et [aktivt community](https://github.com/rsms/inter)
 - Stor skriftfamilie (light, regular, italic, bold, semibold)
@@ -64,20 +67,20 @@ og tar utgangspunkt i den vanligste standarden der `1rem = 16px`. Når vi angir 
 
 Vi har totalt 10 størrelser i designsystemet. 12, 14, 16, 18, 21, 24, 30, 36, 48 og 60px. Default tekststørrelse for `paragraph` er `medium` som tilsvarer 18px.
 
-| Steg   | Størrelse          | Paragraph\* | Ingress | Heading |
-| ------ | ------------------ | ----------- | ------- | ------- |
-| f-2    | 12px / 0.75rem     |             |         |         |
-| f-1    | 14px / 0.875rem    | xsmall      |         |         |
-| **f0** | **16px / 1.00rem** | small       |         |         |
-| f1     | 18px / 1.125rem    | medium      | xsmall  | xxsmall |
-| f2     | 21px / 1.313rem    | large       | small   | xsmall  |
-| f3     | 24px / 1.50rem     |             | medium  | small   |
-| f4     | 30px / 1.875rem    |             | large   | medium  |
-| f5     | 36px / 2.25rem     |             |         | large   |
-| f6     | 48px / 3.00rem     |             |         | xlarge  |
-| f7     | 60px / 3.75rem     |             |         | xxlarge |
+| Steg   | Størrelse          | Body\*      | Heading |
+| ------ | ------------------ | ----------- | ------- |
+| f-2    | 12px / 0.75rem     |             |         |
+| f-1    | 14px / 0.875rem    | xsmall      |         |
+| **f0** | **16px / 1.00rem** | small       |         |
+| f1     | 18px / 1.125rem    | medium      | xxsmall |
+| f2     | 21px / 1.313rem    | large       | xsmall  |
+| f3     | 24px / 1.50rem     | xlarge      | small   |
+| f4     | 30px / 1.875rem    |             | medium  |
+| f5     | 36px / 2.25rem     |             | large   |
+| f6     | 48px / 3.00rem     |             | xlarge  |
+| f7     | 60px / 3.75rem     |             | xxlarge |
 
-\*`Paragraph`-størrelsene brukes også på `Label` og `ValidationMessage`.
+\*`Body`-størrelsene brukes også på `Ingress`, `Label` og `ValidationMessage`.
 
 ### Hva med dynamiske tekststørrelser?
 
@@ -88,6 +91,34 @@ Dynamisk font-størrelse uten breakpoints var standard i Designsystemet det mest
 ## Linjelengde
 
 For best mulig lesbarhet for alle brukere, bør det ikke være mer enn 65-70 tegn per linje inkludert mellomrom. Da blir teksten mer innbydende og mindre overveldende, og er særlig viktig for blant annet brukere med lesevansker eller konsentrasjonsvansker. _Kilde: [uutilsynet.no](https://www.uutilsynet.no/veiledning/tekst-og-struktur/226)_
+
+## Avstand og luft
+
+Du må selv velge luften du ønsker mellom tekst-elementene. Dette kan du gjøre ved å bruke tokens for `spacing`.
+
+### Forslag til avstander
+Her er et forslag til avstander for å oppnå passelig rytme og luft mellom elementene: 
+
+`spacing-6` under `Heading-xl` \
+`spacing-5` under `Heading-lg` \
+`spacing-4` under `Heading-md` \
+`spacing-3` under `Heading-sm` 
+
+<br/>
+
+`spacing-5` mellom `body-md` \
+`spacing-4` mellom `body-sm`
+
+<br/>
+
+`spacing-10` over alle overskrifter/kapitler
+
+
+<Image
+  src='/img/typografi-spacing.png'
+  alt='Eksempel på avstander mellom headinger og avsnitt.'
+/>
+
 
 <br />
 <br />
