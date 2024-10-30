@@ -56,7 +56,8 @@ export const Showcase: StoryFn = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Fieldset legend='Handleliste' data-size='sm'>
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Handleliste</Fieldset.Legend>
           <Checkbox label='En kilo poteter' value='epost' />
           <Checkbox label='To liter Farris' value='telefon' />
           <Checkbox label='Blomkål' value='sms' defaultChecked />
@@ -209,7 +210,8 @@ export const Showcase: StoryFn = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.radio)}>
-        <Fieldset error='' legend='Hvilken iskremsmak er best?' data-size='sm'>
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
           <Radio label='Vanile' value='vanilje' />
           <Radio label='Jordbær' value='jordbær' defaultChecked />
           <Radio label='Sjokolade' value='sjokolade' />
