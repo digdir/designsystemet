@@ -21,7 +21,7 @@ type UseSelect = (props: SelectProps) => Omit<FormField, 'inputProps'> & {
 };
 
 /** Handles props for `Select` in context with `Fieldset` */
-export const useSelect: UseSelect = (props) => {
+export const useSelect: UseSelect = ({ size: htmlSize, ...props }) => {
   const fieldset = useContext(FieldsetContext);
   const {
     inputProps: selectProps,
