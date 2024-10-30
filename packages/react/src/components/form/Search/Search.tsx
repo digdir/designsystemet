@@ -9,17 +9,12 @@ import { omit } from '../../../utilities';
 import { Button } from '../../Button/Button';
 import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
+import { Input } from '../Input/Input';
 import type { FormFieldProps } from '../useFormField';
 
 import { useSearch } from './useSearch';
 
 export type SearchProps = {
-  /** Label */
-  label?: ReactNode;
-  /** Visually hides `label` and `description` (still available for screen readers)
-   * @default true
-   */
-  hideLabel?: boolean;
   /** Variant
    * @default 'simple'
    */
@@ -45,7 +40,12 @@ export type SearchProps = {
   'size' | 'description' | 'readOnly' | 'error' | 'errorId'
 > &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'> &
-  DefaultProps;
+  DefaultProps &
+  (
+    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
+    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
+    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
+  );
 
 /** Search field
  *
@@ -59,7 +59,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     const {
       label,
       style,
-      hideLabel = true,
       variant = 'simple',
       searchButtonLabel = 'Søk',
       clearButtonLabel = 'Tøm',
@@ -115,13 +114,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           )}
         >
           {label && (
-            <Label
-              data-size={size}
-              weight='medium'
-              htmlFor={inputProps.id}
-              className={cl('ds-search__label', hideLabel && 'ds-sr-only')}
-            >
-              <span>{label}</span>
+            <Label weight='medium' htmlFor={inputProps.id}>
+              {label}
             </Label>
           )}
 
@@ -133,7 +127,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                   aria-hidden
                 ></MagnifyingGlassIcon>
               )}
-              <input
+              <Input
                 ref={mergedRef}
                 size={htmlSize}
                 value={value ?? internalValue}
@@ -155,8 +149,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                   type='button'
                   onClick={handleClear}
                   disabled={disabled}
+                  aria-label={clearButtonLabel}
                 >
-                  <span className={`ds-sr-only`}>{clearButtonLabel}</span>
                   <XMarkIcon aria-hidden />
                 </button>
               )}
