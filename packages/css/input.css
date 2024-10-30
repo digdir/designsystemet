@@ -25,8 +25,8 @@
   --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --check-left: 5% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-  --check-right: 80% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
