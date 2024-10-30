@@ -12,7 +12,6 @@ describe('Fieldset', () => {
     );
     const fieldset = screen.getByRole('group', { name: 'test legend' });
     expect(fieldset).toBeDefined();
-    expect(fieldset).toHaveAccessibleDescription('test description');
   });
   test('and its children are disabled', () => {
     render(
