@@ -63,11 +63,14 @@ export const Showcase: StoryFn = () => {
   return (
     <div>
       <div className={classes.controls} data-size='sm'>
-        <div>
-          <Heading data-size='2xs'>
-            Størrelse
-            <code data-size='xs'>(data-size)</code>
-          </Heading>
+        <Fieldset
+          legend={
+            <>
+              Størrelse
+              <code data-size='xs'>(data-size)</code>
+            </>
+          }
+        >
           <ToggleGroup value={size} onChange={(val) => setSize(val as Size)}>
             {sizes.map((size) => (
               <ToggleGroup.Item key={size} value={size}>
@@ -75,12 +78,15 @@ export const Showcase: StoryFn = () => {
               </ToggleGroup.Item>
             ))}
           </ToggleGroup>
-        </div>
-        <div>
-          <Heading data-size='2xs'>
-            Fargemodus
-            <code data-size='xs'>(data-ds-color-mode)</code>
-          </Heading>
+        </Fieldset>
+        <Fieldset
+          legend={
+            <>
+              Fargemodus
+              <code data-size='xs'>(data-ds-color-mode)</code>
+            </>
+          }
+        >
           <ToggleGroup value={colorMode} onChange={setColorMode}>
             {colorModes.map((colorMode) => (
               <ToggleGroup.Item key={colorMode} value={colorMode}>
@@ -88,12 +94,15 @@ export const Showcase: StoryFn = () => {
               </ToggleGroup.Item>
             ))}
           </ToggleGroup>
-        </div>
-        <div>
-          <Heading data-size='2xs'>
-            Typografi
-            <code data-size='xs'>(data-ds-typography)</code>
-          </Heading>
+        </Fieldset>
+        <Fieldset
+          legend={
+            <>
+              Typografi
+              <code data-size='xs'>(data-ds-typography)</code>
+            </>
+          }
+        >
           <ToggleGroup value={typographyMode} onChange={setTypographyMode}>
             {typography.map((typographyMode) => (
               <ToggleGroup.Item key={typographyMode} value={typographyMode}>
@@ -101,7 +110,7 @@ export const Showcase: StoryFn = () => {
               </ToggleGroup.Item>
             ))}
           </ToggleGroup>
-        </div>
+        </Fieldset>
       </div>
       <div
         className={classes.components}
