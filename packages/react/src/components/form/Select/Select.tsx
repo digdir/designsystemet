@@ -8,10 +8,10 @@ export type SelectProps = {
    * @default false
    */
   readOnly?: boolean;
-  /** Defines the width of <Select> in count of characters.
+  /** Defines the width of Select in count of characters.
    */
   size?: number;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'> &
+} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'> &
   DefaultProps;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
