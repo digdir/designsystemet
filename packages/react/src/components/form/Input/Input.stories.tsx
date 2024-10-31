@@ -249,7 +249,7 @@ export const Radio: StoryFn<typeof Input> = (args) => {
             <Field key={state.label}>
               <Input
                 {...args}
-                name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
+                name={`${size}-${state.label.split(' ')[0]}`} // As states are demonstrated in pairs
                 {...state.props}
               />
               <Label>{state.label}</Label>

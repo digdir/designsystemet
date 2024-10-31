@@ -17,10 +17,10 @@ export function useRadio({
   error,
   name,
   onChange,
-  value: initialValue = '',
+  value = '',
   ...rest
 }: UseRadioProps) {
-  const [currentValue, setValue] = useState(initialValue);
+  const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const errorId = useId();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +32,7 @@ export function useRadio({
   return {
     value: currentValue,
     setValue,
-    getRadioProps: (radioValue: string) => ({
+    getProps: (radioValue: string) => ({
       'aria-describedby': error ? errorId : undefined,
       'aria-invalid': !!error,
       checked: currentValue === radioValue,

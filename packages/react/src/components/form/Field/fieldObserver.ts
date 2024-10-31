@@ -2,8 +2,9 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
   if (!fieldElement) return;
 
   const elements = new Map<Element, string | null>();
-  const uuid = `:${Date.now().toString(36)}${Math.random().toString(36)}`;
+  const uuid = `:${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
   let input: Element | null = null;
+  let describedby = '';
 
   const process = (mutations: Partial<MutationRecord>[]) => {
     const changed: Node[] = [];
@@ -22,7 +23,10 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
       if (isLabel(el)) elements.set(el, el.htmlFor);
       else if (el.hasAttribute('data-field')) elements.set(el, el.id);
-      else if (isFormAssociated(el)) input = el;
+      else if (isInputLike(el)) {
+        input = el;
+        describedby = el.getAttribute('aria-describedby') || '';
+      }
     }
 
     // Reset removed elements
@@ -38,7 +42,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
     // Connect elements
     const inputId = input?.id || uuid;
-    const describedbyIds: string[] = [];
+    const describedbyIds = [describedby];
     for (const [el, value] of elements) {
       const descriptionType = el.getAttribute('data-field');
       const id = descriptionType ? `${inputId}:${descriptionType}` : inputId;
@@ -50,7 +54,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     setAttr(input, 'id', inputId);
-    setAttr(input, 'aria-describedby', describedbyIds.join(' '));
+    setAttr(input, 'aria-describedby', describedbyIds.join(' ').trim());
   };
 
   const observer = createOptimizedMutationObserver(process);
@@ -69,8 +73,8 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 // Utilities
 const isElement = (node: Node) => node instanceof Element;
 const isLabel = (node: Node) => node instanceof HTMLLabelElement;
-const isFormAssociated = (node: Node): node is Element =>
-  'validity' in node && !(node instanceof HTMLButtonElement);
+const isInputLike = (node: Node): node is Element =>
+  'validity' in node && !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
 
 const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);
