@@ -39,13 +39,13 @@
     rotate: 180deg;
   }
 
-  @media (max-width: 650px) {
+  @media (width < 650px) {
     & > :is(ol, ul):not(:only-child) {
       display: none; /* Hide list when mobile and having back link */
     }
   }
 
-  @media (min-width: 651px) {
+  @media (width >= 650px) {
     & > :is(:not(ol, ul)):not(:only-child) {
       display: none; /* Hide back link when desktop and having list */
     }
