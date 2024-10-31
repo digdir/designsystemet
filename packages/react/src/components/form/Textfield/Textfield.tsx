@@ -23,19 +23,16 @@ type SharedTextfieldProps = {
   suffix?: string;
   /** Validation message for field */
   validation?: ReactNode;
-  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
-  multiline?: boolean;
   'data-size'?: 'sm' | 'md' | 'lg';
 };
 
 type TextareaTypes = {
-  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
+  /** Use to render a `textarea` instead of `input` for multiline support  */
   multiline: true;
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 type InputTypes = {
-  /** If `true` a `textarea` is rendered for multiline support. Make sure to use `textareaRef` if you need to access reference element  */
-  multiline?: never;
+  multiline?: never | false;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export type TextfieldProps = SharedTextfieldProps &
@@ -52,13 +49,13 @@ export const Textfield = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   TextfieldProps
 >((props, ref) => {
-  const { label, description, validation } = props;
+  const { label, description, validation, multiline } = props;
 
   return (
     <Field>
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
-      {props.multiline === true ? (
+      {multiline === true ? (
         <Textarea ref={ref as ForwardedRef<HTMLTextAreaElement>} {...props} />
       ) : (
         <Input ref={ref as ForwardedRef<HTMLInputElement>} {...props} />

@@ -133,7 +133,7 @@ describe('Textfield', () => {
   });
 });
 
-const render = (props: Partial<TextfieldProps> = {}) =>
+const render = (props: TextfieldProps = {}) =>
   renderRtl(
     <Textfield
       {...{

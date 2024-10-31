@@ -10,6 +10,11 @@ type Story = StoryObj<typeof Textfield>;
 export default {
   title: 'Komponenter/Textfield',
   component: Textfield,
+  argTypes: {
+    multiline: {
+      type: 'boolean',
+    },
+  },
 } as Meta;
 
 export const Preview: Story = {
