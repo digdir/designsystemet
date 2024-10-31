@@ -1,5 +1,5 @@
+import { InputAffix, InputAffixWrapper } from '../Field/InputAffix';
 import { Input as InputComp } from './Input';
-import { InputAffix, InputAffixWrapper } from './InputAffix';
 
 const Input = Object.assign(InputComp, {
   Affix: InputAffix,
@@ -10,5 +10,8 @@ Input.Affix.displayName = 'Input.Affix';
 Input.AffixWrapper.displayName = 'Input.AffixWrapper';
 
 export type { InputProps } from './Input';
-export type { InputAffixProps, InputAffixWrapperProps } from './InputAffix';
+export type {
+  InputAffixProps,
+  InputAffixWrapperProps,
+} from '../Field/InputAffix';
 export { Input, InputAffix, InputAffixWrapper };
