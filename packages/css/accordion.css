@@ -76,6 +76,7 @@
     gap: var(--dsc-accordion-chevron-gap);
     outline: none;
     padding: var(--dsc-accordion-padding);
+    position: relative;
 
     @composes ds-focus from './base/base.css';
 
