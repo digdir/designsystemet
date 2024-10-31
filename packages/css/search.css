@@ -1,12 +1,7 @@
 .ds-search {
   --dsc-search-clear-button-size: var(--ds-sizing-6);
-  --dsc-search-input-background: var(--ds-color-neutral-background-default);
-  --dsc-search-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-search-input-border: 1px solid var(--dsc-search-input-border-color);
-  --dsc-search-input-color: var(--ds-color-neutral-text-default);
-  --dsc-search-icon-color: var(--ds-color-neutral-text-default);
-  --dsc-search-magnifying-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
-  --dsc-search-x-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+  --dsc-search-input-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
+  --dsc-search-clear-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
   --dsc-search-icon-size: var(--ds-sizing-7);
 
   display: grid;
@@ -28,7 +23,7 @@
       transform: translateY(-50%);
       height: var(--dsc-search-icon-size);
       aspect-ratio: 1 / 1;
-      mask: var(--dsc-search-magnifying-icon) center / contain no-repeat;
+      mask: var(--dsc-search-input-icon) center / contain no-repeat;
       background: currentcolor;
       z-index: 2;
       pointer-events: none;
@@ -80,7 +75,7 @@
       transform: translate(-50%, -50%);
       height: var(--dsc-search-icon-size);
       aspect-ratio: 1 / 1;
-      mask: var(--dsc-search-x-icon) center / contain no-repeat;
+      mask: var(--dsc-search-clear-icon) center / contain no-repeat;
       background: currentcolor;
       z-index: 2;
       pointer-events: none;
@@ -101,12 +96,6 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    [type='search']:not(:focus-visible, :disabled, [aria-disabled]):hover {
-      --dsc-search-input-border-color: var(--ds-color-accent-border-strong);
-
-      box-shadow: inset 0 0 0 1px var(--ds-color-accent-border-strong);
-    }
-
     [type='reset']:not(:focus-visible, :disabled, [aria-disabled]):hover {
       background: var(--ds-color-accent-surface-hover);
     }
