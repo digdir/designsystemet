@@ -114,17 +114,6 @@ export const HtmlSize: Story = {
   ),
 };
 
-export const Adornments: StoryFn<typeof Input> = (args) => (
-  <Field>
-    <Label>Hvor mange kroner koster det per måned?</Label>
-    <Input.AffixWrapper>
-      <Input.Affix>NOK</Input.Affix>
-      <Input {...args} />
-      <Input.Affix>pr.mnd</Input.Affix>
-    </Input.AffixWrapper>
-  </Field>
-);
-
 export const Controlled: StoryFn<typeof Input> = (args) => {
   const [value, setValue] = useState<string>();
 
