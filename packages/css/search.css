@@ -11,6 +11,12 @@
   position: relative;
 
   &[data-variant='simple'] {
+    /* This really does not matter, if consumer makes the component in markup,
+    they won't add the submit button, but it's less for us */
+    & [type='submit'] {
+      display: none;
+    }
+
     & [type='search'] {
       padding-left: 2.4em;
     }

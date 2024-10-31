@@ -113,16 +113,14 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             aria-label={clearButtonLabel}
           />
         )}
-        {variant !== 'simple' && (
-          <Button
-            variant={variant}
-            type='submit'
-            onClick={handleSearchClick}
-            disabled={disabled}
-          >
-            {searchButtonLabel}
-          </Button>
-        )}
+        <Button
+          variant={variant === 'primary' ? 'primary' : 'secondary'}
+          type='submit'
+          onClick={handleSearchClick}
+          disabled={disabled}
+        >
+          {searchButtonLabel}
+        </Button>
       </div>
     );
   },
