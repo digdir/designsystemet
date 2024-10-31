@@ -127,8 +127,11 @@
 
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
-    translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of label text */
     width: var(--dsc-input-size);
+
+    &:not([aria-label]) {
+      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+    }
   }
 
   &[type='radio'] {
