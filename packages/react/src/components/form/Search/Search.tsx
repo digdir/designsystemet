@@ -1,5 +1,4 @@
 import { useMergeRefs } from '@floating-ui/react';
-import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useCallback, useRef, useState } from 'react';
@@ -27,14 +26,7 @@ export type SearchProps = {
    * @default 'Tøm'
    */
   clearButtonLabel?: string;
-  /** Exposes the HTML `size` attribute.
-   * @default 27
-   */
-  htmlSize?: number;
-} & Omit<
-  FormFieldProps,
-  'size' | 'description' | 'readOnly' | 'error' | 'errorId'
-> &
+} & Omit<FormFieldProps, 'description' | 'readOnly' | 'error' | 'errorId'> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'readOnly'> &
   DefaultProps &
   (
@@ -47,13 +39,12 @@ export type SearchProps = {
  *
  * @example
  * ```tsx
- * <Search label="Search" label">
+ * <Search aria-label="Search" />
  * ```
  */
 export const Search = forwardRef<HTMLInputElement, SearchProps>(
   (props, ref) => {
     const {
-      label,
       style,
       variant = 'simple',
       searchButtonLabel = 'Søk',
@@ -64,7 +55,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       onClear,
       disabled,
       onSearchClick,
-      htmlSize = 27,
       className,
       'data-size': size,
       ...rest
@@ -97,7 +87,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       onSearchClick?.((value ?? internalValue).toString());
     };
 
-    const isSimple = variant === 'simple';
     const showClearButton = Boolean(value ?? internalValue) && !disabled;
 
     return (
@@ -109,7 +98,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       >
         <Input
           ref={mergedRef}
-          size={htmlSize}
           value={value ?? internalValue}
           disabled={disabled}
           {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
@@ -123,11 +111,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             onClick={handleClear}
             disabled={disabled}
             aria-label={clearButtonLabel}
-          >
-            <XMarkIcon aria-hidden />
-          </Button>
+          />
         )}
-        {!isSimple && (
+        {variant !== 'simple' && (
           <Button
             variant={variant}
             type='submit'

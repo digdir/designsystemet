@@ -6,17 +6,13 @@ import type { SearchProps } from './Search';
 import { Search } from './Search';
 
 describe('Search', () => {
-  test('has correct value and label', () => {
-    render({ value: 'test', label: 'label', clearButtonLabel: 'clear' });
-    expect(screen.getByLabelText('label')).toBeDefined();
-    expect(screen.getByText('clear')).toBeDefined();
-    expect(screen.getByDisplayValue('test')).toBeDefined();
-  });
-
-  test('has correct label when label is hidden', () => {
-    render({ label: 'label', hideLabel: true });
-
-    expect(screen.getByLabelText('label')).toBeDefined();
+  test('has correct value and aria-label', () => {
+    const ariaLabel = 'Search';
+    const value = 'search value';
+    render({ 'aria-label': ariaLabel, value });
+    const element = screen.getByRole('searchbox');
+    expect(element).toHaveAttribute('aria-label', ariaLabel);
+    expect(element).toHaveValue(value);
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
@@ -46,20 +42,6 @@ describe('Search', () => {
     expect(screen.getByRole('searchbox')).toHaveAttribute('id', id);
   });
 
-  it('Focuses on search field when label is clicked and id is not given', async () => {
-    const label = 'Lorem ipsum';
-    const { user } = render({ label });
-    await act(async () => await user.click(screen.getByText(label)));
-    expect(screen.getByRole('searchbox')).toHaveFocus();
-  });
-
-  it('Focuses on search field when label is clicked and id is given', async () => {
-    const label = 'Lorem ipsum';
-    const { user } = render({ id: 'some-unique-id', label });
-    await act(async () => await user.click(screen.getByText(label)));
-    expect(screen.getByRole('searchbox')).toHaveFocus();
-  });
-
   it('clear value with clear button and focus is set to searchbox afterwards', async () => {
     const onClear = vi.fn();
     const clearButtonLabel = 'clear';
@@ -71,7 +53,11 @@ describe('Search', () => {
     await act(async () => await user.type(searchbox, typedText));
     expect(searchbox.value).toBe(typedText);
 
-    const clearButton = screen.getByText(clearButtonLabel);
+    const clearButton = document.querySelector('button');
+
+    if (!clearButton) {
+      throw new Error('clear button not found');
+    }
 
     await act(async () => await user.click(clearButton));
 
@@ -110,7 +96,7 @@ describe('Search', () => {
 
     renderRtl(
       <form onSubmit={onSubmit}>
-        <Search />
+        <Search aria-label='sæk' />
       </form>,
     );
 
