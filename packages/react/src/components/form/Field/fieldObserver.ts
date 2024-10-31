@@ -35,13 +35,14 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
       if (input === el) input = null;
       if (elements.has(el)) {
+        setAttr(el, 'aria-disabled', null); // Reset disabled state
         setAttr(el, isLabel(el) ? 'for' : 'id', elements.get(el));
         elements.delete(el);
       }
     }
 
     // Connect elements
-    const describedbyIds = [describedby];
+    const describedbyIds = [describedby]; // Keep original aria-describedby
     const inputId = input?.id || uuid;
     const isDisabled =
       input?.hasAttribute('disabled') ||
@@ -51,7 +52,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
       const descriptionType = el.getAttribute('data-field');
       const id = descriptionType ? `${inputId}:${descriptionType}` : inputId;
 
-      setAttr(el, 'aria-disabled', isDisabled ? 'true' : null);
+      setAttr(el, 'aria-disabled', isDisabled ? 'true' : null); // Forward inputs disabled state to related elements to make axe tests happy
       if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
       if (descriptionType === 'validation')
         describedbyIds.unshift(el.id); // Validations to the front
