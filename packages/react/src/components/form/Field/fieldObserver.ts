@@ -41,12 +41,17 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     // Connect elements
-    const inputId = input?.id || uuid;
     const describedbyIds = [describedby];
+    const inputId = input?.id || uuid;
+    const isDisabled =
+      input?.hasAttribute('disabled') ||
+      input?.getAttribute('aria-disabled') === 'true';
+
     for (const [el, value] of elements) {
       const descriptionType = el.getAttribute('data-field');
       const id = descriptionType ? `${inputId}:${descriptionType}` : inputId;
 
+      setAttr(el, 'aria-disabled', isDisabled ? 'true' : null);
       if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
       if (descriptionType === 'validation')
         describedbyIds.unshift(el.id); // Validations to the front
