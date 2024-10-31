@@ -27,12 +27,6 @@ export const FieldCounter = ({
   const hasExceededLimit = count > maxCount;
   const currentCount = maxCount - count;
 
-  console.log('FieldCounter', {
-    count,
-    maxCount,
-    hasExceededLimit,
-    currentCount,
-  });
   useEffect(() => {
     const onChange = (e: Event) => {
       const element = e.target as HTMLInputElement | HTMLTextAreaElement;
