@@ -1,5 +1,5 @@
-import { FieldAffix, FieldAffixWrapper } from '../Field/InputAffix';
 import { Field as FieldParent } from './Field';
+import { FieldAffix, FieldAffixWrapper } from './FieldAffix';
 import { FieldDescription } from './FieldDescription';
 
 /**
@@ -24,7 +24,7 @@ Field.Affix.displayName = 'Field.Affix';
 export type {
   FieldAffixProps,
   FieldAffixWrapperProps,
-} from '../Field/InputAffix';
+} from './FieldAffix';
 export type { FieldProps } from './Field';
 export type { FieldDescriptionProps } from './FieldDescription';
 export { Field, FieldDescription, FieldAffix, FieldAffixWrapper };
