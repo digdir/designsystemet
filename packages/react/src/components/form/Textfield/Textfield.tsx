@@ -6,6 +6,7 @@ import {
   forwardRef,
 } from 'react';
 
+import type { DefaultProps } from '../../../types';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
@@ -23,8 +24,7 @@ type SharedTextfieldProps = {
   suffix?: string;
   /** Validation message for field */
   validation?: ReactNode;
-  'data-size'?: 'sm' | 'md' | 'lg';
-};
+} & DefaultProps;
 
 type TextareaTypes = {
   /** Use to render a `textarea` instead of `input` for multiline support  */

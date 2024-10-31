@@ -28,6 +28,14 @@ export const Preview: Story = {
   },
 };
 
+export const Rows: Story = {
+  args: {
+    label: 'Label',
+    multiline: true,
+    rows: 4,
+  },
+};
+
 export const WithCharacterCounter: Story = {
   args: {
     label: 'Label',
