@@ -13,7 +13,7 @@ describe('Search', () => {
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct label when label is hidden', () => {
+  test('has correct aria-label when hiding label', () => {
     render({ label: 'label', hideLabel: true });
 
     expect(screen.getByLabelText('label')).toBeDefined();
@@ -48,14 +48,14 @@ describe('Search', () => {
 
   it('Focuses on search field when label is clicked and id is not given', async () => {
     const label = 'Lorem ipsum';
-    const { user } = render({ label });
+    const { user } = render({ label, hideLabel: false });
     await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('searchbox')).toHaveFocus();
   });
 
   it('Focuses on search field when label is clicked and id is given', async () => {
     const label = 'Lorem ipsum';
-    const { user } = render({ id: 'some-unique-id', label });
+    const { user } = render({ id: 'some-unique-id', label, hideLabel: false });
     await act(async () => await user.click(screen.getByText(label)));
     expect(screen.getByRole('searchbox')).toHaveFocus();
   });

@@ -114,7 +114,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             className,
           )}
         >
-          {label && (
+          {!hideLabel && (
             <Label
               data-size={size}
               weight='medium'
@@ -148,6 +148,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
                 {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
                 {...inputProps}
                 onChange={handleChange}
+                aria-label={hideLabel ? label?.toString() : undefined}
               />
               {showClearButton && (
                 <button
