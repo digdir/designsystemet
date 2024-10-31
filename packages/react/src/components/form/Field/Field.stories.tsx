@@ -80,13 +80,35 @@ export const Preview: Story = (args) => {
 // @ts-expect-error ts2559: Preview.args uses more properties for testing than what is supported by <Field>
 Preview.args = toggles;
 
-export const Adornments: Story = (args) => (
-  <Field>
-    <Label>Hvor mange kroner koster det per måned?</Label>
-    <Field.AffixWrapper>
-      <Field.Affix>NOK</Field.Affix>
-      <Input />
-      <Field.Affix>pr.mnd</Field.Affix>
-    </Field.AffixWrapper>
-  </Field>
+export const Adornments: Story = () => (
+  <div>
+    <Field>
+      <Label>Hvor mange kroner koster det per måned?</Label>
+      <Field.AffixWrapper>
+        <Field.Affix>NOK</Field.Affix>
+        <Input />
+        <Field.Affix>pr.mnd</Field.Affix>
+      </Field.AffixWrapper>
+    </Field>
+    <Field>
+      <Label>Hvor mange kroner koster det per måned?</Label>
+      <Field.AffixWrapper>
+        <Field.Affix>NOK</Field.Affix>
+        <Textarea rows={4} />
+      </Field.AffixWrapper>
+    </Field>
+
+    <Field>
+      <Label>Hvor mange kroner koster det per måned?</Label>
+      <Field.AffixWrapper>
+        <Select>
+          <Select.Option value='-1'>Velg &hellip;</Select.Option>
+          <Select.Option value='10'>10kr</Select.Option>
+          <Select.Option value='20'>20kr</Select.Option>
+          <Select.Option value='30'>30kr</Select.Option>
+        </Select>
+        <Field.Affix>pr.mnd</Field.Affix>
+      </Field.AffixWrapper>
+    </Field>
+  </div>
 );

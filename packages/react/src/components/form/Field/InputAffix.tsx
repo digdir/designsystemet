@@ -11,7 +11,7 @@ export const FieldAffixWrapper = forwardRef<
   FieldAffixWrapperProps
 >(function InputAddons({ className, ...rest }, ref) {
   return (
-    <div className={cl('ds-input-affix', className)} ref={ref} {...rest} />
+    <div className={cl('ds-field-affix', className)} ref={ref} {...rest} />
   );
 });
 
