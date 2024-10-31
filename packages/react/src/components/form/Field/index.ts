@@ -1,5 +1,6 @@
 import { Field as FieldParent } from './Field';
 import { FieldAffix, FieldAffixWrapper } from './FieldAffix';
+import { FieldCounter } from './FieldCounter';
 import { FieldDescription } from './FieldDescription';
 
 /**
@@ -15,11 +16,13 @@ const Field = Object.assign(FieldParent, {
   Description: FieldDescription,
   AffixWrapper: FieldAffixWrapper,
   Affix: FieldAffix,
+  Counter: FieldCounter,
 });
 
 Field.Description.displayName = 'Field.Description';
 Field.AffixWrapper.displayName = 'Field.AffixWrapper';
 Field.Affix.displayName = 'Field.Affix';
+Field.Counter.displayName = 'Field.Counter';
 
 export type {
   FieldAffixProps,
