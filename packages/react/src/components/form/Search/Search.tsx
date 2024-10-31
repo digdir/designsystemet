@@ -100,7 +100,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           ref={mergedRef}
           value={value ?? internalValue}
           disabled={disabled}
-          {...omit(['size', 'error', 'errorId', 'readOnly'], rest)}
+          {...omit(['error', 'errorId', 'readOnly'], rest)}
           type='search'
           onChange={handleChange}
         />
