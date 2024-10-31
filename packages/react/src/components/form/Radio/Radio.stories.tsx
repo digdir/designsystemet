@@ -1,24 +1,23 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { useState } from 'react';
-import type { ChangeEvent } from 'react';
+import { type ChangeEvent, useState } from 'react';
 import {
   Button,
   Divider,
   Fieldset,
   Paragraph,
   Radio,
+  type UseRadioProps,
   ValidationMessage,
+  useRadio,
 } from '../..';
-
-type Story = StoryObj<typeof Radio>;
 
 export default {
   title: 'Komponenter/Radio',
   component: Radio,
 } as Meta;
 
-export const Preview: Story = {
+export const Preview: StoryObj<typeof Radio> = {
   args: {
     label: 'Radio',
     description: 'Description',
@@ -29,41 +28,48 @@ export const Preview: Story = {
   },
 };
 
-export const AriaLabel: Story = {
+export const AriaLabel: StoryObj<typeof Radio> = {
   args: {
     value: 'value',
     'aria-label': 'Radio',
   },
 };
 
-export const Group: StoryFn<typeof Fieldset> = (args) => {
-  const props = {
-    'aria-invalid': !!args.error,
-    name: 'my-radio',
-  };
+export const Group: StoryFn<UseRadioProps & { readOnly?: boolean }> = (
+  args,
+) => {
+  const { getRadioProps, validationMessageProps } = useRadio({
+    name: 'mu-radio',
+    value: 'sjokolade',
+    ...args,
+  });
 
   return (
-    <Fieldset {...args}>
+    <Fieldset>
       <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
       <Fieldset.Description>
         Velg din favorittsmak blant alternativene.
       </Fieldset.Description>
-      <Radio label='Vanilje' value='vanilje' {...props} />
+      <Radio label='Vanilje' {...getRadioProps('vanilje')} />
       <Radio
         label='Jordbær'
-        value='jordbær'
         description='Jordbær er best'
-        {...props}
+        {...getRadioProps('jordbær')}
       />
-      <Radio label='Sjokolade' value='sjokolade' defaultChecked {...props} />
-      <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' {...props} />
-      {!!args.error && <ValidationMessage>{args.error}</ValidationMessage>}
+      <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+      <Radio
+        label='Jeg spiser ikke iskrem'
+        {...getRadioProps('spiser-ikke-is')}
+      />
+      <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
 };
 
 Group.args = {
+  readOnly: false,
   disabled: false,
+  error: '',
 };
 
 export const WithError = {

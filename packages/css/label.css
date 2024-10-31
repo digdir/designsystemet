@@ -16,6 +16,7 @@
     mask: center / contain no-repeat var(--dsc-label-icon-url);
     position: absolute;
     width: var(--dsc-label-icon-size);
+    translate: 0 calc((1lh - var(--dsc-label-icon-size)) / 2); /* Center icon to line height */
   }
 
   &[data-weight='semibold'] {

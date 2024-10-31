@@ -2,7 +2,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
   if (!fieldElement) return;
 
   const elements = new Map<Element, string | null>();
-  const uuid = `:${Math.round(Date.now() + Math.random() * 100).toString(36)}`;
+  const uuid = `:${Date.now().toString(36)}${Math.random().toString(36)}`;
   let input: Element | null = null;
 
   const process = (mutations: Partial<MutationRecord>[]) => {
