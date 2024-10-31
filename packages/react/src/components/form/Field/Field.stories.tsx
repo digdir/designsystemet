@@ -79,3 +79,14 @@ export const Preview: Story = (args) => {
 
 // @ts-expect-error ts2559: Preview.args uses more properties for testing than what is supported by <Field>
 Preview.args = toggles;
+
+export const Adornments: Story = (args) => (
+  <Field>
+    <Label>Hvor mange kroner koster det per måned?</Label>
+    <Field.AffixWrapper>
+      <Field.Affix>NOK</Field.Affix>
+      <Input />
+      <Field.Affix>pr.mnd</Field.Affix>
+    </Field.AffixWrapper>
+  </Field>
+);

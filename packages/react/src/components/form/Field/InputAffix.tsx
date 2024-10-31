@@ -2,22 +2,22 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type InputAffixWrapperProps = Omit<
+export type FieldAffixWrapperProps = Omit<
   HTMLAttributes<HTMLDivElement>,
   'prefix'
 >;
-export const InputAffixWrapper = forwardRef<
+export const FieldAffixWrapper = forwardRef<
   HTMLDivElement,
-  InputAffixWrapperProps
+  FieldAffixWrapperProps
 >(function InputAddons({ className, ...rest }, ref) {
   return (
     <div className={cl('ds-input-affix', className)} ref={ref} {...rest} />
   );
 });
 
-export type InputAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
-export const InputAffix = forwardRef<HTMLSpanElement, InputAffixProps>(
-  function InputAffix(rest, ref) {
+export type FieldAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
+export const FieldAffix = forwardRef<HTMLSpanElement, FieldAffixProps>(
+  function FieldAffix(rest, ref) {
     return <span aria-hidden='true' ref={ref} {...rest} />;
   },
 );
