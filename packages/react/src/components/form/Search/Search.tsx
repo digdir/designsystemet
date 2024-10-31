@@ -129,7 +129,6 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         )}
         {!isSimple && (
           <Button
-            className={'ds-search__search-button'}
             variant={variant}
             type='submit'
             onClick={handleSearchClick}
