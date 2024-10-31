@@ -27,7 +27,7 @@ function makeTokenCommands() {
       const preview = opts.preview;
       const verbose = opts.verbose;
       console.log(`Building tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview, verbose });
+      return buildTokens({ tokens, out, preview, verbose, accentColor: 'accent' });
     });
 
   tokenCmd
