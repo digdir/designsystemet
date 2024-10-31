@@ -40,6 +40,8 @@ export type BuildConfig = {
   options?: Partial<GetSdConfigOptions>;
   /** Custom build function. If not supplied, the default is used. */
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
+  /** Whether the build config is enabled. @default () => true */
+  enabled?: () => boolean;
 };
 
 export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: StyleDictionaryConfig };
