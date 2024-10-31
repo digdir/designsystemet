@@ -6,6 +6,7 @@ export type FieldAffixWrapperProps = Omit<
   HTMLAttributes<HTMLDivElement>,
   'prefix'
 >;
+
 export const FieldAffixWrapper = forwardRef<
   HTMLDivElement,
   FieldAffixWrapperProps
