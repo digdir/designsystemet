@@ -1,6 +1,6 @@
 import { type ChangeEvent, type ReactNode, useId, useState } from 'react';
 
-export type UseRadioProps = {
+export type UseRadioGroupProps = {
   disabled?: boolean;
   error?: ReactNode;
   name?: string;
@@ -13,13 +13,13 @@ export type UseRadioProps = {
   ) => void;
 };
 
-export function useRadio({
+export function useRadioGroup({
   error,
   name,
   onChange,
   value = '',
   ...rest
-}: UseRadioProps) {
+}: UseRadioGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const errorId = useId();
@@ -32,13 +32,13 @@ export function useRadio({
   return {
     value: currentValue,
     setValue,
-    getProps: (radioValue: string) => ({
+    getRadioProps: (value: string) => ({
       'aria-describedby': error ? errorId : undefined,
-      'aria-invalid': !!error,
-      checked: currentValue === radioValue,
+      'aria-invalid': error ? true : undefined,
+      checked: currentValue === value,
       name: name || nameFallback,
       onChange: handleChange,
-      value: radioValue,
+      value,
       ...rest,
     }),
     validationMessageProps: {

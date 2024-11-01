@@ -7,9 +7,9 @@ import {
   Fieldset,
   Paragraph,
   Table,
-  type UseCheckboxProps,
+  type UseCheckboxGroupProps,
   ValidationMessage,
-  useCheckbox,
+  useCheckboxGroup,
 } from '../..';
 
 type Story = StoryObj<typeof Checkbox>;
@@ -37,8 +37,8 @@ export const AriaLabel: Story = {
   },
 };
 
-export const Group: StoryFn<UseCheckboxProps> = (args) => {
-  const { getProps, validationMessageProps } = useCheckbox({
+export const Group: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
     name: 'my-checkbox',
     value: ['epost'],
     ...args,
@@ -52,9 +52,9 @@ export const Group: StoryFn<UseCheckboxProps> = (args) => {
       <Fieldset.Description>
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
-      <Checkbox label='E-post' {...getProps('epost')} />
-      <Checkbox label='Telefon' {...getProps('telefon')} />
-      <Checkbox label='SMS' {...getProps('sms')} />
+      <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+      <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+      <Checkbox label='SMS' {...getCheckboxProps('sms')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
@@ -84,11 +84,12 @@ export const WithError = {
   },
 };
 
-export const Controlled: StoryFn<UseCheckboxProps> = (args) => {
-  const { getProps, validationMessageProps, value, setValue } = useCheckbox({
-    name: 'my-checkbox',
-    ...args,
-  });
+export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, validationMessageProps, value, setValue } =
+    useCheckboxGroup({
+      name: 'my-checkbox',
+      ...args,
+    });
 
   const toggle = (haystack: string[], needle: string) =>
     haystack.includes(needle)
@@ -104,9 +105,9 @@ export const Controlled: StoryFn<UseCheckboxProps> = (args) => {
         <Fieldset.Description>
           Velg alle landene du skal innom.
         </Fieldset.Description>
-        <Checkbox label='Kroatia' {...getProps('kroatia')} />
-        <Checkbox label='Slovakia' {...getProps('slovakia')} />
-        <Checkbox label='Hobsyssel' {...getProps('hobsyssel')} />
+        <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
+        <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
+        <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
       </Fieldset>
       <ValidationMessage {...validationMessageProps} />
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
@@ -141,8 +142,8 @@ export const Disabled = {
   render: Group,
 };
 
-export const InTable: StoryFn<UseCheckboxProps> = (args) => {
-  const { getProps, getIndeterminateProps } = useCheckbox({
+export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, getIndeterminateProps } = useCheckboxGroup({
     name: 'my-checkbox',
     ...args,
   });
@@ -161,7 +162,10 @@ export const InTable: StoryFn<UseCheckboxProps> = (args) => {
         {[1, 2, 3, 4].map((row) => (
           <Table.Row key={row}>
             <Table.Cell>
-              <Checkbox aria-label={`Check ${row}`} {...getProps(`${row}`)} />
+              <Checkbox
+                aria-label={`Check ${row}`}
+                {...getCheckboxProps(`${row}`)}
+              />
             </Table.Cell>
             <Table.Cell>Content</Table.Cell>
           </Table.Row>

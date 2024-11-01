@@ -1,10 +1,10 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
-import { Input } from '../Input';
+import { Input, type InputProps } from '../Input';
 
 export type RadioProps = {
   /** Optional aria-label */
@@ -17,11 +17,7 @@ export type RadioProps = {
   value: string;
   /** Validation message for field */
   validation?: ReactNode;
-  /**
-   * Changes field size and paddings
-   */
-  'data-size'?: 'sm' | 'md' | 'lg';
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+} & Omit<InputProps, 'type' | 'role' | 'size'> &
   (
     | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
     | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }

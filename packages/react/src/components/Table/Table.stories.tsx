@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import type { TableHeaderCellProps } from '../..';
 
-import { Checkbox, Table, Textfield, useCheckbox } from '../..';
+import { Checkbox, Table, Textfield, useCheckboxGroup } from '../..';
 
 type Story = StoryFn<typeof Table>;
 
@@ -173,7 +173,7 @@ type CheckedItems = {
 };
 
 export const WithFormElements: Story = (args) => {
-  const { getProps, getIndeterminateProps } = useCheckbox({
+  const { getCheckboxProps, getIndeterminateProps } = useCheckboxGroup({
     name: 'my-checkbox',
     value: ['2'],
   });
@@ -194,7 +194,10 @@ export const WithFormElements: Story = (args) => {
         {[1, 2, 3].map((row) => (
           <Table.Row key={row}>
             <Table.Cell>
-              <Checkbox aria-label={`Check ${row}`} {...getProps(`${row}`)} />
+              <Checkbox
+                aria-label={`Check ${row}`}
+                {...getCheckboxProps(`${row}`)}
+              />
             </Table.Cell>
             <Table.Cell>1</Table.Cell>
             <Table.Cell>2</Table.Cell>

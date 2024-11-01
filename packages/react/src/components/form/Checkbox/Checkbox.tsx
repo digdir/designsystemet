@@ -1,10 +1,10 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
-import { Input } from '../Input';
+import { Input, type InputProps } from '../Input';
 
 export type CheckboxProps = {
   /** Optional aria-label */
@@ -17,16 +17,7 @@ export type CheckboxProps = {
   value: string;
   /** Validation message for field */
   validation?: ReactNode;
-  /**
-   * Changes field size and paddings
-   * @default md
-   */
-  'data-size'?: 'sm' | 'md' | 'lg';
-  /**Toggle indeterminate state for Checkbox
-   * @default false
-   */
-  indeterminate?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+} & Omit<InputProps, 'type' | 'role' | 'size'> &
   (
     | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
     | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }

@@ -7,7 +7,7 @@ type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = {
   /** Supported `input` types */
   type?: InputAttr['type'];
-  /** Defines the width of <Input> in count of characters.
+  /** Defines the width of input in count of characters.
    */
   size?: number;
   /** Disables element

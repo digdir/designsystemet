@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, ReactNode } from 'react';
 
-export type UseCheckboxProps = {
+export type UseCheckboxGroupProps = {
   disabled?: boolean;
   error?: ReactNode;
   name?: string;
@@ -14,13 +14,13 @@ export type UseCheckboxProps = {
   ) => void;
 };
 
-export function useCheckbox({
+export function useCheckboxGroup({
   error,
   name,
   onChange,
   value = [],
   ...rest
-}: UseCheckboxProps) {
+}: UseCheckboxGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const errorId = useId();
@@ -38,13 +38,13 @@ export function useCheckbox({
   return {
     value: currentValue,
     setValue,
-    getProps: (checkboxValue: string) => ({
+    getCheckboxProps: (value: string) => ({
       'aria-describedby': error ? errorId : undefined,
-      'aria-invalid': !!error,
-      checked: currentValue.includes(checkboxValue),
+      'aria-invalid': error ? true : undefined,
+      checked: currentValue.includes(value),
       name: name || nameFallback,
       onChange: handleChange,
-      value: checkboxValue,
+      value,
       ...rest,
     }),
     getIndeterminateProps: () => {
