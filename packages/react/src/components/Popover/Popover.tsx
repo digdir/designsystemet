@@ -98,7 +98,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       const handleClick = (event: MouseEvent) => {
         const el = event.target as Element | null;
         const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
-        const isOutside = !isTrigger && !popover?.contains(el);
+        const isOutside = !isTrigger && !popover?.contains(el as Node);
 
         if (isTrigger) {
           event.preventDefault(); // Prevent native Popover API
@@ -119,10 +119,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       popover?.togglePopover?.(controlledOpen);
-      document.addEventListener('click', handleClick);
+      document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);
       return () => {
-        document.removeEventListener('click', handleClick);
+        document.removeEventListener('click', handleClick, true);
         document.removeEventListener('keydown', handleKeydown);
       };
     }, [controlledOpen]);
