@@ -1,7 +1,8 @@
-import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 import { CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/input.css?inline';
 import * as RadioStories from './Radio.stories';
+import * as useRadioGroupStories from './useRadioGroup.stories';
 
 <Meta of={RadioStories} />
 
@@ -40,9 +41,9 @@ Bruk `Fieldset` og `useRadioGroup` for gruppering av alternativknapper.
 
 <Canvas of={RadioStories.Group} />
 
-Du kan sende inn:
+Til `useRadioGroup` kan du sende inn:
 
-<Controls of={RadioStories.Group} include={['name', 'value', 'error', 'readOnly', 'disabled']} />
+<ArgTypes of={useRadioGroupStories.UseRadioGroup} />
 
 I respons får du objektet:
 
