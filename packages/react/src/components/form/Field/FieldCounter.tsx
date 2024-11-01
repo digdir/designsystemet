@@ -1,5 +1,11 @@
-import { useMergeRefs } from '@floating-ui/react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import {
+  type HTMLAttributes,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import type { DefaultProps } from '../../../types';
 import { ValidationMessage } from '../../ValidationMessage';
 
 export type FieldCounterProps = {
@@ -13,18 +19,19 @@ export type FieldCounterProps = {
   under?: string;
   /** The maximum allowed characters. */
   limit: number;
-};
+} & HTMLAttributes<HTMLParagraphElement> &
+  DefaultProps;
 
 const label = (text: string, count: number) =>
   text.replace('%d', Math.abs(count).toString());
 
-export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
+export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
   function FieldCounter(
-    { limit, under = '%d tegn igjen', over = '%d tegn for mye' },
+    { limit, under = '%d tegn igjen', over = '%d tegn for mye', ...rest },
     ref,
   ) {
     const [count, setCount] = useState(0);
-    const counterRef = useRef<HTMLSpanElement>(null);
+    const counterRef = useRef<HTMLDivElement>(null);
     const hasExceededLimit = count > limit;
     const remainder = limit - count;
 
@@ -42,9 +49,7 @@ export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
 
       field?.addEventListener('input', onInput);
 
-      return () => {
-        field?.removeEventListener('input', onInput);
-      };
+      return () => field?.removeEventListener('input', onInput);
     }, [setCount]);
 
     return (
@@ -53,11 +58,11 @@ export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
           data-field='description'
           className='ds-sr-only'
           aria-live={'polite'}
-          ref={useMergeRefs([ref, counterRef])}
+          ref={ref}
         >
           {hasExceededLimit && label(over, remainder)}
         </div>
-        <ValidationMessage error={hasExceededLimit}>
+        <ValidationMessage error={hasExceededLimit} ref={ref} {...rest}>
           {label(hasExceededLimit ? over : under, remainder)}
         </ValidationMessage>
       </>
