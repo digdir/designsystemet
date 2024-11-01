@@ -31,10 +31,11 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
     return (
       <Button
         ref={ref}
-        variant='secondary'
+        variant='tertiary'
         type='reset'
         aria-label={label}
         onClick={handleClear}
+        icon={true}
         {...rest}
       />
     );

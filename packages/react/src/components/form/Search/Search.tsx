@@ -18,15 +18,8 @@ export type SearchProps = DefaultProps & React.HTMLAttributes<HTMLDivElement>;
  * ```
  */
 export const Search = forwardRef<HTMLDivElement, SearchProps>(
-  ({ 'data-size': size, className, ...rest }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cl('ds-search', className)}
-        data-size={size}
-        {...rest}
-      />
-    );
+  ({ className, ...rest }, ref) => {
+    return <div ref={ref} className={cl('ds-search', className)} {...rest} />;
   },
 );
 
