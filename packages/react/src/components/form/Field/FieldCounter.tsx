@@ -17,11 +17,11 @@ type CharacterCounterProps = {
 const label = (text: string, count: number) =>
   text.replace('%d', Math.abs(count).toString());
 
-export const FieldCounter = ({
+export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>({
   maxCount,
   under = '%d tegn igjen',
   over = '%d tegn for mye',
-}: CharacterCounterProps): JSX.Element => {
+}, ref) {
   const [count, setCount] = useState(0);
   const counterRef = useRef<HTMLSpanElement>(null);
   const hasExceededLimit = count > maxCount;
