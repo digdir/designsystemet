@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ValidationMessage } from '../../ValidationMessage';
 
-type CharacterCounterProps = {
+export type FieldCounterProps = {
   /** Label template for when `maxCount` is exceeded
    * @default '%d tegn for mye'
    */
