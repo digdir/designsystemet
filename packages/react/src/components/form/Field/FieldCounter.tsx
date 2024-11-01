@@ -26,7 +26,7 @@ export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
     const [count, setCount] = useState(0);
     const counterRef = useRef<HTMLSpanElement>(null);
     const hasExceededLimit = count > limit;
-    const currentCount = limit - count;
+    const remainder = limit - count;
 
     useEffect(() => {
       const onInput = ({ target }: Event) => {
@@ -55,10 +55,10 @@ export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
           aria-live={'polite'}
           ref={useMergeRefs([ref, counterRef])}
         >
-          {hasExceededLimit && label(over, currentCount)}
+          {hasExceededLimit && label(over, remainder)}
         </div>
-        <ValidationMessage asChild error={hasExceededLimit}>
-          <div>{label(hasExceededLimit ? over : under, currentCount)}</div>
+        <ValidationMessage error={hasExceededLimit}>
+          {label(hasExceededLimit ? over : under, remainder)}
         </ValidationMessage>
       </>
     );
