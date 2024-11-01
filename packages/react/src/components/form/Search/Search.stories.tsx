@@ -1,4 +1,3 @@
-import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -13,34 +12,27 @@ export default {
   component: Search,
 } as Meta;
 
-export const Preview: Story = {
-  args: {
-    'aria-label': 'Label',
-    disabled: false,
-    'data-size': 'md',
-    placeholder: '',
-    variant: 'simple',
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    'aria-label': 'Label',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
+export const Preview: StoryFn<typeof Search> = (args) => (
+  <Search {...args}>
+    <Search.Input aria-label='Søk' />
+    <Search.Clear />
+    <Search.Button />
+  </Search>
+);
 
 export const Controlled: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
-      <Search
-        aria-label='Kontroller meg!'
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Search>
+        <Search.Input
+          aria-label='Søk'
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Search.Clear />
+        <Search.Button />
+      </Search>
 
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
@@ -52,20 +44,74 @@ export const Controlled: StoryFn<typeof Search> = () => {
   );
 };
 
-export const OnlyIcon: StoryFn<typeof Search> = () => {
+export const Variants: StoryFn<typeof Search> = () => (
+  <div>
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+    </Search>
+
+    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+
+    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Search.Button variant='secondary' />
+    </Search>
+  </div>
+);
+
+export const WithLabel: StoryFn<typeof Search> = () => (
+  <Field>
+    <Label id='label'>Søk etter katter</Label>
+    <Search>
+      <Search.Input name='cat-search' aria-labelledby='label' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+  </Field>
+);
+
+export const Form: StoryFn<typeof Search> = () => {
+  const [value, setValue] = useState<string>();
+  const [submittedValue, setSubmittedValue] = useState<string>();
+
   return (
-    <Search
-      aria-label='Search for content'
-      clearButtonLabel='Empty'
-      searchButtonLabel={
-        <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
-      }
-      variant='primary'
-    />
+    <>
+      <form
+        onSubmit={(e) => {
+          // Prevent navigation from Storybook
+          e.preventDefault();
+          setSubmittedValue(value);
+        }}
+      >
+        <Search>
+          <Search.Input
+            aria-label='Søk'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </form>
+
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-spacing-2)' }}>
+        Submitted value: {submittedValue}
+      </Paragraph>
+    </>
   );
 };
 
-export const Form: StoryFn<typeof Search> = () => {
+export const Form2: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
   const [submittedValue, setSubmittedValue] = useState<string>();
 
@@ -92,22 +138,5 @@ export const Form: StoryFn<typeof Search> = () => {
         Submitted value: {submittedValue}
       </Paragraph>
     </>
-  );
-};
-
-export const WithLabel: StoryFn<typeof Search> = (args) => {
-  return (
-    <Field>
-      <Label htmlFor='search' id='search-label'>
-        Search
-      </Label>
-      <Search
-        {...args}
-        id='search'
-        name='search'
-        aria-labelledby='search-label'
-        aria-label={undefined}
-      />
-    </Field>
   );
 };

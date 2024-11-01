@@ -14,20 +14,16 @@ import * as SearchStories from './Search.stories';
 
 <Canvas of={SearchStories.Controlled} />
 
-## Full bredde
+## Varianter
 
-<Canvas of={SearchStories.FullWidth} />
+Du kan endre `variant` på `Button`, eller ta den bort for å få forskjellige varianter.
 
-## Ikon søkeknapp
-
-Bruk `searchButtonLabel` og `clearButtonLabel` til å sett innholdet i knappene på `Search`.
-Ønsker du å bruke kun et ikon på søkeknappen, sørg for at den har `title` definert.
-
-<Canvas of={SearchStories.OnlyIcon} />
+<Canvas of={SearchStories.Variants} />
 
 ## Med Label
 
 Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `aria-labelledby` på `Search`.
+I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
 
 <Canvas of={SearchStories.WithLabel} />
 

@@ -1,105 +1,32 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { act, render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
-
-import type { SearchProps } from './Search';
-import { Search } from './Search';
+import { Search } from './';
 
 describe('Search', () => {
-  test('has correct value and aria-label', () => {
-    const ariaLabel = 'Search';
-    const value = 'search value';
-    render({ 'aria-label': ariaLabel, value });
-    const element = screen.getByRole('searchbox');
-    expect(element).toHaveAttribute('aria-label', ariaLabel);
-    expect(element).toHaveValue(value);
-  });
-
-  it('Triggers onBlur event when field loses focus', async () => {
-    const onBlur = vi.fn();
-    const { user } = render({ onBlur });
-    const element = screen.getByRole('searchbox');
-    await act(async () => await user.click(element));
-    expect(element).toHaveFocus();
-    await act(async () => await user.tab());
-    expect(onBlur).toHaveBeenCalledTimes(1);
-  });
-
-  it('Triggers onChange event for each keystroke', async () => {
-    const onChange = vi.fn();
-    const data = 'test';
-    const { user } = render({ onChange });
-    const element = screen.getByRole('searchbox');
-    await act(async () => await user.click(element));
-    expect(element).toHaveFocus();
-    await act(async () => await user.keyboard(data));
-    expect(onChange).toHaveBeenCalledTimes(data.length);
-  });
-
-  it('Sets given id on search field', () => {
-    const id = 'some-unique-id';
-    render({ id });
-    expect(screen.getByRole('searchbox')).toHaveAttribute('id', id);
-  });
-
-  it('onSearchClick is triggered with correct search value when search button is interacted', async () => {
-    const onSearchClick = vi.fn();
-    const searchButtonLabel = 'search';
-    const typedText = 'typed text by user';
-
-    const { user } = render({
-      onSearchClick,
-      searchButtonLabel,
-      variant: 'primary',
-    });
-
-    const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await act(async () => await user.type(searchbox, typedText));
-    expect(searchbox.value).toBe(typedText);
-
-    const searchButton = screen.getByText(searchButtonLabel);
-
-    await act(async () => await user.click(searchButton));
-
-    expect(onSearchClick).toBeCalledWith(typedText);
-  });
-
-  it('trigger onSubmit in form by default', async () => {
-    const user = userEvent.setup();
-
-    const onSubmit = vi.fn();
-    const typedText = 'typed text by user';
-
+  it('should clear input when clear button is clickd', async () => {
     renderRtl(
-      <form onSubmit={onSubmit}>
-        <Search aria-label='sæk' />
-      </form>,
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+      </Search>,
     );
 
-    const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await act(async () => await user.type(searchbox, typedText));
-    expect(searchbox.value).toBe(typedText);
+    const input = screen.getByRole('searchbox');
+    const clearButton = screen.getByRole('button');
 
-    await act(async () => await user.keyboard('[Enter]'));
+    expect(input).toHaveValue('');
+    expect(clearButton).toBeInTheDocument();
 
-    expect(onSubmit).toHaveBeenCalled();
+    input.focus();
+
+    expect(input).toHaveFocus();
+
+    await act(async () => await userEvent.type(input, 'Hello, World!'));
+
+    expect(input).toHaveValue('Hello, World!');
+
+    await act(async () => await userEvent.click(clearButton));
+
+    expect(input).toHaveValue('');
   });
 });
-
-const render = (props: Partial<SearchProps> = {}) => {
-  const user = userEvent.setup();
-
-  return {
-    user,
-    ...renderRtl(
-      <Search
-        {...{
-          onChange: vi.fn(),
-          ...props,
-        }}
-        aria-label='søk'
-        aria-labelledby={undefined}
-      />,
-    ),
-  };
-};

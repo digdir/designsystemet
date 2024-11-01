@@ -10,14 +10,14 @@
   border-radius: var(--ds-border-radius-default);
   position: relative;
 
-  &[data-variant='simple'] {
+  &:not(:has([type='submit'])) {
     /* This really does not matter, if consumer makes the component in markup,
     they won't add the submit button, but it's less for us */
     & [type='submit'] {
       display: none;
     }
 
-    & [type='search'] {
+    & input {
       padding-left: 2.4em;
     }
 
@@ -36,14 +36,14 @@
     }
   }
 
-  &:not([data-variant='simple']) {
-    & [type='search'] {
+  &:has([type='submit']) {
+    & input {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
 
-  & [type='search'] {
+  & input {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 
@@ -86,6 +86,10 @@
       z-index: 2;
       pointer-events: none;
     }
+  }
+
+  &:has(input:placeholder-shown) [type='reset'] {
+    display: none;
   }
 
   & [type='submit'] {
