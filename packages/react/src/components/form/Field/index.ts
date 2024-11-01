@@ -24,6 +24,7 @@ Field.AffixWrapper.displayName = 'Field.AffixWrapper';
 Field.Affix.displayName = 'Field.Affix';
 Field.Counter.displayName = 'Field.Counter';
 
+export type { FieldCounterProps } from './FieldCounter';
 export type {
   FieldAffixProps,
   FieldAffixWrapperProps,

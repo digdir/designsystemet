@@ -12,7 +12,7 @@ export type FieldCounterProps = {
    */
   under?: string;
   /** The maximum allowed characters. */
-  maxCount: number;
+  limit: number;
 };
 
 const label = (text: string, count: number) =>
@@ -20,39 +20,45 @@ const label = (text: string, count: number) =>
 
 export const FieldCounter = forwardRef<HTMLSpanElement, FieldCounterProps>(
   function FieldCounter(
-    { maxCount, under = '%d tegn igjen', over = '%d tegn for mye' },
+    { limit, under = '%d tegn igjen', over = '%d tegn for mye' },
     ref,
   ) {
     const [count, setCount] = useState(0);
     const counterRef = useRef<HTMLSpanElement>(null);
-    const hasExceededLimit = count > maxCount;
-    const currentCount = maxCount - count;
+    const hasExceededLimit = count > limit;
+    const currentCount = limit - count;
 
     useEffect(() => {
-      const onChange = (e: Event) => {
-        const element = e.target as HTMLInputElement | HTMLTextAreaElement;
-        setCount(element.value.length);
+      const onInput = ({ target }: Event) => {
+        if (
+          target instanceof HTMLInputElement ||
+          target instanceof HTMLTextAreaElement
+        ) {
+          setCount(target.value.length);
+        }
       };
 
       const field = counterRef.current?.closest('.ds-field');
-      field?.addEventListener('input', onChange);
+
+      field?.addEventListener('input', onInput);
 
       return () => {
-        field?.removeEventListener('input', onChange);
+        field?.removeEventListener('input', onInput);
       };
     }, [setCount]);
 
     return (
       <>
-        <span
+        <div
+          data-field='description'
           className='ds-sr-only'
           aria-live={'polite'}
           ref={useMergeRefs([ref, counterRef])}
         >
-          {hasExceededLimit && label(over, count)}
-        </span>
+          {hasExceededLimit && label(over, currentCount)}
+        </div>
         <ValidationMessage asChild error={hasExceededLimit}>
-          <span>{label(hasExceededLimit ? over : under, currentCount)}</span>
+          <div>{label(hasExceededLimit ? over : under, currentCount)}</div>
         </ValidationMessage>
       </>
     );

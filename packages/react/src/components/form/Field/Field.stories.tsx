@@ -117,6 +117,6 @@ export const Counter: Story = () => (
   <Field>
     <Label>Legg til en beskrivelse</Label>
     <Textarea rows={2} />
-    <Field.Counter maxCount={10} />
+    <Field.Counter limit={10} />
   </Field>
 );
