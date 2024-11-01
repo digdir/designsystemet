@@ -1,7 +1,10 @@
 import type { Meta } from '@storybook/react';
+import { Radio } from '../..';
 import type { UseRadioGroupProps } from './useRadioGroup';
 
-export const UseRadioGroup = (props: UseRadioGroupProps) => null;
+export const UseRadioGroup = (props: UseRadioGroupProps) => (
+  <Radio label='' value='' />
+);
 
 export default {
   title: 'Komponenter/Radio/useRadioGroup',
