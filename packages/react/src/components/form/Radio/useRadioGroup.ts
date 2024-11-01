@@ -19,7 +19,7 @@ export function useRadioGroup({
   onChange,
   value = '',
   ...rest
-}: UseRadioGroupProps) {
+}: UseRadioGroupProps = {}) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const validationId = useId();

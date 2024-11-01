@@ -20,7 +20,7 @@ export function useCheckboxGroup({
   onChange,
   value = [],
   ...rest
-}: UseCheckboxGroupProps) {
+}: UseCheckboxGroupProps = {}) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const validationId = useId();
