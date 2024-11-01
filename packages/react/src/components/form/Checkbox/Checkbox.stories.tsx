@@ -1,6 +1,4 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import type { ChangeEvent } from 'react';
 
 import {
   Button,
@@ -8,7 +6,10 @@ import {
   Divider,
   Fieldset,
   Paragraph,
+  Table,
+  type UseCheckboxProps,
   ValidationMessage,
+  useCheckbox,
 } from '../..';
 
 type Story = StoryObj<typeof Checkbox>;
@@ -36,29 +37,32 @@ export const AriaLabel: Story = {
   },
 };
 
-export const Group: StoryFn<typeof Fieldset> = (args) => {
-  const props = {
-    'aria-invalid': !!args.error,
-  };
+export const Group: StoryFn<UseCheckboxProps> = (args) => {
+  const { getProps, validationMessageProps } = useCheckbox({
+    name: 'my-checkbox',
+    value: ['epost'],
+    ...args,
+  });
 
   return (
-    <Fieldset {...args}>
+    <Fieldset>
       <Fieldset.Legend>
         Hvordan vil du helst at vi skal kontakte deg?
       </Fieldset.Legend>
       <Fieldset.Description>
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
-      <Checkbox label='E-post' value='epost' {...props} defaultChecked />
-      <Checkbox label='Telefon' value='telefon' {...props} />
-      <Checkbox label='SMS' value='sms' {...props} />
-      {!!args.error && <ValidationMessage>{args.error}</ValidationMessage>}
+      <Checkbox label='E-post' {...getProps('epost')} />
+      <Checkbox label='Telefon' {...getProps('telefon')} />
+      <Checkbox label='SMS' {...getProps('sms')} />
+      <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
 };
 
 Group.args = {
   disabled: false,
+  error: '',
 };
 
 export const OneOption: StoryFn<typeof Fieldset> = () => (
@@ -80,21 +84,17 @@ export const WithError = {
   },
 };
 
-export const Controlled: StoryFn<typeof Checkbox> = () => {
-  // TODO: useCheckbox when hook is ready
-  const [values, setValues] = useState<string[]>([]);
-  const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const values = Array.from(document.getElementsByTagName('input'))
-      .filter(({ name, checked }) => name === target.name && checked)
-      .map(({ value }) => value);
-    setValues(values);
-  };
-  const myToggle = (value: string) =>
-    setValues(
-      values.includes(value)
-        ? values.filter((val) => val !== value)
-        : [...values, value],
-    );
+export const Controlled: StoryFn<UseCheckboxProps> = (args) => {
+  const { getProps, validationMessageProps, value, setValue } = useCheckbox({
+    name: 'my-checkbox',
+    ...args,
+  });
+
+  const toggle = (haystack: string[], needle: string) =>
+    haystack.includes(needle)
+      ? haystack.filter((value) => value !== needle)
+      : haystack.concat(needle);
+
   return (
     <>
       <Fieldset>
@@ -104,39 +104,22 @@ export const Controlled: StoryFn<typeof Checkbox> = () => {
         <Fieldset.Description>
           Velg alle landene du skal innom.
         </Fieldset.Description>
-        <Checkbox
-          label='Kroatia'
-          value='kroatia'
-          checked={values.includes('kroatia')}
-          onChange={onChange}
-        />
-        <Checkbox
-          label='Slovakia'
-          value='slovakia'
-          checked={values.includes('slovakia')}
-          onChange={onChange}
-        />
-        <Checkbox
-          label='Hobsyssel'
-          value='hobsyssel'
-          checked={values.includes('hobsyssel')}
-          onChange={onChange}
-        />
-        <Paragraph>eller</Paragraph>
-        <Checkbox
-          label='Jeg skal ikke til noen av disse landene'
-          value='ingen'
-          checked={values.includes('ingen')}
-          onChange={onChange}
-        />
+        <Checkbox label='Kroatia' {...getProps('kroatia')} />
+        <Checkbox label='Slovakia' {...getProps('slovakia')} />
+        <Checkbox label='Hobsyssel' {...getProps('hobsyssel')} />
       </Fieldset>
+      <ValidationMessage {...validationMessageProps} />
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
       <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
-        Du har valgt: {values.toString()}
+        Du har valgt: {value.toString()}
       </Paragraph>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => myToggle('kroatia')}>Toggle Kroatia</Button>
-        <Button onClick={() => myToggle('hobsyssel')}>Toggle Hobsyssel</Button>
+        <Button onClick={() => setValue(toggle(value, 'kroatia'))}>
+          Toggle Kroatia
+        </Button>
+        <Button onClick={() => setValue(toggle(value, 'hobsyssel'))}>
+          Toggle Hobsyssel
+        </Button>
       </div>
     </>
   );
@@ -156,6 +139,36 @@ export const Disabled = {
     disabled: true,
   },
   render: Group,
+};
+
+export const InTable: StoryFn<UseCheckboxProps> = (args) => {
+  const { getProps, getIndeterminateProps } = useCheckbox({
+    name: 'my-checkbox',
+    ...args,
+  });
+
+  return (
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
+            <Checkbox aria-label='Select all' {...getIndeterminateProps()} />
+          </Table.HeaderCell>
+          <Table.HeaderCell>Header</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {[1, 2, 3, 4].map((row) => (
+          <Table.Row key={row}>
+            <Table.Cell>
+              <Checkbox aria-label={`Check ${row}`} {...getProps(`${row}`)} />
+            </Table.Cell>
+            <Table.Cell>Content</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
 };
 
 export const ContentEx1: StoryFn<typeof Fieldset> = () => (

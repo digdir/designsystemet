@@ -37,7 +37,7 @@ export const Group: StoryFn<UseRadioProps & { readOnly?: boolean }> = (
   args,
 ) => {
   const { getProps, validationMessageProps } = useRadio({
-    name: 'mu-radio',
+    name: 'my-radio',
     value: 'sjokolade',
     ...args,
   });
@@ -77,7 +77,7 @@ export const WithError = {
 
 export const Controlled: StoryFn<UseRadioProps> = (args) => {
   const { value, setValue, getProps, validationMessageProps } = useRadio({
-    name: 'mu-radio',
+    name: 'my-radio',
     ...args,
   });
 
