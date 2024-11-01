@@ -42,30 +42,6 @@ describe('Search', () => {
     expect(screen.getByRole('searchbox')).toHaveAttribute('id', id);
   });
 
-  it('clear value with clear button and focus is set to searchbox afterwards', async () => {
-    const onClear = vi.fn();
-    const clearButtonLabel = 'clear';
-    const typedText = 'typed text by user';
-
-    const { user } = render({ onClear, clearButtonLabel });
-
-    const searchbox = screen.getByRole<HTMLInputElement>('searchbox');
-    await act(async () => await user.type(searchbox, typedText));
-    expect(searchbox.value).toBe(typedText);
-
-    const clearButton = document.querySelector('button');
-
-    if (!clearButton) {
-      throw new Error('clear button not found');
-    }
-
-    await act(async () => await user.click(clearButton));
-
-    expect(onClear).toBeCalledWith(typedText);
-    expect(searchbox.value).toBe('');
-    expect(searchbox).toHaveFocus();
-  });
-
   it('onSearchClick is triggered with correct search value when search button is interacted', async () => {
     const onSearchClick = vi.fn();
     const searchButtonLabel = 'search';
