@@ -16,4 +16,5 @@ Search.Input.displayName = 'Search.Input';
 export type { SearchProps } from './Search';
 export type { SearchButtonProps } from './SearchButton';
 export type { SearchClearProps } from './SearchClear';
+export type { SearchInputProps } from './SearchInput';
 export { SearchClear, SearchButton, SearchInput };

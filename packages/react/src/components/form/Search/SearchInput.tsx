@@ -3,7 +3,7 @@ import { type ChangeEvent, forwardRef, useRef, useState } from 'react';
 import { omit } from '../../../utilities';
 import { Input } from '../Input';
 
-type SearchInputProps = Omit<
+export type SearchInputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'readOnly' | 'type'
 > &

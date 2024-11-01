@@ -2,7 +2,8 @@ import { forwardRef } from 'react';
 import { Button, type ButtonProps } from '../../Button';
 import { setReactInputValue } from '../Combobox/utilities';
 
-export type SearchClearProps = Omit<ButtonProps, 'variant'>;
+/* We omit children since we render the icon with css */
+export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'>;
 
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
   (props, ref) => {

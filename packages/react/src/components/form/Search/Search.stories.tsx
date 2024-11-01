@@ -1,11 +1,9 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Divider, Field, Label, Paragraph } from '../..';
 
 import { Search } from '.';
-
-type Story = StoryObj<typeof Search>;
 
 export default {
   title: 'Komponenter/Search',
