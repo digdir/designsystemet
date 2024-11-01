@@ -92,7 +92,7 @@ export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
       ...args,
     });
 
-  const toggle = (haystack: typeof value, needle: string) =>
+  const toggle = (haystack: string[], needle: string) =>
     haystack.includes(needle)
       ? haystack.filter((value) => value !== needle)
       : haystack.concat(needle);
