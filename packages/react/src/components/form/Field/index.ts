@@ -31,4 +31,4 @@ export type {
 } from './FieldAffix';
 export type { FieldProps } from './Field';
 export type { FieldDescriptionProps } from './FieldDescription';
-export { Field, FieldDescription, FieldAffix, FieldAffixWrapper };
+export { Field, FieldDescription, FieldAffix, FieldAffixWrapper, FieldCounter };
