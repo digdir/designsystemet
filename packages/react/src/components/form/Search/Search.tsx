@@ -5,11 +5,16 @@ import type { DefaultProps } from '../../../types';
 
 export type SearchProps = DefaultProps & React.HTMLAttributes<HTMLDivElement>;
 
-/** Search field
+/**
+ * Search field
  *
  * @example
  * ```tsx
- * <Search aria-label="Search" />
+ * <Search>
+ *  <Search.Input aria-label='Søk' />
+ *  <Search.Clear />
+ *  <Search.Button />
+ * </Search>
  * ```
  */
 export const Search = forwardRef<HTMLDivElement, SearchProps>(
