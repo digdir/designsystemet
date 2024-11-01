@@ -19,6 +19,7 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
         input = target.closest('.ds-search')?.querySelector('input');
 
       if (!input) throw new Error('Input is missing');
+      /* narrow type to make TS happy */
       if (!(input instanceof HTMLInputElement))
         throw new Error('Input is not an input element');
 
