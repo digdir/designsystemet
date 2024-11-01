@@ -6,27 +6,21 @@ import { setReactInputValue } from '../Combobox/utilities';
 export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'>;
 
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
-  (props, ref) => {
-    const { 'aria-label': label = 'Tøm', onClick, ...rest } = props;
-
+  function SearchClear({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) {
     const handleClear = (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
-      const target = e.target;
-      let input: HTMLElement | null | undefined = null;
+      const input =
+        event.target instanceof HTMLElement &&
+        event.target.closest('.ds-search')?.querySelector('input');
 
-      if (target instanceof HTMLElement)
-        input = target.closest('.ds-search')?.querySelector('input');
-
-      if (!input) throw new Error('Input is missing');
-      /* narrow type to make TS happy */
       if (!(input instanceof HTMLInputElement))
-        throw new Error('Input is not an input element');
+        throw new Error('Input is missing');
 
-      e.preventDefault();
+      event.preventDefault();
       setReactInputValue(input, '');
       input.focus();
-      onClick?.(e);
+      onClick?.(event);
     };
 
     return (
