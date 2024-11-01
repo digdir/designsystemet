@@ -10,6 +10,23 @@ import * as SearchStories from './Search.stories';
 <Primary />
 <Controls />
 
+## Slik bruker du Search
+
+Du velger selv om du vil bruke `Search.Clear` og `Search.Button`. Vi anbefaler at du bruker `Search.Clear` for å gi brukeren mulighet til å fjerne søket.
+Dersom du ikke har `Search.Button` vil input feltet få et søkeikon.
+
+`ara-label` eller `aria-labelledby` er påkrevd på `Search.Input`.
+
+```tsx
+import { Search } from '@digdir/designsystemet-react';
+
+<Search>
+  <Search.Input aria-label="Sæk" />
+  <Search.Clear />
+  <Search.Button>Søk</Search.Button>
+</Search.Clear>
+```
+
 ## Kontrollert
 
 <Canvas of={SearchStories.Controlled} />
