@@ -196,7 +196,7 @@ export const WithFormElements: Story = (args) => {
             <Table.Cell>
               <Checkbox
                 aria-label={`Check ${row}`}
-                {...getCheckboxProps(`${row}`)}
+                {...getCheckboxProps(String(row))}
               />
             </Table.Cell>
             <Table.Cell>1</Table.Cell>

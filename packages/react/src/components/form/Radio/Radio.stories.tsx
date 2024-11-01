@@ -62,7 +62,6 @@ Group.args = {
   name: 'my-group',
   readOnly: false,
   disabled: false,
-  error: '',
   value: 'sjokolade',
 };
 

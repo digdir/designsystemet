@@ -23,7 +23,7 @@ export function useCheckboxGroup({
 }: UseCheckboxGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
-  const errorId = useId();
+  const validationId = useId();
   const getInputs = (checked: boolean) =>
     document.querySelectorAll<HTMLInputElement>(
       `input[type="checkbox"][name="${name || nameFallback}"]${checked ? ':checked' : ':not(:checked)'}`,
@@ -39,8 +39,8 @@ export function useCheckboxGroup({
     value: currentValue,
     setValue,
     getCheckboxProps: (value: string) => ({
-      'aria-describedby': error ? errorId : undefined,
-      'aria-invalid': error ? true : undefined,
+      'aria-describedby': error ? validationId : undefined,
+      'aria-invalid': Boolean(error) || undefined,
       checked: currentValue.includes(value),
       name: name || nameFallback,
       onChange: handleChange,
@@ -60,7 +60,6 @@ export function useCheckboxGroup({
 
       return {
         ref,
-        value: '',
         onChange: (event: ChangeEvent<HTMLInputElement>) => {
           const checked = !!ref.current?.checked;
           for (const input of getInputs(!checked)) input.checked = checked;
@@ -70,8 +69,7 @@ export function useCheckboxGroup({
     },
     validationMessageProps: {
       children: error,
-      hidden: !error,
-      id: errorId,
+      id: validationId,
     },
   };
 }

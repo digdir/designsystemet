@@ -22,7 +22,7 @@ export function useRadioGroup({
 }: UseRadioGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
-  const errorId = useId();
+  const validationId = useId();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextValue = event.target.value;
     setValue(nextValue);
@@ -33,8 +33,8 @@ export function useRadioGroup({
     value: currentValue,
     setValue,
     getRadioProps: (value: string) => ({
-      'aria-describedby': error ? errorId : undefined,
-      'aria-invalid': error ? true : undefined,
+      'aria-describedby': error ? validationId : undefined,
+      'aria-invalid': Boolean(error) || undefined,
       checked: currentValue === value,
       name: name || nameFallback,
       onChange: handleChange,
@@ -43,8 +43,7 @@ export function useRadioGroup({
     }),
     validationMessageProps: {
       children: error,
-      hidden: !error,
-      id: errorId,
+      id: validationId,
     },
   };
 }

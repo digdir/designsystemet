@@ -14,7 +14,7 @@ export type CheckboxProps = {
   /** Description for field */
   description?: ReactNode;
   /** Value of the `input` element */
-  value: string;
+  value?: InputProps['value'];
   /** Validation message for field */
   validation?: ReactNode;
 } & Omit<InputProps, 'type' | 'role' | 'size'> &

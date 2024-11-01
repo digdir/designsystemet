@@ -39,7 +39,6 @@ export const AriaLabel: Story = {
 
 export const Group: StoryFn<UseCheckboxGroupProps> = (args) => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
-    name: 'my-checkbox',
     value: ['epost'],
     ...args,
   });
@@ -61,6 +60,7 @@ export const Group: StoryFn<UseCheckboxGroupProps> = (args) => {
 };
 
 Group.args = {
+  name: 'my-group',
   disabled: false,
   error: '',
 };
@@ -80,6 +80,7 @@ export const WithError = {
   render: Group,
   args: {
     ...Group.args,
+    name: 'my-error',
     error: 'Du må velge minst to kontaktalternativ', // TODO: useCheckbox when hook is ready
   },
 };
@@ -87,11 +88,11 @@ export const WithError = {
 export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
   const { getCheckboxProps, validationMessageProps, value, setValue } =
     useCheckboxGroup({
-      name: 'my-checkbox',
+      name: 'my-controlled',
       ...args,
     });
 
-  const toggle = (haystack: string[], needle: string) =>
+  const toggle = (haystack: typeof value, needle: string) =>
     haystack.includes(needle)
       ? haystack.filter((value) => value !== needle)
       : haystack.concat(needle);
@@ -129,6 +130,7 @@ export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
 export const ReadOnly = {
   args: {
     ...Group.args,
+    name: 'my-readonly',
     readOnly: true,
   },
   render: Group,
@@ -137,6 +139,7 @@ export const ReadOnly = {
 export const Disabled = {
   args: {
     ...Preview.args,
+    name: 'my-disabled',
     disabled: true,
   },
   render: Group,
@@ -144,7 +147,7 @@ export const Disabled = {
 
 export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
   const { getCheckboxProps, getIndeterminateProps } = useCheckboxGroup({
-    name: 'my-checkbox',
+    name: 'my-table',
     ...args,
   });
 
@@ -164,7 +167,7 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
             <Table.Cell>
               <Checkbox
                 aria-label={`Check ${row}`}
-                {...getCheckboxProps(`${row}`)}
+                {...getCheckboxProps(String(row))}
               />
             </Table.Cell>
             <Table.Cell>Content</Table.Cell>
