@@ -1,4 +1,4 @@
-import { LinkIcon } from '@navikt/aksel-icons';
+import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
@@ -38,15 +38,23 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
     <Dropdown.Context>
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown {...args}>
-        <Dropdown.Heading>Heading 1</Dropdown.Heading>
+        <Dropdown.Heading>First heading</Dropdown.Heading>
         <Dropdown.List>
-          <Dropdown.Item>Button 1.1</Dropdown.Item>
-          <Dropdown.Item>Button 1.2</Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 1.1</Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 1.2</Dropdown.Button>
+          </Dropdown.Item>
         </Dropdown.List>
-        <Dropdown.Heading>Heading 2</Dropdown.Heading>
+        <Dropdown.Heading>Second heading</Dropdown.Heading>
         <Dropdown.List>
-          <Dropdown.Item>Button 2.1</Dropdown.Item>
-          <Dropdown.Item>Button 2.2</Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 2.1</Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 2.2</Dropdown.Button>
+          </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
     </Dropdown.Context>
@@ -64,25 +72,29 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown {...args}>
         <Dropdown.List>
-          <Dropdown.Item asChild>
-            <a
-              href='https://github.com/digdir/designsystemet'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
-              Github
-            </a>
+          <Dropdown.Item>
+            <Dropdown.Button asChild>
+              <a
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon aria-hidden />
+                Github
+              </a>
+            </Dropdown.Button>
           </Dropdown.Item>
-          <Dropdown.Item asChild>
-            <a
-              href='https://designsystemet.no'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
-              Designsystemet.no
-            </a>
+          <Dropdown.Item>
+            <Dropdown.Button asChild>
+              <a
+                href='https://designsystemet.no'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon aria-hidden />
+                Designsystemet.no
+              </a>
+            </Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
@@ -97,28 +109,33 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
     <Dropdown.Context>
       <Dropdown.Trigger onClick={() => setOpen(!open)}>
         Dropdown
+        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
       </Dropdown.Trigger>
       <Dropdown open={open} onClose={() => setOpen(false)}>
         <Dropdown.List>
-          <Dropdown.Item asChild>
-            <a
-              href='https://github.com/digdir/designsystemet'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
-              Github
-            </a>
+          <Dropdown.Item>
+            <Dropdown.Button asChild>
+              <a
+                href='https://github.com/digdir/designsystemet'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon aria-hidden />
+                Github
+              </a>
+            </Dropdown.Button>
           </Dropdown.Item>
-          <Dropdown.Item asChild>
-            <a
-              href='https://designsystemet.no'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <LinkIcon aria-hidden fontSize='1.5rem' />
-              Designsystemet.no
-            </a>
+          <Dropdown.Item>
+            <Dropdown.Button asChild>
+              <a
+                href='https://designsystemet.no'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <LinkIcon aria-hidden />
+                Designsystemet.no
+              </a>
+            </Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
@@ -132,7 +149,9 @@ export const WithoutTrigger: StoryFn<typeof Dropdown> = () => {
       <Button popovertarget='dropdown'>Dropdown</Button>
       <Dropdown id='dropdown'>
         <Dropdown.List>
-          <Dropdown.Item>Item</Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Item</Dropdown.Button>
+          </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
     </>

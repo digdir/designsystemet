@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import type { ThemeObject } from '@tokens-studio/types';
@@ -20,6 +20,8 @@ type Options = {
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
+  /** Set the default "accent" color, if not overridden with data-color */
+  accentColor: string;
 };
 
 export let buildOptions: Options | undefined;
@@ -32,12 +34,15 @@ const sd = new StyleDictionary();
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
   'color-mode': { getConfig: configs.colorModeVariables, dimensions: ['mode'] },
+  'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
+  'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
     getConfig: configs.typescriptTokens,
     dimensions: ['mode'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
+    enabled: () => buildOptions?.preview ?? false,
   },
   entryFiles: {
     name: 'CSS entry files',
@@ -48,7 +53,11 @@ const buildConfigs = {
         sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
 
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(`${outPath}/${theme}`) });
+          const builtinColorsFilename = 'builtin-colors.css';
+          const builtinColors = path.resolve(import.meta.dirname, 'build', builtinColorsFilename);
+          await fs.copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename));
+
+          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme) });
         }),
       );
     },
@@ -63,7 +72,7 @@ export async function buildTokens(options: Options): Promise<void> {
   /*
    * Build the themes
    */
-  const $themes = JSON.parse(fs.readFileSync(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
+  const $themes = JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[];
 
   const relevant$themes = $themes
     .map(processThemeObject)
@@ -84,6 +93,9 @@ export async function buildTokens(options: Options): Promise<void> {
 
   try {
     for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
+      if (!(buildConfig.enabled?.() ?? true)) {
+        return;
+      }
       if (sdConfigs.length > 0) {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 

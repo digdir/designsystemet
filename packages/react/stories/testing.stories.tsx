@@ -67,6 +67,7 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
+          alignItems: 'center',
           gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
@@ -95,24 +96,20 @@ export const MediumRow: StoryFn<{
       <div
         style={{
           display: 'flex',
+          alignItems: 'center',
           gap: 'var(--ds-spacing-2)',
           background: 'rgba(255 0 0/0.3)',
-          alignItems: 'flex-start',
           flexDirection: direction,
         }}
       >
         <Switch data-size={size}>Switch</Switch>
         <Switch data-size={size} aria-label='no label switch'></Switch>
-        <Chip.Checkbox>Toggle</Chip.Checkbox>
-        <Chip.Removable>Removable</Chip.Removable>
+        <Chip.Checkbox data-size={size}>Toggle</Chip.Checkbox>
+        <Chip.Removable data-size={size}>Removable</Chip.Removable>
         <Tag data-size={size}>Tag</Tag>
 
         <Radio label='Radio' value='radio' data-size={size} />
-        <Radio
-          value='radio2'
-          data-size={size}
-          aria-label='no label radio'
-        ></Radio>
+        <Radio value='radio2' data-size={size} aria-label='no label radio' />
         <Checkbox label='Checkbox' value='checkbox' data-size={size} />
         <Checkbox
           value='checkbox2'
@@ -265,8 +262,12 @@ export const Sizes: StoryFn = () => {
             <Dropdown>
               <Dropdown.Heading>Heading 1</Dropdown.Heading>
               <Dropdown.List>
-                <Dropdown.Item>Button 1.1</Dropdown.Item>
-                <Dropdown.Item>Button 1.2</Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown.Button>Button 1.1</Dropdown.Button>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown.Button>Button 1.2</Dropdown.Button>
+                </Dropdown.Item>
               </Dropdown.List>
             </Dropdown>
           </Dropdown.Context>

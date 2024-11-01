@@ -8,23 +8,18 @@ export type SelectProps = {
    * @default false
    */
   readOnly?: boolean;
-  /** Exposes the HTML `size` attribute.
-   * @default 0
+  /** Defines the width of Select in count of characters.
    */
-  htmlSize?: number;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'multiple'> &
+  size?: number;
+} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'> &
   DefaultProps;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select(
-    { className, htmlSize, onKeyDown, onMouseDown, ...rest },
-    ref,
-  ) {
+  function Select({ className, onKeyDown, onMouseDown, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}
         ref={ref}
-        size={htmlSize}
         onKeyDown={(event) => {
           if (event.key === 'Tab') return;
           if (rest.readOnly) event.preventDefault(); // Make readonly work for select

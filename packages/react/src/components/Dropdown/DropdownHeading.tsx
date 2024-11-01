@@ -1,13 +1,11 @@
-import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef } from 'react';
+import { forwardRef } from 'react';
+import { Heading, type HeadingProps } from '../Heading';
 
-export type DropdownHeadingProps = HTMLAttributes<HTMLHeadingElement>;
+export type DropdownHeadingProps = HeadingProps;
 
 export const DropdownHeading = forwardRef<
   HTMLHeadingElement,
   DropdownHeadingProps
 >(function DropdownHeading({ className, ...rest }, ref) {
-  return (
-    <h2 ref={ref} className={cl('ds-dropdown__heading', className)} {...rest} />
-  );
+  return <Heading ref={ref} {...rest} />;
 });

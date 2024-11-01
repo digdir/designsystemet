@@ -44,17 +44,17 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
     <ToggleGroup defaultValue={'option-1'}>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1' icon>
-          <AlignLeftIcon title='AlignLeftIcon' fontSize='1.5rem' />
+          <AlignLeftIcon title='AlignLeftIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
         <ToggleGroup.Item value='option-2' icon>
-          <AlignCenterIcon title='AlignCenterIcon' fontSize='1.5rem' />
+          <AlignCenterIcon title='AlignCenterIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
         <ToggleGroup.Item value='option-3' icon>
-          <AlignRightIcon title='AlignRightIcon' fontSize='1.5rem' />
+          <AlignRightIcon title='AlignRightIcon' />
         </ToggleGroup.Item>
       </Tooltip>
     </ToggleGroup>
@@ -67,19 +67,19 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
     <>
       <ToggleGroup value={value} onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
-          <EnvelopeClosedIcon fontSize='1.5rem' aria-hidden />
+          <EnvelopeClosedIcon aria-hidden />
           Innboks
         </ToggleGroup.Item>
         <ToggleGroup.Item value='utkast'>
-          <DocPencilIcon fontSize='1.5rem' aria-hidden />
+          <DocPencilIcon aria-hidden />
           Utkast
         </ToggleGroup.Item>
         <ToggleGroup.Item value='arkiv'>
-          <ArchiveIcon fontSize='1.5rem' aria-hidden />
+          <ArchiveIcon aria-hidden />
           Arkiv
         </ToggleGroup.Item>
         <ToggleGroup.Item value='sendt'>
-          <PaperplaneIcon fontSize='1.5rem' aria-hidden />
+          <PaperplaneIcon aria-hidden />
           Sendt
         </ToggleGroup.Item>
       </ToggleGroup>

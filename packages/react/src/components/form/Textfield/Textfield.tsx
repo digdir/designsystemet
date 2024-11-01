@@ -52,8 +52,8 @@ export type TextfieldProps = {
    * @default 20
    */
   htmlSize?: number;
-} & Omit<FormFieldProps, 'size'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+} & FormFieldProps &
+  InputHTMLAttributes<HTMLInputElement> &
   DefaultProps;
 
 /** Text input field
