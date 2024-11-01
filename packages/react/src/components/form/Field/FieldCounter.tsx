@@ -1,12 +1,8 @@
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import {
-  type HTMLAttributes,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import type { DefaultProps } from '../../../types';
-import { ValidationMessage } from '../../ValidationMessage';
+  ValidationMessage,
+  type ValidationMessageProps,
+} from '../../ValidationMessage';
 
 export type FieldCounterProps = {
   /** Label template for when `maxCount` is exceeded
@@ -19,8 +15,7 @@ export type FieldCounterProps = {
   under?: string;
   /** The maximum allowed characters. */
   limit: number;
-} & HTMLAttributes<HTMLParagraphElement> &
-  DefaultProps;
+} & ValidationMessageProps;
 
 const label = (text: string, count: number) =>
   text.replace('%d', Math.abs(count).toString());
@@ -58,7 +53,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
           data-field='description'
           className='ds-sr-only'
           aria-live={'polite'}
-          ref={ref}
+          ref={counterRef}
         >
           {hasExceededLimit && label(over, remainder)}
         </div>
