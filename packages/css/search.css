@@ -41,6 +41,7 @@
       z-index: 2;
     }
   }
+
   & input {
     grid-area: 1 / 1;
 
@@ -50,7 +51,9 @@
     }
   }
 
-  &:has(input:placeholder-shown) button[type='reset'] {
+  /* We hide the clear button when input is empty */
+  &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
     display: none;
   }
 
@@ -90,9 +93,5 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-  }
-
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
-    display: none;
   }
 }
