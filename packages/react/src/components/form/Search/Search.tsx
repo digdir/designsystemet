@@ -32,9 +32,8 @@ export type SearchProps = {
   Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'> &
   DefaultProps &
   (
-    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
-    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
-    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
+    | { 'aria-label': string; 'aria-labelledby'?: never }
+    | { 'aria-label'?: never; 'aria-labelledby': string }
   );
 
 /** Search field

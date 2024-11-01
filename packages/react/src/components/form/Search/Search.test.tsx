@@ -97,6 +97,8 @@ const render = (props: Partial<SearchProps> = {}) => {
           onChange: vi.fn(),
           ...props,
         }}
+        aria-label='søk'
+        aria-labelledby={undefined}
       />,
     ),
   };

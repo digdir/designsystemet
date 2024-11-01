@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Divider, Heading, Paragraph } from '../..';
+import { Button, Divider, Field, Label, Paragraph } from '../..';
 
 import { Search } from '.';
 
@@ -15,7 +15,7 @@ export default {
 
 export const Preview: Story = {
   args: {
-    label: 'Label',
+    'aria-label': 'Label',
     disabled: false,
     'data-size': 'md',
     placeholder: '',
@@ -25,7 +25,7 @@ export const Preview: Story = {
 
 export const FullWidth: Story = {
   args: {
-    label: 'Label',
+    'aria-label': 'Label',
   },
   parameters: {
     layout: 'padded',
@@ -37,10 +37,9 @@ export const Controlled: StoryFn<typeof Search> = () => {
   return (
     <>
       <Search
-        label='Kontroller meg!'
+        aria-label='Kontroller meg!'
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onClear={() => setValue('')}
       />
 
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
@@ -56,7 +55,7 @@ export const Controlled: StoryFn<typeof Search> = () => {
 export const OnlyIcon: StoryFn<typeof Search> = () => {
   return (
     <Search
-      label='Search for content'
+      aria-label='Search for content'
       clearButtonLabel='Empty'
       searchButtonLabel={
         <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
@@ -72,13 +71,6 @@ export const Form: StoryFn<typeof Search> = () => {
 
   return (
     <>
-      <Heading
-        level={3}
-        data-size='2xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
-      >
-        Submitted value: {submittedValue}
-      </Heading>
       <form
         onSubmit={(e) => {
           // Prevent navigation from Storybook
@@ -87,7 +79,7 @@ export const Form: StoryFn<typeof Search> = () => {
         }}
       >
         <Search
-          label='Search for content'
+          aria-label='Search for content'
           clearButtonLabel='Empty'
           onChange={(e) => setValue(e.target.value)}
           searchButtonLabel={
@@ -96,6 +88,26 @@ export const Form: StoryFn<typeof Search> = () => {
           variant='primary'
         />
       </form>
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-spacing-2)' }}>
+        Submitted value: {submittedValue}
+      </Paragraph>
     </>
+  );
+};
+
+export const WithLabel: StoryFn<typeof Search> = (args) => {
+  return (
+    <Field>
+      <Label htmlFor='search' id='search-label'>
+        Search
+      </Label>
+      <Search
+        {...args}
+        id='search'
+        name='search'
+        aria-labelledby='search-label'
+        aria-label={undefined}
+      />
+    </Field>
   );
 };
