@@ -112,3 +112,11 @@ export const Adornments: Story = () => (
     </Field>
   </div>
 );
+
+export const Counter: Story = () => (
+  <Field>
+    <Label>Legg til en beskrivelse</Label>
+    <Textarea rows={2} />
+    <Field.Counter limit={10} />
+  </Field>
+);
