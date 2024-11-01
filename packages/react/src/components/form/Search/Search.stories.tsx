@@ -110,33 +110,3 @@ export const Form: StoryFn<typeof Search> = () => {
     </>
   );
 };
-
-export const Form2: StoryFn<typeof Search> = () => {
-  const [value, setValue] = useState<string>();
-  const [submittedValue, setSubmittedValue] = useState<string>();
-
-  return (
-    <>
-      <form
-        onSubmit={(e) => {
-          // Prevent navigation from Storybook
-          e.preventDefault();
-          setSubmittedValue(value);
-        }}
-      >
-        <Search
-          aria-label='Search for content'
-          clearButtonLabel='Empty'
-          onChange={(e) => setValue(e.target.value)}
-          searchButtonLabel={
-            <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
-          }
-          variant='primary'
-        />
-      </form>
-      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-spacing-2)' }}>
-        Submitted value: {submittedValue}
-      </Paragraph>
-    </>
-  );
-};
