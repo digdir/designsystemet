@@ -1,4 +1,4 @@
-import { Meta, Controls, Primary } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
 
 import * as FieldStories from './Field.stories';
 
@@ -6,3 +6,16 @@ import * as FieldStories from './Field.stories';
 
 <Primary />
 <Controls />
+
+
+## Prefix/Suffix
+
+Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
+Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
+Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+
+<Canvas of={FieldStories.Adornments} />
+
+## Antall tegn
+
+<Canvas of={FieldStories.Counter} />

@@ -6,6 +6,7 @@
 
   font-weight: var(--ds-font-weight-medium);
   padding-inline-start: var(--dsc-label--readonly) calc(var(--dsc-label-icon-size) + var(--dsc-label-gap));
+  position: relative;
 
   &::before {
     background: currentcolor;
