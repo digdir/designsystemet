@@ -18,17 +18,15 @@
   --dsc-input-size--switch: var(--ds-sizing-7);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
-  --dsc-input-stroke: 0.05em;
+  --dsc-input-stroke: 0.055em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
-  --diagonal-1: transparent calc(50% - var(--dsc-input-stroke));
-  --diagonal-2: currentcolor calc(48% - var(--dsc-input-stroke));
+  --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+  --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --check-left: calc(var(--dsc-input-stroke) / 2) calc(66.66% + var(--dsc-input-stroke) / 2) / 33.33% 33.33% no-repeat content-box
-    linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-  --check-right: calc(100% - var(--dsc-input-stroke) / 2) / 66.66% 66.66% no-repeat content-box
-    linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -180,42 +178,5 @@
     &[readonly] {
       --circle-color: var(--dsc-input-color--readonly);
     }
-  }
-}
-
-/**
- * Affix
- */
-.ds-input-affix {
-  --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
-  --dsc-input-affix-padding-inline: var(--ds-spacing-4);
-
-  align-items: center;
-  background: var(--ds-color-neutral-background-subtle);
-  border-radius: var(--ds-border-radius-md);
-  box-sizing: border-box;
-  color: var(--ds-color-neutral-text-subtle);
-  display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
-  gap: var(--dsc-input-affix-padding-inline);
-  padding-inline: var(--dsc-input-affix-padding-inline);
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-
-  /* Using ::before to make input border overlap addons border */
-  &::before {
-    border-radius: inherit;
-    border: var(--dsc-input-affix-border);
-    content: '';
-    inset: 0;
-    pointer-events: none;
-    position: absolute;
-  }
-
-  /* Using double selector to ensure we win specificity */
-  .ds-input.ds-input {
-    border-radius: 0;
-    border: var(--dsc-input-affix-border);
-    flex: 1 1 auto;
   }
 }
