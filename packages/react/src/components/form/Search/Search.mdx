@@ -15,13 +15,13 @@ import * as SearchStories from './Search.stories';
 Du velger selv om du vil bruke `Search.Clear` og `Search.Button`. Vi anbefaler at du bruker `Search.Clear` for å gi brukeren mulighet til å fjerne søket.
 Dersom du ikke har `Search.Button` vil input feltet få et søkeikon.
 
-`ara-label` eller `aria-labelledby` er påkrevd på `Search.Input`.
+Du burde legge på `aria-label` eller `aria-labelledby` dersom du ikke kobler `Search.Input` med en `Label`.
 
 ```tsx
 import { Search } from '@digdir/designsystemet-react';
 
 <Search>
-  <Search.Input aria-label="Sæk" />
+  <Search.Input aria-label="Søk" />
   <Search.Clear />
   <Search.Button />
 </Search.Clear>
@@ -39,7 +39,7 @@ Du kan endre `variant` på `Button`, eller ta den bort for å få forskjellige v
 
 ## Med Label
 
-Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `aria-labelledby` på `Search`.
+Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `Search.Input`.
 I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
 
 <Canvas of={SearchStories.WithLabel} />
