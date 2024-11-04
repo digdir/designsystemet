@@ -13,7 +13,7 @@ function Themes() {
 
   return (
     <div className={classes.content}>
-      <Heading size='2xs' className={classes.heading}>
+      <Heading data-size='2xs' className={classes.heading}>
         Mine temaer
       </Heading>
       {noThemeFound && (
