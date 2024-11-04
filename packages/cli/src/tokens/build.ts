@@ -94,7 +94,7 @@ export async function buildTokens(options: Options): Promise<void> {
   try {
     for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
       if (!(buildConfig.enabled?.() ?? true)) {
-        return;
+        continue;
       }
       if (sdConfigs.length > 0) {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
