@@ -1,49 +1,45 @@
 .ds-search {
-  --dsc-search-padding-inline-x: var(--ds-spacing-2);
-  --dsc-search-padding-inline-y: var(--ds-spacing-3);
-  --dsc-search-clear-button-size: var(--ds-sizing-6);
-  --dsc-search-input-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
-  --dsc-search-clear-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+  --dsc-search-padding-inline: var(--ds-spacing-2);
+  --dsc-search-clear-padding: var(--ds-sizing-1);
+  --dsc-search-clear-size: var(--ds-sizing-9);
+  --dsc-search-clear-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+  --dsc-search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
   --dsc-search-icon-size: var(--ds-sizing-7);
-  --dsc-search-clear-icon-size: var(--ds-sizing-9);
 
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr auto;
   width: 100%;
   border-radius: var(--ds-border-radius-default);
   position: relative;
 
-  /* Moves the focused element to the top, so it is not hidden by an adjacent element */
-  &:focus-visible {
-    z-index: 1;
-  }
-
-  & input {
-    padding-inline: var(--dsc-search-padding-inline-x) var(--dsc-search-padding-inline-y);
-  }
-
-  /* The simple variant, when no submit button is present */
+  /* Add magnifier icon when no submit button is present */
   &:not(:has(button[type='submit'])) {
     & input {
-      padding-left: 2.4em;
+      padding-inline-start: calc(var(--dsc-search-icon-size) + calc(var(--dsc-search-padding-inline) * 2));
     }
-
     &::before {
-      content: '';
-      position: absolute;
-      margin-inline: var(--dsc-search-padding-inline-x) var(--dsc-search-padding-inline-y);
-      top: 50%;
-      transform: translateY(-50%);
-      height: var(--dsc-search-icon-size);
-      aspect-ratio: 1 / 1;
-      mask: var(--dsc-search-input-icon) center / contain no-repeat;
-      background: currentcolor;
+      grid-area: 1 / 1;
+      margin-inline: var(--dsc-search-padding-inline);
+      pointer-events: none;
+      position: relative;
       z-index: 2;
     }
   }
 
+  /* Render magnifier icon when no submit button, or submit button is empty */
+  &:not(:has(button[type='submit']))::before,
+  & button[type='submit']:empty::before {
+    background: currentcolor;
+    content: '';
+    height: var(--dsc-search-icon-size);
+    width: var(--dsc-search-icon-size);
+    mask: var(--dsc-search-icon-url) center / contain no-repeat;
+  }
+
   & input {
     grid-area: 1 / 1;
+    padding-inline: var(--dsc-search-padding-inline);
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button {
@@ -57,31 +53,27 @@
     display: none;
   }
 
-  &:has(button[type='reset']) {
-    & input {
-      padding-inline-end: calc(var(--dsc-search-clear-button-size) + var(--dsc-search-padding-inline-x) * 2);
-    }
+  &:has(button[type='reset']) input {
+    padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
   }
 
   & button[type='reset'] {
+    --dsc-button-size: var(--dsc-search-clear-size);
+
     grid-area: 1 / 1;
     justify-self: end;
-    align-self: center;
-    margin-inline-end: calc(var(--dsc-search-padding-inline-x) * 2);
-    height: var(--dsc-search-clear-button-size);
-    width: var(--dsc-search-clear-button-size);
-    font-size: 0.5em;
-    z-index: 2;
+    margin-inline: var(--dsc-search-padding-inline);
+    padding: var(--dsc-search-clear-padding);
     position: relative;
+    scale: 0.75;
+    z-index: 2;
 
     &::before {
       content: '';
-      height: var(--dsc-search-clear-icon-size);
-      width: var(--dsc-search-clear-icon-size);
-      mask: var(--dsc-search-clear-icon) center / contain no-repeat;
+      height: var(--dsc-search-clear-size);
+      width: var(--dsc-search-clear-size);
+      mask: var(--dsc-search-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
-      z-index: 2;
-      pointer-events: none;
     }
   }
 
@@ -94,10 +86,8 @@
     }
   }
 
-  &:has(button[type='submit']) {
-    & input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  &:has(button[type='submit']) input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }

@@ -3,7 +3,19 @@ import { SearchButton } from './SearchButton';
 import { SearchClear } from './SearchClear';
 import { SearchInput } from './SearchInput';
 
-export const Search = Object.assign(SearchRoot, {
+/**
+ * Search field
+ *
+ * @example
+ * ```tsx
+ * <Search>
+ *  <Search.Input aria-label='Søk' />
+ *  <Search.Clear />
+ *  <Search.Button />
+ * </Search>
+ * ```
+ */
+const Search = Object.assign(SearchRoot, {
   Clear: SearchClear,
   Button: SearchButton,
   Input: SearchInput,
@@ -17,4 +29,4 @@ export type { SearchProps } from './Search';
 export type { SearchButtonProps } from './SearchButton';
 export type { SearchClearProps } from './SearchClear';
 export type { SearchInputProps } from './SearchInput';
-export { SearchClear, SearchButton, SearchInput };
+export { SearchClear, SearchButton, SearchInput, Search };

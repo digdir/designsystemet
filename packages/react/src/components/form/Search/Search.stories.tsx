@@ -69,9 +69,9 @@ export const Variants: StoryFn<typeof Search> = () => (
 
 export const WithLabel: StoryFn<typeof Search> = () => (
   <Field>
-    <Label id='label'>Søk etter katter</Label>
+    <Label>Søk etter katter</Label>
     <Search>
-      <Search.Input name='cat-search' aria-labelledby='label' />
+      <Search.Input name='cat-search' aria-labelledby='' />
       <Search.Clear />
       <Search.Button />
     </Search>

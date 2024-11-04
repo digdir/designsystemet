@@ -11,7 +11,7 @@ export type SearchInputProps = Omit<
   );
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  ({ ...rest }, ref) => {
+  function SearchInput({ ...rest }, ref) {
     return (
       <Input
         ref={ref}
