@@ -1,0 +1,12 @@
+{
+  "name": "Designsystemet (beta)",
+  "id": "1382044395533039221",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "ui": "dist/index.html",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": { "allowedDomains": ["https://api.github.com"] }
+}
