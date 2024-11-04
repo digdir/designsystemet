@@ -3,7 +3,13 @@ import { Button, type ButtonProps } from '../../Button';
 import { setReactInputValue } from '../Combobox/utilities';
 
 /* We omit children since we render the icon with css */
-export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'>;
+export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
+  /**
+   * Aria label for the clear button
+   * @default 'Tøm'
+   */
+  'aria-label'?: string;
+};
 
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
   function SearchClear({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) {

@@ -2,9 +2,14 @@ import { forwardRef } from 'react';
 
 import { Button, type ButtonProps } from '../../Button';
 
-export type SearchButtonProps = {
+export type SearchButtonProps = Omit<ButtonProps, 'variant'> & {
   variant?: 'primary' | 'secondary';
-} & Omit<ButtonProps, 'variant'>;
+  /**
+   * Children of the button
+   * @default 'Søk'
+   */
+  children?: React.ReactNode;
+};
 
 export const SearchButton = forwardRef<HTMLButtonElement, ButtonProps>(
   function SearchButton({ children = 'Søk', ...rest }, ref) {
