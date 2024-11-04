@@ -1,8 +1,8 @@
 import type { ThemeColors } from '@digdir/designsystemet/color';
 import { hexToRgb } from '@digdir/designsystemet/color';
 
+import type { FigmaModeName } from '../../common/_types';
 import type { ColorIndex, StoreThemes } from '../../common/store';
-import type { FigmaModeName } from '../../common/types';
 import { rgbToHex } from '../../common/utils';
 
 const updateColors = (

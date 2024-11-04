@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
-import type { FigmaModeName } from './types';
+import type { FigmaModeName } from './_types';
 
 export type ColorInfo = {
   [key in ColorIndex]: string;
