@@ -71,7 +71,7 @@ export const WithLabel: StoryFn<typeof Search> = () => (
   <Field>
     <Label>Søk etter katter</Label>
     <Search>
-      <Search.Input name='cat-search' id='cat-search' />
+      <Search.Input name='cat-search' />
       <Search.Clear />
       <Search.Button />
     </Search>
