@@ -189,6 +189,7 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  * Converts a HEX color '#xxxxxx' into an array of RGB values '[R, G, B]'
  *
  * @param hex A hex color string
+ * @param type The type of RGB values to return
  * @returns RGB values in an array
  */
 export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
@@ -381,4 +382,16 @@ export const convertToHex = (color?: string): CssColor => {
     return color as CssColor;
   }
   return chroma(color).hex() as CssColor;
+};
+
+export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
+  return (
+    '#' +
+    [rgb.r, rgb.g, rgb.b]
+      .map((x) => {
+        const hex = Math.round(x * 255).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      })
+      .join('')
+  );
 };

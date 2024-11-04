@@ -1,6 +1,6 @@
+import { rgbToHex } from '@digdir/designsystemet/color';
 import { getDummyTheme } from '../../common/dummyTheme';
 import type { StoreThemes } from '../../common/store';
-import { rgbToHex } from '../../common/utils';
 
 export const getThemes = async () => {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();

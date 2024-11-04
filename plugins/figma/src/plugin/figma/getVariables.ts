@@ -1,4 +1,4 @@
-import { rgbToHex } from '@common/utils';
+import { rgbToHex } from '@digdir/designsystemet/color';
 
 export const getVariables = async () => {
   const variables = await figma.variables.getLocalVariablesAsync();
