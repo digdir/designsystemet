@@ -6,9 +6,7 @@ import { setReactInputValue } from '../Combobox/utilities';
 export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'>;
 
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
-  (props, ref) => {
-    const { 'aria-label': label = 'Tøm', onClick, ...rest } = props;
-
+  ({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) => {
     const handleClear = (
       e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {

@@ -8,7 +8,7 @@ export type SearchButtonProps = {
 
 export const SearchButton = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const { className, children = 'Søk', ...rest } = props;
+    const { children = 'Søk', ...rest } = props;
 
     return (
       <Button ref={ref} type='submit' {...rest}>
