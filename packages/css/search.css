@@ -28,7 +28,7 @@
   }
 
   /* Render magnifier icon when no submit button, or submit button is empty */
-  &:not(:has(button[type='submit'], button[type='button']))::before,
+  &:not(:has(button:not([type='reset'])))::before,
   & button[type='submit']:empty::before,
   & button[type='button']:empty::before {
     background: currentcolor;
@@ -88,8 +88,14 @@
     }
   }
 
-  &:has(button[type='submit'], button[type='button']) input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  &:has(button[type='submit'], button[type='button']) {
+    &::before {
+      display: none;
+    }
+
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }
