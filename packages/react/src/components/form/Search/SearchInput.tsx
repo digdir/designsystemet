@@ -11,11 +11,10 @@ export type SearchInputProps = Omit<
   );
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  ({ className, ...rest }, ref) => {
+  ({ ...rest }, ref) => {
     return (
       <Input
         ref={ref}
-        {...rest}
         type='search'
         /* We need an empty placeholder for the clear button to be able to show/hide */
         placeholder=''
