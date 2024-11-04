@@ -59,6 +59,32 @@ I respons får du objektet:
 }
 ```
 
+Eksempel på bruk:
+
+```tsx
+const { getCheckboxProps, getIndeterminateProps, validationMessageProps } = useCheckboxGroup({
+  name: 'my-checkbox-group',
+  value: [''],
+  error: 'Du må velge et alternativ',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>
+      Skal du reise til noen av disse landene?
+    </Fieldset.Legend>
+    <Fieldset.Description>
+      Velg alle landene du skal innom.
+    </Fieldset.Description>
+    <Checkbox label='Alle' {...getIndeterminateProps()} />
+    <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
+    <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
+    <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
 ### Ubestemt
 
 Bruk `indeterminate` til å signalisere at en eller flere sjekkbokser er markert i gruppen.

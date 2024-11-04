@@ -2,11 +2,21 @@ import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, ReactNode } from 'react';
 
 export type UseCheckboxGroupProps = {
+  /** Set disabled state of all checkboxes */
   disabled?: boolean;
+  /** Shared error message for all checkboxes */
   error?: ReactNode;
+  /** Name of all checkboxes.
+   * @default string of auto-generated name
+   */
   name?: string;
+  /** Set read only state of all checkboxes */
   readOnly?: boolean;
+  /** Set required state of all checkboxes */
+  required?: boolean;
+  /** Array of values of selected checkboxes */
   value?: string[];
+  /** Callback when selected checkboxes changes */
   onChange?: (
     nextValue: string[],
     currentValue: string[],

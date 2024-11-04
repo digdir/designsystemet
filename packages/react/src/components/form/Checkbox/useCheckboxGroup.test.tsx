@@ -12,8 +12,8 @@ const CheckboxGroup = (args: UseCheckboxGroupProps) => {
     <Fieldset>
       <Fieldset.Legend>Legend</Fieldset.Legend>
       <Checkbox aria-label='All' {...getIndeterminateProps()} />
-      <Checkbox label='Test' {...getCheckboxProps('test')} />
-      <Checkbox label='Fest' {...getCheckboxProps('fest')} />
+      <Checkbox label='Test 1' {...getCheckboxProps('test1')} />
+      <Checkbox label='Test 2' {...getCheckboxProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
@@ -23,42 +23,60 @@ describe('CheckboxGroup', () => {
   test('has generated name for Checkbox children', () => {
     render(<CheckboxGroup />);
 
-    const checkbox = screen.getByLabelText('Test');
-    expect(checkbox).toHaveAttribute('name');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toHaveAttribute('name');
+    expect(checkbox2).toHaveAttribute('name');
   });
   test('has passed name to Checkbox children', (): void => {
     render(<CheckboxGroup name='my-name' />);
 
-    const checkbox = screen.getByLabelText('Test');
-    expect(checkbox).toHaveAttribute('name', 'my-name');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toHaveAttribute('name', 'my-name');
+    expect(checkbox2).toHaveAttribute('name', 'my-name');
   });
   test('has passed disabled to Checkbox children', (): void => {
     render(<CheckboxGroup disabled />);
 
-    const checkbox = screen.getByLabelText('Test');
-    expect(checkbox).toHaveAttribute('disabled');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toHaveAttribute('disabled');
+    expect(checkbox2).toHaveAttribute('disabled');
+  });
+  test('has passed required to Checkbox children', (): void => {
+    render(<CheckboxGroup required />);
+
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toHaveAttribute('required');
+    expect(checkbox2).toHaveAttribute('required');
   });
   test('has passed readOnly to Checkbox children', (): void => {
     render(<CheckboxGroup readOnly />);
 
-    const checkbox = screen.getByLabelText('Test');
-    expect(checkbox).toHaveAttribute('readonly');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toHaveAttribute('readonly');
+    expect(checkbox2).toHaveAttribute('readonly');
   });
   test('has passed aria-invalid to Checkbox children', (): void => {
     render(<CheckboxGroup error='message' />);
 
-    const checkbox = screen.getByLabelText('Test');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
     const error = screen.getByText('message');
-    expect(checkbox).toHaveAttribute('aria-invalid', 'true');
+    expect(checkbox1).toHaveAttribute('aria-invalid', 'true');
+    expect(checkbox2).toHaveAttribute('aria-invalid', 'true');
     expect(error).toBeVisible();
   });
   test('has correct Checkbox checked when value is used', () => {
-    const { container } = render(<CheckboxGroup value={['test']} />);
+    render(<CheckboxGroup value={['test1']} />);
 
-    console.log(container.innerHTML);
-
-    const checkbox = screen.getByLabelText('Test');
-    expect(checkbox).toBeChecked();
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
+    expect(checkbox1).toBeChecked();
+    expect(checkbox2).not.toBeChecked();
   });
   test('has passed clicked Checkbox element to onChange', async () => {
     const user = userEvent.setup();
@@ -66,19 +84,24 @@ describe('CheckboxGroup', () => {
 
     render(<CheckboxGroup onChange={onChangeMock} />);
 
-    const checkbox = screen.getByLabelText('Test');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
 
-    await act(async () => await user.click(checkbox));
-
-    expect(onChangeMock).toHaveBeenCalledWith(['test'], [], expect.any(Object));
-    expect(checkbox).toBeChecked();
+    await act(async () => await user.click(checkbox1));
+    expect(onChangeMock).toHaveBeenCalledWith(
+      ['test1'],
+      [],
+      expect.any(Object),
+    );
+    expect(checkbox1).toBeChecked();
+    expect(checkbox2).not.toBeChecked();
   });
   test('correctly renders indeterminate', async () => {
     render(<CheckboxGroup />);
 
     const indeterminate = screen.getByLabelText('All');
-    const checkbox1 = screen.getByLabelText('Test');
-    const checkbox2 = screen.getByLabelText('Fest');
+    const checkbox1 = screen.getByLabelText('Test 1');
+    const checkbox2 = screen.getByLabelText('Test 2');
     const user = userEvent.setup();
 
     // Shoud be neither checked or indeterminate initially

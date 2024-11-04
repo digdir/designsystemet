@@ -1,11 +1,21 @@
 import { type ChangeEvent, type ReactNode, useId, useState } from 'react';
 
 export type UseRadioGroupProps = {
+  /** Set disabled state of all radios */
   disabled?: boolean;
+  /** Shared error message for all radios */
   error?: ReactNode;
+  /** Name of all radios.
+   * @default string of auto-generated name
+   */
   name?: string;
+  /** Set read only state of all radios */
   readOnly?: boolean;
+  /** Set required state of all radios */
+  required?: boolean;
+  /** Value of selected radio */
   value?: string;
+  /** Callback when selected radio changes */
   onChange?: (
     nextValue: string,
     currentValue: string,

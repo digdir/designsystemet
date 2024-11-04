@@ -56,6 +56,29 @@ I respons får du objektet:
 }
 ```
 
+Eksempel på bruk:
+
+```tsx
+const { getRadioProps, validationMessageProps } = useRadioGroup({
+  name: 'my-radio-group',
+  value: 'sjokolade',
+  error: 'Du må velge et alternativ',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Velg din favorittsmak blant alternativene.
+    </Fieldset.Description>
+    <Radio label='Vanilje' {...getRadioProps('vanilje')} />
+    <Radio label='Jordbær' {...getRadioProps('jordbær')} />
+    <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
 ### Feilmelding
 
 Bruk `error` på `Fieldset` for å vise feilmelding.

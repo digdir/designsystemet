@@ -50,5 +50,12 @@ export default {
       },
       description: 'Set read only state of all checkboxes',
     },
+    required: {
+      table: {
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+      description: 'Set required state of all checkboxes',
+    },
   },
 } as Meta;
