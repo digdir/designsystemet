@@ -82,7 +82,7 @@ describe('RadioGroup', () => {
     expect(error).toBeVisible();
   });
   test('has correct Radio checked when value is used', () => {
-    const { container } = render(<RadioGroup value='test1' />);
+    render(<RadioGroup value='test1' />);
 
     const radio1 = screen.getByLabelText('Test 1');
     const radio2 = screen.getByLabelText('Test 2');
