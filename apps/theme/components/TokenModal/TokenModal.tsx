@@ -44,11 +44,9 @@ export const TokenModal = ({
   const [themeName, setThemeName] = useState('theme');
 
   const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --accent "${accentColor}" \\
+   --main "accent:${accentColor}" \\
    --neutral "${neutralColor}" \\
-   --brand1 "${brand1Color}" \\
-   --brand2 "${brand2Color}" \\
-   --brand3 "${brand3Color}" \\
+   --support "brand1:${brand1Color}" "brand2:${brand2Color}" "brand3:${brand3Color}" \\
    --theme "${themeName}" \\
    --write
    `;
@@ -56,11 +54,15 @@ export const TokenModal = ({
   useEffect(() => {
     const tokens = createTokens({
       colors: {
-        accent: accentColor,
+        main: {
+          accent: accentColor,
+        },
         neutral: neutralColor,
-        brand1: brand1Color,
-        brand2: brand2Color,
-        brand3: brand3Color,
+        support: {
+          brand1: brand1Color,
+          brand2: brand2Color,
+          brand3: brand3Color,
+        },
       },
       typography: { fontFamily: 'Inter' },
       themeName: 'theme',

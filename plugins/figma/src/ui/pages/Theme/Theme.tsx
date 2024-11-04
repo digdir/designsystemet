@@ -43,7 +43,7 @@ function Theme() {
 
   const handleClick = () => {
     const pattern =
-      /--accent\s+"(#\w{6})"\s+--neutral\s+"(#\w{6})"\s+--brand1\s+"(#\w{6})"\s+--brand2\s+"(#\w{6})"\s+--brand3\s+"(#\w{6})"/;
+      /--main\s+"accent:(#\w{6})"\s+--neutral\s+"(#\w{6})"\s+--support\s+"brand1:(#\w{6})"\s+"brand2:(#\w{6})"\s+"brand3:(#\w{6})"/;
     const matches = command.replace(/\\/g, '').match(pattern);
 
     if (matches) {
