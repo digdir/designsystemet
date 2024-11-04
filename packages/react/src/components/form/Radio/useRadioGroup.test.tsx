@@ -52,8 +52,6 @@ describe('RadioGroup', () => {
   test('has correct Radio checked when value is used', () => {
     const { container } = render(<RadioGroup value='test' />);
 
-    console.log(container.innerHTML);
-
     const radio = screen.getByLabelText('Test');
     expect(radio).toBeChecked();
   });
