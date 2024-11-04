@@ -189,18 +189,19 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  * Converts a HEX color '#xxxxxx' into an array of RGB values '[R, G, B]'
  *
  * @param hex A hex color string
+ * @param type The type of RGB values to return
  * @returns RGB values in an array
  */
-export const hexToRgb = (hex: string) => {
+export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, (m, r: string, g: string, b: string) => r + r + g + g + b + b);
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
+        r: type === '255' ? parseInt(result[1], 16) : parseInt(result[1], 16) / 255,
+        g: type === '255' ? parseInt(result[2], 16) : parseInt(result[2], 16) / 255,
+        b: type === '255' ? parseInt(result[3], 16) : parseInt(result[3], 16) / 255,
       }
     : null;
 };
@@ -381,4 +382,16 @@ export const convertToHex = (color?: string): CssColor => {
     return color as CssColor;
   }
   return chroma(color).hex() as CssColor;
+};
+
+export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
+  return (
+    '#' +
+    [rgb.r, rgb.g, rgb.b]
+      .map((x) => {
+        const hex = Math.round(x * 255).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      })
+      .join('')
+  );
 };

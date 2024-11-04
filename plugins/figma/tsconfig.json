@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "isolatedModules": false,
+    "baseUrl": ".",
+    "paths": {
+      "@common/*": ["src/common/*"],
+      "@ui/*": ["src/ui/*"]
+    },
+    "types": ["@figma/plugin-typings"]
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
+}
