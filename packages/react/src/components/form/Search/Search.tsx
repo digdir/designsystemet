@@ -11,5 +11,3 @@ export const Search = forwardRef<HTMLDivElement, SearchProps>(function Search(
 ) {
   return <div ref={ref} className={cl('ds-search', className)} {...rest} />;
 });
-
-Search.displayName = 'Search';
