@@ -15,7 +15,7 @@ function App() {
   const dsMode = useDsMode();
 
   return (
-    <div className='page' data-ds-color-mode={dsMode}>
+    <div className='page' data-ds-color-mode={dsMode} data-size='sm'>
       <div className='content'>
         <Routes>
           <Route path='/' element={<Navigate to='/themes' replace />} />
