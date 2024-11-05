@@ -5,6 +5,7 @@ on:
     paths:
       - 'packages/**'
       - 'apps/**'
+      - 'plugins/**'
       - 'biome.jsonc'
 jobs:
   checks:
