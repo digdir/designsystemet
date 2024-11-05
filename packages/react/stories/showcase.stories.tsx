@@ -157,12 +157,10 @@ export const Showcase: StoryFn = () => {
               </Select>
               <Button className={classes.tableBtn}>Utfør</Button>
             </div>
-            <Search
-              label='Label'
-              placeholder='Søk etter bruker...'
-              variant='simple'
-              className={classes.tableSearch}
-            />
+            <Search className={classes.tableSearch}>
+              <Search.Input aria-label='Søk' />
+              <Search.Clear />
+            </Search>
           </div>
           <Table border className={classes.table}>
             <Table.Head>
