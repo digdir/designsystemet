@@ -17,11 +17,9 @@
   "bin": "dist/bin/designsystemet.js",
   "exports": {
     "./color": {
-      "types": "./dist/types/src/colors/index.d.ts",
       "import": "./dist/src/colors/index.js"
     },
     "./tokens/*": {
-      "types": "./dist/types/src/tokens/*",
       "import": "./dist/src/tokens/*"
     }
   },
