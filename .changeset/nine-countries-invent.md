@@ -4,4 +4,3 @@
 ---
 
 useRadioGroup: Add hook to easily control groups of `<Radio>` components
-useCheckboxGroup: Add hook to easily control groups of `<Checkbox>` components
