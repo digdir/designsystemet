@@ -14,7 +14,7 @@
   position: relative;
 
   /* Add magnifier icon when no submit button is present */
-  &:not(:has(button[type='submit'], button[type='button'])) {
+  &:not(:has(button[type='submit'], button[type='button'], button:not([type]))) {
     & input {
       padding-inline-start: calc(var(--dsc-search-icon-size) + calc(var(--dsc-search-padding-inline) * 2));
     }
@@ -28,7 +28,7 @@
   }
 
   /* Render magnifier icon when no submit button, or submit button is empty */
-  &:not(:has(button:not([type='reset'])))::before,
+  &:not(:has(button:not([type='reset']), button:not([type])))::before,
   & button[type='submit']:empty::before,
   & button[type='button']:empty::before {
     background: currentcolor;
