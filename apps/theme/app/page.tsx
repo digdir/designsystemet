@@ -1,7 +1,7 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Heading } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {
   ColorError,
   ColorInfo,
@@ -14,18 +14,17 @@ import {
   areColorsContrasting,
   canTextBeUsedOnColors,
   generateColorTheme,
-  generateThemeForColor,
   isHexColor,
 } from '@digdir/designsystemet/color';
+import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { ColorModal, Container } from '@repo/components';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-
-import { Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
 import { useThemeStore } from '../store';
 import { mapTokens } from '../utils/tokenMapping';
 
+import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
@@ -266,33 +265,29 @@ export default function Home() {
 
       <main className={classes.main}>
         <Container>
-          <div className={classes.test2}>
-            <div className={classes.test}>Temabygger</div>
+          <div className={classes.header}>
+            <Paragraph data-size='lg'>Designsystemet sin Temabygger</Paragraph>
+            <Heading data-size='xl' className={classes.heading}>
+              Sett i gang med å bygge ditt
+              <span className={classes.headerText}> eget tema</span>
+            </Heading>
+            <Paragraph data-size='md' variant='long' className={classes.desc}>
+              Far compensation times than my client our too it a now, hero's
+              been rationale perfecting which towards absolutely fellow at on
+              variety
+            </Paragraph>
+            <div className={classes.btnGroup}>
+              <Button data-color='neutral'>
+                <PaletteIcon title='a11y-title' fontSize='1.5rem' />
+                Bygg tema
+              </Button>
+              <Button data-color='neutral' variant='secondary'>
+                <BookIcon title='a11y-title' fontSize='1.5rem' />
+                Dokumentasjon
+              </Button>
+            </div>
           </div>
-          <Heading data-size='md' className={classes.title}>
-            Sett opp temaet ditt
-          </Heading>
-
-          <ThemeToolbar
-            accentError={accentError}
-            neutralError={neutralError}
-            brand1Error={brandOneError}
-            brand2Error={brandTwoError}
-            brand3Error={brandThreeError}
-            contrastMode={contrastMode}
-            onColorChanged={(colorType, color) => {
-              const theme = generateThemeForColor(color, contrastMode);
-              updateColor(colorType, color, theme);
-            }}
-            onContrastModeChanged={(mode) => {
-              setQueryParams({ contrastMode: mode });
-            }}
-            onBorderRadiusChanged={updateBoderRadius}
-            borderRadius={borderRadius}
-          />
-          <Scales themeMode={themeMode} />
-
-          <Previews themeMode={themeMode} onThemeModeChange={updateTheme} />
+          <Previews />
         </Container>
       </main>
     </div>

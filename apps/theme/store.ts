@@ -29,6 +29,10 @@ type ColorStore = {
   setSelectedColor: (color: ColorInfo, type: ThemeColors) => void;
   borderRadius: string;
   setBorderRadius: (radius: string) => void;
+  appearance: 'light' | 'dark';
+  setAppearance: (appearance: 'light' | 'dark') => void;
+  theme: 'one' | 'two' | 'three';
+  setTheme: (theme: 'one' | 'two' | 'three') => void;
 };
 
 const defaultTheme = () => {
@@ -70,6 +74,10 @@ export const useThemeStore = create(
       type: 'accent',
     },
     borderRadius: '0.25rem',
+    appearance: 'light',
+    theme: 'one',
+    setAppearance: (appearance) => set({ appearance: appearance }),
+    setTheme: (theme) => set({ theme: theme }),
     setBorderRadius: (radius) => set({ borderRadius: radius }),
     setSelectedColor: (color, type) =>
       set({ selectedColor: { color: color, type: type } }),

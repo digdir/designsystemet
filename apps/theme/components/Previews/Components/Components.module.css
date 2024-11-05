@@ -1,18 +1,17 @@
 .components {
-  background-color: var(--background);
-  border-radius: 12px;
   width: 100%;
-  padding: 24px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
   row-gap: 24px;
+  margin-bottom: 88px;
 }
 
 .card {
   background-color: var(--foreground);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: 16px;
   padding: 24px;
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 .cardTitle {
@@ -109,10 +108,6 @@
   display: block;
 }
 
-.userTitle {
-  text-align: center;
-}
-
 .userField {
   margin-top: 24px;
 }
@@ -169,68 +164,4 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 16px;
-}
-
-.tableSearch {
-  width: 260px;
-}
-
-.tableBtn {
-  margin-left: 20px;
-}
-
-.helpCards {
-  grid-column: 1 / 6;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.helpHeading {
-  margin-bottom: 20px;
-}
-
-.tagList {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.switchGroup {
-  display: flex;
-  gap: 26px;
-  flex-direction: column;
-}
-
-.toggleCombo {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-spacing-2);
-  margin-top: 12px;
-}
-
-.chips {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.chipsHeading {
-  margin-top: 24px;
-  margin-bottom: 16px;
-}
-
-.textarea {
-  margin-top: 8px;
-}
-
-.textareaLabel {
-  margin-top: 24px;
-  font-size: 16px;
-}
-
-.comboHeading {
-  margin-bottom: 16px;
 }

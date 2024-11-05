@@ -1,134 +1,31 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 4px;
-  margin-bottom: 100px;
-  font-size: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 20.33%, rgba(30, 152, 245, 0.2) 57.04%);
 }
 
-.container {
-  max-width: 1600px;
+.header {
+  width: 600px;
   margin: 0 auto;
-  width: 100%;
-}
-
-.colors {
-  display: flex;
-}
-
-.top {
-  display: flex;
-}
-
-.swatchContainer {
-  border: 1px solid #c0c0c0;
-  height: 260px;
-  width: 495px;
-  padding: 20px;
-  margin-right: 32px;
-  border-radius: 4px;
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.tom {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.swatch {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-}
-
-.swatch:hover {
-  cursor: pointer;
-}
-
-.swatches {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.box {
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  gap: 32px;
-  padding: 12px 80px 40px;
-  border-radius: 8px;
-}
-
-.title {
   text-align: center;
-  margin-bottom: 36px;
-  font-size: 32px;
-  font-weight: 500;
-  margin-top: 0;
+  margin-top: var(--ds-spacing-5);
 }
 
-.test2 {
+.heading {
+  margin-top: var(--ds-spacing-1);
+}
+
+.desc {
+  margin-top: var(--ds-spacing-5);
+}
+
+.btnGroup {
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: center;
+  margin-top: var(--ds-spacing-7);
 }
 
-.test {
-  margin-bottom: 16px;
-  font-size: 21px;
-  border-radius: 2px;
-  font-weight: 400;
-  color: rgb(104, 104, 104);
-  letter-spacing: 0.5px;
-}
-
-.tokens {
-  margin-top: 40px;
-}
-
-.tokens h3 {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.tokens h2 {
-  font-size: 22px;
-  margin-bottom: 0;
-}
-
-.token {
-  font-size: 16px;
-}
-
-.token div {
-  margin-bottom: 6px;
-}
-
-.brandRow {
-  margin-top: 24px;
-}
-
-.contrastSection {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  height: 52px;
-  width: 85px;
-  font-size: 16px;
-}
-
-.contrastSection svg {
-  color: #c90000;
-}
-
-.contrastSectionSuccess svg {
-  color: #090;
+.headerText {
+  color: var(--ds-color-accent-base-default);
+  font-weight: 600;
 }

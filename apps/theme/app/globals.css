@@ -31,6 +31,6 @@ code {
   border-radius: 2px;
 }
 
-.content {
-  min-height: 100vh;
+[data-theme='two'] {
+  --ds-color-accent-base-default: red;
 }
