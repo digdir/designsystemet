@@ -125,7 +125,6 @@ function Theme() {
           name=''
           id='my-textarea'
           rows={8}
-          className={classes.textarea}
           placeholder='Lim inn her...'
           /* error={codeSnippetError} */
           aria-describedby={errorId}
@@ -135,12 +134,8 @@ function Theme() {
             <ValidationMessage>{codeSnippetError}</ValidationMessage>
           ) : null}
         </div>
-        <div className={classes.btnContainer}>
-          <Button
-            className={classes.btn}
-            onClick={() => handleClick()}
-            loading={loading}
-          >
+        <div>
+          <Button onClick={() => handleClick()} loading={loading}>
             Oppdater tema
           </Button>
         </div>
