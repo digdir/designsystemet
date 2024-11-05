@@ -1,5 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { useRef } from 'react';
 import {
   Button,
   Checkbox,
@@ -150,6 +151,10 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
     name: 'my-checkbox',
     ...args,
   });
+
+  const myRef = useRef<HTMLInputElement>(null);
+  console.log(myRef);
+
   return (
     <Table>
       <Table.Head>
@@ -159,6 +164,7 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
               aria-label='Select all'
               {...getCheckboxProps('', {
                 allowIndeterminate: true,
+                ref: myRef,
               })}
             />
           </Table.HeaderCell>
