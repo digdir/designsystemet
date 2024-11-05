@@ -4,16 +4,6 @@
   flex-direction: column;
   gap: var(--ds-spacing-2);
 
-  @composes ds-body-text--md from './base/base.css';
-
-  &[data-size='sm'] {
-    @composes ds-body-text--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    @composes ds-body-text--lg from './base/base.css';
-  }
-
   & [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
   }
