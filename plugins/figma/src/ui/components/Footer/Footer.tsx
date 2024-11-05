@@ -20,13 +20,7 @@ export const Footer = () => {
       </div> */}
       <div className={classes.bottom}>
         <div className={classes.bottomLeft}>
-          {loading && (
-            <Spinner
-              aria-label='Laster'
-              data-size='xs'
-              className={classes.spinner}
-            />
-          )}
+          {loading && <Spinner aria-label='Laster' data-size='xs' />}
         </div>
         <div className={classes.bottomRight}>
           <div className={classes.version}>V {packageJson.version}</div>
