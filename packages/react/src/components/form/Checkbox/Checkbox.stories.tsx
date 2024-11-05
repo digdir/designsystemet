@@ -147,10 +147,9 @@ export const Disabled = {
 
 export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
   const { getCheckboxProps } = useCheckboxGroup({
-    name: 'my-table',
+    name: 'my-checkbox',
     ...args,
   });
-
   return (
     <Table>
       <Table.Head>
@@ -158,7 +157,9 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
           <Table.HeaderCell>
             <Checkbox
               aria-label='Select all'
-              {...getCheckboxProps({ multiple: true })}
+              {...getCheckboxProps('', {
+                allowIndeterminate: true,
+              })}
             />
           </Table.HeaderCell>
           <Table.HeaderCell>Header</Table.HeaderCell>
@@ -170,7 +171,7 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
             <Table.Cell>
               <Checkbox
                 aria-label={`Check ${row}`}
-                {...getCheckboxProps(String(row))}
+                {...getCheckboxProps(`${row}`)}
               />
             </Table.Cell>
             <Table.Cell>Content</Table.Cell>
