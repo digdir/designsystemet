@@ -2,8 +2,13 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Fieldset, Radio, ValidationMessage, useRadioGroup } from '../..';
-import type { UseRadioGroupProps } from '../..';
+import {
+  Fieldset,
+  Radio,
+  ValidationMessage,
+  useRadioGroup,
+} from '../../../components';
+import type { UseRadioGroupProps } from '../../../components';
 
 const RadioGroup = (args: UseRadioGroupProps) => {
   const { getRadioProps, validationMessageProps } = useRadioGroup(args);

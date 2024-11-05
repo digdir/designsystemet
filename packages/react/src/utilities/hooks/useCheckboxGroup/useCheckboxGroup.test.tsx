@@ -2,16 +2,20 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Checkbox, Fieldset, ValidationMessage, useCheckboxGroup } from '../..';
-import type { UseCheckboxGroupProps } from '../..';
+import {
+  Checkbox,
+  Fieldset,
+  ValidationMessage,
+  useCheckboxGroup,
+} from '../../../components';
+import type { UseCheckboxGroupProps } from '../../../components';
 
 const CheckboxGroup = (args: UseCheckboxGroupProps) => {
-  const { getCheckboxProps, getIndeterminateProps, validationMessageProps } =
-    useCheckboxGroup(args);
+  const { getCheckboxProps, validationMessageProps } = useCheckboxGroup(args);
   return (
     <Fieldset>
       <Fieldset.Legend>Legend</Fieldset.Legend>
-      <Checkbox aria-label='All' {...getIndeterminateProps()} />
+      <Checkbox aria-label='All' {...getCheckboxProps({ multiple: true })} />
       <Checkbox label='Test 1' {...getCheckboxProps('test1')} />
       <Checkbox label='Test 2' {...getCheckboxProps('test2')} />
       <ValidationMessage {...validationMessageProps} />

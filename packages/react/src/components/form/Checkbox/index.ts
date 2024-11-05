@@ -1,2 +1,2 @@
 export * from './Checkbox';
-export * from './useCheckboxGroup';
+export * from '../../../utilities/hooks/useCheckboxGroup/useCheckboxGroup';

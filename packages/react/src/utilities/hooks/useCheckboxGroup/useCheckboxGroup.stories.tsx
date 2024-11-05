@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { Checkbox } from '../..';
+import { Checkbox } from '../../../components';
 import type { UseCheckboxGroupProps } from './useCheckboxGroup';
 
 export const UseCheckboxGroup = (_props: UseCheckboxGroupProps) => (
@@ -7,7 +7,7 @@ export const UseCheckboxGroup = (_props: UseCheckboxGroupProps) => (
 );
 
 export default {
-  title: 'Komponenter/Checkbox/useCheckboxGroup',
+  title: 'Utilities/useCheckboxGroup',
   tags: ['!dev'], // Hide from sidebar as documented in https://storybook.js.org/docs/writing-stories/tags
   component: UseCheckboxGroup,
   argTypes: {

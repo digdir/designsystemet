@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { Radio } from '../..';
+import { Radio } from '../../../components';
 import type { UseRadioGroupProps } from './useRadioGroup';
 
 export const UseRadioGroup = (_props: UseRadioGroupProps) => (
@@ -7,7 +7,7 @@ export const UseRadioGroup = (_props: UseRadioGroupProps) => (
 );
 
 export default {
-  title: 'Komponenter/Radio/useRadioGroup',
+  title: 'Utilities/useRadioGroup',
   tags: ['!dev'], // Hide from sidebar as documented in https://storybook.js.org/docs/writing-stories/tags
   component: UseRadioGroup,
   argTypes: {
@@ -25,7 +25,7 @@ export default {
       table: {
         type: {
           summary:
-            '(nextValue: string, prevValue: string, event: ChangeEvent<HTMLInputElement>) => void;',
+            '(nextValue: string, prevValue: string, event: Event) => void;',
         },
       },
     },

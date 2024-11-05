@@ -2,7 +2,7 @@ import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 import { Do, Dont, Stack, CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/input.css?inline';
 import * as CheckboxStories from './Checkbox.stories';
-import * as useCheckboxGroupStories from './useCheckboxGroup.stories';
+import * as useCheckboxGroupStories from '../../../utilities/hooks/useCheckboxGroup/useCheckboxGroup.stories';
 
 <Meta of={CheckboxStories} />
 
@@ -51,8 +51,7 @@ I respons får du objektet:
 
 ```ts
 {
-  getCheckboxProps: (value: string) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
-  getIndeterminateProps: (value: string) => CheckboxProps, // Props du valgfritt kan spre på oppsummerings <Checkbox /> 
+  getCheckboxProps: (value: string | { multiple: true }) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
   validationMessageProps: ValidationMessageProps, // Properties du kan valgfritt spre på ValidationMessage
   setValue: string[], // Funksjon for å sette checkbox gruppens verdi
   value: string[], // Nåværende verdi for checkbox gruppen
@@ -62,7 +61,7 @@ I respons får du objektet:
 Eksempel på bruk:
 
 ```tsx
-const { getCheckboxProps, getIndeterminateProps, validationMessageProps } = useCheckboxGroup({
+const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
   name: 'my-checkbox-group',
   value: [''],
   error: 'Du må velge et alternativ',
@@ -76,7 +75,7 @@ return (
     <Fieldset.Description>
       Velg alle landene du skal innom.
     </Fieldset.Description>
-    <Checkbox label='Alle' {...getIndeterminateProps()} />
+    <Checkbox label='Alle' {...getCheckboxProps({ multiple: true })} />
     <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
     <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
     <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />

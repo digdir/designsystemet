@@ -173,7 +173,7 @@ type CheckedItems = {
 };
 
 export const WithFormElements: Story = (args) => {
-  const { getCheckboxProps, getIndeterminateProps } = useCheckboxGroup({
+  const { getCheckboxProps } = useCheckboxGroup({
     name: 'my-checkbox',
     value: ['2'],
   });
@@ -183,7 +183,10 @@ export const WithFormElements: Story = (args) => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>
-            <Checkbox aria-label='Select all' {...getIndeterminateProps()} />
+            <Checkbox
+              aria-label='Select all'
+              {...getCheckboxProps({ multiple: true })}
+            />
           </Table.HeaderCell>
           <Table.HeaderCell>Header 1</Table.HeaderCell>
           <Table.HeaderCell>Header 2</Table.HeaderCell>

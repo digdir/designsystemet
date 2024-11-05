@@ -1,2 +1,2 @@
 export * from './Radio';
-export * from './useRadioGroup';
+export * from '../../../utilities/hooks/useRadioGroup/useRadioGroup';

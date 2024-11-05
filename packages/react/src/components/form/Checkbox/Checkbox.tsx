@@ -24,6 +24,11 @@ export type CheckboxProps = {
     | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
   );
 
+/**
+ * Checkbox used to select multiple options.
+ * @example
+ * <Checkbox label="I agree" value="agree" />
+ */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     { 'data-size': size, children, label, description, validation, ...rest },

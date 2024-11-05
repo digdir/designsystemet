@@ -24,6 +24,11 @@ export type RadioProps = {
     | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
   );
 
+/**
+ * Radio used to select multiple options.
+ * @example
+ * <Radio label="I agree" value="agree" />
+ */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   { 'data-size': size, children, label, description, validation, ...rest },
   ref,
