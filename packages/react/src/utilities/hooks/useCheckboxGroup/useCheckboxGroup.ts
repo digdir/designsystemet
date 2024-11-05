@@ -1,7 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
-import type { CheckboxProps } from '../../../components/form/Checkbox';
 
 export type UseCheckboxGroupProps = {
   disabled?: boolean;
@@ -16,18 +15,27 @@ export type UseCheckboxGroupProps = {
   ) => void;
 };
 
-type GetCheckboxPropsType = (
-  value: string,
-  props?: Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'prefix' | 'role' | 'type' | 'size'
-  > & {
-    allowIndeterminate?: boolean;
-    ref?: React.RefObject<HTMLInputElement>;
-  },
-) => CheckboxProps & {
-  ref: React.RefObject<HTMLInputElement>;
-  getCheckboxProps: GetCheckboxPropsType;
+/**
+ * Get anything that is set on a checkbox, but
+ * remove anything that comes from the group itself.
+ */
+type GetCheckboxPropsType = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  | 'prefix'
+  | 'role'
+  | 'type'
+  | 'size'
+  | 'aria-label'
+  | 'aria-labelledby'
+  | 'label'
+  | 'name'
+  | 'value'
+  | 'checked'
+  | 'disabled'
+  | 'readOnly'
+> & {
+  allowIndeterminate?: boolean;
+  ref?: React.RefObject<HTMLInputElement>;
 };
 
 export function useCheckboxGroup({
@@ -35,15 +43,23 @@ export function useCheckboxGroup({
   name,
   onChange,
   value = [],
-  ...rest
+  disabled,
+  readOnly,
 }: UseCheckboxGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
   const errorId = useId();
-  const getInputs = (checked: boolean) =>
-    document.querySelectorAll<HTMLInputElement>(
-      `input[type="checkbox"][name="${name || nameFallback}"]${checked ? ':checked' : ':not(:checked)'}`,
-    );
+  const checkboxRefs = useRef<Map<string, HTMLInputElement>>(new Map());
+
+  const getInputs = (checked: boolean) => {
+    const inputs: HTMLInputElement[] = [];
+    for (const [_, input] of checkboxRefs.current) {
+      if (input.checked === checked) {
+        inputs.push(input);
+      }
+    }
+    return inputs;
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextValue = Array.from(getInputs(true), ({ value }) => value);
@@ -51,64 +67,69 @@ export function useCheckboxGroup({
     onChange?.(nextValue, currentValue, event);
   };
 
-  const getCheckboxProps = (
-    value: string,
-    props?: Omit<
-      InputHTMLAttributes<HTMLInputElement>,
-      | 'prefix'
-      | 'role'
-      | 'type'
-      | 'size'
-      | 'aria-label'
-      | 'aria-labelledby'
-      | 'label'
-    > & {
-      allowIndeterminate?: boolean;
-      ref?: React.RefObject<HTMLInputElement>;
-    },
-  ) => {
+  const getCheckboxProps = (value: string, props?: GetCheckboxPropsType) => {
     const {
       allowIndeterminate = false,
       ref = undefined,
-      ...restProps
+      ...rest
     } = props || {};
     const localRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-      if (!allowIndeterminate) return;
-      if (!localRef.current) return;
+      if (!allowIndeterminate || !localRef.current) return;
       const checked = !!getInputs(true).length;
       const unchecked = !!getInputs(false).length;
       localRef.current.indeterminate = unchecked && checked;
       localRef.current.checked = !unchecked && checked;
     });
 
+    useEffect(() => {
+      if (localRef.current && !allowIndeterminate) {
+        checkboxRefs.current.set(value, localRef.current);
+      }
+      return () => {
+        checkboxRefs.current.delete(value);
+      };
+    }, [value]);
+
     const indeterminateChange = (event: ChangeEvent<HTMLInputElement>) => {
       if (!localRef.current) return;
       const checked = !!localRef.current.checked;
-      for (const input of getInputs(!checked)) input.checked = checked;
-      handleChange(event);
+      for (const input of getInputs(!checked)) {
+        input.checked = checked;
+      }
     };
 
     const mergedRefs = useMergeRefs([ref, localRef]);
 
-    /* TODO make this better */
+    const {
+      'aria-describedby': userAriaDescribedBy,
+      onChange: userOnChange,
+      ...userRest
+    } = rest;
+
     return {
+      /* Spread anything the user has set first */
+      ...userRest,
+      /* Concat ours with the user prop */
       'aria-describedby': error
-        ? `${errorId} ${restProps['aria-describedby']}`
-        : restProps['aria-describedby'],
+        ? `${errorId} ${userAriaDescribedBy}`
+        : userAriaDescribedBy,
       'aria-invalid': error ? true : undefined,
       checked: allowIndeterminate ? undefined : currentValue.includes(value),
       name: allowIndeterminate ? undefined : name || nameFallback,
       onChange: (e: ChangeEvent<HTMLInputElement>) => {
-        allowIndeterminate ? indeterminateChange(e) : handleChange(e);
-        restProps.onChange?.(e);
+        allowIndeterminate && indeterminateChange(e);
+        handleChange(e);
+        userOnChange?.(e);
       },
       ref: mergedRefs,
       value: allowIndeterminate ? '' : value,
-      ...rest,
-      ...restProps,
+      disabled,
+      readOnly,
     };
+
+    /* TODO make this better */
   };
 
   return {
