@@ -61,16 +61,13 @@ export function useCheckboxGroup({
       const unchecked = !!getInputs(false).length;
       ref.current.indeterminate = unchecked && checked;
       ref.current.checked = !unchecked && checked;
-      console.log({
-        checked,
-        unchecked,
-        getInputs: Array.from(getInputs(true), ({ value }) => value),
-      });
     });
 
     const indeterminateChange = (event: ChangeEvent<HTMLInputElement>) => {
       if (!ref.current) return;
-      const checked = !!ref.current?.checked;
+      console.log(ref.current);
+      const checked = !!ref.current.checked;
+      console.log(checked);
       for (const input of getInputs(!checked)) input.checked = checked;
       handleChange(event);
     };
@@ -80,13 +77,13 @@ export function useCheckboxGroup({
         ? `${errorId} ${restProps['aria-describedby']}`
         : restProps['aria-describedby'],
       'aria-invalid': error ? true : undefined,
-      checked: currentValue.includes(value),
-      name: name || nameFallback,
+      checked: allowIndeterminate ? undefined : currentValue.includes(value),
+      name: allowIndeterminate ? undefined : name || nameFallback,
       onChange: (e) => {
         allowIndeterminate ? indeterminateChange(e) : handleChange(e);
         restProps.onChange?.(e);
       },
-      ref: allowIndeterminate ? ref : undefined,
+      ref,
       value: allowIndeterminate ? '' : value,
       ...rest,
       ...restProps,
