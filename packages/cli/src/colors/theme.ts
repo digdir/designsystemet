@@ -203,7 +203,7 @@ type GeneratedColorTheme = {
  */
 export const generateColorTheme = ({ colors, contrastMode = 'aa' }: ThemeGenType): GeneratedColorTheme => {
   const main = R.map((color) => generateThemeForColor(color, contrastMode), colors.main);
-  const support = R.map((color) => generateThemeForColor(color, contrastMode), colors.main);
+  const support = R.map((color) => generateThemeForColor(color, contrastMode), colors.support);
   const neutral = generateThemeForColor(colors.neutral, contrastMode);
 
   return {
