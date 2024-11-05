@@ -55,31 +55,31 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button data-data-size='sm' className={classes.userBtn}>
+        <Button data-size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} data-data-size='3xs'>
+        <Heading className={classes.cardTitle} data-size='xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select data-data-size='sm' aria-label='Velg handling'>
+            <Select data-size='sm' aria-label='Velg handling'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
               <Select.Option value='denali'>Oppdater</Select.Option>
             </Select>
-            <Button className={classes.tableBtn} data-data-size='sm'>
+            <Button className={classes.tableBtn} data-size='sm'>
               Utfør
             </Button>
           </div>
           <Search
             label='Label'
             placeholder='Søk etter bruker...'
-            data-data-size='sm'
-            variant='primary'
+            data-size='sm'
+            variant='simple'
             className={classes.tableSearch}
           />
         </div>

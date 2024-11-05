@@ -1,0 +1,38 @@
+.page {
+  position: relative;
+}
+
+.header {
+  background-color: rgb(252, 127, 95);
+  padding: 48px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  padding: 48px;
+  width: 1400px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 100;
+  right: 24px;
+  top: 24px;
+  background-color: white;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  box-shadow: 0px 0px 60px 8px rgba(0, 0, 0, 0.08);
+  width: 454px;
+  border-radius: 8px;
+  min-height: 75vh;
+  padding: 32px;
+}
+
+.panel {
+  background-color: white;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 8px;
+  margin-top: 24px;
+}

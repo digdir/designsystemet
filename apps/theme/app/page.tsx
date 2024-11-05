@@ -18,6 +18,7 @@ import {
 } from '@digdir/designsystemet/color';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { ColorModal, Container } from '@repo/components';
+import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Settings } from '../settings';
@@ -277,9 +278,11 @@ export default function Home() {
               variety
             </Paragraph>
             <div className={classes.btnGroup}>
-              <Button data-color='neutral'>
-                <PaletteIcon title='a11y-title' fontSize='1.5rem' />
-                Bygg tema
+              <Button data-color='neutral' asChild>
+                <NextLink href='/themebuilder'>
+                  <PaletteIcon title='a11y-title' fontSize='1.5rem' />
+                  Bygg tema
+                </NextLink>
               </Button>
               <Button data-color='neutral' variant='secondary'>
                 <BookIcon title='a11y-title' fontSize='1.5rem' />

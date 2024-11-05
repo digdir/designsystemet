@@ -25,11 +25,7 @@ export const Group = ({
 }: GroupProps) => {
   return (
     <div className={classes.group}>
-      {header && (
-        <div className={cl(classes.header, featured && classes.featured)}>
-          {header}
-        </div>
-      )}
+      {header && <div className={cl(classes.header)}>{header}</div>}
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
@@ -38,7 +34,7 @@ export const Group = ({
         </div>
       )}
 
-      <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
+      <div className={cl(classes.colors)}>
         {colors.map((item, index) => (
           <RovingFocusItem key={index} value={item.name} asChild>
             <Color
