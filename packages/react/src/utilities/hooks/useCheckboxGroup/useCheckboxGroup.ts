@@ -1,5 +1,7 @@
+import { useMergeRefs } from '@floating-ui/react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import type { CheckboxProps } from '../../../components/form/Checkbox';
 
 export type UseCheckboxGroupProps = {
   disabled?: boolean;
@@ -21,11 +23,12 @@ type GetCheckboxPropsType = (
     'prefix' | 'role' | 'type' | 'size'
   > & {
     allowIndeterminate?: boolean;
+    ref?: React.RefObject<HTMLInputElement>;
   },
-) => Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'prefix' | 'role' | 'type' | 'size'
->;
+) => CheckboxProps & {
+  ref: React.RefObject<HTMLInputElement>;
+  getCheckboxProps: GetCheckboxPropsType;
+};
 
 export function useCheckboxGroup({
   error,
@@ -48,30 +51,48 @@ export function useCheckboxGroup({
     onChange?.(nextValue, currentValue, event);
   };
 
-  const getCheckboxProps: GetCheckboxPropsType = (
-    value,
-    { allowIndeterminate = false, ...restProps } = {},
+  const getCheckboxProps = (
+    value: string,
+    props?: Omit<
+      InputHTMLAttributes<HTMLInputElement>,
+      | 'prefix'
+      | 'role'
+      | 'type'
+      | 'size'
+      | 'aria-label'
+      | 'aria-labelledby'
+      | 'label'
+    > & {
+      allowIndeterminate?: boolean;
+      ref?: React.RefObject<HTMLInputElement>;
+    },
   ) => {
-    const ref = useRef<HTMLInputElement>(null);
+    const {
+      allowIndeterminate = false,
+      ref = undefined,
+      ...restProps
+    } = props || {};
+    const localRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
       if (!allowIndeterminate) return;
-      if (!ref.current) return;
+      if (!localRef.current) return;
       const checked = !!getInputs(true).length;
       const unchecked = !!getInputs(false).length;
-      ref.current.indeterminate = unchecked && checked;
-      ref.current.checked = !unchecked && checked;
+      localRef.current.indeterminate = unchecked && checked;
+      localRef.current.checked = !unchecked && checked;
     });
 
     const indeterminateChange = (event: ChangeEvent<HTMLInputElement>) => {
-      if (!ref.current) return;
-      console.log(ref.current);
-      const checked = !!ref.current.checked;
-      console.log(checked);
+      if (!localRef.current) return;
+      const checked = !!localRef.current.checked;
       for (const input of getInputs(!checked)) input.checked = checked;
       handleChange(event);
     };
 
+    const mergedRefs = useMergeRefs([ref, localRef]);
+
+    /* TODO make this better */
     return {
       'aria-describedby': error
         ? `${errorId} ${restProps['aria-describedby']}`
@@ -79,11 +100,11 @@ export function useCheckboxGroup({
       'aria-invalid': error ? true : undefined,
       checked: allowIndeterminate ? undefined : currentValue.includes(value),
       name: allowIndeterminate ? undefined : name || nameFallback,
-      onChange: (e) => {
+      onChange: (e: ChangeEvent<HTMLInputElement>) => {
         allowIndeterminate ? indeterminateChange(e) : handleChange(e);
         restProps.onChange?.(e);
       },
-      ref,
+      ref: mergedRefs,
       value: allowIndeterminate ? '' : value,
       ...rest,
       ...restProps,
