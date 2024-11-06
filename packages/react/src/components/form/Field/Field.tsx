@@ -2,9 +2,10 @@ import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
+import type { DefaultProps } from '../../../types';
 import { fieldObserver } from './fieldObserver';
 
-export type FieldProps = HTMLAttributes<HTMLDivElement>;
+export type FieldProps = HTMLAttributes<HTMLDivElement> & DefaultProps;
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   { className, ...rest },
   ref,

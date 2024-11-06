@@ -55,7 +55,7 @@ export const Adornments: Story = {
 };
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
   return (
     <>
       <Textfield
