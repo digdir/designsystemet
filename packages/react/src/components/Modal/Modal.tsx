@@ -21,7 +21,7 @@ export type ModalProps = {
   /**
    * Callback that is called when the modal is closed.
    */
-  onClose?: () => void;
+  onClose?: (event: Event) => void;
   asChild?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
@@ -76,7 +76,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
 
   /* handle closing */
   useEffect(() => {
-    const handleClose = () => onClose?.();
+    const handleClose = (event: Event) => onClose?.(event);
 
     modalRef.current?.addEventListener('close', handleClose);
     return () => modalRef.current?.removeEventListener('close', handleClose);
