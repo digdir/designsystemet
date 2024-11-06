@@ -71,7 +71,6 @@
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
-  /* gap: var(--dsc-field-affix-padding-inline); */
   position: relative;
   white-space: nowrap;
   width: fit-content;
