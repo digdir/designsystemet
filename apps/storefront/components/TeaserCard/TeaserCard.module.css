@@ -1,5 +1,5 @@
 .card {
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   padding: 32px;
   display: block;
   color: inherit;
@@ -31,7 +31,7 @@
 .meta {
   margin-top: 14px;
   font-size: 15px;
-  color: #747474;
+  color: var(--ds-color-neutral-text-subtle);
   font-weight: 400;
   display: flex;
   gap: 12px;

@@ -1,7 +1,7 @@
 .card {
   display: block;
   text-align: center;
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
   padding: var(--ds-spacing-10);
   border-radius: var(--ds-border-radius-md);

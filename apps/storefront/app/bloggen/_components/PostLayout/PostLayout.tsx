@@ -48,7 +48,9 @@ function PostLayout({
         ))}
         <main id='main' className={classes.main}>
           <div className={classes.intro}>
-            <Heading level={1}>{heading}</Heading>
+            <Heading level={1} data-size='xl'>
+              {heading}
+            </Heading>
             <Paragraph className={classes.ingress} variant='long'>
               {ingress}
             </Paragraph>
