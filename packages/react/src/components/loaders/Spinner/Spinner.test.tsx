@@ -7,16 +7,8 @@ beforeAll(() => {
 });
 
 describe('spinner', (): void => {
-  it('should render with default medium size', (): void => {
-    render(<Spinner title='Loading' />);
-    expect(screen.getByTitle('Loading').parentElement).toHaveAttribute(
-      'data-size',
-      'md',
-    );
-  });
-
   it('should render with title "loading', (): void => {
-    render(<Spinner title='Loading' />);
-    expect(screen.getByTitle('Loading')).toBeInTheDocument();
+    render(<Spinner aria-label='Loading' />);
+    expect(screen.getByLabelText('Loading')).toBeInTheDocument();
   });
 });

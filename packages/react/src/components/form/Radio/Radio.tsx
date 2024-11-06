@@ -1,73 +1,43 @@
-import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import { omit } from '../../../utilities';
 import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
-import type { FormFieldProps } from '../useFormField';
-
-import { useRadio } from './useRadio';
+import { ValidationMessage } from '../../ValidationMessage';
+import { Field } from '../Field';
+import { Input } from '../Input';
 
 export type RadioProps = {
+  /** Optional aria-label */
+  'aria-label'?: string;
   /** Radio label */
-  children?: ReactNode;
+  label?: ReactNode;
+  /** Description for field */
+  description?: ReactNode;
   /** Value of the `input` element */
   value: string;
-} & Omit<FormFieldProps, 'error' | 'errorId'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
+  /** Validation message for field */
+  validation?: ReactNode;
+  /**
+   * Changes field size and paddings
+   */
+  'data-size'?: 'sm' | 'md' | 'lg';
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+  (
+    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
+    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
+    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
+  );
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { children, description, className, style, ...rest } = props;
-  const {
-    inputProps,
-    descriptionId,
-    hasError,
-    size = 'md',
-    readOnly,
-  } = useRadio(props);
-
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
+  { 'data-size': size, children, label, description, validation, ...rest },
+  ref,
+) {
   return (
-    <Paragraph asChild size={size}>
-      <div
-        className={cl(
-          'ds-radio',
-          `ds-radio--${size}`,
-          hasError && `ds-radio--error`,
-          readOnly && `ds-radio--readonly`,
-          className,
-        )}
-        style={style}
-      >
-        <input
-          className={'ds-radio__input'}
-          disabled={inputProps.disabled}
-          ref={ref}
-          {...omit(['size', 'error'], rest)}
-          {...inputProps}
-        />
-        {children && (
-          <>
-            <Label
-              className={cl('ds-radio__label')}
-              htmlFor={inputProps.id}
-              size={size}
-              weight='regular'
-            >
-              <span>{children}</span>
-            </Label>
-            {description && (
-              <Paragraph asChild size={size}>
-                <div id={descriptionId} className={'ds-radio__description'}>
-                  {description}
-                </div>
-              </Paragraph>
-            )}
-          </>
-        )}
-      </div>
-    </Paragraph>
+    <Field data-size={size}>
+      <Input type='radio' ref={ref} {...rest} />
+      {!!label && <Label weight='regular'>{label}</Label>}
+      {!!description && <div data-field='description'>{description}</div>}
+      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+    </Field>
   );
 });
-
-Radio.displayName = 'Radio';

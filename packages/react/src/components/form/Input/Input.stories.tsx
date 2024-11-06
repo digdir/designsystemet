@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   Button,
   Divider,
+  Field,
   Heading,
   Label,
   Paragraph,
@@ -11,6 +12,7 @@ import {
 } from '../..';
 
 import { Input } from '.';
+import type { Size } from '../../../types';
 
 type Story = StoryObj<typeof Input>;
 
@@ -80,7 +82,7 @@ export const Preview: Story = {
     'aria-invalid': false,
     disabled: false,
     readOnly: false,
-    size: 'md',
+    'data-size': 'md',
     type: 'text',
     role: 'checkbox',
     name: 'inputs',
@@ -90,58 +92,41 @@ export const Preview: Story = {
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
     return (
-      <>
-        <Label htmlFor='input-1'>Input 1</Label>
-        <Input id='input-1' {...args} defaultChecked />
+      <Field>
+        <Label>Input 1</Label>
+        <Input {...args} defaultChecked />
         <ValidationMessage hidden={!args['aria-invalid']}>
           Feilmelding
         </ValidationMessage>
-        <Label htmlFor='input-2'>Input 2</Label>
-        <Input id='input-2' {...args} ref={inputRef} />
-        <ValidationMessage hidden={!args['aria-invalid']}>
-          Feilmelding
-        </ValidationMessage>
-      </>
+      </Field>
     );
   },
 };
 export const HtmlSize: Story = {
   args: {
-    htmlSize: 10,
+    size: 10,
   },
   render: (args) => (
-    <>
-      <Label htmlFor='input-html-size'>Input with htmlSize</Label>
-      <Input id='input-html-size' {...args} />
-    </>
+    <Field>
+      <Label>Input with size</Label>
+      <Input {...args} />
+    </Field>
   ),
 };
-
-export const Adornments: StoryFn<typeof Input> = (args) => (
-  <>
-    <Label htmlFor='input-html-size'>
-      Hvor mange kroner koster det per måned?
-    </Label>
-    <Input.AffixWrapper>
-      <Input.Affix>NOK</Input.Affix>
-      <Input id='input-html-size' {...args} />
-      <Input.Affix>pr.mnd</Input.Affix>
-    </Input.AffixWrapper>
-  </>
-);
 
 export const Controlled: StoryFn<typeof Input> = (args) => {
   const [value, setValue] = useState<string>();
 
   return (
     <>
-      <Label htmlFor='input-controlled'>Kontroller meg!</Label>
-      <Input
-        id='input-controlled'
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        {...args}
-      />
+      <Field>
+        <Label>Kontroller meg!</Label>
+        <Input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          {...args}
+        />
+      </Field>
       <div>
         <Divider />
 
@@ -154,265 +139,116 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
   );
 };
 
-export const Text: StoryFn<typeof Input> = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: '1rem',
-      maxWidth: '90vw',
-    }}
-  >
-    <style>
-      {'div:has(> label) { display: flex; flex-direction: column; gap: .5rem}'}
-    </style>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
-      Small
-    </Heading>
+const sizes: Size[] = ['sm', 'md', 'lg'];
+const sizenames = {
+  sm: 'Small',
+  md: 'Medium',
+  lg: 'Large',
+};
+
+export const Text: StoryFn<typeof Input> = (args) => {
+  const states = [
+    { label: 'Default', props: {} },
+    { label: 'Disabled', props: { disabled: true } },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
+    { label: 'Read-only', props: { readOnly: true } },
+  ];
+
+  return (
     <div>
-      <Label size='sm' htmlFor='sm-default'>
-        Default
-      </Label>
-      <Input {...args} size='sm' name='sm-default' id='sm-default' />
+      {sizes.map((size) => (
+        <div
+          key={size}
+          data-size={size}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            maxWidth: '90vw',
+          }}
+        >
+          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+            {sizenames[size]}
+          </Heading>
+          {states.map((state) => (
+            <Field key={state.label}>
+              <Label>{state.label}</Label>
+              <Input
+                {...args}
+                name={`${size}-${state.label.toLowerCase()}`}
+                {...state.props}
+                data-size={size}
+              />
+              {state.label === 'Invalid' && (
+                <ValidationMessage>Feilmelding</ValidationMessage>
+              )}
+            </Field>
+          ))}
+        </div>
+      ))}
     </div>
-    <div>
-      <Label size='sm' htmlFor='sm-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='sm' name='sm-disabled' id='sm-disabled' disabled />
-    </div>
-    <div>
-      <Label size='sm' htmlFor='sm-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='sm'
-        name='sm-invalid'
-        id='sm-invalid'
-        aria-describedby='sm-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='sm-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='sm' htmlFor='sm-readonly'>
-        Read-only
-      </Label>
-      <Input {...args} size='sm' name='sm-readonly' id='sm-readonly' readOnly />
-    </div>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Medium
-    </Heading>
-    <div>
-      <Label size='md' htmlFor='md-default'>
-        Default
-      </Label>
-      <Input {...args} size='md' name='md-default' id='md-default' />
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='md' name='md-disabled' id='md-disabled' disabled />
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='md'
-        name='md-invalid'
-        id='md-invalid'
-        aria-describedby='md-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='md-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='md' htmlFor='md-readonly'>
-        Read-only
-      </Label>
-      <Input {...args} size='md' name='md-readonly' id='md-readonly' readOnly />
-    </div>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Large
-    </Heading>
-    <div>
-      <Label size='lg' htmlFor='lg-default'>
-        Default
-      </Label>
-      <Input {...args} size='lg' name='lg-default' id='lg-default' />
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-disabled'>
-        Disabled
-      </Label>
-      <Input {...args} size='lg' name='lg-disabled' id='lg-disabled' disabled />
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-invalid'>
-        Invalid
-      </Label>
-      <Input
-        {...args}
-        size='lg'
-        name='lg-invalid'
-        id='lg-invalid'
-        aria-describedby='lg-invalid-error'
-        aria-invalid='true'
-      />
-      <ValidationMessage id='lg-invalid-error'>Feilmelding</ValidationMessage>
-    </div>
-    <div>
-      <Label size='lg' htmlFor='lg-readonly'>
-        Read-only
-      </Label>
-      <Input {...args} size='lg' name='lg-readonly' id='lg-readonly' readOnly />
-    </div>
-  </div>
-);
+  );
+};
 
 Text.args = {
   value: 'Value',
 };
 
-export const Radio: StoryFn<typeof Input> = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '1rem',
-      maxWidth: '90vw',
-    }}
-  >
-    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
-      Small
-    </Heading>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input
-        {...args}
-        size='sm'
-        name='sm-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Medium
-    </Heading>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input
-        {...args}
-        size='md'
-        name='md-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Large
-    </Heading>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input
-        {...args}
-        size='lg'
-        name='lg-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-  </div>
-);
+export const Radio: StoryFn<typeof Input> = (args) => {
+  const states = [
+    { label: 'Default', props: {} },
+    { label: 'Checked', props: { defaultChecked: true } },
+    { label: 'Disabled', props: { disabled: true } },
+    {
+      label: 'Disabled checked',
+      props: { disabled: true, defaultChecked: true },
+    },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
+    {
+      label: 'Invalid checked',
+      props: { 'aria-invalid': true, defaultChecked: true },
+    },
+    { label: 'Read-only', props: { readOnly: true } },
+    {
+      label: 'Read-only checked',
+      props: { readOnly: true, defaultChecked: true },
+    },
+  ];
+
+  return (
+    <div>
+      {sizes.map((size) => (
+        <div
+          key={size}
+          data-size={size}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '1rem',
+            maxWidth: '90vw',
+          }}
+        >
+          <Heading
+            data-size='2xs'
+            style={{ gridColumn: '1 / -1', marginTop: 16 }}
+          >
+            {sizenames[size]}
+          </Heading>
+          {states.map((state) => (
+            <Field key={state.label}>
+              <Input
+                {...args}
+                name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
+                {...state.props}
+              />
+              <Label>{state.label}</Label>
+            </Field>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 Radio.args = {
   type: 'radio',
@@ -425,240 +261,71 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
     }
   }); // Intentionally run on every render
 
+  const states = [
+    { label: 'Default', props: {} },
+    { label: 'Checked', props: { defaultChecked: true } },
+    { label: 'Indeterminate', props: { 'data-indeterminate': true } },
+    { label: 'Disabled', props: { disabled: true } },
+    {
+      label: 'Disabled checked',
+      props: { disabled: true, defaultChecked: true },
+    },
+    {
+      label: 'Disabled indeterminate',
+      props: { disabled: true, 'data-indeterminate': true },
+    },
+    { label: 'Invalid', props: { 'aria-invalid': true } },
+    {
+      label: 'Invalid checked',
+      props: { 'aria-invalid': true, defaultChecked: true },
+    },
+    {
+      label: 'Invalid indeterminate',
+      props: { 'aria-invalid': true, 'data-indeterminate': true },
+    },
+    { label: 'Read-only', props: { readOnly: true } },
+    {
+      label: 'Read-only checked',
+      props: { readOnly: true, defaultChecked: true },
+    },
+    {
+      label: 'Read-only indeterminate',
+      props: { readOnly: true, 'data-indeterminate': true },
+    },
+  ];
+
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '1rem',
+        gap: '2rem',
       }}
     >
-      <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
-      <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
-        Small
-      </Heading>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input
-          {...args}
-          size='sm'
-          name='sm-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input
-          {...args}
-          size='sm'
-          name='sm-invalid'
-          aria-invalid='true'
-          defaultChecked
-        />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input
-          {...args}
-          size='sm'
-          name='sm-invalid'
-          aria-invalid='true'
-          data-indeterminate
-        />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='sm'>
-        <Input
-          {...args}
-          size='sm'
-          name='sm-readonly'
-          readOnly
-          data-indeterminate
-        />
-        Read-only indeterminate
-      </Label>
-      <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-        Medium
-      </Heading>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input
-          {...args}
-          size='md'
-          name='md-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input
-          {...args}
-          size='md'
-          name='md-invalid'
-          aria-invalid='true'
-          defaultChecked
-        />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input
-          {...args}
-          size='md'
-          name='md-invalid'
-          aria-invalid='true'
-          data-indeterminate
-        />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='md'>
-        <Input
-          {...args}
-          size='md'
-          name='md-readonly'
-          readOnly
-          data-indeterminate
-        />
-        Read-only indeterminate
-      </Label>
-      <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-        Large
-      </Heading>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-default' />
-        Default
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-default' defaultChecked />
-        Checked
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-default' data-indeterminate />
-        Indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-disabled' disabled />
-        Disabled
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-        Disabled checked
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input
-          {...args}
-          size='lg'
-          name='lg-disabled'
-          disabled
-          data-indeterminate
-        />
-        Disabled indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-        Invalid
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input
-          {...args}
-          size='lg'
-          name='lg-invalid'
-          aria-invalid='true'
-          defaultChecked
-        />
-        Invalid checked
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input
-          {...args}
-          size='lg'
-          name='lg-invalid'
-          aria-invalid='true'
-          data-indeterminate
-        />
-        Invalid indeterminate
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-readonly' readOnly />
-        Read-only
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-        Read-only checked
-      </Label>
-      <Label weight='regular' size='lg'>
-        <Input
-          {...args}
-          size='lg'
-          name='lg-readonly'
-          readOnly
-          data-indeterminate
-        />
-        Read-only indeterminate
-      </Label>
+      {sizes.map((size) => (
+        <div
+          key={size}
+          data-size={size}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1rem',
+          }}
+        >
+          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+            {sizenames[size]}
+          </Heading>
+          {states.map((state) => (
+            <Field key={state.label}>
+              <Input
+                {...args}
+                name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
+                {...state.props}
+              />
+              <Label>{state.label}</Label>
+            </Field>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
@@ -667,141 +334,63 @@ Checkbox.args = {
   type: 'checkbox',
 };
 
-export const Switch: StoryFn<typeof Input> = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '1rem',
-      maxWidth: '90vw',
-    }}
-  >
-    <style>{'label{display:flex;align-items:center;gap:.5rem}'}</style>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1' }}>
-      Small
-    </Heading>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input
-        {...args}
-        size='sm'
-        name='sm-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='sm'>
-      <Input {...args} size='sm' name='sm-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Medium
-    </Heading>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input
-        {...args}
-        size='md'
-        name='md-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='md'>
-      <Input {...args} size='md' name='md-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-    <Heading size='2xs' style={{ gridColumn: '1 / -1', marginTop: 16 }}>
-      Large
-    </Heading>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-default' />
-      Default
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-default' defaultChecked />
-      Checked
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-disabled' disabled />
-      Disabled
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-disabled' disabled defaultChecked />
-      Disabled checked
-    </Label>
-    {/* <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-invalid' aria-invalid='true' />
-      Invalid
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input
-        {...args}
-        size='lg'
-        name='lg-invalid'
-        aria-invalid='true'
-        defaultChecked
-      />
-      Invalid checked
-    </Label> */}
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-readonly' readOnly />
-      Read-only
-    </Label>
-    <Label weight='regular' size='lg'>
-      <Input {...args} size='lg' name='lg-readonly' readOnly defaultChecked />
-      Read-only checked
-    </Label>
-  </div>
-);
+export const Switch: StoryFn<typeof Input> = (args) => {
+  const states = [
+    { label: 'Default', props: {} },
+    { label: 'Checked', props: { defaultChecked: true } },
+    { label: 'Disabled', props: { disabled: true } },
+    {
+      label: 'Disabled checked',
+      props: { disabled: true, defaultChecked: true },
+    },
+    /* { label: 'Invalid', props: { 'aria-invalid': 'true' } },
+    {
+      label: 'Invalid checked',
+      props: { 'aria-invalid': 'true', defaultChecked: true },
+    }, */
+    { label: 'Read-only', props: { readOnly: true } },
+    {
+      label: 'Read-only checked',
+      props: { readOnly: true, defaultChecked: true },
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '2rem',
+      }}
+    >
+      {sizes.map((size) => (
+        <div
+          key={size}
+          data-size={size}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '1rem',
+            maxWidth: '90vw',
+          }}
+        >
+          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+            {sizenames[size]}
+          </Heading>
+          {states.map((state) => (
+            <Field key={state.label}>
+              <Input
+                {...args}
+                name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
+                {...state.props}
+              />
+              <Label>{state.label}</Label>
+            </Field>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 Switch.args = {
   type: 'checkbox',

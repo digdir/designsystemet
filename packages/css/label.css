@@ -1,23 +1,22 @@
 .ds-label {
-  /* We set these three styles when label is used in `legend` */
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-
-  @composes ds-label--md from './base/base.css';
+  --dsc-label--readonly: initial; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
+  --dsc-label-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25A4.75 4.75 0 0 0 7.25 7v2.25H7A1.75 1.75 0 0 0 5.25 11v9c0 .41.34.75.75.75h12a.75.75 0 0 0 .75-.75v-9A1.75 1.75 0 0 0 17 9.25h-.25V7A4.75 4.75 0 0 0 12 2.25m3.25 7V7a3.25 3.25 0 0 0-6.5 0v2.25zM12 13a1.5 1.5 0 0 0-.75 2.8V17a.75.75 0 0 0 1.5 0v-1.2A1.5 1.5 0 0 0 12 13'/%3E%3C/svg%3E");
+  --dsc-label-icon-size: 1.2em;
+  --dsc-label-gap: var(--ds-spacing-1);
 
   font-weight: var(--ds-font-weight-medium);
+  padding-inline-start: var(--dsc-label--readonly) calc(var(--dsc-label-icon-size) + var(--dsc-label-gap));
+  position: relative;
 
-  &[data-size='xs'] {
-    @composes ds-label--xs from './base/base.css';
-  }
-
-  &[data-size='sm'] {
-    @composes ds-label--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    @composes ds-label--lg from './base/base.css';
+  &::before {
+    background: currentcolor;
+    content: var(--dsc-label--readonly) '';
+    display: inline-block;
+    height: var(--dsc-label-icon-size);
+    margin-inline: calc((var(--dsc-label-icon-size) + var(--dsc-label-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    mask: center / contain no-repeat var(--dsc-label-icon-url);
+    position: absolute;
+    width: var(--dsc-label-icon-size);
   }
 
   &[data-weight='semibold'] {

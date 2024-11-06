@@ -14,6 +14,6 @@ type Story = StoryObj<typeof Heading>;
 export const Preview: Story = {
   args: {
     children: 'Tittel tekst',
-    size: 'xl',
+    'data-size': 'xl',
   },
 };

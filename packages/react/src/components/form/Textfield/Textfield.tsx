@@ -3,6 +3,7 @@ import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useId, useState } from 'react';
 
+import type { DefaultProps } from '../../../types';
 import { omit } from '../../../utilities';
 import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
@@ -18,11 +19,6 @@ export type TextfieldProps = {
   label?: ReactNode;
   /** Visually hides `label` and `description` (still available for screen readers)  */
   hideLabel?: boolean;
-  /**
-   * Changes field size and paddings
-   * @default md
-   */
-  size?: 'sm' | 'md' | 'lg';
   /** Prefix for field. */
   prefix?: string;
   /** Suffix for field. */
@@ -56,8 +52,9 @@ export type TextfieldProps = {
    * @default 20
    */
   htmlSize?: number;
-} & Omit<FormFieldProps, 'size'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & FormFieldProps &
+  InputHTMLAttributes<HTMLInputElement> &
+  DefaultProps;
 
 /** Text input field
  *
@@ -104,7 +101,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       ) || undefined;
 
     return (
-      <Paragraph asChild size={size}>
+      <Paragraph asChild data-size={size}>
         <div
           style={style}
           className={cl(
@@ -117,7 +114,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         >
           {label && (
             <Label
-              size={size}
+              data-size={size}
               weight='medium'
               htmlFor={inputProps.id}
               className={cl(`ds-textfield__label`, hideLabel && `ds-sr-only`)}
@@ -132,7 +129,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             </Label>
           )}
           {description && (
-            <Paragraph asChild size={size}>
+            <Paragraph asChild data-size={size}>
               <div
                 id={descriptionId}
                 className={cl(
@@ -146,7 +143,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           )}
           <div className='ds-textfield__field'>
             {prefix && (
-              <Paragraph asChild size={size} variant='short'>
+              <Paragraph asChild data-size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -178,7 +175,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
               }}
             />
             {suffix && (
-              <Paragraph asChild size={size} variant='short'>
+              <Paragraph asChild data-size={size} variant='short'>
                 <div
                   className={cl(
                     `ds-textfield__adornment`,
@@ -193,7 +190,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           </div>
           {hasCharacterLimit && (
             <CharacterCounter
-              size={size}
+              data-size={size}
               value={inputValue ? inputValue.toString() : ''}
               id={characterLimitId}
               {...characterLimit}
@@ -206,7 +203,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             aria-relevant='additions removals'
           >
             {hasError && (
-              <ValidationMessage size={size}>{props.error}</ValidationMessage>
+              <ValidationMessage data-size={size}>
+                {props.error}
+              </ValidationMessage>
             )}
           </div>
         </div>

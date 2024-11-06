@@ -1,5 +1,5 @@
 'use client';
-import { Alert, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { Container } from '@repo/components';
 
 import classes from './page.module.css';
@@ -10,7 +10,7 @@ export default function Home() {
       <main>
         <Container>
           <div className={classes.row}>
-            <Heading level={1} size='lg' className={classes.title}>
+            <Heading level={1} data-size='lg' className={classes.title}>
               Slik bruker du verktøyet
             </Heading>
             <Paragraph className={classes.ingress}>
@@ -21,7 +21,7 @@ export default function Home() {
               temabyggeren blir ferdigstilt.
             </Paragraph>
 
-            <Heading level={2} size='md'>
+            <Heading level={2} data-size='md'>
               Hva er et tema?
             </Heading>
 
@@ -35,7 +35,7 @@ export default function Home() {
               skulle trenge det.
             </Paragraph>
 
-            <Heading level={2} size='md'>
+            <Heading level={2} data-size='md'>
               Farger og WCAG
             </Heading>
             <Paragraph>
@@ -66,7 +66,7 @@ export default function Home() {
               bakgrunnsfargene om <code>Base</code> fargene skal brukes på
               aktive brukergrensesnittkomponenter eller meningsbærende grafikk.
             </Paragraph>
-            <Heading level={2} size='md'>
+            <Heading level={2} data-size='md'>
               Valg av Accentfarge
             </Heading>
             <Paragraph>

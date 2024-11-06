@@ -7,7 +7,20 @@
   margin: 0 auto;
   background-color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
-  padding: 1rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: auto;
+  gap: var(--ds-spacing-4);
+  padding-bottom: var(--ds-spacing-2);
+  align-items: baseline;
+}
+
+.controls code {
+  background: var(--ds-color-neutral-background-subtle);
+  padding: var(--ds-spacing-1);
 }
 
 .card {

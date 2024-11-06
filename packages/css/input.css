@@ -5,10 +5,10 @@
   --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
-  --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
+  --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-width--toggle: 2px;
+  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
@@ -18,34 +18,41 @@
   --dsc-input-size--switch: var(--ds-sizing-7);
   --dsc-input-size--toggle: var(--ds-sizing-6);
   --dsc-input-size: var(--ds-sizing-12);
-  --dsc-input-stroke: 0.05em;
+  --dsc-input-stroke: 0.055em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
-  --diagonal-1: transparent calc(50% - var(--dsc-input-stroke));
-  --diagonal-2: currentcolor calc(48% - var(--dsc-input-stroke));
+  --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+  --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --check-left: calc(var(--dsc-input-stroke) / 2) calc(66.66% + var(--dsc-input-stroke) / 2) / 33.33% 33.33% no-repeat content-box
-    linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-  --check-right: calc(100% - var(--dsc-input-stroke) / 2) / 66.66% 66.66% no-repeat content-box
-    linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
   border-radius: var(--ds-border-radius-md);
-  border: var(--dsc-input-affix-border, var(--dsc-input-border-width) solid var(--dsc-input-border-color)); /* Inherit from .ds-input-addons if present */
+  border: var(--dsc-input-border-width) solid var(--dsc-input-border-color); /* Inherit from .ds-input-addons if present */
   box-shadow: var(--dsc-input-box-shadow);
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
   height: var(--dsc-input-size);
+  line-height: inherit;
   margin: 0; /* Reset native margin on checkbox and radio */
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
 
-  @composes ds-body-text--md from './base/base.css';
   @composes ds-focus from './base/base.css';
+
+  /* Round border-width up to nearest 1px if supported */
+  @supports (width: round(down, .1em, 1px)) {
+    border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
+  }
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size */
+  }
 
   /* Change switch background with low specificity to allow states to overwrite */
   &:where([role='switch']) {
@@ -103,33 +110,15 @@
   }
 
   /**
-   * Sizes
-   */
-  &[data-size='sm'] {
-    @composes ds-body-text--sm from './base/base.css';
-
-    --dsc-input-padding: var(--ds-spacing-1) var(--ds-spacing-2);
-    --dsc-input-size--switch: var(--ds-sizing-6);
-    --dsc-input-size--toggle: var(--ds-sizing-5);
-    --dsc-input-size: var(--ds-sizing-10);
-  }
-
-  &[data-size='lg'] {
-    @composes ds-body-text--lg from './base/base.css';
-
-    --dsc-input-padding: var(--ds-spacing-3) var(--ds-spacing-4);
-    --dsc-input-size--switch: var(--ds-sizing-8);
-    --dsc-input-size--toggle: var(--ds-sizing-7);
-    --dsc-input-size: var(--ds-sizing-14);
-  }
-
-  /**
-   * Toggle inputs
+   * Toggle inputs and select
    */
   &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
     cursor: pointer;
   }
 
+  /**
+   * Toggle inputs
+   */
   &[type='checkbox'],
   &[type='radio'] {
     --dsc-input-border-width: var(--dsc-input-border-width--toggle);
@@ -137,7 +126,12 @@
     --dsc-input-size: var(--dsc-input-size--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */
+    line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
     width: var(--dsc-input-size);
+
+    &:not([aria-label]) {
+      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+    }
   }
 
   &[type='radio'] {
@@ -187,62 +181,5 @@
     &[readonly] {
       --circle-color: var(--dsc-input-color--readonly);
     }
-  }
-}
-
-/* Change cursor on wrapping <label> */
-label:has(input:is([type='checkbox'], [type='radio']):not(:disabled, [aria-disabled], [readonly])) {
-  cursor: pointer;
-}
-
-/**
- * Affix
- */
-.ds-input-affix {
-  --dsc-input-affix-border: 1px solid var(--ds-color-neutral-border-default);
-  --dsc-input-affix-padding-inline: var(--ds-spacing-4);
-
-  align-items: center;
-  background: var(--ds-color-neutral-background-subtle);
-  border-radius: var(--ds-border-radius-md);
-  box-sizing: border-box;
-  color: var(--ds-color-neutral-text-subtle);
-  display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
-  gap: var(--dsc-input-affix-padding-inline);
-  padding-inline: var(--dsc-input-affix-padding-inline);
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-
-  /* Using ::before to make input border overlap addons border */
-  &::before {
-    border-radius: inherit;
-    border: var(--dsc-input-affix-border);
-    content: '';
-    inset: 0;
-    pointer-events: none;
-    position: absolute;
-  }
-
-  @composes ds-body-text--md from './base/base.css';
-
-  /* Using double selector to ensure we win specificity */
-  .ds-input.ds-input {
-    align-self: stretch;
-    border-radius: 0;
-    flex: 1 1 auto;
-    height: auto;
-  }
-
-  &:has([data-size='sm']) {
-    @composes ds-body-text--sm from './base/base.css';
-
-    --dsc-input-affix-padding-inline: var(--ds-spacing-3);
-  }
-
-  &:has([data-size='lg']) {
-    @composes ds-body-text--lg from './base/base.css';
-
-    --dsc-input-affix-padding-inline: var(--ds-spacing-5);
   }
 }

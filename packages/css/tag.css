@@ -9,27 +9,12 @@
   border-radius: var(--ds-border-radius-sm);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
-  display: flex;
+  display: inline-flex;
+  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
   width: max-content;
   word-break: break-word;
-
-  @composes ds-body-text--short-md from './base/base.css';
-
-  &[data-size='sm'] {
-    --dsc-tag-padding: 0 var(--ds-spacing-2);
-    --dsc-tag-min-height: var(--ds-sizing-7);
-
-    @composes ds-body-text--short-sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-tag-padding: 0 var(--ds-spacing-3);
-    --dsc-tag-min-height: var(--ds-sizing-9);
-
-    @composes ds-body-text--short-lg from './base/base.css';
-  }
 
   &[data-color='info'] {
     --dsc-tag-background: var(--ds-color-info-surface-default);

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  font-feature-settings: 'cv05' 1;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
+  font-size: 14px;
+}
+
+.links {
+  display: flex;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 0 16px;
+}
+
+.link {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--ds-color-neutral-text-default);
+  margin-right: 20px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.active {
+  color: var(--ds-color-neutral-text-default);
+  font-weight: 500;
+  border-bottom: 4px solid var(--ds-color-neutral-border-default);
+}
+
+.btn {
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: #b9b9b9;
+  color: black;
+  font-weight: 500;
+  transition: 0.1s all;
+  min-height: 34px;
+}
+
+.btn:hover {
+  background-color: #d4d4d4;
+}
+
+.textfield {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.textfield input {
+  height: 34px;
+  font-size: 14px;
+}
+
+.ds-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ds-textfield__prefix {
+  font-size: 14px;
+  height: 34px;
+}
+
+.pageTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
+  overflow: auto;
+}

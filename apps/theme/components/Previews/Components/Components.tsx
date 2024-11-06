@@ -35,7 +35,6 @@ import { useState } from 'react';
 import classes from './Components.module.css';
 
 export const Components = () => {
-  const [radioValue, setRadioValue] = useState('vanilje');
   const [currentPage, setCurrentPage] = useState(1);
   const pagination = usePagination({
     currentPage,
@@ -47,37 +46,35 @@ export const Components = () => {
   return (
     <div className={classes.components}>
       <div className={cl(classes.card, classes.checkbox)}>
-        <Checkbox.Group error='' legend='Handleliste' size='sm'>
-          <Checkbox value='epost'>En kilo poteter</Checkbox>
-          <Checkbox value='telefon'>To liter Farris</Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Blomkål
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Pizza
-          </Checkbox>
-          <Checkbox value='sms' defaultChecked>
-            Tre liter lettmelk
-          </Checkbox>
-          <Checkbox value='sms'>2kg smågodt</Checkbox>
-          <Checkbox value='sms'>10 poser med Smash</Checkbox>
-        </Checkbox.Group>
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Handleliste</Fieldset.Legend>
+          <Checkbox label='En kilo poteter' value='epost' />
+          <Checkbox label='To liter Farris' value='telefon' />
+          <Checkbox label='Blomkål' value='sms' defaultChecked />
+          <Checkbox label='Pizza' value='sms' defaultChecked />
+          <Checkbox label='Tre liter lettmelk' value='sms' defaultChecked />
+          <Checkbox label='2kg smågodt' value='sms' />
+          <Checkbox label='10 poser med Smash' value='sms' />
+        </Fieldset>
       </div>
       <div className={cl(classes.card, classes.user)}>
-        <Heading className={cl(classes.cardTitle, classes.userTitle)} size='xs'>
+        <Heading
+          className={cl(classes.cardTitle, classes.userTitle)}
+          data-data-size='xs'
+        >
           Opprett ny bruker
         </Heading>
 
         <Textfield
           label='Navn'
-          size='sm'
+          data-data-size='sm'
           placeholder='Ola Normann'
           className={classes.userField}
         />
         <Textfield
           type='email'
           label='E-post'
-          size='sm'
+          data-data-size='sm'
           placeholder='ola@norge.no'
           className={classes.userField}
         />
@@ -86,35 +83,35 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button size='sm' className={classes.userBtn}>
+        <Button data-data-size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} size='2xs'>
+        <Heading className={classes.cardTitle} data-data-size='2xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select size='sm' aria-label='Velg handling'>
+            <Select data-data-size='sm' aria-label='Velg handling'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
               <Select.Option value='denali'>Oppdater</Select.Option>
             </Select>
-            <Button className={classes.tableBtn} size='sm'>
+            <Button className={classes.tableBtn} data-data-size='sm'>
               Utfør
             </Button>
           </div>
           <Search
             label='Label'
             placeholder='Søk etter bruker...'
-            size='sm'
+            data-data-size='sm'
             variant='primary'
             className={classes.tableSearch}
           />
         </div>
-        <Table size='sm' border className={classes.table}>
+        <Table data-data-size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
@@ -153,7 +150,7 @@ export const Components = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination size='sm'>
+        <Pagination data-size='sm'>
           <Pagination.List>
             <Pagination.Item>
               <Pagination.Button {...pagination.prevButtonProps}>
@@ -174,12 +171,12 @@ export const Components = () => {
         </Pagination>
       </div>
       <div className={cl(classes.card, classes.help)}>
-        <Heading size='xs' className={classes.helpHeading}>
+        <Heading data-size='xs' className={classes.helpHeading}>
           Hva kan vi hjelpe deg med?
         </Heading>
         <div className={classes.helpCards}>
           <Card color='brand1'>
-            <Heading size='2xs' className={classes.helpCardHeading}>
+            <Heading data-size='2xs' className={classes.helpCardHeading}>
               Sikkerhet og drift
             </Heading>
             <Paragraph>
@@ -187,7 +184,7 @@ export const Components = () => {
             </Paragraph>
           </Card>
           <Card color='brand2'>
-            <Heading size='2xs' className={classes.helpCardHeading}>
+            <Heading data-size='2xs' className={classes.helpCardHeading}>
               Skole og utdanning
             </Heading>
             <Paragraph>
@@ -195,7 +192,7 @@ export const Components = () => {
             </Paragraph>
           </Card>
           <Card color='brand3'>
-            <Heading size='2xs' className={classes.helpCardHeading}>
+            <Heading data-size='2xs' className={classes.helpCardHeading}>
               <a href='#preview'>Mat og helse</a>
             </Heading>
             <Paragraph>
@@ -205,58 +202,52 @@ export const Components = () => {
         </div>
       </div>
       <div className={cl(classes.card, classes.radio)}>
-        <Radio.Group
-          error=''
-          legend='Hvilken iskremsmak er best?'
-          description='Velg din favorittsmak'
-          size='sm'
-          value={radioValue}
-          onChange={(e: string) => setRadioValue(e)}
-        >
-          <Radio value='vanilje'>Vanilje</Radio>
-          <Radio value='jordbær'>Jordbær</Radio>
-          <Radio value='sjokolade'>Sjokolade</Radio>
-          <Radio value='spiser-ikke-is'>Jeg spiser ikke iskrem</Radio>
-        </Radio.Group>
+        <Fieldset data-size='sm'>
+          <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+          <Fieldset.Description>Velg din favorittsmak</Fieldset.Description>
+          <Radio label='Vanile' value='vanilje' />
+          <Radio label='Jordbær' value='jordbær' defaultChecked />
+          <Radio label='Sjokolade' value='sjokolade' />
+          <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' />
+        </Fieldset>
       </div>
       <div className={cl(classes.card, classes.tag)}>
-        <Heading size='xs' className={classes.tagHeading}>
+        <Heading data-size='xs' className={classes.tagHeading}>
           Emner
         </Heading>
         <div className={classes.tagList}>
-          <Tag color='brand1' size='sm'>
+          <Tag color='brand1' data-size='sm'>
             Data og IKT
           </Tag>
-          <Tag color='brand2' size='sm'>
+          <Tag color='brand2' data-size='sm'>
             Mat og ernæring
           </Tag>
-          <Tag color='brand3' size='sm'>
+          <Tag color='brand3' data-size='sm'>
             Sport og Idrett
           </Tag>
-          <Tag color='neutral' size='sm'>
+          <Tag color='neutral' data-size='sm'>
             Politikk og samfunn
           </Tag>
-          <Tag color='success' size='sm'>
+          <Tag color='success' data-size='sm'>
             Utenriks
           </Tag>
-          <Tag color='info' size='sm'>
+          <Tag color='info' data-size='sm'>
             Helse og velvære
           </Tag>
-          <Tag color='danger' size='sm'>
+          <Tag color='danger' data-size='sm'>
             PC Gaming
           </Tag>
-          <Tag color='warning' size='sm'>
+          <Tag color='warning' data-size='sm'>
             Trening og livsstil
           </Tag>
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Fieldset
-          legend='Instillinger'
-          description='Her kan du justere på innstillingene dine'
-          size='sm'
-          className={classes.SwitchContainer}
-        >
+        <Fieldset data-size='sm' className={classes.SwitchContainer}>
+          <Fieldset.Legend>Instillinger</Fieldset.Legend>
+          <Fieldset.Description>
+            Her kan du justere på innstillingene dine
+          </Fieldset.Description>
           <Switch defaultChecked>TV-visning</Switch>
           <Switch>Desktopvisning</Switch>
           <Switch defaultChecked readOnly>
@@ -266,35 +257,35 @@ export const Components = () => {
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
-        <Heading size='xs'>Hvor er du fra?</Heading>
-        <Paragraph size='sm'>Svar under så finner vi flyreise</Paragraph>
+        <Heading data-size='xs'>Hvor er du fra?</Heading>
+        <Paragraph data-size='sm'>Svar under så finner vi flyreise</Paragraph>
         <div className={classes.toggleCombo}>
-          <ToggleGroup defaultValue='norway' size='sm'>
+          <ToggleGroup defaultValue='norway' data-size='sm'>
             <ToggleGroup.Item value='norway'>Norge</ToggleGroup.Item>
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup>
         </div>
-        <Heading size='xs' className={classes.chipsHeading}>
+        <Heading data-size='xs' className={classes.chipsHeading}>
           Filtrer på språk
         </Heading>
         <div className={classes.chips}>
-          <Chip.Radio name='language' size='md' defaultChecked>
+          <Chip.Radio name='language' data-size='md' defaultChecked>
             Bokmål
           </Chip.Radio>
-          <Chip.Radio name='language' size='md'>
+          <Chip.Radio name='language' data-size='md'>
             Nynorsk
           </Chip.Radio>
-          <Chip.Radio name='language' size='md'>
+          <Chip.Radio name='language' data-size='md'>
             Engelsk
           </Chip.Radio>
         </div>
       </div>
       <div className={cl(classes.card, classes.comboBox)}>
-        <Heading size='xs' className={classes.comboHeading}>
+        <Heading data-size='xs' className={classes.comboHeading}>
           Hvor skal du reise?
         </Heading>
-        <Combobox label='Destinasjon' size='sm' portal={false} multiple>
+        <Combobox label='Destinasjon' data-size='sm' portal={false} multiple>
           <Combobox.Empty>Fant ingen treff</Combobox.Empty>
           <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
           <Combobox.Option value='oslo'>Oslo</Combobox.Option>
@@ -313,18 +304,18 @@ export const Components = () => {
           cols={100}
           id='my-textarea'
           rows={4}
-          size='sm'
+          data-size='sm'
         />
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs defaultValue='value1' size='sm'>
+        <Tabs defaultValue='value1' data-size='sm'>
           <Tabs.List>
             <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
             <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
             <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-        <Paragraph size='sm'>
+        <Paragraph data-size='sm'>
           For å kunne bli registrert i{' '}
           <Link href='#' color='neutral'>
             Frivillighetsregisteret
@@ -344,7 +335,7 @@ export const Components = () => {
         </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>
-        <Heading size='xs' className={classes.cardTitle}>
+        <Heading data-size='xs' className={classes.cardTitle}>
           Ofte stillte spørsmål
         </Heading>
         <Accordion color='brand3' border className={classes.accordion}>
@@ -353,7 +344,7 @@ export const Components = () => {
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              <Paragraph size='sm'>
+              <Paragraph data-size='sm'>
                 For å kunne bli registrert i Frivillighetsregisteret, må
                 organisasjonen drive frivillig virksomhet. Det er bare
                 foreninger, stiftelser og aksjeselskap som kan registreres.
@@ -367,7 +358,7 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              <Paragraph size='sm'>
+              <Paragraph data-size='sm'>
                 Virksomheten må være registrert i Enhetsregisteret før den kan
                 bli registrert i Frivillighetsregisteret. Du kan registrere i
                 begge registrene samtidig i Samordnet registermelding.
@@ -379,7 +370,7 @@ export const Components = () => {
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Accordion.Heading>
             <Accordion.Content>
-              <Paragraph size='sm'>
+              <Paragraph data-size='sm'>
                 Virksomheten må være registrert i Enhetsregisteret før den kan
                 bli registrert i Frivillighetsregisteret. Du kan registrere i
                 begge registrene samtidig i Samordnet registermelding.
@@ -389,28 +380,36 @@ export const Components = () => {
         </Accordion>
       </div>
       <div className={cl(classes.card, classes.alert)}>
-        <Alert color='info' size='sm'>
+        <Alert color='info' data-size='sm'>
           Dette er informasjon som du bør lese for å forstå hva som skjer
         </Alert>
-        <Alert color='warning' size='sm'>
+        <Alert color='warning' data-size='sm'>
           Dette er en advarsel om at noe kan gå galt hvis du ikke følger med
         </Alert>
-        <Alert color='danger' size='sm'>
+        <Alert color='danger' data-size='sm'>
           Dette er en melding om at noe har gått galt og du bør gjøre noe med
           det
         </Alert>
-        <Alert color='success' size='sm'>
+        <Alert color='success' data-size='sm'>
           Dette er en melding om at noe har gått bra og du kan fortsette
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
         <Dropdown.Context>
-          <Dropdown.Trigger size='sm'>Velg språk</Dropdown.Trigger>
-          <Dropdown placement='top' size='sm'>
-            <Dropdown.Item>Norsk</Dropdown.Item>
-            <Dropdown.Item>Engelsk</Dropdown.Item>
-            <Dropdown.Item>Spansk</Dropdown.Item>
-            <Dropdown.Item>Fransk</Dropdown.Item>
+          <Dropdown.Trigger data-size='sm'>Velg språk</Dropdown.Trigger>
+          <Dropdown placement='top' data-size='sm'>
+            <Dropdown.Item>
+              <Dropdown.Button>Norsk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Engelsk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Spansk</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Fransk</Dropdown.Button>
+            </Dropdown.Item>
           </Dropdown>
           <HelpText aria-label='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
@@ -425,8 +424,8 @@ export const Components = () => {
         <Skeleton variant='text' />
         <Skeleton variant='text' />
         <div>
-          <Spinner title='laster innhold' size='md' />
-          <Spinner title='laster innhold' size='md' color='accent' />
+          <Spinner aria-label='laster innhold' data-size='md' />
+          <Spinner aria-label='laster innhold' data-size='md' color='accent' />
         </div>
       </div>
     </div>

@@ -16,16 +16,18 @@ export type AvatarProps = {
   color?: 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
   /**
    * The size of the avatar.
-   *
-   * @default 'md'
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * The shape of the avatar.
    *
    * @default 'circle'
    */
   variant?: 'circle' | 'square';
+  /**
+   * Initials to display inside the avatar.
+   */
+  initials?: string;
   /**
    * Image, icon or initials to display inside the avatar.
    *
@@ -38,7 +40,7 @@ export type AvatarProps = {
  * Avatars are used to represent people or entities.
  *
  * @example
- * <Avatar aria-label="John Doe">JD</Avatar>
+ * <Avatar aria-label="John Doe" initials="JD" />
  *
  * @example
  * <Avatar aria-label="John Doe">
@@ -54,10 +56,10 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
     color = 'accent',
-    size = 'md',
     variant = 'circle',
     className,
     children,
+    initials,
     ...rest
   },
   ref,
@@ -71,7 +73,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-color={color}
-      data-size={size}
+      data-initials={initials}
       role='img'
       aria-label={ariaLabel}
       {...rest}

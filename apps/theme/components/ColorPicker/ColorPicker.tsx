@@ -1,6 +1,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Link, Popover } from '@digdir/designsystemet-react';
-import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
+import { ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx/lite';
 import { useEffect, useId, useRef, useState } from 'react';
@@ -60,7 +60,7 @@ export const ColorPicker = ({
           style={{ width: '900px' }}
           id={popoverId}
           placement='top'
-          size='sm'
+          data-size='sm'
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
           <div>

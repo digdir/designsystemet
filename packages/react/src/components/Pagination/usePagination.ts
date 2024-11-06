@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Dispatch, MouseEvent, SetStateAction } from 'react';
+import type { MouseEvent } from 'react';
 import type { PaginationButtonProps } from './PaginationButton';
 
 const getSteps = (now: number, max: number, show: number) => {

@@ -2,6 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
+import type { DefaultProps } from '../../types';
 import { Spinner } from '../loaders/Spinner';
 
 export type ButtonProps = {
@@ -14,11 +15,6 @@ export type ButtonProps = {
    * @default accent
    */
   color?: 'accent' | 'neutral' | 'danger';
-  /**
-   * Size
-   * @default md
-   */
-  size?: 'sm' | 'md' | 'lg';
   /** Toggle icon only styling, pass icon as children
    * @default false
    */
@@ -37,7 +33,8 @@ export type ButtonProps = {
    * @default 'button'
    */
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> &
+  DefaultProps;
 
 /**
  * Button used for interaction
@@ -53,7 +50,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = 'accent',
       icon = false,
       loading = false,
-      size = 'md',
       variant = 'primary',
       ...rest
     },
@@ -69,7 +65,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cl('ds-button', className)}
         data-color={color}
         data-icon={icon || undefined}
-        data-size={size}
         data-variant={variant}
         ref={ref}
         /* don't set type when we use `asChild` */
@@ -78,7 +73,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {loading === true ? (
-          <Spinner aria-hidden='true' color={spinnerColor} size='sm' title='' />
+          <Spinner aria-hidden='true' color={spinnerColor} data-size='sm' />
         ) : (
           loading // Allow custom loading spinner
         )}

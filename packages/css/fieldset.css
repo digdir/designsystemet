@@ -1,44 +1,26 @@
 .ds-fieldset {
-  --dsc-fieldset-icon-size: 1.2em;
-  --dsc-fieldset-gap: var(--ds-spacing-2);
-
-  margin: 0;
-  padding: 0;
   border: 0;
+  margin: 0;
   min-width: 0;
+  padding: 0;
 
-  & > :not(:last-child) {
-    margin-bottom: var(--ds-spacing-2); /* Use margin as fieldset does not play nice with display: flex */
+  /* Add lock icon to legend when only containing readonly inputs */
+  &:has([readonly]):not(:has(:read-write)) > legend {
+    --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
   }
 
-  & > legend {
-    display: inline-flex;
-  }
-
-  & > legend:empty {
-    display: none;
-  }
-
-  &[data-hidelegend] > legend,
-  &[data-hidelegend] > legend + p {
-    @composes ds-sr-only from './base/base.css';
-  }
-
-  &[data-readonly] > legend::before {
-    content: '';
-    background: currentcolor;
-    height: var(--dsc-fieldset-icon-size);
-    mask: center / contain no-repeat
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25A4.75 4.75 0 0 0 7.25 7v2.25H7A1.75 1.75 0 0 0 5.25 11v9c0 .41.34.75.75.75h12a.75.75 0 0 0 .75-.75v-9A1.75 1.75 0 0 0 17 9.25h-.25V7A4.75 4.75 0 0 0 12 2.25m3.25 7V7a3.25 3.25 0 0 0-6.5 0v2.25zM12 13a1.5 1.5 0 0 0-.75 2.8V17a.75.75 0 0 0 1.5 0v-1.2A1.5 1.5 0 0 0 12 13'/%3E%3C/svg%3E");
-    width: var(--dsc-fieldset-icon-size);
+  /* Stack everything that is not directly after legend */
+  & > * + * {
+    margin-block-start: var(--ds-spacing-4);
   }
 
   & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
+    margin-block: var(--ds-spacing-1) 0;
   }
 
   &:disabled > legend,
   &:disabled > legend + p {
-    color: var(--ds-color-neutral-border-subtle);
+    opacity: var(--ds-disabled-opacity);
   }
 }

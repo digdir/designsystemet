@@ -5,10 +5,11 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { buildOptions } from '../build.js';
-import * as formats from './formats/css.js';
+import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
 import type {
+  ColorCategories,
   GetSdConfigOptions,
   IsCalculatedToken,
   SDConfigForThemePermutation,
@@ -16,7 +17,7 @@ import type {
   ThemePermutation,
 } from './types.js';
 import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
-import { pathStartsWithOneOf, typeEquals } from './utils/utils.js';
+import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 /** Use official W3C design token format
@@ -34,9 +35,9 @@ StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
 
 StyleDictionary.registerFormat(jsTokens);
-StyleDictionary.registerFormat(formats.colormode);
-StyleDictionary.registerFormat(formats.semantic);
-StyleDictionary.registerFormat(formats.typography);
+for (const format of Object.values(formats)) {
+  StyleDictionary.registerFormat(format);
+}
 
 const dsTransformers = [
   nameKebab.name,
@@ -99,12 +100,50 @@ const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme },
         ],
         options: {
           fileHeader,
-          outputReferences: (token, options) => outputColorReferences(token) && outputReferencesFilter(token, options),
+          outputReferences: false,
         },
       },
     },
   };
 };
+
+const colorCategoryVariables =
+  (category: ColorCategories): GetStyleDictionaryConfig =>
+  ({ mode, theme, [`${category}-color` as const]: color }, { outPath }) => {
+    const layer = `ds.theme.color`;
+    const isDefault = color === buildOptions?.accentColor;
+    const selector = `${isDefault ? ':root, ' : ''}[data-color="${color}"]`;
+
+    return {
+      usesDtcg,
+      preprocessors: ['tokens-studio'],
+      platforms: {
+        css: {
+          // custom
+          outPath,
+          mode,
+          theme,
+          selector,
+          layer,
+          //
+          prefix,
+          buildPath: `${outPath}/${theme}/`,
+          transforms: dsTransformers,
+          files: [
+            {
+              destination: `color/${color}.css`,
+              format: formats.colorcategory.name,
+              filter: (token) => isColorCategoryToken(token, category),
+            },
+          ],
+          options: {
+            fileHeader,
+            outputReferences: true,
+          },
+        },
+      },
+    };
+  };
 
 const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => {
   const selector = `:root`;
@@ -252,6 +291,8 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
 
 export const configs = {
   colorModeVariables,
+  mainColorVariables: colorCategoryVariables('main'),
+  supportColorVariables: colorCategoryVariables('support'),
   typographyVariables,
   semanticVariables,
   typescriptTokens,

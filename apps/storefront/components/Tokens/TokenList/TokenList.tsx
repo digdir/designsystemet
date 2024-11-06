@@ -97,7 +97,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <Heading size='xs' level={4} className={classes.title}>
+        <Heading data-size='xs' level={4} className={classes.title}>
           {capitalizeString(group)}
         </Heading>
         <div className={cl(classes.group)}>
@@ -144,7 +144,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       </div>
 
       <div className={classes.textContainer}>
-        <Heading level={5} size='2xs' className={classes.name}>
+        <Heading level={5} data-size='2xs' className={classes.name}>
           {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
           &nbsp;
           <ClipboardButton
@@ -215,7 +215,7 @@ const TokenList = ({
             className={classes.npmShield}
           />
         </Link>
-        <Paragraph size='sm'>@digdir/designsystemet-theme</Paragraph>
+        <Paragraph data-size='sm'>@digdir/designsystemet-theme</Paragraph>
       </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
@@ -226,17 +226,25 @@ const TokenList = ({
               </Dropdown.Trigger>
               <Dropdown>
                 <Dropdown.List>
-                  <Dropdown.Item onClick={() => setBrand('digdir')}>
-                    Digdir
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('digdir')}>
+                      Digdir
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('altinn')}>
-                    Altinn
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('altinn')}>
+                      Altinn
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('tilsynet')}>
-                    Tilsynet
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('tilsynet')}>
+                      Tilsynet
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setBrand('portal')}>
-                    Brreg
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('portal')}>
+                      Brreg
+                    </Dropdown.Button>
                   </Dropdown.Item>
                 </Dropdown.List>
               </Dropdown>

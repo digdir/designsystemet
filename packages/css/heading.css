@@ -1,29 +1,55 @@
 .ds-heading {
+  font-size: 1.3em; /* Fallback if not supporting round() */
+  font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
+  font-weight: var(--ds-heading-md-font-weight);
+  letter-spacing: var(--ds-heading-md-letter-spacing);
+  line-height: var(--ds-heading-md-line-height);
   margin: 0;
 
-  @composes ds-heading-text--md from './base/base.css';
-
+  /* Using font-size to ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    @composes ds-heading-text--2xs from './base/base.css';
+    font-weight: var(--ds-heading-2xs-font-weight);
+    line-height: var(--ds-heading-2xs-line-height);
+    font-size: var(--ds-heading-2xs-font-size);
+    letter-spacing: var(--ds-heading-2xs-letter-spacing);
   }
 
   &[data-size='xs'] {
-    @composes ds-heading-text--xs from './base/base.css';
+    font-weight: var(--ds-heading-xs-font-weight);
+    line-height: var(--ds-heading-xs-line-height);
+    font-size: var(--ds-heading-xs-font-size);
+    letter-spacing: var(--ds-heading-xs-letter-spacing);
   }
 
   &[data-size='sm'] {
-    @composes ds-heading-text--sm from './base/base.css';
+    font-weight: var(--ds-heading-sm-font-weight);
+    line-height: var(--ds-heading-sm-line-height);
+    font-size: var(--ds-heading-sm-font-size);
+    letter-spacing: var(--ds-heading-sm-letter-spacing);
+  }
+
+  &[data-size='md'] {
+    font-size: var(--ds-heading-md-font-size);
   }
 
   &[data-size='lg'] {
-    @composes ds-heading-text--lg from './base/base.css';
+    font-weight: var(--ds-heading-lg-font-weight);
+    line-height: var(--ds-heading-lg-line-height);
+    font-size: var(--ds-heading-lg-font-size);
+    letter-spacing: var(--ds-heading-lg-letter-spacing);
   }
 
   &[data-size='xl'] {
-    @composes ds-heading-text--xl from './base/base.css';
+    font-weight: var(--ds-heading-xl-font-weight);
+    line-height: var(--ds-heading-xl-line-height);
+    font-size: var(--ds-heading-xl-font-size);
+    letter-spacing: var(--ds-heading-xl-letter-spacing);
   }
 
   &[data-size='2xl'] {
-    @composes ds-heading-text--2xl from './base/base.css';
+    font-weight: var(--ds-heading-2xl-font-weight);
+    line-height: var(--ds-heading-2xl-line-height);
+    font-size: var(--ds-heading-2xl-font-size);
+    letter-spacing: var(--ds-heading-2xl-letter-spacing);
   }
 }

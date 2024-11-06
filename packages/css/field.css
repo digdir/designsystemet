@@ -1,7 +1,96 @@
 .ds-field {
-  display: contents;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
 
-  & > * + * {
-    margin-top: var(--ds-spacing-2);
+  & [data-field='description'] {
+    color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+  }
+
+  /**
+   * States
+   */
+  &:has([aria-disabled='true'], :disabled) > * {
+    cursor: not-allowed;
+    opacity: var(--ds-disabled-opacity);
+  }
+
+  &:has([aria-readonly='true'], [readonly]) label {
+    --dsc-label--readonly: ; /* Activate lock icon for label when readonly */
+  }
+
+  /**
+   * Toggle inputs
+   */
+  &:has(input:is([type='radio'], [type='checkbox'])) {
+    border-radius: var(--ds-border-radius-md);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 0;
+    width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
+
+    & > * {
+      grid-column: 2; /* Only allow input in column 1 */
+    }
+
+    & label {
+      --dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
+      font-weight: var(--ds-font-weight-regular);
+    }
+
+    & input {
+      grid-column: 1; /* Always place input in column 1 */
+      grid-row: 1; /* Always place input in row 1 */
+    }
+
+    &:not(:has([readonly], [aria-disabled='true'], :disabled)) label {
+      cursor: pointer;
+    }
+
+    &:has(input:focus-visible) {
+      @composes ds-focus--visible from './base/base.css';
+    }
+
+    &:has(input:only-child) {
+      gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
+    }
+  }
+}
+
+/**
+ * Affix
+ */
+.ds-field-affix {
+  --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
+  --dsc-field-affix-padding-inline: var(--ds-spacing-4);
+
+  align-items: center;
+  background: var(--ds-color-neutral-background-subtle);
+  border-radius: var(--ds-border-radius-md);
+  box-sizing: border-box;
+  color: var(--ds-color-neutral-text-subtle);
+  display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+  gap: var(--dsc-field-affix-padding-inline);
+  padding-inline: var(--dsc-field-affix-padding-inline);
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+
+  /* Using ::before to make input border overlap addons border */
+  &::before {
+    border-radius: inherit;
+    border: var(--dsc-field-affix-border);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  /* Using double selector to ensure we win specificity */
+  .ds-input.ds-input {
+    border-radius: 0;
+    border: var(--dsc-field-affix-border);
+    flex: 1 1 auto;
   }
 }

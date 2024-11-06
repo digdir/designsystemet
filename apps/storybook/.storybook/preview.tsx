@@ -1,8 +1,6 @@
 import './style.css';
 import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
-
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 
 import type { LinkProps } from '@digdir/designsystemet-react';

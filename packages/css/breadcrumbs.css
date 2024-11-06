@@ -3,22 +3,6 @@
   --dsc-breadcrumbs-chevron-size: var(--ds-sizing-6);
   --dsc-breadcrumbs-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
 
-  @composes ds-body-text--md from './base/base.css';
-
-  &[data-size='sm'] {
-    --dsc-breadcrumbs-spacing: var(--ds-spacing-1);
-    --dsc-breadcrumbs-chevron-size: var(--ds-sizing-5);
-
-    @composes ds-body-text--sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-breadcrumbs-spacing: var(--ds-spacing-3);
-    --dsc-breadcrumbs-chevron-size: var(--ds-sizing-7);
-
-    @composes ds-body-text--lg from './base/base.css';
-  }
-
   & > :is(ol, ul) {
     display: flex;
     flex-wrap: wrap;
@@ -55,13 +39,13 @@
     rotate: 180deg;
   }
 
-  @media (max-width: 650px) {
+  @media (width < 650px) {
     & > :is(ol, ul):not(:only-child) {
       display: none; /* Hide list when mobile and having back link */
     }
   }
 
-  @media (min-width: 651px) {
+  @media (min-width: 650px) {
     & > :is(:not(ol, ul)):not(:only-child) {
       display: none; /* Hide back link when desktop and having list */
     }
