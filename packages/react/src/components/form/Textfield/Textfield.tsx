@@ -10,7 +10,7 @@ import {
 import type { DefaultProps } from '../../../types';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
-import { Field, type FieldProps } from '../Field';
+import { Field, type FieldCounterProps, type FieldProps } from '../Field';
 import { Input } from '../Input';
 import { Textarea } from '../Textarea';
 
@@ -31,6 +31,10 @@ type SharedTextfieldProps = {
   fieldProps?: FieldProps & {
     ref?: ForwardedRef<HTMLDivElement>;
   };
+  /**
+   * Props for field counter
+   */
+  fieldCounterProps?: FieldCounterProps;
 } & DefaultProps;
 
 type TextareaTypes = {
@@ -66,6 +70,7 @@ export const Textfield = forwardRef<
       suffix,
       'data-size': size,
       fieldProps,
+      fieldCounterProps,
       ...rest
     },
     ref,
@@ -93,6 +98,7 @@ export const Textfield = forwardRef<
           )}
           {suffix && <Field.Affix>{suffix}</Field.Affix>}
         </AffixWrapper>
+        {fieldCounterProps && <Field.Counter {...fieldCounterProps} />}
         {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
       </Field>
     );

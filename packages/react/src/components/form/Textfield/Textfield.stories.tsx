@@ -39,9 +39,9 @@ export const Rows: Story = {
 export const WithCharacterCounter: Story = {
   args: {
     label: 'Label',
-    // characterLimit: {
-    //   maxCount: 5,
-    // },
+    fieldCounterProps: {
+      limit: 10,
+    },
   },
 };
 
