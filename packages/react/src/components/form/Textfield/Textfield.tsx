@@ -36,9 +36,7 @@ type SharedTextfieldProps = {
   /**
    * Props for the wrapping field
    */
-  fieldProps?: FieldProps & {
-    ref?: ForwardedRef<HTMLDivElement>;
-  };
+  fieldProps?: FieldProps;
   /**
    * Props for field counter
    */
