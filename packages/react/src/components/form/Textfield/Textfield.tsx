@@ -10,7 +10,14 @@ import {
 import type { DefaultProps } from '../../../types';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
-import { Field, type FieldCounterProps, type FieldProps } from '../Field';
+import {
+  Field,
+  FieldAffix,
+  FieldAffixWrapper,
+  FieldCounter,
+  type FieldCounterProps,
+  type FieldProps,
+} from '../Field';
 import { Input } from '../Input';
 import { Textarea } from '../Textarea';
 
@@ -75,14 +82,14 @@ export const Textfield = forwardRef<
     },
     ref,
   ) => {
-    const AffixWrapper = prefix || suffix ? Field.AffixWrapper : Fragment;
+    const AffixWrapper = prefix || suffix ? FieldAffixWrapper : Fragment;
 
     return (
       <Field data-size={size} {...fieldProps}>
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
         <AffixWrapper>
-          {prefix && <Field.Affix>{prefix}</Field.Affix>}
+          {prefix && <FieldAffix>{prefix}</FieldAffix>}
           {multiline === true ? (
             <Textarea
               ref={ref as ForwardedRef<HTMLTextAreaElement>}
@@ -96,9 +103,9 @@ export const Textfield = forwardRef<
               {...(rest as InputHTMLAttributes<HTMLInputElement>)}
             />
           )}
-          {suffix && <Field.Affix>{suffix}</Field.Affix>}
+          {suffix && <FieldAffix>{suffix}</FieldAffix>}
         </AffixWrapper>
-        {fieldCounterProps && <Field.Counter {...fieldCounterProps} />}
+        {fieldCounterProps && <FieldCounter {...fieldCounterProps} />}
         {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
       </Field>
     );
