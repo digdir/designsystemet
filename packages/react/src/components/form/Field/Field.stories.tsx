@@ -90,11 +90,12 @@ export const Adornments: Story = () => (
         <Field.Affix>pr.mnd</Field.Affix>
       </Field.AffixWrapper>
     </Field>
+
     <Field>
       <Label>Hvor mange kilo veier eplene du har valgt?</Label>
       <Field.AffixWrapper>
-        <Textarea rows={2} cols={4} />
         <Field.Affix>NOK</Field.Affix>
+        <Textarea rows={2} cols={4} />
       </Field.AffixWrapper>
     </Field>
 
