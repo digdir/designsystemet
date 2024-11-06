@@ -9,7 +9,7 @@
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   gap: var(--ds-spacing-4);
 }
 

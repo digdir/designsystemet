@@ -1,6 +1,11 @@
 'use client';
-import { Paragraph, SkipLink } from '@digdir/designsystemet-react';
-import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { Button, Paragraph, SkipLink } from '@digdir/designsystemet-react';
+import {
+  MenuHamburgerIcon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -54,6 +59,16 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
+  const [theme, setTheme] = useState('light');
+
+  const handleThemeChange = () => {
+    document.documentElement.setAttribute('data-ds-color-mode', theme);
+  };
+
+  useEffect(() => {
+    handleThemeChange();
+  }, [theme]);
+
   useEffect(() => {
     const handleResize = () => {
       if (isHamburger) return;
@@ -99,8 +114,18 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                 setOpen(!open);
               }}
             >
-              {open && <XMarkIcon fontSize={26} color='#1E2B3C' />}
-              {!open && <MenuHamburgerIcon fontSize={26} color='#1E2B3C' />}
+              {open && (
+                <XMarkIcon
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
+              {!open && (
+                <MenuHamburgerIcon
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
             </button>
             <ul
               ref={menuRef}
@@ -149,7 +174,41 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                   <FigmaLogo />
                 </Link>
               </li>
+              <li className={cl(classes.item, classes.itemIcon)}>
+                {isHamburger && (
+                  <Button
+                    variant='tertiary'
+                    onClick={() => {
+                      setTheme(theme === 'light' ? 'dark' : 'light');
+                    }}
+                    icon={true}
+                    color='neutral'
+                  >
+                    {theme === 'light' ? (
+                      <SunIcon fontSize='1em' />
+                    ) : (
+                      <MoonIcon fontSize='1em' />
+                    )}
+                  </Button>
+                )}
+              </li>
             </ul>
+            {!isHamburger && (
+              <Button
+                variant='tertiary'
+                onClick={() => {
+                  setTheme(theme === 'light' ? 'dark' : 'light');
+                }}
+                icon={true}
+                color='neutral'
+              >
+                {theme === 'light' ? (
+                  <SunIcon fontSize='1em' />
+                ) : (
+                  <MoonIcon fontSize='1em' />
+                )}
+              </Button>
+            )}
           </nav>
         </div>
       </header>

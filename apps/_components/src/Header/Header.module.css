@@ -4,7 +4,7 @@
   align-items: center;
   position: relative;
   z-index: 5;
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 .container {
@@ -13,6 +13,14 @@
   justify-content: space-between;
   width: 100%;
   padding: 0 var(--ds-spacing-8);
+}
+
+.container nav {
+  display: flex;
+}
+
+.container nav button {
+  height: fit-content;
 }
 
 .logoContainer {
@@ -26,13 +34,17 @@
   width: auto;
 }
 
+.logoLink svg [data-text] {
+  fill: var(--ds-color-neutral-text-default);
+}
+
 .logoLink {
   display: flex;
   align-items: center;
 }
 
 .tag {
-  background-color: #f2d6ff;
+  background-color: var(--ds-global-purple-5);
   border-radius: 4px;
   padding: 7px 10px;
   font-size: 18px;
@@ -50,7 +62,7 @@
   margin: 0;
   padding: 0;
   max-width: 100%;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .item {
@@ -125,13 +137,13 @@
   }
 
   .menu {
-    border-top: 1px solid #e2e2e2;
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
     position: absolute;
     z-index: 1;
     left: 0;
     right: 0;
     top: 71px;
-    background-color: white;
+    background-color: var(--ds-color-neutral-background-default);
     box-shadow: var(--ds-shadow-lg);
     flex-direction: column;
     display: none;

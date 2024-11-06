@@ -56,12 +56,12 @@
 }
 
 .grey {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-surface-default);
   box-shadow: none;
 }
 
 .white {
-  background-color: var(--ds-color-neutral-background-default);
+  background-color: var(--ds-color-neutral-surface-default);
 }
 
 .title {
