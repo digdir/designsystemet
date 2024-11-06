@@ -48,19 +48,37 @@ export type TextfieldProps = SharedTextfieldProps &
 export const Textfield = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   TextfieldProps
->((props, ref) => {
-  const { label, description, validation, multiline } = props;
-
-  return (
-    <Field>
-      {!!label && <Label weight='regular'>{label}</Label>}
-      {!!description && <div data-field='description'>{description}</div>}
-      {multiline === true ? (
-        <Textarea ref={ref as ForwardedRef<HTMLTextAreaElement>} {...props} />
-      ) : (
-        <Input ref={ref as ForwardedRef<HTMLInputElement>} {...props} />
-      )}
-      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
-    </Field>
-  );
-});
+>(
+  (
+    {
+      label,
+      description,
+      validation,
+      multiline,
+      prefix,
+      suffix,
+      'data-size': size,
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <Field data-size={size}>
+        {!!label && <Label weight='regular'>{label}</Label>}
+        {!!description && <div data-field='description'>{description}</div>}
+        {multiline === true ? (
+          <Textarea
+            ref={ref as ForwardedRef<HTMLTextAreaElement>}
+            {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+          />
+        ) : (
+          <Input
+            ref={ref as ForwardedRef<HTMLInputElement>}
+            {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+          />
+        )}
+        {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+      </Field>
+    );
+  },
+);

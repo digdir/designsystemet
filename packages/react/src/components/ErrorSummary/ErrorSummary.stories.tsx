@@ -39,13 +39,14 @@ export const WithForm: Story = () => (
     <Textfield
       label='Fornavn'
       id='fornavn'
-      error='Fornavn må være minst 2 tegn'
+      validation='Fornavn må være minst 2 tegn'
     />
 
     <Textfield
       label='Telefon'
       id='telefon'
-      error='Telefonnummer kan kun inneholde siffer'
+      type='tel'
+      validation='Telefonnummer kan kun inneholde siffer'
     />
 
     <ErrorSummary>

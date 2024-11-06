@@ -74,8 +74,7 @@ export const MediumRow: StoryFn<{
         }}
       >
         <Textfield
-          hideLabel
-          label='Kontroller meg!'
+          aria-label='Kontroller meg!'
           data-size={size}
           prefix='prefix'
           suffix='suffix'
