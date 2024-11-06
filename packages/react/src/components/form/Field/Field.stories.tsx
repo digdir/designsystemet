@@ -90,24 +90,25 @@ export const Adornments: Story = () => (
         <Field.Affix>pr.mnd</Field.Affix>
       </Field.AffixWrapper>
     </Field>
+
     <Field>
       <Label>Hvor mange kilo veier eplene du har valgt?</Label>
       <Field.AffixWrapper>
         <Textarea rows={2} cols={4} />
-        <Field.Affix>NOK</Field.Affix>
+        <Field.Affix>KG</Field.Affix>
       </Field.AffixWrapper>
     </Field>
 
     <Field>
-      <Label>Hvor mange kroner koster det per måned?</Label>
+      <Label>Hvor mange kroner koster det?</Label>
       <Field.AffixWrapper>
+        <Field.Affix>NOK</Field.Affix>
         <Select>
           <Select.Option value='-1'>Velg &hellip;</Select.Option>
-          <Select.Option value='10'>10kr</Select.Option>
-          <Select.Option value='20'>20kr</Select.Option>
-          <Select.Option value='30'>30kr</Select.Option>
+          <Select.Option value='10'>10</Select.Option>
+          <Select.Option value='20'>20</Select.Option>
+          <Select.Option value='30'>30</Select.Option>
         </Select>
-        <Field.Affix>pr.mnd</Field.Affix>
       </Field.AffixWrapper>
     </Field>
   </div>
