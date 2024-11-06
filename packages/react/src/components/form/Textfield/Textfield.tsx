@@ -16,6 +16,7 @@ import {
   FieldAffixWrapper,
   FieldCounter,
   type FieldCounterProps,
+  FieldDescription,
   type FieldProps,
 } from '../Field';
 import { Input } from '../Input';
@@ -87,7 +88,7 @@ export const Textfield = forwardRef<
     return (
       <Field data-size={size} {...fieldProps}>
         {!!label && <Label weight='regular'>{label}</Label>}
-        {!!description && <div data-field='description'>{description}</div>}
+        {!!description && <FieldDescription>{description}</FieldDescription>}
         <AffixWrapper>
           {prefix && <FieldAffix>{prefix}</FieldAffix>}
           {multiline === true ? (
