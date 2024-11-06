@@ -61,13 +61,19 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
 
   const [theme, setTheme] = useState('light');
 
-  const handleThemeChange = () => {
-    document.documentElement.setAttribute('data-ds-color-mode', theme);
+  const handleThemeChange = (newTheme: 'dark' | 'light') => {
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-ds-color-mode', newTheme);
   };
 
   useEffect(() => {
-    handleThemeChange();
-  }, [theme]);
+    // get user preference
+    const userPreference = window.matchMedia('(prefers-color-scheme: dark)');
+    const userPrefersDark = userPreference.matches;
+
+    // set theme based on user preference
+    handleThemeChange(userPrefersDark ? 'dark' : 'light');
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -179,7 +185,7 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                   <Button
                     variant='tertiary'
                     onClick={() => {
-                      setTheme(theme === 'light' ? 'dark' : 'light');
+                      handleThemeChange(theme === 'light' ? 'dark' : 'light');
                     }}
                     icon={true}
                     color='neutral'
@@ -197,7 +203,7 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
               <Button
                 variant='tertiary'
                 onClick={() => {
-                  setTheme(theme === 'light' ? 'dark' : 'light');
+                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
                 }}
                 icon={true}
                 color='neutral'
