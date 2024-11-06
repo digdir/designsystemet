@@ -14,8 +14,6 @@ import {
   Field,
   FieldAffix,
   FieldAffixWrapper,
-  FieldCounter,
-  type FieldCounterProps,
   FieldDescription,
   type FieldProps,
 } from '../Field';
@@ -37,10 +35,6 @@ type SharedTextfieldProps = {
    * Props for the wrapping field
    */
   fieldProps?: FieldProps;
-  /**
-   * Props for field counter
-   */
-  fieldCounterProps?: FieldCounterProps;
 } & DefaultProps;
 
 type TextareaTypes = {
@@ -76,7 +70,6 @@ export const Textfield = forwardRef<
       suffix,
       'data-size': size,
       fieldProps,
-      fieldCounterProps,
       ...rest
     },
     ref,
@@ -104,7 +97,6 @@ export const Textfield = forwardRef<
           )}
           {suffix && <FieldAffix>{suffix}</FieldAffix>}
         </AffixWrapper>
-        {fieldCounterProps && <FieldCounter {...fieldCounterProps} />}
         {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
       </Field>
     );

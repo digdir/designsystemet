@@ -39,15 +39,6 @@ export const Rows: Story = {
   },
 };
 
-export const WithCharacterCounter: Story = {
-  args: {
-    label: 'Label',
-    fieldCounterProps: {
-      limit: 10,
-    },
-  },
-};
-
 export const Adornments: Story = {
   args: {
     prefix: 'NOK',
