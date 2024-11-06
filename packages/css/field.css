@@ -75,7 +75,7 @@
   white-space: nowrap;
   width: fit-content;
 
-  & [data-affix] {
+  & :not(.ds-input) {
     padding-inline: var(--dsc-field-affix-padding-inline);
   }
 
@@ -89,21 +89,20 @@
     position: absolute;
   }
 
-  /* Using double selector to ensure we win specificity */
-  .ds-input.ds-input {
+  .ds-input {
     border: var(--dsc-field-affix-border);
     flex: 1 1 auto;
-  }
 
-  /* if it has affix after */
-  .ds-input:has(+ [data-affix]) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+    /* if it has affix after */
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-  /* if it has affix before */
-  & [data-affix] + .ds-input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    /* if it has affix before */
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }

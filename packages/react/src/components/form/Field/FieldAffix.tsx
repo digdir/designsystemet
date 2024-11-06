@@ -20,6 +20,6 @@ export type FieldAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
 
 export const FieldAffix = forwardRef<HTMLSpanElement, FieldAffixProps>(
   function FieldAffix(rest, ref) {
-    return <span aria-hidden='true' data-affix ref={ref} {...rest} />;
+    return <span aria-hidden='true' ref={ref} {...rest} />;
   },
 );
