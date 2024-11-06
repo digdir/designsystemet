@@ -8,11 +8,7 @@ export type UseCheckboxGroupProps = {
   name?: string;
   readOnly?: boolean;
   value?: string[];
-  onChange?: (
-    nextValue: string[],
-    currentValue: string[],
-    event: ChangeEvent<HTMLInputElement>,
-  ) => void;
+  onChange?: (nextValue: string[], currentValue: string[]) => void;
 };
 
 /**
@@ -51,20 +47,15 @@ export function useCheckboxGroup({
   const errorId = useId();
   const checkboxRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
-  const getInputs = (checked: boolean) => {
-    const inputs: HTMLInputElement[] = [];
-    for (const [_, input] of checkboxRefs.current) {
-      if (input.checked === checked) {
-        inputs.push(input);
-      }
-    }
-    return inputs;
-  };
+  const getInputs = (checked: boolean) =>
+    Array.from(checkboxRefs.current.values()).filter(
+      (input) => input.checked === checked,
+    );
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     const nextValue = Array.from(getInputs(true), ({ value }) => value);
     setValue(nextValue);
-    onChange?.(nextValue, currentValue, event);
+    onChange?.(nextValue, currentValue);
   };
 
   const getCheckboxProps = (value: string, props?: GetCheckboxPropsType) => {
@@ -81,6 +72,7 @@ export function useCheckboxGroup({
       const unchecked = !!getInputs(false).length;
       localRef.current.indeterminate = unchecked && checked;
       localRef.current.checked = !unchecked && checked;
+      /* We can use `currentValue` as dependency here maybe? */
     });
 
     useEffect(() => {
@@ -92,44 +84,37 @@ export function useCheckboxGroup({
       };
     }, [value]);
 
-    const indeterminateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const indeterminateChange = () => {
       if (!localRef.current) return;
       const checked = !!localRef.current.checked;
       for (const input of getInputs(!checked)) {
+        /* Do we need to dispatch events for these? */
         input.checked = checked;
       }
     };
 
     const mergedRefs = useMergeRefs([ref, localRef]);
 
-    const {
-      'aria-describedby': userAriaDescribedBy,
-      onChange: userOnChange,
-      ...userRest
-    } = rest;
-
     return {
       /* Spread anything the user has set first */
-      ...userRest,
+      ...rest,
       /* Concat ours with the user prop */
       'aria-describedby': error
-        ? `${errorId} ${userAriaDescribedBy}`
-        : userAriaDescribedBy,
+        ? `${errorId} ${rest['aria-describedby']}`
+        : rest['aria-describedby'],
       'aria-invalid': error ? true : undefined,
       checked: allowIndeterminate ? undefined : currentValue.includes(value),
       name: allowIndeterminate ? undefined : name || nameFallback,
       onChange: (e: ChangeEvent<HTMLInputElement>) => {
-        allowIndeterminate && indeterminateChange(e);
-        handleChange(e);
-        userOnChange?.(e);
+        allowIndeterminate && indeterminateChange();
+        handleChange();
+        rest.onChange?.(e);
       },
       ref: mergedRefs,
       value: allowIndeterminate ? '' : value,
       disabled,
       readOnly,
     };
-
-    /* TODO make this better */
   };
 
   return {

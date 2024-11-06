@@ -153,7 +153,7 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
   });
 
   const myRef = useRef<HTMLInputElement>(null);
-  console.log(myRef);
+  console.log(myRef.current);
 
   return (
     <Table>
@@ -165,6 +165,7 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
               {...getCheckboxProps('', {
                 allowIndeterminate: true,
                 ref: myRef,
+                onChange: (event) => console.log({ event, myRef }),
               })}
             />
           </Table.HeaderCell>
@@ -177,7 +178,9 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
             <Table.Cell>
               <Checkbox
                 aria-label={`Check ${row}`}
-                {...getCheckboxProps(`${row}`)}
+                {...getCheckboxProps(`${row}`, {
+                  onChange: (event) => console.log({ event, row }),
+                })}
               />
             </Table.Cell>
             <Table.Cell>Content</Table.Cell>
