@@ -14,6 +14,9 @@ export default {
     multiline: {
       type: 'boolean',
     },
+    validation: {
+      type: 'string',
+    },
   },
 } as Meta;
 
@@ -49,7 +52,6 @@ export const Adornments: Story = {
   args: {
     prefix: 'NOK',
     suffix: 'pr. mnd',
-    'data-size': 'md',
     label: 'Hvor mange kroner koster det per måned?',
   },
 };
