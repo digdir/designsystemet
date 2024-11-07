@@ -14,7 +14,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Systemvarsler',
-      date: '23. oktober 2024',
+      date: '6. november 2024',
     }}
   />
 );
@@ -24,7 +24,7 @@ Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller vikt
 
 Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er, men gir beskjed om feil i systemet eller viktige hendelser. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/monstre/feilmeldinger). Denne artikkelen fokuserer på feil og varsler i systemet. 
 
-Systemvarsler kan komme i ulike former, for eksempel som `alert`, `modal` eller `popover`. Hvilken form vi velger på varselet avhenger av om det krever at brukerne gjør noe eller ikke.  
+Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Hvilken form vi velger på varselet avhenger av om det krever at brukerne gjør noe eller ikke.  
 
 Hvis brukerne ikke skal gjøre noe (passivt varsel) kan vi bruke for eksempel `alert`, `toast` eller `badge`. Hvis brukerne må gjøre noe, må varselet være tydeligere og vi kan for eksempel bruke `modal` eller `popover`, der brukerne må gjøre noe for å få varselet til å forsvinne. Disse varslene ligner på valideringsfeil, men siden det ikke er brukerne som har gjort noe for å utløse feilen, så må vi ha et annet design på dem. 
 
@@ -74,7 +74,7 @@ Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksem
 ### Hvordan presenterer vi varselet?
 Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi bør velge den presentasjonsmåten som gjør at brukerne oppfatter varselet som nyttig. Varselet må ikke skape forvirring eller frustrasjon.  
 
-Vi skal se nærmere på feilsider og komponentene `modal`, `alert` og `popover`. Når og hvordan skal vi bruke dem? 
+Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
 
 #### Når bruker vi feilsider?
 Vi viser ofte en feilside når brukerne prøver å laste inn en side som ikke finnes, eller de har en lenke som er feil. Vi kan også bruke feilsider til å fortelle om tekniske feil.  
