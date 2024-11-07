@@ -3,7 +3,14 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import type { TableProps } from './Table';
 import { Table } from './Table';
 
-import { TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '.';
+import {
+  TableBody,
+  TableCell,
+  TableFoot,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '.';
 
 const children = (
   <>
@@ -26,6 +33,13 @@ const children = (
         <TableCell>Cell 6</TableCell>
       </TableRow>
     </TableBody>
+    <TableFoot>
+      <TableRow>
+        <TableCell>Footer 1</TableCell>
+        <TableCell>Footer 2</TableCell>
+        <TableCell>Footer 3</TableCell>
+      </TableRow>
+    </TableFoot>
   </>
 );
 
