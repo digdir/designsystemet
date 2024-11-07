@@ -25,19 +25,19 @@ type SharedTextfieldProps = {
   prefix?: string;
   /** Suffix */
   suffix?: string;
-  /** Validation message. This will flag an error & assign `aria-invalid` */
+  /** Error message for field */
   error?: ReactNode;
   /** Uses `Field.Counter` to display a character counter */
   counter?: FieldCounterProps | number;
 } & DefaultProps;
 
 type TextfieldTextareaProps = {
-  /** Use to render a `textarea` instead of `input` for multiline support  */
+  /** Use to render a `Textarea` instead of `Input` for multiline support  */
   multiline: true;
 } & TextareaProps_;
 
 type TextfieldInputProps = {
-  /** Use to render a `textarea` instead of `input` for multiline support  */
+  /** Use to render a `Textarea` instead of `Input` for multiline support  */
   multiline?: never | false;
 } & InputProps_;
 

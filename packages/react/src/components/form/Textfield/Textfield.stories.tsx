@@ -14,8 +14,33 @@ export default {
     multiline: {
       type: 'boolean',
     },
-    validation: {
-      type: 'string',
+    // Using argType here to exclude values from React.HTMLInputTypeAttribute
+    type: {
+      control: 'select',
+      options: [
+        'checkbox',
+        'date',
+        'datetime-local',
+        'email',
+        'month',
+        'number',
+        'password',
+        'radio',
+        'search',
+        'tel',
+        'text',
+        'time',
+        'url',
+        'week',
+        // 'button',
+        'color',
+        'file',
+        // 'hidden',
+        // 'image',
+        // 'range',
+        // 'reset',
+        // 'submit',
+      ],
     },
   },
 } as Meta;
@@ -26,8 +51,10 @@ export const Preview: Story = {
     disabled: false,
     readOnly: false,
     'data-size': 'md',
-    description: '',
     multiline: false,
+    description: '',
+    error: '',
+    counter: 0,
   },
 };
 
