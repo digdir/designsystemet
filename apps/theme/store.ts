@@ -1,4 +1,3 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type {
   ColorInfo,
   ThemeColors,
@@ -7,16 +6,20 @@ import type {
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
-type StoreThemeType = {
-  theme: ThemeInfo;
-  color: CssColor;
+export type ColorTheme = {
+  name: string;
+  colors: ThemeInfo;
 };
 
 type ColorStore = {
-  theme: {
-    colors: ThemeInfo[];
-  };
-  setTheme: (theme: StoreThemeType) => void;
+  mainColors: ColorTheme[];
+  supportColors: ColorTheme[];
+  neutralColor: ColorTheme;
+  addMainColor: (newColorTheme: ColorTheme) => void;
+  updateMainColor: (newColorTheme: ColorTheme, index: number) => void;
+  setMainColors: (colors: ColorTheme[]) => void;
+  setSupportColors: (colors: ColorTheme[]) => void;
+  setNeutralColor: (color: ColorTheme) => void;
   selectedColor: { color: ColorInfo; type: ThemeColors };
   setSelectedColor: (color: ColorInfo, type: ThemeColors) => void;
   borderRadius: string;
@@ -24,15 +27,7 @@ type ColorStore = {
   appearance: 'light' | 'dark';
   setAppearance: (appearance: 'light' | 'dark') => void;
   themePreview: 'one' | 'two' | 'three';
-  setPreviewTheme: (theme: 'one' | 'two' | 'three') => void;
-};
-
-const defaultTheme = () => {
-  return {
-    light: [],
-    dark: [],
-    contrast: [],
-  };
+  setThemePreview: (theme: 'one' | 'two' | 'three') => void;
 };
 
 export const useThemeStore = create(
@@ -48,12 +43,30 @@ export const useThemeStore = create(
     borderRadius: '0.25rem',
     appearance: 'light',
     themePreview: 'one',
-    theme: {
-      colors: []
+    mainColors: [],
+    addMainColor: (newColorTheme) =>
+      set((state) => ({
+        mainColors: [...state.mainColors, newColorTheme],
+      })),
+    updateMainColor: (updatedItem, index) =>
+      set((state) => {
+        state.mainColors[index] = updatedItem;
+        return { mainColors: state.mainColors };
+      }),
+    setMainColors: (colors) => set({ mainColors: colors }),
+    supportColors: [],
+    setSupportColors: (colors) => set({ supportColors: colors }),
+    neutralColor: {
+      name: 'Default',
+      colors: {
+        light: [],
+        dark: [],
+        contrast: [],
+      },
     },
-    setTheme
+    setNeutralColor: (color) => set({ neutralColor: color }),
     setAppearance: (appearance) => set({ appearance: appearance }),
-    setThemePreview: (theme) => set({ theme: theme }),
+    setThemePreview: (themePreview) => set({ themePreview: themePreview }),
     setBorderRadius: (radius) => set({ borderRadius: radius }),
     setSelectedColor: (color, type) =>
       set({ selectedColor: { color: color, type: type } }),

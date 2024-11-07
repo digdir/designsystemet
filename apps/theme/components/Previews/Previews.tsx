@@ -13,9 +13,9 @@ type PreviewsProps = {
 };
 
 export const Previews = () => {
-  const theme = useThemeStore((state) => state.theme);
+  const theme = useThemeStore((state) => state.themePreview);
   const appearance = useThemeStore((state) => state.appearance);
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const setTheme = useThemeStore((state) => state.setThemePreview);
   const setAppearance = useThemeStore((state) => state.setAppearance);
 
   return (

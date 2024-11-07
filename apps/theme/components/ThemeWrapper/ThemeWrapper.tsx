@@ -8,7 +8,7 @@ type ThemeWrapperProps = {
 
 export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
   const appearance = useThemeStore((state) => state.appearance);
-  const theme = useThemeStore((state) => state.theme);
+  const theme = useThemeStore((state) => state.themePreview);
 
   return (
     <div data-ds-color-mode={appearance} data-theme={theme}>

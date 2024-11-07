@@ -13,7 +13,6 @@ import type {
 import {
   areColorsContrasting,
   canTextBeUsedOnColors,
-  generateColorTheme,
   isHexColor,
 } from '@digdir/designsystemet/color';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
@@ -23,7 +22,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Settings } from '../settings';
 import { useThemeStore } from '../store';
-import { mapTokens } from '../utils/tokenMapping';
 
 import { Previews } from '../components';
 import classes from './page.module.css';
@@ -57,36 +55,6 @@ export default function Home() {
 
   const themeMode = (params.get('theme') as ColorMode) || 'light';
   const contrastMode = (params.get('contrastMode') as ContrastMode) || 'aa';
-
-  useEffect(() => {
-    mapTokens();
-
-    // Get colors from query params or use default colors
-    const queryAccent = getQueryColor('accent', accentTheme.color);
-    const queryNeutral = getQueryColor('neutral', neutralTheme.color);
-    const queryBrand1 = getQueryColor('brand1', brandOneTheme.color);
-    const queryBrand2 = getQueryColor('brand2', brandTwoTheme.color);
-    const queryBrand3 = getQueryColor('brand3', brandThreeTheme.color);
-
-    // Generate color scales
-    const colors = generateColorTheme({
-      colors: {
-        accent: queryAccent,
-        neutral: queryNeutral,
-        brand1: queryBrand1,
-        brand2: queryBrand2,
-        brand3: queryBrand3,
-      },
-      contrastMode,
-    });
-
-    // Update colors and themes
-    updateColor('accent', queryAccent, colors.accent);
-    updateColor('neutral', queryNeutral, colors.neutral);
-    updateColor('brand1', queryBrand1, colors.brand1);
-    updateColor('brand2', queryBrand2, colors.brand2);
-    updateColor('brand3', queryBrand3, colors.brand3);
-  }, [contrastMode]);
 
   useEffect(() => {
     // Open modal on selected color change
