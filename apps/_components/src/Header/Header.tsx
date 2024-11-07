@@ -112,27 +112,6 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
             {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
           <nav>
-            <button
-              aria-expanded={open}
-              aria-label='Meny'
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && (
-                <XMarkIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-            </button>
             <ul
               ref={menuRef}
               className={cl(classes.menu, open && classes.active)}
@@ -180,41 +159,45 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                   <FigmaLogo />
                 </Link>
               </li>
-              <li className={cl(classes.item, classes.itemIcon)}>
-                {isHamburger && (
-                  <Button
-                    variant='tertiary'
-                    onClick={() => {
-                      handleThemeChange(theme === 'light' ? 'dark' : 'light');
-                    }}
-                    icon={true}
-                    color='neutral'
-                  >
-                    {theme === 'light' ? (
-                      <SunIcon fontSize='1em' />
-                    ) : (
-                      <MoonIcon fontSize='1em' />
-                    )}
-                  </Button>
-                )}
-              </li>
             </ul>
-            {!isHamburger && (
-              <Button
-                variant='tertiary'
-                onClick={() => {
-                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
-                }}
-                icon={true}
-                color='neutral'
-              >
-                {theme === 'light' ? (
-                  <SunIcon fontSize='1em' />
-                ) : (
-                  <MoonIcon fontSize='1em' />
-                )}
-              </Button>
-            )}
+            <Button
+              variant='tertiary'
+              icon={true}
+              color='neutral'
+              onClick={() => {
+                handleThemeChange(theme === 'light' ? 'dark' : 'light');
+              }}
+            >
+              {theme === 'light' ? (
+                <SunIcon fontSize='1em' />
+              ) : (
+                <MoonIcon fontSize='1em' />
+              )}
+            </Button>
+            <Button
+              variant='tertiary'
+              icon={true}
+              color='neutral'
+              aria-expanded={open}
+              aria-label='Meny'
+              className={cl(classes.toggle, 'ds-focus')}
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              {open && (
+                <XMarkIcon
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
+              {!open && (
+                <MenuHamburgerIcon
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
+            </Button>
           </nav>
         </div>
       </header>

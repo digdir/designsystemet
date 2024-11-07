@@ -1,6 +1,7 @@
+
 <svg width="216" height="106" viewBox="0 0 216 106" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2342_3587)">
-<rect width="180" height="90" transform="translate(22 8)" fill="white"/>
+<rect width="180" height="90" transform="translate(22 8)" />
 <rect x="22" y="8" width="180" height="3" rx="1.5" fill="#1B88DD"/>
 <rect x="22" y="37" width="180" height="3" rx="1.5" fill="#1B88DD"/>
 <rect x="22" y="66" width="180" height="3" rx="1.5" fill="#1B88DD"/>

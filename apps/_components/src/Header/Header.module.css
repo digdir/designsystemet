@@ -132,10 +132,6 @@
     height: 72px;
   }
 
-  .toggle {
-    display: block;
-  }
-
   .menu {
     border-top: 1px solid var(--ds-color-neutral-border-subtle);
     position: absolute;
@@ -179,17 +175,17 @@
   }
 
   .toggle {
-    display: block;
+    display: flex;
   }
 
   .menu {
-    border-top: 1px solid #e2e2e2;
+    border-top: 1px solid var(--ds-color-neutral-border-default);
     position: absolute;
     z-index: 1;
     left: 0;
     right: 0;
     top: 71px;
-    background-color: white;
+    background-color: var(--ds-color-neutral-background-default);
     box-shadow: var(--ds-shadow-lg);
     flex-direction: column;
     display: none;
