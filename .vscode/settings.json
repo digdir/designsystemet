@@ -24,5 +24,6 @@
   },
   "[html]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "files.associations": { "api-extractor.json": "jsonc" }
 }
