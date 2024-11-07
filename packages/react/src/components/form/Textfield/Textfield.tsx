@@ -1,11 +1,4 @@
-import {
-  type ForwardedRef,
-  Fragment,
-  type InputHTMLAttributes,
-  type ReactNode,
-  type TextareaHTMLAttributes,
-  forwardRef,
-} from 'react';
+import { type ForwardedRef, Fragment, type ReactNode, forwardRef } from 'react';
 
 import type { DefaultProps } from '../../../types';
 import { Label } from '../../Label';
@@ -14,10 +7,14 @@ import {
   Field,
   FieldAffix,
   FieldAffixWrapper,
+  type FieldCounterProps,
   FieldDescription,
 } from '../Field';
-import { Input } from '../Input';
-import { Textarea } from '../Textarea';
+import { Input, type InputProps } from '../Input';
+import { Textarea, type TextareaProps } from '../Textarea';
+
+type InputProps_ = Omit<InputProps, 'prefix'>;
+type TextareaProps_ = Omit<TextareaProps, 'prefix'>;
 
 type SharedTextfieldProps = {
   /** Label */
@@ -29,21 +26,23 @@ type SharedTextfieldProps = {
   /** Suffix */
   suffix?: string;
   /** Validation message. This will flag an error & assign `aria-invalid` */
-  validation?: ReactNode;
+  error?: ReactNode;
+  /** Uses `Field.Counter` to display a character counter */
+  counter?: FieldCounterProps | number;
 } & DefaultProps;
 
-type TextareaTypes = {
+type TextfieldTextareaProps = {
   /** Use to render a `textarea` instead of `input` for multiline support  */
   multiline: true;
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+} & TextareaProps_;
 
-type InputTypes = {
+type TextfieldInputProps = {
   /** Use to render a `textarea` instead of `input` for multiline support  */
   multiline?: never | false;
-} & InputHTMLAttributes<HTMLInputElement>;
+} & InputProps_;
 
 export type TextfieldProps = SharedTextfieldProps &
-  (TextareaTypes | InputTypes);
+  (TextfieldTextareaProps | TextfieldInputProps);
 
 /**
  * Preconfigured `Field` for inputing text.
@@ -60,11 +59,12 @@ export const Textfield = forwardRef<
     {
       label,
       description,
-      validation,
+      error,
       multiline,
       prefix,
       suffix,
       'data-size': size,
+      counter,
       ...rest
     },
     ref,
@@ -76,23 +76,28 @@ export const Textfield = forwardRef<
         {!!label && <Label>{label}</Label>}
         {!!description && <FieldDescription>{description}</FieldDescription>}
         <AffixWrapper>
-          {prefix && <FieldAffix>{prefix}</FieldAffix>}
+          {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
           {multiline === true ? (
             <Textarea
               ref={ref as ForwardedRef<HTMLTextAreaElement>}
-              aria-invalid={!!validation}
-              {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+              aria-invalid={!!error}
+              {...(rest as TextareaProps_)}
             />
           ) : (
             <Input
               ref={ref as ForwardedRef<HTMLInputElement>}
-              aria-invalid={!!validation}
-              {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+              aria-invalid={!!error}
+              {...(rest as InputProps_)}
             />
           )}
-          {suffix && <FieldAffix>{suffix}</FieldAffix>}
+          {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
         </AffixWrapper>
-        {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+        {!!error && <ValidationMessage>{error}</ValidationMessage>}
+        {!!counter && (
+          <Field.Counter
+            {...(typeof counter === 'number' ? { limit: counter } : counter)}
+          />
+        )}
       </Field>
     );
   },

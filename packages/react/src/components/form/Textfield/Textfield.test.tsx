@@ -27,7 +27,7 @@ describe('Textfield', () => {
   });
 
   it('is invalid with correct error message', () => {
-    render({ validation: 'error-message' });
+    render({ error: 'error-message' });
 
     const input = screen.getByRole('textbox', { description: 'error-message' });
     expect(input).toBeDefined();

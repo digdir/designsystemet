@@ -47,6 +47,13 @@ export const Adornments: Story = {
   },
 };
 
+export const Counter: Story = {
+  args: {
+    counter: 10,
+    label: 'Hvor mange kroner koster det per måned?',
+  },
+};
+
 export const Controlled: StoryFn<typeof Textfield> = () => {
   const [value, setValue] = useState<string>('');
   return (
