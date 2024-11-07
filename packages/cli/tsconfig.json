@@ -14,5 +14,5 @@
     "sourceMap": false,
     "incremental": false
   },
-  "include": ["./src", "./bin/", "./declarations.d.ts"]
+  "include": ["./index.ts", "./src", "./bin/", "./declarations.d.ts"]
 }

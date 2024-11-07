@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Command } from '@commander-js/extra-typings';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 
 // @public
@@ -142,6 +143,12 @@ export const luminanceFromHex: (hex: CssColor) => number;
 export const luminanceFromRgb: (r: string, g: string, b: string) => number;
 
 // @public (undocumented)
+export const migrateCmd: Command<[string | undefined], {
+list?: true | undefined;
+glob: string;
+}>;
+
+// @public (undocumented)
 export const rgbToHex: (rgb: {
     r: number;
     g: number;
@@ -157,6 +164,26 @@ export type ThemeInfo = {
     dark: ColorInfo[];
     contrast: ColorInfo[];
 };
+
+// @public (undocumented)
+export const tokensBuildCmd: Command<[], {
+tokens: string;
+out: string;
+preview: boolean;
+verbose: boolean;
+}>;
+
+// @public (undocumented)
+export const tokensCreateCmd: Command<[], {
+accent: string;
+neutral: string;
+brand1: string;
+brand2: string;
+brand3: string;
+write: string | true;
+fontFamily: string;
+theme: string;
+}>;
 
 // Warnings were encountered during analysis:
 //
