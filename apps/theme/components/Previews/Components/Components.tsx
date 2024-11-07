@@ -60,21 +60,21 @@ export const Components = () => {
       <div className={cl(classes.card, classes.user)}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
-          data-data-size='xs'
+          data-size='xs'
         >
           Opprett ny bruker
         </Heading>
 
         <Textfield
           label='Navn'
-          data-data-size='sm'
+          data-size='sm'
           placeholder='Ola Normann'
           className={classes.userField}
         />
         <Textfield
           type='email'
           label='E-post'
-          data-data-size='sm'
+          data-size='sm'
           placeholder='ola@norge.no'
           className={classes.userField}
         />
@@ -83,23 +83,23 @@ export const Components = () => {
             Glemt passord?
           </Link>
         </Tooltip>
-        <Button data-data-size='sm' className={classes.userBtn}>
+        <Button data-size='sm' className={classes.userBtn}>
           Opprett ny bruker
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} data-data-size='2xs'>
+        <Heading className={classes.cardTitle} data-size='2xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
           <div className={classes.tableAction}>
-            <Select data-data-size='sm' aria-label='Velg handling'>
+            <Select data-size='sm' aria-label='Velg handling'>
               <Select.Option value='blank'>Velg handling</Select.Option>
               <Select.Option value='everest'>Dupliser</Select.Option>
               <Select.Option value='aconcagua'>Slett</Select.Option>
               <Select.Option value='denali'>Oppdater</Select.Option>
             </Select>
-            <Button className={classes.tableBtn} data-data-size='sm'>
+            <Button className={classes.tableBtn} data-size='sm'>
               Utfør
             </Button>
           </div>
@@ -112,7 +112,7 @@ export const Components = () => {
             <Search.Button />
           </Search>
         </div>
-        <Table data-data-size='sm' border className={classes.table}>
+        <Table data-size='sm' border className={classes.table}>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
