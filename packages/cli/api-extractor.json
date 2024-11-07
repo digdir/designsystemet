@@ -420,7 +420,7 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
-      }
+      },
 
       // "ae-extra-release-tag": {
       //   "logLevel": "warning",
@@ -428,6 +428,10 @@
       // },
       //
       // . . .
+
+      "ae-missing-release-tag": {
+        "logLevel": "none"
+      }
     },
 
     /**
@@ -439,7 +443,7 @@
      */
     "tsdocMessageReporting": {
       "default": {
-        "logLevel": "warning"
+        "logLevel": "none"
         // "addToApiReportFile": false
       }
 
