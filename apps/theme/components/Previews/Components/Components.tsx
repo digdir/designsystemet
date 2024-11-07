@@ -103,13 +103,14 @@ export const Components = () => {
               Utfør
             </Button>
           </div>
-          <Search
-            label='Label'
-            placeholder='Søk etter bruker...'
-            data-data-size='sm'
-            variant='primary'
-            className={classes.tableSearch}
-          />
+          <Search className={classes.tableSearch}>
+            <Search.Input
+              aria-label='Søk etter bruker'
+              placeholder='Søk etter bruker'
+            />
+            <Search.Clear />
+            <Search.Button />
+          </Search>
         </div>
         <Table data-data-size='sm' border className={classes.table}>
           <Table.Head>
