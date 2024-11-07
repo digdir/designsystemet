@@ -22,9 +22,34 @@ export const Preview: Story = {
   },
 };
 
+export const Hovered: Story = {
+  ...Preview,
+  parameters: {
+    pseudo: {
+      hover: true,
+    },
+  },
+};
+
+export const Enabled: Story = {
+  ...Preview,
+  args: { ...Preview.args, checked: true },
+};
+
+export const EnabledHovered: Story = {
+  ...Hovered,
+  args: { ...Hovered.args, checked: true },
+};
+
 export const FullWidth: StoryFn<typeof Switch> = (args) => (
-  <Fieldset legend='Skru av/på en eller flere innstillinger'>
-    <Switch description='Beskrivelse av innstilling' value='alt1' {...args}>
+  <Fieldset>
+    <Fieldset.Legend>Skru av/på en eller flere innstillinger</Fieldset.Legend>
+    <Switch
+      description='Beskrivelse av innstilling'
+      value='alt1'
+      checked
+      {...args}
+    >
       Innstilling 1
     </Switch>
     <Switch value='alt2' {...args}>

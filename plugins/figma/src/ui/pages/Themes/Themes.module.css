@@ -1,0 +1,13 @@
+.cards {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.heading {
+  margin-bottom: var(--ds-spacing-4);
+}

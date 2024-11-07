@@ -1,7 +1,6 @@
 import {
-  FloatingArrow,
   FloatingPortal,
-  arrow,
+  type MiddlewareState,
   autoUpdate,
   flip,
   offset,
@@ -22,12 +21,9 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, cloneElement, forwardRef, useRef, useState } from 'react';
+import { Fragment, cloneElement, forwardRef, useState } from 'react';
 
-import type { PortalProps } from '../../types/Portal';
-
-const ARROW_HEIGHT = 7;
-const ARROW_GAP = 4;
+import type { PortalProps } from '../../types';
 
 export type TooltipProps = {
   /**
@@ -84,11 +80,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+    const internalOpen = userOpen ?? isOpen;
 
     const Container = portal ? FloatingPortal : Fragment;
-
-    const arrowRef = useRef<SVGSVGElement>(null);
-    const internalOpen = userOpen ?? isOpen;
 
     const { refs, floatingStyles, context } = useFloating({
       open: internalOpen,
@@ -96,14 +90,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement,
       whileElementsMounted: autoUpdate,
       middleware: [
-        offset(ARROW_HEIGHT + ARROW_GAP),
+        offset((data) => {
+          // get pseudo element arrow size
+          const styles = getComputedStyle(data.elements.floating, '::before');
+          return parseFloat(styles.height);
+        }),
         flip({
           fallbackAxisSideDirection: 'start',
         }),
         shift(),
-        arrow({
-          element: arrowRef,
-        }),
+        arrowPseudoElement,
       ],
     });
 
@@ -161,12 +157,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               })}
             >
               {content}
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                className='ds-tooltip__arrow'
-                height={ARROW_HEIGHT}
-              />
             </div>
           </Container>
         )}
@@ -176,3 +166,36 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 );
 
 Tooltip.displayName = 'Tooltip';
+
+const arrowPseudoElement = {
+  name: 'ArrowPseudoElement',
+  fn(data: MiddlewareState) {
+    const { elements, rects, placement } = data;
+
+    let arrowX = `${Math.round(
+      rects.reference.width / 2 + rects.reference.x - data.x,
+    )}px`;
+    let arrowY = `${Math.round(
+      rects.reference.height / 2 + rects.reference.y - data.y,
+    )}px`;
+
+    switch (placement) {
+      case 'top':
+        arrowY = '100%';
+        break;
+      case 'right':
+        arrowX = '0';
+        break;
+      case 'bottom':
+        arrowY = '0';
+        break;
+      case 'left':
+        arrowX = '100%';
+        break;
+    }
+
+    elements.floating.style.setProperty('--ds-tooltip-arrow-x', arrowX);
+    elements.floating.style.setProperty('--ds-tooltip-arrow-y', arrowY);
+    return data;
+  },
+};

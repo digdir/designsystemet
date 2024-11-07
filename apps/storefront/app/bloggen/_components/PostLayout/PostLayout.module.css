@@ -20,6 +20,7 @@
   gap: var(--ds-spacing-5);
   text-align: center;
   margin: 0 auto;
+  margin-top: var(--ds-spacing-12);
 }
 
 .ingress {
@@ -39,7 +40,7 @@
   height: 7px;
   transform: rotate(45deg);
   border-radius: 1px;
-  background-color: var(--ds-color-brand1-7);
+  background-color: var(--ds-color-brand1-border-default);
   margin: auto 0;
 }
 
@@ -64,6 +65,14 @@
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
+.content video,
+.content [data-iframe-video] {
+  display: block;
+  width: 860px;
+  margin-left: calc((100% - 860px) / 2) !important;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
 .main > figure {
   margin: auto;
   width: 100%;
@@ -79,7 +88,7 @@
 
 .wantToWrite {
   margin-top: var(--ds-spacing-12);
-  border-radius: var(--ds-border-radius-2xl);
+  border-radius: var(--ds-border-radius-lg);
   background: var(--ds-color-brand1-surface-default);
   color: var(--ds-color-brand1-text-default);
   padding: var(--ds-spacing-8);

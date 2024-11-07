@@ -1,27 +1,36 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 import { HelpText } from '.';
 
 type Story = StoryObj<typeof HelpText>;
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '5rem' }}>
-      <Story />
-    </div>
-  ),
-];
-
 export default {
   title: 'Komponenter/HelpText',
   component: HelpText,
-} as Meta;
+} satisfies Meta;
 
 export const Preview: Story = {
   args: {
     'aria-label': 'Help text title',
     children: 'Help text content',
-    size: 'md',
+    'data-size': 'md',
   },
-  decorators,
+};
+
+export const Toggled: Story = {
+  ...Preview,
+  args: { ...Preview.args },
+  parameters: {
+    customStyles: {
+      paddingRight: '13rem',
+    },
+  },
+  play: async (ctx) => {
+    const canvas = within(ctx.canvasElement);
+    const trigger = canvas.getByRole('button');
+    await userEvent.click(trigger);
+    const popover = ctx.canvasElement.querySelector('[popover]');
+    await expect(popover).toBeVisible();
+  },
 };

@@ -92,8 +92,8 @@ export const TokenModal = ({
         </div>
         <div className={classes.infoBox__right}>
           <div className={classes.infoBox__container}>
-            <Heading size='2xs'>{title}</Heading>
-            <Paragraph size='sm'>{desc}</Paragraph>
+            <Heading data-size='2xs'>{title}</Heading>
+            <Paragraph data-size='sm'>{desc}</Paragraph>
           </div>
         </div>
       </div>
@@ -103,6 +103,7 @@ export const TokenModal = ({
   return (
     <Modal.Context>
       <Modal.Trigger
+        className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();
         }}
@@ -115,7 +116,7 @@ export const TokenModal = ({
         ref={modalRef}
         backdropClose={true}
       >
-        <Heading className={classes.modalHeader} size='xs'>
+        <Heading className={classes.modalHeader} data-size='xs'>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Ta i bruk tema</span>
         </Heading>
@@ -126,7 +127,7 @@ export const TokenModal = ({
               label='Navn på tema'
               description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
               value={themeName}
-              size='sm'
+              data-size='sm'
               onChange={(e) => {
                 const value = e.currentTarget.value
                   .replace(/\s+/g, '-')
@@ -187,8 +188,8 @@ export const TokenModal = ({
                 <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
               </div>
               <div className={classes.contact__content}>
-                <Heading size='2xs'>Noe som ikke fungerer?</Heading>
-                <Paragraph size='sm'>
+                <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
+                <Paragraph data-size='sm'>
                   Send oss en melding på{' '}
                   <Link
                     target='_blank'

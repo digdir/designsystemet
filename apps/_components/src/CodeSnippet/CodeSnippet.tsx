@@ -28,16 +28,16 @@ const plugins = [
 
 type CodeSnippetProps = {
   language?: 'css' | 'html' | 'ts' | 'markdown' | 'json';
-  children?: string;
-  className?: string;
   syntax?: string;
-};
+  children: string;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const CodeSnippet = ({
   language = 'markdown',
-  children = '',
   className,
   syntax = 'js',
+  children,
+  ...rest
 }: CodeSnippetProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
   const [snippet, setSnippet] = useState('');
@@ -76,6 +76,7 @@ const CodeSnippet = ({
     <div
       className={cl(classes.codeSnippet, className)}
       data-ds-color-mode='dark'
+      {...rest}
     >
       {snippet && (
         <>
@@ -87,7 +88,7 @@ const CodeSnippet = ({
               aria-label='Kopier'
               icon
               color='neutral'
-              size='sm'
+              data-size='sm'
             >
               <FilesIcon fontSize='1.5rem' />
             </Button>

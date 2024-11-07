@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 
 import { Button } from '../Button';
@@ -30,7 +31,7 @@ export const Preview: Story = (args) => (
   </ErrorSummary>
 );
 Preview.args = {
-  size: 'md',
+  'data-size': 'md',
 };
 
 export const WithForm: Story = () => (
@@ -63,18 +64,9 @@ export const WithForm: Story = () => (
   </>
 );
 
-WithForm.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gap: 'var(--ds-spacing-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+WithForm.parameters = {
+  customStyles: { display: 'grid', gap: 'var(--ds-spacing-4)' },
+};
 
 export const ShowHide: Story = () => {
   const [show, setShow] = useState(false);
@@ -107,4 +99,11 @@ export const ShowHide: Story = () => {
       )}
     </>
   );
+};
+ShowHide.play = async (ctx) => {
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
+  const errorSummary = canvas.getByRole('alert');
+  await expect(errorSummary).toBeVisible();
 };

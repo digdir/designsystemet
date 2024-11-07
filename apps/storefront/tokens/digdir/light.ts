@@ -1433,7 +1433,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#057114",
+    $value: "#057014",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1688,7 +1688,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9a1616",
+    $value: "#9c1616",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1705,7 +1705,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#771111",
+    $value: "#791111",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1773,7 +1773,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f6dfdf",
+    $value: "#f7e1e1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1943,7 +1943,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#085ea0",
+    $value: "#085e9f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1960,7 +1960,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#074b80",
+    $value: "#074a7f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2028,7 +2028,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f3f8fc",
+    $value: "#edf5fa",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2045,7 +2045,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#fffefc",
+    $value: "#fffefd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2062,7 +2062,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#fbf2d3",
+    $value: "#f9f4e2",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2079,7 +2079,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f5e19b",
+    $value: "#efe2b3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2096,7 +2096,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#efcf5d",
+    $value: "#e5d183",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2113,7 +2113,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e6bc27",
+    $value: "#dcbf53",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2130,7 +2130,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e0b726",
+    $value: "#d9b945",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2147,7 +2147,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9a7e1a",
+    $value: "#987f22",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2164,7 +2164,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5d4c10",
+    $value: "#5c4c14",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2198,7 +2198,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9a4918",
+    $value: "#984918",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2215,7 +2215,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#7c3b14",
+    $value: "#7a3b13",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2330,6 +2330,729 @@ export const  color = [
       "color",
       "focus",
       "outer"
+    ]
+  }
+] 
+
+export const  dimension = [
+  {
+    $type: "dimension",
+    $value: "min( 0.25rem , 0.25rem *1)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.1}"
+    },
+    name: "--ds-border-radius-sm",
+    attributes: {},
+    path: [
+      "border-radius",
+      "sm"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min( 0.25rem , 0.25rem *2)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.2}"
+    },
+    name: "--ds-border-radius-md",
+    attributes: {},
+    path: [
+      "border-radius",
+      "md"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min( 0.25rem , 0.25rem *5)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.3}"
+    },
+    name: "--ds-border-radius-lg",
+    attributes: {},
+    path: [
+      "border-radius",
+      "lg"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.4}"
+    },
+    name: "--ds-border-radius-default",
+    attributes: {},
+    path: [
+      "border-radius",
+      "default"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "624.9375rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.5}"
+    },
+    name: "--ds-border-radius-full",
+    attributes: {},
+    path: [
+      "border-radius",
+      "full"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*0"
+    },
+    name: "--ds-spacing-0",
+    attributes: {},
+    path: [
+      "spacing",
+      "0"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*1"
+    },
+    name: "--ds-spacing-1",
+    attributes: {},
+    path: [
+      "spacing",
+      "1"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*2"
+    },
+    name: "--ds-spacing-2",
+    attributes: {},
+    path: [
+      "spacing",
+      "2"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*3"
+    },
+    name: "--ds-spacing-3",
+    attributes: {},
+    path: [
+      "spacing",
+      "3"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*4"
+    },
+    name: "--ds-spacing-4",
+    attributes: {},
+    path: [
+      "spacing",
+      "4"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*5"
+    },
+    name: "--ds-spacing-5",
+    attributes: {},
+    path: [
+      "spacing",
+      "5"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*6"
+    },
+    name: "--ds-spacing-6",
+    attributes: {},
+    path: [
+      "spacing",
+      "6"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*7"
+    },
+    name: "--ds-spacing-7",
+    attributes: {},
+    path: [
+      "spacing",
+      "7"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*8"
+    },
+    name: "--ds-spacing-8",
+    attributes: {},
+    path: [
+      "spacing",
+      "8"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*9"
+    },
+    name: "--ds-spacing-9",
+    attributes: {},
+    path: [
+      "spacing",
+      "9"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*10"
+    },
+    name: "--ds-spacing-10",
+    attributes: {},
+    path: [
+      "spacing",
+      "10"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*11"
+    },
+    name: "--ds-spacing-11",
+    attributes: {},
+    path: [
+      "spacing",
+      "11"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*12"
+    },
+    name: "--ds-spacing-12",
+    attributes: {},
+    path: [
+      "spacing",
+      "12"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*13"
+    },
+    name: "--ds-spacing-13",
+    attributes: {},
+    path: [
+      "spacing",
+      "13"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*14"
+    },
+    name: "--ds-spacing-14",
+    attributes: {},
+    path: [
+      "spacing",
+      "14"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*15"
+    },
+    name: "--ds-spacing-15",
+    attributes: {},
+    path: [
+      "spacing",
+      "15"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "4.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*18"
+    },
+    name: "--ds-spacing-18",
+    attributes: {},
+    path: [
+      "spacing",
+      "18"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "5.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*22"
+    },
+    name: "--ds-spacing-22",
+    attributes: {},
+    path: [
+      "spacing",
+      "22"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "6.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*26"
+    },
+    name: "--ds-spacing-26",
+    attributes: {},
+    path: [
+      "spacing",
+      "26"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "7.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{spacing.scale}*30"
+    },
+    name: "--ds-spacing-30",
+    attributes: {},
+    path: [
+      "spacing",
+      "30"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*0"
+    },
+    name: "--ds-sizing-0",
+    attributes: {},
+    path: [
+      "sizing",
+      "0"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*1"
+    },
+    name: "--ds-sizing-1",
+    attributes: {},
+    path: [
+      "sizing",
+      "1"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*2"
+    },
+    name: "--ds-sizing-2",
+    attributes: {},
+    path: [
+      "sizing",
+      "2"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*3"
+    },
+    name: "--ds-sizing-3",
+    attributes: {},
+    path: [
+      "sizing",
+      "3"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*4"
+    },
+    name: "--ds-sizing-4",
+    attributes: {},
+    path: [
+      "sizing",
+      "4"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*5"
+    },
+    name: "--ds-sizing-5",
+    attributes: {},
+    path: [
+      "sizing",
+      "5"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*6"
+    },
+    name: "--ds-sizing-6",
+    attributes: {},
+    path: [
+      "sizing",
+      "6"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*7"
+    },
+    name: "--ds-sizing-7",
+    attributes: {},
+    path: [
+      "sizing",
+      "7"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*8"
+    },
+    name: "--ds-sizing-8",
+    attributes: {},
+    path: [
+      "sizing",
+      "8"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*9"
+    },
+    name: "--ds-sizing-9",
+    attributes: {},
+    path: [
+      "sizing",
+      "9"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*10"
+    },
+    name: "--ds-sizing-10",
+    attributes: {},
+    path: [
+      "sizing",
+      "10"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*11"
+    },
+    name: "--ds-sizing-11",
+    attributes: {},
+    path: [
+      "sizing",
+      "11"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*12"
+    },
+    name: "--ds-sizing-12",
+    attributes: {},
+    path: [
+      "sizing",
+      "12"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*13"
+    },
+    name: "--ds-sizing-13",
+    attributes: {},
+    path: [
+      "sizing",
+      "13"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*14"
+    },
+    name: "--ds-sizing-14",
+    attributes: {},
+    path: [
+      "sizing",
+      "14"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "3.75rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*15"
+    },
+    name: "--ds-sizing-15",
+    attributes: {},
+    path: [
+      "sizing",
+      "15"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "4.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*18"
+    },
+    name: "--ds-sizing-18",
+    attributes: {},
+    path: [
+      "sizing",
+      "18"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "5.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*22"
+    },
+    name: "--ds-sizing-22",
+    attributes: {},
+    path: [
+      "sizing",
+      "22"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "6.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*26"
+    },
+    name: "--ds-sizing-26",
+    attributes: {},
+    path: [
+      "sizing",
+      "26"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "7.5rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{sizing.scale}*30"
+    },
+    name: "--ds-sizing-30",
+    attributes: {},
+    path: [
+      "sizing",
+      "30"
     ]
   }
 ] 
@@ -2982,238 +3705,6 @@ export const  typography = [
       "long",
       "xs"
     ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
-      fontSize: "1.3125rem",
-      letterSpacing: "0.5%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-label-lg",
-    attributes: {},
-    path: [
-      "typography",
-      "label",
-      "lg"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
-      fontSize: "1.125rem",
-      letterSpacing: "0.5%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-label-md",
-    attributes: {},
-    path: [
-      "typography",
-      "label",
-      "md"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
-      fontSize: "1rem",
-      letterSpacing: "0.25%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.7}"
-      }
-    },
-    name: "--ds-label-sm",
-    attributes: {},
-    path: [
-      "typography",
-      "label",
-      "sm"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
-      fontSize: "0.875rem",
-      letterSpacing: "0.15%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.6}"
-      }
-    },
-    name: "--ds-label-xs",
-    attributes: {},
-    path: [
-      "typography",
-      "label",
-      "xs"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
-      fontSize: "1.3125rem",
-      letterSpacing: "0.5%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-error_message-lg",
-    attributes: {},
-    path: [
-      "typography",
-      "error_message",
-      "lg"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
-      fontSize: "1.125rem",
-      letterSpacing: "0.5%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
-      }
-    },
-    name: "--ds-error_message-md",
-    attributes: {},
-    path: [
-      "typography",
-      "error_message",
-      "md"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
-      fontSize: "1rem",
-      letterSpacing: "0.25%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.7}"
-      }
-    },
-    name: "--ds-error_message-sm",
-    attributes: {},
-    path: [
-      "typography",
-      "error_message",
-      "sm"
-    ]
-  },
-  {
-    $type: "typography",
-    $value: {
-      fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
-      fontSize: "0.875rem",
-      letterSpacing: "0.15%"
-    },
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "typography",
-      $value: {
-        fontFamily: "{font.family}",
-        fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.6}"
-      }
-    },
-    name: "--ds-error_message-xs",
-    attributes: {},
-    path: [
-      "typography",
-      "error_message",
-      "xs"
-    ]
   }
 ] 
 
@@ -3232,777 +3723,6 @@ export const  opacity = [
     path: [
       "disabled",
       "opacity"
-    ]
-  }
-] 
-
-export const  dimension = [
-  {
-    $type: "dimension",
-    $value: "0.125rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*0.5"
-    },
-    name: "--ds-border-radius-sm",
-    attributes: {},
-    path: [
-      "border-radius",
-      "sm"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*1"
-    },
-    name: "--ds-border-radius-md",
-    attributes: {},
-    path: [
-      "border-radius",
-      "md"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*2"
-    },
-    name: "--ds-border-radius-lg",
-    attributes: {},
-    path: [
-      "border-radius",
-      "lg"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*3"
-    },
-    name: "--ds-border-radius-xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*4"
-    },
-    name: "--ds-border-radius-2xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "2xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*6"
-    },
-    name: "--ds-border-radius-3xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "3xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}*8"
-    },
-    name: "--ds-border-radius-4xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "4xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "624.9375rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "9999"
-    },
-    name: "--ds-border-radius-full",
-    attributes: {},
-    path: [
-      "border-radius",
-      "full"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*0"
-    },
-    name: "--ds-spacing-0",
-    attributes: {},
-    path: [
-      "spacing",
-      "0"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*1"
-    },
-    name: "--ds-spacing-1",
-    attributes: {},
-    path: [
-      "spacing",
-      "1"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*2"
-    },
-    name: "--ds-spacing-2",
-    attributes: {},
-    path: [
-      "spacing",
-      "2"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*3"
-    },
-    name: "--ds-spacing-3",
-    attributes: {},
-    path: [
-      "spacing",
-      "3"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*4"
-    },
-    name: "--ds-spacing-4",
-    attributes: {},
-    path: [
-      "spacing",
-      "4"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*5"
-    },
-    name: "--ds-spacing-5",
-    attributes: {},
-    path: [
-      "spacing",
-      "5"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*6"
-    },
-    name: "--ds-spacing-6",
-    attributes: {},
-    path: [
-      "spacing",
-      "6"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*7"
-    },
-    name: "--ds-spacing-7",
-    attributes: {},
-    path: [
-      "spacing",
-      "7"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*8"
-    },
-    name: "--ds-spacing-8",
-    attributes: {},
-    path: [
-      "spacing",
-      "8"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*9"
-    },
-    name: "--ds-spacing-9",
-    attributes: {},
-    path: [
-      "spacing",
-      "9"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*10"
-    },
-    name: "--ds-spacing-10",
-    attributes: {},
-    path: [
-      "spacing",
-      "10"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*11"
-    },
-    name: "--ds-spacing-11",
-    attributes: {},
-    path: [
-      "spacing",
-      "11"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*12"
-    },
-    name: "--ds-spacing-12",
-    attributes: {},
-    path: [
-      "spacing",
-      "12"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*13"
-    },
-    name: "--ds-spacing-13",
-    attributes: {},
-    path: [
-      "spacing",
-      "13"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*14"
-    },
-    name: "--ds-spacing-14",
-    attributes: {},
-    path: [
-      "spacing",
-      "14"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*15"
-    },
-    name: "--ds-spacing-15",
-    attributes: {},
-    path: [
-      "spacing",
-      "15"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "4.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*18"
-    },
-    name: "--ds-spacing-18",
-    attributes: {},
-    path: [
-      "spacing",
-      "18"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "5.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*22"
-    },
-    name: "--ds-spacing-22",
-    attributes: {},
-    path: [
-      "spacing",
-      "22"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "6.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*26"
-    },
-    name: "--ds-spacing-26",
-    attributes: {},
-    path: [
-      "spacing",
-      "26"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "7.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{spacing.base}*30"
-    },
-    name: "--ds-spacing-30",
-    attributes: {},
-    path: [
-      "spacing",
-      "30"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*0"
-    },
-    name: "--ds-sizing-0",
-    attributes: {},
-    path: [
-      "sizing",
-      "0"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*1"
-    },
-    name: "--ds-sizing-1",
-    attributes: {},
-    path: [
-      "sizing",
-      "1"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*2"
-    },
-    name: "--ds-sizing-2",
-    attributes: {},
-    path: [
-      "sizing",
-      "2"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*3"
-    },
-    name: "--ds-sizing-3",
-    attributes: {},
-    path: [
-      "sizing",
-      "3"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*4"
-    },
-    name: "--ds-sizing-4",
-    attributes: {},
-    path: [
-      "sizing",
-      "4"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*5"
-    },
-    name: "--ds-sizing-5",
-    attributes: {},
-    path: [
-      "sizing",
-      "5"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*6"
-    },
-    name: "--ds-sizing-6",
-    attributes: {},
-    path: [
-      "sizing",
-      "6"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*7"
-    },
-    name: "--ds-sizing-7",
-    attributes: {},
-    path: [
-      "sizing",
-      "7"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*8"
-    },
-    name: "--ds-sizing-8",
-    attributes: {},
-    path: [
-      "sizing",
-      "8"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*9"
-    },
-    name: "--ds-sizing-9",
-    attributes: {},
-    path: [
-      "sizing",
-      "9"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*10"
-    },
-    name: "--ds-sizing-10",
-    attributes: {},
-    path: [
-      "sizing",
-      "10"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*11"
-    },
-    name: "--ds-sizing-11",
-    attributes: {},
-    path: [
-      "sizing",
-      "11"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*12"
-    },
-    name: "--ds-sizing-12",
-    attributes: {},
-    path: [
-      "sizing",
-      "12"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*13"
-    },
-    name: "--ds-sizing-13",
-    attributes: {},
-    path: [
-      "sizing",
-      "13"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*14"
-    },
-    name: "--ds-sizing-14",
-    attributes: {},
-    path: [
-      "sizing",
-      "14"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "3.75rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*15"
-    },
-    name: "--ds-sizing-15",
-    attributes: {},
-    path: [
-      "sizing",
-      "15"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "4.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*18"
-    },
-    name: "--ds-sizing-18",
-    attributes: {},
-    path: [
-      "sizing",
-      "18"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "5.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*22"
-    },
-    name: "--ds-sizing-22",
-    attributes: {},
-    path: [
-      "sizing",
-      "22"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "6.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*26"
-    },
-    name: "--ds-sizing-26",
-    attributes: {},
-    path: [
-      "sizing",
-      "26"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "7.5rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{sizing.base}*30"
-    },
-    name: "--ds-sizing-30",
-    attributes: {},
-    path: [
-      "sizing",
-      "30"
     ]
   }
 ] 

@@ -20,9 +20,8 @@ export type ModalProps = {
   backdropClose?: boolean;
   /**
    * Callback that is called when the modal is closed.
-   * @default undefined
    */
-  onClose?: () => void;
+  onClose?: (event: Event) => void;
   asChild?: boolean;
 } & DialogHTMLAttributes<HTMLDialogElement>;
 
@@ -75,6 +74,14 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
     };
   }, [backdropClose]);
 
+  /* handle closing */
+  useEffect(() => {
+    const handleClose = (event: Event) => onClose?.(event);
+
+    modalRef.current?.addEventListener('close', handleClose);
+    return () => modalRef.current?.removeEventListener('close', handleClose);
+  }, [onClose]);
+
   return (
     <Component className={cl('ds-modal', className)} ref={mergedRefs} {...rest}>
       {closeButton !== false && (
@@ -85,7 +92,6 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
             color='neutral'
             icon
             name='close'
-            size='md'
             type='submit'
             variant='tertiary'
           />

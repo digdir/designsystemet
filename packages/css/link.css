@@ -6,22 +6,22 @@
   --dsc-link-color--hover: var(--ds-color-accent-text-default);
   --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-color: var(--ds-color-accent-text-subtle);
-  --dsc-link-text-decoration-thickness--hover: max(2px, 0.125rem, 0.12em);
-  --dsc-link-text-decoration-thickness: max(1px, 0.0625rem);
+  --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
+  --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
 
   color: var(--dsc-link-color);
   outline: none;
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
-  text-underline-offset: max(5px, 0.25rem);
+  text-underline-offset: 0.27em; /* 5px ish */
 
   & :is(img, svg) {
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='neutral'] {
     --dsc-link-background--active: var(--ds-color-neutral-surface-default);
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
@@ -31,8 +31,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
   &:visited {
     color: var(--dsc-link-color--visited);
   }

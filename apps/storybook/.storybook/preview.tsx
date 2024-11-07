@@ -1,17 +1,16 @@
 import './style.css';
 import '../../../packages/css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
-
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
+import { customStylesDecorator } from '../story-utils/customStylesDecorator';
+import { allModes, viewportWidths } from '../story-utils/modes';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
-const viewportWidths = [320, 375, 576, 768, 992, 1200, 1440];
 
 for (const width of viewportWidths) {
   viewports[`${width}px`] = {
@@ -143,10 +142,30 @@ const preview: Preview = {
     viewport: {
       viewports,
     },
+    chromatic: {
+      modes: {
+        mobile: allModes[320],
+        desktop: allModes[1200],
+      },
+    },
     backgrounds: {
       disable: true,
     },
+    a11y: {
+      element: ['#storybook-root', '[data-floating-ui-portal]'],
+      config: {
+        rules: [
+          {
+            // Ignore the color-contrast rule for the ":active" pseudo-state
+            id: 'color-contrast',
+            selector:
+              '#storybook-root:not(.pseudo-active-all) *:not(.pseudo-active)',
+          },
+        ],
+      },
+    },
   },
+  decorators: [customStylesDecorator],
 };
 
 /* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */

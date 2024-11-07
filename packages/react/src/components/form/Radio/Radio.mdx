@@ -1,13 +1,13 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
 import * as RadioStories from './Radio.stories';
-import * as RadioGroupStories from './RadioGroup.stories';
 
 <Meta of={RadioStories} />
 
 # Radio
 
-`Radio` viser brukeren en liste med alternativer de kan velge mellom. Brukerne kan bytte mellom alternativene, men må velge ett. Bruk `Radio.Group` for å gruppere alternativknappene.
+`Radio` viser brukeren en liste med alternativer de kan velge mellom. Brukerne kan bytte mellom alternativene, men må velge ett. Bruk `Fieldset` for å gruppere alternativknappene.
 
 <Primary />
 <Controls />
@@ -17,10 +17,11 @@ import * as RadioGroupStories from './RadioGroup.stories';
 ```tsx
 import { Radio } from '@digdir/designsystemet-react';
 
-<Radio.Group legend='Er du over 18 år?'>
+<Fieldset>
+  <Fieldset.Legend>Er du over 18 år?</Fieldset.Legend>
   <Radio value='Ja'>Ja</Radio>
   <Radio value='Ne'>Nei</Radio>
-</Radio.Group>;
+</Fieldset>;
 ```
 
 ## Eksempler
@@ -31,28 +32,28 @@ import { Radio } from '@digdir/designsystemet-react';
 
 `Radio` skal alltid ha en `label`. Når du bruker `label` fra en annen plass, husk å bruke `aria-label` eller `aria-labelledby`.
 
-<Canvas of={RadioStories.Single} />
+<Canvas of={RadioStories.AriaLabel} />
 
-## `Radio.Group`
+## `Fieldset`
 
-Bruk `Radio.Group` for gruppering av alternativknapper.
+Bruk `Fieldset` for gruppering av alternativknapper.
 
-<Canvas of={RadioGroupStories.Preview} />
-<Controls of={RadioGroupStories.Preview} />
+<Canvas of={RadioStories.Group} />
+<Controls of={RadioStories.Group} />
 
 ### Feilmelding
 
-Bruk `error` på `Radio.Group` for å vise feilmelding.
+Bruk `error` på `Fieldset` for å vise feilmelding.
 
-Her må vi bruke `Radio.Group`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
+Her må vi bruke `Fieldset`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
 
-<Canvas of={RadioGroupStories.WithError} />
+<Canvas of={RadioStories.WithError} />
 
 ### Kontrollert
 
-Bruk `value` på `Radio.Group` for å kontrollere verdiene selv.
+Bruk `value` på `Fieldset` for å kontrollere verdiene selv.
 
-<Canvas of={RadioGroupStories.Controlled} />
+<Canvas of={RadioStories.Controlled} />
 
 ### Readonly
 
@@ -60,20 +61,19 @@ Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere
 
 `readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
 
-<Canvas of={RadioGroupStories.ReadOnly} />
+<Canvas of={RadioStories.ReadOnly} />
 
 ### Disabled
 
 Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
 
-<Canvas of={RadioGroupStories.Disabled} />
+<Canvas of={RadioStories.Disabled} />
 
 ### Inline
 
-Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte `label`s.
-Bruk `inline` for å plassere alternativene på samme linje. Anbefales kun dersom du har to alternativer og korte `labels`.
+`Radio` skal som hovedregel *ikke* plasseres på samme linje. Men, hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. 
 
-<Canvas of={RadioGroupStories.Inline} />
+<Canvas of={RadioStories.Inline} />
 
 ## Retningslinjer
 
@@ -122,4 +122,8 @@ Merk at vi bruker piltastene til å velge alternativer i `Radio`-komponenten, ik
 - Pil ned/høyre - går til neste valg
 - Mellomromstasten - går til det første alternativet i en gruppe med alternativknapper, når gruppa ikke har et forhåndsvalgt alternativ.
 - Tab - går til hele gruppa med alternativer.
-./Group.stories
+
+## CSS Variabler
+
+<CssVariables css={css} />
+

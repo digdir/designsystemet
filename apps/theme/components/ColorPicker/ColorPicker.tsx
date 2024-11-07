@@ -1,6 +1,6 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Popover } from '@digdir/designsystemet-react';
-import { CheckmarkIcon, ExclamationmarkIcon } from '@navikt/aksel-icons';
+import { Link, Popover } from '@digdir/designsystemet-react';
+import { ExclamationmarkIcon } from '@navikt/aksel-icons';
 import { useClickOutside } from '@react-awesome/use-click-outside';
 import cl from 'clsx/lite';
 import { useEffect, useId, useRef, useState } from 'react';
@@ -44,48 +44,36 @@ export const ColorPicker = ({
     const popoverId = useId();
     return (
       <div>
-        <button
-          popovertarget={popoverId}
-          className={cl(
-            classes.status,
-            'ds-focus',
-            colorError === 'decorative' && classes.statusYellow,
-            colorError === 'interaction' && classes.statusOrange,
-          )}
-        >
-          {colorError === 'none' && (
-            <CheckmarkIcon title='Alt er OK med fargen' />
-          )}
-          {colorError === 'decorative' && (
+        {colorError === 'decorative' && (
+          <button
+            popovertarget={popoverId}
+            className={cl(
+              classes.status,
+              'ds-focus',
+              colorError === 'decorative' && classes.statusYellow,
+            )}
+          >
             <ExclamationmarkIcon title='Viktig informasjon om fargen' />
-          )}
-          {colorError === 'interaction' && (
-            <ExclamationmarkIcon title='Viktig informasjon om fargen' />
-          )}
-        </button>
+          </button>
+        )}
         <Popover
-          style={{ width: '800px' }}
+          style={{ width: '900px' }}
           id={popoverId}
           placement='top'
-          size='sm'
+          data-size='sm'
           variant={colorError === 'none' ? 'default' : 'warning'}
         >
           <div>
-            {colorError === 'none' &&
-              'Denne fargen har god nok kontrast og kan brukes normalt i systemet.'}
-          </div>
-          <div>
             {colorError === 'decorative' && (
               <div>
-                Vær oppmerksom på at Base Default fargen har mindre enn 3:1
-                kontrast mot bakgrunnsfargene. Se alle kontrastgrensene inne på
-                hver farge.
-              </div>
-            )}
-            {colorError === 'interaction' && (
-              <div>
-                Base Default fargen har ikke god nok kontrast mot hvit eller
-                svart tekst på tvers av Base fargene.
+                Fargen har mindre enn 3:1 kontrast mot bakgrunnsfargene. Når
+                dette er tilfellet så er det enkelte ting det er viktig å være
+                klar over. <br /> <br /> Les mer om hva dette betyr inne på
+                <Link href='slik-bruker-du-verktoyet'>
+                  {' '}
+                  Slik bruker du verktøyet
+                </Link>{' '}
+                siden.
               </div>
             )}
           </div>
@@ -109,10 +97,7 @@ export const ColorPicker = ({
           className={cl(classes.container, 'ds-focus')}
           onClick={() => handleClick()}
         >
-          <div
-            style={{ backgroundColor: color }}
-            className={classes.color}
-          ></div>
+          <div style={{ backgroundColor: color }} className={classes.color} />
           <div className={classes.input}>{color}</div>
         </button>
       </div>

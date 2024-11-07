@@ -2,15 +2,10 @@ import { Select as SelectParent } from './Select';
 import { SelectOptgroup } from './SelectOptgroup';
 import { SelectOption } from './SelectOption';
 
-type SelectComponent = typeof SelectParent & {
-  Option: typeof SelectOption;
-  Optgroup: typeof SelectOptgroup;
-};
-
-const Select = SelectParent as SelectComponent;
-
-Select.Option = SelectOption;
-Select.Optgroup = SelectOptgroup;
+const Select = Object.assign(SelectParent, {
+  Option: SelectOption,
+  Optgroup: SelectOptgroup,
+});
 
 Select.Option.displayName = 'Select.Option';
 Select.Optgroup.displayName = 'Select.Optgroup';

@@ -1,4 +1,4 @@
-import { Modal, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Modal, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
   getColorNameFromNumber,
@@ -26,11 +26,11 @@ const Field = ({
   return (
     <div className={classes.field}>
       {label && (
-        <Paragraph size='sm' className={classes.label}>
+        <Paragraph data-size='sm' className={classes.label}>
           {label}
         </Paragraph>
       )}
-      <Paragraph size='sm' className={classes.value}>
+      <Paragraph data-size='sm' className={classes.value}>
         {value}
       </Paragraph>
       {copyBtn && <ClipboardButton value={value} />}
@@ -58,9 +58,12 @@ export const ColorModal = ({
         style={{
           maxWidth: '1050px',
         }}
+        backdropClose
       >
         <Modal.Block>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
+          <Heading data-size='xs'>
+            {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
+          </Heading>
         </Modal.Block>
         <Modal.Block className={classes.modalContent}>
           <div className={classes.description}>
@@ -88,13 +91,13 @@ export const ColorModal = ({
                 value={getCssVariable(namespace, weight)}
                 copyBtn
               />
-              {!namespace.includes('Base') && (
+
+              {weight !== 9 && weight !== 10 && weight !== 11 && (
                 <Field
                   label='Brukes mot:'
                   value={getColorCombinations(weight)}
                 />
               )}
-              <Field label='' value='Mer informasjon om fargen kommer.' />
             </div>
             <div
               className={classes.right}

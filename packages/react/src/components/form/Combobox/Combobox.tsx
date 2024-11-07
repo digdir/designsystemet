@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
-import type { PortalProps } from '../../../types/Portal';
+import type { PortalProps } from '../../../types';
 import { omit, useDebounceCallback } from '../../../utilities';
 import { Spinner } from '../../loaders/Spinner';
 import type { FormFieldProps } from '../useFormField';
@@ -459,7 +459,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
                 {loading ? (
                   <ComboboxCustom className={'ds-combobox__loading'}>
-                    <Spinner title='Laster' size='sm' />
+                    <Spinner aria-label='Laster' data-size='sm' />
                     {loadingLabel}
                   </ComboboxCustom>
                 ) : (

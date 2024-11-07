@@ -41,7 +41,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     return (
       <Paragraph
         asChild
-        size={size}
+        data-size={size}
         {...(inputProps.disabled && { 'aria-disabled': true })}
       >
         <div
@@ -67,7 +67,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               position === 'right' && `ds-switch__label--right`,
             )}
             htmlFor={inputProps.id}
-            size={size}
+            data-size={size}
             weight='regular'
           >
             <span className={`ds-switch__track`}>
@@ -82,7 +82,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             {children && <span>{children}</span>}
           </Label>
           {description && (
-            <Paragraph asChild size={size}>
+            <Paragraph asChild data-size={size}>
               <div id={descriptionId} className={`ds-switch__description`}>
                 {description}
               </div>

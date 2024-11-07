@@ -1,74 +1,82 @@
-import { MagnifyingGlassIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Heading, Paragraph } from '../..';
+import { Button, Divider, Field, Label, Paragraph } from '../..';
 
 import { Search } from '.';
-
-type Story = StoryObj<typeof Search>;
 
 export default {
   title: 'Komponenter/Search',
   component: Search,
 } as Meta;
 
-export const Preview: Story = {
-  args: {
-    label: 'Label',
-    disabled: false,
-    size: 'md',
-    placeholder: '',
-    variant: 'simple',
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    label: 'Label',
-  },
-  parameters: {
-    layout: 'padded',
-  },
-};
+export const Preview: StoryFn<typeof Search> = (args) => (
+  <Search {...args}>
+    <Search.Input aria-label='Søk' />
+    <Search.Clear />
+    <Search.Button />
+  </Search>
+);
 
 export const Controlled: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
   return (
     <>
-      <Paragraph>Du har skrevet inn: {value}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginTop: 'var(--ds-spacing-2)',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <Search
-          label='Kontroller meg!'
+      <Search>
+        <Search.Input
+          aria-label='Søk'
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onClear={() => setValue('')}
         />
-        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
-      </div>
+        <Search.Clear />
+        <Search.Button />
+      </Search>
+
+      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        Du har skrevet inn: {value}
+      </Paragraph>
+      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
 };
 
-export const OnlyIcon: StoryFn<typeof Search> = () => {
-  return (
-    <Search
-      label='Search for content'
-      clearButtonLabel='Empty'
-      searchButtonLabel={
-        <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
-      }
-      variant='primary'
-    />
-  );
-};
+export const Variants: StoryFn<typeof Search> = () => (
+  <div>
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+    </Search>
+
+    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+
+    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Search.Button variant='secondary' />
+    </Search>
+  </div>
+);
+
+export const WithLabel: StoryFn<typeof Search> = () => (
+  <Field>
+    <Label>Søk etter katter</Label>
+    <Search>
+      <Search.Input name='cat-search' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+  </Field>
+);
 
 export const Form: StoryFn<typeof Search> = () => {
   const [value, setValue] = useState<string>();
@@ -76,13 +84,6 @@ export const Form: StoryFn<typeof Search> = () => {
 
   return (
     <>
-      <Heading
-        level={3}
-        size='2xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
-      >
-        Submitted value: {submittedValue}
-      </Heading>
       <form
         onSubmit={(e) => {
           // Prevent navigation from Storybook
@@ -90,16 +91,20 @@ export const Form: StoryFn<typeof Search> = () => {
           setSubmittedValue(value);
         }}
       >
-        <Search
-          label='Search for content'
-          clearButtonLabel='Empty'
-          onChange={(e) => setValue(e.target.value)}
-          searchButtonLabel={
-            <MagnifyingGlassIcon fontSize={'1.5em'} title='Search' />
-          }
-          variant='primary'
-        />
+        <Search>
+          <Search.Input
+            aria-label='Søk'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
       </form>
+
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-spacing-2)' }}>
+        Submitted value: {submittedValue}
+      </Paragraph>
     </>
   );
 };

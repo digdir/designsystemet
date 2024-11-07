@@ -11,9 +11,7 @@
   height: 48px;
   width: 150px;
   padding-left: 12px;
-  transition:
-    0.04s border,
-    0.04s outline;
+  transition: 0.04s border, 0.04s outline;
   border: solid 1px var(--ds-color-neutral-border-default);
   border-radius: var(--ds-border-radius-md);
   background-color: var(--ds-color-neutral-background-default);
@@ -32,7 +30,7 @@
   width: 24px;
   background-color: #1e98f5;
   border-radius: 50%;
-  border: 1px solid #c2c2c2;
+  border: 1px solid #a7a7a7;
 }
 
 .input {

@@ -49,6 +49,8 @@
   display: flex;
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  align-items: flex-start;
 }
 
 .item {
@@ -89,11 +91,11 @@
 }
 
 .linkIcon.figma path {
-  stroke: var(--ds-color-neutral-8);
+  stroke: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github path {
-  fill: var(--ds-color-neutral-8);
+  fill: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.figma:hover path {
@@ -113,8 +115,8 @@
   border-color: var(--ds-color-neutral-border-strong);
 }
 
-@media (max-width: 991.98px) {
-  .header {
+.hamburger {
+  &.header {
     height: 72px;
   }
 
@@ -134,6 +136,53 @@
     flex-direction: column;
     display: none;
     padding: 20px 0;
+    width: 100%;
+  }
+
+  .item {
+    padding: 20px 0;
+    margin-left: 16px;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .item .active {
+    display: inline-block;
+  }
+
+  .linkIcon {
+    place-items: start;
+  }
+
+  .logo {
+    height: 26px;
+  }
+}
+
+@media (max-width: 900px) {
+  &.header {
+    height: 72px;
+  }
+
+  .toggle {
+    display: block;
+  }
+
+  .menu {
+    border-top: 1px solid #e2e2e2;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 71px;
+    background-color: white;
+    box-shadow: var(--ds-shadow-lg);
+    flex-direction: column;
+    display: none;
+    padding: 20px 0;
+    width: 100%;
   }
 
   .item {

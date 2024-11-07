@@ -54,9 +54,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           {data && (
             <div className={classes.header}>
               <div className={classes.headerText}>
-                <Heading size='lg' className={classes.title}>
-                  {data.title}
-                </Heading>
+                <Heading data-size='lg'>{data.title}</Heading>
                 {data.date && <div className={classes.date}>{data.date}</div>}
               </div>
               <div

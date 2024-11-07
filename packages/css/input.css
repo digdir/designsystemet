@@ -1,0 +1,185 @@
+.ds-input {
+  --dsc-input-background--checked: var(--dsc-input-border-color--checked);
+  --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
+  --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
+  --dsc-input-background--switch: var(--ds-color-neutral-border-default);
+  --dsc-input-background: var(--ds-color-neutral-background-default);
+  --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
+  --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
+  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-input-border-color: var(--ds-color-neutral-border-default);
+  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
+  --dsc-input-border-width: 1px;
+  --dsc-input-color--checked: var(--ds-color-accent-contrast-default);
+  --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
+  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
+  --dsc-input-color: var(--ds-color-neutral-text-default);
+  --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  --dsc-input-size--switch: var(--ds-sizing-7);
+  --dsc-input-size--toggle: var(--ds-sizing-6);
+  --dsc-input-size: var(--ds-sizing-12);
+  --dsc-input-stroke: 0.055em;
+
+  /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
+  --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+  --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
+  --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
+  --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+  --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+  --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+
+  appearance: none;
+  background: var(--dsc-input-background);
+  border-radius: var(--ds-border-radius-md);
+  border: var(--dsc-input-border-width) solid var(--dsc-input-border-color); /* Inherit from .ds-input-addons if present */
+  box-shadow: var(--dsc-input-box-shadow);
+  box-sizing: border-box;
+  color: var(--dsc-input-color);
+  font-family: inherit;
+  height: var(--dsc-input-size);
+  line-height: inherit;
+  margin: 0; /* Reset native margin on checkbox and radio */
+  max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
+  padding: var(--dsc-input-padding);
+  position: relative; /* Ensure foucs outline renders on top */
+
+  @composes ds-focus from './base/base.css';
+
+  /* Round border-width up to nearest 1px if supported */
+  @supports (width: round(down, .1em, 1px)) {
+    border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
+  }
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size */
+  }
+
+  /* Change switch background with low specificity to allow states to overwrite */
+  &:where([role='switch']) {
+    --dsc-input-background: var(--dsc-input-background--switch);
+  }
+
+  &:is(select) {
+    padding-right: 2.4em;
+    background: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 1.2em + var(--dsc-input-stroke))
+      / 0.4em 0.4em no-repeat, linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 0.8em) / 0.4em
+      0.4em no-repeat, var(--dsc-input-background);
+  }
+
+  &:is(textarea) {
+    height: auto; /* Allow rows="" to set height */
+    min-height: calc(var(--dsc-input-size) * 1.5); /* Set a min-height to indicate this is a <textarea> and not an <input> */
+    resize: vertical; /* Allow resizing vertically only */
+
+    &:not([rows]) {
+      field-sizing: content;
+    }
+  }
+
+  &:not([size], [cols], select) {
+    width: 100%;
+  }
+
+  /**
+   * States
+   */
+  &:checked,
+  &:indeterminate:where([type='checkbox']) {
+    --dsc-input-background: var(--dsc-input-background--checked);
+    --dsc-input-border-color: var(--dsc-input-border-color--checked);
+    --dsc-input-color: var(--dsc-input-color--checked);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: var(--ds-disabled-opacity);
+  }
+
+  &[aria-invalid='true'] {
+    --dsc-input-background--checked: var(--dsc-input-background--invalid);
+    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
+    --dsc-input-color--checked: var(--dsc-input-color--invalid);
+  }
+
+  /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
+  &[readonly] {
+    --dsc-input-background: var(--dsc-input-background--readonly);
+    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
+    --dsc-input-color: var(--dsc-input-color--readonly);
+  }
+
+  /**
+   * Toggle inputs and select
+   */
+  &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
+    cursor: pointer;
+  }
+
+  /**
+   * Toggle inputs
+   */
+  &[type='checkbox'],
+  &[type='radio'] {
+    --dsc-input-border-width: var(--dsc-input-border-width--toggle);
+    --dsc-input-padding: calc(var(--ds-sizing-1) / 2);
+    --dsc-input-size: var(--dsc-input-size--toggle);
+
+    flex-shrink: 0; /* Never shrink a toggle input */
+    line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
+    width: var(--dsc-input-size);
+
+    &:not([aria-label]) {
+      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+    }
+  }
+
+  &[type='radio'] {
+    border-radius: var(--ds-border-radius-full);
+  }
+
+  &[type='radio']:checked {
+    background: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%), var(--dsc-input-background);
+  }
+
+  &[type='checkbox']:checked {
+    background: var(--check-left), var(--check-right), var(--dsc-input-background);
+  }
+
+  &[type='checkbox']:indeterminate {
+    background: center / contain no-repeat content-box
+      linear-gradient(
+        transparent calc(48% - var(--dsc-input-stroke)),
+        currentcolor calc(50% - var(--dsc-input-stroke)),
+        currentcolor calc(50% + var(--dsc-input-stroke)),
+        transparent calc(52% + var(--dsc-input-stroke))
+      ), var(--dsc-input-background);
+  }
+
+  /**
+   * Switch
+   */
+  &[role='switch']:is([type='radio'], [type='checkbox']) {
+    --dsc-input-color: transparent; /* Hide checkmark */
+    --dsc-input-padding: var(--ds-sizing-1);
+    --dsc-input-size: var(--dsc-input-size--switch);
+    --circle-color: var(--dsc-input-color--checked);
+    --circle-position: left;
+
+    border-radius: var(--ds-border-radius-full);
+    padding-left: var(--dsc-input-size); /* Push checkmark to right side */
+    transition: 0.2s background-position;
+    width: calc((var(--dsc-input-size) - var(--dsc-input-border-width)) * 2); /* Subtract border-width to make background-image math correct */
+    background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position) /
+      50% 100% no-repeat padding-box, var(--dsc-input-background);
+
+    &:checked {
+      --dsc-input-color: var(--dsc-input-border-color);
+      --circle-position: right;
+    }
+
+    &[readonly] {
+      --circle-color: var(--dsc-input-color--readonly);
+    }
+  }
+}

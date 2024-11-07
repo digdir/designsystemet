@@ -5,29 +5,38 @@
   --dsc-button-color: var(--ds-color-accent-contrast-default);
   --dsc-button-font-size: var(--ds-font-size-5);
   --dsc-button-gap: var(--ds-spacing-2);
-  --dsc-button-padding-block: var(--ds-spacing-2);
-  --dsc-button-padding-inline: var(--ds-spacing-4);
+  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
   --dsc-button-size: var(--ds-sizing-12);
-
-  @composes ds-body-text--short-md from './base/base.css';
-  @composes ds-focus from './base/base.css';
 
   align-items: center;
   background: var(--dsc-button-background);
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--ds-border-radius-default);
   border: var(--ds-border-width-default) solid var(--dsc-button-border-color, transparent);
   box-sizing: border-box;
   color: var(--dsc-button-color);
   cursor: pointer;
   font-family: inherit;
+  font-weight: var(--ds-font-weight-medium);
   gap: var(--dsc-button-gap);
   justify-content: center;
+  line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-button-size);
   min-width: var(--dsc-button-size);
   outline: none;
-  padding: var(--dsc-button-padding-block) var(--dsc-button-padding-inline);
+  padding: var(--dsc-button-padding);
   text-align: inherit;
   text-decoration: none;
+
+  @composes ds-focus from './base/base.css';
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
+
+  & :where(img, svg) {
+    flex-shrink: 0;
+    font-size: 1.25em;
+  }
 
   &:focus-visible {
     position: relative; /* Place focusring on top */
@@ -37,25 +46,10 @@
     display: flex;
   }
 
-  &[data-size='sm'] {
-    --dsc-button-gap: var(--ds-sizing-1);
-    --dsc-button-padding-block: var(--ds-spacing-2);
-    --dsc-button-padding-inline: var(--ds-spacing-3);
-    --dsc-button-size: var(--ds-sizing-10);
-
-    @composes ds-body-text--short-sm from './base/base.css';
-  }
-
-  &[data-size='lg'] {
-    --dsc-button-padding-block: var(--ds-spacing-3);
-    --dsc-button-padding-inline: var(--ds-spacing-5);
-    --dsc-button-size: var(--ds-sizing-14);
-
-    @composes ds-body-text--short-lg from './base/base.css';
-  }
-
   &[data-icon] {
-    padding-inline: var(--dsc-button-padding-block);
+    width: var(--dsc-button-size); /* Ensure it keeps square shape */
+    height: var(--dsc-button-size); /* Ensure it keeps square shape */
+    padding: 0;
   }
 
   &[data-fullwidth] {
@@ -64,8 +58,8 @@
   }
 
   /**
-    * Variants
-    */
+   * Variants
+   */
   &[data-variant='secondary'] {
     --dsc-button-background--active: var(--ds-color-accent-surface-hover);
     --dsc-button-background--hover: var(--ds-color-accent-surface-default);
@@ -87,8 +81,8 @@
   }
 
   /**
-    * Colors
-    */
+   * Colors
+   */
   &[data-color='neutral'] {
     --dsc-button-background--active: var(--ds-color-neutral-base-active);
     --dsc-button-background--hover: var(--ds-color-neutral-base-hover);
@@ -142,8 +136,8 @@
   }
 
   /**
-    * States
-    */
+   * States
+   */
 
   @media (hover: hover) and (pointer: fine) {
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */

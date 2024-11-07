@@ -27,17 +27,13 @@
   margin-bottom: var(--ds-spacing-6);
   padding: var(--ds-spacing-10);
   width: 100%;
-  border-radius: var(--ds-border-radius-xl);
+  border-radius: var(--ds-border-radius-lg);
   background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .headerText {
   color: inherit;
   padding-right: 290px;
-}
-
-.title {
-  margin-bottom: 0;
 }
 
 .date {
@@ -59,15 +55,15 @@
 }
 
 .iconContainer.red {
-  border-color: var(--ds-color-brand1-4);
+  border-color: var(--ds-color-brand1-surface-hover);
 }
 
 .iconContainer.blue {
-  border-color: var(--ds-color-brand3-4);
+  border-color: var(--ds-color-brand3-surface-hover);
 }
 
 .iconContainer.yellow {
-  border-color: var(--ds-color-brand2-4);
+  border-color: var(--ds-color-brand2-surface-hover);
 }
 
 .iconContainer svg {
@@ -80,23 +76,25 @@
 }
 
 .iconContainer.red svg {
-  color: var(--ds-color-brand1-6);
+  color: var(--ds-color-brand1-border-subtle);
 }
 
 .iconContainer.blue svg {
-  color: var(--ds-color-brand3-6);
+  color: var(--ds-color-brand3-border-subtle);
 }
 
 .iconContainer.yellow svg {
-  color: var(--ds-color-brand2-6);
+  color: var(--ds-color-brand2-border-subtle);
 }
 
 .content {
   padding: var(--ds-spacing-4) var(--ds-spacing-10) 0 var(--ds-spacing-10);
+  height: fit-content;
 }
 
 .githubLink {
-  margin-top: var(--ds-spacing-6);
+  display: inline-block;
+  margin-top: var(--ds-spacing-12);
 }
 
 @media (max-width: 1200px) {

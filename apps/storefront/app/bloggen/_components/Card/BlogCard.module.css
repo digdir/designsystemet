@@ -1,5 +1,5 @@
 .image {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
 }
 
 @media screen and (min-width: 1024px) {
@@ -34,6 +34,6 @@
   height: 7px;
   transform: rotate(45deg);
   border-radius: 1px;
-  background-color: var(--ds-color-brand1-6);
+  background-color: var(--ds-color-brand1-border-subtle);
   margin: auto;
 }

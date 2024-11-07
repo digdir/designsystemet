@@ -1,13 +1,9 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { TableHTMLAttributes } from 'react';
+import type { DefaultProps } from '../../types';
 
 export type TableProps = {
-  /**
-   * The size of the table
-   * @default md
-   */
-  size?: 'sm' | 'md' | 'lg';
   /**
    * If true, the table will have zebra striping
    * @default false
@@ -28,7 +24,8 @@ export type TableProps = {
    * @default false
    */
   hover?: boolean;
-} & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'>;
+} & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'> &
+  DefaultProps;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   {
@@ -36,7 +33,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
     stickyHeader = false,
     border = false,
     hover = false,
-    size = 'md',
     className,
     children,
     ...rest
@@ -48,7 +44,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
       className={cl('ds-table', className)}
       data-border={border || undefined}
       data-hover={hover || undefined}
-      data-size={size}
       data-sticky-header={stickyHeader || undefined}
       data-zebra={zebra || undefined}
       ref={ref}

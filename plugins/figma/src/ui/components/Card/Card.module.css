@@ -1,0 +1,42 @@
+.card {
+  background-color: var(--ds-color-neutral-surface-default);
+  height: 100px;
+  width: 156px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.15s box-shadow;
+}
+
+.card:hover {
+  box-shadow: 0 0 0 1px var(--ds-color-neutral-border-default);
+}
+
+.circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 60px;
+}
+
+.circle {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  outline: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.icon {
+  color: var(--ds-color-neutral-text-default);
+}
+
+.title {
+  font-weight: 400;
+}

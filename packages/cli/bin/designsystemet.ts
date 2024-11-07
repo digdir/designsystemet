@@ -3,10 +3,8 @@ import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
 import { convertToHex } from '../src/colors/index.js';
-import { createTokensPackage } from '../src/init/createTokensPackage.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { typography } from '../src/tokens/build/formats/css';
 import { createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
 
@@ -28,8 +26,8 @@ function makeTokenCommands() {
       const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
       const preview = opts.preview;
       const verbose = opts.verbose;
-      console.log(`Bulding tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview, verbose });
+      console.log(`Building tokens in ${chalk.green(tokens)}`);
+      return buildTokens({ tokens, out, preview, verbose, accentColor: 'accent' });
     });
 
   tokenCmd
@@ -103,14 +101,6 @@ program
     } else {
       console.log('Migrate: please specify a migration name or --list');
     }
-  });
-
-program
-  .command('init')
-  .description('create an initial token structure for Designsystemet')
-  .addArgument(new Argument('<targetDir>', 'Target directory for the generated code'))
-  .action(async (targetDir) => {
-    await createTokensPackage(targetDir);
   });
 
 await program.parseAsync(process.argv);

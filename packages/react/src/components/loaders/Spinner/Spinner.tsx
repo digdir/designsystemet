@@ -1,32 +1,37 @@
+import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import type { ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
-  /** Spinner title  */
-  title: string;
+  /** Accessibile label  */
+  'aria-label'?: string;
   /**
    * Spinner size
-   *
-   * @default md
    */
-  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * Spinner appearance
    * @default neutral
    */
   color?: 'neutral' | 'accent';
-} & ComponentPropsWithoutRef<'svg'>;
+} & ComponentPropsWithoutRef<'svg'> &
+  (
+    | { 'aria-label': string; 'aria-hidden'?: never }
+    | { 'aria-label'?: string; 'aria-hidden': true | 'true' } // Make aria-label optional when aria-hidden is true
+  );
 
 /**  Spinner component used for indicating busy or indeterminate loading */
-export const Spinner = ({
-  title,
-  color = 'neutral',
-  size = 'md',
-  className,
-  ...rest
-}: SpinnerProps): JSX.Element => {
+export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
+  {
+    'aria-label': ariaLabel,
+    color = 'neutral',
+    className,
+    ...rest
+  }: SpinnerProps,
+  ref,
+) {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
     'ds-spinner-rotate-animation',
   );
@@ -35,16 +40,18 @@ export const Spinner = ({
     'ds-spinner-stroke-animation',
   );
 
+  const mergedRefs = useMergeRefs([svgRef, ref]);
+
   return (
     <svg
+      aria-label={ariaLabel}
       className={cl('ds-spinner', className)}
-      viewBox='0 0 50 50'
-      ref={svgRef}
       data-color={color}
-      data-size={size}
+      ref={mergedRefs}
+      role='img'
+      viewBox='0 0 50 50'
       {...rest}
     >
-      <title>{title}</title>
       <circle
         className={cl('ds-spinner__background')}
         cx='25'
@@ -52,7 +59,7 @@ export const Spinner = ({
         r='20'
         fill='none'
         strokeWidth='5'
-      ></circle>
+      />
       <circle
         className={cl(`ds-spinner__circle`)}
         cx='25'
@@ -61,9 +68,7 @@ export const Spinner = ({
         fill='none'
         strokeWidth='5'
         ref={strokeRef}
-      ></circle>
+      />
     </svg>
   );
-};
-
-Spinner.displayName = 'Spinner';
+});

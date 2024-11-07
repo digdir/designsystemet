@@ -14,8 +14,9 @@
       ".changeset/**",
       "./package.json", // yarn and biome disagrees on package.json formatting
       "design-tokens/**/*",
-      "packages/theme/brand/**/*",
-      "apps/storefront/tokens/**"
+      "apps/storefront/tokens/**",
+      "**/dist/**/*",
+      "packages/theme/**/*.css"
     ]
   },
   "formatter": {
@@ -64,7 +65,8 @@
         "useAriaPropsForRole": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "error"
       },
       "style": {
         "useTemplate": "off",
@@ -78,6 +80,13 @@
       }
     },
     "ignore": []
+  },
+
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single"
+    }
   },
 
   "overrides": [

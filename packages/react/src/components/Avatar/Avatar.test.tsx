@@ -5,13 +5,12 @@ describe('Avatar', () => {
   it('should render correctly with default props', () => {
     render(<Avatar aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
-    expect(screen.getByRole('img')).toHaveAttribute('data-size', 'md');
     expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'circle');
     expect(screen.getByRole('img')).toHaveAttribute('data-color', 'accent');
   });
 
   it('should render correctly with custom props', () => {
-    render(<Avatar size='lg' variant='square' aria-label='ola' />);
+    render(<Avatar data-size='lg' variant='square' aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-size', 'lg');
     expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'square');

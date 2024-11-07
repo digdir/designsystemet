@@ -1,6 +1,6 @@
 .ds-error-summary {
   --dsc-errorsummary-background: var(--ds-color-danger-surface-default);
-  --dsc-errorsummary-border-radius: min(1rem, var(--ds-border-radius-lg));
+  --dsc-errorsummary-border-radius: var(--ds-border-radius-lg);
   --dsc-errorsummary-padding: var(--ds-spacing-6) var(--ds-spacing-8);
   --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
   --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
@@ -12,6 +12,7 @@
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
+    font-size: var(--ds-font-size-plus-1);
     margin-bottom: var(--ds-spacing-2);
   }
 

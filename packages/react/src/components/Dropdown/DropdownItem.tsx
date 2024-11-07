@@ -1,26 +1,9 @@
-import { forwardRef, useContext } from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
 
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button/Button';
+export type DropdownItemProps = HTMLAttributes<HTMLLIElement>;
 
-import { DropdownCtx } from './Dropdown';
-
-export type DropdownItemProps = Omit<ButtonProps, 'variant' | 'size' | 'color'>;
-
-export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
-  function DropdownItem({ className, style, ...rest }, ref) {
-    const { size } = useContext(DropdownCtx);
-
-    return (
-      <li className={className} style={style}>
-        <Button
-          ref={ref}
-          variant='tertiary'
-          size={size}
-          className='ds-dropdown__item'
-          {...rest}
-        />
-      </li>
-    );
+export const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>(
+  function DropdownItem({ className, ...rest }, ref) {
+    return <li ref={ref} {...rest} />;
   },
 );

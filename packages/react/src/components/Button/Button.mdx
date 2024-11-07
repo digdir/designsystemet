@@ -1,7 +1,10 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Do, Dont, Stack } from '@doc-components';
+import { Do, Dont, Stack, CssVariables } from '@doc-components';
+import { Button } from './Button';
 
 import * as ButtonStories from './Button.stories';
+
+import css from '@digdir/designsystemet-css/button.css?inline';
 
 <Meta of={ButtonStories} />
 
@@ -54,11 +57,11 @@ Knappene kommer i to hovedfarger `accent` og `neutral`. Hvis du har overstyrt fa
 
 - `accent`-fargen stikker seg mer ut enn `neutral` og brukes gjerne når handlingen skal ha oppmerksomhet.
 
-<Canvas of={ButtonStories.First} />
+<Canvas of={ButtonStories.Accent} />
 
 - `neutral`-fargen er mer nøytral og kan brukes når det er flere knapper på en side som ikke skal ta så mye oppmerksomhet.
 
-<Canvas of={ButtonStories.Second} />
+<Canvas of={ButtonStories.Neutral} />
 
 ### Danger
 
@@ -106,23 +109,7 @@ Som regel er det **venstre** som er den beste plasseringen, men det finnes unnta
 
 ### Størrelse på ikon
 
-Når du bruker ikon må du sette størrelsen på ikonet selv. Vi anbefaler å bruke disse størrelsene for [Aksel](https://aksel.nav.no/ikoner) sine ikoner:
-
-| Størrelse på knapp | Aksels ikon `fontSize` |
-| :----------------- | :--------------------- |
-| sm                 | 1rem                   |
-| md                 | 1.5rem                 |
-| lg                 | 2rem                   |
-
-<Canvas of={ButtonStories.IconOnly} />
-
-For knapper med kun ikon anbefaler vi å bruke større ikon:
-
-| Størrelse på knapp | Aksels ikon `fontSize` |
-| :----------------- | :--------------------- |
-| sm                 | 1.5rem                 |
-| md                 | 2rem                   |
-| lg                 | 2.5rem                 |
+Ikon skalerer automatisk basert på knappestørrelse, men du endre denne ved å sette font størrelsen.
 
 <Canvas of={ButtonStories.IconOnly} />
 
@@ -274,14 +261,13 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
     image='/img/component-guidelines/button/button-ex5-dont.png'
   />
 </Stack>
-<br />
+
+## CSS Variabler
+
+<CssVariables css={css} />
+
 <br />
 <br />
 <br />
 
 [^1]: [Deaktiverte tilstander](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) - Aksel.
-
-<br />
-<br />
-<br />
-<br />

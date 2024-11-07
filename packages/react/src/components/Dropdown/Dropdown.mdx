@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/dropdown.css?inline';
 import * as DropdownStories from './Dropdown.stories';
 
 import { Dropdown } from './';
@@ -22,7 +23,9 @@ import { Dropdown } from '@digdir/designsystemet-react';
   <Dropdown>
     <Dropdown.Heading>Heading</Dropdown.Heading>
     <Dropdown.List>
-      <Dropdown.Item>Item</Dropdown.Item>
+      <Dropdown.Item>
+        <Dropdown.Button>Item</Dropdown.Button>
+      </Dropdown.Item>
     </Dropdown.List>
   </Dropdown>
 </Dropdown.Context>
@@ -32,7 +35,9 @@ import { Dropdown } from '@digdir/designsystemet-react';
 <Dropdown id="my-dropdown">
   <Dropdown.Heading>Heading</Dropdown.Heading>
   <Dropdown.List>
-    <Dropdown.Item>Item</Dropdown.Item>
+    <Dropdown.Item>
+      <Dropdown.Button>Item</Dropdown.Button>
+    </Dropdown.Item>
   </Dropdown.List>
 </Dropdown>
 ```
@@ -72,6 +77,10 @@ Triggeren er en [Button](/docs/komponenter-button--docs) som standard.
 
 Bruk `Dropdown.Trigger` til å aktivere `Dropdown`. Du kan bruke `asChild` for å endre `Dropdown.Trigger` elementet.
 Dersom du skal legge på funksjoner som `onClick`, legg det på ditt element, og legg `asChild` på `Dropdown.Trigger`.
+
+## CSS Variabler
+
+<CssVariables css={css} />
 
 ### Referanser
 

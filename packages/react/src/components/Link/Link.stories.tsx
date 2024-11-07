@@ -14,6 +14,7 @@ export default {
   title: 'Komponenter/Link',
   component: Link,
   parameters: {
+    customStyles: { padding: '2px' },
     status: {
       type: 'beta',
       url: 'http://www.url.com/status',
@@ -43,8 +44,7 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden />
-    Kontakt oss
+    <EnvelopeClosedIcon aria-hidden /> Kontakt oss
   </Link>
 );
 
@@ -56,13 +56,9 @@ export const LongLink: StoryFn = (args) => (
   </Paragraph>
 );
 
-LongLink.decorators = [
-  (Story) => (
-    <div style={{ width: '200px' }}>
-      <Story></Story>
-    </div>
-  ),
-];
+LongLink.parameters = {
+  customStyles: { width: '200px' },
+};
 
 export const Neutral: Story = {
   args: {

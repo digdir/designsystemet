@@ -1,5 +1,6 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
+import type { DefaultProps } from '../../types';
 
 export type BreadcrumbsProps = {
   /**
@@ -7,22 +8,14 @@ export type BreadcrumbsProps = {
    * @default 'Du er her'
    */
   'aria-label'?: string;
-  /**
-   * Sets the size of the component
-   * @default md
-   */
-  size?: 'sm' | 'md' | 'lg';
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement> &
+  DefaultProps;
 
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
-  (
-    { 'aria-label': ariaLabel = 'Du er her:', className, size, ...rest },
-    ref,
-  ) => (
+  ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
     <nav
       aria-label={ariaLabel}
       className={cl('ds-breadcrumbs', className)}
-      data-size={size}
       ref={ref}
       {...rest}
     />

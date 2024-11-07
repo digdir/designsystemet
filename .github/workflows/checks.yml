@@ -5,6 +5,7 @@ on:
     paths:
       - 'packages/**'
       - 'apps/**'
+      - 'plugins/**'
       - 'biome.jsonc'
 jobs:
   checks:
@@ -13,7 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
-      - name: Biome CI
+      - name: Lint code
         run: yarn biome ci .
-      - name: Lint CSS
-        run: yarn lint-style

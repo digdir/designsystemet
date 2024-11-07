@@ -97,7 +97,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <Heading size='xs' level={4} className={classes.title}>
+        <Heading data-size='xs' level={4} className={classes.title}>
           {capitalizeString(group)}
         </Heading>
         <div className={cl(classes.group)}>
@@ -144,7 +144,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       </div>
 
       <div className={classes.textContainer}>
-        <Heading level={5} size='2xs' className={classes.name}>
+        <Heading level={5} data-size='2xs' className={classes.name}>
           {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
           &nbsp;
           <ClipboardButton
@@ -207,7 +207,7 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.package}>
+      <div className={classes.package} data-unstyled>
         <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
           <img
             src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
@@ -215,7 +215,7 @@ const TokenList = ({
             className={classes.npmShield}
           />
         </Link>
-        <Paragraph size='sm'>@digdir/designsystemet-theme</Paragraph>
+        <Paragraph data-size='sm'>@digdir/designsystemet-theme</Paragraph>
       </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
@@ -225,18 +225,28 @@ const TokenList = ({
                 Brand: {capitalizeString(brand)}
               </Dropdown.Trigger>
               <Dropdown>
-                <Dropdown.Item onClick={() => setBrand('digdir')}>
-                  Digdir
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('altinn')}>
-                  Altinn
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('tilsynet')}>
-                  Tilsynet
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setBrand('portal')}>
-                  Brreg
-                </Dropdown.Item>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('digdir')}>
+                      Digdir
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('altinn')}>
+                      Altinn
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('tilsynet')}>
+                      Tilsynet
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setBrand('portal')}>
+                      Brreg
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.Context>
           )}
@@ -246,42 +256,43 @@ const TokenList = ({
                 Mode: {capitalizeString(mode)}
               </Dropdown.Trigger>
               <Dropdown>
-                <Dropdown.Item onClick={() => setMode('light')}>
-                  Light
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setMode('dark')}>
-                  Dark
-                </Dropdown.Item>
+                <Dropdown.List>
+                  <Dropdown.Item onClick={() => setMode('light')}>
+                    Light
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setMode('dark')}>
+                    Dark
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.Context>
           )}
         </div>
       )}
-      <>
-        {sectionedTokens.map(([section, tokens]) => {
-          const tokens_ = tokens as [string, Token[]][];
-          const List = () => {
-            if (type === 'dimension') {
-              return <TokensTable tokens={tokens_} />;
-            }
 
-            return (
-              <TokenCards
-                type={type}
-                cols={cardColumns}
-                tokens={tokens_}
-                hideValue={hideValue}
-              />
-            );
-          };
+      {sectionedTokens.map(([section, tokens]) => {
+        const tokens_ = tokens as [string, Token[]][];
+        const List = () => {
+          if (type === 'dimension') {
+            return <TokensTable tokens={tokens_} />;
+          }
+
           return (
-            <div key={section as string} className={classes.section}>
-              <h3>{capitalizeString(section as string)}</h3>
-              <List />
-            </div>
+            <TokenCards
+              type={type}
+              cols={cardColumns}
+              tokens={tokens_}
+              hideValue={hideValue}
+            />
           );
-        })}
-      </>
+        };
+        return (
+          <div key={section as string} className={classes.section}>
+            <h3>{capitalizeString(section as string)}</h3>
+            <List />
+          </div>
+        );
+      })}
     </div>
   );
 };

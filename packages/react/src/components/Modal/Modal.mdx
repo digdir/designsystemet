@@ -1,5 +1,6 @@
 import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/modal.css?inline';
 import * as ModalStories from './Modal.stories';
 
 import { Modal } from './';
@@ -24,7 +25,7 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
   <Modal.Trigger>Open Modal</Modal.Trigger>
   <Modal>
     <Modal.Block>
-      <Heading size="xs">Header</Heading>
+      <Heading data-size="xs">Header</Heading>
     </Modal.Block>
     <Modal.Block>Content</Modal.Block>
     <Modal.Block>Footer</Modal.Block>
@@ -85,3 +86,7 @@ Bruk `overflow: visible` for å la innhold gå utenfor modalen.
 ### `Modal.Block`
 
 <ArgTypes of={Modal.Block} />
+
+## CSS Variabler
+
+<CssVariables css={css} />

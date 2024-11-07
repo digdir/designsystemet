@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Heading } from '@digdir/designsystemet-react';
 import classes from './TeaserCard.module.css';
 
 interface TeaserCardProps {
@@ -19,12 +20,14 @@ const TeaserCard = ({
 }: TeaserCardProps) => {
   return (
     <Link className={classes.card} href={href} prefetch={false}>
-      <h3 className={classes.title}>{title}</h3>
+      <Heading level={3} data-size='sm' className={classes.title}>
+        {title}
+      </Heading>
       <p className={classes.desc}>{description}</p>
       {author && date && (
         <div className={classes.meta}>
-          <span className={classes.author}>{author}</span>
-          <span className={classes.date}>{date}</span>
+          <span>{author}</span>
+          <span>{date}</span>
         </div>
       )}
     </Link>

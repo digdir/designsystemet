@@ -5,23 +5,27 @@
   --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-card-border: 1px solid var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-neutral-text-default);
-  --dsc-card-gap: 1rem;
+  --dsc-card-gap: var(--ds-spacing-3);
   --dsc-card-padding: var(--ds-spacing-6);
 
-  all: unset; /* Reset if <button> */
-  display: block;
   background: var(--dsc-card-background);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  border-radius: var(--ds-border-radius-lg);
   border: var(--dsc-card-border);
   box-sizing: border-box;
   color: var(--dsc-card-color);
+  display: block;
+  font-family: inherit;
+  margin: 0;
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
+  text-align: inherit;
 
-  @composes ds-paragraph from './paragraph.css'; /* Must be after all: unset */
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
 
   /* Style link in heading, or heading when Card is anchor */
-  :is(h1, h2, h3, h4, h5, h6) a:any-link, /* Using :any-link to target both a and a:visited */
+  :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
   &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
     outline: 0;

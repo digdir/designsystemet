@@ -2,10 +2,13 @@
   rel="shortcut icon"
   href="/favicon.ico"
 />
+
 <link
-  rel="stylesheet"
+  rel="preload stylesheet"
+  as="style"
   href="https://altinncdn.no/fonts/inter/inter.css"
 />
+
 <link
   rel="stylesheet"
   href="https://unpkg.com/@digdir/designsystemet-theme@next/brand/digdir.css"
@@ -39,6 +42,10 @@
 
   html {
     font-family: 'Inter', sans-serif;
+  }
+
+  iframe {
+    color-scheme: auto;
   }
 
   .ds-focus:focus-visible {
@@ -129,11 +136,11 @@
   }
 
   .header__linkIcon.header__figma path {
-    stroke: var(--ds-color-neutral-8);
+    stroke: var(--ds-color-neutral-border-strong);
   }
 
   .header__linkIcon.header__github path {
-    fill: var(--ds-color-neutral-8);
+    fill: var(--ds-color-neutral-border-strong);
   }
 
   .header__linkIcon.header__figma:hover path {

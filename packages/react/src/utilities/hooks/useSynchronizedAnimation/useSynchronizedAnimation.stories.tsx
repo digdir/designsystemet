@@ -1,30 +1,23 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button } from '../../../components';
 
 import { useSynchronizedAnimation } from './useSynchronizedAnimation';
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
 const meta: Meta = {
   title: 'Utilities/useSynchronizedAnimation',
-  decorators,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    customStyles: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px',
+    },
+  },
 };
 
 export default meta;

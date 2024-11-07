@@ -2,13 +2,9 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { LabelHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { DefaultProps } from '../../types';
 
 export type LabelProps = {
-  /**
-   * Changes text sizing
-   * @default md
-   */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
    * @default 'medium'
@@ -19,16 +15,17 @@ export type LabelProps = {
    * @default false
    */
   asChild?: boolean;
-} & LabelHTMLAttributes<HTMLLabelElement>;
+} & LabelHTMLAttributes<HTMLLabelElement> &
+  DefaultProps;
 
 /**
  * Use `Label` for labels.
  *
  * @example
- * <Label size='lg'>Label</Label>
+ * <Label data-size='lg'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, size = 'md', weight = 'medium', asChild, ...rest },
+  { className, weight = 'medium', asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';
@@ -37,7 +34,6 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
     <Component
       ref={ref}
       className={cl('ds-label', className)}
-      data-size={size}
       data-weight={weight}
       {...rest}
     />

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @layer ds.reset, ds.base, ds.typography, ds.theme, ds.components;
 
@@ -10,17 +10,15 @@
 @import url('./paragraph.css') layer(ds.typography);
 @import url('./validation-message.css') layer(ds.typography);
 @import url('./button.css') layer(ds.components);
+@import url('./field.css') layer(ds.components);
+@import url('./input.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./accordion.css') layer(ds.components);
 @import url('./switch.css') layer(ds.components);
-@import url('./checkbox.css') layer(ds.components);
-@import url('./radio.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
-@import url('./select.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
-@import url('./textarea.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);
 @import url('./modal.css') layer(ds.components);
 @import url('./list.css') layer(ds.components);
@@ -43,3 +41,108 @@
 @import url('./breadcrumbs.css') layer(ds.components);
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
+
+/* TODO: Will move to tokens as part of #2508 */
+:root {
+  --ds-sizing-base: 18; /* Unitless base font-size 18px */
+  --ds-sizing-step: 4; /* Unitless step size 4px */
+  --ds-sizing-scale: var(--ds-sizing-step) / var(--ds-sizing-base);
+
+  /* Sizing when not supporting round() */
+  --ds-sizing-1: calc(var(--ds-sizing-scale) * 1em);
+  --ds-sizing-2: calc(var(--ds-sizing-scale) * 2em);
+  --ds-sizing-3: calc(var(--ds-sizing-scale) * 3em);
+  --ds-sizing-4: calc(var(--ds-sizing-scale) * 4em);
+  --ds-sizing-5: calc(var(--ds-sizing-scale) * 5em);
+  --ds-sizing-6: calc(var(--ds-sizing-scale) * 6em);
+  --ds-sizing-7: calc(var(--ds-sizing-scale) * 7em);
+  --ds-sizing-8: calc(var(--ds-sizing-scale) * 8em);
+  --ds-sizing-9: calc(var(--ds-sizing-scale) * 9em);
+  --ds-sizing-10: calc(var(--ds-sizing-scale) * 10em);
+  --ds-sizing-11: calc(var(--ds-sizing-scale) * 11em);
+  --ds-sizing-12: calc(var(--ds-sizing-scale) * 12em);
+  --ds-sizing-13: calc(var(--ds-sizing-scale) * 13em);
+  --ds-sizing-14: calc(var(--ds-sizing-scale) * 14em);
+  --ds-sizing-15: calc(var(--ds-sizing-scale) * 15em);
+  --ds-sizing-16: calc(var(--ds-sizing-scale) * 16em);
+  --ds-sizing-17: calc(var(--ds-sizing-scale) * 17em);
+  --ds-sizing-18: calc(var(--ds-sizing-scale) * 18em);
+  --ds-sizing-19: calc(var(--ds-sizing-scale) * 19em);
+  --ds-sizing-20: calc(var(--ds-sizing-scale) * 20em);
+  --ds-sizing-21: calc(var(--ds-sizing-scale) * 21em);
+  --ds-sizing-22: calc(var(--ds-sizing-scale) * 22em);
+  --ds-sizing-23: calc(var(--ds-sizing-scale) * 23em);
+  --ds-sizing-24: calc(var(--ds-sizing-scale) * 24em);
+  --ds-sizing-25: calc(var(--ds-sizing-scale) * 25em);
+  --ds-sizing-26: calc(var(--ds-sizing-scale) * 26em);
+  --ds-sizing-27: calc(var(--ds-sizing-scale) * 27em);
+  --ds-sizing-28: calc(var(--ds-sizing-scale) * 28em);
+  --ds-sizing-29: calc(var(--ds-sizing-scale) * 29em);
+  --ds-sizing-30: calc(var(--ds-sizing-scale) * 30em);
+
+  /* Sizing when supporting round() */
+  @supports (width: round(down, .1em, 1px)) {
+    --ds-sizing-1: round(down, calc(var(--ds-sizing-scale) * 1em), 0.0625rem);
+    --ds-sizing-2: round(down, calc(var(--ds-sizing-scale) * 2em), 0.0625rem);
+    --ds-sizing-3: round(down, calc(var(--ds-sizing-scale) * 3em), 0.0625rem);
+    --ds-sizing-4: round(down, calc(var(--ds-sizing-scale) * 4em), 0.0625rem);
+    --ds-sizing-5: round(down, calc(var(--ds-sizing-scale) * 5em), 0.0625rem);
+    --ds-sizing-6: round(down, calc(var(--ds-sizing-scale) * 6em), 0.0625rem);
+    --ds-sizing-7: round(down, calc(var(--ds-sizing-scale) * 7em), 0.0625rem);
+    --ds-sizing-8: round(down, calc(var(--ds-sizing-scale) * 8em), 0.0625rem);
+    --ds-sizing-9: round(down, calc(var(--ds-sizing-scale) * 9em), 0.0625rem);
+    --ds-sizing-10: round(down, calc(var(--ds-sizing-scale) * 10em), 0.0625rem);
+    --ds-sizing-11: round(down, calc(var(--ds-sizing-scale) * 11em), 0.0625rem);
+    --ds-sizing-12: round(down, calc(var(--ds-sizing-scale) * 12em), 0.0625rem);
+    --ds-sizing-13: round(down, calc(var(--ds-sizing-scale) * 13em), 0.0625rem);
+    --ds-sizing-14: round(down, calc(var(--ds-sizing-scale) * 14em), 0.0625rem);
+    --ds-sizing-15: round(down, calc(var(--ds-sizing-scale) * 15em), 0.0625rem);
+    --ds-sizing-16: round(down, calc(var(--ds-sizing-scale) * 16em), 0.0625rem);
+    --ds-sizing-17: round(down, calc(var(--ds-sizing-scale) * 17em), 0.0625rem);
+    --ds-sizing-18: round(down, calc(var(--ds-sizing-scale) * 18em), 0.0625rem);
+    --ds-sizing-19: round(down, calc(var(--ds-sizing-scale) * 19em), 0.0625rem);
+    --ds-sizing-20: round(down, calc(var(--ds-sizing-scale) * 20em), 0.0625rem);
+    --ds-sizing-21: round(down, calc(var(--ds-sizing-scale) * 21em), 0.0625rem);
+    --ds-sizing-22: round(down, calc(var(--ds-sizing-scale) * 22em), 0.0625rem);
+    --ds-sizing-23: round(down, calc(var(--ds-sizing-scale) * 23em), 0.0625rem);
+    --ds-sizing-24: round(down, calc(var(--ds-sizing-scale) * 24em), 0.0625rem);
+    --ds-sizing-25: round(down, calc(var(--ds-sizing-scale) * 25em), 0.0625rem);
+    --ds-sizing-26: round(down, calc(var(--ds-sizing-scale) * 26em), 0.0625rem);
+    --ds-sizing-27: round(down, calc(var(--ds-sizing-scale) * 27em), 0.0625rem);
+    --ds-sizing-28: round(down, calc(var(--ds-sizing-scale) * 28em), 0.0625rem);
+    --ds-sizing-29: round(down, calc(var(--ds-sizing-scale) * 29em), 0.0625rem);
+    --ds-sizing-30: round(down, calc(var(--ds-sizing-scale) * 30em), 0.0625rem);
+  }
+
+  /* Spacing */
+  --ds-spacing-1: var(--ds-sizing-1);
+  --ds-spacing-2: var(--ds-sizing-2);
+  --ds-spacing-3: var(--ds-sizing-3);
+  --ds-spacing-4: var(--ds-sizing-4);
+  --ds-spacing-5: var(--ds-sizing-5);
+  --ds-spacing-6: var(--ds-sizing-6);
+  --ds-spacing-7: var(--ds-sizing-7);
+  --ds-spacing-8: var(--ds-sizing-8);
+  --ds-spacing-9: var(--ds-sizing-9);
+  --ds-spacing-10: var(--ds-sizing-10);
+  --ds-spacing-11: var(--ds-sizing-11);
+  --ds-spacing-12: var(--ds-sizing-12);
+  --ds-spacing-13: var(--ds-sizing-13);
+  --ds-spacing-14: var(--ds-sizing-14);
+  --ds-spacing-15: var(--ds-sizing-15);
+  --ds-spacing-16: var(--ds-sizing-16);
+  --ds-spacing-17: var(--ds-sizing-17);
+  --ds-spacing-18: var(--ds-sizing-18);
+  --ds-spacing-19: var(--ds-sizing-19);
+  --ds-spacing-20: var(--ds-sizing-20);
+  --ds-spacing-21: var(--ds-sizing-21);
+  --ds-spacing-22: var(--ds-sizing-22);
+  --ds-spacing-23: var(--ds-sizing-23);
+  --ds-spacing-24: var(--ds-sizing-24);
+  --ds-spacing-25: var(--ds-sizing-25);
+  --ds-spacing-26: var(--ds-sizing-26);
+  --ds-spacing-27: var(--ds-sizing-27);
+  --ds-spacing-28: var(--ds-sizing-28);
+  --ds-spacing-29: var(--ds-sizing-29);
+  --ds-spacing-30: var(--ds-sizing-30);
+}

@@ -1,36 +1,67 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 
 import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
 
 import { Modal } from '.';
 
-const decorators = [
-  (Story: StoryFn) => (
-    <div style={{ margin: '2rem' }}>
-      <Story />
-    </div>
-  ),
-];
-
 export default {
   title: 'Komponenter/Modal',
   component: Modal,
-  decorators,
-} as Meta;
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      display: 'grid',
+      alignItems: 'start',
+      justifyItems: 'center',
+      story: {
+        boxSizing: 'border-box',
+        height: '100cqh',
+        width: '100cqw',
+      },
+    },
+    chromatic: {
+      modes: {
+        mobile: {
+          viewport: { height: 600 },
+        },
+        desktop: {
+          viewport: { height: 1080 },
+        },
+      },
+    },
+  },
+  play: async (ctx) => {
+    // When not in Docs mode, automatically open the modal
+    const canvas = within(ctx.canvasElement);
+    const button = canvas.getByRole('button');
+    await userEvent.click(button);
+    // Wait for modal to fade in before running tests
+    const modal = canvas.getByRole('dialog');
+    await new Promise<void>((resolve) => {
+      modal.addEventListener('animationend', () => {
+        resolve();
+      });
+    });
+
+    await expect(modal).toBeInTheDocument();
+    await expect(modal).toHaveAttribute('open');
+  },
+} satisfies Meta;
 
 export const Preview: StoryFn<typeof Modal> = (args) => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal {...args}>
-      <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+      <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Modal header
       </Heading>
       <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-      <Paragraph size='sm'>Modal footer</Paragraph>
+      <Paragraph data-size='sm'>Modal footer</Paragraph>
     </Modal>
   </Modal.Context>
 );
@@ -42,8 +73,8 @@ export const WithoutModalContext: StoryFn<typeof Modal> = (args) => {
     <>
       <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
       <Modal {...args} ref={modalRef}>
-        <Paragraph size='sm'>Modal subtittel</Paragraph>
-        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph data-size='sm'>Modal subtittel</Paragraph>
+        <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal header
         </Heading>
         <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -63,14 +94,12 @@ export const BackdropClose: StoryFn<typeof Modal> = () => {
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal ref={modalRef} backdropClose>
-        <Heading size='xs'>
-          Modal med backdropClose og en veldig lang tittel
-        </Heading>
+        <Heading>Modal med backdropClose og en veldig lang tittel</Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        <Paragraph size='sm'>Modal footer</Paragraph>
+        <Paragraph data-size='sm'>Modal footer</Paragraph>
       </Modal>
     </Modal.Context>
   );
@@ -81,8 +110,8 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal>
       <Modal.Block>
-        <Paragraph size='sm'>Her er det også divider</Paragraph>
-        <Heading size='xs'>Vi kan legge divider under header</Heading>
+        <Paragraph data-size='sm'>Her er det også divider</Paragraph>
+        <Heading>Vi kan legge divider under header</Heading>
       </Modal.Block>
       <Modal.Block>
         <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -120,8 +149,8 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
   return (
     <Modal.Context>
       <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} onClose={() => setInput('')}>
-        <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+      <Modal ref={modalRef} onClose={() => setInput('')} backdropClose>
+        <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           Modal med skjema
         </Heading>
         <Textfield
@@ -159,7 +188,7 @@ export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => (
   <Modal.Context>
     <Modal.Trigger>Open Modal</Modal.Trigger>
     <Modal style={{ maxWidth: 1200 }}>
-      <Heading size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+      <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Modal med en veldig lang bredde
       </Heading>
       <Paragraph>
@@ -179,7 +208,7 @@ export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
         <Modal.Trigger>Open Modal</Modal.Trigger>
         <Modal style={{ overflow: 'visible' }} ref={modalRef}>
           <Modal.Block>
-            <Heading size='xs'>Modal med combobox</Heading>
+            <Heading>Modal med combobox</Heading>
           </Modal.Block>
           <Modal.Block>
             <Combobox portal={false} label='Velg sted' autoFocus>
