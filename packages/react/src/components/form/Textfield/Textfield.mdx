@@ -10,6 +10,15 @@ import * as TextfieldStories from './Textfield.stories';
 `Textfield` kalles tekstfelt på norsk. Det er et inndatafelt som for eksempel gir brukerne mulighet til å skrive korte tekster eller tall.
 Du kan velge mellom både `input` og `textarea` for å lage tekstfelt.
 
+<br/>
+
+`Textfield` er en ferdig sammensatt `Field` komponent for standard oppsett av et tekstfelt.  
+
+<br/>
+
+Ønsker du mer kontroll eller funksjonalitet bruk [Field](/docs/komponenter-field--docs) komponenten direkte.
+
+
 <Primary />
 <Controls />
 
@@ -34,6 +43,10 @@ Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
 Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
 
 <Canvas of={TextfieldStories.Adornments} />
+
+## Antall tegn
+
+Sett sammen [Field](/docs/komponenter-field--docs#antall-tegn) til å vise antall tegn som er skrevet i et tekstfelt.
 
 ## Kontrollert
 

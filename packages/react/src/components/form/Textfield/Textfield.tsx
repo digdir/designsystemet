@@ -15,7 +15,6 @@ import {
   FieldAffix,
   FieldAffixWrapper,
   FieldDescription,
-  type FieldProps,
 } from '../Field';
 import { Input } from '../Input';
 import { Textarea } from '../Textarea';
@@ -25,16 +24,12 @@ type SharedTextfieldProps = {
   label?: ReactNode;
   /** Description */
   description?: ReactNode;
-  /** Prefix for field. */
+  /** Prefix */
   prefix?: string;
-  /** Suffix for field. */
+  /** Suffix */
   suffix?: string;
-  /** Validation message for field */
+  /** Validation message. This will flag an error & assign `aria-invalid` */
   validation?: ReactNode;
-  /**
-   * Props for the wrapping field
-   */
-  fieldProps?: FieldProps;
 } & DefaultProps;
 
 type TextareaTypes = {
@@ -43,14 +38,15 @@ type TextareaTypes = {
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 type InputTypes = {
+  /** Use to render a `textarea` instead of `input` for multiline support  */
   multiline?: never | false;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export type TextfieldProps = SharedTextfieldProps &
   (TextareaTypes | InputTypes);
 
-/** Text input field
- *
+/**
+ * Preconfigured `Field` for inputing text.
  * @example
  * ```tsx
  * <Textfield label="Textfield label">
@@ -69,7 +65,6 @@ export const Textfield = forwardRef<
       prefix,
       suffix,
       'data-size': size,
-      fieldProps,
       ...rest
     },
     ref,
@@ -77,8 +72,8 @@ export const Textfield = forwardRef<
     const AffixWrapper = prefix || suffix ? FieldAffixWrapper : Fragment;
 
     return (
-      <Field data-size={size} {...fieldProps}>
-        {!!label && <Label weight='regular'>{label}</Label>}
+      <Field data-size={size}>
+        {!!label && <Label>{label}</Label>}
         {!!description && <FieldDescription>{description}</FieldDescription>}
         <AffixWrapper>
           {prefix && <FieldAffix>{prefix}</FieldAffix>}
