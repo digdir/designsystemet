@@ -46,7 +46,7 @@
 
   & caption {
     @composes ds-heading from './heading.css';
-    text-align: left;
+    text-align: inherit;
   }
 
   /* Add rounded border to first and last row */
