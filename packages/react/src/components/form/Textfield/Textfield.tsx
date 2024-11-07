@@ -54,51 +54,49 @@ export type TextfieldProps = SharedTextfieldProps &
 export const Textfield = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   TextfieldProps
->(
-  (
-    {
-      label,
-      description,
-      error,
-      multiline,
-      prefix,
-      suffix,
-      'data-size': size,
-      counter,
-      ...rest
-    },
-    ref,
-  ) => {
-    const AffixWrapper = prefix || suffix ? FieldAffixWrapper : Fragment;
+>(function Textfield(
+  {
+    label,
+    description,
+    error,
+    multiline,
+    prefix,
+    suffix,
+    'data-size': size,
+    counter,
+    ...rest
+  },
+  ref,
+) {
+  const AffixWrapper = prefix || suffix ? FieldAffixWrapper : Fragment;
 
-    return (
-      <Field data-size={size}>
-        {!!label && <Label>{label}</Label>}
-        {!!description && <FieldDescription>{description}</FieldDescription>}
-        <AffixWrapper>
-          {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
-          {multiline === true ? (
-            <Textarea
-              ref={ref as ForwardedRef<HTMLTextAreaElement>}
-              aria-invalid={!!error}
-              {...(rest as TextareaProps_)}
-            />
-          ) : (
-            <Input
-              ref={ref as ForwardedRef<HTMLInputElement>}
-              aria-invalid={!!error}
-              {...(rest as InputProps_)}
-            />
-          )}
-          {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
-        </AffixWrapper>
-        {!!error && <ValidationMessage>{error}</ValidationMessage>}
-        {!!counter && (
-          <Field.Counter
-            {...(typeof counter === 'number' ? { limit: counter } : counter)}
+  return (
+    <Field data-size={size}>
+      {!!label && <Label>{label}</Label>}
+      {!!description && <FieldDescription>{description}</FieldDescription>}
+      <AffixWrapper>
+        {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
+        {multiline === true ? (
+          <Textarea
+            ref={ref as ForwardedRef<HTMLTextAreaElement>}
+            aria-invalid={!!error}
+            {...(rest as TextareaProps_)}
+          />
+        ) : (
+          <Input
+            ref={ref as ForwardedRef<HTMLInputElement>}
+            aria-invalid={!!error}
+            {...(rest as InputProps_)}
           />
         )}
-      </Field>
-    );
-  },
-);
+        {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
+      </AffixWrapper>
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
+      {!!counter && (
+        <Field.Counter
+          {...(typeof counter === 'number' ? { limit: counter } : counter)}
+        />
+      )}
+    </Field>
+  );
+});
