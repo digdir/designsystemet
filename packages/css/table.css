@@ -19,7 +19,7 @@
   color: var(--dsc-table-color);
   width: 100%;
 
-  & > :is(tbody, thead) > tr > :is(th, td) {
+  & > :is(tbody, thead, tfoot) > tr > :is(th, td) {
     background: var(--dsc-table-background);
     border-bottom: var(--dsc-table-border);
     padding: var(--dsc-table-padding);
@@ -38,6 +38,17 @@
     border-bottom: var(--dsc-table-header-divider);
   }
 
+  & > tfoot > tr > :is(th, td) {
+    background: var(--dsc-table-background);
+    border-bottom: none;
+    border-top: var(--dsc-table-border);
+  }
+
+  & caption {
+    @composes ds-heading from './heading.css';
+    text-align: left;
+  }
+
   /* Add rounded border to first and last row */
   & > :is(thead, tbody):first-child > tr:first-child > :is(th, td) {
     &:first-child {
@@ -50,7 +61,7 @@
   }
 
   /* Add rounded border to last row */
-  & > :is(thead, tbody):last-child > tr:last-child > :is(th, td) {
+  & > :is(thead, tbody, tfoot):last-child > tr:last-child > :is(th, td) {
     &:first-child {
       border-bottom-left-radius: var(--dsc-table-border-radius);
     }
