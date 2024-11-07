@@ -104,7 +104,7 @@ export default function RootLayout({
         <div className='root'>
           <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
           <VersionBanner />
-          <Header menu={menu} skipLink={false} />
+          <Header menu={menu} skipLink={false} themeSwitcher={true} />
           {children}
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
           {process.env.VERCEL_ENV === 'production' && (

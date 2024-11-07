@@ -20,6 +20,7 @@ type HeaderProps = {
   menu: { name: string; href: string }[];
   betaTag?: boolean;
   skipLink?: boolean;
+  themeSwitcher?: boolean;
 };
 
 /**
@@ -52,7 +53,12 @@ const detectWrap = (items: HTMLCollection) => {
 /**
  * Only works in next.js projects
  */
-const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
+const Header = ({
+  menu,
+  betaTag,
+  skipLink = true,
+  themeSwitcher = false,
+}: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
@@ -67,6 +73,7 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
   };
 
   useEffect(() => {
+    if (!themeSwitcher) return;
     // get user preference
     const userPreference = window.matchMedia('(prefers-color-scheme: dark)');
     const userPrefersDark = userPreference.matches;
@@ -160,20 +167,22 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                 </Link>
               </li>
             </ul>
-            <Button
-              variant='tertiary'
-              icon={true}
-              color='neutral'
-              onClick={() => {
-                handleThemeChange(theme === 'light' ? 'dark' : 'light');
-              }}
-            >
-              {theme === 'light' ? (
-                <SunIcon fontSize='1em' />
-              ) : (
-                <MoonIcon fontSize='1em' />
-              )}
-            </Button>
+            {themeSwitcher && (
+              <Button
+                variant='tertiary'
+                icon={true}
+                color='neutral'
+                onClick={() => {
+                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
+                }}
+              >
+                {theme === 'light' ? (
+                  <SunIcon fontSize='1em' />
+                ) : (
+                  <MoonIcon fontSize='1em' />
+                )}
+              </Button>
+            )}
             <Button
               variant='tertiary'
               icon={true}
