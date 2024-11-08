@@ -126,7 +126,6 @@ export const Showcase: StoryFn = () => {
           <Heading className={cl(classes.cardTitle, classes.userTitle)}>
             Opprett ny bruker
           </Heading>
-
           <Textfield
             label='Navn'
             placeholder='Ola Normann'
