@@ -129,7 +129,9 @@ export const Showcase: StoryFn = () => {
           <Textfield label='Navn' placeholder='Ola Normann' />
           <Textfield type='email' label='E-post' placeholder='ola@norge.no' />
           <Tooltip content='Trykk for å få hjelp' portal={false}>
-            <Link href='#'>Glemt passord?</Link>
+            <Link href='#' className={classes.userLink}>
+              Glemt passord?
+            </Link>
           </Tooltip>
           <Button className={classes.userBtn}>Opprett ny bruker</Button>
         </div>

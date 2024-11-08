@@ -44,6 +44,14 @@
   gap: var(--ds-spacing-6);
 }
 
+.userLink {
+  margin-top: calc(var(--ds-spacing-6) * -1);
+}
+
+.userBtn {
+  margin-top: var(--ds-spacing-2);
+}
+
 .tableContainer {
   grid-column: span 4;
 }
@@ -81,15 +89,6 @@
 
 .userTitle {
   text-align: center;
-}
-
-.userBtn {
-  margin-top: var(--ds-spacing-2);
-}
-
-.userPar {
-  margin-bottom: -4px;
-  margin-top: -7px;
 }
 
 .tabs button {
