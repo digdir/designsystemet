@@ -57,7 +57,7 @@
 }
 
 .toggle {
-  display: none;
+  display: flex;
   border: none;
   background-color: transparent;
 }
@@ -143,7 +143,7 @@
     z-index: 1;
     left: 0;
     right: 0;
-    top: 71px;
+    top: 75px;
     background-color: var(--ds-color-neutral-background-default);
     box-shadow: var(--ds-shadow-lg);
     flex-direction: column;
@@ -174,13 +174,13 @@
   }
 }
 
+.toggleButton svg {
+  font-size: 1.75em;
+}
+
 @media (max-width: 900px) {
   &.header {
     height: 72px;
-  }
-
-  .toggle {
-    display: flex;
   }
 
   .menu {

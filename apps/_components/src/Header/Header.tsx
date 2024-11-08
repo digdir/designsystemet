@@ -176,38 +176,41 @@ const Header = ({
                 onClick={() => {
                   handleThemeChange(theme === 'light' ? 'dark' : 'light');
                 }}
+                className={classes.toggleButton}
               >
                 {theme === 'dark' ? (
-                  <SunIcon fontSize='1em' />
+                  <SunIcon fontSize='1.75em' />
                 ) : (
-                  <MoonIcon fontSize='1em' />
+                  <MoonIcon fontSize='1.75em' />
                 )}
               </Button>
             )}
-            <Button
-              variant='tertiary'
-              icon={true}
-              color='neutral'
-              aria-expanded={open}
-              aria-label='Meny'
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && (
-                <XMarkIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-            </Button>
+            {isHamburger && (
+              <Button
+                variant='tertiary'
+                icon={true}
+                color='neutral'
+                aria-expanded={open}
+                aria-label='Meny'
+                className={cl(classes.toggle, 'ds-focus')}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {open && (
+                  <XMarkIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+                {!open && (
+                  <MenuHamburgerIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+              </Button>
+            )}
           </nav>
         </div>
       </header>
