@@ -45,21 +45,6 @@ export const Preview: Story = {
   ),
 };
 
-// export const WithCharacterCounter: Story = {
-//   args: {
-//     cols: 40,
-//     characterLimit: {
-//       maxCount: 5,
-//     },
-//   },
-//   render: (args) => (
-//     <>
-//       <Label>Label</Label>
-//       <Textarea {...args} />
-//     </>
-//   ),
-// };
-
 export const FullWidth: Story = {
   args: {
     cols: 40,
