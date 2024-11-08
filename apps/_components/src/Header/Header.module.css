@@ -59,7 +59,7 @@
 .toggle {
   display: flex;
   border: none;
-  background-color: transparent;
+  place-self: flex-end;
 }
 
 .menu {
@@ -137,6 +137,10 @@
     height: 72px;
   }
 
+  & nav {
+    gap: var(--ds-spacing-1);
+  }
+
   .menu {
     border-top: 1px solid var(--ds-color-neutral-border-subtle);
     position: absolute;
@@ -176,46 +180,4 @@
 
 .toggleButton svg {
   font-size: 1.75em;
-}
-
-@media (max-width: 900px) {
-  &.header {
-    height: 72px;
-  }
-
-  .menu {
-    border-top: 1px solid var(--ds-color-neutral-border-default);
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: 71px;
-    background-color: var(--ds-color-neutral-background-default);
-    box-shadow: var(--ds-shadow-lg);
-    flex-direction: column;
-    display: none;
-    padding: 20px 0;
-    width: 100%;
-  }
-
-  .item {
-    padding: 20px 0;
-    margin-left: 16px;
-  }
-
-  .active {
-    display: block;
-  }
-
-  .item .active {
-    display: inline-block;
-  }
-
-  .linkIcon {
-    place-items: start;
-  }
-
-  .logo {
-    height: 26px;
-  }
 }

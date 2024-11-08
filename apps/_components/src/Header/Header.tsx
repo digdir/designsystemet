@@ -124,6 +124,32 @@ const Header = ({
             {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
           <nav>
+            {isHamburger && (
+              <Button
+                variant='tertiary'
+                icon={true}
+                color='neutral'
+                aria-expanded={open}
+                aria-label='Meny'
+                className={cl(classes.toggle, 'ds-focus')}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {open && (
+                  <XMarkIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+                {!open && (
+                  <MenuHamburgerIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+              </Button>
+            )}
             <ul
               ref={menuRef}
               className={cl(classes.menu, open && classes.active)}
@@ -194,32 +220,6 @@ const Header = ({
                   )}
                 </Button>
               </Tooltip>
-            )}
-            {isHamburger && (
-              <Button
-                variant='tertiary'
-                icon={true}
-                color='neutral'
-                aria-expanded={open}
-                aria-label='Meny'
-                className={cl(classes.toggle, 'ds-focus')}
-                onClick={() => {
-                  setOpen(!open);
-                }}
-              >
-                {open && (
-                  <XMarkIcon
-                    fontSize={26}
-                    color='var(--ds-color-neutral-text-default)'
-                  />
-                )}
-                {!open && (
-                  <MenuHamburgerIcon
-                    fontSize={26}
-                    color='var(--ds-color-neutral-text-default)'
-                  />
-                )}
-              </Button>
             )}
           </nav>
         </div>
