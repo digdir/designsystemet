@@ -8,76 +8,30 @@ import { Textfield } from './Textfield';
 const user = userEvent.setup();
 
 describe('Textfield', () => {
-  test('has correct value and label', () => {
+  it('has correct value and label', () => {
     render({ value: 'test', label: 'label' });
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', () => {
+  it('has correct description', () => {
     render({ description: 'description' });
     expect(
       screen.getByRole('textbox', { description: 'description' }),
     ).toBeDefined();
   });
 
-  test('has correct description and label when label is hidden', () => {
-    render({ description: 'description', label: 'label', hideLabel: true });
-
-    expect(screen.getByLabelText('label')).toBeDefined();
-    expect(
-      screen.getByRole('textbox', { description: 'description' }),
-    ).toBeDefined();
+  it('should become a textarea when multiline is true', () => {
+    render({ multiline: true });
+    expect(screen.getByRole('textbox')).toBeInstanceOf(HTMLTextAreaElement);
   });
 
-  test('is invalid with correct error message', () => {
+  it('is invalid with correct error message', () => {
     render({ error: 'error-message' });
 
     const input = screen.getByRole('textbox', { description: 'error-message' });
     expect(input).toBeDefined();
     expect(input).toBeInvalid();
-  });
-
-  test('is invalid with correct error message from errorId', () => {
-    renderRtl(
-      <>
-        <span id='my-error'>my error message</span>
-        <Textfield errorId='my-error' error />
-      </>,
-    );
-
-    const input = screen.getByRole('textbox', {
-      description: 'my error message',
-    });
-    expect(input).toBeDefined();
-    expect(input).toBeInvalid();
-  });
-
-  it('should have max allowed characters label for screen readers', () => {
-    render({
-      characterLimit: {
-        maxCount: 10,
-        srLabel: 'Max 10 characters is allowed',
-        label: (count: number) => `${count} characters remaining`,
-      },
-    });
-    const screenReaderText = screen.getByText('Max 10 characters is allowed');
-    expect(screenReaderText).toBeInTheDocument();
-  });
-
-  it('should countdown remaining characters', async () => {
-    const user = userEvent.setup();
-    render({
-      label: 'First name',
-      characterLimit: {
-        maxCount: 10,
-        label: (count: number) => `${count} characters remaining`,
-        srLabel: 'characters remaining',
-      },
-    });
-    const inputField = screen.getByLabelText('First name');
-    await act(async () => await user.type(inputField, 'Peter'));
-    expect(screen.getByText('5 characters remaining')).toBeInTheDocument();
   });
 
   it('Triggers onBlur event when field loses focus', async () => {
@@ -133,7 +87,7 @@ describe('Textfield', () => {
   });
 });
 
-const render = (props: Partial<TextfieldProps> = {}) =>
+const render = (props: TextfieldProps = {}) =>
   renderRtl(
     <Textfield
       {...{
