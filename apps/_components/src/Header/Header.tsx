@@ -1,5 +1,10 @@
 'use client';
-import { Button, Paragraph, SkipLink } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Paragraph,
+  SkipLink,
+  Tooltip,
+} from '@digdir/designsystemet-react';
 import {
   MenuHamburgerIcon,
   MoonIcon,
@@ -168,22 +173,27 @@ const Header = ({
               </li>
             </ul>
             {themeSwitcher && (
-              <Button
-                aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
-                variant='tertiary'
-                icon={true}
-                color='neutral'
-                onClick={() => {
-                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
-                }}
-                className={classes.toggleButton}
+              <Tooltip
+                content={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+                placement='bottom'
               >
-                {theme === 'dark' ? (
-                  <SunIcon fontSize='1.75em' />
-                ) : (
-                  <MoonIcon fontSize='1.75em' />
-                )}
-              </Button>
+                <Button
+                  aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+                  variant='tertiary'
+                  icon={true}
+                  color='neutral'
+                  onClick={() => {
+                    handleThemeChange(theme === 'light' ? 'dark' : 'light');
+                  }}
+                  className={classes.toggleButton}
+                >
+                  {theme === 'dark' ? (
+                    <SunIcon fontSize='1.75em' />
+                  ) : (
+                    <MoonIcon fontSize='1.75em' />
+                  )}
+                </Button>
+              </Tooltip>
             )}
             {isHamburger && (
               <Button
