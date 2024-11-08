@@ -126,8 +126,17 @@ export const Showcase: StoryFn = () => {
           <Heading className={cl(classes.cardTitle, classes.userTitle)}>
             Opprett ny bruker
           </Heading>
-          <Textfield label='Navn' placeholder='Ola Normann' />
-          <Textfield type='email' label='E-post' placeholder='ola@norge.no' />
+          <Textfield
+            label='Navn'
+            placeholder='Ola Normann'
+            className={classes.userField}
+          />
+          <Textfield
+            type='email'
+            label='E-post'
+            placeholder='ola@norge.no'
+            className={classes.userField}
+          />
           <Tooltip content='Trykk for å få hjelp' portal={false}>
             <Link href='#' className={classes.userLink}>
               Glemt passord?
