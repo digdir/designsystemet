@@ -51,7 +51,6 @@ type GetCheckboxPropsType =
       | 'aria-label'
       | 'aria-labelledby'
       | 'label'
-      | 'name'
       | 'checked'
       | 'value'
     > & {
@@ -136,7 +135,7 @@ export function useCheckboxGroup({
         : rest['aria-describedby'],
       'aria-invalid': !!error || rest['aria-invalid'],
       checked: allowIndeterminate ? undefined : currentValue.includes(value),
-      name: name || nameFallback,
+      name: rest.name || name || nameFallback,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         rest.onChange?.(e);
         if (e.defaultPrevented) return;

@@ -79,7 +79,7 @@ export function useRadioGroup({
     const { ref = undefined, value = '', ...rest } = props;
     const localRef = useRef<HTMLInputElement>(null);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = () => {
       const input = localRef.current;
       const isInput = input instanceof HTMLInputElement;
 
@@ -113,7 +113,7 @@ export function useRadioGroup({
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         rest.onChange?.(e);
         if (e.defaultPrevented) return;
-        handleChange(e);
+        handleChange();
       },
     };
   };
