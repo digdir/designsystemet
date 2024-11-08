@@ -62,7 +62,6 @@
 }
 
 .card {
-  background-color: #fff;
   border-radius: 4px;
   align-items: flex-start;
   align-items: center;
@@ -81,7 +80,7 @@
 
 .value {
   font-size: 15px;
-  color: #636363;
+  color: var(--ds-color-neutral-text-subtle);
 }
 
 .copy {

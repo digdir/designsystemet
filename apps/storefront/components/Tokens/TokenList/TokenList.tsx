@@ -257,11 +257,15 @@ const TokenList = ({
               </Dropdown.Trigger>
               <Dropdown>
                 <Dropdown.List>
-                  <Dropdown.Item onClick={() => setMode('light')}>
-                    Light
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setMode('light')}>
+                      Light
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setMode('dark')}>
-                    Dark
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setMode('dark')}>
+                      Dark
+                    </Dropdown.Button>
                   </Dropdown.Item>
                 </Dropdown.List>
               </Dropdown>
