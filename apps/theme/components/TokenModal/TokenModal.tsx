@@ -8,7 +8,7 @@ import {
   Paragraph,
   Textfield,
 } from '@digdir/designsystemet-react';
-import { createTokens } from '@digdir/designsystemet/tokens';
+import { colorCliOptions, createTokens } from '@digdir/designsystemet/tokens';
 import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
@@ -44,9 +44,9 @@ export const TokenModal = ({
   const [themeName, setThemeName] = useState('theme');
 
   const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --main "accent:${accentColor}" \\
-   --neutral "${neutralColor}" \\
-   --support "brand1:${brand1Color}" "brand2:${brand2Color}" "brand3:${brand3Color}" \\
+   --${colorCliOptions.main} "accent:${accentColor}" \\
+   --${colorCliOptions.neutral} "${neutralColor}" \\
+   --${colorCliOptions.support} "brand1:${brand1Color}" "brand2:${brand2Color}" "brand3:${brand3Color}" \\
    --theme "${themeName}" \\
    --write
    `;

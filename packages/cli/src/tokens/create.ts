@@ -3,6 +3,12 @@ import { baseColors, generateScaleForColor } from '../colors/index.js';
 import type { ColorInfo, ColorMode } from '../colors/types.js';
 import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
+export const colorCliOptions = {
+  main: 'main-colors',
+  support: 'support-colors',
+  neutral: 'neutral-color',
+} as const;
+
 export type CreateTokensOptions = {
   colors: Colors;
   typography: Typography;

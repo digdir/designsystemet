@@ -6,7 +6,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { convertToHex } from '../src/colors/index.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { createTokens } from '../src/tokens/create.js';
+import { colorCliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
@@ -30,13 +30,12 @@ function makeTokenCommands() {
       console.log(`Building tokens in ${chalk.green(tokens)}`);
       return buildTokens({ tokens, out, preview, verbose });
     });
-
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .requiredOption('-m, --main-colors <name:hex...>', `Main colors`, parseColorValues)
-    .requiredOption('-s, --support-colors <name:hex...>', `Support colors`, parseColorValues)
-    .requiredOption('-n, --neutral-color <hex>', `Neutral hex color`, convertToHex)
+    .requiredOption(`-m, --${colorCliOptions.main} <name:hex...>`, `Main colors`, parseColorValues)
+    .requiredOption(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
+    .requiredOption(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
     .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
