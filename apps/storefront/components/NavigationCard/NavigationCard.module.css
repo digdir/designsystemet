@@ -56,12 +56,22 @@
 }
 
 .grey {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-background-default);
   box-shadow: none;
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-surface-default);
+  }
 }
 
 .white {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-background-default);
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-surface-default);
+  }
 }
 
 .title {

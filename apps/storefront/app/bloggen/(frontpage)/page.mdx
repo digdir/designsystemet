@@ -76,6 +76,11 @@ export const metadata = {
   {`
     body {
       background-color: var(--ds-color-neutral-background-subtle);
+
+        [data-ds-color-mode='dark'] &,
+        [data-ds-color-mode='auto'] & {
+          background-color: var(--ds-color-neutral-backround-default);
+        }
     }
   `}
 </style>

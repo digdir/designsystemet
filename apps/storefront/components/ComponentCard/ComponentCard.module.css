@@ -8,6 +8,11 @@
   box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
   transition: 0.2s transform ease-in-out, 0.2s box-shadow ease-in-out;
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-surface-default);
+  }
 }
 
 .card:hover {
