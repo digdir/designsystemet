@@ -8,7 +8,7 @@ import {
   Paragraph,
   Textfield,
 } from '@digdir/designsystemet-react';
-import { createTokens } from '@digdir/designsystemet/tokens/create.js';
+import { createTokens } from '@digdir/designsystemet/tokens';
 import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
