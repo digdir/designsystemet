@@ -2,6 +2,7 @@
 dist
 ignore
 tsc-build
+*.tsbuildinfo
 
 # Yarn stuff; we're not using PnP/Zero installs
 .pnp.*

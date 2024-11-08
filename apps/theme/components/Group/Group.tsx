@@ -1,7 +1,8 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
+import type { ThemeColors } from '../../types';
 import { Color } from '../Color/Color';
 
 import classes from './Group.module.css';

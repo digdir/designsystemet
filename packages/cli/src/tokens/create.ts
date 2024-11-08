@@ -1,6 +1,13 @@
+import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../colors/index.js';
 import type { ColorInfo, ColorMode } from '../colors/types.js';
 import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
+
+export const colorCliOptions = {
+  main: 'main-colors',
+  support: 'support-colors',
+  neutral: 'neutral-color',
+} as const;
 
 export type CreateTokensOptions = {
   colors: Colors;
@@ -53,19 +60,15 @@ const generateTypographyTokens = (themeName: string, { fontFamily }: Typography)
 };
 
 const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors): TokensSet => {
-  const accentColors = generateScaleForColor(colors.accent, theme);
-  const neutralColors = generateScaleForColor(colors.neutral, theme);
-  const brand1Colors = generateScaleForColor(colors.brand1, theme);
-  const brand2Colors = generateScaleForColor(colors.brand2, theme);
-  const brand3Colors = generateScaleForColor(colors.brand3, theme);
+  const main = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.main);
+  const support = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.support);
+  const neutral = createColorTokens(generateScaleForColor(colors.neutral, theme));
 
   return {
     [themeName]: {
-      accent: createColorTokens(accentColors),
-      neutral: createColorTokens(neutralColors),
-      brand1: createColorTokens(brand1Colors),
-      brand2: createColorTokens(brand2Colors),
-      brand3: createColorTokens(brand3Colors),
+      ...main,
+      ...support,
+      neutral,
     },
   };
 };
