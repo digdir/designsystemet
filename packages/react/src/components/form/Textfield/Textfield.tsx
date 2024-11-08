@@ -48,6 +48,7 @@ export type TextfieldProps = SharedTextfieldProps &
 
 /**
  * Preconfigured `Field` for common configurations inputing text.
+ * Rest props are passed to the `Input` or `Textarea` component.
  * @example
  * ```tsx
  * <Textfield label="Textfield label">
