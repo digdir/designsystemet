@@ -169,7 +169,7 @@ const Header = ({
             </ul>
             {themeSwitcher && (
               <Button
-                aria-label='Bytt fargemodus'
+                aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
                 variant='tertiary'
                 icon={true}
                 color='neutral'
@@ -177,7 +177,7 @@ const Header = ({
                   handleThemeChange(theme === 'light' ? 'dark' : 'light');
                 }}
               >
-                {theme === 'light' ? (
+                {theme === 'dark' ? (
                   <SunIcon fontSize='1em' />
                 ) : (
                   <MoonIcon fontSize='1em' />
