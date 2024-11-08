@@ -40,8 +40,6 @@
 
 .user {
   grid-column: span 2;
-  display: grid;
-  gap: var(--ds-spacing-6);
 }
 
 .tableContainer {
