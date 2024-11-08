@@ -107,7 +107,7 @@ describe('RadioGroup', () => {
     const radio3 = screen.getByLabelText('Test 3');
 
     await act(async () => await user.click(radio1));
-    expect(onChangeMock).toHaveBeenCalledWith('test1', '', expect.any(Object));
+    expect(onChangeMock).toHaveBeenCalledWith('test1', '');
     expect(radio1).toBeChecked();
     expect(radio2).not.toBeChecked();
     expect(radio3).not.toBeChecked();

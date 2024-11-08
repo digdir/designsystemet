@@ -61,7 +61,9 @@ type GetRadioPropsType =
  */
 export function useRadioGroup({
   error,
+  readOnly,
   required,
+  disabled,
   name,
   onChange,
   value: initalValue = '',
@@ -109,7 +111,9 @@ export function useRadioGroup({
       name: nameRendered,
       value,
       ref: mergedRefs,
-      required,
+      required: required || rest.required,
+      readOnly: readOnly || rest.readOnly,
+      disabled: disabled || rest.disabled,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         rest.onChange?.(e);
         if (e.defaultPrevented) return;
