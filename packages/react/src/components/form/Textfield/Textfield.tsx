@@ -27,7 +27,9 @@ type SharedTextfieldProps = {
   suffix?: string;
   /** Error message for field */
   error?: ReactNode;
-  /** Uses `Field.Counter` to display a character counter */
+  /** Uses `Field.Counter` to display a character counter
+   * Pass a number to set a limit, or an object to configure the counter
+   */
   counter?: FieldCounterProps | number;
 } & DefaultProps;
 
@@ -45,7 +47,7 @@ export type TextfieldProps = SharedTextfieldProps &
   (TextfieldTextareaProps | TextfieldInputProps);
 
 /**
- * Preconfigured `Field` for inputing text.
+ * Preconfigured `Field` for common configurations inputing text.
  * @example
  * ```tsx
  * <Textfield label="Textfield label">
