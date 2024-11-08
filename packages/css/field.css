@@ -73,7 +73,11 @@
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
   position: relative;
   white-space: nowrap;
-  width: fit-content;
+  width: 100%;
+
+  &:has(input[size]) {
+    width: fit-content;
+  }
 
   & :not(.ds-input) {
     padding-inline: var(--dsc-field-affix-padding-inline);
