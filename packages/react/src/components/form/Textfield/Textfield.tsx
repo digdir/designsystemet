@@ -1,4 +1,4 @@
-import { type ForwardedRef, Fragment, type ReactNode, forwardRef } from 'react';
+import { type ForwardedRef, type ReactNode, forwardRef } from 'react';
 
 import type { DefaultProps } from '../../../types';
 import { Label } from '../../Label';
@@ -68,13 +68,11 @@ export const Textfield = forwardRef<
   },
   ref,
 ) {
-  const AffixWrapper = prefix || suffix ? FieldAffixWrapper : Fragment;
-
   return (
     <Field data-size={size}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
-      <AffixWrapper>
+      <FieldAffixWrapper>
         {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
         {multiline === true ? (
           <Textarea
@@ -90,7 +88,7 @@ export const Textfield = forwardRef<
           />
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
-      </AffixWrapper>
+      </FieldAffixWrapper>
       {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter
