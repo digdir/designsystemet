@@ -1,6 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import { useEffect, useId, useRef, useState } from 'react';
-import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type UseCheckboxGroupProps = {
   /**
@@ -43,7 +43,7 @@ export type UseCheckboxGroupProps = {
 type GetCheckboxPropsType =
   | string
   | (Omit<
-      InputHTMLAttributes<HTMLInputElement>,
+      React.InputHTMLAttributes<HTMLInputElement>,
       | 'prefix'
       | 'role'
       | 'type'
@@ -136,8 +136,8 @@ export function useCheckboxGroup({
         : rest['aria-describedby'],
       'aria-invalid': !!error || rest['aria-invalid'],
       checked: allowIndeterminate ? undefined : currentValue.includes(value),
-      name: allowIndeterminate ? undefined : name || nameFallback,
-      onChange: (e: ChangeEvent<HTMLInputElement>) => {
+      name: name || nameFallback,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         rest.onChange?.(e);
         if (e.defaultPrevented) return;
         allowIndeterminate && indeterminateChange();

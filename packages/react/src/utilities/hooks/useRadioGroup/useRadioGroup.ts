@@ -1,4 +1,5 @@
-import { useEffect, useId, useState } from 'react';
+import { useMergeRefs } from '@floating-ui/react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 
 export type UseRadioGroupProps = {
@@ -14,11 +15,36 @@ export type UseRadioGroupProps = {
   readOnly?: boolean;
   /** Set required state of all radios */
   required?: boolean;
-  /** String value of selected radio */
+  /**
+   * Initial value of the group
+   */
   value?: string;
   /** Callback when selected radios changes */
-  onChange?: (nextValue: string, prevValue: string, event: Event) => void;
+  onChange?: (nextValue: string, prevValue: string) => void;
 };
+
+/**
+ * Get anything that is set on a radio, but
+ * remove anything that comes from the group itself.
+ */
+type GetRadioPropsType =
+  | string
+  | (Omit<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      | 'prefix'
+      | 'role'
+      | 'type'
+      | 'size'
+      | 'aria-label'
+      | 'aria-labelledby'
+      | 'label'
+      | 'name'
+      | 'checked'
+      | 'value'
+    > & {
+      ref?: React.RefObject<HTMLInputElement>;
+      value?: string;
+    });
 
 /**
  * useRadioGroup is used to group multiple <Radio> components
@@ -27,7 +53,7 @@ export type UseRadioGroupProps = {
  *   disabled: false,
  *   error: 'Validation message text',
  *   name: 'group-name',
- *   onChange: (nextValue, prevValue, event) => {},
+ *   onChange: (nextValue, prevValue) => {},
  *   readOnly: false,
  *   required: true,
  *   value: '',
@@ -35,57 +61,91 @@ export type UseRadioGroupProps = {
  */
 export function useRadioGroup({
   error,
+  required,
   name,
   onChange,
-  value = '',
-  ...rest
+  value: initalValue = '',
 }: UseRadioGroupProps = {}) {
-  const [currentValue, setValue] = useState(value);
-  const validationId = useId();
+  const [currentValue, setValue] = useState(initalValue);
+  const errorId = useId();
   const nameFallback = useId();
   const nameRendered = name || nameFallback;
 
-  // Using useEffect with addEventListener instead of avoids
-  // crash with onChange props on the components
-  useEffect(() => {
-    const handleChange = (event: Event) => {
-      const input = event.target;
+  const getRadioProps = (propsOrValue: GetRadioPropsType) => {
+    const props =
+      typeof propsOrValue === 'string'
+        ? { value: propsOrValue }
+        : propsOrValue || {};
+    const { ref = undefined, value = '', ...rest } = props;
+    const localRef = useRef<HTMLInputElement>(null);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const input = localRef.current;
       const isInput = input instanceof HTMLInputElement;
 
-      if (!event.defaultPrevented && isInput && input.name === nameRendered)
+      if (isInput && input.name === nameRendered) {
         setValue((prevValue) => {
-          onChange?.(input.value, prevValue, event);
+          onChange?.(input.value, prevValue);
           return input.value;
         });
+      }
     };
-    document.addEventListener('change', handleChange);
-    return () => document.removeEventListener('change', handleChange);
-  }, [nameRendered]);
+
+    const mergedRefs = useMergeRefs([ref, localRef]);
+
+    useEffect(() => {
+      if (!localRef.current) return;
+      localRef.current.checked = value === currentValue;
+    }, [currentValue, value]);
+
+    return {
+      /* Spread anything the user has set first */
+      ...rest,
+      /* Concat ours with the user prop */
+      'aria-describedby': error
+        ? `${errorId} ${rest['aria-describedby']}`
+        : rest['aria-describedby'],
+      'aria-invalid': !!error || rest['aria-invalid'],
+      name: nameRendered,
+      value,
+      ref: mergedRefs,
+      required,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        rest.onChange?.(e);
+        if (e.defaultPrevented) return;
+        handleChange(e);
+      },
+    };
+  };
 
   return {
+    /**
+     * Current value of the group.
+     */
     value: currentValue,
+    /**
+     * Set the value of the group.
+     *
+     * @param value string[]
+     * @returns void
+     */
     setValue,
-    getRadioProps: (value: string) => {
-      // input[type="radio"] does not trigger change event when controlled in React,
-      // so instead we use defaultChecked and ensure correct input is checked on render
-      useEffect(() => {
-        const selector = `input[type="radio"][name="${nameRendered}"][value="${currentValue}"]`;
-        const input = document.querySelector<HTMLInputElement>(selector);
-        if (input) input.checked = true;
-      }, [currentValue, nameRendered]);
-
-      return {
-        'aria-describedby': error ? validationId : undefined,
-        'aria-invalid': Boolean(error) || undefined,
-        defaultChecked: currentValue === value,
-        name: nameRendered,
-        value,
-        ...rest,
-      };
-    },
+    /**
+     * Props to send to the `Radio` component.
+     * @example
+     * <Radio label="Option 1" {...getRadioProps('option-1')} />
+     */
+    getRadioProps,
+    /**
+     * Props to send to the `ValidationMessage` component.
+     *
+     * @example
+     * <ValidationMessage {...validationMessageProps} />
+     */
     validationMessageProps: {
       children: error,
-      id: validationId,
+      hidden: !error,
+      id: errorId,
     },
   };
 }

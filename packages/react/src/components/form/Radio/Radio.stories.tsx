@@ -34,7 +34,9 @@ export const AriaLabel: StoryObj<typeof Radio> = {
 };
 
 export const Group: StoryFn<UseRadioGroupProps> = (args) => {
-  const { getRadioProps, validationMessageProps } = useRadioGroup(args);
+  const { getRadioProps, validationMessageProps } = useRadioGroup({
+    ...args,
+  });
 
   return (
     <Fieldset>
