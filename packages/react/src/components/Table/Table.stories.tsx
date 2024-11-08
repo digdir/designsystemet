@@ -15,6 +15,7 @@ export default {
 export const Preview: Story = (args) => {
   return (
     <Table {...args}>
+      <caption>Table caption</caption>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -34,6 +35,13 @@ export const Preview: Story = (args) => {
           <Table.Cell>Cell 6</Table.Cell>
         </Table.Row>
       </Table.Body>
+      <Table.Foot>
+        <Table.Row>
+          <Table.Cell>Footer 1</Table.Cell>
+          <Table.Cell>Footer 2</Table.Cell>
+          <Table.Cell>Footer 3</Table.Cell>
+        </Table.Row>
+      </Table.Foot>
     </Table>
   );
 };
@@ -165,7 +173,7 @@ StickyHeader.args = {
 };
 
 StickyHeader.parameters = {
-  customStyles: { height: '280px', overflow: 'auto' },
+  customStyles: { height: '280px', overflow: 'auto', padding: 0 },
 };
 
 type CheckedItems = {

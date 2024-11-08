@@ -97,7 +97,7 @@ function Theme() {
     <div className={classes.content}>
       <div className={classes.header}>
         <div className={classes.headerLeft}>
-          <Breadcrumbs size='sm' className={classes.breadcrumbs}>
+          <Breadcrumbs className={classes.breadcrumbs}>
             <Breadcrumbs.Link
               className={classes.breadcrumbs_link}
               aria-label='Tilbake til alle temaer'
@@ -109,7 +109,7 @@ function Theme() {
         </div>
       </div>
       <div className={classes.wrapper}>
-        <Paragraph variant='long' size='sm'>
+        <Paragraph variant='long'>
           Gå til{' '}
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
@@ -120,7 +120,6 @@ function Theme() {
         </Paragraph>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
-          size='sm'
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           name=''
@@ -139,7 +138,6 @@ function Theme() {
         <div className={classes.btnContainer}>
           <Button
             className={classes.btn}
-            size='sm'
             onClick={() => handleClick()}
             loading={loading}
           >

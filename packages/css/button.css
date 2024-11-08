@@ -47,6 +47,8 @@
   }
 
   &[data-icon] {
+    width: var(--dsc-button-size); /* Ensure it keeps square shape */
+    height: var(--dsc-button-size); /* Ensure it keeps square shape */
     padding: 0;
   }
 

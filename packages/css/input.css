@@ -5,7 +5,7 @@
   --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-accent-base-default);
-  --dsc-input-border-color--invalid: var(--ds-color-danger-border-default);
+  --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */

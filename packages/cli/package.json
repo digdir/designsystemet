@@ -10,19 +10,20 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
-  "types": "./dist/types",
+  "main": "./dist/src/index.js",
   "files": [
     "./dist/**"
   ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
+    ".": {
+      "import": "./dist/src/index.js"
+    },
     "./color": {
-      "types": "./dist/types/src/colors/index.d.ts",
       "import": "./dist/src/colors/index.js"
     },
-    "./tokens/*": {
-      "types": "./dist/types/src/tokens/*",
-      "import": "./dist/src/tokens/*"
+    "./tokens": {
+      "import": "./dist/src/tokens/index.js"
     }
   },
   "publishConfig": {
