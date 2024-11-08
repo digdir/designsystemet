@@ -13,10 +13,14 @@ import {
 import { Input, type InputProps } from '../Input';
 import { Textarea, type TextareaProps } from '../Textarea';
 
-type InputProps_ = Omit<InputProps, 'prefix'>;
-type TextareaProps_ = Omit<TextareaProps, 'prefix'>;
+type InputProps_ = Omit<InputProps, 'prefix' | 'className' | 'style'>;
+type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
 type SharedTextfieldProps = {
+  /** Classname on the wrapper element`Field` */
+  className?: InputProps['className'];
+  /** Style on the wrapper element `Field` */
+  style?: InputProps['style'];
   /** Label */
   label?: ReactNode;
   /** Description */
@@ -47,7 +51,10 @@ export type TextfieldProps = SharedTextfieldProps &
   (TextfieldTextareaProps | TextfieldInputProps);
 
 /**
- * Preconfigured `Field` for common configurations inputing text.
+ *  Composed text input component using `Field`
+ *
+ * `classname` & `style` are passed to the wrapper elements.
+ *
  * Rest props are passed to the `Input` or `Textarea` component.
  * @example
  * ```tsx
@@ -67,12 +74,14 @@ export const Textfield = forwardRef<
     suffix,
     'data-size': size,
     counter,
+    style,
+    className,
     ...rest
   },
   ref,
 ) {
   return (
-    <Field data-size={size}>
+    <Field {...{ className, style, 'data-size': size }}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
       <FieldAffixWrapper>
