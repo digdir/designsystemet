@@ -169,6 +169,7 @@ const Header = ({
             </ul>
             {themeSwitcher && (
               <Button
+                aria-label='Bytt fargemodus'
                 variant='tertiary'
                 icon={true}
                 color='neutral'
