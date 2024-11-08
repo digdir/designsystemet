@@ -33,7 +33,8 @@
     "types:storefront": "yarn workspace storefront types",
     "version-packages": "changeset version",
     "publish": "yarn build && changeset publish",
-    "chromatic": "yarn workspace @designsystemet/storybook chromatic"
+    "chromatic": "yarn workspace @designsystemet/storybook chromatic",
+    "report:cli-api": "yarn workspace @digdir/designsystemet api-report"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",

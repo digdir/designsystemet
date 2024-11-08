@@ -42,7 +42,8 @@
     "test": "yarn test:tokens-create-and-build",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "update:template": "tsx ./src/tokens/template.ts"
+    "update:template": "tsx ./src/tokens/template.ts",
+    "api-report": "api-extractor run"
   },
   "dependencies": {
     "@adobe/leonardo-contrast-colors": "^1.0.0",
