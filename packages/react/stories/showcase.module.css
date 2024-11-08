@@ -40,6 +40,8 @@
 
 .user {
   grid-column: span 2;
+  display: grid;
+  gap: var(--ds-spacing-6);
 }
 
 .tableContainer {
@@ -77,22 +79,12 @@
   grid-column: span 4;
 }
 
-.userLink {
-  margin-top: 20px;
-  margin-left: auto;
-  font-size: 16px;
-}
-
 .userTitle {
   text-align: center;
 }
 
-.userField {
-  margin-top: 24px;
-}
-
 .userBtn {
-  margin-top: 32px;
+  margin-top: var(--ds-spacing-2);
 }
 
 .userPar {
