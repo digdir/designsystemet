@@ -51,14 +51,14 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('disabled');
     expect(checkbox2).toHaveAttribute('disabled');
   });
-  /* test('has passed required to Checkbox children', (): void => {
+  test('has passed required to Checkbox children', (): void => {
     render(<CheckboxGroup required />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
     const checkbox2 = screen.getByLabelText('Test 2');
     expect(checkbox1).toHaveAttribute('required');
     expect(checkbox2).toHaveAttribute('required');
-  }); */
+  });
   test('has passed readOnly to Checkbox children', (): void => {
     render(<CheckboxGroup readOnly />);
 

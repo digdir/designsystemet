@@ -28,6 +28,11 @@ export type UseCheckboxGroupProps = {
    */
   value?: string[];
   /**
+   * Makes all checkboxes in the group required.
+   * If set, all checkboxes will have `required` set to `true`.
+   */
+  required?: boolean;
+  /**
    * Callback that is called when the value of the group changes.
    * @param nextValue string[]
    * @param currentValue string[]
@@ -66,6 +71,7 @@ export function useCheckboxGroup({
   value = [],
   disabled,
   readOnly,
+  required,
 }: UseCheckboxGroupProps) {
   const [currentValue, setValue] = useState(value);
   const nameFallback = useId();
@@ -146,6 +152,7 @@ export function useCheckboxGroup({
       value,
       disabled: disabled || rest.disabled,
       readOnly: readOnly || rest.readOnly,
+      required: required || rest.required,
     };
   };
 

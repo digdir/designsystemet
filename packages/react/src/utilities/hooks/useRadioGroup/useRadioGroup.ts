@@ -75,9 +75,7 @@ export function useRadioGroup({
 
   const getRadioProps = (propsOrValue: GetRadioPropsType) => {
     const props =
-      typeof propsOrValue === 'string'
-        ? { value: propsOrValue }
-        : propsOrValue || {};
+      typeof propsOrValue === 'string' ? { value: propsOrValue } : propsOrValue;
     const { ref = undefined, value = '', ...rest } = props;
     const localRef = useRef<HTMLInputElement>(null);
 
