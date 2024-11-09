@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
@@ -9,6 +9,8 @@ export type AlertProps = {
    * @default info
    */
   color?: 'info' | 'warning' | 'success' | 'danger';
+  /** Tekst eller markup for Alert-komponenten */
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement> &
   DefaultProps;
 
