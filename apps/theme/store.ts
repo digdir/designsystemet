@@ -1,8 +1,4 @@
-import type {
-  ColorInfo,
-  ThemeColors,
-  ThemeInfo,
-} from '@digdir/designsystemet/color';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
@@ -12,16 +8,24 @@ export type ColorTheme = {
 };
 
 type ColorStore = {
-  mainColors: ColorTheme[];
-  supportColors: ColorTheme[];
-  neutralColor: ColorTheme;
-  addMainColor: (newColorTheme: ColorTheme) => void;
-  updateMainColor: (newColorTheme: ColorTheme, index: number) => void;
-  setMainColors: (colors: ColorTheme[]) => void;
-  setSupportColors: (colors: ColorTheme[]) => void;
-  setNeutralColor: (color: ColorTheme) => void;
-  selectedColor: { color: ColorInfo; type: ThemeColors };
-  setSelectedColor: (color: ColorInfo, type: ThemeColors) => void;
+  colors: {
+    main: ColorTheme[];
+    neutral: ColorTheme[];
+    support: ColorTheme[];
+  };
+  addColor: (
+    newColor: ColorTheme,
+    type: 'main' | 'neutral' | 'support',
+  ) => void;
+  updateColor: (
+    updatedColor: ColorTheme,
+    index: number,
+    type: 'main' | 'neutral' | 'support',
+  ) => void;
+  resetColors: () => void;
+  removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
+  selectedColor: { color: ColorInfo; name: string };
+  setSelectedColor: (color: ColorInfo, name: string) => void;
   borderRadius: string;
   setBorderRadius: (radius: string) => void;
   appearance: 'light' | 'dark';
@@ -38,33 +42,36 @@ export const useThemeStore = create(
         number: 1,
         name: 'Default',
       },
-      type: 'accent',
+      name: 'Default',
     },
     borderRadius: '0.25rem',
     appearance: 'light',
     themePreview: 'one',
-    mainColors: [],
-    addMainColor: (newColorTheme) =>
-      set((state) => ({
-        mainColors: [...state.mainColors, newColorTheme],
-      })),
-    updateMainColor: (updatedItem, index) =>
-      set((state) => {
-        state.mainColors[index] = updatedItem;
-        return { mainColors: state.mainColors };
-      }),
-    setMainColors: (colors) => set({ mainColors: colors }),
-    supportColors: [],
-    setSupportColors: (colors) => set({ supportColors: colors }),
-    neutralColor: {
-      name: 'Default',
-      colors: {
-        light: [],
-        dark: [],
-        contrast: [],
-      },
+    colors: {
+      main: [],
+      neutral: [],
+      support: [],
     },
-    setNeutralColor: (color) => set({ neutralColor: color }),
+    addColor: (newColor, type) =>
+      set((state) => {
+        const updatedColors = state.colors[type].concat(newColor);
+        return { colors: { ...state.colors, [type]: updatedColors } };
+      }),
+    updateColor: (updatedColor, index, type) =>
+      set((state) => {
+        const updatedColors = state.colors[type].map((color, i) =>
+          i === index ? updatedColor : color,
+        );
+        return { colors: { ...state.colors, [type]: updatedColors } };
+      }),
+    resetColors: () => {
+      set({ colors: { main: [], neutral: [], support: [] } });
+    },
+    removeColor: (index, type) =>
+      set((state) => {
+        const updatedColors = state.colors[type].filter((_, i) => i !== index);
+        return { colors: { ...state.colors, [type]: updatedColors } };
+      }),
     setAppearance: (appearance) => set({ appearance: appearance }),
     setThemePreview: (themePreview) => set({ themePreview: themePreview }),
     setBorderRadius: (radius) => set({ borderRadius: radius }),

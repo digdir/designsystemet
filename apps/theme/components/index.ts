@@ -8,3 +8,5 @@ export { ThemeToolbar } from './ThemeToolbar/ThemeToolbar';
 export { TokenModal } from './TokenModal/TokenModal';
 export { Sidebar } from './Sidebar/Sidebar';
 export { ColorInput } from './ColorInput/ColorInput';
+export { ColorPreview } from './ColorPreview/ColorPreview';
+export { ColorPane } from './Sidebar/ColorPane/ColorPane';

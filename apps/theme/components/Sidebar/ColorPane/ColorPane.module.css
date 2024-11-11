@@ -1,0 +1,74 @@
+.colorPage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  display: none;
+}
+
+.title {
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.name {
+  margin-bottom: 24px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.topBtnGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnGroup {
+  display: flex;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.removeBtn {
+  margin-right: -8px;
+  margin-top: -4px;
+}
+
+.colorPreviewContainer {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.colorPreview {
+  height: 130px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.back {
+  margin-left: -16px;
+  margin-top: -4px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.desc {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-bottom: 16px;
+}

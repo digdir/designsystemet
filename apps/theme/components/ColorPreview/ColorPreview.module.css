@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 380px;
+  padding: 28px;
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
+  width: 100%;
+  gap: 16px;
+  padding: 28px;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
+.card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid var(--ds-color-accent-border-subtle);
+  background-color: var(--ds-color-accent-surface-default);
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.checkGroup {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 16px;
+}

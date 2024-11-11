@@ -9,10 +9,10 @@ type ScalesProps = {
 };
 
 export const Colors = ({ themeMode }: ScalesProps) => {
-  const mainColors = useThemeStore((state) => state.mainColors);
+  const colors = useThemeStore((state) => state.colors);
   return (
     <div className={classes.rows}>
-      {mainColors.map((color, index) => (
+      {colors.main.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale
@@ -20,7 +20,28 @@ export const Colors = ({ themeMode }: ScalesProps) => {
             showHeader={index === 0}
             showColorMeta={false}
             themeMode={themeMode}
-            type='accent'
+          />
+        </div>
+      ))}
+      <div className={classes.separator}></div>
+      {colors.neutral.map((color, index) => (
+        <div key={index} className={classes.row}>
+          <div className={classes.scaleLabel}>{color.name}</div>
+          <Scale
+            colorScale={color.colors}
+            showColorMeta={false}
+            themeMode={themeMode}
+          />
+        </div>
+      ))}
+      <div className={classes.separator}></div>
+      {colors.support.map((color, index) => (
+        <div key={index} className={classes.row}>
+          <div className={classes.scaleLabel}>{color.name}</div>
+          <Scale
+            colorScale={color.colors}
+            showColorMeta={false}
+            themeMode={themeMode}
           />
         </div>
       ))}

@@ -3,17 +3,18 @@
 }
 
 .header {
-  background-color: rgb(252, 127, 95);
-  padding: 48px;
-  height: 200px;
+  background-color: rgb(226, 226, 226);
+  padding: 40px;
+  height: 166px;
   display: flex;
   align-items: center;
 }
 
 .content {
-  padding: 48px;
-  width: 1400px;
+  padding: 40px;
+  width: 1420px;
   min-height: 100vh;
+  overflow-x: auto;
 }
 .panel {
   background-color: white;

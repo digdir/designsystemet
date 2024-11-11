@@ -30,9 +30,13 @@
 }
 
 .names div {
-  font-size: 15px;
+  font-size: 14px;
   width: 100%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 45px;
 }
 
 @media (max-width: 1632px) {

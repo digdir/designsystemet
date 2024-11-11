@@ -27,18 +27,9 @@ import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
-  const accentTheme = useThemeStore((state) => state.accentTheme);
-  const neutralTheme = useThemeStore((state) => state.neutralTheme);
-  const brandOneTheme = useThemeStore((state) => state.brandOneTheme);
-  const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
-  const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
   const borderRadius = useThemeStore((state) => state.borderRadius);
   const selectedColor = useThemeStore((state) => state.selectedColor);
-  const setAccentTheme = useThemeStore((state) => state.setAccentTheme);
-  const setNeutralTheme = useThemeStore((state) => state.setNeutralTheme);
-  const setBrandOneTheme = useThemeStore((state) => state.setBrandOneTheme);
-  const setBrandTwoTheme = useThemeStore((state) => state.setBrandTwoTheme);
-  const setBrandThreeTheme = useThemeStore((state) => state.setBrandThreeTheme);
+
   const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
 
   const [accentError, setAccentError] = useState<ColorError>('none');
@@ -100,40 +91,6 @@ export default function Home() {
   };
 
   /**
-   *
-   * Update all the states for a color
-   *
-   * @param type  The type of color to update
-   * @param color The color to update
-   * @param theme The theme to update
-   */
-  const updateColor = (
-    type: ThemeColors,
-    color: CssColor,
-    theme: ThemeInfo,
-  ) => {
-    const colorErrorSetterMap = {
-      accent: setAccentError,
-      neutral: setNeutralError,
-      brand1: setBrandOneError,
-      brand2: setBrandTwoError,
-      brand3: setBrandThreeError,
-    };
-
-    const themeColorSetterMap = {
-      accent: setAccentTheme,
-      neutral: setNeutralTheme,
-      brand1: setBrandOneTheme,
-      brand2: setBrandTwoTheme,
-      brand3: setBrandThreeTheme,
-    };
-
-    themeColorSetterMap[type](theme, color);
-    colorErrorSetterMap[type](getColorError(theme.light));
-    colorQuerySetter(type, color);
-  };
-
-  /**
    * Set the color in the query params
    *
    * @param colorType The type of color to set
@@ -187,10 +144,6 @@ export default function Home() {
     setQueryParams({ borderRadius: radius });
   };
 
-  const updateTheme = (theme: ColorMode) => {
-    setQueryParams({ theme });
-  };
-
   /* get theme from query on initial load */
   useEffect(() => {
     const borderRadius = params.get('borderRadius') as string;
@@ -228,7 +181,7 @@ export default function Home() {
       <ColorModal
         weight={selectedColor.color.number}
         hex={selectedColor.color.hex}
-        namespace={selectedColor.type}
+        namespace={'d'}
         colorModalRef={colorModalRef}
       />
 

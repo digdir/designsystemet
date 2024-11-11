@@ -1,5 +1,5 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
+import type { ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import { Color } from '../Color/Color';
@@ -8,11 +8,11 @@ import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorInfo[];
+  colors: number[];
+  colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
-  type: ThemeColors;
 };
 
 export const Group = ({
@@ -20,7 +20,7 @@ export const Group = ({
   colors,
   showColorMeta,
   names,
-  type,
+  colorScale,
   featured = false,
 }: GroupProps) => {
   return (
@@ -36,15 +36,14 @@ export const Group = ({
 
       <div className={cl(classes.colors)}>
         {colors.map((item, index) => (
-          <RovingFocusItem key={index} value={item.name} asChild>
+          <RovingFocusItem key={index} value={'3'} asChild>
             <Color
-              color={item}
-              colorNumber={5}
+              color={colorScale.light[item].hex}
+              colorNumber={item}
               contrast={'dd'}
               lightness={'dd'}
-              hex={item.hex}
               showColorMeta={showColorMeta}
-              type={type}
+              name='33'
             />
           </RovingFocusItem>
         ))}
