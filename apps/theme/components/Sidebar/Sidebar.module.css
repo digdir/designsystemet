@@ -5,7 +5,7 @@
   top: 24px;
   bottom: 24px;
   height: auto;
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: 0px 0px 60px 8px rgba(0, 0, 0, 0.08);
   width: 450px;
@@ -51,4 +51,26 @@
   font-weight: 400;
   font-size: 16px;
   color: var(--ds-color-neutral-text-subtle);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.themeMode {
+  margin-bottom: 16px;
+  margin-top: 4px;
 }

@@ -1,7 +1,7 @@
 import { generateThemeForColor } from '@/packages/cli/dist/src/colors';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Button, Heading } from '@digdir/designsystemet-react';
-import { PlusIcon } from '@navikt/aksel-icons';
+import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
+import { PlusIcon, StarIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../store';
@@ -22,6 +22,8 @@ export const Sidebar = () => {
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
   const updateColor = useThemeStore((state) => state.updateColor);
+  const appearance = useThemeStore((state) => state.appearance);
+  const setAppearance = useThemeStore((state) => state.setAppearance);
 
   const addNewColor = (color: string, name: string) => {
     const theme = generateThemeForColor(color as CssColor, 'aa');
@@ -81,6 +83,25 @@ export const Sidebar = () => {
       <Heading className={classes.title} data-size='sm'>
         Konfigurer tema
       </Heading>
+
+      <div className={classes.themeMode}>
+        <div className={classes.label}>Visning</div>
+        <ToggleGroup
+          data-size='sm'
+          defaultValue='light'
+          name='toggle-group-nuts'
+          onChange={(value) => {
+            if (appearance === 'light') {
+              setAppearance('dark');
+            } else {
+              setAppearance('light');
+            }
+          }}
+        >
+          <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
+          <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
+        </ToggleGroup>
+      </div>
 
       <div className={classes.group}>
         <div className={classes.groupHeader}>
@@ -158,6 +179,15 @@ export const Sidebar = () => {
             />
           ))}
         </div>
+      </div>
+      <div className={classes.bottom}>
+        <Button data-size='sm'>
+          <StarIcon title='a11y-title' fontSize='1.5rem' />
+          Ta i bruk tema
+        </Button>
+        <Button data-size='sm' variant='secondary'>
+          Del tema
+        </Button>
       </div>
     </div>
   );

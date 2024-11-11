@@ -27,7 +27,7 @@
 }
 
 .card {
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   display: flex;
   flex-direction: column;
   border-radius: 8px;

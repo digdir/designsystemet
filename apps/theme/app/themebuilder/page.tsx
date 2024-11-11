@@ -11,6 +11,7 @@ export default function Home() {
   const colors = useThemeStore((state) => state.colors);
   const addColor = useThemeStore((state) => state.addColor);
   const resetColors = useThemeStore((state) => state.resetColors);
+  const appearance = useThemeStore((state) => state.appearance);
 
   useEffect(() => {
     const dominant = generateThemeForColor('#0062BA', 'aa');
@@ -33,17 +34,23 @@ export default function Home() {
     };
   }, []);
 
+  type TestProps = 'light' | 'dark';
+
   const setHeaderColor = () => {
+    let themeMode: TestProps = 'light';
     if (colors.main.length === 0) {
       return '#D9D9D9';
     }
-    const str = colors.main[0].colors.light[3].hex;
+    if (appearance === 'dark') {
+      themeMode = 'dark';
+    }
+    const str = colors.main[0].colors[themeMode][3].hex;
     if (colors.main.length > 1) {
       return (
         'linear-gradient(90deg, ' +
-        colors.main[0].colors.light[3].hex +
+        colors.main[0].colors[themeMode][3].hex +
         ' 0%, ' +
-        colors.main[1].colors.light[3].hex +
+        colors.main[1].colors[themeMode][3].hex +
         ' 60%)'
       );
     }

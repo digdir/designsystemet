@@ -22,30 +22,29 @@ type ViewType = 'list' | 'grid';
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
   const [view, setView] = useState<ViewType>('list');
+  const appearance = useThemeStore((state) => state.appearance);
 
   type CardProps = {
     color: {
       name: string;
       colors: {
         light: ColorInfo[];
+        dark: ColorInfo[];
       };
     };
   };
 
-  const setTokens = (lightColors: ColorInfo[], type: string) => {
-    const previewElement = document.getElementById('preview');
-    if (previewElement) {
-      for (let i = 0; i < lightColors.length; i++) {
-        previewElement.style.setProperty(
-          '--' + type + '-' + (i + 1),
-          lightColors[i].hex,
-        );
-      }
-    }
-  };
-
-  const setStyle = (lightColors: ColorInfo[]) => {
+  const setStyle = (colors: {
+    light: ColorInfo[];
+    dark: ColorInfo[];
+  }) => {
     const style = {} as Record<string, string>;
+
+    let lightColors = colors.light;
+
+    if (appearance === 'dark') {
+      lightColors = colors.dark;
+    }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
@@ -67,7 +66,7 @@ export const ColorPreview = () => {
 
   const Card1 = ({ color }: CardProps) => {
     return (
-      <div style={setStyle(color.colors.light)} className={classes.card}>
+      <div style={setStyle(color.colors)} className={classes.card}>
         <Heading className={classes.title} data-size='2xs'>
           {color.name}
         </Heading>
@@ -96,7 +95,7 @@ export const ColorPreview = () => {
   const Card2 = ({ color }: CardProps) => {
     return (
       <div
-        style={setStyle(color.colors.light)}
+        style={setStyle(color.colors)}
         className={cl(classes.card, listClasses.card)}
       >
         <div className={listClasses.text}>

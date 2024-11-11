@@ -4,6 +4,7 @@ import cl from 'clsx/lite';
 
 import { Color } from '../Color/Color';
 
+import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
 
 type GroupProps = {
@@ -23,6 +24,7 @@ export const Group = ({
   colorScale,
   featured = false,
 }: GroupProps) => {
+  const appearance = useThemeStore((state) => state.appearance);
   return (
     <div className={classes.group}>
       {header && <div className={cl(classes.header)}>{header}</div>}
@@ -38,7 +40,11 @@ export const Group = ({
         {colors.map((item, index) => (
           <RovingFocusItem key={index} value={'3'} asChild>
             <Color
-              color={colorScale.light[item].hex}
+              color={
+                appearance === 'light'
+                  ? colorScale.light[item].hex
+                  : colorScale.dark[item].hex
+              }
               colorNumber={item}
               contrast={'dd'}
               lightness={'dd'}
