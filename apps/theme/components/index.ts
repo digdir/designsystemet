@@ -4,7 +4,6 @@ export { Group } from './Group/Group';
 export { Previews } from './Previews/Previews';
 export { Scale } from './Scale/Scale';
 export { Colors } from './Colors/Colors';
-export { ThemeToolbar } from './ThemeToolbar/ThemeToolbar';
 export { TokenModal } from './TokenModal/TokenModal';
 export { Sidebar } from './Sidebar/Sidebar';
 export { ColorInput } from './ColorInput/ColorInput';
