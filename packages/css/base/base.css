@@ -25,7 +25,11 @@
     --ds-font-size-minus-1: round(down, max(.9em, .875rem), 0.0625rem); /* Default to 90% of font-size, but minimum 14px */
     --ds-font-size-plus-1: round(down, 1.1em, 0.0625rem); /* Default to 110% */
   }
+}
 
+/* Set default background and color on <body> (not :root) to align with best practice */
+body,
+[data-ds-color-mode] {
   color: var(--ds-color-neutral-text-default);
   background-color: var(--ds-color-neutral-background-default);
 }

@@ -139,6 +139,7 @@
     & > thead > tr > :is(th, td) {
       position: sticky;
       top: 0;
+      z-index: 2;
     }
   }
 

@@ -1,0 +1,62 @@
+{
+  "1": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.1}"
+  },
+  "2": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.2}"
+  },
+  "3": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.3}"
+  },
+  "4": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.4}"
+  },
+  "5": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.5}"
+  },
+  "6": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.6}"
+  },
+  "7": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.7}"
+  },
+  "8": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.8}"
+  },
+  "9": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.9}"
+  },
+  "10": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.10}"
+  },
+  "11": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.11}"
+  },
+  "12": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.12}"
+  },
+  "13": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.13}"
+  },
+  "contrast-1": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.contrast-1}"
+  },
+  "contrast-2": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.contrast-2}"
+  }
+}

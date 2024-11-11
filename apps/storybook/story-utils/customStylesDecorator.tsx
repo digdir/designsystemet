@@ -41,6 +41,7 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
     <div
       className='storybook-decorator'
       style={{
+        boxSizing: 'border-box',
         overflow: 'hidden',
         padding: '1rem',
         ...style,

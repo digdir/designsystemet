@@ -1,19 +1,13 @@
 # @digdir/designsystemet-theme
 
-Themes for Designsystemet
-
-This package contains the following predefined brand themes
+This package contains the following predefined themes for Designsystemet
 
 - `altinn`
 - `digdir`
 - `tilsynet`
 - `brreg`
 
-## Installation
-
-```sh
-npm install @digdir/designsystemet-theme
-```
+Build your own theme on https://theme.designsystemet.no/
 
 ## Usage
 
@@ -31,7 +25,7 @@ import '@digdir/designsystemet-theme/altinn.css';
 
 ### CSS
 
-When importing css tokens a set of [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) are added to your `:root {}`.
+This package adds Designsystemet [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to your `:root {}`.
 You only need to import this once in your application, preferably somewhere in your "root" html.
 
 All variables are prefixed with `ds`.

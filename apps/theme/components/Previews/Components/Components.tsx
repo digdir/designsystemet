@@ -103,10 +103,10 @@ export const Components = () => {
               Utfør
             </Button>
           </div>
-          <Search className={classes.tableSearch}>
+          <Search className={classes.tableSearch} data-size='sm'>
             <Search.Input
               aria-label='Søk etter bruker'
-              placeholder='Søk etter bruker'
+              placeholder='Søk etter bruker...'
             />
             <Search.Clear />
             <Search.Button />

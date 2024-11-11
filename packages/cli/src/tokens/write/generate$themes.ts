@@ -3,6 +3,7 @@ import crypto from 'node:crypto';
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorMode } from '../../colors/types.js';
+import type { Colors } from '../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -15,13 +16,15 @@ type ThemeObject_ = ThemeObject & {
   $figmaModeId?: string;
 };
 
-export function generateThemesJson(modes: ColorModes, themes: string[]): ThemeObject_[] {
+export function generateThemesJson(modes: ColorModes, themes: string[], colors: Colors): ThemeObject_[] {
   return [
     ...generateSizeGroup(),
     ...generateThemesGroup(themes),
     ...generateTypographyGroup(themes),
     ...generateModesGroup(modes, themes),
     generateSemanticGroup(),
+    ...generateColorGroup('main', colors),
+    ...generateColorGroup('support', colors),
   ];
 }
 
@@ -102,6 +105,19 @@ function generateSemanticGroup(): ThemeObject_ {
     },
     group: 'Semantic',
   };
+}
+
+function generateColorGroup(group: 'main' | 'support', colors: Colors): ThemeObject_[] {
+  return Object.entries(colors[group]).map(
+    ([color]): ThemeObject_ => ({
+      id: createHash(`${group}-${color}`),
+      name: color,
+      selectedTokenSets: {
+        [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
+      },
+      group: `${capitalize(group)} color`,
+    }),
+  );
 }
 
 function generateTypographyGroup(themes: string[]): ThemeObject_[] {
