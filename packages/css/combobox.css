@@ -46,6 +46,11 @@
   border: none;
   background-color: transparent;
   color: var(--ds-color-neutral-text-default);
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 }
 
 .ds-combobox--sm .ds-combobox__input__wrapper {
