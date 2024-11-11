@@ -56,9 +56,9 @@ npm i @digdir/designsystemet-react
 You can create you own theme for use with Designsystemet packages. Go to our [theme-builder](https://theme.designsystemet.no/) for creating your own theme.
 
 Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
-This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit).
+This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), in addition to provide future flexibility.
 
-Use the CLI to build your own CSS from the design-tokens using the command `npx @digdir/designsystemet tokens build`.
+Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens).
 Using your own built CSS theme file you can skip using the `@digdir/designsystemet-theme` package.
 
 ### 2. Font
