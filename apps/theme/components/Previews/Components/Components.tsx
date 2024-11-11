@@ -75,13 +75,7 @@ export const Components = () => {
               Utfør
             </Button>
           </div>
-          <Search
-            label='Label'
-            placeholder='Søk etter bruker...'
-            data-size='sm'
-            variant='simple'
-            className={classes.tableSearch}
-          />
+          <Search data-size='sm' className={classes.tableSearch} />
         </div>
         <Table data-data-size='sm' className={classes.table}>
           <Table.Head>
