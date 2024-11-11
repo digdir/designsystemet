@@ -35,11 +35,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
-### Deprecated
-
-[`@digdir/design-system-react`](https://www.npmjs.com/package/@digdir/design-system-react) – Replaced by [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react). Contains legacy components that are no longer maintained
-
-[`@digdir/design-system-tokens`](https://www.npmjs.com/package/@digdir/design-system-tokens) – Renamed to [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme)
 
 ## 🚀 Get started
 
@@ -47,17 +42,24 @@ Follow these steps to get started with the React components.
 
 ### 1. Install the packages
 
-```sh
-npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css
-```
-
-#### Typescript
-
-If you use Typescript, make sure you have typescript >= 3.8 as `devDependencies`:
+Depending on your needs and technology stack install the relevant packages
 
 ```sh
-npm i typescript --save-dev
+npm i @digdir/designsystemet
+npm i @digdir/designsystemet-css
+npm i @digdir/designsystemet-theme 
+npm i @digdir/designsystemet-react 
 ```
+
+#### 1.1 Custom theme
+
+You can create you own theme for use with Designsystemet packages. Go to our [theme-builder](https://theme.designsystemet.no/) for creating your own theme.
+
+Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
+This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit).
+
+Use the CLI to build your own CSS from the design-tokens using the command `npx @digdir/designsystemet tokens build`.
+Using your own built CSS theme file you can skip using the `@digdir/designsystemet-theme` package.
 
 ### 2. Font
 
