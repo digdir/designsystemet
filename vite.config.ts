@@ -21,4 +21,5 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  optimizeDeps: { exclude: ['apps/storybook/node_modules/.cache/storybook'] },
 });
