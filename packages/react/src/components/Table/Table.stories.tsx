@@ -193,7 +193,7 @@ export const WithFormElements: Story = (args) => {
           <Table.HeaderCell>
             <Checkbox
               aria-label='Select all'
-              {...getCheckboxProps({ multiple: true })}
+              {...getCheckboxProps({ allowIndeterminate: true })}
             />
           </Table.HeaderCell>
           <Table.HeaderCell>Header 1</Table.HeaderCell>
