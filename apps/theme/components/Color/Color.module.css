@@ -6,7 +6,7 @@
   justify-content: center;
   color: black;
   font-weight: 400;
-  border: 1px solid #d6d6d6;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
   cursor: pointer;
 }
