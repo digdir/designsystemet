@@ -1,9 +1,10 @@
 # @digdir/designsystemet-css
 
-CSS implementation of the Designsystemet
+CSS implementation of the Designsystemet components
 
-- Styling for React components in `@digdir/designsystemet-react`
+- Uses [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`
+- Uses `@digdir/designsystemet-theme` for predefined themes
+  - Build your own theme on https://theme.designsystemet.no/
 
-_These styles are currently not intended to be used directly. They are auto-generated from css modules in react components and may change without notice_
 
 Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.
