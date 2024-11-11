@@ -16,7 +16,6 @@
   color: var(--dsc-button-color);
   cursor: pointer;
   font-family: inherit;
-  font-size: inherit;
   font-weight: var(--ds-font-weight-medium);
   gap: var(--dsc-button-gap);
   justify-content: center;
