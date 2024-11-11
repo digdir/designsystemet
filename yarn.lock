@@ -1708,7 +1708,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet-react@workspace:packages/react"
   dependencies:
-    "@digdir/designsystemet-css": "workspace:^"
     "@floating-ui/dom": "npm:^1.6.10"
     "@floating-ui/react": "npm:0.26.23"
     "@navikt/aksel-icons": "npm:^6.14.0"
