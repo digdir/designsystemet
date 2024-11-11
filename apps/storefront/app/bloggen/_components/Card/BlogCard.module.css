@@ -19,7 +19,7 @@
 .card {
   [data-ds-color-mode='dark'] &,
   [data-ds-color-mode='auto'] & {
-    background-color: var(--ds-color-neutral-surface-default);
+    --dsc-card-background: var(--ds-color-neutral-surface-default);
   }
 }
 
