@@ -2,7 +2,6 @@ import { omit } from '@digdir/designsystemet-react';
 import { SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-
 import { useThemeStore } from '../../store';
 
 import classes from './Color.module.css';

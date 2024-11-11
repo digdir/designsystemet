@@ -3,11 +3,9 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {
-  ColorError,
   ColorInfo,
   ColorMode,
   ContrastMode,
-  ThemeColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
@@ -19,33 +17,25 @@ import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { ColorModal, Container } from '@repo/components';
 import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Settings } from '../settings';
 import { useThemeStore } from '../store';
+
+import type { ThemeColors } from '../types';
 
 import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
-  const borderRadius = useThemeStore((state) => state.borderRadius);
   const selectedColor = useThemeStore((state) => state.selectedColor);
 
   const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
-
-  const [accentError, setAccentError] = useState<ColorError>('none');
-  const [neutralError, setNeutralError] = useState<ColorError>('none');
-  const [brandOneError, setBrandOneError] = useState<ColorError>('none');
-  const [brandTwoError, setBrandTwoError] = useState<ColorError>('none');
-  const [brandThreeError, setBrandThreeError] = useState<ColorError>('none');
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
-
-  const themeMode = (params.get('theme') as ColorMode) || 'light';
-  const contrastMode = (params.get('contrastMode') as ContrastMode) || 'aa';
 
   useEffect(() => {
     // Open modal on selected color change

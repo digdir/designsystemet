@@ -10,6 +10,39 @@ type Story = StoryObj<typeof Textfield>;
 export default {
   title: 'Komponenter/Textfield',
   component: Textfield,
+  argTypes: {
+    multiline: {
+      type: 'boolean',
+    },
+    // Using argType here to exclude values from React.HTMLInputTypeAttribute
+    type: {
+      control: 'select',
+      options: [
+        'checkbox',
+        'date',
+        'datetime-local',
+        'email',
+        'month',
+        'number',
+        'password',
+        'radio',
+        'search',
+        'tel',
+        'text',
+        'time',
+        'url',
+        'week',
+        // 'button',
+        'color',
+        'file',
+        // 'hidden',
+        // 'image',
+        // 'range',
+        // 'reset',
+        // 'submit',
+      ],
+    },
+  },
 } as Meta;
 
 export const Preview: Story = {
@@ -18,24 +51,18 @@ export const Preview: Story = {
     disabled: false,
     readOnly: false,
     'data-size': 'md',
+    multiline: false,
     description: '',
     error: '',
+    counter: 0,
   },
 };
 
-export const WithCharacterCounter: Story = {
+export const Rows: Story = {
   args: {
     label: 'Label',
-    characterLimit: {
-      maxCount: 5,
-    },
-  },
-};
-
-export const HtmlSize: Story = {
-  args: {
-    label: 'Label',
-    htmlSize: 10,
+    multiline: true,
+    rows: 4,
   },
 };
 
@@ -43,13 +70,19 @@ export const Adornments: Story = {
   args: {
     prefix: 'NOK',
     suffix: 'pr. mnd',
-    'data-size': 'md',
+    label: 'Hvor mange kroner koster det per måned?',
+  },
+};
+
+export const Counter: Story = {
+  args: {
+    counter: 10,
     label: 'Hvor mange kroner koster det per måned?',
   },
 };
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
   return (
     <>
       <Textfield

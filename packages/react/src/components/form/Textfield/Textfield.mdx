@@ -7,10 +7,31 @@ import * as TextfieldStories from './Textfield.stories';
 
 # Textfield
 
-`Textfield` kalles tekstfelt på norsk. Det er et inndatafelt som for eksempel gir brukerne mulighet til å skrive korte tekster eller tall.
+`Textfield` kalles tekstfelt på norsk. Det er et inndatafelt som for eksempel gir brukerne mulighet til å skrive korte tekster eller tall.  
+ 
+<br/>
+
+- Du kan velge mellom både `input` og `textarea` for å lage tekstfelt.
+- `Textfield` er en ferdig sammensatt `Field` komponent for standard oppsett av et tekstfelt.  
+- Ønsker du mer kontroll eller funksjonalitet, komponer med [Field](/docs/komponenter-field--docs) komponenten direkte.
+
 
 <Primary />
 <Controls />
+
+## Slik bruker du Textfield
+
+```tsx
+import { Textfield } from '@digdir/designsystemet-react';
+
+<Textfield label="Navn" />
+```
+
+## Multiline
+
+Du endrer til `textarea` ved å sette `multiline` til `true`. Da kan brukerne skrive lengre tekster.
+
+<Canvas of={TextfieldStories.Rows} />
 
 ## Prefix/Suffix
 
@@ -22,17 +43,14 @@ Det er viktig at samme informasjon som vises i prefixet eller suffixet også er 
 
 ## Antall tegn
 
-<Canvas of={TextfieldStories.WithCharacterCounter} />
+Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
+
+<Canvas of={TextfieldStories.Counter} />
 
 ## Kontrollert
 
 <Canvas of={TextfieldStories.Controlled} />
 
-## Html size
-
-`size` attributtet kan brukes for å angi bredden på tekstfeltet. Verdien kan være et tall fra 1 til 99.
-
-<Canvas of={TextfieldStories.HtmlSize} />
 
 ## Retningslinjer for når du skal bruke `Textfield`
 
@@ -82,7 +100,3 @@ Ikke bruk deaktivert tilstand (disabled state) på tekstfelt. Tenk heller over o
 ### Prefiks og suffiks
 
 Prefiks og suffiks er et ekstra visuelt hjelpemiddel, som blir ignorert av skjermlesere. Vi må alltid ha en beskrivende ledetekst. Prefiks og suffiks er plassert utenfor inndatafeltene de tilhører. Da unngår vi at de ikke skaper trøbbel i noen nettlesere, som kan sette inn et ikon i inndatafeltet (for eksempel ikoner for å vise eller lage passord).
-
-## CSS Variabler
-
-<CssVariables css={css} />
