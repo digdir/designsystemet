@@ -27,24 +27,22 @@ export type UseRadioGroupProps = {
  * Get anything that is set on a radio, but
  * remove anything that comes from the group itself.
  */
-type GetRadioPropsType =
-  | string
-  | (Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      | 'prefix'
-      | 'role'
-      | 'type'
-      | 'size'
-      | 'aria-label'
-      | 'aria-labelledby'
-      | 'label'
-      | 'name'
-      | 'checked'
-      | 'value'
-    > & {
-      ref?: React.RefObject<HTMLInputElement>;
-      value?: string;
-    });
+export type GetRadioProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  | 'prefix'
+  | 'role'
+  | 'type'
+  | 'size'
+  | 'aria-label'
+  | 'aria-labelledby'
+  | 'label'
+  | 'name'
+  | 'checked'
+  | 'value'
+> & {
+  ref?: React.RefObject<HTMLInputElement>;
+  value?: string;
+};
 
 /**
  * useRadioGroup is used to group multiple <Radio> components
@@ -68,76 +66,74 @@ export function useRadioGroup({
   onChange,
   value: initalValue = '',
 }: UseRadioGroupProps = {}) {
-  const [currentValue, setValue] = useState(initalValue);
+  const [groupValue, setGroupValue] = useState(initalValue);
   const errorId = useId();
-  const nameFallback = useId();
-  const nameRendered = name || nameFallback;
-
-  const getRadioProps = (propsOrValue: GetRadioPropsType) => {
-    const props =
-      typeof propsOrValue === 'string' ? { value: propsOrValue } : propsOrValue;
-    const { ref = undefined, value = '', ...rest } = props;
-    const localRef = useRef<HTMLInputElement>(null);
-
-    const handleChange = () => {
-      const input = localRef.current;
-      const isInput = input instanceof HTMLInputElement;
-
-      if (isInput && input.name === nameRendered) {
-        setValue((prevValue) => {
-          onChange?.(input.value, prevValue);
-          return input.value;
-        });
-      }
-    };
-
-    const mergedRefs = useMergeRefs([ref, localRef]);
-
-    useEffect(() => {
-      if (!localRef.current) return;
-      localRef.current.checked = value === currentValue;
-    }, [currentValue, value]);
-
-    return {
-      /* Spread anything the user has set first */
-      ...rest,
-      /* Concat ours with the user prop */
-      'aria-describedby': error
-        ? `${errorId} ${rest['aria-describedby']}`
-        : rest['aria-describedby'],
-      'aria-invalid': !!error || rest['aria-invalid'],
-      name: nameRendered,
-      value,
-      ref: mergedRefs,
-      required: required || rest.required,
-      readOnly: readOnly || rest.readOnly,
-      disabled: disabled || rest.disabled,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        rest.onChange?.(e);
-        if (e.defaultPrevented) return;
-        handleChange();
-      },
-    };
-  };
+  const namedId = useId();
+  const radioGroupName = name || namedId;
 
   return {
     /**
      * Current value of the group.
      */
-    value: currentValue,
+    value: groupValue,
     /**
      * Set the value of the group.
      *
      * @param value string[]
      * @returns void
      */
-    setValue,
+    setValue: setGroupValue,
     /**
      * Props to send to the `Radio` component.
      * @example
      * <Radio label="Option 1" {...getRadioProps('option-1')} />
      */
-    getRadioProps,
+    getRadioProps: (propsOrValue: string | GetRadioProps) => {
+      const props =
+        typeof propsOrValue === 'string'
+          ? { value: propsOrValue }
+          : propsOrValue;
+      const { ref = undefined, value = '', ...rest } = props;
+      const localRef = useRef<HTMLInputElement>(null);
+      const mergedRefs = useMergeRefs([ref, localRef]);
+
+      const handleChange = () => {
+        const input = localRef.current;
+        const isInput = input instanceof HTMLInputElement;
+
+        if (isInput && input.name === radioGroupName) {
+          setGroupValue((prevValue) => {
+            onChange?.(input.value, prevValue);
+            return input.value;
+          });
+        }
+      };
+
+      useEffect(() => {
+        if (!localRef.current) return;
+        localRef.current.checked = value === groupValue;
+      }, [groupValue, value]);
+
+      return {
+        /* Spread anything the user has set first */
+        ...rest,
+        /* Concat ours with the user prop */
+        'aria-describedby':
+          `${(!!error && errorId) || ''} ${rest['aria-describedby'] || ''}`.trim(),
+        'aria-invalid': !!error || rest['aria-invalid'],
+        name: radioGroupName,
+        value,
+        ref: mergedRefs,
+        required: required || rest.required,
+        readOnly: readOnly || rest.readOnly,
+        disabled: disabled || rest.disabled,
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+          rest.onChange?.(e);
+          if (e.defaultPrevented) return;
+          handleChange();
+        },
+      };
+    },
     /**
      * Props to send to the `ValidationMessage` component.
      *
