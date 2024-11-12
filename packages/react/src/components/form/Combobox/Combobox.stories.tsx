@@ -13,7 +13,7 @@ import { Switch } from '../Switch';
 import { data } from './data/data';
 
 import { Divider } from '../../Divider';
-import { Combobox } from './index';
+import { Combobox, Combobox2 } from './index';
 
 export default {
   title: 'Komponenter/Combobox',
@@ -632,4 +632,8 @@ export const WithNumberValues: StoryFn<typeof Combobox> = (args) => {
 
 WithNumberValues.args = {
   label: 'Hvor går reisen?',
+};
+
+export const Combobx2: StoryFn<typeof Combobox2> = (args) => {
+  return <Combobox2 {...args} />;
 };
