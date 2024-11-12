@@ -49,16 +49,9 @@ const toggleIndeterminate = (
   const checked = !!getInputs(true).length;
   const unchecked = !!getInputs(false).length;
 
-  console.log('toggleIndeterminate', inputs);
   for (const input of inputs) {
     input.indeterminate = unchecked && checked;
     input.checked = !unchecked && checked;
-
-    console.log('toggleIndeterminate', {
-      indeterminate: input.indeterminate,
-      checked: input.checked,
-      value: input.value,
-    });
   }
 };
 
@@ -161,7 +154,6 @@ export function useCheckboxGroup({
           input.click();
         }
       };
-
       useEffect(() => {
         if (!allowIndeterminate) return;
 
@@ -171,11 +163,15 @@ export function useCheckboxGroup({
       useEffect(() => {
         if (!inputRef.current) return;
 
+        const input = inputRef.current;
         const refs = allowIndeterminate ? indeterminateRefs : checkboxRefs;
-        refs.current.add(inputRef.current);
+        refs.current.add(input);
+
+        if (getIndeterminateInputs().length)
+          toggleIndeterminate(getIndeterminateInputs, getInputs);
 
         return () => {
-          if (inputRef.current) refs.current.delete(inputRef.current);
+          refs.current.delete(input);
         };
       }, [value]);
 
