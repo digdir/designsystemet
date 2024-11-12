@@ -118,10 +118,10 @@ export function useRadioGroup({
         /* Spread anything the user has set first */
         ...rest,
         /* Concat ours with the user prop */
+        name: radioGroupName,
         'aria-describedby':
           `${(!!error && errorId) || ''} ${rest['aria-describedby'] || ''}`.trim(),
         'aria-invalid': !!error || rest['aria-invalid'],
-        name: radioGroupName,
         value,
         ref: mergedRefs,
         required: required || rest.required,
