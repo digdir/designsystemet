@@ -154,6 +154,7 @@ export function useCheckboxGroup({
           input.click();
         }
       };
+
       useEffect(() => {
         if (!allowIndeterminate) return;
 
