@@ -82,6 +82,7 @@
   &::after {
     align-content: center;
     border: var(--dsc-field-affix-border);
+    flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
   }
 
@@ -107,5 +108,9 @@
   &[data-suffix] * {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  & * {
+    flex: 1 1 auto; /* Allow child elements to grow and shrink */
   }
 }
