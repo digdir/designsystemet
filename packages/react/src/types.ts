@@ -1,14 +1,5 @@
+import type { Color } from '@digdir/designsystemet-react/colors';
 export type Size = 'sm' | 'md' | 'lg';
-export type Color =
-  | 'accent'
-  | 'neutral'
-  | 'brand1'
-  | 'brand2'
-  | 'brand3'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger';
 
 export type PortalProps = {
   /**
@@ -21,4 +12,9 @@ export type PortalProps = {
 
 export type DefaultProps = {
   'data-size'?: Size;
+  /**
+   * Sets a color palette which may be used by descendants. Does not affect this component.
+   * If left unspecified, the color is inherited from the nearest ancestor with data-color.
+   */
+  'data-color'?: Color;
 };
