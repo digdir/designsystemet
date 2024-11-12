@@ -6,7 +6,6 @@ import { ValidationMessage } from '../../ValidationMessage';
 import {
   Field,
   FieldAffix,
-  FieldAffixWrapper,
   type FieldCounterProps,
   FieldDescription,
 } from '../Field';
@@ -84,8 +83,7 @@ export const Textfield = forwardRef<
     <Field {...{ className, style, 'data-size': size }}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
-      <FieldAffixWrapper>
-        {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
+      <FieldAffix prefix={prefix} suffix={suffix}>
         {multiline === true ? (
           <Textarea
             ref={ref as ForwardedRef<HTMLTextAreaElement>}
@@ -99,8 +97,7 @@ export const Textfield = forwardRef<
             {...(rest as InputProps_)}
           />
         )}
-        {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
-      </FieldAffixWrapper>
+      </FieldAffix>
       {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter

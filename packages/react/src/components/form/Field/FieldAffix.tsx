@@ -2,24 +2,21 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type FieldAffixWrapperProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  'prefix'
->;
+export type FieldAffixProps = {
+  prefix?: string;
+  suffix?: string;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
 
-export const FieldAffixWrapper = forwardRef<
-  HTMLDivElement,
-  FieldAffixWrapperProps
->(function FieldAffixWrapper({ className, ...rest }, ref) {
-  return (
-    <div className={cl('ds-field-affix', className)} ref={ref} {...rest} />
-  );
-});
-
-export type FieldAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
-
-export const FieldAffix = forwardRef<HTMLSpanElement, FieldAffixProps>(
-  function FieldAffix(rest, ref) {
-    return <span aria-hidden='true' ref={ref} {...rest} />;
+export const FieldAffix = forwardRef<HTMLDivElement, FieldAffixProps>(
+  function FieldAffix({ className, prefix, suffix, ...rest }, ref) {
+    return (
+      <div
+        className={cl('ds-field-affix', className)}
+        data-prefix={prefix}
+        data-suffix={suffix}
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );
