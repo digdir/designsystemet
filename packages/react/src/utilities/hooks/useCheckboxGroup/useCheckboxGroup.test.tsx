@@ -31,6 +31,17 @@ const CheckboxGroup = (args: UseCheckboxGroupProps) => {
   );
 };
 
+const CheckboxGroupCheckbox = (args: GetCheckboxProps) => {
+  const { getCheckboxProps, validationMessageProps } = useCheckboxGroup();
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Legend</Fieldset.Legend>
+      <Checkbox label='Test 1' {...getCheckboxProps(args)} />
+      <ValidationMessage {...validationMessageProps} />
+    </Fieldset>
+  );
+};
+
 describe('CheckboxGroup', () => {
   test('has generated name for Checkbox children', () => {
     render(<CheckboxGroup />);
@@ -146,23 +157,6 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
   });
-
-  const CheckboxGroupCheckbox = (args: GetCheckboxProps) => {
-    const { getCheckboxProps, validationMessageProps } = useCheckboxGroup();
-    return (
-      <Fieldset>
-        <Fieldset.Legend>Legend</Fieldset.Legend>
-        <Checkbox
-          label='Test 1'
-          {...getCheckboxProps({
-            ...args,
-          })}
-        />
-        <ValidationMessage {...validationMessageProps} />
-      </Fieldset>
-    );
-  };
-
   test('correctly merges passed props with generated props', async () => {
     const user = userEvent.setup();
     const onChangeMock = vi.fn();
@@ -170,6 +164,7 @@ describe('CheckboxGroup', () => {
 
     render(
       <CheckboxGroupCheckbox
+        value='test1'
         onChange={onChangeMock}
         aria-describedby={customAriaDescribedBy}
       />,

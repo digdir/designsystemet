@@ -8,7 +8,7 @@ import {
   ValidationMessage,
   useRadioGroup,
 } from '../../../components';
-import type { UseRadioGroupProps } from '../../../components';
+import type { GetRadioProps, UseRadioGroupProps } from './useRadioGroup';
 
 const RadioGroup = (args: UseRadioGroupProps) => {
   const { getRadioProps, validationMessageProps } = useRadioGroup(args);
@@ -17,7 +17,18 @@ const RadioGroup = (args: UseRadioGroupProps) => {
       <Fieldset.Legend>Legend</Fieldset.Legend>
       <Radio label='Test 1' {...getRadioProps('test1')} />
       <Radio label='Test 2 ' {...getRadioProps('test2')} />
-      <Radio label='Test 3' {...getRadioProps('test3')} />
+      <ValidationMessage {...validationMessageProps} />
+    </Fieldset>
+  );
+};
+
+const RadioGroupRadio = (args: GetRadioProps) => {
+  const { getRadioProps, validationMessageProps } = useRadioGroup();
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Legend</Fieldset.Legend>
+      <Radio label='Test 1' {...getRadioProps(args)} />
+      <Radio label='Test 2 ' {...getRadioProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
@@ -111,5 +122,27 @@ describe('RadioGroup', () => {
     expect(radio1).toBeChecked();
     expect(radio2).not.toBeChecked();
     expect(radio3).not.toBeChecked();
+  });
+
+  test('correctly merges passed props with generated props', async () => {
+    const user = userEvent.setup();
+    const onChangeMock = vi.fn();
+    const customAriaDescribedBy = 'custom aria-describedby';
+
+    render(
+      <RadioGroupRadio
+        value='test1'
+        onChange={onChangeMock}
+        aria-describedby={customAriaDescribedBy}
+      />,
+    );
+
+    const radio1 = screen.getByLabelText('Test 1');
+    await act(async () => await user.click(radio1));
+
+    expect(onChangeMock).toHaveBeenCalledOnce();
+    expect(radio1).toBeChecked();
+
+    expect(radio1).toHaveAttribute('aria-describedby', customAriaDescribedBy);
   });
 });
