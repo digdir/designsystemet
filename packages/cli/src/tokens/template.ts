@@ -2,6 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
+import originalColorJson from '../../../../design-tokens/semantic/color.json';
+import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json';
+import originalThemeJson from '../../../../design-tokens/themes/theme.json';
 import { stringify } from './write';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
@@ -25,14 +28,55 @@ export const updateTemplates = async () => {
   await fs.cp(...argsFromToPaths('Figma'), options);
   await fs.cp(...argsFromToPaths('primitives/globals.json'), options);
   await fs.cp(...argsFromToPaths('primitives/size/default.json'), options);
-  await fs.cp(...argsFromToPaths('semantic'), options);
+  await fs.cp(...argsFromToPaths('semantic/style.json'), options);
 
-  // Copy template files
-  const themeFile = await fs.readFile(path.join(SOURCE_FILES_PATH, 'themes/theme.json'), 'utf-8');
-  const themeTemplate = themeFile.replaceAll('theme', '<theme>');
+  /*
+   * Create template files
+   */
+
+  // semantic/modes/<category>-color/<color>.json
+  const categoryColorTemplate = originalColorCategoryJson.color.main;
+  const categoryDir = path.join(TEMPLATE_FILES_PATH, 'semantic/modes/category-color');
+  await fs.mkdir(categoryDir, options);
+  await fs.writeFile(
+    path.join(categoryDir, 'category-color-template.json'),
+    JSON.stringify(categoryColorTemplate, null, 2).replaceAll('color.accent', 'color.<color>'),
+  );
+
+  // semantic/color.json
+  const colorBaseFile = {
+    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
+  };
+  await fs.writeFile(
+    path.join(TEMPLATE_FILES_PATH, `semantic/color-base-file.json`),
+    JSON.stringify(colorBaseFile, null, 2).replaceAll('color.accent', 'color.<accent-color>'),
+  );
+
+  const semanticColorTemplate = originalColorJson.color.accent;
+  await fs.writeFile(
+    path.join(TEMPLATE_FILES_PATH, `semantic/semantic-color-template.json`),
+    JSON.stringify(semanticColorTemplate, null, 2).replaceAll('color.accent', 'color.<color>'),
+  );
+
+  // themes/<theme>.json
+  const themeBaseFile = {
+    color: {},
+    ...R.omit(['color'], originalThemeJson),
+  };
+
   await fs.mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'), options);
-  await fs.writeFile(path.join(TEMPLATE_FILES_PATH, `themes/theme.json`), themeTemplate);
+  await fs.writeFile(
+    path.join(TEMPLATE_FILES_PATH, `themes/theme-base-file.json`),
+    JSON.stringify(themeBaseFile, null, 2).replaceAll('theme', '<theme>'),
+  );
 
+  const themeColorTemplate = originalThemeJson.color.accent;
+  await fs.writeFile(
+    path.join(TEMPLATE_FILES_PATH, `themes/theme-color-template.json`),
+    JSON.stringify(themeColorTemplate, null, 2).replaceAll('theme.accent', '<theme>.<color>'),
+  );
+
+  // $themes.json
   const themesFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$themes.json'), 'utf-8');
   const themesTemplate = (JSON.parse(themesFile) as ThemeObject[])
     .filter((themeobj) => {
@@ -63,6 +107,7 @@ export const updateTemplates = async () => {
 
   await fs.writeFile(path.join(TEMPLATE_FILES_PATH, `$themes.json`), stringify(themesTemplate));
 
+  // $metadata.json
   const metadataFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$metadata.json'), 'utf-8');
   const tokenSetOrderTemplate = (JSON.parse(metadataFile) as { tokenSetOrder: string[] }).tokenSetOrder
     .filter((tokenSet) => {

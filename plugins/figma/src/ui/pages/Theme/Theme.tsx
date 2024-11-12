@@ -15,6 +15,7 @@ import { type ColorTheme, useThemeStore } from '../../../common/store';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getDummyTheme } from '@common/dummyTheme';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
+import { colorCliOptions } from '@digdir/designsystemet/tokens';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
 
@@ -42,8 +43,9 @@ function Theme() {
   });
 
   const handleClick = () => {
-    const pattern =
-      /--accent\s+"(#\w{6})"\s+--neutral\s+"(#\w{6})"\s+--brand1\s+"(#\w{6})"\s+--brand2\s+"(#\w{6})"\s+--brand3\s+"(#\w{6})"/;
+    const pattern = new RegExp(
+      `--${colorCliOptions.main}\s+"accent:(#\w{6})"\s+--${colorCliOptions.neutral}\s+"(#\w{6})"\s+--${colorCliOptions.support}\s+"brand1:(#\w{6})"\s+"brand2:(#\w{6})"\s+"brand3:(#\w{6})"`,
+    );
     const matches = command.replace(/\\/g, '').match(pattern);
 
     if (matches) {
@@ -125,7 +127,6 @@ function Theme() {
           name=''
           id='my-textarea'
           rows={8}
-          className={classes.textarea}
           placeholder='Lim inn her...'
           /* error={codeSnippetError} */
           aria-describedby={errorId}
@@ -135,12 +136,8 @@ function Theme() {
             <ValidationMessage>{codeSnippetError}</ValidationMessage>
           ) : null}
         </div>
-        <div className={classes.btnContainer}>
-          <Button
-            className={classes.btn}
-            onClick={() => handleClick()}
-            loading={loading}
-          >
+        <div>
+          <Button onClick={() => handleClick()} loading={loading}>
             Oppdater tema
           </Button>
         </div>

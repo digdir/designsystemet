@@ -9,6 +9,7 @@ export type JsonInput = {
 };
 
 export type FigmaModeName = 'theme' | 'theme2' | 'theme3' | 'theme4';
+export type ThemeColors = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
 
 export enum Messages {
   GetThemes = 'getThemes',
