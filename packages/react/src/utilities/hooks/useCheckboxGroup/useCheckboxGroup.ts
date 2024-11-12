@@ -41,20 +41,6 @@ export type UseCheckboxGroupProps = {
   onChange?: (nextValue: string[], currentValue: string[]) => void;
 };
 
-const toggleIndeterminate = (
-  getIndeterminateInputs: () => HTMLInputElement[],
-  getInputs: (checked: boolean) => HTMLInputElement[],
-) => {
-  const inputs = getIndeterminateInputs();
-  const checked = !!getInputs(true).length;
-  const unchecked = !!getInputs(false).length;
-
-  for (const input of inputs) {
-    input.indeterminate = unchecked && checked;
-    input.checked = !unchecked && checked;
-  }
-};
-
 /**
  * Get anything that is set on a checkbox, but
  * remove anything that comes from the group itself.
@@ -78,15 +64,31 @@ type GetCheckboxProps =
       value?: string;
     });
 
-export function useCheckboxGroup({
-  error,
-  name: groupName,
-  onChange,
-  value = [],
-  disabled,
-  readOnly,
-  required,
-}: UseCheckboxGroupProps) {
+const toggleIndeterminate = (
+  getIndeterminateInputs: () => HTMLInputElement[],
+  getInputs: (checked: boolean) => HTMLInputElement[],
+) => {
+  const inputs = getIndeterminateInputs();
+  const checked = !!getInputs(true).length;
+  const unchecked = !!getInputs(false).length;
+
+  for (const input of inputs) {
+    input.indeterminate = unchecked && checked;
+    input.checked = !unchecked && checked;
+  }
+};
+
+export function useCheckboxGroup(props?: UseCheckboxGroupProps) {
+  const {
+    error,
+    name: groupName,
+    onChange,
+    value = [],
+    disabled,
+    readOnly,
+    required,
+  } = props || {};
+
   const [groupValue, setGroupValue] = useState(value);
   const namedId = useId();
   const errorId = useId();
