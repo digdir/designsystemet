@@ -180,9 +180,8 @@ export function useCheckboxGroup({
         /* Spread anything the user has set first */
         ...rest,
         /* Concat ours with the user prop */
-        'aria-describedby': error
-          ? `${errorId} ${rest['aria-describedby']}`
-          : rest['aria-describedby'],
+        'aria-describedby':
+          `${!!error && errorId} ${rest['aria-describedby'] || ''}`.trim(),
         'aria-invalid': !!error || rest['aria-invalid'],
         checked: allowIndeterminate ? undefined : groupValue.includes(value),
         name: rest.name || groupName || namedId,
