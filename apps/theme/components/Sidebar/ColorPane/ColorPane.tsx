@@ -82,7 +82,9 @@ export const ColorPane = ({
           className={classes.name}
           data-size='sm'
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
         />
       )}
       <div className={classes.label}>Farge</div>
@@ -97,7 +99,9 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           color='neutral'
-          onClick={() => onPrimaryClicked(color.hex, name)}
+          onClick={() => {
+            onPrimaryClicked(color.hex, name);
+          }}
         >
           {type === 'addColor' ? 'Legg til' : 'Lagre'}
         </Button>
@@ -106,7 +110,9 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           variant='secondary'
-          onClick={() => onClose()}
+          onClick={() => {
+            onClose();
+          }}
         >
           Avbryt
         </Button>

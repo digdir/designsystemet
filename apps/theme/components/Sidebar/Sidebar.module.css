@@ -1,17 +1,24 @@
 .sidebar {
-  position: fixed;
+  position: relative;
   z-index: 100;
   right: 24px;
   top: 24px;
-  bottom: 24px;
   height: auto;
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: 0px 0px 60px 8px rgba(0, 0, 0, 0.08);
   width: 450px;
+  flex-basis: 450px;
+  flex-grow: 1;
   border-radius: 8px;
-  min-height: 75vh;
+  min-height: 80vh;
   padding: 24px;
+  margin-top: -140px;
+}
+
+.sticky {
+  position: fixed;
+  margin-top: 0;
 }
 
 .title {

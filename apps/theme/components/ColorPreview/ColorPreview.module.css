@@ -20,6 +20,7 @@
   gap: 16px;
   padding: 28px;
   background-color: var(--ds-color-neutral-background-subtle);
+  border-radius: 0 8px 8px 0;
 }
 
 .grid {

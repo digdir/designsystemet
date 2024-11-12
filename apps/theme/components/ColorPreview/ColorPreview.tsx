@@ -57,14 +57,14 @@ export const ColorPreview = () => {
     return style;
   };
 
-  const Card = ({ color }: CardProps) => {
+  const CardWrapper = ({ color }: CardProps) => {
     if (view === 'list') {
-      return <Card2 color={color} />;
+      return <VerticalCard color={color} />;
     }
-    return <Card1 color={color} />;
+    return <HorizontalCard color={color} />;
   };
 
-  const Card1 = ({ color }: CardProps) => {
+  const HorizontalCard = ({ color }: CardProps) => {
     return (
       <div style={setStyle(color.colors)} className={classes.card}>
         <Heading className={classes.title} data-size='2xs'>
@@ -84,15 +84,15 @@ export const ColorPreview = () => {
           <Checkbox data-size='sm' label='Checkbox label' value='value' />
         </div>
         <div className={classes.btnGroup}>
-          <Button data-size='sm'>Opprett</Button>
+          <Button data-size='sm'>Primær</Button>
           <Button data-size='sm' variant='secondary'>
-            Avbryt
+            Sekundær
           </Button>
         </div>
       </div>
     );
   };
-  const Card2 = ({ color }: CardProps) => {
+  const VerticalCard = ({ color }: CardProps) => {
     return (
       <div
         style={setStyle(color.colors)}
@@ -113,9 +113,9 @@ export const ColorPreview = () => {
           </Switch>
         </div>
         <div className={classes.btnGroup}>
-          <Button data-size='sm'>Opprett</Button>
+          <Button data-size='sm'>Primær</Button>
           <Button data-size='sm' variant='secondary'>
-            Avbryt
+            Sekundær
           </Button>
         </div>
       </div>
@@ -144,13 +144,13 @@ export const ColorPreview = () => {
       </div>
       <div className={cl(classes.right, view === 'grid' && classes.grid)}>
         {colors.main.map((color, index) => (
-          <Card key={index} color={color} />
+          <CardWrapper key={index} color={color} />
         ))}
         {colors.neutral.map((color, index) => (
-          <Card key={index} color={color} />
+          <CardWrapper key={index} color={color} />
         ))}
         {colors.support.map((color, index) => (
-          <Card key={index} color={color} />
+          <CardWrapper key={index} color={color} />
         ))}
       </div>
     </div>

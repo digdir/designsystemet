@@ -1,5 +1,9 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
+import type {
+  ColorInfo,
+  ColorMode,
+  ThemeInfo,
+} from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
@@ -35,7 +39,7 @@ type ColorStore = {
   borderRadius: string;
   setBorderRadius: (radius: string) => void;
   appearance: 'light' | 'dark';
-  setAppearance: (appearance: 'light' | 'dark') => void;
+  setAppearance: (appearance: ColorMode) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
 };

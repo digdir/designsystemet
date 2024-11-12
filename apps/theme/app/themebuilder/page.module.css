@@ -5,20 +5,47 @@
 .header {
   background-color: rgb(226, 226, 226);
   padding: 40px;
-  height: 166px;
+  height: 200px;
   display: flex;
-  align-items: center;
+  gap: 30px;
+  flex-direction: column;
 }
 
 .content {
   padding: 40px;
-  width: 1420px;
+  width: calc(100% - 550px);
   min-height: 100vh;
-  overflow-x: auto;
+  margin-bottom: 40px;
+  flex-grow: 500;
 }
+
+.colorsContainer {
+  overflow: auto;
+}
+
+.sideBarContainer {
+  width: 450px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
 .panel {
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
-  margin-top: 24px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1345px;
+}
+
+.backLink {
+  color: var(--ds-color-accent-text-default);
+  margin-left: -4px;
+  display: inline-flex;
+  width: auto;
 }

@@ -1,8 +1,12 @@
-import { generateThemeForColor } from '@/packages/cli/dist/src/colors';
+import {
+  type ColorMode,
+  generateThemeForColor,
+} from '@/packages/cli/dist/src/colors';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
 import { PlusIcon, StarIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import cl from 'clsx/lite';
+import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../store';
 import { ColorInput } from '../ColorInput/ColorInput';
@@ -24,6 +28,7 @@ export const Sidebar = () => {
   const updateColor = useThemeStore((state) => state.updateColor);
   const appearance = useThemeStore((state) => state.appearance);
   const setAppearance = useThemeStore((state) => state.setAppearance);
+  const [isSticky, setSticky] = useState(false);
 
   const addNewColor = (color: string, name: string) => {
     const theme = generateThemeForColor(color as CssColor, 'aa');
@@ -47,8 +52,19 @@ export const Sidebar = () => {
     setColorType(type);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 158);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={classes.sidebar}>
+    <div className={cl(classes.sidebar, isSticky && classes.sticky)}>
       <ColorPane
         onClose={() => {
           setColor(ColorService.convert('hex', '#0062ba'));
@@ -91,11 +107,8 @@ export const Sidebar = () => {
           defaultValue='light'
           name='toggle-group-nuts'
           onChange={(value) => {
-            if (appearance === 'light') {
-              setAppearance('dark');
-            } else {
-              setAppearance('light');
-            }
+            const val = value;
+            setAppearance(val as ColorMode);
           }}
         >
           <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
