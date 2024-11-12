@@ -41,6 +41,21 @@ export type UseCheckboxGroupProps = {
   onChange?: (nextValue: string[], currentValue: string[]) => void;
 };
 
+const toggleIndeterminate = (
+  input: HTMLInputElement,
+  getInputs: (checked: boolean) => HTMLInputElement[],
+) => {
+  const checked = !!getInputs(true).length;
+  const unchecked = !!getInputs(false).length;
+  input.indeterminate = unchecked && checked;
+  input.checked = !unchecked && checked;
+  console.log('toggleIndeterminate', {
+    indeterminate: input.indeterminate,
+    checked: input.checked,
+    value: input.value,
+  });
+};
+
 /**
  * Get anything that is set on a checkbox, but
  * remove anything that comes from the group itself.
@@ -66,7 +81,7 @@ type GetCheckboxProps =
 
 export function useCheckboxGroup({
   error,
-  name,
+  name: groupName,
   onChange,
   value = [],
   disabled,
@@ -82,12 +97,6 @@ export function useCheckboxGroup({
     Array.from(checkboxRefs.current.values()).filter(
       (input) => input.checked === checked,
     );
-
-  const handleChange = () => {
-    const nextGroupValue = Array.from(getInputs(true), ({ value }) => value);
-    setGroupValue(nextGroupValue);
-    onChange?.(nextGroupValue, groupValue);
-  };
 
   return {
     /**
@@ -125,12 +134,27 @@ export function useCheckboxGroup({
       const inputRef = useRef<HTMLInputElement>(null);
       const mergedRefs = useMergeRefs([ref, inputRef]);
 
+      const handleChange = () => {
+        const nextGroupValue = Array.from(
+          getInputs(true),
+          ({ value }) => value,
+        );
+        setGroupValue(nextGroupValue);
+        onChange?.(nextGroupValue, groupValue);
+      };
+
+      const indeterminateChange = () => {
+        if (!inputRef.current) return;
+        const checked = !!inputRef.current.checked;
+        for (const input of getInputs(!checked)) {
+          /* We use click to send both event and change checked state */
+          input.click();
+        }
+      };
+
       useEffect(() => {
         if (!allowIndeterminate || !inputRef.current) return;
-        const checked = !!getInputs(true).length;
-        const unchecked = !!getInputs(false).length;
-        inputRef.current.indeterminate = unchecked && checked;
-        inputRef.current.checked = !unchecked && checked;
+        toggleIndeterminate(inputRef.current, getInputs);
         /* We can use `currentValue` as dependency here,
       since that is omly when this checkbox changes */
       }, [groupValue]);
@@ -144,15 +168,6 @@ export function useCheckboxGroup({
         };
       }, [value]);
 
-      const indeterminateChange = () => {
-        if (!inputRef.current) return;
-        const checked = !!inputRef.current.checked;
-        for (const input of getInputs(!checked)) {
-          /* We use click to send both event and change checked state */
-          input.click();
-        }
-      };
-
       return {
         /* Spread anything the user has set first */
         ...rest,
@@ -162,7 +177,7 @@ export function useCheckboxGroup({
           : rest['aria-describedby'],
         'aria-invalid': !!error || rest['aria-invalid'],
         checked: allowIndeterminate ? undefined : groupValue.includes(value),
-        name: rest.name || name || namedId,
+        name: rest.name || groupName || namedId,
         onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
           rest.onChange?.(e);
           if (e.defaultPrevented) return;
