@@ -91,7 +91,8 @@
     border-bottom-right-radius: inherit;
     border-left: 0;
     border-top-right-radius: inherit;
-    content: attr(data-suffix);
+    content: attr(data-prefix);
+    content: attr(data-suffix) / ''; /* Hide suffix from screen readers */
   }
 
   &[data-prefix]::before {
@@ -99,6 +100,7 @@
     border-right: 0;
     border-top-left-radius: inherit;
     content: attr(data-prefix);
+    content: attr(data-prefix) / ''; /* Hide prefix from screen readers */
   }
 
   &[data-prefix] * {
