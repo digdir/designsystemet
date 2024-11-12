@@ -42,18 +42,24 @@ export type UseCheckboxGroupProps = {
 };
 
 const toggleIndeterminate = (
-  input: HTMLInputElement,
+  getIndeterminateInputs: () => HTMLInputElement[],
   getInputs: (checked: boolean) => HTMLInputElement[],
 ) => {
+  const inputs = getIndeterminateInputs();
   const checked = !!getInputs(true).length;
   const unchecked = !!getInputs(false).length;
-  input.indeterminate = unchecked && checked;
-  input.checked = !unchecked && checked;
-  console.log('toggleIndeterminate', {
-    indeterminate: input.indeterminate,
-    checked: input.checked,
-    value: input.value,
-  });
+
+  console.log('toggleIndeterminate', inputs);
+  for (const input of inputs) {
+    input.indeterminate = unchecked && checked;
+    input.checked = !unchecked && checked;
+
+    console.log('toggleIndeterminate', {
+      indeterminate: input.indeterminate,
+      checked: input.checked,
+      value: input.value,
+    });
+  }
 };
 
 /**
@@ -91,12 +97,16 @@ export function useCheckboxGroup({
   const [groupValue, setGroupValue] = useState(value);
   const namedId = useId();
   const errorId = useId();
-  const checkboxRefs = useRef<Map<string, HTMLInputElement>>(new Map());
+  const checkboxRefs = useRef<Set<HTMLInputElement>>(new Set());
+  const indeterminateRefs = useRef<Set<HTMLInputElement>>(new Set());
 
   const getInputs = (checked: boolean) =>
     Array.from(checkboxRefs.current.values()).filter(
       (input) => input.checked === checked,
     );
+
+  const getIndeterminateInputs = () =>
+    Array.from(indeterminateRefs.current.values());
 
   return {
     /**
@@ -153,18 +163,19 @@ export function useCheckboxGroup({
       };
 
       useEffect(() => {
-        if (!allowIndeterminate || !inputRef.current) return;
-        toggleIndeterminate(inputRef.current, getInputs);
-        /* We can use `currentValue` as dependency here,
-      since that is omly when this checkbox changes */
+        if (!allowIndeterminate) return;
+
+        toggleIndeterminate(getIndeterminateInputs, getInputs);
       }, [groupValue]);
 
       useEffect(() => {
-        if (inputRef.current && !allowIndeterminate) {
-          checkboxRefs.current.set(value, inputRef.current);
-        }
+        if (!inputRef.current) return;
+
+        const refs = allowIndeterminate ? indeterminateRefs : checkboxRefs;
+        refs.current.add(inputRef.current);
+
         return () => {
-          checkboxRefs.current.delete(value);
+          if (inputRef.current) refs.current.delete(inputRef.current);
         };
       }, [value]);
 
