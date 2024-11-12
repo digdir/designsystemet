@@ -45,7 +45,7 @@ export type UseCheckboxGroupProps = {
  * Get anything that is set on a checkbox, but
  * remove anything that comes from the group itself.
  */
-type GetCheckboxPropsType =
+type GetCheckboxProps =
   | string
   | (Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
@@ -84,9 +84,9 @@ export function useCheckboxGroup({
     );
 
   const handleChange = () => {
-    const nextValue = Array.from(getInputs(true), ({ value }) => value);
-    setGroupValue(nextValue);
-    onChange?.(nextValue, groupValue);
+    const nextGroupValue = Array.from(getInputs(true), ({ value }) => value);
+    setGroupValue(nextGroupValue);
+    onChange?.(nextGroupValue, groupValue);
   };
 
   return {
@@ -109,7 +109,7 @@ export function useCheckboxGroup({
      * @example allow indeterminate
      * <Checkbox {...getCheckboxProps({ allowIndeterminate: true })} />
      */
-    getCheckboxProps: (propsOrValue?: GetCheckboxPropsType) => {
+    getCheckboxProps: (propsOrValue?: GetCheckboxProps) => {
       const props =
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
@@ -123,6 +123,7 @@ export function useCheckboxGroup({
       } = props;
 
       const inputRef = useRef<HTMLInputElement>(null);
+      const mergedRefs = useMergeRefs([ref, inputRef]);
 
       useEffect(() => {
         if (!allowIndeterminate || !inputRef.current) return;
@@ -151,8 +152,6 @@ export function useCheckboxGroup({
           input.click();
         }
       };
-
-      const mergedRefs = useMergeRefs([ref, inputRef]);
 
       return {
         /* Spread anything the user has set first */
