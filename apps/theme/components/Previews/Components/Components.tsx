@@ -249,12 +249,10 @@ export const Components = () => {
           <Fieldset.Description>
             Her kan du justere på innstillingene dine
           </Fieldset.Description>
-          <Switch defaultChecked>TV-visning</Switch>
-          <Switch>Desktopvisning</Switch>
-          <Switch defaultChecked readOnly>
-            Tabletvisning
-          </Switch>
-          <Switch disabled>Mobilvisning</Switch>
+          <Switch label='TV-visning' defaultChecked />
+          <Switch label='Desktopvisning' />
+          <Switch label='Tabletvisning' defaultChecked readOnly />
+          <Switch label='Mobilvisning' disabled />
         </Fieldset>
       </div>
       <div className={cl(classes.card, classes.toggleGroup)}>
