@@ -90,7 +90,7 @@ export const Affix: Story = () => (
   <div>
     <Field>
       <Label>Hvor mange kroner koster det per måned?</Label>
-      <Field.Affix prefix='NOK' suffix='pr.mdn'>
+      <Field.Affix prefix='NOK' suffix='pr. mnd.'>
         <Input />
       </Field.Affix>
     </Field>
@@ -137,14 +137,14 @@ export const Affix: Story = () => (
 
     <Field>
       <Label>Affix and small size</Label>
-      <Field.Affix prefix='NOK' suffix='pr.mdn'>
+      <Field.Affix prefix='NOK' suffix='pr. mnd.'>
         <Input size={10} />
       </Field.Affix>
     </Field>
 
     <Field>
       <Label>Affix and huge size</Label>
-      <Field.Affix prefix='NOK' suffix='pr.mdn'>
+      <Field.Affix prefix='NOK' suffix='pr. mnd.'>
         <Input size={50} />
       </Field.Affix>
     </Field>

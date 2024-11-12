@@ -80,8 +80,9 @@
 
   &::before,
   &::after {
-    align-content: center;
+    align-items: center;
     border: var(--dsc-field-affix-border);
+    display: flex;
     flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
   }
