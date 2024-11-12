@@ -45,24 +45,23 @@ export type UseCheckboxGroupProps = {
  * Get anything that is set on a checkbox, but
  * remove anything that comes from the group itself.
  */
-type GetCheckboxProps =
-  | string
-  | (Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      | 'prefix'
-      | 'role'
-      | 'type'
-      | 'size'
-      | 'aria-label'
-      | 'aria-labelledby'
-      | 'label'
-      | 'checked'
-      | 'value'
-    > & {
-      allowIndeterminate?: boolean;
-      ref?: React.RefObject<HTMLInputElement>;
-      value?: string;
-    });
+export type GetCheckboxProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  | 'prefix'
+  | 'role'
+  | 'type'
+  | 'size'
+  | 'aria-label'
+  | 'aria-labelledby'
+  | 'label'
+  | 'checked'
+  | 'value'
+> & {
+  /** Enables indeterminate handling for this `Checkbox` and `CheckboxGroup` */
+  allowIndeterminate?: boolean;
+  ref?: React.RefObject<HTMLInputElement>;
+  value?: string;
+};
 
 const toggleIndeterminate = (
   getIndeterminateInputs: () => HTMLInputElement[],
@@ -117,13 +116,14 @@ export function useCheckboxGroup(props?: UseCheckboxGroupProps) {
     setValue: setGroupValue,
     /**
      * Props to send to the `Checkbox` component.
+     * Accepts value or object
      * @example
      * <Checkbox {...getCheckboxProps('value')} />
      *
      * @example allow indeterminate
-     * <Checkbox {...getCheckboxProps({ allowIndeterminate: true })} />
+     * <Checkbox {...getCheckboxProps({ value: 'all', allowIndeterminate: true })} />
      */
-    getCheckboxProps: (propsOrValue?: GetCheckboxProps) => {
+    getCheckboxProps: (propsOrValue?: string | GetCheckboxProps) => {
       const props =
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
@@ -183,7 +183,7 @@ export function useCheckboxGroup(props?: UseCheckboxGroupProps) {
         ...rest,
         /* Concat ours with the user prop */
         'aria-describedby':
-          `${!!error && errorId} ${rest['aria-describedby'] || ''}`.trim(),
+          `${(!!error && errorId) || ''} ${rest['aria-describedby'] || ''}`.trim(),
         'aria-invalid': !!error || rest['aria-invalid'],
         checked: allowIndeterminate ? undefined : groupValue.includes(value),
         name: rest.name || groupName || namedId,

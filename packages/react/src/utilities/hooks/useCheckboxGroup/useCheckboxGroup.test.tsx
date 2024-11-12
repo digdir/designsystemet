@@ -2,13 +2,12 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import {
-  Checkbox,
-  Fieldset,
-  ValidationMessage,
-  useCheckboxGroup,
-} from '../../../components';
-import type { UseCheckboxGroupProps } from '../../../components';
+import { Checkbox, Fieldset, ValidationMessage } from '../../../components';
+import { useCheckboxGroup } from './useCheckboxGroup';
+import type {
+  GetCheckboxProps,
+  UseCheckboxGroupProps,
+} from './useCheckboxGroup';
 
 const CheckboxGroup = (args: UseCheckboxGroupProps) => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup(args);
@@ -19,7 +18,13 @@ const CheckboxGroup = (args: UseCheckboxGroupProps) => {
         aria-label='All'
         {...getCheckboxProps({ allowIndeterminate: true, value: 'all' })}
       />
-      <Checkbox label='Test 1' {...getCheckboxProps('test1')} />
+      <Checkbox
+        label='Test 1'
+        {...getCheckboxProps({
+          value: 'test1',
+          'aria-describedby': 'custom aria-describedby',
+        })}
+      />
       <Checkbox label='Test 2' {...getCheckboxProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
@@ -140,5 +145,45 @@ describe('CheckboxGroup', () => {
     expect(indeterminate).toHaveProperty('checked', true);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
+  });
+
+  const CheckboxGroupCheckbox = (args: GetCheckboxProps) => {
+    const { getCheckboxProps, validationMessageProps } = useCheckboxGroup();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>Legend</Fieldset.Legend>
+        <Checkbox
+          label='Test 1'
+          {...getCheckboxProps({
+            ...args,
+          })}
+        />
+        <ValidationMessage {...validationMessageProps} />
+      </Fieldset>
+    );
+  };
+
+  test('correctly merges passed props with generated props', async () => {
+    const user = userEvent.setup();
+    const onChangeMock = vi.fn();
+    const customAriaDescribedBy = 'custom aria-describedby';
+
+    render(
+      <CheckboxGroupCheckbox
+        onChange={onChangeMock}
+        aria-describedby={customAriaDescribedBy}
+      />,
+    );
+
+    const checkbox1 = screen.getByLabelText('Test 1');
+    await act(async () => await user.click(checkbox1));
+
+    expect(onChangeMock).toHaveBeenCalledOnce();
+    expect(checkbox1).toBeChecked();
+
+    expect(checkbox1).toHaveAttribute(
+      'aria-describedby',
+      customAriaDescribedBy,
+    );
   });
 });

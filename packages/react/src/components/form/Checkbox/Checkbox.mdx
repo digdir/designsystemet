@@ -51,7 +51,7 @@ I respons får du objektet:
 
 ```ts
 {
-  getCheckboxProps: (value: string | { multiple: true }) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
+  getCheckboxProps: (value: string | { allowIndeterminate: true }) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
   validationMessageProps: ValidationMessageProps, // Properties du kan valgfritt spre på ValidationMessage
   setValue: string[], // Funksjon for å sette checkbox gruppens verdi
   value: string[], // Nåværende verdi for checkbox gruppen
@@ -75,7 +75,7 @@ return (
     <Fieldset.Description>
       Velg alle landene du skal innom.
     </Fieldset.Description>
-    <Checkbox label='Alle' {...getCheckboxProps({ multiple: true })} />
+    <Checkbox label='Alle' {...getCheckboxProps({ allowIndeterminate: true })} />
     <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
     <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
     <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
