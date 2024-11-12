@@ -34,6 +34,7 @@
     "npm-run-all2": "^6.2.2",
     "postcss": "^8.4.41",
     "rollup": "^4.22.4",
+    "typescript": "^5.5.4",
     "vite": "^5.3.6",
     "vite-plugin-generate-file": "^0.2.0",
     "vite-plugin-react-rich-svg": "^1.1.1",

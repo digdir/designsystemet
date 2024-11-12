@@ -1,14 +1,11 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Tooltip } from '@digdir/designsystemet-react';
-import type {
-  ColorError,
-  ContrastMode,
-  ThemeColors,
-} from '@digdir/designsystemet/color';
+import type { ColorError, ContrastMode } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 
 import { useThemeStore } from '../../store';
+import type { ThemeColors } from '../../types';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 import { TokenModal } from '../TokenModal/TokenModal';
 
