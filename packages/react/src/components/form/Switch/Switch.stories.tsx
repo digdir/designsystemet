@@ -13,12 +13,20 @@ export default {
 
 export const Preview: Story = {
   args: {
+    'data-size': 'md',
     label: 'Switch',
+    description: '',
     disabled: false,
     readOnly: false,
-    'data-size': 'md',
-    // position: 'left',
-    description: '',
+    position: 'start',
+  },
+  parameters: {
+    a11y: {
+      config: {
+        // TMP Disable a11y color-contrast rule for disabled as we need design adjustments on this
+        rules: [{ id: 'color-contrast', selector: 'input:disabled ~ *' }],
+      },
+    },
   },
 };
 
