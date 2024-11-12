@@ -65,6 +65,7 @@ export const ColorPreview = () => {
   };
 
   const HorizontalCard = ({ color }: CardProps) => {
+    const [valueOne, setValueOne] = useState(true);
     return (
       <div style={setStyle(color.colors)} className={classes.card}>
         <Heading className={classes.title} data-size='2xs'>
@@ -77,11 +78,12 @@ export const ColorPreview = () => {
         <div className={classes.checkGroup}>
           <Checkbox
             data-size='sm'
-            label='Checkbox label'
-            value='value'
-            checked
+            label='Checkbox 1'
+            value='one'
+            onChange={() => setValueOne(!valueOne)}
+            checked={valueOne}
           />
-          <Checkbox data-size='sm' label='Checkbox label' value='value' />
+          <Checkbox data-size='sm' label='Checkbox 2' value='two' />
         </div>
         <div className={classes.btnGroup}>
           <Button data-size='sm'>Primær</Button>
@@ -93,6 +95,8 @@ export const ColorPreview = () => {
     );
   };
   const VerticalCard = ({ color }: CardProps) => {
+    const [isChecked, setIsChecked] = useState(true);
+    const [isSwitch, setIsSwitch] = useState(true);
     return (
       <div
         style={setStyle(color.colors)}
@@ -107,8 +111,20 @@ export const ColorPreview = () => {
           </Paragraph>
         </div>
         <div className={listClasses.checkGroup}>
-          <Checkbox data-size='sm' label='Checkbox' value='value' checked />
-          <Switch description='' position='left' size='sm' checked>
+          <Checkbox
+            data-size='sm'
+            label='Checkbox'
+            value='value'
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          <Switch
+            description=''
+            position='left'
+            size='sm'
+            checked={isSwitch}
+            onChange={() => setIsSwitch(!isSwitch)}
+          >
             Switch
           </Switch>
         </div>

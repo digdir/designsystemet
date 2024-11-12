@@ -1,4 +1,3 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import type {
   ColorInfo,
   ColorMode,
@@ -10,11 +9,6 @@ import { subscribeWithSelector } from 'zustand/middleware';
 export type ColorTheme = {
   name: string;
   colors: ThemeInfo;
-};
-
-type StoreThemeType = {
-  theme: ThemeInfo;
-  color: CssColor;
 };
 
 type ColorStore = {
@@ -38,7 +32,7 @@ type ColorStore = {
   setSelectedColor: (color: ColorInfo, name: string) => void;
   borderRadius: string;
   setBorderRadius: (radius: string) => void;
-  appearance: 'light' | 'dark';
+  appearance: ColorMode;
   setAppearance: (appearance: ColorMode) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
