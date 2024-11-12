@@ -16,8 +16,8 @@ const RadioGroup = (args: UseRadioGroupProps) => {
     <Fieldset>
       <Fieldset.Legend>Legend</Fieldset.Legend>
       <Radio label='Test 1' {...getRadioProps('test1')} />
-      <Radio label='Test 2 ' {...getRadioProps('test2')} />
-      <Radio label='Test 3 ' {...getRadioProps('test3')} />
+      <Radio label='Test 2' {...getRadioProps('test2')} />
+      <Radio label='Test 3' {...getRadioProps('test3')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
@@ -29,7 +29,7 @@ const RadioGroupRadio = (args: GetRadioProps) => {
     <Fieldset>
       <Fieldset.Legend>Legend</Fieldset.Legend>
       <Radio label='Test 1' {...getRadioProps(args)} />
-      <Radio label='Test 2 ' {...getRadioProps('test2')} />
+      <Radio label='Test 2' {...getRadioProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
