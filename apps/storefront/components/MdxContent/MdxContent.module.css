@@ -181,3 +181,17 @@
     }
   }
 }
+
+@media screen and (max-width: 740px) {
+  .content {
+    margin-left: inherit;
+    margin-right: inherit;
+  }
+}
+@media screen and (max-width: 860px) {
+    .content video,
+    .content [data-iframe-video] {
+      width: auto;
+      margin-left: initial !important;
+    }
+}
