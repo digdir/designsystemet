@@ -210,8 +210,8 @@ export const WithFormElements: Story = (args) => {
                 {...getCheckboxProps(String(row))}
               />
             </Table.Cell>
-            <Table.Cell>1</Table.Cell>
-            <Table.Cell>2</Table.Cell>
+            <Table.Cell>{row}</Table.Cell>
+            <Table.Cell>{row}</Table.Cell>
             <Table.Cell>
               <Textfield data-size='sm' aria-label={`Textfield ${row}`} />
             </Table.Cell>

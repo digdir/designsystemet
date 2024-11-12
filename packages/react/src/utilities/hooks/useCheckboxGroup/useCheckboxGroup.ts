@@ -73,8 +73,8 @@ export function useCheckboxGroup({
   readOnly,
   required,
 }: UseCheckboxGroupProps) {
-  const [currentValue, setValue] = useState(value);
-  const nameFallback = useId();
+  const [groupValue, setGroupValue] = useState(value);
+  const namedId = useId();
   const errorId = useId();
   const checkboxRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
@@ -85,89 +85,22 @@ export function useCheckboxGroup({
 
   const handleChange = () => {
     const nextValue = Array.from(getInputs(true), ({ value }) => value);
-    setValue(nextValue);
-    onChange?.(nextValue, currentValue);
-  };
-
-  const getCheckboxProps = (propsOrValue?: GetCheckboxPropsType) => {
-    const props =
-      typeof propsOrValue === 'string'
-        ? { value: propsOrValue }
-        : propsOrValue || {};
-    const {
-      allowIndeterminate = false,
-      ref = undefined,
-      value = '',
-      ...rest
-    } = props;
-    const localRef = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-      if (!allowIndeterminate || !localRef.current) return;
-      const checked = !!getInputs(true).length;
-      const unchecked = !!getInputs(false).length;
-      localRef.current.indeterminate = unchecked && checked;
-      localRef.current.checked = !unchecked && checked;
-      /* We can use `currentValue` as dependency here,
-      since that is omly when this checkbox changes */
-    }, [currentValue]);
-
-    useEffect(() => {
-      if (localRef.current && !allowIndeterminate) {
-        checkboxRefs.current.set(value, localRef.current);
-      }
-      return () => {
-        checkboxRefs.current.delete(value);
-      };
-    }, [value]);
-
-    const indeterminateChange = () => {
-      if (!localRef.current) return;
-      const checked = !!localRef.current.checked;
-      for (const input of getInputs(!checked)) {
-        /* We use click to send both event and change checked state */
-        input.click();
-      }
-    };
-
-    const mergedRefs = useMergeRefs([ref, localRef]);
-
-    return {
-      /* Spread anything the user has set first */
-      ...rest,
-      /* Concat ours with the user prop */
-      'aria-describedby': error
-        ? `${errorId} ${rest['aria-describedby']}`
-        : rest['aria-describedby'],
-      'aria-invalid': !!error || rest['aria-invalid'],
-      checked: allowIndeterminate ? undefined : currentValue.includes(value),
-      name: rest.name || name || nameFallback,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        rest.onChange?.(e);
-        if (e.defaultPrevented) return;
-        allowIndeterminate && indeterminateChange();
-        handleChange();
-      },
-      ref: mergedRefs,
-      value,
-      disabled: disabled || rest.disabled,
-      readOnly: readOnly || rest.readOnly,
-      required: required || rest.required,
-    };
+    setGroupValue(nextValue);
+    onChange?.(nextValue, groupValue);
   };
 
   return {
     /**
      * Current value of the group.
      */
-    value: currentValue,
+    value: groupValue,
     /**
      * Set the value of the group.
      *
      * @param value string[]
      * @returns void
      */
-    setValue,
+    setValue: setGroupValue,
     /**
      * Props to send to the `Checkbox` component.
      * @example
@@ -176,7 +109,74 @@ export function useCheckboxGroup({
      * @example allow indeterminate
      * <Checkbox {...getCheckboxProps({ allowIndeterminate: true })} />
      */
-    getCheckboxProps,
+    getCheckboxProps: (propsOrValue?: GetCheckboxPropsType) => {
+      const props =
+        typeof propsOrValue === 'string'
+          ? { value: propsOrValue }
+          : propsOrValue || {};
+
+      const {
+        allowIndeterminate = false,
+        ref = undefined,
+        value = '',
+        ...rest
+      } = props;
+
+      const inputRef = useRef<HTMLInputElement>(null);
+
+      useEffect(() => {
+        if (!allowIndeterminate || !inputRef.current) return;
+        const checked = !!getInputs(true).length;
+        const unchecked = !!getInputs(false).length;
+        inputRef.current.indeterminate = unchecked && checked;
+        inputRef.current.checked = !unchecked && checked;
+        /* We can use `currentValue` as dependency here,
+      since that is omly when this checkbox changes */
+      }, [groupValue]);
+
+      useEffect(() => {
+        if (inputRef.current && !allowIndeterminate) {
+          checkboxRefs.current.set(value, inputRef.current);
+        }
+        return () => {
+          checkboxRefs.current.delete(value);
+        };
+      }, [value]);
+
+      const indeterminateChange = () => {
+        if (!inputRef.current) return;
+        const checked = !!inputRef.current.checked;
+        for (const input of getInputs(!checked)) {
+          /* We use click to send both event and change checked state */
+          input.click();
+        }
+      };
+
+      const mergedRefs = useMergeRefs([ref, inputRef]);
+
+      return {
+        /* Spread anything the user has set first */
+        ...rest,
+        /* Concat ours with the user prop */
+        'aria-describedby': error
+          ? `${errorId} ${rest['aria-describedby']}`
+          : rest['aria-describedby'],
+        'aria-invalid': !!error || rest['aria-invalid'],
+        checked: allowIndeterminate ? undefined : groupValue.includes(value),
+        name: rest.name || name || namedId,
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+          rest.onChange?.(e);
+          if (e.defaultPrevented) return;
+          allowIndeterminate && indeterminateChange();
+          handleChange();
+        },
+        ref: mergedRefs,
+        value,
+        disabled: disabled || rest.disabled,
+        readOnly: readOnly || rest.readOnly,
+        required: required || rest.required,
+      };
+    },
     /**
      * Props to send to the `ValidationMessage` component.
      *
