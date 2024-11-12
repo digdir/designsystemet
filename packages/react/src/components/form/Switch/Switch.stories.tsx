@@ -20,14 +20,6 @@ export const Preview: Story = {
     readOnly: false,
     position: 'start',
   },
-  parameters: {
-    a11y: {
-      config: {
-        // TMP Disable a11y color-contrast rule for disabled as we need design adjustments on this
-        rules: [{ id: 'color-contrast', selector: 'input:disabled ~ *' }],
-      },
-    },
-  },
 };
 
 export const Checked: Story = {
@@ -47,13 +39,7 @@ export const Group: Story = {
         {...args}
       />
       <Switch label='Innstilling 2' value='alt2' {...args} />
-      <Switch
-        label='Innstilling 3'
-        value='alt3'
-        description='Velg innstilling 2 for å aktivere'
-        disabled
-        {...args}
-      />
+      <Switch label='Innstilling 3' value='alt3' {...args} />
       <Switch
         label='Innstilling 4'
         value='alt4'
