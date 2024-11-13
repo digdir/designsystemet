@@ -193,7 +193,7 @@ Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Hvi
 #### Hvordan skal vi bruke nivåene `assertive` og `polite`
 Kritiske feil skal leses opp med en gang. Dette løser vi med `role="alert"`, som tilsvarer `aria-live="assertive"`, men gir litt mer semantikk til skjermlesere.
 
-Vi kan bruke `polite` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter. 
+Vi kan bruke `role="status"` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter.
 
 #### Alternative løsninger
 Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. Da er det viktig at elementet med `aria-live` er der ved sidelasting, og innholdet legges til når siden er lastet. Ellers vil ikke alle skjermlesere fange opp live-regionen.
