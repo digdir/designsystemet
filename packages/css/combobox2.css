@@ -1,0 +1,23 @@
+.ds-combobox2 {
+  height: auto;
+
+  & input {
+    font: inherit;
+  }
+
+  & :is(datalist, u-datalist) {
+    background: var(--ds-color-neutral-background-default);
+    border-radius: var(--ds-border-radius-md);
+    border: 1px solid var(--ds-color-neutral-border-default);
+    box-shadow: var(--ds-shadow-md);
+    color: var(--ds-color-neutral-text-default);
+    overflow-y: auto;
+    padding: var(--ds-spacing-2);
+    z-index: 1600;
+  }
+
+  & :is(option, u-option) {
+    background: var(--ds-color-accent-background-subtle);
+    border-left: 5px solid var(--ds-color-accent-base-default);
+  }
+}

@@ -3,17 +3,22 @@ import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 
-import { Button } from '../../Button';
-import { Chip } from '../../Chip';
-import { Heading } from '../../Heading';
-import { Modal } from '../../Modal';
-import { Paragraph } from '../../Paragraph';
-import { Switch } from '../Switch';
+import {
+  Button,
+  Chip,
+  Combobox,
+  Combobox2,
+  Divider,
+  Field,
+  Heading,
+  Input,
+  Label,
+  Modal,
+  Paragraph,
+  Switch,
+} from '../../';
 
 import { data } from './data/data';
-
-import { Divider } from '../../Divider';
-import { Combobox, Combobox2 } from './index';
 
 export default {
   title: 'Komponenter/Combobox',
@@ -23,7 +28,7 @@ export default {
     customStyles: {
       maxWidth: '30rem',
       story: {
-        height: '340px',
+        height: '100vh',
       },
     },
     a11y: {
@@ -635,5 +640,22 @@ WithNumberValues.args = {
 };
 
 export const Combobx2: StoryFn<typeof Combobox2> = (args) => {
-  return <Combobox2 {...args} />;
+  return (
+    <Field>
+      <Label htmlFor='my-input'>Choose flavor of ice cream</Label>
+      <Combobox2 {...args}>
+        <Input id='my-input' list='my-list' />
+        <Combobox2.List id='my-list'>
+          <Combobox2.Option>Coconut</Combobox2.Option>
+          <Combobox2.Option>Strawberries</Combobox2.Option>
+          <Combobox2.Option>Chocolate</Combobox2.Option>
+          <Combobox2.Option>Vanilla</Combobox2.Option>
+          <Combobox2.Option>Licorice</Combobox2.Option>
+          <Combobox2.Option>Pistachios</Combobox2.Option>
+          <Combobox2.Option>Mango</Combobox2.Option>
+          <Combobox2.Option>Hazelnut</Combobox2.Option>
+        </Combobox2.List>
+      </Combobox2>
+    </Field>
+  );
 };

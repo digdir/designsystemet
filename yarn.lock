@@ -1719,7 +1719,9 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.4.8"
     "@testing-library/react": "npm:^16.0.0"
     "@testing-library/user-event": "npm:^14.5.2"
+    "@u-elements/u-datalist": "npm:^0.0.9"
     "@u-elements/u-details": "npm:^0.1.0"
+    "@u-elements/u-tags": "npm:^0.0.1"
     clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
     jsdom: "npm:^24.1.1"
@@ -5515,10 +5517,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@u-elements/u-datalist@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@u-elements/u-datalist@npm:0.0.9"
+  checksum: 10/35e517271bec2c67aaee5806fa90d6f8755ed86cbdc339bb47d1584d8f424668ebe78052828a5a353b1143cff5f91bfb5b3105b5408949468fe33d363d12c439
+  languageName: node
+  linkType: hard
+
 "@u-elements/u-details@npm:^0.1.0":
   version: 0.1.0
   resolution: "@u-elements/u-details@npm:0.1.0"
   checksum: 10/f0d8dea8d0d694b9719bfdc32e3858697184eb99f1ca481f71ac06cff612a5d65ba3695680559b57362e9690041f04351d2cd73a4bc27660eea7f30864958234
+  languageName: node
+  linkType: hard
+
+"@u-elements/u-tags@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@u-elements/u-tags@npm:0.0.1"
+  checksum: 10/c02b2d151ba76847db4092650a411fc11d0960a4c551356d1ae63874e941f9940c669b95cf828b53671b08f072c17f2ee66e78a9d831d0414f60e8ad141d3b97
   languageName: node
   linkType: hard
 
