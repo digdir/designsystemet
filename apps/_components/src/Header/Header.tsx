@@ -26,7 +26,7 @@ type HeaderProps = {
   betaTag?: boolean;
   skipLink?: boolean;
   themeSwitcher?: boolean;
-}
+};
 
 /**
  * Detect if any items have wrapped to a new line
