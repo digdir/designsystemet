@@ -188,7 +188,7 @@ Varsler som vises når du siden blir lastet inn, kalles statiske varsler, og var
 
 Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra starten av, og brukerne kan gå til dem. Statiske varsler må ha en tydelig plass i sidens innholdshierarki. Hvis det for eksempel er en kritisk melding som skal leses opp tidlig, plasserer vi den slik at skjermlesere alltid møter meldingen, også når brukeren hopper rett til hovedinnholdet.
 
-Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Det er også viktig å vurdere hvor vi legger varselet i HTML-strukturen. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
+Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
 
 #### Hvordan skal vi bruke nivåene `assertive` og `polite`
 Om vi skal sette `aria-live="assertive"` eller `aria-live="polite"` i koden, kommer an på hvor alvorlig meldingen er. Kritiske feil som krever at brukerne gjør noe med en gang, skal kodes med `assertive`. Da blir meldingen lest opp med en gang.
