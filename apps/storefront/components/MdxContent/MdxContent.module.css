@@ -189,9 +189,9 @@
   }
 }
 @media screen and (max-width: 860px) {
-    .content video,
-    .content [data-iframe-video] {
-      width: auto;
-      margin-left: initial !important;
-    }
+  .content video,
+  .content [data-iframe-video] {
+    width: auto;
+    margin-left: initial !important;
+  }
 }
