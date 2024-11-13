@@ -1,10 +1,10 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
-import { Input } from '../Input';
+import { Input, type InputProps } from '../Input';
 
 export type RadioProps = {
   /** Optional aria-label */
@@ -14,20 +14,21 @@ export type RadioProps = {
   /** Description for field */
   description?: ReactNode;
   /** Value of the `input` element */
-  value: string;
+  value?: InputProps['value'];
   /** Validation message for field */
   validation?: ReactNode;
-  /**
-   * Changes field size and paddings
-   */
-  'data-size'?: 'sm' | 'md' | 'lg';
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+} & Omit<InputProps, 'type' | 'role' | 'size'> &
   (
     | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
     | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
     | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
   );
 
+/**
+ * Radio used to select multiple options.
+ * @example
+ * <Radio label="I agree" value="agree" />
+ */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   { 'data-size': size, children, label, description, validation, ...rest },
   ref,

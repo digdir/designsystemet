@@ -3,8 +3,13 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--ds-spacing-8);
-  margin-top: var(--ds-spacing-18) !important;
-  margin-bottom: var(--page-spacing-bottom) !important;
+  padding-top: var(--ds-spacing-18) !important;
+  padding-bottom: var(--page-spacing-bottom) !important;
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-background-default);
+  }
 }
 
 .main {

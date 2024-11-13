@@ -1,5 +1,6 @@
 .footer {
   background-color: var(--ds-color-neutral-background-subtle);
+  border-top: 1px solid var(--ds-color-neutral-border-default);
 }
 
 .container {
