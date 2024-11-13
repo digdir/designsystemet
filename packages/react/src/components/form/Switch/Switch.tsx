@@ -2,7 +2,6 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Label } from '../../Label';
-import { ValidationMessage } from '../../ValidationMessage';
 import { Field, type FieldProps } from '../Field';
 import { Input, type InputProps } from '../Input';
 
@@ -15,8 +14,6 @@ export type SwitchProps = {
   description?: ReactNode;
   /** Value of the `input` element */
   value?: InputProps['value'];
-  /** Validation message for field */
-  validation?: ReactNode;
   /** Position of switch
    * @default start
    */
@@ -46,7 +43,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
     label,
     position,
     style,
-    validation,
     ...rest
   },
   ref,
@@ -59,7 +55,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
       <Input type='checkbox' role='switch' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
-      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
     </Field>
   );
 });
