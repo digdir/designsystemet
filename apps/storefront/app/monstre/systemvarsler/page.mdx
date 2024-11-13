@@ -14,7 +14,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Systemvarsler',
-      date: '6. november 2024',
+      date: '13. november 2024',
     }}
   />
 );
@@ -41,10 +41,10 @@ Vi skal nå se nærmere på språket vi bruker i varslene, og når vi bør bruke
 ## Språk
 
 Et godt systemvarsel skal være informativt, klart og brukervennlig.
+- **Bruk et vennlig og profesjonelt språk** \
+Skriv først og fremst en imøtekommende og hjelpsom beskjed om hvordan brukerne kommer seg videre. Vi kan gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten. Vær forsiktig med humor – det er sjeldent morsomt når noe går feil.
 - **Vær kort og presis** \
 Bruk klare og enkle setninger. Unngå byråkratisk eller teknisk sjargong. Pass på at brukerne har informasjon til å kunne fortelle om feilen til kundestøtte. Det kan for eksempel være hvor feilen oppsto, om det er en bestemt funksjon som feiler eller om det er en feilkode eller et referansenummer.  
-- **Bruk et vennlig og profesjonelt språk** \
-Skriv for å hjelpe, og hold en positiv tone i varselet. Vær forsiktig med humor. Tenkt over om du kan ha brukere som er i krevende situasjoner, eller som har kognitive vansker som gjør at de ikke så lett forstår humor. 
 - **Prioriter informasjonen** \
 Skriv det viktigste først. Hvis varselet er langt, kan du bruke mellomoverskrifter og punktlister for å gjøre det lettere å skanne informasjonen. 
 - **Gi tydelig veiledning**  \
@@ -77,11 +77,16 @@ Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi b
 Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
 
 #### Når bruker vi feilsider?
-Vi viser ofte en feilside når brukerne prøver å laste inn en side som ikke finnes, eller de har en lenke som er feil. Vi kan også bruke feilsider til å fortelle om tekniske feil.  
+Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne, og de er derfor fine å bruke til å fortelle at noe har gått galt. 
 
-Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne, og de er derfor fine å bruke til å fortelle at noe har gått galt. Vi kan bruke feilsider til 
-- kritiske systemfeil, som «prøv igjen senere» 
-- sider som ikke finnes
+**Vi kan bruke feilsider når**
+- det har oppstått tekniske feil som gjør at hele tjenesten er utilgjengelig
+- brukerne prøver å laste inn en side som ikke finnes
+
+**Det passer ikke med feilsider når**
+- den tekniske feilen er begrenset til én funksjon eller komponent
+- brukeren kan fortsette å bruke andre deler av tjenesten
+- noe data er utilgjengelige for øyeblikket
 
 <br/>
 
@@ -128,7 +133,6 @@ Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med e
 - det oppstår feil som gjør at brukerne ikke kan fortsette å bruke tjenesten, for eksempel når systemet får nedetid eller når data ikke blir lagret 
 - systemet krever at brukerne må bestemme noe før de kan fortsette, for eksempel hvis de må velge innstillinger som påvirker arbeidet deres videre
 
-
 <br/>
 
 **Når passer det ikke med modal?**
@@ -144,15 +148,23 @@ Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med e
 
 
 #### Når bruker vi alert?
-`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nærmere der feilen er (lokal kontekst).  
+`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
 
-Alert kan også være dynamisk og vises nå brukerne gjør en handling, eller for feil som oppstår underveis. 
+**Vi kan bruke `alert` når**
+- feilen kun påvirker én del av systemet eller en mindre funksjon som ikke stopper brukerens mulighet til å fortsette andre oppgaver
+- det oppstår tilkoblingsproblemer eller API-feil som vil løse seg med en oppdatering av siden
+
+**Det passer ikke med `alert` når**
+- feilen hindrer all videre bruk av tjenesten (bruk feilside i stedet)
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt (bruk `errormessage`)
+- varslene er statiske infobokser (bruk `card` eller `panel`)
+- det er eneste innhold på en side
 
 I eksempelet under ser vi en global `alert` som fyller hele bredden øverst på siden. Denne typen varsel anbefales for problemer som gjelder hele tjenesten. Vi bruker gul `alert` (warning) når brukerne fortsatt kan finne informasjon og navigere på nettsidene, men der noen av delene på siden er utilgjengelige. 
 
 <Image dataUnstyled
   src='/img/alert-global.png'
-  alt='Skjermbilde av glbal alert.'
+  alt='Skjermbilde av global alert.'
 />
 
 Det neste eksempelet viser en lokal `alert` som er plassert i nærheten av der feilen oppsto. Vi bruker en rød `alert` (danger) i tilfeller der brukerne ikke kan fortsette arbeidet. Den står så lenge feilen finnes. 
