@@ -62,14 +62,12 @@ export default function Home() {
   return (
     <div className={classes.page}>
       <div className={classes.header} style={{ background: setHeaderColor() }}>
-        <div>
-          <Link data-size='sm' className={classes.backLink} asChild>
-            <NextLink href='/'>
-              <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
-              Gå tilbake til framsiden
-            </NextLink>
-          </Link>
-        </div>
+        <Link data-size='sm' className={classes.backLink} asChild>
+          <NextLink href='/'>
+            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
+            Gå tilbake til forsiden
+          </NextLink>
+        </Link>
         <Heading data-size='md'>Temabygger</Heading>
       </div>
       <div className={classes.container}>
