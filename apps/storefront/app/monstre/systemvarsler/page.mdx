@@ -199,7 +199,7 @@ Vi kan bruke `polite` når brukerne ikke trenger å få med seg meldingen med en
 Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. Da er det viktig at elementet med `aria-live` er der ved sidelasting, og innholdet legges til når siden er lastet. Ellers vil ikke alle skjermlesere fange opp live-regionen.
 
 ### Bruk av fokus
-Når vi har dynamiske varsler, er det viktig at den komponenten vi har valgt til å vise det (`modal` eller `alert`), får fokuset.  
+Hvis vi viser et dynamisk varsel i en `modal` eller `popover` er det viktig at den får fokus når den vises. 
 
 Vi setter fokus ved å bruke metoden focus() i JavaScript. Da bestemmer vi at fokuset skal gå til det første interaktive elementet i modalen. Slik sikrer vi at brukerne ser varselet, og kan handle umiddelbart, for eksempel lukke det.  
 
