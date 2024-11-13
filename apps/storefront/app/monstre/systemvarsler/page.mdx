@@ -26,7 +26,7 @@ Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er, me
 
 Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Hvilken form vi velger på varselet avhenger av om det krever at brukerne gjør noe eller ikke.  
 
-Hvis brukerne ikke skal gjøre noe (passivt varsel) kan vi bruke for eksempel `alert`, `toast` eller `badge`. Hvis brukerne må gjøre noe, må varselet være tydeligere og vi kan for eksempel bruke `modal` eller `popover`, der brukerne må gjøre noe for å få varselet til å forsvinne. Disse varslene ligner på valideringsfeil, men siden det ikke er brukerne som har gjort noe for å utløse feilen, så må vi ha et annet design på dem. 
+Hvis brukerne ikke skal gjøre noe (passivt varsel) kan vi bruke for eksempel `alert`, `toast` eller `badge`. Hvis brukerne må gjøre noe, må varselet være tydeligere og vi kan for eksempel bruke `modal` . Disse varslene ligner på valideringsfeil, men siden det ikke er brukerne som har gjort noe for å utløse feilen, så må vi ha et annet design på dem. 
 
 Måten vi kommuniserer systemvarslene på avhenger også av svaret på disse spørsmålene: 
 - Hvilken type informasjon er det? 
@@ -68,7 +68,7 @@ Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne
 Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen oppsto. 
 
 #### C) Informasjon om systemet 
-Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert`, `modal` eller `popover`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
+Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert` eller `modal`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
 
 
 ### Hvordan presenterer vi varselet?
@@ -121,11 +121,7 @@ Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne, o
 
 Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
-Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når de er i ferd med å utføre en handling de ikke kan angre, som å slette data. Da kan vi bruke modal til å sikre at de forstår konsekvensene, og be dem bekrefte handlingen.  
-
-I noen sammenhenger kan det være bedre å bruke en `popover`, for eksempel hvis handlingen er mindre alvorlig, eller når det er flere elementer som kan bli slettet.  
-
-Et eksempel kan være når brukerne har mulighet til å slette flere rader i en tabell. Hvis vi viser en modal for hver rad, kan det virke overveldende. Her kan [`popover`](#popover) gi en bedre opplevelse, fordi den gir tilbakemelding, uten å stoppe arbeidsflyten til brukerne. 
+Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
 
 **Vi kan også bruke modal når**
 - det uansett er viktig at brukerne får med seg informasjonen 
@@ -140,18 +136,10 @@ Et eksempel kan være når brukerne har mulighet til å slette flere rader i en 
 - Varsler som ikke er så viktige, typisk sånne som kan vente til brukerne selv vil ta tak i det. 
 
 
-<br/>
-<Image dataUnstyled
-  src='/img/modal-systemvarsler-1.png'
-  alt='Skjermbilde av modal.'
-  boxShadow={false}
-  caption='Eksempel på et globalt varsel som krever handling. En modal der brukerne må ta et aktivt valg for å fortsette å være innlogget. Brukes når vi vil at brukerne skal svare for å få varselet til å forsvinne.'
-/>
-
 <Image dataUnstyled
   src='/img/modal-systemvarsler-2.png'
   alt='Skjermbilde av modal.'
-  caption='Dette eksempelet viser en modal der brukerne må ta et aktivt valg om å lagre utkastet eller ikke.'
+  caption='Eksempel på et globalt varsel som krever handling. I modalen må brukeren ta et aktivt valg for å fortsette å være innlogget. Brukes når vi vil at brukerne skal svare for å få varselet til å forsvinne.'
 />
 
 
@@ -199,7 +187,7 @@ Vi kan bruke `role="status"` når brukerne ikke trenger å få med seg meldingen
 Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. Da er det viktig at elementet med `aria-live` er der ved sidelasting, og innholdet legges til når siden er lastet. Ellers vil ikke alle skjermlesere fange opp live-regionen.
 
 ### Bruk av fokus
-Hvis vi viser et dynamisk varsel i en `modal` eller `popover` er det viktig at den får fokus når den vises. 
+Hvis vi viser et dynamisk varsel i en `modal` er det viktig at den får fokus når den vises. 
 
 Vi setter fokus ved å bruke metoden `focus()` i JavaScript. Da bestemmer vi at fokuset skal gå til det første interaktive elementet i modalen. Slik sikrer vi at brukerne ser varselet, og kan handle umiddelbart, for eksempel lukke det.  
 
