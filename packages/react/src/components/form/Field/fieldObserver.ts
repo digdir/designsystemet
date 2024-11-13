@@ -2,8 +2,9 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
   if (!fieldElement) return;
 
   const elements = new Map<Element, string | null>();
-  const uuid = `:${Math.round(Date.now() + Math.random() * 100).toString(36)}`;
+  const uuid = `:${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
   let input: Element | null = null;
+  let describedby = '';
 
   const process = (mutations: Partial<MutationRecord>[]) => {
     const changed: Node[] = [];
@@ -22,7 +23,10 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
       if (isLabel(el)) elements.set(el, el.htmlFor);
       else if (el.hasAttribute('data-field')) elements.set(el, el.id);
-      else if (isFormAssociated(el)) input = el;
+      else if (isInputLike(el)) {
+        input = el;
+        describedby = el.getAttribute('aria-describedby') || '';
+      }
     }
 
     // Reset removed elements
@@ -31,18 +35,24 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
       if (input === el) input = null;
       if (elements.has(el)) {
+        setAttr(el, 'aria-disabled', null); // Reset disabled state
         setAttr(el, isLabel(el) ? 'for' : 'id', elements.get(el));
         elements.delete(el);
       }
     }
 
     // Connect elements
+    const describedbyIds = [describedby]; // Keep original aria-describedby
     const inputId = input?.id || uuid;
-    const describedbyIds: string[] = [];
+    const isDisabled =
+      input?.hasAttribute('disabled') ||
+      input?.getAttribute('aria-disabled') === 'true';
+
     for (const [el, value] of elements) {
       const descriptionType = el.getAttribute('data-field');
       const id = descriptionType ? `${inputId}:${descriptionType}` : inputId;
 
+      setAttr(el, 'aria-disabled', isDisabled ? 'true' : null); // Forward inputs disabled state to related elements to make axe tests happy
       if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
       if (descriptionType === 'validation')
         describedbyIds.unshift(el.id); // Validations to the front
@@ -50,7 +60,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     setAttr(input, 'id', inputId);
-    setAttr(input, 'aria-describedby', describedbyIds.join(' '));
+    setAttr(input, 'aria-describedby', describedbyIds.join(' ').trim());
   };
 
   const observer = createOptimizedMutationObserver(process);
@@ -69,8 +79,8 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 // Utilities
 const isElement = (node: Node) => node instanceof Element;
 const isLabel = (node: Node) => node instanceof HTMLLabelElement;
-const isFormAssociated = (node: Node): node is Element =>
-  'validity' in node && !(node instanceof HTMLButtonElement);
+const isInputLike = (node: Node): node is Element =>
+  'validity' in node && !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
 
 const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);

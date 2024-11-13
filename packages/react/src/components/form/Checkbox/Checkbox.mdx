@@ -1,8 +1,8 @@
-import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 import { Do, Dont, Stack, CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/input.css?inline';
-import * as TableStories from '../../Table/Table.stories';
 import * as CheckboxStories from './Checkbox.stories';
+import * as useCheckboxGroupStories from '../../../utilities/hooks/useCheckboxGroup/useCheckboxGroup.stories';
 
 <Meta of={CheckboxStories} />
 
@@ -37,18 +37,58 @@ Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alen
 
 <Canvas of={CheckboxStories.OneOption} />
 
+## `Fieldset` og `useCheckboxGroup`
+
+Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
+
+<Canvas of={CheckboxStories.Group} />
+
+Til `useCheckboxGroup` kan du sende inn:
+
+<ArgTypes of={useCheckboxGroupStories.UseCheckboxGroup} />
+
+I respons får du objektet:
+
+```ts
+{
+  getCheckboxProps: (value: string | { allowIndeterminate: true }) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
+  validationMessageProps: ValidationMessageProps, // Properties du kan valgfritt spre på ValidationMessage
+  setValue: string[], // Funksjon for å sette checkbox gruppens verdi
+  value: string[], // Nåværende verdi for checkbox gruppen
+}
+```
+
+Eksempel på bruk:
+
+```tsx
+const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
+  name: 'my-checkbox-group',
+  value: [''],
+  error: 'Du må velge et alternativ',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>
+      Skal du reise til noen av disse landene?
+    </Fieldset.Legend>
+    <Fieldset.Description>
+      Velg alle landene du skal innom.
+    </Fieldset.Description>
+    <Checkbox label='Alle' {...getCheckboxProps({ allowIndeterminate: true })} />
+    <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
+    <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
+    <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
 ### Ubestemt
 
 Bruk `indeterminate` til å signalisere at en eller flere sjekkbokser er markert i gruppen.
 
-<Canvas of={TableStories.WithFormElements} />
-
-### Fieldset
-
-Bruk `Fieldset` for gruppering av flere valg.
-
-<Canvas of={CheckboxStories.Group} />
-<Controls of={CheckboxStories.Group} />
+<Canvas of={CheckboxStories.InTable} />
 
 #### Feilmelding
 
