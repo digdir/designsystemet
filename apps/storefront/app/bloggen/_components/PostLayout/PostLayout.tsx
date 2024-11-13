@@ -48,7 +48,9 @@ function PostLayout({
         ))}
         <main id='main' className={classes.main}>
           <div className={classes.intro}>
-            <Heading level={1}>{heading}</Heading>
+            <Heading level={1} data-size='xl'>
+              {heading}
+            </Heading>
             <Paragraph className={classes.ingress} variant='long'>
               {ingress}
             </Paragraph>
@@ -84,6 +86,16 @@ function PostLayout({
           </MdxContent>
         </main>
       </Container>
+      <style>
+        {`
+          header {
+            [data-ds-color-mode='dark'] &,
+            [data-ds-color-mode='auto'] & {
+              background-color: var(--ds-color-neutral-background-default) !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
