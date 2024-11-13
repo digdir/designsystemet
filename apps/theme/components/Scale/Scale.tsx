@@ -1,8 +1,8 @@
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 import { useEffect, useState } from 'react';
 
-import type { modeType } from '../../types';
+import type { ThemeColors, modeType } from '../../types';
 import { Group } from '../Group/Group';
 
 import classes from './Scale.module.css';

@@ -9024,6 +9024,7 @@ __metadata:
     react-dom: "npm:^18.3.1"
     react-router-dom: "npm:^6.26.0"
     rollup: "npm:^4.22.4"
+    typescript: "npm:^5.5.4"
     vite: "npm:^5.3.6"
     vite-plugin-generate-file: "npm:^0.2.0"
     vite-plugin-react-rich-svg: "npm:^1.1.1"

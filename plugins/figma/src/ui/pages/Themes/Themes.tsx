@@ -17,7 +17,7 @@ function Themes() {
         Mine temaer
       </Heading>
       {noThemeFound && (
-        <p className={classes.noThemes}>
+        <p>
           Fant ingen temaer. Husk at du må åpne pluginen i designsystemet sin
           Core UI kit Figma community fil.
         </p>

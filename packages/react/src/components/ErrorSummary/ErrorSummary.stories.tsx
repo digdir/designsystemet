@@ -45,6 +45,7 @@ export const WithForm: Story = () => (
     <Textfield
       label='Telefon'
       id='telefon'
+      type='tel'
       error='Telefonnummer kan kun inneholde siffer'
     />
 
