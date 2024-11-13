@@ -45,13 +45,12 @@
 
 .colorPreviewContainer {
   border: 1px solid var(--ds-color-neutral-border-subtle);
-
   margin-bottom: 16px;
   border-radius: 8px;
 }
 
 .colorPreview {
-  height: 130px;
+  height: 120px;
   width: 100%;
   border-radius: 8px;
 }

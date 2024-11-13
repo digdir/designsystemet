@@ -94,7 +94,12 @@ export const ColorPane = ({
           className={classes.colorPreview}
         ></div>
       </div>
-      <ColorPicker hideAlpha color={color} onChange={setColor} />
+      <ColorPicker
+        hideAlpha
+        color={color}
+        onChange={setColor}
+        hideInput={['rgb', 'hsv']}
+      />
       <div className={classes.btnGroup}>
         <Button
           data-size='sm'
