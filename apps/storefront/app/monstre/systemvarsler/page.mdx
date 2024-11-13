@@ -196,7 +196,7 @@ Om vi skal sette `aria-live="assertive"` eller `aria-live="polite"` i koden, kom
 Vi kan bruke `polite` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter. 
 
 #### Alternative løsninger
-Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. En annen mulig løsning kan være at varselet lastes inn som del av kildekoden, men deretter får tilført `aria-live="assertive"` dynamisk inn i DOM. Dette vil trigge opplesing av varselet for skjermleseren. 
+Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. Da er det viktig at elementet med `aria-live` er der ved sidelasting, og innholdet legges til når siden er lastet. Ellers vil ikke alle skjermlesere fange opp live-regionen.
 
 ### Bruk av fokus
 Når vi har dynamiske varsler, er det viktig at den komponenten vi har valgt til å vise det (`modal` eller `alert`), får fokuset.  
