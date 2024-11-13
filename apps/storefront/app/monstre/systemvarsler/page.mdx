@@ -191,7 +191,7 @@ Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra sta
 Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
 
 #### Hvordan skal vi bruke nivåene `assertive` og `polite`
-Om vi skal sette `aria-live="assertive"` eller `aria-live="polite"` i koden, kommer an på hvor alvorlig meldingen er. Kritiske feil som krever at brukerne gjør noe med en gang, skal kodes med `assertive`. Da blir meldingen lest opp med en gang.
+Kritiske feil skal leses opp med en gang. Dette løser vi med `role="alert"`, som tilsvarer `aria-live="assertive"`, men gir litt mer semantikk til skjermlesere.
 
 Vi kan bruke `polite` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter. 
 
