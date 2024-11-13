@@ -71,19 +71,21 @@ export const Sidebar = () => {
       </Heading>
 
       <div className={classes.themeMode}>
-        <div className={classes.label}>Visning</div>
-        <Toggle
-          type='appearance'
-          items={[
-            { name: 'Lys', type: 'sm', value: 'light' },
-            { name: 'Mørk', type: 'sm', value: 'dark' },
-            { name: 'Kontrast', type: 'sm', value: 'contrast' },
-          ]}
-          onChange={(value) => {
-            const val = value;
-            setAppearance(val as ColorMode);
-          }}
-        />
+        <div className={classes.group}>
+          <div className={classes.label}>Visning</div>
+          <Toggle
+            type='appearance'
+            items={[
+              { name: 'Lys', type: 'sm', value: 'light' },
+              { name: 'Mørk', type: 'sm', value: 'dark' },
+              { name: 'Kontrast', type: 'sm', value: 'contrast' },
+            ]}
+            onChange={(value) => {
+              const val = value;
+              setAppearance(val as ColorMode);
+            }}
+          />
+        </div>
       </div>
 
       <div className={classes.group}>

@@ -23,7 +23,7 @@
 }
 
 .title {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .colors {
@@ -41,6 +41,7 @@
 
 .group {
   margin-bottom: 24px;
+  margin-top: -4px;
 }
 
 .groupHeader {
