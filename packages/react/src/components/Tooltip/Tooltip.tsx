@@ -21,7 +21,13 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, cloneElement, forwardRef, useState } from 'react';
+import {
+  Fragment,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useState,
+} from 'react';
 
 import type { PortalProps } from '../../types';
 
@@ -128,10 +134,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     if (
       !children ||
       children?.type === Fragment ||
-      (children as unknown) === Fragment
+      (children as unknown) === Fragment ||
+      !isValidElement(children) ||
+      typeof children.type === 'string'
     ) {
       console.error(
-        '<Tooltip> children needs to be a single ReactElement and not: <Fragment/> | <></>',
+        '<Tooltip> children needs to be a single ReactElement that can receive a ref and not: <Fragment/> | <></>',
       );
       return null;
     }
