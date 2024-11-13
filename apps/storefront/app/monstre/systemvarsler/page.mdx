@@ -186,7 +186,7 @@ Plasser varselet på en slik måte at det alltid blir lest opp når siden lastes
 ### Statiske vs. dynamiske varsler
 Varsler som vises når du siden blir lastet inn, kalles statiske varsler, og varsler som dukker opp underveis er dynamiske varsler. 
 
-Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra starten av, og brukerne kan gå til dem. Statiske varsler må ha en tydelig plass i sidens innholdshierarki. Hvis det for eksempel er en kritisk melding som skal leses opp tidlig, plasserer vi den slik at skjermlesere møter meldingen i den naturlige rekkefølgen brukerne beveger seg rundt på siden. 
+Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra starten av, og brukerne kan gå til dem. Statiske varsler må ha en tydelig plass i sidens innholdshierarki. Hvis det for eksempel er en kritisk melding som skal leses opp tidlig, plasserer vi den slik at skjermlesere alltid møter meldingen, også når brukeren hopper rett til hovedinnholdet.
 
 Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Det er også viktig å vurdere hvor vi legger varselet i HTML-strukturen. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
 
