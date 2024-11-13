@@ -1,5 +1,5 @@
 .card {
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   padding: 32px;
   display: block;
   color: inherit;
@@ -10,6 +10,11 @@
   position: relative;
   z-index: 2;
   height: 100%;
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-surface-default);
+  }
 }
 
 .card:hover {
@@ -31,7 +36,7 @@
 .meta {
   margin-top: 14px;
   font-size: 15px;
-  color: #747474;
+  color: var(--ds-color-neutral-text-subtle);
   font-weight: 400;
   display: flex;
   gap: 12px;

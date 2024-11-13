@@ -77,6 +77,16 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
+      <style>
+        {`
+          header {
+            [data-ds-color-mode='dark'] &,
+            [data-ds-color-mode='auto'] & {
+              background-color: var(--ds-color-neutral-background-default) !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
