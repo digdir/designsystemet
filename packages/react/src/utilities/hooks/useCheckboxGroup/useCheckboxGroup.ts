@@ -183,7 +183,8 @@ export function useCheckboxGroup(props?: UseCheckboxGroupProps) {
         ...rest,
         /* Concat ours with the user prop */
         'aria-describedby':
-          `${(!!error && errorId) || ''} ${rest['aria-describedby'] || ''}`.trim(),
+          `${error ? errorId : ''} ${rest['aria-describedby'] || ''}`.trim() ||
+          undefined,
         'aria-invalid': !!error || rest['aria-invalid'],
         checked: allowIndeterminate ? undefined : groupValue.includes(value),
         name: rest.name || groupName || namedId,

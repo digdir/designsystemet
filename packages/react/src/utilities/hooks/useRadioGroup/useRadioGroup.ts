@@ -120,7 +120,8 @@ export function useRadioGroup({
         /* Concat ours with the user prop */
         name: radioGroupName,
         'aria-describedby':
-          `${(!!error && errorId) || ''} ${rest['aria-describedby'] || ''}`.trim(),
+          `${error ? errorId : ''} ${rest['aria-describedby'] || ''}`.trim() ||
+          undefined,
         'aria-invalid': !!error || rest['aria-invalid'],
         value,
         ref: mergedRefs,
