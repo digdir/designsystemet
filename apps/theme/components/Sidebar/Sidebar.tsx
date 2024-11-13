@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../store';
 import { ColorInput } from '../ColorInput/ColorInput';
+import { SizeInput } from '../SizeInput/SizeInput';
 import { Toggle } from '../Toggle/Toggle';
 import { ColorPane } from './ColorPane/ColorPane';
 import classes from './Sidebar.module.css';
@@ -30,6 +31,7 @@ export const Sidebar = () => {
   const appearance = useThemeStore((state) => state.appearance);
   const setAppearance = useThemeStore((state) => state.setAppearance);
   const [isSticky, setSticky] = useState(false);
+  const [size, setSize] = useState('sm');
 
   const addNewColor = (color: string, name: string) => {
     const theme = generateThemeForColor(color as CssColor, 'aa');
@@ -66,123 +68,158 @@ export const Sidebar = () => {
 
   return (
     <div className={cl(classes.sidebar, isSticky && classes.sticky)}>
-      <Heading className={classes.title} data-size='xs'>
-        Konfigurer tema
-      </Heading>
+      <div className={classes.scrollContainer}>
+        <Heading className={classes.title} data-size='xs'>
+          Konfigurer tema
+        </Heading>
 
-      <div className={classes.themeMode}>
+        {/* APPEARANCE */}
+        <div className={classes.themeMode}>
+          <div className={classes.group}>
+            <div className={classes.label}>Visning</div>
+            <Toggle
+              type='appearance'
+              items={[
+                { name: 'Lys', type: 'sm', value: 'light' },
+                { name: 'Mørk', type: 'sm', value: 'dark' },
+                { name: 'Kontrast', type: 'sm', value: 'contrast' },
+              ]}
+              onChange={(value) => {
+                const val = value;
+                setAppearance(val as ColorMode);
+              }}
+            />
+          </div>
+        </div>
+
+        {/* MAIN COLORS */}
         <div className={classes.group}>
-          <div className={classes.label}>Visning</div>
-          <Toggle
-            type='appearance'
-            items={[
-              { name: 'Lys', type: 'sm', value: 'light' },
-              { name: 'Mørk', type: 'sm', value: 'dark' },
-              { name: 'Kontrast', type: 'sm', value: 'contrast' },
-            ]}
-            onChange={(value) => {
-              const val = value;
-              setAppearance(val as ColorMode);
-            }}
-          />
+          <div className={classes.groupHeader}>
+            <Heading data-size='2xs'>Hovedfarger</Heading>
+            {colors.main.length < 4 && (
+              <Button
+                variant='tertiary'
+                data-size='sm'
+                className={classes.AddBtn}
+                onClick={() => {
+                  setActivePanel('addColor');
+                  setColorType('main');
+                }}
+              >
+                Legg til
+                <PlusIcon title='a11y-title' fontSize='1.5rem' />
+              </Button>
+            )}
+            {colors.main.length >= 4 && (
+              <div className={classes.error}>Maks 4 hovedfarger</div>
+            )}
+          </div>
+          <div className={classes.colors}>
+            {colors.main.map((color, index) => (
+              <ColorInput
+                key={index}
+                color={color.colors.light[8].hex}
+                name={color.name}
+                onClick={() => setupEditState(color, index, 'main')}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+        <div className={classes.separator}></div>
+        <div className={classes.group}>
+          <div className={classes.colors}>
+            {colors.neutral.map((color, index) => (
+              <ColorInput
+                key={index}
+                color={color.colors.light[8].hex}
+                name={color.name}
+                onClick={() => setupEditState(color, index, 'neutral')}
+              />
+            ))}
+          </div>
+        </div>
 
-      <div className={classes.group}>
-        <div className={classes.groupHeader}>
-          <Heading data-size='2xs'>Hovedfarger</Heading>
-          {colors.main.length < 4 && (
-            <Button
-              variant='tertiary'
-              data-size='sm'
-              className={classes.AddBtn}
-              onClick={() => {
-                setActivePanel('addColor');
-                setColorType('main');
-              }}
-            >
-              Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          )}
-          {colors.main.length >= 4 && (
-            <div className={classes.error}>Maks 4 hovedfarger</div>
-          )}
+        {/* SUPPORT COLORS */}
+        <div className={classes.group}>
+          <div className={classes.groupHeader}>
+            <Heading data-size='2xs'>Støttefarger</Heading>
+            {colors.support.length < 4 && (
+              <Button
+                variant='tertiary'
+                data-size='sm'
+                className={classes.AddBtn}
+                onClick={() => {
+                  setActivePanel('addColor');
+                  setColorType('support');
+                }}
+              >
+                Legg til
+                <PlusIcon title='a11y-title' fontSize='1.5rem' />
+              </Button>
+            )}
+            {colors.support.length >= 4 && (
+              <div className={classes.error}>Maks 4 støttefarger</div>
+            )}
+          </div>
+          <div className={classes.colors}>
+            {colors.support.map((color, index) => (
+              <ColorInput
+                key={index}
+                color={color.colors.light[8].hex}
+                name={color.name}
+                onClick={() => setupEditState(color, index, 'support')}
+              />
+            ))}
+          </div>
         </div>
-        <div className={classes.colors}>
-          {colors.main.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[8].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'main')}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={classes.separator}></div>
-      <div className={classes.group}>
-        <div className={classes.colors}>
-          {colors.neutral.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[8].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'neutral')}
-            />
-          ))}
-        </div>
-      </div>
 
-      <div className={classes.group}>
-        <div className={classes.groupHeader}>
-          <Heading data-size='2xs'>Støttefarger</Heading>
-          {colors.support.length < 4 && (
-            <Button
-              variant='tertiary'
-              data-size='sm'
-              className={classes.AddBtn}
-              onClick={() => {
-                setActivePanel('addColor');
-                setColorType('support');
-              }}
-            >
-              Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          )}
-          {colors.support.length >= 4 && (
-            <div className={classes.error}>Maks 4 støttefarger</div>
-          )}
-        </div>
-        <div className={classes.colors}>
-          {colors.support.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[8].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'support')}
+        {/* BORDER RADIUS */}
+        <div className={classes.group}>
+          <div className={classes.groupHeader}>
+            <Heading data-size='2xs'>Border radius</Heading>
+          </div>
+          <div>
+            <Toggle
+              type='radius'
+              showLabel={true}
+              items={[
+                { name: 'Ingen', type: 'sm', value: '0px' },
+                { name: 'Small', type: 'sm', value: '4px' },
+                { name: 'Medium', type: 'sm', value: '7px' },
+                { name: 'Large', type: 'sm', value: '10px' },
+                { name: 'Full', type: 'sm', value: '9999px' },
+              ]}
             />
-          ))}
+          </div>
         </div>
-      </div>
 
-      <div className={classes.group}>
-        <div className={classes.groupHeader}>
-          <Heading data-size='2xs'>Border radius</Heading>
-        </div>
-        <div>
-          <Toggle
-            type='radius'
-            showLabel={true}
-            items={[
-              { name: 'Ingen', type: 'sm', value: '0px' },
-              { name: 'Small', type: 'sm', value: '4px' },
-              { name: 'Medium', type: 'sm', value: '7px' },
-              { name: 'Large', type: 'sm', value: '10px' },
-              { name: 'Full', type: 'sm', value: '9999px' },
-            ]}
-          />
+        {/* SIZES */}
+        <div className={classes.group}>
+          <div className={classes.groupHeader}>
+            <Heading data-size='2xs'>Komponentstørrelser</Heading>
+          </div>
+          <div className={classes.sizes}>
+            <SizeInput
+              onChange={(size) => setSize(size)}
+              name='xSmall'
+              size='14px'
+            />
+            <SizeInput
+              onChange={(size) => setSize(size)}
+              name='Small'
+              size='16px'
+            />
+            <SizeInput
+              onChange={(size) => setSize(size)}
+              name='Medium'
+              size='18px'
+            />
+            <SizeInput
+              onChange={(size) => setSize(size)}
+              name='Large'
+              size='21px'
+            />
+          </div>
         </div>
       </div>
 

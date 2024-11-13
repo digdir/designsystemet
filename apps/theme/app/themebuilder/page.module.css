@@ -25,7 +25,7 @@
 }
 
 .sideBarContainer {
-  width: 420px;
+  width: 430px;
 }
 
 .container {
@@ -41,7 +41,7 @@
   border-radius: 8px;
   margin-top: 40px;
   width: 100%;
-  max-width: 1370px;
+  max-width: 1360px;
 }
 
 .backLink {

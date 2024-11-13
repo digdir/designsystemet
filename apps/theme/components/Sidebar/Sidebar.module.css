@@ -3,18 +3,22 @@
   z-index: 100;
   right: 20px;
   top: 20px;
-  height: auto;
+  height: calc(100vh - 40px);
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.1);
-  width: 420px;
-  flex-basis: 420px;
+  width: 430px;
+  flex-basis: 430px;
   flex-grow: 1;
   border-radius: 8px;
   min-height: calc(100vh - 40px);
-  padding: 24px;
   margin-top: -170px;
+}
+
+.scrollContainer {
   overflow: auto;
+  height: calc(100% - 90px);
+  padding: 24px;
 }
 
 .sticky {
@@ -42,6 +46,10 @@
 .group {
   margin-bottom: 24px;
   margin-top: -4px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
 }
 
 .groupHeader {
@@ -84,4 +92,9 @@
 .themeMode {
   margin-bottom: 16px;
   margin-top: 4px;
+}
+
+.sizes {
+  display: flex;
+  gap: 8px;
 }
