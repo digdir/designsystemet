@@ -62,9 +62,14 @@ export type TooltipProps = {
  * <Tooltip content='This is a tooltip'>
  *  <button>Hover me</button>
  * </Tooltip>
+ *
+ * @example
+ * <Tooltip content='This is a tooltip'>
+ *  Hover me
+ * </Tooltip>
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
-  (
+  function Tooltip(
     {
       children,
       content,
@@ -78,7 +83,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
     const internalOpen = userOpen ?? isOpen;
 
@@ -165,8 +170,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     );
   },
 );
-
-Tooltip.displayName = 'Tooltip';
 
 const arrowPseudoElement = {
   name: 'ArrowPseudoElement',
