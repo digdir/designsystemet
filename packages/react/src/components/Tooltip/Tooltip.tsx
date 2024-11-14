@@ -21,14 +21,9 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import {
-  Fragment,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useState,
-} from 'react';
+import { Fragment, forwardRef, isValidElement, useState } from 'react';
 
+import { Slot } from '@radix-ui/react-slot';
 import type { PortalProps } from '../../types';
 
 export type TooltipProps = {
@@ -141,12 +136,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        {cloneElement(
-          children,
-          getReferenceProps({
+        <Slot
+          {...getReferenceProps({
             ref: childMergedRef,
-          }),
-        )}
+          })}
+        >
+          {children}
+        </Slot>
         {internalOpen && (
           <Container>
             <div
