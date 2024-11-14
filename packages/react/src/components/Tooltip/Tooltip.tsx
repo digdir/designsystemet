@@ -28,7 +28,9 @@ import type { PortalProps } from '../../types';
 export type TooltipProps = {
   /**
    * The element or string that triggers the tooltip.
-   * @note Needs to be a single ReactElement and not: <Fragment/> | <></>
+   *
+   * @note If it is a string, it will be wrapped in a span.
+   * @note If it is an element, it needs to be able to receive a ref.
    */
   children: (ReactElement & RefAttributes<HTMLElement>) | string;
   /** Content of the tooltip */
