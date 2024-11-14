@@ -14,6 +14,7 @@ import {
   useRole,
   useTransitionStyles,
 } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type {
   HTMLAttributes,
@@ -21,9 +22,7 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, forwardRef, isValidElement, useState } from 'react';
-
-import { Slot } from '@radix-ui/react-slot';
+import { Fragment, forwardRef, useState } from 'react';
 import type { PortalProps } from '../../types';
 
 export type TooltipProps = {
@@ -126,8 +125,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs.setReference,
     ]);
 
+    /* If children is only a string, make a span */
+    const ChildContainer = typeof children === 'string' ? 'span' : Slot;
+
     /* Make sure it is valid */
-    if (!isValidElement(children) || children.type === Fragment) {
+    if (children.type === Fragment) {
       console.error(
         '<Tooltip> children needs to be a single ReactElement that can receive a ref and not: <Fragment/> | <></>',
       );
@@ -136,13 +138,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        <Slot
+        <ChildContainer
           {...getReferenceProps({
             ref: childMergedRef,
           })}
         >
           {children}
-        </Slot>
+        </ChildContainer>
         {internalOpen && (
           <Container>
             <div

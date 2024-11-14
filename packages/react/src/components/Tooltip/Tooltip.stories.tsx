@@ -58,7 +58,9 @@ export const Portal: Story = {
 };
 
 const NoRefComponent = (props: { children: React.ReactNode }) => (
-  <div>{props.children}</div>
+  <>
+    <div>{props.children}</div>
+  </>
 );
 const RefComponent = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
   (props, ref) => (
@@ -80,5 +82,9 @@ export const TestChildren: StoryFn = () => (
         <Button>has ref</Button>
       </RefComponent>
     </Tooltip>
+    <Tooltip content='Tooltip text'>
+      <button>normal button</button>
+    </Tooltip>
+    <Tooltip content='Tooltip text'>straight string</Tooltip>
   </>
 );
