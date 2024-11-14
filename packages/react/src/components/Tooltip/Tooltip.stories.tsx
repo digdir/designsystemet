@@ -26,6 +26,13 @@ Preview.args = {
   placement: 'top',
 };
 
+export const WithString: Story = {
+  args: {
+    content: 'Tooltip text',
+    children: 'My trigger',
+  },
+};
+
 export const Placement: Story = {
   args: {
     content: 'Tooltip text',
