@@ -73,11 +73,16 @@ Ledeteksten og en eventuell beskrivelse skal alltid stå over tekstfeltet. Da er
 
 ### Unngå plassholdertekster
 
-Plassholdertekster forsvinner når brukerne skriver i feltet. Det er derfor bedre å inkludere hint og viktig informasjon i selve ledeteksten eller den tilhørende beskrivelsen.
+Plassholdertekster forsvinner når brukerne skriver i feltet. Det er derfor bedre å inkludere hint og viktig informasjon i selve ledeteksten eller den tilhørende beskrivelsen. Kontrastkravene i WCAG gjelder for `placeholder` også, og da blir teksten så mørk at brukerne kan oppfatte `textarea` som utfylt.
+
 
 ### Tilpass bredden på tekstfeltet
 
 Tilpass bredden til det brukerne skal skrive inn, kort bredde til telefonnummer og bredere til stedsnavn. Ulik bredde på feltene gjør det enklere å navigere i skjemaer som har mange felter.
+
+### Tillat kopier og lim inn
+
+Brukere som skal fylle ut et tekstområde, trenger ofte å kopiere og lime inn informasjon, så denne funksjonen må ikke deaktiveres. Dette gjør det enkelt for brukerne å fylle inn nødvendige opplysninger uten begrensninger.
 
 ### Inndata og formatering
 
@@ -90,6 +95,10 @@ Tilpass bredden til det brukerne skal skrive inn, kort bredde til telefonnummer 
 ## Tekst i komponenten
 
 Det skal alltid være ledetekst på `Textfield`. I spesielle tilfeller kan vi skjule ledeteksten med `hidelabel`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
+
+- Hold ledeteksten kort, unngå at den går over to linjer.
+- Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren.
+- Unngå å bruke kolon etter `label`.
 
 ## Tilgjengelighet
 

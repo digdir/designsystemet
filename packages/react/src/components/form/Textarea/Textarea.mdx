@@ -5,15 +5,61 @@ import * as TextareaStories from './Textarea.stories';
 <Meta of={TextareaStories} />
 
 # Textarea
+`Textarea` brukes når vi vil gi brukerne mulighet til å legge inn tekst som er lengre enn én linje. 
 
 <Primary />
 <Controls />
 
+## Eksempler
 
-## Kontrollert
+### Kontrollert
 
 <Canvas of={TextareaStories.Controlled} />
 
-## Full bredde
+### Full bredde
+Denne varianten strekker tekstområdet til å fylle hele bredden av tilgjengelig plass. Brukes når tekstfeltet skal stå ut som et hovedfelt eller når det er behov for maksimal skriveplass.
 
 <Canvas of={TextareaStories.FullWidth} />
+
+## Retningslinjer for bruk av `Textarea`
+Bruk `Textarea`når brukerne forventes å skrive inn mer enn én linje med tekst, for eksempel ved åpne spørsmål, tilbakemeldinger, eller andre situasjoner hvor lengre tekstinnhold er nødvendig.
+
+<br />
+
+Vær oppmerksom på at brukerne kan synes det er vanskelig å skrive fritekst eller svare på åpne spørsmål. Noen ganger kan det være bedre å bryte opp spørsmålet i flere enklere spørsmål, og gi brukerne mulighet til å svare med for eksempel `radio`.
+
+### Passer til 
+
+- å gi mulighet for lengre tekster/svar, for eksempel et avsnitt eller en kommentar.
+
+
+### Passer ikke til 
+
+- formaterte data, for eksempel markdown
+- korte svar som e-postadresser og telefonnummer – bruk [`textfield`](/docs/komponenter-Textfield--docs) for disse.
+
+
+<br />
+### Størrelse og tilpasning
+#### Høyden på tekstområdet
+Høyden på `textarea` bør tilpasses forventet tekstmengde. Forventer du at brukeren skal skrive tre linjer, bør høyden reflektere dette. For lengre tekster er det viktig å gi mer visuell plass for en bedre brukeropplevelse.
+
+<br />
+`Textarea` skal kunne tilpasses i høyden, når brukeren har behov for mer plass. Feltet vil automatisk utvide seg når brukeren skriver, slik at de alltid kan se hele innholdet sitt uten å måtte bruke rullefelt. 
+
+#### Bredden på teksområdet
+Et tekstområde bør ikke være bredere enn 50–75 tegn inkludert mellomrom. Hvis vi holder oss til det, blir lesbarheten best for alle brukere.
+
+<br />
+
+### Øvrige retningslinjer
+I tillegg til de retningslinjene, bør du også følge de generelle retninglinjene for [`textfield`](/docs/komponenter-Textfield--docs).
+<br />
+
+* [Plassering av ledetekst](/docs/komponenter-textfield--docs#plassering-av-ledeteksten)
+* [Unngå plassholdertekster](/docs/komponenter-textfield--docs#unng%C3%A5-plassholdertekster)
+* [Inndata og formatering](/docs/komponenter-textfield--docs#inndata-og-formatering)
+* [Tekst i komponenten](/docs/komponenter-textfield--docs#tekst-i-komponenten)
+* [Tilgjengelighet](/docs/komponenter-textfield--docs#tilgjengelighetTilgjengelighet)
+
+
