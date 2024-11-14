@@ -4,6 +4,6 @@
 ---
 
 Popover: 
-- Rename `<Popover.Root>` to `<Popover.Context>`
-- use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+- Rename `<Popover.Root>` to `<Popover.TriggerContext>`
+- use Popover API, allowing `<Popover>` to be used without `Popover.TriggerContext`
 - Remove `portal` prop

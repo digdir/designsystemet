@@ -3,7 +3,7 @@ import { forwardRef, useContext } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 
 import { Button } from '../Button/Button';
-import { Context } from './ModalContext';
+import { Context } from './ModalTriggerContext';
 
 export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
 

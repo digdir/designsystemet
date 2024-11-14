@@ -52,7 +52,7 @@ export const ColorModal = ({
   weight,
 }: ColorModalProps) => {
   return (
-    <Modal.Context>
+    <Modal.TriggerContext>
       <Modal
         ref={colorModalRef}
         style={{
@@ -125,6 +125,6 @@ export const ColorModal = ({
           </Accordion.Root> */}
         </Modal.Block>
       </Modal>
-    </Modal.Context>
+    </Modal.TriggerContext>
   );
 };

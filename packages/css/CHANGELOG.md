@@ -29,7 +29,7 @@
 - Modal: ([#2440](https://github.com/digdir/designsystemet/pull/2440))
 
   - Rename `Modal.Dialog` to `Modal`
-  - Rename `Modal.Root` to `Modal.Context`
+  - Rename `Modal.Root` to `Modal.TriggerContext`
   - Replace `onInteractOutside` event with `backdropClose` boolean
   - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
   - Add border to `Modal.Header` and `Modal.Footer`
@@ -130,8 +130,8 @@
 
 - Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
 
-  - Rename `<Popover.Root>` to `<Popover.Context>`
-  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Rename `<Popover.Root>` to `<Popover.TriggerContext>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.TriggerContext`
   - Remove `portal` prop
 
 - Tooltip: Only expose background css variable ([#2389](https://github.com/digdir/designsystemet/pull/2389))

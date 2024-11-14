@@ -5,7 +5,7 @@
 
 Modal:
 - Rename `Modal.Dialog` to `Modal`
-- Rename `Modal.Root` to `Modal.Context`
+- Rename `Modal.Root` to `Modal.TriggerContext`
 - Replace `onInteractOutside` event with `backdropClose` boolean
 - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
 - Add border to `Modal.Header` and `Modal.Footer`

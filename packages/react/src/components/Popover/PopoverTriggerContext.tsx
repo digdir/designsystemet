@@ -1,11 +1,13 @@
 import { createContext, useId, useState } from 'react';
 import type { ReactNode } from 'react';
 
-export type PopoverContextProps = {
+export type PopoverTriggerContextProps = {
   children: ReactNode;
 };
 
-export const PopoverContext = ({ children }: PopoverContextProps) => {
+export const PopoverTriggerContext = ({
+  children,
+}: PopoverTriggerContextProps) => {
   const randomPopoverId = useId();
   const [popoverId, setPopoverId] = useState(randomPopoverId);
 
@@ -16,7 +18,7 @@ export const PopoverContext = ({ children }: PopoverContextProps) => {
   );
 };
 
-PopoverContext.displayName = 'PopoverContext';
+PopoverTriggerContext.displayName = 'PopoverTriggerContext';
 
 export const Context = createContext<{
   popoverId?: string;

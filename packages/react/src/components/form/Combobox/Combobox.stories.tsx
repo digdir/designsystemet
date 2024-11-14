@@ -318,7 +318,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState<string[]>([]);
 
   return (
-    <Modal.Context>
+    <Modal.TriggerContext>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal style={{ overflow: 'visible' }}>
         <Heading data-size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -343,7 +343,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
           ))}
         </Combobox>
       </Modal>
-    </Modal.Context>
+    </Modal.TriggerContext>
   );
 };
 InModal.play = async (ctx) => {
