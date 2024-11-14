@@ -10,17 +10,20 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
   "type": "module",
-  "types": "./dist/types",
+  "main": "./dist/src/index.js",
   "files": [
     "./dist/**"
   ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
+    ".": {
+      "import": "./dist/src/index.js"
+    },
     "./color": {
       "import": "./dist/src/colors/index.js"
     },
-    "./tokens/*": {
-      "import": "./dist/src/tokens/*"
+    "./tokens": {
+      "import": "./dist/src/tokens/index.js"
     }
   },
   "publishConfig": {
@@ -33,7 +36,7 @@
     "build": "tsup && yarn build:types",
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
-    "test:tokens-create": "yarn designsystemet tokens create -a #007682 -n #003333 -b1 #12404f -b2 #0054a6 -b3 #942977 -w ./test-tokens-create",
+    "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
     "test:tokens-build": "yarn designsystemet tokens build --verbose -t ./test-tokens-create -o ./test-tokens-build",
     "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
     "test": "yarn test:tokens-create-and-build",

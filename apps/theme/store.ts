@@ -1,13 +1,10 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import type {
-  ColorInfo,
-  ThemeColors,
-  ThemeInfo,
-} from '@digdir/designsystemet/color';
+import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
 import { Settings } from './settings';
+import type { ThemeColors } from './types';
 
 type StoreThemeType = {
   theme: ThemeInfo;

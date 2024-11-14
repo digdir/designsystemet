@@ -1,10 +1,11 @@
 import { omit } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeColors } from '@digdir/designsystemet/color';
+import type { ColorInfo } from '@digdir/designsystemet/color';
 import { SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
 import { useThemeStore } from '../../store';
+import type { ThemeColors } from '../../types';
 
 import classes from './Color.module.css';
 

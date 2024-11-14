@@ -26,12 +26,13 @@
   &:has(input:is([type='radio'], [type='checkbox'])) {
     border-radius: var(--ds-border-radius-md);
     display: grid;
+    grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     row-gap: 0;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     & > * {
-      grid-column: 2; /* Only allow input in column 1 */
+      grid-column: content; /* Only allow input in column 1 */
     }
 
     & label {
@@ -40,7 +41,7 @@
     }
 
     & input {
-      grid-column: 1; /* Always place input in column 1 */
+      grid-column: input; /* Always place input in column 1 */
       grid-row: 1; /* Always place input in row 1 */
     }
 
@@ -54,6 +55,12 @@
 
     &:has(input:only-child) {
       gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
+    }
+
+    &[data-position='end'] {
+      grid-template-areas: 'content input';
+      grid-template-columns: 1fr auto;
+      width: auto;
     }
   }
 }
@@ -73,7 +80,11 @@
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
   position: relative;
   white-space: nowrap;
-  width: fit-content;
+  align-self: stretch; /* If ds-field is placed inside a flex container  we need to fill width */
+
+  &:has(input[size]) {
+    width: fit-content;
+  }
 
   & :not(.ds-input) {
     padding-inline: var(--dsc-field-affix-padding-inline);

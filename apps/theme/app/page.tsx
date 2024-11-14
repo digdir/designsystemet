@@ -7,7 +7,6 @@ import type {
   ColorInfo,
   ColorMode,
   ContrastMode,
-  ThemeColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
@@ -24,6 +23,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Previews, Scales, ThemeToolbar } from '../components';
 import { Settings } from '../settings';
 import { useThemeStore } from '../store';
+import type { ThemeColors } from '../types';
 import { mapTokens } from '../utils/tokenMapping';
 
 import classes from './page.module.css';
@@ -71,21 +71,25 @@ export default function Home() {
     // Generate color scales
     const colors = generateColorTheme({
       colors: {
-        accent: queryAccent,
+        main: {
+          accent: queryAccent,
+        },
+        support: {
+          brand1: queryBrand1,
+          brand2: queryBrand2,
+          brand3: queryBrand3,
+        },
         neutral: queryNeutral,
-        brand1: queryBrand1,
-        brand2: queryBrand2,
-        brand3: queryBrand3,
       },
       contrastMode,
     });
 
     // Update colors and themes
-    updateColor('accent', queryAccent, colors.accent);
+    updateColor('accent', queryAccent, colors.main.accent);
     updateColor('neutral', queryNeutral, colors.neutral);
-    updateColor('brand1', queryBrand1, colors.brand1);
-    updateColor('brand2', queryBrand2, colors.brand2);
-    updateColor('brand3', queryBrand3, colors.brand3);
+    updateColor('brand1', queryBrand1, colors.support.brand1);
+    updateColor('brand2', queryBrand2, colors.support.brand2);
+    updateColor('brand3', queryBrand3, colors.support.brand3);
   }, [contrastMode]);
 
   useEffect(() => {

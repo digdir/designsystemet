@@ -169,14 +169,13 @@ export const WithDescription: StoryFn<typeof Combobox> = (args) => {
   return (
     <>
       <Switch
+        label='Multiple'
         checked={multiple}
         onChange={(e) => {
           setMultiple(e.target.checked);
           setValue([]);
         }}
-      >
-        Multiple
-      </Switch>
+      />
       <Combobox
         key={multiple ? 'multiple' : 'single'}
         {...args}
@@ -233,14 +232,13 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
 
       <Switch
+        label='Multiple'
         checked={multiple}
         onChange={(e) => {
           setMultiple(e.target.checked);
           setValue([]);
         }}
-      >
-        Multiple
-      </Switch>
+      />
 
       <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
         Value er: {value.join(', ')}
@@ -602,13 +600,15 @@ export const RemoveAllOptions: StoryFn<typeof Combobox> = (args) => {
           );
         })}
       </Combobox>
-      <Switch onChange={(event) => changeAllValues(event.target.checked)}>
-        Remove Values (Selected values remain unchanged as the combobox does not
-        update when options are empty.)
-      </Switch>
-      <Switch onChange={(event) => changeSomeValues(event.target.checked)}>
-        Remove test2 (this works)
-      </Switch>
+      <Switch
+        label='Remove Values (Selected values remain unchanged as the combobox does not
+        update when options are empty.)'
+        onChange={(event) => changeAllValues(event.target.checked)}
+      />
+      <Switch
+        label='Remove test2 (this works)'
+        onChange={(event) => changeSomeValues(event.target.checked)}
+      />
     </>
   );
 };

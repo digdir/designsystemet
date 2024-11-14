@@ -1,9 +1,8 @@
 @charset 'UTF-8';
 
-@layer ds.reset, ds.base, ds.typography, ds.theme, ds.components;
+@layer ds.base, ds.typography, ds.theme, ds.components;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./base/ds-reset.css') layer(ds.reset);
 @import url('./base/base.css') layer(ds.base);
 @import url('./heading.css') layer(ds.typography);
 @import url('./label.css') layer(ds.typography);
@@ -16,7 +15,6 @@
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./accordion.css') layer(ds.components);
-@import url('./switch.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);

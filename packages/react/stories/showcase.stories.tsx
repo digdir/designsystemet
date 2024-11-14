@@ -126,7 +126,6 @@ export const Showcase: StoryFn = () => {
           <Heading className={cl(classes.cardTitle, classes.userTitle)}>
             Opprett ny bruker
           </Heading>
-
           <Textfield
             label='Navn'
             placeholder='Ola Normann'
@@ -274,12 +273,10 @@ export const Showcase: StoryFn = () => {
             Her kan du justere på innstillingene dine
           </Paragraph>
           <div className={classes.switchGroup}>
-            <Switch defaultChecked>TV-visning</Switch>
-            <Switch>Desktopvisning</Switch>
-            <Switch defaultChecked readOnly>
-              Tabletvisning
-            </Switch>
-            <Switch disabled>Mobilvisning</Switch>
+            <Switch label='TV-visning' defaultChecked />
+            <Switch label='Desktopvisning' />
+            <Switch label='Tabletvisning' defaultChecked readOnly />
+            <Switch label='Mobilvisning' disabled />
           </div>
         </div>
         <div className={cl(classes.card, classes.combobox)}>

@@ -1,24 +1,21 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-
-import { useState } from 'react';
-import type { ChangeEvent } from 'react';
 import {
   Button,
   Divider,
   Fieldset,
   Paragraph,
   Radio,
+  type UseRadioGroupProps,
   ValidationMessage,
+  useRadioGroup,
 } from '../..';
-
-type Story = StoryObj<typeof Radio>;
 
 export default {
   title: 'Komponenter/Radio',
   component: Radio,
 } as Meta;
 
-export const Preview: Story = {
+export const Preview: StoryObj<typeof Radio> = {
   args: {
     label: 'Radio',
     description: 'Description',
@@ -29,55 +26,60 @@ export const Preview: Story = {
   },
 };
 
-export const AriaLabel: Story = {
+export const AriaLabel: StoryObj<typeof Radio> = {
   args: {
     value: 'value',
     'aria-label': 'Radio',
   },
 };
 
-export const Group: StoryFn<typeof Fieldset> = (args) => {
-  const props = {
-    'aria-invalid': !!args.error,
-    name: 'my-radio',
-  };
+export const Group: StoryFn<UseRadioGroupProps> = (args) => {
+  const { getRadioProps, validationMessageProps } = useRadioGroup({
+    ...args,
+  });
 
   return (
-    <Fieldset {...args}>
+    <Fieldset>
       <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
       <Fieldset.Description>
         Velg din favorittsmak blant alternativene.
       </Fieldset.Description>
-      <Radio label='Vanilje' value='vanilje' {...props} />
+      <Radio label='Vanilje' {...getRadioProps('vanilje')} />
       <Radio
         label='Jordbær'
-        value='jordbær'
         description='Jordbær er best'
-        {...props}
+        {...getRadioProps('jordbær')}
       />
-      <Radio label='Sjokolade' value='sjokolade' defaultChecked {...props} />
-      <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' {...props} />
-      {!!args.error && <ValidationMessage>{args.error}</ValidationMessage>}
+      <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+      <Radio
+        label='Jeg spiser ikke iskrem'
+        {...getRadioProps('spiser-ikke-is')}
+      />
+      <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
 };
 
 Group.args = {
+  name: 'my-group',
+  readOnly: false,
   disabled: false,
+  value: 'sjokolade',
 };
 
 export const WithError = {
   args: {
     ...Group.args,
-    error: 'Du må velge jordbær fordi det smaker best', // TODO: useRadio when hook is ready
+    error: 'Du må velge jordbær fordi det smaker best',
+    name: 'my-error',
   },
   render: Group,
 };
 
-export const Controlled: StoryFn<typeof Radio> = () => {
-  const [value, setValue] = useState<string>();
-  const onChange = (event: ChangeEvent<HTMLInputElement>) =>
-    setValue(event.target.value);
+export const Controlled: StoryFn<UseRadioGroupProps> = (args) => {
+  const { value, setValue, getRadioProps } = useRadioGroup({
+    ...args,
+  });
 
   return (
     <>
@@ -87,35 +89,14 @@ export const Controlled: StoryFn<typeof Radio> = () => {
           Alle pizzaene er laget på våre egne nybakte bunner og serveres med
           kokkens egen osteblanding og tomatsaus.
         </Fieldset.Description>
+        <Radio label='Bare ost' {...getRadioProps('ost')} />
         <Radio
-          name='my-radio'
-          label='Bare ost'
-          value='ost'
-          checked={value === 'ost'}
-          onChange={onChange}
-        />
-        <Radio
-          name='my-radio'
           label='Dobbeldekker'
           description='Chorizo spesial med kokkens luksuskylling'
-          value='dobbeldekker'
-          checked={value === 'dobbeldekker'}
-          onChange={onChange}
+          {...getRadioProps('dobbeldekker')}
         />
-        <Radio
-          name='my-radio'
-          label='Flammen'
-          value='flammen'
-          checked={value === 'flammen'}
-          onChange={onChange}
-        />
-        <Radio
-          name='my-radio'
-          label='Snadder'
-          value='snadder'
-          checked={value === 'snadder'}
-          onChange={onChange}
-        />
+        <Radio label='Flammen' {...getRadioProps('flammen')} />
+        <Radio label='Snadder' {...getRadioProps('snadder')} />
       </Fieldset>
 
       <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
@@ -132,12 +113,12 @@ export const Controlled: StoryFn<typeof Radio> = () => {
 };
 
 export const ReadOnly = {
-  args: { ...Group.args, readOnly: true },
+  args: { ...Group.args, readOnly: true, name: 'my-readonly' },
   render: Group,
 };
 
 export const Disabled = {
-  args: { ...Group.args, disabled: true },
+  args: { ...Group.args, disabled: true, name: 'my-disabled' },
   render: Group,
 };
 
@@ -150,8 +131,8 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
     <div
       style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}
     >
-      <Radio name='my-radio' label='Ja' value='ja' />
-      <Radio name='my-radio' label='Nei' value='nei' />
+      <Radio name='my-inline' label='Ja' value='ja' />
+      <Radio name='my-inline' label='Nei' value='nei' />
     </div>
   </Fieldset>
 );
