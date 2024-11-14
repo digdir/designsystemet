@@ -130,8 +130,8 @@
 
 - Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
 
-  - Rename `<Popover.Root>` to `<Popover.TriggerContext>`
-  - use Popover API, allowing `<Popover>` to be used without `Popover.TriggerContext`
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
   - Remove `portal` prop
 
 - Tooltip: Only expose background css variable ([#2389](https://github.com/digdir/designsystemet/pull/2389))
