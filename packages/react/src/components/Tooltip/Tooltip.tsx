@@ -30,7 +30,7 @@ export type TooltipProps = {
    * The element that triggers the tooltip.
    * @note Needs to be a single ReactElement and not: <Fragment/> | <></>
    */
-  children: ReactElement & RefAttributes<HTMLElement>;
+  children: (ReactElement & RefAttributes<HTMLElement>) | string;
   /** Content of the tooltip */
   content: string;
   /**
@@ -129,7 +129,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const ChildContainer = typeof children === 'string' ? 'span' : Slot;
 
     /* Make sure it is valid */
-    if (children.type === Fragment) {
+    if (typeof children !== 'string' && children.type === Fragment) {
       console.error(
         '<Tooltip> children needs to be a single ReactElement that can receive a ref and not: <Fragment/> | <></>',
       );
