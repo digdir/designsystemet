@@ -6,19 +6,17 @@ import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';
 
 const render = async (props: Partial<TooltipProps> = {}) => {
-  const allProps: TooltipProps = {
-    children: <button>My button</button>,
-    content: 'Tooltip text',
-    delay: 0,
-    ...props,
-  };
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
 
   return {
     user,
-    ...renderRtl(<Tooltip {...allProps} />),
+    ...renderRtl(
+      <Tooltip {...props} content='Tooltip text' delay={props.delay || 0}>
+        <button>My button</button>
+      </Tooltip>,
+    ),
   };
 };
 

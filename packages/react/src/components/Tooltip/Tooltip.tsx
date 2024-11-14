@@ -131,13 +131,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs.setReference,
     ]);
 
-    if (
-      !children ||
-      children?.type === Fragment ||
-      (children as unknown) === Fragment ||
-      !isValidElement(children) ||
-      typeof children.type === 'string'
-    ) {
+    /* Make sure it is valid */
+    if (!isValidElement(children) || children.type === Fragment) {
       console.error(
         '<Tooltip> children needs to be a single ReactElement that can receive a ref and not: <Fragment/> | <></>',
       );

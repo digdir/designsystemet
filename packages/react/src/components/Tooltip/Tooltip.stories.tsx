@@ -2,6 +2,7 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Button } from '../..';
 
+import { forwardRef } from 'react';
 import { Tooltip } from '.';
 
 type Story = StoryObj<typeof Tooltip>;
@@ -55,3 +56,29 @@ export const Portal: Story = {
     portal: true,
   },
 };
+
+const NoRefComponent = (props: { children: React.ReactNode }) => (
+  <div>{props.children}</div>
+);
+const RefComponent = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
+  (props, ref) => (
+    <>
+      <div ref={ref}>{props.children}</div>
+    </>
+  ),
+);
+
+export const TestChildren: StoryFn = () => (
+  <>
+    <Tooltip content='Tooltip text'>
+      <NoRefComponent>
+        <Button>has no ref</Button>
+      </NoRefComponent>
+    </Tooltip>
+    <Tooltip content='Tooltip text'>
+      <RefComponent>
+        <Button>has ref</Button>
+      </RefComponent>
+    </Tooltip>
+  </>
+);
