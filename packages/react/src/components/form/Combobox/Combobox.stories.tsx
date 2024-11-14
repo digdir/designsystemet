@@ -7,16 +7,16 @@ import {
   Button,
   Chip,
   Combobox,
-  Combobox2,
   Divider,
   Field,
   Heading,
-  Input,
   Label,
   Modal,
   Paragraph,
   Switch,
 } from '../../';
+
+import { Combobox as Combobox2 } from './v2';
 
 import { data } from './data/data';
 
@@ -640,22 +640,37 @@ WithNumberValues.args = {
 };
 
 export const Combobx2: StoryFn<typeof Combobox2> = (args) => {
+  const [values, setValues] = useState(['Hei', 'Hade']);
+
   return (
-    <Field>
-      <Label htmlFor='my-input'>Choose flavor of ice cream</Label>
-      <Combobox2 {...args}>
-        <Input id='my-input' list='my-list' />
-        <Combobox2.List id='my-list'>
-          <Combobox2.Option>Coconut</Combobox2.Option>
-          <Combobox2.Option>Strawberries</Combobox2.Option>
-          <Combobox2.Option>Chocolate</Combobox2.Option>
-          <Combobox2.Option>Vanilla</Combobox2.Option>
-          <Combobox2.Option>Licorice</Combobox2.Option>
-          <Combobox2.Option>Pistachios</Combobox2.Option>
-          <Combobox2.Option>Mango</Combobox2.Option>
-          <Combobox2.Option>Hazelnut</Combobox2.Option>
-        </Combobox2.List>
-      </Combobox2>
-    </Field>
+    <>
+      <Field>
+        <Label htmlFor='my-combobox'>Choose flavor of ice cream</Label>
+        <Combobox2 id='my-combobox' {...args} onChange={setValues}>
+          {values.map((value, key) => (
+            <Combobox2.Chip key={`${key}-${value}`}>{value}</Combobox2.Chip>
+          ))}
+          <Combobox2.Input />
+          <Combobox2.List>
+            <Combobox2.Empty>Fant ingen treff</Combobox2.Empty>
+            <Combobox2.Option value='Coconut'>
+              Coconut
+              <div style={{ opacity: 0.4 }}>Description</div>
+            </Combobox2.Option>
+            <Combobox2.Option>Strawberries</Combobox2.Option>
+            <Combobox2.Option>Chocolate</Combobox2.Option>
+            <Combobox2.Option>Vanilla</Combobox2.Option>
+            <Combobox2.Option>Licorice</Combobox2.Option>
+            <Combobox2.Option>Pistachios</Combobox2.Option>
+            <Combobox2.Option>Mango</Combobox2.Option>
+            <Combobox2.Option>Hazelnut</Combobox2.Option>
+          </Combobox2.List>
+        </Combobox2>
+      </Field>
+      <br />
+      <Divider />
+      <br />
+      <Button onClick={() => setValues(['Mango'])}>Velg Mango</Button>
+    </>
   );
 };
