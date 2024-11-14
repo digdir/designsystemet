@@ -81,7 +81,7 @@ export const Textfield = forwardRef<
   ref,
 ) {
   return (
-    <Field {...{ className, style, 'data-size': size }}>
+    <Field className={className} data-size={size} style={style}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
       <FieldAffixWrapper>

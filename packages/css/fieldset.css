@@ -5,7 +5,7 @@
   padding: 0;
 
   /* Add lock icon to legend when only containing readonly inputs */
-  &:has([readonly]):not(:has(:read-write)) > legend {
+  &:has(input[readonly]):not(:has(input:not([readonly]))) > legend {
     --dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
   }
 

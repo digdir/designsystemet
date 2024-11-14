@@ -101,8 +101,8 @@ export const MediumRow: StoryFn<{
           flexDirection: direction,
         }}
       >
-        <Switch data-size={size}>Switch</Switch>
-        <Switch data-size={size} aria-label='no label switch'></Switch>
+        <Switch data-size={size} label='Switch' />
+        <Switch data-size={size} aria-label='no label switch' />
         <Chip.Checkbox data-size={size}>Toggle</Chip.Checkbox>
         <Chip.Removable data-size={size}>Removable</Chip.Removable>
         <Tag data-size={size}>Tag</Tag>
