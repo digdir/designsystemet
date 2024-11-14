@@ -29,7 +29,7 @@
 - Modal: ([#2440](https://github.com/digdir/designsystemet/pull/2440))
 
   - Rename `Modal.Dialog` to `Modal`
-  - Rename `Modal.Root` to `Modal.TriggerContext`
+  - Rename `Modal.Root` to `Modal.Context`
   - Replace `onInteractOutside` event with `backdropClose` boolean
   - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
   - Add border to `Modal.Header` and `Modal.Footer`
