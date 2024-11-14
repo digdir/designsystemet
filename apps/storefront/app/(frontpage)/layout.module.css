@@ -9,7 +9,7 @@
   content: '';
   background-color: var(--ds-color-neutral-background-subtle);
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   height: 200vh;
   width: 300vw;
   left: -100vw;
@@ -39,6 +39,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  z-index: 1;
 }
 
 .cards {
@@ -50,7 +51,7 @@
 }
 
 .betaTag {
-  background-color: #ebceff;
+  background-color: var(--ds-global-purple-5);
   display: inline-block;
   padding: 3px 12px;
   border-radius: 4px;

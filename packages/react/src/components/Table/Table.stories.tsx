@@ -1,10 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import type { ChangeEvent } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
-import type { TableHeaderCellProps } from './TableHeaderCell';
+import type { TableHeaderCellProps } from '../..';
 
-import { Checkbox, Table, Textfield } from '../..';
+import { Checkbox, Table, Textfield, useCheckboxGroup } from '../..';
 
 type Story = StoryFn<typeof Table>;
 
@@ -182,39 +181,10 @@ type CheckedItems = {
 };
 
 export const WithFormElements: Story = (args) => {
-  const headerCheck = useRef<HTMLInputElement>(null);
-  const rows = Array.from({ length: 3 }, (_, i) => i + 1);
-  const [checkedItems, setCheckedItems] = useState<CheckedItems>({
-    1: false,
-    2: true,
-    3: false,
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: 'my-checkbox',
+    value: ['2'],
   });
-
-  useEffect(() => {
-    if (!headerCheck.current) return;
-    const indeterminate = Object.values(checkedItems).some((item) => item);
-    const all = Object.values(checkedItems).every((item) => item);
-
-    headerCheck.current.indeterminate = !all && indeterminate;
-    headerCheck.current.checked = all;
-  }, [checkedItems]);
-
-  const handleHeaderCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheckedItems(
-      rows.reduce(
-        (acc: CheckedItems, row) =>
-          Object.assign(acc, { [row]: event.target.checked }),
-        {},
-      ),
-    );
-  };
-
-  const handleCheckboxChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    row: number,
-  ) => {
-    setCheckedItems({ ...checkedItems, [row]: event.target.checked });
-  };
 
   return (
     <Table {...args}>
@@ -223,10 +193,7 @@ export const WithFormElements: Story = (args) => {
           <Table.HeaderCell>
             <Checkbox
               aria-label='Select all'
-              onChange={handleHeaderCheckboxChange}
-              ref={headerCheck}
-              value='all'
-              data-size='sm'
+              {...getCheckboxProps({ allowIndeterminate: true })}
             />
           </Table.HeaderCell>
           <Table.HeaderCell>Header 1</Table.HeaderCell>
@@ -235,19 +202,16 @@ export const WithFormElements: Story = (args) => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {rows.map((row) => (
+        {[1, 2, 3].map((row) => (
           <Table.Row key={row}>
             <Table.Cell>
               <Checkbox
-                aria-label={`Checkbox ${row}`}
-                checked={!!checkedItems[row]}
-                value={row.toString()}
-                onChange={(event) => handleCheckboxChange(event, row)}
-                data-size='sm'
+                aria-label={`Check ${row}`}
+                {...getCheckboxProps(String(row))}
               />
             </Table.Cell>
-            <Table.Cell>1</Table.Cell>
-            <Table.Cell>2</Table.Cell>
+            <Table.Cell>{row}</Table.Cell>
+            <Table.Cell>{row}</Table.Cell>
             <Table.Cell>
               <Textfield data-size='sm' aria-label={`Textfield ${row}`} />
             </Table.Cell>

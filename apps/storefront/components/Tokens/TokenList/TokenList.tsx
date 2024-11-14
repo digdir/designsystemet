@@ -178,7 +178,7 @@ const TokenList = ({
   type = 'color',
   hideValue = false,
 }: TokenListProps) => {
-  const [brand, setBrand] = useState<BrandType>('digdir');
+  const [brand] = useState<BrandType>('digdir');
   const [mode, setMode] = useState<'light' | 'dark'>('light');
   const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
 
@@ -219,37 +219,6 @@ const TokenList = ({
       </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
-          {showThemePicker && (
-            <Dropdown.Context>
-              <Dropdown.Trigger variant='secondary'>
-                Brand: {capitalizeString(brand)}
-              </Dropdown.Trigger>
-              <Dropdown>
-                <Dropdown.List>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setBrand('digdir')}>
-                      Digdir
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setBrand('altinn')}>
-                      Altinn
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setBrand('tilsynet')}>
-                      Tilsynet
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setBrand('portal')}>
-                      Brreg
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                </Dropdown.List>
-              </Dropdown>
-            </Dropdown.Context>
-          )}
           {showModeSwitcher && (
             <Dropdown.Context>
               <Dropdown.Trigger variant='secondary'>
@@ -257,11 +226,15 @@ const TokenList = ({
               </Dropdown.Trigger>
               <Dropdown>
                 <Dropdown.List>
-                  <Dropdown.Item onClick={() => setMode('light')}>
-                    Light
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setMode('light')}>
+                      Light
+                    </Dropdown.Button>
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setMode('dark')}>
-                    Dark
+                  <Dropdown.Item>
+                    <Dropdown.Button onClick={() => setMode('dark')}>
+                      Dark
+                    </Dropdown.Button>
                   </Dropdown.Item>
                 </Dropdown.List>
               </Dropdown>

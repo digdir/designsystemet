@@ -1,4 +1,9 @@
 .content {
-  margin-bottom: var(--ds-spacing-12);
-  margin-top: var(--ds-spacing-12);
+  padding-bottom: var(--ds-spacing-12);
+  padding-top: var(--ds-spacing-12);
+
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    background-color: var(--ds-color-neutral-background-default);
+  }
 }

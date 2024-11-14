@@ -16,6 +16,13 @@
   }
 }
 
+.card {
+  [data-ds-color-mode='dark'] &,
+  [data-ds-color-mode='auto'] & {
+    --dsc-card-background: var(--ds-color-neutral-surface-default);
+  }
+}
+
 .tag {
   margin-bottom: 11px;
   padding: 3px 9px;

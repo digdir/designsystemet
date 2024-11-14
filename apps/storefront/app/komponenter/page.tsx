@@ -26,6 +26,11 @@ export default function page() {
         {`
     body {
       background-color: var(--ds-color-neutral-background-subtle);
+
+        [data-ds-color-mode='dark'] &,
+        [data-ds-color-mode='auto'] & {
+          background-color: var(--ds-color-neutral-background-default);
+        }
     }
   `}
       </style>
