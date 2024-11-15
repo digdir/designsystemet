@@ -13,7 +13,7 @@ export type SpinnerProps = {
    */
   'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
-   * The color of the spinner. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+   * The color of the spinner. If left unspecified, the current text color (`currentColor`) is used.
    */
   'data-color'?: Color;
 } & ComponentPropsWithoutRef<'svg'> &

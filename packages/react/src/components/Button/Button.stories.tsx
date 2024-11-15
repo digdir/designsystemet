@@ -193,15 +193,15 @@ export const TextAndIcon: StoryFn<typeof Button> = () => (
   </>
 );
 
-export const Loading: StoryFn<typeof Button> = () => (
+export const Loading: StoryFn<typeof Button> = (args) => (
   <>
-    <Button variant='primary' loading>
+    <Button {...args} variant='primary' loading>
       Laster...
     </Button>
-    <Button variant='secondary' loading>
+    <Button {...args} variant='secondary' loading>
       Laster...
     </Button>
-    <Button variant='tertiary' loading>
+    <Button {...args} variant='tertiary' loading>
       Laster...
     </Button>
   </>

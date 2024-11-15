@@ -1,6 +1,5 @@
 .ds-spinner {
-  --dsc-spinner-background: var(--ds-color-surface-default);
-  --dsc-spinner-stroke: var(--ds-color-border-default);
+  --dsc-spinner-color: currentColor;
 
   --dsc-spinner-animation-duration: 2s;
 
@@ -37,14 +36,24 @@
 }
 
 .ds-spinner__background {
-  stroke: var(--dsc-spinner-background);
+  stroke: var(--dsc-spinner-color);
+  opacity: 20%;
 }
 
 .ds-spinner__circle {
   animation: ds-spinner-stroke-animation ease-in-out infinite var(--dsc-spinner-animation-duration);
   stroke-dasharray: 1px, 200px;
-  stroke: var(--dsc-spinner-stroke);
+  stroke: var(--dsc-spinner-color);
   transform-origin: center;
+  opacity: 75%;
+}
+
+&[data-color] {
+  --dsc-spinner-color: var(--ds-color-border-default);
+
+  .ds-spinner__circle {
+    opacity: 100%;
+  }
 }
 
 /* Prefers reduced motion needs longer animation,
@@ -75,10 +84,12 @@ but don't remove it since it is not decorative.
   50% {
     stroke-dasharray: 100px, 200px;
     stroke-dashoffset: -15px;
+    transform: rotate(0deg);
   }
 
   100% {
     stroke-dasharray: 1px, 200px;
     stroke-dashoffset: -120px;
+    transform: rotate(15deg);
   }
 }
