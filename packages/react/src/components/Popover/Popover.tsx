@@ -13,7 +13,7 @@ import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import type { DefaultProps } from '../../types';
-import { Context } from './PopoverContext';
+import { Context } from './PopoverTriggerContext';
 
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
@@ -32,7 +32,7 @@ declare global {
 
 export type PopoverProps = {
   /**
-   * id to connect the trigger with the popover - required when used without Popover.Context.
+   * id to connect the trigger with the popover - required when used without Popover.TriggerContext.
    */
   id?: string;
   /**

@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { forwardRef, useContext } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 import { Button } from '../Button/Button';
-import { Context } from './PopoverContext';
+import { Context } from './PopoverTriggerContext';
 
 export type PopoverTriggerProps = ComponentPropsWithRef<typeof Button>;
 

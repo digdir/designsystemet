@@ -5,7 +5,7 @@ import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 
 import { Button } from '../Button';
-import { Context } from './ModalContext';
+import { Context } from './ModalTriggerContext';
 
 export type ModalProps = {
   /**
@@ -39,7 +39,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   ref,
 ) {
   const contextRef = useContext(Context);
-  const modalRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the modal works without a ModalContext
+  const modalRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the modal works without a ModalTriggerContext
   const Component = asChild ? Slot : 'dialog';
   const mergedRefs = useMergeRefs([contextRef, ref, modalRef]);
 
