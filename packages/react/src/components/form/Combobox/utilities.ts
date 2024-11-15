@@ -49,6 +49,9 @@ export const setReactInputValue = (
     tracker.setValue(previousValue);
   }
 
-  //'change' instead of 'input', see https://github.com/facebook/react/issues/11488#issuecomment-381590324
+  // Trigger both 'change' and of 'input' as both would trigger if a user cleared the input
+  input.dispatchEvent(
+    new Event('input', { bubbles: true, composed: true }),
+  );
   input.dispatchEvent(new Event('change', { bubbles: true }));
 };

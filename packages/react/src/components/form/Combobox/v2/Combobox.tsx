@@ -14,12 +14,16 @@ import '@u-elements/u-tags';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
 import type { DefaultProps } from '../../../../types';
 
-type OnChangeMultiple = (nextValues: string[], prevValues: string[]) => void;
-type OnChangeSingle = (nextValue: string, prevValue: string) => void;
+type OnChangeMultiple = (values: string[]) => void;
+type OnChangeSingle = (value: string) => void;
+type MultipleProps = Omit<HTMLAttributes<UHTMLTagsElement>, 'onChange'>;
+type SingleProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
+
 type ComboboxContextType = {
   listId?: string;
   setListId?: (id: string) => void;
 };
+
 export const ComboboxContext = createContext<ComboboxContextType>({});
 
 export type ComboboxProps = {
@@ -31,60 +35,57 @@ export type ComboboxProps = {
   multiple?: boolean;
 } & DefaultProps &
   (
-    | ({
-        multiple: true;
-        onChange: OnChangeMultiple;
-      } & Omit<HTMLAttributes<UHTMLTagsElement>, 'onChange'>)
-    | ({
-        multiple?: false | never;
-        onChange: OnChangeSingle;
-      } & Omit<HTMLAttributes<HTMLElement>, 'onChange'>)
+    | ({ multiple: true; onChange: OnChangeMultiple } & MultipleProps)
+    | ({ multiple?: false | never; onChange: OnChangeSingle } & SingleProps)
   );
 
 export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
   function Combobox({ className, multiple, onChange, ...rest }, ref) {
     const [listId, setListId] = useState(useId());
-    const wrapperRef = useRef<HTMLElement>(null);
-    const mergedRefs = useMergeRefs([wrapperRef, ref]);
+    const innerRef = useRef<UHTMLTagsElement | HTMLDivElement>(null);
+    const mergedRefs = useMergeRefs([innerRef, ref]);
 
+    // Handle onChange
     useEffect(() => {
-      const wrapper = wrapperRef.current;
-      const onTags = (event: CustomEvent) => {
-        const input = wrapper?.querySelector('input');
+      if (!multiple) {
+        const div = innerRef.current as HTMLDivElement | null;
+        const handleChange = () =>
+          onChange?.(div?.querySelector('input')?.value || '');
+
+        div?.addEventListener('input', handleChange);
+        return () => div?.removeEventListener('input', handleChange);
+      }
+
+      const utags = innerRef.current as UHTMLTagsElement | null;
+      const handleTags = (event: CustomEvent) => {
         const isAdd = event.detail.action === 'add';
         const value = event.detail.item.value;
-        const prevValues = Array.from(
-          (wrapper as UHTMLTagsElement)?.items || [],
-          ({ value }) => value,
-        );
-        const nextValues = isAdd
-          ? prevValues.concat(value)
-          : prevValues.filter((val) => val !== value);
+        const prev = Array.from(utags?.items || [], ({ value }) => value);
+        const next = isAdd
+          ? prev.concat(value)
+          : prev.filter((val) => val !== value);
 
         event.preventDefault(); // Prevent <u-tags> append/remove logic so we can control this with React useState
-
-        if (multiple) onChange?.(nextValues, prevValues);
-        else onChange?.(value, input?.value || '');
+        onChange?.(next);
       };
 
-      wrapper?.addEventListener('tags', onTags); // TODO: change onChange on input
-      return () => wrapper?.removeEventListener('tags', onTags);
+      utags?.addEventListener('tags', handleTags);
+      return () => utags?.removeEventListener('tags', handleTags);
     }, [multiple]);
 
-    // Using "class" since React does not translate className on custom elements
     return (
       <ComboboxContext.Provider value={{ listId, setListId }}>
         {multiple ? (
           <u-tags
-            class={cl('ds-combobox2', className)}
+            class={cl('ds-combobox2', className)} // Using "class" since React does not translate className on custom elements
             ref={mergedRefs}
-            {...rest}
+            {...(rest as MultipleProps)}
           />
         ) : (
           <div
             className={cl('ds-combobox2', className)}
             ref={mergedRefs}
-            {...rest}
+            {...(rest as SingleProps)}
           />
         )}
       </ComboboxContext.Provider>

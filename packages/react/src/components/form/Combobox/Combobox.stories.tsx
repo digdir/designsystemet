@@ -639,15 +639,19 @@ WithNumberValues.args = {
   label: 'Hvor går reisen?',
 };
 
-export const Combobx2: StoryFn<typeof Combobox2> = (args) => {
+export const Combobx2: StoryFn<typeof Combobox2> = ({
+  onChange,
+  multiple,
+  ...args
+}) => {
   const [value, setValue] = useState('Hei');
 
   return (
     <>
       <Field>
         <Label htmlFor='my-combobox'>Choose flavor of ice cream</Label>
-        <Combobox2 id='my-combobox' {...args} onChange={setValue}>
-          <Combobox2.Input defaultValue={value} />
+        <Combobox2 id='my-combobox' onChange={setValue} {...args}>
+          <Combobox2.Input value={value} />
           <Combobox2.Clear />
           <Combobox2.List>
             <Combobox2.Empty>Fant ingen treff</Combobox2.Empty>
@@ -668,7 +672,7 @@ export const Combobx2: StoryFn<typeof Combobox2> = (args) => {
       <br />
       <Divider />
       <br />
-      <Button onClick={() => setValues(['Mango'])}>Velg Mango</Button>
+      <Button onClick={() => setValue('Mango')}>Velg Mango</Button>
     </>
   );
 };

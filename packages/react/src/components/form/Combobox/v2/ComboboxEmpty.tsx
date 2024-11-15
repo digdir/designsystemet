@@ -7,6 +7,14 @@ import type { DefaultProps } from '../../../../types';
 export type ComboboxEmptyProps = HTMLAttributes<HTMLDivElement> & DefaultProps;
 export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
   function ComboboxEmpty(rest, ref) {
-    return <div ref={ref} {...rest} />;
+    return (
+      <div
+        aria-disabled='true'
+        ref={ref}
+        role='option'
+        tabIndex={0}
+        {...rest}
+      />
+    );
   },
 );

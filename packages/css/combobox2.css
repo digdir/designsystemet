@@ -1,45 +1,44 @@
 .ds-combobox2 {
+  --dsc-combobox-clear-gap: var(--ds-spacing-2);
+  --dsc-combobox-clear-padding: var(--ds-sizing-1);
+  --dsc-combobox-clear-size: var(--ds-sizing-9);
+  --dsc-combobox-clear-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   gap: var(--ds-spacing-1);
   position: relative;
 
-  /* display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto;
-  width: 100%;
-  border-radius: var(--ds-border-radius-default);
-  position: relative;*/
-
   /* We hide the clear button when input is empty */
-  /* &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:placeholder-shown) button[type='reset'],
   &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
     display: none;
   }
 
   &:has(button[type='reset']) input {
-    padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
+    padding-inline-end: calc(var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap));
   }
 
   & button[type='reset'] {
-    --dsc-button-size: var(--dsc-search-clear-size);
+    --dsc-button-size: var(--dsc-combobox-clear-size);
 
-    grid-area: 1 / 1;
-    justify-self: end;
-    margin-inline: var(--dsc-search-padding-inline);
-    padding: var(--dsc-search-clear-padding);
+    align-self: center;
+    margin-inline-start: calc((var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap)) * -1);
+    order: 999; /* Place last */
+    padding: var(--dsc-combobox-clear-padding);
     position: relative;
     scale: 0.75;
     z-index: 2;
 
     &::before {
       content: '';
-      height: var(--dsc-search-clear-size);
-      width: var(--dsc-search-clear-size);
-      mask: var(--dsc-search-clear-icon-url) center / contain no-repeat;
+      height: var(--dsc-combobox-clear-size);
+      width: var(--dsc-combobox-clear-size);
+      mask: var(--dsc-combobox-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
     }
-  } */
+  }
 
   /* Not using focus-within as this triggers both on keyboard and mouse focus */
   &:has(:is(option, u-option):focus-visible) input {

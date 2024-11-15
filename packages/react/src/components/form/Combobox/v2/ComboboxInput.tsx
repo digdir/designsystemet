@@ -5,9 +5,10 @@ import { ComboboxContext } from './Combobox';
 export type ComboboxInputProps = InputProps;
 
 export const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>(
-  function ComboboxList({ id, ...rest }, ref) {
+  function ComboboxList(rest, ref) {
     const { listId } = useContext(ComboboxContext);
 
-    return <Input id={listId} ref={ref} list={listId} {...rest} />;
+    /* We need an empty placeholder for the clear button to be able to show/hide */
+    return <Input ref={ref} list={listId} placeholder='' {...rest} />;
   },
 );
