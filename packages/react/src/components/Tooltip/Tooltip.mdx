@@ -7,8 +7,32 @@ import * as TooltipStories from './Tooltip.stories.tsx';
 
 # Tooltip
 
+`Tooltip` brukes for å vise korte forklaringer til brukeren. 
+
 <Primary />
 <Controls />
+
+## Slik bruker du `Tooltip`
+
+Du kan enten sende inn en `string` eller et element som `children`. Dersom du sender inn en `string`, vil denne legges i en `<span>`.
+
+```tsx
+import { Tooltip } from '@digdir/designsystemet-react';
+
+// kun string, rendrer `span`
+<Tooltip content="Vises i tooltip">
+  Trigger
+</Tooltip>
+
+// med element, rendrer ditt element
+<Tooltip content="Vises i tooltip">
+  <MyButton>Trigger</MyButton>
+</Tooltip>
+```
+
+## Med `string`
+
+<Canvas of={TooltipStories.WithString} />
 
 ## Plassering
 
