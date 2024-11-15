@@ -36,7 +36,7 @@
     "build": "tsup && yarn build:types",
     "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
-    "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
+    "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 accent:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
     "test:tokens-build": "yarn designsystemet tokens build --verbose -t ./test-tokens-create -o ./test-tokens-build",
     "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
     "test": "yarn test:tokens-create-and-build",
