@@ -21,7 +21,7 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 ## Slik bruker du `Modal`
 
 ```tsx
-<Modal.Context>
+<Modal.TriggerContext>
   <Modal.Trigger>Open Modal</Modal.Trigger>
   <Modal>
     <Modal.Block>
@@ -30,7 +30,7 @@ Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
     <Modal.Block>Content</Modal.Block>
     <Modal.Block>Footer</Modal.Block>
   </Modal>
-</Modal.Context>
+</Modal.TriggerContext>
 ```
 
 ## Bruk med eksten trigger
@@ -50,7 +50,7 @@ const modalRef = useRef<HTMLDialogElement>(null);
 
 ### Med bruk av `ref`
 
-<Canvas of={ModalStories.WithoutModalContext} />
+<Canvas of={ModalStories.WithoutModalTriggerContext} />
 
 ### Close on backdrop click
 

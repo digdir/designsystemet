@@ -103,7 +103,7 @@ export const TokenModal = ({
   };
 
   return (
-    <Modal.Context>
+    <Modal.TriggerContext>
       <Modal.Trigger
         className={classes.trigger}
         onClick={() => {
@@ -213,6 +213,6 @@ export const TokenModal = ({
           </div>
         </div>
       </Modal>
-    </Modal.Context>
+    </Modal.TriggerContext>
   );
 };

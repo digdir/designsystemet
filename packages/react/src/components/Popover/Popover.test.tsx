@@ -33,10 +33,10 @@ const render = async (props: PopoverProps = {}) => {
   return {
     user,
     ...renderRtl(
-      <Popover.Context>
+      <Popover.TriggerContext>
         <Popover.Trigger>trigger</Popover.Trigger>
         <Popover {...props}>{contentText}</Popover>
-      </Popover.Context>,
+      </Popover.TriggerContext>,
     ),
   };
 };
