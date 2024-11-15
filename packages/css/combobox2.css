@@ -10,36 +10,6 @@
   gap: var(--ds-spacing-1);
   position: relative;
 
-  /* We hide the clear button when input is empty */
-  &:has(input:placeholder-shown) button[type='reset'],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
-    display: none;
-  }
-
-  &:has(button[type='reset']) input {
-    padding-inline-end: calc(var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap));
-  }
-
-  & button[type='reset'] {
-    --dsc-button-size: var(--dsc-combobox-clear-size);
-
-    align-self: center;
-    margin-inline-start: calc((var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap)) * -1);
-    order: 999; /* Place last */
-    padding: var(--dsc-combobox-clear-padding);
-    position: relative;
-    scale: 0.75;
-    z-index: 2;
-
-    &::before {
-      content: '';
-      height: var(--dsc-combobox-clear-size);
-      width: var(--dsc-combobox-clear-size);
-      mask: var(--dsc-combobox-clear-icon-url) center / contain no-repeat;
-      background: currentcolor;
-    }
-  }
-
   /* Not using focus-within as this triggers both on keyboard and mouse focus */
   &:has(:is(option, u-option):focus-visible) input {
     @composes ds-focus--visible from './base/base.css';
@@ -61,21 +31,61 @@
     overflow-y: auto;
     position: absolute;
     z-index: 1600;
+  }
 
-    & > * {
-      padding: var(--ds-spacing-2);
-      border-left: var(--ds-spacing-1) solid transparent;
-      outline: none;
+  /**
+   * Options
+   */
+  & u-datalist > * {
+    padding: var(--ds-spacing-2);
+    border-left: var(--ds-spacing-1) solid transparent;
+    outline: none;
 
-      &:focus-visible {
+    @media (hover: hover) and (pointer: fine) {
+      &:is(u-option):hover {
         border-left-color: var(--ds-color-accent-base-default);
         background: var(--ds-color-accent-background-subtle);
       }
     }
+  }
+  & > u-datalist:not(:has(u-option:hover)) > u-option:focus-visible {
+    border-left-color: var(--ds-color-accent-base-default);
+    background: var(--ds-color-accent-background-subtle);
+  }
 
-    /* Hide Combobox.Empty when any Combobox.Option is visible */
-    &:has(u-option:not([hidden])) > :not(u-option) {
-      display: none;
+  /* Hide <Combobox.Empty> if any <Combobox.Option> is visible */
+  & > u-datalist:has(u-option:not([hidden])) > :not(u-option) {
+    display: none;
+  }
+
+  /**
+   * Clear button
+   */
+  &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+    display: none; /* We hide the clear button when input is empty */
+  }
+  &:has(button[type='reset']) input {
+    padding-inline-end: calc(var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap));
+  }
+
+  & button[type='reset'] {
+    --dsc-button-size: var(--dsc-combobox-clear-size);
+
+    align-self: center;
+    margin-inline-start: calc((var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap)) * -1);
+    order: 999; /* Place last */
+    padding: var(--dsc-combobox-clear-padding);
+    position: relative;
+    scale: 0.75;
+    z-index: 2;
+
+    &::before {
+      content: '';
+      height: var(--dsc-combobox-clear-size);
+      width: var(--dsc-combobox-clear-size);
+      mask: var(--dsc-combobox-clear-icon-url) center / contain no-repeat;
+      background: currentcolor;
     }
   }
 }
