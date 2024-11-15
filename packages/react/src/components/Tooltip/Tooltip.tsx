@@ -23,40 +23,46 @@ import type {
   RefAttributes,
 } from 'react';
 import { Fragment, forwardRef, useState } from 'react';
-import type { PortalProps } from '../../types';
 
-export type TooltipProps = {
-  /**
-   * The element or string that triggers the tooltip.
-   *
-   * @note If it is a string, it will be wrapped in a span.
-   * @note If it is an element, it needs to be able to receive a ref.
-   */
-  children: (ReactElement & RefAttributes<HTMLElement>) | string;
-  /** Content of the tooltip */
-  content: string;
-  /**
-   * Placement of the tooltip on the trigger.
-   * @default 'top'
-   */
-  placement?: 'top' | 'right' | 'bottom' | 'left';
-  /**
-   * Delay in milliseconds before opening.
-   * @default 150
-   */
-  delay?: number;
-  /**
-   * Whether the tooltip is open or not.
-   * This overrides the internal state of the tooltip.
-   */
-  open?: boolean;
-  /**
-   * Whether the tooltip is open by default or not.
-   * @default false
-   */
-  defaultOpen?: boolean;
-} & HTMLAttributes<HTMLDivElement> &
-  PortalProps;
+import type { DefaultProps, PortalProps } from '../../types';
+import type { Merge } from '../../utilities';
+
+export type TooltipProps = Merge<
+  Omit<DefaultProps, 'data-color'> &
+    PortalProps &
+    HTMLAttributes<HTMLDivElement>,
+  {
+    /**
+     * The element or string that triggers the tooltip.
+     *
+     * @note If it is a string, it will be wrapped in a span.
+     * @note If it is an element, it needs to be able to receive a ref.
+     */
+    children: (ReactElement & RefAttributes<HTMLElement>) | string;
+    /** Content of the tooltip */
+    content: string;
+    /**
+     * Placement of the tooltip on the trigger.
+     * @default 'top'
+     */
+    placement?: 'top' | 'right' | 'bottom' | 'left';
+    /**
+     * Delay in milliseconds before opening.
+     * @default 150
+     */
+    delay?: number;
+    /**
+     * Whether the tooltip is open or not.
+     * This overrides the internal state of the tooltip.
+     */
+    open?: boolean;
+    /**
+     * Whether the tooltip is open by default or not.
+     * @default false
+     */
+    defaultOpen?: boolean;
+  }
+>;
 
 /**
  * Tooltip component that displays a small piece of information when hovering or focusing on an element.

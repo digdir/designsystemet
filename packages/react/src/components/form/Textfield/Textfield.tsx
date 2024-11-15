@@ -13,7 +13,10 @@ import {
 import { Input, type InputProps } from '../Input';
 import { Textarea, type TextareaProps } from '../Textarea';
 
-type InputProps_ = Omit<InputProps, 'prefix' | 'className' | 'style'>;
+type InputProps_ = Omit<
+  InputProps,
+  'prefix' | 'className' | 'style' | 'data-color'
+>;
 type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
 type SharedTextfieldProps = {
@@ -35,7 +38,7 @@ type SharedTextfieldProps = {
    * Pass a number to set a limit, or an object to configure the counter
    */
   counter?: FieldCounterProps | number;
-} & DefaultProps;
+} & Omit<DefaultProps, 'data-color'>;
 
 type TextfieldTextareaProps = {
   /** Use to render a `Textarea` instead of `Input` for multiline support  */

@@ -1,28 +1,37 @@
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
+import type { DefaultProps } from 'packages/react/src/types';
+import type { Merge } from 'packages/react/src/utilities';
+import type { Color } from '../../../colors';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
 import { Input, type InputProps } from '../Input';
 
-export type RadioProps = {
-  /** Optional aria-label */
-  'aria-label'?: string;
-  /** Radio label */
-  label?: ReactNode;
-  /** Description for field */
-  description?: ReactNode;
-  /** Value of the `input` element */
-  value?: InputProps['value'];
-  /** Validation message for field */
-  validation?: ReactNode;
-} & Omit<InputProps, 'type' | 'role' | 'size'> &
-  (
+export type RadioProps = Merge<
+  DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,
+  {
+    /** The color of the fill for selected radios.
+     * If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     */
+    'data-color'?: Color;
+    /** Optional aria-label */
+    'aria-label'?: string;
+    /** Radio label */
+    label?: ReactNode;
+    /** Description for field */
+    description?: ReactNode;
+    /** Value of the `input` element */
+    value?: InputProps['value'];
+    /** Validation message for field */
+    validation?: ReactNode;
+  } & (
     | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
     | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
     | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
-  );
+  )
+>;
 
 /**
  * Radio used to select multiple options.

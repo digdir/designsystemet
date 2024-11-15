@@ -1,10 +1,9 @@
+import type { DefaultProps } from 'packages/react/src/types';
 import { forwardRef } from 'react';
 import { Input } from '../Input';
 
-export type SearchInputProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'readOnly' | 'type'
->;
+export type SearchInputProps = DefaultProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'>;
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   function SearchInput({ ...rest }, ref) {

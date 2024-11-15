@@ -1,4 +1,5 @@
-import type { Color } from '@digdir/designsystemet-react/colors';
+import type { Color } from './colors';
+
 export type Size = 'sm' | 'md' | 'lg';
 
 export type PortalProps = {

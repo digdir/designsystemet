@@ -2,41 +2,37 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { Color, DefaultProps } from '../../types';
+import type { Color } from '../../colors';
+import type { DefaultProps } from '../../types';
+import type { Merge } from '../../utilities';
 
-export type LinkProps = {
-  /** The content to display inside the link. */
-  children: ReactNode;
-  /** Custom class name for the link. This will be appended to the design system class names. */
-  className?: string;
-
-  /**
-   * The color of the link.
-   * @default 'accent'
-   */
-  color?: Color;
-
-  /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
-  href?: string;
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-} & AnchorHTMLAttributes<HTMLAnchorElement> &
-  DefaultProps;
+export type LinkProps = Merge<
+  DefaultProps & AnchorHTMLAttributes<HTMLAnchorElement>,
+  {
+    /** The content to display inside the link. */
+    children: ReactNode;
+    /** Custom class name for the link. This will be appended to the design system class names. */
+    className?: string;
+    /**
+     * The color of the link. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     */
+    'data-color'?: Color;
+    /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
+    href?: string;
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
+  }
+>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ asChild, className, color, ...rest }, ref) => {
+  ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
 
     return (
-      <Component
-        className={cl('ds-link', className)}
-        data-color={color}
-        ref={ref}
-        {...rest}
-      />
+      <Component className={cl('ds-link', className)} ref={ref} {...rest} />
     );
   },
 );

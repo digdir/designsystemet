@@ -4,26 +4,31 @@ import cl from 'clsx/lite';
 import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 
+import type { DefaultProps } from '../../types';
+import type { Merge } from '../../utilities';
 import { Button } from '../Button';
 import { Context } from './ModalTriggerContext';
 
-export type ModalProps = {
-  /**
-   * Screen reader label of close button. Set false to hide the close button.
-   * @default 'Lukk dialogvindu'
-   */
-  closeButton?: string | false;
-  /**
-   * Close on backdrop click.
-   * @default false
-   */
-  backdropClose?: boolean;
-  /**
-   * Callback that is called when the modal is closed.
-   */
-  onClose?: (event: Event) => void;
-  asChild?: boolean;
-} & DialogHTMLAttributes<HTMLDialogElement>;
+export type ModalProps = Merge<
+  DefaultProps & DialogHTMLAttributes<HTMLDialogElement>,
+  {
+    /**
+     * Screen reader label of close button. Set false to hide the close button.
+     * @default 'Lukk dialogvindu'
+     */
+    closeButton?: string | false;
+    /**
+     * Close on backdrop click.
+     * @default false
+     */
+    backdropClose?: boolean;
+    /**
+     * Callback that is called when the modal is closed.
+     */
+    onClose?: (event: Event) => void;
+    asChild?: boolean;
+  }
+>;
 
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   {

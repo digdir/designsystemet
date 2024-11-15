@@ -21,6 +21,15 @@
   }
 
   /**
+   * Colors
+   */
+  &[data-color='neutral'] {
+    --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color: var(--ds-color-neutral-text-default);
+  }
+
+  /**
    * States
    */
   &:visited {

@@ -40,7 +40,7 @@ export const Preview: StoryFn<typeof Accordion> = (args) => (
 );
 
 export const AccordionBorder: StoryFn<typeof Accordion> = () => (
-  <Accordion border color='subtle'>
+  <Accordion border data-color='subtle'>
     <Accordion.Item>
       <Accordion.Heading>Vedlegg</Accordion.Heading>
       <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
@@ -49,7 +49,7 @@ export const AccordionBorder: StoryFn<typeof Accordion> = () => (
 );
 
 export const AccordionColor: StoryFn<typeof Accordion> = () => (
-  <Accordion border color='brand2'>
+  <Accordion border data-color='brand2'>
     <Accordion.Item>
       <Accordion.Heading>
         Hvordan får jeg tildelt et jegernummer?
@@ -135,7 +135,7 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
 // Default values are selected in Controls
 Preview.args = {
   border: false,
-  color: 'neutral',
+  'data-color': 'neutral',
 };
 
 export const Controlled: StoryFn<typeof Accordion> = () => {

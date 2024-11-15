@@ -1,7 +1,14 @@
 .ds-badge {
+  /* color vars */
   --dsc-badge-background: var(--ds-color-base-default);
   --dsc-badge-color: var(--ds-color-contrast-default);
 
+  &[data-color='neutral'] {
+    --dsc-badge-background: var(--ds-color-neutral-surface-default);
+    --dsc-badge-color: var(--ds-color-neutral-text-default);
+  }
+
+  /* sizing vars */
   --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
   --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
 

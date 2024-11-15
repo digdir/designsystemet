@@ -40,7 +40,6 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 Preview.args = {
   placement: 'top',
   'data-size': 'md',
-  variant: 'default',
 };
 Preview.parameters = {
   customStyles: {
@@ -81,7 +80,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover
             open={open}
             placement='bottom'
-            variant='danger'
+            data-color='danger'
             autoPlacement={false}
           >
             danger
@@ -92,7 +91,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover
             open={open}
             placement='top'
-            variant='info'
+            data-color='info'
             autoPlacement={false}
           >
             info
@@ -103,7 +102,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover
             open={open}
             placement='bottom'
-            variant='warning'
+            data-color='warning'
             autoPlacement={false}
           >
             warning
@@ -131,7 +130,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
       <Popover open={open} onClose={() => setOpen(false)}>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          color='danger'
+          data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}
@@ -159,7 +158,7 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
       <Popover id='my-popover' open={open} onClose={() => setOpen(false)}>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          color='danger'
+          data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}

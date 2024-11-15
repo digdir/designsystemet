@@ -1,18 +1,22 @@
 import cl from 'clsx/lite';
+import type { Merge } from 'packages/react/src/utilities';
 import { forwardRef } from 'react';
 import type { SelectHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../../types';
 
-export type SelectProps = {
-  /** Defines if the select is readOnly
-   * @default false
-   */
-  readOnly?: boolean;
-  /** Defines the width of Select in count of characters.
-   */
-  size?: number;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'> &
-  DefaultProps;
+export type SelectProps = Merge<
+  Omit<DefaultProps, 'data-color'> &
+    Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'>,
+  {
+    /** Defines if the select is readOnly
+     * @default false
+     */
+    readOnly?: boolean;
+    /** Defines the width of Select in count of characters.
+     */
+    size?: number;
+  }
+>;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select({ className, onKeyDown, onMouseDown, ...rest }, ref) {

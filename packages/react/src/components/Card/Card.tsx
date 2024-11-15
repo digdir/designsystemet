@@ -3,18 +3,25 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import type { Color } from '../../types';
+import type { CustomColors } from '../../colors';
+import type { DefaultProps } from '../../types';
+import type { Merge } from '../../utilities';
 
-export type CardProps = {
-  /**
-   * Changes background & border color
-   * @default neutral
-   */
-  color?: 'subtle' | Color;
-  asChild?: boolean;
-  /** Instances of `Card.Block`, `Divider` or other React nodes */
-  children: ReactNode;
-} & HTMLAttributes<HTMLDivElement>;
+export type CardProps = Merge<
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
+  {
+    /**
+     * Changes background & border color. Unlike most components, data-color
+     * must be specified on this element — not an ancestor — to have an effect.
+     * Otherwise the default is used.
+     * @default neutral
+     */
+    'data-color'?: 'subtle' | CustomColors;
+    asChild?: boolean;
+    /** Instances of `Card.Block`, `Divider` or other React nodes */
+    children: ReactNode;
+  }
+>;
 
 /**
  * Card component to present content in a structured way.
@@ -26,7 +33,7 @@ export type CardProps = {
  * </Card>
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { asChild = false, color = 'neutral', className, ...rest },
+  { asChild = false, 'data-color': color = 'neutral', className, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

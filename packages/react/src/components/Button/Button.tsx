@@ -2,39 +2,42 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import type { Color, DefaultProps } from '../../types';
+import type { Color } from '../../colors';
+import type { DefaultProps } from '../../types';
+import type { Merge } from '../../utilities';
 import { Spinner } from '../loaders/Spinner';
 
-export type ButtonProps = {
-  /**
-   * Specify which variant to use
-   * @default primary
-   */
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Specify which color palette to use
-   * @default accent
-   */
-  color?: Color;
-  /** Toggle icon only styling, pass icon as children
-   * @default false
-   */
-  icon?: boolean;
-  /** Toggle loading state
-   * @default false
-   */
-  loading?: boolean;
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-  /**
-   * Specify the type of button. Unset when `asChild` is true
-   * @default 'button'
-   */
-  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> &
-  DefaultProps;
+export type ButtonProps = Merge<
+  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
+  {
+    /**
+     * Specify which variant to use
+     * @default primary
+     */
+    variant?: 'primary' | 'secondary' | 'tertiary';
+    /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     */
+    'data-color'?: Color;
+    /** Toggle icon only styling, pass icon as children
+     * @default false
+     */
+    icon?: boolean;
+    /** Toggle loading state
+     * @default false
+     */
+    loading?: boolean;
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
+    /**
+     * Specify the type of button. Unset when `asChild` is true
+     * @default 'button'
+     */
+    type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  }
+>;
 
 /**
  * Button used for interaction
@@ -47,7 +50,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       asChild,
       className,
       children,
-      color,
       icon = false,
       loading = false,
       variant = 'primary',
@@ -62,7 +64,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         aria-busy={Boolean(loading) || undefined}
         className={cl('ds-button', className)}
-        data-color={color}
         data-icon={icon || undefined}
         data-variant={variant}
         ref={ref}

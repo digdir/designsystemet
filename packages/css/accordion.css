@@ -1,11 +1,12 @@
 .ds-accordion-group {
+  /* default color: neutral */
   --dsc-accordion-background: var(--ds-color-neutral-background-default);
   --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-accordion-heading-background--open: var(--ds-color-neutral-background-subtle);
   --dsc-accordion-heading-background: var(--ds-color-neutral-background-default);
   --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
 
-  &[data-color] {
+  &[data-color]:where(:not([data-color='subtle'])) {
     --dsc-accordion-background: var(--ds-color-background-subtle);
     --dsc-accordion-heading-background--hover: var(--ds-color-surface-hover);
     --dsc-accordion-heading-background--open: var(--ds-color-surface-default);
@@ -21,7 +22,10 @@
   }
 
   &[data-color='subtle'] {
-    --dsc-accordion-heading-background: var(--ds-color-background-subtle);
+    --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-heading-background: var(--ds-color-neutral-background-subtle);
   }
 
   --dsc-accordion-border: 1px solid var(--dsc-accordion-border-color);

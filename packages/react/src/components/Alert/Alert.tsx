@@ -1,16 +1,20 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Color, DefaultProps } from '../../types';
+import type { SeverityColors } from '../../colors';
+import type { DefaultProps } from '../../types';
+import type { Merge } from '../../utilities';
 
-export type AlertProps = {
-  /**
-   * Sets color and icon.
-   * @default info
-   */
-  color?: Color;
-} & HTMLAttributes<HTMLDivElement> &
-  DefaultProps;
+export type AlertProps = Merge<
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
+  {
+    /**
+     * Sets color and icon.
+     * @default info
+     */
+    'data-color'?: SeverityColors;
+  }
+>;
 
 /**
  * Alerts are used to inform users about important information, warnings, errors, or success.
@@ -18,7 +22,7 @@ export type AlertProps = {
  * <Alert color='info'>Dette er en informasjonsmelding</Alert>
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { color = 'info', className, ...rest },
+  { 'data-color': color = 'info', className, ...rest },
   ref,
 ) {
   return (

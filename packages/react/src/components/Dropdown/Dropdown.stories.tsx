@@ -36,7 +36,9 @@ export default {
 export const Preview: StoryFn<typeof Dropdown> = (args) => {
   return (
     <Dropdown.TriggerContext>
-      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+      <Dropdown.Trigger data-color={args['data-color']}>
+        Dropdown
+      </Dropdown.Trigger>
       <Dropdown {...args}>
         <Dropdown.Heading>First heading</Dropdown.Heading>
         <Dropdown.List>
