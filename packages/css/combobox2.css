@@ -4,6 +4,43 @@
   gap: var(--ds-spacing-1);
   position: relative;
 
+  /* display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  border-radius: var(--ds-border-radius-default);
+  position: relative;*/
+
+  /* We hide the clear button when input is empty */
+  /* &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+    display: none;
+  }
+
+  &:has(button[type='reset']) input {
+    padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
+  }
+
+  & button[type='reset'] {
+    --dsc-button-size: var(--dsc-search-clear-size);
+
+    grid-area: 1 / 1;
+    justify-self: end;
+    margin-inline: var(--dsc-search-padding-inline);
+    padding: var(--dsc-search-clear-padding);
+    position: relative;
+    scale: 0.75;
+    z-index: 2;
+
+    &::before {
+      content: '';
+      height: var(--dsc-search-clear-size);
+      width: var(--dsc-search-clear-size);
+      mask: var(--dsc-search-clear-icon-url) center / contain no-repeat;
+      background: currentcolor;
+    }
+  } */
+
   /* Not using focus-within as this triggers both on keyboard and mouse focus */
   &:has(:is(option, u-option):focus-visible) input {
     @composes ds-focus--visible from './base/base.css';
