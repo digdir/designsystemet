@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Fieldset } from '../Fieldset';
 
@@ -13,69 +13,47 @@ export default {
 
 export const Preview: Story = {
   args: {
-    children: 'Switch',
+    'data-size': 'md',
+    label: 'Switch',
+    description: '',
     disabled: false,
     readOnly: false,
-    size: 'md',
-    position: 'left',
-    description: '',
+    position: 'start',
   },
 };
 
-export const Hovered: Story = {
-  ...Preview,
-  parameters: {
-    pseudo: {
-      hover: true,
-    },
-  },
-};
-
-export const Enabled: Story = {
+export const Checked: Story = {
   ...Preview,
   args: { ...Preview.args, checked: true },
 };
 
-export const EnabledHovered: Story = {
-  ...Hovered,
-  args: { ...Hovered.args, checked: true },
+export const Group: Story = {
+  render: ({ 'aria-label': a, 'aria-labelledby': b, ...args }) => (
+    <Fieldset>
+      <Fieldset.Legend>Skru av/på en eller flere innstillinger</Fieldset.Legend>
+      <Switch
+        label='Innstilling 1'
+        description='Beskrivelse av innstilling'
+        value='alt1'
+        checked
+        {...args}
+      />
+      <Switch label='Innstilling 2' value='alt2' {...args} />
+      <Switch label='Innstilling 3' value='alt3' {...args} />
+      <Switch
+        label='Innstilling 4'
+        value='alt4'
+        description='Du mangler rettigheter for denne instillingen'
+        readOnly
+        {...args}
+      />
+    </Fieldset>
+  ),
 };
 
-export const FullWidth: StoryFn<typeof Switch> = (args) => (
-  <Fieldset>
-    <Fieldset.Legend>Skru av/på en eller flere innstillinger</Fieldset.Legend>
-    <Switch
-      description='Beskrivelse av innstilling'
-      value='alt1'
-      checked
-      {...args}
-    >
-      Innstilling 1
-    </Switch>
-    <Switch value='alt2' {...args}>
-      Innstilling 2
-    </Switch>
-    <Switch
-      value='alt3'
-      description='Velg innstilling 2 for å aktivere'
-      disabled
-      {...args}
-    >
-      Innstilling 3
-    </Switch>
-    <Switch
-      value='alt4'
-      description='Du mangler rettigheter for denne instillingen'
-      readOnly
-      {...args}
-    >
-      Innstilling 4
-    </Switch>
-  </Fieldset>
-);
-
-export const FullWidthRight = FullWidth.bind({});
-
-FullWidthRight.args = {
-  position: 'right',
+export const GroupEnd: Story = {
+  ...Group,
+  args: {
+    position: 'end',
+  },
 };

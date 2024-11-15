@@ -1,6 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
 import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/switch.css?inline';
+import css from '@digdir/designsystemet-css/input.css?inline';
 import * as SwitchStories from './Switch.stories';
 
 <Meta of={SwitchStories} />
@@ -15,25 +15,23 @@ Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren k
 ## Slik bruker du `Switch`
 
 ```tsx
-import { Switch, Fieldset } from '@digdir/designsystemet-react';
+import { Switch } from '@digdir/designsystemet-react';
 
-<Fieldset legend='Profil instillinger'>
-  <Switch>Mørk modus</Switch>
-</Fieldset>;
+<Switch label="Mørk modus" value="dark" />
 ```
 
 ## Gruppering
 
 Bruker [Fieldset](/docs/komponenter-fieldset--docs) til gruppering.
 
-<Canvas of={SwitchStories.FullWidth} />
+<Canvas of={SwitchStories.Group} />
 
 ### Høyrejustert
 
-Bruk `position="right"` til å plassere `Switch` på høyre side av ledeteksten hvis
+Bruk `position="end"` til å plassere `Switch` på høyre side av ledeteksten hvis
 du trenger det.
 
-<Canvas of={SwitchStories.FullWidthRight} />
+<Canvas of={SwitchStories.GroupEnd} />
 
 ## Retningslinjer for `Switch`
 

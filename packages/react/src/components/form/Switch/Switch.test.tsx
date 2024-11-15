@@ -6,17 +6,13 @@ import { Switch } from './Switch';
 
 describe('Switch', () => {
   test('has correct value and label', () => {
-    render(<Switch value='test'>label</Switch>);
+    render(<Switch label='label' value='test' />);
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
   test('has correct description', () => {
-    render(
-      <Switch value='test' description='description'>
-        test
-      </Switch>,
-    );
+    render(<Switch label='test' value='test' description='description' />);
     expect(
       screen.getByRole('switch', { description: 'description' }),
     ).toBeDefined();
@@ -29,9 +25,12 @@ describe('Switch', () => {
     const value = 'test';
 
     render(
-      <Switch value={value} onChange={onChange} onClick={onClick}>
-        label
-      </Switch>,
+      <Switch
+        label='label'
+        value={value}
+        onChange={onChange}
+        onClick={onClick}
+      />,
     );
 
     const switch_ = screen.getByRole<HTMLInputElement>('switch');
@@ -51,9 +50,13 @@ describe('Switch', () => {
     const onClick = vi.fn();
 
     render(
-      <Switch value='test' disabled onClick={onClick} onChange={onChange}>
-        disabled switch_
-      </Switch>,
+      <Switch
+        label='disabled switch_'
+        value='test'
+        disabled
+        onClick={onClick}
+        onChange={onChange}
+      />,
     );
 
     const switch_ = screen.getByRole('switch');
