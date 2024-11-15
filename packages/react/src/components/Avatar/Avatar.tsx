@@ -14,7 +14,8 @@ export type AvatarProps = Merge<
      */
     'aria-label': string;
     /**
-     * The color of the avatar. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     * The color of the avatar.
+     * @default accent
      */
     'data-color'?: Color;
     /**

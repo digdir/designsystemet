@@ -14,7 +14,8 @@ export type LinkProps = Merge<
     /** Custom class name for the link. This will be appended to the design system class names. */
     className?: string;
     /**
-     * The color of the link. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     * The color of the link.
+     * @default accent
      */
     'data-color'?: Color;
     /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */

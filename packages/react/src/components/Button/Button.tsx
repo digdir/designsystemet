@@ -15,7 +15,8 @@ export type ButtonProps = Merge<
      * @default primary
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
-    /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+    /** Specify which color palette to use.
+     * @default accent
      */
     'data-color'?: Color;
     /** Toggle icon only styling, pass icon as children
