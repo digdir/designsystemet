@@ -14,6 +14,7 @@ import {
   useRole,
   useTransitionStyles,
 } from '@floating-ui/react';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type {
   HTMLAttributes,
@@ -21,16 +22,17 @@ import type {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { Fragment, cloneElement, forwardRef, useState } from 'react';
-
+import { Fragment, forwardRef, useState } from 'react';
 import type { PortalProps } from '../../types';
 
 export type TooltipProps = {
   /**
-   * The element that triggers the tooltip.
-   * @note Needs to be a single ReactElement and not: <Fragment/> | <></>
+   * The element or string that triggers the tooltip.
+   *
+   * @note If it is a string, it will be wrapped in a span.
+   * @note If it is an element, it needs to be able to receive a ref.
    */
-  children: ReactElement & RefAttributes<HTMLElement>;
+  children: (ReactElement & RefAttributes<HTMLElement>) | string;
   /** Content of the tooltip */
   content: string;
   /**
@@ -62,9 +64,14 @@ export type TooltipProps = {
  * <Tooltip content='This is a tooltip'>
  *  <button>Hover me</button>
  * </Tooltip>
+ *
+ * @example
+ * <Tooltip content='This is a tooltip'>
+ *  Hover me
+ * </Tooltip>
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
-  (
+  function Tooltip(
     {
       children,
       content,
@@ -78,7 +85,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
     const internalOpen = userOpen ?? isOpen;
 
@@ -125,25 +132,26 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs.setReference,
     ]);
 
-    if (
-      !children ||
-      children?.type === Fragment ||
-      (children as unknown) === Fragment
-    ) {
+    /* If children is only a string, make a span */
+    const ChildContainer = typeof children === 'string' ? 'span' : Slot;
+
+    /* Make sure it is valid */
+    if (typeof children !== 'string' && children.type === Fragment) {
       console.error(
-        '<Tooltip> children needs to be a single ReactElement and not: <Fragment/> | <></>',
+        '<Tooltip> children needs to be a single ReactElement that can receive a ref and not: <Fragment/> | <></>',
       );
       return null;
     }
 
     return (
       <>
-        {cloneElement(
-          children,
-          getReferenceProps({
+        <ChildContainer
+          {...getReferenceProps({
             ref: childMergedRef,
-          }),
-        )}
+          })}
+        >
+          {children}
+        </ChildContainer>
         {internalOpen && (
           <Container>
             <div
@@ -164,8 +172,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     );
   },
 );
-
-Tooltip.displayName = 'Tooltip';
 
 const arrowPseudoElement = {
   name: 'ArrowPseudoElement',

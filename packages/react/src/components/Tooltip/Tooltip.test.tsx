@@ -81,7 +81,7 @@ describe('Tooltip', () => {
     expect(tooltipTrigger).toHaveAttribute('aria-describedby');
   });
 
-  it('delay', async () => {
+  it('should have delay', async () => {
     const { user } = await render({ delay: 300 });
 
     await act(async () => await user.hover(screen.getByRole('button')));
@@ -90,5 +90,12 @@ describe('Tooltip', () => {
     await vi.waitFor(() => {
       expect(screen.queryByRole('tooltip')).toBeVisible();
     });
+  });
+
+  it('should render span when children is a string', async () => {
+    await render({ children: 'My string child' });
+    const tooltipTrigger = screen.getByText('My string child');
+
+    expect(tooltipTrigger.tagName).toBe('SPAN');
   });
 });
