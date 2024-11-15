@@ -8,7 +8,11 @@ import {
 import cl from 'clsx/lite';
 import classes from './ContrastChart.module.css';
 
-export const ContrastChart = () => {
+type ContrastChartProps = {
+  type?: 'light' | 'dark';
+};
+
+export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
   const theme = generateThemeForColor('#0062BA');
   const includedColorIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
   const reducedLight = theme.light.filter((color) =>
@@ -73,44 +77,25 @@ export const ContrastChart = () => {
     );
   };
 
+  const reducedColors = type === 'light' ? reducedLight : reducedDark;
+  const themeColors = type === 'light' ? theme.light : theme.dark;
+
   return (
-    <div>
+    <div data-ds-color-mode={type}>
       <table className={classes.table}>
         <tr>
-          <th></th>
-          {reducedLight.map((color, index) => (
-            <ThCell key={index} color={reducedLight[index]} />
+          <th />
+          {reducedColors.map((color, index) => (
+            <ThCell key={index} color={reducedColors[index]} />
           ))}
         </tr>
 
         {includedColorIndexes.map((number, index) => (
           <tr key={index}>
-            <ThCell color={reducedLight[index]} />
-            {reducedLight.map((color, index) => (
+            <ThCell color={reducedColors[index]} />
+            {reducedColors.map((color, index) => (
               <td key={index} className={classes.td}>
-                <TdCell color1={color} color2={theme.light[number - 1]} />
-              </td>
-            ))}
-          </tr>
-        ))}
-      </table>
-      <table
-        className={cl(classes.table, classes.tableDark)}
-        data-ds-color-mode='dark'
-      >
-        <tr>
-          <th></th>
-          {reducedDark.map((color, index) => (
-            <ThCell key={index} color={reducedDark[index]} />
-          ))}
-        </tr>
-
-        {includedColorIndexes.map((number, index) => (
-          <tr key={index}>
-            <ThCell color={reducedDark[index]} />
-            {reducedDark.map((color, index) => (
-              <td key={index} className={classes.td}>
-                <TdCell color1={color} color2={theme.dark[number - 1]} />
+                <TdCell color1={color} color2={themeColors[number - 1]} />
               </td>
             ))}
           </tr>

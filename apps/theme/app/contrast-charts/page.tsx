@@ -10,6 +10,7 @@ export default function ContrastCharts() {
         <Container>
           <div>
             <ContrastChart />
+            <ContrastChart type='dark' />
           </div>
         </Container>
       </main>
