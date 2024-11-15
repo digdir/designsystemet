@@ -10,12 +10,12 @@ import classes from './ContrastChart.module.css';
 
 export const ContrastChart = () => {
   const theme = generateThemeForColor('#0062BA');
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
+  const includedColorIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
   const reducedLight = theme.light.filter((color) =>
-    [1, 2, 3, 4, 5, 6, 7, 8, 12, 13].includes(color.number),
+    includedColorIndexes.includes(color.number),
   );
   const reducedDark = theme.dark.filter((color) =>
-    [1, 2, 3, 4, 5, 6, 7, 8, 12, 13].includes(color.number),
+    includedColorIndexes.includes(color.number),
   );
 
   const Tag = ({
@@ -36,7 +36,7 @@ export const ContrastChart = () => {
     return <div className={cl(classes.tag, classes[type])}>{type}</div>;
   };
 
-  const Cell = ({
+  const TdCell = ({
     color1,
     color2,
   }: { color1: ColorInfo; color2: ColorInfo }) => {
@@ -83,12 +83,12 @@ export const ContrastChart = () => {
           ))}
         </tr>
 
-        {numbers.map((number, index) => (
+        {includedColorIndexes.map((number, index) => (
           <tr key={index}>
             <ThCell color={reducedLight[index]} />
             {reducedLight.map((color, index) => (
               <td key={index} className={classes.td}>
-                <Cell color1={color} color2={theme.light[number - 1]} />
+                <TdCell color1={color} color2={theme.light[number - 1]} />
               </td>
             ))}
           </tr>
@@ -105,12 +105,12 @@ export const ContrastChart = () => {
           ))}
         </tr>
 
-        {numbers.map((number, index) => (
+        {includedColorIndexes.map((number, index) => (
           <tr key={index}>
             <ThCell color={reducedDark[index]} />
             {reducedDark.map((color, index) => (
               <td key={index} className={classes.td}>
-                <Cell color1={color} color2={theme.dark[number - 1]} />
+                <TdCell color1={color} color2={theme.dark[number - 1]} />
               </td>
             ))}
           </tr>
