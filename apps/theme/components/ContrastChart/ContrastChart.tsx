@@ -59,7 +59,8 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
         <div className={classes.meta}>
           <Tag color1={color1} color2={color2} />
           <div className={classes.contrast}>
-            {getContrastFromHex(color1.hex, color2.hex).toFixed(2)}
+            {Math.floor(getContrastFromHex(color1.hex, color2.hex) * 10) / 10}
+            :1
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
   const themeColors = type === 'light' ? theme.light : theme.dark;
 
   return (
-    <div data-ds-color-mode={type}>
+    <div data-ds-color-mode={type} className={classes.contrastChart}>
       <table className={classes.table}>
         <tr>
           <th />

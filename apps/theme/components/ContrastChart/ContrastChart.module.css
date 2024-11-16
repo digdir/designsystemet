@@ -1,5 +1,5 @@
 .color {
-  height: 46px;
+  height: 36px;
   display: block;
   flex: 1 1;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
@@ -8,7 +8,7 @@
 
 .colors {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .table {
@@ -38,6 +38,7 @@
 
 .AA {
   background-color: green;
+  margin-left: 4px;
 }
 
 .AAA {
@@ -53,13 +54,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  margin-bottom: 12px;
 }
 
 .contrast {
   font-size: 16px;
   font-weight: 500;
+  width: 48px;
+  text-align: center;
 }
 
 .table,
@@ -71,15 +72,14 @@
 }
 
 .th {
-  height: 140px;
+  height: 90px;
   width: 140px;
-  padding: 20px;
+  padding: 16px;
 }
 
 .td {
-  height: 120px;
-  width: 120px;
-
+  height: 90px;
+  width: 140px;
   vertical-align: top;
 }
 
@@ -89,11 +89,15 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   font-weight: 500;
 }
 
 .headerHex {
   color: var(--ds-color-neutral-text-subtle);
   font-weight: 400;
+}
+
+.contrastChart {
+  background-color: transparent;
 }
