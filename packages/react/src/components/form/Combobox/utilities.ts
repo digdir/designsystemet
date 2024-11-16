@@ -50,8 +50,6 @@ export const setReactInputValue = (
   }
 
   // Trigger both 'change' and of 'input' as both would trigger if a user cleared the input
-  input.dispatchEvent(
-    new Event('input', { bubbles: true, composed: true }),
-  );
+  input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
   input.dispatchEvent(new Event('change', { bubbles: true }));
 };

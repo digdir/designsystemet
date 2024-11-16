@@ -29,4 +29,12 @@ export type { ComboboxEmptyProps } from './ComboboxEmpty';
 export type { ComboboxInputProps } from './ComboboxInput';
 export type { ComboboxListProps } from './ComboboxList';
 export type { ComboboxOptionProps } from './ComboboxOption';
-export { Combobox, ComboboxClear, ComboboxChip, ComboboxEmpty, ComboboxInput, ComboboxList, ComboboxOption };
+export {
+  Combobox,
+  ComboboxClear,
+  ComboboxChip,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxOption,
+};
