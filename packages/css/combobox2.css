@@ -41,6 +41,11 @@
     border-left: var(--ds-spacing-1) solid transparent;
     outline: none;
 
+    /* TMP check to demonstrate selector */
+    &[aria-selected='true']::before {
+      content: '✔ ';
+    }
+
     @media (hover: hover) and (pointer: fine) {
       &:is(u-option):hover {
         border-left-color: var(--ds-color-accent-base-default);

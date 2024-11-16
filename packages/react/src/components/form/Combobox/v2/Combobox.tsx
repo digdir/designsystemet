@@ -16,9 +16,6 @@ import type { DefaultProps } from '../../../../types';
 
 type OnChangeMultiple = (values: string[]) => void;
 type OnChangeSingle = (value: string) => void;
-type MultipleProps = Omit<HTMLAttributes<UHTMLTagsElement>, 'onChange'>;
-type SingleProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
-
 type ComboboxContextType = {
   listId?: string;
   setListId?: (id: string) => void;
@@ -33,16 +30,17 @@ export type ComboboxProps = {
    * @default false
    */
   multiple?: boolean;
-} & DefaultProps &
+} & Omit<HTMLAttributes<HTMLElement>, 'onChange'> &
+  DefaultProps &
   (
-    | ({ multiple: true; onChange: OnChangeMultiple } & MultipleProps)
-    | ({ multiple?: false | never; onChange: OnChangeSingle } & SingleProps)
+    | { multiple: true; onChange: OnChangeMultiple }
+    | { multiple?: false | never; onChange: OnChangeSingle }
   );
 
 export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
   function Combobox({ className, multiple, onChange, ...rest }, ref) {
     const [listId, setListId] = useState(useId());
-    const innerRef = useRef<UHTMLTagsElement | HTMLDivElement>(null);
+    const innerRef = useRef<HTMLElement>(null);
     const mergedRefs = useMergeRefs([innerRef, ref]);
 
     // Handle onChange
@@ -79,13 +77,13 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
           <u-tags
             class={cl('ds-combobox2', className)} // Using "class" since React does not translate className on custom elements
             ref={mergedRefs}
-            {...(rest as MultipleProps)}
+            {...rest}
           />
         ) : (
           <div
             className={cl('ds-combobox2', className)}
             ref={mergedRefs}
-            {...(rest as SingleProps)}
+            {...rest}
           />
         )}
       </ComboboxContext.Provider>
