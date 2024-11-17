@@ -42,7 +42,7 @@
     "@tanstack/react-virtual": "^3.10.7",
     "@u-elements/u-datalist": "^0.0.9",
     "@u-elements/u-details": "^0.1.0",
-    "@u-elements/u-tags": "^0.0.1",
+    "@u-elements/u-tags": "^0.0.2",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

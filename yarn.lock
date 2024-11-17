@@ -1721,7 +1721,7 @@ __metadata:
     "@testing-library/user-event": "npm:^14.5.2"
     "@u-elements/u-datalist": "npm:^0.0.9"
     "@u-elements/u-details": "npm:^0.1.0"
-    "@u-elements/u-tags": "npm:^0.0.1"
+    "@u-elements/u-tags": "npm:^0.0.2"
     clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
     jsdom: "npm:^24.1.1"
@@ -5531,10 +5531,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@u-elements/u-tags@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@u-elements/u-tags@npm:0.0.1"
-  checksum: 10/c02b2d151ba76847db4092650a411fc11d0960a4c551356d1ae63874e941f9940c669b95cf828b53671b08f072c17f2ee66e78a9d831d0414f60e8ad141d3b97
+"@u-elements/u-tags@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "@u-elements/u-tags@npm:0.0.2"
+  checksum: 10/f0cb9b98a27cc4cd244ea1fa100da82e1a4f09fb11b181b8f79a680cb1400f63c3c8eed5ebc4c641a57c58170a0041fcd53e92fe63549ad4403c200f80ed1068
   languageName: node
   linkType: hard
 

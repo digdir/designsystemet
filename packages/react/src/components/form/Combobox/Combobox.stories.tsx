@@ -649,9 +649,9 @@ export const Combobx2: StoryFn<typeof Combobox2> = ({
   return (
     <>
       <Field>
-        <Label htmlFor='my-combobox'>Choose flavor of ice cream</Label>
-        <Combobox2 id='my-combobox' onChange={setValue} {...args}>
-          <Combobox2.Input value={value} />
+        <Label htmlFor='my-combobox-input'>Choose flavor of ice cream</Label>
+        <Combobox2 onChange={setValue} {...args}>
+          <Combobox2.Input value={value} id='my-combobox-input' />
           <Combobox2.Clear />
           <Combobox2.List>
             <Combobox2.Empty>Fant ingen treff</Combobox2.Empty>
@@ -683,12 +683,12 @@ export const Combobx2Multiple: StoryFn<typeof Combobox2> = (args) => {
   return (
     <>
       <Field>
-        <Label htmlFor='my-combobox'>Choose flavor of ice cream</Label>
-        <Combobox2 id='my-combobox' {...args} multiple onChange={setValues}>
+        <Label htmlFor='my-combobox-input'>Choose flavor of ice cream</Label>
+        <Combobox2 {...args} multiple onChange={setValues}>
           {values.map((value, key) => (
             <Combobox2.Chip key={`${key}-${value}`}>{value}</Combobox2.Chip>
           ))}
-          <Combobox2.Input />
+          <Combobox2.Input id='my-combobox-input' />
           <Combobox2.Clear />
           <Combobox2.List>
             <Combobox2.Empty>Fant ingen treff</Combobox2.Empty>
