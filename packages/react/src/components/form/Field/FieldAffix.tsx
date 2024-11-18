@@ -15,7 +15,14 @@ export const FieldAffixes = forwardRef<HTMLDivElement, FieldAffixesProps>(
 export type FieldAffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>;
 
 export const FieldAffix = forwardRef<HTMLSpanElement, FieldAffixProps>(
-  function FieldAffix(rest, ref) {
-    return <span aria-hidden='true' ref={ref} {...rest} />;
+  function FieldAffix({ className, ...rest }, ref) {
+    return (
+      <span
+        className={cl('ds-field-affix', className)}
+        aria-hidden='true'
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );

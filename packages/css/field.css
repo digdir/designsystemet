@@ -86,7 +86,7 @@
     width: fit-content;
   }
 
-  & > :not(.ds-input) {
+  & .ds-field-affix {
     align-items: center;
     border: var(--dsc-field-affix-border);
     display: flex;
@@ -106,7 +106,7 @@
     }
   }
 
-  & > .ds-input {
+  & .ds-input {
     border: var(--dsc-field-affix-border);
     flex: 1 1 auto;
 
