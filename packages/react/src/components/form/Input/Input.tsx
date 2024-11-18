@@ -1,9 +1,9 @@
 import cl from 'clsx/lite';
-import type { MergeRight } from 'packages/react/src/utilities';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { Color } from '../../../colors';
 import type { DefaultProps } from '../../../types';
+import type { MergeRight } from '../../../utilities';
 
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 

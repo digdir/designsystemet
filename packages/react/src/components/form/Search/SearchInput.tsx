@@ -1,5 +1,5 @@
-import type { DefaultProps } from 'packages/react/src/types';
 import { forwardRef } from 'react';
+import type { DefaultProps } from '../../../types';
 import { Input } from '../Input';
 
 export type SearchInputProps = DefaultProps &

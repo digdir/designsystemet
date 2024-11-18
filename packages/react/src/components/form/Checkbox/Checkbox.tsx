@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import type { Color } from 'packages/react/src/colors';
-import type { DefaultProps } from 'packages/react/src/types';
-import type { MergeRight } from 'packages/react/src/utilities';
+import type { Color } from '../../../colors';
+import type { DefaultProps } from '../../../types';
+import type { MergeRight } from '../../../utilities';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';

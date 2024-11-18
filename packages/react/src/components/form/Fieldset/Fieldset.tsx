@@ -2,8 +2,8 @@ import cl from 'clsx/lite';
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import type { MergeRight } from 'packages/react/src/utilities';
 import type { DefaultProps } from '../../../types';
+import type { MergeRight } from '../../../utilities';
 
 export type FieldsetProps = MergeRight<
   DefaultProps & FieldsetHTMLAttributes<HTMLFieldSetElement>,
