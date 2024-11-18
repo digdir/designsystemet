@@ -79,7 +79,7 @@ export const WithImage: Story = () => (
 );
 
 export const InDropdown: Story = () => (
-  <Dropdown.Context>
+  <Dropdown.TriggerContext>
     <Dropdown.Trigger variant='tertiary'>
       <Avatar aria-label='Ola Nordmann' data-size='sm'>
         ON
@@ -108,7 +108,7 @@ export const InDropdown: Story = () => (
         </Dropdown.Item>
       </Dropdown.List>
     </Dropdown>
-  </Dropdown.Context>
+  </Dropdown.TriggerContext>
 );
 InDropdown.parameters = {
   layout: 'fullscreen',

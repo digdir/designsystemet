@@ -1,21 +1,21 @@
 import { Popover as PopoverParent } from './Popover';
-import { PopoverContext } from './PopoverContext';
 import { PopoverTrigger } from './PopoverTrigger';
+import { PopoverTriggerContext } from './PopoverTriggerContext';
 
 type PopoverComponent = typeof PopoverParent & {
-  Context: typeof PopoverContext;
+  TriggerContext: typeof PopoverTriggerContext;
   Trigger: typeof PopoverTrigger;
 };
 
 const Popover = PopoverParent as PopoverComponent;
 
-Popover.Context = PopoverContext;
+Popover.TriggerContext = PopoverTriggerContext;
 Popover.Trigger = PopoverTrigger;
 
-Popover.Context.displayName = 'Popover.Context';
+Popover.TriggerContext.displayName = 'Popover.TriggerContext';
 Popover.Trigger.displayName = 'Popover.Trigger';
 
 export type { PopoverProps } from './Popover';
-export type { PopoverContextProps } from './PopoverContext';
+export type { PopoverTriggerContextProps } from './PopoverTriggerContext';
 export type { PopoverTriggerProps } from './PopoverTrigger';
-export { Popover, PopoverContext, PopoverTrigger };
+export { Popover, PopoverTriggerContext, PopoverTrigger };

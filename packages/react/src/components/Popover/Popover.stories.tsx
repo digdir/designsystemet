@@ -30,10 +30,10 @@ export default {
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
   return (
-    <Popover.Context>
+    <Popover.TriggerContext>
       <Popover.Trigger>My trigger!</Popover.Trigger>
       <Popover {...args}>popover content</Popover>
-    </Popover.Context>
+    </Popover.TriggerContext>
   );
 };
 
@@ -70,13 +70,13 @@ export const Variants: StoryFn<typeof Popover> = () => {
           width: '100%',
         }}
       >
-        <Popover.Context>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover open={open} placement='top' autoPlacement={false}>
             default
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
@@ -86,8 +86,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
           >
             danger
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
@@ -97,8 +97,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
           >
             info
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
@@ -108,7 +108,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
           >
             warning
           </Popover>
-        </Popover.Context>
+        </Popover.TriggerContext>
       </div>
     </div>
   );
@@ -124,7 +124,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Popover.Context>
+    <Popover.TriggerContext>
       <Popover.Trigger onClick={() => setOpen(!open)}>
         My trigger
       </Popover.Trigger>
@@ -139,7 +139,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
           Slett
         </Button>
       </Popover>
-    </Popover.Context>
+    </Popover.TriggerContext>
   );
 };
 Controlled.parameters = {

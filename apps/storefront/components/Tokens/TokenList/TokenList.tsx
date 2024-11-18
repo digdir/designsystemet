@@ -220,7 +220,7 @@ const TokenList = ({
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
           {showModeSwitcher && (
-            <Dropdown.Context>
+            <Dropdown.TriggerContext>
               <Dropdown.Trigger variant='secondary'>
                 Mode: {capitalizeString(mode)}
               </Dropdown.Trigger>
@@ -238,7 +238,7 @@ const TokenList = ({
                   </Dropdown.Item>
                 </Dropdown.List>
               </Dropdown>
-            </Dropdown.Context>
+            </Dropdown.TriggerContext>
           )}
         </div>
       )}

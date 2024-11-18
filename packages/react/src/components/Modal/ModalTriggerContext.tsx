@@ -5,12 +5,12 @@ export const Context = createContext<RefObject<HTMLDialogElement>>({
   current: null,
 });
 
-export type ModalContextProps = { children: ReactNode };
+export type ModalTriggerContextProps = { children: ReactNode };
 
-export const ModalContext = ({ children }: ModalContextProps) => {
+export const ModalTriggerContext = ({ children }: ModalTriggerContextProps) => {
   const contextRef = useRef<HTMLDialogElement>(null);
 
   return <Context.Provider value={contextRef}>{children}</Context.Provider>;
 };
 
-ModalContext.displayName = 'ModalContext';
+ModalTriggerContext.displayName = 'ModalTriggerContext';

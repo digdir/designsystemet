@@ -12,10 +12,10 @@ const OPEN_MODAL = 'Open Modal';
 const Comp = (args: Partial<ModalProps>) => {
   return (
     <>
-      <Modal.Context>
+      <Modal.TriggerContext>
         <Modal.Trigger>{OPEN_MODAL}</Modal.Trigger>
         <Modal {...args} />
-      </Modal.Context>
+      </Modal.TriggerContext>
     </>
   );
 };
