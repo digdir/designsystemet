@@ -1,0 +1,47 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  font-size: 16px;
+}
+
+.itemName {
+  font-weight: 500;
+}
+
+.itemName {
+  width: 85px;
+}
+
+.outer {
+  background-color: white;
+}
+
+.inner {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
+.card {
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 20px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 16px;
+}

@@ -10,3 +10,5 @@ export { ColorInput } from './ColorInput/ColorInput';
 export { ColorPreview } from './ColorPreview/ColorPreview';
 export { ColorPane } from './Sidebar/ColorPane/ColorPane';
 export { ColorTokens } from './ColorTokens/ColorTokens';
+export { ColorContrasts } from './ColorContrasts/ColorContrasts';
+export { BorderRadius } from './BorderRadius/BorderRadius';

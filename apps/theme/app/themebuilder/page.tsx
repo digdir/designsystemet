@@ -5,7 +5,14 @@ import { Heading, Link } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { useEffect } from 'react';
-import { ColorPreview, ColorTokens, Colors, Sidebar } from '../../components';
+import {
+  BorderRadius,
+  ColorContrasts,
+  ColorPreview,
+  ColorTokens,
+  Colors,
+  Sidebar,
+} from '../../components';
 import { useThemeStore } from '../../store';
 import classes from './page.module.css';
 
@@ -82,9 +89,15 @@ export default function Home() {
           <div className={classes.panel}>
             <ColorTokens />
           </div>
+          <div className={classes.panel}>
+            <ColorContrasts />
+          </div>
           <Heading className={classes.title} data-size='sm'>
             Border radius
           </Heading>
+          <div className={classes.panel}>
+            <BorderRadius />
+          </div>
           <div className={classes.panel}>f</div>
         </div>
         <div className={classes.sideBarContainer}>
