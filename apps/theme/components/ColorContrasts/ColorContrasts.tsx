@@ -27,8 +27,8 @@ export const ColorContrasts = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedBaseColor, setSelectedBaseColor] = useState('');
 
-  const indexBaseOne = [9, 10, 11];
-  const indexBaseTwo = [14, 15];
+  const indexBaseOne = [0, 1, 2, 3, 14, 15];
+  const indexBaseTwo = [9, 10, 11];
   const [reducedBaseLight, setReducedBaseLight] = useState({
     themeRange1: theme.light.filter((color) =>
       indexBaseOne.includes(color.number),
@@ -127,49 +127,54 @@ export const ColorContrasts = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'> Se kontraster</Heading>
+        <Heading data-size='xs'>Kontraster mellom farger</Heading>
         <Paragraph data-size='sm'>
-          Her ser du kontrastene mellom de ulike stegene i fargeskalaene dine.
+          Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
+          om fargene oppfyller WCAG-kravene.
         </Paragraph>
-        <Heading data-size='2xs' className={classes.subHeading}>
-          Tagger og betydning
-        </Heading>
-        <div className={classes.tagGroup}>
-          <div className={cl(classes.tag, classes.AAA)}>AAA</div>
-          <Paragraph data-size='sm'>
-            Tekst og bakgrunn må ha minst 7:1 kontrast for å dekke WCAG AAA
-            kravet.
-          </Paragraph>
-        </div>
-        <div className={classes.tagGroup}>
-          <div className={cl(classes.tag, classes.AA)}>AA</div>
-          <Paragraph data-size='sm'>
-            Tekst og bakgrunn må ha minst 4,5:1 kontrast for å dekke WCAG AA
-            kravet.
-          </Paragraph>
-        </div>
-        <div className={classes.tagGroup}>
-          <div className={cl(classes.tag, classes.AA18)}>AA18</div>
-          <Paragraph data-size='sm'>
-            Tekst og bakgrunn må ha minst 3:1 kontrast og ha en font på 18px
-            eller mer for å dekke WCAG AA kravet.
-          </Paragraph>
-        </div>
-        <div className={classes.tagGroup}>
-          <div className={cl(classes.tag, classes.FAIL)}>FAIL</div>
-          <Paragraph data-size='sm'>
-            Dekker ingen kontrastkrav i WCAG og må brukes kun dekorativt.
-          </Paragraph>
+
+        <div className={classes.tagGroups}>
+          <div className={classes.tagGroup}>
+            <div className={cl(classes.tag, classes.AAA)}>AAA</div>
+            <Paragraph data-size='sm'>
+              Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
+              WCAG AAA-kravet.
+            </Paragraph>
+          </div>
+          <div className={classes.tagGroup}>
+            <div className={cl(classes.tag, classes.AA)}>AA</div>
+            <Paragraph data-size='sm'>
+              Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å oppfylle
+              WCAG AA-kravet.
+            </Paragraph>
+          </div>
+          <div className={classes.tagGroup}>
+            <div className={cl(classes.tag, classes.AA18)}>AA18</div>
+            <Paragraph data-size='sm'>
+              Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
+              skriftstørrelse på 18 px eller større for å oppfylle WCAG
+              AA-kravet.
+            </Paragraph>
+          </div>
+          <div className={classes.tagGroup}>
+            <div className={cl(classes.tag, classes.FAIL)}>FAIL</div>
+            <Paragraph data-size='sm'>
+              Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
+              dekorative formål.
+            </Paragraph>
+          </div>
         </div>
       </div>
       <div className='panelRight'>
-        <Heading data-size='xs'>
+        <Heading data-size='2xs'>
           Text og Border mot Background og Surface
         </Heading>
-        <Paragraph data-size='sm'>
-          Når du bytter mellom fargeskalaene dine så vil du se at kontrastene
-          mellom fargene i seksjonen under er nesten helt like. Dette betyr at
-          du trenger bare lære deg disse reglene en gang.
+        <Paragraph data-size='sm' className={classes.desc}>
+          Når du bytter mellom fargeskalaene, vil du se at kontrastene mellom
+          fargene i seksjonen nedenfor er nesten identiske. Dette gjør at du kun
+          trenger å vurdere kontrastene for én fargeskala for å forstå hvordan
+          alle fungerer. Siden kontrastene er konsistente, kan du også kombinere
+          ulike farger på tvers av skalaene.
         </Paragraph>
         <Field className={classes.fieldGroup}>
           <Select
@@ -204,8 +209,15 @@ export const ColorContrasts = () => {
             </tr>
           ))}
         </table>
-        <Heading data-size='xs'>Base fargene</Heading>
-        <Paragraph data-size='sm'>Base fargene er litt spesielle</Paragraph>
+        <Heading data-size='2xs'>Base fargene</Heading>
+        <Paragraph data-size='sm' className={classes.desc}>
+          Fargene som blir valgt i verktøyet får tokenet Base Default i hver
+          fargeskala. Dette betyr at det er viktig å velge en farge som har over
+          3:1 kontrast mot overflatefarger om den skal brukes som en viktig,
+          meningsbærende farge. Verktøyet lager også to kontrastfarger som trygt
+          kan brukes oppå base fargene. Disse kontrastfargene blir enten lyse
+          eller mørke avhengig av base fargen.
+        </Paragraph>
         <Field className={classes.fieldGroup}>
           <Select
             data-size='sm'

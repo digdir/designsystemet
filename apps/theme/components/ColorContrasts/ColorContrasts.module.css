@@ -28,9 +28,20 @@
 .tagGroup {
   display: inline-flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   align-items: flex-start;
-  margin-top: 8px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-left: -24px;
+  width: calc(100% + 48px);
+  padding: 20px 24px;
+}
+
+.tagGroups {
+  margin-top: 12px;
+}
+
+.tagGroup:last-child {
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .tagGroup .tag {
@@ -127,4 +138,8 @@
 
 .select {
   width: 25%;
+}
+
+.desc {
+  width: 90%;
 }

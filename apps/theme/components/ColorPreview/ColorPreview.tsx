@@ -142,8 +142,13 @@ export const ColorPreview = () => {
       <div className='panelLeft'>
         <Heading data-size='xs'>Se fargene dine i bruk</Heading>
         <Paragraph data-size='sm'>
-          TODO: Litt dokumentasjon om fargesystemet, kontraster og bruk av
-          farger
+          Hver farge som blir valgt med verktøyet får sitt eget kort i seksjonen
+          til høyre slik at du kan se hvordan fargene harmonerer sammen.
+        </Paragraph>
+        <Paragraph data-size='sm'>
+          Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
+          avhengig av om den valgte fargen er lys eller mørk for å oppnå best
+          mulig kontrast.
         </Paragraph>
         <div className='panelBottom'>
           <div className={classes.label}>Visning:</div>
