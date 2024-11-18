@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./tsc-build",
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "types": [
+      "./declarations.d.ts",
+      "../../apps/storybook/story-utils/type-extensions.d.ts"
+    ]
+  },
+  "include": ["stories", "src/**/*.stories.ts*"],
+  "references": [{ "path": "tsconfig.lib.json" }]
+}
