@@ -1,7 +1,7 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
 import {
+  type HTMLAttributes,
   createContext,
   forwardRef,
   useEffect,
@@ -12,10 +12,9 @@ import {
 
 import '@u-elements/u-tags';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
-import type { DefaultProps } from '../../../../types';
+import type { DefaultProps } from 'packages/react/src/types';
 
-type OnChangeMultiple = (values: string[]) => void;
-type OnChangeSingle = (value: string) => void;
+/* I think we can always send a string array */
 type ComboboxContextType = {
   listId?: string;
   setListId?: (id: string) => void;
@@ -24,22 +23,19 @@ type ComboboxContextType = {
 export const ComboboxContext = createContext<ComboboxContextType>({});
 
 export type ComboboxProps = {
-  onChange: OnChangeSingle | OnChangeMultiple;
+  onChange: (values: string[]) => void;
   /**
    * Multiple options can be selected
    * @default false
    */
   multiple?: boolean;
 } & Omit<HTMLAttributes<HTMLElement>, 'onChange'> &
-  DefaultProps &
-  (
-    | { multiple: true; onChange: OnChangeMultiple }
-    | { multiple?: false | never; onChange: OnChangeSingle }
-  );
+  DefaultProps;
 
 export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
   function Combobox({ className, multiple, onChange, ...rest }, ref) {
-    const [listId, setListId] = useState(useId());
+    const randListId = useId();
+    const [listId, setListId] = useState(randListId);
     const innerRef = useRef<HTMLElement>(null);
     const mergedRefs = useMergeRefs([innerRef, ref]);
 
@@ -47,8 +43,9 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
     useEffect(() => {
       if (!multiple) {
         const div = innerRef.current as HTMLDivElement | null;
+        /* Since we have a context, why not use `ref` for the input as well? */
         const handleChange = () =>
-          onChange?.(div?.querySelector('input')?.value || '');
+          onChange?.([div?.querySelector('input')?.value || '']);
 
         div?.addEventListener('input', handleChange);
         return () => div?.removeEventListener('input', handleChange);

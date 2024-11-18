@@ -639,19 +639,28 @@ WithNumberValues.args = {
   label: 'Hvor går reisen?',
 };
 
+const initialValue = 'Hei';
+
 export const Combobx2: StoryFn<typeof Combobox2> = ({
   onChange,
   multiple,
   ...args
 }) => {
-  const [value, setValue] = useState('Hei');
+  const [value, setValue] = useState([initialValue]);
+  const [inputValue, setInputValue] = useState(initialValue);
 
   return (
     <>
       <Field>
         <Label htmlFor='my-combobox-input'>Choose flavor of ice cream</Label>
-        <Combobox2 onChange={setValue} {...args}>
-          <Combobox2.Input value={value} id='my-combobox-input' />
+        {/* Need to be able to set `value`, so it can be controlled like any other component */}
+        <Combobox2 onChange={setValue} /* value={value} */ {...args}>
+          {/* This does not work */}
+          <Combobox2.Input
+            defaultValue={initialValue}
+            value={inputValue}
+            id='my-combobox-input'
+          />
           <Combobox2.Clear />
           <Combobox2.List>
             <Combobox2.Empty>Fant ingen treff</Combobox2.Empty>
@@ -672,7 +681,7 @@ export const Combobx2: StoryFn<typeof Combobox2> = ({
       <br />
       <Divider />
       <br />
-      <Button onClick={() => setValue('Mango')}>Velg Mango</Button>
+      <Button onClick={() => setInputValue('Mango')}>Velg Mango</Button>
     </>
   );
 };

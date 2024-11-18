@@ -31,6 +31,7 @@ export const ComboboxClear = forwardRef<HTMLButtonElement, ComboboxClearProps>(
         throw new Error('Input is not an input element');
 
       event.preventDefault();
+      console.log('input', input);
       setReactInputValue(input, '');
       input.focus();
       onClick?.(event);
