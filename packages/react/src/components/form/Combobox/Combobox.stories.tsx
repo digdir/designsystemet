@@ -649,6 +649,8 @@ export const Combobx2: StoryFn<typeof Combobox2> = ({
   const [value, setValue] = useState([initialValue]);
   const [inputValue, setInputValue] = useState(initialValue);
 
+  console.log(inputValue);
+
   return (
     <>
       <Field>
@@ -657,9 +659,11 @@ export const Combobx2: StoryFn<typeof Combobox2> = ({
         <Combobox2 onChange={setValue} /* value={value} */ {...args}>
           {/* This does not work */}
           <Combobox2.Input
-            defaultValue={initialValue}
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => {
+              console.log('typing', e.target.value);
+              setInputValue(e.target.value);
+            }}
             id='my-combobox-input'
           />
           <Combobox2.Clear />

@@ -47,8 +47,7 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
       if (!multiple) {
         const div = innerRef.current as HTMLDivElement | null;
         /* Since we have a context, why not use `ref` for the input as well? */
-        const handleChange = () =>
-          onChange?.([div?.querySelector('input')?.value || '']);
+        const handleChange = () => onChange?.([inputRef.current?.value || '']);
 
         div?.addEventListener('input', handleChange);
         return () => div?.removeEventListener('input', handleChange);
@@ -70,8 +69,6 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
       utags?.addEventListener('tags', handleTags);
       return () => utags?.removeEventListener('tags', handleTags);
     }, [multiple]);
-
-    console.log(inputRef);
 
     return (
       <ComboboxContext.Provider value={{ listId, setListId, inputRef }}>
