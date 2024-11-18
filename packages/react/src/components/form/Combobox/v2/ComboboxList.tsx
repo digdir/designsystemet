@@ -3,6 +3,7 @@ import { forwardRef, useContext, useEffect } from 'react';
 import '@u-elements/u-datalist';
 
 import type { DefaultProps } from '../../../../types';
+import { Popover } from '../../../Popover';
 import { ComboboxContext } from './Combobox';
 
 export type ComboboxListProps = HTMLAttributes<HTMLDataListElement> &
@@ -17,6 +18,10 @@ export const ComboboxList = forwardRef<HTMLDataListElement, ComboboxListProps>(
     }, [listId, id, setListId]);
 
     // Using "class" since React does not translate className on custom elements
-    return <u-datalist class={className} id={listId} ref={ref} {...rest} />;
+    return (
+      <Popover placement='bottom'>
+        <u-datalist class={className} id={listId} ref={ref} {...rest} />
+      </Popover>
+    );
   },
 );

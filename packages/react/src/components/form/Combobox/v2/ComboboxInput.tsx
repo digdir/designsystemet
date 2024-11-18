@@ -1,5 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import { forwardRef, useContext } from 'react';
+import { Popover } from '../../../Popover';
 import { Input, type InputProps } from '../../Input';
 import { ComboboxContext } from './Combobox';
 
@@ -11,6 +12,10 @@ export const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>(
     const mergedRefs = useMergeRefs([inputRef, ref]);
 
     /* We need an empty placeholder for the clear button to be able to show/hide */
-    return <Input ref={mergedRefs} list={listId} placeholder='' {...rest} />;
+    return (
+      <Popover.Trigger asChild>
+        <Input ref={mergedRefs} list={listId} placeholder='' {...rest} />
+      </Popover.Trigger>
+    );
   },
 );

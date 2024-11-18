@@ -21,16 +21,30 @@
   }
 
   & u-datalist {
-    background: var(--ds-color-neutral-background-default);
-    border-radius: var(--ds-border-radius-md);
-    border: 1px solid var(--ds-color-neutral-border-default);
-    box-shadow: var(--ds-shadow-md);
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-default);
-    inset: 100% 0 auto 0;
+  }
+
+  & [popover] {
+    padding: 0;
+    width: 100%;
+    max-height: 200px;
     overflow-y: auto;
-    position: absolute;
-    z-index: 1600;
+
+    /* Hide arrow */
+    &::before {
+      display: none;
+    }
+
+    & > u-datalist:not(:has(u-option:hover)) > u-option:focus-visible {
+      border-left-color: var(--ds-color-accent-base-default);
+      background: var(--ds-color-accent-background-subtle);
+    }
+
+    /* Hide <Combobox.Empty> if any <Combobox.Option> is visible */
+    & > u-datalist:has(u-option:not([hidden])) > :not(u-option) {
+      display: none;
+    }
   }
 
   /**
@@ -52,15 +66,6 @@
         background: var(--ds-color-accent-background-subtle);
       }
     }
-  }
-  & > u-datalist:not(:has(u-option:hover)) > u-option:focus-visible {
-    border-left-color: var(--ds-color-accent-base-default);
-    background: var(--ds-color-accent-background-subtle);
-  }
-
-  /* Hide <Combobox.Empty> if any <Combobox.Option> is visible */
-  & > u-datalist:has(u-option:not([hidden])) > :not(u-option) {
-    display: none;
   }
 
   /**

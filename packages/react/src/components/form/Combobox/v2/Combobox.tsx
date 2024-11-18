@@ -13,6 +13,7 @@ import {
 import '@u-elements/u-tags';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
 import type { DefaultProps } from '../../../../types';
+import { Popover } from '../../../Popover';
 
 /* I think we can always send a string array */
 type ComboboxContextType = {
@@ -71,21 +72,23 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
     }, [multiple]);
 
     return (
-      <ComboboxContext.Provider value={{ listId, setListId, inputRef }}>
-        {multiple ? (
-          <u-tags
-            class={cl('ds-combobox2', className)} // Using "class" since React does not translate className on custom elements
-            ref={mergedRefs}
-            {...rest}
-          />
-        ) : (
-          <div
-            className={cl('ds-combobox2', className)}
-            ref={mergedRefs}
-            {...rest}
-          />
-        )}
-      </ComboboxContext.Provider>
+      <Popover.Context>
+        <ComboboxContext.Provider value={{ listId, setListId, inputRef }}>
+          {multiple ? (
+            <u-tags
+              class={cl('ds-combobox2', className)} // Using "class" since React does not translate className on custom elements
+              ref={mergedRefs}
+              {...rest}
+            />
+          ) : (
+            <div
+              className={cl('ds-combobox2', className)}
+              ref={mergedRefs}
+              {...rest}
+            />
+          )}
+        </ComboboxContext.Provider>
+      </Popover.Context>
     );
   },
 );
