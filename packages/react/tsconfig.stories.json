@@ -10,6 +10,8 @@
     "incremental": true,
     "types": [
       "./declarations.d.ts",
+      "./react-types.d.ts",
+      "../theme/brand/colors.d.ts",
       "../../apps/storybook/story-utils/type-extensions.d.ts"
     ]
   },

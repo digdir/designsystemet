@@ -15,6 +15,12 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./colors": {
+      "types": "./dist/types/colors.d.ts"
+    },
+    "./react-types.d.ts": {
+      "types": "./dist/react-types.d.ts"
     }
   },
   "sideEffects": false,

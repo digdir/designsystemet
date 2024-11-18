@@ -1,4 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["../../packages/theme/brand/colors.d.ts"]
+  },
   "include": [".", "./.storybook/**/*", "../../packages/css/postcss.config.js"]
 }

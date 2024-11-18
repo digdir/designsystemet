@@ -11,7 +11,8 @@
     "types": [
       "@testing-library/jest-dom",
       "vitest/globals",
-      "./declarations.d.ts"
+      "./declarations.d.ts",
+      "./react-types.d.ts"
     ]
   },
   "include": ["src/**/*.test.ts*"],

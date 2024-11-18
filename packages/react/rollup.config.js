@@ -57,6 +57,9 @@ export default [
         flatten: false,
       }),
       moveFiles('./dist/tsc-build', './dist/types'),
+      copy({
+        targets: [{ src: './react-types.d.ts', dest: './dist' }],
+      }),
     ],
   },
 ];
