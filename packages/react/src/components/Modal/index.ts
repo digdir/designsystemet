@@ -1,20 +1,20 @@
 import { Modal as ModalParent } from './Modal';
 import { ModalBlock } from './ModalBlock';
-import { ModalContext } from './ModalContext';
 import { ModalTrigger } from './ModalTrigger';
+import { ModalTriggerContext } from './ModalTriggerContext';
 
 const Modal = Object.assign(ModalParent, {
   Block: ModalBlock,
-  Context: ModalContext,
+  TriggerContext: ModalTriggerContext,
   Trigger: ModalTrigger,
 });
 
 Modal.Block.displayName = 'Modal.Block';
-Modal.Context.displayName = 'Modal.Context';
+Modal.TriggerContext.displayName = 'Modal.TriggerContext';
 Modal.Trigger.displayName = 'Modal.Trigger';
 
 export type { ModalBlockProps } from './ModalBlock';
-export type { ModalContextProps } from './ModalContext';
+export type { ModalTriggerContextProps } from './ModalTriggerContext';
 export type { ModalProps } from './Modal';
 export type { ModalTriggerProps } from './ModalTrigger';
-export { Modal, ModalBlock, ModalContext, ModalTrigger };
+export { Modal, ModalBlock, ModalTriggerContext, ModalTrigger };

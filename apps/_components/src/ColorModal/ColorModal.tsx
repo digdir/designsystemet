@@ -52,59 +52,52 @@ export const ColorModal = ({
   weight,
 }: ColorModalProps) => {
   return (
-    <Modal.Context>
-      <Modal
-        ref={colorModalRef}
-        style={{
-          maxWidth: '1050px',
-        }}
-        backdropClose
-      >
-        <Modal.Block>
-          <Heading data-size='xs'>
-            {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
-          </Heading>
-        </Modal.Block>
-        <Modal.Block className={classes.modalContent}>
-          <div className={classes.description}>
-            {getColorDescription({
-              weight,
-              namespace,
-            })}
-          </div>
-          <div className={classes.container}>
-            <div className={classes.left}>
-              <Field label='Hexkode:' value={hex} copyBtn />
-              <Field
-                label='HSLuv:'
-                value={
-                  hexToHsluv(hex)[0].toFixed(0) +
-                  '° ' +
-                  hexToHsluv(hex)[1].toFixed(0) +
-                  '% ' +
-                  hexToHsluv(hex)[2].toFixed(0) +
-                  '%'
-                }
-              />
-              <Field
-                label='CSS variabel:'
-                value={getCssVariable(namespace, weight)}
-                copyBtn
-              />
+    <Modal
+      ref={colorModalRef}
+      style={{
+        maxWidth: '1050px',
+      }}
+      backdropClose
+    >
+      <Modal.Block>
+        <Heading data-size='xs'>
+          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
+        </Heading>
+      </Modal.Block>
+      <Modal.Block className={classes.modalContent}>
+        <div className={classes.description}>
+          {getColorDescription({
+            weight,
+            namespace,
+          })}
+        </div>
+        <div className={classes.container}>
+          <div className={classes.left}>
+            <Field label='Hexkode:' value={hex} copyBtn />
+            <Field
+              label='HSLuv:'
+              value={
+                hexToHsluv(hex)[0].toFixed(0) +
+                '° ' +
+                hexToHsluv(hex)[1].toFixed(0) +
+                '% ' +
+                hexToHsluv(hex)[2].toFixed(0) +
+                '%'
+              }
+            />
+            <Field
+              label='CSS variabel:'
+              value={getCssVariable(namespace, weight)}
+              copyBtn
+            />
 
-              {weight !== 9 && weight !== 10 && weight !== 11 && (
-                <Field
-                  label='Brukes mot:'
-                  value={getColorCombinations(weight)}
-                />
-              )}
-            </div>
-            <div
-              className={classes.right}
-              style={{ backgroundColor: hex }}
-            ></div>
+            {weight !== 9 && weight !== 10 && weight !== 11 && (
+              <Field label='Brukes mot:' value={getColorCombinations(weight)} />
+            )}
           </div>
-          {/* <Accordion.Root
+          <div className={classes.right} style={{ backgroundColor: hex }}></div>
+        </div>
+        {/* <Accordion.Root
             color='neutral'
             className={classes.accordion}
           >
@@ -123,8 +116,7 @@ export const ColorModal = ({
               </Accordion.Content>
             </Accordion.Item>
           </Accordion.Root> */}
-        </Modal.Block>
-      </Modal>
-    </Modal.Context>
+      </Modal.Block>
+    </Modal>
   );
 };
