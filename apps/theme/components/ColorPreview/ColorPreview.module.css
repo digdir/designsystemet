@@ -1,28 +1,3 @@
-.container {
-  display: flex;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 380px;
-  padding: 28px;
-  border-right: 1px solid var(--ds-color-neutral-border-subtle);
-  position: relative;
-}
-
-.right {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: min-content;
-  width: 100%;
-  gap: 16px;
-  padding: 28px;
-  background-color: var(--ds-color-neutral-background-subtle);
-  border-radius: 0 8px 8px 0;
-}
-
 .grid {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -33,7 +8,7 @@
   flex-direction: column;
   border-radius: 8px;
   height: auto;
-  padding: 16px;
+  padding: 18px;
   border: 1px solid var(--ds-color-accent-border-subtle);
   background-color: var(--ds-color-accent-surface-default);
 }
@@ -59,15 +34,6 @@
 .btnGroup {
   display: flex;
   gap: 16px;
-}
-
-.bottom {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 28px;
-  position: absolute;
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .label {

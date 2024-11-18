@@ -21,7 +21,7 @@ type ViewType = 'list' | 'grid';
 
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
-  const [view, setView] = useState<ViewType>('list');
+  const [view, setView] = useState<ViewType>('grid');
   const appearance = useThemeStore((state) => state.appearance);
 
   type CardProps = {
@@ -138,27 +138,27 @@ export const ColorPreview = () => {
     );
   };
   return (
-    <div className={classes.container}>
-      <div className={classes.left}>
+    <div className='panelContainer'>
+      <div className='panelLeft'>
         <Heading data-size='xs'>Se fargene dine i bruk</Heading>
         <Paragraph data-size='sm'>
           TODO: Litt dokumentasjon om fargesystemet, kontraster og bruk av
           farger
         </Paragraph>
-        <div className={classes.bottom}>
+        <div className='panelBottom'>
           <div className={classes.label}>Visning:</div>
           <ToggleGroup
             data-size='sm'
-            defaultValue='list'
+            defaultValue='grid'
             name='toggle-group-nuts'
             onChange={(value) => setView(value as ViewType)}
           >
-            <ToggleGroup.Item value='list'>Liste</ToggleGroup.Item>
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
+            <ToggleGroup.Item value='list'>Liste</ToggleGroup.Item>
           </ToggleGroup>
         </div>
       </div>
-      <div className={cl(classes.right, view === 'grid' && classes.grid)}>
+      <div className={cl('panelRight', view === 'grid' && classes.grid)}>
         {colors.main.map((color, index) => (
           <CardWrapper key={index} color={color} />
         ))}

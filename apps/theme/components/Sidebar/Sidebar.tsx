@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../store';
 import { ColorInput } from '../ColorInput/ColorInput';
-import { SizeInput } from '../SizeInput/SizeInput';
 import { Toggle } from '../Toggle/Toggle';
 import { ColorPane } from './ColorPane/ColorPane';
 import classes from './Sidebar.module.css';
@@ -194,7 +193,7 @@ export const Sidebar = () => {
         </div>
 
         {/* SIZES */}
-        <div className={classes.group}>
+        {/* <div className={classes.group}>
           <div className={classes.groupHeader}>
             <Heading data-size='2xs'>Komponentstørrelser</Heading>
           </div>
@@ -220,7 +219,7 @@ export const Sidebar = () => {
               size='21px'
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className={classes.bottom}>

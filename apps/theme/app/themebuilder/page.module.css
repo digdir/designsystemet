@@ -25,7 +25,7 @@
 }
 
 .sideBarContainer {
-  width: 430px;
+  width: 410px;
 }
 
 .container {
@@ -39,9 +39,9 @@
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
-  margin-top: 40px;
+  margin-top: 32px;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1390px;
 }
 
 .backLink {
@@ -49,4 +49,8 @@
   margin-left: -4px;
   display: inline-flex;
   width: auto;
+}
+
+.title {
+  margin-top: 40px;
 }

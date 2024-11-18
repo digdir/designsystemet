@@ -6,10 +6,10 @@
 .box {
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
-  height: 46px;
+  height: 42px;
   display: flex;
   align-items: center;
-  padding-left: 16px;
+  padding-left: 12px;
   overflow: hidden;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .inner {
-  height: 26px;
+  height: 24px;
   width: 48px;
   border: 4px solid var(--ds-color-neutral-border-default);
   position: relative;
@@ -48,7 +48,7 @@
 .inner:before {
   content: '';
   display: block;
-  height: 26px;
+  height: 24px;
   width: 24px;
   background-color: white;
   position: absolute;
