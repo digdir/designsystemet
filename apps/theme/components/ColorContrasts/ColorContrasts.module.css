@@ -13,7 +13,7 @@
 
 .table {
   background-color: #e2e2e2;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   margin-top: 12px;
 }
 
@@ -31,9 +31,9 @@
   gap: 9px;
   align-items: flex-start;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-left: -24px;
-  width: calc(100% + 48px);
-  padding: 20px 24px;
+  margin-left: -28px;
+  width: calc(100% + 58px);
+  padding: 22px 28px;
 }
 
 .tagGroups {
@@ -42,10 +42,6 @@
 
 .tagGroup:last-child {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-}
-
-.tagGroup .tag {
-  margin-left: 0;
 }
 
 .tag {
@@ -62,7 +58,6 @@
 
 .AA {
   background-color: green;
-  margin-left: 4px;
 }
 
 .AAA {
@@ -77,14 +72,21 @@
 .meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
+}
+
+.tagContainer {
+  flex: 1 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .contrast {
   font-size: 16px;
   font-weight: 500;
-  width: 48px;
   text-align: center;
+  flex: 1 1;
 }
 
 .table,

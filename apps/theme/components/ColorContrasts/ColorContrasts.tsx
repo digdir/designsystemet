@@ -41,6 +41,8 @@ export const ColorContrasts = () => {
   useEffect(() => {
     const newTheme =
       colors.main.find((color) => color.name === selectedColor)?.colors ||
+      colors.neutral.find((color) => color.name === selectedColor)?.colors ||
+      colors.support.find((color) => color.name === selectedColor)?.colors ||
       theme;
 
     setReducedLight({
@@ -56,6 +58,10 @@ export const ColorContrasts = () => {
   useEffect(() => {
     const newTheme =
       colors.main.find((color) => color.name === selectedBaseColor)?.colors ||
+      colors.neutral.find((color) => color.name === selectedBaseColor)
+        ?.colors ||
+      colors.support.find((color) => color.name === selectedBaseColor)
+        ?.colors ||
       theme;
 
     setReducedBaseLight({
@@ -114,7 +120,9 @@ export const ColorContrasts = () => {
           ></div>
         </div>
         <div className={classes.meta}>
-          <Tag color1={color1} color2={color2} />
+          <div className={classes.tagContainer}>
+            <Tag color1={color1} color2={color2} />
+          </div>
           <div className={classes.contrast}>
             {Math.floor(getContrastFromHex(color1.hex, color2.hex) * 10) / 10}
             :1
@@ -184,11 +192,14 @@ export const ColorContrasts = () => {
               setSelectedColor(e.target.value);
             }}
           >
-            {colors.main.map((color, index) => (
-              <Select.Option key={index} value={color.name}>
-                {color.name}
-              </Select.Option>
-            ))}
+            {(['main', 'neutral', 'support'] as Array<keyof typeof colors>).map(
+              (group) =>
+                colors[group].map((color, index) => (
+                  <Select.Option key={index} value={color.name}>
+                    {color.name}
+                  </Select.Option>
+                )),
+            )}
           </Select>
         </Field>
         <table className={classes.table}>
@@ -226,11 +237,14 @@ export const ColorContrasts = () => {
               setSelectedBaseColor(e.target.value);
             }}
           >
-            {colors.main.map((color, index) => (
-              <Select.Option key={index} value={color.name}>
-                {color.name}
-              </Select.Option>
-            ))}
+            {(['main', 'neutral', 'support'] as Array<keyof typeof colors>).map(
+              (group) =>
+                colors[group].map((color, index) => (
+                  <Select.Option key={index} value={color.name}>
+                    {color.name}
+                  </Select.Option>
+                )),
+            )}
           </Select>
         </Field>
         <table className={classes.table}>

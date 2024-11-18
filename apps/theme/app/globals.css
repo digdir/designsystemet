@@ -43,8 +43,8 @@ code {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 400px;
-  padding: 24px;
+  width: 420px;
+  padding: 28px;
   border-right: 1px solid var(--ds-color-neutral-border-subtle);
   position: relative;
 }
