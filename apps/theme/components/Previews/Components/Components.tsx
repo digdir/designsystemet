@@ -394,7 +394,7 @@ export const Components = () => {
         </Alert>
       </div>
       <div className={cl(classes.card, classes.dropdown)}>
-        <Dropdown.Context>
+        <Dropdown.TriggerContext>
           <Dropdown.Trigger data-size='sm'>Velg språk</Dropdown.Trigger>
           <Dropdown placement='top' data-size='sm'>
             <Dropdown.Item>
@@ -413,7 +413,7 @@ export const Components = () => {
           <HelpText aria-label='Du har ikke valgt språk'>
             Velg språk for å endre innholdet på siden
           </HelpText>
-        </Dropdown.Context>
+        </Dropdown.TriggerContext>
       </div>
       <div className={cl(classes.card, classes.loaders)}>
         <div className={classes.loadersRest}>

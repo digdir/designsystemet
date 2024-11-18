@@ -28,7 +28,7 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
     ref,
   ) {
     return (
-      <Popover.Context>
+      <Popover.TriggerContext>
         <Popover.Trigger
           className={cl('ds-helptext', className)}
           ref={ref}
@@ -38,7 +38,7 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
         <Popover placement={placement} variant='info'>
           {children}
         </Popover>
-      </Popover.Context>
+      </Popover.TriggerContext>
     );
   },
 );
