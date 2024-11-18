@@ -28,7 +28,8 @@ export default {
     customStyles: {
       maxWidth: '30rem',
       story: {
-        height: '100vh',
+        overflow: 'visible',
+        minHeight: '100vh',
       },
     },
     a11y: {
