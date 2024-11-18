@@ -30,7 +30,7 @@
   top: calc(var(--height) / -2);
   left: 50%;
   transform: translateX(-50%);
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
 }
 
 .logo .logoImage {

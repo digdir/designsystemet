@@ -5,7 +5,14 @@ import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../../types';
 import { fieldObserver } from './fieldObserver';
 
-export type FieldProps = HTMLAttributes<HTMLDivElement> & DefaultProps;
+export type FieldProps = {
+  /** Position of toggle inputs (radio, checkbox, switch) in field
+   * @default start
+   */
+  position?: 'start' | 'end';
+} & HTMLAttributes<HTMLDivElement> &
+  DefaultProps;
+
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   { className, ...rest },
   ref,

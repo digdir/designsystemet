@@ -1,6 +1,16 @@
 'use client';
-import { Paragraph, SkipLink } from '@digdir/designsystemet-react';
-import { MenuHamburgerIcon, XMarkIcon } from '@navikt/aksel-icons';
+import {
+  Button,
+  Paragraph,
+  SkipLink,
+  Tooltip,
+} from '@digdir/designsystemet-react';
+import {
+  MenuHamburgerIcon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,6 +25,7 @@ type HeaderProps = {
   menu: { name: string; href: string }[];
   betaTag?: boolean;
   skipLink?: boolean;
+  themeSwitcher?: boolean;
 };
 
 /**
@@ -47,12 +58,34 @@ const detectWrap = (items: HTMLCollection) => {
 /**
  * Only works in next.js projects
  */
-const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
+const Header = ({
+  menu,
+  betaTag,
+  skipLink = true,
+  themeSwitcher = false,
+}: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+
+  const [theme, setTheme] = useState('light');
+
+  const handleThemeChange = (newTheme: 'dark' | 'light') => {
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-ds-color-mode', newTheme);
+  };
+
+  useEffect(() => {
+    if (!themeSwitcher) return;
+    // get user preference
+    const userPreference = window.matchMedia('(prefers-color-scheme: dark)');
+    const userPrefersDark = userPreference.matches;
+
+    // set theme based on user preference
+    handleThemeChange(userPrefersDark ? 'dark' : 'light');
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,17 +124,32 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
             {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
           <nav>
-            <button
-              aria-expanded={open}
-              aria-label='Meny'
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && <XMarkIcon fontSize={26} color='#1E2B3C' />}
-              {!open && <MenuHamburgerIcon fontSize={26} color='#1E2B3C' />}
-            </button>
+            {isHamburger && (
+              <Button
+                variant='tertiary'
+                icon={true}
+                color='neutral'
+                aria-expanded={open}
+                aria-label='Meny'
+                className={cl(classes.toggle, 'ds-focus')}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {open && (
+                  <XMarkIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+                {!open && (
+                  <MenuHamburgerIcon
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+              </Button>
+            )}
             <ul
               ref={menuRef}
               className={cl(classes.menu, open && classes.active)}
@@ -150,6 +198,29 @@ const Header = ({ menu, betaTag, skipLink = true }: HeaderProps) => {
                 </Link>
               </li>
             </ul>
+            {themeSwitcher && (
+              <Tooltip
+                content={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+                placement='bottom'
+              >
+                <Button
+                  aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+                  variant='tertiary'
+                  icon={true}
+                  color='neutral'
+                  onClick={() => {
+                    handleThemeChange(theme === 'light' ? 'dark' : 'light');
+                  }}
+                  className={classes.toggleButton}
+                >
+                  {theme === 'dark' ? (
+                    <SunIcon fontSize='1.75em' />
+                  ) : (
+                    <MoonIcon fontSize='1.75em' />
+                  )}
+                </Button>
+              </Tooltip>
+            )}
           </nav>
         </div>
       </header>
