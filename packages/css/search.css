@@ -29,8 +29,7 @@
 
   /* Render magnifier icon when no submit button, or submit button is empty */
   &:not(:has(button:not([type='reset'])))::before,
-  & button[type='submit']:empty::before,
-  & button[type='button']:empty::before {
+  & button:not([type='reset']):empty::before {
     background: currentcolor;
     content: '';
     height: var(--dsc-search-icon-size);
@@ -78,8 +77,7 @@
     }
   }
 
-  & button[type='submit'],
-  & button[type='button'] {
+  & button:not([type='reset']) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
@@ -88,7 +86,7 @@
     }
   }
 
-  &:has(button[type='submit'], button[type='button']) {
+  &:has(button:not([type='reset'])) {
     &::before {
       display: none;
     }
