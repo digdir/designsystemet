@@ -22,7 +22,6 @@ export const ComboboxClear = forwardRef<HTMLButtonElement, ComboboxClearProps>(
     const handleClear = (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
-      console.log('clear', inputRef?.current);
       if (!inputRef?.current) throw new Error('Input is missing');
       /* narrow type to make TS happy */
       if (!(inputRef?.current instanceof HTMLInputElement))

@@ -23,7 +23,6 @@ export const ComboboxList = forwardRef<HTMLDataListElement, ComboboxListProps>(
     useEffect(() => {
       const observer = new MutationObserver((cb) => {
         for (const mutation of cb) {
-          console.log({ mutation });
           if (mutation.attributeName === 'hidden') {
             setOpen(!(mutation.target as Element).hasAttribute('hidden'));
           }
@@ -32,14 +31,10 @@ export const ComboboxList = forwardRef<HTMLDataListElement, ComboboxListProps>(
 
       observer.observe(listRef.current as Node, {
         attributes: true,
-        childList: false,
-        subtree: false,
       });
 
       return () => observer.disconnect();
     }, [listRef]);
-
-    console.log({ open });
 
     useEffect(() => {
       if (id && listId !== id) setListId?.(id);
