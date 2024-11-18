@@ -5,9 +5,9 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import type { CustomColors } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type CardProps = Merge<
+export type CardProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**

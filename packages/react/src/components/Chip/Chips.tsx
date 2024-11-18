@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 import { Input } from '../form/Input';
 
 type ChipBaseProps = {
@@ -20,11 +20,11 @@ type ChipBaseProps = {
 
 export type ChipRemovableProps = ChipButtonProps;
 export type ChipRadioProps = ChipCheckboxProps;
-export type ChipButtonProps = Merge<
+export type ChipButtonProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   ChipBaseProps
 >;
-export type ChipCheckboxProps = Merge<
+export type ChipCheckboxProps = MergeRight<
   DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>,
   ChipBaseProps
 >;

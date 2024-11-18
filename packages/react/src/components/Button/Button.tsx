@@ -4,10 +4,10 @@ import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 import { Spinner } from '../loaders/Spinner';
 
-export type ButtonProps = Merge<
+export type ButtonProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
     /**

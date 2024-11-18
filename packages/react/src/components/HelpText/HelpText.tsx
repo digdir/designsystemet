@@ -5,10 +5,10 @@ import type { ButtonHTMLAttributes } from 'react';
 
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 import { Popover } from '../Popover';
 
-export type HelpTextProps = Merge<
+export type HelpTextProps = MergeRight<
   DefaultProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
   {
     /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.

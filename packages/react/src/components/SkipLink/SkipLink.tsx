@@ -1,9 +1,9 @@
 import cl from 'clsx/lite';
 import { type AnchorHTMLAttributes, type ReactNode, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type SkipLinkProps = Merge<
+export type SkipLinkProps = MergeRight<
   DefaultProps & AnchorHTMLAttributes<HTMLAnchorElement>,
   {
     /** The content to display inside the skiplink. */

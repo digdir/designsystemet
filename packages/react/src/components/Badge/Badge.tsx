@@ -2,9 +2,9 @@ import cl from 'clsx/lite';
 import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type BadgeProps = Merge<
+export type BadgeProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
     /**

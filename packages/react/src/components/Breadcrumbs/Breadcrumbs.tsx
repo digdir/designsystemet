@@ -1,9 +1,9 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type BreadcrumbsProps = Merge<
+export type BreadcrumbsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLElement>,
   {
     /**

@@ -1,10 +1,10 @@
 import cl from 'clsx/lite';
-import type { Merge } from 'packages/react/src/utilities';
+import type { MergeRight } from 'packages/react/src/utilities';
 import { forwardRef } from 'react';
 import type { SelectHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../../types';
 
-export type SelectProps = Merge<
+export type SelectProps = MergeRight<
   Omit<DefaultProps, 'data-color'> &
     Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'>,
   {

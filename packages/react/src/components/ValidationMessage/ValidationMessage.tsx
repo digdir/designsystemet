@@ -3,9 +3,9 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type ValidationMessageProps = Merge<
+export type ValidationMessageProps = MergeRight<
   Omit<DefaultProps, 'data-color'> & HTMLAttributes<HTMLParagraphElement>,
   {
     /** Toggle error color */

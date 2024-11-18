@@ -3,9 +3,9 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type AccordionProps = Merge<
+export type AccordionProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**

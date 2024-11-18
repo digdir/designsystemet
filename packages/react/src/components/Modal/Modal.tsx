@@ -5,11 +5,11 @@ import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
 
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 import { Button } from '../Button';
 import { Context } from './ModalTriggerContext';
 
-export type ModalProps = Merge<
+export type ModalProps = MergeRight<
   DefaultProps & DialogHTMLAttributes<HTMLDialogElement>,
   {
     /**

@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 
-import type { Merge } from 'packages/react/src/utilities';
+import type { MergeRight } from 'packages/react/src/utilities';
 import { Button, type ButtonProps } from '../../Button';
 
-export type SearchButtonProps = Merge<
+export type SearchButtonProps = MergeRight<
   ButtonProps,
   {
     variant?: 'primary' | 'secondary';

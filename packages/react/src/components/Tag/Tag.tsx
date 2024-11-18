@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type TagProps = Merge<
+export type TagProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
     /**

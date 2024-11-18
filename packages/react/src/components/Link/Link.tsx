@@ -4,9 +4,9 @@ import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type LinkProps = Merge<
+export type LinkProps = MergeRight<
   DefaultProps & AnchorHTMLAttributes<HTMLAnchorElement>,
   {
     /** The content to display inside the link. */

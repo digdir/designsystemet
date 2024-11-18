@@ -14,7 +14,7 @@ import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 import { Context } from './PopoverTriggerContext';
 
 // Make React support popovertarget attribute
@@ -32,7 +32,7 @@ declare global {
   }
 }
 
-export type PopoverProps = Merge<
+export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**

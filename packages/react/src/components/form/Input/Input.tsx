@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { Merge } from 'packages/react/src/utilities';
+import type { MergeRight } from 'packages/react/src/utilities';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { Color } from '../../../colors';
@@ -7,7 +7,7 @@ import type { DefaultProps } from '../../../types';
 
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 
-export type InputProps = Merge<
+export type InputProps = MergeRight<
   DefaultProps & Omit<InputAttr, 'prefix'>,
   {
     /**

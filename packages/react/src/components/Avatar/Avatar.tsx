@@ -4,9 +4,9 @@ import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps, Size } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type AvatarProps = Merge<
+export type AvatarProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
     /**

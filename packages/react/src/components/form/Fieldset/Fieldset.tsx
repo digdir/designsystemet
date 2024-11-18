@@ -2,10 +2,10 @@ import cl from 'clsx/lite';
 import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import type { Merge } from 'packages/react/src/utilities';
+import type { MergeRight } from 'packages/react/src/utilities';
 import type { DefaultProps } from '../../../types';
 
-export type FieldsetProps = Merge<
+export type FieldsetProps = MergeRight<
   DefaultProps & FieldsetHTMLAttributes<HTMLFieldSetElement>,
   {
     /** Toggle `disabled` all input fields within the fieldset. */

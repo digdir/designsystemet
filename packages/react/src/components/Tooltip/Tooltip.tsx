@@ -25,9 +25,9 @@ import type {
 import { Fragment, forwardRef, useState } from 'react';
 
 import type { DefaultProps, PortalProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type TooltipProps = Merge<
+export type TooltipProps = MergeRight<
   Omit<DefaultProps, 'data-color'> &
     PortalProps &
     HTMLAttributes<HTMLDivElement>,

@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type TabsProps = Merge<
+export type TabsProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
   {
     /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.

@@ -3,12 +3,12 @@ import { forwardRef } from 'react';
 
 import type { Color } from '../../../colors';
 import type { DefaultProps } from '../../../types';
-import type { Merge } from '../../../utilities';
+import type { MergeRight } from '../../../utilities';
 import { Label } from '../../Label';
 import { Field, type FieldProps } from '../Field';
 import { Input, type InputProps } from '../Input';
 
-export type SwitchProps = Merge<
+export type SwitchProps = MergeRight<
   DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
   {
     /** Optional aria-label */

@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { SeverityColors } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type AlertProps = Merge<
+export type AlertProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**

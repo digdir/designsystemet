@@ -4,9 +4,9 @@ import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
-import type { Merge } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
-export type PaginationProps = Merge<
+export type PaginationProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLElement>,
   {
     /**

@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import type { DefaultProps } from 'packages/react/src/types';
-import type { Merge } from 'packages/react/src/utilities';
+import type { MergeRight } from 'packages/react/src/utilities';
 import type { Color } from '../../../colors';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import { Field } from '../Field';
 import { Input, type InputProps } from '../Input';
 
-export type RadioProps = Merge<
+export type RadioProps = MergeRight<
   DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,
   {
     /** The color of the fill for selected radios.
