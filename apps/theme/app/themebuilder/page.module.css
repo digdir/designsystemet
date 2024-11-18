@@ -39,7 +39,7 @@
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
-  margin-top: 32px;
+  margin-top: 28px;
   width: 100%;
   max-width: 1390px;
 }

@@ -1,7 +1,10 @@
 import {
   Button,
   Checkbox,
+  Chip,
   Heading,
+  Switch,
+  Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
 
@@ -64,9 +67,35 @@ export const BorderRadius = () => {
           </div>
           <div className={classes.card}>
             <Heading data-size='2xs'>Innstillinger</Heading>
+            <Switch label='Switch' data-size='sm' checked />
+            <Switch label='Switch' data-size='sm' />
           </div>
-          <div className={classes.card}>
+          <div className={classes.card} data-size='sm'>
             <Heading data-size='2xs'>Innstillinger</Heading>
+            <div className={classes.tags}>
+              <Tag color='brand1'>Sport</Tag>
+              <Tag color='brand2'>Nyheter</Tag>
+              <Tag color='brand3'>Innenriks</Tag>
+              <Tag color='neutral'>Utenriks</Tag>
+              <Tag color='success'>Været</Tag>
+              <Tag color='info'>Musikk</Tag>
+            </div>
+            <div className={classes.chips}>
+              <Chip.Radio defaultChecked name='myChips' value='chip1'>
+                Chip
+              </Chip.Radio>
+              <Chip.Radio defaultChecked name='myChips' value='chip2'>
+                Chip
+              </Chip.Radio>
+            </div>
+            <div className={classes.chips}>
+              <Chip.Checkbox defaultChecked name='myChips' value='chip1'>
+                Chip
+              </Chip.Checkbox>
+              <Chip.Checkbox defaultChecked name='myChips' value='chip2'>
+                Chip
+              </Chip.Checkbox>
+            </div>
           </div>
         </div>
       </div>

@@ -119,9 +119,9 @@ export const ColorPreview = () => {
             onChange={() => setIsChecked(!isChecked)}
           />
           <Switch
-            description=''
-            position='left'
-            size='sm'
+            aria-labelledby=''
+            position='start'
+            data-size='sm'
             checked={isSwitch}
             onChange={() => setIsSwitch(!isSwitch)}
           >

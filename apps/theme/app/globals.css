@@ -42,9 +42,9 @@ code {
 .panelLeft {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 380px;
-  padding: 28px;
+  gap: 12px;
+  width: 390px;
+  padding: 24px;
   border-right: 1px solid var(--ds-color-neutral-border-subtle);
   position: relative;
 }

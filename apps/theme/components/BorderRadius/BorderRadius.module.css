@@ -36,7 +36,7 @@
   background-color: white;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   padding: 20px;
-  gap: 24px;
+  gap: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -44,4 +44,16 @@
 .btnGroup {
   display: flex;
   gap: 16px;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chips {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
 }
