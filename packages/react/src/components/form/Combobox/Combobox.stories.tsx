@@ -659,6 +659,7 @@ export const Combobx2: StoryFn<typeof Combobox2> = ({
           <Combobox2.Input
             defaultValue={initialValue}
             value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             id='my-combobox-input'
           />
           <Combobox2.Clear />

@@ -1,6 +1,7 @@
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import { Button, type ButtonProps } from '../../../Button';
 import { setReactInputValue } from '../utilities';
+import { ComboboxContext } from './Combobox';
 
 /* We omit children since we render the icon with css */
 export type ComboboxClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
@@ -16,24 +17,20 @@ export const ComboboxClear = forwardRef<HTMLButtonElement, ComboboxClearProps>(
     { 'aria-label': label = 'Tøm', onClick, ...rest },
     ref,
   ) {
+    const { inputRef } = useContext(ComboboxContext);
+
     const handleClear = (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
-      const target = event.target;
-      let input: HTMLElement | null | undefined = null;
-
-      if (target instanceof HTMLElement)
-        input = target.closest('.ds-combobox2')?.querySelector('input');
-
-      if (!input) throw new Error('Input is missing');
+      console.log('clear', inputRef?.current);
+      if (!inputRef?.current) throw new Error('Input is missing');
       /* narrow type to make TS happy */
-      if (!(input instanceof HTMLInputElement))
+      if (!(inputRef?.current instanceof HTMLInputElement))
         throw new Error('Input is not an input element');
 
       event.preventDefault();
-      console.log('input', input);
-      setReactInputValue(input, '');
-      input.focus();
+      setReactInputValue(inputRef.current, '');
+      inputRef.current.focus();
       onClick?.(event);
     };
 

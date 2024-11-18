@@ -12,12 +12,13 @@ import {
 
 import '@u-elements/u-tags';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
-import type { DefaultProps } from 'packages/react/src/types';
+import type { DefaultProps } from '../../../../types';
 
 /* I think we can always send a string array */
 type ComboboxContextType = {
   listId?: string;
   setListId?: (id: string) => void;
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
 export const ComboboxContext = createContext<ComboboxContextType>({});
@@ -34,10 +35,12 @@ export type ComboboxProps = {
 
 export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
   function Combobox({ className, multiple, onChange, ...rest }, ref) {
-    const randListId = useId();
-    const [listId, setListId] = useState(randListId);
+    const inputRef = useRef<HTMLInputElement>(null);
     const innerRef = useRef<HTMLElement>(null);
     const mergedRefs = useMergeRefs([innerRef, ref]);
+
+    const randListId = useId();
+    const [listId, setListId] = useState(randListId);
 
     // Handle onChange
     useEffect(() => {
@@ -68,8 +71,10 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
       return () => utags?.removeEventListener('tags', handleTags);
     }, [multiple]);
 
+    console.log(inputRef);
+
     return (
-      <ComboboxContext.Provider value={{ listId, setListId }}>
+      <ComboboxContext.Provider value={{ listId, setListId, inputRef }}>
         {multiple ? (
           <u-tags
             class={cl('ds-combobox2', className)} // Using "class" since React does not translate className on custom elements
