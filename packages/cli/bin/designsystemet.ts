@@ -14,7 +14,6 @@ program.name('designsystemet').description('CLI for working with Designsystemet'
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
   const DEFAULT_TOKENSDIR = './design-tokens';
-  const DEFAULT_COLOR = 'accent';
 
   tokenCmd
     .command('build')
@@ -56,11 +55,6 @@ function makeTokenCommands() {
           fontFamily: fontFamily,
         },
       };
-
-      if (!props.colors.main[DEFAULT_COLOR]) {
-        console.log(chalk.bold.redBright('ERROR:'), chalk.red(`A main color called "${DEFAULT_COLOR}" is required`));
-        process.exit(1);
-      }
 
       const tokens = createTokens(props);
 
