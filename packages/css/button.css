@@ -4,12 +4,35 @@
   --dsc-button-background--hover: var(--ds-color-accent-base-hover);
   --dsc-button-background: var(--ds-color-accent-base-default);
   --dsc-button-color: var(--ds-color-accent-contrast-default);
+  --dsc-button-border-color: transparent;
+
+  &[data-variant='secondary'],
+  &[data-variant='tertiary'] {
+    --dsc-button-background: transparent;
+    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
+    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-color: var(--ds-color-accent-text-subtle);
+  }
+  &[data-variant='secondary'] {
+    --dsc-button-border-color: var(--ds-color-accent-border-strong);
+  }
 
   &[data-color] {
     --dsc-button-background--active: var(--ds-color-base-active);
     --dsc-button-background--hover: var(--ds-color-base-hover);
     --dsc-button-background: var(--ds-color-base-default);
     --dsc-button-color: var(--ds-color-contrast-default);
+
+    &[data-variant='secondary'],
+    &[data-variant='tertiary'] {
+      --dsc-button-background: transparent;
+      --dsc-button-background--active: var(--ds-color-surface-hover);
+      --dsc-button-background--hover: var(--ds-color-surface-default);
+      --dsc-button-color: var(--ds-color-text-subtle);
+    }
+    &[data-variant='secondary'] {
+      --dsc-button-border-color: var(--ds-color-border-strong);
+    }
   }
 
   --dsc-button-font-size: var(--ds-font-size-5);
@@ -20,7 +43,7 @@
   align-items: center;
   background: var(--dsc-button-background);
   border-radius: var(--ds-border-radius-default);
-  border: var(--ds-border-width-default) solid var(--dsc-button-border-color, transparent);
+  border: var(--ds-border-width-default) solid var(--dsc-button-border-color);
   box-sizing: border-box;
   color: var(--dsc-button-color);
   cursor: pointer;
@@ -64,29 +87,6 @@
   &[data-fullwidth] {
     width: 100%;
     text-align: center;
-  }
-
-  /**
-   * Variants
-   */
-  &[data-variant='secondary'] {
-    --dsc-button-background--active: var(--ds-color-surface-hover);
-    --dsc-button-background--hover: var(--ds-color-surface-default);
-    --dsc-button-background: transparent;
-    --dsc-button-border-color: var(--ds-color-border-strong);
-    --dsc-button-color--active: var(--ds-color-text-default);
-    --dsc-button-color--hover: var(--ds-color-text-default);
-    --dsc-button-color: var(--ds-color-text-subtle);
-  }
-
-  &[data-variant='tertiary'] {
-    --dsc-button-background--active: var(--ds-color-surface-hover);
-    --dsc-button-background--hover: var(--ds-color-surface-default);
-    --dsc-button-background: transparent;
-    --dsc-button-border-color: var(--dsc-button-tertiary-border-color);
-    --dsc-button-color--active: var(--ds-color-text-default);
-    --dsc-button-color--hover: var(--ds-color-text-default);
-    --dsc-button-color: var(--ds-color-text-subtle);
   }
 
   /**
