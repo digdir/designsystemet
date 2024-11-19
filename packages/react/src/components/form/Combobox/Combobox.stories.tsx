@@ -703,8 +703,9 @@ export const Combobx2Multiple: StoryFn<typeof Combobox2> = (args) => {
           multiple
           onChange={(e) => {
             setValues(e);
-            console.log(e);
+            console.log('from change event', e);
           }}
+          defaultValue={['Hei', 'Hade']}
         >
           {/* {values.map((value, key) => (
             <Combobox2.Chip key={`${key}-${value}`}>{value}</Combobox2.Chip>

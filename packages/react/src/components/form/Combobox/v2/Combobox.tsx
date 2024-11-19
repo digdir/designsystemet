@@ -25,6 +25,7 @@ type ComboboxContextType = {
 export const ComboboxContext = createContext<ComboboxContextType>({});
 
 export type ComboboxProps = {
+  defaultValue?: string[];
   onChange: (values: string[]) => void;
   /**
    * Multiple options can be selected
@@ -35,10 +36,17 @@ export type ComboboxProps = {
   DefaultProps;
 
 export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
-  function Combobox({ className, multiple, onChange, ...rest }, ref) {
+  function Combobox(
+    { className, multiple, defaultValue, onChange, ...rest },
+    ref,
+  ) {
     const inputRef = useRef<HTMLInputElement>(null);
     const innerRef = useRef<HTMLElement>(null);
     const mergedRefs = useMergeRefs([innerRef, ref]);
+
+    const [internalValue, setInternalValue] = useState<string[]>(
+      defaultValue || [],
+    );
 
     const randListId = useId();
     const [listId, setListId] = useState(randListId);
@@ -55,21 +63,29 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
       }
 
       const utags = innerRef.current as UHTMLTagsElement | null;
+      console.log(utags);
       const handleTags = (event: CustomEvent) => {
-        const isAdd = event.detail.action === 'add';
         const value = event.detail.item.value;
-        const prev = Array.from(utags?.items || [], ({ value }) => value);
-        const next = isAdd
-          ? prev.concat(value)
-          : prev.filter((val) => val !== value);
+        console.log('new val', value);
+        const next = internalValue.includes(value)
+          ? internalValue.filter((v) => v !== value)
+          : [...internalValue, value];
+
+        setInternalValue(next);
+
+        console.log({ internalValue, next });
 
         event.preventDefault(); // Prevent <u-tags> append/remove logic so we can control this with React useState
-        onChange?.(next);
       };
 
       utags?.addEventListener('tags', handleTags);
       return () => utags?.removeEventListener('tags', handleTags);
-    }, [multiple]);
+    }, [multiple, internalValue]);
+
+    // call onChange when internalValue changes
+    useEffect(() => {
+      onChange?.(internalValue);
+    }, [internalValue, onChange]);
 
     return (
       <Popover.Context>
