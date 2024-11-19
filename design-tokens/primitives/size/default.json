@@ -171,5 +171,33 @@
       "$type": "letterSpacing",
       "$value": "1.5%"
     }
+  },
+  "sizing": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "floor( {utility.step} * {utility.mode-font-size} *1)"
+    }
+  },
+  "utility": {
+    "mode-font-size": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "base": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "step": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "scale": {
+      "$type": "dimension",
+      "$value": "({utility.step} / {utility.base})"
+    }
   }
 }
