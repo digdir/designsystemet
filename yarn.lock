@@ -15818,6 +15818,7 @@ __metadata:
     chromatic: "npm:^11.11.0"
     copyfiles: "npm:^2.4.1"
     storybook-addon-pseudo-states: "npm:^4.0.2"
+    tsconfck: "npm:^3.1.4"
     typescript: "npm:^5.5.4"
     typescript-plugin-css-modules: "npm:^5.1.0"
     vite: "npm:^5.3.6"
@@ -17163,6 +17164,20 @@ __metadata:
   version: 9.6.0
   resolution: "ts-toolbelt@npm:9.6.0"
   checksum: 10/2c2dea2631dbd7372a79cccc6d09a377a6ca2f319f767fd239d2e312cd1d9165a90f8c1777a047227bfdcda6aeba3addbadce88fdfc7f43caf4534d385a43c82
+  languageName: node
+  linkType: hard
+
+"tsconfck@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "tsconfck@npm:3.1.4"
+  peerDependencies:
+    typescript: ^5.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  bin:
+    tsconfck: bin/tsconfck.js
+  checksum: 10/4fb02e75ff374a82052b4800970bebe4466b5a6e7193d74e7b875cc8225acb5037fb4e7dcd4a5cd751c22129360cb13b4d5536897eae131d69c1a20fb18a99b4
   languageName: node
   linkType: hard
 
