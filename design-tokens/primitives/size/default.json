@@ -1,130 +1,60 @@
 {
   "line-height": {
     "sm": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "lineHeights",
       "$value": "130%"
     },
     "md": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "lineHeights",
       "$value": "150%"
     },
     "lg": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "lineHeights",
       "$value": "170%"
     }
   },
   "font-size": {
     "1": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "12"
     },
     "2": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "13"
     },
     "3": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "14"
     },
     "4": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "16"
     },
     "5": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "18"
     },
     "6": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "21"
     },
     "7": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "24"
     },
     "8": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "30"
     },
     "9": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "36"
     },
     "10": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "48"
     },
     "11": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontSizes",
       "$value": "60"
     }
@@ -163,41 +93,104 @@
       "$value": "0.5%"
     },
     "9": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "letterSpacing",
       "$value": "1.5%"
     }
   },
-  "sizing": {
+  "dynamic-sizing-scale": {
     "0": {
       "$type": "dimension",
-      "$value": "0px"
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *0)"
     },
     "1": {
       "$type": "dimension",
-      "$value": "floor( {utility.step} * {utility.mode-font-size} *1)"
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *1)"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *2)"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *3)"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *4)"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *5)"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *6)"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *7)"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *8)"
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *9)"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *10)"
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *11)"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *11)"
+    },
+    "13": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *13)"
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *14)"
+    },
+    "15": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *15)"
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *18)"
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *22)"
+    },
+    "26": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *26)"
+    },
+    "30": {
+      "$type": "dimension",
+      "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *30)"
     }
   },
   "utility": {
     "mode-font-size": {
-      "$type": "dimension",
-      "$value": "18px"
+      "$type": "other",
+      "$value": "18"
     },
     "base": {
-      "$type": "dimension",
-      "$value": "18px"
+      "$type": "other",
+      "$value": "18"
     },
     "step": {
-      "$type": "dimension",
-      "$value": "4px"
-    },
-    "scale": {
-      "$type": "dimension",
-      "$value": "({utility.step} / {utility.base})"
+      "$type": "other",
+      "$value": "4"
     }
   }
 }
