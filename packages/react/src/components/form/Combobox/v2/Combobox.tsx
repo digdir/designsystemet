@@ -26,6 +26,7 @@ export const ComboboxContext = createContext<ComboboxContextType>({});
 
 export type ComboboxProps = {
   defaultValue?: string[];
+  value?: string[];
   onChange: (values: string[]) => void;
   /**
    * Multiple options can be selected
@@ -86,6 +87,11 @@ export const Combobox = forwardRef<HTMLElement, ComboboxProps>(
     useEffect(() => {
       onChange?.(internalValue);
     }, [internalValue, onChange]);
+
+    // update internalValue when value changes
+    useEffect(() => {
+      if (rest.value) setInternalValue(rest.value);
+    }, [rest.value]);
 
     return (
       <Popover.Context>

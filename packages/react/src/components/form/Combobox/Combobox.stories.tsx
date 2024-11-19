@@ -16,6 +16,7 @@ import {
   Switch,
 } from '../../';
 
+import { SingleCombobox } from './_single';
 import { Combobox as Combobox2 } from './v2';
 
 import { data } from './data/data';
@@ -733,5 +734,36 @@ export const Combobx2Multiple: StoryFn<typeof Combobox2> = (args) => {
       <br />
       <Button onClick={() => setValues(['Mango'])}>Velg Mango</Button>
     </>
+  );
+};
+
+export const SingleCombobox2: StoryFn<typeof SingleCombobox> = (args) => {
+  const [value, setValue] = useState<string>('Leikanger');
+  const [inputValue, setInputValue] = useState<string>('Leikanger');
+
+  return (
+    <SingleCombobox
+      {...args}
+      value={value}
+      onChange={(value) => {
+        setValue(value);
+        console.log('from change event', value);
+      }}
+    >
+      <SingleCombobox.Input
+        value={inputValue}
+        onChange={(e) => {
+          console.log('typing', e.target.value);
+          setInputValue(e.target.value);
+        }}
+      />
+      <SingleCombobox.List>
+        {PLACES.map((item, index) => (
+          <SingleCombobox.Option key={index} value={item.name}>
+            {item.name}
+          </SingleCombobox.Option>
+        ))}
+      </SingleCombobox.List>
+    </SingleCombobox>
   );
 };
