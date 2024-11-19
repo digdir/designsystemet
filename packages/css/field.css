@@ -80,7 +80,6 @@
   display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
   max-width: 100%;
   white-space: nowrap;
-  align-self: stretch; /* If ds-field is placed inside a flex container  we need to fill width */
 
   &:has([size]) {
     width: fit-content;
