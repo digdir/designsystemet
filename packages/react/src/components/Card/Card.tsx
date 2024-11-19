@@ -11,9 +11,7 @@ export type CardProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * Changes background & border color. Unlike most components, data-color
-     * must be specified on this element — not an ancestor — to have an effect.
-     * Otherwise the default is used.
+     * Changes background & border color.
      * @default neutral
      */
     'data-color'?: 'subtle' | CustomColors;

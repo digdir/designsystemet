@@ -9,8 +9,7 @@ export type TagProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
     /**
-     * Color of the tag. Unlike most components, data-color must be specified on this element
-     * — not an ancestor — to have an effect. Otherwise the default is used.
+     * Color of the tag.
      * @default neutral
      */
     'data-color'?: Color;

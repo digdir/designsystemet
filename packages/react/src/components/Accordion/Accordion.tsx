@@ -9,8 +9,7 @@ export type AccordionProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * Accordion background color. Unlike most components, data-color must be specified
-     * on this element to hava an effect. Otherwise the default is used.
+     * Accordion background color.
      * @default neutral
      */
     'data-color'?: 'subtle' | Color;
