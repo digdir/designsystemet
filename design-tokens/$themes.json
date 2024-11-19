@@ -7,8 +7,40 @@
       "primitives/size/small": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
-    "$figmaModeId": "36248:1",
-    "$figmaVariableReferences": {},
+    "$figmaModeId": "42114:0",
+    "$figmaVariableReferences": {
+      "font-size.1": "d7ff95a2f75021aaff126055948e4869fa4f2f1e",
+      "font-size.2": "edd4bc0d10157b7227e04e4992a56bd5398c9243",
+      "font-size.3": "5559b906fbc385bd6276f2d9a9e8786844d92a09",
+      "font-size.4": "36d8ea7fba45e250e112aa0d8f2641561c4f428f",
+      "font-size.5": "277738ab67d6c1e4c46e898a5cc425abbe873f48",
+      "font-size.6": "d8da715f17718c174efaf10d94610921de6ef01b",
+      "font-size.7": "b169e204e107319b9dd336916a7a205744eaf0d4",
+      "font-size.8": "a98e8710e67900f20a4d67f52e099442a2f4aee2",
+      "font-size.9": "ee2946ab40d09286b4e1c121eb35bb97f14b7e02",
+      "font-size.10": "03e6e0745f85f3b9719f9d9e9cf221c1df91a02a",
+      "font-size.11": "691f112aa853c28b583ec53d5e1ec09fbc3f5240",
+      "dynamic-sizing-scale.0": "bdd99749917edbabb2c9cd58e47af69951499c5d",
+      "dynamic-sizing-scale.1": "5c75d7c29d27405101225bb8fd58e0630243b2db",
+      "dynamic-sizing-scale.2": "2cc5ae6bbac335f925a827960ff44d233814f8d4",
+      "dynamic-sizing-scale.3": "7fd0913d18a2141edfa30edebce57713634740f0",
+      "dynamic-sizing-scale.4": "f5eef2dd35870c0539bef7fad3803b98a5865c79",
+      "dynamic-sizing-scale.5": "f60d7dc1dc544dff49b40891c4ebbe3a7cb7ae63",
+      "dynamic-sizing-scale.6": "c77915c67b86224e63e6bdc133e71bbfaee76dc7",
+      "dynamic-sizing-scale.7": "79eaef56090fe0f5d12671c58d836659f4f6d851",
+      "dynamic-sizing-scale.8": "7e37509ff7a3052276e7575fc2b762d3c0fd1c4f",
+      "dynamic-sizing-scale.9": "624b24a3b8ff41d52d072f42ada5f43232433000",
+      "dynamic-sizing-scale.10": "c2c21751706738c80cd5d5e145ccd6b8a7941ad2",
+      "dynamic-sizing-scale.11": "a1c346e3b7c606b071dcccefdfb36814c2c5a671",
+      "dynamic-sizing-scale.12": "0b0275fbe344696340ddb2d26979b50e94b5765b",
+      "dynamic-sizing-scale.13": "3e9ee14a7feb81f2f820df5b4822882690b76545",
+      "dynamic-sizing-scale.14": "e93ab9d4a58aa8935ee270848d231b2ee99d4f1b",
+      "dynamic-sizing-scale.15": "d3db9f05fa3bdc1675fb655687533736e9ce93d1",
+      "dynamic-sizing-scale.18": "6b667696b8cd9d7bbab82f3193ee0819a833544b",
+      "dynamic-sizing-scale.22": "fcf2f276498cb12bf16fc4ae9bbc3263fc58eb20",
+      "dynamic-sizing-scale.26": "ad8d578f08ccf18ba0a6c559fc3f9d201cdc53e5",
+      "dynamic-sizing-scale.30": "340b88b74ccfbf87a85db3f54c51cf8cedf8a4e0"
+    },
     "group": "Size"
   },
   {
@@ -21,17 +53,37 @@
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
     "$figmaModeId": "36248:0",
     "$figmaVariableReferences": {
-      "font-size.1": "b16053371d400f6e865a57698519b78d6adb8aa6",
-      "font-size.2": "547170dd150be6b3a74de1bc2ee421ba40b9ed9a",
-      "font-size.3": "c7a841c5694c94f85089aa425f0de4010e5fe71d",
-      "font-size.4": "9499f40cb3873ccfa136f943dbf479e1ed0980eb",
-      "font-size.5": "428e13183c9e1c21a4ec5e651e4baba947a38bd9",
-      "font-size.6": "01dce7fd83742c2986baeda3c2202f9345acf5fa",
-      "font-size.7": "54633f9ab840c502b0984cb20888276c2f021360",
-      "font-size.8": "a298f78a4f1ed7171546a06ce6f74196867f462a",
-      "font-size.9": "7f1382abad418b3941b79731e871b641abebbcf7",
-      "font-size.10": "38a0bcc2952ba92e893293eaa1ca024bdc23d0d0",
-      "font-size.11": "347bbb6ecf0d21b6046a55b265e141749f069451"
+      "font-size.1": "d7ff95a2f75021aaff126055948e4869fa4f2f1e",
+      "font-size.2": "edd4bc0d10157b7227e04e4992a56bd5398c9243",
+      "font-size.3": "5559b906fbc385bd6276f2d9a9e8786844d92a09",
+      "font-size.4": "36d8ea7fba45e250e112aa0d8f2641561c4f428f",
+      "font-size.5": "277738ab67d6c1e4c46e898a5cc425abbe873f48",
+      "font-size.6": "d8da715f17718c174efaf10d94610921de6ef01b",
+      "font-size.7": "b169e204e107319b9dd336916a7a205744eaf0d4",
+      "font-size.8": "a98e8710e67900f20a4d67f52e099442a2f4aee2",
+      "font-size.9": "ee2946ab40d09286b4e1c121eb35bb97f14b7e02",
+      "font-size.10": "03e6e0745f85f3b9719f9d9e9cf221c1df91a02a",
+      "font-size.11": "691f112aa853c28b583ec53d5e1ec09fbc3f5240",
+      "dynamic-sizing-scale.0": "bdd99749917edbabb2c9cd58e47af69951499c5d",
+      "dynamic-sizing-scale.1": "5c75d7c29d27405101225bb8fd58e0630243b2db",
+      "dynamic-sizing-scale.2": "2cc5ae6bbac335f925a827960ff44d233814f8d4",
+      "dynamic-sizing-scale.3": "7fd0913d18a2141edfa30edebce57713634740f0",
+      "dynamic-sizing-scale.4": "f5eef2dd35870c0539bef7fad3803b98a5865c79",
+      "dynamic-sizing-scale.5": "f60d7dc1dc544dff49b40891c4ebbe3a7cb7ae63",
+      "dynamic-sizing-scale.6": "c77915c67b86224e63e6bdc133e71bbfaee76dc7",
+      "dynamic-sizing-scale.7": "79eaef56090fe0f5d12671c58d836659f4f6d851",
+      "dynamic-sizing-scale.8": "7e37509ff7a3052276e7575fc2b762d3c0fd1c4f",
+      "dynamic-sizing-scale.9": "624b24a3b8ff41d52d072f42ada5f43232433000",
+      "dynamic-sizing-scale.10": "c2c21751706738c80cd5d5e145ccd6b8a7941ad2",
+      "dynamic-sizing-scale.11": "a1c346e3b7c606b071dcccefdfb36814c2c5a671",
+      "dynamic-sizing-scale.12": "0b0275fbe344696340ddb2d26979b50e94b5765b",
+      "dynamic-sizing-scale.13": "3e9ee14a7feb81f2f820df5b4822882690b76545",
+      "dynamic-sizing-scale.14": "e93ab9d4a58aa8935ee270848d231b2ee99d4f1b",
+      "dynamic-sizing-scale.15": "d3db9f05fa3bdc1675fb655687533736e9ce93d1",
+      "dynamic-sizing-scale.18": "6b667696b8cd9d7bbab82f3193ee0819a833544b",
+      "dynamic-sizing-scale.22": "fcf2f276498cb12bf16fc4ae9bbc3263fc58eb20",
+      "dynamic-sizing-scale.26": "ad8d578f08ccf18ba0a6c559fc3f9d201cdc53e5",
+      "dynamic-sizing-scale.30": "340b88b74ccfbf87a85db3f54c51cf8cedf8a4e0"
     },
     "group": "Size"
   },
@@ -863,10 +915,7 @@
       "primitives/modes/typography/primary/theme": "enabled",
       "primitives/modes/typography/primary/theme2": "enabled",
       "primitives/modes/typography/primary/theme3": "enabled",
-      "primitives/modes/typography/primary/theme4": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "primitives/modes/typography/primary/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20769",
     "$figmaModeId": "36248:2",
@@ -898,10 +947,7 @@
       "primitives/modes/typography/secondary/theme": "enabled",
       "primitives/modes/typography/secondary/theme2": "enabled",
       "primitives/modes/typography/secondary/theme3": "enabled",
-      "primitives/modes/typography/secondary/theme4": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "primitives/modes/typography/secondary/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20769",
     "$figmaModeId": "36248:3",
@@ -930,10 +976,7 @@
     "name": "digdir",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "themes/theme": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:0",
@@ -1032,10 +1075,7 @@
     "name": "altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme2": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "themes/theme2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:1",
@@ -1134,10 +1174,7 @@
     "name": "uutilsynet",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme3": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "themes/theme3": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:2",
@@ -1575,10 +1612,7 @@
       "typography.validation-message.xs": "S:529e6d2b64aadcc3edec73830f11e8cf38ba3721,"
     },
     "selectedTokenSets": {
-      "themes/theme4": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "themes/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:3",
@@ -1719,10 +1753,7 @@
     "selectedTokenSets": {
       "semantic/style": "enabled",
       "semantic/color": "enabled",
-      "primitives/globals": "source",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "primitives/globals": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1919,10 +1950,7 @@
     "name": "accent",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/main-color/accent": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "semantic/modes/main-color/accent": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:39565:11412",
     "$figmaModeId": "39565:0",
@@ -1950,10 +1978,7 @@
     "name": "brand1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand1": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "semantic/modes/support-color/brand1": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:39565:11413",
     "$figmaModeId": "39565:1",
@@ -1981,10 +2006,7 @@
     "name": "brand2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand2": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "semantic/modes/support-color/brand2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:39565:11413",
     "$figmaModeId": "39565:2",
@@ -2012,10 +2034,7 @@
     "name": "brand3",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand3": "enabled",
-      "primitives/size/small": "disabled",
-      "primitives/size/large": "disabled",
-      "primitives/size/medium": "disabled"
+      "semantic/modes/support-color/brand3": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:39565:11413",
     "$figmaModeId": "39565:3",
@@ -2045,6 +2064,41 @@
     "selectedTokenSets": {
       "primitives/size/large": "enabled"
     },
-    "group": "Size"
+    "group": "Size",
+    "$figmaCollectionId": "VariableCollectionId:36248:20757",
+    "$figmaModeId": "42114:1",
+    "$figmaVariableReferences": {
+      "font-size.1": "d7ff95a2f75021aaff126055948e4869fa4f2f1e",
+      "font-size.2": "edd4bc0d10157b7227e04e4992a56bd5398c9243",
+      "font-size.3": "5559b906fbc385bd6276f2d9a9e8786844d92a09",
+      "font-size.4": "36d8ea7fba45e250e112aa0d8f2641561c4f428f",
+      "font-size.5": "277738ab67d6c1e4c46e898a5cc425abbe873f48",
+      "font-size.6": "d8da715f17718c174efaf10d94610921de6ef01b",
+      "font-size.7": "b169e204e107319b9dd336916a7a205744eaf0d4",
+      "font-size.8": "a98e8710e67900f20a4d67f52e099442a2f4aee2",
+      "font-size.9": "ee2946ab40d09286b4e1c121eb35bb97f14b7e02",
+      "font-size.10": "03e6e0745f85f3b9719f9d9e9cf221c1df91a02a",
+      "font-size.11": "691f112aa853c28b583ec53d5e1ec09fbc3f5240",
+      "dynamic-sizing-scale.0": "bdd99749917edbabb2c9cd58e47af69951499c5d",
+      "dynamic-sizing-scale.1": "5c75d7c29d27405101225bb8fd58e0630243b2db",
+      "dynamic-sizing-scale.2": "2cc5ae6bbac335f925a827960ff44d233814f8d4",
+      "dynamic-sizing-scale.3": "7fd0913d18a2141edfa30edebce57713634740f0",
+      "dynamic-sizing-scale.4": "f5eef2dd35870c0539bef7fad3803b98a5865c79",
+      "dynamic-sizing-scale.5": "f60d7dc1dc544dff49b40891c4ebbe3a7cb7ae63",
+      "dynamic-sizing-scale.6": "c77915c67b86224e63e6bdc133e71bbfaee76dc7",
+      "dynamic-sizing-scale.7": "79eaef56090fe0f5d12671c58d836659f4f6d851",
+      "dynamic-sizing-scale.8": "7e37509ff7a3052276e7575fc2b762d3c0fd1c4f",
+      "dynamic-sizing-scale.9": "624b24a3b8ff41d52d072f42ada5f43232433000",
+      "dynamic-sizing-scale.10": "c2c21751706738c80cd5d5e145ccd6b8a7941ad2",
+      "dynamic-sizing-scale.11": "a1c346e3b7c606b071dcccefdfb36814c2c5a671",
+      "dynamic-sizing-scale.12": "0b0275fbe344696340ddb2d26979b50e94b5765b",
+      "dynamic-sizing-scale.13": "3e9ee14a7feb81f2f820df5b4822882690b76545",
+      "dynamic-sizing-scale.14": "e93ab9d4a58aa8935ee270848d231b2ee99d4f1b",
+      "dynamic-sizing-scale.15": "d3db9f05fa3bdc1675fb655687533736e9ce93d1",
+      "dynamic-sizing-scale.18": "6b667696b8cd9d7bbab82f3193ee0819a833544b",
+      "dynamic-sizing-scale.22": "fcf2f276498cb12bf16fc4ae9bbc3263fc58eb20",
+      "dynamic-sizing-scale.26": "ad8d578f08ccf18ba0a6c559fc3f9d201cdc53e5",
+      "dynamic-sizing-scale.30": "340b88b74ccfbf87a85db3f54c51cf8cedf8a4e0"
+    }
   }
 ]
