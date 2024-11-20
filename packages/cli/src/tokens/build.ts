@@ -11,6 +11,8 @@ import type { BuildConfig, ThemePermutation } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { processThemeObject } from './build/utils/getMultidimensionalThemes.js';
 
+export const DEFAULT_COLOR = 'accent';
+
 type Options = {
   /** Design tokens path */
   tokens: string;
@@ -81,11 +83,15 @@ export async function buildTokens(options: Options): Promise<void> {
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
 
   if (!buildOptions.accentColor) {
-    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
-    buildOptions.accentColor = firstMainColor?.name;
+    const accentOrFirstMainColor =
+      relevant$themes.find((theme) => theme.name === DEFAULT_COLOR) ||
+      relevant$themes.find((theme) => theme.group === 'main-color');
+    buildOptions.accentColor = accentOrFirstMainColor?.name;
   }
 
-  console.log('default accent color:', buildOptions.accentColor);
+  if (buildOptions.accentColor !== DEFAULT_COLOR) {
+    console.log('accent color:', buildOptions.accentColor);
+  }
 
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({

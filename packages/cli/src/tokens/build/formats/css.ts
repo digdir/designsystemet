@@ -55,10 +55,16 @@ const colormode: Format = {
   },
 };
 
+declare module 'style-dictionary/types' {
+  export interface LocalOptions {
+    replaceCategoryWith?: string;
+  }
+}
+
 const colorcategory: Format = {
   name: 'ds/css-colorcategory',
   format: async ({ dictionary, file, options, platform }) => {
-    const { outputReferences, usesDtcg } = options;
+    const { outputReferences, usesDtcg, replaceCategoryWith = '' } = options;
     const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -72,7 +78,10 @@ const colorcategory: Format = {
       }),
       (token: TransformedToken) => ({
         ...token,
-        name: token.name.replace(new RegExp(`-(${colorCategories.main}|${colorCategories.support})-`), '-'),
+        name: token.name.replace(
+          new RegExp(`-(${colorCategories.main}|${colorCategories.support})-`),
+          replaceCategoryWith ? `-${replaceCategoryWith}-` : '-',
+        ),
       }),
     );
 

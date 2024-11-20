@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
-import { buildOptions } from '../build.js';
+import { DEFAULT_COLOR, buildOptions } from '../build.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
@@ -70,7 +70,7 @@ export type GetStyleDictionaryConfig = (
   options: {
     outPath?: string;
   },
-) => StyleDictionaryConfig;
+) => StyleDictionaryConfig | { config: StyleDictionaryConfig; permutationOverrides?: Partial<ThemePermutation> }[];
 
 const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme }, { outPath }) => {
   const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
@@ -114,7 +114,7 @@ const colorCategoryVariables =
     const isDefault = color === buildOptions?.accentColor;
     const selector = `${isDefault ? ':root, ' : ''}[data-color="${color}"]`;
 
-    return {
+    const config: StyleDictionaryConfig = {
       usesDtcg,
       preprocessors: ['tokens-studio'],
       platforms: {
@@ -143,6 +143,31 @@ const colorCategoryVariables =
         },
       },
     };
+    if (isDefault && color !== DEFAULT_COLOR) {
+      console.log(
+        `Creating "${DEFAULT_COLOR}" color variables pointing to "${color}", since a color named "${DEFAULT_COLOR}" is not defined`,
+      );
+      // Create a --ds-color-accent-* scale which points to the default color
+      const defaultColorConfig = R.mergeDeepRight(config, {
+        platforms: {
+          css: {
+            selector: ':root',
+            files: [
+              {
+                ...config.platforms?.css?.files?.[0],
+                destination: `color/${DEFAULT_COLOR}.css`,
+              },
+            ],
+            options: { replaceCategoryWith: DEFAULT_COLOR },
+          },
+        },
+      } satisfies StyleDictionaryConfig);
+      return [
+        { config },
+        { config: defaultColorConfig, permutationOverrides: { 'main-color': `${DEFAULT_COLOR} → ${color}` } },
+      ];
+    }
+    return config;
   };
 
 const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => {
@@ -308,24 +333,29 @@ export const getConfigsForThemeDimensions = (
 
   const permutations = getMultidimensionalThemes(themes, dimensions);
   return permutations
-    .map(({ selectedTokenSets, permutation }) => {
+    .flatMap(({ selectedTokenSets, permutation }) => {
       const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
       const [source, include] = paritionPrimitives(setsWithPaths);
 
-      const config_ = getConfig(permutation, { outPath });
+      const configOrConfigs = getConfig(permutation, { outPath });
+      const configs_ = Array.isArray(configOrConfigs) ? configOrConfigs : [{ config: configOrConfigs }];
 
-      const config: StyleDictionaryConfig = {
-        ...config_,
-        log: {
-          ...config_?.log,
-          verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
-        },
-        source,
-        include,
-      };
-
-      return { permutation, config };
+      const configs: SDConfigForThemePermutation[] = configs_.map(({ config, permutationOverrides }) => {
+        return {
+          permutation: { ...permutation, ...permutationOverrides },
+          config: {
+            ...config,
+            log: {
+              ...config?.log,
+              verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
+            },
+            source,
+            include,
+          },
+        };
+      });
+      return configs;
     })
     .sort();
 };

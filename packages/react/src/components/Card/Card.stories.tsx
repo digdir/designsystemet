@@ -47,12 +47,12 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  color: 'neutral',
+  'data-color': 'neutral',
 };
 
 export const Variants: StoryFn<typeof Card> = () => (
   <>
-    <Card color='neutral'>
+    <Card data-color='neutral'>
       <Card.Block>
         <img src={cat1} alt='katt' />
       </Card.Block>
@@ -65,7 +65,7 @@ export const Variants: StoryFn<typeof Card> = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card color='subtle'>
+    <Card data-color='subtle'>
       <Card.Block>
         <img src={cat2} alt='katt' />
       </Card.Block>
@@ -78,7 +78,7 @@ export const Variants: StoryFn<typeof Card> = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card color='brand1'>
+    <Card data-color='brand1'>
       <Card.Block>
         <img src={cat3} alt='katter' />
       </Card.Block>
@@ -91,7 +91,7 @@ export const Variants: StoryFn<typeof Card> = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card color='brand2'>
+    <Card data-color='brand2'>
       <Card.Block>
         <img src={cat4} alt='katt' />
       </Card.Block>
@@ -104,7 +104,7 @@ export const Variants: StoryFn<typeof Card> = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card color='brand3'>
+    <Card data-color='brand3'>
       <Card.Block>
         <img src={cat5} alt='katt' />
       </Card.Block>
@@ -152,7 +152,7 @@ export const Media: Story = () => (
 );
 
 export const Video: Story = () => (
-  <Card color='neutral' style={{ maxWidth: '320px' }}>
+  <Card data-color='neutral' style={{ maxWidth: '320px' }}>
     <Card.Block>
       <iframe
         data-chromatic='ignore'
@@ -207,7 +207,7 @@ export const Composed: Story = () => (
           }}
         >
           <Heading>Rolle 1</Heading>
-          <Button variant='secondary' color='danger' data-size='sm'>
+          <Button variant='secondary' data-color='danger' data-size='sm'>
             <TrashFillIcon aria-hidden />
             Fjern
           </Button>
@@ -252,7 +252,7 @@ export const Composed: Story = () => (
 
 export const WithLink: Story = (args) => (
   <>
-    <Card {...args} color='brand1'>
+    <Card {...args} data-color='brand1'>
       <Card.Block>
         <img src={cat5} alt='' />
       </Card.Block>
@@ -274,7 +274,7 @@ export const WithLink: Story = (args) => (
         <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
     </Card>
-    <Card {...args} color='neutral'>
+    <Card {...args} data-color='neutral'>
       <Card.Block>
         <Heading>
           <a
@@ -301,7 +301,7 @@ export const WithLink: Story = (args) => (
 
 export const AsLink: Story = (args) => (
   <>
-    <Card {...args} color='brand1' asChild>
+    <Card {...args} data-color='brand1' asChild>
       <a
         href='https://designsystemet.no'
         target='_blank'
@@ -318,7 +318,7 @@ export const AsLink: Story = (args) => (
         </Card.Block>
       </a>
     </Card>
-    <Card {...args} color='neutral' asChild>
+    <Card {...args} data-color='neutral' asChild>
       <a
         href='https://designsystemet.no'
         target='_blank'
@@ -336,7 +336,7 @@ export const AsLink: Story = (args) => (
 
 export const AsButton: Story = (args) => (
   <>
-    <Card {...args} color='brand1' asChild>
+    <Card {...args} data-color='brand1' asChild>
       <button type='button'>
         <Card.Block>
           <Heading>Button Card with blocks</Heading>
@@ -349,7 +349,7 @@ export const AsButton: Story = (args) => (
         </Card.Block>
       </button>
     </Card>
-    <Card {...args} color='neutral' asChild>
+    <Card {...args} data-color='neutral' asChild>
       <button type='button'>
         <Heading>Link Card</Heading>
         <Paragraph>

@@ -1,3 +1,5 @@
+import type { Color } from './colors';
+
 export type Size = 'sm' | 'md' | 'lg';
 
 export type PortalProps = {
@@ -11,4 +13,9 @@ export type PortalProps = {
 
 export type DefaultProps = {
   'data-size'?: Size;
+  /**
+   * Sets a color palette which may be used by descendants. Does not affect this component.
+   * If left unspecified, the color is inherited from the nearest ancestor with data-color.
+   */
+  'data-color'?: Color;
 };

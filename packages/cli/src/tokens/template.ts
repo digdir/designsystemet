@@ -2,9 +2,11 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import * as R from 'ramda';
-import originalColorJson from '../../../../design-tokens/semantic/color.json';
-import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json';
-import originalThemeJson from '../../../../design-tokens/themes/theme.json';
+import originalColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
+import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
+  type: 'json',
+};
+import originalThemeJson from '../../../../design-tokens/themes/theme.json' with { type: 'json' };
 import { stringify } from './write';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
