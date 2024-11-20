@@ -24,7 +24,7 @@
 @import url('./link.css') layer(ds.components);
 @import url('./fieldset.css') layer(ds.components);
 @import url('./dropdown.css') layer(ds.components);
-@import url('./chip') layer(ds.components);
+@import url('./chip.css') layer(ds.components);
 @import url('./divider.css') layer(ds.components);
 @import url('./tabs.css') layer(ds.components);
 @import url('./pagination.css') layer(ds.components);
