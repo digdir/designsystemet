@@ -11,12 +11,14 @@ export default {
   component: SkipLink,
 } satisfies Meta;
 
-export const Preview: Story = () => (
+export const Preview: Story = (args) => (
   <>
     <Paragraph>
       For å vise skiplinken, tab til dette eksempelet, eller klikk inni
       eksempelet og trykk <kbd>Tab</kbd>.
-      <SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
+      <SkipLink {...args} href='#main-content'>
+        Hopp til hovedinnhold
+      </SkipLink>
     </Paragraph>
     <main id='main-content' tabIndex={-1}>
       Region som kan motta fokus fra skiplink.

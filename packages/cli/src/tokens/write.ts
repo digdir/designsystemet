@@ -4,11 +4,15 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorMode } from '../colors/types.js';
-import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json';
-import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json';
-import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json';
-import themeBaseFile from './design-tokens/template/themes/theme-base-file.json';
-import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json';
+import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
+import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
+  type: 'json',
+};
+import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
+  type: 'json',
+};
+import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
+import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
 import type { Collection, Colors, File, Tokens, TokensSet, TypographyModes } from './types.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';

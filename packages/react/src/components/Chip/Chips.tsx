@@ -2,23 +2,32 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 import { Input } from '../form/Input';
 
 type ChipBaseProps = {
+  /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+   */
+  'data-color'?: Color;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
   asChild?: boolean;
-} & DefaultProps;
+};
 
 export type ChipRemovableProps = ChipButtonProps;
 export type ChipRadioProps = ChipCheckboxProps;
-export type ChipButtonProps = ChipBaseProps &
-  ButtonHTMLAttributes<HTMLButtonElement>;
-export type ChipCheckboxProps = ChipBaseProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>;
+export type ChipButtonProps = MergeRight<
+  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
+  ChipBaseProps
+>;
+export type ChipCheckboxProps = MergeRight<
+  DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>,
+  ChipBaseProps
+>;
 
 /**
  * Chip.Button used for interaction
@@ -59,7 +68,14 @@ export const ChipRemovable = forwardRef<HTMLButtonElement, ChipRemovableProps>(
  */
 export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
   function ChipCheckbox(
-    { asChild, children, className, 'data-size': size, ...rest },
+    {
+      asChild,
+      children,
+      className,
+      'data-size': size,
+      'data-color': color,
+      ...rest
+    },
     ref,
   ) {
     const inputType = (rest as { type?: string }).type ?? 'checkbox';
@@ -69,6 +85,7 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
       <Component
         className={cl('ds-chip', className)}
         data-size={size}
+        data-color={color}
         ref={ref}
       >
         <Input {...rest} type={inputType} />

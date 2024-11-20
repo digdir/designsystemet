@@ -1,7 +1,7 @@
 .ds-skiplink {
   --dsc-skiplink-padding: var(--ds-spacing-4);
-  --dsc-skiplink-background-color: var(--ds-color-accent-surface-hover);
-  --dsc-skiplink-color: var(--ds-color-accent-text-default);
+  --dsc-skiplink-background-color: var(--ds-color-surface-hover);
+  --dsc-skiplink-color: var(--ds-color-text-default);
 
   @composes ds-sr-only from './base/base.css';
 }

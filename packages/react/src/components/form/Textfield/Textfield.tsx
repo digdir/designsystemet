@@ -6,14 +6,17 @@ import { ValidationMessage } from '../../ValidationMessage';
 import {
   Field,
   FieldAffix,
-  FieldAffixWrapper,
+  FieldAffixes,
   type FieldCounterProps,
   FieldDescription,
 } from '../Field';
 import { Input, type InputProps } from '../Input';
 import { Textarea, type TextareaProps } from '../Textarea';
 
-type InputProps_ = Omit<InputProps, 'prefix' | 'className' | 'style'>;
+type InputProps_ = Omit<
+  InputProps,
+  'prefix' | 'className' | 'style' | 'data-color'
+>;
 type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
 type SharedTextfieldProps = {
@@ -35,7 +38,7 @@ type SharedTextfieldProps = {
    * Pass a number to set a limit, or an object to configure the counter
    */
   counter?: FieldCounterProps | number;
-} & DefaultProps;
+} & Omit<DefaultProps, 'data-color'>;
 
 type TextfieldTextareaProps = {
   /** Use to render a `Textarea` instead of `Input` for multiline support  */
@@ -84,7 +87,7 @@ export const Textfield = forwardRef<
     <Field className={className} data-size={size} style={style}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
-      <FieldAffixWrapper>
+      <FieldAffixes>
         {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
         {multiline === true ? (
           <Textarea
@@ -100,7 +103,7 @@ export const Textfield = forwardRef<
           />
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
-      </FieldAffixWrapper>
+      </FieldAffixes>
       {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter

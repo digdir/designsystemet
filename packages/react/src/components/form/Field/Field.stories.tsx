@@ -21,6 +21,12 @@ export default {
       mapping: { textarea: Textarea, input: Input, select: Select },
     },
   },
+  parameters: {
+    customStyles: {
+      maxWidth: 600,
+      width: '90vw',
+    },
+  },
 } as Meta;
 
 // TMP toggles to test a11yField utility
@@ -80,28 +86,28 @@ export const Preview: Story = (args) => {
 // @ts-expect-error ts2559: Preview.args uses more properties for testing than what is supported by <Field>
 Preview.args = toggles;
 
-export const Adornments: Story = () => (
+export const Affix: Story = () => (
   <div>
     <Field>
       <Label>Hvor mange kroner koster det per måned?</Label>
-      <Field.AffixWrapper>
+      <Field.Affixes>
         <Field.Affix>NOK</Field.Affix>
         <Input />
-        <Field.Affix>pr.mnd</Field.Affix>
-      </Field.AffixWrapper>
+        <Field.Affix>pr. mnd.</Field.Affix>
+      </Field.Affixes>
     </Field>
 
     <Field>
       <Label>Hvor mange kilo veier eplene du har valgt?</Label>
-      <Field.AffixWrapper>
+      <Field.Affixes>
         <Textarea rows={2} cols={4} />
         <Field.Affix>KG</Field.Affix>
-      </Field.AffixWrapper>
+      </Field.Affixes>
     </Field>
 
     <Field>
       <Label>Hvor mange kroner koster det?</Label>
-      <Field.AffixWrapper>
+      <Field.Affixes>
         <Field.Affix>NOK</Field.Affix>
         <Select>
           <Select.Option value='-1'>Velg &hellip;</Select.Option>
@@ -109,7 +115,46 @@ export const Adornments: Story = () => (
           <Select.Option value='20'>20</Select.Option>
           <Select.Option value='30'>30</Select.Option>
         </Select>
-      </Field.AffixWrapper>
+      </Field.Affixes>
+    </Field>
+
+    <Field>
+      <Label>No affix</Label>
+      <Field.Affixes>
+        <Input />
+      </Field.Affixes>
+    </Field>
+
+    <Field>
+      <Label>No affix and small size</Label>
+      <Field.Affixes>
+        <Input size={10} />
+      </Field.Affixes>
+    </Field>
+
+    <Field>
+      <Label>No affix and huge size</Label>
+      <Field.Affixes>
+        <Input size={9999} />
+      </Field.Affixes>
+    </Field>
+
+    <Field>
+      <Label>Affix and small size</Label>
+      <Field.Affixes>
+        <Field.Affix>NOK</Field.Affix>
+        <Input size={10} />
+        <Field.Affix>pr. mnd.</Field.Affix>
+      </Field.Affixes>
+    </Field>
+
+    <Field>
+      <Label>Affix and huge size</Label>
+      <Field.Affixes>
+        <Field.Affix>NOK</Field.Affix>
+        <Input size={50} />
+        <Field.Affix>pr. mnd.</Field.Affix>
+      </Field.Affixes>
     </Field>
   </div>
 );
