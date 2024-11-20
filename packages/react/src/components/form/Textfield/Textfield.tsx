@@ -6,7 +6,7 @@ import { ValidationMessage } from '../../ValidationMessage';
 import {
   Field,
   FieldAffix,
-  FieldAffixWrapper,
+  FieldAffixes,
   type FieldCounterProps,
   FieldDescription,
 } from '../Field';
@@ -87,7 +87,7 @@ export const Textfield = forwardRef<
     <Field className={className} data-size={size} style={style}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
-      <FieldAffixWrapper>
+      <FieldAffixes>
         {prefix === undefined || <FieldAffix>{prefix}</FieldAffix>}
         {multiline === true ? (
           <Textarea
@@ -103,7 +103,7 @@ export const Textfield = forwardRef<
           />
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
-      </FieldAffixWrapper>
+      </FieldAffixes>
       {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter
