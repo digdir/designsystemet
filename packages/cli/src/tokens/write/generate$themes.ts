@@ -42,7 +42,7 @@ function generateSizeGroup(): ThemeObject_[] {
   ];
 }
 
-const modeDefaults: Record<ColorMode, ThemeObject_> = {
+const colorSchemeDefaults: Record<ColorMode, ThemeObject_> = {
   light: {
     name: 'Light',
     selectedTokenSets: {},
@@ -69,10 +69,10 @@ const modeDefaults: Record<ColorMode, ThemeObject_> = {
 function generateModesGroup(modes: Array<ColorMode>, themes: string[]): ThemeObject_[] {
   return modes.map(
     (mode): ThemeObject_ => ({
-      ...modeDefaults[mode],
+      ...colorSchemeDefaults[mode],
       selectedTokenSets: Object.fromEntries([
-        [`primitives/modes/colors/${mode}/global`, TokenSetStatus.ENABLED],
-        ...themes.map((theme) => [`primitives/modes/colors/${mode}/${theme}`, TokenSetStatus.ENABLED]),
+        [`primitives/modes/color-scheme/${mode}/global`, TokenSetStatus.ENABLED],
+        ...themes.map((theme) => [`primitives/modes/color-scheme/${mode}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
       group: 'Mode',
     }),
