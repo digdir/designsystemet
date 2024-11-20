@@ -19,7 +19,7 @@ function makeTokenCommands() {
     .command('build')
     .description('Build Designsystemet tokens')
     .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
-    .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './dist/tokens')
+    .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './build')
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {

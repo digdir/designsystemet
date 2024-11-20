@@ -8,7 +8,9 @@
         "apps/storybook/docs-components",
         "apps/storybook/docs-components/*"
       ],
-      "@assets/*": ["apps/storybook/assets/*"]
+      "@assets/*": ["apps/storybook/assets/*"],
+      // Prevent imports from e.g. 'packages/react', which will not work for consumers
+      "packages/*": ["this/dir/does/not/exist/*"]
     },
     "target": "ES2022",
     "module": "ESNext",
