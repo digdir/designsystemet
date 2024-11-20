@@ -7,11 +7,9 @@ import * as TextfieldStories from './Textfield.stories';
 
 # Textfield
 
-`Textfield` kalles tekstfelt på norsk. Det er et inndatafelt som gir brukerne mulighet til å skrive korte tekster eller tall.
- 
+ Textfield er en samensatt komponent for [`input`](/docs/komponenter-input--docs) og [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette multiline={true/false} . `Textfield` har også innebygd `label`, `description`, `validationmessage`, `affix` og `counter`.
 <br/>
 
-- Du kan velge mellom både `input` og `textarea` for å lage tekstfelt.
 - `Textfield` er en ferdig sammensatt `field` komponent for standard oppsett av et tekstfelt.  
 - Ønsker du mer kontroll eller funksjonalitet, kan du bruke [`field`](/docs/komponenter-field--docs)-komponenten direkte.
 
@@ -26,47 +24,33 @@ import { Textfield } from '@digdir/designsystemet-react';
 
 <Textfield label="Navn" />
 ```
+## Eksempler
 
-## Multiline
+### Multiline
 
 Du endrer til `textarea` ved å sette `multiline` til `true`. Da kan brukerne skrive lengre tekster.
 
 <Canvas of={TextfieldStories.Rows} />
 
-## Prefix/Suffix
+### Prefix/Suffix
 
 Prefixer og suffixer er nyttige for å vise enheter, valuta eller annen informasjon som er relevant for feltet. Disse skal **ikke** brukes alene, da skjermlesere ikke leser dem opp. Det er viktig at samme informasjon som vises i prefixet eller suffixet, også inkluderes i ledeteksten.
 
 <Canvas of={TextfieldStories.Affix} />
 
-## Antall tegn
+### Antall tegn
 
 Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
 
 <Canvas of={TextfieldStories.Counter} />
 
-## Kontrollert
+### Kontrollert
 
 <Canvas of={TextfieldStories.Controlled} />
 
 
 ## Retningslinjer for når du skal bruke `Textfield`
 
-Vi bruker `textfield` når vi vil gi brukeren mulighet til å skrive tekst eller korte svar på maksimalt én linje. Dette kan for eksempel være navn eller telefonnummer.
-
-<br />
-
-### Passer til
-
-- å gi mulighet for korte tekster eller svar.
-- å legge inn tall, for eksempel et telefonnummer.
-
-### Passer ikke til 
-
-- å gi lengre svar, bruk heller `textarea`.
-- å legge inn formaterte data, som markdown.
-
-  <br />
 
 ### Plassering av ledeteksten
 
