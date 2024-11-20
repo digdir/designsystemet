@@ -50,7 +50,7 @@
     }
 
     &:has(input:focus-visible) {
-      @composes ds-focus--visible from './base/base.css';
+      @composes ds-focus--visible from './base.css';
     }
 
     &:has(input:only-child) {

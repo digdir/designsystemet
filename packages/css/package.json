@@ -13,9 +13,7 @@
     "./*": "./dist/*"
   },
   "files": [
-    "dist",
-    "base/*.css",
-    "*.css"
+    "dist/**/*.css"
   ],
   "publishConfig": {
     "access": "public"
