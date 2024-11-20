@@ -221,19 +221,19 @@ export const Showcase: StoryFn = () => {
             Hva kan vi hjelpe deg med?
           </Heading>
           <div className={classes.helpCards}>
-            <Card color='brand1'>
+            <Card data-color='brand1'>
               <Heading>Sikkerhet og drift</Heading>
               <Paragraph>
                 Most provide as with carried business are much better more the.
               </Paragraph>
             </Card>
-            <Card color='brand2'>
+            <Card data-color='brand2'>
               <Heading>Skole og utdanning</Heading>
               <Paragraph>
                 Most provide as with carried business are much better more the.
               </Paragraph>
             </Card>
-            <Card color='brand3'>
+            <Card data-color='brand3'>
               <Heading>
                 <a href='#preview'>Mat og helse</a>
               </Heading>
@@ -255,14 +255,14 @@ export const Showcase: StoryFn = () => {
         <div className={cl(classes.card, classes.tag)}>
           <Heading>Emner</Heading>
           <div className={classes.tagList}>
-            <Tag color='brand1'>Data og IKT</Tag>
-            <Tag color='brand2'>Mat og ernæring</Tag>
-            <Tag color='brand3'>Sport og Idrett</Tag>
-            <Tag color='neutral'>Politikk og samfunn</Tag>
-            <Tag color='success'>Utenriks</Tag>
-            <Tag color='info'>Helse og velvære</Tag>
-            <Tag color='danger'>PC Gaming</Tag>
-            <Tag color='warning'>Trening og livsstil</Tag>
+            <Tag data-color='brand1'>Data og IKT</Tag>
+            <Tag data-color='brand2'>Mat og ernæring</Tag>
+            <Tag data-color='brand3'>Sport og Idrett</Tag>
+            <Tag data-color='neutral'>Politikk og samfunn</Tag>
+            <Tag data-color='success'>Utenriks</Tag>
+            <Tag data-color='info'>Helse og velvære</Tag>
+            <Tag data-color='danger'>PC Gaming</Tag>
+            <Tag data-color='warning'>Trening og livsstil</Tag>
           </div>
         </div>
         <div className={cl(classes.card, classes.switches)}>
@@ -320,18 +320,18 @@ export const Showcase: StoryFn = () => {
           </Tabs>
           <Paragraph>
             For å kunne bli registrert i{' '}
-            <Link href='#' color='neutral'>
+            <Link href='#' data-color='neutral'>
               Frivillighetsregisteret
             </Link>
             , må organisasjonen drive frivillig virksomhet. Det er bare
             foreninger,{' '}
-            <Link href='#' color='neutral'>
+            <Link href='#' data-color='neutral'>
               stiftelser
             </Link>{' '}
             og som kan registreres. Virksomheten kan ikke dele ut midler til
             fysiske personer. Virksomheten må ha et styre. Virksomheten må være
             registrert i{' '}
-            <Link href='#' color='neutral'>
+            <Link href='#' data-color='neutral'>
               Enhetsregisteret
             </Link>{' '}
             før den kan bli registrert.
@@ -339,7 +339,7 @@ export const Showcase: StoryFn = () => {
         </div>
         <div className={cl(classes.card, classes.faq)}>
           <Heading className={classes.cardTitle}>Ofte stillte spørsmål</Heading>
-          <Accordion color='brand3' border>
+          <Accordion data-color='brand3' border>
             <Accordion.Item>
               <Accordion.Heading>
                 Hvem kan registrere seg i Frivillighetsregisteret?

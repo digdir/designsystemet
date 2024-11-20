@@ -12,7 +12,9 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
+import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 import { Context } from './PopoverTriggerContext';
 
 // Make React support popovertarget attribute
@@ -30,43 +32,45 @@ declare global {
   }
 }
 
-export type PopoverProps = {
-  /**
-   * id to connect the trigger with the popover - required when used without Popover.TriggerContext.
-   */
-  id?: string;
-  /**
-   * Placement of the tooltip on the trigger.
-   * @default top
-   */
-  placement?: Placement;
-  /**
-   * Variant of the popover.
-   * @default default
-   */
-  variant?: 'default' | 'info' | 'warning' | 'danger';
-  /**
-   * Use this to make the popover controlled.
-   * @default undefined
-   */
-  open?: boolean;
-  /**
-   * Callback when the popover wants to open.
-   */
-  onOpen?: () => void;
-  /**
-   * Callback when the popover wants to close.
-   */
-  onClose?: () => void;
-  /**
-   * Whether to enable auto placement.
-   * @default true
-   */
-  autoPlacement?: boolean;
+export type PopoverProps = MergeRight<
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
+  {
+    /**
+     * id to connect the trigger with the popover - required when used without Popover.Context.
+     */
+    id?: string;
+    /**
+     * Placement of the tooltip on the trigger.
+     * @default top
+     */
+    placement?: Placement;
+    /**
+     * The color of the popover.
+     * @default neutral
+     */
+    'data-color'?: Color;
+    /**
+     * Use this to make the popover controlled.
+     * @default undefined
+     */
+    open?: boolean;
+    /**
+     * Callback when the popover wants to open.
+     */
+    onOpen?: () => void;
+    /**
+     * Callback when the popover wants to close.
+     */
+    onClose?: () => void;
+    /**
+     * Whether to enable auto placement.
+     * @default true
+     */
+    autoPlacement?: boolean;
 
-  asChild?: boolean;
-} & HTMLAttributes<HTMLDivElement> &
-  DefaultProps;
+    asChild?: boolean;
+  }
+>;
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
@@ -77,7 +81,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onOpen,
       open,
       placement = 'top',
-      variant = 'default',
       autoPlacement = true,
       asChild = false,
       ...rest
@@ -167,7 +170,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     return (
       <Component
         className={cl('ds-popover', className)}
-        data-variant={variant}
         id={id || popoverId}
         // @ts-ignore @types/react-dom does not understand popover yet
         popover='manual'

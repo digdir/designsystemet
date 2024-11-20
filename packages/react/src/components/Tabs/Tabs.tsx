@@ -1,17 +1,24 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
+import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 
-export type TabsProps = {
-  /** Controlled state for `Tabs` component. */
-  value?: string;
-  /** Default value. */
-  defaultValue?: string;
-  /** Callback with selected `TabItem` `value` */
-  onChange?: (value: string) => void;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'> &
-  DefaultProps;
+export type TabsProps = MergeRight<
+  DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
+  {
+    /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     */
+    'data-color'?: Color;
+    /** Controlled state for `Tabs` component. */
+    value?: string;
+    /** Default value. */
+    defaultValue?: string;
+    /** Callback with selected `TabItem` `value` */
+    onChange?: (value: string) => void;
+  }
+>;
 
 export type ContextProps = {
   value?: string;

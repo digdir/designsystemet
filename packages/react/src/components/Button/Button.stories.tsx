@@ -42,7 +42,7 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    color: 'accent',
+    'data-color': 'accent',
     'data-size': 'md',
     icon: false,
   },
@@ -50,7 +50,7 @@ export const Preview: Story = {
 
 export const Primary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='accent'>
+    <Button variant='primary' data-color='accent'>
       Lagre
     </Button>
   </>
@@ -58,7 +58,7 @@ export const Primary: StoryFn<typeof Button> = () => (
 
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='secondary' color='accent'>
+    <Button variant='secondary' data-color='accent'>
       Avbryt
     </Button>
   </>
@@ -66,7 +66,7 @@ export const Secondary: StoryFn<typeof Button> = () => (
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='tertiary' color='accent'>
+    <Button variant='tertiary' data-color='accent'>
       <PencilWritingIcon aria-hidden />
       Rediger
     </Button>
@@ -75,13 +75,13 @@ export const Tertiary: StoryFn<typeof Button> = () => (
 
 export const Accent: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='accent'>
+    <Button variant='primary' data-color='accent'>
       Gå videre
     </Button>
-    <Button variant='secondary' color='accent'>
+    <Button variant='secondary' data-color='accent'>
       Fortsett senere
     </Button>
-    <Button variant='tertiary' color='accent'>
+    <Button variant='tertiary' data-color='accent'>
       Avbryt
     </Button>
   </>
@@ -101,15 +101,15 @@ AccentPressed.parameters = {
 
 export const Neutral: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='neutral'>
+    <Button variant='primary' data-color='neutral'>
       <PrinterSmallIcon aria-hidden />
       Skriv ut
     </Button>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='secondary' data-color='neutral'>
       <PencilWritingIcon aria-hidden />
       Rediger
     </Button>
-    <Button variant='tertiary' color='neutral'>
+    <Button variant='tertiary' data-color='neutral'>
       <ArrowForwardIcon aria-hidden />
       Videresend
     </Button>
@@ -130,15 +130,15 @@ NeutralPressed.parameters = {
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='danger'>
+    <Button variant='primary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
-    <Button variant='secondary' color='danger'>
+    <Button variant='secondary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
-    <Button variant='tertiary' color='danger'>
+    <Button variant='tertiary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
@@ -159,13 +159,13 @@ DangerPressed.parameters = {
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='neutral'>
+    <Button variant='primary' data-color='neutral'>
       Publiser
     </Button>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='secondary' data-color='neutral'>
       Lagre kladd
     </Button>
-    <Button variant='tertiary' color='danger'>
+    <Button variant='tertiary' data-color='danger'>
       Forkast
     </Button>
   </>
@@ -182,11 +182,11 @@ export const AsLink: StoryFn<typeof Button> = () => (
 
 export const TextAndIcon: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' color='neutral'>
+    <Button variant='primary' data-color='neutral'>
       Start utfylling
       <ArrowRightIcon aria-hidden />
     </Button>
-    <Button variant='secondary' color='neutral'>
+    <Button variant='secondary' data-color='neutral'>
       <ArrowUndoIcon aria-hidden />
       Angre
     </Button>
@@ -236,19 +236,29 @@ export const Icons: StoryFn<typeof Button> = () => (
 export const IconOnly: StoryFn<typeof Button> = () => (
   <>
     <Tooltip content='Legg til ny'>
-      <Button icon color='neutral' variant='tertiary' aria-label='Legg til ny'>
+      <Button
+        icon
+        data-color='neutral'
+        variant='tertiary'
+        aria-label='Legg til ny'
+      >
         <PlusCircleIcon aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Varslinger'>
-      <Button icon color='neutral' variant='tertiary' aria-label='Varslinger'>
+      <Button
+        icon
+        data-color='neutral'
+        variant='tertiary'
+        aria-label='Varslinger'
+      >
         <BellIcon aria-hidden />
       </Button>
     </Tooltip>
     <Tooltip content='Instillinger'>
       <Button
         icon
-        color='neutral'
+        data-color='neutral'
         variant='tertiary'
         aria-label='Innstillinger'
       >

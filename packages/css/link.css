@@ -1,11 +1,13 @@
 .ds-link {
+  /* default color: accent */
   --dsc-link-background--active: var(--ds-color-accent-surface-default);
-  --dsc-link-background--focus: var(--ds-color-focus-outer);
   --dsc-link-color--active: var(--ds-color-accent-text-default);
-  --dsc-link-color--focus: var(--ds-color-focus-inner);
   --dsc-link-color--hover: var(--ds-color-accent-text-default);
-  --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-color: var(--ds-color-accent-text-subtle);
+
+  --dsc-link-background--focus: var(--ds-color-focus-outer);
+  --dsc-link-color--focus: var(--ds-color-focus-inner);
+  --dsc-link-color--visited: var(--ds-global-purple-12);
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
 
@@ -22,11 +24,15 @@
   /**
    * Colors
    */
+  &[data-color] {
+    --dsc-link-background--active: var(--ds-color-surface-default);
+    --dsc-link-color--active: var(--ds-color-text-default);
+    --dsc-link-color--hover: var(--ds-color-text-default);
+    --dsc-link-color: var(--ds-color-text-subtle);
+  }
   &[data-color='neutral'] {
-    --dsc-link-background--active: var(--ds-color-neutral-surface-default);
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
     --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
-    --dsc-link-color--visited: var(--ds-global-purple-12);
     --dsc-link-color: var(--ds-color-neutral-text-default);
   }
 

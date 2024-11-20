@@ -52,7 +52,12 @@ export default {
 
 export const Preview: StoryFn<typeof Modal> = (args) => (
   <Modal.TriggerContext>
-    <Modal.Trigger>Open Modal</Modal.Trigger>
+    <Modal.Trigger
+      data-color={args['data-color']}
+      data-size={args['data-size']}
+    >
+      Open Modal
+    </Modal.Trigger>
     <Modal {...args}>
       <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         Modal header
