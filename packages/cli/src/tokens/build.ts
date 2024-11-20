@@ -35,7 +35,7 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  'color-mode': { getConfig: configs.colorModeVariables, dimensions: ['mode'] },
+  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['mode'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },

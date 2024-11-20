@@ -6,9 +6,9 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.theme.color-mode.light {
+@layer ds.theme.color-scheme.light {
   :root,
-  [data-ds-color-mode='light'] {
+  [data-color-scheme='light'] {
     --ds-color-accent-1: #fefeff;
     --ds-color-accent-2: #eef4fa;
     --ds-color-accent-3: #d4e5f3;
@@ -316,7 +316,7 @@
   }
 
   @media (prefers-color-scheme: light) {
-    [data-ds-color-mode='auto'] {
+    [data-color-scheme='auto'] {
       --ds-color-accent-1: #fefeff;
       --ds-color-accent-2: #eef4fa;
       --ds-color-accent-3: #d4e5f3;
@@ -852,8 +852,8 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.theme.color-mode.dark {
-  [data-ds-color-mode='dark'] {
+@layer ds.theme.color-scheme.dark {
+  [data-color-scheme='dark'] {
     --ds-color-accent-1: #001c36;
     --ds-color-accent-2: #002445;
     --ds-color-accent-3: #00315c;
@@ -1161,7 +1161,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    [data-ds-color-mode='auto'] {
+    [data-color-scheme='auto'] {
       --ds-color-accent-1: #001c36;
       --ds-color-accent-2: #002445;
       --ds-color-accent-3: #00315c;
@@ -1474,8 +1474,8 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.theme.color-mode.contrast {
-  [data-ds-color-mode='contrast'] {
+@layer ds.theme.color-scheme.contrast {
+  [data-color-scheme='contrast'] {
     --ds-color-accent-1: #000409;
     --ds-color-accent-2: #001427;
     --ds-color-accent-3: #002445;

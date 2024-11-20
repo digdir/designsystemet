@@ -75,7 +75,7 @@ const CodeSnippet = ({
   return (
     <div
       className={cl(classes.codeSnippet, className)}
-      data-ds-color-mode='dark'
+      data-color-scheme='dark'
       {...rest}
     >
       {snippet && (

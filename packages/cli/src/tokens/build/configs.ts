@@ -72,9 +72,9 @@ export type GetStyleDictionaryConfig = (
   },
 ) => StyleDictionaryConfig | { config: StyleDictionaryConfig; permutationOverrides?: Partial<ThemePermutation> }[];
 
-const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme }, { outPath }) => {
-  const selector = `${mode === 'light' ? ':root, ' : ''}[data-ds-color-mode="${mode}"]`;
-  const layer = `ds.theme.color-mode.${mode}`;
+const colorSchemeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme }, { outPath }) => {
+  const selector = `${mode === 'light' ? ':root, ' : ''}[data-color-scheme="${mode}"]`;
+  const layer = `ds.theme.color-scheme.${mode}`;
 
   return {
     usesDtcg,
@@ -93,7 +93,7 @@ const colorModeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme },
         transforms: dsTransformers,
         files: [
           {
-            destination: `color-mode/${mode}.css`,
+            destination: `color-scheme/${mode}.css`,
             format: formats.colormode.name,
             filter: (token) => !token.isSource && typeEquals('color', token),
           },
@@ -315,7 +315,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
 };
 
 export const configs = {
-  colorModeVariables,
+  colorSchemeVariables,
   mainColorVariables: colorCategoryVariables('main'),
   supportColorVariables: colorCategoryVariables('support'),
   typographyVariables,
