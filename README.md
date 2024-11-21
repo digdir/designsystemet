@@ -107,6 +107,67 @@ import { Button } from '@digdir/designsystemet-react';
 
 `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
 
+### 4. Add TypeScript types for colors
+
+Because color names depend on which theme is being used, you have to add the following to your `tsconfig.json` to
+use all your colors in the components which have a `data-color` prop:
+
+#### When using `@digdir/designsystemet-theme`
+
+```jsonc
+{
+  // ...other settings
+  "compilerOptions": {
+    // ...other compilerOptions
+    "types": [
+      // ...other types
+      "@digdir/designsystemet-theme/colors.d.ts"
+      ]
+  },
+}
+```
+
+#### When using a custom theme
+The CLI `designsystemet tokens build` command will output a `colors.d.ts` file to your chosen output directory.
+In the example, replace `<your-path>` with the actual path you used when running the command.
+
+```jsonc
+{
+  // ...other settings
+  "compilerOptions": {
+    // ...other compilerOptions
+    "types": [
+      // ...other types
+      "<your-path>/colors.d.ts"
+      ]
+  },
+}
+```
+
+### 5. Add editor hints for data-color & data-size on HTML elements (optional)
+
+You may want editor hints for `data-color` and `data-size` attributes on HTML elements
+like `<span>` or `<div>`, since these attributes can affect components nested within
+these elements.
+
+This requires augmenting React's built-in types, and is therefore opt-in. If you want this,
+add the following to your `tsconfig.json`:
+
+```jsonc
+{
+  // ...other settings
+  "compilerOptions": {
+    // ...other compilerOptions
+    "types": [
+      // ...other types
+      "@digdir/designsystemet-react/react-types.d.ts"
+      ]
+  },
+}
+```
+
+
+
 ## 🫶 Contributing
 
 Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
