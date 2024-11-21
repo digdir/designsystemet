@@ -5,6 +5,10 @@
   --dsc-button-background: var(--ds-color-accent-base-default);
   --dsc-button-color: var(--ds-color-accent-contrast-default);
   --dsc-button-border-color: transparent;
+  --dsc-button-font-size: var(--ds-font-size-5);
+  --dsc-button-gap: var(--ds-spacing-2);
+  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-button-size: var(--ds-sizing-12);
 
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {
@@ -14,7 +18,7 @@
     --dsc-button-color: var(--ds-color-accent-text-subtle);
   }
   &[data-variant='secondary'] {
-    --dsc-button-border-color: var(--ds-color-accent-border-strong);
+    --dsc-button-border-color: var(--ds-color-accent-border-default);
   }
 
   &[data-color] {
@@ -34,11 +38,6 @@
       --dsc-button-border-color: var(--ds-color-border-strong);
     }
   }
-
-  --dsc-button-font-size: var(--ds-font-size-5);
-  --dsc-button-gap: var(--ds-spacing-2);
-  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-button-size: var(--ds-sizing-12);
 
   align-items: center;
   background: var(--dsc-button-background);
