@@ -6,20 +6,20 @@ import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dicti
 import { type IsCalculatedToken, colorCategories } from '../types.js';
 import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../utils/utils.js';
 
-const prefersColorScheme = (mode: string, content: string) => `
-@media (prefers-color-scheme: ${mode}) {
-  [data-ds-color-mode="auto"] ${content}
+const prefersColorScheme = (colorScheme: string, content: string) => `
+@media (prefers-color-scheme: ${colorScheme}) {
+  [data-color-scheme="auto"] ${content}
 }
 `;
 
-const colormode: Format = {
-  name: 'ds/css-colormode',
+const colorScheme: Format = {
+  name: 'ds/css-colorscheme',
   format: async ({ dictionary, file, options, platform }) => {
     const { allTokens } = dictionary;
     const { outputReferences, usesDtcg } = options;
-    const { selector, mode, layer } = platform;
+    const { selector, colorScheme, layer } = platform;
 
-    const mode_ = mode as string;
+    const colorScheme_ = colorScheme as string;
 
     const header = await fileHeader({ file });
 
@@ -30,7 +30,8 @@ const colormode: Format = {
       usesDtcg,
     });
 
-    const colorSchemeProperty = mode_ === 'dark' || mode_ === 'light' ? `\n  color-scheme: ${mode_};\n` : '';
+    const colorSchemeProperty =
+      colorScheme_ === 'dark' || colorScheme_ === 'light' ? `\n  color-scheme: ${colorScheme_};\n` : '';
 
     const filteredAllTokens = allTokens.filter(
       R.allPass([
@@ -46,7 +47,9 @@ const colormode: Format = {
     );
     const formattedTokens = filteredAllTokens.map(format).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
-    const autoSelectorContent = ['light', 'dark'].includes(mode_) ? prefersColorScheme(mode_, content) : '';
+    const autoSelectorContent = ['light', 'dark'].includes(colorScheme_)
+      ? prefersColorScheme(colorScheme_, content)
+      : '';
     const body = R.isNotNil(layer)
       ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
       : `${selector} ${content} ${autoSelectorContent}\n`;
@@ -61,7 +64,7 @@ declare module 'style-dictionary/types' {
   }
 }
 
-const colorcategory: Format = {
+const colorCategory: Format = {
   name: 'ds/css-colorcategory',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg, replaceCategoryWith = '' } = options;
@@ -167,8 +170,8 @@ const typography: Format = {
 };
 
 export const formats = {
-  colormode,
-  colorcategory,
+  colorScheme,
+  colorCategory,
   semantic,
   typography,
 } satisfies Record<string, Format>;

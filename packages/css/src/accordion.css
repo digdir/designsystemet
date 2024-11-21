@@ -1,0 +1,129 @@
+.ds-accordion-group {
+  /* default color: neutral */
+  --dsc-accordion-background: var(--ds-color-neutral-background-default);
+  --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-default);
+  --dsc-accordion-heading-background--open: var(--ds-color-neutral-background-subtle);
+  --dsc-accordion-heading-background: var(--ds-color-neutral-background-default);
+  --dsc-accordion-border-color: var(--ds-color-neutral-border-subtle);
+
+  &[data-color]:where(:not([data-color='subtle'])) {
+    --dsc-accordion-background: var(--ds-color-background-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-surface-default);
+    --dsc-accordion-heading-background: var(--ds-color-surface-default);
+    --dsc-accordion-border-color: var(--ds-color-border-subtle);
+  }
+
+  &[data-color='neutral'] {
+    --dsc-accordion-background: var(--ds-color-background-default);
+    --dsc-accordion-heading-background--hover: var(--ds-color-surface-default);
+    --dsc-accordion-heading-background--open: var(--ds-color-background-subtle);
+    --dsc-accordion-heading-background: var(--ds-color-background-default);
+  }
+
+  &[data-color='subtle'] {
+    --dsc-accordion-background: var(--ds-color-neutral-background-subtle);
+    --dsc-accordion-heading-background--hover: var(--ds-color-neutral-surface-hover);
+    --dsc-accordion-heading-background--open: var(--ds-color-neutral-surface-default);
+    --dsc-accordion-heading-background: var(--ds-color-neutral-background-subtle);
+  }
+
+  --dsc-accordion-border: 1px solid var(--dsc-accordion-border-color);
+  --dsc-accordion-border-radius: var(--ds-border-radius-md);
+  --dsc-accordion-chevron-gap: var(--ds-spacing-2);
+  --dsc-accordion-chevron-size: var(--ds-spacing-6);
+  --dsc-accordion-chevron-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+
+  --dsc-accordion-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-accordion-size: var(--ds-sizing-14);
+
+  &[data-border] > * {
+    border: var(--dsc-accordion-border);
+
+    &:first-child,
+    &:first-child > :is(summary, u-summary) {
+      border-top-left-radius: var(--dsc-accordion-border-radius);
+      border-top-right-radius: var(--dsc-accordion-border-radius);
+    }
+
+    &:last-child,
+    &:last-child:not([open]) > :is(summary, u-summary) {
+      border-bottom-left-radius: var(--dsc-accordion-border-radius);
+      border-bottom-right-radius: var(--dsc-accordion-border-radius);
+    }
+  }
+}
+
+.ds-accordion__item {
+  background: var(--dsc-accordion-background);
+  border-block: var(--dsc-accordion-border);
+  box-sizing: border-box;
+
+  & > :is(summary, u-summary) {
+    align-items: center;
+    background: var(--dsc-accordion-heading-background);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    list-style: none;
+    min-height: var(--dsc-accordion-size);
+    gap: var(--dsc-accordion-chevron-gap);
+    outline: none;
+    padding: var(--dsc-accordion-padding);
+    position: relative;
+
+    @composes ds-focus from './base.css';
+
+    &:focus-visible {
+      position: relative; /* Ensure foucs outline renders on top */
+    }
+
+    &::before {
+      background: currentcolor;
+      border-radius: var(--ds-border-radius-md);
+      content: '';
+      flex-shrink: 0;
+      height: var(--dsc-accordion-chevron-size);
+      mask: 50% / contain no-repeat var(--dsc-accordion-chevron-url);
+      width: var(--dsc-accordion-chevron-size);
+    }
+  }
+
+  & + & {
+    border-top: 0; /* Skip border-top when .accordion__item is followed by .accordion__item */
+  }
+
+  & > :not(summary, u-summary) {
+    border-radius: inherit;
+    padding: var(--ds-spacing-5, 1rem);
+  }
+
+  &[open] > :is(summary, u-summary) {
+    background: var(--dsc-accordion-heading-background--open);
+
+    &::before {
+      rotate: 180deg;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    & > :is(summary, u-summary):hover {
+      background: var(--dsc-accordion-heading-background--hover);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* biome-ignore lint/correctness/noUnknownProperty: biome does not know about this property yet */
+    interpolate-size: allow-keywords;
+  }
+
+  &::part(details-content) {
+    block-size: 0;
+    overflow-y: clip;
+    transition: content-visibility 400ms allow-discrete, height 400ms;
+  }
+
+  &[open]::part(details-content) {
+    height: auto;
+  }
+}

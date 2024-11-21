@@ -14,7 +14,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cssvar.files": [
-    "packages/theme/brand/digdir/color-mode/light.css",
+    "packages/theme/brand/digdir/color-scheme/light.css",
     "packages/theme/brand/digdir/typography/primary.css",
     "packages/theme/brand/digdir/semantic.css"
   ],

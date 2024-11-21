@@ -87,7 +87,7 @@ export const EksempelTekst: StoryFn = () => (
 );
 
 export const EksempelTekstDark: StoryFn = () => (
-  <div data-ds-color-mode='dark'>
+  <div data-color-scheme='dark'>
     <Heading
       level={1}
       data-size='xl'

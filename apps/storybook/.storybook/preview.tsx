@@ -1,5 +1,5 @@
 import './style.css';
-import '../../../packages/css/index.css';
+import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 import type { Preview } from '@storybook/react';
 
@@ -41,14 +41,14 @@ const getPath = (href: string | undefined): string => {
 
 const components = {
   p: (props: Props) => (
-    <Paragraph {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Paragraph {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   ol: (props: Props) => (
     <List.Ordered
       {...props}
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   ul: (props: Props) => (
@@ -56,7 +56,7 @@ const components = {
       {...props}
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   li: (props: Props) => (
@@ -64,7 +64,7 @@ const components = {
       {...props}
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   a: (props: LinkProps) => {
@@ -76,7 +76,7 @@ const components = {
         {...props}
         href={href}
         className='sb-unstyled'
-        data-ds-color-mode='light'
+        data-color-scheme='light'
       />
     );
   },
@@ -86,27 +86,27 @@ const components = {
       zebra
       className='sb-unstyled'
       style={{ width: '100%' }}
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   thead: (props: Props) => (
-    <Table.Head {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Head {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   tbody: (props: Props) => (
-    <Table.Body {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Body {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   tr: (props: Props) => (
-    <Table.Row {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Row {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   th: (props: Props) => (
     <Table.HeaderCell
       {...props}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   td: (props: Props) => (
-    <Table.Cell {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Cell {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
 };
 
@@ -177,7 +177,7 @@ const preview: Preview = {
       Auto: 'auto',
     },
     defaultTheme: 'Light',
-    attributeName: 'data-ds-color-mode',
+    attributeName: 'data-color-scheme',
     parentSelector:
       '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./tsc-build",
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "types": ["./declarations.d.ts", "./react-types.d.ts"]
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.ts*", "src/**/*.test.ts*", "stories"]
+}
