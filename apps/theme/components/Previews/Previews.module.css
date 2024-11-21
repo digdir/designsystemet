@@ -79,8 +79,8 @@
   gap: 32px;
 }
 
-.preview[data-ds-color-mode='dark'],
-.preview[data-ds-color-mode='contrast'] {
+.preview[data-color-scheme='dark'],
+.preview[data-color-scheme='contrast'] {
   --background: var(--neutral-1);
   --foreground: var(--neutral-2);
 }

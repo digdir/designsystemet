@@ -7,9 +7,11 @@ import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
-import type { BuildConfig, ThemePermutation } from './build/types.js';
+import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
-import { processThemeObject } from './build/utils/getMultidimensionalThemes.js';
+import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
+
+export const DEFAULT_COLOR = 'accent';
 
 type Options = {
   /** Design tokens path */
@@ -33,14 +35,14 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  'color-mode': { getConfig: configs.colorModeVariables, dimensions: ['mode'] },
+  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
     getConfig: configs.typescriptTokens,
-    dimensions: ['mode'],
+    dimensions: ['color-scheme'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
     enabled: () => buildOptions?.preview ?? false,
   },
@@ -81,11 +83,15 @@ export async function buildTokens(options: Options): Promise<void> {
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
 
   if (!buildOptions.accentColor) {
-    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
-    buildOptions.accentColor = firstMainColor?.name;
+    const accentOrFirstMainColor =
+      relevant$themes.find((theme) => theme.name === DEFAULT_COLOR) ||
+      relevant$themes.find((theme) => theme.group === 'main-color');
+    buildOptions.accentColor = accentOrFirstMainColor?.name;
   }
 
-  console.log('default accent color:', buildOptions.accentColor);
+  if (buildOptions.accentColor !== DEFAULT_COLOR) {
+    console.log('accent color:', buildOptions.accentColor);
+  }
 
   const buildAndSdConfigs = R.map(
     (val: BuildConfig) => ({
@@ -108,7 +114,7 @@ export async function buildTokens(options: Options): Promise<void> {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
         if (buildConfig.build) {
-          return await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
+          await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
         }
         await Promise.all(
           sdConfigs.map(async ({ config, permutation }) => {
@@ -131,4 +137,27 @@ export async function buildTokens(options: Options): Promise<void> {
     }
     throw err;
   }
+
+  await writeColorTypeDeclaration($themes, outPath);
+}
+
+async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string) {
+  const colorsFileName = 'colors.d.ts';
+  console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
+  console.log(colorsFileName);
+  const mainAndSupportColors = $themes
+    .filter(
+      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
+    )
+    .map((x) => x.name);
+  const typeDeclaration = `
+import type { MainAndSupportColors as BaseCustomColors } from '@digdir/designsystemet-react/colors';
+
+declare module '@digdir/designsystemet-react/colors' {
+  export interface MainAndSupportColors extends BaseCustomColors {
+${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
+  }
+}
+`.trimStart();
+  await fs.writeFile(path.resolve(outPath, colorsFileName), typeDeclaration, 'utf-8');
 }

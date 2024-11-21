@@ -52,36 +52,6 @@ export const Previews = () => {
           >
             Tema 1 mørk
           </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              theme === 'two' &&
-                appearance === 'light' &&
-                classes.menuItemActive,
-            )}
-            onClick={() => {
-              setTheme('two');
-              setAppearance('light');
-            }}
-          >
-            Tema 2 mørk
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              theme === 'two' &&
-                appearance === 'dark' &&
-                classes.menuItemActive,
-            )}
-            onClick={() => {
-              setTheme('two');
-              setAppearance('dark');
-            }}
-          >
-            Tema 2 mørk
-          </button>
         </div>
       </div>
 

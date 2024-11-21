@@ -13,7 +13,10 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
   setHeadingId: () => {},
 });
 
-export type ErrorSummaryProps = HTMLAttributes<HTMLDivElement> & DefaultProps;
+export type ErrorSummaryProps = Omit<
+  HTMLAttributes<HTMLDivElement> & DefaultProps,
+  'data-color'
+>;
 
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(

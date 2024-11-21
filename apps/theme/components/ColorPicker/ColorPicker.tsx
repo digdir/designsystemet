@@ -61,7 +61,7 @@ export const ColorPicker = ({
           id={popoverId}
           placement='top'
           data-size='sm'
-          variant={colorError === 'none' ? 'default' : 'warning'}
+          data-color={colorError === 'none' ? 'neutral' : 'warning'}
         >
           <div>
             {colorError === 'decorative' && (

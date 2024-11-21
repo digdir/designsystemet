@@ -1,5 +1,7 @@
+import fs from 'node:fs';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 
 // These are dependencies, but are not in our package.json
@@ -42,6 +44,35 @@ export default [
       },
     ],
     external: [...dependencies, ...dependenciesSubmodules],
-    plugins: [resolve(), commonjs()],
+    plugins: [
+      resolve(),
+      commonjs(),
+      copy({
+        targets: [
+          {
+            src: './tsc-build/**/*.d.ts*',
+            dest: './dist',
+          },
+        ],
+        flatten: false,
+      }),
+      moveFiles('./dist/tsc-build', './dist/types'),
+      copy({
+        targets: [{ src: './react-types.d.ts', dest: './dist' }],
+      }),
+    ],
   },
 ];
+
+function moveFiles(from, to) {
+  return {
+    name: 'move-files',
+    generateBundle() {
+      const log = (msg) => console.log('\x1b[36m%s\x1b[0m', msg);
+      if (fs.existsSync(from)) {
+        log(`move: ${from} → ${to}`);
+        fs.renameSync(from, to);
+      }
+    },
+  };
+}

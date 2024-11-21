@@ -7,13 +7,8 @@ import * as TextfieldStories from './Textfield.stories';
 
 # Textfield
 
-`Textfield` kalles tekstfelt på norsk. Det er et inndatafelt som for eksempel gir brukerne mulighet til å skrive korte tekster eller tall.  
- 
+ Textfield er en samensatt komponent for [`input`](/docs/komponenter-input--docs) og [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette `multiline={true/false}`. `Textfield` har også innebygd `label`, `description`, `validationmessage`, `affix` og `counter`.
 <br/>
-
-- Du kan velge mellom både `input` og `textarea` for å lage tekstfelt.
-- `Textfield` er en ferdig sammensatt `Field` komponent for standard oppsett av et tekstfelt.  
-- Ønsker du mer kontroll eller funksjonalitet, komponer med [Field](/docs/komponenter-field--docs) komponenten direkte.
 
 
 <Primary />
@@ -26,58 +21,45 @@ import { Textfield } from '@digdir/designsystemet-react';
 
 <Textfield label="Navn" />
 ```
+## Eksempler
 
-## Multiline
+### Multiline
 
 Du endrer til `textarea` ved å sette `multiline` til `true`. Da kan brukerne skrive lengre tekster.
 
 <Canvas of={TextfieldStories.Rows} />
 
-## Prefix/Suffix
+### Prefix/Suffix
 
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
-Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
-Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+Prefixer og suffixer er nyttige for å vise enheter, valuta eller annen informasjon som er relevant for feltet. Disse skal **ikke** brukes alene, da skjermlesere ikke leser dem opp. Det er viktig at samme informasjon som vises i prefixet eller suffixet, også inkluderes i ledeteksten.
 
-<Canvas of={TextfieldStories.Adornments} />
+<Canvas of={TextfieldStories.Affix} />
 
-## Antall tegn
+### Antall tegn
 
 Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
 
 <Canvas of={TextfieldStories.Counter} />
 
-## Kontrollert
+### Kontrollert
 
 <Canvas of={TextfieldStories.Controlled} />
 
 
 ## Retningslinjer for når du skal bruke `Textfield`
-
-Vi bruker tekstfelt når vi vil gi brukeren mulighet til å skrive tekst/svar på maks. én linje, Det kan for eksempel være navn eller telefonnummer.
-
-Passer til å
-
-- gi mulighet for korte tekster eller svar
-- legge inn tall, for eksempel et telefonnummer
-
-Passer ikke til å
-
-- gi lengre svar, bruk heller `Textarea`
-- legge inn formaterte data, som markdown
-  <br />
-
-### Plassering av ledeteksten
-
-Ledeteksten og en eventuell beskrivelse skal alltid stå over tekstfeltet. Da er de lette å se på små skjermer og hindres ikke av eventuelle feilmeldinger.
+`Input` er egnet til korte tekster/svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
 
 ### Unngå plassholdertekster
 
-Plassholdertekster forsvinner når brukerne skriver i feltet. Det er derfor bedre å inkludere hint og viktig informasjon i selve ledeteksten eller den tilhørende beskrivelsen.
+Plassholdertekster (`placeholder`) forsvinner når brukerne skriver i feltet. Det er derfor bedre å inkludere hint og viktig informasjon i selve ledeteksten eller den tilhørende beskrivelsen. Kontrastkravene i WCAG gjelder for `placeholder` også, og da blir teksten så mørk at brukerne kan oppfatte `textfield` som utfylt.
 
 ### Tilpass bredden på tekstfeltet
 
-Tilpass bredden til det brukerne skal skrive inn, kort bredde til telefonnummer og bredere til stedsnavn. Ulik bredde på feltene gjør det enklere å navigere i skjemaer som har mange felter.
+Tilpass bredden etter hva brukerne skal skrive inn - kort bredde for telefonnummer og bredere for stedsnavn. Ulik bredde på feltene gjør det lettere å navigere i skjemaer med mange felter.
+
+### Tillat kopier og lim inn
+
+Brukere som skal fylle ut et tekstområde, trenger ofte å kopiere og lime inn informasjon, så denne funksjonen må ikke deaktiveres. Dette gjør det enkelt for brukerne å fylle inn nødvendige opplysninger uten begrensninger.
 
 ### Inndata og formatering
 
@@ -87,15 +69,24 @@ Tilpass bredden til det brukerne skal skrive inn, kort bredde til telefonnummer 
 - Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
 - Ikke bruk bare store bokstaver eller kursiv tekst i ledeteksten. Det er vanskelig å lese.
 
+<br/>
+
 ## Tekst i komponenten
 
-Det skal alltid være ledetekst på `Textfield`. I spesielle tilfeller kan vi skjule ledeteksten med `hidelabel`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
+Det skal alltid være ledetekst på `textfield`. I spesielle tilfeller kan vi skjule ledeteksten ved å ikke sende inn `label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
+
+<br />
+- Hold ledeteksten kort, unngå at den går over to linjer.
+- Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren.
+- Unngå å bruke kolon etter `label`.
+
+<br/>
 
 ## Tilgjengelighet
 
 ### Ikke bruk deaktiverte felt
 
-Ikke bruk deaktivert tilstand (disabled state) på tekstfelt. Tenk heller over om du trenger å vise feltet i det hele tatt, eller om du heller kan skrive informasjonen ut i ren tekst eller bruke Read Only.
+Ikke bruk deaktivert tilstand (`disabled`) på tekstfelt. Tenk heller over om du trenger å vise feltet i det hele tatt, eller om du heller kan skrive informasjonen ut i ren tekst eller bruke `readonly`.
 
 ### Prefiks og suffiks
 

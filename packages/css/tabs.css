@@ -1,5 +1,5 @@
 .ds-tabs {
-  --dsc-tabs__tab-bottom-border-color: transparent;
+  --dsc-tabs-tab-bottom-border-color: transparent;
   --dsc-tabs-tab-padding: var(--ds-spacing-3) var(--ds-spacing-5);
   --dsc-tabs-tab-color: var(--ds-color-neutral-text-subtle);
   --dsc-tabs-content-padding: var(--ds-spacing-5);
@@ -48,11 +48,11 @@
   }
 
   &[aria-selected='true'] {
-    --dsc-tabs__tab-bottom-border-color: var(--ds-color-accent-base-default);
-    --dsc-tabs-tab-color: var(--ds-color-accent-text-subtle);
+    --dsc-tabs-tab-bottom-border-color: var(--ds-color-base-default);
+    --dsc-tabs-tab-color: var(--ds-color-text-subtle);
   }
 
-  @composes ds-focus from './base/base.css';
+  @composes ds-focus from './base.css';
 
   /* We set z-index to make sure the active line does not bleed over the focus indicator */
   &:focus-visible {
@@ -64,7 +64,7 @@
     display: block;
     height: .15em; /* Scale with font */
     width: 100%;
-    background-color: var(--dsc-tabs__tab-bottom-border-color);
+    background-color: var(--dsc-tabs-tab-bottom-border-color);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -72,7 +72,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     &:hover:not([aria-selected='true']) {
-      --dsc-tabs__tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
+      --dsc-tabs-tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
       --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
     }
   }

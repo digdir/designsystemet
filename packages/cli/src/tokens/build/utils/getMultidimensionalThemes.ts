@@ -3,7 +3,7 @@ import { TokenSetStatus } from '@tokens-studio/types';
 import chalk from 'chalk';
 import { kebabCase } from 'change-case';
 import * as R from 'ramda';
-import { buildOptions } from '../../build';
+import { buildOptions } from '../../build.js';
 import type { ThemeDimension, ThemePermutation } from '../types';
 
 /**
@@ -116,7 +116,7 @@ function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
         name: '',
         selectedTokenSets: [],
         permutation: {
-          mode: 'unknown',
+          'color-scheme': 'unknown',
           'main-color': 'unknown',
           'support-color': 'unknown',
           theme: 'unknown',
