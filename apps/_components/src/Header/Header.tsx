@@ -74,7 +74,7 @@ const Header = ({
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
     setTheme(newTheme);
-    document.documentElement.setAttribute('data-ds-color-mode', newTheme);
+    document.documentElement.setAttribute('data-color-scheme', newTheme);
   };
 
   useEffect(() => {
