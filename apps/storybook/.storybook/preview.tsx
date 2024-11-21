@@ -1,5 +1,5 @@
 import './style.css';
-import '../../../packages/css/index.css';
+import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 import type { Preview } from '@storybook/react';
 
