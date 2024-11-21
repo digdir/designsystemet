@@ -17,8 +17,8 @@
 }
 
 .card {
-  [data-ds-color-mode='dark'] &,
-  [data-ds-color-mode='auto'] & {
+  [data-color-scheme='dark'] &,
+  [data-color-scheme='auto'] & {
     --dsc-card-background: var(--ds-color-neutral-surface-default);
   }
 }

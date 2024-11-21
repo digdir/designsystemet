@@ -17,7 +17,7 @@ export const Preview: Story = {
   args: {
     children: 'New',
     'data-size': 'md',
-    color: 'neutral',
+    'data-color': 'neutral',
   },
 };
 
@@ -40,7 +40,7 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   );
 };
 
-const colors: TagProps['color'][] = [
+const colors: TagProps['data-color'][] = [
   'neutral',
   'success',
   'warning',
@@ -55,7 +55,7 @@ export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   return (
     <>
       {colors.map((color) => (
-        <Tag key={color} color={color} {...rest}>
+        <Tag key={color} data-color={color} {...rest}>
           {color}
         </Tag>
       ))}

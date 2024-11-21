@@ -9,3 +9,4 @@ export {
   getPrevFocusableValue,
   omit,
 } from './utilities';
+export type { Size } from './types';

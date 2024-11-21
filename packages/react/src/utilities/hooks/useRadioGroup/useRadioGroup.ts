@@ -1,6 +1,7 @@
 import { useMergeRefs } from '@floating-ui/react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
+import type { RadioProps } from '../../../components';
 
 export type UseRadioGroupProps = {
   /** Set disabled state of all radios */
@@ -28,7 +29,7 @@ export type UseRadioGroupProps = {
  * remove anything that comes from the group itself.
  */
 export type GetRadioProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
+  RadioProps,
   | 'prefix'
   | 'role'
   | 'type'

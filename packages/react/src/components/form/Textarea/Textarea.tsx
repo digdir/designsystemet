@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import type { DefaultProps } from '../../../types';
 
 export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
-  DefaultProps;
+  Omit<DefaultProps, 'data-color'>;
 
 /** Textarea field
  *

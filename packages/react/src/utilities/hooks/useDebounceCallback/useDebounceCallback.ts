@@ -6,7 +6,7 @@ export function useDebounceCallback<T>(
   callback: DebounceFunction<T>,
   delay = 50,
 ) {
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     // Cleanup the previous timeout on re-render
@@ -22,7 +22,7 @@ export function useDebounceCallback<T>(
       clearTimeout(timeoutRef.current);
     }
 
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       callback(...args);
     }, delay);
   };

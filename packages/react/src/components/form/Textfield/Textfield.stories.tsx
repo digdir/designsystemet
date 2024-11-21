@@ -66,7 +66,7 @@ export const Rows: Story = {
   },
 };
 
-export const Adornments: Story = {
+export const Affix: Story = {
   args: {
     prefix: 'NOK',
     suffix: 'pr. mnd',

@@ -4,11 +4,15 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorMode } from '../colors/types.js';
-import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json';
-import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json';
-import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json';
-import themeBaseFile from './design-tokens/template/themes/theme-base-file.json';
-import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json';
+import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
+import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
+  type: 'json',
+};
+import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
+  type: 'json',
+};
+import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
+import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
 import type { Collection, Colors, File, Tokens, TokensSet, TypographyModes } from './types.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
@@ -19,8 +23,8 @@ const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template/');
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
-const generateColorModeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
-  const path = `${outPath}/primitives/modes/colors/${folder}`;
+const generateColorSchemeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
+  const path = `${outPath}/primitives/modes/color-scheme/${folder}`;
   return {
     data: stringify(tokens),
     path,
@@ -191,12 +195,12 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   // Create color scheme and typography modes
   const files: File[] = [
-    generateColorModeFile('light', themeName, tokens.colors.light[themeName], targetDir),
-    generateColorModeFile('light', 'global', tokens.colors.light.global, targetDir),
-    generateColorModeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
-    generateColorModeFile('dark', 'global', tokens.colors.dark.global, targetDir),
-    generateColorModeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
-    generateColorModeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
+    generateColorSchemeFile('light', themeName, tokens.colors.light[themeName], targetDir),
+    generateColorSchemeFile('light', 'global', tokens.colors.light.global, targetDir),
+    generateColorSchemeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
+    generateColorSchemeFile('dark', 'global', tokens.colors.dark.global, targetDir),
+    generateColorSchemeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
+    generateColorSchemeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
     generateTypographyFile('primary', themeName, tokens.typography.primary, targetDir),
     generateTypographyFile('secondary', themeName, tokens.typography.primary, targetDir),
   ];

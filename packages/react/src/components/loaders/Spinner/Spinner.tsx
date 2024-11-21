@@ -2,6 +2,7 @@ import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
+import type { Color } from '../../../colors';
 import { useSynchronizedAnimation } from '../../../utilities';
 
 export type SpinnerProps = {
@@ -12,10 +13,9 @@ export type SpinnerProps = {
    */
   'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
-   * Spinner appearance
-   * @default neutral
+   * The color of the spinner. If left unspecified, the color is inherited from the nearest ancestor with data-color.
    */
-  color?: 'neutral' | 'accent';
+  'data-color'?: Color;
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }
@@ -24,12 +24,7 @@ export type SpinnerProps = {
 
 /**  Spinner component used for indicating busy or indeterminate loading */
 export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
-  {
-    'aria-label': ariaLabel,
-    color = 'neutral',
-    className,
-    ...rest
-  }: SpinnerProps,
+  { 'aria-label': ariaLabel, className, ...rest }: SpinnerProps,
   ref,
 ) {
   const svgRef = useSynchronizedAnimation<SVGSVGElement>(
@@ -46,7 +41,6 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
     <svg
       aria-label={ariaLabel}
       className={cl('ds-spinner', className)}
-      data-color={color}
       ref={mergedRefs}
       role='img'
       viewBox='0 0 50 50'
