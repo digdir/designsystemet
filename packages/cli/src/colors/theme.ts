@@ -68,18 +68,18 @@ const generateThemeColor = (color: CssColor, colorScheme: ColorMode, contrastMod
     leoBackgroundColor.colorKeys[0],
   );
 
-  const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
+  const textSubLightLightness = contrastMode === 'aa' ? 41 : 30;
   const textDefLightLightness = contrastMode === 'aa' ? 18 : 12;
 
-  const textSubDarkLightness = contrastMode === 'aa' ? 67 : 80;
+  const textSubDarkLightness = contrastMode === 'aa' ? 66 : 80;
   const textDefDarkLightness = contrastMode === 'aa' ? 90 : 94;
 
   let lightnessScale: number[] = [];
 
   if (colorScheme === 'light') {
-    lightnessScale = [100, 96, 90, 84, 78, 76, 54, 33, textSubLightLightness, textDefLightLightness];
+    lightnessScale = [100, 96, 90, 84, 78, 76, 53, 41, textSubLightLightness, textDefLightLightness];
   } else if (colorScheme === 'dark') {
-    lightnessScale = [10, 14, 20, 26, 32, 35, 47, 77, textSubDarkLightness, textDefDarkLightness];
+    lightnessScale = [10, 14, 20, 26, 32, 35, 52, 66, textSubDarkLightness, textDefDarkLightness];
   } else {
     lightnessScale = [1, 6, 14, 20, 26, 58, 70, 82, 80, 95];
   }
