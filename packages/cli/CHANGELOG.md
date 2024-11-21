@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.0-next.37
+
+### Minor Changes
+
+- Changed name of Tokens Studio theme "Mode" to "Color scheme", and updated the path in the token structure from `primitives/modes/colors` to `primitives/modes/color-scheme` ([#2808](https://github.com/digdir/designsystemet/pull/2808))
+
+- CLI: `tokens build` command now generates a `colors.d.ts` file which enables type safety for the `data-color` attribute when included in your `tsconfig.json`. The `@digdir/designsystemet-theme` package has been updated to include types for those themes. ([#2795](https://github.com/digdir/designsystemet/pull/2795))
+
+- **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme` ([#2798](https://github.com/digdir/designsystemet/pull/2798))
+
 ## 1.0.0-next.36
 
 ### Minor Changes
