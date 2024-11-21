@@ -63,7 +63,7 @@
     }
 
     &:where(:focus-visible, :has(:focus-visible)) {
-      @composes ds-focus--visible from './base/base.css';
+      @composes ds-focus--visible from './base.css';
     }
 
     &:active {
