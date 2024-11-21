@@ -1712,6 +1712,7 @@ __metadata:
     "@floating-ui/react": "npm:0.26.23"
     "@navikt/aksel-icons": "npm:^6.14.0"
     "@radix-ui/react-slot": "npm:^1.1.0"
+    "@repo/components": "workspace:^"
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@tanstack/react-virtual": "npm:^3.10.7"
