@@ -27,8 +27,8 @@
     --dsc-button-background--active: var(--ds-color-base-active);
     --dsc-button-background--hover: var(--ds-color-base-hover);
     --dsc-button-background: var(--ds-color-base-default);
-    --dsc-button-color: var(--ds-color-text-sublte);
-    --dsc-button-color--hover: var(--ds-color-text-default);
+    --dsc-button-color: var(--ds-color-contrast-default);
+    --dsc-button-color--hover: var(--ds-color-contrast-default);
 
     &[data-variant='secondary'],
     &[data-variant='tertiary'] {
