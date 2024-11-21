@@ -44,11 +44,11 @@ function generateModesGroup(modes: Array<'Light' | 'Dark' | 'Contrast'>, themes:
       id: randomUUID(),
       name: mode,
       selectedTokenSets: Object.fromEntries([
-        [`primitives/modes/colors/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
+        [`primitives/modes/color-scheme/${normalizeTokenSetName(mode)}/global`, TokenSetStatus.ENABLED],
         ...themes.map(
           (theme) =>
             [
-              `primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
+              `primitives/modes/color-scheme/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
               TokenSetStatus.ENABLED,
             ] as const,
         ),

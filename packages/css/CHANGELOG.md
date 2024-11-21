@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.37
+
+### Major Changes
+
+- **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme` ([#2798](https://github.com/digdir/designsystemet/pull/2798))
+
 ## 1.0.0-next.36
 
 ### Major Changes

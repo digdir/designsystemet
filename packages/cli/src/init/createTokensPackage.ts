@@ -234,17 +234,17 @@ Will now create the following:
     for (const mode of modes.map(normalizeTokenSetName)) {
       // Copy the global file for the color mode
       await fs.cp(
-        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/colors/${mode}/global.json`),
-        path.join(TOKENS_TARGET_DIR, `primitives/modes/colors/${mode}/global.json`),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/color-scheme/${mode}/global.json`),
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/color-scheme/${mode}/global.json`),
         { recursive: true },
       );
 
       // Create theme primitives for the color mode
       const template = await fs.readFile(
-        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/colors/${mode}/theme-template.json`),
+        path.join(TOKEN_TEMPLATE_FILES_PATH, `primitives/modes/color-scheme/${mode}/theme-template.json`),
       );
       await fs.writeFile(
-        path.join(TOKENS_TARGET_DIR, `primitives/modes/colors/${mode}/${theme}.json`),
+        path.join(TOKENS_TARGET_DIR, `primitives/modes/color-scheme/${mode}/${theme}.json`),
         template.toString('utf-8').replaceAll('<theme>', theme),
       );
 
