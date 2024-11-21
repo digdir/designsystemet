@@ -12,9 +12,9 @@ export default function generateMetadataJson(modes: Array<'Light' | 'Dark' | 'Co
       'primitives/modes/typography/primary/theme',
       'primitives/modes/typography/secondary/theme',
       ...modes.flatMap((mode) => [
-        `primitives/modes/colors/${normalizeTokenSetName(mode)}/global`,
+        `primitives/modes/color-scheme/${normalizeTokenSetName(mode)}/global`,
         ...themes.map(
-          (theme) => `primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
+          (theme) => `primitives/modes/color-scheme/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}`,
         ),
       ]),
       ...themes.map((theme) => `themes/${normalizeTokenSetName(theme)}`),

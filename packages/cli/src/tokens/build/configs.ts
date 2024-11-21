@@ -72,9 +72,12 @@ export type GetStyleDictionaryConfig = (
   },
 ) => StyleDictionaryConfig | { config: StyleDictionaryConfig; permutationOverrides?: Partial<ThemePermutation> }[];
 
-const colorSchemeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme }, { outPath }) => {
-  const selector = `${mode === 'light' ? ':root, ' : ''}[data-color-scheme="${mode}"]`;
-  const layer = `ds.theme.color-scheme.${mode}`;
+const colorSchemeVariables: GetStyleDictionaryConfig = (
+  { 'color-scheme': colorScheme = 'light', theme },
+  { outPath },
+) => {
+  const selector = `${colorScheme === 'light' ? ':root, ' : ''}[data-color-scheme="${colorScheme}"]`;
+  const layer = `ds.theme.color-scheme.${colorScheme}`;
 
   return {
     usesDtcg,
@@ -83,7 +86,7 @@ const colorSchemeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme 
       css: {
         // custom
         outPath,
-        mode,
+        colorScheme,
         theme,
         selector,
         layer,
@@ -93,8 +96,8 @@ const colorSchemeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme 
         transforms: dsTransformers,
         files: [
           {
-            destination: `color-scheme/${mode}.css`,
-            format: formats.colormode.name,
+            destination: `color-scheme/${colorScheme}.css`,
+            format: formats.colorScheme.name,
             filter: (token) => !token.isSource && typeEquals('color', token),
           },
         ],
@@ -109,7 +112,7 @@ const colorSchemeVariables: GetStyleDictionaryConfig = ({ mode = 'light', theme 
 
 const colorCategoryVariables =
   (category: ColorCategories): GetStyleDictionaryConfig =>
-  ({ mode, theme, [`${category}-color` as const]: color }, { outPath }) => {
+  ({ 'color-scheme': colorScheme, theme, [`${category}-color` as const]: color }, { outPath }) => {
     const layer = `ds.theme.color`;
     const isDefault = color === buildOptions?.accentColor;
     const selector = `${isDefault ? ':root, ' : ''}[data-color="${color}"]`;
@@ -121,7 +124,7 @@ const colorCategoryVariables =
         css: {
           // custom
           outPath,
-          mode,
+          colorScheme,
           theme,
           selector,
           layer,
@@ -132,7 +135,7 @@ const colorCategoryVariables =
           files: [
             {
               destination: `color/${color}.css`,
-              format: formats.colorcategory.name,
+              format: formats.colorCategory.name,
               filter: (token) => isColorCategoryToken(token, category),
             },
           ],
@@ -221,7 +224,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
   };
 };
 
-const typescriptTokens: GetStyleDictionaryConfig = ({ mode, theme }, { outPath }) => {
+const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme }, { outPath }) => {
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -233,7 +236,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ mode, theme }, { outPath }
         buildPath: `${outPath}/${theme}/`,
         files: [
           {
-            destination: `${mode}.ts`,
+            destination: `${colorScheme}.ts`,
             format: jsTokens.name,
             outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {

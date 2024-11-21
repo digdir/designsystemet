@@ -15,8 +15,8 @@ export function generateMetadataJson(modes: ColorModes, themes: string[], colors
       ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
       ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
       ...modes.flatMap((mode) => [
-        `primitives/modes/colors/${mode}/global`,
-        ...themes.map((theme) => `primitives/modes/colors/${mode}/${theme}`),
+        `primitives/modes/color-scheme/${mode}/global`,
+        ...themes.map((theme) => `primitives/modes/color-scheme/${mode}/${theme}`),
       ]),
       ...themes.map((theme) => `themes/${theme}`),
       'semantic/color',
