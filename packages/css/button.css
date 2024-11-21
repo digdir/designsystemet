@@ -18,10 +18,6 @@
     --dsc-button-background--hover: var(--ds-color-accent-surface-hover);
     --dsc-button-color: var(--ds-color-accent-text-subtle);
     --dsc-button-color--hover: var(--ds-color-accent-text-default);
-
-    &:hover {
-      color: var(--dsc-button-color--hover);
-    }
   }
   &[data-variant='secondary'] {
     --dsc-button-border-color: var(--ds-color-accent-border-default);
@@ -41,10 +37,6 @@
       --dsc-button-background--hover: var(--ds-color-surface-hover);
       --dsc-button-color: var(--ds-color-text-subtle);
       --dsc-button-color--hover: var(--ds-color-text-default);
-
-      &:hover {
-        color: var(--dsc-button-color--hover);
-      }
     }
     &[data-variant='secondary'] {
       --dsc-button-border-color: var(--ds-color-border-strong);
@@ -108,6 +100,7 @@
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */
     &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):hover {
       background: var(--dsc-button-background--hover);
+      color: var(--dsc-button-color--hover);
     }
   }
 
