@@ -9,8 +9,8 @@
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {
     --dsc-button-background: transparent;
-    --dsc-button-background--active: var(--ds-color-accent-surface-hover);
-    --dsc-button-background--hover: var(--ds-color-accent-surface-default);
+    --dsc-button-background--active: var(--ds-color-accent-surface-active);
+    --dsc-button-background--hover: var(--ds-color-accent-surface-hover);
     --dsc-button-color: var(--ds-color-accent-text-subtle);
   }
   &[data-variant='secondary'] {
@@ -26,8 +26,8 @@
     &[data-variant='secondary'],
     &[data-variant='tertiary'] {
       --dsc-button-background: transparent;
-      --dsc-button-background--active: var(--ds-color-surface-hover);
-      --dsc-button-background--hover: var(--ds-color-surface-default);
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
       --dsc-button-color: var(--ds-color-text-subtle);
     }
     &[data-variant='secondary'] {
