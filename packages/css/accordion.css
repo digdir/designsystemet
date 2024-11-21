@@ -72,7 +72,7 @@
     padding: var(--dsc-accordion-padding);
     position: relative;
 
-    @composes ds-focus from './base/base.css';
+    @composes ds-focus from './base.css';
 
     &:focus-visible {
       position: relative; /* Ensure foucs outline renders on top */

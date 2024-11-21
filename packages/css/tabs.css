@@ -52,7 +52,7 @@
     --dsc-tabs-tab-color: var(--ds-color-text-subtle);
   }
 
-  @composes ds-focus from './base/base.css';
+  @composes ds-focus from './base.css';
 
   /* We set z-index to make sure the active line does not bleed over the focus indicator */
   &:focus-visible {

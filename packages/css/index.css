@@ -3,7 +3,7 @@
 @layer ds.base, ds.typography, ds.theme, ds.components;
 
 /** Import order defines ordinal specificity for layers */
-@import url('./base/base.css') layer(ds.base);
+@import url('./base.css') layer(ds.base);
 @import url('./heading.css') layer(ds.typography);
 @import url('./label.css') layer(ds.typography);
 @import url('./paragraph.css') layer(ds.typography);
@@ -24,7 +24,7 @@
 @import url('./link.css') layer(ds.components);
 @import url('./fieldset.css') layer(ds.components);
 @import url('./dropdown.css') layer(ds.components);
-@import url('./chip') layer(ds.components);
+@import url('./chip.css') layer(ds.components);
 @import url('./divider.css') layer(ds.components);
 @import url('./tabs.css') layer(ds.components);
 @import url('./pagination.css') layer(ds.components);
