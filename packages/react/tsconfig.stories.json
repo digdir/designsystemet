@@ -15,6 +15,6 @@
       "../../apps/storybook/story-utils/type-extensions.d.ts"
     ]
   },
-  "include": ["stories", "src/**/*.stories.ts*", "stories/**/*.module.css"],
+  "include": ["stories", "src/**/*.stories.ts*"],
   "references": [{ "path": "tsconfig.lib.json" }]
 }
