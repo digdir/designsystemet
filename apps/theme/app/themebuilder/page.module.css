@@ -54,3 +54,29 @@
 .title {
   margin-top: 40px;
 }
+
+.hide {
+  display: none;
+}
+
+.panelToggleGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.panelToggleBtn {
+  border-radius: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  cursor: pointer;
+  font-size: 16px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.active,
+.panelToggleBtn:hover {
+  border-color: var(--ds-color-neutral-border-default);
+  outline: 1px solid var(--ds-color-neutral-border-default);
+}

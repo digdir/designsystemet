@@ -40,10 +40,9 @@ export const ColorContrasts = () => {
 
   useEffect(() => {
     const newTheme =
-      colors.main.find((color) => color.name === selectedColor)?.colors ||
-      colors.neutral.find((color) => color.name === selectedColor)?.colors ||
-      colors.support.find((color) => color.name === selectedColor)?.colors ||
-      theme;
+      (['main', 'neutral', 'support'] as Array<keyof typeof colors>)
+        .flatMap((group) => colors[group])
+        .find((color) => color.name === selectedColor)?.colors || theme;
 
     setReducedLight({
       themeRange1: newTheme.light.filter((color) =>
@@ -53,16 +52,13 @@ export const ColorContrasts = () => {
         indexTwo.includes(color.number),
       ),
     });
-  }, [selectedColor, colors.main]);
+  }, [selectedColor, colors]);
 
   useEffect(() => {
     const newTheme =
-      colors.main.find((color) => color.name === selectedBaseColor)?.colors ||
-      colors.neutral.find((color) => color.name === selectedBaseColor)
-        ?.colors ||
-      colors.support.find((color) => color.name === selectedBaseColor)
-        ?.colors ||
-      theme;
+      (['main', 'neutral', 'support'] as Array<keyof typeof colors>)
+        .flatMap((group) => colors[group])
+        .find((color) => color.name === selectedBaseColor)?.colors || theme;
 
     setReducedBaseLight({
       themeRange1: newTheme.light.filter((color) =>
@@ -72,7 +68,7 @@ export const ColorContrasts = () => {
         indexBaseTwo.includes(color.number),
       ),
     });
-  }, [selectedBaseColor, colors.main]);
+  }, [selectedBaseColor, colors]);
 
   const ThCell = ({ color }: { color: ColorInfo }) => {
     return (

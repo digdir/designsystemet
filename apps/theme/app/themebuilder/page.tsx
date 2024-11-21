@@ -3,8 +3,9 @@
 import { generateThemeForColor } from '@/packages/cli/dist/src/colors';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import NextLink from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BorderRadius,
   ColorContrasts,
@@ -21,6 +22,10 @@ export default function Home() {
   const addColor = useThemeStore((state) => state.addColor);
   const resetColors = useThemeStore((state) => state.resetColors);
   const appearance = useThemeStore((state) => state.appearance);
+
+  type ColorTab = 'colors' | 'contrasts';
+
+  const [colorTab, setColorTab] = useState<ColorTab>('colors');
 
   useEffect(() => {
     const dominant = generateThemeForColor('#0062BA');
@@ -83,22 +88,48 @@ export default function Home() {
           <div className={classes.colorsContainer}>
             <Colors themeMode='light' />
           </div>
-          <div className={classes.panel}>
-            <ColorPreview />
+          <div className={classes.panelToggle}>
+            <div className={classes.panelToggleGroup}>
+              <button
+                className={cl(
+                  classes.panelToggleBtn,
+                  colorTab === 'colors' && classes.active,
+                )}
+                onClick={() => setColorTab('colors')}
+              >
+                Se farger i bruk
+              </button>
+              <button
+                className={cl(
+                  classes.panelToggleBtn,
+                  colorTab === 'contrasts' && classes.active,
+                )}
+                onClick={() => setColorTab('contrasts')}
+              >
+                Se kontraster
+              </button>
+            </div>
+            <div className={cl(colorTab !== 'colors' && classes.hide)}>
+              <div className={classes.panel}>
+                <ColorPreview />
+              </div>
+              <div className={classes.panel}>
+                <ColorTokens />
+              </div>
+            </div>
+            <div className={cl(colorTab !== 'contrasts' && classes.hide)}>
+              <div className={classes.panel}>
+                <ColorContrasts />
+              </div>
+            </div>
           </div>
-          <div className={classes.panel}>
-            <ColorTokens />
-          </div>
-          <div className={classes.panel}>
-            <ColorContrasts />
-          </div>
+
           <Heading className={classes.title} data-size='sm'>
             Border radius
           </Heading>
           <div className={classes.panel}>
             <BorderRadius />
           </div>
-          <div className={classes.panel}>f</div>
         </div>
         <div className={classes.sideBarContainer}>
           <Sidebar />
