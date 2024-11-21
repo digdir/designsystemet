@@ -1,10 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
+import { Fieldset, type Size, ToggleGroup } from '@digdir/designsystemet-react';
 import { Showcase } from '@repo/components';
-import { Fieldset, ToggleGroup } from '../src';
 
-import type { Size } from '../src/types';
 import classes from './showcase.module.css';
 
 export default {
