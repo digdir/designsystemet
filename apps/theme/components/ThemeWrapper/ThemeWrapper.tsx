@@ -11,7 +11,7 @@ export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
   const theme = useThemeStore((state) => state.themePreview);
 
   return (
-    <div data-ds-color-mode={appearance} data-theme={theme}>
+    <div data-color-scheme={appearance} data-theme={theme}>
       {children}
     </div>
   );
