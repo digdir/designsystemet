@@ -8,7 +8,7 @@ import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } f
 
 const prefersColorScheme = (mode: string, content: string) => `
 @media (prefers-color-scheme: ${mode}) {
-  [data-ds-color-mode="auto"] ${content}
+  [data-color-scheme="auto"] ${content}
 }
 `;
 

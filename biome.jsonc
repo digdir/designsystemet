@@ -16,7 +16,8 @@
       "design-tokens/**/*",
       "apps/storefront/tokens/**",
       "**/dist/**/*",
-      "packages/theme/**/*.css"
+      "packages/theme/**/*.css",
+      "**/tsconfig.*.json" // https://github.com/biomejs/biome/issues/1151
     ]
   },
   "formatter": {

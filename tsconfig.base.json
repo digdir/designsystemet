@@ -10,7 +10,10 @@
       ],
       "@assets/*": ["apps/storybook/assets/*"],
       // Prevent imports from e.g. 'packages/react', which will not work for consumers
-      "packages/*": ["this/dir/does/not/exist/*"]
+      "packages/*": ["this/dir/does/not/exist/*"],
+      // Paths matching package.json exports section in @digdir/designsystem-react
+      "@digdir/designsystemet-react": ["packages/react/src/index.ts"],
+      "@digdir/designsystemet-react/colors": ["packages/react/src/colors.ts"]
     },
     "target": "ES2022",
     "module": "ESNext",
@@ -45,9 +48,6 @@
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true,
-
-    // globals for vitest
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
-  },
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "types": []
+  }
 }
