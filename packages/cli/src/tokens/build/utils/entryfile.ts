@@ -9,11 +9,11 @@ import * as R from 'ramda';
  */
 // biome-ignore format: keep array as one line per item
 const sortOrder = [
-  'color-mode/light',
+  'color-scheme/light',
   'typography/secondary',
   'semantic',
-  'color-mode/dark',
-  'color-mode/contrast',
+  'color-scheme/dark',
+  'color-scheme/contrast',
   'typography/primary',
   'color/',
   'builtin-colors',

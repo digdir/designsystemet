@@ -40,7 +40,7 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
   );
 };
 
-const colors: TagProps['color'][] = [
+const colors: TagProps['data-color'][] = [
   'neutral',
   'success',
   'warning',

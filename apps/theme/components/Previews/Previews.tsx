@@ -123,7 +123,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
           classes[themeMode as keyof typeof classes],
         )}
         id='preview'
-        data-ds-color-mode={themeMode}
+        data-color-scheme={themeMode}
       >
         {previewMode === 'components' && <Components />}
         {previewMode === 'dashboard' && <Dashboard />}

@@ -49,7 +49,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
     <footer
       ref={ref}
       className={cl(classes.footer, className)}
-      data-ds-color-mode='dark'
+      data-color-scheme='dark'
       {...rest}
     >
       <div className={classes.top}>

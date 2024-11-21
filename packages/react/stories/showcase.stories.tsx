@@ -79,7 +79,7 @@ export const Showcase: StoryFn = () => {
         <Fieldset>
           <Fieldset.Legend>
             Fargemodus
-            <code data-size='xs'>(data-ds-color-mode)</code>
+            <code data-size='xs'>(data-color-scheme)</code>
           </Fieldset.Legend>
           <ToggleGroup value={colorMode} onChange={setColorMode}>
             {colorModes.map((colorMode) => (
@@ -106,7 +106,7 @@ export const Showcase: StoryFn = () => {
       <div
         className={classes.components}
         data-size={size}
-        data-ds-color-mode={colorMode}
+        data-color-scheme={colorMode}
         data-ds-typography={typographyMode}
       >
         <div className={cl(classes.card, classes.checkbox)}>

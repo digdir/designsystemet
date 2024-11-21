@@ -2,8 +2,8 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-@layer ds.theme.color-mode.light {
-:root, [data-ds-color-mode="light"] {
+@layer ds.theme.color-scheme.light {
+:root, [data-color-scheme="light"] {
   --ds-global-blue-1: #fefeff;
   --ds-global-blue-2: #edf5fa;
   --ds-global-blue-3: #d3e5f4;
@@ -236,7 +236,7 @@
 }
  
 @media (prefers-color-scheme: light) {
-  [data-ds-color-mode="auto"] {
+  [data-color-scheme="auto"] {
   --ds-global-blue-1: #fefeff;
   --ds-global-blue-2: #edf5fa;
   --ds-global-blue-3: #d3e5f4;
