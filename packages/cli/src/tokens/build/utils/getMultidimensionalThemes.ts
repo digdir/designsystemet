@@ -116,7 +116,7 @@ function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
         name: '',
         selectedTokenSets: [],
         permutation: {
-          mode: 'unknown',
+          'color-scheme': 'unknown',
           'main-color': 'unknown',
           'support-color': 'unknown',
           theme: 'unknown',

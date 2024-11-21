@@ -3,7 +3,7 @@ import { normalizeTokenSetName, toGeneratedCssFileName } from './utils.js';
 
 export function nextStepsMarkdown(themes: string[], modes: Mode[], tokensTargetDir: string, packageName: string) {
   const themeModeCombinations = themes.flatMap((theme) =>
-    modes.map((mode): [theme: string, mode: string] => [theme, mode]),
+    modes.map((colorScheme): [theme: string, colorScheme: string] => [theme, colorScheme]),
   );
   const themeOrThemes = `theme${themes.length > 1 ? 's' : ''}`;
   const isOrAre = themes.length > 1 ? 'are' : 'is';
@@ -27,7 +27,7 @@ export function nextStepsMarkdown(themes: string[], modes: Mode[], tokensTargetD
 2. Press "Kopier tema"
 3. Under "Json til Figma", copy the contents under ${modes.join(' / ')} to
    the corresponding file under \`${tokensTargetDir}\`:
-${themeModeCombinations.map(([theme, mode]) => `     **${theme}, ${mode}**: \`primitives/modes/colors/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}.json\`  `).join('\n')}
+${themeModeCombinations.map(([theme, mode]) => `     **${theme}, ${mode}**: \`primitives/modes/color-scheme/${normalizeTokenSetName(mode)}/${normalizeTokenSetName(theme)}.json\`  `).join('\n')}
    This can also be done in Tokens Studio for Figma.
 4. **IMPORTANT!** In the JSON data you copied, replace \`theme\` on line 2
    with the correct theme identifier, depending on the theme you're customizing.

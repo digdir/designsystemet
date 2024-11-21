@@ -35,14 +35,14 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['mode'] },
+  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
     getConfig: configs.typescriptTokens,
-    dimensions: ['mode'],
+    dimensions: ['color-scheme'],
     options: { outPath: path.resolve('../../apps/storefront/tokens') },
     enabled: () => buildOptions?.preview ?? false,
   },
