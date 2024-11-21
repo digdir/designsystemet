@@ -92,13 +92,13 @@ export const Textfield = forwardRef<
         {multiline === true ? (
           <Textarea
             ref={ref as ForwardedRef<HTMLTextAreaElement>}
-            aria-invalid={!!error}
+            aria-invalid={Boolean(error) || undefined}
             {...(rest as TextareaProps_)}
           />
         ) : (
           <Input
             ref={ref as ForwardedRef<HTMLInputElement>}
-            aria-invalid={!!error}
+            aria-invalid={Boolean(error) || undefined}
             {...(rest as InputProps_)}
           />
         )}
