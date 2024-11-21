@@ -28,11 +28,11 @@
     "name": "Light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/modes/colors/light/global": "enabled",
-      "primitives/modes/colors/light/theme": "enabled",
-      "primitives/modes/colors/light/theme2": "enabled",
-      "primitives/modes/colors/light/theme3": "enabled",
-      "primitives/modes/colors/light/theme4": "enabled"
+      "primitives/modes/color-scheme/light/global": "enabled",
+      "primitives/modes/color-scheme/light/theme": "enabled",
+      "primitives/modes/color-scheme/light/theme2": "enabled",
+      "primitives/modes/color-scheme/light/theme3": "enabled",
+      "primitives/modes/color-scheme/light/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
@@ -428,18 +428,18 @@
       "theme4.brand3.contrast-1": "61ffa3f921c9c346bc22448c458ba59a585be1cb",
       "theme4.brand3.contrast-2": "dcdfe1ec7245c3ee88fe149188d299456324b7a6"
     },
-    "group": "Mode"
+    "group": "Color scheme"
   },
   {
     "id": "9ebd8aed52afbffc17e2666e8b4653a53498b257",
     "name": "Dark",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/modes/colors/dark/global": "enabled",
-      "primitives/modes/colors/dark/theme": "enabled",
-      "primitives/modes/colors/dark/theme2": "enabled",
-      "primitives/modes/colors/dark/theme3": "enabled",
-      "primitives/modes/colors/dark/theme4": "enabled"
+      "primitives/modes/color-scheme/dark/global": "enabled",
+      "primitives/modes/color-scheme/dark/theme": "enabled",
+      "primitives/modes/color-scheme/dark/theme2": "enabled",
+      "primitives/modes/color-scheme/dark/theme3": "enabled",
+      "primitives/modes/color-scheme/dark/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:1",
@@ -835,7 +835,7 @@
       "theme4.brand3.contrast-1": "61ffa3f921c9c346bc22448c458ba59a585be1cb",
       "theme4.brand3.contrast-2": "dcdfe1ec7245c3ee88fe149188d299456324b7a6"
     },
-    "group": "Mode"
+    "group": "Color scheme"
   },
   {
     "id": "368d753fcac4455f289500eaa42e70dc0a03522f",
