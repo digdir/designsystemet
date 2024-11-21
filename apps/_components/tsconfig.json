@@ -8,7 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": false,
     "incremental": true,
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "types": ["@digdir/designsystemet-theme/colors.d.ts"]
   },
   "include": ["./src", "./stories", "declarations.d.ts"],
   "rootDir": "./src"
