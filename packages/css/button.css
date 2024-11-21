@@ -59,7 +59,7 @@
   text-align: inherit;
   text-decoration: none;
 
-  @composes ds-focus from './base/base.css';
+  @composes ds-focus from './base.css';
 
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size when <button> */

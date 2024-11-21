@@ -35,7 +35,7 @@
   padding: 0 var(--ds-spacing-3);
   text-decoration: none;
 
-  @composes ds-focus from './base/base.css';
+  @composes ds-focus from './base.css';
 
   &:not([data-size]) {
     font-size: var(--ds-font-size-minus-1);
@@ -43,7 +43,7 @@
 
   /* Show focus ring when input inside is focused by keyboard interaction */
   &:has(:focus-visible) {
-    @composes ds-focus--visible from './base/base.css';
+    @composes ds-focus--visible from './base.css';
   }
 
   &:disabled,
