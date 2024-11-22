@@ -1,8 +1,7 @@
 import type { ColorMode } from '@digdir/designsystemet/color';
+import { Showcase } from '@repo/components';
 import cl from 'clsx/lite';
 import { useState } from 'react';
-
-import { Components } from './Components/Components';
 import { Dashboard } from './Dashboard/Dashboard';
 import { Landing } from './Landing/Landing';
 import classes from './Previews.module.css';
@@ -125,7 +124,7 @@ export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
         id='preview'
         data-color-scheme={themeMode}
       >
-        {previewMode === 'components' && <Components />}
+        {previewMode === 'components' && <Showcase />}
         {previewMode === 'dashboard' && <Dashboard />}
         {previewMode === 'landing' && <Landing />}
       </div>
