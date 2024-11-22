@@ -34,7 +34,7 @@ export const TokenModal = ({ open }: TokenModalProps) => {
 
   const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
    --${colorCliOptions.main} ${setCliColors(colors.main)} \\
-   --${colorCliOptions.neutral} "${colors.neutral[0].colors.light[8].hex}" \\
+   --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
    --${colorCliOptions.support} ${setCliColors(colors.support)} \\
    --theme "${themeName}" \\
    --write
