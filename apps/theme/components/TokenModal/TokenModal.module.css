@@ -20,8 +20,6 @@
 }
 
 .infoBoxes {
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-top: var(--ds-spacing-8);
   padding-top: var(--ds-spacing-8);
   display: flex;
   flex-direction: column;

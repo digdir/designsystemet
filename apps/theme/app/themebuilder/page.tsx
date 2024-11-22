@@ -35,12 +35,12 @@ export default function Home() {
     const profile1 = generateThemeForColor('#F45F63');
     const profile2 = generateThemeForColor('#E5AA20');
 
-    addColor({ name: 'Dominant', colors: dominant }, 'main');
-    addColor({ name: 'Secondary', colors: secondary }, 'main');
-    addColor({ name: 'Accent', colors: accent }, 'main');
-    addColor({ name: 'Neutral', colors: neutral }, 'neutral');
-    addColor({ name: 'Profilecolor 1', colors: profile1 }, 'support');
-    addColor({ name: 'Profilecolor 2', colors: profile2 }, 'support');
+    addColor({ name: 'dominant', colors: dominant }, 'main');
+    addColor({ name: 'secondary', colors: secondary }, 'main');
+    addColor({ name: 'accent', colors: accent }, 'main');
+    addColor({ name: 'neutral', colors: neutral }, 'neutral');
+    addColor({ name: 'profilecolor-1', colors: profile1 }, 'support');
+    addColor({ name: 'profilecolor-2', colors: profile2 }, 'support');
 
     return () => {
       // Set colors to empty array when component unmounts

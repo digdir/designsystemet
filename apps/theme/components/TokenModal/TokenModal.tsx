@@ -1,76 +1,44 @@
 'use client';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import {
-  Heading,
-  Link,
-  Modal,
-  Paragraph,
-  Textfield,
-} from '@digdir/designsystemet-react';
-import { colorCliOptions, createTokens } from '@digdir/designsystemet/tokens';
-import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
+import { Heading, Link, Modal, Paragraph } from '@digdir/designsystemet-react';
+import { colorCliOptions } from '@digdir/designsystemet/tokens';
+import { CodeIcon, InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import cl from 'clsx/lite';
 
+import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
 
 type TokenModalProps = {
-  accentColor: CssColor;
-  neutralColor: CssColor;
-  brand1Color: CssColor;
-  brand2Color: CssColor;
-  brand3Color: CssColor;
-  borderRadius: string;
+  open: boolean;
 };
 
 const toFigmaSnippet = (obj: unknown) =>
   JSON.stringify(obj, null, 2).replaceAll('$', '');
 
-export const TokenModal = ({
-  accentColor,
-  neutralColor,
-  brand1Color,
-  brand2Color,
-  brand3Color,
-  borderRadius,
-}: TokenModalProps) => {
+export const TokenModal = ({ open }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  const [lightThemeSnippet, setLightThemeSnippet] = useState('');
-  const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
-  const [themeName, setThemeName] = useState('theme');
+  const colors = useThemeStore((state) => state.colors);
+  const themeName = useThemeStore((state) => state.themeName);
+
+  const setCliColors = (colorTheme: ColorTheme[]) => {
+    let str = '';
+    for (const color of colorTheme) {
+      str += `"${color.name}:${color.colors.light[8].hex}" `;
+    }
+    return str;
+  };
 
   const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --${colorCliOptions.main} "accent:${accentColor}" \\
-   --${colorCliOptions.neutral} "${neutralColor}" \\
-   --${colorCliOptions.support} "brand1:${brand1Color}" "brand2:${brand2Color}" "brand3:${brand3Color}" \\
+   --${colorCliOptions.main} ${setCliColors(colors.main)} \\
+   --${colorCliOptions.neutral} "${colors.neutral[0].colors.light[8].hex}" \\
+   --${colorCliOptions.support} ${setCliColors(colors.support)} \\
    --theme "${themeName}" \\
    --write
    `;
-
-  useEffect(() => {
-    const tokens = createTokens({
-      colors: {
-        main: {
-          accent: accentColor,
-        },
-        neutral: neutralColor,
-        support: {
-          brand1: brand1Color,
-          brand2: brand2Color,
-          brand3: brand3Color,
-        },
-      },
-      typography: { fontFamily: 'Inter' },
-      themeName: 'theme',
-    });
-
-    setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
-    setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
-  }, []);
 
   type InfoBoxType = {
     title: string;
@@ -105,11 +73,13 @@ export const TokenModal = ({
   return (
     <Modal.TriggerContext>
       <Modal.Trigger
+        data-size='sm'
         className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();
         }}
       >
+        <StarIcon title='a11y-title' fontSize='1.5rem' />
         Ta i bruk tema
       </Modal.Trigger>
       <Modal
@@ -118,27 +88,13 @@ export const TokenModal = ({
         ref={modalRef}
         backdropClose={true}
       >
-        <Heading className={classes.modalHeader} data-size='xs'>
+        <Heading className={classes.modalHeader} data-size='2xs'>
           <img src='img/emblem.svg' alt='' className={classes.emblem} />
           <span className={classes.headerText}>Ta i bruk tema</span>
         </Heading>
 
         <div className={classes.content}>
           <div className={classes.leftSection}>
-            <Textfield
-              label='Navn på tema'
-              description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
-              value={themeName}
-              data-size='sm'
-              onChange={(e) => {
-                const value = e.currentTarget.value
-                  .replace(/\s+/g, '-')
-                  .replace(/[^A-Z0-9-]+/gi, '')
-                  .toLowerCase();
-
-                setThemeName(value);
-              }}
-            />
             <div className={classes.infoBoxes}>
               <InfoBox
                 title='Design tokens'

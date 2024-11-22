@@ -4,8 +4,8 @@ import type { ColorMode } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import { useThemeStore } from '../../store';
-import { Components } from './Components/Components';
 import classes from './Previews.module.css';
+import { Theme1 } from './Theme1/Theme1';
 
 type PreviewsProps = {
   themeMode: ColorMode;
@@ -56,7 +56,7 @@ export const Previews = () => {
       </div>
 
       <div className={cl(classes.preview)} id='preview2'>
-        <Components />
+        <Theme1 />
       </div>
     </>
   );

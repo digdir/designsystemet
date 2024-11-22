@@ -3,14 +3,15 @@ import {
   generateThemeForColor,
 } from '@/packages/cli/dist/src/colors';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Button, Heading } from '@digdir/designsystemet-react';
-import { PlusIcon, StarIcon } from '@navikt/aksel-icons';
+import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
+import { PlusIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../store';
 import { ColorInput } from '../ColorInput/ColorInput';
 import { Toggle } from '../Toggle/Toggle';
+import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPane } from './ColorPane/ColorPane';
 import classes from './Sidebar.module.css';
 
@@ -31,6 +32,9 @@ export const Sidebar = () => {
   const setAppearance = useThemeStore((state) => state.setAppearance);
   const [isSticky, setSticky] = useState(false);
   const [size, setSize] = useState('sm');
+  const [modalOpen, setModalOpen] = useState(false);
+  const themeName = useThemeStore((state) => state.themeName);
+  const setThemeName = useThemeStore((state) => state.setThemeName);
 
   const addNewColor = (color: string, name: string) => {
     const theme = generateThemeForColor(color as CssColor, 'aa');
@@ -71,6 +75,21 @@ export const Sidebar = () => {
         <Heading className={classes.title} data-size='xs'>
           Konfigurer tema
         </Heading>
+
+        <Textfield
+          label='Navn på tema'
+          description='Kun bokstaver, tall og bindestrek'
+          value={themeName}
+          data-size='sm'
+          onChange={(e) => {
+            const value = e.currentTarget.value
+              .replace(/\s+/g, '-')
+              .replace(/[^A-Z0-9-]+/gi, '')
+              .toLowerCase();
+
+            setThemeName(value);
+          }}
+        />
 
         {/* APPEARANCE */}
         <div className={classes.themeMode}>
@@ -223,10 +242,7 @@ export const Sidebar = () => {
       </div>
 
       <div className={classes.bottom}>
-        <Button data-size='sm'>
-          <StarIcon title='a11y-title' fontSize='1.5rem' />
-          Ta i bruk tema
-        </Button>
+        <TokenModal open={modalOpen} />
         <Button data-size='sm' variant='secondary'>
           Del tema
         </Button>

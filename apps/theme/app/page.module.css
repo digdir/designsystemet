@@ -1,12 +1,16 @@
 .main {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 20.33%, rgba(30, 152, 245, 0.2) 57.04%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 20%, rgba(30, 152, 245, 0.2) 45%);
+}
+
+[data-color-scheme='dark'] .main {
+  background: linear-gradient(180deg, rgba(0, 28, 54, 1) 20%, rgba(30, 152, 245, 0.2) 45%);
 }
 
 .header {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-spacing-5);
+  margin-top: var(--ds-spacing-3);
 }
 
 .heading {

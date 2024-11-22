@@ -1,31 +1,14 @@
 import {
-  Accordion,
-  Alert,
   Button,
-  Card,
   Checkbox,
-  Chip,
-  Combobox,
-  Dropdown,
   Fieldset,
   Heading,
-  HelpText,
-  Label,
   Link,
   Pagination,
-  Paragraph,
-  Radio,
   Search,
   Select,
-  Skeleton,
-  Spinner,
-  Switch,
   Table,
-  Tabs,
-  Tag,
-  Textarea,
   Textfield,
-  ToggleGroup,
   Tooltip,
   usePagination,
 } from '@digdir/designsystemet-react';
@@ -45,24 +28,12 @@ export const Components = () => {
 
   return (
     <div className={classes.components}>
-      <div className={cl(classes.card, classes.checkbox)}>
-        <Fieldset data-size='sm'>
-          <Fieldset.Legend>Handleliste</Fieldset.Legend>
-          <Checkbox label='En kilo poteter' value='epost' />
-          <Checkbox label='To liter Farris' value='telefon' />
-          <Checkbox label='Blomkål' value='sms' defaultChecked />
-          <Checkbox label='Pizza' value='sms' defaultChecked />
-          <Checkbox label='Tre liter lettmelk' value='sms' defaultChecked />
-          <Checkbox label='2kg smågodt' value='sms' />
-          <Checkbox label='10 poser med Smash' value='sms' />
-        </Fieldset>
-      </div>
       <div className={cl(classes.card, classes.user)}>
         <Heading
           className={cl(classes.cardTitle, classes.userTitle)}
           data-size='xs'
         >
-          Opprett ny bruker
+          Min profil
         </Heading>
 
         <Textfield
@@ -71,6 +42,7 @@ export const Components = () => {
           placeholder='Ola Normann'
           className={classes.userField}
         />
+
         <Textfield
           type='email'
           label='E-post'
@@ -88,7 +60,7 @@ export const Components = () => {
         </Button>
       </div>
       <div className={cl(classes.card, classes.tableContainer)}>
-        <Heading className={classes.cardTitle} data-size='2xs'>
+        <Heading className={classes.cardTitle} data-size='xs'>
           Alle brukere
         </Heading>
         <div className={classes.tableHeader}>
@@ -103,16 +75,9 @@ export const Components = () => {
               Utfør
             </Button>
           </div>
-          <Search className={classes.tableSearch} data-size='sm'>
-            <Search.Input
-              aria-label='Søk etter bruker'
-              placeholder='Søk etter bruker...'
-            />
-            <Search.Clear />
-            <Search.Button />
-          </Search>
+          <Search data-size='sm' className={classes.tableSearch} />
         </div>
-        <Table data-size='sm' border className={classes.table}>
+        <Table data-data-size='sm' className={classes.table}>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
@@ -149,6 +114,18 @@ export const Components = () => {
               <Table.Cell>ola@nordmann.no</Table.Cell>
               <Table.Cell>87654321</Table.Cell>
             </Table.Row>
+            <Table.Row>
+              <Table.Cell className={classes.tableCell}>
+                <img
+                  className={classes.tableImg}
+                  src='img/avatars/male2.png'
+                  alt=''
+                />
+                Ola Nordmann
+              </Table.Cell>
+              <Table.Cell>ola@nordmann.no</Table.Cell>
+              <Table.Cell>87654321</Table.Cell>
+            </Table.Row>
           </Table.Body>
         </Table>
         <Pagination data-size='sm'>
@@ -171,47 +148,20 @@ export const Components = () => {
           </Pagination.List>
         </Pagination>
       </div>
-      <div className={cl(classes.card, classes.help)}>
-        <Heading data-size='xs' className={classes.helpHeading}>
-          Hva kan vi hjelpe deg med?
-        </Heading>
-        <div className={classes.helpCards}>
-          <Card color='brand1'>
-            <Heading data-size='2xs' className={classes.helpCardHeading}>
-              Sikkerhet og drift
-            </Heading>
-            <Paragraph>
-              Most provide as with carried business are much better more the.
-            </Paragraph>
-          </Card>
-          <Card color='brand2'>
-            <Heading data-size='2xs' className={classes.helpCardHeading}>
-              Skole og utdanning
-            </Heading>
-            <Paragraph>
-              Most provide as with carried business are much better more the.
-            </Paragraph>
-          </Card>
-          <Card color='brand3'>
-            <Heading data-size='2xs' className={classes.helpCardHeading}>
-              <a href='#preview'>Mat og helse</a>
-            </Heading>
-            <Paragraph>
-              Lenke til artikkel om mat og helse, der du kan lese mer om alt.
-            </Paragraph>
-          </Card>
-        </div>
-      </div>
-      <div className={cl(classes.card, classes.radio)}>
+      <div className={cl(classes.card, classes.checkbox)}>
         <Fieldset data-size='sm'>
-          <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
-          <Fieldset.Description>Velg din favorittsmak</Fieldset.Description>
-          <Radio label='Vanile' value='vanilje' />
-          <Radio label='Jordbær' value='jordbær' defaultChecked />
-          <Radio label='Sjokolade' value='sjokolade' />
-          <Radio label='Jeg spiser ikke iskrem' value='spiser-ikke-is' />
+          <Fieldset.Legend>Handleliste</Fieldset.Legend>
+          <Checkbox label='En kilo poteter' value='epost' />
+          <Checkbox label='To liter Farris' value='telefon' />
+          <Checkbox label='Blomkål' value='sms' defaultChecked />
+          <Checkbox label='Pizza' value='sms' defaultChecked />
+          <Checkbox label='Tre liter lettmelk' value='sms' defaultChecked />
+          <Checkbox label='2kg smågodt' value='sms' />
+          <Checkbox label='10 poser med Smash' value='sms' />
         </Fieldset>
       </div>
+<<<<<<< HEAD
+=======
       <div className={cl(classes.card, classes.tag)}>
         <Heading data-size='xs' className={classes.tagHeading}>
           Emner
@@ -427,6 +377,7 @@ export const Components = () => {
           <Spinner aria-label='laster innhold' data-size='md' color='accent' />
         </div>
       </div>
+>>>>>>> next
     </div>
   );
 };

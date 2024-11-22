@@ -24,8 +24,8 @@ export const ColorContrasts = () => {
     themeRange2: theme.light.filter((color) => indexTwo.includes(color.number)),
   });
   const colors = useThemeStore((state) => state.colors);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedBaseColor, setSelectedBaseColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState('Dominant');
+  const [selectedBaseColor, setSelectedBaseColor] = useState('Dominant');
 
   const indexBaseOne = [0, 1, 2, 3, 14, 15];
   const indexBaseTwo = [9, 10, 11];

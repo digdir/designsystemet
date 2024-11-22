@@ -79,11 +79,16 @@ export const ColorPane = ({
         <Textfield
           placeholder='Skriv navnet her...'
           label='Navn'
+          description='Kun bokstaver, tall og bindestrek'
           className={classes.name}
           data-size='sm'
           value={name}
           onChange={(e) => {
-            setName(e.target.value);
+            const value = e.currentTarget.value
+              .replace(/\s+/g, '-')
+              .replace(/[^A-Z0-9-]+/gi, '')
+              .toLowerCase();
+            setName(value);
           }}
         />
       )}
