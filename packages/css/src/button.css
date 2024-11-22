@@ -20,7 +20,7 @@
     --dsc-button-color--hover: var(--ds-color-accent-text-default);
   }
   &[data-variant='secondary'] {
-    --dsc-button-border-color: var(--ds-color-accent-border-default);
+    --dsc-button-border-color: var(--ds-color-accent-border-strong);
   }
 
   &[data-color] {
