@@ -66,13 +66,13 @@ const colorSchemeDefaults: Record<ColorMode, ThemeObject_> = {
   },
 };
 
-function generateColorSchemesGroup(colorSchemes: Array<ColorMode>, themes: string[]): ThemeObject_[] {
+function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[]): ThemeObject_[] {
   return colorSchemes.map(
-    (mode): ThemeObject_ => ({
-      ...colorSchemeDefaults[mode],
+    (scheme): ThemeObject_ => ({
+      ...colorSchemeDefaults[scheme],
       selectedTokenSets: Object.fromEntries([
-        [`primitives/modes/color-scheme/${mode}/global`, TokenSetStatus.ENABLED],
-        ...themes.map((theme) => [`primitives/modes/color-scheme/${mode}/${theme}`, TokenSetStatus.ENABLED]),
+        [`primitives/modes/color-scheme/${scheme}/global`, TokenSetStatus.ENABLED],
+        ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
       group: 'Color scheme',
     }),
