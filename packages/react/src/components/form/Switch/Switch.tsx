@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import type { Color } from '../../../colors';
-import type { DefaultProps } from '../../../types';
+import type { DefaultProps, LabelRequired } from '../../../types';
 import type { MergeRight } from '../../../utilities';
 import { Label } from '../../Label';
 import { Field, type FieldProps } from '../Field';
@@ -32,11 +32,7 @@ export type SwitchProps = MergeRight<
      * from the nearest ancestor with data-color.
      */
     'data-color'?: Color;
-  } & (
-    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
-    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
-    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
-  )
+  } & LabelRequired
 >;
 
 /**

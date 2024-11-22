@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Color } from './colors';
 
 export type Size = 'sm' | 'md' | 'lg';
@@ -19,3 +20,8 @@ export type DefaultProps = {
    */
   'data-color'?: Color;
 };
+
+export type LabelRequired =
+  | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
+  | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
+  | { 'aria-label'?: never; 'aria-labelledby': string; label?: never };
