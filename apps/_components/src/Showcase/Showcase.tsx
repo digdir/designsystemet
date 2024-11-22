@@ -1,11 +1,11 @@
 'use client';
 import {
-  Accordion,
   Avatar,
   Button,
   Card,
   Checkbox,
   Combobox,
+  Details,
   Divider,
   Fieldset,
   Heading,
@@ -280,40 +280,40 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
       </div>
       <div className={cl(classes.card, classes.faq)}>
         <Heading className={classes.cardTitle}>Ofte stillte spørsmål</Heading>
-        <Accordion data-color='brand3' border>
-          <Accordion.Item>
-            <Accordion.Heading>
+        <Details data-color='brand3' border>
+          <Details.Item>
+            <Details.Summary>
               Hvem kan registrere seg i Frivillighetsregisteret?
-            </Accordion.Heading>
-            <Accordion.Content>
+            </Details.Summary>
+            <Details.Content>
               For å kunne bli registrert i Frivillighetsregisteret, må
               organisasjonen drive frivillig virksomhet. Det er bare foreninger,
               stiftelser og aksjeselskap som kan registreres. Virksomheten kan
               ikke dele ut midler til fysiske personer. Virksomheten må ha et
               styre.
-            </Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item>
-            <Accordion.Heading>
+            </Details.Content>
+          </Details.Item>
+          <Details.Item>
+            <Details.Summary>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-            </Accordion.Heading>
-            <Accordion.Content>
+            </Details.Summary>
+            <Details.Content>
               Virksomheten må være registrert i Enhetsregisteret før den kan bli
               registrert i Frivillighetsregisteret. Du kan registrere i begge
               registrene samtidig i Samordnet registermelding.
-            </Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item>
-            <Accordion.Heading>
+            </Details.Content>
+          </Details.Item>
+          <Details.Item>
+            <Details.Summary>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-            </Accordion.Heading>
-            <Accordion.Content>
+            </Details.Summary>
+            <Details.Content>
               Virksomheten må være registrert i Enhetsregisteret før den kan bli
               registrert i Frivillighetsregisteret. Du kan registrere i begge
               registrene samtidig i Samordnet registermelding.
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion>
+            </Details.Content>
+          </Details.Item>
+        </Details>
       </div>
     </div>
   );

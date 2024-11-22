@@ -97,25 +97,25 @@ export const ColorModal = ({
           </div>
           <div className={classes.right} style={{ backgroundColor: hex }}></div>
         </div>
-        {/* <Accordion.Root
+        {/* <Details.Root
             color='neutral'
             className={classes.accordion}
           >
-            <Accordion.Item>
-              <Accordion.Heading
+            <Details.Item>
+              <Details.Summary
                 level={3}
                 className={classes.accordionHeading}
               >
                 Vis kontrastgrenser mot relevante farger
-              </Accordion.Heading>
-              <Accordion.Content className={classes.accordionContent}>
+              </Details.Summary>
+              <Details.Content className={classes.accordionContent}>
                 <Boxes
                   selectedColor={hex}
                   colorTheme={namespace}
                 />
-              </Accordion.Content>
-            </Accordion.Item>
-          </Accordion.Root> */}
+              </Details.Content>
+            </Details.Item>
+          </Details.Root> */}
       </Modal.Block>
     </Modal>
   );

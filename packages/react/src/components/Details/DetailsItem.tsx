@@ -4,7 +4,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import '@u-elements/u-details';
 
-export type AccordionItemProps = {
+export type DetailsItemProps = {
   /**
    * Controls open-state.
    *
@@ -14,13 +14,13 @@ export type AccordionItemProps = {
    */
   open?: boolean;
   /**
-   * Defaults the accordion to open if not controlled
+   * Defaults the details to open if not controlled
    * @default false
    */
   defaultOpen?: boolean;
-  /** Callback function when AccordionItem toggles due to click on summary or find in page-search */
+  /** Callback function when DetailsItem toggles due to click on summary or find in page-search */
   onToggle?: (event: Event) => void;
-  /** Content should be one `<Accordion.Heading>` and `<Accordion.Content>` */
+  /** Content should be one `<Details.Summary>` and `<Details.Content>` */
   children?: ReactNode;
 } & Omit<HTMLAttributes<HTMLDetailsElement>, 'onToggle'> &
   (
@@ -29,15 +29,15 @@ export type AccordionItemProps = {
   );
 
 /**
- * Accordion item component, contains `Accordion.Heading` and `Accordion.Content` components.
+ * Details item component, contains `Details.Summary` and `Details.Content` components.
  * @example
- * <AccordionItem>
- *  <AccordionHeading>Header</AccordionHeading>
- *  <AccordionContent>Content</AccordionContent>
- * </AccordionItem>
+ * <DetailsItem>
+ *  <DetailsSummary>Header</DetailsSummary>
+ *  <DetailsContent>Content</DetailsContent>
+ * </DetailsItem>
  */
-export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
-  function AccordionItem(
+export const DetailsItem = forwardRef<HTMLDetailsElement, DetailsItemProps>(
+  function DetailsItem(
     { className, open, defaultOpen = false, onToggle, ...rest },
     ref,
   ) {
@@ -64,7 +64,7 @@ export const AccordionItem = forwardRef<HTMLDetailsElement, AccordionItemProps>(
 
     return (
       <u-details
-        class={cl('ds-accordion__item', className)} // Using class since React does not translate className on custom elements
+        class={cl('ds-details__item', className)} // Using class since React does not translate className on custom elements
         open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
         ref={mergedRefs}
         {...rest}

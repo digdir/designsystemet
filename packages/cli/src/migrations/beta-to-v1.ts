@@ -10,7 +10,7 @@ export default (glob?: string) =>
       }),
       // New component token prefixes
       cssVarRename({
-        '--fds-accordion': '--dsc-accordion',
+        '--fds-accordion': '--dsc-accordion', /* TODO: EIRIK */
         '--fds-alert': '--dsc-alert',
         '--fds-btn': '--dsc-btn',
         '--fds-checkbox': '--dsc-checkbox',

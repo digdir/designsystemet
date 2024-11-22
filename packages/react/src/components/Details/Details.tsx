@@ -5,11 +5,11 @@ import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-export type AccordionProps = MergeRight<
+export type DetailsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * Accordion background color.
+     * Details background color.
      * @default neutral
      */
     'data-color'?: 'subtle' | Color;
@@ -18,22 +18,22 @@ export type AccordionProps = MergeRight<
      * @default false
      **/
     border?: boolean;
-    /** Instances of `Accordion.Item` */
+    /** Instances of `Details.Item` */
     children: ReactNode;
   }
 >;
 
 /**
- * Accordion component, contains `Accordion.Item` components.
+ * Details component, contains `Details.Item` components.
  */
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  function Accordion(
+export const Details = forwardRef<HTMLDivElement, DetailsProps>(
+  function Details(
     { border = false, 'data-color': color = 'neutral', className, ...rest },
     ref,
   ) {
     return (
       <div
-        className={cl('ds-accordion-group', className)}
+        className={cl('ds-details-group', className)}
         data-border={border || undefined} /* Fallback to  */
         data-color={color}
         ref={ref}

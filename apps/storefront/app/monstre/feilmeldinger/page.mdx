@@ -3,10 +3,10 @@ import {
   CardContent,
   Heading,
   Paragraph,
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionHeading
+  Details,
+  DetailsItem,
+  DetailsContent,
+  DetailsSummary
 } from '@digdir/designsystemet-react';
 
 import { Image } from '@components';
@@ -184,12 +184,12 @@ Her må vi gjøre det så tydelig som mulig for brukeren at flere felt påvirker
 
 I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
-<Accordion
+<Details
   color='neutral'
 >
-  <AccordionItem>
-    <AccordionHeading>Eksempel på feilmelding som gjelder flere felt</AccordionHeading>
-    <AccordionContent
+  <DetailsItem>
+    <DetailsSummary>Eksempel på feilmelding som gjelder flere felt</DetailsSummary>
+    <DetailsContent
         style={{
         paddingTop: '0px',
         paddingBottom: '0px',
@@ -215,9 +215,9 @@ I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis ha
         alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, men har en feil i utfyllingen. Feilmeldingen vises da på vanlig måte under det aktuelle feltet. '
         boxShadow={false}
       />
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+    </DetailsContent>
+  </DetailsItem>
+</Details>
 
 ## Kode
 
