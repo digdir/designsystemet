@@ -1,17 +1,16 @@
 .components {
-  background-color: var(--background);
-  border-radius: 12px;
   width: 100%;
-  padding: 24px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
-  row-gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ds-spacing-8);
+  margin: 0 auto;
+  background-color: var(--ds-color-neutral-background-default);
+  border-radius: var(--ds-border-radius-md);
 }
 
 .card {
-  background-color: var(--foreground);
-  border-radius: min(1rem, var(--ds-border-radius-md));
+  background-color: var(--ds-color-neutral-background-subtle);
+  border-radius: var(--ds-border-radius-md);
   padding: 24px;
 }
 
@@ -20,93 +19,51 @@
 }
 
 .checkbox {
-  grid-column: span 3;
+  grid-column: span 2;
   padding-bottom: 16px;
 }
 
 .user {
-  grid-column: span 3;
+  grid-column: span 2;
 }
 
 .tableContainer {
-  grid-column: span 6;
+  grid-column: span 4;
 }
 
 .help {
-  grid-column: span 6;
+  grid-column: span 4;
 }
 
 .radio {
-  grid-column: span 3;
+  grid-column: span 2;
 }
 
 .tag {
-  grid-column: span 3;
+  grid-column: span 2;
 }
 
 .switches {
-  grid-column: span 4;
+  grid-column: span 2;
 }
 
-.SwitchContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.toggleGroup {
-  grid-column: span 4;
-}
-
-.comboBox {
-  grid-column: span 4;
-}
-
-.alert {
-  grid-column: span 6;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-spacing-4);
-}
-
-.loaders {
-  grid-column: span 3;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-spacing-2);
-}
-
-.loadersRest {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-spacing-2);
-}
-
-.dropdown {
-  grid-column: span 3;
-  display: flex;
-  gap: var(--ds-spacing-2);
-  justify-content: center;
-  align-items: center;
+.combobox {
+  grid-column: span 2;
 }
 
 .tabs {
-  grid-column: span 5;
+  grid-column: span 4;
   display: flex;
   gap: 16px;
   flex-direction: column;
 }
 
 .faq {
-  grid-column: span 7;
+  grid-column: span 4;
 }
 
 .userLink {
-  margin-top: 16px;
-  margin-left: auto;
-  font-size: 16px;
-  display: block;
+  margin-top: 20px;
 }
 
 .userTitle {
@@ -119,11 +76,6 @@
 
 .userBtn {
   margin-top: 32px;
-}
-
-.userPar {
-  margin-bottom: -4px;
-  margin-top: -7px;
 }
 
 .tabs button {
@@ -208,29 +160,4 @@
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-2);
-  margin-top: 12px;
-}
-
-.chips {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.chipsHeading {
-  margin-top: 24px;
-  margin-bottom: 16px;
-}
-
-.textarea {
-  margin-top: 8px;
-}
-
-.textareaLabel {
-  margin-top: 24px;
-  font-size: 16px;
-}
-
-.comboHeading {
-  margin-bottom: 16px;
 }

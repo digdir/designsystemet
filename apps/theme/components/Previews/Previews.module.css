@@ -78,6 +78,7 @@
   display: flex;
   gap: 32px;
   box-shadow: var(--ds-shadow-md);
+  padding: var(--ds-spacing-4);
 }
 
 .preview[data-color-scheme='dark'],
