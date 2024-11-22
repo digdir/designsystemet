@@ -15,9 +15,6 @@ type TokenModalProps = {
   open: boolean;
 };
 
-const toFigmaSnippet = (obj: unknown) =>
-  JSON.stringify(obj, null, 2).replaceAll('$', '');
-
 export const TokenModal = ({ open }: TokenModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
