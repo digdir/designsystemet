@@ -2,8 +2,8 @@
 
 import type { ColorMode } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
-
 import { useThemeStore } from '../../store';
+
 import classes from './Previews.module.css';
 import { Theme1 } from './Theme1/Theme1';
 

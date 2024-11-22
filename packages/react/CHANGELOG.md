@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.0-next.37
+
+### Major Changes
+
+- **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme` ([#2798](https://github.com/digdir/designsystemet/pull/2798))
+
+### Minor Changes
+
+- `data-color` prop now supports type safety based on the token structure which was used to generate the theme CSS. Instructions for enabling this has been added to the README. An optional `react-types.d.ts` has also been added, which adds type hints for `data-color` and `data-size` to all HTML elements. ([#2795](https://github.com/digdir/designsystemet/pull/2795))
+
 ## 1.0.0-next.36
 
 ### Major Changes
