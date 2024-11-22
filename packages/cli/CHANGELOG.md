@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.38
+
+### Patch Changes
+
+- fix: Correct name on Figma collection for color schemes ([#2819](https://github.com/digdir/designsystemet/pull/2819))
+
 ## 1.0.0-next.37
 
 ### Minor Changes
