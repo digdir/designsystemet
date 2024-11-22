@@ -1,6 +1,6 @@
 import { type ForwardedRef, type ReactNode, forwardRef } from 'react';
 
-import type { DefaultProps } from '../../../types';
+import type { DefaultProps, LabelRequired } from '../../../types';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
 import {
@@ -38,7 +38,8 @@ type SharedTextfieldProps = {
    * Pass a number to set a limit, or an object to configure the counter
    */
   counter?: FieldCounterProps | number;
-} & Omit<DefaultProps, 'data-color'>;
+} & LabelRequired &
+  Omit<DefaultProps, 'data-color'>;
 
 type TextfieldTextareaProps = {
   /** Use to render a `Textarea` instead of `Input` for multiline support  */
