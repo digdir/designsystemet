@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import type { Color } from '../../../colors';
-import type { DefaultProps } from '../../../types';
+import type { DefaultProps, LabelRequired } from '../../../types';
 import type { MergeRight } from '../../../utilities';
 import { Label } from '../../Label';
 import { ValidationMessage } from '../../ValidationMessage';
@@ -26,11 +26,7 @@ export type CheckboxProps = MergeRight<
     value?: InputProps['value'];
     /** Validation message for field */
     validation?: ReactNode;
-  } & (
-    | { 'aria-label': string; 'aria-labelledby'?: never; label?: never }
-    | { 'aria-label'?: never; 'aria-labelledby'?: never; label: ReactNode }
-    | { 'aria-label'?: never; 'aria-labelledby': string; label?: never }
-  )
+  } & LabelRequired
 >;
 
 /**
