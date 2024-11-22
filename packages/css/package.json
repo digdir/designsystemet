@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.0.0-next.36",
+  "version": "1.0.0-next.37",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -9,8 +9,8 @@
   },
   "license": "MIT",
   "exports": {
-    ".": "./dist/index.css",
-    "./*": "./dist/*"
+    ".": "./dist/src/index.css",
+    "./*": "./dist/src/*"
   },
   "files": [
     "dist"
@@ -33,8 +33,7 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && postcss ./*.css --base . --dir ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
