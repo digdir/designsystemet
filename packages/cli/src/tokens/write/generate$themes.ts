@@ -9,19 +9,19 @@ const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1
 
 const createHash = (text: string) => crypto.hash('sha1', text);
 
-type ColorModes = Array<ColorMode>;
+type ColorSchemes = Array<ColorMode>;
 
 type ThemeObject_ = ThemeObject & {
   $figmaCollectionId?: string;
   $figmaModeId?: string;
 };
 
-export function generateThemesJson(modes: ColorModes, themes: string[], colors: Colors): ThemeObject_[] {
+export function generateThemesJson(colorSchemes: ColorSchemes, themes: string[], colors: Colors): ThemeObject_[] {
   return [
     ...generateSizeGroup(),
     ...generateThemesGroup(themes),
     ...generateTypographyGroup(themes),
-    ...generateModesGroup(modes, themes),
+    ...generateColorSchemesGroup(colorSchemes, themes),
     generateSemanticGroup(),
     ...generateColorGroup('main', colors),
     ...generateColorGroup('support', colors),
@@ -66,15 +66,15 @@ const colorSchemeDefaults: Record<ColorMode, ThemeObject_> = {
   },
 };
 
-function generateModesGroup(modes: Array<ColorMode>, themes: string[]): ThemeObject_[] {
-  return modes.map(
-    (mode): ThemeObject_ => ({
-      ...colorSchemeDefaults[mode],
+function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[]): ThemeObject_[] {
+  return colorSchemes.map(
+    (scheme): ThemeObject_ => ({
+      ...colorSchemeDefaults[scheme],
       selectedTokenSets: Object.fromEntries([
-        [`primitives/modes/color-scheme/${mode}/global`, TokenSetStatus.ENABLED],
-        ...themes.map((theme) => [`primitives/modes/color-scheme/${mode}/${theme}`, TokenSetStatus.ENABLED]),
+        [`primitives/modes/color-scheme/${scheme}/global`, TokenSetStatus.ENABLED],
+        ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
-      group: 'Mode',
+      group: 'Color scheme',
     }),
   );
 }
