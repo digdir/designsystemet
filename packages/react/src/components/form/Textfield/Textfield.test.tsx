@@ -15,19 +15,19 @@ describe('Textfield', () => {
   });
 
   it('has correct description', () => {
-    render({ description: 'description' });
+    render({ description: 'description', 'aria-label': 'label' });
     expect(
       screen.getByRole('textbox', { description: 'description' }),
     ).toBeDefined();
   });
 
   it('should become a textarea when multiline is true', () => {
-    render({ multiline: true });
+    render({ multiline: true, 'aria-label': 'label' });
     expect(screen.getByRole('textbox')).toBeInstanceOf(HTMLTextAreaElement);
   });
 
   it('is invalid with correct error message', () => {
-    render({ error: 'error-message' });
+    render({ error: 'error-message', 'aria-label': 'label' });
 
     const input = screen.getByRole('textbox', { description: 'error-message' });
     expect(input).toBeDefined();
@@ -36,7 +36,7 @@ describe('Textfield', () => {
 
   it('Triggers onBlur event when field loses focus', async () => {
     const onBlur = vi.fn();
-    render({ onBlur });
+    render({ onBlur, 'aria-label': 'label' });
     const element = screen.getByRole('textbox');
     await act(async () => await user.click(element));
     expect(element).toHaveFocus();
@@ -47,7 +47,7 @@ describe('Textfield', () => {
   it('Triggers onChange event for each keystroke', async () => {
     const onChange = vi.fn();
     const data = 'test';
-    render({ onChange });
+    render({ onChange, 'aria-label': 'label' });
     const element = screen.getByRole('textbox');
     await act(async () => await user.click(element));
     expect(element).toHaveFocus();
@@ -57,7 +57,7 @@ describe('Textfield', () => {
 
   it('Sets given id on input field', () => {
     const id = 'some-unique-id';
-    render({ id });
+    render({ id, 'aria-label': 'label' });
     expect(screen.getByRole('textbox')).toHaveAttribute('id', id);
   });
 
@@ -82,12 +82,16 @@ describe('Textfield', () => {
 
   it('Has given type attribute if set', () => {
     const type = 'tel';
-    render({ type });
+    render({ type, 'aria-label': 'label' });
     expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
   });
 });
 
-const render = (props: TextfieldProps = {}) =>
+const render = (
+  props: TextfieldProps = {
+    'aria-label': 'label',
+  },
+) =>
   renderRtl(
     <Textfield
       {...{
