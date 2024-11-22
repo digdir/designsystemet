@@ -77,7 +77,7 @@ export const Sidebar = () => {
         </Heading>
 
         <Textfield
-          label='Navn på tema'
+          label='Navn'
           description='Kun bokstaver, tall og bindestrek'
           value={themeName}
           data-size='sm'
