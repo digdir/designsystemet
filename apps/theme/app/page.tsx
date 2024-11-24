@@ -28,9 +28,6 @@ import classes from './page.module.css';
 
 export default function Home() {
   const selectedColor = useThemeStore((state) => state.selectedColor);
-
-  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -124,21 +121,10 @@ export default function Home() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const updateBoderRadius = (radius: string) => {
-    const previewElem = document.getElementById('preview');
-    if (previewElem) {
-      previewElem.style.setProperty('--ds-border-radius-base', radius);
-    }
-
-    setBorderRadius(radius);
-    setQueryParams({ borderRadius: radius });
-  };
-
   /* get theme from query on initial load */
   useEffect(() => {
     const borderRadius = params.get('borderRadius') as string;
     if (typeof borderRadius === 'string') {
-      updateBoderRadius(borderRadius);
     }
   }, []);
 

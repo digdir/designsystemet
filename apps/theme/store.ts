@@ -11,7 +11,12 @@ export type ColorTheme = {
   colors: ThemeInfo;
 };
 
+type BorderRadiusGroup = 'none' | 'small' | 'medium' | 'large' | 'full';
+type PageType = 'intro' | 'color' | 'radius' | 'finish';
+
 type ColorStore = {
+  activePage: PageType;
+  setActivePage: (page: PageType) => void;
   colors: {
     main: ColorTheme[];
     neutral: ColorTheme[];
@@ -32,8 +37,8 @@ type ColorStore = {
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
   selectedColor: { color: ColorInfo; name: string };
   setSelectedColor: (color: ColorInfo, name: string) => void;
-  borderRadius: string;
-  setBorderRadius: (radius: string) => void;
+  borderRadius: BorderRadiusGroup;
+  setBorderRadius: (radius: BorderRadiusGroup) => void;
   appearance: ColorMode;
   setAppearance: (appearance: ColorMode) => void;
   themePreview: 'one' | 'two' | 'three';
@@ -42,6 +47,8 @@ type ColorStore = {
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
+    activePage: 'intro',
+    setActivePage: (page) => set({ activePage: page }),
     selectedColor: {
       color: {
         hex: '#ffffff',
@@ -50,7 +57,7 @@ export const useThemeStore = create(
       },
       name: 'Default',
     },
-    borderRadius: '0.25rem',
+    borderRadius: 'small',
     appearance: 'light',
     themePreview: 'one',
     colors: {

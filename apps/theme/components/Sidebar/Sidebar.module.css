@@ -3,16 +3,24 @@
   z-index: 100;
   right: 20px;
   top: 20px;
-  height: calc(100vh - 40px);
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.1);
-  width: 410px;
+  width: 420px;
   flex-basis: 410px;
   flex-grow: 1;
   border-radius: 8px;
-  min-height: calc(100vh - 40px);
   margin-top: -170px;
+  min-height: 835px;
+}
+
+.showSidebar {
+  display: block !important;
+  top: 12px;
+  margin-top: 0;
+  right: 12px;
+  bottom: 12px;
+  position: fixed;
 }
 
 .scrollContainer {
@@ -28,19 +36,6 @@
 
 .title {
   margin-bottom: 20px;
-}
-
-.colors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.separator {
-  margin-bottom: 20px;
-  height: 1px;
-  width: 100%;
-  background-color: var(--ds-color-neutral-border-subtle);
 }
 
 .group {
@@ -70,20 +65,6 @@
   color: var(--ds-color-neutral-text-subtle);
 }
 
-.bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 24px;
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background-color: var(--ds-color-info-background-default);
-  border-radius: 0 0 8px 8px;
-}
-
 .label {
   font-size: 16px;
   margin-bottom: 8px;
@@ -98,4 +79,43 @@
   display: flex;
   gap: 8px;
   margin-top: -4px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--ds-color-info-background-default);
+  border-radius: 0 0 8px 8px;
+}
+
+.toggle {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  display: none;
+  z-index: 5;
+  background-color: var(--ds-color-neutral-background-default);
+}
+
+@media screen and (max-width: 1500px) {
+  .sidebar {
+    display: none;
+  }
+  .toggle {
+    display: block;
+  }
+  .toggleOpen {
+    right: 440px;
+  }
 }

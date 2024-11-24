@@ -1,40 +1,50 @@
 import {
   Button,
-  Checkbox,
-  Chip,
   Heading,
-  Switch,
+  Link,
+  Paragraph,
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
 
 import cl from 'clsx/lite';
+import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
 
 export const BorderRadius = () => {
+  const borderRadius = useThemeStore((state) => state.borderRadius);
+
+  const borderRadiusMap = {
+    none: ['0px', '0px', '0px', '0px', '0px', '999px'],
+    small: ['2px', '4px', '8px', '12px', '4px', '999px'],
+    medium: ['2px', '8px', '12px', '16px', '8px', '999px'],
+    large: ['2px', '12px', '16px', '20px', '12px', '999px'],
+    full: ['2px', '12px', '16px', '24px', '999px', '999px'],
+  };
+
   const items = [
     {
-      name: 'Small',
+      name: 'sm',
       value: '2px',
     },
     {
-      name: 'Medium',
+      name: 'md',
       value: '4px',
     },
     {
-      name: 'Large',
+      name: 'lg',
       value: '8px',
     },
     {
-      name: 'xLarge',
+      name: 'xl',
       value: '16px',
     },
     {
-      name: 'Base',
+      name: 'default',
       value: '4px',
     },
     {
-      name: 'Full',
+      name: 'full',
       value: '999px',
     },
   ];
@@ -42,59 +52,153 @@ export const BorderRadius = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Tokens</Heading>
-        <div className={classes.items}>
-          {items.map((item, index) => (
-            <div key={index} className={classes.item}>
-              <div className={classes.itemName}>{item.name}:</div>
-              <div className={classes.itemValue}>{item.value}</div>
-            </div>
-          ))}
+        <Paragraph data-size='sm'>
+          Border radius er delt inn i 6 forskjellige tokens som endrer på seg
+          når border radius gruppene blir justert i sidebaren.
+        </Paragraph>
+
+        <Paragraph data-size='sm'>
+          Small, Medium, Large og xLarge er ment å brukes som tokens på ulike
+          overflatestørrelser for å beholde proporsjonene når ting blir større
+          eller mindre.
+        </Paragraph>
+
+        <Paragraph data-size='sm'>
+          Full tokenet vil alltid gi runde kanter.
+        </Paragraph>
+        <div className={classes.itemsContainer}>
+          <Heading data-size='2xs'>Tokens</Heading>
+          <div className={classes.items}>
+            {items.map((item, index) => (
+              <div key={index} className={classes.item}>
+                <div className={classes.itemName}>{item.name}:</div>
+                <div className={classes.itemValue}>
+                  {borderRadiusMap[borderRadius][index]}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className={cl('panelRight', classes.outer)}>
-        <div className={classes.inner}>
-          <div className={classes.card}>
-            <Heading data-size='2xs'>Opprett ny bruker</Heading>
+        <div
+          className={classes.inner}
+          style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+        >
+          <div
+            className={classes.card}
+            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+          >
+            <Heading data-size='2xs'>Logg inn i portalen</Heading>
             <Textfield placeholder='Ola Normann' label='Navn' data-size='sm' />
-            <Checkbox label='Send nyhetsbrev' data-size='sm' value='ff' />
-            <div className={classes.btnGroup}>
-              <Button data-size='sm'>Opprett bruker</Button>
-              <Button data-size='sm' variant='secondary'>
-                Avbryt
-              </Button>
+            <Textfield placeholder='********' label='Passord' data-size='sm' />
+            <Link href='#' data-size='sm'>
+              Glemt passord?
+            </Link>
+
+            <Button
+              style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+              data-size='sm'
+              className={classes.btn}
+            >
+              Logg inn
+            </Button>
+          </div>
+          <div
+            className={classes.card}
+            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+          >
+            <img
+              className={classes.img}
+              src='img/city.png'
+              alt=''
+              style={{ borderRadius: borderRadiusMap[borderRadius][1] }}
+            />
+            <div className={classes.imgText}>
+              <div className={classes.tags} data-size='sm'>
+                <Tag color='brand1'>Sport</Tag>
+                <Tag color='brand2'>Nyheter</Tag>
+                <Tag color='brand3'>Innenriks</Tag>
+              </div>
+              <Heading data-size='2xs' className={classes.imgTitle}>
+                Reiste alene til storbyen
+              </Heading>
+              <Paragraph data-size='sm' className={classes.imgDesc}>
+                Mona kvist ville finne drømmen i New York City
+              </Paragraph>
             </div>
           </div>
-          <div className={classes.card}>
-            <Heading data-size='2xs'>Innstillinger</Heading>
-            <Switch label='Switch' data-size='sm' checked />
-            <Switch label='Switch' data-size='sm' />
-          </div>
-          <div className={classes.card} data-size='sm'>
-            <Heading data-size='2xs'>Innstillinger</Heading>
-            <div className={classes.tags}>
-              <Tag color='brand1'>Sport</Tag>
-              <Tag color='brand2'>Nyheter</Tag>
-              <Tag color='brand3'>Innenriks</Tag>
-              <Tag color='neutral'>Utenriks</Tag>
-              <Tag color='success'>Været</Tag>
-              <Tag color='info'>Musikk</Tag>
-            </div>
-            <div className={classes.chips}>
-              <Chip.Radio defaultChecked name='myChips' value='chip1'>
-                Chip
-              </Chip.Radio>
-              <Chip.Radio defaultChecked name='myChips' value='chip2'>
-                Chip
-              </Chip.Radio>
-            </div>
-            <div className={classes.chips}>
-              <Chip.Checkbox defaultChecked name='myChips' value='chip1'>
-                Chip
-              </Chip.Checkbox>
-              <Chip.Checkbox defaultChecked name='myChips' value='chip2'>
-                Chip
-              </Chip.Checkbox>
+          <div
+            className={classes.card}
+            data-size='sm'
+            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+          ></div>
+          <div
+            className={classes.card}
+            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+          >
+            <Heading data-size='2xs'>Folk du kanskje kjenner</Heading>
+            <div className={classes.users}>
+              <div className={classes.user}>
+                <img
+                  src='img/avatars/male2.png'
+                  alt=''
+                  className={classes.userImg}
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                />
+                <div className={classes.userText}>
+                  <div className={classes.userRole}>Designer</div>
+                  <div className={classes.userName}>Ola Normann</div>
+                </div>
+                <Button
+                  className={classes.userBtn}
+                  data-size='sm'
+                  variant='secondary'
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                >
+                  Følg
+                </Button>
+              </div>
+              <div className={classes.user}>
+                <img
+                  src='img/avatars/female2.png'
+                  alt=''
+                  className={classes.userImg}
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                />
+                <div className={classes.userText}>
+                  <div className={classes.userRole}>Frontend</div>
+                  <div className={classes.userName}>Kari Slotsveen</div>
+                </div>
+                <Button
+                  className={classes.userBtn}
+                  data-size='sm'
+                  variant='secondary'
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                >
+                  Følg
+                </Button>
+              </div>
+              <div className={classes.user}>
+                <img
+                  src='img/avatars/male3.png'
+                  alt=''
+                  className={classes.userImg}
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                />
+                <div className={classes.userText}>
+                  <div className={classes.userRole}>Backend</div>
+                  <div className={classes.userName}>Marcus Viken</div>
+                </div>
+                <Button
+                  className={classes.userBtn}
+                  data-size='sm'
+                  variant='secondary'
+                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                >
+                  Følg
+                </Button>
+              </div>
             </div>
           </div>
         </div>

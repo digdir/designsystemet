@@ -15,7 +15,7 @@
 .content {
   padding: 40px;
   width: calc(100% - 550px);
-  min-height: 100vh;
+
   margin-bottom: 40px;
   flex-grow: 500;
 }
@@ -25,7 +25,7 @@
 }
 
 .sideBarContainer {
-  width: 410px;
+  width: 420px;
 }
 
 .container {
@@ -49,19 +49,20 @@
   margin-left: -4px;
   display: inline-flex;
   width: auto;
-}
-
-.title {
-  margin-top: 40px;
+  align-self: flex-start;
 }
 
 .hide {
   display: none;
 }
 
+.show {
+  display: block;
+}
+
 .panelToggleGroup {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .panelToggleBtn {
@@ -70,7 +71,7 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   cursor: pointer;
   font-size: 16px;
-  background-color: white;
+  background-color: var(--ds-color-neutral-background-default);
   display: flex;
   align-items: center;
 }
@@ -79,4 +80,29 @@
 .panelToggleBtn:hover {
   border-color: var(--ds-color-neutral-border-default);
   outline: 1px solid var(--ds-color-neutral-border-default);
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px;
+}
+
+.label {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1500px) {
+  .content {
+    width: 100%;
+  }
 }

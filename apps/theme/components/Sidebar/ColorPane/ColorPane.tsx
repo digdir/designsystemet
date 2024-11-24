@@ -56,7 +56,7 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           variant='tertiary'
-          color='danger'
+          data-color='danger'
           onClick={() => onRemove()}
           className={cl(
             classes.removeBtn,
@@ -67,7 +67,7 @@ export const ColorPane = ({
           <TrashIcon title='a11y-title' fontSize='1.5rem' />
         </Button>
       </div>
-      <Heading data-size='sm' className={classes.title}>
+      <Heading data-size='xs' className={classes.title}>
         {getHeading()}
       </Heading>
       {colorType === 'neutral' && (

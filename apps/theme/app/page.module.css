@@ -1,16 +1,26 @@
 .main {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 20%, rgba(30, 152, 245, 0.2) 45%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 25%, rgba(30, 152, 245, 0.2) 55%);
+  margin-top: -106px;
+  padding-top: 106px;
 }
 
 [data-color-scheme='dark'] .main {
   background: linear-gradient(180deg, rgba(0, 28, 54, 1) 20%, rgba(30, 152, 245, 0.2) 45%);
 }
 
+div[data-color-scheme='light'][data-theme='two'] .main {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 20.33%, rgba(116, 12, 126, 0.2) 57.04%);
+}
+
+div[data-color-scheme='dark'][data-theme='two'] .main {
+  background: linear-gradient(180deg, #131c27 20.33%, #280f36 57.04%);
+}
+
 .header {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-spacing-3);
+  margin-top: var(--ds-spacing-2);
 }
 
 .heading {

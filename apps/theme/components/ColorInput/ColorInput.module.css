@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px;
+  padding: 10px;
   background-color: transparent;
   cursor: pointer;
   transition: 0.1s all;
@@ -24,22 +24,22 @@
 .leftContent {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .color {
-  height: 22px;
-  width: 22px;
+  height: 24px;
+  width: 24px;
   background-color: red;
   border-radius: 4px;
 }
 
 .name {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .hex {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .icon {

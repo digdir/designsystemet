@@ -4,7 +4,6 @@ import {
   Fieldset,
   Heading,
   Link,
-  Pagination,
   Paragraph,
   Radio,
   Search,
@@ -41,7 +40,7 @@ export const Theme1 = () => {
             Min profil
           </Heading>
           <Button variant='tertiary' data-size='sm'>
-            Large
+            Lagre
           </Button>
         </div>
 
@@ -56,7 +55,7 @@ export const Theme1 = () => {
           type='email'
           label='E-post'
           data-size='sm'
-          placeholder='ola@norge.no'
+          placeholder='ola.normann@gmail.com'
           className={classes.userField}
         />
 
@@ -78,6 +77,7 @@ export const Theme1 = () => {
             onChange={function Ms() {}}
             value='sms'
           />
+
           <ValidationMessage hidden id=':r7:' />
         </Fieldset>
       </div>
@@ -99,7 +99,10 @@ export const Theme1 = () => {
             </Button>
           </div>
           <Search className={classes.tableSearch} data-size='sm'>
-            <Search.Input aria-label='Søk' placeholder='Søk her...' />
+            <Search.Input
+              aria-label='Søk'
+              placeholder='Søk etter brukere her...'
+            />
             <Search.Clear />
           </Search>
         </div>
@@ -154,25 +157,6 @@ export const Theme1 = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <Pagination data-size='sm' className={classes.pagination}>
-          <Pagination.List>
-            <Pagination.Item>
-              <Pagination.Button {...pagination.prevButtonProps}>
-                Forrige
-              </Pagination.Button>
-            </Pagination.Item>
-            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
-              <Pagination.Item key={itemKey}>
-                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
-              </Pagination.Item>
-            ))}
-            <Pagination.Item>
-              <Pagination.Button {...pagination.nextButtonProps}>
-                Neste
-              </Pagination.Button>
-            </Pagination.Item>
-          </Pagination.List>
-        </Pagination>
       </div>
 
       <div className={cl(classes.panel, classes.test)}>
@@ -182,16 +166,6 @@ export const Theme1 = () => {
         <Paragraph className={classes.panelDesc}>
           Her kan du administrere brukerene{' '}
         </Paragraph>
-
-        <div className={classes.toggleGroup}>
-          <div>
-            <Heading className={classes.toggleHeading}>Visning</Heading>
-            <Paragraph className={classes.toggleDesc}>
-              Her kan du administrere
-            </Paragraph>
-          </div>
-          <Switch data-size='sm' description='' label='' position='start' />
-        </div>
 
         <div className={classes.toggleGroup}>
           <div>
@@ -221,13 +195,13 @@ export const Theme1 = () => {
 
         <Fieldset data-size='sm' className={classes.radioGroup}>
           <Fieldset.Legend>Visnigsmodus</Fieldset.Legend>
-
           <Radio
             ref={function Ms() {}}
             label='Vanilje'
             name='my-group'
             onChange={function Ms() {}}
             value='vanilje'
+            checked
           />
           <Radio
             ref={function Ms() {}}
@@ -235,14 +209,14 @@ export const Theme1 = () => {
             name='my-group'
             onChange={function Ms() {}}
             value='jordbær'
-            checked
           />
+
           <Radio
             ref={function Ms() {}}
             label='Sjokolade'
             name='my-group'
             onChange={function Ms() {}}
-            value='sjokolade'
+            value='jordbær'
           />
           <ValidationMessage hidden id=':re:' />
         </Fieldset>
@@ -272,9 +246,11 @@ export const Theme1 = () => {
         </Heading>
         <Paragraph className={classes.cardDesc}>
           Seven theoretically cannot retired thin over and is rewritten an I
-          were desk the
+          were
         </Paragraph>
-        <Link data-size='sm'>Les mer om talentet</Link>
+        <Link href='#' data-size='sm'>
+          Les mer om talentet
+        </Link>
       </div>
       <div
         className={cl(classes.panel, classes.test2, classes.darkCard)}
@@ -290,21 +266,36 @@ export const Theme1 = () => {
           <Paragraph className={classes.darkCardDesc}>
             phase to leave an examples are up pane, completely tag by duties
             were but pointing address even at the rolled a ourselves, was
-            starting parts place aslo will do a lot if the ting is really there
-            and breathing.
+            starting parts place aslo will do a lot if the
           </Paragraph>
           <Paragraph className={classes.darkCardDesc}>
             Place copy the found with he an the an as a and that a pane, weary
-            phase to leave an examples are up pane, completely tag by duties
-            were but pointing.
+            phase to leave an examples are up pane.
           </Paragraph>
         </div>
+
+        <Checkbox
+          data-size='sm'
+          ref={function Ms() {}}
+          label='Send meg nyhetsbrev'
+          name='my-group'
+          onChange={function Ms() {}}
+          value='sms'
+          checked
+        />
 
         <Button data-size='sm' className={classes.darkCardBtn}>
           Meld deg på
         </Button>
       </div>
-      <div className={cl(classes.panel, classes.test3)}>f</div>
+      <div className={cl(classes.panel, classes.test3)}>
+        <Heading
+          className={cl(classes.panelTitle, classes.userTitle)}
+          data-size='2xs'
+        >
+          Folk du kanskje kjenner
+        </Heading>
+      </div>
     </div>
   );
 };

@@ -32,7 +32,17 @@ code {
 }
 
 [data-theme='two'] {
-  --ds-color-accent-base-default: red;
+  --ds-color-accent-base-default: #740c7e;
+  --ds-color-accent-text-subtle: #93429b;
+  --ds-color-base-default: #740c7e;
+  --ds-color-accent-surface-hover: #6c0b75 !important;
+}
+
+[data-color-scheme='dark'][data-theme='two'] {
+  --ds-color-accent-base-default: #c79dcb;
+  --ds-color-accent-text-subtle: #c294c6;
+  --ds-color-base-default: #c79dcb;
+  --ds-color-accent-surface-hover: #6c0b75 !important;
 }
 
 .panelContainer {

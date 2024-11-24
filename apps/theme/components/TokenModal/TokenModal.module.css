@@ -91,6 +91,10 @@
   margin-right: var(--ds-spacing-2);
 }
 
+.trigger {
+  width: 100%;
+}
+
 @media (max-width: 1150px) {
   .content {
     flex-direction: column;

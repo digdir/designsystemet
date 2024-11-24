@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import './globals.css';
+
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 import 'react-color-palette/css';
+import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Figma, Footer, Github, Header, Slack } from '@repo/components';
 import { ThemeWrapper } from '../components/ThemeWrapper/ThemeWrapper';
@@ -70,7 +71,7 @@ export default function RootLayout({
     <html lang='no'>
       <body>
         <ThemeWrapper>
-          <Header menu={menu} betaTag />
+          <Header menu={menu} betaTag transparentBackground={true} />
           <div className='content'>{children}</div>
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
         </ThemeWrapper>
