@@ -13,3 +13,4 @@ export { ColorTokens } from './ColorTokens/ColorTokens';
 export { ColorContrasts } from './ColorContrasts/ColorContrasts';
 export { BorderRadius } from './BorderRadius/BorderRadius';
 export { Theme1 } from './Previews/Theme1/Theme1';
+export { BorderRadiusInput } from './BorderRadiusInput/BorderRadiusInput';

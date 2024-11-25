@@ -21,17 +21,15 @@ export default function Welcome() {
           Velkommen til Temabyggeren
         </Heading>
         <Paragraph className={classes.paragraph}>
-          Bored ideas one was horses empire these than her. The of ran to with
-          run not prepared he clothes stands guard but observed, project copy.
+          Todo: General intro the the theme builder and set expectations
         </Paragraph>
         <Paragraph className={classes.paragraph}>
-          If window synthesizers of different the or of convince human the just
-          make the this a ancient not its chooses the vices years so in.
+          Todo: Say what the name does and how it effects the user
         </Paragraph>
 
         <Textfield
           className={classes.textfield}
-          aria-labelledby='theme-name'
+          label='Navn på tema'
           value={themeName}
           data-size='md'
           onChange={(e) => {

@@ -2,6 +2,7 @@
 
 import { colorCliOptions } from '@digdir/designsystemet/tokens';
 import { CodeSnippet, Container } from '@repo/components';
+import cl from 'clsx/lite';
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './page.module.css';
 
@@ -30,11 +31,14 @@ export default function Result() {
       <div className={classes.header}>{themeName}</div>
       <Container>
         <div className={classes.content}>
-          <div>
+          <div className={cl(classes.card, classes.big)}>
             <div className={classes.snippet}>
               <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
             </div>
           </div>
+          <div className={cl(classes.card, classes.small)}>f</div>
+          <div className={cl(classes.card, classes.big)}>f</div>
+          <div className={cl(classes.card, classes.small)}>f</div>
         </div>
       </Container>
     </div>
