@@ -1,16 +1,12 @@
 import { generateThemeForColor } from '@/packages/cli/dist/src';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  PlusIcon,
-} from '@navikt/aksel-icons';
-import NextLink from 'next/link';
+import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
+import { TokenModal } from '../../TokenModal/TokenModal';
 import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
@@ -32,6 +28,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
   const [name, setName] = useState('');
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
+  const [open, setOpen] = useState(false);
 
   const addNewColor = (color: string, name: string) => {
     const theme = generateThemeForColor(color as CssColor, 'aa');
@@ -147,25 +144,13 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
 
       <div className={classes.bottom}>
         <div className={classes.btnGroup}>
-          <Button
-            data-size='sm'
-            className={classes.btn}
-            variant='secondary'
-            asChild
-          >
-            <NextLink href='/welcome'>
-              <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
-              Navn på tema
+          <TokenModal />
+          {/* <Button data-size='sm' className={classes.btn} asChild>
+            <NextLink href='result'>
+              <SparklesIcon title='a11y-title' fontSize='1.5rem' />
+              Fullfør tema
             </NextLink>
-          </Button>
-          <Button
-            data-size='sm'
-            className={classes.btn}
-            onClick={() => onNextClick()}
-          >
-            Border radius
-            <ChevronRightIcon title='a11y-title' fontSize='1.5rem' />
-          </Button>
+          </Button> */}
         </div>
       </div>
 

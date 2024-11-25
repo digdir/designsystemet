@@ -1,7 +1,6 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  margin-top: var(--ds-spacing-6);
 }
 
 .leftSection,
@@ -20,7 +19,7 @@
 }
 
 .infoBoxes {
-  padding-top: var(--ds-spacing-8);
+  padding-top: var(--ds-spacing-6);
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-8);
@@ -83,7 +82,7 @@
 
 .headerText {
   margin-right: auto;
-  font-size: var(--ds-spacing-6);
+  font-size: var(--ds-spacing-5);
 }
 
 .emblem {

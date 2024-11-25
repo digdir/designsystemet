@@ -15,7 +15,6 @@
 .content {
   padding: 40px;
   width: calc(100% - 550px);
-
   margin-bottom: 40px;
   flex-grow: 500;
 }
@@ -92,13 +91,14 @@
 
 .group {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 250px;
+  gap: 16px;
+  width: 300px;
+  align-items: center;
 }
 
 .label {
   font-size: 16px;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 1500px) {

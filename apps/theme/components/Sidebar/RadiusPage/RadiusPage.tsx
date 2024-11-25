@@ -1,7 +1,6 @@
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ChevronLeftIcon, SparklesIcon } from '@navikt/aksel-icons';
-import NextLink from 'next/link';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { BorderRadiusInput } from '../../BorderRadiusInput/BorderRadiusInput';
+import { TokenModal } from '../../TokenModal/TokenModal';
 import classes from './RadiusPage.module.css';
 
 type RadiusPageProps = {
@@ -23,16 +22,8 @@ export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
 
       <div className={classes.bottom}>
         <div className={classes.btnGroup}>
-          <Button
-            data-size='sm'
-            className={classes.btn}
-            onClick={() => onPrevClick()}
-            variant='secondary'
-          >
-            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
-            Farger
-          </Button>
-          <Button
+          <TokenModal />
+          {/* <Button
             data-size='sm'
             className={classes.btn}
             onClick={() => onPrevClick()}
@@ -40,9 +31,9 @@ export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
           >
             <NextLink href='result'>
               <SparklesIcon title='a11y-title' fontSize='1.5rem' />
-              Fullfør
+              Fullfør tema
             </NextLink>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

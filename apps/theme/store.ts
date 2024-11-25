@@ -13,7 +13,7 @@ export type ColorTheme = {
 };
 
 type BorderRadiusGroup = 'none' | 'small' | 'medium' | 'large' | 'full';
-type PageType = 'intro' | 'color' | 'radius' | 'finish';
+type PageType = 'intro' | 'colors' | 'radius' | 'finish';
 
 type ColorStore = {
   activePage: PageType;
@@ -48,7 +48,7 @@ type ColorStore = {
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
-    activePage: 'color',
+    activePage: 'colors',
     setActivePage: (page) => set({ activePage: page }),
     selectedColor: {
       color: {
@@ -67,7 +67,7 @@ export const useThemeStore = create(
         { name: 'secondary', colors: generateThemeForColor('#159CDE') },
         { name: 'accent', colors: generateThemeForColor('#F2800E') },
       ],
-      neutral: [{ name: 'neutral', colors: generateThemeForColor('#0062BA') }],
+      neutral: [{ name: 'neutral', colors: generateThemeForColor('#1E2B3C') }],
       support: [
         { name: 'profilecolor-1', colors: generateThemeForColor('#F45F63') },
         { name: 'profilecolor-2', colors: generateThemeForColor('#E5AA20') },

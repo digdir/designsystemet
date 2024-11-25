@@ -1,11 +1,10 @@
 'use client';
 
 import type { ColorMode } from '@/packages/cli/dist/src/colors';
-import { Heading, Link } from '@digdir/designsystemet-react';
+import { Heading, Link, Tabs } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import NextLink from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   BorderRadius,
   ColorContrasts,
@@ -23,10 +22,8 @@ export default function Home() {
   const addColor = useThemeStore((state) => state.addColor);
   const resetColors = useThemeStore((state) => state.resetColors);
   const appearance = useThemeStore((state) => state.appearance);
-
-  type ColorTab = 'scales' | 'colors' | 'contrasts';
-  const [colorTab, setColorTab] = useState<ColorTab>('scales');
-
+  const setActivePage = useThemeStore((state) => state.setActivePage);
+  const router = useRouter();
   const activePage = useThemeStore((state) => state.activePage);
   const setAppearance = useThemeStore((state) => state.setAppearance);
 
@@ -66,76 +63,54 @@ export default function Home() {
       </div>
       <div className={classes.container}>
         <div className={classes.content}>
-          {(activePage === 'intro' || activePage === 'color') && (
+          <div className={classes.top}>
+            <Tabs
+              data-size='sm'
+              defaultValue='colors'
+              onChange={(e) => {
+                if (e === 'intro') {
+                  router.push('/welcome');
+                } else {
+                  setActivePage(e as 'colors' | 'radius' | 'intro');
+                }
+              }}
+            >
+              <Tabs.List>
+                <Tabs.Tab value='intro'>Navn på tema</Tabs.Tab>
+                <Tabs.Tab value='colors'>Farger</Tabs.Tab>
+                <Tabs.Tab value='radius'>Border radius</Tabs.Tab>
+              </Tabs.List>
+            </Tabs>
+
+            <div className={classes.themeMode}>
+              <div className={classes.group}>
+                <div className={classes.label}>Visning</div>
+                <Toggle
+                  type='appearance'
+                  items={[
+                    { name: 'Lys', type: 'sm', value: 'light' },
+                    { name: 'Mørk', type: 'sm', value: 'dark' },
+                  ]}
+                  onChange={(value) => {
+                    const val = value;
+                    setAppearance(val as ColorMode);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {(activePage === 'intro' || activePage === 'colors') && (
             <>
               <Heading data-size='sm'>Farger</Heading>
               <div className={classes.panelToggle}>
-                <div className={classes.top}>
-                  <div className={classes.panelToggleGroup}>
-                    <button
-                      className={cl(
-                        classes.panelToggleBtn,
-                        colorTab === 'scales' && classes.active,
-                      )}
-                      onClick={() => setColorTab('scales')}
-                    >
-                      Fargerskalaer
-                    </button>
-                    <button
-                      className={cl(
-                        classes.panelToggleBtn,
-                        colorTab === 'colors' && classes.active,
-                      )}
-                      onClick={() => setColorTab('colors')}
-                    >
-                      Se farger i bruk
-                    </button>
-                    <button
-                      className={cl(
-                        classes.panelToggleBtn,
-                        colorTab === 'contrasts' && classes.active,
-                      )}
-                      onClick={() => setColorTab('contrasts')}
-                    >
-                      Se kontraster
-                    </button>
-                  </div>
-
-                  <div className={classes.themeMode}>
-                    <div className={classes.group}>
-                      <div className={classes.label}>Visning</div>
-                      <Toggle
-                        type='appearance'
-                        items={[
-                          { name: 'Lys', type: 'sm', value: 'light' },
-                          { name: 'Mørk', type: 'sm', value: 'dark' },
-                        ]}
-                        onChange={(value) => {
-                          const val = value;
-                          setAppearance(val as ColorMode);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className={cl(
-                    classes.hide,
-                    colorTab === 'scales' && classes.show,
-                  )}
-                >
+                <div>
                   <div className={classes.colorsContainer}>
                     <Colors themeMode='light' />
                   </div>
                 </div>
 
-                <div
-                  className={cl(
-                    classes.hide,
-                    colorTab === 'colors' && classes.show,
-                  )}
-                >
+                <div>
                   <div className={classes.panel}>
                     <ColorPreview />
                   </div>
@@ -144,12 +119,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  className={cl(
-                    classes.hide,
-                    colorTab === 'contrasts' && classes.show,
-                  )}
-                >
+                <div>
                   <div className={classes.panel}>
                     <ColorContrasts />
                   </div>

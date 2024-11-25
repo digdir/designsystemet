@@ -11,11 +11,7 @@ import cl from 'clsx/lite';
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
 
-type TokenModalProps = {
-  open: boolean;
-};
-
-export const TokenModal = ({ open }: TokenModalProps) => {
+export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const colors = useThemeStore((state) => state.colors);
@@ -81,90 +77,94 @@ export const TokenModal = ({ open }: TokenModalProps) => {
       </Modal.Trigger>
       <Modal
         className={classes.modal}
-        style={{ maxWidth: 1150 }}
+        style={{ maxWidth: 1160 }}
         ref={modalRef}
         backdropClose={true}
       >
-        <Heading className={classes.modalHeader} data-size='2xs'>
-          <img src='img/emblem.svg' alt='' className={classes.emblem} />
-          <span className={classes.headerText}>Ta i bruk tema</span>
-        </Heading>
+        <Modal.Block>
+          <Heading className={classes.modalHeader} data-size='2xs'>
+            <img src='img/emblem.svg' alt='' className={classes.emblem} />
+            <span className={classes.headerText}>Ta i bruk tema</span>
+          </Heading>
+        </Modal.Block>
 
-        <div className={classes.content}>
-          <div className={classes.leftSection}>
-            <div className={classes.infoBoxes}>
-              <InfoBox
-                title='Design tokens'
-                img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
-                type='code'
-                desc={
-                  <>
-                    Kopier kodesnutten og kjør den på maskinen din for å
-                    generere design tokens (json-filer). Sørg for at du har{' '}
-                    <Link target='_blank' href='https://nodejs.org/'>
-                      Node.js
-                    </Link>{' '}
-                    installert på maskinen din.
-                  </>
-                }
-              />
-              <InfoBox
-                title='Figma variabler'
-                img={<img src='img/figma-logo.png' alt='' />}
-                desc={
-                  <>
-                    Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
-                    <Link
-                      target='_blank'
-                      href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-                    >
-                      Figma plugin
-                    </Link>{' '}
-                    når du er i{' '}
-                    <Link
-                      target='_blank'
-                      href='https://www.figma.com/community/file/1322138390374166141'
-                    >
-                      Core UI Kit
-                    </Link>{' '}
-                    for å oppdatere et tema. Pluginen oppdaterer kun farger for
-                    øyeblikket.
-                  </>
-                }
-              />
-            </div>
-          </div>
-          <div className={classes.rightSection}>
-            <div className={classes.snippet}>
-              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
-            </div>
-            <div className={classes.contact}>
-              <div className={classes.contact__icon}>
-                <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
-              </div>
-              <div className={classes.contact__content}>
-                <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
-                <Paragraph data-size='sm'>
-                  Send oss en melding på{' '}
-                  <Link
-                    target='_blank'
-                    href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
-                  >
-                    Slack
-                  </Link>{' '}
-                  eller lag et{' '}
-                  <Link
-                    target='_blank'
-                    href='https://github.com/digdir/designsystemet/issues/new/choose'
-                  >
-                    Github issue
-                  </Link>
-                  .
-                </Paragraph>
+        <Modal.Block>
+          <div className={classes.content}>
+            <div className={classes.leftSection}>
+              <div className={classes.infoBoxes}>
+                <InfoBox
+                  title='Design tokens'
+                  img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
+                  type='code'
+                  desc={
+                    <>
+                      Kopier kodesnutten og kjør den på maskinen din for å
+                      generere design tokens (json-filer). Sørg for at du har{' '}
+                      <Link target='_blank' href='https://nodejs.org/'>
+                        Node.js
+                      </Link>{' '}
+                      installert på maskinen din.
+                    </>
+                  }
+                />
+                <InfoBox
+                  title='Figma variabler'
+                  img={<img src='img/figma-logo.png' alt='' />}
+                  desc={
+                    <>
+                      Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
+                      <Link
+                        target='_blank'
+                        href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                      >
+                        Figma plugin
+                      </Link>{' '}
+                      når du er i{' '}
+                      <Link
+                        target='_blank'
+                        href='https://www.figma.com/community/file/1322138390374166141'
+                      >
+                        Core UI Kit
+                      </Link>{' '}
+                      for å oppdatere et tema. Pluginen oppdaterer kun farger
+                      for øyeblikket.
+                    </>
+                  }
+                />
               </div>
             </div>
+            <div className={classes.rightSection}>
+              <div className={classes.snippet}>
+                <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+              </div>
+              <div className={classes.contact}>
+                <div className={classes.contact__icon}>
+                  <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+                </div>
+                <div className={classes.contact__content}>
+                  <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
+                  <Paragraph data-size='sm'>
+                    Send oss en melding på{' '}
+                    <Link
+                      target='_blank'
+                      href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                    >
+                      Slack
+                    </Link>{' '}
+                    eller lag et{' '}
+                    <Link
+                      target='_blank'
+                      href='https://github.com/digdir/designsystemet/issues/new/choose'
+                    >
+                      Github issue
+                    </Link>
+                    .
+                  </Paragraph>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </Modal.Block>
       </Modal>
     </Modal.TriggerContext>
   );

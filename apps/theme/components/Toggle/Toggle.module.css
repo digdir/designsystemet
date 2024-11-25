@@ -1,6 +1,7 @@
 .toggle {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  width: 100%;
 }
 
 .box {
@@ -9,7 +10,7 @@
   height: 42px;
   display: flex;
   align-items: center;
-  padding-left: 12px;
+  padding-left: 10px;
   overflow: hidden;
 }
 
@@ -24,7 +25,7 @@
 
 .item {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   flex: 1 1;
   flex-direction: column;
@@ -58,6 +59,7 @@
 
 .appearance {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 

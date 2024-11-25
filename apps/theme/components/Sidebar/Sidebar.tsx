@@ -5,8 +5,6 @@ import { useThemeStore } from '../../store';
 
 import { CogIcon } from '@navikt/aksel-icons';
 import { ColorPage } from './ColorPage/ColorPage';
-import { FinishPage } from './FinishPage/FinishPage';
-import { IntroPage } from './IntroPage/IntroPage';
 import { RadiusPage } from './RadiusPage/RadiusPage';
 import classes from './Sidebar.module.css';
 
@@ -45,18 +43,11 @@ export const Sidebar = () => {
         )}
       >
         <div className={classes.scrollContainer}>
-          {activePage === 'intro' && (
-            <IntroPage onNextClick={() => setActivePage('color')} />
-          )}
-          {activePage === 'color' && (
+          {activePage === 'colors' && (
             <ColorPage onNextClick={() => setActivePage('radius')} />
           )}
           {activePage === 'radius' && (
-            <RadiusPage onPrevClick={() => setActivePage('color')} />
-          )}
-
-          {activePage === 'finish' && (
-            <FinishPage onPrevClick={() => setActivePage('radius')} />
+            <RadiusPage onPrevClick={() => setActivePage('colors')} />
           )}
 
           {/* APPEARANCE */}

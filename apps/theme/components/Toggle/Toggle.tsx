@@ -1,3 +1,4 @@
+import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import classes from './Toggle.module.css';
@@ -29,18 +30,15 @@ export const Toggle = ({
             className={cl(classes.box)}
             onClick={() => onChange?.(item.value)}
           >
-            {type === 'radius' && (
-              <div
-                className={classes.inner}
-                style={{ borderRadius: item.value }}
-              ></div>
-            )}
-            {type === 'appearance' && (
-              <div className={classes.appearance}>
-                <div className={cl(classes.icon, classes[item.value])}></div>
-                {item.name}
-              </div>
-            )}
+            <div className={classes.appearance}>
+              {item.value === 'light' && (
+                <SunIcon title='a11y-title' fontSize='1.5rem' />
+              )}
+              {item.value === 'dark' && (
+                <MoonIcon title='a11y-title' fontSize='1.5rem' />
+              )}
+              {item.name}
+            </div>
           </div>
           {showLabel && <div className={classes.text}>{item.name}</div>}
         </div>
