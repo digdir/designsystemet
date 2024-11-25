@@ -150,7 +150,6 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
           <Button
             data-size='sm'
             className={classes.btn}
-            onClick={() => onPrevClick()}
             variant='secondary'
             asChild
           >
