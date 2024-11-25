@@ -6,6 +6,7 @@ import 'react-color-palette/css';
 import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Figma, Footer, Github, Header, Slack } from '@repo/components';
+
 import { ThemeWrapper } from '../components/ThemeWrapper/ThemeWrapper';
 
 export const metadata: Metadata = {

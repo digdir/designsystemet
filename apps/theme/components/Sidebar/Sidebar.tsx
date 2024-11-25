@@ -49,16 +49,10 @@ export const Sidebar = () => {
             <IntroPage onNextClick={() => setActivePage('color')} />
           )}
           {activePage === 'color' && (
-            <ColorPage
-              onPrevClick={() => setActivePage('intro')}
-              onNextClick={() => setActivePage('radius')}
-            />
+            <ColorPage onNextClick={() => setActivePage('radius')} />
           )}
           {activePage === 'radius' && (
-            <RadiusPage
-              onPrevClick={() => setActivePage('color')}
-              onNextClick={() => setActivePage('finish')}
-            />
+            <RadiusPage onPrevClick={() => setActivePage('color')} />
           )}
 
           {activePage === 'finish' && (

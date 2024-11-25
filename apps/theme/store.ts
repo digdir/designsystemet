@@ -1,7 +1,8 @@
-import type {
-  ColorInfo,
-  ColorMode,
-  ThemeInfo,
+import {
+  type ColorInfo,
+  type ColorMode,
+  type ThemeInfo,
+  generateThemeForColor,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
@@ -47,7 +48,7 @@ type ColorStore = {
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
-    activePage: 'intro',
+    activePage: 'color',
     setActivePage: (page) => set({ activePage: page }),
     selectedColor: {
       color: {
@@ -61,9 +62,16 @@ export const useThemeStore = create(
     appearance: 'light',
     themePreview: 'one',
     colors: {
-      main: [],
-      neutral: [],
-      support: [],
+      main: [
+        { name: 'dominant', colors: generateThemeForColor('#0062BA') },
+        { name: 'secondary', colors: generateThemeForColor('#159CDE') },
+        { name: 'accent', colors: generateThemeForColor('#F2800E') },
+      ],
+      neutral: [{ name: 'neutral', colors: generateThemeForColor('#0062BA') }],
+      support: [
+        { name: 'profilecolor-1', colors: generateThemeForColor('#F45F63') },
+        { name: 'profilecolor-2', colors: generateThemeForColor('#E5AA20') },
+      ],
     },
     themeName: 'theme',
     setThemeName: (name) => set({ themeName: name }),

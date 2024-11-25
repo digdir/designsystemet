@@ -6,6 +6,7 @@ import {
   ChevronRightIcon,
   PlusIcon,
 } from '@navikt/aksel-icons';
+import NextLink from 'next/link';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
@@ -14,7 +15,7 @@ import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
 type ColorPageProps = {
-  onPrevClick: () => void;
+  onPrevClick?: () => void;
   onNextClick: () => void;
 };
 
@@ -151,9 +152,12 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
             className={classes.btn}
             onClick={() => onPrevClick()}
             variant='secondary'
+            asChild
           >
-            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
-            Navn på tema
+            <NextLink href='/welcome'>
+              <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
+              Navn på tema
+            </NextLink>
           </Button>
           <Button
             data-size='sm'

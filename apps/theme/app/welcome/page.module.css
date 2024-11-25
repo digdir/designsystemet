@@ -1,0 +1,30 @@
+.page {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 550px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 48px;
+  border-radius: 16px;
+  margin-top: -50px;
+}
+
+.heading {
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  margin-bottom: 16px;
+}
+
+.btn {
+  margin-top: 40px;
+}
+
+.textfield {
+  margin-top: 24px;
+}

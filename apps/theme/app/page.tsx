@@ -33,6 +33,8 @@ export default function Home() {
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
+  const addColor = useThemeStore((state) => state.addColor);
+  const resetColors = useThemeStore((state) => state.resetColors);
 
   useEffect(() => {
     // Open modal on selected color change
@@ -176,7 +178,7 @@ export default function Home() {
             </Paragraph>
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
-                <NextLink href='/themebuilder'>
+                <NextLink href='/welcome'>
                   <PaletteIcon title='a11y-title' fontSize='1.5rem' />
                   Bygg tema
                 </NextLink>

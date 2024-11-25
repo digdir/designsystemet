@@ -1,14 +1,14 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ChevronLeftIcon } from '@navikt/aksel-icons';
+import { ChevronLeftIcon, SparklesIcon } from '@navikt/aksel-icons';
+import NextLink from 'next/link';
 import { useState } from 'react';
 import { useThemeStore } from '../../../store';
 import { Toggle } from '../../Toggle/Toggle';
-import { TokenModal } from '../../TokenModal/TokenModal';
 import classes from './RadiusPage.module.css';
 
 type RadiusPageProps = {
   onPrevClick: () => void;
-  onNextClick: () => void;
+  onNextClick?: () => void;
 };
 
 export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
@@ -63,7 +63,17 @@ export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
             <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
             Farger
           </Button>
-          <TokenModal open={modalOpen} />
+          <Button
+            data-size='sm'
+            className={classes.btn}
+            onClick={() => onPrevClick()}
+            asChild
+          >
+            <NextLink href='result'>
+              <SparklesIcon title='a11y-title' fontSize='1.5rem' />
+              Fullfør
+            </NextLink>
+          </Button>
         </div>
       </div>
     </div>

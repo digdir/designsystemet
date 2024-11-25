@@ -1,0 +1,14 @@
+.header {
+  background: linear-gradient(90deg, rgba(240, 86, 90, 0.9) 0.5%, rgba(229, 170, 32, 0.9) 99.96%);
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+}
+
+.snippet code {
+  background-color: transparent;
+  height: 290px;
+  display: block;
+}

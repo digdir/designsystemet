@@ -1,14 +1,11 @@
 'use client';
 
-import {
-  type ColorMode,
-  generateThemeForColor,
-} from '@/packages/cli/dist/src/colors';
+import { type ColorMode } from '@/packages/cli/dist/src/colors';
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import NextLink from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   BorderRadius,
   ColorContrasts,
@@ -32,26 +29,6 @@ export default function Home() {
 
   const activePage = useThemeStore((state) => state.activePage);
   const setAppearance = useThemeStore((state) => state.setAppearance);
-  useEffect(() => {
-    const dominant = generateThemeForColor('#0062BA');
-    const secondary = generateThemeForColor('#159CDE');
-    const accent = generateThemeForColor('#F2800E');
-    const neutral = generateThemeForColor('#1E2B3C');
-    const profile1 = generateThemeForColor('#F45F63');
-    const profile2 = generateThemeForColor('#E5AA20');
-
-    addColor({ name: 'dominant', colors: dominant }, 'main');
-    addColor({ name: 'secondary', colors: secondary }, 'main');
-    addColor({ name: 'accent', colors: accent }, 'main');
-    addColor({ name: 'neutral', colors: neutral }, 'neutral');
-    addColor({ name: 'profilecolor-1', colors: profile1 }, 'support');
-    addColor({ name: 'profilecolor-2', colors: profile2 }, 'support');
-
-    return () => {
-      // Set colors to empty array when component unmounts
-      resetColors();
-    };
-  }, []);
 
   type TestProps = 'light' | 'dark';
 

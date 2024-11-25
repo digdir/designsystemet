@@ -1,0 +1,42 @@
+'use client';
+
+import { colorCliOptions } from '@digdir/designsystemet/tokens';
+import { CodeSnippet, Container } from '@repo/components';
+import { type ColorTheme, useThemeStore } from '../../store';
+import classes from './page.module.css';
+
+export default function Result() {
+  const themeName = useThemeStore((state) => state.themeName);
+  const colors = useThemeStore((state) => state.colors);
+
+  const setCliColors = (colorTheme: ColorTheme[]) => {
+    let str = '';
+    for (const color of colorTheme) {
+      str += `"${color.name}:${color.colors.light[8].hex}" `;
+    }
+    return str;
+  };
+
+  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
+  --${colorCliOptions.main} ${setCliColors(colors.main)} \\
+  --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
+  --${colorCliOptions.support} ${setCliColors(colors.support)} \\
+  --theme "${themeName}" \\
+  --write
+  `;
+
+  return (
+    <div className={classes.page}>
+      <div className={classes.header}>{themeName}</div>
+      <Container>
+        <div className={classes.content}>
+          <div>
+            <div className={classes.snippet}>
+              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+}
