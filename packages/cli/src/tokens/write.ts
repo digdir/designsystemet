@@ -77,8 +77,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
-  const $theme = generateThemesJson(['light', 'dark', 'contrast'], themes, colors);
-  const $metadata = generateMetadataJson(['light', 'dark', 'contrast'], themes, colors);
+  const $theme = generateThemesJson(['light', 'dark'], themes, colors);
+  const $metadata = generateMetadataJson(['light', 'dark'], themes, colors);
 
   await fs.writeFile($themesPath, stringify($theme));
   await fs.writeFile($metadataPath, stringify($metadata));
@@ -199,8 +199,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     generateColorSchemeFile('light', 'global', tokens.colors.light.global, targetDir),
     generateColorSchemeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
     generateColorSchemeFile('dark', 'global', tokens.colors.dark.global, targetDir),
-    generateColorSchemeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
-    generateColorSchemeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
+    // generateColorSchemeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
+    // generateColorSchemeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
     generateTypographyFile('primary', themeName, tokens.typography.primary, targetDir),
     generateTypographyFile('secondary', themeName, tokens.typography.primary, targetDir),
   ];
