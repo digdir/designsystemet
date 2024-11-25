@@ -95,6 +95,10 @@ export const SiteConfig = {
               url: 'grunnleggende/for-utviklere/kom-i-gang',
             },
             {
+              name: 'Farger',
+              url: 'grunnleggende/for-utviklere/farger',
+            },
+            {
               name: 'Komposisjon',
               url: 'grunnleggende/for-utviklere/komposisjon',
             },

@@ -87,7 +87,7 @@ const CodeSnippet = ({
               className={classes.copyButton}
               aria-label='Kopier'
               icon
-              color='neutral'
+              data-color='neutral'
               data-size='sm'
             >
               <FilesIcon fontSize='1.5rem' />

@@ -1,0 +1,90 @@
+import { CodeIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { CodeSnippet } from '@repo/components';
+
+export const metadata = {
+  title: 'Farger',
+  description: 'Informasjon om korleis du bruker farger på frontend.',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Farger',
+      date: '25. november 2024',
+      icon: <CodeIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Denne artikkelen tar forbehold om at du allerie har farger satt opp med [Temabyggeren](/grunnleggende/for-designere/eget-tema).
+
+Me brukar data attributt for å fargelegge komponentar. Alle komponentar kan ha alle fargar, men komponentar har forskjellige standardfargar.
+
+Når du skal sette farge er det to data attributt du kan bruke:
+- `data-color` endrar farge
+- `data-color-scheme` endar fargetema
+
+## `data-color-scheme`
+
+Dette attributtet brukast for å endre mellom lys, mørk, eller andre fargetema som du har satt opp. Du legger denne over
+alt som skal ha spesifisert tema. Dersom du ikkje setter denne, vil sida di bruke lyst fargetema.
+
+<CodeSnippet language="html">
+{`
+<body>
+  <div>
+    <!-- Alt innholdet her vil ha lyst fargetema -->
+  </div>
+
+  <div data-color-scheme="dark">
+    <!-- Alt innholdet her vil ha mørkt fargetema -->
+  </div>
+</body>
+`}
+</CodeSnippet>
+
+## `data-color`
+
+Dette attributtet brukast for å endre farge på komponentar. Du kan bruke alle fargene som du har satt opp i temaet ditt. Standardverdi når denne ikkje er satt,
+er din standardfarge. Brukar du tema frå `@digdir/designsystemet-theme`, vil dette være `accent`. 
+
+**Når du sett `data-color-scheme` vil `data-color` bli satt tilbake til standardverdien.**
+
+Nokon komponentar kan arve farge frå nærmaste forelder med `data-color` satt. Dette betyr at du ikkje treng å bruke denne på alle komponentar,
+dersom dei skal ha lik farge.
+
+<CodeSnippet language="html">
+{`
+<div data-color="neutral">
+  <!-- Alt innholdet her vil ha neutral farge -->
+</div>
+`}
+</CodeSnippet>
+
+Det blir satt css variablar som begynnar med `--ds-color-*`, og ikkje `--ds-color-FARGE-*`. På denne måten kan me, og du, bygge komponentar som støttar alle fargar.
+
+Nokon komponentar, som `Button` har ikkje støtte for ekstern `data-color`, og her må du sette fargen direkte på komponenten.
+
+<CodeSnippet language="jsx">
+{`
+<div data-color="accent">
+  <Chip>
+    Dette er ein Chip med accent farge.
+  </Chip>
+</div>
+
+<Button data-color="accent">
+  Dette er ein knapp med accent farge.
+</Button>
+
+<div data-color="neutral">
+  <Button>
+    Eg har ikkje neutral farge.
+  </Button>
+</div>
+`}
+</CodeSnippet>

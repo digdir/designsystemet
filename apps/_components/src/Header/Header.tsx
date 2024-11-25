@@ -207,7 +207,7 @@ const Header = ({
                   aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
                   variant='tertiary'
                   icon={true}
-                  color='neutral'
+                  data-color='neutral'
                   onClick={() => {
                     handleThemeChange(theme === 'light' ? 'dark' : 'light');
                   }}
