@@ -31,6 +31,7 @@ export default function Welcome() {
 
         <Textfield
           className={classes.textfield}
+          aria-labelledby='theme-name'
           value={themeName}
           data-size='md'
           onChange={(e) => {
