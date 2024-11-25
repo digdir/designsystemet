@@ -71,8 +71,15 @@
     }
   }
 
-  &:has(> .ds-card__block) {
+  &:has(> .ds-card__block, .ds-details) {
     padding: 0; /* Let Card.Block own the padding */
+  }
+
+  & > .ds-details:first-child {
+    border-top: 0;
+  }
+  & > .ds-details:last-child {
+    border-bottom: 0;
   }
 }
 

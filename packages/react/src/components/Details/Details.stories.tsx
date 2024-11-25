@@ -1,9 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Link } from '../';
-
-import { Details } from '.';
+import { Button, Card, Details, Link } from '../';
 
 export default {
   title: 'Komponenter/Details',
@@ -14,8 +12,8 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Details> = (args) => (
-  <Details {...args}>
-    <Details.Item>
+  <>
+    <Details {...args}>
       <Details.Summary>
         Hvem kan registrere seg i Frivillighetsregisteret?
       </Details.Summary>
@@ -25,8 +23,8 @@ export const Preview: StoryFn<typeof Details> = (args) => (
         aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
         til fysiske personer. Virksomheten må ha et styre.
       </Details.Content>
-    </Details.Item>
-    <Details.Item>
+    </Details>
+    <Details {...args}>
       <Details.Summary>
         Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
       </Details.Summary>
@@ -35,29 +33,33 @@ export const Preview: StoryFn<typeof Details> = (args) => (
         registrert i Frivillighetsregisteret. Du kan registrere i begge
         registrene samtidig i Samordnet registermelding.
       </Details.Content>
-    </Details.Item>
-  </Details>
+    </Details>
+  </>
 );
+// Default values are selected in Controls
+Preview.args = {
+  'data-color': 'neutral',
+};
 
 export const DetailsBorder: StoryFn<typeof Details> = () => (
-  <Details border data-color='subtle'>
-    <Details.Item>
+  <Card data-color='subtle'>
+    <Details>
       <Details.Summary>Vedlegg</Details.Summary>
       <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
-    </Details.Item>
-  </Details>
+    </Details>
+  </Card>
 );
 
 export const DetailsColor: StoryFn<typeof Details> = () => (
-  <Details border data-color='brand2'>
-    <Details.Item>
+  <Card data-color='brand2'>
+    <Details>
       <Details.Summary>Hvordan får jeg tildelt et jegernummer?</Details.Summary>
       <Details.Content>
         Du vil automatisk få tildelt jegernummer og bli registrert i
         Jegerregisteret når du har bestått jegerprøven.
       </Details.Content>
-    </Details.Item>
-    <Details.Item>
+    </Details>
+    <Details>
       <Details.Summary>
         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
       </Details.Summary>
@@ -126,15 +128,9 @@ export const DetailsColor: StoryFn<typeof Details> = () => (
           eros sagittis quam, at sagittis tellus ante in metus.
         </p>
       </Details.Content>
-    </Details.Item>
-  </Details>
+    </Details>
+  </Card>
 );
-
-// Default values are selected in Controls
-Preview.args = {
-  border: false,
-  'data-color': 'neutral',
-};
 
 export const Controlled: StoryFn<typeof Details> = () => {
   const [open1, setOpen1] = useState(false);
@@ -151,8 +147,8 @@ export const Controlled: StoryFn<typeof Details> = () => {
     <>
       <Button onClick={toggleOpen}>Toggle Detailss</Button>
       <br />
-      <Details>
-        <Details.Item open={open1} onToggle={() => setOpen1(!open1)}>
+      <>
+        <Details open={open1} onToggle={() => setOpen1(!open1)}>
           <Details.Summary>Enkeltpersonforetak</Details.Summary>
           <Details.Content>
             Skal du starte for deg selv? Enkeltpersonforetak er ofte den
@@ -161,8 +157,8 @@ export const Controlled: StoryFn<typeof Details> = () => {
             også gi betydelig risiko fordi du har personlig ansvar for
             økonomien.
           </Details.Content>
-        </Details.Item>
-        <Details.Item open={open2} onToggle={() => setOpen2(!open2)}>
+        </Details>
+        <Details open={open2} onToggle={() => setOpen2(!open2)}>
           <Details.Summary>Aksjeselskap (AS)</Details.Summary>
           <Details.Content>
             Planlegger du å starte næringsvirksomhet alene eller sammen med
@@ -171,8 +167,8 @@ export const Controlled: StoryFn<typeof Details> = () => {
             investere i selskapet ditt? Da kan aksjeselskap være en
             hensiktsmessig organisasjonsform.
           </Details.Content>
-        </Details.Item>
-        <Details.Item open={open3} onToggle={() => setOpen3(!open3)}>
+        </Details>
+        <Details open={open3} onToggle={() => setOpen3(!open3)}>
           <Details.Summary>Ansvarlig selskap (ANS/DA)</Details.Summary>
           <Details.Content>
             Er dere minst to personer som skal starte opp egen virksomhet?
@@ -180,8 +176,8 @@ export const Controlled: StoryFn<typeof Details> = () => {
             Krever virksomheten få investeringer og tar du liten økonomisk
             risiko? Da kan du vurdere å etablere et ansvarlig selskap.
           </Details.Content>
-        </Details.Item>
-      </Details>
+        </Details>
+      </>
     </>
   );
 };
