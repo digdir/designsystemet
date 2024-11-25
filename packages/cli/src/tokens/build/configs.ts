@@ -115,7 +115,7 @@ const colorCategoryVariables =
   ({ 'color-scheme': colorScheme, theme, [`${category}-color` as const]: color }, { outPath }) => {
     const layer = `ds.theme.color`;
     const isDefault = color === buildOptions?.accentColor;
-    const selector = `${isDefault ? ':root, ' : ''}[data-color="${color}"], [data-color-scheme]`;
+    const selector = `${isDefault ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
 
     const config: StyleDictionaryConfig = {
       usesDtcg,
