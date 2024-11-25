@@ -39,7 +39,7 @@ export const FinishPage = ({ onPrevClick }: FinishPageProps) => {
             <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
             Border radius
           </Button>
-          <TokenModal open={modalOpen} />
+          <TokenModal />
         </div>
       </div>
     </div>
