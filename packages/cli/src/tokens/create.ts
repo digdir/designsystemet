@@ -103,10 +103,10 @@ export const createTokens = (opts: CreateTokensOptions) => {
         global: generateGlobalTokens('light'),
       },
       dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
-      contrast: {
-        [name]: generateThemeTokens(name, 'contrast', colors),
-        global: generateGlobalTokens('contrast'),
-      },
+      // contrast: {
+      //   [name]: generateThemeTokens(name, 'contrast', colors),
+      //   global: generateGlobalTokens('contrast'),
+      // },
     },
     typography: {
       primary: generateTypographyTokens(name, typography),
