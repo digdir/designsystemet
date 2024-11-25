@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.39
+
+## 1.0.0-next.38
+
+### Patch Changes
+
+- Textfield: Make one of `label`, `aria-label` or `aria-labelledby` required ([#2817](https://github.com/digdir/designsystemet/pull/2817))
+
 ## 1.0.0-next.37
 
 ### Major Changes

@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.39
+
+### Patch Changes
+
+- chore: Reset `data-color` to degfault color when setting `data-color-scheme` ([#2826](https://github.com/digdir/designsystemet/pull/2826))
+
+## 1.0.0-next.38
+
 ## 1.0.0-next.37
 
 ### Major Changes

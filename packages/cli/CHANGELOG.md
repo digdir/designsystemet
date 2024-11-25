@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.39
+
+### Patch Changes
+
+- Disable contrast color-scheme in tokens create script ([#2827](https://github.com/digdir/designsystemet/pull/2827))
+
+- chore: Reset `data-color` to degfault color when setting `data-color-scheme` ([#2826](https://github.com/digdir/designsystemet/pull/2826))
+
+## 1.0.0-next.38
+
+### Patch Changes
+
+- fix: Correct name on Figma collection for color schemes ([#2819](https://github.com/digdir/designsystemet/pull/2819))
+
 ## 1.0.0-next.37
 
 ### Minor Changes
