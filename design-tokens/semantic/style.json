@@ -264,165 +264,165 @@
   "spacing": {
     "0": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.0}"
+      "$value": "{size.0}"
     },
     "1": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.1}"
+      "$value": "{size.1}"
     },
     "2": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.2}"
+      "$value": "{size.2}"
     },
     "3": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.3}"
+      "$value": "{size.3}"
     },
     "4": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.4}"
+      "$value": "{size.4}"
     },
     "5": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.5}"
+      "$value": "{size.5}"
     },
     "6": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.6}"
+      "$value": "{size.6}"
     },
     "7": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.7}"
+      "$value": "{size.7}"
     },
     "8": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.8}"
+      "$value": "{size.8}"
     },
     "9": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.9}"
+      "$value": "{size.9}"
     },
     "10": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.10}"
+      "$value": "{size.10}"
     },
     "11": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.11}"
+      "$value": "{size.11}"
     },
     "12": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.12}"
+      "$value": "{size.12}"
     },
     "13": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.13}"
+      "$value": "{size.13}"
     },
     "14": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.14}"
+      "$value": "{size.14}"
     },
     "15": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.15}"
+      "$value": "{size.15}"
     },
     "18": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.18}"
+      "$value": "{size.18}"
     },
     "22": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.22}"
+      "$value": "{size.22}"
     },
     "26": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.26}"
+      "$value": "{size.26}"
     },
     "30": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.30}"
+      "$value": "{size.30}"
     }
   },
   "sizing": {
     "0": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.0}"
+      "$value": "{size.0}"
     },
     "1": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.1}"
+      "$value": "{size.1}"
     },
     "2": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.2}"
+      "$value": "{size.2}"
     },
     "3": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.3}"
+      "$value": "{size.3}"
     },
     "4": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.4}"
+      "$value": "{size.4}"
     },
     "5": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.5}"
+      "$value": "{size.5}"
     },
     "6": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.6}"
+      "$value": "{size.6}"
     },
     "7": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.7}"
+      "$value": "{size.7}"
     },
     "8": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.8}"
+      "$value": "{size.8}"
     },
     "9": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.9}"
+      "$value": "{size.9}"
     },
     "10": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.10}"
+      "$value": "{size.10}"
     },
     "11": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.11}"
+      "$value": "{size.11}"
     },
     "12": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.12}"
+      "$value": "{size.12}"
     },
     "13": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.13}"
+      "$value": "{size.13}"
     },
     "14": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.14}"
+      "$value": "{size.14}"
     },
     "15": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.15}"
+      "$value": "{size.15}"
     },
     "18": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.18}"
+      "$value": "{size.18}"
     },
     "22": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.22}"
+      "$value": "{size.22}"
     },
     "26": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.26}"
+      "$value": "{size.26}"
     },
     "30": {
       "$type": "dimension",
-      "$value": "{dynamic-sizing-scale.30}"
+      "$value": "{size.30}"
     }
   },
   "border-width": {

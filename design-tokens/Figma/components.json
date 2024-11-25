@@ -3,15 +3,15 @@
     "circle": {
       "small": {
         "$type": "sizing",
-        "$value": "{dynamic-sizing-scale.5} - {switch.border}"
+        "$value": "{size.5} - {switch.border}"
       },
       "medium": {
         "$type": "sizing",
-        "$value": "{dynamic-sizing-scale.6} - {switch.border}"
+        "$value": "{size.6} - {switch.border}"
       },
       "large": {
         "$type": "sizing",
-        "$value": "{dynamic-sizing-scale.7} - {switch.border}"
+        "$value": "{size.7} - {switch.border}"
       }
     },
     "border": {

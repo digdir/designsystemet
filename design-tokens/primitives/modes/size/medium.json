@@ -97,7 +97,7 @@
       "$value": "1.5%"
     }
   },
-  "dynamic-sizing-scale": {
+  "size": {
     "0": {
       "$type": "dimension",
       "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *0)"
@@ -182,7 +182,7 @@
   "utility": {
     "mode-font-size": {
       "$type": "other",
-      "$value": "16"
+      "$value": "18"
     },
     "base": {
       "$type": "other",

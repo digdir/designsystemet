@@ -16,47 +16,47 @@
   "font-size": {
     "1": {
       "$type": "fontSizes",
-      "$value": "12"
+      "$value": "11"
     },
     "2": {
       "$type": "fontSizes",
-      "$value": "13"
+      "$value": "12"
     },
     "3": {
       "$type": "fontSizes",
-      "$value": "14"
+      "$value": "13"
     },
     "4": {
       "$type": "fontSizes",
-      "$value": "16"
+      "$value": "14"
     },
     "5": {
       "$type": "fontSizes",
-      "$value": "18"
+      "$value": "16"
     },
     "6": {
       "$type": "fontSizes",
-      "$value": "21"
+      "$value": "18"
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "24"
+      "$value": "21"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "30"
+      "$value": "24"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "36"
+      "$value": "30"
     },
     "10": {
       "$type": "fontSizes",
-      "$value": "48"
+      "$value": "36"
     },
     "11": {
       "$type": "fontSizes",
-      "$value": "60"
+      "$value": "48"
     }
   },
   "letter-spacing": {
@@ -97,7 +97,7 @@
       "$value": "1.5%"
     }
   },
-  "dynamic-sizing-scale": {
+  "size": {
     "0": {
       "$type": "dimension",
       "$value": "floor({utility.step} / {utility.base} * {utility.mode-font-size} *0)"
@@ -182,7 +182,7 @@
   "utility": {
     "mode-font-size": {
       "$type": "other",
-      "$value": "21"
+      "$value": "16"
     },
     "base": {
       "$type": "other",
