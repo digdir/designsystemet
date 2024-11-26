@@ -27,15 +27,13 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json';
-  syntax?: string;
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const CodeSnippet = ({
   language = 'markdown',
   className,
-  syntax = 'js',
   children,
   ...rest
 }: CodeSnippetProps) => {
@@ -95,7 +93,7 @@ const CodeSnippet = ({
           </Tooltip>
           <SyntaxHighlighter
             style={nightOwl}
-            language={syntax}
+            language={language}
             customStyle={{
               fontSize: '15px',
               margin: 0,

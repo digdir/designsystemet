@@ -128,7 +128,7 @@ const Header = ({
               <Button
                 variant='tertiary'
                 icon={true}
-                color='neutral'
+                data-color='neutral'
                 aria-expanded={open}
                 aria-label='Meny'
                 className={cl(classes.toggle, 'ds-focus')}
