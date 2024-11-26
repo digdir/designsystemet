@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Fargar',
-      date: '25. november 2024',
+      date: '26. november 2024',
       icon: <CodeIcon />,
       color: 'blue',
     }}
@@ -65,9 +65,8 @@ Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan 
 Nokre komponentar kan arve farge frå næraste overordna element som har `data-color` definert. 
 Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit hierarki, dersom dei skal ha same farge.
 
-<CodeSnippet language="html">
-{`
-<div data-color="neutral">
+<CodeSnippet language="tsx">
+{`<div data-color="neutral">
   <Chip>
     Denne Chip'en har neutral farge.
   </Chip>
@@ -85,7 +84,9 @@ Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit 
 `}
 </CodeSnippet>
 
-## Bruk desse saman
+`Button` er ein komponent som ikkje arvar farge.
+
+## Bruk `data-color-scheme` og `data-color` saman
 
 Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargemodus og farge på komponentar.
 
