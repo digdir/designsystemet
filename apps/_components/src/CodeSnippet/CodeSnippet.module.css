@@ -11,6 +11,14 @@
   padding-right: var(--ds-spacing-11) !important;
 }
 
+.codeSnippet > pre > code {
+  padding: 0;
+}
+
+.codeSnippet > pre > code span:empty {
+  display: none;
+}
+
 .copyButton {
   position: absolute;
   top: var(--ds-spacing-2);
