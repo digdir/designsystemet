@@ -12,29 +12,17 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Details> = (args) => (
-  <>
-    <Details {...args}>
-      <Details.Summary>
-        Hvem kan registrere seg i Frivillighetsregisteret?
-      </Details.Summary>
-      <Details.Content>
-        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
-        drive frivillig virksomhet. Det er bare foreninger, stiftelser og
-        aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
-        til fysiske personer. Virksomheten må ha et styre.
-      </Details.Content>
-    </Details>
-    <Details {...args}>
-      <Details.Summary>
-        Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-      </Details.Summary>
-      <Details.Content>
-        Virksomheten må være registrert i Enhetsregisteret før den kan bli
-        registrert i Frivillighetsregisteret. Du kan registrere i begge
-        registrene samtidig i Samordnet registermelding.
-      </Details.Content>
-    </Details>
-  </>
+  <Details {...args}>
+    <Details.Summary>
+      Hvem kan registrere seg i Frivillighetsregisteret?
+    </Details.Summary>
+    <Details.Content>
+      For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
+      drive frivillig virksomhet. Det er bare foreninger, stiftelser og
+      aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til
+      fysiske personer. Virksomheten må ha et styre.
+    </Details.Content>
+  </Details>
 );
 // Default values are selected in Controls
 Preview.args = {
