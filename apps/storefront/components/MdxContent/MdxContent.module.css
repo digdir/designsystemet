@@ -148,7 +148,7 @@
 
   & :not([data-unstyled]) {
     &:is(p, h2, h3, h4, ul, ol),
-    &[class~='ds-accordion'],
+    &[class~='ds-accordion'] /* TODO: EIRIK */,
     &[class~='ds-card'] {
       max-width: 740px;
     }
@@ -175,7 +175,7 @@
     & h4,
     & ul,
     & ol,
-    & [class~='ds-accordion'],
+    & [class~='ds-accordion'] /* TODO: EIRIK */,
     & [class~='ds-card'] {
       max-width: unset;
     }

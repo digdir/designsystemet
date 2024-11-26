@@ -14,7 +14,7 @@
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
-@import url('./accordion.css') layer(ds.components);
+@import url('./details.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
 @import url('./textfield.css') layer(ds.components);
 @import url('./helptext.css') layer(ds.components);

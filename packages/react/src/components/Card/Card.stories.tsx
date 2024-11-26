@@ -57,7 +57,15 @@ export const Variants: StoryFn<typeof Card> = () => (
         <img src={cat1} alt='katt' />
       </Card.Block>
       <Card.Block>
-        <Heading>Card Neutral</Heading>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Card Neutral
+          </a>
+        </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -70,7 +78,15 @@ export const Variants: StoryFn<typeof Card> = () => (
         <img src={cat2} alt='katt' />
       </Card.Block>
       <Card.Block>
-        <Heading>Card Subtle</Heading>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Card Subtle
+          </a>
+        </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -83,7 +99,15 @@ export const Variants: StoryFn<typeof Card> = () => (
         <img src={cat3} alt='katter' />
       </Card.Block>
       <Card.Block>
-        <Heading>Card First</Heading>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Card First
+          </a>
+        </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -96,7 +120,15 @@ export const Variants: StoryFn<typeof Card> = () => (
         <img src={cat4} alt='katt' />
       </Card.Block>
       <Card.Block>
-        <Heading>Card Second</Heading>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Card Second
+          </a>
+        </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
@@ -109,7 +141,15 @@ export const Variants: StoryFn<typeof Card> = () => (
         <img src={cat5} alt='katt' />
       </Card.Block>
       <Card.Block>
-        <Heading>Card Third</Heading>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Card Third
+          </a>
+        </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer. Writing slightly explain desk unable at supposedly
