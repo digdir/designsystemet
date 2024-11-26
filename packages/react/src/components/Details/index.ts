@@ -3,7 +3,7 @@ import { DetailsContent } from './DetailsContent';
 import { DetailsSummary } from './DetailsSummary';
 
 /**
- * Detailss are used to toggle the visibility of content.
+ * Details are used to toggle the visibility of content.
  * @example
  * <Details>
  *  <Details.Summary>Heading 1</Details.Summary>
