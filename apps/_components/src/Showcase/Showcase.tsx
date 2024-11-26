@@ -280,7 +280,7 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
       </div>
       <div className={cl(classes.card, classes.faq)}>
         <Heading className={classes.cardTitle}>Ofte stillte spørsmål</Heading>
-        <Card data-color='brand3'>
+        <Card data-color='neutral'>
           <Details>
             <Details.Summary>
               Hvem kan registrere seg i Frivillighetsregisteret?
