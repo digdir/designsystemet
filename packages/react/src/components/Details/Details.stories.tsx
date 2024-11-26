@@ -145,7 +145,7 @@ export const Controlled: StoryFn<typeof Details> = () => {
 
   return (
     <>
-      <Button onClick={toggleOpen}>Toggle Detailss</Button>
+      <Button onClick={toggleOpen}>Toggle Details</Button>
       <br />
       <>
         <Details open={open1} onToggle={() => setOpen1(!open1)}>
