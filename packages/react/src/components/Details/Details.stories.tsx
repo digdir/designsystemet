@@ -41,8 +41,8 @@ Preview.args = {
   'data-color': 'neutral',
 };
 
-export const DetailsBorder: StoryFn<typeof Details> = () => (
-  <Card data-color='subtle'>
+export const InCard: StoryFn<typeof Details> = () => (
+  <Card data-color='neutral'>
     <Details>
       <Details.Summary>Vedlegg</Details.Summary>
       <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
@@ -50,7 +50,7 @@ export const DetailsBorder: StoryFn<typeof Details> = () => (
   </Card>
 );
 
-export const DetailsColor: StoryFn<typeof Details> = () => (
+export const InCardWithColor: StoryFn<typeof Details> = () => (
   <Card data-color='brand2'>
     <Details>
       <Details.Summary>Hvordan får jeg tildelt et jegernummer?</Details.Summary>
