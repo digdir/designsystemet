@@ -2,7 +2,6 @@ import { PrinterSmallIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 import {
-  Accordion,
   Alert,
   Avatar,
   Badge,
@@ -12,6 +11,7 @@ import {
   Checkbox,
   Chip,
   Combobox,
+  Details,
   Dropdown,
   ErrorSummary,
   Field,
@@ -180,20 +180,20 @@ export const Sizes: StoryFn = () => {
         </div>
       ))}
       {sizes.map((size) => (
-        <Accordion key={size} data-size={size}>
-          <Accordion.Item>
-            <Accordion.Heading>
+        <Card key={size} data-size={size}>
+          <Details>
+            <Details.Summary>
               Hvem kan registrere seg i Frivillighetsregisteret?
-            </Accordion.Heading>
-            <Accordion.Content>
+            </Details.Summary>
+            <Details.Content>
               For å kunne bli registrert i Frivillighetsregisteret, må
               organisasjonen drive frivillig virksomhet. Det er bare foreninger,
               stiftelser og aksjeselskap som kan registreres. Virksomheten kan
               ikke dele ut midler til fysiske personer. Virksomheten må ha et
               styre.
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion>
+            </Details.Content>
+          </Details>
+        </Card>
       ))}
       {sizes.map((size) => (
         <Alert key={size} data-size={size}>

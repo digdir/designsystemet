@@ -1,18 +1,18 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-export type AccordionHeadingProps = {
+export type DetailsSummaryProps = {
   /** Heading text */
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
 /**
- * Accordion heading component, contains a button to toggle the content.
+ * Details summary component, contains a the heading to toggle the content.
  * @example
- * <AccordionHeading>Heading</AccordionHeading>
+ * <Details.Summary>Heading</Details.Summary>
  */
-export const AccordionHeading = forwardRef<HTMLElement, AccordionHeadingProps>(
-  function AccordionHeading({ className, ...rest }, ref) {
+export const DetailsSummary = forwardRef<HTMLElement, DetailsSummaryProps>(
+  function DetailsSummary({ className, ...rest }, ref) {
     /* Set `className` as `class` so react is happy */
     return <u-summary ref={ref} class={className} {...rest} />;
   },
