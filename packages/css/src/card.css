@@ -7,8 +7,8 @@
   --dsc-card-color: var(--ds-color-neutral-text-default);
 
   &[data-color]:where(:not([data-color='subtle'])) {
-    --dsc-card-background--active: var(--ds-color-surface-default);
-    --dsc-card-background--hover: var(--ds-color-background-subtle);
+    --dsc-card-background--active: var(--ds-color-surface-active);
+    --dsc-card-background--hover: var(--ds-color-surface-hover);
     --dsc-card-background: var(--ds-color-surface-default);
     --dsc-card-border-color: var(--ds-color-border-subtle);
     --dsc-card-color: var(--ds-color-text-default);
