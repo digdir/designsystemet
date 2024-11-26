@@ -10,8 +10,8 @@ import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import { format } from 'prettier/standalone.js';
 import { useEffect, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { stackoverflowDark as nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import classes from './CodeSnippet.module.css';
 
