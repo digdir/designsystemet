@@ -61,20 +61,18 @@ Vil bli til:
 Alle våre komponenter er klient komponenter, og bruker `"use client"`.
 
 Dersom du ønsker å bruke våre komponenter i dine server komponenter, så kan du ikke bruke dot-notation.
-Dette betyr at du ikke kan skrive `<Details.Item>`, men må skrive `<DetailsItem>`. Grunnen for dette er at serveren ikke kan få tak i noe
+Dette betyr at du ikke kan skrive `<Details.Summary>`, men må skrive `<DetailsSummary>`. Grunnen for dette er at serveren ikke kan få tak i noe
 som ligger i en klient komponent, som `Details` er.
 
 #### I en server komponent:
 
 <CodeSnippet language='ts'>
 {`
-import { Details, DetailsHeading, DetailsItem, DetailsContent } from '@digdir/designsystemet-react';
+import { Details, DetailsSummary, DetailsContent } from '@digdir/designsystemet-react';
 
 <Details>
-  <DetailsItem>
-    <DetailsHeading>...</DetailsHeading>
-    <DetailsContent>...</DetailsContent>
-  </DetailsItem>
+  <DetailsSummary>...</DetailsSummary>
+  <DetailsContent>...</DetailsContent>
 </Details>
 `}
 </CodeSnippet>
@@ -86,19 +84,17 @@ import { Details, DetailsHeading, DetailsItem, DetailsContent } from '@digdir/de
 import { Details } from '@digdir/designsystemet-react';
 
 <Details>
-  <Details.Item>
-    <Details.Summary>...</Details.Summary>
-    <Details.Content>...</Details.Content>
-  </Details.Item>
+  <Details.Summary>...</Details.Summary>
+  <Details.Content>...</Details.Content>
 </Details>
 `}
 </CodeSnippet>
 
-### Komponenter med `.Root`
+### Komponenter med `.TriggerContext`
 
-Noen komponenter har en `.Root` komponent, som må wrappes rundt barn. Disse må brukes for at komponenten skal funke.
-Details har f.eks en `Details` komponent som må wrappes rundt `Details.Item` komponentene.
-Dette er for å få riktig funksjonalitet gjennom komponenten.
+Noen komponenter har en `.TriggerContext`, som kan wrappes rundt komponenten pluss en `.Trigger`.
+Disse kan brukes for å automatisk koble komponenten til en trigger - typisk en knapp.
+Modal har f.eks en `Modal.TriggerContext` komponent som kan wrappes rundt `Modal.Trigger` og `Modal` komponentene.
 
 <br />
 <br />

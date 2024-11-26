@@ -280,8 +280,8 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
       </div>
       <div className={cl(classes.card, classes.faq)}>
         <Heading className={classes.cardTitle}>Ofte stillte spørsmål</Heading>
-        <Details data-color='brand3' border>
-          <Details.Item>
+        <Card data-color='brand3'>
+          <Details>
             <Details.Summary>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Details.Summary>
@@ -292,8 +292,8 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
               ikke dele ut midler til fysiske personer. Virksomheten må ha et
               styre.
             </Details.Content>
-          </Details.Item>
-          <Details.Item>
+          </Details>
+          <Details>
             <Details.Summary>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Details.Summary>
@@ -302,8 +302,8 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
               registrert i Frivillighetsregisteret. Du kan registrere i begge
               registrene samtidig i Samordnet registermelding.
             </Details.Content>
-          </Details.Item>
-          <Details.Item>
+          </Details>
+          <Details>
             <Details.Summary>
               Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
             </Details.Summary>
@@ -312,8 +312,8 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
               registrert i Frivillighetsregisteret. Du kan registrere i begge
               registrene samtidig i Samordnet registermelding.
             </Details.Content>
-          </Details.Item>
-        </Details>
+          </Details>
+        </Card>
       </div>
     </div>
   );

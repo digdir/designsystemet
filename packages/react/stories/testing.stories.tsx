@@ -180,8 +180,8 @@ export const Sizes: StoryFn = () => {
         </div>
       ))}
       {sizes.map((size) => (
-        <Details key={size} data-size={size}>
-          <Details.Item>
+        <Card key={size} data-size={size}>
+          <Details>
             <Details.Summary>
               Hvem kan registrere seg i Frivillighetsregisteret?
             </Details.Summary>
@@ -192,8 +192,8 @@ export const Sizes: StoryFn = () => {
               ikke dele ut midler til fysiske personer. Virksomheten må ha et
               styre.
             </Details.Content>
-          </Details.Item>
-        </Details>
+          </Details>
+        </Card>
       ))}
       {sizes.map((size) => (
         <Alert key={size} data-size={size}>

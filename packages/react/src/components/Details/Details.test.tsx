@@ -2,20 +2,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { DetailsItemProps } from './';
-import { Details } from './';
+import { Details, type DetailsProps } from './';
 
 const user = userEvent.setup();
 const VOID = () => {};
 
-const TestComponent = (rest: DetailsItemProps): JSX.Element => {
+const TestComponent = (rest: DetailsProps): JSX.Element => {
   return (
-    <Details>
-      <Details.Item {...rest}>
+    <>
+      <Details {...rest}>
         <Details.Summary>Details Header Title Text</Details.Summary>
         <Details.Content>The fantastic details content text</Details.Content>
-      </Details.Item>
-    </Details>
+      </Details>
+    </>
   );
 };
 
@@ -42,7 +41,7 @@ describe('Details', () => {
     expect(detailsExpandButton).toHaveAttribute('aria-expanded', 'true');
   });
 
-  test('should be able to render DetailsItem as controlled', () => {
+  test('should be able to render Details as controlled', () => {
     render(<TestComponent open onToggle={VOID} />);
 
     const detailsExpandButton = screen.getByRole('button');
