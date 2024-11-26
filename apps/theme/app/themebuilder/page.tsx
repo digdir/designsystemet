@@ -5,6 +5,7 @@ import { Heading, Link, Tabs } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import {
   BorderRadius,
   ColorContrasts,
@@ -29,6 +30,8 @@ export default function Home() {
 
   type TestProps = 'light' | 'dark';
 
+  useEffect(() => {}, []);
+
   const setHeaderColor = () => {
     let themeMode: TestProps = 'light';
     if (colors.main.length === 0) {
@@ -51,7 +54,7 @@ export default function Home() {
   };
 
   return (
-    <div className={classes.page}>
+    <div className={classes.page} id='preview'>
       <div className={classes.header} style={{ background: setHeaderColor() }}>
         <Link data-size='sm' className={classes.backLink} asChild>
           <NextLink href='/'>

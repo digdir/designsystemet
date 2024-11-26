@@ -6,12 +6,13 @@ import classes from './BorderRadiusInput.module.css';
 export const BorderRadiusInput = () => {
   const [active, setActive] = useState(0);
   const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
+  const borderRadius = useThemeStore((state) => state.borderRadius);
   const items = [
-    { name: 'Ingen', type: 'sm', value: '0px' },
-    { name: 'Small', type: 'sm', value: '6px' },
-    { name: 'Medium', type: 'sm', value: '10px' },
-    { name: 'Large', type: 'sm', value: '13px' },
-    { name: 'Full', type: 'sm', value: '9999px' },
+    { name: 'Ingen', type: 'none', value: '0px' },
+    { name: 'Small', type: 'small', value: '6px' },
+    { name: 'Medium', type: 'medium', value: '10px' },
+    { name: 'Large', type: 'large', value: '13px' },
+    { name: 'Full', type: 'full', value: '9999px' },
   ];
 
   return (
@@ -19,24 +20,19 @@ export const BorderRadiusInput = () => {
       <div className={classes.items}>
         {items.map((item, index) => (
           <div
-            className={cl(classes.item, index === active && classes.active)}
+            className={cl(
+              classes.item,
+              borderRadius === item.type && classes.active,
+            )}
             key={index}
             onClick={() => setActive(index)}
           >
             <div
               className={cl(classes.box)}
               onClick={() => {
-                if (item.name === 'Ingen') {
-                  setBorderRadius('none');
-                } else {
-                  setBorderRadius(
-                    item.name.toLowerCase() as
-                      | 'small'
-                      | 'medium'
-                      | 'large'
-                      | 'full',
-                  );
-                }
+                setBorderRadius(
+                  item.type as 'none' | 'small' | 'medium' | 'large' | 'full',
+                );
               }}
             >
               <div className={classes.text}>{item.name}</div>

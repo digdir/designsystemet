@@ -12,7 +12,7 @@ import {
   ToggleGroup,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 import listClasses from './Card2.module.css';
 import classes from './ColorPreview.module.css';
@@ -53,7 +53,13 @@ export const ColorPreview = () => {
           .replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
+      style[
+        `--ds-color-${getColorNameFromNumber(number)
+          .replace(/\s+/g, '-')
+          .toLowerCase()}`
+      ] = lightColors[i].hex;
     }
+
     return style;
   };
 
@@ -65,9 +71,11 @@ export const ColorPreview = () => {
   };
 
   const HorizontalCard = ({ color }: CardProps) => {
+    useEffect(() => {}, []);
+
     const [valueOne, setValueOne] = useState(true);
     return (
-      <div style={setStyle(color.colors)} className={classes.card}>
+      <div style={setStyle(color.colors)} className={classes.card} id='preview'>
         <Heading className={classes.title} data-size='2xs'>
           {color.name}
         </Heading>

@@ -22,7 +22,7 @@
 .box {
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
-  height: 54px;
+  height: 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,9 +37,9 @@
 }
 
 .inner {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-background-subtle);
   border: 5px solid var(--ds-color-neutral-border-default);
-  height: 35px;
-  width: 68px;
+  height: 33px;
+  width: 72px;
   margin-right: -34px;
 }

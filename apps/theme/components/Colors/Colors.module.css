@@ -5,6 +5,7 @@
   gap: 16px;
   margin: 8px 0;
   width: 100%;
+  max-width: 1390px;
 }
 
 .row {
