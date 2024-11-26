@@ -20,18 +20,18 @@ export default ({ children }) => (
   />
 );
 
-Denne artikkelen tar forbehold om at du allerie har farger satt opp med [Temabyggeren](/grunnleggende/for-designere/eget-tema).
+Denne artikkelen tar forbehold om at du allerie har fargar satt opp med [Temabyggeren](/grunnleggende/for-designere/eget-tema).
 
 Me brukar data attributt for å fargelegge komponentar. Alle komponentar kan ha alle fargar, men komponentar har forskjellige standardfargar.
 
 Når du skal sette farge er det to data attributt du kan bruke:
-- `data-color` som endrar farge
 - `data-color-scheme` som endrar fargetema
+- `data-color` som endrar farge
 
 ## `data-color-scheme`
 
-Dette attributtet brukast for å endre mellom lys, mørk, eller andre fargetema som du har satt opp. Du legger denne over
-alt som skal ha spesifisert tema. Dersom du ikkje setter denne, vil sida di bruke lyst fargetema.
+Denne brukast for å endre mellom lys, mørk, eller andre fargemoduesar som du har satt opp. Du legger denne over
+alt som skal ha modusen du spesifiserer. Dersom du ikkje setter denne, vil sida di bruke lys modus.
 
 <CodeSnippet language="html">
 {`
@@ -48,16 +48,16 @@ alt som skal ha spesifisert tema. Dersom du ikkje setter denne, vil sida di bruk
 </CodeSnippet>
 
 Du kan endre denne på heile eller delar av sida, og bytte så mykje du vil mellom dei ulike fargetemaene.
-For ekesmpel er sida di lys, men du har ein mørk footer. Da kan du sette `data-color-scheme="dark"` på footer.
+For eksmpel er sida di lys, men du har ein mørk footer. Då kan du sette `data-color-scheme="dark"` på footer.
 
 ## `data-color`
 
-Dette attributtet brukast for å endre farge på komponentar. Du kan bruke alle fargene som du har satt opp i temaet ditt. Standardverdi når denne ikkje er satt,
-er din standardfarge. Brukar du tema frå `@digdir/designsystemet-theme`, vil dette være `accent`. 
+Denne brukast for å endre farge på komponentar. Du kan bruke alle fargene som du har satt opp i temaet ditt. Standardverdi når denne ikkje er satt,
+er din standardfarge. Brukar du tema frå `@digdir/designsystemet-theme`, vil dette være `accent`.
 
 **Når du sett `data-color-scheme` vil `data-color` bli satt tilbake til standardfargen.**
 
-Nokon komponentar kan arve farge frå nærmaste forelder med `data-color` satt. Dette betyr at du ikkje treng å bruke denne på alle komponentar,
+Nokon komponentar kan arve farge frå næraste forelder med `data-color` satt. Dette betyr at du ikkje treng å bruke denne på alle komponentar,
 dersom dei skal ha lik farge.
 
 <CodeSnippet language="html">
@@ -74,14 +74,14 @@ Nokon komponentar, som `Button`, støttar ikkje ekstern `data-color`, og her må
 
 <CodeSnippet language="jsx">
 {`
-<div data-color="accent">
+<div data-color="neutral">
   <Chip>
-    Denne Chip'en har accent farge.
+    Denne Chip'en har neutral farge.
   </Chip>
 </div>
 
-<Button data-color="accent">
-  Eg har accent farge.
+<Button data-color="neutral">
+  Eg har neutral farge.
 </Button>
 
 <div data-color="neutral">
@@ -94,7 +94,4 @@ Nokon komponentar, som `Button`, støttar ikkje ekstern `data-color`, og her må
 
 ## Kort oppsummert
 
-Du endrar farge med `data-color`, men denne må bli satt på nytt dersom du endrar fargetema med `data-color-scheme`. Nokon komponentar arver farge frå nærmaste forelder med `data-color` satt.
-
-
-
+Du endrar farge med `data-color`, men denne må bli satt på nytt dersom du endrar fargetema med `data-color-scheme`. Nokre komponentar arvar farge frå næraste forelder med `data-color` satt.
