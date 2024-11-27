@@ -4,6 +4,7 @@
     "primitives/modes/size/small",
     "primitives/modes/size/medium",
     "primitives/modes/size/large",
+    "primitives/modes/sizecalculate/test",
     "primitives/modes/typography/primary/theme",
     "primitives/modes/typography/primary/theme2",
     "primitives/modes/typography/primary/theme3",
