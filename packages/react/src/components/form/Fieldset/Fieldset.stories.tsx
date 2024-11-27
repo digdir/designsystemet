@@ -1,13 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import {
-  Field,
-  Fieldset,
-  Input,
-  Label,
-  Textarea,
-  ValidationMessage,
-} from '../..';
+import { Field, Fieldset, Input, Label, Textarea } from '../..';
 
 type Story = StoryFn<typeof Fieldset>;
 
@@ -26,7 +19,6 @@ export const Preview: Story = (args) => (
       <Field>
         <Label>Kort beskrivelse</Label>
         <Input />
-        <ValidationMessage>Feilmelding</ValidationMessage>
       </Field>
       <Field>
         <Label>Lang beskrivelse</Label>
