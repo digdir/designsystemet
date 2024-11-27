@@ -1,5 +1,5 @@
 {
-  "line-height": {
+  "_line-height": {
     "sm": {
       "$type": "lineHeights",
       "$value": "130%"
@@ -13,7 +13,7 @@
       "$value": "170%"
     }
   },
-  "font-size": {
+  "_font-size": {
     "1": {
       "$type": "fontSizes",
       "$value": "13"
@@ -59,7 +59,7 @@
       "$value": "72"
     }
   },
-  "letter-spacing": {
+  "_letter-spacing": {
     "1": {
       "$type": "letterSpacing",
       "$value": "-1%"
@@ -97,17 +97,17 @@
       "$value": "1.5%"
     }
   },
-  "utility": {
-    "mode-font-size": {
-      "$type": "other",
+  "size": {
+    "_mode-font-size": {
+      "$type": "dimension",
       "$value": "21"
     },
-    "base": {
-      "$type": "other",
+    "_base": {
+      "$type": "dimension",
       "$value": "18"
     },
-    "step": {
-      "$type": "other",
+    "_step": {
+      "$type": "dimension",
       "$value": "4"
     }
   }
