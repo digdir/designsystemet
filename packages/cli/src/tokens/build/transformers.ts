@@ -62,9 +62,26 @@ export const resolveMath: Transform = {
   transitive: true,
   filter: (token) => {
     const isValidValue = ['string', 'object'].includes(typeof (token.$value ?? token.value));
-    const isTokenOfInterest = !pathStartsWithOneOf(['border-radius'], token);
+    const isTokenOfInterest = !pathStartsWithOneOf(['border-radius', 'size'], token);
 
     return isValidValue && isTokenOfInterest;
   },
   transform: (token, platformCfg) => checkAndEvaluateMath(token, platformCfg.mathFractionDigits),
+};
+
+export const floorToRound: Transform = {
+  name: 'ds/floorToRound',
+  type: 'value',
+  transitive: true,
+  filter: (token) => {
+    const isValidValue = ['string', 'object'].includes(typeof (token.$value ?? token.value));
+    const isTokenOfInterest = pathStartsWithOneOf(['size'], token);
+
+    return isValidValue && isTokenOfInterest;
+  },
+  transform: (token, platformCfg) => {
+    console.log('token', token);
+
+    return token.$value;
+  },
 };

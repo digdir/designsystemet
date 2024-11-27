@@ -8,7 +8,7 @@ import { DEFAULT_COLOR, buildOptions } from '../build.js';
 import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
+import { floorToRound, nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
@@ -33,6 +33,7 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
+StyleDictionary.registerTransform(floorToRound);
 
 StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
@@ -44,6 +45,7 @@ const dsTransformers = [
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
+  floorToRound.name,
   'ts/typography/fontWeight',
   typographyName.name,
   'ts/color/modifiers',
@@ -185,7 +187,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
    * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
    */
   const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing'], token);
+    pathStartsWithOneOf(['spacing', 'sizing', 'size', 'utility'], token);
 
   return {
     usesDtcg,
@@ -215,7 +217,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius'], token);
+            const include = pathStartsWithOneOf(['border-radius', 'size', 'utility'], token);
             return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
           },
         },
@@ -302,7 +304,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
               return (
                 included &&
                 !pathStartsWithOneOf(
-                  ['spacing', 'sizing', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
+                  ['spacing', 'sizing', 'size', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
                   token,
                 )
               );
