@@ -28,7 +28,7 @@
 }
 
 .outer {
-  background-color: var(--ds-color-neutral-background-default);
+  background-color: var(--ds-color-neutral-background-default) !important;
 }
 
 .inner {
