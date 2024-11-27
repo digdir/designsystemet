@@ -13,10 +13,6 @@
     gap: var(--dsc-breadcrumbs-spacing) 0;
   }
 
-  & a:not(:focus-visible) {
-    color: var(--dsc-breadcrumbs-color);
-  }
-
   & a[aria-current='page'] {
     text-decoration: none;
   }
@@ -24,7 +20,7 @@
   /* Draw chevron between items and before back link */
   & li:where(:not(:last-child))::after,
   & > :not(ol, ul)::before {
-    background: currentcolor;
+    background: var(--dsc-breadcrumbs-color);
     content: '';
     display: inline-block;
     height: var(--dsc-breadcrumbs-chevron-size);
