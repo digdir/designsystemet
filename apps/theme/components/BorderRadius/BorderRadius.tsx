@@ -134,9 +134,24 @@ export const BorderRadius = () => {
             />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
-                <Tag color='brand1'>Sport</Tag>
-                <Tag color='brand2'>Nyheter</Tag>
-                <Tag color='brand3'>Innenriks</Tag>
+                <Tag
+                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  color='brand1'
+                >
+                  Sport
+                </Tag>
+                <Tag
+                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  color='brand2'
+                >
+                  Nyheter
+                </Tag>
+                <Tag
+                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  color='brand3'
+                >
+                  Innenriks
+                </Tag>
               </div>
               <Heading data-size='2xs' className={classes.imgTitle}>
                 Reiste alene til storbyen
