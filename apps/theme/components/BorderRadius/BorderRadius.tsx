@@ -8,18 +8,31 @@ import {
 } from '@digdir/designsystemet-react';
 
 import cl from 'clsx/lite';
+import { useEffect } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
+import { SettingsCard } from './SettingsCard/SettingsCard';
 
 export const BorderRadius = () => {
   const borderRadius = useThemeStore((state) => state.borderRadius);
+
+  const setToken = (token: string, color: string) => {
+    const previewElement = document.getElementById('test');
+    if (previewElement) {
+      previewElement.style.setProperty(token, color);
+    }
+  };
+
+  useEffect(() => {
+    setToken('--ds-border-radius-md', borderRadiusMap[borderRadius][1]);
+  }, [borderRadius]);
 
   const borderRadiusMap = {
     none: ['0px', '0px', '0px', '0px', '0px', '999px'],
     small: ['2px', '4px', '8px', '12px', '4px', '999px'],
     medium: ['2px', '8px', '12px', '16px', '8px', '999px'],
-    large: ['2px', '12px', '16px', '20px', '12px', '999px'],
-    full: ['2px', '12px', '16px', '24px', '999px', '999px'],
+    large: ['2px', '8px', '16px', '20px', '12px', '999px'],
+    full: ['2px', '8px', '16px', '24px', '999px', '999px'],
   };
 
   const items = [
@@ -80,7 +93,7 @@ export const BorderRadius = () => {
           </div>
         </div>
       </div>
-      <div className={cl('panelRight', classes.outer)}>
+      <div className={cl('panelRight', classes.outer)} id='test'>
         <div
           className={classes.inner}
           style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
@@ -90,7 +103,12 @@ export const BorderRadius = () => {
             style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
           >
             <Heading data-size='2xs'>Logg inn i portalen</Heading>
-            <Textfield placeholder='Ola Normann' label='Navn' data-size='sm' />
+            <Textfield
+              placeholder='Ola Normann'
+              label='Navn'
+              data-size='sm'
+              className={classes.test}
+            />
             <Textfield placeholder='********' label='Passord' data-size='sm' />
             <Link href='#' data-size='sm'>
               Glemt passord?
@@ -132,7 +150,9 @@ export const BorderRadius = () => {
             className={classes.card}
             data-size='sm'
             style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-          ></div>
+          >
+            <SettingsCard />
+          </div>
           <div
             className={classes.card}
             style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
