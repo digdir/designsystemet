@@ -1,5 +1,4 @@
 .ds-link {
-  /* default color: accent */
   --dsc-link-background--active: var(--ds-color-surface-default);
   --dsc-link-color--active: var(--ds-color-text-default);
   --dsc-link-color--hover: var(--ds-color-text-default);
@@ -20,15 +19,7 @@
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
-  /**
-   * Colors
-   */
-  &[data-color] {
-    --dsc-link-background--active: var(--ds-color-surface-default);
-    --dsc-link-color--active: var(--ds-color-text-default);
-    --dsc-link-color--hover: var(--ds-color-text-default);
-    --dsc-link-color: var(--ds-color-text-subtle);
-  }
+  /* What do we do here? */
   &[data-color='neutral'] {
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
     --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
