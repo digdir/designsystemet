@@ -19,6 +19,7 @@
     "jsx": "preserve",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
+    "types": ["@digdir/designsystemet-theme/colors.d.ts"],
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"

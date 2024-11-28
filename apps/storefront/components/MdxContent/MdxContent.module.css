@@ -52,6 +52,7 @@
 
     & svg {
       margin: 0;
+      fill: var(--ds-color-neutral-text-default);
     }
   }
 

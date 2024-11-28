@@ -10,8 +10,8 @@ import * as prettierCSS from 'prettier/plugins/postcss.js';
 import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import { format } from 'prettier/standalone.js';
 import { useEffect, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import classes from './CodeSnippet.module.css';
 
@@ -27,15 +27,13 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json';
-  syntax?: string;
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const CodeSnippet = ({
   language = 'markdown',
   className,
-  syntax = 'js',
   children,
   ...rest
 }: CodeSnippetProps) => {
@@ -87,15 +85,15 @@ const CodeSnippet = ({
               className={classes.copyButton}
               aria-label='Kopier'
               icon
-              color='neutral'
+              data-color='neutral'
               data-size='sm'
             >
               <FilesIcon fontSize='1.5rem' />
             </Button>
           </Tooltip>
           <SyntaxHighlighter
-            style={nightOwl}
-            language={syntax}
+            style={stackoverflowDark}
+            language={language}
             customStyle={{
               fontSize: '15px',
               margin: 0,
