@@ -25,12 +25,24 @@ Med `Details` kan du presentere mye innhold på liten plass i en eller flere rad
 ## Bruk
 
 ```tsx
+/* Uten ramme */
 import { Details } from '@digdir/designsystemet-react';
 
 <Details>
   <Details.Summary>Details heading text</Details.Summary>
   <Details.Content>Details content</Details.Content>
 </Details>
+
+/* Med ramme */
+
+import { Details, Card } from '@digdir/designsystemet-react';
+
+<Card>
+  <Details>
+    <Details.Summary>Details heading text</Details.Summary>
+    <Details.Content>Details content</Details.Content>
+  </Details>
+</Card>
 ```
 
 ## Eksempler
