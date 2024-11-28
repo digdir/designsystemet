@@ -98,15 +98,15 @@
     }
   },
   "size": {
-    "_mode-font-size": {
+    "mode-font-size": {
       "$type": "dimension",
       "$value": "21"
     },
-    "_base": {
+    "base": {
       "$type": "dimension",
       "$value": "18"
     },
-    "_step": {
+    "step": {
       "$type": "dimension",
       "$value": "4"
     }

@@ -178,17 +178,17 @@
       "$type": "dimension",
       "$value": "floor({size.step} / {size.base} * {size.mode-font-size} *30)"
     },
-    "mode-font-size": {
+    "_mode-font-size": {
       "$type": "dimension",
-      "$value": "{size._mode-font-size}"
+      "$value": "{size.mode-font-size}"
     },
-    "base": {
+    "_base": {
       "$type": "dimension",
-      "$value": "{size._base}"
+      "$value": "{size.base}"
     },
-    "step": {
+    "_step": {
       "$type": "dimension",
-      "$value": "{size._step}"
+      "$value": "{size.step}"
     }
   }
 }

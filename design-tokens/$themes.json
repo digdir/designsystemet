@@ -104,8 +104,7 @@
       "primitives/modes/color-scheme/light/theme": "enabled",
       "primitives/modes/color-scheme/light/theme2": "enabled",
       "primitives/modes/color-scheme/light/theme3": "enabled",
-      "primitives/modes/color-scheme/light/theme4": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "primitives/modes/color-scheme/light/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:0",
@@ -512,8 +511,7 @@
       "primitives/modes/color-scheme/dark/theme": "enabled",
       "primitives/modes/color-scheme/dark/theme2": "enabled",
       "primitives/modes/color-scheme/dark/theme3": "enabled",
-      "primitives/modes/color-scheme/dark/theme4": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "primitives/modes/color-scheme/dark/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5472",
     "$figmaModeId": "34811:1",
@@ -919,8 +917,7 @@
       "primitives/modes/typography/primary/theme": "enabled",
       "primitives/modes/typography/primary/theme2": "enabled",
       "primitives/modes/typography/primary/theme3": "enabled",
-      "primitives/modes/typography/primary/theme4": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "primitives/modes/typography/primary/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20769",
     "$figmaModeId": "36248:2",
@@ -952,8 +949,7 @@
       "primitives/modes/typography/secondary/theme": "enabled",
       "primitives/modes/typography/secondary/theme2": "enabled",
       "primitives/modes/typography/secondary/theme3": "enabled",
-      "primitives/modes/typography/secondary/theme4": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "primitives/modes/typography/secondary/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20769",
     "$figmaModeId": "36248:3",
@@ -982,8 +978,7 @@
     "name": "digdir",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "themes/theme": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:0",
@@ -1082,8 +1077,7 @@
     "name": "altinn",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme2": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "themes/theme2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:1",
@@ -1182,8 +1176,7 @@
     "name": "uutilsynet",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "themes/theme3": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "themes/theme3": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:2",
@@ -1621,8 +1614,7 @@
       "typography.validation-message.xs": "S:529e6d2b64aadcc3edec73830f11e8cf38ba3721,"
     },
     "selectedTokenSets": {
-      "themes/theme4": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "themes/theme4": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36528:61712",
     "$figmaModeId": "36528:3",
@@ -1763,8 +1755,7 @@
     "selectedTokenSets": {
       "semantic/style": "enabled",
       "semantic/color": "enabled",
-      "primitives/globals": "source",
-      "primitives/modes/size/global": "disabled"
+      "primitives/globals": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",
@@ -1962,8 +1953,7 @@
     "name": "accent",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/main-color/accent": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "semantic/modes/main-color/accent": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:40350:32139",
     "$figmaModeId": "40350:0",
@@ -1991,8 +1981,7 @@
     "name": "brand1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand1": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "semantic/modes/support-color/brand1": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:40350:32140",
     "$figmaModeId": "40350:1",
@@ -2020,8 +2009,7 @@
     "name": "brand2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand2": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "semantic/modes/support-color/brand2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:40350:32140",
     "$figmaModeId": "40350:2",
@@ -2049,8 +2037,7 @@
     "name": "brand3",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/modes/support-color/brand3": "enabled",
-      "primitives/modes/size/global": "disabled"
+      "semantic/modes/support-color/brand3": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:40350:32140",
     "$figmaModeId": "40350:3",
