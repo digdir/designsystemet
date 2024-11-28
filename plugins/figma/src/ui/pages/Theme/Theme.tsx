@@ -10,12 +10,11 @@ import {
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
-import { type ColorTheme, useThemeStore } from '../../../common/store';
-
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getDummyTheme } from '@common/dummyTheme';
+import { colorCliOptions } from '@digdir/designsystemet';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
-import { colorCliOptions } from '@digdir/designsystemet/tokens';
+import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
 
@@ -43,56 +42,104 @@ function Theme() {
   });
 
   const handleClick = () => {
-    const pattern = new RegExp(
-      `--${colorCliOptions.main}\s+"accent:(#\w{6})"\s+--${colorCliOptions.neutral}\s+"(#\w{6})"\s+--${colorCliOptions.support}\s+"brand1:(#\w{6})"\s+"brand2:(#\w{6})"\s+"brand3:(#\w{6})"`,
-    );
-    const matches = command.replace(/\\/g, '').match(pattern);
+    // split input into lines
+    const lines = command.split('\\\n');
 
-    if (matches) {
-      const accent = matches[1] as CssColor;
-      const neutral = matches[2] as CssColor;
-      const brand1 = matches[3] as CssColor;
-      const brand2 = matches[4] as CssColor;
-      const brand3 = matches[5] as CssColor;
+    // helper regex for extracting color info
+    const colorRegex = /"([^:]+):(#\w{6})"/g;
 
-      console.log(
-        `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
-      );
+    const result: {
+      mainColors: { name: string; hex: CssColor }[];
+      neutralColor: CssColor | null;
+      supportColors: { name: string; hex: CssColor }[];
+    } = {
+      mainColors: [],
+      neutralColor: null,
+      supportColors: [],
+    };
 
-      const newArray = Array.from(themes);
-      newArray[themeIndex] = {
-        ...newArray[themeIndex],
-        colors: {
-          ...newArray[themeIndex].colors,
-          accent: themeToFigmaFormat(generateThemeForColor(accent)),
-          neutral: themeToFigmaFormat(generateThemeForColor(neutral)),
-          brand1: themeToFigmaFormat(generateThemeForColor(brand1)),
-          brand2: themeToFigmaFormat(generateThemeForColor(brand2)),
-          brand3: themeToFigmaFormat(generateThemeForColor(brand3)),
-        },
-      };
+    for (const line of lines) {
+      if (line.includes(`--${colorCliOptions.main}`)) {
+        const matches = [...line.matchAll(colorRegex)];
+        result.mainColors = matches.map((match) => ({
+          name: match[1],
+          hex: match[2] as CssColor,
+        }));
+      } else if (line.includes(`--${colorCliOptions.neutral}`)) {
+        const match = line.match(/#\w{6}/);
+        if (match) result.neutralColor = match[0] as CssColor;
+      } else if (line.includes(`--${colorCliOptions.support}`)) {
+        const matches = [...line.matchAll(colorRegex)];
+        result.supportColors = matches.map((match) => ({
+          name: match[1],
+          hex: match[2] as CssColor,
+        }));
+      }
+    }
 
-      setThemes(newArray);
-      setLoading(true);
-      setCommand('');
-
-      setTimeout(() => {
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: 'updateVariables',
-              themes: newArray,
-            },
-          },
-          '*',
-        );
-      }, 500);
-    } else {
+    if (!result.mainColors.length || !result.neutralColor) {
       console.log('No match');
       setCodeSnippetError(
         'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
       );
+      return;
     }
+
+    /* For now we check that we have accent, brand1, brand2, brand3 */
+    const accent = result.mainColors.find(
+      (color) => color.name === 'accent',
+    )?.hex;
+    const brand1 = result.supportColors.find(
+      (color) => color.name === 'brand1',
+    )?.hex;
+    const brand2 = result.supportColors.find(
+      (color) => color.name === 'brand2',
+    )?.hex;
+    const brand3 = result.supportColors.find(
+      (color) => color.name === 'brand3',
+    )?.hex;
+
+    const neutral = result.neutralColor;
+
+    if (!accent || !brand1 || !brand2 || !brand3) {
+      setCodeSnippetError(
+        'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
+      );
+      return;
+    }
+
+    console.log(
+      `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
+    );
+
+    const newArray = Array.from(themes);
+    newArray[themeIndex] = {
+      ...newArray[themeIndex],
+      colors: {
+        ...newArray[themeIndex].colors,
+        accent: themeToFigmaFormat(generateThemeForColor(accent)),
+        neutral: themeToFigmaFormat(generateThemeForColor(neutral)),
+        brand1: themeToFigmaFormat(generateThemeForColor(brand1)),
+        brand2: themeToFigmaFormat(generateThemeForColor(brand2)),
+        brand3: themeToFigmaFormat(generateThemeForColor(brand3)),
+      },
+    };
+
+    setThemes(newArray);
+    setLoading(true);
+    setCommand('');
+
+    setTimeout(() => {
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'updateVariables',
+            themes: newArray,
+          },
+        },
+        '*',
+      );
+    }, 500);
   };
 
   return (
