@@ -40,6 +40,18 @@ type TokenTableProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const TokensTable = ({ tokens }: TokenTableProps) => {
+  function calculateComputedValue(value: string) {
+    if (!document) return value;
+
+    const elm = document.createElement('div');
+    elm.style.cssText = `width: ${value}; height: ${value};`;
+    document.body.appendChild(elm);
+    const computedValue = getComputedStyle(elm).width;
+    document.body.removeChild(elm);
+
+    return computedValue;
+  }
+
   return (
     <Table>
       <Table.Head>
@@ -83,21 +95,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
     </Table>
   );
 };
-
-function calculateComputedValue(value: string) {
-  const elm = document.createElement('div');
-  elm.style.cssText = `width: ${value}; height: ${value};`;
-
-  document.body.appendChild(elm);
-
-  const computedValue = getComputedStyle(elm).width;
-
-  document.body.removeChild(elm);
-
-  console.log(computedValue);
-
-  return computedValue;
-}
 
 type TokenCardsProps = {
   tokens: [string, Token[]][];
