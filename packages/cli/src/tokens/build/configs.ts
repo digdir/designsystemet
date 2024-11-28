@@ -209,9 +209,13 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
           {
             destination: `semantic.css`,
             format: formats.semantic.name,
-            filter: (token) =>
-              (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token),
+            filter: (token) => {
+              const unwantedPaths = pathStartsWithOneOf(['font-size', 'line-height', 'letter-spacing'], token);
+              const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
+              const unwantedTokens = !(unwantedPaths || unwantedTypes);
+
+              return (!token.isSource || isCalculatedToken(token)) && unwantedTokens;
+            },
           },
         ],
         options: {
@@ -296,8 +300,13 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
             destination: `typography/${typography}.css`,
             format: formats.typography.name,
             filter: (token) => {
+              if (R.find((path) => R.startsWith('_', path), token.path)) {
+                console.warn(`Skipping private token: ${token.name}`);
+                return false;
+              }
+
               const included = typeEquals(
-                ['typography', 'fontweight', 'fontFamily', 'lineheight', 'fontsize', 'dimension', 'font'],
+                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font'],
                 token,
               );
 
