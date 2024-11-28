@@ -11,7 +11,7 @@ import * as prettierTypescript from 'prettier/plugins/typescript.js';
 import { format } from 'prettier/standalone.js';
 import { useEffect, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { stackoverflowDark as nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import classes from './CodeSnippet.module.css';
 
@@ -27,7 +27,7 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell' | 'tsx';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -47,7 +47,8 @@ const CodeSnippet = ({
     ) {
       try {
         const formatted = await format(children, {
-          parser: language === 'ts' ? 'babel-ts' : language,
+          parser:
+            language === 'ts' || language === 'tsx' ? 'babel-ts' : language,
           plugins,
         });
         setSnippet(formatted);
@@ -74,6 +75,7 @@ const CodeSnippet = ({
     <div
       className={cl(classes.codeSnippet, className)}
       data-color-scheme='dark'
+      suppressHydrationWarning
       {...rest}
     >
       {snippet && (
@@ -92,7 +94,7 @@ const CodeSnippet = ({
             </Button>
           </Tooltip>
           <SyntaxHighlighter
-            style={nightOwl}
+            style={stackoverflowDark}
             language={language}
             customStyle={{
               fontSize: '15px',

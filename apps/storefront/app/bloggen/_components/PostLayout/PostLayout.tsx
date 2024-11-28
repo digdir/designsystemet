@@ -86,7 +86,7 @@ function PostLayout({
           </MdxContent>
         </main>
       </Container>
-      <style>
+      <style suppressHydrationWarning>
         {`
           header {
             [data-color-scheme='dark'] &,
