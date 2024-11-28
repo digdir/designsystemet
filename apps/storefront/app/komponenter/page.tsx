@@ -22,7 +22,7 @@ export default function page() {
       {sortedData.map((component) => (
         <ComponentCard key={component.title} {...component} />
       ))}
-      <style>
+      <style suppressHydrationWarning>
         {`
     body {
       background-color: var(--ds-color-neutral-background-subtle);

@@ -27,7 +27,7 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell';
+  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell' | 'tsx';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -47,7 +47,8 @@ const CodeSnippet = ({
     ) {
       try {
         const formatted = await format(children, {
-          parser: language === 'ts' ? 'babel-ts' : language,
+          parser:
+            language === 'ts' || language === 'tsx' ? 'babel-ts' : language,
           plugins,
         });
         setSnippet(formatted);
@@ -74,6 +75,7 @@ const CodeSnippet = ({
     <div
       className={cl(classes.codeSnippet, className)}
       data-color-scheme='dark'
+      suppressHydrationWarning
       {...rest}
     >
       {snippet && (

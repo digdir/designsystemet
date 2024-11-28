@@ -77,7 +77,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style>
+      <style suppressHydrationWarning>
         {`
           header {
             [data-color-scheme='dark'] &,
