@@ -83,6 +83,6 @@ export const floorToRound: Transform = {
   transform: (token, platformCfg) => {
     const value = getValue<string>(token);
 
-    return value.replace(/^floor/, 'round');
+    return value.replace(/floor\(([^)]+)\)/, 'round(down, calc($1), 0.0625rem)');
   },
 };
