@@ -54,9 +54,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
         {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
             const value = token.$value as string;
-            const pxSize = /\b\d+px\b/.test(value)
-              ? value
-              : `${parseFloat(value) * 16}px`;
             const isBorderRadius = token.path.includes('border-radius');
 
             return (
@@ -69,12 +66,14 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                   />
                 </Table.Cell>
                 <Table.Cell>{token.$value}</Table.Cell>
-                <Table.Cell>{pxSize}</Table.Cell>
+                <Table.Cell>
+                  <ComputedValue value={value} />
+                </Table.Cell>
                 <Table.Cell>
                   {isBorderRadius ? (
-                    <TokenBorderRadius value={pxSize} />
+                    <TokenBorderRadius value={value} />
                   ) : (
-                    <TokenSize value={pxSize} />
+                    <TokenSize value={value} />
                   )}
                 </Table.Cell>
               </Table.Row>
@@ -84,6 +83,24 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       </Table.Body>
     </Table>
   );
+};
+
+const ComputedValue = ({ value }: { value: string }) => {
+  const [computedValue, setComputedValue] = useState<string>('');
+
+  useEffect(() => {
+    if (!document) return;
+
+    const elm = document.createElement('div');
+    elm.style.cssText = `width: ${value}; height: ${value};`;
+    document.body.appendChild(elm);
+    const computedValue = getComputedStyle(elm).width;
+    document.body.removeChild(elm);
+
+    setComputedValue(computedValue);
+  }, [value]);
+
+  return <>{computedValue}</>;
 };
 
 type TokenCardsProps = {

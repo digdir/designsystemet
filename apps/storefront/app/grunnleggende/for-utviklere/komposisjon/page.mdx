@@ -23,9 +23,8 @@ export default ({ children }) => (
 Nokre gonger må du kanskje byte ut ein komponent med ein anna, for eksempel `Button` skulle vore ein `Link`.
 Det er her `asChild` kjem inn i biletet.
 
-<CodeSnippet language='ts' data-unstyled>
-  {`
-  import { Button, Link } from '@digdir/designsystemet-react';
+<CodeSnippet language='tsx' data-unstyled>
+{`  import { Button, Link } from '@digdir/designsystemet-react';
 
   <Button asChild>
     <Link href='https://www.digdir.no'>Lenke til digdir.no</Link>
@@ -39,9 +38,8 @@ Dette skjer ved hjelp av Radix sin `Slot`-komponent. <sup>1</sup>
 `Slot` mergar sine props ned på komponenten som ligg som underordna element. I tilfellet over vert `Button` sine props lagt til på `Link`-komponenten, og ein `a`-tagg vert rendra ut.
 Når du brukar `asChild` kan du ikkje ha meir enn eit underordna element, men du kan ha så mange du vil inne i det elementet.
 
-<CodeSnippet language='ts'>
-  {`
-  <>
+<CodeSnippet language='tsx'>
+{`  <>
     /* Dette kaster ein error */
     <Button asChild>
       <Icon />
@@ -55,7 +53,6 @@ Når du brukar `asChild` kan du ikkje ha meir enn eit underordna element, men du
         Din lenke
       </Link>
     </Button>
-
   </>
 `}
 </CodeSnippet>
@@ -65,15 +62,13 @@ Når du brukar `asChild` kan du ikkje ha meir enn eit underordna element, men du
 Vi har tidlegare brukt ein `as` prop for å rendre som andre element. Men når du brukar denne, får du ikkje typesafety eller korrekte typar iht. elementet du har endret til med `as`.
 `Slot` ordnar dette ved at du legg til alle props på det underordna elementet av komponenten, og dermed får typesafety.
 
-<CodeSnippet language='ts'>
-  {`
-  <Button asChild>
+<CodeSnippet language='tsx'>
+{`  <Button asChild>
     <Link href='https://www.digdir.no' onClick={() => {}}>
       <Icon />
       Di lenke
     </Link>
-  </Button>
-`}
+  </Button>`}
 </CodeSnippet>
 
 Alt av klassenavn, aria-attributt og andre props som `Button` har, vil bli lagt til på `Link`-komponenten.
@@ -87,9 +82,8 @@ Dette betyr at dersom du stoppar eit event på din komponent, vil eventet på `S
 
 Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må du passe på at rekkefølgja er rett. <sup>2</sup>
 
-<CodeSnippet language='ts'>
-  {`
-  <Button
+<CodeSnippet language='tsx'>
+{`  <Button
     asChild
     onClick={(event) => {
       if (!event.defaultPrevented)
@@ -109,9 +103,9 @@ Ynskjer du å bruke ein eigen komponent må du passe på å spre alle props, og 
 
 Komponentane dine vil då sjå slik ut:
 
-<CodeSnippet language='ts'>
+<CodeSnippet language='tsx'>
 {`// uten props og ref
-  const MinKnapp = () => <button />
+const MinKnapp = () => <button />
 
 // med props
 const MinKnapp = (props) => <button {...props} />
@@ -119,10 +113,11 @@ const MinKnapp = (props) => <button {...props} />
 // med props og ref
 const MinKnapp = React.forwardRef((props, forwardedRef) => (
 
-<button
-  {...props}
-  ref={forwardedRef}
-/>
+  <button
+    {...props}
+    ref={forwardedRef}
+  />
+
 ))`}
 </CodeSnippet>
 
