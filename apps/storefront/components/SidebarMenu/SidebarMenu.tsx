@@ -41,7 +41,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
           <Button
             className={classes.toggleBtn}
             data-size='md'
-            color='neutral'
+            data-color='neutral'
             variant='secondary'
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}

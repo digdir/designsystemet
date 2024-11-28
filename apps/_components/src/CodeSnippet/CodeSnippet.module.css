@@ -8,7 +8,16 @@
 }
 
 .codeSnippet > pre {
-  padding-right: var(--ds-spacing-11) !important;
+  padding-right: var(--ds-spacing-18) !important;
+  background-color: var(--ds-color-neutral-background-subtle) !important;
+}
+
+.codeSnippet > pre > code {
+  padding: 0;
+}
+
+.codeSnippet > pre > code span:empty {
+  display: none;
 }
 
 .copyButton {

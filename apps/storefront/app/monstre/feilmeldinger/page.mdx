@@ -185,38 +185,36 @@ Her må vi gjøre det så tydelig som mulig for brukeren at flere felt påvirker
 I dette eksempelet har vi en gruppe med felt, der brukeren ikke nødvendigvis har alle opplysningene, men må fylle ut minst ett felt.
 
 <Details
-  color='neutral'
+  data-color='neutral'
 >
-  <DetailsItem>
-    <DetailsSummary>Eksempel på feilmelding som gjelder flere felt</DetailsSummary>
-    <DetailsContent
-        style={{
-        paddingTop: '0px',
-        paddingBottom: '0px',
-        maxWidth: '780px'
-    }}>
-      Videoen under viser at brukeren forsøker å gå videre uten å ha fyllt ut minst ett felt, som er påkrevd. Alle feltene i gruppen blir da røde og en feilmelding vises i bunnen.
-      <video
-        controls
-        autoplay
-        width='100%'
-        loop
-      >
-        <source
-          src='/img/error-message-group-error.mp4'
-          type='video/mp4'
-        />
-      </video>
-
-      Hadde det vært bare en feil i gruppen, ville feilmeldingen vist på vanlig måte under kun et av feltene, uten at hele gruppen ble rød.
-
-      <Image
-        src='/img/errormessage-co-22b.png'
-        alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, men har en feil i utfyllingen. Feilmeldingen vises da på vanlig måte under det aktuelle feltet. '
-        boxShadow={false}
+  <DetailsSummary>Eksempel på feilmelding som gjelder flere felt</DetailsSummary>
+  <DetailsContent
+      style={{
+      paddingTop: '0px',
+      paddingBottom: '0px',
+      maxWidth: '780px'
+  }}>
+    Videoen under viser at brukeren forsøker å gå videre uten å ha fyllt ut minst ett felt, som er påkrevd. Alle feltene i gruppen blir da røde og en feilmelding vises i bunnen.
+    <video
+      controls
+      autoplay
+      width='100%'
+      loop
+    >
+      <source
+        src='/img/error-message-group-error.mp4'
+        type='video/mp4'
       />
-    </DetailsContent>
-  </DetailsItem>
+    </video>
+
+    Hadde det vært bare en feil i gruppen, ville feilmeldingen vist på vanlig måte under kun et av feltene, uten at hele gruppen ble rød.
+
+    <Image
+      src='/img/errormessage-co-22b.png'
+      alt='Skjermbilde av skjema med en gruppe av felter. Brukeren har fylt ut minst ett felt, men har en feil i utfyllingen. Feilmeldingen vises da på vanlig måte under det aktuelle feltet. '
+      boxShadow={false}
+    />
+  </DetailsContent>
 </Details>
 
 ## Kode
