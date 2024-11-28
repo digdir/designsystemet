@@ -1,5 +1,5 @@
 {
-  "_line-height": {
+  "line-height": {
     "sm": {
       "$type": "lineHeights",
       "$value": "130%"
@@ -13,53 +13,53 @@
       "$value": "170%"
     }
   },
-  "_font-size": {
+  "font-size": {
     "1": {
-      "$type": "fontSizes",
-      "$value": "11"
-    },
-    "2": {
       "$type": "fontSizes",
       "$value": "12"
     },
-    "3": {
+    "2": {
       "$type": "fontSizes",
       "$value": "13"
     },
-    "4": {
+    "3": {
       "$type": "fontSizes",
       "$value": "14"
     },
-    "5": {
+    "4": {
       "$type": "fontSizes",
       "$value": "16"
     },
-    "6": {
+    "5": {
       "$type": "fontSizes",
       "$value": "18"
     },
-    "7": {
+    "6": {
       "$type": "fontSizes",
       "$value": "21"
     },
-    "8": {
+    "7": {
       "$type": "fontSizes",
       "$value": "24"
     },
-    "9": {
+    "8": {
       "$type": "fontSizes",
       "$value": "30"
     },
-    "10": {
+    "9": {
       "$type": "fontSizes",
       "$value": "36"
     },
-    "11": {
+    "10": {
       "$type": "fontSizes",
       "$value": "48"
+    },
+    "11": {
+      "$type": "fontSizes",
+      "$value": "60"
     }
   },
-  "_letter-spacing": {
+  "letter-spacing": {
     "1": {
       "$type": "letterSpacing",
       "$value": "-1%"
