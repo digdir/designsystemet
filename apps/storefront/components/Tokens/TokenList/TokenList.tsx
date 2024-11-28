@@ -70,7 +70,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                 <Table.Cell>{pxSize}</Table.Cell>
                 <Table.Cell>
                   {isBorderRadius ? (
-                    <TokenBorderRadius value={pxSize} />
+                    <TokenBorderRadius value={value} />
                   ) : (
                     <TokenSize value={pxSize} />
                   )}
