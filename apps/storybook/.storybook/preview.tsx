@@ -6,6 +6,7 @@ import type { Preview } from '@storybook/react';
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
+import { chromaticFontsLoader } from '../story-utils/chromaticFontsLoader';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import customTheme from './customTheme';
@@ -166,6 +167,7 @@ const preview: Preview = {
     },
   },
   decorators: [customStylesDecorator],
+  loaders: [chromaticFontsLoader],
 };
 
 /* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
