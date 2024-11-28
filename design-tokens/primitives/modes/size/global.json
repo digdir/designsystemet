@@ -1,100 +1,100 @@
 {
-  "line-height": {
+  "_line-height": {
     "sm": {
       "$type": "lineHeights",
-      "$value": "{_line-height.sm}"
+      "$value": "130%"
     },
     "md": {
       "$type": "lineHeights",
-      "$value": "{_line-height.md}"
+      "$value": "150%"
     },
     "lg": {
       "$type": "lineHeights",
-      "$value": "{_line-height.lg}"
+      "$value": "170%"
     }
   },
-  "font-size": {
+  "_font-size": {
     "1": {
       "$type": "fontSizes",
-      "$value": "{_font-size.1}"
+      "$value": "11"
     },
     "2": {
       "$type": "fontSizes",
-      "$value": "{_font-size.2}"
+      "$value": "12"
     },
     "3": {
       "$type": "fontSizes",
-      "$value": "{_font-size.3}"
+      "$value": "13"
     },
     "4": {
       "$type": "fontSizes",
-      "$value": "{_font-size.4}"
+      "$value": "14"
     },
     "5": {
       "$type": "fontSizes",
-      "$value": "{_font-size.5}"
+      "$value": "16"
     },
     "6": {
       "$type": "fontSizes",
-      "$value": "{_font-size.6}"
+      "$value": "18"
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "{_font-size.7}"
+      "$value": "21"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "{_font-size.8}"
+      "$value": "24"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "{_font-size.9}"
+      "$value": "30"
     },
     "10": {
       "$type": "fontSizes",
-      "$value": "{_font-size.10}"
+      "$value": "36"
     },
     "11": {
       "$type": "fontSizes",
-      "$value": "{_font-size.11}"
+      "$value": "48"
     }
   },
-  "letter-spacing": {
+  "_letter-spacing": {
     "1": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.1}"
+      "$value": "-1%"
     },
     "2": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.2}"
+      "$value": "-0.5%"
     },
     "3": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.3}"
+      "$value": "-0.25%"
     },
     "4": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.4}"
+      "$value": "-0.15%"
     },
     "5": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.5}"
+      "$value": "0%"
     },
     "6": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.6}"
+      "$value": "0.15%"
     },
     "7": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.7}"
+      "$value": "0.25%"
     },
     "8": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.8}"
+      "$value": "0.5%"
     },
     "9": {
       "$type": "letterSpacing",
-      "$value": "{_letter-spacing.9}"
+      "$value": "1.5%"
     }
   },
   "size": {
