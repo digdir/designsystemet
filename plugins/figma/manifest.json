@@ -9,10 +9,6 @@
   "editorType": ["figma"],
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": [
-      "https://api.github.com",
-      "https://fonts.googleapis.com",
-      "https://fonts.gstatic.com"
-    ]
+    "allowedDomains": ["https://api.github.com", "https://altinncdn.no"]
   }
 }
