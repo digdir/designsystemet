@@ -5,5 +5,9 @@
   "storybookBaseDir": "apps/storybook",
   "storybookBuildDir": "dist",
   "zip": true,
-  "externals": ["packages/css/**/*.css", "packages/theme/**/*.css"]
+  "externals": [
+    "packages/css/**/*.css",
+    "packages/theme/**/*.css",
+    "apps/storybook/{.storybook,story-utils}/**/*"
+  ]
 }
