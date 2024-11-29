@@ -2,7 +2,8 @@
 import { Container } from '@repo/components';
 
 import {
-  generateTestScale,
+  type ThemeInfo,
+  generateTestTheme,
   generateThemeForColor,
 } from '@/packages/cli/dist/src';
 import classes from './page.module.css';
@@ -14,9 +15,14 @@ export default function Home() {
   const oldBrand2Theme = generateThemeForColor('#E5AA20');
   const oldBrand3Theme = generateThemeForColor('#1E98F5');
 
-  const newAccentTheme = generateTestScale('#0062BA');
+  const newAccentTheme = generateTestTheme('#0062BA', 'light');
 
-  const Row = (oldTheme, newTheme) => {
+  type RowType = {
+    oldTheme: ThemeInfo;
+    newTheme: ThemeInfo;
+  };
+
+  const Row = ({ oldTheme, newTheme }: RowType) => {
     return (
       <div className={classes.group}>
         <div className={classes.colors}>
@@ -45,7 +51,7 @@ export default function Home() {
     <div className={classes.page}>
       <main>
         <Container>
-          <Group oldTheme={oldAccentTheme} newTheme={newAccentTheme} />
+          <Row oldTheme={oldAccentTheme} newTheme={newAccentTheme} />
         </Container>
       </main>
     </div>

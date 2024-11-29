@@ -9,6 +9,13 @@ export type ColorInfo = {
   number: ColorNumber;
   name: string;
 };
+
+export type ColorInfo2 = {
+  hex: string;
+  number: ColorNumber;
+  name: string;
+};
+
 export type ThemeInfo = {
   light: ColorInfo[];
   dark: ColorInfo[];

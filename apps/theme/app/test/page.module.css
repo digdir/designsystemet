@@ -11,13 +11,10 @@
 .color {
   height: 50px;
   width: 80px;
-  border: 1px solid rgb(163, 163, 163);
-  border-radius: 4px;
 }
 
 .group {
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }

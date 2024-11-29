@@ -5,7 +5,7 @@ import * as R from 'ramda';
 
 import chroma from 'chroma-js';
 import type { Colors } from '../tokens/types.js';
-import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeInfo } from './types.js';
+import type { ColorInfo, ColorInfo2, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeInfo } from './types.js';
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
@@ -31,16 +31,19 @@ type ThemeGenType = {
 
 const luminance = {
   light: {
-    backgroundDefault: 0.5,
-    backgroundSubtle: 0.4,
-    surfaceDefault: 0.4,
-    surfaceHover: 0.4,
-    surfaceActive: 0.4,
-    borderSubtle: 0.4,
-    borderDefault: 0.4,
-    borderStrong: 0.4,
-    textSubtle: 0.4,
-    textDefault: 0.4,
+    backgroundDefault: 1,
+    backgroundSubtle: 0.9,
+    surfaceDefault: 0.76,
+    surfaceHover: 0.64,
+    surfaceActive: 0.54,
+    borderSubtle: 0.5,
+    borderDefault: 0.21,
+    borderStrong: 0.115,
+    baseDefault: 1,
+    baseHover: 1,
+    baseActive: 1,
+    textSubtle: 0.12,
+    textDefault: 0.024,
   },
   dark: {
     backgroundDefault: 0.4,
@@ -54,6 +57,7 @@ const luminance = {
     textSubtle: 0.4,
     textDefault: 0.4,
   },
+  contrast: {},
 };
 
 /**
@@ -129,9 +133,42 @@ const generateThemeColor = (color: CssColor, colorScheme: ColorMode, contrastMod
   });
 };
 
-export const generateTestScale = (color: CssColor, colorScheme: ColorMode) => {
-  const test = chroma(color).luminance(0.5).hex();
-  return test;
+type TestType = {
+  name: string;
+  hex: string;
+  number: number;
+};
+
+const test = ({ name, hex, number }: TestType) => {
+  return {
+    name,
+    hex,
+    number,
+  };
+};
+
+export const generateTestScaleFromColor = (color: CssColor, colorScheme: ColorMode) => {
+  const outputArray: ColorInfo2[] = [];
+
+  for (const [key, value] of Object.entries(luminance[colorScheme as 'light' | 'dark'])) {
+    outputArray.push({
+      name: key,
+      hex: chroma(color).luminance(value).hex(),
+      number: 2,
+    });
+  }
+  outputArray.push({
+    hex: calculateContrastOneColor(theme.contrastColorValues[8]),
+    number: 14,
+    name: getColorNameFromNumber(14),
+  });
+  outputArray.push({
+    hex: calculateContrastTwoColor(theme.contrastColorValues[8]),
+    number: 15,
+    name: getColorNameFromNumber(15),
+  });
+
+  return outputArray;
 };
 
 /**
