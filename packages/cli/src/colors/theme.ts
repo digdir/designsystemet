@@ -3,6 +3,7 @@ import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import { Hsluv } from 'hsluv';
 import * as R from 'ramda';
 
+import chroma from 'chroma-js';
 import type { Colors } from '../tokens/types.js';
 import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeInfo } from './types.js';
 import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './utils.js';
@@ -26,6 +27,33 @@ type GlobalGenType = {
 type ThemeGenType = {
   colors: Colors;
   contrastMode?: ContrastMode;
+};
+
+const luminance = {
+  light: {
+    backgroundDefault: 0.5,
+    backgroundSubtle: 0.4,
+    surfaceDefault: 0.4,
+    surfaceHover: 0.4,
+    surfaceActive: 0.4,
+    borderSubtle: 0.4,
+    borderDefault: 0.4,
+    borderStrong: 0.4,
+    textSubtle: 0.4,
+    textDefault: 0.4,
+  },
+  dark: {
+    backgroundDefault: 0.4,
+    backgroundSubtle: 0.4,
+    surfaceDefault: 0.4,
+    surfaceHover: 0.4,
+    surfaceActive: 0.4,
+    borderSubtle: 0.4,
+    borderDefault: 0.4,
+    borderStrong: 0.4,
+    textSubtle: 0.4,
+    textDefault: 0.4,
+  },
 };
 
 /**
@@ -99,6 +127,11 @@ const generateThemeColor = (color: CssColor, colorScheme: ColorMode, contrastMod
       ...getColorContrasts(color, lightnessScale.slice(8), leoBackgroundColor.colorKeys[0]),
     ],
   });
+};
+
+export const generateTestScale = (color: CssColor, colorScheme: ColorMode) => {
+  const test = chroma(color).luminance(0.5).hex();
+  return test;
 };
 
 /**
