@@ -103,7 +103,7 @@ function Theme() {
 
     if (!accent || !brand1 || !brand2 || !brand3) {
       setCodeSnippetError(
-        'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
+        'I denne versjonen av pluginen må du ha fargene accent, brand1, brand2 og brand3',
       );
       return;
     }
