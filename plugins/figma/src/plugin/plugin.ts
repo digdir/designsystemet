@@ -1,5 +1,5 @@
 import { Messages } from '@common/types';
-import type { ColorTheme, StoreThemes } from '../common/store';
+import type { ColorTheme, StoreTheme } from '../common/store';
 
 import { getVariables } from './figma/getVariables';
 import { getThemes } from './figma/themes';
@@ -9,7 +9,7 @@ figma.showUI(__html__, { width: 710, height: 550, themeColors: true });
 
 figma.ui.onmessage = (msg: {
   type: Messages;
-  themes?: StoreThemes;
+  theme?: StoreTheme;
   themeId?: string;
   renameTheme?: {
     newName: string;
@@ -28,7 +28,11 @@ figma.ui.onmessage = (msg: {
   void (async () => {
     switch (msg.type) {
       case Messages.UpdateVariables: {
-        if (msg.themes) await updateVariables(msg.themes);
+        console.log({ msg });
+        if (msg.theme) {
+          console.log('updating variables with themes', msg.theme);
+          await updateVariables(msg.theme);
+        }
         break;
       }
 

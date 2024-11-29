@@ -14,7 +14,11 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getDummyTheme } from '@common/dummyTheme';
 import { colorCliOptions } from '@digdir/designsystemet';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
-import { type ColorTheme, useThemeStore } from '../../../common/store';
+import {
+  type ColorTheme,
+  type StoreTheme,
+  useThemeStore,
+} from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
 
@@ -33,6 +37,8 @@ function Theme() {
     (state) => state.setCodeSnippetError,
   );
 
+  console.log({ themeId, themes });
+
   useEffect(() => {
     setThemeIndex(themes.findIndex((theme) => theme.themeModeId === themeId));
     setTheme(
@@ -41,7 +47,7 @@ function Theme() {
     );
   });
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // split input into lines
     const lines = command.split('\\\n');
 
@@ -112,11 +118,11 @@ function Theme() {
       `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
     );
 
-    const newArray = Array.from(themes);
-    newArray[themeIndex] = {
-      ...newArray[themeIndex],
+    console.log('making new theme');
+    const newArray: StoreTheme = {
+      ...themes[themeIndex],
       colors: {
-        ...newArray[themeIndex].colors,
+        ...themes[themeIndex].colors,
         accent: themeToFigmaFormat(generateThemeForColor(accent)),
         neutral: themeToFigmaFormat(generateThemeForColor(neutral)),
         brand1: themeToFigmaFormat(generateThemeForColor(brand1)),
@@ -125,21 +131,32 @@ function Theme() {
       },
     };
 
-    setThemes(newArray);
     setLoading(true);
     setCommand('');
 
-    setTimeout(() => {
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: 'updateVariables',
-            themes: newArray,
-          },
-        },
-        '*',
+    console.log({ newArray });
+
+    try {
+      await updateTheme(newArray)
+        .then(() => {
+          setLoading(false);
+          console.log('done');
+        })
+        .then(() => {
+          setLoading(false);
+          console.log('done');
+        });
+    } catch (error) {
+      console.error(error);
+
+      const newThemes = [...themes, newArray];
+      setThemes(newThemes);
+
+      setLoading(false);
+      setCodeSnippetError(
+        'Kunne ikke oppdatere tema. Prøv igjen eller kontakt support.',
       );
-    }, 500);
+    }
   };
 
   return (
@@ -184,7 +201,13 @@ function Theme() {
           ) : null}
         </div>
         <div>
-          <Button onClick={() => handleClick()} loading={loading}>
+          <Button
+            onClick={() => {
+              if (loading) return;
+              handleClick();
+            }}
+            loading={loading}
+          >
             Oppdater tema
           </Button>
         </div>
@@ -195,3 +218,15 @@ function Theme() {
 }
 
 export default Theme;
+
+async function updateTheme(theme: StoreTheme) {
+  parent.postMessage(
+    {
+      pluginMessage: {
+        type: 'updateVariables',
+        theme,
+      },
+    },
+    '*',
+  );
+}

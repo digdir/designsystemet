@@ -3,20 +3,27 @@ import { getDummyTheme } from '../../common/dummyTheme';
 import type { StoreThemes } from '../../common/store';
 
 export const getThemes = async () => {
-  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const collections = (
+    await figma.variables.getLocalVariableCollectionsAsync()
+  ).filter((collection) => {
+    return collection.name === 'Color scheme' || collection.name === 'Theme';
+  });
+  console.log({ collections });
   const modeColModes = collections.find(
-    (collection) => collection.name === 'Mode',
+    (collection) => collection.name === 'Color scheme',
   )?.modes;
   const themeModes = collections.find(
     (collection) => collection.name === 'Theme',
   )?.modes;
   const modeColId = collections.find(
-    (collection) => collection.name === 'Mode',
+    (collection) => collection.name === 'Color scheme',
   )?.id;
 
   const variables = await figma.variables.getLocalVariablesAsync('COLOR');
 
   const themes: StoreThemes = [];
+
+  console.log({ collections, variables, modeColModes, themeModes, modeColId });
 
   if (themeModes) {
     for (const themeMode of themeModes) {
@@ -29,6 +36,8 @@ export const getThemes = async () => {
     }
   }
 
+  console.log('first variable', variables[0]);
+
   for (const variable of variables) {
     if (variable.variableCollectionId === modeColId) {
       const nameSplitArr = variable.name.split('/');
@@ -36,6 +45,8 @@ export const getThemes = async () => {
       const themeName = nameSplitArr[0] as string;
       const ThemeType = nameSplitArr[1] as string;
       const ThemeIndex = nameSplitArr[2] as string;
+
+      /* console.log({ themeName, ThemeType, ThemeIndex }); */
 
       if (themeName !== 'global' && modeColModes) {
         for (const mode of modeColModes) {
@@ -58,6 +69,8 @@ export const getThemes = async () => {
       }
     }
   }
+
+  console.log({ themes });
 
   return themes;
 };
