@@ -62,7 +62,7 @@ const updateColors = (
 
 export const updateVariables = async (themes: StoreThemes) => {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
-  const modeCollection = collections.find((col) => col.name === 'Mode');
+  const modeCollection = collections.find((col) => col.name === 'Color scheme');
   const themeCollection = collections.find((col) => col.name === 'Theme');
 
   console.log('themes', themes);
