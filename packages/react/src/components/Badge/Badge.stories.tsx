@@ -22,24 +22,13 @@ const meta: Meta<typeof Badge> = {
 
 export default meta;
 
-export const Preview: Story = (args) => {
-  return (
-    <Badge.Placement>
-      <Badge {...args}></Badge>
-      <p
-        style={{
-          margin: 0,
-        }}
-      >
-        badge
-      </p>
-    </Badge.Placement>
-  );
-};
+export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
   'data-size': 'md',
   'data-color': 'accent',
+  count: 15,
+  maxCount: 9,
 };
 
 export const Floating: Story = (args) => (
@@ -160,13 +149,13 @@ export const InTabs: Story = (args) => (
       <Tabs.Tab value='value1'>
         <HeartFillIcon aria-hidden />
         Favoritter
-        <Badge /* count={64} maxCount={10} */ data-color='neutral'>10+</Badge>
+        <Badge count={64} maxCount={10} data-color='neutral' />
       </Tabs.Tab>
       <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
       <Tabs.Tab value='value3'>
         <PencilIcon aria-hidden />
         Nylige
-        <Badge /* count={2} */ data-color='neutral'>2</Badge>
+        <Badge count={2} data-color='neutral' />
       </Tabs.Tab>
     </Tabs.List>
     <Tabs.Panel value='value1'>content 1</Tabs.Panel>
@@ -184,19 +173,13 @@ export const InButton: Story = (args) => (
   >
     <Button icon variant='tertiary'>
       <Badge.Placement>
-        <Badge
-          data-color='danger'
-          /* count={1000}
-          maxCount={99} */
-        >
-          99+
-        </Badge>
+        <Badge data-color='danger' count={1000} maxCount={99} />
         <InboxIcon title='Innboks' />
       </Badge.Placement>
     </Button>
     <Button icon variant='tertiary'>
       <Badge.Placement>
-        <Badge data-color='danger' /* count={10} */>10</Badge>
+        <Badge data-color='danger' count={10} />
         <ChatIcon title='Meldinger' />
       </Badge.Placement>
     </Button>

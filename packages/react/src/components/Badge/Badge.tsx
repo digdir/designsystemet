@@ -19,6 +19,7 @@ export type BadgeProps = MergeRight<
      * The maximum number to display in the badge, when the count exceeds this number, the badge will display `{max}+`
      */
     maxCount?: number;
+    children?: never;
   }
 >;
 
@@ -42,48 +43,8 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   ref,
 ) {
   return (
-    <span
-      className={cl('ds-badge', className)}
-      data-count={
-        count && maxCount && count > maxCount ? `${maxCount}+` : count
-      }
-      ref={ref}
-      {...rest}
-    />
+    <span className={cl('ds-badge', className)} ref={ref} {...rest}>
+      {count && maxCount && count > maxCount ? `${maxCount}+` : count}
+    </span>
   );
 });
-
-export type BadgePlacementProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLSpanElement>,
-  {
-    /**
-     * The placement of the badge
-     *
-     * @default top-right
-     */
-    placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-    /**
-     * Use when badge is floating to change the position of the badge
-     *
-     * @default rectangle
-     */
-    overlap?: 'circle' | 'rectangle';
-  }
->;
-
-export const BadgePlacement = forwardRef<HTMLSpanElement, BadgePlacementProps>(
-  function BadgePlacement(
-    { className, overlap = 'rectangle', placement = 'top-right', ...rest },
-    ref,
-  ) {
-    return (
-      <span
-        className={cl('ds-badge--placement', className)}
-        data-overlap={overlap}
-        data-placement={placement}
-        ref={ref}
-        {...rest}
-      />
-    );
-  },
-);
