@@ -94,7 +94,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
           <Button
             aria-label={closeButton}
             autoFocus
-            color='neutral'
+            data-color='neutral'
             icon
             name='close'
             type='submit'
