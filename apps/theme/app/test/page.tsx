@@ -1,11 +1,7 @@
 'use client';
 import { Container } from '@repo/components';
 
-import {
-  type ThemeInfo,
-  generateTestTheme,
-  generateThemeForColor,
-} from '@/packages/cli/dist/src';
+import { type ThemeInfo, generateThemeForColor } from '@/packages/cli/dist/src';
 import classes from './page.module.css';
 
 export default function Home() {
@@ -15,27 +11,16 @@ export default function Home() {
   const oldBrand2Theme = generateThemeForColor('#E5AA20');
   const oldBrand3Theme = generateThemeForColor('#1E98F5');
 
-  const newAccentTheme = generateTestTheme('#0062BA', 'light');
-
   type RowType = {
     oldTheme: ThemeInfo;
-    newTheme: ThemeInfo;
+    mode: 'light' | 'dark';
   };
 
-  const Row = ({ oldTheme, newTheme }: RowType) => {
+  const Row = ({ oldTheme, mode }: RowType) => {
     return (
       <div className={classes.group}>
         <div className={classes.colors}>
-          {oldTheme.light.map((color, index) => (
-            <div
-              className={classes.color}
-              key={index}
-              style={{ backgroundColor: color.hex }}
-            ></div>
-          ))}
-        </div>
-        <div className={classes.colors}>
-          {newTheme.light.map((color, index) => (
+          {oldTheme[mode].map((color, index) => (
             <div
               className={classes.color}
               key={index}
@@ -51,7 +36,17 @@ export default function Home() {
     <div className={classes.page}>
       <main>
         <Container>
-          <Row oldTheme={oldAccentTheme} newTheme={newAccentTheme} />
+          <Row oldTheme={oldAccentTheme} mode='light' />
+          <Row oldTheme={oldNeutralTheme} mode='light' />
+          <Row oldTheme={oldBrand1Theme} mode='light' />
+          <Row oldTheme={oldBrand2Theme} mode='light' />
+          <Row oldTheme={oldBrand3Theme} mode='light' />
+
+          <Row oldTheme={oldAccentTheme} mode='dark' />
+          <Row oldTheme={oldNeutralTheme} mode='dark' />
+          <Row oldTheme={oldBrand1Theme} mode='dark' />
+          <Row oldTheme={oldBrand2Theme} mode='dark' />
+          <Row oldTheme={oldBrand3Theme} mode='dark' />
         </Container>
       </main>
     </div>

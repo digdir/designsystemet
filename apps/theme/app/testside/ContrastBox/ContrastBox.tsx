@@ -1,11 +1,10 @@
 'use client';
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getContrastFromHex } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import classes from './ContrastBox.module.css';
 
-export const ContrastBox = (mainColor: CssColor, bgColor: CssColor) => {
+export const ContrastBox = (mainColor: string, bgColor: string) => {
   const contrast = getContrastFromHex(mainColor, bgColor);
   return (
     <div className={classes.contrast}>

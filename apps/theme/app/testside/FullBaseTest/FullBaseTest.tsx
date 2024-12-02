@@ -1,8 +1,7 @@
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import {
-  calculateContrastOneColor,
-  getBaseColor,
+  getContrastDefault,
   getContrastFromLightness,
   getLightnessFromHex,
 } from '@digdir/designsystemet/color';
@@ -133,7 +132,6 @@ export const FullBaseTest = () => {
   }) => {
     let lightness = Math.round(getLightnessFromHex(color));
     if (theme === 'dark' || theme === 'contrast') {
-      color = getBaseColor(color);
       lightness = lightness <= 30 ? 70 : 100 - lightness;
     }
 
@@ -152,7 +150,7 @@ export const FullBaseTest = () => {
     const baseHover = blueColors[lightness - modifier];
     const baseActive = blueColors[lightness - modifier * 2];
 
-    const contrastOneColor = calculateContrastOneColor(blueColors[lightness]);
+    const contrastOneColor = getContrastDefault(blueColors[lightness]);
 
     return (
       <div
@@ -162,6 +160,7 @@ export const FullBaseTest = () => {
           theme === 'contrast' && classes.boxContrast,
         )}
       >
+        f
         <List
           bgColor='#ffffff'
           baseDefault={baseDefault}

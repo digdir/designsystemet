@@ -1,7 +1,11 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
 import {
-  calculateContrastOneColor,
+  BackgroundColor,
+  Color,
+  type CssColor,
+  Theme,
+} from '@adobe/leonardo-contrast-colors';
+import {
+  getContrastDefault,
   getContrastFromHex,
   getContrastFromLightness,
 } from '@digdir/designsystemet/color';
@@ -11,10 +15,10 @@ import { useEffect, useState } from 'react';
 
 import classes from './BaseContrastOverview.module.css';
 export const BaseContrastOverview = () => {
-  const [blueColors, setBlueColors] = useState<CssColor[]>([]);
+  const [blueColors, setBlueColors] = useState<string[]>([]);
 
-  const [greenColors, setGreenColors] = useState<CssColor[]>([]);
-  const [purpleColors, setPurpleColors] = useState<CssColor[]>([]);
+  const [greenColors, setGreenColors] = useState<string[]>([]);
+  const [purpleColors, setPurpleColors] = useState<string[]>([]);
   useEffect(() => {
     const blue = GenerateColor('#0163BA');
     setBlueColors(blue);
@@ -25,7 +29,7 @@ export const BaseContrastOverview = () => {
     setPurpleColors(purple);
   }, []);
 
-  const GenerateColor = (color: CssColor) => {
+  const GenerateColor = (color: string) => {
     const leoBackgroundColor = new BackgroundColor({
       name: 'backgroundColor',
       colorKeys: ['#ffffff'],
@@ -40,9 +44,9 @@ export const BaseContrastOverview = () => {
     ];
 
     const getColorContrasts = (
-      color: CssColor,
+      color: string,
       lightnessScale: number[],
-      backgroundColor: CssColor,
+      backgroundColor: string,
     ) => {
       return lightnessScale.map((lightness) =>
         getContrastFromLightness(lightness, color, backgroundColor),
@@ -51,7 +55,7 @@ export const BaseContrastOverview = () => {
 
     const leoColor = new Color({
       name: 'color',
-      colorKeys: [color],
+      colorKeys: [color as CssColor],
       ratios: [
         ...getColorContrasts(
           color,
@@ -71,7 +75,7 @@ export const BaseContrastOverview = () => {
   };
 
   type BoxProps = {
-    color: CssColor;
+    color: string;
   };
 
   const Box = ({ color }: BoxProps) => {
@@ -81,7 +85,7 @@ export const BaseContrastOverview = () => {
           className={classes.box}
           style={{
             backgroundColor: color,
-            color: calculateContrastOneColor(color),
+            color: getContrastDefault(color),
           }}
         >
           <CheckmarkIcon title='a11y-title' fontSize='3.5rem' />
@@ -100,7 +104,7 @@ export const BaseContrastOverview = () => {
     );
   };
 
-  const BoxContainer = ({ colors }: { colors: CssColor[] }) => {
+  const BoxContainer = ({ colors }: { colors: string[] }) => {
     return (
       <div className={classes.boxContainers}>
         <div className={cl(classes.boxContainer, classes.white)}>

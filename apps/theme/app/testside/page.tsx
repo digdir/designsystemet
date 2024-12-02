@@ -1,6 +1,5 @@
 'use client';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
 import type { ColorInfo } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
@@ -18,7 +17,7 @@ import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 import { Interaction } from './Interaction/Interaction';
 import classes from './page.module.css';
 
-const Box = (name: string, color1: CssColor, color2: CssColor) => {
+const Box = (name: string, color1: string, color2: string) => {
   return (
     <div className={classes.box}>
       <div className={classes.color} style={{ backgroundColor: color1 }} />
