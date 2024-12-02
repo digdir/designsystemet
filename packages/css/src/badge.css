@@ -4,7 +4,6 @@
   --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
   --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
 
-  content: attr(data-count);
   background: var(--dsc-badge-background);
   border-radius: var(--ds-border-radius-full);
   box-sizing: border-box;
