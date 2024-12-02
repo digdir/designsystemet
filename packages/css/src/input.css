@@ -91,8 +91,8 @@
     --dsc-input-color: var(--dsc-input-color--checked);
   }
 
-  &:disabled,
-  &[aria-disabled='true'] {
+  /* Only style when not readonly, allowing combining readonly and disabled for checkbox and radio inputs */
+  &:is(:disabled, [aria-disabled='true']):not([readonly]) {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }

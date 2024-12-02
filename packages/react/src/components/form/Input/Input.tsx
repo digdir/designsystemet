@@ -39,19 +39,17 @@ export type InputProps = MergeRight<
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', className, onChange, onClick, ...rest },
+  { type = 'text', className, ...rest },
   ref,
 ) {
+  const isToggle = type === 'checkbox' || type === 'radio';
+
   return (
     <input
       className={cl(`ds-input`, className)}
+      disabled={rest.disabled || (isToggle && rest.readOnly)}
       ref={ref}
       type={type}
-      onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
-      onClick={(event) => {
-        if (rest.readOnly) event.preventDefault(); // Make readonly work for checkbox / radio / switch
-        onClick?.(event);
-      }}
       {...rest}
     />
   );

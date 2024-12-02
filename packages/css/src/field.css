@@ -11,7 +11,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true'], :disabled) > * {
+  &:has(:is(:disabled, [aria-disabled='true']):not(label, [readonly])) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
