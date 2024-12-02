@@ -1,89 +1,88 @@
 .ds-badge {
-  /* color vars */
   --dsc-badge-background: var(--ds-color-base-default);
   --dsc-badge-color: var(--ds-color-contrast-default);
+  --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
+  --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
+
+  content: attr(data-count);
+  background: var(--dsc-badge-background);
+  border-radius: var(--ds-border-radius-full);
+  box-sizing: border-box;
+  color: var(--dsc-badge-color);
+  display: inline-grid;
+  font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
+  min-height: var(--dsc-badge-size);
+  min-width: var(--dsc-badge-size);
+  padding: var(--dsc-badge-padding);
+  place-items: center;
+  box-sizing: border-box;
+  line-height: var(--ds-line-height-sm);
 
   &[data-color='neutral'] {
     --dsc-badge-background: var(--ds-color-neutral-surface-default);
     --dsc-badge-color: var(--ds-color-neutral-text-default);
   }
 
-  /* sizing vars */
-  --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
-  --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
-
-  box-sizing: border-box;
-  display: inline-flex;
-  line-height: var(--ds-line-height-sm);
-  position: relative;
-
-  &::before {
-    content: attr(data-count);
-    background: var(--dsc-badge-background);
-    border-radius: var(--ds-border-radius-full);
-    box-sizing: border-box;
-    color: var(--dsc-badge-color);
-    display: grid;
-    font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
-    min-height: var(--dsc-badge-size);
-    min-width: var(--dsc-badge-size);
-    padding: var(--dsc-badge-padding);
-    place-items: center;
-  }
-
   & :where(img, svg) {
     flex-shrink: 0; /* Never shrink icon */
     font-size: 1.25em; /* Auto scale icon based on font-size */
   }
+}
 
-  /* If placement is present, we are floating */
-  &[data-placement]::before {
+.ds-badge--placement {
+  box-sizing: border-box;
+  display: inline-flex;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+
+  & .ds-badge {
     position: absolute;
   }
 
-  &[data-placement='top-right']::before {
+  &[data-placement='top-right'] .ds-badge {
     top: 0;
     right: 0;
     translate: 50% -50%;
   }
 
-  &[data-placement='top-left']::before {
+  &[data-placement='top-left'] .ds-badge {
     top: 0;
     left: 0;
     translate: -50% -50%;
   }
 
-  &[data-placement='bottom-right']::before {
+  &[data-placement='bottom-right'] .ds-badge {
     bottom: 0;
     right: 0;
     translate: 50% 50%;
   }
 
-  &[data-placement='bottom-left']::before {
+  &[data-placement='bottom-left'] .ds-badge {
     bottom: 0;
     left: 0;
     translate: -50% 50%;
   }
 
-  &[data-placement='top-right'][data-overlap='circle']::before {
+  &[data-placement='top-right'][data-overlap='circle'] .ds-badge {
     top: 14%;
     right: 14%;
     translate: 50% -50%;
   }
 
-  &[data-placement='top-left'][data-overlap='circle']::before {
+  &[data-placement='top-left'][data-overlap='circle'] .ds-badge {
     top: 14%;
     left: 14%;
     translate: -50% -50%;
   }
 
-  &[data-placement='bottom-right'][data-overlap='circle']::before {
+  &[data-placement='bottom-right'][data-overlap='circle'] .ds-badge {
     bottom: 14%;
     right: 14%;
     translate: 50% 50%;
   }
 
-  &[data-placement='bottom-left'][data-overlap='circle']::before {
+  &[data-placement='bottom-left'][data-overlap='circle'] .ds-badge {
     bottom: 14%;
     left: 14%;
     translate: -50% 50%;

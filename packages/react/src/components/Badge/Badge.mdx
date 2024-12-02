@@ -18,17 +18,13 @@ import * as BadgeStories from './Badge.stories';
 import { Badge } from '@digdir/designsystemet-react';
 
 /* Inline */
-<Badge count={5} />
+<Badge />
 
 /* Flytende over element */
-<Badge count={5}>
+<Badge.Placement>
+  <Badge />
   <Elem />
-</Badge>
-
-/* Flytende over element som dot */
-<Badge>
-  <Elem />
-</Badge>
+</Badge.Placement>
 ```
 
 ## Flytende over element

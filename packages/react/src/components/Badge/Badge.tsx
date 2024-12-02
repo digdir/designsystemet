@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
+import { type HTMLAttributes, forwardRef } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
@@ -19,22 +19,6 @@ export type BadgeProps = MergeRight<
      * The maximum number to display in the badge, when the count exceeds this number, the badge will display `{max}+`
      */
     maxCount?: number;
-    /**
-     * The placement of the badge
-     *
-     * @default top-right
-     */
-    placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-    /**
-     * Use when badge is floating to change the position of the badge
-     *
-     * @default rectangle
-     */
-    overlap?: 'circle' | 'rectangle';
-    /**
-     * The badge will float on top of the children
-     */
-    children?: ReactNode;
   }
 >;
 
@@ -54,14 +38,7 @@ export type BadgeProps = MergeRight<
  * ```
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  {
-    className,
-    count,
-    maxCount,
-    overlap = 'rectangle',
-    placement = 'top-right',
-    ...rest
-  },
+  { className, count, maxCount, ...rest },
   ref,
 ) {
   return (
@@ -70,10 +47,43 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       data-count={
         count && maxCount && count > maxCount ? `${maxCount}+` : count
       }
-      data-overlap={rest.children ? overlap : null}
-      data-placement={rest.children ? placement : null}
       ref={ref}
       {...rest}
     />
   );
 });
+
+export type BadgePlacementProps = MergeRight<
+  DefaultProps & HTMLAttributes<HTMLSpanElement>,
+  {
+    /**
+     * The placement of the badge
+     *
+     * @default top-right
+     */
+    placement?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+    /**
+     * Use when badge is floating to change the position of the badge
+     *
+     * @default rectangle
+     */
+    overlap?: 'circle' | 'rectangle';
+  }
+>;
+
+export const BadgePlacement = forwardRef<HTMLSpanElement, BadgePlacementProps>(
+  function BadgePlacement(
+    { className, overlap = 'rectangle', placement = 'top-right', ...rest },
+    ref,
+  ) {
+    return (
+      <span
+        className={cl('ds-badge--placement', className)}
+        data-overlap={overlap}
+        data-placement={placement}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);
