@@ -22,11 +22,6 @@
     --dsc-badge-background: var(--ds-color-neutral-surface-default);
     --dsc-badge-color: var(--ds-color-neutral-text-default);
   }
-
-  & :where(img, svg) {
-    flex-shrink: 0; /* Never shrink icon */
-    font-size: 1.25em; /* Auto scale icon based on font-size */
-  }
 }
 
 .ds-badge--placement {
@@ -38,6 +33,11 @@
 
   & .ds-badge {
     position: absolute;
+  }
+
+  & :where(img, svg) {
+    flex-shrink: 0; /* Never shrink icon */
+    font-size: 1.25em; /* Auto scale icon based on font-size */
   }
 
   &[data-placement='top-right'] .ds-badge {

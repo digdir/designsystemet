@@ -188,7 +188,6 @@ export const InButton: Story = (args) => (
           data-color='danger'
           /* count={1000}
           maxCount={99} */
-          data-size='sm'
         >
           99+
         </Badge>
@@ -197,15 +196,13 @@ export const InButton: Story = (args) => (
     </Button>
     <Button icon variant='tertiary'>
       <Badge.Placement>
-        <Badge data-color='danger' /* count={10} */ data-size='sm'>
-          10
-        </Badge>
+        <Badge data-color='danger' /* count={10} */>10</Badge>
         <ChatIcon title='Meldinger' />
       </Badge.Placement>
     </Button>
     <Button icon variant='tertiary'>
       <Badge.Placement>
-        <Badge data-color='danger' data-size='sm'></Badge>
+        <Badge data-color='danger'></Badge>
         <VideoIcon title='Skru på video' />
       </Badge.Placement>
     </Button>
