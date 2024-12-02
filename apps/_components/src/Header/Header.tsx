@@ -74,7 +74,7 @@ const Header = ({
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
     setTheme(newTheme);
-    document.documentElement.setAttribute('data-ds-color-mode', newTheme);
+    document.documentElement.setAttribute('data-color-scheme', newTheme);
   };
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const Header = ({
               <Button
                 variant='tertiary'
                 icon={true}
-                color='neutral'
+                data-color='neutral'
                 aria-expanded={open}
                 aria-label='Meny'
                 className={cl(classes.toggle, 'ds-focus')}
@@ -207,7 +207,7 @@ const Header = ({
                   aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
                   variant='tertiary'
                   icon={true}
-                  color='neutral'
+                  data-color='neutral'
                   onClick={() => {
                     handleThemeChange(theme === 'light' ? 'dark' : 'light');
                   }}

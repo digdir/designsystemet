@@ -1,97 +1,68 @@
-import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
-import { omit } from '../../../utilities';
+import type { Color } from '../../../colors';
+import type { DefaultProps, LabelRequired } from '../../../types';
+import type { MergeRight } from '../../../utilities';
 import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
-import type { FormFieldProps } from '../useFormField';
+import { Field, type FieldProps } from '../Field';
+import { Input, type InputProps } from '../Input';
 
-import { useSwitch } from './useSwitch';
+export type SwitchProps = MergeRight<
+  DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
+  {
+    /** Optional aria-label */
+    'aria-label'?: string;
+    /** Radio label */
+    label?: ReactNode;
+    /** Description for field */
+    description?: ReactNode;
+    /** Value of the `input` element */
+    value?: InputProps['value'];
+    /** Position of switch
+     * @default start
+     */
+    position?: FieldProps['position'];
+    /**
+     * Changes field size and paddings
+     */
+    'data-size'?: 'sm' | 'md' | 'lg';
+    /**
+     * Specify which color palette to use. If left unspecified, the color is inherited
+     * from the nearest ancestor with data-color.
+     */
+    'data-color'?: Color;
+  } & LabelRequired
+>;
 
-export type SwitchProps = {
-  /** Switch label */
-  children?: ReactNode;
-  /** Value of the `input` element */
-  value?: string;
-  /** Position of switch around the label
-   * @default left
-   */
-  position?: 'left' | 'right';
-} & Omit<FormFieldProps, 'error' | 'errorId' | 'id'> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>;
-
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  (props, ref) => {
-    const {
-      children,
-      description,
-      position = 'left',
-      className,
-      ...rest
-    } = props;
-    const {
-      inputProps,
-      descriptionId,
-      size = 'md',
-      readOnly,
-    } = useSwitch(props);
-
-    return (
-      <Paragraph
-        asChild
-        data-size={size}
-        {...(inputProps.disabled && { 'aria-disabled': true })}
-      >
-        <div
-          className={cl(
-            `ds-switch`,
-            `ds-switch--${size}`,
-            inputProps.disabled && `ds-switch--disabled`,
-            readOnly && `ds-switch--readonly`,
-            className,
-          )}
-        >
-          <input
-            className={`ds-switch__input`}
-            disabled={inputProps.disabled}
-            ref={ref}
-            {...omit(['size', 'error'], rest)}
-            {...inputProps}
-          />
-
-          <Label
-            className={cl(
-              `ds-switch__label`,
-              position === 'right' && `ds-switch__label--right`,
-            )}
-            htmlFor={inputProps.id}
-            data-size={size}
-            weight='regular'
-          >
-            <span className={`ds-switch__track`}>
-              <span className={`ds-switch__thumb`} />
-            </span>
-            {readOnly && (
-              <PadlockLockedFillIcon
-                aria-hidden
-                className={`ds-switch__readonly__icon`}
-              />
-            )}
-            {children && <span>{children}</span>}
-          </Label>
-          {description && (
-            <Paragraph asChild data-size={size}>
-              <div id={descriptionId} className={`ds-switch__description`}>
-                {description}
-              </div>
-            </Paragraph>
-          )}
-        </div>
-      </Paragraph>
-    );
+/**
+ * Switch used to toggle options.
+ * @example
+ * <Switch label="I agree" value="agree" />
+ */
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
+  {
+    'data-size': size,
+    children,
+    className,
+    description,
+    label,
+    position,
+    style,
+    ...rest
   },
-);
-
-Switch.displayName = 'Switch';
+  ref,
+) {
+  return (
+    <Field
+      className={className}
+      data-position={position}
+      data-size={size}
+      style={style}
+    >
+      <Input type='checkbox' role='switch' ref={ref} {...rest} />
+      {!!label && <Label weight='regular'>{label}</Label>}
+      {!!description && <div data-field='description'>{description}</div>}
+    </Field>
+  );
+});

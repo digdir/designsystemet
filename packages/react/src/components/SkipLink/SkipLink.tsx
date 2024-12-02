@@ -1,13 +1,18 @@
 import cl from 'clsx/lite';
 import { type AnchorHTMLAttributes, type ReactNode, forwardRef } from 'react';
+import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 
-export type SkipLinkProps = {
-  /** The content to display inside the skiplink. */
-  children: ReactNode;
+export type SkipLinkProps = MergeRight<
+  DefaultProps & AnchorHTMLAttributes<HTMLAnchorElement>,
+  {
+    /** The content to display inside the skiplink. */
+    children: ReactNode;
 
-  /** Href of an element in the DOM the skiplink should skip to. E.g #main-content */
-  href: string;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+    /** Href of an element in the DOM the skiplink should skip to. E.g #main-content */
+    href: string;
+  }
+>;
 
 export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
   function SkipLink({ children, className, ...rest }, ref) {

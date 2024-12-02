@@ -35,8 +35,10 @@ export default {
 
 export const Preview: StoryFn<typeof Dropdown> = (args) => {
   return (
-    <Dropdown.Context>
-      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger data-color={args['data-color']}>
+        Dropdown
+      </Dropdown.Trigger>
       <Dropdown {...args}>
         <Dropdown.Heading>First heading</Dropdown.Heading>
         <Dropdown.List>
@@ -57,7 +59,7 @@ export const Preview: StoryFn<typeof Dropdown> = (args) => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.Context>
+    </Dropdown.TriggerContext>
   );
 };
 
@@ -68,7 +70,7 @@ Preview.args = {
 
 export const Icons: StoryFn<typeof Dropdown> = (args) => {
   return (
-    <Dropdown.Context>
+    <Dropdown.TriggerContext>
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown {...args}>
         <Dropdown.List>
@@ -98,7 +100,7 @@ export const Icons: StoryFn<typeof Dropdown> = (args) => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.Context>
+    </Dropdown.TriggerContext>
   );
 };
 
@@ -106,7 +108,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Dropdown.Context>
+    <Dropdown.TriggerContext>
       <Dropdown.Trigger onClick={() => setOpen(!open)}>
         Dropdown
         {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
@@ -139,7 +141,7 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.Context>
+    </Dropdown.TriggerContext>
   );
 };
 

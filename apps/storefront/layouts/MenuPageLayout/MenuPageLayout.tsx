@@ -77,11 +77,11 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style>
+      <style suppressHydrationWarning>
         {`
           header {
-            [data-ds-color-mode='dark'] &,
-            [data-ds-color-mode='auto'] & {
+            [data-color-scheme='dark'] &,
+            [data-color-scheme='auto'] & {
               background-color: var(--ds-color-neutral-background-default) !important;
             }
           }

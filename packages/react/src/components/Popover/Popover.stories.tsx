@@ -30,17 +30,16 @@ export default {
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
   return (
-    <Popover.Context>
+    <Popover.TriggerContext>
       <Popover.Trigger>My trigger!</Popover.Trigger>
       <Popover {...args}>popover content</Popover>
-    </Popover.Context>
+    </Popover.TriggerContext>
   );
 };
 
 Preview.args = {
   placement: 'top',
   'data-size': 'md',
-  variant: 'default',
 };
 Preview.parameters = {
   customStyles: {
@@ -70,45 +69,45 @@ export const Variants: StoryFn<typeof Popover> = () => {
           width: '100%',
         }}
       >
-        <Popover.Context>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover open={open} placement='top' autoPlacement={false}>
             default
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
             placement='bottom'
-            variant='danger'
+            data-color='danger'
             autoPlacement={false}
           >
             danger
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
             placement='top'
-            variant='info'
+            data-color='info'
             autoPlacement={false}
           >
             info
           </Popover>
-        </Popover.Context>
-        <Popover.Context>
+        </Popover.TriggerContext>
+        <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
             placement='bottom'
-            variant='warning'
+            data-color='warning'
             autoPlacement={false}
           >
             warning
           </Popover>
-        </Popover.Context>
+        </Popover.TriggerContext>
       </div>
     </div>
   );
@@ -124,14 +123,14 @@ export const Controlled: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Popover.Context>
+    <Popover.TriggerContext>
       <Popover.Trigger onClick={() => setOpen(!open)}>
         My trigger
       </Popover.Trigger>
       <Popover open={open} onClose={() => setOpen(false)}>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          color='danger'
+          data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}
@@ -139,7 +138,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
           Slett
         </Button>
       </Popover>
-    </Popover.Context>
+    </Popover.TriggerContext>
   );
 };
 Controlled.parameters = {
@@ -159,7 +158,7 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
       <Popover id='my-popover' open={open} onClose={() => setOpen(false)}>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          color='danger'
+          data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
           style={{ marginTop: 'var(--ds-spacing-2)' }}

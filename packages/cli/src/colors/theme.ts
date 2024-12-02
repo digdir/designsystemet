@@ -32,18 +32,18 @@ type ThemeGenType = {
  * Generates a Leonardo theme color that is used to create a Leonardo Theme
  *
  * @param color CssColor
- * @param mode Light, Dark or Contrastmode
+ * @param colorScheme Light, Dark or Contrast
  * @param contrastMode Contrast mode
  * @returns
  */
-const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa' | 'aaa' = 'aa') => {
+const generateThemeColor = (color: CssColor, colorScheme: ColorMode, contrastMode: 'aa' | 'aaa' = 'aa') => {
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',
     colorKeys: ['#ffffff'],
     ratios: [1],
   });
   let colorLightness = getLightnessFromHex(color);
-  if (mode === 'dark' || mode === 'contrast') {
+  if (colorScheme === 'dark' || colorScheme === 'contrast') {
     color = getBaseColor(color);
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
@@ -68,18 +68,18 @@ const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa'
     leoBackgroundColor.colorKeys[0],
   );
 
-  const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
+  const textSubLightLightness = contrastMode === 'aa' ? 41 : 30;
   const textDefLightLightness = contrastMode === 'aa' ? 18 : 12;
 
-  const textSubDarkLightness = contrastMode === 'aa' ? 67 : 80;
+  const textSubDarkLightness = contrastMode === 'aa' ? 66 : 80;
   const textDefDarkLightness = contrastMode === 'aa' ? 90 : 94;
 
   let lightnessScale: number[] = [];
 
-  if (mode === 'light') {
-    lightnessScale = [100, 96, 90, 84, 78, 76, 54, 33, textSubLightLightness, textDefLightLightness];
-  } else if (mode === 'dark') {
-    lightnessScale = [10, 14, 20, 26, 32, 35, 47, 77, textSubDarkLightness, textDefDarkLightness];
+  if (colorScheme === 'light') {
+    lightnessScale = [100, 96, 90, 84, 78, 76, 53, 41, textSubLightLightness, textDefLightLightness];
+  } else if (colorScheme === 'dark') {
+    lightnessScale = [10, 14, 20, 26, 32, 35, 52, 66, textSubDarkLightness, textDefDarkLightness];
   } else {
     lightnessScale = [1, 6, 14, 20, 26, 58, 70, 82, 80, 95];
   }
@@ -106,14 +106,14 @@ const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa'
  * Generates a color scale based on a base color and a mode.
  *
  * @param color The base color that is used to generate the color scale
- * @param mode The mode of the theme
+ * @param colorScheme The color scheme to generate a scale for
  */
 export const generateScaleForColor = (
   color: CssColor,
-  mode: ColorMode,
+  colorScheme: ColorMode,
   contrastMode: 'aa' | 'aaa' = 'aa',
 ): ColorInfo[] => {
-  const themeColor = generateThemeColor(color, mode, contrastMode);
+  const themeColor = generateThemeColor(color, colorScheme, contrastMode);
 
   const leoBackgroundColor = new BackgroundColor({
     name: 'backgroundColor',
@@ -146,7 +146,7 @@ export const generateScaleForColor = (
     name: getColorNameFromNumber(15),
   });
 
-  if (mode === 'light') {
+  if (colorScheme === 'light') {
     outputArray[8].hex = color;
   }
 

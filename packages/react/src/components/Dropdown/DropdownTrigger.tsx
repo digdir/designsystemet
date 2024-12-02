@@ -1,9 +1,8 @@
 import { forwardRef } from 'react';
-import type { ComponentPropsWithRef } from 'react';
 
-import { PopoverTrigger } from '../Popover';
+import { PopoverTrigger, type PopoverTriggerProps } from '../Popover';
 
-export type DropdownTriggerProps = ComponentPropsWithRef<typeof PopoverTrigger>;
+export type DropdownTriggerProps = PopoverTriggerProps;
 
 export const DropdownTrigger = forwardRef<
   HTMLButtonElement,

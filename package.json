@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "vitest",
-    "test:cli": "yarn workspace @digdir/designsystemet test",
+    "test:cli": "yarn workspace @digdir/designsystemet test --verbose",
     "test:storybook": "yarn workspace @designsystemet/storybook run-and-test-storybook",
     "test:coverage": "vitest run --coverage",
     "storybook": "yarn workspace @designsystemet/storybook dev",
@@ -47,6 +47,7 @@
     "chromatic": "^11.11.0",
     "copyfiles": "^2.4.1",
     "storybook-addon-pseudo-states": "^4.0.2",
+    "tsconfck": "^3.1.4",
     "typescript": "^5.5.4",
     "typescript-plugin-css-modules": "^5.1.0",
     "vite": "^5.3.6",

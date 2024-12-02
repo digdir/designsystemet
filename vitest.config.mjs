@@ -3,9 +3,6 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./test/vitest.setup.ts'],
     reporters: [
       'default',
       ['junit', { suiteName: 'Unit tests', addFileAttribute: true }],

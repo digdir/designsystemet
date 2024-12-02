@@ -103,7 +103,7 @@ export const TokenModal = ({
   };
 
   return (
-    <Modal.Context>
+    <Modal.TriggerContext>
       <Modal.Trigger
         className={classes.trigger}
         onClick={() => {
@@ -183,7 +183,7 @@ export const TokenModal = ({
           </div>
           <div className={classes.rightSection}>
             <div className={classes.snippet}>
-              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+              <CodeSnippet language='shell'>{cliSnippet}</CodeSnippet>
             </div>
             <div className={classes.contact}>
               <div className={classes.contact__icon}>
@@ -213,6 +213,6 @@ export const TokenModal = ({
           </div>
         </div>
       </Modal>
-    </Modal.Context>
+    </Modal.TriggerContext>
   );
 };

@@ -19,7 +19,7 @@ export type Tokens = {
   colors: {
     light: ColorModeTokens;
     dark: ColorModeTokens;
-    contrast: ColorModeTokens;
+    contrast?: ColorModeTokens;
   };
   typography: {
     primary: TokensSet;

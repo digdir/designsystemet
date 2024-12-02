@@ -26,7 +26,7 @@ export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
-    color: 'accent',
+    'data-color': 'accent',
   },
 };
 
@@ -64,6 +64,6 @@ export const Neutral: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
-    color: 'neutral',
+    'data-color': 'neutral',
   },
 };

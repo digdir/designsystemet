@@ -23,6 +23,7 @@ export const Default = () => {
       <Textfield
         onChange={(e) => debouncedCallback(e.target.value)}
         placeholder='Type something...'
+        aria-label='Type something'
       />
       <Paragraph>Debounced value: {value}</Paragraph>
     </>

@@ -1,0 +1,23 @@
+.ds-tag {
+  --dsc-tag-background: var(--ds-color-neutral-background-default);
+  --dsc-tag-color: var(--ds-color-neutral-text-default);
+
+  &[data-color] {
+    --dsc-tag-background: var(--ds-color-surface-default);
+    --dsc-tag-color: var(--ds-color-text-default);
+  }
+  --dsc-tag-min-height: var(--ds-sizing-8);
+  --dsc-tag-padding: 0 var(--ds-spacing-2);
+
+  align-items: center;
+  background: var(--dsc-tag-background);
+  border-radius: var(--ds-border-radius-sm);
+  box-sizing: border-box;
+  color: var(--dsc-tag-color);
+  display: inline-flex;
+  line-height: var(--ds-line-height-sm);
+  min-height: var(--dsc-tag-min-height);
+  padding: var(--dsc-tag-padding);
+  width: max-content;
+  word-break: break-word;
+}
