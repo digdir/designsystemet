@@ -16,6 +16,7 @@
   place-items: center;
   box-sizing: border-box;
   line-height: var(--ds-line-height-sm);
+  width: fit-content;
 
   &[data-color='neutral'] {
     --dsc-badge-background: var(--ds-color-neutral-surface-default);
