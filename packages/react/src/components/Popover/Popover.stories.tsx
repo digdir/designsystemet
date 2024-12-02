@@ -40,6 +40,7 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 Preview.args = {
   placement: 'top',
   'data-size': 'md',
+  'data-color': 'neutral',
 };
 Preview.parameters = {
   customStyles: {
@@ -71,8 +72,13 @@ export const Variants: StoryFn<typeof Popover> = () => {
       >
         <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
-          <Popover open={open} placement='top' autoPlacement={false}>
-            default
+          <Popover
+            open={open}
+            placement='top'
+            data-color='neutral'
+            autoPlacement={false}
+          >
+            neutral
           </Popover>
         </Popover.TriggerContext>
         <Popover.TriggerContext>
@@ -127,7 +133,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
       <Popover.Trigger onClick={() => setOpen(!open)}>
         My trigger
       </Popover.Trigger>
-      <Popover open={open} onClose={() => setOpen(false)}>
+      <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
           data-color='danger'
