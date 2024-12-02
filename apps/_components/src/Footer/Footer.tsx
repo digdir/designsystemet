@@ -26,7 +26,7 @@ const LinkList = (links: LinkListItemProps[]) => {
     <ul className={classes.links}>
       {links.map((item, index) => (
         <li key={index}>
-          <Link href={item.url} color='neutral' className={classes.link}>
+          <Link href={item.url} data-color='neutral' className={classes.link}>
             {item.prefix}
             {item.text}
           </Link>
@@ -64,7 +64,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
               <Mattilsynet />
               <Udir className={classes.udir} />
             </div>
-            <Button asChild variant='secondary' color='neutral' data-size='sm'>
+            <Button
+              asChild
+              variant='secondary'
+              data-color='neutral'
+              data-size='sm'
+            >
               <NextLink
                 href='mailto:designsystem@digdir.no'
                 className={classes.button}
