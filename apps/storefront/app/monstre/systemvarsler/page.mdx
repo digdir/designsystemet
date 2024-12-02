@@ -14,15 +14,13 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Systemvarsler',
-      date: '13. november 2024',
+      date: '2. desember 2024',
     }}
   />
 );
 
 ## Innledning
-Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på.  
-
-Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er, men gir beskjed om feil i systemet eller viktige hendelser. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/monstre/feilmeldinger). Denne artikkelen fokuserer på feil og varsler i systemet. 
+Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/monstre/feilmeldinger). Denne artikkelen fokuserer på feil og varsler i systemet. 
 
 Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Måten vi kommuniserer systemvarslene på avhenger av svaret på disse spørsmålene:
 - Hvilken type informasjon er det? 
@@ -33,23 +31,31 @@ Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. 
 
 <br/>
 
-Vi skal nå se nærmere på språket vi bruker i varslene, og når vi bør bruke ulike typer varslinger. Til slutt tar vi for oss implementeringen i kode, med fokus på tilgjengelighet.
+Vi skal nå se nærmere på språket vi bruker i varslene, og hvordan vi bør utforme ulike typer varslinger. Til slutt tar vi for oss implementeringen i kode, med fokus på tilgjengelighet.
 
 ## Språk
 
 Et godt systemvarsel skal være informativt, klart og brukervennlig.
-- **Bruk et vennlig og profesjonelt språk** \
-Skriv først og fremst en imøtekommende og hjelpsom beskjed om hvordan brukerne kommer seg videre. Vi kan gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten. Vær forsiktig med humor – det er sjeldent morsomt når noe går feil.
-- **Vær kort og presis** \
-Bruk klare og enkle setninger. Unngå byråkratisk eller teknisk sjargong. Pass på at brukerne har informasjon til å kunne fortelle om feilen til kundestøtte. Det kan for eksempel være hvor feilen oppsto, om det er en bestemt funksjon som feiler eller om det er en feilkode eller et referansenummer.  
-- **Prioriter informasjonen** \
-Skriv det viktigste først. Hvis varselet er langt, kan du bruke mellomoverskrifter og punktlister for å gjøre det lettere å skanne informasjonen. 
-- **Gi tydelig veiledning**  \
-Hvis brukerne må gjøre noe, skriv instruksjoner som er enkle å følge. 
-- **Vær tydelig på at det ikke er brukerens feil**   \
-Fortell tydelig at feilen ligger hos oss/systemet. Hvis det finnes en måte brukerne kan komme videre eller omgå feilen på, fortell det også. 
-- **Test varslene**  \
-Test varslene på ekte brukere for å sikre at de er lette å forstå. 
+
+Skriv det viktigste først 
+Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan bruke mellomoverskrifter og punktlister for å gjøre det enklere å skanne informasjonen. 
+
+### Skriv på en imøtekommende og hjelpsom måte
+
+- Vær tydelig på at det ikke er brukerens feil. Fortell tydelig dersom feilen ligger hos oss. 
+- Hvis feilen ligger hos oss, kan vi gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten». 
+- Vær forsiktig med humor - det er sjelden morsomt når noe går galt.
+
+    
+### Hjelp brukeren videre
+
+- Fortell brukerne hva de kan prøve selv.
+- Pass på at brukerne har informasjon til å kunne beskrive feilen til brukerstøtte, for eksempel hvor feilen oppsto. Oppgi feilkoden hvis den er viktig for at brukerstøtte skal kunne løse feilen.
+- Oppgi kontaktinformasjon til brukerstøtte hvis det er en systemfeil. Unngå ordet “vennligst” (“Vennligst kontakt brukerstøtte“), det er en overføring fra engelsk og kan oppfattes som uhøflig. Skriv heller ”Du kan kontakte brukerstøtte“. 
+
+### Test varslene
+Test varslene på ekte brukere for å sikre at de er lette å forstå.
+
 
 ## Design og opplevelse
 
