@@ -108,6 +108,7 @@
     --dsc-input-background: var(--dsc-input-background--readonly);
     --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-color: var(--dsc-input-color--readonly);
+    opacity: 1; /* Overwrite Chrome user agent CSS `select:disabled { opacity: 0.7 }` */
   }
 
   /**

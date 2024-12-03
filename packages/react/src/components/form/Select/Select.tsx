@@ -19,20 +19,12 @@ export type SelectProps = MergeRight<
 >;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, onKeyDown, onMouseDown, ...rest }, ref) {
+  function Select({ className, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}
+        disabled={rest.disabled || rest.readOnly}
         ref={ref}
-        onKeyDown={(event) => {
-          if (event.key === 'Tab') return;
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onKeyDown?.(event);
-        }}
-        onMouseDown={(event) => {
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onMouseDown?.(event);
-        }}
         {...rest}
       />
     );

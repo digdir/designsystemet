@@ -55,6 +55,27 @@ Disabled.args = {
   disabled: true,
 };
 
+export const ReadOnly: StoryFn<typeof Select> = (args) => (
+  <Field>
+    <Label>Velg et fjell</Label>
+    <Select {...args}>
+      <Select.Option value='blank'>Velg &hellip;</Select.Option>
+      <Select.Option value='everest'>Mount Everest</Select.Option>
+      <Select.Option value='aconcagua'>Aconcagua</Select.Option>
+      <Select.Option value='denali'>Denali</Select.Option>
+      <Select.Option value='kilimanjaro'>Kilimanjaro</Select.Option>
+      <Select.Option value='elbrus'>Elbrus</Select.Option>
+      <Select.Option value='vinson'>Mount Vinson</Select.Option>
+      <Select.Option value='puncakjaya'>Puncak Jaya</Select.Option>
+      <Select.Option value='kosciuszko'>Mount Kosciuszko</Select.Option>
+    </Select>
+  </Field>
+);
+
+ReadOnly.args = {
+  readOnly: true,
+};
+
 export const WithError: StoryFn<typeof Select> = (args) => (
   <Field>
     <Label>Velg et fjell</Label>
