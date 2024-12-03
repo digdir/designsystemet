@@ -39,7 +39,7 @@ export type InputProps = MergeRight<
  * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', className, ...rest },
+  { type = 'text', className, disabled, ...rest },
   ref,
 ) {
   const isToggle = type === 'checkbox' || type === 'radio';
@@ -47,7 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   return (
     <input
       className={cl(`ds-input`, className)}
-      disabled={rest.disabled || (isToggle && rest.readOnly)}
+      disabled={disabled || (isToggle && rest.readOnly)}
       ref={ref}
       type={type}
       {...rest}

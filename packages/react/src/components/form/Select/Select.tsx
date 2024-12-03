@@ -19,11 +19,11 @@ export type SelectProps = MergeRight<
 >;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, ...rest }, ref) {
+  function Select({ className, disabled, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}
-        disabled={rest.disabled || rest.readOnly}
+        disabled={disabled || rest.readOnly}
         ref={ref}
         {...rest}
       />
