@@ -1,29 +1,29 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
-import { useEffect, useState } from "react";
+import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
+import { useEffect, useState } from 'react';
 
-import { Button, Paragraph } from "../..";
+import { Button, Paragraph } from '../..';
 
-import { Popover } from ".";
+import { Popover } from '.';
 
 export default {
-  title: "Komponenter/Popover",
+  title: 'Komponenter/Popover',
   component: Popover,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     customStyles: {
-      display: "flex",
-      placeItems: "end",
-      placeContent: "center",
-      padding: "1rem 2rem",
+      display: 'flex',
+      placeItems: 'end',
+      placeContent: 'center',
+      padding: '1rem 2rem',
     },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the popover
     const canvas = within(ctx.canvasElement);
-    const button = canvas.getByRole("button");
+    const button = canvas.getByRole('button');
     await userEvent.click(button);
-    const popover = ctx.canvasElement.querySelector("[popover]");
+    const popover = ctx.canvasElement.querySelector('[popover]');
     await expect(popover).toBeVisible();
   },
 } satisfies Meta;
@@ -38,13 +38,13 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 };
 
 Preview.args = {
-  placement: "top",
-  "data-size": "md",
-  "data-color": "neutral",
+  placement: 'top',
+  'data-size': 'md',
+  'data-color': 'neutral',
 };
 Preview.parameters = {
   customStyles: {
-    paddingTop: "5rem",
+    paddingTop: '5rem',
   },
 };
 
@@ -56,26 +56,26 @@ export const Variants: StoryFn<typeof Popover> = () => {
   return (
     <div
       style={{
-        height: "110px",
-        width: "240px",
+        height: '110px',
+        width: '240px',
       }}
     >
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--ds-spacing-2)",
-          flexWrap: "wrap",
-          height: "100%",
-          width: "100%",
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+          flexWrap: 'wrap',
+          height: '100%',
+          width: '100%',
         }}
       >
         <Popover.TriggerContext>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
-            placement="top"
-            data-color="neutral"
+            placement='top'
+            data-color='neutral'
             autoPlacement={false}
           >
             neutral
@@ -85,8 +85,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
-            placement="bottom"
-            data-color="danger"
+            placement='bottom'
+            data-color='danger'
             autoPlacement={false}
           >
             danger
@@ -96,8 +96,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
-            placement="top"
-            data-color="info"
+            placement='top'
+            data-color='info'
             autoPlacement={false}
           >
             info
@@ -107,8 +107,8 @@ export const Variants: StoryFn<typeof Popover> = () => {
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
-            placement="bottom"
-            data-color="warning"
+            placement='bottom'
+            data-color='warning'
             autoPlacement={false}
           >
             warning
@@ -120,7 +120,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
 };
 Variants.parameters = {
   customStyles: {
-    padding: "5rem 1rem",
+    padding: '5rem 1rem',
   },
 };
 Variants.play = () => {};
@@ -133,13 +133,13 @@ export const Controlled: StoryFn<typeof Popover> = () => {
       <Popover.Trigger onClick={() => setOpen(!open)}>
         My trigger
       </Popover.Trigger>
-      <Popover open={open} onClose={() => setOpen(false)} data-color="neutral">
+      <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          data-color="danger"
+          data-color='danger'
           onClick={() => setOpen(false)}
-          data-size="sm"
-          style={{ marginTop: "var(--ds-spacing-2)" }}
+          data-size='sm'
+          style={{ marginTop: 'var(--ds-spacing-2)' }}
         >
           Slett
         </Button>
@@ -149,7 +149,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 };
 Controlled.parameters = {
   customStyles: {
-    padding: "8rem 6rem 1rem",
+    padding: '8rem 6rem 1rem',
   },
 };
 
@@ -158,21 +158,21 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
 
   return (
     <>
-      <Button popovertarget="my-popover" onClick={() => setOpen(!open)}>
+      <Button popovertarget='my-popover' onClick={() => setOpen(!open)}>
         My trigger
       </Button>
       <Popover
-        id="my-popover"
+        id='my-popover'
         open={open}
         onClose={() => setOpen(false)}
-        data-color="neutral"
+        data-color='neutral'
       >
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          data-color="danger"
+          data-color='danger'
           onClick={() => setOpen(false)}
-          data-size="sm"
-          style={{ marginTop: "var(--ds-spacing-2)" }}
+          data-size='sm'
+          style={{ marginTop: 'var(--ds-spacing-2)' }}
         >
           Slett
         </Button>
@@ -182,6 +182,6 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
 };
 WithoutContext.parameters = {
   customStyles: {
-    padding: "8rem 6rem 1rem",
+    padding: '8rem 6rem 1rem',
   },
 };
