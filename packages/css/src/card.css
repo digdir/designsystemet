@@ -12,7 +12,10 @@
     --dsc-card-background: var(--ds-color-background-default);
   }
   &[data-color='subtle'] {
+    --dsc-card-background--active: var(--ds-color-neutral-surface-default);
+    --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
     --dsc-card-background: var(--ds-color-neutral-background-subtle);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-color: var(--ds-color-neutral-text-default);
   }
 
