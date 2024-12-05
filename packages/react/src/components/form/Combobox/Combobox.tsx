@@ -152,7 +152,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     },
     forwareddRef,
   ) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
 
