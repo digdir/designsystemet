@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
-import type { ColorNumber } from './types';
+import type { ColorNumber, CssColor } from './types';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -87,7 +87,7 @@ export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
  * @param color2 The second color to compare
  * @returns
  */
-export const getContrastFromHex = (color1: string, color2: string) => {
+export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
   const lum1 = chroma(color1).luminance();
   const lum2 = chroma(color2).luminance();
   return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
@@ -101,7 +101,7 @@ export const getContrastFromHex = (color1: string, color2: string) => {
  * @param backgroundColor The background color
  * @returns The contrast ratio
  */
-export const getContrastFromLightness = (lightness: number, mainColor: string, backgroundColor: string) => {
+export const getContrastFromLightness = (lightness: number, mainColor: CssColor, backgroundColor: CssColor) => {
   const conv = new Hsluv();
   conv.hex = mainColor;
   conv.hexToHsluv();
@@ -122,7 +122,7 @@ export const getContrastFromLightness = (lightness: number, mainColor: string, b
  * @param color2 The second color
  * @returns If the colors have enough contrast
  */
-export const areColorsContrasting = (color1: string, color2: string, type: 'decorative' | 'aa' | 'aaa' = 'aa') => {
+export const areColorsContrasting = (color1: CssColor, color2: CssColor, type: 'decorative' | 'aa' | 'aaa' = 'aa') => {
   const contrast = getContrastFromHex(color1, color2);
   if (contrast !== null) {
     if (type === 'aaa') {
@@ -232,7 +232,7 @@ export const getColorNameFromNumber = (number: ColorNumber): string => {
  * @param baseDefaultColor Base default color
  * @param baseActiveColor Base active color
  */
-export const canTextBeUsedOnColors = (baseDefaultColor: string, baseActiveColor: string) => {
+export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColor: CssColor) => {
   const defaultAgainstWhite = getContrastFromHex(baseDefaultColor, '#ffffff');
   const defaultAgainstBlack = getContrastFromHex(baseDefaultColor, '#000000');
 

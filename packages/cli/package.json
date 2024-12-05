@@ -45,7 +45,6 @@
     "update:template": "tsx ./src/tokens/template.ts"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@commander-js/extra-typings": "^12.1.0",
     "@tokens-studio/sd-transforms": "1.2.2",
     "apca-w3": "^0.1.9",

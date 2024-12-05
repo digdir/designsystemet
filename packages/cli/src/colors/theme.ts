@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import type { CssColor } from './types.js';
 
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
@@ -13,7 +14,7 @@ import type {
 } from './types.js';
 import { getColorNameFromNumber, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
-export const baseColors: Record<GlobalColors, string> = {
+export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
   green: '#068718',
   orange: '#B8581D',
@@ -23,17 +24,16 @@ export const baseColors: Record<GlobalColors, string> = {
 };
 
 /**
- *
- * Generates a color scale based on a base color and a mode.
+ * Generates a color scale based on a base color and a color mode.
  *
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
  */
-export const generateScaleForColor = (color: string, colorScheme: ColorMode): ColorInfo[] => {
+export const generateScaleForColor = (color: CssColor, colorScheme: ColorMode): ColorInfo[] => {
   const baseColors = getBaseColors(color, colorScheme);
   const luminanceValues = luminance[colorScheme];
 
-  // Create the color scale based on the luminance values
+  // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
   const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([key, value], index) => ({
     name: key,
     hex: chroma(color).luminance(value).hex(),
@@ -62,12 +62,11 @@ export const generateScaleForColor = (color: string, colorScheme: ColorMode): Co
 };
 
 /**
- *
  * Generates a color theme based on a base color. Light, Dark and Contrast scales are included.
  *
  * @param color The base color that is used to generate the color theme
  */
-export const generateThemeForColor = (color: string): ThemeInfo => ({
+export const generateThemeForColor = (color: CssColor): ThemeInfo => ({
   light: generateScaleForColor(color, 'light'),
   dark: generateScaleForColor(color, 'dark'),
   contrast: generateScaleForColor(color, 'contrast'),
@@ -87,7 +86,6 @@ export const generateColorTheme = ({ colors }: ThemeGenType): GeneratedColorThem
 });
 
 /**
- *
  * Generates a color theme for the global colors. Light, Dark and Contrast scales are included.
  *
  */
@@ -96,21 +94,46 @@ export const generateGlobalColors = (): Record<GlobalColors, ThemeInfo> => {
 };
 
 /**
+ * Returns the base colors for a color and color scheme.
  *
+ * @param color The base color as a hex string
+ * @param colorScheme The color scheme to generate the base colors for
+ * @returns
+ */
+const getBaseColors = (color: CssColor, colorScheme: ColorMode) => {
+  let colorLightness = getLightnessFromHex(color);
+  if (colorScheme !== 'light') {
+    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
+  }
+
+  const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
+  const calculateLightness = (base: number, mod: number) => base - mod;
+
+  return {
+    baseDefault: chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor,
+    baseHover: chroma(color)
+      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
+      .hex() as CssColor,
+    baseActive: chroma(color)
+      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
+      .hex() as CssColor,
+  };
+};
+
+/**
  * Creates the Base Contrast Default color
  *
  * @param baseColor The base color
  */
-export const getContrastDefault = (color: string): string =>
+export const getContrastDefault = (color: CssColor) =>
   chroma.contrast(color, '#ffffff') >= chroma.contrast(color, '#000000') ? '#ffffff' : '#000000';
 
 /**
- *
  * Creates the Base Contrast Subtle color
  *
  * @param color The base color
  */
-export const getContrastSubtle = (color: string): string => {
+export const getContrastSubtle = (color: CssColor): string => {
   const contrastWhite = chroma.contrast(color, '#ffffff');
   const contrastBlack = chroma.contrast(color, '#000000');
   const lightness = getLightnessFromHex(color);
@@ -121,7 +144,6 @@ export const getContrastSubtle = (color: string): string => {
 };
 
 /**
- *
  * Returns the css variable for a color.
  *
  * @param colorType The type of color
@@ -129,32 +151,4 @@ export const getContrastSubtle = (color: string): string => {
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
   return `--ds-color-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
-};
-
-/**
- *
- * Returns the base colors for a color and color scheme.
- *
- * @param color The base color as a hex string
- * @param colorScheme The color scheme to generate the base colors for
- * @returns
- */
-const getBaseColors = (color: string, colorScheme: ColorMode) => {
-  let colorLightness = getLightnessFromHex(color);
-  if (colorScheme !== 'light') {
-    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
-  }
-
-  const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
-  const calculateLightness = (base: number, mod: number) => base - mod;
-
-  return {
-    baseDefault: chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex(),
-    baseHover: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
-      .hex(),
-    baseActive: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
-      .hex(),
-  };
 };
