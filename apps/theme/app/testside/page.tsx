@@ -1,7 +1,7 @@
 'use client';
 
 import { Heading } from '@digdir/designsystemet-react';
-import type { ColorInfo } from '@digdir/designsystemet/color';
+import type { ColorInfo, CssColor } from '@digdir/designsystemet/color';
 import { generateThemeForColor } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
@@ -16,7 +16,7 @@ import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 import { Interaction } from './Interaction/Interaction';
 import classes from './page.module.css';
 
-const Box = (name: string, color1: string, color2: string) => {
+const Box = (name: string, color1: CssColor, color2: CssColor) => {
   return (
     <div className={classes.box}>
       <div className={classes.color} style={{ backgroundColor: color1 }} />
