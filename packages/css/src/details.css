@@ -6,7 +6,6 @@
   --dsc-details-padding: var(--ds-spacing-2) var(--ds-spacing-4);
   --dsc-details-size: var(--ds-sizing-14);
 
-  /* default color: neutral */
   --dsc-details-background: var(--ds-color-background-default);
   --dsc-details-heading-background--hover: var(--ds-color-surface-default);
   --dsc-details-heading-background--open: var(--ds-color-background-subtle);
