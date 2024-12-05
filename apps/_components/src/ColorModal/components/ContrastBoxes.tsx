@@ -1,10 +1,7 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
+import type { CssColor } from '@digdir/designsystemet/color';
 import type { ColorNumber } from '@digdir/designsystemet/color';
-import {
-  areColorsContrasting,
-  getApcaContrastLc,
-} from '@digdir/designsystemet/color';
+import { areColorsContrasting } from '@digdir/designsystemet/color';
 import {
   CheckmarkCircleFillIcon,
   ExclamationmarkTriangleFillIcon,
@@ -95,24 +92,6 @@ const ContrastBox = ({
           }
         />
       </div>
-
-      {(colorNumber === 12 || colorNumber === 13) && (
-        <>
-          <h3 className={classes.contrastSubTitle}>APCA</h3>
-          <div className={classes.contrastContainer}>
-            <ContrastItem
-              text='Lc75'
-              subText='(18px / 400)'
-              error={
-                (getApcaContrastLc(
-                  selectedColor as CssColor,
-                  contrastColor,
-                ) as number) <= 75
-              }
-            />
-          </div>
-        </>
-      )}
     </div>
   );
 };
