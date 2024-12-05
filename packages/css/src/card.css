@@ -13,6 +13,7 @@
   }
   &[data-color='subtle'] {
     --dsc-card-background: var(--ds-color-neutral-background-subtle);
+    --dsc-card-color: var(--ds-color-neutral-text-default);
   }
 
   background: var(--dsc-card-background);
