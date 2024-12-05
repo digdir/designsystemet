@@ -248,3 +248,19 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
 
   return false;
 };
+
+/**
+ * Converts a color to a HEX color
+ *
+ * @param color
+ * @returns
+ */
+export const convertToHex = (color?: string): CssColor => {
+  if (!color) {
+    return '#000000';
+  }
+  if (color.startsWith('#')) {
+    return color as CssColor;
+  }
+  return chroma(color).hex() as CssColor;
+};
