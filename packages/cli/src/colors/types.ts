@@ -7,7 +7,7 @@ export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'yel
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
 export type ColorInfo = {
-  hex: string;
+  hex: CssColor;
   number: ColorNumber;
   name: string;
 };

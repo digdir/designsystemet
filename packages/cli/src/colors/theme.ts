@@ -36,7 +36,7 @@ export const generateScaleForColor = (color: CssColor, colorScheme: ColorMode): 
   // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
   const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([key, value], index) => ({
     name: key,
-    hex: chroma(color).luminance(value).hex(),
+    hex: chroma(color).luminance(value).hex() as CssColor,
     number: (index + 1) as ColorNumber,
   }));
 
@@ -52,7 +52,7 @@ export const generateScaleForColor = (color: CssColor, colorScheme: ColorMode): 
   // Add the special colors to the output array
   for (const { hex, number } of specialColors) {
     outputArray[number - 1] = {
-      hex,
+      hex: hex as CssColor,
       number: number as ColorNumber,
       name: getColorNameFromNumber(number as ColorNumber),
     };

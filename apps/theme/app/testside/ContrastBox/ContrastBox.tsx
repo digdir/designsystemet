@@ -1,10 +1,13 @@
 'use client';
-import { getContrastFromHex } from '@digdir/designsystemet/color';
+import {
+  type CssColor,
+  getContrastFromHex,
+} from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
 import classes from './ContrastBox.module.css';
 
-export const ContrastBox = (mainColor: string, bgColor: string) => {
+export const ContrastBox = (mainColor: CssColor, bgColor: CssColor) => {
   const contrast = getContrastFromHex(mainColor, bgColor);
   return (
     <div className={classes.contrast}>

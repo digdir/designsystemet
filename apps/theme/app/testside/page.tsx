@@ -11,7 +11,6 @@ import { Settings } from '../../settings';
 import { BackgroundSurface } from './BackgroundSurface/BackgroundSurface';
 import { Backgrounds } from './Backgrounds/Backgrounds';
 import { BaseContrast } from './BaseContrast/BaseContrast';
-import { BaseContrastOverview } from './BaseContrastOverview/BaseContrastOverview';
 import { ContrastBox } from './ContrastBox/ContrastBox';
 import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 import { Interaction } from './Interaction/Interaction';
@@ -320,10 +319,6 @@ export default function Dev() {
         {Row('Light', theme1.light)}
         {Row('Dark', theme1.dark, true)}
         {Row('Contrast', theme1.contrast, true)}
-        <Heading className={classes.sectionTitle} data-size='md'>
-          Overgangen fra svart til hvit kontrastfarge på ulike Base farger
-        </Heading>
-        <BaseContrastOverview />
         <Heading className={classes.sectionTitle} data-size='md'>
           Viser blå base farger i et spekter av lightness verdier og om
           kontrastfargen er hvit eller svart per mode
