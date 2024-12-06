@@ -1,7 +1,7 @@
 'use client';
 import { Container } from '@repo/components';
 
-import { type ThemeInfo, generateThemeForColor } from '@/packages/cli/dist/src';
+import { type ThemeInfo, generateThemeForColor } from '@digdir/designsystemet/color';
 import classes from './page.module.css';
 
 export default function Home() {
