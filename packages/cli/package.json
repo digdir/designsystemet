@@ -34,7 +34,6 @@
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "tsup && yarn build:types",
-    "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 secondary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
     "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
@@ -42,7 +41,12 @@
     "test": "yarn test:tokens-create-and-build",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "update:template": "tsx ./src/tokens/template.ts"
+    "update:template": "tsx ./src/tokens/template.ts",
+    "internal:tokens-create-digdir": "yarn designsystemet tokens create --theme theme -m accent:#0062BA -s brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5 -n #1E2B3C  -w ./internal/design-tokens",
+    "internal:tokens-create-altinn": "yarn designsystemet tokens create --theme theme2 -m accent:#007682 -n #003333 -s brand1:#12404f brand2:#0054a6 brand3:#942977 -w ../../design-tokens",
+    "internal:tokens-create-uutilsynet": "yarn designsystemet tokens create --theme theme3 -m accent:#007682 -n #003333 -s brand1:#12404f brand2:#0054a6 brand3:#942977 -w ../../design-tokens",
+    "internal:tokens-create-portal": "yarn designsystemet tokens create --theme theme4 -m accent:#007682 -n #003333 -s brand1:#12404f brand2:#0054a6 brand3:#942977 -w ../../design-tokens",
+    "internal:tokens-create-all": "yarn internal:tokens-create-digdir && yarn internal:tokens-create-altinn && yarn internal:tokens-create-uutilsynet && yarn internal:tokens-create-portal"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^12.1.0",
