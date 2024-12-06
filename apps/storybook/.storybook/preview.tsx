@@ -2,11 +2,13 @@ import './style.css';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 import type { Preview } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
+import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import customTheme from './customTheme';
 
@@ -166,6 +168,7 @@ const preview: Preview = {
     },
   },
   decorators: [customStylesDecorator],
+  loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
 };
 
 /* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */

@@ -1,69 +1,57 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Link } from '../';
-
-import { Accordion } from '.';
+import { Button, Card, Details, Link } from '../';
 
 export default {
-  title: 'Komponenter/Accordion',
-  component: Accordion,
+  title: 'Komponenter/Details',
+  component: Details,
   parameters: {
     layout: 'padded',
   },
 } as Meta;
 
-export const Preview: StoryFn<typeof Accordion> = (args) => (
-  <Accordion {...args}>
-    <Accordion.Item>
-      <Accordion.Heading>
-        Hvem kan registrere seg i Frivillighetsregisteret?
-      </Accordion.Heading>
-      <Accordion.Content>
-        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
-        drive frivillig virksomhet. Det er bare foreninger, stiftelser og
-        aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
-        til fysiske personer. Virksomheten må ha et styre.
-      </Accordion.Content>
-    </Accordion.Item>
-    <Accordion.Item>
-      <Accordion.Heading>
-        Hvordan går jeg fram for å registrere i Frivillighetsregisteret?
-      </Accordion.Heading>
-      <Accordion.Content>
-        Virksomheten må være registrert i Enhetsregisteret før den kan bli
-        registrert i Frivillighetsregisteret. Du kan registrere i begge
-        registrene samtidig i Samordnet registermelding.
-      </Accordion.Content>
-    </Accordion.Item>
-  </Accordion>
+export const Preview: StoryFn<typeof Details> = (args) => (
+  <Details {...args}>
+    <Details.Summary>
+      Hvem kan registrere seg i Frivillighetsregisteret?
+    </Details.Summary>
+    <Details.Content>
+      For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
+      drive frivillig virksomhet. Det er bare foreninger, stiftelser og
+      aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til
+      fysiske personer. Virksomheten må ha et styre.
+    </Details.Content>
+  </Details>
+);
+// Default values are selected in Controls
+Preview.args = {
+  'data-color': 'neutral',
+};
+
+export const InCard: StoryFn<typeof Details> = () => (
+  <Card data-color='neutral'>
+    <Details>
+      <Details.Summary>Vedlegg</Details.Summary>
+      <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
+    </Details>
+  </Card>
 );
 
-export const AccordionBorder: StoryFn<typeof Accordion> = () => (
-  <Accordion border data-color='subtle'>
-    <Accordion.Item>
-      <Accordion.Heading>Vedlegg</Accordion.Heading>
-      <Accordion.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Accordion.Content>
-    </Accordion.Item>
-  </Accordion>
-);
-
-export const AccordionColor: StoryFn<typeof Accordion> = () => (
-  <Accordion border data-color='brand2'>
-    <Accordion.Item>
-      <Accordion.Heading>
-        Hvordan får jeg tildelt et jegernummer?
-      </Accordion.Heading>
-      <Accordion.Content>
+export const InCardWithColor: StoryFn<typeof Details> = () => (
+  <Card data-color='brand2'>
+    <Details>
+      <Details.Summary>Hvordan får jeg tildelt et jegernummer?</Details.Summary>
+      <Details.Content>
         Du vil automatisk få tildelt jegernummer og bli registrert i
         Jegerregisteret når du har bestått jegerprøven.
-      </Accordion.Content>
-    </Accordion.Item>
-    <Accordion.Item>
-      <Accordion.Heading>
+      </Details.Content>
+    </Details>
+    <Details>
+      <Details.Summary>
         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-      </Accordion.Heading>
-      <Accordion.Content>
+      </Details.Summary>
+      <Details.Content>
         <p style={{ marginTop: 0 }}>
           Du kan finne dette ved å logge inn på{' '}
           <Link href='https://minjegerside.brreg.no/'>Min side</Link>
@@ -127,18 +115,12 @@ export const AccordionColor: StoryFn<typeof Accordion> = () => (
           sodales a arcu. Phasellus ornare, lorem nec aliquam venenatis, augue
           eros sagittis quam, at sagittis tellus ante in metus.
         </p>
-      </Accordion.Content>
-    </Accordion.Item>
-  </Accordion>
+      </Details.Content>
+    </Details>
+  </Card>
 );
 
-// Default values are selected in Controls
-Preview.args = {
-  border: false,
-  'data-color': 'neutral',
-};
-
-export const Controlled: StoryFn<typeof Accordion> = () => {
+export const Controlled: StoryFn<typeof Details> = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -151,39 +133,39 @@ export const Controlled: StoryFn<typeof Accordion> = () => {
 
   return (
     <>
-      <Button onClick={toggleOpen}>Toggle Accordions</Button>
+      <Button onClick={toggleOpen}>Toggle Details</Button>
       <br />
-      <Accordion>
-        <Accordion.Item open={open1} onToggle={() => setOpen1(!open1)}>
-          <Accordion.Heading>Enkeltpersonforetak</Accordion.Heading>
-          <Accordion.Content>
+      <>
+        <Details open={open1} onToggle={() => setOpen1(!open1)}>
+          <Details.Summary>Enkeltpersonforetak</Details.Summary>
+          <Details.Content>
             Skal du starte for deg selv? Enkeltpersonforetak er ofte den
             enkleste måten å etablere bedrift på. Denne organisasjonsformen har
             både fordeler og ulemper. Det gir deg stor grad av frihet, men kan
             også gi betydelig risiko fordi du har personlig ansvar for
             økonomien.
-          </Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item open={open2} onToggle={() => setOpen2(!open2)}>
-          <Accordion.Heading>Aksjeselskap (AS)</Accordion.Heading>
-          <Accordion.Content>
+          </Details.Content>
+        </Details>
+        <Details open={open2} onToggle={() => setOpen2(!open2)}>
+          <Details.Summary>Aksjeselskap (AS)</Details.Summary>
+          <Details.Content>
             Planlegger du å starte næringsvirksomhet alene eller sammen med
             andre? Innebærer næringsvirksomheten en økonomisk risiko? Vil du ha
             rettigheter som arbeidstaker og muligheten til at andre kan
             investere i selskapet ditt? Da kan aksjeselskap være en
             hensiktsmessig organisasjonsform.
-          </Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item open={open3} onToggle={() => setOpen3(!open3)}>
-          <Accordion.Heading>Ansvarlig selskap (ANS/DA)</Accordion.Heading>
-          <Accordion.Content>
+          </Details.Content>
+        </Details>
+        <Details open={open3} onToggle={() => setOpen3(!open3)}>
+          <Details.Summary>Ansvarlig selskap (ANS/DA)</Details.Summary>
+          <Details.Content>
             Er dere minst to personer som skal starte opp egen virksomhet?
             Samarbeider du godt med den/de som du skal starte opp sammen med?
             Krever virksomheten få investeringer og tar du liten økonomisk
             risiko? Da kan du vurdere å etablere et ansvarlig selskap.
-          </Accordion.Content>
-        </Accordion.Item>
-      </Accordion>
+          </Details.Content>
+        </Details>
+      </>
     </>
   );
 };

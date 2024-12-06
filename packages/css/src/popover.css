@@ -1,7 +1,7 @@
 .ds-popover {
-  --dsc-popover-background: var(--ds-color-neutral-background-default);
-  --dsc-popover-border-color: var(--ds-color-neutral-border-default);
-  --dsc-popover-color: var(--ds-color-neutral-text-default);
+  --dsc-popover-background: var(--ds-color-surface-default);
+  --dsc-popover-border-color: var(--ds-color-border-default);
+  --dsc-popover-color: var(--ds-color-text-default);
   --dsc-popover-arrow-size: var(--ds-spacing-2);
   --dsc-popover-border-radius: var(--ds-border-radius-md);
   --dsc-popover-border: 1px solid var(--dsc-popover-border-color);
@@ -50,12 +50,7 @@
     rotate: -135deg;
   }
 
-  &[data-color] {
-    --dsc-popover-background: var(--ds-color-surface-default);
-    --dsc-popover-border-color: var(--ds-color-border-default);
-    --dsc-popover-color: var(--ds-color-text-default);
-  }
-
+  /* What do we do here? */
   &[data-color='neutral'] {
     --dsc-popover-background: var(--ds-color-neutral-background-default);
   }

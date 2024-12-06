@@ -5,13 +5,13 @@ import type { StoreThemes } from '../../common/store';
 export const getThemes = async () => {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
   const modeColModes = collections.find(
-    (collection) => collection.name === 'Mode',
+    (collection) => collection.name === 'Color scheme',
   )?.modes;
   const themeModes = collections.find(
     (collection) => collection.name === 'Theme',
   )?.modes;
   const modeColId = collections.find(
-    (collection) => collection.name === 'Mode',
+    (collection) => collection.name === 'Color scheme',
   )?.id;
 
   const variables = await figma.variables.getLocalVariablesAsync('COLOR');

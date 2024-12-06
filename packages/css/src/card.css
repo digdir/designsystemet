@@ -1,28 +1,23 @@
 .ds-card {
-  /* default color: neutral */
-  --dsc-card-background--active: var(--ds-color-neutral-surface-default);
-  --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
-  --dsc-card-background: var(--ds-color-neutral-background-default);
-  --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-card-color: var(--ds-color-neutral-text-default);
+  --dsc-card-background--active: var(--ds-color-surface-active);
+  --dsc-card-background--hover: var(--ds-color-surface-hover);
+  --dsc-card-background: var(--ds-color-surface-default);
+  --dsc-card-border-color: var(--ds-color-border-subtle);
+  --dsc-card-color: var(--ds-color-text-default);
+  --dsc-card-border: 1px solid var(--dsc-card-border-color);
+  --dsc-card-gap: var(--ds-spacing-3);
+  --dsc-card-padding: var(--ds-spacing-6);
 
-  &[data-color]:where(:not([data-color='subtle'])) {
-    --dsc-card-background--active: var(--ds-color-surface-default);
-    --dsc-card-background--hover: var(--ds-color-background-subtle);
-    --dsc-card-background: var(--ds-color-surface-default);
-    --dsc-card-border-color: var(--ds-color-border-subtle);
-    --dsc-card-color: var(--ds-color-text-default);
-  }
   &[data-color='neutral'] {
     --dsc-card-background: var(--ds-color-background-default);
   }
   &[data-color='subtle'] {
+    --dsc-card-background--active: var(--ds-color-neutral-surface-default);
+    --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
     --dsc-card-background: var(--ds-color-neutral-background-subtle);
+    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
+    --dsc-card-color: var(--ds-color-neutral-text-default);
   }
-
-  --dsc-card-border: 1px solid var(--dsc-card-border-color);
-  --dsc-card-gap: var(--ds-spacing-3);
-  --dsc-card-padding: var(--ds-spacing-6);
 
   background: var(--dsc-card-background);
   border-radius: var(--ds-border-radius-lg);
@@ -71,8 +66,15 @@
     }
   }
 
-  &:has(> .ds-card__block) {
+  &:has(> .ds-card__block, .ds-details) {
     padding: 0; /* Let Card.Block own the padding */
+  }
+
+  & > .ds-details:first-child {
+    border-top: 0;
+  }
+  & > .ds-details:last-child {
+    border-bottom: 0;
   }
 }
 

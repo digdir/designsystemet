@@ -134,7 +134,7 @@ const Header = ({
               <Button
                 variant='tertiary'
                 icon={true}
-                color='neutral'
+                data-color='neutral'
                 aria-expanded={open}
                 aria-label='Meny'
                 className={cl(classes.toggle, 'ds-focus')}
@@ -213,7 +213,7 @@ const Header = ({
                   aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
                   variant='tertiary'
                   icon={true}
-                  color='neutral'
+                  data-color='neutral'
                   onClick={() => {
                     handleThemeChange(theme === 'light' ? 'dark' : 'light');
                   }}

@@ -1,11 +1,6 @@
 .ds-tag {
-  --dsc-tag-background: var(--ds-color-neutral-surface-default);
-  --dsc-tag-color: var(--ds-color-neutral-text-default);
-
-  &[data-color] {
-    --dsc-tag-background: var(--ds-color-surface-default);
-    --dsc-tag-color: var(--ds-color-text-default);
-  }
+  --dsc-tag-background: var(--ds-color-surface-default);
+  --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-sizing-8);
   --dsc-tag-padding: 0 var(--ds-spacing-2);
 

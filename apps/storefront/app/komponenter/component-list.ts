@@ -1,8 +1,8 @@
 export const data = [
   {
-    title: 'Accordion',
-    image: 'Accordion.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-accordion--docs',
+    title: 'Details',
+    image: 'Details.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-details--docs',
   },
   {
     title: 'Alert',

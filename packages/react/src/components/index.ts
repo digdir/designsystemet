@@ -11,7 +11,7 @@ export * from './Label';
 export * from './Heading';
 export * from './Paragraph';
 export * from './ValidationMessage';
-export * from './Accordion';
+export * from './Details';
 export * from './form/Select';
 export * from './Alert';
 export * from './Tag';

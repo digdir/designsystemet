@@ -10,7 +10,7 @@ export function Udir(rest: UdirProps) {
     >
       <title>Utdanningsdirektoratet logo</title>
       <defs>
-        <style>
+        <style suppressHydrationWarning>
           {`
             .cls-1 {
               fill: #fdfeff;
