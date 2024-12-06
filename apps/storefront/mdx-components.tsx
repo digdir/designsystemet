@@ -5,6 +5,12 @@ import type {
   ListOrderedProps,
   ListUnorderedProps,
   ParagraphProps,
+  TableBodyProps,
+  TableCellProps,
+  TableHeadProps,
+  TableHeaderCellProps,
+  TableProps,
+  TableRowProps,
 } from '@digdir/designsystemet-react';
 import {
   Heading,
@@ -25,14 +31,14 @@ import type { MDXComponents } from 'mdx/types';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    p: (props: ParagraphProps) => <Paragraph {...props} />,
+    p: (props) => <Paragraph {...(props as ParagraphProps)} />,
     a: (props) => <Link {...(props as LinkProps)} />,
-    ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
-    ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,
-    li: (props: ListItemProps) => <ListItem {...props}></ListItem>,
-    h1: (props: HeadingProps) => (
+    ol: (props) => <ListOrdered {...(props as ListOrderedProps)} />,
+    ul: (props) => <ListUnordered {...(props as ListUnorderedProps)} />,
+    li: (props) => <ListItem {...(props as ListItemProps)}></ListItem>,
+    h1: (props) => (
       <Heading
-        {...props}
+        {...(props as HeadingProps)}
         level={1}
         data-size='xl'
         style={{
@@ -40,26 +46,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         }}
       />
     ),
-    h2: (props: HeadingProps) => (
-      <Heading {...props} level={2} data-size='md' />
+    h2: (props) => (
+      <Heading {...(props as HeadingProps)} level={2} data-size='md' />
     ),
-    h3: (props: HeadingProps) => (
-      <Heading {...props} level={3} data-size='sm' />
+    h3: (props) => (
+      <Heading {...(props as HeadingProps)} level={3} data-size='sm' />
     ),
-    h4: (props: HeadingProps) => (
-      <Heading {...props} level={4} data-size='xs' />
+    h4: (props) => (
+      <Heading {...(props as HeadingProps)} level={4} data-size='xs' />
     ),
-    h5: (props: HeadingProps) => (
-      <Heading {...props} level={5} data-size='xs' />
+    h5: (props) => (
+      <Heading {...(props as HeadingProps)} level={5} data-size='xs' />
     ),
-    h6: (props: HeadingProps) => (
-      <Heading {...props} level={6} data-size='xs' />
+    h6: (props) => (
+      <Heading {...(props as HeadingProps)} level={6} data-size='xs' />
     ),
-    table: (props) => <Table {...props} border zebra />,
-    thead: (props) => <TableHead {...props} />,
-    tbody: (props) => <TableBody {...props} />,
-    tr: (props) => <TableRow {...props} />,
-    th: (props) => <TableHeaderCell {...props} />,
-    td: (props) => <TableCell {...props} />,
+    table: (props) => <Table {...(props as TableProps)} border zebra />,
+    thead: (props) => <TableHead {...(props as TableHeadProps)} />,
+    tbody: (props) => <TableBody {...(props as TableBodyProps)} />,
+    tr: (props) => <TableRow {...(props as TableRowProps)} />,
+    th: (props) => <TableHeaderCell {...(props as TableHeaderCellProps)} />,
+    td: (props) => <TableCell {...(props as TableCellProps)} />,
   };
 }
