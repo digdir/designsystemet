@@ -2,8 +2,6 @@ import type { Placement } from '@floating-ui/utils';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Popover } from '../Popover';
@@ -11,9 +9,6 @@ import { Popover } from '../Popover';
 export type HelpTextProps = MergeRight<
   DefaultProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
   {
-    /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /**
      * Required descriptive label for screen readers.
      **/
@@ -37,6 +32,7 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
           className={cl('ds-helptext', className)}
           ref={ref}
           variant='tertiary'
+          data-color='info'
           {...rest}
         />
         <Popover placement={placement} data-color='info'>

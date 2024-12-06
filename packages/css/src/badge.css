@@ -18,6 +18,8 @@
   line-height: var(--ds-line-height-sm);
   width: fit-content;
 
+  /* What do we do here? */
+
   &[data-color='neutral'] {
     --dsc-badge-background: var(--ds-color-neutral-surface-default);
     --dsc-badge-color: var(--ds-color-neutral-text-default);

@@ -7,7 +7,7 @@
   position: relative;
 
   /* Only render error icon if the ValidationMessage actually contains an error message */
-  &[data-error]:not(:empty) {
+  &:not([data-color='success']):not(:empty) {
     color: var(--ds-color-danger-text-subtle);
     padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap));
 

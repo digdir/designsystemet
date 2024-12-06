@@ -46,7 +46,6 @@ export type PopoverProps = MergeRight<
     placement?: Placement;
     /**
      * The color of the popover.
-     * @default neutral
      */
     'data-color'?: Color;
     /**

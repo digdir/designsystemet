@@ -15,6 +15,6 @@ export const Preview: Story = {
   args: {
     children: 'Dette er en beskrivende feilmelding.',
     'data-size': 'md',
-    error: true,
+    'data-color': 'danger',
   },
 };
