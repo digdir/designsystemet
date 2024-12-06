@@ -1,6 +1,6 @@
 'use client';
 
-import type { ColorMode } from '@/packages/cli/dist/src/colors';
+import type { ColorMode } from '@digdir/designsystemet';
 import { Heading, Link, Tabs } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
