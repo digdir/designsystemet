@@ -54,7 +54,7 @@ export const Preview: Story = (args) => {
     validationId,
     moveToBody,
   } = args as typeof toggles;
-  const Component = type as keyof JSX.IntrinsicElements;
+  const Component = type as keyof React.JSX.IntrinsicElements;
 
   useEffect(() => {
     const label = document.querySelector('label');

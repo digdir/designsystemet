@@ -22,7 +22,7 @@ export const Preview: Story = {
 };
 
 const sizes: TagProps['data-size'][] = ['sm', 'md', 'lg'];
-export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
+export const Sizes: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <div
       style={{
@@ -51,7 +51,7 @@ const colors: TagProps['data-color'][] = [
   'brand3',
 ];
 
-export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
+export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
       {colors.map((color) => (
