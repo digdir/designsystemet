@@ -5,7 +5,6 @@ import { Heading, Link, Tabs } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import {
   BorderRadius,
   ColorContrasts,
@@ -20,8 +19,6 @@ import classes from './page.module.css';
 
 export default function Home() {
   const colors = useThemeStore((state) => state.colors);
-  const addColor = useThemeStore((state) => state.addColor);
-  const resetColors = useThemeStore((state) => state.resetColors);
   const appearance = useThemeStore((state) => state.appearance);
   const setActivePage = useThemeStore((state) => state.setActivePage);
   const router = useRouter();
@@ -29,8 +26,6 @@ export default function Home() {
   const setAppearance = useThemeStore((state) => state.setAppearance);
 
   type TestProps = 'light' | 'dark';
-
-  useEffect(() => {}, []);
 
   const setHeaderColor = () => {
     let themeMode: TestProps = 'light';

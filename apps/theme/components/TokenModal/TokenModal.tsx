@@ -135,7 +135,7 @@ export const TokenModal = () => {
             </div>
             <div className={classes.rightSection}>
               <div className={classes.snippet}>
-                <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+                <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
               </div>
               <div className={classes.contact}>
                 <div className={classes.contact__icon}>

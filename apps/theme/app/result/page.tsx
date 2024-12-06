@@ -33,7 +33,7 @@ export default function Result() {
         <div className={classes.content}>
           <div className={cl(classes.card, classes.big)}>
             <div className={classes.snippet}>
-              <CodeSnippet syntax='shell'>{cliSnippet}</CodeSnippet>
+              <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
             </div>
           </div>
           <div className={cl(classes.card, classes.small)}>f</div>
