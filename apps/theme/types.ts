@@ -1,4 +1,4 @@
-import type { CssColor } from '@/packages/cli/dist/src';
+import type { CssColor } from '@digdir/designsystemet/color';
 
 export type modeType = 'light' | 'dark' | 'contrast';
 export type ThemeColors = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';
