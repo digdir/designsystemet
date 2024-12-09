@@ -43,8 +43,13 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   ref,
 ) {
   return (
-    <span className={cl('ds-badge', className)} ref={ref} {...rest}>
-      {count && maxCount && count > maxCount ? `${maxCount}+` : count}
-    </span>
+    <span
+      className={cl('ds-badge', className)}
+      data-count={
+        count && maxCount && count > maxCount ? `${maxCount}+` : count
+      }
+      ref={ref}
+      {...rest}
+    />
   );
 });

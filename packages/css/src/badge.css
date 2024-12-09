@@ -4,19 +4,22 @@
   --dsc-badge-padding: 0 calc(var(--ds-spacing-1) + calc(var(--ds-spacing-1) / 2));
   --dsc-badge-size: calc(var(--ds-sizing-3) + calc(var(--ds-spacing-1) / 2));
 
-  background: var(--dsc-badge-background);
-  border-radius: var(--ds-border-radius-full);
-  box-sizing: border-box;
-  color: var(--dsc-badge-color);
-  display: inline-grid;
-  font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
-  min-height: var(--dsc-badge-size);
-  min-width: var(--dsc-badge-size);
-  padding: var(--dsc-badge-padding);
-  place-items: center;
-  box-sizing: border-box;
-  line-height: var(--ds-line-height-sm);
-  width: fit-content;
+  &::before {
+    content: attr(data-count);
+    background: var(--dsc-badge-background);
+    border-radius: var(--ds-border-radius-full);
+    box-sizing: border-box;
+    color: var(--dsc-badge-color);
+    display: inline-grid;
+    font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */
+    min-height: var(--dsc-badge-size);
+    min-width: var(--dsc-badge-size);
+    padding: var(--dsc-badge-padding);
+    place-items: center;
+    box-sizing: border-box;
+    line-height: var(--ds-line-height-sm);
+    width: fit-content;
+  }
 
   /* What do we do here? */
 
@@ -33,7 +36,7 @@
   height: fit-content;
   width: fit-content;
 
-  & .ds-badge {
+  & .ds-badge::before {
     position: absolute;
   }
 
@@ -42,49 +45,49 @@
     font-size: 1.25em; /* Auto scale icon based on font-size */
   }
 
-  &[data-placement='top-right'] .ds-badge {
+  &[data-placement='top-right'] .ds-badge::before {
     top: 0;
     right: 0;
     translate: 50% -50%;
   }
 
-  &[data-placement='top-left'] .ds-badge {
+  &[data-placement='top-left'] .ds-badge::before {
     top: 0;
     left: 0;
     translate: -50% -50%;
   }
 
-  &[data-placement='bottom-right'] .ds-badge {
+  &[data-placement='bottom-right'] .ds-badge::before {
     bottom: 0;
     right: 0;
     translate: 50% 50%;
   }
 
-  &[data-placement='bottom-left'] .ds-badge {
+  &[data-placement='bottom-left'] .ds-badge::before {
     bottom: 0;
     left: 0;
     translate: -50% 50%;
   }
 
-  &[data-placement='top-right'][data-overlap='circle'] .ds-badge {
+  &[data-placement='top-right'][data-overlap='circle'] .ds-badge::before {
     top: 14%;
     right: 14%;
     translate: 50% -50%;
   }
 
-  &[data-placement='top-left'][data-overlap='circle'] .ds-badge {
+  &[data-placement='top-left'][data-overlap='circle'] .ds-badge::before {
     top: 14%;
     left: 14%;
     translate: -50% -50%;
   }
 
-  &[data-placement='bottom-right'][data-overlap='circle'] .ds-badge {
+  &[data-placement='bottom-right'][data-overlap='circle'] .ds-badge::before {
     bottom: 14%;
     right: 14%;
     translate: 50% 50%;
   }
 
-  &[data-placement='bottom-left'][data-overlap='circle'] .ds-badge {
+  &[data-placement='bottom-left'][data-overlap='circle'] .ds-badge::before {
     bottom: 14%;
     left: 14%;
     translate: -50% 50%;
