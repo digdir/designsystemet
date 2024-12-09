@@ -137,7 +137,9 @@ export const TokenModal = () => {
                 }}
               >
                 <span>2</span>
-                <Paragraph>For å bygge CSS filer kjører du:</Paragraph>
+                <Paragraph>
+                  Kjør kodesnutten for å generere CSS variabler til kode.
+                </Paragraph>
               </div>
               <div className={classes.snippet}>
                 <CodeSnippet language='bash'>
