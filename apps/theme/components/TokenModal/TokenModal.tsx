@@ -130,7 +130,12 @@ export const TokenModal = () => {
               <div className={classes.snippet}>
                 <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
               </div>
-              <div className={classes.step}>
+              <div
+                className={classes.step}
+                style={{
+                  marginTop: 'var(--ds-spacing-2)',
+                }}
+              >
                 <span>2</span>
                 <Paragraph>For å bygge CSS filer kjører du:</Paragraph>
               </div>
