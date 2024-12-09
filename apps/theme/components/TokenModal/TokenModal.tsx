@@ -133,7 +133,7 @@ export const TokenModal = () => {
               <div
                 className={classes.step}
                 style={{
-                  marginTop: 'var(--ds-spacing-2)',
+                  marginTop: 'var(--ds-spacing-4)',
                 }}
               >
                 <span>2</span>
