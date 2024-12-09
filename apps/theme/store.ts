@@ -62,15 +62,12 @@ export const useThemeStore = create(
     appearance: 'light',
     themePreview: 'one',
     colors: {
-      main: [
-        { name: 'dominant', colors: generateThemeForColor('#0062BA') },
-        { name: 'secondary', colors: generateThemeForColor('#159CDE') },
-        { name: 'accent', colors: generateThemeForColor('#F2800E') },
-      ],
+      main: [{ name: 'accent', colors: generateThemeForColor('#0062BA') }],
       neutral: [{ name: 'neutral', colors: generateThemeForColor('#1E2B3C') }],
       support: [
-        { name: 'profilecolor-1', colors: generateThemeForColor('#F45F63') },
-        { name: 'profilecolor-2', colors: generateThemeForColor('#E5AA20') },
+        { name: 'brand1', colors: generateThemeForColor('#F45F63') },
+        { name: 'brand2', colors: generateThemeForColor('#E5AA20') },
+        { name: 'brand3', colors: generateThemeForColor('#1E98F5') },
       ],
     },
     themeName: 'theme',

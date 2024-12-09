@@ -25,7 +25,9 @@ export default function Home() {
   const router = useRouter();
   const activePage = useThemeStore((state) => state.activePage);
   const setAppearance = useThemeStore((state) => state.setAppearance);
-  const params = useThemeParams();
+
+  /* For theme params */
+  useThemeParams();
 
   type TestProps = 'light' | 'dark';
 
