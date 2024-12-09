@@ -1,8 +1,14 @@
 'use client';
 
-import { Heading, Link, Modal, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Divider,
+  Heading,
+  Link,
+  Modal,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { colorCliOptions } from '@digdir/designsystemet/tokens';
-import { CodeIcon, InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
+import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useRef } from 'react';
 
@@ -77,7 +83,7 @@ export const TokenModal = () => {
       </Modal.Trigger>
       <Modal
         className={classes.modal}
-        style={{ maxWidth: 1160 }}
+        style={{ maxWidth: 1000 }}
         ref={modalRef}
         backdropClose={true}
       >
@@ -90,54 +96,42 @@ export const TokenModal = () => {
 
         <Modal.Block>
           <div className={classes.content}>
-            <div className={classes.leftSection}>
-              <div className={classes.infoBoxes}>
-                <InfoBox
-                  title='Design tokens'
-                  img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
-                  type='code'
-                  desc={
-                    <>
-                      Kopier kodesnutten og kjør den på maskinen din for å
-                      generere design tokens (json-filer). Sørg for at du har{' '}
-                      <Link target='_blank' href='https://nodejs.org/'>
-                        Node.js
-                      </Link>{' '}
-                      installert på maskinen din.
-                    </>
-                  }
-                />
-                <InfoBox
-                  title='Figma variabler'
-                  img={<img src='img/figma-logo.png' alt='' />}
-                  desc={
-                    <>
-                      Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
-                      <Link
-                        target='_blank'
-                        href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-                      >
-                        Figma plugin
-                      </Link>{' '}
-                      når du er i{' '}
-                      <Link
-                        target='_blank'
-                        href='https://www.figma.com/community/file/1322138390374166141'
-                      >
-                        Core UI Kit
-                      </Link>{' '}
-                      for å oppdatere et tema. Pluginen oppdaterer kun farger
-                      for øyeblikket.
-                    </>
-                  }
-                />
-              </div>
-            </div>
             <div className={classes.rightSection}>
+              <div className={classes.step}>
+                <span>1</span>
+                <Paragraph>
+                  Kopier kodesnutten og kjør den på maskinen din for å generere
+                  design tokens (json-filer), eller lim den inn i Designsystemet
+                  sin{' '}
+                  <Link
+                    target='_blank'
+                    href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                  >
+                    Figma plugin
+                  </Link>{' '}
+                  i{' '}
+                  <Link
+                    target='_blank'
+                    href='https://www.figma.com/community/file/1322138390374166141'
+                  >
+                    Core UI Kit
+                  </Link>{' '}
+                  for å oppdatere et tema direkte i Figma. Les mer om disse
+                  alternativene på{' '}
+                  <Link
+                    target='_blank'
+                    href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'
+                  >
+                    eget tema
+                  </Link>{' '}
+                  siden.
+                </Paragraph>
+              </div>
               <div className={classes.snippet}>
                 <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
               </div>
-              <div>
+              <div className={classes.step}>
+                <span>2</span>
                 <Paragraph>For å bygge CSS filer kjører du:</Paragraph>
               </div>
               <div className={classes.snippet}>
@@ -145,6 +139,9 @@ export const TokenModal = () => {
                   npx @digdir/designsystemet@next tokens build
                 </CodeSnippet>
               </div>
+
+              <Divider />
+
               <div className={classes.contact}>
                 <div className={classes.contact__icon}>
                   <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
