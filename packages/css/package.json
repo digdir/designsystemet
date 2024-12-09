@@ -8,7 +8,6 @@
     "url": "git+https://github.com/digdir/designsystemet.git"
   },
   "license": "MIT",
-  "type": "module",
   "exports": {
     ".": "./dist/src/index.css",
     "./*": "./dist/src/*"
