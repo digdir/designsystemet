@@ -38,23 +38,23 @@ export const Floating: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge.Placement placement='top-right'>
+    <Badge.Position placement='top-right'>
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Placement>
-    <Badge.Placement placement='top-left'>
+    </Badge.Position>
+    <Badge.Position placement='top-left'>
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Placement>
-    <Badge.Placement placement='bottom-right'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-right'>
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Placement>
-    <Badge.Placement placement='bottom-left'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-left'>
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Placement>
-    <Badge.Placement placement='top-right' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='top-right' overlap='circle'>
       <Badge data-color='accent'></Badge>
       <div
         style={{
@@ -64,8 +64,8 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge.Placement>
-    <Badge.Placement placement='top-left' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='top-left' overlap='circle'>
       <Badge data-color='accent'></Badge>
       <div
         style={{
@@ -75,8 +75,8 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge.Placement>
-    <Badge.Placement placement='bottom-right' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-right' overlap='circle'>
       <Badge data-color='accent'></Badge>
       <div
         style={{
@@ -86,8 +86,8 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge.Placement>
-    <Badge.Placement placement='bottom-left' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-left' overlap='circle'>
       <Badge data-color='accent'></Badge>
       <div
         style={{
@@ -97,7 +97,7 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge.Placement>
+    </Badge.Position>
   </div>
 );
 
@@ -108,7 +108,7 @@ export const CustomPlacement: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge.Placement
+    <Badge.Position
       placement='top-right'
       style={{
         top: '16%',
@@ -117,7 +117,7 @@ export const CustomPlacement: Story = (args) => (
     >
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Placement>
+    </Badge.Position>
   </div>
 );
 
@@ -128,18 +128,18 @@ export const Status: Story = (args) => (
       gap: 'var(--ds-spacing-4)',
     }}
   >
-    <Badge.Placement data-size='sm'>
+    <Badge.Position data-size='sm'>
       <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge.Placement>
-    <Badge.Placement data-size='md'>
+    </Badge.Position>
+    <Badge.Position data-size='md'>
       <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge.Placement>
-    <Badge.Placement data-size='lg'>
+    </Badge.Position>
+    <Badge.Position data-size='lg'>
       <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge.Placement>
+    </Badge.Position>
   </div>
 );
 
@@ -172,22 +172,22 @@ export const InButton: Story = (args) => (
     }}
   >
     <Button icon variant='tertiary'>
-      <Badge.Placement>
+      <Badge.Position>
         <Badge data-color='danger' count={1000} maxCount={99} />
         <InboxIcon title='Innboks' />
-      </Badge.Placement>
+      </Badge.Position>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge.Placement>
+      <Badge.Position>
         <Badge data-color='danger' count={10} />
         <ChatIcon title='Meldinger' />
-      </Badge.Placement>
+      </Badge.Position>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge.Placement>
+      <Badge.Position>
         <Badge data-color='danger'></Badge>
         <VideoIcon title='Skru på video' />
-      </Badge.Placement>
+      </Badge.Position>
     </Button>
   </div>
 );

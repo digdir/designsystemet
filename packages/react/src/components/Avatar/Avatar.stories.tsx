@@ -90,12 +90,12 @@ export const InDropdown: Story = () => (
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Badge.Placement overlap='circle'>
+            <Badge.Position overlap='circle'>
               <Badge data-color='danger' data-size='sm'></Badge>
               <Avatar aria-label='Ola Nordmann' data-size='xs'>
                 ON
               </Avatar>
-            </Badge.Placement>
+            </Badge.Position>
             Ola Nordmann
           </Dropdown.Button>
         </Dropdown.Item>
