@@ -137,6 +137,14 @@ export const TokenModal = () => {
               <div className={classes.snippet}>
                 <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
               </div>
+              <div>
+                <Paragraph>For å bygge CSS filer kjører du:</Paragraph>
+              </div>
+              <div className={classes.snippet}>
+                <CodeSnippet language='bash'>
+                  npx @digdir/designsystemet@next tokens build
+                </CodeSnippet>
+              </div>
               <div className={classes.contact}>
                 <div className={classes.contact__icon}>
                   <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
