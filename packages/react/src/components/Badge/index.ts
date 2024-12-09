@@ -1,10 +1,10 @@
 import { Badge as BadgeElm } from './Badge';
-import { BadgePlacement } from './BadgePlacement';
+import { BadgePosition } from './BadgePosition';
 
-const Badge = Object.assign(BadgeElm, { Placement: BadgePlacement });
+const Badge = Object.assign(BadgeElm, { Position: BadgePosition });
 
-Badge.Placement.displayName = 'Badge.Placement';
+Badge.Position.displayName = 'Badge.Position';
 
-export { Badge, BadgePlacement };
+export { Badge, BadgePosition };
 export type { BadgeProps } from './Badge';
-export type { BadgePlacementProps } from './BadgePlacement';
+export type { BadgePositionProps } from './BadgePosition';

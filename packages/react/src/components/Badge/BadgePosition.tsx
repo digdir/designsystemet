@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-export type BadgePlacementProps = MergeRight<
+export type BadgePositionProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
     /**
@@ -20,7 +20,7 @@ export type BadgePlacementProps = MergeRight<
   }
 >;
 
-export const BadgePlacement = forwardRef<HTMLSpanElement, BadgePlacementProps>(
+export const BadgePosition = forwardRef<HTMLSpanElement, BadgePositionProps>(
   function BadgePlacement(
     { className, overlap = 'rectangle', placement = 'top-right', ...rest },
     ref,
