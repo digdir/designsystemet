@@ -15,6 +15,7 @@ import {
 } from '../../components';
 import { Toggle } from '../../components/Toggle/Toggle';
 import { useThemeStore } from '../../store';
+import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
   const router = useRouter();
   const activePage = useThemeStore((state) => state.activePage);
   const setAppearance = useThemeStore((state) => state.setAppearance);
+  const params = useThemeParams();
 
   type TestProps = 'light' | 'dark';
 

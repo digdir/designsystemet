@@ -199,22 +199,24 @@ export const ColorContrasts = () => {
           </Select>
         </Field>
         <table className={classes.table}>
-          <tr>
-            <th />
-            {reducedLight.themeRange1.map((color, index) => (
-              <ThCell key={index} color={reducedLight.themeRange1[index]} />
-            ))}
-          </tr>
-          {reducedLight.themeRange2.map((color2, index) => (
-            <tr key={index}>
-              <ThCell color={color2} />
-              {reducedLight.themeRange1.map((color1, index) => (
-                <td key={index} className={classes.td}>
-                  <TdCell color1={color1} color2={color2} />
-                </td>
+          <tbody>
+            <tr>
+              <th />
+              {reducedLight.themeRange1.map((color, index) => (
+                <ThCell key={index} color={reducedLight.themeRange1[index]} />
               ))}
             </tr>
-          ))}
+            {reducedLight.themeRange2.map((color2, index) => (
+              <tr key={index}>
+                <ThCell color={color2} />
+                {reducedLight.themeRange1.map((color1, index) => (
+                  <td key={index} className={classes.td}>
+                    <TdCell color1={color1} color2={color2} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
         <Heading data-size='2xs'>Base fargene</Heading>
         <Paragraph data-size='sm' className={classes.desc}>
@@ -244,22 +246,27 @@ export const ColorContrasts = () => {
           </Select>
         </Field>
         <table className={classes.table}>
-          <tr>
-            <th />
-            {reducedBaseLight.themeRange1.map((color, index) => (
-              <ThCell key={index} color={reducedBaseLight.themeRange1[index]} />
-            ))}
-          </tr>
-          {reducedBaseLight.themeRange2.map((color2, index) => (
-            <tr key={index}>
-              <ThCell color={color2} />
-              {reducedBaseLight.themeRange1.map((color1, index) => (
-                <td key={index} className={classes.td}>
-                  <TdCell color1={color1} color2={color2} />
-                </td>
+          <tbody>
+            <tr>
+              <th />
+              {reducedBaseLight.themeRange1.map((color, index) => (
+                <ThCell
+                  key={index}
+                  color={reducedBaseLight.themeRange1[index]}
+                />
               ))}
             </tr>
-          ))}
+            {reducedBaseLight.themeRange2.map((color2, index) => (
+              <tr key={index}>
+                <ThCell color={color2} />
+                {reducedBaseLight.themeRange1.map((color1, index) => (
+                  <td key={index} className={classes.td}>
+                    <TdCell color1={color1} color2={color2} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

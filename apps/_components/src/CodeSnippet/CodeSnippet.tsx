@@ -27,7 +27,15 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell' | 'tsx';
+  language?:
+    | 'css'
+    | 'html'
+    | 'ts'
+    | 'markdown'
+    | 'json'
+    | 'shell'
+    | 'tsx'
+    | 'bash';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
