@@ -1,6 +1,5 @@
 {
   "name": "@digdir/designsystemet-react",
-  "type": "module",
   "version": "1.0.0-next.40",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
@@ -10,7 +9,7 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
   "license": "MIT",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -24,6 +23,7 @@
       "types": "./dist/react-types.d.ts"
     }
   },
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "files": [
     "dist/**"

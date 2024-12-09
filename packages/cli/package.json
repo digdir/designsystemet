@@ -9,12 +9,11 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
   "license": "MIT",
-  "type": "module",
-  "main": "./dist/src/index.js",
   "files": [
     "./dist/**"
   ],
   "bin": "dist/bin/designsystemet.js",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/src/index.js"

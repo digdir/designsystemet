@@ -9,6 +9,7 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/theme",
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": "./brand/digdir.css",
     "./*": "./brand/*"
