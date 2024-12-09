@@ -36,8 +36,7 @@ export const TokenModal = () => {
    --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
    --${colorCliOptions.support} ${setCliColors(colors.support)} \\
    --theme "${themeName}" \\
-   --write
-   `;
+   --write`;
 
   type InfoBoxType = {
     title: string;
