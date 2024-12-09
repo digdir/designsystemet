@@ -1,0 +1,137 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.itemsContainer {
+  margin-left: -28px;
+  width: calc(100% + 56px);
+  margin-top: 12px;
+  padding: 24px 28px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.item {
+  display: flex;
+  font-size: 16px;
+}
+
+.itemName {
+  font-weight: 500;
+}
+
+.itemName {
+  width: 85px;
+}
+
+.outer {
+  background-color: var(--ds-color-neutral-background-default) !important;
+}
+
+.inner {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  padding: 28px;
+  background-color: var(--ds-color-neutral-background-subtle);
+}
+
+.card {
+  border-radius: 8px;
+  background-color: var(--ds-color-neutral-background-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 24px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chips {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  width: 100%;
+  border-radius: 8px;
+  height: 200px;
+}
+
+.imgText {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.imgTitle {
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+.imgDesc {
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: 16px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  gap: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.user:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.userImg {
+  height: 44px;
+  width: 44px;
+  border-radius: 4px;
+}
+
+.userRole {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ds-color-neutral-text-subtle);
+  margin-bottom: -1px;
+}
+
+.userName {
+  font-size: 16px;
+}
+
+.userBtn {
+  margin-left: auto;
+}
+
+.test {
+  border-radius: 100px;
+}

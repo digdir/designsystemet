@@ -26,6 +26,7 @@ type HeaderProps = {
   betaTag?: boolean;
   skipLink?: boolean;
   themeSwitcher?: boolean;
+  transparentBackground?: boolean;
 };
 
 /**
@@ -63,6 +64,7 @@ const Header = ({
   betaTag,
   skipLink = true,
   themeSwitcher = false,
+  transparentBackground = false,
 }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
@@ -107,7 +109,11 @@ const Header = ({
         <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
       ) : null}
       <header
-        className={cl(classes.header, isHamburger && classes.hamburger)}
+        className={cl(
+          classes.header,
+          isHamburger && classes.hamburger,
+          transparentBackground && classes.transparentHeader,
+        )}
         ref={headerRef}
       >
         <div className={classes.container}>

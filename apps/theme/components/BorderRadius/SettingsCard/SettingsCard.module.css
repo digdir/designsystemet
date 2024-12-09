@@ -1,0 +1,22 @@
+.panelDesc {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.toggleGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.radioGroup {
+  margin-top: 16px;
+}
+
+.toggleHeading {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}

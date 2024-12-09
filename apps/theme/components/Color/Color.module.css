@@ -1,12 +1,12 @@
 .box {
-  height: 54px;
-  width: 102px;
+  height: 48px;
+  width: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: black;
   font-weight: 400;
-  border: 1px solid #d6d6d6;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
   cursor: pointer;
 }
