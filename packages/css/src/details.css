@@ -6,11 +6,11 @@
   --dsc-details-padding: var(--ds-spacing-2) var(--ds-spacing-4);
   --dsc-details-size: var(--ds-sizing-14);
 
-  /* default color: neutral */
-  --dsc-details-heading-background--hover: var(--ds-color-neutral-surface-default);
-  --dsc-details-heading-background--open: var(--ds-color-neutral-background-subtle);
-  --dsc-details-heading-background: var(--ds-color-neutral-background-default);
-  --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-details-background: var(--ds-color-background-default);
+  --dsc-details-heading-background--hover: var(--ds-color-surface-default);
+  --dsc-details-heading-background--open: var(--ds-color-background-subtle);
+  --dsc-details-heading-background: var(--ds-color-background-default);
+  --dsc-details-border-color: var(--ds-color-border-subtle);
 
   /* with color */
   [data-color]:where(:not([data-color='neutral'])) &,
