@@ -1,5 +1,5 @@
-import { generateThemeForColor } from '@/packages/cli/dist/src';
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import { generateThemeForColor } from '@digdir/designsystemet';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';

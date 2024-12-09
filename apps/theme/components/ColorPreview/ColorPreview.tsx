@@ -2,7 +2,7 @@ import {
   type ColorInfo,
   type ColorNumber,
   getColorNameFromNumber,
-} from '@/packages/cli/dist/src/colors';
+} from '@digdir/designsystemet';
 import {
   Button,
   Checkbox,

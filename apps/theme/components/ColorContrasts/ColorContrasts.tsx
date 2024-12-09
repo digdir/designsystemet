@@ -3,7 +3,7 @@ import {
   generateThemeForColor,
   getColorNameFromNumber,
   getContrastFromHex,
-} from '@/packages/cli/dist/src/colors';
+} from '@digdir/designsystemet';
 import {
   Field,
   Heading,
