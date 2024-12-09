@@ -1,0 +1,108 @@
+.page {
+  position: relative;
+}
+
+.header {
+  background-color: rgb(226, 226, 226);
+  padding: 40px;
+  height: 200px;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  padding: 40px;
+  width: calc(100% - 550px);
+  margin-bottom: 40px;
+  flex-grow: 500;
+}
+
+.colorsContainer {
+  overflow: auto;
+}
+
+.sideBarContainer {
+  width: 420px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.panel {
+  background-color: var(--ds-color-neutral-background-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 8px;
+  margin-top: 28px;
+  width: 100%;
+  max-width: 1390px;
+}
+
+.backLink {
+  color: var(--ds-color-accent-text-default);
+  margin-left: -4px;
+  display: inline-flex;
+  width: auto;
+  align-self: flex-start;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.panelToggleGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.panelToggleBtn {
+  border-radius: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  cursor: pointer;
+  font-size: 16px;
+  background-color: var(--ds-color-neutral-background-default);
+  display: flex;
+  align-items: center;
+}
+
+.active,
+.panelToggleBtn:hover {
+  border-color: var(--ds-color-neutral-border-default);
+  outline: 1px solid var(--ds-color-neutral-border-default);
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.group {
+  display: flex;
+  gap: 16px;
+  width: 300px;
+  align-items: center;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1500px) {
+  .content {
+    width: 100%;
+  }
+}
