@@ -27,7 +27,7 @@ export const BadgePosition = forwardRef<HTMLSpanElement, BadgePositionProps>(
   ) {
     return (
       <span
-        className={cl('ds-badge--placement', className)}
+        className={cl('ds-badge--position', className)}
         data-overlap={overlap}
         data-placement={placement}
         ref={ref}
