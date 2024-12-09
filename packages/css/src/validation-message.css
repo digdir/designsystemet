@@ -38,7 +38,7 @@
 
   &[data-color='neutral'] {
     --dsc-validation-message-icon-url: unset;
-    --dsc-validation-message-color: var(--ds-color-neutral-text-subtle);
+    --dsc-validation-message-color: unset; /* This does not set the color to "neutral". This will inherit the closest `color` set. */
     --dsc-validation-message-gap: 0; /* We don't display an icon for this */
 
     &::before {
