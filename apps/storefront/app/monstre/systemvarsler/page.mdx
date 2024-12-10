@@ -66,29 +66,27 @@ Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan b
 Test varslene på ekte brukere for å sikre at de er lette å forstå.
 
 
-## Design og opplevelse
-
-### Ulike alvorlighetsgrader
+## Ulike alvorlighetsgrader
 Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
 
 En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
 
-#### A) Kritiske systemfeil
+### A) Kritiske systemfeil
 Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
 
-#### B) Viktig melding om systemet
+### B) Viktig melding om systemet
 Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen oppsto. 
 
-#### C) Informasjon om systemet 
+### C) Informasjon om systemet 
 Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert` eller `modal`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
 
 
-### Hvordan presenterer vi varselet?
+## Design og opplevelse
 Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi bør velge den presentasjonsmåten som gjør at brukerne oppfatter varselet som nyttig. Varselet må ikke skape forvirring eller frustrasjon.  
 
 Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
 
-#### Når bruker vi feilsider?
+### Når bruker vi feilsider?
 En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske feil som hindrer brukeren i å fortsette å bruke tjenesten. Fordelen med feilsider er at de ikke krangler om oppmerksomheten med andre elementer på siden. 
 
 **Vi kan bruke feilsider når**
@@ -131,7 +129,7 @@ Når bruker prøver å få tilgang til en side som ikke eksisterer, kan vi også
 />
 
 
-#### Når bruker vi modaler?
+### Når bruker vi modaler?
 
 Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
@@ -156,7 +154,7 @@ Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med e
 />
 
 
-#### Når bruker vi alert?
+### Når bruker vi alert?
 `Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
 
 **Vi kan bruke `alert` når**
