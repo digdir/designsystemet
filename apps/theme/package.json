@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
