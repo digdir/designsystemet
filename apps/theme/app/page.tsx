@@ -1,9 +1,8 @@
 'use client';
 
 import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { Heading } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {
-  ColorError,
   ColorInfo,
   ColorMode,
   ContrastMode,
@@ -12,85 +11,30 @@ import type {
 import {
   areColorsContrasting,
   canTextBeUsedOnColors,
-  generateColorTheme,
-  generateThemeForColor,
   isHexColor,
 } from '@digdir/designsystemet/color';
+import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { ColorModal, Container } from '@repo/components';
+import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-
-import { Previews, Scales, ThemeToolbar } from '../components';
+import { useEffect, useRef } from 'react';
 import { Settings } from '../settings';
 import { useThemeStore } from '../store';
-import type { ThemeColors } from '../types';
-import { mapTokens } from '../utils/tokenMapping';
 
+import type { ThemeColors } from '../types';
+
+import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
-  const accentTheme = useThemeStore((state) => state.accentTheme);
-  const neutralTheme = useThemeStore((state) => state.neutralTheme);
-  const brandOneTheme = useThemeStore((state) => state.brandOneTheme);
-  const brandTwoTheme = useThemeStore((state) => state.brandTwoTheme);
-  const brandThreeTheme = useThemeStore((state) => state.brandThreeTheme);
-  const borderRadius = useThemeStore((state) => state.borderRadius);
   const selectedColor = useThemeStore((state) => state.selectedColor);
-  const setAccentTheme = useThemeStore((state) => state.setAccentTheme);
-  const setNeutralTheme = useThemeStore((state) => state.setNeutralTheme);
-  const setBrandOneTheme = useThemeStore((state) => state.setBrandOneTheme);
-  const setBrandTwoTheme = useThemeStore((state) => state.setBrandTwoTheme);
-  const setBrandThreeTheme = useThemeStore((state) => state.setBrandThreeTheme);
-  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
-
-  const [accentError, setAccentError] = useState<ColorError>('none');
-  const [neutralError, setNeutralError] = useState<ColorError>('none');
-  const [brandOneError, setBrandOneError] = useState<ColorError>('none');
-  const [brandTwoError, setBrandTwoError] = useState<ColorError>('none');
-  const [brandThreeError, setBrandThreeError] = useState<ColorError>('none');
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
-
-  const themeMode = (params.get('theme') as ColorMode) || 'light';
-  const contrastMode = (params.get('contrastMode') as ContrastMode) || 'aa';
-
-  useEffect(() => {
-    mapTokens();
-
-    // Get colors from query params or use default colors
-    const queryAccent = getQueryColor('accent', accentTheme.color);
-    const queryNeutral = getQueryColor('neutral', neutralTheme.color);
-    const queryBrand1 = getQueryColor('brand1', brandOneTheme.color);
-    const queryBrand2 = getQueryColor('brand2', brandTwoTheme.color);
-    const queryBrand3 = getQueryColor('brand3', brandThreeTheme.color);
-
-    // Generate color scales
-    const colors = generateColorTheme({
-      colors: {
-        main: {
-          accent: queryAccent,
-        },
-        support: {
-          brand1: queryBrand1,
-          brand2: queryBrand2,
-          brand3: queryBrand3,
-        },
-        neutral: queryNeutral,
-      },
-      contrastMode,
-    });
-
-    // Update colors and themes
-    updateColor('accent', queryAccent, colors.main.accent);
-    updateColor('neutral', queryNeutral, colors.neutral);
-    updateColor('brand1', queryBrand1, colors.support.brand1);
-    updateColor('brand2', queryBrand2, colors.support.brand2);
-    updateColor('brand3', queryBrand3, colors.support.brand3);
-  }, [contrastMode]);
+  const addColor = useThemeStore((state) => state.addColor);
+  const resetColors = useThemeStore((state) => state.resetColors);
 
   useEffect(() => {
     // Open modal on selected color change
@@ -133,40 +77,6 @@ export default function Home() {
       return queryColor as CssColor;
     }
     return returnColor;
-  };
-
-  /**
-   *
-   * Update all the states for a color
-   *
-   * @param type  The type of color to update
-   * @param color The color to update
-   * @param theme The theme to update
-   */
-  const updateColor = (
-    type: ThemeColors,
-    color: CssColor,
-    theme: ThemeInfo,
-  ) => {
-    const colorErrorSetterMap = {
-      accent: setAccentError,
-      neutral: setNeutralError,
-      brand1: setBrandOneError,
-      brand2: setBrandTwoError,
-      brand3: setBrandThreeError,
-    };
-
-    const themeColorSetterMap = {
-      accent: setAccentTheme,
-      neutral: setNeutralTheme,
-      brand1: setBrandOneTheme,
-      brand2: setBrandTwoTheme,
-      brand3: setBrandThreeTheme,
-    };
-
-    themeColorSetterMap[type](theme, color);
-    colorErrorSetterMap[type](getColorError(theme.light));
-    colorQuerySetter(type, color);
   };
 
   /**
@@ -213,25 +123,10 @@ export default function Home() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const updateBoderRadius = (radius: string) => {
-    const previewElem = document.getElementById('preview');
-    if (previewElem) {
-      previewElem.style.setProperty('--ds-border-radius-base', radius);
-    }
-
-    setBorderRadius(radius);
-    setQueryParams({ borderRadius: radius });
-  };
-
-  const updateTheme = (theme: ColorMode) => {
-    setQueryParams({ theme });
-  };
-
   /* get theme from query on initial load */
   useEffect(() => {
     const borderRadius = params.get('borderRadius') as string;
     if (typeof borderRadius === 'string') {
-      updateBoderRadius(borderRadius);
     }
   }, []);
 
@@ -264,39 +159,37 @@ export default function Home() {
       <ColorModal
         weight={selectedColor.color.number}
         hex={selectedColor.color.hex}
-        namespace={selectedColor.type}
+        namespace={'d'}
         colorModalRef={colorModalRef}
       />
 
       <main className={classes.main}>
         <Container>
-          <div className={classes.test2}>
-            <div className={classes.test}>Temabygger</div>
+          <div className={classes.header}>
+            <Paragraph data-size='lg'>Designsystemet sin Temabygger</Paragraph>
+            <Heading data-size='xl' className={classes.heading}>
+              Sett i gang med å bygge ditt
+              <span className={classes.headerText}> eget tema</span>
+            </Heading>
+            <Paragraph data-size='md' variant='long' className={classes.desc}>
+              Far compensation times than my client our too it a now, hero's
+              been rationale perfecting which towards absolutely fellow at on
+              variety
+            </Paragraph>
+            <div className={classes.btnGroup}>
+              <Button data-color='neutral' asChild>
+                <NextLink href='/welcome'>
+                  <PaletteIcon title='a11y-title' fontSize='1.5rem' />
+                  Bygg tema
+                </NextLink>
+              </Button>
+              <Button data-color='neutral' variant='secondary'>
+                <BookIcon title='a11y-title' fontSize='1.5rem' />
+                Dokumentasjon
+              </Button>
+            </div>
           </div>
-          <Heading data-size='md' className={classes.title}>
-            Sett opp temaet ditt
-          </Heading>
-
-          <ThemeToolbar
-            accentError={accentError}
-            neutralError={neutralError}
-            brand1Error={brandOneError}
-            brand2Error={brandTwoError}
-            brand3Error={brandThreeError}
-            contrastMode={contrastMode}
-            onColorChanged={(colorType, color) => {
-              const theme = generateThemeForColor(color, contrastMode);
-              updateColor(colorType, color, theme);
-            }}
-            onContrastModeChanged={(mode) => {
-              setQueryParams({ contrastMode: mode });
-            }}
-            onBorderRadiusChanged={updateBoderRadius}
-            borderRadius={borderRadius}
-          />
-          <Scales themeMode={themeMode} />
-
-          <Previews themeMode={themeMode} onThemeModeChange={updateTheme} />
+          <Previews />
         </Container>
       </main>
     </div>

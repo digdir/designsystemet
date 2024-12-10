@@ -1,25 +1,28 @@
 # @digdir/designsystemet-theme
 
-This package contains the following predefined themes for Designsystemet
+This package contains the following predefined Designsystemet themes for use in Digdir.
 
-- `altinn`
 - `digdir`
-- `tilsynet`
-- `brreg`
+- `altinn`
+- `uutilsynet`
+- `portal`
 
 Build your own theme on https://theme.designsystemet.no/
 
 ## Usage
 
-When importing the package make sure to specify which brand tokens you want to import. By default the `digdir` is imported if you don't specify a brand.
+Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.
+
+When importing the package make sure to specify which theme. 
+By default `digdir` is used.
 
 ```tsx
-import '@digdir/designsystemet-theme/<brand>.css';
+import '@digdir/designsystemet-theme/<theme>.css';
 
-// This imports Digdir brand css tokens
+// Digdir theme
 import '@digdir/designsystemet-theme';
 
-//  This imports Altinn css tokens
+// Altinn theme
 import '@digdir/designsystemet-theme/altinn.css';
 ```
 
@@ -39,3 +42,4 @@ div {
   padding: var(--ds-spacing-1);
 }
 ```
+
