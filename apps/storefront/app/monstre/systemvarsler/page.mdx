@@ -193,7 +193,7 @@ Varsler som vises ved sidelasting, kalles statiske varsler. Disse trenger ingen 
 
 ### Dynamiske varsler
 
-Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse varslene bør for eksempel bruke `role="alert"` for å sikre at de leses opp umiddelbart når de vises. `role="alert"` plasseres på en `<div>` som er tom ved sidelasting, og deretter oppdateres innholdet i `<div>` når varselet skal vises. Dette sikrer at skjermlesere oppfatter endringen i innholdet. 
+Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse varslene bør for eksempel bruke `role="alert"`. For å sikre at skjermlesere oppfatter endringen i innholdet kan `role="alert"` plasseres på en `<div>` som er tom ved sidelasting, og deretter oppdateres innholdet i `<div>` når varselet skal vises. 
 
 **Eksempel:**
 
@@ -206,6 +206,20 @@ Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse
 </script>
 ```
 
+Ved å bruke en tom `alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
+
+
+### Nivåer for dynamiske varsler
+For kritiske varsler som må leses opp umiddelbart, bruk `role="alert"`, som sørger for at skjermleseren avbryter pågående opplesninger og leser opp varselet straks innholdet endres. For mindre presserende meldinger som kan vente, kan `role="status"` være et bedre valg, da dette ikke avbryter, men leses opp når skjermleseren har tid. 
+
+**Eksempel:**
+
+```
+<div role="alert">Kritisk feil oppstod, vennligst prøv igjen.</div>
+<div role="status">Endringen ble lagret.</div>
+```
+
+Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152) om hvilke roller du skal bruke på ulike elementer. 
 
 
 
