@@ -110,6 +110,27 @@ Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargem
 `}
 </CodeSnippet>
 
+## Korleis komponentar blir påverka
+
+Me delar komponentar inn i 3 grupper for farge:
+- Eksplisitt
+- Nøytral
+- Cascading
+
+### Eksplisitt
+
+Er komponentar som gjer meir av fargen sin, og `data-color` må bli direkte satt. Dette er komponentar som `Alert` og `ErrorMessage`.
+Å "gjere meir av fargen sin" betyr at det t.d. kan være ikon som blir satt basert på farge.
+
+### Nøytral
+
+Dette er komponentar som alltid skal være nøytrale, og blir verken påverka av arva farge eller direkte `data-color`. Dette er komponentar som `Modal` og `Tooltip`.
+Desse brukar alltid `neutral` fargen.
+
+### Cascading
+
+Denne gruppa inneheld resten av komponentane, og vil arve farge frå næraste forelder med `data-color` satt. 
+
 ## Kort oppsummert
 
 Du endrar farge med `data-color`, men denne må bli satt på nytt dersom du endrar fargemodus med `data-color-scheme`. Nokre komponentar arvar farge frå næraste forelder med `data-color` satt.
