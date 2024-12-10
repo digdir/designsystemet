@@ -37,29 +37,38 @@ Vi skal nå se nærmere på språket vi bruker i varslene, og hvordan vi bør ut
 
 Et godt systemvarsel skal være informativt, klart og brukervennlig.
 
-Skriv det viktigste først 
+<br/>
+
+**Skriv det viktigste først** 
+
 Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan bruke mellomoverskrifter og punktlister for å gjøre det enklere å skanne informasjonen. 
 
-### Skriv på en imøtekommende og hjelpsom måte
+<br/>
 
-- Vær tydelig på at det ikke er brukerens feil. Fortell tydelig dersom feilen ligger hos oss. 
-- Hvis feilen ligger hos oss, kan vi gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten». 
+**Skriv på en imøtekommende og hjelpsom måte** 
+
+- Vær tydelig på at det ikke er brukerens feil. Fortell at feilen ligger hos oss. 
+- Vi kan gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten». 
 - Vær forsiktig med humor - det er sjelden morsomt når noe går galt.
 
-    
-### Hjelp brukeren videre
+<br/>
+
+**Hjelp brukeren videre** 
 
 - Fortell brukerne hva de kan prøve selv.
 - Pass på at brukerne har informasjon til å kunne beskrive feilen til brukerstøtte, for eksempel hvor feilen oppsto. Oppgi feilkoden hvis den er viktig for at brukerstøtte skal kunne løse feilen.
 - Oppgi kontaktinformasjon til brukerstøtte hvis det er en systemfeil. Unngå ordet “vennligst” (“Vennligst kontakt brukerstøtte“), det er en overføring fra engelsk og kan oppfattes som uhøflig. Skriv heller ”Du kan kontakte brukerstøtte“. 
 
-### Test varslene
+<br/>
+
+**Test varslene** 
+
 Test varslene på ekte brukere for å sikre at de er lette å forstå.
 
 
 ## Design og opplevelse
 
-### Ulike alvorlighetsgrader for systemvarsler
+### Ulike alvorlighetsgrader
 Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
 
 En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
@@ -80,7 +89,7 @@ Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi b
 Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
 
 #### Når bruker vi feilsider?
-En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske feil som hindrer brukeren i å fortsette å bruke tjenesten. Fordelen med feilsider er at de ikke krangler om oppmerksomheten til brukerne. 
+En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske feil som hindrer brukeren i å fortsette å bruke tjenesten. Fordelen med feilsider er at de ikke krangler om oppmerksomheten med andre elementer på siden. 
 
 **Vi kan bruke feilsider når**
 - det har oppstått tekniske feil som gjør at hele tjenesten er utilgjengelig
@@ -105,7 +114,10 @@ Fortell alltid brukerne hva som er galt og hvordan det påvirker dem og/eller sy
   caption='Eksempelet viser en full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukerne gjorde. Vi gir også brukerne noen alternativer for å komme videre.'
 />
 
-**Når siden ikke eksisterer**
+#### Når siden ikke eksisterer
+
+Når bruker prøver å få tilgang til en side som ikke eksisterer, kan vi også bruke en full feilside. Da bør vi
+
 - gi brukeren mulighet til å søke etter informasjonen
 - gi brukerne forslag til andre relevante sider som tar utgangspunkt i samme URL 
 - gi brukeren mulighet til å gå til forsiden
@@ -115,7 +127,7 @@ Fortell alltid brukerne hva som er galt og hvordan det påvirker dem og/eller sy
   src='/img/Full-feilside404.png'
   alt='Skjermbilde som viser eksempel på en full feilside med 404-feil. På feilsiden informeres det om at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Det står også "Du kan søke her etter informasjonen du leter etter" med et tilhørende søkefelt. Deretter viser vi forslag til sider som kan være aktuelle ut i fra lenken brukeren forsøkte å nå.'
   boxShadow={true}
-  caption='Eksempel på en full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller at det er en feil i lenken. Vi gir brukerne mulighet til å søke etter informasjonen, og foreslår noen aktuelle sider ut fra lenken brukerne klikket på.'
+  caption='Eksempel på en full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller at det er en feil i lenken. Vi gir brukerne mulighet til å søke etter informasjonen, og foreslår noen aktuelle sider ut fra lenken de forsøkte å gå til.'
 />
 
 
