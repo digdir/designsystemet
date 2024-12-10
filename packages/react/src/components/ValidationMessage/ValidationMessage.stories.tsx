@@ -13,7 +13,7 @@ type Story = StoryObj<typeof ValidationMessage>;
 
 export const Preview: Story = {
   args: {
-    children: 'Dette er en beskrivende feilmelding.',
+    children: 'Dette er en valideringsmelding.',
     'data-size': 'md',
     'data-color': 'danger',
   },

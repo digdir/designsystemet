@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.41
+
+### Patch Changes
+
+- docs: :memo: Fix some outdated information in readme ([#2865](https://github.com/digdir/designsystemet/pull/2865))
+
+## 1.0.0-next.40
+
 ## 1.0.0-next.39
 
 ### Patch Changes

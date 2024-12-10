@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
-import './globals.css';
+
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
+import 'react-color-palette/css';
+import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Figma, Footer, Github, Header, Slack } from '@repo/components';
+
+import { ThemeWrapper } from '../components/ThemeWrapper/ThemeWrapper';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
@@ -67,9 +71,11 @@ export default function RootLayout({
   return (
     <html lang='no'>
       <body>
-        <Header menu={menu} betaTag />
-        <div className='content'>{children}</div>
-        <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+        <ThemeWrapper>
+          <Header menu={menu} betaTag transparentBackground={true} />
+          <div className='content'>{children}</div>
+          <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+        </ThemeWrapper>
       </body>
     </html>
   );
