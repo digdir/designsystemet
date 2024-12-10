@@ -13,8 +13,8 @@ export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
     <div>
       <Heading data-size='xs'>Velg border radius</Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        Logbook a sitting success parents' girl in it however, greater, full
-        with he that pleasures up attention to hardly to power definitely hardly
+        Denne funksjonaliteten blir foreløpig ikkje med i kodesnutten for å ta i
+        bruk et tema, men vi jobber med å få det inn!
       </Paragraph>
 
       {/* BORDER RADIUS */}

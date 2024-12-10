@@ -166,15 +166,14 @@ export default function Home() {
       <main className={classes.main}>
         <Container>
           <div className={classes.header}>
-            <Paragraph data-size='lg'>Designsystemet sin Temabygger</Paragraph>
+            <Paragraph data-size='lg'>Designsystemet sin temabygger</Paragraph>
             <Heading data-size='xl' className={classes.heading}>
               Sett i gang med å bygge ditt
               <span className={classes.headerText}> eget tema</span>
             </Heading>
             <Paragraph data-size='md' variant='long' className={classes.desc}>
-              Far compensation times than my client our too it a now, hero's
-              been rationale perfecting which towards absolutely fellow at on
-              variety
+              Skal du ta i bruk Designsystemet i din egen organisasjon med dine
+              egne profilfarger og preferanser? Temabyggeren hjelper deg i gang.
             </Paragraph>
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
@@ -183,9 +182,11 @@ export default function Home() {
                   Bygg tema
                 </NextLink>
               </Button>
-              <Button data-color='neutral' variant='secondary'>
-                <BookIcon title='a11y-title' fontSize='1.5rem' />
-                Dokumentasjon
+              <Button data-color='neutral' variant='secondary' asChild>
+                <NextLink href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
+                  <BookIcon title='a11y-title' fontSize='1.5rem' />
+                  Dokumentasjon
+                </NextLink>
               </Button>
             </div>
           </div>

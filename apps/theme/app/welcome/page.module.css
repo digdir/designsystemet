@@ -1,30 +1,31 @@
 .page {
   height: calc(100vh - 100px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .card {
   width: 550px;
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  padding: 48px;
-  border-radius: 16px;
-  margin-top: -50px;
+  padding: 0 40px;
+  flex-direction: column;
 }
 
 .heading {
-  margin-bottom: 16px;
+  margin-top: 32px;
+  margin-bottom: 12px;
 }
 
 .paragraph {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .btn {
-  margin-top: 40px;
+  display: inline-flex;
 }
 
 .textfield {
-  margin-top: 24px;
+  margin-bottom: 32px;
+  width: 320px;
+}
+
+.tabs {
+  padding: 46px 40px 0 40px;
 }

@@ -58,8 +58,9 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
         Velg fargene dine
       </Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        Logbook a sitting success parents' girl in it however, greater, full
-        with he that pleasures up attention to hardly to power definitely hardly
+        Du kan legge til så mange hovedfarger og støttefarger du har behov for.
+        Vær oppmerksom på at du må ha Figma Enterprise for å ha mer enn 4 farger
+        i hver kategori.
       </Paragraph>
       {/* MAIN COLORS */}
       <div className={classes.group}>

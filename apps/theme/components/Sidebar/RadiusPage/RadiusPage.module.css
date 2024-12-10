@@ -1,6 +1,10 @@
 .desc {
-  margin-top: 12px;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 26px;
+  color: var(--ds-color-danger-text-subtle);
+  background-color: var(--ds-color-danger-surface-default);
+  padding: 16px;
+  border-radius: 4px;
 }
 
 .separator {
