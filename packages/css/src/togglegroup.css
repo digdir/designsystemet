@@ -18,5 +18,16 @@
 
   button {
     border-radius: var(--dsc-togglegroup-border-radius);
+
+    @media (forced-colors: active) {
+      &[aria-checked='true'] {
+        background: ButtonText;
+        color: CanvasText;
+
+        & svg {
+          color: CanvasText;
+        }
+      }
+    }
   }
 }

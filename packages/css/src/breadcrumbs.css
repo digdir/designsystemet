@@ -28,6 +28,10 @@
     mask: center / contain no-repeat var(--dsc-breadcrumbs-icon-url);
     vertical-align: middle;
     width: var(--dsc-breadcrumbs-chevron-size);
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   /* When link is direct child of Breadcrumbs, make it back button */
