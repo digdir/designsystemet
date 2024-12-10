@@ -43,7 +43,14 @@ const getPath = (href: string | undefined): string => {
 
 const components = {
   p: (props: Props) => (
-    <Paragraph {...props} className='sb-unstyled' data-color-scheme='light' />
+    <Paragraph
+      {...props}
+      className='sb-unstyled'
+      data-color-scheme='light'
+      style={{
+        backgroundColor: 'transparent',
+      }}
+    />
   ),
   ol: (props: Props) => (
     <List.Ordered
