@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.41
+
+### Minor Changes
+
+- ValidationMessage: Add support for all severity colors and tweak icons ([#2866](https://github.com/digdir/designsystemet/pull/2866))
+
 ## 1.0.0-next.40
 
 ### Patch Changes
