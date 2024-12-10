@@ -5,7 +5,7 @@ import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Input } from '../form/Input';
+import { Input } from '../Input';
 
 type ChipBaseProps = {
   /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
