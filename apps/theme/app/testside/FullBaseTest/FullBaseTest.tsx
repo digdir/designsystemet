@@ -1,16 +1,15 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '@digdir/designsystemet/color';
 import {
-  calculateContrastOneColor,
-  getBaseColor,
-  getContrastFromLightness,
+  getContrastDefault,
   getLightnessFromHex,
+  getLuminanceFromLightness,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
 
 import { ContrastBox } from '../ContrastBox/ContrastBox';
 
+import chroma from 'chroma-js';
 import classes from './FullBaseTest.module.css';
 export const FullBaseTest = () => {
   const [blueColors, setBlueColors] = useState<CssColor[]>([]);
@@ -21,52 +20,19 @@ export const FullBaseTest = () => {
   }, []);
 
   const GenerateColor = (color: CssColor) => {
-    const leoBackgroundColor = new BackgroundColor({
-      name: 'backgroundColor',
-      colorKeys: ['#ffffff'],
-      ratios: [1],
-    });
+    const lightnessScale: number[] = [];
 
-    let lightnessScale: number[] = [];
+    for (let i = 0; i <= 100; i++) {
+      lightnessScale.push(getLuminanceFromLightness(i));
+    }
 
-    lightnessScale = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-      22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-      40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
-      58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
-      76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
-      94, 95, 96, 97, 98, 99, 100,
-    ];
+    const output: CssColor[] = [];
 
-    const getColorContrasts = (
-      color: CssColor,
-      lightnessScale: number[],
-      backgroundColor: CssColor,
-    ) => {
-      return lightnessScale.map((lightness) =>
-        getContrastFromLightness(lightness, color, backgroundColor),
-      );
-    };
+    for (const lightness of lightnessScale) {
+      output.push(chroma(color).luminance(lightness).hex() as CssColor);
+    }
 
-    const leoColor = new Color({
-      name: 'color',
-      colorKeys: [color],
-      ratios: [
-        ...getColorContrasts(
-          color,
-          lightnessScale,
-          leoBackgroundColor.colorKeys[0],
-        ),
-      ],
-    });
-
-    const theme = new Theme({
-      colors: [leoColor],
-      backgroundColor: leoBackgroundColor,
-      lightness: 100,
-    });
-
-    return theme.contrastColorValues;
+    return output;
   };
 
   const Column = ({ color, index }: { color: CssColor; index: number }) => {
@@ -133,7 +99,6 @@ export const FullBaseTest = () => {
   }) => {
     let lightness = Math.round(getLightnessFromHex(color));
     if (theme === 'dark' || theme === 'contrast') {
-      color = getBaseColor(color);
       lightness = lightness <= 30 ? 70 : 100 - lightness;
     }
 
@@ -152,7 +117,7 @@ export const FullBaseTest = () => {
     const baseHover = blueColors[lightness - modifier];
     const baseActive = blueColors[lightness - modifier * 2];
 
-    const contrastOneColor = calculateContrastOneColor(blueColors[lightness]);
+    const contrastOneColor = getContrastDefault(blueColors[lightness]);
 
     return (
       <div
