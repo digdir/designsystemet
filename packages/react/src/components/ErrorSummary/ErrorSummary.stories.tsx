@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 
 import { Button } from '../Button';
-import { Textfield } from '../form/Textfield';
+import { Textfield } from '../Textfield';
 
 import { ErrorSummary } from './';
 

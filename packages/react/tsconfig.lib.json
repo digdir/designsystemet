@@ -10,6 +10,6 @@
     "incremental": true,
     "types": ["./declarations.d.ts", "./react-types.d.ts"]
   },
-  "include": ["src"],
+  "include": ["src", "stories/Loaders.mdx"],
   "exclude": ["src/**/*.stories.ts*", "src/**/*.test.ts*", "stories", "src/**/*.mdx"]
 }
