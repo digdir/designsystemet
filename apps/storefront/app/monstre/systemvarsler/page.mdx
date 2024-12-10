@@ -185,36 +185,28 @@ Det neste eksempelet viser en lokal `alert` som er plassert i nærheten av der f
 
 ## Kode
 
-Det er flere viktige ting å huske på for å kode systemvarsler riktig. Gjør vi det riktig, sikrer vi at alle brukere får riktig informasjon, til rett tid. 
+For å sikre at alle brukere får med seg systemvarsler til riktig tid, må du passe på å bruke riktige attributter. 
 
-### Skjermlesere og kritiske globale varsler
-Brukere med skjermleser må få kritiske globale varsler, selv når de hopper direkte til hovedinnholdet på siden. Skjermlesere hopper ofte over varsler som vises når brukerne navigerer rett til hovedinnholdet.  
+### Statiske varsler
 
-Plasser varselet på en slik måte at det alltid blir lest opp når siden lastes inn. Det kan du gjøre ved å ha aria-attributter, som sikrer at skjermleseren gjenkjenner innholdet. Du kan også velge å gi varselet en tydelig overskrift (med passende heading-nivå), som skjermleseren kan gå til. 
+Varsler som vises ved sidelasting, kalles statiske varsler. Disse trenger ingen spesielle attributter, siden de er synlige fra starten av og kan plasseres logisk i innholdshierarkiet. Vær oppmerksom på hvilket overskriftsnivå varselet får i innholdshierarkiet.
 
-### Statiske vs. dynamiske varsler
-Varsler som vises når du siden blir lastet inn, kalles statiske varsler, og varsler som dukker opp underveis er dynamiske varsler. 
+### Dynamiske varsler
 
-Statiske varsler trenger vanligvis ikke å ha `aria-live`. De er synlige fra starten av, og brukerne kan gå til dem. Statiske varsler må ha en tydelig plass i sidens innholdshierarki. Hvis det for eksempel er en kritisk melding som skal leses opp tidlig, plasserer vi den slik at skjermlesere alltid møter meldingen, også når brukeren hopper rett til hovedinnholdet.
+Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse varslene bør for eksempel bruke `role="alert"` for å sikre at de leses opp umiddelbart når de vises. `role="alert"` plasseres på en `<div>` som er tom ved sidelasting, og deretter oppdateres innholdet i `<div>` når varselet skal vises. Dette sikrer at skjermlesere oppfatter endringen i innholdet. 
 
-Dynamiske varsler må alltid bruke `aria-live`, fordi de dukker opp uventet. Hvis vi passer på at det blir lastet dynamisk inn, vil både brukere med skjermlesere og seende brukere raskt oppfatte endringen og meldingen. 
+**Eksempel:**
 
-#### Hvordan skal vi bruke nivåene `assertive` og `polite`
-Kritiske feil skal leses opp med en gang. Dette løser vi med `role="alert"`, som tilsvarer `aria-live="assertive"`, men gir litt mer semantikk til skjermlesere.
+```
+<div role="alert" id="dynamicAlertContainer"></div>
 
-Vi kan bruke `role="status"` når brukerne ikke trenger å få med seg meldingen med en gang, men når den likevel inneholder viktig informasjon som brukere bør se før de fortsetter.
+<script>
+  // Når et varsel skal vises
+  document.getElementById('dynamicAlertContainer').innerHTML = "<p>Kritisk oppdatering!</p>";
+</script>
+```
 
-#### Alternative løsninger
-Det går også an å alltid laste kritiske varsler dynamisk. Da vil `aria-live` fungere for de som bruker skjermlesere, og seende brukere oppdager den kanskje raskere fordi det skjer en endring. Da er det viktig at elementet med `aria-live` er der ved sidelasting, og innholdet legges til når siden er lastet. Ellers vil ikke alle skjermlesere fange opp live-regionen.
 
-### Bruk av fokus
-Hvis vi viser et dynamisk varsel i en `modal` er det viktig at den får fokus når den vises. 
-
-Vi setter fokus ved å bruke metoden `focus()` i JavaScript. Da bestemmer vi at fokuset skal gå til det første interaktive elementet i modalen. Slik sikrer vi at brukerne ser varselet, og kan handle umiddelbart, for eksempel lukke det.  
-
-Det er også viktig å passe på at når brukerne lukker varselet, så går fokus til et logisk sted på siden/i tjenesten, for eksempel der hen var før varselet ble åpnet. Slik passer vi på at brukerne fortsatt opplever at de får riktig sammenheng og at det er lett å navigere. 
-
-Varsler av typen `alert` skal ikke få fokus, da de brukes for at brukeren skal kunne beholde fokuset der det var.
 
 
 ### Relevante lenker
