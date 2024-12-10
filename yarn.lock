@@ -1748,7 +1748,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
-    "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
     "@commander-js/extra-typings": "npm:^12.1.0"
     "@tokens-studio/sd-transforms": "npm:1.2.2"
     "@types/apca-w3": "npm:^0.1.3"
@@ -16932,7 +16931,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "theme@workspace:apps/theme"
   dependencies:
-    "@adobe/leonardo-contrast-colors": "npm:^1.0.0"
     "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
