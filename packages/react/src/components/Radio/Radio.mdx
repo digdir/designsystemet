@@ -1,0 +1,167 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
+import * as RadioStories from './Radio.stories';
+import * as useRadioGroupStories from '../../utilities/hooks/useRadioGroup/useRadioGroup.stories';
+
+<Meta of={RadioStories} />
+
+# Radio
+
+`Radio` viser brukeren en liste med alternativer de kan velge mellom. Brukerne kan bytte mellom alternativene, men må velge ett. Bruk `Fieldset` for å gruppere alternativknappene.
+
+<Primary />
+<Controls />
+
+## Slik bruker du radio
+
+```tsx
+import { Radio } from '@digdir/designsystemet-react';
+
+<Fieldset>
+  <Fieldset.Legend>Er du over 18 år?</Fieldset.Legend>
+  <Radio value='Ja'>Ja</Radio>
+  <Radio value='Ne'>Nei</Radio>
+</Fieldset>;
+```
+
+## Eksempler
+
+<br />
+
+### Enkel radio
+
+`Radio` skal alltid ha en `label`. Når du bruker `label` fra en annen plass, husk å bruke `aria-label` eller `aria-labelledby`.
+
+<Canvas of={RadioStories.AriaLabel} />
+
+## `Fieldset` og `useRadioGroup`
+
+Bruk `Fieldset` og `useRadioGroup` for gruppering av alternativknapper.
+
+<Canvas of={RadioStories.Group} />
+
+Til `useRadioGroup` kan du sende inn:
+
+<ArgTypes of={useRadioGroupStories.UseRadioGroup} />
+
+I respons får du objektet:
+
+```ts
+{
+  getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt spre på ValidationMessage for å koble feilmelding til radio gruppen
+  setValue: string, // Funksjon for å sette radio gruppens verdi
+  value: string, // Nåværende verdi for radio gruppen
+}
+```
+
+Eksempel på bruk:
+
+```tsx
+const { getRadioProps, validationMessageProps } = useRadioGroup({
+  name: 'my-radio-group',
+  value: 'sjokolade',
+  error: 'Du må velge et alternativ',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Velg din favorittsmak blant alternativene.
+    </Fieldset.Description>
+    <Radio label='Vanilje' {...getRadioProps('vanilje')} />
+    <Radio label='Jordbær' {...getRadioProps('jordbær')} />
+    <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
+### Feilmelding
+
+Bruk `error` på `Fieldset` for å vise feilmelding.
+
+Her må vi bruke `Fieldset`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
+
+<Canvas of={RadioStories.WithError} />
+
+### Kontrollert
+
+Bruk `value` på `Fieldset` for å kontrollere verdiene selv.
+
+<Canvas of={RadioStories.Controlled} />
+
+### Readonly
+
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+
+<Canvas of={RadioStories.ReadOnly} />
+
+### Disabled
+
+Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
+
+<Canvas of={RadioStories.Disabled} />
+
+### Inline
+
+`Radio` skal som hovedregel *ikke* plasseres på samme linje. Men, hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. 
+
+<Canvas of={RadioStories.Inline} />
+
+## Retningslinjer
+
+Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [`Checkbox`](/docs/komponenter-checkbox--docs).
+
+Vi ha opptil syv alternativer i en gruppe. Trenger vi å gi brukerne mer enn syv valg, bør vi heller bruke [`Combobox`](/docs/komponenter-combobox--docs)-komponenten. Hvis vi bare skal gi brukerne ett valg, kan en [`Switch`](/docs/komponenter-switch--docs) eller [`Checkbox`](/docs/komponenter-checkbox--docs) passe bedre.
+
+### Sortering
+
+Alternativene skal som hovedregel sorteres alfabetisk. Velger du å presentere de mest aktuelle alternativene først kan det bli vanskelig å finne ønsket alternativ. Du kan også risikere å påvirke svaret, noe som er uheldig.
+
+### Plassering
+
+`Radio` skal som hovedregel plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
+
+Hvis vi bare har to valg med korte `labels`, kan vi vise dem ved siden av hverandre. I en [likert-skala](https://docs.altinn.studio/nb/app/development/ux/components/likert/) vil det også være naturlig å vise dem ved siden av hverandre. I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+
+### Unngå forhåndsvalgt alternativ
+
+Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ. Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg, eller ikke klarer å ta et bevisst valg selv.
+
+<br />
+
+## Tekst i komponenten
+
+En gruppe med alternativknapper bør alltid ha en `legend` og eventuelt en `description` dersom hjelpetekst er nødvendig.
+
+Radioknapper skal alltid ha en `label`. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte. Radio-komponenten kan også ha `description`. Da kommer den rett under `label`.
+
+<img
+  src='/img/component-guidelines/radio/radio-anatomy.png'
+  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med alternativknapper.'
+/>
+
+<br />
+
+## Tilgjengelighet
+
+Pass på at det er nok luft rundt hver alternativknapp, slik at den er lett å velge også på berøringsskjermer.
+
+Unngå å plassere alternativknapper ved siden av hverandre. Det gjør det vanskelig å lese. Det skaper også problemer for brukere som må forstørre (zoome) en nettside eller app for å se godt nok.
+
+Merk at vi bruker piltastene til å velge alternativer i `Radio`-komponenten, ikke Tab-tasten.
+
+- Pil opp/venstre - går til forrige valg
+- Pil ned/høyre - går til neste valg
+- Mellomromstasten - går til det første alternativet i en gruppe med alternativknapper, når gruppa ikke har et forhåndsvalgt alternativ.
+- Tab - går til hele gruppa med alternativer.
+
+## CSS Variabler
+
+<CssVariables css={css} />
+
