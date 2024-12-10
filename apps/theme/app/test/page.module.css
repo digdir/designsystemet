@@ -1,0 +1,20 @@
+.page {
+  margin-top: 24px;
+  margin-bottom: 64px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  height: 50px;
+  width: 80px;
+}
+
+.group {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
