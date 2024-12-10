@@ -1,6 +1,6 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
   type ColorMode,
+  type CssColor,
   generateThemeForColor,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

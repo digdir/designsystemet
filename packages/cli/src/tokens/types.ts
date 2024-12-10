@@ -1,4 +1,4 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '../colors/types';
 
 export type Token = { $value: string; $type: string };
 export type Tokens1ary = Record<string, Token>;
