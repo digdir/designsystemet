@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Style for High Contrast mode
+Added styling for High Contrast mode on Windows
