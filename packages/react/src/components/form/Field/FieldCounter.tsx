@@ -58,7 +58,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
           {hasExceededLimit && label(over, remainder)}
         </div>
         <ValidationMessage
-          data-color={hasExceededLimit ? 'danger' : 'success'}
+          data-color={hasExceededLimit ? 'danger' : 'neutral'}
           ref={ref}
           {...rest}
         >

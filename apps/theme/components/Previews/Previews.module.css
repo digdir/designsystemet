@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 48px 0 24px;
+  margin: 32px 0 24px;
 }
 
 .menu {
@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  padding: 9px 20px;
+  padding: 9px 14px;
   border-radius: 500px;
   border: none;
   background-color: transparent;
@@ -28,7 +28,7 @@
 }
 
 .menuItemActive {
-  background-color: var(--ds-color-accent-surface-default);
+  background-color: var(--ds-color-accent-surface-hover);
 }
 
 .menuItem[aria-disabled] {
@@ -72,13 +72,10 @@
 .preview {
   --background: var(--neutral-2);
   --foreground: var(--neutral-1);
-
   width: 100%;
   border-radius: 12px;
   display: flex;
   gap: 32px;
-  box-shadow: var(--ds-shadow-md);
-  padding: var(--ds-spacing-4);
 }
 
 .preview[data-color-scheme='dark'],

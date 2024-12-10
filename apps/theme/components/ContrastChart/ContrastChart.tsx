@@ -3,7 +3,7 @@ import {
   generateThemeForColor,
   getColorNameFromNumber,
   getContrastFromHex,
-} from '@/packages/cli/dist/src';
+} from '@digdir/designsystemet';
 
 import cl from 'clsx/lite';
 import classes from './ContrastChart.module.css';

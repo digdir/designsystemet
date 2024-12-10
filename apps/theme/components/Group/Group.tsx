@@ -1,19 +1,19 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ColorInfo } from '@digdir/designsystemet/color';
+import type { ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
-import type { ThemeColors } from '../../types';
 import { Color } from '../Color/Color';
 
+import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorInfo[];
+  colors: number[];
+  colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
   featured?: boolean;
-  type: ThemeColors;
 };
 
 export const Group = ({
@@ -21,16 +21,13 @@ export const Group = ({
   colors,
   showColorMeta,
   names,
-  type,
+  colorScale,
   featured = false,
 }: GroupProps) => {
+  const appearance = useThemeStore((state) => state.appearance);
   return (
     <div className={classes.group}>
-      {header && (
-        <div className={cl(classes.header, featured && classes.featured)}>
-          {header}
-        </div>
-      )}
+      {header && <div className={cl(classes.header)}>{header}</div>}
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
@@ -39,17 +36,20 @@ export const Group = ({
         </div>
       )}
 
-      <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
+      <div className={cl(classes.colors)}>
         {colors.map((item, index) => (
-          <RovingFocusItem key={index} value={item.name} asChild>
+          <RovingFocusItem key={index} value={'3'} asChild>
             <Color
-              color={item}
-              colorNumber={5}
+              color={
+                appearance === 'light'
+                  ? colorScale.light[item].hex
+                  : colorScale.dark[item].hex
+              }
+              colorNumber={item}
               contrast={'dd'}
               lightness={'dd'}
-              hex={item.hex}
               showColorMeta={showColorMeta}
-              type={type}
+              name='33'
             />
           </RovingFocusItem>
         ))}
