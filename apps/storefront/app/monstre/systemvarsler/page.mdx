@@ -75,7 +75,7 @@ En annen viktig ting å huske på, er at systemvarsler aldri må overskygge vars
 Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
 
 ### B) Viktig melding om systemet
-Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen oppsto. 
+Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder. 
 
 ### C) Informasjon om systemet 
 Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert` eller `modal`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
