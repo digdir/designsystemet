@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.40",
+  "version": "1.0.0-next.41",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -34,7 +34,6 @@
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "tsup && yarn build:types",
-    "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 secondary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
     "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
@@ -42,10 +41,14 @@
     "test": "yarn test:tokens-create-and-build",
     "clean": "rimraf dist",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "update:template": "tsx ./src/tokens/template.ts"
+    "update:template": "tsx ./src/tokens/template.ts",
+    "internal:tokens-create-digdir": "yarn designsystemet tokens create --theme theme -m accent:#0062BA -n #1E2B3C -s brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5 -w ./internal/design-tokens",
+    "internal:tokens-create-altinn": "yarn designsystemet tokens create --theme theme2 -m accent:#0162BA -n #1E2B3C -s brand1:#0162BA brand2:#3F3161 brand3:#E02F4A -w ./internal/design-tokens",
+    "internal:tokens-create-uutilsynet": "yarn designsystemet tokens create --theme theme3 -m accent:#0162BA -n #1E2B3C -s brand1:#5B60D1 brand2:#FEA769 brand3:#5DA290 -w ./internal/design-tokens",
+    "internal:tokens-create-portal": "yarn designsystemet tokens create --theme theme4 -m accent:#4D107D -n #1E2B3C -s brand1:#A259DC brand2:#DF73E4 brand3:#E86ABF -w ./internal/design-tokens",
+    "internal:tokens-create-all": "yarn internal:tokens-create-digdir && yarn internal:tokens-create-altinn && yarn internal:tokens-create-uutilsynet && yarn internal:tokens-create-portal"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@commander-js/extra-typings": "^12.1.0",
     "@tokens-studio/sd-transforms": "1.2.2",
     "apca-w3": "^0.1.9",
