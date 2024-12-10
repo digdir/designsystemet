@@ -3,3 +3,8 @@ export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect/useIsomor
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 export { useSynchronizedAnimation } from './useSynchronizedAnimation/useSynchronizedAnimation';
 export { usePrevious } from './usePrevious/usePrevious';
+export { useRadioGroup } from './useRadioGroup/useRadioGroup';
+export { useCheckboxGroup } from './useCheckboxGroup/useCheckboxGroup';
+
+export type { UseRadioGroupProps } from './useRadioGroup/useRadioGroup';
+export type { UseCheckboxGroupProps } from './useCheckboxGroup/useCheckboxGroup';

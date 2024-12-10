@@ -5,10 +5,9 @@ import {
   Fieldset,
   Paragraph,
   Radio,
-  type UseRadioGroupProps,
   ValidationMessage,
-  useRadioGroup,
 } from '../..';
+import { type UseRadioGroupProps, useRadioGroup } from '../../utilities';
 
 export default {
   title: 'Komponenter/Radio',

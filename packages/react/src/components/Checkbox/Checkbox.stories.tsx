@@ -6,10 +6,9 @@ import {
   Fieldset,
   Paragraph,
   Table,
-  type UseCheckboxGroupProps,
   ValidationMessage,
-  useCheckboxGroup,
 } from '../..';
+import { type UseCheckboxGroupProps, useCheckboxGroup } from '../../utilities';
 
 type Story = StoryObj<typeof Checkbox>;
 
