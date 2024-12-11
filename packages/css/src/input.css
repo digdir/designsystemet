@@ -133,6 +133,10 @@
     --dsc-input-background: var(--dsc-input-background--readonly);
     --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-color: var(--dsc-input-color--readonly);
+
+    @media (forced-colors: active) {
+      --dsc-input-border-color: GrayText;
+    }
   }
 
   /**
