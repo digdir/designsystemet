@@ -33,7 +33,7 @@ function makeTokenCommands() {
       console.log(`Building tokens in ${chalk.green(tokens)}`);
 
       if (dry) {
-        console.log(`Running dry mode`);
+        console.log(`Performing dry run, no files will be written`);
       }
 
       return buildTokens({ tokens, outDir, preview, verbose, dry });
@@ -66,7 +66,7 @@ function makeTokenCommands() {
       };
 
       if (dry) {
-        console.log(`Running dry run for `);
+        console.log(`Performing dry run, no files will be written`);
       }
 
       const tokens = createTokens(props);
