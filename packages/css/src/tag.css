@@ -15,4 +15,8 @@
   padding: var(--dsc-tag-padding);
   width: max-content;
   word-break: break-word;
+
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
 }

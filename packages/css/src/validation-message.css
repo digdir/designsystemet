@@ -19,6 +19,10 @@
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-validation-message-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-validation-message-icon-size);
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   &[data-color='success'] {

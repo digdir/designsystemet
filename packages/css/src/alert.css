@@ -29,6 +29,10 @@
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   /**

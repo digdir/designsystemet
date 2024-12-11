@@ -2,8 +2,8 @@
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { convertToHex } from '../src/colors/index.js';
+import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { colorCliOptions, createTokens } from '../src/tokens/create.js';
