@@ -1,4 +1,4 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '@digdir/designsystemet/color';
 
 export type modeType = 'light' | 'dark' | 'contrast';
 export type ThemeColors = 'accent' | 'neutral' | 'brand1' | 'brand2' | 'brand3';

@@ -50,6 +50,11 @@
   &[aria-selected='true'] {
     --dsc-tabs-tab-bottom-border-color: var(--ds-color-base-default);
     --dsc-tabs-tab-color: var(--ds-color-text-subtle);
+
+    @media (forced-colors: active) {
+      --dsc-tabs-tab-color: CanvasText;
+      border-bottom: 2px solid CanvasText;
+    }
   }
 
   @composes ds-focus from './base.css';

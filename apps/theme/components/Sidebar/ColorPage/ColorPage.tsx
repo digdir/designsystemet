@@ -1,12 +1,11 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { generateThemeForColor } from '@digdir/designsystemet';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
-import { TokenModal } from '../../TokenModal/TokenModal';
 import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
@@ -31,12 +30,12 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
   const [open, setOpen] = useState(false);
 
   const addNewColor = (color: string, name: string) => {
-    const theme = generateThemeForColor(color as CssColor, 'aa');
+    const theme = generateThemeForColor(color as CssColor);
     addColor({ name: name, colors: theme }, colorType);
   };
 
   const updateExistingColor = (color: string, name: string) => {
-    const theme = generateThemeForColor(color as CssColor, 'aa');
+    const theme = generateThemeForColor(color as CssColor);
     updateColor({ name: name, colors: theme }, index, colorType);
   };
 
@@ -58,8 +57,9 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
         Velg fargene dine
       </Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        Logbook a sitting success parents' girl in it however, greater, full
-        with he that pleasures up attention to hardly to power definitely hardly
+        Du kan legge til så mange hovedfarger og støttefarger du har behov for.
+        Vær oppmerksom på at du må ha Figma Enterprise for å ha mer enn 4 farger
+        i hver kategori.
       </Paragraph>
       {/* MAIN COLORS */}
       <div className={classes.group}>
@@ -139,18 +139,6 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
               onClick={() => setupEditState(color, index, 'support')}
             />
           ))}
-        </div>
-      </div>
-
-      <div className={classes.bottom}>
-        <div className={classes.btnGroup}>
-          <TokenModal />
-          {/* <Button data-size='sm' className={classes.btn} asChild>
-            <NextLink href='result'>
-              <SparklesIcon title='a11y-title' fontSize='1.5rem' />
-              Fullfør tema
-            </NextLink>
-          </Button> */}
         </div>
       </div>
 

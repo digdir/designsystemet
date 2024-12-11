@@ -18,6 +18,10 @@
     position: absolute;
     width: var(--dsc-label-icon-size);
     translate: 0 calc((1lh - var(--dsc-label-icon-size)) / 2); /* Center icon to line height */
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   &[data-weight='semibold'] {

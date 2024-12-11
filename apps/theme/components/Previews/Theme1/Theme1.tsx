@@ -18,10 +18,12 @@ import {
 import cl from 'clsx/lite';
 import { useState } from 'react';
 
+import { useThemeStore } from '../../../store';
 import classes from './Theme1.module.css';
 
 export const Theme1 = () => {
   const [currentPage, setCurrentPage] = useState(3);
+  const themePreview = useThemeStore((state) => state.themePreview);
   const pagination = usePagination({
     currentPage,
     setCurrentPage,
@@ -255,6 +257,7 @@ export const Theme1 = () => {
       <div
         className={cl(classes.panel, classes.test2, classes.darkCard)}
         data-color-scheme='dark'
+        data-theme={themePreview}
       >
         <div>
           <Heading
