@@ -65,6 +65,14 @@
       mask: 50% / contain no-repeat var(--dsc-details-chevron-url);
       width: var(--dsc-details-chevron-size);
     }
+
+    @media (forced-colors: active) {
+      color: ButtonText;
+
+      &::before {
+        background: ButtonText;
+      }
+    }
   }
 
   & + & {

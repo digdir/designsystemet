@@ -1,4 +1,4 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '@digdir/designsystemet/color';
 
 export const Settings = {
   accentBaseColor: '#0062BA' as CssColor,

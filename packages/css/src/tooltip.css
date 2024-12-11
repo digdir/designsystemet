@@ -24,4 +24,7 @@
     translate: -50% -50%;
     rotate: 45deg;
   }
+  @media (forced-colors: active) {
+    --dsc-tooltip-background: CanvasText;
+  }
 }
