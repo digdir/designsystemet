@@ -49,7 +49,7 @@ const menu = [
   },
   {
     name: 'Temabygger',
-    href: 'https://theme.designsystemet.no',
+    href: 'https://next.theme.designsystemet.no',
   },
 ];
 

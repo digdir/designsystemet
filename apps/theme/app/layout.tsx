@@ -17,27 +17,27 @@ export const metadata: Metadata = {
 const menu = [
   {
     name: 'Grunnleggende',
-    href: '/grunnleggende',
+    href: 'https://www.designsystemet.no/grunnleggende',
   },
   {
     name: 'God praksis',
-    href: '/god-praksis',
+    href: 'https://www.designsystemet.no/god-praksis',
   },
   {
     name: 'Mønstre',
-    href: '/monstre',
+    href: 'https://www.designsystemet.no/monstre',
   },
   {
     name: 'Bloggen',
-    href: '/bloggen',
+    href: 'https://www.designsystemet.no/bloggen',
   },
   {
     name: 'Komponenter',
-    href: '/komponenter',
+    href: 'https://www.designsystemet.no/komponenter',
   },
   {
     name: 'Temabygger',
-    href: 'https://theme.designsystemet.no',
+    href: '/',
   },
 ];
 
