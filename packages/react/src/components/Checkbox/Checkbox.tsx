@@ -36,11 +36,20 @@ export type CheckboxProps = MergeRight<
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
-    { 'data-size': size, children, label, description, validation, ...rest },
+    {
+      'data-size': size,
+      className,
+      style,
+      children,
+      label,
+      description,
+      validation,
+      ...rest
+    },
     ref,
   ) {
     return (
-      <Field data-size={size}>
+      <Field data-size={size} className={className} style={style}>
         <Input type='checkbox' ref={ref} {...rest} />
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
