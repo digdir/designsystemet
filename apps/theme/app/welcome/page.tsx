@@ -51,7 +51,7 @@ export default function Welcome() {
       </div>
       <div className={classes.card}>
         <Heading data-size='sm' className={classes.heading} id='themeName'>
-          Navn på tema
+          Gi temaet ditt et navn
         </Heading>
         <Paragraph className={classes.paragraph}>
           Navnet bør representere virksomheten eller produktet du skal

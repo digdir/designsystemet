@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
-import { TokenModal } from '../../TokenModal/TokenModal';
 import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
@@ -140,18 +139,6 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
               onClick={() => setupEditState(color, index, 'support')}
             />
           ))}
-        </div>
-      </div>
-
-      <div className={classes.bottom}>
-        <div className={classes.btnGroup}>
-          <TokenModal />
-          {/* <Button data-size='sm' className={classes.btn} asChild>
-            <NextLink href='result'>
-              <SparklesIcon title='a11y-title' fontSize='1.5rem' />
-              Fullfør tema
-            </NextLink>
-          </Button> */}
         </div>
       </div>
 

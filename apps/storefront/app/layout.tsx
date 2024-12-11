@@ -47,10 +47,10 @@ const menu = [
     name: 'Komponenter',
     href: '/komponenter',
   },
-  /* {
+  {
     name: 'Temabygger',
-    href: 'https://next.theme.designsystemet.no',
-  }, */
+    href: 'https://theme.designsystemet.no',
+  },
 ];
 
 const centerLinks = [

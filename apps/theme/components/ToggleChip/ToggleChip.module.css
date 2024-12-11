@@ -1,27 +1,27 @@
 .toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .menuItem {
   display: flex;
   align-items: center;
   font-size: 16px;
-  padding: 9px 14px;
-  border-radius: 500px;
+  padding: 11px 17px;
+  border-radius: 4px;
   border: none;
   background-color: transparent;
-  color: var(--ds-color-accent-text-default);
-}
-
-.menuItem:hover {
+  color: var(--ds-color-neutral-text-subtle);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
   cursor: pointer;
-  background-color: var(--ds-color-accent-surface-hover);
 }
 
-.menuItemActive {
-  background-color: var(--ds-color-accent-surface-hover);
+.menuItemActive,
+.menuItem:hover {
+  border: 1px solid var(--ds-color-neutral-border-default);
+  outline: 1px solid var(--ds-color-neutral-border-default);
+  color: var(--ds-color-neutral-text-default);
 }
 
 .menuItem[aria-disabled] {

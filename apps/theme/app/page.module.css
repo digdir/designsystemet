@@ -20,7 +20,7 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-spacing-2);
+  margin-top: var(--ds-spacing-8);
 }
 
 .heading {

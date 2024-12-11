@@ -3,18 +3,19 @@
 }
 
 .card {
-  width: 550px;
-  padding: 0 40px;
+  width: 620px;
   flex-direction: column;
+  margin-left: 40px;
+  margin-top: 32px;
+  border-radius: 8px;
 }
 
 .heading {
-  margin-top: 32px;
   margin-bottom: 12px;
 }
 
 .paragraph {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -27,5 +28,5 @@
 }
 
 .tabs {
-  padding: 46px 40px 0 40px;
+  padding: 40px 40px 0 40px;
 }

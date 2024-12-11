@@ -1,6 +1,5 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { BorderRadiusInput } from '../../BorderRadiusInput/BorderRadiusInput';
-import { TokenModal } from '../../TokenModal/TokenModal';
 import classes from './RadiusPage.module.css';
 
 type RadiusPageProps = {
@@ -19,23 +18,6 @@ export const RadiusPage = ({ onPrevClick, onNextClick }: RadiusPageProps) => {
 
       {/* BORDER RADIUS */}
       <BorderRadiusInput />
-
-      <div className={classes.bottom}>
-        <div className={classes.btnGroup}>
-          <TokenModal />
-          {/* <Button
-            data-size='sm'
-            className={classes.btn}
-            onClick={() => onPrevClick()}
-            asChild
-          >
-            <NextLink href='result'>
-              <SparklesIcon title='a11y-title' fontSize='1.5rem' />
-              Fullfør tema
-            </NextLink>
-          </Button> */}
-        </div>
-      </div>
     </div>
   );
 };
