@@ -88,7 +88,11 @@ export default function RootLayout({
     <html lang='no'>
       <body>
         <ThemeWrapper>
-          <Header menu={menu} transparentBackground />
+          <Header
+            menu={menu}
+            transparentBackground
+            logoLink='https://www.designsystemet.no/'
+          />
           <div className='content'>{children}</div>
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
         </ThemeWrapper>
