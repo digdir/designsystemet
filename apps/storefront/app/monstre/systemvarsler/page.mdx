@@ -39,14 +39,9 @@ Et godt systemvarsel skal være informativt, klart og brukervennlig.
 
 <br/>
 
-**Skriv det viktigste først** 
-
-Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan bruke mellomoverskrifter og punktlister for å gjøre det enklere å skanne informasjonen. 
-
-<br/>
-
 **Skriv på en imøtekommende og hjelpsom måte** 
 
+- Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan bruke mellomoverskrifter og punktlister for å gjøre det enklere å skanne informasjonen. 
 - Vær tydelig på at det ikke er brukerens feil. Fortell at feilen ligger hos oss. 
 - Vi kan gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten». 
 - Vær forsiktig med humor - det er sjelden morsomt når noe går galt.
@@ -69,16 +64,16 @@ Test varslene på ekte brukere for å sikre at de er lette å forstå.
 ## Ulike alvorlighetsgrader
 Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
 
-En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
+En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. For eksempel dersom du skal varsle om at vannet ikke kan drikkes. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
 
 ### A) Kritiske systemfeil
 Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
 
 ### B) Viktig melding om systemet
-Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder. 
+Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder.  Hvis brukeren må ta et aktivt valg, kan det være bedre å bruke en `modal`. For eksempel for å varsle om at du snart blir logget ut, hvis du ikke tar et aktivt valg om å forbli innlogget.
 
 ### C) Informasjon om systemet 
-Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold, beskjed om at en ny versjon er tilgjengelig eller varsel om at du snart blir logget ut. Slike meldingene kan vi vise som global `alert` eller `modal`. Velg komponent etter om konteksten er global eller lokal, aktiv eller passiv. 
+Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold eller beskjed om at en ny versjon er tilgjengelig. Slike meldingene kan vi vise med en `alert`.
 
 
 ## Design og opplevelse
@@ -98,7 +93,7 @@ En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske fei
 **Det passer ikke med feilsider når**
 - den tekniske feilen er begrenset til én funksjon eller komponent
 - brukeren kan fortsette å bruke andre deler av tjenesten
-- noe data er utilgjengelige for øyeblikket
+- deler av innholdet er utilgjengelig
 
 <br/>
 
