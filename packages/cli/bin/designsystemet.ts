@@ -20,14 +20,14 @@ function makeTokenCommands() {
     .command('build')
     .description('Build Designsystemet tokens')
     .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('-d, --dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
-    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
+    .option('-o, --output-dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
+    .option('--dry <boolean>', `Dry run for built ${chalk.blue('design-tokens')}`, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
       const { preview, verbose } = opts;
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
-      const out = typeof opts.dir === 'string' ? opts.dir : './dist/tokens';
+      const out = typeof opts.outputDir === 'string' ? opts.outputDir : './dist/tokens';
       const dry = Boolean(opts.dry);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
@@ -39,14 +39,18 @@ function makeTokenCommands() {
     .requiredOption(`-m, --${colorCliOptions.main} <name:hex...>`, `Main colors`, parseColorValues)
     .requiredOption(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
     .requiredOption(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
-    .option('-d, --dir [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`)
+    .option(
+      '-o, --output-dir <string>',
+      `Output directory for created ${chalk.blue('design-tokens')}`,
+      DEFAULT_TOKENS_DIR,
+    )
+    .option('--dry <boolean>', `Dry run for created ${chalk.blue('design-tokens')}`)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
     .action(async (opts) => {
       const { theme, fontFamily, dry } = opts;
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
-      const write = typeof opts.dir === 'boolean' ? DEFAULT_TOKENS_DIR : opts.dir;
+      const outputDir = typeof opts.outputDir === 'boolean' ? DEFAULT_TOKENS_DIR : opts.outputDir;
 
       const props = {
         themeName: theme,
@@ -63,7 +67,7 @@ function makeTokenCommands() {
       const tokens = createTokens(props);
 
       if (!dry) {
-        await writeTokens({ outDir: write, tokens, themeName: theme, colors: props.colors });
+        await writeTokens({ outDir: outputDir, tokens, themeName: theme, colors: props.colors });
       }
 
       return Promise.resolve();
