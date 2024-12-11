@@ -27,6 +27,7 @@ export type IsCalculatedToken = (token: TransformedToken, options?: StyleDiction
 export type GetSdConfigOptions = {
   outPath: string;
   tokensDir: string;
+  dry?: boolean;
 };
 
 export type BuildConfig = {
