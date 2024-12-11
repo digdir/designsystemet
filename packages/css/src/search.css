@@ -35,6 +35,10 @@
     height: var(--dsc-search-icon-size);
     width: var(--dsc-search-icon-size);
     mask: var(--dsc-search-icon-url) center / contain no-repeat;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   & input {

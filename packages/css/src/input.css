@@ -46,6 +46,27 @@
 
   @composes ds-focus from './base.css';
 
+  @media (forced-colors: active) {
+    --dsc-input-border-color: ButtonText;
+    --dsc-input-background: Canvas;
+    --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
+    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
+    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+    --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
+    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
+    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+    --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+
+    &:disabled,
+    &[aria-disabled='true'],
+    &[readonly] {
+      --dsc-input-border-color: GrayText;
+    }
+  }
+
   /* Round border-width up to nearest 1px if supported */
   @supports (width: round(down, .1em, 1px)) {
     border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
@@ -65,6 +86,10 @@
     background: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 1.2em + var(--dsc-input-stroke))
       / 0.4em 0.4em no-repeat, linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 0.8em) / 0.4em
       0.4em no-repeat, var(--dsc-input-background);
+
+    @media (forced-colors: active) {
+      appearance: auto; /* show chevron */
+    }
   }
 
   &:is(textarea) {
@@ -108,6 +133,10 @@
     --dsc-input-background: var(--dsc-input-background--readonly);
     --dsc-input-border-color: var(--dsc-input-border-color--readonly);
     --dsc-input-color: var(--dsc-input-color--readonly);
+
+    @media (forced-colors: active) {
+      --dsc-input-border-color: GrayText;
+    }
   }
 
   /**
@@ -129,9 +158,18 @@
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
     width: var(--dsc-input-size);
+    /* forced-color-adjust: none; */ /* Prevent browser from applying forced colors, since we need the background */
 
     &:not([aria-label]) {
       translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+    }
+
+    @media (forced-colors: active) {
+      &:disabled,
+      &[aria-disabled='true'],
+      &[readonly] {
+        --dsc-input-border-color: GrayText;
+      }
     }
   }
 
@@ -141,10 +179,26 @@
 
   &[type='radio']:checked {
     background: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%), var(--dsc-input-background);
+
+    @media (forced-colors: active) {
+      --dsc-input-background: LinkText;
+      --dsc-input-border-color: LinkText;
+
+      background: radial-gradient(circle closest-side, Canvas 45%, transparent 50%), var(--dsc-input-background);
+      forced-color-adjust: none; /* To be able to draw dot */
+    }
   }
 
   &[type='checkbox']:checked {
     background: var(--check-left), var(--check-right), var(--dsc-input-background);
+
+    @media (forced-colors: active) {
+      --dsc-input-background: LinkText;
+      --dsc-input-border-color: LinkText;
+
+      background: var(--check-left), var(--check-right), var(--dsc-input-background);
+      forced-color-adjust: none; /* To be able to draw check */
+    }
   }
 
   &[type='checkbox']:indeterminate {
@@ -155,6 +209,21 @@
         currentcolor calc(50% + var(--dsc-input-stroke)),
         transparent calc(52% + var(--dsc-input-stroke))
       ), var(--dsc-input-background);
+
+    @media (forced-colors: active) {
+      --dsc-input-background: LinkText;
+      --dsc-input-border-color: LinkText;
+
+      background: center / contain no-repeat content-box
+        linear-gradient(
+          transparent calc(48% - var(--dsc-input-stroke)),
+          Canvas calc(50% - var(--dsc-input-stroke)),
+          Canvas calc(50% + var(--dsc-input-stroke)),
+          transparent calc(52% + var(--dsc-input-stroke))
+        ), var(--dsc-input-background);
+
+      forced-color-adjust: none; /* To be able to draw line */
+    }
   }
 
   /**
@@ -181,6 +250,28 @@
 
     &[readonly] {
       --circle-color: var(--dsc-input-color--readonly);
+    }
+
+    @media (forced-colors: active) {
+      --circle-color: CanvasText;
+      --dsc-input-background: Canvas;
+      --dsc-input-border-color: ButtonText;
+
+      forced-color-adjust: none; /* To be able to draw switch */
+      background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position)
+        / 50% 100% no-repeat padding-box, var(--dsc-input-background);
+
+      &:checked {
+        --circle-color: CanvasText;
+        --dsc-input-background: LinkText;
+        --dsc-input-border-color: LinkText;
+      }
+
+      &:disabled,
+      &[aria-disabled='true'],
+      &[readonly] {
+        --dsc-input-border-color: GrayText;
+      }
     }
   }
 }

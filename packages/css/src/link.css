@@ -44,6 +44,7 @@
   &:focus-visible {
     background: var(--dsc-link-background--focus);
     color: var(--dsc-link-color--focus);
+    outline: 2px solid transparent;
   }
 
   &:active {

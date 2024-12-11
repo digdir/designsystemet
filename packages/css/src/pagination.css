@@ -19,6 +19,10 @@
       height: var(--dsc-pagination-chevron-size);
       mask: center / contain no-repeat var(--dsc-pagination-icon-url);
       width: var(--dsc-pagination-chevron-size);
+
+      @media (forced-colors: active) {
+        background: LinkText;
+      }
     }
 
     & > li:first-child > ::before {
