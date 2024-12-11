@@ -1,3 +1,5 @@
+@import './font/inter.css';
+
 * {
   font-feature-settings: 'cv05' 1;
 }
