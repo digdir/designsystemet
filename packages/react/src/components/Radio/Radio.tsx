@@ -35,11 +35,20 @@ export type RadioProps = MergeRight<
  * <Radio label="I agree" value="agree" />
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-  { 'data-size': size, children, label, description, validation, ...rest },
+  {
+    'data-size': size,
+    className,
+    style,
+    children,
+    label,
+    description,
+    validation,
+    ...rest
+  },
   ref,
 ) {
   return (
-    <Field data-size={size}>
+    <Field data-size={size} className={className} style={style}>
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
