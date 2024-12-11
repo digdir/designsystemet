@@ -17,7 +17,7 @@ type Options = {
   /** Design tokens path */
   tokens: string;
   /** Output directory for built tokens */
-  out: string;
+  outDir: string;
   /** Generate preview tokens */
   preview: boolean;
   /** Enable verbose output */
@@ -71,7 +71,7 @@ const buildConfigs = {
 export async function buildTokens(buildOptions: Options): Promise<void> {
   const { dry } = buildOptions;
   const tokensDir = buildOptions.tokens;
-  const outPath = path.resolve(buildOptions.out);
+  const targetDir = path.resolve(buildOptions.outDir);
 
   /*
    * Build the themes
@@ -99,7 +99,7 @@ export async function buildTokens(buildOptions: Options): Promise<void> {
     (val: BuildConfig) => ({
       buildConfig: val,
       sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
-        outPath,
+        outPath: targetDir,
         tokensDir,
         ...val.options,
       }),
@@ -116,7 +116,7 @@ export async function buildTokens(buildOptions: Options): Promise<void> {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
         if (buildConfig.build && !dry) {
-          await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
+          await buildConfig.build(sdConfigs, { outPath: targetDir, tokensDir, ...buildConfig.options });
         }
 
         await Promise.all(
@@ -146,7 +146,7 @@ export async function buildTokens(buildOptions: Options): Promise<void> {
   }
 
   if (!dry) {
-    await writeColorTypeDeclaration($themes, outPath);
+    await writeColorTypeDeclaration($themes, targetDir);
   }
 }
 

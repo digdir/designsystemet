@@ -27,11 +27,11 @@ function makeTokenCommands() {
     .action((opts) => {
       const { preview, verbose } = opts;
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
-      const out = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
+      const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
       const dry = Boolean(opts.dry);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview, verbose, dry });
+      return buildTokens({ tokens, outDir, preview, verbose, dry });
     });
   tokenCmd
     .command('create')
