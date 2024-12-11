@@ -15,3 +15,5 @@ export { BorderRadius } from './BorderRadius/BorderRadius';
 export { Theme1 } from './Previews/Theme1/Theme1';
 export { BorderRadiusInput } from './BorderRadiusInput/BorderRadiusInput';
 export { ThemeToggle } from './ThemeToggle/ThemeToggle';
+export { Header } from './Header/Header';
+export { ToggleChip } from './ToggleChip/ToggleChip';

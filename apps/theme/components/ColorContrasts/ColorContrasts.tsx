@@ -89,7 +89,7 @@ export const ColorContrasts = () => {
     let type = 'AAA';
 
     if (contrast < 3) {
-      type = 'FAIL';
+      type = 'DECO';
     } else if (contrast < 4.5) {
       type = 'AA18';
     } else if (contrast < 7) {
@@ -161,7 +161,7 @@ export const ColorContrasts = () => {
             </Paragraph>
           </div>
           <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.FAIL)}>FAIL</div>
+            <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
             <Paragraph data-size='sm'>
               Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
               dekorative formål.

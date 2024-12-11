@@ -2,33 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 32px 0 24px;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.menuItem {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  padding: 9px 14px;
-  border-radius: 500px;
-  border: none;
-  background-color: transparent;
-  color: var(--ds-color-accent-text-default);
-}
-
-.menuItem:hover {
-  cursor: pointer;
-  background-color: var(--ds-color-accent-surface-hover);
-}
-
-.menuItemActive {
-  background-color: var(--ds-color-accent-surface-hover);
+  margin: 36px 0 24px;
 }
 
 .menuItem[aria-disabled] {
