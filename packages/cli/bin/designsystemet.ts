@@ -44,9 +44,8 @@ function makeTokenCommands() {
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
     .action(async (opts) => {
-      const { theme, fontFamily, dry } = opts;
+      const { theme, fontFamily, dry, outDir } = opts;
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
-      const outDir = typeof opts.outDir === 'boolean' ? DEFAULT_TOKENS_DIR : opts.outDir;
 
       const props = {
         themeName: theme,
