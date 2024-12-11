@@ -13,18 +13,19 @@ program.name('designsystemet').description('CLI for working with Designsystemet'
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
-  const DEFAULT_TOKENSDIR = './design-tokens';
+  const DEFAULT_TOKENS_DIR = './design-tokens';
+  const DEFAULT_BUILD_DIR = './design-tokens-build';
 
   tokenCmd
     .command('build')
     .description('Build Designsystemet tokens')
-    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
-    .option('-o, --out <string>', `Output directory for built ${chalk.blue('design-tokens')}`, './build')
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
+    .option('-d, --dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENSDIR;
-      const out = typeof opts.out === 'string' ? opts.out : './dist/tokens';
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
+      const out = typeof opts.dir === 'string' ? opts.dir : './dist/tokens';
       const preview = opts.preview;
       const verbose = opts.verbose;
       console.log(`Building tokens in ${chalk.green(tokens)}`);
@@ -36,13 +37,14 @@ function makeTokenCommands() {
     .requiredOption(`-m, --${colorCliOptions.main} <name:hex...>`, `Main colors`, parseColorValues)
     .requiredOption(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
     .requiredOption(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
-    .option('-w, --write [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENSDIR)
+    .option('-d, --dir [string]', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
     .action(async (opts) => {
-      const { theme, fontFamily } = opts;
+      const { theme, fontFamily, dry } = opts;
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
-      const write = typeof opts.write === 'boolean' ? DEFAULT_TOKENSDIR : opts.write;
+      const write = typeof opts.dir === 'boolean' ? DEFAULT_TOKENS_DIR : opts.dir;
 
       const props = {
         themeName: theme,
@@ -58,8 +60,8 @@ function makeTokenCommands() {
 
       const tokens = createTokens(props);
 
-      if (write) {
-        await writeTokens({ writeDir: write, tokens, themeName: theme, colors: props.colors });
+      if (!dry) {
+        await writeTokens({ outDir: write, tokens, themeName: theme, colors: props.colors });
       }
 
       return Promise.resolve();

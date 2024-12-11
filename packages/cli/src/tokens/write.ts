@@ -47,15 +47,15 @@ const generateTypographyFile = (
 };
 
 type WriteTokensOptions = {
-  writeDir: string;
+  outDir: string;
   tokens: Tokens;
   themeName: string;
   colors: Colors;
 };
 
 export const writeTokens = async (options: WriteTokensOptions) => {
-  const { writeDir, tokens, themeName, colors } = options;
-  const targetDir = path.resolve(process.cwd(), String(writeDir));
+  const { outDir, tokens, themeName, colors } = options;
+  const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
   let themes = [themeName];
@@ -213,6 +213,6 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   }
 
   console.log(
-    `Finished creating Designsystem design tokens in ${chalk.green(writeDir)} for theme ${chalk.blue(themeName)}`,
+    `Finished creating Designsystem design tokens in ${chalk.green(outDir)} for theme ${chalk.blue(themeName)}`,
   );
 };
