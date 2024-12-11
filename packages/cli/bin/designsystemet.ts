@@ -21,15 +21,17 @@ function makeTokenCommands() {
     .description('Build Designsystemet tokens')
     .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
     .option('-d, --dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
+    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
+      const { preview, verbose } = opts;
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
       const out = typeof opts.dir === 'string' ? opts.dir : './dist/tokens';
-      const preview = opts.preview;
-      const verbose = opts.verbose;
+      const dry = Boolean(opts.dry);
+
       console.log(`Building tokens in ${chalk.green(tokens)}`);
-      return buildTokens({ tokens, out, preview, verbose });
+      return buildTokens({ tokens, out, preview, verbose, dry });
     });
   tokenCmd
     .command('create')

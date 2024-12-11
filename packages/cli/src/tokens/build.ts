@@ -24,6 +24,8 @@ type Options = {
   verbose: boolean;
   /** Set the default "accent" color, if not overridden with data-color */
   accentColor?: string;
+  /** Dry run */
+  dry?: boolean;
 };
 
 export let buildOptions: Options | undefined;
@@ -66,10 +68,10 @@ const buildConfigs = {
   },
 } satisfies Record<string, BuildConfig>;
 
-export async function buildTokens(options: Options): Promise<void> {
-  buildOptions = options;
-  const tokensDir = options.tokens;
-  const outPath = path.resolve(options.out);
+export async function buildTokens(buildOptions: Options): Promise<void> {
+  const { dry } = buildOptions;
+  const tokensDir = buildOptions.tokens;
+  const outPath = path.resolve(buildOptions.out);
 
   /*
    * Build the themes
@@ -113,16 +115,21 @@ export async function buildTokens(options: Options): Promise<void> {
       if (sdConfigs.length > 0) {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
-        if (buildConfig.build) {
+        if (buildConfig.build && !dry) {
           await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
         }
+
         await Promise.all(
           sdConfigs.map(async ({ config, permutation }) => {
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
             const modeMessage = modes.map((x) => permutation[x]).join(' - ');
             console.log(modeMessage);
 
-            return (await sd.extend(config)).buildAllPlatforms();
+            if (!dry) {
+              return (await sd.extend(config)).buildAllPlatforms();
+            }
+
+            return Promise.resolve();
           }),
         );
       }
@@ -138,7 +145,9 @@ export async function buildTokens(options: Options): Promise<void> {
     throw err;
   }
 
-  await writeColorTypeDeclaration($themes, outPath);
+  if (!dry) {
+    await writeColorTypeDeclaration($themes, outPath);
+  }
 }
 
 async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string) {
