@@ -1,5 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import { Button, type ButtonProps } from '../Button';
+import { SuggestionContext } from './Suggestion';
 
 /* We omit children since we render the icon with css */
 export type SuggestionClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
@@ -17,27 +18,20 @@ export const SuggestionClear = forwardRef<
   { 'aria-label': label = 'Tøm', onClick, ...rest },
   ref,
 ) {
+  const { inputRef } = useContext(SuggestionContext);
+
   const handleClear = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    const target = event.target;
-    onClick?.(event);
-
-    if (event.defaultPrevented) return;
-
-    let input: HTMLElement | null | undefined = null;
-
-    if (target instanceof HTMLElement)
-      input = target.closest('.ds-suggestion')?.querySelector('input');
-
-    if (!input) throw new Error('Input is missing');
+    if (!inputRef?.current) throw new Error('Input is missing');
     /* narrow type to make TS happy */
-    if (!(input instanceof HTMLInputElement))
+    if (!(inputRef?.current instanceof HTMLInputElement))
       throw new Error('Input is not an input element');
 
     event.preventDefault();
-    setReactInputValue(input, '');
-    input.focus();
+    setReactInputValue(inputRef.current, '');
+    inputRef.current.focus();
+    onClick?.(event);
   };
 
   return (

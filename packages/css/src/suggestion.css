@@ -39,13 +39,27 @@
     }
 
     & > * {
-      padding: var(--ds-spacing-2);
-      border-left: var(--ds-spacing-1) solid transparent;
-      outline: none;
+      grid-template-columns: 1.2em 1fr;
+      padding: var(--ds-spacing-2) var(--ds-spacing-3);
+      padding-inline-start: var(--ds-spacing-4);
+      border: none;
+      border-left: 5px solid transparent;
+      border-radius: var(--ds-border-radius-sm);
+      justify-content: start;
+      background: none;
+      text-align: left;
+      height: auto;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 400;
 
       /* TMP check to demonstrate selector */
-      &[aria-selected='true']::before {
-        content: '✔ ';
+      &[aria-selected='true'] {
+        padding-inline-start: var(--ds-spacing-1);
+
+        &::before {
+          content: '✔ ';
+        }
       }
 
       @media (hover: hover) and (pointer: fine) {
