@@ -1,6 +1,10 @@
 .desc {
-  margin-top: 12px;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 26px;
+  color: var(--ds-color-danger-text-subtle);
+  background-color: var(--ds-color-danger-surface-default);
+  padding: 16px;
+  border-radius: 4px;
 }
 
 .separator {
@@ -22,10 +26,6 @@
 }
 
 .bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
   padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   display: flex;
