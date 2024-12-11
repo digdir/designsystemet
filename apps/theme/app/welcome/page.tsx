@@ -7,29 +7,60 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Header, ToggleChip } from '../../components';
 import { useThemeStore } from '../../store';
 import classes from './page.module.css';
 
 export default function Welcome() {
   const themeName = useThemeStore((state) => state.themeName);
   const setThemeName = useThemeStore((state) => state.setThemeName);
-
+  const router = useRouter();
+  const setActivePage = useThemeStore((state) => state.setActivePage);
+  const items = [
+    {
+      name: 'Navn på tema',
+      value: 'intro',
+    },
+    {
+      name: 'Farger',
+      value: 'colors',
+    },
+    {
+      name: 'Border radius',
+      value: 'radius',
+    },
+  ];
   return (
     <div className={classes.page}>
+      <Header />
+      <div className={classes.tabs}>
+        <ToggleChip
+          items={items}
+          defaultValue='intro'
+          onChange={(e) => {
+            if (e === 'colors') {
+              setActivePage('colors');
+              router.push('/themebuilder');
+            } else if (e === 'radius') {
+              setActivePage('radius');
+              router.push('/themebuilder');
+            }
+          }}
+        />
+      </div>
       <div className={classes.card}>
-        <Heading data-size='md' className={classes.heading}>
-          Velkommen til Temabyggeren
+        <Heading data-size='sm' className={classes.heading} id='themeName'>
+          Gi temaet ditt et navn
         </Heading>
         <Paragraph className={classes.paragraph}>
-          Todo: General intro the the theme builder and set expectations
-        </Paragraph>
-        <Paragraph className={classes.paragraph}>
-          Todo: Say what the name does and how it effects the user
+          Navnet bør representere virksomheten eller produktet du skal
+          profilere.
         </Paragraph>
 
         <Textfield
           className={classes.textfield}
-          label='Navn på tema'
+          aria-labelledby='themeName'
           value={themeName}
           data-size='md'
           onChange={(e) => {
@@ -43,7 +74,14 @@ export default function Welcome() {
         />
 
         <Button asChild className={classes.btn}>
-          <NextLink href='/themebuilder'>Gå videre til farger</NextLink>
+          <NextLink
+            href='/themebuilder'
+            onClick={() => {
+              setActivePage('colors');
+            }}
+          >
+            Gå videre til farger
+          </NextLink>
         </Button>
       </div>
     </div>
