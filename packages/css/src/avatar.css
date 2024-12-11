@@ -44,6 +44,10 @@
     height: 100%;
     background: currentcolor;
     mask: var(--dsc-avatar-icon-url) center / contain no-repeat;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   &[data-variant='circle'] {
@@ -60,5 +64,9 @@
 
   &[data-size='sm'] {
     font-size: var(--ds-font-size-3);
+  }
+
+  @media (forced-colors: active) {
+    border: var(--ds-sizing-1) solid CanvasText;
   }
 }
