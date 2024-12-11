@@ -21,7 +21,7 @@ function makeTokenCommands() {
     .description('Build Designsystemet tokens')
     .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
     .option('-o, --out-dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
-    .option('--dry <boolean>', `Dry run for built ${chalk.blue('design-tokens')}`, false)
+    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
@@ -31,6 +31,11 @@ function makeTokenCommands() {
       const dry = Boolean(opts.dry);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
+
+      if (dry) {
+        console.log(`Running dry mode`);
+      }
+
       return buildTokens({ tokens, outDir, preview, verbose, dry });
     });
   tokenCmd
@@ -40,11 +45,12 @@ function makeTokenCommands() {
     .requiredOption(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
     .requiredOption(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
     .option('-o, --out-dir <string>', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('--dry <boolean>', `Dry run for created ${chalk.blue('design-tokens')}`)
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
     .option('--theme <string>', `Theme name`, 'theme')
     .action(async (opts) => {
-      const { theme, fontFamily, dry, outDir } = opts;
+      const { theme, fontFamily, outDir } = opts;
+      const dry = Boolean(opts.dry);
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
 
       const props = {
@@ -59,11 +65,13 @@ function makeTokenCommands() {
         },
       };
 
+      if (dry) {
+        console.log(`Running dry run for `);
+      }
+
       const tokens = createTokens(props);
 
-      if (!dry) {
-        await writeTokens({ outDir, tokens, themeName: theme, colors: props.colors });
-      }
+      await writeTokens({ outDir, tokens, themeName: theme, colors: props.colors, dry });
 
       return Promise.resolve();
     });

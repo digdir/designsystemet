@@ -5,6 +5,7 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { DEFAULT_COLOR, buildOptions } from '../build.js';
+import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
@@ -17,7 +18,6 @@ import type {
   ThemePermutation,
 } from './types.js';
 import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
-import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from './utils/utils.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 /** Use official W3C design token format
