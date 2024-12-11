@@ -15,6 +15,15 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.Option>Option 3</Suggestion.Option>
       </Suggestion.List>
       <Suggestion.Input />
+      <Suggestion.Clear />
     </Suggestion>
   );
 };
+
+Preview.decorators = [
+  (Story) => (
+    <div style={{ width: '300px', height: '600px' }}>
+      <Story />
+    </div>
+  ),
+];

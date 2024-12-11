@@ -13,6 +13,7 @@
 @import url('./input.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
+@import url('./suggestion.css') layer(ds.components);
 @import url('./skiplink.css') layer(ds.components);
 @import url('./details.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);

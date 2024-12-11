@@ -1,0 +1,90 @@
+.ds-suggestion {
+  --dsc-suggestion-option-background--selected: var(--ds-color-background-subtle);
+  --dsc-suggestion-option-border-color: var(--ds-color-base-default);
+  --dsc-combobox-clear-gap: var(--ds-spacing-2);
+  --dsc-combobox-clear-padding: var(--ds-sizing-1);
+  --dsc-combobox-clear-size: var(--ds-sizing-9);
+  --dsc-combobox-clear-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
+
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-1);
+  position: relative;
+
+  & u-datalist {
+    background: var(--ds-color-neutral-background-default);
+    border-radius: var(--ds-border-radius-md);
+    border: 1px solid var(--ds-color-neutral-border-default);
+    box-shadow: var(--ds-shadow-md);
+    box-sizing: border-box;
+    color: var(--ds-color-neutral-text-default);
+    inset: 100% 0 auto 0;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1600;
+
+    &:not(:has(u-option:hover)) > u-option:focus-visible {
+      border-left-color: var(--dsc-suggestion-option-border-color);
+      background: var(--dsc-suggestion-option-background--selected);
+    }
+
+    &:has(u-option:not([hidden])) > :not(u-option) {
+      display: none;
+    }
+
+    /* Hide <Combobox.Empty> if any <Combobox.Option> is visible */
+    &:has(u-option:not([hidden])) > :not(u-option) {
+      display: none;
+    }
+
+    & > * {
+      padding: var(--ds-spacing-2);
+      border-left: var(--ds-spacing-1) solid transparent;
+      outline: none;
+
+      /* TMP check to demonstrate selector */
+      &[aria-selected='true']::before {
+        content: '✔ ';
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:is(u-option):hover {
+          border-left-color: var(--dsc-suggestion-option-border-color);
+          background: var(--dsc-suggestion-option-background--selected);
+        }
+      }
+    }
+  }
+
+  /**
+   * Clear button
+   */
+  &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+    display: none; /* We hide the clear button when input is empty */
+  }
+  &:has(button[type='reset']) input {
+    padding-inline-end: calc(var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap));
+  }
+
+  & button[type='reset'] {
+    --dsc-button-size: var(--dsc-combobox-clear-size);
+
+    align-self: center;
+    margin-inline-start: calc((var(--dsc-combobox-clear-size) + var(--dsc-combobox-clear-gap)) * -1);
+    order: 999; /* Place last */
+    padding: var(--dsc-combobox-clear-padding);
+    position: relative;
+    scale: 0.75;
+    z-index: 2;
+
+    &::before {
+      content: '';
+      height: var(--dsc-combobox-clear-size);
+      width: var(--dsc-combobox-clear-size);
+      mask: var(--dsc-combobox-clear-icon-url) center / contain no-repeat;
+      background: currentcolor;
+    }
+  }
+}

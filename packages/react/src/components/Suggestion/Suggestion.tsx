@@ -2,7 +2,6 @@ import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
-import { Popover } from '../Popover';
 
 type SuggestionContextType = {
   listId?: string;
@@ -21,15 +20,13 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
     const mergedRefs = useMergeRefs([innerRef, ref]);
 
     return (
-      <Popover.TriggerContext>
-        <SuggestionContext.Provider value={{ listId, setListId }}>
-          <div
-            className={cl('ds-suggestion', className)}
-            ref={mergedRefs}
-            {...rest}
-          />
-        </SuggestionContext.Provider>
-      </Popover.TriggerContext>
+      <SuggestionContext.Provider value={{ listId, setListId }}>
+        <div
+          className={cl('ds-suggestion', className)}
+          ref={mergedRefs}
+          {...rest}
+        />
+      </SuggestionContext.Provider>
     );
   },
 );
