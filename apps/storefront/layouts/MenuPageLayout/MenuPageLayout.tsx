@@ -48,7 +48,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
       )}
       <Container className={classes.page}>
         <div className={classes.left}>
-          <SidebarMenu routerPath={pathname} />
+          <SidebarMenu routerPath={pathname ?? ''} />
         </div>
         <main id='main' className={classes.right}>
           {data && (

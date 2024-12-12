@@ -3231,6 +3231,7 @@ __metadata:
     "@navikt/aksel-icons": "npm:^6.14.0"
     "@types/react-syntax-highlighter": "npm:^15.5.13"
     clsx: "npm:^2.1.1"
+    next: "npm:^14.2.5"
     prettier: "npm:^3.3.3"
     react-syntax-highlighter: "npm:^15.5.0"
     typescript: "npm:^5.5.4"

@@ -35,6 +35,7 @@
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build": "tsup && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
+    "types": "tsc --noEmit",
     "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 secondary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -o ./test-tokens-create",
     "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
     "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
