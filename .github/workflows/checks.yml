@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: yarn build
       - name: Types
         run: yarn types
       - name: Biome CI

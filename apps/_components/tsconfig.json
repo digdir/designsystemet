@@ -13,7 +13,6 @@
     "types": [
       "@digdir/designsystemet-theme/colors.d.ts",
       "./declarations.d.ts",
-      "./next-env.d.ts"
     ],
   },
   "include": [
