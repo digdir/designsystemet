@@ -36,7 +36,10 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
-            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            <Suggestion.Option key={place} value={place}>
+              {place}
+              <div>Kommune</div>
+            </Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>
