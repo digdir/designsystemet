@@ -49,6 +49,7 @@ vil få modusen spesifisert av forelder. Som standard vil lys modus bli nytta.
 
 Du kan endre `data-color-scheme` på heile eller delar av sida og byte mellom ulike fargemodus så ofte du vil. Til dømes kan hovudsida vere lys, 
 men med ei mørk botnlinje (footer). Du kan då setje `data-color-scheme="dark"` på botnlinja.
+`data-color-scheme` kan bli satt til `light`, `dark` eller `auto`. `auto` vil følgje systeminnstillingane til brukaren.
 
 ## `data-color`
 
@@ -64,6 +65,32 @@ Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan 
 
 Nokre komponentar kan arve farge frå næraste overordna element som har `data-color` definert. 
 Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit hierarki, dersom dei skal ha same farge.
+
+## Korleis komponentar blir påverka
+
+Me delar komponentar inn i 3 grupper for farge:
+- Eksplisitt
+- Nøytral
+- Cascading
+
+### Eksplisitt
+
+Komponentar brukt til validering eller systemvarslar følgjer eigne dedikerte systemfargar, og arvar ikkje farge frå næraste forelder med `data-color` satt.
+Dei dedikerte systemfargane er `success`, `warning`, `fanger` og `info`. 
+
+Dette er komponentar som
+- `Alert`
+- `ValidationMessage`
+- `ErrorSummary`
+
+### Nøytral
+
+Dette er komponentar som alltid skal være nøytrale, og blir verken påverka av arva farge eller direkte `data-color`. Dette er komponentar som `Modal` og `Tooltip`.
+Desse brukar alltid `neutral` fargen.
+
+### Cascading
+
+Denne gruppa inneheld resten av komponentane, og vil arve farge frå næraste forelder med `data-color` satt. 
 
 <CodeSnippet language="tsx">
 {`<div data-color="neutral">
@@ -83,8 +110,6 @@ Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit 
 </div>
 `}
 </CodeSnippet>
-
-`Alert` er ein komponent som ikkje arvar farge.
 
 ## Bruk `data-color-scheme` og `data-color` saman
 
@@ -109,27 +134,6 @@ Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargem
 </div>
 `}
 </CodeSnippet>
-
-## Korleis komponentar blir påverka
-
-Me delar komponentar inn i 3 grupper for farge:
-- Eksplisitt
-- Nøytral
-- Cascading
-
-### Eksplisitt
-
-Er komponentar som gjer meir av fargen sin, og `data-color` må bli direkte satt. Dette er komponentar som `Alert` og `ErrorMessage`.
-Å "gjere meir av fargen sin" betyr at det t.d. kan være ikon som blir satt basert på farge.
-
-### Nøytral
-
-Dette er komponentar som alltid skal være nøytrale, og blir verken påverka av arva farge eller direkte `data-color`. Dette er komponentar som `Modal` og `Tooltip`.
-Desse brukar alltid `neutral` fargen.
-
-### Cascading
-
-Denne gruppa inneheld resten av komponentane, og vil arve farge frå næraste forelder med `data-color` satt. 
 
 ## Kort oppsummert
 
