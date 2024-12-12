@@ -76,7 +76,14 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     // update internalValue and input value when value changes
     useEffect(() => {
-      if (value && value !== internalValue) setInternalValue(value || '');
+      /* If value is not set, it is not controlled */
+      if (typeof value !== 'string') return;
+
+      if (!onChange) {
+        console.error("You're setting a value without an onChange handler");
+      }
+
+      if (value !== internalValue) setInternalValue(value || '');
 
       /* Update input and u-elements value */
       inputRef.current && setReactInputValue(inputRef.current, value || '');

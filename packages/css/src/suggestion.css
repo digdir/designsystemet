@@ -39,7 +39,6 @@
     }
 
     & > * {
-      grid-template-columns: 1.2em 1fr;
       padding: var(--ds-spacing-2) var(--ds-spacing-3);
       padding-inline-start: var(--dsc-suggestion-option-checkmark-size);
       border: none;
@@ -47,23 +46,12 @@
       border-left: 5px solid transparent;
       border-radius: var(--ds-border-radius-sm);
       justify-content: start;
-      background: none;
       text-align: left;
-      height: auto;
       cursor: pointer;
       font-family: inherit;
-      font-weight: 400;
       position: relative;
 
-      & > * {
-        grid-column: 1 / 1;
-      }
-
       &[aria-selected='true'] {
-        & > * {
-          grid-column: 2 / 2;
-        }
-
         &::before {
           content: '';
           position: absolute;
@@ -72,8 +60,6 @@
           background: currentcolor;
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
-          display: inline-block;
-          translate: 0 calc((1lh - var(--dsc-suggestion-option-checkmark-size)) / 2);
         }
       }
 
