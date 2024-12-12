@@ -50,6 +50,8 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
 export const Controlled: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
 
+  console.log('controlled value is ', value);
+
   return (
     <>
       <Field>
@@ -57,7 +59,10 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion
           {...args}
           value={value}
-          onChange={(value) => setValue(value)}
+          onChange={(value) => {
+            console.log('onChange', value);
+            setValue(value);
+          }}
         >
           <Suggestion.Input />
           <Suggestion.Clear />

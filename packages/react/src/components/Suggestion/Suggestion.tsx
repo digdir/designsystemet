@@ -16,6 +16,8 @@ type SuggestionContextType = {
   listId?: string;
   setListId?: (id: string) => void;
   inputRef?: React.RefObject<HTMLInputElement>;
+  listRef?: React.RefObject<HTMLDataListElement>;
+  handleValueChange?: (value: string) => void;
 };
 
 export const SuggestionContext = createContext<SuggestionContextType>({});
@@ -51,30 +53,49 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     const innerRef = useRef<HTMLElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const listRef = useRef<HTMLDataListElement>(null);
     const mergedRefs = useMergeRefs([innerRef, ref]);
+
+    /* function for sending value changes to consumer */
+    const handleValueChange = (value: string) => {
+      if (value !== internalValue) {
+        setInternalValue(value);
+        onChange?.(value);
+      }
+    };
 
     // Handle onChange
     useEffect(() => {
       const div = innerRef.current as HTMLDivElement | null;
-      const handleChange = () => onChange?.(inputRef.current?.value || '');
+      const handleChange = () =>
+        handleValueChange(inputRef.current?.value || '');
 
       div?.addEventListener('input', handleChange);
       return () => div?.removeEventListener('input', handleChange);
     }, [internalValue]);
 
-    // call onChange when internalValue changes
-    useEffect(() => {
-      onChange?.(internalValue);
-    }, [internalValue, onChange]);
-
     // update internalValue and input value when value changes
     useEffect(() => {
       if (value && value !== internalValue) setInternalValue(value || '');
+
+      /* Update input and u-elements value */
       inputRef.current && setReactInputValue(inputRef.current, value || '');
-    }, [value]);
+      const options = listRef.current?.querySelectorAll('u-option');
+      if (options) {
+        for (const option of options) {
+          if (option.value === value) {
+            option.selected = true;
+          } else {
+            option.selected = false;
+          }
+        }
+      }
+    }, [value, internalValue]);
 
     return (
-      <SuggestionContext.Provider value={{ listId, setListId, inputRef }}>
+      <SuggestionContext.Provider
+        value={{ listId, setListId, inputRef, listRef, handleValueChange }}
+      >
         <div
           className={cl('ds-suggestion', className)}
           ref={mergedRefs}
