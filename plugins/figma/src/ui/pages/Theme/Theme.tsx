@@ -10,10 +10,9 @@ import {
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getDummyTheme } from '@common/dummyTheme';
 import { colorCliOptions } from '@digdir/designsystemet';
-import { generateThemeForColor } from '@digdir/designsystemet/color';
+import { type CssColor, generateThemeForColor } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';

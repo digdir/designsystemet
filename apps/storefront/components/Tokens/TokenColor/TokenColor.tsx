@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import { useRef } from 'react';
 import type { TransformedToken } from 'style-dictionary';
 
-import type { ColorNumber } from '../../../../../packages/cli/src/colors/types';
+import type { ColorNumber } from '@digdir/designsystemet/color';
 
 import classes from './TokenColor.module.css';
 interface TokenColorProps {

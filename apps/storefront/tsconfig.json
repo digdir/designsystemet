@@ -1,12 +1,23 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components": ["components"],
-      "@layouts": ["layouts"],
-      "@blog": ["app/bloggen/_components"]
+      "@components": [
+        "components"
+      ],
+      "@layouts": [
+        "layouts"
+      ],
+      "@blog": [
+        "app/bloggen/_components"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,16 +30,23 @@
     "jsx": "preserve",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@digdir/designsystemet-theme/colors.d.ts"],
+    "types": [
+      "@digdir/designsystemet-theme/colors.d.ts",
+    ],
     "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      },
       {
         "name": "next"
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.css",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

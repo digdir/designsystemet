@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types": "tsc --noEmit"
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
