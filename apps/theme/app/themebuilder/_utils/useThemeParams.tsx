@@ -1,7 +1,7 @@
 import {
   type ColorScheme,
   type CssColor,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -47,7 +47,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateThemeForColor(neutralColor as CssColor),
+            colors: generateColorSchemes(neutralColor as CssColor),
           },
         ];
     }
@@ -96,6 +96,6 @@ export const useThemeParams = () => {
 function createColorsFromQuery(colors: string) {
   return colors.split(' ').map((color) => {
     const [name, hex] = color.split(':');
-    return { name, colors: generateThemeForColor(hex as CssColor) };
+    return { name, colors: generateColorSchemes(hex as CssColor) };
   });
 }

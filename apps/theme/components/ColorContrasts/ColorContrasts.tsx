@@ -1,6 +1,6 @@
 import {
   type ColorInfo,
-  generateThemeForColor,
+  generateColorSchemes,
   getColorNameFromNumber,
   getContrastFromHex,
 } from '@digdir/designsystemet';
@@ -16,7 +16,7 @@ import { useThemeStore } from '../../store';
 import classes from './ColorContrasts.module.css';
 
 export const ColorContrasts = () => {
-  const theme = generateThemeForColor('#0062BA');
+  const theme = generateColorSchemes('#0062BA');
   const indexOne = [1, 2, 3, 4, 5];
   const indexTwo = [6, 7, 8, 12, 13];
   const [reducedLight, setReducedLight] = useState({

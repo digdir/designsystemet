@@ -20,7 +20,7 @@ export const baseColors: Record<GlobalColors, CssColor> = {
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
  */
-export const generateScaleForColor = (color: CssColor, colorScheme: ColorScheme): ColorInfo[] => {
+export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): ColorInfo[] => {
   const baseColors = getBaseColors(color, colorScheme);
   const luminanceValues = luminance[colorScheme];
 
@@ -57,10 +57,10 @@ export const generateScaleForColor = (color: CssColor, colorScheme: ColorScheme)
  *
  * @param color The base color that is used to generate the color schemes
  */
-export const generateThemeForColor = (color: CssColor): ThemeInfo => ({
-  light: generateScaleForColor(color, 'light'),
-  dark: generateScaleForColor(color, 'dark'),
-  contrast: generateScaleForColor(color, 'contrast'),
+export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
+  light: generateColorScale(color, 'light'),
+  dark: generateColorScale(color, 'dark'),
+  contrast: generateColorScale(color, 'contrast'),
 });
 
 /**

@@ -1,4 +1,4 @@
-import { generateThemeForColor } from '@digdir/designsystemet';
+import { generateColorSchemes } from '@digdir/designsystemet';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
@@ -30,12 +30,12 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
   const [open, setOpen] = useState(false);
 
   const addNewColor = (color: string, name: string) => {
-    const theme = generateThemeForColor(color as CssColor);
+    const theme = generateColorSchemes(color as CssColor);
     addColor({ name: name, colors: theme }, colorType);
   };
 
   const updateExistingColor = (color: string, name: string) => {
-    const theme = generateThemeForColor(color as CssColor);
+    const theme = generateColorSchemes(color as CssColor);
     updateColor({ name: name, colors: theme }, index, colorType);
   };
 
