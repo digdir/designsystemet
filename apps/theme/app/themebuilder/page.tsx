@@ -85,7 +85,7 @@ export default function Home() {
               <div className={classes.panelToggle}>
                 <div>
                   <div className={classes.colorsContainer}>
-                    <Colors  />
+                    <Colors />
                   </div>
                 </div>
 
