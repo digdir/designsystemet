@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import * as R from 'ramda';
+import { writeFile } from '../../utils';
 
 /**
  * Defines a sort order for the sections of the entry CSS file.
@@ -68,12 +69,13 @@ type EntryFile = (options: {
   outPath: string;
   buildPath: string;
   theme: string;
+  dry?: boolean;
 }) => Promise<undefined>;
 
 /**
  * Creates a CSS entry file that imports base CSS files for a theme
  */
-export const makeEntryFile: EntryFile = async ({ outPath, buildPath, theme }) => {
+export const makeEntryFile: EntryFile = async ({ outPath, buildPath, theme, dry }) => {
   const writePath = `${outPath}/${theme}.css`;
 
   const files = await glob(`**/*`, { cwd: buildPath });
@@ -81,5 +83,5 @@ export const makeEntryFile: EntryFile = async ({ outPath, buildPath, theme }) =>
   const sortedFileNames = R.pipe(sortAlphabetically, sortByDefinedOrder)(files);
   const content = header + concat(sortedFileNames.map((file) => `${buildPath}/${file}`));
 
-  await fs.writeFile(writePath, content);
+  await writeFile(writePath, content, dry);
 };
