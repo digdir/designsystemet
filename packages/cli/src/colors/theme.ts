@@ -5,8 +5,8 @@ import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type {
   ColorInfo,
-  ColorMode,
   ColorNumber,
+  ColorScheme,
   GeneratedColorTheme,
   GlobalColors,
   ThemeGenType,
@@ -29,7 +29,7 @@ export const baseColors: Record<GlobalColors, CssColor> = {
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
  */
-export const generateScaleForColor = (color: CssColor, colorScheme: ColorMode): ColorInfo[] => {
+export const generateScaleForColor = (color: CssColor, colorScheme: ColorScheme): ColorInfo[] => {
   const baseColors = getBaseColors(color, colorScheme);
   const luminanceValues = luminance[colorScheme];
 
@@ -100,7 +100,7 @@ export const generateGlobalColors = (): Record<GlobalColors, ThemeInfo> => {
  * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-const getBaseColors = (color: CssColor, colorScheme: ColorMode) => {
+const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
   let colorLightness = getLightnessFromHex(color);
   if (colorScheme !== 'light') {
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;

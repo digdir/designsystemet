@@ -1,5 +1,5 @@
 import {
-  type ColorMode,
+  type ColorScheme,
   type CssColor,
   generateThemeForColor,
 } from '@digdir/designsystemet/color';
@@ -26,7 +26,7 @@ export const useThemeParams = () => {
 
     if (query.get('appearance')) {
       useThemeStore.setState({
-        appearance: query.get('appearance') as ColorMode,
+        appearance: query.get('appearance') as ColorScheme,
       });
     }
 

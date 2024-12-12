@@ -3,7 +3,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import type { ColorMode } from '../colors/types.js';
+import type { ColorScheme } from '../colors/types.js';
 import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
 import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
   type: 'json',
@@ -24,8 +24,8 @@ const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template/');
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
-const generateColorSchemeFile = (folder: ColorMode, name: Collection, tokens: TokensSet, outPath: string): File => {
-  const path = `${outPath}/primitives/modes/color-scheme/${folder}`;
+const generateColorSchemeFile = (scheme: ColorScheme, name: Collection, tokens: TokensSet, outPath: string): File => {
+  const path = `${outPath}/primitives/modes/color-scheme/${scheme}`;
   return {
     data: stringify(tokens),
     path,

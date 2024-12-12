@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { baseColors, generateScaleForColor } from '../colors/index.js';
-import type { ColorInfo, ColorMode } from '../colors/types.js';
+import type { ColorInfo, ColorScheme } from '../colors/types.js';
 import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
 export const colorCliOptions = {
@@ -59,10 +59,10 @@ const generateTypographyTokens = (themeName: string, { fontFamily }: Typography)
   };
 };
 
-const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors): TokensSet => {
-  const main = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.main);
-  const support = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.support);
-  const neutral = createColorTokens(generateScaleForColor(colors.neutral, theme));
+const generateThemeTokens = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
+  const main = R.map((color) => createColorTokens(generateScaleForColor(color, colorScheme)), colors.main);
+  const support = R.map((color) => createColorTokens(generateScaleForColor(color, colorScheme)), colors.support);
+  const neutral = createColorTokens(generateScaleForColor(colors.neutral, colorScheme));
 
   return {
     [themeName]: {
@@ -73,13 +73,13 @@ const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors
   };
 };
 
-const generateGlobalTokens = (theme: ColorMode) => {
-  const blueScale = generateScaleForColor(baseColors.blue, theme);
-  const greenScale = generateScaleForColor(baseColors.green, theme);
-  const orangeScale = generateScaleForColor(baseColors.orange, theme);
-  const purpleScale = generateScaleForColor(baseColors.purple, theme);
-  const redScale = generateScaleForColor(baseColors.red, theme);
-  const yellowScale = generateScaleForColor(baseColors.yellow, theme);
+const generateGlobalTokens = (colorScheme: ColorScheme) => {
+  const blueScale = generateScaleForColor(baseColors.blue, colorScheme);
+  const greenScale = generateScaleForColor(baseColors.green, colorScheme);
+  const orangeScale = generateScaleForColor(baseColors.orange, colorScheme);
+  const purpleScale = generateScaleForColor(baseColors.purple, colorScheme);
+  const redScale = generateScaleForColor(baseColors.red, colorScheme);
+  const yellowScale = generateScaleForColor(baseColors.yellow, colorScheme);
 
   return {
     global: {

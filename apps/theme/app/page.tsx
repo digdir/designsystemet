@@ -4,7 +4,7 @@ import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {
   ColorInfo,
-  ColorMode,
+  ColorScheme,
   ContrastMode,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
@@ -110,7 +110,7 @@ export default function Home() {
     contrastMode,
   }: {
     colors?: ThemeInfo;
-    theme?: ColorMode;
+    theme?: ColorScheme;
     borderRadius?: string;
     contrastMode?: ContrastMode;
   }) => {

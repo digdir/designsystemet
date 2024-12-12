@@ -1,22 +1,22 @@
-import type { ColorMode } from '../../colors/types.js';
+import type { ColorScheme } from '../../colors/types.js';
 import type { Colors } from '../types.js';
 
-type ColorModes = Array<ColorMode>;
+type ColorSchemes = Array<ColorScheme>;
 
 type Metadata = {
   tokenSetOrder: string[];
 };
 
-export function generateMetadataJson(modes: ColorModes, themes: string[], colors: Colors): Metadata {
+export function generateMetadataJson(schemes: ColorSchemes, themes: string[], colors: Colors): Metadata {
   return {
     tokenSetOrder: [
       'primitives/globals',
       'primitives/size/default',
       ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
       ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
-      ...modes.flatMap((mode) => [
-        `primitives/modes/color-scheme/${mode}/global`,
-        ...themes.map((theme) => `primitives/modes/color-scheme/${mode}/${theme}`),
+      ...schemes.flatMap((scheme) => [
+        `primitives/modes/color-scheme/${scheme}/global`,
+        ...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
       ]),
       ...themes.map((theme) => `themes/${theme}`),
       'semantic/color',

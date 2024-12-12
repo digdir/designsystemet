@@ -1,6 +1,6 @@
 'use client';
 
-import type { ColorMode } from '@digdir/designsystemet';
+import type { ColorScheme } from '@digdir/designsystemet';
 import { Heading } from '@digdir/designsystemet-react';
 
 import { useRouter } from 'next/navigation';
@@ -72,7 +72,7 @@ export default function Home() {
                   ]}
                   onChange={(value) => {
                     const val = value;
-                    setAppearance(val as ColorMode);
+                    setAppearance(val as ColorScheme);
                   }}
                 />
               </div>
@@ -85,7 +85,7 @@ export default function Home() {
               <div className={classes.panelToggle}>
                 <div>
                   <div className={classes.colorsContainer}>
-                    <Colors themeMode='light' />
+                    <Colors  />
                   </div>
                 </div>
 

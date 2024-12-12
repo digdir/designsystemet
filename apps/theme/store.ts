@@ -1,6 +1,6 @@
 import {
   type ColorInfo,
-  type ColorMode,
+  type ColorScheme,
   type ThemeInfo,
   generateThemeForColor,
 } from '@digdir/designsystemet/color';
@@ -40,8 +40,8 @@ type ColorStore = {
   setSelectedColor: (color: ColorInfo, name: string) => void;
   borderRadius: BorderRadiusGroup;
   setBorderRadius: (radius: BorderRadiusGroup) => void;
-  appearance: ColorMode;
-  setAppearance: (appearance: ColorMode) => void;
+  appearance: ColorScheme;
+  setAppearance: (appearance: ColorScheme) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
 };
