@@ -11,6 +11,7 @@
     "build": "npm run build:plugin && npm run build:ui",
     "build:ui": "vite build -c ./vite.config.ui.ts",
     "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "types": "tsc --noEmit",
     "types:src": "tsc",
     "types:node": "tsc -P tsconfig.node.json"
   },
