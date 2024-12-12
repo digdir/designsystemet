@@ -35,6 +35,7 @@ export const TokenModal = () => {
    --${colorCliOptions.main} ${setCliColors(colors.main)} \\
    --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
    --${colorCliOptions.support} ${setCliColors(colors.support)} \\
+   --border-radius 4 \\
    --theme "${themeName}"`;
 
   type InfoBoxType = {
