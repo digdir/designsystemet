@@ -10,16 +10,9 @@
     "noEmit": false,
     "incremental": true,
     "moduleResolution": "Bundler",
-    "types": [
-      "@digdir/designsystemet-theme/colors.d.ts",
-      "./declarations.d.ts",
-    ],
+    "types": ["@digdir/designsystemet-theme/colors.d.ts", "./declarations.d.ts"]
   },
-  "include": [
-    "./src",
-    "./stories",
-    "declarations.d.ts"
-  ],
+  "include": ["./src", "./stories", "declarations.d.ts"],
   "plugins": [
     {
       "name": "next"

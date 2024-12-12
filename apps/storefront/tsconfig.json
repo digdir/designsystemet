@@ -3,21 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components": [
-        "components"
-      ],
-      "@layouts": [
-        "layouts"
-      ],
-      "@blog": [
-        "app/bloggen/_components"
-      ]
+      "@components": ["components"],
+      "@layouts": ["layouts"],
+      "@blog": ["app/bloggen/_components"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -30,9 +20,7 @@
     "jsx": "preserve",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "@digdir/designsystemet-theme/colors.d.ts",
-    ],
+    "types": ["@digdir/designsystemet-theme/colors.d.ts"],
     "plugins": [
       {
         "name": "next"
@@ -46,7 +34,5 @@
     "**/*.css",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
