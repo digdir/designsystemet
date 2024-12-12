@@ -69,10 +69,13 @@ const buildConfigs = {
   },
 } satisfies Record<string, BuildConfig>;
 
-export async function buildTokens(buildOptions: Options): Promise<void> {
-  const { dry } = buildOptions;
-  const tokensDir = buildOptions.tokens;
-  const targetDir = path.resolve(buildOptions.outDir);
+export async function buildTokens(options: Options): Promise<void> {
+  const { dry } = options;
+  const tokensDir = options.tokens;
+  const targetDir = path.resolve(options.outDir);
+
+  /** For sharing build options in other files */
+  buildOptions = options;
 
   /*
    * Build the themes
