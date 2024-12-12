@@ -14,7 +14,7 @@ import { getDummyTheme } from '@common/dummyTheme';
 import { colorCliOptions } from '@digdir/designsystemet';
 import {
   type CssColor,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
@@ -119,11 +119,11 @@ function Theme() {
       ...newArray[themeIndex],
       colors: {
         ...newArray[themeIndex].colors,
-        accent: themeToFigmaFormat(generateThemeForColor(accent)),
-        neutral: themeToFigmaFormat(generateThemeForColor(neutral)),
-        brand1: themeToFigmaFormat(generateThemeForColor(brand1)),
-        brand2: themeToFigmaFormat(generateThemeForColor(brand2)),
-        brand3: themeToFigmaFormat(generateThemeForColor(brand3)),
+        accent: themeToFigmaFormat(generateColorSchemes(accent)),
+        neutral: themeToFigmaFormat(generateColorSchemes(neutral)),
+        brand1: themeToFigmaFormat(generateColorSchemes(brand1)),
+        brand2: themeToFigmaFormat(generateColorSchemes(brand2)),
+        brand3: themeToFigmaFormat(generateColorSchemes(brand3)),
       },
     };
 

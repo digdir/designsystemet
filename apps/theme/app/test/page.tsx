@@ -3,16 +3,16 @@ import { Container } from '@repo/components';
 
 import {
   type ThemeInfo,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import classes from './page.module.css';
 
 export default function Home() {
-  const oldAccentTheme = generateThemeForColor('#0062BA');
-  const oldNeutralTheme = generateThemeForColor('#1E2B3C');
-  const oldBrand1Theme = generateThemeForColor('#F45F63');
-  const oldBrand2Theme = generateThemeForColor('#E5AA20');
-  const oldBrand3Theme = generateThemeForColor('#1E98F5');
+  const oldAccentTheme = generateColorSchemes('#0062BA');
+  const oldNeutralTheme = generateColorSchemes('#1E2B3C');
+  const oldBrand1Theme = generateColorSchemes('#F45F63');
+  const oldBrand2Theme = generateColorSchemes('#E5AA20');
+  const oldBrand3Theme = generateColorSchemes('#1E98F5');
 
   type RowType = {
     oldTheme: ThemeInfo;

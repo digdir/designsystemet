@@ -2,14 +2,14 @@ import crypto from 'node:crypto';
 
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import type { ColorMode } from '../../colors/types.js';
+import type { ColorScheme } from '../../colors/types.js';
 import type { Colors } from '../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const createHash = (text: string) => crypto.hash('sha1', text);
 
-type ColorSchemes = Array<ColorMode>;
+type ColorSchemes = Array<ColorScheme>;
 
 type ThemeObject_ = ThemeObject & {
   $figmaCollectionId?: string;
@@ -42,7 +42,7 @@ function generateSizeGroup(): ThemeObject_[] {
   ];
 }
 
-const colorSchemeDefaults: Record<ColorMode, ThemeObject_> = {
+const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
   light: {
     name: 'Light',
     selectedTokenSets: {},

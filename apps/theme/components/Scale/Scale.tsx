@@ -1,6 +1,5 @@
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import type { ThemeInfo } from '@digdir/designsystemet/color';
-import type { modeType } from '../../types';
 import { Group } from '../Group/Group';
 
 import classes from './Scale.module.css';
@@ -9,14 +8,12 @@ type ScaleProps = {
   colorScale: ThemeInfo;
   showHeader?: boolean;
   showColorMeta?: boolean;
-  themeMode: modeType;
 };
 
 export const Scale = ({
   colorScale,
   showHeader,
   showColorMeta,
-  themeMode,
 }: ScaleProps) => {
   return (
     <div className={classes.themes}>
