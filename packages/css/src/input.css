@@ -102,7 +102,8 @@
     }
   }
 
-  &:not([size], [cols], select) {
+  /* Using select:where() to decrease specificity */
+  &:not([size], [cols], select:where([data-width='auto'])) {
     width: 100%;
   }
 
