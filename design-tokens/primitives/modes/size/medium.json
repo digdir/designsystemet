@@ -2,7 +2,7 @@
   "size": {
     "mode-font-size": {
       "$type": "dimension",
-      "$value": "16"
+      "$value": "18"
     },
     "base": {
       "$type": "dimension",
