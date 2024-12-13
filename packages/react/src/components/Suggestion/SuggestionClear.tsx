@@ -33,7 +33,7 @@ export const SuggestionClear = forwardRef<
     setReactInputValue(inputRef.current, '');
     handleValueChange?.('');
     /* Unselect selected option */
-    const option = listRef?.current?.querySelector('[aria-selected="true"]');
+    const option = listRef?.current?.querySelector('selected');
     if (option) {
       option.setAttribute('aria-selected', 'false');
       option.removeAttribute('selected');
