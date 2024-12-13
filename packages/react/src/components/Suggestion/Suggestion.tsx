@@ -64,7 +64,20 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
       }
     };
 
-    // Handle onChange
+    /* Handle default value */
+    useEffect(() => {
+      if (defaultValue) {
+        if (!inputRef.current || !listRef.current) return;
+        inputRef.current && setReactInputValue(inputRef.current, defaultValue);
+        for (const option of listRef.current.options) {
+          if (option.value === defaultValue) {
+            option.selected = true;
+          }
+        }
+      }
+    }, [defaultValue]);
+
+    /* Handle onChange */
     useEffect(() => {
       const div = innerRef.current as HTMLDivElement | null;
       const handleChange = () =>
@@ -74,7 +87,7 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
       return () => div?.removeEventListener('input', handleChange);
     }, [internalValue]);
 
-    // update internalValue and input value when value changes
+    /* update internalValue and input value when value changes */
     useEffect(() => {
       /* If value is not set, it is not controlled */
       if (typeof value !== 'string') return;
@@ -87,7 +100,7 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
       /* Update input and u-elements value */
       inputRef.current && setReactInputValue(inputRef.current, value || '');
-      const options = listRef.current?.querySelectorAll('u-option');
+      const options = listRef.current?.options;
       if (options) {
         for (const option of options) {
           if (option.value === value) {
