@@ -264,3 +264,15 @@ export const convertToHex = (color?: string): CssColor => {
   }
   return chroma(color).hex() as CssColor;
 };
+
+export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
+  return (
+    '#' +
+    [rgb.r, rgb.g, rgb.b]
+      .map((x) => {
+        const hex = Math.round(x * 255).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      })
+      .join('')
+  );
+};

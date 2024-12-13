@@ -7,7 +7,9 @@
     "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
-  "css.customData": ["./.vscode/css-data.json"],
+  "css.customData": [
+    "./.vscode/css-data.json"
+  ],
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -23,6 +25,9 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[html]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   }
 }

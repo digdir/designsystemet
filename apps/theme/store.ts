@@ -1,8 +1,8 @@
 import {
   type ColorInfo,
-  type ColorMode,
+  type ColorScheme,
   type ThemeInfo,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
@@ -40,8 +40,8 @@ type ColorStore = {
   setSelectedColor: (color: ColorInfo, name: string) => void;
   borderRadius: BorderRadiusGroup;
   setBorderRadius: (radius: BorderRadiusGroup) => void;
-  appearance: ColorMode;
-  setAppearance: (appearance: ColorMode) => void;
+  appearance: ColorScheme;
+  setAppearance: (appearance: ColorScheme) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
 };
@@ -62,12 +62,12 @@ export const useThemeStore = create(
     appearance: 'light',
     themePreview: 'one',
     colors: {
-      main: [{ name: 'accent', colors: generateThemeForColor('#0062BA') }],
-      neutral: [{ name: 'neutral', colors: generateThemeForColor('#1E2B3C') }],
+      main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
+      neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
       support: [
-        { name: 'brand1', colors: generateThemeForColor('#F45F63') },
-        { name: 'brand2', colors: generateThemeForColor('#E5AA20') },
-        { name: 'brand3', colors: generateThemeForColor('#1E98F5') },
+        { name: 'brand1', colors: generateColorSchemes('#F45F63') },
+        { name: 'brand2', colors: generateColorSchemes('#E5AA20') },
+        { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
       ],
     },
     themeName: 'theme',

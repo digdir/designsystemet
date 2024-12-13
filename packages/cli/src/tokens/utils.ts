@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises';
+import chalk from 'chalk';
 import * as R from 'ramda';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
 
@@ -61,3 +63,39 @@ export function isColorCategoryToken(token: TransformedToken, category?: 'main' 
   }
   return R.startsWith(['color', category], token.path);
 }
+
+export const mkdir = async (dir: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('mkdir')} ${dir}`);
+    return Promise.resolve();
+  }
+
+  return await fs.mkdir(dir, { recursive: true });
+};
+
+export const writeFile = async (path: string, data: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('writeFile')} ${path}`);
+    return Promise.resolve();
+  }
+
+  return await fs.writeFile(path, data, { encoding: 'utf-8' });
+};
+
+export const cp = async (src: string, dest: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('cp')} ${src} ${dest}`);
+    return Promise.resolve();
+  }
+
+  return await fs.cp(src, dest, { recursive: true });
+};
+
+export const copyFile = async (src: string, dest: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
+    return Promise.resolve();
+  }
+
+  return await fs.copyFile(src, dest);
+};

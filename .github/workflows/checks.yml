@@ -9,10 +9,14 @@ on:
       - 'biome.jsonc'
 jobs:
   checks:
-    name: Lint
+    name: Checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
-      - name: Lint code
+      - name: Build
+        run: yarn build
+      - name: Types
+        run: yarn types
+      - name: Biome CI
         run: yarn biome ci .

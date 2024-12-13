@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
-import { getType, isColorCategoryToken } from '../utils/utils.js';
+import { getType, isColorCategoryToken } from '../../utils.js';
 
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
