@@ -102,7 +102,7 @@
     }
   }
 
-  &:not([size], [cols], select) {
+  &:not([size], [cols], select[data-width='auto']) {
     width: 100%;
   }
 
