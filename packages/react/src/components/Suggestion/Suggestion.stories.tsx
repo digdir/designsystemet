@@ -24,6 +24,7 @@ const DATA_PLACES = [
   'Stavanger',
   'Brønnøysund',
   'Trondheim',
+  'Bergen',
 ];
 
 export const Preview: StoryFn<typeof Suggestion> = (args) => {
