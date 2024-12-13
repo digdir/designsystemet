@@ -162,7 +162,7 @@ export default function Home() {
         colorModalRef={colorModalRef}
       />
 
-      <main className={classes.main}>
+      <main className={classes.main} id='main'>
         <Container>
           <div className={classes.header}>
             <Paragraph data-size='lg'>Designsystemet sin temabygger</Paragraph>
