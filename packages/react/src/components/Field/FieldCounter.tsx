@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { Paragraph } from '../Paragraph';
 import {
   ValidationMessage,
   type ValidationMessageProps,
@@ -57,13 +58,15 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
         >
           {hasExceededLimit && label(over, remainder)}
         </div>
-        <ValidationMessage
-          data-color={hasExceededLimit ? 'danger' : 'neutral'}
-          ref={ref}
-          {...rest}
-        >
-          {label(hasExceededLimit ? over : under, remainder)}
-        </ValidationMessage>
+        {hasExceededLimit ? (
+          <ValidationMessage ref={ref} {...rest}>
+            {label(over, remainder)}
+          </ValidationMessage>
+        ) : (
+          <Paragraph ref={ref} {...rest} data-field='validation'>
+            {label(under, remainder)}
+          </Paragraph>
+        )}
       </>
     );
   },
