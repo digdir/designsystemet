@@ -1,14 +1,14 @@
 {
   "size": {
-    "mode-font-size": {
+    "_mode-font-size": {
       "$type": "dimension",
       "$value": "21"
     },
-    "base": {
+    "_base": {
       "$type": "dimension",
       "$value": "18"
     },
-    "step": {
+    "_step": {
       "$type": "dimension",
       "$value": "4"
     }
