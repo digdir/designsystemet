@@ -2337,7 +2337,7 @@ export const  color = [
 export const  dimension = [
   {
     $type: "dimension",
-    $value: "min( 0.25rem , 0.25rem *1)",
+    $value: "min( (0.25rem*0.5) , 0.25rem *1)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2369,7 +2369,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "min( 0.25rem , 0.25rem *5)",
+    $value: "min( (0.25rem*2) , 0.25rem *5)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2385,12 +2385,28 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.25rem",
+    $value: "min( (0.25rem*3) , 0.25rem *5)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
       $value: "{border-radius.4}"
+    },
+    name: "--ds-border-radius-xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "xl"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.5}"
     },
     name: "--ds-border-radius-default",
     attributes: {},
@@ -2406,7 +2422,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-radius.5}"
+      $value: "{border-radius.6}"
     },
     name: "--ds-border-radius-full",
     attributes: {},
