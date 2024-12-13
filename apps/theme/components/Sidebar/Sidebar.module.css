@@ -1,0 +1,124 @@
+.sidebar {
+  position: relative;
+  z-index: 100;
+  right: 20px;
+  top: 20px;
+  background-color: var(--ds-color-neutral-background-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  flex-basis: 410px;
+  flex-grow: 1;
+  border-radius: 8px;
+  margin-top: -170px;
+  min-height: calc(81vh);
+  max-height: calc(100vh - 40px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.showSidebar {
+  display: block !important;
+  top: 12px;
+  margin-top: 0;
+  right: 12px;
+  bottom: 12px;
+  position: fixed;
+}
+
+.scrollContainer {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  padding-bottom: 91px;
+}
+
+.sticky {
+  position: fixed;
+  margin-top: 0;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.group {
+  margin-bottom: 24px;
+  margin-top: -8px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  height: 42px;
+}
+
+.AddBtn {
+  margin-right: -8px;
+}
+
+.error {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.themeMode {
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.sizes {
+  display: flex;
+  gap: 8px;
+  margin-top: -4px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0 0 8px 8px;
+  padding: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-info-background-default);
+}
+
+.toggle {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  display: none;
+  z-index: 5;
+  background-color: var(--ds-color-neutral-background-default);
+}
+
+@media screen and (max-width: 1500px) {
+  .sidebar {
+    display: none;
+  }
+  .toggle {
+    display: block;
+  }
+  .toggleOpen {
+    right: 440px;
+  }
+}

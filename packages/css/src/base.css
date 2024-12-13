@@ -1,0 +1,100 @@
+/**
+ * Visually hide an element, but leave it available for screen readers
+ */
+.ds-sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+:root,
+[data-color-scheme] {
+  --dsc-focus-border-width: 3px; /* Default focus border width */
+  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
+  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
+  --ds-font-size-minus-1: max(.9em, .875rem); /* Default to 90% of font-size, but minimum 14px */
+  --ds-font-size-plus-1: 1.1em; /* Default to 110% */
+
+  /* font-size adjustments if supporting round() */
+  @supports (width: round(down, .1em, 1px)) {
+    --ds-font-size-minus-1: round(down, max(.9em, .875rem), 0.0625rem); /* Default to 90% of font-size, but minimum 14px */
+    --ds-font-size-plus-1: round(down, 1.1em, 0.0625rem); /* Default to 110% */
+  }
+}
+
+/* Set default background and color on <body> (not :root) to align with best practice */
+body,
+[data-color-scheme] {
+  color: var(--ds-color-neutral-text-default);
+  background-color: var(--ds-color-neutral-background-default);
+}
+
+/**
+ * Apply a focus outline on an element when it is focused with keyboard
+ */
+.ds-focus:focus-visible {
+  @composes ds-focus--visible from './base.css';
+}
+
+/**
+ * Focus outline that can be composed if it needs a specific selector
+ */
+.ds-focus--visible {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--ds--focus, var(--dsc-focus-boxShadow));
+  outline: var(--ds--focus, var(--dsc-focus-outline));
+  outline-offset: var(--ds--focus, var(--dsc-focus-border-width));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --ds--focus: ;
+  }
+}
+
+[data-size='xs'] {
+  font-weight: var(--ds-body-xs-font-weight);
+  line-height: var(--ds-body-xs-line-height);
+  font-size: var(--ds-body-xs-font-size);
+  letter-spacing: var(--ds-body-xs-letter-spacing);
+}
+
+[data-size='sm'] {
+  font-weight: var(--ds-body-sm-font-weight);
+  line-height: var(--ds-body-sm-line-height);
+  font-size: var(--ds-body-sm-font-size);
+  letter-spacing: var(--ds-body-sm-letter-spacing);
+}
+
+/* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */
+body,
+[data-size='md'] {
+  font-weight: var(--ds-body-md-font-weight);
+  line-height: var(--ds-body-md-line-height);
+  font-size: var(--ds-body-md-font-size);
+  letter-spacing: var(--ds-body-md-letter-spacing);
+}
+
+[data-size='lg'] {
+  font-weight: var(--ds-body-lg-font-weight);
+  line-height: var(--ds-body-lg-line-height);
+  font-size: var(--ds-body-lg-font-size);
+  letter-spacing: var(--ds-body-lg-letter-spacing);
+}
+
+[data-size='xl'] {
+  font-weight: var(--ds-body-xl-font-weight);
+  line-height: var(--ds-body-xl-line-height);
+  font-size: var(--ds-body-xl-font-size);
+  letter-spacing: var(--ds-body-xl-letter-spacing);
+}

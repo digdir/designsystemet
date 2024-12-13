@@ -23,6 +23,8 @@ const config: StorybookConfig = {
     },
   },
   stories: [
+    '../stories/*.mdx',
+    '../stories/*.stories.ts?(x)',
     '../../../packages/*.mdx',
     '../../../packages/css/**/*.mdx',
     '../../../packages/theme/**/*.mdx',

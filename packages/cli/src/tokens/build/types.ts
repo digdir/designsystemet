@@ -11,7 +11,7 @@ export type ColorCategories = keyof typeof colorCategories;
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions
  */
 export type ThemePermutation = {
-  mode: string;
+  'color-scheme': string;
   'main-color': string;
   'support-color': string;
   semantic: string;
@@ -27,6 +27,7 @@ export type IsCalculatedToken = (token: TransformedToken, options?: StyleDiction
 export type GetSdConfigOptions = {
   outPath: string;
   tokensDir: string;
+  dry?: boolean;
 };
 
 export type BuildConfig = {

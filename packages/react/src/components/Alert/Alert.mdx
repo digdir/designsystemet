@@ -1,5 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { Do, Dont, Stack, CssVariables } from '@doc-components';
+import { CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/alert.css?inline';
 
 import * as AlertStories from './Alert.stories';
@@ -93,26 +93,6 @@ Dersom du sender inn tekst ved bruk av komponenter kan du følge tabellen under 
 | sm              | 2xs               | sm                  |
 | md              | xs                | md                  |
 | lg              | sm                | lg                  |
-
-### Ikke lag andre versjoner
-
-Det er viktig at Alerts har samme utseende og formspråk på tvers av produktene, så den skal ikke justeres.
-
-<Stack direction="row" style={{
-  justifyContent: 'unset',
-  alignItems: 'unset'
-}}>
-  <Do
-    description='Alert brukes på tvers av produkter og skal se like ut'
-    image='/img/component-guidelines/alert/alert-ex1-do.png'
-  />
-
-  <Dont
-    description='Ikke fjern border, bytt ikon, eller gjør andre visuelle endringer på alert'
-    image='/img/component-guidelines/alert/alert-ex1-dont.png'
-  />
-</Stack>
-<br />
 
 ## Tekst i komponenten
 

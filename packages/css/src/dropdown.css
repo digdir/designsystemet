@@ -1,0 +1,48 @@
+.ds-dropdown {
+  --dsc-dropdown-padding: var(--ds-spacing-3) var(--ds-spacing-2);
+  --dsc-dropdown-item-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-dropdown-item-size: var(--ds-spacing-12);
+  --dsc-dropdown-background: var(--ds-color-neutral-background-default);
+  --dsc-dropdow-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dropdown-border: 1px solid var(--dsc-dropdow-border-color);
+
+  background: var(--dsc-dropdown-background);
+  border-radius: var(--ds-border-radius-md);
+  border: var(--dsc-dropdown-border);
+  box-shadow: var(--ds-shadow-md);
+  box-sizing: border-box;
+  list-style: none;
+  min-width: 15em;
+  padding: var(--dsc-dropdown-padding);
+
+  /* Remove popover arrow */
+  &::before {
+    display: none;
+  }
+
+  & > :is(h2, h3, h4, h5, h6) {
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--ds-color-neutral-text-subtle);
+    display: flex;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    min-height: var(--dsc-dropdown-item-size);
+    padding: var(--dsc-dropdown-item-padding);
+  }
+
+  & > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & :is(a, button, [role='button']) {
+    justify-content: start;
+    padding: var(--dsc-dropdown-item-padding);
+    min-height: var(--dsc-dropdown-item-size);
+    width: 100%;
+    font-weight: var(--ds-font-weight-regular);
+  }
+}

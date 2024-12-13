@@ -27,7 +27,7 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   'aria-label': 'Ola Nordmann',
-  color: 'accent',
+  'data-color': 'accent',
   'data-size': 'md',
   variant: 'circle',
   children: '',
@@ -51,11 +51,11 @@ export const Sizes: Story = () => (
 
 export const ColorVariants: Story = () => (
   <>
-    <Avatar color='accent' aria-label='color accent' />
-    <Avatar color='neutral' aria-label='color neutral' />
-    <Avatar color='brand1' aria-label='color brand1' />
-    <Avatar color='brand2' aria-label='color brand2' />
-    <Avatar color='brand3' aria-label='color brand3' />
+    <Avatar data-color='accent' aria-label='color accent' />
+    <Avatar data-color='neutral' aria-label='color neutral' />
+    <Avatar data-color='brand1' aria-label='color brand1' />
+    <Avatar data-color='brand2' aria-label='color brand2' />
+    <Avatar data-color='brand3' aria-label='color brand3' />
   </>
 );
 
@@ -90,17 +90,22 @@ export const InDropdown: Story = () => (
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Badge overlap='circle' color='danger' data-size='sm'>
+            <Badge.Position overlap='circle'>
+              <Badge data-color='danger' data-size='sm'></Badge>
               <Avatar aria-label='Ola Nordmann' data-size='xs'>
                 ON
               </Avatar>
-            </Badge>
+            </Badge.Position>
             Ola Nordmann
           </Dropdown.Button>
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar data-size='xs' color='brand1' aria-label='Sogndal Kommune'>
+            <Avatar
+              data-size='xs'
+              data-color='brand1'
+              aria-label='Sogndal Kommune'
+            >
               <BriefcaseIcon aria-hidden />
             </Avatar>
             Sogndal kommune

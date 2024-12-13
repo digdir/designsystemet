@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
-import './globals.css';
+
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
+import 'react-color-palette/css';
+import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Figma, Footer, Github, Header, Slack } from '@repo/components';
+
+import { ThemeWrapper } from '../components/ThemeWrapper/ThemeWrapper';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
@@ -11,13 +15,29 @@ export const metadata: Metadata = {
 };
 
 const menu = [
-  /* {
-    name: 'Fargevelger',
-    href: '/',
-  }, */
   {
-    name: 'Slik bruker du verktøyet',
-    href: '/slik-bruker-du-verktoyet',
+    name: 'Grunnleggende',
+    href: 'https://www.designsystemet.no/grunnleggende',
+  },
+  {
+    name: 'God praksis',
+    href: 'https://www.designsystemet.no/god-praksis',
+  },
+  {
+    name: 'Mønstre',
+    href: 'https://www.designsystemet.no/monstre',
+  },
+  {
+    name: 'Bloggen',
+    href: 'https://www.designsystemet.no/bloggen',
+  },
+  {
+    name: 'Komponenter',
+    href: 'https://www.designsystemet.no/komponenter',
+  },
+  {
+    name: 'Temabygger',
+    href: '/',
   },
 ];
 
@@ -67,9 +87,15 @@ export default function RootLayout({
   return (
     <html lang='no'>
       <body>
-        <Header menu={menu} betaTag />
-        <div className='content'>{children}</div>
-        <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+        <ThemeWrapper>
+          <Header
+            menu={menu}
+            transparentBackground
+            logoLink='https://www.designsystemet.no/'
+          />
+          <div className='content'>{children}</div>
+          <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+        </ThemeWrapper>
       </body>
     </html>
   );

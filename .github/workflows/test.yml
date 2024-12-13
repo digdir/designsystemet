@@ -13,7 +13,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  checks:
+  test:
     name: Build & test
     runs-on: ubuntu-latest
     steps:

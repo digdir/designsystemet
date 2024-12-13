@@ -2,25 +2,24 @@ import type { Placement } from '@floating-ui/utils';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-
 import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 import { Popover } from '../Popover';
 
-export type HelpTextProps = {
-  /**
-   * Required descriptive label for screen readers.
-   **/
-  'aria-label': string;
-  /**
-   * Placement of the Popover.
-   * @default 'right'
-   */
-  placement?: Placement;
-} & { 'data-size'?: string } & Omit<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    'color'
-  > &
-  DefaultProps;
+export type HelpTextProps = MergeRight<
+  DefaultProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+  {
+    /**
+     * Required descriptive label for screen readers.
+     **/
+    'aria-label': string;
+    /**
+     * Placement of the Popover.
+     * @default 'right'
+     */
+    placement?: Placement;
+  }
+>;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
@@ -33,9 +32,10 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
           className={cl('ds-helptext', className)}
           ref={ref}
           variant='tertiary'
+          data-color='info'
           {...rest}
         />
-        <Popover placement={placement} variant='info'>
+        <Popover placement={placement} data-color='info'>
           {children}
         </Popover>
       </Popover.TriggerContext>

@@ -6,7 +6,6 @@ describe('Avatar', () => {
     render(<Avatar aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'circle');
-    expect(screen.getByRole('img')).toHaveAttribute('data-color', 'accent');
   });
 
   it('should render correctly with custom props', () => {

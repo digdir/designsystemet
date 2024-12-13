@@ -1,12 +1,14 @@
 import './style.css';
-import '../../../packages/css/index.css';
+import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 import type { Preview } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
+import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import customTheme from './customTheme';
 
@@ -41,14 +43,21 @@ const getPath = (href: string | undefined): string => {
 
 const components = {
   p: (props: Props) => (
-    <Paragraph {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Paragraph
+      {...props}
+      className='sb-unstyled'
+      data-color-scheme='light'
+      style={{
+        backgroundColor: 'transparent',
+      }}
+    />
   ),
   ol: (props: Props) => (
     <List.Ordered
       {...props}
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   ul: (props: Props) => (
@@ -56,7 +65,7 @@ const components = {
       {...props}
       style={{ maxWidth: '70ch' }}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   li: (props: Props) => (
@@ -64,7 +73,7 @@ const components = {
       {...props}
       className='sb-unstyled'
       style={{ maxWidth: '70ch' }}
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   a: (props: LinkProps) => {
@@ -76,7 +85,7 @@ const components = {
         {...props}
         href={href}
         className='sb-unstyled'
-        data-ds-color-mode='light'
+        data-color-scheme='light'
       />
     );
   },
@@ -86,27 +95,27 @@ const components = {
       zebra
       className='sb-unstyled'
       style={{ width: '100%' }}
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   thead: (props: Props) => (
-    <Table.Head {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Head {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   tbody: (props: Props) => (
-    <Table.Body {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Body {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   tr: (props: Props) => (
-    <Table.Row {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Row {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
   th: (props: Props) => (
     <Table.HeaderCell
       {...props}
       className='sb-unstyled'
-      data-ds-color-mode='light'
+      data-color-scheme='light'
     />
   ),
   td: (props: Props) => (
-    <Table.Cell {...props} className='sb-unstyled' data-ds-color-mode='light' />
+    <Table.Cell {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
 };
 
@@ -166,6 +175,7 @@ const preview: Preview = {
     },
   },
   decorators: [customStylesDecorator],
+  loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
 };
 
 /* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
@@ -177,7 +187,7 @@ const preview: Preview = {
       Auto: 'auto',
     },
     defaultTheme: 'Light',
-    attributeName: 'data-ds-color-mode',
+    attributeName: 'data-color-scheme',
     parentSelector:
       '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),

@@ -48,7 +48,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
       )}
       <Container className={classes.page}>
         <div className={classes.left}>
-          <SidebarMenu routerPath={pathname} />
+          <SidebarMenu routerPath={pathname ?? ''} />
         </div>
         <main id='main' className={classes.right}>
           {data && (
@@ -77,11 +77,11 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style>
+      <style suppressHydrationWarning>
         {`
           header {
-            [data-ds-color-mode='dark'] &,
-            [data-ds-color-mode='auto'] & {
+            [data-color-scheme='dark'] &,
+            [data-color-scheme='auto'] & {
               background-color: var(--ds-color-neutral-background-default) !important;
             }
           }

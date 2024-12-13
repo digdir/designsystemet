@@ -1,0 +1,84 @@
+.ds-spinner {
+  --dsc-spinner-background: var(--ds-color-surface-default);
+  --dsc-spinner-stroke: var(--ds-color-border-default);
+
+  --dsc-spinner-animation-duration: 2s;
+
+  animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
+  box-sizing: border-box;
+  font-size: var(--ds-sizing-11);
+  height: 1em;
+  width: 1em;
+
+  /* Using font-size to ensure consistent size when explicitly setting data-size */
+  &[data-size='2xs'] {
+    font-size: 0.75rem;
+  }
+
+  &[data-size='xs'] {
+    font-size: 1.25rem;
+  }
+
+  &[data-size='sm'] {
+    font-size: 2rem;
+  }
+
+  &[data-size='md'] {
+    font-size: 2.75rem;
+  }
+
+  &[data-size='lg'] {
+    font-size: 3.75rem;
+  }
+
+  &[data-size='xl'] {
+    font-size: 5.5rem;
+  }
+}
+
+.ds-spinner__background {
+  stroke: var(--dsc-spinner-background);
+}
+
+.ds-spinner__circle {
+  animation: ds-spinner-stroke-animation ease-in-out infinite var(--dsc-spinner-animation-duration);
+  stroke-dasharray: 1px, 200px;
+  stroke: var(--dsc-spinner-stroke);
+  transform-origin: center;
+}
+
+/* Prefers reduced motion needs longer animation,
+but don't remove it since it is not decorative.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .ds-spinner {
+    --dsc-spinner-animation-duration: 6s;
+  }
+}
+
+@keyframes ds-spinner-rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ds-spinner-stroke-animation {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: -120px;
+  }
+}

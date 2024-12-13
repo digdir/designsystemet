@@ -1,15 +1,19 @@
 .header {
-  height: 106px;
+  height: 100px;
   display: flex;
   align-items: center;
   position: relative;
   z-index: 5;
   background-color: var(--ds-color-neutral-background-default);
 
-  [data-ds-color-mode='dark'] &,
-  [data-ds-color-mode='auto'] & {
+  [data-color-scheme='dark'] &,
+  [data-color-scheme='auto'] & {
     background-color: var(--ds-color-neutral-background-subtle);
   }
+}
+
+.header.transparentHeader {
+  background-color: transparent;
 }
 
 .container {
@@ -49,10 +53,10 @@
 }
 
 .tag {
-  background-color: var(--ds-global-purple-5);
+  background-color: var(--ds-global-purple-4);
   border-radius: 4px;
-  padding: 7px 10px;
-  font-size: 18px;
+  padding: 4px 10px;
+  font-size: 16px;
   font-weight: 500;
 }
 

@@ -1,0 +1,54 @@
+.ds-link {
+  --dsc-link-background--active: var(--ds-color-surface-default);
+  --dsc-link-color--active: var(--ds-color-text-default);
+  --dsc-link-color--hover: var(--ds-color-text-default);
+  --dsc-link-color: var(--ds-color-text-subtle);
+  --dsc-link-background--focus: var(--ds-color-focus-outer);
+  --dsc-link-color--focus: var(--ds-color-focus-inner);
+  --dsc-link-color--visited: var(--ds-global-purple-12);
+  --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
+  --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
+
+  color: var(--dsc-link-color);
+  outline: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
+  text-underline-offset: 0.27em; /* 5px ish */
+
+  & :is(img, svg) {
+    vertical-align: middle; /* Align img or svg icon with text */
+  }
+
+  /* What do we do here? */
+  &[data-color='neutral'] {
+    --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
+    --dsc-link-color: var(--ds-color-neutral-text-default);
+  }
+
+  /**
+   * States
+   */
+  &:visited {
+    color: var(--dsc-link-color--visited);
+  }
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--dsc-link-color--hover);
+      text-decoration-thickness: var(--dsc-link-text-decoration-thickness--hover);
+    }
+  }
+
+  &:focus-visible {
+    background: var(--dsc-link-background--focus);
+    color: var(--dsc-link-color--focus);
+    outline: 2px solid transparent;
+  }
+
+  &:active {
+    background: var(--dsc-link-background--active);
+    color: var(--dsc-link-color--active);
+  }
+}

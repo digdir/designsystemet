@@ -1,0 +1,84 @@
+.ds-tabs {
+  --dsc-tabs-tab-bottom-border-color: transparent;
+  --dsc-tabs-tab-padding: var(--ds-spacing-3) var(--ds-spacing-5);
+  --dsc-tabs-tab-color: var(--ds-color-neutral-text-subtle);
+  --dsc-tabs-content-padding: var(--ds-spacing-5);
+  --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
+  --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
+}
+
+.ds-tabs__panel {
+  padding: var(--dsc-tabs-content-padding);
+  color: var(--dsc-tabs-content-color);
+}
+
+.ds-tabs__tablist {
+  display: flex;
+  flex-direction: row;
+  border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
+  position: relative;
+}
+
+.ds-tabs__tab {
+  align-items: center;
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  color: var(--dsc-tabs-tab-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: inherit;
+  font-size: inherit;
+  gap: var(--ds-spacing-1);
+  justify-content: center;
+  line-height: var(--ds-line-height-sm);
+  margin: 0;
+  padding: var(--dsc-tabs-tab-padding);
+  position: relative;
+  text-align: center;
+
+  &:not([data-size]) {
+    font-size: inherit; /* Ensure inheriting font-size when <button> */
+  }
+
+  & :where(img, svg) {
+    flex-shrink: 0; /* Never shrink icon */
+    font-size: 1.25em; /* Auto scale icon based on font-size */
+  }
+
+  &[aria-selected='true'] {
+    --dsc-tabs-tab-bottom-border-color: var(--ds-color-base-default);
+    --dsc-tabs-tab-color: var(--ds-color-text-subtle);
+
+    @media (forced-colors: active) {
+      --dsc-tabs-tab-color: CanvasText;
+      border-bottom: 2px solid CanvasText;
+    }
+  }
+
+  @composes ds-focus from './base.css';
+
+  /* We set z-index to make sure the active line does not bleed over the focus indicator */
+  &:focus-visible {
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: .15em; /* Scale with font */
+    width: 100%;
+    background-color: var(--dsc-tabs-tab-bottom-border-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not([aria-selected='true']) {
+      --dsc-tabs-tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
+      --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+    }
+  }
+}

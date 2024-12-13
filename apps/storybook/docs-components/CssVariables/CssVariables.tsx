@@ -49,21 +49,32 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
 function getCssVariables(css: string) {
   const res: { [key: string]: string } = {};
 
-  /* get first block of css */
-  const cssBlock = css.match(/(?<={)([^}]*)/)?.[0];
-  if (!cssBlock) {
-    return res;
-  }
-
-  /* Create a temporary element */
-  const tempElement = document.createElement('div');
-  tempElement.style.cssText = cssBlock;
+  // temporarily remove inline strings, as they may contain ; and } characters
+  // and thus ruin the matching for property declarations
+  const stringsRemovedFromCss = Array.from(css.matchAll(/"[^"]*"/g)).map(
+    (x) => x[0],
+  );
+  const cssWithRemovedStrings = stringsRemovedFromCss.reduce(
+    (prev, curr, idx) => prev.replace(curr, `<placeholder-${idx}>`),
+    css,
+  );
+  // get all --dsc-* property declarations
+  const cssVars = Array.from(
+    cssWithRemovedStrings.matchAll(/(?<!var\()(--dsc-[^;}]+)[;}]/g),
+  ).map((matches) => matches[1]);
 
   /* Iterate over the CSS properties */
-  for (let i = 0; i < tempElement.style.length; i++) {
-    const name = tempElement.style[i];
-    if (name.startsWith('--dsc')) {
-      res[name] = tempElement.style.getPropertyValue(name).trim();
+  for (const declaration of cssVars) {
+    const [name, value] = declaration.split(':');
+    // Choose the earliest declaration of the property.
+    // We assume later declarations are part of a sub-selector.
+    if (!res[name]) {
+      // Return the original inline string from the value, if it was removed earlier
+      const valueWithOriginalString = value.replace(
+        /<placeholder-(\d+)>/,
+        (_, p1: string) => stringsRemovedFromCss[parseInt(p1)],
+      );
+      res[name] = valueWithOriginalString;
     }
   }
 

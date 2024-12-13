@@ -11,7 +11,7 @@ import {
 } from '@navikt/aksel-icons';
 import { Button } from '../Button';
 import { Tabs } from '../Tabs';
-import { Badge } from './Badge';
+import { Badge } from './';
 
 type Story = StoryFn<typeof Badge>;
 
@@ -22,13 +22,13 @@ const meta: Meta<typeof Badge> = {
 
 export default meta;
 
-export const Preview: Story = (args) => <Badge {...args}></Badge>;
+export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
   'data-size': 'md',
-  count: 10,
+  'data-color': 'accent',
+  count: 15,
   maxCount: 9,
-  color: 'accent',
 };
 
 export const Floating: Story = (args) => (
@@ -38,19 +38,24 @@ export const Floating: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge color='accent' placement='top-right'>
+    <Badge.Position placement='top-right'>
+      <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge>
-    <Badge color='accent' placement='top-left'>
+    </Badge.Position>
+    <Badge.Position placement='top-left'>
+      <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge>
-    <Badge color='accent' placement='bottom-right'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-right'>
+      <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge>
-    <Badge color='accent' placement='bottom-left'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-left'>
+      <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge>
-    <Badge color='accent' placement='top-right' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='top-right' overlap='circle'>
+      <Badge data-color='accent'></Badge>
       <div
         style={{
           width: '2rem',
@@ -59,8 +64,9 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge>
-    <Badge color='accent' placement='top-left' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='top-left' overlap='circle'>
+      <Badge data-color='accent'></Badge>
       <div
         style={{
           width: '2rem',
@@ -69,8 +75,9 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge>
-    <Badge color='accent' placement='bottom-right' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-right' overlap='circle'>
+      <Badge data-color='accent'></Badge>
       <div
         style={{
           width: '2rem',
@@ -79,8 +86,9 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge>
-    <Badge color='accent' placement='bottom-left' overlap='circle'>
+    </Badge.Position>
+    <Badge.Position placement='bottom-left' overlap='circle'>
+      <Badge data-color='accent'></Badge>
       <div
         style={{
           width: '2rem',
@@ -89,7 +97,7 @@ export const Floating: Story = (args) => (
           backgroundColor: 'var(--ds-color-brand2-base-default)',
         }}
       />
-    </Badge>
+    </Badge.Position>
   </div>
 );
 
@@ -100,16 +108,16 @@ export const CustomPlacement: Story = (args) => (
       gap: 'var(--ds-spacing-6)',
     }}
   >
-    <Badge
-      color='accent'
+    <Badge.Position
       placement='top-right'
       style={{
         top: '16%',
         right: '10%',
       }}
     >
+      <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge>
+    </Badge.Position>
   </div>
 );
 
@@ -120,15 +128,18 @@ export const Status: Story = (args) => (
       gap: 'var(--ds-spacing-4)',
     }}
   >
-    <Badge color='danger' data-size='sm'>
+    <Badge.Position data-size='sm'>
+      <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge>
-    <Badge color='danger' data-size='md'>
+    </Badge.Position>
+    <Badge.Position data-size='md'>
+      <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge>
-    <Badge color='danger' data-size='lg'>
+    </Badge.Position>
+    <Badge.Position data-size='lg'>
+      <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
-    </Badge>
+    </Badge.Position>
   </div>
 );
 
@@ -138,13 +149,13 @@ export const InTabs: Story = (args) => (
       <Tabs.Tab value='value1'>
         <HeartFillIcon aria-hidden />
         Favoritter
-        <Badge count={64} maxCount={10} color='neutral' />
+        <Badge count={64} maxCount={10} data-color='neutral' />
       </Tabs.Tab>
       <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
       <Tabs.Tab value='value3'>
         <PencilIcon aria-hidden />
         Nylige
-        <Badge count={2} color='neutral' />
+        <Badge count={2} data-color='neutral' />
       </Tabs.Tab>
     </Tabs.List>
     <Tabs.Panel value='value1'>content 1</Tabs.Panel>
@@ -161,19 +172,22 @@ export const InButton: Story = (args) => (
     }}
   >
     <Button icon variant='tertiary'>
-      <Badge color='danger' count={1000} maxCount={99} data-size='sm'>
+      <Badge.Position>
+        <Badge data-color='danger' count={1000} maxCount={99} />
         <InboxIcon title='Innboks' />
-      </Badge>
+      </Badge.Position>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge color='danger' count={10} data-size='sm'>
+      <Badge.Position>
+        <Badge data-color='danger' count={10} />
         <ChatIcon title='Meldinger' />
-      </Badge>
+      </Badge.Position>
     </Button>
     <Button icon variant='tertiary'>
-      <Badge color='danger' data-size='sm'>
+      <Badge.Position>
+        <Badge data-color='danger'></Badge>
         <VideoIcon title='Skru på video' />
-      </Badge>
+      </Badge.Position>
     </Button>
   </div>
 );

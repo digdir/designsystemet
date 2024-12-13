@@ -1,133 +1,57 @@
-import type { ColorMode } from '@digdir/designsystemet/color';
+'use client';
+
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { useThemeStore } from '../../store';
 
-import { Components } from './Components/Components';
-import { Dashboard } from './Dashboard/Dashboard';
-import { Landing } from './Landing/Landing';
+import { ToggleChip } from '../ToggleChip/ToggleChip';
 import classes from './Previews.module.css';
+import { Theme1 } from './Theme1/Theme1';
 
-type previewModeType =
-  | 'dashboard'
-  | 'landing'
-  | 'forms'
-  | 'auth'
-  | 'components';
-
-type PreviewsProps = {
-  themeMode: ColorMode;
-  onThemeModeChange: (themeMode: ColorMode) => void;
-};
-
-export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
-  const [previewMode, setPreviewMode] = useState<previewModeType>('components');
+export const Previews = () => {
+  const setTheme = useThemeStore((state) => state.setThemePreview);
+  const setAppearance = useThemeStore((state) => state.setAppearance);
+  const items = [
+    {
+      name: 'Tema 1 lys',
+      value: 'one-light',
+    },
+    {
+      name: 'Tema 1 mørk',
+      value: 'one-dark',
+    },
+    {
+      name: 'Tema 2 lys',
+      value: 'two-light',
+    },
+    {
+      name: 'Tema 2 mørk',
+      value: 'two-dark',
+    },
+  ];
 
   return (
     <>
       <div className={classes.toolbar}>
-        <div className={classes.menu}>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'components' && classes.menuItemActive,
-            )}
-            onClick={() => setPreviewMode('components')}
-          >
-            Komponenter
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'dashboard' && classes.menuItemActive,
-            )}
-            onClick={() => setPreviewMode('dashboard')}
-          >
-            Dashboard
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'landing' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Landingsside
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'forms' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Skjemaer
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'auth' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Autentisering
-          </button>
-        </div>
-        <div className={classes.toggles}>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'light' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('light')}
-          >
-            <img src='img/light-dot.svg' alt='' />
-            Lys
-          </button>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'dark' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('dark')}
-          >
-            <img src='img/dark-dot.svg' alt='' />
-            Mørk
-          </button>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'contrast' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('contrast')}
-          >
-            <img src='img/contrast-dot.svg' alt='' />
-            Kontrast
-          </button>
-        </div>
+        <ToggleChip
+          items={items}
+          onChange={(e) => {
+            if (e.includes('one')) {
+              setTheme('one');
+            } else if (e.includes('two')) {
+              setTheme('two');
+            }
+
+            if (e.includes('light')) {
+              setAppearance('light');
+            } else if (e.includes('dark')) {
+              setAppearance('dark');
+            }
+          }}
+        />
       </div>
 
-      <div
-        className={cl(
-          classes.preview,
-          classes[themeMode as keyof typeof classes],
-        )}
-        id='preview'
-        data-ds-color-mode={themeMode}
-      >
-        {previewMode === 'components' && <Components />}
-        {previewMode === 'dashboard' && <Dashboard />}
-        {previewMode === 'landing' && <Landing />}
+      <div className={cl(classes.preview)} id='preview2'>
+        <Theme1 />
       </div>
     </>
   );

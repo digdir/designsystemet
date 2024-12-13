@@ -1,11 +1,9 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
-import { BackgroundColor, Color, Theme } from '@adobe/leonardo-contrast-colors';
-import { Hsluv } from 'hsluv';
-import * as R from 'ramda';
+import type { CssColor } from './types.js';
 
-import type { Colors } from '../tokens/types.js';
-import type { ColorInfo, ColorMode, ColorNumber, ContrastMode, GlobalColors, ThemeInfo } from './types.js';
-import { getContrastFromHex, getContrastFromLightness, getLightnessFromHex } from './utils.js';
+import chroma from 'chroma-js';
+import { luminance } from './luminance.js';
+import type { ColorInfo, ColorNumber, ColorScheme, GlobalColors, ThemeInfo } from './types.js';
+import { getColorNameFromNumber, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -16,355 +14,111 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   yellow: '#D4B12F',
 };
 
-export type ColorError = 'none' | 'decorative' | 'interaction';
-
-type GlobalGenType = {
-  themeMode?: ColorMode | 'all';
-  contrastMode?: ContrastMode;
-};
-
-type ThemeGenType = {
-  colors: Colors;
-  contrastMode?: ContrastMode;
-};
-
 /**
- * Generates a Leonardo theme color that is used to create a Leonardo Theme
- *
- * @param color CssColor
- * @param mode Light, Dark or Contrastmode
- * @param contrastMode Contrast mode
- * @returns
- */
-const generateThemeColor = (color: CssColor, mode: ColorMode, contrastMode: 'aa' | 'aaa' = 'aa') => {
-  const leoBackgroundColor = new BackgroundColor({
-    name: 'backgroundColor',
-    colorKeys: ['#ffffff'],
-    ratios: [1],
-  });
-  let colorLightness = getLightnessFromHex(color);
-  if (mode === 'dark' || mode === 'contrast') {
-    color = getBaseColor(color);
-    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
-  }
-
-  // The modifier that will be used to adjust the lightness of the Base Hover and Base Active colors
-  let modifier = 8;
-
-  // When the color becomes dark enough, the modifier should be flipped
-  if (colorLightness <= 30) {
-    modifier = -modifier;
-  }
-  // 49 is when the contrast flips from white to black, 65 is when the color becomes dark enough to flip the modifier again
-  if (colorLightness >= 49 && colorLightness <= 65) {
-    modifier = -modifier;
-  }
-
-  const baseDefaultContrast = getContrastFromLightness(colorLightness, color, leoBackgroundColor.colorKeys[0]);
-  const baseHoverContrast = getContrastFromLightness(colorLightness - modifier, color, leoBackgroundColor.colorKeys[0]);
-  const baseActiveContrast = getContrastFromLightness(
-    colorLightness - modifier * 2,
-    color,
-    leoBackgroundColor.colorKeys[0],
-  );
-
-  const textSubLightLightness = contrastMode === 'aa' ? 42 : 30;
-  const textDefLightLightness = contrastMode === 'aa' ? 18 : 12;
-
-  const textSubDarkLightness = contrastMode === 'aa' ? 67 : 80;
-  const textDefDarkLightness = contrastMode === 'aa' ? 90 : 94;
-
-  let lightnessScale: number[] = [];
-
-  if (mode === 'light') {
-    lightnessScale = [100, 96, 90, 84, 78, 76, 54, 33, textSubLightLightness, textDefLightLightness];
-  } else if (mode === 'dark') {
-    lightnessScale = [10, 14, 20, 26, 32, 35, 47, 77, textSubDarkLightness, textDefDarkLightness];
-  } else {
-    lightnessScale = [1, 6, 14, 20, 26, 58, 70, 82, 80, 95];
-  }
-
-  const getColorContrasts = (color: CssColor, lightnessScale: number[], backgroundColor: CssColor) => {
-    return lightnessScale.map((lightness) => getContrastFromLightness(lightness, color, backgroundColor));
-  };
-
-  return new Color({
-    name: 'color',
-    colorKeys: [color],
-    ratios: [
-      ...getColorContrasts(color, lightnessScale.slice(0, 8), leoBackgroundColor.colorKeys[0]),
-      baseDefaultContrast,
-      baseHoverContrast,
-      baseActiveContrast,
-      ...getColorContrasts(color, lightnessScale.slice(8), leoBackgroundColor.colorKeys[0]),
-    ],
-  });
-};
-
-/**
- *
- * Generates a color scale based on a base color and a mode.
+ * Generates a color scale based on a base color and a color mode.
  *
  * @param color The base color that is used to generate the color scale
- * @param mode The mode of the theme
+ * @param colorScheme The color scheme to generate a scale for
  */
-export const generateScaleForColor = (
-  color: CssColor,
-  mode: ColorMode,
-  contrastMode: 'aa' | 'aaa' = 'aa',
-): ColorInfo[] => {
-  const themeColor = generateThemeColor(color, mode, contrastMode);
+export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): ColorInfo[] => {
+  const baseColors = getBaseColors(color, colorScheme);
+  const luminanceValues = luminance[colorScheme];
 
-  const leoBackgroundColor = new BackgroundColor({
-    name: 'backgroundColor',
-    colorKeys: ['#ffffff'],
-    ratios: [1],
-  });
+  // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
+  const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([key, value], index) => ({
+    name: key,
+    hex: chroma(color).luminance(value).hex() as CssColor,
+    number: (index + 1) as ColorNumber,
+  }));
 
-  const theme = new Theme({
-    colors: [themeColor],
-    backgroundColor: leoBackgroundColor,
-    lightness: 100,
-  });
+  // Create the special colors with HSLuv lightness rather than relative luminance for better color perception
+  const specialColors: Omit<ColorInfo, 'name'>[] = [
+    { hex: baseColors.baseDefault, number: 9 },
+    { hex: baseColors.baseHover, number: 10 },
+    { hex: baseColors.baseActive, number: 11 },
+    { hex: getContrastDefault(baseColors.baseDefault), number: 14 },
+    { hex: getContrastSubtle(baseColors.baseDefault), number: 15 },
+  ];
 
-  const outputArray: ColorInfo[] = [];
-  for (let i = 0; i < theme.contrastColorValues.length; i++) {
-    outputArray.push({
-      hex: theme.contrastColorValues[i],
-      number: (i + 1) as ColorNumber,
-      name: getColorNameFromNumber((i + 1) as ColorNumber),
-    });
-  }
-  outputArray.push({
-    hex: calculateContrastOneColor(theme.contrastColorValues[8]),
-    number: 14,
-    name: getColorNameFromNumber(14),
-  });
-  outputArray.push({
-    hex: calculateContrastTwoColor(theme.contrastColorValues[8]),
-    number: 15,
-    name: getColorNameFromNumber(15),
-  });
-
-  if (mode === 'light') {
-    outputArray[8].hex = color;
+  // Add the special colors to the output array
+  for (const { hex, number } of specialColors) {
+    outputArray[number - 1] = {
+      hex,
+      number,
+      name: getColorNameFromNumber(number),
+    };
   }
 
   return outputArray;
 };
 
 /**
+ * Generates color schemes based on a base color. Light, Dark and Contrast scales are included.
  *
- * Generates a color theme based on a base color. Light, Dark and Contrast scales are includes.
- *
- * @param color The base color that is used to generate the color theme
+ * @param color The base color that is used to generate the color schemes
  */
-export const generateThemeForColor = (color: CssColor, contrastMode: 'aa' | 'aaa' = 'aa'): ThemeInfo => {
-  const lightScale = generateScaleForColor(color, 'light', contrastMode);
-  const darkScale = generateScaleForColor(color, 'dark', contrastMode);
-  const contrastScale = generateScaleForColor(color, 'contrast', contrastMode);
+export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
+  light: generateColorScale(color, 'light'),
+  dark: generateColorScale(color, 'dark'),
+  contrast: generateColorScale(color, 'contrast'),
+});
 
-  return {
-    light: lightScale,
-    dark: darkScale,
-    contrast: contrastScale,
-  };
-};
-
-export const generateGlobalColors = ({ contrastMode = 'aa' }: GlobalGenType): Record<GlobalColors, ThemeInfo> => {
-  const blueTheme = generateThemeForColor(baseColors.blue, contrastMode);
-  const greenTheme = generateThemeForColor(baseColors.green, contrastMode);
-  const orangeTheme = generateThemeForColor(baseColors.orange, contrastMode);
-  const purpleTheme = generateThemeForColor(baseColors.purple, contrastMode);
-  const redTheme = generateThemeForColor(baseColors.red, contrastMode);
-  const yellowTheme = generateThemeForColor(baseColors.yellow, contrastMode);
-
-  return {
-    blue: blueTheme,
-    green: greenTheme,
-    orange: orangeTheme,
-    purple: purpleTheme,
-    red: redTheme,
-    yellow: yellowTheme,
-  };
-};
-
-type GeneratedColorTheme = {
-  main: Record<string, ThemeInfo>;
-  support: Record<string, ThemeInfo>;
-  neutral: ThemeInfo;
-};
 /**
- * This function generates a complete theme for a set of colors.
+ * Returns the base colors for a color and color scheme.
  *
- * @param colors Which colors to generate the theme for
- * @param contrastMode The contrast mode to use
+ * @param color The base color as a hex string
+ * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-export const generateColorTheme = ({ colors, contrastMode = 'aa' }: ThemeGenType): GeneratedColorTheme => {
-  const main = R.map((color) => generateThemeForColor(color, contrastMode), colors.main);
-  const support = R.map((color) => generateThemeForColor(color, contrastMode), colors.support);
-  const neutral = generateThemeForColor(colors.neutral, contrastMode);
+const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
+  let colorLightness = getLightnessFromHex(color);
+  if (colorScheme !== 'light') {
+    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
+  }
+
+  const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
+  const calculateLightness = (base: number, mod: number) => base - mod;
 
   return {
-    main,
-    support,
-    neutral,
+    baseDefault: chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor,
+    baseHover: chroma(color)
+      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
+      .hex() as CssColor,
+    baseActive: chroma(color)
+      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
+      .hex() as CssColor,
   };
 };
 
 /**
- *
- * This function calculates a color that can be used as a strong contrast color to a base color.
+ * Creates the Base Contrast Default color
  *
  * @param baseColor The base color
  */
-export const calculateContrastOneColor = (baseColor: CssColor) => {
-  const contrastWhite = getContrastFromHex(baseColor, '#ffffff');
-  const contrastBlack = getContrastFromHex(baseColor, '#000000');
-  const lightness = contrastWhite >= contrastBlack ? 100 : 0;
-  // const color = createColorWithLightness(baseColor, lightness);
-
-  return lightness === 0 ? '#000000' : '#ffffff';
-};
+export const getContrastDefault = (color: CssColor): CssColor =>
+  chroma.contrast(color, '#ffffff') >= chroma.contrast(color, '#000000') ? '#ffffff' : '#000000';
 
 /**
- *
- * This function calculates a color that can be used as a subtle contrast color to a base color.
+ * Creates the Base Contrast Subtle color
  *
  * @param color The base color
  */
-export const calculateContrastTwoColor = (color: CssColor) => {
-  const contrastWhite = getContrastFromHex(color, '#ffffff');
-  const contrastBlack = getContrastFromHex(color, '#000000');
+export const getContrastSubtle = (color: CssColor): CssColor => {
+  const contrastWhite = chroma.contrast(color, '#ffffff');
+  const contrastBlack = chroma.contrast(color, '#000000');
   const lightness = getLightnessFromHex(color);
-  const doubleALightnessModifier = lightness <= 40 ? 60 : lightness >= 60 ? 60 : 50;
+  const modifier = lightness <= 40 || lightness >= 60 ? 60 : 50;
+  const targetLightness = contrastWhite >= contrastBlack ? lightness + modifier : lightness - modifier;
 
-  let targetLightness = 0;
-  const contrastDirection = contrastWhite >= contrastBlack ? 'lighten' : 'darken';
-
-  targetLightness =
-    contrastDirection === 'lighten' ? lightness + doubleALightnessModifier : lightness - doubleALightnessModifier;
-
-  return createColorWithLightness(color, targetLightness);
+  return chroma(color).luminance(getLuminanceFromLightness(targetLightness)).hex() as CssColor;
 };
 
 /**
+ * Returns the css variable for a color.
  *
- * This function checks if white or black text can be used on 2 different colors at 4.5:1 contrast.
- *
- * @param baseDefaultColor Base default color
- * @param baseActiveColor Base active color
+ * @param colorType The type of color
+ * @param colorNumber The number of the color
  */
-export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColor: CssColor) => {
-  const defaultAgainstWhite = getContrastFromHex(baseDefaultColor, '#ffffff');
-  const defaultAgainstBlack = getContrastFromHex(baseDefaultColor, '#000000');
-
-  const activeAgainstWhite = getContrastFromHex(baseActiveColor, '#ffffff');
-  const activeAgainstBlack = getContrastFromHex(baseActiveColor, '#000000');
-
-  if (defaultAgainstWhite >= 4.5 && activeAgainstWhite >= 4.5) {
-    return true;
-  }
-  if (defaultAgainstBlack >= 4.5 && activeAgainstBlack >= 4.5) {
-    return true;
-  }
-
-  return false;
-};
-
-/**
- *
- * This function creates a color with a specific lightness value.
- *
- * @param color The base color
- * @param lightness The lightness value from 0 to 100
- */
-export const createColorWithLightness = (color: CssColor, lightness: number) => {
-  const leoBackgroundColor = new BackgroundColor({
-    name: 'backgroundColor',
-    colorKeys: ['#ffffff'],
-    ratios: [1],
-  });
-  const colors = new Color({
-    name: 'color',
-    colorKeys: [color],
-    ratios: [getContrastFromLightness(lightness, color, '#ffffff')],
-  });
-
-  const theme = new Theme({
-    colors: [colors],
-    backgroundColor: leoBackgroundColor,
-    lightness: 100,
-  });
-  return theme.contrastColorValues[0];
-};
-
-/**
- *
- * This function returns the color number based on the color name.
- *
- * @param name The name of the color
- */
-export const getColorNumberFromName = (name: string): ColorNumber => {
-  const colorMap: { [key: string]: ColorNumber } = {
-    'Background Default': 1,
-    'Background Subtle': 2,
-    'Surface Default': 3,
-    'Surface Hover': 4,
-    'Surface Active': 5,
-    'Border Subtle': 6,
-    'Border Default': 7,
-    'Border Strong': 8,
-    'Base Default': 9,
-    'Base Hover': 10,
-    'Base Active': 11,
-    'Text Subtle': 12,
-    'Text Default': 13,
-    'Contrast Default': 14,
-    'Contrast Subtle': 15,
-  };
-  return colorMap[name];
-};
-
-/**
- *
- * This function returns the color name based on the color number.
- *
- * @param number The number of the color
- */
-export const getColorNameFromNumber = (number: ColorNumber): string => {
-  const colorMap: { [key in ColorNumber]: string } = {
-    1: 'Background Default',
-    2: 'Background Subtle',
-    3: 'Surface Default',
-    4: 'Surface Hover',
-    5: 'Surface Active',
-    6: 'Border Subtle',
-    7: 'Border Default',
-    8: 'Border Strong',
-    9: 'Base Default',
-    10: 'Base Hover',
-    11: 'Base Active',
-    12: 'Text Subtle',
-    13: 'Text Default',
-    14: 'Contrast Default',
-    15: 'Contrast Subtle',
-  };
-  return colorMap[number];
-};
-
-export const getBaseColor = (color: CssColor) => {
-  const conv = new Hsluv();
-  conv.hex = color;
-  conv.hexToHsluv();
-  // conv.hsluv_l = 100 - conv.hsluv_l;
-  // conv.hsluv_s = getSaturationForDarkMode(color, conv.hsluv_s);
-  conv.hsluvToHex();
-
-  return conv.hex as CssColor;
-};
-
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
   return `--ds-color-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
 };
