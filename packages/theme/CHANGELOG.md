@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.42
+
+### Patch Changes
+
+- Tweaked color codes. Visually remains the same ([#2854](https://github.com/digdir/designsystemet/pull/2854))
+
 ## 1.0.0-next.41
 
 ### Patch Changes
