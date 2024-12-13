@@ -6,8 +6,8 @@ import * as TooltipStories from './Tooltip.stories.tsx';
 <Meta of={TooltipStories} />
 
 # Tooltip
+`Tooltip` viser kort informasjon når brukeren holder musepekeren over (`hover`) eller fokuserer på et element. Den brukes til sekundær informasjon, for eksempel til å forklare hva et symbol betyr.
 
-`Tooltip` brukes for å vise korte forklaringer til brukeren. 
 
 <Primary />
 <Controls />
@@ -36,6 +36,7 @@ import { Tooltip } from '@digdir/designsystemet-react';
 <Canvas of={TooltipStories.WithString} />
 
 ### Plassering
+Vurder om `tooltip` skal plasseres over, under eller ved siden av elementet. 
 
 <Canvas of={TooltipStories.Placement} />
 
@@ -47,8 +48,59 @@ import { Tooltip } from '@digdir/designsystemet-react';
 
 <Canvas of={TooltipStories.Portal} />
 
+### Fargevarianter
+
+`Tooltip` har to fargevarianter tilpasset `light` og `dark` modus.
+
+<br/ >
 ### CSS Variabler
 
 <CssVariables css={css} />
+<br/ >
 
-## Retningslinjer 
+## Retningslinjer for når du skal bruke `tooltip` 
+`Tooltip` gir kort tilleggsinformasjon uten å forstyrre hovedinnholdet. `Tooltip` er ikke ment for informasjon som er essensiell for å fullføre oppgaven. Viktig innhold bør i stedet plasseres som `brødtekst` eller `hjelpetekst` på selve siden.
+
+<br />
+**Passer til å**
+
+* beskrive et symbol som ikke er umiddelbart forståelig
+* beskrive handlingen et interaktivt element utfører
+* vise tastatursnarveier
+    
+
+<br />
+**Passer ikke til**
+
+* å forklare noe i detaljer eller gi utdypende informasjon
+* å vise skjult innhold, meldinger eller advarsler
+* å være en erstatning for `alt-tekst` eller `title`
+* å inneholde lenker eller andre interaktive elementer
+* tekst som allerede er synlig på siden
+
+<br />
+
+Hvis det er behov for å vise rikt innhold, for eksempel lengre tekster, bilder eller knapper, kan vi i stedet bruke en `popover`.
+
+## Tekst i komponenten
+
+En `tooltip` skal ikke inneholde mer enn en setning eller maks fire ord, for å unngå at de blokkerer annet viktig innhold på skjermen. `Tooltip` skal ikke gjenta tekst som allerede finnes på siden. De skal tilby ekstra hjelp eller forklaringer som ikke er åpenbare ved første øyekast.
+
+### Markering av tekst
+Hvis `tooltip` er knyttet til et ord i en tekst, marker ordet med en stiplet linje under. Bruk dette med måte, da for mye markering `hover`-innhold kan virke forstyrrende for brukeren.
+
+<br />
+## Tilgjengelighet
+
+### Interaksjon med mus
+`Tooltip` vises når et element får hover, og musepekeren kan føres over `tooltip` uten at den blir borte. Når elementet eller selve `tooltip` mister hover, blir `tooltip` borte.
+
+### Interaksjon med tastatur
+`Tooltip` vises når et element får tastaturfokus, og forsvinner når fokus fjernes.
+
+### Interaksjon med touch
+På berøringsskjermer er `tooltip` mindre egnet, fordi de vanligvis aktiveres ved `hover` eller `fokus`, som ikke støttes på disse enhetene. `Tooltip` vises i stedet kun når brukeren trykker på elementet, og forsvinner igjen når brukeren trykker utenfor elementet eller `tooltip` areal.
+
+
+
+
