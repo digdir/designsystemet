@@ -30,6 +30,7 @@ export const Preview: StoryFn<typeof Select> = (args) => (
 Preview.args = {
   'aria-invalid': false,
   'data-size': 'md',
+  width: 'full',
   disabled: false,
   readOnly: false,
 };

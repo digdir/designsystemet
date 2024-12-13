@@ -6,23 +6,25 @@ import type { MergeRight } from '../../utilities';
 
 export type SelectProps = MergeRight<
   Omit<DefaultProps, 'data-color'> &
-    Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple'>,
+    Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple' | 'size'>, // Also Omit size as this sets amount of visible options in multiselect
   {
     /** Defines if the select is readOnly
      * @default false
      */
     readOnly?: boolean;
-    /** Defines the width of Select in count of characters.
+    /** Defines the width of Select, where "auto" matches the content width.
+     * @default full
      */
-    size?: number;
+    width?: 'full' | 'auto';
   }
 >;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, onKeyDown, onMouseDown, ...rest }, ref) {
+  function Select({ className, onKeyDown, onMouseDown, width, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}
+        data-width={width}
         ref={ref}
         onKeyDown={(event) => {
           if (event.key === 'Tab') return;
