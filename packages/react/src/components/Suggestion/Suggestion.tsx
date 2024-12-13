@@ -79,13 +79,42 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     /* Handle onChange */
     useEffect(() => {
-      const div = innerRef.current as HTMLDivElement | null;
-      const handleChange = () =>
-        handleValueChange(inputRef.current?.value || '');
+      /* If we want input text to be value */
+      /* const div = innerRef.current as HTMLDivElement | null; */
+      /* const handleChange = () =>
+      handleValueChange(inputRef.current?.value || ''); */
+      const options = listRef.current?.options;
 
-      div?.addEventListener('input', handleChange);
-      return () => div?.removeEventListener('input', handleChange);
-    }, [internalValue]);
+      const handleChange = (e: Event) => {
+        const inputEvent = e as InputEvent;
+        if (!inputEvent.inputType) {
+          handleValueChange((e.target as HTMLInputElement)?.value || '');
+        }
+
+        /* Check if input matches a value */
+        if (options) {
+          const input = inputEvent.target as HTMLInputElement;
+          console.log(options);
+          console.log(input.value);
+          for (const option of options) {
+            console.log(option.value);
+            if (option.value === input.value) {
+              console.log('I found a match');
+              /* Select option */
+              option.selected = true;
+              break;
+            }
+          }
+        }
+      };
+
+      inputRef.current?.addEventListener('input', handleChange);
+      return () => inputRef.current?.removeEventListener('input', handleChange);
+
+      /* If we want input text to be value */
+      /* div?.addEventListener('input', handleChange);
+      return () => div?.removeEventListener('input', handleChange); */
+    }, [internalValue, listRef, inputRef, handleValueChange]);
 
     /* update internalValue and input value when value changes */
     useEffect(() => {
