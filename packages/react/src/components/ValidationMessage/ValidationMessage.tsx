@@ -27,7 +27,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage({ className, asChild, ...rest }, ref) {
-  const Component = asChild ? Slot : 'div';
+  const Component = asChild ? Slot : 'p';
 
   return (
     <Component
