@@ -63,9 +63,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
             {label(over, remainder)}
           </ValidationMessage>
         ) : (
-          <Paragraph ref={ref} {...rest}
-           data-field='validation'
-          >
+          <Paragraph ref={ref} {...rest} data-field='validation'>
             {label(under, remainder)}
           </Paragraph>
         )}
