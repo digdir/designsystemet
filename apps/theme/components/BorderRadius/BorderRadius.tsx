@@ -14,51 +14,50 @@ import classes from './BorderRadius.module.css';
 import { SettingsCard } from './SettingsCard/SettingsCard';
 
 export const BorderRadius = () => {
-  const borderRadius = useThemeStore((state) => state.borderRadius);
+  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
 
-  const setToken = (token: string, color: string) => {
+  const setToken = (token: string, value: number) => {
+    const borderRadiusRem = `${value / 16}rem`;
     const previewElement = document.getElementById('test');
     if (previewElement) {
-      previewElement.style.setProperty(token, color);
+      previewElement.style.setProperty(token, borderRadiusRem);
     }
   };
 
   useEffect(() => {
-    setToken('--ds-border-radius-md', borderRadiusMap[borderRadius][1]);
+    setToken('--ds-border-radius-base', borderRadius);
   }, [borderRadius]);
 
-  const borderRadiusMap = {
-    none: ['0px', '0px', '0px', '0px', '0px', '999px'],
-    small: ['2px', '4px', '8px', '12px', '4px', '999px'],
-    medium: ['2px', '8px', '12px', '16px', '8px', '999px'],
-    large: ['2px', '8px', '16px', '20px', '12px', '999px'],
-    full: ['2px', '8px', '16px', '24px', '999px', '999px'],
-  };
-
-  const items = [
+  const borderRadiuses = [
     {
       name: 'sm',
       value: '2px',
+      variable: '--ds-border-radius-sm',
     },
     {
       name: 'md',
       value: '4px',
+      variable: '--ds-border-radius-md',
     },
     {
       name: 'lg',
       value: '8px',
+      variable: '--ds-border-radius-lg',
     },
     {
       name: 'xl',
       value: '16px',
+      variable: '--ds-border-radius-xl',
     },
     {
       name: 'default',
       value: '4px',
+      variable: '--ds-border-radius-default',
     },
     {
       name: 'full',
       value: '999px',
+      variable: '--ds-border-radius-full',
     },
   ];
 
@@ -82,12 +81,10 @@ export const BorderRadius = () => {
         <div className={classes.itemsContainer}>
           <Heading data-size='2xs'>Tokens</Heading>
           <div className={classes.items}>
-            {items.map((item, index) => (
+            {borderRadiuses.map((item, index) => (
               <div key={index} className={classes.item}>
                 <div className={classes.itemName}>{item.name}:</div>
-                <div className={classes.itemValue}>
-                  {borderRadiusMap[borderRadius][index]}
-                </div>
+                <div className={classes.itemValue}>{item.variable}</div>
               </div>
             ))}
           </div>
@@ -96,11 +93,11 @@ export const BorderRadius = () => {
       <div className={cl('panelRight', classes.outer)} id='test'>
         <div
           className={classes.inner}
-          style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+          // style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
         >
           <div
             className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+            // style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
           >
             <Heading data-size='2xs'>Logg inn i portalen</Heading>
             <Textfield
@@ -115,7 +112,7 @@ export const BorderRadius = () => {
             </Link>
 
             <Button
-              style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+              // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
               data-size='sm'
               className={classes.btn}
             >
@@ -124,30 +121,30 @@ export const BorderRadius = () => {
           </div>
           <div
             className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+            // style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
           >
             <img
               className={classes.img}
               src='img/city.png'
               alt=''
-              style={{ borderRadius: borderRadiusMap[borderRadius][1] }}
+              // style={{ borderRadius: borderRadiusMap[borderRadius][1] }}
             />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
                 <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
                   color='brand1'
                 >
                   Sport
                 </Tag>
                 <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
                   color='brand2'
                 >
                   Nyheter
                 </Tag>
                 <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
                   color='brand3'
                 >
                   Innenriks
@@ -164,13 +161,13 @@ export const BorderRadius = () => {
           <div
             className={classes.card}
             data-size='sm'
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+            // style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
           >
             <SettingsCard />
           </div>
           <div
             className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
+            // style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
           >
             <Heading data-size='2xs'>Folk du kanskje kjenner</Heading>
             <div className={classes.users}>
@@ -179,7 +176,7 @@ export const BorderRadius = () => {
                   src='img/avatars/male2.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Designer</div>
@@ -189,7 +186,7 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>
@@ -199,7 +196,7 @@ export const BorderRadius = () => {
                   src='img/avatars/female2.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Frontend</div>
@@ -209,7 +206,7 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>
@@ -219,7 +216,7 @@ export const BorderRadius = () => {
                   src='img/avatars/male3.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Backend</div>
@@ -229,7 +226,7 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
+                  // style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>

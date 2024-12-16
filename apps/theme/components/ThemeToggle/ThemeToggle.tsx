@@ -5,7 +5,7 @@ import classes from './ThemeToggle.module.css';
 
 export const ThemeToggle = () => {
   const [active, setActive] = useState(0);
-  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
+  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
   const items = [
     { name: 'Ingen', type: 'sm', value: '0px' },
     { name: 'Small', type: 'sm', value: '6px' },

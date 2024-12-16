@@ -1,18 +1,19 @@
+import { Button } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
-import { useThemeStore } from '../../store';
+import { type BaseBorderRadius, useThemeStore } from '../../store';
 import classes from './BorderRadiusInput.module.css';
 
 export const BorderRadiusInput = () => {
   const [active, setActive] = useState(0);
-  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
-  const borderRadius = useThemeStore((state) => state.borderRadius);
-  const items = [
-    { name: 'Ingen', type: 'none', value: '0px' },
-    { name: 'Small', type: 'small', value: '6px' },
-    { name: 'Medium', type: 'medium', value: '10px' },
-    { name: 'Large', type: 'large', value: '13px' },
-    { name: 'Full', type: 'full', value: '9999px' },
+  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
+  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const items: { name: string; value: BaseBorderRadius }[] = [
+    { name: 'Ingen', value: 0 },
+    { name: 'Small', value: 6 },
+    { name: 'Medium', value: 10 },
+    { name: 'Large', value: 13 },
+    { name: 'Full', value: 9999 },
   ];
 
   return (
@@ -22,17 +23,16 @@ export const BorderRadiusInput = () => {
           <div
             className={cl(
               classes.item,
-              borderRadius === item.type && classes.active,
+              borderRadius === item.value && classes.active,
             )}
             key={index}
             onClick={() => setActive(index)}
           >
-            <div
+            <Button
+              variant='tertiary'
               className={cl(classes.box)}
               onClick={() => {
-                setBorderRadius(
-                  item.type as 'none' | 'small' | 'medium' | 'large' | 'full',
-                );
+                setBorderRadius(item.value);
               }}
             >
               <div className={classes.text}>{item.name}</div>
@@ -40,7 +40,7 @@ export const BorderRadiusInput = () => {
                 className={classes.inner}
                 style={{ borderRadius: item.value }}
               ></div>
-            </div>
+            </Button>
           </div>
         ))}
       </div>
