@@ -7,7 +7,7 @@ import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/
   type: 'json',
 };
 import originalThemeJson from '../../../../design-tokens/themes/theme.json' with { type: 'json' };
-import { stringify } from './write';
+import { stringify } from './write.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 
