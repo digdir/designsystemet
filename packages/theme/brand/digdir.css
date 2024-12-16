@@ -238,7 +238,7 @@
 
   color-scheme: light;
 }
-
+ 
 @media (prefers-color-scheme: light) {
   [data-color-scheme="auto"] {
   --ds-global-blue-1: #ffffff;
@@ -605,10 +605,10 @@
 
 @layer ds.theme.semantic {
 :root {
-  --ds-border-radius-1: min( calc(var(--ds-border-radius-base) * 0.5) , calc(var(--ds-border-radius-scale) * 1));
-  --ds-border-radius-2: min( var(--ds-border-radius-base) , calc(var(--ds-border-radius-scale) * 2));
-  --ds-border-radius-3: min( calc(var(--ds-border-radius-base) * 2) , calc(var(--ds-border-radius-scale) * 5));
-  --ds-border-radius-4: min( calc(var(--ds-border-radius-base) * 3) , calc(var(--ds-border-radius-scale) * 5));
+  --ds-border-radius-1: min( (var(--ds-border-radius-base)*0.5) , var(--ds-border-radius-scale) *1);
+  --ds-border-radius-2: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2);
+  --ds-border-radius-3: min( (var(--ds-border-radius-base)*2) , var(--ds-border-radius-scale) *5);
+  --ds-border-radius-4: min( (var(--ds-border-radius-base)*3) , var(--ds-border-radius-scale) *5);
   --ds-border-radius-5: var(--ds-border-radius-base);
   --ds-border-radius-6: 624.9375rem;
   --ds-border-radius-base: 0.25rem;
@@ -909,7 +909,7 @@
 
   color-scheme: dark;
 }
-
+ 
 @media (prefers-color-scheme: dark) {
   [data-color-scheme="auto"] {
   --ds-global-blue-1: #031e33;
