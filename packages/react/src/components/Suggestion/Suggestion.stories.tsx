@@ -1,11 +1,14 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
-import { Button } from '../Button';
-import { Divider } from '../Divider';
-import { Field } from '../Field';
-import { Label } from '../Label';
-import { Paragraph } from '../Paragraph';
-import { Suggestion } from './';
+import { type ChangeEvent, useRef, useState } from 'react';
+import {
+  Button,
+  Divider,
+  Field,
+  Label,
+  Paragraph,
+  Spinner,
+  Suggestion,
+} from '../';
 export default {
   title: 'Komponenter/Suggestion',
   component: Suggestion,
@@ -18,6 +21,9 @@ export default {
     ),
   ],
   parameters: {
+    customStyles: {
+      overflow: 'visible', // Show dropdown outside of container
+    },
     a11y: {
       // TODO: these rules should be enabled after figuring out why they occur.
       // for some reason it says `aria-expanded` is not allowed
@@ -45,9 +51,9 @@ const DATA_PLACES = [
 export const Preview: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
-      <Label htmlFor='suggestion'>Velg en destinasjon</Label>
+      <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
-        <Suggestion.Input id='suggestion' />
+        <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
@@ -69,15 +75,12 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
   return (
     <>
       <Field>
-        <Label htmlFor='suggestion'>Velg en destinasjon</Label>
-        <Suggestion
-          {...args}
-          value={value}
-          onChange={(value) => {
-            setValue(value);
-          }}
-        >
-          <Suggestion.Input id='suggestion' />
+        <Label>Velg en destinasjon</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+          />
           <Suggestion.Clear />
           <Suggestion.List>
             <Suggestion.Empty>Tomt</Suggestion.Empty>
@@ -108,14 +111,142 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
 export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
-      <Label htmlFor='suggestion'>Velg en destinasjon</Label>
-      <Suggestion {...args} defaultValue='Songdal'>
-        <Suggestion.Input id='suggestion' />
+      <Label>Velg en destinasjon</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input defaultValue='Sogndal' />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+export const CustomFilter: StoryFn<typeof Suggestion> = (args) => {
+  const emails = ['live.com', 'icloud.com', 'hotmail.com', 'gmail.com'];
+  const [value, setValue] = useState('');
+  const [email, setEmail] = useState('');
+
+  return (
+    <>
+      <Field>
+        <Label>Skriv inn et tall mellom 1-6</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+          />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.filter(
+              (_, index) => !value || index === Number(value) - 1,
+            ).map((text) => (
+              // Setting label ensures that item is always displayed regardless of input.value
+              <Suggestion.Option label={value} key={text}>
+                {text}
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+      <Field>
+        <Label>Skriv inn din e-post</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {email.includes('@') && (
+              <Suggestion.Option>{email}</Suggestion.Option>
+            )}
+            {emails.map((suffix) => (
+              // Setting label ensures that item is always displayed regardless of input.value
+              <Suggestion.Option label={email} key={suffix}>
+                {`${email.split('@')[0]}@${suffix}`}
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    </>
+  );
+};
+
+export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
+  const [value, setValue] = useState('Sogndal');
+
+  return (
+    <Field>
+      <Label>Viser alle options også når valgt</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            // Setting label ensures that item is always displayed regardless of input.value
+            <Suggestion.Option label={value} key={place}>
+              {place}
+            </Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
+  const [value, setValue] = useState('');
+  const [options, setOptions] = useState<string[] | null>(null);
+  const debounce = useRef<ReturnType<typeof setTimeout>>(); // Debounce so we do not spam the endpoint
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const isTyping = (event.nativeEvent as InputEvent).inputType;
+    const value = encodeURIComponent(event.target.value.trim());
+    clearTimeout(debounce.current);
+    setValue(event.target.value);
+
+    if (!isTyping) return; // Prevent API call if clicking on items in list
+    setOptions(null); // Clear options
+
+    if (value)
+      debounce.current = setTimeout(async () => {
+        const api = `https://restcountries.com/v2/name/${value}?fields=name`;
+        const countries = await (await fetch(api)).json();
+        setOptions(
+          Array.isArray(countries) ? countries.map(({ name }) => name) : [],
+        );
+      }, 500);
+  };
+
+  return (
+    <Field>
+      <Label>Søk etter land (på engelsk)</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input value={value} onChange={handleChange} />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          {!!value && (
+            <Suggestion.Empty aria-busy='true'>
+              {options ? 'Ingen treff' : <Spinner aria-label='Laster...' />}
+            </Suggestion.Empty>
+          )}
+          {options?.map((option) => (
+            // Setting label ensures that item is always displayed regardless of input.value
+            <Suggestion.Option label={value} key={option}>
+              {option}
+            </Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>

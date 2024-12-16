@@ -36,5 +36,6 @@ export * from './Dropdown';
 export * from './Search';
 export * from './Card';
 export * from './Combobox';
+export * from './Suggestion';
 export * from './Table';
 export * from './ErrorSummary';

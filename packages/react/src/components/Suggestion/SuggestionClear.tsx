@@ -18,8 +18,7 @@ export const SuggestionClear = forwardRef<
   { 'aria-label': label = 'Tøm', onClick, ...rest },
   ref,
 ) {
-  const { inputRef, listRef, handleValueChange } =
-    useContext(SuggestionContext);
+  const { inputRef } = useContext(SuggestionContext); //, listRef, handleValueChange
 
   const handleClear = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -31,13 +30,13 @@ export const SuggestionClear = forwardRef<
 
     event.preventDefault();
     setReactInputValue(inputRef.current, '');
-    handleValueChange?.('');
+    // handleValueChange?.('');
     /* Unselect selected option */
-    const option = listRef?.current?.querySelector('u-option[selected]');
-    if (option) {
-      /* @ts-ignore -- u-option has this in its interface */
-      option.selected = false;
-    }
+    // const option =
+    //   listRef?.current?.querySelector<HTMLOptionElement>('u-option[selected]');
+    // if (option) {
+    //   option.selected = false;
+    // }
     inputRef.current.focus();
     onClick?.(event);
   };

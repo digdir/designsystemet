@@ -40,6 +40,11 @@
       display: none;
     }
 
+    /* Hide datalist if no children */
+    &:empty {
+      display: none;
+    }
+
     & > * {
       padding: var(--ds-spacing-2) var(--ds-spacing-3);
       font-family: inherit;
@@ -80,7 +85,7 @@
    */
   &:has(input:placeholder-shown) button[type='reset'],
   &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
-    display: none; /* We hide the clear button when input is empty */
+    visibility: hidden; /* We hide the clear button when input is empty */
   }
   &:has(button[type='reset']) input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
