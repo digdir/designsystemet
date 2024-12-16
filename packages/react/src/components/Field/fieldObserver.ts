@@ -77,10 +77,12 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 }
 
 // Utilities
-const isElement = (node: Node) => node instanceof Element;
-const isLabel = (node: Node) => node instanceof HTMLLabelElement;
-const isInputLike = (node: Node): node is Element =>
-  'validity' in node && !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
+export const isElement = (node: Node) => node instanceof Element;
+export const isLabel = (node: Node) => node instanceof HTMLLabelElement;
+export const isInputLike = (node: unknown): node is HTMLInputElement =>
+  node instanceof HTMLElement &&
+  'validity' in node &&
+  !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
 
 const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);
