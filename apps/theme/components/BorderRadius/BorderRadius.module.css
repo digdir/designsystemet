@@ -33,7 +33,7 @@
 
 .inner {
   border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: 16px;
+  border-radius: var(--ds-border-radius-lg);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
@@ -42,7 +42,7 @@
 }
 
 .card {
-  border-radius: 8px;
+  border-radius: var(--ds-border-radius-md);
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   padding: 24px;
@@ -65,7 +65,6 @@
 
 .btn {
   width: 100%;
-  border-radius: 4px;
   margin-top: 4px;
 }
 
@@ -76,7 +75,7 @@
 
 .img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--ds-border-radius-md);
   height: 200px;
 }
 
@@ -114,7 +113,7 @@
 .userImg {
   height: 44px;
   width: 44px;
-  border-radius: 4px;
+  border-radius: var(--ds-border-radius-default);
 }
 
 .userRole {
@@ -133,5 +132,5 @@
 }
 
 .test {
-  border-radius: 100px;
+  border-radius: var(--ds-border-radius-xl);
 }
