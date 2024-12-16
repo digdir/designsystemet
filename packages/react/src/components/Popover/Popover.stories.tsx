@@ -53,7 +53,7 @@ export const Interactive: StoryFn<typeof Popover> = () => {
   return (
     <Popover.TriggerContext>
       <Popover.Trigger data-color='danger' aria-label='Slett rad'>
-        <TrashIcon />
+        <TrashIcon title='Slett rad' />
       </Popover.Trigger>
       <Popover data-color='danger'>
         <Paragraph>
@@ -87,16 +87,16 @@ export const DottedUnderline: StoryFn<typeof Popover> = () => {
       <Popover.TriggerContext>
         <Paragraph>
           Vi bruker{' '}
-          <Popover.Trigger asChild>
-            <span
-              style={{
-                textDecoration: 'underline dotted',
-                textUnderlineOffset: '0.27em',
-                cursor: 'pointer',
-              }}
-            >
-              design tokens
-            </span>
+          <Popover.Trigger
+            style={{
+              all: 'unset',
+              display: 'inline',
+              textDecoration: 'underline dotted',
+              textUnderlineOffset: '0.27em',
+              cursor: 'pointer',
+            }}
+          >
+            design tokens
           </Popover.Trigger>{' '}
           for å sikre at vi har en konsistent design.
         </Paragraph>
