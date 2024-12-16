@@ -52,7 +52,7 @@ Preview.parameters = {
 export const Interactive: StoryFn<typeof Popover> = () => {
   return (
     <Popover.TriggerContext>
-      <Popover.Trigger data-color='danger'>
+      <Popover.Trigger data-color='danger' aria-label='Slett rad'>
         <TrashIcon />
       </Popover.Trigger>
       <Popover data-color='danger'>
