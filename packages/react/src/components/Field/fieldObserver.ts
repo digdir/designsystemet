@@ -80,13 +80,15 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 export const isElement = (node: Node) => node instanceof Element;
 export const isLabel = (node: Node) => node instanceof HTMLLabelElement;
 export const isInputLike = (node: unknown): node is HTMLInputElement =>
-  node instanceof HTMLElement && 'validity' in node && !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
+  node instanceof HTMLElement &&
+  'validity' in node &&
+  !(node instanceof HTMLButtonElement); // Matches input, textarea, select and form accosiated custom elements
 
-export const setAttr = (el: Element | null, name: string, value?: string | null) =>
+const setAttr = (el: Element | null, name: string, value?: string | null) =>
   value ? el?.setAttribute(name, value) : el?.removeAttribute(name);
 
 // Speed up MutationObserver by debouncing, clearing internal queue after changes and only running when page is visible
-export function createOptimizedMutationObserver(callback: MutationCallback) {
+function createOptimizedMutationObserver(callback: MutationCallback) {
   const queue: MutationRecord[] = [];
   const observer = new MutationObserver((mutations) => {
     if (!queue.length) requestAnimationFrame(process);
