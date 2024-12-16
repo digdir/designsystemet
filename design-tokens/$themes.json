@@ -1017,10 +1017,10 @@
       "border-radius.1": "430e4e34456fbd05b0a5a818a553626419608b2b",
       "border-radius.2": "d5832eb066c8b0a3dc25cded408a4d9f445432e2",
       "border-radius.3": "785c1cfff3d8b21a3a29744f5a0f45f1f3ec0827",
-      "border-radius.4": "84a4998341610ba4b0013144a7f14d9d2533cb9d",
-      "border-radius.5": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
-      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77"
+      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
+      "border-radius.6": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
+      "border-radius.5": "84a4998341610ba4b0013144a7f14d9d2533cb9d"
     },
     "group": "Theme"
   },
@@ -1116,10 +1116,10 @@
       "border-radius.1": "430e4e34456fbd05b0a5a818a553626419608b2b",
       "border-radius.2": "d5832eb066c8b0a3dc25cded408a4d9f445432e2",
       "border-radius.3": "785c1cfff3d8b21a3a29744f5a0f45f1f3ec0827",
-      "border-radius.4": "84a4998341610ba4b0013144a7f14d9d2533cb9d",
-      "border-radius.5": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
-      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77"
+      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
+      "border-radius.6": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
+      "border-radius.5": "84a4998341610ba4b0013144a7f14d9d2533cb9d"
     },
     "group": "Theme"
   },
@@ -1215,10 +1215,10 @@
       "border-radius.1": "430e4e34456fbd05b0a5a818a553626419608b2b",
       "border-radius.2": "d5832eb066c8b0a3dc25cded408a4d9f445432e2",
       "border-radius.3": "785c1cfff3d8b21a3a29744f5a0f45f1f3ec0827",
-      "border-radius.4": "84a4998341610ba4b0013144a7f14d9d2533cb9d",
-      "border-radius.5": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
-      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77"
+      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
+      "border-radius.6": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
+      "border-radius.5": "84a4998341610ba4b0013144a7f14d9d2533cb9d"
     },
     "group": "Theme"
   },
@@ -1653,10 +1653,10 @@
       "border-radius.1": "430e4e34456fbd05b0a5a818a553626419608b2b",
       "border-radius.2": "d5832eb066c8b0a3dc25cded408a4d9f445432e2",
       "border-radius.3": "785c1cfff3d8b21a3a29744f5a0f45f1f3ec0827",
-      "border-radius.4": "84a4998341610ba4b0013144a7f14d9d2533cb9d",
-      "border-radius.5": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
-      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77"
+      "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
+      "border-radius.6": "c1d38a59c2eb078642aafd112e1a23cc3107e2b1",
+      "border-radius.5": "84a4998341610ba4b0013144a7f14d9d2533cb9d"
     },
     "group": "Theme"
   },
