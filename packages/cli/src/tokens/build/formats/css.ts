@@ -1,9 +1,15 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
 
-import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../utils.js';
+import {
+  getValue,
+  isColorCategoryToken,
+  isGlobalColorToken,
+  isSemanticToken,
+  pathStartsWithOneOf,
+} from '../../utils.js';
 import { type IsCalculatedToken, colorCategories } from '../types.js';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
@@ -113,6 +119,32 @@ const semantic: Format = {
       usesDtcg,
     });
 
+    const [borderRadiusTokens, restTokens] = R.partition(pathStartsWithOneOf(['border-radius']), dictionary.allTokens);
+
+    const formattedBarrelTokens = R.reduce(
+      (acc, token: TransformedToken) => {
+        let formatted = format(token); // get formatted value with references resolved
+
+        if (usesReferences(getValue<string>(token.original))) {
+          const refs = getReferences(token.original.$value, dictionary.tokens);
+          const match = formatted.match(/var\(--([^)]+)\)/);
+
+          const barrelToken = refs.find((ref) => ref.name === match?.[1]);
+
+          if (barrelToken) {
+            const [barrelName, barrelValue] = format(barrelToken).split(':');
+            const updatedAcc = acc.filter((accToken) => !accToken.includes(barrelName)); // remove barrel token from acc
+            formatted = `${formatted.split(':')[0]}:${barrelValue}`;
+            return [...updatedAcc, formatted];
+          }
+        }
+
+        return [...acc, formatted];
+      },
+      [] as string[],
+      borderRadiusTokens,
+    );
+
     const formattedTokens = R.map((token: TransformedToken) => {
       const originalValue = getValue<string>(token.original);
 
@@ -128,9 +160,9 @@ const semantic: Format = {
       }
 
       return format(token);
-    }, dictionary.allTokens);
+    }, restTokens);
 
-    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
+    const content = `{\n${[...formattedBarrelTokens, ...formattedTokens].join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
     return header + body;

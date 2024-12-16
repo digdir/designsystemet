@@ -4,20 +4,14 @@
 
 @layer ds.theme.semantic {
 :root {
-  --ds-border-radius-1: min( (var(--ds-border-radius-base)*0.5) , var(--ds-border-radius-scale) *1);
-  --ds-border-radius-2: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2);
-  --ds-border-radius-3: min( (var(--ds-border-radius-base)*2) , var(--ds-border-radius-scale) *5);
-  --ds-border-radius-4: min( (var(--ds-border-radius-base)*3) , var(--ds-border-radius-scale) *5);
-  --ds-border-radius-5: var(--ds-border-radius-base);
-  --ds-border-radius-6: 624.9375rem;
   --ds-border-radius-base: 0.25rem;
   --ds-border-radius-scale: 0.25rem;
-  --ds-border-radius-sm: var(--ds-border-radius-1);
-  --ds-border-radius-md: var(--ds-border-radius-2);
-  --ds-border-radius-lg: var(--ds-border-radius-3);
-  --ds-border-radius-xl: var(--ds-border-radius-4);
-  --ds-border-radius-default: var(--ds-border-radius-5);
-  --ds-border-radius-full: var(--ds-border-radius-6);
+  --ds-border-radius-sm: min( (var(--ds-border-radius-base)*0.5) , var(--ds-border-radius-scale) *1);
+  --ds-border-radius-md: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2);
+  --ds-border-radius-lg: min( (var(--ds-border-radius-base)*2) , var(--ds-border-radius-scale) *5);
+  --ds-border-radius-xl: min( (var(--ds-border-radius-base)*3) , var(--ds-border-radius-scale) *5);
+  --ds-border-radius-default: var(--ds-border-radius-base);
+  --ds-border-radius-full: 624.9375rem;
   --ds-disabled-opacity: 30%;
   --ds-spacing-0: calc(var(--ds-spacing-scale)*0);
   --ds-spacing-1: calc(var(--ds-spacing-scale)*1);
