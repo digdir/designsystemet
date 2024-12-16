@@ -22,6 +22,7 @@ export const TokenModal = () => {
 
   const colors = useThemeStore((state) => state.colors);
   const themeName = useThemeStore((state) => state.themeName);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     let str = '';
@@ -35,7 +36,7 @@ export const TokenModal = () => {
    --${colorCliOptions.main} ${setCliColors(colors.main)} \\
    --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
    --${colorCliOptions.support} ${setCliColors(colors.support)} \\
-   --border-radius 4 \\
+   --border-radius ${baseBorderRadius} \\
    --theme "${themeName}"`;
 
   type InfoBoxType = {

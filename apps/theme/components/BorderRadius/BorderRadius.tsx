@@ -8,12 +8,12 @@ import {
 } from '@digdir/designsystemet-react';
 
 import cl from 'clsx/lite';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
 import { SettingsCard } from './SettingsCard/SettingsCard';
 
-// TODO get this token data from @digdir/designsystemet
+// TODO get this token data from @digdir/designsystemet (use json from --preview or something)
 const borderRadiuses = [
   {
     name: 'sm',
@@ -58,12 +58,32 @@ const setProperty = (token: string, value: string) => {
   }
 };
 
-const getComputedProperty = (token: string) => {
-  const previewElement = document.getElementById('test');
-  if (previewElement) {
-    return previewElement.style.getPropertyValue(token);
-  }
-  return '';
+const VariablePreview = (props: {
+  variable: string;
+}) => {
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+
+  const ref = useRef<HTMLDivElement>(null);
+  const [radius, setRadius] = useState(0);
+
+  useEffect(() => {
+    if (ref.current) {
+      // We need to wait for the new base border radius to be set via `setProperty` before we can read it
+      setTimeout(() => {
+        setRadius(window.getComputedStyle(ref.current).borderRadius);
+      }, 10);
+    }
+  }, [baseBorderRadius]);
+
+  return (
+    <Tag
+      ref={ref}
+      className={classes.itemValue}
+      style={{ borderRadius: `var(${props.variable})` }}
+    >
+      {radius}
+    </Tag>
+  );
 };
 
 export const BorderRadius = () => {
@@ -81,7 +101,7 @@ export const BorderRadius = () => {
   }, [baseBorderRadius]);
 
   return (
-    <div className='panelContainer'>
+    <div className='panelContainer' id='test'>
       <div className='panelLeft'>
         <Paragraph data-size='sm'>
           Border radius er delt inn i 6 forskjellige tokens som endrer på seg
@@ -103,15 +123,13 @@ export const BorderRadius = () => {
             {borderRadiuses.map((item, index) => (
               <div key={index} className={classes.item}>
                 <div className={classes.itemName}>{item.name}:</div>
-                <div className={classes.itemValue}>
-                  {getComputedProperty(item.variable)}
-                </div>
+                <VariablePreview variable={item.variable} />
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className={cl('panelRight', classes.outer)} id='test'>
+      <div className={cl('panelRight', classes.outer)}>
         <div className={classes.inner}>
           <div className={classes.card}>
             <Heading data-size='2xs'>Logg inn i portalen</Heading>
