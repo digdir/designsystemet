@@ -63,16 +63,16 @@ const VariablePreview = (props: {
 }) => {
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
 
-  const ref = useRef<HTMLDivElement>(null);
-  const [radius, setRadius] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [radius, setRadius] = useState('');
 
   useEffect(() => {
-    if (ref.current) {
-      // We need to wait for the new base border radius to be set via `setProperty` before we can read it
-      setTimeout(() => {
-        setRadius(window.getComputedStyle(ref.current).borderRadius);
-      }, 10);
-    }
+    // We need to wait for the new base border radius to be set via `setProperty` before we can read it
+    setTimeout(() => {
+      if (ref.current) {
+        setRadius(window.getComputedStyle(ref?.current).borderRadius);
+      }
+    }, 10);
   }, [baseBorderRadius]);
 
   return (
