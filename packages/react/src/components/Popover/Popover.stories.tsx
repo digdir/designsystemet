@@ -66,10 +66,10 @@ export const Interactive: StoryFn<typeof Popover> = () => {
             marginTop: 'var(--ds-spacing-2)',
           }}
         >
-          <Button data-size='sm' style={{ marginTop: 'var(--ds-spacing-2)' }}>
-            Ja, slett den
+          <Button data-size='sm'>Ja, slett den</Button>
+          <Button data-size='sm' variant='tertiary'>
+            Avbryt
           </Button>
-          <Button variant='tertiary'>Avbryt</Button>
         </div>
       </Popover>
     </Popover.TriggerContext>
