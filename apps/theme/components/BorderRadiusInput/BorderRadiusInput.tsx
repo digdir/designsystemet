@@ -29,7 +29,6 @@ export const BorderRadiusInput = () => {
               borderRadius === item.value && classes.active,
             )}
             key={index}
-            onClick={() => setActive(index)}
           >
             <Button
               variant='tertiary'

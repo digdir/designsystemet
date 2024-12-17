@@ -8,6 +8,10 @@
     margin-bottom: var(--ds-spacing-6);
   }
 }
+.item {
+  display: flex;
+  justify-content: space-between;
+}
 
 .itemsContainer {
   margin-left: -28px;
@@ -16,11 +20,6 @@
   padding: 24px 28px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-}
-
-.item {
-  display: flex;
-  font-size: 16px;
 }
 
 .itemName {

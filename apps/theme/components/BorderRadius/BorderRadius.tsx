@@ -6,6 +6,7 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
+import { ClipboardButton } from '@repo/components';
 import { useEffect, useRef, useState } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
@@ -75,7 +76,11 @@ const VariablePreview = (props: {
 
   return (
     <div className={classes.item}>
-      <div className={classes.itemName}>{props.name}:</div>
+      <ClipboardButton
+        ariaLabel={`Kopier CSS variabel for ${props.name} border-radius`}
+        text={props.name}
+        value={props.variable}
+      />
       <Tag
         ref={ref}
         data-color='accent'
