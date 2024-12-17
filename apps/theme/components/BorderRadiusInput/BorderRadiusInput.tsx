@@ -1,4 +1,4 @@
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import { type BaseBorderRadius, useThemeStore } from '../../store';
@@ -18,6 +18,9 @@ export const BorderRadiusInput = () => {
 
   return (
     <div>
+      <Heading className={classes.heading} data-size='xs'>
+        Foreslått Border radius
+      </Heading>
       <div className={classes.items}>
         {items.map((item, index) => (
           <div
@@ -45,6 +48,21 @@ export const BorderRadiusInput = () => {
           </div>
         ))}
       </div>
+      <Heading className={classes.heading} data-size='xs'>
+        Manuell Border radius
+      </Heading>
+      <Textfield
+        label='Definer baseverdien for border-radius'
+        value={borderRadius}
+        onChange={(e) => {
+          const updatedValue = parseInt(e.target.value);
+          if (updatedValue >= 0) {
+            setBorderRadius(updatedValue);
+          } else {
+            setBorderRadius(0);
+          }
+        }}
+      ></Textfield>
     </div>
   );
 };
