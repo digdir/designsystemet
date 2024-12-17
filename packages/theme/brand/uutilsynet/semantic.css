@@ -6,10 +6,10 @@
 :root {
   --ds-border-radius-base: 0.25rem;
   --ds-border-radius-scale: 0.25rem;
-  --ds-border-radius-sm: min( (var(--ds-border-radius-base)*0.5) , var(--ds-border-radius-scale) *1);
-  --ds-border-radius-md: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2);
-  --ds-border-radius-lg: min( (var(--ds-border-radius-base)*2) , var(--ds-border-radius-scale) *5);
-  --ds-border-radius-xl: min( (var(--ds-border-radius-base)*3) , var(--ds-border-radius-scale) *5);
+  --ds-border-radius-sm: min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale));
+  --ds-border-radius-md: min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2);
+  --ds-border-radius-lg: min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5);
+  --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*8);
   --ds-border-radius-default: var(--ds-border-radius-base);
   --ds-border-radius-full: 624.9375rem;
   --ds-disabled-opacity: 30%;

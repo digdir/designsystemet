@@ -16,25 +16,24 @@ const borderRadiuses = [
   {
     name: 'sm',
     value:
-      'min( (var(--ds-border-radius-base)*0.5) , var(--ds-border-radius-scale) *1)',
+      'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
     variable: '--ds-border-radius-sm',
   },
   {
     name: 'md',
-    value:
-      'min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2)',
+    value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
     variable: '--ds-border-radius-md',
   },
   {
     name: 'lg',
     value:
-      'min( (var(--ds-border-radius-base)*2) , var(--ds-border-radius-scale) *5)',
+      'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
     variable: '--ds-border-radius-lg',
   },
   {
     name: 'xl',
     value:
-      'min( (var(--ds-border-radius-base)*3) , var(--ds-border-radius-scale) *5)',
+      'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
     variable: '--ds-border-radius-xl',
   },
   {
