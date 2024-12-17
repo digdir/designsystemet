@@ -6,8 +6,6 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
-
-import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
@@ -129,7 +127,7 @@ export const BorderRadius = () => {
           </div>
         </div>
       </div>
-      <div className={cl('panelRight', classes.outer)}>
+      <div className={'panelRight'}>
         <div className={classes.inner}>
           <div className={classes.card}>
             <Heading data-size='2xs'>Logg inn i portalen</Heading>

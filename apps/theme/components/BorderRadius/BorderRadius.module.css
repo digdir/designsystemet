@@ -27,18 +27,10 @@
   width: 85px;
 }
 
-.outer {
-  background-color: var(--ds-color-neutral-background-default) !important;
-}
-
 .inner {
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: var(--ds-border-radius-lg);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  padding: 28px;
-  background-color: var(--ds-color-neutral-background-subtle);
 }
 
 .card {
