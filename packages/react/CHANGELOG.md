@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0-next.44
+
+### Patch Changes
+
+- Fixes issue where all React prop types were inlined instead of referenced ([#2912](https://github.com/digdir/designsystemet/pull/2912))
+
 ## 1.0.0-next.43
 
 ### Patch Changes
