@@ -1,13 +1,11 @@
 import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
 import { type BaseBorderRadius, useThemeStore } from '../../store';
 import classes from './BorderRadiusInput.module.css';
 
 export const BorderRadiusInput = () => {
-  const [active, setActive] = useState(0);
   const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
-  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const items: { name: string; value: BaseBorderRadius }[] = [
     { name: 'Ingen', value: 0 },
     { name: 'Small', value: 4 },
@@ -26,7 +24,7 @@ export const BorderRadiusInput = () => {
           <div
             className={cl(
               classes.item,
-              borderRadius === item.value && classes.active,
+              baseBorderRadius === item.value && classes.active,
             )}
             key={index}
           >
@@ -52,7 +50,7 @@ export const BorderRadiusInput = () => {
       </Heading>
       <Textfield
         label='Definer basisverdien for border-radius'
-        value={borderRadius}
+        value={baseBorderRadius}
         onChange={(e) => {
           const updatedValue = parseInt(e.target.value);
           if (updatedValue >= 0) {

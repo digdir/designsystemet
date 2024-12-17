@@ -15,6 +15,8 @@ export const useThemeParams = () => {
   const colors = useThemeStore((state) => state.colors);
   const themeName = useThemeStore((state) => state.themeName);
   const appearance = useThemeStore((state) => state.appearance);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
 
   /* Check if we have params in URL */
   useEffect(() => {
@@ -63,6 +65,11 @@ export const useThemeParams = () => {
     useThemeStore.setState({
       colors: newColors,
     });
+
+    const borderRadius = query.get('border-radius');
+    if (borderRadius) {
+      setBorderRadius(borderRadius);
+    }
   }, []);
 
   /* When name, appearance or colors change, update query */
@@ -86,9 +93,10 @@ export const useThemeParams = () => {
     params.set('main', mainColorString);
     params.set('neutral', neutralColorString);
     params.set('support', supportColorString);
+    params.set('border-radius', baseBorderRadius);
 
     router.push(pathname + '?' + params.toString());
-  }, [colors, themeName, appearance]);
+  }, [colors, themeName, appearance, baseBorderRadius]);
 
   return null;
 };
