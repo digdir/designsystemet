@@ -19,7 +19,7 @@ export const BorderRadiusInput = () => {
   return (
     <div>
       <Heading className={classes.heading} data-size='xs'>
-        Foreslått Border radius
+        Foreslått basis Border radius
       </Heading>
       <div className={classes.items}>
         {items.map((item, index) => (
@@ -49,10 +49,10 @@ export const BorderRadiusInput = () => {
         ))}
       </div>
       <Heading className={classes.heading} data-size='xs'>
-        Manuell Border radius
+        Manuell basis Border radius
       </Heading>
       <Textfield
-        label='Definer baseverdien for border-radius'
+        label='Definer basisverdien for border-radius'
         value={borderRadius}
         onChange={(e) => {
           const updatedValue = parseInt(e.target.value);

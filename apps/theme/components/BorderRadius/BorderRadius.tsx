@@ -12,41 +12,41 @@ import classes from './BorderRadius.module.css';
 import { SettingsCard } from './SettingsCard/SettingsCard';
 
 // TODO get this token data from @digdir/designsystemet (use json from --preview or something)
-const borderRadiuses = [
-  {
+const borderRadiuses = {
+  sm: {
     name: 'sm',
     value:
       'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
     variable: '--ds-border-radius-sm',
   },
-  {
+  md: {
     name: 'md',
     value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
     variable: '--ds-border-radius-md',
   },
-  {
+  lg: {
     name: 'lg',
     value:
       'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
     variable: '--ds-border-radius-lg',
   },
-  {
+  xl: {
     name: 'xl',
     value:
       'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
     variable: '--ds-border-radius-xl',
   },
-  {
+  default: {
     name: 'default',
     value: 'var(--ds-border-radius-base)',
     variable: '--ds-border-radius-default',
   },
-  {
+  full: {
     name: 'full',
     value: '624.9375rem',
     variable: '--ds-border-radius-full',
   },
-];
+};
 
 const setProperty = (token: string, value: string) => {
   const previewElement = document.getElementById('test');
@@ -57,6 +57,7 @@ const setProperty = (token: string, value: string) => {
 
 const VariablePreview = (props: {
   variable: string;
+  name: string;
 }) => {
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
 
@@ -73,14 +74,17 @@ const VariablePreview = (props: {
   }, [baseBorderRadius]);
 
   return (
-    <Tag
-      ref={ref}
-      data-color='accent'
-      className={classes.itemValue}
-      style={{ borderRadius: `var(${props.variable})` }}
-    >
-      {radius}
-    </Tag>
+    <div className={classes.item}>
+      <div className={classes.itemName}>{props.name}:</div>
+      <Tag
+        ref={ref}
+        data-color='accent'
+        className={classes.itemValue}
+        style={{ borderRadius: `var(${props.variable})` }}
+      >
+        {radius}
+      </Tag>
+    </div>
   );
 };
 
@@ -89,7 +93,8 @@ export const BorderRadius = () => {
 
   useEffect(() => {
     // we need to set these properties on the preview element because they are immutable on :root
-    for (const borderRadius of borderRadiuses) {
+    for (const key in borderRadiuses) {
+      const borderRadius = borderRadiuses[key as keyof typeof borderRadiuses];
       setProperty(borderRadius.variable, borderRadius.value);
     }
   }, []);
@@ -118,12 +123,12 @@ export const BorderRadius = () => {
         <div className={classes.itemsContainer}>
           <Heading data-size='2xs'>Tokens</Heading>
           <div className={classes.items}>
-            {borderRadiuses.map((item, index) => (
-              <div key={index} className={classes.item}>
-                <div className={classes.itemName}>{item.name}:</div>
-                <VariablePreview variable={item.variable} />
-              </div>
-            ))}
+            <VariablePreview {...borderRadiuses.default} />
+            <VariablePreview {...borderRadiuses.sm} />
+            <VariablePreview {...borderRadiuses.md} />
+            <VariablePreview {...borderRadiuses.lg} />
+            <VariablePreview {...borderRadiuses.xl} />
+            <VariablePreview {...borderRadiuses.full} />
           </div>
         </div>
       </div>
