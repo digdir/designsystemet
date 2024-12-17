@@ -76,6 +76,7 @@ const VariablePreview = (props: {
   return (
     <Tag
       ref={ref}
+      data-color='accent'
       className={classes.itemValue}
       style={{ borderRadius: `var(${props.variable})` }}
     >

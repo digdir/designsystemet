@@ -10,9 +10,9 @@ export const BorderRadiusInput = () => {
   const borderRadius = useThemeStore((state) => state.baseBorderRadius);
   const items: { name: string; value: BaseBorderRadius }[] = [
     { name: 'Ingen', value: 0 },
-    { name: 'Small', value: 6 },
-    { name: 'Medium', value: 10 },
-    { name: 'Large', value: 13 },
+    { name: 'Small', value: 4 },
+    { name: 'Medium', value: 8 },
+    { name: 'Large', value: 12 },
     { name: 'Full', value: 9999 },
   ];
 
