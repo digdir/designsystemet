@@ -66,7 +66,7 @@ export const useThemeParams = () => {
       colors: newColors,
     });
 
-    const borderRadius = query.get('border-radius');
+    const borderRadius = parseInt(query.get('border-radius') as string);
     if (borderRadius) {
       setBorderRadius(borderRadius);
     }
@@ -93,7 +93,7 @@ export const useThemeParams = () => {
     params.set('main', mainColorString);
     params.set('neutral', neutralColorString);
     params.set('support', supportColorString);
-    params.set('border-radius', baseBorderRadius);
+    params.set('border-radius', baseBorderRadius.toString());
 
     router.push(pathname + '?' + params.toString());
   }, [colors, themeName, appearance, baseBorderRadius]);
