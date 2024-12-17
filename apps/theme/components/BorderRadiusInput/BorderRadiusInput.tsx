@@ -30,6 +30,7 @@ export const BorderRadiusInput = () => {
           >
             <Button
               variant='tertiary'
+              data-color='neutral'
               className={cl(classes.box)}
               onClick={() => {
                 setBorderRadius(item.value);
