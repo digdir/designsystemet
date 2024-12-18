@@ -5,6 +5,7 @@
   --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
   --dsc-tooltip-arrow-size: var(--ds-spacing-2);
   --dsc-tooltip-transition-duration: 0.2s;
+  --dsc-tooltip-transition-delay: 0s;
 
   position: fixed;
   background: var(--dsc-tooltip-background);
@@ -18,6 +19,7 @@
   overflow: visible;
   margin: 0; /* Needed to place tooltip correctly, since popover adds margin */
   transition-property: opacity;
+  transition-delay: var(--dsc-tooltip-transition-delay);
   transition-duration: var(--dsc-tooltip-transition-duration);
   transition-timing-function: ease-in-out;
   opacity: 0;
