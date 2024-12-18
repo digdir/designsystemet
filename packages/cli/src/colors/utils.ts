@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
-import type { ColorNumber, CssColor } from './types';
+import type { ColorNumber, CssColor } from './types.js';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'

@@ -1,1 +1,1 @@
-export { type CreateTokensOptions, createTokens, colorCliOptions } from './create';
+export { type CreateTokensOptions, createTokens, colorCliOptions } from './create.js';
