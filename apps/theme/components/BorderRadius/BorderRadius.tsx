@@ -83,6 +83,7 @@ const VariablePreview = (props: {
       />
       <Tag
         ref={ref}
+        data-size='sm'
         data-color='accent'
         className={classes.itemValue}
         style={{ borderRadius: `var(${props.variable})` }}
