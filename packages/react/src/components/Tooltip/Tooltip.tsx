@@ -1,36 +1,29 @@
 import {
-  FloatingPortal,
   type MiddlewareState,
   autoUpdate,
+  computePosition,
   flip,
   offset,
   shift,
-  useDismiss,
-  useFloating,
-  useFocus,
-  useHover,
-  useInteractions,
-  useMergeRefs,
-  useRole,
-  useTransitionStyles,
-} from '@floating-ui/react';
+} from '@floating-ui/dom';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import type {
-  HTMLAttributes,
-  MutableRefObject,
-  ReactElement,
-  RefAttributes,
+import type { HTMLAttributes, ReactElement, RefAttributes } from 'react';
+import {
+  Fragment,
+  forwardRef,
+  useEffect,
+  useId,
+  useRef,
+  useState,
 } from 'react';
-import { Fragment, forwardRef, useState } from 'react';
 
-import type { DefaultProps, PortalProps } from '../../types';
+import { useMergeRefs } from '@floating-ui/react';
+import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type TooltipProps = MergeRight<
-  Omit<DefaultProps, 'data-color'> &
-    PortalProps &
-    HTMLAttributes<HTMLDivElement>,
+  Omit<DefaultProps, 'data-color'> & HTMLAttributes<HTMLDivElement>,
   {
     /**
      * The element or string that triggers the tooltip.
@@ -56,11 +49,6 @@ export type TooltipProps = MergeRight<
      * This overrides the internal state of the tooltip.
      */
     open?: boolean;
-    /**
-     * Whether the tooltip is open by default or not.
-     * @default false
-     */
-    defaultOpen?: boolean;
   }
 >;
 
@@ -79,64 +67,92 @@ export type TooltipProps = MergeRight<
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   function Tooltip(
     {
+      id,
       children,
       content,
       placement = 'top',
       delay = 150,
-      open: userOpen,
-      defaultOpen = false,
-      portal = false,
+      open,
       className,
-      style,
       ...rest
     },
     ref,
   ) {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
-    const internalOpen = userOpen ?? isOpen;
+    const randomTooltipId = useId();
 
-    const Container = portal ? FloatingPortal : Fragment;
+    const [internalOpen, setInternalOpen] = useState(false);
 
-    const { refs, floatingStyles, context } = useFloating({
-      open: internalOpen,
-      onOpenChange: setIsOpen,
-      placement,
-      whileElementsMounted: autoUpdate,
-      middleware: [
-        offset((data) => {
-          // get pseudo element arrow size
-          const styles = getComputedStyle(data.elements.floating, '::before');
-          return parseFloat(styles.height);
-        }),
-        flip({
-          fallbackAxisSideDirection: 'start',
-        }),
-        shift(),
-        arrowPseudoElement,
-      ],
-    });
+    const triggerRef = useRef<HTMLElement>(null);
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const mergedRefs = useMergeRefs([tooltipRef, ref]);
 
-    const { styles: animationStyles } = useTransitionStyles(context, {
-      initial: {
-        opacity: 0,
-      },
-    });
+    const controlledOpen = open ?? internalOpen;
 
-    const { getReferenceProps, getFloatingProps } = useInteractions([
-      // Event listeners to change the open state
-      useHover(context, { move: false, delay }),
-      useFocus(context),
-      useDismiss(context),
-      useRole(context, { role: 'tooltip' }),
-    ]);
+    // NOTE: This code is purely to add React controlled component ability to Popover API
+    useEffect(() => {
+      if (!tooltipRef.current || !triggerRef.current) return;
 
-    const mergedRef = useMergeRefs([ref, refs.setFloating]);
+      const trigger = triggerRef.current;
+      const tooltip = tooltipRef.current;
+      const handleMouseover = () => {
+        setInternalOpen(true);
+      };
 
-    const childMergedRef = useMergeRefs([
-      (children as ReactElement & RefAttributes<HTMLElement>)
-        .ref as MutableRefObject<HTMLElement>,
-      refs.setReference,
-    ]);
+      const handleMouseout = (event: MouseEvent) => {
+        /* if we move mosue to tooltip, don't close */
+        const el = event.relatedTarget as Element | null;
+        if (el === tooltip) return;
+
+        setInternalOpen(false);
+      };
+
+      const handleClick = (event: MouseEvent) => {
+        event.preventDefault(); // Prevent native Popover API
+      };
+
+      tooltip?.togglePopover?.(controlledOpen);
+      trigger.addEventListener('mouseover', handleMouseover);
+      document.addEventListener('mouseout', handleMouseout);
+      trigger.addEventListener('click', handleClick, true);
+
+      return () => {
+        trigger.removeEventListener('mouseover', handleMouseover);
+        document.removeEventListener('mouseout', handleMouseout);
+        trigger.removeEventListener('click', handleClick, true);
+      };
+    }, [controlledOpen]);
+
+    // Position with floating-ui
+    useEffect(() => {
+      const tooltip = tooltipRef.current;
+      const trigger = triggerRef.current;
+
+      if (tooltip && trigger && controlledOpen) {
+        return autoUpdate(trigger, tooltip, () => {
+          computePosition(trigger, tooltip, {
+            placement,
+            strategy: 'fixed',
+            middleware: [
+              offset((data) => {
+                // get pseudo element arrow size
+                const styles = getComputedStyle(
+                  data.elements.floating,
+                  '::before',
+                );
+                return parseFloat(styles.height) / 2;
+              }),
+              flip({
+                fallbackAxisSideDirection: 'start',
+              }),
+              shift(),
+              arrowPseudoElement,
+            ],
+          }).then(({ x, y }) => {
+            tooltip.style.translate = `${x}px ${y}px`;
+          });
+        });
+      }
+    }, [controlledOpen, placement]);
 
     /* If children is only a string, make a span */
     const ChildContainer = typeof children === 'string' ? 'span' : Slot;
@@ -151,29 +167,20 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        <ChildContainer
-          {...getReferenceProps({
-            ref: childMergedRef,
-          })}
-        >
+        <ChildContainer ref={triggerRef} popovertarget={id ?? randomTooltipId}>
           {children}
         </ChildContainer>
-        {internalOpen && (
-          <Container>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, ...animationStyles, ...style }}
-              role='tooltip'
-              {...getFloatingProps({
-                className: cl('ds-tooltip', className),
-                ref: mergedRef,
-                ...rest,
-              })}
-            >
-              {content}
-            </div>
-          </Container>
-        )}
+        <div
+          ref={mergedRefs}
+          role='tooltip'
+          className={cl('ds-tooltip', className)}
+          id={id ?? randomTooltipId}
+          // @ts-ignore @types/react-dom does not understand popover yet
+          popover='manual'
+          {...rest}
+        >
+          {content}
+        </div>
       </>
     );
   },

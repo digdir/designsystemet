@@ -44,7 +44,6 @@ export const Placement: Story = {
 export const DefaultOpen: Story = {
   args: {
     content: 'Tooltip text',
-    defaultOpen: true,
     children: defaultChildren,
   },
   play: async () => {
@@ -58,6 +57,5 @@ export const Portal: Story = {
     content: 'Tooltip text',
     children: defaultChildren,
     placement: 'top',
-    portal: true,
   },
 };
