@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.44
+
+## 1.0.0-next.43
+
+### Patch Changes
+
+- Fix crash when running @digdir/designsystemet CLI due to differences in module resolution when used as a package ([#2909](https://github.com/digdir/designsystemet/pull/2909))
+
 ## 1.0.0-next.42
 
 ### Minor Changes

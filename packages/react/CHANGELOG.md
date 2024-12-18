@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.0.0-next.44
+
+### Patch Changes
+
+- Fixes issue where all React prop types were inlined instead of referenced ([#2912](https://github.com/digdir/designsystemet/pull/2912))
+
+## 1.0.0-next.43
+
+### Patch Changes
+
+- Field.Counter: Run on mount to support initial `defaultValue` ([#2907](https://github.com/digdir/designsystemet/pull/2907))
+
 ## 1.0.0-next.42
 
 ### Patch Changes

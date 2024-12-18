@@ -1,4 +1,4 @@
-import type { CssColor } from '../colors/types';
+import type { CssColor } from '../colors/types.js';
 
 export type Token = { $value: string; $type: string };
 export type Tokens1ary = Record<string, Token>;
