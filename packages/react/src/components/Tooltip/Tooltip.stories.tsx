@@ -40,22 +40,3 @@ export const Placement: Story = {
     children: defaultChildren,
   },
 };
-
-export const DefaultOpen: Story = {
-  args: {
-    content: 'Tooltip text',
-    children: defaultChildren,
-  },
-  play: async () => {
-    // Wait 500 ms to let tooltip fade in before running tests
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  },
-};
-
-export const Portal: Story = {
-  args: {
-    content: 'Tooltip text',
-    children: defaultChildren,
-    placement: 'top',
-  },
-};

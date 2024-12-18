@@ -140,7 +140,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     useEffect(() => {
       const tooltip = tooltipRef.current;
       const trigger = triggerRef.current;
-      tooltip.style.opacity = controlledOpen ? '1' : '0';
+      if (tooltip) tooltip.style.opacity = controlledOpen ? '1' : '0';
 
       if (tooltip && trigger && controlledOpen) {
         return autoUpdate(trigger, tooltip, () => {
@@ -154,7 +154,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                   data.elements.floating,
                   '::before',
                 );
-                return parseFloat(styles.height) / 2;
+                return parseFloat(styles.height);
               }),
               flip({
                 fallbackAxisSideDirection: 'start',

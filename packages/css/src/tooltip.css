@@ -10,6 +10,8 @@
   background: var(--dsc-tooltip-background);
   border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
+  border: none;
+  border-width: 0;
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
