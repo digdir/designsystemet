@@ -4,6 +4,7 @@
   --dsc-tooltip-border-radius: var(--ds-border-radius-default);
   --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
   --dsc-tooltip-arrow-size: var(--ds-spacing-2);
+  --dsc-tooltip-transition-duration: 0.2s;
 
   position: fixed;
   background: var(--dsc-tooltip-background);
@@ -14,6 +15,10 @@
   padding: var(--dsc-tooltip-padding);
   overflow: visible;
   margin: 0; /* Needed to place tooltip correctly, since popover adds margin */
+  transition-property: opacity;
+  transition-duration: var(--dsc-tooltip-transition-duration);
+  transition-timing-function: ease-in-out;
+  opacity: 0;
 
   &::before {
     content: '';
@@ -26,10 +31,6 @@
     top: var(--ds-tooltip-arrow-y);
     translate: -50% -50%;
     rotate: 45deg;
-  }
-
-  &::backdrop {
-    display: none;
   }
 
   @media (forced-colors: active) {

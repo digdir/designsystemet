@@ -94,6 +94,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
       const trigger = triggerRef.current;
       const tooltip = tooltipRef.current;
+
       const handleMouseover = () => {
         setInternalOpen(true);
       };
@@ -110,15 +111,28 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         event.preventDefault(); // Prevent native Popover API
       };
 
+      const handleFocusIn = () => {
+        setInternalOpen(true);
+      };
+
+      const handleFocusOut = () => {
+        setInternalOpen(false);
+      };
+
       tooltip?.togglePopover?.(controlledOpen);
       trigger.addEventListener('mouseover', handleMouseover);
+      /* We use document so user can move to tooltip contents */
       document.addEventListener('mouseout', handleMouseout);
       trigger.addEventListener('click', handleClick, true);
+      trigger.addEventListener('focus', handleFocusIn);
+      trigger.addEventListener('focusout', handleFocusOut);
 
       return () => {
         trigger.removeEventListener('mouseover', handleMouseover);
         document.removeEventListener('mouseout', handleMouseout);
         trigger.removeEventListener('click', handleClick, true);
+        trigger.removeEventListener('focus', handleFocusIn);
+        trigger.removeEventListener('focusout', handleFocusOut);
       };
     }, [controlledOpen]);
 
@@ -126,6 +140,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     useEffect(() => {
       const tooltip = tooltipRef.current;
       const trigger = triggerRef.current;
+      tooltip.style.opacity = controlledOpen ? '1' : '0';
 
       if (tooltip && trigger && controlledOpen) {
         return autoUpdate(trigger, tooltip, () => {
