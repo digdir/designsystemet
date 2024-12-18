@@ -5,7 +5,7 @@
   --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
   --dsc-tooltip-arrow-size: var(--ds-spacing-2);
   --dsc-tooltip-transition-duration: 0.2s;
-  --dsc-tooltip-transition-delay: 0s;
+  --dsc-tooltip-transition-delay: 150ms;
 
   position: fixed;
   background: var(--dsc-tooltip-background);
