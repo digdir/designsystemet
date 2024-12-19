@@ -136,6 +136,13 @@ const colorCategory: Format = {
 
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
 
+const isDigit = (s: string) => /^\d+$/.test(s);
+const isUnwantedBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+const isUnwantedSizeToken = (t: TransformedToken) =>
+  t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
+
+const isUwantedTokens = R.anyPass([isUnwantedBorderRadiusToken, isUnwantedSizeToken]);
+
 const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, file, options, platform }) => {
@@ -151,9 +158,7 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const isDigit = (s: string) => /^\d+$/.test(s);
-    const isUnwantedBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-    const tokens = inlineTokens(isUnwantedBorderRadiusToken, dictionary.allTokens);
+    const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
 
     const formattedTokens = R.map((token: TransformedToken) => {
       const originalValue = getValue<string>(token.original);
