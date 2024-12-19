@@ -116,8 +116,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     useEffect(() => {
       const tooltip = tooltipRef.current;
       const trigger = triggerRef.current;
-      if (tooltip) tooltip.style.opacity = controlledOpen ? '1' : '0';
 
+      tooltip?.togglePopover?.(controlledOpen);
       if (tooltip && trigger && controlledOpen) {
         return autoUpdate(trigger, tooltip, () => {
           computePosition(trigger, tooltip, {
