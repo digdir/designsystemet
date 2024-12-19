@@ -40,13 +40,13 @@
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
 
-/* TODO: Will move to tokens as part of #2508 */
+/* TODO: Will move to tokens as part of #2508
 :root {
-  --ds-sizing-base: 18; /* Unitless base font-size 18px */
-  --ds-sizing-step: 4; /* Unitless step size 4px */
+  --ds-sizing-base: 18; /* Unitless base font-size 18px
+  --ds-sizing-step: 4; /* Unitless step size 4px
   --ds-sizing-scale: var(--ds-sizing-step) / var(--ds-sizing-base);
 
-  /* Sizing when not supporting round() */
+  /* Sizing when not supporting round()
   --ds-sizing-1: calc(var(--ds-sizing-scale) * 1em);
   --ds-sizing-2: calc(var(--ds-sizing-scale) * 2em);
   --ds-sizing-3: calc(var(--ds-sizing-scale) * 3em);
@@ -78,7 +78,7 @@
   --ds-sizing-29: calc(var(--ds-sizing-scale) * 29em);
   --ds-sizing-30: calc(var(--ds-sizing-scale) * 30em);
 
-  /* Sizing when supporting round() */
+  /* Sizing when supporting round()
   @supports (width: round(down, .1em, 1px)) {
     --ds-sizing-1: round(down, calc(var(--ds-sizing-scale) * 1em), 0.0625rem);
     --ds-sizing-2: round(down, calc(var(--ds-sizing-scale) * 2em), 0.0625rem);
@@ -112,7 +112,7 @@
     --ds-sizing-30: round(down, calc(var(--ds-sizing-scale) * 30em), 0.0625rem);
   }
 
-  /* Spacing */
+  /* Spacing
   --ds-spacing-1: var(--ds-sizing-1);
   --ds-spacing-2: var(--ds-sizing-2);
   --ds-spacing-3: var(--ds-sizing-3);
@@ -144,3 +144,4 @@
   --ds-spacing-29: var(--ds-sizing-29);
   --ds-spacing-30: var(--ds-sizing-30);
 }
+*/
