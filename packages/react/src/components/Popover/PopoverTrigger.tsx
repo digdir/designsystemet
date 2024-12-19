@@ -7,12 +7,12 @@ import { Context } from './PopoverTriggerContext';
 export type PopoverTriggerProps =
   | ({
       inline?: true;
-    } & ButtonProps)
-  | ({
-      inline?: false;
       asChild?: boolean;
     } & HTMLAttributes<HTMLButtonElement> &
-      DefaultProps);
+      DefaultProps)
+  | ({
+      inline?: false;
+    } & ButtonProps);
 
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
