@@ -1,5 +1,6 @@
 ---
 "@digdir/designsystemet-css": patch
+"@digdir/designsystemet-react": patch
 ---
 
-Popover: add utility class for inline text (`.ds-popover--trigger-inline`)
+PopoverTrigger: add prop for changing to inline
