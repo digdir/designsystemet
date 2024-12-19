@@ -12,7 +12,7 @@ export type ColorTheme = {
   colors: ThemeInfo;
 };
 
-type BorderRadiusGroup = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type BaseBorderRadius = number;
 type PageType = 'intro' | 'colors' | 'radius' | 'finish';
 
 type ColorStore = {
@@ -38,8 +38,8 @@ type ColorStore = {
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
   selectedColor: { color: ColorInfo; name: string };
   setSelectedColor: (color: ColorInfo, name: string) => void;
-  borderRadius: BorderRadiusGroup;
-  setBorderRadius: (radius: BorderRadiusGroup) => void;
+  baseBorderRadius: BaseBorderRadius;
+  setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   appearance: ColorScheme;
   setAppearance: (appearance: ColorScheme) => void;
   themePreview: 'one' | 'two' | 'three';
@@ -58,7 +58,7 @@ export const useThemeStore = create(
       },
       name: 'Default',
     },
-    borderRadius: 'small',
+    baseBorderRadius: 4,
     appearance: 'light',
     themePreview: 'one',
     colors: {
@@ -94,7 +94,7 @@ export const useThemeStore = create(
       }),
     setAppearance: (appearance) => set({ appearance: appearance }),
     setThemePreview: (themePreview) => set({ themePreview: themePreview }),
-    setBorderRadius: (radius) => set({ borderRadius: radius }),
+    setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),
   })),
