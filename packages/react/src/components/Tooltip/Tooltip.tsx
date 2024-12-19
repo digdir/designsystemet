@@ -112,14 +112,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       };
 
       tooltip?.togglePopover?.(controlledOpen);
-      trigger.addEventListener('mouseover', setOpen);
+      trigger.addEventListener('mouseenter', setOpen);
       /* We use document so user can move to tooltip contents */
       document.addEventListener('mouseout', handleMouseout);
       trigger.addEventListener('focusin', setOpen);
       trigger.addEventListener('focusout', setClose);
 
       return () => {
-        trigger.removeEventListener('mouseover', setOpen);
+        trigger.removeEventListener('mouseenter', setOpen);
         document.removeEventListener('mouseout', handleMouseout);
         trigger.removeEventListener('focusin', setOpen);
         trigger.removeEventListener('focusout', setClose);
