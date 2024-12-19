@@ -185,3 +185,34 @@ WithoutContext.parameters = {
     padding: '8rem 6rem 1rem',
   },
 };
+
+export const DottedUnderline: StoryFn<typeof Popover> = () => {
+  return (
+    <>
+      <Popover.TriggerContext>
+        <Paragraph>
+          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
+          å sikre at vi har en konsistent design.
+        </Paragraph>
+        <Popover data-color='neutral'>
+          <Paragraph>
+            <strong
+              style={{
+                display: 'block',
+              }}
+            >
+              Design tokens
+            </strong>
+            Design tokens er en samling av variabler som definerer designet i et
+            designsystem.
+          </Paragraph>
+        </Popover>
+      </Popover.TriggerContext>
+    </>
+  );
+};
+DottedUnderline.parameters = {
+  customStyles: {
+    padding: '10rem 6rem 1rem',
+  },
+};

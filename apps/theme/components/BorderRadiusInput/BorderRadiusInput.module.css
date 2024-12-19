@@ -1,8 +1,8 @@
 .items {
   display: flex;
   gap: 16px;
-
   flex-wrap: wrap;
+  margin-bottom: 1.5em;
 }
 
 .item {
@@ -30,6 +30,7 @@
   overflow: hidden;
   font-size: 16px;
   cursor: pointer;
+  width: 100%;
 }
 
 .box:hover {
@@ -42,4 +43,8 @@
   height: 33px;
   width: 72px;
   margin-right: -34px;
+}
+
+.heading {
+  margin-bottom: 0.75em;
 }
