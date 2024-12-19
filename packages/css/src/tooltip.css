@@ -31,8 +31,8 @@
     height: var(--dsc-tooltip-arrow-size);
     width: var(--dsc-tooltip-arrow-size);
     position: absolute;
-    left: var(--ds-tooltip-arrow-x);
-    top: var(--ds-tooltip-arrow-y);
+    left: var(--dsc-tooltip-arrow-x);
+    top: var(--dsc-tooltip-arrow-y);
     translate: -50% -50%;
     rotate: 45deg;
   }

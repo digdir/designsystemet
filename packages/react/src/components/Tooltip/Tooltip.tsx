@@ -237,8 +237,8 @@ const arrowPseudoElement = {
         break;
     }
 
-    elements.floating.style.setProperty('--ds-tooltip-arrow-x', arrowX);
-    elements.floating.style.setProperty('--ds-tooltip-arrow-y', arrowY);
+    elements.floating.style.setProperty('--dsc-tooltip-arrow-x', arrowX);
+    elements.floating.style.setProperty('--dsc-tooltip-arrow-y', arrowY);
     return data;
   },
 };
