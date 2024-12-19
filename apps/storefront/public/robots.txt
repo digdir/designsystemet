@@ -14,4 +14,4 @@
 # http://www.robotstxt.org/robotstxt.html
 
 User-agent: *
-# CSS, JS, Images
+Allow: /
