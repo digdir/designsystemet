@@ -7,6 +7,7 @@ import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { colorCliOptions, createTokens } from '../src/tokens/create.js';
+import type { Theme } from '../src/tokens/types.js';
 import { writeTokens } from '../src/tokens/write.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
@@ -38,6 +39,7 @@ function makeTokenCommands() {
 
       return buildTokens({ tokens, outDir, preview, verbose, dry });
     });
+
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
@@ -47,14 +49,16 @@ function makeTokenCommands() {
     .option('-o, --out-dir <string>', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
     .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
     .option('-f, --font-family <string>', `Font family`, 'Inter')
+    .option('-b, --border-radius <number>', `Unitless base border-radius in px`, '4')
     .option('--theme <string>', `Theme name`, 'theme')
     .action(async (opts) => {
       const { theme, fontFamily, outDir } = opts;
       const dry = Boolean(opts.dry);
+      const borderRadius = Number(opts.borderRadius);
       console.log(`Creating tokens with options ${chalk.green(JSON.stringify(opts, null, 2))}`);
 
-      const props = {
-        themeName: theme,
+      const themeOptions: Theme = {
+        name: theme,
         colors: {
           main: opts.mainColors,
           support: opts.supportColors,
@@ -63,15 +67,16 @@ function makeTokenCommands() {
         typography: {
           fontFamily: fontFamily,
         },
+        borderRadius,
       };
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      const tokens = createTokens(props);
+      const tokens = createTokens(themeOptions);
 
-      await writeTokens({ outDir, tokens, themeName: theme, colors: props.colors, dry });
+      await writeTokens({ outDir, tokens, theme: themeOptions, dry });
 
       return Promise.resolve();
     });

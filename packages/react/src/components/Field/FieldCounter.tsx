@@ -1,8 +1,10 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { Paragraph } from '../Paragraph';
 import {
   ValidationMessage,
   type ValidationMessageProps,
 } from '../ValidationMessage';
+import { isInputLike } from './fieldObserver';
 
 export type FieldCounterProps = {
   /** Label template for when `maxCount` is exceeded
@@ -31,19 +33,17 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
     const remainder = limit - count;
 
     useEffect(() => {
-      const onInput = ({ target }: Event) => {
-        if (
-          target instanceof HTMLInputElement ||
-          target instanceof HTMLTextAreaElement
-        ) {
-          setCount(target.value.length);
-        }
+      const field = counterRef.current?.closest('.ds-field');
+      const input = Array.from(field?.getElementsByTagName('*') || []).find(
+        isInputLike,
+      );
+      const onInput = ({ target }: { target: Event['target'] }) => {
+        if (isInputLike(target)) setCount(target.value.length);
       };
 
-      const field = counterRef.current?.closest('.ds-field');
+      if (input) onInput({ target: input }); // Initial setup
 
       field?.addEventListener('input', onInput);
-
       return () => field?.removeEventListener('input', onInput);
     }, [setCount]);
 
@@ -57,13 +57,15 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
         >
           {hasExceededLimit && label(over, remainder)}
         </div>
-        <ValidationMessage
-          data-color={hasExceededLimit ? 'danger' : 'neutral'}
-          ref={ref}
-          {...rest}
-        >
-          {label(hasExceededLimit ? over : under, remainder)}
-        </ValidationMessage>
+        {hasExceededLimit ? (
+          <ValidationMessage ref={ref} {...rest}>
+            {label(over, remainder)}
+          </ValidationMessage>
+        ) : (
+          <Paragraph ref={ref} {...rest} data-field='validation'>
+            {label(under, remainder)}
+          </Paragraph>
+        )}
       </>
     );
   },

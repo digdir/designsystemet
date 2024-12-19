@@ -12,7 +12,7 @@ export const colorCliOptions = {
 export type CreateTokensOptions = {
   colors: Colors;
   typography: Typography;
-  themeName: string;
+  name: string;
 };
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
@@ -94,7 +94,7 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
 };
 
 export const createTokens = (opts: CreateTokensOptions) => {
-  const { colors, typography, themeName: name } = opts;
+  const { colors, typography, name } = opts;
 
   const tokens: Tokens = {
     colors: {
