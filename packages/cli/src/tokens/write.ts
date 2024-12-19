@@ -13,7 +13,7 @@ import semanticColorTemplate from './design-tokens/template/semantic/semantic-co
 };
 import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
 import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
-import type { Collection, Colors, File, Tokens, TokensSet, TypographyModes } from './types.js';
+import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
 import { cp, mkdir, writeFile } from './utils.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
@@ -50,13 +50,17 @@ const generateTypographyFile = (
 type WriteTokensOptions = {
   outDir: string;
   tokens: Tokens;
-  themeName: string;
-  colors: Colors;
+  theme: Theme;
   dry?: boolean;
 };
 
 export const writeTokens = async (options: WriteTokensOptions) => {
-  const { outDir, tokens, themeName, colors, dry } = options;
+  const {
+    outDir,
+    tokens,
+    theme: { name: themeName, colors, borderRadius },
+    dry,
+  } = options;
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
@@ -187,8 +191,9 @@ export const writeTokens = async (options: WriteTokensOptions) => {
       themeFile,
       (key, value) => {
         if (key === '$value') {
-          return (value as string).replace('<theme>', themeName);
+          return (value as string).replace('<theme>', themeName).replace('<base-border-radius>', String(borderRadius));
         }
+
         return value;
       },
       2,

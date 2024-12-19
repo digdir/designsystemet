@@ -9,12 +9,14 @@ interface ClipboardButtonProps {
   title?: string;
   value: string;
   text?: string;
+  ariaLabel?: string;
 }
 
 export const ClipboardButton = ({
   title = 'Kopier',
   value,
   text,
+  ariaLabel,
 }: ClipboardButtonProps) => {
   const [toolTipText, setToolTipText] = useState('Kopier');
 
@@ -29,13 +31,15 @@ export const ClipboardButton = ({
     <>
       <Tooltip content={toolTipText}>
         <Button
-          onMouseEnter={() => setToolTipText(title)}
+          onMouseEnter={() =>
+            setToolTipText(title === 'Kopier' && ariaLabel ? ariaLabel : title)
+          }
           onClick={() => onBtnClick(value)}
-          title={title}
           icon={!text}
           variant='tertiary'
           data-color='neutral'
           data-size='sm'
+          aria-label={ariaLabel}
         >
           <ClipboardIcon fontSize={'1.4rem'} />
           {text && <span className={classes.text}>{text}</span>}

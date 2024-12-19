@@ -1,38 +1,39 @@
+import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
-import { useThemeStore } from '../../store';
+import { type BaseBorderRadius, useThemeStore } from '../../store';
 import classes from './BorderRadiusInput.module.css';
 
 export const BorderRadiusInput = () => {
-  const [active, setActive] = useState(0);
-  const setBorderRadius = useThemeStore((state) => state.setBorderRadius);
-  const borderRadius = useThemeStore((state) => state.borderRadius);
-  const items = [
-    { name: 'Ingen', type: 'none', value: '0px' },
-    { name: 'Small', type: 'small', value: '6px' },
-    { name: 'Medium', type: 'medium', value: '10px' },
-    { name: 'Large', type: 'large', value: '13px' },
-    { name: 'Full', type: 'full', value: '9999px' },
+  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const items: { name: string; value: BaseBorderRadius }[] = [
+    { name: 'Ingen', value: 0 },
+    { name: 'Small', value: 4 },
+    { name: 'Medium', value: 8 },
+    { name: 'Large', value: 12 },
+    { name: 'Full', value: 9999 },
   ];
 
   return (
     <div>
+      <Heading className={classes.heading} data-size='xs'>
+        Foreslått basis Border radius
+      </Heading>
       <div className={classes.items}>
         {items.map((item, index) => (
           <div
             className={cl(
               classes.item,
-              borderRadius === item.type && classes.active,
+              baseBorderRadius === item.value && classes.active,
             )}
             key={index}
-            onClick={() => setActive(index)}
           >
-            <div
+            <Button
+              variant='tertiary'
+              data-color='neutral'
               className={cl(classes.box)}
               onClick={() => {
-                setBorderRadius(
-                  item.type as 'none' | 'small' | 'medium' | 'large' | 'full',
-                );
+                setBorderRadius(item.value);
               }}
             >
               <div className={classes.text}>{item.name}</div>
@@ -40,10 +41,25 @@ export const BorderRadiusInput = () => {
                 className={classes.inner}
                 style={{ borderRadius: item.value }}
               ></div>
-            </div>
+            </Button>
           </div>
         ))}
       </div>
+      <Heading className={classes.heading} data-size='xs'>
+        Manuell basis Border radius
+      </Heading>
+      <Textfield
+        label='Definer basisverdien for border-radius'
+        value={baseBorderRadius}
+        onChange={(e) => {
+          const updatedValue = parseInt(e.target.value);
+          if (updatedValue >= 0) {
+            setBorderRadius(updatedValue);
+          } else {
+            setBorderRadius(0);
+          }
+        }}
+      ></Textfield>
     </div>
   );
 };
