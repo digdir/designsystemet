@@ -52,15 +52,15 @@ Bruk `inline={true}` (stiplet understrek) på `Popover.Trigger` for å indikere 
 
 ### Kontrollert
 
-Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
-Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker på det.
+Dersom du sender inn `open`, så bruker du `popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `popover` vil lukkes.
+Dette er nyttig dersom du har innhold som skal lukke `popover` når du klikker på det.
 
 <Canvas of={PopoverStories.Controlled} />
 
 ### Auto Plassering
 
-Standard oppførsel er at `Popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
-`Popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+Standard oppførsel er at `popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
+`popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
 
 <br />
 ## Retningslinjer for når du skal bruke popover
@@ -92,12 +92,12 @@ Unngå lange tekster og kompliserte forklaringer. I noen tilfeller er det kanskj
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
-Elementet som åpner popoveren bør bruke `aria-expanded="true/false"` for å indikere om popoveren er åpen eller lukket. Det er innebygd tilgjengelighet i Popover APIet i henhold til åpne/lukket tilstand og tastaturnavigasjon.
+Elementet som åpner `popover` bør bruke `aria-expanded="true/false"` for å indikere om `popover` er åpen eller lukket. Det er innebygd tilgjengelighet i Popover APIet i henhold til åpne/lukket tilstand og tastaturnavigasjon.
 
 <br />
 
 ## React og `popovertarget`
-Når du bruker `Popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `Popover`.
+Når du bruker `popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `popover`.
 Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
 Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
 
