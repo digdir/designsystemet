@@ -187,7 +187,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        <ChildContainer ref={triggerRef} popovertarget={id ?? randomTooltipId}>
+        <ChildContainer
+          ref={triggerRef}
+          popovertarget={id ?? randomTooltipId}
+          // We set this to not close on click, since it should always show on hover
+          // @ts-ignore @types/react-dom does not understand popovertargetaction yet
+          popovertargetaction='show'
+        >
           {children}
         </ChildContainer>
         <div
