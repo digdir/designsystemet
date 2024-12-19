@@ -11,6 +11,7 @@
 
   color: var(--dsc-link-color);
   outline: none;
+  text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
   text-underline-offset: 0.27em; /* 5px ish */
