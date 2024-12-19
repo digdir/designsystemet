@@ -95,38 +95,34 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       const trigger = triggerRef.current;
       const tooltip = tooltipRef.current;
 
-      const handleMouseover = () => {
+      const setOpen = () => {
         setInternalOpen(true);
+      };
+
+      const setClose = () => {
+        setInternalOpen(false);
       };
 
       const handleMouseout = (event: MouseEvent) => {
-        /* if we move mosue to tooltip, don't close */
+        /* if we move mouse to tooltip, don't close */
         const el = event.relatedTarget as Element | null;
         if (el === tooltip) return;
 
-        setInternalOpen(false);
-      };
-
-      const handleFocusIn = () => {
-        setInternalOpen(true);
-      };
-
-      const handleFocusOut = () => {
-        setInternalOpen(false);
+        setClose();
       };
 
       tooltip?.togglePopover?.(controlledOpen);
-      trigger.addEventListener('mouseover', handleMouseover);
+      trigger.addEventListener('mouseover', setOpen);
       /* We use document so user can move to tooltip contents */
       document.addEventListener('mouseout', handleMouseout);
-      trigger.addEventListener('focus', handleFocusIn);
-      trigger.addEventListener('focusout', handleFocusOut);
+      trigger.addEventListener('focusin', setOpen);
+      trigger.addEventListener('focusout', setClose);
 
       return () => {
-        trigger.removeEventListener('mouseover', handleMouseover);
+        trigger.removeEventListener('mouseover', setOpen);
         document.removeEventListener('mouseout', handleMouseout);
-        trigger.removeEventListener('focus', handleFocusIn);
-        trigger.removeEventListener('focusout', handleFocusOut);
+        trigger.removeEventListener('focusin', setOpen);
+        trigger.removeEventListener('focusout', setClose);
       };
     }, [controlledOpen]);
 
