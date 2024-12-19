@@ -1,16 +1,48 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader, getReferences, usesReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
 
-import {
-  getValue,
-  isColorCategoryToken,
-  isGlobalColorToken,
-  isSemanticToken,
-  pathStartsWithOneOf,
-} from '../../utils.js';
+import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../utils.js';
 import { type IsCalculatedToken, colorCategories } from '../types.js';
+
+/**
+ * In the given tokens array, inline and remove tokens that match the predicate
+ *
+ * Example: In pseudo-code, given the predicate `(token) => token.path === ['size', '1']` and the following tokens
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', '1'], original: { $value: '{size.base} * 2' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.1}, 12px)' } }
+ *  ]
+ * ```
+ * would return
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.base} * 2, 12px)' } }
+ *  ]
+ * ```
+ *
+ * @param shouldInline - predicate to determine if token should be inlined
+ * @param tokens - array of tokens to transform
+ * @returns copy of `tokens` without those that matched the predicate,
+ *          where references to the matching tokens have been inlined
+ */
+function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
+  return otherTokens.map((token: TransformedToken) => {
+    // Inline the tokens that satisfy shouldInline().
+    let transformed = getValue<string>(token.original);
+    for (const ref of inlineableTokens) {
+      const refName = ref.path.join('.');
+      transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+    }
+    const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
+    return tokenWithInlinedRefs;
+  });
+}
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
 @media (prefers-color-scheme: ${colorScheme}) {
@@ -119,31 +151,9 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const [borderRadiusTokens, restTokens] = R.partition(pathStartsWithOneOf(['border-radius']), dictionary.allTokens);
-
-    const formattedBarrelTokens = R.reduce(
-      (acc, token: TransformedToken) => {
-        let formatted = format(token); // get formatted value with references resolved
-
-        if (usesReferences(getValue<string>(token.original))) {
-          const refs = getReferences(token.original.$value, dictionary.tokens);
-          const match = formatted.match(/var\(--([^)]+)\)/);
-
-          const barrelToken = refs.find((ref) => ref.name === match?.[1]);
-
-          if (barrelToken) {
-            const [barrelName, barrelValue] = format(barrelToken).split(':');
-            const updatedAcc = acc.filter((accToken) => !accToken.includes(barrelName)); // remove barrel token from acc
-            formatted = `${formatted.split(':')[0]}:${barrelValue}`;
-            return [...updatedAcc, formatted];
-          }
-        }
-
-        return [...acc, formatted];
-      },
-      [] as string[],
-      borderRadiusTokens,
-    );
+    const isDigit = (s: string) => /^\d+$/.test(s);
+    const isUnwantedBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+    const tokens = inlineTokens(isUnwantedBorderRadiusToken, dictionary.allTokens);
 
     const formattedTokens = R.map((token: TransformedToken) => {
       const originalValue = getValue<string>(token.original);
@@ -160,9 +170,9 @@ const semantic: Format = {
       }
 
       return format(token);
-    }, restTokens);
+    }, tokens);
 
-    const content = `{\n${[...formattedBarrelTokens, ...formattedTokens].join('\n')}\n}\n`;
+    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
     return header + body;
