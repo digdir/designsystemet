@@ -41,3 +41,16 @@ export type File = {
 };
 
 export type Collection = string | 'global';
+
+export type Theme = {
+  name: string;
+  colors: {
+    main: Record<string, CssColor>;
+    support: Record<string, CssColor>;
+    neutral: CssColor;
+  };
+  typography: {
+    fontFamily: string;
+  };
+  borderRadius: number;
+};

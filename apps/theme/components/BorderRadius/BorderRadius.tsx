@@ -6,64 +6,111 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
-
-import cl from 'clsx/lite';
-import { useEffect } from 'react';
+import { ClipboardButton } from '@repo/components';
+import { useEffect, useRef, useState } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './BorderRadius.module.css';
 import { SettingsCard } from './SettingsCard/SettingsCard';
 
-export const BorderRadius = () => {
-  const borderRadius = useThemeStore((state) => state.borderRadius);
+// TODO get this token data from @digdir/designsystemet (use json from --preview or something)
+const borderRadiuses = {
+  sm: {
+    name: 'sm',
+    value:
+      'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
+    variable: '--ds-border-radius-sm',
+  },
+  md: {
+    name: 'md',
+    value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
+    variable: '--ds-border-radius-md',
+  },
+  lg: {
+    name: 'lg',
+    value:
+      'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
+    variable: '--ds-border-radius-lg',
+  },
+  xl: {
+    name: 'xl',
+    value:
+      'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
+    variable: '--ds-border-radius-xl',
+  },
+  default: {
+    name: 'default',
+    value: 'var(--ds-border-radius-base)',
+    variable: '--ds-border-radius-default',
+  },
+  full: {
+    name: 'full',
+    value: '624.9375rem',
+    variable: '--ds-border-radius-full',
+  },
+};
 
-  const setToken = (token: string, color: string) => {
-    const previewElement = document.getElementById('test');
-    if (previewElement) {
-      previewElement.style.setProperty(token, color);
-    }
-  };
+const setProperty = (token: string, value: string) => {
+  const previewElement = document.getElementById('test');
+  if (previewElement) {
+    previewElement.style.setProperty(token, value);
+  }
+};
+
+const VariablePreview = (props: {
+  variable: string;
+  name: string;
+}) => {
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [radius, setRadius] = useState('');
 
   useEffect(() => {
-    setToken('--ds-border-radius-md', borderRadiusMap[borderRadius][1]);
-  }, [borderRadius]);
-
-  const borderRadiusMap = {
-    none: ['0px', '0px', '0px', '0px', '0px', '999px'],
-    small: ['2px', '4px', '8px', '12px', '4px', '999px'],
-    medium: ['2px', '8px', '12px', '16px', '8px', '999px'],
-    large: ['2px', '8px', '16px', '20px', '12px', '999px'],
-    full: ['2px', '8px', '16px', '24px', '999px', '999px'],
-  };
-
-  const items = [
-    {
-      name: 'sm',
-      value: '2px',
-    },
-    {
-      name: 'md',
-      value: '4px',
-    },
-    {
-      name: 'lg',
-      value: '8px',
-    },
-    {
-      name: 'xl',
-      value: '16px',
-    },
-    {
-      name: 'default',
-      value: '4px',
-    },
-    {
-      name: 'full',
-      value: '999px',
-    },
-  ];
+    // We need to wait for the new base border radius to be set via `setProperty` before we can read it
+    setTimeout(() => {
+      if (ref.current) {
+        setRadius(window.getComputedStyle(ref?.current).borderRadius);
+      }
+    }, 10);
+  }, [baseBorderRadius]);
 
   return (
-    <div className='panelContainer'>
+    <div className={classes.item}>
+      <ClipboardButton
+        ariaLabel={`Kopier CSS variabel for ${props.name} border-radius`}
+        text={props.name}
+        value={props.variable}
+      />
+      <Tag
+        ref={ref}
+        data-size='sm'
+        data-color='accent'
+        className={classes.itemValue}
+        style={{ borderRadius: `var(${props.variable})` }}
+      >
+        {radius}
+      </Tag>
+    </div>
+  );
+};
+
+export const BorderRadius = () => {
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+
+  useEffect(() => {
+    // we need to set these properties on the preview element because they are immutable on :root
+    for (const key in borderRadiuses) {
+      const borderRadius = borderRadiuses[key as keyof typeof borderRadiuses];
+      setProperty(borderRadius.variable, borderRadius.value);
+    }
+  }, []);
+
+  useEffect(() => {
+    setProperty('--ds-border-radius-base', `${baseBorderRadius / 16}rem`);
+  }, [baseBorderRadius]);
+
+  return (
+    <div className='panelContainer' id='test'>
       <div className='panelLeft'>
         <Paragraph data-size='sm'>
           Border radius er delt inn i 6 forskjellige tokens som endrer på seg
@@ -82,26 +129,18 @@ export const BorderRadius = () => {
         <div className={classes.itemsContainer}>
           <Heading data-size='2xs'>Tokens</Heading>
           <div className={classes.items}>
-            {items.map((item, index) => (
-              <div key={index} className={classes.item}>
-                <div className={classes.itemName}>{item.name}:</div>
-                <div className={classes.itemValue}>
-                  {borderRadiusMap[borderRadius][index]}
-                </div>
-              </div>
-            ))}
+            <VariablePreview {...borderRadiuses.default} />
+            <VariablePreview {...borderRadiuses.sm} />
+            <VariablePreview {...borderRadiuses.md} />
+            <VariablePreview {...borderRadiuses.lg} />
+            <VariablePreview {...borderRadiuses.xl} />
+            <VariablePreview {...borderRadiuses.full} />
           </div>
         </div>
       </div>
-      <div className={cl('panelRight', classes.outer)} id='test'>
-        <div
-          className={classes.inner}
-          style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-        >
-          <div
-            className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-          >
+      <div className={'panelRight'}>
+        <div className={classes.inner}>
+          <div className={classes.card}>
             <Heading data-size='2xs'>Logg inn i portalen</Heading>
             <Textfield
               placeholder='Ola Normann'
@@ -114,44 +153,17 @@ export const BorderRadius = () => {
               Glemt passord?
             </Link>
 
-            <Button
-              style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
-              data-size='sm'
-              className={classes.btn}
-            >
+            <Button data-size='sm' className={classes.btn}>
               Logg inn
             </Button>
           </div>
-          <div
-            className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-          >
-            <img
-              className={classes.img}
-              src='img/city.png'
-              alt=''
-              style={{ borderRadius: borderRadiusMap[borderRadius][1] }}
-            />
+          <div className={classes.card}>
+            <img className={classes.img} src='img/city.png' alt='' />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
-                <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
-                  color='brand1'
-                >
-                  Sport
-                </Tag>
-                <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
-                  color='brand2'
-                >
-                  Nyheter
-                </Tag>
-                <Tag
-                  style={{ borderRadius: borderRadiusMap[borderRadius][0] }}
-                  color='brand3'
-                >
-                  Innenriks
-                </Tag>
+                <Tag color='brand1'>Sport</Tag>
+                <Tag color='brand2'>Nyheter</Tag>
+                <Tag color='brand3'>Innenriks</Tag>
               </div>
               <Heading data-size='2xs' className={classes.imgTitle}>
                 Reiste alene til storbyen
@@ -161,17 +173,10 @@ export const BorderRadius = () => {
               </Paragraph>
             </div>
           </div>
-          <div
-            className={classes.card}
-            data-size='sm'
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-          >
+          <div className={classes.card} data-size='sm'>
             <SettingsCard />
           </div>
-          <div
-            className={classes.card}
-            style={{ borderRadius: borderRadiusMap[borderRadius][2] }}
-          >
+          <div className={classes.card}>
             <Heading data-size='2xs'>Folk du kanskje kjenner</Heading>
             <div className={classes.users}>
               <div className={classes.user}>
@@ -179,7 +184,6 @@ export const BorderRadius = () => {
                   src='img/avatars/male2.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Designer</div>
@@ -189,7 +193,6 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>
@@ -199,7 +202,6 @@ export const BorderRadius = () => {
                   src='img/avatars/female2.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Frontend</div>
@@ -209,7 +211,6 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>
@@ -219,7 +220,6 @@ export const BorderRadius = () => {
                   src='img/avatars/male3.png'
                   alt=''
                   className={classes.userImg}
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 />
                 <div className={classes.userText}>
                   <div className={classes.userRole}>Backend</div>
@@ -229,7 +229,6 @@ export const BorderRadius = () => {
                   className={classes.userBtn}
                   data-size='sm'
                   variant='secondary'
-                  style={{ borderRadius: borderRadiusMap[borderRadius][4] }}
                 >
                   Følg
                 </Button>

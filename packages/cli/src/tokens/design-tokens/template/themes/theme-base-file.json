@@ -43,7 +43,7 @@
     },
     "base": {
       "$type": "borderRadius",
-      "$value": "4"
+      "$value": "<base-border-radius>"
     },
     "scale": {
       "$type": "borderRadius",
