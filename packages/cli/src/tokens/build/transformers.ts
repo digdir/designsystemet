@@ -2,7 +2,7 @@ import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
-import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { getValue, pathStartsWithOneOf } from '../utils.js';
 import { noCase } from './utils/noCase.js';
 
 const isPx = R.test(/\b\d+px\b/g);
@@ -12,10 +12,10 @@ export const sizeRem: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    const hasWantedType = typeEquals(['dimension', 'fontsize'], token);
-    const hasWantedPath = pathStartsWithOneOf(['spacing', 'sizing', 'border-radius', 'font-size', '_font-size'], token);
+    // const hasWantedType = typeEquals(['dimension'], token);
+    const hasWantedPath = pathStartsWithOneOf(['border-radius'], token);
 
-    return hasWantedType && hasWantedPath;
+    return hasWantedPath;
   },
   transform: (token, config) => {
     const value = getValue<string>(token);
@@ -69,20 +69,10 @@ export const resolveMath: Transform = {
   transform: (token, platformCfg) => checkAndEvaluateMath(token, platformCfg.mathFractionDigits),
 };
 
-export const floorToRound: Transform = {
-  name: 'ds/floorToRound',
+export const unitless: Transform = {
+  name: 'ds/unitless',
   type: 'value',
   transitive: true,
-  filter: (token) => {
-    const value = getValue<string>(token);
-    const isValidValue = ['string', 'object'].includes(typeof value);
-    const isTokenOfInterest = pathStartsWithOneOf(['size'], token) && R.test(/^floor/, value);
-
-    return isValidValue && isTokenOfInterest;
-  },
-  transform: (token, platformCfg) => {
-    const value = getValue<string>(token);
-
-    return value.replace(/floor\(([^)]+)\)/, 'round(down, calc($1), 0.0625rem)');
-  },
+  filter: (token) => pathStartsWithOneOf(['size'], token),
+  transform: (token) => parseInt(getValue<string>(token)),
 };

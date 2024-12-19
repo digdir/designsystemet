@@ -8,11 +8,10 @@ import { DEFAULT_COLOR, buildOptions } from '../build.js';
 import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { floorToRound, nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
+import { nameKebab, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
-  IsCalculatedToken,
   SDConfigForThemePermutation,
   ThemeDimension,
   ThemePermutation,
@@ -33,7 +32,7 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
-StyleDictionary.registerTransform(floorToRound);
+StyleDictionary.registerTransform(unitless);
 
 StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
@@ -45,7 +44,7 @@ const dsTransformers = [
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
-  floorToRound.name,
+  unitless.name,
   'ts/typography/fontWeight',
   typographyName.name,
   'ts/color/modifiers',
@@ -179,16 +178,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
-  /**
-   * This is a workaround for our formatters to support transative transformers while retaining outputReference.
-   *
-   * This function will wrap formatted token in `calc()`
-   *
-   * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
-   */
-  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing', 'size', 'utility'], token);
-
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -198,7 +187,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         outPath,
         theme,
         basePxFontSize,
-        isCalculatedToken,
         selector,
         layer,
         //
@@ -214,15 +202,15 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
               const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
               const unwantedTokens = !(unwantedPaths || unwantedTypes);
 
-              return (!token.isSource || isCalculatedToken(token)) && unwantedTokens;
+              return !token.isSource && unwantedTokens;
             },
           },
         ],
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius', 'size', 'utility'], token);
-            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius', 'size', 'spacing', 'sizing'], token);
+            return include && outputReferencesFilter(token, options);
           },
         },
       },
@@ -300,11 +288,6 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
             destination: `typography/${typography}.css`,
             format: formats.typography.name,
             filter: (token) => {
-              if (R.find((path) => R.startsWith('_', path), token.path)) {
-                console.warn(`Skipping private token: ${token.name}`);
-                return false;
-              }
-
               const included = typeEquals(
                 ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font'],
                 token,

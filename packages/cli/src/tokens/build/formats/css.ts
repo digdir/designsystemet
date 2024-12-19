@@ -1,10 +1,16 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
-import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../utils.js';
-import { type IsCalculatedToken, colorCategories } from '../types.js';
+import {
+  getValue,
+  isColorCategoryToken,
+  isGlobalColorToken,
+  isSemanticToken,
+  pathStartsWithOneOf,
+} from '../../utils.js';
+import { colorCategories } from '../types.js';
 
 /**
  * In the given tokens array, inline and remove tokens that match the predicate
@@ -137,17 +143,42 @@ const colorCategory: Format = {
 const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
 
 const isDigit = (s: string) => /^\d+$/.test(s);
-const isUnwantedBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-const isUnwantedSizeToken = (t: TransformedToken) =>
+const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+const isNumericOrPrivateSizeToken = (t: TransformedToken) =>
   t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
 
-const isUwantedTokens = R.anyPass([isUnwantedBorderRadiusToken, isUnwantedSizeToken]);
+const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken, isNumericOrPrivateSizeToken]);
+
+const sizingFormat = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
+  const { round, normal } = R.reduce(
+    (acc, token) => {
+      const [name, value] = format(token).split(':');
+
+      const calc = value
+        .replace(` * var(--ds-size-mode-font-size)`, '')
+        .replace(/\*(\d+)\)/g, '*$1em)')
+        .replace(/floor\((.*)\);/, 'calc($1)');
+
+      const round = `round(down, ${calc}, 0.0625rem)`;
+
+      return { round: [...acc.round, `${name}: ${round};`], normal: [...acc.normal, `${name}: ${calc};`] };
+    },
+    { round: [], normal: [] } as { round: string[]; normal: string[] },
+    tokens,
+  );
+
+  return `
+${normal.join('\n')}\n
+  @supports (width: round(down, .1em, 1px)) {
+${round.join('\n')}
+  }`;
+};
 
 const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, isCalculatedToken, layer } = platform;
+    const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
 
@@ -160,22 +191,9 @@ const semantic: Format = {
 
     const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
 
-    const formattedTokens = R.map((token: TransformedToken) => {
-      const originalValue = getValue<string>(token.original);
+    const [sizing, rest] = R.partition((token) => pathStartsWithOneOf(['spacing', 'sizing'], token), tokens);
 
-      if (
-        usesReferences(originalValue) &&
-        typeof outputReferences === 'function' &&
-        outputReferences?.(token, { dictionary })
-      ) {
-        if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
-          return calculatedVariable(format(token));
-        }
-        return format(token);
-      }
-
-      return format(token);
-    }, tokens);
+    const formattedTokens = [R.map(format, rest).join('\n'), sizingFormat(format, sizing)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
