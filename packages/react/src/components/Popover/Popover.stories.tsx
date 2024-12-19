@@ -191,9 +191,8 @@ export const DottedUnderline: StoryFn<typeof Popover> = () => {
     <>
       <Popover.TriggerContext>
         <Paragraph>
-          Vi bruker{' '}
-          <Popover.Trigger data-popover='inline'>design tokens</Popover.Trigger>{' '}
-          for å sikre at vi har en konsistent design.
+          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
+          å sikre at vi har en konsistent design.
         </Paragraph>
         <Popover data-color='neutral'>
           <Paragraph>
