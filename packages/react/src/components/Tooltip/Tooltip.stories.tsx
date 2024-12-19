@@ -16,7 +16,7 @@ export default {
 } satisfies Meta;
 
 export const Preview: StoryFn<typeof Tooltip> = (args) => (
-  <Tooltip {...args} id='my-tooltip'>
+  <Tooltip {...args}>
     <Button>My trigger</Button>
   </Tooltip>
 );
