@@ -2433,12 +2433,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*0"
+      $value: "{size.0}"
     },
     name: "--ds-spacing-0",
     attributes: {},
@@ -2449,12 +2449,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*1"
+      $value: "{size.1}"
     },
     name: "--ds-spacing-1",
     attributes: {},
@@ -2465,12 +2465,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*2"
+      $value: "{size.2}"
     },
     name: "--ds-spacing-2",
     attributes: {},
@@ -2481,12 +2481,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*3"
+      $value: "{size.3}"
     },
     name: "--ds-spacing-3",
     attributes: {},
@@ -2497,12 +2497,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*4"
+      $value: "{size.4}"
     },
     name: "--ds-spacing-4",
     attributes: {},
@@ -2513,12 +2513,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*5"
+      $value: "{size.5}"
     },
     name: "--ds-spacing-5",
     attributes: {},
@@ -2529,12 +2529,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*6"
+      $value: "{size.6}"
     },
     name: "--ds-spacing-6",
     attributes: {},
@@ -2545,12 +2545,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*7"
+      $value: "{size.7}"
     },
     name: "--ds-spacing-7",
     attributes: {},
@@ -2561,12 +2561,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*8"
+      $value: "{size.8}"
     },
     name: "--ds-spacing-8",
     attributes: {},
@@ -2577,12 +2577,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*9"
+      $value: "{size.9}"
     },
     name: "--ds-spacing-9",
     attributes: {},
@@ -2593,12 +2593,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*10"
+      $value: "{size.10}"
     },
     name: "--ds-spacing-10",
     attributes: {},
@@ -2609,12 +2609,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*11"
+      $value: "{size.11}"
     },
     name: "--ds-spacing-11",
     attributes: {},
@@ -2625,12 +2625,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*12"
+      $value: "{size.12}"
     },
     name: "--ds-spacing-12",
     attributes: {},
@@ -2641,12 +2641,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*13"
+      $value: "{size.13}"
     },
     name: "--ds-spacing-13",
     attributes: {},
@@ -2657,12 +2657,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*14"
+      $value: "{size.14}"
     },
     name: "--ds-spacing-14",
     attributes: {},
@@ -2673,12 +2673,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*15"
+      $value: "{size.15}"
     },
     name: "--ds-spacing-15",
     attributes: {},
@@ -2689,12 +2689,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "4.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*18"
+      $value: "{size.18}"
     },
     name: "--ds-spacing-18",
     attributes: {},
@@ -2705,12 +2705,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "5.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*22"
+      $value: "{size.22}"
     },
     name: "--ds-spacing-22",
     attributes: {},
@@ -2721,12 +2721,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "6.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*26"
+      $value: "{size.26}"
     },
     name: "--ds-spacing-26",
     attributes: {},
@@ -2737,12 +2737,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "7.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{spacing.scale}*30"
+      $value: "{size.30}"
     },
     name: "--ds-spacing-30",
     attributes: {},
@@ -2753,12 +2753,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*0"
+      $value: "{size.0}"
     },
     name: "--ds-sizing-0",
     attributes: {},
@@ -2769,12 +2769,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*1"
+      $value: "{size.1}"
     },
     name: "--ds-sizing-1",
     attributes: {},
@@ -2785,12 +2785,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*2"
+      $value: "{size.2}"
     },
     name: "--ds-sizing-2",
     attributes: {},
@@ -2801,12 +2801,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "0.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*3"
+      $value: "{size.3}"
     },
     name: "--ds-sizing-3",
     attributes: {},
@@ -2817,12 +2817,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*4"
+      $value: "{size.4}"
     },
     name: "--ds-sizing-4",
     attributes: {},
@@ -2833,12 +2833,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*5"
+      $value: "{size.5}"
     },
     name: "--ds-sizing-5",
     attributes: {},
@@ -2849,12 +2849,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*6"
+      $value: "{size.6}"
     },
     name: "--ds-sizing-6",
     attributes: {},
@@ -2865,12 +2865,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "1.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*7"
+      $value: "{size.7}"
     },
     name: "--ds-sizing-7",
     attributes: {},
@@ -2881,12 +2881,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*8"
+      $value: "{size.8}"
     },
     name: "--ds-sizing-8",
     attributes: {},
@@ -2897,12 +2897,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*9"
+      $value: "{size.9}"
     },
     name: "--ds-sizing-9",
     attributes: {},
@@ -2913,12 +2913,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*10"
+      $value: "{size.10}"
     },
     name: "--ds-sizing-10",
     attributes: {},
@@ -2929,12 +2929,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*11"
+      $value: "{size.11}"
     },
     name: "--ds-sizing-11",
     attributes: {},
@@ -2945,12 +2945,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*12"
+      $value: "{size.12}"
     },
     name: "--ds-sizing-12",
     attributes: {},
@@ -2961,12 +2961,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.25rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*13"
+      $value: "{size.13}"
     },
     name: "--ds-sizing-13",
     attributes: {},
@@ -2977,12 +2977,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*14"
+      $value: "{size.14}"
     },
     name: "--ds-sizing-14",
     attributes: {},
@@ -2993,12 +2993,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "3.75rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*15"
+      $value: "{size.15}"
     },
     name: "--ds-sizing-15",
     attributes: {},
@@ -3009,12 +3009,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "4.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*18"
+      $value: "{size.18}"
     },
     name: "--ds-sizing-18",
     attributes: {},
@@ -3025,12 +3025,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "5.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*22"
+      $value: "{size.22}"
     },
     name: "--ds-sizing-22",
     attributes: {},
@@ -3041,12 +3041,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "6.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*26"
+      $value: "{size.26}"
     },
     name: "--ds-sizing-26",
     attributes: {},
@@ -3057,12 +3057,12 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "7.5rem",
+    $value: "NaN",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{sizing.scale}*30"
+      $value: "{size.30}"
     },
     name: "--ds-sizing-30",
     attributes: {},
@@ -3080,7 +3080,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "3.75rem",
+      fontSize: "60px",
       letterSpacing: "-1%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3109,7 +3109,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "3rem",
+      fontSize: "48px",
       letterSpacing: "-1%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3138,7 +3138,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "2.25rem",
+      fontSize: "36px",
       letterSpacing: "-0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3167,7 +3167,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "1.875rem",
+      fontSize: "30px",
       letterSpacing: "-0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3196,7 +3196,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "1.5rem",
+      fontSize: "24px",
       letterSpacing: "0%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3225,7 +3225,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "1.3125rem",
+      fontSize: "21px",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3254,7 +3254,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "1.125rem",
+      fontSize: "18px",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3283,7 +3283,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "1.5rem",
+      fontSize: "24px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3312,7 +3312,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "1.3125rem",
+      fontSize: "21px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3341,7 +3341,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "1.125rem",
+      fontSize: "18px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3370,7 +3370,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "1rem",
+      fontSize: "16px",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3399,7 +3399,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "0.875rem",
+      fontSize: "14px",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3428,7 +3428,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "1.5rem",
+      fontSize: "24px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3458,7 +3458,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "1.3125rem",
+      fontSize: "21px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3488,7 +3488,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "1.125rem",
+      fontSize: "18px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3518,7 +3518,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "1rem",
+      fontSize: "16px",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3548,7 +3548,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "0.875rem",
+      fontSize: "14px",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3578,7 +3578,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "1.5rem",
+      fontSize: "24px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3608,7 +3608,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "1.3125rem",
+      fontSize: "21px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3638,7 +3638,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "1.125rem",
+      fontSize: "18px",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3668,7 +3668,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "1rem",
+      fontSize: "16px",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3698,7 +3698,7 @@ export const  typography = [
       fontFamily: "Inter",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "0.875rem",
+      fontSize: "14px",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
