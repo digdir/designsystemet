@@ -40,11 +40,6 @@ export type TooltipProps = MergeRight<
      */
     placement?: 'top' | 'right' | 'bottom' | 'left';
     /**
-     * Delay in milliseconds before opening.
-     * @default 150
-     */
-    delay?: number;
-    /**
      * Whether the tooltip is open or not.
      * This overrides the internal state of the tooltip.
      */
@@ -66,16 +61,7 @@ export type TooltipProps = MergeRight<
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   function Tooltip(
-    {
-      id,
-      children,
-      content,
-      placement = 'top',
-      delay = 150,
-      open,
-      className,
-      ...rest
-    },
+    { id, children, content, placement = 'top', open, className, ...rest },
     ref,
   ) {
     const randomTooltipId = useId();
