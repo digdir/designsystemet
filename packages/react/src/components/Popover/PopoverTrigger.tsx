@@ -12,5 +12,12 @@ export const PopoverTrigger = forwardRef<
   const { popoverId } = useContext(Context);
   const Component = asChild ? Slot : Button;
 
-  return <Component ref={ref} popovertarget={popoverId} {...rest} />;
+  return (
+    <Component
+      className='ds-popover--trigger'
+      ref={ref}
+      popovertarget={popoverId}
+      {...rest}
+    />
+  );
 });
