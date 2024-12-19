@@ -1,6 +1,6 @@
 {
-  "_size": {
-    "mode-font-size": {
+  "size": {
+    "_mode-font-size": {
       "$type": "dimension",
       "$value": "16"
     },
