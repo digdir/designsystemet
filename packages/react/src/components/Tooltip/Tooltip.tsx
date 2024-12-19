@@ -107,10 +107,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         setInternalOpen(false);
       };
 
-      const handleClick = (event: MouseEvent) => {
-        event.preventDefault(); // Prevent native Popover API
-      };
-
       const handleFocusIn = () => {
         setInternalOpen(true);
       };
@@ -123,14 +119,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       trigger.addEventListener('mouseover', handleMouseover);
       /* We use document so user can move to tooltip contents */
       document.addEventListener('mouseout', handleMouseout);
-      trigger.addEventListener('click', handleClick, true);
       trigger.addEventListener('focus', handleFocusIn);
       trigger.addEventListener('focusout', handleFocusOut);
 
       return () => {
         trigger.removeEventListener('mouseover', handleMouseover);
         document.removeEventListener('mouseout', handleMouseout);
-        trigger.removeEventListener('click', handleClick, true);
         trigger.removeEventListener('focus', handleFocusIn);
         trigger.removeEventListener('focusout', handleFocusOut);
       };
@@ -168,6 +162,21 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         });
       }
     }, [controlledOpen, placement]);
+
+    /* Add listener for ESC to dismiss */
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          setInternalOpen(false);
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }, []);
 
     /* If children is only a string, make a span */
     const ChildContainer = typeof children === 'string' ? 'span' : Slot;
