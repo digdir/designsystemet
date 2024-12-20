@@ -24,7 +24,6 @@
   transition-duration: var(--dsc-tooltip-transition-duration);
   transition-timing-function: ease-in-out;
   opacity: 0;
-  display: block;
   visibility: hidden;
 
   &:popover-open {
