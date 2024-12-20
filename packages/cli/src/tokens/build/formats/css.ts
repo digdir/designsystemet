@@ -140,17 +140,21 @@ const colorCategory: Format = {
   },
 };
 
-const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
-
 const isDigit = (s: string) => /^\d+$/.test(s);
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericOrPrivateSizeToken = (t: TransformedToken) =>
   t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
-
 const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken, isNumericOrPrivateSizeToken]);
 
-const sizingFormat = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
-  const { round, normal } = R.reduce(
+/**
+ * Formats sizing tokens into CSS properties with support for rounding.
+ *
+ * @param format - Function to format a token into a CSS property string.
+ * @param tokens - Array of transformed tokens to format.
+ * @returns Formatted CSS string with default calc and [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
+ */
+const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
+  const { round, calc } = R.reduce(
     (acc, token) => {
       const [name, value] = format(token).split(':');
 
@@ -161,14 +165,17 @@ const sizingFormat = (format: (t: TransformedToken) => string, tokens: Transform
 
       const round = `round(down, ${calc}, 0.0625rem)`;
 
-      return { round: [...acc.round, `${name}: ${round};`], normal: [...acc.normal, `${name}: ${calc};`] };
+      return {
+        round: [...acc.round, `${name}: ${round};`],
+        calc: [...acc.calc, `${name}: ${calc};`],
+      };
     },
-    { round: [], normal: [] } as { round: string[]; normal: string[] },
+    { round: [], calc: [] } as { round: string[]; calc: string[] },
     tokens,
   );
 
   return `
-${normal.join('\n')}\n
+${calc.join('\n')}\n
   @supports (width: round(down, .1em, 1px)) {
 ${round.join('\n')}
   }`;
@@ -193,7 +200,7 @@ const semantic: Format = {
 
     const [sizing, rest] = R.partition((token) => pathStartsWithOneOf(['spacing', 'sizing'], token), tokens);
 
-    const formattedTokens = [R.map(format, rest).join('\n'), sizingFormat(format, sizing)];
+    const formattedTokens = [R.map(format, rest).join('\n'), formatSizingTokens(format, sizing)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
