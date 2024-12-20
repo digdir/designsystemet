@@ -32,16 +32,16 @@ export function generateThemesJson(colorSchemes: ColorSchemes, themes: string[],
 function generateSizeGroup(): ThemeObject_[] {
   return [
     {
-      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
-      name: 'small',
+      id: '8b2c8cc86611a34b135cb22948666779361fd729',
+      name: 'medium',
       $figmaStyleReferences: {},
       selectedTokenSets: {
-        'primitives/modes/size/small': TokenSetStatus.SOURCE,
+        'primitives/modes/size/medium': TokenSetStatus.SOURCE,
         'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
+        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
       },
       $figmaCollectionId: 'VariableCollectionId:42212:29109',
-      $figmaModeId: '42212:0',
+      $figmaModeId: '42212:1',
       $figmaVariableReferences: {
         'font-size.1': '0918a6e18af0d0626e986d0d974c3710c9543307',
         'font-size.2': 'd83453adb39699bc5dac07323a8521c42298658c',
@@ -81,16 +81,16 @@ function generateSizeGroup(): ThemeObject_[] {
       group: 'Size',
     },
     {
-      id: '8b2c8cc86611a34b135cb22948666779361fd729',
-      name: 'medium',
+      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
+      name: 'small',
       $figmaStyleReferences: {},
       selectedTokenSets: {
-        'primitives/modes/size/medium': TokenSetStatus.SOURCE,
+        'primitives/modes/size/small': TokenSetStatus.SOURCE,
         'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
+        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
       },
       $figmaCollectionId: 'VariableCollectionId:42212:29109',
-      $figmaModeId: '42212:1',
+      $figmaModeId: '42212:0',
       $figmaVariableReferences: {
         'font-size.1': '0918a6e18af0d0626e986d0d974c3710c9543307',
         'font-size.2': 'd83453adb39699bc5dac07323a8521c42298658c',
