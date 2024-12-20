@@ -144,6 +144,7 @@ const isDigit = (s: string) => /^\d+$/.test(s);
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericOrPrivateSizeToken = (t: TransformedToken) =>
   t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
+
 const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken, isNumericOrPrivateSizeToken]);
 
 /**
@@ -158,10 +159,7 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     (acc, token) => {
       const [name, value] = format(token).split(':');
 
-      const calc = value
-        .replace(` * var(--ds-size-mode-font-size)`, '')
-        .replace(/\*(\d+)\)/g, '*$1em)')
-        .replace(/floor\((.*)\);/, 'calc($1)');
+      const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
 
       const round = `round(down, ${calc}, 0.0625rem)`;
 
