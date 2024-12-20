@@ -74,34 +74,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     const controlledOpen = open ?? internalOpen;
 
-    // NOTE: This code is purely to add React controlled component ability to Popover API
-    useEffect(() => {
-      if (!tooltipRef.current || !triggerRef.current) return;
+    const setOpen = () => {
+      setInternalOpen(true);
+    };
 
-      const trigger = triggerRef.current;
-      const tooltip = tooltipRef.current;
-
-      const setOpen = () => {
-        setInternalOpen(true);
-      };
-
-      const setClose = () => {
-        setInternalOpen(false);
-      };
-
-      tooltip?.togglePopover?.(controlledOpen);
-      trigger.addEventListener('mouseenter', setOpen);
-      trigger.addEventListener('mouseout', setClose);
-      trigger.addEventListener('focusin', setOpen);
-      trigger.addEventListener('focusout', setClose);
-
-      return () => {
-        trigger.removeEventListener('mouseenter', setOpen);
-        trigger.removeEventListener('mouseout', setClose);
-        trigger.removeEventListener('focusin', setOpen);
-        trigger.removeEventListener('focusout', setClose);
-      };
-    }, [controlledOpen]);
+    const setClose = () => {
+      setInternalOpen(false);
+    };
 
     // Position with floating-ui
     useEffect(() => {
@@ -171,6 +150,10 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           // We set this to not close on click, since it should always show on hover
           // @ts-ignore @types/react-dom does not understand popovertargetaction yet
           popovertargetaction='show'
+          onMouseEnter={setOpen}
+          onMouseLeave={setClose}
+          onFocus={setOpen}
+          onBlur={setClose}
         >
           {children}
         </ChildContainer>
