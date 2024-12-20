@@ -3080,7 +3080,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "60px",
+      fontSize: "3.75rem",
       letterSpacing: "-1%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3109,7 +3109,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "48px",
+      fontSize: "3rem",
       letterSpacing: "-1%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3138,7 +3138,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "36px",
+      fontSize: "2.25rem",
       letterSpacing: "-0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3167,7 +3167,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "30px",
+      fontSize: "1.875rem",
       letterSpacing: "-0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3196,7 +3196,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "24px",
+      fontSize: "1.5rem",
       letterSpacing: "0%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3225,7 +3225,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "21px",
+      fontSize: "1.3125rem",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3254,7 +3254,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 500,
       lineHeight: "1.3",
-      fontSize: "18px",
+      fontSize: "1.125rem",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3283,7 +3283,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "24px",
+      fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3312,7 +3312,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "21px",
+      fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3341,7 +3341,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "18px",
+      fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3370,7 +3370,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "16px",
+      fontSize: "1rem",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3399,7 +3399,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.5",
-      fontSize: "14px",
+      fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3428,7 +3428,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "24px",
+      fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3458,7 +3458,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "21px",
+      fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3488,7 +3488,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "18px",
+      fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3518,7 +3518,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "16px",
+      fontSize: "1rem",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3548,7 +3548,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.3",
-      fontSize: "14px",
+      fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3578,7 +3578,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "24px",
+      fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3608,7 +3608,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "21px",
+      fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3638,7 +3638,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "18px",
+      fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3668,7 +3668,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "16px",
+      fontSize: "1rem",
       letterSpacing: "0.25%"
     },
     filePath: "../../design-tokens/semantic/style.json",
@@ -3698,7 +3698,7 @@ export const  typography = [
       fontFamily: "Helvetica Neue",
       fontWeight: 400,
       lineHeight: "1.7",
-      fontSize: "14px",
+      fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
     filePath: "../../design-tokens/semantic/style.json",

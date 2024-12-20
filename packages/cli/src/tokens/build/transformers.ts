@@ -2,7 +2,7 @@ import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
-import { getValue, pathStartsWithOneOf } from '../utils.js';
+import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { noCase } from './utils/noCase.js';
 
 const isPx = R.test(/\b\d+px\b/g);
@@ -12,10 +12,10 @@ export const sizeRem: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    // const hasWantedType = typeEquals(['dimension'], token);
-    const hasWantedPath = pathStartsWithOneOf(['border-radius'], token);
+    const hasWantedType = typeEquals(['dimension', 'fontsize'], token);
+    const hasWantedPath = pathStartsWithOneOf(['spacing', 'sizing', 'border-radius', 'font-size'], token);
 
-    return hasWantedPath;
+    return hasWantedType && hasWantedPath;
   },
   transform: (token, config) => {
     const value = getValue<string>(token);
