@@ -4,7 +4,6 @@
 
 @layer ds.theme.semantic {
 :root {
-  --ds-size-mode-font-size: 18;
   --ds-size-base: 18;
   --ds-size-step: 4;
   --ds-border-radius-base: 0.25rem;

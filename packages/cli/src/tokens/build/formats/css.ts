@@ -195,10 +195,9 @@ const semantic: Format = {
     });
 
     const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
-
-    const [sizing, rest] = R.partition((token) => pathStartsWithOneOf(['spacing', 'sizing'], token), tokens);
-
-    const formattedTokens = [R.map(format, rest).join('\n'), formatSizingTokens(format, sizing)];
+    const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
+    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['spacing', 'sizing']), filteredTokens);
+    const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
