@@ -15,13 +15,29 @@ export const metadata: Metadata = {
 };
 
 const menu = [
-  /* {
-    name: 'Fargevelger',
-    href: '/',
-  }, */
   {
-    name: 'Slik bruker du verktøyet',
-    href: '/slik-bruker-du-verktoyet',
+    name: 'Grunnleggende',
+    href: 'https://www.designsystemet.no/grunnleggende',
+  },
+  {
+    name: 'God praksis',
+    href: 'https://www.designsystemet.no/god-praksis',
+  },
+  {
+    name: 'Mønstre',
+    href: 'https://www.designsystemet.no/monstre',
+  },
+  {
+    name: 'Bloggen',
+    href: 'https://www.designsystemet.no/bloggen',
+  },
+  {
+    name: 'Komponenter',
+    href: 'https://www.designsystemet.no/komponenter',
+  },
+  {
+    name: 'Temabygger',
+    href: '/',
   },
 ];
 
@@ -72,7 +88,11 @@ export default function RootLayout({
     <html lang='no'>
       <body>
         <ThemeWrapper>
-          <Header menu={menu} betaTag transparentBackground={true} />
+          <Header
+            menu={menu}
+            transparentBackground
+            logoLink='https://www.designsystemet.no/'
+          />
           <div className='content'>{children}</div>
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
         </ThemeWrapper>

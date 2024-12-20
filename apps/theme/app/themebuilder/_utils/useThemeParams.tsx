@@ -1,7 +1,7 @@
 import {
-  type ColorMode,
+  type ColorScheme,
   type CssColor,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -15,6 +15,8 @@ export const useThemeParams = () => {
   const colors = useThemeStore((state) => state.colors);
   const themeName = useThemeStore((state) => state.themeName);
   const appearance = useThemeStore((state) => state.appearance);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
 
   /* Check if we have params in URL */
   useEffect(() => {
@@ -26,7 +28,7 @@ export const useThemeParams = () => {
 
     if (query.get('appearance')) {
       useThemeStore.setState({
-        appearance: query.get('appearance') as ColorMode,
+        appearance: query.get('appearance') as ColorScheme,
       });
     }
 
@@ -47,7 +49,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateThemeForColor(neutralColor as CssColor),
+            colors: generateColorSchemes(neutralColor as CssColor),
           },
         ];
     }
@@ -63,6 +65,11 @@ export const useThemeParams = () => {
     useThemeStore.setState({
       colors: newColors,
     });
+
+    const borderRadius = parseInt(query.get('border-radius') as string);
+    if (borderRadius) {
+      setBorderRadius(borderRadius);
+    }
   }, []);
 
   /* When name, appearance or colors change, update query */
@@ -86,9 +93,10 @@ export const useThemeParams = () => {
     params.set('main', mainColorString);
     params.set('neutral', neutralColorString);
     params.set('support', supportColorString);
+    params.set('border-radius', baseBorderRadius.toString());
 
     router.push(pathname + '?' + params.toString());
-  }, [colors, themeName, appearance]);
+  }, [colors, themeName, appearance, baseBorderRadius]);
 
   return null;
 };
@@ -96,6 +104,6 @@ export const useThemeParams = () => {
 function createColorsFromQuery(colors: string) {
   return colors.split(' ').map((color) => {
     const [name, hex] = color.split(':');
-    return { name, colors: generateThemeForColor(hex as CssColor) };
+    return { name, colors: generateColorSchemes(hex as CssColor) };
   });
 }

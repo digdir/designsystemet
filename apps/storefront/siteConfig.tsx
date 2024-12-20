@@ -166,16 +166,16 @@ export const SiteConfig = {
               name: 'Feilmeldinger *',
               url: 'monstre/feilmeldinger',
             },
+            {
+              name: 'Systemvarsler *',
+              url: 'monstre/systemvarsler',
+            },
           ],
         },
         {
           name: 'Kommende',
           url: 'monstre/skjema',
           children: [
-            {
-              name: 'Systemvarsler *',
-              url: 'monstre/systemvarsler',
-            },
             {
               name: 'Dato',
               url: 'monstre/dato',

@@ -10,6 +10,7 @@ import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
+import { copyFile, writeFile } from './utils.js';
 
 export const DEFAULT_COLOR = 'accent';
 
@@ -17,13 +18,15 @@ type Options = {
   /** Design tokens path */
   tokens: string;
   /** Output directory for built tokens */
-  out: string;
+  outDir: string;
   /** Generate preview tokens */
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
   /** Set the default "accent" color, if not overridden with data-color */
   accentColor?: string;
+  /** Dry run */
+  dry?: boolean;
 };
 
 export let buildOptions: Options | undefined;
@@ -50,16 +53,16 @@ const buildConfigs = {
     name: 'CSS entry files',
     getConfig: configs.semanticVariables,
     dimensions: ['semantic'],
-    build: async (sdConfigs, { outPath }) => {
+    build: async (sdConfigs, { outPath, dry }) => {
       await Promise.all(
         sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
 
           const builtinColorsFilename = 'builtin-colors.css';
           const builtinColors = path.resolve(import.meta.dirname, 'build', builtinColorsFilename);
-          await fs.copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename));
+          await copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename), dry);
 
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme) });
+          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
         }),
       );
     },
@@ -67,9 +70,12 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function buildTokens(options: Options): Promise<void> {
-  buildOptions = options;
+  const { dry } = options;
   const tokensDir = options.tokens;
-  const outPath = path.resolve(options.out);
+  const targetDir = path.resolve(options.outDir);
+
+  /** For sharing build options in other files */
+  buildOptions = options;
 
   /*
    * Build the themes
@@ -97,7 +103,7 @@ export async function buildTokens(options: Options): Promise<void> {
     (val: BuildConfig) => ({
       buildConfig: val,
       sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
-        outPath,
+        outPath: targetDir,
         tokensDir,
         ...val.options,
       }),
@@ -114,15 +120,20 @@ export async function buildTokens(options: Options): Promise<void> {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
 
         if (buildConfig.build) {
-          await buildConfig.build(sdConfigs, { outPath, tokensDir, ...buildConfig.options });
+          await buildConfig.build(sdConfigs, { outPath: targetDir, tokensDir, ...buildConfig.options, dry });
         }
+
         await Promise.all(
           sdConfigs.map(async ({ config, permutation }) => {
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
             const modeMessage = modes.map((x) => permutation[x]).join(' - ');
             console.log(modeMessage);
 
-            return (await sd.extend(config)).buildAllPlatforms();
+            if (!dry) {
+              return (await sd.extend(config)).buildAllPlatforms();
+            }
+
+            return Promise.resolve();
           }),
         );
       }
@@ -138,10 +149,10 @@ export async function buildTokens(options: Options): Promise<void> {
     throw err;
   }
 
-  await writeColorTypeDeclaration($themes, outPath);
+  await writeColorTypeDeclaration($themes, targetDir, dry);
 }
 
-async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string) {
+async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string, dry?: boolean) {
   const colorsFileName = 'colors.d.ts';
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
   console.log(colorsFileName);
@@ -159,5 +170,6 @@ ${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
   }
 }
 `.trimStart();
-  await fs.writeFile(path.resolve(outPath, colorsFileName), typeDeclaration, 'utf-8');
+
+  await writeFile(path.resolve(outPath, colorsFileName), typeDeclaration, dry);
 }

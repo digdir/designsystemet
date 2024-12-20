@@ -1,6 +1,6 @@
 import {
   type ColorInfo,
-  generateThemeForColor,
+  generateColorSchemes,
   getColorNameFromNumber,
   getContrastFromHex,
 } from '@digdir/designsystemet';
@@ -16,7 +16,7 @@ import { useThemeStore } from '../../store';
 import classes from './ColorContrasts.module.css';
 
 export const ColorContrasts = () => {
-  const theme = generateThemeForColor('#0062BA');
+  const theme = generateColorSchemes('#0062BA');
   const indexOne = [1, 2, 3, 4, 5];
   const indexTwo = [6, 7, 8, 12, 13];
   const [reducedLight, setReducedLight] = useState({
@@ -89,7 +89,7 @@ export const ColorContrasts = () => {
     let type = 'AAA';
 
     if (contrast < 3) {
-      type = 'FAIL';
+      type = 'DECO';
     } else if (contrast < 4.5) {
       type = 'AA18';
     } else if (contrast < 7) {
@@ -161,7 +161,7 @@ export const ColorContrasts = () => {
             </Paragraph>
           </div>
           <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.FAIL)}>FAIL</div>
+            <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
             <Paragraph data-size='sm'>
               Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
               dekorative formål.

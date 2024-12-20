@@ -11,7 +11,10 @@
   flex-grow: 1;
   border-radius: 8px;
   margin-top: -170px;
-  min-height: 835px;
+  min-height: calc(81vh);
+  max-height: calc(100vh - 40px);
+  display: flex;
+  justify-content: space-between;
 }
 
 .showSidebar {
@@ -24,9 +27,12 @@
 }
 
 .scrollContainer {
-  overflow: auto;
-  height: calc(100% - 90px);
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  padding-bottom: 91px;
 }
 
 .sticky {
@@ -86,13 +92,10 @@
   bottom: 0;
   right: 0;
   left: 0;
+  border-radius: 0 0 8px 8px;
   padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  display: flex;
-  align-items: center;
-  gap: 16px;
   background-color: var(--ds-color-info-background-default);
-  border-radius: 0 0 8px 8px;
 }
 
 .toggle {

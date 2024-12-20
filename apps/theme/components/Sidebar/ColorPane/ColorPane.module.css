@@ -9,6 +9,7 @@
   border-radius: 8px;
   display: none;
   z-index: 5;
+  overflow-y: auto;
 }
 
 .title {

@@ -1,8 +1,8 @@
 import {
   type ColorInfo,
-  type ColorMode,
+  type ColorScheme,
   type ThemeInfo,
-  generateThemeForColor,
+  generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
@@ -12,7 +12,7 @@ export type ColorTheme = {
   colors: ThemeInfo;
 };
 
-type BorderRadiusGroup = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type BaseBorderRadius = number;
 type PageType = 'intro' | 'colors' | 'radius' | 'finish';
 
 type ColorStore = {
@@ -38,10 +38,10 @@ type ColorStore = {
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
   selectedColor: { color: ColorInfo; name: string };
   setSelectedColor: (color: ColorInfo, name: string) => void;
-  borderRadius: BorderRadiusGroup;
-  setBorderRadius: (radius: BorderRadiusGroup) => void;
-  appearance: ColorMode;
-  setAppearance: (appearance: ColorMode) => void;
+  baseBorderRadius: BaseBorderRadius;
+  setBaseBorderRadius: (radius: BaseBorderRadius) => void;
+  appearance: ColorScheme;
+  setAppearance: (appearance: ColorScheme) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
 };
@@ -58,16 +58,16 @@ export const useThemeStore = create(
       },
       name: 'Default',
     },
-    borderRadius: 'small',
+    baseBorderRadius: 4,
     appearance: 'light',
     themePreview: 'one',
     colors: {
-      main: [{ name: 'accent', colors: generateThemeForColor('#0062BA') }],
-      neutral: [{ name: 'neutral', colors: generateThemeForColor('#1E2B3C') }],
+      main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
+      neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
       support: [
-        { name: 'brand1', colors: generateThemeForColor('#F45F63') },
-        { name: 'brand2', colors: generateThemeForColor('#E5AA20') },
-        { name: 'brand3', colors: generateThemeForColor('#1E98F5') },
+        { name: 'brand1', colors: generateColorSchemes('#F45F63') },
+        { name: 'brand2', colors: generateColorSchemes('#E5AA20') },
+        { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
       ],
     },
     themeName: 'theme',
@@ -94,7 +94,7 @@ export const useThemeStore = create(
       }),
     setAppearance: (appearance) => set({ appearance: appearance }),
     setThemePreview: (themePreview) => set({ themePreview: themePreview }),
-    setBorderRadius: (radius) => set({ borderRadius: radius }),
+    setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),
   })),

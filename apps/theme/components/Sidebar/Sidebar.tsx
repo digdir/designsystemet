@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 
 import { CogIcon } from '@navikt/aksel-icons';
+import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
+import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
-import { RadiusPage } from './RadiusPage/RadiusPage';
+
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -46,57 +48,11 @@ export const Sidebar = () => {
           {activePage === 'colors' && (
             <ColorPage onNextClick={() => setActivePage('radius')} />
           )}
-          {activePage === 'radius' && (
-            <RadiusPage onPrevClick={() => setActivePage('colors')} />
-          )}
+          {activePage === 'radius' && <BorderRadiusInput />}
 
-          {/* APPEARANCE */}
-          {/* <div className={classes.themeMode}>
-          <div className={classes.group}>
-            <div className={classes.label}>Visning</div>
-            <Toggle
-              type='appearance'
-              items={[
-                { name: 'Lys', type: 'sm', value: 'light' },
-                { name: 'Mørk', type: 'sm', value: 'dark' },
-                { name: 'Kontrast', type: 'sm', value: 'contrast' },
-              ]}
-              onChange={(value) => {
-                const val = value;
-                setAppearance(val as ColorMode);
-              }}
-            />
+          <div className={classes.bottom}>
+            <TokenModal />
           </div>
-        </div> */}
-
-          {/* SIZES */}
-          {/* <div className={classes.group}>
-          <div className={classes.groupHeader}>
-            <Heading data-size='2xs'>Komponentstørrelser</Heading>
-          </div>
-          <div className={classes.sizes}>
-            <SizeInput
-              onChange={(size) => setSize(size)}
-              name='xSmall'
-              size='14px'
-            />
-            <SizeInput
-              onChange={(size) => setSize(size)}
-              name='Small'
-              size='16px'
-            />
-            <SizeInput
-              onChange={(size) => setSize(size)}
-              name='Medium'
-              size='18px'
-            />
-            <SizeInput
-              onChange={(size) => setSize(size)}
-              name='Large'
-              size='21px'
-            />
-          </div>
-        </div> */}
         </div>
       </div>
     </div>

@@ -248,13 +248,17 @@
       "$type": "borderRadius",
       "$value": "{border-radius.3}"
     },
-    "default": {
+    "xl": {
       "$type": "borderRadius",
       "$value": "{border-radius.4}"
     },
-    "full": {
+    "default": {
       "$type": "borderRadius",
       "$value": "{border-radius.5}"
+    },
+    "full": {
+      "$type": "borderRadius",
+      "$value": "{border-radius.6}"
     }
   },
   "spacing": {

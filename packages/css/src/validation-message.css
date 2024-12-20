@@ -39,14 +39,4 @@
     --dsc-validation-message-icon-url: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M3.25 4A.75.75 0 0 1 4 3.25h16a.75.75 0 0 1 .75.75v16a.75.75 0 0 1-.75.75H4a.75.75 0 0 1-.75-.75zM11 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0m-1.25 3a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 .75.75v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4h-.75a.75.75 0 0 1-.75-.75'/%3E%3C/svg%3E");
     --dsc-validation-message-color: var(--ds-color-info-text-subtle);
   }
-
-  &[data-color='neutral'] {
-    --dsc-validation-message-icon-url: unset;
-    --dsc-validation-message-color: unset; /* This does not set the color to "neutral". This will inherit the closest `color` set. */
-    --dsc-validation-message-gap: 0; /* We don't display an icon for this */
-
-    &::before {
-      display: none;
-    }
-  }
 }

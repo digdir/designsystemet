@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
-import type { ColorNumber, CssColor } from './types';
+import type { ColorNumber, CssColor } from './types.js';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -263,4 +263,16 @@ export const convertToHex = (color?: string): CssColor => {
     return color as CssColor;
   }
   return chroma(color).hex() as CssColor;
+};
+
+export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
+  return (
+    '#' +
+    [rgb.r, rgb.g, rgb.b]
+      .map((x) => {
+        const hex = Math.round(x * 255).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      })
+      .join('')
+  );
 };

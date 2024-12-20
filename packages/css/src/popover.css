@@ -55,3 +55,14 @@
     --dsc-popover-background: var(--ds-color-neutral-background-default);
   }
 }
+
+[data-popover='inline'] {
+  all: unset;
+  cursor: pointer;
+  display: inline;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.27em;
+  font-size: inherit;
+
+  @composes ds-focus from './base.css';
+}
