@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Paragraph } from '../..';
 
+import { TrashIcon } from '@navikt/aksel-icons';
 import { Popover } from '.';
 
 export default {
@@ -45,6 +46,69 @@ Preview.args = {
 Preview.parameters = {
   customStyles: {
     paddingTop: '5rem',
+  },
+};
+
+export const Interactive: StoryFn<typeof Popover> = () => {
+  return (
+    <Popover.TriggerContext>
+      <Popover.Trigger data-color='danger' aria-label='Slett rad'>
+        <TrashIcon title='Slett rad' />
+      </Popover.Trigger>
+      <Popover data-color='danger'>
+        <Paragraph>
+          Er du sikker på at du vil slette raden? Handlingen kan ikke angres.
+        </Paragraph>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-2)',
+            marginTop: 'var(--ds-spacing-2)',
+          }}
+        >
+          <Button data-size='sm'>Ja, slett den</Button>
+          <Button data-size='sm' variant='tertiary'>
+            Avbryt
+          </Button>
+        </div>
+      </Popover>
+    </Popover.TriggerContext>
+  );
+};
+Interactive.parameters = {
+  customStyles: {
+    padding: '12rem 6rem 1rem',
+  },
+};
+
+export const DottedUnderline: StoryFn<typeof Popover> = () => {
+  return (
+    <>
+      <Popover.TriggerContext>
+        <Paragraph>
+          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
+          å sikre at vi har en konsistent design.
+        </Paragraph>
+        <Popover data-color='neutral'>
+          <Paragraph>
+            <strong
+              style={{
+                display: 'block',
+              }}
+            >
+              Design tokens
+            </strong>
+            Design tokens er en samling av variabler som definerer designet i et
+            designsystem.
+          </Paragraph>
+        </Popover>
+      </Popover.TriggerContext>
+    </>
+  );
+};
+DottedUnderline.parameters = {
+  customStyles: {
+    padding: '10rem 6rem 1rem',
   },
 };
 
@@ -183,36 +247,5 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
 WithoutContext.parameters = {
   customStyles: {
     padding: '8rem 6rem 1rem',
-  },
-};
-
-export const DottedUnderline: StoryFn<typeof Popover> = () => {
-  return (
-    <>
-      <Popover.TriggerContext>
-        <Paragraph>
-          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
-          å sikre at vi har en konsistent design.
-        </Paragraph>
-        <Popover data-color='neutral'>
-          <Paragraph>
-            <strong
-              style={{
-                display: 'block',
-              }}
-            >
-              Design tokens
-            </strong>
-            Design tokens er en samling av variabler som definerer designet i et
-            designsystem.
-          </Paragraph>
-        </Popover>
-      </Popover.TriggerContext>
-    </>
-  );
-};
-DottedUnderline.parameters = {
-  customStyles: {
-    padding: '10rem 6rem 1rem',
   },
 };
