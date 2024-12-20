@@ -14,7 +14,7 @@ export type FieldProps = {
   DefaultProps;
 
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
-  { className, ...rest },
+  { className, position, ...rest },
   ref,
 ) {
   const fieldRef = useRef<HTMLDivElement>(null);
@@ -22,6 +22,11 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   useEffect(() => fieldObserver(fieldRef.current), []);
 
   return (
-    <div className={cl('ds-field', className)} ref={mergedRefs} {...rest} />
+    <div
+      className={cl('ds-field', className)}
+      data-position={position}
+      ref={mergedRefs}
+      {...rest}
+    />
   );
 });
