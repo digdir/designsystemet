@@ -236,7 +236,6 @@
       --circle-position: right;
     }
 
-    /* TOBIAS: Do we need this after adjusting colors (as we allready have this defined in radio/check)? */
     @media (forced-colors: active) {
       forced-color-adjust: none; /* To be able to draw switch */
 
