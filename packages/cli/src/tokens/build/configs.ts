@@ -289,7 +289,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
             format: formats.typography.name,
             filter: (token) => {
               const included = typeEquals(
-                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font'],
+                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font', 'fontsize'],
                 token,
               );
 
