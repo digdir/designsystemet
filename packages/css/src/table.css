@@ -38,10 +38,15 @@
     border-bottom: var(--dsc-table-header-divider);
   }
 
-  & > tfoot > tr > :is(th, td) {
-    background: var(--dsc-table-background);
+  /* No border on last tbody row if followed by tfoot */
+  & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
     border-bottom: none;
-    border-top: var(--dsc-table-border);
+  }
+
+  & > tfoot > tr > :is(th, td) {
+    background: var(--dsc-table-header-background);
+    border-bottom: none;
+    border-top: var(--dsc-table-header-divider);
   }
 
   & caption {
