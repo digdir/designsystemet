@@ -95,6 +95,8 @@
       text-align: inherit;
       width: 100%;
 
+      @composes ds-focus from './base.css';
+
       &:focus-visible {
         position: relative; /* Place on top when painting focus border */
       }
