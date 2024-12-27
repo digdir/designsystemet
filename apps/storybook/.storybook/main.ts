@@ -31,6 +31,13 @@ const config: StorybookConfig = {
     '../../../packages/react/**/*.mdx',
     '../../../packages/react/**/*.stories.ts?(x)',
   ],
+  refs: {
+    "web-components": { // We should do this for both react and web components in a release
+      title: "web-components",
+      url: "http://localhost:6007",
+      expanded: false,
+    }
+  },
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-links'),

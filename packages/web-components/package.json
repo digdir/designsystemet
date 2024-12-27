@@ -1,0 +1,54 @@
+{
+  "name": "@digdir/designsystemet-web-components",
+  "type": "module",
+  "version": "1.0.0-next.44",
+  "description": "Web components for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/web-components",
+  "license": "MIT",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./colors": {
+      "types": "./dist/types/colors.d.ts"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "echo 'In development :)'",
+    "dev-build": "yarn run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
+    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@navikt/aksel-icons": "^6.14.0",
+    "@u-elements/u-details": "^0.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/user-event": "^14.5.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.22.4",
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "^5.5.4"
+  }
+}
