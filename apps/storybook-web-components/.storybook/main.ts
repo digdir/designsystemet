@@ -1,6 +1,7 @@
 import { dirname, join, resolve } from 'node:path';
+import { StorybookConfig } from '@storybook/web-components-vite';
 
-const config = {
+const config: StorybookConfig = {
   typescript: {
     check: true,
   },
@@ -10,7 +11,8 @@ const config = {
     // '../../../packages/*.mdx', // Part of the main documentation
     // '../../../packages/css/**/*.mdx',
     // '../../../packages/theme/**/*.mdx',
-    '../../../packages/web-components/**/*.mdx'
+    '../../../packages/web-components/**/*.mdx',
+    '../../../packages/web-components/**/*.stories.ts?(x)'
   ],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),

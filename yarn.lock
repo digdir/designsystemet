@@ -1660,9 +1660,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@designsystemet/storybook-web-components@workspace:apps/storybook-webcomponents":
+"@designsystemet/storybook-web-components@workspace:apps/storybook-web-components":
   version: 0.0.0-use.local
-  resolution: "@designsystemet/storybook-web-components@workspace:apps/storybook-webcomponents"
+  resolution: "@designsystemet/storybook-web-components@workspace:apps/storybook-web-components"
   dependencies:
     "@chromatic-com/storybook": "npm:^1.6.1"
     "@digdir/designsystemet-css": "workspace:^"
@@ -1682,6 +1682,7 @@ __metadata:
     "@storybook/test-runner": "npm:^0.19.1"
     "@storybook/theming": "npm:^8.4.7"
     "@storybook/types": "npm:^8.4.7"
+    "@storybook/web-components": "npm:^8.4.7"
     "@storybook/web-components-vite": "npm:^8.4.7"
     axe-playwright: "npm:^2.0.2"
     clsx: "npm:^2.1.1"
@@ -5041,7 +5042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/web-components@npm:8.4.7":
+"@storybook/web-components@npm:8.4.7, @storybook/web-components@npm:^8.4.7":
   version: 8.4.7
   resolution: "@storybook/web-components@npm:8.4.7"
   dependencies:

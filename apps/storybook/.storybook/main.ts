@@ -35,7 +35,7 @@ const config: StorybookConfig = {
     "web-components": { // We should do this for both react and web components in a release
       title: "web-components",
       url: "http://localhost:6007",
-      expanded: false,
+      expanded: true,
     }
   },
   addons: [

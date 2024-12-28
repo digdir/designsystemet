@@ -1,11 +1,12 @@
 import '../../storybook/.storybook/style.css';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/web-components';
 import isChromatic from 'chromatic/isChromatic';
 
 import customTheme from '../../storybook/.storybook/customTheme';
-import {allModes, viewportWidths } from '../../storybook/story-utils/modes'
+import {allModes, viewportWidths } from '../../storybook/story-utils/modes';
+// import "../../../packages/web-components/src/index";
 
 const viewports: Record<string, object> = {};
 
@@ -18,8 +19,6 @@ for (const width of viewportWidths) {
     },
   };
 }
-
-type Props = Record<string, unknown>;
 
 const getPath = (href: string | undefined): string => {
   if (!href) {

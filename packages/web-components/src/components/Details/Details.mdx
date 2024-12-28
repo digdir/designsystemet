@@ -1,0 +1,128 @@
+import * as DetailsStories from './Details.stories';
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+
+{/* import { CssVariables } from '@doc-components'; */ }
+import css from '@digdir/designsystemet-css/details.css?inline';
+
+<Meta of={DetailsStories} />
+
+# Details
+
+Med `<ds-details>` kan du presentere mye innhold på liten plass i en eller flere rader. Hele raden er klikkbar og lar brukere åpne eller lukke visningen av innholdet under.
+
+**Vær oppmerksom på:**
+
+- Ved å legge innhold i `<ds-details>` risikerer du at det ikke blir sett av brukerne. Innhold som er viktig bør _ikke_ skjules.
+- Ikke legg en `<ds-details>` inni en annen.
+
+<br />
+
+<Primary />
+{/* <Controls /> */}
+
+## Bruk
+
+```tsx
+/* Uten ramme */
+<dsc-details>
+  <dsc-details-summary>Details heading text</dsc-details-summary>
+  <dsc-details-content>Details content</dsc-details-content>
+</dsc-details>
+
+/* Med ramme */
+
+// import { Details, Card } from '@digdir/designsystemet-react';
+
+// <Card>
+//   <Details>
+//     <Details.Summary>Details heading text</Details.Summary>
+//     <Details.Content>Details content</Details.Content>
+//   </Details>
+// </Card>
+```
+
+## Eksempler
+
+<br />
+### Med ramme
+
+`Details` kan vises med ramme ved å plasseres i et `Card`.
+Dette kan passe i tilfeller der details ikke fyller hele siden, eller når det kun er en rad.
+
+{/* <Canvas of={DetailsStories.InCard} /> */}
+
+### Med farger
+
+`Details` kan vises i farger fra ditt tema.
+
+{/* <Canvas of={DetailsStories.InCardWithColor} /> */}
+
+#### Kontrollert
+
+`Details` har egen tilstand på åpen/lukket, men dette kan kontrolleres utenfra.
+
+{/* <Canvas of={DetailsStories.Controlled} /> */}
+
+<br />
+
+## Retningslinjer
+
+Tester viser at brukerne sjeldnere ser på skjult innhold, enn det som er synlig direkte på siden. Ikke bruk `Details` til å skjule innhold for å gjøre siden "ryddigere". Finn ut om du faktisk må skjule innhold og vær klar over hvorfor du gjør det. Tenk over om det er lurt å vise det viktigste innholdet i åpen status når brukeren kommer inn på siden.
+
+Hvis innholdet er for langt eller komplisert, bør du heller omformulere teksten og/eller eventuelt fordele den på flere sider.
+
+### Egnet til
+
+- samle innhold som er litt lengre
+- gjøre det frivillig å se innhold som er litt mindre viktig enn alltid synlig innhold
+- vise ofte stilte spørsmål
+- vise tilleggsinformasjon som kan være til hjelp for brukerne
+
+### Ikke egnet til
+
+- vise små mengder innhold
+- vise informasjon hvis det bare er ett element
+- vise viktig innhold som alle bør se når de kommer til siden (for eksempel feilmeldinger)
+- gi mer informasjon om et spørsmål i et skjema – det innholdet bør brukeren se med en gang
+- velge mellom ulike alternativer
+- skjule innhold fra søkeresultater eller oversikter/tabeller
+- dele opp en logisk flyt eller en rekke med handlinger, da bør du heller bruke en trinnvis liste
+
+### Unngå
+
+- Ikke legg en `Details` inni en annen, det vi kaller nøstede lister.
+
+<br />
+
+## Tekst i komponenten
+
+Details skal brukes til maksimalt to avsnitt innenfor hvert nedtrekk. Sørg for at overskriften gir en god beskrivelse av hva innholdet i details er. En tydelig og beskrivende overskrift skal gjøre brukerne nysgjerrige på innholdet. Overskriftene til details kan ha stor betydning for om brukerne finner det de trenger, om innholdet blir lest og om det kan regnes som tilgjengelig for alle brukere. «Vis mer» eller «Les mer her» er ikke gode nok titler. Har du en details med mange nedtrekk, kan du ha en hovedoverskrift eller temaoverskrift over hele listen.
+
+<br />
+
+## Tilgjengelighet
+
+[`Chevron`](https://aksel.nav.no/ikoner/ChevronDown)-ikonet er bevisst plassert til venstre for teksten, av hensyn til brukerer med nedsatt synsfelt. Der er det lettere for brukeren å se det (fordi vi leser fra venstre). Mange brukere tror at de må peke på og velge ikonet for å åpne.
+
+Ikke plasser andre interaktive elementer inn i `Details.Summary`, da hele raden skal være klikkbar. Ikonet og teksten skal _ikke_ lenke til ulike handlinger (for eksempel at teksten går videre til en side, mens ikonet åpner listen). Brukerne forventer ikke at ikon og tekst skal gi ulikt resultat når de velger dem.
+
+`Tab` : Flytter fokus til neste element som kan ha fokus \
+`Shift` + `Tab` : Flytter fokus til forrige element som kan ha fokus \
+`Space` : Aktiverer knapp \
+`Enter` : Aktiverer knapp
+
+<br />
+
+## Andre props
+
+### Details.Summary
+
+{/* <ArgTypes of={Details.Summary} /> */}
+
+### Details.Content
+
+{/* <ArgTypes of={Details.Content} /> */}
+
+## CSS Variabler
+
+{/* <CssVariables css={css} /> */}

@@ -21,7 +21,7 @@
     "build:all": "yarn workspaces foreach -A --topological-dev run build",
     "build:theme": "yarn workspace theme build",
     "build:figma-plugin": "yarn workspace figma-plugin build",
-    "build:web-components": "yarn workspace dev-build",
+    "build:web-components": "yarn workspace @digdir/designsystemet-web-components dev-build",
     "build:react": "yarn workspace @digdir/designsystemet-react build",
     "build:tokens": "yarn workspace @digdir/designsystemet build:tokens",
     "build:css": "yarn workspace @digdir/designsystemet-css build",

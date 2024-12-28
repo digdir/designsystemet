@@ -6,9 +6,9 @@
   "include": [
     ".",
     "./.storybook/**/*",
-    "../storybook/story-utils/*",
-    "../storybook/.storybook/*",
     "../../packages/css/postcss.config.js",
-    ".."
-  ]
+    "../storybook/.storybook/customTheme.ts",
+    "../storybook/story-utils/modes.ts",
+    "../../packages/web-components/src/index.ts"
+  ],
 }
