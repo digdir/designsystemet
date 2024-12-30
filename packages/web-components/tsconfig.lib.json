@@ -6,6 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "noEmit": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "emitDeclarationOnly": true,
     "incremental": true,
     "types": ["./declarations.d.ts"]

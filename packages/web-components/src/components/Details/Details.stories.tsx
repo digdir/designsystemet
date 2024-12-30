@@ -1,151 +1,151 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj} from '@storybook/web-components';
 
-import { html } from 'lit';
-import { DetailsProps } from './Details';
-// import '../../index';
+import { Details, DetailsProps } from './Details';
+import './Details';
 
 // import { Button, Card, Details, Link } from '../';
 
-const meta: Meta<DetailsProps> = {
+const meta: Meta<typeof Details> = {
   title: 'Komponenter/Details',
-  component: 'dcs-details',
+  component: 'ds-details',
   parameters: {
     layout: 'padded',
-  },
-}
+  }
+};
 
 export default meta;
 
 export const Preview: StoryObj = {
   args: {
-    'class': '',
-    'data-color': 'neutral',
-    'open': true,
+    "data-color": 'neutral',
   },
-  render: ({open, defaultOpen, onToggle} : DetailsProps) => html`
-    <ds-details>test</ds-details>`
-    //   ${open ? `open=${open}`: ''}
-    //   ${defaultOpen ? `defaultOpen=${defaultOpen}` : ''}
-    // >
-    //   <ds-details-summary>Press here to toggle details</ds-details-summary>
-    //   <ds-details-content>testing details component</ds-details-content>
-    // </ds-details>
-  //`,
+  // Would like to avoid any, but cant get "data-{X}" attributes to be allowed
+  render: (args: any) => {
+    const dsDetails = document.createElement('ds-details');
+
+
+    args && Object.keys(args).forEach((key) => {
+      if (args[key] !== undefined) {
+        dsDetails.setAttribute(key, args[key]);
+      }
+    });
+
+    // Summary
+    const summaryText = document.createTextNode('Hvem kan registrere seg i Frivillighetsregisteret?');
+    const summary = document.createElement('ds-details-summary');
+    summary.appendChild(summaryText);
+
+    // Content
+    const contentText = document.createTextNode(`For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
+      drive frivillig virksomhet. Det er bare foreninger, stiftelser og
+      aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til
+      fysiske personer. Virksomheten må ha et styre.`);
+    const content = document.createElement('ds-details-content');
+    content.appendChild(contentText);
+
+    dsDetails.appendChild(summary);
+    dsDetails.appendChild(content);
+    return dsDetails;
+  }
 }
 
 export const InCard: StoryObj = {
+  args: {
+    'data-color': 'neutral',
+  },
+  render: (args: any) => {
+    const {
+      "data-color": dataColor
+     } = args;
 
+    const dsCard = document.createElement('ds-card');
+    const dsDetails = document.createElement('ds-details');
+
+    dsCard.setAttribute('data-color', dataColor);
+    // onToggle && dsDetails.setAttribute('onToggle', onToggle.toString());
+
+    // Summary
+    const summary = document.createElement('ds-details-summary');
+    summary.appendChild(document.createTextNode('Vedlegg'));
+
+    // Content
+    const content = document.createElement('ds-details-content');
+    content.appendChild(document.createTextNode('Vedlegg 1, vedlegg 2, vedlegg 3'));
+
+    dsDetails.appendChild(summary);
+    dsDetails.appendChild(content);
+    dsCard.appendChild(dsDetails);
+    return dsCard;
+  }
 }
 
-// export const Preview: StoryFn<typeof Details> = (args) => (
-//   <Details {...args}>
-//     <Details.Summary>
-//       Hvem kan registrere seg i Frivillighetsregisteret?
-//     </Details.Summary>
-//     <Details.Content>
-//       For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
-//       drive frivillig virksomhet. Det er bare foreninger, stiftelser og
-//       aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til
-//       fysiske personer. Virksomheten må ha et styre.
-//     </Details.Content>
-//   </Details>
-// );
-// Default values are selected in Controls
-// Preview.args = {
-//   'data-color': 'neutral',
-// };
+export const InCardWithColor: StoryObj = {
+  args: {
+    'data-color': 'brand2',
+  },
+  render: (args: any) => {
+    const {
+      "data-color": dataColor
+    } = args;
 
-// export const InCard: StoryFn<typeof Details> = () => (
-//   <Card data-color='neutral'>
-//     <Details>
-//       <Details.Summary>Vedlegg</Details.Summary>
-//       <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
-//     </Details>
-//   </Card>
-// );
+    const dsCard = document.createElement('ds-card');
+    dsCard.setAttribute('data-color', dataColor);
 
-// export const InCardWithColor: StoryFn<typeof Details> = () => (
-//   <Card data-color='brand2'>
-//     <Details>
-//       <Details.Summary>Hvordan får jeg tildelt et jegernummer?</Details.Summary>
-//       <Details.Content>
-//         Du vil automatisk få tildelt jegernummer og bli registrert i
-//         Jegerregisteret når du har bestått jegerprøven.
-//       </Details.Content>
-//     </Details>
-//     <Details>
-//       <Details.Summary>
-//         Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-//       </Details.Summary>
-//       <Details.Content>
-//         <p style={{ marginTop: 0 }}>
-//           Du kan finne dette ved å logge inn på{' '}
-//           <Link href='https://minjegerside.brreg.no/'>Min side</Link>
-//         </p>
-//         <p>
-//           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu
-//           orci nisi. Nulla sed sem eget odio pellentesque venenatis vitae et
-//           sem. Nunc vulputate nibh id nunc condimentum, et mattis quam vehicula.
-//           Praesent gravida turpis eget tincidunt sodales. Praesent ante arcu,
-//           semper at rhoncus ut, commodo ut ligula. Phasellus quis nibh vitae
-//           dolor faucibus dictum et dapibus justo. Morbi scelerisque sem id nisi
-//           ornare, in facilisis felis molestie.
-//         </p>
-//         <p>
-//           Vivamus maximus eget mi ut aliquam. Nulla facilisi. Sed lobortis, dui
-//           at facilisis scelerisque, tellus justo sodales enim, at luctus diam
-//           turpis id diam. Sed vel magna eget nulla ornare lacinia. Mauris
-//           commodo erat at dui interdum viverra. Morbi rhoncus dolor in massa
-//           vehicula, aliquam dictum tortor luctus. Quisque vel feugiat libero.
-//         </p>
-//         <p>
-//           Nullam sed quam vestibulum, scelerisque nisl vel, rhoncus leo. Integer
-//           eu tempor ex, in vulputate erat. Quisque nisl lectus, consequat sit
-//           amet ex ut, interdum tincidunt ligula. Morbi sed odio a leo bibendum
-//           hendrerit. Nullam erat nisi, convallis tincidunt tempor eu, iaculis
-//           scelerisque mauris. Nulla pretium ornare blandit. Proin dignissim
-//           massa risus, eget euismod enim lobortis at. Donec venenatis libero sed
-//           ligula convallis scelerisque. Pellentesque ut aliquet ante.
-//           Pellentesque et eleifend ex. Quisque posuere convallis urna et
-//           ullamcorper. Morbi eu tincidunt mauris. Ut nec diam nunc. Sed sed
-//           neque facilisis, luctus libero vitae, porttitor ex. Mauris euismod
-//           vitae velit eu laoreet.
-//         </p>
-//         <p>
-//           Vivamus maximus eget mi ut aliquam. Nulla facilisi. Sed lobortis, dui
-//           at facilisis scelerisque, tellus justo sodales enim, at luctus diam
-//           turpis id diam. Sed vel magna eget nulla ornare lacinia. Mauris
-//           commodo erat at dui interdum viverra. Morbi rhoncus dolor in massa
-//           vehicula, aliquam dictum tortor luctus. Quisque vel feugiat libero.
-//         </p>
-//         <p>
-//           Nullam sed quam vestibulum, scelerisque nisl vel, rhoncus leo. Integer
-//           eu tempor ex, in vulputate erat. Quisque nisl lectus, consequat sit
-//           amet ex ut, interdum tincidunt ligula. Morbi sed odio a leo bibendum
-//           hendrerit. Nullam erat nisi, convallis tincidunt tempor eu, iaculis
-//           scelerisque mauris. Nulla pretium ornare blandit. Proin dignissim
-//           massa risus, eget euismod enim lobortis at. Donec venenatis libero sed
-//           ligula convallis scelerisque. Pellentesque ut aliquet ante.
-//           Pellentesque et eleifend ex. Quisque posuere convallis urna et
-//           ullamcorper. Morbi eu tincidunt mauris. Ut nec diam nunc. Sed sed
-//           neque facilisis, luctus libero vitae, porttitor ex. Mauris euismod
-//           vitae velit eu laoreet.
-//         </p>
-//         <p style={{ marginBottom: 0 }}>
-//           Nulla facilisi. Maecenas vel fringilla felis. Sed orci felis, volutpat
-//           ac bibendum sit amet, sodales ac purus. Fusce nisi eros, tristique sed
-//           consequat sed, scelerisque et tortor. Lorem ipsum dolor sit amet,
-//           consectetur adipiscing elit. Vestibulum pellentesque vehicula orci sed
-//           scelerisque. Ut nec elementum tortor. Praesent lobortis eros nec
-//           laoreet iaculis. Pellentesque ex purus, vulputate non volutpat non,
-//           sodales a arcu. Phasellus ornare, lorem nec aliquam venenatis, augue
-//           eros sagittis quam, at sagittis tellus ante in metus.
-//         </p>
-//       </Details.Content>
-//     </Details>
-//   </Card>
-// );
+    // onToggle && dsDetails.setAttribute('onToggle', onToggle.toString());
 
+    // Initial details
+    const dsDetailsInitial = document.createElement('ds-details');
+
+    const summaryInitial = document.createElement('ds-details-summary');
+    summaryInitial.appendChild(document.createTextNode('Hvordan får jeg tildelt jegernummer?'));
+
+    const contentInitial = document.createElement('ds-details-content');
+    contentInitial.appendChild(document.createTextNode(
+      `Du vil automatisk få tildelt jegernummer og bli registrert i
+      Jegerregisteret når du har bestått jegerprøven.`
+    ));
+
+    dsDetailsInitial.appendChild(summaryInitial);
+    dsDetailsInitial.appendChild(contentInitial);
+
+    dsCard.appendChild(dsDetailsInitial);
+
+    // Second details
+    const dsDetailsSecond = document.createElement('ds-details');
+
+    const summarySecond = document.createElement('ds-details-summary');
+    summarySecond.appendChild(document.createTextNode('Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?'));
+
+    const contentSecond = document.createElement('ds-details-content');
+    const topP = document.createElement('p');
+    topP.style.marginTop = "0";
+    topP.appendChild(document.createTextNode(`Du kan finne dette ved å logge inn på `));
+    const link = document.createElement('Link');
+    link.setAttribute('href', 'https://minjegerside.brreg.no/');
+    link.appendChild(document.createTextNode('Min side'));
+    topP.appendChild(link);
+
+    const nextP = document.createElement('p');
+    nextP.appendChild(document.createTextNode(
+      `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu
+      orci nisi. Nulla sed sem eget odio pellentesque venenatis vitae et
+      sem. Nunc vulputate nibh id nunc condimentum, et mattis quam vehicula.
+      Praesent gravida turpis eget tincidunt sodales. Praesent ante arcu,
+      semper at rhoncus ut, commodo ut ligula. Phasellus quis nibh vitae
+      dolor faucibus dictum et dapibus justo. Morbi scelerisque sem id nisi
+      ornare, in facilisis felis molestie.`));
+
+    contentSecond.appendChild(topP);
+
+    dsDetailsSecond.appendChild(summarySecond);
+    dsDetailsSecond.appendChild(contentSecond);
+    dsCard.appendChild(dsDetailsSecond);
+
+    return dsCard;
+  }
+}
+
+// TODO Controlled
 // export const Controlled: StoryFn<typeof Details> = () => {
 //   const [open1, setOpen1] = useState(false);
 //   const [open2, setOpen2] = useState(false);

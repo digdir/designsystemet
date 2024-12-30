@@ -1,7 +1,7 @@
 
 
-import { DDetails, DetailsContent, DetailsSummary } from "./components/Details/Details";
+// import { Details, DetailsContent, DetailsSummary } from "./components/Details/Details";
 
-customElements.define("ds-details", DDetails);
-customElements.define("ds-details-summary", DetailsSummary);
-customElements.define("ds-details-content", DetailsContent);
+// customElements.define("ds-details", Details);
+// customElements.define("ds-details-summary", DetailsSummary);
+// customElements.define("ds-details-content", DetailsContent);

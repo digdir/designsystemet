@@ -4,10 +4,7 @@ import cl from 'clsx/lite';
 
 import { DetailsContent } from './DetailsContent';
 import { DetailsSummary } from './DetailsSummary';
-
-// For import convenience
-export { DetailsSummary } from './DetailsSummary';
-export { DetailsContent } from './DetailsContent';
+import { UHTMLDetailsElement } from '@u-elements/u-details';
 
 export type DetailsProps = {
   /**
@@ -17,7 +14,7 @@ export type DetailsProps = {
    *
    * @default undefined
    */
-  open?: boolean | null;
+  open?: boolean | null; // Do we need to
   /**
    * Defaults the details to open if not controlled
    * @default false
@@ -26,70 +23,64 @@ export type DetailsProps = {
   /** Callback function when Details toggles due to click on summary or find in page-search */
   onToggle?: (event: Event) => any | null;
   /** Content should be one `<ds-details-summary>` and `<dcs-details-content>` */
-  // TODO
 };
+
 /**
- * Details component, contains `Details.Summary` and `Details.Content` components.
+ * Details component, contains `DetailsSummary` and `DetailsContent` components.
  * @example
  * <ds-details>
  *  <ds-details-summary>Header</ds-details-summary>
  *  <ds-details-content>Content</ds-details-content>
  * </ds-details>
  */
-export class DDetails extends HTMLDetailsElement {
-  static observedAttributes = ["open"];
+
+export class Details extends UHTMLDetailsElement {
+  public get open(): boolean {
+    return this.open;
+  }
+  public set open(value: boolean) {
+    this.open = value;
+  }
+  public get defaultOpen(): boolean {
+    return this.defaultOpen;
+  }
+  public set defaultOpen(value: boolean) {
+    this.defaultOpen = value;
+  }
+  public onToggle: (event: Event) => any | null = () => {};
 
   constructor() {
     super();
-
-    console.log("construct <dcs-details>");
   }
 
   connectedCallback() {
-    // this.detailsRef = this.host;
-    const defaultOpen = Boolean(this.getAttribute("defaultOpen")); // Allow setting defaultOpen once and render once
-    const onToggle = this.getAttribute("onToggle") as unknown as (event: Event) => any;
-    const open = Boolean(this.getAttribute("open"));
+    this.onToggle = this.getAttribute("onToggle") as unknown as (event: Event) => any;
 
-    const options: DetailsProps = {
-      defaultOpen,
-      onToggle,
-      open
-    };
+    const uDetails = document.createElement('u-details'); // Comes with slot
+    this.getAttributeNames().forEach((attr) => {
+      uDetails.setAttribute(attr, this.getAttribute(attr) || '');
+    });
+    uDetails.classList.add(cl('ds-details'));
 
-    // const uDetails = `<u-details
-    //   class=${cl('ds-details', ...this.classList)}
-    //   open=${(open ?? defaultOpen) || undefined /* Fallback to undefined to prevent rendering open="false"*/}
-    // >
-    //   <slot>/slot>
-    // </u-details>`;
-
-    const uDetails = document.createElement('u-details');
-    uDetails.classList.add(cl('ds-details', ...this.classList));
-    if (open != undefined) {
-      uDetails.setAttribute('open', (open ? true : false).toString());
+    const childLength = this.childNodes.length;
+    for(let i = 0; i < childLength; i++) {
+      uDetails.appendChild(this.childNodes[0]);
     }
-
-    this.appendChild(uDetails);
-
-    this.setup(options);
-
-    console.log("connected dsc-details");
+    this.replaceWith(uDetails);
   }
 
-  attributeChangedCallback(name: string, oldValue: any, newValue: any) {
-    console.log(name, oldValue, newValue);
+  disconnectedCallback() {
+    if (this.onToggle)
+    this.removeEventListener('toggle', this.onToggle, true);
   }
 
-  private setup(options: DetailsProps) {
-    if (options.onToggle) {
-      this.addEventListener('toggle', options.onToggle, true);
+  private setup() {
+    if (this.onToggle) {
+      this.addEventListener('toggle', this.onToggle, true);
     }
   }
 }
 
-export function detailsDefine() {
-  customElements.define("ds-details", Details);
-  customElements.define("ds-details-summary", DetailsSummary);
-  customElements.define("ds-details-content", DetailsContent);
-}
+customElements.define("ds-details", Details);
+customElements.define("ds-details-summary", DetailsSummary);
+customElements.define("ds-details-content", DetailsContent);

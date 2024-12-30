@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/components/Details/Details.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Details component, contains `DetailsSummary` and `DetailsContent` components.",
+          "name": "Details",
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "onToggle",
+              "type": {
+                "text": "(event: Event) => any | null"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "setup",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "UHTMLDetailsElement",
+            "package": "@u-elements/u-details"
+          },
+          "tagName": "ds-details",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Details",
+          "declaration": {
+            "name": "Details",
+            "module": "src/components/Details/Details.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ds-details",
+          "declaration": {
+            "name": "Details",
+            "module": "src/components/Details/Details.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ds-details-summary",
+          "declaration": {
+            "name": "DetailsSummary",
+            "module": "/src/components/Details/DetailsSummary"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ds-details-content",
+          "declaration": {
+            "name": "DetailsContent",
+            "module": "/src/components/Details/DetailsContent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/Details/DetailsContent.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Details content component, contains the content of the details item.",
+          "name": "DetailsContent",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "ds-details-content",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DetailsContent",
+          "declaration": {
+            "name": "DetailsContent",
+            "module": "src/components/Details/DetailsContent.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/Details/DetailsSummary.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Details summary component, contains a the heading to toggle the content.",
+          "name": "DetailsSummary",
+          "superclass": {
+            "name": "UHTMLSummaryElement",
+            "package": "@u-elements/u-details"
+          },
+          "tagName": "ds-details-summary",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DetailsSummary",
+          "declaration": {
+            "name": "DetailsSummary",
+            "module": "src/components/Details/DetailsSummary.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

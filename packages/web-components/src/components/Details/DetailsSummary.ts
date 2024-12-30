@@ -1,4 +1,4 @@
-import { html, render } from 'lit';
+import { UHTMLSummaryElement } from "@u-elements/u-details";
 
 export type DetailsSummaryArgs = {
   /** Heading text */
@@ -10,12 +10,18 @@ export type DetailsSummaryArgs = {
  * @example
  * <ds-details-summary>Heading</ds-details-summary>
  */
-export class DetailsSummary extends HTMLElement {
+export class DetailsSummary extends UHTMLSummaryElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    render(html`<u-summary class=${this.className}><slot></slot></u-summary>`, this);
+    const usummary = document.createElement("u-summary");
+    const childLength = this.childNodes.length;
+    for(let i = 0; i < childLength; i++) {
+      usummary.appendChild(this.childNodes[0]);
+    }
+
+    this.replaceWith(usummary);
   }
 };

@@ -1,4 +1,3 @@
-import { html, render } from 'lit';
 
 export type DetailsContentArgs = {
   /** Heading text */
@@ -10,12 +9,18 @@ export type DetailsContentArgs = {
  * @example
  * <ds-details-content>Content</ds-details-content>
  */
-export class DetailsContent extends HTMLDivElement {
+export class DetailsContent extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    render(`<slot></slot>`, this);
+    const div = document.createElement("div");
+    const childLength = this.childNodes.length;
+    for (let i = 0; i < childLength; i++) {
+      div.appendChild(this.childNodes[0]);
+    }
+
+    this.replaceWith(div);
   }
 };

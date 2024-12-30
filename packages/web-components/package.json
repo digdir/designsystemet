@@ -30,7 +30,8 @@
     "dev-build": "yarn run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit",
+    "analyze": "custom-elements-manifest analyze --globs ./src/components/**/*.ts"
   },
   "publishConfig": {
     "access": "public"
@@ -40,6 +41,7 @@
     "@u-elements/u-details": "^0.1.0"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@testing-library/dom": "^10.4.0",

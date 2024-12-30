@@ -1,8 +1,11 @@
+{/* import { meta as detailsMeta, InCard, InCardWithColor} from './Details.stories'; */}
 import * as DetailsStories from './Details.stories';
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 
 {/* import { CssVariables } from '@doc-components'; */ }
 import css from '@digdir/designsystemet-css/details.css?inline';
+import { DetailsSummary } from './DetailsSummary';
+import { DetailsContent } from './DetailsContent';
 
 <Meta of={DetailsStories} />
 
@@ -18,27 +21,28 @@ Med `<ds-details>` kan du presentere mye innhold på liten plass i en eller fler
 <br />
 
 <Primary />
-{/* <Controls /> */}
+<Controls />
 
 ## Bruk
 
 ```tsx
 /* Uten ramme */
-<dsc-details>
-  <dsc-details-summary>Details heading text</dsc-details-summary>
-  <dsc-details-content>Details content</dsc-details-content>
-</dsc-details>
+import { Details, Card } from '@digdir/designsystemet-react';
+
+<ds-details>
+  <ds-details-summary>Details heading text</ds-details-summary>
+  <ds-details-content>Details content</ds-details-content>
+</ds-details>
 
 /* Med ramme */
+import { Details, Card } from '@digdir/designsystemet-react';
 
-// import { Details, Card } from '@digdir/designsystemet-react';
-
-// <Card>
-//   <Details>
-//     <Details.Summary>Details heading text</Details.Summary>
-//     <Details.Content>Details content</Details.Content>
-//   </Details>
-// </Card>
+<ds-card>
+  <ds-details>
+    <ds-details-summary>Details heading text</ds-details-summary>
+    <ds-details-content>Details content</ds-details-content>
+  </ds-details>
+</ds-card>
 ```
 
 ## Eksempler
@@ -49,18 +53,19 @@ Med `<ds-details>` kan du presentere mye innhold på liten plass i en eller fler
 `Details` kan vises med ramme ved å plasseres i et `Card`.
 Dette kan passe i tilfeller der details ikke fyller hele siden, eller når det kun er en rad.
 
-{/* <Canvas of={DetailsStories.InCard} /> */}
+<Canvas of={DetailsStories.InCard} />
 
 ### Med farger
 
 `Details` kan vises i farger fra ditt tema.
 
-{/* <Canvas of={DetailsStories.InCardWithColor} /> */}
+<Canvas of={DetailsStories.InCardWithColor} />
 
 #### Kontrollert
 
 `Details` har egen tilstand på åpen/lukket, men dette kan kontrolleres utenfra.
 
+{/* TODO */}
 {/* <Canvas of={DetailsStories.Controlled} /> */}
 
 <br />
@@ -113,15 +118,15 @@ Ikke plasser andre interaktive elementer inn i `Details.Summary`, da hele raden 
 
 <br />
 
-## Andre props
+{/* ## Andre props */}
 
-### Details.Summary
+{/* ### Details.Summary */}
 
-{/* <ArgTypes of={Details.Summary} /> */}
+{/* <ArgTypes of={DetailsSummary} /> */}
 
-### Details.Content
+{/* ### Details.Content */}
 
-{/* <ArgTypes of={Details.Content} /> */}
+{/* <ArgTypes of={DetailsContent} /> */}
 
 ## CSS Variabler
 
