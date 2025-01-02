@@ -2433,7 +2433,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2449,7 +2449,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2465,7 +2465,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2481,7 +2481,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2497,7 +2497,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2513,7 +2513,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2529,7 +2529,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2545,7 +2545,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2561,7 +2561,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2577,7 +2577,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2593,7 +2593,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2609,7 +2609,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2625,7 +2625,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2641,7 +2641,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2657,7 +2657,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2673,7 +2673,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2689,7 +2689,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2705,7 +2705,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2721,7 +2721,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2737,7 +2737,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2753,7 +2753,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2769,7 +2769,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2785,7 +2785,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2801,7 +2801,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "0.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2817,7 +2817,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2833,7 +2833,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2849,7 +2849,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2865,7 +2865,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "1.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2881,7 +2881,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2897,7 +2897,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2913,7 +2913,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2929,7 +2929,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "2.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2945,7 +2945,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2961,7 +2961,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.25rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2977,7 +2977,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -2993,7 +2993,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "3.75rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3009,7 +3009,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "4.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3025,7 +3025,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "5.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3041,7 +3041,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "6.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -3057,7 +3057,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "NaN",
+    $value: "7.5rem",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {

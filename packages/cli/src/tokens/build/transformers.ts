@@ -62,7 +62,7 @@ export const resolveMath: Transform = {
   transitive: true,
   filter: (token) => {
     const isValidValue = ['string', 'object'].includes(typeof getValue(token));
-    const isTokenOfInterest = !pathStartsWithOneOf(['border-radius', 'size'], token);
+    const isTokenOfInterest = !pathStartsWithOneOf(['border-radius'], token);
 
     return isValidValue && isTokenOfInterest;
   },
