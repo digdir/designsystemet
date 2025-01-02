@@ -20,7 +20,9 @@ export default ({ children }) => (
   />
 );
 
-Du bruker data-attributt for å endre størrelsar.
+HTML data-attributt vert brukt for å definere størrelse på ein komponent. Komponentane kan nytte alle alle størrelsar.
+
+Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen. Du kan lett endre den ved bruk av `data-size`.
 
 ## `data-size`
 
@@ -61,11 +63,3 @@ Dette er komponentar som
 ### Cascading
 
 Denne gruppa inneheld resten av komponentane, og vil arve størrelse frå næraste forelder med `data-size` satt.
-
-<br />
-<br />
-<br />
-<br />
-
-kanskje ha med?:
-Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen.
