@@ -1,7 +1,7 @@
 .ds-dropdown {
-  --dsc-dropdown-padding: var(--ds-spacing-3) var(--ds-spacing-2);
-  --dsc-dropdown-item-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-dropdown-item-size: var(--ds-spacing-12);
+  --dsc-dropdown-padding: var(--ds-size-3) var(--ds-size-2);
+  --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
+  --dsc-dropdown-item-size: var(--ds-size-12);
   --dsc-dropdown-background: var(--ds-color-neutral-background-default);
   --dsc-dropdow-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-dropdown-border: 1px solid var(--dsc-dropdow-border-color);

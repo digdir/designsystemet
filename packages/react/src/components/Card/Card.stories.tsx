@@ -29,7 +29,7 @@ export default {
       maxWidth: 800,
       alignItems: 'center',
       display: 'grid',
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px , 1fr))',
     },
   },
@@ -231,7 +231,7 @@ export const Composed: Story = () => (
   <div
     style={{
       display: 'grid', // Used to test Card.Block border logic
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
       gridColumn: '1 / -1',
       gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
       width: '100%',

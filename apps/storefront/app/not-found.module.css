@@ -1,6 +1,6 @@
 .content {
   height: 100%;
-  padding: var(--ds-spacing-14) 0;
+  padding: var(--ds-size-14) 0;
 }
 
 .container {
@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--ds-spacing-14);
+  gap: var(--ds-size-14);
   margin: 0 auto;
 }
 

@@ -39,7 +39,7 @@ import '@digdir/designsystemet-theme/altinn.css';
 
 ```css
 div {
-  padding: var(--ds-spacing-1);
+  padding: var(--ds-size-1);
 }
 ```
 

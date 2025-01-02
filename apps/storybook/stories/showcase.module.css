@@ -2,12 +2,12 @@
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: auto;
-  gap: var(--ds-spacing-4);
-  padding-bottom: var(--ds-spacing-2);
+  gap: var(--ds-size-4);
+  padding-bottom: var(--ds-size-2);
   align-items: baseline;
 }
 
 .controls code {
   background: var(--ds-color-neutral-background-subtle);
-  padding: var(--ds-spacing-1);
+  padding: var(--ds-size-1);
 }

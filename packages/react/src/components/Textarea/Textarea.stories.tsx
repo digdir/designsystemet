@@ -17,7 +17,7 @@ export default {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
           maxWidth: '100%',
           width: parameters.layout === 'padded' ? '' : '20rem',
         }}
@@ -74,9 +74,9 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
         {...args}
       />
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Du har skrevet inn: {value}
       </Paragraph>
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
