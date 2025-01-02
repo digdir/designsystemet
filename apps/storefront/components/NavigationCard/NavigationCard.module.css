@@ -28,8 +28,8 @@
   border-radius: var(--ds-border-radius-sm);
   transform: rotate(45deg);
   margin: 0 auto;
-  margin-bottom: calc(var(--ds-spacing-3) + 11px);
-  margin-top: var(--ds-spacing-3);
+  margin-bottom: calc(var(--ds-size-3) + 11px);
+  margin-top: var(--ds-size-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,8 +75,8 @@
 }
 
 .title {
-  margin-top: var(--ds-spacing-4);
-  margin-bottom: var(--ds-spacing-4);
+  margin-top: var(--ds-size-4);
+  margin-bottom: var(--ds-size-4);
   text-align: center;
   text-decoration: underline;
   text-underline-offset: 7px;

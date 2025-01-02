@@ -7,15 +7,15 @@
   --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
+  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
   --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
   --dsc-input-color: var(--ds-color-neutral-text-default);
-  --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  --dsc-input-size--toggle: var(--ds-sizing-6);
-  --dsc-input-size: var(--ds-sizing-12);
+  --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-input-size--toggle: var(--ds-size-6);
+  --dsc-input-size: var(--ds-size-12);
   --dsc-input-stroke: 0.055em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
@@ -146,7 +146,7 @@
   &[type='checkbox'],
   &[type='radio'] {
     --dsc-input-border-width: var(--dsc-input-border-width--toggle);
-    --dsc-input-padding: calc(var(--ds-sizing-1) / 2);
+    --dsc-input-padding: calc(var(--ds-size-1) / 2);
     --dsc-input-size: var(--dsc-input-size--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */

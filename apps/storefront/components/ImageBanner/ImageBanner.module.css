@@ -50,7 +50,7 @@
 }
 
 .title {
-  margin-bottom: var(--ds-spacing-4);
+  margin-bottom: var(--ds-size-4);
 }
 
 .tag {
@@ -75,8 +75,8 @@
   color: inherit;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ds-spacing-5);
-  margin-top: var(--ds-spacing-5);
+  gap: var(--ds-size-5);
+  margin-top: var(--ds-size-5);
 }
 
 @media (max-width: 480px) {
@@ -88,14 +88,14 @@
 .link {
   display: flex;
   align-items: center;
-  margin-top: var(--ds-spacing-5);
+  margin-top: var(--ds-size-5);
   font-size: 18px;
   font-weight: 500;
   width: fit-content;
 }
 
 .link svg {
-  margin-right: var(--ds-spacing-2);
+  margin-right: var(--ds-size-2);
 }
 
 .fallbackImg {

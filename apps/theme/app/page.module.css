@@ -20,15 +20,15 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-spacing-8);
+  margin-top: var(--ds-size-8);
 }
 
 .heading {
-  margin-top: var(--ds-spacing-1);
+  margin-top: var(--ds-size-1);
 }
 
 .desc {
-  margin-top: var(--ds-spacing-5);
+  margin-top: var(--ds-size-5);
 }
 
 .btnGroup {
@@ -36,7 +36,7 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   gap: 20px;
   align-items: center;
   justify-content: center;
-  margin-top: var(--ds-spacing-7);
+  margin-top: var(--ds-size-7);
 }
 
 .headerText {

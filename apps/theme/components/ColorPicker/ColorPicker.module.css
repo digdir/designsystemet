@@ -47,7 +47,7 @@
 }
 
 .label {
-  margin-bottom: var(--ds-spacing-2);
+  margin-bottom: var(--ds-size-2);
   font-size: 18px;
   font-weight: 500;
   display: flex;

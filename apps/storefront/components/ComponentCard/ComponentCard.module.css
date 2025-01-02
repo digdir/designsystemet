@@ -3,7 +3,7 @@
   text-align: center;
   background-color: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
-  padding: var(--ds-spacing-10);
+  padding: var(--ds-size-10);
   border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
@@ -21,7 +21,7 @@
 }
 
 .title {
-  margin-top: var(--ds-spacing-3);
+  margin-top: var(--ds-size-3);
   text-decoration: underline;
   text-underline-offset: 7px;
 }

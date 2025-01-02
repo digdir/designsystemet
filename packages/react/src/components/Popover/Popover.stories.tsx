@@ -62,8 +62,8 @@ export const Interactive: StoryFn<typeof Popover> = () => {
         <div
           style={{
             display: 'flex',
-            gap: 'var(--ds-spacing-2)',
-            marginTop: 'var(--ds-spacing-2)',
+            gap: 'var(--ds-size-2)',
+            marginTop: 'var(--ds-size-2)',
           }}
         >
           <Button data-size='sm'>Ja, slett den</Button>
@@ -128,7 +128,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
           flexWrap: 'wrap',
           height: '100%',
           width: '100%',
@@ -203,7 +203,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
           data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
-          style={{ marginTop: 'var(--ds-spacing-2)' }}
+          style={{ marginTop: 'var(--ds-size-2)' }}
         >
           Slett
         </Button>
@@ -236,7 +236,7 @@ export const WithoutContext: StoryFn<typeof Popover> = () => {
           data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
-          style={{ marginTop: 'var(--ds-spacing-2)' }}
+          style={{ marginTop: 'var(--ds-size-2)' }}
         >
           Slett
         </Button>
