@@ -142,10 +142,8 @@ const colorCategory: Format = {
 
 const isDigit = (s: string) => /^\d+$/.test(s);
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-const isNumericOrPrivateSizeToken = (t: TransformedToken) =>
-  t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
 
-const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken, isNumericOrPrivateSizeToken]);
+const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
 
 /**
  * Formats sizing tokens into CSS properties with support for rounding.
@@ -159,13 +157,13 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     (acc, token) => {
       const [name, value] = format(token).split(':');
 
-      const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
+      const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1);');
 
       const round = `round(down, ${calc}, 0.0625rem)`;
 
       return {
-        round: [...acc.round, `${name}: ${round};`],
-        calc: [...acc.calc, `${name}: ${calc};`],
+        round: [...acc.round, `${name}: ${round}`],
+        calc: [...acc.calc, `${name}: ${calc}`],
       };
     },
     { round: [], calc: [] } as { round: string[]; calc: string[] },
@@ -196,7 +194,7 @@ const semantic: Format = {
 
     const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
-    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['spacing', 'sizing']), filteredTokens);
+    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['size']), filteredTokens);
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
