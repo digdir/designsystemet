@@ -7,10 +7,7 @@ import { getType, isColorCategoryToken } from '../../utils.js';
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
 /** Add token name with prefix to list for removal */
-const removeUnwatedTokens = R.filter(
-  (token: TransformedToken) =>
-    !['ds-base-spacing', 'ds-base-sizing'].includes(token.name) && !isColorCategoryToken(token),
-);
+const removeUnwatedTokens = R.filter((token: TransformedToken) => !isColorCategoryToken(token));
 
 const dissocExtensions = R.pipe(R.dissoc('$extensions'), R.dissocPath(['original', '$extensions']));
 

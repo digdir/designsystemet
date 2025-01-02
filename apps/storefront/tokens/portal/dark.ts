@@ -2,6 +2,633 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
+export const  dimension = [
+  {
+    $type: "dimension",
+    $value: 0,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *0)"
+    },
+    name: "--ds-size-0",
+    attributes: {},
+    path: [
+      "size",
+      "0"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 4,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *1)"
+    },
+    name: "--ds-size-1",
+    attributes: {},
+    path: [
+      "size",
+      "1"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 8,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *2)"
+    },
+    name: "--ds-size-2",
+    attributes: {},
+    path: [
+      "size",
+      "2"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 12,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *3)"
+    },
+    name: "--ds-size-3",
+    attributes: {},
+    path: [
+      "size",
+      "3"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 16,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *4)"
+    },
+    name: "--ds-size-4",
+    attributes: {},
+    path: [
+      "size",
+      "4"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 20,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *5)"
+    },
+    name: "--ds-size-5",
+    attributes: {},
+    path: [
+      "size",
+      "5"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 24,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *6)"
+    },
+    name: "--ds-size-6",
+    attributes: {},
+    path: [
+      "size",
+      "6"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 28,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *7)"
+    },
+    name: "--ds-size-7",
+    attributes: {},
+    path: [
+      "size",
+      "7"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 32,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *8)"
+    },
+    name: "--ds-size-8",
+    attributes: {},
+    path: [
+      "size",
+      "8"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 36,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *9)"
+    },
+    name: "--ds-size-9",
+    attributes: {},
+    path: [
+      "size",
+      "9"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 40,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *10)"
+    },
+    name: "--ds-size-10",
+    attributes: {},
+    path: [
+      "size",
+      "10"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 44,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *11)"
+    },
+    name: "--ds-size-11",
+    attributes: {},
+    path: [
+      "size",
+      "11"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 48,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *12)"
+    },
+    name: "--ds-size-12",
+    attributes: {},
+    path: [
+      "size",
+      "12"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 52,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *13)"
+    },
+    name: "--ds-size-13",
+    attributes: {},
+    path: [
+      "size",
+      "13"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 56,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *14)"
+    },
+    name: "--ds-size-14",
+    attributes: {},
+    path: [
+      "size",
+      "14"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 60,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *15)"
+    },
+    name: "--ds-size-15",
+    attributes: {},
+    path: [
+      "size",
+      "15"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 72,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *18)"
+    },
+    name: "--ds-size-18",
+    attributes: {},
+    path: [
+      "size",
+      "18"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 88,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *22)"
+    },
+    name: "--ds-size-22",
+    attributes: {},
+    path: [
+      "size",
+      "22"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 104,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *26)"
+    },
+    name: "--ds-size-26",
+    attributes: {},
+    path: [
+      "size",
+      "26"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 120,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *30)"
+    },
+    name: "--ds-size-30",
+    attributes: {},
+    path: [
+      "size",
+      "30"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 18,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{size._mode-font-size}"
+    },
+    name: "--ds-size-mode-font-size",
+    attributes: {},
+    path: [
+      "size",
+      "mode-font-size"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 18,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{size._base}"
+    },
+    name: "--ds-size-base",
+    attributes: {},
+    path: [
+      "size",
+      "base"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: 4,
+    filePath: "../../design-tokens/primitives/modes/size/global.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{size._step}"
+    },
+    name: "--ds-size-step",
+    attributes: {},
+    path: [
+      "size",
+      "step"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*0.5,0.25rem)",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "min({border-radius.base}*0.5,{border-radius.scale})"
+    },
+    name: "--ds-border-radius-1",
+    attributes: {},
+    path: [
+      "border-radius",
+      "1"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem,0.25rem*2)",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "min({border-radius.base},{border-radius.scale}*2)"
+    },
+    name: "--ds-border-radius-2",
+    attributes: {},
+    path: [
+      "border-radius",
+      "2"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*2,0.25rem*5)",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "min({border-radius.base}*2,{border-radius.scale}*5)"
+    },
+    name: "--ds-border-radius-3",
+    attributes: {},
+    path: [
+      "border-radius",
+      "3"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*3,0.25rem*7)",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "min({border-radius.base}*3,{border-radius.scale}*7)"
+    },
+    name: "--ds-border-radius-4",
+    attributes: {},
+    path: [
+      "border-radius",
+      "4"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.base}"
+    },
+    name: "--ds-border-radius-5",
+    attributes: {},
+    path: [
+      "border-radius",
+      "5"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "624.9375rem",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "9999"
+    },
+    name: "--ds-border-radius-6",
+    attributes: {},
+    path: [
+      "border-radius",
+      "6"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "4"
+    },
+    name: "--ds-border-radius-base",
+    attributes: {},
+    path: [
+      "border-radius",
+      "base"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/themes/theme4.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "4"
+    },
+    name: "--ds-border-radius-scale",
+    attributes: {},
+    path: [
+      "border-radius",
+      "scale"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*0.5,0.25rem)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.1}"
+    },
+    name: "--ds-border-radius-sm",
+    attributes: {},
+    path: [
+      "border-radius",
+      "sm"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem,0.25rem*2)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.2}"
+    },
+    name: "--ds-border-radius-md",
+    attributes: {},
+    path: [
+      "border-radius",
+      "md"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*2,0.25rem*5)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.3}"
+    },
+    name: "--ds-border-radius-lg",
+    attributes: {},
+    path: [
+      "border-radius",
+      "lg"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*3,0.25rem*7)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.4}"
+    },
+    name: "--ds-border-radius-xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "xl"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.5}"
+    },
+    name: "--ds-border-radius-default",
+    attributes: {},
+    path: [
+      "border-radius",
+      "default"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "624.9375rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.6}"
+    },
+    name: "--ds-border-radius-full",
+    attributes: {},
+    path: [
+      "border-radius",
+      "full"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "dimension",
+      $value: "4"
+    },
+    name: "--ds-sizing-scale",
+    attributes: {},
+    path: [
+      "sizing",
+      "scale"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "dimension",
+      $value: "4"
+    },
+    name: "--ds-spacing-scale",
+    attributes: {},
+    path: [
+      "spacing",
+      "scale"
+    ]
+  }
+] 
+
 export const  color = [
   {
     $type: "color",
@@ -2334,105 +2961,6 @@ export const  color = [
   }
 ] 
 
-export const  dimension = [
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*0.5,0.25rem)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.1}"
-    },
-    name: "--ds-border-radius-sm",
-    attributes: {},
-    path: [
-      "border-radius",
-      "sm"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem,0.25rem*2)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.2}"
-    },
-    name: "--ds-border-radius-md",
-    attributes: {},
-    path: [
-      "border-radius",
-      "md"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*2,0.25rem*5)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.3}"
-    },
-    name: "--ds-border-radius-lg",
-    attributes: {},
-    path: [
-      "border-radius",
-      "lg"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*3,0.25rem*7)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.4}"
-    },
-    name: "--ds-border-radius-xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.5}"
-    },
-    name: "--ds-border-radius-default",
-    attributes: {},
-    path: [
-      "border-radius",
-      "default"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "624.9375rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.6}"
-    },
-    name: "--ds-border-radius-full",
-    attributes: {},
-    path: [
-      "border-radius",
-      "full"
-    ]
-  }
-] 
-
 export const  typography = [
   {
     $type: "typography",
@@ -3100,10 +3628,209 @@ export const  opacity = [
       "disabled",
       "opacity"
     ]
+  },
+  {
+    $type: "opacity",
+    $value: "30%",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "opacity",
+      $value: "30%"
+    },
+    name: "--ds-opacity-30",
+    attributes: {},
+    path: [
+      "opacity",
+      "30"
+    ]
   }
 ] 
 
 export const  shadow = [
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.16)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          blur: "2",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          offsetX: "0",
+          offsetY: "1"
+        }
+      ]
+    },
+    name: "--ds-shadow-100",
+    attributes: {},
+    path: [
+      "shadow",
+      "100"
+    ]
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.15)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "2",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "1"
+        },
+        {
+          blur: "4",
+          spread: "0",
+          color: "rgba(0,0,0,0.1)",
+          offsetX: "0",
+          offsetY: "2"
+        }
+      ]
+    },
+    name: "--ds-shadow-200",
+    attributes: {},
+    path: [
+      "shadow",
+      "200"
+    ]
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.14)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "4",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "2"
+        },
+        {
+          blur: "8",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          offsetX: "0",
+          offsetY: "4"
+        }
+      ]
+    },
+    name: "--ds-shadow-300",
+    attributes: {},
+    path: [
+      "shadow",
+      "300"
+    ]
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.13)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.13)",
+          blur: "5",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "3"
+        },
+        {
+          blur: "12",
+          spread: "0",
+          color: "rgba(0,0,0,0.14)",
+          offsetX: "0",
+          offsetY: "6"
+        }
+      ]
+    },
+    name: "--ds-shadow-400",
+    attributes: {},
+    path: [
+      "shadow",
+      "400"
+    ]
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.16)",
+          blur: "8",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "4"
+        },
+        {
+          blur: "24",
+          spread: "0",
+          color: "rgba(0,0,0,0.16)",
+          offsetX: "0",
+          offsetY: "12"
+        }
+      ]
+    },
+    name: "--ds-shadow-500",
+    attributes: {},
+    path: [
+      "shadow",
+      "500"
+    ]
+  },
   {
     $type: "shadow",
     $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",

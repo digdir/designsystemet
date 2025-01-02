@@ -55,17 +55,6 @@ const dsTransformers = [
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
 
-const outputColorReferences = (token: TransformedToken) => {
-  if (
-    R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
-    R.includes('semantic/color', token.filePath)
-  ) {
-    return true;
-  }
-
-  return false;
-};
-
 export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
   options: {
@@ -232,19 +221,15 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
           {
             destination: `${colorScheme}.ts`,
             format: jsTokens.name,
-            outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
-              if (pathStartsWithOneOf(['border-width'], token)) return false;
+              if (pathStartsWithOneOf(['border-width', 'letter-spacing'], token)) return false;
 
-              if (
-                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
-                R.includes('semantic', token.filePath)
-              ) {
-                return true;
-              }
+              const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
+              const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
 
-              return false;
+              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
+
+              return (isSemanticColor || wantedTypes) && isNotPrivate;
             },
           },
         ],
