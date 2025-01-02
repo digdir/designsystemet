@@ -1,0 +1,45 @@
+import { CodeIcon } from '@navikt/aksel-icons';
+
+import { MenuPageLayout } from '@layouts';
+import { CodeSnippet } from '@repo/components';
+
+export const metadata = {
+  title: 'Størrelsar',
+  description: 'Informasjon om korleis du bruker størrelsar på frontend.',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Størrelsar',
+      date: '2. januar 2025',
+      icon: <CodeIcon />,
+      color: 'blue',
+    }}
+  />
+);
+
+Du bruker data-attributt for å definere størrelsar.
+
+## `data-size`
+
+Dette data-attributtet blir brukt for å endre størrelsar på alle komponentar under seg.
+
+<CodeSnippet language="html">
+{`
+<body>
+  <div>
+    <!-- Innhaldet her vil ha MD størrelsar -->
+  </div>
+
+  <div data-size="sm">
+    <!-- Innhaldet her vil ha SM størrelsar -->
+  </div>
+</body>
+`}
+</CodeSnippet>
+
+## Korleis komponentar blir påverka
+
+## Kort oppsummert
