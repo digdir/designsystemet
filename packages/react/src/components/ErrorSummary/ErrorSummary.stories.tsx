@@ -66,7 +66,7 @@ export const WithForm: Story = () => (
 );
 
 WithForm.parameters = {
-  customStyles: { display: 'grid', gap: 'var(--ds-spacing-4)' },
+  customStyles: { display: 'grid', gap: 'var(--ds-size-4)' },
 };
 
 export const ShowHide: Story = () => {
@@ -78,7 +78,7 @@ export const ShowHide: Story = () => {
         style={{
           display: 'grid',
           placeItems: 'center',
-          marginBottom: 'var(--ds-spacing-4)',
+          marginBottom: 'var(--ds-size-4)',
         }}
       >
         <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>

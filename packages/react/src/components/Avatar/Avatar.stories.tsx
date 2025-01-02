@@ -14,7 +14,7 @@ const meta: Meta<typeof Avatar> = {
     layout: 'padded',
     customStyles: {
       display: 'flex',
-      gap: 'var(--ds-spacing-2)',
+      gap: 'var(--ds-size-2)',
       justifyContent: 'center',
       alignItems: 'center',
     },

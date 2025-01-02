@@ -27,7 +27,7 @@ const meta: Meta<typeof Button> = {
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
     },
   },
 };

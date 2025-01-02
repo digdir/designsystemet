@@ -39,3 +39,27 @@
 @import url('./breadcrumbs.css') layer(ds.components);
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
+
+:root {
+  /* Temporary size shim as part of https://github.com/digdir/designsystemet/issues/2927 */
+  --ds-size-0: var(--ds-sizing-0);
+  --ds-size-1: var(--ds-sizing-1);
+  --ds-size-2: var(--ds-sizing-2);
+  --ds-size-3: var(--ds-sizing-3);
+  --ds-size-4: var(--ds-sizing-4);
+  --ds-size-5: var(--ds-sizing-5);
+  --ds-size-6: var(--ds-sizing-6);
+  --ds-size-7: var(--ds-sizing-7);
+  --ds-size-8: var(--ds-sizing-8);
+  --ds-size-9: var(--ds-sizing-9);
+  --ds-size-10: var(--ds-sizing-10);
+  --ds-size-11: var(--ds-sizing-11);
+  --ds-size-12: var(--ds-sizing-12);
+  --ds-size-13: var(--ds-sizing-13);
+  --ds-size-14: var(--ds-sizing-14);
+  --ds-size-15: var(--ds-sizing-15);
+  --ds-size-18: var(--ds-sizing-18);
+  --ds-size-22: var(--ds-sizing-22);
+  --ds-size-26: var(--ds-sizing-26);
+  --ds-size-30: var(--ds-sizing-30);
+}

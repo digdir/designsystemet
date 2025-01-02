@@ -6,19 +6,19 @@
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--ds-spacing-10);
+  gap: var(--ds-size-10);
 }
 
 .title {
-  margin-bottom: var(--ds-spacing-4);
+  margin-bottom: var(--ds-size-4);
 }
 
 .logos {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--ds-spacing-8);
-  margin-top: var(--ds-spacing-8);
+  gap: var(--ds-size-8);
+  margin-top: var(--ds-size-8);
 }
 
 .links {
@@ -28,7 +28,7 @@
 
 .links li {
   list-style: none;
-  margin-bottom: var(--ds-spacing-5);
+  margin-bottom: var(--ds-size-5);
 }
 
 .links li:last-child {
@@ -68,7 +68,7 @@
 .footer .logos svg {
   height: 26px;
   width: auto;
-  margin-right: var(--ds-spacing-2);
+  margin-right: var(--ds-size-2);
 
   &.udir {
     height: 32px;
@@ -76,20 +76,20 @@
 }
 
 .top {
-  padding: var(--ds-spacing-18) 0;
+  padding: var(--ds-size-18) 0;
 }
 
 .bottom {
   background-color: var(--ds-color-neutral-background-default);
-  padding: var(--ds-spacing-7) 0;
+  padding: var(--ds-size-7) 0;
 }
 
 .button {
   --dsc-button-color: var(--ds-color-neutral-text-default);
-  --dsc-button-padding-block: var(--ds-spacing-4);
-  --dsc-button-padding-inline: var(--ds-spacing-5);
+  --dsc-button-padding-block: var(--ds-size-4);
+  --dsc-button-padding-inline: var(--ds-size-5);
 
   border: 2px dashed var(--ds-color-neutral-border-strong);
   width: fit-content;
-  margin-top: var(--ds-spacing-8);
+  margin-top: var(--ds-size-8);
 }

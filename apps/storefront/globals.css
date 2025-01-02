@@ -8,9 +8,9 @@
   /* Spacing for page and grid */
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem); /* 48px-16px */
-  --grid-gap: var(--ds-spacing-8);
-  --page-spacing-top: var(--ds-spacing-14);
-  --page-spacing-bottom: var(--ds-spacing-14);
+  --grid-gap: var(--ds-size-8);
+  --page-spacing-top: var(--ds-size-14);
+  --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 800px;
 }
 
@@ -27,7 +27,7 @@ body {
 
 .ds-link > :is(img, svg) {
   height: 70%;
-  margin-right: var(--ds-spacing-1);
+  margin-right: var(--ds-size-1);
 }
 
 .root {

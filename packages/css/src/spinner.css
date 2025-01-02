@@ -6,7 +6,7 @@
 
   animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
   box-sizing: border-box;
-  font-size: var(--ds-sizing-11);
+  font-size: var(--ds-size-11);
   height: 1em;
   width: 1em;
 
