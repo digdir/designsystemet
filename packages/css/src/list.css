@@ -1,7 +1,7 @@
 .ds-list {
-  --dsc-list-padding-left: var(--ds-spacing-6);
-  --dsc-list-spacing: var(--ds-spacing-3);
-  --dsc-list-spacing-nested: var(--ds-spacing-2);
+  --dsc-list-padding-left: var(--ds-size-6);
+  --dsc-list-spacing: var(--ds-size-3);
+  --dsc-list-spacing-nested: var(--ds-size-2);
 
   margin: 0;
   padding-left: var(--dsc-list-padding-left);

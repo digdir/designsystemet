@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--ds-spacing-8);
-  padding-top: var(--ds-spacing-18) !important;
+  gap: var(--ds-size-8);
+  padding-top: var(--ds-size-18) !important;
   padding-bottom: var(--page-spacing-bottom) !important;
 
   [data-color-scheme='dark'] &,
@@ -15,8 +15,8 @@
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--ds-spacing-18);
-  column-gap: var(--ds-spacing-12);
+  gap: var(--ds-size-18);
+  column-gap: var(--ds-size-12);
 }
 
 .main [data-featured='true'] {

@@ -36,7 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         level={1}
         data-size='xl'
         style={{
-          marginBottom: 'var(--ds-spacing-4)',
+          marginBottom: 'var(--ds-size-4)',
         }}
       />
     ),

@@ -6,10 +6,10 @@
   justify-content: center;
   align-items: center;
   max-width: 640px;
-  gap: var(--ds-spacing-4);
+  gap: var(--ds-size-4);
   margin: 0 auto;
-  margin-top: var(--ds-spacing-18);
-  padding: var(--ds-spacing-10);
+  margin-top: var(--ds-size-18);
+  padding: var(--ds-size-10);
   border-radius: var(--ds-border-radius-lg);
   border: 1px solid var(--ds-color-neutral-border-subtle);
 }
@@ -46,7 +46,7 @@
   flex-wrap: wrap;
   text-wrap: nowrap;
   justify-content: center;
-  gap: var(--ds-spacing-3);
+  gap: var(--ds-size-3);
   color: var(--ds-color-neutral-text-subtle);
 }
 

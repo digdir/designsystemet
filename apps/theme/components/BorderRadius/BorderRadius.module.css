@@ -5,7 +5,7 @@
   margin-top: 16px;
 
   & > *:first-child {
-    margin-bottom: var(--ds-spacing-6);
+    margin-bottom: var(--ds-size-6);
   }
 }
 .item {

@@ -1,7 +1,7 @@
 .ds-combobox {
   display: grid;
   background-color: transparent;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
 }
 
 .ds-combobox [data-floating-ui-portal] {
@@ -10,7 +10,7 @@
 }
 
 .ds-combobox__options-wrapper {
-  padding: var(--ds-spacing-2);
+  padding: var(--ds-size-2);
   background: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
   overflow-y: auto;
@@ -28,9 +28,9 @@
   display: flex;
   align-items: center;
   position: relative;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   cursor: text;
-  padding: var(--ds-spacing-2);
+  padding: var(--ds-size-2);
   border-radius: var(--ds-border-radius-md);
   width: 100%;
   height: auto;
@@ -54,18 +54,18 @@
 }
 
 .ds-combobox--sm .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-10);
-  padding: 5px var(--ds-spacing-2);
+  min-height: var(--ds-size-10);
+  padding: 5px var(--ds-size-2);
 }
 
 .ds-combobox--md .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-12);
-  padding: 7px var(--ds-spacing-3);
+  min-height: var(--ds-size-12);
+  padding: 7px var(--ds-size-3);
 }
 
 .ds-combobox--lg .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-14);
-  padding: 7px var(--ds-spacing-4);
+  min-height: var(--ds-size-14);
+  padding: 7px var(--ds-size-4);
 }
 
 .ds-combobox__input__wrapper .ds-combobox__input:focus {
@@ -81,7 +81,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
   align-items: center;
   background-color: transparent;
 }
@@ -103,13 +103,13 @@
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   align-items: center;
 }
 
 .ds-combobox__description {
   color: var(--ds-color-neutral-text-subtle);
-  margin-top: calc(var(--ds-spacing-2) * -1);
+  margin-top: calc(var(--ds-size-2) * -1);
 }
 
 .ds-combobox__clear-button {
@@ -159,7 +159,7 @@
 }
 
 .ds-combobox__error-message {
-  margin-top: var(--ds-spacing-2);
+  margin-top: var(--ds-size-2);
 }
 
 .ds-combobox__error-message:empty {
@@ -168,7 +168,7 @@
 
 .ds-combobox__loading {
   display: flex;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
   align-content: center;
 }
 
@@ -189,20 +189,20 @@
 
 .ds-combobox__empty {
   font-weight: 400;
-  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  padding: var(--ds-size-2) var(--ds-size-3);
 }
 
 .ds-combobox__custom {
   font-weight: 400;
-  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  padding: var(--ds-size-2) var(--ds-size-3);
 }
 
 .ds-combobox__option {
   width: 100%;
   display: grid;
   grid-template-columns: 1.2em 1fr;
-  padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  padding-left: var(--ds-spacing-1);
+  padding: var(--ds-size-2) var(--ds-size-3);
+  padding-left: var(--ds-size-1);
   border: none;
   border-left: 5px solid transparent;
   border-radius: var(--ds-border-radius-sm);
@@ -226,7 +226,7 @@
 
 .ds-combobox__option.ds-combobox__option--multiple {
   grid-template-columns: auto 1fr;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
 }
 
 .ds-combobox__option__label {
@@ -235,7 +235,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   cursor: pointer;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   color: var(--ds-color-neutral-text-default);
 }
 
@@ -244,7 +244,7 @@
 }
 
 .ds-combobox__option__icon-wrapper {
-  width: var(--ds-spacing-6);
+  width: var(--ds-size-6);
   aspect-ratio: 1 / 1;
   border: 2px solid var(--ds-color-neutral-border-default);
   border-radius: var(--ds-border-radius-sm);
@@ -258,15 +258,15 @@
 }
 
 .ds-combobox--sm .ds-combobox__option .ds-combobox__option__icon-wrapper {
-  width: var(--ds-spacing-5);
+  width: var(--ds-size-5);
 }
 
 .ds-combobox--md .ds-combobox__option .ds-combobox__option__icon-wrapper {
-  width: var(--ds-spacing-6);
+  width: var(--ds-size-6);
 }
 
 .ds-combobox--lg .ds-combobox__option .ds-combobox__option__icon-wrapper {
-  width: var(--ds-spacing-7);
+  width: var(--ds-size-7);
 }
 
 .ds-combobox__option__icon-wrapper.ds-combobox__option__icon-wrapper--selected {
@@ -300,7 +300,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   color: var(--ds-color-neutral-text-subtle);
   font-weight: 400;
 }

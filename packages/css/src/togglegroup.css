@@ -2,7 +2,7 @@
   --dsc-togglegroup-background: var(--ds-color-background-default);
   /* Todo: Explore the border color here */
   --dsc-togglegroup-border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-default);
-  --dsc-togglegroup-padding: var(--ds-spacing-1);
+  --dsc-togglegroup-padding: var(--ds-size-1);
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
 
   background: var(--dsc-togglegroup-background);
