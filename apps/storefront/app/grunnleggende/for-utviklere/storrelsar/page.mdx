@@ -20,11 +20,12 @@ export default ({ children }) => (
   />
 );
 
-Du bruker data-attributt for å definere størrelsar.
+Du bruker data-attributt for å endre størrelsar.
 
 ## `data-size`
 
 Dette data-attributtet blir brukt for å endre størrelsar på alle komponentar under seg.
+Alle komponentar kan være i størrelsane, `sm`, `md` eller `lg`. Som standard vil `md` bli nytta.
 
 <CodeSnippet language="html">
 {`
@@ -40,6 +41,31 @@ Dette data-attributtet blir brukt for å endre størrelsar på alle komponentar 
 `}
 </CodeSnippet>
 
+Nokre komponentar har støtte for fleire størrelsar, som `xs` og `xl`. Desse størrelsane vil bli spesifisert i dokumentasjonen til komponenten,
+og det er anbefalt å bruke dei størrelsane som er spesifisert.
+
 ## Korleis komponentar blir påverka
 
-## Kort oppsummert
+Me delar komponentar inn i 2 grupper for størrelsar:
+
+- Eksplisitt
+- Cascading
+
+### Eksplisitt
+
+Komponentar som ikkje vil følgje størrelsen til forelderen. Desse komponentane må ha `data-size` satt direkte på seg.
+
+Dette er komponentar som
+- `Heading`
+
+### Cascading
+
+Denne gruppa inneheld resten av komponentane, og vil arve størrelse frå næraste forelder med `data-size` satt.
+
+<br />
+<br />
+<br />
+<br />
+
+kanskje ha med?:
+Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen.
