@@ -53,7 +53,7 @@
 }
 
 .ds-textfield--sm .ds-textfield__adornment {
-  padding: var(--ds-sizing-2) var(--ds-spacing-3);
+  padding: var(--ds-size-2) var(--ds-spacing-3);
 }
 
 .ds-textfield--md .ds-textfield__adornment {
@@ -65,15 +65,15 @@
 }
 
 .ds-textfield--sm .ds-textfield__field {
-  height: var(--ds-sizing-10);
+  height: var(--ds-size-10);
 }
 
 .ds-textfield--md .ds-textfield__field {
-  height: var(--ds-sizing-12);
+  height: var(--ds-size-12);
 }
 
 .ds-textfield--lg .ds-textfield__field {
-  height: var(--ds-sizing-14);
+  height: var(--ds-size-14);
 }
 
 .ds-textfield--sm .ds-textfield__input {

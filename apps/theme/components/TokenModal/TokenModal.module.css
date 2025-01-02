@@ -104,8 +104,8 @@
   color: var(--ds-color-accent-contrast-default);
   aspect-ratio: 1;
   border-radius: var(--ds-border-radius-full);
-  width: var(--ds-sizing-8);
-  height: var(--ds-sizing-8);
+  width: var(--ds-size-8);
+  height: var(--ds-size-8);
   display: grid;
   place-items: center;
   font-size: var(--ds-body-sm-font-size);

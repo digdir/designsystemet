@@ -7,7 +7,7 @@
   --dsc-alert-border-radius: var(--ds-border-radius-md);
   --dsc-alert-color: var(--ds-color-info-text-default);
   --dsc-alert-gap: var(--ds-spacing-2);
-  --dsc-alert-icon-size: var(--ds-sizing-7);
+  --dsc-alert-icon-size: var(--ds-size-7);
   --dsc-alert-padding: var(--ds-spacing-6);
 
   background: var(--dsc-alert-background);

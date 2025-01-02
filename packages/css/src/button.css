@@ -7,7 +7,7 @@
   --dsc-button-border-color: transparent;
   --dsc-button-gap: var(--ds-spacing-2);
   --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-button-size: var(--ds-sizing-12);
+  --dsc-button-size: var(--ds-size-12);
 
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {

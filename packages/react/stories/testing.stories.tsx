@@ -246,7 +246,7 @@ export const Sizes: StoryFn = () => {
       {sizes.map((size) => (
         <div
           key={size}
-          style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
+          style={{ display: 'flex', gap: 'var(--ds-size-2)' }}
           data-size={size}
         >
           <Chip.Radio>Radio</Chip.Radio>

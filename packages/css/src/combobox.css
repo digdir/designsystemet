@@ -54,17 +54,17 @@
 }
 
 .ds-combobox--sm .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-10);
+  min-height: var(--ds-size-10);
   padding: 5px var(--ds-spacing-2);
 }
 
 .ds-combobox--md .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-12);
+  min-height: var(--ds-size-12);
   padding: 7px var(--ds-spacing-3);
 }
 
 .ds-combobox--lg .ds-combobox__input__wrapper {
-  min-height: var(--ds-sizing-14);
+  min-height: var(--ds-size-14);
   padding: 7px var(--ds-spacing-4);
 }
 
