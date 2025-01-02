@@ -1,5 +1,4 @@
 ---
-"@digdir/designsystemet-theme": minor
 "@digdir/designsystemet-css": minor
 ---
 
