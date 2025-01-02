@@ -5,8 +5,8 @@
   --dsc-button-color: var(--ds-color-contrast-default);
   --dsc-button-color--hover: var(--ds-color-contrast-default);
   --dsc-button-border-color: transparent;
-  --dsc-button-gap: var(--ds-spacing-2);
-  --dsc-button-padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  --dsc-button-gap: var(--ds-size-2);
+  --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
 
   &[data-variant='secondary'],

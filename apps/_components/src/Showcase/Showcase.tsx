@@ -207,10 +207,10 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
         </div>
       </div>
       <div className={cl(classes.card, classes.switches)}>
-        <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Innstillinger
         </Heading>
-        <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
           Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
@@ -221,10 +221,10 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
         </div>
       </div>
       <div className={cl(classes.card, classes.combobox)}>
-        <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Hvor er du fra?
         </Heading>
-        <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
           Svar under så finner vi flyreise
         </Paragraph>
         <div className={classes.toggleCombo}>

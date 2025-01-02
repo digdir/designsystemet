@@ -2,7 +2,7 @@
   --dsc-tag-background: var(--ds-color-surface-default);
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
-  --dsc-tag-padding: 0 var(--ds-spacing-2);
+  --dsc-tag-padding: 0 var(--ds-size-2);
 
   align-items: center;
   background: var(--dsc-tag-background);

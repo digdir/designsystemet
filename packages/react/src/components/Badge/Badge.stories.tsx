@@ -35,7 +35,7 @@ export const Floating: Story = (args) => (
   <div
     style={{
       display: 'flex',
-      gap: 'var(--ds-spacing-6)',
+      gap: 'var(--ds-size-6)',
     }}
   >
     <Badge.Position placement='top-right'>
@@ -105,7 +105,7 @@ export const CustomPlacement: Story = (args) => (
   <div
     style={{
       display: 'flex',
-      gap: 'var(--ds-spacing-6)',
+      gap: 'var(--ds-size-6)',
     }}
   >
     <Badge.Position
@@ -125,7 +125,7 @@ export const Status: Story = (args) => (
   <div
     style={{
       display: 'flex',
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
     }}
   >
     <Badge.Position data-size='sm'>
@@ -168,7 +168,7 @@ export const InButton: Story = (args) => (
   <div
     style={{
       display: 'flex',
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
     }}
   >
     <Button icon variant='tertiary'>

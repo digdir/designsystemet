@@ -1,12 +1,12 @@
 .ds-textfield {
   display: grid;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
 }
 
 .ds-textfield__adornment {
   color: var(--ds-color-neutral-text-subtle);
   background: var(--ds-color-neutral-background-subtle);
-  padding: 9px var(--ds-spacing-4);
+  padding: 9px var(--ds-size-4);
   border-radius: var(--ds-border-radius-md);
   border: solid 1px var(--ds-color-neutral-border-default);
   box-sizing: border-box;
@@ -20,7 +20,7 @@
   flex: 0 1 auto;
   width: 100%;
   appearance: none;
-  padding: 0 var(--ds-spacing-3);
+  padding: 0 var(--ds-size-3);
   border: solid 1px var(--ds-color-neutral-border-default);
   background: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
@@ -53,15 +53,15 @@
 }
 
 .ds-textfield--sm .ds-textfield__adornment {
-  padding: var(--ds-size-2) var(--ds-spacing-3);
+  padding: var(--ds-size-2) var(--ds-size-3);
 }
 
 .ds-textfield--md .ds-textfield__adornment {
-  padding: 0.65rem var(--ds-spacing-4);
+  padding: 0.65rem var(--ds-size-4);
 }
 
 .ds-textfield--lg .ds-textfield__adornment {
-  padding: 0.85rem var(--ds-spacing-5);
+  padding: 0.85rem var(--ds-size-5);
 }
 
 .ds-textfield--sm .ds-textfield__field {
@@ -77,28 +77,28 @@
 }
 
 .ds-textfield--sm .ds-textfield__input {
-  padding: 0 var(--ds-spacing-2);
+  padding: 0 var(--ds-size-2);
 }
 
 .ds-textfield--md .ds-textfield__input {
-  padding: 0 var(--ds-spacing-3);
+  padding: 0 var(--ds-size-3);
 }
 
 .ds-textfield--lg .ds-textfield__input {
-  padding: 0 var(--ds-spacing-4);
+  padding: 0 var(--ds-size-4);
 }
 
 .ds-textfield__label {
   min-width: min-content;
   display: inline-flex;
   flex-direction: row;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   align-items: center;
 }
 
 .ds-textfield__description {
   color: var(--ds-color-neutral-text-subtle);
-  margin-top: calc(var(--ds-spacing-2) * -1);
+  margin-top: calc(var(--ds-size-2) * -1);
 }
 
 .ds-textfield:has(.ds-textfield__input:disabled) {
