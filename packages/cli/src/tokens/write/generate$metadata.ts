@@ -11,7 +11,13 @@ export function generateMetadataJson(schemes: ColorSchemes, themes: string[], co
   return {
     tokenSetOrder: [
       'primitives/globals',
-      'primitives/size/default',
+      'primitives/modes/size/small',
+      'primitives/modes/size/medium',
+      'primitives/modes/size/large',
+      'primitives/modes/size/global',
+      'primitives/modes/typography/size/small',
+      'primitives/modes/typography/size/medium',
+      'primitives/modes/typography/size/large',
       ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
       ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
       ...schemes.flatMap((scheme) => [

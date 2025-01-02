@@ -61,10 +61,18 @@ export const resolveMath: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    const isValidValue = ['string', 'object'].includes(typeof (token.$value ?? token.value));
+    const isValidValue = ['string', 'object'].includes(typeof getValue(token));
     const isTokenOfInterest = !pathStartsWithOneOf(['border-radius'], token);
 
     return isValidValue && isTokenOfInterest;
   },
   transform: (token, platformCfg) => checkAndEvaluateMath(token, platformCfg.mathFractionDigits),
+};
+
+export const unitless: Transform = {
+  name: 'ds/unitless',
+  type: 'value',
+  transitive: true,
+  filter: (token) => pathStartsWithOneOf(['size'], token),
+  transform: (token) => parseInt(getValue<string>(token)),
 };
