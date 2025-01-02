@@ -8,11 +8,10 @@ import { DEFAULT_COLOR, buildOptions } from '../build.js';
 import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
+import { nameKebab, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
-  IsCalculatedToken,
   SDConfigForThemePermutation,
   ThemeDimension,
   ThemePermutation,
@@ -33,6 +32,7 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
+StyleDictionary.registerTransform(unitless);
 
 StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
@@ -44,6 +44,7 @@ const dsTransformers = [
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
+  unitless.name,
   'ts/typography/fontWeight',
   typographyName.name,
   'ts/color/modifiers',
@@ -177,16 +178,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
-  /**
-   * This is a workaround for our formatters to support transative transformers while retaining outputReference.
-   *
-   * This function will wrap formatted token in `calc()`
-   *
-   * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
-   */
-  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing'], token);
-
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -196,7 +187,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         outPath,
         theme,
         basePxFontSize,
-        isCalculatedToken,
         selector,
         layer,
         //
@@ -207,16 +197,20 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
           {
             destination: `semantic.css`,
             format: formats.semantic.name,
-            filter: (token) =>
-              (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token),
+            filter: (token) => {
+              const unwantedPaths = pathStartsWithOneOf(['font-size', 'line-height', 'letter-spacing'], token);
+              const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
+              const unwantedTokens = !(unwantedPaths || unwantedTypes);
+
+              return !token.isSource && unwantedTokens;
+            },
           },
         ],
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius'], token);
-            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius', 'size', 'spacing', 'sizing'], token);
+            return include && outputReferencesFilter(token, options);
           },
         },
       },
@@ -295,14 +289,14 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
             format: formats.typography.name,
             filter: (token) => {
               const included = typeEquals(
-                ['typography', 'fontweight', 'fontFamily', 'lineheight', 'fontsize', 'dimension', 'font'],
+                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font', 'fontsize'],
                 token,
               );
 
               return (
                 included &&
                 !pathStartsWithOneOf(
-                  ['spacing', 'sizing', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
+                  ['spacing', 'sizing', 'size', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
                   token,
                 )
               );
