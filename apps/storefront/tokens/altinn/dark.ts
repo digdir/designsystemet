@@ -374,134 +374,6 @@ export const  dimension = [
   {
     $type: "dimension",
     $value: "min(0.25rem*0.5,0.25rem)",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "min({border-radius.base}*0.5,{border-radius.scale})"
-    },
-    name: "--ds-border-radius-1",
-    attributes: {},
-    path: [
-      "border-radius",
-      "1"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem,0.25rem*2)",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "min({border-radius.base},{border-radius.scale}*2)"
-    },
-    name: "--ds-border-radius-2",
-    attributes: {},
-    path: [
-      "border-radius",
-      "2"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*2,0.25rem*5)",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "min({border-radius.base}*2,{border-radius.scale}*5)"
-    },
-    name: "--ds-border-radius-3",
-    attributes: {},
-    path: [
-      "border-radius",
-      "3"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*3,0.25rem*7)",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "min({border-radius.base}*3,{border-radius.scale}*7)"
-    },
-    name: "--ds-border-radius-4",
-    attributes: {},
-    path: [
-      "border-radius",
-      "4"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.base}"
-    },
-    name: "--ds-border-radius-5",
-    attributes: {},
-    path: [
-      "border-radius",
-      "5"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "624.9375rem",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "9999"
-    },
-    name: "--ds-border-radius-6",
-    attributes: {},
-    path: [
-      "border-radius",
-      "6"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "4"
-    },
-    name: "--ds-border-radius-base",
-    attributes: {},
-    path: [
-      "border-radius",
-      "base"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/themes/theme2.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "4"
-    },
-    name: "--ds-border-radius-scale",
-    attributes: {},
-    path: [
-      "border-radius",
-      "scale"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*0.5,0.25rem)",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
@@ -593,6 +465,38 @@ export const  dimension = [
     path: [
       "border-radius",
       "full"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "1px",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-width.1}"
+    },
+    name: "--ds-border-width-default",
+    attributes: {},
+    path: [
+      "border-width",
+      "default"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "2px",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-width.2}"
+    },
+    name: "--ds-border-width-highlight",
+    attributes: {},
+    path: [
+      "border-width",
+      "highlight"
     ]
   }
 ] 

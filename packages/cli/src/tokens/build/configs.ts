@@ -222,7 +222,11 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
             destination: `${colorScheme}.ts`,
             format: jsTokens.name,
             filter: (token: TransformedToken) => {
-              if (pathStartsWithOneOf(['border-width', 'letter-spacing'], token)) return false;
+              if (
+                pathStartsWithOneOf(['border-width', 'letter-spacing', 'border-radius'], token) &&
+                !R.includes('semantic', token.filePath)
+              )
+                return false;
 
               const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
               const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
