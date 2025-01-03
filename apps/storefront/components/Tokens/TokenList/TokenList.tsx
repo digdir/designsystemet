@@ -6,7 +6,6 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
-import { getColorNameFromNumber } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -16,7 +15,7 @@ import type { TransformedToken as Token } from 'style-dictionary';
 import * as tokensDark from '../../../tokens/dark';
 import * as tokensLight from '../../../tokens/light';
 import { capitalizeString } from '../../../utils/StringHelpers';
-import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
+import { TokenColor } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
@@ -150,8 +149,6 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
-  const weight = getColorWeight(token.original.$value as string);
-
   return (
     <div className={classes.card} {...rest}>
       <div className={classes.preview}>
@@ -162,7 +159,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
 
       <div className={classes.textContainer}>
         <Heading level={5} data-size='2xs' className={classes.name}>
-          {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
+          {capitalizeString(title)}
           &nbsp;
           <ClipboardButton
             title='Kopier CSS variabel'
