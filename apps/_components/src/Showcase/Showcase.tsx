@@ -252,11 +252,11 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
-        <Tabs defaultValue='value1'>
+        <Tabs>
           <Tabs.List>
-            <Tabs.Tab value='value1'>Min profil</Tabs.Tab>
-            <Tabs.Tab value='value2'>Tjenester</Tabs.Tab>
-            <Tabs.Tab value='value3'>Innstillinger</Tabs.Tab>
+            <Tabs.Tab>Min profil</Tabs.Tab>
+            <Tabs.Tab>Tjenester</Tabs.Tab>
+            <Tabs.Tab>Innstillinger</Tabs.Tab>
           </Tabs.List>
         </Tabs>
         <Paragraph>

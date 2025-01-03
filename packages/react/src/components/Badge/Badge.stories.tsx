@@ -146,21 +146,21 @@ export const Status: Story = (args) => (
 export const InTabs: Story = (args) => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
-      <Tabs.Tab value='value1'>
+      <Tabs.Tab>
         <HeartFillIcon aria-hidden />
         Favoritter
         <Badge count={64} maxCount={10} data-color='neutral' />
       </Tabs.Tab>
-      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-      <Tabs.Tab value='value3'>
+      <Tabs.Tab>Tab 2</Tabs.Tab>
+      <Tabs.Tab>
         <PencilIcon aria-hidden />
         Nylige
         <Badge count={2} data-color='neutral' />
       </Tabs.Tab>
     </Tabs.List>
-    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+    <Tabs.Panel>content 1</Tabs.Panel>
+    <Tabs.Panel>content 2</Tabs.Panel>
+    <Tabs.Panel>content 3</Tabs.Panel>
   </Tabs>
 );
 
