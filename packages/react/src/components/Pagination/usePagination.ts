@@ -66,9 +66,7 @@ export const usePagination = ({
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
           buttonProps: (page ? {
             'aria-current': page === currentPage ? 'page' : undefined,
-            'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
             onClick: handleClick(page),
-            tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
             variant: page === currentPage ? 'primary' : 'tertiary',
           } : null) as (PaginationButtonProps | null),
         }),
