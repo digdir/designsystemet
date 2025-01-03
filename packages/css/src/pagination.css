@@ -6,6 +6,7 @@
 
   & > :is(ol, ul) {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: var(--dsc-pagination-gap);
     list-style: none;
@@ -13,12 +14,13 @@
     padding: 0;
 
     & > li:first-child > ::before,
-    & > li:last-child > ::after {
+    & > li:last-child > ::before {
       content: '';
       background: currentcolor;
       height: var(--dsc-pagination-chevron-size);
       mask: center / contain no-repeat var(--dsc-pagination-icon-url);
       width: var(--dsc-pagination-chevron-size);
+      order: 1;
 
       @media (forced-colors: active) {
         background: LinkText;
@@ -27,21 +29,15 @@
 
     & > li:first-child > ::before {
       rotate: 180deg;
+      order: 0;
     }
 
     /* Style as non-interactive ellipsis when empty */
-    & > li > :empty {
-      color: inherit;
-      padding: 0; /* Make ellipsis element square */
-      pointer-events: none;
-
-      &::before {
-        content: '\2026'; /* ellipsis */
-      }
+    & > li:empty::before {
+      content: '\2026'; /* ellipsis */
+      display: block;
+      min-width: var(--ds-size-12);
+      text-align: center;
     }
-  }
-
-  &[data-compact] {
-    --dsc-pagination-gap: var(--ds-size-0);
   }
 }

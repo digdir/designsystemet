@@ -53,3 +53,36 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
     </table>
   );
 });
+
+const styles: Record<string, string> = {};
+const noPrev = false;
+const noNext = false;
+const pages = Array<{ current: 'page' | 'false'; key: string; page: string }>();
+
+<nav className={styles.pagination}>
+  <ul>
+    <li>
+      <button type='button' className={styles.button} aria-disabled={noPrev}>
+        Forrige
+      </button>
+    </li>
+    {pages.map(({ current, key, page }) => (
+      <li key={key}>
+        {page && (
+          <button
+            type='button'
+            className={styles.button}
+            aria-current={current}
+          >
+            {page}
+          </button>
+        )}
+      </li>
+    ))}
+    <li>
+      <button type='button' className={styles.button} aria-disabled={noNext}>
+        Neste
+      </button>
+    </li>
+  </ul>
+</nav>;

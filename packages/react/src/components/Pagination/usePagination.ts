@@ -64,13 +64,13 @@ export const usePagination = ({
         (page, index) => ({
           page: page || '',
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
-          buttonProps: {
+          buttonProps: (page ? {
             'aria-current': page === currentPage ? 'page' : undefined,
             'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
             onClick: handleClick(page),
             tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
             variant: page === currentPage ? 'primary' : 'tertiary',
-          } as PaginationButtonProps,
+          } : null) as (PaginationButtonProps | null),
         }),
       ),
       /** Properties to spread on Pagination.Button used for previous naviagation */

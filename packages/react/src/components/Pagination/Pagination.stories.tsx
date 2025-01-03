@@ -28,9 +28,11 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
         </Pagination.Item>
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
-            <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-              {page}
-            </Pagination.Button>
+            {page && (
+              <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+                {page}
+              </Pagination.Button>
+            )}
           </Pagination.Item>
         ))}
         <Pagination.Item>
@@ -68,13 +70,15 @@ export const WithAnchor: StoryFn<UsePaginationProps> = (args) => {
         </Pagination.Item>
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
-            <Pagination.Button
-              asChild
-              aria-label={`Side ${page}`}
-              {...buttonProps}
-            >
-              <a href={`#side-${page}`}>{page}</a>
-            </Pagination.Button>
+            {page && (
+              <Pagination.Button
+                asChild
+                aria-label={`Side ${page}`}
+                {...buttonProps}
+              >
+                <a href={`#side-${page}`}>{page}</a>
+              </Pagination.Button>
+            )}
           </Pagination.Item>
         ))}
         <Pagination.Item>
