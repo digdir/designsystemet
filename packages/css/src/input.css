@@ -2,22 +2,20 @@
   --dsc-input-background--checked: var(--dsc-input-border-color--checked);
   --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
   --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
-  --dsc-input-background--switch: var(--ds-color-neutral-border-default);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-base-default);
   --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-spacing-1) / 2)); /* Allow border-width to grow with font-size */
+  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: 1px;
   --dsc-input-color--checked: var(--ds-color-contrast-default);
   --dsc-input-color--invalid: var(--ds-color-danger-contrast-default);
   --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
   --dsc-input-color: var(--ds-color-neutral-text-default);
-  --dsc-input-padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  --dsc-input-size--switch: var(--ds-sizing-7);
-  --dsc-input-size--toggle: var(--ds-sizing-6);
-  --dsc-input-size: var(--ds-sizing-12);
+  --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-input-size--toggle: var(--ds-size-6);
+  --dsc-input-size: var(--ds-size-12);
   --dsc-input-stroke: 0.055em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
@@ -74,11 +72,6 @@
 
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size */
-  }
-
-  /* Change switch background with low specificity to allow states to overwrite */
-  &:where([role='switch']) {
-    --dsc-input-background: var(--dsc-input-background--switch);
   }
 
   &:is(select) {
@@ -153,7 +146,7 @@
   &[type='checkbox'],
   &[type='radio'] {
     --dsc-input-border-width: var(--dsc-input-border-width--toggle);
-    --dsc-input-padding: calc(var(--ds-sizing-1) / 2);
+    --dsc-input-padding: calc(var(--ds-size-1) / 2);
     --dsc-input-size: var(--dsc-input-size--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */
@@ -231,42 +224,20 @@
    * Switch
    */
   &[role='switch']:is([type='radio'], [type='checkbox']) {
-    --dsc-input-color: transparent; /* Hide checkmark */
-    --dsc-input-padding: var(--ds-sizing-1);
-    --dsc-input-size: var(--dsc-input-size--switch);
-    --circle-color: var(--dsc-input-color--checked);
     --circle-position: left;
 
     border-radius: var(--ds-border-radius-full);
-    padding-left: var(--dsc-input-size); /* Push checkmark to right side */
     transition: 0.2s background-position;
-    width: calc((var(--dsc-input-size) - var(--dsc-input-border-width)) * 2); /* Subtract border-width to make background-image math correct */
-    background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position) /
-      50% 100% no-repeat padding-box, var(--dsc-input-background);
+    width: calc(var(--dsc-input-size) * 2);
+    background: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) var(--circle-position) / calc(50% - var(--dsc-input-padding) * 2) 100%
+      no-repeat content-box, var(--dsc-input-background);
 
     &:checked {
-      --dsc-input-color: var(--dsc-input-border-color);
       --circle-position: right;
     }
 
-    &[readonly] {
-      --circle-color: var(--dsc-input-color--readonly);
-    }
-
     @media (forced-colors: active) {
-      --circle-color: CanvasText;
-      --dsc-input-background: Canvas;
-      --dsc-input-border-color: ButtonText;
-
       forced-color-adjust: none; /* To be able to draw switch */
-      background: var(--check-left), var(--check-right), radial-gradient(circle closest-side, var(--circle-color) 95%, transparent 100%) var(--circle-position)
-        / 50% 100% no-repeat padding-box, var(--dsc-input-background);
-
-      &:checked {
-        --circle-color: CanvasText;
-        --dsc-input-background: LinkText;
-        --dsc-input-border-color: LinkText;
-      }
 
       &:disabled,
       &[aria-disabled='true'],

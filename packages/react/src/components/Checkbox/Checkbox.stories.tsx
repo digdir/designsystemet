@@ -109,8 +109,8 @@ export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
         <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
       </Fieldset>
       <ValidationMessage {...validationMessageProps} />
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Du har valgt: {value.toString()}
       </Paragraph>
       <div style={{ display: 'flex', gap: '1rem' }}>

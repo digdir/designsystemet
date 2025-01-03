@@ -32,9 +32,9 @@ export const Controlled: StoryFn<typeof Search> = () => {
         <Search.Button />
       </Search>
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Du har skrevet inn: {value}
       </Paragraph>
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
@@ -49,7 +49,7 @@ export const Variants: StoryFn<typeof Search> = () => (
       <Search.Clear />
     </Search>
 
-    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+    <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
       <Search.Input aria-label='Søk' />
@@ -57,7 +57,7 @@ export const Variants: StoryFn<typeof Search> = () => (
       <Search.Button />
     </Search>
 
-    <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+    <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
       <Search.Input aria-label='Søk' />
@@ -102,7 +102,7 @@ export const Form: StoryFn<typeof Search> = () => {
         </Search>
       </form>
 
-      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-spacing-2)' }}>
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-size-2)' }}>
         Submitted value: {submittedValue}
       </Paragraph>
     </>

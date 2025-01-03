@@ -2,7 +2,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--ds-spacing-8);
+  gap: var(--ds-size-8);
   margin: 0 auto;
   background-color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
@@ -159,5 +159,5 @@
 .toggleCombo {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
 }

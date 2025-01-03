@@ -8,7 +8,7 @@
 }
 
 .codeSnippet > pre {
-  padding-right: var(--ds-spacing-18) !important;
+  padding-right: var(--ds-size-18) !important;
   background-color: var(--ds-color-neutral-background-subtle) !important;
 }
 
@@ -22,6 +22,6 @@
 
 .copyButton {
   position: absolute;
-  top: var(--ds-spacing-2);
-  right: var(--ds-spacing-2);
+  top: var(--ds-size-2);
+  right: var(--ds-size-2);
 }

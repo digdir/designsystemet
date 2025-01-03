@@ -1,10 +1,16 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader, usesReferences } from 'style-dictionary/utils';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
-import { getValue, isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../utils.js';
-import { type IsCalculatedToken, colorCategories } from '../types.js';
+import {
+  getValue,
+  isColorCategoryToken,
+  isGlobalColorToken,
+  isSemanticToken,
+  pathStartsWithOneOf,
+} from '../../utils.js';
+import { colorCategories } from '../types.js';
 
 /**
  * In the given tokens array, inline and remove tokens that match the predicate
@@ -134,13 +140,50 @@ const colorCategory: Format = {
   },
 };
 
-const calculatedVariable = R.pipe(R.split(/:(.*?);/g), (split) => `${split[0]}: calc(${R.trim(split[1])});`);
+const isDigit = (s: string) => /^\d+$/.test(s);
+const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+const isNumericOrPrivateSizeToken = (t: TransformedToken) =>
+  t.path[0] === 'size' && (isDigit(t.path[1]) || t.path[1].startsWith('_'));
+
+const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken, isNumericOrPrivateSizeToken]);
+
+/**
+ * Formats sizing tokens into CSS properties with support for rounding.
+ *
+ * @param format - Function to format a token into a CSS property string.
+ * @param tokens - Array of transformed tokens to format.
+ * @returns Formatted CSS string with default calc and [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
+ */
+const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
+  const { round, calc } = R.reduce(
+    (acc, token) => {
+      const [name, value] = format(token).split(':');
+
+      const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
+
+      const round = `round(down, ${calc}, 0.0625rem)`;
+
+      return {
+        round: [...acc.round, `${name}: ${round};`],
+        calc: [...acc.calc, `${name}: ${calc};`],
+      };
+    },
+    { round: [], calc: [] } as { round: string[]; calc: string[] },
+    tokens,
+  );
+
+  return `
+${calc.join('\n')}\n
+  @supports (width: round(down, .1em, 1px)) {
+${round.join('\n')}
+  }`;
+};
 
 const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, isCalculatedToken, layer } = platform;
+    const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
 
@@ -151,26 +194,10 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const isDigit = (s: string) => /^\d+$/.test(s);
-    const isUnwantedBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-    const tokens = inlineTokens(isUnwantedBorderRadiusToken, dictionary.allTokens);
-
-    const formattedTokens = R.map((token: TransformedToken) => {
-      const originalValue = getValue<string>(token.original);
-
-      if (
-        usesReferences(originalValue) &&
-        typeof outputReferences === 'function' &&
-        outputReferences?.(token, { dictionary })
-      ) {
-        if ((isCalculatedToken as IsCalculatedToken)?.(token, options)) {
-          return calculatedVariable(format(token));
-        }
-        return format(token);
-      }
-
-      return format(token);
-    }, tokens);
+    const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
+    const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
+    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['spacing', 'sizing']), filteredTokens);
+    const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;

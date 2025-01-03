@@ -85,8 +85,8 @@ export async function buildTokens(options: Options): Promise<void> {
   ).map(processThemeObject);
 
   const relevant$themes = $themes
-    // We only use the 'default' theme for the 'size' group
-    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'default'));
+    // We only use the 'medium' theme for the 'size' group
+    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
   if (!buildOptions.accentColor) {
     const accentOrFirstMainColor =
