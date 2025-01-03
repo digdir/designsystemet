@@ -1,11 +1,5 @@
 'use client';
-import {
-  Dropdown,
-  Heading,
-  Link,
-  Paragraph,
-  Table,
-} from '@digdir/designsystemet-react';
+import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
 import { ClipboardButton } from '@repo/components';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -221,16 +215,6 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.package} data-unstyled>
-        <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
-          <img
-            src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
-            alt='Latest release on npm'
-            className={classes.npmShield}
-          />
-        </Link>
-        <Paragraph data-size='sm'>@digdir/designsystemet-theme</Paragraph>
-      </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
           {showModeSwitcher && (
