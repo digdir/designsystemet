@@ -594,38 +594,6 @@ export const  dimension = [
       "border-radius",
       "full"
     ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "dimension",
-      $value: "4"
-    },
-    name: "--ds-sizing-scale",
-    attributes: {},
-    path: [
-      "sizing",
-      "scale"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "dimension",
-      $value: "4"
-    },
-    name: "--ds-spacing-scale",
-    attributes: {},
-    path: [
-      "spacing",
-      "scale"
-    ]
   }
 ] 
 
