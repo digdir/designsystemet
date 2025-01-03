@@ -69,7 +69,7 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
           placeholder='ola@norge.no'
           className={classes.userField}
         />
-        <Tooltip content='Trykk for å få hjelp' portal={false}>
+        <Tooltip content='Trykk for å få hjelp'>
           <Link href='#' className={classes.userLink}>
             Glemt passord?
           </Link>
