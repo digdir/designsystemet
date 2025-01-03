@@ -1,26 +1,20 @@
 import type { Meta, StoryFn } from '@storybook/react';
-
-import { useEffect } from 'react';
 import { Label } from '../Label';
 
-import { Field } from '.';
-import { Input } from '../Input';
-import { Select } from '../Select';
-import { Textarea } from '../Textarea';
-import { ValidationMessage } from '../ValidationMessage';
+import {
+  Field,
+  Fieldset,
+  Input,
+  Select,
+  Textarea,
+  ValidationMessage,
+} from '../';
 
 type Story = StoryFn<typeof Field>;
 
 export default {
   title: 'Komponenter/Field',
   component: Field,
-  argTypes: {
-    type: {
-      control: { type: 'radio' },
-      options: ['textarea', 'input', 'select', false],
-      mapping: { textarea: Textarea, input: Input, select: Select },
-    },
-  },
   parameters: {
     customStyles: {
       maxWidth: 600,
@@ -29,62 +23,16 @@ export default {
   },
 } as Meta;
 
-// TMP toggles to test a11yField utility
-const toggles = {
-  type: 'textarea',
-  inputId: '',
-  label: true,
-  labelFor: '',
-  description: true,
-  descriptionId: '',
-  validation: true,
-  validationId: '',
-  moveToBody: false,
-};
-
 export const Preview: Story = (args) => {
-  const {
-    type,
-    inputId,
-    label,
-    labelFor,
-    description,
-    descriptionId,
-    validation,
-    validationId,
-    moveToBody,
-  } = args as typeof toggles;
-  const Component = type as keyof JSX.IntrinsicElements;
-
-  useEffect(() => {
-    const label = document.querySelector('label');
-    const valid = document.querySelector('[data-my-validation]');
-    const field = document.querySelector('[data-my-field]');
-    const root = moveToBody ? document.body : field;
-    if (valid && valid.parentElement !== root) root?.append(valid);
-    if (label && label.parentElement !== root) root?.prepend(label);
-  }, [moveToBody]);
-
   return (
     <Field data-my-field>
-      {label && <Label htmlFor={labelFor || undefined}>Kort beskrivelse</Label>}
-      {description && (
-        <Field.Description id={descriptionId || undefined}>
-          Beskrivelse
-        </Field.Description>
-      )}
-      {type && <Component id={inputId || undefined} />}
-      {validation && (
-        <ValidationMessage data-my-validation id={validationId || undefined}>
-          Feilmelding
-        </ValidationMessage>
-      )}
+      <Label>Kort beskrivelse</Label>
+      <Field.Description>Beskrivelse</Field.Description>
+      <Input />
+      <ValidationMessage>Feilmelding</ValidationMessage>
     </Field>
   );
 };
-
-// @ts-expect-error ts2559: Preview.args uses more properties for testing than what is supported by <Field>
-Preview.args = toggles;
 
 export const Affix: Story = () => (
   <div>
@@ -165,4 +113,40 @@ export const Counter: Story = () => (
     <Textarea rows={2} />
     <Field.Counter limit={10} />
   </Field>
+);
+
+export const Position: Story = () => (
+  <>
+    <Fieldset>
+      <Fieldset.Legend>Fields with position="start"</Fieldset.Legend>
+      <Field position='start'>
+        <Label>Radio</Label>
+        <Input type='radio' />
+      </Field>
+      <Field position='start'>
+        <Label>Checkbox</Label>
+        <Input type='checkbox' />
+      </Field>
+      <Field position='start'>
+        <Label>Switch</Label>
+        <Input type='checkbox' role='switch' />
+      </Field>
+    </Fieldset>
+    <br />
+    <Fieldset>
+      <Fieldset.Legend>Fields with position="end"</Fieldset.Legend>
+      <Field position='end'>
+        <Label>Radio</Label>
+        <Input type='radio' />
+      </Field>
+      <Field position='end'>
+        <Label>Checkbox</Label>
+        <Input type='checkbox' />
+      </Field>
+      <Field position='end'>
+        <Label>Switch</Label>
+        <Input type='checkbox' role='switch' />
+      </Field>
+    </Fieldset>
+  </>
 );
