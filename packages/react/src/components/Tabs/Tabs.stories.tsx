@@ -20,13 +20,13 @@ export default {
 export const Preview: StoryFn<typeof Tabs> = (args) => (
   <Tabs {...args}>
     <Tabs.List>
-      <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-      <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
+      <Tabs.Tab>Tab 1</Tabs.Tab>
+      <Tabs.Tab>Tab 2</Tabs.Tab>
+      <Tabs.Tab>Tab 3</Tabs.Tab>
     </Tabs.List>
-    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+    <Tabs.Panel>content 1</Tabs.Panel>
+    <Tabs.Panel>content 2</Tabs.Panel>
+    <Tabs.Panel>content 3</Tabs.Panel>
   </Tabs>
 );
 
@@ -38,49 +38,49 @@ Preview.args = {
 export const IconsOnly: StoryFn<typeof Tabs> = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
-      <Tabs.Tab value='value1'>
+      <Tabs.Tab>
         <AirplaneIcon title='Airplane' />
       </Tabs.Tab>
-      <Tabs.Tab value='value2'>
+      <Tabs.Tab>
         <NewspaperIcon title='Newspaper' />
       </Tabs.Tab>
-      <Tabs.Tab value='value3'>
+      <Tabs.Tab>
         <DogIcon title='Dog' />
       </Tabs.Tab>
     </Tabs.List>
-    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+    <Tabs.Panel>content 1</Tabs.Panel>
+    <Tabs.Panel>content 2</Tabs.Panel>
+    <Tabs.Panel>content 3</Tabs.Panel>
   </Tabs>
 );
 
 export const Controlled: StoryFn<typeof Tabs> = () => {
-  const [value, setValue] = useState('value1');
+  const [value, setValue] = useState(1);
 
   return (
     <>
-      <Button data-size='sm' onClick={() => setValue('value3')}>
+      <Button data-size='sm' onClick={() => setValue(2)}>
         Choose Tab 3
       </Button>
       <br />
-      <Tabs value={value} onChange={setValue}>
+      <Tabs onChange={setValue} selectedIndex={value}>
         <Tabs.List>
-          <Tabs.Tab value='value1'>
+          <Tabs.Tab>
             <BellIcon aria-hidden />
             Tab 1
           </Tabs.Tab>
-          <Tabs.Tab value='value2'>
+          <Tabs.Tab>
             <NewspaperIcon aria-hidden />
             Tab 2
           </Tabs.Tab>
-          <Tabs.Tab value='value3'>
+          <Tabs.Tab>
             <BackpackIcon aria-hidden />
             Tab 3
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-        <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+        <Tabs.Panel>content 1</Tabs.Panel>
+        <Tabs.Panel>content 2</Tabs.Panel>
+        <Tabs.Panel>content 3</Tabs.Panel>
       </Tabs>
     </>
   );
