@@ -79,4 +79,19 @@ describe('Tabs', () => {
     const content = screen.queryByText('content 1');
     expect(content).toBeInTheDocument();
   });
+
+  it('calls onChange when tab is clicked', async () => {
+    const onChange = vi.fn();
+    render(
+      <Tabs onChange={onChange}>
+        <Tabs.List>
+          <Tabs.Tab>Tab 1</Tabs.Tab>
+          <Tabs.Tab>Tab 2</Tabs.Tab>
+        </Tabs.List>
+      </Tabs>,
+    );
+
+    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
+    expect(onChange).toHaveBeenCalledWith(1);
+  });
 });
