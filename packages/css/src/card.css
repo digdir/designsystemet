@@ -90,6 +90,7 @@
 }
 
 .ds-card__block {
+  display: block;
   box-sizing: border-box;
   margin: 0;
   padding: var(--dsc-card-padding);

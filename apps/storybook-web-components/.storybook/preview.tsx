@@ -7,10 +7,10 @@ import isChromatic from 'chromatic/isChromatic';
 import customTheme from '../../storybook/.storybook/customTheme';
 import {allModes, viewportWidths } from '../../storybook/story-utils/modes';
 import { setCustomElementsManifest } from '@storybook/web-components';
-import customElements from '../../../packages/web-components/custom-elements.json';
+// import customElements from '../../../packages/web-components/custom-elements.json';
 
 // See custom-elements.json for the full list of components
-setCustomElementsManifest(customElements);
+// setCustomElementsManifest(customElements);
 
 const viewports: Record<string, object> = {};
 

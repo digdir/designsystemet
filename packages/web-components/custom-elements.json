@@ -13,14 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
               "name": "defaultOpen",
               "type": {
                 "text": "boolean"
@@ -39,6 +31,56 @@
               "kind": "method",
               "name": "setup",
               "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_content",
+              "type": {
+                "text": "HTMLSlotElement | null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
             }
           ],
           "superclass": {
@@ -46,7 +88,28 @@
             "package": "@u-elements/u-details"
           },
           "tagName": "ds-details",
-          "customElement": true
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "open",
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "type": {
+                "text": "Event"
+              },
+              "inheritedFrom": {
+                "name": "UHTMLDetailsElement",
+                "module": "/Users/eirikbacker/Library/Mobile Documents/com~apple~CloudDocs/5-capra/u-elements/packages/u-details/u-details.ts"
+              }
+            }
+          ]
         }
       ],
       "exports": [

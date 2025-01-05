@@ -1,6 +1,6 @@
 import type { Meta, StoryObj} from '@storybook/web-components';
 
-import { Details, DetailsProps } from './Details';
+import { Details } from './Details';
 import './Details';
 
 // import { Button, Card, Details, Link } from '../';
@@ -10,6 +10,33 @@ const meta: Meta<typeof Details> = {
   component: 'ds-details',
   parameters: {
     layout: 'padded',
+  },
+  // Decides the order of properties
+  args: {
+    'data-color': 'neutral',
+    open: undefined,
+    defaultOpen: false,
+  },
+  argTypes: {
+    open: {
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        type: {
+          summary: `boolean`
+        }
+      },
+      description: `Controls open-state.\n Using this removes automatic control of open-state`,
+    },
+    defaultOpen: {
+      table: {
+        defaultValue: {
+          summary: 'false',
+        }
+      },
+      description: `Defaults the details to open if not controlled`,
+    }
   }
 };
 
@@ -18,6 +45,7 @@ export default meta;
 export const Preview: StoryObj = {
   args: {
     "data-color": 'neutral',
+    "defaultOpen": false,
   },
   // Would like to avoid any, but cant get "data-{X}" attributes to be allowed
   render: (args: any) => {
