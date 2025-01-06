@@ -2,4 +2,4 @@
 "@digdir/designsystemet": minor
 ---
 
-chore: fix wrong base default color from themebuilder
+Fix wrong base default color beeing set by the themebuilder
