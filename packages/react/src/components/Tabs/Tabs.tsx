@@ -55,7 +55,9 @@ export const Tabs = forwardRef<UHTMLTabsElement, TabsProps>(function Tabs(
   useEffect(() => {
     if (!internalRef.current) return;
 
-    const tabs = internalRef.current.tabs;
+    const tablist = internalRef.current.tabList;
+
+    if (!tablist) return;
 
     /* When a tab is selected, we can check internalRef.current.selectedIndex to get the new tab */
     const observer = new MutationObserver(() => {
@@ -64,12 +66,12 @@ export const Tabs = forwardRef<UHTMLTabsElement, TabsProps>(function Tabs(
       }
     });
 
-    for (const tab of tabs) {
-      observer.observe(tab, {
-        attributes: true,
-        attributeFilter: ['aria-selected'],
-      });
-    }
+    observer.observe(tablist, {
+      attributes: true,
+      attributeFilter: ['aria-selected'],
+      subtree: true,
+      childList: true,
+    });
 
     return () => {
       observer.disconnect();
