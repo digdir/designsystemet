@@ -42,7 +42,6 @@
   }
 
   align-items: center;
-  align-self: center; /* If placed in flex container */
   background: var(--dsc-button-background);
   border-radius: var(--ds-border-radius-default);
   border: var(--ds-border-width-default) solid var(--dsc-button-border-color);
@@ -52,6 +51,7 @@
   font-family: inherit;
   font-weight: var(--ds-font-weight-medium);
   gap: var(--dsc-button-gap);
+  height: fit-content; /* If placed in flex container */
   justify-content: center;
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-button-size);
