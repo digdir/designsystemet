@@ -9,6 +9,8 @@
   & u-tabpanel {
     padding: var(--dsc-tabs-content-padding);
     color: var(--dsc-tabs-content-color);
+
+    @composes ds-focus from './base.css';
   }
 
   & u-tablist {
