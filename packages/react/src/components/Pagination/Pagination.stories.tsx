@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [page, setCurrentPage] = useState(3);
+  const [page, setCurrentPage] = useState(4);
   const { pages, nextButtonProps, prevButtonProps } = usePagination({
     currentPage: page,
     totalPages: 10,
