@@ -1,6 +1,7 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { useState } from 'react';
 import { Pagination, type UsePaginationProps, usePagination } from '.';
 
 export default {
@@ -9,13 +10,12 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [, updateArgs] = useArgs();
+  const [page, setCurrentPage] = useState(3);
   const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    currentPage: 4,
-    onChange: console.log,
+    currentPage: page,
     totalPages: 10,
     showPages: 7,
-    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
+    setCurrentPage,
   });
 
   return (
@@ -28,7 +28,7 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
         </Pagination.Item>
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
-            {page && (
+            {typeof page === 'number' && (
               <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
                 {page}
               </Pagination.Button>
