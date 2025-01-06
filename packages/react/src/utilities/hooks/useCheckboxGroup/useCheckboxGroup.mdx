@@ -1,9 +1,47 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
+/* import { ArgsTable } from '@storybook/addon-essentials'; */
 import * as useCheckboxGroupStories from './useCheckboxGroup.stories';
+import { useCheckboxGroup } from './useCheckboxGroup';
 
 <Meta of={useCheckboxGroupStories} />
 
 # useCheckboxGroup
 
-Information coming.
-See Checkbox in the meantime.
+En react hook for å koble sammen en gruppe av checkboxer.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+Fra `useCheckboxGroup` henter du ut `getCheckboxProps` som du sprer på checkboxene dine. 
+Du kan også hente ut `validationMessageProps`, `value` og `setValue`.
+
+I `getCheckboxProps` denne funksjonen er første parameter `value` som er en unik identifikator for checkboxen, eller eit objekt med alt som kan legges på en checkbox.
+Dersom du sender inn eit object, så må du passe på å sette `value`.
+
+```tsx
+const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
+  value: ['epost'],
+  ...args,
+});
+
+return (
+  <Fieldset>
+    <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+    <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+    <Checkbox label='SMS' {...getCheckboxProps('sms')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
+## Tillat indeterminate
+
+Når du sprer `getCheckboxProps` på Checkboxen din, så kan du sende inn `allowIndeterminate: true` for å tillate at checkboxen kan være i en indeterminate tilstand.
+
+<Canvas of={useCheckboxGroupStories.AllowIndeterminate} />
+
+## Props
+
+<ArgTypes of={useCheckboxGroupStories} />
