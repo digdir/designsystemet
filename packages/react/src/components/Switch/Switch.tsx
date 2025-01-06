@@ -24,10 +24,6 @@ export type SwitchProps = MergeRight<
      */
     position?: FieldProps['position'];
     /**
-     * Changes field size and paddings
-     */
-    'data-size'?: 'sm' | 'md' | 'lg';
-    /**
      * Specify which color palette to use. If left unspecified, the color is inherited
      * from the nearest ancestor with data-color.
      */
