@@ -26,7 +26,7 @@ export const Preview: StoryFn<typeof Details> = (args) => (
 );
 // Default values are selected in Controls
 Preview.args = {
-  'data-color': 'neutral',
+  'data-color': undefined,
 };
 
 export const InCard: StoryFn<typeof Details> = () => (

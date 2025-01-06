@@ -15,6 +15,6 @@ export const Preview: Story = {
   args: {
     children: 'Dette er en valideringsmelding.',
     'data-size': 'md',
-    'data-color': 'danger',
+    'data-color': undefined,
   },
 };

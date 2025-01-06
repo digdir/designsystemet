@@ -42,7 +42,7 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    'data-color': 'accent',
+    'data-color': undefined,
     'data-size': 'md',
     icon: false,
   },

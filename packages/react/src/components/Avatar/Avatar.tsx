@@ -2,7 +2,6 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps, Size } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -13,11 +12,6 @@ export type AvatarProps = MergeRight<
      * The name of the person the avatar represents.
      */
     'aria-label': string;
-    /**
-     * The color of the avatar.
-     * @default accent
-     */
-    'data-color'?: Color;
     /**
      * The size of the avatar.
      */

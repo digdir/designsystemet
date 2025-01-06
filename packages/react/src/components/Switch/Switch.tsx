@@ -1,7 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
-
-import type { Color } from '../../colors';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Field, type FieldProps } from '../Field';
@@ -23,11 +21,6 @@ export type SwitchProps = MergeRight<
      * @default start
      */
     position?: FieldProps['position'];
-    /**
-     * Specify which color palette to use. If left unspecified, the color is inherited
-     * from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
   } & LabelRequired
 >;
 

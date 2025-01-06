@@ -12,7 +12,6 @@ import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Context } from './PopoverTriggerContext';
@@ -44,10 +43,7 @@ export type PopoverProps = MergeRight<
      * @default top
      */
     placement?: Placement;
-    /**
-     * The color of the popover.
-     */
-    'data-color'?: Color;
+
     /**
      * Use this to make the popover controlled.
      * @default undefined

@@ -26,7 +26,7 @@ export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
   'data-size': 'md',
-  'data-color': 'accent',
+  'data-color': undefined,
   count: 15,
   maxCount: 9,
 };
