@@ -258,17 +258,11 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
             <Tabs.Tab>Tjenester</Tabs.Tab>
             <Tabs.Tab>Innstillinger</Tabs.Tab>
           </Tabs.List>
+          <Tabs.Panel>Her kan du endre på informasjonen din</Tabs.Panel>
           <Tabs.Panel>
-            <Paragraph>Her kan du endre på informasjonen din</Paragraph>
+            Her kan du se hvilke tjenester du har tilgang til
           </Tabs.Panel>
-          <Tabs.Panel>
-            <Paragraph>
-              Her kan du se hvilke tjenester du har tilgang til
-            </Paragraph>
-          </Tabs.Panel>
-          <Tabs.Panel>
-            <Paragraph>Her kan du endre på innstillingene dine</Paragraph>
-          </Tabs.Panel>
+          <Tabs.Panel>Her kan du endre på innstillingene dine</Tabs.Panel>
         </Tabs>
         <Paragraph>
           For å kunne bli registrert i{' '}
