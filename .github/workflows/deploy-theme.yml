@@ -36,7 +36,7 @@ jobs:
         run: yarn build
 
       - name: Install Vercel CLI
-        run: yarn add vercel@latest
+        run: npm install --global vercel@latest
 
       - name: Set default environment value if push event is triggered
         id: defaultenvironment
