@@ -1,0 +1,73 @@
+import { PageLayout } from '@layouts';
+import { Contributors } from '@blog';
+
+export const metadata = {
+  title: 'Tegnsetting i mikrotekster',
+  description:
+    'Hvordan skrive mikrotekster for et produkt eller en tjeneste.',
+};
+
+export default ({ children }) => (
+  <PageLayout
+    content={children}
+    data={{
+      title: 'Tegnsetting i mikrotekster ',
+      date: '16. desember 2024',
+      author: 'Digdir',
+      backText: 'God praksis',
+      backUrl: 'god-praksis',
+    }}
+  />
+);
+
+Mikrotekster er de små tekstene i det grafiske brukergrensesnittet (GUI) til et produkt eller en tjeneste, for eksempel ledetekster, knappenavn og meldinger. Fordi vi har fått spørsmål om punktum og andre tegn i slike tekster fra utviklere og designere, har vi formulert noen retningslinjer for det.  
+
+Vi kommer langt med å følge de vanlige reglene for tegnsetting på norsk, men her er en presisering for ulike type komponenter.  
+
+Merk: Rene nettsider er ikke tatt med her, de følger generelle tegnsettingsregler for norsk. 
+
+## Titler 
+
+Titler og overskrifter skal ikke ha punktum etter norske tegnsettingsregler. I noen tilfeller bruker vi utropstegn, for eksempel på en førsteside der vi skriver «Velkommen!» Vi anbefaler imidlertid å unngå utropstegn i titler om du kan. Formuler heller en hel setning: «Velkommen til seminar om sikkerhet». 
+
+### Ingress under titler 
+
+En ingress kan bestå av én eller flere setninger. Den følger derfor vanlige tegnsettingsregler og skal ha punktum. 
+
+## Ledetekster 
+Ledetekster skal aldri ha punktum, og heller ikke kolon eller utropstegn.  
+Hvis ledeteksten er formulert som et spørsmål, som kan være tilfelle i et skjema, skal det være spørsmålstegn. Merk at ledetekster alltid skal ha stor forbokstav i det første ordet. 
+
+### Beskrivelser under ledetekster 
+Ofte har vi en beskrivelse under en ledetekst, for å hjelpe brukerne kjapt med å forstå hva de skal gjøre. Denne teksten regnes som én eller flere vanlige setninger, og skal ha punktum. 
+
+### Hjelpetekster 
+
+Hjelpetekster er de tekstene som vi ofte skjuler under en i eller et ? i grensesnittet. De erstattes nå ofte med en beskrivelse som er synlig hele tiden. Hvis vi likevel skal bruke hjelpetekst, regner vi den som vanlige setninger og de skal ha punktum. 
+
+## Meldinger 
+
+Vi skriver infomeldinger, valideringsmeldinger og feilmeldinger med punktum. En huskeregel for å finne ut om du skal sette punktum, er å tenke på om det kunne vært mer enn én setning her. Hvis ja, sett punktum. 
+
+## Knapper 
+
+Knappenavn skal aldri ha punktum. 
+
+## Trekkspillister (accordions) 
+
+Vi bruker ikke punktum i den innledende teksten i en trekkspilliste. Den regnes som en overskrift. Teksten som kommer under følger vanlige tegnsettingsregler for setninger/avsnitt, og skal ha punktum. 
+
+
+## Kilder:  
+
+- Skriveregler av Finn Erik Vinje  
+- KS sine sider: https://www.ks.no/fagomrader/digitalisering/digital-kompetanse/klart-sprak-i-digitale-selvbetjeningslosninger/ 
+- Referanse for tegnsettingsmønster i trekkspillister: Gjensidige, NAV, KLP 
+
+
+<Contributors
+  authors={[
+    'Dorte Drange',
+    'Gørild Døhl',
+  ]}
+/>
