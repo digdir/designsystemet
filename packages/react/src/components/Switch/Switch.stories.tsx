@@ -13,7 +13,6 @@ export default {
 
 export const Preview: Story = {
   args: {
-    'data-size': 'md',
     label: 'Switch',
     description: '',
     disabled: false,

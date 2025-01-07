@@ -25,7 +25,6 @@ export default meta;
 export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
-  'data-size': 'md',
   count: 15,
   maxCount: 9,
 };

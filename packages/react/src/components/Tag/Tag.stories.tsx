@@ -16,7 +16,6 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'New',
-    'data-size': 'md',
   },
 };
 

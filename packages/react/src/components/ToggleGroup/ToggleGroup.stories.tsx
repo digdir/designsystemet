@@ -35,7 +35,6 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 
 Preview.args = {
   defaultValue: 'innboks',
-  'data-size': 'md',
   name: 'toggle-group-nuts',
 };
 
