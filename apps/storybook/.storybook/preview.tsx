@@ -203,11 +203,8 @@ export const decorators = [
     defaultTheme: 'Light',
     attributeName: 'data-color-scheme',
     parentSelector:
-      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
+      '#storybook-docs .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"]) #storybook-root',
   }),
-  (Story) => {
-    return <Story />;
-  },
 ];
 
 export default preview;
