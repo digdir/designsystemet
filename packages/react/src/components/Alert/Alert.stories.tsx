@@ -20,6 +20,8 @@ export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
   children: 'En beskjed det er viktig at brukeren ser',
+  'data-color': 'info',
+  'data-size': 'md',
 };
 
 export const VariantInfo: Story = (args) => (
