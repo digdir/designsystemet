@@ -38,27 +38,28 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Rem</Table.HeaderCell>
-          <Table.HeaderCell>Px (16px)</Table.HeaderCell>
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+          <Table.HeaderCell>Reel verdi</Table.HeaderCell>
           <Table.HeaderCell>Visualisering</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
         {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
+            const name = token.name;
             const value = token.$value as string;
             const isBorderRadius = token.path.includes('border-radius');
 
             return (
-              <Table.Row key={token.name}>
+              <Table.Row key={name}>
                 <Table.Cell>
                   <ClipboardButton
                     title='Kopier CSS variabel'
-                    text={token.name}
-                    value={token.name}
+                    text={name}
+                    value={name}
                   />
                 </Table.Cell>
-                <Table.Cell>{token.$value}</Table.Cell>
+                <Table.Cell>{value} </Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
                 </Table.Cell>

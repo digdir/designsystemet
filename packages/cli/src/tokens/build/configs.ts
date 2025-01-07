@@ -239,6 +239,10 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
         ],
         options: {
           fileHeader,
+          outputReferences: (token, options) => {
+            const include = pathStartsWithOneOf(['border-radius', 'size'], token);
+            return include && outputReferencesFilter(token, options);
+          },
         },
       },
     },

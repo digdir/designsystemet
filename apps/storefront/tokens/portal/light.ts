@@ -5,7 +5,7 @@
 export const  dimension = [
   {
     $type: "dimension",
-    $value: 0,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -21,7 +21,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 4,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -37,7 +37,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 8,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -53,7 +53,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 12,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -69,7 +69,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 16,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -85,7 +85,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 20,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -101,7 +101,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 24,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -117,7 +117,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 28,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -133,7 +133,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 32,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -149,7 +149,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 36,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -165,7 +165,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 40,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -181,7 +181,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 44,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -197,7 +197,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 48,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -213,7 +213,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 52,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -229,7 +229,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 56,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -245,7 +245,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 60,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -261,7 +261,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 72,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -277,7 +277,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 88,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -293,7 +293,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 104,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -309,7 +309,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 120,
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -325,7 +325,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 18,
+    $value: "18;",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -341,7 +341,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 18,
+    $value: "18;",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {
@@ -357,7 +357,7 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: 4,
+    $value: "4;",
     filePath: "../../design-tokens/primitives/modes/size/global.json",
     isSource: false,
     original: {

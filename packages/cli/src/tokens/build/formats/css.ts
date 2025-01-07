@@ -36,7 +36,7 @@ import { colorCategories } from '../types.js';
  * @returns copy of `tokens` without those that matched the predicate,
  *          where references to the matching tokens have been inlined
  */
-function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
   const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
   return otherTokens.map((token: TransformedToken) => {
     // Inline the tokens that satisfy shouldInline().
@@ -146,6 +146,27 @@ const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'borde
 const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
 
 /**
+ * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
+ *
+ * @param format - Function to format a token into a CSS property string.
+ * @param tokens - Array of transformed tokens to format.
+ * @returns Object with formatted CSS strings for calc and round.
+ */
+export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
+  const [name, value] = format(token).split(':');
+
+  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1);');
+
+  const round = `round(down, ${calc}, 0.0625rem)`;
+
+  return {
+    name,
+    round,
+    calc,
+  };
+};
+
+/**
  * Formats sizing tokens into CSS properties with support for rounding.
  *
  * @param format - Function to format a token into a CSS property string.
@@ -155,11 +176,7 @@ const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
 const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
   const { round, calc } = R.reduce(
     (acc, token) => {
-      const [name, value] = format(token).split(':');
-
-      const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1);');
-
-      const round = `round(down, ${calc}, 0.0625rem)`;
+      const { round, calc, name } = overrideSizingFormula(format, token);
 
       return {
         round: [...acc.round, `${name}: ${round}`],
