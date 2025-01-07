@@ -39,7 +39,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
           <Table.HeaderCell>Verdi</Table.HeaderCell>
-          <Table.HeaderCell>Reel verdi</Table.HeaderCell>
+          <Table.HeaderCell>Reell verdi</Table.HeaderCell>
           <Table.HeaderCell>Visualisering</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
