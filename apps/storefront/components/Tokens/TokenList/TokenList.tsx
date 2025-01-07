@@ -59,7 +59,7 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                     value={name}
                   />
                 </Table.Cell>
-                <Table.Cell>{value} </Table.Cell>
+                <Table.Cell>{value}</Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
                 </Table.Cell>
