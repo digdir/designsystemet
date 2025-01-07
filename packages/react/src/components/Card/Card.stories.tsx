@@ -47,7 +47,7 @@ export const Preview: Story = (args) => (
 );
 
 Preview.args = {
-  'data-color': undefined,
+  'data-color': 'neutral',
 };
 
 export const Variants: StoryFn<typeof Card> = () => (
