@@ -1,4 +1,5 @@
 import { PostLayout, Contributors } from '../../_components';
+import { ResponsiveIframe } from '@components';
 import { CodeSnippet } from '@repo/components';
 
 export default ({ children }) => (
@@ -122,13 +123,13 @@ export type HelpTextProps = {
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
-    { placement = "right", className, children, ...rest },
+    { placement = "right", children, ...rest },
     ref
   ) {
     return (
       <Popover.TriggerContext>
         <Popover.Trigger
-          className={"ds-helptext"}
+          className="ds-helptext"
           ref={ref}
           variant="tertiary"
           data-color="info"
@@ -143,6 +144,11 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
 );
 `}
 </CodeSnippet>
+
+<ResponsiveIframe
+  title="own-helptext-example"
+  src="https://codesandbox.io/embed/xrzkvw?view=editor+%2B+preview&module=%2Fsrc%2FApp.tsx&hidenavigation=1"
+/>
 
 <Contributors
   authors={[
