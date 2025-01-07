@@ -108,41 +108,38 @@ CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
 
 <CodeSnippet language="tsx">
 {`
-export type HelpTextProps = MergeRight<
-  DefaultProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
-  {
-    /**
-     * Required descriptive label for screen readers.
-     **/
-    'aria-label': string;
-    /**
-     * Placement of the Popover.
-     * @default 'right'
-     */
-    placement?: Placement;
-  }
->;
+export type HelpTextProps = {
+  /**
+   * Required descriptive label for screen readers.
+   **/
+  "aria-label": string;
+  /**
+   * Placement of the Popover.
+   * @default 'right'
+   */
+  placement?: "right" | "bottom" | "left" | "top";
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">;
 
 export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
   function HelpText(
-    { placement = 'right', className, children, ...rest },
-    ref,
+    { placement = "right", className, children, ...rest },
+    ref
   ) {
     return (
       <Popover.TriggerContext>
         <Popover.Trigger
-          className={cl('ds-helptext', className)}
+          className={"ds-helptext"}
           ref={ref}
-          variant='tertiary'
-          data-color='info'
+          variant="tertiary"
+          data-color="info"
           {...rest}
         />
-        <Popover placement={placement} data-color='info'>
+        <Popover placement={placement} data-color="info">
           {children}
         </Popover>
       </Popover.TriggerContext>
     );
-  },
+  }
 );
 `}
 </CodeSnippet>
