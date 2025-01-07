@@ -62,7 +62,7 @@ export const usePagination = ({
       /** Number of steps */
       pages: getSteps(currentPage, totalPages, showPages).map(
         (page, index) => ({
-          page: page || '',
+          page || 'ellipsis',
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
           buttonProps: (page
             ? {
