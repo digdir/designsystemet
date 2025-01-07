@@ -70,7 +70,7 @@ export const WithAnchor: StoryFn<UsePaginationProps> = (args) => {
         </Pagination.Item>
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
-            {page && (
+            {typeof page === 'number' && (
               <Pagination.Button
                 asChild
                 aria-label={`Side ${page}`}
