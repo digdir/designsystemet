@@ -27,7 +27,6 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   'aria-label': 'Ola Nordmann',
-  'data-color': undefined,
   'data-size': 'md',
   variant: 'circle',
   children: '',

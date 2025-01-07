@@ -24,10 +24,6 @@ export const Preview: StoryFn<typeof Details> = (args) => (
     </Details.Content>
   </Details>
 );
-// Default values are selected in Controls
-Preview.args = {
-  'data-color': undefined,
-};
 
 export const InCard: StoryFn<typeof Details> = () => (
   <Card data-color='neutral'>
