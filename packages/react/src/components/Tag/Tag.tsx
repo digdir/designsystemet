@@ -8,18 +8,11 @@ export type TagProps = DefaultProps & HTMLAttributes<HTMLSpanElement>;
 /**
  * Use `Tag` to display a small piece of information.
  * @example
- * <Tag color='success'>Success</Tag>
+ * <Tag>Success</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { color = 'neutral', className, ...rest },
+  { className, ...rest },
   ref,
 ) {
-  return (
-    <span
-      className={cl('ds-tag', className)}
-      data-color={color}
-      ref={ref}
-      {...rest}
-    />
-  );
+  return <span className={cl('ds-tag', className)} ref={ref} {...rest} />;
 });
