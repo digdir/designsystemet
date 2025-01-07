@@ -5,11 +5,11 @@ export type Size = 'sm' | 'md' | 'lg';
 
 export type DefaultProps = {
   /**
-   * Choose between suggested sizes for descendants Designsystemet components.
+   * Sets a size for descendant Designsystemet components.
    */
   'data-size'?: Size | (string & {});
   /**
-   * Sets a color palette for descendants Designsystemet components.
+   * Sets a color for descendant Designsystemet components.
    */
   'data-color'?: Color | (string & {});
 };
