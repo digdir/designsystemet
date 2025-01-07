@@ -19,8 +19,6 @@ export default meta;
 export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
-  'data-color': undefined,
-  'data-size': undefined,
   children: 'En beskjed det er viktig at brukeren ser',
 };
 
