@@ -258,30 +258,31 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
             <Tabs.Tab>Tjenester</Tabs.Tab>
             <Tabs.Tab>Innstillinger</Tabs.Tab>
           </Tabs.List>
-          <Tabs.Panel>Her kan du endre på informasjonen din</Tabs.Panel>
+          <Tabs.Panel>
+            <Paragraph>
+              For å kunne bli registrert i{' '}
+              <Link href='#' data-color='neutral'>
+                Frivillighetsregisteret
+              </Link>
+              , må organisasjonen drive frivillig virksomhet. Det er bare
+              foreninger,{' '}
+              <Link href='#' data-color='neutral'>
+                stiftelser
+              </Link>{' '}
+              og som kan registreres. Virksomheten kan ikke dele ut midler til
+              fysiske personer. Virksomheten må ha et styre. Virksomheten må
+              være registrert i{' '}
+              <Link href='#' data-color='neutral'>
+                Enhetsregisteret
+              </Link>{' '}
+              før den kan bli registrert.
+            </Paragraph>
+          </Tabs.Panel>
           <Tabs.Panel>
             Her kan du se hvilke tjenester du har tilgang til
           </Tabs.Panel>
           <Tabs.Panel>Her kan du endre på innstillingene dine</Tabs.Panel>
         </Tabs>
-        <Paragraph>
-          For å kunne bli registrert i{' '}
-          <Link href='#' data-color='neutral'>
-            Frivillighetsregisteret
-          </Link>
-          , må organisasjonen drive frivillig virksomhet. Det er bare
-          foreninger,{' '}
-          <Link href='#' data-color='neutral'>
-            stiftelser
-          </Link>{' '}
-          og som kan registreres. Virksomheten kan ikke dele ut midler til
-          fysiske personer. Virksomheten må ha et styre. Virksomheten må være
-          registrert i{' '}
-          <Link href='#' data-color='neutral'>
-            Enhetsregisteret
-          </Link>{' '}
-          før den kan bli registrert.
-        </Paragraph>
       </div>
       <div className={cl(classes.card, classes.faq)}>
         <Heading className={classes.cardTitle}>Ofte stillte spørsmål</Heading>
