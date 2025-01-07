@@ -1,6 +1,7 @@
 import './style.css';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 
@@ -174,12 +175,25 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [customStylesDecorator],
+  /* decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        Light: 'light',
+        Dark: 'dark',
+        Auto: 'auto',
+      },
+      defaultTheme: 'Light',
+      attributeName: 'data-color-scheme',
+      parentSelector:
+      '.sbdocs-preview .docs-story, .sb-show-main:has(#storybook-docs[hidden="true"])',
+    }),
+  ], */
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
 };
 
 /* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
-/* export const decorators = [
+export const decorators = [
+  customStylesDecorator,
   withThemeByDataAttribute({
     themes: {
       Light: 'light',
@@ -191,6 +205,9 @@ const preview: Preview = {
     parentSelector:
       '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
-]; */
+  (Story) => {
+    return <Story />;
+  },
+];
 
 export default preview;
