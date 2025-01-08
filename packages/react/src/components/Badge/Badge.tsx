@@ -1,16 +1,11 @@
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type BadgeProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
-    /**
-     * The color of the badge. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /**
      * The number to display in the badge
      */

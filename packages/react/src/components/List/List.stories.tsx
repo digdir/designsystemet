@@ -19,10 +19,6 @@ export const Preview: Story = (args) => (
   </List.Unordered>
 );
 
-Preview.args = {
-  'data-size': 'md',
-};
-
 export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
     <Heading

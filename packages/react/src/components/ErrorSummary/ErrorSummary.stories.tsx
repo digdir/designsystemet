@@ -30,9 +30,6 @@ export const Preview: Story = (args) => (
     </ErrorSummary.List>
   </ErrorSummary>
 );
-Preview.args = {
-  'data-size': 'md',
-};
 
 export const WithForm: Story = () => (
   <>

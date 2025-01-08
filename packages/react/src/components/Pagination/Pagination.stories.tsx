@@ -45,10 +45,6 @@ export const Preview: StoryFn<typeof Pagination> = (args) => {
   );
 };
 
-Preview.args = {
-  'data-size': 'md',
-};
-
 export const WithAnchor: StoryFn<UsePaginationProps> = (args) => {
   const [, updateArgs] = useArgs();
   const { pages, nextButtonProps, prevButtonProps } = usePagination({

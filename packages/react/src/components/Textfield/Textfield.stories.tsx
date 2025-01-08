@@ -50,7 +50,6 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    'data-size': 'md',
     multiline: false,
     description: '',
     error: '',
