@@ -82,7 +82,6 @@ export const Preview: Story = {
     'aria-invalid': false,
     disabled: false,
     readOnly: false,
-    'data-size': 'md',
     type: 'text',
     role: 'checkbox',
     name: 'inputs',
