@@ -42,8 +42,6 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    'data-color': 'accent',
-    'data-size': 'md',
     icon: false,
   },
 };

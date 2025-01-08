@@ -5,9 +5,6 @@ import { Breadcrumbs } from '.';
 export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs,
-  args: {
-    'data-size': 'md',
-  },
 } as Meta;
 
 export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
