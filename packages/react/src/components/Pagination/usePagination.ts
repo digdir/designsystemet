@@ -62,15 +62,15 @@ export const usePagination = ({
       /** Number of steps */
       pages: getSteps(currentPage, totalPages, showPages).map(
         (page, index) => ({
-          page: page || '',
+          page: page || 'ellipsis',
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
-          buttonProps: {
-            'aria-current': page === currentPage ? 'page' : undefined,
-            'aria-hidden': !page || undefined, // Hide ellipsis from screen reader
-            onClick: handleClick(page),
-            tabIndex: page ? undefined : -1, // Hide ellipsis keyboard
-            variant: page === currentPage ? 'primary' : 'tertiary',
-          } as PaginationButtonProps,
+          buttonProps: (page
+            ? {
+                'aria-current': page === currentPage ? 'page' : undefined,
+                onClick: handleClick(page),
+                variant: page === currentPage ? 'primary' : 'tertiary',
+              }
+            : null) as PaginationButtonProps | null,
         }),
       ),
       /** Properties to spread on Pagination.Button used for previous naviagation */

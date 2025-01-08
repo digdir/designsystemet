@@ -630,7 +630,7 @@
  */
 
 @layer ds.theme.typography.secondary {
-  [data-ds-typography='secondary'] {
+  [data-typography='secondary'] {
     --ds-font-family: Inter;
     --ds-font-weight-medium: 500;
     --ds-font-weight-semibold: 600;
@@ -1787,7 +1787,7 @@
 
 @layer ds.theme.typography.primary {
   :root,
-  [data-ds-typography='primary'] {
+  [data-typography='primary'] {
     --ds-font-family: Inter;
     --ds-font-weight-medium: 500;
     --ds-font-weight-semibold: 600;

@@ -139,17 +139,5 @@
       "$type": "opacity",
       "$value": "30%"
     }
-  },
-  "sizing": {
-    "scale": {
-      "$type": "sizing",
-      "$value": "4"
-    }
-  },
-  "spacing": {
-    "scale": {
-      "$type": "spacing",
-      "$value": "4"
-    }
   }
 }

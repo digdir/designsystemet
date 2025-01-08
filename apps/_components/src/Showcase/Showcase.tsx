@@ -137,7 +137,14 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
             </Pagination.Item>
             {pagination.pages.map(({ itemKey, buttonProps, page }) => (
               <Pagination.Item key={itemKey}>
-                <Pagination.Button {...buttonProps}>{page}</Pagination.Button>
+                {typeof page === 'number' && (
+                  <Pagination.Button
+                    {...buttonProps}
+                    aria-label={`Side ${page}`}
+                  >
+                    {page}
+                  </Pagination.Button>
+                )}
               </Pagination.Item>
             ))}
             <Pagination.Item>
