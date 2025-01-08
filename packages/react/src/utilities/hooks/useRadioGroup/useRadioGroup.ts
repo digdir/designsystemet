@@ -41,7 +41,7 @@ export type GetRadioProps = Omit<
   | 'checked'
   | 'value'
 > & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement | null>;
   value?: string;
 };
 
