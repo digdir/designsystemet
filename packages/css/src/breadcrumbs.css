@@ -5,14 +5,15 @@
   --dsc-breadcrumbs-color: var(--ds-color-text-subtle);
 
   & > :is(ol, ul) {
-    &:not([hidden]) {
-      display: flex;
-    }
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
     padding: 0;
     gap: var(--dsc-breadcrumbs-spacing) 0;
+
+    &:not([hidden]) {
+      display: flex;
+    }
   }
 
   & a[aria-current='page'] {
