@@ -250,7 +250,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
 };
 
 const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { outPath }) => {
-  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
   return {
