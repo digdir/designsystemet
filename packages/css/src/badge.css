@@ -30,8 +30,11 @@
 }
 
 .ds-badge--position {
+  &:not([hidden]) {
+    display: inline-flex;
+  }
+
   box-sizing: border-box;
-  display: inline-flex;
   position: relative;
   height: fit-content;
   width: fit-content;

@@ -5,7 +5,9 @@
   --dsc-breadcrumbs-color: var(--ds-color-text-subtle);
 
   & > :is(ol, ul) {
-    display: flex;
+    &:not([hidden]) {
+      display: flex;
+    }
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
