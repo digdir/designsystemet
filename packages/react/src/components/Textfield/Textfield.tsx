@@ -49,6 +49,20 @@ type TextfieldTextareaProps = {
 type TextfieldInputProps = {
   /** Use to render a `Textarea` instead of `Input` for multiline support  */
   multiline?: never | false;
+  /**
+   * type of the input field
+   */
+  type?: Omit<
+    InputProps['type'],
+    | 'button'
+    | 'image'
+    | 'range'
+    | 'reset'
+    | 'submit'
+    | 'checkbox'
+    | 'hidden'
+    | 'radio'
+  >;
 } & InputProps_;
 
 export type TextfieldProps = SharedTextfieldProps &

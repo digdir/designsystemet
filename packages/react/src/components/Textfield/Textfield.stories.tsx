@@ -14,32 +14,24 @@ export default {
     multiline: {
       type: 'boolean',
     },
-    // Using argType here to exclude values from React.HTMLInputTypeAttribute
     type: {
       control: 'select',
+      /* Only allowed types for Textfield */
       options: [
-        'checkbox',
         'date',
         'datetime-local',
         'email',
         'month',
         'number',
         'password',
-        'radio',
         'search',
         'tel',
         'text',
         'time',
         'url',
         'week',
-        // 'button',
         'color',
         'file',
-        // 'hidden',
-        // 'image',
-        // 'range',
-        // 'reset',
-        // 'submit',
       ],
     },
   },
