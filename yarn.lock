@@ -1715,6 +1715,7 @@ __metadata:
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
+    "@storybook/react": "npm:^8.4.7"
     "@tanstack/react-virtual": "npm:^3.11.2"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
