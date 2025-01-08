@@ -19,6 +19,8 @@ Du kan også hente ut `validationMessageProps`, `value` og `setValue`.
 I `getCheckboxProps` denne funksjonen er første parameter `value` som er en unik identifikator for checkboxen, eller eit objekt med alt som kan legges på en checkbox.
 Dersom du sender inn eit object, så må du passe på å sette `value`.
 
+**Det er viktig at du sender inn props i `getCheckboxProps`, slik at du ikke overskriver vår funksjonalitet.**
+
 ```tsx
 const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
   value: ['epost'],
