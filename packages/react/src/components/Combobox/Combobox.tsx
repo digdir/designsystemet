@@ -3,8 +3,6 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import cl from 'clsx/lite';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
-
-import type { PortalProps } from '../../types';
 import { omit, useDebounceCallback } from '../../utilities';
 import { Spinner } from '../Spinner';
 import type { FormFieldProps } from './useFormField/useFormField';
@@ -114,8 +112,13 @@ export type ComboboxProps = {
    * @default (option) => 'Slett ' + option.label,
    */
   chipSrLabel?: (option: Option) => string;
-} & PortalProps &
-  FormFieldProps &
+  /**
+   * Portals the floating element outside of the app root and into the body.
+   * @see https://floating-ui.com/docs/floatingportal
+   * @default false
+   */
+  portal?: boolean;
+} & FormFieldProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(

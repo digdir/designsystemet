@@ -185,13 +185,16 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     ...remainingThemeFile,
   };
 
+  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
+  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
+
   await writeFile(
     path.join(targetDir, `themes/${themeName}.json`),
     JSON.stringify(
-      themeFile,
+      updatedThemeFile,
       (key, value) => {
         if (key === '$value') {
-          return (value as string).replace('<theme>', themeName).replace('<base-border-radius>', String(borderRadius));
+          return (value as string).replace('<theme>', themeName);
         }
 
         return value;

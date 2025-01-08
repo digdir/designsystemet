@@ -1,8 +1,6 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
-
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { RovingFocusRoot } from '../../utilities/RovingFocus';
@@ -19,9 +17,6 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 export type ToggleGroupProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>,
   {
-    /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /** Controlled state for `ToggleGroup` component. */
     value?: string;
     /** Default value. */
