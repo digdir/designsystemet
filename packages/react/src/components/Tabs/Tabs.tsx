@@ -53,17 +53,14 @@ export const Tabs = forwardRef<UHTMLTabsElement, TabsProps>(function Tabs(
   const mergedRefs = useMergeRefs([internalRef, ref]);
 
   useEffect(() => {
-    if (!internalRef.current) return;
-
-    const tablist = internalRef.current.tabList;
+    const tabs = internalRef.current;
+    const tablist = tabs?.tabList;
 
     if (!tablist) return;
 
     /* When a tab is selected, we can check internalRef.current.selectedIndex to get the new tab */
     const observer = new MutationObserver(() => {
-      if (onChange && internalRef.current) {
-        onChange(internalRef.current.selectedIndex);
-      }
+      onChange?.(tabs.selectedIndex);
     });
 
     observer.observe(tablist, {
@@ -73,9 +70,7 @@ export const Tabs = forwardRef<UHTMLTabsElement, TabsProps>(function Tabs(
       childList: true,
     });
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [onChange, internalRef]);
 
   useEffect(() => {

@@ -1,7 +1,6 @@
+import type { UHTMLTabListElement } from '@u-elements/u-tabs';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import '@u-elements/u-tabs';
-import type { UHTMLTabListElement } from '@u-elements/u-tabs';
 
 export type TabsListProps = HTMLAttributes<UHTMLTabListElement>;
 
