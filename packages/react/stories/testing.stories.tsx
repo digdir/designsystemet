@@ -357,9 +357,14 @@ export const Sizes: StoryFn = () => {
             </Pagination.Item>
             {pages.map(({ page, itemKey, buttonProps }) => (
               <Pagination.Item key={itemKey}>
-                <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-                  {page}
-                </Pagination.Button>
+                {typeof page === 'number' && (
+                  <Pagination.Button
+                    {...buttonProps}
+                    aria-label={`Side ${page}`}
+                  >
+                    {page}
+                  </Pagination.Button>
+                )}
               </Pagination.Item>
             ))}
             <Pagination.Item>
