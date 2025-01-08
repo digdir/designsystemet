@@ -1,5 +1,4 @@
 .ds-combobox {
-  display: grid;
   background-color: transparent;
   gap: var(--ds-size-2);
 }

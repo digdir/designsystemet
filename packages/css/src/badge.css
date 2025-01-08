@@ -30,14 +30,14 @@
 }
 
 .ds-badge--position {
-  &:not([hidden]) {
-    display: inline-flex;
-  }
-
   box-sizing: border-box;
   position: relative;
   height: fit-content;
   width: fit-content;
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   & .ds-badge::before {
     position: absolute;
