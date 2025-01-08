@@ -1,10 +1,10 @@
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
-import type { useFormField } from '../../../utilities/hooks/useFormField/useFormField';
 import { Label } from '../../Label';
 import { Paragraph } from '../../Paragraph';
 import type { ComboboxProps } from '../Combobox';
+import type { useFormField } from '../useFormField/useFormField';
 
 type ComboboxLabelProps = {
   label?: ComboboxProps['label'];

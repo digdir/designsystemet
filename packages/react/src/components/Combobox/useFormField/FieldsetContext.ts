@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import type { FormFieldProps } from '../../utilities/hooks/useFormField/useFormField';
+import type { FormFieldProps } from './useFormField';
 
 export type FieldsetContextType = Pick<
   FormFieldProps,
