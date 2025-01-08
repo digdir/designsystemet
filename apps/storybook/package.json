@@ -25,7 +25,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@repo/components": "workspace:^",
-    "@storybook/addon-a11y": "patch:@storybook/addon-a11y@npm%3A8.3.4#~/.yarn/patches/@storybook-addon-a11y-npm-8.3.4-1c07bc384c.patch",
+    "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-links": "^8.4.7",
