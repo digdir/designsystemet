@@ -14,10 +14,13 @@
   }
 
   & > u-tablist {
-    display: flex;
     flex-direction: row;
     border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
     position: relative;
+
+    &:not([hidden]) {
+      display: flex;
+    }
 
     & > u-tab {
       align-items: center;
@@ -26,7 +29,6 @@
       box-sizing: border-box;
       color: var(--dsc-tabs-tab-color);
       cursor: pointer;
-      display: flex;
       flex-direction: row;
       font-family: inherit;
       font-size: inherit;
@@ -37,6 +39,10 @@
       padding: var(--dsc-tabs-tab-padding);
       position: relative;
       text-align: center;
+
+      &:not([hidden]) {
+        display: flex;
+      }
 
       &:not([data-size]) {
         font-size: inherit; /* Ensure inheriting font-size when <button> */
