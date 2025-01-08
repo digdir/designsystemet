@@ -1,6 +1,6 @@
-import type { useFormField } from '../../../utilities/hooks/useFormField/useFormField';
 import { ValidationMessage } from '../../ValidationMessage';
 import type { ComboboxProps } from '../Combobox';
+import type { useFormField } from '../useFormField/useFormField';
 
 type ComboboxErrorProps = {
   size: ComboboxProps['size'];

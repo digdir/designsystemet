@@ -32,7 +32,6 @@ export const Preview: StoryFn<typeof Tabs> = (args) => (
 
 Preview.args = {
   defaultValue: 'value1',
-  'data-size': 'md',
 };
 
 export const IconsOnly: StoryFn<typeof Tabs> = () => (

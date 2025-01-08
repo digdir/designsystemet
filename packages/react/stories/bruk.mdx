@@ -128,7 +128,7 @@ Dersom `auto` er valgt, vil fargemodusen endres basert på brukerens preferanser
 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 <br />
-#### `data-ds-typography`
+#### `data-typography`
 
 Brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
 Et vanlig bruksområde for denne attributten er når du ønsker en monospace font på tabeller.
@@ -142,12 +142,12 @@ Dette kan løses ved å f.eks bruke [attribute selector](https://developer.mozil
 <CodeSnippet language='html'>
   {`
   <style>
-  [data-ds-typography='secondary'] {
+  [data-typography='secondary'] {
     font-family: var(--ds-font-family), monospace;
   }
   </style>
   <table
-    data-ds-typography='secondary'
+    data-typography='secondary'
   >
     …
   </table>

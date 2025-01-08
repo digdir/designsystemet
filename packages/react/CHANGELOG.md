@@ -1,5 +1,33 @@
 # Change Log
 
+## 1.0.0-next.45
+
+### Patch Changes
+
+- Pagination: Use empty `li` for ellipsis ([#2942](https://github.com/digdir/designsystemet/pull/2942))
+
+- Add missing `data-size` and `data-color` props to Details ([#2930](https://github.com/digdir/designsystemet/pull/2930))
+
+- Table: ([#2933](https://github.com/digdir/designsystemet/pull/2933))
+
+  - Correct footer styling
+  - Automatic focus styling for sorting buttons
+
+- Loosen default types for `data-color` and `data-size` to support accept `string` ([#2951](https://github.com/digdir/designsystemet/pull/2951))
+
+- Export all utilities ([#2961](https://github.com/digdir/designsystemet/pull/2961))
+
+- Field: Fix `position` not working ([#2931](https://github.com/digdir/designsystemet/pull/2931))
+
+- Tooltip: Use popover API ([#2916](https://github.com/digdir/designsystemet/pull/2916))
+
+  - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
+  - Removes `defaultOpen`
+  - Removes `portal`
+  - Removes ability to hover to keep open
+
+- PopoverTrigger: New prop `inline` for use when inline elements (such as text) need a `Popover` ([#2915](https://github.com/digdir/designsystemet/pull/2915))
+
 ## 1.0.0-next.44
 
 ### Patch Changes

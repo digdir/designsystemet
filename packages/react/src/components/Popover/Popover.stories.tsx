@@ -40,8 +40,6 @@ export const Preview: StoryFn<typeof Popover> = (args) => {
 
 Preview.args = {
   placement: 'top',
-  'data-size': 'md',
-  'data-color': 'neutral',
 };
 Preview.parameters = {
   customStyles: {

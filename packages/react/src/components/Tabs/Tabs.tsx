@@ -1,7 +1,6 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import '@u-elements/u-tabs';
@@ -11,10 +10,6 @@ import type { UHTMLTabsElement } from '@u-elements/u-tabs';
 export type TabsProps = MergeRight<
   DefaultProps & HTMLAttributes<UHTMLTabsElement>,
   {
-    /**
-     * Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /**
      * Called when the selected tab changes.
      *
