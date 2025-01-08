@@ -45,6 +45,17 @@ export type GetRadioProps = Omit<
   value?: string;
 };
 
+type useRadioGroupReturn = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  getRadioProps: (propsOrValue: string | GetRadioProps) => GetRadioProps;
+  validationMessageProps: {
+    children: ReactNode;
+    hidden: boolean;
+    id: string;
+  };
+};
+
 /**
  * useRadioGroup is used to group multiple <Radio> components
  * @example
@@ -66,7 +77,7 @@ export function useRadioGroup({
   name,
   onChange,
   value: initalValue = '',
-}: UseRadioGroupProps = {}) {
+}: UseRadioGroupProps = {}): useRadioGroupReturn {
   const [groupValue, setGroupValue] = useState(initalValue);
   const errorId = useId();
   const namedId = useId();

@@ -101,6 +101,7 @@ const CodeSnippet = ({
               <FilesIcon fontSize='1.5rem' />
             </Button>
           </Tooltip>
+          {/* @ts-ignore -- This has yet to be updated to use react 19 */}
           <SyntaxHighlighter
             style={stackoverflowDark}
             language={language}

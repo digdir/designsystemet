@@ -39,7 +39,7 @@ const Field = ({
 };
 
 type ColorModalProps = {
-  colorModalRef: React.RefObject<HTMLDialogElement>;
+  colorModalRef: React.RefObject<HTMLDialogElement> | null;
   hex: string;
   namespace: string;
   weight: ColorNumber;
