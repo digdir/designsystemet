@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.typography.primary {
-:root, [data-ds-typography="primary"] {
+:root, [data-typography="primary"] {
   --ds-font-family: Inter;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
