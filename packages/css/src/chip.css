@@ -25,7 +25,6 @@
   box-sizing: border-box;
   color: var(--dsc-chip-color);
   cursor: pointer;
-  display: inline-flex;
   font-family: inherit;
   gap: var(--gap);
   line-height: var(--ds-line-height-sm);
@@ -35,6 +34,10 @@
   text-decoration: none;
 
   @composes ds-focus from './base.css';
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   &:not([data-size]) {
     font-size: var(--ds-font-size-minus-1);

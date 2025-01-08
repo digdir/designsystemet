@@ -6,12 +6,15 @@
   --dsc-search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
   --dsc-search-icon-size: var(--ds-size-7);
 
-  display: grid;
   align-items: center;
   grid-template-columns: 1fr auto;
   width: 100%;
   border-radius: var(--ds-border-radius-default);
   position: relative;
+
+  &:not([hidden]) {
+    display: grid;
+  }
 
   /* Add magnifier icon when no submit button is present */
   &:not(:has(button:not([type='reset']))) {

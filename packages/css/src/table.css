@@ -89,13 +89,16 @@
       box-sizing: border-box;
       color: inherit;
       cursor: pointer;
-      display: block;
       font: inherit;
       padding: var(--dsc-table-padding);
       text-align: inherit;
       width: 100%;
 
       @composes ds-focus from './base.css';
+
+      &:not([hidden]) {
+        display: block;
+      }
 
       &:focus-visible {
         position: relative; /* Place on top when painting focus border */

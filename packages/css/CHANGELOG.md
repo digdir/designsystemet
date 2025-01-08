@@ -1,5 +1,39 @@
 # Change Log
 
+## 1.0.0-next.45
+
+### Minor Changes
+
+- Removed CSS variables `--ds-spacing-*` & `--ds-sizing-*`, use `--ds-size-*`. ([#2939](https://github.com/digdir/designsystemet/pull/2939))
+
+- New CSS variables for sizes, `--ds-size-*` ([#2935](https://github.com/digdir/designsystemet/pull/2935))
+
+- Moved typography based sizing formula to design-tokens ([#2796](https://github.com/digdir/designsystemet/pull/2796))
+
+### Patch Changes
+
+- Button: add `height: fit-content` ([#2942](https://github.com/digdir/designsystemet/pull/2942))
+
+- Pagination: Use empty `li` for ellipsis ([#2942](https://github.com/digdir/designsystemet/pull/2942))
+
+- Link: Fix missing underline when using Tailwind ([#2923](https://github.com/digdir/designsystemet/pull/2923))
+
+- Table: ([#2933](https://github.com/digdir/designsystemet/pull/2933))
+
+  - Correct footer styling
+  - Automatic focus styling for sorting buttons
+
+- Switch: Adjust design to better align with radio and checkbox ([#2929](https://github.com/digdir/designsystemet/pull/2929))
+
+- Tooltip: Use popover API ([#2916](https://github.com/digdir/designsystemet/pull/2916))
+
+  - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
+  - Removes `defaultOpen`
+  - Removes `portal`
+  - Removes ability to hover to keep open
+
+- PopoverTrigger: New prop `inline` for use when inline elements (such as text) need a `Popover` ([#2915](https://github.com/digdir/designsystemet/pull/2915))
+
 ## 1.0.0-next.44
 
 ## 1.0.0-next.43

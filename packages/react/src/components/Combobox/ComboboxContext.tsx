@@ -6,7 +6,7 @@ import type {
 import { createContext } from 'react';
 import type { Dispatch, Ref, RefObject, SetStateAction } from 'react';
 
-import type { useFormField } from '../../utilities/hooks/useFormField/useFormField';
+import type { useFormField } from './useFormField/useFormField';
 
 import type { ComboboxProps } from './Combobox';
 import type { Option, useCombobox } from './useCombobox';

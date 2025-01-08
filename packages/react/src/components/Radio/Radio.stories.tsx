@@ -21,7 +21,6 @@ export const Preview: StoryObj<typeof Radio> = {
     disabled: false,
     readOnly: false,
     value: 'value',
-    'data-size': 'md',
   },
 };
 
