@@ -2,8 +2,8 @@ import cl from 'clsx/lite';
 import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 
-import { FieldsetContext } from '../../../components/Fieldset/FieldsetContext';
 import type { Size } from '../../../types';
+import { FieldsetContext } from './FieldsetContext';
 
 export type FormFieldProps = {
   /** Error message for form field */
