@@ -6,9 +6,9 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 
 import type { PortalProps } from '../../types';
 import { omit, useDebounceCallback } from '../../utilities';
-import type { FormFieldProps } from '../../utilities/hooks/useFormField/useFormField';
-import { useFormField } from '../../utilities/hooks/useFormField/useFormField';
 import { Spinner } from '../Spinner';
+import type { FormFieldProps } from './useFormField/useFormField';
+import { useFormField } from './useFormField/useFormField';
 
 import { ComboboxContext } from './ComboboxContext';
 import { ComboboxIdProvider } from './ComboboxIdContext';
