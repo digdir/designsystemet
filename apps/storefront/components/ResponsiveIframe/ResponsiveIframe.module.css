@@ -3,8 +3,8 @@
   overflow: hidden;
   width: 100%;
   border-radius: 4px;
-  margin-top: var(--ds-spacing-10);
-  margin-bottom: var(--ds-spacing-10);
+  margin-top: var(--ds-size-10);
+  margin-bottom: var(--ds-size-10);
   aspect-ratio: 16 / 9;
 }
 

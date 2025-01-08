@@ -5,8 +5,8 @@
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);
   --dsc-card-border: 1px solid var(--dsc-card-border-color);
-  --dsc-card-gap: var(--ds-spacing-3);
-  --dsc-card-padding: var(--ds-spacing-6);
+  --dsc-card-gap: var(--ds-size-3);
+  --dsc-card-padding: var(--ds-size-6);
 
   &[data-color='neutral'] {
     --dsc-card-background: var(--ds-color-background-default);

@@ -27,7 +27,7 @@ const meta: Meta<typeof Button> = {
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
-      gap: 'var(--ds-spacing-4)',
+      gap: 'var(--ds-size-4)',
     },
   },
 };
@@ -42,8 +42,6 @@ export const Preview: Story = {
     children: 'Knapp',
     disabled: false,
     variant: 'primary',
-    'data-color': 'accent',
-    'data-size': 'md',
     icon: false,
   },
 };

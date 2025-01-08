@@ -2,7 +2,7 @@
   align-items: start;
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
 
   & [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
@@ -70,7 +70,7 @@
  */
 .ds-field-affixes {
   --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
-  --dsc-field-affix-padding-inline: var(--ds-spacing-4);
+  --dsc-field-affix-padding-inline: var(--ds-size-4);
 
   align-self: stretch; /* If ds-field is placed inside a flex container like ds-field, we need to fill width */
   background: var(--ds-color-neutral-background-subtle);

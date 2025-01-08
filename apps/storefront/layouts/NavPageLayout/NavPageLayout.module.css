@@ -1,6 +1,6 @@
 .content {
-  padding-bottom: var(--ds-spacing-12);
-  padding-top: var(--ds-spacing-12);
+  padding-bottom: var(--ds-size-12);
+  padding-top: var(--ds-size-12);
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {

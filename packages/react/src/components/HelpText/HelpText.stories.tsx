@@ -14,7 +14,6 @@ export const Preview: Story = {
   args: {
     'aria-label': 'Help text title',
     children: 'Help text content',
-    'data-size': 'md',
   },
 };
 

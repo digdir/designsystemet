@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.0.0-next.44
+
+### Patch Changes
+
+- Fixes issue where all React prop types were inlined instead of referenced ([#2912](https://github.com/digdir/designsystemet/pull/2912))
+
+## 1.0.0-next.43
+
+### Patch Changes
+
+- Field.Counter: Run on mount to support initial `defaultValue` ([#2907](https://github.com/digdir/designsystemet/pull/2907))
+
+## 1.0.0-next.42
+
+### Patch Changes
+
+- Radio, Checkbox: Spread `className` and `style` on outermost element ([#2880](https://github.com/digdir/designsystemet/pull/2880))
+
+- Badge: Convert to two elements, add `Badge.Position` component for placement ([#2857](https://github.com/digdir/designsystemet/pull/2857))
+
+- `ValidationMessage` now uses the `p`-element ([#2895](https://github.com/digdir/designsystemet/pull/2895))
+
+- Select: Add `width="auto"` option and default to full width ([#2894](https://github.com/digdir/designsystemet/pull/2894))
+
 ## 1.0.0-next.41
 
 ### Minor Changes

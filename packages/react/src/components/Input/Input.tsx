@@ -1,7 +1,6 @@
 import cl from 'clsx/lite';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -10,11 +9,6 @@ type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 export type InputProps = MergeRight<
   DefaultProps & Omit<InputAttr, 'prefix'>,
   {
-    /**
-     * Sets a color palette which **may** be used by this component, depending on the `type` prop.
-     * If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /** Supported `input` types */
     type?: InputAttr['type'];
     /** Defines the width of `Input` in count of characters.

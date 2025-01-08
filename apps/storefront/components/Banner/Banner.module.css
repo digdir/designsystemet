@@ -4,13 +4,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: var(--ds-spacing-14);
-  padding-top: var(--ds-spacing-4);
+  padding: var(--ds-size-14);
+  padding-top: var(--ds-size-4);
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: var(--ds-color-neutral-background-default);
-  gap: var(--ds-spacing-4);
+  gap: var(--ds-size-4);
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
@@ -32,8 +32,8 @@
   transform: rotate(45deg);
   background-color: var(--ds-color-brand2-border-subtle);
   border-radius: 3px;
-  margin-top: var(--ds-spacing-2);
-  margin-bottom: var(--ds-spacing-2);
+  margin-top: var(--ds-size-2);
+  margin-bottom: var(--ds-size-2);
 }
 
 .icon > svg {
@@ -69,7 +69,7 @@
   }
 
   .icon {
-    margin-left: var(--ds-spacing-2);
+    margin-left: var(--ds-size-2);
   }
 
   .logo {

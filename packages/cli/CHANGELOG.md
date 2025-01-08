@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.0.0-next.44
+
+## 1.0.0-next.43
+
+### Patch Changes
+
+- Fix crash when running @digdir/designsystemet CLI due to differences in module resolution when used as a package ([#2909](https://github.com/digdir/designsystemet/pull/2909))
+
+## 1.0.0-next.42
+
+### Minor Changes
+
+- Added option dry run using `--dry` on `tokens create` & `tokens build` ([#2884](https://github.com/digdir/designsystemet/pull/2884))
+
+- `tokens create` now writes by default ([#2884](https://github.com/digdir/designsystemet/pull/2884))
+
+- Changed `-w, --write` to `-o, --out-dir` on `tokens create` & `tokens build` for defining output dir ([#2884](https://github.com/digdir/designsystemet/pull/2884))
+
 ## 1.0.0-next.41
 
 ## 1.0.0-next.40

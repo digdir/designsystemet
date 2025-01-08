@@ -1,10 +1,10 @@
 .container {
   display: flex;
   max-width: var(--media-max-width);
-  margin: var(--ds-spacing-7) 0;
+  margin: var(--ds-size-7) 0;
   border-radius: var(--ds-border-radius-md);
   flex-wrap: wrap;
-  gap: var(--ds-spacing-4);
+  gap: var(--ds-size-4);
 }
 
 .image {

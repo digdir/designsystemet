@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import * as R from 'ramda';
-import { writeFile } from '../../utils';
+import { writeFile } from '../../utils.js';
 
 /**
  * Defines a sort order for the sections of the entry CSS file.

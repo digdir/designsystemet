@@ -51,7 +51,7 @@ export default {
       disable: true,
     },
     customStyles: {
-      padding: 'var(--ds-spacing-4)',
+      padding: 'var(--ds-size-4)',
       background: 'var(--ds-color-neutral-background-default)',
       borderRadius: 'var(--ds-border-radius-md)',
     },
@@ -68,7 +68,7 @@ export const MediumRow: StoryFn<{
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
         }}
@@ -96,7 +96,7 @@ export const MediumRow: StoryFn<{
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
           background: 'rgba(255 0 0/0.3)',
           flexDirection: direction,
         }}
@@ -246,7 +246,7 @@ export const Sizes: StoryFn = () => {
       {sizes.map((size) => (
         <div
           key={size}
-          style={{ display: 'flex', gap: 'var(--ds-sizing-2)' }}
+          style={{ display: 'flex', gap: 'var(--ds-size-2)' }}
           data-size={size}
         >
           <Chip.Radio>Radio</Chip.Radio>
@@ -342,10 +342,10 @@ export const Sizes: StoryFn = () => {
           <Modal.TriggerContext>
             <Modal.Trigger>Open Modal</Modal.Trigger>
             <Modal>
-              <Heading style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+              <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
                 Modal header
               </Heading>
-              <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+              <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
               </Paragraph>
@@ -363,9 +363,14 @@ export const Sizes: StoryFn = () => {
             </Pagination.Item>
             {pages.map(({ page, itemKey, buttonProps }) => (
               <Pagination.Item key={itemKey}>
-                <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-                  {page}
-                </Pagination.Button>
+                {typeof page === 'number' && (
+                  <Pagination.Button
+                    {...buttonProps}
+                    aria-label={`Side ${page}`}
+                  >
+                    {page}
+                  </Pagination.Button>
+                )}
               </Pagination.Item>
             ))}
             <Pagination.Item>

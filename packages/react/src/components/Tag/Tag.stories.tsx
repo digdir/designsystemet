@@ -16,8 +16,6 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'New',
-    'data-size': 'md',
-    'data-color': 'neutral',
   },
 };
 
@@ -28,7 +26,7 @@ export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 'var(--ds-spacing-2)',
+        gap: 'var(--ds-size-2)',
       }}
     >
       {sizes.map((size) => (

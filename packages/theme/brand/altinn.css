@@ -481,7 +481,7 @@
  */
 
 @layer ds.theme.typography.secondary {
-[data-ds-typography="secondary"] {
+[data-typography="secondary"] {
   --ds-font-family: IBM Plex Mono;
   --ds-font-weight-medium: 400;
   --ds-font-weight-semibold: 700;
@@ -605,61 +605,15 @@
 
 @layer ds.theme.semantic {
 :root {
-  --ds-border-radius-1: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *1);
-  --ds-border-radius-2: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *2);
-  --ds-border-radius-3: min( var(--ds-border-radius-base) , var(--ds-border-radius-scale) *5);
-  --ds-border-radius-4: var(--ds-border-radius-base);
-  --ds-border-radius-5: 624.9375rem;
   --ds-border-radius-base: 0.25rem;
   --ds-border-radius-scale: 0.25rem;
-  --ds-border-radius-sm: var(--ds-border-radius-1);
-  --ds-border-radius-md: var(--ds-border-radius-2);
-  --ds-border-radius-lg: var(--ds-border-radius-3);
-  --ds-border-radius-default: var(--ds-border-radius-4);
-  --ds-border-radius-full: var(--ds-border-radius-5);
+  --ds-border-radius-sm: min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale));
+  --ds-border-radius-md: min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2);
+  --ds-border-radius-lg: min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5);
+  --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
+  --ds-border-radius-default: var(--ds-border-radius-base);
+  --ds-border-radius-full: 624.9375rem;
   --ds-disabled-opacity: 30%;
-  --ds-spacing-0: calc(var(--ds-spacing-scale)*0);
-  --ds-spacing-1: calc(var(--ds-spacing-scale)*1);
-  --ds-spacing-2: calc(var(--ds-spacing-scale)*2);
-  --ds-spacing-3: calc(var(--ds-spacing-scale)*3);
-  --ds-spacing-4: calc(var(--ds-spacing-scale)*4);
-  --ds-spacing-5: calc(var(--ds-spacing-scale)*5);
-  --ds-spacing-6: calc(var(--ds-spacing-scale)*6);
-  --ds-spacing-7: calc(var(--ds-spacing-scale)*7);
-  --ds-spacing-8: calc(var(--ds-spacing-scale)*8);
-  --ds-spacing-9: calc(var(--ds-spacing-scale)*9);
-  --ds-spacing-10: calc(var(--ds-spacing-scale)*10);
-  --ds-spacing-11: calc(var(--ds-spacing-scale)*11);
-  --ds-spacing-12: calc(var(--ds-spacing-scale)*12);
-  --ds-spacing-13: calc(var(--ds-spacing-scale)*13);
-  --ds-spacing-14: calc(var(--ds-spacing-scale)*14);
-  --ds-spacing-15: calc(var(--ds-spacing-scale)*15);
-  --ds-spacing-18: calc(var(--ds-spacing-scale)*18);
-  --ds-spacing-22: calc(var(--ds-spacing-scale)*22);
-  --ds-spacing-26: calc(var(--ds-spacing-scale)*26);
-  --ds-spacing-30: calc(var(--ds-spacing-scale)*30);
-  --ds-spacing-scale: 0.25rem;
-  --ds-sizing-0: calc(var(--ds-sizing-scale)*0);
-  --ds-sizing-1: calc(var(--ds-sizing-scale)*1);
-  --ds-sizing-2: calc(var(--ds-sizing-scale)*2);
-  --ds-sizing-3: calc(var(--ds-sizing-scale)*3);
-  --ds-sizing-4: calc(var(--ds-sizing-scale)*4);
-  --ds-sizing-5: calc(var(--ds-sizing-scale)*5);
-  --ds-sizing-6: calc(var(--ds-sizing-scale)*6);
-  --ds-sizing-7: calc(var(--ds-sizing-scale)*7);
-  --ds-sizing-8: calc(var(--ds-sizing-scale)*8);
-  --ds-sizing-9: calc(var(--ds-sizing-scale)*9);
-  --ds-sizing-10: calc(var(--ds-sizing-scale)*10);
-  --ds-sizing-11: calc(var(--ds-sizing-scale)*11);
-  --ds-sizing-12: calc(var(--ds-sizing-scale)*12);
-  --ds-sizing-13: calc(var(--ds-sizing-scale)*13);
-  --ds-sizing-14: calc(var(--ds-sizing-scale)*14);
-  --ds-sizing-15: calc(var(--ds-sizing-scale)*15);
-  --ds-sizing-18: calc(var(--ds-sizing-scale)*18);
-  --ds-sizing-22: calc(var(--ds-sizing-scale)*22);
-  --ds-sizing-26: calc(var(--ds-sizing-scale)*26);
-  --ds-sizing-30: calc(var(--ds-sizing-scale)*30);
-  --ds-sizing-scale: 0.25rem;
   --ds-border-width-default: 1px;
   --ds-border-width-highlight: 2px;
   --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
@@ -667,6 +621,54 @@
   --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
   --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
   --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+
+  --ds-size-0:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);
+  --ds-size-1:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);
+  --ds-size-2:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2);
+  --ds-size-3:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3);
+  --ds-size-4:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4);
+  --ds-size-5:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5);
+  --ds-size-6:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6);
+  --ds-size-7:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7);
+  --ds-size-8:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8);
+  --ds-size-9:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9);
+  --ds-size-10:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10);
+  --ds-size-11:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11);
+  --ds-size-12:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12);
+  --ds-size-13:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13);
+  --ds-size-14:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14);
+  --ds-size-15:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15);
+  --ds-size-18:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18);
+  --ds-size-22:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22);
+  --ds-size-26:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26);
+  --ds-size-30:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);
+  --ds-size-base:  18;
+  --ds-size-step:  4;
+
+  @supports (width: round(down, .1em, 1px)) {
+  --ds-size-0: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);, 0.0625rem)
+  --ds-size-1: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);, 0.0625rem)
+  --ds-size-2: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2);, 0.0625rem)
+  --ds-size-3: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3);, 0.0625rem)
+  --ds-size-4: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4);, 0.0625rem)
+  --ds-size-5: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5);, 0.0625rem)
+  --ds-size-6: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6);, 0.0625rem)
+  --ds-size-7: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7);, 0.0625rem)
+  --ds-size-8: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8);, 0.0625rem)
+  --ds-size-9: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9);, 0.0625rem)
+  --ds-size-10: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10);, 0.0625rem)
+  --ds-size-11: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11);, 0.0625rem)
+  --ds-size-12: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12);, 0.0625rem)
+  --ds-size-13: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13);, 0.0625rem)
+  --ds-size-14: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14);, 0.0625rem)
+  --ds-size-15: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15);, 0.0625rem)
+  --ds-size-18: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18);, 0.0625rem)
+  --ds-size-22: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22);, 0.0625rem)
+  --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26);, 0.0625rem)
+  --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);, 0.0625rem)
+  --ds-size-base: round(down,  18;, 0.0625rem)
+  --ds-size-step: round(down,  4;, 0.0625rem)
+  }
 }
 
 }
@@ -1150,7 +1152,7 @@
  */
 
 @layer ds.theme.typography.primary {
-:root, [data-ds-typography="primary"] {
+:root, [data-typography="primary"] {
   --ds-font-family: Helvetica Neue;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 700;

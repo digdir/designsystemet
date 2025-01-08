@@ -19,16 +19,12 @@ export const Preview: Story = (args) => (
   </List.Unordered>
 );
 
-Preview.args = {
-  'data-size': 'md',
-};
-
 export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
     <Heading
       level={2}
       data-size='xs'
-      style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      style={{ marginBottom: 'var(--ds-size-2)' }}
     >
       Slik gjør du:
     </Heading>
@@ -55,7 +51,7 @@ export const Usortert: Story = (args) => (
     <Heading
       level={2}
       data-size='xs'
-      style={{ marginBottom: 'var(--ds-spacing-2)' }}
+      style={{ marginBottom: 'var(--ds-size-2)' }}
     >
       Foreningen har plikt til å ha revisor hvis de har
     </Heading>
@@ -78,7 +74,7 @@ export const Innrykk: Story = (args) => (
       <Heading
         level={3}
         data-size='xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         {' '}
         List Item 1
@@ -93,7 +89,7 @@ export const Innrykk: Story = (args) => (
       <Heading
         level={3}
         data-size='xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         {' '}
         List Item 2
@@ -108,7 +104,7 @@ export const Innrykk: Story = (args) => (
       <Heading
         level={3}
         data-size='xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List Item 3
       </Heading>
@@ -147,7 +143,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <Heading
         level={2}
         data-size='2xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List sm og Heading 2xs
       </Heading>
@@ -179,7 +175,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <Heading
         level={2}
         data-size='xs'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List md og Heading xs
       </Heading>
@@ -211,7 +207,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <Heading
         level={2}
         data-size='sm'
-        style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List lg og Heading sm
       </Heading>

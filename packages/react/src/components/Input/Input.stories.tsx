@@ -59,7 +59,7 @@ export default {
       <div
         style={{
           display: 'flex',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
           flexDirection: 'column',
         }}
       >
@@ -82,7 +82,6 @@ export const Preview: Story = {
     'aria-invalid': false,
     disabled: false,
     readOnly: false,
-    'data-size': 'md',
     type: 'text',
     role: 'checkbox',
     name: 'inputs',
@@ -130,7 +129,7 @@ export const Controlled: StoryFn<typeof Input> = (args) => {
       <div>
         <Divider />
 
-        <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+        <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
           Du har skrevet inn: {value}
         </Paragraph>
         <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>

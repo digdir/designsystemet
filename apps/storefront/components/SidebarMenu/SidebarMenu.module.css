@@ -1,6 +1,6 @@
 .title {
   font-weight: 600;
-  margin-bottom: var(--ds-spacing-5);
+  margin-bottom: var(--ds-size-5);
 }
 
 .list {
@@ -9,12 +9,12 @@
 }
 
 .listGroup {
-  margin-bottom: var(--ds-spacing-5);
+  margin-bottom: var(--ds-size-5);
   list-style: none;
 }
 
 .listGroupCompact {
-  margin-bottom: var(--ds-spacing-4);
+  margin-bottom: var(--ds-size-4);
 }
 
 .innerList {
@@ -39,7 +39,7 @@
 .link {
   color: inherit;
   text-decoration: none;
-  padding: var(--ds-spacing-1) var(--ds-spacing-4);
+  padding: var(--ds-size-1) var(--ds-size-4);
   display: block;
   line-height: 1.3em;
   position: relative;
@@ -87,12 +87,12 @@
 @media (max-width: 958.98px) {
   .menu {
     display: none;
-    margin-top: var(--ds-spacing-7);
+    margin-top: var(--ds-size-7);
   }
 
   .toggleBtn {
     display: block;
-    margin-bottom: var(--ds-spacing-2);
+    margin-bottom: var(--ds-size-2);
   }
 
   .activeMenu {

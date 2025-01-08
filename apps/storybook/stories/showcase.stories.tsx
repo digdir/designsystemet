@@ -60,7 +60,7 @@ export const ShowcaseStory: StoryFn = () => {
         <Fieldset>
           <Fieldset.Legend>
             Typografi
-            <code data-size='xs'>(data-ds-typography)</code>
+            <code data-size='xs'>(data-typography)</code>
           </Fieldset.Legend>
           <ToggleGroup value={typographyMode} onChange={setTypographyMode}>
             {typography.map((typographyMode) => (
@@ -74,7 +74,7 @@ export const ShowcaseStory: StoryFn = () => {
       <Showcase
         data-size={size}
         data-color-scheme={colorMode}
-        data-ds-typography={typographyMode}
+        data-typography={typographyMode}
       />
     </div>
   );

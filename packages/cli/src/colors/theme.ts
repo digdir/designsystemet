@@ -80,7 +80,10 @@ const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
   const calculateLightness = (base: number, mod: number) => base - mod;
 
   return {
-    baseDefault: chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor,
+    baseDefault:
+      colorScheme === 'light'
+        ? color
+        : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor),
     baseHover: chroma(color)
       .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
       .hex() as CssColor,
