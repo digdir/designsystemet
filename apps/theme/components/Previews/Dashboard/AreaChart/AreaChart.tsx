@@ -52,6 +52,7 @@ const data = [
 export const AreaChartComponent = () => {
   return (
     <ResponsiveContainer width='100%' height='100%' className={classes.area}>
+      {/* @ts-ignore -- this component is not yet react 19 */}
       <AreaChart
         data={data}
         margin={{

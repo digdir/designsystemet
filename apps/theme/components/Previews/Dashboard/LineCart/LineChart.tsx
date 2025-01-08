@@ -45,6 +45,7 @@ const data = [
 export const LineChartComponent = () => {
   return (
     <ResponsiveContainer width='100%' height='100%' className={classes.line}>
+      {/* @ts-ignore -- this component is not yet react 19 */}
       <LineChart
         data={data}
         margin={{

@@ -32,6 +32,7 @@ const data = [
 export const BarChartComponent = () => {
   return (
     <ResponsiveContainer width='100%' height='100%' className={classes.bar}>
+      {/* @ts-ignore -- this component is not yet react 19 */}
       <BarChart
         data={data}
         margin={{
