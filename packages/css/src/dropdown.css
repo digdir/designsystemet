@@ -24,12 +24,15 @@
     align-items: center;
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-subtle);
-    display: flex;
     font-size: inherit;
     font-weight: inherit;
     margin: 0;
     min-height: var(--dsc-dropdown-item-size);
     padding: var(--dsc-dropdown-item-padding);
+
+    &:not([hidden]) {
+      display: flex;
+    }
   }
 
   & > ul {
