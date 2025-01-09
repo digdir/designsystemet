@@ -1,4 +1,5 @@
 {
+  "$schema": "./dist/config.schema.json",
   "outDir": "./test-tokens-create",
   "themes": {
     "digdir": {
