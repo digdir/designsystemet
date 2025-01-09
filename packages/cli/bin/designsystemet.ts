@@ -10,9 +10,9 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { colorCliOptions, createTokens } from '../src/tokens/create.js';
+import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
-import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema } from './config.js';
+import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
 import { type OptionGetter, getDefaultOrExplicitOption, getExplicitOptionOnly } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
@@ -51,14 +51,18 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option(`-m, --${colorCliOptions.main} <name:hex...>`, `Main colors`, parseColorValues)
-    .option(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
-    .option(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
-    .option('-o, --out-dir <string>', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
-    .option('-f, --font-family <string>', `Font family`, DEFAULT_FONT)
+    .option(`-m, --${cliOptions.theme.colors.main} <name:hex...>`, `Main colors`, parseColorValues)
+    .option(`-s, --${cliOptions.theme.colors.support} <name:hex...>`, `Support colors`, parseColorValues)
+    .option(`-n, --${cliOptions.theme.colors.neutral} <hex>`, `Neutral hex color`, convertToHex)
     .option(
-      '-b, --border-radius <number>',
+      `-o, --${cliOptions.outDir} <string>`,
+      `Output directory for created ${chalk.blue('design-tokens')}`,
+      DEFAULT_TOKENS_DIR,
+    )
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
+    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
+    .option(
+      `-b, --${cliOptions.theme.borderRadius} <number>`,
       `Unitless base border-radius in px`,
       (radiusAsString) => Number(radiusAsString),
       4,
@@ -145,7 +149,7 @@ function makeTokenCommands() {
       try {
         config = combinedConfigSchema.parse(unvalidatedConfig);
       } catch (err) {
-        console.error(chalk.redBright('Invalid config after combining defaults, json config and options'));
+        console.error(chalk.redBright('Invalid config after combining JSON file and CLI options'));
         const validationError = makeFriendlyError(err);
         console.error(validationError.toString());
         process.exit(1);
@@ -226,7 +230,7 @@ async function parseJsonConfig(
       config: await configFileSchema.parseAsync(JSON.parse(jsonFile)),
     };
   } catch (err) {
-    console.error(chalk.redBright(`Invalid json config in ${jsonPath}`));
+    console.error(chalk.redBright(`Invalid JSON config in ${jsonPath}`));
     const validationError = makeFriendlyError(err);
     console.error(validationError.toString());
     process.exit(1);
@@ -239,7 +243,12 @@ function makeFriendlyError(err: unknown) {
       issues
         .map((issue) => {
           const issuePath = issue.path.join('.');
-          return `  - ${chalk.red(issuePath)}: ${issue.message} (${chalk.dim(issue.code)})`;
+          const optionName = mapPathToOptionName(issue.path);
+
+          const errorCode = `(error code: ${issue.code})`;
+          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
+          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
+    ${issue.message} ${chalk.dim(errorCode)}`;
         })
         .join('\n'),
   });

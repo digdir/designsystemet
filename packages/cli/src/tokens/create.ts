@@ -3,10 +3,19 @@ import { baseColors, generateColorScale } from '../colors/index.js';
 import type { ColorInfo, ColorScheme } from '../colors/types.js';
 import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
-export const colorCliOptions = {
-  main: 'main-colors',
-  support: 'support-colors',
-  neutral: 'neutral-color',
+export const cliOptions = {
+  outDir: 'out-dir',
+  theme: {
+    colors: {
+      main: 'main-colors',
+      support: 'support-colors',
+      neutral: 'neutral-color',
+    },
+    typography: {
+      fontFamily: 'font-family',
+    },
+    borderRadius: 'border-radius',
+  },
 } as const;
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {

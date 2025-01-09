@@ -11,7 +11,7 @@ import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import { getDummyTheme } from '@common/dummyTheme';
-import { colorCliOptions } from '@digdir/designsystemet';
+import { cliOptions } from '@digdir/designsystemet';
 import {
   type CssColor,
   generateColorSchemes,
@@ -19,6 +19,8 @@ import {
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
+
+const colorCliOptions = cliOptions.theme.colors;
 
 function Theme() {
   const { themeId } = useParams();
