@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.4",
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.0.4",
     "@types/react-color": "^3.0.12",
-    "@types/react-dom": "^19.0.0"
+    "@types/react-dom": "^19.0.2"
   }
 }
