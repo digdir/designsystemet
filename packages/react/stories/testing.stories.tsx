@@ -16,7 +16,6 @@ import {
   ErrorSummary,
   Field,
   Heading,
-  HelpText,
   Input,
   Label,
   Link,
@@ -316,11 +315,6 @@ export const Sizes: StoryFn = () => {
           />
           <Label>Text</Label>
         </Field>
-      ))}
-      {sizes.map((size) => (
-        <HelpText key={size} data-size={size} aria-label='Mer info'>
-          Mer tekst
-        </HelpText>
       ))}
       {sizes.map((size) => (
         <div key={size} data-size={size}>
