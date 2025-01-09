@@ -5,10 +5,10 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { DEFAULT_COLOR, buildOptions } from '../build.js';
-import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
+import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
@@ -29,7 +29,6 @@ export const basePxFontSize = 16;
 const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
 StyleDictionary.registerTransform(sizeRem);
-StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
 StyleDictionary.registerTransform(unitless);
@@ -40,7 +39,7 @@ for (const format of Object.values(formats)) {
 }
 
 const dsTransformers = [
-  nameKebab.name,
+  'name/kebab',
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
@@ -198,8 +197,9 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius', 'size'], token);
-            return include && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
       },
@@ -240,8 +240,9 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius', 'size'], token);
-            return include && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
       },
@@ -269,7 +270,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [
-          nameKebab.name,
+          'name/kebab',
           'ts/size/px',
           sizeRem.name,
           'ts/size/lineheight',
