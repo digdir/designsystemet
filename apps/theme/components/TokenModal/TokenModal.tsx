@@ -7,7 +7,7 @@ import {
   Modal,
   Paragraph,
 } from '@digdir/designsystemet-react';
-import { colorCliOptions } from '@digdir/designsystemet/tokens';
+import { cliOptions } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useRef } from 'react';
@@ -16,6 +16,8 @@ import cl from 'clsx/lite';
 
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
+
+const colorCliOptions = cliOptions.theme.colors;
 
 export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
