@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
-import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
 import 'react-color-palette/css';
 import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
@@ -92,6 +92,7 @@ export default function RootLayout({
             menu={menu}
             transparentBackground
             logoLink='https://www.designsystemet.no/'
+            themeSwitcher
           />
           <div className='content'>{children}</div>
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />

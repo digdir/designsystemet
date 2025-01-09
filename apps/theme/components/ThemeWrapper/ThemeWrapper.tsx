@@ -7,12 +7,7 @@ type ThemeWrapperProps = {
 };
 
 export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
-  const appearance = useThemeStore((state) => state.appearance);
   const theme = useThemeStore((state) => state.themePreview);
 
-  return (
-    <div data-color-scheme={appearance} data-theme={theme}>
-      {children}
-    </div>
-  );
+  return <div data-theme={theme}>{children}</div>;
 };

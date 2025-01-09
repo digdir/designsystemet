@@ -10,6 +10,7 @@ import { Theme1 } from './Theme1/Theme1';
 export const Previews = () => {
   const setTheme = useThemeStore((state) => state.setThemePreview);
   const setAppearance = useThemeStore((state) => state.setAppearance);
+  const appearance = useThemeStore((state) => state.appearance);
   const items = [
     {
       name: 'Tema 1 lys',
@@ -50,7 +51,11 @@ export const Previews = () => {
         />
       </div>
 
-      <div className={cl(classes.preview)} id='preview2'>
+      <div
+        className={cl(classes.preview)}
+        id='preview2'
+        data-color-scheme={appearance}
+      >
         <Theme1 />
       </div>
     </>

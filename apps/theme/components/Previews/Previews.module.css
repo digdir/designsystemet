@@ -50,6 +50,8 @@
   border-radius: 12px;
   display: flex;
   gap: 32px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 32px;
 }
 
 .preview[data-color-scheme='dark'],
