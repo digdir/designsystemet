@@ -71,8 +71,8 @@ export const generateNeutralColorSchemes = (color: CssColor) => {
   const darkBase = '#ffffff';
   const neutralTheme = generateColorSchemes(color);
   neutralTheme.light[2].hex = '#ffffff';
-  neutralTheme.light[3].hex = hexToRgba(lightBase, 0.05);
-  neutralTheme.light[4].hex = hexToRgba(lightBase, 0.1);
+  neutralTheme.light[3].hex = chroma(color).luminance(luminance.light.backgroundSubtle).hex() as CssColor;
+  neutralTheme.light[4].hex = chroma(color).luminance(luminance.light.surfaceDefault).hex() as CssColor;
   neutralTheme.light[5].hex = hexToRgba(lightBase, 0.27);
   neutralTheme.light[6].hex = hexToRgba(lightBase, 0.45);
   neutralTheme.light[7].hex = hexToRgba(lightBase, 0.62);
