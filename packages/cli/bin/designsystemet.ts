@@ -13,7 +13,7 @@ import { buildTokens } from '../src/tokens/build.js';
 import { colorCliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema } from './config.js';
-import { type OptionGetter, getExplicitOptionOnly, getExplicitOrDefaultOption } from './options.js';
+import { type OptionGetter, getDefaultOrExplicitOption, getExplicitOptionOnly } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -112,7 +112,7 @@ function makeTokenCommands() {
        */
       const noUndefined = R.reject(R.isNil);
 
-      const getThemeDefaults = (optionGetter: OptionGetter) =>
+      const getThemeOptions = (optionGetter: OptionGetter) =>
         noUndefined({
           colors: noUndefined({
             main: optionGetter(cmd, 'mainColors'),
@@ -125,21 +125,18 @@ function makeTokenCommands() {
           borderRadius: optionGetter(cmd, 'borderRadius'),
         });
 
-      const propsFromOpts = noUndefined({
-        outDir: getExplicitOptionOnly(cmd, 'outDir'),
+      const unvalidatedConfig = noUndefined({
+        outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
         themes: propsFromJson?.themes
           ? // For each theme specified in the JSON config, we override the config values
             // with the explicitly set options from the CLI.
-            R.map(() => getThemeDefaults(getExplicitOptionOnly), propsFromJson.themes)
+            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getExplicitOptionOnly)), propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
-              [opts.theme]: getThemeDefaults(getExplicitOrDefaultOption),
+              [opts.theme]: getThemeOptions(getDefaultOrExplicitOption),
             },
       });
-      console.log(propsFromOpts);
-
-      const unvalidatedConfig = R.mergeDeepRight(propsFromJson ?? {}, propsFromOpts);
 
       /*
        * Check that the config is valid
