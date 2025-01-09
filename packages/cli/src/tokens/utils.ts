@@ -99,3 +99,5 @@ export const copyFile = async (src: string, dest: string, dry?: boolean) => {
 
   return await fs.copyFile(src, dest);
 };
+
+export const isDigit = (s: string) => /^\d+$/.test(s);

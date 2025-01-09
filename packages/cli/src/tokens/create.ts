@@ -1,19 +1,13 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { ColorInfo, ColorScheme } from '../colors/types.js';
-import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
+import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
 export const colorCliOptions = {
   main: 'main-colors',
   support: 'support-colors',
   neutral: 'neutral-color',
 } as const;
-
-export type CreateTokensOptions = {
-  colors: Colors;
-  typography: Typography;
-  name: string;
-};
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
   const obj: Tokens1ary = {};
@@ -93,7 +87,7 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
   };
 };
 
-export const createTokens = (opts: CreateTokensOptions) => {
+export const createTokens = (opts: Theme) => {
   const { colors, typography, name } = opts;
 
   const tokens: Tokens = {
