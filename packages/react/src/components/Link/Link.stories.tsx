@@ -26,7 +26,6 @@ export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
-    'data-color': 'accent',
   },
 };
 

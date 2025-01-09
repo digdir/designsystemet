@@ -21,7 +21,6 @@ export const Preview: StoryObj<typeof Radio> = {
     disabled: false,
     readOnly: false,
     value: 'value',
-    'data-size': 'md',
   },
 };
 
@@ -98,9 +97,9 @@ export const Controlled: StoryFn<UseRadioGroupProps> = (args) => {
         <Radio label='Snadder' {...getRadioProps('snadder')} />
       </Fieldset>
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ marginBlock: 'var(--ds-spacing-2)' }}>
+      <Paragraph style={{ marginBlock: 'var(--ds-size-2)' }}>
         Du har valgt: {value}
       </Paragraph>
       <div style={{ display: 'flex', gap: '1rem' }}>
@@ -127,9 +126,7 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
     <Fieldset.Description>
       Bekreft om du ønsker å bli kontaktet per e-post.
     </Fieldset.Description>
-    <div
-      style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}
-    >
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-size-6)' }}>
       <Radio name='my-inline' label='Ja' value='ja' />
       <Radio name='my-inline' label='Nei' value='nei' />
     </div>

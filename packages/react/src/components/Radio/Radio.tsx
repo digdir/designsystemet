@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
-
-import type { Color } from '../../colors';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Field } from '../Field';
@@ -12,10 +10,6 @@ import { ValidationMessage } from '../ValidationMessage';
 export type RadioProps = MergeRight<
   DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,
   {
-    /** The color of the fill for selected radios.
-     * If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: Color;
     /** Optional aria-label */
     'aria-label'?: string;
     /** Radio label */

@@ -9,8 +9,8 @@
   --dsc-table-header-background--sorted: var(--ds-color-neutral-background-subtle);
   --dsc-table-header-background: var(--ds-color-neutral-background-default);
   --dsc-table-header-divider: 2px solid var(--ds-color-neutral-border-subtle);
-  --dsc-table-padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  --dsc-table-sort-size: var(--ds-spacing-6);
+  --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-table-sort-size: var(--ds-size-6);
 
   border-collapse: separate; /* Using separate mode to enable border-radius */
   border-radius: var(--dsc-table-border-radius);
@@ -38,10 +38,15 @@
     border-bottom: var(--dsc-table-header-divider);
   }
 
-  & > tfoot > tr > :is(th, td) {
-    background: var(--dsc-table-background);
+  /* No border on last tbody row if followed by tfoot */
+  & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
     border-bottom: none;
-    border-top: var(--dsc-table-border);
+  }
+
+  & > tfoot > tr > :is(th, td) {
+    background: var(--dsc-table-header-background);
+    border-bottom: none;
+    border-top: var(--dsc-table-header-divider);
   }
 
   & caption {
@@ -84,11 +89,16 @@
       box-sizing: border-box;
       color: inherit;
       cursor: pointer;
-      display: block;
       font: inherit;
       padding: var(--dsc-table-padding);
       text-align: inherit;
       width: 100%;
+
+      @composes ds-focus from './base.css';
+
+      &:not([hidden]) {
+        display: block;
+      }
 
       &:focus-visible {
         position: relative; /* Place on top when painting focus border */

@@ -1,8 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
-
-import type { Color } from '../../colors';
 import { useSynchronizedAnimation } from '../../utilities';
 
 export type SpinnerProps = {
@@ -11,11 +9,7 @@ export type SpinnerProps = {
   /**
    * Spinner size
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  /**
-   * The color of the spinner. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-   */
-  'data-color'?: Color;
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }

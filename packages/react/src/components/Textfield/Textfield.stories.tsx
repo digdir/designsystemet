@@ -50,7 +50,6 @@ export const Preview: Story = {
     label: 'Label',
     disabled: false,
     readOnly: false,
-    'data-size': 'md',
     multiline: false,
     description: '',
     error: '',
@@ -91,9 +90,9 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
         onChange={(e) => setValue(e.target.value)}
       />
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Du har skrevet inn: {value}
       </Paragraph>
       <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>

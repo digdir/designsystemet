@@ -3,7 +3,6 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import type { CustomColors } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -14,7 +13,7 @@ export type CardProps = MergeRight<
      * Changes background & border color.
      * @default neutral
      */
-    'data-color'?: 'subtle' | CustomColors;
+    'data-color'?: 'subtle' | DefaultProps['data-color'];
     asChild?: boolean;
     /** Instances of `Card.Block`, `Divider` or other React nodes */
     children: ReactNode;

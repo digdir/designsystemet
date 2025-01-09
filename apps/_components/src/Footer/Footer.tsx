@@ -26,9 +26,11 @@ const LinkList = (links: LinkListItemProps[]) => {
     <ul className={classes.links}>
       {links.map((item, index) => (
         <li key={index}>
-          <Link href={item.url} data-color='neutral' className={classes.link}>
-            {item.prefix}
-            {item.text}
+          <Link data-color='neutral' className={classes.link} asChild>
+            <NextLink href={item.url}>
+              {item.prefix}
+              {item.text}
+            </NextLink>
           </Link>
         </li>
       ))}

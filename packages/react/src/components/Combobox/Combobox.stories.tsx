@@ -229,7 +229,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         ))}
       </Combobox>
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Switch
         label='Multiple'
@@ -240,7 +240,7 @@ export const Controlled: StoryFn<typeof Combobox> = (args) => {
         }}
       />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Value er: {value.join(', ')}
       </Paragraph>
       <Button
@@ -321,7 +321,7 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
     <Modal.TriggerContext>
       <Modal.Trigger>Open Modal</Modal.Trigger>
       <Modal style={{ overflow: 'visible' }}>
-        <Heading data-size='xs' style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading data-size='xs' style={{ marginBottom: 'var(--ds-size-2)' }}>
           Combobox i Modal
         </Heading>
         <Combobox
@@ -369,7 +369,7 @@ export const WithChipsOutside: StoryFn<typeof Combobox> = (args) => {
           marginBottom: '2rem',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 'var(--ds-spacing-2)',
+          gap: 'var(--ds-size-2)',
         }}
       >
         {value.map((item, index) => (

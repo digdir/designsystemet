@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 
 import { CogIcon } from '@navikt/aksel-icons';
+import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
-import { RadiusPage } from './RadiusPage/RadiusPage';
+
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -47,9 +48,7 @@ export const Sidebar = () => {
           {activePage === 'colors' && (
             <ColorPage onNextClick={() => setActivePage('radius')} />
           )}
-          {activePage === 'radius' && (
-            <RadiusPage onPrevClick={() => setActivePage('colors')} />
-          )}
+          {activePage === 'radius' && <BorderRadiusInput />}
 
           <div className={classes.bottom}>
             <TokenModal />

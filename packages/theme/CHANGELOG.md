@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.0.0-next.45
+
+### Minor Changes
+
+- Removed CSS variables `--ds-spacing-*` & `--ds-sizing-*`, use `--ds-size-*`. ([#2939](https://github.com/digdir/designsystemet/pull/2939))
+
+- Moved typography based sizing formula to design-tokens ([#2796](https://github.com/digdir/designsystemet/pull/2796))
+
+- Removed design-tokens `sizing` & `spacing`, use `size`. ([#2939](https://github.com/digdir/designsystemet/pull/2939))
+
+### Patch Changes
+
+- Rename `data-ds-typography` to `data-typography` ([#2959](https://github.com/digdir/designsystemet/pull/2959))
+
+## 1.0.0-next.44
+
+## 1.0.0-next.43
+
+## 1.0.0-next.42
+
+### Patch Changes
+
+- Tweaked color codes. Visually remains the same ([#2854](https://github.com/digdir/designsystemet/pull/2854))
+
 ## 1.0.0-next.41
 
 ### Patch Changes

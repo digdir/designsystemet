@@ -14,7 +14,7 @@ const meta: Meta<typeof Avatar> = {
     layout: 'padded',
     customStyles: {
       display: 'flex',
-      gap: 'var(--ds-spacing-2)',
+      gap: 'var(--ds-size-2)',
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -27,8 +27,6 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   'aria-label': 'Ola Nordmann',
-  'data-color': 'accent',
-  'data-size': 'md',
   variant: 'circle',
   children: '',
 };

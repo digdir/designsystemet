@@ -2,11 +2,11 @@
   --dsc-popover-background: var(--ds-color-surface-default);
   --dsc-popover-border-color: var(--ds-color-border-default);
   --dsc-popover-color: var(--ds-color-text-default);
-  --dsc-popover-arrow-size: var(--ds-spacing-2);
+  --dsc-popover-arrow-size: var(--ds-size-2);
   --dsc-popover-border-radius: var(--ds-border-radius-md);
   --dsc-popover-border: 1px solid var(--dsc-popover-border-color);
   --dsc-popover-max-width: 300px;
-  --dsc-popover-padding: var(--ds-spacing-3) var(--ds-spacing-4);
+  --dsc-popover-padding: var(--ds-size-3) var(--ds-size-4);
 
   background: var(--dsc-popover-background);
   border-radius: var(--dsc-popover-border-radius);
@@ -54,4 +54,18 @@
   &[data-color='neutral'] {
     --dsc-popover-background: var(--ds-color-neutral-background-default);
   }
+}
+
+[data-popover='inline'] {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.27em;
+  font-size: inherit;
+
+  &:not([hidden]) {
+    display: inline;
+  }
+
+  @composes ds-focus from './base.css';
 }

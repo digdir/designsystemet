@@ -5,8 +5,8 @@
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);
   --dsc-card-border: 1px solid var(--dsc-card-border-color);
-  --dsc-card-gap: var(--ds-spacing-3);
-  --dsc-card-padding: var(--ds-spacing-6);
+  --dsc-card-gap: var(--ds-size-3);
+  --dsc-card-padding: var(--ds-size-6);
 
   &[data-color='neutral'] {
     --dsc-card-background: var(--ds-color-background-default);
@@ -24,12 +24,15 @@
   border: var(--dsc-card-border);
   box-sizing: border-box;
   color: var(--dsc-card-color);
-  display: block;
   font-family: inherit;
   margin: 0;
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
   text-align: inherit;
+
+  &:not([hidden]) {
+    display: block;
+  }
 
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size when <button> */
@@ -115,7 +118,7 @@
   &:has(> :is(audio, figure, iframe, img, video):only-child) {
     padding: 0;
 
-    & > * {
+    & > :not([hidden]) {
       border: 0;
       display: block;
       height: auto;

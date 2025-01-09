@@ -1,5 +1,5 @@
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
-import type { GetStyleDictionaryConfig } from './configs';
+import type { GetStyleDictionaryConfig } from './configs.js';
 
 export const colorCategories = {
   main: 'main',

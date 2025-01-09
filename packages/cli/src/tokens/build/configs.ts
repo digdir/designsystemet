@@ -8,11 +8,10 @@ import { DEFAULT_COLOR, buildOptions } from '../build.js';
 import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, resolveMath, sizeRem, typographyName } from './transformers.js';
+import { nameKebab, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
-  IsCalculatedToken,
   SDConfigForThemePermutation,
   ThemeDimension,
   ThemePermutation,
@@ -33,6 +32,7 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
+StyleDictionary.registerTransform(unitless);
 
 StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
@@ -44,6 +44,7 @@ const dsTransformers = [
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
+  unitless.name,
   'ts/typography/fontWeight',
   typographyName.name,
   'ts/color/modifiers',
@@ -53,17 +54,6 @@ const dsTransformers = [
 ];
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
-
-const outputColorReferences = (token: TransformedToken) => {
-  if (
-    R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
-    R.includes('semantic/color', token.filePath)
-  ) {
-    return true;
-  }
-
-  return false;
-};
 
 export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
@@ -177,16 +167,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
-  /**
-   * This is a workaround for our formatters to support transative transformers while retaining outputReference.
-   *
-   * This function will wrap formatted token in `calc()`
-   *
-   * @example  --ds-spacing-1: var(--ds-spacing-base)*1; ->  --ds-spacing-0: calc(var(--ds-spacing-base)*1);
-   */
-  const isCalculatedToken: IsCalculatedToken = (token: TransformedToken) =>
-    pathStartsWithOneOf(['spacing', 'sizing'], token);
-
   return {
     usesDtcg,
     preprocessors: ['tokens-studio'],
@@ -196,7 +176,6 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         outPath,
         theme,
         basePxFontSize,
-        isCalculatedToken,
         selector,
         layer,
         //
@@ -207,16 +186,20 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
           {
             destination: `semantic.css`,
             format: formats.semantic.name,
-            filter: (token) =>
-              (!token.isSource || isCalculatedToken(token)) &&
-              !typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token),
+            filter: (token) => {
+              const unwantedPaths = pathStartsWithOneOf(['font-size', 'line-height', 'letter-spacing'], token);
+              const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
+              const unwantedTokens = !(unwantedPaths || unwantedTypes);
+
+              return !token.isSource && unwantedTokens;
+            },
           },
         ],
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius'], token);
-            return (include || isCalculatedToken(token)) && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius', 'size'], token);
+            return include && outputReferencesFilter(token, options);
           },
         },
       },
@@ -238,24 +221,28 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
           {
             destination: `${colorScheme}.ts`,
             format: jsTokens.name,
-            outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
-              if (pathStartsWithOneOf(['border-width'], token)) return false;
-
               if (
-                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
-                R.includes('semantic', token.filePath)
-              ) {
-                return true;
-              }
+                pathStartsWithOneOf(['border-width', 'letter-spacing', 'border-radius'], token) &&
+                !R.includes('semantic', token.filePath)
+              )
+                return false;
 
-              return false;
+              const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
+              const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
+
+              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
+
+              return (isSemanticColor || wantedTypes) && isNotPrivate;
             },
           },
         ],
         options: {
           fileHeader,
+          outputReferences: (token, options) => {
+            const include = pathStartsWithOneOf(['border-radius', 'size'], token);
+            return include && outputReferencesFilter(token, options);
+          },
         },
       },
     },
@@ -263,7 +250,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
 };
 
 const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { outPath }) => {
-  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
   return {
@@ -295,14 +282,14 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
             format: formats.typography.name,
             filter: (token) => {
               const included = typeEquals(
-                ['typography', 'fontweight', 'fontFamily', 'lineheight', 'fontsize', 'dimension', 'font'],
+                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font', 'fontsize'],
                 token,
               );
 
               return (
                 included &&
                 !pathStartsWithOneOf(
-                  ['spacing', 'sizing', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
+                  ['spacing', 'sizing', 'size', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
                   token,
                 )
               );

@@ -21,7 +21,6 @@ export const Preview: Story = (args) => <Spinner {...args} />;
 
 Preview.args = {
   'aria-label': 'Henter kaffi',
-  'data-size': 'md',
 };
 
 export const Variants: Story = () => (
