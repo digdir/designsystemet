@@ -1,10 +1,12 @@
 'use client';
 
-import { colorCliOptions } from '@digdir/designsystemet/tokens';
+import { cliOptions } from '@digdir/designsystemet/tokens';
 import { CodeSnippet, Container } from '@repo/components';
 import cl from 'clsx/lite';
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './page.module.css';
+
+const colorCliOptions = cliOptions.theme.colors;
 
 export default function Result() {
   const themeName = useThemeStore((state) => state.themeName);
