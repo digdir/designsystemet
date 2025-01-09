@@ -1,4 +1,7 @@
-import { generateColorSchemes } from '@digdir/designsystemet';
+import {
+  generateColorSchemes,
+  generateNeutralColorSchemes,
+} from '@digdir/designsystemet';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
@@ -35,7 +38,10 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
   };
 
   const updateExistingColor = (color: string, name: string) => {
-    const theme = generateColorSchemes(color as CssColor);
+    let theme = generateColorSchemes(color as CssColor);
+    if (name === 'neutral') {
+      theme = generateNeutralColorSchemes(color as CssColor);
+    }
     updateColor({ name: name, colors: theme }, index, colorType);
   };
 

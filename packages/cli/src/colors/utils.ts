@@ -276,3 +276,33 @@ export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
       .join('')
   );
 };
+
+export function hexToRgba(hex: string, alpha = 1) {
+  // Ensure the hex input starts with a '#' and is a valid length
+  if (hex[0] === '#') {
+    hex = hex.slice(1);
+  }
+
+  if (hex.length !== 3 && hex.length !== 6) {
+    throw new Error('Invalid hex color format. Use 3 or 6 character hex codes.');
+  }
+
+  // Expand shorthand hex (e.g., "abc" to "aabbcc")
+  if (hex.length === 3) {
+    hex = hex
+      .split('')
+      .map((char) => char + char)
+      .join('');
+  }
+
+  // Parse r, g, b values
+  const bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+
+  // Ensure alpha is within range 0-1
+  alpha = Math.min(Math.max(alpha, 0), 1);
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})` as CssColor;
+}

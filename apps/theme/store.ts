@@ -3,6 +3,7 @@ import {
   type ColorScheme,
   type ThemeInfo,
   generateColorSchemes,
+  generateNeutralColorSchemes,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
@@ -63,7 +64,9 @@ export const useThemeStore = create(
     themePreview: 'one',
     colors: {
       main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
-      neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
+      neutral: [
+        { name: 'neutral', colors: generateNeutralColorSchemes('#1E2B3C') },
+      ],
       support: [
         { name: 'brand1', colors: generateColorSchemes('#F45F63') },
         { name: 'brand2', colors: generateColorSchemes('#E5AA20') },

@@ -32,14 +32,20 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
     const setSelectedColor = useThemeStore((state) => state.setSelectedColor);
     return (
       <>
-        <button
-          ref={ref}
-          onClick={() => {}}
-          style={{ backgroundColor: color }}
-          className={cl(classes.box, featured && classes.featured, 'ds-focus')}
-          type='button'
-          {...omit(['colorNumber'], rest)}
-        ></button>
+        <div className={classes.boxContainer}>
+          <button
+            ref={ref}
+            onClick={() => {}}
+            style={{ backgroundColor: color }}
+            className={cl(
+              classes.box,
+              featured && classes.featured,
+              'ds-focus',
+            )}
+            type='button'
+            {...omit(['colorNumber'], rest)}
+          ></button>
+        </div>
 
         {showColorMeta && (
           <>

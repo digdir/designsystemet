@@ -2,6 +2,7 @@ import {
   type ColorScheme,
   type CssColor,
   generateColorSchemes,
+  generateNeutralColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -49,7 +50,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateColorSchemes(neutralColor as CssColor),
+            colors: generateNeutralColorSchemes('#1E2B3C'),
           },
         ];
     }

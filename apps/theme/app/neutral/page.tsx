@@ -1,13 +1,45 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
 import {
+  type CssColor,
   type ThemeInfo,
   generateColorSchemes,
-  generateNeutralColorSchemes,
+  hexToRgba,
 } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
+import chroma from 'chroma-js';
 import { NeutralRow } from './NeutralRow/NeutralRow';
 import classes from './page.module.css';
+
+const generateNeutralColorSchemes = () => {
+  const lightColor: CssColor = '#000000';
+  const darkColor = '#ffffff';
+  const neutralTheme = generateColorSchemes('#333333');
+  neutralTheme.light[2].hex = '#ffffff';
+  neutralTheme.light[3].hex = hexToRgba(lightColor, 0.05);
+  neutralTheme.light[4].hex = hexToRgba(lightColor, 0.1);
+  neutralTheme.light[5].hex = hexToRgba(lightColor, 0.27);
+  neutralTheme.light[6].hex = hexToRgba(lightColor, 0.45);
+  neutralTheme.light[7].hex = hexToRgba(lightColor, 0.62);
+  neutralTheme.light[11].hex = hexToRgba(lightColor, 0.62);
+  neutralTheme.light[12].hex = hexToRgba(lightColor, 0.83);
+
+  neutralTheme.dark[2].hex = hexToRgba(darkColor, 0.06);
+  neutralTheme.dark[3].hex = hexToRgba(darkColor, 0.1);
+  neutralTheme.dark[4].hex = hexToRgba(darkColor, 0.14);
+  neutralTheme.dark[5].hex = hexToRgba(darkColor, 0.2);
+  neutralTheme.dark[6].hex = hexToRgba(darkColor, 0.4);
+  neutralTheme.dark[7].hex = hexToRgba(darkColor, 0.55);
+  neutralTheme.dark[11].hex = hexToRgba(darkColor, 0.55);
+  neutralTheme.dark[12].hex = hexToRgba(darkColor, 0.88);
+  return neutralTheme;
+};
+
+const getAlphaFromLuminance = (color: CssColor, luminance: number) => {
+  const rgb = chroma(color).rgb();
+  const alpha = 1 - luminance / rgb.reduce((acc, val) => acc + val, 0);
+  return chroma(color).alpha(alpha).rgba();
+};
 
 export default function Home() {
   const blueTheme = generateColorSchemes('#0062BA');
