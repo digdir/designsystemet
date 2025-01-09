@@ -1,5 +1,9 @@
 import { Heading } from '@digdir/designsystemet-react';
-import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
+import type {
+  ColorNumber,
+  CssColor,
+  ThemeInfo,
+} from '@digdir/designsystemet/color';
 import {
   getColorNameFromNumber,
   getContrastFromHex,
@@ -21,7 +25,7 @@ type ItemProps = {
 
 type ItemsProps = {
   theme: ThemeInfo;
-  number: number;
+  number: ColorNumber;
   colorScheme: 'light' | 'dark';
   showTitle?: boolean;
 };
@@ -165,7 +169,7 @@ export const NeutralRow = ({ neutralTheme, themes }: NeutralRowProps) => {
       <div className={classes.items}>
         {showTitle && (
           <div className={classes.title}>
-            {getColorNameFromNumber(number + 1)}
+            {getColorNameFromNumber((number + 1) as ColorNumber)}
           </div>
         )}
         <div
