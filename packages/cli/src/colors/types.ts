@@ -30,6 +30,7 @@ export type CssColor =
   | OkLabColor
   | OkLchColor
   | Cam02Color
+  | rgbaColor
   | Cam02pColor;
 
 /**
@@ -46,6 +47,7 @@ type OkLabColor = `oklab(${Percent} ${number} ${number})`;
 type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
 type Cam02Color = `jab(${Percent} ${number} ${number})`;
 type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
+type rgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;

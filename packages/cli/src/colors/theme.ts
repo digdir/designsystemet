@@ -53,6 +53,31 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
 };
 
 /**
+ * Generates the neutral color schemes.
+ */
+export const generateNeutralColorSchemes = () => {
+  const neutralTheme = generateColorSchemes('#000000');
+  neutralTheme.light[2].hex = '#ffffff';
+  neutralTheme.light[3].hex = 'rgba(0, 0, 0, 0.05)';
+  neutralTheme.light[4].hex = 'rgba(0, 0, 0, 0.10)';
+  neutralTheme.light[5].hex = 'rgba(0, 0, 0, 0.27)';
+  neutralTheme.light[6].hex = 'rgba(0, 0, 0, 0.45)';
+  neutralTheme.light[7].hex = 'rgba(0, 0, 0, 0.62)';
+  neutralTheme.light[11].hex = 'rgba(0, 0, 0, 0.6)';
+  neutralTheme.light[12].hex = 'rgba(0, 0, 0, 0.83)';
+
+  neutralTheme.dark[2].hex = 'rgba(255, 255, 255, 0.06)';
+  neutralTheme.dark[3].hex = 'rgba(255, 255, 255, 0.10)';
+  neutralTheme.dark[4].hex = 'rgba(255, 255, 255, 0.14)';
+  neutralTheme.dark[5].hex = 'rgba(255, 255, 255, 0.2)';
+  neutralTheme.dark[6].hex = 'rgba(255, 255, 255, 0.4)';
+  neutralTheme.dark[7].hex = 'rgba(255, 255, 255, 0.55)';
+  neutralTheme.dark[11].hex = 'rgba(255, 255, 255, 0.55)';
+  neutralTheme.dark[12].hex = 'rgba(255, 255, 255, 0.88)';
+  return neutralTheme;
+};
+
+/**
  * Generates color schemes based on a base color. Light, Dark and Contrast scales are included.
  *
  * @param color The base color that is used to generate the color schemes

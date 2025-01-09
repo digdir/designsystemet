@@ -1,44 +1,22 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
 import {
-  type CssColor,
   type ThemeInfo,
   generateColorSchemes,
+  generateNeutralColorSchemes,
 } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
 import { NeutralRow } from './NeutralRow/NeutralRow';
 import classes from './page.module.css';
 
 export default function Home() {
-  const generateNeutralTheme = (color: CssColor) => {
-    const neutralTheme = generateColorSchemes('#1E2B3C');
-    neutralTheme.light[2].hex = '#ffffff';
-    neutralTheme.light[3].hex = 'rgba(0, 0, 0, 0.05)';
-    neutralTheme.light[4].hex = 'rgba(0, 0, 0, 0.10)';
-    neutralTheme.light[5].hex = 'rgba(0, 0, 0, 0.27)';
-    neutralTheme.light[6].hex = 'rgba(0, 0, 0, 0.45)';
-    neutralTheme.light[7].hex = 'rgba(0, 0, 0, 0.62)';
-    neutralTheme.light[11].hex = 'rgba(0, 0, 0, 0.6)';
-    neutralTheme.light[12].hex = 'rgba(0, 0, 0, 0.83)';
-
-    neutralTheme.dark[2].hex = 'rgba(255, 255, 255, 0.06)';
-    neutralTheme.dark[3].hex = 'rgba(255, 255, 255, 0.10)';
-    neutralTheme.dark[4].hex = 'rgba(255, 255, 255, 0.14)';
-    neutralTheme.dark[5].hex = 'rgba(255, 255, 255, 0.2)';
-    neutralTheme.dark[6].hex = 'rgba(255, 255, 255, 0.4)';
-    neutralTheme.dark[7].hex = 'rgba(255, 255, 255, 0.55)';
-    neutralTheme.dark[11].hex = 'rgba(255, 255, 255, 0.55)';
-    neutralTheme.dark[12].hex = 'rgba(255, 255, 255, 0.88)';
-    return neutralTheme;
-  };
-
   const blueTheme = generateColorSchemes('#0062BA');
   const redTheme = generateColorSchemes('#B71115');
   const greenTheme = generateColorSchemes('#11B711');
   const yellowTheme = generateColorSchemes('#E5AA20');
   const purpleTheme = generateColorSchemes('#B800E6');
   const greyTheme = generateColorSchemes('#1E2B3C');
-  const neutralTheme = generateNeutralTheme('#1E2B3C');
+  const neutralTheme = generateNeutralColorSchemes();
 
   type RowType = {
     bgTheme: ThemeInfo;
