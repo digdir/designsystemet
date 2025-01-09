@@ -1,15 +1,18 @@
-import type { Meta } from '@storybook/react';
-import { Checkbox } from '../../../components';
-import type { UseCheckboxGroupProps } from './useCheckboxGroup';
+import type { Meta, StoryFn } from '@storybook/react';
+import {
+  Checkbox,
+  Fieldset,
+  Table,
+  ValidationMessage,
+} from '../../../components';
+import {
+  type UseCheckboxGroupProps,
+  useCheckboxGroup,
+} from './useCheckboxGroup';
 
-export const UseCheckboxGroup = (_props: UseCheckboxGroupProps) => (
-  <Checkbox aria-label='label' value='' />
-);
-
-export default {
+const meta: Meta = {
   title: 'Utilities/useCheckboxGroup',
-  tags: ['!dev'], // Hide from sidebar as documented in https://storybook.js.org/docs/writing-stories/tags
-  component: UseCheckboxGroup,
+  parameters: { chromatic: { disableSnapshot: true } },
   argTypes: {
     name: {
       table: { type: { summary: 'string' } },
@@ -58,4 +61,60 @@ export default {
       description: 'Set required state of all checkboxes',
     },
   },
-} as Meta;
+};
+
+export default meta;
+
+export const Default: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
+    value: ['epost'],
+    ...args,
+  });
+
+  return (
+    <Fieldset>
+      <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+      <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+      <Checkbox label='SMS' {...getCheckboxProps('sms')} />
+      <ValidationMessage {...validationMessageProps} />
+    </Fieldset>
+  );
+};
+
+export const AllowIndeterminate: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: 'my-checkbox',
+    ...args,
+  });
+  return (
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
+            <Checkbox
+              aria-label='Select all'
+              {...getCheckboxProps({
+                allowIndeterminate: true,
+                value: 'all',
+              })}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell>Header</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {[1, 2].map((row) => (
+          <Table.Row key={row}>
+            <Table.Cell>
+              <Checkbox
+                aria-label={`Check ${row}`}
+                {...getCheckboxProps(`${row}`)}
+              />
+            </Table.Cell>
+            <Table.Cell>Content</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+};
