@@ -102,7 +102,7 @@ export const ColorPicker = ({
         </button>
       </div>
       <div className={cl(classes.popup, showModal && classes.show)}>
-        {/* @ts-ignore -- this component is not yet react 19 */}
+        {/* @ts-ignore -- this component is not yet react 19, and probably will never be. TODO: investiagte new picker */}
         <ChromePicker
           onChangeComplete={({ hex }: { hex: string }) => {
             setColor(hex);
