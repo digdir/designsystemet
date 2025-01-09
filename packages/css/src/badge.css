@@ -31,10 +31,13 @@
 
 .ds-badge--position {
   box-sizing: border-box;
-  display: inline-flex;
   position: relative;
   height: fit-content;
   width: fit-content;
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   & .ds-badge::before {
     position: absolute;

@@ -41,13 +41,16 @@
     background: var(--dsc-details-heading-background);
     box-sizing: border-box;
     cursor: pointer;
-    display: flex;
     list-style: none;
     min-height: var(--dsc-details-size);
     gap: var(--dsc-details-chevron-gap);
     outline: none;
     padding: var(--dsc-details-padding);
     position: relative;
+
+    &:not([hidden]) {
+      display: flex;
+    }
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
     &:focus-visible {

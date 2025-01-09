@@ -11,7 +11,6 @@
   border-radius: var(--dsc-avatar-border-radius);
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
-  display: inline-flex;
   flex-shrink: 0;
   font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
@@ -21,6 +20,10 @@
   text-transform: uppercase;
   user-select: none;
   width: var(--dsc-avatar-size);
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   &:not(:has(img)) {
     padding: var(--dsc-avatar-padding);

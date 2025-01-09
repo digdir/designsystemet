@@ -6,6 +6,7 @@ import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import {
   getValue,
   isColorCategoryToken,
+  isDigit,
   isGlobalColorToken,
   isSemanticToken,
   pathStartsWithOneOf,
@@ -140,7 +141,6 @@ const colorCategory: Format = {
   },
 };
 
-const isDigit = (s: string) => /^\d+$/.test(s);
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 
 const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
