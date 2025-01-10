@@ -42,7 +42,7 @@ _"Det er viktig at det er mulig å utvide komponentene til det mer komplekse, fo
 ---
 <br />
 
-Når vi skal ta i bruk en tredjepart, uavhengig om det er designsystemt eller noe annet. Så er det viktig å tenke over noen grunnlegende kjøreregler for å sørge for kvalitet og sikkerhet i din løsning.
+Når vi skal ta i bruk en tredjepart, uavhengig om det er designsystemet eller noe annet. Så er det viktig å tenke over noen grunnlegende kjøreregler for å sørge for kvalitet og sikkerhet i din løsning.
 
 Designsystemet tilbyr en hel rekke av grunnleggende komponenter, som kan utformes i mange varianter. Et eksempel er knappkomponenten (se figur 1).
 
@@ -58,7 +58,7 @@ Selv om knappkomponenten kommer i mange varianter betyr ikke det at du og ditt t
 
 _Designsystemet har dokumentasjon på mønstre når de forskjellige variantene skal benyttes. [Se eksempelvis for knappen på denne lenken](https://storybook.designsystemet.no/?path=%2Fdocs%2Fkomponenter-button--docs)._
 
-Hvordan skal vi klare å sørge for at et helt team har kontroll på hvilke varianter som skal brukes hvor og når i teamets produkt og hvorfor er det så viktig? Det er først og fremst viktig fordi vi skal utvikle en løsning som er gjennomtenkt og formidler et helhetlig produkt som brukeren forstår. Vi må derfor passe på at samme type arbeidsoppgaver for brukeren løses på akkruat den samme måten, både visuelt og funksjonelt på tvers av produktet. Det betyr også at vi må passe på at det ikke blir en tilfeldig implementasjon og brukeropplevelse utfra hvilken utvikler som har implementert funksjonen, men heller ha godt etablerte konsepter i teamet.
+Hvordan skal vi klare å sørge for at et helt team har kontroll på hvilke varianter som skal brukes hvor og når i teamets produkt og hvorfor er det så viktig? Det er først og fremst viktig fordi vi skal utvikle en løsning som er gjennomtenkt og formidler et helhetlig produkt som brukeren forstår. Vi må derfor passe på at samme type arbeidsoppgaver for brukeren løses på akkurat den samme måten, både visuelt og funksjonelt på tvers av produktet. Det betyr også at vi må passe på at det ikke blir en tilfeldig implementasjon og brukeropplevelse utfra hvilken utvikler som har implementert funksjonen, men heller ha godt etablerte konsepter i teamet.
 
 Så, det betyr at vi må sørge for å ivareta tre viktige hovedpunkter når vi tar i bruk designsystemet.
 
@@ -68,7 +68,7 @@ Så, det betyr at vi må sørge for å ivareta tre viktige hovedpunkter når vi 
 
 Hvordan kan vi ivareta egne mønstre, konsepter, trygghet og breaking changes? Nøkkelordet her er å isolere. Ved å isolere tredjepartssystemer øker vi kontrollen på tredjepartssystemet internt i kodebasen og i teamet.
 
-Hva er egentlig å isolere en trejdepart? Det handler om å sørge for at vi bare har et integrasjonspunkt med tredjepart. I dette tilfellet handler det om at vi bare har avhengigheter til desginsystemet et sted. Hvordan kan vi oppnå det? Vi kan oppnå det ved å ta i bruk fasademønsteret.
+Hva er egentlig å isolere en trejdepart? Det handler om å sørge for at vi bare har et integrasjonspunkt med tredjepart. I dette tilfellet handler det om at vi bare har avhengigheter til designsystemet et sted. Hvordan kan vi oppnå det? Vi kan oppnå det ved å ta i bruk fasademønsteret.
 
 ## Fasademønsteret
 
@@ -78,13 +78,13 @@ _Fasademønsteret i programvareutvikling refererer til en designmønstre som til
 
 Team Altinn Studio benytter seg av monorepo som betyr at de kan opprette egne pakker internt i sin egen kodebase. Dette fremmer muligheten til å bygge modulær og skalerbar kode.
 
-Altinn Studio har derfor utviklet sin egen pakke internt i monorepo som de kaller for `studio-components`. Hva er forskjellen på desginsystemet og `studio-components`? Forskjellen er at designsystemet tilbyr et helt desginsystem som inkluderer tokens for farger og avstander, samt grunnleggende komponenter. Mens `studio-components` følger fasademønsteret for å bygge videre på komponentene fra designsystemet, samt tar i bruk tokens fra designsystemet. Med andre ord, så oppnår Altinn Studio isolering av designsystemt ved bruk av `studio-components`. Det gir også muligheten for teamet å definere sine egne mønstre og komponenter for sine behov.
+Altinn Studio har derfor utviklet sin egen pakke internt i monorepo som de kaller for `studio-components`. Hva er forskjellen på designsystemet og `studio-components`? Forskjellen er at designsystemet tilbyr et helt designsystem som inkluderer tokens for farger og avstander, samt grunnleggende komponenter. Mens `studio-components` følger fasademønsteret for å bygge videre på komponentene fra designsystemet, samt tar i bruk tokens fra designsystemet. Med andre ord, så oppnår Altinn Studio isolering av designsystemet ved bruk av `studio-components`. Det gir også muligheten for teamet å definere sine egne mønstre og komponenter for sine behov.
 
-_*Er du nysgjerring på `studio-components`? Altinn Studio har dokumentasjon av komponentene på https://components.altinn.studio. I skrivende stund er dokumentasjonen under utvikling og mer informasjon om mønstere og konsepter kommer.*_
+_*Er du nysgjerrig på `studio-components`? Altinn Studio har dokumentasjon av komponentene på https://components.altinn.studio. I skrivende stund er dokumentasjonen under utvikling og mer informasjon om mønstere og konsepter kommer.*_
 
-Her oppnår Team Altinn Studio isolering av designsystemet, samtidig som det åpner for å utvide designsystemet med mer komplekse komponeter for eget behov. Fordelen med å utvide designsystemet er at man ser helheten og kjenner igjen de sammensatte komponentene, fordi den er bygget opp av en eller flere komponenter fra designsystemet.
+Her oppnår Team Altinn Studio isolering av designsystemet, samtidig som det åpner for å utvide designsystemet med mer komplekse komponenter for eget behov. Fordelen med å utvide designsystemet er at man ser helheten og kjenner igjen de sammensatte komponentene, fordi den er bygget opp av en eller flere komponenter fra designsystemet.
 
-Eksempelvis har Altinn Studio behov for en [ExpressionEditor](https://components.altinn.studio/?path=%2Fdocs%2Fforms-studioexpression--docs). Dette er en komponent som blir for spesifikk for designsystemet, så det er ikke hensiktsmessig å la designsystemet utvikle og vedlikeholde denne komponenten. Team Altinn Studio har derfor laget sin egen komponent i `studio-components` som utvider designsystemet ved å ta i burk grunnkomponentene designsystemet tilbyr. Komponenten tar også i bruk de samme tokene for avstasnder og størrelser som benyttes i designsystemet. I figur 3 under, så kan du kjenne igjen helheten fordi de bruker grunnkomponentene i designsystemet som byggeklosser. Kult, ikke sant!
+Eksempelvis har Altinn Studio behov for en [ExpressionEditor](https://components.altinn.studio/?path=%2Fdocs%2Fforms-studioexpression--docs). Dette er en komponent som blir for spesifikk for designsystemet, så det er ikke hensiktsmessig å la designsystemet utvikle og vedlikeholde denne komponenten. Team Altinn Studio har derfor laget sin egen komponent i `studio-components` som utvider designsystemet ved å ta i burk grunnkomponentene designsystemet tilbyr. Komponenten tar også i bruk de samme tokene for avstander og størrelser som benyttes i designsystemet. I figur 3 under, så kan du kjenne igjen helheten fordi de bruker grunnkomponentene i designsystemet som byggeklosser. Kult, ikke sant!
 
 <Image
   src='/img/bloggen/altinnstudio-figur2.png'
@@ -102,7 +102,7 @@ Her ivaretar Team Altinn Studio det første prinsippet med å kunne definere egn
 
 La oss gå videre og finne ut hvordan vi kan ivareta tryggheten ved oppdateringer av ny versjon av designsystemet.
 
-For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det viktig med isolering av tredjeparten. Hvis man ikke isolerer designsystemet må en ha direkte avhengigheter til designsystemet i alle sider og komponenter i appen. Dette betyr at en må innom alle komponenter og sider som benytter seg av en komponent fra designsystemet som får breaking change. Det betyr at vi potensielt kan få hundrevis av filer som er endret, bare fordi man gjorde en oppdatering av designsystemet. Figur 4 under viser en forenklet illustrasjon. Illustrasjonen viser fire sider som benytter seg av en knapp direkte fra designsystemet, altså ingen isolering. Det betyr at dersom knappen får en breaking change, må det endres kode i 4 side-komponenter. I det virklige liv kan det være snakk om endringer i hundevis av komponenter. Dette gjør at man ikke er helt sikker på om alt fungerer som før oppdateringen.
+For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det viktig med isolering av tredjeparten. Hvis man ikke isolerer designsystemet må en ha direkte avhengigheter til designsystemet i alle sider og komponenter i appen. Dette betyr at en må innom alle komponenter og sider som benytter seg av en komponent fra designsystemet som får breaking change. Det betyr at vi potensielt kan få hundrevis av filer som er endret, bare fordi man gjorde en oppdatering av designsystemet. Figur 4 under viser en forenklet illustrasjon. Illustrasjonen viser fire sider som benytter seg av en knapp direkte fra designsystemet, altså ingen isolering. Det betyr at dersom knappen får en breaking change, må det endres kode i 4 side-komponenter. I det virkelige liv kan det være snakk om endringer i hundevis av komponenter. Dette gjør at man ikke er helt sikker på om alt fungerer som før oppdateringen.
 
 <Image
   src='/img/bloggen/altinnstudio-figur3.png'
@@ -112,7 +112,7 @@ For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det vikti
   dataUnstyled
 />
 
-Hvrdan kan vi løse denne problemstillingen? Helt riktig — vi kan løse det med isolering av komponentene ved hjelp av fasademønsteret.
+Hvordan kan vi løse denne problemstillingen? Helt riktig — vi kan løse det med isolering av komponentene ved hjelp av fasademønsteret.
 
 Figur 4 illustrerer hvordan vi kan isolere ved hjelp av fasademønsteret. Ved å isolere eksterne kilder i egne fasadekomponenter. Så kan vi eksportere kun de nødvendige egenskapene til selve applikasjonen vår. Når det kommer en breaking change, så trenger vi bare å implementere endringen i fasadekomponenten og beholde det samme API ut til vår egen applikasjon internt. Det betyr at vi får bare en fil å endre istedenfor 4 side-komponenter som vist i figur 4.
 
@@ -130,7 +130,7 @@ Når vi isolerer komponentene våre, eliminerer vi behovet for å endre den eksi
 
 Nå som Team Altinn Studio har oppnådd isolering av sammensatte komponenter, kan frontend-utivklere og designere jobbe tettere sammen mellom det som er teknisk implementert og skissene i Figma. Det vil si at Figma skissene kan gjenspeile komponentnavnene i `studio-components`.
 
-Nå kan de dokumentere og benytte de samme komponentene og navnene både i Figma og i kode. Det gjør at det blir lettere for teamet å etablere mønstre og gjenbrukbare komponenter som skal løse de samme problemene på tvres av produktet. Nå kan også fasadekomponentene begrense antall varianter av komponenten fra designsystemet, slik at det blir mindre sannsynlig for at varianter som ikke skal brukes blir benyttet.
+Nå kan de dokumentere og benytte de samme komponentene og navnene både i Figma og i kode. Det gjør at det blir lettere for teamet å etablere mønstre og gjenbrukbare komponenter som skal løse de samme problemene på tvers av produktet. Nå kan også fasadekomponentene begrense antall varianter av komponenten fra designsystemet, slik at det blir mindre sannsynlig for at varianter som ikke skal brukes blir benyttet.
 
 **_Altinn Studio kodebasen er åpen kilekode og derfor åpent tilgjengelig for alle. Er du nysgjerrig på studio-components koden, kan du finne koden på denne lenken https://github.com/Altinn/altinn-studio/tree/main/frontend/libs/studio-components._**
 
