@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Størrelsar',
-      date: '2. januar 2025',
+      date: '10. januar 2025',
       icon: <CodeIcon />,
       color: 'blue',
     }}
@@ -22,7 +22,7 @@ export default ({ children }) => (
 
 HTML data-attributt vert brukt for å definere størrelse på ein komponent. Komponentane kan nytte alle alle størrelsar.
 
-Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen. Du kan lett endre den ved bruk av `data-size`.
+Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen (formel basert på `em`). Du kan lett endre den ved bruk av `data-size` for våre anbefalte størrelsar, eller definere dine eigne størrelsar ved å setje `font-size` i CSS.
 
 ## `data-size`
 
