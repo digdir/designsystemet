@@ -22,7 +22,7 @@ export type InputProps = MergeRight<
       | 'email'
       | 'file'
       | 'hidden'
-      | 'image'
+      /* | 'image' */
       | 'month'
       | 'number'
       | 'password'
