@@ -5,7 +5,7 @@ import { SuggestionInput } from './SuggestionInput';
 import { SuggestionList } from './SuggestionList';
 import { SuggestionOption } from './SuggestionOption';
 
-const Suggestion = Object.assign(SuggestionRoot, {
+const EXPERIMENTAL_Suggestion = Object.assign(SuggestionRoot, {
   List: SuggestionList,
   Input: SuggestionInput,
   Empty: SuggestionEmpty,
@@ -13,13 +13,21 @@ const Suggestion = Object.assign(SuggestionRoot, {
   Clear: SuggestionClear,
 });
 
-Suggestion.List.displayName = 'Suggestion.List';
-Suggestion.Input.displayName = 'Suggestion.Input';
-Suggestion.Empty.displayName = 'Suggestion.Empty';
-Suggestion.Option.displayName = 'Suggestion.Option';
-Suggestion.Clear.displayName = 'Suggestion.Clear';
+EXPERIMENTAL_Suggestion.displayName = 'EXPERIMENTAL_Suggestion';
+EXPERIMENTAL_Suggestion.List.displayName = 'EXPERIMENTAL_Suggestion.List';
+EXPERIMENTAL_Suggestion.Input.displayName = 'EXPERIMENTAL_Suggestion.Input';
+EXPERIMENTAL_Suggestion.Empty.displayName = 'EXPERIMENTAL_Suggestion.Empty';
+EXPERIMENTAL_Suggestion.Option.displayName = 'EXPERIMENTAL_Suggestion.Option';
+EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
-export { Suggestion, SuggestionList, SuggestionInput, SuggestionEmpty };
+export {
+  EXPERIMENTAL_Suggestion,
+  SuggestionList as EXPERIMENTAL_SuggestionList,
+  SuggestionInput as EXPERIMENTAL_SuggestionInput,
+  SuggestionEmpty as EXPERIMENTAL_SuggestionEmpty,
+  SuggestionOption as EXPERIMENTAL_SuggestionOption,
+  SuggestionClear as EXPERIMENTAL_SuggestionClear,
+};
 export type { SuggestionProps } from './Suggestion';
 export type { SuggestionListProps } from './SuggestionList';
 export type { SuggestionInputProps } from './SuggestionInput';

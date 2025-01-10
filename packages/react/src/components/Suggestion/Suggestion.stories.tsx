@@ -1,14 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { type ChangeEvent, useRef, useState } from 'react';
-import {
-  Button,
-  Divider,
-  Field,
-  Label,
-  Paragraph,
-  Spinner,
-  Suggestion,
-} from '../';
+import { Button, Divider, Field, Label, Paragraph, Spinner } from '../';
+import { EXPERIMENTAL_Suggestion as Suggestion } from './';
 export default {
   title: 'Komponenter/Suggestion',
   component: Suggestion,
@@ -127,56 +120,30 @@ export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const CustomFilter: StoryFn<typeof Suggestion> = (args) => {
-  const emails = ['live.com', 'icloud.com', 'hotmail.com', 'gmail.com'];
   const [value, setValue] = useState('');
-  const [email, setEmail] = useState('');
 
   return (
-    <>
-      <Field>
-        <Label>Skriv inn et tall mellom 1-6</Label>
-        <Suggestion {...args}>
-          <Suggestion.Input
-            value={value}
-            onChange={(event) => setValue(event.target.value)}
-          />
-          <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
-            {DATA_PLACES.filter(
-              (_, index) => !value || index === Number(value) - 1,
-            ).map((text) => (
-              // Setting label ensures that item is always displayed regardless of input.value
-              <Suggestion.Option label={value} key={text}>
-                {text}
-              </Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-      <Field>
-        <Label>Skriv inn din e-post</Label>
-        <Suggestion {...args}>
-          <Suggestion.Input
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
-            {email.includes('@') && (
-              <Suggestion.Option>{email}</Suggestion.Option>
-            )}
-            {emails.map((suffix) => (
-              // Setting label ensures that item is always displayed regardless of input.value
-              <Suggestion.Option label={email} key={suffix}>
-                {`${email.split('@')[0]}@${suffix}`}
-              </Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-    </>
+    <Field>
+      <Label>Skriv inn et tall mellom 1-6</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.filter(
+            (_, index) => !value || index === Number(value) - 1,
+          ).map((text) => (
+            // Setting label ensures that item is always displayed regardless of input.value
+            <Suggestion.Option label={value} key={text}>
+              {text}
+            </Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
   );
 };
 
