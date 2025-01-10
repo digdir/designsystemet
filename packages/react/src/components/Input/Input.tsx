@@ -7,10 +7,36 @@ import type { MergeRight } from '../../utilities';
 type InputAttr = InputHTMLAttributes<HTMLInputElement>;
 
 export type InputProps = MergeRight<
-  DefaultProps & Omit<InputAttr, 'prefix'>,
+  DefaultProps & Omit<InputAttr, 'prefix' | 'type'>,
   {
-    /** Supported `input` types */
-    type?: InputAttr['type'];
+    /**
+     * Supported `input` types
+     *
+     * @default 'text'
+     * */
+    type?: /* | "button" */
+      | 'checkbox'
+      | 'color'
+      | 'date'
+      | 'datetime-local'
+      | 'email'
+      | 'file'
+      | 'hidden'
+      | 'image'
+      | 'month'
+      | 'number'
+      | 'password'
+      | 'radio'
+      /* | "range" */
+      /* | "reset" */
+      | 'search'
+      /* | "submit" */
+      | 'tel'
+      | 'text'
+      | 'time'
+      | 'url'
+      | 'week';
+
     /** Defines the width of `Input` in count of characters.
      */
     size?: number;
