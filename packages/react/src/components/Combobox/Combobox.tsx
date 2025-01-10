@@ -397,7 +397,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           <ComboboxInput
             {...omit(['inputValue'], rest)}
             hideClearButton={hideClearButton}
-            listId={context.floatingId}
+            listId={context.floatingId || ''}
             error={error}
             hideChips={hideChips}
             handleKeyDown={handleKeyDown}
