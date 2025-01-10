@@ -5,10 +5,10 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { DEFAULT_COLOR, buildOptions } from '../build.js';
-import { isColorCategoryToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { nameKebab, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
+import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
@@ -29,7 +29,6 @@ export const basePxFontSize = 16;
 const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
 
 StyleDictionary.registerTransform(sizeRem);
-StyleDictionary.registerTransform(nameKebab);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
 StyleDictionary.registerTransform(unitless);
@@ -40,7 +39,7 @@ for (const format of Object.values(formats)) {
 }
 
 const dsTransformers = [
-  nameKebab.name,
+  'name/kebab',
   resolveMath.name,
   'ts/size/px',
   sizeRem.name,
@@ -54,17 +53,6 @@ const dsTransformers = [
 ];
 
 const paritionPrimitives = R.partition(R.test(/(?!.*global\.json).*primitives.*/));
-
-const outputColorReferences = (token: TransformedToken) => {
-  if (
-    R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) &&
-    R.includes('semantic/color', token.filePath)
-  ) {
-    return true;
-  }
-
-  return false;
-};
 
 export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
@@ -209,8 +197,9 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
         options: {
           fileHeader,
           outputReferences: (token, options) => {
-            const include = pathStartsWithOneOf(['border-radius', 'size', 'spacing', 'sizing'], token);
-            return include && outputReferencesFilter(token, options);
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
       },
@@ -232,24 +221,29 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
           {
             destination: `${colorScheme}.ts`,
             format: jsTokens.name,
-            outputReferences: outputColorReferences,
             filter: (token: TransformedToken) => {
-              if (R.test(/primitives\/modes|\/themes/, token.filePath)) return false;
-              if (pathStartsWithOneOf(['border-width'], token)) return false;
-
               if (
-                R.test(/accent|neutral|brand1|brand2|brand3|success|danger|warning/, token.name) ||
-                R.includes('semantic', token.filePath)
-              ) {
-                return true;
-              }
+                pathStartsWithOneOf(['border-width', 'letter-spacing', 'border-radius'], token) &&
+                !R.includes('semantic', token.filePath)
+              )
+                return false;
 
-              return false;
+              const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
+              const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
+
+              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
+
+              return (isSemanticColor || wantedTypes) && isNotPrivate;
             },
           },
         ],
         options: {
           fileHeader,
+          outputReferences: (token, options) => {
+            const include = pathStartsWithOneOf(['border-radius'], token);
+            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            return (include || isWantedSize) && outputReferencesFilter(token, options);
+          },
         },
       },
     },
@@ -257,7 +251,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
 };
 
 const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { outPath }) => {
-  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-ds-typography="${typography}"]`;
+  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
   return {
@@ -276,7 +270,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
         buildPath: `${outPath}/${theme}/`,
         basePxFontSize,
         transforms: [
-          nameKebab.name,
+          'name/kebab',
           'ts/size/px',
           sizeRem.name,
           'ts/size/lineheight',

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.44",
+  "version": "1.0.0-next.45",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -36,11 +36,14 @@
     "build": "tsup && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "types": "tsc --noEmit",
-    "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 secondary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create",
+    "test:tokens-create-options": "yarn designsystemet tokens create -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create",
+    "test:tokens-create-json": "yarn designsystemet tokens create --json ./test-tokens-create-complex.config.json",
     "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
-    "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
-    "test": "yarn test:tokens-create-and-build",
+    "test:tokens-create-and-build-options": "yarn clean:test-tokens && yarn test:tokens-create-options && yarn test:tokens-build",
+    "test:tokens-create-and-build-json": "yarn clean:test-tokens && yarn test:tokens-create-json && yarn test:tokens-build",
+    "test": "yarn test:tokens-create-and-build-options && yarn test:tokens-create-and-build-json",
     "clean": "rimraf dist",
+    "clean:test-tokens": "rimraf test-tokens-create && rimraf test-tokens-build",
     "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
     "update:template": "tsx ./src/tokens/template.ts",
     "internal:tokens-create-digdir": "yarn designsystemet tokens create --theme theme -m accent:#0062BA -n #1E2B3C -s brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5 -o ./internal/design-tokens",
@@ -65,7 +68,9 @@
     "prompts": "^2.4.2",
     "ramda": "^0.30.1",
     "rimraf": "^6.0.1",
-    "style-dictionary": "^4.0.1"
+    "style-dictionary": "^4.0.1",
+    "zod": "^3.23.8",
+    "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "@types/apca-w3": "^0.1.3",

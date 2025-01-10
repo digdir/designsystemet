@@ -59,10 +59,13 @@
 [data-popover='inline'] {
   all: unset;
   cursor: pointer;
-  display: inline;
   text-decoration: underline dotted;
   text-underline-offset: 0.27em;
   font-size: inherit;
+
+  &:not([hidden]) {
+    display: inline;
+  }
 
   @composes ds-focus from './base.css';
 }

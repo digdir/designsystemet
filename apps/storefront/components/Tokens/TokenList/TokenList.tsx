@@ -1,12 +1,5 @@
 'use client';
-import {
-  Dropdown,
-  Heading,
-  Link,
-  Paragraph,
-  Table,
-} from '@digdir/designsystemet-react';
-import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
 import { ClipboardButton } from '@repo/components';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -16,7 +9,7 @@ import type { TransformedToken as Token } from 'style-dictionary';
 import * as tokensDark from '../../../tokens/dark';
 import * as tokensLight from '../../../tokens/light';
 import { capitalizeString } from '../../../utils/StringHelpers';
-import { TokenColor, getColorWeight } from '../TokenColor/TokenColor';
+import { TokenColor } from '../TokenColor/TokenColor';
 import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
@@ -45,27 +38,28 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Rem</Table.HeaderCell>
-          <Table.HeaderCell>Px (16px)</Table.HeaderCell>
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+          <Table.HeaderCell>Reell verdi</Table.HeaderCell>
           <Table.HeaderCell>Visualisering</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
         {tokens.map(([, tokens]) => {
           return tokens.map((token) => {
+            const name = token.name;
             const value = token.$value as string;
             const isBorderRadius = token.path.includes('border-radius');
 
             return (
-              <Table.Row key={token.name}>
+              <Table.Row key={name}>
                 <Table.Cell>
                   <ClipboardButton
                     title='Kopier CSS variabel'
-                    text={token.name}
-                    value={token.name}
+                    text={name}
+                    value={name}
                   />
                 </Table.Cell>
-                <Table.Cell>{token.$value}</Table.Cell>
+                <Table.Cell>{value}</Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
                 </Table.Cell>
@@ -150,8 +144,6 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
     .slice(token.path.length - 1, token.path.length)
     .toString();
 
-  const weight = getColorWeight(token.original.$value as string);
-
   return (
     <div className={classes.card} {...rest}>
       <div className={classes.preview}>
@@ -162,7 +154,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
 
       <div className={classes.textContainer}>
         <Heading level={5} data-size='2xs' className={classes.name}>
-          {weight ? getColorNameFromNumber(weight) : capitalizeString(title)}
+          {capitalizeString(title)}
           &nbsp;
           <ClipboardButton
             title='Kopier CSS variabel'
@@ -224,16 +216,6 @@ const TokenList = ({
 
   return (
     <div className={classes.tokens}>
-      <div className={classes.package} data-unstyled>
-        <Link href='https://www.npmjs.com/package/@digdir/designsystemet-theme'>
-          <img
-            src='https://img.shields.io/npm/v/@digdir/designsystemet-theme?label=latest%20release&color=0051be'
-            alt='Latest release on npm'
-            className={classes.npmShield}
-          />
-        </Link>
-        <Paragraph data-size='sm'>@digdir/designsystemet-theme</Paragraph>
-      </div>
       {(showThemePicker || showModeSwitcher) && (
         <div className={classes.toggleGroup}>
           {showModeSwitcher && (

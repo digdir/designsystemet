@@ -16,7 +16,6 @@ import {
   ErrorSummary,
   Field,
   Heading,
-  HelpText,
   Input,
   Label,
   Link,
@@ -318,11 +317,6 @@ export const Sizes: StoryFn = () => {
         </Field>
       ))}
       {sizes.map((size) => (
-        <HelpText key={size} data-size={size} aria-label='Mer info'>
-          Mer tekst
-        </HelpText>
-      ))}
-      {sizes.map((size) => (
         <div key={size} data-size={size}>
           <Link href='#'>Lenke</Link>
         </div>
@@ -363,9 +357,14 @@ export const Sizes: StoryFn = () => {
             </Pagination.Item>
             {pages.map(({ page, itemKey, buttonProps }) => (
               <Pagination.Item key={itemKey}>
-                <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-                  {page}
-                </Pagination.Button>
+                {typeof page === 'number' && (
+                  <Pagination.Button
+                    {...buttonProps}
+                    aria-label={`Side ${page}`}
+                  >
+                    {page}
+                  </Pagination.Button>
+                )}
               </Pagination.Item>
             ))}
             <Pagination.Item>

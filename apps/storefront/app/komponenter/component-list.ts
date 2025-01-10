@@ -70,11 +70,6 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-fieldset--docs',
   },
   {
-    title: 'Help Text',
-    image: 'HelpText.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-helptext--docs',
-  },
-  {
     title: 'Link',
     image: 'Link.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-link--docs',

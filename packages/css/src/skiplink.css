@@ -7,7 +7,6 @@
 }
 
 .ds-skiplink:focus {
-  display: grid;
   place-items: center;
   outline: 0;
   position: static;
@@ -25,4 +24,8 @@
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: max(5px, 0.25rem);
+
+  &:not([hidden]) {
+    display: grid;
+  }
 }
