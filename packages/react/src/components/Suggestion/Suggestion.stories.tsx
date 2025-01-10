@@ -28,6 +28,11 @@ export default {
             id: 'aria-allowed-attr',
             enabled: false,
           },
+          /* It does not like role="combobox" either */
+          {
+            id: 'aria-allowed-role',
+            enabled: false,
+          },
         ],
       },
     },
