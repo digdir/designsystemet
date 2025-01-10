@@ -233,7 +233,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
 
               const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
 
-              return isSemanticColor || wantedTypes;
+              return (isSemanticColor || wantedTypes) && isNotPrivate;
             },
           },
         ],
