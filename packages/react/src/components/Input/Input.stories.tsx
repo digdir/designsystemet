@@ -20,34 +20,6 @@ export default {
   title: 'Komponenter/Input',
   component: Input,
   argTypes: {
-    // Using argType here to exclude values from React.HTMLInputTypeAttribute
-    type: {
-      control: 'select',
-      options: [
-        /* | "button" */
-        'checkbox',
-        'color',
-        'date',
-        'datetime-local',
-        'email',
-        'file',
-        'hidden',
-        /* 'image', */
-        'month',
-        'number',
-        'password',
-        'radio',
-        /* | "range" */
-        /* | "reset" */
-        'search',
-        /* | "submit" */
-        'tel',
-        'text',
-        'time',
-        'url',
-        'week',
-      ],
-    },
     role: {
       control: 'radio',
       options: ['checkbox', 'switch'],

@@ -14,7 +14,7 @@ export default {
     multiline: {
       type: 'boolean',
     },
-    // Using argType here to exclude values from React.HTMLInputTypeAttribute
+    // This needs to be explicitly set, otherwise storybook will show "set object"
     type: {
       control: 'select',
       options: [
