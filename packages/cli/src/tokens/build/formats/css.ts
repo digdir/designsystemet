@@ -44,7 +44,12 @@ export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tok
     let transformed = getValue<string>(token.original);
     for (const ref of inlineableTokens) {
       const refName = ref.path.join('.');
-      transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+
+      if (typeof transformed === 'string') {
+        transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+      } else {
+        console.error(`inlineTokens can't replace {${refName}} in value: `, { transformed });
+      }
     }
     const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
     return tokenWithInlinedRefs;
@@ -142,8 +147,9 @@ const colorCategory: Format = {
 };
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
 
-const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
+export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
 
 /**
  * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
@@ -209,9 +215,9 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
+    const tokens = inlineTokens(isInlineTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
-    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['size']), filteredTokens);
+    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['size', '_size']), filteredTokens);
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
