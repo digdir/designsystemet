@@ -1786,6 +1786,7 @@ __metadata:
     tsx: "npm:^4.16.5"
     typescript: "npm:^5.5.4"
     zod: "npm:^3.23.8"
+    zod-to-json-schema: "npm:^3.24.1"
     zod-validation-error: "npm:^3.4.0"
   bin:
     designsystemet: dist/bin/designsystemet.js
@@ -18531,6 +18532,15 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10/f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod-to-json-schema@npm:^3.24.1":
+  version: 3.24.1
+  resolution: "zod-to-json-schema@npm:3.24.1"
+  peerDependencies:
+    zod: ^3.24.1
+  checksum: 10/d31fd05b67b428d8e0d5ecad2c3e80a1c2fc370e4c22f9111ffd11cbe05cfcab00f3228f84295830952649d15ea4494ef42c2ee1cbe723c865b13f4cf2b80c09
   languageName: node
   linkType: hard
 
