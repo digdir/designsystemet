@@ -33,8 +33,9 @@
     "designsystemet": "tsx ./bin/designsystemet.ts",
     "build:tokens": "yarn clean:theme && yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
     "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "tsup && yarn build:types",
+    "build": "tsup && yarn build:types && yarn build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build:json-schema": "tsx ./src/build-scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "yarn designsystemet tokens create -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create",
     "test:tokens-create-json": "yarn designsystemet tokens create --json ./test-tokens-create-complex.config.json",
@@ -85,6 +86,7 @@
     "tslib": "^2.6.3",
     "tsup": "^8.2.4",
     "tsx": "^4.16.5",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "zod-to-json-schema": "^3.24.1"
   }
 }
