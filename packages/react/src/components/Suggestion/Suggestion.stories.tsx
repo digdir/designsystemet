@@ -1,7 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { userEvent, within } from '@storybook/test';
 import { type ChangeEvent, useRef, useState } from 'react';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '../';
 import { EXPERIMENTAL_Suggestion as Suggestion } from './';
+
 export default {
   title: 'Komponenter/Suggestion',
   component: Suggestion,
@@ -30,7 +32,18 @@ export default {
       },
     },
   },
+  play: async (ctx) => {
+    const storyRoot = ctx.canvasElement;
+    // Refactored out the play function for easier reuse in the InModal story
+    await testSuggestion(storyRoot);
+  },
 } as Meta;
+
+async function testSuggestion(el: HTMLElement) {
+  /* When in test mode, open suggestion by focusing input */
+  const input = within(el).getByRole('combobox');
+  await userEvent.click(input);
+}
 
 const DATA_PLACES = [
   'Sogndal',
