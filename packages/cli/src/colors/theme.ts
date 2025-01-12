@@ -3,7 +3,7 @@ import type { CssColor } from './types.js';
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type { ColorInfo, ColorNumber, ColorScheme, GlobalColors, ThemeInfo } from './types.js';
-import { getColorNameFromNumber, getLightnessFromHex, getLuminanceFromLightness, hexToRgba } from './utils.js';
+import { getColorNameFromNumber, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -71,22 +71,34 @@ export const generateNeutralColorSchemes = (color: CssColor) => {
   const darkBase = '#ffffff';
   const neutralTheme = generateColorSchemes(color);
   neutralTheme.light[2].hex = '#ffffff';
-  neutralTheme.light[3].hex = chroma(color).luminance(luminance.light.backgroundSubtle).hex() as CssColor;
-  neutralTheme.light[4].hex = chroma(color).luminance(luminance.light.surfaceDefault).hex() as CssColor;
-  neutralTheme.light[5].hex = hexToRgba(lightBase, 0.27);
-  neutralTheme.light[6].hex = hexToRgba(lightBase, 0.45);
-  neutralTheme.light[7].hex = hexToRgba(lightBase, 0.62);
-  neutralTheme.light[11].hex = hexToRgba(lightBase, 0.62);
-  neutralTheme.light[12].hex = hexToRgba(lightBase, 0.83);
+  neutralTheme.light[3].hex = chroma(color)
+    .luminance(luminance.light.backgroundSubtle - 0.02)
+    .hex() as CssColor;
+  neutralTheme.light[4].hex = chroma(color)
+    .luminance(luminance.light.backgroundSubtle - 0.09)
+    .hex() as CssColor;
+  // neutralTheme.light[5].hex = hexToRgba(lightBase, 0.27);
+  // neutralTheme.light[6].hex = hexToRgba(lightBase, 0.45);
+  // neutralTheme.light[7].hex = hexToRgba(lightBase, 0.62);
+  // neutralTheme.light[11].hex = hexToRgba(lightBase, 0.62);
+  // neutralTheme.light[12].hex = hexToRgba(lightBase, 0.83);
 
-  neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
-  neutralTheme.dark[3].hex = hexToRgba(darkBase, 0.1);
-  neutralTheme.dark[4].hex = hexToRgba(darkBase, 0.14);
-  neutralTheme.dark[5].hex = hexToRgba(darkBase, 0.2);
-  neutralTheme.dark[6].hex = hexToRgba(darkBase, 0.4);
-  neutralTheme.dark[7].hex = hexToRgba(darkBase, 0.55);
-  neutralTheme.dark[11].hex = hexToRgba(darkBase, 0.55);
-  neutralTheme.dark[12].hex = hexToRgba(darkBase, 0.88);
+  // neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
+  // neutralTheme.dark[3].hex = chroma(color)
+  //   .luminance(luminance.dark.surfaceDefault + 0.012)
+  //   .hex() as CssColor;
+  // neutralTheme.dark[4].hex = chroma(color)
+  //   .luminance(luminance.dark.surfaceDefault + 0.024)
+  //   .hex() as CssColor;
+
+  // neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
+  // neutralTheme.dark[3].hex = hexToRgba(darkBase, 0.1);
+  // neutralTheme.dark[4].hex = hexToRgba(darkBase, 0.14);
+  // neutralTheme.dark[5].hex = hexToRgba(darkBase, 0.2);
+  // neutralTheme.dark[6].hex = hexToRgba(darkBase, 0.4);
+  // neutralTheme.dark[7].hex = hexToRgba(darkBase, 0.55);
+  // neutralTheme.dark[11].hex = hexToRgba(darkBase, 0.55);
+  // neutralTheme.dark[12].hex = hexToRgba(darkBase, 0.88);
   return neutralTheme;
 };
 

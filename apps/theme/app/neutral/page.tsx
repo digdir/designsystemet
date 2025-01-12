@@ -11,27 +11,27 @@ import chroma from 'chroma-js';
 import { NeutralRow } from './NeutralRow/NeutralRow';
 import classes from './page.module.css';
 
-const generateNeutralColorSchemes = () => {
-  const lightColor: CssColor = '#000000';
-  const darkColor = '#ffffff';
-  const neutralTheme = generateColorSchemes('#333333');
+const generateNeutralColorSchemes = (color: CssColor) => {
+  const lightBase = '#000000';
+  const darkBase = '#ffffff';
+  const neutralTheme = generateColorSchemes(color);
   neutralTheme.light[2].hex = '#ffffff';
-  neutralTheme.light[3].hex = hexToRgba(lightColor, 0.05);
-  neutralTheme.light[4].hex = hexToRgba(lightColor, 0.1);
-  neutralTheme.light[5].hex = hexToRgba(lightColor, 0.27);
-  neutralTheme.light[6].hex = hexToRgba(lightColor, 0.45);
-  neutralTheme.light[7].hex = hexToRgba(lightColor, 0.62);
-  neutralTheme.light[11].hex = hexToRgba(lightColor, 0.62);
-  neutralTheme.light[12].hex = hexToRgba(lightColor, 0.83);
+  neutralTheme.light[3].hex = chroma(color).luminance(0.9).hex() as CssColor;
+  neutralTheme.light[4].hex = chroma(color).luminance(0.8).hex() as CssColor;
+  neutralTheme.light[5].hex = hexToRgba(lightBase, 0.27);
+  neutralTheme.light[6].hex = hexToRgba(lightBase, 0.45);
+  neutralTheme.light[7].hex = hexToRgba(lightBase, 0.62);
+  neutralTheme.light[11].hex = hexToRgba(lightBase, 0.62);
+  neutralTheme.light[12].hex = hexToRgba(lightBase, 0.83);
 
-  neutralTheme.dark[2].hex = hexToRgba(darkColor, 0.06);
-  neutralTheme.dark[3].hex = hexToRgba(darkColor, 0.1);
-  neutralTheme.dark[4].hex = hexToRgba(darkColor, 0.14);
-  neutralTheme.dark[5].hex = hexToRgba(darkColor, 0.2);
-  neutralTheme.dark[6].hex = hexToRgba(darkColor, 0.4);
-  neutralTheme.dark[7].hex = hexToRgba(darkColor, 0.55);
-  neutralTheme.dark[11].hex = hexToRgba(darkColor, 0.55);
-  neutralTheme.dark[12].hex = hexToRgba(darkColor, 0.88);
+  neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
+  neutralTheme.dark[3].hex = hexToRgba(darkBase, 0.1);
+  neutralTheme.dark[4].hex = hexToRgba(darkBase, 0.14);
+  neutralTheme.dark[5].hex = hexToRgba(darkBase, 0.2);
+  neutralTheme.dark[6].hex = hexToRgba(darkBase, 0.4);
+  neutralTheme.dark[7].hex = hexToRgba(darkBase, 0.55);
+  neutralTheme.dark[11].hex = hexToRgba(darkBase, 0.55);
+  neutralTheme.dark[12].hex = hexToRgba(darkBase, 0.88);
   return neutralTheme;
 };
 
@@ -48,7 +48,7 @@ export default function Home() {
   const yellowTheme = generateColorSchemes('#E5AA20');
   const purpleTheme = generateColorSchemes('#B800E6');
   const greyTheme = generateColorSchemes('#1E2B3C');
-  const neutralTheme = generateNeutralColorSchemes();
+  const neutralTheme = generateNeutralColorSchemes('#1E2B3C');
 
   type RowType = {
     bgTheme: ThemeInfo;

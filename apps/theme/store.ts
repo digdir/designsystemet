@@ -65,7 +65,7 @@ export const useThemeStore = create(
     colors: {
       main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
       neutral: [
-        { name: 'neutral', colors: generateNeutralColorSchemes('#1E2B3C') },
+        { name: 'neutral', colors: generateNeutralColorSchemes('#000000') },
       ],
       support: [
         { name: 'brand1', colors: generateColorSchemes('#F45F63') },

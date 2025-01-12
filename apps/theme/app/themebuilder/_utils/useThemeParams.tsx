@@ -50,7 +50,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateNeutralColorSchemes('#1E2B3C'),
+            colors: generateNeutralColorSchemes('#000000'),
           },
         ];
     }
