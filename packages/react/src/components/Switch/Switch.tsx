@@ -7,7 +7,7 @@ import { Input, type InputProps } from '../Input';
 import { Label } from '../Label';
 
 export type SwitchProps = MergeRight<
-  DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
+  DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'>,
   {
     /** Optional aria-label */
     'aria-label'?: string;
