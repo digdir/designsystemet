@@ -1,7 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
-import { type ChangeEvent, useRef, useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '../';
+import { useDebounceCallback } from '../../utilities';
 import { EXPERIMENTAL_Suggestion as Suggestion } from './';
 
 export default {
@@ -102,9 +103,9 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
         </Suggestion>
       </Field>
 
-      <Divider style={{ marginTop: 'var(--ds-spacing-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-space-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-spacing-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-space-2) 0' }}>
         Du har skrevet inn: {value}
       </Paragraph>
 
@@ -194,26 +195,29 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
 export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<string[] | null>(null);
-  const debounce = useRef<ReturnType<typeof setTimeout>>(); // Debounce so we do not spam the endpoint
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const isTyping = (event.nativeEvent as InputEvent).inputType;
     const value = encodeURIComponent(event.target.value.trim());
-    clearTimeout(debounce.current);
     setValue(event.target.value);
 
     if (!isTyping) return; // Prevent API call if clicking on items in list
     setOptions(null); // Clear options
 
-    if (value)
-      debounce.current = setTimeout(async () => {
-        const api = `https://restcountries.com/v2/name/${value}?fields=name`;
-        const countries = await (await fetch(api)).json();
-        setOptions(
-          Array.isArray(countries) ? countries.map(({ name }) => name) : [],
-        );
-      }, 500);
+    if (!value) return;
+
+    debounced(value);
   };
+
+  const apiCall = async (value: string) => {
+    const api = `https://restcountries.com/v2/name/${value}?fields=name`;
+    const countries = await (await fetch(api)).json();
+    setOptions(
+      Array.isArray(countries) ? countries.map(({ name }) => name) : [],
+    );
+  };
+
+  const debounced = useDebounceCallback(apiCall, 500000);
 
   return (
     <Field>
@@ -224,7 +228,11 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.List>
           {!!value && (
             <Suggestion.Empty aria-busy='true'>
-              {options ? 'Ingen treff' : <Spinner aria-label='Laster...' />}
+              {options ? (
+                'Ingen treff'
+              ) : (
+                <Spinner aria-label='Laster...' data-size='sm' />
+              )}
             </Suggestion.Empty>
           )}
           {options?.map((option) => (
