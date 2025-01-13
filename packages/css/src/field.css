@@ -14,7 +14,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true']:not(u-option), :disabled:not(select option)) > * {
+  &:has([aria-disabled='true']:not(u-option), :disabled:not(option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
