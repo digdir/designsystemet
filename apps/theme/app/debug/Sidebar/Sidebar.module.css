@@ -1,0 +1,18 @@
+.sidebar {
+  background-color: white;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  z-index: 10;
+  border-radius: 8px;
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  bottom: 32px;
+  width: 400px;
+  padding: 20px;
+}
+
+.lum {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

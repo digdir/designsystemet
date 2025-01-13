@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  width: 94px;
+  height: 32px;
+  font-size: 16px;
+  position: relative;
+}
+
+.input input {
+  border-radius: 4px;
+  border: 1px solid var(--ds-color-neutral-border-default);
+  padding: 0 8px;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 6px;
+  right: 16px;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 6px;
+  right: 5px;
+}
+
+.arrow {
+  background-color: transparent;
+  height: 10px;
+  width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+}
+
+.arrow:hover {
+  background-color: red;
+}
+
+.arrow svg {
+  transform: scale(5);
+  position: absolute;
+  font-size: 3.5px;
+}
+
+.inputs {
+  display: flex;
+  gap: 12px;
+}
