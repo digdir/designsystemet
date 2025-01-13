@@ -161,7 +161,7 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).split(':');
 
-  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1);');
+  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
 
   const round = `round(down, ${calc}, 0.0625rem)`;
 
@@ -185,8 +185,8 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
       const { round, calc, name } = overrideSizingFormula(format, token);
 
       return {
-        round: [...acc.round, `${name}: ${round}`],
-        calc: [...acc.calc, `${name}: ${calc}`],
+        round: [...acc.round, `${name}: ${round};`],
+        calc: [...acc.calc, `${name}: ${calc};`],
       };
     },
     { round: [], calc: [] } as { round: string[]; calc: string[] },
@@ -217,7 +217,10 @@ const semantic: Format = {
 
     const tokens = inlineTokens(isInlineTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
-    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['size', '_size']), filteredTokens);
+    const [sizingTokens, restTokens] = R.partition(
+      (t: TransformedToken) => pathStartsWithOneOf(['size', '_size'], t) && isDigit(t.path[1]),
+      filteredTokens,
+    );
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
