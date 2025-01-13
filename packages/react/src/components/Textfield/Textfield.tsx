@@ -15,7 +15,7 @@ import { ValidationMessage } from '../ValidationMessage';
 
 type InputProps_ = Omit<
   InputProps,
-  'prefix' | 'className' | 'style' | 'data-color'
+  'prefix' | 'className' | 'style' | 'data-color' | 'type'
 >;
 type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
@@ -49,6 +49,12 @@ type TextfieldTextareaProps = {
 type TextfieldInputProps = {
   /** Use to render a `Textarea` instead of `Input` for multiline support  */
   multiline?: never | false;
+  /**
+   * Supported `input` types
+   *
+   * @default 'text'
+   * */
+  type?: Omit<InputProps['type'], 'radio' | 'checkbox' | 'image'>;
 } & InputProps_;
 
 export type TextfieldProps = SharedTextfieldProps &

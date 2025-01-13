@@ -48,7 +48,7 @@ export const BlogCard = ({
       </CardBlock>
       <CardBlock>
         {tagText && (
-          <Tag className={classes.tag} color={tagColor} data-size='sm'>
+          <Tag className={classes.tag} data-color={tagColor} data-size='sm'>
             {tagText}
           </Tag>
         )}

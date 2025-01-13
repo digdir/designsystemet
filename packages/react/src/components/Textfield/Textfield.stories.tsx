@@ -14,32 +14,32 @@ export default {
     multiline: {
       type: 'boolean',
     },
-    // Using argType here to exclude values from React.HTMLInputTypeAttribute
+    // This needs to be explicitly set, otherwise storybook will show "set object"
     type: {
       control: 'select',
       options: [
-        'checkbox',
+        /* | "button" */
+        /* 'checkbox', */
+        'color',
         'date',
         'datetime-local',
         'email',
+        'file',
+        'hidden',
+        /* 'image', */
         'month',
         'number',
         'password',
-        'radio',
+        /* 'radio', */
+        /* | "range" */
+        /* | "reset" */
         'search',
+        /* | "submit" */
         'tel',
         'text',
         'time',
         'url',
         'week',
-        // 'button',
-        'color',
-        'file',
-        // 'hidden',
-        // 'image',
-        // 'range',
-        // 'reset',
-        // 'submit',
       ],
     },
   },
