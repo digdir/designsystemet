@@ -2462,6 +2462,326 @@ export const  dimension = [
       "border-width",
       "highlight"
     ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *0)"
+    },
+    name: "--ds-size-0",
+    attributes: {},
+    path: [
+      "size",
+      "0"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *1)"
+    },
+    name: "--ds-size-1",
+    attributes: {},
+    path: [
+      "size",
+      "1"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *2)"
+    },
+    name: "--ds-size-2",
+    attributes: {},
+    path: [
+      "size",
+      "2"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *3)"
+    },
+    name: "--ds-size-3",
+    attributes: {},
+    path: [
+      "size",
+      "3"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *4)"
+    },
+    name: "--ds-size-4",
+    attributes: {},
+    path: [
+      "size",
+      "4"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *5)"
+    },
+    name: "--ds-size-5",
+    attributes: {},
+    path: [
+      "size",
+      "5"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *6)"
+    },
+    name: "--ds-size-6",
+    attributes: {},
+    path: [
+      "size",
+      "6"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *7)"
+    },
+    name: "--ds-size-7",
+    attributes: {},
+    path: [
+      "size",
+      "7"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *8)"
+    },
+    name: "--ds-size-8",
+    attributes: {},
+    path: [
+      "size",
+      "8"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *9)"
+    },
+    name: "--ds-size-9",
+    attributes: {},
+    path: [
+      "size",
+      "9"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *10)"
+    },
+    name: "--ds-size-10",
+    attributes: {},
+    path: [
+      "size",
+      "10"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *11)"
+    },
+    name: "--ds-size-11",
+    attributes: {},
+    path: [
+      "size",
+      "11"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *12)"
+    },
+    name: "--ds-size-12",
+    attributes: {},
+    path: [
+      "size",
+      "12"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *13)"
+    },
+    name: "--ds-size-13",
+    attributes: {},
+    path: [
+      "size",
+      "13"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *14)"
+    },
+    name: "--ds-size-14",
+    attributes: {},
+    path: [
+      "size",
+      "14"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *15)"
+    },
+    name: "--ds-size-15",
+    attributes: {},
+    path: [
+      "size",
+      "15"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *18)"
+    },
+    name: "--ds-size-18",
+    attributes: {},
+    path: [
+      "size",
+      "18"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *22)"
+    },
+    name: "--ds-size-22",
+    attributes: {},
+    path: [
+      "size",
+      "22"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *26)"
+    },
+    name: "--ds-size-26",
+    attributes: {},
+    path: [
+      "size",
+      "26"
+    ]
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *30)"
+    },
+    name: "--ds-size-30",
+    attributes: {},
+    path: [
+      "size",
+      "30"
+    ]
   }
 ] 
 

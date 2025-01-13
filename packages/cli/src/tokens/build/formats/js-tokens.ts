@@ -8,7 +8,10 @@ import { inlineTokens, isInlineTokens, overrideSizingFormula } from './css.js';
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
 /** Add token name with prefix to list for removal */
-const removeUnwatedTokens = R.filter((token: TransformedToken) => !isColorCategoryToken(token));
+const removeUnwatedTokens = R.pipe(
+  R.reject((token: TransformedToken) => isColorCategoryToken(token)),
+  R.reject((token: TransformedToken) => R.any((path: string) => path.startsWith('_'))(token.path)),
+);
 
 const dissocExtensions = R.pipe(R.dissoc('$extensions'), R.dissocPath(['original', '$extensions']));
 
@@ -30,6 +33,8 @@ export const jsTokens: Format = {
       usesDtcg,
     });
 
+    const filteredTokens = inlineTokens(isInlineTokens, dictionary.allTokens);
+
     const formatTokens = R.map((token: TransformedToken) => {
       if (pathStartsWithOneOf(['size', '_size'], token)) {
         const { calc, name } = overrideSizingFormula(format, token);
@@ -48,7 +53,6 @@ export const jsTokens: Format = {
 
     const processTokens = R.pipe(removeUnwatedTokens, removeUnwatedProps, formatTokens, groupByType);
 
-    const filteredTokens = inlineTokens(isInlineTokens, dictionary.allTokens);
     const tokens = processTokens(filteredTokens);
 
     const content = Object.entries(tokens)

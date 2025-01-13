@@ -231,9 +231,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
               const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
               const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
 
-              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
-
-              return (isSemanticColor || wantedTypes) && isNotPrivate;
+              return isSemanticColor || wantedTypes;
             },
           },
         ],

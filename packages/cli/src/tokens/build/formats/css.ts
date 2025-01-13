@@ -48,7 +48,7 @@ export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tok
       if (typeof transformed === 'string') {
         transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
       } else {
-        console.error(`inlineTokens can't replace {${refName}} in value: `, { transformed });
+        // console.error(`inlineTokens can't replace {${refName}} in value: `, { transformed });
       }
     }
     const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
@@ -147,7 +147,7 @@ const colorCategory: Format = {
 };
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
+export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]);
 
 export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
 
