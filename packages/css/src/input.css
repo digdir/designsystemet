@@ -84,7 +84,7 @@
       appearance: auto; /* show chevron */
     }
 
-    &:has(option:checked:disabled) {
+    &:not(:disabled):has(option:checked:disabled) {
       color: color-mix(in srgb, currentColor var(--ds-disabled-opacity), transparent);
     }
   }
