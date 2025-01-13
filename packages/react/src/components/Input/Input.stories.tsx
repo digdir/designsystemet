@@ -272,7 +272,6 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
         gap: '2rem',
       }}
     >
-      <Input {...args} name={`123`} />
       {sizes.map((size) => (
         <div
           key={size}
