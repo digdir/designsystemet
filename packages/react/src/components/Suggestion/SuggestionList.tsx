@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect } from 'react';
 import '@u-elements/u-datalist';
-// import { useMergeRefs } from '@floating-ui/react';
 import type { DefaultProps } from '../../types';
 import { SuggestionContext } from './Suggestion';
 
@@ -12,9 +11,7 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList({ className, id, ...rest }, ref) {
-  const { listId, setListId } = useContext(SuggestionContext); //, listRef
-
-  // const mergedRefs = useMergeRefs([listRef, ref]);
+  const { listId, setListId } = useContext(SuggestionContext);
 
   useEffect(() => {
     if (id && listId !== id) setListId?.(id);
