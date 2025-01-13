@@ -14,7 +14,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true'], :disabled:not(select option)) > * {
+  &:has([aria-disabled='true']:not(u-option), :disabled:not(select option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
@@ -51,7 +51,7 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    &:not(:has([readonly], [aria-disabled='true'], :disabled)) label {
+    &:not(:has([readonly], [aria-disabled='true']:not(u-option), :disabled:not(option))) label {
       cursor: pointer;
     }
 
