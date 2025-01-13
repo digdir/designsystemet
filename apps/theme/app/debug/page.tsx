@@ -56,7 +56,7 @@ export default function Home() {
         <Heading>dddd</Heading>
         <ColorGrid colors={GetColors()} colorNumber={2} />
         <Heading>dddd</Heading>
-        <ColorGrid colors={GetColors()} colorNumber={7} showBase />
+        <ColorGrid colors={GetColors()} colorNumber={7} />
       </div>
       <Sidebar />
     </div>

@@ -9,7 +9,7 @@ type DoubleInputProps = {
   label: string;
   valueOne: string;
   valueTwo: string;
-  setValueOne: (value: string, key: string) => void;
+  setValueOne: (value: string) => void;
   setValueTwo: (value: string) => void;
 };
 
@@ -52,8 +52,8 @@ export const DoubleInput = ({
     <div className={classes.container}>
       <div className={classes.text}>{label}</div>
       <div className={classes.inputs}>
-        <Input value={valueOne} setValue={(e) => setValueOne(e, label)} />
-        <Input value={valueTwo} setValue={(e) => setValueTwo(e, label)} />
+        <Input value={valueOne} setValue={(e) => setValueOne(e)} />
+        <Input value={valueTwo} setValue={(e) => setValueTwo(e)} />
       </div>
     </div>
   );

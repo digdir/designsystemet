@@ -16,3 +16,7 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.heading {
+  margin-bottom: 16px;
+}

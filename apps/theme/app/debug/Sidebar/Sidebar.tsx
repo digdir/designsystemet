@@ -1,17 +1,17 @@
 import { Heading } from '@digdir/designsystemet-react';
-import { useState } from 'react';
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { useDebugStore } from '../debugStore';
+import { getFullNameFromShort } from '../logic/utils';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
-  const [valueOne, setValueOne] = useState('0.24');
-  const [valueTwo, setValueTwo] = useState('0.254');
   const luminance = useDebugStore((state) => state.luminance);
 
   return (
     <div className={classes.sidebar}>
-      <Heading data-size='2xs'>Luminance values</Heading>
+      <Heading className={classes.heading} data-size='2xs'>
+        Luminance values
+      </Heading>
       <div className={classes.lum}>
         {Object.keys(luminance.light).map((key) => {
           if (luminance.light[key as keyof typeof luminance.light] === 1) {
@@ -21,7 +21,9 @@ export const Sidebar = () => {
             <div key={key}>
               <DoubleInput
                 key={key}
-                label={key as keyof typeof luminance.light}
+                label={getFullNameFromShort(
+                  key as keyof typeof luminance.light,
+                )}
                 valueOne={luminance.light[
                   key as keyof typeof luminance.light
                 ].toString()}
