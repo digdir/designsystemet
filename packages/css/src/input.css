@@ -154,7 +154,7 @@
     width: var(--dsc-input-size);
     /* forced-color-adjust: none; */ /* Prevent browser from applying forced colors, since we need the background */
 
-    &:not([aria-label]) {
+    &:not([aria-label], :is(.ds-field *)) {
       translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
     }
 
