@@ -1,5 +1,34 @@
 # Change Log
 
+## 1.0.0-next.46
+
+### Minor Changes
+
+- Add JSON schema for CLI config file, which enables editor hints. To use it, do something like this: ([#2972](https://github.com/digdir/designsystemet/pull/2972))
+
+  ```jsonc
+  {
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+    // ...config options here...
+  }
+  ```
+
+- cli: better error messages for wrong or missing options ([#2970](https://github.com/digdir/designsystemet/pull/2970))
+
+### Patch Changes
+
+- tokens: fix wrong reference for focus color. ([#2989](https://github.com/digdir/designsystemet/pull/2989))
+
+- refactor: Changed border-radius token to dimension type ([#2990](https://github.com/digdir/designsystemet/pull/2990))
+
+- Add json config file support for `tokens create` ([#2847](https://github.com/digdir/designsystemet/pull/2847))
+
+- Changed focus color to use neutral instead of accent color ([#2989](https://github.com/digdir/designsystemet/pull/2989))
+
+- tokens build: fix invalid values in --ds-size calculations ([#2975](https://github.com/digdir/designsystemet/pull/2975))
+
+- outDir option was required, but it should have a default value ([#2969](https://github.com/digdir/designsystemet/pull/2969))
+
 ## 1.0.0-next.45
 
 ### Minor Changes
