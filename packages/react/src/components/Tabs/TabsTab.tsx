@@ -1,4 +1,3 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId } from 'react';
 
@@ -16,16 +15,15 @@ export type TabsTabProps = {
  * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  */
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
-  function TabsTab({ className, value, ...rest }, ref) {
+  function TabsTab({ value, id, ...rest }, ref) {
     const tabs = useContext(Context);
-    const buttonId = `tab-${useId()}`;
+    const buttonId = id ?? `tab-${useId()}`;
 
     return (
       <RovingFocusItem value={value} {...rest} asChild>
         <button
           {...rest}
           aria-selected={tabs.value === value}
-          className={cl('ds-tabs__tab', className)}
           id={buttonId}
           onClick={() => tabs.onChange?.(value)}
           ref={ref}
