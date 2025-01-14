@@ -198,7 +198,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
           fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
-            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
             return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
@@ -231,9 +231,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
               const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
               const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
 
-              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
-
-              return (isSemanticColor || wantedTypes) && isNotPrivate;
+              return isSemanticColor || wantedTypes;
             },
           },
         ],
@@ -241,7 +239,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
           fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
-            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
             return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
@@ -290,7 +288,18 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
               return (
                 included &&
                 !pathStartsWithOneOf(
-                  ['spacing', 'sizing', 'size', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
+                  [
+                    'spacing',
+                    'sizing',
+                    'size',
+                    '_size',
+                    'border-width',
+                    'border-radius',
+                    'theme',
+                    'theme2',
+                    'theme3',
+                    'theme4',
+                  ],
                   token,
                 )
               );
