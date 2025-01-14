@@ -2317,12 +2317,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#410d69",
+    $value: "#1f2c3d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.text-default}"
+      $value: "{color.neutral.text-default}"
     },
     name: "--ds-color-focus-outer",
     attributes: {},
