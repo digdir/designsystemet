@@ -103,9 +103,9 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
         </Suggestion>
       </Field>
 
-      <Divider style={{ marginTop: 'var(--ds-space-4)' }} />
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-space-2) 0' }}>
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
         Du har skrevet inn: {value}
       </Paragraph>
 
@@ -217,7 +217,7 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
     );
   };
 
-  const debounced = useDebounceCallback(apiCall, 500000);
+  const debounced = useDebounceCallback(apiCall, 500);
 
   return (
     <Field>
