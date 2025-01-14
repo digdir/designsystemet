@@ -40,6 +40,7 @@ export type RovingFocusProps = {
   getOrderedItems: () => RovingFocusElement[];
   setFocusableValue: (value: string) => void;
   focusableValue: string | null;
+  onShiftTab: () => void;
   orientation: 'vertical' | 'horizontal' | 'ambiguous';
 };
 
@@ -47,6 +48,9 @@ export const RovingFocusContext = createContext<RovingFocusProps>({
   elements: { current: new Map<string, HTMLElement>() },
   getOrderedItems: () => [],
   setFocusableValue: () => {
+    /* intentionally empty */
+  },
+  onShiftTab: () => {
     /* intentionally empty */
   },
   focusableValue: null,
@@ -71,6 +75,7 @@ export const RovingFocusRoot = forwardRef<
     const Component = asChild ? Slot : 'div';
 
     const [focusableValue, setFocusableValue] = useState<string | null>(null);
+    const [isShiftTabbing, setIsShiftTabbing] = useState(false);
     const elements = useRef(new Map<string, HTMLElement>());
     const myRef = useRef<HTMLElement>();
 
@@ -103,13 +108,18 @@ export const RovingFocusRoot = forwardRef<
           getOrderedItems,
           focusableValue,
           setFocusableValue,
+          onShiftTab: () => {
+            setIsShiftTabbing(true);
+          },
           orientation,
         }}
       >
         <Component
           {...rest}
+          tabIndex={isShiftTabbing ? -1 : 0}
           onBlur={(e: FocusEvent<HTMLElement>) => {
             onBlur?.(e);
+            setIsShiftTabbing(false);
             setFocusableValue(activeValue ?? null);
           }}
           onFocus={(e: FocusEvent<HTMLElement>) => {
