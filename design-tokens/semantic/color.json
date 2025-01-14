@@ -565,7 +565,7 @@
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.accent.text-default}"
+        "$value": "{color.neutral.text-default}"
       }
     }
   }
