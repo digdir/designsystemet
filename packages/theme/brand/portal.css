@@ -234,7 +234,7 @@
   --ds-color-warning-contrast-default: #ffffff;
   --ds-color-warning-contrast-subtle: #fdf9f8;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #410d69;
+  --ds-color-focus-outer: #1f2c3d;
 
   color-scheme: light;
 }
@@ -467,7 +467,7 @@
   --ds-color-warning-contrast-default: #ffffff;
   --ds-color-warning-contrast-subtle: #fdf9f8;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #410d69;
+  --ds-color-focus-outer: #1f2c3d;
 
   color-scheme: light;
 }
@@ -903,7 +903,7 @@
   --ds-color-warning-contrast-default: #000000;
   --ds-color-warning-contrast-subtle: #070301;
   --ds-color-focus-inner: #141d29;
-  --ds-color-focus-outer: #e9e2ef;
+  --ds-color-focus-outer: #e3e5e7;
 
   color-scheme: dark;
 }
@@ -1136,7 +1136,7 @@
   --ds-color-warning-contrast-default: #000000;
   --ds-color-warning-contrast-subtle: #070301;
   --ds-color-focus-inner: #141d29;
-  --ds-color-focus-outer: #e9e2ef;
+  --ds-color-focus-outer: #e3e5e7;
 
   color-scheme: dark;
 }
