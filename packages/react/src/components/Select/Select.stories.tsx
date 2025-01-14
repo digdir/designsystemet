@@ -13,8 +13,10 @@ export default {
 export const Preview: StoryFn<typeof Select> = (args) => (
   <Field>
     <Label>Velg et fjell</Label>
-    <Select {...args}>
-      <Select.Option value='blank'>Velg &hellip;</Select.Option>
+    <Select {...args} defaultValue=''>
+      <Select.Option value='' disabled>
+        Velg et fjell &hellip;
+      </Select.Option>
       <Select.Option value='everest'>Mount Everest</Select.Option>
       <Select.Option value='aconcagua'>Aconcagua</Select.Option>
       <Select.Option value='denali'>Denali</Select.Option>

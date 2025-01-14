@@ -32,19 +32,22 @@ import { colorCategories } from '../types.js';
  *  ]
  * ```
  *
- * @param shouldInline - predicate to determine if token should be inlined
+ * @param shouldSquash - predicate to determine if token should be inlined
  * @param tokens - array of tokens to transform
  * @returns copy of `tokens` without those that matched the predicate,
  *          where references to the matching tokens have been inlined
  */
-export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
-  const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
+export function squashTokens(shouldSquash: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldSquash, tokens);
   return otherTokens.map((token: TransformedToken) => {
     // Inline the tokens that satisfy shouldInline().
     let transformed = getValue<string>(token.original);
     for (const ref of inlineableTokens) {
       const refName = ref.path.join('.');
-      transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+
+      if (typeof transformed === 'string') {
+        transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+      }
     }
     const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
     return tokenWithInlinedRefs;
@@ -142,8 +145,9 @@ const colorCategory: Format = {
 };
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
+export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]);
 
-const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
+export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
 
 /**
  * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
@@ -155,7 +159,7 @@ const isUwantedTokens = R.anyPass([isNumericBorderRadiusToken]);
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).split(':');
 
-  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1);');
+  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
 
   const round = `round(down, ${calc}, 0.0625rem)`;
 
@@ -179,8 +183,8 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
       const { round, calc, name } = overrideSizingFormula(format, token);
 
       return {
-        round: [...acc.round, `${name}: ${round}`],
-        calc: [...acc.calc, `${name}: ${calc}`],
+        round: [...acc.round, `${name}: ${round};`],
+        calc: [...acc.calc, `${name}: ${calc};`],
       };
     },
     { round: [], calc: [] } as { round: string[]; calc: string[] },
@@ -209,9 +213,12 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const tokens = inlineTokens(isUwantedTokens, dictionary.allTokens);
+    const tokens = squashTokens(isSquashTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
-    const [sizingTokens, restTokens] = R.partition(pathStartsWithOneOf(['size']), filteredTokens);
+    const [sizingTokens, restTokens] = R.partition(
+      (t: TransformedToken) => pathStartsWithOneOf(['size', '_size'], t) && isDigit(t.path[1]),
+      filteredTokens,
+    );
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
