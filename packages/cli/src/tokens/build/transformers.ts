@@ -61,6 +61,6 @@ export const unitless: Transform = {
   name: 'ds/unitless',
   type: 'value',
   transitive: true,
-  filter: (token) => pathStartsWithOneOf(['size'], token),
+  filter: (token) => pathStartsWithOneOf(['size', '_size'], token),
   transform: (token) => parseInt(getValue<string>(token)),
 };
