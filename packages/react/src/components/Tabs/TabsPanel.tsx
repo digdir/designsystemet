@@ -1,7 +1,8 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 
+import { useMergeRefs } from '@floating-ui/react';
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {
@@ -21,10 +22,30 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     const { value: tabsValue } = useContext(Context);
     const active = value === tabsValue;
 
+    const [hasTabbableElement, setHasTabbableElement] = useState(false);
+
+    const internalRef = useRef<HTMLDivElement>(null);
+    const mergedRef = useMergeRefs([ref, internalRef]);
+
+    /* Check if the panel has any tabbable elements */
+    useEffect(() => {
+      if (!internalRef.current) return;
+      const tabbableElements = internalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      setHasTabbableElement(tabbableElements.length > 0);
+    }, [children]);
+
     return (
       <>
         {active && (
-          <div className={cl('ds-tabs__panel', className)} ref={ref} {...rest}>
+          <div
+            ref={mergedRef}
+            role='tabpanel'
+            className={cl('ds-tabs__panel', className)}
+            tabIndex={hasTabbableElement ? undefined : 0}
+            {...rest}
+          >
             {children}
           </div>
         )}
