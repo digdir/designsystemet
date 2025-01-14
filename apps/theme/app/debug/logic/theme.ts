@@ -23,6 +23,23 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   yellow: '#D4B12F',
 };
 
+export const ThemeSettings = {
+  baseModifier: 8,
+  interpolationMode: 'rgb',
+};
+
+export type InterpolationMode =
+  | 'rgb'
+  | 'hsl'
+  | 'hsv'
+  | 'hsi'
+  | 'lab'
+  | 'oklab'
+  | 'lch'
+  | 'oklch'
+  | 'hcl'
+  | 'lrgb';
+
 /**
  * Generates a color scale based on a base color and a color mode.
  *
@@ -33,15 +50,22 @@ export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
   luminance: { [x: string]: any } | undefined,
+  themeSettings: { baseModifier: number; interpolationMode: InterpolationMode },
 ): ColorInfo[] => {
-  const baseColors = getBaseColors(color, colorScheme);
+  const baseColors = getBaseColors(
+    color,
+    colorScheme,
+    themeSettings.baseModifier,
+  );
   const luminanceValues = luminance[colorScheme];
 
   // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
   const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(
     ([key, value], index) => ({
       name: key,
-      hex: chroma(color).luminance(value).hex() as CssColor,
+      hex: chroma(color)
+        .luminance(value, themeSettings.interpolationMode)
+        .hex() as CssColor,
       number: (index + 1) as ColorNumber,
     }),
   );
@@ -75,10 +99,11 @@ export const generateColorScale = (
 export const generateColorSchemes = (
   color: CssColor,
   luminance,
+  themeSettings,
 ): ThemeInfo => ({
-  light: generateColorScale(color, 'light', luminance),
-  dark: generateColorScale(color, 'dark', luminance),
-  contrast: generateColorScale(color, 'contrast', luminance),
+  light: generateColorScale(color, 'light', luminance, themeSettings),
+  dark: generateColorScale(color, 'dark', luminance, themeSettings),
+  contrast: generateColorScale(color, 'contrast', luminance, themeSettings),
 });
 
 /**
@@ -88,7 +113,11 @@ export const generateColorSchemes = (
  * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
+const getBaseColors = (
+  color: CssColor,
+  colorScheme: ColorScheme,
+  baseModifier: number,
+) => {
   let colorLightness = getLightnessFromHex(color);
   if (colorScheme !== 'light') {
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
@@ -96,8 +125,8 @@ const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
 
   const modifier =
     colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65)
-      ? -8
-      : 8;
+      ? -baseModifier
+      : baseModifier;
   const calculateLightness = (base: number, mod: number) => base - mod;
 
   return {

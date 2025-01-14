@@ -1,0 +1,15 @@
+.scales {
+  display: flex;
+  flex-direction: column;
+}
+
+.scale {
+  display: flex;
+  margin-bottom: 12px;
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.color {
+  flex: 1;
+  height: 64px;
+}

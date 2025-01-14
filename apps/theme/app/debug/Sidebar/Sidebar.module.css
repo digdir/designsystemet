@@ -7,11 +7,14 @@
   top: 32px;
   right: 32px;
   bottom: 32px;
-  width: 400px;
+  width: 420px;
   padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
 
-.lum {
+.group {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -19,4 +22,19 @@
 
 .heading {
   margin-bottom: 16px;
+}
+
+.select {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select .field {
+  width: 200px;
+}
+
+.select select {
+  height: 32px;
 }

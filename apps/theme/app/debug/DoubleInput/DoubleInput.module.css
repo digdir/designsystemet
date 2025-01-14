@@ -6,10 +6,16 @@
 }
 
 .input {
-  width: 94px;
+  width: 96px;
   height: 32px;
   font-size: 16px;
   position: relative;
+}
+
+.activeInput input {
+  border: 1px solid rgb(0, 110, 255);
+  outline: 1px solid #006eff;
+  background-color: #eff6ff;
 }
 
 .input input {
@@ -25,22 +31,37 @@
   background-color: transparent;
   border: none;
   position: absolute;
-  top: 6px;
-  right: 16px;
+  top: 4px;
+  right: 20px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.btn svg {
+  transform: scale(1.5);
+}
+
+.btn:hover {
+  background-color: rgb(196, 209, 255);
 }
 
 .arrows {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 6px;
+  top: 2px;
   right: 5px;
 }
 
 .arrow {
   background-color: transparent;
-  height: 10px;
-  width: 10px;
+  height: 14px;
+  width: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +70,7 @@
 }
 
 .arrow:hover {
-  background-color: red;
+  background-color: rgb(196, 209, 255);
 }
 
 .arrow svg {
