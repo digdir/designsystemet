@@ -1,4 +1,3 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 
@@ -18,7 +17,7 @@ export type TabsPanelProps = {
  * ```
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
-  function TabsPanel({ children, value, className, ...rest }, ref) {
+  function TabsPanel({ children, value, ...rest }, ref) {
     const { value: tabsValue } = useContext(Context);
     const active = value === tabsValue;
 
@@ -42,7 +41,6 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
           <div
             ref={mergedRef}
             role='tabpanel'
-            className={cl('ds-tabs__panel', className)}
             tabIndex={hasTabbableElement ? undefined : 0}
             {...rest}
           >
