@@ -3,7 +3,7 @@ import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 import { getType, isColorCategoryToken, pathStartsWithOneOf } from '../../utils.js';
-import { inlineTokens, isInlineTokens, overrideSizingFormula } from './css.js';
+import { isSquashTokens, overrideSizingFormula, squashTokens } from './css.js';
 
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
@@ -33,8 +33,6 @@ export const jsTokens: Format = {
       usesDtcg,
     });
 
-    const filteredTokens = inlineTokens(isInlineTokens, dictionary.allTokens);
-
     const formatTokens = R.map((token: TransformedToken) => {
       if (pathStartsWithOneOf(['size', '_size'], token)) {
         const { calc, name } = overrideSizingFormula(format, token);
@@ -53,7 +51,7 @@ export const jsTokens: Format = {
 
     const processTokens = R.pipe(removeUnwatedTokens, removeUnwatedProps, formatTokens, groupByType);
 
-    const tokens = processTokens(filteredTokens);
+    const tokens = processTokens(squashTokens(isSquashTokens, dictionary.allTokens));
 
     const content = Object.entries(tokens)
       .map(

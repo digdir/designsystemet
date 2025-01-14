@@ -32,13 +32,13 @@ import { colorCategories } from '../types.js';
  *  ]
  * ```
  *
- * @param shouldInline - predicate to determine if token should be inlined
+ * @param shouldSquash - predicate to determine if token should be inlined
  * @param tokens - array of tokens to transform
  * @returns copy of `tokens` without those that matched the predicate,
  *          where references to the matching tokens have been inlined
  */
-export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
-  const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
+export function squashTokens(shouldSquash: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldSquash, tokens);
   return otherTokens.map((token: TransformedToken) => {
     // Inline the tokens that satisfy shouldInline().
     let transformed = getValue<string>(token.original);
@@ -47,8 +47,6 @@ export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tok
 
       if (typeof transformed === 'string') {
         transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
-      } else {
-        // console.error(`inlineTokens can't replace {${refName}} in value: `, { transformed });
       }
     }
     const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
@@ -149,7 +147,7 @@ const colorCategory: Format = {
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]);
 
-export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
+export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
 
 /**
  * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
@@ -215,7 +213,7 @@ const semantic: Format = {
       usesDtcg,
     });
 
-    const tokens = inlineTokens(isInlineTokens, dictionary.allTokens);
+    const tokens = squashTokens(isSquashTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
     const [sizingTokens, restTokens] = R.partition(
       (t: TransformedToken) => pathStartsWithOneOf(['size', '_size'], t) && isDigit(t.path[1]),
