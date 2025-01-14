@@ -235,32 +235,6 @@
       "$value": "{opacity.30}"
     }
   },
-  "border-radius": {
-    "sm": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.1}"
-    },
-    "md": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.2}"
-    },
-    "lg": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.3}"
-    },
-    "xl": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.4}"
-    },
-    "default": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.5}"
-    },
-    "full": {
-      "$type": "borderRadius",
-      "$value": "{border-radius.6}"
-    }
-  },
   "border-width": {
     "default": {
       "$type": "borderWidth",
@@ -291,6 +265,32 @@
     "xl": {
       "$type": "boxShadow",
       "$value": "{shadow.500}"
+    }
+  },
+  "border-radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "{border-radius.1}"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{border-radius.2}"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{border-radius.3}"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "{border-radius.4}"
+    },
+    "default": {
+      "$type": "dimension",
+      "$value": "{border-radius.5}"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "{border-radius.6}"
     }
   },
   "size": {

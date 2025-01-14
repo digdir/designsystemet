@@ -76,7 +76,7 @@ const rightLinks = [
   },
   {
     text: 'Bli invitert til slack',
-    url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
+    url: '/slack',
     prefix: <Slack />,
   },
   {
