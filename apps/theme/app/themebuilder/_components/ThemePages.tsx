@@ -40,33 +40,46 @@ export const ThemePages = () => {
 
   return (
     <>
-      {themeTab === 'overview' && (
-        <div className={classes.panel} data-color-scheme={appearance}>
-          <OverviewComponents ref={containerRef} />
+      <div
+        className={classes.panel}
+        data-color-scheme={appearance}
+        hidden={!(themeTab === 'overview')}
+      >
+        <OverviewComponents ref={containerRef} />
+      </div>
+
+      <>
+        <div
+          className={cl(classes.panel, classes.colorsContainer)}
+          data-color-scheme={appearance}
+          hidden={!(themeTab === 'colorsystem')}
+        >
+          <Colors />
         </div>
-      )}
 
-      {themeTab === 'colorsystem' && (
-        <>
-          <div
-            className={cl(classes.panel, classes.colorsContainer)}
-            data-color-scheme={appearance}
-          >
-            <Colors />
-          </div>
+        <div
+          className={classes.panel}
+          data-color-scheme={appearance}
+          hidden={!(themeTab === 'colorsystem')}
+        >
+          <ColorPreview />
+        </div>
+        <div
+          className={classes.panel}
+          data-color-scheme={appearance}
+          hidden={!(themeTab === 'colorsystem')}
+        >
+          <ColorTokens />
+        </div>
 
-          <div className={classes.panel} data-color-scheme={appearance}>
-            <ColorPreview />
-          </div>
-          <div className={classes.panel} data-color-scheme={appearance}>
-            <ColorTokens />
-          </div>
-
-          <div className={classes.panel} data-color-scheme={appearance}>
-            <ColorContrasts />
-          </div>
-        </>
-      )}
+        <div
+          className={classes.panel}
+          data-color-scheme={appearance}
+          hidden={!(themeTab === 'colorsystem')}
+        >
+          <ColorContrasts />
+        </div>
+      </>
     </>
   );
 };
