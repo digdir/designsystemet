@@ -2,6 +2,7 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 25%, rgba(30, 152, 245, 0.2) 55%);
   margin-top: -106px;
   padding-top: 106px;
+  padding-bottom: var(--ds-size-18);
 }
 
 [data-color-scheme='dark'] .main {

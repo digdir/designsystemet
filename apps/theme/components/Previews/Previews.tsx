@@ -1,57 +1,39 @@
 'use client';
+import { useState } from 'react';
 
-import cl from 'clsx/lite';
-import { useThemeStore } from '../../store';
-
-import { ToggleChip } from '../ToggleChip/ToggleChip';
+import { ToggleGroup } from '@digdir/designsystemet-react';
+import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
 import classes from './Previews.module.css';
-import { Theme1 } from './Theme1/Theme1';
 
 export const Previews = () => {
-  const setTheme = useThemeStore((state) => state.setThemePreview);
-  const setAppearance = useThemeStore((state) => state.setAppearance);
-  const items = [
-    {
-      name: 'Tema 1 lys',
-      value: 'one-light',
-    },
-    {
-      name: 'Tema 1 mørk',
-      value: 'one-dark',
-    },
-    {
-      name: 'Tema 2 lys',
-      value: 'two-light',
-    },
-    {
-      name: 'Tema 2 mørk',
-      value: 'two-dark',
-    },
-  ];
+  const [theme, setTheme] = useState<'blue' | 'purple'>('blue');
+  const [appearance, setAppearance] = useState<'light' | 'dark'>('light');
 
   return (
     <>
-      <div className={classes.toolbar}>
-        <ToggleChip
-          items={items}
-          onChange={(e) => {
-            if (e.includes('one')) {
-              setTheme('one');
-            } else if (e.includes('two')) {
-              setTheme('two');
-            }
-
-            if (e.includes('light')) {
-              setAppearance('light');
-            } else if (e.includes('dark')) {
-              setAppearance('dark');
-            }
-          }}
-        />
+      <div className={classes.toolbar} data-size='sm'>
+        <ToggleGroup
+          value={theme}
+          onChange={(v) => setTheme(v as 'blue' | 'purple')}
+        >
+          <ToggleGroup.Item value='blue'>Blå</ToggleGroup.Item>
+          <ToggleGroup.Item value='purple'>Lilla</ToggleGroup.Item>
+        </ToggleGroup>
+        <ToggleGroup
+          value={appearance}
+          onChange={(v) => setAppearance(v as 'light' | 'dark')}
+        >
+          <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
+          <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
+        </ToggleGroup>
       </div>
 
-      <div className={cl(classes.preview)} id='preview2'>
-        <Theme1 />
+      <div
+        className={classes.preview}
+        data-color-scheme={appearance}
+        data-theme={theme}
+      >
+        <OverviewComponents />
       </div>
     </>
   );

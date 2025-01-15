@@ -1,17 +1,25 @@
-.headerContainer {
+.header {
+  background-color: var(--ds-color-accent-surface-default);
+  padding: var(--ds-size-10);
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  position: relative;
+  justify-content: center;
+  gap: var(--ds-size-4);
+}
+
+.backLink {
+  color: var(--ds-color-accent-text-default);
+  margin-left: -4px;
+  display: inline-flex;
+  width: auto;
+  align-self: flex-start;
 }
 
 .tabs {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  position: absolute;
-  bottom: 0;
-  left: var(--ds-size-10);
 
   & button {
     background-color: transparent;
@@ -33,22 +41,4 @@
       background-color: var(--ds-color-neutral-background-default);
     }
   }
-}
-
-.header {
-  background-color: rgb(226, 226, 226);
-  padding: var(--ds-size-10);
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--ds-size-4);
-}
-
-.backLink {
-  color: var(--ds-color-accent-text-default);
-  margin-left: -4px;
-  display: inline-flex;
-  width: auto;
-  align-self: flex-start;
 }

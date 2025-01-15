@@ -40,8 +40,6 @@ type ColorStore = {
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   appearance: ColorScheme;
   setAppearance: (appearance: ColorScheme) => void;
-  themePreview: 'one' | 'two' | 'three';
-  setThemePreview: (theme: 'one' | 'two' | 'three') => void;
   themeTab: 'overview' | 'colorsystem';
   setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
@@ -60,7 +58,6 @@ export const useThemeStore = create(
     },
     baseBorderRadius: 4,
     appearance: 'light',
-    themePreview: 'one',
     colors: {
       main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
       neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
@@ -93,7 +90,6 @@ export const useThemeStore = create(
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     setAppearance: (appearance) => set({ appearance: appearance }),
-    setThemePreview: (themePreview) => set({ themePreview: themePreview }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),
