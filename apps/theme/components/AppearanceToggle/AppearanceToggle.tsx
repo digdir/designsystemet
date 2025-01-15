@@ -1,3 +1,4 @@
+import { Button } from '@digdir/designsystemet-react';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
@@ -31,29 +32,26 @@ export const AppearanceToggle = ({
   return (
     <div className={classes.toggle}>
       {items.map((item) => (
-        <div
-          className={cl(classes.item, item.value === active && classes.active)}
+        <Button
+          className={cl(classes.item)}
           key={item.value}
-          onClick={() => setActive(item.value)}
+          onClick={() => {
+            setActive(item.value);
+            setAppearance(item.value);
+          }}
+          variant={item.value === active ? 'primary' : 'secondary'}
+          data-color='neutral'
         >
-          <div
-            className={cl(classes.box)}
-            onClick={() => {
-              setAppearance(item.value);
-            }}
-          >
-            <div className={classes.appearance}>
-              {item.value === 'light' && (
-                <SunIcon title='a11y-title' fontSize='1.5rem' />
-              )}
-              {item.value === 'dark' && (
-                <MoonIcon title='a11y-title' fontSize='1.5rem' />
-              )}
-              {item.name}
-            </div>
-          </div>
-          {showLabel && <div className={classes.text}>{item.name}</div>}
-        </div>
+          {item.value === 'light' && (
+            <SunIcon title='a11y-title' fontSize='1.5rem' />
+          )}
+          {item.value === 'dark' && (
+            <MoonIcon title='a11y-title' fontSize='1.5rem' />
+          )}
+          {item.name}
+
+          {showLabel && <>{item.name}</>}
+        </Button>
       ))}
     </div>
   );
