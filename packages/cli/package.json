@@ -1,8 +1,11 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.45",
+  "version": "1.0.0-next.46",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
+  "engines": {
+    "node": ">=22"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
