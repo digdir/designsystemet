@@ -6,7 +6,7 @@
 }
 
 .input {
-  width: 96px;
+  width: 85px;
   height: 32px;
   font-size: 16px;
   position: relative;
@@ -25,6 +25,7 @@
   display: block;
   height: 100%;
   width: 100%;
+  font-size: 15px;
 }
 
 .btn {
@@ -32,7 +33,7 @@
   border: none;
   position: absolute;
   top: 4px;
-  right: 20px;
+  right: 6px;
   height: 24px;
   width: 24px;
   display: flex;
@@ -48,35 +49,6 @@
 
 .btn:hover {
   background-color: rgb(196, 209, 255);
-}
-
-.arrows {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 2px;
-  right: 5px;
-}
-
-.arrow {
-  background-color: transparent;
-  height: 14px;
-  width: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: none;
-}
-
-.arrow:hover {
-  background-color: rgb(196, 209, 255);
-}
-
-.arrow svg {
-  transform: scale(5);
-  position: absolute;
-  font-size: 3.5px;
 }
 
 .inputs {

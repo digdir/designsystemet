@@ -1,8 +1,4 @@
-import {
-  ArrowCirclepathIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from '@navikt/aksel-icons';
+import { ArrowCirclepathIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import classes from './DoubleInput.module.css';
@@ -49,14 +45,6 @@ const Input = ({ value, setValue }: InputProps) => {
       >
         <ArrowCirclepathIcon title='a11y-title' fontSize='1.1rem' />
       </button>
-      <div className={classes.arrows}>
-        <button className={classes.arrow}>
-          <ChevronUpIcon title='a11y-title' />
-        </button>
-        <button className={classes.arrow}>
-          <ChevronDownIcon title='a11y-title' />
-        </button>
-      </div>
     </div>
   );
 };
