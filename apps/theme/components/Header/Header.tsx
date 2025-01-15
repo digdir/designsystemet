@@ -31,7 +31,11 @@ export const Header = () => {
   };
 
   return (
-    <div className={classes.header} style={{ background: setHeaderColor() }}>
+    <div
+      className={classes.header}
+      style={{ background: setHeaderColor() }}
+      data-color-scheme={appearance}
+    >
       <Link data-size='sm' className={classes.backLink} asChild>
         <NextLink href='/'>
           <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />

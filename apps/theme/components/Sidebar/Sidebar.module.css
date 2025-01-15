@@ -14,7 +14,7 @@
   min-height: calc(81vh);
   max-height: calc(100vh - 40px);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .showSidebar {
@@ -96,6 +96,14 @@
   padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-info-background-default);
+}
+
+.appearance {
+  margin-bottom: var(--ds-size-4);
+
+  & h4 {
+    margin-bottom: var(--ds-size-2);
+  }
 }
 
 .toggle {

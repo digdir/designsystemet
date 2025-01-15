@@ -13,7 +13,7 @@ export type ColorTheme = {
 };
 
 export type BaseBorderRadius = number;
-type PageType = 'intro' | 'colors' | 'radius' | 'finish';
+type PageType = 'colors' | 'dimensions';
 
 type ColorStore = {
   activePage: PageType;

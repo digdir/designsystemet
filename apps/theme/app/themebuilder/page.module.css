@@ -31,6 +31,7 @@
   margin-top: 28px;
   width: 100%;
   max-width: 1390px;
+  padding: var(--ds-size-6);
 }
 
 .hide {

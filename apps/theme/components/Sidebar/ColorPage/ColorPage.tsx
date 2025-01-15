@@ -9,12 +9,7 @@ import { ColorInput } from '../../ColorInput/ColorInput';
 import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
-type ColorPageProps = {
-  onPrevClick?: () => void;
-  onNextClick: () => void;
-};
-
-export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
+export const ColorPage = () => {
   type Pages = 'addColor' | 'editColor' | 'none';
   type ColorType = 'main' | 'neutral' | 'support';
 
