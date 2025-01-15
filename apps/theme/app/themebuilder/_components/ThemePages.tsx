@@ -42,7 +42,7 @@ export const ThemePages = () => {
     <>
       {themeTab === 'overview' && (
         <div className={classes.panel} data-color-scheme={appearance}>
-          <OverviewComponents />
+          <OverviewComponents ref={containerRef} />
         </div>
       )}
 
