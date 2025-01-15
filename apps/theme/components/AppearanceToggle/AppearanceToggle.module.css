@@ -7,8 +7,3 @@
 .item {
   flex: 1 1;
 }
-
-.active .box {
-  outline: 1px solid var(--ds-color-neutral-border-default);
-  border-color: var(--ds-color-neutral-border-default);
-}

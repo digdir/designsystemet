@@ -32,7 +32,11 @@ export const Sidebar = () => {
   return (
     <div>
       <button
-        className={cl(classes.toggle, showSidebar && classes.toggleOpen)}
+        className={cl(
+          classes.toggle,
+          showSidebar && classes.toggleOpen,
+          'ds-focus-visible',
+        )}
         onClick={() => setShowSidebar(!showSidebar)}
       >
         <CogIcon title='a11y-title' fontSize='1.5rem' />

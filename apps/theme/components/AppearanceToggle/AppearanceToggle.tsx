@@ -30,7 +30,7 @@ export const AppearanceToggle = ({
   }, [appearance]);
 
   return (
-    <div className={classes.toggle}>
+    <div className={classes.toggle} role='radiogroup'>
       {items.map((item) => (
         <Button
           className={cl(classes.item)}
@@ -41,6 +41,11 @@ export const AppearanceToggle = ({
           }}
           variant={item.value === active ? 'primary' : 'secondary'}
           data-color='neutral'
+          aria-label={`Sett til ${item.name} visning`}
+          // biome-ignore lint/a11y/useSemanticElements: <explanation>
+          role='radio'
+          aria-checked={item.value === active}
+          aria-current={item.value === active}
         >
           {item.value === 'light' && (
             <SunIcon title='a11y-title' fontSize='1.5rem' />
