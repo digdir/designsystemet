@@ -12,7 +12,6 @@ import { ColorPage } from './ColorPage/ColorPage';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
-  const setAppearance = useThemeStore((state) => state.setAppearance);
   const activePage = useThemeStore((state) => state.activePage);
   const setActivePage = useThemeStore((state) => state.setActivePage);
 
@@ -22,6 +21,7 @@ export const Sidebar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setSticky(window.scrollY > 135);
+      console.log('scrolling', window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,6 +29,8 @@ export const Sidebar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  console.log('isSticky', isSticky);
 
   return (
     <div>

@@ -16,6 +16,11 @@
   flex-direction: column;
 }
 
+.sticky {
+  position: fixed;
+  margin-top: 0;
+}
+
 .tabContent {
   flex: 1;
   min-height: 0;
