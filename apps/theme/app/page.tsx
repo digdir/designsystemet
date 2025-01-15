@@ -177,7 +177,7 @@ export default function Home() {
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
                 <NextLink
-                  href='/welcome'
+                  href='/themebuilder'
                   onClick={() => setPreviewTheme('one')}
                 >
                   <PaletteIcon title='a11y-title' fontSize='1.5rem' />

@@ -14,12 +14,9 @@
 }
 
 .itemsContainer {
-  margin-left: -28px;
-  width: calc(100% + 56px);
   margin-top: 12px;
-  padding: 24px 28px;
+  padding: var(--ds-size-6) 0;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .itemName {

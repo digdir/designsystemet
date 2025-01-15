@@ -1,11 +1,48 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  position: absolute;
+  bottom: 0;
+  left: var(--ds-size-10);
+
+  & button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    text-transform: capitalize;
+    padding: var(--ds-size-3) var(--ds-size-6);
+    font-size: inherit;
+    border-radius: var(--ds-border-radius-md);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:not([data-active='true']) {
+      color: var(--ds-color-neutral-text-default);
+    }
+
+    &[data-active='true'] {
+      background-color: var(--ds-color-neutral-background-default);
+    }
+  }
+}
+
 .header {
   background-color: rgb(226, 226, 226);
-  padding: 40px;
+  padding: var(--ds-size-10);
   height: 200px;
   display: flex;
-  gap: 32px;
   flex-direction: column;
   justify-content: center;
+  gap: var(--ds-size-4);
 }
 
 .backLink {

@@ -42,6 +42,8 @@ type ColorStore = {
   setAppearance: (appearance: ColorScheme) => void;
   themePreview: 'one' | 'two' | 'three';
   setThemePreview: (theme: 'one' | 'two' | 'three') => void;
+  themeTab: 'overview' | 'colorsystem';
+  setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
 
 export const useThemeStore = create(
@@ -68,6 +70,8 @@ export const useThemeStore = create(
         { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
       ],
     },
+    themeTab: 'overview',
+    setThemeTab: (tab) => set({ themeTab: tab }),
     addColor: (newColor, type) =>
       set((state) => {
         const updatedColors = state.colors[type].concat(newColor);

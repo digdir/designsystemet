@@ -3,14 +3,12 @@ import { useEffect, useState } from 'react';
 
 import { useThemeStore } from '../../store';
 
+import { Heading, Tabs } from '@digdir/designsystemet-react';
 import { CogIcon } from '@navikt/aksel-icons';
+import { AppearanceToggle } from '../AppearanceToggle/AppearanceToggle';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
-
-import type { ColorScheme } from '@digdir/designsystemet';
-import { Heading, Tabs } from '@digdir/designsystemet-react';
-import { Toggle } from '../Toggle/Toggle';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -70,17 +68,7 @@ export const Sidebar = () => {
             <Heading level={4} data-size='xs'>
               Visning
             </Heading>
-            <Toggle
-              type='appearance'
-              items={[
-                { name: 'Lys', type: 'sm', value: 'light' },
-                { name: 'Mørk', type: 'sm', value: 'dark' },
-              ]}
-              onChange={(value) => {
-                const val = value;
-                setAppearance(val as ColorScheme);
-              }}
-            />
+            <AppearanceToggle />
           </div>
           <TokenModal />
         </div>
