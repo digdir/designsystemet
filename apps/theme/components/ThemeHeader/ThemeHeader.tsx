@@ -2,7 +2,7 @@ import { Heading, Link } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import NextLink from 'next/link';
 import { useThemeStore } from '../../store';
-import classes from './Header.module.css';
+import classes from './ThemeHeader.module.css';
 
 const tabs: {
   name: string;
@@ -12,7 +12,7 @@ const tabs: {
   { name: 'Fargesystem', value: 'colorsystem' },
 ];
 
-export const Header = () => {
+export const ThemeHeader = () => {
   const themeTab = useThemeStore((state) => state.themeTab);
   const setThemeTab = useThemeStore((state) => state.setThemeTab);
 

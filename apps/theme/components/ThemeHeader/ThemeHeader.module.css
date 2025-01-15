@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
+  margin-top: var(--ds-size-6);
 
   & button {
     background-color: transparent;

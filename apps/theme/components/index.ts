@@ -13,5 +13,5 @@ export { ColorTokens } from './ColorTokens/ColorTokens';
 export { ColorContrasts } from './ColorContrasts/ColorContrasts';
 export { OverviewComponents } from './OverviewComponents/OverviewComponents';
 export { BorderRadiusInput } from './BorderRadiusInput/BorderRadiusInput';
-export { Header } from './Header/Header';
+export { ThemeHeader } from './ThemeHeader/ThemeHeader';
 export { ToggleChip } from './ToggleChip/ToggleChip';

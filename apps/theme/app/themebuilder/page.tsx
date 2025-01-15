@@ -1,5 +1,5 @@
 'use client';
-import { Header, Sidebar } from '../../components';
+import { Sidebar, ThemeHeader } from '../../components';
 import { ThemePages } from './_components/ThemePages';
 import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
@@ -10,7 +10,7 @@ export default function Page() {
 
   return (
     <div className={classes.page} id='preview'>
-      <Header />
+      <ThemeHeader />
       <div className={classes.container}>
         <div className={classes.content}>
           <ThemePages />
