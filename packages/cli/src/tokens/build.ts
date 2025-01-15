@@ -10,7 +10,7 @@ import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { copyFile, writeFile } from './utils.js';
+import { copyFile, deleteDir, writeFile } from './utils.js';
 
 export const DEFAULT_COLOR = 'accent';
 
@@ -27,6 +27,8 @@ type Options = {
   accentColor?: string;
   /** Dry run */
   dry?: boolean;
+  /** Delete the output path before building or creating tokens */
+  deleteOutputDir?: boolean;
 };
 
 export let buildOptions: Options | undefined;
@@ -70,7 +72,7 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function buildTokens(options: Options): Promise<void> {
-  const { dry } = options;
+  const { dry, deleteOutputDir } = options;
   const tokensDir = options.tokens;
   const targetDir = path.resolve(options.outDir);
 
@@ -110,6 +112,10 @@ export async function buildTokens(options: Options): Promise<void> {
     }),
     buildConfigs,
   );
+
+  if (deleteOutputDir) {
+    await deleteDir(targetDir, dry);
+  }
 
   try {
     for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
