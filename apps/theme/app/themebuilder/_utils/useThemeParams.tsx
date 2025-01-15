@@ -87,7 +87,9 @@ export const useThemeParams = () => {
     params.set('support', supportColorString);
     params.set('border-radius', baseBorderRadius.toString());
 
-    router.push(pathname + '?' + params.toString());
+    router.replace(pathname + '?' + params.toString(), {
+      scroll: false,
+    });
   }, [colors, appearance, baseBorderRadius]);
 
   return null;
