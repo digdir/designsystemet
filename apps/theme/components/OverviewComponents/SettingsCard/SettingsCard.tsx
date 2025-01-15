@@ -33,7 +33,7 @@ export const SettingsCard = () => {
           description=''
           label=''
           position='start'
-          checked
+          defaultChecked
         />
       </div>
 

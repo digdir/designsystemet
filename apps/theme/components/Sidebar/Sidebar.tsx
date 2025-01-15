@@ -53,11 +53,11 @@ export const Sidebar = () => {
             <Tabs.Tab value='colors'>Farger</Tabs.Tab>
             <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
           </Tabs.List>
-          <div className={classes.scrollContainer}>
-            <Tabs.Panel value='colors'>
+          <div className={classes.tabContent}>
+            <Tabs.Panel className={classes.tabPanel} value='colors'>
               <ColorPage />
             </Tabs.Panel>
-            <Tabs.Panel value='dimensions'>
+            <Tabs.Panel className={classes.tabPanel} value='dimensions'>
               <BorderRadiusInput />
             </Tabs.Panel>
           </div>

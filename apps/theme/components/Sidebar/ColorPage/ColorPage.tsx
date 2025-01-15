@@ -1,5 +1,5 @@
 import { generateColorSchemes } from '@digdir/designsystemet';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
@@ -48,14 +48,6 @@ export const ColorPage = () => {
 
   return (
     <div>
-      <Heading data-size='xs' className={classes.heading}>
-        Velg fargene dine
-      </Heading>
-      <Paragraph data-size='sm' className={classes.desc}>
-        Du kan legge til så mange hovedfarger og støttefarger du har behov for.
-        Vær oppmerksom på at du må ha Figma Enterprise for å ha mer enn 4 farger
-        i hver kategori.
-      </Paragraph>
       {/* MAIN COLORS */}
       <div className={classes.group}>
         <div className={classes.groupHeader}>
