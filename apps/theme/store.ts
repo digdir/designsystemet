@@ -23,8 +23,6 @@ type ColorStore = {
     neutral: ColorTheme[];
     support: ColorTheme[];
   };
-  themeName: string;
-  setThemeName: (name: string) => void;
   addColor: (
     newColor: ColorTheme,
     type: 'main' | 'neutral' | 'support',
@@ -70,8 +68,6 @@ export const useThemeStore = create(
         { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
       ],
     },
-    themeName: 'theme',
-    setThemeName: (name) => set({ themeName: name }),
     addColor: (newColor, type) =>
       set((state) => {
         const updatedColors = state.colors[type].concat(newColor);

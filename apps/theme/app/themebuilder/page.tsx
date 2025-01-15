@@ -26,10 +26,6 @@ export default function Home() {
   const setAppearance = useThemeStore((state) => state.setAppearance);
   const items = [
     {
-      name: 'Navn på tema',
-      value: 'intro',
-    },
-    {
       name: 'Farger',
       value: 'colors',
     },
