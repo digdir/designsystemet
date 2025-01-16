@@ -34,7 +34,12 @@ function makeTokenCommands() {
       `Output directory for built ${chalk.blue('design-tokens')}`,
       DEFAULT_TOKENS_BUILD_DIR,
     )
-    .option(`--${cliOptions.deleteOutputDir} [boolean]`, 'Delete the output path before building', true)
+    .option(
+      `--${cliOptions.deleteOutputDir} <boolean>`,
+      'Delete the output directory before building tokens',
+      parseBoolean,
+      true,
+    )
     .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
@@ -65,10 +70,12 @@ function makeTokenCommands() {
       `Output directory for created ${chalk.blue('design-tokens')}`,
       DEFAULT_CREATE_TOKENS_DIR,
     )
-    .option(`--${cliOptions.deleteOutputDir} <boolean>`, 'Delete the output path before creating tokens', (value) => {
-      console.log('value', value);
-      return Boolean(value);
-    })
+    .option(
+      `--${cliOptions.deleteOutputDir} <boolean>`,
+      'Delete the output directory before creating tokens',
+      parseBoolean,
+      true,
+    )
     .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
     .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
     .option(
@@ -82,8 +89,7 @@ function makeTokenCommands() {
       parseJsonConfig(value, { allowFileNotFound: false }),
     )
     .action(async (opts, cmd) => {
-      const dry = Boolean(opts.dry);
-      const deleteOutputDir = opts;
+      const dry = opts.dry === 'false' ? false : Boolean(opts.dry);
       console.log('deleteOutputDir', opts);
 
       if (dry) {
@@ -274,4 +280,8 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   const [name, hex] = value.split(':');
   previous[name] = convertToHex(hex);
   return previous;
+}
+
+function parseBoolean(value: string): boolean {
+  return value === 'true';
 }
