@@ -1,5 +1,10 @@
 'use client';
 
+import {
+  type ColorInfo,
+  type ColorNumber,
+  getColorNameFromNumber,
+} from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
@@ -9,6 +14,7 @@ import { useThemeStore } from '../../../store';
 import classes from './ThemePages.module.css';
 
 export const ThemePages = () => {
+  const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const themeTab = useThemeStore((state) => state.themeTab);
   const appearance = useThemeStore((state) => state.appearance);
@@ -38,12 +44,74 @@ export const ThemePages = () => {
     }
   }, [baseBorderRadius]);
 
+  const getDsVars = (colors: {
+    light: ColorInfo[];
+    dark: ColorInfo[];
+  }) => {
+    const style = {} as Record<string, string>;
+
+    let lightColors = colors.light;
+
+    if (appearance === 'dark') {
+      lightColors = colors.dark;
+    }
+
+    for (let i = 0; i < lightColors.length; i++) {
+      const number = (i + 1) as ColorNumber;
+      style[
+        `--ds-color-neutral-${getColorNameFromNumber(number)
+          .replace(/\s+/g, '-')
+          .toLowerCase()}`
+      ] = lightColors[i].hex;
+    }
+
+    return style;
+  };
+
+  const getDsMainVars = (colors: {
+    light: ColorInfo[];
+    dark: ColorInfo[];
+  }) => {
+    const style = {} as Record<string, string>;
+
+    let lightColors = colors.light;
+
+    if (appearance === 'dark') {
+      lightColors = colors.dark;
+    }
+
+    for (let i = 0; i < lightColors.length; i++) {
+      const number = (i + 1) as ColorNumber;
+      style[
+        `--ds-color-${getColorNameFromNumber(number)
+          .replace(/\s+/g, '-')
+          .toLowerCase()}`
+      ] = lightColors[i].hex;
+    }
+
+    return style;
+  };
+
+  const style = () => {
+    if (!colors) return {};
+
+    const vars = {} as Record<string, string>;
+
+    /* neutral */
+    Object.assign(vars, getDsVars(colors.neutral[0].colors));
+    /* get -ds-color-* vars */
+    Object.assign(vars, getDsMainVars(colors.main[0].colors));
+
+    return vars;
+  };
+
   return (
     <>
       <div
         className={classes.panel}
         data-color-scheme={appearance}
         hidden={!(themeTab === 'overview')}
+        style={style()}
       >
         <OverviewComponents ref={containerRef} />
       </div>
