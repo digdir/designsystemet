@@ -40,7 +40,7 @@
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/build-scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
-    "test:tokens-create-options": "yarn designsystemet tokens create --delete-output-dir false -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create ",
+    "test:tokens-create-options": "yarn designsystemet tokens create --delete-output-dir false -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create",
     "test:tokens-create-json": "yarn designsystemet tokens create --json ./test-tokens-create-complex.config.json",
     "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
     "test:tokens-create-and-build-options": "yarn test:tokens-create-options && yarn test:tokens-build",
