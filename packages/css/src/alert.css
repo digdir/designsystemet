@@ -8,15 +8,15 @@
   --dsc-alert-color: var(--ds-color-info-text-default);
   --dsc-alert-gap: var(--ds-size-2);
   --dsc-alert-icon-size: var(--ds-size-7);
-  --dsc-alert-padding: var(--ds-size-6);
+  --dsc-alert-padding-block: var(--ds-size-6);
 
   background: var(--dsc-alert-background);
   border-radius: var(--dsc-alert-border-radius);
   border: 1px solid var(--dsc-alert-border-color);
   box-sizing: border-box;
   color: var(--dsc-alert-color);
-  padding-block: var(--dsc-alert-padding);
-  padding-inline: calc(var(--dsc-alert-padding) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding);
+  padding-block: var(--dsc-alert-padding-block);
+  padding-inline: calc(var(--dsc-alert-padding-block) + var(--dsc-alert-icon-size) + var(--dsc-alert-gap)) var(--dsc-alert-padding-block);
   position: relative;
 
   & > :is(h1, h2, h3, h4, h5, h6):first-child::before /* If Alert starts with Heading, align icon to this */,

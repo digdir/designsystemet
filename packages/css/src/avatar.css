@@ -61,14 +61,6 @@
     --dsc-avatar-border-radius: var(--ds-border-radius-sm);
   }
 
-  &[data-size='xs'] {
-    font-size: var(--ds-font-size-1);
-  }
-
-  &[data-size='sm'] {
-    font-size: var(--ds-font-size-3);
-  }
-
   @media (forced-colors: active) {
     border: var(--ds-size-1) solid CanvasText;
   }
