@@ -19,7 +19,7 @@ program.name('designsystemet').description('CLI for working with Designsystemet'
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
-  const DEFAULT_CREATE_TOKENS_DIR = './design-tokens';
+  const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
   const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
   const DEFAULT_FONT = 'Inter';
   const DEFAULT_THEME_NAME = 'theme';
@@ -28,7 +28,7 @@ function makeTokenCommands() {
   tokenCmd
     .command('build')
     .description('Build Designsystemet tokens')
-    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_CREATE_TOKENS_DIR)
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_CREATE_DIR)
     .option(
       '-o, --out-dir <string>',
       `Output directory for built ${chalk.blue('design-tokens')}`,
@@ -40,7 +40,7 @@ function makeTokenCommands() {
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
       const { preview, verbose } = opts;
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_CREATE_TOKENS_DIR;
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
       const dry = Boolean(opts.dry);
       const clean = Boolean(opts.clean);
@@ -63,7 +63,7 @@ function makeTokenCommands() {
     .option(
       `-o, --${cliOptions.outDir} <string>`,
       `Output directory for created ${chalk.blue('design-tokens')}`,
-      DEFAULT_CREATE_TOKENS_DIR,
+      DEFAULT_TOKENS_CREATE_DIR,
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
