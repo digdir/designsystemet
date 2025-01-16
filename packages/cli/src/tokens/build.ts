@@ -28,7 +28,7 @@ type Options = {
   /** Dry run */
   dry?: boolean;
   /** Clean the output path before building or creating tokens */
-  cleanOutputDir?: boolean;
+  clean?: boolean;
 };
 
 export let buildOptions: Options | undefined;
@@ -72,7 +72,7 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function buildTokens(options: Options): Promise<void> {
-  const { dry, cleanOutputDir } = options;
+  const { dry, clean } = options;
   const tokensDir = options.tokens;
   const targetDir = path.resolve(options.outDir);
 
@@ -113,7 +113,7 @@ export async function buildTokens(options: Options): Promise<void> {
     buildConfigs,
   );
 
-  if (cleanOutputDir) {
+  if (clean) {
     await cleanDir(targetDir, dry);
   }
 

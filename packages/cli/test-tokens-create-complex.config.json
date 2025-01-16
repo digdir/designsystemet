@@ -1,7 +1,7 @@
 {
   "$schema": "./dist/config.schema.json",
   "outDir": "./test-tokens-create",
-  "deleteOutputDir": false,
+  "clean": true,
   "themes": {
     "some-org": {
       "colors": {

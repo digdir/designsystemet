@@ -52,7 +52,7 @@ type WriteTokensOptions = {
   tokens: Tokens;
   theme: Theme;
   dry?: boolean;
-  cleanOutputDir?: boolean;
+  clean?: boolean;
 };
 
 export const writeTokens = async (options: WriteTokensOptions) => {
@@ -61,14 +61,14 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     tokens,
     theme: { name: themeName, colors, borderRadius },
     dry,
-    cleanOutputDir,
+    clean,
   } = options;
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
   let themes = [themeName];
 
-  if (cleanOutputDir) {
+  if (clean) {
     await cleanDir(targetDir, dry);
   }
 
