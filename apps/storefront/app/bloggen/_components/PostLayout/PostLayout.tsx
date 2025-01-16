@@ -74,10 +74,7 @@ function PostLayout({
               </Heading>
               <Paragraph data-size='sm'>
                 Ta kontakt med oss på{' '}
-                <Link
-                  href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
-                  target='_blank'
-                >
+                <Link href='https://designsystemet.no/slack' target='_blank'>
                   #designsystemet
                 </Link>{' '}
                 i Slack kanalen vår.

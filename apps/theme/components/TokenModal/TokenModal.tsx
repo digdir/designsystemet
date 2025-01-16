@@ -161,7 +161,7 @@ export const TokenModal = () => {
                     Send oss en melding på{' '}
                     <Link
                       target='_blank'
-                      href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                      href='https://designsystemet.no/slack'
                     >
                       Slack
                     </Link>{' '}

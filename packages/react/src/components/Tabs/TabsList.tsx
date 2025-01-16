@@ -1,4 +1,3 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
@@ -19,14 +18,13 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
  * ```
  */
 export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  function TabsList({ children, className, ...rest }, ref) {
+  function TabsList({ children, ...rest }, ref) {
     const { value } = useContext(Context);
 
     return (
       <RovingFocusRoot
         role='tablist'
         activeValue={value}
-        className={cl('ds-tabs__tablist', className)}
         orientation='ambiguous'
         ref={ref}
         {...rest}
