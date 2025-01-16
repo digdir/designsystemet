@@ -5,6 +5,7 @@ import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from '.
 
 export const cliOptions = {
   outDir: 'out-dir',
+  clean: 'clean',
   theme: {
     colors: {
       main: 'main-colors',
