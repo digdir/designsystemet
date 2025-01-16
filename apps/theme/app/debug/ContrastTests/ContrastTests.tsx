@@ -18,7 +18,7 @@ type ItemProps = {
   error: boolean;
 };
 
-const generateBaseThemes = (luminance: LuminanceType) => {
+const generateBaseThemes = (luminance: LuminanceType, baseModifier: number) => {
   const themes = [];
   for (let i = 0; i < 1000; i++) {
     const color = chroma('#0062BA')
@@ -26,7 +26,7 @@ const generateBaseThemes = (luminance: LuminanceType) => {
       .hex() as CssColor;
     themes.push(
       generateColorSchemes(color, luminance, {
-        baseModifier: 8,
+        baseModifier: baseModifier,
         interpolationMode: 'rgb',
       }),
     );
@@ -38,13 +38,14 @@ export const ContrastTests = () => {
   const luminance = useDebugStore((state) => state.luminance);
   const theme = useDebugStore((state) => state.colorScale);
   const [baseThemes, setBaseThemes] = useState<ThemeInfo[]>([]);
+  const baseModifier = useDebugStore((state) => state.baseModifier);
 
   useEffect(() => {
-    setBaseThemes(generateBaseThemes(luminance));
+    setBaseThemes(generateBaseThemes(luminance, baseModifier));
   }, []);
 
   const onClicky = () => {
-    setBaseThemes(generateBaseThemes(luminance));
+    setBaseThemes(generateBaseThemes(luminance, baseModifier));
   };
 
   const getContrastMessage = (

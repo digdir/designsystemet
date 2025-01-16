@@ -49,7 +49,7 @@ export type InterpolationMode =
 export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
-  luminance: { [x: string]: any } | undefined,
+  luminance: Record<string, Record<string, number>> | undefined,
   themeSettings: { baseModifier: number; interpolationMode: InterpolationMode },
 ): ColorInfo[] => {
   const baseColors = getBaseColors(
@@ -57,10 +57,10 @@ export const generateColorScale = (
     colorScheme,
     themeSettings.baseModifier,
   );
-  const luminanceValues = luminance[colorScheme];
+  const luminanceValues = luminance?.[colorScheme];
 
   // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
-  const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(
+  const outputArray: ColorInfo[] = Object.entries(luminanceValues ?? {}).map(
     ([key, value], index) => ({
       name: key,
       hex: chroma(color)
@@ -98,8 +98,8 @@ export const generateColorScale = (
  */
 export const generateColorSchemes = (
   color: CssColor,
-  luminance,
-  themeSettings,
+  luminance: Record<string, Record<string, number>> | undefined,
+  themeSettings: { baseModifier: number; interpolationMode: InterpolationMode },
 ): ThemeInfo => ({
   light: generateColorScale(color, 'light', luminance, themeSettings),
   dark: generateColorScale(color, 'dark', luminance, themeSettings),
@@ -124,7 +124,7 @@ const getBaseColors = (
   }
 
   const modifier =
-    colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65)
+    colorLightness <= 30 || (colorLightness >= 49.5 && colorLightness <= 65)
       ? -baseModifier
       : baseModifier;
   const calculateLightness = (base: number, mod: number) => base - mod;

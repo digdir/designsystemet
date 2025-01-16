@@ -9,10 +9,10 @@ export const Scales = () => {
     scale: ThemeInfo;
   };
 
-  const Scale = ({ scale }) => {
+  const Scale = ({ scale }: ScaleProps) => {
     return (
       <div className={classes.scale}>
-        {scale.light.map((color, index) => (
+        {scale.light.map((color: { hex: string }, index: number) => (
           <div
             className={classes.color}
             key={index}
