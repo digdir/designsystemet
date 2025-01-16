@@ -1,15 +1,21 @@
-import { type ThemeInfo, luminance } from '@digdir/designsystemet/color';
+import {
+  type ThemeInfo,
+  generateColorSchemes,
+  luminance,
+} from '@digdir/designsystemet/color';
 import type { InterpolationMode } from 'chroma-js';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
 export type BaseBorderRadius = number;
-type LuminanceType = typeof luminance;
+export type LuminanceType = typeof luminance;
 type ColorStore = {
   referenceLuminance: LuminanceType;
   luminance: LuminanceType;
   interpolationMode: InterpolationMode;
   colorScales: ThemeInfo[][];
+  colorScale: ThemeInfo;
+  setColorScale: (colorScale: ThemeInfo) => void;
   baseModifier: number;
   setBaseModifier: (baseModifier: number) => void;
   setColorScales: (colorScales: ThemeInfo[][]) => void;
@@ -24,9 +30,11 @@ export const useDebugStore = create(
     referenceLuminance: luminance,
     interpolationMode: 'rgb',
     colorScales: [],
+    colorScale: generateColorSchemes('#008000'),
     baseModifier: 8,
     setBaseModifier: (baseModifier) => set({ baseModifier }),
     setColorScales: (colorScales) => set({ colorScales }),
+    setColorScale: (colorScale) => set({ colorScale }),
     setInterpolationMode: (interpolationMode: InterpolationMode) =>
       set({ interpolationMode }),
     setLightLuminance: (luminance) => set({ luminance }),

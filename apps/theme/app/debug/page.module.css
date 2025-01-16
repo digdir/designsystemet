@@ -1,4 +1,9 @@
 .page {
+  background-color: var(--ds-color-neutral-background-subtle);
+  margin-top: -120px;
+  z-index: 99;
+  position: relative;
+  padding-top: 48px;
 }
 
 .content {
@@ -8,6 +13,6 @@
 }
 
 .heading {
-  margin-top: 24px;
-  margin-bottom: 16px;
+  margin-top: 32px;
+  margin-bottom: 18px;
 }

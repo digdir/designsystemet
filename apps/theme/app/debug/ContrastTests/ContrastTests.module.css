@@ -1,23 +1,24 @@
 .container {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 .row {
   display: flex;
-  gap: 32px;
+  gap: 20px;
   width: 100%;
 }
 
 .column {
   border: 1px solid rgb(192, 192, 192);
-  padding: 24px;
+  padding: 20px;
   border-radius: 8px;
   width: 50%;
+  background-color: var(--ds-color-neutral-background-default);
 }
 .item {
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -26,22 +27,41 @@
 .items {
   width: 100%;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   flex-direction: column;
   margin-top: 16px;
 }
 
-.itemPassed {
+.title {
+  font-weight: 500;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  font-weight: 500;
+}
+
+.btn {
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .circle {
   background-color: #b0e7b0;
-  height: 42px;
-  width: 42px;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
+}
+
+.failed {
+  background-color: #f8b4b4;
 }

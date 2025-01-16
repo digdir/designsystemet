@@ -5,6 +5,7 @@ import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import { useEffect } from 'react';
 import { ColorGrid } from './ColorGrid/ColorGrid';
+import { ContrastColors } from './ContrastColors/ContrastColors';
 import { ContrastTests } from './ContrastTests/ContrastTests';
 import { Scales } from './Scales/Scales';
 import { Sidebar } from './Sidebar/Sidebar';
@@ -18,7 +19,7 @@ export default function Home() {
   const colorScales = useDebugStore((state) => state.colorScales);
   const setColorScales = useDebugStore((state) => state.setColorScales);
   const baseModifier = useDebugStore((state) => state.baseModifier);
-
+  const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
   const steps = [
     { s: 100, l: 50 },
@@ -55,13 +56,20 @@ export default function Home() {
       themes.push(innerThemes);
     }
     setColorScales(themes);
+    setColorScale(themes[0][0]);
   }, [luminance, interpolationMode, baseModifier]);
 
   return (
     <div className={classes.page}>
       <div className={classes.content}>
+        <Heading className={classes.pageHeading} data-size='md'>
+          Color System Debugger
+        </Heading>
         <Heading className={classes.heading}>Contrast tests</Heading>
         <ContrastTests />
+
+        <Heading className={classes.heading}>Base and contrast colors</Heading>
+        <ContrastColors />
 
         <Heading className={classes.heading}>Color Scales</Heading>
         <Scales />

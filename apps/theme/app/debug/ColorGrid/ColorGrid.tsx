@@ -44,9 +44,11 @@ export const ColorGrid = ({ colors, colorNumber }: ColorGridProps) => {
         onChange={(e) => setShowBase(e.target.checked)}
         className={classes.checkbox}
       />
-      {colors.map((item, index) => (
-        <Row key={index} rowColors={item} />
-      ))}
+      <div className={classes.grid}>
+        {colors.map((item, index) => (
+          <Row key={index} rowColors={item} />
+        ))}
+      </div>
     </div>
   );
 };

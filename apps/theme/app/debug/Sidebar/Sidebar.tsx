@@ -7,7 +7,7 @@ import { getFullNameFromShort } from '../logic/utils';
 import classes from './Sidebar.module.css';
 import 'rc-slider/assets/index.css';
 import { useState } from 'react';
-import { Range, getTrackBackground } from 'react-range';
+import {} from 'react-range';
 
 export const Sidebar = () => {
   const luminance = useDebugStore((state) => state.luminance);
@@ -28,80 +28,7 @@ export const Sidebar = () => {
         <Heading className={classes.heading} data-size='2xs'>
           Base colors
         </Heading>
-        <div>Negative modifier luminance range</div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Range
-            values={values}
-            step={STEP}
-            min={MIN}
-            max={MAX}
-            onChange={(values) => setValues(values)}
-            renderTrack={({ props, children }) => (
-              <div
-                onMouseDown={props.onMouseDown}
-                onTouchStart={props.onTouchStart}
-                style={{
-                  ...props.style,
-                  height: '36px',
-                  display: 'flex',
-                  width: '100%',
-                }}
-              >
-                <div
-                  ref={props.ref}
-                  style={{
-                    height: '5px',
-                    width: '100%',
-                    borderRadius: '4px',
-                    background: getTrackBackground({
-                      values,
-                      colors: COLORS,
-                      min: MIN,
-                      max: MAX,
-                    }),
-                    alignSelf: 'center',
-                  }}
-                >
-                  {children}
-                </div>
-              </div>
-            )}
-            renderThumb={({ props, isDragged, index }) => (
-              <div
-                {...props}
-                key={props.key}
-                style={{
-                  ...props.style,
-                  height: '22px',
-                  width: '22px',
-                  borderRadius: '50%',
-                  backgroundColor: '#FFF',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  boxShadow: '0px 2px 6px #AAA',
-                }}
-              ></div>
-            )}
-          />
-          <div className={classes.rangeOutput}>
-            <div className={classes.rangeOutputItem}>
-              {values[0].toFixed(1)}
-            </div>
-            <div className={classes.rangeOutputItem}>
-              {values[1].toFixed(1)}
-            </div>
-            <div className={classes.rangeOutputItem}>
-              {values[2].toFixed(1)}
-            </div>
-          </div>
-        </div>
+
         <div className={classes.group}>
           <DoubleInput
             label='Base Default dark offset'
@@ -162,8 +89,11 @@ export const Sidebar = () => {
           Luminance values
         </Heading>
         <div className={classes.group}>
-          {Object.keys(luminance.light).map((key) => {
-            if (luminance.light[key as keyof typeof luminance.light] === 1) {
+          {Object.keys(luminance.light).map((key, index) => {
+            if (
+              luminance.light[key as keyof typeof luminance.light] === 1 &&
+              index !== 0
+            ) {
               return null;
             }
             return (
@@ -203,3 +133,80 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+{
+  /* <div>Negative modifier luminance range</div>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  }}
+>
+  <Range
+    values={values}
+    step={STEP}
+    min={MIN}
+    max={MAX}
+    onChange={(values) => setValues(values)}
+    renderTrack={({ props, children }) => (
+      <div
+        onMouseDown={props.onMouseDown}
+        onTouchStart={props.onTouchStart}
+        style={{
+          ...props.style,
+          height: '36px',
+          display: 'flex',
+          width: '100%',
+        }}
+      >
+        <div
+          ref={props.ref}
+          style={{
+            height: '5px',
+            width: '100%',
+            borderRadius: '4px',
+            background: getTrackBackground({
+              values,
+              colors: COLORS,
+              min: MIN,
+              max: MAX,
+            }),
+            alignSelf: 'center',
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    )}
+    renderThumb={({ props, isDragged, index }) => (
+      <div
+        {...props}
+        key={props.key}
+        style={{
+          ...props.style,
+          height: '22px',
+          width: '22px',
+          borderRadius: '50%',
+          backgroundColor: '#FFF',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          boxShadow: '0px 2px 6px #AAA',
+        }}
+      ></div>
+    )}
+  />
+  <div className={classes.rangeOutput}>
+    <div className={classes.rangeOutputItem}>
+      {values[0].toFixed(1)}
+    </div>
+    <div className={classes.rangeOutputItem}>
+      {values[1].toFixed(1)}
+    </div>
+    <div className={classes.rangeOutputItem}>
+      {values[2].toFixed(1)}
+    </div>
+  </div>
+</div> */
+}
