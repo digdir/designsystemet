@@ -102,9 +102,9 @@ export const copyFile = async (src: string, dest: string, dry?: boolean) => {
 
 export const isDigit = (s: string) => /^\d+$/.test(s);
 
-export const deleteDir = async (dir: string, dry?: boolean) => {
+export const cleanDir = async (dir: string, dry?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('deleteDir')} ${dir}`);
+    console.log(`${chalk.blue('cleanDir')} ${dir}`);
     return Promise.resolve();
   }
 

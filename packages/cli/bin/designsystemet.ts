@@ -35,8 +35,8 @@ function makeTokenCommands() {
       DEFAULT_TOKENS_BUILD_DIR,
     )
     .option(
-      `--${cliOptions.deleteOutputDir} <boolean>`,
-      'Delete the output directory before building tokens',
+      `--${cliOptions.cleanOutputDir} [boolean]`,
+      'Clean output directory before building tokens',
       parseBoolean,
       true,
     )
@@ -48,7 +48,7 @@ function makeTokenCommands() {
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_CREATE_TOKENS_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
       const dry = Boolean(opts.dry);
-      const deleteOutputDir = Boolean(opts.deleteOutputDir);
+      const cleanOutputDir = Boolean(opts.cleanOutputDir);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
 
@@ -56,7 +56,7 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      return buildTokens({ tokens, outDir, preview, verbose, dry, deleteOutputDir });
+      return buildTokens({ tokens, outDir, preview, verbose, dry, cleanOutputDir });
     });
 
   tokenCmd
@@ -71,8 +71,8 @@ function makeTokenCommands() {
       DEFAULT_CREATE_TOKENS_DIR,
     )
     .option(
-      `--${cliOptions.deleteOutputDir} <boolean>`,
-      'Delete the output directory before creating tokens',
+      `--${cliOptions.cleanOutputDir} [boolean]`,
+      'Clean output directory before creating tokens',
       parseBoolean,
       true,
     )
@@ -90,7 +90,8 @@ function makeTokenCommands() {
     )
     .action(async (opts, cmd) => {
       const dry = opts.dry === 'false' ? false : Boolean(opts.dry);
-      console.log('deleteOutputDir', opts);
+
+      console.log('opts', opts);
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
@@ -149,7 +150,7 @@ function makeTokenCommands() {
 
       const unvalidatedConfig = noUndefined({
         outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
-        deleteOutputDir: propsFromJson?.deleteOutputDir ?? getDefaultOrExplicitOption(cmd, 'deleteOutputDir'),
+        cleanOutputDir: propsFromJson?.cleanOutputDir ?? getDefaultOrExplicitOption(cmd, 'cleanOutputDir'),
         themes: propsFromJson?.themes
           ? // For each theme specified in the JSON config, we override the config values
             // with the explicitly set options from the CLI.
@@ -184,7 +185,7 @@ function makeTokenCommands() {
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
         const theme = { name, ...themeWithoutName };
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry, deleteOutputDir: config.deleteOutputDir });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry, cleanOutputDir: config.cleanOutputDir });
       }
     });
 
@@ -282,6 +283,7 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   return previous;
 }
 
-function parseBoolean(value: string): boolean {
-  return value === 'true';
+function parseBoolean(value: string | boolean, previous: boolean): boolean {
+  console.log('parseBoolean', value, previous);
+  return value === 'true' || value === true;
 }
