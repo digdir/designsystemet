@@ -5,11 +5,9 @@ import cl from 'clsx/lite';
 import { Color } from '../Color/Color';
 
 import { ColorModal } from '@repo/components';
-import { useRef } from 'react';
+import { Fragment, createRef, useRef } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
-
-import { Fragment } from 'react';
 
 type GroupProps = {
   header: string;
@@ -30,15 +28,12 @@ export const Group = ({
 }: GroupProps) => {
   const appearance = useThemeStore((state) => state.appearance);
 
-  const colorModalRefs = useRef<(HTMLDialogElement | null)[]>([]);
+  const colorModalRefs = useRef<React.RefObject<HTMLDialogElement>[]>([]);
   if (colorModalRefs.current.length !== colors.length) {
-    colorModalRefs.current = Array(colors.length).fill(null);
+    colorModalRefs.current = Array(colors.length)
+      .fill(null)
+      .map(() => createRef<HTMLDialogElement>());
   }
-
-  const handleColorModalRef =
-    (index: number) => (el: HTMLDialogElement | null) => {
-      colorModalRefs.current[index] = el;
-    };
 
   return (
     <div className={classes.group}>
@@ -56,7 +51,7 @@ export const Group = ({
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
-                colorModalRef={handleColorModalRef(index)}
+                colorModalRef={colorModalRefs.current[index]}
                 hex={colorScale[appearance][item].hex}
                 namespace={namespace}
                 weight={colorScale[appearance][item].number}
@@ -71,7 +66,9 @@ export const Group = ({
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}
-                  onClick={() => colorModalRefs.current[index]?.showModal()}
+                  onClick={() =>
+                    colorModalRefs.current[index]?.current?.showModal()
+                  }
                 />
               </RovingFocusItem>
             </Fragment>
