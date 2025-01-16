@@ -14,7 +14,6 @@ type ColorProps = {
   lightness?: string;
   featured?: boolean;
   showColorMeta?: boolean;
-  name: string;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(
