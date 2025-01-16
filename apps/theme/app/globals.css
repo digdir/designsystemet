@@ -43,7 +43,7 @@ code {
   --ds-color-border-default: #a867af;
   --ds-color-border-strong: #924099;
   --ds-color-text-default: #4f0856;
-  --ds-border-radius-base: 0;
+  --ds-border-radius-base: 9999px;
   --ds-border-radius-scale: 0.25rem;
   --ds-border-radius-sm: min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale));
   --ds-border-radius-md: min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2);
