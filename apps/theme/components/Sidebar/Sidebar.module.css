@@ -50,14 +50,18 @@
 
 .bottom {
   border-radius: 0 0 8px 8px;
-  padding: var(--ds-size-7);
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-neutral-background-default);
   flex-shrink: 0;
+
+  & > div {
+    padding: var(--ds-size-7);
+  }
 }
 
 .appearance {
-  margin-bottom: var(--ds-size-4);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
 
   & h4 {
     margin-bottom: var(--ds-size-2);

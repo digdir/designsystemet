@@ -18,15 +18,7 @@ type ColorProps = {
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(
   (
-    {
-      color,
-      contrast,
-      featured,
-      lightness,
-
-      showColorMeta = true,
-      ...rest
-    },
+    { color, contrast, featured, lightness, showColorMeta = true, ...rest },
     ref,
   ) => {
     const setSelectedColor = useThemeStore((state) => state.setSelectedColor);

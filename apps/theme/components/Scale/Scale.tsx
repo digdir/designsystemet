@@ -52,7 +52,6 @@ export const Scale = ({
               'Contrast Default',
               'Contrast Subtle',
             ]}
-            featured
           />
           <Group
             showColorMeta={showColorMeta}

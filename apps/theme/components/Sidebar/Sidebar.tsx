@@ -73,7 +73,9 @@ export const Sidebar = () => {
             </Heading>
             <AppearanceToggle />
           </div>
-          <TokenModal />
+          <div>
+            <TokenModal />
+          </div>
         </div>
       </div>
     </div>

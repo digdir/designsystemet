@@ -13,7 +13,6 @@ type GroupProps = {
   colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
-  featured?: boolean;
 };
 
 export const Group = ({
@@ -22,7 +21,6 @@ export const Group = ({
   showColorMeta,
   names,
   colorScale,
-  featured = false,
 }: GroupProps) => {
   const appearance = useThemeStore((state) => state.appearance);
   return (
