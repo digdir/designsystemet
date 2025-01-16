@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['./src', './bin/designsystemet.ts'],
+  entry: ['./src', './bin'],
   splitting: false,
   sourcemap: false,
   clean: true,
