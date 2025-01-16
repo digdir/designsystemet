@@ -40,11 +40,7 @@ export const SettingsCard = () => {
       <Fieldset data-size='sm' className={classes.radioGroup}>
         <Fieldset.Legend>Visnigsmodus</Fieldset.Legend>
         <Radio label='Vanilje' {...getRadioProps('vanilje')} />
-        <Radio
-          label='Jordbær'
-          description='Jordbær er best'
-          {...getRadioProps('jordbær')}
-        />
+        <Radio label='Jordbær' {...getRadioProps('jordbær')} />
         <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
         <Radio
           label='Jeg spiser ikke iskrem'

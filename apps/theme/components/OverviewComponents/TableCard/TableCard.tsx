@@ -1,11 +1,12 @@
 import {
   Avatar,
   Button,
+  Heading,
   Search,
   Select,
   Table,
 } from '@digdir/designsystemet-react';
-
+import classes from './TableCard.module.css';
 const tableData = [
   {
     name: 'Ola Normann',
@@ -30,19 +31,26 @@ const tableData = [
 export const TableCard = () => {
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Select data-size='sm' aria-label='Velg handling'>
-          <Select.Option value='blank'>Velg handling</Select.Option>
-          <Select.Option value='everest'>Dupliser</Select.Option>
-          <Select.Option value='aconcagua'>Slett</Select.Option>
-          <Select.Option value='denali'>Oppdater</Select.Option>
-        </Select>
-        <Button data-size='sm'>Utfør</Button>
+      <Heading data-size='2xs'>Alle brukere</Heading>
+      <div className={classes.toolbar}>
+        <div className={classes.toolbarLeft}>
+          <Select data-size='sm' aria-label='Velg handling'>
+            <Select.Option value='blank'>Velg handling</Select.Option>
+            <Select.Option value='everest'>Dupliser</Select.Option>
+            <Select.Option value='aconcagua'>Slett</Select.Option>
+            <Select.Option value='denali'>Oppdater</Select.Option>
+          </Select>
+          <Button data-size='sm' className={classes.submitBtn}>
+            Utfør
+          </Button>
+        </div>
+        <div className={classes.toolbarRight}>
+          <Search data-size='sm'>
+            <Search.Input aria-label='Søk' placeholder='Søk etter bruker' />
+            <Search.Clear />
+          </Search>
+        </div>
       </div>
-      <Search data-size='sm'>
-        <Search.Input aria-label='Søk' placeholder='Søk etter brukere her...' />
-        <Search.Clear />
-      </Search>
       <Table data-size='sm' border>
         <Table.Head>
           <Table.Row>
@@ -66,7 +74,11 @@ export const TableCard = () => {
                     gap: '12px',
                   }}
                 >
-                  <Avatar aria-label={user.name} variant='circle'>
+                  <Avatar
+                    aria-label={user.name}
+                    variant='circle'
+                    className={classes.avatar}
+                  >
                     <img src={user.avatar} alt='' />
                   </Avatar>
                   {user.name}

@@ -33,6 +33,7 @@ export const AppearanceToggle = ({
     <div className={classes.toggle} role='radiogroup'>
       {items.map((item) => (
         <Button
+          data-size='sm'
           className={cl(classes.item)}
           key={item.value}
           onClick={() => {

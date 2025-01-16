@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { useThemeStore } from '../../store';
 
-import { Heading, Tabs } from '@digdir/designsystemet-react';
+import { Tabs } from '@digdir/designsystemet-react';
 import { CogIcon } from '@navikt/aksel-icons';
-import { AppearanceToggle } from '../AppearanceToggle/AppearanceToggle';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
@@ -67,12 +66,6 @@ export const Sidebar = () => {
         </Tabs>
 
         <div className={classes.bottom} data-size='sm'>
-          <div className={classes.appearance}>
-            <Heading level={4} data-size='xs'>
-              Visning
-            </Heading>
-            <AppearanceToggle />
-          </div>
           <div>
             <TokenModal />
           </div>

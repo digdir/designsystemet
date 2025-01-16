@@ -82,11 +82,15 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
               {users.map((user) => {
                 return (
                   <div className={classes.user} key={user.role}>
-                    <Avatar aria-label={user.name} variant='square'>
+                    <Avatar
+                      aria-label={user.name}
+                      variant='square'
+                      className={classes.avatar}
+                    >
                       <img src='img/avatars/male2.png' alt='' />
                     </Avatar>
                     <div className={classes.userText}>
-                      <Tag data-size='sm'>Designer</Tag>
+                      <div className={classes.userRole}>Designer</div>
                       <div>Ola Normann</div>
                     </div>
                     <Button

@@ -18,13 +18,15 @@ export const ThemeHeader = () => {
 
   return (
     <div className={classes.header}>
-      <Link data-size='sm' className={classes.backLink} asChild>
-        <NextLink href='/'>
-          <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
-          Gå tilbake til forsiden
-        </NextLink>
-      </Link>
-      <Heading data-size='md'>Temabygger</Heading>
+      <div className={classes.textContainer}>
+        <Link data-size='sm' className={classes.backLink} asChild>
+          <NextLink href='/'>
+            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
+            Gå tilbake til forsiden
+          </NextLink>
+        </Link>
+        <Heading data-size='md'>Temabygger</Heading>
+      </div>
       {/* Tabs that change between overview and */}
       <div data-size='md' className={classes.tabs}>
         {tabs.map((tab) => (

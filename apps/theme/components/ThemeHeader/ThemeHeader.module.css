@@ -8,6 +8,12 @@
   gap: var(--ds-size-4);
 }
 
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-10);
+}
+
 .backLink {
   color: var(--ds-color-accent-text-default);
   margin-left: -4px;
