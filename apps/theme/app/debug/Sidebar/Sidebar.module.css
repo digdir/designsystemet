@@ -7,11 +7,12 @@
   top: 32px;
   right: 32px;
   bottom: 32px;
-  width: 400px;
+  width: 410px;
   padding: 20px;
   display: flex;
   gap: 20px;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .group {
@@ -37,6 +38,7 @@
 
 .select select {
   height: 32px;
+  padding: 0 8px;
 }
 
 .rangeOutput {

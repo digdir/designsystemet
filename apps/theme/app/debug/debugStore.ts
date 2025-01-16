@@ -12,16 +12,19 @@ export type LuminanceType = typeof luminance;
 type ColorStore = {
   referenceLuminance: LuminanceType;
   luminance: LuminanceType;
+  setLightLuminance: (luminance: LuminanceType) => void;
+  setDarkLuminance: (luminance: LuminanceType) => void;
   interpolationMode: InterpolationMode;
+  setInterpolationMode: (interpolationMode: InterpolationMode) => void;
   colorScales: ThemeInfo[][];
+  setColorScales: (colorScales: ThemeInfo[][]) => void;
   colorScale: ThemeInfo;
   setColorScale: (colorScale: ThemeInfo) => void;
   baseModifier: number;
   setBaseModifier: (baseModifier: number) => void;
-  setColorScales: (colorScales: ThemeInfo[][]) => void;
-  setInterpolationMode: (interpolationMode: InterpolationMode) => void;
-  setLightLuminance: (luminance: LuminanceType) => void;
-  setDarkLuminance: (luminance: LuminanceType) => void;
+  conSubSettings: {
+    lightnessMod: string;
+  };
 };
 
 export const useDebugStore = create(

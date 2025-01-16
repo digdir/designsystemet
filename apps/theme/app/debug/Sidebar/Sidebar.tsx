@@ -6,7 +6,7 @@ import { useDebugStore } from '../debugStore';
 import { getFullNameFromShort } from '../logic/utils';
 import classes from './Sidebar.module.css';
 import 'rc-slider/assets/index.css';
-import { useState } from 'react';
+
 import {} from 'react-range';
 
 export const Sidebar = () => {
@@ -17,13 +17,38 @@ export const Sidebar = () => {
   );
   const baseModifier = useDebugStore((state) => state.baseModifier);
   const setBaseModifier = useDebugStore((state) => state.setBaseModifier);
-  const STEP = 0.2;
-  const MIN = 0;
-  const MAX = 100;
-  const COLORS = ['red', 'black', 'red', 'black'];
-  const [values, setValues] = useState([30, 45, 69]);
+
   return (
     <div className={classes.sidebar}>
+      <div>
+        <Heading className={classes.heading} data-size='2xs'>
+          General
+        </Heading>
+        <div className={classes.group}>
+          <div className={classes.select}>
+            <div>Color scheme</div>
+            <div className={classes.field}>
+              <Field data-size='xs'>
+                <Select onChange={(e) => {}}>
+                  <Select.Option value='light'>Light Mode</Select.Option>
+                  <Select.Option value='dark'>Dark Mode</Select.Option>
+                </Select>
+              </Field>
+            </div>
+          </div>
+          <div className={classes.select}>
+            <div>Test mode</div>
+            <div className={classes.field}>
+              <Field data-size='xs'>
+                <Select onChange={(e) => {}}>
+                  <Select.Option value='light'>Debug</Select.Option>
+                  <Select.Option value='dark'>Production</Select.Option>
+                </Select>
+              </Field>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <Heading className={classes.heading} data-size='2xs'>
           Base colors
@@ -54,6 +79,30 @@ export const Sidebar = () => {
             setValueOne={(e) => {}}
             valueTwo={'69'}
             setValueTwo={(e) => {}}
+          />
+        </div>
+      </div>
+      <div>
+        <Heading className={classes.heading} data-size='2xs'>
+          Contrast Subtle
+        </Heading>
+        <div className={classes.group}>
+          <DoubleInput
+            label='Default lightness modifier'
+            valueOne={'50'}
+            setValueOne={(e) => {}}
+          />
+          <DoubleInput
+            label='Custom mod range'
+            valueOne={'40'}
+            setValueOne={(e) => {}}
+            valueTwo={'60'}
+            setValueTwo={(e) => {}}
+          />
+          <DoubleInput
+            label='Custom modifier result'
+            valueOne={'60'}
+            setValueOne={(e) => {}}
           />
         </div>
       </div>
@@ -91,8 +140,11 @@ export const Sidebar = () => {
         <div className={classes.group}>
           {Object.keys(luminance.light).map((key, index) => {
             if (
-              luminance.light[key as keyof typeof luminance.light] === 1 &&
-              index !== 0
+              index === 8 ||
+              index === 9 ||
+              index === 10 ||
+              index === 13 ||
+              index === 14
             ) {
               return null;
             }
