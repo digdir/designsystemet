@@ -30,7 +30,15 @@ export const Group = ({
 }: GroupProps) => {
   const appearance = useThemeStore((state) => state.appearance);
 
-  const colorModalRef = useRef<HTMLDialogElement>(null);
+  const colorModalRefs = useRef<(HTMLDialogElement | null)[]>([]);
+  if (colorModalRefs.current.length !== colors.length) {
+    colorModalRefs.current = Array(colors.length).fill(null);
+  }
+
+  const handleColorModalRef =
+    (index: number) => (el: HTMLDialogElement | null) => {
+      colorModalRefs.current[index] = el;
+    };
 
   return (
     <div className={classes.group}>
@@ -48,30 +56,22 @@ export const Group = ({
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
-                colorModalRef={colorModalRef}
-                hex={
-                  appearance === 'light'
-                    ? colorScale.light[item].hex
-                    : colorScale.dark[item].hex
-                }
+                colorModalRef={handleColorModalRef(index)}
+                hex={colorScale[appearance][item].hex}
                 namespace={namespace}
-                weight={colorScale.light[item].number}
+                weight={colorScale[appearance][item].number}
               />
               <RovingFocusItem
-                value={namespace + colorScale.light[item].number}
+                value={namespace + colorScale[appearance][item].number}
                 asChild
               >
                 <Color
-                  color={
-                    appearance === 'light'
-                      ? colorScale.light[item].hex
-                      : colorScale.dark[item].hex
-                  }
+                  color={colorScale[appearance][item].hex}
                   colorNumber={item}
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}
-                  onClick={() => colorModalRef.current?.showModal()}
+                  onClick={() => colorModalRefs.current[index]?.showModal()}
                 />
               </RovingFocusItem>
             </Fragment>
