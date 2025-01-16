@@ -11,10 +11,32 @@
   flex-grow: 1;
   border-radius: 8px;
   margin-top: -170px;
-  min-height: calc(81vh);
-  max-height: calc(100vh - 40px);
+  height: calc(100vh - 200px);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  & > div:first-child {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+.sticky {
+  position: fixed;
+  margin-top: 0;
+}
+
+.tabContent {
+  flex: 1;
+  min-height: 0;
+}
+
+.tabPanel {
+  height: 100%;
+  overflow-y: auto;
+  padding: var(--ds-size-7);
 }
 
 .showSidebar {
@@ -26,76 +48,24 @@
   position: fixed;
 }
 
-.scrollContainer {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: auto;
-  padding-bottom: 91px;
-}
-
-.sticky {
-  position: fixed;
-  margin-top: 0;
-}
-
-.title {
-  margin-bottom: 20px;
-}
-
-.group {
-  margin-bottom: 24px;
-  margin-top: -8px;
-}
-
-.group:last-child {
-  margin-bottom: 0;
-}
-
-.groupHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  height: 42px;
-}
-
-.AddBtn {
-  margin-right: -8px;
-}
-
-.error {
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--ds-color-neutral-text-subtle);
-}
-
-.label {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.themeMode {
-  margin-bottom: 24px;
-  margin-top: 24px;
-}
-
-.sizes {
-  display: flex;
-  gap: 8px;
-  margin-top: -4px;
-}
-
 .bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
   border-radius: 0 0 8px 8px;
-  padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  background-color: var(--ds-color-info-background-default);
+  background-color: var(--ds-color-neutral-background-default);
+  flex-shrink: 0;
+
+  & > div {
+    padding: var(--ds-size-7);
+  }
+}
+
+.appearance {
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-background-subtle);
+
+  & h4 {
+    margin-bottom: var(--ds-size-2);
+  }
 }
 
 .toggle {
@@ -109,6 +79,7 @@
   display: none;
   z-index: 5;
   background-color: var(--ds-color-neutral-background-default);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1500px) {
