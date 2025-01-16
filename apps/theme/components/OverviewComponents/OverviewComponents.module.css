@@ -14,12 +14,9 @@
 }
 
 .itemsContainer {
-  margin-left: -28px;
-  width: calc(100% + 56px);
   margin-top: 12px;
-  padding: 24px 28px;
+  padding: var(--ds-size-6) 0;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .itemName {
@@ -31,9 +28,9 @@
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  display: flex;
+  gap: var(--ds-size-6);
+  flex-wrap: wrap;
 }
 
 .card {
@@ -63,11 +60,6 @@
   margin-top: 4px;
 }
 
-.users {
-  display: flex;
-  flex-direction: column;
-}
-
 .img {
   width: 100%;
   border-radius: var(--ds-border-radius-md);
@@ -90,6 +82,11 @@
   font-size: 16px;
 }
 
+.users {
+  display: flex;
+  flex-direction: column;
+}
+
 .user {
   display: flex;
   align-items: center;
@@ -105,12 +102,6 @@
   margin-bottom: 0;
 }
 
-.userImg {
-  height: 44px;
-  width: 44px;
-  border-radius: var(--ds-border-radius-default);
-}
-
 .userRole {
   font-size: 15px;
   font-weight: 500;
@@ -118,14 +109,18 @@
   margin-bottom: -1px;
 }
 
-.userName {
+.darkCard {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.userRole {
+  color: var(--ds-color-neutral-text-subtle);
   font-size: 16px;
 }
 
-.userBtn {
-  margin-left: auto;
-}
-
-.test {
-  border-radius: var(--ds-border-radius-xl);
+.avatar {
+  font-size: 16px;
 }
