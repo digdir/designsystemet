@@ -9,6 +9,8 @@ import { useRef } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
 
+import { Fragment } from 'react';
+
 type GroupProps = {
   header: string;
   colors: number[];
@@ -36,7 +38,7 @@ export const Group = ({
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
-            <div key={index}>{name}</div>
+            <div key={index + 'name' + namespace}>{name}</div>
           ))}
         </div>
       )}
@@ -44,9 +46,8 @@ export const Group = ({
       <div className={cl(classes.colors)}>
         {colors.map((item, index) => {
           return (
-            <>
+            <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
-                key={index + 'modal'}
                 colorModalRef={colorModalRef}
                 hex={
                   appearance === 'light'
@@ -56,7 +57,10 @@ export const Group = ({
                 namespace={namespace}
                 weight={colorScale.light[item].number}
               />
-              <RovingFocusItem key={index} value={'3'} asChild>
+              <RovingFocusItem
+                value={namespace + colorScale.light[item].number}
+                asChild
+              >
                 <Color
                   color={
                     appearance === 'light'
@@ -67,11 +71,10 @@ export const Group = ({
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}
-                  name='33'
                   onClick={() => colorModalRef.current?.showModal()}
                 />
               </RovingFocusItem>
-            </>
+            </Fragment>
           );
         })}
       </div>

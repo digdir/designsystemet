@@ -19,7 +19,7 @@ export const Scale = ({
 }: ScaleProps) => {
   return (
     <div className={classes.themes}>
-      <RovingFocusRoot asChild>
+      <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
