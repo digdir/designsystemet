@@ -25,9 +25,9 @@ type Options = {
   verbose: boolean;
   /** Set the default "accent" color, if not overridden with data-color */
   accentColor?: string;
-  /** Dry run */
+  /** Dry run, no files will be written */
   dry?: boolean;
-  /** Clean the output path before building or creating tokens */
+  /** Clean the output path before building tokens */
   clean?: boolean;
 };
 

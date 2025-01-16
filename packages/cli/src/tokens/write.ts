@@ -51,7 +51,9 @@ type WriteTokensOptions = {
   outDir: string;
   tokens: Tokens;
   theme: Theme;
+  /** Dry run, no files will be written */
   dry?: boolean;
+  /** Clean output directory before writing tokens */
   clean?: boolean;
 };
 
