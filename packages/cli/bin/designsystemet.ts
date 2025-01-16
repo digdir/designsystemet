@@ -35,15 +35,13 @@ function makeTokenCommands() {
       DEFAULT_TOKENS_BUILD_DIR,
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
+    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
-      const { preview, verbose } = opts;
+      const { preview, verbose, clean, dry } = opts;
       const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
-      const dry = Boolean(opts.dry);
-      const clean = Boolean(opts.clean);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
 
@@ -66,7 +64,7 @@ function makeTokenCommands() {
       DEFAULT_TOKENS_CREATE_DIR,
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
@@ -79,9 +77,7 @@ function makeTokenCommands() {
       parseJsonConfig(value, { allowFileNotFound: false }),
     )
     .action(async (opts, cmd) => {
-      const dry = opts.dry === 'false' ? false : Boolean(opts.dry);
-
-      if (dry) {
+      if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
@@ -171,7 +167,7 @@ function makeTokenCommands() {
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
         const theme = { name, ...themeWithoutName };
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry, clean: config.clean });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry, clean: config.clean });
       }
     });
 
