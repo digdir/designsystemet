@@ -75,7 +75,7 @@
         display: block;
         height: .15em; /* Scale with font */
         width: 100%;
-        background-color: var(--dsc-tabs-tab-bottom-border-color);
+        background: var(--dsc-tabs-tab-bottom-border-color);
         position: absolute;
         bottom: 0;
         left: 0;

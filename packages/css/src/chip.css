@@ -21,7 +21,8 @@
   align-items: center;
   background: var(--dsc-chip-background);
   border-radius: var(--dsc-chip-border-radius);
-  border: 1px solid var(--dsc-chip-border-color);
+  border: 1px solid;
+  border-color: var(--dsc-chip-border-color);
   box-sizing: border-box;
   color: var(--dsc-chip-color);
   cursor: pointer;
