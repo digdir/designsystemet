@@ -5,9 +5,15 @@ import {
   Radio,
   Switch,
   ValidationMessage,
+  useRadioGroup,
 } from '@digdir/designsystemet-react';
 import classes from './SettingsCard.module.css';
 export const SettingsCard = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'my-group',
+    value: 'sjokolade',
+  });
+
   return (
     <div>
       <Heading data-size='2xs'>Innstillinger</Heading>
@@ -27,28 +33,19 @@ export const SettingsCard = () => {
           description=''
           label=''
           position='start'
-          checked
+          defaultChecked
         />
       </div>
 
       <Fieldset data-size='sm' className={classes.radioGroup}>
         <Fieldset.Legend>Visnigsmodus</Fieldset.Legend>
+        <Radio label='Vanilje' {...getRadioProps('vanilje')} />
+        <Radio label='Jordbær' {...getRadioProps('jordbær')} />
+        <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
         <Radio
-          ref={function Ms() {}}
-          label='Vanilje'
-          name='my-group'
-          onChange={function Ms() {}}
-          value='vanilje'
-          checked
+          label='Jeg spiser ikke iskrem'
+          {...getRadioProps('spiser-ikke-is')}
         />
-        <Radio
-          ref={function Ms() {}}
-          label='Jordbær'
-          name='my-group'
-          onChange={function Ms() {}}
-          value='jordbær'
-        />
-
         <ValidationMessage hidden id=':re:' />
       </Fieldset>
     </div>

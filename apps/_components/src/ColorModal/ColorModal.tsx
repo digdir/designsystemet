@@ -55,7 +55,7 @@ export const ColorModal = ({
     <Modal
       ref={colorModalRef}
       style={{
-        maxWidth: '1050px',
+        maxWidth: '1100px',
       }}
       backdropClose
     >
@@ -72,50 +72,43 @@ export const ColorModal = ({
           })}
         </div>
         <div className={classes.container}>
-          <div className={classes.left}>
-            <Field label='Hexkode:' value={hex} copyBtn />
-            <Field
-              label='HSLuv:'
-              value={
-                hexToHsluv(hex)[0].toFixed(0) +
-                '° ' +
-                hexToHsluv(hex)[1].toFixed(0) +
-                '% ' +
-                hexToHsluv(hex)[2].toFixed(0) +
-                '%'
-              }
-            />
-            <Field
-              label='CSS variabel:'
-              value={getCssVariable(namespace, weight)}
-              copyBtn
-            />
-
-            {weight !== 9 && weight !== 10 && weight !== 11 && (
-              <Field label='Brukes mot:' value={getColorCombinations(weight)} />
-            )}
-          </div>
+          <table className={classes.infoTable}>
+            <tbody>
+              <tr>
+                <th scope='row'>Hexkode:</th>
+                <td>{hex}</td>
+                <td>
+                  <ClipboardButton value={hex} />
+                </td>
+              </tr>
+              <tr>
+                <th scope='row'>HSLuv:</th>
+                <td colSpan={2}>
+                  {hexToHsluv(hex)[0].toFixed(0) +
+                    '° ' +
+                    hexToHsluv(hex)[1].toFixed(0) +
+                    '% ' +
+                    hexToHsluv(hex)[2].toFixed(0) +
+                    '%'}
+                </td>
+              </tr>
+              <tr>
+                <th scope='row'>CSS variabel:</th>
+                <td>{getCssVariable(namespace, weight)}</td>
+                <td>
+                  <ClipboardButton value={getCssVariable(namespace, weight)} />
+                </td>
+              </tr>
+              {weight !== 9 && weight !== 10 && weight !== 11 && (
+                <tr>
+                  <th scope='row'>Brukes mot:</th>
+                  <td colSpan={2}>{getColorCombinations(weight)}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
           <div className={classes.right} style={{ backgroundColor: hex }}></div>
         </div>
-        {/* <Details.Root
-            color='neutral'
-            className={classes.accordion}
-          >
-            <Details.Item>
-              <Details.Summary
-                level={3}
-                className={classes.accordionHeading}
-              >
-                Vis kontrastgrenser mot relevante farger
-              </Details.Summary>
-              <Details.Content className={classes.accordionContent}>
-                <Boxes
-                  selectedColor={hex}
-                  colorTheme={namespace}
-                />
-              </Details.Content>
-            </Details.Item>
-          </Details.Root> */}
       </Modal.Block>
     </Modal>
   );

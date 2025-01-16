@@ -1,0 +1,24 @@
+.avatar {
+  font-size: 13px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.toolbarLeft {
+  display: flex;
+  gap: 12px;
+  width: 45%;
+}
+
+.toolbarRight {
+  display: flex;
+  width: 45%;
+}
+
+.submitBtn {
+  flex-shrink: 0;
+}

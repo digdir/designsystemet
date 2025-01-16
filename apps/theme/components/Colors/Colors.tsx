@@ -13,6 +13,7 @@ export const Colors = () => {
             colorScale={color.colors}
             showHeader={index === 0}
             showColorMeta={false}
+            namespace={color.name}
           />
         </div>
       ))}
@@ -20,14 +21,22 @@ export const Colors = () => {
       {colors.neutral.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale colorScale={color.colors} showColorMeta={false} />
+          <Scale
+            colorScale={color.colors}
+            namespace={color.name}
+            showColorMeta={false}
+          />
         </div>
       ))}
       <div className={classes.separator}></div>
       {colors.support.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale colorScale={color.colors} showColorMeta={false} />
+          <Scale
+            colorScale={color.colors}
+            namespace={color.name}
+            showColorMeta={false}
+          />
         </div>
       ))}
     </div>
