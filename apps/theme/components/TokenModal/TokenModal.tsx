@@ -44,7 +44,6 @@ export const TokenModal = () => {
   return (
     <Modal.TriggerContext>
       <Modal.Trigger
-        data-size='sm'
         className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();

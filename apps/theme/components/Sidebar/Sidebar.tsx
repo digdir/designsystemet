@@ -66,7 +66,7 @@ export const Sidebar = () => {
           </div>
         </Tabs>
 
-        <div className={classes.bottom}>
+        <div className={classes.bottom} data-size='sm'>
           <div className={classes.appearance}>
             <Heading level={4} data-size='xs'>
               Visning
