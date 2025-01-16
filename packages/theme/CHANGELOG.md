@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.0.0-next.47
+
 ## 1.0.0-next.46
 
 ### Patch Changes

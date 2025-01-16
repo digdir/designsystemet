@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.0-next.47
+
+### Minor Changes
+
+- **Feat**: New `clean` option for cleaning `outDir` before `tokens create/build` ([#2999](https://github.com/digdir/designsystemet/pull/2999))
+
+### Patch Changes
+
+- **fix(cli)**: 🚑 include missing build files for designsystemet bin ([#3001](https://github.com/digdir/designsystemet/pull/3001))
+
 ## 1.0.0-next.46
 
 ### Minor Changes
