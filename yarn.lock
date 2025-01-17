@@ -1823,7 +1823,7 @@ __metadata:
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
     "@commander-js/extra-typings": "npm:^12.1.0"
-    "@tokens-studio/sd-transforms": "npm:1.2.2"
+    "@tokens-studio/sd-transforms": "npm:1.2.9"
     "@types/apca-w3": "npm:^0.1.3"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/glob": "npm:^8.1.0"
@@ -1833,7 +1833,7 @@ __metadata:
     "@types/prompts": "npm:^2.4.9"
     "@types/ramda": "npm:^0.30.1"
     apca-w3: "npm:^0.1.9"
-    chalk: "npm:^5.3.0"
+    chalk: "npm:^5.4.1"
     change-case: "npm:^5.4.4"
     chroma-js: "npm:^2.6.0"
     commander: "npm:^12.1.0"
@@ -1845,12 +1845,12 @@ __metadata:
     postcss: "npm:^8.4.41"
     prompts: "npm:^2.4.2"
     ramda: "npm:^0.30.1"
-    style-dictionary: "npm:^4.0.1"
+    style-dictionary: "npm:^4.3.0"
     tslib: "npm:^2.6.3"
     tsup: "npm:^8.2.4"
     tsx: "npm:^4.16.5"
     typescript: "npm:^5.5.4"
-    zod: "npm:^3.23.8"
+    zod: "npm:^3.24.1"
     zod-to-json-schema: "npm:^3.24.1"
     zod-validation-error: "npm:^3.4.0"
   bin:
@@ -5010,9 +5010,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokens-studio/sd-transforms@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@tokens-studio/sd-transforms@npm:1.2.2"
+"@tokens-studio/sd-transforms@npm:1.2.9":
+  version: 1.2.9
+  resolution: "@tokens-studio/sd-transforms@npm:1.2.9"
   dependencies:
     "@bundled-es-modules/deepmerge": "npm:^4.3.1"
     "@bundled-es-modules/postcss-calc-ast-parser": "npm:^0.1.6"
@@ -5021,8 +5021,8 @@ __metadata:
     expr-eval-fork: "npm:^2.0.2"
     is-mergeable-object: "npm:^1.1.1"
   peerDependencies:
-    style-dictionary: ^4.0.1
-  checksum: 10/800d3bceec7ab40d378578c69728e62e23c9155012d2dd9b0c3f1b9e94bfe318b8c4d7f7a956ba1e62f6e503c6fa761e4f8db104d0d55796be7d0522a1ddb67a
+    style-dictionary: ^4.1.4
+  checksum: 10/06866f47ad4625853d077593755f560b591c2f9d667b96de48204192471623ac0b967dc33e6f74ca0bc31d3506b39dfd27a8f89e3b13d929e340fdffe5c083f3
   languageName: node
   linkType: hard
 
@@ -6858,6 +6858,13 @@ __metadata:
   version: 5.3.0
   resolution: "chalk@npm:5.3.0"
   checksum: 10/6373caaab21bd64c405bfc4bd9672b145647fc9482657b5ea1d549b3b2765054e9d3d928870cdf764fb4aad67555f5061538ff247b8310f110c5c888d92397ea
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "chalk@npm:5.4.1"
+  checksum: 10/29df3ffcdf25656fed6e95962e2ef86d14dfe03cd50e7074b06bad9ffbbf6089adbb40f75c00744d843685c8d008adaf3aed31476780312553caf07fa86e5bc7
   languageName: node
   linkType: hard
 
@@ -13696,10 +13703,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-unified@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "path-unified@npm:0.1.0"
-  checksum: 10/6a433dc924a04be67860c09deba737013f4e8834c1514072a8b9e346fb0b50f20bbdc39d37ede1da5d37c9ccb1b1a99faa730750020b056444dcbbbedf722330
+"path-unified@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "path-unified@npm:0.2.0"
+  checksum: 10/3ae8455d5da516ab9623675430abc6e4dc3fbfcd2dc966281b7506cf0d86d0d3608281ff9049266d0e5b43154087393e776857c2e553d8fed3d46df6ea60d96d
   languageName: node
   linkType: hard
 
@@ -16340,9 +16347,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-dictionary@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "style-dictionary@npm:4.0.1"
+"style-dictionary@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "style-dictionary@npm:4.3.0"
   dependencies:
     "@bundled-es-modules/deepmerge": "npm:^4.3.1"
     "@bundled-es-modules/glob": "npm:^10.4.2"
@@ -16354,11 +16361,12 @@ __metadata:
     is-plain-obj: "npm:^4.1.0"
     json5: "npm:^2.2.2"
     patch-package: "npm:^8.0.0"
-    path-unified: "npm:^0.1.0"
+    path-unified: "npm:^0.2.0"
+    prettier: "npm:^3.3.3"
     tinycolor2: "npm:^1.6.0"
   bin:
     style-dictionary: bin/style-dictionary.js
-  checksum: 10/67b3d6ba911b6751d7d7f68b199ef85e2273b223d8d9218fabb5909507936a76cc6db8fcc2a3050414ff6c256d943640360b377362ccd1dce19cfced81203a77
+  checksum: 10/9315f65a8ace9708dca5fa6e3adf76d62caaf3793aca064172efed299dec6a02f00b59114ba012894e9ece4c8bd8e5cface70425b2620e869390d0e1e4c6468f
   languageName: node
   linkType: hard
 
@@ -18194,10 +18202,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.23.8":
-  version: 3.23.8
-  resolution: "zod@npm:3.23.8"
-  checksum: 10/846fd73e1af0def79c19d510ea9e4a795544a67d5b34b7e1c4d0425bf6bfd1c719446d94cdfa1721c1987d891321d61f779e8236fde517dc0e524aa851a6eff1
+"zod@npm:^3.24.1":
+  version: 3.24.1
+  resolution: "zod@npm:3.24.1"
+  checksum: 10/54e25956495dec22acb9399c168c6ba657ff279801a7fcd0530c414d867f1dcca279335e160af9b138dd70c332e17d548be4bc4d2f7eaf627dead50d914fec27
   languageName: node
   linkType: hard
 
