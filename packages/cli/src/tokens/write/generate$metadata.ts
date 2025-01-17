@@ -29,7 +29,6 @@ export function generateMetadataJson(schemes: ColorSchemes, themes: string[], co
       ...Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),
       ...Object.entries(colors.support).map(([color]) => `semantic/modes/support-color/${color}`),
       'semantic/style',
-      'Figma/components',
     ],
   };
 }
