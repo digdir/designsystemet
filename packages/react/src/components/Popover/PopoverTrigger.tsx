@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type HTMLAttributes, forwardRef, useContext } from 'react';
+import { type HTMLAttributes, forwardRef, useContext, version } from 'react';
 import type { DefaultProps } from '../../types';
 import { Button, type ButtonProps } from '../Button/Button';
 import { Context } from './PopoverTriggerContext';
@@ -21,16 +21,19 @@ export const PopoverTrigger = forwardRef<
   const { popoverId } = useContext(Context);
   const Component = asChild ? Slot : inline ? 'button' : Button;
 
-  return (
-    <Component
-      ref={ref}
-      popovertarget={popoverId}
-      {...(inline
+  console.log('version', version);
+
+  const popoverProps = Object.assign(
+    {
+      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: popoverId,
+      ...(inline
         ? {
             'data-popover': 'inline',
           }
-        : {})}
-      {...rest}
-    />
+        : {}),
+    },
+    rest,
   );
+
+  return <Component ref={ref} {...popoverProps} />;
 });
