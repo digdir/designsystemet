@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-React 19 support
+Upgrade to React 19
