@@ -48,9 +48,9 @@
     "test": "yarn test:tokens-create-and-build-options && yarn test:tokens-create-and-build-json",
     "update:template": "tsx ./src/tokens/template.ts",
     "internal:tokens-create-digdir": "yarn designsystemet tokens create --theme theme -m accent:#0062BA -n #1E2B3C -s brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5 -o ./internal/design-tokens --clean",
-    "internal:tokens-create-altinn": "yarn designsystemet tokens create --theme theme2 -m accent:#0162BA -n #1E2B3C -s brand1:#0162BA brand2:#3F3161 brand3:#E02F4A -o ./internal/design-tokens --clean",
-    "internal:tokens-create-uutilsynet": "yarn designsystemet tokens create --theme theme3 -m accent:#0162BA -n #1E2B3C -s brand1:#5B60D1 brand2:#FEA769 brand3:#5DA290 -o ./internal/design-tokens --clean",
-    "internal:tokens-create-portal": "yarn designsystemet tokens create --theme theme4 -m accent:#4D107D -n #1E2B3C -s brand1:#A259DC brand2:#DF73E4 brand3:#E86ABF -o ./internal/design-tokens --clean",
+    "internal:tokens-create-altinn": "yarn designsystemet tokens create --theme theme2 -m accent:#0162BA -n #1E2B3C -s brand1:#0162BA brand2:#3F3161 brand3:#E02F4A -o ./internal/design-tokens",
+    "internal:tokens-create-uutilsynet": "yarn designsystemet tokens create --theme theme3 -m accent:#0162BA -n #1E2B3C -s brand1:#5B60D1 brand2:#FEA769 brand3:#5DA290 -o ./internal/design-tokens",
+    "internal:tokens-create-portal": "yarn designsystemet tokens create --theme theme4 -m accent:#4D107D -n #1E2B3C -s brand1:#A259DC brand2:#DF73E4 brand3:#E86ABF -o ./internal/design-tokens",
     "internal:tokens-create-all": "yarn internal:tokens-create-digdir && yarn internal:tokens-create-altinn && yarn internal:tokens-create-uutilsynet && yarn internal:tokens-create-portal"
   },
   "dependencies": {
