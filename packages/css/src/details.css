@@ -35,7 +35,7 @@
     --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
   }
 
-  & > :is(summary, u-summary) {
+  & :is(summary, u-summary) {
     align-items: center;
     background: var(--dsc-details-heading-background);
     box-sizing: border-box;
@@ -82,7 +82,7 @@
     margin-top: 0; /* Prevent gap when places as child of .ds-card */
   }
 
-  & > :not(summary, u-summary) {
+  & :not(summary, u-summary) {
     border-radius: inherit;
     padding: var(--ds-size-5, 1rem);
   }
@@ -96,7 +96,7 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    & > :is(summary, u-summary):hover {
+    & :is(summary, u-summary):hover {
       background: var(--dsc-details-heading-background--hover);
     }
   }

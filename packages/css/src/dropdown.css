@@ -20,7 +20,7 @@
     display: none;
   }
 
-  & > :is(h2, h3, h4, h5, h6) {
+  & :is(h2, h3, h4, h5, h6) {
     align-items: center;
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-subtle);
@@ -35,7 +35,7 @@
     }
   }
 
-  & > ul {
+  & ul {
     margin: 0;
     padding: 0;
     list-style: none;
