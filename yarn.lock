@@ -1647,12 +1647,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commander-js/extra-typings@npm:^12.1.0":
-  version: 12.1.0
-  resolution: "@commander-js/extra-typings@npm:12.1.0"
+"@commander-js/extra-typings@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "@commander-js/extra-typings@npm:13.0.0"
   peerDependencies:
-    commander: ~12.1.0
-  checksum: 10/489ef40dcf18508da5d8db288fa1536e294773b8d07e4c1edee6709972fe4310e3713819ef10bdc1d234615c5cf42df6acf9ddce0b31c6c8114be704fd626971
+    commander: ~13.0.0
+  checksum: 10/aead01ccf74e37d2a87ffc5a80f8dcfa302022edf00ee21577ceaf2f3c00ba1dc548f6a989840493f5c153b0accc85d39dab8e00a7d00b76093c6e7f782a9d05
   languageName: node
   linkType: hard
 
@@ -1822,28 +1822,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@digdir/designsystemet@workspace:packages/cli"
   dependencies:
-    "@commander-js/extra-typings": "npm:^12.1.0"
+    "@commander-js/extra-typings": "npm:^13.0.0"
     "@tokens-studio/sd-transforms": "npm:1.2.9"
     "@types/apca-w3": "npm:^0.1.3"
+    "@types/chroma-js": "npm:^3.1.0"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/glob": "npm:^8.1.0"
     "@types/jscodeshift": "npm:^0.11.11"
     "@types/node": "npm:^22.1.0"
     "@types/object-hash": "npm:^3.0.6"
-    "@types/prompts": "npm:^2.4.9"
-    "@types/ramda": "npm:^0.30.1"
+    "@types/ramda": "npm:^0.30.2"
     apca-w3: "npm:^0.1.9"
     chalk: "npm:^5.4.1"
     change-case: "npm:^5.4.4"
-    chroma-js: "npm:^2.6.0"
-    commander: "npm:^12.1.0"
+    chroma-js: "npm:^3.1.2"
+    commander: "npm:^13.0.0"
     fast-glob: "npm:^3.3.2"
     fs-extra: "npm:^11.2.0"
     hsluv: "npm:^1.0.1"
     jscodeshift: "npm:^0.16.1"
     object-hash: "npm:^3.0.0"
     postcss: "npm:^8.4.41"
-    prompts: "npm:^2.4.2"
     ramda: "npm:^0.30.1"
     style-dictionary: "npm:^4.3.0"
     tslib: "npm:^2.6.3"
@@ -5120,10 +5119,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chroma-js@npm:^2.4.4":
-  version: 2.4.4
-  resolution: "@types/chroma-js@npm:2.4.4"
-  checksum: 10/0ea1eec88703dcddeb270b151a9268ba207cd911de837b5a30ec3c7c7068d1d5033f7c44df89d2c94c68db214ecd810e3aa096bd4495c2f903777f911ac69c48
+"@types/chroma-js@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@types/chroma-js@npm:3.1.0"
+  checksum: 10/d564e8b94c1b1800153a014797859ce582e1865d01712115d1f8aa1f04556768f32514780bdc321bcc4cc96e59c2cefcedff9010e23905a4b0b3f31e895e228d
   languageName: node
   linkType: hard
 
@@ -5437,16 +5436,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prompts@npm:^2.4.9":
-  version: 2.4.9
-  resolution: "@types/prompts@npm:2.4.9"
-  dependencies:
-    "@types/node": "npm:*"
-    kleur: "npm:^3.0.3"
-  checksum: 10/69b8372f4c790b45fea16a46ff8d1bcc71b14579481776b67bd6263637118a7ecb1f12e1311506c29fadc81bf618dc64f1a91f903cfd5be67a0455a227b3e462
-  languageName: node
-  linkType: hard
-
 "@types/prop-types@npm:*":
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
@@ -5454,12 +5443,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:^0.30.1":
-  version: 0.30.1
-  resolution: "@types/ramda@npm:0.30.1"
+"@types/ramda@npm:^0.30.2":
+  version: 0.30.2
+  resolution: "@types/ramda@npm:0.30.2"
   dependencies:
     types-ramda: "npm:^0.30.1"
-  checksum: 10/3975599065ebfb4a923566ec17e04e5c59ab3b010dc09fb4462393c0e1b6962ff88c852d43f0f524788e589efea09d0ccdf242306c32872d48caaf7ff0362934
+  checksum: 10/528e62da967adb38b7b6be3314ee11009f4e7312e4fbb9670f4556bb2f640754f08ae68ede87822ae255aba747e67296f40b37d53bfb427c58ab82f5b7a4989e
   languageName: node
   linkType: hard
 
@@ -7004,10 +6993,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chroma-js@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "chroma-js@npm:2.6.0"
-  checksum: 10/245f0a0b1da7c4cedf30e490db9ab4e9e71fde207cbe1ca05e25ef5ba517df2509b96b29d2c168786237c8162a03dccea38721c4927249cd1d5c5fe0184fc13c
+"chroma-js@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "chroma-js@npm:3.1.2"
+  checksum: 10/ea09b27d04b477a8fdc3314bfa6dc8de05feab47999ff1acdeba6cf3c32c76338baa5b4562d949d33d8adeca57754e5ea591c15b9985d65583c8771e7e07c2ef
   languageName: node
   linkType: hard
 
@@ -7287,10 +7276,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^12.1.0":
-  version: 12.1.0
-  resolution: "commander@npm:12.1.0"
-  checksum: 10/cdaeb672d979816853a4eed7f1310a9319e8b976172485c2a6b437ed0db0a389a44cfb222bfbde772781efa9f215bdd1b936f80d6b249485b465c6cb906e1f93
+"commander@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "commander@npm:13.0.0"
+  checksum: 10/e89d5bf61e84e65e0cfdfcfb740049cf6bcaba63fc32a610375957a2a57373d42f7b00fc64bec5bdde0e547593fa184f869dfabe8a415bc4fd4482edf2fb5ca8
   languageName: node
   linkType: hard
 
@@ -14546,7 +14535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prompts@npm:^2.0.1, prompts@npm:^2.4.1, prompts@npm:^2.4.2":
+"prompts@npm:^2.0.1, prompts@npm:^2.4.1":
   version: 2.4.2
   resolution: "prompts@npm:2.4.2"
   dependencies:
@@ -16627,10 +16616,8 @@ __metadata:
     "@digdir/designsystemet-theme": "workspace:^"
     "@navikt/aksel-icons": "npm:^6.14.0"
     "@repo/components": "workspace:^"
-    "@types/chroma-js": "npm:^2.4.4"
     "@types/react": "npm:^19.0.4"
     "@types/react-dom": "npm:^19.0.2"
-    chroma-js: "npm:^2.6.0"
     clsx: "npm:^2.1.1"
     next: "npm:^15.0.4"
     react: "npm:^19.0.0"
