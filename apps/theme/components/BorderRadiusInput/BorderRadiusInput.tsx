@@ -19,7 +19,7 @@ export const BorderRadiusInput = () => {
       <Heading className={classes.heading} data-size='xs'>
         Foreslått basis Border radius
       </Heading>
-      <div className={classes.items}>
+      <div className={classes.items} role='radiogroup'>
         {items.map((item, index) => (
           <div
             className={cl(
@@ -35,6 +35,10 @@ export const BorderRadiusInput = () => {
               onClick={() => {
                 setBorderRadius(item.value);
               }}
+              // biome-ignore lint/a11y/useSemanticElements: <explanation>
+              role='radio'
+              aria-checked={baseBorderRadius === item.value}
+              aria-current={baseBorderRadius === item.value}
             >
               <div className={classes.text}>{item.name}</div>
               <div

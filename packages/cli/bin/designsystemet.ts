@@ -19,8 +19,8 @@ program.name('designsystemet').description('CLI for working with Designsystemet'
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
-  const DEFAULT_TOKENS_DIR = './design-tokens';
-  const DEFAULT_BUILD_DIR = './design-tokens-build';
+  const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
+  const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
   const DEFAULT_FONT = 'Inter';
   const DEFAULT_THEME_NAME = 'theme';
   const DEFAULT_CONFIG_FILE = 'designsystemet.config.json';
@@ -28,16 +28,20 @@ function makeTokenCommands() {
   tokenCmd
     .command('build')
     .description('Build Designsystemet tokens')
-    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('-o, --out-dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
-    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_CREATE_DIR)
+    .option(
+      '-o, --out-dir <string>',
+      `Output directory for built ${chalk.blue('design-tokens')}`,
+      DEFAULT_TOKENS_BUILD_DIR,
+    )
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
-      const { preview, verbose } = opts;
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
+      const { preview, verbose, clean, dry } = opts;
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
-      const dry = Boolean(opts.dry);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
 
@@ -45,7 +49,7 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      return buildTokens({ tokens, outDir, preview, verbose, dry });
+      return buildTokens({ tokens, outDir, preview, verbose, dry, clean });
     });
 
   tokenCmd
@@ -57,9 +61,10 @@ function makeTokenCommands() {
     .option(
       `-o, --${cliOptions.outDir} <string>`,
       `Output directory for created ${chalk.blue('design-tokens')}`,
-      DEFAULT_TOKENS_DIR,
+      DEFAULT_TOKENS_CREATE_DIR,
     )
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
@@ -72,9 +77,7 @@ function makeTokenCommands() {
       parseJsonConfig(value, { allowFileNotFound: false }),
     )
     .action(async (opts, cmd) => {
-      const dry = Boolean(opts.dry);
-
-      if (dry) {
+      if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
@@ -131,6 +134,7 @@ function makeTokenCommands() {
 
       const unvalidatedConfig = noUndefined({
         outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
+        clean: propsFromJson?.clean ?? getDefaultOrExplicitOption(cmd, 'clean'),
         themes: propsFromJson?.themes
           ? // For each theme specified in the JSON config, we override the config values
             // with the explicitly set options from the CLI.
@@ -163,7 +167,7 @@ function makeTokenCommands() {
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
         const theme = { name, ...themeWithoutName };
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry, clean: config.clean });
       }
     });
 
@@ -214,6 +218,7 @@ async function parseJsonConfig(
   let jsonFile: string;
   try {
     jsonFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    console.log(`Found JSON config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {
       const nodeErr = err as NodeJS.ErrnoException;
@@ -258,4 +263,8 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   const [name, hex] = value.split(':');
   previous[name] = convertToHex(hex);
   return previous;
+}
+
+function parseBoolean(value: string | boolean, previous: boolean): boolean {
+  return value === 'true' || value === true;
 }
