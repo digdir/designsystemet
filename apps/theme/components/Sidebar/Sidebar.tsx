@@ -3,20 +3,19 @@ import { useEffect, useState } from 'react';
 
 import { useThemeStore } from '../../store';
 
+import { Tabs } from '@digdir/designsystemet-react';
 import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
-
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
-  const setAppearance = useThemeStore((state) => state.setAppearance);
-  const [isSticky, setSticky] = useState(false);
-  const [size, setSize] = useState('sm');
-  const [showSidebar, setShowSidebar] = useState(false);
   const activePage = useThemeStore((state) => state.activePage);
   const setActivePage = useThemeStore((state) => state.setActivePage);
+
+  const [isSticky, setSticky] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +31,11 @@ export const Sidebar = () => {
   return (
     <div>
       <button
-        className={cl(classes.toggle, showSidebar && classes.toggleOpen)}
+        className={cl(
+          classes.toggle,
+          showSidebar && classes.toggleOpen,
+          'ds-focus-visible',
+        )}
         onClick={() => setShowSidebar(!showSidebar)}
       >
         <CogIcon title='a11y-title' fontSize='1.5rem' />
@@ -44,13 +47,26 @@ export const Sidebar = () => {
           showSidebar && classes.showSidebar,
         )}
       >
-        <div className={classes.scrollContainer}>
-          {activePage === 'colors' && (
-            <ColorPage onNextClick={() => setActivePage('radius')} />
-          )}
-          {activePage === 'radius' && <BorderRadiusInput />}
+        <Tabs
+          value={activePage}
+          onChange={(value) => setActivePage(value as 'colors' | 'dimensions')}
+        >
+          <Tabs.List>
+            <Tabs.Tab value='colors'>Farger</Tabs.Tab>
+            <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
+          </Tabs.List>
+          <div className={classes.tabContent}>
+            <Tabs.Panel className={classes.tabPanel} value='colors'>
+              <ColorPage />
+            </Tabs.Panel>
+            <Tabs.Panel className={classes.tabPanel} value='dimensions'>
+              <BorderRadiusInput />
+            </Tabs.Panel>
+          </div>
+        </Tabs>
 
-          <div className={classes.bottom}>
+        <div className={classes.bottom} data-size='sm'>
+          <div>
             <TokenModal />
           </div>
         </div>

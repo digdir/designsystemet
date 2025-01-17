@@ -55,6 +55,7 @@ const themeSchema = z.object(
  */
 export const configFileSchema = z.object({
   outDir: z.string({ description: 'Path to the output directory for the created design tokens' }).optional(),
+  clean: z.boolean({ description: 'Delete the output directory before building or creating tokens' }).optional(),
   themes: z.record(themeSchema, {
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
