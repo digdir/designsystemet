@@ -4,7 +4,7 @@
   --dsc-card-background: var(--ds-color-surface-default);
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);
-  --dsc-card-gap: var(--ds-size-3);
+  --dsc-card-margin-block: var(--ds-size-3) 0;
   --dsc-card-padding: var(--ds-size-6);
   --dsc-card-border-radius: var(--ds-border-radius-lg);
 
@@ -89,7 +89,7 @@
   }
 
   & > * + * {
-    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
+    margin-block: var(--dsc-card-margin-block); /* https://every-layout.dev/layouts/stack/ */
   }
 }
 
