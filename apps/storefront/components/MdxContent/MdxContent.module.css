@@ -81,7 +81,6 @@
 
   & > ul > li,
   & > ol > li {
-    font: var(--ds-typography-paragraph-md);
     line-height: 1.9em;
     word-break: break-word; /* Add this to prevent text from overflowing */
   }
