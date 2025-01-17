@@ -4,11 +4,11 @@
   --dsc-dropdown-item-size: var(--ds-size-12);
   --dsc-dropdown-background: var(--ds-color-neutral-background-default);
   --dsc-dropdow-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-dropdown-border: 1px solid var(--dsc-dropdow-border-color);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);
-  border: var(--dsc-dropdown-border);
+  border: 1px solid;
+  border-color: var(--dsc-dropdow-border-color);
   box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;

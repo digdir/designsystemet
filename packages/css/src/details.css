@@ -1,6 +1,5 @@
 .ds-details {
   --dsc-details-border-color: var(--ds-color-border-subtle);
-  --dsc-details-border: 1px solid var(--dsc-details-border-color);
   --dsc-details-icon-gap: var(--ds-size-2);
   --dsc-details-icon-size: var(--ds-size-6);
   --dsc-details-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
@@ -12,7 +11,8 @@
   --dsc-details-heading-background: var(--ds-color-background-default);
 
   background: var(--dsc-details-background);
-  border-block: var(--dsc-details-border);
+  border-block: 1px solid;
+  border-color: var(--dsc-details-border-color);
   box-sizing: border-box;
 
   /* with color */
