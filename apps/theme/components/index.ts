@@ -1,5 +1,4 @@
 export { Color } from './Color/Color';
-export { ColorPicker } from './ColorPicker/ColorPicker';
 export { Group } from './Group/Group';
 export { Previews } from './Previews/Previews';
 export { Scale } from './Scale/Scale';

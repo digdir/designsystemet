@@ -28,7 +28,9 @@ export const Group = ({
 }: GroupProps) => {
   const appearance = useThemeStore((state) => state.appearance);
 
-  const colorModalRefs = useRef<React.RefObject<HTMLDialogElement>[]>([]);
+  const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
+    [],
+  );
   if (colorModalRefs.current.length !== colors.length) {
     colorModalRefs.current = Array(colors.length)
       .fill(null)
