@@ -38,6 +38,7 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
+  const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
@@ -66,12 +67,12 @@ export const ColorPane = ({
             variant='tertiary'
             data-color='danger'
             onClick={() => {
-              if (colorType === 'main' && mainColors.length === 1) return;
+              if (disableRemoveButton) return;
               onRemove();
             }}
             className={cl(classes.removeBtn)}
             hidden={type !== 'editColor' || colorType === 'neutral'}
-            aria-disabled={colorType === 'main' && mainColors.length === 1}
+            aria-disabled={disableRemoveButton || undefined}
           >
             Fjern farge
             <TrashIcon title='søppelkasse' fontSize='1.5rem' />
