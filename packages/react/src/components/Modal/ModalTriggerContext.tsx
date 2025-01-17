@@ -1,7 +1,7 @@
 import { createContext, useRef } from 'react';
 import type { ReactNode, RefObject } from 'react';
 
-export const Context = createContext<RefObject<HTMLDialogElement>>({
+export const Context = createContext<RefObject<HTMLDialogElement | null>>({
   current: null,
 });
 

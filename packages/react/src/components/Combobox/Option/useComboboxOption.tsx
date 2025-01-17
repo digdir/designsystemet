@@ -5,6 +5,7 @@ import type { Ref } from 'react';
 import { useDebounceCallback } from '../../../utilities/hooks/useDebounceCallback/useDebounceCallback';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxId, useComboboxIdDispatch } from '../ComboboxIdContext';
+import type { Option } from '../useCombobox';
 import { prefix } from '../utilities';
 
 type UseComboboxOptionProps = {
@@ -13,11 +14,19 @@ type UseComboboxOptionProps = {
   value: string;
 };
 
+type UseComboboxOptionReturn = {
+  id: string;
+  ref: Ref<HTMLButtonElement>;
+  selected: Option;
+  active: boolean;
+  onOptionClick: () => void;
+};
+
 export const useComboboxOption = ({
   id,
   ref,
   value,
-}: UseComboboxOptionProps) => {
+}: UseComboboxOptionProps): UseComboboxOptionReturn => {
   const generatedId = useId();
   const newId = id || generatedId;
 
