@@ -60,7 +60,7 @@ export const ColorPane = ({
         </Button>
         <Tooltip
           content='Du må ha minst en hovedfarge'
-          hidden={colorType !== 'main' || mainColors.length > 1}
+          hidden={!disableRemoveButton}
         >
           <Button
             data-size='sm'
