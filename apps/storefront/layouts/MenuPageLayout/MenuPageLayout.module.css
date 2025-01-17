@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--ds-spacing-10);
-  margin-top: var(--ds-spacing-8);
+  gap: var(--ds-size-10);
+  margin-top: var(--ds-size-8);
   margin-bottom: var(--page-spacing-bottom);
 }
 
@@ -24,8 +24,8 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: var(--ds-spacing-6);
-  padding: var(--ds-spacing-10);
+  margin-bottom: var(--ds-size-6);
+  padding: var(--ds-size-10);
   width: 100%;
   border-radius: var(--ds-border-radius-lg);
   background-color: var(--ds-color-neutral-background-subtle);
@@ -37,7 +37,7 @@
 }
 
 .date {
-  margin-top: var(--ds-spacing-3);
+  margin-top: var(--ds-size-3);
 }
 
 .iconContainer {
@@ -88,13 +88,13 @@
 }
 
 .content {
-  padding: var(--ds-spacing-4) var(--ds-spacing-10) 0 var(--ds-spacing-10);
+  padding: var(--ds-size-4) var(--ds-size-10) 0 var(--ds-size-10);
   height: fit-content;
 }
 
 .githubLink {
   display: inline-block;
-  margin-top: var(--ds-spacing-12);
+  margin-top: var(--ds-size-12);
 }
 
 @media (max-width: 1200px) {

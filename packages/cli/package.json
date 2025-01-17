@@ -1,8 +1,11 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.40",
+  "version": "1.0.0-next.47",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
+  "engines": {
+    "node": ">=22"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
@@ -31,21 +34,26 @@
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
-    "build:tokens": "yarn clean:theme && yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build:tokens:debug": "yarn clean:theme && tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand",
-    "build": "tsup && yarn build:types",
-    "build:swc": "yarn clean && swc src bin --copy-files -d dist && yarn build:types",
+    "build:tokens": "yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
+    "build:tokens:debug": "tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
+    "build": "tsup && yarn build:types && yarn build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
-    "test:tokens-create": "yarn designsystemet tokens create -m dominant:#007682 secondary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -w ./test-tokens-create",
-    "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build",
-    "test:tokens-create-and-build": "rimraf test-tokens-create && rimraf test-tokens-build && yarn test:tokens-create && yarn test:tokens-build",
-    "test": "yarn test:tokens-create-and-build",
-    "clean": "rimraf dist",
-    "clean:theme": "yarn workspace @digdir/designsystemet-theme clean",
-    "update:template": "tsx ./src/tokens/template.ts"
+    "build:json-schema": "tsx ./src/build-scripts/createJsonSchema.ts",
+    "types": "tsc --noEmit",
+    "test:tokens-create-options": "yarn designsystemet tokens create -m dominant:#007682 complimentary:#ff0000 -n #003333 -s support1:#12404f support2:#0054a6 support3:#942977 -b 99 -o ./test-tokens-create --clean",
+    "test:tokens-create-json": "yarn designsystemet tokens create --json ./test-tokens-create-complex.config.json",
+    "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build --clean",
+    "test:tokens-create-and-build-options": "yarn test:tokens-create-options && yarn test:tokens-build",
+    "test:tokens-create-and-build-json": "yarn test:tokens-create-json && yarn test:tokens-build",
+    "test": "yarn test:tokens-create-and-build-options && yarn test:tokens-create-and-build-json",
+    "update:template": "tsx ./src/tokens/template.ts",
+    "internal:tokens-create-digdir": "yarn designsystemet tokens create --theme theme -m accent:#0062BA -n #1E2B3C -s brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5 -o ./internal/design-tokens --clean",
+    "internal:tokens-create-altinn": "yarn designsystemet tokens create --theme theme2 -m accent:#0162BA -n #1E2B3C -s brand1:#0162BA brand2:#3F3161 brand3:#E02F4A -o ./internal/design-tokens --clean",
+    "internal:tokens-create-uutilsynet": "yarn designsystemet tokens create --theme theme3 -m accent:#0162BA -n #1E2B3C -s brand1:#5B60D1 brand2:#FEA769 brand3:#5DA290 -o ./internal/design-tokens --clean",
+    "internal:tokens-create-portal": "yarn designsystemet tokens create --theme theme4 -m accent:#4D107D -n #1E2B3C -s brand1:#A259DC brand2:#DF73E4 brand3:#E86ABF -o ./internal/design-tokens --clean",
+    "internal:tokens-create-all": "yarn internal:tokens-create-digdir && yarn internal:tokens-create-altinn && yarn internal:tokens-create-uutilsynet && yarn internal:tokens-create-portal"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@commander-js/extra-typings": "^12.1.0",
     "@tokens-studio/sd-transforms": "1.2.2",
     "apca-w3": "^0.1.9",
@@ -60,8 +68,9 @@
     "postcss": "^8.4.41",
     "prompts": "^2.4.2",
     "ramda": "^0.30.1",
-    "rimraf": "^6.0.1",
-    "style-dictionary": "^4.0.1"
+    "style-dictionary": "^4.0.1",
+    "zod": "^3.23.8",
+    "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "@types/apca-w3": "^0.1.3",
@@ -76,6 +85,7 @@
     "tslib": "^2.6.3",
     "tsup": "^8.2.4",
     "tsx": "^4.16.5",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "zod-to-json-schema": "^3.24.1"
   }
 }

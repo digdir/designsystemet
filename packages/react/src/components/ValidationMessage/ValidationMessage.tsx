@@ -13,7 +13,7 @@ export type ValidationMessageProps = MergeRight<
      * Sets color and icon.
      * @default 'danger'
      */
-    'data-color'?: Extract<SeverityColors, 'success' | 'danger'>;
+    'data-color'?: SeverityColors;
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
@@ -27,7 +27,7 @@ export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
   ValidationMessageProps
 >(function ValidationMessage({ className, asChild, ...rest }, ref) {
-  const Component = asChild ? Slot : 'div';
+  const Component = asChild ? Slot : 'p';
 
   return (
     <Component

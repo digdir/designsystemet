@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 import type { TableHeaderCellProps } from '../..';
 
-import { Checkbox, Table, Textfield, useCheckboxGroup } from '../..';
+import { Checkbox, Table, Textfield } from '../..';
+import { useCheckboxGroup } from '../../utilities';
 
 type Story = StoryFn<typeof Table>;
 
@@ -47,7 +48,6 @@ export const Preview: Story = (args) => {
 };
 
 Preview.args = {
-  'data-size': 'md',
   zebra: false,
   stickyHeader: false,
   border: false,

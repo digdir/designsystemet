@@ -6,6 +6,8 @@ import * as PopoverStories from './Popover.stories.tsx';
 <Meta of={PopoverStories} />
 
 # Popover
+`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når `tooltip` ikke strekker til.
+
 
 <Primary />
 <Controls />
@@ -27,7 +29,21 @@ import { Popover } from '@digdir/designsystemet-react';
 ```
 
 ## Eksempler
+### Interaktive elementer i en popover
 
+Bruk `popover` for å inkludere interaksjoner som knapper eller lenker. Et typisk brukstilfelle er å be brukeren bekrefte en handling, som sletting av en rad i en tabell.
+
+<Canvas of={PopoverStories.Interactive} />
+
+<br/>
+
+### Tilleggsinformasjon om et ord i en artikkel
+
+Bruk `inline={true}` (stiplet understrek) på `Popover.Trigger` for å indikere at et ord har en forklaring. Popoveren kan inneholde en kort paragraf som utdyper ordets betydning.
+
+<Canvas of={PopoverStories.DottedUnderline} />
+
+<br/>
 ### Farger
 
 `Popover` kommer i alle farger, du kan endre den med `data-color`.
@@ -36,24 +52,54 @@ import { Popover } from '@digdir/designsystemet-react';
 
 ### Kontrollert
 
-Dersom du sender inn `open`, så bruker du `Popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `Popover` vil lukkes.
-Dette er nyttig dersom du har innhold som skal lukke `Popover` når du klikker på det.
+Dersom du sender inn `open`, så bruker du `popover` kontrollert. Du kan bruke `onClose` for å få beskjed når `popover` vil lukkes.
+Dette er nyttig dersom du har innhold som skal lukke `popover` når du klikker på det.
 
 <Canvas of={PopoverStories.Controlled} />
 
 ### Auto Plassering
 
-Standard oppførsel er at `Popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
-`Popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+Standard oppførsel er at `popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
+`popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
 
+<br />
+## Retningslinjer for når du skal bruke popover
+
+`Popover` kan plasseres etter ønske. Hvis `popover` blir for stor for den valgte retningen, justerer den automatisk plasseringen. Hvis du vil skru av auto plassering bruker du `autoPlacement={false}` .
+
+<br/ >
+Passer til 
+
+* å forklare ord eller konsepter som trenger mer enn en kort definisjon
+* å gi mer omfattende informasjon (maksimalt ett avsnitt) 
+* når interaktivitet kreves, som lenker, knapper eller valg
+
+<br />
+
+Passer ikke til å
+
+* beskrive et symbol – bruk heller `tooltip`
+* vise mye innhold 
+
+<br/>
+
+## Tekst i komponenten
+
+Unngå lange tekster og kompliserte forklaringer. I noen tilfeller er det kanskje bedre å lenke til en annen side med utdypende informasjon om temaet.
+
+<br />
 ## Tilgjengelighet
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
+<br />
+
 ## React og `popovertarget`
-Når du bruker `Popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `Popover`.
+Når du bruker `popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `popover`.
 Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
 Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+<br />
 
 ## CSS Variabler
 

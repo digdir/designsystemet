@@ -255,7 +255,7 @@
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.<accent-color>.text-default}"
+        "$value": "{color.neutral.text-default}"
       }
     }
   }

@@ -1,132 +1,118 @@
-import type { ColorMode } from '@digdir/designsystemet/color';
-import { Showcase } from '@repo/components';
-import cl from 'clsx/lite';
+'use client';
 import { useState } from 'react';
-import { Dashboard } from './Dashboard/Dashboard';
-import { Landing } from './Landing/Landing';
+
+import {
+  type ColorInfo,
+  type ColorNumber,
+  type CssColor,
+  generateColorSchemes,
+  getColorNameFromNumber,
+} from '@digdir/designsystemet';
+import { ToggleGroup } from '@digdir/designsystemet-react';
+import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
 import classes from './Previews.module.css';
 
-type previewModeType =
-  | 'dashboard'
-  | 'landing'
-  | 'forms'
-  | 'auth'
-  | 'components';
-
-type PreviewsProps = {
-  themeMode: ColorMode;
-  onThemeModeChange: (themeMode: ColorMode) => void;
+const themes: {
+  [key: string]: {
+    name: string;
+    value: string;
+    hex: CssColor;
+    cssVars?: Record<string, string>;
+  };
+} = {
+  blue: {
+    name: 'Eksempel 1',
+    value: 'blue',
+    hex: '#0062BA',
+  },
+  purple: {
+    name: 'Eksempel 2',
+    value: 'purple',
+    hex: '#740c7e',
+    cssVars: {
+      '--ds-border-radius-base': '9999px',
+      '--ds-border-radius-scale': '0.25rem',
+      '--ds-border-radius-sm':
+        'min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale))',
+      '--ds-border-radius-md':
+        'min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2)',
+      '--ds-border-radius-lg':
+        'min(var(--ds-border-radius-base) * 2, var(--ds-border-radius-scale) * 5)',
+      '--ds-border-radius-xl':
+        'min(var(--ds-border-radius-base) * 3, var(--ds-border-radius-scale) * 7)',
+      '--ds-border-radius-default': 'var(--ds-border-radius-base)',
+      '--ds-border-radius-full': '624.9375rem',
+    },
+  },
 };
 
-export const Previews = ({ themeMode, onThemeModeChange }: PreviewsProps) => {
-  const [previewMode, setPreviewMode] = useState<previewModeType>('components');
+export const Previews = () => {
+  const [theme, setTheme] = useState<keyof typeof themes>('blue');
+  const [appearance, setAppearance] = useState<'light' | 'dark'>('light');
+
+  const getDsMainVars = (colors: {
+    light: ColorInfo[];
+    dark: ColorInfo[];
+  }) => {
+    const style = {} as Record<string, string>;
+
+    let lightColors = colors.light;
+
+    if (appearance === 'dark') {
+      lightColors = colors.dark;
+    }
+
+    for (let i = 0; i < lightColors.length; i++) {
+      const number = (i + 1) as ColorNumber;
+      style[
+        `--ds-color-${getColorNameFromNumber(number)
+          .replace(/\s+/g, '-')
+          .toLowerCase()}`
+      ] = lightColors[i].hex;
+    }
+
+    return style;
+  };
+
+  const getThemeVariables = (hex: CssColor) => {
+    const generatedTheme = generateColorSchemes(hex);
+    const vars = {} as Record<string, string>;
+
+    Object.assign(vars, getDsMainVars(generatedTheme));
+
+    return vars;
+  };
 
   return (
     <>
-      <div className={classes.toolbar}>
-        <div className={classes.menu}>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'components' && classes.menuItemActive,
-            )}
-            onClick={() => setPreviewMode('components')}
-          >
-            Komponenter
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'dashboard' && classes.menuItemActive,
-            )}
-            onClick={() => setPreviewMode('dashboard')}
-          >
-            Dashboard
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'landing' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Landingsside
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'forms' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Skjemaer
-          </button>
-          <button
-            className={cl(
-              classes.menuItem,
-              'ds-focus',
-              previewMode === 'auth' && classes.menuItemActive,
-              classes.menuItemDisabled,
-            )}
-            aria-disabled
-          >
-            Autentisering
-          </button>
-        </div>
-        <div className={classes.toggles}>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'light' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('light')}
-          >
-            <img src='img/light-dot.svg' alt='' />
-            Lys
-          </button>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'dark' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('dark')}
-          >
-            <img src='img/dark-dot.svg' alt='' />
-            Mørk
-          </button>
-          <button
-            className={cl(
-              classes.toggle,
-              'ds-focus',
-              themeMode === 'contrast' && classes.active,
-            )}
-            onClick={() => onThemeModeChange('contrast')}
-          >
-            <img src='img/contrast-dot.svg' alt='' />
-            Kontrast
-          </button>
-        </div>
+      <div className={classes.toolbar} data-size='sm'>
+        <ToggleGroup
+          value={theme as string}
+          onChange={(v) => setTheme(v as keyof typeof themes)}
+        >
+          <ToggleGroup.Item value='blue'>{themes.blue.name}</ToggleGroup.Item>
+          <ToggleGroup.Item value='purple'>
+            {themes.purple.name}
+          </ToggleGroup.Item>
+        </ToggleGroup>
+        <ToggleGroup
+          value={appearance}
+          onChange={(v) => setAppearance(v as 'light' | 'dark')}
+        >
+          <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
+          <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
+        </ToggleGroup>
       </div>
 
       <div
-        className={cl(
-          classes.preview,
-          classes[themeMode as keyof typeof classes],
-        )}
-        id='preview'
-        data-color-scheme={themeMode}
+        className={classes.preview}
+        data-color-scheme={appearance}
+        style={{
+          ...getThemeVariables(themes[theme].hex),
+          ...themes[theme].cssVars,
+        }}
       >
-        {previewMode === 'components' && <Showcase />}
-        {previewMode === 'dashboard' && <Dashboard />}
-        {previewMode === 'landing' && <Landing />}
+        <OverviewComponents />
       </div>
     </>
   );

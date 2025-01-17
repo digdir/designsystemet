@@ -14,7 +14,7 @@ const meta: Meta<typeof Avatar> = {
     layout: 'padded',
     customStyles: {
       display: 'flex',
-      gap: 'var(--ds-spacing-2)',
+      gap: 'var(--ds-size-2)',
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -27,8 +27,6 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   'aria-label': 'Ola Nordmann',
-  'data-color': 'accent',
-  'data-size': 'md',
   variant: 'circle',
   children: '',
 };
@@ -90,11 +88,12 @@ export const InDropdown: Story = () => (
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Badge overlap='circle' data-color='danger' data-size='sm'>
+            <Badge.Position overlap='circle'>
+              <Badge data-color='danger' data-size='sm'></Badge>
               <Avatar aria-label='Ola Nordmann' data-size='xs'>
                 ON
               </Avatar>
-            </Badge>
+            </Badge.Position>
             Ola Nordmann
           </Dropdown.Button>
         </Dropdown.Item>

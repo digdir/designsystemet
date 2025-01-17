@@ -16,19 +16,17 @@ export default {
 export const Preview: Story = {
   args: {
     children: 'New',
-    'data-size': 'md',
-    'data-color': 'neutral',
   },
 };
 
 const sizes: TagProps['data-size'][] = ['sm', 'md', 'lg'];
-export const Sizes: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
+export const Sizes: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 'var(--ds-spacing-2)',
+        gap: 'var(--ds-size-2)',
       }}
     >
       {sizes.map((size) => (
@@ -51,7 +49,7 @@ const colors: TagProps['data-color'][] = [
   'brand3',
 ];
 
-export const Colors: StoryFn<typeof Tag> = ({ ...rest }): JSX.Element => {
+export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
       {colors.map((color) => (

@@ -2,10 +2,9 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Spinner } from '../loaders/Spinner';
+import { Spinner } from '../Spinner';
 
 export type ButtonProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
@@ -15,10 +14,6 @@ export type ButtonProps = MergeRight<
      * @default primary
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
-    /** Specify which color palette to use.
-     * @default accent
-     */
-    'data-color'?: Color;
     /** Toggle icon only styling, pass icon as children
      * @default false
      */

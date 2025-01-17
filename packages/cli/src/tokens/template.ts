@@ -7,7 +7,7 @@ import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/
   type: 'json',
 };
 import originalThemeJson from '../../../../design-tokens/themes/theme.json' with { type: 'json' };
-import { stringify } from './write';
+import { stringify } from './write.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 
@@ -29,7 +29,8 @@ export const updateTemplates = async () => {
   // Copy default files
   await fs.cp(...argsFromToPaths('Figma'), options);
   await fs.cp(...argsFromToPaths('primitives/globals.json'), options);
-  await fs.cp(...argsFromToPaths('primitives/size/default.json'), options);
+  await fs.cp(...argsFromToPaths('primitives/modes/size'), options);
+  await fs.cp(...argsFromToPaths('primitives/modes/typography/size'), options);
   await fs.cp(...argsFromToPaths('semantic/style.json'), options);
 
   /*

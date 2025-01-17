@@ -1,5 +1,77 @@
 # Change Log
 
+## 1.0.0-next.47
+
+## 1.0.0-next.46
+
+### Patch Changes
+
+- Input: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Helptext: Remove component ([#2956](https://github.com/digdir/designsystemet/pull/2956))
+
+- Textfield: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Tabs: Content will get focus when it has no focusable elements ([#2991](https://github.com/digdir/designsystemet/pull/2991))
+
+## 1.0.0-next.45
+
+### Patch Changes
+
+- Pagination: Use empty `li` for ellipsis ([#2942](https://github.com/digdir/designsystemet/pull/2942))
+
+- Add missing `data-size` and `data-color` props to Details ([#2930](https://github.com/digdir/designsystemet/pull/2930))
+
+- Table: ([#2933](https://github.com/digdir/designsystemet/pull/2933))
+
+  - Correct footer styling
+  - Automatic focus styling for sorting buttons
+
+- Loosen default types for `data-color` and `data-size` to support accept `string` ([#2951](https://github.com/digdir/designsystemet/pull/2951))
+
+- Export all utilities ([#2961](https://github.com/digdir/designsystemet/pull/2961))
+
+- Field: Fix `position` not working ([#2931](https://github.com/digdir/designsystemet/pull/2931))
+
+- Tooltip: Use popover API ([#2916](https://github.com/digdir/designsystemet/pull/2916))
+
+  - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
+  - Removes `defaultOpen`
+  - Removes `portal`
+  - Removes ability to hover to keep open
+
+- PopoverTrigger: New prop `inline` for use when inline elements (such as text) need a `Popover` ([#2915](https://github.com/digdir/designsystemet/pull/2915))
+
+## 1.0.0-next.44
+
+### Patch Changes
+
+- Fixes issue where all React prop types were inlined instead of referenced ([#2912](https://github.com/digdir/designsystemet/pull/2912))
+
+## 1.0.0-next.43
+
+### Patch Changes
+
+- Field.Counter: Run on mount to support initial `defaultValue` ([#2907](https://github.com/digdir/designsystemet/pull/2907))
+
+## 1.0.0-next.42
+
+### Patch Changes
+
+- Radio, Checkbox: Spread `className` and `style` on outermost element ([#2880](https://github.com/digdir/designsystemet/pull/2880))
+
+- Badge: Convert to two elements, add `Badge.Position` component for placement ([#2857](https://github.com/digdir/designsystemet/pull/2857))
+
+- `ValidationMessage` now uses the `p`-element ([#2895](https://github.com/digdir/designsystemet/pull/2895))
+
+- Select: Add `width="auto"` option and default to full width ([#2894](https://github.com/digdir/designsystemet/pull/2894))
+
+## 1.0.0-next.41
+
+### Minor Changes
+
+- ValidationMessage: Add support for all severity colors and tweak icons ([#2866](https://github.com/digdir/designsystemet/pull/2866))
+
 ## 1.0.0-next.40
 
 ### Major Changes

@@ -1,9 +1,8 @@
 'use client';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Heading } from '@digdir/designsystemet-react';
-import type { ColorInfo } from '@digdir/designsystemet/color';
-import { generateThemeForColor } from '@digdir/designsystemet/color';
+import type { ColorInfo, CssColor } from '@digdir/designsystemet/color';
+import { generateColorSchemes } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
 
@@ -12,7 +11,6 @@ import { Settings } from '../../settings';
 import { BackgroundSurface } from './BackgroundSurface/BackgroundSurface';
 import { Backgrounds } from './Backgrounds/Backgrounds';
 import { BaseContrast } from './BaseContrast/BaseContrast';
-import { BaseContrastOverview } from './BaseContrastOverview/BaseContrastOverview';
 import { ContrastBox } from './ContrastBox/ContrastBox';
 import { FullBaseTest } from './FullBaseTest/FullBaseTest';
 import { Interaction } from './Interaction/Interaction';
@@ -108,25 +106,25 @@ const Row = (title: string, colors: ColorInfo[], whiteText = false) => {
 };
 
 export default function Dev() {
-  const theme1 = generateThemeForColor('#0062BA');
-  const theme2 = generateThemeForColor('#1E98F5');
-  const theme3 = generateThemeForColor('#E5AA20');
-  const theme4 = generateThemeForColor('#f3e02e');
-  const theme5 = generateThemeForColor('#DE251B');
-  const theme6 = generateThemeForColor('#F45F63');
-  const theme7 = generateThemeForColor('#054449');
-  const theme8 = generateThemeForColor('#7befb2');
-  const theme9 = generateThemeForColor('#410464');
-  const theme10 = generateThemeForColor('#A845E1');
-  const theme11 = generateThemeForColor('#109E96');
-  const theme12 = generateThemeForColor('#243142');
+  const theme1 = generateColorSchemes('#0062BA');
+  const theme2 = generateColorSchemes('#1E98F5');
+  const theme3 = generateColorSchemes('#E5AA20');
+  const theme4 = generateColorSchemes('#f3e02e');
+  const theme5 = generateColorSchemes('#DE251B');
+  const theme6 = generateColorSchemes('#F45F63');
+  const theme7 = generateColorSchemes('#054449');
+  const theme8 = generateColorSchemes('#7befb2');
+  const theme9 = generateColorSchemes('#410464');
+  const theme10 = generateColorSchemes('#A845E1');
+  const theme11 = generateColorSchemes('#109E96');
+  const theme12 = generateColorSchemes('#243142');
 
-  const themeGlobalBlue = generateThemeForColor(Settings.blueBaseColor);
-  const themeGlobalGreen = generateThemeForColor(Settings.greenBaseColor);
-  const themeGlobalOrange = generateThemeForColor(Settings.orangeBaseColor);
-  const themeGlobalRed = generateThemeForColor(Settings.redBaseColor);
-  const themeGlobalPurple = generateThemeForColor(Settings.purpleBaseColor);
-  const themeGlobalYellow = generateThemeForColor(Settings.yellowBaseColor);
+  const themeGlobalBlue = generateColorSchemes(Settings.blueBaseColor);
+  const themeGlobalGreen = generateColorSchemes(Settings.greenBaseColor);
+  const themeGlobalOrange = generateColorSchemes(Settings.orangeBaseColor);
+  const themeGlobalRed = generateColorSchemes(Settings.redBaseColor);
+  const themeGlobalPurple = generateColorSchemes(Settings.purpleBaseColor);
+  const themeGlobalYellow = generateColorSchemes(Settings.yellowBaseColor);
 
   return (
     <div className={classes.page}>
@@ -321,10 +319,6 @@ export default function Dev() {
         {Row('Light', theme1.light)}
         {Row('Dark', theme1.dark, true)}
         {Row('Contrast', theme1.contrast, true)}
-        <Heading className={classes.sectionTitle} data-size='md'>
-          Overgangen fra svart til hvit kontrastfarge på ulike Base farger
-        </Heading>
-        <BaseContrastOverview />
         <Heading className={classes.sectionTitle} data-size='md'>
           Viser blå base farger i et spekter av lightness verdier og om
           kontrastfargen er hvit eller svart per mode

@@ -8,7 +8,7 @@
   }
 
   & p {
-    margin-bottom: var(--ds-spacing-4);
+    margin-bottom: var(--ds-size-4);
 
     & > strong {
       margin: 0 !important;
@@ -27,8 +27,8 @@
   & > h2,
   & > h3,
   & > h4 {
-    margin-top: var(--ds-spacing-10);
-    margin-bottom: var(--ds-spacing-3);
+    margin-top: var(--ds-size-10);
+    margin-bottom: var(--ds-size-3);
   }
 
   /* Anchor link styling */
@@ -80,7 +80,7 @@
 
   & > ul > li > ol,
   & > ol > li > ul {
-    margin-top: var(--ds-spacing-1);
+    margin-top: var(--ds-size-1);
   }
 
   & > p > a:hover,
@@ -93,24 +93,24 @@
   & > h1 + p {
     font: var(--ds-body-long-md-font-size);
     margin-top: 0;
-    margin-bottom: var(--ds-spacing-8);
+    margin-bottom: var(--ds-size-8);
   }
 
   & > iframe {
     box-shadow: var(--ds-shadow-md);
-    margin: var(--ds-spacing-5);
+    margin: var(--ds-size-5);
     border-radius: var(--ds-border-radius-md);
   }
 
   & > table {
     width: 100%;
-    margin: var(--ds-spacing-7) 0;
+    margin: var(--ds-size-7) 0;
     border-collapse: collapse;
   }
 
   & > img {
     width: 100%;
-    margin: var(--ds-spacing-5) 0;
+    margin: var(--ds-size-5) 0;
     border-radius: var(--ds-border-radius-md);
     box-shadow: var(--ds-shadow-md);
   }
@@ -132,13 +132,13 @@
   & > pre,
   & > p pre {
     background-color: var(--ds-color-neutral-background-subtle);
-    padding: var(--ds-spacing-5);
-    margin: var(--ds-spacing-7) 0;
+    padding: var(--ds-size-5);
+    margin: var(--ds-size-7) 0;
     border-radius: var(--ds-border-radius-md);
   }
 
   & > div + p {
-    margin-top: var(--ds-spacing-5);
+    margin-top: var(--ds-size-5);
   }
 
   & *[data-unstyled] {
@@ -156,7 +156,7 @@
 
     & img {
       width: 100%;
-      margin: var(--ds-spacing-5) 0;
+      margin: var(--ds-size-5) 0;
       border-radius: var(--ds-border-radius-md);
       box-shadow: var(--ds-shadow-md);
     }
@@ -164,7 +164,7 @@
     &:is(strong),
     & strong {
       display: inline-block;
-      margin-top: var(--ds-spacing-1);
+      margin-top: var(--ds-size-1);
       font-weight: 500;
     }
   }

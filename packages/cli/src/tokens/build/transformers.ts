@@ -2,8 +2,7 @@ import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
-import { noCase } from './utils/noCase.js';
-import { getValue, pathStartsWithOneOf, typeEquals } from './utils/utils.js';
+import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.js';
 
 const isPx = R.test(/\b\d+px\b/g);
 
@@ -34,17 +33,6 @@ export const sizeRem: Transform = {
   },
 };
 
-export const nameKebab: Transform = {
-  name: 'name/cti/hierarchical-kebab',
-  type: 'name',
-  transform: (token, options) => {
-    return noCase([options?.prefix].concat(token.path).join('-'), {
-      delimiter: '-',
-      stripRegexp: /[^A-Z0-9_]+/gi,
-    });
-  },
-};
-
 export const typographyName: Transform = {
   name: 'name/typography',
   type: 'name',
@@ -61,10 +49,18 @@ export const resolveMath: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    const isValidValue = ['string', 'object'].includes(typeof (token.$value ?? token.value));
+    const isValidValue = ['string', 'object'].includes(typeof getValue(token));
     const isTokenOfInterest = !pathStartsWithOneOf(['border-radius'], token);
 
     return isValidValue && isTokenOfInterest;
   },
   transform: (token, platformCfg) => checkAndEvaluateMath(token, platformCfg.mathFractionDigits),
+};
+
+export const unitless: Transform = {
+  name: 'ds/unitless',
+  type: 'value',
+  transitive: true,
+  filter: (token) => pathStartsWithOneOf(['size', '_size'], token),
+  transform: (token) => parseInt(getValue<string>(token)),
 };

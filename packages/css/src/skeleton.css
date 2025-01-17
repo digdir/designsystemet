@@ -6,11 +6,14 @@
   animation: var(--dsc-skeleton-animation);
   border-radius: var(--ds-border-radius-lg);
   box-sizing: border-box;
-  display: block;
   height: 1.3em;
   pointer-events: none;
   user-select: none;
   width: 100%;
+
+  &:not([hidden]) {
+    display: block;
+  }
 
   &[data-variant='circle'] {
     aspect-ratio: 1 / 1;
@@ -22,10 +25,13 @@
     border-radius: var(--ds-border-radius-full);
     box-decoration-break: clone;
     color: transparent;
-    display: inline;
     font-size: 0.8em; /* Scale down font to have larger gap between lines */
     letter-spacing: 0.1em; /* But scale up letter-spacing to have circa same line-length */
     user-select: none; /* Prevent text selection */
+
+    &:not([hidden]) {
+      display: inline;
+    }
 
     &:empty::before {
       content: attr(data-text); /* Only fill with fallback text if empty */
@@ -46,6 +52,10 @@
 
   @media (prefers-reduced-motion: reduce) {
     --dsc-skeleton-animation-duration: 1.6s;
+  }
+
+  @media (forced-colors: active) {
+    opacity: 0;
   }
 }
 

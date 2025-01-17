@@ -6,7 +6,7 @@ export default {
   title: 'Komponenter/Chip',
   component: Chip.Radio,
   parameters: {
-    customStyles: { display: 'flex', gap: 'var(--ds-spacing-2)' },
+    customStyles: { display: 'flex', gap: 'var(--ds-size-2)' },
   },
 } satisfies Meta;
 

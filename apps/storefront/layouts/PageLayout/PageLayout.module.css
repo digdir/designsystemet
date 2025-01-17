@@ -5,13 +5,13 @@
 
 .header {
   background-color: var(--ds-color-brand3-surface-default);
-  padding-top: var(--ds-spacing-7);
+  padding-top: var(--ds-size-7);
 }
 
 .headerContent {
   max-width: 780px;
   margin: 0 auto;
-  padding-bottom: var(--ds-spacing-18);
+  padding-bottom: var(--ds-size-18);
 }
 
 .headerContent h1,
@@ -26,7 +26,7 @@
 }
 
 .backBtn {
-  margin-bottom: var(--ds-spacing-10);
+  margin-bottom: var(--ds-size-10);
   color: inherit;
 }
 
@@ -35,19 +35,19 @@
 }
 
 .backBtn svg {
-  margin-right: var(--ds-spacing-2);
+  margin-right: var(--ds-size-2);
 }
 
 .separator {
-  margin: 0 var(--ds-spacing-2);
+  margin: 0 var(--ds-size-2);
 }
 
 .meta {
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-bottom: var(--ds-spacing-3);
-  margin-top: var(--ds-spacing-8);
+  margin-bottom: var(--ds-size-3);
+  margin-top: var(--ds-size-8);
 }
 
 .content {
@@ -67,7 +67,7 @@
   .meta {
     flex-direction: column;
     text-align: left;
-    gap: var(--ds-spacing-1);
+    gap: var(--ds-size-1);
   }
 
   .separator {

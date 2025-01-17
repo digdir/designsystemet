@@ -1,10 +1,10 @@
 .ds-details {
   --dsc-details-border: 1px solid var(--dsc-details-border-color);
-  --dsc-details-chevron-gap: var(--ds-spacing-2);
-  --dsc-details-chevron-size: var(--ds-spacing-6);
+  --dsc-details-chevron-gap: var(--ds-size-2);
+  --dsc-details-chevron-size: var(--ds-size-6);
   --dsc-details-chevron-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
-  --dsc-details-padding: var(--ds-spacing-2) var(--ds-spacing-4);
-  --dsc-details-size: var(--ds-sizing-14);
+  --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
+  --dsc-details-size: var(--ds-size-14);
 
   --dsc-details-background: var(--ds-color-background-default);
   --dsc-details-heading-background--hover: var(--ds-color-surface-default);
@@ -41,13 +41,16 @@
     background: var(--dsc-details-heading-background);
     box-sizing: border-box;
     cursor: pointer;
-    display: flex;
     list-style: none;
     min-height: var(--dsc-details-size);
     gap: var(--dsc-details-chevron-gap);
     outline: none;
     padding: var(--dsc-details-padding);
     position: relative;
+
+    &:not([hidden]) {
+      display: flex;
+    }
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
     &:focus-visible {
@@ -65,6 +68,14 @@
       mask: 50% / contain no-repeat var(--dsc-details-chevron-url);
       width: var(--dsc-details-chevron-size);
     }
+
+    @media (forced-colors: active) {
+      color: ButtonText;
+
+      &::before {
+        background: ButtonText;
+      }
+    }
   }
 
   & + & {
@@ -74,7 +85,7 @@
 
   & > :not(summary, u-summary) {
     border-radius: inherit;
-    padding: var(--ds-spacing-5, 1rem);
+    padding: var(--ds-size-5, 1rem);
   }
 
   &[open] > :is(summary, u-summary) {

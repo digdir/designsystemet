@@ -1,9 +1,9 @@
 import {
   type ColorInfo,
-  generateThemeForColor,
+  generateColorSchemes,
   getColorNameFromNumber,
   getContrastFromHex,
-} from '@/packages/cli/dist/src';
+} from '@digdir/designsystemet';
 
 import cl from 'clsx/lite';
 import classes from './ContrastChart.module.css';
@@ -13,7 +13,7 @@ type ContrastChartProps = {
 };
 
 export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
-  const theme = generateThemeForColor('#0062BA');
+  const theme = generateColorSchemes('#0062BA');
   const includedColorIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
   const reducedLight = theme.light.filter((color) =>
     includedColorIndexes.includes(color.number),

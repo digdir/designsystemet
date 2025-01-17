@@ -25,9 +25,7 @@ const renderWithRoot = (props: PaginationProps) => {
         <Pagination.Item>
           <Pagination.Button>3</Pagination.Button>
         </Pagination.Item>
-        <Pagination.Item>
-          <Pagination.Button />
-        </Pagination.Item>
+        <Pagination.Item />
         <Pagination.Item>
           <Pagination.Button>6</Pagination.Button>
         </Pagination.Item>

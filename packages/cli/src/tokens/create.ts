@@ -1,19 +1,23 @@
 import * as R from 'ramda';
-import { baseColors, generateScaleForColor } from '../colors/index.js';
-import type { ColorInfo, ColorMode } from '../colors/types.js';
-import type { Colors, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
+import { baseColors, generateColorScale } from '../colors/index.js';
+import type { ColorInfo, ColorScheme } from '../colors/types.js';
+import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
-export const colorCliOptions = {
-  main: 'main-colors',
-  support: 'support-colors',
-  neutral: 'neutral-color',
+export const cliOptions = {
+  outDir: 'out-dir',
+  clean: 'clean',
+  theme: {
+    colors: {
+      main: 'main-colors',
+      support: 'support-colors',
+      neutral: 'neutral-color',
+    },
+    typography: {
+      fontFamily: 'font-family',
+    },
+    borderRadius: 'border-radius',
+  },
 } as const;
-
-export type CreateTokensOptions = {
-  colors: Colors;
-  typography: Typography;
-  themeName: string;
-};
 
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
   const obj: Tokens1ary = {};
@@ -59,10 +63,10 @@ const generateTypographyTokens = (themeName: string, { fontFamily }: Typography)
   };
 };
 
-const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors): TokensSet => {
-  const main = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.main);
-  const support = R.map((color) => createColorTokens(generateScaleForColor(color, theme)), colors.support);
-  const neutral = createColorTokens(generateScaleForColor(colors.neutral, theme));
+const generateThemeTokens = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
+  const main = R.map((color) => createColorTokens(generateColorScale(color, colorScheme)), colors.main);
+  const support = R.map((color) => createColorTokens(generateColorScale(color, colorScheme)), colors.support);
+  const neutral = createColorTokens(generateColorScale(colors.neutral, colorScheme));
 
   return {
     [themeName]: {
@@ -73,13 +77,13 @@ const generateThemeTokens = (themeName: string, theme: ColorMode, colors: Colors
   };
 };
 
-const generateGlobalTokens = (theme: ColorMode) => {
-  const blueScale = generateScaleForColor(baseColors.blue, theme);
-  const greenScale = generateScaleForColor(baseColors.green, theme);
-  const orangeScale = generateScaleForColor(baseColors.orange, theme);
-  const purpleScale = generateScaleForColor(baseColors.purple, theme);
-  const redScale = generateScaleForColor(baseColors.red, theme);
-  const yellowScale = generateScaleForColor(baseColors.yellow, theme);
+const generateGlobalTokens = (colorScheme: ColorScheme) => {
+  const blueScale = generateColorScale(baseColors.blue, colorScheme);
+  const greenScale = generateColorScale(baseColors.green, colorScheme);
+  const orangeScale = generateColorScale(baseColors.orange, colorScheme);
+  const purpleScale = generateColorScale(baseColors.purple, colorScheme);
+  const redScale = generateColorScale(baseColors.red, colorScheme);
+  const yellowScale = generateColorScale(baseColors.yellow, colorScheme);
 
   return {
     global: {
@@ -93,8 +97,8 @@ const generateGlobalTokens = (theme: ColorMode) => {
   };
 };
 
-export const createTokens = (opts: CreateTokensOptions) => {
-  const { colors, typography, themeName: name } = opts;
+export const createTokens = (opts: Theme) => {
+  const { colors, typography, name } = opts;
 
   const tokens: Tokens = {
     colors: {

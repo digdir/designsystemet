@@ -26,6 +26,8 @@ type HeaderProps = {
   betaTag?: boolean;
   skipLink?: boolean;
   themeSwitcher?: boolean;
+  transparentBackground?: boolean;
+  logoLink?: string;
 };
 
 /**
@@ -63,6 +65,8 @@ const Header = ({
   betaTag,
   skipLink = true,
   themeSwitcher = false,
+  transparentBackground = false,
+  logoLink = '/',
 }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
@@ -107,14 +111,18 @@ const Header = ({
         <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
       ) : null}
       <header
-        className={cl(classes.header, isHamburger && classes.hamburger)}
+        className={cl(
+          classes.header,
+          isHamburger && classes.hamburger,
+          transparentBackground && classes.transparentHeader,
+        )}
         ref={headerRef}
       >
         <div className={classes.container}>
           <div className={classes.logoContainer}>
             <Link
               className={cl(classes.logoLink, 'ds-focus')}
-              href='/'
+              href={logoLink}
               aria-label='Designsystem forside'
               onClick={() => setOpen(false)}
               prefetch={false}
@@ -163,7 +171,7 @@ const Header = ({
                       onClick={() => setOpen(false)}
                       prefetch={false}
                       className={cl(
-                        pathname.includes(item.href) && classes.active,
+                        pathname?.includes(item.href) && classes.active,
                         classes.link,
                         'ds-focus',
                       )}

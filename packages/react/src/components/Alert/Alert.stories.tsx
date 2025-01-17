@@ -19,9 +19,8 @@ export default meta;
 export const Preview: Story = (args) => <Alert {...args}></Alert>;
 
 Preview.args = {
-  'data-color': 'info',
-  'data-size': undefined,
   children: 'En beskjed det er viktig at brukeren ser',
+  'data-color': 'info',
 };
 
 export const VariantInfo: Story = (args) => (
@@ -30,7 +29,7 @@ export const VariantInfo: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Har du husket å bestille passtime?
@@ -48,7 +47,7 @@ export const VariantSuccess: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Gratulerer! Du kan nå starte selskapet ditt
@@ -66,7 +65,7 @@ export const VariantWarning: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Vi har tekniske problemer
@@ -84,7 +83,7 @@ export const VariantDanger: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Det har skjedd en feil
@@ -103,7 +102,7 @@ export const MedHeading: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Har du husket å bestille passtime?
@@ -127,7 +126,7 @@ export const MedLenke: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Søknadsfristen går ut om 3 dager
@@ -145,7 +144,7 @@ export const UtenAria: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Nedetid
@@ -163,7 +162,7 @@ export const MedAria: Story = (args) => (
       level={2}
       data-size='xs'
       style={{
-        marginBottom: 'var(--ds-spacing-2)',
+        marginBottom: 'var(--ds-size-2)',
       }}
     >
       Vi klarer ikke lagre skjemaet

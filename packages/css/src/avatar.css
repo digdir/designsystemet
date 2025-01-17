@@ -2,8 +2,8 @@
   --dsc-avatar-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' fill-rule='evenodd' d='M8.25 7.5a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0M12 2.25a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5M8.288 17.288A5.25 5.25 0 0 1 17.25 21a.75.75 0 0 0 1.5 0 6.75 6.75 0 0 0-13.5 0 .75.75 0 0 0 1.5 0 5.25 5.25 0 0 1 1.538-3.712' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
   --dsc-avatar-background: var(--ds-color-base-default);
   --dsc-avatar-color: var(--ds-color-contrast-default);
-  --dsc-avatar-size: var(--ds-sizing-12);
-  --dsc-avatar-padding: var(--ds-spacing-2);
+  --dsc-avatar-size: var(--ds-size-12);
+  --dsc-avatar-padding: var(--ds-size-2);
   --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
   align-items: center;
@@ -11,7 +11,6 @@
   border-radius: var(--dsc-avatar-border-radius);
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
-  display: inline-flex;
   flex-shrink: 0;
   font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
@@ -21,6 +20,10 @@
   text-transform: uppercase;
   user-select: none;
   width: var(--dsc-avatar-size);
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   &:not(:has(img)) {
     padding: var(--dsc-avatar-padding);
@@ -44,6 +47,10 @@
     height: 100%;
     background: currentcolor;
     mask: var(--dsc-avatar-icon-url) center / contain no-repeat;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
   }
 
   &[data-variant='circle'] {
@@ -60,5 +67,9 @@
 
   &[data-size='sm'] {
     font-size: var(--ds-font-size-3);
+  }
+
+  @media (forced-colors: active) {
+    border: var(--ds-size-1) solid CanvasText;
   }
 }

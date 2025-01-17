@@ -10,13 +10,17 @@ import {
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { getDummyTheme } from '@common/dummyTheme';
-import { colorCliOptions } from '@digdir/designsystemet';
-import { generateThemeForColor } from '@digdir/designsystemet/color';
+import { cliOptions } from '@digdir/designsystemet';
+import {
+  type CssColor,
+  generateColorSchemes,
+} from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
+
+const colorCliOptions = cliOptions.theme.colors;
 
 function Theme() {
   const { themeId } = useParams();
@@ -117,11 +121,11 @@ function Theme() {
       ...newArray[themeIndex],
       colors: {
         ...newArray[themeIndex].colors,
-        accent: themeToFigmaFormat(generateThemeForColor(accent)),
-        neutral: themeToFigmaFormat(generateThemeForColor(neutral)),
-        brand1: themeToFigmaFormat(generateThemeForColor(brand1)),
-        brand2: themeToFigmaFormat(generateThemeForColor(brand2)),
-        brand3: themeToFigmaFormat(generateThemeForColor(brand3)),
+        accent: themeToFigmaFormat(generateColorSchemes(accent)),
+        neutral: themeToFigmaFormat(generateColorSchemes(neutral)),
+        brand1: themeToFigmaFormat(generateColorSchemes(brand1)),
+        brand2: themeToFigmaFormat(generateColorSchemes(brand2)),
+        brand3: themeToFigmaFormat(generateColorSchemes(brand3)),
       },
     };
 

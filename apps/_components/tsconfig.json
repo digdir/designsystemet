@@ -1,5 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
+  "rootDir": "./src",
   "compilerOptions": {
     "outDir": "./tsc-build",
     "declarationDir": "./dist/types",
@@ -9,8 +10,12 @@
     "noEmit": false,
     "incremental": true,
     "moduleResolution": "Bundler",
-    "types": ["@digdir/designsystemet-theme/colors.d.ts"]
+    "types": ["@digdir/designsystemet-theme/colors.d.ts", "./declarations.d.ts"]
   },
   "include": ["./src", "./stories", "declarations.d.ts"],
-  "rootDir": "./src"
+  "plugins": [
+    {
+      "name": "next"
+    }
+  ]
 }

@@ -1,19 +1,21 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ColorInfo } from '@digdir/designsystemet/color';
+import type { ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
-import type { ThemeColors } from '../../types';
 import { Color } from '../Color/Color';
 
+import { ColorModal } from '@repo/components';
+import { Fragment, createRef, useRef } from 'react';
+import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorInfo[];
+  colors: number[];
+  colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
-  featured?: boolean;
-  type: ThemeColors;
+  namespace: string;
 };
 
 export const Group = ({
@@ -21,38 +23,59 @@ export const Group = ({
   colors,
   showColorMeta,
   names,
-  type,
-  featured = false,
+  colorScale,
+  namespace,
 }: GroupProps) => {
+  const appearance = useThemeStore((state) => state.appearance);
+
+  const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
+    [],
+  );
+  if (colorModalRefs.current.length !== colors.length) {
+    colorModalRefs.current = Array(colors.length)
+      .fill(null)
+      .map(() => createRef<HTMLDialogElement>());
+  }
+
   return (
     <div className={classes.group}>
-      {header && (
-        <div className={cl(classes.header, featured && classes.featured)}>
-          {header}
-        </div>
-      )}
+      {header && <div className={cl(classes.header)}>{header}</div>}
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
-            <div key={index}>{name}</div>
+            <div key={index + 'name' + namespace}>{name}</div>
           ))}
         </div>
       )}
 
-      <div className={cl(classes.colors, featured && classes.colorsFeatured)}>
-        {colors.map((item, index) => (
-          <RovingFocusItem key={index} value={item.name} asChild>
-            <Color
-              color={item}
-              colorNumber={5}
-              contrast={'dd'}
-              lightness={'dd'}
-              hex={item.hex}
-              showColorMeta={showColorMeta}
-              type={type}
-            />
-          </RovingFocusItem>
-        ))}
+      <div className={cl(classes.colors)}>
+        {colors.map((item, index) => {
+          return (
+            <Fragment key={index + 'fragment' + namespace}>
+              <ColorModal
+                colorModalRef={colorModalRefs.current[index]}
+                hex={colorScale[appearance][item].hex}
+                namespace={namespace}
+                weight={colorScale[appearance][item].number}
+              />
+              <RovingFocusItem
+                value={namespace + colorScale[appearance][item].number}
+                asChild
+              >
+                <Color
+                  color={colorScale[appearance][item].hex}
+                  colorNumber={item}
+                  contrast={'dd'}
+                  lightness={'dd'}
+                  showColorMeta={showColorMeta}
+                  onClick={() =>
+                    colorModalRefs.current[index]?.current?.showModal()
+                  }
+                />
+              </RovingFocusItem>
+            </Fragment>
+          );
+        })}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 
 import { Button } from '../Button';
-import { Textfield } from '../form/Textfield';
+import { Textfield } from '../Textfield';
 
 import { ErrorSummary } from './';
 
@@ -30,9 +30,6 @@ export const Preview: Story = (args) => (
     </ErrorSummary.List>
   </ErrorSummary>
 );
-Preview.args = {
-  'data-size': 'md',
-};
 
 export const WithForm: Story = () => (
   <>
@@ -66,7 +63,7 @@ export const WithForm: Story = () => (
 );
 
 WithForm.parameters = {
-  customStyles: { display: 'grid', gap: 'var(--ds-spacing-4)' },
+  customStyles: { display: 'grid', gap: 'var(--ds-size-4)' },
 };
 
 export const ShowHide: Story = () => {
@@ -78,7 +75,7 @@ export const ShowHide: Story = () => {
         style={{
           display: 'grid',
           placeItems: 'center',
-          marginBottom: 'var(--ds-spacing-4)',
+          marginBottom: 'var(--ds-size-4)',
         }}
       >
         <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>

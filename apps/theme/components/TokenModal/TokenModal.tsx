@@ -1,106 +1,45 @@
 'use client';
 
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import {
+  Divider,
   Heading,
+  Input,
   Link,
   Modal,
   Paragraph,
-  Textfield,
 } from '@digdir/designsystemet-react';
-import { colorCliOptions, createTokens } from '@digdir/designsystemet/tokens';
-import { CodeIcon, InformationSquareIcon } from '@navikt/aksel-icons';
+import { cliOptions } from '@digdir/designsystemet/tokens';
+import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
-import cl from 'clsx/lite';
-
+import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
 
-type TokenModalProps = {
-  accentColor: CssColor;
-  neutralColor: CssColor;
-  brand1Color: CssColor;
-  brand2Color: CssColor;
-  brand3Color: CssColor;
-  borderRadius: string;
-};
+const colorCliOptions = cliOptions.theme.colors;
 
-const toFigmaSnippet = (obj: unknown) =>
-  JSON.stringify(obj, null, 2).replaceAll('$', '');
-
-export const TokenModal = ({
-  accentColor,
-  neutralColor,
-  brand1Color,
-  brand2Color,
-  brand3Color,
-  borderRadius,
-}: TokenModalProps) => {
+export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  const [lightThemeSnippet, setLightThemeSnippet] = useState('');
-  const [darkThemeSnippet, setDarkThemeSnippet] = useState('');
+  const colors = useThemeStore((state) => state.colors);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+
   const [themeName, setThemeName] = useState('theme');
 
+  const setCliColors = (colorTheme: ColorTheme[]) => {
+    let str = '';
+    for (const color of colorTheme) {
+      str += `"${color.name}:${color.colors.light[8].hex}" `;
+    }
+    return str;
+  };
+
   const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --${colorCliOptions.main} "accent:${accentColor}" \\
-   --${colorCliOptions.neutral} "${neutralColor}" \\
-   --${colorCliOptions.support} "brand1:${brand1Color}" "brand2:${brand2Color}" "brand3:${brand3Color}" \\
-   --theme "${themeName}" \\
-   --write
-   `;
-
-  useEffect(() => {
-    const tokens = createTokens({
-      colors: {
-        main: {
-          accent: accentColor,
-        },
-        neutral: neutralColor,
-        support: {
-          brand1: brand1Color,
-          brand2: brand2Color,
-          brand3: brand3Color,
-        },
-      },
-      typography: { fontFamily: 'Inter' },
-      themeName: 'theme',
-    });
-
-    setLightThemeSnippet(toFigmaSnippet(tokens.colors.light.theme));
-    setDarkThemeSnippet(toFigmaSnippet(tokens.colors.dark.theme));
-  }, []);
-
-  type InfoBoxType = {
-    title: string;
-    desc: React.ReactNode;
-    img: React.ReactNode;
-    type?: 'code' | 'figma';
-  };
-
-  const InfoBox = ({ title, desc, img, type = 'figma' }: InfoBoxType) => {
-    return (
-      <div className={classes.infoBox}>
-        <div className={classes.infoBox__left}>
-          <div
-            className={cl(
-              classes.infoBox__icon,
-              type === 'code' && classes['infoBox__icon--code'],
-            )}
-          >
-            {img}
-          </div>
-        </div>
-        <div className={classes.infoBox__right}>
-          <div className={classes.infoBox__container}>
-            <Heading data-size='2xs'>{title}</Heading>
-            <Paragraph data-size='sm'>{desc}</Paragraph>
-          </div>
-        </div>
-      </div>
-    );
-  };
+   --${colorCliOptions.main} ${setCliColors(colors.main)} \\
+   --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
+   --${colorCliOptions.support} ${setCliColors(colors.support)} \\
+   --border-radius ${baseBorderRadius} \\
+   --theme "${themeName}"`;
 
   return (
     <Modal.TriggerContext>
@@ -110,108 +49,131 @@ export const TokenModal = ({
           return modalRef.current?.showModal();
         }}
       >
+        <StarIcon title='a11y-title' fontSize='1.5rem' />
         Ta i bruk tema
       </Modal.Trigger>
       <Modal
         className={classes.modal}
-        style={{ maxWidth: 1150 }}
+        style={{ maxWidth: 1000 }}
         ref={modalRef}
         backdropClose={true}
       >
-        <Heading className={classes.modalHeader} data-size='xs'>
-          <img src='img/emblem.svg' alt='' className={classes.emblem} />
-          <span className={classes.headerText}>Ta i bruk tema</span>
-        </Heading>
+        <Modal.Block>
+          <Heading className={classes.modalHeader} data-size='2xs'>
+            <img src='img/emblem.svg' alt='' className={classes.emblem} />
+            <span className={classes.headerText}>Ta i bruk tema</span>
+          </Heading>
+        </Modal.Block>
 
-        <div className={classes.content}>
-          <div className={classes.leftSection}>
-            <Textfield
-              label='Navn på tema'
-              description="Kun bokstaver, tall og bindestrek. Eks: 'mitt-tema'"
-              value={themeName}
-              data-size='sm'
-              onChange={(e) => {
-                const value = e.currentTarget.value
-                  .replace(/\s+/g, '-')
-                  .replace(/[^A-Z0-9-]+/gi, '')
-                  .toLowerCase();
+        <Modal.Block>
+          <Heading className={classes.modalHeader} data-size='xs' level={3}>
+            Gi temaet ditt et navn
+          </Heading>
+          <Paragraph>
+            Navnet bør representere virksomheter eller produktet du skal
+            profilere.
+          </Paragraph>
+          <Input
+            aria-label='Navn på tema'
+            name='themeName'
+            value={themeName}
+            onChange={(e) => {
+              const value = e.currentTarget.value
+                .replace(/\s+/g, '-')
+                .replace(/[^A-Z0-9-]+/gi, '')
+                .toLowerCase();
 
-                setThemeName(value);
-              }}
-            />
-            <div className={classes.infoBoxes}>
-              <InfoBox
-                title='Design tokens'
-                img={<CodeIcon aria-hidden='true' fontSize='1.9rem' />}
-                type='code'
-                desc={
-                  <>
-                    Kopier kodesnutten og kjør den på maskinen din for å
-                    generere design tokens (json-filer). Sørg for at du har{' '}
-                    <Link target='_blank' href='https://nodejs.org/'>
-                      Node.js
-                    </Link>{' '}
-                    installert på maskinen din.
-                  </>
-                }
-              />
-              <InfoBox
-                title='Figma variabler'
-                img={<img src='img/figma-logo.png' alt='' />}
-                desc={
-                  <>
-                    Kopier kodesnutten og lim den inn i Designsystemet sin{' '}
-                    <Link
-                      target='_blank'
-                      href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-                    >
-                      Figma plugin
-                    </Link>{' '}
-                    når du er i{' '}
-                    <Link
-                      target='_blank'
-                      href='https://www.figma.com/community/file/1322138390374166141'
-                    >
-                      Core UI Kit
-                    </Link>{' '}
-                    for å oppdatere et tema. Pluginen oppdaterer kun farger for
-                    øyeblikket.
-                  </>
-                }
-              />
-            </div>
-          </div>
-          <div className={classes.rightSection}>
-            <div className={classes.snippet}>
-              <CodeSnippet language='shell'>{cliSnippet}</CodeSnippet>
-            </div>
-            <div className={classes.contact}>
-              <div className={classes.contact__icon}>
-                <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
-              </div>
-              <div className={classes.contact__content}>
-                <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
-                <Paragraph data-size='sm'>
-                  Send oss en melding på{' '}
+              setThemeName(value);
+            }}
+            style={{
+              marginTop: 'var(--ds-size-6)',
+            }}
+          />
+        </Modal.Block>
+
+        <Modal.Block>
+          <div className={classes.content}>
+            <div className={classes.rightSection}>
+              <div className={classes.step}>
+                <span>1</span>
+                <Paragraph>
+                  Kopier kodesnutten og kjør den på maskinen din for å generere
+                  design tokens (json-filer), eller lim den inn i Designsystemet
+                  sin{' '}
                   <Link
                     target='_blank'
-                    href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                    href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
                   >
-                    Slack
+                    Figma plugin
                   </Link>{' '}
-                  eller lag et{' '}
+                  i{' '}
                   <Link
                     target='_blank'
-                    href='https://github.com/digdir/designsystemet/issues/new/choose'
+                    href='https://www.figma.com/community/file/1322138390374166141'
                   >
-                    Github issue
-                  </Link>
-                  .
+                    Core UI Kit
+                  </Link>{' '}
+                  for å oppdatere et tema direkte i Figma. Les mer om disse
+                  alternativene på{' '}
+                  <Link
+                    target='_blank'
+                    href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'
+                  >
+                    eget tema
+                  </Link>{' '}
+                  siden.
                 </Paragraph>
               </div>
+              <div className={classes.snippet}>
+                <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
+              </div>
+              <div
+                className={classes.step}
+                style={{
+                  marginTop: 'var(--ds-size-4)',
+                }}
+              >
+                <span>2</span>
+                <Paragraph>
+                  Kjør kodesnutten for å generere CSS variabler til kode.
+                </Paragraph>
+              </div>
+              <div className={classes.snippet}>
+                <CodeSnippet language='bash'>
+                  npx @digdir/designsystemet@next tokens build
+                </CodeSnippet>
+              </div>
+
+              <Divider />
+
+              <div className={classes.contact}>
+                <div className={classes.contact__icon}>
+                  <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+                </div>
+                <div className={classes.contact__content}>
+                  <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
+                  <Paragraph data-size='sm'>
+                    Send oss en melding på{' '}
+                    <Link
+                      target='_blank'
+                      href='https://designsystemet.no/slack'
+                    >
+                      Slack
+                    </Link>{' '}
+                    eller lag et{' '}
+                    <Link
+                      target='_blank'
+                      href='https://github.com/digdir/designsystemet/issues/new/choose'
+                    >
+                      Github issue
+                    </Link>
+                    .
+                  </Paragraph>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </Modal.Block>
       </Modal>
     </Modal.TriggerContext>
   );

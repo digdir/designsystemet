@@ -9,8 +9,8 @@
     "noEmit": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "sourceMap": false,
     "incremental": false
   },

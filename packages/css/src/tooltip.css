@@ -2,15 +2,34 @@
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
   --dsc-tooltip-color: var(--ds-color-neutral-background-default);
   --dsc-tooltip-border-radius: var(--ds-border-radius-default);
-  --dsc-tooltip-padding: var(--ds-spacing-1) var(--ds-spacing-2);
-  --dsc-tooltip-arrow-size: var(--ds-spacing-2);
+  --dsc-tooltip-padding: var(--ds-size-1) var(--ds-size-2);
+  --dsc-tooltip-arrow-size: var(--ds-size-2);
+  --dsc-tooltip-transition-duration: 0.2s;
+  --dsc-tooltip-transition-delay: 150ms;
 
+  position: fixed;
+  inset: 0 auto auto 0;
   background: var(--dsc-tooltip-background);
   border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
+  border: none;
+  border-width: 0;
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
+  overflow: visible;
+  margin: 0; /* Needed to place tooltip correctly, since popover adds margin */
+  transition-property: opacity, visibility;
+  transition-delay: var(--dsc-tooltip-transition-delay);
+  transition-duration: var(--dsc-tooltip-transition-duration);
+  transition-timing-function: ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+
+  &:popover-open {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &::before {
     content: '';
@@ -19,9 +38,13 @@
     height: var(--dsc-tooltip-arrow-size);
     width: var(--dsc-tooltip-arrow-size);
     position: absolute;
-    left: var(--ds-tooltip-arrow-x);
-    top: var(--ds-tooltip-arrow-y);
+    left: var(--dsc-tooltip-arrow-x, 50%);
+    top: var(--dsc-tooltip-arrow-y, 100%);
     translate: -50% -50%;
     rotate: 45deg;
+  }
+
+  @media (forced-colors: active) {
+    --dsc-tooltip-background: CanvasText;
   }
 }

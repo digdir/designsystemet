@@ -95,6 +95,14 @@ export const SiteConfig = {
               url: 'grunnleggende/for-utviklere/kom-i-gang',
             },
             {
+              name: 'Størrelsar',
+              url: 'grunnleggende/for-utviklere/storrelsar',
+            },
+            {
+              name: 'Fargar',
+              url: 'grunnleggende/for-utviklere/fargar',
+            },
+            {
               name: 'Komposisjon',
               url: 'grunnleggende/for-utviklere/komposisjon',
             },
@@ -162,16 +170,16 @@ export const SiteConfig = {
               name: 'Feilmeldinger *',
               url: 'monstre/feilmeldinger',
             },
+            {
+              name: 'Systemvarsler *',
+              url: 'monstre/systemvarsler',
+            },
           ],
         },
         {
           name: 'Kommende',
           url: 'monstre/skjema',
           children: [
-            {
-              name: 'Systemvarsler *',
-              url: 'monstre/systemvarsler',
-            },
             {
               name: 'Dato',
               url: 'monstre/dato',

@@ -2,15 +2,11 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Input } from '../form/Input';
+import { Input, type InputProps } from '../Input';
 
 type ChipBaseProps = {
-  /** Specify which color palette to use. If left unspecified, the color is inherited from the nearest ancestor with data-color.
-   */
-  'data-color'?: Color;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -78,7 +74,8 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
     },
     ref,
   ) {
-    const inputType = (rest as { type?: string }).type ?? 'checkbox';
+    const inputType =
+      (rest as { type?: InputProps['type'] }).type ?? 'checkbox';
     const Component = asChild ? Slot : 'label';
 
     return (

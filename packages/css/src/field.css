@@ -1,8 +1,11 @@
 .ds-field {
   align-items: start;
-  display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-size-2);
+
+  &:not([hidden]) {
+    display: flex;
+  }
 
   & [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
@@ -11,7 +14,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true'], :disabled) > * {
+  &:has([aria-disabled='true']:not(u-option), :disabled:not(option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
@@ -25,11 +28,14 @@
    */
   &:has(input:is([type='radio'], [type='checkbox'])) {
     border-radius: var(--ds-border-radius-md);
-    display: grid;
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     row-gap: 0;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
+
+    &:not([hidden]) {
+      display: grid;
+    }
 
     & > * {
       grid-column: content; /* Only allow input in column 1 */
@@ -45,7 +51,7 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    &:not(:has([readonly], [aria-disabled='true'], :disabled)) label {
+    &:not(:has([readonly], [aria-disabled='true']:not(u-option), :disabled:not(option))) label {
       cursor: pointer;
     }
 
@@ -55,6 +61,11 @@
 
     &:has(input:only-child) {
       gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
+    }
+
+    /* Using .ds-input to ensure it's only our component */
+    & .ds-input:is([type='radio'], [type='checkbox']):not([aria-label]) {
+      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
     }
 
     &[data-position='end'] {
@@ -70,16 +81,19 @@
  */
 .ds-field-affixes {
   --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
-  --dsc-field-affix-padding-inline: var(--ds-spacing-4);
+  --dsc-field-affix-padding-inline: var(--ds-size-4);
 
   align-self: stretch; /* If ds-field is placed inside a flex container like ds-field, we need to fill width */
   background: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
-  display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
   max-width: 100%;
   white-space: nowrap;
+
+  &:not([hidden]) {
+    display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+  }
 
   &:has([size]) {
     width: fit-content;
@@ -88,9 +102,12 @@
   & .ds-field-affix {
     align-items: center;
     border: var(--dsc-field-affix-border);
-    display: flex;
     flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
+
+    &:not([hidden]) {
+      display: flex;
+    }
 
     &:first-child {
       border-top-left-radius: inherit;

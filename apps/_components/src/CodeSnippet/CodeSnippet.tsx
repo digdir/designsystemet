@@ -27,7 +27,15 @@ const plugins = [
 ];
 
 type CodeSnippetProps = {
-  language?: 'css' | 'html' | 'ts' | 'markdown' | 'json' | 'shell' | 'tsx';
+  language?:
+    | 'css'
+    | 'html'
+    | 'ts'
+    | 'markdown'
+    | 'json'
+    | 'shell'
+    | 'tsx'
+    | 'bash';
   children: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -93,6 +101,7 @@ const CodeSnippet = ({
               <FilesIcon fontSize='1.5rem' />
             </Button>
           </Tooltip>
+          {/* @ts-ignore -- This has yet to be updated to use react 19 */}
           <SyntaxHighlighter
             style={stackoverflowDark}
             language={language}

@@ -1,4 +1,4 @@
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
+import type { CssColor } from '../colors/types.js';
 
 export type Token = { $value: string; $type: string };
 export type Tokens1ary = Record<string, Token>;
@@ -41,3 +41,10 @@ export type File = {
 };
 
 export type Collection = string | 'global';
+
+export type Theme = {
+  name: string;
+  colors: Colors;
+  typography: Typography;
+  borderRadius: number;
+};
