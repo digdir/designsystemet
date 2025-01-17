@@ -27,7 +27,6 @@ const endsWithOneOf = (suffixes: string[], str: string): boolean =>
 
 export const updateTemplates = async () => {
   // Copy default files
-  await fs.cp(...argsFromToPaths('Figma'), options);
   await fs.cp(...argsFromToPaths('primitives/globals.json'), options);
   await fs.cp(...argsFromToPaths('primitives/modes/size'), options);
   await fs.cp(...argsFromToPaths('primitives/modes/typography/size'), options);
