@@ -21,8 +21,6 @@ export const PopoverTrigger = forwardRef<
   const { popoverId } = useContext(Context);
   const Component = asChild ? Slot : inline ? 'button' : Button;
 
-  console.log('version', version);
-
   const popoverProps = Object.assign(
     {
       [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: popoverId,
