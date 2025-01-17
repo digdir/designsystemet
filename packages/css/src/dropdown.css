@@ -3,12 +3,12 @@
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-dropdown-item-size: var(--ds-size-12);
   --dsc-dropdown-background: var(--ds-color-neutral-background-default);
-  --dsc-dropdow-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);
   border: 1px solid;
-  border-color: var(--dsc-dropdow-border-color);
+  border-color: var(--dsc-dropdown-border-color);
   box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;
