@@ -24,24 +24,88 @@ export const metadata = {
 };
 
  
-Det kan vera ei utfordring å skape behagelege fargeskalaer programmatisk som skal sjå fine ut for det menneskelege auget. 
-Ofte ender fargane opp med å sjå rare og ubalanserte ut. 
-Kanskje fargane blir for saturerte oppover i skalaene, eller at dei rett og slett ikkje passar saman når ein skal begynne å bruke dei i praksis. 
+Det kan ofte vere ei utfordring å skape behagelege fargeskalaer programmatisk som både skal sjå fine ut for det menneskelege auget og fungere i saman i system i forhold til kontrast og tilgjengeligheit . 
+Fargane kan ofte ende opp med å sjå rare og ubalanserte ut. 
+Kanskje dei blir for saturerte oppover i skalaene, eller  rett og slett ikkje passar saman når ein skal begynne å bruke dei i praksis. 
 Det var derfor viktig for oss å finne ein måte å lage fargane på som gav oss fine og balanserte fargar som sluttresultat. 
 
-Det som gjorde det ekstra  utfordrane var at fargane i tillegg måtte fungere i forhold til WCAG og kontrastar. 
-Det måtte vere mogeleg å lage reglar som skulle fungere på tvers av fargane, slik at dei skulle vere enkle å ta i bruk for sluttbrukar.
-Me starta derfor først med å sjå på korleis WCAG kalkulerer kontrasten mellom fargar. 
+Det me såg for oss var å lage eit verktøy der brukaren kunne velge seg ein farge, og få generert ein fargeskala basert på denne. 
+Med dette som utganspunkt var det på tide å sjå på korleis me kunne gjere dette i praksis.
 
-## WCAG og relativ luminans
+## Behagelige fargeskalaer for mennesker
+La meg starte med å seie at det fins veldig mange ulike måtar å lage fargar på. 
+Det er eit hav av fargerom og teknikker tilgjengelig som løyser mange ulike behov. 
+For Designsystemet sin del, så var me ute etter å lage fargar som såg fine og balanserte ut for det menneskelige auget.
+Med dette så meiner me korleis lyset påverkar fargar i ein kontrollert setting.
 
-Når WCAG 2.1 kalkulerer kontrasten mellom to fargar, så bruker dei ein formel som tek utgangspunkt i luminansen mellom fargane og gir dei ein poengsum. Denne poengsummen indikerer kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen 21:1, medan om fargane ikkje har kontrast i det heile tatt, er poengsummen 1:1. Per 2024 seier regelverket at offentlege nettsider må oppfylle alle AA-krava i WCAG. For å oppnå AA-krava må det vere 4.5:1 kontrast mellom tekst og bakgrunn for små tekstar og 3:1 for tekstar som er større eller lik 18 px. For interaktive og grafiske element er grensa 3:1. 
+ <Image
+  src='/img/bloggen/farger-lys.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='Fargane i dette fargeskalaen er laga med HSLuv. '
+  boxShadow={false}
+  dataUnstyled
+/>
 
+I bildet over så blir ein raud-farge truffe av lys med ulik intensitet. 
+Dette illustrer korleis ein flat raud-farge blir påverka i ein kontrollert setting i eit mørkt rom. 
+Mindre lys vil gje ein lysare farge, mens meir lys vil gje ein mørkare farge.
+Det var nettopp denne effekten me ønskte å oppnå med fargeskalaene me skulle lage for skjerm.
+
+La oss sjå litt på korleis me kan lage slike fargar med ulike fargerom og teknikkar.
+
+
+## Ulike teknikkar for å lage fargeskalaer
+La oss sjå på litt ulike teknikkar som fins for å lage fargar. 
+I eksempela nedover vil me bruke den rause profilfargen til Digdir som utgangspunkt for å lage skalaene.
+
+
+### RGB-fargerommet: Shading og tinting
+Ein farge i RGB-fargerommet består av 3 fargekanalar: raud, grøn og blå. 
+Desse kan ha verdiar frå 0 til 255, der 0 er heilt svart og 255 er heilt kvitt.
+Ulike kombinasjonar av desse tre fargane gir alle dei fargane som me ser på skjermane våre.
+
+ <Image
+  src='/img/bloggen/farge-rgb.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='Fargane i dette fargeskalaen er laga med HSLuv. '
+  boxShadow={false}
+  dataUnstyled
+/>
+
+
+Kanskje den mest vanlege måtan å lage fargeskalaer på er å jobbe i RGB-fargerommet med ein teknikk som vert kalla "shading" og "tinting".
+Shading er når ein legg til svart i ein farge for å gjere den mørkare, medan tinting er når ein legg til kvitt for å gjere den lysare.
+
+Om ein tek ein farge `rgb(230, 72, 72)` (lys-raud) som utgangspunkt, og ønskjer å gjere den mørkare så kan man redusere verdiane i raud, grøn og blå kanalane.
+
+
+
+
+### HSL-fargerommet: Hue, saturation og lightness
+
+
+
+
+## WCAG og luminans
+
+Luminans skildrar den opplevde lysstyrken til ein flate og blir brukt til å vurdere kor mykje lys som blir reflektert
+eller sendt ut i ein bestemt retning. 
+Relativ luminans er ein normalisert verdi som rangerer lysstyrken til ein farge mellom rein svart (0) og rein kvit (1). 
+Denne verdien blir rekna ut basert på dei raude, grøne og blå komponentane i fargen, der grønt bidreg mest til den opplevde lysstyrken. 
+
+Når WCAG 2 kalkulerer kontrasten mellom to fargar, så bruker dei ein formel som tek utgangspunkt i den relative luminansen 
+mellom fargane og gir dei ein poengsum. 
+Denne poengsummen indikerer kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen 21:1,
+medan om fargane ikkje har kontrast i det heile tatt, er poengsummen 1:1. 
+Per 2024 seier regelverket at offentlege nettsider må oppfylle alle AA-krava i WCAG. 
+For å oppnå AA-krava må det vere 4.5:1 kontrast mellom tekst og bakgrunn for små tekstar og 3:1 for tekstar som er større eller lik 18 px.For interaktive og grafiske element er grensa 3:1. 
+
+Dette
 
 
 ## Fargerommet HSLuv
 
-Heldigvis for oss så utvikla Alexei Boronine [HSLuv-fargerommet](https://www.hsluv.org/) i 2015,  som håndterar problemet me har hatt med å lage fargar baserte på kontrast. HSLuv bruker hue (fargetone), saturation (fargemetning) og lightness (lysstyrke) for å definere ein farge. Dette er på same måte som HSL. Hovudforskjellen er at når ein endrar hue og saturation for ein farge med HSLuv, så endrar ikkje kontrasten seg. Kontrasten endrar seg berre når lyshetsverdien blir sett til ein annan verdi. 
+Alexei Boronine utvikla [HSLuv-fargerommet](https://www.hsluv.org/) i 2015,  som håndterar problemet me har hatt med å lage fargar baserte på kontrast. HSLuv bruker hue (fargetone), saturation (fargemetning) og lightness (lysstyrke) for å definere ein farge. Dette er på same måte som HSL. Hovudforskjellen er at når ein endrar hue og saturation for ein farge med HSLuv, så endrar ikkje kontrasten seg. Kontrasten endrar seg berre når lyshetsverdien blir sett til ein annan verdi. 
  <Image
   src='/img/bloggen/hsluv-lightness.png'
   alt='Illustrasjon av HSLuv-farger med samme lyshet (lightness) som gir samme kontrast. Tre eksempler vises med ulike nyanser av blått, rødt og grønt, justert gjennom verdier for Hue, Saturation og Lightness. Kontrastforholdet mellom tekst og bakgrunn er likt for alle, med verdien 7.8:1.'
@@ -52,9 +116,12 @@ Heldigvis for oss så utvikla Alexei Boronine [HSLuv-fargerommet](https://www.hs
 
  
 
-Det som er spesielt interessant, er at lysstyrken i alle fargane opplevast som harmonisk og behageleg for det menneskelege auget. Med dette som utgangspunkt var det på tide å teste om HSLUV faktisk fungerte skikkeleg i praksis når me skulle definere fargeskalaene. 
+Det som er spesielt interessant, er at lysstyrken i alle fargane opplevast som harmonisk og behageleg for det menneskelege auget. 
+Med dette som utgangspunkt var det på tide å teste om HSLUV faktisk fungerte skikkeleg i praksis når me skulle definere fargeskalaene. 
 
-Me tok først dei tre profilfargane til Digdir som utgangspunkt og laga fargeskalaer med RGB-teknikken. Dette gjorde me ved å leggje til 20 % kvitt og 20 % svart i fargane stegvis oppover og nedover. Deretter laga me tilnærma like skalaer med HSLUV på høgresida, med lightness-verdiar frå 90 % til 10 % for å samanlikne. 
+Me tok først dei tre profilfargane til Digdir som utgangspunkt og laga fargeskalaer med RGB-teknikken. 
+Dette gjorde me ved å leggje til 20 % kvitt og 20 % svart i fargane stegvis oppover og nedover. 
+Deretter laga me tilnærma like skalaer med HSLUV på høgresida, med lightness-verdiar frå 90 % til 10 % for å samanlikne. 
  <Image
   src='/img/bloggen/rgb-hsluv.png'
   alt='Tre fargeskalaer illustrert i rødt, blått og gult med RGB på venstre side, HSLuv på høyre side.  '
@@ -62,15 +129,24 @@ Me tok først dei tre profilfargane til Digdir som utgangspunkt og laga fargeska
   boxShadow={false}
   dataUnstyled
 />
-Slik det òg kjem fram i den første artikkelen i denne serien, er enkelte fargar lysare enn andre. Dette påverkar kontrasten. Den gule fargen med HSLuv har meir lysstyrke i seg enn den raude og den blå profilfargen. 
+Enkelte fargar lysare enn andre. 
+Dette påverkar kontrasten. Den gule fargen med HSLuv har meir lysstyrke i seg enn den raude og den blå profilfargen. 
 
-Me var svært nøgde med måten HSLuv genererte fargar, spesielt med moglegheita til å sikre god kontrast på tvers, men fargane blei ikkje alltid heilt som me hadde ønskt. Skalaen oppover blei mykje meir saturert enn med RGB tinting og shading.  
+Me var svært nøgde med måten HSLuv genererte fargar, spesielt med moglegheita til å sikre god kontrast på tvers, 
+men fargane blei ikkje alltid heilt som me hadde ønskt. Skalaen oppover blei mykje meir saturert enn med RGB tinting og shading.  
 
-Me begynte derfor å undersøkje om me kunne bruke det same systemet vidare, men justere hue og saturation for å skape endå meir behagelege  behagelege fargar for det menneskelege auget for det menneskelege auget. Til å begynne med laga me ulike formlar som justerte saturation opp og ned basert på den opprinnelige fargen. Det viste seg å vere vanskeleg å oppnå gode resultat for alle fargar. Det var då me begynte å undersøkje om interpolering av fargar i ulike fargerom kunne gi oss det resultatet me ønskte. 
+Me begynte derfor å undersøkje om me kunne bruke det same systemet vidare, men justere hue og saturation for å skape endå meir behagelege 
+ behagelege fargar for det menneskelege auget for det menneskelege auget. 
+ Til å begynne med laga me ulike formlar som justerte saturation opp og ned basert på den opprinnelige fargen. 
+ Det viste seg å vere vanskeleg å oppnå gode resultat for alle fargar. 
+ Det var då me begynte å undersøkje om interpolering av fargar i ulike fargerom kunne gi oss det resultatet me ønskte. 
 
 ## Interpolering av fargar 
 
-Interpolering er ein matematisk metode for å estimere verdiar mellom to kjente datapunkt. Det blir ofte brukt når ein har eit datasett og ønskjer å finne verdiar som ligg mellom punktane. Interpolering av fargar handlar om å trekkje ei linje mellom to punkt i eit gitt fargerom. Resultatet varierer mykje avhengig av kva fargerom som blir brukt, og om linja er rett eller kurva.  
+Interpolering er ein matematisk metode for å estimere verdiar mellom to kjente datapunkt. 
+Det blir ofte brukt når ein har eit datasett og ønskjer å finne verdiar som ligg mellom punktane. 
+Interpolering av fargar handlar om å trekkje ei linje mellom to punkt i eit gitt fargerom. 
+Resultatet varierer mykje avhengig av kva fargerom som blir brukt, og om linja er rett eller kurva.  
  
  <Image
   src='/img/bloggen/interpolering.png'
@@ -80,9 +156,11 @@ Interpolering er ein matematisk metode for å estimere verdiar mellom to kjente 
   dataUnstyled
 />
   
-Javascript biblioteket Chroma.js tilbydde denne interpoleringsfunksjonaliteten me var ute etter. Med Chroma.js kunne me lage fargar basert på kontrast og interpolering samtidig. 
+Javascript biblioteket Chroma.js tilbydde denne interpoleringsfunksjonaliteten me var ute etter. 
+Med Chroma.js kunne me lage fargar basert på kontrast og interpolering samtidig. 
 
-Den raude profilfargen til Digdir synte tydeleg korleis fargane blei for saturerte oppover i skalaen med HSLuv. Me valde derfor denne som utgangspunkt for å teste om interpolering kunne gje eit betre resultat. 
+Den raude profilfargen til Digdir synte tydeleg korleis fargane blei for saturerte oppover i skalaen med HSLuv. 
+Me valde derfor denne som utgangspunkt for å teste om interpolering kunne gje eit betre resultat. 
  <Image
   src='/img/bloggen/digdir-hsluv.png'
   alt='Kvar teknikk er representert som ei horisontal rekkje med seks fargeboksar som graderer frå lysare til mørkare nyansar, med ei tydeleg markering av den opphavlege profilfargen midt i rekkja. Formålet er å illustrere korleis dei ulike metodane påverkar fargegraderinga. '
@@ -91,6 +169,10 @@ Den raude profilfargen til Digdir synte tydeleg korleis fargane blei for saturer
   dataUnstyled
 />
 
-Me laga den same skalaen med RGB-interpolering som gav akkurat det resultatet me var på jakt etter. Fargane likna no mykje meir på måten me tidlegare hadde arbeidd med fargar i RGB-fargerommet. Mens HSLuv bruker lightness frå 0 til 100 for å definere lysstyrken i fargen, så brukar chroma.js luminans frå 0 til 1, der 0 er heilt svart og 1 heilt kvitt. Begge desse måtane å lage fargar på sikrar at kontrasten alltid blir lik på tvers av fargar om luminans/lightness verdiane er like. 
+Me laga den same skalaen med RGB-interpolering som gav akkurat det resultatet me var på jakt etter. 
+Fargane likna no mykje meir på måten me tidlegare hadde arbeidd med fargar i RGB-fargerommet. 
+Mens HSLuv bruker lightness frå 0 til 100 for å definere lysstyrken i fargen, så brukar chroma.js luminans frå 0 til 1, 
+der 0 er heilt svart og 1 heilt kvitt. 
+Begge desse måtane å lage fargar på sikrar at kontrasten alltid blir lik på tvers av fargar om luminans/lightness verdiane er like. 
 
-Med denne metoden på plass, stod det att å sjå på korleis me kunne forenkle strukturen i fargesystemet.
+
