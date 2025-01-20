@@ -1,4 +1,6 @@
 .content {
+  width: 100%;
+
   & > *:first-child {
     margin-top: 0;
   }
@@ -72,14 +74,18 @@
     opacity: 1;
   }
 
-  & > ul {
+  & > ul,
+  & > ol {
+    max-width: 100%;
+    padding-left: var(--ds-size-5);
+    box-sizing: border-box;
     margin-bottom: 24px;
   }
 
   & > ul > li,
   & > ol > li {
-    font: var(--ds-typography-paragraph-md);
     line-height: 1.9em;
+    word-break: break-word; /* Add this to prevent text from overflowing */
   }
 
   & > ul > li > ol,

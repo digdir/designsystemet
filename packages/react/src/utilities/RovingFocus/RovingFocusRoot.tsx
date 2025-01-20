@@ -77,7 +77,7 @@ export const RovingFocusRoot = forwardRef<
     const [focusableValue, setFocusableValue] = useState<string | null>(null);
     const [isShiftTabbing, setIsShiftTabbing] = useState(false);
     const elements = useRef(new Map<string, HTMLElement>());
-    const myRef = useRef<HTMLElement>();
+    const myRef = useRef<HTMLElement | null>(null);
 
     const refs = useMergeRefs([ref, myRef]);
 

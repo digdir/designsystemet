@@ -63,14 +63,14 @@ Det er et par ting å tenke på når komponenter lages i Figma:
 
 - Multibranding. Tenk over i hvilken grad komponenten skal støtte ulik theming og legg til rette for dette ved å bruke brand-farger fra tokens.
 
-- Navgivning og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
+- Navngiving og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
 
 - Tenk over hvordan en annen designer vil ta i bruk komponenten. Er den intuitiv å bruke? Er den fleksibel nok slik at de ikke trenger å detache den? Kanskje bør den settes opp med [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) slik at det er mulig å bytte ut innholdet i den og legge inn andre komponenter uten å måtte detache. Bruk gjerne også "[Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred)" for å femheve komponentene vi tror kommer til å bli mest brukt som innhold.
 
   - Sjekk at du har gode nok [kontraster](https://www.uutilsynet.no/regelverk/testprosedyrar-nettstader/709#suksesskriterium_143_kontrast)
   - At du har tenkt over hvordan tastaturnavigering skal fungere dersom du lager en ny komponent som ikke er standard. (Standard HTML-elementer har tastaturnavigasjon allerede definert).
   - Instruksjoner eller informasjon som er essensiell for brukeren skal ikke være kun markert visuelt. Eksempel kan være å bruke ikon eller tekst i tillegg til rødfarge som indikerer at noe feiler.
-  - Focus: Alle elementer skal ha en visuell markør som blir synlig når elementet får tastaturfokus. Fokusmarkøren skal ha god nok konrast til bakgrunn, for å oppnå dette bruker vi en sort border (2px) og en gul outline (3px) i tillegg.
+  - Focus: Alle elementer skal ha en visuell markør som blir synlig når elementet får tastaturfokus. Fokusmarkøren skal ha god nok kontrast til bakgrunn, for å oppnå dette bruker vi en sort border (2px) og en gul outline (3px) i tillegg.
 
 - Når komponenten er klar markeres den som "Ready for review". Den blir testet av andre og etter eventuelle justeringer markeres den som "[Ready for development](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode)". Når den er utviklet som en React-komponent lenker vi til komponentsiden i [Storybook](https://storybook.designsystemet.no).
 

@@ -7,8 +7,6 @@ import './globals.css';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Figma, Footer, Github, Header, Slack } from '@repo/components';
 
-import { ThemeWrapper } from '../components/ThemeWrapper/ThemeWrapper';
-
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',
   description: 'Bygg ditt eget tema med designsystemet',
@@ -64,7 +62,7 @@ const rightLinks = [
   },
   {
     text: 'Bli invitert til slack',
-    url: 'https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ',
+    url: 'https://designsystemet.no/slack',
     prefix: <Slack />,
   },
   {
@@ -87,15 +85,14 @@ export default function RootLayout({
   return (
     <html lang='no'>
       <body>
-        <ThemeWrapper>
-          <Header
-            menu={menu}
-            transparentBackground
-            logoLink='https://www.designsystemet.no/'
-          />
-          <div className='content'>{children}</div>
-          <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
-        </ThemeWrapper>
+        <Header
+          menu={menu}
+          transparentBackground
+          logoLink='https://www.designsystemet.no/'
+          themeSwitcher
+        />
+        <div className='content'>{children}</div>
+        <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
       </body>
     </html>
   );

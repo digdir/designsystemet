@@ -2,505 +2,6 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
-export const  dimension = [
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *0)"
-    },
-    name: "--ds-size-0",
-    attributes: {},
-    path: [
-      "size",
-      "0"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *1)"
-    },
-    name: "--ds-size-1",
-    attributes: {},
-    path: [
-      "size",
-      "1"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *2)"
-    },
-    name: "--ds-size-2",
-    attributes: {},
-    path: [
-      "size",
-      "2"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *3)"
-    },
-    name: "--ds-size-3",
-    attributes: {},
-    path: [
-      "size",
-      "3"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *4)"
-    },
-    name: "--ds-size-4",
-    attributes: {},
-    path: [
-      "size",
-      "4"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *5)"
-    },
-    name: "--ds-size-5",
-    attributes: {},
-    path: [
-      "size",
-      "5"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *6)"
-    },
-    name: "--ds-size-6",
-    attributes: {},
-    path: [
-      "size",
-      "6"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *7)"
-    },
-    name: "--ds-size-7",
-    attributes: {},
-    path: [
-      "size",
-      "7"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *8)"
-    },
-    name: "--ds-size-8",
-    attributes: {},
-    path: [
-      "size",
-      "8"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *9)"
-    },
-    name: "--ds-size-9",
-    attributes: {},
-    path: [
-      "size",
-      "9"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *10)"
-    },
-    name: "--ds-size-10",
-    attributes: {},
-    path: [
-      "size",
-      "10"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *11)"
-    },
-    name: "--ds-size-11",
-    attributes: {},
-    path: [
-      "size",
-      "11"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *12)"
-    },
-    name: "--ds-size-12",
-    attributes: {},
-    path: [
-      "size",
-      "12"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *13)"
-    },
-    name: "--ds-size-13",
-    attributes: {},
-    path: [
-      "size",
-      "13"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *14)"
-    },
-    name: "--ds-size-14",
-    attributes: {},
-    path: [
-      "size",
-      "14"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *15)"
-    },
-    name: "--ds-size-15",
-    attributes: {},
-    path: [
-      "size",
-      "15"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *18)"
-    },
-    name: "--ds-size-18",
-    attributes: {},
-    path: [
-      "size",
-      "18"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *22)"
-    },
-    name: "--ds-size-22",
-    attributes: {},
-    path: [
-      "size",
-      "22"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *26)"
-    },
-    name: "--ds-size-26",
-    attributes: {},
-    path: [
-      "size",
-      "26"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "floor({size.step} / {size.base} * {size.mode-font-size} *30)"
-    },
-    name: "--ds-size-30",
-    attributes: {},
-    path: [
-      "size",
-      "30"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "18;",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{size._mode-font-size}"
-    },
-    name: "--ds-size-mode-font-size",
-    attributes: {},
-    path: [
-      "size",
-      "mode-font-size"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "18;",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{size._base}"
-    },
-    name: "--ds-size-base",
-    attributes: {},
-    path: [
-      "size",
-      "base"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "4;",
-    filePath: "../../design-tokens/primitives/modes/size/global.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{size._step}"
-    },
-    name: "--ds-size-step",
-    attributes: {},
-    path: [
-      "size",
-      "step"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*0.5,0.25rem)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.1}"
-    },
-    name: "--ds-border-radius-sm",
-    attributes: {},
-    path: [
-      "border-radius",
-      "sm"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem,0.25rem*2)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.2}"
-    },
-    name: "--ds-border-radius-md",
-    attributes: {},
-    path: [
-      "border-radius",
-      "md"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*2,0.25rem*5)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.3}"
-    },
-    name: "--ds-border-radius-lg",
-    attributes: {},
-    path: [
-      "border-radius",
-      "lg"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "min(0.25rem*3,0.25rem*7)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.4}"
-    },
-    name: "--ds-border-radius-xl",
-    attributes: {},
-    path: [
-      "border-radius",
-      "xl"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "0.25rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.5}"
-    },
-    name: "--ds-border-radius-default",
-    attributes: {},
-    path: [
-      "border-radius",
-      "default"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "624.9375rem",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-radius.6}"
-    },
-    name: "--ds-border-radius-full",
-    attributes: {},
-    path: [
-      "border-radius",
-      "full"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "1px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-width.1}"
-    },
-    name: "--ds-border-width-default",
-    attributes: {},
-    path: [
-      "border-width",
-      "default"
-    ]
-  },
-  {
-    $type: "dimension",
-    $value: "2px",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "dimension",
-      $value: "{border-width.2}"
-    },
-    name: "--ds-border-width-highlight",
-    attributes: {},
-    path: [
-      "border-width",
-      "highlight"
-    ]
-  }
-] 
-
 export const  color = [
   {
     $type: "color",
@@ -517,7 +18,8 @@ export const  color = [
       "color",
       "accent",
       "background-default"
-    ]
+    ],
+    key: "{color.accent.background-default}"
   },
   {
     $type: "color",
@@ -534,7 +36,8 @@ export const  color = [
       "color",
       "accent",
       "background-subtle"
-    ]
+    ],
+    key: "{color.accent.background-subtle}"
   },
   {
     $type: "color",
@@ -551,7 +54,8 @@ export const  color = [
       "color",
       "accent",
       "surface-default"
-    ]
+    ],
+    key: "{color.accent.surface-default}"
   },
   {
     $type: "color",
@@ -568,7 +72,8 @@ export const  color = [
       "color",
       "accent",
       "surface-hover"
-    ]
+    ],
+    key: "{color.accent.surface-hover}"
   },
   {
     $type: "color",
@@ -585,7 +90,8 @@ export const  color = [
       "color",
       "accent",
       "surface-active"
-    ]
+    ],
+    key: "{color.accent.surface-active}"
   },
   {
     $type: "color",
@@ -602,7 +108,8 @@ export const  color = [
       "color",
       "accent",
       "border-subtle"
-    ]
+    ],
+    key: "{color.accent.border-subtle}"
   },
   {
     $type: "color",
@@ -619,7 +126,8 @@ export const  color = [
       "color",
       "accent",
       "border-default"
-    ]
+    ],
+    key: "{color.accent.border-default}"
   },
   {
     $type: "color",
@@ -636,11 +144,12 @@ export const  color = [
       "color",
       "accent",
       "border-strong"
-    ]
+    ],
+    key: "{color.accent.border-strong}"
   },
   {
     $type: "color",
-    $value: "#4d107d",
+    $value: "#4D107D",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -653,7 +162,8 @@ export const  color = [
       "color",
       "accent",
       "base-default"
-    ]
+    ],
+    key: "{color.accent.base-default}"
   },
   {
     $type: "color",
@@ -670,7 +180,8 @@ export const  color = [
       "color",
       "accent",
       "base-hover"
-    ]
+    ],
+    key: "{color.accent.base-hover}"
   },
   {
     $type: "color",
@@ -687,7 +198,8 @@ export const  color = [
       "color",
       "accent",
       "base-active"
-    ]
+    ],
+    key: "{color.accent.base-active}"
   },
   {
     $type: "color",
@@ -704,7 +216,8 @@ export const  color = [
       "color",
       "accent",
       "text-subtle"
-    ]
+    ],
+    key: "{color.accent.text-subtle}"
   },
   {
     $type: "color",
@@ -721,7 +234,8 @@ export const  color = [
       "color",
       "accent",
       "text-default"
-    ]
+    ],
+    key: "{color.accent.text-default}"
   },
   {
     $type: "color",
@@ -738,7 +252,8 @@ export const  color = [
       "color",
       "accent",
       "contrast-default"
-    ]
+    ],
+    key: "{color.accent.contrast-default}"
   },
   {
     $type: "color",
@@ -755,7 +270,8 @@ export const  color = [
       "color",
       "accent",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.accent.contrast-subtle}"
   },
   {
     $type: "color",
@@ -772,7 +288,8 @@ export const  color = [
       "color",
       "neutral",
       "background-default"
-    ]
+    ],
+    key: "{color.neutral.background-default}"
   },
   {
     $type: "color",
@@ -789,7 +306,8 @@ export const  color = [
       "color",
       "neutral",
       "background-subtle"
-    ]
+    ],
+    key: "{color.neutral.background-subtle}"
   },
   {
     $type: "color",
@@ -806,7 +324,8 @@ export const  color = [
       "color",
       "neutral",
       "surface-default"
-    ]
+    ],
+    key: "{color.neutral.surface-default}"
   },
   {
     $type: "color",
@@ -823,7 +342,8 @@ export const  color = [
       "color",
       "neutral",
       "surface-hover"
-    ]
+    ],
+    key: "{color.neutral.surface-hover}"
   },
   {
     $type: "color",
@@ -840,7 +360,8 @@ export const  color = [
       "color",
       "neutral",
       "surface-active"
-    ]
+    ],
+    key: "{color.neutral.surface-active}"
   },
   {
     $type: "color",
@@ -857,7 +378,8 @@ export const  color = [
       "color",
       "neutral",
       "border-subtle"
-    ]
+    ],
+    key: "{color.neutral.border-subtle}"
   },
   {
     $type: "color",
@@ -874,7 +396,8 @@ export const  color = [
       "color",
       "neutral",
       "border-default"
-    ]
+    ],
+    key: "{color.neutral.border-default}"
   },
   {
     $type: "color",
@@ -891,11 +414,12 @@ export const  color = [
       "color",
       "neutral",
       "border-strong"
-    ]
+    ],
+    key: "{color.neutral.border-strong}"
   },
   {
     $type: "color",
-    $value: "#1e2b3c",
+    $value: "#1E2B3C",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -908,7 +432,8 @@ export const  color = [
       "color",
       "neutral",
       "base-default"
-    ]
+    ],
+    key: "{color.neutral.base-default}"
   },
   {
     $type: "color",
@@ -925,7 +450,8 @@ export const  color = [
       "color",
       "neutral",
       "base-hover"
-    ]
+    ],
+    key: "{color.neutral.base-hover}"
   },
   {
     $type: "color",
@@ -942,7 +468,8 @@ export const  color = [
       "color",
       "neutral",
       "base-active"
-    ]
+    ],
+    key: "{color.neutral.base-active}"
   },
   {
     $type: "color",
@@ -959,7 +486,8 @@ export const  color = [
       "color",
       "neutral",
       "text-subtle"
-    ]
+    ],
+    key: "{color.neutral.text-subtle}"
   },
   {
     $type: "color",
@@ -976,7 +504,8 @@ export const  color = [
       "color",
       "neutral",
       "text-default"
-    ]
+    ],
+    key: "{color.neutral.text-default}"
   },
   {
     $type: "color",
@@ -993,7 +522,8 @@ export const  color = [
       "color",
       "neutral",
       "contrast-default"
-    ]
+    ],
+    key: "{color.neutral.contrast-default}"
   },
   {
     $type: "color",
@@ -1010,7 +540,8 @@ export const  color = [
       "color",
       "neutral",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.neutral.contrast-subtle}"
   },
   {
     $type: "color",
@@ -1027,7 +558,8 @@ export const  color = [
       "color",
       "brand1",
       "background-default"
-    ]
+    ],
+    key: "{color.brand1.background-default}"
   },
   {
     $type: "color",
@@ -1044,7 +576,8 @@ export const  color = [
       "color",
       "brand1",
       "background-subtle"
-    ]
+    ],
+    key: "{color.brand1.background-subtle}"
   },
   {
     $type: "color",
@@ -1061,7 +594,8 @@ export const  color = [
       "color",
       "brand1",
       "surface-default"
-    ]
+    ],
+    key: "{color.brand1.surface-default}"
   },
   {
     $type: "color",
@@ -1078,7 +612,8 @@ export const  color = [
       "color",
       "brand1",
       "surface-hover"
-    ]
+    ],
+    key: "{color.brand1.surface-hover}"
   },
   {
     $type: "color",
@@ -1095,7 +630,8 @@ export const  color = [
       "color",
       "brand1",
       "surface-active"
-    ]
+    ],
+    key: "{color.brand1.surface-active}"
   },
   {
     $type: "color",
@@ -1112,7 +648,8 @@ export const  color = [
       "color",
       "brand1",
       "border-subtle"
-    ]
+    ],
+    key: "{color.brand1.border-subtle}"
   },
   {
     $type: "color",
@@ -1129,7 +666,8 @@ export const  color = [
       "color",
       "brand1",
       "border-default"
-    ]
+    ],
+    key: "{color.brand1.border-default}"
   },
   {
     $type: "color",
@@ -1146,11 +684,12 @@ export const  color = [
       "color",
       "brand1",
       "border-strong"
-    ]
+    ],
+    key: "{color.brand1.border-strong}"
   },
   {
     $type: "color",
-    $value: "#a25adc",
+    $value: "#A259DC",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1163,7 +702,8 @@ export const  color = [
       "color",
       "brand1",
       "base-default"
-    ]
+    ],
+    key: "{color.brand1.base-default}"
   },
   {
     $type: "color",
@@ -1180,7 +720,8 @@ export const  color = [
       "color",
       "brand1",
       "base-hover"
-    ]
+    ],
+    key: "{color.brand1.base-hover}"
   },
   {
     $type: "color",
@@ -1197,7 +738,8 @@ export const  color = [
       "color",
       "brand1",
       "base-active"
-    ]
+    ],
+    key: "{color.brand1.base-active}"
   },
   {
     $type: "color",
@@ -1214,7 +756,8 @@ export const  color = [
       "color",
       "brand1",
       "text-subtle"
-    ]
+    ],
+    key: "{color.brand1.text-subtle}"
   },
   {
     $type: "color",
@@ -1231,7 +774,8 @@ export const  color = [
       "color",
       "brand1",
       "text-default"
-    ]
+    ],
+    key: "{color.brand1.text-default}"
   },
   {
     $type: "color",
@@ -1248,7 +792,8 @@ export const  color = [
       "color",
       "brand1",
       "contrast-default"
-    ]
+    ],
+    key: "{color.brand1.contrast-default}"
   },
   {
     $type: "color",
@@ -1265,7 +810,8 @@ export const  color = [
       "color",
       "brand1",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.brand1.contrast-subtle}"
   },
   {
     $type: "color",
@@ -1282,7 +828,8 @@ export const  color = [
       "color",
       "brand2",
       "background-default"
-    ]
+    ],
+    key: "{color.brand2.background-default}"
   },
   {
     $type: "color",
@@ -1299,7 +846,8 @@ export const  color = [
       "color",
       "brand2",
       "background-subtle"
-    ]
+    ],
+    key: "{color.brand2.background-subtle}"
   },
   {
     $type: "color",
@@ -1316,7 +864,8 @@ export const  color = [
       "color",
       "brand2",
       "surface-default"
-    ]
+    ],
+    key: "{color.brand2.surface-default}"
   },
   {
     $type: "color",
@@ -1333,7 +882,8 @@ export const  color = [
       "color",
       "brand2",
       "surface-hover"
-    ]
+    ],
+    key: "{color.brand2.surface-hover}"
   },
   {
     $type: "color",
@@ -1350,7 +900,8 @@ export const  color = [
       "color",
       "brand2",
       "surface-active"
-    ]
+    ],
+    key: "{color.brand2.surface-active}"
   },
   {
     $type: "color",
@@ -1367,7 +918,8 @@ export const  color = [
       "color",
       "brand2",
       "border-subtle"
-    ]
+    ],
+    key: "{color.brand2.border-subtle}"
   },
   {
     $type: "color",
@@ -1384,7 +936,8 @@ export const  color = [
       "color",
       "brand2",
       "border-default"
-    ]
+    ],
+    key: "{color.brand2.border-default}"
   },
   {
     $type: "color",
@@ -1401,11 +954,12 @@ export const  color = [
       "color",
       "brand2",
       "border-strong"
-    ]
+    ],
+    key: "{color.brand2.border-strong}"
   },
   {
     $type: "color",
-    $value: "#df74e4",
+    $value: "#DF73E4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1418,7 +972,8 @@ export const  color = [
       "color",
       "brand2",
       "base-default"
-    ]
+    ],
+    key: "{color.brand2.base-default}"
   },
   {
     $type: "color",
@@ -1435,7 +990,8 @@ export const  color = [
       "color",
       "brand2",
       "base-hover"
-    ]
+    ],
+    key: "{color.brand2.base-hover}"
   },
   {
     $type: "color",
@@ -1452,7 +1008,8 @@ export const  color = [
       "color",
       "brand2",
       "base-active"
-    ]
+    ],
+    key: "{color.brand2.base-active}"
   },
   {
     $type: "color",
@@ -1469,7 +1026,8 @@ export const  color = [
       "color",
       "brand2",
       "text-subtle"
-    ]
+    ],
+    key: "{color.brand2.text-subtle}"
   },
   {
     $type: "color",
@@ -1486,7 +1044,8 @@ export const  color = [
       "color",
       "brand2",
       "text-default"
-    ]
+    ],
+    key: "{color.brand2.text-default}"
   },
   {
     $type: "color",
@@ -1503,7 +1062,8 @@ export const  color = [
       "color",
       "brand2",
       "contrast-default"
-    ]
+    ],
+    key: "{color.brand2.contrast-default}"
   },
   {
     $type: "color",
@@ -1520,7 +1080,8 @@ export const  color = [
       "color",
       "brand2",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.brand2.contrast-subtle}"
   },
   {
     $type: "color",
@@ -1537,7 +1098,8 @@ export const  color = [
       "color",
       "brand3",
       "background-default"
-    ]
+    ],
+    key: "{color.brand3.background-default}"
   },
   {
     $type: "color",
@@ -1554,7 +1116,8 @@ export const  color = [
       "color",
       "brand3",
       "background-subtle"
-    ]
+    ],
+    key: "{color.brand3.background-subtle}"
   },
   {
     $type: "color",
@@ -1571,7 +1134,8 @@ export const  color = [
       "color",
       "brand3",
       "surface-default"
-    ]
+    ],
+    key: "{color.brand3.surface-default}"
   },
   {
     $type: "color",
@@ -1588,7 +1152,8 @@ export const  color = [
       "color",
       "brand3",
       "surface-hover"
-    ]
+    ],
+    key: "{color.brand3.surface-hover}"
   },
   {
     $type: "color",
@@ -1605,7 +1170,8 @@ export const  color = [
       "color",
       "brand3",
       "surface-active"
-    ]
+    ],
+    key: "{color.brand3.surface-active}"
   },
   {
     $type: "color",
@@ -1622,7 +1188,8 @@ export const  color = [
       "color",
       "brand3",
       "border-subtle"
-    ]
+    ],
+    key: "{color.brand3.border-subtle}"
   },
   {
     $type: "color",
@@ -1639,7 +1206,8 @@ export const  color = [
       "color",
       "brand3",
       "border-default"
-    ]
+    ],
+    key: "{color.brand3.border-default}"
   },
   {
     $type: "color",
@@ -1656,11 +1224,12 @@ export const  color = [
       "color",
       "brand3",
       "border-strong"
-    ]
+    ],
+    key: "{color.brand3.border-strong}"
   },
   {
     $type: "color",
-    $value: "#e86bbf",
+    $value: "#E86ABF",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1673,7 +1242,8 @@ export const  color = [
       "color",
       "brand3",
       "base-default"
-    ]
+    ],
+    key: "{color.brand3.base-default}"
   },
   {
     $type: "color",
@@ -1690,7 +1260,8 @@ export const  color = [
       "color",
       "brand3",
       "base-hover"
-    ]
+    ],
+    key: "{color.brand3.base-hover}"
   },
   {
     $type: "color",
@@ -1707,7 +1278,8 @@ export const  color = [
       "color",
       "brand3",
       "base-active"
-    ]
+    ],
+    key: "{color.brand3.base-active}"
   },
   {
     $type: "color",
@@ -1724,7 +1296,8 @@ export const  color = [
       "color",
       "brand3",
       "text-subtle"
-    ]
+    ],
+    key: "{color.brand3.text-subtle}"
   },
   {
     $type: "color",
@@ -1741,7 +1314,8 @@ export const  color = [
       "color",
       "brand3",
       "text-default"
-    ]
+    ],
+    key: "{color.brand3.text-default}"
   },
   {
     $type: "color",
@@ -1758,7 +1332,8 @@ export const  color = [
       "color",
       "brand3",
       "contrast-default"
-    ]
+    ],
+    key: "{color.brand3.contrast-default}"
   },
   {
     $type: "color",
@@ -1775,7 +1350,8 @@ export const  color = [
       "color",
       "brand3",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.brand3.contrast-subtle}"
   },
   {
     $type: "color",
@@ -1792,7 +1368,8 @@ export const  color = [
       "color",
       "success",
       "background-default"
-    ]
+    ],
+    key: "{color.success.background-default}"
   },
   {
     $type: "color",
@@ -1809,7 +1386,8 @@ export const  color = [
       "color",
       "success",
       "background-subtle"
-    ]
+    ],
+    key: "{color.success.background-subtle}"
   },
   {
     $type: "color",
@@ -1826,7 +1404,8 @@ export const  color = [
       "color",
       "success",
       "surface-default"
-    ]
+    ],
+    key: "{color.success.surface-default}"
   },
   {
     $type: "color",
@@ -1843,7 +1422,8 @@ export const  color = [
       "color",
       "success",
       "surface-hover"
-    ]
+    ],
+    key: "{color.success.surface-hover}"
   },
   {
     $type: "color",
@@ -1860,7 +1440,8 @@ export const  color = [
       "color",
       "success",
       "surface-active"
-    ]
+    ],
+    key: "{color.success.surface-active}"
   },
   {
     $type: "color",
@@ -1877,7 +1458,8 @@ export const  color = [
       "color",
       "success",
       "border-subtle"
-    ]
+    ],
+    key: "{color.success.border-subtle}"
   },
   {
     $type: "color",
@@ -1894,7 +1476,8 @@ export const  color = [
       "color",
       "success",
       "border-default"
-    ]
+    ],
+    key: "{color.success.border-default}"
   },
   {
     $type: "color",
@@ -1911,7 +1494,8 @@ export const  color = [
       "color",
       "success",
       "border-strong"
-    ]
+    ],
+    key: "{color.success.border-strong}"
   },
   {
     $type: "color",
@@ -1928,7 +1512,8 @@ export const  color = [
       "color",
       "success",
       "base-default"
-    ]
+    ],
+    key: "{color.success.base-default}"
   },
   {
     $type: "color",
@@ -1945,7 +1530,8 @@ export const  color = [
       "color",
       "success",
       "base-hover"
-    ]
+    ],
+    key: "{color.success.base-hover}"
   },
   {
     $type: "color",
@@ -1962,7 +1548,8 @@ export const  color = [
       "color",
       "success",
       "base-active"
-    ]
+    ],
+    key: "{color.success.base-active}"
   },
   {
     $type: "color",
@@ -1979,7 +1566,8 @@ export const  color = [
       "color",
       "success",
       "text-subtle"
-    ]
+    ],
+    key: "{color.success.text-subtle}"
   },
   {
     $type: "color",
@@ -1996,7 +1584,8 @@ export const  color = [
       "color",
       "success",
       "text-default"
-    ]
+    ],
+    key: "{color.success.text-default}"
   },
   {
     $type: "color",
@@ -2013,7 +1602,8 @@ export const  color = [
       "color",
       "success",
       "contrast-default"
-    ]
+    ],
+    key: "{color.success.contrast-default}"
   },
   {
     $type: "color",
@@ -2030,7 +1620,8 @@ export const  color = [
       "color",
       "success",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.success.contrast-subtle}"
   },
   {
     $type: "color",
@@ -2047,7 +1638,8 @@ export const  color = [
       "color",
       "danger",
       "background-default"
-    ]
+    ],
+    key: "{color.danger.background-default}"
   },
   {
     $type: "color",
@@ -2064,7 +1656,8 @@ export const  color = [
       "color",
       "danger",
       "background-subtle"
-    ]
+    ],
+    key: "{color.danger.background-subtle}"
   },
   {
     $type: "color",
@@ -2081,7 +1674,8 @@ export const  color = [
       "color",
       "danger",
       "surface-default"
-    ]
+    ],
+    key: "{color.danger.surface-default}"
   },
   {
     $type: "color",
@@ -2098,7 +1692,8 @@ export const  color = [
       "color",
       "danger",
       "surface-hover"
-    ]
+    ],
+    key: "{color.danger.surface-hover}"
   },
   {
     $type: "color",
@@ -2115,7 +1710,8 @@ export const  color = [
       "color",
       "danger",
       "surface-active"
-    ]
+    ],
+    key: "{color.danger.surface-active}"
   },
   {
     $type: "color",
@@ -2132,7 +1728,8 @@ export const  color = [
       "color",
       "danger",
       "border-subtle"
-    ]
+    ],
+    key: "{color.danger.border-subtle}"
   },
   {
     $type: "color",
@@ -2149,7 +1746,8 @@ export const  color = [
       "color",
       "danger",
       "border-default"
-    ]
+    ],
+    key: "{color.danger.border-default}"
   },
   {
     $type: "color",
@@ -2166,11 +1764,12 @@ export const  color = [
       "color",
       "danger",
       "border-strong"
-    ]
+    ],
+    key: "{color.danger.border-strong}"
   },
   {
     $type: "color",
-    $value: "#bf1b1b",
+    $value: "#C01B1B",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2183,7 +1782,8 @@ export const  color = [
       "color",
       "danger",
       "base-default"
-    ]
+    ],
+    key: "{color.danger.base-default}"
   },
   {
     $type: "color",
@@ -2200,7 +1800,8 @@ export const  color = [
       "color",
       "danger",
       "base-hover"
-    ]
+    ],
+    key: "{color.danger.base-hover}"
   },
   {
     $type: "color",
@@ -2217,7 +1818,8 @@ export const  color = [
       "color",
       "danger",
       "base-active"
-    ]
+    ],
+    key: "{color.danger.base-active}"
   },
   {
     $type: "color",
@@ -2234,7 +1836,8 @@ export const  color = [
       "color",
       "danger",
       "text-subtle"
-    ]
+    ],
+    key: "{color.danger.text-subtle}"
   },
   {
     $type: "color",
@@ -2251,7 +1854,8 @@ export const  color = [
       "color",
       "danger",
       "text-default"
-    ]
+    ],
+    key: "{color.danger.text-default}"
   },
   {
     $type: "color",
@@ -2268,7 +1872,8 @@ export const  color = [
       "color",
       "danger",
       "contrast-default"
-    ]
+    ],
+    key: "{color.danger.contrast-default}"
   },
   {
     $type: "color",
@@ -2285,7 +1890,8 @@ export const  color = [
       "color",
       "danger",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.danger.contrast-subtle}"
   },
   {
     $type: "color",
@@ -2302,7 +1908,8 @@ export const  color = [
       "color",
       "info",
       "background-default"
-    ]
+    ],
+    key: "{color.info.background-default}"
   },
   {
     $type: "color",
@@ -2319,7 +1926,8 @@ export const  color = [
       "color",
       "info",
       "background-subtle"
-    ]
+    ],
+    key: "{color.info.background-subtle}"
   },
   {
     $type: "color",
@@ -2336,7 +1944,8 @@ export const  color = [
       "color",
       "info",
       "surface-default"
-    ]
+    ],
+    key: "{color.info.surface-default}"
   },
   {
     $type: "color",
@@ -2353,7 +1962,8 @@ export const  color = [
       "color",
       "info",
       "surface-hover"
-    ]
+    ],
+    key: "{color.info.surface-hover}"
   },
   {
     $type: "color",
@@ -2370,7 +1980,8 @@ export const  color = [
       "color",
       "info",
       "surface-active"
-    ]
+    ],
+    key: "{color.info.surface-active}"
   },
   {
     $type: "color",
@@ -2387,7 +1998,8 @@ export const  color = [
       "color",
       "info",
       "border-subtle"
-    ]
+    ],
+    key: "{color.info.border-subtle}"
   },
   {
     $type: "color",
@@ -2404,7 +2016,8 @@ export const  color = [
       "color",
       "info",
       "border-default"
-    ]
+    ],
+    key: "{color.info.border-default}"
   },
   {
     $type: "color",
@@ -2421,11 +2034,12 @@ export const  color = [
       "color",
       "info",
       "border-strong"
-    ]
+    ],
+    key: "{color.info.border-strong}"
   },
   {
     $type: "color",
-    $value: "#0a71bf",
+    $value: "#0A71C0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2438,7 +2052,8 @@ export const  color = [
       "color",
       "info",
       "base-default"
-    ]
+    ],
+    key: "{color.info.base-default}"
   },
   {
     $type: "color",
@@ -2455,7 +2070,8 @@ export const  color = [
       "color",
       "info",
       "base-hover"
-    ]
+    ],
+    key: "{color.info.base-hover}"
   },
   {
     $type: "color",
@@ -2472,7 +2088,8 @@ export const  color = [
       "color",
       "info",
       "base-active"
-    ]
+    ],
+    key: "{color.info.base-active}"
   },
   {
     $type: "color",
@@ -2489,7 +2106,8 @@ export const  color = [
       "color",
       "info",
       "text-subtle"
-    ]
+    ],
+    key: "{color.info.text-subtle}"
   },
   {
     $type: "color",
@@ -2506,7 +2124,8 @@ export const  color = [
       "color",
       "info",
       "text-default"
-    ]
+    ],
+    key: "{color.info.text-default}"
   },
   {
     $type: "color",
@@ -2523,7 +2142,8 @@ export const  color = [
       "color",
       "info",
       "contrast-default"
-    ]
+    ],
+    key: "{color.info.contrast-default}"
   },
   {
     $type: "color",
@@ -2540,7 +2160,8 @@ export const  color = [
       "color",
       "info",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.info.contrast-subtle}"
   },
   {
     $type: "color",
@@ -2557,7 +2178,8 @@ export const  color = [
       "color",
       "warning",
       "background-default"
-    ]
+    ],
+    key: "{color.warning.background-default}"
   },
   {
     $type: "color",
@@ -2574,7 +2196,8 @@ export const  color = [
       "color",
       "warning",
       "background-subtle"
-    ]
+    ],
+    key: "{color.warning.background-subtle}"
   },
   {
     $type: "color",
@@ -2591,7 +2214,8 @@ export const  color = [
       "color",
       "warning",
       "surface-default"
-    ]
+    ],
+    key: "{color.warning.surface-default}"
   },
   {
     $type: "color",
@@ -2608,7 +2232,8 @@ export const  color = [
       "color",
       "warning",
       "surface-hover"
-    ]
+    ],
+    key: "{color.warning.surface-hover}"
   },
   {
     $type: "color",
@@ -2625,7 +2250,8 @@ export const  color = [
       "color",
       "warning",
       "surface-active"
-    ]
+    ],
+    key: "{color.warning.surface-active}"
   },
   {
     $type: "color",
@@ -2642,7 +2268,8 @@ export const  color = [
       "color",
       "warning",
       "border-subtle"
-    ]
+    ],
+    key: "{color.warning.border-subtle}"
   },
   {
     $type: "color",
@@ -2659,7 +2286,8 @@ export const  color = [
       "color",
       "warning",
       "border-default"
-    ]
+    ],
+    key: "{color.warning.border-default}"
   },
   {
     $type: "color",
@@ -2676,11 +2304,12 @@ export const  color = [
       "color",
       "warning",
       "border-strong"
-    ]
+    ],
+    key: "{color.warning.border-strong}"
   },
   {
     $type: "color",
-    $value: "#b7581d",
+    $value: "#B8581D",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2693,7 +2322,8 @@ export const  color = [
       "color",
       "warning",
       "base-default"
-    ]
+    ],
+    key: "{color.warning.base-default}"
   },
   {
     $type: "color",
@@ -2710,7 +2340,8 @@ export const  color = [
       "color",
       "warning",
       "base-hover"
-    ]
+    ],
+    key: "{color.warning.base-hover}"
   },
   {
     $type: "color",
@@ -2727,7 +2358,8 @@ export const  color = [
       "color",
       "warning",
       "base-active"
-    ]
+    ],
+    key: "{color.warning.base-active}"
   },
   {
     $type: "color",
@@ -2744,7 +2376,8 @@ export const  color = [
       "color",
       "warning",
       "text-subtle"
-    ]
+    ],
+    key: "{color.warning.text-subtle}"
   },
   {
     $type: "color",
@@ -2761,7 +2394,8 @@ export const  color = [
       "color",
       "warning",
       "text-default"
-    ]
+    ],
+    key: "{color.warning.text-default}"
   },
   {
     $type: "color",
@@ -2778,11 +2412,12 @@ export const  color = [
       "color",
       "warning",
       "contrast-default"
-    ]
+    ],
+    key: "{color.warning.contrast-default}"
   },
   {
     $type: "color",
-    $value: "#fdf9f8",
+    $value: "#fdfbf9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2795,7 +2430,8 @@ export const  color = [
       "color",
       "warning",
       "contrast-subtle"
-    ]
+    ],
+    key: "{color.warning.contrast-subtle}"
   },
   {
     $type: "color",
@@ -2812,16 +2448,17 @@ export const  color = [
       "color",
       "focus",
       "inner"
-    ]
+    ],
+    key: "{color.focus.inner}"
   },
   {
     $type: "color",
-    $value: "#410d69",
+    $value: "#1f2c3d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.text-default}"
+      $value: "{color.neutral.text-default}"
     },
     name: "--ds-color-focus-outer",
     attributes: {},
@@ -2829,7 +2466,487 @@ export const  color = [
       "color",
       "focus",
       "outer"
-    ]
+    ],
+    key: "{color.focus.outer}"
+  }
+] 
+
+export const  dimension = [
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*0.5,0.25rem)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.1}"
+    },
+    name: "--ds-border-radius-sm",
+    attributes: {},
+    path: [
+      "border-radius",
+      "sm"
+    ],
+    key: "{border-radius.sm}"
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem,0.25rem*2)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.2}"
+    },
+    name: "--ds-border-radius-md",
+    attributes: {},
+    path: [
+      "border-radius",
+      "md"
+    ],
+    key: "{border-radius.md}"
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*2,0.25rem*5)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.3}"
+    },
+    name: "--ds-border-radius-lg",
+    attributes: {},
+    path: [
+      "border-radius",
+      "lg"
+    ],
+    key: "{border-radius.lg}"
+  },
+  {
+    $type: "dimension",
+    $value: "min(0.25rem*3,0.25rem*7)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.4}"
+    },
+    name: "--ds-border-radius-xl",
+    attributes: {},
+    path: [
+      "border-radius",
+      "xl"
+    ],
+    key: "{border-radius.xl}"
+  },
+  {
+    $type: "dimension",
+    $value: "0.25rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.5}"
+    },
+    name: "--ds-border-radius-default",
+    attributes: {},
+    path: [
+      "border-radius",
+      "default"
+    ],
+    key: "{border-radius.default}"
+  },
+  {
+    $type: "dimension",
+    $value: "624.9375rem",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-radius.6}"
+    },
+    name: "--ds-border-radius-full",
+    attributes: {},
+    path: [
+      "border-radius",
+      "full"
+    ],
+    key: "{border-radius.full}"
+  },
+  {
+    $type: "dimension",
+    $value: "1px",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-width.1}"
+    },
+    name: "--ds-border-width-default",
+    attributes: {},
+    path: [
+      "border-width",
+      "default"
+    ],
+    key: "{border-width.default}"
+  },
+  {
+    $type: "dimension",
+    $value: "2px",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "{border-width.2}"
+    },
+    name: "--ds-border-width-highlight",
+    attributes: {},
+    path: [
+      "border-width",
+      "highlight"
+    ],
+    key: "{border-width.highlight}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *0)"
+    },
+    name: "--ds-size-0",
+    attributes: {},
+    path: [
+      "size",
+      "0"
+    ],
+    key: "{size.0}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *1)"
+    },
+    name: "--ds-size-1",
+    attributes: {},
+    path: [
+      "size",
+      "1"
+    ],
+    key: "{size.1}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *2)"
+    },
+    name: "--ds-size-2",
+    attributes: {},
+    path: [
+      "size",
+      "2"
+    ],
+    key: "{size.2}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *3)"
+    },
+    name: "--ds-size-3",
+    attributes: {},
+    path: [
+      "size",
+      "3"
+    ],
+    key: "{size.3}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *4)"
+    },
+    name: "--ds-size-4",
+    attributes: {},
+    path: [
+      "size",
+      "4"
+    ],
+    key: "{size.4}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *5)"
+    },
+    name: "--ds-size-5",
+    attributes: {},
+    path: [
+      "size",
+      "5"
+    ],
+    key: "{size.5}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *6)"
+    },
+    name: "--ds-size-6",
+    attributes: {},
+    path: [
+      "size",
+      "6"
+    ],
+    key: "{size.6}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *7)"
+    },
+    name: "--ds-size-7",
+    attributes: {},
+    path: [
+      "size",
+      "7"
+    ],
+    key: "{size.7}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *8)"
+    },
+    name: "--ds-size-8",
+    attributes: {},
+    path: [
+      "size",
+      "8"
+    ],
+    key: "{size.8}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *9)"
+    },
+    name: "--ds-size-9",
+    attributes: {},
+    path: [
+      "size",
+      "9"
+    ],
+    key: "{size.9}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *10)"
+    },
+    name: "--ds-size-10",
+    attributes: {},
+    path: [
+      "size",
+      "10"
+    ],
+    key: "{size.10}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *11)"
+    },
+    name: "--ds-size-11",
+    attributes: {},
+    path: [
+      "size",
+      "11"
+    ],
+    key: "{size.11}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *12)"
+    },
+    name: "--ds-size-12",
+    attributes: {},
+    path: [
+      "size",
+      "12"
+    ],
+    key: "{size.12}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *13)"
+    },
+    name: "--ds-size-13",
+    attributes: {},
+    path: [
+      "size",
+      "13"
+    ],
+    key: "{size.13}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *14)"
+    },
+    name: "--ds-size-14",
+    attributes: {},
+    path: [
+      "size",
+      "14"
+    ],
+    key: "{size.14}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *15)"
+    },
+    name: "--ds-size-15",
+    attributes: {},
+    path: [
+      "size",
+      "15"
+    ],
+    key: "{size.15}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *18)"
+    },
+    name: "--ds-size-18",
+    attributes: {},
+    path: [
+      "size",
+      "18"
+    ],
+    key: "{size.18}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *22)"
+    },
+    name: "--ds-size-22",
+    attributes: {},
+    path: [
+      "size",
+      "22"
+    ],
+    key: "{size.22}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *26)"
+    },
+    name: "--ds-size-26",
+    attributes: {},
+    path: [
+      "size",
+      "26"
+    ],
+    key: "{size.26}"
+  },
+  {
+    $type: "dimension",
+    $value: "calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "dimension",
+      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *30)"
+    },
+    name: "--ds-size-30",
+    attributes: {},
+    path: [
+      "size",
+      "30"
+    ],
+    key: "{size.30}"
   }
 ] 
 
@@ -2838,8 +2955,8 @@ export const  typography = [
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "3.75rem",
       letterSpacing: "-1%"
     },
@@ -2861,14 +2978,15 @@ export const  typography = [
       "typography",
       "heading",
       "2xl"
-    ]
+    ],
+    key: "{typography.heading.2xl}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "3rem",
       letterSpacing: "-1%"
     },
@@ -2890,14 +3008,15 @@ export const  typography = [
       "typography",
       "heading",
       "xl"
-    ]
+    ],
+    key: "{typography.heading.xl}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "2.25rem",
       letterSpacing: "-0.5%"
     },
@@ -2919,14 +3038,15 @@ export const  typography = [
       "typography",
       "heading",
       "lg"
-    ]
+    ],
+    key: "{typography.heading.lg}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "1.875rem",
       letterSpacing: "-0.25%"
     },
@@ -2948,14 +3068,15 @@ export const  typography = [
       "typography",
       "heading",
       "md"
-    ]
+    ],
+    key: "{typography.heading.md}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "1.5rem",
       letterSpacing: "0%"
     },
@@ -2977,14 +3098,15 @@ export const  typography = [
       "typography",
       "heading",
       "sm"
-    ]
+    ],
+    key: "{typography.heading.sm}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "1.3125rem",
       letterSpacing: "0.15%"
     },
@@ -3006,14 +3128,15 @@ export const  typography = [
       "typography",
       "heading",
       "xs"
-    ]
+    ],
+    key: "{typography.heading.xs}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 500,
-      lineHeight: "1.3",
+      fontWeight: "500",
+      lineHeight: 1.3,
       fontSize: "1.125rem",
       letterSpacing: "0.15%"
     },
@@ -3035,14 +3158,15 @@ export const  typography = [
       "typography",
       "heading",
       "2xs"
-    ]
+    ],
+    key: "{typography.heading.2xs}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.5",
+      fontWeight: "400",
+      lineHeight: 1.5,
       fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
@@ -3064,14 +3188,15 @@ export const  typography = [
       "typography",
       "body",
       "xl"
-    ]
+    ],
+    key: "{typography.body.xl}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.5",
+      fontWeight: "400",
+      lineHeight: 1.5,
       fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
@@ -3093,14 +3218,15 @@ export const  typography = [
       "typography",
       "body",
       "lg"
-    ]
+    ],
+    key: "{typography.body.lg}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.5",
+      fontWeight: "400",
+      lineHeight: 1.5,
       fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
@@ -3122,14 +3248,15 @@ export const  typography = [
       "typography",
       "body",
       "md"
-    ]
+    ],
+    key: "{typography.body.md}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.5",
+      fontWeight: "400",
+      lineHeight: 1.5,
       fontSize: "1rem",
       letterSpacing: "0.25%"
     },
@@ -3151,14 +3278,15 @@ export const  typography = [
       "typography",
       "body",
       "sm"
-    ]
+    ],
+    key: "{typography.body.sm}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.5",
+      fontWeight: "400",
+      lineHeight: 1.5,
       fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
@@ -3180,14 +3308,15 @@ export const  typography = [
       "typography",
       "body",
       "xs"
-    ]
+    ],
+    key: "{typography.body.xs}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
+      fontWeight: "400",
+      lineHeight: 1.3,
       fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
@@ -3210,14 +3339,15 @@ export const  typography = [
       "body",
       "short",
       "xl"
-    ]
+    ],
+    key: "{typography.body.short.xl}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
+      fontWeight: "400",
+      lineHeight: 1.3,
       fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
@@ -3240,14 +3370,15 @@ export const  typography = [
       "body",
       "short",
       "lg"
-    ]
+    ],
+    key: "{typography.body.short.lg}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
+      fontWeight: "400",
+      lineHeight: 1.3,
       fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
@@ -3270,14 +3401,15 @@ export const  typography = [
       "body",
       "short",
       "md"
-    ]
+    ],
+    key: "{typography.body.short.md}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
+      fontWeight: "400",
+      lineHeight: 1.3,
       fontSize: "1rem",
       letterSpacing: "0.25%"
     },
@@ -3300,14 +3432,15 @@ export const  typography = [
       "body",
       "short",
       "sm"
-    ]
+    ],
+    key: "{typography.body.short.sm}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.3",
+      fontWeight: "400",
+      lineHeight: 1.3,
       fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
@@ -3330,14 +3463,15 @@ export const  typography = [
       "body",
       "short",
       "xs"
-    ]
+    ],
+    key: "{typography.body.short.xs}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.7",
+      fontWeight: "400",
+      lineHeight: 1.7,
       fontSize: "1.5rem",
       letterSpacing: "0.5%"
     },
@@ -3360,14 +3494,15 @@ export const  typography = [
       "body",
       "long",
       "xl"
-    ]
+    ],
+    key: "{typography.body.long.xl}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.7",
+      fontWeight: "400",
+      lineHeight: 1.7,
       fontSize: "1.3125rem",
       letterSpacing: "0.5%"
     },
@@ -3390,14 +3525,15 @@ export const  typography = [
       "body",
       "long",
       "lg"
-    ]
+    ],
+    key: "{typography.body.long.lg}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.7",
+      fontWeight: "400",
+      lineHeight: 1.7,
       fontSize: "1.125rem",
       letterSpacing: "0.5%"
     },
@@ -3420,14 +3556,15 @@ export const  typography = [
       "body",
       "long",
       "md"
-    ]
+    ],
+    key: "{typography.body.long.md}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.7",
+      fontWeight: "400",
+      lineHeight: 1.7,
       fontSize: "1rem",
       letterSpacing: "0.25%"
     },
@@ -3450,14 +3587,15 @@ export const  typography = [
       "body",
       "long",
       "sm"
-    ]
+    ],
+    key: "{typography.body.long.sm}"
   },
   {
     $type: "typography",
     $value: {
       fontFamily: "Inter",
-      fontWeight: 400,
-      lineHeight: "1.7",
+      fontWeight: "400",
+      lineHeight: 1.7,
       fontSize: "0.875rem",
       letterSpacing: "0.15%"
     },
@@ -3480,7 +3618,8 @@ export const  typography = [
       "body",
       "long",
       "xs"
-    ]
+    ],
+    key: "{typography.body.long.xs}"
   }
 ] 
 
@@ -3499,7 +3638,8 @@ export const  opacity = [
     path: [
       "disabled",
       "opacity"
-    ]
+    ],
+    key: "{disabled.opacity}"
   },
   {
     $type: "opacity",
@@ -3515,7 +3655,8 @@ export const  opacity = [
     path: [
       "opacity",
       "30"
-    ]
+    ],
+    key: "{opacity.30}"
   }
 ] 
 
@@ -3549,7 +3690,8 @@ export const  shadow = [
     path: [
       "shadow",
       "100"
-    ]
+    ],
+    key: "{shadow.100}"
   },
   {
     $type: "shadow",
@@ -3587,7 +3729,8 @@ export const  shadow = [
     path: [
       "shadow",
       "200"
-    ]
+    ],
+    key: "{shadow.200}"
   },
   {
     $type: "shadow",
@@ -3625,7 +3768,8 @@ export const  shadow = [
     path: [
       "shadow",
       "300"
-    ]
+    ],
+    key: "{shadow.300}"
   },
   {
     $type: "shadow",
@@ -3663,7 +3807,8 @@ export const  shadow = [
     path: [
       "shadow",
       "400"
-    ]
+    ],
+    key: "{shadow.400}"
   },
   {
     $type: "shadow",
@@ -3701,7 +3846,8 @@ export const  shadow = [
     path: [
       "shadow",
       "500"
-    ]
+    ],
+    key: "{shadow.500}"
   },
   {
     $type: "shadow",
@@ -3717,7 +3863,8 @@ export const  shadow = [
     path: [
       "shadow",
       "xs"
-    ]
+    ],
+    key: "{shadow.xs}"
   },
   {
     $type: "shadow",
@@ -3733,7 +3880,8 @@ export const  shadow = [
     path: [
       "shadow",
       "sm"
-    ]
+    ],
+    key: "{shadow.sm}"
   },
   {
     $type: "shadow",
@@ -3749,7 +3897,8 @@ export const  shadow = [
     path: [
       "shadow",
       "md"
-    ]
+    ],
+    key: "{shadow.md}"
   },
   {
     $type: "shadow",
@@ -3765,7 +3914,8 @@ export const  shadow = [
     path: [
       "shadow",
       "lg"
-    ]
+    ],
+    key: "{shadow.lg}"
   },
   {
     $type: "shadow",
@@ -3781,6 +3931,7 @@ export const  shadow = [
     path: [
       "shadow",
       "xl"
-    ]
+    ],
+    key: "{shadow.xl}"
   }
 ] 

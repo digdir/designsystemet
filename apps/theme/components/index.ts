@@ -1,5 +1,4 @@
 export { Color } from './Color/Color';
-export { ColorPicker } from './ColorPicker/ColorPicker';
 export { Group } from './Group/Group';
 export { Previews } from './Previews/Previews';
 export { Scale } from './Scale/Scale';
@@ -11,8 +10,7 @@ export { ColorPreview } from './ColorPreview/ColorPreview';
 export { ColorPane } from './Sidebar/ColorPane/ColorPane';
 export { ColorTokens } from './ColorTokens/ColorTokens';
 export { ColorContrasts } from './ColorContrasts/ColorContrasts';
-export { BorderRadius } from './BorderRadius/BorderRadius';
-export { Theme1 } from './Previews/Theme1/Theme1';
+export { OverviewComponents } from './OverviewComponents/OverviewComponents';
 export { BorderRadiusInput } from './BorderRadiusInput/BorderRadiusInput';
-export { Header } from './Header/Header';
+export { ThemeHeader } from './ThemeHeader/ThemeHeader';
 export { ToggleChip } from './ToggleChip/ToggleChip';

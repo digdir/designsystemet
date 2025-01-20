@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.47
+
+## 1.0.0-next.46
+
+### Patch Changes
+
+- Input: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Helptext: Remove component ([#2956](https://github.com/digdir/designsystemet/pull/2956))
+
+- Textfield: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Tabs: Content will get focus when it has no focusable elements ([#2991](https://github.com/digdir/designsystemet/pull/2991))
+
 ## 1.0.0-next.45
 
 ### Patch Changes

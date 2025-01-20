@@ -37,7 +37,7 @@ const ComboboxChips = () => {
                   option: selectedOptions[value],
                   remove: true,
                 });
-                inputRef.current?.focus();
+                inputRef?.current?.focus();
               }
             }}
             onClick={() => {

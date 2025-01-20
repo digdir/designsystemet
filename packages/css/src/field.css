@@ -14,7 +14,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true'], :disabled) > * {
+  &:has([aria-disabled='true']:not(u-option), :disabled:not(option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
@@ -51,7 +51,7 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    &:not(:has([readonly], [aria-disabled='true'], :disabled)) label {
+    &:not(:has([readonly], [aria-disabled='true']:not(u-option), :disabled:not(option))) label {
       cursor: pointer;
     }
 
@@ -61,6 +61,11 @@
 
     &:has(input:only-child) {
       gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
+    }
+
+    /* Using .ds-input to ensure it's only our component */
+    & .ds-input:is([type='radio'], [type='checkbox']):not([aria-label]) {
+      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
     }
 
     &[data-position='end'] {

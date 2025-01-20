@@ -6,7 +6,7 @@ import { Tabs } from '.';
 const user = userEvent.setup();
 
 describe('Tabs', () => {
-  test('can navigate tabs with keyboard', async () => {
+  it('can navigate tabs with keyboard', async () => {
     render(
       <Tabs>
         <Tabs.List>
@@ -28,7 +28,7 @@ describe('Tabs', () => {
     expect(tab1).toHaveFocus();
   });
 
-  test('renders content based on value', async () => {
+  it('renders content based on value', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -47,7 +47,7 @@ describe('Tabs', () => {
     expect(screen.queryByText('content 1')).not.toBeInTheDocument();
   });
 
-  test('item renders with correct aria attributes', async () => {
+  it('item renders with correct aria attributes', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -63,7 +63,7 @@ describe('Tabs', () => {
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
-  test('renders ReactNodes as children when TabsPanels value is selected', () => {
+  it('renders ReactNodes as children when TabsPanels value is selected', () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.Panel value='value1'>
@@ -76,7 +76,7 @@ describe('Tabs', () => {
     expect(content).toBeInTheDocument();
   });
 
-  test('can navigate tabs with keyboard', async () => {
+  it('can navigate tabs with keyboard', async () => {
     render(
       <Tabs.List>
         <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
@@ -92,5 +92,29 @@ describe('Tabs', () => {
     expect(tab2).toHaveFocus();
     await user.type(tab2, '{arrowleft}');
     expect(tab1).toHaveFocus();
+  });
+
+  it('has tabindex 0 on tabpanel', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+      </Tabs>,
+    );
+
+    const panel = screen.getByRole('tabpanel');
+    expect(panel).toHaveAttribute('tabindex', '0');
+  });
+
+  it('has no tabindex when tabpanel has focusable element', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.Panel value='value1'>
+          <input type='text' />
+        </Tabs.Panel>
+      </Tabs>,
+    );
+
+    const panel = screen.getByRole('tabpanel');
+    expect(panel).not.toHaveAttribute('tabindex', '0');
   });
 });

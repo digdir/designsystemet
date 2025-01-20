@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.47
+
+## 1.0.0-next.46
+
+### Patch Changes
+
+- Helptext: Remove component ([#2956](https://github.com/digdir/designsystemet/pull/2956))
+
+- Field: Don't show as disabled when option is disabled ([#2980](https://github.com/digdir/designsystemet/pull/2980))
+
+- Changed focus color to use neutral instead of accent color ([#2989](https://github.com/digdir/designsystemet/pull/2989))
+
+- Tabs: Rework component CSS ([#2991](https://github.com/digdir/designsystemet/pull/2991))
+
 ## 1.0.0-next.45
 
 ### Minor Changes

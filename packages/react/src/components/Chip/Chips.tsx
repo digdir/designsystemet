@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Input } from '../Input';
+import { Input, type InputProps } from '../Input';
 
 type ChipBaseProps = {
   /**
@@ -74,7 +74,8 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
     },
     ref,
   ) {
-    const inputType = (rest as { type?: string }).type ?? 'checkbox';
+    const inputType =
+      (rest as { type?: InputProps['type'] }).type ?? 'checkbox';
     const Component = asChild ? Slot : 'label';
 
     return (

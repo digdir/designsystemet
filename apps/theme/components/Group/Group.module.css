@@ -5,20 +5,13 @@
 }
 
 .header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   margin-bottom: 16px;
   padding-bottom: 16px;
   text-align: center;
   width: 100%;
   position: relative;
   font-size: 16px;
-}
-
-.featured {
-  border-bottom-width: 2px;
-  border-color: #0062ba;
-  color: #0062ba;
-  font-weight: 500;
 }
 
 .names {
