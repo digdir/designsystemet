@@ -21,6 +21,12 @@
   text-align: center;
   margin: 0 auto;
   margin-top: var(--ds-size-12);
+
+  @media screen and (max-width: 860px) {
+    & h1 {
+      font-size: var(--ds-font-size-9);
+    }
+  }
 }
 
 .ingress {
@@ -55,9 +61,10 @@
 
   max-width: var(--text-max-width);
   margin: 0 auto;
+  width: 100%;
 }
 
-.content img {
+/* .content img {
   display: block;
   width: 860px;
   margin: var(--ds-size-12) 0;
@@ -71,7 +78,7 @@
   width: 860px;
   margin-left: calc((100% - 860px) / 2) !important;
   background-color: var(--ds-color-neutral-background-subtle);
-}
+} */
 
 .main > figure {
   margin: auto;
