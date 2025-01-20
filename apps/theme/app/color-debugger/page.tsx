@@ -3,8 +3,10 @@
 import { Heading } from '@digdir/designsystemet-react';
 import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
+import cl from 'clsx/lite';
 import { useEffect } from 'react';
 import { ColorGrid } from './ColorGrid/ColorGrid';
+import { ColorSaturation } from './ColorSaturation/ColorSaturation';
 import { ContrastColors } from './ContrastColors/ContrastColors';
 import { ContrastTests } from './ContrastTests/ContrastTests';
 import { Scales } from './Scales/Scales';
@@ -15,10 +17,9 @@ import classes from './page.module.css';
 
 export default function Home() {
   const luminance = useDebugStore((state) => state.luminance);
-  const interpolationMode = useDebugStore((state) => state.interpolationMode);
   const colorScales = useDebugStore((state) => state.colorScales);
   const setColorScales = useDebugStore((state) => state.setColorScales);
-  const baseModifier = useDebugStore((state) => state.baseModifier);
+  const themeSettings = useDebugStore((state) => state.themeSettings);
   const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
   const steps = [
@@ -46,10 +47,7 @@ export default function Home() {
           'hsl',
         ).hex() as CssColor;
 
-        const theme = generateColorSchemes(color, luminance, {
-          interpolationMode,
-          baseModifier,
-        });
+        const theme = generateColorSchemes(color, luminance, themeSettings);
 
         innerThemes.push(theme);
       }
@@ -57,16 +55,29 @@ export default function Home() {
     }
     setColorScales(themes);
     setColorScale(themes[0][0]);
-  }, [luminance, interpolationMode, baseModifier]);
+  }, [
+    luminance,
+    themeSettings.base.modifier,
+    themeSettings.interpolation.mode,
+  ]);
 
   return (
     <div className={classes.page}>
+      <div
+        className={cl(
+          classes.top,
+          themeSettings.general.testMode === 'production' && classes.topProd,
+        )}
+      ></div>
       <div className={classes.content}>
         <Heading className={classes.pageHeading} data-size='md'>
           Color System Debugger
         </Heading>
         <Heading className={classes.heading}>Contrast tests</Heading>
         <ContrastTests />
+
+        <Heading className={classes.heading}>Saturation adjustments</Heading>
+        <ColorSaturation />
 
         <Heading className={classes.heading}>Base and contrast colors</Heading>
         <ContrastColors />

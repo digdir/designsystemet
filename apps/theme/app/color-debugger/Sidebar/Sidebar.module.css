@@ -4,11 +4,11 @@
   z-index: 10;
   border-radius: 8px;
   position: fixed;
-  top: 32px;
+  top: 48px;
   right: 32px;
   bottom: 32px;
   width: 410px;
-  padding: 20px;
+  padding: 32px 20px 20px 20px;
   display: flex;
   gap: 20px;
   flex-direction: column;

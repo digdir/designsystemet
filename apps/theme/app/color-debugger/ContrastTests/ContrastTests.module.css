@@ -10,7 +10,7 @@
 }
 
 .column {
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid #c0c0c0;
   padding: 20px;
   border-radius: 8px;
   width: 50%;
@@ -22,6 +22,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.circleText {
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .items {
@@ -52,8 +57,8 @@
 
 .circle {
   background-color: #b0e7b0;
-  height: 36px;
-  width: 36px;
+  height: 38px;
+  width: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;

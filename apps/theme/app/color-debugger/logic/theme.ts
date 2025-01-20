@@ -13,6 +13,7 @@ import {
   getLuminanceFromLightness,
 } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
+import type { ThemeSettingsType } from '../debugStore';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -21,11 +22,6 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   purple: '#663299',
   red: '#C01B1B',
   yellow: '#D4B12F',
-};
-
-export const ThemeSettings = {
-  baseModifier: 8,
-  interpolationMode: 'rgb',
 };
 
 export type InterpolationMode =
@@ -50,13 +46,9 @@ export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
   luminance: Record<string, Record<string, number>> | undefined,
-  themeSettings: { baseModifier: number; interpolationMode: InterpolationMode },
+  themeSettings: ThemeSettingsType,
 ): ColorInfo[] => {
-  const baseColors = getBaseColors(
-    color,
-    colorScheme,
-    themeSettings.baseModifier,
-  );
+  const baseColors = getBaseColors(color, colorScheme, themeSettings);
   const luminanceValues = luminance?.[colorScheme];
 
   // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
@@ -64,7 +56,7 @@ export const generateColorScale = (
     ([key, value], index) => ({
       name: key,
       hex: chroma(color)
-        .luminance(value, themeSettings.interpolationMode)
+        .luminance(value, themeSettings?.interpolation?.mode)
         .hex() as CssColor,
       number: (index + 1) as ColorNumber,
     }),
@@ -99,7 +91,7 @@ export const generateColorScale = (
 export const generateColorSchemes = (
   color: CssColor,
   luminance: Record<string, Record<string, number>> | undefined,
-  themeSettings: { baseModifier: number; interpolationMode: InterpolationMode },
+  themeSettings: ThemeSettingsType,
 ): ThemeInfo => ({
   light: generateColorScale(color, 'light', luminance, themeSettings),
   dark: generateColorScale(color, 'dark', luminance, themeSettings),
@@ -116,15 +108,22 @@ export const generateColorSchemes = (
 const getBaseColors = (
   color: CssColor,
   colorScheme: ColorScheme,
-  baseModifier: number,
+  themeSettings: ThemeSettingsType,
 ) => {
   let colorLightness = getLightnessFromHex(color);
+  const baseModifier = themeSettings.base?.modifier || 8;
+  const baseNegativeModeMin = themeSettings.base?.negativeModeMin;
+  const baseNegativeModRangeMin = themeSettings.base?.negativeModRangeMin;
+  const baseNegativeModRangeMax = themeSettings.base?.negativeModRangeMax;
+
   if (colorScheme !== 'light') {
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
 
   const modifier =
-    colorLightness <= 30 || (colorLightness >= 49.5 && colorLightness <= 65)
+    colorLightness <= baseNegativeModeMin ||
+    (colorLightness >= baseNegativeModRangeMin &&
+      colorLightness <= baseNegativeModRangeMax)
       ? -baseModifier
       : baseModifier;
   const calculateLightness = (base: number, mod: number) => base - mod;

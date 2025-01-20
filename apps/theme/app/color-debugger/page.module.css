@@ -3,7 +3,7 @@
   margin-top: -120px;
   z-index: 99;
   position: relative;
-  padding-top: 48px;
+  padding-top: 62px;
 }
 
 .content {
@@ -15,4 +15,18 @@
 .heading {
   margin-top: 32px;
   margin-bottom: 18px;
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-color: rgb(255, 190, 116);
+  z-index: 5;
+}
+
+.topProd {
+  background-color: rgb(122, 211, 113);
 }

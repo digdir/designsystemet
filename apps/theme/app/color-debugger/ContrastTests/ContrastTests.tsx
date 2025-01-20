@@ -8,7 +8,11 @@ import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 import chroma from 'chroma-js';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-import { type LuminanceType, useDebugStore } from '../debugStore';
+import {
+  type LuminanceType,
+  type ThemeSettingsType,
+  useDebugStore,
+} from '../debugStore';
 import { generateColorSchemes } from '../logic/theme';
 import classes from './ContrastTests.module.css';
 
@@ -16,20 +20,19 @@ type ItemProps = {
   text: string;
   text2?: string;
   error: boolean;
+  circleText?: string;
 };
 
-const generateBaseThemes = (luminance: LuminanceType, baseModifier: number) => {
+const generateBaseThemes = (
+  luminance: LuminanceType,
+  themeSettings: ThemeSettingsType,
+) => {
   const themes = [];
   for (let i = 0; i < 1000; i++) {
     const color = chroma('#0062BA')
       .luminance((i + 1) / 1000)
       .hex() as CssColor;
-    themes.push(
-      generateColorSchemes(color, luminance, {
-        baseModifier: baseModifier,
-        interpolationMode: 'rgb',
-      }),
-    );
+    themes.push(generateColorSchemes(color, luminance, themeSettings));
   }
   return themes;
 };
@@ -38,14 +41,14 @@ export const ContrastTests = () => {
   const luminance = useDebugStore((state) => state.luminance);
   const theme = useDebugStore((state) => state.colorScale);
   const [baseThemes, setBaseThemes] = useState<ThemeInfo[]>([]);
-  const baseModifier = useDebugStore((state) => state.baseModifier);
+  const themeSettings = useDebugStore((state) => state.themeSettings);
 
   useEffect(() => {
-    setBaseThemes(generateBaseThemes(luminance, baseModifier));
+    setBaseThemes(generateBaseThemes(luminance, themeSettings));
   }, []);
 
   const onClicky = () => {
-    setBaseThemes(generateBaseThemes(luminance, baseModifier));
+    setBaseThemes(generateBaseThemes(luminance, themeSettings));
   };
 
   const getContrastMessage = (
@@ -85,12 +88,17 @@ export const ContrastTests = () => {
     return passed;
   };
 
-  const Item = ({ text, text2, error }: ItemProps) => {
+  const Item = ({ text, text2, error, circleText }: ItemProps) => {
     return (
       <div className={cl(classes.item)}>
         <div className={cl(classes.circle, error && classes.failed)}>
-          {!error && <CheckmarkIcon title='a11y-title' fontSize='1.5rem' />}
-          {error && <XMarkIcon title='a11y-title' fontSize='1.5rem' />}
+          {circleText && <div className={classes.circleText}>{circleText}</div>}
+          {!circleText && (
+            <>
+              {!error && <CheckmarkIcon title='a11y-title' fontSize='1.7rem' />}
+              {error && <XMarkIcon title='a11y-title' fontSize='1.7rem' />}
+            </>
+          )}
         </div>
         <div className={classes.textContainer}>
           <div className={classes.title}>{text}</div>
@@ -98,6 +106,22 @@ export const ContrastTests = () => {
         </div>
       </div>
     );
+  };
+
+  const getCircleText = (
+    theme: ThemeInfo,
+    num1: number,
+    num2: number,
+    colorScheme: 'light' | 'dark',
+  ) => {
+    const contrast = getContrastFromHex(
+      theme[colorScheme][num1].hex,
+      theme[colorScheme][num2].hex,
+    ).toFixed(1);
+    if (contrast.length === 4) {
+      return contrast.substring(0, contrast.length - 2);
+    }
+    return contrast;
   };
 
   return (
@@ -121,6 +145,7 @@ export const ContrastTests = () => {
                   theme.light[12].hex,
                 ).toFixed(1)
               }
+              circleText={getCircleText(theme, 0, 12, 'light')}
             />
             <Item
               error={
@@ -129,6 +154,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 12, 4.5, 'light')}
+              circleText={getCircleText(theme, 1, 12, 'light')}
             />
             <Item
               error={
@@ -137,6 +163,7 @@ export const ContrastTests = () => {
               }
               text='Surface Default'
               text2={getContrastMessage(2, 12, 4.5, 'light')}
+              circleText={getCircleText(theme, 2, 12, 'light')}
             />
             <Item
               error={
@@ -145,6 +172,7 @@ export const ContrastTests = () => {
               }
               text='Surface Hover'
               text2={getContrastMessage(3, 12, 4.5, 'light')}
+              circleText={getCircleText(theme, 3, 12, 'light')}
             />
             <Item
               error={
@@ -153,6 +181,7 @@ export const ContrastTests = () => {
               }
               text='Surface Active'
               text2={getContrastMessage(4, 12, 4.5, 'light')}
+              circleText={getCircleText(theme, 4, 12, 'light')}
             />
           </div>
         </div>
@@ -167,6 +196,7 @@ export const ContrastTests = () => {
               }
               text='Background Default'
               text2={getContrastMessage(0, 12, 4.5, 'dark')}
+              circleText={getCircleText(theme, 0, 12, 'dark')}
             />
             <Item
               error={
@@ -174,6 +204,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 12, 4.5, 'dark')}
+              circleText={getCircleText(theme, 1, 12, 'dark')}
             />
             <Item
               error={
@@ -181,6 +212,7 @@ export const ContrastTests = () => {
               }
               text='Surface Default'
               text2={getContrastMessage(2, 12, 4.5, 'dark')}
+              circleText={getCircleText(theme, 2, 12, 'dark')}
             />
             <Item
               error={
@@ -188,6 +220,7 @@ export const ContrastTests = () => {
               }
               text='Surface Hover'
               text2={getContrastMessage(3, 12, 4.5, 'dark')}
+              circleText={getCircleText(theme, 3, 12, 'dark')}
             />
             <Item
               error={
@@ -195,6 +228,7 @@ export const ContrastTests = () => {
               }
               text='Surface Active'
               text2={getContrastMessage(4, 12, 4.5, 'dark')}
+              circleText={getCircleText(theme, 4, 12, 'dark')}
             />
           </div>
         </div>
@@ -211,6 +245,7 @@ export const ContrastTests = () => {
               }
               text='Background Default'
               text2={getContrastMessage(0, 6, 3, 'light')}
+              circleText={getCircleText(theme, 0, 6, 'light')}
             />
             <Item
               error={
@@ -218,6 +253,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 6, 3, 'light')}
+              circleText={getCircleText(theme, 1, 6, 'light')}
             />
           </div>
         </div>
@@ -232,6 +268,7 @@ export const ContrastTests = () => {
               }
               text='Background Default'
               text2={getContrastMessage(0, 6, 3, 'dark')}
+              circleText={getCircleText(theme, 0, 6, 'dark')}
             />
             <Item
               error={
@@ -239,6 +276,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 6, 3, 'dark')}
+              circleText={getCircleText(theme, 1, 6, 'dark')}
             />
           </div>
         </div>
@@ -255,6 +293,7 @@ export const ContrastTests = () => {
               }
               text='Background Default'
               text2={getContrastMessage(0, 7, 4.5, 'light')}
+              circleText={getCircleText(theme, 0, 7, 'light')}
             />
             <Item
               error={
@@ -262,6 +301,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 7, 4.5, 'light')}
+              circleText={getCircleText(theme, 1, 7, 'light')}
             />
           </div>
         </div>
@@ -276,6 +316,7 @@ export const ContrastTests = () => {
               }
               text='Background Default'
               text2={getContrastMessage(0, 7, 4.5, 'dark')}
+              circleText={getCircleText(theme, 0, 7, 'dark')}
             />
             <Item
               error={
@@ -283,6 +324,7 @@ export const ContrastTests = () => {
               }
               text='Background Subtle'
               text2={getContrastMessage(1, 7, 4.5, 'dark')}
+              circleText={getCircleText(theme, 1, 7, 'dark')}
             />
           </div>
         </div>

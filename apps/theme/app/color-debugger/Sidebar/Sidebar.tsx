@@ -2,21 +2,17 @@ import { Field, Heading, Select } from '@digdir/designsystemet-react';
 import type { InterpolationMode } from 'chroma-js';
 
 import { DoubleInput } from '../DoubleInput/DoubleInput';
+import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
 import { getFullNameFromShort } from '../logic/utils';
 import classes from './Sidebar.module.css';
-import 'rc-slider/assets/index.css';
 
 import {} from 'react-range';
 
 export const Sidebar = () => {
   const luminance = useDebugStore((state) => state.luminance);
-
-  const setInterpolationMode = useDebugStore(
-    (state) => state.setInterpolationMode,
-  );
-  const baseModifier = useDebugStore((state) => state.baseModifier);
-  const setBaseModifier = useDebugStore((state) => state.setBaseModifier);
+  const themeSettings = useDebugStore((state) => state.themeSettings);
+  const setThemeSettings = useDebugStore((state) => state.setThemeSettings);
 
   return (
     <div className={classes.sidebar}>
@@ -40,9 +36,19 @@ export const Sidebar = () => {
             <div>Test mode</div>
             <div className={classes.field}>
               <Field data-size='xs'>
-                <Select onChange={(e) => {}}>
-                  <Select.Option value='light'>Debug</Select.Option>
-                  <Select.Option value='dark'>Production</Select.Option>
+                <Select
+                  onChange={(e) => {
+                    setThemeSettings({
+                      ...themeSettings,
+                      general: {
+                        ...themeSettings.general,
+                        testMode: e.target.value as 'debug' | 'production',
+                      },
+                    });
+                  }}
+                >
+                  <Select.Option value='debug'>Debug</Select.Option>
+                  <Select.Option value='production'>Production</Select.Option>
                 </Select>
               </Field>
             </div>
@@ -62,23 +68,58 @@ export const Sidebar = () => {
           />
           <DoubleInput
             label='Step Modifier'
-            valueOne={baseModifier.toString()}
+            valueOne={themeSettings.base.modifier.toString()}
             setValueOne={(e) => {
               console.log(e);
-              setBaseModifier(parseInt(e));
+              setThemeSettings({
+                ...themeSettings,
+                base: {
+                  ...themeSettings.base,
+                  modifier: parseFloat(e),
+                },
+              });
             }}
           />
           <DoubleInput
             label='Negative mod min'
-            valueOne={'30'}
-            setValueOne={(e) => {}}
+            valueOne={themeSettings.base.negativeModeMin.toString()}
+            setValueOne={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                base: {
+                  ...themeSettings.base,
+                  negativeModeMin: parseFloat(e),
+                },
+              });
+            }}
           />
           <DoubleInput
             label='Negative mod range'
-            valueOne={'45'}
-            setValueOne={(e) => {}}
-            valueTwo={'69'}
-            setValueTwo={(e) => {}}
+            valueOne={themeSettings.base.negativeModRangeMin.toString()}
+            setValueOne={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                base: {
+                  ...themeSettings.base,
+                  negativeModRangeMin: parseFloat(e),
+                },
+              });
+            }}
+            valueTwo={themeSettings.base.negativeModRangeMax.toString()}
+            setValueTwo={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                base: {
+                  ...themeSettings.base,
+                  negativeModRangeMax: parseFloat(e),
+                },
+              });
+            }}
+          />
+          <RangeBar
+            min={themeSettings.base.negativeModeMin}
+            rangeMin={themeSettings.base.negativeModRangeMin}
+            rangeMax={themeSettings.base.negativeModRangeMax}
           />
         </div>
       </div>
@@ -88,21 +129,51 @@ export const Sidebar = () => {
         </Heading>
         <div className={classes.group}>
           <DoubleInput
-            label='Default lightness modifier'
+            label='Default lightness'
             valueOne={'50'}
             setValueOne={(e) => {}}
           />
           <DoubleInput
             label='Custom mod range'
-            valueOne={'40'}
-            setValueOne={(e) => {}}
-            valueTwo={'60'}
-            setValueTwo={(e) => {}}
+            valueOne={themeSettings.contrastSubtle.customModRangeMin.toString()}
+            setValueOne={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                contrastSubtle: {
+                  ...themeSettings.contrastSubtle,
+                  customModRangeMin: parseFloat(e),
+                },
+              });
+            }}
+            valueTwo={themeSettings.contrastSubtle.customModRangeMax.toString()}
+            setValueTwo={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                contrastSubtle: {
+                  ...themeSettings.contrastSubtle,
+                  customModRangeMax: parseFloat(e),
+                },
+              });
+            }}
           />
           <DoubleInput
             label='Custom modifier result'
-            valueOne={'60'}
-            setValueOne={(e) => {}}
+            valueOne={themeSettings.contrastSubtle.customModResult.toString()}
+            setValueOne={(e) => {
+              setThemeSettings({
+                ...themeSettings,
+                contrastSubtle: {
+                  ...themeSettings.contrastSubtle,
+                  customModResult: parseFloat(e),
+                },
+              });
+            }}
+          />
+          <RangeBar
+            min={0}
+            rangeMin={themeSettings.contrastSubtle.customModRangeMin}
+            rangeMax={themeSettings.contrastSubtle.customModRangeMax}
+            barActiveColor='#797979'
           />
         </div>
       </div>
@@ -116,7 +187,12 @@ export const Sidebar = () => {
             <Field data-size='xs'>
               <Select
                 onChange={(e) => {
-                  setInterpolationMode(e.target.value as InterpolationMode);
+                  setThemeSettings({
+                    ...themeSettings,
+                    interpolation: {
+                      mode: e.target.value as InterpolationMode,
+                    },
+                  });
                 }}
               >
                 <Select.Option value='rgb'>RGB</Select.Option>

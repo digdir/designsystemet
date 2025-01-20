@@ -1,0 +1,22 @@
+.bar {
+  height: 7px;
+  width: 100%;
+  background-color: #dbdbdb;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.min {
+  height: 7px;
+  width: 30%;
+  background-color: #ff8484;
+}
+
+.range {
+  height: 7px;
+  width: 30%;
+  margin-left: 30%;
+  background-color: #ff8484;
+}

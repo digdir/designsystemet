@@ -9,37 +9,73 @@ import { subscribeWithSelector } from 'zustand/middleware';
 
 export type BaseBorderRadius = number;
 export type LuminanceType = typeof luminance;
+export type ThemeSettingsType = {
+  general: {
+    testMode: 'debug' | 'production';
+    colorScheme: 'light' | 'dark';
+  };
+  base: {
+    modifier: number;
+    darkOffset: number;
+    negativeModeMin: number;
+    negativeModRangeMin: number;
+    negativeModRangeMax: number;
+  };
+  interpolation: {
+    mode: InterpolationMode;
+  };
+  contrastSubtle: {
+    lightnessMod: number;
+    customModRangeMin: number;
+    customModRangeMax: number;
+    customModResult: number;
+  };
+};
+
 type ColorStore = {
+  themeSettings: ThemeSettingsType;
+  setThemeSettings: (themeSettings: ThemeSettingsType) => void;
   referenceLuminance: LuminanceType;
   luminance: LuminanceType;
   setLightLuminance: (luminance: LuminanceType) => void;
   setDarkLuminance: (luminance: LuminanceType) => void;
-  interpolationMode: InterpolationMode;
-  setInterpolationMode: (interpolationMode: InterpolationMode) => void;
   colorScales: ThemeInfo[][];
   setColorScales: (colorScales: ThemeInfo[][]) => void;
   colorScale: ThemeInfo;
   setColorScale: (colorScale: ThemeInfo) => void;
-  baseModifier: number;
-  setBaseModifier: (baseModifier: number) => void;
-  conSubSettings: {
-    lightnessMod: string;
-  };
 };
 
 export const useDebugStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
+    themeSettings: {
+      general: {
+        testMode: 'debug',
+        colorScheme: 'light',
+      },
+      base: {
+        modifier: 8,
+        darkOffset: 0,
+        negativeModeMin: 30,
+        negativeModRangeMin: 49.5,
+        negativeModRangeMax: 65,
+      },
+      interpolation: {
+        mode: 'rgb',
+      },
+      contrastSubtle: {
+        lightnessMod: 50,
+        customModRangeMin: 40,
+        customModRangeMax: 60,
+        customModResult: 60,
+      },
+    },
+    setThemeSettings: (themeSettings) => set({ themeSettings }),
     luminance: luminance,
     referenceLuminance: luminance,
-    interpolationMode: 'rgb',
     colorScales: [],
     colorScale: generateColorSchemes('#008000'),
-    baseModifier: 8,
-    setBaseModifier: (baseModifier) => set({ baseModifier }),
     setColorScales: (colorScales) => set({ colorScales }),
     setColorScale: (colorScale) => set({ colorScale }),
-    setInterpolationMode: (interpolationMode: InterpolationMode) =>
-      set({ interpolationMode }),
     setLightLuminance: (luminance) => set({ luminance }),
     setDarkLuminance: (luminance) => set({ luminance }),
   })),
