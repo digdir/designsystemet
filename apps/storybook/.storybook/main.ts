@@ -3,15 +3,15 @@ import { resolve } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
 
+const dirname = import.meta.dirname || __dirname;
+
 const config: StorybookConfig = {
   typescript: {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      include: [
-        resolve(import.meta.dirname, '../../../packages/react/**/**.tsx'),
-      ], // <- This is the important line.
+      include: [resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
@@ -49,7 +49,7 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: resolve(import.meta.dirname, '../../../vite.config.ts'),
+        viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
       },
     },
   },
