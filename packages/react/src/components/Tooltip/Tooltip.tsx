@@ -16,6 +16,7 @@ import {
   useId,
   useRef,
   useState,
+  version,
 } from 'react';
 
 import { useMergeRefs } from '@floating-ui/react';
@@ -142,14 +143,19 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       return null;
     }
 
+    const popoverProps = {
+      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']:
+        id ?? randomTooltipId,
+      [version.startsWith('19')
+        ? 'popoverTargetAction'
+        : 'popovertargetaction']: 'show',
+    };
+
     return (
       <>
         <ChildContainer
           ref={triggerRef}
-          popovertarget={id ?? randomTooltipId}
-          // We set this to not close on click, since it should always show on hover
-          // @ts-ignore @types/react-dom does not understand popovertargetaction yet
-          popovertargetaction='show'
+          {...popoverProps}
           onMouseEnter={setOpen}
           onMouseLeave={setClose}
           onFocus={setOpen}

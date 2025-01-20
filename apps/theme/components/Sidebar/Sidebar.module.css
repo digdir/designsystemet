@@ -2,7 +2,7 @@
   position: relative;
   z-index: 100;
   right: 20px;
-  top: 20px;
+  top: -20px;
   background-color: var(--ds-color-neutral-background-default);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.1);
@@ -26,6 +26,7 @@
 .sticky {
   position: fixed;
   margin-top: 0;
+  top: 20px;
 }
 
 .tabContent {
