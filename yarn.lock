@@ -1889,7 +1889,7 @@ __metadata:
     "@storybook/types": "npm:^8.5.0"
     "@types/react": "npm:19.0.4"
     "@types/react-dom": "npm:^19.0.2"
-    axe-playwright: "npm:^2.0.2"
+    axe-playwright: "npm:^2.0.3"
     clsx: "npm:^2.1.1"
     concurrently: "npm:^9.1.2"
     http-server: "npm:^14.1.1"
@@ -5250,7 +5250,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/junit-report-builder@npm:^3.0.0":
+"@types/junit-report-builder@npm:^3.0.2":
   version: 3.0.2
   resolution: "@types/junit-report-builder@npm:3.0.2"
   checksum: 10/7fead0b771f95cd8e607223ace2f43cc881b3e7944db405f903590b56379d14132032b7d89c9afa7dff266b95f516a476a39ad40f9200bfb61fc8ed7f6b1bff6
@@ -6272,6 +6272,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axe-core@npm:^4.10.0, axe-core@npm:^4.4.2":
+  version: 4.10.2
+  resolution: "axe-core@npm:4.10.2"
+  checksum: 10/a69423b2ff16c15922c4ea7cf9cc5112728a2817bbe0f2cc212248d648885ffd1ba554e3a341dfc289cd9e67fc0d06f333b5c6837c5c38ca6652507381216fc1
+  languageName: node
+  linkType: hard
+
 "axe-core@npm:^4.2.0":
   version: 4.8.2
   resolution: "axe-core@npm:4.8.2"
@@ -6279,44 +6286,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.4.2":
-  version: 4.10.2
-  resolution: "axe-core@npm:4.10.2"
-  checksum: 10/a69423b2ff16c15922c4ea7cf9cc5112728a2817bbe0f2cc212248d648885ffd1ba554e3a341dfc289cd9e67fc0d06f333b5c6837c5c38ca6652507381216fc1
-  languageName: node
-  linkType: hard
-
-"axe-core@npm:^4.5.1":
-  version: 4.10.0
-  resolution: "axe-core@npm:4.10.0"
-  checksum: 10/6158489a7a704edc98bd30ed56243b8280c5203c60e095a2feb5bff95d9bf2ef10becfe359b1cbc8601338418999c26cf4eee704181dedbcb487f4d63a06d8d5
-  languageName: node
-  linkType: hard
-
-"axe-html-reporter@npm:2.2.3":
-  version: 2.2.3
-  resolution: "axe-html-reporter@npm:2.2.3"
+"axe-html-reporter@npm:2.2.11":
+  version: 2.2.11
+  resolution: "axe-html-reporter@npm:2.2.11"
   dependencies:
     mustache: "npm:^4.0.1"
-    rimraf: "npm:^3.0.2"
   peerDependencies:
     axe-core: ">=3"
-  checksum: 10/10a7e4b0ecc663e004a93a1f0bfb434583eb30abd5fa3ec608d8b7d027445ec83d401b77c650184af33cafa884b107d19070bd18850e030f729773167a09e787
+  checksum: 10/489a904c62fe5c74db9490773a624e8573906b54a9c8264b831ee50b648f623ba292a011598d257bd6b8dc35eede21998fc25c799bd99eb9ca8ecf2d05ef92a1
   languageName: node
   linkType: hard
 
-"axe-playwright@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "axe-playwright@npm:2.0.2"
+"axe-playwright@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "axe-playwright@npm:2.0.3"
   dependencies:
-    "@types/junit-report-builder": "npm:^3.0.0"
-    axe-core: "npm:^4.5.1"
-    axe-html-reporter: "npm:2.2.3"
-    junit-report-builder: "npm:^3.0.1"
-    picocolors: "npm:^1.0.0"
+    "@types/junit-report-builder": "npm:^3.0.2"
+    axe-core: "npm:^4.10.0"
+    axe-html-reporter: "npm:2.2.11"
+    junit-report-builder: "npm:^5.1.1"
+    picocolors: "npm:^1.1.0"
   peerDependencies:
     playwright: ">1.0.0"
-  checksum: 10/ad3d9280cc81b97acaa8a88e91a34fb460faf52903cb579dace88dfd2498e1402784b3e2539ebc46d806e327ad2f511b442317d8577d0ea9ffd1d57baf3f5066
+  checksum: 10/c50c1879624be3a4c77faf236d77a8dd7be2d24e01e95f2b90e33ab43a0aabc74c2a1e07d74e8c349ef2742a98fdb34c1438f103ff6cca5a538af91f246603dd
   languageName: node
   linkType: hard
 
@@ -6947,7 +6939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.15.0":
+"chromatic@npm:^11.15.0, chromatic@npm:^11.25.0":
   version: 11.25.0
   resolution: "chromatic@npm:11.25.0"
   peerDependencies:
@@ -6963,25 +6955,6 @@ __metadata:
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
   checksum: 10/df1554940c122d8bcdd5700108ed9546b5eb42b08a3a0b31e3fa3e4fd03f5775f939307fecc7c0800211f96c559e5ef0ce0d68abe895f858330756d0d0e168d0
-  languageName: node
-  linkType: hard
-
-"chromatic@npm:^11.22.1":
-  version: 11.22.1
-  resolution: "chromatic@npm:11.22.1"
-  peerDependencies:
-    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
-    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
-  peerDependenciesMeta:
-    "@chromatic-com/cypress":
-      optional: true
-    "@chromatic-com/playwright":
-      optional: true
-  bin:
-    chroma: dist/bin.js
-    chromatic: dist/bin.js
-    chromatic-cli: dist/bin.js
-  checksum: 10/1358be540adcf93af50f03f408d75cc732c9236e0048cbfe4e805a85c38b9ecc1436ccbd334ddf8076893deace65de06910f9ff139a0715061e46acc4fb31b06
   languageName: node
   linkType: hard
 
@@ -7705,13 +7678,6 @@ __metadata:
   version: 1.4.0
   resolution: "dataloader@npm:1.4.0"
   checksum: 10/8dc2181f7fc243f657aa97b5aa51b9e0da88dee9a59a689bab50d4bac826c27ae0457db8d9a5d59559d636f6b997f419303ccfde595cc26191f37ab9c792fe01
-  languageName: node
-  linkType: hard
-
-"date-format@npm:4.0.3":
-  version: 4.0.3
-  resolution: "date-format@npm:4.0.3"
-  checksum: 10/5f5ea388dc211e8e5cab515b72b5b6fa071d42d029bdc8cc71a7f8a2d25726c3128a49d9ad78474d1b1ba39f83fe9837e431d0bfc8de5941f850d06cf5841eb5
   languageName: node
   linkType: hard
 
@@ -11385,15 +11351,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"junit-report-builder@npm:^3.0.1":
-  version: 3.2.1
-  resolution: "junit-report-builder@npm:3.2.1"
+"junit-report-builder@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "junit-report-builder@npm:5.1.1"
   dependencies:
-    date-format: "npm:4.0.3"
     lodash: "npm:^4.17.21"
     make-dir: "npm:^3.1.0"
     xmlbuilder: "npm:^15.1.1"
-  checksum: 10/40743f6b37f6f57ed8eb4469ac05c4ae302ab4f7dfd736b58286c67a384d9555db6ddf08630c63fe854dc7815d5288c42fba9cb3276e63a4ec708a03120e5b61
+  checksum: 10/273678301654c22265a8ccd5a605f498747e2530e801b332f1033fa3e35b3fc3538e10b335674cca41bbc1f4c9476350254820e1f5f0cf4101ac8dd4c1402bf8
   languageName: node
   linkType: hard
 
@@ -15364,7 +15329,7 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:^3.7.2"
     "@vitest/coverage-v8": "npm:^3.0.2"
     "@vitest/expect": "npm:^3.0.2"
-    chromatic: "npm:^11.22.1"
+    chromatic: "npm:^11.25.0"
     copyfiles: "npm:^2.4.1"
     storybook-addon-pseudo-states: "npm:^4.0.2"
     tsconfck: "npm:^3.1.4"
