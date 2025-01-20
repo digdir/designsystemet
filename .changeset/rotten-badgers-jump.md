@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Tag: set `height` for in case used in `display: flex`
+**Tag**: Set `height` in case it is used in `display: flex`
