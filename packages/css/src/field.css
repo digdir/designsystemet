@@ -91,7 +91,6 @@
   --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
-  align-self: stretch; /* If ds-field is placed inside a flex container like ds-field, we need to fill width */
   background: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
@@ -100,7 +99,7 @@
   white-space: nowrap;
 
   &:not([hidden]) {
-    display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+    display: flex;
   }
 
   &:has([size]) {
