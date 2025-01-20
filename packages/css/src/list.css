@@ -1,10 +1,10 @@
 .ds-list {
-  --dsc-list-padding-left: var(--ds-size-6);
+  --dsc-list-padding-inline: var(--ds-size-6) 0;
   --dsc-list-margin-top: var(--ds-size-3);
   --dsc-list-margin-top-nested: var(--ds-size-2);
 
   margin: 0;
-  padding-left: var(--dsc-list-padding-left);
+  padding-inline: var(--dsc-list-padding-inline);
 
   & > li + li {
     margin-top: var(--dsc-list-margin-top);
