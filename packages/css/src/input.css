@@ -26,6 +26,7 @@
   --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
   --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
+  align-self: start; /* Let size attribute win even when placed in display: flex */
   appearance: none;
   background: var(--dsc-input-background);
   border-radius: var(--ds-border-radius-md);

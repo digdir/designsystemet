@@ -9,11 +9,17 @@
   border-radius: var(--ds-border-radius-sm);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
+  height: fit-content; /* In case placed in display: flex */
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
   width: max-content;
   word-break: break-word;
+
+  & :where(img, svg) {
+    flex-shrink: 0;
+    font-size: 1.25em;
+  }
 
   &:not([hidden]) {
     display: inline-flex;

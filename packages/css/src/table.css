@@ -21,7 +21,7 @@
 
   & > :is(tbody, thead, tfoot) > tr > :is(th, td) {
     background: var(--dsc-table-background);
-    border-bottom: var(--dsc-table-border);
+    border-top: var(--dsc-table-border);
     padding: var(--dsc-table-padding);
     text-align: inherit;
 
@@ -32,20 +32,19 @@
 
   & > thead > tr > :is(th, td) {
     background: var(--dsc-table-header-background);
+    border-top: none;
   }
 
   & > thead > tr:last-child > :is(th, td) {
     border-bottom: var(--dsc-table-header-divider);
   }
 
-  /* No border on last tbody row if followed by tfoot */
-  & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
-    border-bottom: none;
+  & > thead + tbody > tr:first-child > :is(th, td) {
+    border-top: none;
   }
 
-  & > tfoot > tr > :is(th, td) {
+  & > tfoot > tr:first-child > :is(th, td) {
     background: var(--dsc-table-header-background);
-    border-bottom: none;
     border-top: var(--dsc-table-header-divider);
   }
 
@@ -68,11 +67,11 @@
   /* Add rounded border to last row */
   & > :is(thead, tbody, tfoot):last-child > tr:last-child > :is(th, td) {
     &:first-child {
-      border-bottom-left-radius: var(--dsc-table-border-radius);
+      border-top-left-radius: var(--dsc-table-border-radius);
     }
 
     &:last-child {
-      border-bottom-right-radius: var(--dsc-table-border-radius);
+      border-top-right-radius: var(--dsc-table-border-radius);
     }
   }
 
@@ -138,7 +137,7 @@
     border: var(--dsc-table-border);
 
     & > :is(thead, tbody):last-child > tr:last-child > :is(th, td) {
-      border-bottom: 0;
+      border-top: 0;
     }
   }
 

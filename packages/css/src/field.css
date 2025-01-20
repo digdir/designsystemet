@@ -1,5 +1,4 @@
 .ds-field {
-  align-items: start;
   flex-direction: column;
   gap: var(--ds-size-2);
 
