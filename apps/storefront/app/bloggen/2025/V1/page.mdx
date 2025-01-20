@@ -1,0 +1,83 @@
+import { PostLayout, Contributors } from '../../_components';
+import { Image } from '@components';
+
+export default ({ children }) => (
+  <PostLayout
+    content={children}
+    heading='Første versjon av Designsystemet er lansert!'
+    ingress='.......'
+    date='28. februar 2025'
+    author='Designsystemet'
+    imageSrc='/img/bloggen/V1.png'
+    imageAlt='Illustrasjon av V1'
+    imageCaption='....'
+  />
+);
+
+export const metadata = {
+  title: 'Første versjon av Designsystemet er lansert!',
+  description:
+    'Endelig lanseres første versjon av Designsystemet! Etter en omfattende utviklingsprosess, tett samarbeid med ulike offentlige aktører og grundig testing, er vi klare med V1!',
+  openGraph: {
+    images: '/img/bloggen/helptext.png',
+  },
+};
+
+Endelig lanseres første versjon av Designsystemet! Etter en omfattende utviklingsprosess, tett samarbeid med ulike offentlige aktører og grundig testing, er vi klare med V1! 
+
+## Hva innebærer V1?
+
+Første versjon markerer en viktig milepæl for designsystemet og inneholder flere forbedringer og nye funksjoner:
+
+- Forbedret tilgjengelighet: Alle komponenter er utviklet med fokus på universell utforming, og vi har gjort grundige vurderinger for å sikre at komponentene er tilgjengelige. 
+- Mer fleksible designtokens: Vi har innført en mer robust token-struktur som gjør det enklere å tilpasse farger, typografi og dimensjoner til ulike behov.
+- Bedre integrasjon uten React: For å sikre bredere anvendelse har vi gjort komponentene lettere å bruke i forskjellige teknologiske rammeverk.
+- Nye og forbedrede komponenter: Basert på tilbakemeldinger fra brukere, har vi forbedret flere komponenter for å øke brukervennligheten og sikre et helhetlig komponent-API.
+- Bedre dokumentasjon: Vi har oppdatert dokumentasjonen for å gjøre det enklere for utviklere og designere å komme i gang og forstå hvordan de kan utnytte systemet best mulig.
+
+<Image
+  src='/img/bloggen/fundament.png'
+  alt='Illustrasjonen viser Designsystemet som et lag på bunnen, mens over ligger virksomhetens eget lag med utvidet funkjonalitet, egen profil og egne preferanser.'
+  boxShadow={false}
+  caption='Designsystemet skal være et godt fundament du kan bygge videre oppå, med din egen profil, egne preferanser og utvidet funksjonalitet som et lag på toppen'
+  dataUnstyled
+/>
+
+## Hva betyr dette for deg som bruker?
+
+Lanseringen av V1 betyr at du nå har tilgang til et mer modent og stabilt designsystem som gir deg:
+
+- Enklere implementering i dine løsninger.
+- En stabil versjon med færre større endringer, noe som gir økt forutsigbarhet.
+- Enklere tilpasning av designsystemets komponenter til egen profil og preferanser.
+- En gjennomarbeidet token-struktur som gir større fleksibilitet og kontroll 
+- Økt tilgjengelighet på tvers av digitale tjenester.
+- Mulighet for å bidra og samarbeide med et økende fellesskap av designere og utviklere.
+
+## Overgangen fra beta til V1
+For de som allerede har tatt i bruk beta-versjonen av designsystemet, har vi utarbeidet en veiledning for å hjelpe deg med å oppdatere fra beta til V1 på en smidig måte.
+
+--> [Migration-guide](https://github.com/digdir/designsystemet/blob/next/MIGRATION.md)
+
+## Veien videre
+
+Vi ser på lanseringen av Designsystemets første versjon som starten på en kontinuerlig forbedringsprosess. Vi vil fortsette å samle inn tilbakemeldinger, forbedre funksjonalitet og legge til nye komponenter basert på de gurnnleggende behovene som går igjen på tvers. 
+
+Har du innspill eller ønsker du å bidra? Ta kontakt med oss via designsystemet.no eller bli med i [vårt fellesskap på Slack]().
+
+Vi gleder oss til å se hvordan designsystemet kan bidra til å skape bedre og mer brukervennlige digitale løsninger for alle!
+
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+    'Øyvind Thune',
+    'Lasse Straum',
+    'Tobias Barsnes',
+    'Eirik Backer',
+    'Une Sofie Kinn Ekroll',
+    'Roy Halvor Frimanslund',
+    'Viveca Krishnamoorthi',
+    'Marianne Røsvik',
+  ]}
+/>
