@@ -13,7 +13,7 @@ import type { DefaultProps } from '../../types';
 type SuggestionContextType = {
   listId?: string;
   setListId?: (id: string) => void;
-  inputRef?: React.RefObject<HTMLInputElement>;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
 };
 
 export const SuggestionContext = createContext<SuggestionContextType>({});
@@ -24,7 +24,7 @@ export type SuggestionProps = DefaultProps &
 export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
   function Suggestion({ defaultValue, className, ...rest }, ref) {
     const [listId, setListId] = useState(useId());
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     return (
       <SuggestionContext.Provider value={{ inputRef, listId, setListId }}>
