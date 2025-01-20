@@ -73,8 +73,8 @@ function makeTokenCommands() {
       4,
     )
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
-    .option('--json <string>', `Path to JSON config file (default: "${DEFAULT_CONFIG_FILE}")`, (value) =>
-      parseJsonConfig(value, { allowFileNotFound: false }),
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`, (value) =>
+      parseConfig(value, { allowFileNotFound: false }),
     )
     .action(async (opts, cmd) => {
       if (opts.dry) {
@@ -82,12 +82,12 @@ function makeTokenCommands() {
       }
 
       /*
-       * Get json config file by looking for the optional default file, or using --json option if supplied.
-       * The file must exist if specified through --json, but is not required otherwise.
+       * Get config file by looking for the optional default file, or using --config option if supplied.
+       * The file must exist if specified through --config, but is not required otherwise.
        */
-      const configFile = await (opts.json
-        ? opts.json
-        : parseJsonConfig(DEFAULT_CONFIG_FILE, { allowFileNotFound: true }));
+      const configFile = await (opts.config
+        ? opts.config
+        : parseConfig(DEFAULT_CONFIG_FILE, { allowFileNotFound: true }));
       const propsFromJson = configFile?.config;
 
       if (propsFromJson) {
@@ -101,7 +101,7 @@ function makeTokenCommands() {
         if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
           console.error(
             chalk.redBright(
-              `In JSON config ${configFile.path}, all themes must have the same custom color names, but we found:`,
+              `In config ${configFile.path}, all themes must have the same custom color names, but we found:`,
             ),
           );
           const themeNames = R.keys(propsFromJson.themes ?? {});
@@ -153,7 +153,7 @@ function makeTokenCommands() {
       try {
         config = combinedConfigSchema.parse(unvalidatedConfig);
       } catch (err) {
-        console.error(chalk.redBright('Invalid config after combining JSON file and CLI options'));
+        console.error(chalk.redBright('Invalid config after combining config file and CLI options'));
         const validationError = makeFriendlyError(err);
         console.error(validationError.toString());
         process.exit(1);
@@ -207,18 +207,18 @@ program
 
 await program.parseAsync(process.argv);
 
-async function parseJsonConfig(
-  jsonPath: string,
+async function parseConfig(
+  configPath: string,
   options: {
     allowFileNotFound: boolean;
   },
 ) {
-  const resolvedPath = path.resolve(process.cwd(), jsonPath);
+  const resolvedPath = path.resolve(process.cwd(), configPath);
 
-  let jsonFile: string;
+  let configFile: string;
   try {
-    jsonFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
-    console.log(`Found JSON config file: ${chalk.green(resolvedPath)}`);
+    configFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {
       const nodeErr = err as NodeJS.ErrnoException;
@@ -231,11 +231,11 @@ async function parseJsonConfig(
   }
   try {
     return {
-      path: jsonPath,
-      config: await configFileSchema.parseAsync(JSON.parse(jsonFile)),
+      path: configPath,
+      config: await configFileSchema.parseAsync(JSON.parse(configFile)),
     };
   } catch (err) {
-    console.error(chalk.redBright(`Invalid JSON config in ${jsonPath}`));
+    console.error(chalk.redBright(`Invalid config in ${configPath}`));
     const validationError = makeFriendlyError(err);
     console.error(validationError.toString());
     process.exit(1);
