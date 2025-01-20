@@ -19,7 +19,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     // This allows our files to use window. Should be removed when RSC is added
-    "lib": ["dom", "esnext", "DOM.Iterable"],
+    "lib": ["dom", "es2022", "DOM.Iterable"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
