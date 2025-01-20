@@ -142,7 +142,7 @@ Her var RGB-teknikken mykje enklare å jobbe med, og laga mykje bedre fargar.
 
 ## Kva med dei andre fargeromma?
 Etter å ha testa ut RGB og HSL fargeromma, så var det på tide å sjå på kva med dei andre fargeromma hadde å by på. 
-Me var ute etter å finne ein metode å lage fargeskalaene på som var enkel å jobbe med og som produserte fine og balanserte fargar.
+Me var ute etter å finne ein metode for å lage fargeskalaene på som var enkel å jobbe med og som produserte fine og balanserte fargar.
 
  <Image
   src='/img/bloggen/fargerom-digdir-rod.png'
@@ -154,37 +154,42 @@ Me var ute etter å finne ein metode å lage fargeskalaene på som var enkel å 
 
 I bildet over ser du fargeskalaer for Digdir sin raude profilfarge i ulike fargerom. 
 Mange av desse fargeromma brukar lightness (lysstyrke) for å definere lysstyrken i fargen. 
-Me opplevde mange av dei samme utfordringane med desse fargeromme som med HSL, der me måtte skrive mykje komplisert logikk for å få fargar med ulike fargetonar til å fungere godt i saman.
+Me opplevde derfor mange av dei samme utfordringane med desse fargeromme som med HSL, der me måtte skrive mykje komplisert logikk for å få fargar med ulike fargetonar til å fungere godt i saman.
 
 OKLCH og LAB fungerte ganske bra, 
 men konklusjonen etter å ha sett på alle desse fargeromma var at RGB-fargerommet var den enklaste og beste måten å lage fargeskalaer på som 
 produserte fine og balanserte fargar for det menneskelege auget.
 
----------------
+Etter å ha sett mykje på korleis dei ulike fargeromma fungerte og produserte fargar på, 
+var det på tide å sjå på korleis desse kunne kombinerast med å lage eit system for kontrastar og tilgjengeligheit.
 
-ALT UNDER HER SKAL KOMBINERAS MED DET OVER
 
----------------
+## WCAG og offentlege nettsider
 
-ALT UNDER HER SKAL KOMBINERAS MED DET OVER
+WCAG (Web Content Accessibility Guidelines) er retningslinjer utvikla av World Wide Web Consortium (W3C) for å sikre at nettsider og digitalt innhold er tilgjengelege for alle. 
+Det fins tre samsvarsnivå: A, AA og AAA, kor AA er den mest brukte standarden for tilgjengelighet.
+Per 2024 seier regelverket at offentlege nettsider må oppfylle alle AA-krava i WCAG. 
 
----------------
+Vår tilnærming til utvkinga av fargesystemet er at alt me gjer skal følge alle AA-krava, 
+og at me prøver å strekke oss til AAA-nivået der det gir meining og ikkje påverkar designet i for stor og negativ grad.
+For å oppnå AA-krava må det vere 4.5:1 kontrast mellom tekst og bakgrunn for små tekstar og 3:1 for tekstar som er større eller lik 18 px.
+For interaktive og grafiske element er grensa 3:1. 
 
-## WCAG og luminans
+
+### Korleis WCAG kalkulerer kontrast
+
+Når WCAG 2 kalkulerer kontrasten mellom to fargar, så bruker dei ein formel som tek utgangspunkt i den relative luminansen 
+mellom fargane og gir dei ein poengsum. 
+Denne poengsummen indikerer kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen 21:1,
+medan om fargane ikkje har kontrast i det heile tatt, er poengsummen 1:1. 
+
 
 Luminans skildrar den opplevde lysstyrken til ein flate og blir brukt til å vurdere kor mykje lys som blir reflektert
 eller sendt ut i ein bestemt retning. 
 Relativ luminans er ein normalisert verdi som rangerer lysstyrken til ein farge mellom rein svart (0) og rein kvit (1). 
 Denne verdien blir rekna ut basert på dei raude, grøne og blå komponentane i fargen, der grønt bidreg mest til den opplevde lysstyrken. 
 
-Når WCAG 2 kalkulerer kontrasten mellom to fargar, så bruker dei ein formel som tek utgangspunkt i den relative luminansen 
-mellom fargane og gir dei ein poengsum. 
-Denne poengsummen indikerer kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen 21:1,
-medan om fargane ikkje har kontrast i det heile tatt, er poengsummen 1:1. 
-Per 2024 seier regelverket at offentlege nettsider må oppfylle alle AA-krava i WCAG. 
-For å oppnå AA-krava må det vere 4.5:1 kontrast mellom tekst og bakgrunn for små tekstar og 3:1 for tekstar som er større eller lik 18 px.For interaktive og grafiske element er grensa 3:1. 
 
-Dette
 
 
 ## Fargerommet HSLuv
