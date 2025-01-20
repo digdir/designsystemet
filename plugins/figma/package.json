@@ -31,14 +31,14 @@
     "@types/react": "^19.0.4",
     "@types/react-color": "^3.0.12",
     "@types/react-dom": "^19.0.2",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "npm-run-all2": "^6.2.2",
     "postcss": "^8.4.41",
-    "rollup": "^4.22.4",
+    "rollup": "^4.31.0",
     "typescript": "^5.7.3",
-    "vite": "^5.3.6",
+    "vite": "^5.4.12",
     "vite-plugin-generate-file": "^0.2.0",
-    "vite-plugin-react-rich-svg": "^1.1.1",
-    "vite-plugin-singlefile": "^2.0.2"
+    "vite-plugin-react-rich-svg": "^1.2.0",
+    "vite-plugin-singlefile": "^2.1.0"
   }
 }
