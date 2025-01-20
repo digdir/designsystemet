@@ -9,10 +9,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@doc-components': path.resolve(
-        __dirname,
+        import.meta.dirname,
         './apps/storybook/docs-components',
       ),
-      '@assets': path.resolve(__dirname, './apps/storybook/assets'),
+      '@assets': path.resolve(import.meta.dirname, './apps/storybook/assets'),
     },
   },
   plugins: [react()],
