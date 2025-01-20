@@ -72,6 +72,10 @@
     opacity: 1;
   }
 
+  & > ul {
+    margin-bottom: 24px;
+  }
+
   & > ul > li,
   & > ol > li {
     font: var(--ds-typography-paragraph-md);

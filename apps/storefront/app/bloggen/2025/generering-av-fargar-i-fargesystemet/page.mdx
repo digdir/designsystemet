@@ -41,50 +41,132 @@ Med dette så meiner me korleis lyset påverkar fargar i ein kontrollert setting
  <Image
   src='/img/bloggen/farger-lys.png'
   alt='Illustrasjon av HSLuv1.'
-  caption='Fargane i dette fargeskalaen er laga med HSLuv. '
+  caption='Fargar lys. '
   boxShadow={false}
   dataUnstyled
 />
 
-I bildet over så blir ein raud-farge truffe av lys med ulik intensitet. 
-Dette illustrer korleis ein flat raud-farge blir påverka i ein kontrollert setting i eit mørkt rom. 
-Mindre lys vil gje ein lysare farge, mens meir lys vil gje ein mørkare farge.
-Det var nettopp denne effekten me ønskte å oppnå med fargeskalaene me skulle lage for skjerm.
-
-La oss sjå litt på korleis me kan lage slike fargar med ulike fargerom og teknikkar.
+I bildet over så blir ein raud-farge truffe av eit lys med ulik intensitet. 
+Dette illustrerar korleis ein flat raud-farge blir påverka i ein kontrollert setting i eit mørkt rom. 
+Mindre lys vil gje ein mørkare farge, medan meir lys vil gje ein lysare farge. 
+Dette påverkar korleis heile fargen oppfører seg og ser ut, både med omsyn til lysstyrke, fargetone og fargemetning.
+Dette var utgangspunktet for måten me skulle lage fargeskalaene på, ved å emulere korleis lyset påverkar fargar i den virkelige verda.
 
 
 ## Ulike teknikkar for å lage fargeskalaer
-La oss sjå på litt ulike teknikkar som fins for å lage fargar. 
-I eksempela nedover vil me bruke den rause profilfargen til Digdir som utgangspunkt for å lage skalaene.
+Som nevnt litt tidligare så fins det mange ulike måtar å lage fargar på. 
+Her skal me sjå på to av dei mens vanlege måtane, og korleis dei blir sjåande ut.
+I eksempela nedover vil me bruke den raude profilfargen til Digdir som utgangspunkt for å lage skalaene. 
+Grunnen til at me valde akkuratt denne fargen var fordi den fungerte best for å vise fram problemstillingar og effektar av fargegenereringa.
 
 
 ### RGB-fargerommet: Shading og tinting
 Ein farge i RGB-fargerommet består av 3 fargekanalar: raud, grøn og blå. 
 Desse kan ha verdiar frå 0 til 255, der 0 er heilt svart og 255 er heilt kvitt.
-Ulike kombinasjonar av desse tre fargane gir alle dei fargane som me ser på skjermane våre.
+Ulike kombinasjonar av desse tre verdiane gir oss alle dei fargane som me ser på skjermane våre. 
 
  <Image
   src='/img/bloggen/farge-rgb.png'
   alt='Illustrasjon av HSLuv1.'
-  caption='Fargane i dette fargeskalaen er laga med HSLuv. '
+  caption='RGB.'
+  boxShadow={false}
+  dataUnstyled
+/>
+
+For å få til ein heilt kvit farge i RGB-fargerommet må alle tre kanalane ha verdien 255 `rgb(255, 255, 255)`, medan ein heilt svart farge har alle tre kanalane på 0 `rgb(0, 0, 0)`.
+Om ein har lyst på ein grånyanse, så kan ein setje alle tre kanalane til samme verdi.
+
+Når ein skal lage fargeskalaer i RGB-fargerommet, så er det vanleg å bruke ein teknikk som vert kalla "shading" og "tinting".
+Shading er når ein legg til svart i ein farge for å gjere den mørkare, medan tinting er når ein legg til kvitt for å gjere den lysare.
+
+
+ <Image
+  src='/img/bloggen/rgb-digdir-red.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='RGB.'
   boxShadow={false}
   dataUnstyled
 />
 
 
-Kanskje den mest vanlege måtan å lage fargeskalaer på er å jobbe i RGB-fargerommet med ein teknikk som vert kalla "shading" og "tinting".
-Shading er når ein legg til svart i ein farge for å gjere den mørkare, medan tinting er når ein legg til kvitt for å gjere den lysare.
+Om me tek den raude profilfargen til Digdir `rgb(243, 95, 99)`, (lys-raud), og ønskjer å gjere denne mørkare så kan me redusere verdiane i raud, grøn og blå kanalane mot 0.
+Korleis me vel å redusere desse verdiane påverkar korleis korleis fargen endar opp med å sjå ut til slutt.
 
-Om ein tek ein farge `rgb(230, 72, 72)` (lys-raud) som utgangspunkt, og ønskjer å gjere den mørkare så kan man redusere verdiane i raud, grøn og blå kanalane.
-
-
-
+I bildet over så har me teke den raude profilfargen og lagt til 20 % kvitt og 20 % svart i kanalane bortover for å lage ulike valører. 
+Dette syns me lagar veldig fine skalaer fordi det emulerer litt korleis lyser påverkar fargane i den virkelige verda.
 
 ### HSL-fargerommet: Hue, saturation og lightness
+HSL-fargerommet (Hue, Saturation, Lightness) er ein måte å representere fargar på ved å dele dei opp i tre komponentar:
+* Hue (fargetone) beskriver sjølve fargen og angis på en skala frå 0° til 360°, som for eksempel raud, grøn eller blå. 
+* Saturation (metning) angir kor intens eller grålig fargen er frå ein skala frå 0 %  til 100 %. 
+* Lightness (lysstyrke) bestemmer kor lys eller mørk fargen er, frå 0 % (svart) til 100 % (hvit).
+
+For å lage fargeskalaer i HSL-fargerommet, så er det fleire teknikkar som vert nytta. 
+I eksempla nedover vil me sjå på nokre av desse teknikkane og korleis dei fungerer.
+
+ <Image
+  src='/img/bloggen/fargar-hsl.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='HSL.'
+  boxShadow={false}
+  dataUnstyled
+/>
+
+Ein vanleg metode er å justere ligthtness (lysstyrke) for ein farge for å gjere den mørkare eller lysare. 
+I bildet over har me tatt utgangspunkt i den raude profilfargen til Digdir (67% lightness) og satt faste lightness-verdiar for å lage ulike valører.
+Samenlikna med RGB-teknikken, så ser me at fargane blei mykje meir saturerte oppover i skalaen. 
+Dette gjer mening fordi me har ikkje justerte på saturation verdiane. 
+Dette illustrerar veldig godt ein utfordring med mange av fargeromma som brukar lightness for å definere lysstyrken i fargen.
+Endrar me kun på denne så endar fargane veldig ofte opp med å sjå oversaturerte og obalanserte ut.
+
+ <Image
+  src='/img/bloggen/fargar-hsl-2.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='HSL.'
+  boxShadow={false}
+  dataUnstyled
+/>
+
+Ein anna metode for å lage fargeskalaen på i HSL-fargerommet er å justere på både saturation og lightness verdiane.
+I bildet over har me forstatt tatt utgangspunkt i den raude profilfargen til Digdir med faste lightness-verdiar.
+I tillegg har me satt saturation verdien frå 87 til 65 på alle fargene (profilfargen til Digdir har 87 saturation). 
+
+Å sette ned saturation-verdien på alle fargane hjelper til med å gjere fargane mindre saturerte. 
+Problemet no er at me mister den opphavlege fargen som blei brukt for å generere fargeskalaen. 
+Det var viktig for oss at denne fargen fortsatt blei fordi det ofte kan vere ein viktig farge for brukaren.
+
+Å sette ein fast saturation-verdi på tvers av fargane fungerte heller ikkje så godt i praksis. 
+Me fann ut at det måtte skrivast veldig mykje komplisert logikk for å få fargar med ulike fargetonar til å fungere godt i saman.
+Her var RGB-teknikken mykje enklare å jobbe med, og laga mykje bedre fargar.
 
 
+## Kva med dei andre fargeromma?
+Etter å ha testa ut RGB og HSL fargeromma, så var det på tide å sjå på kva med dei andre fargeromma hadde å by på. 
+Me var ute etter å finne ein metode å lage fargeskalaen på som var enkel å jobbe med og som produserte fine og balanserte fargar.
 
+ <Image
+  src='/img/bloggen/fargerom-digdir-rod.png'
+  alt='Illustrasjon av HSLuv1.'
+  caption='Fargerom.'
+  boxShadow={false}
+  dataUnstyled
+/>
+
+I bildet over ser du fargeskalaer for Digdir sin raude profilfarge i ulike fargerom. 
+Mange av desse fargeromma brukar lightness (lysstyrke) for å definere lysstyrken i fargen. 
+Me opplevde mange av dei samme utfordringane med desse fargeromme som med HSL, der me måtte skrive mykje komplisert logikk for å få fargar med ulike fargetonar til å fungere godt i saman.
+
+Konklusjonen etter å ha sett på alle desse fargeromma var at RGB-fargerommet var den enklaste og beste måten å lage fargeskalaer på.
+
+---------------
+
+ALT UNDER HER SKAL KOMBINERAS MED DET OVER
+
+---------------
+
+ALT UNDER HER SKAL KOMBINERAS MED DET OVER
+
+---------------
 
 ## WCAG og luminans
 
