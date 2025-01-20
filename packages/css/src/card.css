@@ -2,15 +2,16 @@
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
   --dsc-card-background: var(--ds-color-surface-default);
+  --dsc-card-border: 1px solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);
-  --dsc-card-margin-block: var(--ds-size-3) 0;
+  --dsc-card-content-margin-block: var(--ds-size-3) 0;
   --dsc-card-padding: var(--ds-size-6);
   --dsc-card-border-radius: var(--ds-border-radius-lg);
 
   background: var(--dsc-card-background);
   border-radius: var(--dsc-card-border-radius);
-  border: 1px solid;
+  border: var(--dsc-card-border);
   border-color: var(--dsc-card-border-color);
   box-sizing: border-box;
   color: var(--dsc-card-color);
@@ -89,7 +90,7 @@
   }
 
   & > * + * {
-    margin-block: var(--dsc-card-margin-block); /* https://every-layout.dev/layouts/stack/ */
+    margin-block: var(--dsc-card-content-margin-block); /* https://every-layout.dev/layouts/stack/ */
   }
 }
 
@@ -102,7 +103,7 @@
   /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
   &::before {
     content: '';
-    border-top: 1px solid;
+    border-top: var(--dsc-card-border);
     border-color: var(--ds-color-border-subtle);
     position: absolute;
     inset: 0 0 auto;
@@ -111,7 +112,7 @@
 
   &::after {
     content: '';
-    border-left: 1px solid;
+    border-left: var(--dsc-card-border);
     border-color: var(--ds-color-border-subtle);
     position: absolute;
     inset: 0 auto 0 0;

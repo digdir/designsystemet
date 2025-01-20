@@ -82,7 +82,7 @@
     margin-top: 0; /* Prevent gap when places as child of .ds-card */
   }
 
-  & :not(summary, u-summary) {
+  & > :not(summary, u-summary) {
     border-radius: inherit;
     padding: var(--ds-size-5, 1rem);
   }
