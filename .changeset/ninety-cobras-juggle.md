@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Table: use bordre-top in tbody
+Table: use `border-top` in tbody ensure prettier tables when no thead
