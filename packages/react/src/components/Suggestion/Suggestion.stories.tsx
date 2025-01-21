@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { type ChangeEvent, useState } from 'react';
+import { EXPERIMENTAL_Suggestion as Suggestion } from '.';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import { useDebounceCallback } from '../../utilities';
-import { EXPERIMENTAL_Suggestion as Suggestion } from '.';
 
 export default {
   title: 'Komponenter/Suggestion',
