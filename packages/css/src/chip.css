@@ -16,17 +16,18 @@
   --dsc-chip-icon-size: var(--ds-size-7);
   --dsc-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
   --dsc-chip-input-size: var(--ds-size-6);
-  --gap: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
+  --dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
 
   align-items: center;
   background: var(--dsc-chip-background);
   border-radius: var(--dsc-chip-border-radius);
-  border: 1px solid var(--dsc-chip-border-color);
+  border: 1px solid;
+  border-color: var(--dsc-chip-border-color);
   box-sizing: border-box;
   color: var(--dsc-chip-color);
   cursor: pointer;
   font-family: inherit;
-  gap: var(--gap);
+  gap: var(--dsc-chip-spacing);
   line-height: var(--ds-line-height-sm);
   margin: 0;
   min-height: var(--dsc-chip-height);
@@ -56,7 +57,7 @@
   }
 
   &[data-removable] {
-    padding-inline-end: var(--gap);
+    padding-inline-end: var(--dsc-chip-spacing);
 
     &::after {
       content: '';
@@ -68,12 +69,12 @@
   }
 
   &:has(input[type='radio']) {
-    padding-inline-start: var(--gap);
+    padding-inline-start: var(--dsc-chip-spacing);
   }
 
   &:has(input[type='checkbox']) {
     --dsc-chip-border-radius: var(--ds-border-radius-md);
-    padding-inline: var(--gap);
+    padding-inline: var(--dsc-chip-spacing);
   }
 
   & > input {
