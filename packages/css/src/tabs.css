@@ -6,14 +6,16 @@
   --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
 
-  & > [role='tabpanel'] {
+  & [role='tabpanel'],
+  & u-tabpanel {
     padding: var(--dsc-tabs-content-padding);
     color: var(--dsc-tabs-content-color);
 
     @composes ds-focus from './base.css';
   }
 
-  & > [role='tablist'] {
+  & [role='tablist'],
+  & u-tablist {
     flex-direction: row;
     border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
     position: relative;
@@ -22,7 +24,8 @@
       display: flex;
     }
 
-    & > button {
+    & button,
+    & u-tab {
       align-items: center;
       background: none;
       border: 0;
@@ -75,7 +78,7 @@
         display: block;
         height: .15em; /* Scale with font */
         width: 100%;
-        background-color: var(--dsc-tabs-tab-bottom-border-color);
+        background: var(--dsc-tabs-tab-bottom-border-color);
         position: absolute;
         bottom: 0;
         left: 0;
