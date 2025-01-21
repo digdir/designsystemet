@@ -1882,7 +1882,7 @@ __metadata:
     "@storybook/types": "npm:^8.5.0"
     "@types/react": "npm:19.0.4"
     "@types/react-dom": "npm:^19.0.2"
-    axe-playwright: "npm:^2.0.3"
+    axe-playwright: "npm:^2.0.2"
     clsx: "npm:^2.1.1"
     concurrently: "npm:^9.1.2"
     http-server: "npm:^14.1.1"
@@ -6450,7 +6450,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-playwright@npm:^2.0.3":
+"axe-playwright@npm:^2.0.2":
   version: 2.0.3
   resolution: "axe-playwright@npm:2.0.3"
   dependencies:
