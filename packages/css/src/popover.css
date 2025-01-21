@@ -4,13 +4,13 @@
   --dsc-popover-color: var(--ds-color-text-default);
   --dsc-popover-arrow-size: var(--ds-size-2);
   --dsc-popover-border-radius: var(--ds-border-radius-md);
-  --dsc-popover-border: 1px solid var(--dsc-popover-border-color);
   --dsc-popover-max-width: 300px;
   --dsc-popover-padding: var(--ds-size-3) var(--ds-size-4);
 
   background: var(--dsc-popover-background);
   border-radius: var(--dsc-popover-border-radius);
-  border: var(--dsc-popover-border);
+  border: 1px solid;
+  border-color: var(--dsc-popover-border-color);
   box-sizing: border-box;
   color: var(--dsc-popover-color);
   inset: 0 auto auto 0;
