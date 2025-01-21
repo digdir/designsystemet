@@ -1884,7 +1884,7 @@ __metadata:
     "@types/react-dom": "npm:^19.0.2"
     axe-playwright: "npm:^2.0.2"
     clsx: "npm:^2.1.1"
-    concurrently: "npm:^9.1.2"
+    concurrently: "npm:^9.0.1"
     http-server: "npm:^14.1.1"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -7419,7 +7419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^9.1.2":
+"concurrently@npm:^9.0.1":
   version: 9.1.2
   resolution: "concurrently@npm:9.1.2"
   dependencies:
