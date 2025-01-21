@@ -1634,16 +1634,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chromatic-com/storybook@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@chromatic-com/storybook@npm:1.6.1"
+"@chromatic-com/storybook@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "@chromatic-com/storybook@npm:3.2.4"
   dependencies:
-    chromatic: "npm:^11.4.0"
+    chromatic: "npm:^11.15.0"
     filesize: "npm:^10.0.12"
     jsonfile: "npm:^6.1.0"
     react-confetti: "npm:^6.1.0"
     strip-ansi: "npm:^7.1.0"
-  checksum: 10/759a37ace8c82ee277d2722a0a1f724a8700be6efee9611cede7a328df20f85fcd4d9cb3a6813352a53c65e8267e6985c305d09dab0f16f3495198d0300e8798
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: 10/2d4c7c66810605c9d4c9eccce1755b8dfa4504f9511b53bc2887f2d25bfc564347a9fad110fdd296e9978dcec7f5351a03547ec544ce5ce7284f52db26ce37fe
   languageName: node
   linkType: hard
 
@@ -1731,7 +1733,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@designsystemet/storybook@workspace:apps/storybook"
   dependencies:
-    "@chromatic-com/storybook": "npm:^1.6.1"
+    "@chromatic-com/storybook": "npm:^3.2.4"
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
@@ -7130,9 +7132,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.22.1":
-  version: 11.22.1
-  resolution: "chromatic@npm:11.22.1"
+"chromatic@npm:^11.15.0, chromatic@npm:^11.25.0":
+  version: 11.25.0
+  resolution: "chromatic@npm:11.25.0"
   peerDependencies:
     "@chromatic-com/cypress": ^0.*.* || ^1.0.0
     "@chromatic-com/playwright": ^0.*.* || ^1.0.0
@@ -7145,26 +7147,7 @@ __metadata:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 10/1358be540adcf93af50f03f408d75cc732c9236e0048cbfe4e805a85c38b9ecc1436ccbd334ddf8076893deace65de06910f9ff139a0715061e46acc4fb31b06
-  languageName: node
-  linkType: hard
-
-"chromatic@npm:^11.4.0":
-  version: 11.5.4
-  resolution: "chromatic@npm:11.5.4"
-  peerDependencies:
-    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
-    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
-  peerDependenciesMeta:
-    "@chromatic-com/cypress":
-      optional: true
-    "@chromatic-com/playwright":
-      optional: true
-  bin:
-    chroma: dist/bin.js
-    chromatic: dist/bin.js
-    chromatic-cli: dist/bin.js
-  checksum: 10/7d89292a2f3470f57f342d64776c915c6a27e83b0fc422d2bb9018ea0d838b330c81373dd188b27f48eb1adb0b3aafb6a750f9720bdb29e478932c92c3978fd1
+  checksum: 10/df1554940c122d8bcdd5700108ed9546b5eb42b08a3a0b31e3fa3e4fd03f5775f939307fecc7c0800211f96c559e5ef0ce0d68abe895f858330756d0d0e168d0
   languageName: node
   linkType: hard
 
@@ -15747,7 +15730,7 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:^3.7.0"
     "@vitest/coverage-v8": "npm:^2.1.8"
     "@vitest/expect": "npm:^2.1.8"
-    chromatic: "npm:^11.22.1"
+    chromatic: "npm:^11.25.0"
     copyfiles: "npm:^2.4.1"
     storybook-addon-pseudo-states: "npm:^4.0.2"
     tsconfck: "npm:^3.1.4"
