@@ -102,26 +102,26 @@ export async function buildTokens(options: Options): Promise<void> {
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const config = {
-      buildConfig,
-      sdConfigs: getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
-        outPath: targetDir,
-        tokensDir,
-        ...buildConfig.options,
-      }),
-    };
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
+      outPath: targetDir,
+      tokensDir,
+      ...buildConfig.options,
+    });
 
-    // Disable build if all dimensions permutations are unknown
+    // Disable build if all sdConfigs dimensions permutation are unknown
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
-      config.sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
     );
     for (const unknown of unknownConfigs) {
-      if (unknown.length === config.sdConfigs.length) {
+      if (unknown.length === sdConfigs.length) {
         buildConfig.enabled = () => false;
       }
     }
 
-    return config;
+    return {
+      buildConfig,
+      sdConfigs,
+    };
   }, buildConfigs);
 
   if (clean) {
