@@ -1,6 +1,7 @@
+:where(.ds-paragraph) {
+  margin-block: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
+}
 .ds-paragraph {
-  margin-block: 0;
-
   &[data-variant='long'] {
     line-height: var(--ds-line-height-lg);
   }
