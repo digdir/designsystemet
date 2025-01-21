@@ -180,20 +180,21 @@ export const getLightnessFromHex = (hex: string) => {
 export const getColorNumberFromName = (name: string): ColorNumber => {
   const colorMap: Record<string, ColorNumber> = {
     'Background Default': 1,
-    'Background Subtle': 2,
+    'Background Tinted': 2,
     'Surface Default': 3,
-    'Surface Hover': 4,
-    'Surface Active': 5,
-    'Border Subtle': 6,
-    'Border Default': 7,
-    'Border Strong': 8,
-    'Base Default': 9,
-    'Base Hover': 10,
-    'Base Active': 11,
-    'Text Subtle': 12,
-    'Text Default': 13,
-    'Contrast Default': 14,
+    'Surface Tinted': 4,
+    'Surface Hover': 5,
+    'Surface Active': 6,
+    'Border Subtle': 7,
+    'Border Default': 8,
+    'Border Strong': 9,
+    'Text Subtle': 10,
+    'Text Default': 11,
+    'Base Default': 12,
+    'Base Hover': 13,
+    'Base Active': 14,
     'Contrast Subtle': 15,
+    'Contrast Default': 16,
   };
   return colorMap[name];
 };
@@ -207,20 +208,21 @@ export const getColorNumberFromName = (name: string): ColorNumber => {
 export const getColorNameFromNumber = (number: ColorNumber): string => {
   const colorMap: { [key in ColorNumber]: string } = {
     1: 'Background Default',
-    2: 'Background Subtle',
+    2: 'Background Tinted',
     3: 'Surface Default',
-    4: 'Surface Hover',
-    5: 'Surface Active',
-    6: 'Border Subtle',
-    7: 'Border Default',
-    8: 'Border Strong',
-    9: 'Base Default',
-    10: 'Base Hover',
-    11: 'Base Active',
-    12: 'Text Subtle',
-    13: 'Text Default',
-    14: 'Contrast Default',
+    4: 'Surface Tinted',
+    5: 'Surface Hover',
+    6: 'Surface Active',
+    7: 'Border Subtle',
+    8: 'Border Default',
+    9: 'Border Strong',
+    10: 'Text Subtle',
+    11: 'Text Default',
+    12: 'Base Default',
+    13: 'Base Hover',
+    14: 'Base Active',
     15: 'Contrast Subtle',
+    16: 'Contrast Default',
   };
   return colorMap[number];
 };
@@ -276,33 +278,3 @@ export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
       .join('')
   );
 };
-
-export function hexToRgba(hex: string, alpha = 1) {
-  // Ensure the hex input starts with a '#' and is a valid length
-  if (hex[0] === '#') {
-    hex = hex.slice(1);
-  }
-
-  if (hex.length !== 3 && hex.length !== 6) {
-    throw new Error('Invalid hex color format. Use 3 or 6 character hex codes.');
-  }
-
-  // Expand shorthand hex (e.g., "abc" to "aabbcc")
-  if (hex.length === 3) {
-    hex = hex
-      .split('')
-      .map((char) => char + char)
-      .join('');
-  }
-
-  // Parse r, g, b values
-  const bigint = parseInt(hex, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-
-  // Ensure alpha is within range 0-1
-  alpha = Math.min(Math.max(alpha, 0), 1);
-
-  return `rgba(${r}, ${g}, ${b}, ${alpha})` as CssColor;
-}

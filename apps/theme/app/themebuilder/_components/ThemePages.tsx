@@ -108,23 +108,22 @@ export const ThemePages = () => {
   return (
     <>
       <div
-        className={classes.panel}
+        className={classes.basicPanel}
         data-color-scheme={appearance}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
         <OverviewComponents ref={containerRef} />
       </div>
+      <div
+        className={cl(classes.basicPanel, classes.colorsContainer)}
+        data-color-scheme={appearance}
+        hidden={!(themeTab === 'colorsystem')}
+      >
+        <Colors />
+      </div>
 
       <>
-        <div
-          className={cl(classes.panel, classes.colorsContainer)}
-          data-color-scheme={appearance}
-          hidden={!(themeTab === 'colorsystem')}
-        >
-          <Colors />
-        </div>
-
         <div
           className={classes.panel}
           data-color-scheme={appearance}

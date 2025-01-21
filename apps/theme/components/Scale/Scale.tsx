@@ -26,45 +26,45 @@ export const Scale = ({
             colors={[0, 1]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
-            names={['Default', 'Subtle']}
+            names={['Default', 'Tinted']}
             namespace={namespace}
           />
           <Group
             header={showHeader ? 'Surface' : ''}
-            colors={[2, 3, 4]}
+            colors={[2, 3, 4, 5]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
-            names={['Default', 'Hover', 'Active']}
+            names={['Default', 'Tinted', 'Hover', 'Active']}
             namespace={namespace}
           />
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
-            colors={[5, 6, 7]}
+            colors={[6, 7, 8]}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
           />
           <Group
             showColorMeta={showColorMeta}
+            header={showHeader ? 'Text' : ''}
+            colors={[9, 10]}
+            colorScale={colorScale}
+            names={['Subtle', 'Default']}
+            namespace={namespace}
+          />
+          <Group
+            showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
-            colors={[8, 9, 10, 13, 14]}
+            colors={[11, 12, 13, 14, 15]}
             colorScale={colorScale}
             names={[
               'Default',
               'Hover',
               'Active',
-              'Contrast Default',
               'Contrast Subtle',
+              'Contrast Default',
             ]}
-            namespace={namespace}
-          />
-          <Group
-            showColorMeta={showColorMeta}
-            header={showHeader ? 'Text' : ''}
-            colors={[11, 12]}
-            colorScale={colorScale}
-            names={['Subtle', 'Default']}
             namespace={namespace}
           />
         </div>

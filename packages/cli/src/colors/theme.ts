@@ -33,11 +33,11 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
 
   // Create the special colors with HSLuv lightness rather than relative luminance for better color perception
   const specialColors: Omit<ColorInfo, 'name'>[] = [
-    { hex: baseColors.baseDefault, number: 9 },
-    { hex: baseColors.baseHover, number: 10 },
-    { hex: baseColors.baseActive, number: 11 },
-    { hex: getContrastDefault(baseColors.baseDefault), number: 14 },
+    { hex: baseColors.baseDefault, number: 12 },
+    { hex: baseColors.baseHover, number: 13 },
+    { hex: baseColors.baseActive, number: 14 },
     { hex: getContrastSubtle(baseColors.baseDefault), number: 15 },
+    { hex: getContrastDefault(baseColors.baseDefault), number: 16 },
   ];
 
   // Add the special colors to the output array
@@ -62,45 +62,6 @@ export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
   dark: generateColorScale(color, 'dark'),
   contrast: generateColorScale(color, 'contrast'),
 });
-
-/**
- * Generates the neutral color schemes.
- */
-export const generateNeutralColorSchemes = (color: CssColor) => {
-  const lightBase = '#000000';
-  const darkBase = '#ffffff';
-  const neutralTheme = generateColorSchemes(color);
-  neutralTheme.light[2].hex = '#ffffff';
-  neutralTheme.light[3].hex = chroma(color)
-    .luminance(luminance.light.backgroundSubtle - 0.02)
-    .hex() as CssColor;
-  neutralTheme.light[4].hex = chroma(color)
-    .luminance(luminance.light.backgroundSubtle - 0.09)
-    .hex() as CssColor;
-  // neutralTheme.light[5].hex = hexToRgba(lightBase, 0.27);
-  // neutralTheme.light[6].hex = hexToRgba(lightBase, 0.45);
-  // neutralTheme.light[7].hex = hexToRgba(lightBase, 0.62);
-  // neutralTheme.light[11].hex = hexToRgba(lightBase, 0.62);
-  // neutralTheme.light[12].hex = hexToRgba(lightBase, 0.83);
-
-  // neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
-  // neutralTheme.dark[3].hex = chroma(color)
-  //   .luminance(luminance.dark.surfaceDefault + 0.012)
-  //   .hex() as CssColor;
-  // neutralTheme.dark[4].hex = chroma(color)
-  //   .luminance(luminance.dark.surfaceDefault + 0.024)
-  //   .hex() as CssColor;
-
-  // neutralTheme.dark[2].hex = hexToRgba(darkBase, 0.06);
-  // neutralTheme.dark[3].hex = hexToRgba(darkBase, 0.1);
-  // neutralTheme.dark[4].hex = hexToRgba(darkBase, 0.14);
-  // neutralTheme.dark[5].hex = hexToRgba(darkBase, 0.2);
-  // neutralTheme.dark[6].hex = hexToRgba(darkBase, 0.4);
-  // neutralTheme.dark[7].hex = hexToRgba(darkBase, 0.55);
-  // neutralTheme.dark[11].hex = hexToRgba(darkBase, 0.55);
-  // neutralTheme.dark[12].hex = hexToRgba(darkBase, 0.88);
-  return neutralTheme;
-};
 
 /**
  * Returns the base colors for a color and color scheme.

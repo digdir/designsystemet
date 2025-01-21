@@ -2,7 +2,6 @@ import {
   type ColorScheme,
   type CssColor,
   generateColorSchemes,
-  generateNeutralColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -43,7 +42,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateNeutralColorSchemes('#000000'),
+            colors: generateColorSchemes('#1E2B3C'),
           },
         ];
     }
@@ -71,15 +70,15 @@ export const useThemeParams = () => {
     const params = new URLSearchParams(query.toString());
 
     const mainColorString = colors.main
-      .map((color) => `${color.name}:${color.colors.light[8].hex}`)
+      .map((color) => `${color.name}:${color.colors.light[11].hex}`)
       .join(' ');
 
     const neutralColorString = colors.neutral[0]
-      ? colors.neutral[0].colors.light[8].hex
+      ? colors.neutral[0].colors.light[11].hex
       : '';
 
     const supportColorString = colors.support
-      .map((color) => `${color.name}:${color.colors.light[8].hex}`)
+      .map((color) => `${color.name}:${color.colors.light[11].hex}`)
       .join(' ');
 
     params.set('appearance', appearance);
