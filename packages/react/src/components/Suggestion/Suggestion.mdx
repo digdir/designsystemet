@@ -1,0 +1,19 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
+import * as SuggestionStories from './Suggestion.stories';
+
+<Meta of={SuggestionStories} />
+
+# Suggestion
+
+Søkbar "select".
+
+<Primary />
+<Controls />
+
+## Kontrollert
+
+<Canvas of={SuggestionStories.Controlled} />
+
+## Standard verdi
+
+<Canvas of={SuggestionStories.DefaultValue} />

@@ -37,3 +37,4 @@
 @import url('./breadcrumbs.css') layer(ds.components);
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
+@import url('./suggestion.css') layer(ds.components);

@@ -1925,6 +1925,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.2.0"
     "@testing-library/user-event": "npm:^14.6.0"
+    "@u-elements/u-datalist": "npm:^0.0.9"
     "@u-elements/u-details": "npm:^0.1.0"
     clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
@@ -5518,6 +5519,13 @@ __metadata:
   dependencies:
     "@types/yargs-parser": "npm:*"
   checksum: 10/16f6681bf4d99fb671bf56029141ed01db2862e3db9df7fc92d8bea494359ac96a1b4b1c35a836d1e95e665fb18ad753ab2015fc0db663454e8fd4e5d5e2ef91
+  languageName: node
+  linkType: hard
+
+"@u-elements/u-datalist@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@u-elements/u-datalist@npm:0.0.9"
+  checksum: 10/35e517271bec2c67aaee5806fa90d6f8755ed86cbdc339bb47d1584d8f424668ebe78052828a5a353b1143cff5f91bfb5b3105b5408949468fe33d363d12c439
   languageName: node
   linkType: hard
 
