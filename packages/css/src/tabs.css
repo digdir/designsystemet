@@ -19,6 +19,7 @@
     flex-direction: row;
     border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
     position: relative;
+    overflow-x: auto;
 
     &:not([hidden]) {
       display: flex;
@@ -42,6 +43,7 @@
       padding: var(--dsc-tabs-tab-padding);
       position: relative;
       text-align: center;
+      white-space: nowrap;
 
       &:not([hidden]) {
         display: flex;
