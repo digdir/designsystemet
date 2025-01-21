@@ -112,8 +112,8 @@ export async function buildTokens(options: Options): Promise<void> {
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
       sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
     );
-    for (const unknown of unknownConfigs) {
-      if (unknown.length === sdConfigs.length) {
+    for (const unknowns of unknownConfigs) {
+      if (unknowns.length === sdConfigs.length) {
         buildConfig.enabled = () => false;
       }
     }
