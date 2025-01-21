@@ -8,7 +8,7 @@ export const SuggestionEmpty = forwardRef<HTMLDivElement, SuggestionEmptyProps>(
   function SuggestionEmpty(rest, ref) {
     return (
       <div
-        // aria-disabled='true'// this causes error with ds-field
+        aria-disabled='true'
         ref={ref}
         role='option'
         tabIndex={0}
