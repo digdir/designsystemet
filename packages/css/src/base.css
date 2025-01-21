@@ -31,7 +31,7 @@
 body,
 [data-color-scheme] {
   color: var(--ds-color-neutral-text-default);
-  background-color: var(--ds-color-neutral-background-default);
+  background: var(--ds-color-neutral-background-default);
 }
 
 /**

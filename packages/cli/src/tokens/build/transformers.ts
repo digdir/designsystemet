@@ -3,7 +3,6 @@ import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
 import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.js';
-import { noCase } from './utils/noCase.js';
 
 const isPx = R.test(/\b\d+px\b/g);
 
@@ -31,17 +30,6 @@ export const sizeRem: Transform = {
       return `${size / baseFont}rem`;
     }
     return value;
-  },
-};
-
-export const nameKebab: Transform = {
-  name: 'name/cti/hierarchical-kebab',
-  type: 'name',
-  transform: (token, options) => {
-    return noCase([options?.prefix].concat(token.path).join('-'), {
-      delimiter: '-',
-      stripRegexp: /[^A-Z0-9_]+/gi,
-    });
   },
 };
 
@@ -73,6 +61,6 @@ export const unitless: Transform = {
   name: 'ds/unitless',
   type: 'value',
   transitive: true,
-  filter: (token) => pathStartsWithOneOf(['size'], token),
+  filter: (token) => pathStartsWithOneOf(['size', '_size'], token),
   transform: (token) => parseInt(getValue<string>(token)),
 };

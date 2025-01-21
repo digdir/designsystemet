@@ -10,17 +10,17 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { colorCliOptions, createTokens } from '../src/tokens/create.js';
+import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/write.js';
-import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema } from './config.js';
-import { type OptionGetter, getExplicitOptionOnly, getExplicitOrDefaultOption } from './options.js';
+import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
+import { type OptionGetter, getDefaultOrExplicitOption, getExplicitOptionOnly } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
-  const DEFAULT_TOKENS_DIR = './design-tokens';
-  const DEFAULT_BUILD_DIR = './design-tokens-build';
+  const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
+  const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
   const DEFAULT_FONT = 'Inter';
   const DEFAULT_THEME_NAME = 'theme';
   const DEFAULT_CONFIG_FILE = 'designsystemet.config.json';
@@ -28,16 +28,20 @@ function makeTokenCommands() {
   tokenCmd
     .command('build')
     .description('Build Designsystemet tokens')
-    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('-o, --out-dir <string>', `Output directory for built ${chalk.blue('design-tokens')}`, DEFAULT_BUILD_DIR)
-    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, false)
+    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_CREATE_DIR)
+    .option(
+      '-o, --out-dir <string>',
+      `Output directory for built ${chalk.blue('design-tokens')}`,
+      DEFAULT_TOKENS_BUILD_DIR,
+    )
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
-      const { preview, verbose } = opts;
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_DIR;
+      const { preview, verbose, clean, dry } = opts;
+      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
-      const dry = Boolean(opts.dry);
 
       console.log(`Building tokens in ${chalk.green(tokens)}`);
 
@@ -45,42 +49,45 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      return buildTokens({ tokens, outDir, preview, verbose, dry });
+      return buildTokens({ tokens, outDir, preview, verbose, dry, clean });
     });
 
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option(`-m, --${colorCliOptions.main} <name:hex...>`, `Main colors`, parseColorValues)
-    .option(`-s, --${colorCliOptions.support} <name:hex...>`, `Support colors`, parseColorValues)
-    .option(`-n, --${colorCliOptions.neutral} <hex>`, `Neutral hex color`, convertToHex)
-    .option('-o, --out-dir <string>', `Output directory for created ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_DIR)
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, false)
-    .option('-f, --font-family <string>', `Font family`, DEFAULT_FONT)
+    .option(`-m, --${cliOptions.theme.colors.main} <name:hex...>`, `Main colors`, parseColorValues)
+    .option(`-s, --${cliOptions.theme.colors.support} <name:hex...>`, `Support colors`, parseColorValues)
+    .option(`-n, --${cliOptions.theme.colors.neutral} <hex>`, `Neutral hex color`, convertToHex)
     .option(
-      '-b, --border-radius <number>',
+      `-o, --${cliOptions.outDir} <string>`,
+      `Output directory for created ${chalk.blue('design-tokens')}`,
+      DEFAULT_TOKENS_CREATE_DIR,
+    )
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, parseBoolean, false)
+    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
+    .option(
+      `-b, --${cliOptions.theme.borderRadius} <number>`,
       `Unitless base border-radius in px`,
       (radiusAsString) => Number(radiusAsString),
       4,
     )
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
-    .option('--json <string>', `Path to JSON config file (default: "${DEFAULT_CONFIG_FILE}")`, (value) =>
-      parseJsonConfig(value, { allowFileNotFound: false }),
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`, (value) =>
+      parseConfig(value, { allowFileNotFound: false }),
     )
     .action(async (opts, cmd) => {
-      const dry = Boolean(opts.dry);
-
-      if (dry) {
+      if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
       /*
-       * Get json config file by looking for the optional default file, or using --json option if supplied.
-       * The file must exist if specified through --json, but is not required otherwise.
+       * Get config file by looking for the optional default file, or using --config option if supplied.
+       * The file must exist if specified through --config, but is not required otherwise.
        */
-      const configFile = await (opts.json
-        ? opts.json
-        : parseJsonConfig(DEFAULT_CONFIG_FILE, { allowFileNotFound: true }));
+      const configFile = await (opts.config
+        ? opts.config
+        : parseConfig(DEFAULT_CONFIG_FILE, { allowFileNotFound: true }));
       const propsFromJson = configFile?.config;
 
       if (propsFromJson) {
@@ -94,7 +101,7 @@ function makeTokenCommands() {
         if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
           console.error(
             chalk.redBright(
-              `In JSON config ${configFile.path}, all themes must have the same custom color names, but we found:`,
+              `In config ${configFile.path}, all themes must have the same custom color names, but we found:`,
             ),
           );
           const themeNames = R.keys(propsFromJson.themes ?? {});
@@ -112,7 +119,7 @@ function makeTokenCommands() {
        */
       const noUndefined = R.reject(R.isNil);
 
-      const getThemeDefaults = (optionGetter: OptionGetter) =>
+      const getThemeOptions = (optionGetter: OptionGetter) =>
         noUndefined({
           colors: noUndefined({
             main: optionGetter(cmd, 'mainColors'),
@@ -125,21 +132,19 @@ function makeTokenCommands() {
           borderRadius: optionGetter(cmd, 'borderRadius'),
         });
 
-      const propsFromOpts = noUndefined({
-        outDir: getExplicitOptionOnly(cmd, 'outDir'),
+      const unvalidatedConfig = noUndefined({
+        outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
+        clean: propsFromJson?.clean ?? getDefaultOrExplicitOption(cmd, 'clean'),
         themes: propsFromJson?.themes
           ? // For each theme specified in the JSON config, we override the config values
             // with the explicitly set options from the CLI.
-            R.map(() => getThemeDefaults(getExplicitOptionOnly), propsFromJson.themes)
+            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getExplicitOptionOnly)), propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
-              [opts.theme]: getThemeDefaults(getExplicitOrDefaultOption),
+              [opts.theme]: getThemeOptions(getDefaultOrExplicitOption),
             },
       });
-      console.log(propsFromOpts);
-
-      const unvalidatedConfig = R.mergeDeepRight(propsFromJson ?? {}, propsFromOpts);
 
       /*
        * Check that the config is valid
@@ -148,7 +153,7 @@ function makeTokenCommands() {
       try {
         config = combinedConfigSchema.parse(unvalidatedConfig);
       } catch (err) {
-        console.error(chalk.redBright('Invalid config after combining defaults, json config and options'));
+        console.error(chalk.redBright('Invalid config after combining config file and CLI options'));
         const validationError = makeFriendlyError(err);
         console.error(validationError.toString());
         process.exit(1);
@@ -162,7 +167,7 @@ function makeTokenCommands() {
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
         const theme = { name, ...themeWithoutName };
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry, clean: config.clean });
       }
     });
 
@@ -202,17 +207,18 @@ program
 
 await program.parseAsync(process.argv);
 
-async function parseJsonConfig(
-  jsonPath: string,
+async function parseConfig(
+  configPath: string,
   options: {
     allowFileNotFound: boolean;
   },
 ) {
-  const resolvedPath = path.resolve(process.cwd(), jsonPath);
+  const resolvedPath = path.resolve(process.cwd(), configPath);
 
-  let jsonFile: string;
+  let configFile: string;
   try {
-    jsonFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    configFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {
       const nodeErr = err as NodeJS.ErrnoException;
@@ -225,11 +231,11 @@ async function parseJsonConfig(
   }
   try {
     return {
-      path: jsonPath,
-      config: await configFileSchema.parseAsync(JSON.parse(jsonFile)),
+      path: configPath,
+      config: await configFileSchema.parseAsync(JSON.parse(configFile)),
     };
   } catch (err) {
-    console.error(chalk.redBright(`Invalid json config in ${jsonPath}`));
+    console.error(chalk.redBright(`Invalid config in ${configPath}`));
     const validationError = makeFriendlyError(err);
     console.error(validationError.toString());
     process.exit(1);
@@ -242,7 +248,12 @@ function makeFriendlyError(err: unknown) {
       issues
         .map((issue) => {
           const issuePath = issue.path.join('.');
-          return `  - ${chalk.red(issuePath)}: ${issue.message} (${chalk.dim(issue.code)})`;
+          const optionName = mapPathToOptionName(issue.path);
+
+          const errorCode = `(error code: ${issue.code})`;
+          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
+          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
+    ${issue.message} ${chalk.dim(errorCode)}`;
         })
         .join('\n'),
   });
@@ -252,4 +263,8 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   const [name, hex] = value.split(':');
   previous[name] = convertToHex(hex);
   return previous;
+}
+
+function parseBoolean(value: string | boolean, previous: boolean): boolean {
+  return value === 'true' || value === true;
 }

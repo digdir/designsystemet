@@ -7,7 +7,6 @@ const getOptionIfMatchingSource =
     option: K,
   ) => {
     const source = command.getOptionValueSource(option);
-    console.log(sources, source);
     if (sources.includes(source)) {
       return command.getOptionValue(option);
     }
@@ -26,4 +25,4 @@ export const getExplicitOptionOnly = getOptionIfMatchingSource('cli');
  * This function is basically the default behaviour, unlike {@link getExplicitOptionOnly}.
  * It is provided so that the program can choose its behaviour as needed.
  */
-export const getExplicitOrDefaultOption = getOptionIfMatchingSource('cli', 'default');
+export const getDefaultOrExplicitOption = getOptionIfMatchingSource('cli', 'default');

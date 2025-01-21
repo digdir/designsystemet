@@ -41,8 +41,19 @@ export type GetRadioProps = Omit<
   | 'checked'
   | 'value'
 > & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement | null>;
   value?: string;
+};
+
+type useRadioGroupReturn = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  getRadioProps: (propsOrValue: string | GetRadioProps) => GetRadioProps;
+  validationMessageProps: {
+    children: ReactNode;
+    hidden: boolean;
+    id: string;
+  };
 };
 
 /**
@@ -66,7 +77,7 @@ export function useRadioGroup({
   name,
   onChange,
   value: initalValue = '',
-}: UseRadioGroupProps = {}) {
+}: UseRadioGroupProps = {}): useRadioGroupReturn {
   const [groupValue, setGroupValue] = useState(initalValue);
   const errorId = useId();
   const namedId = useId();

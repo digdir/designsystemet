@@ -60,7 +60,7 @@ export type GetCheckboxProps = Omit<
 > & {
   /** Enables indeterminate handling for this `Checkbox` and `CheckboxGroup` */
   allowIndeterminate?: boolean;
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement | null>;
   value?: string;
 };
 
@@ -78,7 +78,22 @@ const toggleIndeterminate = (
   }
 };
 
-export function useCheckboxGroup(props?: UseCheckboxGroupProps) {
+type useCheckboxGroupReturn = {
+  value: string[];
+  setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  getCheckboxProps: (
+    propsOrValue?: string | GetCheckboxProps,
+  ) => GetCheckboxProps;
+  validationMessageProps: {
+    children: ReactNode;
+    hidden: boolean;
+    id: string;
+  };
+};
+
+export function useCheckboxGroup(
+  props?: UseCheckboxGroupProps,
+): useCheckboxGroupReturn {
   const {
     error,
     name: groupName,

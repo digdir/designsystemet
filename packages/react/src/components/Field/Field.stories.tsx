@@ -23,7 +23,7 @@ export default {
   },
 } as Meta;
 
-export const Preview: Story = (args) => {
+export const Preview: Story = () => {
   return (
     <Field data-my-field>
       <Label>Kort beskrivelse</Label>

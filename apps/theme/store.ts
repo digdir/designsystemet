@@ -14,7 +14,7 @@ export type ColorTheme = {
 };
 
 export type BaseBorderRadius = number;
-type PageType = 'intro' | 'colors' | 'radius' | 'finish';
+type PageType = 'colors' | 'dimensions';
 
 type ColorStore = {
   activePage: PageType;
@@ -24,8 +24,6 @@ type ColorStore = {
     neutral: ColorTheme[];
     support: ColorTheme[];
   };
-  themeName: string;
-  setThemeName: (name: string) => void;
   addColor: (
     newColor: ColorTheme,
     type: 'main' | 'neutral' | 'support',
@@ -43,8 +41,8 @@ type ColorStore = {
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   appearance: ColorScheme;
   setAppearance: (appearance: ColorScheme) => void;
-  themePreview: 'one' | 'two' | 'three';
-  setThemePreview: (theme: 'one' | 'two' | 'three') => void;
+  themeTab: 'overview' | 'colorsystem';
+  setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
 
 export const useThemeStore = create(
@@ -61,7 +59,6 @@ export const useThemeStore = create(
     },
     baseBorderRadius: 4,
     appearance: 'light',
-    themePreview: 'one',
     colors: {
       main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
       neutral: [
@@ -73,8 +70,8 @@ export const useThemeStore = create(
         { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
       ],
     },
-    themeName: 'theme',
-    setThemeName: (name) => set({ themeName: name }),
+    themeTab: 'overview',
+    setThemeTab: (tab) => set({ themeTab: tab }),
     addColor: (newColor, type) =>
       set((state) => {
         const updatedColors = state.colors[type].concat(newColor);
@@ -96,7 +93,6 @@ export const useThemeStore = create(
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     setAppearance: (appearance) => set({ appearance: appearance }),
-    setThemePreview: (themePreview) => set({ themePreview: themePreview }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),

@@ -32,7 +32,6 @@
   align-items: flex-start;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   margin-left: -28px;
-  width: calc(100% + 58px);
   padding: 22px 28px;
 }
 

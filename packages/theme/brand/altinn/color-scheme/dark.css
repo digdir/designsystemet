@@ -230,7 +230,7 @@
   --ds-color-warning-contrast-default: #000000;
   --ds-color-warning-contrast-subtle: #070301;
   --ds-color-focus-inner: #141d29;
-  --ds-color-focus-outer: #d8e7f4;
+  --ds-color-focus-outer: #e3e5e7;
 
   color-scheme: dark;
 }
@@ -463,7 +463,7 @@
   --ds-color-warning-contrast-default: #000000;
   --ds-color-warning-contrast-subtle: #070301;
   --ds-color-focus-inner: #141d29;
-  --ds-color-focus-outer: #d8e7f4;
+  --ds-color-focus-outer: #e3e5e7;
 
   color-scheme: dark;
 }

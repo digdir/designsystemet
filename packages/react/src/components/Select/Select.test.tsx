@@ -107,5 +107,5 @@ describe('Select', () => {
 
 const render = (
   props?: Partial<SelectProps>,
-  ref?: RefObject<HTMLSelectElement>,
+  ref?: RefObject<HTMLSelectElement | null>,
 ) => renderRtl(<Select {...defaultProps} {...props} ref={ref} />);

@@ -99,3 +99,16 @@ export const copyFile = async (src: string, dest: string, dry?: boolean) => {
 
   return await fs.copyFile(src, dest);
 };
+
+export const isDigit = (s: string) => /^\d+$/.test(s);
+
+export const cleanDir = async (dir: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('cleanDir')} ${dir}`);
+    return Promise.resolve();
+  }
+
+  console.log(`${chalk.red('Cleaning outputDir: ')} ${dir}`);
+
+  return await fs.rm(dir, { recursive: true, force: true });
+};

@@ -1,10 +1,11 @@
-import { omit } from '@digdir/designsystemet-react';
-import { SunIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
-import { forwardRef } from 'react';
-import { useThemeStore } from '../../store';
+import { omit } from "@digdir/designsystemet-react";
+import { SunIcon } from "@navikt/aksel-icons";
+import { Slottable } from "@radix-ui/react-slot";
+import cl from "clsx/lite";
+import { forwardRef } from "react";
+import { useThemeStore } from "../../store";
 
-import classes from './Color.module.css';
+import classes from "./Color.module.css";
 
 type ColorProps = {
   colorNumber: number;
@@ -13,39 +14,29 @@ type ColorProps = {
   lightness?: string;
   featured?: boolean;
   showColorMeta?: boolean;
-  name: string;
-} & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
+} & Omit<React.HTMLAttributes<HTMLButtonElement>, "color">;
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(
   (
-    {
-      color,
-      contrast,
-      featured,
-      lightness,
-
-      showColorMeta = true,
-      ...rest
-    },
+    { color, contrast, featured, lightness, showColorMeta = true, ...rest },
     ref,
   ) => {
     const setSelectedColor = useThemeStore((state) => state.setSelectedColor);
     return (
       <>
-        <div className={classes.boxContainer}>
+        <Slottable>
           <button
             ref={ref}
-            onClick={() => {}}
             style={{ backgroundColor: color }}
             className={cl(
               classes.box,
               featured && classes.featured,
-              'ds-focus',
+              "ds-focus",
             )}
-            type='button'
-            {...omit(['colorNumber'], rest)}
-          ></button>
-        </div>
+            type="button"
+            {...omit(["colorNumber"], rest)}
+          />
+        </Slottable>
 
         {showColorMeta && (
           <>
@@ -54,7 +45,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
               {contrast}
             </div>
             <div className={classes.lightness}>
-              <SunIcon title='a11y-title' fontSize='1.3rem' />
+              <SunIcon title="a11y-title" fontSize="1.3rem" />
               {lightness}
             </div>
           </>
@@ -63,5 +54,3 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
     );
   },
 );
-
-export { Color };

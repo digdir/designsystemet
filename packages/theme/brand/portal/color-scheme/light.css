@@ -12,7 +12,7 @@
   --ds-global-blue-6: #94c1e3;
   --ds-global-blue-7: #2a83c8;
   --ds-global-blue-8: #0964a9;
-  --ds-global-blue-9: #0a71bf;
+  --ds-global-blue-9: #0A71C0;
   --ds-global-blue-10: #085d9f;
   --ds-global-blue-11: #074a7e;
   --ds-global-blue-12: #0964a9;
@@ -42,13 +42,13 @@
   --ds-global-orange-6: #dfb398;
   --ds-global-orange-7: #bf6732;
   --ds-global-orange-8: #9b4a18;
-  --ds-global-orange-9: #b7581d;
+  --ds-global-orange-9: #B8581D;
   --ds-global-orange-10: #994918;
   --ds-global-orange-11: #7b3b13;
   --ds-global-orange-12: #9b4a18;
   --ds-global-orange-13: #46220b;
   --ds-global-orange-contrast-1: #ffffff;
-  --ds-global-orange-contrast-2: #fdf9f8;
+  --ds-global-orange-contrast-2: #fdfbf9;
   --ds-global-purple-1: #ffffff;
   --ds-global-purple-2: #f6f2f9;
   --ds-global-purple-3: #e7dfef;
@@ -72,7 +72,7 @@
   --ds-global-red-6: #e8adad;
   --ds-global-red-7: #d15757;
   --ds-global-red-8: #bf1b1b;
-  --ds-global-red-9: #bf1b1b;
+  --ds-global-red-9: #C01B1B;
   --ds-global-red-10: #9b1616;
   --ds-global-red-11: #791111;
   --ds-global-red-12: #bf1b1b;
@@ -87,7 +87,7 @@
   --ds-global-yellow-6: #d9b945;
   --ds-global-yellow-7: #957c21;
   --ds-global-yellow-8: #736019;
-  --ds-global-yellow-9: #d4b12f;
+  --ds-global-yellow-9: #D4B12F;
   --ds-global-yellow-10: #bb9c2a;
   --ds-global-yellow-11: #a38824;
   --ds-global-yellow-12: #736019;
@@ -102,7 +102,7 @@
   --ds-color-accent-border-subtle: #c8b5d7;
   --ds-color-accent-border-default: #9470b1;
   --ds-color-accent-border-strong: #7b4d9e;
-  --ds-color-accent-base-default: #4d107d;
+  --ds-color-accent-base-default: #4D107D;
   --ds-color-accent-base-hover: #612b8c;
   --ds-color-accent-base-active: #734399;
   --ds-color-accent-text-subtle: #7b4d9e;
@@ -117,7 +117,7 @@
   --ds-color-neutral-border-subtle: #b8bcc1;
   --ds-color-neutral-border-default: #777f89;
   --ds-color-neutral-border-strong: #59626f;
-  --ds-color-neutral-base-default: #1e2b3c;
+  --ds-color-neutral-base-default: #1E2B3C;
   --ds-color-neutral-base-hover: #313d4d;
   --ds-color-neutral-base-active: #444f5d;
   --ds-color-neutral-text-subtle: #59626f;
@@ -132,7 +132,7 @@
   --ds-color-brand1-border-subtle: #d2aeee;
   --ds-color-brand1-border-default: #a45ddd;
   --ds-color-brand1-border-strong: #8046ad;
-  --ds-color-brand1-base-default: #a25adc;
+  --ds-color-brand1-base-default: #A259DC;
   --ds-color-brand1-base-hover: #b276e2;
   --ds-color-brand1-base-active: #c291e8;
   --ds-color-brand1-text-subtle: #8046ad;
@@ -147,7 +147,7 @@
   --ds-color-brand2-border-subtle: #eaa3ed;
   --ds-color-brand2-border-default: #b45db8;
   --ds-color-brand2-border-strong: #8b488e;
-  --ds-color-brand2-base-default: #df74e4;
+  --ds-color-brand2-base-default: #DF73E4;
   --ds-color-brand2-base-hover: #e795eb;
   --ds-color-brand2-base-active: #eeb5f1;
   --ds-color-brand2-text-subtle: #8b488e;
@@ -162,7 +162,7 @@
   --ds-color-brand3-border-subtle: #f1a4d8;
   --ds-color-brand3-border-default: #c2589f;
   --ds-color-brand3-border-strong: #95447b;
-  --ds-color-brand3-base-default: #e86bbf;
+  --ds-color-brand3-base-default: #E86ABF;
   --ds-color-brand3-base-hover: #ed8ece;
   --ds-color-brand3-base-active: #f3aedc;
   --ds-color-brand3-text-subtle: #95447b;
@@ -192,7 +192,7 @@
   --ds-color-danger-border-subtle: #e8adad;
   --ds-color-danger-border-default: #d15757;
   --ds-color-danger-border-strong: #bf1b1b;
-  --ds-color-danger-base-default: #bf1b1b;
+  --ds-color-danger-base-default: #C01B1B;
   --ds-color-danger-base-hover: #9b1616;
   --ds-color-danger-base-active: #791111;
   --ds-color-danger-text-subtle: #bf1b1b;
@@ -207,7 +207,7 @@
   --ds-color-info-border-subtle: #94c1e3;
   --ds-color-info-border-default: #2a83c8;
   --ds-color-info-border-strong: #0964a9;
-  --ds-color-info-base-default: #0a71bf;
+  --ds-color-info-base-default: #0A71C0;
   --ds-color-info-base-hover: #085d9f;
   --ds-color-info-base-active: #074a7e;
   --ds-color-info-text-subtle: #0964a9;
@@ -222,15 +222,15 @@
   --ds-color-warning-border-subtle: #d9b945;
   --ds-color-warning-border-default: #957c21;
   --ds-color-warning-border-strong: #736019;
-  --ds-color-warning-base-default: #b7581d;
+  --ds-color-warning-base-default: #B8581D;
   --ds-color-warning-base-hover: #994918;
   --ds-color-warning-base-active: #7b3b13;
   --ds-color-warning-text-subtle: #9b4a18;
   --ds-color-warning-text-default: #46220b;
   --ds-color-warning-contrast-default: #ffffff;
-  --ds-color-warning-contrast-subtle: #fdf9f8;
+  --ds-color-warning-contrast-subtle: #fdfbf9;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #410d69;
+  --ds-color-focus-outer: #1f2c3d;
 
   color-scheme: light;
 }
@@ -245,7 +245,7 @@
   --ds-global-blue-6: #94c1e3;
   --ds-global-blue-7: #2a83c8;
   --ds-global-blue-8: #0964a9;
-  --ds-global-blue-9: #0a71bf;
+  --ds-global-blue-9: #0A71C0;
   --ds-global-blue-10: #085d9f;
   --ds-global-blue-11: #074a7e;
   --ds-global-blue-12: #0964a9;
@@ -275,13 +275,13 @@
   --ds-global-orange-6: #dfb398;
   --ds-global-orange-7: #bf6732;
   --ds-global-orange-8: #9b4a18;
-  --ds-global-orange-9: #b7581d;
+  --ds-global-orange-9: #B8581D;
   --ds-global-orange-10: #994918;
   --ds-global-orange-11: #7b3b13;
   --ds-global-orange-12: #9b4a18;
   --ds-global-orange-13: #46220b;
   --ds-global-orange-contrast-1: #ffffff;
-  --ds-global-orange-contrast-2: #fdf9f8;
+  --ds-global-orange-contrast-2: #fdfbf9;
   --ds-global-purple-1: #ffffff;
   --ds-global-purple-2: #f6f2f9;
   --ds-global-purple-3: #e7dfef;
@@ -305,7 +305,7 @@
   --ds-global-red-6: #e8adad;
   --ds-global-red-7: #d15757;
   --ds-global-red-8: #bf1b1b;
-  --ds-global-red-9: #bf1b1b;
+  --ds-global-red-9: #C01B1B;
   --ds-global-red-10: #9b1616;
   --ds-global-red-11: #791111;
   --ds-global-red-12: #bf1b1b;
@@ -320,7 +320,7 @@
   --ds-global-yellow-6: #d9b945;
   --ds-global-yellow-7: #957c21;
   --ds-global-yellow-8: #736019;
-  --ds-global-yellow-9: #d4b12f;
+  --ds-global-yellow-9: #D4B12F;
   --ds-global-yellow-10: #bb9c2a;
   --ds-global-yellow-11: #a38824;
   --ds-global-yellow-12: #736019;
@@ -335,7 +335,7 @@
   --ds-color-accent-border-subtle: #c8b5d7;
   --ds-color-accent-border-default: #9470b1;
   --ds-color-accent-border-strong: #7b4d9e;
-  --ds-color-accent-base-default: #4d107d;
+  --ds-color-accent-base-default: #4D107D;
   --ds-color-accent-base-hover: #612b8c;
   --ds-color-accent-base-active: #734399;
   --ds-color-accent-text-subtle: #7b4d9e;
@@ -350,7 +350,7 @@
   --ds-color-neutral-border-subtle: #b8bcc1;
   --ds-color-neutral-border-default: #777f89;
   --ds-color-neutral-border-strong: #59626f;
-  --ds-color-neutral-base-default: #1e2b3c;
+  --ds-color-neutral-base-default: #1E2B3C;
   --ds-color-neutral-base-hover: #313d4d;
   --ds-color-neutral-base-active: #444f5d;
   --ds-color-neutral-text-subtle: #59626f;
@@ -365,7 +365,7 @@
   --ds-color-brand1-border-subtle: #d2aeee;
   --ds-color-brand1-border-default: #a45ddd;
   --ds-color-brand1-border-strong: #8046ad;
-  --ds-color-brand1-base-default: #a25adc;
+  --ds-color-brand1-base-default: #A259DC;
   --ds-color-brand1-base-hover: #b276e2;
   --ds-color-brand1-base-active: #c291e8;
   --ds-color-brand1-text-subtle: #8046ad;
@@ -380,7 +380,7 @@
   --ds-color-brand2-border-subtle: #eaa3ed;
   --ds-color-brand2-border-default: #b45db8;
   --ds-color-brand2-border-strong: #8b488e;
-  --ds-color-brand2-base-default: #df74e4;
+  --ds-color-brand2-base-default: #DF73E4;
   --ds-color-brand2-base-hover: #e795eb;
   --ds-color-brand2-base-active: #eeb5f1;
   --ds-color-brand2-text-subtle: #8b488e;
@@ -395,7 +395,7 @@
   --ds-color-brand3-border-subtle: #f1a4d8;
   --ds-color-brand3-border-default: #c2589f;
   --ds-color-brand3-border-strong: #95447b;
-  --ds-color-brand3-base-default: #e86bbf;
+  --ds-color-brand3-base-default: #E86ABF;
   --ds-color-brand3-base-hover: #ed8ece;
   --ds-color-brand3-base-active: #f3aedc;
   --ds-color-brand3-text-subtle: #95447b;
@@ -425,7 +425,7 @@
   --ds-color-danger-border-subtle: #e8adad;
   --ds-color-danger-border-default: #d15757;
   --ds-color-danger-border-strong: #bf1b1b;
-  --ds-color-danger-base-default: #bf1b1b;
+  --ds-color-danger-base-default: #C01B1B;
   --ds-color-danger-base-hover: #9b1616;
   --ds-color-danger-base-active: #791111;
   --ds-color-danger-text-subtle: #bf1b1b;
@@ -440,7 +440,7 @@
   --ds-color-info-border-subtle: #94c1e3;
   --ds-color-info-border-default: #2a83c8;
   --ds-color-info-border-strong: #0964a9;
-  --ds-color-info-base-default: #0a71bf;
+  --ds-color-info-base-default: #0A71C0;
   --ds-color-info-base-hover: #085d9f;
   --ds-color-info-base-active: #074a7e;
   --ds-color-info-text-subtle: #0964a9;
@@ -455,15 +455,15 @@
   --ds-color-warning-border-subtle: #d9b945;
   --ds-color-warning-border-default: #957c21;
   --ds-color-warning-border-strong: #736019;
-  --ds-color-warning-base-default: #b7581d;
+  --ds-color-warning-base-default: #B8581D;
   --ds-color-warning-base-hover: #994918;
   --ds-color-warning-base-active: #7b3b13;
   --ds-color-warning-text-subtle: #9b4a18;
   --ds-color-warning-text-default: #46220b;
   --ds-color-warning-contrast-default: #ffffff;
-  --ds-color-warning-contrast-subtle: #fdf9f8;
+  --ds-color-warning-contrast-subtle: #fdfbf9;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #410d69;
+  --ds-color-focus-outer: #1f2c3d;
 
   color-scheme: light;
 }
