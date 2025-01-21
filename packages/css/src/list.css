@@ -1,17 +1,17 @@
 .ds-list {
-  --dsc-list-padding-left: var(--ds-size-6);
-  --dsc-list-spacing: var(--ds-size-3);
-  --dsc-list-spacing-nested: var(--ds-size-2);
+  --dsc-list-padding-inline: var(--ds-size-6) 0;
+  --dsc-list-margin-top: var(--ds-size-3);
+  --dsc-list-margin-top-nested: var(--ds-size-2);
 
   margin: 0;
-  padding-left: var(--dsc-list-padding-left);
+  padding-inline: var(--dsc-list-padding-inline);
 
   & > li + li {
-    margin-top: var(--dsc-list-spacing);
+    margin-top: var(--dsc-list-margin-top);
   }
 
   & > li > :is(ol, ul) {
-    --dsc-list-spacing: var(--dsc-list-spacing-nested);
+    --dsc-list-margin-top: var(--dsc-list-margin-top-nested);
   } /* Shrink spacing a bit when nested */
 
   /* Add zero-width space to fix VoiceOver: https://gerardkcohen.me/writing/2017/voiceover-list-style-type.html

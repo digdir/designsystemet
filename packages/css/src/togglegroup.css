@@ -1,13 +1,13 @@
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-background-default);
-  /* Todo: Explore the border color here */
-  --dsc-togglegroup-border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-default);
+  --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
   --dsc-togglegroup-padding: var(--ds-size-1);
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
 
   background: var(--dsc-togglegroup-background);
   border-radius: calc(var(--dsc-togglegroup-border-radius) + var(--dsc-togglegroup-padding));
-  border: var(--dsc-togglegroup-border);
+  border: 1px solid;
+  border-color: var(--dsc-togglegroup-border-color);
   gap: var(--dsc-togglegroup-padding);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
