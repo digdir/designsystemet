@@ -41,7 +41,7 @@
     "@storybook/types": "^8.5.0",
     "@types/react": "19.0.4",
     "@types/react-dom": "^19.0.2",
-    "axe-playwright": "^2.0.3",
+    "axe-playwright": "^2.0.2",
     "concurrently": "^9.1.2",
     "http-server": "^14.1.1",
     "remark-gfm": "^4.0.0",
