@@ -88,7 +88,8 @@
  * Affix
  */
 .ds-field-affixes {
-  --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
+  --dsc-field-affix-border: 1px solid;
+  --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
   background: var(--ds-color-neutral-background-subtle);
@@ -109,6 +110,7 @@
   & .ds-field-affix {
     align-items: center;
     border: var(--dsc-field-affix-border);
+    border-color: var(--dsc-field-affix-border-color);
     flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
 
@@ -131,6 +133,7 @@
 
   & .ds-input {
     border: var(--dsc-field-affix-border);
+    border-color: var(--dsc-field-affix-border-color);
     flex: 1 1 auto;
 
     /* if it has affix after */

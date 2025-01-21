@@ -3,7 +3,7 @@
   --dsc-table-background--zebra: var(--ds-color-neutral-background-subtle);
   --dsc-table-background: var(--ds-color-neutral-background-default);
   --dsc-table-border-radius: 0;
-  --dsc-table-border: 1px solid var(--ds-color-neutral-border-subtle);
+  --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-table-color: var(--ds-color-neutral-text-default);
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-table-header-background--sorted: var(--ds-color-neutral-background-subtle);
@@ -21,7 +21,8 @@
 
   & > :is(tbody, thead, tfoot) > tr > :is(th, td) {
     background: var(--dsc-table-background);
-    border-top: var(--dsc-table-border);
+    border-top: 1px solid;
+    border-color: var(--dsc-table-border-color);
     padding: var(--dsc-table-padding);
     text-align: inherit;
 
@@ -134,7 +135,8 @@
   &[data-border] {
     --dsc-table-border-radius: var(--ds-border-radius-md);
 
-    border: var(--dsc-table-border);
+    border: 1px solid;
+    border-color: var(--dsc-table-border-color);
 
     & > :is(thead, tbody):last-child > tr:last-child > :is(th, td) {
       border-top: 0;

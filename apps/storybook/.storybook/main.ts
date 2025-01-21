@@ -1,7 +1,9 @@
-import { dirname, join, resolve } from 'node:path';
+import { resolve } from 'node:path';
 
 import type { StorybookConfig } from '@storybook/react-vite';
 import type { PropItem } from 'react-docgen-typescript';
+
+const dirname = import.meta.dirname || __dirname;
 
 const config: StorybookConfig = {
   typescript: {
@@ -9,7 +11,7 @@ const config: StorybookConfig = {
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      include: [resolve(__dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
+      include: [resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
@@ -32,13 +34,13 @@ const config: StorybookConfig = {
     '../../../packages/react/**/*.stories.ts?(x)',
   ],
   addons: [
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-mdx-gfm'),
-    getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath('@storybook/addon-storysource'),
+    '@storybook/addon-a11y',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-mdx-gfm',
+    '@chromatic-com/storybook',
+    '@storybook/addon-storysource',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
   ],
@@ -47,16 +49,10 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: resolve(__dirname, '../../../vite.config.ts'),
+        viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
       },
     },
   },
 };
 
 export default config;
-
-function getAbsolutePath(value: string): StorybookConfig['framework'] {
-  return dirname(
-    require.resolve(join(value, 'package.json')),
-  ) as StorybookConfig['framework'];
-}
