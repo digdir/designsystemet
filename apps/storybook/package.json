@@ -42,13 +42,13 @@
     "@types/react": "19.0.7",
     "@types/react-dom": "^19.0.3",
     "axe-playwright": "^2.0.2",
-    "concurrently": "^9.0.1",
+    "concurrently": "^9.1.2",
     "http-server": "^14.1.1",
     "remark-gfm": "^4.0.0",
     "rimraf": "^6.0.1",
     "storybook": "^8.4.7",
     "storybook-addon-pseudo-states": "^4.0.2",
-    "wait-on": "^8.0.1"
+    "wait-on": "^8.0.2"
   },
   "jest-junit": {
     "suiteName": "Storybook tests",
