@@ -199,8 +199,93 @@ export const getColorNumberFromName = (name: string): ColorNumber => {
   return colorMap[name];
 };
 
+export const getColorInfoFromPosition = (position: ColorNumber) => {
+  const colorMap = {
+    1: {
+      name: 'backgroundDefault',
+      displayName: 'Background Default',
+      group: 'background',
+    },
+    2: {
+      name: 'backgroundTinted',
+      displayName: 'Background Tinted',
+      group: 'background',
+    },
+    3: {
+      name: 'surfaceDefault',
+      displayName: 'Surface Default',
+      group: 'surface',
+    },
+    4: {
+      name: 'surfaceTinted',
+      displayName: 'Surface Tinted',
+      group: 'surface',
+    },
+    5: {
+      name: 'surfaceHover',
+      displayName: 'Surface Hover',
+      group: 'surface',
+    },
+    6: {
+      name: 'surfaceActive',
+      displayName: 'Surface Active',
+      group: 'surface',
+    },
+    7: {
+      name: 'borderSubtle',
+      displayName: 'Border Subtle',
+      group: 'border',
+    },
+    8: {
+      name: 'borderDefault',
+      displayName: 'Border Default',
+      group: 'border',
+    },
+    9: {
+      name: 'borderStrong',
+      displayName: 'Border Strong',
+      group: 'border',
+    },
+    10: {
+      name: 'textSubtle',
+      displayName: 'Text Subtle',
+      group: 'text',
+    },
+    11: {
+      name: 'textDefault',
+      displayName: 'Text Default',
+      group: 'text',
+    },
+    12: {
+      name: 'baseDefault',
+      displayName: 'Base Default',
+      group: 'base',
+    },
+    13: {
+      name: 'baseHover',
+      displayName: 'Base Hover',
+      group: 'base',
+    },
+    14: {
+      name: 'baseActive',
+      displayName: 'Base Active',
+      group: 'base',
+    },
+    15: {
+      name: 'contrastSubtle',
+      displayName: 'Contrast Subtle',
+      group: 'base',
+    },
+    16: {
+      name: 'contrastDefault',
+      displayName: 'Contrast Default',
+      group: 'base',
+    },
+  } as const;
+  return colorMap[position];
+};
+
 /**
- *
  * This function returns the color name based on the color number.
  *
  * @param number The number of the color

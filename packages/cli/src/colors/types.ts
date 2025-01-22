@@ -5,9 +5,11 @@ export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'yel
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
 export type ColorInfo = {
-  hex: CssColor;
-  number: ColorNumber;
   name: string;
+  displayName: string;
+  group: string;
+  position: ColorNumber;
+  hex: CssColor;
 };
 
 export type ThemeInfo = {

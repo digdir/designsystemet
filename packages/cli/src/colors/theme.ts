@@ -3,7 +3,12 @@ import type { CssColor } from './types.js';
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type { ColorInfo, ColorNumber, ColorScheme, GlobalColors, ThemeInfo } from './types.js';
-import { getColorNameFromNumber, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import {
+  getColorInfoFromPosition,
+  getColorNameFromNumber,
+  getLightnessFromHex,
+  getLuminanceFromLightness,
+} from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -25,30 +30,47 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
   const luminanceValues = luminance[colorScheme];
 
   // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
-  const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([key, value], index) => ({
-    name: key,
-    hex: chroma(color).luminance(value).hex() as CssColor,
-    number: (index + 1) as ColorNumber,
-  }));
+  const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([, value], index) => {
+    const position = (index + 1) as ColorNumber;
+    const colorInfo = getColorInfoFromPosition(position);
+    return {
+      name: colorInfo.name,
+      displayName: colorInfo.displayName,
+      group: colorInfo.group,
+      hex: chroma(color).luminance(value).hex() as CssColor,
+      position,
+    };
+  });
 
-  // Create the special colors with HSLuv lightness rather than relative luminance for better color perception
-  const specialColors: Omit<ColorInfo, 'name'>[] = [
-    { hex: baseColors.baseDefault, number: 12 },
-    { hex: baseColors.baseHover, number: 13 },
-    { hex: baseColors.baseActive, number: 14 },
-    { hex: getContrastSubtle(baseColors.baseDefault), number: 15 },
-    { hex: getContrastDefault(baseColors.baseDefault), number: 16 },
+  const createSpecialColor = (position: ColorNumber, hexValue: CssColor) => {
+    const info = getColorInfoFromPosition(position);
+    return {
+      name: info.name,
+      displayName: info.displayName,
+      group: info.group,
+      hex: hexValue,
+      position,
+    };
+  };
+
+  const specialColors: Omit<ColorInfo, 'id'>[] = [
+    createSpecialColor(12, baseColors.baseDefault),
+    createSpecialColor(13, baseColors.baseHover),
+    createSpecialColor(14, baseColors.baseActive),
+    createSpecialColor(15, getContrastSubtle(baseColors.baseDefault)),
+    createSpecialColor(16, getContrastDefault(baseColors.baseDefault)),
   ];
 
   // Add the special colors to the output array
-  for (const { hex, number } of specialColors) {
-    outputArray[number - 1] = {
+  for (const { hex, position, name, displayName, group } of specialColors) {
+    outputArray[position - 1] = {
       hex,
-      number,
-      name: getColorNameFromNumber(number),
+      position,
+      name,
+      displayName,
+      group,
     };
   }
-
   return outputArray;
 };
 

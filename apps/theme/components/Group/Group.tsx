@@ -56,10 +56,10 @@ export const Group = ({
                 colorModalRef={colorModalRefs.current[index]}
                 hex={colorScale[appearance][item].hex}
                 namespace={namespace}
-                weight={colorScale[appearance][item].number}
+                weight={colorScale[appearance][item].position}
               />
               <RovingFocusItem
-                value={namespace + colorScale[appearance][item].number}
+                value={namespace + colorScale[appearance][item].position}
                 asChild
               >
                 <Color
