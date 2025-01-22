@@ -2,13 +2,14 @@
   --dsc-table-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-table-background--zebra: var(--ds-color-neutral-background-subtle);
   --dsc-table-background: var(--ds-color-neutral-background-default);
-  --dsc-table-border-radius: 0;
   --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-table-border-divider: 2px solid var(--dsc-table-border-color);
+  --dsc-table-border-radius: 0;
+  --dsc-table-border: 1px solid var(--dsc-table-border-color);
   --dsc-table-color: var(--ds-color-neutral-text-default);
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-default);
   --dsc-table-header-background--sorted: var(--ds-color-neutral-background-subtle);
   --dsc-table-header-background: var(--ds-color-neutral-background-default);
-  --dsc-table-header-divider: 2px solid var(--ds-color-neutral-border-subtle);
   --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-table-sort-size: var(--ds-size-6);
 
@@ -21,8 +22,7 @@
 
   & > :is(tbody, thead, tfoot) > tr > :is(th, td) {
     background: var(--dsc-table-background);
-    border-top: 1px solid;
-    border-color: var(--dsc-table-border-color);
+    border-bottom: var(--dsc-table-border);
     padding: var(--dsc-table-padding);
     text-align: inherit;
 
@@ -33,29 +33,28 @@
 
   & > thead > tr > :is(th, td) {
     background: var(--dsc-table-header-background);
-    border-top: none;
   }
 
   & > thead > tr:last-child > :is(th, td) {
-    border-bottom: var(--dsc-table-header-divider);
+    border-bottom: var(--dsc-table-border-divider);
   }
 
-  & > thead + tbody > tr:first-child > :is(th, td) {
-    border-top: none;
+  & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
+    border-bottom: none; /* Skip border-bottom when followed by <tfoot> */
   }
 
   & > tfoot > tr:first-child > :is(th, td) {
     background: var(--dsc-table-header-background);
-    border-top: var(--dsc-table-header-divider);
+    border-top: var(--dsc-table-border-divider);
   }
 
-  & caption {
+  & > caption {
     @composes ds-heading from './heading.css';
     text-align: inherit;
   }
 
   /* Add rounded border to first and last row */
-  & > :is(thead, tbody):first-child > tr:first-child > :is(th, td) {
+  & > :first-child > tr:first-child > :is(th, td) {
     &:first-child {
       border-top-left-radius: var(--dsc-table-border-radius);
     }
@@ -66,13 +65,13 @@
   }
 
   /* Add rounded border to last row */
-  & > :is(thead, tbody, tfoot):last-child > tr:last-child > :is(th, td) {
+  & > :last-child > tr:last-child > :is(th, td) {
     &:first-child {
-      border-top-left-radius: var(--dsc-table-border-radius);
+      border-bottom-left-radius: var(--dsc-table-border-radius);
     }
 
     &:last-child {
-      border-top-right-radius: var(--dsc-table-border-radius);
+      border-bottom-right-radius: var(--dsc-table-border-radius);
     }
   }
 
@@ -135,11 +134,10 @@
   &[data-border] {
     --dsc-table-border-radius: var(--ds-border-radius-md);
 
-    border: 1px solid;
-    border-color: var(--dsc-table-border-color);
+    border: var(--dsc-table-border);
 
-    & > :is(thead, tbody):last-child > tr:last-child > :is(th, td) {
-      border-top: 0;
+    & > :last-child > tr:last-child > :is(th, td) {
+      border-bottom: none; /* Skip last border-bottom when <table> has border */
     }
   }
 
