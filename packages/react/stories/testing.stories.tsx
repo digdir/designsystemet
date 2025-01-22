@@ -277,11 +277,15 @@ export const Sizes: StoryFn = () => {
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
           <ErrorSummary.List>
-            <ErrorSummary.Item href='#'>
-              Fødselsdato kan ikke være etter år 2005
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href='#'>
+                Fødselsdato kan ikke være etter år 2005
+              </ErrorSummary.Link>
             </ErrorSummary.Item>
-            <ErrorSummary.Item href='#'>
-              E-post må være gyldig
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href='#'>
+                E-post må være gyldig
+              </ErrorSummary.Link>
             </ErrorSummary.Item>
           </ErrorSummary.List>
         </ErrorSummary>

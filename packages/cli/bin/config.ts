@@ -34,7 +34,7 @@ const themeSchema = z.object(
     colors: z.object(
       {
         main: colorCategorySchema,
-        support: colorCategorySchema,
+        support: colorCategorySchema.optional().default({}),
         neutral: colorSchema,
       },
       { description: 'Defines the colors for this theme' },

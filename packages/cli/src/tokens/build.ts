@@ -101,17 +101,28 @@ export async function buildTokens(options: Options): Promise<void> {
     console.log('accent color:', buildOptions.accentColor);
   }
 
-  const buildAndSdConfigs = R.map(
-    (val: BuildConfig) => ({
-      buildConfig: val,
-      sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
-        outPath: targetDir,
-        tokensDir,
-        ...val.options,
-      }),
-    }),
-    buildConfigs,
-  );
+  const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
+      outPath: targetDir,
+      tokensDir,
+      ...buildConfig.options,
+    });
+
+    // Disable build if all sdConfigs dimensions permutation are unknown
+    const unknownConfigs = buildConfig.dimensions.map((dimension) =>
+      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+    );
+    for (const unknowns of unknownConfigs) {
+      if (unknowns.length === sdConfigs.length) {
+        buildConfig.enabled = () => false;
+      }
+    }
+
+    return {
+      buildConfig,
+      sdConfigs,
+    };
+  }, buildConfigs);
 
   if (clean) {
     await cleanDir(targetDir, dry);
