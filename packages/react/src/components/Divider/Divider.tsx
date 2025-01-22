@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 export type DividerProps = HTMLAttributes<HTMLHRElement>;
 
 /**
- * Divider component, used to separate content.
+ * Divider component, used to separate content. Uses `hr` element.
  *
  * @example
  * <Divider />

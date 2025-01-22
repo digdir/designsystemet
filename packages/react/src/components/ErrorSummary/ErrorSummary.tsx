@@ -25,8 +25,12 @@ export type ErrorSummaryProps = {
  * <ErrorSummary>
  *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
  *   <ErrorSummary.List>
- *     <ErrorSummary.Item href='#'>Error 1</ErrorSummary.Item>
- *     <ErrorSummary.Item href='#'>Error 2</ErrorSummary.Item>
+ *     <ErrorSummary.Item>
+ *       <ErrorSummary.Link href='#'>Error 1</ErrorSummary.Link>
+ *     </ErrorSummary.Item>
+ *     <ErrorSummary.Item>
+ *       <ErrorSummary.Link href='#'>Error 2</ErrorSummary.Link>
+ *     </ErrorSummary.Item>
  *   </ErrorSummary.List>
  * </ErrorSummary>
  */

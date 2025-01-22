@@ -30,6 +30,7 @@ const render = <T extends HTMLElement>(
 
 /**
  * ListUnordered component, used to display a list of items.
+ * Renders a native `ul` element.
  *
  * @example
  * <List.Unordered>
@@ -45,6 +46,7 @@ export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
 
 /**
  * ListOrdered component, used to display a list of items.
+ * Renders a native `ol` element.
  *
  * @example
  * <List.Ordered>

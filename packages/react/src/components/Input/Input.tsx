@@ -56,7 +56,8 @@ export type InputProps = MergeRight<
   }
 >;
 
-/** Input field
+/**
+ * Input renders a native `input` element.
  *
  * @example
  * <Input />

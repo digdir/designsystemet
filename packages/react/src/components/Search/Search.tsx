@@ -6,7 +6,7 @@ import type { DefaultProps } from '../../types';
 export type SearchProps = DefaultProps & React.HTMLAttributes<HTMLDivElement>;
 
 /**
- * Search component, use ti display different variations of a search input
+ * Search component, use to display different variations of a search input
  *
  * @example with button
  * <Search>

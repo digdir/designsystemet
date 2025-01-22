@@ -19,7 +19,7 @@ export type LabelProps = {
   DefaultProps;
 
 /**
- * Use `Label` for labels.
+ * Use `Label` for labels. Renders a native `label` element.
  *
  * @example
  * <Label data-size='lg' weight='medium'>Label</Label>

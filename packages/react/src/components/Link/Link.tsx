@@ -20,6 +20,12 @@ export type LinkProps = MergeRight<
   }
 >;
 
+/**
+ * Link component, renders a native `a` element.
+ *
+ * @example
+ * <Link href='#'>Link</Link>
+ */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
