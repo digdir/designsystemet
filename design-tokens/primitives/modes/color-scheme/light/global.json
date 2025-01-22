@@ -35,7 +35,7 @@
       },
       "9": {
         "$type": "color",
-        "$value": "#0a71bf"
+        "$value": "#0A71C0"
       },
       "10": {
         "$type": "color",
@@ -159,7 +159,7 @@
       },
       "9": {
         "$type": "color",
-        "$value": "#b7581d"
+        "$value": "#B8581D"
       },
       "10": {
         "$type": "color",
@@ -183,7 +183,7 @@
       },
       "contrast-2": {
         "$type": "color",
-        "$value": "#fdf9f8"
+        "$value": "#fdfbf9"
       }
     },
     "purple": {
@@ -283,7 +283,7 @@
       },
       "9": {
         "$type": "color",
-        "$value": "#bf1b1b"
+        "$value": "#C01B1B"
       },
       "10": {
         "$type": "color",
@@ -345,7 +345,7 @@
       },
       "9": {
         "$type": "color",
-        "$value": "#d4b12f"
+        "$value": "#D4B12F"
       },
       "10": {
         "$type": "color",

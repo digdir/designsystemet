@@ -16,9 +16,9 @@
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^6.14.0",
     "@repo/components": "workspace:^",
-    "chroma-js": "^2.6.0",
+    "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
-    "next": "^15.0.4",
+    "next": "^15.1.5",
     "react": "^19.0.0",
     "react-color-palette": "^7.3.0",
     "react-dom": "^19.0.0",
@@ -26,8 +26,8 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@types/chroma-js": "^2.4.4",
-    "@types/react": "^19.0.4",
-    "@types/react-dom": "^19.0.2"
+    "@types/chroma-js": "^3.1.0",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3"
   }
 }
