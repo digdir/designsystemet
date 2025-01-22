@@ -26,7 +26,7 @@ export type ValidationMessageProps = MergeRight<
  * Use `ValidationMessage` to display validation text
  *
  * @example
- * <ValidationMessage>This is a damger validation message</ValidationMessage>
+ * <ValidationMessage>This is a danger validation message</ValidationMessage>
  */
 export const ValidationMessage = forwardRef<
   HTMLParagraphElement,
