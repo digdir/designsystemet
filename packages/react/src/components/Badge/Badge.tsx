@@ -23,6 +23,11 @@ export type BadgeProps = MergeRight<
  *
  * @example without children
  * <Badge count={5} maxCount={10} />
+ *
+ * @example with children
+ * <Badge count={5} maxCount={10}>
+ *   <Icon />
+ * </Badge>
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   { className, count, maxCount, ...rest },
