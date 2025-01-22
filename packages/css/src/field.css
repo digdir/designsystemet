@@ -20,7 +20,7 @@
   }
 
   &:has([aria-readonly='true'], [readonly]) label {
-    --dsc-label--readonly: ; /* Activate lock icon for label when readonly */
+    --ds-internal-label--readonly: ; /* Activate lock icon for label when readonly */
   }
 
   /**
@@ -42,7 +42,7 @@
     }
 
     & label {
-      --dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
+      --ds-internal--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
     }
 

@@ -1,7 +1,8 @@
 .ds-tabs {
-  --dsc-tabs-tab-bottom-border-color: transparent;
   --dsc-tabs-tab-padding: var(--ds-size-3) var(--ds-size-5);
   --dsc-tabs-tab-color: var(--ds-color-neutral-text-subtle);
+  --dsc-tabs-tab-color--hover: var(--ds-color-neutral-text-default);
+  --dsc-tabs-tab-color--selected: var(--ds-color-base-default);
   --dsc-tabs-content-padding: var(--ds-size-5);
   --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
@@ -59,11 +60,14 @@
       }
 
       &[aria-selected='true'] {
-        --dsc-tabs-tab-bottom-border-color: var(--ds-color-base-default);
-        --dsc-tabs-tab-color: var(--ds-color-text-subtle);
+        color: var(--dsc-tabs-tab-color--selected);
+
+        &::after {
+          background: var(--dsc-tabs-tab-color--selected);
+        }
 
         @media (forced-colors: active) {
-          --dsc-tabs-tab-color: CanvasText;
+          color: CanvasText;
           border-bottom: 2px solid CanvasText;
         }
       }
@@ -80,7 +84,6 @@
         display: block;
         height: .15em; /* Scale with font */
         width: 100%;
-        background: var(--dsc-tabs-tab-bottom-border-color);
         position: absolute;
         bottom: 0;
         left: 0;
@@ -88,8 +91,11 @@
 
       @media (hover: hover) and (pointer: fine) {
         &:hover:not([aria-selected='true']) {
-          --dsc-tabs-tab-bottom-border-color: var(--ds-color-neutral-border-subtle);
-          --dsc-tabs-tab-color: var(--ds-color-neutral-text-default);
+          color: var(--dsc-tabs-tab-color--hover);
+
+          &::after {
+            background: var(--dsc-tabs-list-border-color);
+          }
         }
       }
     }
