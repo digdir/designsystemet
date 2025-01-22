@@ -4,7 +4,7 @@
   --dsc-table-background: var(--ds-color-neutral-background-default);
   --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-table-border-divider: 2px solid var(--dsc-table-border-color);
-  --dsc-table-border-radius: 0;
+  --dsc-table-border-radius: var(--ds-border-radius-sm);
   --dsc-table-border: 1px solid var(--dsc-table-border-color);
   --dsc-table-color: var(--ds-color-neutral-text-default);
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-default);
@@ -14,7 +14,6 @@
   --dsc-table-sort-size: var(--ds-size-6);
 
   border-collapse: separate; /* Using separate mode to enable border-radius */
-  border-radius: var(--dsc-table-border-radius);
   border-spacing: 0;
   box-sizing: border-box;
   color: var(--dsc-table-color);
@@ -51,28 +50,6 @@
   & > caption {
     @composes ds-heading from './heading.css';
     text-align: inherit;
-  }
-
-  /* Add rounded border to first and last row */
-  & > :first-child > tr:first-child > :is(th, td) {
-    &:first-child {
-      border-top-left-radius: var(--dsc-table-border-radius);
-    }
-
-    &:last-child {
-      border-top-right-radius: var(--dsc-table-border-radius);
-    }
-  }
-
-  /* Add rounded border to last row */
-  & > :last-child > tr:last-child > :is(th, td) {
-    &:first-child {
-      border-bottom-left-radius: var(--dsc-table-border-radius);
-    }
-
-    &:last-child {
-      border-bottom-right-radius: var(--dsc-table-border-radius);
-    }
   }
 
   /**
@@ -132,12 +109,33 @@
    * Configurations
    */
   &[data-border] {
-    --dsc-table-border-radius: var(--ds-border-radius-md);
-
+    border-radius: var(--ds-border-radius-md);
     border: var(--dsc-table-border);
 
     & > :last-child > tr:last-child > :is(th, td) {
       border-bottom: none; /* Skip last border-bottom when <table> has border */
+    }
+
+    /* Add rounded border to first and last row */
+    & > :first-child > tr:first-child > :is(th, td) {
+      &:first-child {
+        border-top-left-radius: var(--dsc-table-border-radius);
+      }
+
+      &:last-child {
+        border-top-right-radius: var(--dsc-table-border-radius);
+      }
+    }
+
+    /* Add rounded border to last row */
+    & > :last-child > tr:last-child > :is(th, td) {
+      &:first-child {
+        border-bottom-left-radius: var(--dsc-table-border-radius);
+      }
+
+      &:last-child {
+        border-bottom-right-radius: var(--dsc-table-border-radius);
+      }
     }
   }
 
