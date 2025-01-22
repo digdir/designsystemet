@@ -18,9 +18,9 @@ export const luminance = {
     baseContrastSubtle: 1,
   },
   dark: {
-    backgroundDefault: 0.011,
-    backgroundTinted: 0.017,
-    surfaceDefault: 0.023,
+    backgroundDefault: 0.012,
+    backgroundTinted: 0.018,
+    surfaceDefault: 0.024,
     surfaceTinted: 0.029,
     surfaceHover: 0.044,
     surfaceActive: 0.063,

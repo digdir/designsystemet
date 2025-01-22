@@ -25,7 +25,7 @@ export const ColorContrasts = () => {
     colors?.main[0]?.colors || generateColorSchemes('#0062BA');
 
   const indexOne = [1, 2, 3, 4, 5];
-  const indexTwo = [6, 7, 8, 12, 13];
+  const indexTwo = [7, 8, 9, 10, 11];
   const [reducedLight, setReducedLight] = useState({
     themeRange1: initialTheme[appearance].filter((color) =>
       indexOne.includes(color.number),
@@ -35,8 +35,8 @@ export const ColorContrasts = () => {
     ),
   });
 
-  const indexBaseOne = [0, 1, 2, 3, 14, 15];
-  const indexBaseTwo = [9, 10, 11];
+  const indexBaseOne = [1, 2, 4, 15, 16];
+  const indexBaseTwo = [12, 13, 14];
   const [reducedBaseLight, setReducedBaseLight] = useState({
     themeRange1: initialTheme[appearance].filter((color) =>
       indexBaseOne.includes(color.number),
