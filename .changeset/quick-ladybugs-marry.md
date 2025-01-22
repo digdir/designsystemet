@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Removed dedicated `accent` variables (e.g. `--ds-color-accent-base-default`) added in `tokens build`. Use e.g. `--ds-color-base-default` with `data-color="<your-primary-color>"` instead.
+Removed predefined `accent` variables added during `tokens build`. Use `data-color` or generated named color variables instead.
