@@ -65,7 +65,7 @@
 
     /* Using .ds-input to ensure it's only our component */
     & .ds-input:is([type='radio'], [type='checkbox']):not([aria-label]) {
-      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+      translate: 0 calc((1lh - 100%) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
     }
 
     &[data-position='end'] {

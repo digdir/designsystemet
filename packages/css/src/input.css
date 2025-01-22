@@ -16,15 +16,13 @@
   --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
-  --dsc-input-stroke: 0.055em;
+  --dsc-input-stroke: 0.05em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
   --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-  --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -45,23 +43,13 @@
   @composes ds-focus from './base.css';
 
   @media (forced-colors: active) {
-    --dsc-input-border-color: ButtonText;
-    --dsc-input-background: Canvas;
-    --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
-    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
-    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-    --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
-    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
-    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-    --check-left: 10% 73% / 35% 35% no-repeat content-box linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
-    --check-right: 90% 50% / 65% 65% no-repeat content-box linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    border-color: ButtonText;
+    background-color: Canvas;
 
     &:disabled,
     &[aria-disabled='true'],
     &[readonly] {
-      --dsc-input-border-color: GrayText;
+      border-color: GrayText;
     }
   }
 
@@ -76,9 +64,11 @@
 
   &:is(select) {
     padding-right: 2.4em;
-    background: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 1.2em + var(--dsc-input-stroke))
-      / 0.4em 0.4em no-repeat, linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)) calc(100% - 0.8em) / 0.4em
-      0.4em no-repeat, var(--dsc-input-background);
+    background-image: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)),
+      linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    background-position: calc(100% - 1.2em + var(--dsc-input-stroke)), calc(100% - 0.8em);
+    background-size: .4em .4em;
+    background-repeat: no-repeat;
 
     @media (forced-colors: active) {
       appearance: auto; /* show chevron */
@@ -105,9 +95,9 @@
    */
   &:checked,
   &:indeterminate:where([type='checkbox']) {
-    --dsc-input-background: var(--dsc-input-background--checked);
-    --dsc-input-border-color: var(--dsc-input-border-color--checked);
-    --dsc-input-color: var(--dsc-input-color--checked);
+    background: var(--dsc-input-background--checked);
+    border-color: var(--dsc-input-border-color--checked);
+    color: var(--dsc-input-color--checked);
   }
 
   &:disabled,
@@ -117,19 +107,21 @@
   }
 
   &[aria-invalid='true'] {
-    --dsc-input-background--checked: var(--dsc-input-background--invalid);
-    --dsc-input-border-color: var(--dsc-input-border-color--invalid);
-    --dsc-input-color--checked: var(--dsc-input-color--invalid);
+    border-color: var(--dsc-input-border-color--invalid);
+  }
+  &[aria-invalid='true']:where(:checked, :indeterminate) {
+    background: var(--dsc-input-background--invalid);
+    color: var(--dsc-input-color--invalid);
   }
 
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
   &[readonly] {
-    --dsc-input-background: var(--dsc-input-background--readonly);
-    --dsc-input-border-color: var(--dsc-input-border-color--readonly);
-    --dsc-input-color: var(--dsc-input-color--readonly);
+    background: var(--dsc-input-background--readonly);
+    border-color: var(--dsc-input-border-color--readonly);
+    color: var(--dsc-input-color--readonly);
 
     @media (forced-colors: active) {
-      --dsc-input-border-color: GrayText;
+      border-color: GrayText;
     }
   }
 
@@ -145,20 +137,20 @@
    */
   &[type='checkbox'],
   &[type='radio'] {
-    --dsc-input-border-width: var(--dsc-input-border-width--toggle);
-    --dsc-input-padding: calc(var(--ds-size-1) / 2);
-    --dsc-input-size: var(--dsc-input-size--toggle);
+    border-width: var(--dsc-input-border-width--toggle);
+    padding: calc(var(--ds-size-1) / 2);
 
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
-    width: var(--dsc-input-size);
+    height: var(--dsc-input-size--toggle);
+    width: var(--dsc-input-size--toggle);
     /* forced-color-adjust: none; */ /* Prevent browser from applying forced colors, since we need the background */
 
     @media (forced-colors: active) {
       &:disabled,
       &[aria-disabled='true'],
       &[readonly] {
-        --dsc-input-border-color: GrayText;
+        border-color: GrayText;
       }
     }
   }
@@ -168,50 +160,46 @@
   }
 
   &[type='radio']:checked {
-    background: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%), var(--dsc-input-background);
+    background-image: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%);
 
     @media (forced-colors: active) {
-      --dsc-input-background: LinkText;
-      --dsc-input-border-color: LinkText;
-
-      background: radial-gradient(circle closest-side, Canvas 45%, transparent 50%), var(--dsc-input-background);
+      background-color: LinkText;
+      border-color: LinkText;
+      color: Canvas;
       forced-color-adjust: none; /* To be able to draw dot */
     }
   }
 
   &[type='checkbox']:checked {
-    background: var(--check-left), var(--check-right), var(--dsc-input-background);
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 10% 73%, 90% 50%;
+    background-size: 35% 35%, 65% 65%;
+    background-image: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)),
+      linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
 
     @media (forced-colors: active) {
-      --dsc-input-background: LinkText;
-      --dsc-input-border-color: LinkText;
-
-      background: var(--check-left), var(--check-right), var(--dsc-input-background);
+      background-color: LinkText;
+      border-color: LinkText;
       forced-color-adjust: none; /* To be able to draw check */
     }
   }
 
   &[type='checkbox']:indeterminate {
-    background: center / contain no-repeat content-box
-      linear-gradient(
-        transparent calc(48% - var(--dsc-input-stroke)),
-        currentcolor calc(50% - var(--dsc-input-stroke)),
-        currentcolor calc(50% + var(--dsc-input-stroke)),
-        transparent calc(52% + var(--dsc-input-stroke))
-      ), var(--dsc-input-background);
+    background-origin: content-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: linear-gradient(
+      transparent calc(48% - var(--dsc-input-stroke)),
+      currentcolor calc(50% - var(--dsc-input-stroke)),
+      currentcolor calc(50% + var(--dsc-input-stroke)),
+      transparent calc(52% + var(--dsc-input-stroke))
+    );
 
     @media (forced-colors: active) {
-      --dsc-input-background: LinkText;
-      --dsc-input-border-color: LinkText;
-
-      background: center / contain no-repeat content-box
-        linear-gradient(
-          transparent calc(48% - var(--dsc-input-stroke)),
-          Canvas calc(50% - var(--dsc-input-stroke)),
-          Canvas calc(50% + var(--dsc-input-stroke)),
-          transparent calc(52% + var(--dsc-input-stroke))
-        ), var(--dsc-input-background);
-
+      background-color: LinkText;
+      border-color: LinkText;
       forced-color-adjust: none; /* To be able to draw line */
     }
   }
@@ -238,7 +226,7 @@
       &:disabled,
       &[aria-disabled='true'],
       &[readonly] {
-        --dsc-input-border-color: GrayText;
+        border-color: GrayText;
       }
     }
   }
