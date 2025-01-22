@@ -20,7 +20,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.6.1",
+    "@chromatic-com/storybook": "^3.2.4",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
@@ -39,15 +39,16 @@
     "@storybook/test-runner": "^0.19.1",
     "@storybook/theming": "^8.4.7",
     "@storybook/types": "^8.4.7",
-    "@types/react": "19.0.4",
-    "@types/react-dom": "^19.0.2",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "^19.0.3",
     "axe-playwright": "^2.0.2",
-    "concurrently": "^9.0.1",
+    "concurrently": "^9.1.2",
     "http-server": "^14.1.1",
     "remark-gfm": "^4.0.0",
     "rimraf": "^6.0.1",
     "storybook": "^8.4.7",
-    "wait-on": "^8.0.1"
+    "storybook-addon-pseudo-states": "^4.0.2",
+    "wait-on": "^8.0.2"
   },
   "jest-junit": {
     "suiteName": "Storybook tests",
