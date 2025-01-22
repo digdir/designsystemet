@@ -28,10 +28,10 @@ export const ColorContrasts = () => {
   const indexTwo = [7, 8, 9, 10, 11];
   const [reducedLight, setReducedLight] = useState({
     themeRange1: initialTheme[appearance].filter((color) =>
-      indexOne.includes(color.number),
+      indexOne.includes(color.position),
     ),
     themeRange2: initialTheme[appearance].filter((color) =>
-      indexTwo.includes(color.number),
+      indexTwo.includes(color.position),
     ),
   });
 
@@ -39,10 +39,10 @@ export const ColorContrasts = () => {
   const indexBaseTwo = [12, 13, 14];
   const [reducedBaseLight, setReducedBaseLight] = useState({
     themeRange1: initialTheme[appearance].filter((color) =>
-      indexBaseOne.includes(color.number),
+      indexBaseOne.includes(color.position),
     ),
     themeRange2: initialTheme[appearance].filter((color) =>
-      indexBaseTwo.includes(color.number),
+      indexBaseTwo.includes(color.position),
     ),
   });
 
@@ -54,10 +54,10 @@ export const ColorContrasts = () => {
 
     setReducedLight({
       themeRange1: newTheme[appearance].filter((color) =>
-        indexOne.includes(color.number),
+        indexOne.includes(color.position),
       ),
       themeRange2: newTheme[appearance].filter((color) =>
-        indexTwo.includes(color.number),
+        indexTwo.includes(color.position),
       ),
     });
   }, [selectedColor, colors, appearance]);
@@ -71,10 +71,10 @@ export const ColorContrasts = () => {
 
     setReducedBaseLight({
       themeRange1: newTheme[appearance].filter((color) =>
-        indexBaseOne.includes(color.number),
+        indexBaseOne.includes(color.position),
       ),
       themeRange2: newTheme[appearance].filter((color) =>
-        indexBaseTwo.includes(color.number),
+        indexBaseTwo.includes(color.position),
       ),
     });
   }, [selectedBaseColor, colors, appearance]);
@@ -83,7 +83,7 @@ export const ColorContrasts = () => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorNameFromNumber(color.number)}
+          {getColorNameFromNumber(color.position)}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
