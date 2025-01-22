@@ -7,7 +7,7 @@ export type ParagraphProps = {
   /**
    * Changes text sizing
    */
-  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'

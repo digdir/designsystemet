@@ -13,15 +13,7 @@ export type HeadingProps = {
    * Changes text sizing
    * @default 'md'
    */
-  'data-size'?:
-    | '2xs'
-    | 'xs'
-    | 'sm'
-    | 'md'
-    | 'lg'
-    | 'xl'
-    | '2xl'
-    | (string & {});
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
