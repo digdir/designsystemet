@@ -9,13 +9,12 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
 
 /**
  * The container for all `Tab` components.
+ *
  * @example
- * ```tsx
  * <Tabs.List>
  *  <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  *  <Tabs.Tab value='2'>Tab 2</Tabs.Tab>
  * </Tabs.List>
- * ```
  */
 export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   function TabsList({ children, ...rest }, ref) {

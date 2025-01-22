@@ -11,7 +11,7 @@ export type ButtonProps = MergeRight<
   {
     /**
      * Specify which variant to use
-     * @default primary
+     * @default 'primary'
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
     /**

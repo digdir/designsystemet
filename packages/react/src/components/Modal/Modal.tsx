@@ -26,10 +26,27 @@ export type ModalProps = MergeRight<
      * Callback that is called when the modal is closed.
      */
     onClose?: (event: Event) => void;
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
     asChild?: boolean;
   }
 >;
 
+/**
+ * Modal component, used to display a modal dialog.
+ *
+ * @example
+ * <Modal.TriggerContext>
+ *   <Modal.Trigger>Open Modal</Modal.Trigger>
+ *   <Modal>
+ *     <Modal.Block>
+ *       Content
+ *     </Modal.Block>
+ *   </Modal>
+ * </Modal.TriggerContext>
+ */
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   {
     asChild,

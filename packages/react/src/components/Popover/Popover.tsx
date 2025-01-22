@@ -35,17 +35,16 @@ export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * id to connect the trigger with the popover - required when used without Popover.Context.
+     * id to connect the trigger with the popover - required when not using Popover.Context.
      */
     id?: string;
     /**
-     * Placement of the tooltip on the trigger.
-     * @default top
+     * Placement of the popover on the trigger.
+     * @default 'top'
      */
     placement?: Placement;
-
     /**
-     * Use this to make the popover controlled.
+     * When a boolean is provided, the popover will be controlled.
      * @default undefined
      */
     open?: boolean;
@@ -62,11 +61,25 @@ export type PopoverProps = MergeRight<
      * @default true
      */
     autoPlacement?: boolean;
-
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
     asChild?: boolean;
   }
 >;
 
+/**
+ * Popover component, used to display content in a popover over an element.
+ *
+ * @example
+ * <Popover.TriggerContext>
+ *   <Popover.Trigger>Open Popover</Popover.Trigger>
+ *   <Popover>
+ *     Content
+ *   </Popover>
+ * </Popover.TriggerContext>
+ */
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {

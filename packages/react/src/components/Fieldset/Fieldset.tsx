@@ -7,6 +7,21 @@ import type { DefaultProps } from '../../types';
 export type FieldsetProps = DefaultProps &
   FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
+/**
+ * Fieldset component, used to wrap a form field.
+ *
+ * @example
+ * <Fieldset>
+ *   <Fieldset.Legend>Skriv inn dine svar</Fieldset.Legend>
+ *   <Fieldset.Description>
+ *     Gi en kort beskrivelse i begge feltene
+ *   </Fieldset.Description>
+ *   <Field>
+ *     <Label>Kort beskrivelse</Label>
+ *     <Input />
+ *   </Field>
+ * </Fieldset>
+ */
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   function Fieldset({ className, ...rest }, ref) {
     return (

@@ -25,6 +25,12 @@ type OptionalHref = {
 export type ErrorSummaryItemProps = (RequiredHref | OptionalHref) &
   Omit<ListItemProps, 'asChild' | 'ref'>;
 
+/**
+ * ErrorSummaryItem component, used to display an error link in the ErrorSummary.
+ *
+ * @example
+ * <ErrorSummary.Item href='#'>Link to error</ErrorSummary.Item>
+ */
 export const ErrorSummaryItem = forwardRef<
   HTMLLIElement,
   ErrorSummaryItemProps

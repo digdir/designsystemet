@@ -22,7 +22,7 @@ export type LabelProps = {
  * Use `Label` for labels.
  *
  * @example
- * <Label data-size='lg'>Label</Label>
+ * <Label data-size='lg' weight='medium'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
   { className, weight = 'medium', asChild, ...rest },
