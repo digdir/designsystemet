@@ -8898,7 +8898,7 @@ __metadata:
     react-router-dom: "npm:^6.28.2"
     rollup: "npm:^4.31.0"
     typescript: "npm:^5.7.3"
-    vite: "npm:^6.0.10"
+    vite: "npm:^6.0.11"
     vite-plugin-generate-file: "npm:^0.2.0"
     vite-plugin-react-rich-svg: "npm:^1.2.0"
     vite-plugin-singlefile: "npm:^2.1.0"
@@ -15336,6 +15336,7 @@ __metadata:
     tsconfck: "npm:^3.1.4"
     typescript: "npm:^5.7.3"
     typescript-plugin-css-modules: "npm:^5.1.0"
+    vite: "npm:^6.0.11"
     vitest: "npm:^2.1.8"
   languageName: unknown
   linkType: soft
@@ -17323,7 +17324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.10":
+"vite@npm:^6.0.11":
   version: 6.0.11
   resolution: "vite@npm:6.0.11"
   dependencies:
