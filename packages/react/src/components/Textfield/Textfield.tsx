@@ -48,7 +48,7 @@ type SharedTextfieldProps = {
   /**
    * Error message for field
    */
-  validationMessage?: ReactNode;
+  error?: ReactNode;
   /**
    * Uses `Field.Counter` to display a character counter
    * Pass a number to set a limit, or an object to configure the counter
@@ -96,7 +96,7 @@ export const Textfield = forwardRef<
   {
     label,
     description,
-    validationMessage,
+    error,
     multiline,
     prefix,
     suffix,
@@ -117,21 +117,19 @@ export const Textfield = forwardRef<
         {multiline === true ? (
           <Textarea
             ref={ref as ForwardedRef<HTMLTextAreaElement>}
-            aria-invalid={Boolean(validationMessage) || undefined}
+            aria-invalid={Boolean(error) || undefined}
             {...(rest as TextareaProps_)}
           />
         ) : (
           <Input
             ref={ref as ForwardedRef<HTMLInputElement>}
-            aria-invalid={Boolean(validationMessage) || undefined}
+            aria-invalid={Boolean(error) || undefined}
             {...(rest as InputProps_)}
           />
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
       </FieldAffixes>
-      {!!validationMessage && (
-        <ValidationMessage>{validationMessage}</ValidationMessage>
-      )}
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter
           {...(typeof counter === 'number' ? { limit: counter } : counter)}
