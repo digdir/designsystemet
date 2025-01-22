@@ -18,6 +18,18 @@ export type ErrorSummaryProps = Omit<
   'data-color'
 >;
 
+/**
+ * ErrorSummary component, used to display a list of errors.
+ *
+ * @example
+ * <ErrorSummary>
+ *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+ *   <ErrorSummary.List>
+ *     <ErrorSummary.Item>Error 1</ErrorSummary.Item>
+ *     <ErrorSummary.Item>Error 2</ErrorSummary.Item>
+ *   </ErrorSummary.List>
+ * </ErrorSummary>
+ */
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary(
     {

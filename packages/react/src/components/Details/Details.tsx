@@ -28,9 +28,13 @@ export type DetailsProps = MergeRight<
      * @default false
      */
     defaultOpen?: boolean;
-    /** Callback function when Details toggles due to click on summary or find in page-search */
+    /**
+     * Callback function when Details toggles due to click on summary or find in page-search
+     */
     onToggle?: (event: Event) => void;
-    /** Content should be one `<Details.Summary>` and `<Details.Content>` */
+    /**
+     * Content should be one `<Details.Summary>` and `<Details.Content>`
+     */
     children?: ReactNode;
   }
 > &
@@ -41,10 +45,11 @@ export type DetailsProps = MergeRight<
 
 /**
  * Details component, contains `Details.Summary` and `Details.Content` components.
+ *
  * @example
  * <Details>
- *  <DetailsSummary>Header</DetailsSummary>
- *  <DetailsContent>Content</DetailsContent>
+ *  <Details.Summary>Header</Details.Summary>
+ *  <Details.Content>Content</Details.Content>
  * </Details>
  */
 export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(

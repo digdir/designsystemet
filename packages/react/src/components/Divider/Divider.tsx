@@ -4,6 +4,12 @@ import { forwardRef } from 'react';
 
 export type DividerProps = HTMLAttributes<HTMLHRElement>;
 
+/**
+ * Divider component, used to separate content.
+ *
+ * @example
+ * <Divider />
+ */
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
   { className, ...rest },
   ref,

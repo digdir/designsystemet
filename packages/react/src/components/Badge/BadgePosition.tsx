@@ -20,6 +20,15 @@ export type BadgePositionProps = MergeRight<
   }
 >;
 
+/**
+ * `BadgePosition` is a component that positions the badge.
+ *
+ * @example
+ * <BadgePosition placement='top-right' overlap='circle'>
+ *  <Badge count={5} maxCount={10} />
+ *  <Element />
+ * </BadgePosition>
+ */
 export const BadgePosition = forwardRef<HTMLSpanElement, BadgePositionProps>(
   function BadgePlacement(
     { className, overlap = 'rectangle', placement = 'top-right', ...rest },

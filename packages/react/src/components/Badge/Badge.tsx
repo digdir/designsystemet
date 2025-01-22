@@ -22,16 +22,7 @@ export type BadgeProps = MergeRight<
  * `Badge` is a non-interactive component for displaying status with or without numbers.
  *
  * @example without children
- * ```jsx
- * <Badge color='accent' count={5} />
- * ```
- *
- * @example with children
- * ```jsx
- * <Badge color='accent'>
- *  <Icon />
- * </Badge>
- * ```
+ * <Badge count={5} maxCount={10} />
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   { className, count, maxCount, ...rest },

@@ -10,21 +10,32 @@ import { ValidationMessage } from '../ValidationMessage';
 export type CheckboxProps = MergeRight<
   DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,
   {
-    /** Optional aria-label */
+    /**
+     * Optional aria-label
+     */
     'aria-label'?: string;
-    /** Checkbox label */
+    /**
+     * Checkbox label
+     */
     label?: ReactNode;
-    /** Description for field */
+    /**
+     * Description for field
+     */
     description?: ReactNode;
-    /** Value of the `input` element */
+    /**
+     * Value of the `input` element
+     */
     value?: InputProps['value'];
-    /** Validation message for field */
+    /**
+     * Validation message for field
+     */
     validation?: ReactNode;
   } & LabelRequired
 >;
 
 /**
  * Checkbox used to select multiple options.
+ *
  * @example
  * <Checkbox label="I agree" value="agree" />
  */

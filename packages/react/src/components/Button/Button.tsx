@@ -14,11 +14,13 @@ export type ButtonProps = MergeRight<
      * @default primary
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
-    /** Toggle icon only styling, pass icon as children
+    /**
+     * Toggle icon only styling, pass icon as children
      * @default false
      */
     icon?: boolean;
-    /** Toggle loading state
+    /**
+     * Toggle loading state
      * @default false
      */
     loading?: boolean;
@@ -37,6 +39,7 @@ export type ButtonProps = MergeRight<
 
 /**
  * Button used for interaction
+ *
  * @example
  * <Button>Click me</Button>
  */
