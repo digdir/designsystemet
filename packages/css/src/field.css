@@ -42,7 +42,7 @@
     }
 
     & label {
-      --ds-internal--readonly: initial; /* Never show lock icon on toggle inputs */
+      --ds-internal-label--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
     }
 
