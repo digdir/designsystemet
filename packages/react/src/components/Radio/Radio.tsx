@@ -27,9 +27,9 @@ export type RadioProps = MergeRight<
      */
     value?: InputProps['value'];
     /**
-     * Validation message for field
+     * Error message for field
      */
-    validation?: ReactNode;
+    error?: ReactNode;
   } & LabelRequired
 >;
 
@@ -47,7 +47,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     children,
     label,
     description,
-    validation,
+    error,
     ...rest
   },
   ref,
@@ -57,7 +57,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
-      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
     </Field>
   );
 });

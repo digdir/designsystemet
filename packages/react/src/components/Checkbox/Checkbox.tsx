@@ -27,9 +27,9 @@ export type CheckboxProps = MergeRight<
      */
     value?: InputProps['value'];
     /**
-     * Validation message for field
+     * Error message for field
      */
-    validation?: ReactNode;
+    error?: ReactNode;
   } & LabelRequired
 >;
 
@@ -48,7 +48,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       children,
       label,
       description,
-      validation,
+      error,
       ...rest
     },
     ref,
@@ -58,7 +58,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <Input type='checkbox' ref={ref} {...rest} />
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
-        {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+        {!!error && <ValidationMessage>{error}</ValidationMessage>}
       </Field>
     );
   },
