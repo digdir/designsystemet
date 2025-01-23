@@ -12,8 +12,9 @@
 - Set border with at least two properties, `border` and `border-color`
 - Avoid `position: relative` and change of display unless necessary
 - Avoid set sizes, such as `100px`, use `var(--ds-size-X)` or `var(--ds-font-size-X)` instead
+  - If our custom properties don't work, try to use `em`
 - Use `--ds-{COMPONENT}-{PROPERTY}` prefix for custom properties
-  - Use the word `spacing` when we use it to do more than just set a property. For example in padding, but also in a calc for `margin-inline`
+  - Use the word `spacing` when we use it to do more than just set a property. For example in `padding`, but also in a calc for `margin-inline`
   - States should be in this pattern: `--ds-{COMPONENT}-{PROPERTY}--{STATE}`
 
 ## Structure
