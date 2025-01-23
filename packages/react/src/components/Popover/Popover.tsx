@@ -72,13 +72,19 @@ export type PopoverProps = MergeRight<
 /**
  * Popover component, used to display content in a popover over an element.
  *
- * @example
+ * @example with TriggerContext
  * <Popover.TriggerContext>
  *   <Popover.Trigger>Open Popover</Popover.Trigger>
  *   <Popover>
  *     Content
  *   </Popover>
  * </Popover.TriggerContext>
+ *
+ * @example without TriggerContext
+ * <Button popovertarget="my-popover">Open Popover</Button>
+ * <Popover id="my-popover">
+ *   Content
+ * </Popover>
  */
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(

@@ -8,7 +8,7 @@ export type FieldsetProps = DefaultProps &
   FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 /**
- * Fieldset component, used to wrap a form field.
+ * Fieldset component, used to wrap a form field. Uses native `fieldset` element.
  *
  * @example
  * <Fieldset>

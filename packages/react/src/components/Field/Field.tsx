@@ -18,7 +18,7 @@ export type FieldProps = {
  * Field component, used to wrap a form field.
  *
  * @example
- * <Field data-my-field>
+ * <Field>
  *   <Label>Kort beskrivelse</Label>
  *   <Field.Description>Beskrivelse</Field.Description>
  *   <Input />

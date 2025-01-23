@@ -21,7 +21,7 @@ export type DropdownProps = MergeRight<
 /**
  * Dropdown component, used to display a list of options.
  *
- * @example
+ * @example with TriggerContext
  * <Dropdown.TriggerContext>
  *   <Dropdown.Trigger>Dropdown trigger</Dropdown.Trigger>
  *   <Dropdown placement='bottom-end'>
@@ -33,6 +33,17 @@ export type DropdownProps = MergeRight<
  *     </Dropdown.List>
  *   </Dropdown>
  * </Dropdown.TriggerContext>
+ *
+ * @example without TriggerContext
+ * <Button popovertarget="my-dropdown">Trigger</Button>
+ * <Dropdown id="my-dropdown">
+ *   <Dropdown.Heading>Heading</Dropdown.Heading>
+ *   <Dropdown.List>
+ *     <Dropdown.Item>
+ *       <Dropdown.Button>Item</Dropdown.Button>
+ *     </Dropdown.Item>
+ *   </Dropdown.List>
+ * </Dropdown>
  */
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   function DropdownContent(

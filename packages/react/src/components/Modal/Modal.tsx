@@ -37,7 +37,7 @@ export type ModalProps = MergeRight<
 /**
  * Modal component, used to display a modal dialog.
  *
- * @example
+ * @example with TriggerContext
  * <Modal.TriggerContext>
  *   <Modal.Trigger>Open Modal</Modal.Trigger>
  *   <Modal>
@@ -46,6 +46,16 @@ export type ModalProps = MergeRight<
  *     </Modal.Block>
  *   </Modal>
  * </Modal.TriggerContext>
+ *
+ * @example without TriggerContext
+ * const modalRef = useRef<HTMLDialogElement>(null);
+ *
+ * ...
+ *
+ * <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
+ * <Modal ref={modalRef}>
+ *   Content
+ * </Modal>
  */
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   {
