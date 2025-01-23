@@ -1,14 +1,20 @@
 .ds-field {
-  align-items: start;
-  flex-direction: column;
-  gap: var(--ds-size-2);
+  --dsc-field-content-spacing: var(--ds-size-2);
 
-  &:not([hidden]) {
-    display: flex;
+  /* The stack (https://every-layout.dev/layouts/stack/) */
+  & > * {
+    margin-block: 0;
+  }
+  & > * + * {
+    margin-top: var(--dsc-field-content-spacing);
   }
 
   & [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+  }
+
+  & input {
+    display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
   /**
@@ -30,7 +36,7 @@
     border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
-    row-gap: 0;
+    column-gap: var(--dsc-field-content-spacing);
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     &:not([hidden]) {
@@ -38,6 +44,7 @@
     }
 
     & > * {
+      margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
     }
 
@@ -84,7 +91,6 @@
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
-  align-self: stretch; /* If ds-field is placed inside a flex container like ds-field, we need to fill width */
   background: var(--ds-color-neutral-background-subtle);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
@@ -93,7 +99,7 @@
   white-space: nowrap;
 
   &:not([hidden]) {
-    display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+    display: flex;
   }
 
   &:has([size]) {
