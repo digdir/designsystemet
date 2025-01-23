@@ -9,6 +9,16 @@ export type PaginationItemProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLLIElement>, 'size'>;
 
+/**
+ * PaginationItem component, use within a Pagination.List.
+ *
+ * @example
+ * <Pagination.List>
+ *   <Pagination.Item>
+ *     <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
+ *   </Pagination.Item>
+ * </Pagination.List>
+ */
 export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   function PaginationItem({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'li';

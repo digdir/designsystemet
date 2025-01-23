@@ -5,6 +5,7 @@ export const colorCategories = {
   main: 'main',
   support: 'support',
 } as const;
+
 export type ColorCategories = keyof typeof colorCategories;
 
 /**

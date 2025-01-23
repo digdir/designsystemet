@@ -9,15 +9,24 @@ import { Label } from '../Label';
 export type SwitchProps = MergeRight<
   DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'>,
   {
-    /** Optional aria-label */
+    /**
+     * Optional aria-label
+     */
     'aria-label'?: string;
-    /** Radio label */
+    /**
+     * Radio label
+     */
     label?: ReactNode;
-    /** Description for field */
+    /**
+     * Description for field
+     */
     description?: ReactNode;
-    /** Value of the `input` element */
+    /**
+     * Value of the `input` element
+     */
     value?: InputProps['value'];
-    /** Position of switch
+    /**
+     * Position of switch
      * @default start
      */
     position?: FieldProps['position'];
@@ -26,6 +35,7 @@ export type SwitchProps = MergeRight<
 
 /**
  * Switch used to toggle options.
+ *
  * @example
  * <Switch label="I agree" value="agree" />
  */
