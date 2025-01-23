@@ -35,7 +35,7 @@
   }
 
   &:has(> .ds-modal__block) {
-    --ds-internal-icon--top-right-margin: var(--dsc-modal-icon-spacing);
+    --ds-internal-icon-top-right-margin: var(--dsc-modal-icon-spacing);
 
     padding: 0; /* Let Modal.Block own the padding */
   }
