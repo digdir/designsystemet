@@ -4,7 +4,7 @@
   --dsc-table-background: var(--ds-color-neutral-background-default);
   --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-table-border-divider: 2px solid var(--dsc-table-border-color);
-  --dsc-table-border-radius: var(--ds-border-radius-sm);
+  --dsc-table-border-radius: var(--ds-border-radius-md);
   --dsc-table-border: 1px solid var(--dsc-table-border-color);
   --dsc-table-color: var(--ds-color-neutral-text-default);
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-default);
@@ -45,6 +45,10 @@
   & > tfoot > tr:first-child > :is(th, td) {
     background: var(--dsc-table-header-background);
     border-top: var(--dsc-table-border-divider);
+  }
+
+  & > tfoot > tr:last-child > :is(th, td) {
+    border-bottom: none;
   }
 
   & > caption {
@@ -109,7 +113,7 @@
    * Configurations
    */
   &[data-border] {
-    border-radius: var(--ds-border-radius-md);
+    border-radius: var(--dsc-table-border-radius);
     border: var(--dsc-table-border);
 
     & > :last-child > tr:last-child > :is(th, td) {
@@ -117,7 +121,14 @@
     }
 
     /* Add rounded border to first and last row */
-    & > :first-child > tr:first-child > :is(th, td) {
+
+    &
+      > :is(
+        thead:first-of-type /* If first <thead>, but using :first-of-type to support <caption> */,
+        :not(:has(thead)) tbody:first-of-type /* If <tbody> is :first-of-type and not followed by <thead> */
+      )
+      > tr:first-child
+      > :is(th, td) {
       &:first-child {
         border-top-left-radius: var(--dsc-table-border-radius);
       }
@@ -127,8 +138,14 @@
       }
     }
 
-    /* Add rounded border to last row */
-    & > :last-child > tr:last-child > :is(th, td) {
+    /* Add rounded border to last row (using :last-of-type to suppoert <caption>) */
+    &
+      > :is(
+        tfoot:last-of-type /* If first <thead>, but using :first-of-type to support <caption> */,
+        :not(:has(tfoot)) tbody:last-of-type /* If <tbody> is :first-of-type and not followed by <thead> */
+      )
+      > tr:last-child
+      > :is(th, td) {
       &:first-child {
         border-bottom-left-radius: var(--dsc-table-border-radius);
       }
@@ -150,6 +167,9 @@
     }
   }
 
+  &[data-zebra] > tbody > tr > :is(th, td) {
+    border-block: 0;
+  }
   &[data-zebra] > :is(thead, tbody) > tr:nth-child(even) > :is(th, td) {
     background: var(--dsc-table-background--zebra);
   }
