@@ -10,7 +10,8 @@ export type AlertProps = MergeRight<
   {
     /**
      * Sets color and icon.
-     * @default info
+     *
+     * @default 'info'
      */
     'data-color'?: SeverityColors;
   }
@@ -18,8 +19,9 @@ export type AlertProps = MergeRight<
 
 /**
  * Alerts are used to inform users about important information, warnings, errors, or success.
+ *
  * @example
- * <Alert color='info'>Dette er en informasjonsmelding</Alert>
+ * <Alert data-color='info'>Dette er en informasjonsmelding</Alert>
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   { 'data-color': color = 'info', className, ...rest },

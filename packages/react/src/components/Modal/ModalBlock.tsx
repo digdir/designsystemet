@@ -11,6 +11,22 @@ export type ModalBlockProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
+/**
+ * ModalBlock component, used to separate content in a modal.
+ *
+ * @example
+ * <Modal>
+ *   <Modal.Block>
+ *     Header
+ *   </Modal.Block>
+ *   <Modal.Block>
+ *     Content
+ *   </Modal.Block>
+ *   <Modal.Block>
+ *     Footer
+ *   </Modal.Block>
+ * </Modal>
+ */
 export const ModalBlock = forwardRef<HTMLDivElement, ModalBlockProps>(
   function ModalBlock({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'div';

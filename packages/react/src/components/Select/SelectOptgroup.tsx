@@ -10,6 +10,17 @@ export type SelectOptgroupProps = {
   asChild?: boolean;
 } & OptgroupHTMLAttributes<HTMLOptGroupElement>;
 
+/**
+ * SelectOptgroup component, used to display a native optgroup within a select.
+ *
+ * @example
+ * <Select>
+ *   <Select.Optgroup label='Group 1'>
+ *     <Select.Option value='1'>Option 1</Select.Option>
+ *     <Select.Option value='2'>Option 2</Select.Option>
+ *   </Select.Optgroup>
+ * </Select>
+ */
 export const SelectOptgroup = forwardRef<
   HTMLOptGroupElement,
   SelectOptgroupProps

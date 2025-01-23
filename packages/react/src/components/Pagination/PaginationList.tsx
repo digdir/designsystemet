@@ -10,6 +10,18 @@ export type PaginationListProps = {
   asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLUListElement>, 'size'>;
 
+/**
+ * PaginationList component, use within a Pagination.
+ *
+ * @example
+ * <Pagination>
+ *   <Pagination.List>
+ *     <Pagination.Item>
+ *       <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
+ *     </Pagination.Item>
+ *   </Pagination.List>
+ * </Pagination>
+ */
 export const PaginationList = forwardRef<HTMLUListElement, PaginationListProps>(
   function PaginationList({ asChild, ...rest }, ref) {
     const Component = asChild ? Slot : 'ul';
