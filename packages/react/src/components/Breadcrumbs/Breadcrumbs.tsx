@@ -14,6 +14,24 @@ export type BreadcrumbsProps = MergeRight<
   }
 >;
 
+/**
+ * `Breadcrumbs` is a component that displays a list of breadcrumbs.
+ *
+ * @example
+ * <Breadcrumbs aria-label='Du er her:' {...args}>
+ *  <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 1'>
+ *    Nivå 1
+ *  </Breadcrumbs.Link>
+ *  <Breadcrumbs.List>
+ *    <Breadcrumbs.Item>
+ *      <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
+ *    </Breadcrumbs.Item>
+ *    <Breadcrumbs.Item>
+ *      <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
+ *    </Breadcrumbs.Item>
+ *  </Breadcrumbs.List>
+ * </Breadcrumbs>
+ */
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
   ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
     <nav

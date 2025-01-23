@@ -5,14 +5,19 @@ import { ErrorSummaryLink } from './ErrorSummaryLink';
 import { ErrorSummaryList } from './ErrorSummaryList';
 
 /**
+ * ErrorSummary component, used to display a list of errors.
+ *
  * @example
  * <ErrorSummary>
- *  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
- *  <ErrorSummary.List>
- *    <ErrorSummary.Item>
- *      <ErrorSummary.Link>Item 1</ErrorSummary.Link>
- *    </ErrorSummary.Item>
- *  </ErrorSummary.List>
+ *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+ *   <ErrorSummary.List>
+ *     <ErrorSummary.Item>
+ *       <ErrorSummary.Link href='#'>Error 1</ErrorSummary.Link>
+ *     </ErrorSummary.Item>
+ *     <ErrorSummary.Item>
+ *       <ErrorSummary.Link href='#'>Error 2</ErrorSummary.Link>
+ *     </ErrorSummary.Item>
+ *   </ErrorSummary.List>
  * </ErrorSummary>
  */
 const ErrorSummary = Object.assign(ErrorSummaryParent, {

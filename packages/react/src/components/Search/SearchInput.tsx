@@ -5,6 +5,14 @@ import { Input } from '../Input';
 export type SearchInputProps = DefaultProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'>;
 
+/**
+ * SearchInput component, used to display a search input within the Search component.
+ *
+ * @example
+ * <Search>
+ *   <Search.Input aria-label='Søk' />
+ * </Search>
+ */
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   function SearchInput({ ...rest }, ref) {
     return (
