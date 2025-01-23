@@ -56,7 +56,7 @@
   /* Close button */
   & > form[method='dialog']:first-child > button:only-child {
     float: right;
-    margin: var(--ds-internal-icon--top-right-margin) var(--ds-internal-icon--top-right-margin) var(--dsc-modal-icon-spacing) var(--dsc-modal-icon-spacing);
+    margin: var(--ds-internal-icon-top-right-margin) var(--ds-internal-icon-top-right-margin) var(--dsc-modal-icon-spacing) var(--dsc-modal-icon-spacing);
     color: inherit;
 
     &::before {

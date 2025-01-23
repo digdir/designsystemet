@@ -23,6 +23,7 @@
   --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
   --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
   --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+  --spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -138,7 +139,7 @@
   &[type='checkbox'],
   &[type='radio'] {
     border-width: var(--dsc-input-border-width--toggle);
-    padding: calc(var(--ds-size-1) / 2);
+    padding: var(--spacing--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
@@ -210,11 +211,15 @@
   &[role='switch']:is([type='radio'], [type='checkbox']) {
     --circle-position: left;
 
+    background-image: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%);
+    background-origin: content-box;
+    background-position: var(--circle-position);
+    background-repeat: no-repeat;
+    background-size: calc(var(--dsc-input-size--toggle) - var(--spacing--toggle) * 2) 100%;
     border-radius: var(--ds-border-radius-full);
+    padding-inline: 0; /* Reset to position circle correctly */
     transition: 0.2s background-position;
-    width: calc(var(--dsc-input-size) * 2);
-    background: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%) var(--circle-position) / calc(50% - var(--dsc-input-padding) * 2) 100%
-      no-repeat content-box, var(--dsc-input-background);
+    width: calc(var(--dsc-input-size--toggle) * 2);
 
     &:checked {
       --circle-position: right;
