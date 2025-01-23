@@ -1,5 +1,5 @@
 :where(.ds-paragraph) {
-  margin-block: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
+  margin-block: 0; /* Reset native margin, but resepect parent selector `.someting > * { margin: ... }` */
 }
 .ds-paragraph {
   &[data-variant='long'] {
