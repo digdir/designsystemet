@@ -138,13 +138,36 @@ export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
-export const CustomFilter: StoryFn<typeof Suggestion> = (args) => {
+export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Skriv inn et tall mellom 1-6</Label>
+      <Suggestion
+        {...args}
+        filter={({ index, input }) =>
+          !input.value || index === Number(input.value) - 1
+        }
+      >
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((text) => (
+            <Suggestion.Option key={text}>{text}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
 
   return (
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
-      <Suggestion {...args}>
+      <Suggestion {...args} filter={false}>
         <Suggestion.Input
           value={value}
           onChange={(event) => setValue(event.target.value)}
@@ -155,10 +178,7 @@ export const CustomFilter: StoryFn<typeof Suggestion> = (args) => {
           {DATA_PLACES.filter(
             (_, index) => !value || index === Number(value) - 1,
           ).map((text) => (
-            // Setting label ensures that item is always displayed regardless of input.value
-            <Suggestion.Option label={value} key={text}>
-              {text}
-            </Suggestion.Option>
+            <Suggestion.Option key={text}>{text}</Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>
@@ -172,7 +192,7 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
       <Label>Viser alle options også når valgt</Label>
-      <Suggestion {...args}>
+      <Suggestion {...args} filter={false}>
         <Suggestion.Input
           value={value}
           onChange={(event) => setValue(event.target.value)}
@@ -181,10 +201,7 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
-            // Setting label ensures that item is always displayed regardless of input.value
-            <Suggestion.Option label={value} key={place}>
-              {place}
-            </Suggestion.Option>
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>
@@ -220,26 +237,30 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   const debounced = useDebounceCallback(apiCall, 500);
 
   return (
-    <Field>
-      <Label>Søk etter land (på engelsk)</Label>
-      <Suggestion {...args}>
+    <Field lang='en'>
+      <Label>Search for countries (in english)</Label>
+      <Suggestion
+        {...args}
+        filter={false}
+        singular='%d country'
+        plural='%d countries'
+      >
         <Suggestion.Input value={value} onChange={handleChange} />
         <Suggestion.Clear />
         <Suggestion.List>
           {!!value && (
-            <Suggestion.Empty aria-busy='true'>
+            <Suggestion.Empty>
               {options ? (
                 'Ingen treff'
               ) : (
-                <Spinner aria-label='Laster...' data-size='sm' />
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Spinner aria-hidden='true' data-size='sm' /> Laster...
+                </span>
               )}
             </Suggestion.Empty>
           )}
           {options?.map((option) => (
-            // Setting label ensures that item is always displayed regardless of input.value
-            <Suggestion.Option label={value} key={option}>
-              {option}
-            </Suggestion.Option>
+            <Suggestion.Option key={option}>{option}</Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>

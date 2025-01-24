@@ -11,14 +11,18 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList({ className, id, ...rest }, ref) {
-  const { listId, setListId } = useContext(SuggestionContext);
+  const { singular, plural, inputRef, listId, setListId, handleFilter } =
+    useContext(SuggestionContext);
 
+  useEffect(() => handleFilter?.(inputRef?.current)); // Must run on every render
   useEffect(() => {
     if (id && listId !== id) setListId?.(id);
   }, [listId, id, setListId]);
 
   return (
     <u-datalist
+      data-sr-singular={singular}
+      data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
       id={listId}
       ref={ref}
