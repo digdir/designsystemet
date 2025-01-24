@@ -3,6 +3,43 @@
   box-sizing: border-box;
 }
 
+:root,
+[data-color-scheme='light'] {
+  --ds-color-neutral-background-default: #ffffff;
+  --ds-color-neutral-background-tinted: #f3f3f3;
+  --ds-color-neutral-surface-tinted: #e2e2e2;
+  --ds-color-neutral-surface-hover: #d1d1d1;
+  --ds-color-neutral-surface-active: #c2c2c2;
+  --ds-color-neutral-border-subtle: #bcbcbc;
+  --ds-color-neutral-border-default: #7e7e7e;
+  --ds-color-neutral-border-strong: #616161;
+  --ds-color-neutral-base-default: #3e3e3e;
+  --ds-color-neutral-base-hover: #505050;
+  --ds-color-neutral-base-active: #646464;
+  --ds-color-neutral-text-subtle: #616161;
+  --ds-color-neutral-text-default: #2b2b2b;
+  --ds-color-neutral-base-contrast-default: #ffffff;
+  --ds-color-neutral-base-contrast-subtle: #d8d8d8;
+}
+
+[data-color-scheme='dark'] {
+  --ds-color-neutral-background-default: #1d1d1d;
+  --ds-color-neutral-background-tinted: #242424;
+  --ds-color-neutral-surface-tinted: #303030;
+  --ds-color-neutral-surface-hover: #3d3d3d;
+  --ds-color-neutral-surface-active: #4a4a4a;
+  --ds-color-neutral-border-subtle: #515151;
+  --ds-color-neutral-border-default: #7c7c7c;
+  --ds-color-neutral-border-strong: #a2a2a2;
+  --ds-color-neutral-base-default: #ababab;
+  --ds-color-neutral-base-hover: #969696;
+  --ds-color-neutral-base-active: #818181;
+  --ds-color-neutral-text-subtle: #a2a2a2;
+  --ds-color-neutral-text-default: #e5e5e5;
+  --ds-color-neutral-base-contrast-default: #000000;
+  --ds-color-neutral-base-contrast-subtle: #1b1b1b;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
