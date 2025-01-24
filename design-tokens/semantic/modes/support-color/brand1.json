@@ -5,13 +5,13 @@
         "$type": "color",
         "$value": "{color.brand1.background-default}"
       },
-      "background-subtle": {
+      "background-tinted": {
         "$type": "color",
-        "$value": "{color.brand1.background-subtle}"
+        "$value": "{color.brand1.background-tinted}"
       },
-      "surface-default": {
+      "surface-tinted": {
         "$type": "color",
-        "$value": "{color.brand1.surface-default}"
+        "$value": "{color.brand1.surface-tinted}"
       },
       "surface-hover": {
         "$type": "color",
@@ -53,13 +53,13 @@
         "$type": "color",
         "$value": "{color.brand1.text-default}"
       },
-      "contrast-default": {
+      "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.brand1.contrast-default}"
+        "$value": "{color.brand1.base-contrast-default}"
       },
-      "contrast-subtle": {
+      "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{color.brand1.contrast-subtle}"
+        "$value": "{color.brand1.base-contrast-subtle}"
       }
     }
   }
