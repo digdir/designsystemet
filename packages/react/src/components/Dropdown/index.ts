@@ -7,17 +7,19 @@ import { DropdownTrigger } from './DropdownTrigger';
 import { DropdownTriggerContext } from './DropdownTriggerContext';
 
 /**
+ * Dropdown component, used to display a list of options.
+ *
  * @example
  * <Dropdown.TriggerContext>
- *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
- *  <Dropdown>
- *    <Dropdown.Heading>Heading</Dropdown.Heading>
- *    <Dropdown.List>
- *      <Dropdown.Item>
- *        <Dropdown.Button>Button 1</Dropdown.Button>
- *      </Dropdown.Item>
- *    </Dropdown.List>
- *  </Dropdown>
+ *   <Dropdown.Trigger>Dropdown trigger</Dropdown.Trigger>
+ *   <Dropdown placement='bottom-end'>
+ *     <Dropdown.Heading>Dropdown</Dropdown.Heading>
+ *     <Dropdown.List>
+ *       <Dropdown.Item>
+ *         <Dropdown.Button>Option</Dropdown.Button>
+ *       </Dropdown.Item>
+ *     </Dropdown.List>
+ *   </Dropdown>
  * </Dropdown.TriggerContext>
  */
 const Dropdown = Object.assign(DropdownRoot, {

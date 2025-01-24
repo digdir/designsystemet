@@ -8,6 +8,7 @@ export type DetailsSummaryProps = {
 
 /**
  * Details summary component, contains a the heading to toggle the content.
+ *
  * @example
  * <Details.Summary>Heading</Details.Summary>
  */

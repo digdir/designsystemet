@@ -8,13 +8,16 @@ export type DropdownTriggerContextProps = {
 
 /**
  * DropdownTriggerContext enables use of the `.Trigger` for the Dropdown component.
+ *
  * @example
  * <Dropdown.TriggerContext>
  *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
  *  <Dropdown>
  *   <Dropdown.Heading>Heading</Dropdown.Heading>
  *    <Dropdown.List>
- *      <Dropdown.Item>Button 1</Dropdown.Item>
+ *      <Dropdown.Item>
+ *        <Dropdown.Button>Button</Dropdown.Button>
+ *      </Dropdown.Item>
  *    </Dropdown.List>
  *  </Dropdown>
  * </Dropdown.TriggerContext>

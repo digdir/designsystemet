@@ -13,6 +13,31 @@ import type { TableHeaderCellProps } from './TableHeaderCell';
 import { TableRow } from './TableRow';
 import type { TableRowProps } from './TableRow';
 
+/**
+ * Table component, used to display tabular data. Renders a native HTML table element.
+ *
+ * @example
+ * <Table>
+ *   <Table.Head>
+ *     <Table.Row>
+ *       <Table.HeaderCell>Name</Table.HeaderCell>
+ *       <Table.HeaderCell>Age</Table.HeaderCell>
+ *     </Table.Row>
+ *   </Table.Head>
+ *   <Table.Body>
+ *     <Table.Row>
+ *       <Table.Cell>John</Table.Cell>
+ *       <Table.Cell>25</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Body>
+ *   <Table.Foot>
+ *     <Table.Row>
+ *       <Table.Cell>Total</Table.Cell>
+ *       <Table.Cell>2</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Foot>
+ * </Table>
+ */
 const Table = Object.assign(TableRoot, {
   Head: TableHead,
   Body: TableBody,
