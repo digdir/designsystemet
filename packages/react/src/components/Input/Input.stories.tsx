@@ -46,6 +46,9 @@ export default {
         rules: [{ id: 'color-contrast', selector: ':read-only' }],
       },
     },
+    chromatic: {
+      forcedColors: 'active',
+    },
   },
 } as Meta;
 
