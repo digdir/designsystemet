@@ -30,14 +30,14 @@ export const  color = [
       $type: "color",
       $value: "{color.accent.2}"
     },
-    name: "--ds-color-accent-background-subtle",
+    name: "--ds-color-accent-background-tinted",
     attributes: {},
     path: [
       "color",
       "accent",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.accent.background-subtle}"
+    key: "{color.accent.background-tinted}"
   },
   {
     $type: "color",
@@ -48,14 +48,14 @@ export const  color = [
       $type: "color",
       $value: "{color.accent.3}"
     },
-    name: "--ds-color-accent-surface-default",
+    name: "--ds-color-accent-surface-tinted",
     attributes: {},
     path: [
       "color",
       "accent",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.accent.surface-default}"
+    key: "{color.accent.surface-tinted}"
   },
   {
     $type: "color",
@@ -246,14 +246,14 @@ export const  color = [
       $type: "color",
       $value: "{color.accent.contrast-1}"
     },
-    name: "--ds-color-accent-contrast-default",
+    name: "--ds-color-accent-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.accent.contrast-default}"
+    key: "{color.accent.base-contrast-default}"
   },
   {
     $type: "color",
@@ -264,14 +264,14 @@ export const  color = [
       $type: "color",
       $value: "{color.accent.contrast-2}"
     },
-    name: "--ds-color-accent-contrast-subtle",
+    name: "--ds-color-accent-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.accent.contrast-subtle}"
+    key: "{color.accent.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -300,14 +300,14 @@ export const  color = [
       $type: "color",
       $value: "{color.neutral.2}"
     },
-    name: "--ds-color-neutral-background-subtle",
+    name: "--ds-color-neutral-background-tinted",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.neutral.background-subtle}"
+    key: "{color.neutral.background-tinted}"
   },
   {
     $type: "color",
@@ -318,14 +318,14 @@ export const  color = [
       $type: "color",
       $value: "{color.neutral.3}"
     },
-    name: "--ds-color-neutral-surface-default",
+    name: "--ds-color-neutral-surface-tinted",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.neutral.surface-default}"
+    key: "{color.neutral.surface-tinted}"
   },
   {
     $type: "color",
@@ -516,14 +516,14 @@ export const  color = [
       $type: "color",
       $value: "{color.neutral.contrast-1}"
     },
-    name: "--ds-color-neutral-contrast-default",
+    name: "--ds-color-neutral-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.neutral.contrast-default}"
+    key: "{color.neutral.base-contrast-default}"
   },
   {
     $type: "color",
@@ -534,14 +534,14 @@ export const  color = [
       $type: "color",
       $value: "{color.neutral.contrast-2}"
     },
-    name: "--ds-color-neutral-contrast-subtle",
+    name: "--ds-color-neutral-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.neutral.contrast-subtle}"
+    key: "{color.neutral.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -570,14 +570,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand1.2}"
     },
-    name: "--ds-color-brand1-background-subtle",
+    name: "--ds-color-brand1-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand1.background-subtle}"
+    key: "{color.brand1.background-tinted}"
   },
   {
     $type: "color",
@@ -588,14 +588,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand1.3}"
     },
-    name: "--ds-color-brand1-surface-default",
+    name: "--ds-color-brand1-surface-tinted",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.brand1.surface-default}"
+    key: "{color.brand1.surface-tinted}"
   },
   {
     $type: "color",
@@ -786,14 +786,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand1.contrast-1}"
     },
-    name: "--ds-color-brand1-contrast-default",
+    name: "--ds-color-brand1-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.brand1.contrast-default}"
+    key: "{color.brand1.base-contrast-default}"
   },
   {
     $type: "color",
@@ -804,14 +804,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand1.contrast-2}"
     },
-    name: "--ds-color-brand1-contrast-subtle",
+    name: "--ds-color-brand1-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand1.contrast-subtle}"
+    key: "{color.brand1.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -840,14 +840,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand2.2}"
     },
-    name: "--ds-color-brand2-background-subtle",
+    name: "--ds-color-brand2-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand2.background-subtle}"
+    key: "{color.brand2.background-tinted}"
   },
   {
     $type: "color",
@@ -858,14 +858,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand2.3}"
     },
-    name: "--ds-color-brand2-surface-default",
+    name: "--ds-color-brand2-surface-tinted",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.brand2.surface-default}"
+    key: "{color.brand2.surface-tinted}"
   },
   {
     $type: "color",
@@ -1056,14 +1056,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand2.contrast-1}"
     },
-    name: "--ds-color-brand2-contrast-default",
+    name: "--ds-color-brand2-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.brand2.contrast-default}"
+    key: "{color.brand2.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1074,14 +1074,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand2.contrast-2}"
     },
-    name: "--ds-color-brand2-contrast-subtle",
+    name: "--ds-color-brand2-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand2.contrast-subtle}"
+    key: "{color.brand2.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -1110,14 +1110,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand3.2}"
     },
-    name: "--ds-color-brand3-background-subtle",
+    name: "--ds-color-brand3-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand3.background-subtle}"
+    key: "{color.brand3.background-tinted}"
   },
   {
     $type: "color",
@@ -1128,14 +1128,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand3.3}"
     },
-    name: "--ds-color-brand3-surface-default",
+    name: "--ds-color-brand3-surface-tinted",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.brand3.surface-default}"
+    key: "{color.brand3.surface-tinted}"
   },
   {
     $type: "color",
@@ -1326,14 +1326,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand3.contrast-1}"
     },
-    name: "--ds-color-brand3-contrast-default",
+    name: "--ds-color-brand3-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.brand3.contrast-default}"
+    key: "{color.brand3.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1344,14 +1344,14 @@ export const  color = [
       $type: "color",
       $value: "{color.brand3.contrast-2}"
     },
-    name: "--ds-color-brand3-contrast-subtle",
+    name: "--ds-color-brand3-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand3.contrast-subtle}"
+    key: "{color.brand3.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -1380,14 +1380,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.2}"
     },
-    name: "--ds-color-success-background-subtle",
+    name: "--ds-color-success-background-tinted",
     attributes: {},
     path: [
       "color",
       "success",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.success.background-subtle}"
+    key: "{color.success.background-tinted}"
   },
   {
     $type: "color",
@@ -1398,14 +1398,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.3}"
     },
-    name: "--ds-color-success-surface-default",
+    name: "--ds-color-success-surface-tinted",
     attributes: {},
     path: [
       "color",
       "success",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.success.surface-default}"
+    key: "{color.success.surface-tinted}"
   },
   {
     $type: "color",
@@ -1596,14 +1596,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.contrast-1}"
     },
-    name: "--ds-color-success-contrast-default",
+    name: "--ds-color-success-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.success.contrast-default}"
+    key: "{color.success.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1614,14 +1614,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.contrast-2}"
     },
-    name: "--ds-color-success-contrast-subtle",
+    name: "--ds-color-success-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.success.contrast-subtle}"
+    key: "{color.success.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -1650,14 +1650,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.2}"
     },
-    name: "--ds-color-danger-background-subtle",
+    name: "--ds-color-danger-background-tinted",
     attributes: {},
     path: [
       "color",
       "danger",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.danger.background-subtle}"
+    key: "{color.danger.background-tinted}"
   },
   {
     $type: "color",
@@ -1668,14 +1668,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.3}"
     },
-    name: "--ds-color-danger-surface-default",
+    name: "--ds-color-danger-surface-tinted",
     attributes: {},
     path: [
       "color",
       "danger",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.danger.surface-default}"
+    key: "{color.danger.surface-tinted}"
   },
   {
     $type: "color",
@@ -1866,14 +1866,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.contrast-1}"
     },
-    name: "--ds-color-danger-contrast-default",
+    name: "--ds-color-danger-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.danger.contrast-default}"
+    key: "{color.danger.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1884,14 +1884,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.contrast-2}"
     },
-    name: "--ds-color-danger-contrast-subtle",
+    name: "--ds-color-danger-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.danger.contrast-subtle}"
+    key: "{color.danger.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -1920,14 +1920,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.2}"
     },
-    name: "--ds-color-info-background-subtle",
+    name: "--ds-color-info-background-tinted",
     attributes: {},
     path: [
       "color",
       "info",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.info.background-subtle}"
+    key: "{color.info.background-tinted}"
   },
   {
     $type: "color",
@@ -1938,14 +1938,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.3}"
     },
-    name: "--ds-color-info-surface-default",
+    name: "--ds-color-info-surface-tinted",
     attributes: {},
     path: [
       "color",
       "info",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.info.surface-default}"
+    key: "{color.info.surface-tinted}"
   },
   {
     $type: "color",
@@ -2136,14 +2136,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.contrast-1}"
     },
-    name: "--ds-color-info-contrast-default",
+    name: "--ds-color-info-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.info.contrast-default}"
+    key: "{color.info.base-contrast-default}"
   },
   {
     $type: "color",
@@ -2154,14 +2154,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.contrast-2}"
     },
-    name: "--ds-color-info-contrast-subtle",
+    name: "--ds-color-info-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.info.contrast-subtle}"
+    key: "{color.info.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -2190,14 +2190,14 @@ export const  color = [
       $type: "color",
       $value: "{global.yellow.2}"
     },
-    name: "--ds-color-warning-background-subtle",
+    name: "--ds-color-warning-background-tinted",
     attributes: {},
     path: [
       "color",
       "warning",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.warning.background-subtle}"
+    key: "{color.warning.background-tinted}"
   },
   {
     $type: "color",
@@ -2208,14 +2208,14 @@ export const  color = [
       $type: "color",
       $value: "{global.yellow.3}"
     },
-    name: "--ds-color-warning-surface-default",
+    name: "--ds-color-warning-surface-tinted",
     attributes: {},
     path: [
       "color",
       "warning",
-      "surface-default"
+      "surface-tinted"
     ],
-    key: "{color.warning.surface-default}"
+    key: "{color.warning.surface-tinted}"
   },
   {
     $type: "color",
@@ -2406,14 +2406,14 @@ export const  color = [
       $type: "color",
       $value: "{global.orange.contrast-1}"
     },
-    name: "--ds-color-warning-contrast-default",
+    name: "--ds-color-warning-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-default"
+      "base-contrast-default"
     ],
-    key: "{color.warning.contrast-default}"
+    key: "{color.warning.base-contrast-default}"
   },
   {
     $type: "color",
@@ -2424,14 +2424,14 @@ export const  color = [
       $type: "color",
       $value: "{global.orange.contrast-2}"
     },
-    name: "--ds-color-warning-contrast-subtle",
+    name: "--ds-color-warning-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.warning.contrast-subtle}"
+    key: "{color.warning.base-contrast-subtle}"
   },
   {
     $type: "color",
