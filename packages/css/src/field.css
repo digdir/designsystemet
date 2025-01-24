@@ -130,7 +130,7 @@
     }
   }
 
-  &:where(.ds-input) {
+  & :where(.ds-input) {
     border: var(--dsc-field-affix-border);
     border-color: var(--dsc-field-affix-border-color);
     flex: 1 1 auto;
