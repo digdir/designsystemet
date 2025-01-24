@@ -4,7 +4,7 @@
 }
 
 .header {
-  background-color: var(--ds-color-brand3-surface-default);
+  background-color: var(--ds-color-brand3-surface-tinted);
   padding-top: var(--ds-size-7);
 }
 

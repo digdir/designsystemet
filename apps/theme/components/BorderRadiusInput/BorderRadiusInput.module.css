@@ -11,7 +11,7 @@
 
 .active .inner {
   border-color: var(--ds-color-accent-border-default);
-  background-color: var(--ds-color-accent-surface-default);
+  background-color: var(--ds-color-accent-surface-tinted);
 }
 
 .active .box {

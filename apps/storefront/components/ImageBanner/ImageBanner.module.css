@@ -4,15 +4,15 @@
 }
 
 .blue {
-  background-color: var(--ds-color-brand3-surface-default);
+  background-color: var(--ds-color-brand3-surface-tinted);
 }
 
 .red {
-  background-color: var(--ds-color-brand1-surface-default);
+  background-color: var(--ds-color-brand1-surface-tinted);
 }
 
 .yellow {
-  background-color: var(--ds-color-brand2-surface-default);
+  background-color: var(--ds-color-brand2-surface-tinted);
 }
 
 .grey {
