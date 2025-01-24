@@ -22,11 +22,11 @@ export const mapTokens = () => {
     'var(--ds-color-accent-background-default)',
   );
   setToken(
-    '--ds-color-background-subtle',
+    '--ds-color-background-tinted',
     'var(--ds-color-accent-background-subtle)',
   );
   setToken(
-    '--ds-color-surface-default',
+    '--ds-color-surface-tinted',
     'var(--ds-color-accent-surface-default)',
   );
   setToken('--ds-color-surface-hover', 'var(--ds-color-accent-surface-hover)');
@@ -46,11 +46,11 @@ export const mapTokens = () => {
   setToken('--ds-color-text-subtle', 'var(--ds-color-accent-text-subtle)');
   setToken('--ds-color-text-default', 'var(--ds-color-accent-text-default)');
   setToken(
-    '--ds-color-contrast-default',
+    '--ds-color-base-contrast-default',
     'var(--ds-color-accent-contrast-default)',
   );
   setToken(
-    '--ds-color-contrast-subtle',
+    '--ds-color-base-contrast-subtle',
     'var(--ds-color-accent-contrast-subtle)',
   );
 

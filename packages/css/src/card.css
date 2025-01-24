@@ -1,7 +1,7 @@
 .ds-card {
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
-  --dsc-card-background: var(--ds-color-surface-default);
+  --dsc-card-background: var(--ds-color-surface-tinted);
   --dsc-card-border: 1px solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);

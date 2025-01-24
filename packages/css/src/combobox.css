@@ -371,7 +371,7 @@
 }
 
 .ds-combobox__option.ds-combobox__option--active {
-  background: var(--ds-color-background-subtle);
+  background: var(--ds-color-background-tinted);
   border-left: 5px solid var(--ds-color-base-default);
 }
 

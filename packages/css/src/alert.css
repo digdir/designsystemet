@@ -42,7 +42,7 @@
    * Colors
    */
   &[data-color] {
-    --dsc-alert-background: var(--ds-color-surface-default);
+    --dsc-alert-background: var(--ds-color-surface-tinted);
     --dsc-alert-border-color: var(--ds-color-border-default);
     --dsc-alert-icon-color: var(--ds-color-text-subtle);
     --dsc-alert-color: var(--ds-color-text-default);
