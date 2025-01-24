@@ -61,7 +61,7 @@
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--ds-color-neutral-surface-tinted);
   }
 }
 
@@ -70,7 +70,7 @@
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--ds-color-neutral-surface-tinted);
   }
 }
 

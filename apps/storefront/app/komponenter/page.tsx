@@ -25,7 +25,7 @@ export default function page() {
       <style suppressHydrationWarning>
         {`
     body {
-      background-color: var(--ds-color-neutral-background-subtle);
+      background-color: var(--ds-color-neutral-background-tinted);
 
         [data-color-scheme='dark'] &,
         [data-color-scheme='auto'] & {

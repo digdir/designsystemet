@@ -28,10 +28,10 @@
   /* with subtle */
   [data-color='subtle'] &,
   &[data-color='subtle'] {
-    --dsc-details-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-heading-background--hover: var(--ds-color-neutral-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-default);
-    --dsc-details-heading-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-tinted);
+    --dsc-details-heading-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
   }
 

@@ -6,7 +6,7 @@
 
 .ds-textfield__adornment {
   color: var(--ds-color-neutral-text-subtle);
-  background: var(--ds-color-neutral-background-subtle);
+  background: var(--ds-color-neutral-background-tinted);
   padding: 9px var(--ds-size-4);
   border-radius: var(--ds-border-radius-md);
   border: solid 1px var(--ds-color-neutral-border-default);
@@ -33,7 +33,7 @@
 }
 
 .ds-textfield--readonly .ds-textfield__input {
-  background: var(--ds-color-neutral-background-subtle);
+  background: var(--ds-color-neutral-background-tinted);
   border-color: var(--ds-color-neutral-border-strong);
 }
 
@@ -297,7 +297,7 @@
 }
 
 .ds-combobox__clear-button:not(:disabled):hover {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-surface-tinted);
 }
 
 .ds-combobox__disabled {

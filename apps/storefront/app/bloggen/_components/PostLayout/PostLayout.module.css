@@ -69,7 +69,7 @@
   width: 860px;
   margin: var(--ds-size-12) 0;
   margin-left: calc((100% - 860px) / 2) !important;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .content video,
@@ -77,7 +77,7 @@
   display: block;
   width: 860px;
   margin-left: calc((100% - 860px) / 2) !important;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 } */
 
 .main > figure {

@@ -4,7 +4,7 @@
 .ds-input {
   --dsc-input-background--checked: var(--dsc-input-border-color--checked);
   --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
-  --dsc-input-background--readonly: var(--ds-color-neutral-background-subtle);
+  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
   --dsc-input-background: var(--ds-color-neutral-background-default);
   --dsc-input-border-color--checked: var(--ds-color-base-default);
   --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);

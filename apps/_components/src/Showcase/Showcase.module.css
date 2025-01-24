@@ -9,7 +9,7 @@
 }
 
 .card {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border-radius: var(--ds-border-radius-md);
   padding: 24px;
 }

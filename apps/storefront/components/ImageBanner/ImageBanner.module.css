@@ -16,7 +16,7 @@
 }
 
 .grey {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .white {

@@ -34,11 +34,11 @@
 }
 
 .box:hover {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .inner {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border: 5px solid var(--ds-color-neutral-border-default);
   height: 33px;
   width: 72px;
