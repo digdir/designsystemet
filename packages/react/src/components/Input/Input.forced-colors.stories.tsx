@@ -1,7 +1,7 @@
 import * as stories from './Input.stories';
 
 export default {
-  ...stories,
+  ...stories.default,
   title: 'Komponenter/Input/Forced Colors',
   parameters: {
     chromatic: {
