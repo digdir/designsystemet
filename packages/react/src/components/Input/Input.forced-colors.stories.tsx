@@ -8,6 +8,7 @@ export default {
       forcedColors: 'active',
     },
   },
+  tags: ['test', '!dev'],
 };
 
 export const Preview = stories.Preview;
