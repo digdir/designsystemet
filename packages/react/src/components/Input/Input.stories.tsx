@@ -47,14 +47,7 @@ export default {
       },
     },
     chromatic: {
-      mode: {
-        forcedColorsOn: {
-          forcedColors: 'active',
-        },
-        forcedColorsOff: {
-          forcedColors: 'none',
-        },
-      },
+      forcedColors: 'active',
     },
   },
 } as Meta;
