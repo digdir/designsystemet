@@ -4,17 +4,19 @@
 - Component names should be in PascalCase
 
 ## Component Structure
-- To the best of our abilities, use sub-components instead of a large component
+- To the best of our abilities, use sub-components instead of a large components
 - Use `forwardRef` for all components
   - Use named functions instead of arrow functions for the component
 - If applicable, add support for `asChild`
 - Should allow all props for the native element
+  - Add native props to the outermost element
   - Custom props should have a jsdoc
 - Only add one class name
   - Use data attributes to add states
 
 ## Functionality
-- Only use context if it's absolutely necessary
+- Only use context if it's absolutely necessary, or can lead to a better consumer experience
+
 
 ## Files
 - Export components from an index file, avoiding the use of `export * from './Component'`
