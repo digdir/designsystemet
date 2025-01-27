@@ -3,6 +3,19 @@ import { ModalBlock } from './ModalBlock';
 import { ModalTrigger } from './ModalTrigger';
 import { ModalTriggerContext } from './ModalTriggerContext';
 
+/**
+ * Modal component, used to display a modal dialog.
+ *
+ * @example
+ * <Modal.TriggerContext>
+ *   <Modal.Trigger>Open Modal</Modal.Trigger>
+ *   <Modal>
+ *     <Modal.Block>
+ *       Content
+ *     </Modal.Block>
+ *   </Modal>
+ * </Modal.TriggerContext>
+ */
 const Modal = Object.assign(ModalParent, {
   Block: ModalBlock,
   TriggerContext: ModalTriggerContext,

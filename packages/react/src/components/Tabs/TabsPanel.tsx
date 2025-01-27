@@ -5,16 +5,18 @@ import { useMergeRefs } from '@floating-ui/react';
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {
-  /** When this value is selected as the current state, render this `TabsPanel` component*/
+  /**
+   * When this value is selected as the current state, render this `TabsPanel` component.
+   * Must match the `value` of a `Tabs.Tab` component.
+   */
   value: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 /**
  * A single content item in a Tabs component.
+ *
  * @example
- * ```tsx
  * <Tabs.Panel value='1'>content 1</Tabs.Panel>
- * ```
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
   function TabsPanel({ children, value, ...rest }, ref) {

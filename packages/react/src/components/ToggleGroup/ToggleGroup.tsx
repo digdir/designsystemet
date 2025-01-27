@@ -17,19 +17,28 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 export type ToggleGroupProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>,
   {
-    /** Controlled state for `ToggleGroup` component. */
+    /**
+     * Controlled state for `ToggleGroup` component.
+     */
     value?: string;
-    /** Default value. */
+    /**
+     * Default value.
+     */
     defaultValue?: string;
-    /** Callback with selected `ToggleGroupItem` `value` */
+    /**
+     * Callback with selected `ToggleGroupItem` `value`
+     */
     onChange?: (value: string) => void;
-    /** Form element name */
+    /**
+     * Form element name
+     */
     name?: string;
   }
 >;
 
 /**
  * Display a group of buttons that can be toggled between.
+ *
  * @example
  * <ToggleGroup onChange={(value) => console.log(value)}>
  *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>

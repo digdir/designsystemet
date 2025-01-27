@@ -12,8 +12,6 @@ import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
 import { cleanDir, copyFile, writeFile } from './utils.js';
 
-export const DEFAULT_COLOR = 'accent';
-
 type Options = {
   /** Design tokens path */
   tokens: string;
@@ -23,8 +21,8 @@ type Options = {
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
-  /** Set the default "accent" color, if not overridden with data-color */
-  accentColor?: string;
+  /** Set the default color for ":root" */
+  rootColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
   /** Clean the output path before building tokens */
@@ -90,28 +88,34 @@ export async function buildTokens(options: Options): Promise<void> {
     // We only use the 'medium' theme for the 'size' group
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
-  if (!buildOptions.accentColor) {
-    const accentOrFirstMainColor =
-      relevant$themes.find((theme) => theme.name === DEFAULT_COLOR) ||
-      relevant$themes.find((theme) => theme.group === 'main-color');
-    buildOptions.accentColor = accentOrFirstMainColor?.name;
+  if (!buildOptions.rootColor) {
+    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
+    buildOptions.rootColor = firstMainColor?.name;
+    console.log(`Using first main color; ${chalk.blue(firstMainColor?.name)}, as ${chalk.green(`":root"`)} color`);
   }
 
-  if (buildOptions.accentColor !== DEFAULT_COLOR) {
-    console.log('accent color:', buildOptions.accentColor);
-  }
+  const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
+      outPath: targetDir,
+      tokensDir,
+      ...buildConfig.options,
+    });
 
-  const buildAndSdConfigs = R.map(
-    (val: BuildConfig) => ({
-      buildConfig: val,
-      sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
-        outPath: targetDir,
-        tokensDir,
-        ...val.options,
-      }),
-    }),
-    buildConfigs,
-  );
+    // Disable build if all sdConfigs dimensions permutation are unknown
+    const unknownConfigs = buildConfig.dimensions.map((dimension) =>
+      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+    );
+    for (const unknowns of unknownConfigs) {
+      if (unknowns.length === sdConfigs.length) {
+        buildConfig.enabled = () => false;
+      }
+    }
+
+    return {
+      buildConfig,
+      sdConfigs,
+    };
+  }, buildConfigs);
 
   if (clean) {
     await cleanDir(targetDir, dry);

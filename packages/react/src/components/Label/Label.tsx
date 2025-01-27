@@ -19,10 +19,10 @@ export type LabelProps = {
   DefaultProps;
 
 /**
- * Use `Label` for labels.
+ * Use `Label` for labels. Renders a native `label` element.
  *
  * @example
- * <Label data-size='lg'>Label</Label>
+ * <Label data-size='lg' weight='medium'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
   { className, weight = 'medium', asChild, ...rest },

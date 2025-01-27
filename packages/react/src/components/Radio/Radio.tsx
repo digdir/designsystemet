@@ -10,21 +10,32 @@ import { ValidationMessage } from '../ValidationMessage';
 export type RadioProps = MergeRight<
   DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,
   {
-    /** Optional aria-label */
+    /**
+     * Optional aria-label
+     **/
     'aria-label'?: string;
-    /** Radio label */
+    /**
+     * Radio label
+     */
     label?: ReactNode;
-    /** Description for field */
+    /**
+     * Description for field
+     */
     description?: ReactNode;
-    /** Value of the `input` element */
+    /**
+     * Value of the `input` element
+     */
     value?: InputProps['value'];
-    /** Validation message for field */
-    validation?: ReactNode;
+    /**
+     * Error message for field
+     */
+    error?: ReactNode;
   } & LabelRequired
 >;
 
 /**
  * Radio used to select multiple options.
+ *
  * @example
  * <Radio label="I agree" value="agree" />
  */
@@ -36,7 +47,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     children,
     label,
     description,
-    validation,
+    error,
     ...rest
   },
   ref,
@@ -46,7 +57,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
-      {!!validation && <ValidationMessage>{validation}</ValidationMessage>}
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
     </Field>
   );
 });

@@ -6,9 +6,10 @@ import type { DefaultProps } from '../../types';
 export type TagProps = DefaultProps & HTMLAttributes<HTMLSpanElement>;
 
 /**
- * Use `Tag` to display a small piece of information.
+ * Use `Tag` to display categories or statuses.
+ *
  * @example
- * <Tag>Success</Tag>
+ * <Tag>Melk</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
   { className, ...rest },

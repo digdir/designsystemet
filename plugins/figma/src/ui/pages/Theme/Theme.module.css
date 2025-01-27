@@ -1,22 +1,22 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-4);
+  gap: var(--ds-size-4);
 }
 
 .content {
-  padding: var(--ds-spacing-4);
+  padding: var(--ds-size-4);
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-6);
-  margin-top: var(--ds-spacing-2);
+  gap: var(--ds-size-6);
+  margin-top: var(--ds-size-2);
 }
 
 .cards {
   display: flex;
   align-items: center;
-  gap: var(--ds-spacing-4);
-  margin-top: var(--ds-spacing-6);
+  gap: var(--ds-size-4);
+  margin-top: var(--ds-size-6);
 }
 
 .header {
@@ -41,6 +41,6 @@
 
 .breadcrumbs_link {
   display: flex;
-  gap: var(--ds-spacing-1);
+  gap: var(--ds-size-1);
   align-items: center;
 }

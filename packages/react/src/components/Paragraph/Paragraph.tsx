@@ -19,8 +19,10 @@ export type ParagraphProps = {
    */
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
+
 /**
  * Use `Paragraph` to display text with paragraph text styles.
+ * Renders a native `p` element.
  *
  * @example
  * <Paragraph data-size='lg'>Paragraph</Paragraph>
