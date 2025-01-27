@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot';
 import { getDatalistValue, syncDatalistState } from '@u-elements/u-datalist';
 import cl from 'clsx/lite';
 import {
@@ -66,6 +67,11 @@ export type SuggestionProps = DefaultProps &
            */
           input: HTMLInputElement;
         }) => boolean);
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
   };
 
 /**
@@ -89,10 +95,13 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
       singular = '%d forslag',
       plural = '%d forslag',
       filter = true,
+      asChild,
       ...rest
     },
     ref,
   ) {
+    const Component = asChild ? Slot : 'div';
+
     const [listId, setListId] = useState(useId());
     const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -128,7 +137,11 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
       <SuggestionContext.Provider
         value={{ singular, plural, inputRef, listId, setListId, handleFilter }}
       >
-        <div className={cl('ds-suggestion', className)} ref={ref} {...rest} />
+        <Component
+          className={cl('ds-suggestion', className)}
+          ref={ref}
+          {...rest}
+        />
       </SuggestionContext.Provider>
     );
   },

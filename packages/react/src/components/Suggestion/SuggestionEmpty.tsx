@@ -1,9 +1,16 @@
+import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
 export type SuggestionEmptyProps = HTMLAttributes<HTMLDivElement> &
-  DefaultProps;
+  DefaultProps & {
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
+  };
 
 /**
  * Component that provides an empty suggestion list.
@@ -16,9 +23,11 @@ export type SuggestionEmptyProps = HTMLAttributes<HTMLDivElement> &
  * </Suggestion.List>
  */
 export const SuggestionEmpty = forwardRef<HTMLDivElement, SuggestionEmptyProps>(
-  function SuggestionEmpty(rest, ref) {
+  function SuggestionEmpty({ asChild, ...rest }, ref) {
+    const Component = asChild ? Slot : 'div';
+
     return (
-      <div
+      <Component
         aria-disabled='true'
         ref={ref}
         role='option'
