@@ -34,16 +34,36 @@ export type SuggestionProps = DefaultProps &
      */
     plural?: string;
     /**
-     * Filter options, either true | false or custom callback () => boolean
+     * Filter options, either true, false or a custom callback () => boolean
+     *
+     * If true, the <datalist> will handle filtering.
+     * If false, the <datalist> will not handle filtering.
+     * If a custom callback, the callback will be used to filter the <option> elements.
+     *
      * @default true
      */
     filter?:
       | boolean
       | ((args: {
+          /**
+           * Index of the <option>
+           */
           index: number;
+          /**
+           * Text content of the <option>
+           */
           text: string;
+          /**
+           * Value of the <option>
+           */
           value: string;
+          /**
+           * The DOM element of the <option>
+           */
           optionElement: HTMLOptionElement;
+          /**
+           * The DOM element of the <input>
+           */
           input: HTMLInputElement;
         }) => boolean);
   };
