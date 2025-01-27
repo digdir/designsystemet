@@ -27,23 +27,28 @@ const replace = (
 
 const colors = ['neutral', 'accent', 'brand1', 'brand2', 'brand3', 'danger', 'warning', 'success', 'info'];
 
-export default (glob?: string) =>
-  runCssCodemod({
+export default (glob?: string) => {
+  const renames = {
+    // Background
+    '--ds-color-background-subtle': '--ds-color-background-tinted',
+    ...replace('--ds-color-[color]-background-subtle', '--ds-color-[color]-background-tinted', colors),
+    // Surface
+    '--ds-color-surface-default': '--ds-color-surface-tinted',
+    ...replace('--ds-color-[color]-surface-default', '--ds-color-[color]-surface-tinted', colors),
+    // Contrast
+    '--ds-color-contrast-default': '--ds-color-base-contrast-default',
+    '--ds-color-contrast-subtle': '--ds-color-base-contrast-subtle',
+    ...replace('--ds-color-[color]-contrast-default', '--ds-color-[color]-base-contrast-default', colors),
+    ...replace('--ds-color-[color]-contrast-subtle', '--ds-color-[color]-base-contrast-subtle', colors),
+  };
+
+  console.log(`Renaming ${Object.keys(renames).length} variables`, renames);
+
+  return runCssCodemod({
     globPattern: glob,
     plugins: [
       // https://github.com/digdir/designsystemet/issues/3046
-      cssVarRename({
-        // Background
-        '--ds-color-background-subtle': '--ds-color-background-tinted',
-        ...replace('--ds-color-[color]-background-subtle', '--ds-color-[color]-background-tinted', colors),
-        // Surface
-        '--ds-color-surface-default': '--ds-color-surface-tinted',
-        ...replace('--ds-color-[color]-surface-default', '--ds-color-[color]-surface-tinted', colors),
-        // Contrast
-        '--ds-color-contrast-default': '--ds-color-base-contrast-default',
-        '--ds-color-contrast-subtle': '--ds-color-base-contrast-subtle',
-        ...replace('--ds-color-[color]-contrast-default', '--ds-color-[color]-base-contrast-default', colors),
-        ...replace('--ds-color-[color]-contrast-subtle', '--ds-color-[color]-base-contrast-subtle', colors),
-      }),
+      cssVarRename(renames),
     ],
   });
+};
