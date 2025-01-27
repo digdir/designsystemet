@@ -6,16 +6,6 @@ import '@u-elements/u-datalist';
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
   DefaultProps;
 
-/**
- * Component that provides an option for the suggestion list.
- *
- * Place as a descendant of `Suggestion.List`
- *
- * @example
- * <Suggestion.List>
- *   <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
- * </Suggestion.List>
- */
 export const SuggestionOption = forwardRef<
   HTMLOptionElement,
   SuggestionOptionProps

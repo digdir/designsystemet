@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { getDatalistValue, syncDatalistState } from '@u-elements/u-datalist';
 import cl from 'clsx/lite';
 import {
+  type HTMLAttributes,
   createContext,
   forwardRef,
   useCallback,
@@ -10,10 +11,9 @@ import {
   useState,
 } from 'react';
 import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 
 type SuggestionContextType = {
-  singular?: string;
-  plural?: string;
   listId?: string;
   inputRef?: React.RefObject<HTMLInputElement | null>;
   setListId?: (id: string) => void;
@@ -22,18 +22,9 @@ type SuggestionContextType = {
 
 export const SuggestionContext = createContext<SuggestionContextType>({});
 
-export type SuggestionProps = DefaultProps &
-  React.HTMLAttributes<HTMLDivElement> & {
-    /**
-     * The screen reader announcement for singular suggestion, where %d is the number of suggestions
-     * @default '%d forslag'
-     */
-    singular?: string;
-    /**
-     * The screen reader announcement for plural suggestions, where %d is the number of suggestions
-     * @default '%d forslag'
-     */
-    plural?: string;
+export type SuggestionProps = MergeRight<
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
+  {
     /**
      * Filter options, either true, false or a custom callback () => boolean
      *
@@ -72,7 +63,8 @@ export type SuggestionProps = DefaultProps &
      * @default false
      */
     asChild?: boolean;
-  };
+  }
+>;
 
 /**
  * A component that provides a suggestion list for an input field.
@@ -89,17 +81,7 @@ export type SuggestionProps = DefaultProps &
  * </Suggestion>
  */
 export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
-  function Suggestion(
-    {
-      className,
-      singular = '%d forslag',
-      plural = '%d forslag',
-      filter = true,
-      asChild,
-      ...rest
-    },
-    ref,
-  ) {
+  function Suggestion({ className, filter = true, asChild, ...rest }, ref) {
     const Component = asChild ? Slot : 'div';
 
     const [listId, setListId] = useState(useId());
@@ -135,7 +117,7 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ singular, plural, inputRef, listId, setListId, handleFilter }}
+        value={{ inputRef, listId, setListId, handleFilter }}
       >
         <Component
           className={cl('ds-suggestion', className)}
