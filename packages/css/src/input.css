@@ -47,6 +47,11 @@
   @composes ds-focus from './base.css';
 
   @media (forced-colors: active) {
+    /*     --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
+    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
+    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke)); */
+
     border-color: ButtonText;
     background-color: Canvas;
 
@@ -151,6 +156,8 @@
     /* forced-color-adjust: none; */ /* Prevent browser from applying forced colors, since we need the background */
 
     @media (forced-colors: active) {
+      color: Canvas;
+
       &:disabled,
       &[aria-disabled='true'],
       &[readonly] {
@@ -226,10 +233,18 @@
 
     &:checked {
       --circle-position: right;
+
+      @media (forced-colors: active) {
+        color: CanvasText;
+      }
     }
 
     @media (forced-colors: active) {
+      color: GrayText;
       forced-color-adjust: none; /* To be able to draw switch */
+      &[readonly] {
+        color: GrayText;
+      }
 
       &:disabled,
       &[aria-disabled='true'],
