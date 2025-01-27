@@ -15,11 +15,6 @@
   gap: var(--ds-size-1);
   position: relative;
 
-  /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-  &:has(input:placeholder-shown) u-datalist:has(u-option:not([hidden]):not([aria-disabled='true'])) > :not(u-option) {
-    display: none;
-  }
-
   & u-datalist {
     background: var(--ds-color-neutral-background-default);
     border-radius: var(--ds-border-radius-md);
@@ -33,6 +28,11 @@
     z-index: 1600;
     margin-top: var(--dsc-suggestion-list-gap);
     max-height: 200px;
+
+    /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
+    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > :not(u-option) {
+      display: none;
+    }
 
     &:not(:has(u-option:hover)) > u-option:focus-visible {
       border-left-color: var(--dsc-suggestion-option-border-color);
