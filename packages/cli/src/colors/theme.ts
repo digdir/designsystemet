@@ -3,12 +3,7 @@ import type { CssColor } from './types.js';
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type { ColorInfo, ColorNumber, ColorScheme, GlobalColors, ThemeInfo } from './types.js';
-import {
-  getColorInfoFromPosition,
-  getColorNameFromNumber,
-  getLightnessFromHex,
-  getLuminanceFromLightness,
-} from './utils.js';
+import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -145,5 +140,5 @@ export const getContrastSubtle = (color: CssColor): CssColor => {
  * @param colorNumber The number of the color
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-color-${colorType}-${getColorNameFromNumber(colorNumber).toLowerCase().replace(/\s/g, '-')}`;
+  return `--ds-color-${colorType}-${getColorInfoFromPosition(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
 };

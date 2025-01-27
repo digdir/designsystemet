@@ -286,33 +286,6 @@ export const getColorInfoFromPosition = (position: ColorNumber) => {
 };
 
 /**
- * This function returns the color name based on the color number.
- *
- * @param number The number of the color
- */
-export const getColorNameFromNumber = (number: ColorNumber): string => {
-  const colorMap: { [key in ColorNumber]: string } = {
-    1: 'Background Default',
-    2: 'Background Tinted',
-    3: 'Surface Default',
-    4: 'Surface Tinted',
-    5: 'Surface Hover',
-    6: 'Surface Active',
-    7: 'Border Subtle',
-    8: 'Border Default',
-    9: 'Border Strong',
-    10: 'Text Subtle',
-    11: 'Text Default',
-    12: 'Base Default',
-    13: 'Base Hover',
-    14: 'Base Active',
-    15: 'Contrast Subtle',
-    16: 'Contrast Default',
-  };
-  return colorMap[number];
-};
-
-/**
  *
  * This function checks if white or black text can be used on 2 different colors at 4.5:1 contrast.
  *

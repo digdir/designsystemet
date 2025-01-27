@@ -1,6 +1,6 @@
 import {
   type ColorNumber,
-  getColorNameFromNumber,
+  getColorInfoFromPosition,
 } from '@digdir/designsystemet/color';
 
 export const capitalizeFirstLetter = (str: string) => {
@@ -14,7 +14,7 @@ export const getColorDescription = ({
   weight: ColorNumber;
   namespace: string;
 }) => {
-  let description = `${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`;
+  let description = `${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(weight).displayName)}`;
 
   if (weight === 1) {
     description += ' er den mest nøytrale bakgrunnsfargen.';

@@ -1,7 +1,7 @@
 import {
   type ColorInfo,
   generateColorSchemes,
-  getColorNameFromNumber,
+  getColorInfoFromPosition,
   getContrastFromHex,
 } from '@digdir/designsystemet';
 
@@ -71,7 +71,7 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorNameFromNumber(color.position)}
+          {getColorInfoFromPosition(color.position).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
