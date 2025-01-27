@@ -236,15 +236,10 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field lang='en'>
       <Label>Search for countries (in english)</Label>
-      <Suggestion
-        {...args}
-        filter={false}
-        singular='%d country'
-        plural='%d countries'
-      >
+      <Suggestion {...args} filter={false}>
         <Suggestion.Input value={value} onChange={handleChange} />
         <Suggestion.Clear />
-        <Suggestion.List>
+        <Suggestion.List singular='%d country' plural='%d countries'>
           {!!value && (
             <Suggestion.Empty>
               {options ? (
