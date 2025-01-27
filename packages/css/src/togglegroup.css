@@ -21,6 +21,7 @@
 
   button {
     border-radius: var(--dsc-togglegroup-border-radius);
+    min-height: var(--ds-size-11);
 
     @media (forced-colors: active) {
       &[aria-checked='true'] {
