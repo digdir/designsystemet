@@ -41,7 +41,7 @@ export const ColorPage = () => {
     type: ColorType,
   ) => {
     setActivePanel('editColor');
-    setColor(ColorService.convert('hex', color.colors.light[8].hex));
+    setColor(ColorService.convert('hex', color.colors.light[11].hex));
     setName(color.name);
     setIndex(index);
     setColorType(type);
