@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border-top: 1px solid var(--ds-color-neutral-border-default);
 }
 
