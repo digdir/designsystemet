@@ -7,6 +7,17 @@ import { SuggestionContext } from './Suggestion';
 export type SuggestionListProps = HTMLAttributes<HTMLDataListElement> &
   DefaultProps;
 
+/**
+ * Component that provides a suggestion list.
+ *
+ * Place as a descendant of `Suggestion`
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.List />
+ * </Suggestion>
+ */
 export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps

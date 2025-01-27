@@ -11,6 +11,18 @@ export type SuggestionClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
   'aria-label'?: string;
 };
 
+/**
+ * Component that provides a clear button for the suggestion input.
+ *
+ * Place as a descendant of `Suggestion`
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.Clear />
+ *   <Suggestion.List />
+ * </Suggestion>
+ */
 export const SuggestionClear = forwardRef<
   HTMLButtonElement,
   SuggestionClearProps

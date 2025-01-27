@@ -46,28 +46,42 @@ export type SuggestionProps = DefaultProps &
       | boolean
       | ((args: {
           /**
-           * Index of the <option>
+           * Index of the `option`
            */
           index: number;
           /**
-           * Text content of the <option>
+           * Text content of the `option`
            */
           text: string;
           /**
-           * Value of the <option>
+           * Value of the `option`
            */
           value: string;
           /**
-           * The DOM element of the <option>
+           * The DOM element of the `option`
            */
           optionElement: HTMLOptionElement;
           /**
-           * The DOM element of the <input>
+           * The DOM element of the `input`
            */
           input: HTMLInputElement;
         }) => boolean);
   };
 
+/**
+ * A component that provides a suggestion list for an input field.
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.Clear />
+ *   <Suggestion.List>
+ *     <Suggestion.Empty>Tomt</Suggestion.Empty>
+ *     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
+ *     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
+ *   </Suggestion.List>
+ * </Suggestion>
+ */
 export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
   function Suggestion(
     {

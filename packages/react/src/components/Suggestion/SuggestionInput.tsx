@@ -6,6 +6,17 @@ import { SuggestionContext } from './Suggestion';
 
 export type SuggestionInputProps = InputProps;
 
+/**
+ * Component that provides an input field for the suggestion list.
+ *
+ * Place as a descendant of `Suggestion`
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.List />
+ * </Suggestion>
+ */
 export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps

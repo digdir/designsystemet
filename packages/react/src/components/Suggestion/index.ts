@@ -5,6 +5,20 @@ import { SuggestionInput } from './SuggestionInput';
 import { SuggestionList } from './SuggestionList';
 import { SuggestionOption } from './SuggestionOption';
 
+/**
+ * A component that provides a suggestion list for an input field.
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.Clear />
+ *   <Suggestion.List>
+ *     <Suggestion.Empty>Tomt</Suggestion.Empty>
+ *     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
+ *     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
+ *   </Suggestion.List>
+ * </Suggestion>
+ */
 const EXPERIMENTAL_Suggestion = Object.assign(SuggestionRoot, {
   List: SuggestionList,
   Input: SuggestionInput,
