@@ -70,19 +70,20 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
         if (filter === true || !list) return;
 
         // Handle custom filter
-        if (filter !== false)
-          Array.from(
-            list.children as HTMLCollectionOf<HTMLOptionElement>,
-            (option, index) => {
+        if (filter !== false) {
+          let index = 0;
+          for (const option of list.children as HTMLCollectionOf<HTMLOptionElement>) {
+            // Skip <datalist> children that are not <option>
+            if ('value' in option)
               option.disabled = !filter({
-                index,
+                index: index++, // Increment index for each <option>
                 input,
                 optionElement: option,
                 text: option.text,
                 value: getDatalistValue(option),
               });
-            },
-          );
+          }
+        }
 
         syncDatalistState(input); // Sync the datalist state if filter is custom or false
       },

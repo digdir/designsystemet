@@ -15,6 +15,11 @@
   gap: var(--ds-size-1);
   position: relative;
 
+  /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
+  &:has(input:placeholder-shown) u-datalist:has(u-option:not([hidden]):not([aria-disabled='true'])) > :not(u-option) {
+    display: none;
+  }
+
   & u-datalist {
     background: var(--ds-color-neutral-background-default);
     border-radius: var(--ds-border-radius-md);
@@ -33,11 +38,6 @@
       border-left-color: var(--dsc-suggestion-option-border-color);
       background: var(--dsc-suggestion-option-background--selected);
       color: var(--ds-color-text-default);
-    }
-
-    /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-    &:has(u-option:not([hidden])) > :not(u-option) {
-      display: none;
     }
 
     /* Hide datalist if no children */
