@@ -1,6 +1,6 @@
 ---
-"@digdir/designsystemet-css": patch
-"@digdir/designsystemet-react": patch
+"@digdir/designsystemet-css": minor
+"@digdir/designsystemet-react": minor
 ---
 
-New experimental component; Suggestion :sparkles:
+:sparkles: New experimental component; **Suggestion**
