@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.0.0-next.48
+
+### Minor Changes
+
+- :sparkles: New experimental component; **Suggestion** ([#3032](https://github.com/digdir/designsystemet/pull/3032))
+
+### Patch Changes
+
+- **Chip**: Make radio and checkbox smaller ([#3039](https://github.com/digdir/designsystemet/pull/3039))
+
+- **ToggleGroup**: Change height to match other form elements ([#3055](https://github.com/digdir/designsystemet/pull/3055))
+
+- Chip: avoid reassigning custom properties ([#3019](https://github.com/digdir/designsystemet/pull/3019))
+
+- **Tabs**: Add overflow-x scroll to tablist ([#3030](https://github.com/digdir/designsystemet/pull/3030))
+
+- **Table**: Use `border-top` in `tbody` ensure prettier tables when no `thead` ([#3020](https://github.com/digdir/designsystemet/pull/3020))
+
+- **Tag**: Set `height` in case it is used in `display: flex` ([#3020](https://github.com/digdir/designsystemet/pull/3020))
+
+- `ds-input` will now by default fill width. ([#3020](https://github.com/digdir/designsystemet/pull/3020))
+
+- **Field**: Move `align-items: start` from `.ds-field` to `align-self: start` on `.ds-input` for easier styling ([#3020](https://github.com/digdir/designsystemet/pull/3020))
+
 ## 1.0.0-next.47
 
 ## 1.0.0-next.46
