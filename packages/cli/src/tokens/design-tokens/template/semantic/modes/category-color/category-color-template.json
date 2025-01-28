@@ -7,6 +7,10 @@
     "$type": "color",
     "$value": "{color.<color>.background-tinted}"
   },
+  "surface-default": {
+    "$type": "color",
+    "$value": "{color.<color>.surface-default}"
+  },
   "surface-tinted": {
     "$type": "color",
     "$value": "{color.<color>.surface-tinted}"
@@ -31,6 +35,14 @@
     "$type": "color",
     "$value": "{color.<color>.border-strong}"
   },
+  "text-subtle": {
+    "$type": "color",
+    "$value": "{color.<color>.text-subtle}"
+  },
+  "text-default": {
+    "$type": "color",
+    "$value": "{color.<color>.text-default}"
+  },
   "base-default": {
     "$type": "color",
     "$value": "{color.<color>.base-default}"
@@ -42,14 +54,6 @@
   "base-active": {
     "$type": "color",
     "$value": "{color.<color>.base-active}"
-  },
-  "text-subtle": {
-    "$type": "color",
-    "$value": "{color.<color>.text-subtle}"
-  },
-  "text-default": {
-    "$type": "color",
-    "$value": "{color.<color>.text-default}"
   },
   "base-contrast-default": {
     "$type": "color",
