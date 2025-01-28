@@ -55,7 +55,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.green.contrast-1}"
+        "$value": "{global.green.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -117,7 +117,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.red.contrast-1}"
+        "$value": "{global.red.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -179,7 +179,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.blue.contrast-1}"
+        "$value": "{global.blue.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -241,7 +241,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.orange.contrast-1}"
+        "$value": "{global.orange.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",

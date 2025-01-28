@@ -53,9 +53,9 @@
         "$type": "color",
         "$value": "{theme4.accent.13}"
       },
-      "contrast-1": {
+      "15": {
         "$type": "color",
-        "$value": "{theme4.accent.contrast-1}"
+        "$value": "{theme4.accent.15}"
       },
       "contrast-2": {
         "$type": "color",
@@ -115,9 +115,9 @@
         "$type": "color",
         "$value": "{theme4.neutral.13}"
       },
-      "contrast-1": {
+      "15": {
         "$type": "color",
-        "$value": "{theme4.neutral.contrast-1}"
+        "$value": "{theme4.neutral.15}"
       },
       "contrast-2": {
         "$type": "color",
@@ -177,9 +177,9 @@
         "$type": "color",
         "$value": "{theme4.brand1.13}"
       },
-      "contrast-1": {
+      "15": {
         "$type": "color",
-        "$value": "{theme4.brand1.contrast-1}"
+        "$value": "{theme4.brand1.15}"
       },
       "contrast-2": {
         "$type": "color",
@@ -239,9 +239,9 @@
         "$type": "color",
         "$value": "{theme4.brand2.13}"
       },
-      "contrast-1": {
+      "15": {
         "$type": "color",
-        "$value": "{theme4.brand2.contrast-1}"
+        "$value": "{theme4.brand2.15}"
       },
       "contrast-2": {
         "$type": "color",
@@ -301,9 +301,9 @@
         "$type": "color",
         "$value": "{theme4.brand3.13}"
       },
-      "contrast-1": {
+      "15": {
         "$type": "color",
-        "$value": "{theme4.brand3.contrast-1}"
+        "$value": "{theme4.brand3.15}"
       },
       "contrast-2": {
         "$type": "color",

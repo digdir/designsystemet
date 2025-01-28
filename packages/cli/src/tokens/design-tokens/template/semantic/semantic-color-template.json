@@ -53,7 +53,7 @@
   },
   "base-contrast-default": {
     "$type": "color",
-    "$value": "{color.<color>.contrast-1}"
+    "$value": "{color.<color>.15}"
   },
   "base-contrast-subtle": {
     "$type": "color",

@@ -55,7 +55,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.accent.contrast-1}"
+        "$value": "{color.accent.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -117,7 +117,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.neutral.contrast-1}"
+        "$value": "{color.neutral.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -179,7 +179,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.brand1.contrast-1}"
+        "$value": "{color.brand1.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -241,7 +241,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.brand2.contrast-1}"
+        "$value": "{color.brand2.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -303,7 +303,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.brand3.contrast-1}"
+        "$value": "{color.brand3.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -365,7 +365,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.green.contrast-1}"
+        "$value": "{global.green.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -427,7 +427,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.red.contrast-1}"
+        "$value": "{global.red.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -489,7 +489,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.blue.contrast-1}"
+        "$value": "{global.blue.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
@@ -551,7 +551,7 @@
       },
       "base-contrast-default": {
         "$type": "color",
-        "$value": "{global.orange.contrast-1}"
+        "$value": "{global.orange.15}"
       },
       "base-contrast-subtle": {
         "$type": "color",
