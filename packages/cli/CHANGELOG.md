@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.0.0-next.48
+
+### Minor Changes
+
+- Rename config option from `--json` to `--config` ([#3012](https://github.com/digdir/designsystemet/pull/3012))
+
+### Patch Changes
+
+- Create & build tokens correctly if support-color is missing ([#3035](https://github.com/digdir/designsystemet/pull/3035))
+
+- Removed predefined `accent` variables added during `tokens build`. Use `data-color` or generated named color variables instead. ([#3041](https://github.com/digdir/designsystemet/pull/3041))
+
 ## 1.0.0-next.47
 
 ### Minor Changes
