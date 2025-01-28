@@ -9,7 +9,7 @@
 }
 
 .basicPanel {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
   margin-top: 28px;
