@@ -2,10 +2,12 @@ import { LayersIcon } from '@navikt/aksel-icons';
 
 import { NavMenuPageLayout } from '@layouts';
 
+import { Image } from '@components';
+
 export const metadata = {
   title: 'Mønstre',
   description:
-    'Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.',
+    'Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og brukeroppgaver brukeroppgaver skal løses. Når de samme mønstrene brukes på tvers, skaper vi gjenkjennelighet i tjenestene.',
 };
 
 export default ({ children }) => (
@@ -14,67 +16,63 @@ export default ({ children }) => (
     banner={{
       title: 'Mønstre',
       ingress:
-        'Mønstre viser hvordan vi håndterer spesifikke brukeroppgaver, handlinger og sidetyper som går igjen på tvers. Mønstre bruker ofte en eller flere komponenter og forklarer hvordan de kan tilpasses konteksten.',
+        'Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes på tvers, skaper vi gjenkjennelighet i tjenestene.',
       icon: <LayersIcon fontSize={34} />,
       color: 'yellow',
     }}
   />
 );
 
-I rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)" er det funnet flere [konkrete problemer med brukskvalitet](https://github.com/digdir/innsiktsbibliotek/issues/3) som kan forbedres dersom vi samarbeider om å etablere like mønstre på tvers av offentlige tjenester. Når vi bruker etablerte mønstre som innbyggerne kjenner igjen på tvers kan løsningene bli mer intuitive og bidra til mindre digitalt utenforskap.
+## Felles mønstre
+ Klarer vi å etablere felles mønstre blir det lettere for en bruker som har gjort noe et sted å kjenne igjen og forstå hvordan det skal gjøres et annet sted. På den måten kan vi bidra til å inkludere flere digitalt. Det er også et av tiltakene i "[Handlingsplanen for Økt inkludering i et digitalt samfunn, tiltak 26](https://www.regjeringen.no/no/dokumenter/handlingsplan-for-auka-inkludering-i-eit-digitalt-samfunn/id2984233/)" ,der det står at vi skal jobbe for mer like interaksjonsmønstre på tvers. 
 
-Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene. For eksempel kan vi hjelpe hverandre å etablere felles konvensjoner rundt interaksjon og forventet oppførsel på komponenter, samt plassering av sentrale elementer.
+Felles mønstre kan for eksempel bidra til at:
+- Interaksjon og oppførsel på elementer blir gjenkjennelig på tvers.
+- Plassering av sentrale elementer stemmer med brukerens forvetninger.
+- Gjentagende brukeroppgaver oppleves gjenkjennelig. 
 
-## Planlagte mønstre
+<br/>
 
-Sitter du på innsikt som er relevante for følgende mønstre? Bli med på å utarbeide felles retningslinjer som kan bidra til at vi oppnår mer helhetlige tjenester på tvers. [Ta kontakt](mailto:designsystem@digdir.no)!
+I rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)" er det funnet flere [konkrete problemer med brukskvalitet](https://github.com/digdir/innsiktsbibliotek/issues/3) som kan forbedres dersom vi samarbeider om å etablere like mønstre på tvers av offentlige tjenester. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
 
-### Brukeroppgaver
+ <Image
+  src='/img/felles-retning.png'
+  alt='Illustrasjon med piler som går i samme retning'
+  boxShadow={false}
+  dataUnstyled
+  caption='Et samarbeid om mønstre gjør at vi får en felles retning for brukeropplevelse, som gir økt gjenkjennelighet og trygghet for brukerne, og bidrar til at vi som offentlig sektor leverer tjenester av høy kvalitet på tvers av organisasjoner.
+'
+/>
 
-Vi har lyst å finne felles måter å håndtere gjentagende brukeroppgaver. F.eks eksempler og beste praksis for blant annet:
+## Tverretatlig samarbeid
+For å etablere felles mønstre på tvers har designsystem-teamene til **Digdir, Nav, Skattetaten, Brønnøysundregistrene og Oslo kommune** med flere, gått sammen om en tverretatlig arbeidsgruppe for å utarbeide felles retningslinjer for interaksjonsmønstre. 
 
-- [Innlogging](/monstre/innlogging)
-- [Navigering](/monstre/navigering)
-  - Plassering av vesentlige funksjoner
-  - Navigeringsknapper
-  - Navigeringsretninger
-  - Logisk hierarki av handlingsknapper
-- Utfylling av skjema
-- Innsending av skjema
-- Filtrering
-- Signering
-- Samtykke
-- Bytte språk
-- [Ofte brukte handlinger](/monstre/handlinger)
+Vi samler innsikt fra egne organisasjoner, gjennomgår dette, identifiserer ulikheter og lander på en felles tilnærming gjennom jevnlige arbeidsmøter.
 
-Dette er noen av utfordringene som har blitt trukket frem i rapporten "[Digital hele livet med bedre brukeropplevelse](https://www.digdir.no/sammenhengende-tjenester/digital-hele-livet-med-bedre-brukeropplevelse/4405)". Problemene er rapportert av blant annet Brukerrådet i Helsetilsynet, Deichmanske, Seniornett, Altinn brukerstøtte, Trondheim folkebibliotek, Mangfold i arbeidslivet, samt generelle observasjoner.
+Mønstrene som er landet i fellesskap er publisert som artikler:
+- [Obligatoriske og valgfrie skjemafelt](https://www.designsystemet.no/monstre/obligatoriske-og-valgfrie-felt)
+- [Brukerutløste feilmeldinger](https://www.designsystemet.no/monstre/feilmeldinger)
+- [Systemvarsler](https://www.designsystemet.no/monstre/systemvarsler)
 
-### Brukerdialoger
+## Planlagte mønstre 
+ Mønstrene det er behov for å jobbe med på tvers dokumenteres i [denne oversikten på Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). Det er hovedgruppen for mønster-samarbeidet som prioriterer hvilke mønstre som skal jobbes med og igangsetter arbeidsgrupper. Har du forslag til andre mønstre, er du velkommen til å [opprette en ny diskusjonstråd](https://github.com/digdir/designsystemet/discussions/new?category=samarbeid-m%C3%B8nster-for-innbyggertjenester). Vi setter også pris på alt av innsikt som deles i de ulike tema-trådene per mønster. 
+ 
 
-F.eks hvordan vi spør brukeren om:
 
-- Adresse
-- [Datoer](/monstre/dato)
-- Epost
-- Kjønn
-- Navigering
-- Identitet
-- Passord
-- Betalingskort-detaljer
-- Telefonnummer
+## Bli med på samarbeidet 
+Alle som ønsker kan påvirke arbeidet gjennom åpne diskusjoner i [Slack](https://www.designsystemet.no/slack) og [Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). Ønsker du å være tettere på samarbeidet har vi også plass til flere i arbeidsgruppene. [Ta kontakt (epost)](mailto:designsystem@digdir.no)!
 
-...Og hvordan vi håndterer [validering og feilmeldinger](/monstre/feilmeldinger) når noe går galt.
 
-### Bruk av...
 
-- Bruk av pop-ups
-- Bruk av modaler
+<Image
+  src='/img/logo-monstre.png'
+  alt='Logoene til Digdir, Oslo kommune, Nav, Skatteetaten, Brønnøysundregistrene'
+  boxShadow={false}
+  dataUnstyled
+  caption='Digdir, Nav, Skatteetaten, Oslo kommune og Brønnøysundregistren er blant dem som deltar i arbeidet om å etablere felles mønstre på tvers'
+/>
 
-## Eksempel på designsystem som har laget retningslinjer for mønstre:
 
-- [https://carbondesignsystem.com/patterns/overview/](https://carbondesignsystem.com/patterns/overview/)
-- [https://design-system.service.gov.uk/patterns/](https://design-system.service.gov.uk/patterns/)
-- [https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States](https://www.lightningdesignsystem.com/guidelines/user-engagement/patterns/#Empty-States)
 
 <style>
   {`

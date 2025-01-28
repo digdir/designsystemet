@@ -62,7 +62,7 @@
 
 .appearance {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 
   & h4 {
     margin-bottom: var(--ds-size-2);

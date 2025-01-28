@@ -63,7 +63,7 @@
 }
 
 .feedback:hover {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-surface-tinted);
   color: var(--ds-color-neutral-text-default);
 }
 
