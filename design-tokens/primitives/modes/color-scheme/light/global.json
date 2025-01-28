@@ -57,7 +57,7 @@
         "$type": "color",
         "$value": "#ffffff"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#eff6fb"
       }
@@ -119,7 +119,7 @@
         "$type": "color",
         "$value": "#ffffff"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#fafdfb"
       }
@@ -181,7 +181,7 @@
         "$type": "color",
         "$value": "#ffffff"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#fdfbf9"
       }
@@ -243,7 +243,7 @@
         "$type": "color",
         "$value": "#ffffff"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#eee8f3"
       }
@@ -305,7 +305,7 @@
         "$type": "color",
         "$value": "#ffffff"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#f7e1e1"
       }
@@ -367,7 +367,7 @@
         "$type": "color",
         "$value": "#000000"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
         "$value": "#282209"
       }

@@ -59,7 +59,7 @@
       },
       "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{global.green.contrast-2}"
+        "$value": "{global.green.16}"
       }
     },
     "danger": {
@@ -121,7 +121,7 @@
       },
       "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{global.red.contrast-2}"
+        "$value": "{global.red.16}"
       }
     },
     "info": {
@@ -183,7 +183,7 @@
       },
       "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{global.blue.contrast-2}"
+        "$value": "{global.blue.16}"
       }
     },
     "warning": {
@@ -245,7 +245,7 @@
       },
       "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{global.orange.contrast-2}"
+        "$value": "{global.orange.16}"
       }
     },
     "focus": {

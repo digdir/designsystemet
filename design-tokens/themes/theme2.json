@@ -57,9 +57,9 @@
         "$type": "color",
         "$value": "{theme2.accent.15}"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
-        "$value": "{theme2.accent.contrast-2}"
+        "$value": "{theme2.accent.16}"
       }
     },
     "neutral": {
@@ -119,9 +119,9 @@
         "$type": "color",
         "$value": "{theme2.neutral.15}"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
-        "$value": "{theme2.neutral.contrast-2}"
+        "$value": "{theme2.neutral.16}"
       }
     },
     "brand1": {
@@ -181,9 +181,9 @@
         "$type": "color",
         "$value": "{theme2.brand1.15}"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
-        "$value": "{theme2.brand1.contrast-2}"
+        "$value": "{theme2.brand1.16}"
       }
     },
     "brand2": {
@@ -243,9 +243,9 @@
         "$type": "color",
         "$value": "{theme2.brand2.15}"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
-        "$value": "{theme2.brand2.contrast-2}"
+        "$value": "{theme2.brand2.16}"
       }
     },
     "brand3": {
@@ -305,9 +305,9 @@
         "$type": "color",
         "$value": "{theme2.brand3.15}"
       },
-      "contrast-2": {
+      "16": {
         "$type": "color",
-        "$value": "{theme2.brand3.contrast-2}"
+        "$value": "{theme2.brand3.16}"
       }
     }
   },

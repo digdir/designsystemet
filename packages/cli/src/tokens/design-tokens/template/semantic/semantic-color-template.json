@@ -57,6 +57,6 @@
   },
   "base-contrast-subtle": {
     "$type": "color",
-    "$value": "{color.<color>.contrast-2}"
+    "$value": "{color.<color>.16}"
   }
 }
