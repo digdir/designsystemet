@@ -20,7 +20,7 @@
   /**
    * States
    */
-  &:has([aria-disabled='true']:not(u-option), :disabled:not(option)) > * {
+  &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }

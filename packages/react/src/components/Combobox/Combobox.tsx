@@ -121,6 +121,9 @@ export type ComboboxProps = {
 } & FormFieldProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
+/**
+ * @deprecated Use `Suggestion` instead
+ */
 export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
