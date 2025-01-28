@@ -2,8 +2,8 @@
   --dsc-button-background--active: var(--ds-color-base-active);
   --dsc-button-background--hover: var(--ds-color-base-hover);
   --dsc-button-background: var(--ds-color-base-default);
-  --dsc-button-color: var(--ds-color-contrast-default);
-  --dsc-button-color--hover: var(--ds-color-contrast-default);
+  --dsc-button-color: var(--ds-color-base-contrast-default);
+  --dsc-button-color--hover: var(--ds-color-base-contrast-default);
   --dsc-button-border-color: transparent;
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
@@ -48,8 +48,8 @@
     --dsc-button-background--active: var(--ds-color-base-active);
     --dsc-button-background--hover: var(--ds-color-base-hover);
     --dsc-button-background: var(--ds-color-base-default);
-    --dsc-button-color: var(--ds-color-contrast-default);
-    --dsc-button-color--hover: var(--ds-color-contrast-default);
+    --dsc-button-color: var(--ds-color-base-contrast-default);
+    --dsc-button-color--hover: var(--ds-color-base-contrast-default);
 
     &[data-variant='secondary'],
     &[data-variant='tertiary'] {

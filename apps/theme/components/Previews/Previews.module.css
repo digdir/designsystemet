@@ -6,7 +6,7 @@
 }
 
 .preview {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   padding: var(--ds-size-6);
   border-radius: var(--ds-border-radius-lg);
   box-shadow: var(--ds-shadow-md);

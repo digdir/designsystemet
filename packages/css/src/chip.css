@@ -1,5 +1,5 @@
 .ds-chip {
-  --dsc-chip-background: var(--ds-color-surface-default);
+  --dsc-chip-background: var(--ds-color-surface-tinted);
   --dsc-chip-background--hover: var(--ds-color-surface-hover);
   --dsc-chip-background--active: var(--ds-color-surface-active);
   --dsc-chip-background--checked: var(--ds-color-base-default);
@@ -8,7 +8,7 @@
   --dsc-chip-border-color: var(--ds-color-border-subtle);
   --dsc-chip-border-color--checked: transparent;
   --dsc-chip-color: var(--ds-color-text-default);
-  --dsc-chip-color--checked: var(--ds-color-contrast-default);
+  --dsc-chip-color--checked: var(--ds-color-base-contrast-default);
   --dsc-chip-input-color: var(--ds-color-border-strong);
   --dsc-chip-input-color--checked: var(--ds-color-base-default);
   --dsc-chip-border-radius: var(--ds-border-radius-full);

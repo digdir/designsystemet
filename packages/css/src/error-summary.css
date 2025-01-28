@@ -1,5 +1,5 @@
 .ds-error-summary {
-  --dsc-errorsummary-background: var(--ds-color-danger-surface-default);
+  --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
   --dsc-errorsummary-border-radius: var(--ds-border-radius-lg);
   --dsc-errorsummary-padding: var(--ds-size-6) var(--ds-size-8);
   --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);

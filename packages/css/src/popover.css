@@ -1,5 +1,5 @@
 .ds-popover {
-  --dsc-popover-background: var(--ds-color-surface-default);
+  --dsc-popover-background: var(--ds-color-surface-tinted);
   --dsc-popover-border-color: var(--ds-color-border-default);
   --dsc-popover-color: var(--ds-color-text-default);
   --dsc-popover-arrow-size: var(--ds-size-2);

@@ -3,13 +3,13 @@
     "$type": "color",
     "$value": "{color.<color>.background-default}"
   },
-  "background-subtle": {
+  "background-tinted": {
     "$type": "color",
-    "$value": "{color.<color>.background-subtle}"
+    "$value": "{color.<color>.background-tinted}"
   },
-  "surface-default": {
+  "surface-tinted": {
     "$type": "color",
-    "$value": "{color.<color>.surface-default}"
+    "$value": "{color.<color>.surface-tinted}"
   },
   "surface-hover": {
     "$type": "color",
@@ -51,12 +51,12 @@
     "$type": "color",
     "$value": "{color.<color>.text-default}"
   },
-  "contrast-default": {
+  "base-contrast-default": {
     "$type": "color",
-    "$value": "{color.<color>.contrast-default}"
+    "$value": "{color.<color>.base-contrast-default}"
   },
-  "contrast-subtle": {
+  "base-contrast-subtle": {
     "$type": "color",
-    "$value": "{color.<color>.contrast-subtle}"
+    "$value": "{color.<color>.base-contrast-subtle}"
   }
 }
