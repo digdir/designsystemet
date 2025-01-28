@@ -290,7 +290,8 @@ Me
 
 ### Base gruppa
 Denne gruppa fungerar litt annerledes enn dei statiske gruppene. 
-Fargen som blir brukt for å generere ein skala får navnet `Base Default`.
+Fargen som blir brukt for å generere ein skala får navnet `Base Default`. Den beholder alltid same hex-kode. Dette sikrar at ein kan bevare identiteten til eksisterande visuelle profilar med definerte fargar. 
+
 Fargane `Base Hover` og `Base Active` blir mørkare eller lysare avhengig av den relative luminansen til `Base Default` fargen.
 Enkelt forklart handlar det om at desse fargane blir lysare om `Base Default` fargen er mørk, og mørkare om den er lys. 
 Det er litt meir logikk som skjer her bak panseret, men det er ikkje avgjerande for å forstå korleis fargane blir generert på.
