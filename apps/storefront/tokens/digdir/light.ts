@@ -244,7 +244,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.contrast-1}"
+      $value: "{color.accent.15}"
     },
     name: "--ds-color-accent-base-contrast-default",
     attributes: {},
@@ -262,7 +262,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.contrast-2}"
+      $value: "{color.accent.16}"
     },
     name: "--ds-color-accent-base-contrast-subtle",
     attributes: {},
@@ -514,7 +514,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.contrast-1}"
+      $value: "{color.neutral.15}"
     },
     name: "--ds-color-neutral-base-contrast-default",
     attributes: {},
@@ -532,7 +532,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.contrast-2}"
+      $value: "{color.neutral.16}"
     },
     name: "--ds-color-neutral-base-contrast-subtle",
     attributes: {},
@@ -784,7 +784,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.contrast-1}"
+      $value: "{color.brand1.15}"
     },
     name: "--ds-color-brand1-base-contrast-default",
     attributes: {},
@@ -802,7 +802,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.contrast-2}"
+      $value: "{color.brand1.16}"
     },
     name: "--ds-color-brand1-base-contrast-subtle",
     attributes: {},
@@ -1054,7 +1054,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.contrast-1}"
+      $value: "{color.brand2.15}"
     },
     name: "--ds-color-brand2-base-contrast-default",
     attributes: {},
@@ -1072,7 +1072,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.contrast-2}"
+      $value: "{color.brand2.16}"
     },
     name: "--ds-color-brand2-base-contrast-subtle",
     attributes: {},
@@ -1324,7 +1324,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.contrast-1}"
+      $value: "{color.brand3.15}"
     },
     name: "--ds-color-brand3-base-contrast-default",
     attributes: {},
@@ -1342,7 +1342,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.contrast-2}"
+      $value: "{color.brand3.16}"
     },
     name: "--ds-color-brand3-base-contrast-subtle",
     attributes: {},
@@ -1594,7 +1594,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.contrast-1}"
+      $value: "{global.green.15}"
     },
     name: "--ds-color-success-base-contrast-default",
     attributes: {},
@@ -1612,7 +1612,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.contrast-2}"
+      $value: "{global.green.16}"
     },
     name: "--ds-color-success-base-contrast-subtle",
     attributes: {},
@@ -1864,7 +1864,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.contrast-1}"
+      $value: "{global.red.15}"
     },
     name: "--ds-color-danger-base-contrast-default",
     attributes: {},
@@ -1882,7 +1882,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.contrast-2}"
+      $value: "{global.red.16}"
     },
     name: "--ds-color-danger-base-contrast-subtle",
     attributes: {},
@@ -2134,7 +2134,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.contrast-1}"
+      $value: "{global.blue.15}"
     },
     name: "--ds-color-info-base-contrast-default",
     attributes: {},
@@ -2152,7 +2152,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.contrast-2}"
+      $value: "{global.blue.16}"
     },
     name: "--ds-color-info-base-contrast-subtle",
     attributes: {},
@@ -2404,7 +2404,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.contrast-1}"
+      $value: "{global.orange.15}"
     },
     name: "--ds-color-warning-base-contrast-default",
     attributes: {},
@@ -2422,7 +2422,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.contrast-2}"
+      $value: "{global.orange.16}"
     },
     name: "--ds-color-warning-base-contrast-subtle",
     attributes: {},
