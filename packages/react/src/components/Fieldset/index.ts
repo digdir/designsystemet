@@ -3,11 +3,18 @@ import { FieldsetDescription } from './FieldsetDescription';
 import { FieldsetLegend } from './FieldsetLegend';
 
 /**
+ * Fieldset component, used to wrap a form field.
+ *
  * @example
  * <Fieldset>
- *  <Fieldset.Legend>Legend text</Fieldset.Legend>
- *  <Fieldset.Description>Description text</Fieldset.Description>
- *  ...input components
+ *   <Fieldset.Legend>Skriv inn dine svar</Fieldset.Legend>
+ *   <Fieldset.Description>
+ *     Gi en kort beskrivelse i begge feltene
+ *   </Fieldset.Description>
+ *   <Field>
+ *     <Label>Kort beskrivelse</Label>
+ *     <Input />
+ *   </Field>
  * </Fieldset>
  */
 const Fieldset = Object.assign(FieldsetParent, {

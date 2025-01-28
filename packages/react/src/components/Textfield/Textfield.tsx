@@ -20,21 +20,37 @@ type InputProps_ = Omit<
 type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
 type SharedTextfieldProps = {
-  /** Classname on the wrapper element`Field` */
+  /**
+   * Classname on the wrapper element `Field`
+   */
   className?: InputProps['className'];
-  /** Style on the wrapper element `Field` */
+  /**
+   * Style on the wrapper element `Field`
+   * @default undefined
+   */
   style?: InputProps['style'];
-  /** Label */
+  /**
+   * Label
+   */
   label?: ReactNode;
-  /** Description */
+  /**
+   * Description
+   */
   description?: ReactNode;
-  /** Prefix */
+  /**
+   * Prefix
+   */
   prefix?: string;
-  /** Suffix */
+  /**
+   * Suffix
+   */
   suffix?: string;
-  /** Error message for field */
+  /**
+   * Error message for field
+   */
   error?: ReactNode;
-  /** Uses `Field.Counter` to display a character counter
+  /**
+   * Uses `Field.Counter` to display a character counter
    * Pass a number to set a limit, or an object to configure the counter
    */
   counter?: FieldCounterProps | number;
@@ -42,12 +58,16 @@ type SharedTextfieldProps = {
   Omit<DefaultProps, 'data-color'>;
 
 type TextfieldTextareaProps = {
-  /** Use to render a `Textarea` instead of `Input` for multiline support  */
+  /**
+   * Use to render a `Textarea` instead of `Input` for multiline support
+   **/
   multiline: true;
 } & TextareaProps_;
 
 type TextfieldInputProps = {
-  /** Use to render a `Textarea` instead of `Input` for multiline support  */
+  /**
+   * Use to render a `Textarea` instead of `Input` for multiline support
+   **/
   multiline?: never | false;
   /**
    * Supported `input` types
@@ -67,9 +87,7 @@ export type TextfieldProps = SharedTextfieldProps &
  *
  * Rest props are passed to the `Input` or `Textarea` component.
  * @example
- * ```tsx
  * <Textfield label="Textfield label">
- * ```
  */
 export const Textfield = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,

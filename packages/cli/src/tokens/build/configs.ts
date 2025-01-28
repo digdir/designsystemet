@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
-import { DEFAULT_COLOR, buildOptions } from '../build.js';
+import { buildOptions } from '../build.js';
 import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
@@ -103,8 +103,8 @@ const colorCategoryVariables =
   (category: ColorCategories): GetStyleDictionaryConfig =>
   ({ 'color-scheme': colorScheme, theme, [`${category}-color` as const]: color }, { outPath }) => {
     const layer = `ds.theme.color`;
-    const isDefault = color === buildOptions?.accentColor;
-    const selector = `${isDefault ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
+    const isRootColor = color === buildOptions?.rootColor;
+    const selector = `${isRootColor ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
 
     const config: StyleDictionaryConfig = {
       usesDtcg,
@@ -135,30 +135,7 @@ const colorCategoryVariables =
         },
       },
     };
-    if (isDefault && color !== DEFAULT_COLOR) {
-      console.log(
-        `Creating "${DEFAULT_COLOR}" color variables pointing to "${color}", since a color named "${DEFAULT_COLOR}" is not defined`,
-      );
-      // Create a --ds-color-accent-* scale which points to the default color
-      const defaultColorConfig = R.mergeDeepRight(config, {
-        platforms: {
-          css: {
-            selector: ':root',
-            files: [
-              {
-                ...config.platforms?.css?.files?.[0],
-                destination: `color/${DEFAULT_COLOR}.css`,
-              },
-            ],
-            options: { replaceCategoryWith: DEFAULT_COLOR },
-          },
-        },
-      } satisfies StyleDictionaryConfig);
-      return [
-        { config },
-        { config: defaultColorConfig, permutationOverrides: { 'main-color': `${DEFAULT_COLOR} → ${color}` } },
-      ];
-    }
+
     return config;
   };
 

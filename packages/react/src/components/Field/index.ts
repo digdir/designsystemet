@@ -4,12 +4,14 @@ import { FieldCounter } from './FieldCounter';
 import { FieldDescription } from './FieldDescription';
 
 /**
+ * Field component, used to wrap a form field.
+ *
  * @example
- * <Field>
- *  <Label>Label text</Label>
- *  <Field.Description>Description</Field.Description>
- *  <Input />
- *  <ValidationMessage>Validation message</ValidationMessage>
+ * <Field data-my-field>
+ *   <Label>Kort beskrivelse</Label>
+ *   <Field.Description>Beskrivelse</Field.Description>
+ *   <Input />
+ *   <ValidationMessage>Feilmelding</ValidationMessage>
  * </Field>
  */
 const Field = Object.assign(FieldParent, {

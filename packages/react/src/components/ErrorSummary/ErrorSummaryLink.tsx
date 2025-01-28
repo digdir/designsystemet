@@ -4,6 +4,9 @@ import { Link } from '../Link';
 
 export type ErrorSummaryLinkProps = LinkProps;
 
+/**
+ * Link component used in ErrorSummary.
+ */
 export const ErrorSummaryLink = forwardRef<
   HTMLAnchorElement,
   ErrorSummaryLinkProps
