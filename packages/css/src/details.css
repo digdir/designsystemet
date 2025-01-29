@@ -6,8 +6,8 @@
   --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
   --dsc-details-background: var(--ds-color-background-default);
-  --dsc-details-heading-background--hover: var(--ds-color-surface-default);
-  --dsc-details-heading-background--open: var(--ds-color-background-subtle);
+  --dsc-details-heading-background--hover: var(--ds-color-surface-tinted);
+  --dsc-details-heading-background--open: var(--ds-color-background-tinted);
   --dsc-details-heading-background: var(--ds-color-background-default);
 
   background: var(--dsc-details-background);
@@ -18,20 +18,20 @@
   /* with color */
   [data-color]:where(:not([data-color='neutral'])) &,
   &[data-color]:where(:not([data-color='neutral'])) {
-    --dsc-details-background: var(--ds-color-background-subtle);
+    --dsc-details-background: var(--ds-color-background-tinted);
     --dsc-details-heading-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-surface-default);
-    --dsc-details-heading-background: var(--ds-color-surface-default);
+    --dsc-details-heading-background--open: var(--ds-color-surface-tinted);
+    --dsc-details-heading-background: var(--ds-color-surface-tinted);
     --dsc-details-border-color: var(--ds-color-border-subtle);
   }
 
   /* with subtle */
   [data-color='subtle'] &,
   &[data-color='subtle'] {
-    --dsc-details-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-heading-background--hover: var(--ds-color-neutral-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-default);
-    --dsc-details-heading-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-tinted);
+    --dsc-details-heading-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
   }
 

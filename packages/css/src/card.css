@@ -1,7 +1,7 @@
 .ds-card {
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
-  --dsc-card-background: var(--ds-color-surface-default);
+  --dsc-card-background: var(--ds-color-surface-tinted);
   --dsc-card-border: 1px solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
   --dsc-card-color: var(--ds-color-text-default);
@@ -25,9 +25,9 @@
     --dsc-card-background: var(--ds-color-background-default);
   }
   &[data-color='subtle'] {
-    --dsc-card-background--active: var(--ds-color-neutral-surface-default);
-    --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
-    --dsc-card-background: var(--ds-color-neutral-background-subtle);
+    --dsc-card-background--active: var(--ds-color-neutral-surface-tinted);
+    --dsc-card-background--hover: var(--ds-color-neutral-background-tinted);
+    --dsc-card-background: var(--ds-color-neutral-background-tinted);
     --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
     --dsc-card-color: var(--ds-color-neutral-text-default);
   }

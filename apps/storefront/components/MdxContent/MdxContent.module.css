@@ -130,7 +130,7 @@
     margin: 1px;
     font-size: 0.9em;
     white-space: break-spaces;
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--ds-color-neutral-surface-tinted);
     border-radius: var(--ds-border-radius-md);
   }
 
@@ -140,7 +140,7 @@
 
   & > pre,
   & > p pre {
-    background-color: var(--ds-color-neutral-background-subtle);
+    background-color: var(--ds-color-neutral-background-tinted);
     padding: var(--ds-size-5);
     margin: var(--ds-size-7) 0;
     border-radius: var(--ds-border-radius-md);

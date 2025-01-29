@@ -7,6 +7,9 @@ type ComboboxComponent = typeof ComboboxRoot & {
   Empty: typeof ComboboxEmpty;
 };
 
+/**
+ * @deprecated Use `Suggestion` instead
+ */
 const Combobox = ComboboxRoot as ComboboxComponent;
 
 Combobox.Option = ComboboxOption;

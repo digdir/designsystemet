@@ -73,7 +73,7 @@
   border-left-color: var(--ds-color-neutral-border-strong);
   color: inherit;
   font-weight: 500;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .linkActive:hover {
