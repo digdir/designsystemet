@@ -51,7 +51,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    --dsc-skeleton-animation-duration: 1.6s;
+    animation-duration: 1.6s;
   }
 
   @media (forced-colors: active) {
