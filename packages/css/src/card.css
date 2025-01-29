@@ -105,7 +105,8 @@
   /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
   &::before {
     content: '';
-    border-top: var(--dsc-card-border);
+    border-top-width: var(--dsc-card-border-width);
+    border-top-style: var(--dsc-card-border-style);
     border-color: var(--ds-color-border-subtle);
     position: absolute;
     inset: 0 0 auto;
@@ -114,7 +115,8 @@
 
   &::after {
     content: '';
-    border-left: var(--dsc-card-border);
+    border-left-width: var(--dsc-card-border-width);
+    border-left-style: var(--dsc-card-border-style);
     border-color: var(--ds-color-border-subtle);
     position: absolute;
     inset: 0 auto 0 0;

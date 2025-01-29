@@ -5,6 +5,8 @@
   --dsc-tabs-content-padding: var(--ds-size-5);
   --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-tabs-list-border-bottom-width: var(--ds-border-width-default);
+  --dsc-tabs-list-border-bottom-style: solid;
 
   & [role='tabpanel'],
   & u-tabpanel {
@@ -17,7 +19,9 @@
   & [role='tablist'],
   & u-tablist {
     flex-direction: row;
-    border-bottom: var(--ds-border-width-default) solid var(--dsc-tabs-list-border-color);
+    border-bottom-width: var(--dsc-tabs-list-border-bottom-width);
+    border-bottom-style: var(--dsc-tabs-list-border-bottom-style);
+    border-color: var(--dsc-tabs-list-border-color);
     position: relative;
     overflow-x: auto;
 
