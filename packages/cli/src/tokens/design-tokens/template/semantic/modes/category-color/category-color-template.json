@@ -55,12 +55,12 @@
     "$type": "color",
     "$value": "{color.<color>.base-active}"
   },
-  "base-contrast-default": {
-    "$type": "color",
-    "$value": "{color.<color>.base-contrast-default}"
-  },
   "base-contrast-subtle": {
     "$type": "color",
     "$value": "{color.<color>.base-contrast-subtle}"
+  },
+  "base-contrast-default": {
+    "$type": "color",
+    "$value": "{color.<color>.base-contrast-default}"
   }
 }
