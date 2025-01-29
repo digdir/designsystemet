@@ -10,7 +10,7 @@
   --dsc-chip-border-color: var(--ds-color-border-subtle);
   --dsc-chip-border-color--checked: transparent;
   --dsc-chip-color: var(--ds-color-text-default);
-  --dsc-chip-color--checked: var(--ds-color-contrast-default);
+  --dsc-chip-color--checked: var(--ds-color-base-contrast-default);
   --dsc-chip-input-color: var(--ds-color-text-subtle);
   --dsc-chip-input-color--checked: var(--ds-color-base-default);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
