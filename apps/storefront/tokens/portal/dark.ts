@@ -1704,14 +1704,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.15}"
     },
-    name: "--ds-color-success-base-contrast-default",
+    name: "--ds-color-success-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "success",
-      "base-contrast-default"
+      "base-contrast-subtle"
     ],
-    key: "{color.success.base-contrast-default}"
+    key: "{color.success.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -1722,14 +1722,14 @@ export const  color = [
       $type: "color",
       $value: "{global.green.16}"
     },
-    name: "--ds-color-success-base-contrast-subtle",
+    name: "--ds-color-success-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "success",
-      "base-contrast-subtle"
+      "base-contrast-default"
     ],
-    key: "{color.success.base-contrast-subtle}"
+    key: "{color.success.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1992,14 +1992,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.15}"
     },
-    name: "--ds-color-danger-base-contrast-default",
+    name: "--ds-color-danger-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "danger",
-      "base-contrast-default"
+      "base-contrast-subtle"
     ],
-    key: "{color.danger.base-contrast-default}"
+    key: "{color.danger.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -2010,14 +2010,14 @@ export const  color = [
       $type: "color",
       $value: "{global.red.16}"
     },
-    name: "--ds-color-danger-base-contrast-subtle",
+    name: "--ds-color-danger-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "danger",
-      "base-contrast-subtle"
+      "base-contrast-default"
     ],
-    key: "{color.danger.base-contrast-subtle}"
+    key: "{color.danger.base-contrast-default}"
   },
   {
     $type: "color",
@@ -2280,14 +2280,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.15}"
     },
-    name: "--ds-color-info-base-contrast-default",
+    name: "--ds-color-info-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "info",
-      "base-contrast-default"
+      "base-contrast-subtle"
     ],
-    key: "{color.info.base-contrast-default}"
+    key: "{color.info.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -2298,14 +2298,14 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.16}"
     },
-    name: "--ds-color-info-base-contrast-subtle",
+    name: "--ds-color-info-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "info",
-      "base-contrast-subtle"
+      "base-contrast-default"
     ],
-    key: "{color.info.base-contrast-subtle}"
+    key: "{color.info.base-contrast-default}"
   },
   {
     $type: "color",
@@ -2568,14 +2568,14 @@ export const  color = [
       $type: "color",
       $value: "{global.orange.15}"
     },
-    name: "--ds-color-warning-base-contrast-default",
+    name: "--ds-color-warning-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "warning",
-      "base-contrast-default"
+      "base-contrast-subtle"
     ],
-    key: "{color.warning.base-contrast-default}"
+    key: "{color.warning.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -2586,14 +2586,14 @@ export const  color = [
       $type: "color",
       $value: "{global.orange.16}"
     },
-    name: "--ds-color-warning-base-contrast-subtle",
+    name: "--ds-color-warning-base-contrast-default",
     attributes: {},
     path: [
       "color",
       "warning",
-      "base-contrast-subtle"
+      "base-contrast-default"
     ],
-    key: "{color.warning.base-contrast-subtle}"
+    key: "{color.warning.base-contrast-default}"
   },
   {
     $type: "color",
