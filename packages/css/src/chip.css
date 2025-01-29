@@ -82,9 +82,10 @@
   }
 
   & > input {
-    --dsc-input-background--checked: var(--dsc-chip-color--checked);
+    /* --dsc-input-background--checked: var(--dsc-chip-color--checked);
+    --dsc-input-border-color--checked: var(--dsc-chip-color--checked); */
+
     --dsc-input-background: transparent;
-    --dsc-input-border-color--checked: var(--dsc-chip-color--checked);
     --dsc-input-border-color: var(--dsc-chip-input-color);
     --dsc-input-color--checked: var(--dsc-chip-input-color--checked);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
