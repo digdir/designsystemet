@@ -52,7 +52,7 @@ but don't remove it since it is not decorative.
 */
 @media (prefers-reduced-motion: reduce) {
   .ds-spinner {
-    --dsc-spinner-animation-duration: 6s;
+    animation-duration: 6s;
   }
 }
 

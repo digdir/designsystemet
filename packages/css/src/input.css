@@ -23,11 +23,11 @@
   --dsc-input-stroke: 0.05em;
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
-  --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-  --diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
-  --diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
-  --diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
-  --spacing--toggle: calc(var(--ds-size-1) / 2);
+  --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
+  --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
+  --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
+  --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+  --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
   background: var(--dsc-input-background);
@@ -50,11 +50,6 @@
   @composes ds-focus from './base.css';
 
   @media (forced-colors: active) {
-    /*     --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
-    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
-    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke)); */
-
     border-color: ButtonText;
     background-color: Canvas;
 
@@ -76,8 +71,13 @@
 
   &:is(select) {
     padding-right: 2.4em;
-    background-image: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)),
-      linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    background-image: linear-gradient(
+        45deg,
+        var(--_dsc-input-diagonal-1),
+        var(--_dsc-input-diagonal-2),
+        var(--_dsc-input-diagonal-3),
+        var(--_dsc-input-diagonal-4)
+      ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
@@ -150,7 +150,7 @@
   &[type='checkbox'],
   &[type='radio'] {
     border-width: var(--dsc-input-border-width--toggle);
-    padding: var(--spacing--toggle);
+    padding: var(--_dsc-input-spacing--toggle);
 
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
@@ -189,8 +189,13 @@
     background-repeat: no-repeat;
     background-position: 10% 73%, 90% 50%;
     background-size: 35% 35%, 65% 65%;
-    background-image: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)),
-      linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    background-image: linear-gradient(
+        45deg,
+        var(--_dsc-input-diagonal-1),
+        var(--_dsc-input-diagonal-2),
+        var(--_dsc-input-diagonal-3),
+        var(--_dsc-input-diagonal-4)
+      ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
 
     @media (forced-colors: active) {
       background-color: LinkText;
@@ -222,20 +227,20 @@
    * Switch
    */
   &[role='switch']:is([type='radio'], [type='checkbox']) {
-    --circle-position: left;
+    --_dsc-input-circle-position: left;
 
     background-image: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%);
     background-origin: content-box;
-    background-position: var(--circle-position);
+    background-position: var(--_dsc-input-circle-position);
     background-repeat: no-repeat;
-    background-size: calc(var(--dsc-input-size--toggle) - var(--spacing--toggle) * 2) 100%;
+    background-size: calc(var(--dsc-input-size--toggle) - var(--_dsc-input-spacing--toggle) * 2) 100%;
     border-radius: var(--ds-border-radius-full);
     padding-inline: 0; /* Reset to position circle correctly */
     transition: 0.2s background-position;
     width: calc(var(--dsc-input-size--toggle) * 2);
 
     &:checked {
-      --circle-position: right;
+      --_dsc-input-circle-position: right;
 
       @media (forced-colors: active) {
         color: CanvasText;
