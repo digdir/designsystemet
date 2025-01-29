@@ -120,10 +120,6 @@ const components = {
 };
 
 const preview: Preview = {
-  argTypes: {
-    'data-color': { control: { type: 'text' } },
-    'data-size': { control: { type: 'text' } },
-  },
   parameters: {
     layout: 'centered',
     viewMode: 'docs',
