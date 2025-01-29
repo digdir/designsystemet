@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--ds-color-accent-surface-default);
+  background-color: var(--ds-color-accent-surface-tinted);
   padding: var(--ds-size-10);
   padding-bottom: 0;
   display: flex;

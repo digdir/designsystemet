@@ -1,5 +1,5 @@
 .ds-tag {
-  --dsc-tag-background: var(--ds-color-surface-default);
+  --dsc-tag-background: var(--ds-color-surface-tinted);
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);

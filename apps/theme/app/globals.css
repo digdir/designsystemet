@@ -50,7 +50,7 @@ code {
   width: 100%;
   gap: 12px;
   padding: 28px;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border-radius: 0 8px 8px 0;
 }
 

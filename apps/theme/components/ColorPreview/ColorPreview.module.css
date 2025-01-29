@@ -10,7 +10,7 @@
   height: auto;
   padding: 18px;
   border: 1px solid var(--ds-color-accent-border-subtle);
-  background-color: var(--ds-color-accent-surface-default);
+  background-color: var(--ds-color-accent-surface-tinted);
 }
 
 .title {

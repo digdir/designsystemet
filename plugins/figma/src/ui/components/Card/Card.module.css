@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-surface-tinted);
   height: 100px;
   width: 156px;
   border-radius: 4px;

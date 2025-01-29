@@ -1,5 +1,5 @@
 .ds-link {
-  --dsc-link-background--active: var(--ds-color-surface-default);
+  --dsc-link-background--active: var(--ds-color-surface-tinted);
   --dsc-link-color--active: var(--ds-color-text-default);
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color: var(--ds-color-text-subtle);

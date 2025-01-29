@@ -3,11 +3,11 @@
     "$type": "color",
     "$value": "{color.<color>.1}"
   },
-  "background-subtle": {
+  "background-tinted": {
     "$type": "color",
     "$value": "{color.<color>.2}"
   },
-  "surface-default": {
+  "surface-tinted": {
     "$type": "color",
     "$value": "{color.<color>.3}"
   },
@@ -51,11 +51,11 @@
     "$type": "color",
     "$value": "{color.<color>.13}"
   },
-  "contrast-default": {
+  "base-contrast-default": {
     "$type": "color",
     "$value": "{color.<color>.contrast-1}"
   },
-  "contrast-subtle": {
+  "base-contrast-subtle": {
     "$type": "color",
     "$value": "{color.<color>.contrast-2}"
   }

@@ -1,0 +1,32 @@
+import { MenuPageLayout } from '@layouts';
+
+import { Contributors } from '@blog';
+
+export const metadata = {
+  title: 'Hvem representerer du?',
+  description:
+    'Hvordan håndterer aktørbytte på tvers av tjenester?',
+};
+
+export default ({ children }) => (
+  <MenuPageLayout
+    content={children}
+    data={{
+      title: 'Hvem representerer du?',
+      date: '29. januar 2025',
+    }}
+  />
+);
+
+Hvordan tydeliggjør vi hvem du representerer? Det kan være deg selv som privatperson, en virksomhet, frivillig organisasjon, eller at du hjelper en annen privatperson. Hvordan kan vi gjøre dette skillet tydelig med bruk av ulike visuelle, tekstlige og interaktive virkemidler som er gjenkjennelig på tvers av løsningene våre?
+
+Mønsteret er under arbeid i en tverretatlig arbeidsgruppe våren 2025. Du kan påvirke mønsteret og dele din innsikt i [Github](https://github.com/digdir/designsystemet/discussions/2296). 
+
+<Contributors
+  authors={[
+    'Nav',
+    'Digdir',
+    'Skatteetaten',
+    'Brønnøysundregistrene',
+  ]}
+/>
