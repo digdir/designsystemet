@@ -387,11 +387,11 @@
         "$type": "color",
         "$value": "{global.green.14}"
       },
-      "base-contrast-default": {
+      "base-contrast-subtle": {
         "$type": "color",
         "$value": "{global.green.15}"
       },
-      "base-contrast-subtle": {
+      "base-contrast-default": {
         "$type": "color",
         "$value": "{global.green.16}"
       }
@@ -453,11 +453,11 @@
         "$type": "color",
         "$value": "{global.red.14}"
       },
-      "base-contrast-default": {
+      "base-contrast-subtle": {
         "$type": "color",
         "$value": "{global.red.15}"
       },
-      "base-contrast-subtle": {
+      "base-contrast-default": {
         "$type": "color",
         "$value": "{global.red.16}"
       }
@@ -519,11 +519,11 @@
         "$type": "color",
         "$value": "{global.blue.14}"
       },
-      "base-contrast-default": {
+      "base-contrast-subtle": {
         "$type": "color",
         "$value": "{global.blue.15}"
       },
-      "base-contrast-subtle": {
+      "base-contrast-default": {
         "$type": "color",
         "$value": "{global.blue.16}"
       }
@@ -585,11 +585,11 @@
         "$type": "color",
         "$value": "{global.orange.14}"
       },
-      "base-contrast-default": {
+      "base-contrast-subtle": {
         "$type": "color",
         "$value": "{global.orange.15}"
       },
-      "base-contrast-subtle": {
+      "base-contrast-default": {
         "$type": "color",
         "$value": "{global.orange.16}"
       }
