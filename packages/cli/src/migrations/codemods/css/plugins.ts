@@ -33,7 +33,6 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
     const { value, prop } = decl;
 
     const deleted = new Set<string>();
-    let count = 0;
 
     for (const [from, to] of Object.entries(dictionary)) {
       if (R.isNotEmpty(to)) {
@@ -43,23 +42,17 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
 
         if (R.includes(from, value)) {
           decl.value = value.replace(from, to);
-          count++;
           continue;
         }
 
         if (R.includes(from, prop) && decl.variable) {
           decl.prop = prop.replace(from, to);
-          count++;
         }
       }
     }
 
     if (deleted.size > 0) {
       Array.from(deleted).forEach(printDelete);
-    }
-
-    if (count > 0) {
-      console.log(`Renamed ${count} variables`);
     }
   },
 });

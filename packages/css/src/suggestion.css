@@ -1,5 +1,5 @@
 .ds-suggestion {
-  --dsc-suggestion-option-background--selected: var(--ds-color-background-subtle);
+  --dsc-suggestion-option-background--selected: var(--ds-color-background-tinted);
   --dsc-suggestion-option-border-color: var(--ds-color-base-default);
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
