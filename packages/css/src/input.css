@@ -13,7 +13,7 @@
   --dsc-input-stroke-color--invalid: var(--ds-color-danger-base-contrast-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
-  --dsc-input-color--invalid: var(--ds-color-danger-text-subtle); /* Used to color stroke in invalid state. Border for text input and background for checkbox */
+  --dsc-input-color--invalid: var(--ds-color-danger-text-subtle);
   --dsc-input-color--checked: var(--ds-color-base-default);
   --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-input-size--toggle: var(--ds-size-6);
