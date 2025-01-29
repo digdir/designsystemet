@@ -9,7 +9,7 @@
 ## CSS Properties
 - Use `var(--ds-color-X)` where we want `data-color` to cascade
 - Only use `background` not `background-color`
-- Set border with at least two properties, `border` and `border-color`
+- Avoid using shorthands (`font:`, `border:`)
 - Avoid `position: relative` and change of display unless necessary
 - Avoid set sizes, such as `100px`, use `var(--ds-size-X)` or `var(--ds-font-size-X)` instead
   - If our custom properties don't work, try to use `em`
