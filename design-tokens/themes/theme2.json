@@ -53,13 +53,17 @@
         "$type": "color",
         "$value": "{theme2.accent.13}"
       },
-      "contrast-1": {
+      "14": {
         "$type": "color",
-        "$value": "{theme2.accent.contrast-1}"
+        "$value": "{theme2.accent.14}"
       },
-      "contrast-2": {
+      "15": {
         "$type": "color",
-        "$value": "{theme2.accent.contrast-2}"
+        "$value": "{theme2.accent.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{theme2.accent.16}"
       }
     },
     "neutral": {
@@ -115,13 +119,17 @@
         "$type": "color",
         "$value": "{theme2.neutral.13}"
       },
-      "contrast-1": {
+      "14": {
         "$type": "color",
-        "$value": "{theme2.neutral.contrast-1}"
+        "$value": "{theme2.neutral.14}"
       },
-      "contrast-2": {
+      "15": {
         "$type": "color",
-        "$value": "{theme2.neutral.contrast-2}"
+        "$value": "{theme2.neutral.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{theme2.neutral.16}"
       }
     },
     "brand1": {
@@ -177,13 +185,17 @@
         "$type": "color",
         "$value": "{theme2.brand1.13}"
       },
-      "contrast-1": {
+      "14": {
         "$type": "color",
-        "$value": "{theme2.brand1.contrast-1}"
+        "$value": "{theme2.brand1.14}"
       },
-      "contrast-2": {
+      "15": {
         "$type": "color",
-        "$value": "{theme2.brand1.contrast-2}"
+        "$value": "{theme2.brand1.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{theme2.brand1.16}"
       }
     },
     "brand2": {
@@ -239,13 +251,17 @@
         "$type": "color",
         "$value": "{theme2.brand2.13}"
       },
-      "contrast-1": {
+      "14": {
         "$type": "color",
-        "$value": "{theme2.brand2.contrast-1}"
+        "$value": "{theme2.brand2.14}"
       },
-      "contrast-2": {
+      "15": {
         "$type": "color",
-        "$value": "{theme2.brand2.contrast-2}"
+        "$value": "{theme2.brand2.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{theme2.brand2.16}"
       }
     },
     "brand3": {
@@ -301,13 +317,17 @@
         "$type": "color",
         "$value": "{theme2.brand3.13}"
       },
-      "contrast-1": {
+      "14": {
         "$type": "color",
-        "$value": "{theme2.brand3.contrast-1}"
+        "$value": "{theme2.brand3.14}"
       },
-      "contrast-2": {
+      "15": {
         "$type": "color",
-        "$value": "{theme2.brand3.contrast-2}"
+        "$value": "{theme2.brand3.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{theme2.brand3.16}"
       }
     }
   },
