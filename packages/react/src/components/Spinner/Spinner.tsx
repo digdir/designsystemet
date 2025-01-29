@@ -11,7 +11,7 @@ export type SpinnerProps = {
   /**
    * Spinner size
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }

@@ -172,10 +172,10 @@ async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPat
     )
     .map((x) => x.name);
   const typeDeclaration = `
-import type { MainAndSupportColors as BaseCustomColors } from '@digdir/designsystemet-react/colors';
+import type {} from '@digdir/designsystemet-react/colors';
 
 declare module '@digdir/designsystemet-react/colors' {
-  export interface MainAndSupportColors extends BaseCustomColors {
+  export interface MainAndSupportColors {
 ${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
   }
 }
