@@ -2,21 +2,19 @@
   margin: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
 }
 .ds-input {
-  --dsc-input-background--checked: var(--dsc-input-border-color--checked);
-  --dsc-input-background--invalid: var(--dsc-input-stroke-color--invalid);
   --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
   --dsc-input-background: var(--ds-color-neutral-background-default);
-  --dsc-input-border-color--checked: var(--ds-color-base-default);
-  --dsc-input-stroke-color--invalid: var(--ds-color-danger-text-subtle); /* Used to color stroke in invalid state. Border for text input and background for checkbox */
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-width--toggle: max(1px, calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: 1px;
   --dsc-input-border-style: solid;
-  --dsc-input-color--checked: var(--ds-color-base-contrast-default);
-  --dsc-input-color--invalid: var(--ds-color-danger-base-contrast-default);
-  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
+  --dsc-input-stroke-color--checked: var(--ds-color-base-contrast-default);
+  --dsc-input-stroke-color--invalid: var(--ds-color-danger-base-contrast-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
+  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
+  --dsc-input-color--invalid: var(--ds-color-danger-text-subtle); /* Used to color stroke in invalid state. Border for text input and background for checkbox */
+  --dsc-input-color--checked: var(--ds-color-base-default);
   --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
@@ -107,9 +105,9 @@
    */
   &:checked,
   &:indeterminate:where([type='checkbox']) {
-    background: var(--dsc-input-background--checked);
-    border-color: var(--dsc-input-border-color--checked);
-    color: var(--dsc-input-color--checked);
+    background: var(--dsc-input-color--checked);
+    border-color: var(--dsc-input-color--checked);
+    color: var(--dsc-input-stroke-color--checked);
   }
 
   &:disabled,
@@ -119,11 +117,11 @@
   }
 
   &[aria-invalid='true'] {
-    border-color: var(--dsc-input-border-color--invalid);
+    border-color: var(--dsc-input-color--invalid);
   }
   &[aria-invalid='true']:where(:checked, :indeterminate) {
-    background: var(--dsc-input-background--invalid);
-    color: var(--dsc-input-color--invalid);
+    background: var(--dsc-input-color--invalid);
+    color: var(--dsc-input-stroke-color--invalid);
   }
 
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
