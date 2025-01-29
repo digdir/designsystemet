@@ -12,7 +12,7 @@
   --dsc-chip-color: var(--ds-color-text-default);
   --dsc-chip-color--checked: var(--ds-color-base-contrast-default);
   --dsc-chip-input-color: var(--ds-color-text-subtle);
-  --dsc-chip-input-color--checked: var(--ds-color-base-default);
+  --dsc-chip-input-stroke-color--checked: var(--ds-color-base-default);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
   --dsc-chip-border-radius--checkbox: var(--ds-border-radius-md);
   --dsc-chip-height: var(--ds-size-8);
@@ -82,12 +82,10 @@
   }
 
   & > input {
-    /* --dsc-input-background--checked: var(--dsc-chip-color--checked);
-    --dsc-input-border-color--checked: var(--dsc-chip-color--checked); */
-
-    --dsc-input-background: transparent;
+    --dsc-input-background: trasparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
-    --dsc-input-color--checked: var(--dsc-chip-input-color--checked);
+    --dsc-input-color--checked: var(--dsc-chip-color--checked);
+    --dsc-input-stroke-color--checked: var(--dsc-chip-input-stroke-color--checked);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
 
