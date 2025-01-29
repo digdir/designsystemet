@@ -13,9 +13,17 @@ export const runCssCodemod = async ({ plugins = [], globPattern = './**/*.css' }
   const processor = postcss(plugins);
 
   const transform = async () => {
-    const files = await glob(globPattern, { ignore: ['node_modules/**', 'dist/**'] });
+    console.log(`Running migration in ${globPattern}`);
+    const files = await glob([globPattern], {
+      ignore: ['**/node_modules/**', '**/dist/**'], // TODO: Not working as expected
+      absolute: true,
+    });
 
     const filePromises = files.map(async (file) => {
+      if (file.includes('node_modules') || file.includes('dist')) {
+        // console.log(`Skipping ${file}`);
+        return;
+      }
       const contents = fs.readFileSync(file).toString();
       const result = await processor.process(contents, { from: file });
 

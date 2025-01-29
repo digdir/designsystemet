@@ -96,7 +96,7 @@
 .wantToWrite {
   margin-top: var(--ds-size-12);
   border-radius: var(--ds-border-radius-lg);
-  background: var(--ds-color-brand1-surface-default);
+  background: var(--ds-color-brand1-surface-tinted);
   color: var(--ds-color-brand1-text-default);
   padding: var(--ds-size-8);
   display: flex;

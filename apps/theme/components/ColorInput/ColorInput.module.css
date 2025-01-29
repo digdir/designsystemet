@@ -18,7 +18,7 @@
 }
 
 .box:hover {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .leftContent {

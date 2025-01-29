@@ -24,7 +24,7 @@
 
 .box:hover {
   cursor: pointer;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .icon {

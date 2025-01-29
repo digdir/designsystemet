@@ -68,7 +68,7 @@
 .th {
   border: 4px solid var(--ds-color-neutral-background-default);
   border-collapse: collapse;
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-surface-tinted);
 }
 
 .th {
