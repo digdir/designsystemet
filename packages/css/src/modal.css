@@ -12,7 +12,7 @@
   --dsc-modal-spacing: var(--ds-size-6);
 
   /* Internal */
-  --_dsc-icon-top-right-margin: calc(var(--dsc-modal-spacing) * -1 + var(--dsc-modal-icon-spacing));
+  --_dsc-modal-icon-top-right-margin: calc(var(--dsc-modal-spacing) * -1 + var(--dsc-modal-icon-spacing));
 
   background: var(--dsc-modal-background);
   border-radius: var(--ds-border-radius-lg);
