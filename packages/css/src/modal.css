@@ -3,7 +3,6 @@
   --dsc-modal-background: var(--ds-color-neutral-background-default);
   --dsc-modal-icon-spacing: var(--ds-size-3);
   --dsc-modal-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
-  --dsc-modal-icon-top-right-margin: calc(var(--dsc-modal-spacing) * -1 + var(--dsc-modal-icon-spacing));
   --dsc-modal-color: var(--ds-color-neutral-text-default);
   --dsc-modal-divider-width: 1px;
   --dsc-modal-divider-style: solid;
@@ -11,6 +10,9 @@
   --dsc-modal-max-height: 80vh;
   --dsc-modal-max-width: 40rem;
   --dsc-modal-spacing: var(--ds-size-6);
+
+  /* Internal */
+  --ds-internal-icon-top-right-margin: calc(var(--dsc-modal-spacing) * -1 + var(--dsc-modal-icon-spacing));
 
   background: var(--dsc-modal-background);
   border-radius: var(--ds-border-radius-lg);
@@ -35,7 +37,7 @@
   }
 
   &:has(> .ds-modal__block) {
-    --dsc-modal-icon-top-right-margin: var(--dsc-modal-icon-spacing);
+    --ds-internal-icon-top-right-margin: var(--dsc-modal-icon-spacing);
 
     padding: 0; /* Let Modal.Block own the padding */
   }
@@ -56,7 +58,7 @@
   /* Close button */
   & > form[method='dialog']:first-child > button:only-child {
     float: right;
-    margin: var(--dsc-modal-icon-top-right-margin) var(--dsc-modal-icon-top-right-margin) var(--dsc-modal-icon-spacing) var(--dsc-modal-icon-spacing);
+    margin: var(--ds-internal-icon-top-right-margin) var(--ds-internal-icon-top-right-margin) var(--dsc-modal-icon-spacing) var(--dsc-modal-icon-spacing);
     color: inherit;
 
     &::before {

@@ -4,11 +4,10 @@
   --dsc-avatar-color: var(--ds-color-base-contrast-default);
   --dsc-avatar-size: var(--ds-size-12);
   --dsc-avatar-padding: var(--ds-size-2);
-  --dsc-avatar-border-radius: var(--ds-border-radius-full);
 
   align-items: center;
   background: var(--dsc-avatar-background);
-  border-radius: var(--dsc-avatar-border-radius);
+  border-radius: var(--ds-border-radius-full);
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   flex-shrink: 0;
@@ -53,12 +52,8 @@
     }
   }
 
-  &[data-variant='circle'] {
-    --dsc-avatar-border-radius: var(--ds-border-radius-full);
-  }
-
   &[data-variant='square'] {
-    --dsc-avatar-border-radius: var(--ds-border-radius-sm);
+    border-radius: var(--ds-border-radius-sm);
   }
 
   @media (forced-colors: active) {
