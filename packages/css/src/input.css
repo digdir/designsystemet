@@ -235,12 +235,13 @@
       --circle-position: right;
 
       @media (forced-colors: active) {
-        color: CanvasText;
+        color: GrayText;
       }
     }
 
     @media (forced-colors: active) {
       color: GrayText;
+
       forced-color-adjust: none; /* To be able to draw switch */
       &[readonly] {
         color: GrayText;
