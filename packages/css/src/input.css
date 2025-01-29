@@ -50,11 +50,6 @@
   @composes ds-focus from './base.css';
 
   @media (forced-colors: active) {
-    /*     --diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-    --diagonal-2: Canvas calc(50% - var(--dsc-input-stroke));
-    --diagonal-3: Canvas calc(50% + var(--dsc-input-stroke));
-    --diagonal-4: transparent calc(52% + var(--dsc-input-stroke)); */
-
     border-color: ButtonText;
     background-color: Canvas;
 
@@ -76,8 +71,13 @@
 
   &:is(select) {
     padding-right: 2.4em;
-    background-image: linear-gradient(45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4)),
-      linear-gradient(-45deg, var(--diagonal-1), var(--diagonal-2), var(--diagonal-3), var(--diagonal-4));
+    background-image: linear-gradient(
+        45deg,
+        var(--_dsc-input-diagonal-1),
+        var(--_dsc-input-diagonal-2),
+        var(--_dsc-input-diagonal-3),
+        var(--_dsc-input-diagonal-4)
+      ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
