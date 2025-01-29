@@ -62,6 +62,8 @@
   }
 
   @media (forced-colors: active) {
-    border: var(--ds-size-1) solid CanvasText;
+    border-width: var(--ds-size-1);
+    border-style: solid;
+    border-color: CanvasText;
   }
 }
