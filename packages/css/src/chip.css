@@ -81,10 +81,10 @@
     padding-inline: var(--dsc-chip-spacing);
   }
 
-  & > input {
+  & > .ds-input {
     --dsc-input-background: trasparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
-    --dsc-input-color--checked: var(--dsc-chip-color--checked);
+    --dsc-input-background--checked: var(--dsc-chip-color--checked);
     --dsc-input-stroke-color--checked: var(--dsc-chip-input-stroke-color--checked);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
