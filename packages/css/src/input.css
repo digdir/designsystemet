@@ -203,6 +203,7 @@
     @media (forced-colors: active) {
       background-color: LinkText;
       border-color: LinkText;
+      color: Canvas;
       forced-color-adjust: none;
     }
   }
@@ -236,7 +237,14 @@
     @media (forced-colors: active) {
       background-color: LinkText;
       border-color: LinkText;
+      color: Canvas;
       forced-color-adjust: none;
+
+      &[aria-invalid='true'],
+      &[readonly] {
+        background-color: LinkText;
+        border-color: LinkText;
+      }
     }
   }
 }
