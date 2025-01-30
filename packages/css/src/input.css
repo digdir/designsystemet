@@ -244,6 +244,7 @@
       &[readonly] {
         background-color: LinkText;
         border-color: LinkText;
+        color: Canvas;
       }
     }
   }
