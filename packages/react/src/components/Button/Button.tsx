@@ -25,7 +25,7 @@ export type ButtonProps = MergeRight<
      *
      * @default false
      */
-    loading?: boolean & ReactNode;
+    loading?: boolean | ReactNode;
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
