@@ -1,5 +1,42 @@
 # Change Log
 
+## 1.0.0-next.48
+
+### Minor Changes
+
+- :sparkles: New experimental component; **Suggestion** ([#3032](https://github.com/digdir/designsystemet/pull/3032))
+
+- **ErrorSummary**: Split `.Item` into two components ([#3040](https://github.com/digdir/designsystemet/pull/3040))
+
+  - `ErrorSummary.Item` renders a `li`
+  - `ErrorSummary.Link` renders the link
+
+- Upgrade to React 19 and other related dependencies ([#2964](https://github.com/digdir/designsystemet/pull/2964))
+
+- **Checkbox**: Rename `validation` to `error` ([#3038](https://github.com/digdir/designsystemet/pull/3038))
+
+- **Radio**: Rename `validation` to `error` ([#3038](https://github.com/digdir/designsystemet/pull/3038))
+
+### Patch Changes
+
+- **ErrorSummary**: Add support for `asChild` ([#3040](https://github.com/digdir/designsystemet/pull/3040))
+
+- fix: Use correct DOM property for Popover API when used in React 19 ([#3010](https://github.com/digdir/designsystemet/pull/3010))
+
+## 1.0.0-next.47
+
+## 1.0.0-next.46
+
+### Patch Changes
+
+- Input: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Helptext: Remove component ([#2956](https://github.com/digdir/designsystemet/pull/2956))
+
+- Textfield: Add whitelist for `type` ([#2974](https://github.com/digdir/designsystemet/pull/2974))
+
+- Tabs: Content will get focus when it has no focusable elements ([#2991](https://github.com/digdir/designsystemet/pull/2991))
+
 ## 1.0.0-next.45
 
 ### Patch Changes

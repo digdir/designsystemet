@@ -44,7 +44,7 @@ to <designsystem@digdir.no>.
 
 You can report bugs and suggest new features by going to our [Github Issue Templates](https://github.com/digdir/designsystemet/issues/new/choose).
 
-If you have any questions you can contact us at <designsystem@digdir.no> or in our [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) channel.
+If you have any questions you can contact us at <designsystem@digdir.no> or in our [Slack](https://designsystemet.no/slack) channel.
 
 ---
 
@@ -56,7 +56,7 @@ It's fantastic that you want to join in and help with our development efforts!
 We have established two contribution levels to suit task size: the first level for smaller tasks and the second for larger ones. The main difference is how involved you will be with the Design System Team.
 
 Unsure which level to choose? Send us an email at <designsystem@digdir.no> and we will get back to you as soon as we can!
-You can also join our [Slack](https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ) and ask questions there.
+You can also join our [Slack](https://designsystemet.no/slack) and ask questions there.
 
 We suggest creating a draft pull request as soon as you start working on something. This ensures that different people aren't working on the same task.
 

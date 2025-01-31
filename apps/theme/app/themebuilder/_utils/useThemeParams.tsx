@@ -13,19 +13,12 @@ export const useThemeParams = () => {
   const router = useRouter();
 
   const colors = useThemeStore((state) => state.colors);
-  const themeName = useThemeStore((state) => state.themeName);
   const appearance = useThemeStore((state) => state.appearance);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
 
   /* Check if we have params in URL */
   useEffect(() => {
-    if (query.get('name')) {
-      useThemeStore.setState({
-        themeName: query.get('name') as string,
-      });
-    }
-
     if (query.get('appearance')) {
       useThemeStore.setState({
         appearance: query.get('appearance') as ColorScheme,
@@ -49,7 +42,7 @@ export const useThemeParams = () => {
         newColors.neutral = [
           {
             name: 'neutral',
-            colors: generateColorSchemes(neutralColor as CssColor),
+            colors: generateColorSchemes('#1E2B3C'),
           },
         ];
     }
@@ -77,26 +70,27 @@ export const useThemeParams = () => {
     const params = new URLSearchParams(query.toString());
 
     const mainColorString = colors.main
-      .map((color) => `${color.name}:${color.colors.light[8].hex}`)
+      .map((color) => `${color.name}:${color.colors.light[11].hex}`)
       .join(' ');
 
     const neutralColorString = colors.neutral[0]
-      ? colors.neutral[0].colors.light[8].hex
+      ? colors.neutral[0].colors.light[11].hex
       : '';
 
     const supportColorString = colors.support
-      .map((color) => `${color.name}:${color.colors.light[8].hex}`)
+      .map((color) => `${color.name}:${color.colors.light[11].hex}`)
       .join(' ');
 
     params.set('appearance', appearance);
-    params.set('name', themeName);
     params.set('main', mainColorString);
     params.set('neutral', neutralColorString);
     params.set('support', supportColorString);
     params.set('border-radius', baseBorderRadius.toString());
 
-    router.push(pathname + '?' + params.toString());
-  }, [colors, themeName, appearance, baseBorderRadius]);
+    router.replace(pathname + '?' + params.toString(), {
+      scroll: false,
+    });
+  }, [colors, appearance, baseBorderRadius]);
 
   return null;
 };

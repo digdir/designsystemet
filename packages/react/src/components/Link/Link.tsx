@@ -8,12 +8,10 @@ import type { MergeRight } from '../../utilities';
 export type LinkProps = MergeRight<
   DefaultProps & AnchorHTMLAttributes<HTMLAnchorElement>,
   {
-    /** The content to display inside the link. */
+    /**
+     * The content to display inside the link.
+     **/
     children: ReactNode;
-    /** Custom class name for the link. This will be appended to the design system class names. */
-    className?: string;
-    /** The URL that the link points to. This can also be an email address (starting with `mailto:`) or a phone number (staring with `tel:`). */
-    href?: string;
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
@@ -22,6 +20,12 @@ export type LinkProps = MergeRight<
   }
 >;
 
+/**
+ * Link component, renders a native `a` element.
+ *
+ * @example
+ * <Link href='#'>Link</Link>
+ */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';

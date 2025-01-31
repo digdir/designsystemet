@@ -1,5 +1,5 @@
 .ds-spinner {
-  --dsc-spinner-background: var(--ds-color-surface-default);
+  --dsc-spinner-background: var(--ds-color-surface-tinted);
   --dsc-spinner-stroke: var(--ds-color-border-default);
 
   --dsc-spinner-animation-duration: 2s;
@@ -52,7 +52,7 @@ but don't remove it since it is not decorative.
 */
 @media (prefers-reduced-motion: reduce) {
   .ds-spinner {
-    --dsc-spinner-animation-duration: 6s;
+    animation-duration: 6s;
   }
 }
 

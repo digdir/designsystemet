@@ -3,9 +3,11 @@ import {
   Heading,
   Paragraph,
   Textfield,
+  Tooltip,
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import { ColorPicker, type IColor } from 'react-color-palette';
+import { useThemeStore } from '../../../store';
 
 import cl from 'clsx/lite';
 import classes from './ColorPane.module.css';
@@ -35,6 +37,9 @@ export const ColorPane = ({
   onRemove,
   colorType,
 }: ColorPaneProps) => {
+  const mainColors = useThemeStore((state) => state.colors.main);
+  const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
+
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
     return type === 'addColor' ? 'Legg til ' + t : 'Rediger farge';
@@ -53,19 +58,26 @@ export const ColorPane = ({
         >
           <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' /> Gå tilbake
         </Button>
-        <Button
-          data-size='sm'
-          variant='tertiary'
-          data-color='danger'
-          onClick={() => onRemove()}
-          className={cl(
-            classes.removeBtn,
-            (type !== 'editColor' || colorType === 'neutral') && classes.hide,
-          )}
+        <Tooltip
+          content='Du må ha minst en hovedfarge'
+          hidden={!disableRemoveButton}
         >
-          Fjern farge
-          <TrashIcon title='a11y-title' fontSize='1.5rem' />
-        </Button>
+          <Button
+            data-size='sm'
+            variant='tertiary'
+            data-color='danger'
+            onClick={() => {
+              if (disableRemoveButton) return;
+              onRemove();
+            }}
+            className={cl(classes.removeBtn)}
+            hidden={type !== 'editColor' || colorType === 'neutral'}
+            aria-disabled={disableRemoveButton || undefined}
+          >
+            Fjern farge
+            <TrashIcon title='søppelkasse' fontSize='1.5rem' />
+          </Button>
+        </Tooltip>
       </div>
       <Heading data-size='xs' className={classes.title}>
         {getHeading()}

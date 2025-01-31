@@ -1,5 +1,5 @@
 import { generateColorSchemes } from '@digdir/designsystemet';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
@@ -9,12 +9,7 @@ import { ColorInput } from '../../ColorInput/ColorInput';
 import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
-type ColorPageProps = {
-  onPrevClick?: () => void;
-  onNextClick: () => void;
-};
-
-export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
+export const ColorPage = () => {
   type Pages = 'addColor' | 'editColor' | 'none';
   type ColorType = 'main' | 'neutral' | 'support';
 
@@ -36,6 +31,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
 
   const updateExistingColor = (color: string, name: string) => {
     const theme = generateColorSchemes(color as CssColor);
+
     updateColor({ name: name, colors: theme }, index, colorType);
   };
 
@@ -45,7 +41,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
     type: ColorType,
   ) => {
     setActivePanel('editColor');
-    setColor(ColorService.convert('hex', color.colors.light[8].hex));
+    setColor(ColorService.convert('hex', color.colors.light[11].hex));
     setName(color.name);
     setIndex(index);
     setColorType(type);
@@ -53,14 +49,6 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
 
   return (
     <div>
-      <Heading data-size='xs' className={classes.heading}>
-        Velg fargene dine
-      </Heading>
-      <Paragraph data-size='sm' className={classes.desc}>
-        Du kan legge til så mange hovedfarger og støttefarger du har behov for.
-        Vær oppmerksom på at du må ha Figma Enterprise for å ha mer enn 4 farger
-        i hver kategori.
-      </Paragraph>
       {/* MAIN COLORS */}
       <div className={classes.group}>
         <div className={classes.groupHeader}>
@@ -87,7 +75,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
           {colors.main.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'main')}
             />
@@ -100,7 +88,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
           {colors.neutral.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'neutral')}
             />
@@ -134,7 +122,7 @@ export const ColorPage = ({ onPrevClick, onNextClick }: ColorPageProps) => {
           {colors.support.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'support')}
             />

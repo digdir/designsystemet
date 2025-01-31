@@ -1,16 +1,19 @@
 .ds-popover {
-  --dsc-popover-background: var(--ds-color-surface-default);
+  --dsc-popover-background: var(--ds-color-surface-tinted);
+  --dsc-popover-border-width: 1px;
+  --dsc-popover-border-style: solid;
   --dsc-popover-border-color: var(--ds-color-border-default);
   --dsc-popover-color: var(--ds-color-text-default);
   --dsc-popover-arrow-size: var(--ds-size-2);
   --dsc-popover-border-radius: var(--ds-border-radius-md);
-  --dsc-popover-border: 1px solid var(--dsc-popover-border-color);
   --dsc-popover-max-width: 300px;
   --dsc-popover-padding: var(--ds-size-3) var(--ds-size-4);
 
   background: var(--dsc-popover-background);
   border-radius: var(--dsc-popover-border-radius);
-  border: var(--dsc-popover-border);
+  border-width: var(--dsc-popover-border-width);
+  border-style: var(--dsc-popover-border-style);
+  border-color: var(--dsc-popover-border-color);
   box-sizing: border-box;
   color: var(--dsc-popover-color);
   inset: 0 auto auto 0;

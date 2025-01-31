@@ -14,6 +14,10 @@ export type CardProps = MergeRight<
      * @default neutral
      */
     'data-color'?: 'subtle' | DefaultProps['data-color'];
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
     asChild?: boolean;
     /** Instances of `Card.Block`, `Divider` or other React nodes */
     children: ReactNode;
@@ -22,6 +26,7 @@ export type CardProps = MergeRight<
 
 /**
  * Card component to present content in a structured way.
+ *
  * @example
  * <Card>
  *  <Card.Block>Header</Card.Block>

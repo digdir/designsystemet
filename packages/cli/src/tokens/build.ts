@@ -10,9 +10,7 @@ import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { copyFile, writeFile } from './utils.js';
-
-export const DEFAULT_COLOR = 'accent';
+import { cleanDir, copyFile, writeFile } from './utils.js';
 
 type Options = {
   /** Design tokens path */
@@ -23,10 +21,12 @@ type Options = {
   preview: boolean;
   /** Enable verbose output */
   verbose: boolean;
-  /** Set the default "accent" color, if not overridden with data-color */
-  accentColor?: string;
-  /** Dry run */
+  /** Set the default color for ":root" */
+  rootColor?: string;
+  /** Dry run, no files will be written */
   dry?: boolean;
+  /** Clean the output path before building tokens */
+  clean?: boolean;
 };
 
 export let buildOptions: Options | undefined;
@@ -70,7 +70,7 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function buildTokens(options: Options): Promise<void> {
-  const { dry } = options;
+  const { dry, clean } = options;
   const tokensDir = options.tokens;
   const targetDir = path.resolve(options.outDir);
 
@@ -88,28 +88,38 @@ export async function buildTokens(options: Options): Promise<void> {
     // We only use the 'medium' theme for the 'size' group
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
-  if (!buildOptions.accentColor) {
-    const accentOrFirstMainColor =
-      relevant$themes.find((theme) => theme.name === DEFAULT_COLOR) ||
-      relevant$themes.find((theme) => theme.group === 'main-color');
-    buildOptions.accentColor = accentOrFirstMainColor?.name;
+  if (!buildOptions.rootColor) {
+    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
+    buildOptions.rootColor = firstMainColor?.name;
+    console.log(`Using first main color; ${chalk.blue(firstMainColor?.name)}, as ${chalk.green(`":root"`)} color`);
   }
 
-  if (buildOptions.accentColor !== DEFAULT_COLOR) {
-    console.log('accent color:', buildOptions.accentColor);
-  }
+  const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
+      outPath: targetDir,
+      tokensDir,
+      ...buildConfig.options,
+    });
 
-  const buildAndSdConfigs = R.map(
-    (val: BuildConfig) => ({
-      buildConfig: val,
-      sdConfigs: getConfigsForThemeDimensions(val.getConfig, relevant$themes, val.dimensions, {
-        outPath: targetDir,
-        tokensDir,
-        ...val.options,
-      }),
-    }),
-    buildConfigs,
-  );
+    // Disable build if all sdConfigs dimensions permutation are unknown
+    const unknownConfigs = buildConfig.dimensions.map((dimension) =>
+      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+    );
+    for (const unknowns of unknownConfigs) {
+      if (unknowns.length === sdConfigs.length) {
+        buildConfig.enabled = () => false;
+      }
+    }
+
+    return {
+      buildConfig,
+      sdConfigs,
+    };
+  }, buildConfigs);
+
+  if (clean) {
+    await cleanDir(targetDir, dry);
+  }
 
   try {
     for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
@@ -162,10 +172,10 @@ async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPat
     )
     .map((x) => x.name);
   const typeDeclaration = `
-import type { MainAndSupportColors as BaseCustomColors } from '@digdir/designsystemet-react/colors';
+import type {} from '@digdir/designsystemet-react/colors';
 
 declare module '@digdir/designsystemet-react/colors' {
-  export interface MainAndSupportColors extends BaseCustomColors {
+  export interface MainAndSupportColors {
 ${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
   }
 }

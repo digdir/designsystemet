@@ -1,13 +1,15 @@
 export type ColorScheme = 'light' | 'dark' | 'contrast';
 export type ContrastMode = 'aa' | 'aaa';
-export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'yellow';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
 export type ColorInfo = {
-  hex: CssColor;
-  number: ColorNumber;
   name: string;
+  displayName: string;
+  group: string;
+  position: ColorNumber;
+  hex: CssColor;
 };
 
 export type ThemeInfo = {
@@ -30,6 +32,7 @@ export type CssColor =
   | OkLabColor
   | OkLchColor
   | Cam02Color
+  | rgbaColor
   | Cam02pColor;
 
 /**
@@ -46,6 +49,7 @@ type OkLabColor = `oklab(${Percent} ${number} ${number})`;
 type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
 type Cam02Color = `jab(${Percent} ${number} ${number})`;
 type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
+type rgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;

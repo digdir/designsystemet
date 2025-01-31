@@ -6,12 +6,11 @@ import type { DefaultProps } from '../../types';
 export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
   Omit<DefaultProps, 'data-color'>;
 
-/** Textarea field
+/**
+ * Native HTML textarea element.
  *
  * @example
- * ```tsx
  * <Textarea />
- * ```
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea({ className, ...rest }, ref) {

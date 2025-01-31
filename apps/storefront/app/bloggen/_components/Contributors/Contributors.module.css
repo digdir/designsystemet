@@ -12,6 +12,22 @@
   padding: var(--ds-size-10);
   border-radius: var(--ds-border-radius-lg);
   border: 1px solid var(--ds-color-neutral-border-subtle);
+
+  & span {
+    word-break: break-word;
+    text-wrap: balance;
+  }
+
+  @media screen and (max-width: 860px) {
+    & {
+      padding: var(--ds-size-4);
+      padding-top: var(--ds-size-10);
+    }
+
+    & span {
+      text-align: center;
+    }
+  }
 }
 
 .container p,

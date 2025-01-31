@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.0-next.48
+
+## 1.0.0-next.47
+
+## 1.0.0-next.46
+
+### Patch Changes
+
+- Changed focus color to use neutral instead of accent color ([#2989](https://github.com/digdir/designsystemet/pull/2989))
+
 ## 1.0.0-next.45
 
 ### Minor Changes

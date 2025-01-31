@@ -3,12 +3,15 @@
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-dropdown-item-size: var(--ds-size-12);
   --dsc-dropdown-background: var(--ds-color-neutral-background-default);
-  --dsc-dropdow-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-dropdown-border: 1px solid var(--dsc-dropdow-border-color);
+  --dsc-dropdown-border-width: 1px;
+  --dsc-dropdown-border-style: solid;
+  --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);
-  border: var(--dsc-dropdown-border);
+  border-width: var(--dsc-dropdown-border-width);
+  border-style: var(--dsc-dropdown-border-style);
+  border-color: var(--dsc-dropdown-border-color);
   box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;
@@ -20,7 +23,7 @@
     display: none;
   }
 
-  & > :is(h2, h3, h4, h5, h6) {
+  & :is(h2, h3, h4, h5, h6) {
     align-items: center;
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-subtle);
@@ -35,7 +38,7 @@
     }
   }
 
-  & > ul {
+  & ul {
     margin: 0;
     padding: 0;
     list-style: none;

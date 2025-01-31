@@ -3,6 +3,7 @@
 import {
   Divider,
   Heading,
+  Input,
   Link,
   Modal,
   Paragraph,
@@ -10,9 +11,7 @@ import {
 import { cliOptions } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
-import { useRef } from 'react';
-
-import cl from 'clsx/lite';
+import { useRef, useState } from 'react';
 
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
@@ -23,8 +22,9 @@ export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const colors = useThemeStore((state) => state.colors);
-  const themeName = useThemeStore((state) => state.themeName);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+
+  const [themeName, setThemeName] = useState('theme');
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     let str = '';
@@ -34,47 +34,20 @@ export const TokenModal = () => {
     return str;
   };
 
-  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --${colorCliOptions.main} ${setCliColors(colors.main)} \\
-   --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
-   --${colorCliOptions.support} ${setCliColors(colors.support)} \\
-   --border-radius ${baseBorderRadius} \\
-   --theme "${themeName}"`;
-
-  type InfoBoxType = {
-    title: string;
-    desc: React.ReactNode;
-    img: React.ReactNode;
-    type?: 'code' | 'figma';
-  };
-
-  const InfoBox = ({ title, desc, img, type = 'figma' }: InfoBoxType) => {
-    return (
-      <div className={classes.infoBox}>
-        <div className={classes.infoBox__left}>
-          <div
-            className={cl(
-              classes.infoBox__icon,
-              type === 'code' && classes['infoBox__icon--code'],
-            )}
-          >
-            {img}
-          </div>
-        </div>
-        <div className={classes.infoBox__right}>
-          <div className={classes.infoBox__container}>
-            <Heading data-size='2xs'>{title}</Heading>
-            <Paragraph data-size='sm'>{desc}</Paragraph>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  const cliSnippet = [
+    `npx @digdir/designsystemet@next tokens create`,
+    `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
+    `--${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}"`,
+    `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
+    `--border-radius ${baseBorderRadius}`,
+    `--theme "${themeName}"`,
+  ]
+    .filter(Boolean)
+    .join(' \\\n');
 
   return (
     <Modal.TriggerContext>
       <Modal.Trigger
-        data-size='sm'
         className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();
@@ -94,6 +67,32 @@ export const TokenModal = () => {
             <img src='img/emblem.svg' alt='' className={classes.emblem} />
             <span className={classes.headerText}>Ta i bruk tema</span>
           </Heading>
+        </Modal.Block>
+
+        <Modal.Block>
+          <Heading className={classes.modalHeader} data-size='xs' level={3}>
+            Gi temaet ditt et navn
+          </Heading>
+          <Paragraph>
+            Navnet bør representere virksomheter eller produktet du skal
+            profilere.
+          </Paragraph>
+          <Input
+            aria-label='Navn på tema'
+            name='themeName'
+            value={themeName}
+            onChange={(e) => {
+              const value = e.currentTarget.value
+                .replace(/\s+/g, '-')
+                .replace(/[^A-Z0-9-]+/gi, '')
+                .toLowerCase();
+
+              setThemeName(value);
+            }}
+            style={{
+              marginTop: 'var(--ds-size-6)',
+            }}
+          />
         </Modal.Block>
 
         <Modal.Block>
@@ -161,7 +160,7 @@ export const TokenModal = () => {
                     Send oss en melding på{' '}
                     <Link
                       target='_blank'
-                      href='https://join.slack.com/t/designsystemet/shared_invite/zt-2438eotl3-a4266Vd2IeqMWO8TBw5PrQ'
+                      href='https://designsystemet.no/slack'
                     >
                       Slack
                     </Link>{' '}

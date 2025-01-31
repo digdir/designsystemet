@@ -6,13 +6,25 @@ import type { DefaultProps } from '../../types';
 import { fieldObserver } from './fieldObserver';
 
 export type FieldProps = {
-  /** Position of toggle inputs (radio, checkbox, switch) in field
+  /**
+   * Position of toggle inputs (radio, checkbox, switch) in field
    * @default start
    */
   position?: 'start' | 'end';
 } & HTMLAttributes<HTMLDivElement> &
   DefaultProps;
 
+/**
+ * Field component, used to wrap a form field.
+ *
+ * @example
+ * <Field>
+ *   <Label>Kort beskrivelse</Label>
+ *   <Field.Description>Beskrivelse</Field.Description>
+ *   <Input />
+ *   <ValidationMessage>Feilmelding</ValidationMessage>
+ * </Field>
+ */
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   { className, position, ...rest },
   ref,

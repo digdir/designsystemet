@@ -28,12 +28,32 @@ const render = <T extends HTMLElement>(
   return <Component className={cl(`ds-list`, className)} ref={ref} {...rest} />;
 };
 
+/**
+ * ListUnordered component, used to display a list of items.
+ * Renders a native `ul` element.
+ *
+ * @example
+ * <List.Unordered>
+ *   <List.Item>Item 1</List.Item>
+ *   <List.Item>Item 2</List.Item>
+ * </List.Unordered>
+ */
 export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
   function ListUnordered(props, ref) {
     return render<HTMLUListElement>('ul', props, ref);
   },
 );
 
+/**
+ * ListOrdered component, used to display a list of items.
+ * Renders a native `ol` element.
+ *
+ * @example
+ * <List.Ordered>
+ *   <List.Item>Item 1</List.Item>
+ *   <List.Item>Item 2</List.Item>
+ * </List.Ordered>
+ */
 export const ListOrdered = forwardRef<HTMLOListElement, ListOrderedProps>(
   function ListOrdered(props, ref) {
     return render<HTMLOListElement>('ol', props, ref);

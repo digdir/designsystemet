@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   padding: calc(var(--ds-size-14) + var(--ds-size-2)) 0 var(--ds-size-18) 0;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .grey {
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .header {
@@ -43,7 +43,7 @@
   position: absolute;
   top: -37px;
   left: calc(50% - 37px);
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   padding: 24px;
 }
 

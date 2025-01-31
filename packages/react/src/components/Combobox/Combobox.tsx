@@ -121,6 +121,9 @@ export type ComboboxProps = {
 } & FormFieldProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
+/**
+ * @deprecated Use `Suggestion` instead
+ */
 export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
   (
     {
@@ -155,7 +158,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     },
     forwareddRef,
   ) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const portalRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<Array<HTMLElement | null>>([]);
 
@@ -397,7 +400,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           <ComboboxInput
             {...omit(['inputValue'], rest)}
             hideClearButton={hideClearButton}
-            listId={context.floatingId}
+            listId={context.floatingId || ''}
             error={error}
             hideChips={hideChips}
             handleKeyDown={handleKeyDown}

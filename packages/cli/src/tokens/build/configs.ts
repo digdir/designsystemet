@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
-import { DEFAULT_COLOR, buildOptions } from '../build.js';
+import { buildOptions } from '../build.js';
 import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
@@ -103,8 +103,8 @@ const colorCategoryVariables =
   (category: ColorCategories): GetStyleDictionaryConfig =>
   ({ 'color-scheme': colorScheme, theme, [`${category}-color` as const]: color }, { outPath }) => {
     const layer = `ds.theme.color`;
-    const isDefault = color === buildOptions?.accentColor;
-    const selector = `${isDefault ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
+    const isRootColor = color === buildOptions?.rootColor;
+    const selector = `${isRootColor ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
 
     const config: StyleDictionaryConfig = {
       usesDtcg,
@@ -135,30 +135,7 @@ const colorCategoryVariables =
         },
       },
     };
-    if (isDefault && color !== DEFAULT_COLOR) {
-      console.log(
-        `Creating "${DEFAULT_COLOR}" color variables pointing to "${color}", since a color named "${DEFAULT_COLOR}" is not defined`,
-      );
-      // Create a --ds-color-accent-* scale which points to the default color
-      const defaultColorConfig = R.mergeDeepRight(config, {
-        platforms: {
-          css: {
-            selector: ':root',
-            files: [
-              {
-                ...config.platforms?.css?.files?.[0],
-                destination: `color/${DEFAULT_COLOR}.css`,
-              },
-            ],
-            options: { replaceCategoryWith: DEFAULT_COLOR },
-          },
-        },
-      } satisfies StyleDictionaryConfig);
-      return [
-        { config },
-        { config: defaultColorConfig, permutationOverrides: { 'main-color': `${DEFAULT_COLOR} → ${color}` } },
-      ];
-    }
+
     return config;
   };
 
@@ -198,7 +175,7 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
           fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
-            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
             return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
@@ -231,9 +208,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
               const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
               const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
 
-              const isNotPrivate = R.not(R.any((path: string) => path.startsWith('_'))(token.path));
-
-              return (isSemanticColor || wantedTypes) && isNotPrivate;
+              return isSemanticColor || wantedTypes;
             },
           },
         ],
@@ -241,7 +216,7 @@ const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorSchem
           fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
-            const isWantedSize = pathStartsWithOneOf(['size'], token) && isDigit(token.path[1]);
+            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
             return (include || isWantedSize) && outputReferencesFilter(token, options);
           },
         },
@@ -290,7 +265,18 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
               return (
                 included &&
                 !pathStartsWithOneOf(
-                  ['spacing', 'sizing', 'size', 'border-width', 'border-radius', 'theme', 'theme2', 'theme3', 'theme4'],
+                  [
+                    'spacing',
+                    'sizing',
+                    'size',
+                    '_size',
+                    'border-width',
+                    'border-radius',
+                    'theme',
+                    'theme2',
+                    'theme3',
+                    'theme4',
+                  ],
                   token,
                 )
               );

@@ -27,7 +27,7 @@ export type ComboboxContextType = {
   size: NonNullable<ComboboxProps['size']>;
   formFieldProps: ReturnType<typeof useFormField>;
   refs: UseFloatingReturn['refs'];
-  inputRef: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement | null>;
   open: boolean;
   inputValue: string;
   customIds: string[];

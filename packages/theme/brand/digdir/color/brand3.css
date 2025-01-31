@@ -5,20 +5,21 @@
 @layer ds.theme.color {
 [data-color="brand3"] {
   --ds-color-background-default: var(--ds-color-brand3-background-default);
-  --ds-color-background-subtle: var(--ds-color-brand3-background-subtle);
+  --ds-color-background-tinted: var(--ds-color-brand3-background-tinted);
   --ds-color-surface-default: var(--ds-color-brand3-surface-default);
+  --ds-color-surface-tinted: var(--ds-color-brand3-surface-tinted);
   --ds-color-surface-hover: var(--ds-color-brand3-surface-hover);
   --ds-color-surface-active: var(--ds-color-brand3-surface-active);
   --ds-color-border-subtle: var(--ds-color-brand3-border-subtle);
   --ds-color-border-default: var(--ds-color-brand3-border-default);
   --ds-color-border-strong: var(--ds-color-brand3-border-strong);
+  --ds-color-text-subtle: var(--ds-color-brand3-text-subtle);
+  --ds-color-text-default: var(--ds-color-brand3-text-default);
   --ds-color-base-default: var(--ds-color-brand3-base-default);
   --ds-color-base-hover: var(--ds-color-brand3-base-hover);
   --ds-color-base-active: var(--ds-color-brand3-base-active);
-  --ds-color-text-subtle: var(--ds-color-brand3-text-subtle);
-  --ds-color-text-default: var(--ds-color-brand3-text-default);
-  --ds-color-contrast-default: var(--ds-color-brand3-contrast-default);
-  --ds-color-contrast-subtle: var(--ds-color-brand3-contrast-subtle);
+  --ds-color-base-contrast-subtle: var(--ds-color-brand3-base-contrast-subtle);
+  --ds-color-base-contrast-default: var(--ds-color-brand3-base-contrast-default);
 }
 
 }

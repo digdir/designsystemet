@@ -1,4 +1,4 @@
-@import url('https://altinncdn.no/fonts/inter/inter.css');
+@import url('https://altinncdn.no/fonts/inter/v4/inter.css');
 
 @layer normalize, ds;
 
@@ -45,7 +45,7 @@ body {
 
 /* Utility classes */
 .greyBackground {
-  background: var(--ds-color-neutral-background-subtle);
+  background: var(--ds-color-neutral-background-tinted);
 }
 
 @layer normalize {

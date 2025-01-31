@@ -1,39 +1,22 @@
 'use client';
-
-import type { CssColor } from '@adobe/leonardo-contrast-colors';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import type {
-  ColorInfo,
-  ColorScheme,
-  ContrastMode,
-  ThemeInfo,
-} from '@digdir/designsystemet/color';
-import {
-  areColorsContrasting,
-  canTextBeUsedOnColors,
-  isHexColor,
-} from '@digdir/designsystemet/color';
+import type {} from '@digdir/designsystemet/color';
+import {} from '@digdir/designsystemet/color';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { ColorModal, Container } from '@repo/components';
 import NextLink from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import { Settings } from '../settings';
 import { useThemeStore } from '../store';
-
-import type { ThemeColors } from '../types';
 
 import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
   const selectedColor = useThemeStore((state) => state.selectedColor);
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const colorModalRef = useRef<HTMLDialogElement>(null);
-  const setPreviewTheme = useThemeStore((state) => state.setThemePreview);
 
   useEffect(() => {
     // Open modal on selected color change
@@ -63,65 +46,6 @@ export default function Home() {
     }
   };
 
-  /**
-   * Get a color from the query params or return the default color
-   *
-   * @param colorType The type of color to get
-   * @param returnColor The default color to return
-   * @returns The color from the query or the default color
-   */
-  const getQueryColor = (colorType: ThemeColors, returnColor: CssColor) => {
-    const queryColor = params.get(colorType);
-    if (queryColor && isHexColor(queryColor.substring(1))) {
-      return queryColor as CssColor;
-    }
-    return returnColor;
-  };
-
-  /**
-   * Set the color in the query params
-   *
-   * @param colorType The type of color to set
-   * @param color The color to set
-   */
-  const colorQuerySetter = (colorType: ThemeColors, color: CssColor) => {
-    const defaultColor = {
-      accent: Settings.accentBaseColor,
-      neutral: Settings.neutralBaseColor,
-      brand1: Settings.brand1BaseColor,
-      brand2: Settings.brand2BaseColor,
-      brand3: Settings.brand3BaseColor,
-    };
-
-    if (color !== defaultColor[colorType]) {
-      params.set(colorType, color);
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    }
-  };
-
-  /**
-   * Set the query params
-   *
-   * TODO: Add support for setting colors
-   */
-  const setQueryParams = ({
-    theme,
-    borderRadius,
-    contrastMode,
-  }: {
-    colors?: ThemeInfo;
-    theme?: ColorScheme;
-    borderRadius?: string;
-    contrastMode?: ContrastMode;
-  }) => {
-    theme && params.set('theme', theme);
-    typeof borderRadius === 'string' &&
-      params.set('borderRadius', borderRadius);
-    contrastMode && params.set('contrastMode', contrastMode);
-
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
-
   /* get theme from query on initial load */
   useEffect(() => {
     const borderRadius = params.get('borderRadius') as string;
@@ -129,34 +53,10 @@ export default function Home() {
     }
   }, []);
 
-  /**
-   * Get the color error for a color
-   *
-   * @param scale The color scale to check
-   * @returns The error type
-   */
-  const getColorError = (scale: ColorInfo[]) => {
-    const contrast = areColorsContrasting(
-      scale[8].hex,
-      '#ffffff',
-      'decorative',
-    );
-    const textCanBeUsed = canTextBeUsedOnColors(scale[8].hex, scale[10].hex);
-
-    if (!contrast && textCanBeUsed) {
-      return 'decorative';
-    }
-    if (contrast && !textCanBeUsed) {
-      return 'interaction';
-    }
-
-    return 'none';
-  };
-
   return (
     <div>
       <ColorModal
-        weight={selectedColor.color.number}
+        weight={selectedColor.color.position}
         hex={selectedColor.color.hex}
         namespace={'d'}
         colorModalRef={colorModalRef}
@@ -176,10 +76,7 @@ export default function Home() {
             </Paragraph>
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
-                <NextLink
-                  href='/welcome'
-                  onClick={() => setPreviewTheme('one')}
-                >
+                <NextLink href='/themebuilder'>
                   <PaletteIcon title='a11y-title' fontSize='1.5rem' />
                   Bygg tema
                 </NextLink>

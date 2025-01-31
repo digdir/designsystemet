@@ -43,9 +43,7 @@ jobs:
         run: yarn test:cli
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
-      - name: Build storybook
-        run: yarn build:storybook
+        run: npx playwright install --with-deps chromium
       - name: Run Storybook tests
         run: yarn test:storybook
       - name: Replace relative paths in test report

@@ -1,4 +1,4 @@
-@import url('https://altinncdn.no/fonts/inter/inter.css');
+@import url('https://altinncdn.no/fonts/inter/v4/inter.css');
 
 * {
   box-sizing: border-box;
@@ -6,7 +6,6 @@
 
 body {
   font-family: 'Inter', sans-serif !important;
-  color: #1e2b3c;
   margin: 0;
 }
 
@@ -31,36 +30,9 @@ code {
   border-radius: 2px;
 }
 
-[data-theme='two'] {
-  --ds-color-accent-base-default: #740c7e;
-  --ds-color-accent-text-subtle: #93429b;
-  --ds-color-base-default: #740c7e;
-  --ds-color-base-hover: #872d90;
-  --ds-color-base-active: #97499f;
-  --ds-color-accent-surface-default: #ecdded;
-  --ds-color-accent-surface-hover: #e0cae3;
-  --ds-color-accent-surface-active: #d6b7d9;
-  --ds-color-accent-border-subtle: #d2b0d5;
-  --ds-color-accent-border-default: #a867af;
-  --ds-color-accent-text-default: #4f0856;
-}
-
-[data-color-scheme='dark'][data-theme='two'] {
-  --ds-color-accent-base-default: #c79dcb;
-  --ds-color-accent-text-subtle: #c294c6;
-  --ds-color-base-default: #c79dcb;
-  --ds-color-base-hover: #b884be;
-  --ds-color-base-active: #aa6ab0;
-  --ds-color-accent-surface-default: #56095e;
-  --ds-color-accent-surface-hover: #6c0b75;
-  --ds-color-accent-surface-active: #7e1e87;
-  --ds-color-accent-border-subtle: #84298d;
-  --ds-color-accent-border-default: #a664ad;
-  --ds-color-accent-text-default: #ecdded;
-}
-
 .panelContainer {
   display: flex;
+  gap: var(--ds-size-4);
 }
 
 .panelLeft {
@@ -68,9 +40,10 @@ code {
   flex-direction: column;
   gap: 12px;
   width: 420px;
-  padding: 28px;
-  border-right: 1px solid var(--ds-color-neutral-border-subtle);
   position: relative;
+  background-color: var(--ds-color-neutral-background-default);
+  padding: 32px;
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .panelRight {
@@ -80,7 +53,7 @@ code {
   width: 100%;
   gap: 12px;
   padding: 28px;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border-radius: 0 8px 8px 0;
 }
 

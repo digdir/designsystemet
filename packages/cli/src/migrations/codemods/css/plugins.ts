@@ -35,16 +35,17 @@ export const cssVarRename: PluginGenerator = (dictionary) => ({
     const deleted = new Set<string>();
 
     for (const [from, to] of Object.entries(dictionary)) {
-      if (!R.isEmpty(to)) {
+      if (R.isNotEmpty(to)) {
+        if (to === '[delete]') {
+          deleted.add(deleteMsg(decl, from));
+        }
+
         if (R.includes(from, value)) {
-          if (to === '[delete]') {
-            deleted.add(deleteMsg(decl, from));
-          }
           decl.value = value.replace(from, to);
-        } else if (R.includes(from, prop) && decl.variable) {
-          if (to === '[delete]') {
-            deleted.add(deleteMsg(decl, from));
-          }
+          continue;
+        }
+
+        if (R.includes(from, prop) && decl.variable) {
           decl.prop = prop.replace(from, to);
         }
       }

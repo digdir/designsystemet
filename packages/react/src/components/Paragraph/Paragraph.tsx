@@ -7,7 +7,7 @@ export type ParagraphProps = {
   /**
    * Changes text sizing
    */
-  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
+  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -19,8 +19,10 @@ export type ParagraphProps = {
    */
   asChild?: boolean;
 } & HTMLAttributes<HTMLParagraphElement>;
+
 /**
  * Use `Paragraph` to display text with paragraph text styles.
+ * Renders a native `p` element.
  *
  * @example
  * <Paragraph data-size='lg'>Paragraph</Paragraph>
