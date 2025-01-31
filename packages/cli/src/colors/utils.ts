@@ -272,13 +272,13 @@ export const getColorInfoFromPosition = (position: ColorNumber) => {
       group: 'base',
     },
     15: {
-      name: 'contrastSubtle',
-      displayName: 'Contrast Subtle',
+      name: 'baseContrastSubtle',
+      displayName: 'Base Contrast Subtle',
       group: 'base',
     },
     16: {
-      name: 'contrastDefault',
-      displayName: 'Contrast Default',
+      name: 'baseContrastDefault',
+      displayName: 'Base Contrast Default',
       group: 'base',
     },
   } as const;
