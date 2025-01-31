@@ -6,19 +6,20 @@
 :root, [data-color-scheme], [data-color="accent"] {
   --ds-color-background-default: var(--ds-color-accent-background-default);
   --ds-color-background-tinted: var(--ds-color-accent-background-tinted);
+  --ds-color-surface-default: var(--ds-color-accent-surface-default);
   --ds-color-surface-tinted: var(--ds-color-accent-surface-tinted);
   --ds-color-surface-hover: var(--ds-color-accent-surface-hover);
   --ds-color-surface-active: var(--ds-color-accent-surface-active);
   --ds-color-border-subtle: var(--ds-color-accent-border-subtle);
   --ds-color-border-default: var(--ds-color-accent-border-default);
   --ds-color-border-strong: var(--ds-color-accent-border-strong);
+  --ds-color-text-subtle: var(--ds-color-accent-text-subtle);
+  --ds-color-text-default: var(--ds-color-accent-text-default);
   --ds-color-base-default: var(--ds-color-accent-base-default);
   --ds-color-base-hover: var(--ds-color-accent-base-hover);
   --ds-color-base-active: var(--ds-color-accent-base-active);
-  --ds-color-text-subtle: var(--ds-color-accent-text-subtle);
-  --ds-color-text-default: var(--ds-color-accent-text-default);
-  --ds-color-base-contrast-default: var(--ds-color-accent-base-contrast-default);
   --ds-color-base-contrast-subtle: var(--ds-color-accent-base-contrast-subtle);
+  --ds-color-base-contrast-default: var(--ds-color-accent-base-contrast-default);
 }
 
 }

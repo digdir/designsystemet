@@ -20,14 +20,14 @@
   text-align: left;
   font-weight: normal;
   padding: 12px 24px;
-  font-size: var(--ds-font-size-sm);
+  font-size: var(--ds-body-short-sm-font-size);
   color: var(--ds-color-neutral-text-subtle);
   vertical-align: middle;
 }
 
 .infoTable td {
   padding: 12px 8px;
-  font-size: var(--ds-font-size-sm);
+  font-size: var(--ds-body-short-sm-font-size);
   vertical-align: middle;
 }
 

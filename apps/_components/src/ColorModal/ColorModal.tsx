@@ -1,7 +1,7 @@
 import { Heading, Modal, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
-  getColorNameFromNumber,
+  getColorInfoFromPosition,
   getCssVariable,
   hexToHsluv,
 } from '@digdir/designsystemet/color';
@@ -61,7 +61,7 @@ export const ColorModal = ({
     >
       <Modal.Block>
         <Heading data-size='xs'>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorNameFromNumber(weight))}`}
+          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(weight).displayName)}`}
         </Heading>
       </Modal.Block>
       <Modal.Block className={classes.modalContent}>
