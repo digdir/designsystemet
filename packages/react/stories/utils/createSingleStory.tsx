@@ -8,7 +8,12 @@ import {
 } from '@storybook/react';
 import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
 
-import { type ComponentProps, type ComponentType, createElement } from 'react';
+import {
+  type ComponentProps,
+  type ComponentType,
+  type PropsWithChildren,
+  createElement,
+} from 'react';
 
 type Story<T extends ComponentType> = StoryObj<T> | StoryFn<T>;
 type StoryExports<T extends ComponentType> = Record<string, Story<T>>;
@@ -25,18 +30,36 @@ export function createSingleStory<T extends ComponentType>(
       return (
         <>
           {Object.entries(stories).map(([storyName, story]) => {
+            const { story: storyStyles, ...style } =
+              story.parameters?.customStyles ?? {};
+            const StoryStyles = ({ children }: PropsWithChildren) => (
+              <div
+                style={{
+                  ...style,
+                  ...storyStyles,
+                }}
+              >
+                {children}
+              </div>
+            );
             const args = { ...story.args, key: storyName };
             if (typeof story === 'function') {
-              return story(
-                args as unknown as ComponentProps<T> & T,
-                context as StoryContext<ComponentProps<T> & T>,
+              return (
+                <StoryStyles>
+                  {story(
+                    args as unknown as ComponentProps<T> & T,
+                    context as StoryContext<ComponentProps<T> & T>,
+                  )}
+                </StoryStyles>
               );
             }
             if (story.render) {
-              return story.render(args, context);
+              return <StoryStyles>{story.render(args, context)}</StoryStyles>;
             }
             if (meta.component) {
-              return createElement(meta.component, args);
+              return (
+                <StoryStyles>{createElement(meta.component, args)}</StoryStyles>
+              );
             }
           })}
         </>
