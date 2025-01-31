@@ -112,7 +112,7 @@ Ein vanleg metode er å justere ligthtness til ein farge for å gjere den mørka
 I biletet over har me tatt utgangspunkt i den raude profilfargen til Digdir (`67% lightness`) og sett faste lightness-verdiar for å lage ulike valørar.
 Samanlikna med RGB-teknikken, så ser me at fargane vart mykje meir saturterte i dei øvre skalaene. 
 Dette gjev meining fordi me ikkje har justert på satueringsverdiane. 
-Dette viser veldig godt ei utfordring med mange av fargeromma som brukar lightness for å definere lysstyrka i fargen.
+Dette viser veldig godt ei utfordring med mange av fargeromma som brukar lightness for å definere lysstyrken i fargen.
 Endrar me på denne verdien vil fargane ofte ende opp med å sjå oversaturerte og ubalanserte ut.
 
  <Image
@@ -123,8 +123,8 @@ Endrar me på denne verdien vil fargane ofte ende opp med å sjå oversaturerte 
   dataUnstyled
 />
 
-Ein anna metode for å lage fargeskalaer i HSL-fargerommet er å justere på både saturation og lightness verdiane.
-I biletet over har me fortsatt tatt utgangspunkt i den raude profilfargen til Digdir med faste lightness verdiar.
+Ein anna metode for å lage fargeskalaer i HSL-fargerommet er å justere på både saturation og lightness-verdiane.
+I biletet over har me fortsatt tatt utgangspunkt i den raude profilfargen til Digdir med faste lightness-verdiar.
 I tillegg har me satt saturation verdien ned frå `87` til `65` på alle fargane (profilfargen til Digdir hadde `87` saturation). 
 
 Å redusere saturation verdien på alle fargane hjelp, men problemet er at me mister den opphavlege fargen som vart brukt til å lage fargeskalaen. 
@@ -170,7 +170,7 @@ mellom fargane og gir fargane ein poengsum.
 Denne poengsummen seier noko om kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen `21:1`,
 om fargane ikkje har kontrast i det heile, er poengsummen `1:1`. 
 
-Luminansen skildrar den opplevde lysstyrka til ei flate og vert brukt til å vurdere kor mykje lys som vert reflektert
+Luminansen skildrar den opplevde lysstyrken til ei flate og vert brukt til å vurdere kor mykje lys som vert reflektert
 eller sendt ut i ei bestemt retning. 
 Relativ luminans er ein normalisert verdi som rangerer luminansen til ein farge mellom svart `0` og kvit `1`. 
 Denne verdien vert rekna ut basert på dei raude, grøne og blå komponentane i fargen, der grøn bidreg mest til den opplevde luminansen. 
@@ -189,8 +189,8 @@ At desse to verdiane er like viser at WCAG brukar den relative luminansen mellom
 
 
 ## Fargerom basert på kontrast
-Som nemnt tidlegare finst det mange fargerom som har ein lightness verdi som viser kor lys ein farge er. 
-I nokre av desse fargeromma betyr det at fargar med same lightness verdi får om lag lik kontrast. 
+Som nemnt tidlegare finst det mange fargerom som har ein lightness-verdi som viser kor lys ein farge er. 
+I nokre av desse fargeromma betyr det at fargar med same lightness-verdi får om lag lik kontrast. 
 To fargerom som oppnår dette er HSLuv og OKLCH.
 
 ### Fargeromma HSLUV og OKLCH
@@ -233,7 +233,7 @@ I vårt tilfelle handla det om å trekke ei linje gjennom RGB-fargerommet
 
 Me visste allereie at WCAG brukte relativ luminans for å kalkulere kontrasten mellom to fargar. 
 For å sikre at kontrasten mellom to fargar alltid blir lik, må den relative luminansen og vere lik.
-Målet vårt var å finne lysstyrkeverdiar i RGB-fargerommet ved å justere fargane gjennom «tinting» og «shading» heilt til me oppnådde den ønska luminansen
+Målet vårt var å finne luminans-verdiar i RGB-fargerommet ved å justere fargane gjennom «tinting» og «shading» heilt til me oppnådde den ønska luminansen
 Å bevege seg iterativt gjennom eit fargerom på denne måten er ei form for interpolering.
 
  <Image
@@ -244,29 +244,29 @@ Målet vårt var å finne lysstyrkeverdiar i RGB-fargerommet ved å justere farg
   dataUnstyled
 />
 
-I biletet over er det 2 fargar heilt til venstre med luminansverdiane `0.12` og `0.33`. 
+I biletet over er det 2 fargar heilt til venstre med luminans-verdiane `0.12` og `0.33`. 
 Desse fargane fungerer som utgangspunkt for interpoleringa. 
-Målet er å finne luminansverdien `0.7` for begge fargane i RGB-fargerommet, som du kan sjå heilt til høgre.
-For å gjere dette ser me først på kva luminansverdiar me har å jobbe med i fargane heilt til venstre.
+Målet er å finne luminans-verdien `0.7` for begge fargane i RGB-fargerommet, som du kan sjå heilt til høgre.
+For å gjere dette ser me først på kva luminans-verdiar me har å jobbe med i fargane heilt til venstre.
 Begge desse verdiane er lågare enn `0.7`. Me må derfor 'tinte' fargane for å få dei til å nærme seg `0.7`.
 
-I eksempelet over "tintar" me fargane med 10% om og om igjen, heilt til me oppnår luminansverdien som er så nær `0.7` som mogleg.
-I iterasjon 3 av blåfargen (fargen rett til venstre for resultatet) ser me at luminansverdien er `0.34`. 
+I eksempelet over "tintar" me fargane med 10% om og om igjen, heilt til me oppnår luminans-verdien som er så nær `0.7` som mogleg.
+I iterasjon 3 av blåfargen (fargen rett til venstre for resultatet) ser me at luminans-verdien er `0.34`. 
 Dette er framleis ikkje i nærleiken av `0.7`, så me må difor fortsetje med å "tinte" fargane.
-Etter 15 iterasjonar for blåfargen, og 11 iterasjonar for grønfargen, har me funne den næraste luminansverdien til `0.7` som me kan med denne teknikken.
+Etter 15 iterasjonar for blåfargen, og 11 iterasjonar for grønfargen, har me funne den næraste luminans-verdien til `0.7` som me kan med denne teknikken.
 
-Målet var å finne luminansverdien `0.7` for fargane. Men som biletet over viser vart resultatet `0.72` og `0.71`.
+Målet var å finne luminans-verdien `0.7` for fargane. Men som biletet over viser vart resultatet `0.72` og `0.71`.
 Dette viser korleis interpoleringa fungerer, men det er ikkje nøyaktig nok for vårt formål.
 I kjeldekoden vert det nytta ein meir effektiv metode, kalla binært søk, for å navigere seg gjennom fargerommet. 
 Dette sikrar at resultatet blir meir nøyaktig og at det blir færrast mogleg iterasjonar.
 
 ## Slik vart fargeskalaen sjåande ut til slutt
-Fargane vert genererte ved å finne faste luminansverdiar i RGB-fargerommet. 
+Fargane vert genererte ved å finne faste luminans-verdiar i RGB-fargerommet. 
 Med denne metoden synest me fargane i kvar skala fungerte godt saman. 
 Fargegenerering for ein fargeskala kan delast inn i to grupper: statiske grupper og ei eiga "Base"-gruppe.
 
 ### Dei statiske gruppene
-Desse gruppene bruka faste luminansverdiar i RGB-fargerommet for å definere kvart steg i skalaen.
+Desse gruppene bruka faste luminans-verdiar i RGB-fargerommet for å definere kvart steg i skalaen.
 Her vil for eksempel alle `Text Subtle` fargane alltid ha same kontrast mot `Surface Default`.
 Dette var veldig nyttig, fordi då me då enkelt lage reglar på korleis fargane skulle brukast i systemet.
 
@@ -304,7 +304,7 @@ Måten me lagar desse fargane på er at me legg til, eller trekker frå, lightne
 Grunnen til at me brukar HSLuv er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
 
 Me opplevde at luminans fungerte dårleg som utgangspunkt for å seie at ein farge skulle bli 8% lysare eller mørkare. 
-Etter at me fann lightness verdien og luminans verdien til fargen, interpolerte me fargen på same måte som forklart tidlegare.
+Etter at me fann lightness-verdien og luminans-verdien til fargen, interpolerte me fargen på same måte som forklart tidlegare.
 
 ## Vidare arbeid med fargegenereringa og oppsummering
 No har me vore innom mykje spennande innan fargar og fargegenerering.
