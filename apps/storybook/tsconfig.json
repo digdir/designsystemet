@@ -3,5 +3,10 @@
   "compilerOptions": {
     "types": ["../../packages/theme/brand/colors.d.ts"]
   },
-  "include": [".", "./.storybook/**/*", "../../packages/css/postcss.config.js"]
+  "include": [
+    ".",
+    "./.storybook/**/*",
+    "../../packages/css/postcss.config.js",
+    "../../vite.config.ts"
+  ]
 }
