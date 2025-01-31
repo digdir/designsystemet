@@ -169,7 +169,7 @@
 }
 
 /* Radio specific styles */
-.ds-input[type='radio'] {
+.ds-input:is([type='radio']) {
   border-radius: var(--ds-border-radius-full);
 
   &:checked {
@@ -185,7 +185,7 @@
 }
 
 /* Checkbox specific styles */
-.ds-input[type='checkbox'] {
+.ds-input:is([type='checkbox']) {
   &:checked {
     background-origin: content-box;
     background-repeat: no-repeat;
@@ -251,7 +251,7 @@
 }
 
 /* Switch specific styles */
-.ds-input[role='switch']:is([type='radio'], [type='checkbox']) {
+.ds-input:is([role='switch']):is([type='radio'], [type='checkbox']) {
   --_dsc-input-circle-position: left;
 
   background-image: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%);
