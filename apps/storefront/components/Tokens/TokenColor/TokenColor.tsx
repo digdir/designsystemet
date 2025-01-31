@@ -1,4 +1,4 @@
-import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { getColorInfoFromPosition } from '@digdir/designsystemet/color';
 import { ColorModal } from '@repo/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
@@ -51,7 +51,7 @@ const TokenColor = ({ value, token }: TokenColorProps) => {
           onClick={() => weight && colorModalRef.current?.showModal()}
           aria-label={
             weight &&
-            `Se mer om ${token.path[1]} ${getColorNameFromNumber(weight)}`
+            `Se mer om ${token.path[1]} ${getColorInfoFromPosition(weight).displayName}`
           }
         ></Element>
       </div>

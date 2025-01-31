@@ -31,6 +31,7 @@ export const ColorPage = () => {
 
   const updateExistingColor = (color: string, name: string) => {
     const theme = generateColorSchemes(color as CssColor);
+
     updateColor({ name: name, colors: theme }, index, colorType);
   };
 
@@ -40,7 +41,7 @@ export const ColorPage = () => {
     type: ColorType,
   ) => {
     setActivePanel('editColor');
-    setColor(ColorService.convert('hex', color.colors.light[8].hex));
+    setColor(ColorService.convert('hex', color.colors.light[11].hex));
     setName(color.name);
     setIndex(index);
     setColorType(type);
@@ -74,7 +75,7 @@ export const ColorPage = () => {
           {colors.main.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'main')}
             />
@@ -87,7 +88,7 @@ export const ColorPage = () => {
           {colors.neutral.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'neutral')}
             />
@@ -121,7 +122,7 @@ export const ColorPage = () => {
           {colors.support.map((color, index) => (
             <ColorInput
               key={index}
-              color={color.colors.light[8].hex}
+              color={color.colors.light[11].hex}
               name={color.name}
               onClick={() => setupEditState(color, index, 'support')}
             />
