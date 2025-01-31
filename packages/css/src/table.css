@@ -5,6 +5,7 @@
   --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-table-border-divider-width: 2px;
   --dsc-table-border-divider-style: solid;
+  --dsc-table-border-divider-color: var(--dsc-table-border-color);
   --dsc-table-border-width: 1px;
   --dsc-table-border-style: solid;
   --dsc-table-border-radius: var(--ds-border-radius-md);
@@ -41,7 +42,7 @@
   & > thead > tr:last-child > :is(th, td) {
     border-bottom-width: var(--dsc-table-border-divider-width);
     border-bottom-style: var(--dsc-table-border-divider-style);
-    border-color: var(--dsc-table-border-color);
+    border-bottom-color: var(--dsc-table-border-divider-color);
   }
 
   & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
@@ -52,7 +53,7 @@
     background: var(--dsc-table-header-background);
     border-top-width: var(--dsc-table-border-divider-width);
     border-top-style: var(--dsc-table-border-divider-style);
-    border-color: var(--dsc-table-border-color);
+    border-top-color: var(--dsc-table-border-divider-color);
   }
 
   & > tfoot > tr:last-child > :is(th, td) {
