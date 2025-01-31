@@ -180,49 +180,109 @@ export const getLightnessFromHex = (hex: string) => {
 export const getColorNumberFromName = (name: string): ColorNumber => {
   const colorMap: Record<string, ColorNumber> = {
     'Background Default': 1,
-    'Background Subtle': 2,
+    'Background Tinted': 2,
     'Surface Default': 3,
-    'Surface Hover': 4,
-    'Surface Active': 5,
-    'Border Subtle': 6,
-    'Border Default': 7,
-    'Border Strong': 8,
-    'Base Default': 9,
-    'Base Hover': 10,
-    'Base Active': 11,
-    'Text Subtle': 12,
-    'Text Default': 13,
-    'Contrast Default': 14,
+    'Surface Tinted': 4,
+    'Surface Hover': 5,
+    'Surface Active': 6,
+    'Border Subtle': 7,
+    'Border Default': 8,
+    'Border Strong': 9,
+    'Text Subtle': 10,
+    'Text Default': 11,
+    'Base Default': 12,
+    'Base Hover': 13,
+    'Base Active': 14,
     'Contrast Subtle': 15,
+    'Contrast Default': 16,
   };
   return colorMap[name];
 };
 
-/**
- *
- * This function returns the color name based on the color number.
- *
- * @param number The number of the color
- */
-export const getColorNameFromNumber = (number: ColorNumber): string => {
-  const colorMap: { [key in ColorNumber]: string } = {
-    1: 'Background Default',
-    2: 'Background Subtle',
-    3: 'Surface Default',
-    4: 'Surface Hover',
-    5: 'Surface Active',
-    6: 'Border Subtle',
-    7: 'Border Default',
-    8: 'Border Strong',
-    9: 'Base Default',
-    10: 'Base Hover',
-    11: 'Base Active',
-    12: 'Text Subtle',
-    13: 'Text Default',
-    14: 'Contrast Default',
-    15: 'Contrast Subtle',
-  };
-  return colorMap[number];
+export const getColorInfoFromPosition = (position: ColorNumber) => {
+  const colorMap = {
+    1: {
+      name: 'backgroundDefault',
+      displayName: 'Background Default',
+      group: 'background',
+    },
+    2: {
+      name: 'backgroundTinted',
+      displayName: 'Background Tinted',
+      group: 'background',
+    },
+    3: {
+      name: 'surfaceDefault',
+      displayName: 'Surface Default',
+      group: 'surface',
+    },
+    4: {
+      name: 'surfaceTinted',
+      displayName: 'Surface Tinted',
+      group: 'surface',
+    },
+    5: {
+      name: 'surfaceHover',
+      displayName: 'Surface Hover',
+      group: 'surface',
+    },
+    6: {
+      name: 'surfaceActive',
+      displayName: 'Surface Active',
+      group: 'surface',
+    },
+    7: {
+      name: 'borderSubtle',
+      displayName: 'Border Subtle',
+      group: 'border',
+    },
+    8: {
+      name: 'borderDefault',
+      displayName: 'Border Default',
+      group: 'border',
+    },
+    9: {
+      name: 'borderStrong',
+      displayName: 'Border Strong',
+      group: 'border',
+    },
+    10: {
+      name: 'textSubtle',
+      displayName: 'Text Subtle',
+      group: 'text',
+    },
+    11: {
+      name: 'textDefault',
+      displayName: 'Text Default',
+      group: 'text',
+    },
+    12: {
+      name: 'baseDefault',
+      displayName: 'Base Default',
+      group: 'base',
+    },
+    13: {
+      name: 'baseHover',
+      displayName: 'Base Hover',
+      group: 'base',
+    },
+    14: {
+      name: 'baseActive',
+      displayName: 'Base Active',
+      group: 'base',
+    },
+    15: {
+      name: 'contrastSubtle',
+      displayName: 'Contrast Subtle',
+      group: 'base',
+    },
+    16: {
+      name: 'contrastDefault',
+      displayName: 'Contrast Default',
+      group: 'base',
+    },
+  } as const;
+  return colorMap[position];
 };
 
 /**

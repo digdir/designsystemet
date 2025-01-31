@@ -22,20 +22,8 @@ export const cliOptions = {
 const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
   const obj: Tokens1ary = {};
   const $type = 'color';
-  for (let i = 0; i < colorArray.length; i++) {
-    if (i === 13 && colorArray.length >= 14) {
-      obj['contrast-1'] = {
-        $type,
-        $value: colorArray[i].hex,
-      };
-    } else if (i === 14 && colorArray.length >= 15) {
-      obj['contrast-2'] = {
-        $type,
-        $value: colorArray[i].hex,
-      };
-    } else {
-      obj[i + 1] = { $type, $value: colorArray[i].hex };
-    }
+  for (const index in colorArray) {
+    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
   }
   return obj;
 };
