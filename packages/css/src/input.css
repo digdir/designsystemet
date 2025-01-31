@@ -5,8 +5,8 @@
 /* Root class with shared variables and base input styles */
 .ds-input {
   /* Core variables */
-  --dsc-input-background: var(--ds-color-neutral-background-default);
-  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
+  --dsc-input-background-color: var(--ds-color-neutral-background-default);
+  --dsc-input-background-color--readonly: var(--ds-color-neutral-background-tinted);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
@@ -19,7 +19,7 @@
 
   /* Base styles */
   appearance: none;
-  background-color: var(--dsc-input-background);
+  background-color: var(--dsc-input-background-color);
   border-radius: var(--ds-border-radius-md);
   border-width: var(--dsc-input-border-width);
   border-style: var(--dsc-input-border-style);
@@ -75,7 +75,7 @@
   }
 
   &[readonly] {
-    background-color: var(--dsc-input-background--readonly);
+    background-color: var(--dsc-input-background-color--readonly);
     border-color: var(--dsc-input-border-color--readonly);
     color: var(--dsc-input-color--readonly);
 
@@ -122,9 +122,8 @@
   --dsc-input-stroke-color--checked: var(--ds-color-base-contrast-default);
   --dsc-input-stroke-color--invalid: var(--ds-color-danger-base-contrast-default);
   --dsc-input-stroke-width: 0.05em;
-  --dsc-input-background--checked: var(--ds-color-base-default);
-  --dsc-input-background--invalid: var(--ds-color-danger-text-subtle);
-  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
+  --dsc-input-background-color--checked: var(--ds-color-base-default);
+  --dsc-input-background-color--invalid: var(--ds-color-danger-text-subtle);
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   border-width: var(--dsc-input-border-width--toggle);
@@ -136,19 +135,19 @@
   cursor: pointer;
 
   &:checked {
-    background-color: var(--dsc-input-background--checked);
-    border-color: var(--dsc-input-background--checked);
+    background-color: var(--dsc-input-background-color--checked);
+    border-color: var(--dsc-input-background-color--checked);
     color: var(--dsc-input-stroke-color--checked);
   }
 
   &[aria-invalid='true']:where(:checked, :indeterminate) {
-    background-color: var(--dsc-input-background--invalid);
+    background-color: var(--dsc-input-background-color--invalid);
     color: var(--dsc-input-stroke-color--invalid);
     border-color: var(--dsc-input-border-color--invalid);
   }
 
   &[readonly] {
-    background-color: var(--dsc-input-background--readonly);
+    background-color: var(--dsc-input-background-color--readonly);
     border-color: var(--dsc-input-border-color--readonly);
     color: var(--dsc-input-color--readonly);
 
@@ -209,8 +208,8 @@
   }
 
   &:indeterminate {
-    background-color: var(--dsc-input-background--checked);
-    border-color: var(--dsc-input-background--checked);
+    background-color: var(--dsc-input-background-color--checked);
+    border-color: var(--dsc-input-background-color--checked);
     color: var(--dsc-input-stroke-color--checked);
     background-origin: content-box;
     background-position: center;
@@ -226,12 +225,12 @@
     &[readonly] {
       color: var(--dsc-input-color--readonly);
       border-color: var(--dsc-input-border-color--readonly);
-      background-color: var(--dsc-input-background--readonly);
+      background-color: var(--dsc-input-background-color--readonly);
     }
 
     &[aria-invalid='true'] {
       border-color: var(--dsc-input-border-color--invalid);
-      background-color: var(--dsc-input-background--invalid);
+      background-color: var(--dsc-input-background-color--invalid);
     }
 
     @media (forced-colors: active) {
