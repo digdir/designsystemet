@@ -38,7 +38,6 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
-    '@chromatic-com/storybook',
     '@storybook/addon-storysource',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
