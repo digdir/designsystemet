@@ -1,4 +1,3 @@
-import type { Store_CSFExports } from '@storybook/core/types';
 import {
   type Meta,
   type ReactRenderer,
@@ -7,6 +6,7 @@ import {
   type StoryObj,
   composeStories,
 } from '@storybook/react';
+import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
 
 import { type ComponentProps, type ComponentType, createElement } from 'react';
 
@@ -16,18 +16,21 @@ type StoryExports<T extends ComponentType> = Record<string, Story<T>>;
 export function createSingleStory<T extends ComponentType>(
   rawStories: StoryExports<T>,
   meta: Meta,
-): StoryObj<T> {
+): StoryAnnotationsOrFn<ReactRenderer> {
   const stories = composeStories(
     rawStories as unknown as Store_CSFExports<ReactRenderer, T>,
   ) as StoryExports<T>;
   return {
-    render: (_: unknown, context: StoryContext<ComponentProps<T> & T>) => {
+    render: (_, context) => {
       return (
         <>
           {Object.entries(stories).map(([storyName, story]) => {
             const args = { ...story.args, key: storyName };
             if (typeof story === 'function') {
-              return story(args as unknown as ComponentProps<T> & T, context);
+              return story(
+                args as unknown as ComponentProps<T> & T,
+                context as StoryContext<ComponentProps<T> & T>,
+              );
             }
             if (story.render) {
               return story.render(args, context);
@@ -40,11 +43,14 @@ export function createSingleStory<T extends ComponentType>(
       );
     },
     parameters: {
+      chromatic: {
+        disableSnapshot: false,
+      },
       customStyles: {
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-size-2)',
       },
     },
-  } as unknown as StoryObj<T>;
+  };
 }

@@ -1,15 +1,16 @@
 import type { Meta } from '@storybook/react';
 import { Alert } from '.';
-import { createSingleStory } from '../../utilities/createSingleStory';
+import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as AlertStories from './Alert.stories';
 
 const meta: Meta = {
-  title: 'Komponenter/Alert/Visual tests',
+  title: 'Chromatic/Alert',
   component: Alert,
+  tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
 };
 export default meta;
 
-export const SnapshotStory = createSingleStory(AlertStories, meta);
+export const Snapshots = createSingleStory(AlertStories, meta);

@@ -1,11 +1,12 @@
 import type { Meta } from '@storybook/react';
-import { createSingleStory } from '../../utilities/createSingleStory';
+import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Button } from './Button';
 import * as ButtonStories from './Button.stories';
 
 const meta: Meta = {
-  title: 'Komponenter/Button/Visual tests',
+  title: 'Chromatic/Button',
   component: Button,
+  tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
