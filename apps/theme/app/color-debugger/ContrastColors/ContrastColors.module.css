@@ -1,11 +1,26 @@
+.groupContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: calc(33.33% - 14px);
+}
+
 .item {
-  width: 150px;
   background-color: white;
+  width: 100%;
 }
 
 .color {
   width: 100%;
-  height: 80px;
+  height: 72px;
   display: flex;
   gap: 10px;
   padding: 10px;
@@ -22,20 +37,6 @@
   font-weight: 500;
   margin-bottom: 16px;
   margin-top: 18px;
-}
-
-.groupContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.group {
-  display: flex;
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-bottom: 20px;
-  border-radius: 4px;
-  overflow: hidden;
 }
 
 .content {

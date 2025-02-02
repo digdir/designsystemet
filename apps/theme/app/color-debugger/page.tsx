@@ -8,9 +8,11 @@ import { useEffect } from 'react';
 import { ColorGrid } from './ColorGrid/ColorGrid';
 import { ColorSaturation } from './ColorSaturation/ColorSaturation';
 import { ContrastColors } from './ContrastColors/ContrastColors';
-import { ContrastTests } from './ContrastTests/ContrastTests';
+import { FrontPage } from './FrontPage/FrontPage';
+import { Mobile } from './Mobile/Mobile';
 import { Scales } from './Scales/Scales';
 import { Sidebar } from './Sidebar/Sidebar';
+import { TabMenu } from './TabMenu/TabMenu';
 import { useDebugStore } from './debugStore';
 import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
@@ -32,6 +34,7 @@ export default function Home() {
     { s: 61, l: 37 },
     { s: 59, l: 23 },
   ];
+  const pageType = useDebugStore((state) => state.pageType);
 
   useEffect(() => {
     const themes: ThemeInfo[][] = [];
@@ -61,8 +64,17 @@ export default function Home() {
     themeSettings.interpolation.mode,
   ]);
 
+  useEffect(() => {
+    const items = document.getElementsByClassName('content');
+    console.log(items);
+    for (let i = 0; i < items.length; i++) {
+      (items[i] as HTMLElement).style.minHeight = '20svh';
+    }
+  }, []);
+
   return (
-    <div className={classes.page}>
+    <div className={classes.page} data-color-scheme='light'>
+      <TabMenu />
       <div
         className={cl(
           classes.top,
@@ -70,42 +82,59 @@ export default function Home() {
         )}
       ></div>
       <div className={classes.content}>
-        <Heading className={classes.pageHeading} data-size='md'>
-          Color System Debugger
-        </Heading>
-        <Heading className={classes.heading}>Contrast tests</Heading>
-        <ContrastTests />
+        {pageType === 'main' && <FrontPage />}
+        {pageType === 'saturation' && (
+          <>
+            <Heading className={classes.heading}>
+              Saturation adjustments
+            </Heading>
+            <ColorSaturation />
+          </>
+        )}
 
-        <Heading className={classes.heading}>Saturation adjustments</Heading>
-        <ColorSaturation />
+        {pageType === 'baseContrast' && (
+          <>
+            <Heading className={classes.heading}>
+              Base and contrast colors
+            </Heading>
+            <ContrastColors />
+          </>
+        )}
 
-        <Heading className={classes.heading}>Base and contrast colors</Heading>
-        <ContrastColors />
+        {pageType === 'scales' && (
+          <>
+            <Heading className={classes.heading}>Color Scales</Heading>
+            <Scales />
+          </>
+        )}
 
-        <Heading className={classes.heading}>Color Scales</Heading>
-        <Scales />
+        {pageType === 'colorTable' && (
+          <>
+            <Heading className={classes.heading}>Background subtle</Heading>
+            <ColorGrid colors={colorScales} colorNumber={1} />
 
-        <Heading className={classes.heading}>Background subtle</Heading>
-        <ColorGrid colors={colorScales} colorNumber={1} />
+            <Heading className={classes.heading}>Surface Default</Heading>
+            <ColorGrid colors={colorScales} colorNumber={2} />
+            <Heading className={classes.heading}>Surface Hover</Heading>
+            <ColorGrid colors={colorScales} colorNumber={3} />
+            <Heading className={classes.heading}>Surface Active</Heading>
+            <ColorGrid colors={colorScales} colorNumber={4} />
 
-        <Heading className={classes.heading}>Surface Default</Heading>
-        <ColorGrid colors={colorScales} colorNumber={2} />
-        <Heading className={classes.heading}>Surface Hover</Heading>
-        <ColorGrid colors={colorScales} colorNumber={3} />
-        <Heading className={classes.heading}>Surface Active</Heading>
-        <ColorGrid colors={colorScales} colorNumber={4} />
+            <Heading className={classes.heading}>Border Subtle</Heading>
+            <ColorGrid colors={colorScales} colorNumber={5} />
+            <Heading className={classes.heading}>Border Default</Heading>
+            <ColorGrid colors={colorScales} colorNumber={6} />
+            <Heading className={classes.heading}>Border Strong</Heading>
+            <ColorGrid colors={colorScales} colorNumber={7} />
 
-        <Heading className={classes.heading}>Border Subtle</Heading>
-        <ColorGrid colors={colorScales} colorNumber={5} />
-        <Heading className={classes.heading}>Border Default</Heading>
-        <ColorGrid colors={colorScales} colorNumber={6} />
-        <Heading className={classes.heading}>Border Strong</Heading>
-        <ColorGrid colors={colorScales} colorNumber={7} />
+            <Heading className={classes.heading}>Text Subtle</Heading>
+            <ColorGrid colors={colorScales} colorNumber={11} />
+            <Heading className={classes.heading}>Text Default</Heading>
+            <ColorGrid colors={colorScales} colorNumber={12} />
+          </>
+        )}
 
-        <Heading className={classes.heading}>Text Subtle</Heading>
-        <ColorGrid colors={colorScales} colorNumber={11} />
-        <Heading className={classes.heading}>Text Default</Heading>
-        <ColorGrid colors={colorScales} colorNumber={12} />
+        {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
       </div>
       <Sidebar />
     </div>

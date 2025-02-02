@@ -1,5 +1,6 @@
 import type { ThemeInfo } from '@digdir/designsystemet/color';
 import { useDebugStore } from '../debugStore';
+import { ColorScaleNames } from '../utils';
 import classes from './Scales.module.css';
 
 export const Scales = () => {
@@ -27,6 +28,7 @@ export const Scales = () => {
     <div>
       {colorScales.map((innerScales, index) => (
         <div key={index} className={classes.scales}>
+          <div className={classes.title}>{ColorScaleNames[index]}</div>
           {innerScales.map((scale, index) => (
             <Scale key={index} scale={scale} />
           ))}

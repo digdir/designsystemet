@@ -1,0 +1,64 @@
+.checker {
+  width: 100%;
+}
+
+.input {
+  height: 46px;
+  border-radius: 4px;
+  border: 1px solid rgb(158, 158, 158);
+  width: 100%;
+  padding-left: 14px;
+  font-size: 16px;
+}
+
+.items {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.item {
+  position: relative;
+  width: 50%;
+}
+
+.colorInput {
+  position: relative;
+}
+
+.colorBtn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  border: 1px solid rgb(158, 158, 158);
+}
+
+.result {
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 4px;
+  margin-top: 16px;
+  min-height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 32px;
+}
+
+.picker {
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+
+.hidePicker {
+  display: none;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}

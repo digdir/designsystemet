@@ -31,12 +31,21 @@ export type ThemeSettingsType = {
     customModResult: number;
   };
 };
+export type PageType =
+  | 'main'
+  | 'saturation'
+  | 'baseContrast'
+  | 'scales'
+  | 'colorTable'
+  | 'mobile';
 
 type ColorStore = {
   themeSettings: ThemeSettingsType;
   setThemeSettings: (themeSettings: ThemeSettingsType) => void;
   referenceLuminance: LuminanceType;
   luminance: LuminanceType;
+  pageType: PageType;
+  setPageType: (pageType: PageType) => void;
   setLightLuminance: (luminance: LuminanceType) => void;
   setDarkLuminance: (luminance: LuminanceType) => void;
   colorScales: ThemeInfo[][];
@@ -69,6 +78,8 @@ export const useDebugStore = create(
         customModResult: 60,
       },
     },
+    pageType: 'main',
+    setPageType: (pageType) => set({ pageType }),
     setThemeSettings: (themeSettings) => set({ themeSettings }),
     luminance: luminance,
     referenceLuminance: luminance,

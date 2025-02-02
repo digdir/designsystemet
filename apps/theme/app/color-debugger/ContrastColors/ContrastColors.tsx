@@ -6,6 +6,7 @@ import {
 } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import { useDebugStore } from '../debugStore';
+import { ColorIndexes } from '../utils';
 import classes from './ContrastColors.module.css';
 
 export const ContrastColors = () => {
@@ -45,16 +46,22 @@ export const ContrastColors = () => {
     return (
       <div className={classes.item}>
         <div className={classes.color} style={{ backgroundColor: color }}>
-          <div
+          {/* <div
             className={classes.circle}
-            style={{ backgroundColor: scheme.light[13].hex }}
+            style={{
+              backgroundColor:
+                scheme.light[ColorIndexes.baseContrastDefaultIndex].hex,
+            }}
           ></div>
           {!hideSecondCircle && (
             <div
               className={classes.circle}
-              style={{ backgroundColor: scheme.light[14].hex }}
+              style={{
+                backgroundColor:
+                  scheme.light[ColorIndexes.baseContrastSubtleIndex].hex,
+              }}
             ></div>
-          )}
+          )} */}
         </div>
         <div className={classes.content}>
           <div className={classes.textContent}>
@@ -68,7 +75,12 @@ export const ContrastColors = () => {
             </div>
             <div>
               {!hideSecondCircle && (
-                <div>{contrastSection(color, scheme.light[14].hex)}</div>
+                <div>
+                  {contrastSection(
+                    color,
+                    scheme.light[ColorIndexes.baseContrastSubtleIndex].hex,
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -85,14 +97,17 @@ export const ContrastColors = () => {
           <div className={classes.groupContainer}>
             {outerScales.map((innerScale, key) => (
               <div key={key} className={classes.group}>
-                <Item color={innerScale.light[8].hex} scheme={innerScale} />
                 <Item
-                  color={innerScale.light[9].hex}
+                  color={innerScale.light[ColorIndexes.baseDefaultIndex].hex}
+                  scheme={innerScale}
+                />
+                <Item
+                  color={innerScale.light[ColorIndexes.baseHoverIndex].hex}
                   scheme={innerScale}
                   hideSecondCircle
                 />
                 <Item
-                  color={innerScale.light[10].hex}
+                  color={innerScale.light[ColorIndexes.baseActiveIndex].hex}
                   scheme={innerScale}
                   hideSecondCircle
                 />

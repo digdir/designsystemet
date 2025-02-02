@@ -1,13 +1,11 @@
 import { Field, Heading, Select } from '@digdir/designsystemet-react';
 import type { InterpolationMode } from 'chroma-js';
 
+import { getColorInfoFromPosition } from '@/packages/cli/dist/src';
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
-import { getFullNameFromShort } from '../logic/utils';
 import classes from './Sidebar.module.css';
-
-import {} from 'react-range';
 
 export const Sidebar = () => {
   const luminance = useDebugStore((state) => state.luminance);
@@ -200,9 +198,10 @@ export const Sidebar = () => {
                 <Select.Option value='hsv'>HSV</Select.Option>
                 <Select.Option value='hsi'>HSI</Select.Option>
                 <Select.Option value='lab'>LAB</Select.Option>
-                <Select.Option value='oklab'>OKLab</Select.Option>
                 <Select.Option value='hcl'>HCL</Select.Option>
                 <Select.Option value='lrgb'>lRGB</Select.Option>
+                <Select.Option value='oklch'>OKLCH</Select.Option>
+                <Select.Option value='oklab'>OKLab</Select.Option>
               </Select>
             </Field>
           </div>
@@ -216,20 +215,18 @@ export const Sidebar = () => {
         <div className={classes.group}>
           {Object.keys(luminance.light).map((key, index) => {
             if (
-              index === 8 ||
-              index === 9 ||
-              index === 10 ||
+              index === 11 ||
+              index === 12 ||
               index === 13 ||
-              index === 14
+              index === 14 ||
+              index === 15
             ) {
               return null;
             }
             return (
               <div key={key}>
                 <DoubleInput
-                  label={getFullNameFromShort(
-                    key as keyof typeof luminance.light,
-                  )}
+                  label={getColorInfoFromPosition(index + 1).displayName}
                   valueOne={luminance.light[
                     key as keyof typeof luminance.light
                   ].toString()}

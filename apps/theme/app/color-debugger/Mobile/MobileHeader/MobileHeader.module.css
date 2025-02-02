@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+}
+
+.time {
+  transform: scale(1);
+}
+
+.status {
+  transform: scale(1);
+}

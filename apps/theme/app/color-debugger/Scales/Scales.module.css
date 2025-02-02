@@ -13,3 +13,10 @@
   flex: 1;
   height: 50px;
 }
+
+.title {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}

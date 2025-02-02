@@ -1,0 +1,25 @@
+.menu {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 16px;
+  right: 0;
+  height: 42px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(187, 187, 187);
+}
+
+.item {
+  height: 42px;
+  padding: 0 12px;
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.active {
+  background-color: rgb(66, 66, 66);
+  color: white;
+}
