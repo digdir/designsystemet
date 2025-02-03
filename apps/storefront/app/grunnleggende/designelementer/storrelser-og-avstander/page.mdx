@@ -20,6 +20,56 @@ export default ({ children }) => (
   />
 );
 
+## Komponentstørrelser
+
+De fleste komponentene i designsystemet finnes i tre størrelser: Small, Medium og Large. 
+Disse er utviklet for å tilpasse seg ulike behov på tvers av skjermstørrelser og bruksområder.
+<Image
+  src='/img/component-size-buttons.png'
+  alt='Tabell som viser tekststørrelser og vekting, og i hviken grad de oppfyller kontrastkravet.'
+  boxShadow={true}
+  caption='Størrelser for komponenter i Designsystemet.'
+/>
+
+
+`Small` er ideell for kompakte grensesnitt der plassutnyttelse er viktig, som på mobile enheter eller tette paneler. 
+Det er anbefalt å bruke denne størrelsen på  nettsider med en basefont på 16px.
+
+`Medium` fungerer som standard for de fleste vanlige bruksområder, og er anbefalt å bruke sammen med en basefont på 18px. 
+Størrelsen gir en god balanse mellom lesbarhet og plassutnyttelse og egner seg spesielt godt for desktop-grensesnitt og større visningsflater.
+
+`Large` gir økt lesbarhet og tydelighet og kan brukes i desktop-grensesnitt eller når synlighet og tilgjengelighet er viktig. 
+Det er anbefalt å bruke størrelsen sammen med en basefont på 21px.
+
+<Image
+  src='/img/component-size-balance.png'
+  alt='Tabell som viser tekststørrelser og vekting, og i hviken grad de oppfyller kontrastkravet.'
+  boxShadow={true}
+  caption='Mange av medium-komponentene har en fast høyde på 48px.'
+/>
+
+Komponenter innenfor en bestemt størrelse er designet for å fungere sammen. 
+For eksempel har mange medium-komponenter en høyde på 48px og en basefont på 18px, noe som sikrer en harmonisk visuell balanse når de plasseres ved siden av hverandre.
+
+
+<Image
+  src='/img/component-size-example.png'
+  alt='Tabell som viser tekststørrelser og vekting, og i hviken grad de oppfyller kontrastkravet.'
+  boxShadow={true}
+  caption='Eksempel der Medium og Large komponenter er brukt sammen.'
+/>
+
+For å opprettholde et helhetlig og oversiktlig design anbefales det å bruke faste størrelser innenfor en gitt nettside eller kontekst. 
+For mange ulike størrelseskombinasjoner kan raskt skape et rotete og ustrukturert design.
+
+I enkelte tilfeller kan komponenter i ulike størrelser kombineres for å skape bedre visuelle hierarkier og brukervennlighet. 
+I eksempelet ovenfor er søkefeltseksjonen større og mer fremtredende enn komponentene i headeren, fordi søkefunksjonen er en sentral del av siden. 
+Den økte størrelsen gjør den mer synlig og lett tilgjengelig for brukeren.
+
+
+
+
+## Tokenstørrelser
 
 <TokenList
   type='dimension'
