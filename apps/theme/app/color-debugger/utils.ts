@@ -1,13 +1,20 @@
 export const ColorIndexes = {
+  backgroundDefault: 0,
+  backgroundTinted: 1,
+  surfaceDefault: 2,
+  surfaceTinted: 3,
+  surfaceHover: 4,
+  surfaceActive: 5,
+  borderSubtle: 6,
   borderDefault: 7,
-  borderStrongIndex: 8,
-  textSubtleIndex: 9,
-  textDefaultIndex: 10,
-  baseDefaultIndex: 11,
-  baseHoverIndex: 12,
-  baseActiveIndex: 13,
-  baseContrastSubtleIndex: 14,
-  baseContrastDefaultIndex: 15,
+  borderStrong: 8,
+  textSubtle: 9,
+  textDefault: 10,
+  baseDefault: 11,
+  baseHover: 12,
+  baseActive: 13,
+  baseContrastSubtle: 14,
+  baseContrastDefault: 15,
 };
 
 export const ColorScaleNames = [

@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.items {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.result {
+  border: 1px solid rgb(216, 216, 216);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+  gap: 16px;
+  font-size: 15px;
+  margin-top: 12px;
+  border-radius: 4px;
+}
+
+.resultItem {
+  width: calc(50% - 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.resultLabel {
+  font-weight: 500;
+}

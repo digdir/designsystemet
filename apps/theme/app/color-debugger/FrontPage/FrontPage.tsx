@@ -3,10 +3,11 @@ import {
   type ThemeInfo,
   getContrastFromHex,
 } from '@digdir/designsystemet/color';
-import {} from '@navikt/aksel-icons';
+import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 import chroma from 'chroma-js';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
+import { ColorInfo } from '../ColorInfo/ColorInfo';
 import { ColorScale } from '../ColorScale/ColorScale';
 import { ContrastChecker } from '../ContrastChecker/ContrastChecker';
 import {
@@ -15,24 +16,8 @@ import {
   useDebugStore,
 } from '../debugStore';
 import { generateColorSchemes } from '../logic/theme';
+import { ColorIndexes } from '../utils';
 import classes from './FrontPage.module.css';
-
-type ItemProps = {
-  text: string;
-  text2?: string;
-  text3?: string;
-  error: boolean;
-};
-
-const borderDefaultIndex = 7;
-const borderStrongIndex = 8;
-const textSubtleIndex = 9;
-const textDefaultIndex = 10;
-const baseDefaultIndex = 11;
-const baseHoverIndex = 12;
-const baseActiveIndex = 13;
-const baseContrastSubtleIndex = 14;
-const baseContrastDefaultIndex = 15;
 
 const generateBaseThemes = (
   luminance: LuminanceType,
@@ -58,12 +43,11 @@ export const FrontPage = () => {
 
   useEffect(() => {
     setBaseThemes(generateBaseThemes(luminance, themeSettings));
-    console.log('ff');
   }, [themeSettings.base.modifier]);
 
   const testColorContrasts = (
-    num1: number,
-    num2: number,
+    index1: number,
+    index2: number,
     contrastLimit: number,
     mode: 'light' | 'dark',
   ) => {
@@ -71,10 +55,10 @@ export const FrontPage = () => {
     for (let i = 0; i < baseThemes.length; i++) {
       const theme = baseThemes[i];
       const contrast = getContrastFromHex(
-        theme[mode][num1].hex,
-        theme[mode][num2].hex,
+        theme[mode][index1].hex,
+        theme[mode][index2].hex,
       );
-      if (contrast > contrastLimit) {
+      if (contrast >= contrastLimit) {
         passed++;
       } else {
       }
@@ -82,213 +66,185 @@ export const FrontPage = () => {
     return passed;
   };
 
-  const Item = ({ text, text2, text3, error }: ItemProps) => {
-    return (
-      <div className={cl(classes.item)}>
-        <div className={cl(classes.circle, error && classes.failed)}></div>
-        <div className={classes.title}>{text}</div>
-        {text2 && <div>{text2}</div>}
-        {text3 && <div>{text3}</div>}
-      </div>
-    );
+  type ContrastSectionProps = {
+    title: string;
+    desc: string;
+    error: boolean;
   };
 
-  const renderTextDefault = (mode: 'light' | 'dark') => (
-    <div key={mode + 'td'} className={classes.column}>
-      <div className={classes.header}>
-        <div>Text Default</div>
-      </div>
-      <div className={classes.items}>
-        {[
-          { index: 0, text: 'Background Default' },
-          { index: 1, text: 'Background Tinted' },
-          { index: 2, text: 'Surface Default' },
-          { index: 3, text: 'Surface Hover' },
-          { index: 4, text: 'Surface Active' },
-        ].map(({ index, text }) => (
-          <Item
-            key={index}
-            error={
-              getContrastFromHex(
-                theme[mode as keyof ThemeInfo][index].hex,
-                theme[mode as keyof ThemeInfo][textDefaultIndex].hex,
-              ) < 4.5
-            }
-            text={text}
-            text2={'4.5:1'}
-            text3={getContrastFromHex(
-              theme[mode as keyof ThemeInfo][index].hex,
-              theme[mode as keyof ThemeInfo][textDefaultIndex].hex,
-            ).toFixed(1)}
-          />
-        ))}
-      </div>
-    </div>
-  );
+  const getTextDefaultTests = (mode: 'light' | 'dark') => {
+    const tests = [
+      ColorIndexes.backgroundDefault,
+      ColorIndexes.backgroundTinted,
+      ColorIndexes.surfaceDefault,
+      ColorIndexes.surfaceTinted,
+      ColorIndexes.surfaceHover,
+      ColorIndexes.surfaceActive,
+    ];
 
-  const renderBorderDefault = (mode: 'light' | 'dark') => (
-    <div
-      key={mode + 'bd'}
-      className={cl(classes.column, classes.borderDefault)}
-    >
-      <div className={classes.header}>
-        <div>Border Default</div>
-      </div>
-      <div className={classes.items}>
-        {[
-          { index: 0, text: 'Background Default' },
-          { index: 1, text: 'Background Subtle' },
-        ].map(({ index, text }) => (
-          <Item
-            key={index}
-            error={
-              getContrastFromHex(
-                theme[mode as keyof ThemeInfo][index].hex,
-                theme[mode as keyof ThemeInfo][borderDefaultIndex].hex,
-              ) < 3
-            }
-            text={text}
-            text2={'3:1'}
-            text3={getContrastFromHex(
-              theme[mode as keyof ThemeInfo][index].hex,
-              theme[mode as keyof ThemeInfo][textDefaultIndex].hex,
-            ).toFixed(1)}
-          />
-        ))}
-      </div>
-    </div>
-  );
+    return tests.reduce((passed, index) => {
+      const contrast = getContrastFromHex(
+        theme[mode][index].hex,
+        theme[mode][ColorIndexes.textDefault].hex,
+      );
+      return passed + (contrast >= 4.5 ? 1 : 0);
+    }, 0);
+  };
 
-  const renderBorderStrong = (mode: 'light' | 'dark') => (
-    <div key={mode + 'bs'} className={classes.column}>
-      <div className={classes.header}>
-        <div>Border Strong</div>
-      </div>
-      <div className={classes.items}>
-        {[
-          { index: 0, text: 'Background Default' },
-          { index: 1, text: 'Background Subtle' },
-        ].map(({ index, text }) => (
-          <Item
-            key={index}
-            error={
-              getContrastFromHex(
-                theme[mode as keyof ThemeInfo][index].hex,
-                theme[mode as keyof ThemeInfo][borderStrongIndex].hex,
-              ) < 4.5
-            }
-            text={text}
-            text2={'4.5:1'}
-            text3={getContrastFromHex(
-              theme[mode as keyof ThemeInfo][index].hex,
-              theme[mode as keyof ThemeInfo][borderStrongIndex].hex,
-            ).toFixed(1)}
-          />
-        ))}
-      </div>
-    </div>
-  );
+  const getTextSubtleTests = (mode: 'light' | 'dark') => {
+    const tests = [
+      ColorIndexes.backgroundDefault,
+      ColorIndexes.backgroundTinted,
+      ColorIndexes.surfaceDefault,
+      ColorIndexes.surfaceTinted,
+    ];
 
-  const renderContrastDefault = (mode: 'light' | 'dark') => {
+    return tests.reduce((passed, index) => {
+      const contrast = getContrastFromHex(
+        theme[mode][index].hex,
+        theme[mode][ColorIndexes.textSubtle].hex,
+      );
+      return passed + (contrast >= 4.5 ? 1 : 0);
+    }, 0);
+  };
+
+  const getBorderDefaultTests = (mode: 'light' | 'dark') => {
+    const tests = [
+      ColorIndexes.backgroundDefault,
+      ColorIndexes.backgroundTinted,
+      ColorIndexes.surfaceDefault,
+      ColorIndexes.surfaceTinted,
+    ];
+
+    return tests.reduce((passed, index) => {
+      const contrast = getContrastFromHex(
+        theme[mode][index].hex,
+        theme[mode][ColorIndexes.borderDefault].hex,
+      );
+      return passed + (contrast >= 3 ? 1 : 0);
+    }, 0);
+  };
+
+  const getBorderStrongTests = (mode: 'light' | 'dark') => {
+    const tests = [
+      ColorIndexes.backgroundDefault,
+      ColorIndexes.backgroundTinted,
+      ColorIndexes.surfaceDefault,
+      ColorIndexes.surfaceTinted,
+    ];
+
+    return tests.reduce((passed, index) => {
+      const contrast = getContrastFromHex(
+        theme[mode][index].hex,
+        theme[mode][ColorIndexes.borderStrong].hex,
+      );
+      return passed + (contrast >= 4.5 ? 1 : 0);
+    }, 0);
+  };
+
+  const getContrastDefaultTests = (mode: 'light' | 'dark') => {
+    let passed = 0;
+    const test1 = testColorContrasts(
+      ColorIndexes.baseDefault,
+      ColorIndexes.baseContrastDefault,
+      4.5,
+      mode,
+    );
+    const test2 = testColorContrasts(
+      ColorIndexes.baseHover,
+      ColorIndexes.baseContrastDefault,
+      4.5,
+      mode,
+    );
+    const test3 = testColorContrasts(
+      ColorIndexes.baseActive,
+      ColorIndexes.baseContrastDefault,
+      4.5,
+      mode,
+    );
+    passed += test1 + test2 + test3;
+
+    return passed;
+  };
+
+  const getContrastSubtleTests = (mode: 'light' | 'dark') => {
+    let passed = 0;
+    const test1 = testColorContrasts(
+      ColorIndexes.baseDefault,
+      ColorIndexes.baseContrastSubtle,
+      4.5,
+      mode,
+    );
+    passed += test1;
+
+    return passed;
+  };
+
+  const ContrastSection = ({ title, desc, error }: ContrastSectionProps) => {
     return (
-      <div
-        key={mode + 'cd'}
-        className={cl(classes.column, classes.contrastDefault)}
-      >
-        <div className={classes.header}>
-          <div>Contrast Default</div>
-        </div>
-        <div className={classes.items}>
-          {[
-            {
-              baseIndex: baseDefaultIndex,
-              text: 'Base Default',
-              ratio: 4.5,
-            },
-            {
-              baseIndex: baseHoverIndex,
-              text: 'Base Hover',
-              ratio: 4.5,
-            },
-            {
-              baseIndex: baseActiveIndex,
-              text: 'Base Active',
-              ratio: 3,
-            },
-          ].map(({ baseIndex, text, ratio }) => (
-            <Item
-              key={text}
-              error={
-                testColorContrasts(
-                  baseIndex,
-                  baseContrastDefaultIndex,
-                  ratio,
-                  mode as 'light' | 'dark',
-                ) !== 100
-              }
-              text={`${text}`}
-              text2={`${ratio}:1`}
-              text3={`${testColorContrasts(
-                baseIndex,
-                baseContrastDefaultIndex,
-                ratio,
-                mode as 'light' | 'dark',
-              )} / 100`}
-            />
-          ))}
+      <div className={classes.contrastTestsItem}>
+        {error && (
+          <div className={classes.sectionCircle}>
+            <XMarkIcon title='a11y-title' fontSize='2.2rem' />
+          </div>
+        )}
+        {!error && (
+          <div className={cl(classes.sectionCircle, classes.passed)}>
+            <CheckmarkIcon title='a11y-title' fontSize='2.2rem' />
+          </div>
+        )}
+        <div className={classes.sectionTextContainer}>
+          <div className={classes.sectionHeading}>{title}</div>
+          <div className={classes.sectionDesc}>{desc}</div>
         </div>
       </div>
     );
   };
-
-  const renderContrastSubtle = (mode: 'light' | 'dark') => (
-    <div key={mode} className={classes.column}>
-      <div className={classes.header}>
-        <div>Contrast Subtle</div>
-      </div>
-      <div className={classes.items}>
-        <Item
-          error={
-            testColorContrasts(
-              baseDefaultIndex,
-              baseContrastSubtleIndex,
-              4.5,
-              mode as 'light' | 'dark',
-            ) !== 100
-          }
-          text='Base Default'
-          text2='3:1'
-          text3={
-            testColorContrasts(
-              baseDefaultIndex,
-              baseContrastSubtleIndex,
-              4.5,
-              mode as 'light' | 'dark',
-            ) === 100
-              ? 'Tests passed'
-              : 'Some tests failed'
-          }
-        />
-      </div>
-    </div>
-  );
 
   return (
     <div className={classes.container}>
       <ColorScale />
 
       <div className={classes.panel}>
-        <ContrastChecker />
+        <ColorInfo />
       </div>
       <div className={classes.panel}>
         <ContrastChecker />
       </div>
 
-      <div className={cl(classes.panel, classes.fullPanel)}>
-        <div className={cl(classes.group)}>
-          {renderTextDefault('light')} {renderBorderDefault('light')}
-          {renderContrastDefault('light')} {renderContrastSubtle('light')}
-          {renderBorderStrong('light')}
+      <div className={classes.contrastTests}>
+        <div className={classes.contrastTestsHeading}>Contrast tests</div>
+        <div className={classes.contrastTestsItems}>
+          <ContrastSection
+            title='Text default'
+            desc={getTextDefaultTests('light') + ' / 6 tests passed'}
+            error={getTextDefaultTests('light') !== 6}
+          />
+          <ContrastSection
+            title='Text subtle'
+            desc={getTextSubtleTests('light') + ' / 4 tests passed'}
+            error={getTextSubtleTests('light') !== 4}
+          />
+          <ContrastSection
+            title='Border default'
+            desc={getBorderDefaultTests('light') + ' / 4 tests passed'}
+            error={getBorderDefaultTests('light') !== 4}
+          />
+          <ContrastSection
+            title='Border strong'
+            desc={getBorderStrongTests('light') + ' / 4 tests passed'}
+            error={getBorderStrongTests('light') !== 4}
+          />
+          <ContrastSection
+            title='Base contrast default'
+            desc={getContrastDefaultTests('light') + ' / 300 tests passed'}
+            error={getBorderStrongTests('light') !== 300}
+          />
+          <ContrastSection
+            title='Base contrast subtle'
+            desc={getContrastSubtleTests('light') + ' / 100 tests passed'}
+            error={getContrastSubtleTests('light') !== 100}
+          />
         </div>
       </div>
     </div>

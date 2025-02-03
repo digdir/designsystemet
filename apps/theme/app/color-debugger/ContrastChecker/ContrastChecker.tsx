@@ -74,6 +74,7 @@ export const ContrastChecker = () => {
 
   return (
     <div className={classes.checker}>
+      <div className={classes.heading}>Contrast checker</div>
       <div className={classes.items}>
         <div className={classes.item}>
           <div className={classes.label}>Foreground</div>
