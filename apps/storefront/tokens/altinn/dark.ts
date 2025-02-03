@@ -2309,7 +2309,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#2f1607",
+    $value: "#281a05",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2327,7 +2327,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3b1c09",
+    $value: "#322106",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2345,7 +2345,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#45210b",
+    $value: "#3b2707",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2363,7 +2363,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#4d250c",
+    $value: "#412b08",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2381,7 +2381,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5f2e0f",
+    $value: "#513609",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2399,7 +2399,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#723612",
+    $value: "#61400b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2417,7 +2417,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#823e14",
+    $value: "#6f490d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2435,7 +2435,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bd632d",
+    $value: "#a97013",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2453,7 +2453,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d2946e",
+    $value: "#dd9219",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2471,7 +2471,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d2946e",
+    $value: "#dd9219",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2489,7 +2489,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f2e2d7",
+    $value: "#f9e2bc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2507,7 +2507,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bc612a",
+    $value: "#60400b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2525,7 +2525,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#c87d4f",
+    $value: "#7a510e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2543,7 +2543,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d39772",
+    $value: "#946211",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2561,7 +2561,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#070301",
+    $value: "#e6e2d9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2579,7 +2579,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#000000",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -3116,7 +3116,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "3.75rem",
@@ -3146,7 +3146,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "3rem",
@@ -3176,7 +3176,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "2.25rem",
@@ -3206,7 +3206,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.875rem",
@@ -3236,7 +3236,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.5rem",
@@ -3266,7 +3266,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.3125rem",
@@ -3296,7 +3296,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.125rem",
@@ -3326,7 +3326,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.5rem",
@@ -3356,7 +3356,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.3125rem",
@@ -3386,7 +3386,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.125rem",
@@ -3416,7 +3416,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1rem",
@@ -3446,7 +3446,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "0.875rem",
@@ -3476,7 +3476,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.5rem",
@@ -3507,7 +3507,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.3125rem",
@@ -3538,7 +3538,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.125rem",
@@ -3569,7 +3569,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1rem",
@@ -3600,7 +3600,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "0.875rem",
@@ -3631,7 +3631,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.5rem",
@@ -3662,7 +3662,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.3125rem",
@@ -3693,7 +3693,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.125rem",
@@ -3724,7 +3724,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1rem",
@@ -3755,7 +3755,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "0.875rem",
