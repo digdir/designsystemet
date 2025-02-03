@@ -201,7 +201,7 @@
     "warning": {
       "background-default": {
         "$type": "color",
-        "$value": "{global.orange .1}"
+        "$value": "{global.orange.1}"
       },
       "background-tinted": {
         "$type": "color",
