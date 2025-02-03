@@ -4169,7 +4169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:2.1.8, @vitest/expect@npm:^2.1.8":
+"@vitest/expect@npm:2.1.8":
   version: 2.1.8
   resolution: "@vitest/expect@npm:2.1.8"
   dependencies:
@@ -4181,7 +4181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:3.0.4":
+"@vitest/expect@npm:3.0.4, @vitest/expect@npm:^3.0.0":
   version: 3.0.4
   resolution: "@vitest/expect@npm:3.0.4"
   dependencies:
@@ -11825,7 +11825,7 @@ __metadata:
     "@types/node": "npm:^22.10.7"
     "@vitejs/plugin-react-swc": "npm:^3.7.2"
     "@vitest/coverage-v8": "npm:^2.1.8"
-    "@vitest/expect": "npm:^2.1.8"
+    "@vitest/expect": "npm:^3.0.0"
     chromatic: "npm:^11.25.0"
     copyfiles: "npm:^2.4.1"
     tsconfck: "npm:^3.1.4"
