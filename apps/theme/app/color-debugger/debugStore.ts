@@ -3,9 +3,9 @@ import {
   generateColorSchemes,
   luminance,
 } from '@digdir/designsystemet/color';
-import type { InterpolationMode } from 'chroma-js';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
+import type { InterpolationMode } from './logic/theme';
 
 export type BaseBorderRadius = number;
 export type LuminanceType = typeof luminance;
