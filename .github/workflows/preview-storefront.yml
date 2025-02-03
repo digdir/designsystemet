@@ -45,7 +45,7 @@ jobs:
         run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.designsystemet.no
 
       - name: Find Preview Comment
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
           issue-number: ${{ env.PR_NUMBER }}
@@ -77,7 +77,7 @@ jobs:
           timezone: Europe/Oslo
 
       - name: Update comment with deployment
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ env.PR_NUMBER }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
