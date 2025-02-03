@@ -41,7 +41,35 @@ export type UsePaginationProps = {
   showPages?: number;
 };
 
-/** Hook to help manage pagination state */
+/**
+ * Hook to help manage pagination state
+ *
+ * @example
+ * const { pages, nextButtonProps, prevButtonProps } = usePagination({
+ *   currentPage: page,
+ *   totalPages: 10,
+ *   showPages: 7,
+ *   setCurrentPage,
+ * })
+ *
+ * <Pagination>
+ *   <Pagination.Item>
+ *     <Pagination.Button {...prevButtonProps}>Forrige</Pagination.Button>
+ *   </Pagination.Item>
+ *   {pages.map(({ page, itemKey, buttonProps }) => (
+ *     <Pagination.Item key={itemKey}>
+ *       {typeof page === 'number' && (
+ *         <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+ *           {page}
+ *         </Pagination.Button>
+ *       )}
+ *     </Pagination.Item>
+ *   ))}
+ *   <Pagination.Item>
+ *     <Pagination.Button {...nextButtonProps}>Neste</Pagination.Button>
+ *   </Pagination.Item>
+ * </Pagination>
+ **/
 export const usePagination = ({
   currentPage = 1,
   setCurrentPage,

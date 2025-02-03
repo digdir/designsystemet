@@ -5,12 +5,15 @@ import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
 import { Context } from './Tabs';
 
 export type TabsTabProps = {
-  /** Value that will be set in the `Tabs` components state when the tab is activated */
+  /**
+   * Unique value that will be set in the `Tabs` components state when the tab is activated
+   */
   value: string;
 } & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
 
 /**
  * A single item in a Tabs component.
+ *
  * @example
  * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
  */

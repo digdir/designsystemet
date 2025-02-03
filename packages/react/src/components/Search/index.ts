@@ -4,16 +4,20 @@ import { SearchClear } from './SearchClear';
 import { SearchInput } from './SearchInput';
 
 /**
- * Search field
+ * Search component, use to display different variations of a search input
  *
- * @example
- * ```tsx
+ * @example with button
  * <Search>
- *  <Search.Input aria-label='Søk' />
- *  <Search.Clear />
- *  <Search.Button />
+ *   <Search.Input aria-label='Søk' />
+ *   <Search.Clear />
+ *   <Search.Button />
  * </Search>
- * ```
+ *
+ * @example with icon
+ * <Search>
+ *   <Search.Input aria-label='Søk' />
+ *   <Search.Clear />
+ * </Search>
  */
 const Search = Object.assign(SearchRoot, {
   Clear: SearchClear,

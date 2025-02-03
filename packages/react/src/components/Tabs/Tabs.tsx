@@ -7,11 +7,20 @@ import type { MergeRight } from '../../utilities';
 export type TabsProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
   {
-    /** Controlled state for `Tabs` component. */
+    /**
+     * Controlled state for `Tabs` component
+     * @default undefined
+     */
     value?: string;
-    /** Default value. */
+    /**
+     * Default selected tab value
+     * @default undefined
+     */
     defaultValue?: string;
-    /** Callback with selected `TabItem` `value` */
+    /**
+     * Callback with selected `TabItem` `value`
+     * @default undefined
+     */
     onChange?: (value: string) => void;
   }
 >;
@@ -26,8 +35,8 @@ export const Context = createContext<ContextProps>({});
 
 /**
  * Display a group of tabs that can be toggled between.
+ *
  * @example
- * ```tsx
  * <Tabs onChange={(value) => console.log(value)}>
  *   <Tabs.List>
  *     <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
@@ -38,7 +47,6 @@ export const Context = createContext<ContextProps>({});
  *   <Tabs.Panel value='2'>content 2</Tabs.Panel>
  *   <Tabs.Panel value='3'>content 3</Tabs.Panel>
  * </Tabs>
- * ```
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },

@@ -4,17 +4,22 @@ import { BreadcrumbsLink } from './BreadcrumbsLink';
 import { BreadcrumbsList } from './BreadcrumbsList';
 
 /**
- * Breadcrumbs are used to visualize the current page path.
+ * `Breadcrumbs` is a component that displays a list of breadcrumbs.
+ *
  * @example
- * <Breadcrumbs aria-label="You are here:">
- *  <Breadcrumbs.Link aria-label="Go back to level 2">Level 2</Breadcrumbs.Link>
+ * <Breadcrumbs aria-label='Du er her:' {...args}>
+ *  <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 1'>
+ *    Nivå 1
+ *  </Breadcrumbs.Link>
  *  <Breadcrumbs.List>
- *   <Breadcrumbs.Item><Breadcrumbs.Link>Level 1</Breadcrumbs.Link></Breadcrumbs.Item>
- *   <Breadcrumbs.Item><Breadcrumbs.Link>Level 2</Breadcrumbs.Link></Breadcrumbs.Item>
- *   <Breadcrumbs.Item><Breadcrumbs.Link>Level 3</Breadcrumbs.Link></Breadcrumbs.Item>
- *   <Breadcrumbs.Item><Breadcrumbs.Link>Level 4</Breadcrumbs.Link></Breadcrumbs.Item>
+ *    <Breadcrumbs.Item>
+ *      <Breadcrumbs.Link href='#'>Nivå 1</Breadcrumbs.Link>
+ *    </Breadcrumbs.Item>
+ *    <Breadcrumbs.Item>
+ *      <Breadcrumbs.Link href='#'>Nivå 2</Breadcrumbs.Link>
+ *    </Breadcrumbs.Item>
  *  </Breadcrumbs.List>
- * <Breadcrumbs>
+ * </Breadcrumbs>
  */
 export const Breadcrumbs = Object.assign(BreadcrumbsParent, {
   List: BreadcrumbsList,

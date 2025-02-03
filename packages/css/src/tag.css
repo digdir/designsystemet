@@ -1,5 +1,5 @@
 .ds-tag {
-  --dsc-tag-background: var(--ds-color-surface-default);
+  --dsc-tag-background: var(--ds-color-surface-tinted);
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
@@ -9,17 +9,25 @@
   border-radius: var(--ds-border-radius-sm);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
+  height: fit-content; /* In case placed in display: flex */
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
   width: max-content;
   word-break: break-word;
 
+  & :where(img, svg) {
+    flex-shrink: 0;
+    font-size: 1.25em;
+  }
+
   &:not([hidden]) {
     display: inline-flex;
   }
 
   @media (forced-colors: active) {
-    border: 1px solid CanvasText;
+    border-width: 1px;
+    border-style: solid;
+    border-color: CanvasText;
   }
 }

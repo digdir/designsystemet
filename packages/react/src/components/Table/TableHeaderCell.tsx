@@ -9,6 +9,12 @@ export type TableHeaderCellProps = {
   sort?: AriaAttributes['aria-sort'];
 } & ThHTMLAttributes<HTMLTableCellElement>;
 
+/**
+ * TableHeaderCell component, used to display the header cells of a table. Renders a native HTML th element.
+ *
+ * @example
+ * <Table.HeaderCell>Name</Table.HeaderCell>
+ */
 export const TableHeaderCell = forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps

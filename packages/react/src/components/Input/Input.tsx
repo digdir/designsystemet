@@ -36,27 +36,31 @@ export type InputProps = MergeRight<
       | 'time'
       | 'url'
       | 'week';
-
-    /** Defines the width of `Input` in count of characters.
+    /**
+     * Defines the width of `Input` in count of characters.
      */
     size?: number;
-    /** Disables element
+    /**
+     * Disables element
      * @note Avoid using if possible for accessibility purposes
      */
     disabled?: boolean;
-    /** Toggle `readOnly` */
+    /**
+     * Toggle `readOnly`
+     **/
     readOnly?: boolean;
-    /** Set role, i.e. `switch` when `checkbox` or `radio` */
+    /**
+     * Set role, i.e. `switch` when `checkbox` or `radio`
+     **/
     role?: InputAttr['role'];
   }
 >;
 
-/** Input field
+/**
+ * Input renders a native `input` element.
  *
  * @example
- * ```tsx
  * <Input />
- * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { type = 'text', className, onChange, onClick, ...rest },

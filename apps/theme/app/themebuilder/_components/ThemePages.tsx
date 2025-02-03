@@ -3,7 +3,7 @@
 import {
   type ColorInfo,
   type ColorNumber,
-  getColorNameFromNumber,
+  getColorInfoFromPosition,
 } from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
@@ -59,8 +59,8 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-neutral-${getColorNameFromNumber(number)
-          .replace(/\s+/g, '-')
+        `--ds-color-neutral-${getColorInfoFromPosition(number)
+          .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }
@@ -83,8 +83,8 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorNameFromNumber(number)
-          .replace(/\s+/g, '-')
+        `--ds-color-${getColorInfoFromPosition(number)
+          .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }
@@ -108,23 +108,22 @@ export const ThemePages = () => {
   return (
     <>
       <div
-        className={classes.panel}
+        className={classes.basicPanel}
         data-color-scheme={appearance}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
         <OverviewComponents ref={containerRef} />
       </div>
+      <div
+        className={cl(classes.basicPanel, classes.colorsContainer)}
+        data-color-scheme={appearance}
+        hidden={!(themeTab === 'colorsystem')}
+      >
+        <Colors />
+      </div>
 
       <>
-        <div
-          className={cl(classes.panel, classes.colorsContainer)}
-          data-color-scheme={appearance}
-          hidden={!(themeTab === 'colorsystem')}
-        >
-          <Colors />
-        </div>
-
         <div
           className={classes.panel}
           data-color-scheme={appearance}

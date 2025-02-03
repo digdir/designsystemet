@@ -1,18 +1,22 @@
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-background-default);
+  --dsc-togglegroup-border-width: 1px;
+  --dsc-togglegroup-border-style: solid;
   --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
-  --dsc-togglegroup-padding: var(--ds-size-1);
+  --dsc-togglegroup-spacing: var(--ds-size-1);
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
+  --dsc-togglegroup-button-size: var(--ds-size-10);
 
   background: var(--dsc-togglegroup-background);
-  border-radius: calc(var(--dsc-togglegroup-border-radius) + var(--dsc-togglegroup-padding));
-  border: 1px solid;
+  border-radius: var(--dsc-togglegroup-border-radius);
+  border-width: var(--dsc-togglegroup-border-width);
+  border-style: var(--dsc-togglegroup-border-style);
   border-color: var(--dsc-togglegroup-border-color);
-  gap: var(--dsc-togglegroup-padding);
+  gap: var(--dsc-togglegroup-spacing);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   height: fit-content;
-  padding: var(--dsc-togglegroup-padding);
+  padding: var(--dsc-togglegroup-spacing);
   width: fit-content;
 
   &:not([hidden]) {
@@ -20,7 +24,14 @@
   }
 
   button {
-    border-radius: var(--dsc-togglegroup-border-radius);
+    border-radius: calc(var(--dsc-togglegroup-border-radius) - calc(var(--dsc-togglegroup-spacing) / 2));
+    min-height: var(--dsc-togglegroup-button-size);
+    min-width: var(--dsc-togglegroup-button-size);
+
+    &[data-icon] {
+      height: var(--dsc-togglegroup-button-size);
+      width: var(--dsc-togglegroup-button-size);
+    }
 
     @media (forced-colors: active) {
       &[aria-checked='true'] {

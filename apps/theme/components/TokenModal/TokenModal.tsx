@@ -34,12 +34,16 @@ export const TokenModal = () => {
     return str;
   };
 
-  const cliSnippet = `npx @digdir/designsystemet@next tokens create \\
-   --${colorCliOptions.main} ${setCliColors(colors.main)} \\
-   --${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}" \\
-   --${colorCliOptions.support} ${setCliColors(colors.support)} \\
-   --border-radius ${baseBorderRadius} \\
-   --theme "${themeName}"`;
+  const cliSnippet = [
+    `npx @digdir/designsystemet@next tokens create`,
+    `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
+    `--${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}"`,
+    `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
+    `--border-radius ${baseBorderRadius}`,
+    `--theme "${themeName}"`,
+  ]
+    .filter(Boolean)
+    .join(' \\\n');
 
   return (
     <Modal.TriggerContext>

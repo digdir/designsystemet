@@ -5,6 +5,17 @@ export type PopoverTriggerContextProps = {
   children: ReactNode;
 };
 
+/**
+ * PopoverTriggerContext component, use to wrap a Popover.Trigger and Popover.
+ *
+ * @example
+ * <Popover.TriggerContext>
+ *   <Popover.Trigger>Open Popover</Popover.Trigger>
+ *   <Popover>
+ *     Content
+ *   </Popover>
+ * </Popover.TriggerContext>
+ */
 export const PopoverTriggerContext = ({
   children,
 }: PopoverTriggerContextProps) => {

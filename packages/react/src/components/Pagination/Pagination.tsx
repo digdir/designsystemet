@@ -21,6 +21,24 @@ export type PaginationProps = MergeRight<
   }
 >;
 
+/**
+ * Pagination component, used to navigate through a list of items.
+ *
+ * @example
+ * <Pagination>
+ *   <Pagination.List>
+ *     <Pagination.Item>
+ *       <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
+ *     </Pagination.Item>
+ *     <Pagination.Item>
+ *       <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
+ *     </Pagination.Item>
+ *     <Pagination.Item>
+ *       <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+ *     </Pagination.Item>
+ *   </Pagination.List>
+ * </Pagination>
+ */
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   function Pagination(
     { 'aria-label': ariaLabel = 'Sidenavigering', asChild, className, ...rest },

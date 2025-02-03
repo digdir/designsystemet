@@ -16,7 +16,7 @@ type ColorProps = {
   showColorMeta?: boolean;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
 
-const Color = forwardRef<HTMLButtonElement, ColorProps>(
+export const Color = forwardRef<HTMLButtonElement, ColorProps>(
   (
     { color, contrast, featured, lightness, showColorMeta = true, ...rest },
     ref,
@@ -35,7 +35,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
             )}
             type='button'
             {...omit(['colorNumber'], rest)}
-          ></button>
+          />
         </Slottable>
 
         {showColorMeta && (
@@ -54,5 +54,3 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
     );
   },
 );
-
-export { Color };

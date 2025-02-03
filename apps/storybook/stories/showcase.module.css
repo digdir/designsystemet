@@ -8,6 +8,6 @@
 }
 
 .controls code {
-  background: var(--ds-color-neutral-background-subtle);
+  background: var(--ds-color-neutral-background-tinted);
   padding: var(--ds-size-1);
 }

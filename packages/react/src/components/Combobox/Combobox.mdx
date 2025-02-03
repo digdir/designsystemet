@@ -1,11 +1,15 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 import css from '@digdir/designsystemet-css/combobox.css?inline';
 import { CssVariables } from '@doc-components';
+import { Alert } from '../Alert';
 import * as ComboboxStories from './Combobox.stories';
 
 import { Combobox } from '.';
 
 <Meta of={ComboboxStories} />
+
+<Alert data-color="danger">Combobox er avviklet. Bruk heller Suggestion komponenten.</Alert>
+<br />
 
 # Combobox
 
