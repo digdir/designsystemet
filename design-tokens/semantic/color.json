@@ -531,39 +531,39 @@
     "warning": {
       "background-default": {
         "$type": "color",
-        "$value": "{global.yellow.1}"
+        "$value": "{global.orange.1}"
       },
       "background-tinted": {
         "$type": "color",
-        "$value": "{global.yellow.2}"
+        "$value": "{global.orange.2}"
       },
       "surface-default": {
         "$type": "color",
-        "$value": "{global.yellow.3}"
+        "$value": "{global.orange.3}"
       },
       "surface-tinted": {
         "$type": "color",
-        "$value": "{global.yellow.4}"
+        "$value": "{global.orange.4}"
       },
       "surface-hover": {
         "$type": "color",
-        "$value": "{global.yellow.5}"
+        "$value": "{global.orange.5}"
       },
       "surface-active": {
         "$type": "color",
-        "$value": "{global.yellow.6}"
+        "$value": "{global.orange.6}"
       },
       "border-subtle": {
         "$type": "color",
-        "$value": "{global.yellow.7}"
+        "$value": "{global.orange.7}"
       },
       "border-default": {
         "$type": "color",
-        "$value": "{global.yellow.8}"
+        "$value": "{global.orange.8}"
       },
       "border-strong": {
         "$type": "color",
-        "$value": "{global.yellow.9}"
+        "$value": "{global.orange.9}"
       },
       "text-subtle": {
         "$type": "color",
