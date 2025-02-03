@@ -249,9 +249,9 @@ Målet vårt var å finne luminans-verdiar i RGB-fargerommet ved å justere farg
 
 I biletet over er det 2 fargar heilt til venstre med luminans-verdiane `0.12` og `0.33`. 
 Desse fargane fungerer som utgangspunkt for interpoleringa. 
-Målet er å finne luminans-verdien `0.7` for begge fargane i RGB-fargerommet, som du kan sjå heilt til høgre.
-For å gjere dette ser me først på kva luminans-verdiar me har å jobbe med i fargane heilt til venstre.
-Begge desse verdiane er lågare enn `0.7`. Me må derfor 'tinte' fargane for å få dei til å nærme seg `0.7`.
+Målet i dette eksempelet er å finne luminans-verdien `0.7` for begge fargane i RGB-fargerommet, som du kan sjå heilt til høgre.
+For å gjere dette må me først sjå på kva luminans-verdiar me har å jobbe med i fargane heilt til venstre.
+Begge desse verdiane er lågare enn `0.7`. Me må derfor "tinte" fargane for å få dei til å nærme seg `0.7`.
 
 I eksempelet over "tintar" me fargane med 10% om og om igjen, heilt til me oppnår luminans-verdien som er så nær `0.7` som mogleg.
 I iterasjon 3 av blåfargen (fargen rett til venstre for resultatet) ser me at luminans-verdien er `0.34`. 
@@ -282,7 +282,7 @@ Dette var veldig nyttig, fordi då me då enkelt lage reglar på korleis fargane
   dataUnstyled
 />
 
-I biletet over ser du 4 fargeskalaer som vert generert basert på dei 4 fargane som du finn i toppen av biletet.
+I biletet over ser du 4 fargeskalaer som vert generert basert på dei 4 fargane som du ser i toppen av biletet.
 
 
 ### "Base"-gruppa
@@ -305,9 +305,10 @@ Det er litt meir logikk som skjer her bak panseret, men det er ikkje avgjerande 
 I biletet over ser du ein seksjon til venstre der `Base Hover` og `Base Active` fargane vert lysare, 
 og ein seksjon til høgre der fargane vert mørkare.
 Måten me lagar desse fargane på er at me legg til, eller trekker frå, lightness frå fargen i HSLuv fargerommet.
-Grunnen til at me brukar HSLuv er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
+Grunnen til at me brukar HSLuv her er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
 
 Me opplevde at luminans fungerte dårleg som utgangspunkt for å seie at ein farge skulle bli 8% lysare eller mørkare. 
+Me hadde difor behov for eit fargerom med ein lightness-komponent for å hjelpe oss med dette.
 Etter at me fann lightness-verdien og luminans-verdien til fargen, interpolerte me fargen på same måte som forklart tidlegare.
 
 ## Vidare arbeid med fargegenereringa og oppsummering
