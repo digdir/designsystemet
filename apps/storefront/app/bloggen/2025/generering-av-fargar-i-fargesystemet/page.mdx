@@ -53,7 +53,8 @@ Dette var utgangspunktet for måten me ønskte å lage fargeskalaene på. Ved å
 
 ## Ulike teknikkar for å lage fargeskalaer
 To av dei vanlegaste måtane å lage fargar på er ved å bruke RGB- og HSL-fargeromma.
-Me skal no sjå nærare på korleis desse metodane fungerer og korleis resultata ser ut. I eksempla brukar me den raude profilfargen til Digdir som utgangspunkt for å lage skalaene. 
+Me skal no sjå nærare på korleis desse metodane fungerer og korleis resultata ser ut. 
+I eksempla brukar me den raude profilfargen til Digdir som utgangspunkt for å lage skalaene. 
 Grunnen til at me valde nettopp denne fargen var fordi den fungerte bra for å vise fram problemstillingar og effektar av fargegenereringa.
 
 
@@ -112,8 +113,7 @@ I døma vil me sjå på nokre av desse teknikkane og korleis dei fungerer.
 
 Ein vanleg metode er å justere ligthtness til ein farge for å gjere den mørkare eller lysare. 
 I biletet over har me tatt utgangspunkt i den raude profilfargen til Digdir og sett faste lightness-verdiar for å lage ulike valørar.
-Samanlikna med RGB-teknikken, 
- ser me at fargane vart mykje meir saturterte i dei øvre skalaene. 
+Samanlikna med RGB-teknikken, ser me at fargane vart mykje meir saturterte i dei øvre skalaene. 
 Dette gjev meining fordi me ikkje har justert på satueringsverdiane. 
 Dette viser veldig godt ei utfordring med mange av fargeromma som brukar lightness for å definere lysstyrken i fargen.
 Endrar me på denne verdien vil fargane ofte ende opp med å sjå oversaturerte og ubalanserte ut.
@@ -209,7 +209,7 @@ Begge gjer det enklare å lage fine og harmoniske fargar, men OKLCH er meir nøy
   dataUnstyled
 />
 
-I biletet ovanfor blir to fargeskalaer vist i OKLCH-fargerommet, begge basert på profilfargane til Digdir
+I biletet ovanfor blir to fargeskalaer vist i OKLCH-fargerommet, begge basert på profilfargane til Digdir.
 Det som er spesielt interessant, er at fargane med 70 % lightness i skalaene ovanfor har nesten identisk kontrast mot svart tekst. 
 Dette betyr i praksis at ein kan generere så mange fargeskalaer som ein ynskjer, og sikre at kontrastane mellom dei ulike stega i fargeskalaene alltid vil være like.
 
@@ -221,10 +221,10 @@ For å gjere dette må me første snakke om interpolering.
 
 ## Interpolering av fargar i RGB-fargerommet
 Interpolering er ein matematisk metode for å estimere verdiar mellom to kjende datapunkt. 
-Det vert ofte brukt når ein arbeider med eit datasett og vil estimere verdiar mellom eksisterande datapunkt
+Det vert ofte brukt når ein arbeider med eit datasett og vil estimere verdiar mellom eksisterande datapunkt.
 Interpolering av fargar handlar om å trekkje ei linje mellom to punkt i eit gjeve fargerom. 
 Resultatet varierer mykje avhengig av kva fargerom som blir brukt, og om linja er rett eller kurva. 
-I vårt tilfelle handla det om å trekke ei linje gjennom RGB-fargerommet
+I vårt tilfelle handla det om å trekke ei linje gjennom RGB-fargerommet.
  
  <Image
   src='/img/bloggen/interpolering.png'
@@ -236,7 +236,7 @@ I vårt tilfelle handla det om å trekke ei linje gjennom RGB-fargerommet
 
 Me visste allereie at WCAG brukte relativ luminans for å kalkulere kontrasten mellom to fargar. 
 For å sikre at kontrasten mellom to fargar alltid blir lik, må den relative luminansen og vere lik.
-Målet vårt var å finne luminans-verdiar i RGB-fargerommet ved å justere fargane gjennom «tinting» og «shading» heilt til me oppnådde den ønska luminansen
+Målet vårt var å finne luminans-verdiar i RGB-fargerommet ved å justere fargane gjennom «tinting» og «shading» heilt til me oppnådde den ønska luminansen.
 Å bevege seg iterativt gjennom eit fargerom på denne måten er ei form for interpolering.
 
  <Image
