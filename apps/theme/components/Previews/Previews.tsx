@@ -6,7 +6,7 @@ import {
   type ColorNumber,
   type CssColor,
   generateColorSchemes,
-  getColorNameFromNumber,
+  getColorInfoFromPosition,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
 import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
@@ -65,8 +65,8 @@ export const Previews = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorNameFromNumber(number)
-          .replace(/\s+/g, '-')
+        `--ds-color-${getColorInfoFromPosition(number)
+          .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }

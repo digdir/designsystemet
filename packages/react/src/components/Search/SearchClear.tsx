@@ -11,6 +11,15 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
   'aria-label'?: string;
 };
 
+/**
+ * SearchClear component, used to display a clear buttun when the search input is not empty.
+ *
+ * @example
+ * <Search>
+ *   <Search.Input aria-label='Søk' />
+ *   <Search.Clear />
+ * </Search>
+ */
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
   function SearchClear({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) {
     const handleClear = (

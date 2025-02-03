@@ -2,49 +2,21 @@
   --dsc-button-background--active: var(--ds-color-base-active);
   --dsc-button-background--hover: var(--ds-color-base-hover);
   --dsc-button-background: var(--ds-color-base-default);
-  --dsc-button-color: var(--ds-color-contrast-default);
-  --dsc-button-color--hover: var(--ds-color-contrast-default);
+  --dsc-button-color: var(--ds-color-base-contrast-default);
+  --dsc-button-color--hover: var(--ds-color-base-contrast-default);
+  --dsc-button-border-wiodth: var(--ds-border-width-default);
+  --dsc-button-border-style: solid;
   --dsc-button-border-color: transparent;
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
 
-  &[data-variant='secondary'],
-  &[data-variant='tertiary'] {
-    --dsc-button-background: transparent;
-    --dsc-button-background--active: var(--ds-color-surface-active);
-    --dsc-button-background--hover: var(--ds-color-surface-hover);
-    --dsc-button-color: var(--ds-color-text-subtle);
-    --dsc-button-color--hover: var(--ds-color-text-default);
-  }
-  &[data-variant='secondary'] {
-    --dsc-button-border-color: var(--ds-color-border-strong);
-  }
-
-  &[data-color] {
-    --dsc-button-background--active: var(--ds-color-base-active);
-    --dsc-button-background--hover: var(--ds-color-base-hover);
-    --dsc-button-background: var(--ds-color-base-default);
-    --dsc-button-color: var(--ds-color-contrast-default);
-    --dsc-button-color--hover: var(--ds-color-contrast-default);
-
-    &[data-variant='secondary'],
-    &[data-variant='tertiary'] {
-      --dsc-button-background: transparent;
-      --dsc-button-background--active: var(--ds-color-surface-active);
-      --dsc-button-background--hover: var(--ds-color-surface-hover);
-      --dsc-button-color: var(--ds-color-text-subtle);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-    }
-    &[data-variant='secondary'] {
-      --dsc-button-border-color: var(--ds-color-border-strong);
-    }
-  }
-
   align-items: center;
   background: var(--dsc-button-background);
   border-radius: var(--ds-border-radius-default);
-  border: var(--ds-border-width-default) solid var(--dsc-button-border-color);
+  border-width: var(--ds-border-width-default);
+  border-style: var(--dsc-button-border-style);
+  border-color: var(--dsc-button-border-color);
   box-sizing: border-box;
   color: var(--dsc-button-color);
   cursor: pointer;
@@ -62,6 +34,38 @@
   text-decoration: none;
 
   @composes ds-focus from './base.css';
+
+  &[data-variant='secondary'],
+  &[data-variant='tertiary'] {
+    --dsc-button-background: transparent;
+    --dsc-button-background--active: var(--ds-color-surface-active);
+    --dsc-button-background--hover: var(--ds-color-surface-hover);
+    --dsc-button-color: var(--ds-color-text-subtle);
+    --dsc-button-color--hover: var(--ds-color-text-default);
+  }
+  &[data-variant='secondary'] {
+    --dsc-button-border-color: var(--ds-color-border-strong);
+  }
+
+  &[data-color] {
+    --dsc-button-background--active: var(--ds-color-base-active);
+    --dsc-button-background--hover: var(--ds-color-base-hover);
+    --dsc-button-background: var(--ds-color-base-default);
+    --dsc-button-color: var(--ds-color-base-contrast-default);
+    --dsc-button-color--hover: var(--ds-color-base-contrast-default);
+
+    &[data-variant='secondary'],
+    &[data-variant='tertiary'] {
+      --dsc-button-background: transparent;
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-color: var(--ds-color-text-subtle);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+    }
+    &[data-variant='secondary'] {
+      --dsc-button-border-color: var(--ds-color-border-strong);
+    }
+  }
 
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size when <button> */
@@ -91,6 +95,11 @@
     text-align: center;
   }
 
+  /* Style spinner when in button */
+  & .ds-spinner {
+    font-size: 1.4em;
+  }
+
   /**
    * States
    */
@@ -114,6 +123,6 @@
 
   /* Using :where to prevent adding specificity */
   &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):active {
-    background-color: var(--dsc-button-background--active);
+    background: var(--dsc-button-background--active);
   }
 }

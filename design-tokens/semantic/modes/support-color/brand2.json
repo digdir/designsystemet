@@ -5,13 +5,17 @@
         "$type": "color",
         "$value": "{color.brand2.background-default}"
       },
-      "background-subtle": {
+      "background-tinted": {
         "$type": "color",
-        "$value": "{color.brand2.background-subtle}"
+        "$value": "{color.brand2.background-tinted}"
       },
       "surface-default": {
         "$type": "color",
         "$value": "{color.brand2.surface-default}"
+      },
+      "surface-tinted": {
+        "$type": "color",
+        "$value": "{color.brand2.surface-tinted}"
       },
       "surface-hover": {
         "$type": "color",
@@ -33,6 +37,14 @@
         "$type": "color",
         "$value": "{color.brand2.border-strong}"
       },
+      "text-subtle": {
+        "$type": "color",
+        "$value": "{color.brand2.text-subtle}"
+      },
+      "text-default": {
+        "$type": "color",
+        "$value": "{color.brand2.text-default}"
+      },
       "base-default": {
         "$type": "color",
         "$value": "{color.brand2.base-default}"
@@ -45,21 +57,13 @@
         "$type": "color",
         "$value": "{color.brand2.base-active}"
       },
-      "text-subtle": {
+      "base-contrast-subtle": {
         "$type": "color",
-        "$value": "{color.brand2.text-subtle}"
+        "$value": "{color.brand2.base-contrast-subtle}"
       },
-      "text-default": {
+      "base-contrast-default": {
         "$type": "color",
-        "$value": "{color.brand2.text-default}"
-      },
-      "contrast-default": {
-        "$type": "color",
-        "$value": "{color.brand2.contrast-default}"
-      },
-      "contrast-subtle": {
-        "$type": "color",
-        "$value": "{color.brand2.contrast-subtle}"
+        "$value": "{color.brand2.base-contrast-default}"
       }
     }
   }

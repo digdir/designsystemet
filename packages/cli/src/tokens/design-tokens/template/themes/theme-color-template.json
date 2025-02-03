@@ -51,12 +51,16 @@
     "$type": "color",
     "$value": "{<theme>.<color>.13}"
   },
-  "contrast-1": {
+  "14": {
     "$type": "color",
-    "$value": "{<theme>.<color>.contrast-1}"
+    "$value": "{<theme>.<color>.14}"
   },
-  "contrast-2": {
+  "15": {
     "$type": "color",
-    "$value": "{<theme>.<color>.contrast-2}"
+    "$value": "{<theme>.<color>.15}"
+  },
+  "16": {
+    "$type": "color",
+    "$value": "{<theme>.<color>.16}"
   }
 }

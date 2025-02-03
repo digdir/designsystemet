@@ -1,49 +1,48 @@
 .ds-details {
-  --dsc-details-border: 1px solid var(--dsc-details-border-color);
-  --dsc-details-chevron-gap: var(--ds-size-2);
-  --dsc-details-chevron-size: var(--ds-size-6);
-  --dsc-details-chevron-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+  --dsc-details-border-color: var(--ds-color-border-subtle);
+  --dsc-details-icon-gap: var(--ds-size-2);
+  --dsc-details-icon-size: var(--ds-size-6);
+  --dsc-details-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
   --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
-
   --dsc-details-background: var(--ds-color-background-default);
-  --dsc-details-heading-background--hover: var(--ds-color-surface-default);
-  --dsc-details-heading-background--open: var(--ds-color-background-subtle);
+  --dsc-details-heading-background--hover: var(--ds-color-surface-tinted);
+  --dsc-details-heading-background--open: var(--ds-color-background-tinted);
   --dsc-details-heading-background: var(--ds-color-background-default);
-  --dsc-details-border-color: var(--ds-color-border-subtle);
+
+  background: var(--dsc-details-background);
+  border-block: 1px solid;
+  border-color: var(--dsc-details-border-color);
+  box-sizing: border-box;
 
   /* with color */
   [data-color]:where(:not([data-color='neutral'])) &,
   &[data-color]:where(:not([data-color='neutral'])) {
-    --dsc-details-background: var(--ds-color-background-subtle);
+    --dsc-details-background: var(--ds-color-background-tinted);
     --dsc-details-heading-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-surface-default);
-    --dsc-details-heading-background: var(--ds-color-surface-default);
+    --dsc-details-heading-background--open: var(--ds-color-surface-tinted);
+    --dsc-details-heading-background: var(--ds-color-surface-tinted);
     --dsc-details-border-color: var(--ds-color-border-subtle);
   }
 
   /* with subtle */
   [data-color='subtle'] &,
   &[data-color='subtle'] {
-    --dsc-details-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-heading-background--hover: var(--ds-color-neutral-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-default);
-    --dsc-details-heading-background: var(--ds-color-neutral-background-subtle);
+    --dsc-details-heading-background--open: var(--ds-color-neutral-surface-tinted);
+    --dsc-details-heading-background: var(--ds-color-neutral-background-tinted);
     --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
   }
 
-  background: var(--dsc-details-background);
-  border-block: var(--dsc-details-border);
-  box-sizing: border-box;
-
-  & > :is(summary, u-summary) {
+  & :is(summary, u-summary) {
     align-items: center;
     background: var(--dsc-details-heading-background);
     box-sizing: border-box;
     cursor: pointer;
     list-style: none;
     min-height: var(--dsc-details-size);
-    gap: var(--dsc-details-chevron-gap);
+    gap: var(--dsc-details-icon-gap);
     outline: none;
     padding: var(--dsc-details-padding);
     position: relative;
@@ -64,9 +63,9 @@
       border-radius: var(--ds-border-radius-md);
       content: '';
       flex-shrink: 0;
-      height: var(--dsc-details-chevron-size);
-      mask: 50% / contain no-repeat var(--dsc-details-chevron-url);
-      width: var(--dsc-details-chevron-size);
+      height: var(--dsc-details-icon-size);
+      mask: 50% / contain no-repeat var(--dsc-details-icon-url);
+      width: var(--dsc-details-icon-size);
     }
 
     @media (forced-colors: active) {
@@ -97,7 +96,7 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    & > :is(summary, u-summary):hover {
+    & :is(summary, u-summary):hover {
       background: var(--dsc-details-heading-background--hover);
     }
   }

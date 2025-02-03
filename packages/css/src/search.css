@@ -3,8 +3,8 @@
   --dsc-search-clear-padding: var(--ds-size-1);
   --dsc-search-clear-size: var(--ds-size-9);
   --dsc-search-clear-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
-  --dsc-search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
-  --dsc-search-icon-size: var(--ds-size-7);
+  --dsc-search-magnifying-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
+  --dsc-search-magnifying-icon-size: var(--ds-size-7);
 
   align-items: center;
   grid-template-columns: 1fr auto;
@@ -19,7 +19,7 @@
   /* Add magnifier icon when no submit button is present */
   &:not(:has(button:not([type='reset']))) {
     & input {
-      padding-inline-start: calc(var(--dsc-search-icon-size) + calc(var(--dsc-search-padding-inline) * 2));
+      padding-inline-start: calc(var(--dsc-search-magnifying-icon-size) + calc(var(--dsc-search-padding-inline) * 2));
     }
     &::before {
       grid-area: 1 / 1;
@@ -35,9 +35,9 @@
   & button:not([type='reset']):empty::before {
     background: currentcolor;
     content: '';
-    height: var(--dsc-search-icon-size);
-    width: var(--dsc-search-icon-size);
-    mask: var(--dsc-search-icon-url) center / contain no-repeat;
+    height: var(--dsc-search-magnifying-icon-size);
+    width: var(--dsc-search-magnifying-icon-size);
+    mask: var(--dsc-search-magnifying-icon-url) center / contain no-repeat;
 
     @media (forced-colors: active) {
       background: CanvasText;

@@ -3,11 +3,12 @@ import { DetailsContent } from './DetailsContent';
 import { DetailsSummary } from './DetailsSummary';
 
 /**
- * Details are used to toggle the visibility of content.
+ * Details component, contains `Details.Summary` and `Details.Content` components.
+ *
  * @example
  * <Details>
- *  <Details.Summary>Heading 1</Details.Summary>
- *  <Details.Content>Content 1</Details.Content>
+ *  <Details.Summary>Header</Details.Summary>
+ *  <Details.Content>Content</Details.Content>
  * </Details>
  */
 const Details = Object.assign(DetailsParent, {

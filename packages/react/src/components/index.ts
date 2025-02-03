@@ -37,3 +37,4 @@ export * from './Card';
 export * from './Combobox';
 export * from './Table';
 export * from './ErrorSummary';
+export * from './Suggestion';

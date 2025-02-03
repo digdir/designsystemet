@@ -1,8 +1,12 @@
 .ds-divider {
-  --dsc-divider-color: var(--ds-color-neutral-border-subtle);
+  --dsc-divider-border-width: 1px;
+  --dsc-divider-border-style: solid;
+  --dsc-divider-border-color: var(--ds-color-neutral-border-subtle);
 
-  border-top: 1px solid var(--dsc-divider-color);
-  border-width: 1px 0 0;
+  border-width: 0; /* Unset default <hr> border */
+  border-top-width: var(--dsc-divider-border-width);
+  border-top-style: var(--dsc-divider-border-style);
+  border-color: var(--dsc-divider-border-color);
   box-sizing: border-box;
   margin-block: 0.5em;
   width: 100%;

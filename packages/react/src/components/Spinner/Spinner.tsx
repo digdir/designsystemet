@@ -4,19 +4,26 @@ import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import { useSynchronizedAnimation } from '../../utilities';
 
 export type SpinnerProps = {
-  /** Accessibile label  */
+  /**
+   * Accessibile label
+   */
   'aria-label'?: string;
   /**
    * Spinner size
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
+  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }
     | { 'aria-label'?: string; 'aria-hidden': true | 'true' } // Make aria-label optional when aria-hidden is true
   );
 
-/**  Spinner component used for indicating busy or indeterminate loading */
+/**
+ * Spinner component used for indicating busy or indeterminate loading.
+ *
+ * @example
+ * <Spinner aria-label='Loading users...' />
+ */
 export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
   { 'aria-label': ariaLabel, className, ...rest }: SpinnerProps,
   ref,

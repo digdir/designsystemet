@@ -37,12 +37,11 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
     '@storybook/addon-mdx-gfm',
-    '@chromatic-com/storybook',
     '@storybook/addon-storysource',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
+    '@storybook/experimental-addon-test',
   ],
   staticDirs: ['../assets'],
   framework: {

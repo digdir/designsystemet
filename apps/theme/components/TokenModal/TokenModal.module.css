@@ -101,7 +101,7 @@
 
 .step span {
   background-color: var(--ds-color-accent-base-default);
-  color: var(--ds-color-accent-contrast-default);
+  color: var(--ds-color-accent-base-contrast-default);
   aspect-ratio: 1;
   border-radius: var(--ds-border-radius-full);
   width: var(--ds-size-8);

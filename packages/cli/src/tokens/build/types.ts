@@ -5,6 +5,7 @@ export const colorCategories = {
   main: 'main',
   support: 'support',
 } as const;
+
 export type ColorCategories = keyof typeof colorCategories;
 
 /**
@@ -13,7 +14,7 @@ export type ColorCategories = keyof typeof colorCategories;
 export type ThemePermutation = {
   'color-scheme': string;
   'main-color': string;
-  'support-color': string;
+  'support-color'?: string;
   semantic: string;
   size: string;
   theme: string;

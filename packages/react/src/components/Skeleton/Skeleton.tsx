@@ -7,19 +7,23 @@ import { useSynchronizedAnimation } from '../../utilities';
 
 export type SkeletonProps = {
   /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
+   * The width of the component
    */
-  asChild?: boolean;
-  /** The width of the component */
   width?: string | number;
-  /** The height of the component */
+  /**
+   * The height of the component
+   */
   height?: string | number;
   /**
    * The shape variant
    * @default 'rectangle'
-   * */
+   */
   variant?: 'rectangle' | 'circle' | 'text';
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLSpanElement> &
   (
     | { variant: 'text'; characters?: number }
@@ -27,11 +31,12 @@ export type SkeletonProps = {
   );
 
 /**
- * Represent a draft of page while the content loads. Mix different skeleton components to create your layout.
+ * Skeleton is used to represent a draft of page while the content loads.
+ *
  * @example
- *   <Skeleton variant="circle" />
- *   <Skeleton variant="text" />
- *   <Skeleton variant="rectangle" />
+ * <Skeleton variant="circle" />
+ * <Skeleton variant="text" />
+ * <Skeleton variant="rectangle" />
  */
 export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
   function Skeleton(

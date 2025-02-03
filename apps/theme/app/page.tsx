@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <div>
       <ColorModal
-        weight={selectedColor.color.number}
+        weight={selectedColor.color.position}
         hex={selectedColor.color.hex}
         namespace={'d'}
         colorModalRef={colorModalRef}

@@ -5,28 +5,53 @@ import type { DefaultProps } from '../../types';
 
 export type TableProps = {
   /**
-   * If true, the table will have zebra striping
+   * Will give the table zebra striping
    * @default false
    */
   zebra?: boolean;
   /**
-   * If true, the table will have a sticky header
+   * Will make the table header sticky
    * @default false
    */
   stickyHeader?: boolean;
   /**
-   * If true, the table will have a rounded border
+   * Will give the table a rounded border
    * @default false
    */
   border?: boolean;
   /**
-   * If true, the table will have a hover effect on rows
+   * Will give the table a hover effect on rows
    * @default false
    */
   hover?: boolean;
 } & Omit<TableHTMLAttributes<HTMLTableElement>, 'border'> &
   DefaultProps;
 
+/**
+ * Table component, used to display tabular data. Renders a native HTML table element.
+ *
+ * @example
+ * <Table>
+ *   <Table.Head>
+ *     <Table.Row>
+ *       <Table.HeaderCell>Name</Table.HeaderCell>
+ *       <Table.HeaderCell>Age</Table.HeaderCell>
+ *     </Table.Row>
+ *   </Table.Head>
+ *   <Table.Body>
+ *     <Table.Row>
+ *       <Table.Cell>John</Table.Cell>
+ *       <Table.Cell>25</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Body>
+ *   <Table.Foot>
+ *     <Table.Row>
+ *       <Table.Cell>Total</Table.Cell>
+ *       <Table.Cell>2</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Foot>
+ * </Table>
+ */
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   {
     zebra = false,

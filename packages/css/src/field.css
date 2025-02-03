@@ -1,26 +1,32 @@
 .ds-field {
-  align-items: start;
-  flex-direction: column;
-  gap: var(--ds-size-2);
+  --dsc-field-content-spacing: var(--ds-size-2);
 
-  &:not([hidden]) {
-    display: flex;
+  /* The stack (https://every-layout.dev/layouts/stack/) */
+  & > * {
+    margin-block: 0;
+  }
+  & > * + * {
+    margin-top: var(--dsc-field-content-spacing);
   }
 
   & [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
   }
 
+  & input {
+    display: block; /* Ensure input is not placed on same line as label/description/validation */
+  }
+
   /**
    * States
    */
-  &:has([aria-disabled='true']:not(u-option), :disabled:not(option)) > * {
+  &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
   }
 
   &:has([aria-readonly='true'], [readonly]) label {
-    --dsc-label--readonly: ; /* Activate lock icon for label when readonly */
+    --_dsc-label--readonly: ; /* Activate lock icon for label when readonly */
   }
 
   /**
@@ -30,7 +36,7 @@
     border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
-    row-gap: 0;
+    column-gap: var(--dsc-field-content-spacing);
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     &:not([hidden]) {
@@ -38,11 +44,12 @@
     }
 
     & > * {
+      margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
     }
 
     & label {
-      --dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
+      --_dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
     }
 
@@ -65,7 +72,7 @@
 
     /* Using .ds-input to ensure it's only our component */
     & .ds-input:is([type='radio'], [type='checkbox']):not([aria-label]) {
-      translate: 0 calc((1lh - var(--dsc-input-size)) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
+      translate: 0 calc((1lh - 100%) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
     }
 
     &[data-position='end'] {
@@ -80,11 +87,12 @@
  * Affix
  */
 .ds-field-affixes {
-  --dsc-field-affix-border: 1px solid var(--ds-color-neutral-border-default);
+  --dsc-field-affix-border-width: 1px;
+  --dsc-field-affix-border-style: solid;
+  --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
-  align-self: stretch; /* If ds-field is placed inside a flex container like ds-field, we need to fill width */
-  background: var(--ds-color-neutral-background-subtle);
+  background: var(--ds-color-neutral-background-tinted);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
@@ -92,7 +100,7 @@
   white-space: nowrap;
 
   &:not([hidden]) {
-    display: inline-flex; /* Using inline-flex to match native inline-block behaviour of <input> */
+    display: flex;
   }
 
   &:has([size]) {
@@ -101,7 +109,9 @@
 
   & .ds-field-affix {
     align-items: center;
-    border: var(--dsc-field-affix-border);
+    border-width: var(--dsc-field-affix-border-width);
+    border-style: var(--dsc-field-affix-border-style);
+    border-color: var(--dsc-field-affix-border-color);
     flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
 
@@ -123,7 +133,8 @@
   }
 
   & .ds-input {
-    border: var(--dsc-field-affix-border);
+    border-width: var(--dsc-field-affix-border-width);
+    border-style: var(--dsc-field-affix-border-style);
     flex: 1 1 auto;
 
     /* if it has affix after */

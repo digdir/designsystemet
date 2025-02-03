@@ -2,19 +2,19 @@
   /* Default is danger */
   --dsc-validation-message-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M7.74 2.47a.75.75 0 0 1 .53-.22h7.46a.75.75 0 0 1 .53.22l5.27 5.27c.14.14.22.33.22.53v7.46a.75.75 0 0 1-.22.53l-5.27 5.27a.75.75 0 0 1-.53.22H8.27a.75.75 0 0 1-.53-.22l-5.27-5.27a.75.75 0 0 1-.22-.53V8.27a.75.75 0 0 1 .22-.53zm1.29 5.5a.75.75 0 0 0-1.06 1.06L10.94 12l-2.97 2.97a.75.75 0 1 0 1.06 1.06L12 13.06l2.97 2.97a.75.75 0 1 0 1.06-1.06L13.06 12l2.97-2.97a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
   --dsc-validation-message-icon-size: var(--ds-size-7);
-  --dsc-validation-message-gap: var(--ds-size-2);
+  --dsc-validation-message-spacing: var(--ds-size-2);
   --dsc-validation-message-color: var(--ds-color-danger-text-subtle);
 
   color: var(--dsc-validation-message-color);
   margin: 0; /* Reset if rendered with <p> */
   position: relative;
-  padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap));
+  padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing));
 
   &::before {
     background: currentcolor;
     content: '';
     height: var(--dsc-validation-message-icon-size);
-    margin-inline: calc((var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    margin-inline: calc((var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
     mask: var(--dsc-validation-message-icon-url) center / contain no-repeat;
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-validation-message-icon-size)) / 2); /* Center icon to line height */

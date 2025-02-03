@@ -278,3 +278,71 @@ export const MultipleHeaderRows: Story = (args) => {
     </Table>
   );
 };
+
+export const WithBorder: Story = (args) => {
+  const rows = Array.from({ length: 3 }, (_, i) => i + 1);
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      <Table {...args}>
+        <Table.Body>
+          {rows.map((row) => (
+            <Table.Row key={row}>
+              <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+        <Table.Body>
+          {rows.map((row) => (
+            <Table.Row key={row}>
+              <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+      <Table {...args}>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>Header 3</Table.HeaderCell>
+            <Table.HeaderCell>Header 4</Table.HeaderCell>
+            <Table.HeaderCell>Header 5</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map((row) => (
+            <Table.Row key={row}>
+              <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+      <Table {...args}>
+        <Table.Body>
+          {rows.map((row) => (
+            <Table.Row key={row}>
+              <Table.Cell>{`Cell ${row}1`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}2`}</Table.Cell>
+              <Table.Cell>{`Cell ${row}3`}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+        <Table.Foot>
+          <Table.Row>
+            <Table.HeaderCell>Footer 1</Table.HeaderCell>
+            <Table.HeaderCell>Footer 2</Table.HeaderCell>
+            <Table.HeaderCell>Footer 3</Table.HeaderCell>
+          </Table.Row>
+        </Table.Foot>
+      </Table>
+    </div>
+  );
+};
+
+WithBorder.args = {
+  border: true,
+};

@@ -51,8 +51,10 @@ export const useThemeStore = create(
     selectedColor: {
       color: {
         hex: '#ffffff',
-        number: 1,
+        position: 1,
         name: 'Default',
+        displayName: 'Default',
+        group: 'neutral',
       },
       name: 'Default',
     },

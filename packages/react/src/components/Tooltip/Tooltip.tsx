@@ -33,7 +33,9 @@ export type TooltipProps = MergeRight<
      * @note If it is an element, it needs to be able to receive a ref.
      */
     children: (ReactElement & RefAttributes<HTMLElement>) | string;
-    /** Content of the tooltip */
+    /**
+     * Content of the tooltip
+     **/
     content: string;
     /**
      * Placement of the tooltip on the trigger.
@@ -50,6 +52,7 @@ export type TooltipProps = MergeRight<
 
 /**
  * Tooltip component that displays a small piece of information when hovering or focusing on an element.
+ *
  * @example
  * <Tooltip content='This is a tooltip'>
  *  <button>Hover me</button>
