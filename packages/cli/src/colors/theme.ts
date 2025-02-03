@@ -2,16 +2,8 @@ import type { CssColor } from './types.js';
 
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
-import type { ColorInfo, ColorNumber, ColorScheme, GlobalColors, ThemeInfo } from './types.js';
+import type { ColorInfo, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
 import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
-
-export const baseColors: Record<GlobalColors, CssColor> = {
-  blue: '#0A71C0',
-  green: '#068718',
-  orange: '#EA9B1B',
-  purple: '#663299',
-  red: '#C01B1B',
-};
 
 /**
  * Generates a color scale based on a base color and a color mode.
