@@ -8,7 +8,6 @@ import classes from './ArticlePage.module.css';
 
 type ArticlePageProps = {
   colorScales: ThemeInfo[][];
-  index: number;
 };
 
 export const ArticlePage = ({ colorScales }: ArticlePageProps) => {

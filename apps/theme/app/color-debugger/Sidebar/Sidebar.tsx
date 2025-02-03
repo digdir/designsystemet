@@ -7,6 +7,7 @@ import {
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
+import type { InterpolationMode } from '../logic/theme';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -190,7 +191,7 @@ export const Sidebar = () => {
                   setThemeSettings({
                     ...themeSettings,
                     interpolation: {
-                      mode: e.target.value,
+                      mode: e.target.value as InterpolationMode,
                     },
                   });
                 }}
