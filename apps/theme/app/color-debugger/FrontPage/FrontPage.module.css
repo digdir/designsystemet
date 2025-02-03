@@ -35,6 +35,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 16px;
 }
 
 .contrastTestsHeading {
@@ -45,18 +46,18 @@
 }
 
 .sectionCircle {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   margin-right: 8px;
-  background-color: rgb(255, 164, 164);
+  background-color: rgb(255, 173, 173);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .passed {
-  background-color: rgb(146, 223, 165);
+  background-color: rgb(158, 233, 177);
 }
 
 .sectionHeading {

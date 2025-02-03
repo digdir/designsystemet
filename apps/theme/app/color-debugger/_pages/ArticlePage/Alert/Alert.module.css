@@ -1,0 +1,9 @@
+.alert {
+  padding: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 16px;
+}

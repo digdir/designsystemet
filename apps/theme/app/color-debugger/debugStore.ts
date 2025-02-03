@@ -37,7 +37,9 @@ export type PageType =
   | 'baseContrast'
   | 'scales'
   | 'colorTable'
-  | 'mobile';
+  | 'mobile'
+  | 'dash'
+  | 'article';
 
 type ColorStore = {
   themeSettings: ThemeSettingsType;

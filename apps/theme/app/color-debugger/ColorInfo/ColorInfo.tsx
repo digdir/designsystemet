@@ -43,10 +43,6 @@ export const ColorInfo = () => {
             {oklch[0].toFixed(2)} {oklch[1].toFixed(2)} {oklch[2].toFixed(2)}
           </div>
         </div>
-        <div className={classes.resultItem}>
-          <div className={classes.resultLabel}>OKLCH Lightness</div>
-          <div className={classes.resultValue}>{oklchLightness}</div>
-        </div>
       </div>
     );
   };

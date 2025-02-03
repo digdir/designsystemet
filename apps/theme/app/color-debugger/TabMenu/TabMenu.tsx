@@ -13,8 +13,8 @@ export const TabMenu = () => {
     scales: 'Scales',
     colorTable: 'Table',
     mobile: 'App design',
-    mobile2: 'Dash design',
-    mobile3: 'Article design',
+    dash: 'Dash design',
+    article: 'Article design',
   };
 
   return (

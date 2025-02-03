@@ -78,7 +78,7 @@ export const ContrastColors = () => {
                 <div>
                   {contrastSection(
                     color,
-                    scheme.light[ColorIndexes.baseContrastSubtleIndex].hex,
+                    scheme.light[ColorIndexes.baseContrastSubtle].hex,
                   )}
                 </div>
               )}
@@ -98,16 +98,16 @@ export const ContrastColors = () => {
             {outerScales.map((innerScale, key) => (
               <div key={key} className={classes.group}>
                 <Item
-                  color={innerScale.light[ColorIndexes.baseDefaultIndex].hex}
+                  color={innerScale.light[ColorIndexes.baseDefault].hex}
                   scheme={innerScale}
                 />
                 <Item
-                  color={innerScale.light[ColorIndexes.baseHoverIndex].hex}
+                  color={innerScale.light[ColorIndexes.baseHover].hex}
                   scheme={innerScale}
                   hideSecondCircle
                 />
                 <Item
-                  color={innerScale.light[ColorIndexes.baseActiveIndex].hex}
+                  color={innerScale.light[ColorIndexes.baseActive].hex}
                   scheme={innerScale}
                   hideSecondCircle
                 />

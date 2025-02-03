@@ -13,6 +13,7 @@ import { Mobile } from './Mobile/Mobile';
 import { Scales } from './Scales/Scales';
 import { Sidebar } from './Sidebar/Sidebar';
 import { TabMenu } from './TabMenu/TabMenu';
+import { ArticlePage } from './_pages/ArticlePage/ArticlePage';
 import { useDebugStore } from './debugStore';
 import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
@@ -135,6 +136,7 @@ export default function Home() {
         )}
 
         {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
+        {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
       </div>
       <Sidebar />
     </div>

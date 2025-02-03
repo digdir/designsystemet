@@ -185,12 +185,12 @@ export const FrontPage = () => {
       <div className={classes.contrastTestsItem}>
         {error && (
           <div className={classes.sectionCircle}>
-            <XMarkIcon title='a11y-title' fontSize='2.2rem' />
+            <XMarkIcon title='a11y-title' fontSize='2rem' />
           </div>
         )}
         {!error && (
           <div className={cl(classes.sectionCircle, classes.passed)}>
-            <CheckmarkIcon title='a11y-title' fontSize='2.2rem' />
+            <CheckmarkIcon title='a11y-title' fontSize='2.1rem' />
           </div>
         )}
         <div className={classes.sectionTextContainer}>

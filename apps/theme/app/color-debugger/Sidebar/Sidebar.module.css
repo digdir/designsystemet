@@ -39,6 +39,7 @@
 .select select {
   height: 32px;
   padding: 0 8px;
+  font-size: 14px;
 }
 
 .rangeOutput {

@@ -1,7 +1,9 @@
 import { Field, Heading, Select } from '@digdir/designsystemet-react';
-import type { InterpolationMode } from 'chroma-js';
 
-import { getColorInfoFromPosition } from '@/packages/cli/dist/src';
+import {
+  type ColorNumber,
+  getColorInfoFromPosition,
+} from '@digdir/designsystemet/color';
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
@@ -22,7 +24,7 @@ export const Sidebar = () => {
           <div className={classes.select}>
             <div>Color scheme</div>
             <div className={classes.field}>
-              <Field data-size='xs'>
+              <Field data-size='sm'>
                 <Select onChange={(e) => {}}>
                   <Select.Option value='light'>Light Mode</Select.Option>
                   <Select.Option value='dark'>Dark Mode</Select.Option>
@@ -33,7 +35,7 @@ export const Sidebar = () => {
           <div className={classes.select}>
             <div>Test mode</div>
             <div className={classes.field}>
-              <Field data-size='xs'>
+              <Field data-size='sm'>
                 <Select
                   onChange={(e) => {
                     setThemeSettings({
@@ -182,13 +184,13 @@ export const Sidebar = () => {
         <div className={classes.select}>
           <div>Mode</div>
           <div className={classes.field}>
-            <Field data-size='xs'>
+            <Field data-size='sm'>
               <Select
                 onChange={(e) => {
                   setThemeSettings({
                     ...themeSettings,
                     interpolation: {
-                      mode: e.target.value as InterpolationMode,
+                      mode: e.target.value,
                     },
                   });
                 }}
@@ -226,7 +228,10 @@ export const Sidebar = () => {
             return (
               <div key={key}>
                 <DoubleInput
-                  label={getColorInfoFromPosition(index + 1).displayName}
+                  label={
+                    getColorInfoFromPosition((index + 1) as ColorNumber)
+                      .displayName
+                  }
                   valueOne={luminance.light[
                     key as keyof typeof luminance.light
                   ].toString()}

@@ -1,0 +1,24 @@
+.accordion {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.header {
+  background-color: red;
+  padding: 18px 18px 18px 16px;
+  border-top: 1px solid black;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.items .item:first-child .header {
+  border-top: none !important;
+}
+
+.body {
+  background-color: blue;
+  padding: 18px;
+  font-size: 15px;
+}
