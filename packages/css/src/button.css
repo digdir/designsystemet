@@ -95,6 +95,11 @@
     text-align: center;
   }
 
+  /* Style spinner when in button */
+  & .ds-spinner {
+    font-size: 1.4em;
+  }
+
   /**
    * States
    */
