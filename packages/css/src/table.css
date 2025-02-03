@@ -3,13 +3,13 @@
   --dsc-table-background--zebra: var(--ds-color-neutral-background-tinted);
   --dsc-table-background: var(--ds-color-neutral-background-default);
   --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-table-border-divider-width: 2px;
-  --dsc-table-border-divider-style: solid;
-  --dsc-table-border-divider-color: var(--dsc-table-border-color);
-  --dsc-table-border-width: 1px;
-  --dsc-table-border-style: solid;
   --dsc-table-border-radius: var(--ds-border-radius-md);
+  --dsc-table-border-style: solid;
+  --dsc-table-border-width: 1px;
   --dsc-table-color: var(--ds-color-neutral-text-default);
+  --dsc-table-divider-border-color: var(--dsc-table-border-color);
+  --dsc-table-divider-border-style: solid;
+  --dsc-table-divider-border-width: 2px;
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-tinted);
   --dsc-table-header-background--sorted: var(--ds-color-neutral-background-tinted);
   --dsc-table-header-background: var(--ds-color-neutral-background-default);
@@ -40,9 +40,9 @@
   }
 
   & > thead > tr:last-child > :is(th, td) {
-    border-bottom-width: var(--dsc-table-border-divider-width);
-    border-bottom-style: var(--dsc-table-border-divider-style);
-    border-bottom-color: var(--dsc-table-border-divider-color);
+    border-bottom-width: var(--dsc-table-divider-border-width);
+    border-bottom-style: var(--dsc-table-divider-border-style);
+    border-bottom-color: var(--dsc-table-divider-border-color);
   }
 
   & > tbody:has(+ tfoot) > tr:last-child > :is(th, td) {
@@ -51,9 +51,9 @@
 
   & > tfoot > tr:first-child > :is(th, td) {
     background: var(--dsc-table-header-background);
-    border-top-width: var(--dsc-table-border-divider-width);
-    border-top-style: var(--dsc-table-border-divider-style);
-    border-top-color: var(--dsc-table-border-divider-color);
+    border-top-width: var(--dsc-table-divider-border-width);
+    border-top-style: var(--dsc-table-divider-border-style);
+    border-top-color: var(--dsc-table-divider-border-color);
   }
 
   & > tfoot > tr:last-child > :is(th, td) {
