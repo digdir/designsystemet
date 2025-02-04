@@ -10,9 +10,9 @@
   --dsc-chip-border-color: var(--ds-color-border-subtle);
   --dsc-chip-border-color--checked: transparent;
   --dsc-chip-color: var(--ds-color-text-default);
-  --dsc-chip-color--checked: var(--ds-color-base-contrast-default);
+  --dsc-chip-input-accent-color: var(--ds-color-base-contrast-default);
   --dsc-chip-input-color: var(--ds-color-text-subtle);
-  --dsc-chip-input-stroke-color--checked: var(--ds-color-base-default);
+  --dsc-chip-input-stroke-color: var(--ds-color-base-default);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
   --dsc-chip-border-radius--checkbox: var(--ds-border-radius-md);
   --dsc-chip-height: var(--ds-size-8);
@@ -84,14 +84,14 @@
   & > input {
     --dsc-input-background: trasparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
-    --dsc-input-color--checked: var(--dsc-chip-color--checked);
-    --dsc-input-stroke-color--checked: var(--dsc-chip-input-stroke-color--checked);
+    --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
+    --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
 
   &:has(input:checked),
   &[data-removable] {
-    color: var(--dsc-chip-color--checked);
+    color: var(--dsc-chip-input-accent-color);
     background: var(--dsc-chip-background--checked);
     border-color: var(--dsc-chip-border-color--checked);
   }
