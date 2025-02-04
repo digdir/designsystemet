@@ -19,9 +19,9 @@ export type MultiSelectChipsProps = MergeRight<
   }
 >;
 
-export function MultiSelectChips({
+export const MultiSelectChips = ({
   render = ({ text }) => text,
-}: MultiSelectChipsProps) {
+}: MultiSelectChipsProps) => {
   const { uTagsRef, selectedItems, setSelectedItems } =
     useContext(MultiSelectContext);
 
@@ -75,4 +75,6 @@ export function MultiSelectChips({
         ))}
     </>
   );
-}
+};
+
+MultiSelectChips.displayName = 'MultiSelectChips';
