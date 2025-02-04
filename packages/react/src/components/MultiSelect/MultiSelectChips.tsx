@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Chip } from '../Chip';
@@ -11,14 +11,17 @@ export type MultiSelectChipsProps = MergeRight<
     /**
      * Change the rendered content of the chip.
      */
-    render?: () => ReactNode;
+    render?: (args: {
+      text: string;
+      value: string;
+      element: HTMLDataElement;
+    }) => ReactNode;
   }
 >;
 
-export const MultiSelectChips = forwardRef<
-  HTMLDivElement,
-  MultiSelectChipsProps
->(function MultiSelectChips({ ...rest }, ref) {
+export function MultiSelectChips({
+  render = ({ text }) => text,
+}: MultiSelectChipsProps) {
   const { uTagsRef, selectedItems, setSelectedItems } =
     useContext(MultiSelectContext);
 
@@ -61,9 +64,15 @@ export const MultiSelectChips = forwardRef<
       {selectedItems &&
         Object.values(selectedItems).map((item) => (
           <Chip.Removable key={item.value} asChild>
-            <data>{item.value}</data>
+            <data>
+              {render({
+                text: item.textContent || item.value,
+                value: item.value,
+                element: item,
+              })}
+            </data>
           </Chip.Removable>
         ))}
     </>
   );
-});
+}
