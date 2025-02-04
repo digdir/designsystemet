@@ -25,7 +25,7 @@ export default function Home() {
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
-  const blackHues = [0, 55, 77];
+  const blackHues = [0, 33, 116, 210, 282];
   const steps = [
     { s: 100, l: 100 },
     { s: 100, l: 80 },
@@ -60,9 +60,16 @@ export default function Home() {
       themes.push(innerThemes);
     }
     themes[11] = [];
+    themes[11].push(
+      generateColorSchemes(
+        chroma(0, 0, 0.23, 'hsv').hex() as CssColor,
+        luminance,
+        themeSettings,
+      ),
+    );
     for (let i = 0; i < blackHues.length; i++) {
-      const hue = hues[i];
-      const color = chroma(hue, 1, 0.15, 'hsv').hex() as CssColor;
+      const hue = blackHues[i];
+      const color = chroma(hue, 0.5, 0.26, 'hsv').hex() as CssColor;
       const theme = generateColorSchemes(color, luminance, themeSettings);
       themes[11].push(theme);
     }
