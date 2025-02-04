@@ -59,10 +59,10 @@ const DATA_PLACES = [
 export const Preview: StoryFn<typeof MultiSelect> = (args) => {
   return (
     <Field>
-      <Label>Velg en destinasjon</Label>
+      <Label>Velg reisemål du vil besøke</Label>
       <MultiSelect {...args}>
+        <MultiSelect.Chips />
         <MultiSelect.Input />
-        {/* <MultiSelect.Clear /> */}
         <MultiSelect.List>
           <MultiSelect.Empty>Tomt</MultiSelect.Empty>
           {DATA_PLACES.map((place) => (

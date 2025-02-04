@@ -1,5 +1,8 @@
 import {
+  type Dispatch,
   type HTMLAttributes,
+  type RefObject,
+  type SetStateAction,
   createContext,
   forwardRef,
   useCallback,
@@ -8,18 +11,28 @@ import {
   useState,
 } from 'react';
 import '@u-elements/u-tags';
+import { useMergeRefs } from '@floating-ui/react';
 import { getDatalistValue, syncDatalistState } from '@u-elements/u-datalist';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
 import cl from 'clsx/lite';
 
 type MultiSelectContextType = {
+  selectedItems?: { [key: string]: HTMLDataElement };
   listId?: string;
-  inputRef?: React.RefObject<HTMLInputElement | null>;
+  inputRef?: RefObject<HTMLInputElement | null>;
+  uTagsRef?: RefObject<UHTMLTagsElement | null>;
   setListId?: (id: string) => void;
   handleFilter?: (input?: HTMLInputElement | null) => void;
+  setSelectedItems: Dispatch<
+    SetStateAction<{
+      [key: string]: HTMLDataElement;
+    }>
+  >;
 };
 
-export const MultiSelectContext = createContext<MultiSelectContextType>({});
+export const MultiSelectContext = createContext<MultiSelectContextType>({
+  setSelectedItems: () => {},
+});
 
 export type MultiSelectProps = {
   /**
@@ -60,7 +73,13 @@ export type MultiSelectProps = {
 export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
   function MultiSelect({ filter = false, className, ...rest }, ref) {
     const [listId, setListId] = useState(useId());
+    const [selectedItems, setSelectedItems] = useState<{
+      [key: string]: HTMLDataElement;
+    }>({});
+
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const uTagsRef = useRef<UHTMLTagsElement>(null);
+    const mergedRefs = useMergeRefs([ref, uTagsRef]);
 
     const handleFilter = useCallback(
       (input?: HTMLInputElement | null) => {
@@ -92,11 +111,19 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
 
     return (
       <MultiSelectContext.Provider
-        value={{ handleFilter, inputRef, listId, setListId }}
+        value={{
+          handleFilter,
+          inputRef,
+          listId,
+          setListId,
+          uTagsRef,
+          selectedItems,
+          setSelectedItems,
+        }}
       >
         <u-tags
           class={cl('ds-multi-select', className)} // Using "class" since React does not translate className on custom elements
-          ref={ref}
+          ref={mergedRefs}
           {...rest}
         />
       </MultiSelectContext.Provider>
