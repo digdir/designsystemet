@@ -21,7 +21,6 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   orange: '#B8581D',
   purple: '#663299',
   red: '#C01B1B',
-  yellow: '#D4B12F',
 };
 
 export type InterpolationMode =
