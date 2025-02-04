@@ -30,4 +30,5 @@ export const ColorScaleNames = [
   'Purple',
   'Pink',
   'Black',
+  'Status',
 ];

@@ -1,7 +1,6 @@
 import { ExclamationmarkTriangleFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useDebugStore } from '../../../debugStore';
-import { generateColorSchemes } from '../../../logic/theme';
 import { ColorIndexes } from '../../../utils';
 import classes from './Alert.module.css';
 
@@ -12,21 +11,17 @@ type AlertProps = {
 export const Alert = ({ type }: AlertProps) => {
   const luminance = useDebugStore((state) => state.luminance);
   const themeSettings = useDebugStore((state) => state.themeSettings);
-
-  const success = generateColorSchemes('#068718', luminance, themeSettings);
-  const warning = generateColorSchemes('#ea9b1b', luminance, themeSettings);
-  const info = generateColorSchemes('#0A71C0', luminance, themeSettings);
-  const error = generateColorSchemes('#C01B1B', luminance, themeSettings);
+  const colorScales = useDebugStore((state) => state.colorScales);
 
   const getAlertBackground = (
     type: 'success' | 'warning' | 'info' | 'error',
     index: number,
   ) => {
     const colorSchemes = {
-      success,
-      warning,
-      info,
-      error,
+      success: colorScales[12][0],
+      info: colorScales[12][3],
+      error: colorScales[12][1],
+      warning: colorScales[12][2],
     };
 
     return colorSchemes[type][themeSettings.general.colorScheme][index].hex;

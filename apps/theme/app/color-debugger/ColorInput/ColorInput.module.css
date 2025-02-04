@@ -31,3 +31,12 @@
 .hidePicker {
   display: none;
 }
+
+.loopBtn {
+  position: absolute;
+  top: 9px;
+  right: 42px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

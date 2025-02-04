@@ -1,0 +1,32 @@
+.status {
+  width: 100%;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.item {
+  width: calc(50% - 8px);
+  padding: 24px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.test {
+  height: 40px;
+  width: 40px;
+}
+
+.input {
+  margin-bottom: 24px;
+}
+
+.heading {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}

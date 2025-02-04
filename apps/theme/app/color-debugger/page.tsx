@@ -14,6 +14,7 @@ import { Scales } from './Scales/Scales';
 import { Sidebar } from './Sidebar/Sidebar';
 import { TabMenu } from './TabMenu/TabMenu';
 import { ArticlePage } from './_pages/ArticlePage/ArticlePage';
+import { StatusPage } from './_pages/ArticlePage/StatusPage/StatusPage';
 import { useDebugStore } from './debugStore';
 import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
@@ -23,6 +24,7 @@ export default function Home() {
   const colorScales = useDebugStore((state) => state.colorScales);
   const setColorScales = useDebugStore((state) => state.setColorScales);
   const themeSettings = useDebugStore((state) => state.themeSettings);
+  const statusColors = useDebugStore((state) => state.statusColors);
   const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
   const blackHues = [0, 33, 116, 210, 282];
@@ -74,12 +76,43 @@ export default function Home() {
       themes[11].push(theme);
     }
 
+    themes[12] = [];
+    themes[12].push(
+      generateColorSchemes(
+        statusColors.success.hex as CssColor,
+        luminance,
+        themeSettings,
+      ),
+    );
+    themes[12].push(
+      generateColorSchemes(
+        statusColors.error.hex as CssColor,
+        luminance,
+        themeSettings,
+      ),
+    );
+    themes[12].push(
+      generateColorSchemes(
+        statusColors.warning.hex as CssColor,
+        luminance,
+        themeSettings,
+      ),
+    );
+    themes[12].push(
+      generateColorSchemes(
+        statusColors.info.hex as CssColor,
+        luminance,
+        themeSettings,
+      ),
+    );
+
     setColorScales(themes);
     setColorScale(themes[0][0]);
   }, [
     luminance,
     themeSettings.base.modifier,
     themeSettings.interpolation.mode,
+    statusColors,
   ]);
 
   useEffect(() => {
@@ -154,6 +187,7 @@ export default function Home() {
 
         {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
         {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
+        {pageType === 'status' && <StatusPage />}
       </div>
       <Sidebar />
     </div>

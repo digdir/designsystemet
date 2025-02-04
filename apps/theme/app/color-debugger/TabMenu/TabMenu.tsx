@@ -8,13 +8,11 @@ export const TabMenu = () => {
 
   const pages = {
     main: 'Main',
-    saturation: 'Saturation',
     baseContrast: 'Base',
     scales: 'Scales',
     colorTable: 'Table',
+    article: 'Surface',
     mobile: 'App design',
-    dash: 'Dash design',
-    article: 'Article design',
   };
 
   return (

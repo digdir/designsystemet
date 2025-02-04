@@ -3,6 +3,7 @@ import {
   generateColorSchemes,
   luminance,
 } from '@digdir/designsystemet/color';
+import { ColorService, type IColor } from 'react-color-palette';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import type { InterpolationMode } from './logic/theme';
@@ -39,6 +40,7 @@ export type PageType =
   | 'colorTable'
   | 'mobile'
   | 'dash'
+  | 'status'
   | 'article';
 
 type ColorStore = {
@@ -54,10 +56,29 @@ type ColorStore = {
   setColorScales: (colorScales: ThemeInfo[][]) => void;
   colorScale: ThemeInfo;
   setColorScale: (colorScale: ThemeInfo) => void;
+  statusColors: {
+    success: IColor;
+    warning: IColor;
+    info: IColor;
+    error: IColor;
+  };
+  setStatusColors: (statusColors: {
+    success: IColor;
+    warning: IColor;
+    info: IColor;
+    error: IColor;
+  }) => void;
 };
 
 export const useDebugStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
+    statusColors: {
+      success: ColorService.convert('hex', '#068718'),
+      warning: ColorService.convert('hex', '#ea9b1b'),
+      info: ColorService.convert('hex', '#0A71C0'),
+      error: ColorService.convert('hex', '#C01B1B'),
+    },
+    setStatusColors: (statusColors) => set({ statusColors }),
     themeSettings: {
       general: {
         testMode: 'debug',
@@ -68,7 +89,7 @@ export const useDebugStore = create(
         darkOffset: 0,
         negativeModeMin: 30,
         negativeModRangeMin: 49.5,
-        negativeModRangeMax: 65,
+        negativeModRangeMax: 66,
       },
       interpolation: {
         mode: 'rgb',

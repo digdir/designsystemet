@@ -43,7 +43,7 @@ export const FrontPage = () => {
 
   useEffect(() => {
     setBaseThemes(generateBaseThemes(luminance, themeSettings));
-  }, [themeSettings.base.modifier]);
+  }, [themeSettings.base]);
 
   const testColorContrasts = (
     index1: number,
