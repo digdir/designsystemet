@@ -60,7 +60,7 @@ export const MultiSelectChips = ({
   }, [uTagsRef]);
 
   return (
-    <>
+    <div>
       {selectedItems &&
         Object.values(selectedItems).map((item) => (
           <Chip.Removable key={item.value} asChild>
@@ -73,7 +73,7 @@ export const MultiSelectChips = ({
             </data>
           </Chip.Removable>
         ))}
-    </>
+    </div>
   );
 };
 

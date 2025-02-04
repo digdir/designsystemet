@@ -126,6 +126,12 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
           ref={mergedRefs}
           {...rest}
         />
+        {/* Hidden select so it will be sent with a form */}
+        <select multiple hidden>
+          {Object.values(selectedItems).map((item) => (
+            <option key={item.value} value={item.value} />
+          ))}
+        </select>
       </MultiSelectContext.Provider>
     );
   },

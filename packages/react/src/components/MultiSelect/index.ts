@@ -1,5 +1,6 @@
 import { MultiSelect as MultiSelectRoot } from './MultiSelect';
 import { MultiSelectChips } from './MultiSelectChips';
+import { MultiSelectClear } from './MultiSelectClear';
 import { MultiSelectEmpty } from './MultiSelectEmpty';
 import { MultiSelectInput } from './MultiSelectInput';
 import { MultiSelectList } from './MultiSelectList';
@@ -11,6 +12,7 @@ const MultiSelect = Object.assign(MultiSelectRoot, {
   Option: MultiSelectOption,
   Chips: MultiSelectChips,
   Empty: MultiSelectEmpty,
+  Clear: MultiSelectClear,
 });
 
 MultiSelect.displayName = 'MultiSelect';
@@ -19,6 +21,7 @@ MultiSelect.List.displayName = 'MultiSelect.List';
 MultiSelect.Option.displayName = 'MultiSelect.Option';
 MultiSelect.Chips.displayName = 'MultiSelect.Chips';
 MultiSelect.Empty.displayName = 'MultiSelect.Empty';
+MultiSelect.Clear.displayName = 'MultiSelect.Clear';
 
 export {
   MultiSelect as EXPERIMENTAL_MultiSelect,
@@ -27,6 +30,7 @@ export {
   MultiSelectOption as EXPERIMENTAL_MultiSelectOption,
   MultiSelectChips as EXPERIMENTAL_MultiSelectChips,
   MultiSelectEmpty as EXPERIMENTAL_MultiSelectEmpty,
+  MultiSelectClear as EXPERIMENTAL_MultiSelectClear,
 };
 
 export type { MultiSelectProps } from './MultiSelect';
@@ -35,3 +39,4 @@ export type { MultiSelectListProps } from './MultiSelectList';
 export type { MultiSelectOptionProps } from './MultiSelectOption';
 export type { MultiSelectChipsProps } from './MultiSelectChips';
 export type { MultiSelectEmptyProps } from './MultiSelectEmpty';
+export type { MultiSelectClearProps } from './MultiSelectClear';
