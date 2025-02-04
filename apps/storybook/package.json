@@ -37,14 +37,14 @@
     "@storybook/types": "^8.5.2",
     "@types/react": "19.0.7",
     "@types/react-dom": "^19.0.3",
-    "@vitest/browser": "^3.0.4",
-    "@vitest/coverage-v8": "^3.0.4",
+    "@vitest/browser": "^3.0.5",
+    "@vitest/coverage-v8": "^3.0.5",
     "axe-playwright": "^2.0.2",
     "concurrently": "^9.1.2",
     "playwright": "^1.50.0",
     "remark-gfm": "^4.0.0",
     "storybook": "^8.5.2",
     "storybook-addon-pseudo-states": "^4.0.2",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.5"
   }
 }
