@@ -4,7 +4,7 @@
   --dsc-button-background: var(--ds-color-base-default);
   --dsc-button-color: var(--ds-color-base-contrast-default);
   --dsc-button-color--hover: var(--ds-color-base-contrast-default);
-  --dsc-button-border-wiodth: var(--ds-border-width-default);
+  --dsc-button-border-width: var(--ds-border-width-default);
   --dsc-button-border-style: solid;
   --dsc-button-border-color: transparent;
   --dsc-button-gap: var(--ds-size-2);
@@ -14,7 +14,7 @@
   align-items: center;
   background: var(--dsc-button-background);
   border-radius: var(--ds-border-radius-default);
-  border-width: var(--ds-border-width-default);
+  border-width: var(--dsc-button-border-width);
   border-style: var(--dsc-button-border-style);
   border-color: var(--dsc-button-border-color);
   box-sizing: border-box;
