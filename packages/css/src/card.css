@@ -5,9 +5,9 @@
   --dsc-card-border-width: 1px;
   --dsc-card-border-style: solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
-  --dsc-card-block-border-width: 1px;
-  --dsc-card-block-border-style: solid;
-  --dsc-card-block-border-color: var(--ds-color-border-subtle);
+  --dsc-card-block-border-width: var(--dsc-card-border-width);
+  --dsc-card-block-border-style: var(--dsc-card-border-style);
+  --dsc-card-block-border-color: var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-text-default);
   --dsc-card-content-margin-block: var(--ds-size-3) 0;
   --dsc-card-padding: var(--ds-size-6);
