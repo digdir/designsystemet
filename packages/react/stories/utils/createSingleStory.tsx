@@ -1,30 +1,25 @@
 import {
   type Meta,
   type ReactRenderer,
-  type StoryContext,
   type StoryFn,
   type StoryObj,
   composeStories,
 } from '@storybook/react';
 import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
 
-import {
-  type ComponentProps,
-  type ComponentType,
-  type PropsWithChildren,
-  createElement,
-} from 'react';
+import { type PropsWithChildren, createElement } from 'react';
 
-type Story<T extends ComponentType> = StoryObj<T> | StoryFn<T>;
-type StoryExports<T extends ComponentType> = Record<string, Story<T>>;
+type Story<T> = StoryObj<T> | StoryFn<T>;
 
-export function createSingleStory<T extends ComponentType>(
-  rawStories: StoryExports<T>,
-  meta: Meta,
-): StoryAnnotationsOrFn<ReactRenderer> {
-  const stories = composeStories(
-    rawStories as unknown as Store_CSFExports<ReactRenderer, T>,
-  ) as StoryExports<T>;
+// biome-ignore lint/suspicious/noExplicitAny: "any" type is used to align with Storybook's usage
+type StoryExports = Record<string, Story<any>>;
+
+export function createSingleStory<
+  // biome-ignore lint/suspicious/noExplicitAny: "any" type is used to align with Storybook's usage
+  S extends Store_CSFExports<ReactRenderer, any>,
+  M extends Meta,
+>(rawStories: S, meta: M): StoryAnnotationsOrFn<ReactRenderer> {
+  const stories = composeStories(rawStories) as StoryExports;
   return {
     render: (_, context) => {
       return (
@@ -44,14 +39,7 @@ export function createSingleStory<T extends ComponentType>(
             );
             const args = { ...story.args, key: storyName };
             if (typeof story === 'function') {
-              return (
-                <StoryStyles>
-                  {story(
-                    args as unknown as ComponentProps<T> & T,
-                    context as StoryContext<ComponentProps<T> & T>,
-                  )}
-                </StoryStyles>
-              );
+              return <StoryStyles>{story(args, context)}</StoryStyles>;
             }
             if (story.render) {
               return <StoryStyles>{story.render(args, context)}</StoryStyles>;
