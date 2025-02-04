@@ -92,6 +92,7 @@ const Article = ({ scale, index1, index2 }: ArticleProps) => {
                   [getAlertType(index2)]: color,
                 })
               }
+              position='top'
               showReset
               showPicker={showPicker}
               onColorClicked={() => {

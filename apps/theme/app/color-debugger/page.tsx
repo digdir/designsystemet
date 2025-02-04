@@ -5,7 +5,7 @@ import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
-import { ColorGrid } from './ColorGrid/ColorGrid';
+import { ColorTables } from './ColorGrid/ColorGrid';
 import { ColorSaturation } from './ColorSaturation/ColorSaturation';
 import { ContrastColors } from './ContrastColors/ContrastColors';
 import { FrontPage } from './FrontPage/FrontPage';
@@ -152,39 +152,8 @@ export default function Home() {
           </>
         )}
 
-        {pageType === 'scales' && (
-          <>
-            <Heading className={classes.heading}>Color Scales</Heading>
-            <Scales />
-          </>
-        )}
-
-        {pageType === 'colorTable' && (
-          <>
-            <Heading className={classes.heading}>Background subtle</Heading>
-            <ColorGrid colors={colorScales} colorNumber={1} />
-
-            <Heading className={classes.heading}>Surface Default</Heading>
-            <ColorGrid colors={colorScales} colorNumber={2} />
-            <Heading className={classes.heading}>Surface Hover</Heading>
-            <ColorGrid colors={colorScales} colorNumber={3} />
-            <Heading className={classes.heading}>Surface Active</Heading>
-            <ColorGrid colors={colorScales} colorNumber={4} />
-
-            <Heading className={classes.heading}>Border Subtle</Heading>
-            <ColorGrid colors={colorScales} colorNumber={5} />
-            <Heading className={classes.heading}>Border Default</Heading>
-            <ColorGrid colors={colorScales} colorNumber={6} />
-            <Heading className={classes.heading}>Border Strong</Heading>
-            <ColorGrid colors={colorScales} colorNumber={7} />
-
-            <Heading className={classes.heading}>Text Subtle</Heading>
-            <ColorGrid colors={colorScales} colorNumber={11} />
-            <Heading className={classes.heading}>Text Default</Heading>
-            <ColorGrid colors={colorScales} colorNumber={12} />
-          </>
-        )}
-
+        {pageType === 'scales' && <Scales />}
+        {pageType === 'colorTable' && <ColorTables colorScales={colorScales} />}
         {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
         {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
         {pageType === 'status' && <StatusPage />}

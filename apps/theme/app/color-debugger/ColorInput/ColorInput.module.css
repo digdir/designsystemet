@@ -6,6 +6,19 @@
   width: 30px;
   border-radius: 4px;
   border: 1px solid rgb(158, 158, 158);
+  cursor: pointer;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 11px;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .input {
@@ -25,7 +38,16 @@
 .picker {
   position: absolute;
   width: 100%;
-  z-index: 5;
+  z-index: 9999999;
+  transform: scale(0.9);
+  top: 32px;
+  right: -17px;
+}
+
+.top {
+  top: -670%;
+  right: 0;
+  transform: scale(0.75);
 }
 
 .hidePicker {

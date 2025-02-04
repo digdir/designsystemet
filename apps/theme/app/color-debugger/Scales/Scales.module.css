@@ -1,6 +1,7 @@
 .scales {
   display: flex;
   flex-direction: column;
+  margin-bottom: 24px;
 }
 
 .scale {
@@ -18,5 +19,11 @@
   font-size: 21px;
   font-weight: 500;
   margin-bottom: 12px;
-  margin-top: 24px;
+  margin-top: 0px;
+}
+
+.heading {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }

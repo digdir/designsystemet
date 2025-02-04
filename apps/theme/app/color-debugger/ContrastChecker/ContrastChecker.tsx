@@ -2,14 +2,9 @@ import {
   type CssColor,
   getContrastFromHex,
 } from '@digdir/designsystemet/color';
-import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-import {
-  ColorPicker,
-  ColorService,
-  type IColor,
-  useColor,
-} from 'react-color-palette';
+import { type IColor, useColor } from 'react-color-palette';
+import { ColorInput } from '../ColorInput/ColorInput';
 import classes from './ContrastChecker.module.css';
 
 type ColorInputProps = {
@@ -17,39 +12,6 @@ type ColorInputProps = {
   setColor: (color: IColor) => void;
   showPicker: boolean;
   onColorClicked: () => void;
-};
-
-const ColorInput = ({
-  color,
-  setColor,
-  showPicker,
-  onColorClicked,
-}: ColorInputProps) => {
-  return (
-    <div className={classes.colorInput}>
-      <input
-        type='text'
-        className={classes.input}
-        value={color.hex}
-        onChange={(e) => {
-          setColor(ColorService.convert('hex', e.target.value));
-        }}
-      />
-      <button
-        className={classes.colorBtn}
-        style={{ backgroundColor: color.hex }}
-        onClick={() => onColorClicked()}
-      ></button>
-      <div className={cl(classes.picker, !showPicker && classes.hidePicker)}>
-        <ColorPicker
-          hideAlpha
-          color={color}
-          onChange={setColor}
-          hideInput={['rgb', 'hsv']}
-        />
-      </div>
-    </div>
-  );
 };
 
 export const ContrastChecker = () => {
@@ -86,6 +48,7 @@ export const ContrastChecker = () => {
               setShowPickerTwo(false);
             }}
             showPicker={showPickerOne}
+            position='top'
           />
         </div>
         <div className={classes.item}>
@@ -98,6 +61,7 @@ export const ContrastChecker = () => {
               setShowPickerOne(false);
             }}
             showPicker={showPickerTwo}
+            position='top'
           />
         </div>
       </div>

@@ -7,6 +7,7 @@
   display: flex;
   margin-bottom: 12px;
   margin-left: -8px;
+  border-radius: 4px;
 }
 
 .item {
@@ -39,5 +40,22 @@
 
 .grid {
   background-color: white;
+  border-radius: 4px;
   padding: 24px;
+}
+
+.heading {
+  margin-bottom: 12px;
+  font-size: 19px;
+}
+
+.tables {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pageHeading {
+  font-size: 23px;
+  font-weight: 500;
 }

@@ -62,6 +62,7 @@ export const ColorInfo = () => {
               setShowPickerTwo(false);
             }}
             showPicker={showPickerOne}
+            position='top'
           />
           {getResult(colorOne.hex)}
         </div>
@@ -75,6 +76,7 @@ export const ColorInfo = () => {
               setShowPickerOne(false);
             }}
             showPicker={showPickerTwo}
+            position='top'
           />
           {getResult(colorTwo.hex)}
         </div>
