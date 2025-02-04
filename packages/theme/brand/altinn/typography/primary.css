@@ -4,9 +4,9 @@
 
 @layer ds.theme.typography.primary {
 :root, [data-typography="primary"] {
-  --ds-font-family: Helvetica Neue;
+  --ds-font-family: Inter;
   --ds-font-weight-medium: 500;
-  --ds-font-weight-semibold: 700;
+  --ds-font-weight-semibold: 600;
   --ds-font-weight-regular: 400;
   --ds-heading-2xl-font-weight: 500;
   --ds-heading-2xl-line-height: 1.3;
