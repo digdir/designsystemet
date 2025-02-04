@@ -10,7 +10,6 @@
   --dsc-input-background: var(--ds-color-neutral-background-default);
   /* Border */
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
-  --dsc-input-border-color--invalid: var(--ds-color-danger-text-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
   --dsc-input-border-style: solid;
   --dsc-input-border-width--toggle: max(1px, calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
@@ -122,7 +121,7 @@
   }
 
   &[aria-invalid='true'] {
-    border-color: var(--dsc-input-border-color--invalid);
+    border-color: var(--dsc-input-accent-color--invalid);
   }
   &[aria-invalid='true']:where(:checked, :indeterminate) {
     background: var(--dsc-input-accent-color--invalid);
