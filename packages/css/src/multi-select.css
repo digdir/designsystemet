@@ -1,0 +1,3 @@
+.ds-multi-select {
+  @composes ds-suggestion from './suggestion.css';
+}

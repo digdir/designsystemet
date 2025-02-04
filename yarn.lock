@@ -4014,6 +4014,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@u-elements/u-tags@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@u-elements/u-tags@npm:0.1.1"
+  checksum: 10/e78d36ba1ca2a8f9b7a2c147b9ec3cad809c730e4a6196e6026f3f70d8f2f70604f602e410fe2af487d665d2328540e2d6f6edf5e4dbdad31e9c8bb142c94cf7
+  languageName: node
+  linkType: hard
+
 "@ungap/structured-clone@npm:^1.0.0":
   version: 1.2.0
   resolution: "@ungap/structured-clone@npm:1.2.0"
@@ -11823,6 +11830,7 @@ __metadata:
     "@changesets/cli": "npm:^2.27.11"
     "@svitejs/changesets-changelog-github-compact": "npm:^1.2.0"
     "@types/node": "npm:^22.10.7"
+    "@u-elements/u-tags": "npm:^0.1.1"
     "@vitejs/plugin-react-swc": "npm:^3.7.2"
     "@vitest/coverage-v8": "npm:^2.1.8"
     "@vitest/expect": "npm:^2.1.8"

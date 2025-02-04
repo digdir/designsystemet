@@ -1,0 +1,20 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+import * as MultiSelectStories from './MultiSelect.stories';
+import { Alert } from '../Alert';
+import { MultiSelectList } from './MultiSelectList';
+
+<Meta of={MultiSelectStories} />
+
+<Alert data-color="warning">MultiSelect er under utvikling. Finner du feil eller mangler, meld i fra på Slack eller Github.</Alert>
+<br />
+
+# MultiSelect
+
+Søkbar multi-"select".
+
+<Primary />
+<Controls />
+
+## `MultiSelect.List`
+
+<ArgTypes of={MultiSelectList} />
