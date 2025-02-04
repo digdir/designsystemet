@@ -29,7 +29,7 @@ export const Alert = ({ type }: AlertProps) => {
       error,
     };
 
-    return colorSchemes[type].light[index].hex;
+    return colorSchemes[type][themeSettings.general.colorScheme][index].hex;
   };
 
   return (

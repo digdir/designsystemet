@@ -5,6 +5,7 @@ import classes from './Scales.module.css';
 
 export const Scales = () => {
   const colorScales = useDebugStore((state) => state.colorScales);
+  const themeSettings = useDebugStore((state) => state.themeSettings);
 
   type ScaleProps = {
     scale: ThemeInfo;
@@ -13,13 +14,15 @@ export const Scales = () => {
   const Scale = ({ scale }: ScaleProps) => {
     return (
       <div className={classes.scale}>
-        {scale.light.map((color: { hex: string }, index: number) => (
-          <div
-            className={classes.color}
-            key={index}
-            style={{ backgroundColor: color.hex }}
-          ></div>
-        ))}
+        {scale[themeSettings.general.colorScheme].map(
+          (color: { hex: string }, index: number) => (
+            <div
+              className={classes.color}
+              key={index}
+              style={{ backgroundColor: color.hex }}
+            ></div>
+          ),
+        )}
       </div>
     );
   };

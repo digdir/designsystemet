@@ -8,7 +8,10 @@ import {
   MicrophoneIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { ColorScaleNames } from '../utils';
+import { useState } from 'react';
+import { ColorFilter } from '../ColorFilter/ColorFilter';
+import { useDebugStore } from '../debugStore';
+import { ColorIndexes, ColorScaleNames } from '../utils';
 import { CategoryIcon } from './CategoryIcon';
 import { FooterIcon } from './FooterIcon';
 import classes from './Mobile.module.css';
@@ -19,10 +22,9 @@ type MobileProps = {
 };
 
 export const Mobile = ({ colorScales }: MobileProps) => {
-  const scheme = generateColorSchemes('#0062BA');
-  const scheme2 = generateColorSchemes('#ff0000');
-  const scheme3 = generateColorSchemes('#049c04');
   const greyScheme = generateColorSchemes('#000000');
+  const [activeColor, setActiveColor] = useState('Alle');
+  const themeSettings = useDebugStore((state) => state.themeSettings);
 
   type ItemProps = {
     colorScheme: ThemeInfo;
@@ -34,6 +36,7 @@ export const Mobile = ({ colorScales }: MobileProps) => {
     children: React.ReactNode;
     activeColor?: string;
     showShadow?: boolean;
+    scale: ThemeInfo;
   };
 
   type PostItemProps = {
@@ -47,9 +50,12 @@ export const Mobile = ({ colorScales }: MobileProps) => {
 
   const getCategoryBg = (type: string, colorScheme: ThemeInfo) => {
     if (type === 'A' || type === 'B') {
-      return colorScheme.light[2].hex;
+      if (type === 'A') {
+        return greyScheme[themeSettings.general.colorScheme][2].hex;
+      }
+      return colorScheme[themeSettings.general.colorScheme][2].hex;
     }
-    return colorScheme.light[3].hex;
+    return colorScheme[themeSettings.general.colorScheme][3].hex;
   };
 
   const CategoryItem = ({
@@ -57,6 +63,7 @@ export const Mobile = ({ colorScales }: MobileProps) => {
     activeColor,
     showShadow,
     children,
+    scale,
   }: CategoryItemProps) => {
     return (
       <div className={classes.categoryItem}>
@@ -71,7 +78,16 @@ export const Mobile = ({ colorScales }: MobileProps) => {
         >
           {children}
         </div>
-        <div className={classes.categoryName}>{name}</div>
+        <div
+          className={classes.categoryName}
+          style={{
+            color:
+              scale[themeSettings.general.colorScheme][ColorIndexes.textDefault]
+                .hex,
+          }}
+        >
+          {name}
+        </div>
       </div>
     );
   };
@@ -90,16 +106,66 @@ export const Mobile = ({ colorScales }: MobileProps) => {
         style={{
           backgroundColor:
             type === 'A' || type === 'B'
-              ? colorScheme.light[2].hex
-              : colorScheme.light[3].hex,
+              ? type === 'A'
+                ? greyScheme[themeSettings.general.colorScheme][2].hex
+                : colorScheme[themeSettings.general.colorScheme][2].hex
+              : colorScheme[themeSettings.general.colorScheme][3].hex,
           boxShadow: showShadow ? '0px 2px 8px rgba(0, 0, 0, 0.03)' : undefined,
         }}
       >
         <img className={classes.postsImg} src={img} alt='' />
         <div className={classes.postsText}>
-          <div className={classes.postsTitle}>{title}</div>
-          <div className={classes.postsDesc}>{desc}</div>
+          <div
+            className={classes.postsTitle}
+            style={{
+              color:
+                type === 'A'
+                  ? greyScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex
+                  : colorScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex,
+            }}
+          >
+            {title}
+          </div>
+          <div
+            className={classes.postsDesc}
+            style={{
+              color:
+                type === 'A'
+                  ? greyScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textSubtle
+                    ].hex
+                  : colorScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textSubtle
+                    ].hex,
+            }}
+          >
+            {desc}
+          </div>
         </div>
+      </div>
+    );
+  };
+
+  type HeadingProps = {
+    name: string;
+    scale: ThemeInfo;
+  };
+
+  const Heading = ({ scale, name }: HeadingProps) => {
+    return (
+      <div
+        className={classes.heading}
+        style={{
+          color:
+            scale[themeSettings.general.colorScheme][ColorIndexes.textDefault]
+              .hex,
+        }}
+      >
+        {name}
       </div>
     );
   };
@@ -111,49 +177,115 @@ export const Mobile = ({ colorScales }: MobileProps) => {
         style={{
           backgroundColor:
             type === 'A'
-              ? greyScheme.light[1].hex
+              ? greyScheme[themeSettings.general.colorScheme][1].hex
               : type === 'B' || type === 'C'
-                ? colorScheme.light[1].hex
-                : greyScheme.light[0].hex,
+                ? colorScheme[themeSettings.general.colorScheme][1].hex
+                : greyScheme[themeSettings.general.colorScheme][0].hex,
         }}
       >
-        <MobileHeader />
+        <MobileHeader scale={type === 'A' ? greyScheme : colorScheme} />
         <div className={classes.header}>
           <div className={classes.menu}>
-            <MenuHamburgerIcon title='a11y-title' fontSize='1.5rem' />
+            <MenuHamburgerIcon
+              title='a11y-title'
+              fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex
+                  : colorScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex
+              }
+            />
           </div>
           <div
             className={classes.logo}
-            style={{ color: colorScheme.light[9].hex }}
+            style={{
+              color:
+                colorScheme[themeSettings.general.colorScheme][
+                  ColorIndexes.textSubtle
+                ].hex,
+            }}
           >
             Gamezone
           </div>
           <img className={classes.avatar} src='img/avatars/male2.png' alt='' />
         </div>
         <div className={classes.search}>
-          <div className={classes.heading}>Søk etter spill</div>
+          <Heading
+            name='Søk etter spill'
+            scale={type === 'A' ? greyScheme : colorScheme}
+          />
           <div className={classes.searchContainer}>
             <input
               className={classes.searchInput}
               type='text'
               placeholder='Søk her...'
+              value='Søk her...'
+              style={{
+                backgroundColor:
+                  type === 'A'
+                    ? greyScheme[themeSettings.general.colorScheme][2].hex
+                    : colorScheme[themeSettings.general.colorScheme][2].hex,
+                color:
+                  type === 'A'
+                    ? greyScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textSubtle
+                      ].hex
+                    : colorScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textSubtle
+                      ].hex,
+                border:
+                  type === 'A'
+                    ? '1px solid' +
+                      greyScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.borderDefault
+                      ].hex
+                    : '1px solid' +
+                      colorScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.borderStrong
+                      ].hex,
+              }}
             />
             <MagnifyingGlassIcon
               className={classes.searchIcon}
               title='a11y-title'
               fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex
+                  : colorScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textDefault
+                    ].hex
+              }
             />
             <MicrophoneIcon
               className={classes.searchMic}
               title='a11y-title'
               fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textSubtle
+                    ].hex
+                  : colorScheme[themeSettings.general.colorScheme][
+                      ColorIndexes.textSubtle
+                    ].hex
+              }
             />
           </div>
         </div>
 
         <div className={classes.categories}>
           <div className={classes.headerContainer}>
-            <div className={classes.heading}>Kategorier</div>
+            <Heading
+              name='Kategorier'
+              scale={type === 'A' ? greyScheme : colorScheme}
+            />
             <a href='#' className={classes.link}>
               Se alle
             </a>
@@ -162,38 +294,87 @@ export const Mobile = ({ colorScales }: MobileProps) => {
           <div className={classes.categoriesItems}>
             <CategoryItem
               name='Action'
-              activeColor={colorScheme.light[3].hex}
+              activeColor={
+                colorScheme[themeSettings.general.colorScheme][4].hex
+              }
               showShadow={type === 'A'}
+              scale={type === 'A' ? greyScheme : colorScheme}
             >
-              <CategoryIcon type='sword' color='#000000' />
+              <CategoryIcon
+                type='sword'
+                color={
+                  colorScheme[themeSettings.general.colorScheme][
+                    ColorIndexes.textDefault
+                  ].hex
+                }
+              />
             </CategoryItem>
             <CategoryItem
               name='Fantasy'
               showShadow={type === 'A'}
               activeColor={getCategoryBg(type, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorScheme}
             >
-              <CategoryIcon type='flask' color='#000000' />
+              <CategoryIcon
+                type='flask'
+                color={
+                  type === 'A'
+                    ? greyScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                    : colorScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                }
+              />
             </CategoryItem>
             <CategoryItem
               name='RPG'
               showShadow={type === 'A'}
               activeColor={getCategoryBg(type, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorScheme}
             >
-              <CategoryIcon type='shield' color='#000000' />
+              <CategoryIcon
+                type='shield'
+                color={
+                  type === 'A'
+                    ? greyScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                    : colorScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                }
+              />
             </CategoryItem>
             <CategoryItem
               name='Strategi'
               showShadow={type === 'A'}
               activeColor={getCategoryBg(type, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorScheme}
             >
-              <CategoryIcon type='hex' color='#000000' />
+              <CategoryIcon
+                type='hex'
+                color={
+                  type === 'A'
+                    ? greyScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                    : colorScheme[themeSettings.general.colorScheme][
+                        ColorIndexes.textDefault
+                      ].hex
+                }
+              />
             </CategoryItem>
           </div>
         </div>
 
         <div className={classes.posts}>
           <div className={classes.headerContainer}>
-            <div className={classes.heading}>Mest populære spill</div>
+            <Heading
+              name='Mest populære spill'
+              scale={type === 'A' ? greyScheme : colorScheme}
+            />
             <a href='#' className={classes.link}>
               Se alle
             </a>
@@ -218,28 +399,54 @@ export const Mobile = ({ colorScales }: MobileProps) => {
           </div>
         </div>
 
-        <div className={classes.footer}>
+        <div
+          className={classes.footer}
+          style={{
+            backgroundColor:
+              type === 'B' || type === 'C'
+                ? colorScheme[themeSettings.general.colorScheme][2].hex
+                : greyScheme[themeSettings.general.colorScheme][2].hex,
+          }}
+        >
           <div className={classes.footerItems}>
             <div className={cl(classes.footerItem)}>
-              <FooterIcon color={colorScheme.light[11].hex} type='house' />
+              <FooterIcon
+                color={colorScheme[themeSettings.general.colorScheme][11].hex}
+                type='house'
+              />
               <div
                 className={classes.footerCircle}
-                style={{ backgroundColor: colorScheme.light[11].hex }}
+                style={{
+                  backgroundColor:
+                    colorScheme[themeSettings.general.colorScheme][11].hex,
+                }}
               ></div>
             </div>
             <div className={classes.footerItem}>
-              <FooterIcon color={greyScheme.light[9].hex} type='letter' />
+              <FooterIcon
+                color={greyScheme[themeSettings.general.colorScheme][9].hex}
+                type='letter'
+              />
             </div>
             <div className={classes.footerItem}>
-              <FooterIcon color={greyScheme.light[9].hex} type='heart' />
+              <FooterIcon
+                color={greyScheme[themeSettings.general.colorScheme][9].hex}
+                type='heart'
+              />
             </div>
             <div className={classes.footerItem}>
-              <FooterIcon color={greyScheme.light[9].hex} type='profile' />
+              <FooterIcon
+                color={greyScheme[themeSettings.general.colorScheme][9].hex}
+                type='profile'
+              />
             </div>
           </div>
           <div
             className={classes.footerBar}
-            style={{ backgroundColor: greyScheme.light[9].hex }}
+            style={{
+              backgroundColor:
+                greyScheme[themeSettings.general.colorScheme][9].hex,
+            }}
           ></div>
         </div>
       </div>
@@ -248,27 +455,36 @@ export const Mobile = ({ colorScales }: MobileProps) => {
 
   return (
     <div className={classes.container}>
+      <div className={classes.pageHeading}>App design</div>
+      <ColorFilter onFilterChange={(e) => setActiveColor(e)} />
       {colorScales.map((innerScales, index) => (
         <div key={index}>
-          <div className={classes.pageHeading}>{ColorScaleNames[index]}</div>
-          <div className={classes.colorRow}>
-            {innerScales.map((colorScheme, index2) => (
-              <div key={index2}>
-                <div className={classes.colorMeta}>
-                  <div
-                    className={classes.colorMetaColor}
-                    style={{ backgroundColor: colorScheme.light[11].hex }}
-                  ></div>
-                </div>
-                <div className={classes.row}>
-                  <Item colorScheme={colorScheme} type='A' />
-                  <Item colorScheme={colorScheme} type='B' />
-                  <Item colorScheme={colorScheme} type='C' />
-                  <Item colorScheme={colorScheme} type='D' />
-                </div>
+          {(ColorScaleNames[index] === activeColor ||
+            activeColor === 'Alle') && (
+            <>
+              <div className={classes.title}>{ColorScaleNames[index]}</div>
+              <div className={classes.colorRow}>
+                {innerScales.map((colorScheme, index2) => (
+                  <div key={index2}>
+                    <div className={classes.colorMeta}>
+                      <div
+                        className={classes.colorMetaColor}
+                        style={{
+                          backgroundColor: colorScheme.light[11].hex,
+                        }}
+                      ></div>
+                    </div>
+                    <div className={classes.row}>
+                      <Item colorScheme={colorScheme} type='A' />
+                      <Item colorScheme={colorScheme} type='B' />
+                      <Item colorScheme={colorScheme} type='C' />
+                      <Item colorScheme={colorScheme} type='D' />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       ))}
     </div>

@@ -26,7 +26,17 @@ export const Sidebar = () => {
             <div>Color scheme</div>
             <div className={classes.field}>
               <Field data-size='sm'>
-                <Select onChange={(e) => {}}>
+                <Select
+                  onChange={(e) => {
+                    setThemeSettings({
+                      ...themeSettings,
+                      general: {
+                        ...themeSettings.general,
+                        colorScheme: e.target.value as 'light' | 'dark',
+                      },
+                    });
+                  }}
+                >
                   <Select.Option value='light'>Light Mode</Select.Option>
                   <Select.Option value='dark'>Dark Mode</Select.Option>
                 </Select>

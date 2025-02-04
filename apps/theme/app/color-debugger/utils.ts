@@ -29,4 +29,5 @@ export const ColorScaleNames = [
   'Strong Blue',
   'Purple',
   'Pink',
+  'Black',
 ];

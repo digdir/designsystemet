@@ -217,33 +217,59 @@ export const FrontPage = () => {
         <div className={classes.contrastTestsItems}>
           <ContrastSection
             title='Text default'
-            desc={getTextDefaultTests('light') + ' / 6 tests passed'}
-            error={getTextDefaultTests('light') !== 6}
+            desc={
+              getTextDefaultTests(themeSettings.general.colorScheme) +
+              ' / 6 tests passed'
+            }
+            error={getTextDefaultTests(themeSettings.general.colorScheme) !== 6}
           />
           <ContrastSection
             title='Text subtle'
-            desc={getTextSubtleTests('light') + ' / 4 tests passed'}
-            error={getTextSubtleTests('light') !== 4}
+            desc={
+              getTextSubtleTests(themeSettings.general.colorScheme) +
+              ' / 4 tests passed'
+            }
+            error={getTextSubtleTests(themeSettings.general.colorScheme) !== 4}
           />
           <ContrastSection
             title='Border default'
-            desc={getBorderDefaultTests('light') + ' / 4 tests passed'}
-            error={getBorderDefaultTests('light') !== 4}
+            desc={
+              getBorderDefaultTests(themeSettings.general.colorScheme) +
+              ' / 4 tests passed'
+            }
+            error={
+              getBorderDefaultTests(themeSettings.general.colorScheme) !== 4
+            }
           />
           <ContrastSection
             title='Border strong'
-            desc={getBorderStrongTests('light') + ' / 4 tests passed'}
-            error={getBorderStrongTests('light') !== 4}
+            desc={
+              getBorderStrongTests(themeSettings.general.colorScheme) +
+              ' / 4 tests passed'
+            }
+            error={
+              getBorderStrongTests(themeSettings.general.colorScheme) !== 4
+            }
           />
           <ContrastSection
             title='Base contrast default'
-            desc={getContrastDefaultTests('light') + ' / 300 tests passed'}
-            error={getBorderStrongTests('light') !== 300}
+            desc={
+              getContrastDefaultTests(themeSettings.general.colorScheme) +
+              ' / 300 tests passed'
+            }
+            error={
+              getContrastDefaultTests(themeSettings.general.colorScheme) !== 300
+            }
           />
           <ContrastSection
             title='Base contrast subtle'
-            desc={getContrastSubtleTests('light') + ' / 100 tests passed'}
-            error={getContrastSubtleTests('light') !== 100}
+            desc={
+              getContrastSubtleTests(themeSettings.general.colorScheme) +
+              ' / 100 tests passed'
+            }
+            error={
+              getContrastSubtleTests(themeSettings.general.colorScheme) !== 100
+            }
           />
         </div>
       </div>

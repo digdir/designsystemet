@@ -1,5 +1,7 @@
 import type { ThemeInfo } from '@digdir/designsystemet/color';
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
+import { useState } from 'react';
+import { useDebugStore } from '../../../debugStore';
 import { ColorIndexes } from '../../../utils';
 import classes from './Accordion.module.css';
 
@@ -13,18 +15,41 @@ export const Accordion = ({ scale }: AccordionProps) => {
   };
 
   const Item = ({ state = 'closed' }: ItemProps) => {
+    const [headerState, setHeaderState] = useState<'on' | 'off'>('off');
+    const themeSettings = useDebugStore((state) => state.themeSettings);
+
+    const onHeaderEnter = () => {
+      setHeaderState('on');
+    };
+    const onHeaderLeave = () => {
+      setHeaderState('off');
+    };
+
     return (
       <div className={classes.item}>
         <div
+          onMouseEnter={() => onHeaderEnter()}
+          onMouseLeave={() => onHeaderLeave()}
           className={classes.header}
           style={{
             backgroundColor:
-              scale.light[
+              scale[themeSettings.general.colorScheme][
                 state === 'open'
-                  ? ColorIndexes.surfaceHover
-                  : ColorIndexes.surfaceTinted
+                  ? headerState === 'on'
+                    ? ColorIndexes.surfaceActive
+                    : ColorIndexes.surfaceHover
+                  : headerState === 'on'
+                    ? ColorIndexes.surfaceHover
+                    : ColorIndexes.surfaceTinted
               ].hex,
-            borderTop: '1px solid' + scale.light[ColorIndexes.borderSubtle].hex,
+            borderTop:
+              '1px solid' +
+              scale[themeSettings.general.colorScheme][
+                ColorIndexes.borderSubtle
+              ].hex,
+            color:
+              scale[themeSettings.general.colorScheme][ColorIndexes.textDefault]
+                .hex,
           }}
         >
           {state === 'closed' && (
@@ -39,7 +64,14 @@ export const Accordion = ({ scale }: AccordionProps) => {
           <div
             className={classes.body}
             style={{
-              backgroundColor: scale.light[ColorIndexes.surfaceTinted].hex,
+              backgroundColor:
+                scale[themeSettings.general.colorScheme][
+                  ColorIndexes.surfaceTinted
+                ].hex,
+              color:
+                scale[themeSettings.general.colorScheme][
+                  ColorIndexes.textDefault
+                ].hex,
             }}
           >
             Sleepiness the his soon even bit the immediately my disciplined wish
@@ -55,7 +87,7 @@ export const Accordion = ({ scale }: AccordionProps) => {
       <div className={classes.items}>
         <Item />
         <Item state='open' />
-        <Item />
+
         <Item />
       </div>
     </div>

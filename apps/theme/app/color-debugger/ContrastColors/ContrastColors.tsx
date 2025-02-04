@@ -11,6 +11,7 @@ import classes from './ContrastColors.module.css';
 
 export const ContrastColors = () => {
   const colorScales = useDebugStore((state) => state.colorScales);
+  const themeSettings = useDebugStore((state) => state.themeSettings);
   const colorHeadings = [
     'Red',
     'Pure Orange',
@@ -45,24 +46,7 @@ export const ContrastColors = () => {
   }: { color: CssColor; scheme: ThemeInfo; hideSecondCircle?: boolean }) => {
     return (
       <div className={classes.item}>
-        <div className={classes.color} style={{ backgroundColor: color }}>
-          {/* <div
-            className={classes.circle}
-            style={{
-              backgroundColor:
-                scheme.light[ColorIndexes.baseContrastDefaultIndex].hex,
-            }}
-          ></div>
-          {!hideSecondCircle && (
-            <div
-              className={classes.circle}
-              style={{
-                backgroundColor:
-                  scheme.light[ColorIndexes.baseContrastSubtleIndex].hex,
-              }}
-            ></div>
-          )} */}
-        </div>
+        <div className={classes.color} style={{ backgroundColor: color }}></div>
         <div className={classes.content}>
           <div className={classes.textContent}>
             <div>Li: {getLightnessFromHex(color).toFixed(1)}</div>
@@ -78,7 +62,9 @@ export const ContrastColors = () => {
                 <div>
                   {contrastSection(
                     color,
-                    scheme.light[ColorIndexes.baseContrastSubtle].hex,
+                    scheme[themeSettings.general.colorScheme][
+                      ColorIndexes.baseContrastSubtle
+                    ].hex,
                   )}
                 </div>
               )}
@@ -98,16 +84,28 @@ export const ContrastColors = () => {
             {outerScales.map((innerScale, key) => (
               <div key={key} className={classes.group}>
                 <Item
-                  color={innerScale.light[ColorIndexes.baseDefault].hex}
+                  color={
+                    innerScale[themeSettings.general.colorScheme][
+                      ColorIndexes.baseDefault
+                    ].hex
+                  }
                   scheme={innerScale}
                 />
                 <Item
-                  color={innerScale.light[ColorIndexes.baseHover].hex}
+                  color={
+                    innerScale[themeSettings.general.colorScheme][
+                      ColorIndexes.baseHover
+                    ].hex
+                  }
                   scheme={innerScale}
                   hideSecondCircle
                 />
                 <Item
-                  color={innerScale.light[ColorIndexes.baseActive].hex}
+                  color={
+                    innerScale[themeSettings.general.colorScheme][
+                      ColorIndexes.baseActive
+                    ].hex
+                  }
                   scheme={innerScale}
                   hideSecondCircle
                 />

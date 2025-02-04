@@ -10,8 +10,15 @@
 }
 
 .pageHeading {
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0px;
 }
 
 .colorMeta {
@@ -88,7 +95,7 @@
 }
 
 .searchInput {
-  height: 42px;
+  height: 43px;
   width: 100%;
   border-radius: 4px;
   border: 1px solid #c5c5c5;
@@ -102,7 +109,7 @@
 
 .searchIcon {
   position: absolute;
-  top: 8px;
+  top: 9px;
   left: 10px;
 }
 
@@ -110,7 +117,6 @@
   position: absolute;
   top: 9px;
   right: 9px;
-  color: rgb(73, 73, 73);
 }
 
 .posts {
