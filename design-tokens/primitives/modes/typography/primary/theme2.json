@@ -2,25 +2,15 @@
   "theme2": {
     "main": {
       "$type": "fontFamilies",
-      "$value": "Helvetica Neue"
+      "$value": "Inter"
     },
     "bold": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontWeights",
       "$value": "Medium"
     },
     "extra-bold": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontWeights",
-      "$value": "Bold"
+      "$value": "Semi bold"
     },
     "regular": {
       "$type": "fontWeights",

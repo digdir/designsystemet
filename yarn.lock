@@ -1094,7 +1094,7 @@ __metadata:
   dependencies:
     "@floating-ui/dom": "npm:^1.6.10"
     "@floating-ui/react": "npm:0.26.23"
-    "@navikt/aksel-icons": "npm:^6.14.0"
+    "@navikt/aksel-icons": "npm:^7.0.0"
     "@radix-ui/react-slot": "npm:^1.1.1"
     "@rollup/plugin-commonjs": "npm:^28.0.2"
     "@rollup/plugin-node-resolve": "npm:^16.0.0"
@@ -2184,10 +2184,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^6.14.0":
-  version: 6.14.0
-  resolution: "@navikt/aksel-icons@npm:6.14.0"
-  checksum: 10/1715d43b101de813c75def886a3928b0de2b35cad889acdadb60f565d6e792c7a9050d789e6dd815b710fbd731586edff52912f05e566f047696ed1101589212
+"@navikt/aksel-icons@npm:^7.0.0":
+  version: 7.11.0
+  resolution: "@navikt/aksel-icons@npm:7.11.0"
+  checksum: 10/78a8a0bfcd509dac9a60c543ae302f85cea2f686552149d99fd18f6cf74bd0f56b441bade12777934b5fb0bd382c0133b67608d9cd5a834125442da13111a061
   languageName: node
   linkType: hard
 
@@ -2205,9 +2205,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^14.2.23":
-  version: 14.2.23
-  resolution: "@next/mdx@npm:14.2.23"
+"@next/mdx@npm:^15.0.0":
+  version: 15.1.6
+  resolution: "@next/mdx@npm:15.1.6"
   dependencies:
     source-map: "npm:^0.7.0"
   peerDependencies:
@@ -2218,7 +2218,7 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: 10/ca77c979488efbded58849fe5536c5849980c7180163e188227922d5d6c168d30e262284ef3723c3284ba315de000150e28d0605e34455a67c511488f51e0f6d
+  checksum: 10/3b46e99934543df94bcb335dddab794db4fcaff09223343e9e00597d3df1e094f16dd619c433fb2fa7fff38c3da57b3118cbc010cdeb9790d0cf01e6c37016e8
   languageName: node
   linkType: hard
 
@@ -2404,7 +2404,7 @@ __metadata:
   dependencies:
     "@digdir/designsystemet": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
-    "@navikt/aksel-icons": "npm:^6.14.0"
+    "@navikt/aksel-icons": "npm:^7.0.0"
     "@types/react-syntax-highlighter": "npm:^15.5.13"
     clsx: "npm:^2.1.1"
     next: "npm:^15.1.5"
@@ -12231,8 +12231,8 @@ __metadata:
     "@digdir/designsystemet-theme": "workspace:^"
     "@mdx-js/loader": "npm:^3.1.0"
     "@mdx-js/react": "npm:^3.1.0"
-    "@navikt/aksel-icons": "npm:^6.14.0"
-    "@next/mdx": "npm:^14.2.23"
+    "@navikt/aksel-icons": "npm:^7.0.0"
+    "@next/mdx": "npm:^15.0.0"
     "@repo/components": "workspace:^"
     "@types/react": "npm:^19.0.7"
     "@types/react-dom": "npm:^19.0.3"
@@ -12651,7 +12651,7 @@ __metadata:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
-    "@navikt/aksel-icons": "npm:^6.14.0"
+    "@navikt/aksel-icons": "npm:^7.0.0"
     "@repo/components": "workspace:^"
     "@types/chroma-js": "npm:^3.1.0"
     "@types/react": "npm:^19.0.7"

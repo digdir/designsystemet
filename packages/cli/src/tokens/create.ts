@@ -71,7 +71,6 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
   const orangeScale = generateColorScale(baseColors.orange, colorScheme);
   const purpleScale = generateColorScale(baseColors.purple, colorScheme);
   const redScale = generateColorScale(baseColors.red, colorScheme);
-  const yellowScale = generateColorScale(baseColors.yellow, colorScheme);
 
   return {
     global: {
@@ -80,7 +79,6 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
       orange: createColorTokens(orangeScale),
       purple: createColorTokens(purpleScale),
       red: createColorTokens(redScale),
-      yellow: createColorTokens(yellowScale),
     },
   };
 };
