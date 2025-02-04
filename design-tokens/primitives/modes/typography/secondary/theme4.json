@@ -5,20 +5,10 @@
       "$value": "IBM Plex Mono"
     },
     "bold": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontWeights",
       "$value": "Regular"
     },
     "extra-bold": {
-      "$extensions": {
-        "studio.tokens": {
-          "modify": {}
-        }
-      },
       "$type": "fontWeights",
       "$value": "Bold"
     },
