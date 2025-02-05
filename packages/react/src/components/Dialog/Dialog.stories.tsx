@@ -4,11 +4,11 @@ import { useRef, useState } from 'react';
 
 import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
 
-import { Modal } from '.';
+import { Dialog } from '.';
 
 export default {
-  title: 'Komponenter/Modal',
-  component: Modal,
+  title: 'Komponenter/Dialog',
+  component: Dialog,
   parameters: {
     layout: 'fullscreen',
     customStyles: {
@@ -33,92 +33,94 @@ export default {
     },
   },
   play: async (ctx) => {
-    // When not in Docs mode, automatically open the modal
+    // When not in Docs mode, automatically open the dialog
     const canvas = within(ctx.canvasElement);
     const button = canvas.getByRole('button');
     await userEvent.click(button);
-    // Wait for modal to fade in before running tests
-    const modal = canvas.getByRole('dialog');
+    // Wait for dialog to fade in before running tests
+    const dialog = canvas.getByRole('dialog');
     await new Promise<void>((resolve) => {
-      modal.addEventListener('animationend', () => {
+      dialog.addEventListener('animationend', () => {
         resolve();
       });
     });
 
-    await expect(modal).toBeInTheDocument();
-    await expect(modal).toHaveAttribute('open');
+    await expect(dialog).toBeInTheDocument();
+    await expect(dialog).toHaveAttribute('open');
   },
 } satisfies Meta;
 
-export const Preview: StoryFn<typeof Modal> = (args) => (
-  <Modal.TriggerContext>
-    <Modal.Trigger
+export const Preview: StoryFn<typeof Dialog> = (args) => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger
       data-color={args['data-color']}
       data-size={args['data-size']}
     >
-      Open Modal
-    </Modal.Trigger>
-    <Modal {...args}>
+      Open Dialog
+    </Dialog.Trigger>
+    <Dialog {...args}>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Modal header
+        Dialog header
       </Heading>
       <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-      <Paragraph data-size='sm'>Modal footer</Paragraph>
-    </Modal>
-  </Modal.TriggerContext>
+      <Paragraph data-size='sm'>Dialog footer</Paragraph>
+    </Dialog>
+  </Dialog.TriggerContext>
 );
 
-export const WithoutModalTriggerContext: StoryFn<typeof Modal> = (args) => {
-  const modalRef = useRef<HTMLDialogElement>(null);
+export const WithoutDialogTriggerContext: StoryFn<typeof Dialog> = (args) => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
-      <Button onClick={() => modalRef.current?.showModal()}>Open Modal</Button>
-      <Modal {...args} ref={modalRef}>
-        <Paragraph data-size='sm'>Modal subtittel</Paragraph>
+      <Button onClick={() => dialogRef.current?.showModal()}>
+        Open Dialog
+      </Button>
+      <Dialog {...args} ref={dialogRef}>
+        <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Modal header
+          Dialog header
         </Heading>
         <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        Modal footer
-      </Modal>
+        Dialog footer
+      </Dialog>
     </>
   );
 };
 
-export const BackdropClose: StoryFn<typeof Modal> = () => {
-  const modalRef = useRef<HTMLDialogElement>(null);
+export const BackdropClose: StoryFn<typeof Dialog> = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
-    <Modal.TriggerContext>
-      <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} backdropClose>
-        <Heading>Modal med backdropClose og en veldig lang tittel</Heading>
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog ref={dialogRef} backdropClose>
+        <Heading>Dialog med backdropClose og en veldig lang tittel</Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        <Paragraph data-size='sm'>Modal footer</Paragraph>
-      </Modal>
-    </Modal.TriggerContext>
+        <Paragraph data-size='sm'>Dialog footer</Paragraph>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };
 
-export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
-  <Modal.TriggerContext>
-    <Modal.Trigger>Open Modal</Modal.Trigger>
-    <Modal>
-      <Modal.Block>
+export const WithHeaderAndFooter: StoryFn<typeof Dialog> = () => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <Dialog>
+      <Dialog.Block>
         <Paragraph data-size='sm'>Her er det også divider</Paragraph>
         <Heading>Vi kan legge divider under header</Heading>
-      </Modal.Block>
-      <Modal.Block>
+      </Dialog.Block>
+      <Dialog.Block>
         <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
           sodales eros justo. Aenean non mi ipsum. Cras viverra elit nec
@@ -141,22 +143,22 @@ export const WithHeaderAndFooter: StoryFn<typeof Modal> = () => (
           arcu. Donec cursus leo a dui auctor pulvinar. Sed in elit urna. Nunc
           vitae magna sed nibh elementum dignissim et ut massa.
         </Paragraph>
-      </Modal.Block>
-      <Modal.Block>Og over footer</Modal.Block>
-    </Modal>
-  </Modal.TriggerContext>
+      </Dialog.Block>
+      <Dialog.Block>Og over footer</Dialog.Block>
+    </Dialog>
+  </Dialog.TriggerContext>
 );
 
-export const ModalWithForm: StoryFn<typeof Modal> = () => {
-  const modalRef = useRef<HTMLDialogElement>(null);
+export const DialogWithForm: StoryFn<typeof Dialog> = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const [input, setInput] = useState('');
 
   return (
-    <Modal.TriggerContext>
-      <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal ref={modalRef} onClose={() => setInput('')} backdropClose>
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog ref={dialogRef} onClose={() => setInput('')} backdropClose>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Modal med skjema
+          Dialog med skjema
         </Heading>
         <Textfield
           // @ts-expect-error We want the native "autofocus" and Reacts onMount smartness (see https://react.dev/reference/react-dom/components/input#input)
@@ -175,47 +177,50 @@ export const ModalWithForm: StoryFn<typeof Modal> = () => {
           <Button
             onClick={() => {
               window.alert(`Du har sendt inn skjema med navn: ${input}`);
-              modalRef.current?.close();
+              dialogRef.current?.close();
             }}
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' onClick={() => modalRef.current?.close()}>
+          <Button
+            variant='secondary'
+            onClick={() => dialogRef.current?.close()}
+          >
             Avbryt
           </Button>
         </div>
-      </Modal>
-    </Modal.TriggerContext>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };
 
-export const ModalWithMaxWidth: StoryFn<typeof Modal> = () => (
-  <Modal.TriggerContext>
-    <Modal.Trigger>Open Modal</Modal.Trigger>
-    <Modal style={{ maxWidth: 1200 }}>
+export const DialogWithMaxWidth: StoryFn<typeof Dialog> = () => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <Dialog style={{ maxWidth: 1200 }}>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Modal med en veldig lang bredde
+        Dialog med en veldig lang bredde
       </Heading>
       <Paragraph>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-    </Modal>
-  </Modal.TriggerContext>
+    </Dialog>
+  </Dialog.TriggerContext>
 );
 
-export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
-  const modalRef = useRef<HTMLDialogElement>(null);
+export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
-      <Modal.TriggerContext>
-        <Modal.Trigger>Open Modal</Modal.Trigger>
-        <Modal style={{ overflow: 'visible' }} ref={modalRef}>
-          <Modal.Block>
-            <Heading>Modal med combobox</Heading>
-          </Modal.Block>
-          <Modal.Block>
+      <Dialog.TriggerContext>
+        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+        <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
+          <Dialog.Block>
+            <Heading>Dialog med combobox</Heading>
+          </Dialog.Block>
+          <Dialog.Block>
             <Combobox portal={false} label='Velg sted' autoFocus>
               <Combobox.Empty>Fant ingen treff</Combobox.Empty>
               <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
@@ -227,17 +232,17 @@ export const ModalWithCombobox: StoryFn<typeof Modal> = () => {
               <Combobox.Option value='bergen'>Bergen</Combobox.Option>
               <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
             </Combobox>
-          </Modal.Block>
-          <Modal.Block>
+          </Dialog.Block>
+          <Dialog.Block>
             <Button
               variant='secondary'
-              onClick={() => modalRef.current?.close()}
+              onClick={() => dialogRef.current?.close()}
             >
               Avbryt
             </Button>
-          </Modal.Block>
-        </Modal>
-      </Modal.TriggerContext>
+          </Dialog.Block>
+        </Dialog>
+      </Dialog.TriggerContext>
     </>
   );
 };
