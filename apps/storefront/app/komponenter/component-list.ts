@@ -86,7 +86,7 @@ export const data = [
   },
   {
     title: 'Dialog',
-    image: 'Modal.svg',
+    image: 'Dialog.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs',
   },
   {
