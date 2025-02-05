@@ -25,10 +25,10 @@ export const MultiSelectChips = ({
   const { selectedItems } = useContext(MultiSelectContext);
 
   return (
-    <div>
+    <>
       {selectedItems &&
         Object.values(selectedItems).map((item) => (
-          <Chip.Removable key={item.value} data-value={item.value} asChild>
+          <Chip.Removable key={item.value} value={item.value} asChild>
             <data>
               {render({
                 text: item.textContent || item.value,
@@ -38,7 +38,7 @@ export const MultiSelectChips = ({
             </data>
           </Chip.Removable>
         ))}
-    </div>
+    </>
   );
 };
 

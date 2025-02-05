@@ -85,13 +85,13 @@ export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
   return (
     <Field>
       <Label>Velg reisemål du vil besøke</Label>
-      <MultiSelect
-        {...args}
-        value={value}
-        defaultValue={['Sogndal']}
-        onChange={(v) => setValue(v)}
-      >
-        <MultiSelect.Chips />
+      <MultiSelect {...args} defaultValue={['Sogndal']}>
+        <MultiSelect.Chips
+          render={(e) => {
+            console.log(e);
+            return e.text;
+          }}
+        />
         <MultiSelect.Input />
         <MultiSelect.Clear />
         <MultiSelect.List>

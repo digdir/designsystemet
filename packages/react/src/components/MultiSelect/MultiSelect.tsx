@@ -92,6 +92,8 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         e.preventDefault();
         const item = e.detail.item;
 
+        console.log(item);
+
         if (e.detail.action === 'add') {
           setSelectedItems((prevItems) => ({
             ...prevItems,
@@ -100,13 +102,10 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         }
 
         if (e.detail.action === 'remove') {
-          const value = item.getAttribute('data-value');
+          console.log('should remove');
           setSelectedItems((prevItems) => {
-            if (value) {
-              const { [value]: _, ...rest } = prevItems;
-              return rest;
-            }
-            return prevItems;
+            const { [item.value]: _, ...rest } = prevItems;
+            return rest;
           });
         }
       };
@@ -117,12 +116,6 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         uTagsRef.current?.removeEventListener('tags', handleItemsChange);
       };
     }, [uTagsRef, setSelectedItems]);
-
-    /* Send change event with values */
-    /* useEffect(() => {
-      if (!onChange) return;
-      onChange(Object.keys(selectedItems));
-    }, [selectedItems, onChange]); */
 
     const handleFilter = useCallback(
       (input?: HTMLInputElement | null) => {
@@ -169,11 +162,13 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
           {...rest}
         />
         {/* Hidden select so it will be sent with a form */}
-        <select multiple hidden name={name}>
-          {Object.values(selectedItems).map((item) => (
-            <option key={item.value} value={item.value} />
-          ))}
-        </select>
+        {name && (
+          <select multiple hidden name={name}>
+            {Object.values(selectedItems).map((item) => (
+              <option key={item.value} value={item.value} />
+            ))}
+          </select>
+        )}
       </MultiSelectContext.Provider>
     );
   },

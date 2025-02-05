@@ -18,10 +18,12 @@
   gap: var(--ds-size-1);
   position: relative;
 
-  & div:has(> data) {
+  & > data {
     margin-bottom: var(--ds-size-1);
-    display: flex;
-    gap: var(--ds-size-1);
+
+    &:has(+ data) {
+      margin-right: var(--ds-size-1);
+    }
   }
 
   & u-datalist {
