@@ -26,6 +26,7 @@
     background: var(--dsc-breadcrumbs-color);
     content: '';
     display: inline-block;
+    flex-shrink: 0; /* Prevent shrinking chevron */
     height: var(--dsc-breadcrumbs-icon-size);
     margin-inline: var(--dsc-breadcrumbs-spacing);
     mask: center / contain no-repeat var(--dsc-breadcrumbs-icon-url);

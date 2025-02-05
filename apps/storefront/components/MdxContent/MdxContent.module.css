@@ -79,6 +79,7 @@
     max-width: 100%;
     padding-left: var(--ds-size-5);
     box-sizing: border-box;
+    margin-bottom: 24px;
   }
 
   & > ul > li,
