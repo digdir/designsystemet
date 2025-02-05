@@ -20,6 +20,8 @@
 
   & div:has(> data) {
     margin-bottom: var(--ds-size-1);
+    display: flex;
+    gap: var(--ds-size-1);
   }
 
   & u-datalist {

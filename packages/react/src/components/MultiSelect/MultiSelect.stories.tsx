@@ -79,25 +79,34 @@ export const Preview: StoryFn<typeof MultiSelect> = (args) => {
   );
 };
 
-export const DefaultValue: StoryFn<typeof MultiSelect> = (args) => {
+export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
+  const [value, setValue] = useState<string[]>();
+
   return (
     <Field>
-      <Label>Velg en destinasjon</Label>
-      <MultiSelect {...args}>
+      <Label>Velg reisemål du vil besøke</Label>
+      <MultiSelect
+        {...args}
+        value={value}
+        defaultValue={['Sogndal']}
+        onChange={(v) => setValue(v)}
+      >
         <MultiSelect.Chips />
-        <MultiSelect.Input defaultValue='Sogndal' />
+        <MultiSelect.Input />
         <MultiSelect.Clear />
         <MultiSelect.List>
           <MultiSelect.Empty>Tomt</MultiSelect.Empty>
           {DATA_PLACES.map((place) => (
-            <MultiSelect.Option key={place}>{place}</MultiSelect.Option>
+            <MultiSelect.Option key={place} value={place}>
+              {place}
+              <div>Kommune</div>
+            </MultiSelect.Option>
           ))}
         </MultiSelect.List>
       </MultiSelect>
     </Field>
   );
 };
-
 export const CustomFilterAlt1: StoryFn<typeof MultiSelect> = (args) => {
   return (
     <Field>

@@ -1,11 +1,10 @@
 import {
-  type Dispatch,
   type HTMLAttributes,
   type RefObject,
-  type SetStateAction,
   createContext,
   forwardRef,
   useCallback,
+  useEffect,
   useId,
   useRef,
   useState,
@@ -23,16 +22,9 @@ type MultiSelectContextType = {
   uTagsRef?: RefObject<UHTMLTagsElement | null>;
   setListId?: (id: string) => void;
   handleFilter?: (input?: HTMLInputElement | null) => void;
-  setSelectedItems: Dispatch<
-    SetStateAction<{
-      [key: string]: HTMLDataElement;
-    }>
-  >;
 };
 
-export const MultiSelectContext = createContext<MultiSelectContextType>({
-  setSelectedItems: () => {},
-});
+export const MultiSelectContext = createContext<MultiSelectContextType>({});
 
 export type MultiSelectProps = {
   /**
@@ -68,10 +60,17 @@ export type MultiSelectProps = {
          */
         input: HTMLInputElement;
       }) => boolean);
+  onChange?: (value: string[]) => void;
+  value?: string[];
+  defaultValue?: string[];
+  name?: string;
 } & HTMLAttributes<UHTMLTagsElement>;
 
 export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
-  function MultiSelect({ filter = false, className, ...rest }, ref) {
+  function MultiSelect(
+    { value, defaultValue, onChange, name, filter = false, className, ...rest },
+    ref,
+  ) {
     const [listId, setListId] = useState(useId());
     const [selectedItems, setSelectedItems] = useState<{
       [key: string]: HTMLDataElement;
@@ -80,6 +79,50 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
     const inputRef = useRef<HTMLInputElement | null>(null);
     const uTagsRef = useRef<UHTMLTagsElement>(null);
     const mergedRefs = useMergeRefs([ref, uTagsRef]);
+
+    useEffect(() => {
+      if (!uTagsRef?.current) return;
+
+      const handleItemsChange = (
+        e: CustomEvent<{
+          action: 'add' | 'remove';
+          item: HTMLDataElement;
+        }>,
+      ) => {
+        e.preventDefault();
+        const item = e.detail.item;
+
+        if (e.detail.action === 'add') {
+          setSelectedItems((prevItems) => ({
+            ...prevItems,
+            [item.value]: item,
+          }));
+        }
+
+        if (e.detail.action === 'remove') {
+          const value = item.getAttribute('data-value');
+          setSelectedItems((prevItems) => {
+            if (value) {
+              const { [value]: _, ...rest } = prevItems;
+              return rest;
+            }
+            return prevItems;
+          });
+        }
+      };
+
+      uTagsRef.current.addEventListener('tags', handleItemsChange);
+
+      return () => {
+        uTagsRef.current?.removeEventListener('tags', handleItemsChange);
+      };
+    }, [uTagsRef, setSelectedItems]);
+
+    /* Send change event with values */
+    /* useEffect(() => {
+      if (!onChange) return;
+      onChange(Object.keys(selectedItems));
+    }, [selectedItems, onChange]); */
 
     const handleFilter = useCallback(
       (input?: HTMLInputElement | null) => {
@@ -112,13 +155,12 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
     return (
       <MultiSelectContext.Provider
         value={{
-          handleFilter,
           inputRef,
-          listId,
-          setListId,
           uTagsRef,
+          listId,
           selectedItems,
-          setSelectedItems,
+          setListId,
+          handleFilter,
         }}
       >
         <u-tags
@@ -127,7 +169,7 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
           {...rest}
         />
         {/* Hidden select so it will be sent with a form */}
-        <select multiple hidden>
+        <select multiple hidden name={name}>
           {Object.values(selectedItems).map((item) => (
             <option key={item.value} value={item.value} />
           ))}
