@@ -18,7 +18,7 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@navikt/aksel-icons": "^7.0.0",
-    "@next/mdx": "^14.2.23",
+    "@next/mdx": "^15.0.0",
     "@repo/components": "workspace:^",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
