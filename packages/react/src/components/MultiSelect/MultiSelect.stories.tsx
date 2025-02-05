@@ -11,7 +11,7 @@ export default {
   /* add height by default */
   decorators: [
     (Story) => (
-      <div style={{ minHeight: '300px' }}>
+      <div style={{ minHeight: '500px' }}>
         <Story />
       </div>
     ),
@@ -85,7 +85,7 @@ export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
   return (
     <Field>
       <Label>Velg reisemål du vil besøke</Label>
-      <MultiSelect {...args} defaultValue={['Sogndal']}>
+      <MultiSelect {...args} defaultValue={['Sogndal', '123']}>
         <MultiSelect.Chips
           render={(e) => {
             console.log(e);

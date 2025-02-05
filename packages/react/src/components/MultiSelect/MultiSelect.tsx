@@ -19,7 +19,6 @@ type MultiSelectContextType = {
   selectedItems?: { [key: string]: HTMLDataElement };
   listId?: string;
   inputRef?: RefObject<HTMLInputElement | null>;
-  uTagsRef?: RefObject<UHTMLTagsElement | null>;
   setListId?: (id: string) => void;
   handleFilter?: (input?: HTMLInputElement | null) => void;
 };
@@ -60,15 +59,44 @@ export type MultiSelectProps = {
          */
         input: HTMLInputElement;
       }) => boolean);
-  onChange?: (value: string[]) => void;
+  /**
+   * Allows the user to create new items
+   *
+   * @default false
+   */
+  allowCreate?: boolean;
+  /**
+   * The value of the multi-select
+   */
   value?: string[];
+  /**
+   * Default value when uncontrolled
+   */
   defaultValue?: string[];
+  /**
+   * Callback when value changes
+   */
+  onChange?: (value: string[]) => void;
+  /**
+   * The name of the associated form control
+   *
+   * @default undefined
+   */
   name?: string;
 } & HTMLAttributes<UHTMLTagsElement>;
 
 export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
   function MultiSelect(
-    { value, defaultValue, onChange, name, filter = false, className, ...rest },
+    {
+      value,
+      defaultValue,
+      onChange,
+      name,
+      filter = true,
+      allowCreate = false,
+      className,
+      ...rest
+    },
     ref,
   ) {
     const [listId, setListId] = useState(useId());
@@ -80,6 +108,40 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
     const uTagsRef = useRef<UHTMLTagsElement>(null);
     const mergedRefs = useMergeRefs([ref, uTagsRef]);
 
+    console.log({ selectedItems });
+
+    /**
+     * If we have set a default value, set it on initial render
+     */
+    useEffect(() => {
+      if (!defaultValue) return;
+      const items = uTagsRef.current?.querySelectorAll('u-option');
+      if (!items) return;
+
+      const defaultItems = Array.from(items).filter((item) =>
+        defaultValue.includes(item.value),
+      );
+
+      for (const item of defaultItems) {
+        uTagsRef.current?.dispatchEvent(
+          new CustomEvent('add', {
+            detail: { item },
+          }),
+        );
+        setSelectedItems((prevItems) => ({
+          ...prevItems,
+          [item.value]: item,
+        }));
+      }
+
+      return () => {
+        console.error('Default value changed during render');
+      };
+    }, [defaultValue]);
+
+    /**
+     * Listerners and handling of adding/removing
+     */
     useEffect(() => {
       if (!uTagsRef?.current) return;
 
@@ -92,9 +154,17 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         e.preventDefault();
         const item = e.detail.item;
 
-        console.log(item);
-
         if (e.detail.action === 'add') {
+          /**
+           * If creating is off, check if the value is allowed to be added
+           */
+          if (!allowCreate) {
+            const optionExists = uTagsRef.current?.querySelectorAll(
+              `u-option[value="${item.value}"]`,
+            );
+            if (optionExists?.length === 0) return;
+          }
+
           setSelectedItems((prevItems) => ({
             ...prevItems,
             [item.value]: item,
@@ -149,7 +219,6 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
       <MultiSelectContext.Provider
         value={{
           inputRef,
-          uTagsRef,
           listId,
           selectedItems,
           setListId,

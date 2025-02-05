@@ -10,6 +10,8 @@ export type MultiSelectChipsProps = MergeRight<
   {
     /**
      * Change the rendered content of the chip.
+     *
+     * @default ({ value }) => value
      */
     render?: (args: {
       text: string;
@@ -20,7 +22,7 @@ export type MultiSelectChipsProps = MergeRight<
 >;
 
 export const MultiSelectChips = ({
-  render = ({ text }) => text,
+  render = ({ value }) => value,
 }: MultiSelectChipsProps) => {
   const { selectedItems } = useContext(MultiSelectContext);
 

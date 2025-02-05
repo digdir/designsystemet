@@ -15,13 +15,13 @@ const MultiSelect = Object.assign(MultiSelectRoot, {
   Clear: MultiSelectClear,
 });
 
-MultiSelect.displayName = 'MultiSelect';
-MultiSelect.Input.displayName = 'MultiSelect.Input';
-MultiSelect.List.displayName = 'MultiSelect.List';
-MultiSelect.Option.displayName = 'MultiSelect.Option';
-MultiSelect.Chips.displayName = 'MultiSelect.Chips';
-MultiSelect.Empty.displayName = 'MultiSelect.Empty';
-MultiSelect.Clear.displayName = 'MultiSelect.Clear';
+MultiSelect.displayName = 'EXPERIMENTRAL_MultiSelect';
+MultiSelect.Input.displayName = 'EXPERIMENTRAL_MultiSelect.Input';
+MultiSelect.List.displayName = 'EXPERIMENTRAL_MultiSelect.List';
+MultiSelect.Option.displayName = 'EXPERIMENTRAL_MultiSelect.Option';
+MultiSelect.Chips.displayName = 'EXPERIMENTRAL_MultiSelect.Chips';
+MultiSelect.Empty.displayName = 'EXPERIMENTRAL_MultiSelect.Empty';
+MultiSelect.Clear.displayName = 'EXPERIMENTRAL_MultiSelect.Clear';
 
 export {
   MultiSelect as EXPERIMENTAL_MultiSelect,
