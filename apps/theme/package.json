@@ -14,7 +14,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^6.14.0",
+    "@navikt/aksel-icons": "^7.0.0",
     "@repo/components": "workspace:^",
     "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
