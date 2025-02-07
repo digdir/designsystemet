@@ -153,6 +153,8 @@ const preview: Preview = {
       viewports,
     },
     chromatic: {
+      // Disable snapshots by default
+      disableSnapshot: true,
       modes: {
         mobile: allModes[320],
         desktop: allModes[1200],
