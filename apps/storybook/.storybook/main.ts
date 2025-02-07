@@ -26,13 +26,33 @@ const config: StorybookConfig = {
   },
   stories: [
     '../stories/*.mdx',
-    '../stories/*.stories.ts?(x)',
+    '../stories/*.@(stories|chromatic).ts?(x)',
     '../../../packages/*.mdx',
     '../../../packages/css/**/*.mdx',
     '../../../packages/theme/**/*.mdx',
     '../../../packages/react/**/*.mdx',
-    '../../../packages/react/**/*.stories.ts?(x)',
+    '../../../packages/react/**/*.@(stories|chromatic).ts?(x)',
   ],
+  experimental_indexers: (existingIndexers) => {
+    /*
+     * The following is required in order to process .chromatic.tsx with the default indexer
+     */
+    if (!existingIndexers) {
+      return [];
+    }
+    // find the default `.stories.tsx` indexer
+    const storiesIndexer = existingIndexers.find((x) =>
+      x.test.test('stories.tsx'),
+    );
+    if (!storiesIndexer) {
+      throw new Error("Couldn't find the default indexer");
+    }
+    const customIndexer = {
+      test: /\.chromatic\.tsx?$/,
+      createIndex: storiesIndexer?.createIndex,
+    };
+    return [...existingIndexers, customIndexer];
+  },
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
@@ -51,6 +71,16 @@ const config: StorybookConfig = {
         viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
       },
     },
+  },
+  tags: (_, options) => {
+    return {
+      // Configure stories with the 'chromatic' tag to only be visible in development.
+      // In production, they will be picked up by snapshot tests etc but not be visible.
+      chromatic: {
+        excludeFromDocsStories: true,
+        excludeFromSidebar: options.configType === 'PRODUCTION',
+      },
+    };
   },
 };
 
