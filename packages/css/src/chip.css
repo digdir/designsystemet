@@ -82,7 +82,7 @@
   }
 
   & > input {
-    --dsc-input-background: trasparent;
+    --dsc-input-background: transparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
     --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
     --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
