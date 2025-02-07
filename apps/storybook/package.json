@@ -7,7 +7,7 @@
     "build": "storybook build -o ./dist --stats-json",
     "test-storybook": "vitest",
     "chromatic": "npx chromatic",
-    "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
+    "types": "npx tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
   "author": "",
   "license": "ISC",
