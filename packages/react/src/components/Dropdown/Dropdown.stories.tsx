@@ -24,6 +24,11 @@ export default {
       },
     },
   },
+  argTypes: {
+    children: {
+      control: false,
+    },
+  },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
     const button = within(ctx.canvasElement).getByRole('button');

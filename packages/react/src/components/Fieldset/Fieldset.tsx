@@ -1,10 +1,15 @@
 import cl from 'clsx/lite';
-import type { FieldsetHTMLAttributes } from 'react';
+import type { FieldsetHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import type { DefaultProps } from '../../types';
 
-export type FieldsetProps = DefaultProps &
+export type FieldsetProps = {
+  /**
+   * `Fieldset.Legend`, `Fieldset.Description` or `Field`
+   */
+  children: ReactNode;
+} & DefaultProps &
   FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 /**

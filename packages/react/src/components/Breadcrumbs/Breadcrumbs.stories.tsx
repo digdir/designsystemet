@@ -2,14 +2,25 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Breadcrumbs } from '.';
 
+type Story = StoryFn<typeof Breadcrumbs>;
+
 export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs,
+  argTypes: {
+    children: {
+      control: false,
+    },
+  },
 } as Meta;
 
-export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
-  <>
-    <Breadcrumbs aria-label='Du er her:' {...args}>
+export const Preview: Story = (args) => (
+  <Breadcrumbs aria-label='Du er her:' {...args}></Breadcrumbs>
+);
+
+Preview.args = {
+  children: (
+    <>
       <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
         Nivå 3
       </Breadcrumbs.Link>
@@ -27,9 +38,9 @@ export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
           <Breadcrumbs.Link href='#'>Nivå 4</Breadcrumbs.Link>
         </Breadcrumbs.Item>
       </Breadcrumbs.List>
-    </Breadcrumbs>
-  </>
-);
+    </>
+  ),
+};
 
 export const ListOnly: StoryFn<typeof Breadcrumbs> = (args) => (
   <Breadcrumbs aria-label='Du er her:'>

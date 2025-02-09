@@ -12,6 +12,11 @@ type Story = StoryFn<typeof ErrorSummary>;
 export default {
   title: 'Komponenter/ErrorSummary',
   component: ErrorSummary,
+  argTypes: {
+    children: {
+      control: false,
+    },
+  },
 } as Meta;
 
 export const Preview: Story = (args) => (

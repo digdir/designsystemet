@@ -8,18 +8,27 @@ export default {
   parameters: {
     customStyles: { display: 'flex', gap: 'var(--ds-size-2)' },
   },
+  argTypes: {
+    children: {
+      type: 'string',
+    },
+  },
 } satisfies Meta;
 
 export const Preview: StoryFn<typeof Chip.Radio> = (args) => (
   <>
     <Chip.Radio {...args} name='my-radio' value='nynorsk' defaultChecked>
-      Nynorsk
+      {args.children}
     </Chip.Radio>
     <Chip.Radio {...args} name='my-radio' value='bokmål'>
       Bokmål
     </Chip.Radio>
   </>
 );
+
+Preview.args = {
+  children: 'Nynorsk',
+};
 
 export const Checkbox: StoryFn<typeof Chip.Checkbox> = (args) => (
   <Chip.Checkbox {...args}>Nynorsk</Chip.Checkbox>

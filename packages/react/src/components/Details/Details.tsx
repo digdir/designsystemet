@@ -35,7 +35,7 @@ export type DetailsProps = MergeRight<
     /**
      * Content should be one `<Details.Summary>` and `<Details.Content>`
      */
-    children?: ReactNode;
+    children: ReactNode;
   }
 > &
   (

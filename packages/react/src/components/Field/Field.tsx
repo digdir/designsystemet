@@ -1,6 +1,6 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import { fieldObserver } from './fieldObserver';
@@ -11,6 +11,10 @@ export type FieldProps = {
    * @default start
    */
   position?: 'start' | 'end';
+  /**
+   * Any renderable element
+   */
+  children: ReactNode;
 } & HTMLAttributes<HTMLDivElement> &
   DefaultProps;
 

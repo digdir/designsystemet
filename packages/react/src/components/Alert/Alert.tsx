@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { SeverityColors } from '../../colors';
 import type { DefaultProps } from '../../types';
@@ -14,6 +14,8 @@ export type AlertProps = MergeRight<
      * @default 'info'
      */
     'data-color'?: SeverityColors;
+    /** Anything renderable. Recommended with a `Heading` and `Paragraph` */
+    children: ReactNode;
   }
 >;
 

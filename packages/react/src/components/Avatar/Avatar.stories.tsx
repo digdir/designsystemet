@@ -19,6 +19,11 @@ const meta: Meta<typeof Avatar> = {
       alignItems: 'center',
     },
   },
+  argTypes: {
+    children: {
+      type: 'string',
+    },
+  },
 };
 
 export default meta;

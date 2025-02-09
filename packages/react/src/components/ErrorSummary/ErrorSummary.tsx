@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { createContext, forwardRef, useId, useState } from 'react';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type { DefaultProps } from '../../types';
 
 type ErrorSummaryContextType = {
@@ -16,6 +16,10 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
 
 export type ErrorSummaryProps = {
   asChild?: React.ReactNode;
+  /**
+   * `ErrorSummary.Heading` or `ErrorSummary.List`
+   */
+  children: ReactNode;
 } & Omit<HTMLAttributes<HTMLDivElement> & DefaultProps, 'data-color'>;
 
 /**

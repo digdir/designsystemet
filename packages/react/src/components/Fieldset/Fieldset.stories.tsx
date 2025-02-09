@@ -7,6 +7,11 @@ type Story = StoryFn<typeof Fieldset>;
 export default {
   title: 'Komponenter/Fieldset',
   component: Fieldset,
+  argTypes: {
+    children: {
+      control: false,
+    },
+  },
 } as Meta;
 
 export const Preview: Story = (args) => (

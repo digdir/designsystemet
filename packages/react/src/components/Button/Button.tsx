@@ -11,11 +11,13 @@ export type ButtonProps = MergeRight<
   {
     /**
      * Specify which variant to use
+     *
      * @default 'primary'
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
     /**
      * Toggle icon only styling, pass icon as children
+     *
      * @default false
      */
     icon?: boolean;
@@ -32,10 +34,15 @@ export type ButtonProps = MergeRight<
      */
     asChild?: boolean;
     /**
-     * Specify the type of button. Unset when `asChild` is true
+     * Specify the type of button. Unset when `asChild` is true.
+     *
      * @default 'button'
      */
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+    /**
+     * An `Icon`, `string` or combination of the two.
+     */
+    children?: ReactNode;
   }
 >;
 

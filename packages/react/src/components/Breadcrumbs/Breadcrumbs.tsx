@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef } from 'react';
+import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -11,6 +11,8 @@ export type BreadcrumbsProps = MergeRight<
      * @default 'Du er her'
      */
     'aria-label'?: string;
+    /** Instance of `Breadcrumbs.link`, `Breadcrumbs.List` */
+    children: ReactNode;
   }
 >;
 

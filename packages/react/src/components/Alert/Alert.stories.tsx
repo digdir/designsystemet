@@ -12,6 +12,11 @@ const meta: Meta = {
   parameters: {
     layout: 'padded',
   },
+  argTypes: {
+    children: {
+      type: 'string',
+    },
+  },
 };
 
 export default meta;

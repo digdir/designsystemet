@@ -19,6 +19,7 @@ export type HeadingProps = {
    * @default false
    */
   asChild?: boolean;
+  children: string;
 } & HTMLAttributes<HTMLHeadingElement>;
 
 /**

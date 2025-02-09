@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 import type { Placement } from '@floating-ui/react';
 import type { DefaultProps } from '../../types';
@@ -15,6 +15,10 @@ export type DropdownProps = MergeRight<
      * @default bottom-end
      */
     placement?: Placement;
+    /**
+     * `Dropdown.Heading` or `Dropdown.List`
+     */
+    children: ReactNode;
   }
 >;
 
