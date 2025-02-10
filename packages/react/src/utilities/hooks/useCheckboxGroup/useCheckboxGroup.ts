@@ -60,7 +60,8 @@ export type GetCheckboxProps = Omit<
 > & {
   /** Enables indeterminate handling for this `Checkbox` and `CheckboxGroup` */
   allowIndeterminate?: boolean;
-  ref?: React.Ref<HTMLInputElement | null>;
+  ref?: React.ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Checkbox`, remove when `Checkbox` no longer uses `forwardRef`
+  checked?: boolean;
   value?: string;
 };
 
