@@ -1,6 +1,6 @@
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-background-default);
-  --dsc-togglegroup-border-width: 1px;
+  --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
   --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
   --dsc-togglegroup-spacing: var(--ds-size-1);
