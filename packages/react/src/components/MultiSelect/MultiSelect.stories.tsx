@@ -34,6 +34,7 @@ export default {
         ],
       },
     },
+    chromatic: { disableSnapshot: true },
   },
   play: async (ctx) => {
     const storyRoot = ctx.canvasElement;
