@@ -3,7 +3,6 @@
 import { Button, Tooltip } from '@digdir/designsystemet-react';
 import { FilesIcon } from '@navikt/aksel-icons';
 import * as prettierBabel from 'prettier/parser-babel';
-import * as prettierEstree from 'prettier/plugins/estree';
 import * as prettierHtml from 'prettier/plugins/html.js';
 import * as prettierMarkdown from 'prettier/plugins/markdown.js';
 import * as prettierCSS from 'prettier/plugins/postcss.js';
@@ -19,7 +18,7 @@ import cl from 'clsx/lite';
 
 const plugins = [
   prettierTypescript,
-  prettierEstree,
+  /* prettierEstree, */
   prettierCSS,
   prettierMarkdown,
   prettierHtml,
