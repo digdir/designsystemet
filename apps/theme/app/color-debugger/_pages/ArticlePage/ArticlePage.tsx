@@ -4,7 +4,6 @@ import { ColorFilter } from '../../ColorFilter/ColorFilter';
 import { ColorInput } from '../../ColorInput/ColorInput';
 import { useDebugStore } from '../../debugStore';
 import { ColorIndexes, ColorScaleNames } from '../../utils';
-import { Accordion } from './Accordion/Accordion';
 import { Alert } from './Alert/Alert';
 import classes from './ArticlePage.module.css';
 import { File } from './File/File';
@@ -113,20 +112,47 @@ const Article = ({ scale, index1, index2 }: ArticleProps) => {
             </div>
           </>
         )}
-
-        <File scale={scale} />
-
         <div
+          className={classes.section}
           style={{
-            color:
-              scale[themeSettings.general.colorScheme][ColorIndexes.textDefault]
-                .hex,
+            backgroundColor:
+              scale[themeSettings.general.colorScheme][
+                ColorIndexes.backgroundDefault
+              ].hex,
           }}
         >
-          Receive also such of sleep inn they of move bed these owner to for
-          preceding quite practice to again. With the or be to and merit.
+          <div className={classes.sectionContent}>
+            <File scale={scale} />
+          </div>
         </div>
-        <Accordion scale={scale} />
+
+        <div
+          className={classes.section}
+          style={{
+            backgroundColor:
+              scale[themeSettings.general.colorScheme][
+                ColorIndexes.backgroundTinted
+              ].hex,
+          }}
+        >
+          <div className={classes.sectionContent}>
+            <File scale={scale} />
+          </div>
+        </div>
+
+        <div
+          className={classes.section}
+          style={{
+            backgroundColor:
+              scale[themeSettings.general.colorScheme][
+                ColorIndexes.surfaceDefault
+              ].hex,
+          }}
+        >
+          <div className={classes.sectionContent}>
+            <File scale={scale} />
+          </div>
+        </div>
       </div>
     </div>
   );

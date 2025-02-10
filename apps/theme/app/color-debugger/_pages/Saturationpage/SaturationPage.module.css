@@ -1,0 +1,41 @@
+.heading {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.innerItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.colorItem {
+  width: 265px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemColumn {
+  height: 100px;
+  width: 100%;
+  display: flex;
+}
+
+.itemLeft {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(255, 214, 248);
+}
+
+.itemRight {
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+}

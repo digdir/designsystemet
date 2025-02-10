@@ -59,7 +59,7 @@ export const generateColorScale = (
         name: colorInfo.name,
         displayName: colorInfo.displayName,
         group: colorInfo.group,
-        hex: chroma(color)
+        hex: chroma(baseColors.baseDefault)
           .luminance(value, themeSettings?.interpolation?.mode)
           .hex() as CssColor,
         position,

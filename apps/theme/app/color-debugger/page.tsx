@@ -6,7 +6,6 @@ import chroma from 'chroma-js';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
 import { ColorTables } from './ColorGrid/ColorGrid';
-import { ColorSaturation } from './ColorSaturation/ColorSaturation';
 import { ContrastColors } from './ContrastColors/ContrastColors';
 import { FrontPage } from './FrontPage/FrontPage';
 import { Mobile } from './Mobile/Mobile';
@@ -15,6 +14,7 @@ import { Sidebar } from './Sidebar/Sidebar';
 import { TabMenu } from './TabMenu/TabMenu';
 import { ArticlePage } from './_pages/ArticlePage/ArticlePage';
 import { StatusPage } from './_pages/ArticlePage/StatusPage/StatusPage';
+import { SaturationPage } from './_pages/Saturationpage/SaturationPage';
 import { useDebugStore } from './debugStore';
 import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
@@ -134,14 +134,6 @@ export default function Home() {
       ></div>
       <div className={classes.content}>
         {pageType === 'main' && <FrontPage />}
-        {pageType === 'saturation' && (
-          <>
-            <Heading className={classes.heading}>
-              Saturation adjustments
-            </Heading>
-            <ColorSaturation />
-          </>
-        )}
 
         {pageType === 'baseContrast' && (
           <>
@@ -157,6 +149,9 @@ export default function Home() {
         {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
         {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
         {pageType === 'status' && <StatusPage />}
+        {pageType === 'saturation' && (
+          <SaturationPage colorScales={colorScales} />
+        )}
       </div>
       <Sidebar />
     </div>

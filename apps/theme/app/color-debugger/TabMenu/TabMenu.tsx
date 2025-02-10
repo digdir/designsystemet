@@ -11,6 +11,7 @@ export const TabMenu = () => {
     baseContrast: 'Base',
     scales: 'Scales',
     colorTable: 'Table',
+    saturation: 'Saturation',
     article: 'Surface',
     mobile: 'App design',
   };
