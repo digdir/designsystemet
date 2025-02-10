@@ -3,7 +3,7 @@ export const luminance = {
     backgroundDefault: 1,
     backgroundTinted: 0.9,
     surfaceDefault: 1,
-    surfaceTinted: 0.8,
+    surfaceTinted: 0.81,
     surfaceHover: 0.7,
     surfaceActive: 0.6,
     borderSubtle: 0.5,
