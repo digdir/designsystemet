@@ -23,7 +23,7 @@
     "react-color-palette": "^7.3.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.0",
-    "zustand": "^4.5.4"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.0",
