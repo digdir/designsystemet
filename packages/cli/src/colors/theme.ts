@@ -23,7 +23,7 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
       name: colorInfo.name,
       displayName: colorInfo.displayName,
       group: colorInfo.group,
-      hex: chroma(color).luminance(value).hex() as CssColor,
+      hex: chroma(baseColors.baseDefault).luminance(value).hex() as CssColor,
       position,
     };
   });
