@@ -60,23 +60,20 @@ const DATA_PLACES = [
 
 export const Preview: StoryFn<typeof MultiSelect> = (args) => {
   return (
-    <Field>
-      <Label>Velg reisemål du vil besøke</Label>
-      <MultiSelect {...args}>
-        <MultiSelect.Chips />
-        <MultiSelect.Input />
-        <MultiSelect.Clear />
-        <MultiSelect.List>
-          <MultiSelect.Empty>Tomt</MultiSelect.Empty>
-          {DATA_PLACES.map((place) => (
-            <MultiSelect.Option key={place} value={place}>
-              {place}
-              <div>Kommune</div>
-            </MultiSelect.Option>
-          ))}
-        </MultiSelect.List>
-      </MultiSelect>
-    </Field>
+    <MultiSelect {...args}>
+      <MultiSelect.Chips />
+      <MultiSelect.Input />
+      <MultiSelect.Clear />
+      <MultiSelect.List>
+        <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+        {DATA_PLACES.map((place) => (
+          <MultiSelect.Option key={place} value={place}>
+            {place}
+            <div>Kommune</div>
+          </MultiSelect.Option>
+        ))}
+      </MultiSelect.List>
+    </MultiSelect>
   );
 };
 
@@ -114,9 +111,10 @@ export const CustomFilterAlt1: StoryFn<typeof MultiSelect> = (args) => {
       <Label>Skriv inn et tall mellom 1-6</Label>
       <MultiSelect
         {...args}
-        filter={({ index, input }) =>
-          !input.value || index === Number(input.value) - 1
-        }
+        filter={({ index, input }) => {
+          console.log(!input.value || index === Number(input.value) - 1);
+          return !input.value || index === Number(input.value) - 1;
+        }}
       >
         <MultiSelect.Chips />
         <MultiSelect.Input />
@@ -124,7 +122,9 @@ export const CustomFilterAlt1: StoryFn<typeof MultiSelect> = (args) => {
         <MultiSelect.List>
           <MultiSelect.Empty>Tomt</MultiSelect.Empty>
           {DATA_PLACES.map((text) => (
-            <MultiSelect.Option key={text}>{text}</MultiSelect.Option>
+            <MultiSelect.Option key={text} value={text.toLowerCase()}>
+              {text}
+            </MultiSelect.Option>
           ))}
         </MultiSelect.List>
       </MultiSelect>
