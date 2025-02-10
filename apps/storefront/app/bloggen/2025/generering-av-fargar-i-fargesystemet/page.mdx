@@ -304,8 +304,8 @@ Det er litt meir logikk som skjer her bak panseret, men det er ikkje avgjerande 
 
 I biletet over ser du ein seksjon til venstre der `Base Hover` og `Base Active` fargane vert lysare, 
 og ein seksjon til høgre der fargane vert mørkare.
-Måten me lagar desse fargane på er at me legg til, eller trekker frå, lightness frå fargen i HSLuv fargerommet.
-Grunnen til at me brukar HSLuv her er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
+Måten me lagar desse fargane på er at me legg til, eller trekker frå, lightness frå fargen i OKLCH fargerommet.
+Grunnen til at me brukar OKLCH her er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
 
 Me opplevde at luminans fungerte dårleg som utgangspunkt for å seie at ein farge skulle bli 8% lysare eller mørkare. 
 Me hadde difor behov for eit fargerom med ein lightness-komponent for å hjelpe oss med dette.
@@ -322,9 +322,6 @@ Dei er litt for saturerte i nokre av skalaene per i dag.
 Sidan me lagar fargar basert på kontrast, er det ikkje alle fargetonar som oppfører seg likt for auget.
 Fargen grøn er dominerande i lys modus, medan blåfargen er svært framståande i mørk modus.
 Me vil difor jobbe med å jamne ut satureringa for alle fargetonane slik at dei vert oppfatta som meir balanserte.
-
-Me vil og fortsetje med å få mørk modus til å fungere betre i fargesystemet.
-Spesielt dette at enkelte fargar vert for saturerte ynskjer me å sjå vidare på.
 
 I dag lagar me fargane i RGB-fargerommet, men me vil halde fram å teste andre fargerom som OKLCH, HSLuv og LAB for å finne dei beste fargene for Designsystemet.
 
