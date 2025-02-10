@@ -11,5 +11,5 @@
     "types": ["./declarations.d.ts", "./react-types.d.ts"]
   },
   "include": ["src"],
-  "exclude": ["src/**/*.stories.ts*", "src/**/*.test.ts*", "stories", "src/**/*.mdx"]
+  "exclude": ["src/**/*.stories.ts*", "src/**/*.chromatic.ts*", "src/**/*.test.ts*", "stories", "src/**/*.mdx"]
 }

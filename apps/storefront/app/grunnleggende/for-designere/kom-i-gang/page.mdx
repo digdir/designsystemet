@@ -14,14 +14,14 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Kom i gang med designsystemet i Figma',
-      date: '22. mai 2024',
+      date: '6. februar 2025',
       icon: <PaletteIcon />,
       color: 'blue',
     }}
   />
 );
 
-I Figma finner du komponenter og stiler fra designsystemet som du kan bruke i designet ditt. Designet har også tilhørende design tokens som er i bruk i react-komponentene. Biblioteket er tilgjengeliggjort i [Figma Community](https://www.figma.com/@designsystemet).
+I Figma finner du komponenter, variabler og stiler fra Designsystemet som du kan bruke i designet ditt. Designet har også tilhørende design tokens som er i bruk i react-komponentene. Biblioteket er tilgjengeliggjort i [Figma Community](https://www.figma.com/@designsystemet).
 
 ## Kom i gang med komponenter
 
@@ -29,6 +29,8 @@ Dersom bibliotekene ikke ligger i Figma-organisasjonen din allerede, kan du hent
 
 - [Designsystemet - Core UI Kit](https://www.figma.com/@designsystemet)
 - [Aksel ikonbibliotek](https://www.figma.com/community/file/1214869602572392330)
+
+<br />
 
 Etter at du har åpnet dem må du
 
@@ -50,6 +52,8 @@ For å aktivere bibliotekene:
 
 1. Trykk på bok-symbolet under "Assets"
 2. Aktiver "Core UI Kit" og "Felles ikonbibliotek"
+
+<br />
 
 Når du har slått på bibliotekene skal du kunne se komponentene ved å klikke på "Assets" og søke på det du trenger. Du kan også bruke tastatursnarveien SHIFT + I.
 
@@ -87,23 +91,15 @@ Komponentene støtter ulike brand og modes. For å sette opp egne profiler se gu
 
 Stiler og variabler skal være tilgjengelige i høyremargen når du for eksempel trenger å velge en farge, størrelse, avstand eller skygge.
 
-### Sizing-variabler
+### Size-variabler
 
-Størrelser (sizing) er det du setter under en **_"Section"_**, **_"Frame"_** eller **_"Group"_** i Figma. Der kan du definere bredde (W) og høyde (H).
+Size-variabler brukes til å sette både avstander og størrelser. 
 
-<Image
-  src='/img/sizing.png'
-  alt='Skjermbildet viser hvor du kan bruke Sizing-variabler i Figma'
-  boxShadow={false}
-/>
-
-### Spacing-variabler
-
-Avstander er det du setter under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
+Størrelser kan definere bredde (W) og høyde (H) på et element, mens avstander definerer luften mellom ulike elementer. Avstander setter du under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
 
 <Image
-  src='/img/spacing.png'
-  alt='Skjermbildet viser hvor du kan bruke Spacing-variabler i Figma'
+  src='/img/size.png'
+  alt='Skjermbildet viser hvor du kan bruke Size-variabler i Figma'
   boxShadow={false}
 />
 
@@ -128,31 +124,13 @@ Les mer om [farge-tokens](/grunnleggende/designelementer/farger) og hva de bruke
 
 ### Typografi-stiler
 
-For all tekst bør du bruke de ferdige utformede typografi-komponentene som er tilgjengelig i Figma og kode. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og vekting.
+For all tekst bør du bruke typografi-stiler eller typografi-komponenter. Da sikrer vi at vi har et konsistent uttrykk, riktig bruk avstander, størrelser og vekting. Les mer om [typografi](/grunnleggende/designelementer/typografi).
 
-Du kan også bruke typografi-stilene, men da vil du ikke få mulighet til å slå på avstand under:
-
-<ResponsiveIframe
-  src='/img/typografi-styles.mp4'
-  title='Skjermopptak av Figma som viser hvordan du kan sette en stil på teksten'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowFullScreen
-  aspectRatio='16-9'
-></ResponsiveIframe>
-
-Når du bruker Typografi-komponentene, har du mulighet til å aktivere avstand under teksten:
-
-<ResponsiveIframe
-  src='/img/typografi-komponenter.mp4'
-  title='Skjermopptak av Figma som viser hvordan du kan legge inn typografi-komponenter'
-  frameBorder='0'
-  allow='autoplay; fullscreen; picture-in-picture'
-  allowFullScreen
-  aspectRatio='16-9'
-></ResponsiveIframe>
-
-Les mer om [typografi](/grunnleggende/designelementer/typografi).
+<Image
+  src='/img/typografistiler.png'
+  alt='Skjermbildet viser hvor du finner typografi-stiler i Figma'
+  boxShadow={false}
+/>
 
 <br />
 <br />
