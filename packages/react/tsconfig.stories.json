@@ -15,6 +15,6 @@
       "../../apps/storybook/story-utils/type-extensions.d.ts"
     ]
   },
-  "include": ["stories", "src/**/*.stories.ts*"],
+  "include": ["stories", "src/**/*.stories.ts*", "src/**/*.chromatic.ts*"],
   "references": [{ "path": "tsconfig.lib.json" }]
 }

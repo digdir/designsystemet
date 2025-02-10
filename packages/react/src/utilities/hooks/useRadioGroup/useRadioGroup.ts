@@ -41,7 +41,7 @@ export type GetRadioProps = Omit<
   | 'checked'
   | 'value'
 > & {
-  ref?: React.Ref<HTMLInputElement | null>;
+  ref?: React.ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Radio`, remove when `Radio` no longer uses `forwardRef`
   value?: string;
 };
 

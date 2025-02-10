@@ -57,6 +57,7 @@ describe('Button', () => {
   it('should not have type attribute when asChild is true', () => {
     render({ asChild: true, children: <a href='#'>Link</a> });
     expect(screen.getByRole('link')).not.toHaveAttribute('type');
+    expect(screen.queryByRole('button')).toBeNull();
   });
 });
 

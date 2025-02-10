@@ -7,7 +7,7 @@
     "build": "storybook build -o ./dist --stats-json",
     "test-storybook": "vitest",
     "chromatic": "npx chromatic",
-    "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
+    "types": "npx tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
   "author": "",
   "license": "ISC",
@@ -35,7 +35,7 @@
     "@storybook/react-vite": "^8.5.2",
     "@storybook/theming": "^8.5.2",
     "@storybook/types": "^8.5.2",
-    "@types/react": "19.0.7",
+    "@types/react": "19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitest/browser": "^3.0.5",
     "@vitest/coverage-v8": "^3.0.5",
