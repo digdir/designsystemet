@@ -38,7 +38,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Verdi</Table.HeaderCell>
           <Table.HeaderCell>Reell verdi</Table.HeaderCell>
           <Table.HeaderCell>Visualisering</Table.HeaderCell>
         </Table.Row>
@@ -59,7 +58,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                     value={name}
                   />
                 </Table.Cell>
-                <Table.Cell>{value}</Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
                 </Table.Cell>
@@ -94,7 +92,12 @@ const ComputedValue = ({ value }: { value: string }) => {
     setComputedValue(computedValue);
   }, [value]);
 
-  return <>{computedValue}</>;
+  const getRoundValue = (value: string) => {
+    const [value_, px] = value.split('px');
+    return Math.round(Number(value_)) + 'px';
+  };
+
+  return <>{getRoundValue(computedValue)}</>;
 };
 
 type TokenCardsProps = {
